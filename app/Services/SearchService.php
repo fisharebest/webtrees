@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Services;
 
 use Closure;
 use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -170,8 +171,8 @@ class SearchService
      *
      * @param Tree[]   $trees
      * @param string[] $search
-     * @param int    $offset
-     * @param int    $limit
+     * @param int      $offset
+     * @param int      $limit
      *
      * @return Collection|Media[]
      */
@@ -351,6 +352,483 @@ class SearchService
     }
 
     /**
+     * @param Tree     $tree
+     * @param string[] $fields
+     * @param string[] $modifiers
+     *
+     * @return Collection|Individual[]
+     */
+    public function searchIndividualsAdvanced(array $trees, array $fields, array $modifiers): Collection
+    {
+        $fields = array_filter($fields);
+
+        $query = DB::table('individuals')
+            ->select(['individuals.*'])
+            ->distinct();
+
+        $this->whereTrees($query, 'i_file', $trees);
+
+        // Join the following tables
+        $father_name   = false;
+        $mother_name   = false;
+        $spouse_family = false;
+        $indi_name     = false;
+        $indi_date     = false;
+        $fam_date      = false;
+        $indi_plac     = false;
+        $fam_plac      = false;
+
+        foreach ($fields as $field_name => $field_value) {
+            if ($field_value !== '') {
+                if (substr($field_name, 0, 14) === 'FAMC:HUSB:NAME') {
+                    $father_name = true;
+                } elseif (substr($field_name, 0, 14) === 'FAMC:WIFE:NAME') {
+                    $mother_name = true;
+                } elseif (substr($field_name, 0, 4) === 'NAME') {
+                    $indi_name = true;
+                } elseif (strpos($field_name, ':DATE') !== false) {
+                    if (substr($field_name, 0, 4) === 'FAMS') {
+                        $fam_date      = true;
+                        $spouse_family = true;
+                    } else {
+                        $indi_date = true;
+                    }
+                } elseif (strpos($field_name, ':PLAC') !== false) {
+                    if (substr($field_name, 0, 4) === 'FAMS') {
+                        $fam_plac      = true;
+                        $spouse_family = true;
+                    } else {
+                        $indi_plac = true;
+                    }
+                } elseif ($field_name === 'FAMS:NOTE') {
+                    $spouse_family = true;
+                }
+            }
+        }
+
+        if ($father_name || $mother_name) {
+            $query->join('link AS l1', function (JoinClause $join): void {
+                $join
+                    ->on('l1.l_file', '=', 'individuals.i_file')
+                    ->on('l1.l_from', '=', 'individuals.i_id')
+                    ->where('l1.l_type', '=', 'FAMC');
+            });
+
+            if ($father_name) {
+                $query->join('link AS l2', function (JoinClause $join): void {
+                    $join
+                        ->on('l2.l_file', '=', 'l1.l_file')
+                        ->on('l2.l_from', '=', 'l1.l_to')
+                        ->where('l2.l_type', '=', 'HUSB');
+                });
+                $query->join('name AS father_name', function (JoinClause $join): void {
+                    $join
+                        ->on('father_name.n_file', '=', 'l2.l_file')
+                        ->on('father_name.n_id', '=', 'l2.l_to');
+                });
+            }
+
+            if ($mother_name) {
+                $query->join('link AS l3', function (JoinClause $join): void {
+                    $join
+                        ->on('l3.l_file', '=', 'l1.l_file')
+                        ->on('l3.l_from', '=', 'l1.l_to')
+                        ->where('l3.l_type', '=', 'WIFE');
+                });
+                $query->join('name AS mother_name', function (JoinClause $join): void {
+                    $join
+                        ->on('mother_name.n_file', '=', 'l3.l_file')
+                        ->on('mother_name.n_id', '=', 'l3.l_to');
+                });
+            }
+        }
+
+        if ($spouse_family) {
+            $query->join('link AS l4', function (JoinClause $join): void {
+                $join
+                    ->on('l4.l_file', '=', 'individuals.i_file')
+                    ->on('l4.l_from', '=', 'individuals.i_id')
+                    ->where('l4.l_type', '=', 'FAMS');
+            });
+            $query->join('families AS spouse_families', function (JoinClause $join): void {
+                $join
+                    ->on('spouse_families.f_file', '=', 'l4.l_file')
+                    ->on('spouse_families.f_id', '=', 'l4.l_to');
+            });
+        }
+
+        if ($indi_name) {
+            $query->join('name AS individual_name', function (JoinClause $join): void {
+                $join
+                    ->on('individual_name.n_file', '=', 'individuals.i_file')
+                    ->on('individual_name.n_id', '=', 'individuals.i_id');
+            });
+        }
+
+        if ($indi_date) {
+            $query->join('dates AS individual_dates', function (JoinClause $join): void {
+                $join
+                    ->on('individual_dates.d_file', '=', 'individuals.i_file')
+                    ->on('individual_dates.d_gid', '=', 'individuals.i_id');
+            });
+        }
+
+        if ($fam_date) {
+            $query->join('dates AS family_dates', function (JoinClause $join): void {
+                $join
+                    ->on('family_dates.d_file', '=', 'spouse_families.f_file')
+                    ->on('family_dates.d_gid', '=', 'spouse_families.f_id');
+            });
+        }
+
+        if ($indi_plac) {
+            $query->join('placelinks AS individual_placelinks', function (JoinClause $join): void {
+                $join
+                    ->on('individual_placelinks.pl_file', '=', 'individuals.i_file')
+                    ->on('individual_placelinks.pl_gid', '=', 'individuals.i_id');
+            });
+            $query->join('places AS individual_places', function (JoinClause $join): void {
+                $join
+                    ->on('individual_places.p_file', '=', 'individual_placelinks.pl_file')
+                    ->on('individual_places.p_id', '=', 'individual_placelinks.pl_p_id');
+            });
+        }
+
+        if ($fam_plac) {
+            $query->join('placelinks AS familyl_placelinks', function (JoinClause $join): void {
+                $join
+                    ->on('familyl_placelinks.pl_file', '=', 'individuals.i_file')
+                    ->on('familyl_placelinks.pl_gid', '=', 'individuals.i_id');
+            });
+            $query->join('places AS family_places', function (JoinClause $join): void {
+                $join
+                    ->on('family_places.p_file', '=', 'familyl_placelinks.pl_file')
+                    ->on('family_places.p_id', '=', 'familyl_placelinks.pl_p_id');
+            });
+        }
+
+        foreach ($fields as $field_name => $field_value) {
+            $parts = preg_split('/:/', $field_name . '::::');
+            if ($parts[0] === 'NAME') {
+                // NAME:*
+                switch ($parts[1]) {
+                    case 'GIVN':
+                        switch ($modifiers[$field_name]) {
+                            case 'EXACT':
+                                $query->where('individual_name.n_givn', '=', $field_value);
+                                break;
+                            case 'BEGINS':
+                                $query->where('individual_name.n_givn', 'LIKE', $field_value . '%');
+                                break;
+                            case 'CONTAINS':
+                                $query->where('individual_name.n_givn', 'LIKE', '%' . $field_value . '%');
+                                break;
+                            case 'SDX_STD':
+                                $sdx = Soundex::russell($field_value);
+                                if ($sdx !== '') {
+                                    $this->wherePhonetic($query, 'individual_name.n_soundex_givn_std', $sdx);
+                                } else {
+                                    // No phonetic content? Use a substring match
+                                    $query->where('individual_name.n_givn', 'LIKE', '%' . $field_value . '%');
+                                }
+                                break;
+                            case 'SDX': // SDX uses DM by default.
+                            case 'SDX_DM':
+                                $sdx = Soundex::daitchMokotoff($field_value);
+                                if ($sdx !== '') {
+                                    $this->wherePhonetic($query, 'individual_name.n_soundex_givn_dm', $sdx);
+                                } else {
+                                    // No phonetic content? Use a substring match
+                                    $query->where('individual_name.n_givn', 'LIKE', '%' . $field_value . '%');
+                                }
+                                break;
+                        }
+                        break;
+                    case 'SURN':
+                        switch ($modifiers[$field_name]) {
+                            case 'EXACT':
+                                $query->where('individual_name.n_surn', '=', $field_value);
+                                break;
+                            case 'BEGINS':
+                                $query->where('individual_name.n_surn', 'LIKE', $field_value . '%');
+                                break;
+                            case 'CONTAINS':
+                                $query->where('individual_name.n_surn', 'LIKE', '%' . $field_value . '%');
+                                break;
+                            case 'SDX_STD':
+                                $sdx = Soundex::russell($field_value);
+                                if ($sdx !== '') {
+                                    $this->wherePhonetic($query, 'individual_name.n_soundex_surn_std', $sdx);
+                                } else {
+                                    // No phonetic content? Use a substring match
+                                    $query->where('individual_name.n_surn', 'LIKE', '%' . $field_value . '%');
+                                }
+                                break;
+                            case 'SDX': // SDX uses DM by default.
+                            case 'SDX_DM':
+                                $sdx = Soundex::daitchMokotoff($field_value);
+                                if ($sdx !== '') {
+                                    $this->wherePhonetic($query, 'individual_name.n_soundex_surn_dm', $sdx);
+                                } else {
+                                    // No phonetic content? Use a substring match
+                                    $query->where('individual_name.n_surn', 'LIKE', '%' . $field_value . '%');
+                                }
+                                break;
+                        }
+                        break;
+                    case 'NICK':
+                    case '_MARNM':
+                    case '_HEB':
+                    case '_AKA':
+                        $query
+                            ->where('individual_name', '=', $parts[1])
+                            ->where('individual_name', 'LIKE', '%' . $field_value . '%');
+                        break;
+                }
+                unset($fields[$field_name]);
+            } elseif ($parts[1] === 'DATE') {
+                // *:DATE
+                $date = new Date($field_value);
+                if ($date->isOK()) {
+                    $delta = 365 * ($modifiers[$field_name] ?? 0);
+                    $query
+                        ->where('individual_dates.d_fact', '=', $parts[0])
+                        ->where('individual_dates.d_julianday1', '>=', $date->minimumJulianDay() - $delta)
+                        ->where('individual_dates.d_julianday2', '<=', $date->minimumJulianDay() + $delta);
+                }
+                unset($fields[$field_name]);
+            } elseif ($parts[0] === 'FAMS' && $parts[2] === 'DATE') {
+                // FAMS:*:DATE
+                $date = new Date($field_value);
+                if ($date->isOK()) {
+                    $delta = 365 * $modifiers[$field_name];
+                    $query
+                        ->where('family_dates.d_fact', '=', $parts[1])
+                        ->where('family_dates.d_julianday1', '>=', $date->minimumJulianDay() - $delta)
+                        ->where('family_dates.d_julianday2', '<=', $date->minimumJulianDay() + $delta);
+                }
+                unset($fields[$field_name]);
+            } elseif ($parts[1] === 'PLAC') {
+                // *:PLAC
+                // SQL can only link a place to a person/family, not to an event.
+                $query->where('individual_places.p_place', 'LIKE', '%' . $field_value . '%');
+            } elseif ($parts[0] === 'FAMS' && $parts[2] === 'PLAC') {
+                // FAMS:*:PLAC
+                // SQL can only link a place to a person/family, not to an event.
+                $query->where('family_places.p_place', 'LIKE', '%' . $field_value . '%');
+            } elseif ($parts[0] === 'FAMC' && $parts[2] === 'NAME') {
+                $table = $parts[1] === 'HUSB' ? 'father_name' : 'mother_name';
+                // NAME:*
+                switch ($parts[3]) {
+                    case 'GIVN':
+                        switch ($modifiers[$field_name]) {
+                            case 'EXACT':
+                                $query->where($table . '.n_givn', '=', $field_value);
+                                break;
+                            case 'BEGINS':
+                                $query->where($table . '.n_givn', 'LIKE', $field_value . '%');
+                                break;
+                            case 'CONTAINS':
+                                $query->where($table . '.n_givn', 'LIKE', '%' . $field_value . '%');
+                                break;
+                            case 'SDX_STD':
+                                $sdx = Soundex::russell($field_value);
+                                if ($sdx !== '') {
+                                    $this->wherePhonetic($query, $table . '.n_soundex_givn_std', $sdx);
+                                } else {
+                                    // No phonetic content? Use a substring match
+                                    $query->where($table . '.n_givn', 'LIKE', '%' . $field_value . '%');
+                                }
+                                break;
+                            case 'SDX': // SDX uses DM by default.
+                            case 'SDX_DM':
+                                $sdx = Soundex::daitchMokotoff($field_value);
+                                if ($sdx !== '') {
+                                    $this->wherePhonetic($query, $table . '.n_soundex_givn_dm', $sdx);
+                                } else {
+                                    // No phonetic content? Use a substring match
+                                    $query->where($table . '.n_givn', 'LIKE', '%' . $field_value . '%');
+                                }
+                                break;
+                        }
+                        break;
+                    case 'SURN':
+                        switch ($modifiers[$field_name]) {
+                            case 'EXACT':
+                                $query->where($table . '.n_surn', '=', $field_value);
+                                break;
+                            case 'BEGINS':
+                                $query->where($table . '.n_surn', 'LIKE', $field_value . '%');
+                                break;
+                            case 'CONTAINS':
+                                $query->where($table . '.n_surn', 'LIKE', '%' . $field_value . '%');
+                                break;
+                            case 'SDX_STD':
+                                $sdx = Soundex::russell($field_value);
+                                if ($sdx !== '') {
+                                    $this->wherePhonetic($query, $table . '.n_soundex_surn_std', $sdx);
+                                } else {
+                                    // No phonetic content? Use a substring match
+                                    $query->where($table . '.n_surn', 'LIKE', '%' . $field_value . '%');
+                                }
+                                break;
+                            case 'SDX': // SDX uses DM by default.
+                            case 'SDX_DM':
+                                $sdx = Soundex::daitchMokotoff($field_value);
+                                if ($sdx !== '') {
+                                    $this->wherePhonetic($query, $table . '.n_soundex_surn_dm', $sdx);
+                                } else {
+                                    // No phonetic content? Use a substring match
+                                    $query->where($table . '.n_surn', 'LIKE', '%' . $field_value . '%');
+                                }
+                                break;
+                        }
+                        break;
+                }
+                unset($fields[$field_name]);
+            } elseif ($parts[0] === 'FAMS') {
+                // e.g. searches for occupation, religion, note, etc.
+                // Initial matching only.  Need PHP to apply filter.
+                $query->where('families.f_gedcom', 'LIKE', "%\n1 " . $parts[1] . ' %' . $field_value . '%');
+            } elseif ($parts[1] === 'TYPE') {
+                // e.g. FACT:TYPE or EVEN:TYPE
+                // Initial matching only.  Need PHP to apply filter.
+                $query->where('individuals.i_gedcom', 'LIKE', "%\n1 " . $parts[0] . '%\n2 TYPE %' . $field_value . '%');
+            } else {
+                // e.g. searches for occupation, religion, note, etc.
+                // Initial matching only.  Need PHP to apply filter.
+                $query->where('individuals.i_gedcom', 'LIKE', "%\n1 " . $parts[0] . ' %' . $field_value . '%');
+            }
+        }
+
+        return $query
+            ->get()
+            ->map(Individual::rowMapper())
+            ->filter(GedcomRecord::accessFilter())
+            ->filter(function (Individual $individual) use ($fields): bool {
+                if (empty($fields)) {
+                    return true;
+                }
+
+                // Check for XXXX:PLAC fields, which were only partially matched by SQL
+                foreach ($fields as $field_name => $field_value) {
+                    $regex_field_value = preg_quote($field_value, '/');
+
+                    $parts = preg_split('/:/', $field_name . '::::');
+
+                    if ($parts[1] === 'PLAC') {
+                        // *:PLAC
+                        if (preg_match('/\n\d PLAC .*' . $regex_field_value . '/i', $individual->gedcom())) {
+                            continue;
+                        }
+                    } elseif ($parts[0] === 'FAMS' && $parts[2] === 'PLAC') {
+                        // FAMS:*:PLAC
+                        foreach ($individual->getSpouseFamilies() as $family) {
+                            if (preg_match('/\n\d PLAC .*' . $regex_field_value . '/i', $family->gedcom())) {
+                                continue;
+                            }
+                        }
+                    } elseif ($parts[0] === 'FAMS') {
+                        // e.g. searches for occupation, religion, note, etc.
+                        foreach ($individual->getSpouseFamilies() as $family) {
+                            if (preg_match('/\n1 ' . $parts[1] . ' .*' . $regex_field_value . '/i', $family->gedcom())) {
+                                continue;
+                            }
+                        }
+                    } elseif ($parts[1] === 'TYPE') {
+                        // e.g. FACT:TYPE or EVEN:TYPE
+                        if (preg_match('/\n1 ' . $parts[0] . '.*(\n2.*)*2 TYPE .*' . $regex_field_value . '/i', $individual->gedcom())) {
+                            continue;
+                        }
+                    } else {
+                        // e.g. searches for occupation, religion, note, etc.
+                        if (preg_match('/\n1 ' . $parts[0] . ' .*' . $regex_field_value . '/i', $individual->gedcom())) {
+                            continue;
+                        }
+                    }
+
+                    return false;
+                }
+
+                return true;
+            });
+    }
+
+    /**
+     * @param string $soundex
+     * @param string $lastname
+     * @param string $firstname
+     * @param string $place
+     * @param Tree[] $search_trees
+     *
+     * @return Collection|Individual[]
+     */
+    public function searchIndividualsPhonetic(string $soundex, string $lastname, string $firstname, string $place, array $search_trees): Collection
+    {
+        switch ($soundex) {
+            default:
+            case 'Russell':
+                $givn_sdx   = Soundex::russell($firstname);
+                $surn_sdx   = Soundex::russell($lastname);
+                $plac_sdx   = Soundex::russell($place);
+                $givn_field = 'n_soundex_givn_std';
+                $surn_field = 'n_soundex_surn_std';
+                $plac_field = 'p_std_soundex';
+                break;
+            case 'DaitchM':
+                $givn_sdx   = Soundex::daitchMokotoff($firstname);
+                $surn_sdx   = Soundex::daitchMokotoff($lastname);
+                $plac_sdx   = Soundex::daitchMokotoff($place);
+                $givn_field = 'n_soundex_givn_dm';
+                $surn_field = 'n_soundex_surn_dm';
+                $plac_field = 'p_dm_soundex';
+                break;
+        }
+
+        // Nothing to search for? Return nothing.
+        if ($givn_sdx === '' && $surn_sdx === '' && $plac_sdx === '') {
+            return new Collection;
+        }
+
+        $query = DB::table('individuals')
+            ->select(['individuals.*'])
+            ->distinct();
+
+        $this->whereTrees($query, 'i_file', $search_trees);
+
+        if ($plac_sdx !== '') {
+            $query->join('placelinks', function (JoinClause $join): void {
+                $join
+                    ->on('placelinks.pl_file', '=', 'individuals.i_file')
+                    ->on('placelinks.pl_gid', '=', 'individuals.i_id');
+            });
+            $query->join('places', function (JoinClause $join): void {
+                $join
+                    ->on('places.p_file', '=', 'placelinks.pl_file')
+                    ->on('places.p_id', '=', 'placelinks.pl_p_id');
+            });
+
+            $this->wherePhonetic($query, $plac_field, $plac_sdx);
+        }
+
+        if ($givn_sdx !== '' || $surn_sdx !== '') {
+            $query->join('name', function (JoinClause $join): void {
+                $join
+                    ->on('name.n_file', '=', 'individuals.i_file')
+                    ->on('name.n_id', '=', 'individuals.i_id');
+            });
+
+            $this->wherePhonetic($query, $givn_field, $givn_sdx);
+            $this->wherePhonetic($query, $surn_field, $surn_sdx);
+        }
+
+        return $query
+            ->get()
+            ->map(Individual::rowMapper())
+            ->filter(GedcomRecord::accessFilter());
+    }
+
+    /**
      * Paginate a search query.
      *
      * @param Builder $query      Searches the database for the desired records.
@@ -465,79 +943,5 @@ class SearchService
 
             return true;
         };
-    }
-
-    /**
-     * @param string $soundex
-     * @param string $lastname
-     * @param string $firstname
-     * @param string $place
-     * @param Tree[] $search_trees
-     *
-     * @return Collection|Individual[]
-     */
-    public function searchIndividualsPhonetic(string $soundex, string $lastname, string $firstname, string $place, array $search_trees)
-    {
-        switch ($soundex) {
-            default:
-            case 'Russell':
-                $givn_sdx   = Soundex::russell($firstname);
-                $surn_sdx   = Soundex::russell($lastname);
-                $plac_sdx   = Soundex::russell($place);
-                $givn_field = 'n_soundex_givn_std';
-                $surn_field = 'n_soundex_surn_std';
-                $plac_field = 'p_std_soundex';
-                break;
-            case 'DaitchM':
-                $givn_sdx   = Soundex::daitchMokotoff($firstname);
-                $surn_sdx   = Soundex::daitchMokotoff($lastname);
-                $plac_sdx   = Soundex::daitchMokotoff($place);
-                $givn_field = 'n_soundex_givn_dm';
-                $surn_field = 'n_soundex_surn_dm';
-                $plac_field = 'p_dm_soundex';
-                break;
-        }
-
-        // Nothing to search for? Return nothing.
-        if ($givn_sdx === '' && $surn_sdx === '' && $plac_sdx === '') {
-            return new Collection;
-        }
-
-        $query = DB::table('individuals')
-            ->select(['individuals.*'])
-            ->distinct();
-
-        $this->whereTrees($query, 'i_file', $search_trees);
-
-        if ($plac_sdx !== '') {
-            $query->join('placelinks', function (JoinClause $join): void {
-                $join
-                    ->on('placelinks.pl_file', '=', 'individuals.i_file')
-                    ->on('placelinks.pl_gid', '=', 'individuals.i_id');
-            });
-            $query->join('places', function (JoinClause $join): void {
-                $join
-                    ->on('places.p_file', '=', 'placelinks.pl_file')
-                    ->on('places.p_id', '=', 'placelinks.pl_p_id');
-            });
-
-            $this->wherePhonetic($query, $plac_field, $plac_sdx);
-        }
-
-        if ($givn_sdx !== '' || $surn_sdx !== '') {
-            $query->join('name', function (JoinClause $join): void {
-                $join
-                    ->on('name.n_file', '=', 'individuals.i_file')
-                    ->on('name.n_id', '=', 'individuals.i_id');
-            });
-
-            $this->wherePhonetic($query, $givn_field, $givn_sdx);
-            $this->wherePhonetic($query, $surn_field, $surn_sdx);
-        }
-
-        return $query
-            ->get()
-            ->map(Individual::rowMapper())
-            ->filter(GedcomRecord::accessFilter());
     }
 }

@@ -17,17 +17,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -165,8 +160,8 @@ class SearchController extends AbstractBaseController
     /**
      * The standard search.
      *
-     * @param Request       $request
-     * @param Tree          $tree
+     * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
@@ -355,8 +350,8 @@ class SearchController extends AbstractBaseController
     /**
      * Search and replace.
      *
-     * @param Request       $request
-     * @param Tree          $tree
+     * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
@@ -454,7 +449,7 @@ class SearchController extends AbstractBaseController
         $name_options = $this->nameOptions();
 
         if (!empty(array_filter($fields))) {
-            $individuals = $this->searchIndividualsAdvanced($tree, $fields, $modifiers);
+            $individuals = $this->search_service->searchIndividualsAdvanced([$tree], $fields, $modifiers);
         } else {
             $individuals = [];
         }
@@ -624,392 +619,5 @@ class SearchController extends AbstractBaseController
         }
 
         return $search_terms;
-    }
-
-    /**
-     * @param Tree     $tree
-     * @param string[] $fields
-     * @param string[] $modifiers
-     *
-     * @return Individual[]
-     */
-    private function searchIndividualsAdvanced(Tree $tree, array $fields, array $modifiers): array
-    {
-        $fields = array_filter($fields);
-
-        // Dynamic SQL query, plus bind variables
-        $sql  = 'SELECT DISTINCT ind.i_id AS xref, ind.i_gedcom AS gedcom FROM `##individuals` ind';
-        $bind = [];
-
-        // Join the following tables
-        $father_name   = false;
-        $mother_name   = false;
-        $spouse_family = false;
-        $indi_name     = false;
-        $indi_date     = false;
-        $fam_date      = false;
-        $indi_plac     = false;
-        $fam_plac      = false;
-
-        foreach ($fields as $field_name => $field_value) {
-            if ($field_value !== '') {
-                if (substr($field_name, 0, 14) === 'FAMC:HUSB:NAME') {
-                    $father_name = true;
-                } elseif (substr($field_name, 0, 14) === 'FAMC:WIFE:NAME') {
-                    $mother_name = true;
-                } elseif (substr($field_name, 0, 4) === 'NAME') {
-                    $indi_name = true;
-                } elseif (strpos($field_name, ':DATE') !== false) {
-                    if (substr($field_name, 0, 4) === 'FAMS') {
-                        $fam_date      = true;
-                        $spouse_family = true;
-                    } else {
-                        $indi_date = true;
-                    }
-                } elseif (strpos($field_name, ':PLAC') !== false) {
-                    if (substr($field_name, 0, 4) === 'FAMS') {
-                        $fam_plac      = true;
-                        $spouse_family = true;
-                    } else {
-                        $indi_plac = true;
-                    }
-                } elseif ($field_name === 'FAMS:NOTE') {
-                    $spouse_family = true;
-                }
-            }
-        }
-
-        if ($father_name || $mother_name) {
-            $sql .= " JOIN `##link`   l_1 ON (l_1.l_file=ind.i_file AND l_1.l_from=ind.i_id AND l_1.l_type='FAMC')";
-        }
-        if ($father_name) {
-            $sql .= " JOIN `##link`   l_2 ON (l_2.l_file=ind.i_file AND l_2.l_from=l_1.l_to AND l_2.l_type='HUSB')";
-            $sql .= " JOIN `##name`   f_n ON (f_n.n_file=ind.i_file AND f_n.n_id  =l_2.l_to)";
-        }
-        if ($mother_name) {
-            $sql .= " JOIN `##link`   l_3 ON (l_3.l_file=ind.i_file AND l_3.l_from=l_1.l_to AND l_3.l_type='WIFE')";
-            $sql .= " JOIN `##name`   m_n ON (m_n.n_file=ind.i_file AND m_n.n_id  =l_3.l_to)";
-        }
-        if ($spouse_family) {
-            $sql .= " JOIN `##link`     l_4 ON (l_4.l_file=ind.i_file AND l_4.l_from=ind.i_id AND l_4.l_type='FAMS')";
-            $sql .= " JOIN `##families` fam ON (fam.f_file=ind.i_file AND fam.f_id  =l_4.l_to)";
-        }
-        if ($indi_name) {
-            $sql .= " JOIN `##name`   i_n ON (i_n.n_file=ind.i_file AND i_n.n_id=ind.i_id)";
-        }
-        if ($indi_date) {
-            $sql .= " JOIN `##dates`  i_d ON (i_d.d_file=ind.i_file AND i_d.d_gid=ind.i_id)";
-        }
-        if ($fam_date) {
-            $sql .= " JOIN `##dates`  f_d ON (f_d.d_file=ind.i_file AND f_d.d_gid=fam.f_id)";
-        }
-        if ($indi_plac) {
-            $sql .= " JOIN `##placelinks`   i_pl ON (i_pl.pl_file=ind.i_file AND i_pl.pl_gid =ind.i_id)";
-            $sql .= " JOIN (" .
-                "SELECT CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) AS place, p1.p_id AS id, p1.p_file AS file" .
-                " FROM      `##places` AS p1" .
-                " LEFT JOIN `##places` AS p2 ON (p1.p_parent_id=p2.p_id)" .
-                " LEFT JOIN `##places` AS p3 ON (p2.p_parent_id=p3.p_id)" .
-                " LEFT JOIN `##places` AS p4 ON (p3.p_parent_id=p4.p_id)" .
-                " LEFT JOIN `##places` AS p5 ON (p4.p_parent_id=p5.p_id)" .
-                " LEFT JOIN `##places` AS p6 ON (p5.p_parent_id=p6.p_id)" .
-                " LEFT JOIN `##places` AS p7 ON (p6.p_parent_id=p7.p_id)" .
-                " LEFT JOIN `##places` AS p8 ON (p7.p_parent_id=p8.p_id)" .
-                " LEFT JOIN `##places` AS p9 ON (p8.p_parent_id=p9.p_id)" .
-                ") AS i_p ON (i_p.file  =ind.i_file AND i_pl.pl_p_id= i_p.id)";
-        }
-        if ($fam_plac) {
-            $sql .= " JOIN `##placelinks`   f_pl ON (f_pl.pl_file=ind.i_file AND f_pl.pl_gid =fam.f_id)";
-            $sql .= " JOIN (" .
-                "SELECT CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) AS place, p1.p_id AS id, p1.p_file AS file" .
-                " FROM      `##places` AS p1" .
-                " LEFT JOIN `##places` AS p2 ON (p1.p_parent_id=p2.p_id)" .
-                " LEFT JOIN `##places` AS p3 ON (p2.p_parent_id=p3.p_id)" .
-                " LEFT JOIN `##places` AS p4 ON (p3.p_parent_id=p4.p_id)" .
-                " LEFT JOIN `##places` AS p5 ON (p4.p_parent_id=p5.p_id)" .
-                " LEFT JOIN `##places` AS p6 ON (p5.p_parent_id=p6.p_id)" .
-                " LEFT JOIN `##places` AS p7 ON (p6.p_parent_id=p7.p_id)" .
-                " LEFT JOIN `##places` AS p8 ON (p7.p_parent_id=p8.p_id)" .
-                " LEFT JOIN `##places` AS p9 ON (p8.p_parent_id=p9.p_id)" .
-                ") AS f_p ON (f_p.file  =ind.i_file AND f_pl.pl_p_id= f_p.id)";
-        }
-
-        // Add the where clause
-        $sql .= " WHERE ind.i_file=?";
-        $bind[] = $tree->id();
-
-        foreach ($fields as $field_name => $field_value) {
-            $parts = preg_split('/:/', $field_name . '::::');
-            if ($parts[0] === 'NAME') {
-                // NAME:*
-                switch ($parts[1]) {
-                    case 'GIVN':
-                        switch ($modifiers[$field_name]) {
-                            case 'EXACT':
-                                $sql .= " AND i_n.n_givn=?";
-                                $bind[] = $field_value;
-                                break;
-                            case 'BEGINS':
-                                $sql .= " AND i_n.n_givn LIKE CONCAT(?, '%')";
-                                $bind[] = $field_value;
-                                break;
-                            case 'CONTAINS':
-                                $sql .= " AND i_n.n_givn LIKE CONCAT('%', ?, '%')";
-                                $bind[] = $field_value;
-                                break;
-                            case 'SDX_STD':
-                                $sdx = Soundex::russell($field_value);
-                                if ($sdx !== '') {
-                                    $sdx = explode(':', $sdx);
-                                    foreach ($sdx as $k => $v) {
-                                        $sdx[$k] = "i_n.n_soundex_givn_std LIKE CONCAT('%', ?, '%')";
-                                        $bind[]  = $v;
-                                    }
-                                    $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
-                                } else {
-                                    // No phonetic content? Use a substring match
-                                    $sql .= " AND i_n.n_givn LIKE CONCAT('%', ?, '%')";
-                                    $bind[] = $field_value;
-                                }
-                                break;
-                            case 'SDX': // SDX uses DM by default.
-                            case 'SDX_DM':
-                                $sdx = Soundex::daitchMokotoff($field_value);
-                                if ($sdx !== '') {
-                                    $sdx = explode(':', $sdx);
-                                    foreach ($sdx as $k => $v) {
-                                        $sdx[$k] = "i_n.n_soundex_givn_dm LIKE CONCAT('%', ?, '%')";
-                                        $bind[]  = $v;
-                                    }
-                                    $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
-                                } else {
-                                    // No phonetic content? Use a substring match
-                                    $sql .= " AND i_n.n_givn LIKE CONCAT('%', ?, '%')";
-                                    $bind[] = $field_value;
-                                }
-                                break;
-                        }
-                        break;
-                    case 'SURN':
-                        switch ($modifiers[$field_name]) {
-                            case 'EXACT':
-                                $sql .= " AND i_n.n_surname=?";
-                                $bind[] = $field_value;
-                                break;
-                            case 'BEGINS':
-                                $sql .= " AND i_n.n_surname LIKE CONCAT(?, '%')";
-                                $bind[] = $field_value;
-                                break;
-                            case 'CONTAINS':
-                                $sql .= " AND i_n.n_surname LIKE CONCAT('%', ?, '%')";
-                                $bind[] = $field_value;
-                                break;
-                            case 'SDX_STD':
-                                $sdx = Soundex::russell($field_value);
-                                if ($sdx !== '') {
-                                    $sdx = explode(':', $sdx);
-                                    foreach ($sdx as $k => $v) {
-                                        $sdx[$k] = "i_n.n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
-                                        $bind[]  = $v;
-                                    }
-                                    $sql .= " AND (" . implode(' OR ', $sdx) . ")";
-                                } else {
-                                    // No phonetic content? Use a substring match
-                                    $sql .= " AND i_n.n_surn LIKE CONCAT('%', ?, '%')";
-                                    $bind[] = $field_value;
-                                }
-                                break;
-                            case 'SDX': // SDX uses DM by default.
-                            case 'SDX_DM':
-                                $sdx = Soundex::daitchMokotoff($field_value);
-                                if ($sdx !== '') {
-                                    $sdx = explode(':', $sdx);
-                                    foreach ($sdx as $k => $v) {
-                                        $sdx[$k] = "i_n.n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
-                                        $bind[]  = $v;
-                                    }
-                                    $sql .= " AND (" . implode(' OR ', $sdx) . ")";
-                                    break;
-                                }
-
-                                // No phonetic content? Use a substring match
-                                $sql .= " AND i_n.n_surn LIKE CONCAT('%', ?, '%')";
-                                $bind[] = $field_value;
-                        }
-                        break;
-                    case 'NICK':
-                    case '_MARNM':
-                    case '_HEB':
-                    case '_AKA':
-                        $sql .= " AND i_n.n_type=? AND i_n.n_full LIKE CONCAT('%', ?, '%')";
-                        $bind[] = $parts[1];
-                        $bind[] = $field_value;
-                        break;
-                }
-            } elseif ($parts[1] === 'DATE') {
-                // *:DATE
-                $date = new Date($field_value);
-                if ($date->isOK()) {
-                    $delta  = 365 * ($modifiers[$field_name] ?? 0);
-                    $sql .= " AND i_d.d_fact=? AND i_d.d_julianday1>=? AND i_d.d_julianday2<=?";
-                    $bind[] = $parts[0];
-                    $bind[] = $date->minimumJulianDay() - $delta;
-                    $bind[] = $date->maximumJulianDay() + $delta;
-                }
-            } elseif ($parts[0] === 'FAMS' && $parts[2] === 'DATE') {
-                // FAMS:*:DATE
-                $date = new Date($field_value);
-                if ($date->isOK()) {
-                    $delta  = 365 * $modifiers[$field_name];
-                    $sql .= " AND f_d.d_fact=? AND f_d.d_julianday1>=? AND f_d.d_julianday2<=?";
-                    $bind[] = $parts[1];
-                    $bind[] = $date->minimumJulianDay() - $delta;
-                    $bind[] = $date->maximumJulianDay() + $delta;
-                }
-            } elseif ($parts[1] === 'PLAC') {
-                // *:PLAC
-                // SQL can only link a place to a person/family, not to an event.
-                $sql .= " AND i_p.place LIKE CONCAT('%', ?, '%')";
-                $bind[] = $field_value;
-            } elseif ($parts[0] === 'FAMS' && $parts[2] === 'PLAC') {
-                // FAMS:*:PLAC
-                // SQL can only link a place to a person/family, not to an event.
-                $sql .= " AND f_p.place LIKE CONCAT('%', ?, '%')";
-                $bind[] = $field_value;
-            } elseif ($parts[0] === 'FAMC' && $parts[2] === 'NAME') {
-                $table = $parts[1] === 'HUSB' ? 'f_n' : 'm_n';
-                // NAME:*
-                switch ($parts[3]) {
-                    case 'GIVN':
-                        switch ($modifiers[$field_name]) {
-                            case 'EXACT':
-                                $sql .= " AND {$table}.n_givn=?";
-                                $bind[] = $field_value;
-                                break;
-                            case 'BEGINS':
-                                $sql .= " AND {$table}.n_givn LIKE CONCAT(?, '%')";
-                                $bind[] = $field_value;
-                                break;
-                            case 'CONTAINS':
-                                $sql .= " AND {$table}.n_givn LIKE CONCAT('%', ?, '%')";
-                                $bind[] = $field_value;
-                                break;
-                            case 'SDX_STD':
-                                $sdx = Soundex::russell($field_value);
-                                if ($sdx !== null) {
-                                    $sdx = explode(':', $sdx);
-                                    foreach ($sdx as $k => $v) {
-                                        $sdx[$k] = "{$table}.n_soundex_givn_std LIKE CONCAT('%', ?, '%')";
-                                        $bind[]  = $v;
-                                    }
-                                    $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
-                                } else {
-                                    // No phonetic content? Use a substring match
-                                    $sql .= " AND {$table}.n_givn LIKE CONCAT('%', ?, '%')";
-                                    $bind[] = $field_value;
-                                }
-                                break;
-                            case 'SDX': // SDX uses DM by default.
-                            case 'SDX_DM':
-                                $sdx = Soundex::daitchMokotoff($field_value);
-                                if ($sdx !== '') {
-                                    $sdx = explode(':', $sdx);
-                                    foreach ($sdx as $k => $v) {
-                                        $sdx[$k] = "{$table}.n_soundex_givn_dm LIKE CONCAT('%', ?, '%')";
-                                        $bind[]  = $v;
-                                    }
-                                    $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
-                                    break;
-                                }
-
-                                // No phonetic content? Use a substring match
-                                $sql .= " AND {$table}.n_givn LIKE CONCAT('%', ?, '%')";
-                                $bind[] = $field_value;
-                        }
-                        break;
-                    case 'SURN':
-                        switch ($modifiers[$field_name]) {
-                            case 'EXACT':
-                                $sql .= " AND {$table}.n_surname=?";
-                                $bind[] = $field_value;
-                                break;
-                            case 'BEGINS':
-                                $sql .= " AND {$table}.n_surname LIKE CONCAT(?, '%')";
-                                $bind[] = $field_value;
-                                break;
-                            case 'CONTAINS':
-                                $sql .= " AND {$table}.n_surname LIKE CONCAT('%', ?, '%')";
-                                $bind[] = $field_value;
-                                break;
-                            case 'SDX_STD':
-                                $sdx = Soundex::russell($field_value);
-                                if ($sdx !== '') {
-                                    $sdx = explode(':', $sdx);
-                                    foreach ($sdx as $k => $v) {
-                                        $sdx[$k] = "{$table}.n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
-                                        $bind[]  = $v;
-                                    }
-                                    $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
-                                } else {
-                                    // No phonetic content? Use a substring match
-                                    $sql .= " AND {$table}.n_surn LIKE CONCAT('%', ?, '%')";
-                                    $bind[] = $field_value;
-                                }
-                                break;
-                            case 'SDX': // SDX uses DM by default.
-                            case 'SDX_DM':
-                                $sdx = Soundex::daitchMokotoff($field_value);
-                                if ($sdx !== '') {
-                                    $sdx = explode(':', $sdx);
-                                    foreach ($sdx as $k => $v) {
-                                        $sdx[$k] = "{$table}.n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
-                                        $bind[]  = $v;
-                                    }
-                                    $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
-                                } else {
-                                    // No phonetic content? Use a substring match
-                                    $sql .= " AND {$table}.n_surn LIKE CONCAT('%', ?, '%')";
-                                    $bind[] = $field_value;
-                                }
-                                break;
-                        }
-                        break;
-                }
-            } elseif ($parts[0] === 'FAMS') {
-                // e.g. searches for occupation, religion, note, etc.
-                $sql .= " AND fam.f_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
-                $bind[] = $parts[1];
-                $bind[] = $field_value;
-            } elseif ($parts[1] === 'TYPE') {
-                // e.g. FACT:TYPE or EVEN:TYPE
-                $sql .= " AND ind.i_gedcom REGEXP CONCAT('\n1 ', ?, '.*(\n[2-9] .*)*\n2 TYPE .*', ?)";
-                $bind[] = $parts[0];
-                $bind[] = $field_value;
-            } else {
-                // e.g. searches for occupation, religion, note, etc.
-                $sql .= " AND ind.i_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
-                $bind[] = $parts[0];
-                $bind[] = $field_value;
-            }
-        }
-
-        $rows = Database::prepare($sql)->execute($bind)->fetchAll();
-
-        $individuals = [];
-
-        foreach ($rows as $row) {
-            $person = Individual::getInstance($row->xref, $tree, $row->gedcom);
-            // Check for XXXX:PLAC fields, which were only partially matched by SQL
-            foreach ($fields as $field_name => $field_value) {
-                if (preg_match('/^(' . Gedcom::REGEX_TAG . '):PLAC$/', $field_name, $match)) {
-                    if (!preg_match('/\n1 ' . $match[1] . '(\n[2-9].*)*\n2 PLAC .*' . preg_quote($field_value, '/') . '/i', $person->gedcom())) {
-                        continue 2;
-                    }
-                }
-            }
-            $individuals[] = $person;
-        }
-
-        return $individuals;
     }
 }
