@@ -1,8 +1,12 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Site; ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php use Fisharebest\Webtrees\Bootstrap4;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\View; ?>
+<?php ?>
+<?php ?>
+<?php ?>
+<?php ?>
 
 <?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-trees') => I18N::translate('Manage family trees'), $title]]) ?>
 
@@ -165,7 +169,7 @@
     <script id="new-resn-template" type="text/html">
         <tr>
             <td>
-                <select class="form-control" id="record-type">
+                <select class="form-control record-type-selector">
                     <option value="individual"><?= I18N::translate('Individual') ?></option>
                     <option value="family"><?= I18N::translate('Family') ?></option>
                     <option value="source"><?= I18N::translate('Source') ?></option>
@@ -174,24 +178,23 @@
                     <option value="media"><?= I18N::translate('Media object') ?></option>
                 </select>
                 <span class="select-record select-individual">
-                    <?= FunctionsEdit::formControlIndividual($tree, null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;']) ?>
+                    <?= FunctionsEdit::formControlIndividual($tree, null, ['name' => 'xref[]', 'class' => 'form-control', 'style' => 'width:100%;']) ?>
                 </span>
                 <span class="select-record select-family d-none">
-                    <?= FunctionsEdit::formControlFamily($tree, null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+                    <?= FunctionsEdit::formControlFamily($tree, null, ['name' => 'xref[]', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
                 </span>
                 <span class="select-record select-source d-none">
-                    <?= FunctionsEdit::formControlSource($tree, null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+                    <?= FunctionsEdit::formControlSource($tree, null, ['name' => 'xref[]', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
                 </span>
                 <span class="select-record select-repository d-none">
-                    <?= FunctionsEdit::formControlRepository($tree, null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+                    <?= FunctionsEdit::formControlRepository($tree, null, ['name' => 'xref[]', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
                 </span>
                 <span class="select-record select-note d-none">
-                    <?= FunctionsEdit::formControlNote($tree, null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+                    <?= FunctionsEdit::formControlNote($tree, null, ['name' => 'xref[]', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
                 </span>
                 <span class="select-record select-media d-none">
-                    <?= FunctionsEdit::formControlMediaObject($tree, null, ['name' => 'xref', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+                    <?= FunctionsEdit::formControlMediaObject($tree, null, ['name' => 'xref[]', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
                 </span>
-                <input data-autocomplete-type="IFSRO" id="xref" maxlength="20" name="xref[]" type="text">
             </td>
             <td>
                 <?= Bootstrap4::select($all_tags, '', ['name' => 'tag_type[]']) ?>
@@ -299,72 +302,90 @@
 
 <?php View::push('javascript') ?>
 <script>
-  'use strict';
+    "use strict";
 
-  /**
-   * Hide/show the feedback labels for a privacy option.
-   *
-   * @param sel    the control to change
-   * @param who    "visitors", "members" or "managers"
-   * @param access true or false
-   */
-  function setPrivacyFeedback (sel, who, access) {
-    var formGroup = $(sel).closest('.form-group');
+    /**
+     * Hide/show the feedback labels for a privacy option.
+     *
+     * @param sel    the control to change
+     * @param who    "visitors", "members" or "managers"
+     * @param access true or false
+     */
+    function setPrivacyFeedback(sel, who, access) {
+        var formGroup = $(sel).closest(".form-group");
 
-    if (access) {
-      $('.' + who, formGroup).addClass('badge-success').removeClass('badge-secondary');
-      $('.' + who + ' i', formGroup).addClass('fa-check').removeClass('fa-times');
-    } else {
-      $('.' + who, formGroup).addClass('badge-secondary').removeClass('badge-success');
-      $('.' + who + ' i', formGroup).addClass('fa-times').removeClass('fa-check');
+        if (access) {
+            $("." + who, formGroup).addClass("badge-success").removeClass("badge-secondary");
+            $("." + who + " i", formGroup).addClass("fa-check").removeClass("fa-times");
+        } else {
+            $("." + who, formGroup).addClass("badge-secondary").removeClass("badge-success");
+            $("." + who + " i", formGroup).addClass("fa-times").removeClass("fa-check");
+        }
     }
-  }
 
-  /**
-   * Update all the privacy feedback labels.
-   */
-  function updatePrivacyFeedback () {
-    var requireAuthentication = parseInt($('[name=REQUIRE_AUTHENTICATION]').val(), 10);
-    var showDeadPeople = parseInt($('[name=SHOW_DEAD_PEOPLE]').val(), 10);
-    var hideLivePeople = parseInt($('[name=HIDE_LIVE_PEOPLE]').val(), 10);
-    var showLivingNames = parseInt($('[name=SHOW_LIVING_NAMES]').val(), 10);
-    var showPrivateRelationships = parseInt($('[name=SHOW_PRIVATE_RELATIONSHIPS]').val(), 10);
+    /**
+     * Update all the privacy feedback labels.
+     */
+    function updatePrivacyFeedback() {
+        var requireAuthentication    = parseInt($("[name=REQUIRE_AUTHENTICATION]").val(), 10);
+        var showDeadPeople           = parseInt($("[name=SHOW_DEAD_PEOPLE]").val(), 10);
+        var hideLivePeople           = parseInt($("[name=HIDE_LIVE_PEOPLE]").val(), 10);
+        var showLivingNames          = parseInt($("[name=SHOW_LIVING_NAMES]").val(), 10);
+        var showPrivateRelationships = parseInt($("[name=SHOW_PRIVATE_RELATIONSHIPS]").val(), 10);
 
-    setPrivacyFeedback('[name=REQUIRE_AUTHENTICATION]', 'visitors', requireAuthentication === 0);
-    setPrivacyFeedback('[name=REQUIRE_AUTHENTICATION]', 'members', true);
+        setPrivacyFeedback("[name=REQUIRE_AUTHENTICATION]", "visitors", requireAuthentication === 0);
+        setPrivacyFeedback("[name=REQUIRE_AUTHENTICATION]", "members", true);
 
-    setPrivacyFeedback('[name=SHOW_DEAD_PEOPLE]', 'visitors', requireAuthentication === 0 && (showDeadPeople >= 2 || hideLivePeople === 0));
-    setPrivacyFeedback('[name=SHOW_DEAD_PEOPLE]', 'members', showDeadPeople >= 1 || hideLivePeople === 0);
+        setPrivacyFeedback("[name=SHOW_DEAD_PEOPLE]", "visitors", requireAuthentication === 0 && (showDeadPeople >= 2 || hideLivePeople === 0));
+        setPrivacyFeedback("[name=SHOW_DEAD_PEOPLE]", "members", showDeadPeople >= 1 || hideLivePeople === 0);
 
-    setPrivacyFeedback('[name=HIDE_LIVE_PEOPLE]', 'visitors', requireAuthentication === 0 && hideLivePeople === 0);
-    setPrivacyFeedback('[name=HIDE_LIVE_PEOPLE]', 'members', true);
+        setPrivacyFeedback("[name=HIDE_LIVE_PEOPLE]", "visitors", requireAuthentication === 0 && hideLivePeople === 0);
+        setPrivacyFeedback("[name=HIDE_LIVE_PEOPLE]", "members", true);
 
-    setPrivacyFeedback('[name=SHOW_LIVING_NAMES]', 'visitors', requireAuthentication === 0 && showLivingNames >= 2);
-    setPrivacyFeedback('[name=SHOW_LIVING_NAMES]', 'members', showLivingNames >= 1);
-    setPrivacyFeedback('[name=SHOW_LIVING_NAMES]', 'managers', showLivingNames >= 0);
+        setPrivacyFeedback("[name=SHOW_LIVING_NAMES]", "visitors", requireAuthentication === 0 && showLivingNames >= 2);
+        setPrivacyFeedback("[name=SHOW_LIVING_NAMES]", "members", showLivingNames >= 1);
+        setPrivacyFeedback("[name=SHOW_LIVING_NAMES]", "managers", showLivingNames >= 0);
 
-    setPrivacyFeedback('[name=SHOW_PRIVATE_RELATIONSHIPS]', 'visitors', requireAuthentication === 0 && showPrivateRelationships >= 1);
-    setPrivacyFeedback('[name=SHOW_PRIVATE_RELATIONSHIPS]', 'members', showPrivateRelationships >= 1);
-  }
+        setPrivacyFeedback("[name=SHOW_PRIVATE_RELATIONSHIPS]", "visitors", requireAuthentication === 0 && showPrivateRelationships >= 1);
+        setPrivacyFeedback("[name=SHOW_PRIVATE_RELATIONSHIPS]", "members", showPrivateRelationships >= 1);
+    }
 
-  // Activate the privacy feedback labels.
-  updatePrivacyFeedback();
-  $('[name=REQUIRE_AUTHENTICATION], [name=HIDE_LIVE_PEOPLE], [name=SHOW_DEAD_PEOPLE], [name=SHOW_LIVING_NAMES], [name=SHOW_PRIVATE_RELATIONSHIPS]').on('change', function () {
+    // Activate the privacy feedback labels.
     updatePrivacyFeedback();
-  });
+    $("[name=REQUIRE_AUTHENTICATION], [name=HIDE_LIVE_PEOPLE], [name=SHOW_DEAD_PEOPLE], [name=SHOW_LIVING_NAMES], [name=SHOW_PRIVATE_RELATIONSHIPS]").on("change", function () {
+        updatePrivacyFeedback();
+    });
 
-  // Mute a line when it is marked for deletion
-  $("#default-resn").on("click", "input[type=checkbox]", function() {
-    if ($(this).prop("checked")) {
-      $($(this).closest("tr").addClass("text-muted"));
-    } else {
-      $($(this).closest("tr").removeClass("text-muted"));
-    }
-  });
+    // Mute a line when it is marked for deletion
+    $("#default-resn").on("click", "input[type=checkbox]", function () {
+        if ($(this).prop("checked")) {
+            $($(this).closest("tr").addClass("text-muted"));
+        } else {
+            $($(this).closest("tr").removeClass("text-muted"));
+        }
+    });
 
-  // Add a new row to the table
-  $("#add-resn").on("click", function() {
-    $("#default-resn tbody").prepend($("#new-resn-template").html());
-  });
+    // Add a new row to the table
+    $("#add-resn").on("click", function () {
+        $("#default-resn tbody").prepend($("#new-resn-template").html());
+
+        // Select2 - same as webtrees.js
+        $("select.select2").select2({
+            escapeMarkup: function (x) {
+                return x;
+            },
+        })
+        .on("select2:unselect", function (evt) {
+            $(evt.delegateTarget).append("<option value=\"\" selected=\"selected\"></option>");
+        });
+
+        // Record type selector
+        $(".record-type-selector").change(function () {
+            $(".select-record", $(this).parent()).addClass('d-none');
+            $(".select-record select", $(this).parent()).prop( "disabled", true);
+            $(".select-" + $(this).val(), $(this).parent()).removeClass('d-none');
+            $(".select-" + $(this).val() + " select", $(this).parent()).prop( "disabled", false);
+        });
+    });
 </script>
 <?php View::endpush() ?>

@@ -104,7 +104,7 @@ class SearchService
             ->where('husb_name.n_type', '<>', '_MARNM');
 
         $prefix = DB::connection()->getTablePrefix();
-        $field  = DB::raw($prefix . '(husb_name.n_full || ' . $prefix . 'wife_name.n_full)');
+        $field  = DB::raw('(' . $prefix . 'husb_name.n_full || ' . $prefix . 'wife_name.n_full)');
 
         $this->whereTrees($query, 'f_file', $trees);
         $this->whereSearch($query, $field, $search);

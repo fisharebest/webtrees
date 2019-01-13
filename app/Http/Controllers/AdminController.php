@@ -962,13 +962,11 @@ class AdminController extends AbstractBaseController
      */
     public function treePrivacyUpdate(Request $request, Tree $tree): RedirectResponse
     {
-        foreach ((array) $request->get('delete') as $default_resn_id) {
-            Database::prepare(
-                "DELETE FROM `##default_resn` WHERE default_resn_id = :default_resn_id"
-            )->execute([
-                'default_resn_id' => $default_resn_id,
-            ]);
-        }
+        $delete_default_resn_id = (array) $request->get('delete');
+
+        DB::table('default_resn')
+            ->whereIn('default_resn_id', $delete_default_resn_id)
+            ->delete();
 
         $xrefs     = (array) $request->get('xref');
         $tag_types = (array) $request->get('tag_type');
@@ -1512,6 +1510,7 @@ class AdminController extends AbstractBaseController
         ));
 
         $all_tags = [];
+
         foreach ($tags as $tag) {
             if ($tag) {
                 $all_tags[$tag] = GedcomTag::getLabel($tag);
@@ -1520,7 +1519,10 @@ class AdminController extends AbstractBaseController
 
         uasort($all_tags, '\Fisharebest\Webtrees\I18N::strcasecmp');
 
-        return $all_tags;
+        return array_merge(
+            ['' => I18N::translate('All facts and events')],
+            $all_tags
+        );
     }
 
     /**
