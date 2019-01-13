@@ -979,28 +979,22 @@ class AdminController extends AbstractBaseController
             if ($tag_type !== '' || $xref !== '') {
                 // Delete any existing data
                 if ($xref === '') {
-                    Database::prepare(
-                        "DELETE FROM `##default_resn` WHERE gedcom_id = :tree_id AND tag_type = :tag_type AND xref IS NULL"
-                    )->execute([
-                        'tree_id'  => $tree->id(),
-                        'tag_type' => $tag_type,
-                    ]);
+                    DB::table('default_resn')
+                        ->where('gedcom_id', '=', $tree->id())
+                        ->where('xref', '=', $xref)
+                        ->delete();
                 }
-                if ($tag_type === '') {
-                    Database::prepare(
-                        "DELETE FROM `##default_resn` WHERE gedcom_id = ? AND xref = ? AND tag_type IS NULL"
-                    )->execute([
-                        'tree_id' => $tree->id(),
-                        'xref'    => $xref,
-                    ]);
+                if ($tag_type === '' && $xref !== '') {
+                    DB::table('default_resn')
+                        ->where('gedcom_id', '=', $tree->id())
+                        ->whereNull('tag_type')
+                        ->where('xref', '=', $xref)
+                        ->delete();
                 }
 
                 // Add (or update) the new data
-                Database::prepare(
-                    "REPLACE INTO `##default_resn` (gedcom_id, xref, tag_type, resn)" .
-                    " VALUES (:tree_id, NULLIF(:xref, ''), NULLIF(:tag_type, ''), :resn)"
-                )->execute([
-                    'tree_id'  => $tree->id(),
+                DB::table('default_resn')->insert([
+                    'gedcom_id'  => $tree->id(),
                     'xref'     => $xref,
                     'tag_type' => $tag_type,
                     'resn'     => $resn,
