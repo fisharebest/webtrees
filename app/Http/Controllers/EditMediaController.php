@@ -216,6 +216,8 @@ class EditMediaController extends AbstractEditController
         } else {
             $new_file = str_replace('\\', '/', $new_file);
             $folder   = str_replace('\\', '/', $folder);
+            $folder   = trim($folder, '/');
+            
             if ($folder === '') {
                 $file = $new_file;
             } else {
