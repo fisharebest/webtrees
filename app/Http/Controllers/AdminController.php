@@ -1549,7 +1549,15 @@ class AdminController extends AbstractBaseController
      */
     private function totalChanges(): array
     {
-        return Database::prepare("SELECT g.gedcom_id, COUNT(change_id) FROM `##gedcom` AS g LEFT JOIN `##change` AS c ON g.gedcom_id = c.gedcom_id AND status = 'pending' GROUP BY g.gedcom_id")->fetchAssoc();
+        return DB::table('gedcom')
+            ->leftJoin('change', function (JoinClause $join): void {
+                $join
+                    ->on('change.gedcom_id', '=', 'gedcom.gedcom_id')
+                    ->where('change.status', '=', 'pending');
+            })
+            ->groupBy('gedcom.gedcom_id')
+            ->pluck(DB::raw('COUNT(change_id)'), 'gedcom.gedcom_id')
+            ->all();
     }
 
     /**
