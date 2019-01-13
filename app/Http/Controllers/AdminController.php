@@ -21,7 +21,6 @@ use Carbon\Carbon;
 use FilesystemIterator;
 use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
@@ -1267,24 +1266,19 @@ class AdminController extends AbstractBaseController
      */
     private function findMediaObjectsForMediaFile(string $file): array
     {
-        $rows = Database::prepare(
-            "SELECT DISTINCT m.*" .
-            " FROM  `##media` as m" .
-            " JOIN  `##media_file` USING (m_file, m_id)" .
-            " JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
-            " WHERE CONCAT(setting_value, multimedia_file_refn) = :file"
-        )->execute([
-            'file' => $file,
-        ])->fetchAll();
-
-        $media = [];
-
-        foreach ($rows as $row) {
-            $tree    = Tree::findById((int) $row->m_file);
-            $media[] = Media::getInstance($row->m_id, $tree, $row->m_gedcom);
-        }
-
-        return array_filter($media);
+        return DB::table('media')
+            ->join('media_file', function (JoinClause $join): void {
+                $join
+                    ->on('media_file.m_file', '=', 'media.m_file')
+                    ->on('media_file.m_id', '=', 'media.m_id');
+            })
+            ->join('gedcom_setting', 'media.m_file', '=', 'gedcom_setting.gedcom_id')
+            ->where(DB::raw('CONCAT(setting_value, multimedia_file_refn)'), '=', $file)
+            ->select(['media.*'])
+            ->distinct()
+            ->get()
+            ->map(Media::rowMapper())
+            ->all();
     }
 
     /**
@@ -1419,35 +1413,29 @@ class AdminController extends AbstractBaseController
      */
     private function privacyRestrictions(Tree $tree): array
     {
-        $restrictions = Database::prepare(
-            "SELECT default_resn_id, tag_type, xref, resn" .
-            " FROM `##default_resn`" .
-            " LEFT JOIN `##name` ON (gedcom_id = n_file AND xref = n_id AND n_num = 0)" .
-            " WHERE gedcom_id = :tree_id"
-        )->execute([
-            'tree_id' => $tree->id(),
-        ])->fetchAll();
+        return DB::table('default_resn')
+            ->where('gedcom_id', '=', $tree->id())
+            ->get()
+            ->map(function (stdClass $row) use ($tree): stdClass {
+                $row->record = null;
+                $row->label  = '';
 
-        foreach ($restrictions as $restriction) {
-            $restriction->record = null;
-            $restriction->label  = '';
+                if ($row->xref !== null) {
+                    $row->record = GedcomRecord::getInstance($row->xref, $tree);
+                }
 
-            if ($restriction->xref !== null) {
-                $restriction->record = GedcomRecord::getInstance($restriction->xref, $tree);
-            }
+                if ($row->tag_type) {
+                    $row->tag_label = GedcomTag::getLabel($row->tag_type);
+                } else {
+                    $row->tag_label = '';
+                }
 
-            if ($restriction->tag_type) {
-                $restriction->tag_label = GedcomTag::getLabel($restriction->tag_type);
-            } else {
-                $restriction->tag_label = '';
-            }
-        }
-
-        usort($restrictions, function (stdClass $x, stdClass $y): int {
-            return I18N::strcasecmp($x->tag_label, $y->tag_label);
-        });
-
-        return $restrictions;
+                return $row;
+            })
+            ->sort(function (stdClass $x, stdClass $y): int {
+                return I18N::strcasecmp($x->tag_label, $y->tag_label);
+            })
+            ->all();
     }
 
     /**
