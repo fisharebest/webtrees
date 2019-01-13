@@ -766,6 +766,7 @@ class AdminController extends AbstractBaseController
         $keep1 = $request->get('keep1', []);
         $keep2 = $request->get('keep2', []);
 
+        // Merge record2 into record1
         $record1 = GedcomRecord::getInstance($xref1, $tree);
         $record2 = GedcomRecord::getInstance($xref2, $tree);
 
@@ -816,47 +817,30 @@ class AdminController extends AbstractBaseController
         }
 
         // Update any linked user-accounts
-        Database::prepare(
-            "UPDATE `##user_gedcom_setting`" .
-            " SET setting_value=?" .
-            " WHERE gedcom_id=? AND setting_name='gedcomid' AND setting_value=?"
-        )->execute([
-            $xref2,
-            $tree->id(),
-            $xref1,
-        ]);
+        DB::table('user_gedcom_setting')
+            ->where('gedcom_id', '=', $tree->id())
+            ->whereIn('setting_name', ['gedcomid', 'rootid'])
+            ->where('setting_value', '=', $xref2)
+            ->update(['setting_value' => $xref1]);
 
         // Merge hit counters
-        $hits = Database::prepare(
-            "SELECT page_name, SUM(page_count)" .
-            " FROM `##hit_counter`" .
-            " WHERE gedcom_id=? AND page_parameter IN (?, ?)" .
-            " GROUP BY page_name"
-        )->execute([
-            $tree->id(),
-            $xref1,
-            $xref2,
-        ])->fetchAssoc();
+        $hits = DB::table('hit_counter')
+            ->where('gedcom_id', '=', $tree->id())
+            ->whereIn('page_parameter', [$xref1, $xref2])
+            ->groupBy('page_name')
+            ->pluck(DB::raw('SUM(page_count)'), 'page_name');
 
         foreach ($hits as $page_name => $page_count) {
-            Database::prepare(
-                "UPDATE `##hit_counter` SET page_count=?" .
-                " WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
-            )->execute([
-                $page_count,
-                $tree->id(),
-                $page_name,
-                $xref1,
-            ]);
+            DB::table('hit_counter')
+                ->where('gedcom_id', '=', $tree->id())
+                ->where('page_name', '=', $page_name)
+                ->update(['page_count' => $page_count]);
         }
 
-        Database::prepare(
-            "DELETE FROM `##hit_counter`" .
-            " WHERE gedcom_id=? AND page_parameter=?"
-        )->execute([
-            $tree->id(),
-            $xref2,
-        ]);
+        DB::table('hit_counter')
+            ->where('gedcom_id', '=', $tree->id())
+            ->where('page_parameter', '=', $xref2)
+            ->delete();
 
         $gedcom = '0 @' . $record1->xref() . '@ ' . $record1::RECORD_TYPE;
         foreach ($facts as $fact_id => $fact) {
@@ -873,13 +857,10 @@ class AdminController extends AbstractBaseController
             }
         }
 
-        Database::prepare(
-            "UPDATE `##favorite` SET xref = :new_xref WHERE xref = :old_xref AND gedcom_id = :tree_id"
-        )->execute([
-            'old_xref' => $xref1,
-            'new_xref' => $xref2,
-            'tree_id' => $tree->id(),
-        ]);
+        DB::table('favorite')
+            ->where('gedcom_id', '=', $tree->id())
+            ->where('xref', '=', $xref2)
+            ->update(['xref' => $xref1]);
 
         $record1->updateRecord($gedcom, true);
         $record2->deleteRecord();
