@@ -1748,14 +1748,17 @@ class AdminTreesController extends AbstractBaseController
         $associates = (bool) $request->get('associates');
 
         if ($associates) {
-            $sql = "SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC', 'ASSO', '_ASSO')";
+            $links = ['FAMS', 'FAMC', 'ASSO', '_ASSO'];
         } else {
-            $sql = "SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC')";
+            $links = ['FAMS', 'FAMC'];
         }
 
-        $rows  = Database::prepare($sql)->execute([
-            'tree_id' => $tree->id(),
-        ])->fetchAll();
+        $rows = DB::table('link')
+            ->where('l_file', '=', $tree->id())
+            ->whereIn('l_type', $links)
+            ->select(['l_from', 'l_to'])
+            ->get();
+
         $graph = [];
 
         foreach ($rows as $row) {
