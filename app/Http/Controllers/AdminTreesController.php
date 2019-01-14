@@ -1168,14 +1168,14 @@ class AdminTreesController extends AbstractBaseController
         $gedcom = $request->get('gedcom');
         if ($gedcom && $gedcom !== $tree->name()) {
             try {
-                Database::prepare("UPDATE `##gedcom` SET gedcom_name = ? WHERE gedcom_id = ?")->execute([
-                    $gedcom,
-                    $tree->id(),
-                ]);
-                Database::prepare("UPDATE `##site_setting` SET setting_value = ? WHERE setting_name='DEFAULT_GEDCOM' AND setting_value = ?")->execute([
-                    $gedcom,
-                    $tree->name(),
-                ]);
+                DB::table('gedcom')
+                    ->where('gedcom_id', '=', $tree->id())
+                    ->update(['gedcom_name' => $gedcom]);
+
+                DB::table('site_setting')
+                    ->where('setting_name', '=', 'DEFAULT_GEDCOM')
+                    ->where('setting_value', '=', $tree->name())
+                    ->update(['setting_value' => $gedcom]);
             } catch (\Exception $ex) {
                 // Probably a duplicate name.
             }
