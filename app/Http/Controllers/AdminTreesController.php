@@ -42,6 +42,7 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\JoinClause;
 use League\Flysystem\Filesystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use stdClass;
@@ -1906,89 +1907,75 @@ class AdminTreesController extends AbstractBaseController
      */
     private function duplicateRecords(Tree $tree): array
     {
-        $repositories = Database::prepare(
-            "SELECT GROUP_CONCAT(n_id) AS xrefs " .
-            " FROM `##other`" .
-            " JOIN `##name` ON o_id = n_id AND o_file = n_file" .
-            " WHERE o_file = :tree_id AND o_type = 'REPO'" .
-            " GROUP BY n_full" .
-            " HAVING COUNT(n_id) > 1"
-        )->execute([
-            'tree_id' => $tree->id(),
-        ])->fetchAll();
+        // We can't do any reasonable checks using MySQL.
+        // Will need to wait for a "repositories" table.
+        $repositories = [];
 
-        $repositories = array_map(function (stdClass $x) use ($tree): array {
-            return array_map(function (string $y) use ($tree): Repository {
-                return Repository::getInstance($y, $tree);
-            }, explode(',', $x->xrefs));
-        }, $repositories);
+        $sources = DB::table('sources')
+            ->where('s_file', '=', $tree->id())
+            ->groupBy('s_name')
+            ->having(DB::raw('COUNT(s_id)'),  '>', 1)
+            ->select([DB::raw('GROUP_CONCAT(s_id) AS xrefs')])
+            ->pluck('xrefs')
+            ->map(function (string $xrefs) use ($tree): array {
+                return array_map(function (string $xref) use ($tree): Source {
+                    return Source::getInstance($xref, $tree);
+                }, explode(',', $xrefs));
+            })
+            ->all();
 
-        $sources = Database::prepare(
-            "SELECT GROUP_CONCAT(n_id) AS xrefs " .
-            " FROM `##sources`" .
-            " JOIN `##name` ON s_id = n_id AND s_file = n_file" .
-            " WHERE s_file = :tree_id" .
-            " GROUP BY n_full" .
-            " HAVING COUNT(n_id) > 1"
-        )->execute([
-            'tree_id' => $tree->id(),
-        ])->fetchAll();
+        $individuals = DB::table('dates')
+            ->join('name', function (JoinClause $join): void {
+                $join
+                    ->on('d_file', '=', 'n_file')
+                    ->on('d_gid', '=', 'n_id');
+            })
+            ->where('d_file', '=', $tree->id())
+            ->whereIn('d_fact', ['BIRT', 'CHR', 'BAPM', 'DEAT', 'BURI'])
+            ->groupBy('d_year')
+            ->groupBy('d_month')
+            ->groupBy('d_day')
+            ->groupBy('d_type')
+            ->groupBy('d_fact')
+            ->groupBy('n_type')
+            ->groupBy('n_full')
+            ->having(DB::raw('COUNT(DISTINCT d_gid)'),  '>', 1)
+            ->select([DB::raw('GROUP_CONCAT(d_gid) AS xrefs')])
+            ->pluck('xrefs')
+            ->map(function (string $xrefs) use ($tree): array {
+                return array_map(function (string $xref) use ($tree): Individual {
+                    return Individual::getInstance($xref, $tree);
+                }, explode(',', $xrefs));
+            })
+            ->all();
 
-        $sources = array_map(function (stdClass $x) use ($tree): array {
-            return array_map(function (string $y) use ($tree): Source {
-                return Source::getInstance($y, $tree);
-            }, explode(',', $x->xrefs));
-        }, $sources);
+        $families = DB::table('families')
+            ->where('f_file', '=', $tree->id())
+            ->groupBy(DB::raw('LEAST(f_husb, f_wife)'))
+            ->groupBy(DB::raw('GREATEST(f_husb, f_wife)'))
+            ->having(DB::raw('COUNT(f_id)'),  '>', 1)
+            ->select([DB::raw('GROUP_CONCAT(f_id) AS xrefs')])
+            ->pluck('xrefs')
+            ->map(function (string $xrefs) use ($tree): array {
+                return array_map(function (string $xref) use ($tree): Family {
+                    return Family::getInstance($xref, $tree);
+                }, explode(',', $xrefs));
+            })
+            ->all();
 
-        $individuals = Database::prepare(
-            "SELECT DISTINCT GROUP_CONCAT(d_gid ORDER BY d_gid) AS xrefs" .
-            " FROM `##dates` AS d" .
-            " JOIN `##name` ON d_file = n_file AND d_gid = n_id" .
-            " WHERE d_file = :tree_id AND d_fact IN ('BIRT', 'CHR', 'BAPM', 'DEAT', 'BURI')" .
-            " GROUP BY d_day, d_month, d_year, d_type, d_fact, n_type, n_full" .
-            " HAVING COUNT(DISTINCT d_gid) > 1"
-        )->execute([
-            'tree_id' => $tree->id(),
-        ])->fetchAll();
-
-        $individuals = array_map(function (stdClass $x) use ($tree): array {
-            return array_map(function (string $y) use ($tree): Individual {
-                return Individual::getInstance($y, $tree);
-            }, explode(',', $x->xrefs));
-        }, $individuals);
-
-        $families = Database::prepare(
-            "SELECT GROUP_CONCAT(f_id) AS xrefs " .
-            " FROM `##families`" .
-            " WHERE f_file = :tree_id" .
-            " GROUP BY LEAST(f_husb, f_wife), GREATEST(f_husb, f_wife)" .
-            " HAVING COUNT(f_id) > 1"
-        )->execute([
-            'tree_id' => $tree->id(),
-        ])->fetchAll();
-
-        $families = array_map(function (stdClass $x) use ($tree): array {
-            return array_map(function (string $y) use ($tree): Family {
-                return Family::getInstance($y, $tree);
-            }, explode(',', $x->xrefs));
-        }, $families);
-
-        $media = Database::prepare(
-            "SELECT GROUP_CONCAT(m_id) AS xrefs " .
-            " FROM `##media`" .
-            " JOIN `##media_file` USING (m_id, m_file)" .
-            " WHERE m_file = :tree_id AND descriptive_title <> ''" .
-            " GROUP BY descriptive_title" .
-            " HAVING COUNT(m_id) > 1"
-        )->execute([
-            'tree_id' => $tree->id(),
-        ])->fetchAll();
-
-        $media = array_map(function (stdClass $x) use ($tree): array {
-            return array_map(function (string $y) use ($tree): Media {
-                return Media::getInstance($y, $tree);
-            }, explode(',', $x->xrefs));
-        }, $media);
+        $media = DB::table('media_file')
+            ->where('m_file', '=', $tree->id())
+            ->where('descriptive_title', '<>', '')
+            ->groupBy('descriptive_title')
+            ->having(DB::raw('COUNT(m_id)'),  '>', 1)
+            ->select([DB::raw('GROUP_CONCAT(m_id) AS xrefs')])
+            ->pluck('xrefs')
+            ->map(function (string $xrefs) use ($tree): array {
+                return array_map(function (string $xref) use ($tree): Media {
+                    return Media::getInstance($xref, $tree);
+                }, explode(',', $xrefs));
+            })
+            ->all();
 
         return [
             I18N::translate('Repositories')  => $repositories,
