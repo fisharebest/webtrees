@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Algorithm\ConnectedComponent;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\File;
@@ -27,6 +26,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
@@ -1805,52 +1805,30 @@ class AdminTreesController extends AbstractBaseController
      */
     private function changePlacesPreview(Tree $tree, string $search, string $replace): array
     {
-        $changes = [];
+        // Fetch the latest GEDCOM for each individual and family
+        $union = DB::table('families')
+            ->where('f_file', '=', $tree->id())
+            ->whereContains('f_gedcom', $search)
+            ->select(['f_gedcom AS gedcom']);
 
-        $rows = Database::prepare(
-            "SELECT i_id AS xref, COALESCE(new_gedcom, i_gedcom) AS gedcom" .
-            " FROM `##individuals`" .
-            " LEFT JOIN `##change` ON (i_id = xref AND i_file=gedcom_id AND status='pending')" .
-            " WHERE i_file = ?" .
-            " AND COALESCE(new_gedcom, i_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
-        )->execute([
-            $tree->id(),
-            preg_quote($search),
-        ])->fetchAll();
-        foreach ($rows as $row) {
-            $record = Individual::getInstance($row->xref, $tree, $row->gedcom);
-            foreach ($record->facts() as $fact) {
-                $old_place = $fact->attribute('PLAC');
-                if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
-                    $new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
-                    $changes[$old_place] = $new_place;
+        return DB::table('individuals')
+            ->where('i_file', '=', $tree->id())
+            ->whereContains('i_gedcom', $search)
+            ->select(['i_gedcom AS gedcom'])
+            ->unionAll($union)
+            ->pluck('gedcom')
+            ->mapWithKeys(function (string $gedcom) use ($search, $replace): array {
+                preg_match_all('/\n2 PLAC ((?:.*, )*)' . preg_quote($search) . '(\n|$)/i', $gedcom, $matches);
+
+                $changes = [];
+                foreach ($matches[1] as $prefix) {
+                    $changes[$prefix . $search] = $prefix . $replace;
                 }
-            }
-        }
-        $rows = Database::prepare(
-            "SELECT f_id AS xref, COALESCE(new_gedcom, f_gedcom) AS gedcom" .
-            " FROM `##families`" .
-            " LEFT JOIN `##change` ON (f_id = xref AND f_file=gedcom_id AND status='pending')" .
-            " WHERE f_file = ?" .
-            " AND COALESCE(new_gedcom, f_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
-        )->execute([
-            $tree->id(),
-            preg_quote($search),
-        ])->fetchAll();
-        foreach ($rows as $row) {
-            $record = Family::getInstance($row->xref, $tree, $row->gedcom);
-            foreach ($record->facts() as $fact) {
-                $old_place = $fact->attribute('PLAC');
-                if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
-                    $new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
-                    $changes[$old_place] = $new_place;
-                }
-            }
-        }
 
-        asort($changes);
-
-        return $changes;
+                return $changes;
+            })
+            ->sort()
+            ->all();
     }
 
     /**
@@ -1864,56 +1842,39 @@ class AdminTreesController extends AbstractBaseController
      */
     private function changePlacesUpdate(Tree $tree, string $search, string $replace): array
     {
-        $changes = [];
+        $individual_changes = DB::table('individuals')
+            ->where('i_file', '=', $tree->id())
+            ->whereContains('i_gedcom', $search)
+            ->select(['individuals.*'])
+            ->get()
+            ->map(Individual::rowMapper());
 
-        $rows = Database::prepare(
-            "SELECT i_id AS xref, COALESCE(new_gedcom, i_gedcom) AS gedcom" .
-            " FROM `##individuals`" .
-            " LEFT JOIN `##change` ON (i_id = xref AND i_file=gedcom_id AND status='pending')" .
-            " WHERE i_file = ?" .
-            " AND COALESCE(new_gedcom, i_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
-        )->execute([
-            $tree->id(),
-            preg_quote($search),
-        ])->fetchAll();
-        foreach ($rows as $row) {
-            $record = Individual::getInstance($row->xref, $tree, $row->gedcom);
-            foreach ($record->facts() as $fact) {
-                $old_place = $fact->attribute('PLAC');
-                if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
-                    $new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
-                    $changes[$old_place] = $new_place;
-                    $gedcom              = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $fact->gedcom());
-                    $record->updateFact($fact->id(), $gedcom, false);
+        $family_changes = DB::table('families')
+            ->where('f_file', '=', $tree->id())
+            ->whereContains('f_gedcom', $search)
+            ->select(['families.*'])
+            ->get()
+            ->map(Family::rowMapper());
+
+        return $individual_changes
+            ->merge($family_changes)
+            ->mapWithKeys(function (GedcomRecord $record) use ($search, $replace): array {
+                $changes = [];
+
+                foreach ($record->facts() as $fact) {
+                    $old_place = $fact->attribute('PLAC');
+                    if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
+                        $new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
+                        $changes[$old_place] = $new_place;
+                        $gedcom              = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $fact->gedcom());
+                        $record->updateFact($fact->id(), $gedcom, false);
+                    }
                 }
-            }
-        }
-        $rows = Database::prepare(
-            "SELECT f_id AS xref, COALESCE(new_gedcom, f_gedcom) AS gedcom" .
-            " FROM `##families`" .
-            " LEFT JOIN `##change` ON (f_id = xref AND f_file=gedcom_id AND status='pending')" .
-            " WHERE f_file = ?" .
-            " AND COALESCE(new_gedcom, f_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
-        )->execute([
-            $tree->id(),
-            preg_quote($search),
-        ])->fetchAll();
-        foreach ($rows as $row) {
-            $record = Family::getInstance($row->xref, $tree, $row->gedcom);
-            foreach ($record->facts() as $fact) {
-                $old_place = $fact->attribute('PLAC');
-                if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
-                    $new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
-                    $changes[$old_place] = $new_place;
-                    $gedcom              = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $fact->gedcom());
-                    $record->updateFact($fact->id(), $gedcom, false);
-                }
-            }
-        }
-
-        asort($changes);
-
-        return $changes;
+                
+                return $changes;
+            })
+            ->sort()
+            ->all();
     }
 
     /**
