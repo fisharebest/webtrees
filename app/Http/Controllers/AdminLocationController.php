@@ -18,13 +18,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Exception;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\JoinClause;
 use stdClass;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -695,80 +695,27 @@ class AdminLocationController extends AbstractBaseController
      */
     private function getPlaceListLocation(int $id): array
     {
-        $child_qry = Database::prepare(
-            "SELECT  COUNT(*) AS child_count, SUM(" .
-            " p1.pl_place IS NOT NULL AND (p1.pl_lati IS NULL OR p1.pl_long IS NULL) OR " .
-            " p2.pl_place IS NOT NULL AND (p2.pl_lati IS NULL OR p2.pl_long IS NULL) OR " .
-            " p3.pl_place IS NOT NULL AND (p3.pl_lati IS NULL OR p3.pl_long IS NULL) OR " .
-            " p4.pl_place IS NOT NULL AND (p4.pl_lati IS NULL OR p4.pl_long IS NULL) OR " .
-            " p5.pl_place IS NOT NULL AND (p5.pl_lati IS NULL OR p5.pl_long IS NULL) OR " .
-            " p6.pl_place IS NOT NULL AND (p6.pl_lati IS NULL OR p6.pl_long IS NULL) OR " .
-            " p7.pl_place IS NOT NULL AND (p7.pl_lati IS NULL OR p7.pl_long IS NULL) OR " .
-            " p8.pl_place IS NOT NULL AND (p8.pl_lati IS NULL OR p8.pl_long IS NULL) OR " .
-            " p9.pl_place IS NOT NULL AND (p9.pl_lati IS NULL OR p9.pl_long IS NULL)) AS no_coord" .
-            " FROM `##placelocation` AS p1" .
-            " LEFT JOIN `##placelocation` AS p2 ON (p2.pl_parent_id = p1.pl_id)" .
-            " LEFT JOIN `##placelocation` AS p3 ON (p3.pl_parent_id = p2.pl_id)" .
-            " LEFT JOIN `##placelocation` AS p4 ON (p4.pl_parent_id = p3.pl_id)" .
-            " LEFT JOIN `##placelocation` AS p5 ON (p5.pl_parent_id = p4.pl_id)" .
-            " LEFT JOIN `##placelocation` AS p6 ON (p6.pl_parent_id = p5.pl_id)" .
-            " LEFT JOIN `##placelocation` AS p7 ON (p7.pl_parent_id = p6.pl_id)" .
-            " LEFT JOIN `##placelocation` AS p8 ON (p8.pl_parent_id = p7.pl_id)" .
-            " LEFT JOIN `##placelocation` AS p9 ON (p9.pl_parent_id = p8.pl_id)" .
-            " WHERE p1.pl_parent_id = :parent_id"
-        );
-
         // We know the id of the place in the placelocation table,
         // now get the id of the same place in the places table
         if ($id === 0) {
-            $place_id = 0;
+            $fqpn = '';
         } else {
             $hierarchy = $this->gethierarchy($id);
-            $fqpn      = preg_quote($hierarchy[0]->fqpn);
-            $place_id  = Database::prepare(
-                "SELECT p1.p_id" .
-                " FROM      `##places` AS p1" .
-                " LEFT JOIN `##places` AS p2 ON (p1.p_parent_id = p2.p_id)" .
-                " LEFT JOIN `##places` AS p3 ON (p2.p_parent_id = p3.p_id)" .
-                " LEFT JOIN `##places` AS p4 ON (p3.p_parent_id = p4.p_id)" .
-                " LEFT JOIN `##places` AS p5 ON (p4.p_parent_id = p5.p_id)" .
-                " LEFT JOIN `##places` AS p6 ON (p5.p_parent_id = p6.p_id)" .
-                " LEFT JOIN `##places` AS p7 ON (p6.p_parent_id = p7.p_id)" .
-                " LEFT JOIN `##places` AS p8 ON (p7.p_parent_id = p8.p_id)" .
-                " LEFT JOIN `##places` AS p9 ON (p8.p_parent_id = p9.p_id)" .
-                " WHERE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place)=:place_name"
-            )->execute(
-                [
-                    'place_name' => $fqpn,
-                ]
-            )->fetchOne();
+            $fqpn      = ', ' . $hierarchy[0]->fqpn;
         }
 
-        $rows = Database::prepare(
-            "SELECT pl_id, pl_parent_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon," .
-            " (t1.p_place IS NULL) AS inactive" .
-            " FROM `##placelocation`" .
-            " LEFT JOIN (SELECT DISTINCT p_place" .
-            " FROM `##places`" .
-            " WHERE p_parent_id = :p_id) AS t1 ON pl_place = t1.p_place" .
-            " WHERE pl_parent_id=:id" .
-            " ORDER BY pl_place COLLATE :collation"
-        )->execute([
-            'id'        => $id,
-            'p_id'      => $place_id,
-            'collation' => I18N::collation(),
-        ])->fetchAll();
+        $rows = DB::table('placelocation')
+            ->where('pl_parent_id', '=', $id)
+            ->orderBy('pl_place')
+            ->get();
 
         $list = [];
         foreach ($rows as $row) {
             // Find/count places without co-ordinates
-            $children = $child_qry->execute(
-                [
-                    'parent_id' => $row->pl_id,
-                ]
-            )->fetchOneRow();
+            $children = $this->childLocationStatus((int) $row->pl_id);
+            $active   = $this->isLocationActive($row->pl_place . $fqpn);
 
-            if ($row->inactive) {
+            if (!$active) {
                 $badge = 'danger';
             } elseif ((int) $children->no_coord > 0) {
                 $badge = 'warning';
@@ -785,6 +732,72 @@ class AdminLocationController extends AbstractBaseController
         }
 
         return $list;
+    }
+
+    /**
+     * Is a place name used in any tree?
+     *
+     * @param string $place_name
+     *
+     * @return bool
+     */
+    private function isLocationActive(string $place_name): bool
+    {
+        $places = explode(Place::GEDCOM_SEPARATOR, $place_name);
+
+        $query = DB::table('places AS p0')
+            ->where('p0.p_place', '=', $places[0])
+            ->select(['pl0.*']);
+
+        array_shift($places);
+
+        foreach ($places as $n => $place) {
+            $query->join('places AS p' . ($n + 1), function (JoinClause $join) use ($n, $place): void {
+                $join
+                    ->on('p' . ($n + 1) . '.p_id', '=', 'p' . $n . '.p_parent_id')
+                    ->where('p' . ($n + 1) . '.p_place', '=', $place);
+            });
+        };
+
+        return $query->exists();
+    }
+
+    /**
+     * How many children does place have?  How many have co-ordinates?
+     *
+     * @param int $parent_id
+     *
+     * @return stdClass
+     */
+    private function childLocationStatus(int $parent_id): stdClass
+    {
+        $prefix = DB::connection()->getTablePrefix();
+
+        $expression =
+            $prefix . 'p0.pl_place IS NOT NULL AND ' . $prefix . 'p0.pl_lati IS NULL OR ' .
+            $prefix . 'p1.pl_place IS NOT NULL AND ' . $prefix . 'p1.pl_lati IS NULL OR ' .
+            $prefix . 'p2.pl_place IS NOT NULL AND ' . $prefix . 'p2.pl_lati IS NULL OR ' .
+            $prefix . 'p3.pl_place IS NOT NULL AND ' . $prefix . 'p3.pl_lati IS NULL OR ' .
+            $prefix . 'p4.pl_place IS NOT NULL AND ' . $prefix . 'p4.pl_lati IS NULL OR ' .
+            $prefix . 'p5.pl_place IS NOT NULL AND ' . $prefix . 'p5.pl_lati IS NULL OR ' .
+            $prefix . 'p6.pl_place IS NOT NULL AND ' . $prefix . 'p6.pl_lati IS NULL OR ' .
+            $prefix . 'p7.pl_place IS NOT NULL AND ' . $prefix . 'p7.pl_lati IS NULL OR ' .
+            $prefix . 'p8.pl_place IS NOT NULL AND ' . $prefix . 'p8.pl_lati IS NULL OR ' .
+            $prefix . 'p9.pl_place IS NOT NULL AND ' . $prefix . 'p9.pl_lati IS NULL';
+
+        return DB::table('placelocation AS p0')
+            ->leftJoin('placelocation AS p1', 'p1.pl_parent_id', '=', 'p0.pl_id')
+            ->leftJoin('placelocation AS p2', 'p2.pl_parent_id', '=', 'p1.pl_id')
+            ->leftJoin('placelocation AS p3', 'p3.pl_parent_id', '=', 'p2.pl_id')
+            ->leftJoin('placelocation AS p4', 'p4.pl_parent_id', '=', 'p3.pl_id')
+            ->leftJoin('placelocation AS p5', 'p5.pl_parent_id', '=', 'p4.pl_id')
+            ->leftJoin('placelocation AS p6', 'p6.pl_parent_id', '=', 'p5.pl_id')
+            ->leftJoin('placelocation AS p7', 'p7.pl_parent_id', '=', 'p6.pl_id')
+            ->leftJoin('placelocation AS p8', 'p8.pl_parent_id', '=', 'p7.pl_id')
+            ->leftJoin('placelocation AS p9', 'p9.pl_parent_id', '=', 'p8.pl_id')
+            ->where('p0.pl_parent_id', '=', $parent_id)
+            ->select([DB::raw('COUNT(*) AS child_count'), DB::raw('SUM(' . $expression . ') AS no_coord')])
+            ->first();
     }
 
     /**
