@@ -32,7 +32,6 @@ use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
-use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Source;

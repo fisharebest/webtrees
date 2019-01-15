@@ -27,7 +27,12 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
+use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\JoinClause;
+use stdClass;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -108,11 +113,12 @@ class AdminMediaController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
+     * @param Request           $request
+     * @param DatatablesService $datatables_service
      *
      * @return JsonResponse
      */
-    public function data(Request $request): JsonResponse
+    public function data(Request $request, DatatablesService $datatables_service): JsonResponse
     {
         $files  = $request->get('files'); // local|external|unused
         $search = $request->get('search');
@@ -233,70 +239,37 @@ class AdminMediaController extends AbstractBaseController
                 break;
 
             case 'external':
-                // Filtered rows
-                $SELECT1 =
-                    "SELECT SQL_CALC_FOUND_ROWS multimedia_file_refn, m_id AS xref, descriptive_title, m_file AS gedcom_id, m_gedcom AS gedcom" .
-                    " FROM  `##media`" .
-                    " JOIN  `##media_file` USING (m_id, m_file)" .
-                    " WHERE (multimedia_file_refn LIKE 'http://%' OR multimedia_file_refn LIKE 'https://%')" .
-                    " AND   (multimedia_file_refn LIKE CONCAT('%', :search_1, '%') OR descriptive_title LIKE CONCAT('%', :search_2, '%'))";
-                $ARGS1 = [
-                    'search_1' => Database::escapeLike($search),
-                    'search_2' => Database::escapeLike($search),
-                ];
-                // Unfiltered rows
-                $SELECT2 =
-                    "SELECT COUNT(*)" .
-                    " FROM  `##media`" .
-                    " JOIN  `##media_file` USING (m_id, m_file)" .
-                    " WHERE (multimedia_file_refn LIKE 'http://%' OR multimedia_file_refn LIKE 'https://%')";
-                $ARGS2   = [];
+                $query = DB::table('media_file')
+                    ->join('media', function (JoinClause $join): void {
+                        $join
+                            ->on('media.m_file', '=', 'media_file.m_file')
+                            ->on('media.m_id', '=', 'media_file.m_id');
+                     })
+                    ->where(function (Builder $query): void {
+                        $query
+                            ->where('multimedia_file_refn', 'LIKE', 'http://%')
+                            ->orWhere('multimedia_file_refn', 'LIKE', 'https://%');
+                    })
+                    ->select(['media.*', 'media_file.multimedia_file_refn', 'media_file.descriptive_title']);
 
-                $order   = $request->get('order', []);
-                $SELECT1 .= " ORDER BY ";
-                if ($order) {
-                    foreach ($order as $key => $value) {
-                        if ($key > 0) {
-                            $SELECT1 .= ',';
-                        }
-                        // Columns in datatables are numbered from zero.
-                        // Columns in MySQL are numbered starting with one.
-                        switch ($value['dir']) {
-                            case 'asc':
-                                $SELECT1 .= ":col_" . $key . " ASC";
-                                break;
-                            case 'desc':
-                                $SELECT1 .= ":col_" . $key . " DESC";
-                                break;
-                        }
-                        $ARGS1['col_' . $key] = 1 + $value['column'];
-                    }
-                } else {
-                    $SELECT1 = " 1 ASC";
-                }
+                return $datatables_service->handle($request, $query, ['multimedia_file_refn', 'descriptive_title'], function (stdClass $row): array {
+                    $media = Media::rowMapper()($row);
 
-                if ($length > 0) {
-                    $SELECT1 .= " LIMIT :length OFFSET :start";
-                    $ARGS1['length'] = $length;
-                    $ARGS1['start']  = $start;
-                }
+                    $media_files = $media->mediaFiles();
+                    $media_files = array_filter($media_files, function(MediaFile $media_file) use ($row): bool {
+                        return $media_file->filename() == $row->multimedia_file_refn;
+                    });
+                    $media_files = array_map(function (MediaFile $media_file): string {
+                        return $media_file->displayImage(150, 150, '', []);
+                    }, $media_files);
+                    $media_files = implode('', $media_files);
 
-                $rows = Database::prepare($SELECT1)->execute($ARGS1)->fetchAll();
-
-                // Total filtered/unfiltered rows
-                $recordsFiltered = Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-                $recordsTotal    = Database::prepare($SELECT2)->execute($ARGS2)->fetchOne();
-
-                $data = [];
-                foreach ($rows as $row) {
-                    $media  = Media::getInstance($row->xref, Tree::findById((int) $row->gedcom_id), $row->gedcom);
-                    $data[] = [
-                        GedcomTag::getLabelValue('URL', $row->multimedia_file_refn),
-                        $media->displayImage(150, 150, '', []),
+                    return [
+                        $row->multimedia_file_refn,
+                        $media_files,
                         $this->mediaObjectInfo($media),
                     ];
-                }
-                break;
+                });
 
             case 'unused':
                 // Which trees use this media folder?
