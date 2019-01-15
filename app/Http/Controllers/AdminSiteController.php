@@ -257,7 +257,7 @@ class AdminSiteController extends AbstractBaseController
     {
         $query = $this->logsQuery($request);
 
-        return $datatables_service->handle($request, $query, [], function (stdClass $row): array {
+        return $datatables_service->handle($request, $query, [], [], function (stdClass $row): array {
             return [
                 $row->log_id,
                 $row->log_time,

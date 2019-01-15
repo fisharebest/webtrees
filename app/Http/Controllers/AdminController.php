@@ -290,7 +290,7 @@ class AdminController extends AbstractBaseController
             ];
         };
 
-        return $datatables_service->handle($request, $query, [], $callback);
+        return $datatables_service->handle($request, $query, [], [], $callback);
     }
 
     /**
@@ -460,7 +460,7 @@ class AdminController extends AbstractBaseController
             ->orderBy('media.m_id')
             ->select(['media.m_file', 'media.m_id', 'media.m_gedcom', 'individuals.i_id', 'individuals.i_gedcom']);
 
-        return $datatables_service->handle($request, $query, [], function (stdClass $datum) use ($ignore_facts): array {
+        return $datatables_service->handle($request, $query, [], [], function (stdClass $datum) use ($ignore_facts): array {
             $tree       = Tree::findById((int) $datum->m_file);
             $media      = Media::getInstance($datum->m_id, $tree, $datum->m_gedcom);
             $individual = Individual::getInstance($datum->i_id, $tree, $datum->i_gedcom);

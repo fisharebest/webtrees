@@ -22,7 +22,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use function strtr;
 
 /**
  * Paginate and search queries for datatables.
@@ -37,11 +36,12 @@ class DatatablesService
      * @param Request  $request        Includes the datatables request parameters.
      * @param Builder  $query          A query to fetch the unfiltered rows and columns.
      * @param string[] $search_columns The names of searchable columns.
+     * @param string[] $sort_columns   How to sort columns.
      * @param Closure  $callback       Converts a row-object to an array-of-columns.
      *
      * @return JsonResponse
      */
-    public function handle(Request $request, Builder $query, array $search_columns, Closure $callback): JsonResponse
+    public function handle(Request $request, Builder $query, array $search_columns, array $sort_columns, Closure $callback): JsonResponse
     {
         $search = $request->get('search', [])['value'] ?? '';
         $start  = (int) $request->get('start');
@@ -66,7 +66,10 @@ class DatatablesService
             foreach ($order as $value) {
                 // Columns in datatables are numbered from zero.
                 // Columns in MySQL are numbered starting with one.
-                $query->orderBy(DB::raw(1 + $value['column']), $value['dir']);
+                // If not specified, the Nth table column maps onto the Nth query column.
+                $sort_column = $sort_columns[$value['column']] ?? DB::raw(1 + $value['column']);
+
+                $query->orderBy($sort_column, $value['dir']);
             }
         } else {
             $query->orderBy(DB::raw(1));

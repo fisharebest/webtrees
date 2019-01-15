@@ -21,14 +21,12 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Services\DatatablesService;
-use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
@@ -145,86 +143,37 @@ class AdminMediaController extends AbstractBaseController
         // subfolders within $media_path
         $subfolders = $request->get('subfolders'); // include|exclude
 
+        $search_columns = ['multimedia_file_refn', 'descriptive_title'];
+
+        $sort_columns = [
+            0 => 'multimedia_file_refn',
+            2 => DB::raw('descriptive_title || multimedia_file_refn'),
+        ];
+
         switch ($files) {
             case 'local':
-                // Filtered rows
-                $SELECT1 =
-                    "SELECT SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM multimedia_file_refn) AS media_path, m_id, descriptive_title, m_file, m_gedcom, multimedia_file_refn" .
-                    " FROM  `##media`" .
-                    " JOIN  `##media_file` USING (m_file, m_id)" .
-                    " JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
-                    " JOIN  `##gedcom` USING (gedcom_id)" .
-                    " WHERE setting_value = :media_folder" .
-                    " AND   multimedia_file_refn LIKE CONCAT(:media_path_2, '%')" .
-                    " AND   (SUBSTRING_INDEX(multimedia_file_refn, '/', -1) LIKE CONCAT('%', :search_1, '%')" .
-                    "  OR   descriptive_title LIKE CONCAT('%', :search_2, '%'))" .
-                    " AND   multimedia_file_refn NOT LIKE 'http://%'" .
-                    " AND   multimedia_file_refn NOT LIKE 'https://%'";
-                $ARGS1 = [
-                    'media_path_1' => $media_path,
-                    'media_folder' => $media_folder,
-                    'media_path_2' => Database::escapeLike($media_path),
-                    'search_1'     => Database::escapeLike($search),
-                    'search_2'     => Database::escapeLike($search),
-                ];
-                // Unfiltered rows
-                $SELECT2 =
-                    "SELECT COUNT(*)" .
-                    " FROM  `##media`" .
-                    " JOIN  `##media_file` USING (m_file, m_id)" .
-                    " JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
-                    " WHERE setting_value = :media_folder" .
-                    " AND   multimedia_file_refn LIKE CONCAT(:media_path_3, '%')" .
-                    " AND   multimedia_file_refn NOT LIKE 'http://%'" .
-                    " AND   multimedia_file_refn NOT LIKE 'https://%'";
-                $ARGS2 = [
-                    'media_folder' => $media_folder,
-                    'media_path_3' => $media_path,
-                ];
+                $query = DB::table('media_file')
+                    ->join('media', function (JoinClause $join): void {
+                        $join
+                            ->on('media.m_file', '=', 'media_file.m_file')
+                            ->on('media.m_id', '=', 'media_file.m_id');
+                    })
+                    ->join('gedcom_setting', 'gedcom_id', '=', 'media.m_file')
+                    ->where('setting_name', '=', 'MEDIA_DIRECTORY')
+                    ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
+                    ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
+                    ->where('setting_value', '=', $media_folder)
+                    ->select(['media.*', 'multimedia_file_refn', 'descriptive_title']);
 
-                if ($subfolders == 'exclude') {
-                    $SELECT1               .= " AND multimedia_file_refn NOT LIKE CONCAT(:media_path_4, '%/%')";
-                    $ARGS1['media_path_4'] = Database::escapeLike($media_path);
-                    $SELECT2               .= " AND multimedia_file_refn NOT LIKE CONCAT(:media_path_4, '%/%')";
-                    $ARGS2['media_path_4'] = Database::escapeLike($media_path);
+                if ($media_path) {
+                    $query->where('multimedia_file_refn', 'LIKE', Database::escapeLike($media_path) . '%');
                 }
 
-                $order = $request->get('order', []);
-                $SELECT1 .= " ORDER BY ";
-                if ($order) {
-                    foreach ($order as $key => $value) {
-                        if ($key > 0) {
-                            $SELECT1 .= ',';
-                        }
-                        // Columns in datatables are numbered from zero.
-                        // Columns in MySQL are numbered starting with one.
-                        switch ($value['dir']) {
-                            case 'asc':
-                                $SELECT1 .= ":col_" . $key . " ASC";
-                                break;
-                            case 'desc':
-                                $SELECT1 .= ":col_" . $key . " DESC";
-                                break;
-                        }
-                        $ARGS1['col_' . $key] = 1 + $value['column'];
-                    }
-                } else {
-                    $SELECT1 = " 1 ASC";
+                if ($subfolders === 'exclude') {
+                    $query->where('multimedia_file_refn', 'NOT LIKE', Database::escapeLike($media_path) . '%/%');
                 }
 
-                if ($length > 0) {
-                    $SELECT1 .= " LIMIT :length OFFSET :start";
-                    $ARGS1['length'] = $length;
-                    $ARGS1['start']  = $start;
-                }
-
-                $rows = Database::prepare($SELECT1)->execute($ARGS1)->fetchAll();
-                // Total filtered/unfiltered rows
-                $recordsFiltered = Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-                $recordsTotal    = Database::prepare($SELECT2)->execute($ARGS2)->fetchOne();
-
-                $data = [];
-                foreach ($rows as $row) {
+                return $datatables_service->handle($request, $query, $search_columns, $sort_columns, function (stdClass $row): array {
                     /** @var Media $media */
                     $media = Media::rowMapper()($row);
 
@@ -237,13 +186,12 @@ class AdminMediaController extends AbstractBaseController
                         })
                         ->implode('');
 
-                    $data[] = [
-                        $this->mediaFileInfo($media_folder, $media_path, $row->media_path),
+                    return [
+                        $row->multimedia_file_refn,
                         $media_files,
                         $this->mediaObjectInfo($media),
                     ];
-                }
-                break;
+                });
 
             case 'external':
                 $query = DB::table('media_file')
@@ -257,9 +205,9 @@ class AdminMediaController extends AbstractBaseController
                             ->where('multimedia_file_refn', 'LIKE', 'http://%')
                             ->orWhere('multimedia_file_refn', 'LIKE', 'https://%');
                     })
-                    ->select(['media.*', 'media_file.multimedia_file_refn', 'media_file.descriptive_title']);
+                    ->select(['media.*', 'multimedia_file_refn', 'descriptive_title']);
 
-                return $datatables_service->handle($request, $query, ['multimedia_file_refn', 'descriptive_title'], function (stdClass $row): array {
+                return $datatables_service->handle($request, $query, $search_columns, $sort_columns, function (stdClass $row): array {
                     /** @var Media $media */
                     $media = Media::rowMapper()($row);
 

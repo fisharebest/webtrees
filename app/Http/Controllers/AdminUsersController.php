@@ -198,6 +198,7 @@ class AdminUsersController extends AbstractBaseController
             ]);
 
         $search_columns = ['user_name', 'real_name', 'email'];
+        $sort_columns   = [];
 
         $callback = function (stdClass $row) use ($installed_languages, $user): array {
             if ($row->user_id != $user->getUserId()) {
@@ -235,7 +236,7 @@ class AdminUsersController extends AbstractBaseController
             return $datum;
         };
 
-        return $datatables_service->handle($request, $query, $search_columns, $callback);
+        return $datatables_service->handle($request, $query, $search_columns, $sort_columns, $callback);
     }
 
     /**
