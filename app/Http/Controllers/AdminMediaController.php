@@ -149,7 +149,7 @@ class AdminMediaController extends AbstractBaseController
             case 'local':
                 // Filtered rows
                 $SELECT1 =
-                    "SELECT SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM multimedia_file_refn) AS media_path, m_id AS xref, descriptive_title, m_file AS gedcom_id, m_gedcom AS gedcom" .
+                    "SELECT SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM multimedia_file_refn) AS media_path, m_id, descriptive_title, m_file, m_gedcom, multimedia_file_refn" .
                     " FROM  `##media`" .
                     " JOIN  `##media_file` USING (m_file, m_id)" .
                     " JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
@@ -225,14 +225,21 @@ class AdminMediaController extends AbstractBaseController
 
                 $data = [];
                 foreach ($rows as $row) {
-                    $media       = Media::getInstance($row->xref, Tree::findById((int) $row->gedcom_id), $row->gedcom);
-                    $media_files = $media->mediaFiles();
-                    $media_files = array_map(function (MediaFile $media_file): string {
-                        return $media_file->displayImage(150, 150, '', []);
-                    }, $media_files);
-                    $data[]      = [
+                    /** @var Media $media */
+                    $media = Media::rowMapper()($row);
+
+                    $media_files = $media->mediaFiles()
+                        ->filter(function(MediaFile $media_file) use ($row): bool {
+                            return $media_file->filename() == $row->multimedia_file_refn;
+                        })
+                        ->map(function (MediaFile $media_file): string {
+                            return $media_file->displayImage(150, 150, '', []);
+                        })
+                        ->implode('');
+
+                    $data[] = [
                         $this->mediaFileInfo($media_folder, $media_path, $row->media_path),
-                        implode('', $media_files),
+                        $media_files,
                         $this->mediaObjectInfo($media),
                     ];
                 }
@@ -253,16 +260,17 @@ class AdminMediaController extends AbstractBaseController
                     ->select(['media.*', 'media_file.multimedia_file_refn', 'media_file.descriptive_title']);
 
                 return $datatables_service->handle($request, $query, ['multimedia_file_refn', 'descriptive_title'], function (stdClass $row): array {
+                    /** @var Media $media */
                     $media = Media::rowMapper()($row);
 
-                    $media_files = $media->mediaFiles();
-                    $media_files = array_filter($media_files, function(MediaFile $media_file) use ($row): bool {
-                        return $media_file->filename() == $row->multimedia_file_refn;
-                    });
-                    $media_files = array_map(function (MediaFile $media_file): string {
-                        return $media_file->displayImage(150, 150, '', []);
-                    }, $media_files);
-                    $media_files = implode('', $media_files);
+                    $media_files = $media->mediaFiles()
+                        ->filter(function(MediaFile $media_file) use ($row): bool {
+                            return $media_file->filename() == $row->multimedia_file_refn;
+                        })
+                        ->map(function (MediaFile $media_file): string {
+                            return $media_file->displayImage(150, 150, '', []);
+                        })
+                        ->implode('');
 
                     return [
                         $row->multimedia_file_refn,

@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees;
 use Closure;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Collection;
 use stdClass;
 
 /**
@@ -112,17 +113,14 @@ class Media extends GedcomRecord
     /**
      * Get the media files for this media object
      *
-     * @return MediaFile[]
+     * @return Collection|MediaFile[]
      */
-    public function mediaFiles(): array
+    public function mediaFiles(): Collection
     {
-        $media_files = [];
-
-        foreach ($this->facts(['FILE']) as $fact) {
-            $media_files[] = new MediaFile($fact->gedcom(), $this);
-        }
-
-        return $media_files;
+        return (new Collection($this->facts(['FILE'])))
+            ->map(function (Fact $fact): MediaFile {
+               return new MediaFile($fact->gedcom(), $this);
+            });
     }
 
     /**
