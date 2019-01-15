@@ -119,7 +119,7 @@ class Media extends GedcomRecord
     {
         return (new Collection($this->facts(['FILE'])))
             ->map(function (Fact $fact): MediaFile {
-               return new MediaFile($fact->gedcom(), $this);
+                return new MediaFile($fact->gedcom(), $this);
             });
     }
 
