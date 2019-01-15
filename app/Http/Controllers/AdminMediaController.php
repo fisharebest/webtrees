@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
@@ -30,6 +29,8 @@ use Fisharebest\Webtrees\Services\DatatablesService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use stdClass;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -58,16 +59,14 @@ class AdminMediaController extends AbstractBaseController
     {
         $files        = $request->get('files', 'local'); // local|unused|external
         $media_folder = $request->get('media_folder', '');
-        $media_path   = $request->get('media_path', '');
         $subfolders   = $request->get('subfolders', 'include'); // include/exclude
 
         $media_folders = $this->allMediaFolders();
-        $media_paths   = $this->mediaPaths($media_folder);
 
         // Preserve the pagination/filtering/sorting between requests, so that the
         // browser’s back button works. Pagination is dependent on the currently
         // selected folder.
-        $table_id = md5($files . $media_folder . $media_path . $subfolders);
+        $table_id = md5($files . $media_folder . $subfolders);
 
         $title = I18N::translate('Manage media');
 
@@ -75,8 +74,6 @@ class AdminMediaController extends AbstractBaseController
             'files'         => $files,
             'media_folder'  => $media_folder,
             'media_folders' => $media_folders,
-            'media_path'    => $media_path,
-            'media_paths'   => $media_paths,
             'subfolders'    => $subfolders,
             'table_id'      => $table_id,
             'title'         => $title,
@@ -94,7 +91,7 @@ class AdminMediaController extends AbstractBaseController
         $media_folder = $request->get('folder', '');
 
         // Only delete valid (i.e. unused) media files
-        $disk_files = $this->allDiskFiles($media_folder, '', 'include', '');
+        $disk_files = $this->allDiskFiles($media_folder, 'include');
 
         // Check file exists? Maybe it was already deleted or renamed.
         if (in_array($delete_file, $disk_files)) {
@@ -124,21 +121,8 @@ class AdminMediaController extends AbstractBaseController
         $start  = (int) $request->get('start');
         $length = (int) $request->get('length');
 
-        // family tree setting MEDIA_DIRECTORY
-        $media_folders = $this->allMediaFolders();
+        // Files within this folder
         $media_folder  = $request->get('media_folder', '');
-        // User folders may contain special characters. Restrict to actual folders.
-        if (!array_key_exists($media_folder, $media_folders)) {
-            $media_folder = reset($media_folders);
-        }
-
-        // prefix to filename
-        $media_paths = $this->mediaPaths($media_folder);
-        $media_path  = $request->get('media_path', '');
-        // User paths may contain special characters. Restrict to actual paths.
-        if (!array_key_exists($media_path, $media_paths)) {
-            $media_path = reset($media_paths);
-        }
 
         // subfolders within $media_path
         $subfolders = $request->get('subfolders'); // include|exclude
@@ -162,15 +146,12 @@ class AdminMediaController extends AbstractBaseController
                     ->where('setting_name', '=', 'MEDIA_DIRECTORY')
                     ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
                     ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
-                    ->where('setting_value', '=', $media_folder)
                     ->select(['media.*', 'multimedia_file_refn', 'descriptive_title']);
 
-                if ($media_path) {
-                    $query->where('multimedia_file_refn', 'LIKE', Database::escapeLike($media_path) . '%');
-                }
+                $query->where(DB::raw('setting_value || multimedia_file_refn'), 'LIKE', $media_folder . '%');
 
                 if ($subfolders === 'exclude') {
-                    $query->where('multimedia_file_refn', 'NOT LIKE', Database::escapeLike($media_path) . '%/%');
+                    $query->where(DB::raw('setting_value || multimedia_file_refn'), 'NOT LIKE', $media_folder . '%/%');
                 }
 
                 return $datatables_service->handle($request, $query, $search_columns, $sort_columns, function (stdClass $row): array {
@@ -228,18 +209,15 @@ class AdminMediaController extends AbstractBaseController
                 });
 
             case 'unused':
-                // Which trees use this media folder?
-                $media_trees = Database::prepare(
-                    "SELECT gedcom_name, gedcom_name" .
-                    " FROM `##gedcom`" .
-                    " JOIN `##gedcom_setting` USING (gedcom_id)" .
-                    " WHERE setting_name='MEDIA_DIRECTORY' AND setting_value = :media_folder AND gedcom_id > 0"
-                )->execute([
-                    'media_folder' => $media_folder,
-                ])->fetchAssoc();
+                // Which trees use which media folder?
+                $media_trees = DB::table('gedcom')
+                    ->join('gedcom_setting', 'gedcom_setting.gedcom_id', '=', 'gedcom.gedcom_id')
+                    ->where('setting_name', '=', 'MEDIA_DIRECTORY')
+                    ->where('gedcom.gedcom_id', '>', 0)
+                    ->pluck('setting_value', 'gedcom_name');
 
-                $disk_files = $this->allDiskFiles($media_folder, $media_path, $subfolders, $search);
-                $db_files   = $this->allMediaFiles($media_folder, $media_path, $search);
+                $disk_files = $this->allDiskFiles($media_folder, $subfolders);
+                $db_files   = $this->allMediaFiles($media_folder, $subfolders);
 
                 // All unused files
                 $unused_files = array_diff($disk_files, $db_files);
@@ -265,43 +243,37 @@ class AdminMediaController extends AbstractBaseController
 
                 $data = [];
                 foreach ($unused_files as $unused_file) {
-                    $imgsize = getimagesize(WT_DATA_DIR . $media_folder . $media_path . $unused_file);
+                    $imgsize = getimagesize(WT_DATA_DIR . $media_folder . $unused_file);
                     // We can’t create a URL (not in public_html) or use the media firewall (no such object)
                     if ($imgsize === false) {
                         $img = '-';
                     } else {
                         $url = route('unused-media-thumbnail', [
                             'folder' => $media_folder,
-                            'file'   => $media_path . $unused_file,
+                            'file'   => $unused_file,
                             'w'      => 100,
                             'h'      => 100,
                         ]);
                         $img = '<img src="' . e($url) . '">';
                     }
 
-                    // Is there a pending record for this file?
-                    $exists_pending = Database::prepare(
-                        "SELECT 1 FROM `##change` WHERE status='pending' AND new_gedcom LIKE CONCAT('%\n1 FILE ', :unused_file, '\n%')"
-                    )->execute([
-                        'unused_file' => Database::escapeLike($unused_file),
-                    ])->fetchOne();
-
                     // Form to create new media object in each tree
                     $create_form = '';
-                    if (!$exists_pending) {
-                        foreach ($media_trees as $media_tree) {
+                    foreach ($media_trees as $media_tree => $media_directory) {
+                        if (Str::startsWith($media_folder . $unused_file, $media_directory)) {
+                            $tmp = substr($media_folder . $unused_file, strlen($media_directory));
                             $create_form .=
-                                '<p><a href="#" data-toggle="modal" data-target="#modal-create-media-from-file" data-file="' . e($unused_file) . '" data-tree="' . e($media_tree) . '" onclick="document.getElementById(\'file\').value=this.dataset.file; document.getElementById(\'ged\').value=this.dataset.tree;">' . I18N::translate('Create') . '</a> — ' . e($media_tree) . '<p>';
+                                '<p><a href="#" data-toggle="modal" data-target="#modal-create-media-from-file" data-file="' . e($tmp) . '" data-tree="' . e($media_tree) . '" onclick="document.getElementById(\'file\').value=this.dataset.file; document.getElementById(\'ged\').value=this.dataset.tree;">' . I18N::translate('Create') . '</a> — ' . e($media_tree) . '<p>';
                         }
                     }
 
                     $delete_link = '<p><a data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($unused_file)) . '" data-url="' . e(route('admin-media-delete', [
-                            'file'   => $media_path . $unused_file,
+                            'file'   => $unused_file,
                             'folder' => $media_folder,
                         ])) . '" onclick="if (confirm(this.dataset.confirm)) jQuery.post(this.dataset.url, function (){location.reload();})" href="#">' . I18N::translate('Delete') . '</a></p>';
 
                     $data[] = [
-                        $this->mediaFileInfo($media_folder, $media_path, $unused_file) . $delete_link,
+                        $this->mediaFileInfo($media_folder, $unused_file) . $delete_link,
                         $img,
                         $create_form,
                     ];
@@ -326,7 +298,7 @@ class AdminMediaController extends AbstractBaseController
      */
     public function upload(): Response
     {
-        $media_folders = $this->folderListAll();
+        $media_folders = $this->allMediaFolders();
 
         $filesize = ini_get('upload_max_filesize');
         if (empty($filesize)) {
@@ -350,7 +322,7 @@ class AdminMediaController extends AbstractBaseController
      */
     public function uploadAction(Request $request): RedirectResponse
     {
-        $all_folders = $this->folderListAll();
+        $all_folders = $this->allMediaFolders();
 
         for ($i = 1; $i < self::MAX_UPLOAD_FILES; $i++) {
             if (!empty($_FILES['mediafile' . $i]['name'])) {
@@ -363,7 +335,7 @@ class AdminMediaController extends AbstractBaseController
                 }
 
                 // Validate the folder
-                if (!in_array($folder, $all_folders)) {
+                if (!$all_folders->contains($folder)) {
                     break;
                 }
 
@@ -425,71 +397,31 @@ class AdminMediaController extends AbstractBaseController
     /**
      * Generate a list of all folders from all the trees.
      *
-     * @return string[]
+     * @return Collection|string[]
      */
-    private function folderListAll(): array
+    private function allMediaFolders(): Collection
     {
-        $folders = Database::prepare(
-            "SELECT CONCAT(setting_value, LEFT(multimedia_file_refn, CHAR_LENGTH(multimedia_file_refn) - CHAR_LENGTH(SUBSTRING_INDEX(multimedia_file_refn, '/', -1))))" .
-            " FROM  `##gedcom_setting` AS gs" .
-            " JOIN  `##media_file` AS m ON m.m_file = gs.gedcom_id AND gs.setting_name = 'MEDIA_DIRECTORY'" .
-            " WHERE multimedia_file_refn NOT LIKE 'http://%'" .
-            " AND   multimedia_file_refn NOT LIKE 'https://%'" .
-            " AND   gs.gedcom_id > 0" .
-            " GROUP BY 1" .
-            " UNION" .
-            " SELECT setting_value FROM `##gedcom_setting` WHERE setting_name = 'MEDIA_DIRECTORY'" .
-            " ORDER BY 1"
-        )->execute()->fetchOneColumn();
+        $base_folders = DB::table('gedcom_setting')
+            ->where('setting_name', '=', 'MEDIA_DIRECTORY')
+            ->select(DB::raw("setting_value || 'dummy.jpeg' AS path"));
 
-        return $folders;
-    }
-
-    /**
-     * A unique list of media folders, from all trees.
-     *
-     * @return string[]
-     */
-    private function allMediaFolders(): array
-    {
-        return Database::prepare(
-            "SELECT setting_value, setting_value" .
-            " FROM `##gedcom_setting`" .
-            " WHERE setting_name='MEDIA_DIRECTORY' AND gedcom_id > 0" .
-            " GROUP BY 1" .
-            " ORDER BY 1"
-        )->execute([])->fetchAssoc();
-    }
-
-    /**
-     * Generate a list of media paths (within a media folder) used by all media objects.
-     *
-     * @param string $media_folder
-     *
-     * @return string[]
-     */
-    private function mediaPaths(string $media_folder): array
-    {
-        $media_paths = Database::prepare(
-            "SELECT LEFT(multimedia_file_refn, CHAR_LENGTH(multimedia_file_refn) - CHAR_LENGTH(SUBSTRING_INDEX(multimedia_file_refn, '/', -1))) AS media_path" .
-            " FROM  `##media`" .
-            " JOIN  `##media_file` USING (m_file, m_id)" .
-            " JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
-            " WHERE setting_value = :media_folder" .
-            " AND   multimedia_file_refn NOT LIKE 'http://%'" .
-            " AND   multimedia_file_refn NOT LIKE 'https://%'" .
-            " GROUP BY 1" .
-            " ORDER BY 1"
-        )->execute([
-            'media_folder' => $media_folder,
-        ])->fetchOneColumn();
-
-        if (empty($media_paths) || $media_paths[0] !== '') {
-            // Always include a (possibly empty) top-level folder
-            array_unshift($media_paths, '');
-        }
-
-        return array_combine($media_paths, $media_paths);
+        return DB::table('media_file')
+            ->join('gedcom_setting', 'gedcom_id', '=', 'm_file')
+            ->where('setting_name', '=', 'MEDIA_DIRECTORY')
+            ->where('multimedia_file_refn', 'LIKE', '%/%')
+            ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
+            ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
+            ->select(DB::raw('setting_value || multimedia_file_refn AS path'))
+            ->union($base_folders)
+            ->pluck('path')
+            ->map(function(string $path): string {
+                return dirname($path) . '/';
+            })
+            ->unique()
+            ->sort()
+            ->mapWithKeys(function (string $path): array {
+                return [$path => $path];
+            });
     }
 
     /**
@@ -497,11 +429,10 @@ class AdminMediaController extends AbstractBaseController
      *
      * @param string $dir
      * @param bool   $recursive
-     * @param string $filter
      *
      * @return string[]
      */
-    private function scanFolders(string $dir, bool $recursive, string $filter): array
+    private function scanFolders(string $dir, bool $recursive): array
     {
         $files = [];
 
@@ -511,11 +442,11 @@ class AdminMediaController extends AbstractBaseController
                 if (is_dir($dir . $path)) {
                     // What if there are user-defined subfolders “thumbs” or “watermarks”?
                     if ($path != '.' && $path != '..' && $path != 'thumbs' && $path != 'watermark' && $recursive) {
-                        foreach ($this->scanFolders($dir . $path . '/', $recursive, $filter) as $subpath) {
+                        foreach ($this->scanFolders($dir . $path . '/', $recursive) as $subpath) {
                             $files[] = $path . '/' . $subpath;
                         }
                     }
-                } elseif (!$filter || stripos($path, $filter) !== false) {
+                } else {
                     $files[] = $path;
                 }
             }
@@ -528,65 +459,57 @@ class AdminMediaController extends AbstractBaseController
      * Fetch a list of all files on disk
      *
      * @param string $media_folder Location of root folder
-     * @param string $media_path   Any subfolder
      * @param string $subfolders   Include or exclude subfolders
-     * @param string $filter       Filter files whose name contains this test
      *
      * @return string[]
      */
-    private function allDiskFiles(string $media_folder, string $media_path, string $subfolders, string $filter): array
+    private function allDiskFiles(string $media_folder, string $subfolders): array
     {
-        return $this->scanFolders(WT_DATA_DIR . $media_folder . $media_path, $subfolders == 'include', $filter);
+        return $this->scanFolders(WT_DATA_DIR . $media_folder, $subfolders == 'include');
     }
 
     /**
      * Fetch a list of all files on in the database.
      *
      * @param string $media_folder
-     * @param string $media_path
-     * @param string $filter
+     * @param string $subfolders
      *
-     * @return string[]
+     * @return Collection|string[]
      */
-    private function allMediaFiles(string $media_folder, string $media_path, string $filter): array
+    private function allMediaFiles(string $media_folder, string $subfolders): array
     {
-        return Database::prepare(
-            "SELECT SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM multimedia_file_refn) AS media_path, 'OBJE' AS type, descriptive_title, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, multimedia_file_refn" .
-            " FROM  `##media`" .
-            " JOIN  `##media_file` USING (m_file, m_id)" .
-            " JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
-            " JOIN  `##gedcom`         USING (gedcom_id)" .
-            " WHERE setting_value = :media_folder" .
-            " AND   multimedia_file_refn LIKE CONCAT(:media_path_2, '%')" .
-            " AND   (SUBSTRING_INDEX(multimedia_file_refn, '/', -1) LIKE CONCAT('%', :filter_1, '%')" .
-            "  OR   descriptive_title LIKE CONCAT('%', :filter_2, '%'))" .
-            " AND   multimedia_file_refn NOT LIKE 'http://%'" .
-            " AND   multimedia_file_refn NOT LIKE 'https://%'"
-        )->execute([
-            'media_path_1' => $media_path,
-            'media_folder' => $media_folder,
-            'media_path_2' => Database::escapeLike($media_path),
-            'filter_1'     => Database::escapeLike($filter),
-            'filter_2'     => Database::escapeLike($filter),
-        ])->fetchOneColumn();
+        $query = DB::table('media_file')
+            ->join('gedcom_setting', 'gedcom_id', '=', 'm_file')
+            ->where('setting_name', '=', 'MEDIA_DIRECTORY')
+            ->where('multimedia_file_refn', 'LIKE', '%/%')
+            ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
+            ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
+            ->select(DB::raw('setting_value || multimedia_file_refn AS path'))
+            ->having('path', 'LIKE', $media_folder . '%')
+            ->orderBy('path');
+
+        if ($subfolders === 'exclude') {
+            $query->having('path', 'NOT LIKE', $media_folder . '%/%');
+        }
+
+        return $query->pluck('path')->all();
     }
 
     /**
      * Generate some useful information and links about a media file.
      *
      * @param string $media_folder
-     * @param string $media_path
      * @param string $file
      *
      * @return string
      */
-    private function mediaFileInfo(string $media_folder, string $media_path, string $file): string
+    private function mediaFileInfo(string $media_folder, string $file): string
     {
         $html = '<dl>';
         $html .= '<dt>' . I18N::translate('Filename') . '</dt>';
         $html .= '<dd>' . e($file) . '</dd>';
 
-        $full_path = WT_DATA_DIR . $media_folder . $media_path . $file;
+        $full_path = WT_DATA_DIR . $media_folder . $file;
         try {
             $size = filesize($full_path);
             $size = intdiv($size + 1023, 1024); // Round up to next KB

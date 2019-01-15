@@ -44,13 +44,6 @@
                             <?php endif ?>
                         </div>
 
-                        <?php if (count($media_paths) > 1) : ?>
-                            <?= Bootstrap4::select($media_paths, $media_path, ['name' => 'media_path', 'onchange' => 'this.form.submit();']) ?>
-                        <?php else : ?>
-                            <?= e($media_path) ?>
-                            <input type="hidden" name="media_path" value="<?= e($media_path) ?>">
-                        <?php endif ?>
-
                         <label>
                             <input type="radio" name="subfolders" value="include" <?= $subfolders === 'include' ? 'checked' : '' ?> onchange="this.form.submit();">
                             <?= I18N::translate('Include subfolders') ?>
@@ -64,7 +57,6 @@
                     <?php elseif ($files === 'external') : ?>
                         <?= I18N::translate('External media files have a URL instead of a filename.') ?>
                         <input type="hidden" name="media_folder" value="<?= e($media_folder) ?>">
-                        <input type="hidden" name="media_path" value="<?= e($media_path) ?>">
 
                     <?php endif ?>
                 </td>
@@ -75,7 +67,7 @@
 <br>
 <br>
 
-<table class="table table-bordered table-sm" id="media-table-<?= e($table_id) ?>" data-ajax="<?= e(route('admin-media-data', ['files' => $files, 'media_folder' => $media_folder, 'media_path' => $media_path, 'subfolders' => $subfolders])) ?>">
+<table class="table table-bordered table-sm" id="media-table-<?= e($table_id) ?>" data-ajax="<?= e(route('admin-media-data', ['files' => $files, 'media_folder' => $media_folder, 'subfolders' => $subfolders])) ?>">
     <thead>
         <tr>
             <th><?= I18N::translate('Media file') ?></th>
