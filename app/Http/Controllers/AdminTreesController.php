@@ -1983,7 +1983,7 @@ class AdminTreesController extends AbstractBaseController
         $sources = DB::table('sources')
             ->where('s_file', '=', $tree->id())
             ->groupBy('s_name')
-            ->having(DB::raw('COUNT(s_id)'),  '>', 1)
+            ->having(DB::raw('COUNT(s_id)'), '>', 1)
             ->select([DB::raw('GROUP_CONCAT(s_id) AS xrefs')])
             ->pluck('xrefs')
             ->map(function (string $xrefs) use ($tree): array {
@@ -2008,7 +2008,7 @@ class AdminTreesController extends AbstractBaseController
             ->groupBy('d_fact')
             ->groupBy('n_type')
             ->groupBy('n_full')
-            ->having(DB::raw('COUNT(DISTINCT d_gid)'),  '>', 1)
+            ->having(DB::raw('COUNT(DISTINCT d_gid)'), '>', 1)
             ->select([DB::raw('GROUP_CONCAT(d_gid) AS xrefs')])
             ->pluck('xrefs')
             ->map(function (string $xrefs) use ($tree): array {
@@ -2022,7 +2022,7 @@ class AdminTreesController extends AbstractBaseController
             ->where('f_file', '=', $tree->id())
             ->groupBy(DB::raw('LEAST(f_husb, f_wife)'))
             ->groupBy(DB::raw('GREATEST(f_husb, f_wife)'))
-            ->having(DB::raw('COUNT(f_id)'),  '>', 1)
+            ->having(DB::raw('COUNT(f_id)'), '>', 1)
             ->select([DB::raw('GROUP_CONCAT(f_id) AS xrefs')])
             ->pluck('xrefs')
             ->map(function (string $xrefs) use ($tree): array {
@@ -2036,7 +2036,7 @@ class AdminTreesController extends AbstractBaseController
             ->where('m_file', '=', $tree->id())
             ->where('descriptive_title', '<>', '')
             ->groupBy('descriptive_title')
-            ->having(DB::raw('COUNT(m_id)'),  '>', 1)
+            ->having(DB::raw('COUNT(m_id)'), '>', 1)
             ->select([DB::raw('GROUP_CONCAT(m_id) AS xrefs')])
             ->pluck('xrefs')
             ->map(function (string $xrefs) use ($tree): array {

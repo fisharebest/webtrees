@@ -159,7 +159,7 @@ class AdminMediaController extends AbstractBaseController
                     $media = Media::rowMapper()($row);
 
                     $media_files = $media->mediaFiles()
-                        ->filter(function(MediaFile $media_file) use ($row): bool {
+                        ->filter(function (MediaFile $media_file) use ($row): bool {
                             return $media_file->filename() == $row->multimedia_file_refn;
                         })
                         ->map(function (MediaFile $media_file): string {
@@ -180,7 +180,7 @@ class AdminMediaController extends AbstractBaseController
                         $join
                             ->on('media.m_file', '=', 'media_file.m_file')
                             ->on('media.m_id', '=', 'media_file.m_id');
-                     })
+                    })
                     ->where(function (Builder $query): void {
                         $query
                             ->where('multimedia_file_refn', 'LIKE', 'http://%')
@@ -193,7 +193,7 @@ class AdminMediaController extends AbstractBaseController
                     $media = Media::rowMapper()($row);
 
                     $media_files = $media->mediaFiles()
-                        ->filter(function(MediaFile $media_file) use ($row): bool {
+                        ->filter(function (MediaFile $media_file) use ($row): bool {
                             return $media_file->filename() == $row->multimedia_file_refn;
                         })
                         ->map(function (MediaFile $media_file): string {
@@ -414,7 +414,7 @@ class AdminMediaController extends AbstractBaseController
             ->select(DB::raw('setting_value || multimedia_file_refn AS path'))
             ->union($base_folders)
             ->pluck('path')
-            ->map(function(string $path): string {
+            ->map(function (string $path): string {
                 return dirname($path) . '/';
             })
             ->unique()
