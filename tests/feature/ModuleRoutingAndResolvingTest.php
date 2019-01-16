@@ -26,8 +26,9 @@ use Symfony\Component\HttpFoundation\Response;
  * Test the module controller
  *
  * @covers \Fisharebest\Webtrees\Http\Controllers\ModuleController
+ * @covers \Fisharebest\Webtrees\Resolver
  */
-class ModuleRoutingTest extends \Fisharebest\Webtrees\TestCase
+class ModuleRoutingAndResolvingTest extends \Fisharebest\Webtrees\TestCase
 {
     protected static $uses_database = true;
 
