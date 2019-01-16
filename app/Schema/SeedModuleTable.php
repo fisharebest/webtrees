@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Schema;
 
 use Fisharebest\Webtrees\Module;
-use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  * Populate the module table
