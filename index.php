@@ -77,7 +77,6 @@ try {
     // No config file? Run the setup wizard
     if (!file_exists(Webtrees::CONFIG_FILE)) {
         define('WT_DATA_DIR', 'data/');
-        $request    = Request::createFromGlobals();
         $controller = new SetupController();
         $response   = $controller->setup($request);
         $response->prepare($request)->send();
@@ -175,10 +174,6 @@ if (WT_TIMESTAMP - Session::get('activity_time') >= 60) {
 
 DebugBar::startMeasure('routing');
 
-// The HTTP request.
-$request = Request::createFromGlobals();
-$route   = $request->get('route');
-
 try {
     // Most requests will need the current tree and user.
     $tree = Tree::findByName($request->get('ged')) ?? null;
@@ -195,7 +190,8 @@ try {
     // Most layouts will require a tree for the page header/footer
     View::share('tree', $tree);
 
-    // Load the routing table.
+    // Load the route and routing table.
+    $route  = $request->get('route');
     $routes = require 'routes/web.php';
 
     // Find the controller and action for the selected route
@@ -206,6 +202,7 @@ try {
     // Set up dependency injection for the controllers.
     $app = new Application();
     $app->instance(Application::class, $app);
+    $app->instance(Request::class, $request);
     $app->instance(Tree::class, $tree);
     $app->instance(User::class, Auth::user());
     $app->instance(LocaleInterface::class, WebtreesLocale::create(WT_LOCALE));
@@ -274,8 +271,6 @@ try {
             return $app->make($middleware)->handle($request, $next);
         };
     }, function (Request $request) use ($controller, $action, $app): Response {
-        $app->instance(Request::class, $request);
-
         return $app->dispatch($controller, $action);
     });
 
