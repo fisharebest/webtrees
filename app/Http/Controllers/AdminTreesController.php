@@ -52,6 +52,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Throwable;
+use const WT_DATA_DIR;
 
 /**
  * Controller for tree administration.
@@ -588,6 +589,7 @@ class AdminTreesController extends AbstractBaseController
         $title = I18N::translate('Import a GEDCOM file') . ' — ' . e($tree->title());
 
         return $this->viewResponse('admin/trees-import', [
+            'data_folder'         => WT_DATA_DIR,
             'default_gedcom_file' => $default_gedcom_file,
             'gedcom_files'        => $gedcom_files,
             'gedcom_media_path'   => $gedcom_media_path,
@@ -1030,6 +1032,7 @@ class AdminTreesController extends AbstractBaseController
             'all_sour_facts'           => $all_sour_facts,
             'all_surname_traditions'   => $all_surname_traditions,
             'calendar_formats'         => $calendar_formats,
+            'data_folder'              => WT_DATA_DIR,
             'formats'                  => $formats,
             'french_calendar_end'      => $french_calendar_end,
             'french_calendar_start'    => $french_calendar_start,

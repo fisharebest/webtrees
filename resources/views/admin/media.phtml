@@ -37,9 +37,9 @@
                     <?php if ($files === 'local' || $files === 'unused') : ?>
                         <div dir="ltr" class="form-inline">
                             <?php if (count($media_folders) > 1) : ?>
-                                <?= WT_DATA_DIR . Bootstrap4::select($media_folders, $media_folder, ['name' => 'media_folder', 'onchange' => 'this.form.submit();']) ?>
+                                <?= e($data_folder) .  Bootstrap4::select($media_folders, $media_folder, ['name' => 'media_folder', 'onchange' => 'this.form.submit();']) ?>
                             <?php else : ?>
-                                <?= WT_DATA_DIR . e($media_folder) ?>
+                                <?= e($data_folder) . e($media_folder) ?>
                                 <input type="hidden" name="media_folder" value="<?= e($media_folder) ?>">
                             <?php endif ?>
                         </div>

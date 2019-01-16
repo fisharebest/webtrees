@@ -45,16 +45,21 @@ class Housekeeping implements MiddlewareInterface
     // Run the cleanup every 100 requests.
     private const PROBABILITY = 100;
 
+    /** @var Filesystem */
+    private $filesystem;
+
     /** @var HousekeepingService */
     private $housekeeping_service;
 
     /**
      * Housekeeping constructor.
      *
+     * @param Filesystem          $filesystem
      * @param HousekeepingService $housekeeping_service
      */
-    public function __construct(HousekeepingService $housekeeping_service)
+    public function __construct(Filesystem $filesystem, HousekeepingService $housekeeping_service)
     {
+        $this->filesystem           = $filesystem;
         $this->housekeeping_service = $housekeeping_service;
     }
 
@@ -84,11 +89,9 @@ class Housekeeping implements MiddlewareInterface
      */
     private function runHousekeeping()
     {
-        $filesystem = new Filesystem(new Local(WT_DATA_DIR));
+        $this->housekeeping_service->deleteOldCacheFiles($this->filesystem, 'cache', self::MAX_CACHE_AGE);
 
-        $this->housekeeping_service->deleteOldCacheFiles($filesystem, 'cache', self::MAX_CACHE_AGE);
-
-        $this->housekeeping_service->deleteOldCacheFiles($filesystem, 'thumbnail-cache', self::MAX_THUMBNAIL_AGE);
+        $this->housekeeping_service->deleteOldCacheFiles($this->filesystem, 'thumbnail-cache', self::MAX_THUMBNAIL_AGE);
 
         $this->housekeeping_service->deleteOldLogs(self::MAX_LOG_AGE);
 

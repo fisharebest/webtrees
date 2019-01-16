@@ -32,6 +32,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use const WT_DATA_DIR;
 
 /**
  * Controller for maintaining geographic data.
@@ -299,9 +300,10 @@ class AdminLocationController extends AbstractBaseController
         asort($files);
 
         return $this->viewResponse('admin/map-import-form', [
-            'title'     => I18N::translate('Import geographic data'),
-            'parent_id' => $parent_id,
-            'files'     => $files,
+            'data_folder' => WT_DATA_DIR,
+            'title'       => I18N::translate('Import geographic data'),
+            'parent_id'   => $parent_id,
+            'files'       => $files,
         ]);
     }
 

@@ -71,6 +71,7 @@ class AdminMediaController extends AbstractBaseController
         $title = I18N::translate('Manage media');
 
         return $this->viewResponse('admin/media', [
+            'data_folder'   => WT_DATA_DIR,
             'files'         => $files,
             'media_folder'  => $media_folder,
             'media_folders' => $media_folders,
