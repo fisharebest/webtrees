@@ -352,7 +352,7 @@ class SearchService
     }
 
     /**
-     * @param Tree     $tree
+     * @param Tree[]   $trees
      * @param string[] $fields
      * @param string[] $modifiers
      *
