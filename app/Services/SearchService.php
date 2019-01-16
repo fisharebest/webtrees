@@ -787,7 +787,7 @@ class SearchService
 
         // Nothing to search for? Return nothing.
         if ($givn_sdx === '' && $surn_sdx === '' && $plac_sdx === '') {
-            return new Collection;
+            return new Collection();
         }
 
         $query = DB::table('individuals')

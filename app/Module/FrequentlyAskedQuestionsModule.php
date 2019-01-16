@@ -233,14 +233,14 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
             DB::table('block')
                 ->where('block_id', '=', $block_id)
                 ->update([
-                'block_order' => $swap_block->block_order,
-            ]);
+                    'block_order' => $swap_block->block_order,
+                ]);
 
             DB::table('block')
                 ->where('block_id', '=', $swap_block->block_id)
                 ->update([
-                'block_order' => $block_order,
-            ]);
+                    'block_order' => $block_order,
+                ]);
         }
 
         $url = route('module', [

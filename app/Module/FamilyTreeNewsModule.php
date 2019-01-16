@@ -189,9 +189,9 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
                 ->where('news_id', '=', $news_id)
                 ->where('gedcom_id', '=', $tree->id())
                 ->update([
-                'body'    => $body,
-                'subject' => $subject,
-            ]);
+                    'body'    => $body,
+                    'subject' => $subject,
+                ]);
         } else {
             DB::table('news')->insert([
                 'body'      => $body,

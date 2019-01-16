@@ -454,7 +454,7 @@ class AdminController extends AbstractBaseController
                     ->on('individuals.i_file', '=', 'link.l_file')
                     ->on('individuals.i_id', '=', 'link.l_from');
             })
-            ->where('i_gedcom', 'LIKE', DB::raw("CONCAT('%\n1 OBJE @', ". $prefix ."media.m_id, '@%')"))
+            ->where('i_gedcom', 'LIKE', DB::raw("CONCAT('%\n1 OBJE @', " . $prefix . "media.m_id, '@%')"))
             ->orderby('individuals.i_file')
             ->orderBy('individuals.i_id')
             ->orderBy('media.m_id')

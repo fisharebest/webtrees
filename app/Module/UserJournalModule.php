@@ -188,9 +188,9 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
                 ->where('news_id', '=', $news_id)
                 ->where('user_id', '=', Auth::id())
                 ->update([
-                'body'    => $body,
-                'subject' => $subject,
-            ]);
+                    'body'    => $body,
+                    'subject' => $subject,
+                ]);
         } else {
             DB::table('news')->insert([
                 'body'    => $body,
