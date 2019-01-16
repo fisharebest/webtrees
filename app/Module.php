@@ -414,7 +414,7 @@ class Module
                     DB::raw(DB::connection()->getPdo()->quote($module->getName())),
                     'gedcom_id',
                     DB::raw(DB::connection()->getPdo()->quote($component)),
-                    DB::raw(DB::connection()->getPdo()->quote($module->defaultAccessLevel())),
+                    $module->defaultAccessLevel(),
                 ])->from('gedcom');
             }
         );

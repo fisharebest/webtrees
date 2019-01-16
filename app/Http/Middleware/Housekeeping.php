@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Closure;
 use Fisharebest\Webtrees\Services\HousekeepingService;
-use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
