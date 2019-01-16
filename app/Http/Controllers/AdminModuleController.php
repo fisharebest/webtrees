@@ -39,7 +39,7 @@ class AdminModuleController extends AdminController
      */
     public function action(Request $request, User $user): Response
     {
-        $module_name = $request->get('module');
+        $module_name = $request->get('module', '');
 
         // Check that the module is enabled.
         // The module itself will need to check any tree-level access,
@@ -48,7 +48,7 @@ class AdminModuleController extends AdminController
 
         // We'll call a function such as Module::getFooBarAction()
         $verb   = strtolower($request->getMethod());
-        $action = $request->get('action');
+        $action = $request->get('action', '');
         $method = $verb . $action . 'Action';
 
         // Actions with "Admin" in the name are for administrators only.
