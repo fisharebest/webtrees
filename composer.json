@@ -61,6 +61,7 @@
         "webuni/commonmark-table-extension": "~0.9"
     },
     "require-dev": {
+        "ext-pdo_sqlite": "*",
         "maximebf/debugbar": "*",
         "mockery/mockery": "*",
         "phpunit/phpunit": "*",
