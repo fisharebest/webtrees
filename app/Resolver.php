@@ -29,7 +29,7 @@ use function is_string;
  */
 class Resolver
 {
-    /** @var object[] */
+    /** @var string[]|object[] */
     private $bindings = [];
 
     /**
