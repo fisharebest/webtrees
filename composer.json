@@ -42,6 +42,7 @@
         "fisharebest/ext-calendar": "~2.5",
         "fisharebest/localization": "~1.12",
         "guzzlehttp/guzzle": "~6.0",
+        "illuminate/container": "^5.7.17",
         "illuminate/database": "^5.7.17",
         "illuminate/support": "^5.7.17",
         "league/commonmark": "~0.18",

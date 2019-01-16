@@ -843,8 +843,8 @@
     },
     {
         "name": "illuminate/container",
-        "version": "5.7.19",
-        "version_normalized": "5.7.19.0",
+        "version": "v5.7.21",
+        "version_normalized": "5.7.21.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/container.git",
@@ -890,17 +890,17 @@
     },
     {
         "name": "illuminate/contracts",
-        "version": "5.7.19",
-        "version_normalized": "5.7.19.0",
+        "version": "v5.7.21",
+        "version_normalized": "5.7.21.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/contracts.git",
-            "reference": "758927e5e925c1d442a1faaa1356675ceba0194c"
+            "reference": "3d67e2d7c9087ae3a2a53d9b102697e5f482d6d0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/contracts/zipball/758927e5e925c1d442a1faaa1356675ceba0194c",
-            "reference": "758927e5e925c1d442a1faaa1356675ceba0194c",
+            "url": "https://api.github.com/repos/illuminate/contracts/zipball/3d67e2d7c9087ae3a2a53d9b102697e5f482d6d0",
+            "reference": "3d67e2d7c9087ae3a2a53d9b102697e5f482d6d0",
             "shasum": ""
         },
         "require": {
@@ -908,7 +908,7 @@
             "psr/container": "^1.0",
             "psr/simple-cache": "^1.0"
         },
-        "time": "2018-11-15T13:49:08+00:00",
+        "time": "2019-01-09T10:34:49+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -936,17 +936,17 @@
     },
     {
         "name": "illuminate/database",
-        "version": "5.7.19",
-        "version_normalized": "5.7.19.0",
+        "version": "v5.7.21",
+        "version_normalized": "5.7.21.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/database.git",
-            "reference": "8df1a4ca7f66e9ae9462978aa6de77e1c4cc839f"
+            "reference": "a7580cb43c844d6958ede62b3587fb3b615b8fe5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/database/zipball/8df1a4ca7f66e9ae9462978aa6de77e1c4cc839f",
-            "reference": "8df1a4ca7f66e9ae9462978aa6de77e1c4cc839f",
+            "url": "https://api.github.com/repos/illuminate/database/zipball/a7580cb43c844d6958ede62b3587fb3b615b8fe5",
+            "reference": "a7580cb43c844d6958ede62b3587fb3b615b8fe5",
             "shasum": ""
         },
         "require": {
@@ -963,7 +963,7 @@
             "illuminate/filesystem": "Required to use the migrations (5.7.*).",
             "illuminate/pagination": "Required to paginate the result set (5.7.*)."
         },
-        "time": "2018-12-18T13:43:55+00:00",
+        "time": "2019-01-10T14:33:17+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -997,17 +997,17 @@
     },
     {
         "name": "illuminate/support",
-        "version": "5.7.19",
-        "version_normalized": "5.7.19.0",
+        "version": "v5.7.20",
+        "version_normalized": "5.7.20.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/support.git",
-            "reference": "1caddfa63a40d2f229bb0948d9871540da666d0b"
+            "reference": "ea3f30dd824bba52bcff4290dc7431b0ffb478e1"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/support/zipball/1caddfa63a40d2f229bb0948d9871540da666d0b",
-            "reference": "1caddfa63a40d2f229bb0948d9871540da666d0b",
+            "url": "https://api.github.com/repos/illuminate/support/zipball/ea3f30dd824bba52bcff4290dc7431b0ffb478e1",
+            "reference": "ea3f30dd824bba52bcff4290dc7431b0ffb478e1",
             "shasum": ""
         },
         "require": {
@@ -1027,7 +1027,7 @@
             "symfony/process": "Required to use the composer class (^4.1).",
             "symfony/var-dumper": "Required to use the dd function (^4.1)."
         },
-        "time": "2018-12-18T13:45:35+00:00",
+        "time": "2019-01-07T13:39:07+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {

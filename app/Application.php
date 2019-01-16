@@ -17,69 +17,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use ReflectionClass;
+use Illuminate\Container\Container;
 use ReflectionMethod;
 use ReflectionParameter;
 use function array_map;
-use function is_object;
-use function is_string;
 
 /**
- * Simple dependency injection.
+ * Application container.
  */
-class Resolver
+class Application extends Container
 {
-    /** @var string[]|object[] */
-    private $bindings = [];
-
-    /**
-     * For some classes (e.g. Request, Tree, User), we inject a specific instance
-     * of an object, rather than a newly instantiated object
-     *
-     * @param string      $class
-     * @param object|null $object
-     *
-     * @return void
-     */
-    public function bind(string $class, $object): void
-    {
-        $this->bindings[$class] = $object;
-    }
-
-    /**
-     * Create an instance of a class, injecting all its dependencies.
-     *
-     * @param string $class
-     *
-     * @return object (can't type-hint this until PHP 7.2)
-     */
-    public function make(string $class)
-    {
-        $thing = $this->bindings[$class] ?? null;
-
-        if (is_object($thing)) {
-            return $thing;
-        }
-
-        if (is_string($thing) && class_exists($thing)) {
-            return new $thing;
-        }
-
-        $reflector = new ReflectionClass($class);
-
-        $constructor = $reflector->getConstructor();
-
-        if ($constructor === null) {
-            // No constructor?  Nothing to inject.
-            $parameters = [];
-        } else {
-            // Recursively resolve the parameters.
-            $parameters = $this->makeParameters($constructor->getParameters());
-        }
-
-        return $reflector->newInstanceArgs($parameters);
-    }
-
     /**
      * Call an object's method, injecting all its dependencies.
      *

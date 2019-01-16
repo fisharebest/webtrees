@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Resolver;
+use Fisharebest\Webtrees\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -26,9 +26,8 @@ use Symfony\Component\HttpFoundation\Response;
  * Test the module controller
  *
  * @covers \Fisharebest\Webtrees\Http\Controllers\ModuleController
- * @covers \Fisharebest\Webtrees\Resolver
  */
-class ModuleRoutingAndResolvingTest extends \Fisharebest\Webtrees\TestCase
+class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
 {
     protected static $uses_database = true;
 
@@ -41,7 +40,7 @@ class ModuleRoutingAndResolvingTest extends \Fisharebest\Webtrees\TestCase
         $user       = Auth::user();
         $controller = new ModuleController();
         $request    = new Request(['route' => 'module']);
-        $controller->action($request, $user, new Resolver());
+        $controller->action($request, $user, new Application());
     }
 
     /**
@@ -53,7 +52,7 @@ class ModuleRoutingAndResolvingTest extends \Fisharebest\Webtrees\TestCase
         $user       = Auth::user();
         $controller = new ModuleController();
         $request    = new Request(['route' => 'module', 'module' => 'no-such-module']);
-        $controller->action($request, $user, new Resolver());
+        $controller->action($request, $user, new Application());
     }
 
     /**
@@ -65,7 +64,7 @@ class ModuleRoutingAndResolvingTest extends \Fisharebest\Webtrees\TestCase
         $user       = Auth::user();
         $controller = new ModuleController();
         $request    = new Request(['route' => 'module', 'module' => 'sitemap']);
-        $controller->action($request, $user, new Resolver());
+        $controller->action($request, $user, new Application());
     }
 
     /**
@@ -77,7 +76,7 @@ class ModuleRoutingAndResolvingTest extends \Fisharebest\Webtrees\TestCase
         $user       = Auth::user();
         $controller = new ModuleController();
         $request    = new Request(['route' => 'module', 'module' => 'sitemap', 'action' => 'no-such-action']);
-        $controller->action($request, $user, new Resolver());
+        $controller->action($request, $user, new Application());
     }
 
     /**
@@ -93,7 +92,7 @@ class ModuleRoutingAndResolvingTest extends \Fisharebest\Webtrees\TestCase
 
         $request = new Request(['route' => 'module', 'module' => 'sitemap', 'action' => 'DoAdminStuff']);
         //Theme::theme(new WebtreesTheme())->init(new Request, $tree);
-        $controller->action($request, $user, new Resolver());
+        $controller->action($request, $user, new Application());
     }
 
     /**
@@ -104,7 +103,7 @@ class ModuleRoutingAndResolvingTest extends \Fisharebest\Webtrees\TestCase
         $user       = Auth::user();
         $controller = new ModuleController();
         $request    = new Request(['route' => 'module', 'module' => 'sitemap', 'action' => 'Index']);
-        $response   = $controller->action($request, $user, new Resolver());
+        $response   = $controller->action($request, $user, new Application());
 
         $this->assertInstanceOf(Response::class, $response);
     }

@@ -29,7 +29,7 @@ use Fisharebest\Webtrees\Http\Middleware\Housekeeping;
 use Fisharebest\Webtrees\Http\Middleware\PageHitCounter;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Resolver;
+use Fisharebest\Webtrees\Application;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
@@ -204,15 +204,15 @@ try {
     $controller_class = '\\Fisharebest\\Webtrees\\Http\\Controllers\\' . $controller_name;
 
     // Set up dependency injection for the controllers.
-    $resolver = new Resolver();
-    $resolver->bind(Resolver::class, $resolver);
-    $resolver->bind(Tree::class, $tree);
-    $resolver->bind(User::class, Auth::user());
-    $resolver->bind(LocaleInterface::class, WebtreesLocale::create(WT_LOCALE));
-    $resolver->bind(TimeoutService::class, new TimeoutService(microtime(true)));
-    $resolver->bind(Filesystem::class, new Filesystem(new Local(WT_DATA_DIR)));
+    $app = new Application();
+    $app->instance(Application::class, $app);
+    $app->instance(Tree::class, $tree);
+    $app->instance(User::class, Auth::user());
+    $app->instance(LocaleInterface::class, WebtreesLocale::create(WT_LOCALE));
+    $app->instance(TimeoutService::class, new TimeoutService(microtime(true)));
+    $app->instance(Filesystem::class, new Filesystem(new Local(WT_DATA_DIR)));
 
-    $controller = $resolver->make($controller_class);
+    $controller = $app->make($controller_class);
 
     DebugBar::stopMeasure('routing');
 
@@ -268,15 +268,15 @@ try {
     }
 
     // Apply the middleware using the "onion" pattern.
-    $pipeline = array_reduce($middleware_stack, function (Closure $next, string $middleware) use ($resolver): Closure {
+    $pipeline = array_reduce($middleware_stack, function (Closure $next, string $middleware) use ($app): Closure {
         // Create a closure to apply the middleware.
-        return function (Request $request) use ($middleware, $next, $resolver): Response {
-            return $resolver->make($middleware)->handle($request, $next);
+        return function (Request $request) use ($middleware, $next, $app): Response {
+            return $app->make($middleware)->handle($request, $next);
         };
-    }, function (Request $request) use ($controller, $action, $resolver): Response {
-        $resolver->bind(Request::class, $request);
+    }, function (Request $request) use ($controller, $action, $app): Response {
+        $app->instance(Request::class, $request);
 
-        return $resolver->dispatch($controller, $action);
+        return $app->dispatch($controller, $action);
     });
 
     $response = call_user_func($pipeline, $request);
