@@ -212,7 +212,7 @@ try {
     $resolver->bind(TimeoutService::class, new TimeoutService(microtime(true)));
     $resolver->bind(Filesystem::class, new Filesystem(new Local(WT_DATA_DIR)));
 
-    $controller = $resolver->resolve($controller_class);
+    $controller = $resolver->make($controller_class);
 
     DebugBar::stopMeasure('routing');
 
@@ -271,7 +271,7 @@ try {
     $pipeline = array_reduce($middleware_stack, function (Closure $next, string $middleware) use ($resolver): Closure {
         // Create a closure to apply the middleware.
         return function (Request $request) use ($middleware, $next, $resolver): Response {
-            return $resolver->resolve($middleware)->handle($request, $next);
+            return $resolver->make($middleware)->handle($request, $next);
         };
     }, function (Request $request) use ($controller, $action, $resolver): Response {
         $resolver->bind(Request::class, $request);

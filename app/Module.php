@@ -389,7 +389,7 @@ class Module
      *
      * @return ModuleInterface|null
      */
-    public static function getModuleByName($module_name)
+    public static function getModuleByName(string $module_name): ?ModuleInterface
     {
         $modules = self::getActiveModules();
         if (array_key_exists($module_name, $modules)) {

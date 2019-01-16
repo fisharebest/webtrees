@@ -20,6 +20,9 @@ namespace Fisharebest\Webtrees;
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionParameter;
+use function array_map;
+use function is_object;
+use function is_string;
 
 /**
  * Simple dependency injection.
@@ -38,7 +41,7 @@ class Resolver
      *
      * @return void
      */
-    public function bind(string $class, $object)
+    public function bind(string $class, $object): void
     {
         $this->bindings[$class] = $object;
     }
@@ -48,12 +51,18 @@ class Resolver
      *
      * @param string $class
      *
-     * @return object
+     * @return object (can't type-hint this until PHP 7.2)
      */
-    public function resolve(string $class)
+    public function make(string $class)
     {
-        if (array_key_exists($class, $this->bindings)) {
-            return $this->bindings[$class];
+        $thing = $this->bindings[$class] ?? null;
+
+        if (is_object($thing)) {
+            return $thing;
+        }
+
+        if (is_string($thing) && class_exists($thing)) {
+            return new $thing;
         }
 
         $reflector = new ReflectionClass($class);
@@ -65,7 +74,7 @@ class Resolver
             $parameters = [];
         } else {
             // Recursively resolve the parameters.
-            $parameters = $this->resolveParameters($constructor->getParameters());
+            $parameters = $this->makeParameters($constructor->getParameters());
         }
 
         return $reflector->newInstanceArgs($parameters);
@@ -83,7 +92,7 @@ class Resolver
     {
         $reflector = new ReflectionMethod($object, $method);
 
-        $parameters = $this->resolveParameters($reflector->getParameters());
+        $parameters = $this->makeParameters($reflector->getParameters());
 
         return $reflector->invoke($object, ...$parameters);
     }
@@ -93,10 +102,10 @@ class Resolver
      *
      * @return array
      */
-    private function resolveParameters(array $parameters): array
+    private function makeParameters(array $parameters): array
     {
         return array_map(function (ReflectionParameter $parameter) {
-            return $this->resolve($parameter->getClass()->name);
+            return $this->make($parameter->getClass()->name);
         }, $parameters);
     }
 }
