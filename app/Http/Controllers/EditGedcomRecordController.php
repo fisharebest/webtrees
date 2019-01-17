@@ -404,20 +404,6 @@ class EditGedcomRecordController extends AbstractEditController
             }
         }
 
-        // @TODO - is $NOTE used?  The original code made it global, so need to check
-        if (isset($_POST['NOTE'])) {
-            $NOTE = $_POST['NOTE'];
-        }
-
-        // @TODO - is $title used?  The original code made it global, so need to check
-        if (!empty($NOTE)) {
-            $tempnote = preg_split('/\r?\n/', trim($NOTE) . "\n"); // make sure only one line ending on the end
-            $title[]  = '0 @' . $xref . '@ NOTE ' . array_shift($tempnote);
-            foreach ($tempnote as &$line) {
-                $line = trim('1 CONT ' . $line, ' ');
-            }
-        }
-
         $newged = $this->handleUpdates($newged);
 
         // Add new names after existing names
