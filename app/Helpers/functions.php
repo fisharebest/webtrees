@@ -13,7 +13,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 declare(strict_types=1);
+
+use Fisharebest\Webtrees\Application;
+
+/**
+ * Get the IoC container, or fetch something from it.
+ *
+ * @param string|null $abstract
+ *
+ * @return Application|mixed
+ */
+function app(string $abstract = null)
+{
+    if ($abstract === null) {
+        return Application::getInstance();
+    } else {
+        return Application::getInstance()->make($abstract);
+    }
+}
 
 /**
  * Generate a CSRF token form field.

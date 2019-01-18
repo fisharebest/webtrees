@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Mail;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -51,10 +52,10 @@ class MessageController extends AbstractBaseController
         $to      = $request->get('to', '');
         $url     = $request->get('url', $referer);
 
-        $to_users = $this->recipientUsers($to);
-        $to_names = array_map(function (User $user): string {
-            return $user->getRealName();
-        }, $to_users);
+        $to_names = $this->recipientUsers($to)
+            ->map(function (User $user): string {
+                return $user->getRealName();
+            });
 
 
         $title = $this->recipientDescription($to);
@@ -351,25 +352,8 @@ class MessageController extends AbstractBaseController
      */
     private function deliverMessage(Tree $tree, string $sender_email, string $sender_name, User $recipient, string $subject, string $body, string $url, string $ip): bool
     {
-        // Create a dummy user, so we can send messages from the tree.
-        $from = new User(
-            (object) [
-                'user_id'   => null,
-                'user_name' => '',
-                'real_name' => $tree->title(),
-                'email'     => $tree->getPreference('WEBTREES_EMAIL'),
-            ]
-        );
-
         // Create a dummy user, so we can reply to visitors.
-        $sender = new User(
-            (object) [
-                'user_id'   => null,
-                'user_name' => '',
-                'real_name' => $sender_name,
-                'email'     => $sender_email,
-            ]
-        );
+        $sender = User::visitor($sender_name, $sender_email);
 
         $success = true;
 
@@ -404,7 +388,7 @@ class MessageController extends AbstractBaseController
         // Send via email
         if ($this->sendEmail($recipient)) {
             $success = Mail::send(
-                $from,
+                User::userFromTree($tree),
                 $recipient,
                 $sender,
                 I18N::translate('webtrees message') . ' - ' . $subject,
@@ -457,20 +441,20 @@ class MessageController extends AbstractBaseController
      *
      * @param string $to
      *
-     * @return User[]
+     * @return Collection|User[]
      */
-    private function recipientUsers(string $to): array
+    private function recipientUsers(string $to): Collection
     {
         switch ($to) {
             default:
             case 'all':
                 return User::all();
             case 'never_logged':
-                return array_filter(User::all(), function (User $user): bool {
+                return User::all()->filter(function (User $user): bool {
                     return $user->getPreference('verified_by_admin') && $user->getPreference('reg_timestamp') > $user->getPreference('sessiontime');
                 });
             case 'last_6mo':
-                return array_filter(User::all(), function (User $user): bool {
+                return User::all()->filter(function (User $user): bool {
                     return $user->getPreference('sessiontime') > 0 && WT_TIMESTAMP - $user->getPreference('sessiontime') > 60 * 60 * 24 * 30 * 6;
                 });
         }

@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Webtrees\Application;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\User;
@@ -65,6 +64,6 @@ class ModuleController extends AbstractBaseController
             throw new NotFoundHttpException('Method ' . $method . '() not found in ' . $module_name);
         }
 
-        return Application::getInstance()->dispatch($module, $method);
+        return app()->dispatch($module, $method);
     }
 }

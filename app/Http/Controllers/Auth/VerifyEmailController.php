@@ -50,16 +50,6 @@ class VerifyEmailController extends AbstractBaseController
         $user = User::findByUserName($username);
 
         if ($user instanceof User && $user->getPreference('reg_hashcode') === $token) {
-            // Create a dummy user, so we can send messages from the tree.
-            $sender = new User(
-                (object) [
-                    'user_id'   => null,
-                    'user_name' => '',
-                    'real_name' => $tree->title(),
-                    'email'     => $tree->getPreference('WEBTREES_EMAIL'),
-                ]
-            );
-
             // switch language to webmaster settings
             $webmaster = User::find((int) $tree->getPreference('WEBMASTER_USER_ID'));
 
@@ -70,9 +60,9 @@ class VerifyEmailController extends AbstractBaseController
                 $subject = I18N::translate('New user at %s', WT_BASE_URL . ' ' . $tree->title());
 
                 Mail::send(
-                    $sender,
+                    User::userFromTree($tree),
                     $webmaster,
-                    $sender,
+                    User::userFromTree($tree),
                     $subject,
                     view('emails/verify-notify-text', ['user' => $user]),
                     view('emails/verify-notify-html', ['user' => $user])

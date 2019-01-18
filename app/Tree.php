@@ -26,6 +26,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
 use PDOException;
+use stdClass;
 
 /**
  * Provide an interface to the wt_gedcom table.
@@ -277,13 +278,13 @@ class Tree
     }
 
     /**
-     * Fetch all the trees that we have permission to access.
+     * All the trees that we have permission to access.
      *
-     * @return Tree[]
+     * @return Collection|Tree[]
      */
-    public static function getAll(): array
+    public static function all(): Collection
     {
-        if (empty(self::$trees)) {
+        return app('cache.array')->rememberForever(__CLASS__, function () {
             // Admins see all trees
             $query = DB::table('gedcom')
                 ->leftJoin('gedcom_setting', function (JoinClause $join): void {
@@ -326,7 +327,7 @@ class Tree
                                     ->where('gs3.setting_value', '=', '1')
                                     ->where('user_gedcom_setting.setting_value', '<>', 'none');
                             })
-                            // PUblic trees
+                            // Public trees
                             ->orWhere(function (Builder $query): void {
                                 $query
                                     ->where('gs2.setting_value', '=', '1')
@@ -335,11 +336,23 @@ class Tree
                     });
             }
 
-            $rows = $query->get();
+            return $query
+                ->get()
+                ->mapWithKeys(function (stdClass $row): array {
+                    return [$row->tree_id => new self((int) $row->tree_id, $row->tree_name, $row->tree_title)];
+                });
+        });
+    }
 
-            foreach ($rows as $row) {
-                self::$trees[$row->tree_id] = new self((int) $row->tree_id, $row->tree_name, $row->tree_title);
-            }
+    /**
+     * Fetch all the trees that we have permission to access.
+     *
+     * @return Tree[]
+     */
+    public static function getAll(): array
+    {
+        if (empty(self::$trees)) {
+            self::$trees = self::all()->all();
         }
 
         return self::$trees;

@@ -38,6 +38,8 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\View;
 use Fisharebest\Webtrees\Webtrees;
+use Illuminate\Cache\ArrayStore;
+use Illuminate\Cache\Repository;
 use Illuminate\Database\Capsule\Manager as DB;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Cached\CachedAdapter;
@@ -64,11 +66,12 @@ Webtrees::init();
 // fastcgi_buffer_size 32m;
 DebugBar::init(Webtrees::DEBUG && class_exists('\\DebugBar\\StandardDebugBar'));
 
-// The application is a IoC container, for dependency injection.
-$app = new Application();
+// Use an array cache for database calls, etc.
+app()->instance('cache.array', new Repository(new ArrayStore()));
 
+// Extract the request parameters.
 $request = Request::createFromGlobals();
-$app->instance(Request::class, $request);
+app()->instance(Request::class, $request);
 
 // Calculate the base URL, so we can generate absolute URLs.
 $request_uri = $request->getSchemeAndHttpHost() . $request->getRequestUri();
@@ -208,13 +211,13 @@ try {
     [$controller_name, $action] = explode('@', $controller_action);
     $controller_class = '\\Fisharebest\\Webtrees\\Http\\Controllers\\' . $controller_name;
 
-    $app->instance(Tree::class, $tree);
-    $app->instance(User::class, Auth::user());
-    $app->instance(LocaleInterface::class, WebtreesLocale::create(WT_LOCALE));
-    $app->instance(TimeoutService::class, new TimeoutService(microtime(true)));
-    $app->instance(Filesystem::class, $filesystem);
+    app()->instance(Tree::class, $tree);
+    app()->instance(User::class, Auth::user());
+    app()->instance(LocaleInterface::class, WebtreesLocale::create(WT_LOCALE));
+    app()->instance(TimeoutService::class, new TimeoutService(microtime(true)));
+    app()->instance(Filesystem::class, $filesystem);
 
-    $controller = $app->make($controller_class);
+    $controller = app()->make($controller_class);
 
     DebugBar::stopMeasure('routing');
 
@@ -270,13 +273,13 @@ try {
     }
 
     // Apply the middleware using the "onion" pattern.
-    $pipeline = array_reduce($middleware_stack, function (Closure $next, string $middleware) use ($app): Closure {
+    $pipeline = array_reduce($middleware_stack, function (Closure $next, string $middleware): Closure {
         // Create a closure to apply the middleware.
-        return function (Request $request) use ($middleware, $next, $app): Response {
-            return $app->make($middleware)->handle($request, $next);
+        return function (Request $request) use ($middleware, $next): Response {
+            return app()->make($middleware)->handle($request, $next);
         };
-    }, function (Request $request) use ($controller, $action, $app): Response {
-        return $app->dispatch($controller, $action);
+    }, function (Request $request) use ($controller, $action): Response {
+        return app()->dispatch($controller, $action);
     });
 
     $response = call_user_func($pipeline, $request);

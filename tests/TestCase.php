@@ -20,9 +20,10 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Http\Controllers\GedcomFileController;
 use Fisharebest\Webtrees\Schema\SeedDatabase;
 use Fisharebest\Webtrees\Services\TimeoutService;
+use Illuminate\Cache\ArrayStore;
+use Illuminate\Cache\Repository;
 use Illuminate\Database\Capsule\Manager as DB;
 use function basename;
-use function file_get_contents;
 
 /**
  * Base class for unit tests
@@ -65,6 +66,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
     {
         parent::setUp();
 
+        // Use an array cache for database calls, etc.
+        app()->instance('cache.array', new Repository(new ArrayStore()));
+
         defined('WT_ROOT') || define('WT_ROOT', dirname(__DIR__) . '/');
         defined('WT_BASE_URL') || define('WT_BASE_URL', 'http://localhost/');
         defined('WT_DATA_DIR') || define('WT_DATA_DIR', WT_ROOT . 'data/');
@@ -84,8 +88,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
             DB::connection()->rollBack();
         }
 
+        app('cache.array')->flush();
+
         Site::$preferences = [];
-        User::$cache = [];
         Tree::$trees = [];
         GedcomRecord::$gedcom_record_cache = null;
         GedcomRecord::$pending_record_cache = null;

@@ -1079,13 +1079,13 @@ abstract class AbstractTheme
      */
     public function menuHomePage()
     {
-        if (count(Tree::getAll()) === 1 || Site::getPreference('ALLOW_CHANGE_GEDCOM') !== '1') {
+        if (Tree::all()->count() === 1 || Site::getPreference('ALLOW_CHANGE_GEDCOM') !== '1') {
             return new Menu(I18N::translate('Family tree'), route('tree-page', ['ged' => $this->tree->name()]), 'menu-tree');
         }
 
         $submenus = [];
-        foreach (Tree::getAll() as $tree) {
-            if ($tree == $this->tree) {
+        foreach (Tree::all() as $tree) {
+            if ($tree->id() === $this->tree->id()) {
                 $active = 'active ';
             } else {
                 $active = '';

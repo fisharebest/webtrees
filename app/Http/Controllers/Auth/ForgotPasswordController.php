@@ -68,20 +68,19 @@ class ForgotPasswordController extends AbstractBaseController
 
             Log::addAuthenticationLog('Password request was sent to user: ' . $user->getUserName());
 
-            $sender = new User((object) [
-                'user_id'   => null,
-                'user_name' => '',
-                'real_name' => $tree->title(),
-                'email'     => $tree->getPreference('WEBTREES_EMAIL'),
-            ]);
-
-            Mail::send($sender, $user, $sender, I18N::translate('Lost password request'), view('emails/password-reset-text', [
-                'user'         => $user,
-                'new_password' => $password,
-            ]), view('emails/password-reset-html', [
-                'user'         => $user,
-                'new_password' => $password,
-            ]));
+            Mail::send(
+                User::userFromTree($tree),
+                $user,
+                User::userFromTree($tree),
+                I18N::translate('Lost password request'),
+                view('emails/password-reset-text', [
+                    'user'         => $user,
+                    'new_password' => $password,
+                ]), view('emails/password-reset-html', [
+                    'user'         => $user,
+                    'new_password' => $password,
+                ])
+            );
 
             FlashMessages::addMessage(I18N::translate('A new password has been created and emailed to %s. You can change this password after you sign in.', e($identifier)), 'success');
 

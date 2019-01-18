@@ -117,20 +117,12 @@ class RegisterController extends AbstractBaseController
             ->setPreference('canadmin', '0')
             ->setPreference('sessiontime', '0');
 
-        // Create a dummy user, so we can send messages from the tree.
-        $sender = new User((object) [
-            'user_id'   => null,
-            'user_name' => '',
-            'real_name' => $tree->title(),
-            'email'     => $tree->getPreference('WEBTREES_EMAIL'),
-        ]);
-
         // Send a verification message to the user.
         /* I18N: %s is a server name/URL */
         Mail::send(
-            $sender,
+            User::userFromTree($tree),
             $user,
-            $sender,
+            User::userFromTree($tree),
             I18N::translate('Your registration at %s', WT_BASE_URL),
             view('emails/register-user-text', ['user' => $user]),
             view('emails/register-user-html', ['user' => $user])
@@ -147,7 +139,7 @@ class RegisterController extends AbstractBaseController
 
             /* I18N: %s is a server name/URL */
             Mail::send(
-                $sender,
+                User::userFromTree($tree),
                 $webmaster,
                 $user,
                 $subject,

@@ -91,7 +91,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             ->select(['message_id', 'sender', 'subject', 'body', DB::raw('UNIX_TIMESTAMP(created) AS created')])
             ->get();
 
-        $users = array_filter(User::all(), function (User $user) use ($tree): bool {
+        $users = User::all()->filter(function (User $user) use ($tree): bool {
             $public_tree  = $tree->getPreference('REQUIRE_AUTHENTICATION') !== '1';
             $can_see_tree = $public_tree || Auth::accessLevel($tree, $user) <= Auth::PRIV_USER;
 
@@ -103,7 +103,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
         });
 
         $content = '';
-        if (!empty($users)) {
+        if ($users->isNotEmpty()) {
             $url = route('user-page', ['ged' => $tree->name()]);
 
             $content .= '<form onsubmit="return $(&quot;#to&quot;).val() !== &quot;&quot;">';

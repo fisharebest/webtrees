@@ -17,9 +17,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Closure;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
 use stdClass;
 
 /**
@@ -42,20 +44,56 @@ class User
     /** @var string[] Cached copy of the wt_user_setting table. */
     private $preferences = [];
 
-    /** @var  User[]|null[] Only fetch users from the database once. */
-    public static $cache = [];
-
     /**
      * Create a new user object from a row in the database.
      *
-     * @param stdClass $user A row from the wt_user table
+     * @param int    $user_id
+     * @param string $user_name
+     * @param string $real_name
+     * @param string $email
      */
-    public function __construct(stdClass $user)
+    private function __construct(int $user_id, string $user_name, string $real_name, string $email)
     {
-        $this->user_id   = (int) $user->user_id;
-        $this->user_name = $user->user_name;
-        $this->real_name = $user->real_name;
-        $this->email     = $user->email;
+        $this->user_id   = $user_id;
+        $this->user_name = $user_name;
+        $this->real_name = $real_name;
+        $this->email     = $email;
+    }
+
+    /**
+     * A closure which will create an object from a database row.
+     *
+     * @return Closure
+     */
+    public static function rowMapper(): Closure
+    {
+        return function (stdClass $row): User {
+            return new static((int) $row->user_id, $row->user_name, $row->real_name, $row->email);
+        };
+    }
+
+    /**
+     * Create a dummy user from a tree, to send messages.
+     *
+     * @param Tree $tree
+     *
+     * @return User
+     */
+    public static function userFromTree(Tree $tree): User{
+        return  new static(0, '', $tree->title(),$tree->getPreference('WEBTREES_EMAIL'));
+    }
+
+    /**
+     * A dummy/null user for visitors.
+     *
+     * @param string $real_name
+     * @param string $email
+     *
+     * @return User
+     */
+    public static function visitor(string $real_name = '', string $email = ''): User
+    {
+        return new static(0, '', $real_name, $email);
     }
 
     /**
@@ -134,8 +172,6 @@ class User
         DB::table('user_setting')->where('user_id', '=', $this->user_id)->delete();
         DB::table('message')->where('user_id', '=', $this->user_id)->delete();
         DB::table('user')->where('user_id', '=', $this->user_id)->delete();
-
-        unset(self::$cache[$this->user_id]);
     }
 
     /**
@@ -147,19 +183,13 @@ class User
      */
     public static function find($user_id)
     {
-        if (!array_key_exists($user_id, self::$cache)) {
-            $row = DB::table('user')
+        return app('cache.array')->rememberForever(__CLASS__ . $user_id, function () use ($user_id) {
+            return DB::table('user')
                 ->where('user_id', '=', $user_id)
-                ->first();
-
-            if ($row) {
-                self::$cache[$user_id] = new self($row);
-            } else {
-                self::$cache[$user_id] = null;
-            }
-        }
-
-        return self::$cache[$user_id];
+                ->get();
+        })
+        ->map(static::rowMapper())
+        ->first();
     }
 
     /**
@@ -171,11 +201,11 @@ class User
      */
     public static function findByEmail($email)
     {
-        $user_id = (int) DB::table('user')
+        return DB::table('user')
             ->where('email', '=', $email)
-            ->value('user_id');
-
-        return self::find($user_id);
+            ->get()
+            ->map(static::rowMapper())
+            ->first();
     }
 
     /**
@@ -187,12 +217,12 @@ class User
      */
     public static function findByIdentifier($identifier)
     {
-        $user_id = (int) DB::table('user')
+        return DB::table('user')
             ->where('user_name', '=', $identifier)
             ->orWhere('email', '=', $identifier)
-            ->value('user_id');
-
-        return self::find($user_id);
+            ->get()
+            ->map(static::rowMapper())
+            ->first();
     }
 
     /**
@@ -200,19 +230,18 @@ class User
      *
      * @param Individual $individual
      *
-     * @return User[]
+     * @return Collection|User[]
      */
-    public static function findByIndividual(Individual $individual): array
+    public static function findByIndividual(Individual $individual): Collection
     {
-        $user_ids = DB::table('user_gedcom_setting')
+        return DB::table('user')
+            ->join('user_gedcom_setting', 'user_gedcom_setting.user_id', '=', 'user.user_id')
             ->where('gedcom_id', '=', $individual->tree()->id())
             ->where('setting_value', '=', $individual->xref())
             ->where('setting_name', '=', 'gedcomid')
-            ->pluck('user_id');
-
-        return $user_ids->map(function (string $user_id): User {
-            return self::find((int) $user_id);
-        })->all();
+            ->select(['user.*'])
+            ->get()
+            ->map(static::rowMapper());
     }
 
     /**
@@ -224,39 +253,36 @@ class User
      */
     public static function findByUserName($user_name)
     {
-        $user_id = (int) DB::table('user')
+        return DB::table('user')
             ->where('user_name', '=', $user_name)
-            ->value('user_id');
-
-        return self::find($user_id);
+            ->get()
+            ->map(static::rowMapper())
+            ->first();
     }
 
     /**
      * Get a list of all users.
      *
-     * @return User[]
+     * @return Collection|User[]
      */
-    public static function all(): array
+    public static function all(): Collection
     {
-        $rows = DB::table('user')
+        return DB::table('user')
             ->where('user_id', '>', 0)
             ->orderBy('real_name')
             ->select(['user_id', 'user_name', 'real_name', 'email'])
-            ->get();
-
-        return $rows->map(function (stdClass $row): User {
-            return new static($row);
-        })->all();
+            ->get()
+            ->map(static::rowMapper());
     }
 
     /**
      * Get a list of all administrators.
      *
-     * @return User[]
+     * @return Collection|User[]
      */
-    public static function administrators(): array
+    public static function administrators(): Collection
     {
-        $rows = DB::table('user')
+        return DB::table('user')
             ->join('user_setting', function (JoinClause $join): void {
                 $join
                     ->on('user_setting.user_id', '=', 'user.user_id')
@@ -266,11 +292,8 @@ class User
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
             ->select(['user.user_id', 'user_name', 'real_name', 'email'])
-            ->get();
-
-        return $rows->map(function (stdClass $row): User {
-            return new static($row);
-        })->all();
+            ->get()
+            ->map(static::rowMapper());
     }
 
     /**
@@ -300,11 +323,11 @@ class User
     /**
      * Get a list of all managers.
      *
-     * @return User[]
+     * @return Collection|User[]
      */
-    public static function managers(): array
+    public static function managers(): Collection
     {
-        $rows = DB::table('user')
+        return DB::table('user')
             ->join('user_gedcom_setting', function (JoinClause $join): void {
                 $join
                     ->on('user_gedcom_setting.user_id', '=', 'user.user_id')
@@ -314,21 +337,18 @@ class User
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
             ->select(['user.user_id', 'user_name', 'real_name', 'email'])
-            ->get();
-
-        return $rows->map(function (stdClass $row): User {
-            return new static($row);
-        })->all();
+            ->get()
+            ->map(static::rowMapper());
     }
 
     /**
      * Get a list of all moderators.
      *
-     * @return User[]
+     * @return Collection|User[]
      */
-    public static function moderators(): array
+    public static function moderators(): Collection
     {
-        $rows = DB::table('user')
+        return DB::table('user')
             ->join('user_gedcom_setting', function (JoinClause $join): void {
                 $join
                     ->on('user_gedcom_setting.user_id', '=', 'user.user_id')
@@ -338,21 +358,18 @@ class User
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
             ->select(['user.user_id', 'user_name', 'real_name', 'email'])
-            ->get();
-
-        return $rows->map(function (stdClass $row): User {
-            return new static($row);
-        })->all();
+            ->get()
+            ->map(static::rowMapper());
     }
 
     /**
      * Get a list of all verified users.
      *
-     * @return User[]
+     * @return Collection|User[]
      */
-    public static function unapproved(): array
+    public static function unapproved(): Collection
     {
-        $rows = DB::table('user')
+        return DB::table('user')
             ->join('user_setting', function (JoinClause $join): void {
                 $join
                     ->on('user_setting.user_id', '=', 'user.user_id')
@@ -362,21 +379,18 @@ class User
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
             ->select(['user.user_id', 'user_name', 'real_name', 'email'])
-            ->get();
-
-        return $rows->map(function (stdClass $row): User {
-            return new static($row);
-        })->all();
+            ->get()
+            ->map(static::rowMapper());
     }
 
     /**
      * Get a list of all verified users.
      *
-     * @return User[]
+     * @return Collection|User[]
      */
-    public static function unverified(): array
+    public static function unverified(): Collection
     {
-        $rows = DB::table('user')
+        return DB::table('user')
             ->join('user_setting', function (JoinClause $join): void {
                 $join
                     ->on('user_setting.user_id', '=', 'user.user_id')
@@ -386,31 +400,25 @@ class User
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
             ->select(['user.user_id', 'user_name', 'real_name', 'email'])
-            ->get();
-
-        return $rows->map(function (stdClass $row): User {
-            return new static($row);
-        })->all();
+            ->get()
+            ->map(static::rowMapper());
     }
 
     /**
      * Get a list of all users who are currently logged in.
      *
-     * @return User[]
+     * @return Collection|User[]
      */
-    public static function allLoggedIn(): array
+    public static function allLoggedIn(): Collection
     {
-        $rows = DB::table('user')
+        return DB::table('user')
             ->join('session', 'session.user_id', '=', 'user.user_id')
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
             ->select(['user.user_id', 'user_name', 'real_name', 'email'])
             ->distinct()
-            ->get();
-
-        return $rows->map(function (stdClass $row): User {
-            return new static($row);
-        })->all();
+            ->get()
+            ->map(static::rowMapper());
     }
 
     /**

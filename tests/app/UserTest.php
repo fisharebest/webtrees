@@ -200,7 +200,7 @@ class UserTest extends \Fisharebest\Webtrees\TestCase
 
         $users = User::all();
 
-        $this->assertSame(2, count($users));
+        $this->assertSame(2, $users->count());
         $this->assertSame($user2->getUserId(), $users[0]->getUserId());
         $this->assertSame($user1->getUserId(), $users[1]->getUserId());
     }
@@ -291,13 +291,13 @@ class UserTest extends \Fisharebest\Webtrees\TestCase
 
         $users = User::unapproved();
 
-        $this->assertSame(2, count($users));
+        $this->assertSame(2, $users->count());
         $this->assertSame($user1->getuserId(), $users[0]->getuserId());
         $this->assertSame($user3->getuserId(), $users[1]->getuserId());
 
         $users = User::unverified();
 
-        $this->assertSame(2, count($users));
+        $this->assertSame(2, $users->count());
         $this->assertSame($user1->getuserId(), $users[0]->getuserId());
         $this->assertSame($user2->getuserId(), $users[1]->getuserId());
     }

@@ -43,6 +43,7 @@
         "fisharebest/flysystem-chroot-adapter": "~1.0",
         "fisharebest/localization": "~1.12",
         "guzzlehttp/guzzle": "~6.0",
+        "illuminate/cache": "^5.7.17",
         "illuminate/container": "^5.7.17",
         "illuminate/database": "^5.7.17",
         "illuminate/support": "^5.7.17",

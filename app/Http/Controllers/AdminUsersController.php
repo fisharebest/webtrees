@@ -63,7 +63,7 @@ class AdminUsersController extends AbstractBaseController
 
         $users = User::all();
 
-        $inactive_users = array_filter($users, function (User $user) use ($inactive_threshold): bool {
+        $inactive_users = $users->filter(function (User $user) use ($inactive_threshold): bool {
             if ($user->getPreference('sessiontime') === '0') {
                 $datelogin = (int) $user->getPreference('reg_timestamp');
             } else {
@@ -73,7 +73,7 @@ class AdminUsersController extends AbstractBaseController
             return $datelogin < $inactive_threshold && $user->getPreference('verified');
         });
 
-        $unverified_users = array_filter($users, function (User $user) use ($unverified_threshold): bool {
+        $unverified_users = $users->filter(function (User $user) use ($unverified_threshold): bool {
             if ($user->getPreference('sessiontime') === '0') {
                 $datelogin = (int) $user->getPreference('reg_timestamp');
             } else {

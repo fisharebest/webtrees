@@ -1006,7 +1006,7 @@ class AdminTreesController extends AbstractBaseController
 
         $pedigree_individual = Individual::getInstance($tree->getPreference('PEDIGREE_ROOT_ID'), $tree);
 
-        $members = array_filter(User::all(), function (User $user) use ($tree): bool {
+        $members = User::all()->filter(function (User $user) use ($tree): bool {
             return Auth::isMember($tree, $user);
         });
 

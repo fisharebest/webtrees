@@ -97,7 +97,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
         ];
 
         return $this->viewResponse('modules/sitemap/config', [
-            'all_trees'   => Tree::getAll(),
+            'all_trees'   => Tree::all(),
             'sitemap_url' => $sitemap_url,
             'submit_urls' => $submit_urls,
             'title'       => $this->getTitle(),
@@ -111,7 +111,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      */
     public function postAdminAction(Request $request): RedirectResponse
     {
-        foreach (Tree::getAll() as $tree) {
+        foreach (Tree::all() as $tree) {
             $include_in_sitemap = (bool) $request->get('sitemap' . $tree->id());
             $tree->setPreference('include_in_sitemap', (string) $include_in_sitemap);
         }
@@ -159,7 +159,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
                 ->pluck('total', 's_file');
 
             $content = view('modules/sitemap/sitemap-index.xml', [
-                'all_trees'          => Tree::getAll(),
+                'all_trees'          => Tree::all(),
                 'count_individuals'  => $count_individuals,
                 'count_media'        => $count_media,
                 'count_notes'        => $count_notes,
