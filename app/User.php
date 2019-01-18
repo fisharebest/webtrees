@@ -558,14 +558,18 @@ class User
      */
     public function getPreference($setting_name, $default = ''): string
     {
-        if (empty($this->preferences) && $this->user_id !== 0) {
-            $this->preferences = DB::table('user_setting')
-                ->where('user_id', '=', $this->user_id)
-                ->pluck('setting_value', 'setting_name')
-                ->all();
-        }
+        $preferences = app('cache.array')->rememberForever('user_setting' . $this->user_id, function () {
+            if ($this->user_id) {
+                return DB::table('user_setting')
+                    ->where('user_id', '=', $this->user_id)
+                    ->pluck('setting_value', 'setting_name')
+                    ->all();
+            } else {
+                return [];
+            }
+        });
 
-        return $this->preferences[$setting_name] ?? $default;
+        return $preferences[$setting_name] ?? $default;
     }
 
     /**

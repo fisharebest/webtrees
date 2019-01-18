@@ -56,18 +56,20 @@ abstract class AbstractModule
      *
      * @param int    $block_id
      * @param string $setting_name
-     * @param string $default_value
+     * @param string $default
      *
      * @return string
      */
-    public function getBlockSetting(int $block_id, string $setting_name, string $default_value = ''): string
+    public function getBlockSetting(int $block_id, string $setting_name, string $default = ''): string
     {
-        $setting_value = DB::table('block_setting')
-            ->where('block_id', '=', $block_id)
-            ->where('setting_name', '=', $setting_name)
-            ->value('setting_value');
+        $settings = app('cache.array')->rememberForever('block_setting' . $block_id, function () use ($block_id) {
+            return DB::table('block_setting')
+                ->where('block_id', '=', $block_id)
+                ->pluck('setting_value', 'setting_name')
+                ->all();
+        });
 
-        return $setting_value ?? $default_value;
+        return $settings[$setting_name] ?? $default;
     }
 
     /**
