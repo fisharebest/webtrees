@@ -51,15 +51,6 @@ class GedcomRecord
     /** @var Fact[] facts extracted from $gedcom/$pending */
     protected $facts;
 
-    /** @var bool Can we display details of this record to Auth::PRIV_PRIVATE */
-    private $disp_public;
-
-    /** @var bool Can we display details of this record to Auth::PRIV_USER */
-    private $disp_user;
-
-    /** @var bool Can we display details of this record to Auth::PRIV_NONE */
-    private $disp_none;
-
     /** @var string[][] All the names of this individual */
     protected $getAllNames;
 
@@ -479,39 +470,19 @@ class GedcomRecord
      */
     public function canShow(int $access_level = null): bool
     {
-        if ($access_level === null) {
-            $access_level = Auth::accessLevel($this->tree);
+        $access_level = $access_level ?? Auth::accessLevel($this->tree);
+
+        // We use this value to bypass privacy checks. For example,
+        // when downloading data or when calculating privacy itself.
+        if ($access_level === Auth::PRIV_HIDE) {
+            return true;
         }
 
-        // CACHING: this function can take three different parameters,
-        // and therefore needs three different caches for the result.
-        switch ($access_level) {
-            case Auth::PRIV_PRIVATE: // visitor
-                if ($this->disp_public === null) {
-                    $this->disp_public = $this->canShowRecord(Auth::PRIV_PRIVATE);
-                }
+        $cache_key =  'canShow' . $this->xref . ':' . $this->tree->id() . ':' . $access_level;
 
-                return $this->disp_public;
-            case Auth::PRIV_USER: // member
-                if ($this->disp_user === null) {
-                    $this->disp_user = $this->canShowRecord(Auth::PRIV_USER);
-                }
-
-                return $this->disp_user;
-            case Auth::PRIV_NONE: // admin
-                if ($this->disp_none === null) {
-                    $this->disp_none = $this->canShowRecord(Auth::PRIV_NONE);
-                }
-
-                return $this->disp_none;
-            case Auth::PRIV_HIDE: // hidden from admins
-                // We use this value to bypass privacy checks. For example,
-                // when downloading data or when calculating privacy itself.
-                return true;
-            default:
-                // Should never get here.
-                return false;
-        }
+        return app('cache.array')->rememberForever($cache_key, function () use ($access_level) {
+            return $this->canShowRecord($access_level);
+        });
     }
 
     /**
@@ -523,10 +494,6 @@ class GedcomRecord
      */
     public function canShowName(int $access_level = null): bool
     {
-        if ($access_level === null) {
-            $access_level = Auth::accessLevel($this->tree);
-        }
-
         return $this->canShow($access_level);
     }
 

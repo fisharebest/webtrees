@@ -17,13 +17,14 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Application;
+use Illuminate\Cache\Repository;
 
 /**
  * Get the IoC container, or fetch something from it.
  *
  * @param string|null $abstract
  *
- * @return Application|mixed
+ * @return Application|Repository|mixed
  */
 function app(string $abstract = null)
 {
