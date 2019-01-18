@@ -83,7 +83,7 @@ class AutocompleteController extends AbstractBaseController
             ->filter(function (array $object) use ($query): bool {
                 return $object['type'] === 'dir' && Str::contains($object['path'], $query);
             })
-            ->map(function(array $object): array {
+            ->map(function (array $object): array {
                 return ['value' => $object['path']];
             });
 
