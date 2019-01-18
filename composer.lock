@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8fe0122fb9a47a016a250cb55f2ff51f",
+    "content-hash": "cc0801b0af24ab9a91251bdd42c6d73e",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -584,6 +584,54 @@
                 "shamsi"
             ],
             "time": "2018-09-17T20:40:07+00:00"
+        },
+        {
+            "name": "fisharebest/flysystem-chroot-adapter",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fisharebest/flysystem-chroot-adapter.git",
+                "reference": "df09e16b8039f15687c484da94d3da9161b2a2ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fisharebest/flysystem-chroot-adapter/zipball/df09e16b8039f15687c484da94d3da9161b2a2ad",
+                "reference": "df09e16b8039f15687c484da94d3da9161b2a2ad",
+                "shasum": ""
+            },
+            "require": {
+                "league/flysystem": "~1.0"
+            },
+            "require-dev": {
+                "league/flysystem-memory": "~1.0",
+                "php-coveralls/php-coveralls": "*",
+                "phpunit/phpunit": "~5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fisharebest\\Flysystem\\Adapter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Roach",
+                    "email": "fisharebest@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Creates a filesystem from a sub-folder in another filesystem.",
+            "homepage": "https://github.com/fisharebest/flysystem-chroot-adapter",
+            "keywords": [
+                "Flysystem",
+                "adapter",
+                "chroot"
+            ],
+            "time": "2019-01-17T22:23:21+00:00"
         },
         {
             "name": "fisharebest/localization",
@@ -1251,6 +1299,53 @@
                 "storage"
             ],
             "time": "2018-11-23T23:41:29+00:00"
+        },
+        {
+            "name": "league/flysystem-cached-adapter",
+            "version": "1.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem-cached-adapter.git",
+                "reference": "08ef74e9be88100807a3b92cc9048a312bf01d6f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-cached-adapter/zipball/08ef74e9be88100807a3b92cc9048a312bf01d6f",
+                "reference": "08ef74e9be88100807a3b92cc9048a312bf01d6f",
+                "shasum": ""
+            },
+            "require": {
+                "league/flysystem": "~1.0",
+                "psr/cache": "^1.0.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpspec/phpspec": "^3.4",
+                "phpunit/phpunit": "^5.7",
+                "predis/predis": "~1.0",
+                "tedivm/stash": "~0.12"
+            },
+            "suggest": {
+                "ext-phpredis": "Pure C implemented extension for PHP"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "League\\Flysystem\\Cached\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "frankdejonge",
+                    "email": "info@frenky.net"
+                }
+            ],
+            "description": "An adapter decorator to enable meta-data caching.",
+            "time": "2018-07-09T20:51:04+00:00"
         },
         {
             "name": "league/flysystem-ziparchive",
@@ -4878,7 +4973,9 @@
         "ext-xml": "*",
         "ext-zip": "*"
     },
-    "platform-dev": [],
+    "platform-dev": {
+        "ext-pdo_sqlite": "*"
+    },
     "platform-overrides": {
         "php": "7.1.3"
     }

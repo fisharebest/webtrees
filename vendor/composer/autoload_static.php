@@ -59,6 +59,7 @@ class ComposerStaticInit3da29173c262c589b273f6106eae3544
         array (
             'League\\Glide\\' => 13,
             'League\\Flysystem\\ZipArchive\\' => 28,
+            'League\\Flysystem\\Cached\\' => 24,
             'League\\Flysystem\\' => 17,
             'League\\CommonMark\\' => 18,
         ),
@@ -80,6 +81,7 @@ class ComposerStaticInit3da29173c262c589b273f6106eae3544
         array (
             'Fisharebest\\Webtrees\\' => 21,
             'Fisharebest\\Localization\\' => 25,
+            'Fisharebest\\Flysystem\\Adapter\\' => 30,
             'Fisharebest\\ExtCalendar\\' => 24,
             'Fisharebest\\Algorithm\\' => 22,
         ),
@@ -189,6 +191,10 @@ class ComposerStaticInit3da29173c262c589b273f6106eae3544
         array (
             0 => __DIR__ . '/..' . '/league/flysystem-ziparchive/src',
         ),
+        'League\\Flysystem\\Cached\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/flysystem-cached-adapter/src',
+        ),
         'League\\Flysystem\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/flysystem/src',
@@ -236,6 +242,10 @@ class ComposerStaticInit3da29173c262c589b273f6106eae3544
         'Fisharebest\\Localization\\' => 
         array (
             0 => __DIR__ . '/..' . '/fisharebest/localization/src',
+        ),
+        'Fisharebest\\Flysystem\\Adapter\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fisharebest/flysystem-chroot-adapter/src',
         ),
         'Fisharebest\\ExtCalendar\\' => 
         array (

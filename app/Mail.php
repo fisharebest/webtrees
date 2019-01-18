@@ -47,11 +47,6 @@ class Mail
     public static function send(User $from, User $to, User $reply_to, $subject, $message_text, $message_html): bool
     {
         try {
-            // Swiftmailer uses the PHP default tmp directory.  On some servers, this
-            // is outside the open_basedir list.  Therefore we must set one explicitly.
-            File::mkdir(WT_DATA_DIR . 'tmp');
-            Swift_Preferences::getInstance()->setTempDir(WT_DATA_DIR . 'tmp');
-
             $message_text = preg_replace('/\r?\n/', "\r\n", $message_text);
             $message_html = preg_replace('/\r?\n/', "\r\n", $message_html);
 

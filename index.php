@@ -40,6 +40,8 @@ use Fisharebest\Webtrees\View;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use League\Flysystem\Adapter\Local;
+use League\Flysystem\Cached\CachedAdapter;
+use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -62,8 +64,13 @@ Webtrees::init();
 // fastcgi_buffer_size 32m;
 DebugBar::init(Webtrees::DEBUG && class_exists('\\DebugBar\\StandardDebugBar'));
 
+// The application is a IoC container, for dependency injection.
+$app = new Application();
+
+$request = Request::createFromGlobals();
+$app->instance(Request::class, $request);
+
 // Calculate the base URL, so we can generate absolute URLs.
-$request     = Request::createFromGlobals();
 $request_uri = $request->getSchemeAndHttpHost() . $request->getRequestUri();
 
 // Remove any PHP script name and parameters.
@@ -127,10 +134,12 @@ DebugBar::stopMeasure('init database');
 // Other user files can be stored elsewhere...
 define('WT_DATA_DIR', realpath(Site::getPreference('INDEX_DIRECTORY', 'data/')) . DIRECTORY_SEPARATOR);
 
+$filesystem = new Filesystem(new CachedAdapter(new Local(WT_DATA_DIR), new Memory()));
+
 // Some broken servers block access to their own temp folder using open_basedir...
-$data_dir = new Filesystem(new Local(WT_DATA_DIR));
-$data_dir->createDir('tmp');
+$filesystem->createDir('tmp');
 putenv('TMPDIR=' . WT_DATA_DIR . 'tmp');
+Swift_Preferences::getInstance()->setTempDir(WT_DATA_DIR . 'tmp');
 
 // Request more resources - if we can/want to
 $memory_limit = Site::getPreference('MEMORY_LIMIT');
@@ -199,15 +208,11 @@ try {
     [$controller_name, $action] = explode('@', $controller_action);
     $controller_class = '\\Fisharebest\\Webtrees\\Http\\Controllers\\' . $controller_name;
 
-    // Set up dependency injection for the controllers.
-    $app = new Application();
-    $app->instance(Application::class, $app);
-    $app->instance(Request::class, $request);
     $app->instance(Tree::class, $tree);
     $app->instance(User::class, Auth::user());
     $app->instance(LocaleInterface::class, WebtreesLocale::create(WT_LOCALE));
     $app->instance(TimeoutService::class, new TimeoutService(microtime(true)));
-    $app->instance(Filesystem::class, new Filesystem(new Local(WT_DATA_DIR)));
+    $app->instance(Filesystem::class, $filesystem);
 
     $controller = $app->make($controller_class);
 

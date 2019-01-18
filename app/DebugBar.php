@@ -55,14 +55,6 @@ class DebugBar
             self::$debugbar->addCollector(new ViewCollector());
 
             self::$renderer = self::$debugbar->getJavascriptRenderer('./vendor/maximebf/debugbar/src/DebugBar/Resources/');
-
-            // We can't use WT_DATA_DIR as it does not exist yet
-            $storage_dir = 'data/debugbar';
-
-            if (File::mkdir($storage_dir)) {
-                $storage = new FileStorage($storage_dir);
-                self::$debugbar->setStorage($storage);
-            }
         }
     }
 

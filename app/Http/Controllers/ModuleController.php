@@ -17,9 +17,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Application;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Module;
-use Fisharebest\Webtrees\Application;
 use Fisharebest\Webtrees\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,13 +37,12 @@ class ModuleController extends AbstractBaseController
     /**
      * Perform an HTTP action for one of the modules.
      *
-     * @param Request     $request
-     * @param User        $user
-     * @param Application $application
+     * @param Request $request
+     * @param User    $user
      *
      * @return Response
      */
-    public function action(Request $request, User $user, Application $application): Response
+    public function action(Request $request, User $user): Response
     {
         $module_name = $request->get('module', '');
 
@@ -66,6 +65,6 @@ class ModuleController extends AbstractBaseController
             throw new NotFoundHttpException('Method ' . $method . '() not found in ' . $module_name);
         }
 
-        return $application->dispatch($module, $method);
+        return Application::getInstance()->dispatch($module, $method);
     }
 }

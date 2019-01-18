@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use FilesystemIterator;
+use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
@@ -30,6 +31,9 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
+use League\Flysystem\Filesystem;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -59,28 +63,29 @@ class AutocompleteController extends AbstractBaseController
     /**
      * Autocomplete for media folders.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request    $request
+     * @param Tree       $tree
+     * @param Filesystem $filesystem
      *
      * @return JsonResponse
      */
-    public function folder(Request $request, Tree $tree): JsonResponse
+    public function folder(Request $request, Tree $tree, Filesystem $filesystem): JsonResponse
     {
-        $query    = $request->get('query', '');
-        $folder   = WT_DATA_DIR . $tree->getPreference('MEDIA_DIRECTORY', '');
-        $flags    = FilesystemIterator::FOLLOW_SYMLINKS;
-        $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($folder, $flags));
-        $folders  = [];
+        $query = $request->get('query', '');
 
-        // Iterator finds media/foo/. but not media/foo ??
-        foreach ($iterator as $iteration) {
-            if ($iteration->getFileName() === '.') {
-                $path = dirname(substr($iteration->getPathName(), strlen($folder)));
-                if ($query === '' || stripos($path, $query) !== false) {
-                    $folders[] = ['value' => $path];
-                }
-            }
-        }
+        $prefix = $tree->getPreference('MEDIA_DIRECTORY', '');
+
+        $media_filesystem = new Filesystem(new ChrootAdapter($filesystem, $prefix));
+
+        $contents = new Collection($media_filesystem->listContents('', true));
+
+        $folders = $contents
+            ->filter(function (array $object) use ($query): bool {
+                return $object['type'] === 'dir' && Str::contains($object['path'], $query);
+            })
+            ->map(function(array $object): array {
+                return ['value' => $object['path']];
+            });
 
         return new JsonResponse($folders);
     }
