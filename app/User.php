@@ -593,6 +593,8 @@ class User
             $this->preferences[$setting_name] = $setting_value;
         }
 
+        app('cache.array')->forget('user_setting' . $this->user_id);
+
         return $this;
     }
 }
