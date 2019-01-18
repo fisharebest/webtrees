@@ -79,7 +79,8 @@ class User
      *
      * @return User
      */
-    public static function userFromTree(Tree $tree): User{
+    public static function userFromTree(Tree $tree): User
+    {
         return  new static(0, '', $tree->title(),$tree->getPreference('WEBTREES_EMAIL'));
     }
 
