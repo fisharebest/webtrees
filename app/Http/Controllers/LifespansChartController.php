@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\ColorGenerator;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\LifespansChartModule;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -51,7 +52,7 @@ class LifespansChartController extends AbstractChartController
      */
     public function page(Request $request, Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'lifespans_chart');
+        $this->checkModuleIsActive($tree, LifespansChartModule::class);
 
         $xrefs     = (array) $request->get('xrefs', []);
         $addxref   = $request->get('addxref', '');
@@ -110,7 +111,7 @@ class LifespansChartController extends AbstractChartController
      */
     public function chart(Request $request, Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'lifespans_chart');
+        $this->checkModuleIsActive($tree, LifespansChartModule::class);
 
         $xrefs = (array) $request->get('xrefs', []);
         $xrefs = array_unique($xrefs);

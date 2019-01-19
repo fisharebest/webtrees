@@ -30,17 +30,19 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class SlideShowModule
  */
-class SlideShowModule extends AbstractModule implements ModuleBlockInterface
+class SlideShowModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
 {
+    use ModuleBlockTrait;
+
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Slide show');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Slide show” module */
         return I18N::translate('Random images from the current family tree.');
@@ -154,7 +156,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,
                 'config_url' => $config_url,
-                'title'      => $this->getTitle(),
+                'title'      => $this->title(),
                 'content'    => $content,
             ]);
         }

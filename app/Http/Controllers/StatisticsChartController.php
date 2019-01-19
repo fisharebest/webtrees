@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\StatisticsChartModule;
 use Fisharebest\Webtrees\Stats;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
@@ -76,7 +77,7 @@ class StatisticsChartController extends AbstractChartController
      */
     public function page(Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'statistics_chart');
+        $this->checkModuleIsActive($tree, StatisticsChartModule::class);
 
         $title = I18N::translate('Statistics');
 
@@ -92,7 +93,7 @@ class StatisticsChartController extends AbstractChartController
      */
     public function chartIndividuals(Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'statistics_chart');
+        $this->checkModuleIsActive($tree, StatisticsChartModule::class);
 
         $html = view('statistics-chart-individuals', [
             'show_oldest_living' => Auth::check(),
@@ -109,7 +110,7 @@ class StatisticsChartController extends AbstractChartController
      */
     public function chartFamilies(Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'statistics_chart');
+        $this->checkModuleIsActive($tree, StatisticsChartModule::class);
 
         $html = view('statistics-chart-families', [
             'stats' => new Stats($tree),
@@ -125,7 +126,7 @@ class StatisticsChartController extends AbstractChartController
      */
     public function chartOther(Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'statistics_chart');
+        $this->checkModuleIsActive($tree, StatisticsChartModule::class);
 
         $html = view('statistics-chart-other', [
             'stats' => new Stats($tree),
@@ -141,7 +142,7 @@ class StatisticsChartController extends AbstractChartController
      */
     public function chartCustomOptions(Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'statistics_chart');
+        $this->checkModuleIsActive($tree, StatisticsChartModule::class);
 
         $html = view('statistics-chart-custom');
 
@@ -156,7 +157,7 @@ class StatisticsChartController extends AbstractChartController
      */
     public function chartCustomChart(Request $request, Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'statistics_chart');
+        $this->checkModuleIsActive($tree, StatisticsChartModule::class);
 
         $x_axis_type = (int) $request->get('x-as');
         $y_axis_type = (int) $request->get('y-as');

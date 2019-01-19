@@ -31,21 +31,23 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class ResearchTaskModule
  */
-class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
+class ResearchTaskModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
 {
+    use ModuleBlockTrait;
+
     private const DEFAULT_SHOW_OTHER      = '1';
     private const DEFAULT_SHOW_UNASSIGNED = '1';
     private const DEFAULT_SHOW_FUTURE     = '1';
 
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module. Tasks that need further research. */
         return I18N::translate('Research tasks');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of “Research tasks” module */
         return I18N::translate('A list of tasks and activities that are linked to the family tree.');
@@ -114,7 +116,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,
                 'config_url' => $config_url,
-                'title'      => $this->getTitle(),
+                'title'      => $this->title(),
                 'content'    => $content,
             ]);
         }

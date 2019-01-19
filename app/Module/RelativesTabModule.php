@@ -24,14 +24,16 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Class RelativesTabModule
  */
-class RelativesTabModule extends AbstractModule implements ModuleTabInterface
+class RelativesTabModule extends AbstractModule implements ModuleInterface, ModuleTabInterface
 {
+    use ModuleTabTrait;
+
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *
      * @return string
      */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Families');
@@ -42,21 +44,19 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface
      *
      * @return string
      */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Families” module */
         return I18N::translate('A tab showing the close relatives of an individual.');
     }
 
     /**
-     * The user can re-arrange the tab order, but until they do, this
-     * is the order in which tabs are shown.
+     * The default position for this tab.  It can be changed in the control panel.
      *
      * @return int
      */
-    public function defaultTabOrder(): int
-    {
-        return 20;
+    function defaultTabOrder(): int {
+        return 30;
     }
 
     /** {@inheritdoc} */

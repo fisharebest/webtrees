@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\FamilyBookChartModule;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use stdClass;
@@ -64,7 +65,7 @@ class FamilyBookChartController extends AbstractChartController
      */
     public function page(Request $request, Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'family_book_chart');
+        $this->checkModuleIsActive($tree, FamilyBookChartModule::class);
 
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
@@ -107,7 +108,7 @@ class FamilyBookChartController extends AbstractChartController
      */
     public function chart(Request $request, Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'family_book_chart');
+        $this->checkModuleIsActive($tree, FamilyBookChartModule::class);
 
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);

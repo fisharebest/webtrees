@@ -29,20 +29,32 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class DescendancyModule
  */
-class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
+class DescendancyModule extends AbstractModule implements ModuleInterface, ModuleSidebarInterface
 {
+    use ModuleSidebarTrait;
+
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module/sidebar */
         return I18N::translate('Descendants');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Descendants” module */
         return I18N::translate('A sidebar showing the descendants of an individual.');
+    }
+
+    /**
+     * The default position for this sidebar.  It can be changed in the control panel.
+     *
+     * @return int
+     */
+    public function defaultSidebarOrder(): int
+    {
+        return 30;
     }
 
     /**
@@ -96,12 +108,6 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
     }
 
     /** {@inheritdoc} */
-    public function defaultSidebarOrder(): int
-    {
-        return 30;
-    }
-
-    /** {@inheritdoc} */
     public function hasSidebarContent(Individual $individual): bool
     {
         return true;
@@ -138,7 +144,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
         return
             '<li class="sb_desc_indi_li">' .
             '<a class="sb_desc_indi" href="' . e(route('module', [
-                'module' => 'descendancy',
+                'module' => $this->getName(),
                 'action' => 'Descendants',
                 'ged'    => $person->tree()->name(),
                 'xref'   => $person->xref(),
@@ -186,17 +192,17 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
     /**
      * Display spouses.
      *
-     * @param Individual $person
+     * @param Individual $individual
      * @param int        $generations
      *
      * @return string
      */
-    public function loadSpouses(Individual $person, $generations)
+    public function loadSpouses(Individual $individual, $generations)
     {
         $out = '';
-        if ($person && $person->canShow()) {
-            foreach ($person->getSpouseFamilies() as $family) {
-                $out .= $this->getFamilyLi($family, $person, $generations - 1);
+        if ($individual->canShow()) {
+            foreach ($individual->getSpouseFamilies() as $family) {
+                $out .= $this->getFamilyLi($family, $individual, $generations - 1);
             }
         }
         if ($out) {

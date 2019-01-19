@@ -29,14 +29,16 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 /**
  * Class UserJournalModule
  */
-class UserJournalModule extends AbstractModule implements ModuleBlockInterface
+class UserJournalModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
 {
+    use ModuleBlockTrait;
+
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *
      * @return string
      */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Journal');
@@ -47,7 +49,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return string
      */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Journal” module */
         return I18N::translate('A private area to record notes or keep a journal.');
@@ -82,7 +84,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,
                 'config_url' => '',
-                'title'      => $this->getTitle(),
+                'title'      => $this->title(),
                 'content'    => $content,
             ]);
         }

@@ -52,16 +52,13 @@ class Webtrees
     public const VERSION = '2.0.0' . (self::STABILITY === '' ? '' : '-') . self::STABILITY;
 
     // Location of our modules and themes. These are used as URLs and folder paths.
-    public const MODULES_PATH = 'modules_v3/';
+    public const MODULES_PATH = 'modules_v4/';
 
     // Location of themes (core and custom).
     public const THEMES_PATH = 'themes/';
 
     // Location of CSS/JS/etc. assets. See also webpack.mix.js.
     public const ASSETS_PATH = 'public/assets-2.0.0/';
-
-    // Location of our installation of CK editor.
-    public const CKEDITOR_PATH = 'public/ckeditor-4.5.2-custom/';
 
     /**
      * Initialise the application.

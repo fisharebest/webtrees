@@ -47,7 +47,7 @@ class RelationshipsChartController extends AbstractChartController
      */
     public function page(Request $request, Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'relationships_chart');
+        $this->checkModuleIsActive($tree, RelationshipsChartModule::class);
 
         $xref1       = $request->get('xref1', '');
         $xref2       = $request->get('xref2', '');
@@ -96,7 +96,7 @@ class RelationshipsChartController extends AbstractChartController
      */
     public function chart(Request $request, Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'relationships_chart');
+        $this->checkModuleIsActive($tree, RelationshipsChartModule::class);
 
         $xref1       = $request->get('xref1', '');
         $individual1 = Individual::getInstance($xref1, $tree);

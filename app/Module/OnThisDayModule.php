@@ -28,8 +28,10 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class OnThisDayModule
  */
-class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
+class OnThisDayModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
 {
+    use ModuleBlockTrait;
+
     // All standard GEDCOM 5.5.1 events except CENS, RESI and EVEN
     private const ALL_EVENTS = [
         'ADOP',
@@ -75,7 +77,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return string
      */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('On this day');
@@ -86,7 +88,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return string
      */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “On this day” module */
         return I18N::translate('A list of the anniversaries that occur today.');
@@ -160,7 +162,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,
                 'config_url' => $config_url,
-                'title'      => $this->getTitle(),
+                'title'      => $this->title(),
                 'content'    => $content,
             ]);
         }

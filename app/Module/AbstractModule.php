@@ -20,18 +20,23 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Collection;
+use stdClass;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class AbstractModule - common functions for blocks
  */
-abstract class AbstractModule
+abstract class AbstractModule implements ModuleInterface
 {
-    /** @var string The directory where the module is installed */
-    private $directory;
+    /** @var string A unique internal name for this module (based on the installation folder). */
+    private $name = '';
 
-    /** @var string[] A cached copy of the module settings */
-    private $settings;
+    /** @var int The default access level for this module.  It can be changed in the control panel. */
+    protected $access_level = Auth::PRIV_PRIVATE;
+
+    /** @var bool The default status for this module.  It can be changed in the control panel. */
+    private $enabled = true;
 
     /** @var string For custom modules - optional (recommended) version number */
     public const CUSTOM_VERSION = '';
@@ -39,20 +44,19 @@ abstract class AbstractModule
     /** @var string For custom modules - link for support, upgrades, etc. */
     public const CUSTOM_WEBSITE = '';
 
+    /** @var string How to render view responses */
     protected $layout = 'layouts/default';
 
-    /**
-     * Create a new module.
-     *
-     * @param string $directory Where is this module installed
-     */
-    public function __construct(string $directory)
+    public function description(): string
     {
-        $this->directory = $directory;
+        // TODO: Implement description() method.
     }
 
     /**
      * Get a block setting.
+     *
+     * Originally, this was just used for the home-page blocks.  Now, it is used by any
+     * module that has repeated blocks of content on the same page.
      *
      * @param int    $block_id
      * @param string $setting_name
@@ -60,9 +64,9 @@ abstract class AbstractModule
      *
      * @return string
      */
-    public function getBlockSetting(int $block_id, string $setting_name, string $default = ''): string
+    protected function getBlockSetting(int $block_id, string $setting_name, string $default = ''): string
     {
-        $settings = app('cache.array')->rememberForever('block_setting' . $block_id, function () use ($block_id) {
+        $settings = app('cache.array')->rememberForever('block_setting' . $block_id, function () use ($block_id): array {
             return DB::table('block_setting')
                 ->where('block_id', '=', $block_id)
                 ->pluck('setting_value', 'setting_name')
@@ -81,7 +85,7 @@ abstract class AbstractModule
      *
      * @return $this
      */
-    public function setBlockSetting(int $block_id, string $setting_name, string $setting_value): self
+    protected function setBlockSetting(int $block_id, string $setting_name, string $setting_value): self
     {
         DB::table('block_setting')->updateOrInsert([
             'block_id'      => $block_id,
@@ -94,44 +98,51 @@ abstract class AbstractModule
     }
 
     /**
-     * What is the default access level for this module?
+     * A unique internal name for this module (based on the installation folder).
      *
-     * Some modules are aimed at admins or managers, and are not generally shown to users.
+     * @param string $name
      *
-     * @return int
+     * @return ModuleInterface
      */
-    public function defaultAccessLevel(): int
+    public function setName(string $name): ModuleInterface
     {
-        // Returns one of: Auth::PRIV_HIDE, Auth::PRIV_PRIVATE, Auth::PRIV_USER, WT_PRIV_ADMIN
-        return Auth::PRIV_PRIVATE;
+        $this->name = $name;
+
+        return $this;
     }
 
     /**
-     * Provide a unique internal name for this module
+     * A unique internal name for this module (based on the installation folder).
      *
      * @return string
      */
     public function getName(): string
     {
-        return basename($this->directory);
+        return $this->name;
     }
 
     /**
-     * Load all the settings for the module into a cache.
+     * Modules are either enabled or disabled.
      *
-     * Since modules may have many settings, and will probably want to use
-     * lots of them, load them all at once and cache them.
+     * @param bool $enabled
      *
-     * @return void
+     * @return ModuleInterface
      */
-    private function loadAllSettings()
+    public function setEnabled(bool $enabled): ModuleInterface
     {
-        if ($this->settings === null) {
-            $this->settings = DB::table('module_setting')
-                ->where('module_name', '=', $this->getName())
-                ->pluck('setting_value', 'setting_name')
-                ->all();
-        }
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Modules are either enabled or disabled.
+     *
+     * @return bool
+     */
+    public function isEnabled(): bool
+    {
+        return $this->enabled;
     }
 
     /**
@@ -142,15 +153,12 @@ abstract class AbstractModule
      *
      * @return string
      */
-    public function getPreference($setting_name, $default = '')
+    public function getPreference($setting_name, $default = ''): string
     {
-        $this->loadAllSettings();
-
-        if (array_key_exists($setting_name, $this->settings)) {
-            return $this->settings[$setting_name];
-        }
-
-        return $default;
+        return DB::table('module_setting')
+            ->where('module_name', '=', $this->getName())
+            ->where('setting_name', '=', $setting_name)
+            ->value('setting_value') ?? $default;
     }
 
     /**
@@ -166,16 +174,12 @@ abstract class AbstractModule
      */
     public function setPreference($setting_name, $setting_value): self
     {
-        $this->loadAllSettings();
-
         DB::table('module_setting')->updateOrInsert([
             'module_name'  => $this->getName(),
             'setting_name' => $setting_name,
         ], [
             'setting_value' => $setting_value,
         ]);
-
-        $this->settings[$setting_name] = $setting_value;
 
         return $this;
     }
@@ -188,19 +192,20 @@ abstract class AbstractModule
      *
      * @return int
      */
-    public function getAccessLevel(Tree $tree, $component)
+    public function accessLevel(Tree $tree, string $component): int
     {
-        $access_level = DB::table('module_privacy')
-            ->where('gedcom_id', '=', $tree->id())
-            ->where('module_name', '=', $this->getName())
-            ->where('component', '=', $component)
-            ->value('access_level');
+        $access_levels = app('cache.array')
+            ->rememberForever('module_privacy' . $tree->id(), function () use ($tree): Collection {
+                return DB::table('module_privacy')
+                    ->where('gedcom_id', '=', $tree->id())
+                    ->get();
+            });
 
-        if ($access_level === null) {
-            return $this->defaultAccessLevel();
-        }
+        $row = $access_levels->filter(function (stdClass $row) use ($component): bool {
+            return $row->component === $component && $row->module_name === $this->getName();
+        })->first();
 
-        return (int) $access_level;
+        return $row ? (int) $row->access_level : $this->access_level;
     }
 
     /**

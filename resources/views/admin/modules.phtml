@@ -84,23 +84,23 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($modules as $module_name => $module) : ?>
+            <?php foreach ($modules as $module) : ?>
                 <tr>
-                    <th scope="row" data-sort="<?= $module->getTitle() ?>" dir="auto">
-                        <?php if ($module instanceof ModuleConfigInterface && $module_status[$module_name] === 'enabled') : ?>
+                    <th scope="row" data-sort="<?= $module->title() ?>" dir="auto">
+                        <?php if ($module instanceof ModuleConfigInterface && $module->isEnabled()) : ?>
                             <a href="<?= e($module->getConfigLink()) ?>">
-                                <?= $module->getTitle() ?>
+                                <?= $module->title() ?>
                             <?= view('icons/preferences') ?>
                             </a>
                         <?php else : ?>
-                            <?= $module->getTitle() ?>
+                            <?= $module->title() ?>
                         <?php endif ?>
                     </th>
-                    <td class="text-center" data-sort="<?= $module_status[$module_name] ?>">
-                        <?= Bootstrap4::checkbox('', false, ['name' => 'status-' . $module->getName(), 'checked' => $module_status[$module_name] === 'enabled']) ?>
+                    <td class="text-center" data-sort="<?= $module->isEnabled() ?>">
+                        <?= Bootstrap4::checkbox('', false, ['name' => 'status-' . $module->getName(), 'checked' => $module->isEnabled()]) ?>
                     </td>
                     <td class="d-none d-sm-table-cell">
-                        <?= $module->getDescription() ?>
+                        <?= $module->description() ?>
                         <?php if (!in_array($module->getName(), $core_module_names)) : ?>
                             <br>
                             <?= view('icons/warning') ?>

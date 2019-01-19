@@ -25,10 +25,15 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class ChangeReportModule
  */
-class ChangeReportModule extends AbstractModule implements ModuleReportInterface
+class ChangeReportModule extends AbstractModule implements ModuleInterface, ModuleReportInterface
 {
+    use ModuleReportTrait;
+
+    /** @var int The default access level for this module.  It can be changed in the control panel. */
+    protected $access_level = Auth::PRIV_USER;
+
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         // This text also appears in the .XML file - update both together
         /* I18N: Name of a module/report */
@@ -36,22 +41,11 @@ class ChangeReportModule extends AbstractModule implements ModuleReportInterface
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         // This text also appears in the .XML file - update both together
         /* I18N: Description of the “Changes” module */
         return I18N::translate('A report of recent and pending changes.');
-    }
-
-    /**
-     * What is the default access level for this module?
-     * Some modules are aimed at admins or managers, and are not generally shown to users.
-     *
-     * @return int
-     */
-    public function defaultAccessLevel(): int
-    {
-        return Auth::PRIV_USER;
     }
 
     /**
@@ -64,7 +58,7 @@ class ChangeReportModule extends AbstractModule implements ModuleReportInterface
     public function getReportMenu(Individual $individual): Menu
     {
         return new Menu(
-            $this->getTitle(),
+            $this->title(),
             route('report-setup', [
                 'ged'    => $individual->tree()->name(),
                 'report' => $this->getName(),

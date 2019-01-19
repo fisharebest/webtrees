@@ -10,6 +10,7 @@
 
 <form action="<?= e(route('admin-update-module-access')) ?>" method="post">
     <input type="hidden" name="component" value="<?= e($component) ?>">
+    <input type="hidden" name="interface" value="<?= e($interface) ?>">
     <?= csrf_field() ?>
     <table class="table table-bordered">
         <thead>
@@ -25,15 +26,15 @@
                     <td>
                         <?php if ($module instanceof ModuleConfigInterface) : ?>
                             <a href="<?= e($module->getConfigLink()) ?>">
-                                <?= $module->getTitle() ?>
+                                <?= $module->title() ?>
                             <?= view('icons/preferences') ?>
                             </a>
                         <?php else : ?>
-                            <?= $module->getTitle() ?>
+                            <?= $module->title() ?>
                         <?php endif ?>
                     </td>
                     <td class="d-none d-sm-table-cell">
-                        <?= $module->getDescription() ?>
+                        <?= $module->description() ?>
                     </td>
                     <td>
                         <table class="table table-sm">
@@ -44,7 +45,7 @@
                                             <?= e($tree->title()) ?>
                                         </td>
                                         <td>
-                                            <?= Bootstrap4::select(FunctionsEdit::optionsAccessLevels(), $module->getAccessLevel($tree, $component), ['name' => 'access-' . $module->getName() . '-' . $tree->id()]) ?>
+                                            <?= Bootstrap4::select(FunctionsEdit::optionsAccessLevels(), $module->accessLevel($tree, $component), ['name' => 'access-' . $module->getName() . '-' . $tree->id()]) ?>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>

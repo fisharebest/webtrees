@@ -26,29 +26,34 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Class MediaTabModule
  */
-class MediaTabModule extends AbstractModule implements ModuleTabInterface
+class MediaTabModule extends AbstractModule implements ModuleInterface, ModuleTabInterface
 {
+    use ModuleTabTrait;
+
     /** @var  Fact[] A list of facts with media objects. */
     private $facts;
 
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Media');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Media” module */
         return I18N::translate('A tab showing the media objects linked to an individual.');
     }
 
-    /** {@inheritdoc} */
-    public function defaultTabOrder(): int
-    {
-        return 50;
+    /**
+     * The default position for this tab.  It can be changed in the control panel.
+     *
+     * @return int
+     */
+    function defaultTabOrder(): int {
+        return 60;
     }
 
     /** {@inheritdoc} */

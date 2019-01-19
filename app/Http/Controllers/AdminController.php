@@ -32,6 +32,13 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Module\ModuleBlockInterface;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Module\ModuleInterface;
+use Fisharebest\Webtrees\Module\ModuleMenuInterface;
+use Fisharebest\Webtrees\Module\ModuleReportInterface;
+use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
+use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\DatatablesService;
@@ -73,7 +80,7 @@ class AdminController extends AbstractBaseController
      */
     public function blocks(): Response
     {
-        return $this->components('block', 'blocks', I18N::translate('Block'), I18N::translate('Blocks'));
+        return $this->components(ModuleBlockInterface::class, 'block', 'blocks', I18N::translate('Block'), I18N::translate('Blocks'));
     }
 
     /**
@@ -83,7 +90,7 @@ class AdminController extends AbstractBaseController
      */
     public function charts(): Response
     {
-        return $this->components('chart', 'charts', I18N::translate('Chart'), I18N::translate('Charts'));
+        return $this->components(ModuleChartInterface::class, 'chart', 'charts', I18N::translate('Chart'), I18N::translate('Charts'));
     }
 
     /**
@@ -118,7 +125,7 @@ class AdminController extends AbstractBaseController
             'repositories'    => $this->totalRepositories(),
             'notes'           => $this->totalNotes(),
             'files_to_delete' => $files_to_delete,
-            'all_modules'     => Module::getInstalledModules('disabled'),
+            'all_modules'     => Module::all(),
             'deleted_modules' => $this->deletedModuleNames(),
             'config_modules'  => Module::configurableModules(),
         ]);
@@ -881,12 +888,9 @@ class AdminController extends AbstractBaseController
      */
     public function modules(): Response
     {
-        $module_status = DB::table('module')->pluck('status', 'module_name')->all();
-
         return $this->viewResponse('admin/modules', [
             'title'             => I18N::translate('Module administration'),
-            'modules'           => Module::getInstalledModules('disabled'),
-            'module_status'     => $module_status,
+            'modules'           => Module::all(),
             'deleted_modules'   => $this->deletedModuleNames(),
             'core_module_names' => Module::CORE_MODULES,
         ]);
@@ -899,7 +903,7 @@ class AdminController extends AbstractBaseController
      */
     public function menus(): Response
     {
-        return $this->components('menu', 'menus', I18N::translate('Menu'), I18N::translate('Menus'));
+        return $this->components(ModuleMenuInterface::class, 'menu', 'menus', I18N::translate('Menu'), I18N::translate('Menus'));
     }
 
     /**
@@ -909,7 +913,7 @@ class AdminController extends AbstractBaseController
      */
     public function reports(): Response
     {
-        return $this->components('report', 'reports', I18N::translate('Report'), I18N::translate('Reports'));
+        return $this->components(ModuleReportInterface::class, 'report', 'reports', I18N::translate('Report'), I18N::translate('Reports'));
     }
 
     /**
@@ -919,7 +923,7 @@ class AdminController extends AbstractBaseController
      */
     public function sidebars(): Response
     {
-        return $this->components('sidebar', 'sidebars', I18N::translate('Sidebar'), I18N::translate('Sidebars'));
+        return $this->components(ModuleSidebarInterface::class, 'sidebar', 'sidebars', I18N::translate('Sidebar'), I18N::translate('Sidebars'));
     }
 
     /**
@@ -929,7 +933,7 @@ class AdminController extends AbstractBaseController
      */
     public function tabs(): Response
     {
-        return $this->components('tab', 'tabs', I18N::translate('Tab'), I18N::translate('Tabs'));
+        return $this->components(ModuleTabInterface::class, 'tab', 'tabs', I18N::translate('Tab'), I18N::translate('Tabs'));
     }
 
     /**
@@ -1034,12 +1038,13 @@ class AdminController extends AbstractBaseController
     public function updateModuleAccess(Request $request): RedirectResponse
     {
         $component = $request->get('component');
-        $modules   = Module::getAllModulesByComponent($component);
+        $interface = $request->get('interface');
+        $modules   = Module::getAllModulesByInterface($interface);
 
         foreach ($modules as $module) {
             foreach (Tree::getAll() as $tree) {
                 $key          = 'access-' . $module->getName() . '-' . $tree->id();
-                $access_level = (int) $request->get($key, $module->defaultAccessLevel());
+                $access_level = (int) $request->get($key);
 
                 DB::table('module_privacy')->updateOrInsert([
                     'module_name' => $module->getName(),
@@ -1063,22 +1068,21 @@ class AdminController extends AbstractBaseController
      */
     public function updateModuleStatus(Request $request): RedirectResponse
     {
-        $modules       = Module::getInstalledModules('disabled');
-        $module_status = DB::table('module')->pluck('status', 'module_name');
+        $modules = Module::all();
 
         foreach ($modules as $module) {
-            $new_status = (bool) $request->get('status-' . $module->getName()) ? 'enabled' : 'disabled';
-            $old_status = $module_status[$module->getName()];
+            $new_status = (bool) $request->get('status-' . $module->getName());
+            $old_status = $module->isEnabled();
 
             if ($new_status !== $old_status) {
                 DB::table('module')
                     ->where('module_name', '=', $module->getName())
-                    ->update(['status' => $new_status]);
+                    ->update(['status' => $new_status ? 'enabled' : 'disabled']);
 
-                if ($new_status === 'enabled') {
-                    FlashMessages::addMessage(I18N::translate('The module “%s” has been enabled.', $module->getTitle()), 'success');
+                if ($new_status) {
+                    FlashMessages::addMessage(I18N::translate('The module “%s” has been enabled.', $module->title()), 'success');
                 } else {
-                    FlashMessages::addMessage(I18N::translate('The module “%s” has been disabled.', $module->getTitle()), 'success');
+                    FlashMessages::addMessage(I18N::translate('The module “%s” has been disabled.', $module->title()), 'success');
                 }
             }
         }
@@ -1176,6 +1180,7 @@ class AdminController extends AbstractBaseController
     /**
      * Show the admin page for blocks, charts, menus, reports, sidebars, tabs, etc..
      *
+     * @param string $interface
      * @param string $component
      * @param string $route
      * @param string $component_title
@@ -1183,78 +1188,33 @@ class AdminController extends AbstractBaseController
      *
      * @return Response
      */
-    private function components($component, $route, $component_title, $title): Response
+    private function components(string $interface, string $component, string $route, string $component_title, string $title): Response
     {
         return $this->viewResponse('admin/module-components', [
             'component'       => $component,
             'component_title' => $component_title,
-            'modules'         => Module::getAllModulesByComponent($component),
+            'interface'       => $interface,
+            'modules'         => Module::getAllModulesByInterface($interface),
             'title'           => $title,
             'route'           => $route,
         ]);
     }
 
     /**
-     * Conver request parameters into paging/sorting for datatables
-     *
-     * @param Request $request
-     *
-     * @return array
-     */
-    private function dataTablesPagination(Request $request): array
-    {
-        $start  = (int) $request->get('start', '0');
-        $length = (int) $request->get('length', '0');
-        $order  = $request->get('order', []);
-        $args   = [];
-
-        if (is_array($order) && !empty($order)) {
-            $order_by = ' ORDER BY ';
-            foreach ($order as $key => $value) {
-                if ($key > 0) {
-                    $order_by .= ',';
-                }
-                // Columns in datatables are numbered from zero.
-                // Columns in MySQL are numbered starting with one.
-                switch ($value['dir']) {
-                    case 'asc':
-                        $order_by .= (1 + $value['column']) . ' ASC ';
-                        break;
-                    case 'desc':
-                        $order_by .= (1 + $value['column']) . ' DESC ';
-                        break;
-                }
-            }
-        } else {
-            $order_by = '';
-        }
-
-        if ($length > 0) {
-            $limit          = ' LIMIT :limit OFFSET :offset';
-            $args['limit']  = $length;
-            $args['offset'] = $start;
-        } else {
-            $limit = "";
-        }
-
-        return [
-            $order_by,
-            $limit,
-            $args,
-        ];
-    }
-
-    /**
      * Generate a list of module names which exist in the database but not on disk.
      *
-     * @return string[]
+     * @return Collection|string[]
      */
-    private function deletedModuleNames(): array
+    private function deletedModuleNames(): Collection
     {
-        $database_modules = DB::table('module')->pluck('module_name')->all();
-        $disk_modules     = Module::getInstalledModules('disabled');
+        $database_modules = DB::table('module')->pluck('module_name');
 
-        return array_diff($database_modules, array_keys($disk_modules));
+        $disk_modules = Module::all()
+            ->map(function (ModuleInterface $module): string {
+                return $module->getName();
+            });
+
+        return $database_modules->diff($disk_modules);
     }
 
     /**

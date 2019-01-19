@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\AncestorsChartModule;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
@@ -55,7 +56,7 @@ class AncestorsChartController extends AbstractChartController
      */
     public function page(Request $request, Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'ancestors_chart');
+        $this->checkModuleIsActive($tree, AncestorsChartModule::class);
 
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
@@ -101,7 +102,7 @@ class AncestorsChartController extends AbstractChartController
      */
     public function chart(Request $request, Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'ancestors_chart');
+        $this->checkModuleIsActive($tree, AncestorsChartModule::class);
 
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);

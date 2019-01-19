@@ -31,17 +31,19 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class ReviewChangesModule
  */
-class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
+class ReviewChangesModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
 {
+    use ModuleBlockTrait;
+
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Pending changes');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Pending changes” module */
         return I18N::translate('A list of changes that need to be reviewed by a moderator, and email notifications.');
@@ -144,7 +146,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                     'block'      => str_replace('_', '-', $this->getName()),
                     'id'         => $block_id,
                     'config_url' => $config_url,
-                    'title'      => $this->getTitle(),
+                    'title'      => $this->title(),
                     'content'    => $content,
                 ]);
             }

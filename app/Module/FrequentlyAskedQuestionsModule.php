@@ -31,43 +31,33 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class FrequentlyAskedQuestionsModule
  */
-class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMenuInterface, ModuleConfigInterface
+class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleInterface, ModuleConfigInterface, ModuleMenuInterface
 {
+    use ModuleConfigTrait;
+    use ModuleMenuTrait;
+
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module. Abbreviation for “Frequently Asked Questions” */
         return I18N::translate('FAQ');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “FAQ” module */
         return I18N::translate('A list of frequently asked questions and answers.');
     }
 
     /**
-     * The URL to a page where the user can modify the configuration of this module.
-     *
-     * @return string
-     */
-    public function getConfigLink(): string
-    {
-        return route('module', [
-            'module' => $this->getName(),
-            'action' => 'Admin',
-        ]);
-    }
-
-    /**
-     * The user can re-order menus. Until they do, they are shown in this order.
+     * The default position for this menu.  It can be changed in the control panel.
      *
      * @return int
      */
     public function defaultMenuOrder(): int
     {
-        return 40;
+        return 20;
     }
 
     /**
@@ -80,8 +70,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
     public function getMenu(Tree $tree)
     {
         if ($this->faqsExist($tree, WT_LOCALE)) {
-            return new Menu($this->getTitle(), route('module', [
-                'module' => 'faq',
+            return new Menu($this->title(), route('module', [
+                'module' => $this->getName(),
                 'action' => 'Show',
                 'ged'    => $tree->name(),
             ]), 'menu-help');
@@ -146,7 +136,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
         DB::table('block')->where('block_id', '=', $block_id)->delete();
 
         $url = route('module', [
-            'module' => 'faq',
+            'module' => $this->getName(),
             'action' => 'Admin',
             'ged'    => $tree->name(),
         ]);
@@ -195,7 +185,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
         }
 
         $url = route('module', [
-            'module' => 'faq',
+            'module' => $this->getName(),
             'action' => 'Admin',
             'ged'    => $tree->name(),
         ]);
@@ -244,7 +234,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
         }
 
         $url = route('module', [
-            'module' => 'faq',
+            'module' => $this->getName(),
             'action' => 'Admin',
             'ged'    => $tree->name(),
         ]);
@@ -339,7 +329,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
         $this->setBlockSetting($block_id, 'languages', implode(',', $languages));
 
         $url = route('module', [
-            'module' => 'faq',
+            'module' => $this->getName(),
             'action' => 'Admin',
             'ged'    => $tree->name(),
         ]);

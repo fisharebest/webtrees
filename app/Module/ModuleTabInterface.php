@@ -22,15 +22,30 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Interface ModuleTabInterface - Classes and libraries for module system
  */
-interface ModuleTabInterface extends ModuleInterface
+interface ModuleTabInterface
 {
     /**
-     * The user can re-arrange the tab order, but until they do, this
-     * is the order in which tabs are shown.
+     * Users change change the order of tabs using the control panel.
+     *
+     * @param int $tab_order
+     *
+     * @return void
+     */
+    public function setTabOrder(int $tab_order): void;
+
+    /**
+     * Users change change the order of tabs using the control panel.
      *
      * @return int
      */
-    public function defaultTabOrder(): int;
+    public function getTabOrder(): int;
+
+    /**
+     * The default position for this tab.  It can be changed in the control panel.
+     *
+     * @return int
+     */
+    function defaultTabOrder(): int;
 
     /**
      * Generate the HTML content of this tab.

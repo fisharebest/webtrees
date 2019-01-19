@@ -46,7 +46,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
      *
      * @return string
      */
-    public function getDescription(): string
+    public function description(): string
     {
         return I18N::translate('You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database.');
     }

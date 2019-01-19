@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Exception;
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\FactLocation;
 use Fisharebest\Webtrees\Functions\Functions;
@@ -32,35 +31,34 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class PlacesMapModule
  */
-class PlacesModule extends AbstractModule implements ModuleTabInterface
+class PlacesModule extends AbstractModule implements ModuleInterface, ModuleTabInterface
 {
+    use ModuleTabTrait;
+
     private static $map_providers  = null;
     private static $map_selections = null;
 
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Places');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “OSM” module */
         return I18N::translate('Show the location of events on a map.');
     }
 
-    /** {@inheritdoc} */
-    public function defaultAccessLevel(): int
-    {
-        return Auth::PRIV_PRIVATE;
-    }
-
-    /** {@inheritdoc} */
-    public function defaultTabOrder(): int
-    {
-        return 4;
+    /**
+     * The default position for this tab.  It can be changed in the control panel.
+     *
+     * @return int
+     */
+    function defaultTabOrder(): int {
+        return 10;
     }
 
     /** {@inheritdoc} */

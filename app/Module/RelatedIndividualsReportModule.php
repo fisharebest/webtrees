@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -25,10 +24,12 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class RelatedIndividualsReportModule
  */
-class RelatedIndividualsReportModule extends AbstractModule implements ModuleReportInterface
+class RelatedIndividualsReportModule extends AbstractModule implements ModuleInterface, ModuleReportInterface
 {
+    use ModuleReportTrait;
+
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         // This text also appears in the .XML file - update both together
         /* I18N: Name of a report */
@@ -36,22 +37,11 @@ class RelatedIndividualsReportModule extends AbstractModule implements ModuleRep
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         // This text also appears in the .XML file - update both together
         /* I18N: Description of the “Related individuals” module */
         return I18N::translate('A report of the individuals that are closely related to an individual.');
-    }
-
-    /**
-     * What is the default access level for this module?
-     * Some modules are aimed at admins or managers, and are not generally shown to users.
-     *
-     * @return int
-     */
-    public function defaultAccessLevel(): int
-    {
-        return Auth::PRIV_PRIVATE;
     }
 
     /**
@@ -64,7 +54,7 @@ class RelatedIndividualsReportModule extends AbstractModule implements ModuleRep
     public function getReportMenu(Individual $individual): Menu
     {
         return new Menu(
-            $this->getTitle(),
+            $this->title(),
             route('report-setup', [
                 'xref'   => $individual->xref(),
                 'ged'    => $individual->tree()->name(),

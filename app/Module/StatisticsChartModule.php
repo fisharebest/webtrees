@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -25,14 +24,16 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class StatisticsChartModule
  */
-class StatisticsChartModule extends AbstractModule implements ModuleChartInterface
+class StatisticsChartModule extends AbstractModule implements ModuleInterface, ModuleChartInterface
 {
+    use ModuleChartTrait;
+
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *
      * @return string
      */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module/chart */
         return I18N::translate('Statistics');
@@ -43,22 +44,10 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return string
      */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “StatisticsChart” module */
         return I18N::translate('Various statistics charts.');
-    }
-
-    /**
-     * What is the default access level for this module?
-     *
-     * Some modules are aimed at admins or managers, and are not generally shown to users.
-     *
-     * @return int
-     */
-    public function defaultAccessLevel(): int
-    {
-        return Auth::PRIV_PRIVATE;
     }
 
     /**
@@ -68,10 +57,10 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return Menu|null
      */
-    public function getChartMenu(Individual $individual)
+    public function getChartMenu(Individual $individual): ?Menu
     {
         return new Menu(
-            $this->getTitle(),
+            $this->title(),
             route('statistics', ['ged' => $individual->tree()->name()]),
             'menu-chart-statistics',
             ['rel' => 'nofollow']
@@ -85,7 +74,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return Menu|null
      */
-    public function getBoxChartMenu(Individual $individual)
+    public function getBoxChartMenu(Individual $individual): ?Menu
     {
         return null;
     }

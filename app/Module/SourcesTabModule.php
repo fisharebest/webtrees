@@ -25,29 +25,34 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Class SourcesTabModule
  */
-class SourcesTabModule extends AbstractModule implements ModuleTabInterface
+class SourcesTabModule extends AbstractModule implements ModuleInterface, ModuleTabInterface
 {
+    use ModuleTabTrait;
+
     /** @var Fact[] All facts belonging to this source. */
     private $facts;
 
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Sources');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Sources” module */
         return I18N::translate('A tab showing the sources linked to an individual.');
     }
 
-    /** {@inheritdoc} */
-    public function defaultTabOrder(): int
-    {
-        return 30;
+    /**
+     * The default position for this tab.  It can be changed in the control panel.
+     *
+     * @return int
+     */
+    function defaultTabOrder(): int {
+        return 40;
     }
 
     /** {@inheritdoc} */

@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\CompactTreeChartModule;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,7 +39,7 @@ class CompactTreeChartController extends AbstractChartController
      */
     public function page(Request $request, Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'compact_tree_chart');
+        $this->checkModuleIsActive($tree, CompactTreeChartModule::class);
 
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
@@ -62,7 +63,7 @@ class CompactTreeChartController extends AbstractChartController
      */
     public function chart(Request $request, Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'compact_tree_chart');
+        $this->checkModuleIsActive($tree, CompactTreeChartModule::class);
 
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);

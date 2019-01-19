@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\DescendancyChartModule;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Ramsey\Uuid\Uuid;
@@ -63,7 +64,7 @@ class DescendantsChartController extends AbstractChartController
      */
     public function page(Request $request, Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'descendancy_chart');
+        $this->checkModuleIsActive($tree, DescendancyChartModule::class);
 
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
@@ -109,7 +110,7 @@ class DescendantsChartController extends AbstractChartController
     {
         $this->layout = 'layouts/ajax';
 
-        $this->checkModuleIsActive($tree, 'descendancy_chart');
+        $this->checkModuleIsActive($tree, DescendancyChartModule::class);
 
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);

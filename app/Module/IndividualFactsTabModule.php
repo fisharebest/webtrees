@@ -30,26 +30,31 @@ use Fisharebest\Webtrees\Site;
 /**
  * Class IndividualFactsTabModule
  */
-class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterface
+class IndividualFactsTabModule extends AbstractModule implements ModuleInterface, ModuleTabInterface
 {
+    use ModuleTabTrait;
+
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module/tab on the individual page. */
         return I18N::translate('Facts and events');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Facts and events” module */
         return I18N::translate('A tab showing the facts and events of an individual.');
     }
 
-    /** {@inheritdoc} */
-    public function defaultTabOrder(): int
-    {
-        return 10;
+    /**
+     * The default position for this tab.  It can be changed in the control panel.
+     *
+     * @return int
+     */
+    function defaultTabOrder(): int {
+        return 20;
     }
 
     /** {@inheritdoc} */
@@ -77,8 +82,14 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                 case 'FAMC':
                 case 'FAMS':
                     break;
+
                 default:
-                    if (!array_key_exists('extra_info', Module::getActiveSidebars($individual->tree())) || !ExtraInformationModule::showFact($fact)) {
+                    $use_extra_info_module = Module::activeSidebars($individual->tree())
+                        ->filter(function (ModuleInterface $module): bool {
+                            return $module instanceof ExtraInformationModule;
+                        })->isNotEmpty();
+
+                    if (!$use_extra_info_module || !ExtraInformationModule::showFact($fact)) {
                         $indifacts[] = $fact;
                     }
                     break;

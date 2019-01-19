@@ -447,9 +447,6 @@ class Tree
         $tree->setPreference('imported', '0');
         $tree->setPreference('title', $tree_title);
 
-        // Module privacy
-        Module::setDefaultAccess($tree_id);
-
         // Set preferences from default tree
         (new Builder(DB::connection()))->from('gedcom_setting')->insertUsing(
             ['gedcom_id', 'setting_name', 'setting_value'],

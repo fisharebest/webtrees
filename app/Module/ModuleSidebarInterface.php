@@ -22,14 +22,30 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Interface ModuleSidebarInterface - Classes and libraries for module system
  */
-interface ModuleSidebarInterface extends ModuleInterface
+interface ModuleSidebarInterface
 {
     /**
-     * The user can change the order of sidebars. Until they do this, they are shown in this order.
+     * Users change change the order of sidebars using the control panel.
+     *
+     * @param int $sidebar_order
+     *
+     * @return void
+     */
+    public function setSidebarOrder(int $sidebar_order): void;
+
+    /**
+     * Users change change the order of sidebars using the control panel.
      *
      * @return int
      */
-    public function defaultSidebarOrder(): int;
+    public function getSidebarOrder(): int;
+
+    /**
+     * The default position for this sidebar.  It can be changed in the control panel.
+     *
+     * @return int
+     */
+    function defaultSidebarOrder(): int;
 
     /**
      * Sidebar content.

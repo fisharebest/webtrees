@@ -6700,7 +6700,7 @@ class Stats
      */
     public function callBlock(string $block = '', ...$params): string
     {
-        $all_blocks = Module::getActiveBlocks($this->tree);
+        $all_blocks = Module::activeBlocks($this->tree);
 
         if (!array_key_exists($block, $all_blocks) || $block == 'html') {
             return '';

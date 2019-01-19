@@ -40,7 +40,7 @@ class BatchUpdateNameFormatPlugin extends BatchUpdateBasePlugin
      *
      * @return string
      */
-    public function getDescription(): string
+    public function description(): string
     {
         return I18N::translate('Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs.');
     }

@@ -61,7 +61,7 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
      *
      * @return string
      */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Search and replace” option of the batch update module */
         return I18N::translate('Search and replace text, using simple searches or advanced pattern matching.');

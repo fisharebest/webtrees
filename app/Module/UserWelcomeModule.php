@@ -27,17 +27,19 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class UserWelcomeModule
  */
-class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
+class UserWelcomeModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
 {
+    use ModuleBlockTrait;
+
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('My page');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “My page” module */
         return I18N::translate('A greeting message and useful links for a user.');
@@ -59,8 +61,13 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
         $individual = Individual::getInstance($gedcomid, $tree);
         $links      = [];
 
-        if ($individual) {
-            if (Module::isActiveChart($tree, 'pedigree_chart')) {
+        $pedigree_chart = Module::activeCharts($tree)
+            ->filter(function (ModuleInterface $module): bool {
+                return $module instanceof PedigreeChartModule;
+            });
+
+        if ($individual instanceof Individual) {
+            if ($pedigree_chart instanceof PedigreeChartModule) {
                 $links[] = [
                     'url'   => route('pedigree', [
                         'xref' => $individual->xref(),

@@ -26,23 +26,29 @@ use Fisharebest\Webtrees\Individual;
  * Class ExtraInformationModule
  * A sidebar to show non-genealogy information about an individual
  */
-class ExtraInformationModule extends AbstractModule implements ModuleSidebarInterface
+class ExtraInformationModule extends AbstractModule implements ModuleInterface, ModuleSidebarInterface
 {
+    use ModuleSidebarTrait;
+
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module/sidebar */
         return I18N::translate('Extra information');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Extra information” module */
         return I18N::translate('A sidebar showing non-genealogy information about an individual.');
     }
 
-    /** {@inheritdoc} */
+    /**
+     * The default position for this sidebar.  It can be changed in the control panel.
+     *
+     * @return int
+     */
     public function defaultSidebarOrder(): int
     {
         return 10;

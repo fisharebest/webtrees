@@ -98,7 +98,7 @@
                 <?php foreach ($tabs as $tab) : ?>
                     <li class="nav-item">
                         <a class="nav-link<?= $tab->isGrayedOut($individual) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" data-href="<?= e(route('individual-tab', ['xref' => $individual->xref(), 'ged' => $individual->tree()->name(), 'module' => $tab->getName()])) ?>" href="#<?= $tab->getName() ?>">
-                            <?= $tab->getTitle() ?>
+                            <?= $tab->title() ?>
                         </a>
                     </li>
                 <?php endforeach ?>
@@ -118,7 +118,7 @@
                 <div class="card-header" role="tab" id="sidebar-header-<?= $sidebar->getName() ?>">
                     <div class="card-title mb-0">
                         <a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-content-<?= $sidebar->getName() ?>" aria-expanded="<?= $sidebar->getName() === 'family_nav' ? 'true' : 'false' ?>" aria-controls="sidebar-content-<?= $sidebar->getName() ?>">
-                            <?= $sidebar->getTitle() ?>
+                            <?= $sidebar->title() ?>
                         </a>
                     </div>
                 </div>

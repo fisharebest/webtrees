@@ -25,8 +25,10 @@ use Fisharebest\Webtrees\Media;
 /**
  * Class AlbumModule
  */
-class AlbumModule extends AbstractModule implements ModuleTabInterface
+class AlbumModule extends AbstractModule implements ModuleInterface, ModuleTabInterface
 {
+    use ModuleTabTrait;
+
     /** @var Media[] List of media objects. */
     private $media_list;
 
@@ -35,7 +37,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
      *
      * @return string
      */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Album');
@@ -46,21 +48,19 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
      *
      * @return string
      */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Album” module */
         return I18N::translate('An alternative to the “media” tab, and an enhanced image viewer.');
     }
 
     /**
-     * The user can re-arrange the tab order, but until they do, this
-     * is the order in which tabs are shown.
+     * The default position for this tab.  It can be changed in the control panel.
      *
      * @return int
      */
-    public function defaultTabOrder(): int
-    {
-        return 60;
+    function defaultTabOrder(): int {
+        return 80;
     }
 
     /**

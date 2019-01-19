@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Interface ModuleChartInterface - Classes and libraries for module system
  */
-interface ModuleChartInterface extends ModuleInterface
+interface ModuleChartInterface
 {
     /**
      * Return a menu item for this chart.
@@ -32,7 +32,7 @@ interface ModuleChartInterface extends ModuleInterface
      *
      * @return Menu|null
      */
-    public function getChartMenu(Individual $individual);
+    public function getChartMenu(Individual $individual): ?Menu;
 
     /**
      * Return a menu item for this chart (for menu in individual box).
@@ -41,5 +41,5 @@ interface ModuleChartInterface extends ModuleInterface
      *
      * @return Menu|null
      */
-    public function getBoxChartMenu(Individual $individual);
+    public function getBoxChartMenu(Individual $individual): ?Menu;
 }

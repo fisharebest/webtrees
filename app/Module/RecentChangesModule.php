@@ -28,8 +28,10 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class RecentChangesModule
  */
-class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
+class RecentChangesModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
 {
+    use ModuleBlockTrait;
+
     private const DEFAULT_DAYS       = '7';
     private const DEFAULT_SHOW_USER  = '1';
     private const DEFAULT_SORT_STYLE = 'date_desc';
@@ -37,14 +39,14 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
     private const MAX_DAYS           = 90;
 
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Recent changes');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Recent changes” module */
         return I18N::translate('A list of records that have been updated recently.');

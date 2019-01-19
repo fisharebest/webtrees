@@ -30,14 +30,16 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class UserFavoritesModule
  */
-class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
+class UserFavoritesModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
 {
+    use ModuleBlockTrait;
+
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *
      * @return string
      */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Favorites');
@@ -48,7 +50,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return string
      */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Favorites” module */
         return I18N::translate('Display and manage a user’s favorite pages.');
@@ -77,7 +79,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,
                 'config_url' => '',
-                'title'      => $this->getTitle(),
+                'title'      => $this->title(),
                 'content'    => $content,
             ]);
         }

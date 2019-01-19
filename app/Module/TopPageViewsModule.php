@@ -27,14 +27,16 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class TopPageViewsModule
  */
-class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
+class TopPageViewsModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
 {
+    use ModuleBlockTrait;
+
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *
      * @return string
      */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Most viewed pages');
@@ -45,7 +47,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return string
      */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Most viewed pages” module */
         return I18N::translate('A list of the pages that have been viewed the most number of times.');
@@ -111,7 +113,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,
                 'config_url' => $config_url,
-                'title'      => $this->getTitle(),
+                'title'      => $this->title(),
                 'content'    => $content,
             ]);
         }

@@ -33,26 +33,32 @@ use Symfony\Component\HttpFoundation\Response;
  * Class InteractiveTreeModule
  * Tip : you could change the number of generations loaded before ajax calls both in individual page and in treeview page to optimize speed and server load
  */
-class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface, ModuleChartInterface
+class InteractiveTreeModule extends AbstractModule implements ModuleInterface, ModuleChartInterface, ModuleTabInterface
 {
+    use ModuleChartTrait;
+    use ModuleTabTrait;
+
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Interactive tree');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Interactive tree” module */
         return I18N::translate('An interactive tree, showing all the ancestors and descendants of an individual.');
     }
 
-    /** {@inheritdoc} */
-    public function defaultTabOrder(): int
-    {
-        return 68;
+    /**
+     * The default position for this tab.  It can be changed in the control panel.
+     *
+     * @return int
+     */
+    function defaultTabOrder(): int {
+        return 90;
     }
 
     /** {@inheritdoc} */
@@ -110,10 +116,10 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
      *
      * @return Menu|null
      */
-    public function getChartMenu(Individual $individual)
+    public function getChartMenu(Individual $individual): ?Menu
     {
         return new Menu(
-            $this->getTitle(),
+            $this->title(),
             route('module', [
                 'module' => $this->getName(),
                 'action' => 'Treeview',
@@ -132,7 +138,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
      *
      * @return Menu|null
      */
-    public function getBoxChartMenu(Individual $individual)
+    public function getBoxChartMenu(Individual $individual): ?Menu
     {
         return $this->getChartMenu($individual);
     }

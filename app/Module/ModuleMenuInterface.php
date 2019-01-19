@@ -23,14 +23,30 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Interface ModuleMenuInterface - Classes and libraries for module system
  */
-interface ModuleMenuInterface extends ModuleInterface
+interface ModuleMenuInterface
 {
     /**
-     * The user can re-order menus. Until they do, they are shown in this order.
+     * Users change change the order of menus using the control panel.
+     *
+     * @param int $menu_order
+     *
+     * @return void
+     */
+    public function setMenuOrder(int $menu_order): void;
+
+    /**
+     * Users change change the order of menus using the control panel.
      *
      * @return int
      */
-    public function defaultMenuOrder(): int;
+    public function getMenuOrder(): int;
+
+    /**
+     * The default position for this menu.  It can be changed in the control panel.
+     *
+     * @return int
+     */
+    function defaultMenuOrder(): int;
 
     /**
      * A menu, to be added to the main application menu.

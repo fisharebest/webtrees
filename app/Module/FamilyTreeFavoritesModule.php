@@ -30,14 +30,16 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class FamilyTreeFavoritesModule
  */
-class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInterface
+class FamilyTreeFavoritesModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
 {
+    use ModuleBlockTrait;
+
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *
      * @return string
      */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Favorites');
@@ -48,7 +50,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      *
      * @return string
      */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Favorites” module */
         return I18N::translate('Display and manage a family tree’s favorite pages.');
@@ -78,7 +80,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,
                 'config_url' => '',
-                'title'      => $this->getTitle(),
+                'title'      => $this->title(),
                 'content'    => $content,
             ]);
         }

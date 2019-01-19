@@ -28,8 +28,10 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class UpcomingAnniversariesModule
  */
-class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockInterface
+class UpcomingAnniversariesModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
 {
+    use ModuleBlockTrait;
+
     // Default values for new blocks.
     private const DEFAULT_DAYS   = '7';
     private const DEFAULT_FILTER = '1';
@@ -85,7 +87,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
      *
      * @return string
      */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Upcoming events');
@@ -96,7 +98,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
      *
      * @return string
      */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Upcoming events” module */
         return I18N::translate('A list of the anniversaries that will occur in the near future.');
@@ -179,7 +181,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,
                 'config_url' => $config_url,
-                'title'      => $this->getTitle(),
+                'title'      => $this->title(),
                 'content'    => $content,
             ]);
         }

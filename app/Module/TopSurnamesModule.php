@@ -27,8 +27,10 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class TopSurnamesModule
  */
-class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
+class TopSurnamesModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
 {
+    use ModuleBlockTrait;
+
     // Default values for new blocks.
     private const DEFAULT_NUMBER = '10';
     private const DEFAULT_STYLE  = 'table';
@@ -38,7 +40,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return string
      */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module. Top=Most common */
         return I18N::translate('Top surnames');
@@ -49,7 +51,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return string
      */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Top surnames” module */
         return I18N::translate('A list of the most popular surnames.');

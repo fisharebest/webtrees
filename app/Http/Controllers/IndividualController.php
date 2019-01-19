@@ -35,6 +35,7 @@ use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Illuminate\Support\Collection;
 use stdClass;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -161,7 +162,7 @@ class IndividualController extends AbstractBaseController
         $xref   = $request->get('xref', '');
         $record = Individual::getInstance($xref, $tree);
         $tab    = $request->get('module');
-        $tabs   = Module::getActiveTabs($tree);
+        $tabs   = Module::activeTabs($tree);
 
         if ($record === null || !array_key_exists($tab, $tabs)) {
             return new Response('', Response::HTTP_NOT_FOUND);
@@ -402,15 +403,14 @@ class IndividualController extends AbstractBaseController
      *
      * @param Individual $individual
      *
-     * @return ModuleTabInterface[]
+     * @return Collection|ModuleSidebarInterface[]
      */
-    public function getSidebars(Individual $individual): array
+    public function getSidebars(Individual $individual): Collection
     {
-        $sidebars = Module::getActiveSidebars($individual->tree());
-
-        return array_filter($sidebars, function (ModuleSidebarInterface $sidebar) use ($individual): bool {
-            return $sidebar->hasSidebarContent($individual);
-        });
+        return Module::activeSidebars($individual->tree())
+            ->filter(function (ModuleSidebarInterface $sidebar) use ($individual): bool {
+                return $sidebar->hasSidebarContent($individual);
+            });
     }
 
     /**
@@ -419,15 +419,14 @@ class IndividualController extends AbstractBaseController
      *
      * @param Individual $individual
      *
-     * @return ModuleTabInterface[]
+     * @return Collection|ModuleTabInterface[]
      */
-    public function getTabs(Individual $individual): array
+    public function getTabs(Individual $individual): Collection
     {
-        $tabs = Module::getActiveTabs($individual->tree());
-
-        return array_filter($tabs, function (ModuleTabInterface $tab) use ($individual): bool {
-            return $tab->hasTabContent($individual);
-        });
+        return Module::activeTabs($individual->tree())
+            ->filter(function (ModuleTabInterface $sidebar) use ($individual): bool {
+                return $sidebar->hasTabContent($individual);
+            });
     }
 
     /**

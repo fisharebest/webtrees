@@ -27,17 +27,19 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class LoggedInUsersModule
  */
-class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
+class LoggedInUsersModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
 {
+    use ModuleBlockTrait;
+
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module. (A list of users who are online now) */
         return I18N::translate('Who is online');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Who is online” module */
         return I18N::translate('A list of users and visitors who are currently online.');
@@ -106,7 +108,7 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,
                 'config_url' => '',
-                'title'      => $this->getTitle(),
+                'title'      => $this->title(),
                 'content'    => $content,
             ]);
         }

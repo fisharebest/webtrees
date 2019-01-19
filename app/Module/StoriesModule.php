@@ -31,39 +31,46 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class StoriesModule
  */
-class StoriesModule extends AbstractModule implements ModuleTabInterface, ModuleConfigInterface, ModuleMenuInterface
+class StoriesModule extends AbstractModule implements ModuleInterface, ModuleConfigInterface, ModuleMenuInterface, ModuleTabInterface
 {
+    use ModuleTabTrait;
+    use ModuleConfigTrait;
+    use ModuleMenuTrait;
+
+    /** @var int The default access level for this module.  It can be changed in the control panel. */
+    protected $access_level = Auth::PRIV_HIDE;
+
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Stories');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Stories” module */
         return I18N::translate('Add narrative stories to individuals in the family tree.');
     }
 
     /**
-     * The URL to a page where the user can modify the configuration of this module.
+     * The default position for this menu.  It can be changed in the control panel.
      *
-     * @return string
+     * @return int
      */
-    public function getConfigLink(): string
+    public function defaultMenuOrder(): int
     {
-        return route('module', [
-            'module' => $this->getName(),
-            'action' => 'Admin',
-        ]);
+        return 30;
     }
 
-    /** {@inheritdoc} */
-    public function defaultTabOrder(): int
-    {
-        return 55;
+    /**
+     * The default position for this tab.  It can be changed in the control panel.
+     *
+     * @return int
+     */
+    function defaultTabOrder(): int {
+        return 70;
     }
 
     /** {@inheritdoc} */
@@ -126,28 +133,6 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
     }
 
     /**
-     * The user can re-order menus. Until they do, they are shown in this order.
-     *
-     * @return int
-     */
-    public function defaultMenuOrder(): int
-    {
-        return 30;
-    }
-
-    /**
-     * What is the default access level for this module?
-     *
-     * Some modules are aimed at admins or managers, and are not generally shown to users.
-     *
-     * @return int
-     */
-    public function defaultAccessLevel(): int
-    {
-        return Auth::PRIV_HIDE;
-    }
-
-    /**
      * A menu, to be added to the main application menu.
      *
      * @param Tree $tree
@@ -156,7 +141,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
      */
     public function getMenu(Tree $tree)
     {
-        $menu = new Menu($this->getTitle(), route('module', [
+        $menu = new Menu($this->title(), route('module', [
             'module' => $this->getName(),
             'action' => 'ShowList',
             'ged'    => $tree->name(),
@@ -190,7 +175,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 
         return $this->viewResponse('modules/stories/config', [
             'stories'    => $stories,
-            'title'      => $this->getTitle() . ' — ' . $tree->title(),
+            'title'      => $this->title() . ' — ' . $tree->title(),
             'tree'       => $tree,
             'tree_names' => Tree::getNameList(),
         ]);
@@ -278,7 +263,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
         $this->setBlockSetting($block_id, 'languages', implode(',', $languages));
 
         $url = route('module', [
-            'module' => 'stories',
+            'module' => $this->getName(),
             'action' => 'Admin',
             'ged'    => $tree->name(),
         ]);
@@ -305,7 +290,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
             ->delete();
 
         $url = route('module', [
-            'module' => 'stories',
+            'module' => $this->getName(),
             'action' => 'Admin',
             'ged'    => $tree->name(),
         ]);
@@ -342,7 +327,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 
         return $this->viewResponse('modules/stories/list', [
             'stories' => $stories,
-            'title'   => $this->getTitle(),
+            'title'   => $this->title(),
         ]);
     }
 }

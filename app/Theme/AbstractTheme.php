@@ -27,6 +27,8 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
+use Fisharebest\Webtrees\Module\ModuleInterface;
+use Fisharebest\Webtrees\Module\PedigreeChartModule;
 use Fisharebest\Webtrees\Module\UserFavoritesModule;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
@@ -841,7 +843,7 @@ abstract class AbstractTheme
     public function individualBoxMenuCharts(Individual $individual): array
     {
         $menus = [];
-        foreach (Module::getActiveCharts($this->tree) as $chart) {
+        foreach (Module::activeCharts($this->tree) as $chart) {
             $menu = $chart->getBoxChartMenu($individual);
             if ($menu) {
                 $menus[] = $menu;
@@ -973,7 +975,7 @@ abstract class AbstractTheme
     public function menuChart(Individual $individual)
     {
         $submenus = [];
-        foreach (Module::getActiveCharts($this->tree) as $chart) {
+        foreach (Module::activeCharts($this->tree) as $chart) {
             $menu = $chart->getChartMenu($individual);
             if ($menu) {
                 $submenus[] = $menu;
@@ -1018,8 +1020,8 @@ abstract class AbstractTheme
     {
         global $controller;
 
-        $user_favorites_module = Module::getModuleByName('user_favorites');
-        $tree_favorites_module = Module::getModuleByName('gedcom_favorites');
+        $user_favorites_module = Module::getModuleByClassName(UserFavoritesModule::class);
+        $tree_favorites_module = Module::getModuleByClassName(FamilyTreeFavoritesModule::class);
 
         $user_favorites = [];
         if ($this->tree instanceof Tree && $user_favorites_module instanceof UserFavoritesModule && Auth::check()) {
@@ -1312,7 +1314,7 @@ abstract class AbstractTheme
     public function menuModules(): array
     {
         $menus = [];
-        foreach (Module::getActiveMenus($this->tree) as $module) {
+        foreach (Module::activeMenus($this->tree) as $module) {
             $menus[] = $module->getMenu($this->tree);
         }
 
@@ -1389,7 +1391,12 @@ abstract class AbstractTheme
     {
         $gedcomid = $this->tree->getUserPreference(Auth::user(), 'gedcomid');
 
-        if ($gedcomid !== '' && Module::isActiveChart($this->tree, 'pedigree_chart')) {
+        $pedigree_chart = Module::activeCharts($this->tree)
+            ->filter(function (ModuleInterface $module): bool {
+                return $module instanceof PedigreeChartModule;
+            });
+
+        if ($gedcomid !== '' && $pedigree_chart instanceof PedigreeChartModule) {
             return new Menu(
                 I18N::translate('My pedigree'),
                 route('pedigree', [
@@ -1432,7 +1439,7 @@ abstract class AbstractTheme
     public function menuReports(Individual $individual)
     {
         $submenus = [];
-        foreach (Module::getActiveReports($this->tree) as $report) {
+        foreach (Module::activeReports($this->tree) as $report) {
             $submenus[] = $report->getReportMenu($individual);
         }
 

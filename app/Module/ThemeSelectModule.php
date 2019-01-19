@@ -25,17 +25,19 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class ThemeSelectModule
  */
-class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface
+class ThemeSelectModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
 {
+    use ModuleBlockTrait;
+
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Theme change');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Theme change” module */
         return I18N::translate('An alternative way to select a new theme.');
@@ -63,7 +65,7 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface
                     'block'      => str_replace('_', '-', $this->getName()),
                     'id'         => $block_id,
                     'config_url' => '',
-                    'title'      => $this->getTitle(),
+                    'title'      => $this->title(),
                     'content'    => $content,
                 ]);
             }

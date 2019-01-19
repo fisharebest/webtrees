@@ -38,8 +38,10 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Class SiteMapModule
  */
-class SiteMapModule extends AbstractModule implements ModuleConfigInterface
+class SiteMapModule extends AbstractModule implements ModuleInterface, ModuleConfigInterface
 {
+    use ModuleConfigTrait;
+
     private const RECORDS_PER_VOLUME = 500; // Keep sitemap files small, for memory, CPU and max_allowed_packet limits.
     private const CACHE_LIFE         = 1209600; // Two weeks
 
@@ -48,7 +50,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      *
      * @return string
      */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps */
         return I18N::translate('Sitemaps');
@@ -59,23 +61,10 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      *
      * @return string
      */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Sitemaps” module */
         return I18N::translate('Generate sitemap files for search engines.');
-    }
-
-    /**
-     * The URL to a page where the user can modify the configuration of this module.
-     *
-     * @return string
-     */
-    public function getConfigLink(): string
-    {
-        return route('module', [
-            'module' => $this->getName(),
-            'action' => 'Admin',
-        ]);
     }
 
     /**
@@ -86,7 +75,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
         $this->layout = 'layouts/administration';
 
         $sitemap_url = route('module', [
-            'module' => 'sitemap',
+            'module' => $this->getName(),
             'action' => 'Index',
         ]);
 
@@ -100,7 +89,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             'all_trees'   => Tree::all(),
             'sitemap_url' => $sitemap_url,
             'submit_urls' => $submit_urls,
-            'title'       => $this->getTitle(),
+            'title'       => $this->title(),
         ]);
     }
 
@@ -116,7 +105,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             $tree->setPreference('include_in_sitemap', (string) $include_in_sitemap);
         }
 
-        FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->getTitle()), 'success');
+        FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->title()), 'success');
 
         return new RedirectResponse($this->getConfigLink());
     }

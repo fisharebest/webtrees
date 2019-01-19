@@ -32,14 +32,14 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class CensusAssistantModule extends AbstractModule implements ModuleInterface
 {
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Census assistant');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Census assistant” module */
         return I18N::translate('An alternative way to enter census transcripts and link them to individuals.');

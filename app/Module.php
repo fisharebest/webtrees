@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Exception;
+use Closure;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
@@ -28,7 +28,9 @@ use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Collection;
+use stdClass;
+use Throwable;
 
 /**
  * Functions for managing and maintaining modules.
@@ -108,159 +110,158 @@ class Module
         'yahrzeit',
     ];
 
-    /** @var ModuleInterface[] */
-    private static $modules = [];
-
     /**
-     * Load a module from a file.  Since third-party modules may declare classes or functions,
-     * we must only load each file once.
+     * All modules.
      *
-     * @param string $file
-     *
-     * @return ModuleInterface|null
+     * @return Collection|ModuleInterface[]
      */
-    private static function loadModule($file)
+    public static function all(): Collection
     {
-        if (!array_key_exists($file, self::$modules)) {
-            self::$modules[$file] = null;
-            try {
-                $module = include $file;
-                if ($module instanceof ModuleInterface) {
-                    self::$modules[$file] = $module;
-                }
-            } catch (Exception $ex) {
-                Log::addErrorLog($ex->getMessage());
-            }
-        }
+        $pattern   = WT_ROOT . Webtrees::MODULES_PATH . '*/module.php';
+        $filenames = glob($pattern);
 
-        return self::$modules[$file];
+        return app('cache.array')->rememberForever('all_modules', function() use ($filenames): Collection {
+            // Modules have a default status, order etc.
+            // We can override these from database settings.
+            $module_info = DB::table('module')
+                ->get()
+                ->mapWithKeys(function (stdClass $row): array {
+                    return [$row->module_name => $row];
+                });
+
+            return (new Collection($filenames))
+                ->map(function (string $filename) use ($module_info): ?ModuleInterface {
+                    try {
+                        $module_name = basename(dirname($filename));
+                        $module      = include $filename;
+
+                        if ($module instanceof ModuleInterface) {
+                            $module->setName($module_name);
+                        }
+
+                        if ($module_info->has($module_name)) {
+                            $module->setEnabled($module_info[$module_name]->status === 'enabled');
+
+                            if ($module instanceof ModuleMenuInterface) {
+                                $module->setMenuOrder($module_info[$module_name]->menu_order);
+                            }
+
+                            if ($module instanceof ModuleSidebarInterface) {
+                                $module->setSidebarOrder($module_info[$module_name]->sidebar_order);
+                            }
+
+                            if ($module instanceof ModuleTabInterface) {
+                                $module->setTabOrder($module_info[$module_name]->tab_order);
+                            }
+                        }
+
+                        return $module;
+                    } catch (Throwable $ex) {
+                        $message = '<pre>' . e($ex->getMessage()) . "\n" . e($ex->getTraceAsString()) . '</pre>';
+                        FlashMessages::addMessage($message, 'danger');
+
+                        return null;
+                    }
+                })
+                ->filter();
+            });
     }
 
     /**
-     * Get a list of all active (enabled) modules.
+     * A function to sort modules by name
      *
-     * @return ModuleInterface[]
+     * @return Closure
      */
-    private static function getActiveModules(): array
+    private static function moduleSorter(): Closure
     {
-        /** @var ModuleInterface[] - Only query the database once. */
-        static $modules;
-
-        if ($modules === null) {
-            $module_names = DB::table('module')
-                ->where('status', '=', 'enabled')
-                ->pluck('module_name');
-
-            $modules = [];
-            foreach ($module_names as $module_name) {
-                $module = self::loadModule(WT_ROOT . Webtrees::MODULES_PATH . $module_name . '/module.php');
-                if ($module instanceof ModuleInterface) {
-                    $modules[$module->getName()] = $module;
-                } else {
-                    // The module has been deleted or is broken? Disable it.
-                    Log::addConfigurationLog("Module {$module_name} is missing or broken - disabling it. ", null);
-                    DB::table('module')
-                        ->where('module_name', '=', $module_name)
-                        ->update(['status' => 'disabled']);
-                }
-            }
-        }
-
-        return $modules;
+        return function (ModuleInterface $x, ModuleInterface $y): int {
+            return I18N::strcasecmp($x->title(), $y->title());
+        };
     }
 
     /**
-     * Which column to sort by when fetching components.
+     * A function to sort menus
      *
-     * @param string $component
-     *
-     * @return string
+     * @return Closure
      */
-    private static function componentSortColumn(string $component): string
+    private static function menuSorter(): Closure
     {
-        if ($component === 'menu' || $component === 'sidebar' || $component === 'tab') {
-            return $component . '_order';
-        } else {
-            return 'module_name';
-        }
+        return function (ModuleMenuInterface $x, ModuleMenuInterface $y): int {
+            return $x->getMenuOrder() <=> $y->getMenuOrder();
+        };
+    }
+
+    /**
+     * A function to sort menus
+     *
+     * @return Closure
+     */
+    private static function sidebarSorter(): Closure
+    {
+        return function (ModuleSidebarInterface $x, ModuleSidebarInterface $y): int {
+            return $x->getSidebarOrder() <=> $y->getSidebarOrder();
+        };
+    }
+
+    /**
+     * A function to sort menus
+     *
+     * @return Closure
+     */
+    private static function tabSorter(): Closure
+    {
+        return function (ModuleTabInterface $x, ModuleTabInterface $y): int {
+            return $x->getTabOrder() <=> $y->getTabOrder();
+        };
     }
 
     /**
      * Get a list of modules which (a) provide a specific function and (b) we have permission to see.
-     * We cannot currently use auto-loading for modules, as there may be user-defined
-     * modules about which the auto-loader knows nothing.
      *
      * @param Tree   $tree
-     * @param string $component The type of module, such as "tab", "report" or "menu"
+     * @param string $interface
+     * @param string $component
      *
-     * @return ModuleBlockInterface[]|ModuleChartInterface[]|ModuleMenuInterface[]|ModuleReportInterface[]|ModuleSidebarInterface[]|ModuleTabInterface[]|ModuleThemeInterface[]
+     * @return Collection|ModuleBlockInterface[]|ModuleChartInterface[]|ModuleMenuInterface[]|ModuleReportInterface[]|ModuleSidebarInterface[]|ModuleTabInterface[]|ModuleThemeInterface[]
      */
-    private static function getActiveModulesByComponent(Tree $tree, $component): array
+    private static function getActiveModulesByComponent(Tree $tree, string $interface, string $component): Collection
     {
-        $sort_column = self::componentSortColumn($component);
-
-        $module_names = DB::table('module')
-            ->join('module_privacy', 'module.module_name', '=', 'module_privacy.module_name')
-            ->where('gedcom_id', '=', $tree->id())
-            ->where('component', '=', $component)
-            ->where('status', '=', 'enabled')
-            ->where('access_level', '>=', Auth::accessLevel($tree))
-            ->orderBy('module.' . $sort_column)
-            ->pluck('module.module_name');
-
-        $array = [];
-        foreach ($module_names as $module_name) {
-            $interface = '\Fisharebest\Webtrees\Module\Module' . ucfirst($component) . 'Interface';
-            $module    = self::getModuleByName($module_name);
-            if ($module instanceof $interface) {
-                $array[$module_name] = $module;
-            }
-        }
-
-        // The order of menus/sidebars/tabs is defined in the database. Others are sorted by name.
-        if ($component !== 'menu' && $component !== 'sidebar' && $component !== 'tab') {
-            uasort($array, function (ModuleInterface $x, ModuleInterface $y): int {
-                return I18N::strcasecmp($x->getTitle(), $y->getTitle());
+        return self::all()
+            ->filter(function (ModuleInterface $module) use ($interface, $component, $tree): bool {
+                return
+                    $module->isEnabled() &&
+                    $module instanceof $interface &&
+                    $module->accessLevel($tree, $component) >= Auth::accessLevel($tree);
             });
-        }
-
-        return $array;
     }
 
     /**
      * Get a list of all modules, enabled or not, which provide a specific function.
-     * We cannot currently use auto-loading for modules, as there may be user-defined
-     * modules about which the auto-loader knows nothing.
      *
-     * @param string $component The type of module, such as "tab", "report" or "menu"
+     * @param string $interface
      *
-     * @return ModuleInterface[]
+     * @return Collection|ModuleInterface[]
      */
-    public static function getAllModulesByComponent($component): array
+    public static function getAllModulesByInterface(string $interface): Collection
     {
-        $sort_column = self::componentSortColumn($component);
-
-        $module_names = DB::table('module')
-            ->orderBy($sort_column)
-            ->pluck('module_name');
-
-        $array = [];
-        foreach ($module_names as $module_name) {
-            $interface = '\Fisharebest\Webtrees\Module\Module' . ucfirst($component) . 'Interface';
-            $module    = self::getModuleByName($module_name);
-            if ($module instanceof $interface) {
-                $array[$module_name] = $module;
-            }
-        }
-
-        // The order of menus/sidebars/tabs is defined in the database. Others are sorted by name.
-        if ($component !== 'menu' && $component !== 'sidebar' && $component !== 'tab') {
-            uasort($array, function (ModuleInterface $x, ModuleInterface $y): int {
-                return I18N::strcasecmp($x->getTitle(), $y->getTitle());
+        $modules = self::all()
+            ->filter(function (ModuleInterface $module) use ($interface): bool {
+                return $module->isEnabled() && $module instanceof $interface;
             });
-        }
 
-        return $array;
+        switch ($interface) {
+            case ModuleMenuInterface::class:
+                return $modules->sort(self::menuSorter());
+
+            case ModuleSidebarInterface::class:
+                return $modules->sort(self::sidebarSorter());
+
+            case ModuleTabInterface::class:
+                return $modules->sort(self::tabSorter());
+
+            default:
+                return $modules->sort(self::moduleSorter());
+        }
     }
 
     /**
@@ -268,11 +269,12 @@ class Module
      *
      * @param Tree $tree
      *
-     * @return ModuleBlockInterface[]
+     * @return Collection|ModuleBlockInterface[]
      */
-    public static function getActiveBlocks(Tree $tree): array
+    public static function activeBlocks(Tree $tree): Collection
     {
-        return self::getActiveModulesByComponent($tree, 'block');
+        return self::getActiveModulesByComponent($tree, ModuleBlockInterface::class, 'block')
+            ->sort(self::moduleSorter());
     }
 
     /**
@@ -280,46 +282,26 @@ class Module
      *
      * @param Tree $tree
      *
-     * @return ModuleChartInterface[]
+     * @return Collection|ModuleChartInterface[]
      */
-    public static function getActiveCharts(Tree $tree): array
+    public static function activeCharts(Tree $tree): Collection
     {
-        return self::getActiveModulesByComponent($tree, 'chart');
-    }
-
-    /**
-     * Get a list of modules which (a) provide a chart and (b) we have permission to see.
-     *
-     * @param Tree   $tree
-     * @param string $module
-     *
-     * @return bool
-     */
-    public static function isActiveChart(Tree $tree, $module): bool
-    {
-        return array_key_exists($module, self::getActiveModulesByComponent($tree, 'chart'));
+        return self::getActiveModulesByComponent($tree, ModuleChartInterface::class, 'chart')
+            ->sort(self::moduleSorter());
     }
 
     /**
      * Get a list of module names which have configuration options.
      *
-     * @return ModuleConfigInterface[]
+     * @return Collection|ModuleConfigInterface[]
      */
-    public static function configurableModules(): array
+    public static function configurableModules(): Collection
     {
-        $modules = array_filter(self::getInstalledModules('disabled'), function (ModuleInterface $module): bool {
-            return $module instanceof ModuleConfigInterface;
-        });
-
-        // Exclude disabled modules
-        $enabled_modules = DB::table('module')
-            ->where('status', '=', 'enabled')
-            ->pluck('module_name')
-            ->all();
-
-        return array_filter($modules, function (ModuleConfigInterface $module) use ($enabled_modules): bool {
-            return in_array($module->getName(), $enabled_modules);
-        });
+        return self::all()
+            ->filter(function (ModuleInterface $module): bool {
+                return $module->isEnabled() && $module instanceof ModuleConfigInterface;
+            })
+            ->sort(self::moduleSorter());
     }
 
     /**
@@ -327,11 +309,12 @@ class Module
      *
      * @param Tree $tree
      *
-     * @return ModuleMenuInterface[]
+     * @return Collection|ModuleMenuInterface[]
      */
-    public static function getActiveMenus(Tree $tree): array
+    public static function activeMenus(Tree $tree): Collection
     {
-        return self::getActiveModulesByComponent($tree, 'menu');
+        return self::getActiveModulesByComponent($tree, ModuleMenuInterface::class, 'menu')
+            ->sort(self::menuSorter());
     }
 
     /**
@@ -339,11 +322,12 @@ class Module
      *
      * @param Tree $tree
      *
-     * @return ModuleReportInterface[]
+     * @return Collection|ModuleReportInterface[]
      */
-    public static function getActiveReports(Tree $tree): array
+    public static function activeReports(Tree $tree): Collection
     {
-        return self::getActiveModulesByComponent($tree, 'report');
+        return self::getActiveModulesByComponent($tree, ModuleReportInterface::class, 'report')
+            ->sort(self::moduleSorter());
     }
 
     /**
@@ -351,11 +335,12 @@ class Module
      *
      * @param Tree $tree
      *
-     * @return ModuleSidebarInterface[]
+     * @return Collection|ModuleSidebarInterface[]
      */
-    public static function getActiveSidebars(Tree $tree): array
+    public static function activeSidebars(Tree $tree): Collection
     {
-        return self::getActiveModulesByComponent($tree, 'sidebar');
+        return self::getActiveModulesByComponent($tree, ModuleSidebarInterface::class, 'sidebar')
+            ->sort(self::sidebarSorter());
     }
 
     /**
@@ -363,11 +348,12 @@ class Module
      *
      * @param Tree $tree
      *
-     * @return ModuleTabInterface[]
+     * @return Collection|ModuleTabInterface[]
      */
-    public static function getActiveTabs(Tree $tree): array
+    public static function activeTabs(Tree $tree): Collection
     {
-        return self::getActiveModulesByComponent($tree, 'tab');
+        return self::getActiveModulesByComponent($tree, ModuleTabInterface::class, 'tab')
+            ->sort(self::tabSorter());
     }
 
     /**
@@ -375,11 +361,12 @@ class Module
      *
      * @param Tree $tree
      *
-     * @return ModuleThemeInterface[]
+     * @return Collection|ModuleThemeInterface[]
      */
-    public static function getActiveThemes(Tree $tree): array
+    public static function activeThemes(Tree $tree): Collection
     {
-        return self::getActiveModulesByComponent($tree, 'theme');
+        return self::getActiveModulesByComponent($tree, ModuleThemeInterface::class, 'theme')
+            ->sort(self::moduleSorter());
     }
 
     /**
@@ -391,149 +378,26 @@ class Module
      */
     public static function getModuleByName(string $module_name): ?ModuleInterface
     {
-        $modules = self::getActiveModules();
-        if (array_key_exists($module_name, $modules)) {
-            return $modules[$module_name];
-        }
-
-        return null;
+        return self::all()
+            ->filter(function (ModuleInterface $module) use ($module_name): bool {
+                return $module->isEnabled() && $module->getName() === $module_name;
+            })
+            ->first();
     }
 
     /**
-     * For newly discovered modules, set the access level for all trees.
+     * Find a specified module, if it is currently active.
      *
-     * @param ModuleInterface $module
-     * @param string          $component
+     * @param string $class_name
+     *
+     * @return ModuleInterface|null
      */
-    private static function setAllAccessLevels(ModuleInterface $module, string $component): void
+    public static function getModuleByClassName(string $class_name): ?ModuleInterface
     {
-        (new Builder(DB::connection()))->from('module_privacy')->insertUsing(
-            ['module_name', 'gedcom_id', 'component', 'access_level'],
-            function (Builder $query) use ($module, $component) {
-                $query->select([
-                    DB::raw(DB::connection()->getPdo()->quote($module->getName())),
-                    'gedcom_id',
-                    DB::raw(DB::connection()->getPdo()->quote($component)),
-                    $module->defaultAccessLevel(),
-                ])->from('gedcom');
-            }
-        );
-    }
-
-    /**
-     * Scan the source code to find a list of all installed modules.
-     * During setup, new modules need a status of “enabled”.
-     * In admin->modules, new modules need status of “disabled”.
-     *
-     * @param string $default_status
-     *
-     * @return ModuleInterface[]
-     */
-    public static function getInstalledModules($default_status): array
-    {
-        $modules = [];
-
-        foreach (glob(WT_ROOT . Webtrees::MODULES_PATH . '*/module.php') as $file) {
-            try {
-                $module = self::loadModule($file);
-                if ($module instanceof ModuleInterface) {
-                    $modules[$module->getName()] = $module;
-
-                    $exists = DB::table('module')->where('module_name', '=', $module->getName())->pluck('module_name')->isNotEmpty();
-
-                    if (!$exists) {
-                        DB::table('module')->insert([
-                            'module_name'   => $module->getName(),
-                            'status'        => $default_status,
-                            'menu_order'    => $module instanceof ModuleMenuInterface ? $module->defaultMenuOrder() : null,
-                            'sidebar_order' => $module instanceof ModuleSidebarInterface ? $module->defaultSidebarOrder() : null,
-                            'tab_order'     => $module instanceof ModuleTabInterface ? $module->defaultTabOrder() : null,
-                        ]);
-
-                        // Set the default privcy for this module. Note that this also sets it for the
-                        // default family tree, with a gedcom_id of -1
-                        if ($module instanceof ModuleMenuInterface) {
-                            self::setAllAccessLevels($module, 'menu');
-                        }
-                        if ($module instanceof ModuleSidebarInterface) {
-                            self::setAllAccessLevels($module, 'sidebar');
-                        }
-                        if ($module instanceof ModuleTabInterface) {
-                            self::setAllAccessLevels($module, 'tab');
-                        }
-                        if ($module instanceof ModuleBlockInterface) {
-                            self::setAllAccessLevels($module, 'block');
-                        }
-                        if ($module instanceof ModuleChartInterface) {
-                            self::setAllAccessLevels($module, 'chart');
-                        }
-                        if ($module instanceof ModuleReportInterface) {
-                            self::setAllAccessLevels($module, 'report');
-                        }
-                        if ($module instanceof ModuleThemeInterface) {
-                            self::setAllAccessLevels($module, 'theme');
-                        }
-                    }
-                }
-            } catch (Exception $ex) {
-                // Old or invalid module?
-                Log::addErrorLog($ex->getMessage());
-            }
-        }
-
-        return $modules;
-    }
-
-    /**
-     * Set the access level for a tree/module/component.
-     *
-     * @param int             $tree_id
-     * @param ModuleInterface $module
-     * @param string          $component
-     */
-    private static function setAccessLevel(int $tree_id, ModuleInterface $module, string $component): void
-    {
-        DB::table('module_privacy')->updateOrInsert([
-            'module_name' => $module->getName(),
-            'gedcom_id'   => $tree_id,
-            'component'   => $component,
-        ], [
-            'access_level' => $module->defaultAccessLevel(),
-        ]);
-    }
-
-    /**
-     * After creating a new family tree, we need to assign the default access
-     * rights for each module.
-     *
-     * @param int $tree_id
-     *
-     * @return void
-     */
-    public static function setDefaultAccess(int $tree_id): void
-    {
-        foreach (self::getInstalledModules('disabled') as $module) {
-            if ($module instanceof ModuleMenuInterface) {
-                self::setAccessLevel($tree_id, $module, 'menu');
-            }
-            if ($module instanceof ModuleSidebarInterface) {
-                self::setAccessLevel($tree_id, $module, 'sidebar');
-            }
-            if ($module instanceof ModuleTabInterface) {
-                self::setAccessLevel($tree_id, $module, 'tab');
-            }
-            if ($module instanceof ModuleBlockInterface) {
-                self::setAccessLevel($tree_id, $module, 'block');
-            }
-            if ($module instanceof ModuleChartInterface) {
-                self::setAccessLevel($tree_id, $module, 'chart');
-            }
-            if ($module instanceof ModuleReportInterface) {
-                self::setAccessLevel($tree_id, $module, 'report');
-            }
-            if ($module instanceof ModuleThemeInterface) {
-                self::setAccessLevel($tree_id, $module, 'theme');
-            }
-        }
+        return self::all()
+            ->filter(function (ModuleInterface $module) use ($class_name): bool {
+                return $module->isEnabled() && $module instanceof $class_name;
+            })
+            ->first();
     }
 }

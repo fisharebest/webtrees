@@ -17,45 +17,66 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Tree;
+
 /**
  * Interface ModuleInterface - Classes and libraries for module system
  */
 interface ModuleInterface
 {
     /**
-     * Create a new module.
+     * A unique internal name for this module (based on the installation folder).
      *
-     * @param string $directory Where is this module installed
+     * @param string $name
+     *
+     * @return self
      */
-    public function __construct(string $directory);
+    public function setName(string $name): self;
+
+    /**
+     * A unique internal name for this module (based on the installation folder).
+     *
+     * @return string
+     */
+    public function getName(): string;
+
+    /**
+     * Has the module been disabled in the control panel?
+     *
+     * @param bool $enabled
+     *
+     * @return self
+     */
+    public function setEnabled(bool $enabled): self;
+
+    /**
+     * Has the module been disabled in the control panel?
+     *
+     * @return bool
+     */
+    public function isEnabled(): bool;
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *
      * @return string
      */
-    public function getTitle(): string;
+    public function title(): string;
 
     /**
      * A sentence describing what this module does.
      *
      * @return string
      */
-    public function getDescription(): string;
+    public function description(): string;
 
     /**
-     * What is the default access level for this module?
+     * Get a the current access level for a module
      *
-     * Some modules are aimed at admins or managers, and are not generally shown to users.
+     * @param Tree   $tree
+     * @param string $component tab, block, menu, etc
      *
-     * @return int Returns one of: Auth::PRIV_HIDE, Auth::PRIV_PRIVATE, Auth::PRIV_USER, Auth::PRIV_NONE
+     * @return int
      */
-    public function defaultAccessLevel(): int;
-
-    /**
-     * Provide a unique internal name for this module
-     *
-     * @return string
-     */
-    public function getName(): string;
+    public function accessLevel(Tree $tree, string $component): int;
 }

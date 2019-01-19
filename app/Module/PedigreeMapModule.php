@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Exception;
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
 use Fisharebest\Webtrees\Fact;
@@ -35,8 +34,10 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class PedigreeMapModule
  */
-class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
+class PedigreeMapModule extends AbstractModule implements ModuleInterface, ModuleChartInterface
 {
+    use ModuleChartTrait;
+
     private const LINE_COLORS = [
         '#FF0000',
         // Red
@@ -60,23 +61,17 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
     private static $map_selections = null;
 
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Pedigree map');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “OSM” module */
         return I18N::translate('Show the birthplace of ancestors on a map.');
-    }
-
-    /** {@inheritdoc} */
-    public function defaultAccessLevel(): int
-    {
-        return Auth::PRIV_PRIVATE;
     }
 
     /**
@@ -84,9 +79,9 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
      *
      * @param Individual $individual
      *
-     * @return Menu
+     * @return Menu|null
      */
-    public function getChartMenu(Individual $individual): Menu
+    public function getChartMenu(Individual $individual): ?Menu
     {
         return new Menu(
             I18N::translate('Pedigree map'),
@@ -106,9 +101,9 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
      *
      * @param Individual $individual
      *
-     * @return Menu
+     * @return Menu|null
      */
-    public function getBoxChartMenu(Individual $individual): Menu
+    public function getBoxChartMenu(Individual $individual): ?Menu
     {
         return $this->getChartMenu($individual);
     }

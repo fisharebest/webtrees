@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\TimelineChartModule;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -58,7 +59,7 @@ class TimelineChartController extends AbstractChartController
      */
     public function page(Request $request, Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'timeline_chart');
+        $this->checkModuleIsActive($tree, TimelineChartModule::class);
 
         $scale = (int) $request->get('scale', self::SCALE_DEFAULT);
         $scale = min($scale, self::SCALE_MAX);
@@ -131,7 +132,7 @@ class TimelineChartController extends AbstractChartController
      */
     public function chart(Request $request, Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'timeline_chart');
+        $this->checkModuleIsActive($tree, TimelineChartModule::class);
 
         $scale = (int) $request->get('scale', self::SCALE_DEFAULT);
         $scale = min($scale, self::SCALE_MAX);

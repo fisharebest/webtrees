@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\FanChartModule;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
@@ -55,7 +56,7 @@ class FanChartController extends AbstractChartController
      */
     public function page(Request $request, Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'fan_chart');
+        $this->checkModuleIsActive($tree, FanChartModule::class);
 
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
@@ -99,7 +100,7 @@ class FanChartController extends AbstractChartController
      */
     public function chart(Request $request, Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'fan_chart');
+        $this->checkModuleIsActive($tree, FanChartModule::class);
 
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);

@@ -23,23 +23,24 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\Webtrees;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class ChartsBlockModule
  */
-class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
+class ChartsBlockModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
 {
+    use ModuleBlockTrait;
+
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module/block */
         return I18N::translate('Charts');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Charts” module */
         return I18N::translate('An alternative way to display charts.');
@@ -72,7 +73,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
             $person = Individual::getInstance($pid, $tree);
         }
 
-        $title = $this->getTitle();
+        $title = $this->title();
 
         if ($person) {
             $content = '';
@@ -118,7 +119,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                     break;
                 case 'treenav':
                     $title   = I18N::translate('Interactive tree of %s', $person->getFullName());
-                    $mod     = new InteractiveTreeModule(Webtrees::MODULES_PATH . 'tree');
+                    $mod     = new InteractiveTreeModule();
                     $tv      = new TreeView();
                     $content .= '<script>$("head").append(\'<link rel="stylesheet" href="' . $mod->css() . '" type="text/css" />\');</script>';
                     $content .= '<script src="' . $mod->js() . '"></script>';

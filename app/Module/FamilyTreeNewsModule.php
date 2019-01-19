@@ -29,14 +29,16 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 /**
  * Class FamilyTreeNewsModule
  */
-class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterface
+class FamilyTreeNewsModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
 {
+    use ModuleBlockTrait;
+
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *
      * @return string
      */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('News');
@@ -47,7 +49,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      *
      * @return string
      */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “News” module */
         return I18N::translate('Family news and site announcements.');
@@ -82,7 +84,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,
                 'config_url' => '',
-                'title'      => $this->getTitle(),
+                'title'      => $this->title(),
                 'content'    => $content,
             ]);
         }

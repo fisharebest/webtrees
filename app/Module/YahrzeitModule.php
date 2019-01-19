@@ -30,8 +30,10 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class YahrzeitModule
  */
-class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
+class YahrzeitModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
 {
+    use ModuleBlockTrait;
+
     // Default values for new blocks.
     private const DEFAULT_CALENDAR = 'jewish';
     private const DEFAULT_DAYS     = '7';
@@ -41,14 +43,14 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
     private const MAX_DAYS = 30;
 
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar. */
         return I18N::translate('Yahrzeiten');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar. */
         return I18N::translate('A list of the Hebrew death anniversaries that will occur in the near future.');
@@ -167,7 +169,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,
                 'config_url' => $config_url,
-                'title'      => $this->getTitle(),
+                'title'      => $this->title(),
                 'content'    => $content,
             ]);
         }

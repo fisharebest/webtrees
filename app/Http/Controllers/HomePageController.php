@@ -22,9 +22,11 @@ use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
+use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,7 +51,7 @@ class HomePageController extends AbstractBaseController
     {
         $block_id = (int) $request->get('block_id');
         $block    = $this->treeBlock($request, $tree, $user);
-        $title    = $block->getTitle() . ' — ' . I18N::translate('Preferences');
+        $title    = $block->title() . ' — ' . I18N::translate('Preferences');
 
         return $this->viewResponse('modules/edit-block-config', [
             'block'      => $block,
@@ -128,7 +130,7 @@ class HomePageController extends AbstractBaseController
     {
         $block_id = (int) $request->get('block_id');
         $block    = $this->userBlock($request, $user);
-        $title    = $block->getTitle() . ' — ' . I18N::translate('Preferences');
+        $title    = $block->title() . ' — ' . I18N::translate('Preferences');
 
         return $this->viewResponse('modules/edit-block-config', [
             'block'      => $block,
@@ -559,7 +561,7 @@ class HomePageController extends AbstractBaseController
      */
     private function getBlockModule(Tree $tree, int $block_id)
     {
-        $active_blocks = Module::getActiveBlocks($tree);
+        $active_blocks = Module::activeBlocks($tree);
 
         $module_name = DB::table('block')
             ->join('module', 'block.module_name', '=', 'module.module_name')
@@ -567,37 +569,41 @@ class HomePageController extends AbstractBaseController
             ->where('status', '=', 'enabled')
             ->value('module.module_name');
 
-        return $active_blocks[$module_name] ?? null;
+        return $active_blocks->filter(function (ModuleInterface $module) use ($module_name): bool {
+            return $module->getName() === $module_name;
+        })->first();
     }
 
     /**
      * Get all the available blocks for a tree page.
      *
-     * @return ModuleBlockInterface[]
+     * @return Collection|ModuleBlockInterface[]
      */
-    private function getAvailableTreeBlocks(): array
+    private function getAvailableTreeBlocks(): Collection
     {
-        $blocks = Module::getAllModulesByComponent('block');
-        $blocks = array_filter($blocks, function (ModuleBlockInterface $block): bool {
-            return $block->isGedcomBlock();
-        });
-
-        return $blocks;
+        return Module::getAllModulesByInterface(ModuleBlockInterface::class)
+            ->filter(function (ModuleBlockInterface $block): bool {
+                return $block->isGedcomBlock();
+            })
+            ->mapWithKeys(function (ModuleInterface $block): array {
+                return [$block->getName() => $block];
+            });
     }
 
     /**
      * Get all the available blocks for a user page.
      *
-     * @return ModuleBlockInterface[]
+     * @return Collection|ModuleBlockInterface[]
      */
-    private function getAvailableUserBlocks(): array
+    private function getAvailableUserBlocks(): Collection
     {
-        $blocks = Module::getAllModulesByComponent('block');
-        $blocks = array_filter($blocks, function (ModuleBlockInterface $block): bool {
-            return $block->isUserBlock();
-        });
-
-        return $blocks;
+        return Module::getAllModulesByInterface(ModuleBlockInterface::class)
+            ->filter(function (ModuleBlockInterface $block): bool {
+                return $block->isUserBlock();
+            })
+            ->mapWithKeys(function (ModuleInterface $block): array {
+                return [$block->getName() => $block];
+            });
     }
 
     /**
@@ -607,9 +613,9 @@ class HomePageController extends AbstractBaseController
      * @param int    $access_level
      * @param string $location "main" or "side"
      *
-     * @return ModuleBlockInterface[]
+     * @return Collection|ModuleBlockInterface[]
      */
-    private function getBlocksForTreePage(int $tree_id, int $access_level, string $location): array
+    private function getBlocksForTreePage(int $tree_id, int $access_level, string $location): Collection
     {
         $rows = DB::table('block')
             ->join('module', 'module.module_name', '=', 'block.module_name')
@@ -620,8 +626,7 @@ class HomePageController extends AbstractBaseController
             ->where('status', '=', 'enabled')
             ->where('access_level', '>=', $access_level)
             ->orderBy('block_order')
-            ->pluck('block.module_name', 'block_id')
-            ->all();
+            ->pluck('block.module_name', 'block_id');
 
         return $this->filterActiveBlocks($rows, $this->getAvailableTreeBlocks());
     }
@@ -634,9 +639,9 @@ class HomePageController extends AbstractBaseController
      * @param int    $access_level
      * @param string $location "main" or "side"
      *
-     * @return ModuleBlockInterface[]
+     * @return Collection|ModuleBlockInterface[]
      */
-    private function getBlocksForUserPage(int $tree_id, int $user_id, int $access_level, string $location): array
+    private function getBlocksForUserPage(int $tree_id, int $user_id, int $access_level, string $location): Collection
     {
         $rows = DB::table('block')
             ->join('module', 'module.module_name', '=', 'block.module_name')
@@ -647,8 +652,7 @@ class HomePageController extends AbstractBaseController
             ->where('status', '=', 'enabled')
             ->where('access_level', '>=', $access_level)
             ->orderBy('block_order')
-            ->pluck('block.module_name', 'block_id')
-            ->all();
+            ->pluck('block.module_name', 'block_id');
 
         return $this->filterActiveBlocks($rows, $this->getAvailableUserBlocks());
     }
@@ -656,16 +660,19 @@ class HomePageController extends AbstractBaseController
     /**
      * Take a list of block names, and return block (module) objects.
      *
-     * @param string[] $blocks
-     * @param array    $active_blocks
+     * @param Collection $blocks
+     * @param Collection $active_blocks
      *
-     * @return ModuleBlockInterface[]
+     * @return Collection|ModuleBlockInterface[]
      */
-    private function filterActiveBlocks(array $blocks, array $active_blocks): array
+    private function filterActiveBlocks(Collection $blocks, Collection $active_blocks): Collection
     {
-        return array_filter(array_map(function (string $module_name) use ($active_blocks) {
-            return $active_blocks[$module_name] ?? false;
-        }, $blocks));
+        return $blocks->map(function (string $block_name) use ($active_blocks): ?ModuleBlockInterface {
+                return $active_blocks->filter(function (ModuleInterface $block) use ($block_name): bool {
+                    return $block->getName() === $block_name;
+                })->first();
+            })
+            ->filter();
     }
 
     /**

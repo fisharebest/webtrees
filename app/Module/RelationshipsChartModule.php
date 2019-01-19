@@ -30,8 +30,11 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class RelationshipsChartModule
  */
-class RelationshipsChartModule extends AbstractModule implements ModuleConfigInterface, ModuleChartInterface
+class RelationshipsChartModule extends AbstractModule implements ModuleInterface, ModuleChartInterface, ModuleConfigInterface
 {
+    use ModuleChartTrait;
+    use ModuleConfigTrait;
+
     /** It would be more correct to use PHP_INT_MAX, but this isn't friendly in URLs */
     public const UNLIMITED_RECURSION = 99;
 
@@ -46,7 +49,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      *
      * @return string
      */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module/chart */
         return I18N::translate('Relationships');
@@ -57,22 +60,10 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      *
      * @return string
      */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “RelationshipsChart” module */
         return I18N::translate('A chart displaying relationships between two individuals.');
-    }
-
-    /**
-     * What is the default access level for this module?
-     *
-     * Some modules are aimed at admins or managers, and are not generally shown to users.
-     *
-     * @return int
-     */
-    public function defaultAccessLevel(): int
-    {
-        return Auth::PRIV_PRIVATE;
     }
 
     /**
@@ -82,7 +73,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      *
      * @return Menu|null
      */
-    public function getChartMenu(Individual $individual)
+    public function getChartMenu(Individual $individual): ?Menu
     {
         $tree     = $individual->tree();
         $gedcomid = $tree->getUserPreference(Auth::user(), 'gedcomid');
@@ -118,23 +109,9 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      *
      * @return Menu|null
      */
-    public function getBoxChartMenu(Individual $individual)
+    public function getBoxChartMenu(Individual $individual): ?Menu
     {
         return $this->getChartMenu($individual);
-    }
-
-
-    /**
-     * The URL to a page where the user can modify the configuration of this module.
-     *
-     * @return string
-     */
-    public function getConfigLink(): string
-    {
-        return route('module', [
-            'module' => $this->getName(),
-            'action' => 'Admin',
-        ]);
     }
 
     /**
@@ -150,7 +127,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
             'default_ancestors' => self::DEFAULT_ANCESTORS,
             'default_recursion' => self::DEFAULT_RECURSION,
             'recursion_options' => $this->recursionOptions(),
-            'title'             => I18N::translate('Chart preferences') . ' — ' . $this->getTitle(),
+            'title'             => I18N::translate('Chart preferences') . ' — ' . $this->title(),
         ]);
     }
 
@@ -169,7 +146,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
             $tree->setPreference('RELATIONSHIP_ANCESTORS', $ancestors);
         }
 
-        FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->getTitle()), 'success');
+        FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->title()), 'success');
 
         return new RedirectResponse($this->getConfigLink());
     }

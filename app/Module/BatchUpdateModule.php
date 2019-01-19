@@ -40,8 +40,10 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Class BatchUpdateModule
  */
-class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
+class BatchUpdateModule extends AbstractModule implements ModuleInterface, ModuleConfigInterface
 {
+    use ModuleConfigTrait;
+
     protected $layout = 'layouts/administration';
 
     /**
@@ -49,7 +51,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      *
      * @return string
      */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Batch update');
@@ -60,7 +62,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      *
      * @return string
      */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Batch update” module */
         return I18N::translate('Apply automatic corrections to your genealogy data.');
@@ -380,19 +382,5 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
             default:
                 return GedcomRecord::getInstance($record->xref, $tree, $record->gedcom);
         }
-    }
-
-    /**
-     * The URL to a page where the user can modify the configuration of this module.
-     * These links are displayed in the admin page menu.
-     *
-     * @return string
-     */
-    public function getConfigLink(): string
-    {
-        return route('module', [
-            'module' => $this->getName(),
-            'action' => 'Admin',
-        ]);
     }
 }

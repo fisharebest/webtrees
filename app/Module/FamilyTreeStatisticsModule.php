@@ -28,20 +28,22 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class FamilyTreeStatisticsModule
  */
-class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockInterface
+class FamilyTreeStatisticsModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
 {
+    use ModuleBlockTrait;
+
     /** Show this number of surnames by default */
     private const DEFAULT_NUMBER_OF_SURNAMES = '10';
 
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Statistics');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of “Statistics” module */
         return I18N::translate('The size of the family tree, earliest and latest events, common names, etc.');
@@ -156,7 +158,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,
                 'config_url' => $config_url,
-                'title'      => $this->getTitle(),
+                'title'      => $this->title(),
                 'content'    => $content,
             ]);
         }

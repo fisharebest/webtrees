@@ -34,7 +34,6 @@ class SeedDatabase implements SeedInterface
         (new SeedGedcomTable())->run();
         (new SeedGedcomSettingTable())->run();
         (new SeedDefaultResnTable())->run();
-        (new SeedModuleTable())->run();
         (new SeedBlockTable())->run();
     }
 }

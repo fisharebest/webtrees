@@ -40,7 +40,7 @@ class BatchUpdateDuplicateLinksPlugin extends BatchUpdateBasePlugin
      *
      * @return string
      */
-    public function getDescription(): string
+    public function description(): string
     {
         return I18N::translate('A common error is to have multiple links to the same record, for example listing the same child more than once in a family record.');
     }

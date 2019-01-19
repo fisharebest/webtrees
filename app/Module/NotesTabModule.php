@@ -25,29 +25,34 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Class NotesTabModule
  */
-class NotesTabModule extends AbstractModule implements ModuleTabInterface
+class NotesTabModule extends AbstractModule implements ModuleInterface, ModuleTabInterface
 {
+    use ModuleTabTrait;
+
     /** @var Fact[] A list facts for this note. */
     private $facts;
 
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Notes');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Notes” module */
         return I18N::translate('A tab showing the notes attached to an individual.');
     }
 
-    /** {@inheritdoc} */
-    public function defaultTabOrder(): int
-    {
-        return 40;
+    /**
+     * The default position for this tab.  It can be changed in the control panel.
+     *
+     * @return int
+     */
+    function defaultTabOrder(): int {
+        return 50;
     }
 
     /** {@inheritdoc} */

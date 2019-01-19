@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\HourglassChartModule;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
@@ -48,7 +49,7 @@ class HourglassChartController extends AbstractChartController
      */
     public function page(Request $request, Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'hourglass_chart');
+        $this->checkModuleIsActive($tree, HourglassChartModule::class);
 
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
@@ -88,7 +89,7 @@ class HourglassChartController extends AbstractChartController
      */
     public function chart(Request $request, Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'hourglass_chart');
+        $this->checkModuleIsActive($tree, HourglassChartModule::class);
 
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
@@ -127,7 +128,7 @@ class HourglassChartController extends AbstractChartController
      */
     public function chartAddAncestor(Request $request, Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'hourglass_chart');
+        $this->checkModuleIsActive($tree, HourglassChartModule::class);
 
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
@@ -151,7 +152,7 @@ class HourglassChartController extends AbstractChartController
      */
     public function chartAddDescendant(Request $request, Tree $tree): Response
     {
-        $this->checkModuleIsActive($tree, 'hourglass_chart');
+        $this->checkModuleIsActive($tree, HourglassChartModule::class);
 
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);

@@ -52,8 +52,10 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Class ClippingsCartModule
  */
-class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
+class ClippingsCartModule extends AbstractModule implements ModuleInterface, ModuleMenuInterface
 {
+    use ModuleMenuTrait;
+
     // Routes that have a record which can be added to the clipboard
     private const ROUTES_WITH_RECORDS = [
         'family',
@@ -64,40 +66,31 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         'source',
     ];
 
+    /** @var int The default access level for this module.  It can be changed in the control panel. */
+    protected $access_level = Auth::PRIV_USER;
+
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Clippings cart');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “Clippings cart” module */
         return I18N::translate('Select records from your family tree and save them as a GEDCOM file.');
     }
 
     /**
-     * What is the default access level for this module?
-     *
-     * Some modules are aimed at admins or managers, and are not generally shown to users.
-     *
-     * @return int
-     */
-    public function defaultAccessLevel(): int
-    {
-        return Auth::PRIV_USER;
-    }
-
-    /**
-     * The user can re-order menus. Until they do, they are shown in this order.
+     * The default position for this menu.  It can be changed in the control panel.
      *
      * @return int
      */
     public function defaultMenuOrder(): int
     {
-        return 20;
+        return 10;
     }
 
     /**
@@ -114,8 +107,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $route = $request->get('route', '');
 
         $submenus = [
-            new Menu($this->getTitle(), route('module', [
-                'module' => 'clippings',
+            new Menu($this->title(), route('module', [
+                'module' => $this->getName(),
                 'action' => 'Show',
                 'ged'    => $tree->name(),
             ]), 'menu-clippings-cart', ['rel' => 'nofollow']),
@@ -125,7 +118,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
             $xref      = $request->get('xref', '');
             $action    = 'Add' . ucfirst($route);
             $add_route = route('module', [
-                'module' => 'clippings',
+                'module' => $this->getName(),
                 'action' => $action,
                 'xref'   => $xref,
                 'ged'    => $tree->name(),
@@ -136,18 +129,18 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         if (!$this->isCartEmpty($tree)) {
             $submenus[] = new Menu(I18N::translate('Empty the clippings cart'), route('module', [
-                'module' => 'clippings',
+                'module' => $this->getName(),
                 'action' => 'Empty',
                 'ged'    => $tree->name(),
             ]), 'menu-clippings-empty', ['rel' => 'nofollow']);
             $submenus[] = new Menu(I18N::translate('Download'), route('module', [
-                'module' => 'clippings',
+                'module' => $this->getName(),
                 'action' => 'DownloadForm',
                 'ged'    => $tree->name(),
             ]), 'menu-clippings-download', ['rel' => 'nofollow']);
         }
 
-        return new Menu($this->getTitle(), '#', 'menu-clippings', ['rel' => 'nofollow'], $submenus);
+        return new Menu($this->title(), '#', 'menu-clippings', ['rel' => 'nofollow'], $submenus);
     }
 
     /**
@@ -303,7 +296,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         Session::put('cart', $cart);
 
         $url = route('module', [
-            'module' => 'clippings',
+            'module' => $this->getName(),
             'action' => 'Show',
             'ged'    => $tree->name(),
         ]);
@@ -326,7 +319,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         Session::put('cart', $cart);
 
         $url = route('module', [
-            'module' => 'clippings',
+            'module' => $this->getName(),
             'action' => 'Show',
             'ged'    => $tree->name(),
         ]);
@@ -967,7 +960,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     private function checkModuleAccess(Tree $tree)
     {
-        if (!array_key_exists($this->getName(), Module::getActiveMenus($tree))) {
+        if (!array_key_exists($this->getName(), Module::activeMenus($tree))) {
             throw new NotFoundHttpException();
         }
     }

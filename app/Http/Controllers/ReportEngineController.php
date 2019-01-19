@@ -288,8 +288,8 @@ class ReportEngineController extends AbstractBaseController
     {
         $reports = [];
 
-        foreach (Module::getActiveReports($tree) as $report) {
-            $reports[$report->getName()] = $report->getTitle();
+        foreach (Module::activeReports($tree) as $report) {
+            $reports[$report->getName()] = $report->title();
         }
 
         return $reports;

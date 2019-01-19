@@ -24,15 +24,18 @@ use Fisharebest\Webtrees\I18N;
  */
 class CkeditorModule extends AbstractModule implements ModuleInterface
 {
+    // Location of our installation of CK editor.
+    public const CKEDITOR_PATH = 'public/ckeditor-4.5.2-custom/';
+
     /** {@inheritdoc} */
-    public function getTitle(): string
+    public function title(): string
     {
         /* I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com */
         return I18N::translate('CKEditor™');
     }
 
     /** {@inheritdoc} */
-    public function getDescription(): string
+    public function description(): string
     {
         /* I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get” */
         return I18N::translate('Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes.');
