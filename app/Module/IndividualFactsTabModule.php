@@ -53,7 +53,8 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleInterface
      *
      * @return int
      */
-    public function defaultTabOrder(): int {
+    public function defaultTabOrder(): int
+    {
         return 20;
     }
 

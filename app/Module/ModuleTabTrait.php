@@ -52,7 +52,8 @@ trait ModuleTabTrait
      *
      * @return int
      */
-    public function defaultTabOrder(): int {
+    public function defaultTabOrder(): int
+    {
         return 9999;
     }
 }

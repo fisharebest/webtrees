@@ -120,7 +120,7 @@ class Module
         $pattern   = WT_ROOT . Webtrees::MODULES_PATH . '*/module.php';
         $filenames = glob($pattern);
 
-        return app('cache.array')->rememberForever('all_modules', function() use ($filenames): Collection {
+        return app('cache.array')->rememberForever('all_modules', function () use ($filenames): Collection {
             // Modules have a default status, order etc.
             // We can override these from database settings.
             $module_info = DB::table('module')
@@ -164,7 +164,7 @@ class Module
                     }
                 })
                 ->filter();
-            });
+        });
     }
 
     /**
