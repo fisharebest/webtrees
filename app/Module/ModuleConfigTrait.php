@@ -34,5 +34,4 @@ trait ModuleConfigTrait
             'action' => 'Admin',
         ]);
     }
-
 }

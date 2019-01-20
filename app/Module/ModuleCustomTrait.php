@@ -27,7 +27,8 @@ trait ModuleCustomTrait
      *
      * @return string
      */
-    public function customModuleAuthorName(): string {
+    public function customModuleAuthorName(): string
+    {
         return 'Unknown author';
     }
 
@@ -36,7 +37,8 @@ trait ModuleCustomTrait
      *
      * @return string
      */
-    public function customModuleVersion(): string {
+    public function customModuleVersion(): string
+    {
         return '0.0.0';
     }
 
@@ -45,7 +47,8 @@ trait ModuleCustomTrait
      *
      * @return string
      */
-    public function customModuleLatestVersionUrl(): string {
+    public function customModuleLatestVersionUrl(): string
+    {
         return 'https://www.exmaple.com/latest-version';
     }
 
@@ -54,7 +57,8 @@ trait ModuleCustomTrait
      *
      * @return string
      */
-    public function customModuleSupportUrl(): string {
+    public function customModuleSupportUrl(): string
+    {
         return 'https://www.exmaple.com/support';
     }
 }

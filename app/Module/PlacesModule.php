@@ -57,7 +57,8 @@ class PlacesModule extends AbstractModule implements ModuleInterface, ModuleTabI
      *
      * @return int
      */
-    public function defaultTabOrder(): int {
+    public function defaultTabOrder(): int
+    {
         return 10;
     }
 

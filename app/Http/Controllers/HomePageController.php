@@ -668,10 +668,10 @@ class HomePageController extends AbstractBaseController
     private function filterActiveBlocks(Collection $blocks, Collection $active_blocks): Collection
     {
         return $blocks->map(function (string $block_name) use ($active_blocks): ?ModuleBlockInterface {
-                return $active_blocks->filter(function (ModuleInterface $block) use ($block_name): bool {
-                    return $block->getName() === $block_name;
-                })->first();
-            })
+            return $active_blocks->filter(function (ModuleInterface $block) use ($block_name): bool {
+                return $block->getName() === $block_name;
+            })->first();
+        })
             ->filter();
     }
 
