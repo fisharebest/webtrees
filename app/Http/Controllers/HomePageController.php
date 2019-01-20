@@ -492,8 +492,8 @@ class HomePageController extends AbstractBaseController
         $defaults = (bool) $request->get('defaults');
 
         if ($defaults) {
-            $main_blocks = $this->getBlocksForUserPage(-1, -1, AUth::PRIV_NONE, 'main');
-            $side_blocks = $this->getBlocksForUserPage(-1, -1, Auth::PRIV_NONE, 'side');
+            $main_blocks = $this->getBlocksForUserPage(-1, -1, AUth::PRIV_NONE, 'main')->all();
+            $side_blocks = $this->getBlocksForUserPage(-1, -1, Auth::PRIV_NONE, 'side')->all();
         } else {
             $main_blocks = (array) $request->get('main');
             $side_blocks = (array) $request->get('side');
