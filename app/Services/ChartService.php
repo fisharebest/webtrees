@@ -66,4 +66,50 @@ class ChartService
 
         return new Collection($ancestors);
     }
+
+    /**
+     * Find the descendants of an individual.
+     *
+     * @param Individual $individual  Start with this individual
+     * @param int        $generations Fetch this number of generations
+     *
+     * @return Collection|Individual[]
+     */
+    public function descendants(Individual $individual, int $generations): Collection
+    {
+        $descendants = new Collection([$individual]);
+
+        if ($generations > 0) {
+            foreach ($individual->getSpouseFamilies() as $family) {
+                foreach ($family->getChildren() as $child) {
+                    $descendants = $descendants->merge($this->descendants($child, $generations - 1));
+                }
+            }
+        }
+
+        return $descendants;
+    }
+
+    /**
+     * Find the descendants of an individual.
+     *
+     * @param Individual $individual  Start with this individual
+     * @param int        $generations Fetch this number of generations
+     *
+     * @return Collection|Family[]
+     */
+    public function descendantFamilies(Individual $individual, int $generations): Collection
+    {
+        $descendants = new Collection($individual->getSpouseFamilies());
+
+        if ($generations > 0) {
+            foreach ($descendants as $family) {
+                foreach ($family->getChildren() as $child) {
+                    $descendants = $descendants->merge($this->descendantFamilies($child, $generations - 1));
+                }
+            }
+        }
+
+        return $descendants;
+    }
 }

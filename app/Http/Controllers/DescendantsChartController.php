@@ -26,8 +26,10 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\DescendancyChartModule;
+use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -101,12 +103,13 @@ class DescendantsChartController extends AbstractChartController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request      $request
+     * @param Tree         $tree
+     * @param ChartService $chart_service
      *
      * @return Response
      */
-    public function chart(Request $request, Tree $tree): Response
+    public function chart(Request $request, Tree $tree, ChartService $chart_service): Response
     {
         $this->layout = 'layouts/ajax';
 
@@ -127,18 +130,23 @@ class DescendantsChartController extends AbstractChartController
         $generations = min($generations, $maximum_generations);
         $generations = max($generations, $minimum_generations);
 
-        $descendants = $this->descendants($individual, $generations, []);
-
         switch ($chart_style) {
             case self::CHART_STYLE_LIST:
             default:
                 return $this->descendantsList($individual, $generations);
+
             case self::CHART_STYLE_BOOKLET:
                 return $this->descendantsBooklet($individual, $generations);
+
             case self::CHART_STYLE_INDIVIDUALS:
-                return $this->descendantsIndividuals($tree, $descendants);
+                $individuals = $chart_service->descendants($individual, $generations - 1);
+
+                return $this->descendantsIndividuals($tree, $individuals);
+
             case self::CHART_STYLE_FAMILIES:
-                return $this->descendantsFamilies($tree, $descendants);
+                $families = $chart_service->descendantFamilies($individual, $generations - 1);
+
+                return $this->descendantsFamilies($tree, $families);
         }
     }
 
@@ -316,17 +324,17 @@ class DescendantsChartController extends AbstractChartController
     /**
      * Show a tabular list of individual descendants.
      *
-     * @param Tree         $tree
-     * @param Individual[] $descendants
+     * @param Tree       $tree
+     * @param Collection $individuals
      *
      * @return Response
      */
-    private function descendantsIndividuals(Tree $tree, array $descendants): Response
+    private function descendantsIndividuals(Tree $tree, Collection $individuals): Response
     {
         $this->layout = 'layouts/ajax';
 
         return $this->viewResponse('lists/individuals-table', [
-            'individuals' => $descendants,
+            'individuals' => $individuals,
             'sosa'        => false,
             'tree'        => $tree,
         ]);
@@ -335,21 +343,14 @@ class DescendantsChartController extends AbstractChartController
     /**
      * Show a tabular list of individual descendants.
      *
-     * @param Tree         $tree
-     * @param Individual[] $descendants
+     * @param Tree       $tree
+     * @param Collection $families
      *
      * @return Response
      */
-    private function descendantsFamilies(Tree $tree, array $descendants): Response
+    private function descendantsFamilies(Tree $tree, Collection $families): Response
     {
         $this->layout = 'layouts/ajax';
-
-        $families = [];
-        foreach ($descendants as $individual) {
-            foreach ($individual->getChildFamilies() as $family) {
-                $families[$family->xref()] = $family;
-            }
-        }
 
         return $this->viewResponse('lists/families-table', [
             'families' => $families,
