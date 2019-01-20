@@ -24,8 +24,10 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\AncestorsChartModule;
+use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -95,12 +97,13 @@ class AncestorsChartController extends AbstractChartController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request      $request
+     * @param Tree         $tree
+     * @param ChartService $chart_service
      *
      * @return Response
      */
-    public function chart(Request $request, Tree $tree): Response
+    public function chart(Request $request, Tree $tree, ChartService $chart_service): Response
     {
         $this->checkModuleIsActive($tree, AncestorsChartModule::class);
 
@@ -120,7 +123,7 @@ class AncestorsChartController extends AbstractChartController
         $generations = min($generations, $maximum_generations);
         $generations = max($generations, $minimum_generations);
 
-        $ancestors = $this->sosaStradonitzAncestors($individual, $generations);
+        $ancestors = $chart_service->sosaStradonitzAncestors($individual, $generations);
 
         switch ($chart_style) {
             case self::CHART_STYLE_LIST:
@@ -220,17 +223,17 @@ class AncestorsChartController extends AbstractChartController
     /**
      * Show a tabular list of individual ancestors.
      *
-     * @param Tree         $tree
-     * @param Individual[] $ancestors
+     * @param Tree       $tree
+     * @param Collection $ancestors
      *
      * @return Response
      */
-    private function ancestorsIndividuals(Tree $tree, array $ancestors): Response
+    private function ancestorsIndividuals(Tree $tree, Collection $ancestors): Response
     {
         $this->layout = 'layouts/ajax';
 
         return $this->viewResponse('lists/individuals-table', [
-            'individuals' => array_filter($ancestors),
+            'individuals' => $ancestors,
             'sosa'        => true,
             'tree'        => $tree,
         ]);
@@ -239,16 +242,15 @@ class AncestorsChartController extends AbstractChartController
     /**
      * Show a tabular list of individual ancestors.
      *
-     * @param Tree         $tree
-     * @param Individual[] $ancestors
+     * @param Tree       $tree
+     * @param Collection $ancestors
      *
      * @return Response
      */
-    private function ancestorsFamilies(Tree $tree, array $ancestors): Response
+    private function ancestorsFamilies(Tree $tree, Collection $ancestors): Response
     {
         $this->layout = 'layouts/ajax';
 
-        $ancestors = array_filter($ancestors);
         $families  = [];
         foreach ($ancestors as $individual) {
             foreach ($individual->getChildFamilies() as $family) {
@@ -267,15 +269,13 @@ class AncestorsChartController extends AbstractChartController
      *
      * @TODO replace ob_start() with views.
      *
-     * @param Individual[] $ancestors
-     * @param bool         $show_cousins
+     * @param Collection $ancestors
+     * @param bool       $show_cousins
      *
      * @return Response
      */
-    private function ancestorsBooklet(array $ancestors, bool $show_cousins): Response
+    private function ancestorsBooklet(Collection $ancestors, bool $show_cousins): Response
     {
-        $ancestors = array_filter($ancestors);
-
         ob_start();
 
         echo FunctionsPrint::printPedigreePerson($ancestors[1]);

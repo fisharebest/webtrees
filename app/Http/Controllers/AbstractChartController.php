@@ -54,46 +54,6 @@ abstract class AbstractChartController extends AbstractBaseController
     }
 
     /**
-     * Find the ancestors of an individual, and generate an array indexed by
-     * Sosa-Stradonitz number.
-     *
-     * @param Individual $individual  Start with this individual
-     * @param int        $generations Fetch this number of generations
-     *
-     * @return Individual[]
-     */
-    protected function sosaStradonitzAncestors(Individual $individual, int $generations): array
-    {
-        /** @var Individual[] $ancestors */
-        $ancestors = [
-            1 => $individual,
-        ];
-
-        $max = 2 ** ($generations - 1);
-
-        for ($i = 1; $i < $max; $i++) {
-            $ancestors[$i * 2]     = null;
-            $ancestors[$i * 2 + 1] = null;
-
-            $individual = $ancestors[$i];
-
-            if ($individual !== null) {
-                $family = $individual->getPrimaryChildFamily();
-                if ($family !== null) {
-                    if ($family->getHusband() !== null) {
-                        $ancestors[$i * 2] = $family->getHusband();
-                    }
-                    if ($family->getWife() !== null) {
-                        $ancestors[$i * 2 + 1] = $family->getWife();
-                    }
-                }
-            }
-        }
-
-        return $ancestors;
-    }
-
-    /**
      * Find all the individuals that are descended from an individual.
      *
      * @param Individual   $individual

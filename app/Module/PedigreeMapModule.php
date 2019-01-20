@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\FactLocation;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -109,18 +110,19 @@ class PedigreeMapModule extends AbstractModule implements ModuleInterface, Modul
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request      $request
+     * @param Tree         $tree
+     * @param ChartService $chart_service
      *
      * @return JsonResponse
      */
-    public function getMapDataAction(Request $request, Tree $tree): JsonResponse
+    public function getMapDataAction(Request $request, Tree $tree, ChartService $chart_service): JsonResponse
     {
         $xref        = $request->get('reference');
         $indi        = Individual::getInstance($xref, $tree);
         $color_count = count(self::LINE_COLORS);
 
-        $facts = $this->getPedigreeMapFacts($request, $tree);
+        $facts = $this->getPedigreeMapFacts($request, $tree, $chart_service);
 
         $geojson = [
             'type'     => 'FeatureCollection',
@@ -177,12 +179,13 @@ class PedigreeMapModule extends AbstractModule implements ModuleInterface, Modul
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request      $request
+     * @param Tree         $tree
+     * @param ChartService $chart_service
      *
      * @return array
      */
-    private function getPedigreeMapFacts(Request $request, Tree $tree): array
+    private function getPedigreeMapFacts(Request $request, Tree $tree, ChartService $chart_service): array
     {
         $xref        = $request->get('reference');
         $individual  = Individual::getInstance($xref, $tree);
@@ -190,10 +193,10 @@ class PedigreeMapModule extends AbstractModule implements ModuleInterface, Modul
             'generations',
             $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS')
         );
-        $ancestors   = $this->sosaStradonitzAncestors($individual, $generations);
+        $ancestors   = $chart_service->sosaStradonitzAncestors($individual, $generations);
         $facts       = [];
         foreach ($ancestors as $sosa => $person) {
-            if ($person !== null && $person->canShow()) {
+            if ($person->canShow()) {
                 $birth = $person->getFirstFact('BIRT');
                 if ($birth instanceof Fact && !$birth->place()->isEmpty()) {
                     $facts[$sosa] = $birth;
@@ -317,68 +320,23 @@ class PedigreeMapModule extends AbstractModule implements ModuleInterface, Modul
             throw new IndividualAccessDeniedException();
         }
 
-        return (object) [
-            'name' => 'modules/pedigree-map/pedigree-map-page',
-            'data' => [
-                'module'         => $this->getName(),
-                /* I18N: %s is an individual’s name */
-                'title'          => I18N::translate('Pedigree map of %s', $individual->getFullName()),
-                'tree'           => $tree,
-                'individual'     => $individual,
-                'generations'    => $generations,
-                'maxgenerations' => $maxgenerations,
-                'map'            => view(
-                    'modules/pedigree-map/pedigree-map',
-                    [
-                        'module'      => $this->getName(),
-                        'ref'         => $individual->xref(),
-                        'type'        => 'pedigree',
-                        'generations' => $generations,
-                    ]
-                ),
-            ],
-        ];
-    }
-
-    // @TODO shift the following function to somewhere more appropriate during restructure
-
-    /**
-     * Copied from AbstractChartController.php
-     *
-     * Find the ancestors of an individual, and generate an array indexed by
-     * Sosa-Stradonitz number.
-     *
-     * @param Individual $individual  Start with this individual
-     * @param int        $generations Fetch this number of generations
-     *
-     * @return Individual[]
-     */
-    private function sosaStradonitzAncestors(Individual $individual, int $generations): array
-    {
-        /** @var Individual[] $ancestors */
-        $ancestors = [
-            1 => $individual,
-        ];
-
-        for ($i = 1, $max = 2 ** ($generations - 1); $i < $max; $i++) {
-            $ancestors[$i * 2]     = null;
-            $ancestors[$i * 2 + 1] = null;
-
-            $individual = $ancestors[$i];
-
-            if ($individual !== null) {
-                $family = $individual->getPrimaryChildFamily();
-                if ($family !== null) {
-                    if ($family->getHusband() !== null) {
-                        $ancestors[$i * 2] = $family->getHusband();
-                    }
-                    if ($family->getWife() !== null) {
-                        $ancestors[$i * 2 + 1] = $family->getWife();
-                    }
-                }
-            }
-        }
-
-        return $ancestors;
+        return $this->viewResponse('modules/pedigree-map/pedigree-map-page', [
+            'module'         => $this->getName(),
+            /* I18N: %s is an individual’s name */
+            'title'          => I18N::translate('Pedigree map of %s', $individual->getFullName()),
+            'tree'           => $tree,
+            'individual'     => $individual,
+            'generations'    => $generations,
+            'maxgenerations' => $maxgenerations,
+            'map'            => view(
+                'modules/pedigree-map/pedigree-map',
+                [
+                    'module'      => $this->getName(),
+                    'ref'         => $individual->xref(),
+                    'type'        => 'pedigree',
+                    'generations' => $generations,
+                ]
+            )
+        ]);
     }
 }

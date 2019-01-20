@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\PedigreeChartModule;
+use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use stdClass;
@@ -116,12 +117,13 @@ class PedigreeChartController extends AbstractChartController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request      $request
+     * @param Tree         $tree
+     * @param ChartService $chart_service
      *
      * @return Response
      */
-    public function chart(Request $request, Tree $tree): Response
+    public function chart(Request $request, Tree $tree, ChartService $chart_service): Response
     {
         $this->checkModuleIsActive($tree, PedigreeChartModule::class);
 
@@ -146,14 +148,18 @@ class PedigreeChartController extends AbstractChartController
 
         $this->treesize = (2 ** $this->generations) - 1;
 
-        // sosaAncestors() starts array at index 1 we need to start at 0
-        $this->nodes = array_map(function (Individual $item = null): array {
-            return [
-                'indi' => $item,
-                'x'    => 0,
-                'y'    => 0,
+        $this->nodes = [];
+
+        $ancestors = $chart_service->sosaStradonitzAncestors($individual, $this->generations);
+
+        // $ancestors starts array at index 1 we need to start at 0
+        for ($i = 0; $i < $this->treesize; ++$i) {
+            $this->nodes[$i] = [
+                'indi' => $ancestors->get($i+1),
+                'x' => 0,
+                'y' => 0,
             ];
-        }, array_values($this->sosaStradonitzAncestors($individual, $this->generations)));
+        }
 
         //check earliest generation for any ancestors
         for ($i = (int) ($this->treesize / 2); $i < $this->treesize; $i++) {

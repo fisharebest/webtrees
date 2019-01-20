@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\FanChartModule;
+use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
@@ -93,12 +94,13 @@ class FanChartController extends AbstractChartController
     /**
      * Generate both the HTML and PNG components of the fan chart
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request      $request
+     * @param Tree         $tree
+     * @param ChartService $chart_service
      *
      * @return Response
      */
-    public function chart(Request $request, Tree $tree): Response
+    public function chart(Request $request, Tree $tree, ChartService $chart_service): Response
     {
         $this->checkModuleIsActive($tree, FanChartModule::class);
 
@@ -117,10 +119,10 @@ class FanChartController extends AbstractChartController
         $generations = min($generations, self::MAXIMUM_GENERATIONS);
         $generations = max($generations, self::MINIMUM_GENERATIONS);
 
-        $ancestors = $this->sosaStradonitzAncestors($individual, $generations);
+        $ancestors = $chart_service->sosaStradonitzAncestors($individual, $generations);
 
         $gen  = $generations - 1;
-        $sosa = count($ancestors);
+        $sosa = 2 ** ($generations) - 1;
 
         // fan size
         $fanw = 640 * $fan_width / 100;
@@ -186,8 +188,8 @@ class FanChartController extends AbstractChartController
 
             // draw each cell
             while ($sosa >= $p2) {
-                $person = $ancestors[$sosa];
-                if ($person) {
+                if ($ancestors->has($sosa)) {
+                    $person = $ancestors->get($sosa);
                     $name    = $person->getFullName();
                     $addname = $person->getAddName();
 

@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\CompactTreeChartModule;
+use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -56,12 +57,13 @@ class CompactTreeChartController extends AbstractChartController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request      $request
+     * @param Tree         $tree
+     * @param ChartService $chart_service
      *
      * @return Response
      */
-    public function chart(Request $request, Tree $tree): Response
+    public function chart(Request $request, Tree $tree, ChartService $chart_service): Response
     {
         $this->checkModuleIsActive($tree, CompactTreeChartModule::class);
 
@@ -70,7 +72,7 @@ class CompactTreeChartController extends AbstractChartController
 
         $this->checkIndividualAccess($individual);
 
-        $ancestors = $this->sosaStradonitzAncestors($individual, 5);
+        $ancestors = $chart_service->sosaStradonitzAncestors($individual, 5);
 
         $html = view('compact-tree-chart', [
             'ancestors' => $ancestors,
