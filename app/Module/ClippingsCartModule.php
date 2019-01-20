@@ -32,7 +32,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Menu;
-use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Session;
@@ -47,7 +46,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class ClippingsCartModule
@@ -151,8 +149,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleInterface, Mod
      */
     public function getDownloadAction(Request $request, Tree $tree): BinaryFileResponse
     {
-        $this->checkModuleAccess($tree);
-
         $privatize_export = $request->get('privatize_export', '');
         $convert          = (bool) $request->get('convert');
 
@@ -947,21 +943,5 @@ class ClippingsCartModule extends AbstractModule implements ModuleInterface, Mod
         $cart = Session::get('cart', []);
 
         return empty($cart[$tree->name()]);
-    }
-
-    /**
-     * Only allow access to the routes/functions if the menu is active
-     *
-     * @param Tree $tree
-     *
-     * @return void
-     *
-     * @throws NoteNotFoundException
-     */
-    private function checkModuleAccess(Tree $tree)
-    {
-        if (!array_key_exists($this->getName(), Module::activeMenus($tree))) {
-            throw new NotFoundHttpException();
-        }
     }
 }
