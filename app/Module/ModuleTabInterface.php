@@ -45,7 +45,7 @@ interface ModuleTabInterface
      *
      * @return int
      */
-    function defaultTabOrder(): int;
+    public function defaultTabOrder(): int;
 
     /**
      * Generate the HTML content of this tab.

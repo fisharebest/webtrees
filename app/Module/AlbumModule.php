@@ -59,7 +59,7 @@ class AlbumModule extends AbstractModule implements ModuleInterface, ModuleTabIn
      *
      * @return int
      */
-    function defaultTabOrder(): int {
+    public function defaultTabOrder(): int {
         return 80;
     }
 

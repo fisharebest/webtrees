@@ -45,7 +45,7 @@ interface ModuleSidebarInterface
      *
      * @return int
      */
-    function defaultSidebarOrder(): int;
+    public function defaultSidebarOrder(): int;
 
     /**
      * Sidebar content.

@@ -134,7 +134,7 @@ class GedcomService
         'POSTAL_CODE'       => 'POST',
         'PROBATE'           => 'PROB',
         'PROPERTY'          => 'PROP',
-        'PUHBLICATION'      => 'PUBL',
+        'PUBLICATION'       => 'PUBL',
         'QUALITY_OF_DATA'   => 'QUAY',
         'REFERENCE'         => 'REFN',
         'RELATIONSHIP'      => 'RELA',

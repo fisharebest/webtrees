@@ -53,7 +53,7 @@ trait ModuleSidebarTrait
      *
      * @return int
      */
-    function defaultSidebarOrder(): int
+    public function defaultSidebarOrder(): int
     {
         return 9999;
     }

@@ -52,7 +52,7 @@ trait ModuleMenuTrait
      *
      * @return int
      */
-    function defaultMenuOrder(): int
+    public function defaultMenuOrder(): int
     {
         return 9999;
     }

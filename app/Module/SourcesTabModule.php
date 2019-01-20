@@ -51,7 +51,7 @@ class SourcesTabModule extends AbstractModule implements ModuleInterface, Module
      *
      * @return int
      */
-    function defaultTabOrder(): int {
+    public function defaultTabOrder(): int {
         return 40;
     }
 

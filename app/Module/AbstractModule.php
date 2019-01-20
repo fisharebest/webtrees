@@ -47,9 +47,24 @@ abstract class AbstractModule implements ModuleInterface
     /** @var string How to render view responses */
     protected $layout = 'layouts/default';
 
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
+    public function title(): string
+    {
+        return 'Module name goes here';
+    }
+
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
     public function description(): string
     {
-        // TODO: Implement description() method.
+        return $this->title();
     }
 
     /**

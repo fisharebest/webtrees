@@ -69,7 +69,7 @@ class StoriesModule extends AbstractModule implements ModuleInterface, ModuleCon
      *
      * @return int
      */
-    function defaultTabOrder(): int {
+    public function defaultTabOrder(): int {
         return 70;
     }
 
