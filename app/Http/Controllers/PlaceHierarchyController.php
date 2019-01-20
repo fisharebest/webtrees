@@ -182,7 +182,7 @@ class PlaceHierarchyController extends AbstractBaseController
             })
             ->where('i_file', '=', $tree->id())
             ->where('pl_p_id', '=', $place->getPlaceId())
-            ->select(['idividuals.*'])
+            ->select(['individuals.*'])
             ->distinct()
             ->get()
             ->map(Individual::rowMapper())
