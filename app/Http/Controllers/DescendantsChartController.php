@@ -37,7 +37,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * A chart of direct-line descendants.
  */
-class DescendantsChartController extends AbstractChartController
+class DescendantsChartController extends AbstractBaseController
 {
     // Chart styles
     private const CHART_STYLE_LIST        = 0;

@@ -32,7 +32,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * A chart of direct-line ancestors in a tree layout.
  */
-class PedigreeChartController extends AbstractChartController
+class PedigreeChartController extends AbstractBaseController
 {
     // With more than 8 generations, we run out of pixels on the <canvas>
     private const MAX_GENERATIONS = 8;

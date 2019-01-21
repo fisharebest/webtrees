@@ -33,12 +33,17 @@ use Fisharebest\Webtrees\Exceptions\SourceAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\SourceNotFoundException;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Common functions for all controllers
@@ -179,6 +184,30 @@ abstract class AbstractBaseController
         if (!$source->canShow() || $edit && (!$source->canEdit() || $source->isPendingDeletion())) {
             throw new SourceAccessDeniedException();
         }
+    }
+
+    /**
+     * Check that a module is enabled for a tree.
+     *
+     * @param Tree   $tree
+     * @param string $class_name
+     *
+     * @throws NotFoundHttpException
+     * @return ModuleChartInterface
+     */
+    protected function checkModuleIsActive(Tree $tree, string $class_name): ModuleChartInterface
+    {
+        $module = Module::activeCharts($tree)
+            ->filter(function (ModuleChartInterface $module) use ($class_name): bool {
+                return $module instanceof $class_name;
+            })
+            ->first();
+
+        if (!$module instanceof $class_name) {
+            throw new NotFoundHttpException(I18N::translate('The module “%s” has been disabled.', $module));
+        }
+
+        return $module;
     }
 
     /**

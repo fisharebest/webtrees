@@ -29,7 +29,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * A chart showing the events of individuals on a time line.
  */
-class TimelineChartController extends AbstractChartController
+class TimelineChartController extends AbstractBaseController
 {
     // The user can alter the vertical scale
     private const SCALE_MIN     = 1;

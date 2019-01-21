@@ -30,7 +30,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * A chart of ancestors and descendants of an individual.
  */
-class HourglassChartController extends AbstractChartController
+class HourglassChartController extends AbstractBaseController
 {
     // Defaults
     private const DEFAULT_GENERATIONS         = '3';

@@ -34,7 +34,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * CAUTION - The google image charts (bitmap) API is deprecated.
  * We need to migrate to the charts API (which uses SVG).
  */
-class StatisticsChartController extends AbstractChartController
+class StatisticsChartController extends AbstractBaseController
 {
     // We generate a bitmap chart with these dimensions in image pixels.
     // These set the aspect ratio.  The actual image is sized using CSS

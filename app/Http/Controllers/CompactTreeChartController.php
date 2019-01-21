@@ -28,7 +28,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * A chart of direct-line ancestors in a compact layout.
  */
-class CompactTreeChartController extends AbstractChartController
+class CompactTreeChartController extends AbstractBaseController
 {
     /**
      * A form to request the chart parameters.

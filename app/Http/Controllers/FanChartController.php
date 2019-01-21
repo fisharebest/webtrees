@@ -29,7 +29,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * A chart of direct-line ancestors in a circular layour.
  */
-class FanChartController extends AbstractChartController
+class FanChartController extends AbstractBaseController
 {
     // Chart styles
     private const STYLE_HALF_CIRCLE          = 2;

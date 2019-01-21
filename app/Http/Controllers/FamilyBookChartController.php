@@ -30,7 +30,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * A series of "mini" hourglass charts for the descendants of an individual.
  */
-class FamilyBookChartController extends AbstractChartController
+class FamilyBookChartController extends AbstractBaseController
 {
     // Defaults
     private const DEFAULT_GENERATIONS            = '2';

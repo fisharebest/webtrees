@@ -34,7 +34,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * A chart showing the lifespans of individuals.
  */
-class LifespansChartController extends AbstractChartController
+class LifespansChartController extends AbstractBaseController
 {
     // Parameters for generating colors
     private const RANGE      = 120; // degrees

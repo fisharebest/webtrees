@@ -35,7 +35,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * A chart showing the relationship(s) between two individuals.
  */
-class RelationshipsChartController extends AbstractChartController
+class RelationshipsChartController extends AbstractBaseController
 {
     /**
      * A form to request the chart parameters.
