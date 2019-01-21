@@ -79,7 +79,7 @@ abstract class AbstractModule implements ModuleInterface
      *
      * @return string
      */
-    protected function getBlockSetting(int $block_id, string $setting_name, string $default = ''): string
+    final protected function getBlockSetting(int $block_id, string $setting_name, string $default = ''): string
     {
         $settings = app('cache.array')->rememberForever('block_setting' . $block_id, function () use ($block_id): array {
             return DB::table('block_setting')
@@ -100,7 +100,7 @@ abstract class AbstractModule implements ModuleInterface
      *
      * @return $this
      */
-    protected function setBlockSetting(int $block_id, string $setting_name, string $setting_value): self
+    final protected function setBlockSetting(int $block_id, string $setting_name, string $setting_value): self
     {
         DB::table('block_setting')->updateOrInsert([
             'block_id'      => $block_id,
@@ -119,7 +119,7 @@ abstract class AbstractModule implements ModuleInterface
      *
      * @return ModuleInterface
      */
-    public function setName(string $name): ModuleInterface
+    final public function setName(string $name): ModuleInterface
     {
         $this->name = $name;
 
@@ -131,7 +131,7 @@ abstract class AbstractModule implements ModuleInterface
      *
      * @return string
      */
-    public function getName(): string
+    final public function getName(): string
     {
         return $this->name;
     }
@@ -143,7 +143,7 @@ abstract class AbstractModule implements ModuleInterface
      *
      * @return ModuleInterface
      */
-    public function setEnabled(bool $enabled): ModuleInterface
+    final public function setEnabled(bool $enabled): ModuleInterface
     {
         $this->enabled = $enabled;
 
@@ -155,7 +155,7 @@ abstract class AbstractModule implements ModuleInterface
      *
      * @return bool
      */
-    public function isEnabled(): bool
+    final public function isEnabled(): bool
     {
         return $this->enabled;
     }
@@ -168,7 +168,7 @@ abstract class AbstractModule implements ModuleInterface
      *
      * @return string
      */
-    public function getPreference($setting_name, $default = ''): string
+    final public function getPreference($setting_name, $default = ''): string
     {
         return DB::table('module_setting')
             ->where('module_name', '=', $this->getName())
@@ -187,7 +187,7 @@ abstract class AbstractModule implements ModuleInterface
      *
      * @return $this
      */
-    public function setPreference($setting_name, $setting_value): self
+    final public function setPreference($setting_name, $setting_value): self
     {
         DB::table('module_setting')->updateOrInsert([
             'module_name'  => $this->getName(),
@@ -207,7 +207,7 @@ abstract class AbstractModule implements ModuleInterface
      *
      * @return int
      */
-    public function accessLevel(Tree $tree, string $component): int
+    final public function accessLevel(Tree $tree, string $component): int
     {
         $access_levels = app('cache.array')
             ->rememberForever('module_privacy' . $tree->id(), function () use ($tree): Collection {
@@ -232,7 +232,7 @@ abstract class AbstractModule implements ModuleInterface
      *
      * @return Response
      */
-    protected function viewResponse($view_name, $view_data, $status = Response::HTTP_OK): Response
+    final protected function viewResponse($view_name, $view_data, $status = Response::HTTP_OK): Response
     {
         // Make the view's data available to the layout.
         $layout_data = $view_data;
