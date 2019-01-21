@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
 

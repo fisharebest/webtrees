@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Menu;
 
 /**
  * Class StatisticsChartModule
@@ -51,31 +50,27 @@ class StatisticsChartModule extends AbstractModule implements ModuleInterface, M
     }
 
     /**
-     * Return a menu item for this chart.
+     * The URL for this chart.
      *
      * @param Individual $individual
+     * @param string[]   $parameters
      *
-     * @return Menu|null
+     * @return string
      */
-    public function getChartMenu(Individual $individual): ?Menu
+    public function chartUrl(Individual $individual, array $parameters = []): string
     {
-        return new Menu(
-            $this->title(),
-            route('statistics', ['ged' => $individual->tree()->name()]),
-            'menu-chart-statistics',
-            ['rel' => 'nofollow']
-        );
+        return route('statistics', [
+                'ged' => $individual->tree()->name(),
+            ] + $parameters);
     }
 
     /**
-     * Return a menu item for this chart - for use in individual boxes.
+     * CSS class for the URL.
      *
-     * @param Individual $individual
-     *
-     * @return Menu|null
+     * @return string
      */
-    public function getBoxChartMenu(Individual $individual): ?Menu
+    public function chartUrlClasss(): string
     {
-        return null;
+        return 'menu-chart-statistics';
     }
 }

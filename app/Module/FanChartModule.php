@@ -51,40 +51,53 @@ class FanChartModule extends AbstractModule implements ModuleInterface, ModuleCh
     }
 
     /**
-     * Return a menu item for this chart.
-     *
-     * We can only do this if the GD2 library is installed with TrueType support.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu|null
-     */
-    public function getChartMenu(Individual $individual): ?Menu
-    {
-        if (function_exists('imagettftext')) {
-            return new Menu(
-                $this->title(),
-                route('fan', [
-                    'xref' => $individual->xref(),
-                    'ged'  => $individual->tree()->name(),
-                ]),
-                'menu-chart-fanchart',
-                ['rel' => 'nofollow']
-            );
-        }
-
-        return null;
-    }
-
-    /**
      * Return a menu item for this chart - for use in individual boxes.
      *
      * @param Individual $individual
      *
      * @return Menu|null
      */
-    public function getBoxChartMenu(Individual $individual): ?Menu
+    public function chartMenuIndividual(Individual $individual): ?Menu
     {
-        return $this->getChartMenu($individual);
+        return $this->chartMenu($individual);
+    }
+
+    /**
+     * The title for a specific instance of this chart.
+     *
+     * @param Individual $individual
+     *
+     * @return string
+     */
+    public function chartTitle(Individual $individual): string
+    {
+        /* I18N: %s is an individual’s name */
+        return I18N::translate('Fan chart of %s', $individual->getFullName());
+    }
+
+    /**
+     * The URL for this chart.
+     *
+     * @param Individual $individual
+     * @param string[]   $parameters
+     *
+     * @return string
+     */
+    public function chartUrl(Individual $individual, array $parameters = []): string
+    {
+        return route('fan', [
+            'xref' => $individual->xref(),
+            'ged'  => $individual->tree()->name(),
+        ] + $parameters);
+    }
+
+    /**
+     * CSS class for the URL.
+     *
+     * @return string
+     */
+    public function chartUrlClasss(): string
+    {
+        return 'menu-chart-fanchart';
     }
 }

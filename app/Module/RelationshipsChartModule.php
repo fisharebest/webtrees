@@ -67,38 +67,30 @@ class RelationshipsChartModule extends AbstractModule implements ModuleInterface
     }
 
     /**
-     * Return a menu item for this chart.
+     * A main menu item for this chart.
      *
      * @param Individual $individual
      *
-     * @return Menu|null
+     * @return Menu
      */
-    public function getChartMenu(Individual $individual): ?Menu
+    public function chartMenu(Individual $individual): Menu
     {
-        $tree     = $individual->tree();
-        $gedcomid = $tree->getUserPreference(Auth::user(), 'gedcomid');
+        $gedcomid = $individual->tree()->getUserPreference(Auth::user(), 'gedcomid');
 
         if ($gedcomid !== '') {
             return new Menu(
                 I18N::translate('Relationship to me'),
-                route('relationships', [
-                    'xref1' => $gedcomid,
-                    'xref2' => $individual->xref(),
-                    'ged'   => $individual->tree()->name(),
-                ]),
-                'menu-chart-relationship',
-                ['rel' => 'nofollow']
+                $this->chartUrl($individual, ['xref2' => $gedcomid]),
+                $this->chartUrlClasss(),
+                $this->chartUrlAttributes()
             );
         }
 
         return new Menu(
-            I18N::translate('Relationships'),
-            route('relationships', [
-                'xref1' => $individual->xref(),
-                'ged'   => $individual->tree()->name(),
-            ]),
-            'menu-chart-relationship',
-            ['rel' => 'nofollow']
+            $this->title(),
+            $this->chartUrl($individual),
+            $this->chartUrlClasss(),
+            $this->chartUrlAttributes()
         );
     }
 
@@ -109,9 +101,35 @@ class RelationshipsChartModule extends AbstractModule implements ModuleInterface
      *
      * @return Menu|null
      */
-    public function getBoxChartMenu(Individual $individual): ?Menu
+    public function chartMenuIndividual(Individual $individual): ?Menu
     {
-        return $this->getChartMenu($individual);
+        return $this->chartMenu($individual);
+    }
+
+    /**
+     * The URL for this chart.
+     *
+     * @param Individual $individual
+     * @param string[]   $parameters
+     *
+     * @return string
+     */
+    public function chartUrl(Individual $individual, array $parameters = []): string
+    {
+        return route('relationships', [
+            'xref1' => $individual->xref(),
+            'ged'   => $individual->tree()->name(),
+        ] + $parameters);
+    }
+
+    /**
+     * CSS class for the URL.
+     *
+     * @return string
+     */
+    public function chartUrlClasss(): string
+    {
+        return 'menu-chart-relationship';
     }
 
     /**

@@ -51,34 +51,53 @@ class CompactTreeChartModule extends AbstractModule implements ModuleInterface, 
     }
 
     /**
-     * Return a menu item for this chart.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu|null
-     */
-    public function getChartMenu(Individual $individual): ?Menu
-    {
-        return new Menu(
-            $this->title(),
-            route('compact-tree', [
-                'xref' => $individual->xref(),
-                'ged'  => $individual->tree()->name(),
-            ]),
-            'menu-chart-compact',
-            ['rel' => 'nofollow']
-        );
-    }
-
-    /**
      * Return a menu item for this chart - for use in individual boxes.
      *
      * @param Individual $individual
      *
      * @return Menu|null
      */
-    public function getBoxChartMenu(Individual $individual): ?Menu
+    public function chartMenuIndividual(Individual $individual): ?Menu
     {
-        return $this->getChartMenu($individual);
+        return $this->chartMenu($individual);
+    }
+
+    /**
+     * The URL for this chart.
+     *
+     * @param Individual $individual
+     * @param string[]   $parameters
+     *
+     * @return string
+     */
+    public function chartUrl(Individual $individual, array $parameters = []): string
+    {
+        return route('compact-tree', [
+            'xref' => $individual->xref(),
+            'ged'  => $individual->tree()->name(),
+        ] + $parameters);
+    }
+
+    /**
+     * The title for a specific instance of this chart.
+     *
+     * @param Individual $individual
+     *
+     * @return string
+     */
+    public function chartTitle(Individual $individual): string
+    {
+        /* I18N: %s is an individual’s name */
+        return I18N::translate('Compact tree of %s', $individual->getFullName());
+    }
+
+    /**
+     * CSS class for the URL.
+     *
+     * @return string
+     */
+    public function chartUrlClasss(): string
+    {
+        return 'menu-chart-compact';
     }
 }

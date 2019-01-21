@@ -26,20 +26,53 @@ use Fisharebest\Webtrees\Menu;
 interface ModuleChartInterface
 {
     /**
-     * Return a menu item for this chart.
+     * A main menu item for this chart.
      *
      * @param Individual $individual
      *
-     * @return Menu|null
+     * @return Menu
      */
-    public function getChartMenu(Individual $individual): ?Menu;
+    public function chartMenu(Individual $individual): Menu;
 
     /**
-     * Return a menu item for this chart (for menu in individual box).
+     * A menu item for this chart for an individual box in a chart.
      *
      * @param Individual $individual
      *
      * @return Menu|null
      */
-    public function getBoxChartMenu(Individual $individual): ?Menu;
+    public function chartMenuIndividual(Individual $individual): ?Menu;
+
+    /**
+     * The title for a specific instance of this chart.
+     *
+     * @param Individual $individual
+     *
+     * @return string
+     */
+    public function chartTitle(Individual $individual): string;
+
+    /**
+     * The URL for this chart.
+     *
+     * @param Individual $individual
+     * @param string[]   $parameters
+     *
+     * @return string
+     */
+    public function chartUrl(Individual $individual, array $parameters = []): string;
+
+    /**
+     * Attributes for the URL.
+     *
+     * @return string[]
+     */
+    public function chartUrlAttributes(): array;
+
+    /**
+     * CSS class for the URL.
+     *
+     * @return string
+     */
+    public function chartUrlClasss(): string;
 }

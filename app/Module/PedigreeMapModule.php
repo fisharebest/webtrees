@@ -76,37 +76,56 @@ class PedigreeMapModule extends AbstractModule implements ModuleInterface, Modul
     }
 
     /**
-     * Return a menu item for this chart.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu|null
-     */
-    public function getChartMenu(Individual $individual): ?Menu
-    {
-        return new Menu(
-            I18N::translate('Pedigree map'),
-            route('module', [
-                'module' => $this->getName(),
-                'action' => 'PedigreeMap',
-                'xref'   => $individual->xref(),
-                'ged'    => $individual->tree()->name(),
-            ]),
-            'menu-chart-pedigreemap',
-            ['rel' => 'nofollow']
-        );
-    }
-
-    /**
      * Return a menu item for this chart - for use in individual boxes.
      *
      * @param Individual $individual
      *
      * @return Menu|null
      */
-    public function getBoxChartMenu(Individual $individual): ?Menu
+    public function chartMenuIndividual(Individual $individual): ?Menu
     {
-        return $this->getChartMenu($individual);
+        return $this->chartMenu($individual);
+    }
+
+    /**
+     * The title for a specific instance of this chart.
+     *
+     * @param Individual $individual
+     *
+     * @return string
+     */
+    public function chartTitle(Individual $individual): string
+    {
+        /* I18N: %s is an individual’s name */
+        return I18N::translate('Pedigree map of %s', $individual->getFullName());
+    }
+
+    /**
+     * The URL for this chart.
+     *
+     * @param Individual $individual
+     * @param string[]   $parameters
+     *
+     * @return string
+     */
+    public function chartUrl(Individual $individual, array $parameters = []): string
+    {
+        return route('module', [
+            'module' => $this->getName(),
+            'action' => 'PedigreeMap',
+            'xref'   => $individual->xref(),
+            'ged'    => $individual->tree()->name(),
+        ] + $parameters);
+    }
+
+    /**
+     * CSS class for the URL.
+     *
+     * @return string
+     */
+    public function chartUrlClasss(): string
+    {
+        return 'menu-chart-pedigreemap';
     }
 
     /**
@@ -257,7 +276,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleInterface, Modul
                     'provider' => 'openstreetmap',
                     'style'    => 'mapnik',
                 ];
-                self::$map_providers = [
+                self::$map_providers  = [
                     'openstreetmap' => [
                         'name'   => 'OpenStreetMap',
                         'styles' => ['mapnik' => 'Mapnik'],
@@ -336,7 +355,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleInterface, Modul
                     'type'        => 'pedigree',
                     'generations' => $generations,
                 ]
-            )
+            ),
         ]);
     }
 }

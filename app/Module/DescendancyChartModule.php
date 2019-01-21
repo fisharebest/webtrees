@@ -51,33 +51,53 @@ class DescendancyChartModule extends AbstractModule implements ModuleInterface, 
     }
 
     /**
-     * Return a menu item for this chart.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu|null
-     */
-    public function getChartMenu(Individual $individual): ?Menu
-    {
-        return new Menu(
-            $this->title(),
-            route('descendants', ['ged'  => $individual->tree()->name(),
-                                  'xref' => $individual->xref(),
-            ]),
-            'menu-chart-descendants',
-            ['rel' => 'nofollow']
-        );
-    }
-
-    /**
      * Return a menu item for this chart - for use in individual boxes.
      *
      * @param Individual $individual
      *
      * @return Menu|null
      */
-    public function getBoxChartMenu(Individual $individual): ?Menu
+    public function chartMenuIndividual(Individual $individual): ?Menu
     {
-        return $this->getChartMenu($individual);
+        return $this->chartMenu($individual);
+    }
+
+    /**
+     * The title for a specific instance of this chart.
+     *
+     * @param Individual $individual
+     *
+     * @return string
+     */
+    public function chartTitle(Individual $individual): string
+    {
+        /* I18N: %s is an individual’s name */
+        return I18N::translate('Descendants of %s', $individual->getFullName());
+    }
+
+    /**
+     * The URL for this chart.
+     *
+     * @param Individual $individual
+     * @param string[]   $parameters
+     *
+     * @return string
+     */
+    public function chartUrl(Individual $individual, array $parameters = []): string
+    {
+        return route('descendants', [
+            'ged'  => $individual->tree()->name(),
+            'xref' => $individual->xref(),
+        ] + $parameters);
+    }
+
+    /**
+     * CSS class for the URL.
+     *
+     * @return string
+     */
+    public function chartUrlClasss(): string
+    {
+        return 'menu-chart-descendants';
     }
 }

@@ -70,7 +70,7 @@ class ChartsMenuModule extends AbstractModule implements ModuleInterface, Module
         $individual = Individual::getInstance($xref, $tree) ?? $tree->significantIndividual(Auth::user());
         $submenus   = Module::activeCharts($tree)
             ->map(function (ModuleChartInterface $module) use ($individual): Menu {
-                return $module->getChartMenu($individual);
+                return $module->chartMenu($individual);
             });
 
         if ($submenus->isEmpty()) {

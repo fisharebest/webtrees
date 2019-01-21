@@ -26,26 +26,76 @@ use Fisharebest\Webtrees\Menu;
 trait ModuleChartTrait
 {
     /**
-     * Return a menu item for this chart.
+     * A main menu item for this chart.
      *
      * @param Individual $individual
      *
-     * @return ?Menu
+     * @return Menu
      */
-    public function getChartMenu(Individual $individual): ?Menu
+    public function chartMenu(Individual $individual): Menu
+    {
+        return new Menu(
+            $this->title(),
+            $this->chartUrl($individual),
+            $this->chartUrlClasss(),
+            $this->chartUrlAttributes()
+        );
+    }
+
+    /**
+     * A menu item for this chart for an individual box in a chart.
+     *
+     * @param Individual $individual
+     *
+     * @return Menu|null
+     */
+    public function chartMenuIndividual(Individual $individual): ?Menu
     {
         return null;
     }
 
     /**
-     * Return a menu item for this chart (for menu in individual box).
+     * The title for a specific instance of this chart.
      *
      * @param Individual $individual
      *
-     * @return ?Menu
+     * @return string
      */
-    public function getBoxChartMenu(Individual $individual): ?Menu
+    public function chartTitle(Individual $individual): string
     {
-        return null;
+        return $this->title();
+    }
+
+    /**
+     * The URL for this chart.
+     *
+     * @param Individual $individual
+     * @param string[]   $parameters
+     *
+     * @return string
+     */
+    public function chartUrl(Individual $individual, array $parameters = []): string
+    {
+        return '#';
+    }
+
+    /**
+     * Attributes for the URL.
+     *
+     * @return string[]
+     */
+    public function chartUrlAttributes(): array
+    {
+        return ['rel' => 'nofollow'];
+    }
+
+    /**
+     * CSS class for the URL.
+     *
+     * @return string
+     */
+    public function chartUrlClasss(): string
+    {
+        return '';
     }
 }

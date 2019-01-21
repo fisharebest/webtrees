@@ -51,34 +51,40 @@ class HourglassChartModule extends AbstractModule implements ModuleInterface, Mo
     }
 
     /**
-     * Return a menu item for this chart.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu|null
-     */
-    public function getChartMenu(Individual $individual): ?Menu
-    {
-        return new Menu(
-            $this->title(),
-            route('hourglass', [
-                'xref' => $individual->xref(),
-                'ged'  => $individual->tree()->name(),
-            ]),
-            'menu-chart-hourglass',
-            ['rel' => 'nofollow']
-        );
-    }
-
-    /**
      * Return a menu item for this chart - for use in individual boxes.
      *
      * @param Individual $individual
      *
      * @return Menu|null
      */
-    public function getBoxChartMenu(Individual $individual): ?Menu
+    public function chartMenuIndividual(Individual $individual): ?Menu
     {
-        return $this->getChartMenu($individual);
+        return $this->chartMenu($individual);
+    }
+
+    /**
+     * The URL for this chart.
+     *
+     * @param Individual $individual
+     * @param string[]   $parameters
+     *
+     * @return string
+     */
+    public function chartUrl(Individual $individual, array $parameters = []): string
+    {
+        return route('hourglass', [
+            'xref' => $individual->xref(),
+            'ged' => $individual->tree()->name(),
+        ] + $parameters);
+    }
+
+    /**
+     * CSS class for the URL.
+     *
+     * @return string
+     */
+    public function chartUrlClasss(): string
+    {
+        return 'menu-chart-hourglass';
     }
 }
