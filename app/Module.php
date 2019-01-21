@@ -174,7 +174,8 @@ class Module
      *
      * @return mixed
      */
-    private static function loadModule(string $filename) {
+    private static function loadModule(string $filename)
+    {
         return include $filename;
     }
 
