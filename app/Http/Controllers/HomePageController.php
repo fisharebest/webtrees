@@ -248,7 +248,6 @@ class HomePageController extends AbstractBaseController
             'content' => $module->getBlock($tree, $block_id, 'gedcom'),
         ]);
 
-
         // Use HTTP headers and some jQuery to add debug to the current page.
         DebugBar::sendDataInHeaders();
 
@@ -618,15 +617,10 @@ class HomePageController extends AbstractBaseController
     private function getBlocksForTreePage(int $tree_id, int $access_level, string $location): Collection
     {
         $rows = DB::table('block')
-            ->join('module', 'module.module_name', '=', 'block.module_name')
-            ->join('module_privacy', 'module_privacy.module_name', '=', 'module.module_name')
-            ->where('block.gedcom_id', '=', $tree_id)
-            ->where('module_privacy.gedcom_id', '=', $tree_id)
+            ->where('gedcom_id', '=', $tree_id)
             ->where('location', '=', $location)
-            ->where('status', '=', 'enabled')
-            ->where('access_level', '>=', $access_level)
             ->orderBy('block_order')
-            ->pluck('block.module_name', 'block_id');
+            ->pluck('module_name', 'block_id');
 
         return $this->filterActiveBlocks($rows, $this->getAvailableTreeBlocks());
     }
@@ -644,15 +638,10 @@ class HomePageController extends AbstractBaseController
     private function getBlocksForUserPage(int $tree_id, int $user_id, int $access_level, string $location): Collection
     {
         $rows = DB::table('block')
-            ->join('module', 'module.module_name', '=', 'block.module_name')
-            ->join('module_privacy', 'module_privacy.module_name', '=', 'module.module_name')
             ->where('user_id', '=', $user_id)
-            ->where('module_privacy.gedcom_id', '=', $tree_id)
             ->where('location', '=', $location)
-            ->where('status', '=', 'enabled')
-            ->where('access_level', '>=', $access_level)
             ->orderBy('block_order')
-            ->pluck('block.module_name', 'block_id');
+            ->pluck('module_name', 'block_id');
 
         return $this->filterActiveBlocks($rows, $this->getAvailableUserBlocks());
     }
@@ -760,9 +749,9 @@ class HomePageController extends AbstractBaseController
         }
 
         foreach ([
-             'main' => $main_blocks,
-             'side' => $side_blocks,
-         ] as $location => $updated_blocks) {
+                     'main' => $main_blocks,
+                     'side' => $side_blocks,
+                 ] as $location => $updated_blocks) {
             foreach ($updated_blocks as $block_order => $block_id) {
                 if (is_numeric($block_id)) {
                     // Updated block
