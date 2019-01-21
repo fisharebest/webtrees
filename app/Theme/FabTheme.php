@@ -33,35 +33,6 @@ class FabTheme extends AbstractTheme implements ThemeInterface
     protected const STYLESHEET = self::ASSET_DIR . 'style.css';
 
     /**
-     * Add markup to the secondary menu.
-     *
-     * @return string
-     */
-    public function formatSecondaryMenu(): string
-    {
-        return
-            '<ul class="nav wt-secondary-menu justify-content-end">' .
-            implode('', array_map(function (Menu $menu): string {
-                return $menu->bootstrap4();
-            }, $this->secondaryMenu())) .
-            '<li>' .
-            $this->formQuickSearch() .
-            '</li>' .
-            '</ul>';
-    }
-
-    /**
-     * Create a search field and submit button for the quick search form in the header.
-     *
-     * @return string
-     */
-    public function formQuickSearchFields(): string
-    {
-        return
-            '<input type="search" name="query" size="20" placeholder="' . I18N::translate('Search') . '">';
-    }
-
-    /**
      * Misecellaneous dimensions, fonts, styles, etc.
      *
      * @param string $parameter_name

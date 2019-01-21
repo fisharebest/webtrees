@@ -31,13 +31,11 @@ use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\PedigreeChartModule;
 use Fisharebest\Webtrees\Module\UserFavoritesModule;
-use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -462,7 +460,7 @@ abstract class AbstractTheme
         return $menu->bootstrap4();
     }
 
-   /**
+    /**
      * Allow themes to do things after initialization (since they cannot use
      * the constructor).
      *
@@ -1194,7 +1192,7 @@ abstract class AbstractTheme
     public function primaryMenu(Individual $individual): array
     {
         return Module::activeMenus($this->tree)
-           ->map(function(ModuleMenuInterface $menu): ?Menu {
+           ->map(function (ModuleMenuInterface $menu): ?Menu {
                 return $menu->getMenu($this->tree);
            })
             ->filter()
