@@ -139,20 +139,24 @@ class Module
                             $module->setName($module_name);
                         }
 
-                        if ($module_info->has($module_name)) {
-                            $module->setEnabled($module_info[$module_name]->status === 'enabled');
+                        $info = $module_info->get($module_name);
 
-                            if ($module instanceof ModuleMenuInterface) {
-                                $module->setMenuOrder($module_info[$module_name]->menu_order);
+                        if ($info instanceof stdClass) {
+                            $module->setEnabled($info->status === 'enabled');
+
+                            if ($module instanceof ModuleMenuInterface && $info->menu_order !== null) {
+                                $module->setMenuOrder((int) $info->menu_order);
                             }
 
-                            if ($module instanceof ModuleSidebarInterface) {
-                                $module->setSidebarOrder($module_info[$module_name]->sidebar_order);
+                            if ($module instanceof ModuleSidebarInterface && $info->sidebar_order !== null) {
+                                $module->setSidebarOrder((int) $info->sidebar_order);
                             }
 
-                            if ($module instanceof ModuleTabInterface) {
-                                $module->setTabOrder($module_info[$module_name]->tab_order);
+                            if ($module instanceof ModuleTabInterface && $info->tab_order !== null) {
+                                $module->setTabOrder((int) $info->tab_order);
                             }
+                        } else {
+                            DB::table('module')->insert(['module_name' => $module_name]);
                         }
 
                         return $module;
