@@ -104,7 +104,7 @@ class AdminUsersController extends AbstractBaseController
     public function cleanupAction(Request $request): RedirectResponse
     {
         foreach (User::all() as $user) {
-            if ((bool) $request->get('del_' . $user->getUserId())) {
+            if ((bool) $request->get('del_' . $user->id())) {
                 Log::addAuthenticationLog('Deleted user: ' . $user->getUserName());
                 $user->delete();
 
@@ -201,7 +201,7 @@ class AdminUsersController extends AbstractBaseController
         $sort_columns   = [];
 
         $callback = function (stdClass $row) use ($installed_languages, $user): array {
-            if ($row->user_id != $user->getUserId()) {
+            if ($row->user_id != $user->id()) {
                 $admin_options = '<div class="dropdown-item"><a href="#" onclick="return masquerade(' . $row->user_id . ')">' . view('icons/user') . ' ' . I18N::translate('Masquerade as this user') . '</a></div>' . '<div class="dropdown-item"><a href="#" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($row->user_name)) . '" onclick="delete_user(this.dataset.confirm, ' . $row->user_id . ');">' . view('icons/delete') . ' ' . I18N::translate('Delete') . '</a></div>';
             } else {
                 // Do not delete ourself!
@@ -224,7 +224,7 @@ class AdminUsersController extends AbstractBaseController
             ];
 
             // Link to send email to other users.
-            if ($row->user_id != $user->getUserId()) {
+            if ($row->user_id != $user->id()) {
                 $datum[4] = '<a href="' . e(route('message', ['to'  => $datum[2], 'url' => route('admin-users')])) . '">' . $datum[4] . '</a>';
             }
 
@@ -334,7 +334,7 @@ class AdminUsersController extends AbstractBaseController
         Log::addAuthenticationLog('User ->' . $username . '<- created');
 
         $url = route('admin-users-edit', [
-            'user_id' => $new_user->getUserId(),
+            'user_id' => $new_user->id(),
         ]);
 
         return new RedirectResponse($url);
@@ -404,7 +404,7 @@ class AdminUsersController extends AbstractBaseController
         }
 
         // We cannot change our own admin status. Another admin will need to do it.
-        if ($edit_user->getUserId() !== $user->getUserId()) {
+        if ($edit_user->id() !== $user->id()) {
             $edit_user->setPreference('canadmin', $canadmin ? '1' : '0');
         }
 

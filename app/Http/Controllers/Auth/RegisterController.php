@@ -152,7 +152,7 @@ class RegisterController extends AbstractBaseController
                 DB::table('message')->insert([
                     'sender'     => $user->getEmail(),
                     'ip_address' => $request->getClientIp(),
-                    'user_id'    => $webmaster->getUserId(),
+                    'user_id'    => $webmaster->id(),
                     'subject'    => $subject,
                     'body'       => view('emails/register-notify-text', ['user' => $user, 'comments' => $comments]),
                 ]);

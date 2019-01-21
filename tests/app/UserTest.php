@@ -34,7 +34,7 @@ class UserTest extends \Fisharebest\Webtrees\TestCase
     {
         $user = User::create('user', 'User', 'user@example.com', 'secret');
 
-        $this->assertSame(1, $user->getUserId());
+        $this->assertSame(1, $user->id());
     }
 
     /**
@@ -52,7 +52,7 @@ class UserTest extends \Fisharebest\Webtrees\TestCase
     {
         $user = User::create('user', 'User', 'user@example.com', 'secret');
 
-        $this->assertSame(1, $user->getUserId());
+        $this->assertSame(1, $user->id());
 
         $this->assertSame('user', $user->getUserName());
         $user->setUserName('foo');
@@ -90,7 +90,7 @@ class UserTest extends \Fisharebest\Webtrees\TestCase
     public function testDelete(): void
     {
         $user = User::create('user', 'User', 'user@example.com', 'secret');
-        $user_id = $user->getUserId();
+        $user_id = $user->id();
         $user->delete();
 
         $this->assertNull(User::find($user_id));
@@ -128,9 +128,9 @@ class UserTest extends \Fisharebest\Webtrees\TestCase
     public function testFindExistingUser(): void
     {
         $user1 = User::create('user', 'User', 'user@example.com', 'secret');
-        $user2 = User::find($user1->getUserId());
+        $user2 = User::find($user1->id());
 
-        $this->assertSame($user1->getuserId(), $user2->getuserId());
+        $this->assertSame($user1->id(), $user2->id());
     }
 
     /**
@@ -142,7 +142,7 @@ class UserTest extends \Fisharebest\Webtrees\TestCase
         $user1 = User::create('user', 'User', 'user@example.com', 'secret');
         $user2 = User::findByEmail($user1->getEmail());
 
-        $this->assertSame($user1->getuserId(), $user2->getuserId());
+        $this->assertSame($user1->id(), $user2->id());
     }
 
     /**
@@ -154,7 +154,7 @@ class UserTest extends \Fisharebest\Webtrees\TestCase
         $user1 = User::create('user', 'User', 'user@example.com', 'secret');
         $user2 = User::findByUserName($user1->getUserName());
 
-        $this->assertSame($user1->getuserId(), $user2->getuserId());
+        $this->assertSame($user1->id(), $user2->id());
     }
 
     /**
@@ -167,8 +167,8 @@ class UserTest extends \Fisharebest\Webtrees\TestCase
         $user2 = User::findByIdentifier($user1->getUsername());
         $user3 = User::findByIdentifier($user1->getEmail());
 
-        $this->assertSame($user1->getuserId(), $user2->getuserId());
-        $this->assertSame($user1->getuserId(), $user3->getuserId());
+        $this->assertSame($user1->id(), $user2->id());
+        $this->assertSame($user1->id(), $user3->id());
     }
 
     /**
@@ -186,7 +186,7 @@ class UserTest extends \Fisharebest\Webtrees\TestCase
         $users = User::findByIndividual($indi);
 
         $this->assertSame(1, count($users));
-        $this->assertSame($user->getuserId(), $users[0]->getuserId());
+        $this->assertSame($user->id(), $users[0]->id());
     }
 
     /**
@@ -201,8 +201,8 @@ class UserTest extends \Fisharebest\Webtrees\TestCase
         $users = User::all();
 
         $this->assertSame(2, $users->count());
-        $this->assertSame($user2->getUserId(), $users[0]->getUserId());
-        $this->assertSame($user1->getUserId(), $users[1]->getUserId());
+        $this->assertSame($user2->id(), $users[0]->id());
+        $this->assertSame($user1->id(), $users[1]->id());
     }
 
     /**
@@ -219,7 +219,7 @@ class UserTest extends \Fisharebest\Webtrees\TestCase
         $users = User::administrators();
 
         $this->assertSame(1, count($users));
-        $this->assertSame($admin->getUserId(), $users[0]->getUserId());
+        $this->assertSame($admin->id(), $users[0]->id());
     }
 
     /**
@@ -242,7 +242,7 @@ class UserTest extends \Fisharebest\Webtrees\TestCase
         $users = User::managers();
 
         $this->assertSame(1, count($users));
-        $this->assertSame($user1->getuserId(), $users[0]->getuserId());
+        $this->assertSame($user1->id(), $users[0]->id());
     }
 
     /**
@@ -265,7 +265,7 @@ class UserTest extends \Fisharebest\Webtrees\TestCase
         $users = User::moderators();
 
         $this->assertSame(1, count($users));
-        $this->assertSame($user2->getuserId(), $users[0]->getuserId());
+        $this->assertSame($user2->id(), $users[0]->id());
     }
 
     /**
@@ -292,13 +292,13 @@ class UserTest extends \Fisharebest\Webtrees\TestCase
         $users = User::unapproved();
 
         $this->assertSame(2, $users->count());
-        $this->assertSame($user1->getuserId(), $users[0]->getuserId());
-        $this->assertSame($user3->getuserId(), $users[1]->getuserId());
+        $this->assertSame($user1->id(), $users[0]->id());
+        $this->assertSame($user3->id(), $users[1]->id());
 
         $users = User::unverified();
 
         $this->assertSame(2, $users->count());
-        $this->assertSame($user1->getuserId(), $users[0]->getuserId());
-        $this->assertSame($user2->getuserId(), $users[1]->getuserId());
+        $this->assertSame($user1->id(), $users[0]->id());
+        $this->assertSame($user2->id(), $users[1]->id());
     }
 }

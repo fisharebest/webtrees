@@ -156,7 +156,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleInterface, Mod
     {
         return DB::table('favorite')
             ->where('gedcom_id', '=', $tree->id())
-            ->where('user_id', '=', $user->getUserId())
+            ->where('user_id', '=', $user->id())
             ->get()
             ->map(function (stdClass $row) use ($tree): stdClass {
                 if ($row->xref !== null) {
@@ -215,7 +215,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleInterface, Mod
 
         DB::table('favorite')
             ->where('favorite_id', '=', $favorite_id)
-            ->where('user_id', '=', $user->getUserId())
+            ->where('user_id', '=', $user->id())
             ->delete();
 
         $url = route('user-page', ['ged' => $tree->name()]);
@@ -236,7 +236,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleInterface, Mod
     {
         DB::table('favorite')->updateOrInsert([
             'gedcom_id' => $tree->id(),
-            'user_id'   => $user->getUserId(),
+            'user_id'   => $user->id(),
             'url'       => $url,
         ], [
             'favorite_type' => 'URL',
@@ -257,7 +257,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleInterface, Mod
     {
         DB::table('favorite')->updateOrInsert([
             'gedcom_id' => $tree->id(),
-            'user_id'   => $user->getUserId(),
+            'user_id'   => $user->id(),
             'xref'      => $record->xref(),
         ], [
             'favorite_type' => $record::RECORD_TYPE,

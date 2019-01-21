@@ -6091,7 +6091,7 @@ class Stats
                 } else {
                     $content .= e($user->getRealName()) . ' - ' . e($user->getUserName());
                 }
-                if (Auth::id() !== $user->getUserId() && $user->getPreference('contactmethod') !== 'none') {
+                if (Auth::id() !== $user->id() && $user->getPreference('contactmethod') !== 'none') {
                     if ($type == 'list') {
                         $content .= '<br>';
                     }
@@ -6258,7 +6258,7 @@ class Stats
      */
     public function latestUserId(): string
     {
-        return (string) $this->latestUser()->getUserId();
+        return (string) $this->latestUser()->id();
     }
 
     /**
@@ -6331,7 +6331,7 @@ class Stats
         $is_logged_in = (bool) Database::prepare(
             "SELECT 1 FROM `##session` WHERE user_id = :user_id LIMIT 1"
         )->execute([
-            'user_id' => $user->getUserId()
+            'user_id' => $user->id()
         ])->fetchOne();
 
         return $is_logged_in ? $yes : $no;
@@ -6468,7 +6468,7 @@ class Stats
         } elseif ($page_name == 'index.php') {
             // index.php?ctype=user
             $user           = User::findByIdentifier($page_parameter);
-            $page_parameter = 'user:' . ($user ? $user->getUserId() : Auth::id());
+            $page_parameter = 'user:' . ($user ? $user->id() : Auth::id());
         }
 
         $hit_counter = new PageHitCounter(Auth::user(), $this->tree);

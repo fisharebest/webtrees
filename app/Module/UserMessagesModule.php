@@ -98,7 +98,7 @@ class UserMessagesModule extends AbstractModule implements ModuleInterface, Modu
             $can_see_tree = $public_tree || Auth::accessLevel($tree, $user) <= Auth::PRIV_USER;
 
             return
-                $user->getUserId() !== Auth::id() &&
+                $user->id() !== Auth::id() &&
                 $user->getPreference('verified_by_admin') &&
                 $can_see_tree &&
                 $user->getPreference('contactmethod') !== 'none';

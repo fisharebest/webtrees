@@ -94,7 +94,7 @@ class PageHitCounter implements MiddlewareInterface
                     break;
 
                 case 'user-page':
-                    $page_hits = $this->countHit($this->tree, $page_name, 'user:' . $this->user->getUserId());
+                    $page_hits = $this->countHit($this->tree, $page_name, 'user:' . $this->user->id());
                     break;
             }
         }

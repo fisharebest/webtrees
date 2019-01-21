@@ -379,7 +379,7 @@ class MessageController extends AbstractBaseController
             DB::table('message')->insert([
                 'sender'     => Auth::check() ? Auth::user()->getEmail() : $sender_email,
                 'ip_address' => $ip,
-                'user_id'    => $recipient->getUserId(),
+                'user_id'    => $recipient->id(),
                 'subject'    => $subject,
                 'body'       => $body_text,
             ]);

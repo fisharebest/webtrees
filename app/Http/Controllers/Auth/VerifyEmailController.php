@@ -74,7 +74,7 @@ class VerifyEmailController extends AbstractBaseController
                     DB::table('message')->insert([
                         'sender'     => $username,
                         'ip_address' => $request->getClientIp(),
-                        'user_id'    => $webmaster->getUserId(),
+                        'user_id'    => $webmaster->id(),
                         'subject'    => $subject,
                         'body'       => view('emails/verify-notify-text', ['user' => $user]),
                     ]);

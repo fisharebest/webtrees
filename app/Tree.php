@@ -224,15 +224,15 @@ class Tree
     {
         // There are lots of settings, and we need to fetch lots of them on every page
         // so it is quicker to fetch them all in one go.
-        if (!array_key_exists($user->getUserId(), $this->user_preferences)) {
-            $this->user_preferences[$user->getUserId()] = DB::table('user_gedcom_setting')
-                ->where('user_id', '=', $user->getUserId())
+        if (!array_key_exists($user->id(), $this->user_preferences)) {
+            $this->user_preferences[$user->id()] = DB::table('user_gedcom_setting')
+                ->where('user_id', '=', $user->id())
                 ->where('gedcom_id', '=', $this->id)
                 ->pluck('setting_value', 'setting_name')
                 ->all();
         }
 
-        return $this->user_preferences[$user->getUserId()][$setting_name] ?? $default;
+        return $this->user_preferences[$user->id()][$setting_name] ?? $default;
     }
 
     /**
@@ -250,14 +250,14 @@ class Tree
             // Update the database
             DB::table('user_gedcom_setting')->updateOrInsert([
                 'gedcom_id'    => $this->id(),
-                'user_id'      => $user->getUserId(),
+                'user_id'      => $user->id(),
                 'setting_name' => $setting_name,
             ], [
                 'setting_value' => $setting_value,
             ]);
 
             // Update the cache
-            $this->user_preferences[$user->getUserId()][$setting_name] = $setting_value;
+            $this->user_preferences[$user->id()][$setting_name] = $setting_value;
             // Audit log of changes
             Log::addConfigurationLog('Tree preference "' . $setting_name . '" set to "' . $setting_value . '" for user "' . $user->getUserName() . '"', $this);
         }

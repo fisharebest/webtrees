@@ -110,7 +110,7 @@ class HomePageController extends AbstractBaseController
             throw new NotFoundHttpException();
         }
 
-        if ($block->user_id !== $user->getUserId() && !Auth::isAdmin()) {
+        if ($block->user_id !== $user->id() && !Auth::isAdmin()) {
             throw new AccessDeniedHttpException();
         }
 
@@ -174,7 +174,7 @@ class HomePageController extends AbstractBaseController
 
         $block = DB::table('block')
             ->where('block_id', '=', $block_id)
-            ->where('user_id', '=', $user->getUserId())
+            ->where('user_id', '=', $user->id())
             ->whereNull('gedcom_id')
             ->first();
 
@@ -190,7 +190,7 @@ class HomePageController extends AbstractBaseController
 
         $block_owner_id = (int) $block->user_id;
 
-        if ($block_owner_id !== $user->getUserId() && !Auth::isAdmin()) {
+        if ($block_owner_id !== $user->id() && !Auth::isAdmin()) {
             throw new AccessDeniedHttpException('You are not allowed to edit this block');
         }
 
@@ -360,7 +360,7 @@ class HomePageController extends AbstractBaseController
     public function userPage(Tree $tree, User $user): Response
     {
         $tree_id      = $tree->id();
-        $user_id      = $user->getUserId();
+        $user_id      = $user->id();
         $access_level = Auth::accessLevel($tree, $user);
         $main_blocks  = $this->getBlocksForUserPage($tree_id, $user_id, $access_level, 'main');
         $side_blocks  = $this->getBlocksForUserPage($tree_id, $user_id, $access_level, 'side');
@@ -388,7 +388,7 @@ class HomePageController extends AbstractBaseController
 
         $block = DB::table('block')
             ->where('block_id', '=', $block_id)
-            ->where('user_id', '=', $user->getUserId())
+            ->where('user_id', '=', $user->id())
             ->whereNull('gedcom_id')
             ->first();
 
@@ -460,8 +460,8 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageEdit(Tree $tree, User $user): Response
     {
-        $main_blocks = $this->getBlocksForUserPage($tree->id(), $user->getUserId(), Auth::accessLevel($tree, $user), 'main');
-        $side_blocks = $this->getBlocksForUserPage($tree->id(), $user->getUserId(), Auth::accessLevel($tree, $user), 'side');
+        $main_blocks = $this->getBlocksForUserPage($tree->id(), $user->id(), Auth::accessLevel($tree, $user), 'main');
+        $side_blocks = $this->getBlocksForUserPage($tree->id(), $user->id(), Auth::accessLevel($tree, $user), 'side');
         $all_blocks  = $this->getAvailableUserBlocks();
         $title       = I18N::translate('Change the “My page” blocks');
         $url_cancel  = route('user-page', ['ged' => $tree->name()]);
@@ -499,7 +499,7 @@ class HomePageController extends AbstractBaseController
             $side_blocks = (array) $request->get('side');
         }
 
-        $this->updateUserBlocks($user->getUserId(), $main_blocks, $side_blocks);
+        $this->updateUserBlocks($user->id(), $main_blocks, $side_blocks);
 
         return new RedirectResponse(route('user-page', ['ged' => $tree->name()]));
     }

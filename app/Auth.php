@@ -167,7 +167,7 @@ class Auth
     public static function login(User $user)
     {
         Session::regenerate(false);
-        Session::put('wt_user', $user->getUserId());
+        Session::put('wt_user', $user->id());
     }
 
     /**

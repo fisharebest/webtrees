@@ -125,7 +125,7 @@ class User
             ['user_id', 'location', 'block_order', 'module_name'],
             function (Builder $query) use ($user): void {
                 $query
-                    ->select([DB::raw($user->getuserId()), 'location', 'block_order', 'module_name'])
+                    ->select([DB::raw($user->id()), 'location', 'block_order', 'module_name'])
                     ->from('block')
                     ->where('user_id', '=', -1);
             }
@@ -427,7 +427,7 @@ class User
      *
      * @return int
      */
-    public function getUserId(): int
+    public function id(): int
     {
         return $this->user_id;
     }
