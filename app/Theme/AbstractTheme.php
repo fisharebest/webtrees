@@ -48,7 +48,7 @@ abstract class AbstractTheme
      * Where are our CSS, JS and other assets?
      */
     protected const THEME_DIR  = '_common';
-    public const ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-2.0.0/';
+    public const    ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-2.0.0/';
     protected const STYLESHEET = self::ASSET_DIR . 'style.css';
 
     protected const PERSON_BOX_CLASSES = [
@@ -1192,9 +1192,9 @@ abstract class AbstractTheme
     public function primaryMenu(Individual $individual): array
     {
         return Module::activeMenus($this->tree)
-           ->map(function (ModuleMenuInterface $menu): ?Menu {
+            ->map(function (ModuleMenuInterface $menu): ?Menu {
                 return $menu->getMenu($this->tree);
-           })
+            })
             ->filter()
             ->all();
     }
