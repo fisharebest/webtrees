@@ -88,7 +88,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleInterface, Mod
      */
     public function defaultMenuOrder(): int
     {
-        return 10;
+        return 60;
     }
 
     /**
@@ -98,7 +98,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleInterface, Mod
      *
      * @return Menu|null
      */
-    public function getMenu(Tree $tree)
+    public function getMenu(Tree $tree): ?Menu
     {
         $request = Request::createFromGlobals();
 

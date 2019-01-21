@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
@@ -57,7 +58,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleInt
      */
     public function defaultMenuOrder(): int
     {
-        return 20;
+        return 80;
     }
 
     /**
@@ -67,7 +68,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleInt
      *
      * @return Menu|null
      */
-    public function getMenu(Tree $tree)
+    public function getMenu(Tree $tree): ?Menu
     {
         if ($this->faqsExist($tree, WT_LOCALE)) {
             return new Menu($this->title(), route('module', [

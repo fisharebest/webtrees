@@ -54,7 +54,7 @@ class DeathReportModule extends AbstractModule implements ModuleInterface, Modul
     public function getReportMenu(Individual $individual): Menu
     {
         return new Menu(
-            $this->getName(),
+            $this->title(),
             route('report-setup', [
                 'ged'    => $individual->tree()->name(),
                 'report' => $this->getName(),

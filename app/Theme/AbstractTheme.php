@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
 use Fisharebest\Webtrees\Module\ModuleInterface;
+use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\PedigreeChartModule;
 use Fisharebest\Webtrees\Module\UserFavoritesModule;
 use Fisharebest\Webtrees\Session;
@@ -372,19 +373,6 @@ abstract class AbstractTheme
     }
 
     /**
-     * HTML link to a "favorites icon".
-     *
-     * @return string
-     */
-    protected function favicon(): string
-    {
-        return
-            '<link rel="icon" href="' . self::ASSET_DIR . 'favicon.png" type="image/png">' .
-            '<link rel="icon" type="image/png" href="' . self::ASSET_DIR . 'favicon192.png" sizes="192x192">' .
-            '<link rel="apple-touch-icon" sizes="180x180" href="' . self::ASSET_DIR . 'favicon180.png">';
-    }
-
-    /**
      * Add markup to a flash message.
      *
      * @param stdClass $message
@@ -448,58 +436,6 @@ abstract class AbstractTheme
     }
 
     /**
-     * Create a quick search form for the header.
-     *
-     * @return string
-     */
-    protected function formQuickSearch()
-    {
-        if ($this->tree) {
-            return
-                '<div class="col wt-header-search">' .
-                '<form class="wt-header-search-form" role="search">' .
-                '<input type="hidden" name="route" value="search-quick">' .
-                '<input type="hidden" name="ged" value="' . e($this->tree->name()) . '">' .
-                $this->formQuickSearchFields() .
-                '</form>' .
-                '</div>';
-        }
-
-        return '';
-    }
-
-    /**
-     * Create a search field and submit button for the quick search form in the header.
-     *
-     * @return string
-     */
-    protected function formQuickSearchFields(): string
-    {
-        return
-            '<div class="input-group">' .
-            '<label class="sr-only" for="quick-search">' . I18N::translate('Search') . '</label>' .
-            '<input type="search" class="form-control wt-header-search-field" id="quick-search" name="query" size="15" placeholder="' . I18N::translate('Search') . '">' .
-            '<span class="input-group-btn">' .
-            '<button type="submit" class="btn btn-primary wt-header-search-button">' . view('icons/search') . '</button>' .
-            '</span>' .
-            '</div>';
-    }
-
-    /**
-     * Add markup to the tree title.
-     *
-     * @return string
-     */
-    protected function formatTreeTitle()
-    {
-        if ($this->tree) {
-            return '<h1 class="col wt-site-title">' . e($this->tree->title()) . '</h1>';
-        }
-
-        return '';
-    }
-
-    /**
      * Add markup to the secondary menu.
      *
      * @return string
@@ -526,23 +462,7 @@ abstract class AbstractTheme
         return $menu->bootstrap4();
     }
 
-    /**
-     * Create the contents of the <header> tag.
-     *
-     * @return string
-     */
-    protected function headerContent(): string
-    {
-        return
-            $this->accessibilityLinks() .
-            $this->logoHeader() .
-            $this->formatTreeTitle() .
-            $this->formQuickSearch() .
-            $this->secondaryMenuContainer($this->secondaryMenu()) .
-            $this->primaryMenuContainer($this->primaryMenu($this->tree->significantIndividual(Auth::user())));
-    }
-
-    /**
+   /**
      * Allow themes to do things after initialization (since they cannot use
      * the constructor).
      *
@@ -550,27 +470,6 @@ abstract class AbstractTheme
      */
     public function hookAfterInit()
     {
-    }
-
-    /**
-     * Allow themes to add extra content to the page header.
-     * Typically this will be additional CSS.
-     *
-     * @return string
-     */
-    public function hookHeaderExtraContent(): string
-    {
-        return '';
-    }
-
-    /**
-     * Create the <html> tag.
-     *
-     * @return string
-     */
-    public function html(): string
-    {
-        return '<html ' . I18N::htmlAttributes() . '>';
     }
 
     /**
@@ -902,16 +801,6 @@ abstract class AbstractTheme
     }
 
     /**
-     * A large webtrees logo, for the header.
-     *
-     * @return string
-     */
-    protected function logoHeader(): string
-    {
-        return '<div class="col wt-site-logo"></div>';
-    }
-
-    /**
      * A small "powered by webtrees" logo for the footer.
      *
      * @return string
@@ -919,32 +808,6 @@ abstract class AbstractTheme
     public function logoPoweredBy(): string
     {
         return '<a href="' . e(Webtrees::URL) . '" class="wt-powered-by-webtrees" dir="ltr">' . e(Webtrees::NAME) . '</a>';
-    }
-
-    /**
-     * A menu for the day/month/year calendar views.
-     *
-     * @return Menu
-     */
-    public function menuCalendar(): Menu
-    {
-        return new Menu(I18N::translate('Calendar'), '#', 'menu-calendar', ['rel' => 'nofollow'], [
-            // Day view
-            new Menu(I18N::translate('Day'), route('calendar', [
-                'view' => 'day',
-                'ged'  => $this->tree->name(),
-            ]), 'menu-calendar-day', ['rel' => 'nofollow']),
-            // Month view
-            new Menu(I18N::translate('Month'), route('calendar', [
-                'view' => 'month',
-                'ged'  => $this->tree->name(),
-            ]), 'menu-calendar-month', ['rel' => 'nofollow']),
-            //Year view
-            new Menu(I18N::translate('Year'), route('calendar', [
-                'view' => 'year',
-                'ged'  => $this->tree->name(),
-            ]), 'menu-calendar-year', ['rel' => 'nofollow']),
-        ]);
     }
 
     /**
@@ -963,34 +826,6 @@ abstract class AbstractTheme
         }
 
         return null;
-    }
-
-    /**
-     * Generate a menu for each of the different charts.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu|null
-     */
-    public function menuChart(Individual $individual)
-    {
-        $submenus = [];
-        foreach (Module::activeCharts($this->tree) as $chart) {
-            $menu = $chart->getChartMenu($individual);
-            if ($menu) {
-                $submenus[] = $menu;
-            }
-        }
-
-        if (empty($submenus)) {
-            return null;
-        }
-
-        usort($submenus, function (Menu $x, Menu $y) {
-            return I18N::strcasecmp($x->getLabel(), $y->getLabel());
-        });
-
-        return new Menu(I18N::translate('Charts'), '#', 'menu-chart', ['rel' => 'nofollow'], $submenus);
     }
 
     /**
@@ -1075,30 +910,6 @@ abstract class AbstractTheme
     }
 
     /**
-     * A menu for the home (family tree) pages.
-     *
-     * @return Menu
-     */
-    public function menuHomePage()
-    {
-        if (Tree::all()->count() === 1 || Site::getPreference('ALLOW_CHANGE_GEDCOM') !== '1') {
-            return new Menu(I18N::translate('Family tree'), route('tree-page', ['ged' => $this->tree->name()]), 'menu-tree');
-        }
-
-        $submenus = [];
-        foreach (Tree::all() as $tree) {
-            if ($tree->id() === $this->tree->id()) {
-                $active = 'active ';
-            } else {
-                $active = '';
-            }
-            $submenus[] = new Menu(e($tree->title()), route('tree-page', ['ged' => $tree->name()]), $active . 'menu-tree-' . $tree->id());
-        }
-
-        return new Menu(I18N::translate('Family trees'), '#', 'menu-tree', [], $submenus);
-    }
-
-    /**
      * A menu to show a list of available languages.
      *
      * @return Menu|null
@@ -1121,155 +932,6 @@ abstract class AbstractTheme
         }
 
         return null;
-    }
-
-    /**
-     * Create a menu to show lists of individuals, families, sources, etc.
-     *
-     * @param string $surname The significant surname on the page
-     *
-     * @return Menu
-     */
-    public function menuLists($surname): Menu
-    {
-        // Do not show empty lists
-        $sources_exist = DB::table('sources')
-            ->where('s_file', '=', $this->tree->id())
-            ->exists();
-
-        $repositories_exist = DB::table('other')
-            ->where('o_file', '=', $this->tree->id())
-            ->where('o_type', '=', 'REPO')
-            ->exists();
-
-        $notes_exist = DB::table('other')
-            ->where('o_file', '=', $this->tree->id())
-            ->where('o_type', '=', 'NOTE')
-            ->exists();
-
-        $media_exist = DB::table('media')
-            ->where('m_file', '=', $this->tree->id())
-            ->exists();
-
-        $submenus = [
-            $this->menuListsIndividuals($surname),
-            $this->menuListsFamilies($surname),
-            $this->menuListsBranches($surname),
-            $this->menuListsPlaces(),
-        ];
-        if ($media_exist) {
-            $submenus[] = $this->menuListsMedia();
-        }
-        if ($repositories_exist) {
-            $submenus[] = $this->menuListsRepositories();
-        }
-        if ($sources_exist) {
-            $submenus[] = $this->menuListsSources();
-        }
-        if ($notes_exist) {
-            $submenus[] = $this->menuListsNotes();
-        }
-
-        uasort($submenus, function (Menu $x, Menu $y) {
-            return I18N::strcasecmp($x->getLabel(), $y->getLabel());
-        });
-
-        return new Menu(I18N::translate('Lists'), '#', 'menu-list', [], $submenus);
-    }
-
-    /**
-     * A menu for the list of branches
-     *
-     * @param string $surname The significant surname on the page
-     *
-     * @return Menu
-     */
-    public function menuListsBranches($surname): Menu
-    {
-        return new Menu(I18N::translate('Branches'), route('branches', [
-            'ged'     => $this->tree->name(),
-            'surname' => $surname,
-        ]), 'menu-branches', ['rel' => 'nofollow']);
-    }
-
-    /**
-     * A menu for the list of families
-     *
-     * @param string $surname The significant surname on the page
-     *
-     * @return Menu
-     */
-    public function menuListsFamilies($surname): Menu
-    {
-        return new Menu(I18N::translate('Families'), route('family-list', [
-            'ged'     => $this->tree->name(),
-            'surname' => $surname,
-        ]), 'menu-list-indi');
-    }
-
-    /**
-     * A menu for the list of individuals
-     *
-     * @param string $surname The significant surname on the page
-     *
-     * @return Menu
-     */
-    public function menuListsIndividuals($surname): Menu
-    {
-        return new Menu(I18N::translate('Individuals'), route('individual-list', [
-            'ged'     => $this->tree->name(),
-            'surname' => $surname,
-        ]), 'menu-list-indi');
-    }
-
-    /**
-     * A menu for the list of media objects
-     *
-     * @return Menu
-     */
-    public function menuListsMedia(): Menu
-    {
-        return new Menu(I18N::translate('Media objects'), route('media-list', ['ged' => $this->tree->name()]), 'menu-list-obje', ['rel' => 'nofollow']);
-    }
-
-    /**
-     * A menu for the list of notes
-     *
-     * @return Menu
-     */
-    public function menuListsNotes(): Menu
-    {
-        return new Menu(I18N::translate('Shared notes'), route('note-list', ['ged' => $this->tree->name()]), 'menu-list-note', ['rel' => 'nofollow']);
-    }
-
-    /**
-     * A menu for the list of individuals
-     *
-     * @return Menu
-     */
-    protected function menuListsPlaces(): Menu
-    {
-        return new Menu(I18N::translate('Place hierarchy'), route('place-hierarchy', ['ged' => $this->tree->name()]), 'menu-list-plac', ['rel' => 'nofollow']);
-    }
-
-    /**
-     * A menu for the list of repositories
-     *
-     * @return Menu
-     */
-    public function menuListsRepositories(): Menu
-    {
-        return new Menu(I18N::translate('Repositories'), route('repository-list', ['ged' => $this->tree->name()]), 'menu-list-repo', ['rel' => 'nofollow']);
-    }
-
-    /**
-     * A menu for the list of sources
-     *
-     * @return Menu
-     */
-    public function menuListsSources(): Menu
-    {
-        return new Menu(I18N::translate('Sources'), route('source-list', ['ged' => $this->tree->name()]), 'menu-list-sour', ['rel' => 'nofollow']);
     }
 
     /**
@@ -1304,21 +966,6 @@ abstract class AbstractTheme
         }
 
         return null;
-    }
-
-    /**
-     * Get the additional menus created by each of the modules
-     *
-     * @return Menu[]
-     */
-    public function menuModules(): array
-    {
-        $menus = [];
-        foreach (Module::activeMenus($this->tree) as $module) {
-            $menus[] = $module->getMenu($this->tree);
-        }
-
-        return array_filter($menus);
     }
 
     /**
@@ -1430,90 +1077,6 @@ abstract class AbstractTheme
     }
 
     /**
-     * A menu with a list of reports.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu|null
-     */
-    public function menuReports(Individual $individual)
-    {
-        $submenus = [];
-        foreach (Module::activeReports($this->tree) as $report) {
-            $submenus[] = $report->getReportMenu($individual);
-        }
-
-        if (empty($submenus)) {
-            return null;
-        }
-
-        return new Menu(I18N::translate('Reports'), '#', 'menu-report', ['rel' => 'nofollow'], $submenus);
-    }
-
-    /**
-     * Create the search menu.
-     *
-     * @return Menu
-     */
-    public function menuSearch(): Menu
-    {
-        return new Menu(I18N::translate('Search'), '#', 'menu-search', ['rel' => 'nofollow'], array_filter([
-            $this->menuSearchGeneral(),
-            $this->menuSearchPhonetic(),
-            $this->menuSearchAdvanced(),
-            $this->menuSearchAndReplace(),
-        ]));
-    }
-
-    /**
-     * Create the general search sub-menu.
-     *
-     * @return Menu
-     */
-    public function menuSearchGeneral(): Menu
-    {
-        return new Menu(I18N::translate('General search'), route('search-general', ['ged' => $this->tree->name()]), 'menu-search-general', ['rel' => 'nofollow']);
-    }
-
-    /**
-     * Create the phonetic search sub-menu.
-     *
-     * @return Menu
-     */
-    public function menuSearchPhonetic(): Menu
-    {
-        /* I18N: search using “sounds like”, rather than exact spelling */
-        return new Menu(I18N::translate('Phonetic search'), route('search-phonetic', ['ged' => $this->tree->name(), 'action' => 'soundex']), 'menu-search-soundex', ['rel' => 'nofollow']);
-    }
-
-    /**
-     * Create the advanced search sub-menu.
-     *
-     * @return Menu
-     */
-    public function menuSearchAdvanced(): Menu
-    {
-        return new Menu(I18N::translate('Advanced search'), route('search-advanced', ['ged' => $this->tree->name()]), 'menu-search-advanced', ['rel' => 'nofollow']);
-    }
-
-    /**
-     * Create the advanced search sub-menu.
-     *
-     * @return Menu|null
-     */
-    public function menuSearchAndReplace()
-    {
-        if (Auth::isEditor($this->tree)) {
-            return new Menu(I18N::translate('Search and replace'), route('search-replace', [
-                'ged'    => $this->tree->name(),
-                'action' => 'replace',
-            ]), 'menu-search-replace');
-        }
-
-        return null;
-    }
-
-    /**
      * Themes menu.
      *
      * @return Menu|null
@@ -1540,84 +1103,6 @@ abstract class AbstractTheme
         }
 
         return null;
-    }
-
-    /**
-     * Create the <meta charset=""> tag.
-     *
-     * @return string
-     */
-    protected function metaCharset(): string
-    {
-        return '<meta charset="UTF-8">';
-    }
-
-    /**
-     * Make the CSRF token available to Javascript.
-     *
-     * @return string
-     */
-    protected function metaCsrf(): string
-    {
-        return '<meta name="csrf" content="' . e(Session::getCsrfToken()) . '">';
-    }
-
-    /**
-     * Create the <meta name="description"> tag.
-     *
-     * @param string $description
-     *
-     * @return string
-     */
-    protected function metaDescription($description)
-    {
-        if ($description) {
-            return '<meta name="description" content="' . $description . '">';
-        }
-
-        return '';
-    }
-
-    /**
-     * Create the <meta name="generator"> tag.
-     *
-     * @param string $generator
-     *
-     * @return string
-     */
-    protected function metaGenerator($generator)
-    {
-        if ($generator) {
-            return '<meta name="generator" content="' . $generator . '">';
-        }
-
-        return '';
-    }
-
-    /**
-     * Create the <meta name="robots"> tag.
-     *
-     * @param string $robots
-     *
-     * @return string
-     */
-    protected function metaRobots($robots)
-    {
-        if ($robots) {
-            return '<meta name="robots" content="' . $robots . '">';
-        }
-
-        return '';
-    }
-
-    /**
-     * Create the <meta name="viewport" content="width=device-width, initial-scale=1"> tag.
-     *
-     * @return string
-     */
-    protected function metaViewport(): string
-    {
-        return '<meta name="viewport" content="width=device-width, initial-scale=1">';
     }
 
     /**
@@ -1708,28 +1193,12 @@ abstract class AbstractTheme
      */
     public function primaryMenu(Individual $individual): array
     {
-        $surname = $individual->getAllNames()[0]['surn'];
-
-        return array_filter(array_merge([
-            $this->menuHomePage(),
-            $this->menuChart($individual),
-            $this->menuLists($surname),
-            $this->menuCalendar(),
-            $this->menuReports($individual),
-            $this->menuSearch(),
-        ], $this->menuModules()));
-    }
-
-    /**
-     * Add markup to the primary menu.
-     *
-     * @param Menu[] $menus
-     *
-     * @return string
-     */
-    protected function primaryMenuContainer(array $menus): string
-    {
-        return '<nav class="col wt-primary-navigation"><ul class="nav wt-primary-menu">' . $this->primaryMenuContent($menus) . '</ul></nav>';
+        return Module::activeMenus($this->tree)
+           ->map(function(ModuleMenuInterface $menu): ?Menu {
+                return $menu->getMenu($this->tree);
+           })
+            ->filter()
+            ->all();
     }
 
     /**
@@ -1762,18 +1231,6 @@ abstract class AbstractTheme
             $this->menuLogin(),
             $this->menuLogout(),
         ]);
-    }
-
-    /**
-     * Add markup to the secondary menu.
-     *
-     * @param Menu[] $menus
-     *
-     * @return string
-     */
-    protected function secondaryMenuContainer(array $menus): string
-    {
-        return '<div class="col wt-secondary-navigation"><ul class="nav wt-secondary-menu">' . $this->secondaryMenuContent($menus) . '</ul></div>';
     }
 
     /**

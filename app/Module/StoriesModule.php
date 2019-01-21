@@ -61,7 +61,7 @@ class StoriesModule extends AbstractModule implements ModuleInterface, ModuleCon
      */
     public function defaultMenuOrder(): int
     {
-        return 30;
+        return 70;
     }
 
     /**
@@ -140,7 +140,7 @@ class StoriesModule extends AbstractModule implements ModuleInterface, ModuleCon
      *
      * @return Menu|null
      */
-    public function getMenu(Tree $tree)
+    public function getMenu(Tree $tree): ?Menu
     {
         $menu = new Menu($this->title(), route('module', [
             'module' => $this->getName(),
