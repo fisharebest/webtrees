@@ -133,7 +133,7 @@ class Module
                 ->map(function (string $filename) use ($module_info): ?ModuleInterface {
                     try {
                         $module_name = basename(dirname($filename));
-                        $module      = include $filename;
+                        $module      = self::loadModule($filename);
 
                         if ($module instanceof ModuleInterface) {
                             $module->setName($module_name);
@@ -165,6 +165,17 @@ class Module
                 })
                 ->filter();
         });
+    }
+
+    /**
+     * Load a module in a separate scope, to prevent it from modifying local variables.
+     *
+     * @param string $filename
+     *
+     * @return mixed
+     */
+    private static function loadModule(string $filename) {
+        return include $filename;
     }
 
     /**
