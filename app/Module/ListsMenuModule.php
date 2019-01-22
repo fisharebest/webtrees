@@ -58,7 +58,7 @@ class ListsMenuModule extends AbstractModule implements ModuleInterface, ModuleM
      */
     public function defaultMenuOrder(): int
     {
-        return 30;
+        return 3;
     }
 
     /**

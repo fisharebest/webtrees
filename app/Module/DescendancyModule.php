@@ -62,7 +62,7 @@ class DescendancyModule extends AbstractModule implements ModuleInterface, Modul
      */
     public function defaultSidebarOrder(): int
     {
-        return 30;
+        return 3;
     }
 
     /**

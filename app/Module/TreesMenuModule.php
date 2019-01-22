@@ -58,7 +58,7 @@ class TreesMenuModule extends AbstractModule implements ModuleInterface, ModuleM
      */
     public function defaultMenuOrder(): int
     {
-        return 10;
+        return 1;
     }
 
     /**

@@ -58,7 +58,7 @@ class SearchMenuModule extends AbstractModule implements ModuleInterface, Module
      */
     public function defaultMenuOrder(): int
     {
-        return 60;
+        return 6;
     }
 
     /**

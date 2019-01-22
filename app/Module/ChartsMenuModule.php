@@ -61,7 +61,7 @@ class ChartsMenuModule extends AbstractModule implements ModuleInterface, Module
      */
     public function defaultMenuOrder(): int
     {
-        return 20;
+        return 2;
     }
 
     /**

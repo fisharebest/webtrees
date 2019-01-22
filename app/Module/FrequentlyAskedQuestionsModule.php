@@ -65,7 +65,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleInt
      */
     public function defaultMenuOrder(): int
     {
-        return 80;
+        return 8;
     }
 
     /**

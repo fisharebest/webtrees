@@ -96,7 +96,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleInterface, Mod
      */
     public function defaultMenuOrder(): int
     {
-        return 60;
+        return 6;
     }
 
     /**

@@ -62,7 +62,7 @@ class MediaTabModule extends AbstractModule implements ModuleInterface, ModuleTa
      */
     public function defaultTabOrder(): int
     {
-        return 60;
+        return 6;
     }
 
     /** {@inheritdoc} */

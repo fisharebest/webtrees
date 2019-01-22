@@ -67,7 +67,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleInterface, M
      */
     public function defaultTabOrder(): int
     {
-        return 90;
+        return 9;
     }
 
     /** {@inheritdoc} */

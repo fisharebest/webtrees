@@ -62,7 +62,7 @@ class ReportsMenuModule extends AbstractModule implements ModuleInterface, Modul
      */
     public function defaultMenuOrder(): int
     {
-        return 50;
+        return 5;
     }
 
     /**

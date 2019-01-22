@@ -59,7 +59,7 @@ class ExtraInformationModule extends AbstractModule implements ModuleInterface, 
      */
     public function defaultSidebarOrder(): int
     {
-        return 10;
+        return 1;
     }
 
     /** {@inheritdoc} */

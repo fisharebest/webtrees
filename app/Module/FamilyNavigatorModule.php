@@ -56,7 +56,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleInterface, M
      */
     public function defaultSidebarOrder(): int
     {
-        return 20;
+        return 2;
     }
 
     /** {@inheritdoc} */

@@ -61,7 +61,7 @@ class NotesTabModule extends AbstractModule implements ModuleInterface, ModuleTa
      */
     public function defaultTabOrder(): int
     {
-        return 50;
+        return 5;
     }
 
     /** {@inheritdoc} */

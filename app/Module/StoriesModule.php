@@ -69,7 +69,7 @@ class StoriesModule extends AbstractModule implements ModuleInterface, ModuleCon
      */
     public function defaultMenuOrder(): int
     {
-        return 70;
+        return 7;
     }
 
     /**
@@ -79,7 +79,7 @@ class StoriesModule extends AbstractModule implements ModuleInterface, ModuleCon
      */
     public function defaultTabOrder(): int
     {
-        return 70;
+        return 7;
     }
 
     /** {@inheritdoc} */

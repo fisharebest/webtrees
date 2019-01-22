@@ -57,7 +57,7 @@ class CalendarMenuModule extends AbstractModule implements ModuleInterface, Modu
      */
     public function defaultMenuOrder(): int
     {
-        return 40;
+        return 4;
     }
 
     /**
