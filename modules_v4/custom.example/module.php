@@ -36,8 +36,7 @@ use Fisharebest\Webtrees\Module\ModuleInterface;
  * We return an anonymouse class here.  This prevents conflict with existing
  * class names.
  */
-return new class extends AbstractModule implements ModuleInterface, ModuleCustomInterface
-{
+return new class extends AbstractModule implements ModuleInterface, ModuleCustomInterface {
     // We implement ModuleCustomInterface, so we must also use the corresponding trait.
     use ModuleCustomTrait;
 
