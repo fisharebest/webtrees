@@ -35,14 +35,22 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleInterfa
     /** Show this number of surnames by default */
     private const DEFAULT_NUMBER_OF_SURNAMES = '10';
 
-    /** {@inheritdoc} */
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
     public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Statistics');
     }
 
-    /** {@inheritdoc} */
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
     public function description(): string
     {
         /* I18N: Description of “Statistics” module */

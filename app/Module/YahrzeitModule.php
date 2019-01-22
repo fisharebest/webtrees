@@ -42,14 +42,22 @@ class YahrzeitModule extends AbstractModule implements ModuleInterface, ModuleBl
     // Can show this number of days into the future.
     private const MAX_DAYS = 30;
 
-    /** {@inheritdoc} */
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
     public function title(): string
     {
         /* I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar. */
         return I18N::translate('Yahrzeiten');
     }
 
-    /** {@inheritdoc} */
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
     public function description(): string
     {
         /* I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar. */

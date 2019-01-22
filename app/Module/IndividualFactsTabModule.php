@@ -34,14 +34,22 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleInterface
 {
     use ModuleTabTrait;
 
-    /** {@inheritdoc} */
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
     public function title(): string
     {
         /* I18N: Name of a module/tab on the individual page. */
         return I18N::translate('Facts and events');
     }
 
-    /** {@inheritdoc} */
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
     public function description(): string
     {
         /* I18N: Description of the “Facts and events” module */

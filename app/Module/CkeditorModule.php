@@ -27,14 +27,22 @@ class CkeditorModule extends AbstractModule implements ModuleInterface
     // Location of our installation of CK editor.
     public const CKEDITOR_PATH = 'public/ckeditor-4.5.2-custom/';
 
-    /** {@inheritdoc} */
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
     public function title(): string
     {
         /* I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com */
         return I18N::translate('CKEditor™');
     }
 
-    /** {@inheritdoc} */
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
     public function description(): string
     {
         /* I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get” */

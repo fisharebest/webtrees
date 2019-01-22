@@ -28,7 +28,11 @@ class DeathReportModule extends AbstractModule implements ModuleInterface, Modul
 {
     use ModuleReportTrait;
 
-    /** {@inheritdoc} */
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
     public function title(): string
     {
         // This text also appears in the .XML file - update both together
@@ -36,7 +40,11 @@ class DeathReportModule extends AbstractModule implements ModuleInterface, Modul
         return I18N::translate('Deaths');
     }
 
-    /** {@inheritdoc} */
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
     public function description(): string
     {
         // This text also appears in the .XML file - update both together

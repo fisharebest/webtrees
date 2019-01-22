@@ -30,14 +30,22 @@ class ExtraInformationModule extends AbstractModule implements ModuleInterface, 
 {
     use ModuleSidebarTrait;
 
-    /** {@inheritdoc} */
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
     public function title(): string
     {
         /* I18N: Name of a module/sidebar */
         return I18N::translate('Extra information');
     }
 
-    /** {@inheritdoc} */
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
     public function description(): string
     {
         /* I18N: Description of the “Extra information” module */

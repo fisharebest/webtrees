@@ -38,14 +38,22 @@ class RecentChangesModule extends AbstractModule implements ModuleInterface, Mod
     private const DEFAULT_INFO_STYLE = 'table';
     private const MAX_DAYS           = 90;
 
-    /** {@inheritdoc} */
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
     public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Recent changes');
     }
 
-    /** {@inheritdoc} */
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
     public function description(): string
     {
         /* I18N: Description of the “Recent changes” module */

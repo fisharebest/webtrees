@@ -36,14 +36,22 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleInt
     use ModuleConfigTrait;
     use ModuleMenuTrait;
 
-    /** {@inheritdoc} */
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
     public function title(): string
     {
         /* I18N: Name of a module. Abbreviation for “Frequently Asked Questions” */
         return I18N::translate('FAQ');
     }
 
-    /** {@inheritdoc} */
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
     public function description(): string
     {
         /* I18N: Description of the “FAQ” module */

@@ -28,14 +28,22 @@ class CalendarMenuModule extends AbstractModule implements ModuleInterface, Modu
 {
     use ModuleMenuTrait;
 
-    /** {@inheritdoc} */
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
     public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Calendar');
     }
 
-    /** {@inheritdoc} */
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
     public function description(): string
     {
         /* I18N: Description of the “Reports” module */

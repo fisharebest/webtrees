@@ -1134,7 +1134,11 @@ class Individual extends GedcomRecord
         return $txt;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * If this object has no name, what do we call it?
+     *
+     * @return string
+     */
     public function getFallBackName(): string
     {
         return '@P.N. /@N.N./';

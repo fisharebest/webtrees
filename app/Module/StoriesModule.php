@@ -40,14 +40,22 @@ class StoriesModule extends AbstractModule implements ModuleInterface, ModuleCon
     /** @var int The default access level for this module.  It can be changed in the control panel. */
     protected $access_level = Auth::PRIV_HIDE;
 
-    /** {@inheritdoc} */
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
     public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Stories');
     }
 
-    /** {@inheritdoc} */
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
     public function description(): string
     {
         /* I18N: Description of the “Stories” module */

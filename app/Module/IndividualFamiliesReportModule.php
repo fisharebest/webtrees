@@ -32,7 +32,11 @@ class IndividualFamiliesReportModule extends AbstractModule implements ModuleInt
     /** @var int The default access level for this module.  It can be changed in the control panel. */
     protected $access_level = Auth::PRIV_USER;
 
-    /** {@inheritdoc} */
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
     public function title(): string
     {
         // This text also appears in the .XML file - update both together
@@ -40,7 +44,11 @@ class IndividualFamiliesReportModule extends AbstractModule implements ModuleInt
         return I18N::translate('Related families');
     }
 
-    /** {@inheritdoc} */
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
     public function description(): string
     {
         // This text also appears in the .XML file - update both together
