@@ -87,6 +87,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleInterface, Modul
             switch ($type) {
                 default:
                 case 'pedigree':
+                    /** @var PedigreeChartModule $module */
                     $module    = Module::getModuleByClassName(PedigreeChartModule::class);
                     $title     = $module->chartTitle($person);
                     $chart_url = $module->chartUrl($person, [
@@ -101,6 +102,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleInterface, Modul
                     break;
 
                 case 'descendants':
+                    /** @var DescendancyChartModule $module */
                     $module    = Module::getModuleByClassName(DescendancyChartModule::class);
                     $title     = $module->chartTitle($person);
                     $chart_url = $module->chartUrl($person, [
@@ -115,6 +117,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleInterface, Modul
                     break;
 
                 case 'hourglass':
+                    /** @var HourglassChartModule $module */
                     $module    = Module::getModuleByClassName(HourglassChartModule::class);
                     $title     = $module->chartTitle($person);
                     $chart_url = $module->chartUrl($person, [
@@ -128,6 +131,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleInterface, Modul
                     break;
 
                 case 'treenav':
+                    /** @var InteractiveTreeModule $module */
                     $module  = Module::getModuleByClassName(InteractiveTreeModule::class);
                     $title   = I18N::translate('Interactive tree of %s', $person->getFullName());
                     $tv      = new TreeView();
