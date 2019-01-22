@@ -326,5 +326,4 @@ class Auth
             throw new SourceAccessDeniedException();
         }
     }
-
 }
