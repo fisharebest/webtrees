@@ -26,4 +26,4 @@
     </div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-compact-chart" data-ajax-url="<?= e(route('compact-tree-chart', ['xref' => $individual->xref(), 'ged' => $individual->tree()->name()])) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-compact-chart" data-ajax-url="<?= e($module->chartUrl($individual, ['ajax' => '1'])) ?>"></div>

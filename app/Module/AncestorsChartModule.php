@@ -119,6 +119,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleInterface, Mo
      */
     public function getChartAction(Request $request, Tree $tree, ChartService $chart_service): Response
     {
+        $ajax       = $request->get('ajax');
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
@@ -134,8 +135,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleInterface, Mo
 
         $generations = min($generations, $maximum_generations);
         $generations = max($generations, $minimum_generations);
-
-        $ajax = $request->get('ajax');
 
         if ($ajax === '1') {
             $ancestors = $chart_service->sosaStradonitzAncestors($individual, $generations);
@@ -156,7 +155,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleInterface, Mo
             }
         }
 
-        return $this->viewResponse('modules/ancestors_chart/chart-page', [
+        return $this->viewResponse('modules/ancestors-chart/chart-page', [
             'chart_style'         => $chart_style,
             'chart_styles'        => $this->chartStyles(),
             'default_generations' => $default_generations,

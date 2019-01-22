@@ -41,7 +41,7 @@ class Module
     public const CORE_MODULES = [
         'GEDFact_assistant',
         'ahnentafel_report',
-        'ancestors_chart',
+        'ancestors-chart',
         'batch_update',
         'bdm_report',
         'birth_report',
@@ -52,7 +52,7 @@ class Module
         'charts_menu',
         'ckeditor',
         'clippings',
-        'compact_tree_chart',
+        'compact-chart',
         'death_report',
         'descendancy',
         'descendancy_chart',
