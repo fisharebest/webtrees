@@ -286,8 +286,6 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
         'GET:statistics-other'       => 'StatisticsChartController@chartOther',
         'GET:statistics-options'     => 'StatisticsChartController@chartCustomOptions',
         'GET:statistics-chart'       => 'StatisticsChartController@chartCustomChart',
-        'GET:timeline'               => 'TimelineChartController@page',
-        'GET:timeline-chart'         => 'TimelineChartController@chart',
         'POST:accept-changes'        => 'PendingChangesController@acceptChanges',
         'POST:reject-changes'        => 'PendingChangesController@rejectChanges',
         'POST:accept-all-changes'    => 'PendingChangesController@acceptAllChanges',

@@ -17,8 +17,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Date\GregorianDate;
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class TimelineChartModule
@@ -26,6 +33,24 @@ use Fisharebest\Webtrees\Individual;
 class TimelineChartModule extends AbstractModule implements ModuleInterface, ModuleChartInterface
 {
     use ModuleChartTrait;
+
+    // The user can alter the vertical scale
+    protected const SCALE_MIN     = 1;
+    protected const SCALE_MAX     = 200;
+    protected const SCALE_DEFAULT = 10;
+
+    // GEDCOM events that may have DATE data, but should not be displayed
+    protected const NON_FACTS = [
+        'BAPL',
+        'ENDL',
+        'SLGC',
+        'SLGS',
+        '_TODO',
+        'CHAN',
+    ];
+
+    // Box height
+    protected const BHEIGHT = 30;
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
@@ -69,9 +94,207 @@ class TimelineChartModule extends AbstractModule implements ModuleInterface, Mod
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
-        return route('timeline', [
-            'xrefs[]' => $individual->xref(),
-            'ged'     => $individual->tree()->name(),
-        ] + $parameters);
+        return route('module', [
+                'module'  => $this->name(),
+                'action'  => 'Chart',
+                'xrefs[]' => $individual->xref(),
+                'ged'     => $individual->tree()->name(),
+            ] + $parameters);
+    }
+
+    /**
+     * A form to request the chart parameters.
+     *
+     * @param Request $request
+     * @param Tree    $tree
+     *
+     * @return Response
+     */
+    public function getChartAction(Request $request, Tree $tree): Response
+    {
+        $ajax  = $request->get('ajax');
+        $scale = (int) $request->get('scale', self::SCALE_DEFAULT);
+        $scale = min($scale, self::SCALE_MAX);
+        $scale = max($scale, self::SCALE_MIN);
+
+        $xrefs = $request->get('xrefs', []);
+
+        // Find the requested individuals.
+        $individuals = (new Collection($xrefs))
+            ->unique()
+            ->map(function (string $xref) use ($tree): ?Individual {
+                return Individual::getInstance($xref, $tree);
+            })
+            ->filter()
+            ->filter(GedcomRecord::accessFilter());
+
+        // Generate URLs omitting each xref.
+        $remove_urls = [];
+
+        foreach ($individuals as $exclude) {
+            $xrefs_1 = $individuals
+                ->filter(function (Individual $individual) use ($exclude): bool {
+                    return $individual->xref() !== $exclude->xref();
+                })
+                ->map(function (Individual $individual): string {
+                    return $individual->xref();
+                });
+
+            $remove_urls[$exclude->xref()] = route('module', [
+                'module' => $this->name(),
+                'action' => 'Chart',
+                'ged'    => $tree->name(),
+                'scale'  => $scale,
+                'xrefs'  => $xrefs_1->all(),
+            ]);
+        }
+
+        $individuals = array_map(function (string $xref) use ($tree) {
+            return Individual::getInstance($xref, $tree);
+        }, $xrefs);
+
+        if ($ajax === '1') {
+            return $this->chart($tree, $xrefs, $scale);
+        }
+
+        $ajax_url = route('module', [
+            'ajax'   => '1',
+            'module' => $this->name(),
+            'action' => 'Chart',
+            'ged'    => $tree->name(),
+            'scale'  => $scale,
+            'xrefs'  => $xrefs,
+        ]);
+
+        $reset_url = route('module', [
+            'module' => $this->name(),
+            'action' => 'Chart',
+            'ged'    => $tree->name(),
+        ]);
+
+        $zoom_in_url = route('module', [
+            'module' => $this->name(),
+            'action' => 'Chart',
+            'ged'    => $tree->name(),
+            'scale'  => min(self::SCALE_MAX, $scale + (int) ($scale * 0.2 + 1)),
+            'xrefs'  => $xrefs,
+        ]);
+
+        $zoom_out_url = route('module', [
+            'module' => $this->name(),
+            'action' => 'Chart',
+            'ged'    => $tree->name(),
+            'scale'  => max(self::SCALE_MIN, $scale - (int) ($scale * 0.2 + 1)),
+            'xrefs'  => $xrefs,
+        ]);
+
+        return $this->viewResponse('modules/timeline-chart/chart-page', [
+            'ajax_url'     => $ajax_url,
+            'individuals'  => $individuals,
+            'module_name'  => $this->name(),
+            'remove_urls'  => $remove_urls,
+            'reset_url'    => $reset_url,
+            'title'        => $this->title(),
+            'scale'        => $scale,
+            'zoom_in_url'  => $zoom_in_url,
+            'zoom_out_url' => $zoom_out_url,
+        ]);
+    }
+
+    /**
+     * @param Tree  $tree
+     * @param array $xrefs
+     * @param int   $scale
+     *
+     * @return Response
+     */
+    protected function chart(Tree $tree, array $xrefs, int $scale): Response
+    {
+        $xrefs = array_unique($xrefs);
+
+        /** @var Individual[] $individuals */
+        $individuals = array_map(function (string $xref) use ($tree) {
+            return Individual::getInstance($xref, $tree);
+        }, $xrefs);
+
+        $individuals = array_filter($individuals, function (Individual $individual = null): bool {
+            return $individual !== null && $individual->canShow();
+        });
+
+        $baseyear    = (int) date('Y');
+        $topyear     = 0;
+        $indifacts   = [];
+        $birthyears  = [];
+        $birthmonths = [];
+        $birthdays   = [];
+
+        foreach ($individuals as $individual) {
+            $bdate = $individual->getBirthDate();
+            if ($bdate->isOK()) {
+                $date = new GregorianDate($bdate->minimumJulianDay());
+
+                $birthyears [$individual->xref()] = $date->year;
+                $birthmonths[$individual->xref()] = max(1, $date->month);
+                $birthdays  [$individual->xref()] = max(1, $date->day);
+            }
+            // find all the fact information
+            $facts = $individual->facts();
+            foreach ($individual->getSpouseFamilies() as $family) {
+                foreach ($family->facts() as $fact) {
+                    $facts[] = $fact;
+                }
+            }
+            foreach ($facts as $event) {
+                // get the fact type
+                $fact = $event->getTag();
+                if (!in_array($fact, self::NON_FACTS)) {
+                    // check for a date
+                    $date = $event->date();
+                    if ($date->isOK()) {
+                        $date     = new GregorianDate($date->minimumJulianDay());
+                        $baseyear = min($baseyear, $date->year);
+                        $topyear  = max($topyear, $date->year);
+
+                        if (!$individual->isDead()) {
+                            $topyear = max($topyear, (int) date('Y'));
+                        }
+
+                        // do not add the same fact twice (prevents marriages from being added multiple times)
+                        if (!in_array($event, $indifacts, true)) {
+                            $indifacts[] = $event;
+                        }
+                    }
+                }
+            }
+        }
+
+        if ($scale === 0) {
+            $scale = (int) (($topyear - $baseyear) / 20 * count($indifacts) / 4);
+            if ($scale < 6) {
+                $scale = 6;
+            }
+        }
+        if ($scale < 2) {
+            $scale = 2;
+        }
+        $baseyear -= 5;
+        $topyear  += 5;
+
+        Functions::sortFacts($indifacts);
+
+        $html = view('modules/timeline-chart/chart', [
+            'baseyear'    => $baseyear,
+            'bheight'     => self::BHEIGHT,
+            'birthdays'   => $birthdays,
+            'birthmonths' => $birthmonths,
+            'birthyears'  => $birthyears,
+            'indifacts'   => $indifacts,
+            'individuals' => $individuals,
+            'placements'  => [],
+            'scale'       => $scale,
+            'topyear'     => $topyear,
+        ]);
+
+        return new Response($html);
     }
 }
