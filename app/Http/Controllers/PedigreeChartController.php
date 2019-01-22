@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use DomainException;
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -92,7 +93,7 @@ class PedigreeChartController extends AbstractBaseController
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual);
+        Auth::checkIndividualAccess($individual);
 
         $orientation = (int) $request->get('orientation', self::DEFAULT_ORIENTATION);
         $generations = (int) $request->get('generations', self::DEFAULT_GENERATIONS);
@@ -130,7 +131,7 @@ class PedigreeChartController extends AbstractBaseController
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual);
+        Auth::checkIndividualAccess($individual);
 
         $this->orientation = (int) $request->get('orientation');
         $this->generations = (int) $request->get('generations');

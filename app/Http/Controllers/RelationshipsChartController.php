@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Algorithm\Dijkstra;
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\Functions;
@@ -59,8 +60,8 @@ class RelationshipsChartController extends AbstractBaseController
         $ancestors = (int) $request->get('ancestors', '0');
 
         if ($individual1 instanceof Individual && $individual2 instanceof Individual) {
-            $this->checkIndividualAccess($individual1);
-            $this->checkIndividualAccess($individual2);
+            Auth::checkIndividualAccess($individual1);
+            Auth::checkIndividualAccess($individual2);
         }
 
         $ancestors_only = (int) $tree->getPreference('RELATIONSHIP_ANCESTORS', RelationshipsChartModule::DEFAULT_ANCESTORS);
@@ -103,8 +104,8 @@ class RelationshipsChartController extends AbstractBaseController
         $xref2       = $request->get('xref2', '');
         $individual2 = Individual::getInstance($xref2, $tree);
 
-        $this->checkIndividualAccess($individual1);
-        $this->checkIndividualAccess($individual2);
+        Auth::checkIndividualAccess($individual1);
+        Auth::checkIndividualAccess($individual2);
 
         $recursion = (int) $request->get('recursion', '0');
         $ancestors = (bool) $request->get('ancestors', '0');

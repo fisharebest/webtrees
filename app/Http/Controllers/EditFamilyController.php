@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
@@ -43,7 +44,7 @@ class EditFamilyController extends AbstractEditController
         $xref   = $request->get('xref', '');
         $family = Family::getInstance($xref, $tree);
 
-        $this->checkFamilyAccess($family, true);
+        Auth::checkFamilyAccess($family, true);
 
         $title = $family->getFullName() . ' — ' . I18N::translate('Re-order children');
 
@@ -65,7 +66,7 @@ class EditFamilyController extends AbstractEditController
         $order  = (array) $request->get('order', []);
         $family = Family::getInstance($xref, $tree);
 
-        $this->checkFamilyAccess($family, true);
+        Auth::checkFamilyAccess($family, true);
 
         $dummy_facts = ['0 @' . $family->xref() . '@ FAM'];
         $sort_facts  = [];
@@ -107,7 +108,7 @@ class EditFamilyController extends AbstractEditController
 
         $family = Family::getInstance($xref, $tree);
 
-        $this->checkFamilyAccess($family, true);
+        Auth::checkFamilyAccess($family, true);
 
         $title = $family->getFullName() . ' - ' . I18N::translate('Add a child');
 
@@ -135,7 +136,7 @@ class EditFamilyController extends AbstractEditController
 
         $family = Family::getInstance($xref, $tree);
 
-        $this->checkFamilyAccess($family, true);
+        Auth::checkFamilyAccess($family, true);
 
         $PEDI      = $request->get('PEDI', '');
         $keep_chan = (bool) $request->get('keep_chan');
@@ -200,7 +201,7 @@ class EditFamilyController extends AbstractEditController
 
         $family = Family::getInstance($xref, $tree);
 
-        $this->checkFamilyAccess($family, true);
+        Auth::checkFamilyAccess($family, true);
 
         if ($famtag === 'WIFE') {
             $title  = I18N::translate('Add a wife');
@@ -234,7 +235,7 @@ class EditFamilyController extends AbstractEditController
 
         $family = Family::getInstance($xref, $tree);
 
-        $this->checkFamilyAccess($family, true);
+        Auth::checkFamilyAccess($family, true);
 
         $this->glevels = $request->get('glevels', []);
         $this->tag     = $request->get('tag', []);
@@ -297,7 +298,7 @@ class EditFamilyController extends AbstractEditController
     {
         $xref   = $request->get('xref', '');
         $family = Family::getInstance($xref, $tree);
-        $this->checkFamilyAccess($family, true);
+        Auth::checkFamilyAccess($family, true);
 
         $title = I18N::translate('Change family members') . ' – ' . $family->getFullName();
 
@@ -321,7 +322,7 @@ class EditFamilyController extends AbstractEditController
     {
         $xref   = $request->get('xref', '');
         $family = Family::getInstance($xref, $tree);
-        $this->checkFamilyAccess($family, true);
+        Auth::checkFamilyAccess($family, true);
 
         $HUSB = $request->get('HUSB', '');
         $WIFE = $request->get('WIFE', '');

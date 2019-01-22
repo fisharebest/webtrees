@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Tree;
@@ -41,7 +42,7 @@ class NoteController extends AbstractBaseController
         $xref   = $request->get('xref', '');
         $record = Note::getInstance($xref, $tree);
 
-        $this->checkNoteAccess($record, false);
+        Auth::checkNoteAccess($record, false);
 
         return $this->viewResponse('note-page', [
             'facts'         => $this->facts($record),

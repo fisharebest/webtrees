@@ -1,13 +1,16 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\View; ?>
 
 <h2 class="wt-page-title">
     <?= $title ?>
 </h2>
 
 <form class="wt-page-options wt-page-options-ancestors-chart d-print-none">
-    <input type="hidden" name="route" value="ancestors">
+    <input type="hidden" name="route" value="module">
+    <input type="hidden" name="module" value="<?= $module->getName() ?>">
+    <input type="hidden" name="action" value="Chart">
     <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
 
     <div class="row form-group">
@@ -34,8 +37,8 @@
                 <?= I18N::translate('Layout') ?>
             </legend>
             <div class="col-sm-9 wt-page-options-value">
-                <?= Bootstrap4::radioButtons('chart_style', $chart_styles, $chart_style, true, ['onchange' => '$("input[name=show_cousins]").prop("disabled", $(this).val() !== "1")']) ?>
-                <?= Bootstrap4::checkbox(I18N::translate('Show cousins'), false, ['name' => 'show_cousins', 'disabled' => $chart_style !== '1', 'checked' => $show_cousins]) ?>
+                <?= Bootstrap4::radioButtons('chart_style', $chart_styles, $chart_style, true) ?>
+                <?= Bootstrap4::checkbox(I18N::translate('Show cousins'), false, ['name' => 'show_cousins', 'disabled' => $chart_style !== 'booklet', 'checked' => $show_cousins]) ?>
             </div>
         </div>
     </fieldset>
@@ -48,4 +51,13 @@
     </div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-ancestors-chart" data-ajax-url="<?= e(route('ancestors-chart', ['xref' => $individual->xref(), 'ged' => $individual->tree()->name(), 'generations' => $generations, 'chart_style' => $chart_style, 'show_cousins' => $show_cousins])) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-ancestors-chart" data-ajax-url="<?= e($module->chartUrl($individual, ['generations' => $generations, 'chart_style' => $chart_style, 'show_cousins' => $show_cousins, 'ajax' => '1'])) ?>"></div>
+
+<?php View::push('javascript') ?>
+<script>
+    // The "show cousins" option is only available for the "booklet" style.
+    $("input[name=chart_style]").change(function () {
+        $("input[name=show_cousins]").prop("disabled", $(this).val() !== "booklet");
+    });
+</script>
+<?php View::endpush() ?>

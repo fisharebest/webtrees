@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Exception;
 use FilesystemIterator;
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
@@ -68,7 +69,7 @@ class EditMediaController extends AbstractEditController
         $media = Media::getInstance($xref, $tree);
 
         try {
-            $this->checkMediaAccess($media);
+            Auth::checkMediaAccess($media);
         } catch (Exception $ex) {
             return new Response(view('modals/error', [
                 'title' => I18N::translate('Add a media file'),
@@ -146,7 +147,7 @@ class EditMediaController extends AbstractEditController
         $media   = Media::getInstance($xref, $tree);
 
         try {
-            $this->checkMediaAccess($media);
+            Auth::checkMediaAccess($media);
         } catch (Exception $ex) {
             return new Response(view('modals/error', [
                 'title' => I18N::translate('Edit a media file'),

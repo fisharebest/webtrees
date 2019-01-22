@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Tree;
@@ -54,7 +55,7 @@ class RepositoryController extends AbstractBaseController
         $xref   = $request->get('xref', '');
         $record = Repository::getInstance($xref, $tree);
 
-        $this->checkRepositoryAccess($record, false);
+        Auth::checkRepositoryAccess($record, false);
 
         return $this->viewResponse('repository-page', [
             'facts'       => $this->facts($record),

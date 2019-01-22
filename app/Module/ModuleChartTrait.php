@@ -67,7 +67,7 @@ trait ModuleChartTrait
     }
 
     /**
-     * The URL for this chart.
+     * The URL for a page showing chart options.
      *
      * @param Individual $individual
      * @param string[]   $parameters
@@ -76,7 +76,12 @@ trait ModuleChartTrait
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
-        return '#';
+        return route('module', [
+            'module' => $this->getName(),
+            'action' => 'Chart',
+            'xref'   => $individual->xref(),
+            'ged'    => $individual->tree()->name(),
+        ] + $parameters);
     }
 
     /**

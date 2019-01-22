@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\I18N;
@@ -43,7 +44,7 @@ class EditIndividualController extends AbstractEditController
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual, true);
+        Auth::checkIndividualAccess($individual, true);
 
         $title = $individual->getFullName() . ' — ' . I18N::translate('Re-order media');
 
@@ -65,7 +66,7 @@ class EditIndividualController extends AbstractEditController
         $order      = (array) $request->get('order', []);
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual, true);
+        Auth::checkIndividualAccess($individual, true);
 
         $dummy_facts = ['0 @' . $individual->xref() . '@ INDI'];
         $sort_facts  = [];
@@ -104,7 +105,7 @@ class EditIndividualController extends AbstractEditController
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual, true);
+        Auth::checkIndividualAccess($individual, true);
 
         $title = $individual->getFullName() . ' — ' . I18N::translate('Re-order names');
 
@@ -126,7 +127,7 @@ class EditIndividualController extends AbstractEditController
         $order      = (array) $request->get('order', []);
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual, true);
+        Auth::checkIndividualAccess($individual, true);
 
         $dummy_facts = ['0 @' . $individual->xref() . '@ INDI'];
         $sort_facts  = [];
@@ -165,7 +166,7 @@ class EditIndividualController extends AbstractEditController
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual, true);
+        Auth::checkIndividualAccess($individual, true);
 
         $title = $individual->getFullName() . ' — ' . I18N::translate('Re-order families');
 
@@ -187,7 +188,7 @@ class EditIndividualController extends AbstractEditController
         $order      = (array) $request->get('order', []);
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual, true);
+        Auth::checkIndividualAccess($individual, true);
 
         $dummy_facts = ['0 @' . $individual->xref() . '@ INDI'];
         $sort_facts  = [];
@@ -229,7 +230,7 @@ class EditIndividualController extends AbstractEditController
 
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual, true);
+        Auth::checkIndividualAccess($individual, true);
 
         $title = $individual->getFullName() . ' - ' . I18N::translate('Add a child to create a one-parent family');
 
@@ -257,7 +258,7 @@ class EditIndividualController extends AbstractEditController
 
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual, true);
+        Auth::checkIndividualAccess($individual, true);
 
         $PEDI = $request->get('PEDI', '');
 
@@ -323,7 +324,7 @@ class EditIndividualController extends AbstractEditController
 
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual, true);
+        Auth::checkIndividualAccess($individual, true);
 
         if ($gender === 'F') {
             $title  = $individual->getFullName() . ' - ' . I18N::translate('Add a mother');
@@ -357,7 +358,7 @@ class EditIndividualController extends AbstractEditController
 
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual, true);
+        Auth::checkIndividualAccess($individual, true);
 
         $this->glevels = $request->get('glevels', []);
         $this->tag     = $request->get('tag', []);
@@ -419,7 +420,7 @@ class EditIndividualController extends AbstractEditController
 
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual, true);
+        Auth::checkIndividualAccess($individual, true);
 
         if ($individual->getSex() === 'F') {
             $title  = $individual->getFullName() . ' - ' . I18N::translate('Add a husband');
@@ -455,7 +456,7 @@ class EditIndividualController extends AbstractEditController
 
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual, true);
+        Auth::checkIndividualAccess($individual, true);
 
         $sex = $request->get('SEX', 'U');
 
@@ -583,7 +584,7 @@ class EditIndividualController extends AbstractEditController
 
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual, true);
+        Auth::checkIndividualAccess($individual, true);
 
         // Find the fact to edit
         foreach ($individual->facts() as $fact) {
@@ -616,7 +617,7 @@ class EditIndividualController extends AbstractEditController
 
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual, true);
+        Auth::checkIndividualAccess($individual, true);
 
         // @TODO - Move the name-specific code to this function?
         return (new EditGedcomRecordController())->updateFact($request, $tree);
@@ -636,7 +637,7 @@ class EditIndividualController extends AbstractEditController
 
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual, true);
+        Auth::checkIndividualAccess($individual, true);
 
         $title = $individual->getFullName() . ' — ' . I18N::translate('Add a name');
 
@@ -664,7 +665,7 @@ class EditIndividualController extends AbstractEditController
 
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual, true);
+        Auth::checkIndividualAccess($individual, true);
 
         // @TODO - Move the name-specific code to this function?
 
@@ -683,7 +684,7 @@ class EditIndividualController extends AbstractEditController
 
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual, true);
+        Auth::checkIndividualAccess($individual, true);
 
         $title = $individual->getFullName() . ' - ' . I18N::translate('Link this individual to an existing family as a child');
 
@@ -706,10 +707,10 @@ class EditIndividualController extends AbstractEditController
         $PEDI  = $request->get('PEDI', '');
 
         $individual = Individual::getInstance($xref, $tree);
-        $this->checkIndividualAccess($individual, true);
+        Auth::checkIndividualAccess($individual, true);
 
         $family = Family::getInstance($famid, $tree);
-        $this->checkFamilyAccess($family, true);
+        Auth::checkFamilyAccess($family, true);
 
         // Replace any existing child->family link (we may be changing the PEDI);
         $fact_id = '';
@@ -751,7 +752,7 @@ class EditIndividualController extends AbstractEditController
 
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual, true);
+        Auth::checkIndividualAccess($individual, true);
 
         if ($individual->getSex() === 'F') {
             $title = $individual->getFullName() . ' - ' . I18N::translate('Add a husband using an existing individual');
@@ -780,10 +781,10 @@ class EditIndividualController extends AbstractEditController
         $spouse = $request->get('spid', '');
 
         $individual = Individual::getInstance($xref, $tree);
-        $this->checkIndividualAccess($individual, true);
+        Auth::checkIndividualAccess($individual, true);
 
         $spouse = Individual::getInstance($spouse, $tree);
-        $this->checkIndividualAccess($spouse, true);
+        Auth::checkIndividualAccess($spouse, true);
 
         if ($individual->getSex() === 'M') {
             $gedcom = "0 @@ FAM\n1 HUSB @" . $individual->xref() . "@\n1 WIFE @" . $spouse->xref() . '@';

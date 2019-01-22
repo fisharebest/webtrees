@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\CompactTreeChartModule;
@@ -45,7 +46,7 @@ class CompactTreeChartController extends AbstractBaseController
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual);
+        Auth::checkIndividualAccess($individual);
 
         /* I18N: %s is an individual’s name */
         $title = I18N::translate('Compact tree of %s', $individual->getFullName());
@@ -70,7 +71,7 @@ class CompactTreeChartController extends AbstractBaseController
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual);
+        Auth::checkIndividualAccess($individual);
 
         $ancestors = $chart_service->sosaStradonitzAncestors($individual, 5);
 

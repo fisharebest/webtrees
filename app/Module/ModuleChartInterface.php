@@ -53,7 +53,7 @@ interface ModuleChartInterface
     public function chartTitle(Individual $individual): string;
 
     /**
-     * The URL for this chart.
+     * The URL for a page showing chart options.
      *
      * @param Individual $individual
      * @param string[]   $parameters

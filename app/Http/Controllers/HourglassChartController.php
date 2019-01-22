@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
@@ -54,7 +55,7 @@ class HourglassChartController extends AbstractBaseController
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual);
+        Auth::checkIndividualAccess($individual);
 
         $maximum_generations = (int) $tree->getPreference('MAX_DESCENDANCY_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
         $default_generations = (int) $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS', self::DEFAULT_GENERATIONS);
@@ -94,7 +95,7 @@ class HourglassChartController extends AbstractBaseController
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual);
+        Auth::checkIndividualAccess($individual);
 
         $maximum_generations = (int) $tree->getPreference('MAX_DESCENDANCY_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
         $default_generations = (int) $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS', self::DEFAULT_GENERATIONS);
@@ -133,7 +134,7 @@ class HourglassChartController extends AbstractBaseController
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual);
+        Auth::checkIndividualAccess($individual);
 
         $show_spouse = (bool) $request->get('show_spouse');
 

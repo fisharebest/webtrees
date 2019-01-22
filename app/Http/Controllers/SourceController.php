@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
@@ -59,7 +60,7 @@ class SourceController extends AbstractBaseController
         $xref   = $request->get('xref', '');
         $record = Source::getInstance($xref, $tree);
 
-        $this->checkSourceAccess($record, false);
+        Auth::checkSourceAccess($record, false);
 
         return $this->viewResponse('source-page', [
             'facts'         => $this->facts($record),

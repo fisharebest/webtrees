@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsCharts;
@@ -71,7 +72,7 @@ class DescendantsChartController extends AbstractBaseController
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual);
+        Auth::checkIndividualAccess($individual);
 
         $minimum_generations = 2;
         $maximum_generations = (int) $tree->getPreference('MAX_DESCENDANCY_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
@@ -118,7 +119,7 @@ class DescendantsChartController extends AbstractBaseController
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual);
+        Auth::checkIndividualAccess($individual);
 
         $minimum_generations = 2;
         $maximum_generations = (int) $tree->getPreference('MAX_PEDIGREE_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);

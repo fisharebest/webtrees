@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Tree;
 use stdClass;
@@ -41,7 +42,7 @@ class FamilyController extends AbstractBaseController
         $xref   = $request->get('xref', '');
         $family = Family::getInstance($xref, $tree);
 
-        $this->checkFamilyAccess($family, false);
+        Auth::checkFamilyAccess($family, false);
 
         return $this->viewResponse('family-page', [
             'facts'       => $family->facts([], true),

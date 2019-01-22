@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -70,7 +71,7 @@ class FamilyBookChartController extends AbstractBaseController
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual);
+        Auth::checkIndividualAccess($individual);
 
         $minimum_generations = 2;
         $maximum_generations = (int) $tree->getPreference('MAX_DESCENDANCY_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
@@ -113,7 +114,7 @@ class FamilyBookChartController extends AbstractBaseController
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual);
+        Auth::checkIndividualAccess($individual);
 
         $minimum_generations = 2;
         $maximum_generations = (int) $tree->getPreference('MAX_PEDIGREE_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
@@ -361,8 +362,8 @@ class FamilyBookChartController extends AbstractBaseController
                 }
             }
             echo '</tr><tr>',
-            '<td class="align-top"><img class="pvline" src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $lh, '"></td>',
-            '<td><img class="linef3" src="', Theme::theme()->parameter('image-hline'), '" height="3"></td>',
+            '<td class="align-top"><img class="pvline" alt="" role="presentation" src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $lh, '"></td>',
+            '<td><img class="linef3" alt="" role="presentation" src="', Theme::theme()->parameter('image-hline'), '" height="3"></td>',
             '<td>';
             //-- print the mother box
             echo FunctionsPrint::printPedigreePerson($family->getWife());

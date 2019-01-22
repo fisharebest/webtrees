@@ -140,7 +140,7 @@ class PendingChangesController extends AbstractBaseController
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
-        $this->checkRecordAccess($record, false);
+        Auth::checkRecordAccess($record, false);
 
         if ($record && Auth::isModerator($tree)) {
             if ($record->isPendingDeletion()) {
@@ -221,7 +221,7 @@ class PendingChangesController extends AbstractBaseController
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
-        $this->checkRecordAccess($record);
+        Auth::checkRecordAccess($record);
 
         if (Auth::isModerator($tree)) {
             DB::table('change')

@@ -274,8 +274,6 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
         'GET:place-hierarchy'        => 'PlaceHierarchyController@show',
         'GET:repository-list'        => 'ListController@repositoryList',
         'GET:source-list'            => 'ListController@sourceList',
-        'GET:ancestors'              => 'AncestorsChartController@page',
-        'GET:ancestors-chart'        => 'AncestorsChartController@chart',
         'GET:compact-tree'           => 'CompactTreeChartController@page',
         'GET:compact-tree-chart'     => 'CompactTreeChartController@chart',
         'GET:descendants'            => 'DescendantsChartController@page',

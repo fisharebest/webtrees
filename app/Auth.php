@@ -17,6 +17,20 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Exceptions\FamilyAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\FamilyNotFoundException;
+use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
+use Fisharebest\Webtrees\Exceptions\MediaAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
+use Fisharebest\Webtrees\Exceptions\NoteAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\NoteNotFoundException;
+use Fisharebest\Webtrees\Exceptions\RecordAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\RecordNotFoundException;
+use Fisharebest\Webtrees\Exceptions\RepositoryAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\RepositoryNotFoundException;
+use Fisharebest\Webtrees\Exceptions\SourceAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\SourceNotFoundException;
 use stdClass;
 
 /**
@@ -179,4 +193,138 @@ class Auth
     {
         Session::regenerate(true);
     }
+
+    /**
+     * @param Family|null $family
+     * @param bool|null   $edit
+     *
+     * @return void
+     * @throws FamilyNotFoundException
+     * @throws FamilyAccessDeniedException
+     */
+    public static function checkFamilyAccess(Family $family = null, $edit = false)
+    {
+        if ($family === null) {
+            throw new FamilyNotFoundException();
+        }
+
+        if (!$family->canShow() || $edit && (!$family->canEdit() || $family->isPendingDeletion())) {
+            throw new FamilyAccessDeniedException();
+        }
+    }
+
+    /**
+     * @param Individual|null $individual
+     * @param bool|null       $edit
+     *
+     * @return void
+     * @throws IndividualNotFoundException
+     * @throws IndividualAccessDeniedException
+     */
+    public static function checkIndividualAccess(Individual $individual = null, $edit = false)
+    {
+        if ($individual === null) {
+            throw new IndividualNotFoundException();
+        }
+
+        if (!$individual->canShow() || $edit && (!$individual->canEdit() || $individual->isPendingDeletion())) {
+            throw new IndividualAccessDeniedException();
+        }
+    }
+
+    /**
+     * @param Media|null $media
+     * @param bool|null  $edit
+     *
+     * @return void
+     * @throws MediaNotFoundException
+     * @throws MediaAccessDeniedException
+     */
+    public static function checkMediaAccess(Media $media = null, $edit = false)
+    {
+        if ($media === null) {
+            throw new MediaNotFoundException();
+        }
+
+        if (!$media->canShow() || $edit && (!$media->canEdit() || $media->isPendingDeletion())) {
+            throw new MediaAccessDeniedException();
+        }
+    }
+
+    /**
+     * @param Note|null $note
+     * @param bool|null $edit
+     *
+     * @return void
+     * @throws NoteNotFoundException
+     * @throws NoteAccessDeniedException
+     */
+    public static function checkNoteAccess(Note $note = null, $edit = false)
+    {
+        if ($note === null) {
+            throw new NoteNotFoundException();
+        }
+
+        if (!$note->canShow() || $edit && (!$note->canEdit() || $note->isPendingDeletion())) {
+            throw new NoteAccessDeniedException();
+        }
+    }
+
+    /**
+     * @param GedcomRecord|null $record
+     * @param bool|null         $edit
+     *
+     * @return void
+     * @throws RecordNotFoundException
+     * @throws RecordAccessDeniedException
+     */
+    public static function checkRecordAccess(GedcomRecord $record = null, $edit = false)
+    {
+        if ($record === null) {
+            throw new RecordNotFoundException();
+        }
+
+        if (!$record->canShow() || $edit && (!$record->canEdit() || $record->isPendingDeletion())) {
+            throw new RecordAccessDeniedException();
+        }
+    }
+
+    /**
+     * @param Repository|null $repository
+     * @param bool|null       $edit
+     *
+     * @return void
+     * @throws RepositoryNotFoundException
+     * @throws RepositoryAccessDeniedException
+     */
+    public static function checkRepositoryAccess(Repository $repository = null, $edit = false)
+    {
+        if ($repository === null) {
+            throw new RepositoryNotFoundException();
+        }
+
+        if (!$repository->canShow() || $edit && (!$repository->canEdit() || $repository->isPendingDeletion())) {
+            throw new RepositoryAccessDeniedException();
+        }
+    }
+
+    /**
+     * @param Source|null $source
+     * @param bool|null   $edit
+     *
+     * @return void
+     * @throws SourceNotFoundException
+     * @throws SourceAccessDeniedException
+     */
+    public static function checkSourceAccess(Source $source = null, $edit = false)
+    {
+        if ($source === null) {
+            throw new SourceNotFoundException();
+        }
+
+        if (!$source->canShow() || $edit && (!$source->canEdit() || $source->isPendingDeletion())) {
+            throw new SourceAccessDeniedException();
+        }
+    }
+
 }

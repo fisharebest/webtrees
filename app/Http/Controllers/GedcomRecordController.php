@@ -47,7 +47,7 @@ class GedcomRecordController extends AbstractBaseController
         $xref   = $request->get('xref', '');
         $record = GedcomRecord::getInstance($xref, $tree);
 
-        $this->checkRecordAccess($record);
+        self::RecordAccess($record);
 
         if ($this->hasCustomPage($record)) {
             return new RedirectResponse($record->url());

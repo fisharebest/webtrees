@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Tree;
@@ -41,7 +42,7 @@ class MediaController extends AbstractBaseController
         $xref  = $request->get('xref', '');
         $media = Media::getInstance($xref, $tree);
 
-        $this->checkMediaAccess($media);
+        Auth::checkMediaAccess($media);
 
         return $this->viewResponse('media-page', [
             'families'    => $media->linkedFamilies('OBJE'),

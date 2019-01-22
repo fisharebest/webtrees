@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Tree;
@@ -54,7 +55,7 @@ class EditNoteController extends AbstractEditController
 
         $note = Note::getInstance($xref, $tree);
 
-        $this->checkNoteAccess($note, true);
+        Auth::checkNoteAccess($note, true);
 
         return $this->viewResponse('edit/shared-note', [
             'note'  => $note,
@@ -77,7 +78,7 @@ class EditNoteController extends AbstractEditController
 
         $note = Note::getInstance($xref, $tree);
 
-        $this->checkNoteAccess($note, true);
+        Auth::checkNoteAccess($note, true);
 
         $NOTE = $request->get('NOTE');
 

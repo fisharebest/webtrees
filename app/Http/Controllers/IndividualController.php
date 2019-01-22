@@ -89,7 +89,7 @@ class IndividualController extends AbstractBaseController
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual, false);
+        Auth::checkIndividualAccess($individual, false);
 
         // What is (was) the age of the individual
         $bdate = $individual->getBirthDate();
@@ -194,7 +194,7 @@ class IndividualController extends AbstractBaseController
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual, false);
+        Auth::checkIndividualAccess($individual, false);
 
         $facts = $individual->facts();
         foreach ($individual->getSpouseFamilies() as $family) {

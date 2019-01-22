@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\FanChartModule;
@@ -62,7 +63,7 @@ class FanChartController extends AbstractBaseController
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual);
+        Auth::checkIndividualAccess($individual);
 
         $chart_style = (int) $request->get('chart_style', self::DEFAULT_STYLE);
         $fan_width   = (int) $request->get('fan_width', self::DEFAULT_WIDTH);
@@ -107,7 +108,7 @@ class FanChartController extends AbstractBaseController
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
-        $this->checkIndividualAccess($individual);
+        Auth::checkIndividualAccess($individual);
 
         $chart_style = (int) $request->get('chart_style', self::DEFAULT_STYLE);
         $fan_width   = (int) $request->get('fan_width', self::DEFAULT_WIDTH);

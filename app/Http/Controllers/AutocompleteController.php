@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use FilesystemIterator;
 use Fisharebest\Flysystem\Adapter\ChrootAdapter;
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
@@ -105,7 +106,7 @@ class AutocompleteController extends AbstractBaseController
 
         $source = Source::getInstance($xref, $tree);
 
-        $this->checkSourceAccess($source);
+        Auth::checkSourceAccess($source);
 
         $regex_query = preg_quote(strtr($query, [' ' => '.+']), '/');
 
