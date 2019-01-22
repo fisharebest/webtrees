@@ -56,7 +56,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
-        self::RecordAccess($record, true);
+        Auth::checkRecordAccess($record, true);
 
         foreach ($record->facts() as $fact) {
             if ($fact->id() === $fact_id) {
@@ -85,7 +85,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
-        self::RecordAccess($record, true);
+        Auth::checkRecordAccess($record, true);
 
         foreach ($record->facts() as $fact) {
             if ($fact->id() == $fact_id && $fact->canShow() && $fact->canEdit()) {
@@ -111,7 +111,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
-        self::RecordAccess($record, true);
+        Auth::checkRecordAccess($record, true);
 
         if ($record && Auth::isEditor($record->tree()) && $record->canShow() && $record->canEdit()) {
             // Delete links to this record
@@ -166,7 +166,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
-        self::RecordAccess($record, true);
+        Auth::checkRecordAccess($record, true);
 
         $clipboard_service->pasteFact($fact_id, $record);
 
@@ -185,7 +185,7 @@ class EditGedcomRecordController extends AbstractEditController
         $fact_id = $request->get('fact_id');
         $record  = GedcomRecord::getInstance($xref, $tree);
 
-        self::RecordAccess($record, true);
+        Auth::checkRecordAccess($record, true);
 
         $title = I18N::translate('Edit the raw GEDCOM') . ' - ' . $record->getFullName();
 
@@ -220,7 +220,7 @@ class EditGedcomRecordController extends AbstractEditController
         $gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom); // Empty lines
         $gedcom = trim($gedcom); // Leading/trailing spaces
 
-        self::RecordAccess($record, true);
+        Auth::checkRecordAccess($record, true);
 
         foreach ($record->facts() as $fact) {
             if (!$fact->isPendingDeletion() && $fact->id() === $fact_id && $fact->canEdit()) {
@@ -243,7 +243,7 @@ class EditGedcomRecordController extends AbstractEditController
         $xref   = $request->get('xref', '');
         $record = GedcomRecord::getInstance($xref, $tree);
 
-        self::RecordAccess($record, true);
+        Auth::checkRecordAccess($record, true);
 
         $title = I18N::translate('Edit the raw GEDCOM') . ' - ' . $record->getFullName();
 
@@ -267,7 +267,7 @@ class EditGedcomRecordController extends AbstractEditController
         $fact_ids = (array) $request->get('fact_id');
         $record   = GedcomRecord::getInstance($xref, $tree);
 
-        self::RecordAccess($record, true);
+        Auth::checkRecordAccess($record, true);
 
         $gedcom = '0 @' . $record->xref() . '@ ' . $record::RECORD_TYPE;
 
@@ -303,7 +303,7 @@ class EditGedcomRecordController extends AbstractEditController
         $fact = $request->get('fact', '');
 
         $record = GedcomRecord::getInstance($xref, $tree);
-        self::RecordAccess($record, true);
+        Auth::checkRecordAccess($record, true);
 
         $title = $record->getFullName() . ' - ' . GedcomTag::getLabel($fact, $record);
 
@@ -327,7 +327,7 @@ class EditGedcomRecordController extends AbstractEditController
         $fact_id = $request->get('fact_id', '');
 
         $record = GedcomRecord::getInstance($xref, $tree);
-        self::RecordAccess($record, true);
+        Auth::checkRecordAccess($record, true);
 
         // Find the fact to edit
         $edit_fact = null;
@@ -366,7 +366,7 @@ class EditGedcomRecordController extends AbstractEditController
         $fact_id = $request->get('fact_id', '');
 
         $record = GedcomRecord::getInstance($xref, $tree);
-        self::RecordAccess($record, true);
+        Auth::checkRecordAccess($record, true);
 
         $keep_chan = (bool) $request->get('keep_chan');
 

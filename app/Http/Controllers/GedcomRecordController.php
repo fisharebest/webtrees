@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
@@ -47,7 +48,7 @@ class GedcomRecordController extends AbstractBaseController
         $xref   = $request->get('xref', '');
         $record = GedcomRecord::getInstance($xref, $tree);
 
-        self::RecordAccess($record);
+        Auth::checkRecordAccess($record);
 
         if ($this->hasCustomPage($record)) {
             return new RedirectResponse($record->url());
