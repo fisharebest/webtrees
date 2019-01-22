@@ -97,11 +97,11 @@
                         <?php endif ?>
                     </th>
                     <td class="text-center" data-sort="<?= $module->isEnabled() ?>">
-                        <?= Bootstrap4::checkbox('', false, ['name' => 'status-' . $module->getName(), 'checked' => $module->isEnabled()]) ?>
+                        <?= Bootstrap4::checkbox('', false, ['name' => 'status-' . $module->name(), 'checked' => $module->isEnabled()]) ?>
                     </td>
                     <td class="d-none d-sm-table-cell">
                         <?= $module->description() ?>
-                        <?php if (!in_array($module->getName(), $core_module_names)) : ?>
+                        <?php if (!in_array($module->name(), $core_module_names)) : ?>
                             <br>
                             <?= view('icons/warning') ?>
                             <?= I18N::translate('Custom module') ?>

@@ -45,7 +45,7 @@
                                             <?= e($tree->title()) ?>
                                         </td>
                                         <td>
-                                            <?= Bootstrap4::select(FunctionsEdit::optionsAccessLevels(), $module->accessLevel($tree, $component), ['name' => 'access-' . $module->getName() . '-' . $tree->id()]) ?>
+                                            <?= Bootstrap4::select(FunctionsEdit::optionsAccessLevels(), $module->accessLevel($tree, $component), ['name' => 'access-' . $module->name() . '-' . $tree->id()]) ?>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>

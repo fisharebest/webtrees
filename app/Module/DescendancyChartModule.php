@@ -43,15 +43,15 @@ class DescendancyChartModule extends AbstractModule implements ModuleInterface, 
     use ModuleChartTrait;
 
     // Chart styles
-    private const CHART_STYLE_LIST        = 0;
-    private const CHART_STYLE_BOOKLET     = 1;
-    private const CHART_STYLE_INDIVIDUALS = 2;
-    private const CHART_STYLE_FAMILIES    = 3;
+    public const CHART_STYLE_LIST        = 0;
+    public const CHART_STYLE_BOOKLET     = 1;
+    public const CHART_STYLE_INDIVIDUALS = 2;
+    public const CHART_STYLE_FAMILIES    = 3;
 
     // Defaults
-    private const DEFAULT_STYLE               = self::CHART_STYLE_LIST;
-    private const DEFAULT_GENERATIONS         = '3';
-    private const DEFAULT_MAXIMUM_GENERATIONS = '9';
+    public const DEFAULT_STYLE               = self::CHART_STYLE_LIST;
+    public const DEFAULT_GENERATIONS         = '3';
+    public const DEFAULT_MAXIMUM_GENERATIONS = '9';
 
     /** @var int[] */
     protected $dabo_num = [];

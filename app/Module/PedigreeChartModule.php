@@ -46,10 +46,10 @@ class PedigreeChartModule extends AbstractModule implements ModuleInterface, Mod
      * Chart orientation codes
      * Dont change them! the offset calculations rely on this order
      */
-    protected const PORTRAIT         = 0;
-    protected const LANDSCAPE        = 1;
-    protected const OLDEST_AT_TOP    = 2;
-    protected const OLDEST_AT_BOTTOM = 3;
+    public const PORTRAIT         = 0;
+    public const LANDSCAPE        = 1;
+    public const OLDEST_AT_TOP    = 2;
+    public const OLDEST_AT_BOTTOM = 3;
 
     protected const DEFAULT_ORIENTATION = self::LANDSCAPE;
 

@@ -18,9 +18,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Http\Controllers\PedigreeChartController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
@@ -84,53 +84,55 @@ class ChartsBlockModule extends AbstractModule implements ModuleInterface, Modul
         $title = $this->title();
 
         if ($person) {
-            $content = '';
             switch ($type) {
+                default:
                 case 'pedigree':
-                    $title     = I18N::translate('Pedigree of %s', $person->getFullName());
-                    $chart_url = route('pedigree-chart', [
-                        'xref'        => $person->xref(),
-                        'ged'         => $person->tree()->name(),
+                    $module    = Module::getModuleByClassName(PedigreeChartModule::class);
+                    $title     = $module->chartTitle($person);
+                    $chart_url = $module->chartUrl($person, [
+                        'ajax'        => '1',
                         'generations' => 3,
-                        'layout'      => PedigreeChartController::PORTRAIT,
+                        'layout'      => PedigreeChartModule::PORTRAIT,
                     ]);
-                    $content = view('modules/charts/chart', [
+                    $content   = view('modules/charts/chart', [
                         'block_id'  => $block_id,
                         'chart_url' => $chart_url,
                     ]);
                     break;
+
                 case 'descendants':
-                    $title     = I18N::translate('Descendants of %s', $person->getFullName());
-                    $chart_url = route('descendants-chart', [
-                        'xref'        => $person->xref(),
-                        'ged'         => $person->tree()->name(),
+                    $module    = Module::getModuleByClassName(DescendancyChartModule::class);
+                    $title     = $module->chartTitle($person);
+                    $chart_url = $module->chartUrl($person, [
+                        'ajax'        => '1',
                         'generations' => 2,
-                        'chart_style' => 0,
+                        'chart_style' => DescendancyChartModule::CHART_STYLE_LIST,
                     ]);
-                    $content = view('modules/charts/chart', [
+                    $content   = view('modules/charts/chart', [
                         'block_id'  => $block_id,
                         'chart_url' => $chart_url,
                     ]);
                     break;
+
                 case 'hourglass':
-                    $title     = I18N::translate('Hourglass chart of %s', $person->getFullName());
-                    $chart_url = route('hourglass-chart', [
-                        'xref'        => $person->xref(),
-                        'ged'         => $person->tree()->name(),
+                    $module    = Module::getModuleByClassName(HourglassChartModule::class);
+                    $title     = $module->chartTitle($person);
+                    $chart_url = $module->chartUrl($person, [
+                        'ajax'        => '1',
                         'generations' => 2,
-                        'layout'      => PedigreeChartController::PORTRAIT,
                     ]);
-                    $content = view('modules/charts/chart', [
+                    $content   = view('modules/charts/chart', [
                         'block_id'  => $block_id,
                         'chart_url' => $chart_url,
                     ]);
                     break;
+
                 case 'treenav':
+                    $module  = Module::getModuleByClassName(InteractiveTreeModule::class);
                     $title   = I18N::translate('Interactive tree of %s', $person->getFullName());
-                    $mod     = new InteractiveTreeModule();
                     $tv      = new TreeView();
-                    $content .= '<script>$("head").append(\'<link rel="stylesheet" href="' . $mod->css() . '" type="text/css" />\');</script>';
-                    $content .= '<script src="' . $mod->js() . '"></script>';
+                    $content = '<script>$("head").append(\'<link rel="stylesheet" href="' . $module->css() . '" type="text/css" />\');</script>';
+                    $content .= '<script src="' . $module->js() . '"></script>';
                     [$html, $js] = $tv->drawViewport($person, 2);
                     $content .= $html . '<script>' . $js . '</script>';
                     break;
