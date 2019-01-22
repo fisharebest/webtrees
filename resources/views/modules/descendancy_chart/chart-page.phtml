@@ -7,7 +7,9 @@
 </h2>
 
 <form class="wt-page-options wt-page-options-descendants-chart d-print-none">
-    <input type="hidden" name="route" value="descendants">
+    <input type="hidden" name="route" value="module">
+    <input type="hidden" name="module" value="<?= $module->getName() ?>">
+    <input type="hidden" name="action" value="Chart">
     <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
 
     <div class="row form-group">
@@ -34,7 +36,7 @@
                 <?= I18N::translate('Layout') ?>
             </legend>
             <div class="col-sm-9 wt-page-options-value">
-                <?= Bootstrap4::radioButtons('chart_style', $chart_styles, $chart_style, true, []) ?>
+                <?= Bootstrap4::radioButtons('chart_style', $chart_styles, $chart_style, true) ?>
             </div>
         </div>
     </fieldset>
@@ -42,10 +44,9 @@
     <div class="row form-group">
         <div class="col-form-label col-sm-3 wt-page-options-label"></div>
         <div class="col-sm-9 wt-page-options-value">
-            <input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */
-            I18N::translate('view') ?>">
+            <input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */ I18N::translate('view') ?>">
         </div>
     </div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-descendants-chart" data-ajax-url="<?= e(route('descendants-chart', ['xref' => $individual->xref(), 'ged' => $individual->tree()->name(), 'generations' => $generations, 'chart_style' => $chart_style])) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-descendants-chart" data-ajax-url="<?= e($ajax_url) ?>"></div>

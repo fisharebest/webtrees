@@ -51,7 +51,7 @@
     </div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-ancestors-chart" data-ajax-url="<?= e($module->chartUrl($individual, ['generations' => $generations, 'chart_style' => $chart_style, 'show_cousins' => $show_cousins, 'ajax' => '1'])) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-ancestors-chart" data-ajax-url="<?= e($ajax_url) ?>"></div>
 
 <?php View::push('javascript') ?>
 <script>

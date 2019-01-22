@@ -155,7 +155,15 @@ class AncestorsChartModule extends AbstractModule implements ModuleInterface, Mo
             }
         }
 
+        $ajax_url = $this->chartUrl($individual, [
+            'generations'  => $generations,
+            'chart_style'  => $chart_style,
+            'show_cousins' => $show_cousins,
+            'ajax'         => '1',
+        ]);
+
         return $this->viewResponse('modules/ancestors-chart/chart-page', [
+            'ajax_url'            => $ajax_url,
             'chart_style'         => $chart_style,
             'chart_styles'        => $this->chartStyles(),
             'default_generations' => $default_generations,
@@ -163,7 +171,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleInterface, Mo
             'individual'          => $individual,
             'maximum_generations' => $maximum_generations,
             'minimum_generations' => $minimum_generations,
-            'module'              => $this,
             'show_cousins'        => $show_cousins,
             'title'               => $this->chartTitle($individual),
         ]);
