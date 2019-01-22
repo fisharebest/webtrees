@@ -147,11 +147,11 @@ class PedigreeChartModule extends AbstractModule implements ModuleInterface, Mod
 
         Auth::checkIndividualAccess($individual);
 
-        $orientation = (int) $request->get('orientation', self::DEFAULT_ORIENTATION);
-        $generations = (int) $request->get('generations', self::DEFAULT_GENERATIONS);
+        $orientation = (int) $request->get('orientation', static::DEFAULT_ORIENTATION);
+        $generations = (int) $request->get('generations', static::DEFAULT_GENERATIONS);
 
-        $generations = min(self::MAX_GENERATIONS, $generations);
-        $generations = max(self::MIN_GENERATIONS, $generations);
+        $generations = min(static::MAX_GENERATIONS, $generations);
+        $generations = max(static::MIN_GENERATIONS, $generations);
 
         $generation_options = $this->generationOptions();
 
@@ -220,26 +220,26 @@ class PedigreeChartModule extends AbstractModule implements ModuleInterface, Mod
         $this->arrows = new stdClass();
         switch ($orientation) {
             default:
-            case self::PORTRAIT:
-            case self::LANDSCAPE:
+            case static::PORTRAIT:
+            case static::LANDSCAPE:
                 $this->arrows->prevGen = 'fas fa-arrow-end wt-icon-arrow-end';
                 $this->arrows->menu    = 'fas fa-arrow-start wt-icon-arrow-start';
-                $addoffset['x']        = $chart_has_ancestors ? self::ARROW_SIZE : 0;
+                $addoffset['x']        = $chart_has_ancestors ? static::ARROW_SIZE : 0;
                 $addoffset['y']        = 0;
                 break;
 
-            case self::OLDEST_AT_TOP:
+            case static::OLDEST_AT_TOP:
                 $this->arrows->prevGen = 'fas fa-arrow-up wt-icon-arrow-up';
                 $this->arrows->menu    = 'fas fa-arrow-down wt-icon-arrow-down';
                 $addoffset['x']        = 0;
-                $addoffset['y']        = $this->root->getSpouseFamilies() ? self::ARROW_SIZE : 0;
+                $addoffset['y']        = $this->root->getSpouseFamilies() ? static::ARROW_SIZE : 0;
                 break;
 
-            case self::OLDEST_AT_BOTTOM:
+            case static::OLDEST_AT_BOTTOM:
                 $this->arrows->prevGen = 'fas fa-arrow-down wt-icon-arrow-down';
                 $this->arrows->menu    = 'fas fa-arrow-up wt-icon-arrow-up';
                 $addoffset['x']        = 0;
-                $addoffset['y']        = $chart_has_ancestors ? self::ARROW_SIZE : 0;
+                $addoffset['y']        = $chart_has_ancestors ? static::ARROW_SIZE : 0;
                 break;
         }
 
@@ -253,7 +253,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleInterface, Mod
             // Box position in current generation
             $boxpos = $i - (2 ** ($this->generations - $curgen));
             // Offset multiple for current generation
-            if ($orientation < self::OLDEST_AT_TOP) {
+            if ($orientation < static::OLDEST_AT_TOP) {
                 $genoffset  = 2 ** ($curgen - $orientation);
                 $boxspacing = Theme::theme()->parameter('chart-box-y') + $byspacing;
             } else {
@@ -266,10 +266,10 @@ class PedigreeChartModule extends AbstractModule implements ModuleInterface, Mod
             // Calculate the xoffset
             switch ($orientation) {
                 default:
-                case self::PORTRAIT:
+                case static::PORTRAIT:
                     $xoffset = ($this->generations - $curgen) * ((Theme::theme()->parameter('chart-box-x') + $bxspacing) / 1.8);
                     if (!$i && $this->root->getSpouseFamilies()) {
-                        $xoffset -= self::ARROW_SIZE;
+                        $xoffset -= static::ARROW_SIZE;
                     }
                     // Compact the tree
                     if ($curgen < $this->generations) {
@@ -315,25 +315,25 @@ class PedigreeChartModule extends AbstractModule implements ModuleInterface, Mod
                     $yoffset -= (($boxspacing / 2) * (2 ** ($this->generations - 2)) - ($boxspacing / 2));
                     break;
 
-                case self::LANDSCAPE:
+                case static::LANDSCAPE:
                     $xoffset = ($this->generations - $curgen) * (Theme::theme()->parameter('chart-box-x') + $bxspacing);
                     if ($curgen == 1) {
                         $xoffset += 10;
                     }
                     break;
 
-                case self::OLDEST_AT_TOP:
+                case static::OLDEST_AT_TOP:
                     // Swap x & y offsets as chart is rotated
                     $xoffset = $yoffset;
                     $yoffset = $curgen * (Theme::theme()->parameter('chart-box-y') + ($byspacing * 4));
                     break;
 
-                case self::OLDEST_AT_BOTTOM:
+                case static::OLDEST_AT_BOTTOM:
                     // Swap x & y offsets as chart is rotated
                     $xoffset = $yoffset;
                     $yoffset = ($this->generations - $curgen) * (Theme::theme()->parameter('chart-box-y') + ($byspacing * 2));
                     if ($i && $this->root->getSpouseFamilies()) {
-                        $yoffset += self::ARROW_SIZE;
+                        $yoffset += static::ARROW_SIZE;
                     }
                     break;
             }
@@ -367,7 +367,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleInterface, Mod
         $canvas_height  = $max_yoffset + $byspacing + Theme::theme()->parameter('chart-box-y') + $addoffset['y'];
         $posn           = I18N::direction() === 'rtl' ? 'right' : 'left';
         $last_gen_start = (int) floor($this->treesize / 2);
-        if ($orientation === self::OLDEST_AT_TOP || $orientation === self::OLDEST_AT_BOTTOM) {
+        if ($orientation === static::OLDEST_AT_TOP || $orientation === static::OLDEST_AT_BOTTOM) {
             $flex_direction = ' flex-column';
         } else {
             $flex_direction = '';
@@ -389,10 +389,10 @@ class PedigreeChartModule extends AbstractModule implements ModuleInterface, Mod
             'last_gen_start'   => $last_gen_start,
             'orientation'      => $orientation,
             'nodes'            => $this->nodes,
-            'landscape'        => self::LANDSCAPE,
-            'oldest_at_top'    => self::OLDEST_AT_TOP,
-            'oldest_at_bottom' => self::OLDEST_AT_BOTTOM,
-            'portrait'         => self::PORTRAIT,
+            'landscape'        => static::LANDSCAPE,
+            'oldest_at_top'    => static::OLDEST_AT_TOP,
+            'oldest_at_bottom' => static::OLDEST_AT_BOTTOM,
+            'portrait'         => static::PORTRAIT,
             'posn'             => $posn,
         ]);
 
@@ -482,7 +482,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleInterface, Mod
      */
     protected function generationOptions(): array
     {
-        return FunctionsEdit::numericOptions(range(self::MIN_GENERATIONS, self::MAX_GENERATIONS));
+        return FunctionsEdit::numericOptions(range(static::MIN_GENERATIONS, static::MAX_GENERATIONS));
     }
 
     /**
