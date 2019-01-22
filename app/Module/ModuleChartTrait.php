@@ -28,7 +28,7 @@ trait ModuleChartTrait
     /**
      * @return string
      */
-    abstract public function getName(): string;
+    abstract public function name(): string;
 
     /**
      * A menu item for this chart for an individual box in a chart.
@@ -92,10 +92,10 @@ trait ModuleChartTrait
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
         return route('module', [
-            'module' => $this->getName(),
-            'action' => 'Chart',
-            'xref'   => $individual->xref(),
-            'ged'    => $individual->tree()->name(),
+                'module' => $this->name(),
+                'action' => 'Chart',
+                'xref'   => $individual->xref(),
+                'ged'    => $individual->tree()->name(),
         ] + $parameters);
     }
 

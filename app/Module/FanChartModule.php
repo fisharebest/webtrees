@@ -156,7 +156,7 @@ class FanChartModule extends AbstractModule implements ModuleInterface, ModuleCh
             'minimum_generations' => self::MINIMUM_GENERATIONS,
             'maximum_width'       => self::MAXIMUM_WIDTH,
             'minimum_width'       => self::MINIMUM_WIDTH,
-            'module_name'         => $this->getName(),
+            'module_name'         => $this->name(),
             'title'               => $this->chartTitle($individual),
         ]);
     }

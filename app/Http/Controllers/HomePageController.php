@@ -569,7 +569,7 @@ class HomePageController extends AbstractBaseController
             ->value('module.module_name');
 
         return $active_blocks->filter(function (ModuleInterface $module) use ($module_name): bool {
-            return $module->getName() === $module_name;
+            return $module->name() === $module_name;
         })->first();
     }
 
@@ -585,7 +585,7 @@ class HomePageController extends AbstractBaseController
                 return $block->isGedcomBlock();
             })
             ->mapWithKeys(function (ModuleInterface $block): array {
-                return [$block->getName() => $block];
+                return [$block->name() => $block];
             });
     }
 
@@ -601,7 +601,7 @@ class HomePageController extends AbstractBaseController
                 return $block->isUserBlock();
             })
             ->mapWithKeys(function (ModuleInterface $block): array {
-                return [$block->getName() => $block];
+                return [$block->name() => $block];
             });
     }
 
@@ -658,7 +658,7 @@ class HomePageController extends AbstractBaseController
     {
         return $blocks->map(function (string $block_name) use ($active_blocks): ?ModuleBlockInterface {
             return $active_blocks->filter(function (ModuleInterface $block) use ($block_name): bool {
-                return $block->getName() === $block_name;
+                return $block->name() === $block_name;
             })->first();
         })
             ->filter();

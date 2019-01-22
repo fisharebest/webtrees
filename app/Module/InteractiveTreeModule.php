@@ -89,7 +89,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleInterface, M
      */
     public function css(): string
     {
-        return Webtrees::MODULES_PATH . $this->getName() . '/css/treeview.css';
+        return Webtrees::MODULES_PATH . $this->name() . '/css/treeview.css';
     }
 
     /**
@@ -97,7 +97,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleInterface, M
      */
     public function js(): string
     {
-        return Webtrees::MODULES_PATH . $this->getName() . '/js/treeview.js';
+        return Webtrees::MODULES_PATH . $this->name() . '/js/treeview.js';
     }
 
     /** {@inheritdoc} */
@@ -164,10 +164,10 @@ class InteractiveTreeModule extends AbstractModule implements ModuleInterface, M
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
         return route('module', [
-            'module' => $this->getName(),
-            'action' => 'Treeview',
-            'xref'   => $individual->xref(),
-            'ged'    => $individual->tree()->name(),
+                'module' => $this->name(),
+                'action' => 'Treeview',
+                'xref'   => $individual->xref(),
+                'ged'    => $individual->tree()->name(),
         ] + $parameters);
     }
 

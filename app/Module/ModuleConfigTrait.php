@@ -30,7 +30,7 @@ trait ModuleConfigTrait
     public function getConfigLink(): string
     {
         return route('module', [
-            'module' => $this->getName(),
+            'module' => $this->name(),
             'action' => 'Admin',
         ]);
     }

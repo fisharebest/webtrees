@@ -131,7 +131,7 @@ abstract class AbstractModule implements ModuleInterface
      *
      * @return string
      */
-    final public function getName(): string
+    final public function name(): string
     {
         return $this->name;
     }
@@ -171,7 +171,7 @@ abstract class AbstractModule implements ModuleInterface
     final public function getPreference($setting_name, $default = ''): string
     {
         return DB::table('module_setting')
-            ->where('module_name', '=', $this->getName())
+            ->where('module_name', '=', $this->name())
             ->where('setting_name', '=', $setting_name)
             ->value('setting_value') ?? $default;
     }
@@ -190,7 +190,7 @@ abstract class AbstractModule implements ModuleInterface
     final public function setPreference($setting_name, $setting_value): self
     {
         DB::table('module_setting')->updateOrInsert([
-            'module_name'  => $this->getName(),
+            'module_name'  => $this->name(),
             'setting_name' => $setting_name,
         ], [
             'setting_value' => $setting_value,
@@ -217,7 +217,7 @@ abstract class AbstractModule implements ModuleInterface
             });
 
         $row = $access_levels->filter(function (stdClass $row) use ($component): bool {
-            return $row->component === $component && $row->module_name === $this->getName();
+            return $row->component === $component && $row->module_name === $this->name();
         })->first();
 
         return $row ? (int) $row->access_level : $this->access_level;

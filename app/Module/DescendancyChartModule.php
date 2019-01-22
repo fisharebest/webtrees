@@ -162,7 +162,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleInterface, 
             'individual'          => $individual,
             'maximum_generations' => $maximum_generations,
             'minimum_generations' => $minimum_generations,
-            'module_name'         => $this->getName(),
+            'module_name'         => $this->name(),
             'title'               => $this->chartTitle($individual),
         ]);
     }

@@ -132,7 +132,7 @@ class UserMessagesModule extends AbstractModule implements ModuleInterface, Modu
         }
         $content .= '<form id="messageform" name="messageform" method="post" action="' . e(route('module', [
                 'action' => 'DeleteMessage',
-                'module' => $this->getName(),
+                'module' => $this->name(),
                 'ctype'  => $ctype,
                 'ged'    => $tree->name(),
             ])) . '" data-confirm="' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '" onsubmit="return confirm(this.dataset.confirm);">';
@@ -191,7 +191,7 @@ class UserMessagesModule extends AbstractModule implements ModuleInterface, Modu
             $count = $messages->count();
 
             return view('modules/block-template', [
-                'block'      => str_replace('_', '-', $this->getName()),
+                'block'      => str_replace('_', '-', $this->name()),
                 'id'         => $block_id,
                 'config_url' => '',
                 'title'      => I18N::plural('%s message', '%s messages', $count, I18N::number($count)),

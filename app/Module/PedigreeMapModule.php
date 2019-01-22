@@ -129,10 +129,10 @@ class PedigreeMapModule extends AbstractModule implements ModuleInterface, Modul
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
         return route('module', [
-            'module' => $this->getName(),
-            'action' => 'PedigreeMap',
-            'xref'   => $individual->xref(),
-            'ged'    => $individual->tree()->name(),
+                'module' => $this->name(),
+                'action' => 'PedigreeMap',
+                'xref'   => $individual->xref(),
+                'ged'    => $individual->tree()->name(),
         ] + $parameters);
     }
 
@@ -348,7 +348,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleInterface, Modul
         }
 
         return $this->viewResponse('modules/pedigree-map/pedigree-map-page', [
-            'module'         => $this->getName(),
+            'module'         => $this->name(),
             /* I18N: %s is an individual’s name */
             'title'          => I18N::translate('Pedigree map of %s', $individual->getFullName()),
             'tree'           => $tree,
@@ -358,7 +358,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleInterface, Modul
             'map'            => view(
                 'modules/pedigree-map/pedigree-map',
                 [
-                    'module'      => $this->getName(),
+                    'module'      => $this->name(),
                     'ref'         => $individual->xref(),
                     'type'        => 'pedigree',
                     'generations' => $generations,

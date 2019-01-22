@@ -66,9 +66,9 @@ class PedigreeReportModule extends AbstractModule implements ModuleInterface, Mo
             route('report-setup', [
                 'xref'   => $individual->xref(),
                 'ged'    => $individual->tree()->name(),
-                'report' => $this->getName(),
+                'report' => $this->name(),
             ]),
-            'menu-report-' . $this->getName(),
+            'menu-report-' . $this->name(),
             ['rel' => 'nofollow']
         );
     }

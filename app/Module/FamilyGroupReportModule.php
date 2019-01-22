@@ -65,9 +65,9 @@ class FamilyGroupReportModule extends AbstractModule implements ModuleInterface,
             $this->title(),
             route('report-setup', [
                 'ged'    => $individual->tree()->name(),
-                'report' => $this->getName(),
+                'report' => $this->name(),
             ]),
-            'menu-report-' . $this->getName(),
+            'menu-report-' . $this->name(),
             ['rel' => 'nofollow']
         );
     }

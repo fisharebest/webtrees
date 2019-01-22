@@ -38,7 +38,7 @@ interface ModuleInterface
      *
      * @return string
      */
-    public function getName(): string;
+    public function name(): string;
 
     /**
      * Has the module been disabled in the control panel?

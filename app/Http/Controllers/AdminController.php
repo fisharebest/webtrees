@@ -1043,11 +1043,11 @@ class AdminController extends AbstractBaseController
 
         foreach ($modules as $module) {
             foreach (Tree::getAll() as $tree) {
-                $key          = 'access-' . $module->getName() . '-' . $tree->id();
+                $key          = 'access-' . $module->name() . '-' . $tree->id();
                 $access_level = (int) $request->get($key);
 
                 DB::table('module_privacy')->updateOrInsert([
-                    'module_name' => $module->getName(),
+                    'module_name' => $module->name(),
                     'gedcom_id'   => $tree->id(),
                     'component'   => $component,
                 ], [
@@ -1071,12 +1071,12 @@ class AdminController extends AbstractBaseController
         $modules = Module::all();
 
         foreach ($modules as $module) {
-            $new_status = (bool) $request->get('status-' . $module->getName());
+            $new_status = (bool) $request->get('status-' . $module->name());
             $old_status = $module->isEnabled();
 
             if ($new_status !== $old_status) {
                 DB::table('module')
-                    ->where('module_name', '=', $module->getName())
+                    ->where('module_name', '=', $module->name())
                     ->update(['status' => $new_status ? 'enabled' : 'disabled']);
 
                 if ($new_status) {
@@ -1211,7 +1211,7 @@ class AdminController extends AbstractBaseController
 
         $disk_modules = Module::all()
             ->map(function (ModuleInterface $module): string {
-                return $module->getName();
+                return $module->name();
             });
 
         return $database_modules->diff($disk_modules);

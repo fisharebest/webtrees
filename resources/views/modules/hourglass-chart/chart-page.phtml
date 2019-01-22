@@ -7,7 +7,9 @@
 </h2>
 
 <form class="wt-page-options wt-page-options-hourglass-chart d-print-none">
-    <input type="hidden" name="route" value="hourglass">
+    <input type="hidden" name="route" value="module">
+    <input type="hidden" name="module" value="<?= e($module_name) ?>">
+    <input type="hidden" name="action" value="Chart">
     <input type="hidden" name="ged" value="<?= e($individual->tree()->name()) ?>">
 
     <div class="row form-group">
@@ -47,4 +49,4 @@
     </div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-hourglass-chart" data-ajax-url="<?= e(route('hourglass-chart', ['xref' => $individual->xref(), 'generations' => $generations, 'show_spouse' => $show_spouse, 'ged' => $individual->tree()->name()])) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-hourglass-chart" data-ajax-url="<?= e($ajax_url) ?>"></div>

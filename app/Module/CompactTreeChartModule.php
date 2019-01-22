@@ -118,7 +118,7 @@ class CompactTreeChartModule extends AbstractModule implements ModuleInterface, 
         return $this->viewResponse('modules/compact-chart/chart-page', [
             'ajax_url'    => $ajax_url,
             'individual'  => $individual,
-            'module_name' => $this->getName(),
+            'module_name' => $this->name(),
             'title'       => $this->chartTitle($individual),
         ]);
     }

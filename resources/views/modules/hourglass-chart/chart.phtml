@@ -45,7 +45,9 @@
 
     $('#td_' + xref).load('index.php', {
       generations:  1,
-      route:        route,
+      route:        'module',
+      module:       <?= json_encode($module_name) ?>,
+      action:       route,
       show_spouses: spouses,
       ged:          tree,
       xref:         xref

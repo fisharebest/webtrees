@@ -114,7 +114,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleInterface, Mod
 
         $submenus = [
             new Menu($this->title(), route('module', [
-                'module' => $this->getName(),
+                'module' => $this->name(),
                 'action' => 'Show',
                 'ged'    => $tree->name(),
             ]), 'menu-clippings-cart', ['rel' => 'nofollow']),
@@ -124,7 +124,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleInterface, Mod
             $xref      = $request->get('xref', '');
             $action    = 'Add' . ucfirst($route);
             $add_route = route('module', [
-                'module' => $this->getName(),
+                'module' => $this->name(),
                 'action' => $action,
                 'xref'   => $xref,
                 'ged'    => $tree->name(),
@@ -135,12 +135,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleInterface, Mod
 
         if (!$this->isCartEmpty($tree)) {
             $submenus[] = new Menu(I18N::translate('Empty the clippings cart'), route('module', [
-                'module' => $this->getName(),
+                'module' => $this->name(),
                 'action' => 'Empty',
                 'ged'    => $tree->name(),
             ]), 'menu-clippings-empty', ['rel' => 'nofollow']);
             $submenus[] = new Menu(I18N::translate('Download'), route('module', [
-                'module' => $this->getName(),
+                'module' => $this->name(),
                 'action' => 'DownloadForm',
                 'ged'    => $tree->name(),
             ]), 'menu-clippings-download', ['rel' => 'nofollow']);
@@ -300,7 +300,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleInterface, Mod
         Session::put('cart', $cart);
 
         $url = route('module', [
-            'module' => $this->getName(),
+            'module' => $this->name(),
             'action' => 'Show',
             'ged'    => $tree->name(),
         ]);
@@ -323,7 +323,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleInterface, Mod
         Session::put('cart', $cart);
 
         $url = route('module', [
-            'module' => $this->getName(),
+            'module' => $this->name(),
             'action' => 'Show',
             'ged'    => $tree->name(),
         ]);

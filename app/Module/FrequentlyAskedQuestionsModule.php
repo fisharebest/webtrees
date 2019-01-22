@@ -79,7 +79,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleInt
     {
         if ($this->faqsExist($tree, WT_LOCALE)) {
             return new Menu($this->title(), route('module', [
-                'module' => $this->getName(),
+                'module' => $this->name(),
                 'action' => 'Show',
                 'ged'    => $tree->name(),
             ]), 'menu-help');
@@ -100,7 +100,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleInt
         $faqs = $this->faqsForTree($tree);
 
         $min_block_order = DB::table('block')
-            ->where('module_name', '=', $this->getName())
+            ->where('module_name', '=', $this->name())
             ->where(function (Builder $query) use ($tree): void {
                 $query
                     ->whereNull('gedcom_id')
@@ -109,7 +109,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleInt
             ->min('block_order');
 
         $max_block_order = DB::table('block')
-            ->where('module_name', '=', $this->getName())
+            ->where('module_name', '=', $this->name())
             ->where(function (Builder $query) use ($tree): void {
                 $query
                     ->whereNull('gedcom_id')
@@ -144,7 +144,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleInt
         DB::table('block')->where('block_id', '=', $block_id)->delete();
 
         $url = route('module', [
-            'module' => $this->getName(),
+            'module' => $this->name(),
             'action' => 'Admin',
             'ged'    => $tree->name(),
         ]);
@@ -167,11 +167,11 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleInt
             ->value('block_order');
 
         $swap_block = DB::table('block')
-            ->where('module_name', '=', $this->getName())
+            ->where('module_name', '=', $this->name())
             ->where('block_order', '=', function (Builder $query) use ($block_order): void {
                 $query
                     ->from('block')
-                    ->where('module_name', '=', $this->getName())
+                    ->where('module_name', '=', $this->name())
                     ->where('block_order', '>', $block_order)
                     ->select(DB::raw('MIN(block_order)'));
             })
@@ -193,7 +193,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleInt
         }
 
         $url = route('module', [
-            'module' => $this->getName(),
+            'module' => $this->name(),
             'action' => 'Admin',
             'ged'    => $tree->name(),
         ]);
@@ -216,11 +216,11 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleInt
             ->value('block_order');
 
         $swap_block = DB::table('block')
-            ->where('module_name', '=', $this->getName())
+            ->where('module_name', '=', $this->name())
             ->where('block_order', '=', function (Builder $query) use ($block_order): void {
                 $query
                     ->from('block')
-                    ->where('module_name', '=', $this->getName())
+                    ->where('module_name', '=', $this->name())
                     ->where('block_order', '<', $block_order)
                     ->select(DB::raw('MAX(block_order)'));
             })
@@ -242,7 +242,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleInt
         }
 
         $url = route('module', [
-            'module' => $this->getName(),
+            'module' => $this->name(),
             'action' => 'Admin',
             'ged'    => $tree->name(),
         ]);
@@ -268,7 +268,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleInt
             $faqbody     = '';
 
             $block_order = 1 + (int) DB::table('block')
-                ->where('module_name', '=', $this->getName())
+                ->where('module_name', '=', $this->name())
                 ->max('block_order');
 
             $languages = [];
@@ -325,7 +325,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleInt
         } else {
             DB::table('block')->insert([
                 'gedcom_id'   => $gedcom_id,
-                'module_name' => $this->getName(),
+                'module_name' => $this->name(),
                 'block_order' => $block_order,
             ]);
 
@@ -337,7 +337,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleInt
         $this->setBlockSetting($block_id, 'languages', implode(',', $languages));
 
         $url = route('module', [
-            'module' => $this->getName(),
+            'module' => $this->name(),
             'action' => 'Admin',
             'ged'    => $tree->name(),
         ]);
@@ -376,7 +376,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleInt
             ->join('block_setting AS bs1', 'bs1.block_id', '=', 'block.block_id')
             ->join('block_setting AS bs2', 'bs2.block_id', '=', 'block.block_id')
             ->join('block_setting AS bs3', 'bs3.block_id', '=', 'block.block_id')
-            ->where('module_name', '=', $this->getName())
+            ->where('module_name', '=', $this->name())
             ->where('bs1.setting_name', '=', 'header')
             ->where('bs2.setting_name', '=', 'faqbody')
             ->where('bs3.setting_name', '=', 'languages')
@@ -400,7 +400,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleInt
     {
         return DB::table('block')
              ->join('block_setting', 'block_setting.block_id', '=', 'block.block_id')
-             ->where('module_name', '=', $this->getName())
+             ->where('module_name', '=', $this->name())
              ->where('setting_name', '=', 'languages')
              ->where(function (Builder $query) use ($tree): void {
                  $query

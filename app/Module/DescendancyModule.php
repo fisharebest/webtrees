@@ -152,7 +152,7 @@ class DescendancyModule extends AbstractModule implements ModuleInterface, Modul
         return
             '<li class="sb_desc_indi_li">' .
             '<a class="sb_desc_indi" href="' . e(route('module', [
-                'module' => $this->getName(),
+                'module' => $this->name(),
                 'action' => 'Descendants',
                 'ged'    => $person->tree()->name(),
                 'xref'   => $person->xref(),

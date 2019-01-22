@@ -402,7 +402,7 @@ class Module
     {
         return self::all()
             ->filter(function (ModuleInterface $module) use ($module_name): bool {
-                return $module->isEnabled() && $module->getName() === $module_name;
+                return $module->isEnabled() && $module->name() === $module_name;
             })
             ->first();
     }

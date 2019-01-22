@@ -75,7 +75,7 @@ class SiteMapModule extends AbstractModule implements ModuleInterface, ModuleCon
         $this->layout = 'layouts/administration';
 
         $sitemap_url = route('module', [
-            'module' => $this->getName(),
+            'module' => $this->name(),
             'action' => 'Index',
         ]);
 

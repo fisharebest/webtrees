@@ -163,7 +163,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleInterface, M
             'individual'          => $individual,
             'maximum_generations' => $maximum_generations,
             'minimum_generations' => $minimum_generations,
-            'module_name'         => $this->getName(),
+            'module_name'         => $this->name(),
             'show_spouse'         => $show_spouse,
             'title'               => $this->chartTitle($individual),
         ]);

@@ -118,7 +118,7 @@ class StoriesModule extends AbstractModule implements ModuleInterface, ModuleCon
     private function getStoriesForIndividual(Individual $individual): array
     {
         $block_ids = DB::table('block')
-            ->where('module_name', '=', $this->getName())
+            ->where('module_name', '=', $this->name())
             ->where('xref', '=', $individual->xref())
             ->where('gedcom_id', '=', $individual->tree()->id())
             ->pluck('block_id');
@@ -151,7 +151,7 @@ class StoriesModule extends AbstractModule implements ModuleInterface, ModuleCon
     public function getMenu(Tree $tree): ?Menu
     {
         $menu = new Menu($this->title(), route('module', [
-            'module' => $this->getName(),
+            'module' => $this->name(),
             'action' => 'ShowList',
             'ged'    => $tree->name(),
         ]), 'menu-story');
@@ -169,7 +169,7 @@ class StoriesModule extends AbstractModule implements ModuleInterface, ModuleCon
         $this->layout = 'layouts/administration';
 
         $stories = DB::table('block')
-            ->where('module_name', '=', $this->getName())
+            ->where('module_name', '=', $this->name())
             ->where('gedcom_id', '=', $tree->id())
             ->orderBy('xref')
             ->get();
@@ -260,7 +260,7 @@ class StoriesModule extends AbstractModule implements ModuleInterface, ModuleCon
             DB::table('block')->insert([
                 'gedcom_id'   => $tree->id(),
                 'xref'        => $xref,
-                'module_name' => $this->getName(),
+                'module_name' => $this->name(),
                 'block_order' => 0,
             ]);
 
@@ -272,7 +272,7 @@ class StoriesModule extends AbstractModule implements ModuleInterface, ModuleCon
         $this->setBlockSetting($block_id, 'languages', implode(',', $languages));
 
         $url = route('module', [
-            'module' => $this->getName(),
+            'module' => $this->name(),
             'action' => 'Admin',
             'ged'    => $tree->name(),
         ]);
@@ -299,7 +299,7 @@ class StoriesModule extends AbstractModule implements ModuleInterface, ModuleCon
             ->delete();
 
         $url = route('module', [
-            'module' => $this->getName(),
+            'module' => $this->name(),
             'action' => 'Admin',
             'ged'    => $tree->name(),
         ]);
@@ -315,7 +315,7 @@ class StoriesModule extends AbstractModule implements ModuleInterface, ModuleCon
     public function getShowListAction(Tree $tree): Response
     {
         $stories = DB::table('block')
-            ->where('module_name', '=', $this->getName())
+            ->where('module_name', '=', $this->name())
             ->where('gedcom_id', '=', $tree->id())
             ->get()
             ->map(function (stdClass $story) use ($tree): stdClass {
