@@ -81,7 +81,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleInterface
             return new Menu(
                 I18N::translate('Relationship to me'),
                 $this->chartUrl($individual, ['xref2' => $gedcomid]),
-                $this->chartUrlClasss(),
+                $this->chartMenuClass(),
                 $this->chartUrlAttributes()
             );
         }
@@ -89,9 +89,19 @@ class RelationshipsChartModule extends AbstractModule implements ModuleInterface
         return new Menu(
             $this->title(),
             $this->chartUrl($individual),
-            $this->chartUrlClasss(),
+            $this->chartMenuClass(),
             $this->chartUrlAttributes()
         );
+    }
+
+    /**
+     * CSS class for the URL.
+     *
+     * @return string
+     */
+    public function chartMenuClass(): string
+    {
+        return 'menu-chart-relationship';
     }
 
     /**
@@ -101,7 +111,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleInterface
      *
      * @return Menu|null
      */
-    public function chartMenuIndividual(Individual $individual): ?Menu
+    public function chartBoxMenu(Individual $individual): ?Menu
     {
         return $this->chartMenu($individual);
     }
@@ -120,16 +130,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleInterface
             'xref1' => $individual->xref(),
             'ged'   => $individual->tree()->name(),
         ] + $parameters);
-    }
-
-    /**
-     * CSS class for the URL.
-     *
-     * @return string
-     */
-    public function chartUrlClasss(): string
-    {
-        return 'menu-chart-relationship';
     }
 
     /**

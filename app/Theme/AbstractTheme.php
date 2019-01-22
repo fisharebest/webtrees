@@ -741,7 +741,7 @@ abstract class AbstractTheme
     {
         $menus = [];
         foreach (Module::activeCharts($this->tree) as $chart) {
-            $menu = $chart->chartMenuIndividual($individual);
+            $menu = $chart->chartBoxMenu($individual);
             if ($menu) {
                 $menus[] = $menu;
             }

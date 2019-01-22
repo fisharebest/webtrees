@@ -50,6 +50,16 @@ class StatisticsChartModule extends AbstractModule implements ModuleInterface, M
     }
 
     /**
+     * CSS class for the URL.
+     *
+     * @return string
+     */
+    public function chartMenuClass(): string
+    {
+        return 'menu-chart-statistics';
+    }
+
+    /**
      * The URL for this chart.
      *
      * @param Individual $individual
@@ -62,15 +72,5 @@ class StatisticsChartModule extends AbstractModule implements ModuleInterface, M
         return route('statistics', [
                 'ged' => $individual->tree()->name(),
             ] + $parameters);
-    }
-
-    /**
-     * CSS class for the URL.
-     *
-     * @return string
-     */
-    public function chartUrlClasss(): string
-    {
-        return 'menu-chart-statistics';
     }
 }

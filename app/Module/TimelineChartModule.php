@@ -50,6 +50,16 @@ class TimelineChartModule extends AbstractModule implements ModuleInterface, Mod
     }
 
     /**
+     * CSS class for the URL.
+     *
+     * @return string
+     */
+    public function chartMenuClass(): string
+    {
+        return 'menu-chart-timeline';
+    }
+
+    /**
      * The URL for this chart.
      *
      * @param Individual $individual
@@ -63,15 +73,5 @@ class TimelineChartModule extends AbstractModule implements ModuleInterface, Mod
             'xrefs[]' => $individual->xref(),
             'ged'     => $individual->tree()->name(),
         ] + $parameters);
-    }
-
-    /**
-     * CSS class for the URL.
-     *
-     * @return string
-     */
-    public function chartUrlClasss(): string
-    {
-        return 'menu-chart-timeline';
     }
 }

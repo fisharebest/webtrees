@@ -50,6 +50,16 @@ class LifespansChartModule extends AbstractModule implements ModuleInterface, Mo
     }
 
     /**
+     * CSS class for the URL.
+     *
+     * @return string
+     */
+    public function chartMenuClass(): string
+    {
+        return 'menu-chart-lifespan';
+    }
+
+    /**
      * The URL for this chart.
      *
      * @param Individual $individual
@@ -63,15 +73,5 @@ class LifespansChartModule extends AbstractModule implements ModuleInterface, Mo
             'xrefs[]' => $individual->xref(),
             'ged'     => $individual->tree()->name(),
         ] + $parameters);
-    }
-
-    /**
-     * CSS class for the URL.
-     *
-     * @return string
-     */
-    public function chartUrlClasss(): string
-    {
-        return 'menu-chart-lifespan';
     }
 }

@@ -26,6 +26,15 @@ use Fisharebest\Webtrees\Menu;
 interface ModuleChartInterface
 {
     /**
+     * A menu item for this chart for an individual box in a chart.
+     *
+     * @param Individual $individual
+     *
+     * @return Menu|null
+     */
+    public function chartBoxMenu(Individual $individual): ?Menu;
+
+    /**
      * A main menu item for this chart.
      *
      * @param Individual $individual
@@ -35,13 +44,11 @@ interface ModuleChartInterface
     public function chartMenu(Individual $individual): Menu;
 
     /**
-     * A menu item for this chart for an individual box in a chart.
+     * CSS class for the menu.
      *
-     * @param Individual $individual
-     *
-     * @return Menu|null
+     * @return string
      */
-    public function chartMenuIndividual(Individual $individual): ?Menu;
+    public function chartMenuClass(): string;
 
     /**
      * The title for a specific instance of this chart.
@@ -68,11 +75,4 @@ interface ModuleChartInterface
      * @return string[]
      */
     public function chartUrlAttributes(): array;
-
-    /**
-     * CSS class for the URL.
-     *
-     * @return string
-     */
-    public function chartUrlClasss(): string;
 }

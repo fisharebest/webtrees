@@ -51,13 +51,23 @@ class CompactTreeChartModule extends AbstractModule implements ModuleInterface, 
     }
 
     /**
+     * CSS class for the URL.
+     *
+     * @return string
+     */
+    public function chartMenuClass(): string
+    {
+        return 'menu-chart-compact';
+    }
+
+    /**
      * Return a menu item for this chart - for use in individual boxes.
      *
      * @param Individual $individual
      *
      * @return Menu|null
      */
-    public function chartMenuIndividual(Individual $individual): ?Menu
+    public function chartBoxMenu(Individual $individual): ?Menu
     {
         return $this->chartMenu($individual);
     }
@@ -89,15 +99,5 @@ class CompactTreeChartModule extends AbstractModule implements ModuleInterface, 
     {
         /* I18N: %s is an individual’s name */
         return I18N::translate('Compact tree of %s', $individual->getFullName());
-    }
-
-    /**
-     * CSS class for the URL.
-     *
-     * @return string
-     */
-    public function chartUrlClasss(): string
-    {
-        return 'menu-chart-compact';
     }
 }

@@ -51,13 +51,23 @@ class FanChartModule extends AbstractModule implements ModuleInterface, ModuleCh
     }
 
     /**
+     * CSS class for the URL.
+     *
+     * @return string
+     */
+    public function chartMenuClass(): string
+    {
+        return 'menu-chart-fanchart';
+    }
+
+    /**
      * Return a menu item for this chart - for use in individual boxes.
      *
      * @param Individual $individual
      *
      * @return Menu|null
      */
-    public function chartMenuIndividual(Individual $individual): ?Menu
+    public function chartBoxMenu(Individual $individual): ?Menu
     {
         return $this->chartMenu($individual);
     }
@@ -89,15 +99,5 @@ class FanChartModule extends AbstractModule implements ModuleInterface, ModuleCh
             'xref' => $individual->xref(),
             'ged'  => $individual->tree()->name(),
         ] + $parameters);
-    }
-
-    /**
-     * CSS class for the URL.
-     *
-     * @return string
-     */
-    public function chartUrlClasss(): string
-    {
-        return 'menu-chart-fanchart';
     }
 }

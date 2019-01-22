@@ -51,13 +51,23 @@ class DescendancyChartModule extends AbstractModule implements ModuleInterface, 
     }
 
     /**
+     * CSS class for the URL.
+     *
+     * @return string
+     */
+    public function chartMenuClass(): string
+    {
+        return 'menu-chart-descendants';
+    }
+
+    /**
      * Return a menu item for this chart - for use in individual boxes.
      *
      * @param Individual $individual
      *
      * @return Menu|null
      */
-    public function chartMenuIndividual(Individual $individual): ?Menu
+    public function chartBoxMenu(Individual $individual): ?Menu
     {
         return $this->chartMenu($individual);
     }
@@ -89,15 +99,5 @@ class DescendancyChartModule extends AbstractModule implements ModuleInterface, 
             'ged'  => $individual->tree()->name(),
             'xref' => $individual->xref(),
         ] + $parameters);
-    }
-
-    /**
-     * CSS class for the URL.
-     *
-     * @return string
-     */
-    public function chartUrlClasss(): string
-    {
-        return 'menu-chart-descendants';
     }
 }

@@ -74,13 +74,23 @@ class AncestorsChartModule extends AbstractModule implements ModuleInterface, Mo
     }
 
     /**
+     * CSS class for the URL.
+     *
+     * @return string
+     */
+    public function chartMenuClass(): string
+    {
+        return 'menu-chart-ancestry';
+    }
+
+    /**
      * Return a menu item for this chart - for use in individual boxes.
      *
      * @param Individual $individual
      *
      * @return Menu|null
      */
-    public function chartMenuIndividual(Individual $individual): ?Menu
+    public function chartBoxMenu(Individual $individual): ?Menu
     {
         return $this->chartMenu($individual);
     }
@@ -96,16 +106,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleInterface, Mo
     {
         /* I18N: %s is an individual’s name */
         return I18N::translate('Ancestors of %s', $individual->getFullName());
-    }
-
-    /**
-     * CSS class for the URL.
-     *
-     * @return string
-     */
-    public function chartUrlClasss(): string
-    {
-        return 'menu-chart-ancestry';
     }
 
     /**

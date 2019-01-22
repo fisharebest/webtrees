@@ -31,6 +31,18 @@ trait ModuleChartTrait
     abstract public function getName(): string;
 
     /**
+     * A menu item for this chart for an individual box in a chart.
+     *
+     * @param Individual $individual
+     *
+     * @return Menu|null
+     */
+    public function chartBoxMenu(Individual $individual): ?Menu
+    {
+        return null;
+    }
+
+    /**
      * A main menu item for this chart.
      *
      * @param Individual $individual
@@ -42,21 +54,19 @@ trait ModuleChartTrait
         return new Menu(
             $this->title(),
             $this->chartUrl($individual),
-            $this->chartUrlClasss(),
+            $this->chartMenuClass(),
             $this->chartUrlAttributes()
         );
     }
 
     /**
-     * A menu item for this chart for an individual box in a chart.
+     * CSS class for the menu.
      *
-     * @param Individual $individual
-     *
-     * @return Menu|null
+     * @return string
      */
-    public function chartMenuIndividual(Individual $individual): ?Menu
+    public function chartMenuClass(): string
     {
-        return null;
+        return '';
     }
 
     /**
@@ -97,15 +107,5 @@ trait ModuleChartTrait
     public function chartUrlAttributes(): array
     {
         return ['rel' => 'nofollow'];
-    }
-
-    /**
-     * CSS class for the URL.
-     *
-     * @return string
-     */
-    public function chartUrlClasss(): string
-    {
-        return '';
     }
 }
