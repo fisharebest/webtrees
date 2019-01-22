@@ -28,7 +28,7 @@ trait ModuleChartTrait
     /**
      * @return string
      */
-    abstract function getName(): string;
+    abstract public function getName(): string;
 
     /**
      * A main menu item for this chart.
