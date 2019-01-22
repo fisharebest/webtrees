@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use stdClass;
 use Throwable;
 
@@ -136,6 +137,10 @@ class Module
                 });
 
             return (new Collection($filenames))
+                ->filter(function (string $filename): bool {
+                    // Module names with dots break things.
+                    return !Str::contains(basename(dirname($filename)), '.');
+                })
                 ->map(function (string $filename) use ($module_info): ?ModuleInterface {
                     try {
                         $module_name = basename(dirname($filename));
