@@ -171,6 +171,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleInterface, Mo
             'individual'          => $individual,
             'maximum_generations' => $maximum_generations,
             'minimum_generations' => $minimum_generations,
+            'module_name'         => $this->getName(),
             'show_cousins'        => $show_cousins,
             'title'               => $this->chartTitle($individual),
         ]);

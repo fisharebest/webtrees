@@ -9,7 +9,7 @@
 
 <form class="wt-page-options wt-page-options-ancestors-chart d-print-none">
     <input type="hidden" name="route" value="module">
-    <input type="hidden" name="module" value="<?= $module->getName() ?>">
+    <input type="hidden" name="module" value="<?= e($module_name) ?>">
     <input type="hidden" name="action" value="Chart">
     <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
 

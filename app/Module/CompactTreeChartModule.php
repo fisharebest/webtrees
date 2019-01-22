@@ -107,17 +107,19 @@ class CompactTreeChartModule extends AbstractModule implements ModuleInterface, 
 
         Auth::checkIndividualAccess($individual);
 
-        /* I18N: %s is an individual’s name */
-        $title = I18N::translate('Compact tree of %s', $individual->getFullName());
-
         if ($ajax === '1') {
             return $this->chartCompact($individual, $chart_service);
         }
 
+        $ajax_url = $this->chartUrl($individual, [
+            'ajax' => '1',
+        ]);
+
         return $this->viewResponse('modules/compact-chart/chart-page', [
-            'individual' => $individual,
-            'module'     => $this,
-            'title'      => $title,
+            'ajax_url'    => $ajax_url,
+            'individual'  => $individual,
+            'module_name' => $this->getName(),
+            'title'       => $this->chartTitle($individual),
         ]);
     }
 

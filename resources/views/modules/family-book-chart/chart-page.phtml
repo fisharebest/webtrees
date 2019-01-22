@@ -7,7 +7,9 @@
 </h2>
 
 <form class="wt-page-options wt-page-options-family-book-chart d-print-none">
-    <input type="hidden" name="route" value="family-book">
+    <input type="hidden" name="route" value="module">
+    <input type="hidden" name="module" value="<?= e($module_name) ?>">
+    <input type="hidden" name="action" value="Chart">
     <input type="hidden" name="ged" value="<?= e($individual->tree()->name()) ?>">
 
     <div class="row form-group">
@@ -56,4 +58,4 @@
     </div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-family-book-chart" data-ajax-url="<?= e(route('family-book-chart', ['xref' => $individual->xref(), 'ged' => $individual->tree()->name(), 'book_size' => $book_size, 'generations' => $generations, 'show_spouse' => (int) $show_spouse])) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-family-book-chart" data-ajax-url="<?= e($ajax_url) ?>"></div>
