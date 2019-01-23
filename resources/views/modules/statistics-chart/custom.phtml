@@ -1,10 +1,5 @@
-<?php use Fisharebest\Webtrees\Bootstrap4;
-use Fisharebest\Webtrees\Http\Controllers\StatisticsChartController;
-use Fisharebest\Webtrees\I18N;
-
-?>
-<?php ?>
-<?php ?>
+<?php use Fisharebest\Webtrees\Bootstrap4; ?>
+<?php use Fisharebest\Webtrees\I18N; ?>
 
 <script>
   function statusDisable(sel) {
@@ -88,7 +83,10 @@ use Fisharebest\Webtrees\I18N;
     <?= I18N::translate('Create your own chart') ?>
 </h3>
 
-<form id="own-stats-form" action="<?= e(route('statistics-chart')) ?>" onsubmit="return loadCustomChart();" class="wt-page-options wt-page-options-statistics">
+<form id="own-stats-form" action="index.php" onsubmit="return loadCustomChart();" class="wt-page-options wt-page-options-statistics">
+    <input type="hidden" name="route" value="module">
+    <input type="hidden" name="module" value="<?= e($module->name()) ?>">
+    <input type="hidden" name="action" value="CustomChart">
     <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
     <div class="form-group row">
         <div class="col-sm-2 wt-page-options-label">
@@ -99,31 +97,31 @@ use Fisharebest\Webtrees\I18N;
             <fieldset>
                 <legend><?= I18N::translate('Individual') ?></legend>
 
-                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_BIRTH_MONTH => I18N::translate('Month of birth')], StatisticsChartController::X_AXIS_BIRTH_MONTH, false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
-                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_DEATH_MONTH => I18N::translate('Month of death')], '', false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
-                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_FIRST_CHILD_MONTH => I18N::translate('Month of birth of first child in a relation')], '', false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
-                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_AGE_AT_DEATH => I18N::translate('Average age at death')], '', false, ['onchange' => 'statusEnable("z_sex"); statusShow("x_years");; statusHide("map_opt");']) ?>
-                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_AGE_AT_MARRIAGE => I18N::translate('Age in year of marriage')], '', false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusShow("x_years_m");; statusHide("map_opt");']) ?>
-                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_AGE_AT_FIRST_MARRIAGE => I18N::translate('Age in year of first marriage')], '', false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusShow("x_years_m");; statusHide("map_opt");']) ?>
+                <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_BIRTH_MONTH => I18N::translate('Month of birth')], $module::X_AXIS_BIRTH_MONTH, false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
+                <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_DEATH_MONTH => I18N::translate('Month of death')], '', false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
+                <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_FIRST_CHILD_MONTH => I18N::translate('Month of birth of first child in a relation')], '', false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
+                <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_AGE_AT_DEATH => I18N::translate('Average age at death')], '', false, ['onchange' => 'statusEnable("z_sex"); statusShow("x_years");; statusHide("map_opt");']) ?>
+                <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_AGE_AT_MARRIAGE => I18N::translate('Age in year of marriage')], '', false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusShow("x_years_m");; statusHide("map_opt");']) ?>
+                <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_AGE_AT_FIRST_MARRIAGE => I18N::translate('Age in year of first marriage')], '', false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusShow("x_years_m");; statusHide("map_opt");']) ?>
             </fieldset>
 
             <fieldset>
                 <legend><?= I18N::translate('Family') ?></legend>
 
                 <?= Bootstrap4::radioButtons('x-as', [
-                    StatisticsChartController::X_AXIS_MARRIAGE_MONTH       => I18N::translate('Month of marriage'),
-                    StatisticsChartController::X_AXIS_FIRST_MARRIAGE_MONTH => I18N::translate('Month of first marriage'),
+                    $module::X_AXIS_MARRIAGE_MONTH       => I18N::translate('Month of marriage'),
+                    $module::X_AXIS_FIRST_MARRIAGE_MONTH => I18N::translate('Month of first marriage'),
                 ], '', false, ['onchange' => 'statusChecked("z_none"); statusDisable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
-                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_NUMBER_OF_CHILDREN => I18N::translate('Number of children')], '', false, ['onchange' => 'statusChecked("z_none"); statusDisable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
+                <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_NUMBER_OF_CHILDREN => I18N::translate('Number of children')], '', false, ['onchange' => 'statusChecked("z_none"); statusDisable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
             </fieldset>
 
             <fieldset>
                 <legend><?= I18N::translate('Map') ?></legend>
 
-                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_INDIVIDUAL_MAP => I18N::translate('Individuals')], '', false, ['onchange' => 'statusHide("x_years");; statusShow("map_opt"); statusShow("chart_type");']) ?>
-                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_BIRTH_MAP => I18N::translate('Births')], '', false, ['onchange' => 'statusHide("x_years");; statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
-                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_MARRIAGE_MAP => I18N::translate('Marriages')], '', false, ['onchange' => 'statusHide("x_years");; statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
-                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_DEATH_MAP => I18N::translate('Deaths')], '', false, ['onchange' => 'statusHide("x_years");; statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
+                <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_INDIVIDUAL_MAP => I18N::translate('Individuals')], '', false, ['onchange' => 'statusHide("x_years");; statusShow("map_opt"); statusShow("chart_type");']) ?>
+                <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_BIRTH_MAP => I18N::translate('Births')], '', false, ['onchange' => 'statusHide("x_years");; statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
+                <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_MARRIAGE_MAP => I18N::translate('Marriages')], '', false, ['onchange' => 'statusHide("x_years");; statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
+                <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_DEATH_MAP => I18N::translate('Deaths')], '', false, ['onchange' => 'statusHide("x_years");; statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
             </fieldset>
         </div>
 
@@ -136,17 +134,17 @@ use Fisharebest\Webtrees\I18N;
                 <legend><?= I18N::translate('Categories') ?></legend>
 
                 <label>
-                    <input type="radio" id="z_none" name="z-as" value="<?= StatisticsChartController::Z_AXIS_ALL ?>" onclick="statusDisable('z-axis-boundaries-periods');">
+                    <input type="radio" id="z_none" name="z-as" value="<?= $module::Z_AXIS_ALL ?>" onclick="statusDisable('z-axis-boundaries-periods');">
                     <?= I18N::translate('none') ?>
                 </label>
                 <br>
                 <label>
-                    <input type="radio" id="z_sex" name="z-as" value="<?= StatisticsChartController::Z_AXIS_SEX ?>" onclick="statusDisable('z-axis-boundaries-periods');">
+                    <input type="radio" id="z_sex" name="z-as" value="<?= $module::Z_AXIS_SEX ?>" onclick="statusDisable('z-axis-boundaries-periods');">
                     <?= I18N::translate('gender') ?>
                 </label>
                 <br>
                 <label>
-                    <input type="radio" id="z_time" name="z-as" value="<?= StatisticsChartController::Z_AXIS_TIME ?>" checked onclick="statusEnable('z-axis-boundaries-periods');">
+                    <input type="radio" id="z_time" name="z-as" value="<?= $module::Z_AXIS_TIME ?>" checked onclick="statusEnable('z-axis-boundaries-periods');">
                     <?= I18N::translate('date periods') ?>
                 </label>
                 <label for="z-axis-boundaries-periods" class="sr-only">
@@ -179,12 +177,12 @@ use Fisharebest\Webtrees\I18N;
                 <legend><?= I18N::translate('Results') ?></legend>
 
                 <label>
-                    <input type="radio" name="y-as" value="<?= StatisticsChartController::Y_AXIS_NUMBERS ?>" checked>
+                    <input type="radio" name="y-as" value="<?= $module::Y_AXIS_NUMBERS ?>" checked>
                     <?= I18N::translate('numbers') ?>
                 </label>
                 <br>
                 <label>
-                    <input type="radio" name="y-as" value="<?= StatisticsChartController::Y_AXIS_PERCENT ?>">
+                    <input type="radio" name="y-as" value="<?= $module::Y_AXIS_PERCENT ?>">
                     <?= I18N::translate('percentage') ?>
                 </label>
             </fieldset>
