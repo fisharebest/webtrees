@@ -225,21 +225,23 @@ class RelationshipsChartModule extends AbstractModule implements ModuleInterface
         }
 
         if ($individual1 instanceof Individual && $individual2 instanceof Individual) {
+            if ($ajax) {
+                return $this->chart($individual1, $individual2, $recursion, $ancestors);
+            }
+
             /* I18N: %s are individual’s names */
             $title = I18N::translate('Relationships between %1$s and %2$s', $individual1->getFullName(), $individual2->getFullName());
+
             $ajax_url = $this->chartUrl($individual1, [
                 'ajax'      => true,
-                'xref2'     => $individual2 instanceof Individual ? $individual2->xref() : '',
+                'xref2'     => $individual2->xref(),
                 'recursion' => $recursion,
                 'ancestors' => $ancestors,
             ]);
         } else {
             $title = I18N::translate('Relationships');
+            
             $ajax_url = '';
-        }
-
-        if ($ajax) {
-            return $this->chart($individual1, $individual2, $recursion, $ancestors);
         }
 
         return $this->viewResponse('modules/relationships-chart/page', [
