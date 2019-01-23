@@ -240,7 +240,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleInterface
             ]);
         } else {
             $title = I18N::translate('Relationships');
-            
+
             $ajax_url = '';
         }
 

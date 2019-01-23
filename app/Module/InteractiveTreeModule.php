@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
 use Fisharebest\Webtrees\Gedcom;
@@ -74,9 +75,10 @@ class InteractiveTreeModule extends AbstractModule implements ModuleInterface, M
     public function getTabContent(Individual $individual): string
     {
         $treeview = new TreeView('tvTab');
+
         [$html, $js] = $treeview->drawViewport($individual, 3);
 
-        return view('modules/tree/tab', [
+        return view('modules/interactive-tree/tab', [
             'html'         => $html,
             'js'           => $js,
             'treeview_css' => $this->css(),
@@ -165,7 +167,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleInterface, M
     {
         return route('module', [
                 'module' => $this->name(),
-                'action' => 'Treeview',
+                'action' => 'Chart',
                 'xref'   => $individual->xref(),
                 'ged'    => $individual->tree()->name(),
         ] + $parameters);
@@ -177,31 +179,23 @@ class InteractiveTreeModule extends AbstractModule implements ModuleInterface, M
      *
      * @return Response
      */
-    public function getTreeviewAction(Request $request, Tree $tree): Response
+    public function getChartAction(Request $request, Tree $tree): Response
     {
         $xref = $request->get('xref', '');
 
         $individual = Individual::getInstance($xref, $tree);
 
-        if ($individual === null) {
-            throw new IndividualNotFoundException();
-        }
-
-        if (!$individual->canShow()) {
-            throw new IndividualAccessDeniedException();
-        }
+        Auth::checkIndividualAccess($individual);
 
         $tv = new TreeView('tv');
 
         [$html, $js] = $tv->drawViewport($individual, 4);
 
-        $title = I18N::translate('Interactive tree of %s', $individual->getFullName());
-
         return $this->viewResponse('interactive-tree-page', [
-            'title'      => $title,
+            'html'       => $html,
             'individual' => $individual,
             'js'         => $js,
-            'html'       => $html,
+            'title'      => $this->chartTitle($individual),
             'tree'       => $tree,
         ]);
     }

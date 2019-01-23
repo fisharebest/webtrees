@@ -274,8 +274,6 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
         'GET:place-hierarchy'        => 'PlaceHierarchyController@show',
         'GET:repository-list'        => 'ListController@repositoryList',
         'GET:source-list'            => 'ListController@sourceList',
-        'GET:interactive'            => 'InteractiveChartController@page',
-        'GET:interactive-chart'      => 'InteractiveChartController@chart',
         'POST:accept-changes'        => 'PendingChangesController@acceptChanges',
         'POST:reject-changes'        => 'PendingChangesController@rejectChanges',
         'POST:accept-all-changes'    => 'PendingChangesController@acceptAllChanges',
