@@ -193,7 +193,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleInterface, Modul
                         'polyline' => $polyline,
                         'icon'     => $icon,
                         'tooltip'  => $event->toolTip(),
-                        'summary'  => view('modules/pedigree-map/event-sidebar', $event->shortSummary('pedigree', $id)),
+                        'summary'  => view('modules/pedigree-map/events', $event->shortSummary('pedigree', $id)),
                         'zoom'     => (int) $event->getZoom(),
                     ],
                 ];
@@ -347,8 +347,8 @@ class PedigreeMapModule extends AbstractModule implements ModuleInterface, Modul
             throw new IndividualAccessDeniedException();
         }
 
-        return $this->viewResponse('modules/pedigree-map/pedigree-map-page', [
-            'module'         => $this->name(),
+        return $this->viewResponse('modules/pedigree-map/page', [
+            'module_name'    => $this->name(),
             /* I18N: %s is an individual’s name */
             'title'          => I18N::translate('Pedigree map of %s', $individual->getFullName()),
             'tree'           => $tree,
@@ -356,7 +356,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleInterface, Modul
             'generations'    => $generations,
             'maxgenerations' => $maxgenerations,
             'map'            => view(
-                'modules/pedigree-map/pedigree-map',
+                'modules/pedigree-map/chart',
                 [
                     'module'      => $this->name(),
                     'ref'         => $individual->xref(),

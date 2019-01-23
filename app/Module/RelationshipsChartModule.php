@@ -85,7 +85,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleInterface
     {
         $gedcomid = $individual->tree()->getUserPreference(Auth::user(), 'gedcomid');
 
-        if ($gedcomid !== '') {
+        if ($gedcomid !== '' && $gedcomid !== $individual->xref()) {
             return new Menu(
                 I18N::translate('Relationship to me'),
                 $this->chartUrl($individual, ['xref2' => $gedcomid]),
@@ -122,24 +122,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleInterface
     public function chartBoxMenu(Individual $individual): ?Menu
     {
         return $this->chartMenu($individual);
-    }
-
-    /**
-     * The URL for this chart.
-     *
-     * @param Individual $individual
-     * @param string[]   $parameters
-     *
-     * @return string
-     */
-    public function chartUrl(Individual $individual, array $parameters = []): string
-    {
-        return route('module', [
-                'module' => $this->name(),
-                'action' => 'Chart',
-                'xref1'  => $individual->xref(),
-                'ged'    => $individual->tree()->name(),
-            ] + $parameters);
     }
 
     /**
@@ -220,43 +202,45 @@ class RelationshipsChartModule extends AbstractModule implements ModuleInterface
     {
         $ajax = (bool) $request->get('ajax');
 
-        $xref1 = $request->get('xref1', '');
+        $xref  = $request->get('xref', '');
         $xref2 = $request->get('xref2', '');
 
-        $individual1 = Individual::getInstance($xref1, $tree);
+        $individual1 = Individual::getInstance($xref, $tree);
         $individual2 = Individual::getInstance($xref2, $tree);
 
         $recursion = (int) $request->get('recursion', '0');
         $ancestors = (int) $request->get('ancestors', '0');
 
-        if ($individual1 instanceof Individual && $individual2 instanceof Individual) {
-            Auth::checkIndividualAccess($individual1);
-            Auth::checkIndividualAccess($individual2);
-        }
-
-        $ancestors_only = (int) $tree->getPreference('RELATIONSHIP_ANCESTORS', RelationshipsChartModule::DEFAULT_ANCESTORS);
-        $max_recursion  = (int) $tree->getPreference('RELATIONSHIP_RECURSION', RelationshipsChartModule::DEFAULT_RECURSION);
+        $ancestors_only = (int) $tree->getPreference('RELATIONSHIP_ANCESTORS', static::DEFAULT_ANCESTORS);
+        $max_recursion  = (int) $tree->getPreference('RELATIONSHIP_RECURSION', static::DEFAULT_RECURSION);
 
         $recursion = min($recursion, $max_recursion);
+
+        if ($individual1 instanceof Individual) {
+            Auth::checkIndividualAccess($individual1);
+        }
+
+        if ($individual2 instanceof Individual) {
+            Auth::checkIndividualAccess($individual2);
+        }
 
         if ($individual1 instanceof Individual && $individual2 instanceof Individual) {
             /* I18N: %s are individual’s names */
             $title = I18N::translate('Relationships between %1$s and %2$s', $individual1->getFullName(), $individual2->getFullName());
+            $ajax_url = $this->chartUrl($individual1, [
+                'ajax'      => true,
+                'xref2'     => $individual2 instanceof Individual ? $individual2->xref() : '',
+                'recursion' => $recursion,
+                'ancestors' => $ancestors,
+            ]);
         } else {
             $title = I18N::translate('Relationships');
+            $ajax_url = '';
         }
 
         if ($ajax) {
-            return $this->chart($request, $tree);
+            return $this->chart($individual1, $individual2, $recursion, $ancestors);
         }
-
-        $ajax_url = $this->chartUrl($individual1, [
-            'ajax'      => true,
-            'xref2'     => $individual2->xref(),
-            'ged'       => $individual2->tree()->name(),
-            'recursion' => $recursion,
-            'ancestors' => $ancestors,
-        ]);
 
         return $this->viewResponse('modules/relationships-chart/page', [
             'ajax_url'          => $ajax_url,
@@ -274,25 +258,18 @@ class RelationshipsChartModule extends AbstractModule implements ModuleInterface
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Individual $individual1
+     * @param Individual $individual2
+     * @param int        $recursion
+     * @param int        $ancestors
      *
      * @return Response
      */
-    public function chart(Request $request, Tree $tree): Response
+    public function chart(Individual $individual1, Individual $individual2, int $recursion, int $ancestors): Response
     {
-        $xref1       = $request->get('xref1', '');
-        $individual1 = Individual::getInstance($xref1, $tree);
-        $xref2       = $request->get('xref2', '');
-        $individual2 = Individual::getInstance($xref2, $tree);
+        $tree = $individual1->tree();
 
-        Auth::checkIndividualAccess($individual1);
-        Auth::checkIndividualAccess($individual2);
-
-        $recursion = (int) $request->get('recursion', '0');
-        $ancestors = (bool) $request->get('ancestors', '0');
-
-        $max_recursion = (int) $tree->getPreference('RELATIONSHIP_RECURSION', RelationshipsChartModule::DEFAULT_RECURSION);
+        $max_recursion = (int) $tree->getPreference('RELATIONSHIP_RECURSION', static::DEFAULT_RECURSION);
 
         $recursion = min($recursion, $max_recursion);
 
@@ -412,16 +389,18 @@ class RelationshipsChartModule extends AbstractModule implements ModuleInterface
      */
     private function calculateRelationships(Individual $individual1, Individual $individual2, $recursion, $ancestor = false): array
     {
+        $tree = $individual1->tree();
+
         $rows = DB::table('link')
-            ->where('l_file', '=', $individual1->tree()->id())
+            ->where('l_file', '=', $tree->id())
             ->whereIn('l_type', ['FAMS', 'FAMC'])
             ->select(['l_from', 'l_to'])
             ->get();
 
         // Optionally restrict the graph to the ancestors of the individuals.
         if ($ancestor) {
-            $ancestors = $this->allAncestors($individual1->xref(), $individual2->xref(), $individual1->tree()->id());
-            $exclude   = $this->excludeFamilies($individual1->xref(), $individual2->xref(), $individual1->tree()->id());
+            $ancestors = $this->allAncestors($individual1->xref(), $individual2->xref(), $tree->id());
+            $exclude   = $this->excludeFamilies($individual1->xref(), $individual2->xref(), $tree->id());
         } else {
             $ancestors = [];
             $exclude   = [];
@@ -627,7 +606,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleInterface
      */
     private function recursionOptions(int $max_recursion): array
     {
-        if ($max_recursion === RelationshipsChartModule::UNLIMITED_RECURSION) {
+        if ($max_recursion === static::UNLIMITED_RECURSION) {
             $text = I18N::translate('Find all possible relationships');
         } else {
             $text = I18N::translate('Find other relationships');
