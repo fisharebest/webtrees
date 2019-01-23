@@ -57,11 +57,11 @@
         </div>
         <div class="col-sm-9 wt-page-options-value">
             <button type="submit" class="btn btn-primary">
-                <?= FontAwesome::decorativeIcon('download') ?>
+                <?= view('icons/download') ?>
                 <?= I18N::translate('download') ?>
             </button>
             <a href="<?= e(route('module', ['module' => 'clippings', 'action' => 'Show', 'ged' => $tree->name()])) ?>" class="btn btn-secondary">
-                <?= FontAwesome::decorativeIcon('cancel') ?>
+                <?= view('icons/cancel') ?>
                 <?= I18N::translate('cancel') ?>
             </a>
         </div>

@@ -25,17 +25,17 @@
 
     <p>
         <button class="btn btn-primary" type="submit">
-            <?= FontAwesome::decorativeIcon('save') ?>
+            <?= view('icons/save') ?>
             <?= /* I18N: A button label. */ I18N::translate('save') ?>
         </button>
 
         <button class="btn btn-secondary" id="btn-default-order" type="button">
-            <?= FontAwesome::decorativeIcon('sort') ?>
+            <?= view('icons/sort') ?>
             <?= /* I18N: A button label. */ I18N::translate('sort by date of marriage') ?>
         </button>
 
         <a class="btn btn-secondary" href="<?= e($individual->url()) ?>">
-            <?= FontAwesome::decorativeIcon('cancel') ?>
+            <?= view('icons/cancel') ?>
             <?= /* I18N: A button label. */ I18N::translate('cancel') ?>
         </a>
     </p>

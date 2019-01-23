@@ -51,11 +51,11 @@
     <div class="row form-group">
         <div class="col-sm-9 offset-sm-3">
             <button class="btn btn-primary" type="submit">
-                <?= FontAwesome::decorativeIcon('save') ?>
+                <?= view('icons/save') ?>
                 <?= /* I18N: A button label. */ I18N::translate('save') ?>
             </button>
             <a class="btn btn-secondary" href="<?= e($record->url()) ?>">
-                <?= FontAwesome::decorativeIcon('cancel') ?>
+                <?= view('icons/cancel') ?>
                 <?= /* I18N: A button label. */ I18N::translate('cancel') ?>
             </a>
         </div>

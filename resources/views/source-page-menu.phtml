@@ -1,10 +1,9 @@
 <?php use Fisharebest\Webtrees\Auth; ?>
-<?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <div class="dropdown wt-page-menu">
     <button class="btn btn-primary dropdown-toggle wt-page-menu-button" type="button" id="page-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <?= FontAwesome::decorativeIcon('edit') ?>
+        <?= view('icons/edit') ?>
         <?= I18N::translate('edit') ?>
     </button>
     <div class="dropdown-menu dropdown-menu-right wt-page-menu-items" aria-labelledby="page-menu">

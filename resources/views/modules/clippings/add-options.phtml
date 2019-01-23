@@ -20,12 +20,12 @@
         <div class="col-sm-3 wt-page-options-label"></div>
         <div class="col-sm-9 wt-page-options-value">
             <button type="submit" class="btn btn-primary">
-                <?= FontAwesome::decorativeIcon('save') ?>
+                <?= view('icons/save') ?>
                 <?= /* I18N: A button label. */ I18N::translate('continue') ?>
             </button>
 
             <a class="btn btn-secondary" href="<?= e($record->url()) ?>">
-                <?= FontAwesome::decorativeIcon('cancel') ?>
+                <?= view('icons/cancel') ?>
                 <?= /* I18N: A button label. */ I18N::translate('cancel') ?>
             </a>
         </div>

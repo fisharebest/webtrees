@@ -32,23 +32,41 @@
                     </span>
                 </a>
             </th>
+
             <td dir="ltr">
-                <?= ($place->pl_lati === null) ? FontAwesome::decorativeIcon('warning') : strtr($place->pl_lati, ['N' => '', 'S' => '-', ',' => '.']) ?>
+                <?php if ($place->pl_lati === null) : ?>
+                    <?= view('icons/warning') ?>
+                <?php else : ?>
+                    <?= strtr($place->pl_lati, ['N' => '', 'S' => '-', ',' => '.']) ?>
+                <?php endif ?>
             </td>
+
             <td dir="ltr">
-                <?= ($place->pl_long === null) ? FontAwesome::decorativeIcon('warning') : strtr($place->pl_long, ['E' => '', 'W' => '-', ',' => '.']) ?>
+                <?php if ($place->pl_long === null) : ?>
+                    <?= view('icons/warning') ?>
+                <?php else : ?>
+                    <?= strtr($place->pl_long, ['E' => '', 'W' => '-', ',' => '.']) ?>
+                <?php endif ?>
             </td>
-            <td>
-                <?= $place->pl_long === null ? FontAwesome::decorativeIcon('warning') : $place->pl_zoom ?>
+
+            <td dir="ltr">
+                <?php if ($place->pl_zoom === null) : ?>
+                    <?= view('icons/warning') ?>
+                <?php else : ?>
+                    <?= $place->pl_zoom ?>
+                <?php endif ?>
             </td>
+
             <td>
                 <?php if (is_file(Webtrees::MODULES_PATH . 'openstreetmap/' . $place->pl_icon)) : ?>
                     <img src="<?= e(Webtrees::MODULES_PATH . 'openstreetmap/' . $place->pl_icon) ?>" width="25" height="15" alt="<?= I18N::translate("Flag of %s", $place->pl_place) ?>">
                 <?php endif ?>
             </td>
+
             <td>
                 <?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['href' => route('map-data-edit', ['place_id'  => $place->pl_id, 'parent_id' => $place->pl_parent_id]), 'class' => 'btn btn-primary']) ?>
             </td>
+
             <td>
                 <?php if ($place->child_count === 0) : ?>
                     <form method="POST" action="<?= e(route('map-data-delete', ['parent_id' => $parent_id, 'place_id' => $place->pl_id])) ?>"
@@ -61,7 +79,7 @@
                     </form>
                 <?php else : ?>
                     <button type="button" class="btn btn-danger" disabled>
-                        <?= FontAwesome::decorativeIcon('delete') ?>
+                        <?= view('icons/delete') ?>
                     </button>
                 <?php endif ?>
             </td>
@@ -72,13 +90,13 @@
     <tr>
         <td colspan="7">
             <a class="btn btn-primary" href="<?= e(route('map-data', ['parent_id' => $parent_id])) ?>">
-                <?= FontAwesome::decorativeIcon('add') ?>
+                <?= view('icons/add') ?>
                 <?= /* I18N: A button label. */
                 I18N::translate('add place') ?>
             </a>
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <?= FontAwesome::decorativeIcon('download') ?>
+                <?= view('icons/download') ?>
                 <?= /* I18N: A button label. */
                 I18N::translate('export file') ?>
             </button>
@@ -91,7 +109,7 @@
                 </a>
             </div>
             <a class="btn btn-primary" href="<?= e(route('locations-import', ['parent_id' => $parent_id])) ?>">
-                <?= FontAwesome::decorativeIcon('upload') ?>
+                <?= view('icons/upload') ?>
                 <?= /* I18N: A button label. */
                 I18N::translate('import file') ?>
             </a>

@@ -1,0 +1,8 @@
+<?php use Fisharebest\Webtrees\FontAwesome; ?>
+<?php use Fisharebest\Webtrees\I18N; ?>
+
+<?php if ($individual === null) : ?>
+    <?= view('icons/arrow-start') ?>
+<?php else : ?>
+    <?= FontAwesome::linkIcon('arrow-start', I18N::translate('Compact tree of %s', strip_tags($individual->getFullName())), ['href' => route('compact-tree', ['xref' => $individual->xref(), 'ged' => $individual->tree()->name()])]) ?>
+<?php endif;

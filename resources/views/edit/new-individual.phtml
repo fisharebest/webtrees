@@ -316,19 +316,19 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
     <div class="row form-group">
         <div class="col-sm-9 offset-sm-3">
             <button class="btn btn-primary" type="submit">
-                <?= FontAwesome::decorativeIcon('save') ?>
+                <?= view('icons/save') ?>
                 <?= /* I18N: A button label. */
                 I18N::translate('save') ?>
             </button>
             <?php if (preg_match('/^add_(child|spouse|parent|unlinked_indi)/', $nextaction)) : ?>
                 <button class="btn btn-primary" type="submit" name="goto" value="<?= $xref ?>">
-                    <?= FontAwesome::decorativeIcon('save') ?>
+                    <?= view('icons/save') ?>
                     <?= /* I18N: A button label. */
                     I18N::translate('go to new individual') ?>
                 </button>
             <?php endif ?>
             <a class="btn btn-secondary" href="<?= e($cancel_url) ?>">
-                <?= FontAwesome::decorativeIcon('cancel') ?>
+                <?= view('icons/cancel') ?>
                 <?= /* I18N: A button label. */
                 I18N::translate('cancel') ?>
             </a>

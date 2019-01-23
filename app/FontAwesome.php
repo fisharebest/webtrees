@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Helper functions to generate markup for FontAwesome.
  *
- * @link http://fontawesome.io/accessibility
+ * @deprecated  use view('icons/....') instead
  */
 class FontAwesome extends Html
 {
@@ -59,11 +59,11 @@ class FontAwesome extends Html
         'menu'          => 'far fa-bar wt-icon-menu',
         'report'        => 'far fa-file wt-icon-report',
         'sidebar'       => 'fas fa-pause wt-icon-sidebar',
-        'tab'           => 'far fa-folder wt-icon-tab',
+        'tab'           => 'far fa-folder wt-icon-theme',
         'theme'         => 'fas fa-paint-brush wt-icon-theme',
         // GEDCOM records
         'family'        => 'fas fa-users wt-icon-family',
-        'individual'    => 'far fa-user wt-icon-individual',
+        'individual'    => 'far fa-user wt-icon-family',
         'note'          => 'far fa-sticky-note wt-icon-note',
         'media'         => 'far fa-file-image wt-icon-media',
         'repository'    => 'fas fa-university wt-icon-repository',
@@ -91,7 +91,7 @@ class FontAwesome extends Html
      *
      * @return string
      */
-    public static function decorativeIcon($icon, $attributes = []): string
+    private static function decorativeIcon($icon, $attributes = []): string
     {
         if (empty($attributes['class'])) {
             $attributes['class'] = self::ICONS[$icon];

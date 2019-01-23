@@ -1,7 +1,6 @@
 <?php use Fisharebest\Webtrees\Auth; ?>
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\Config; ?>
-<?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\GedcomTag; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
@@ -75,12 +74,12 @@
         </div>
         <div class="col-sm-9 wt-page-options-value">
             <button class="btn btn-primary" type="submit">
-                <?= FontAwesome::decorativeIcon('save') ?>
+                <?= view('icons/save') ?>
                 <?= /* I18N: A button label. */
                 I18N::translate('save') ?>
             </button>
             <a class="btn btn-secondary" href="<?= e($record->url()) ?>">
-                <?= FontAwesome::decorativeIcon('cancel') ?>
+                <?= view('icons/cancel') ?>
                 <?= /* I18N: A button label. */
                 I18N::translate('cancel') ?>
             </a>
