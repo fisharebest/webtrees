@@ -7,11 +7,13 @@
 </h2>
 
 <form class="wt-page-options wt-page-options-lifespans-chart d-print-none">
-    <input type="hidden" name="route" value="lifespans">
+    <input type="hidden" name="route" value="module">
+    <input type="hidden" name="module" value="<?= e($module_name) ?>">
+    <input type="hidden" name="action" value="Chart">
     <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
 
     <?php foreach ($xrefs as $xref) : ?>
-    <input name="xrefs[]" type="hidden" value="<?= e($xref) ?>">
+        <input name="xrefs[]" type="hidden" value="<?= e($xref) ?>">
     <?php endforeach ?>
 
     <div class="row form-group">
@@ -39,7 +41,7 @@
             <?= I18N::translate('Place') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <input class="form-control" id="placename" name="placename" type="text">
+            <input class="form-control" id="placename" name="placename" type="text" data-autocomplete-url="<?= e(route('autocomplete-place')) ?>">
         </div>
     </div>
 
@@ -67,7 +69,7 @@
             <button type="submit" class="btn btn-primary" type="submit">
                 <?= /* I18N: A button label. */ I18N::translate('add') ?>
             </button>
-            <a class="btn btn-secondary" href="<?= e(route('lifespans', ['ged' => $tree->name()])) ?>">
+            <a class="btn btn-secondary" href="<?= e($reset_url) ?>">
                 <?= /* I18N: A button label. */ I18N::translate('reset') ?>
             </a>
         </div>
@@ -75,4 +77,4 @@
 
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-timeline-chart" data-ajax-url="<?= e(route('lifespans-chart', ['ged' => $tree->name(), 'xrefs' => $xrefs, 'subtitle' => $subtitle])) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-timeline-chart" data-ajax-url="<?= e($ajax_url) ?>"></div>
