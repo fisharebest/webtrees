@@ -101,21 +101,21 @@ class CompactTreeChartModule extends AbstractModule implements ModuleInterface, 
      */
     public function getChartAction(Request $request, Tree $tree, ChartService $chart_service): Response
     {
-        $ajax       = $request->get('ajax', '');
+        $ajax       = (bool) $request->get('ajax');
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual);
 
-        if ($ajax === '1') {
+        if ($ajax) {
             return $this->chartCompact($individual, $chart_service);
         }
 
         $ajax_url = $this->chartUrl($individual, [
-            'ajax' => '1',
+            'ajax' => true,
         ]);
 
-        return $this->viewResponse('modules/compact-chart/chart-page', [
+        return $this->viewResponse('modules/compact-chart/page', [
             'ajax_url'    => $ajax_url,
             'individual'  => $individual,
             'module_name' => $this->name(),

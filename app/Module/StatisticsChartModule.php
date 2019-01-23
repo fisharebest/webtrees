@@ -148,7 +148,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleInterface, M
             ]),
         ];
 
-        return $this->viewResponse('modules/statistics-chart/chart-page', [
+        return $this->viewResponse('modules/statistics-chart/page', [
             'tabs'  => $tabs,
             'title' => $this->title(),
         ]);

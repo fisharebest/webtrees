@@ -276,8 +276,6 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
         'GET:source-list'            => 'ListController@sourceList',
         'GET:interactive'            => 'InteractiveChartController@page',
         'GET:interactive-chart'      => 'InteractiveChartController@chart',
-        'GET:relationships'          => 'RelationshipsChartController@page',
-        'GET:relationships-chart'    => 'RelationshipsChartController@chart',
         'POST:accept-changes'        => 'PendingChangesController@acceptChanges',
         'POST:reject-changes'        => 'PendingChangesController@rejectChanges',
         'POST:accept-all-changes'    => 'PendingChangesController@acceptAllChanges',

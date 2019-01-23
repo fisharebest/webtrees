@@ -127,7 +127,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleInterface, 
      */
     public function getChartAction(Request $request, Tree $tree, ChartService $chart_service): Response
     {
-        $ajax       = $request->get('ajax', '');
+        $ajax       = (bool) $request->get('ajax');
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
@@ -143,17 +143,17 @@ class DescendancyChartModule extends AbstractModule implements ModuleInterface, 
         $generations = min($generations, $maximum_generations);
         $generations = max($generations, $minimum_generations);
 
-        if ($ajax === '1') {
+        if ($ajax) {
             return $this->chart($request, $tree, $chart_service);
         }
 
         $ajax_url = $this->chartUrl($individual, [
             'chart_style' => $chart_style,
             'generations' => $generations,
-            'ajax'        => '1',
+            'ajax'        => true,
         ]);
 
-        return $this->viewResponse('modules/descendancy_chart/chart-page', [
+        return $this->viewResponse('modules/descendancy_chart/page', [
             'ajax_url'            => $ajax_url,
             'chart_style'         => $chart_style,
             'chart_styles'        => $this->chartStyles(),

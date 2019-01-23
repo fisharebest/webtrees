@@ -91,7 +91,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleInterface, Modul
                     $module    = Module::getModuleByClassName(PedigreeChartModule::class);
                     $title     = $module->chartTitle($person);
                     $chart_url = $module->chartUrl($person, [
-                        'ajax'        => '1',
+                        'ajax'        => true,
                         'generations' => 3,
                         'layout'      => PedigreeChartModule::PORTRAIT,
                     ]);
@@ -106,7 +106,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleInterface, Modul
                     $module    = Module::getModuleByClassName(DescendancyChartModule::class);
                     $title     = $module->chartTitle($person);
                     $chart_url = $module->chartUrl($person, [
-                        'ajax'        => '1',
+                        'ajax'        => true,
                         'generations' => 2,
                         'chart_style' => DescendancyChartModule::CHART_STYLE_LIST,
                     ]);
@@ -121,7 +121,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleInterface, Modul
                     $module    = Module::getModuleByClassName(HourglassChartModule::class);
                     $title     = $module->chartTitle($person);
                     $chart_url = $module->chartUrl($person, [
-                        'ajax'        => '1',
+                        'ajax'        => true,
                         'generations' => 2,
                     ]);
                     $content   = view('modules/charts/chart', [

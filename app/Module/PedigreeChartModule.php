@@ -141,7 +141,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleInterface, Mod
      */
     public function getChartAction(Request $request, Tree $tree, ChartService $chart_service): Response
     {
-        $ajax       = $request->get('ajax', '');
+        $ajax       = (bool) $request->get('ajax');
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
@@ -155,17 +155,17 @@ class PedigreeChartModule extends AbstractModule implements ModuleInterface, Mod
 
         $generation_options = $this->generationOptions();
 
-        if ($ajax === '1') {
+        if ($ajax) {
             return $this->chart($individual, $generations, $orientation, $chart_service);
         }
 
         $ajax_url = $this->chartUrl($individual, [
-            'ajax'        => '1',
+            'ajax'        => true,
             'generations' => $generations,
             'orientation' => $orientation,
         ]);
 
-        return $this->viewResponse('modules/pedigree-chart/chart-page', [
+        return $this->viewResponse('modules/pedigree-chart/page', [
             'ajax_url'           => $ajax_url,
             'generations'        => $generations,
             'generation_options' => $generation_options,

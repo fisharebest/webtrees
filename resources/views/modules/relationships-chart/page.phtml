@@ -8,7 +8,9 @@
 </h2>
 
 <form class="wt-page-options wt-page-options-relationships-chart d-print-none">
-    <input type="hidden" name="route" value="relationships">
+    <input type="hidden" name="route" value="module">
+    <input type="hidden" name="module" value="<?= e($module_name) ?>">
+    <input type="hidden" name="action" value="Chart">
     <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
 
     <div class="row form-group">
@@ -79,13 +81,7 @@
 </form>
 
 <?php if ($individual1 !== null && $individual2 !== null) : ?>
-    <div class="wt-ajax-load wt-page-content wt-chart wt-relationships-chart" data-ajax-url="<?= e(route('relationships-chart', [
-        'xref1'     => $individual1->xref(),
-        'xref2'     => $individual2->xref(),
-        'ged'       => $individual2->tree()->name(),
-        'recursion' => $recursion,
-        'ancestors' => $ancestors,
-    ])) ?>"></div>
+    <div class="wt-ajax-load wt-page-content wt-chart wt-relationships-chart" data-ajax-url="<?= e($ajax_url) ?>"></div>
 <?php endif ?>
 
 <?php View::push('javascript') ?>

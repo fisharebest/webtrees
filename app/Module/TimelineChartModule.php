@@ -112,7 +112,7 @@ class TimelineChartModule extends AbstractModule implements ModuleInterface, Mod
      */
     public function getChartAction(Request $request, Tree $tree): Response
     {
-        $ajax  = $request->get('ajax');
+        $ajax  = (bool) $request->get('ajax');
         $scale = (int) $request->get('scale', self::SCALE_DEFAULT);
         $scale = min($scale, self::SCALE_MAX);
         $scale = max($scale, self::SCALE_MIN);
@@ -153,12 +153,12 @@ class TimelineChartModule extends AbstractModule implements ModuleInterface, Mod
             return Individual::getInstance($xref, $tree);
         }, $xrefs);
 
-        if ($ajax === '1') {
+        if ($ajax) {
             return $this->chart($tree, $xrefs, $scale);
         }
 
         $ajax_url = route('module', [
-            'ajax'   => '1',
+            'ajax'   => true,
             'module' => $this->name(),
             'action' => 'Chart',
             'ged'    => $tree->name(),
@@ -188,7 +188,7 @@ class TimelineChartModule extends AbstractModule implements ModuleInterface, Mod
             'xrefs'  => $xrefs,
         ]);
 
-        return $this->viewResponse('modules/timeline-chart/chart-page', [
+        return $this->viewResponse('modules/timeline-chart/page', [
             'ajax_url'     => $ajax_url,
             'individuals'  => $individuals,
             'module_name'  => $this->name(),

@@ -103,7 +103,7 @@ class LifespansChartModule extends AbstractModule implements ModuleInterface, Mo
      */
     public function getChartAction(Request $request, Tree $tree): Response
     {
-        $ajax      = $request->get('ajax');
+        $ajax      = (bool) $request->get('ajax');
         $xrefs     = (array) $request->get('xrefs', []);
         $addxref   = $request->get('addxref', '');
         $addfam    = (bool) $request->get('addfam', false);
@@ -145,14 +145,14 @@ class LifespansChartModule extends AbstractModule implements ModuleInterface, Mo
             return $individual !== null && $individual->canShow();
         });
 
-        if ($ajax === '1') {
+        if ($ajax) {
             $subtitle = $this->subtitle(count($xrefs), $start_date, $end_date, $placename);
 
             return $this->chart($tree, $xrefs, $subtitle);
         }
 
         $ajax_url = route('module', [
-            'ajax'   => '1',
+            'ajax'   => true,
             'module' => $this->name(),
             'action' => 'Chart',
             'ged'    => $tree->name(),
@@ -165,7 +165,7 @@ class LifespansChartModule extends AbstractModule implements ModuleInterface, Mo
             'ged'    => $tree->name(),
         ]);
 
-        return $this->viewResponse('modules/lifespans-chart/chart-page', [
+        return $this->viewResponse('modules/lifespans-chart/page', [
             'ajax_url'    => $ajax_url,
             'module_name' => $this->name(),
             'reset_url'   => $reset_url,

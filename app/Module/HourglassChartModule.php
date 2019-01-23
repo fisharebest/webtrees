@@ -96,7 +96,7 @@ class HourglassChartModule extends AbstractModule implements ModuleInterface, Mo
      */
     public function getChartAction(Request $request, Tree $tree): Response
     {
-        $ajax       = $request->get('ajax', '');
+        $ajax       = (bool) $request->get('ajax');
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
@@ -112,15 +112,15 @@ class HourglassChartModule extends AbstractModule implements ModuleInterface, Mo
 
         $show_spouse = (bool) $request->get('show_spouse');
 
-        if ($ajax === '1') {
+        if ($ajax) {
             return $this->chart($individual, $generations, $show_spouse);
         }
 
         $ajax_url = $this->chartUrl($individual, [
-            'ajax' => '1',
+            'ajax' => true,
         ]);
 
-        return $this->viewResponse('modules/hourglass-chart/chart-page', [
+        return $this->viewResponse('modules/hourglass-chart/page', [
             'ajax_url'            => $ajax_url,
             'generations'         => $generations,
             'individual'          => $individual,

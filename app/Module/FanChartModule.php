@@ -118,7 +118,7 @@ class FanChartModule extends AbstractModule implements ModuleInterface, ModuleCh
      */
     public function getChartAction(Request $request, Tree $tree, ChartService $chart_service): Response
     {
-        $ajax       = $request->get('ajax', '');
+        $ajax       = (bool) $request->get('ajax');
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
@@ -134,18 +134,18 @@ class FanChartModule extends AbstractModule implements ModuleInterface, ModuleCh
         $generations = min($generations, self::MAXIMUM_GENERATIONS);
         $generations = max($generations, self::MINIMUM_GENERATIONS);
 
-        if ($ajax === '1') {
+        if ($ajax) {
             return $this->chart($individual, $chart_style, $fan_width, $generations, $chart_service);
         }
 
         $ajax_url = $this->chartUrl($individual, [
-            'ajax'        => '1',
+            'ajax'        => true,
             'chart_style' => $chart_style,
             'fan_width'   => $fan_width,
             'generations' => $generations,
         ]);
 
-        return $this->viewResponse('modules/fanchart/chart-page', [
+        return $this->viewResponse('modules/fanchart/page', [
             'ajax_url'            => $ajax_url,
             'chart_style'         => $chart_style,
             'chart_styles'        => $this->chartStyles(),
