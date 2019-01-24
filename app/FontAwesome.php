@@ -104,25 +104,6 @@ class FontAwesome extends Html
     }
 
     /**
-     * Generate a semantic icon.
-     *
-     * These icons convey meaning, such as status/type/mode, and need
-     * to allow assistive technology to display this meaning.
-     *
-     * @param string   $icon       The icon to show
-     * @param string   $title      The meaning of the icon
-     * @param string[] $attributes Additional HTML attributes
-     *
-     * @return string
-     */
-    public static function semanticIcon($icon, $title, $attributes = []): string
-    {
-        $attributes['title'] = $title;
-
-        return self::decorativeIcon($icon, $attributes) . '<span class="sr-only">' . $title . '</span>';
-    }
-
-    /**
      * Generate a link icon.
      *
      * @param string   $icon       The icon to show

@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
@@ -28,27 +27,37 @@
             <tr>
                 <td data-sort="<?= $record::RECORD_TYPE ?>" class="text-centre">
                     <?php if ($record::RECORD_TYPE === 'INDI') : ?>
-                        <?= FontAwesome::semanticIcon('individual', I18N::translate('Individual')) ?>
+                        <?= view('icons/individual') ?>
+                        <span class="sr-only"><?= I18N::translate('Individual') ?></span>
                     <?php elseif ($record::RECORD_TYPE === 'FAM') : ?>
-                        <?= FontAwesome::semanticIcon('family', I18N::translate('Family')) ?>
+                        <?= view('icons/family') ?>
+                        <span class="sr-only"><?= I18N::translate('Family') ?></span>
                     <?php elseif ($record::RECORD_TYPE === 'OBJE') : ?>
-                        <?= FontAwesome::semanticIcon('media', I18N::translate('Media')) ?>
+                        <?= view('icons/media') ?>
+                        <span class="sr-only"><?= I18N::translate('Media') ?></span>
                     <?php elseif ($record::RECORD_TYPE === 'NOTE') : ?>
-                        <?= FontAwesome::semanticIcon('note', I18N::translate('Note')) ?>
+                        <?= view('icons/note') ?>
+                        <span class="sr-only"><?= I18N::translate('Note') ?></span>
                     <?php elseif ($record::RECORD_TYPE === 'SOUR') : ?>
-                        <?= FontAwesome::semanticIcon('source', I18N::translate('Source')) ?>
+                        <?= view('icons/source') ?>
+                        <span class="sr-only"><?= I18N::translate('Source') ?></span>
                     <?php elseif ($record::RECORD_TYPE === 'SUBM') : ?>
-                        <?= FontAwesome::semanticIcon('submitter', I18N::translate('Submitter')) ?>
+                        <?= view('icons/submitter') ?>
+                        <span class="sr-only"><?= I18N::translate('Submitter') ?></span>
                     <?php elseif ($record::RECORD_TYPE === 'REPO') : ?>
-                        <?= FontAwesome::semanticIcon('repository', I18N::translate('Repository')) ?>
+                        <?= view('icons/repository') ?>
+                        <span class="sr-only"><?= I18N::translate('Repository') ?></span>
                     <?php endif ?>
                 </td>
+
                 <td data-sort="<?= e($record->getSortName()) ?>">
                     <a href="<?= e($record->url()) ?>"><?= $record->getFullName() ?></a>
                 </td>
+
                 <td data-sort="<?= $record->lastChangeTimestamp(true) ?>">
                     <?= $record->lastChangeTimestamp() ?>
                 </td>
+
                 <?php if ($show_user) : ?>
                     <td>
                         <?= e($record->lastChangeUser()) ?>

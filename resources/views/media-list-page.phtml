@@ -156,16 +156,23 @@
                             </p>
                         </div>
                         <div class="card-footer">
-                            <?php
-                            foreach ($media_object->linkedIndividuals('OBJE') as $individual) {
-                                echo '<a href="' . e($individual->url()) . '">' . FontAwesome::semanticIcon('individual', I18N::translate('Individual')) . ' ' . $individual->getFullName() . '</a><br>';
-                            }
-                            foreach ($media_object->linkedFamilies('OBJE') as $family) {
-                                echo '<a href="' . e($family->url()) . '">' . FontAwesome::semanticIcon('family', I18N::translate('Family')) . ' ' . $family->getFullName() . '</a><br>';
-                            }
-                            foreach ($media_object->linkedSources('OBJE') as $source) {
-                                echo '<a href="' . e($source->url()) . '">' . FontAwesome::semanticIcon('source', I18N::translate('Source')) . ' ' . $source->getFullName() . '</a><br>';
-                            } ?>
+                            <?php foreach ($media_object->linkedIndividuals('OBJE') as $record) : ?>
+                                <?= view('icons/individual') ?>
+                                <a href="<?= e($record->url()) ?>"><?= $record->getFullName() ?></a>
+                                <br>
+                            <?php endforeach ?>
+
+                            <?php foreach ($media_object->linkedFamilies('OBJE') as $record) : ?>
+                                <?= view('icons/family') ?>
+                                <a href="<?= e($record->url()) ?>"><?= $record->getFullName() ?></a>
+                                <br>
+                            <?php endforeach ?>
+
+                            <?php foreach ($media_object->linkedSources('OBJE') as $record) : ?>
+                                <?= view('icons/source') ?>
+                                <a href="<?= e($record->url()) ?>"><?= $record->getFullName() ?></a>
+                                <br>
+                            <?php endforeach ?>
                         </div>
                     </div>
                 </div>

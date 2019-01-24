@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\GedcomCode\GedcomCodeName; ?>
 <?php use Fisharebest\Webtrees\GedcomTag; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
@@ -13,7 +12,7 @@
             <div class="card mb-2 wt-sortable-item">
                 <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
                 <h3 class="card-header">
-                    <?= FontAwesome::semanticIcon('drag-handle', '') ?>
+                    <?= view('icons/drag-handle') ?>
                     <?= $fact->value() ?>
                 </h3>
                 <div class="card-body">

@@ -1,5 +1,4 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Tree; ?>
 <?php use Fisharebest\Webtrees\Webtrees; ?>
@@ -73,8 +72,8 @@
                           data-confirm="<?= I18N::translate('Remove this location?') ?>"
                           onsubmit="return confirm(this.dataset.confirm)">
                         <?= csrf_field() ?>
-                        <button type="submit" class="btn btn-danger">
-                            <?= FontAwesome::semanticIcon('delete', I18N::translate('delete')) ?>
+                        <button type="submit" class="btn btn-danger" aria-label="<?= I18N::translate('delete') ?>">
+                            <?= view('icons/delete') ?>
                         </button>
                     </form>
                 <?php else : ?>

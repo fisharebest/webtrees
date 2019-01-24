@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\Gedcom; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
@@ -12,7 +11,7 @@
             <div class="card mb-2 wt-sortable-item" data-sortbydate="<?= $fact->target()->getMarriageDate()->julianDay() ?>">
                 <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
                 <h3 class="card-header">
-                    <?= FontAwesome::semanticIcon('drag-handle', '') ?>
+                    <?= view('icons/drag-handle') ?>
                     <?= $fact->target()->getFullName() ?>
                 </h3>
                 <div class="card-body">

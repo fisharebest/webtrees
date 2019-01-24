@@ -1,11 +1,11 @@
-<?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
+
 <div class="card wt-osk">
     <div class="card-header">
         <div class="card-title">
             <button type="button" class="btn btn-primary wt-osk-close">&times;</button>
 
-            <button type="button" class="btn btn-secondary wt-osk-pin-button" data-toggle="button" aria-pressed="false"><?= FontAwesome::semanticIcon('pin', I18N::translate('Keep open')) ?></button>
+            <button type="button" class="btn btn-secondary wt-osk-pin-button" data-toggle="button" aria-pressed="false" aria-label="<?= I18N::translate('Keep open') ?>"><?= view('icons/pin') ?></button>
 
             <button type="button" class="btn btn-secondary wt-osk-shift-button" data-toggle="button" aria-pressed="false">a &harr; A</button>
 
