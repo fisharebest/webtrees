@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
@@ -1181,13 +1182,6 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     private function topTenOldestAliveQuery(string $sex = 'BOTH', int $total = 10): array
     {
-        $total = (int) $total;
-
-        // TODO
-//        if (!Auth::isMember($this->tree)) {
-//            return I18N::translate('This information is private and cannot be shown.');
-//        }
-
         if ($sex === 'F') {
             $sex_search = " AND i_sex='F'";
         } elseif ($sex === 'M') {
@@ -1265,6 +1259,10 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     public function topTenOldestAlive(string $total = '10'): string
     {
+        if (!Auth::isMember($this->tree)) {
+            return I18N::translate('This information is private and cannot be shown.');
+        }
+
         $records = $this->topTenOldestAliveQuery('BOTH', (int) $total);
 
         return view(
@@ -1284,6 +1282,10 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     public function topTenOldestListAlive(string $total = '10'): string
     {
+        if (!Auth::isMember($this->tree)) {
+            return I18N::translate('This information is private and cannot be shown.');
+        }
+
         $records = $this->topTenOldestAliveQuery('BOTH', (int) $total);
 
         return view(
@@ -1303,6 +1305,10 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     public function topTenOldestFemaleAlive(string $total = '10'): string
     {
+        if (!Auth::isMember($this->tree)) {
+            return I18N::translate('This information is private and cannot be shown.');
+        }
+
         $records = $this->topTenOldestAliveQuery('F', (int) $total);
 
         return view(
@@ -1322,6 +1328,10 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     public function topTenOldestFemaleListAlive(string $total = '10'): string
     {
+        if (!Auth::isMember($this->tree)) {
+            return I18N::translate('This information is private and cannot be shown.');
+        }
+
         $records = $this->topTenOldestAliveQuery('F', (int) $total);
 
         return view(
@@ -1341,6 +1351,10 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     public function topTenOldestMaleAlive(string $total = '10'): string
     {
+        if (!Auth::isMember($this->tree)) {
+            return I18N::translate('This information is private and cannot be shown.');
+        }
+
         $records = $this->topTenOldestAliveQuery('M', (int) $total);
 
         return view(
@@ -1360,6 +1374,10 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     public function topTenOldestMaleListAlive(string $total = '10'): string
     {
+        if (!Auth::isMember($this->tree)) {
+            return I18N::translate('This information is private and cannot be shown.');
+        }
+
         $records = $this->topTenOldestAliveQuery('M', (int) $total);
 
         return view(

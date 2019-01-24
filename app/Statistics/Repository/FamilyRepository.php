@@ -353,15 +353,13 @@ class FamilyRepository
     }
 
     /**
-     * Find the ages between siblings.
+     * Returns the ages between siblings.
      *
-     * @param string $type
-     * @param int    $total
-     * @param bool   $one   Include each family only once if true
+     * @param int $total The total number of records to query
      *
      * @return array
      */
-    private function ageBetweenSiblingsQuery(string $type, int $total, bool $one): array
+    private function ageBetweenSiblingsQuery(int $total): array
     {
         $rows = $this->runSql(
             " SELECT DISTINCT" .
@@ -393,25 +391,28 @@ class FamilyRepository
             return [];
         }
 
+        return $rows;
+    }
+
+    /**
+     * Find the ages between siblings.
+     *
+     * @param int  $total The total number of records to query
+     * @param bool $one   Include each family only once if true
+     *
+     * @return array
+     * @throws \Exception
+     */
+    private function ageBetweenSiblingsList(int $total, bool $one): array
+    {
+        $rows  = $this->ageBetweenSiblingsQuery($total);
         $top10 = [];
         $dist  = [];
+
         foreach ($rows as $fam) {
             $family = Family::getInstance($fam->family, $this->tree);
             $child1 = Individual::getInstance($fam->ch1, $this->tree);
             $child2 = Individual::getInstance($fam->ch2, $this->tree);
-
-//            if ($type === 'name') {
-//                if ($child1->canShow() && $child2->canShow()) {
-//                    $return = '<a href="' . e($child2->url()) . '">' . $child2->getFullName() . '</a> ';
-//                    $return .= I18N::translate('and') . ' ';
-//                    $return .= '<a href="' . e($child1->url()) . '">' . $child1->getFullName() . '</a>';
-//                    $return .= ' <a href="' . e($family->url()) . '">[' . I18N::translate('View this family') . ']</a>';
-//                } else {
-//                    $return = I18N::translate('This information is private and cannot be shown.');
-//                }
-//
-//                return $return;
-//            }
 
             $age = $fam->age;
             if ((int) ($age / 365.25) > 0) {
@@ -423,56 +424,29 @@ class FamilyRepository
             }
 
             $age = FunctionsDate::getAgeAtEvent($age);
-//            if ($type === 'age') {
-//                return $age;
-//            }
 
-            if ($type === 'list') {
-                if ($one && !\in_array($fam->family, $dist, true)) {
-                    if ($child1->canShow() && $child2->canShow()) {
-                        $top10[] = [
-                            'child1' => $child1,
-                            'child2' => $child2,
-                            'family' => $family,
-                            'age'    => $age,
-                        ];
-
-                        $dist[]  = $fam->family;
-                    }
-                } elseif (!$one && $child1->canShow() && $child2->canShow()) {
+            if ($one && !\in_array($fam->family, $dist, true)) {
+                if ($child1->canShow() && $child2->canShow()) {
                     $top10[] = [
                         'child1' => $child1,
                         'child2' => $child2,
                         'family' => $family,
                         'age'    => $age,
                     ];
-                }
-            } else {
-                if ($child1->canShow() && $child2->canShow()) {
-                    // ! Single array (no list)
-                    return [
-                        'child1' => $child1,
-                        'child2' => $child2,
-                        'family' => $family,
-                        'age'    => $age,
-                    ];
 
-//                    $return = $child2->formatList();
-//                    $return .= '<br>' . I18N::translate('and') . '<br>';
-//                    $return .= $child1->formatList();
-//                    $return .= '<br><a href="' . e($family->url()) . '">[' . I18N::translate('View this family') . ']</a>';
-//
-//                    return $return;
+                    $dist[]  = $fam->family;
                 }
-
-//                return I18N::translate('This information is private and cannot be shown.');
+            } elseif (!$one && $child1->canShow() && $child2->canShow()) {
+                $top10[] = [
+                    'child1' => $child1,
+                    'child2' => $child2,
+                    'family' => $family,
+                    'age'    => $age,
+                ];
             }
         }
 
-//        if ($type === 'list') {
-//            $top10 = implode('', $top10);
-//        }
-//
+        // TODO
 //        if (I18N::direction() === 'rtl') {
 //            $top10 = str_replace([
 //                '[',
@@ -488,55 +462,146 @@ class FamilyRepository
 //                '&rlm;+',
 //            ], $top10);
 //        }
-//
-//        if ($type === 'list') {
-//            return '<ul>' . $top10 . '</ul>';
-//        }
 
         return $top10;
+    }
+
+    /**
+     * Find the ages between siblings.
+     *
+     * @param int $total The total number of records to query
+     *
+     * @return array
+     * @throws \Exception
+     */
+    private function ageBetweenSiblingsNoList(int $total): array
+    {
+        $rows = $this->ageBetweenSiblingsQuery($total);
+
+        foreach ($rows as $fam) {
+            $family = Family::getInstance($fam->family, $this->tree);
+            $child1 = Individual::getInstance($fam->ch1, $this->tree);
+            $child2 = Individual::getInstance($fam->ch2, $this->tree);
+
+            $age = $fam->age;
+            if ((int) ($age / 365.25) > 0) {
+                $age = (int) ($age / 365.25) . 'y';
+            } elseif ((int) ($age / 30.4375) > 0) {
+                $age = (int) ($age / 30.4375) . 'm';
+            } else {
+                $age .= 'd';
+            }
+
+            $age = FunctionsDate::getAgeAtEvent($age);
+
+            if ($child1->canShow() && $child2->canShow()) {
+                // ! Single array (no list)
+                return [
+                    'child1' => $child1,
+                    'child2' => $child2,
+                    'family' => $family,
+                    'age'    => $age,
+                ];
+            }
+        }
+
+        return [];
+    }
+
+    /**
+     * Find the ages between siblings.
+     *
+     * @param int $total The total number of records to query
+     *
+     * @return string
+     */
+    private function ageBetweenSiblingsAge(int $total): string
+    {
+        $rows = $this->ageBetweenSiblingsQuery($total);
+
+        foreach ($rows as $fam) {
+            $age = $fam->age;
+
+            if ((int) ($age / 365.25) > 0) {
+                $age = (int) ($age / 365.25) . 'y';
+            } elseif ((int) ($age / 30.4375) > 0) {
+                $age = (int) ($age / 30.4375) . 'm';
+            } else {
+                $age .= 'd';
+            }
+
+            return FunctionsDate::getAgeAtEvent($age);
+        }
+
+        return '';
+    }
+
+    /**
+     * Find the ages between siblings.
+     *
+     * @param int $total The total number of records to query
+     *
+     * @return string
+     * @throws \Exception
+     */
+    private function ageBetweenSiblingsName(int $total): string
+    {
+        $rows = $this->ageBetweenSiblingsQuery($total);
+
+        foreach ($rows as $fam) {
+            $family = Family::getInstance($fam->family, $this->tree);
+            $child1 = Individual::getInstance($fam->ch1, $this->tree);
+            $child2 = Individual::getInstance($fam->ch2, $this->tree);
+
+            if ($child1->canShow() && $child2->canShow()) {
+                $return = '<a href="' . e($child2->url()) . '">' . $child2->getFullName() . '</a> ';
+                $return .= I18N::translate('and') . ' ';
+                $return .= '<a href="' . e($child1->url()) . '">' . $child1->getFullName() . '</a>';
+                $return .= ' <a href="' . e($family->url()) . '">[' . I18N::translate('View this family') . ']</a>';
+            } else {
+                $return = I18N::translate('This information is private and cannot be shown.');
+            }
+
+            return $return;
+        }
+
+        return '';
     }
 
     /**
      * Find the names of siblings with the widest age gap.
      *
      * @param string $total
-     * @param string $one
      *
      * @return string
      */
-    public function topAgeBetweenSiblingsName(string $total = '10', string $one = ''): string
+    public function topAgeBetweenSiblingsName(string $total = '10'): string
     {
-        // TODO
-//        return $this->ageBetweenSiblingsQuery('name', (int) $total, (bool) $one);
-        return 'topAgeBetweenSiblingsName';
+        return $this->ageBetweenSiblingsName((int) $total);
     }
 
     /**
      * Find the widest age gap between siblings.
      *
      * @param string $total
-     * @param string $one
      *
      * @return string
      */
-    public function topAgeBetweenSiblings(string $total = '10', string $one = ''): string
+    public function topAgeBetweenSiblings(string $total = '10'): string
     {
-        // TODO
-//        return $this->ageBetweenSiblingsQuery('age', (int) $total, (bool) $one);
-        return 'topAgeBetweenSiblings';
+        return $this->ageBetweenSiblingsAge((int) $total);
     }
 
     /**
      * Find the name of siblings with the widest age gap.
      *
      * @param string $total
-     * @param string $one
      *
      * @return string
      */
-    public function topAgeBetweenSiblingsFullName(string $total = '10', string $one = ''): string
+    public function topAgeBetweenSiblingsFullName(string $total = '10'): string
     {
-        $record = $this->ageBetweenSiblingsQuery('nolist', (int) $total, (bool) $one);
+        $record = $this->ageBetweenSiblingsNoList((int) $total);
 
         return view(
             'statistics/families/top10-nolist-age',
@@ -556,7 +621,7 @@ class FamilyRepository
      */
     public function topAgeBetweenSiblingsList(string $total = '10', string $one = ''): string
     {
-        $records = $this->ageBetweenSiblingsQuery('list', (int) $total, (bool) $one);
+        $records = $this->ageBetweenSiblingsList((int) $total, (bool) $one);
 
         return view(
             'statistics/families/top10-list-age',
