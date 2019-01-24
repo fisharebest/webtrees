@@ -268,7 +268,7 @@ class Module
             ->filter(function (ModuleInterface $module) use ($component, $tree, $user): bool {
                 return $module->accessLevel($tree, $component) >= Auth::accessLevel($tree, $user);
             });
-   }
+    }
 
     /**
      * All modules which provide a specific function.
