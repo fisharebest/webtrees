@@ -115,7 +115,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleInterface, Mod
      *
      * @return bool
      */
-    public function isGedcomBlock(): bool
+    public function isTreeBlock(): bool
     {
         return false;
     }

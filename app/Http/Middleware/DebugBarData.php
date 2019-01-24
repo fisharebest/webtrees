@@ -42,7 +42,7 @@ class DebugBarData implements MiddlewareInterface
         if ($response instanceof RedirectResponse) {
             // Show the debug data on the next page
             DebugBar::stackData();
-        } elseif ($response instanceof JsonResponse) {
+        } elseif ($request->isXmlHttpRequest()) {
             // Use HTTP headers and some jQuery to add debug to the current page.
             DebugBar::sendDataInHeaders();
         }

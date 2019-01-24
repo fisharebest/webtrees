@@ -69,7 +69,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleInterface, Modu
 
         $links = [];
 
-        $pedigree_chart = Module::activeCharts($tree)
+        $pedigree_chart = Module::findByComponent('chart', $tree, Auth::user())
             ->filter(function (ModuleInterface $module): bool {
                 return $module instanceof PedigreeChartModule;
             });
@@ -127,7 +127,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleInterface, Modu
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock(): bool
+    public function isTreeBlock(): bool
     {
         return true;
     }

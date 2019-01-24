@@ -48,7 +48,7 @@ class ModuleController extends AbstractBaseController
         // Check that the module is enabled.
         // The module itself will need to check any tree-level access,
         // which may be different for each component (tab, menu, etc.) of the module.
-        $module = Module::getModuleByName($module_name);
+        $module = Module::findByName($module_name);
 
         // We'll call a function such as Module::getFooBarAction()
         $verb   = strtolower($request->getMethod());

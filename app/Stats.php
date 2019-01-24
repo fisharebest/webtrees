@@ -22,6 +22,8 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\Http\Middleware\PageHitCounter;
 use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
+use Fisharebest\Webtrees\Module\ModuleBlockInterface;
+use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\UserFavoritesModule;
 use PDOException;
 use stdClass;
@@ -6626,12 +6628,10 @@ class Stats
      */
     public function gedcomFavorites(): string
     {
-        $module = Module::getModuleByName('gedcom_favorites');
+        $module = Module::findByClass(FamilyTreeFavoritesModule::class);
 
         if ($module instanceof FamilyTreeFavoritesModule) {
-            $block = new FamilyTreeFavoritesModule(Webtrees::MODULES_PATH . 'gedcom_favorites');
-
-            return $block->getBlock($this->tree, 0, '');
+            return $module->getBlock($this->tree, 0, '');
         }
 
         return '';
@@ -6644,10 +6644,10 @@ class Stats
      */
     public function userFavorites(): string
     {
-        if (Auth::check() && Module::getModuleByName('user_favorites')) {
-            $block = new UserFavoritesModule(Webtrees::MODULES_PATH . 'gedcom_favorites');
+        $module = Module::findByClass(UserFavoritesModule::class);
 
-            return $block->getBlock($this->tree, 0, '');
+        if ($module instanceof UserFavoritesModule) {
+            return $module->getBlock($this->tree, 0, '');
         }
 
         return '';
@@ -6662,7 +6662,7 @@ class Stats
     {
         $count = 0;
 
-        $module = Module::getModuleByName('gedcom_favorites');
+        $module = Module::findByClass(FamilyTreeFavoritesModule::class);
 
         if ($module instanceof FamilyTreeFavoritesModule) {
             $count = count($module->getFavorites($this->tree));
@@ -6680,7 +6680,7 @@ class Stats
     {
         $count = 0;
 
-        $module = Module::getModuleByName('user_favorites');
+        $module = Module::findByClass(UserFavoritesModule::class);
 
         if ($module instanceof UserFavoritesModule) {
             $count = count($module->getFavorites($this->tree, Auth::user()));
@@ -6700,9 +6700,14 @@ class Stats
      */
     public function callBlock(string $block = '', ...$params): string
     {
-        $all_blocks = Module::activeBlocks($this->tree);
+        /** @var ModuleBlockInterface $block */
+        $block = Module::findByComponent('block', $this->tree, Auth::user())
+            ->filter(function (ModuleInterface $block): bool {
+                return $block->name() === $block && $block->name() !== 'html';
+            })
+            ->first;
 
-        if (!array_key_exists($block, $all_blocks) || $block == 'html') {
+        if ($block === null) {
             return '';
         }
         // Build the config array
@@ -6715,7 +6720,7 @@ class Stats
             $v       = array_shift($bits);
             $cfg[$v] = implode('=', $bits);
         }
-        $block    = $all_blocks[$block];
+
         $content  = $block->getBlock($this->tree, 0, '', $cfg);
 
         return $content;

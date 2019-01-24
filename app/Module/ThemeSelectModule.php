@@ -97,7 +97,7 @@ class ThemeSelectModule extends AbstractModule implements ModuleInterface, Modul
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock(): bool
+    public function isTreeBlock(): bool
     {
         return true;
     }

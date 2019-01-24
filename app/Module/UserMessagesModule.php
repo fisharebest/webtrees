@@ -215,7 +215,7 @@ class UserMessagesModule extends AbstractModule implements ModuleInterface, Modu
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock(): bool
+    public function isTreeBlock(): bool
     {
         return false;
     }

@@ -77,7 +77,7 @@ class ReportsMenuModule extends AbstractModule implements ModuleInterface, Modul
         $request    = Request::createFromGlobals();
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree) ?? $tree->significantIndividual(Auth::user());
-        $submenus   = Module::activeReports($tree)
+        $submenus   = Module::findByComponent('report', $tree, Auth::user())
             ->map(function (ModuleReportInterface $module) use ($individual): Menu {
                 return $module->getReportMenu($individual);
             });

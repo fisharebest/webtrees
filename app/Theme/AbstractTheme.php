@@ -740,7 +740,7 @@ abstract class AbstractTheme
     public function individualBoxMenuCharts(Individual $individual): array
     {
         $menus = [];
-        foreach (Module::activeCharts($this->tree) as $chart) {
+        foreach (Module::findByComponent('chart', $this->tree, Auth::user()) as $chart) {
             $menu = $chart->chartBoxMenu($individual);
             if ($menu) {
                 $menus[] = $menu;
@@ -853,8 +853,8 @@ abstract class AbstractTheme
     {
         global $controller;
 
-        $user_favorites_module = Module::getModuleByClassName(UserFavoritesModule::class);
-        $tree_favorites_module = Module::getModuleByClassName(FamilyTreeFavoritesModule::class);
+        $user_favorites_module = Module::findByClass(UserFavoritesModule::class);
+        $tree_favorites_module = Module::findByClass(FamilyTreeFavoritesModule::class);
 
         $user_favorites = [];
         if ($this->tree instanceof Tree && $user_favorites_module instanceof UserFavoritesModule && Auth::check()) {
@@ -1036,7 +1036,7 @@ abstract class AbstractTheme
     {
         $gedcomid = $this->tree->getUserPreference(Auth::user(), 'gedcomid');
 
-        $pedigree_chart = Module::activeCharts($this->tree)
+        $pedigree_chart = Module::findByComponent('chart', $this->tree, Auth::user())
             ->filter(function (ModuleInterface $module): bool {
                 return $module instanceof PedigreeChartModule;
             });
@@ -1191,7 +1191,7 @@ abstract class AbstractTheme
      */
     public function primaryMenu(Individual $individual): array
     {
-        return Module::activeMenus($this->tree)
+        return Module::findByComponent('menu', $this->tree, Auth::user())
             ->map(function (ModuleMenuInterface $menu): ?Menu {
                 return $menu->getMenu($this->tree);
             })

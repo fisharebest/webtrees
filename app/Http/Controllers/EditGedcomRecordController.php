@@ -428,7 +428,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         $newged = substr($newged, 1); // Remove leading newline
 
-        $census_assistant = Module::getModuleByClassName(CensusAssistantModule::class);
+        $census_assistant = Module::findByClass(CensusAssistantModule::class);
         if ($census_assistant instanceof CensusAssistantModule && $record instanceof Individual) {
             $newged = $census_assistant->updateCensusAssistant($request, $record, $fact_id, $newged, $keep_chan);
         }

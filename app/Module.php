@@ -20,13 +20,11 @@ namespace Fisharebest\Webtrees;
 use Closure;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
-use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
-use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -117,6 +115,16 @@ class Module
         'yahrzeit',
     ];
 
+    // Some types of module have different access levels in different trees.
+    private const COMPONENTS = [
+        'block'   => ModuleBlockInterface::class,
+        'chart'   => ModuleChartInterface::class,
+        'menu'    => ModuleMenuInterface::class,
+        'report'  => ModuleReportInterface::class,
+        'sidebar' => ModuleSidebarInterface::class,
+        'tab'     => ModuleTabInterface::class,
+    ];
+
     /**
      * All modules.
      *
@@ -144,7 +152,7 @@ class Module
                 ->map(function (string $filename) use ($module_info): ?ModuleInterface {
                     try {
                         $module_name = basename(dirname($filename));
-                        $module      = self::loadModule($filename);
+                        $module      = self::load($filename);
 
                         if ($module instanceof ModuleInterface) {
                             $module->setName($module_name);
@@ -178,7 +186,8 @@ class Module
                         return null;
                     }
                 })
-                ->filter();
+                ->filter()
+                ->sort(self::moduleSorter());
         });
     }
 
@@ -189,7 +198,7 @@ class Module
      *
      * @return mixed
      */
-    private static function loadModule(string $filename)
+    private static function load(string $filename)
     {
         return include $filename;
     }
@@ -243,33 +252,32 @@ class Module
     }
 
     /**
-     * Get a list of modules which (a) provide a specific function and (b) we have permission to see.
+     * Modules which (a) provide a specific function and (b) we have permission to see.
      *
-     * @param Tree   $tree
-     * @param string $interface
      * @param string $component
+     * @param Tree   $tree
+     * @param User   $user
      *
-     * @return Collection|ModuleBlockInterface[]|ModuleChartInterface[]|ModuleMenuInterface[]|ModuleReportInterface[]|ModuleSidebarInterface[]|ModuleTabInterface[]|ModuleThemeInterface[]
+     * @return Collection|ModuleBlockInterface[]|ModuleChartInterface[]|ModuleMenuInterface[]|ModuleReportInterface[]|ModuleSidebarInterface[]|ModuleTabInterface[]
      */
-    private static function getActiveModulesByComponent(Tree $tree, string $interface, string $component): Collection
+    public static function findByComponent(string $component, Tree $tree, User $user): Collection
     {
-        return self::all()
-            ->filter(function (ModuleInterface $module) use ($interface, $component, $tree): bool {
-                return
-                    $module->isEnabled() &&
-                    $module instanceof $interface &&
-                    $module->accessLevel($tree, $component) >= Auth::accessLevel($tree);
+        $interface = self::COMPONENTS[$component];
+        
+        return self::findByInterface($interface)
+            ->filter(function (ModuleInterface $module) use ($component, $tree, $user): bool {
+                return $module->accessLevel($tree, $component) >= Auth::accessLevel($tree, $user);
             });
-    }
+   }
 
     /**
-     * Get a list of all modules, enabled or not, which provide a specific function.
+     * All modules which provide a specific function.
      *
      * @param string $interface
      *
      * @return Collection|ModuleInterface[]
      */
-    public static function getAllModulesByInterface(string $interface): Collection
+    public static function findByInterface(string $interface): Collection
     {
         $modules = self::all()
             ->filter(function (ModuleInterface $module) use ($interface): bool {
@@ -285,115 +293,9 @@ class Module
 
             case ModuleTabInterface::class:
                 return $modules->sort(self::tabSorter());
-
-            default:
-                return $modules->sort(self::moduleSorter());
         }
-    }
 
-    /**
-     * Get a list of modules which (a) provide a block and (b) we have permission to see.
-     *
-     * @param Tree $tree
-     *
-     * @return Collection|ModuleBlockInterface[]
-     */
-    public static function activeBlocks(Tree $tree): Collection
-    {
-        return self::getActiveModulesByComponent($tree, ModuleBlockInterface::class, 'block')
-            ->sort(self::moduleSorter());
-    }
-
-    /**
-     * Get a list of modules which (a) provide a chart and (b) we have permission to see.
-     *
-     * @param Tree $tree
-     *
-     * @return Collection|ModuleChartInterface[]
-     */
-    public static function activeCharts(Tree $tree): Collection
-    {
-        return self::getActiveModulesByComponent($tree, ModuleChartInterface::class, 'chart')
-            ->sort(self::moduleSorter());
-    }
-
-    /**
-     * Get a list of module names which have configuration options.
-     *
-     * @return Collection|ModuleConfigInterface[]
-     */
-    public static function configurableModules(): Collection
-    {
-        return self::all()
-            ->filter(function (ModuleInterface $module): bool {
-                return $module->isEnabled() && $module instanceof ModuleConfigInterface;
-            })
-            ->sort(self::moduleSorter());
-    }
-
-    /**
-     * Get a list of modules which (a) provide a menu and (b) we have permission to see.
-     *
-     * @param Tree $tree
-     *
-     * @return Collection|ModuleMenuInterface[]
-     */
-    public static function activeMenus(Tree $tree): Collection
-    {
-        return self::getActiveModulesByComponent($tree, ModuleMenuInterface::class, 'menu')
-            ->sort(self::menuSorter());
-    }
-
-    /**
-     * Get a list of modules which (a) provide a report and (b) we have permission to see.
-     *
-     * @param Tree $tree
-     *
-     * @return Collection|ModuleReportInterface[]
-     */
-    public static function activeReports(Tree $tree): Collection
-    {
-        return self::getActiveModulesByComponent($tree, ModuleReportInterface::class, 'report')
-            ->sort(self::moduleSorter());
-    }
-
-    /**
-     * Get a list of modules which (a) provide a sidebar and (b) we have permission to see.
-     *
-     * @param Tree $tree
-     *
-     * @return Collection|ModuleSidebarInterface[]
-     */
-    public static function activeSidebars(Tree $tree): Collection
-    {
-        return self::getActiveModulesByComponent($tree, ModuleSidebarInterface::class, 'sidebar')
-            ->sort(self::sidebarSorter());
-    }
-
-    /**
-     * Get a list of modules which (a) provide a tab and (b) we have permission to see.
-     *
-     * @param Tree $tree
-     *
-     * @return Collection|ModuleTabInterface[]
-     */
-    public static function activeTabs(Tree $tree): Collection
-    {
-        return self::getActiveModulesByComponent($tree, ModuleTabInterface::class, 'tab')
-            ->sort(self::tabSorter());
-    }
-
-    /**
-     * Get a list of modules which (a) provide a theme and (b) we have permission to see.
-     *
-     * @param Tree $tree
-     *
-     * @return Collection|ModuleThemeInterface[]
-     */
-    public static function activeThemes(Tree $tree): Collection
-    {
-        return self::getActiveModulesByComponent($tree, ModuleThemeInterface::class, 'theme')
-            ->sort(self::moduleSorter());
+        return $modules;
     }
 
     /**
@@ -403,7 +305,7 @@ class Module
      *
      * @return ModuleInterface|null
      */
-    public static function getModuleByName(string $module_name): ?ModuleInterface
+    public static function findByName(string $module_name): ?ModuleInterface
     {
         return self::all()
             ->filter(function (ModuleInterface $module) use ($module_name): bool {
@@ -419,7 +321,7 @@ class Module
      *
      * @return ModuleInterface|null
      */
-    public static function getModuleByClassName(string $class_name): ?ModuleInterface
+    public static function findByClass(string $class_name): ?ModuleInterface
     {
         return self::all()
             ->filter(function (ModuleInterface $module) use ($class_name): bool {

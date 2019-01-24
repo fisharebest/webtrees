@@ -162,7 +162,7 @@ class IndividualController extends AbstractBaseController
         $xref   = $request->get('xref', '');
         $record = Individual::getInstance($xref, $tree);
         $tab    = $request->get('module');
-        $tabs   = Module::activeTabs($tree);
+        $tabs   = Module::findByComponent('tab', $tree, Auth::user());
 
         if ($record === null || !array_key_exists($tab, $tabs)) {
             return new Response('', Response::HTTP_NOT_FOUND);
@@ -407,7 +407,7 @@ class IndividualController extends AbstractBaseController
      */
     public function getSidebars(Individual $individual): Collection
     {
-        return Module::activeSidebars($individual->tree())
+        return Module::findByComponent('sidebar', $individual->tree(), Auth::user())
             ->filter(function (ModuleSidebarInterface $sidebar) use ($individual): bool {
                 return $sidebar->hasSidebarContent($individual);
             });
@@ -423,9 +423,9 @@ class IndividualController extends AbstractBaseController
      */
     public function getTabs(Individual $individual): Collection
     {
-        return Module::activeTabs($individual->tree())
-            ->filter(function (ModuleTabInterface $sidebar) use ($individual): bool {
-                return $sidebar->hasTabContent($individual);
+        return Module::findByComponent('tab', $individual->tree(), Auth::user())
+            ->filter(function (ModuleTabInterface $tab) use ($individual): bool {
+                return $tab->hasTabContent($individual);
             });
     }
 

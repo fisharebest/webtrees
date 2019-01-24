@@ -198,7 +198,7 @@ class YahrzeitModule extends AbstractModule implements ModuleInterface, ModuleBl
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock(): bool
+    public function isTreeBlock(): bool
     {
         return true;
     }

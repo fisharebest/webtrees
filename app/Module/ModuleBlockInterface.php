@@ -59,7 +59,7 @@ interface ModuleBlockInterface
      *
      * @return bool
      */
-    public function isGedcomBlock(): bool;
+    public function isTreeBlock(): bool;
 
     /**
      * An HTML form to edit block settings

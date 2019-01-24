@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
@@ -104,7 +103,7 @@ class HomePageController extends AbstractBaseController
             throw new NotFoundHttpException();
         }
 
-        $module = Module::getModuleByName($block->module_name);
+        $module = Module::findByName($block->module_name);
 
         if (!$module instanceof ModuleBlockInterface) {
             throw new NotFoundHttpException();
@@ -182,7 +181,7 @@ class HomePageController extends AbstractBaseController
             throw new NotFoundHttpException('This block does not exist');
         }
 
-        $module = Module::getModuleByName($block->module_name);
+        $module = Module::findByName($block->module_name);
 
         if (!$module instanceof ModuleBlockInterface) {
             throw new NotFoundHttpException($block->module_name . ' is not a block');
@@ -230,26 +229,19 @@ class HomePageController extends AbstractBaseController
      */
     public function treePageBlock(Request $request, Tree $tree): Response
     {
-        $block_id = (int) $request->get('block_id');
+        $block_id = $request->get('block_id');
 
-        $block = DB::table('block')
+        $block_id = (int) DB::table('block')
             ->where('block_id', '=', $block_id)
             ->where('gedcom_id', '=', $tree->id())
-            ->whereNull('user_id')
-            ->first();
+            ->value('block_id');
+
 
         $module = $this->getBlockModule($tree, $block_id);
-
-        if ($block === null || $module === null) {
-            return new Response('', Response::HTTP_NOT_FOUND);
-        }
 
         $html = view('layouts/ajax', [
             'content' => $module->getBlock($tree, $block_id, 'gedcom'),
         ]);
-
-        // Use HTTP headers and some jQuery to add debug to the current page.
-        DebugBar::sendDataInHeaders();
 
         return new Response($html);
     }
@@ -383,26 +375,18 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageBlock(Request $request, Tree $tree, User $user): Response
     {
-        $block_id = (int) $request->get('block_id');
+        $block_id = $request->get('block_id');
 
-        $block = DB::table('block')
+        $block_id = (int) DB::table('block')
             ->where('block_id', '=', $block_id)
             ->where('user_id', '=', $user->id())
-            ->whereNull('gedcom_id')
-            ->first();
+            ->value('block_id');
 
         $module = $this->getBlockModule($tree, $block_id);
-
-        if ($block === null || $module === null) {
-            return new Response('Block not found', Response::HTTP_NOT_FOUND);
-        }
 
         $html = view('layouts/ajax', [
             'content' => $module->getBlock($tree, $block_id, 'user'),
         ]);
-
-        // Use HTTP headers and some jQuery to add debug to the current page.
-        DebugBar::sendDataInHeaders();
 
         return new Response($html);
     }
@@ -556,21 +540,26 @@ class HomePageController extends AbstractBaseController
      * @param Tree $tree
      * @param int  $block_id
      *
-     * @return ModuleBlockInterface|null
+     * @return ModuleBlockInterface
+     * @throws NotFoundHttpException
      */
-    private function getBlockModule(Tree $tree, int $block_id)
+    private function getBlockModule(Tree $tree, int $block_id): ModuleBlockInterface
     {
-        $active_blocks = Module::activeBlocks($tree);
+        $active_blocks = Module::findByComponent('block', $tree, Auth::user());
 
         $module_name = DB::table('block')
-            ->join('module', 'block.module_name', '=', 'module.module_name')
             ->where('block_id', '=', $block_id)
-            ->where('status', '=', 'enabled')
-            ->value('module.module_name');
+            ->value('module_name');
 
-        return $active_blocks->filter(function (ModuleInterface $module) use ($module_name): bool {
+        $block = $active_blocks->filter(function (ModuleInterface $module) use ($module_name): bool {
             return $module->name() === $module_name;
         })->first();
+
+        if ($block === null) {
+            throw new NotFoundHttpException('Block not found');
+        }
+
+        return $block;
     }
 
     /**
@@ -580,9 +569,9 @@ class HomePageController extends AbstractBaseController
      */
     private function getAvailableTreeBlocks(): Collection
     {
-        return Module::getAllModulesByInterface(ModuleBlockInterface::class)
+        return Module::findByInterface(ModuleBlockInterface::class)
             ->filter(function (ModuleBlockInterface $block): bool {
-                return $block->isGedcomBlock();
+                return $block->isTreeBlock();
             })
             ->mapWithKeys(function (ModuleInterface $block): array {
                 return [$block->name() => $block];
@@ -596,7 +585,7 @@ class HomePageController extends AbstractBaseController
      */
     private function getAvailableUserBlocks(): Collection
     {
-        return Module::getAllModulesByInterface(ModuleBlockInterface::class)
+        return Module::findByInterface(ModuleBlockInterface::class)
             ->filter(function (ModuleBlockInterface $block): bool {
                 return $block->isUserBlock();
             })

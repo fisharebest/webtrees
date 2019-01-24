@@ -54,30 +54,6 @@ abstract class AbstractBaseController
     protected $layout = 'layouts/default';
 
     /**
-     * Check that a module is enabled for a tree.
-     *
-     * @param Tree   $tree
-     * @param string $class_name
-     *
-     * @throws NotFoundHttpException
-     * @return ModuleChartInterface
-     */
-    protected function checkModuleIsActive(Tree $tree, string $class_name): ModuleChartInterface
-    {
-        $module = Module::activeCharts($tree)
-            ->filter(function (ModuleChartInterface $module) use ($class_name): bool {
-                return $module instanceof $class_name;
-            })
-            ->first();
-
-        if (!$module instanceof $class_name) {
-            throw new NotFoundHttpException(I18N::translate('The module “%s” has been disabled.', $module));
-        }
-
-        return $module;
-    }
-
-    /**
      * Create a response object from a view.
      *
      * @param string  $view_name

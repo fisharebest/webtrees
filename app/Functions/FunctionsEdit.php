@@ -583,7 +583,7 @@ class FunctionsEdit
                     'census_places' => Census::censusPlaces(WT_LOCALE),
                 ]);
 
-                $census_assistant = Module::getModuleByClassName(CensusAssistantModule::class);
+                $census_assistant = Module::findByClass(CensusAssistantModule::class);
                 $record           = Individual::getInstance($xref, $tree);
 
                 if ($census_assistant instanceof CensusAssistantModule && $record instanceof Individual) {

@@ -288,7 +288,7 @@ class ReportEngineController extends AbstractBaseController
     {
         $reports = [];
 
-        foreach (Module::activeReports($tree) as $report) {
+        foreach (Module::findByComponent('report', $tree, Auth::user()) as $report) {
             $reports[$report->name()] = $report->title();
         }
 

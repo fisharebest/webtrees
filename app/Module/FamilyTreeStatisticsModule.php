@@ -187,7 +187,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleInterfa
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock(): bool
+    public function isTreeBlock(): bool
     {
         return true;
     }

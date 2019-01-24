@@ -34,6 +34,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
@@ -127,7 +128,7 @@ class AdminController extends AbstractBaseController
             'files_to_delete' => $files_to_delete,
             'all_modules'     => Module::all(),
             'deleted_modules' => $this->deletedModuleNames(),
-            'config_modules'  => Module::configurableModules(),
+            'config_modules'  => Module::findByInterface(ModuleConfigInterface::class),
         ]);
     }
 
@@ -1039,7 +1040,7 @@ class AdminController extends AbstractBaseController
     {
         $component = $request->get('component');
         $interface = $request->get('interface');
-        $modules   = Module::getAllModulesByInterface($interface);
+        $modules   = Module::findByInterface($interface);
 
         foreach ($modules as $module) {
             foreach (Tree::getAll() as $tree) {
@@ -1194,7 +1195,7 @@ class AdminController extends AbstractBaseController
             'component'       => $component,
             'component_title' => $component_title,
             'interface'       => $interface,
-            'modules'         => Module::getAllModulesByInterface($interface),
+            'modules'         => Module::findByInterface($interface),
             'title'           => $title,
             'route'           => $route,
         ]);

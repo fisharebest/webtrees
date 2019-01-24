@@ -102,7 +102,7 @@ class LoginBlockModule extends AbstractModule implements ModuleInterface, Module
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock(): bool
+    public function isTreeBlock(): bool
     {
         return true;
     }

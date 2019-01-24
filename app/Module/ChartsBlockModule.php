@@ -88,7 +88,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleInterface, Modul
                 default:
                 case 'pedigree':
                     /** @var PedigreeChartModule $module */
-                    $module    = Module::getModuleByClassName(PedigreeChartModule::class);
+                    $module    = Module::findByClass(PedigreeChartModule::class);
                     $title     = $module->chartTitle($person);
                     $chart_url = $module->chartUrl($person, [
                         'ajax'        => true,
@@ -103,7 +103,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleInterface, Modul
 
                 case 'descendants':
                     /** @var DescendancyChartModule $module */
-                    $module    = Module::getModuleByClassName(DescendancyChartModule::class);
+                    $module    = Module::findByClass(DescendancyChartModule::class);
                     $title     = $module->chartTitle($person);
                     $chart_url = $module->chartUrl($person, [
                         'ajax'        => true,
@@ -118,7 +118,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleInterface, Modul
 
                 case 'hourglass':
                     /** @var HourglassChartModule $module */
-                    $module    = Module::getModuleByClassName(HourglassChartModule::class);
+                    $module    = Module::findByClass(HourglassChartModule::class);
                     $title     = $module->chartTitle($person);
                     $chart_url = $module->chartUrl($person, [
                         'ajax'        => true,
@@ -132,7 +132,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleInterface, Modul
 
                 case 'treenav':
                     /** @var InteractiveTreeModule $module */
-                    $module  = Module::getModuleByClassName(InteractiveTreeModule::class);
+                    $module  = Module::findByClass(InteractiveTreeModule::class);
                     $title   = I18N::translate('Interactive tree of %s', $person->getFullName());
                     $tv      = new TreeView();
                     $content = '<script>$("head").append(\'<link rel="stylesheet" href="' . $module->css() . '" type="text/css" />\');</script>';
@@ -185,7 +185,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleInterface, Modul
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock(): bool
+    public function isTreeBlock(): bool
     {
         return true;
     }

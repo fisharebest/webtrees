@@ -202,7 +202,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleInterf
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock(): bool
+    public function isTreeBlock(): bool
     {
         return true;
     }

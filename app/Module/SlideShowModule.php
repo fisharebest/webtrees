@@ -185,7 +185,7 @@ class SlideShowModule extends AbstractModule implements ModuleInterface, ModuleB
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock(): bool
+    public function isTreeBlock(): bool
     {
         return true;
     }

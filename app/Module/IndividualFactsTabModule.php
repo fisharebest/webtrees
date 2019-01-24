@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
@@ -93,7 +94,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleInterface
                     break;
 
                 default:
-                    $use_extra_info_module = Module::activeSidebars($individual->tree())
+                    $use_extra_info_module = Module::findByComponent('sidebar', $individual->tree(), Auth::user())
                         ->filter(function (ModuleInterface $module): bool {
                             return $module instanceof ExtraInformationModule;
                         })->isNotEmpty();

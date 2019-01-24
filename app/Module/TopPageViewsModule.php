@@ -149,7 +149,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleInterface, Modu
      *
      * @return bool
      */
-    public function isGedcomBlock(): bool
+    public function isTreeBlock(): bool
     {
         return true;
     }

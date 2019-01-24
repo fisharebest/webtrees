@@ -105,7 +105,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleInterface, Mo
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock(): bool
+    public function isTreeBlock(): bool
     {
         return true;
     }

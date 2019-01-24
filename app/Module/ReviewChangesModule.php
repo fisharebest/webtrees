@@ -178,7 +178,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleInterface, Mod
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock(): bool
+    public function isTreeBlock(): bool
     {
         return true;
     }
