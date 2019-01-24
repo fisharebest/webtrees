@@ -971,6 +971,26 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
+     * Returns the calculated age the time of event.
+     *
+     * @param int $age The age from the database record
+     *
+     * @return string
+     */
+    private function calculateAge(int $age): string
+    {
+        if ((int) ($age / 365.25) > 0) {
+            $result = (int) ($age / 365.25) . 'y';
+        } elseif ((int) ($age / 30.4375) > 0) {
+            $result = (int) ($age / 30.4375) . 'm';
+        } else {
+            $result = $age . 'd';
+        }
+
+        return FunctionsDate::getAgeAtEvent($result);
+    }
+
+    /**
      * Find the oldest individuals.
      *
      * @param string $type
@@ -1020,20 +1040,11 @@ class IndividualRepository implements IndividualRepositoryInterface
         $top10 = [];
         foreach ($rows as $row) {
             $person = Individual::getInstance($row->deathdate, $this->tree);
-            $age    = $row->age;
-
-            if ((int) ($age / 365.25) > 0) {
-                $age = (int) ($age / 365.25) . 'y';
-            } elseif ((int) ($age / 30.4375) > 0) {
-                $age = (int) ($age / 30.4375) . 'm';
-            } else {
-                $age .= 'd';
-            }
 
             if ($person->canShow()) {
                 $top10[] = [
                     'person' => $person,
-                    'age'    => FunctionsDate::getAgeAtEvent($age),
+                    'age'    => $this->calculateAge((int) $row->age),
                 ];
             }
         }
@@ -1214,19 +1225,10 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         foreach ($rows as $row) {
             $person = Individual::getInstance($row->id, $this->tree);
-            $age    = (WT_CLIENT_JD - $row->age);
-
-            if ((int) ($age / 365.25) > 0) {
-                $age = (int) ($age / 365.25) . 'y';
-            } elseif ((int) ($age / 30.4375) > 0) {
-                $age = (int) ($age / 30.4375) . 'm';
-            } else {
-                $age .= 'd';
-            }
 
             $top10[] = [
                 'person' => $person,
-                'age'    => FunctionsDate::getAgeAtEvent($age),
+                'age'    => $this->calculateAge(WT_CLIENT_JD - ((int) $row->age)),
             ];
         }
 
@@ -1422,16 +1424,9 @@ class IndividualRepository implements IndividualRepositoryInterface
         );
 
         $age = $rows[0]->age;
-        if ($show_years) {
-            if ((int) ($age / 365.25) > 0) {
-                $age = (int) ($age / 365.25) . 'y';
-            } elseif ((int) ($age / 30.4375) > 0) {
-                $age = (int) ($age / 30.4375) . 'm';
-            } elseif (!empty($age)) {
-                $age .= 'd';
-            }
 
-            return FunctionsDate::getAgeAtEvent($age);
+        if ($show_years) {
+            return $this->calculateAge((int) $rows[0]->age);
         }
 
         return I18N::number($age / 365.25);

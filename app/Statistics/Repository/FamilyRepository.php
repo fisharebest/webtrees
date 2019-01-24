@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Statistics\Google\ChartMarriage;
 use Fisharebest\Webtrees\Statistics\Google\ChartMarriageAge;
 use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Tree;
+use stdClass;
 
 /**
  *
@@ -108,7 +109,7 @@ class FamilyRepository
      *
      * @param string $sql
      *
-     * @return \stdClass[]
+     * @return stdClass[]
      */
     private function runSql($sql): array
     {
@@ -395,6 +396,57 @@ class FamilyRepository
     }
 
     /**
+     * Returns the calculated age the time of event.
+     *
+     * @param int $age The age from the database record
+     *
+     * @return string
+     */
+    private function calculateAge(int $age): string
+    {
+        if ((int) ($age / 365.25) > 0) {
+            $result = (int) ($age / 365.25) . 'y';
+        } elseif ((int) ($age / 30.4375) > 0) {
+            $result = (int) ($age / 30.4375) . 'm';
+        } else {
+            $result = $age . 'd';
+        }
+
+        return FunctionsDate::getAgeAtEvent($result);
+    }
+
+    /**
+     * Find the ages between siblings.
+     *
+     * @param int $total The total number of records to query
+     *
+     * @return array
+     * @throws \Exception
+     */
+    private function ageBetweenSiblingsNoList(int $total): array
+    {
+        $rows = $this->ageBetweenSiblingsQuery($total);
+
+        foreach ($rows as $fam) {
+            $family = Family::getInstance($fam->family, $this->tree);
+            $child1 = Individual::getInstance($fam->ch1, $this->tree);
+            $child2 = Individual::getInstance($fam->ch2, $this->tree);
+
+            if ($child1->canShow() && $child2->canShow()) {
+                // ! Single array (no list)
+                return [
+                    'child1' => $child1,
+                    'child2' => $child2,
+                    'family' => $family,
+                    'age'    => $this->calculateAge((int) $fam->age),
+                ];
+            }
+        }
+
+        return [];
+    }
+
+    /**
      * Find the ages between siblings.
      *
      * @param int  $total The total number of records to query
@@ -414,16 +466,7 @@ class FamilyRepository
             $child1 = Individual::getInstance($fam->ch1, $this->tree);
             $child2 = Individual::getInstance($fam->ch2, $this->tree);
 
-            $age = $fam->age;
-            if ((int) ($age / 365.25) > 0) {
-                $age = (int) ($age / 365.25) . 'y';
-            } elseif ((int) ($age / 30.4375) > 0) {
-                $age = (int) ($age / 30.4375) . 'm';
-            } else {
-                $age .= 'd';
-            }
-
-            $age = FunctionsDate::getAgeAtEvent($age);
+            $age = $this->calculateAge((int) $fam->age);
 
             if ($one && !\in_array($fam->family, $dist, true)) {
                 if ($child1->canShow() && $child2->canShow()) {
@@ -471,48 +514,6 @@ class FamilyRepository
      *
      * @param int $total The total number of records to query
      *
-     * @return array
-     * @throws \Exception
-     */
-    private function ageBetweenSiblingsNoList(int $total): array
-    {
-        $rows = $this->ageBetweenSiblingsQuery($total);
-
-        foreach ($rows as $fam) {
-            $family = Family::getInstance($fam->family, $this->tree);
-            $child1 = Individual::getInstance($fam->ch1, $this->tree);
-            $child2 = Individual::getInstance($fam->ch2, $this->tree);
-
-            $age = $fam->age;
-            if ((int) ($age / 365.25) > 0) {
-                $age = (int) ($age / 365.25) . 'y';
-            } elseif ((int) ($age / 30.4375) > 0) {
-                $age = (int) ($age / 30.4375) . 'm';
-            } else {
-                $age .= 'd';
-            }
-
-            $age = FunctionsDate::getAgeAtEvent($age);
-
-            if ($child1->canShow() && $child2->canShow()) {
-                // ! Single array (no list)
-                return [
-                    'child1' => $child1,
-                    'child2' => $child2,
-                    'family' => $family,
-                    'age'    => $age,
-                ];
-            }
-        }
-
-        return [];
-    }
-
-    /**
-     * Find the ages between siblings.
-     *
-     * @param int $total The total number of records to query
-     *
      * @return string
      */
     private function ageBetweenSiblingsAge(int $total): string
@@ -520,17 +521,7 @@ class FamilyRepository
         $rows = $this->ageBetweenSiblingsQuery($total);
 
         foreach ($rows as $fam) {
-            $age = $fam->age;
-
-            if ((int) ($age / 365.25) > 0) {
-                $age = (int) ($age / 365.25) . 'y';
-            } elseif ((int) ($age / 30.4375) > 0) {
-                $age = (int) ($age / 30.4375) . 'm';
-            } else {
-                $age .= 'd';
-            }
-
-            return FunctionsDate::getAgeAtEvent($age);
+            return $this->calculateAge((int) $fam->age);
         }
 
         return '';
@@ -638,7 +629,7 @@ class FamilyRepository
      * @param int    $year1
      * @param int    $year2
      *
-     * @return \stdClass[]
+     * @return stdClass[]
      */
     public function statsChildrenQuery($sex = 'BOTH', $year1 = -1, $year2 = -1): array
     {
@@ -845,7 +836,7 @@ class FamilyRepository
      *
      * @param bool $sex
      *
-     * @return \stdClass[]
+     * @return stdClass[]
      */
     public function monthFirstChildQuery(bool $sex = false): array
     {
@@ -984,23 +975,20 @@ class FamilyRepository
                     $result = I18N::translate('This information is private and cannot be shown.');
                 }
                 break;
+
             case 'name':
                 $result = '<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a>';
                 break;
+
             case 'age':
                 $age = $row->age;
+
                 if ($show_years) {
-                    if ((int) ($age / 365.25) > 0) {
-                        $age = (int) ($age / 365.25) . 'y';
-                    } elseif ((int) ($age / 30.4375) > 0) {
-                        $age = (int) ($age / 30.4375) . 'm';
-                    } else {
-                        $age .= 'd';
-                    }
-                    $result = FunctionsDate::getAgeAtEvent($age);
+                    $result = $this->calculateAge((int) $row->age);
                 } else {
                     $result = (string) floor($age / 365.25);
                 }
+
                 break;
         }
 
@@ -1233,17 +1221,13 @@ class FamilyRepository
             if ($type === 'name') {
                 return $family->formatList();
             }
-            if ((int) ($age / 365.25) > 0) {
-                $age = (int) ($age / 365.25) . 'y';
-            } elseif ((int) ($age / 30.4375) > 0) {
-                $age = (int) ($age / 30.4375) . 'm';
-            } else {
-                $age .= 'd';
-            }
-            $age = FunctionsDate::getAgeAtEvent($age);
+
+            $age = $this->calculateAge((int) $age);
+
             if ($type === 'age') {
                 return $age;
             }
+
             $husb = $family->getHusband();
             $wife = $family->getWife();
 
@@ -1434,22 +1418,10 @@ class FamilyRepository
                 break;
             }
 
-            $age = $fam->age;
-
-            if ((int) ($age / 365.25) > 0) {
-                $age = (int) ($age / 365.25) . 'y';
-            } elseif ((int) ($age / 30.4375) > 0) {
-                $age = (int) ($age / 30.4375) . 'm';
-            } else {
-                $age .= 'd';
-            }
-
-            $age = FunctionsDate::getAgeAtEvent($age);
-
             if ($family->canShow()) {
                 $top10[] = [
                     'family' => $family,
-                    'age'    => $age,
+                    'age'    => $this->calculateAge((int) $fam->age),
                 ];
             }
         }
@@ -1669,18 +1641,13 @@ class FamilyRepository
 
             case 'age':
                 $age = $row->age;
+
                 if ($show_years) {
-                    if ((int) ($age / 365.25) > 0) {
-                        $age = (int) ($age / 365.25) . 'y';
-                    } elseif ((int) ($age / 30.4375) > 0) {
-                        $age = (int) ($age / 30.4375) . 'm';
-                    } else {
-                        $age .= 'd';
-                    }
-                    $result = FunctionsDate::getAgeAtEvent($age);
+                    $result = $this->calculateAge((int) $row->age);
                 } else {
                     $result = I18N::number((int) ($age / 365.25));
                 }
+
                 break;
         }
 
