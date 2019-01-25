@@ -6693,19 +6693,19 @@ class Stats
      * Create any of the other blocks.
      * Use as #callBlock:block_name#
      *
-     * @param string $block
+     * @param string $block_name
      * @param string ...$params
      *
      * @return string
      */
-    public function callBlock(string $block = '', ...$params): string
+    public function callBlock(string $block_name = '', ...$params): string
     {
         /** @var ModuleBlockInterface $block */
         $block = Module::findByComponent('block', $this->tree, Auth::user())
-            ->filter(function (ModuleInterface $block): bool {
-                return $block->name() === $block && $block->name() !== 'html';
+            ->filter(function (ModuleInterface $block) use ($block_name): bool {
+                return $block->name() === $block_name && $block->name() !== 'html';
             })
-            ->first;
+            ->first();
 
         if ($block === null) {
             return '';
