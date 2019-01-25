@@ -55,6 +55,63 @@ class PlaceRepository implements PlaceRepositoryInterface
     /**
      * Places
      *
+     * @param string $fact
+     * @param string $what
+     * @param bool   $country
+     *
+     * @return int[]
+     */
+    private function queryFactPlaces(string $fact, string $what = 'ALL', bool $country = false): array
+    {
+        $rows = [];
+
+        if ($what === 'INDI') {
+            $rows = DB::table('individuals')->select(['i_gedcom as ged'])->where(
+                    'i_file',
+                    '=',
+                    $this->tree->id()
+                )->where(
+                    'i_gedcom',
+                    'LIKE',
+                    "%\n2 PLAC %"
+                )->get()->all();
+        } elseif ($what === 'FAM') {
+            $rows = DB::table('families')->select(['f_gedcom as ged'])->where(
+                    'f_file',
+                    '=',
+                    $this->tree->id()
+                )->where(
+                    'f_gedcom',
+                    'LIKE',
+                    "%\n2 PLAC %"
+                )->get()->all();
+        }
+
+        $placelist = [];
+
+        foreach ($rows as $row) {
+            if (preg_match('/\n1 ' . $fact . '(?:\n[2-9].*)*\n2 PLAC (.+)/', $row->ged, $match)) {
+                if ($country) {
+                    $tmp   = explode(Place::GEDCOM_SEPARATOR, $match[1]);
+                    $place = end($tmp);
+                } else {
+                    $place = $match[1];
+                }
+
+                if (isset($placelist[$place])) {
+                    ++$placelist[$place];
+                } else {
+                    $placelist[$place] = 1;
+                }
+            }
+        }
+
+        return $placelist;
+    }
+
+    /**
+     * Query places.
+     *
      * @param string $what
      * @param string $fact
      * @param int    $parent
@@ -65,44 +122,7 @@ class PlaceRepository implements PlaceRepositoryInterface
     public function statsPlaces(string $what = 'ALL', string $fact = '', int $parent = 0, bool $country = false): array
     {
         if ($fact) {
-            $rows = [];
-
-            if ($what === 'INDI') {
-                $rows = DB::table('individuals')
-                    ->select(['i_gedcom as ged'])
-                    ->where('i_file', '=', $this->tree->id())
-                    ->where('i_gedcom', 'LIKE', "%\n2 PLAC %")
-                    ->get()
-                    ->all();
-            } elseif ($what === 'FAM') {
-                $rows = DB::table('families')
-                    ->select(['f_gedcom as ged'])
-                    ->where('f_file', '=', $this->tree->id())
-                    ->where('f_gedcom', 'LIKE', "%\n2 PLAC %")
-                    ->get()
-                    ->all();
-            }
-
-            $placelist = [];
-
-            foreach ($rows as $row) {
-                if (preg_match('/\n1 ' . $fact . '(?:\n[2-9].*)*\n2 PLAC (.+)/', $row->ged, $match)) {
-                    if ($country) {
-                        $tmp   = explode(Place::GEDCOM_SEPARATOR, $match[1]);
-                        $place = end($tmp);
-                    } else {
-                        $place = $match[1];
-                    }
-
-                    if (isset($placelist[$place])) {
-                        $placelist[$place]++;
-                    } else {
-                        $placelist[$place] = 1;
-                    }
-                }
-            }
-
-            return $placelist;
+            return $this->queryFactPlaces($fact, $what, $country);
         }
 
         $query = DB::table('places')
@@ -199,7 +219,7 @@ class PlaceRepository implements PlaceRepositoryInterface
      */
     public function commonBirthPlacesList(): string
     {
-        $places = $this->statsPlaces('INDI', 'BIRT');
+        $places = $this->queryFactPlaces('BIRT', 'INDI');
         return $this->renderTop10($places);
     }
 
@@ -210,7 +230,7 @@ class PlaceRepository implements PlaceRepositoryInterface
      */
     public function commonDeathPlacesList(): string
     {
-        $places = $this->statsPlaces('INDI', 'DEAT');
+        $places = $this->queryFactPlaces('DEAT','INDI');
         return $this->renderTop10($places);
     }
 
@@ -221,7 +241,7 @@ class PlaceRepository implements PlaceRepositoryInterface
      */
     public function commonMarriagePlacesList(): string
     {
-        $places = $this->statsPlaces('FAM', 'MARR');
+        $places = $this->queryFactPlaces('MARR', 'FAM');
         return $this->renderTop10($places);
     }
 
