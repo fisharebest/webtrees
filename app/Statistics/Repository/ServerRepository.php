@@ -26,9 +26,7 @@ use Fisharebest\Webtrees\Statistics\Repository\Interfaces\ServerRepositoryInterf
 class ServerRepository implements ServerRepositoryInterface
 {
     /**
-     * What is the current date on the server?
-     *
-     * @return string
+     * @inheritDoc
      */
     public function serverDate(): string
     {
