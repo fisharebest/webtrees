@@ -31,7 +31,7 @@ class Sql
      *
      * @return \stdClass[]
      */
-    public static function runSql($sql): array
+    public static function runSql(string $sql): array
     {
         static $cache = [];
 

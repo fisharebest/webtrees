@@ -56,7 +56,7 @@ class ChartAge extends AbstractGoogle
      *
      * @return string
      */
-    public function chartAge($size = '230x250'): string
+    public function chartAge(string $size = '230x250'): string
     {
         $sizes = explode('x', $size);
         $rows  = $this->runSql(
@@ -153,7 +153,7 @@ class ChartAge extends AbstractGoogle
      *
      * @return \stdClass[]
      */
-    private function runSql($sql): array
+    private function runSql(string $sql): array
     {
         return Sql::runSql($sql);
     }

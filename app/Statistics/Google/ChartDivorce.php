@@ -110,7 +110,7 @@ class ChartDivorce extends AbstractGoogle
      *
      * @return \stdClass[]
      */
-    private function runSql($sql): array
+    private function runSql(string $sql): array
     {
         return Sql::runSql($sql);
     }

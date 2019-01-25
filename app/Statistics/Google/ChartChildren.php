@@ -56,7 +56,7 @@ class ChartChildren extends AbstractGoogle
      *
      * @return string
      */
-    public function chartChildren($size = '220x200'): string
+    public function chartChildren(string $size = '220x200'): string
     {
         $sizes = explode('x', $size);
         $max   = 0;
@@ -118,7 +118,7 @@ class ChartChildren extends AbstractGoogle
      *
      * @return \stdClass[]
      */
-    private function runSql($sql): array
+    private function runSql(string $sql): array
     {
         return Sql::runSql($sql);
     }

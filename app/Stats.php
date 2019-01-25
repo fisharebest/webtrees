@@ -51,7 +51,6 @@ use Fisharebest\Webtrees\Statistics\Repository\PlaceRepository;
 use Fisharebest\Webtrees\Statistics\Repository\ServerRepository;
 use Fisharebest\Webtrees\Statistics\Repository\UserRepository;
 use ReflectionMethod;
-use const PREG_SET_ORDER;
 
 /**
  * A selection of pre-formatted statistical queries.
@@ -75,10 +74,18 @@ class Stats implements
     FamilyDatesRepositoryInterface,
     PlaceRepositoryInterface
 {
-    /** @var Tree Generate statistics for a specified tree. */
+    /**
+     * Generate statistics for a specified tree.
+     *
+     * @var Tree
+     */
     private $tree;
 
-    /** @var string[] All public functions are available as keywords - except these ones */
+    /**
+     * All public functions are available as keywords - except these ones
+     *
+     * @var string[]
+     */
     private static $public_but_not_allowed = [
         '__construct',
         'embedTags',
@@ -972,7 +979,7 @@ class Stats implements
     /**
      * @inheritDoc
      */
-    public function statsBirthQuery($sex = false, $year1 = -1, $year2 = -1): array
+    public function statsBirthQuery(bool $sex = false, int $year1 = -1, int $year2 = -1): array
     {
         return $this->individualRepository->statsBirthQuery($sex, $year1, $year2);
     }
@@ -1052,7 +1059,7 @@ class Stats implements
     /**
      * @inheritDoc
      */
-    public function statsDeathQuery($sex = false, $year1 = -1, $year2 = -1): array
+    public function statsDeathQuery(bool $sex = false, int $year1 = -1, int $year2 = -1): array
     {
         return $this->individualRepository->statsDeathQuery($sex, $year1, $year2);
     }
@@ -1068,7 +1075,7 @@ class Stats implements
     /**
      * @inheritDoc
      */
-    public function statsAgeQuery($related = 'BIRT', $sex = 'BOTH', $year1 = -1, $year2 = -1)
+    public function statsAgeQuery(string $related = 'BIRT', string $sex = 'BOTH', int $year1 = -1, int $year2 = -1)
     {
         return $this->individualRepository->statsAgeQuery($related, $sex, $year1, $year2);
     }
@@ -1157,7 +1164,7 @@ class Stats implements
      */
     public function topTenOldest(string $total = '10'): string
     {
-        return $this->individualRepository->topTenOldest($total);
+        return $this->individualRepository->topTenOldest((int) $total);
     }
 
     /**
@@ -1165,7 +1172,7 @@ class Stats implements
      */
     public function topTenOldestList(string $total = '10'): string
     {
-        return $this->individualRepository->topTenOldestList($total);
+        return $this->individualRepository->topTenOldestList((int) $total);
     }
 
     /**
@@ -1173,7 +1180,7 @@ class Stats implements
      */
     public function topTenOldestFemale(string $total = '10'): string
     {
-        return $this->individualRepository->topTenOldestFemale($total);
+        return $this->individualRepository->topTenOldestFemale((int) $total);
     }
 
     /**
@@ -1181,7 +1188,7 @@ class Stats implements
      */
     public function topTenOldestFemaleList(string $total = '10'): string
     {
-        return $this->individualRepository->topTenOldestFemaleList($total);
+        return $this->individualRepository->topTenOldestFemaleList((int) $total);
     }
 
     /**
@@ -1189,7 +1196,7 @@ class Stats implements
      */
     public function topTenOldestMale(string $total = '10'): string
     {
-        return $this->individualRepository->topTenOldestMale($total);
+        return $this->individualRepository->topTenOldestMale((int) $total);
     }
 
     /**
@@ -1197,7 +1204,7 @@ class Stats implements
      */
     public function topTenOldestMaleList(string $total = '10'): string
     {
-        return $this->individualRepository->topTenOldestMaleList($total);
+        return $this->individualRepository->topTenOldestMaleList((int) $total);
     }
 
     /**
@@ -1205,7 +1212,7 @@ class Stats implements
      */
     public function topTenOldestAlive(string $total = '10'): string
     {
-        return $this->individualRepository->topTenOldestAlive($total);
+        return $this->individualRepository->topTenOldestAlive((int) $total);
     }
 
     /**
@@ -1213,7 +1220,7 @@ class Stats implements
      */
     public function topTenOldestListAlive(string $total = '10'): string
     {
-        return $this->individualRepository->topTenOldestListAlive($total);
+        return $this->individualRepository->topTenOldestListAlive((int) $total);
     }
 
     /**
@@ -1221,7 +1228,7 @@ class Stats implements
      */
     public function topTenOldestFemaleAlive(string $total = '10'): string
     {
-        return $this->individualRepository->topTenOldestFemaleAlive($total);
+        return $this->individualRepository->topTenOldestFemaleAlive((int) $total);
     }
 
     /**
@@ -1229,7 +1236,7 @@ class Stats implements
      */
     public function topTenOldestFemaleListAlive(string $total = '10'): string
     {
-        return $this->individualRepository->topTenOldestFemaleListAlive($total);
+        return $this->individualRepository->topTenOldestFemaleListAlive((int) $total);
     }
 
     /**
@@ -1237,7 +1244,7 @@ class Stats implements
      */
     public function topTenOldestMaleAlive(string $total = '10'): string
     {
-        return $this->individualRepository->topTenOldestMaleAlive($total);
+        return $this->individualRepository->topTenOldestMaleAlive((int) $total);
     }
 
     /**
@@ -1245,13 +1252,13 @@ class Stats implements
      */
     public function topTenOldestMaleListAlive(string $total = '10'): string
     {
-        return $this->individualRepository->topTenOldestMaleListAlive($total);
+        return $this->individualRepository->topTenOldestMaleListAlive((int) $total);
     }
 
     /**
      * @inheritDoc
      */
-    public function averageLifespan($show_years = false): string
+    public function averageLifespan(bool $show_years = false): string
     {
         return $this->individualRepository->averageLifespan($show_years);
     }
@@ -1259,7 +1266,7 @@ class Stats implements
     /**
      * @inheritDoc
      */
-    public function averageLifespanFemale($show_years = false): string
+    public function averageLifespanFemale(bool $show_years = false): string
     {
         return $this->individualRepository->averageLifespanFemale($show_years);
     }
@@ -1267,7 +1274,7 @@ class Stats implements
     /**
      * @inheritDoc
      */
-    public function averageLifespanMale($show_years = false): string
+    public function averageLifespanMale(bool $show_years = false): string
     {
         return $this->individualRepository->averageLifespanMale($show_years);
     }
@@ -1419,7 +1426,7 @@ class Stats implements
     /**
      * @inheritDoc
      */
-    public function statsMarrQuery($first = false, $year1 = -1, $year2 = -1): array
+    public function statsMarrQuery(bool $first = false, int $year1 = -1, int $year2 = -1): array
     {
         return $this->familyRepository->statsMarrQuery($first, $year1, $year2);
     }
@@ -1603,7 +1610,7 @@ class Stats implements
     /**
      * @inheritDoc
      */
-    public function statsMarrAgeQuery($sex = 'M', $year1 = -1, $year2 = -1): array
+    public function statsMarrAgeQuery(string $sex = 'M', int $year1 = -1, int $year2 = -1): array
     {
         return $this->familyRepository->statsMarrAgeQuery($sex, $year1, $year2);
     }
@@ -1621,7 +1628,7 @@ class Stats implements
      */
     public function ageBetweenSpousesMF(string $total = '10'): string
     {
-        return $this->familyRepository->ageBetweenSpousesMF($total);
+        return $this->familyRepository->ageBetweenSpousesMF((int) $total);
     }
 
     /**
@@ -1629,7 +1636,7 @@ class Stats implements
      */
     public function ageBetweenSpousesMFList(string $total = '10'): string
     {
-        return $this->familyRepository->ageBetweenSpousesMFList($total);
+        return $this->familyRepository->ageBetweenSpousesMFList((int) $total);
     }
 
     /**
@@ -1637,7 +1644,7 @@ class Stats implements
      */
     public function ageBetweenSpousesFM(string $total = '10'): string
     {
-        return $this->familyRepository->ageBetweenSpousesFM($total);
+        return $this->familyRepository->ageBetweenSpousesFM((int) $total);
     }
 
     /**
@@ -1645,7 +1652,7 @@ class Stats implements
      */
     public function ageBetweenSpousesFMList(string $total = '10'): string
     {
-        return $this->familyRepository->ageBetweenSpousesFMList($total);
+        return $this->familyRepository->ageBetweenSpousesFMList((int) $total);
     }
 
     /**
@@ -1669,7 +1676,7 @@ class Stats implements
      */
     public function topAgeOfMarriageFamilies(string $total = '10'): string
     {
-        return $this->familyRepository->topAgeOfMarriageFamilies($total);
+        return $this->familyRepository->topAgeOfMarriageFamilies((int) $total);
     }
 
     /**
@@ -1677,7 +1684,7 @@ class Stats implements
      */
     public function topAgeOfMarriageFamiliesList(string $total = '10'): string
     {
-        return $this->familyRepository->topAgeOfMarriageFamiliesList($total);
+        return $this->familyRepository->topAgeOfMarriageFamiliesList((int) $total);
     }
 
     /**
@@ -1701,7 +1708,7 @@ class Stats implements
      */
     public function minAgeOfMarriageFamilies(string $total = '10'): string
     {
-        return $this->familyRepository->minAgeOfMarriageFamilies($total);
+        return $this->familyRepository->minAgeOfMarriageFamilies((int) $total);
     }
 
     /**
@@ -1709,7 +1716,7 @@ class Stats implements
      */
     public function minAgeOfMarriageFamiliesList(string $total = '10'): string
     {
-        return $this->familyRepository->minAgeOfMarriageFamiliesList($total);
+        return $this->familyRepository->minAgeOfMarriageFamiliesList((int) $total);
     }
 
     /**
@@ -1861,7 +1868,7 @@ class Stats implements
      */
     public function topTenLargestFamily(string $total = '10'): string
     {
-        return $this->familyRepository->topTenLargestFamily($total);
+        return $this->familyRepository->topTenLargestFamily((int) $total);
     }
 
     /**
@@ -1869,7 +1876,7 @@ class Stats implements
      */
     public function topTenLargestFamilyList(string $total = '10'): string
     {
-        return $this->familyRepository->topTenLargestFamilyList($total);
+        return $this->familyRepository->topTenLargestFamilyList((int) $total);
     }
 
     /**
@@ -1881,7 +1888,7 @@ class Stats implements
         string $color_to   = null,
         string $total      = '10'
     ): string {
-        return $this->familyRepository->chartLargestFamilies($size, $color_from, $color_to, $total);
+        return $this->familyRepository->chartLargestFamilies($size, $color_from, $color_to, (int) $total);
     }
 
     /**
@@ -1903,7 +1910,7 @@ class Stats implements
     /**
      * @inheritDoc
      */
-    public function statsChildrenQuery($sex = 'BOTH', $year1 = -1, $year2 = -1): array
+    public function statsChildrenQuery(string $sex = 'BOTH', int $year1 = -1, int $year2 = -1): array
     {
         return $this->familyRepository->statsChildrenQuery($sex, $year1, $year2);
     }
@@ -1921,7 +1928,7 @@ class Stats implements
      */
     public function topAgeBetweenSiblingsName(string $total = '10'): string
     {
-        return $this->familyRepository->topAgeBetweenSiblingsName($total);
+        return $this->familyRepository->topAgeBetweenSiblingsName((int) $total);
     }
 
     /**
@@ -1929,7 +1936,7 @@ class Stats implements
      */
     public function topAgeBetweenSiblings(string $total = '10'): string
     {
-        return $this->familyRepository->topAgeBetweenSiblings($total);
+        return $this->familyRepository->topAgeBetweenSiblings((int) $total);
     }
 
     /**
@@ -1937,7 +1944,7 @@ class Stats implements
      */
     public function topAgeBetweenSiblingsFullName(string $total = '10'): string
     {
-        return $this->familyRepository->topAgeBetweenSiblingsFullName($total);
+        return $this->familyRepository->topAgeBetweenSiblingsFullName((int) $total);
     }
 
     /**
@@ -1945,7 +1952,7 @@ class Stats implements
      */
     public function topAgeBetweenSiblingsList(string $total = '10', string $one = ''): string
     {
-        return $this->familyRepository->topAgeBetweenSiblingsList($total, $one);
+        return $this->familyRepository->topAgeBetweenSiblingsList((int) $total, $one);
     }
 
     /**
@@ -1959,7 +1966,7 @@ class Stats implements
     /**
      * @inheritDoc
      */
-    public function noChildrenFamiliesList($type = 'list'): string
+    public function noChildrenFamiliesList(string $type = 'list'): string
     {
         return $this->familyRepository->noChildrenFamiliesList($type);
     }
@@ -1967,9 +1974,12 @@ class Stats implements
     /**
      * @inheritDoc
      */
-    public function chartNoChildrenFamilies(string $size = '220x200', $year1 = '-1', $year2 = '-1'): string
-    {
-        return $this->familyRepository->chartNoChildrenFamilies($size, $year1, $year2);
+    public function chartNoChildrenFamilies(
+        string $size  = '220x200',
+        string $year1 = '-1',
+        string $year2 = '-1'
+    ): string {
+        return $this->familyRepository->chartNoChildrenFamilies($size, (int) $year1, (int) $year2);
     }
 
     /**
@@ -1977,7 +1987,7 @@ class Stats implements
      */
     public function topTenLargestGrandFamily(string $total = '10'): string
     {
-        return $this->familyRepository->topTenLargestGrandFamily($total);
+        return $this->familyRepository->topTenLargestGrandFamily((int) $total);
     }
 
     /**
@@ -1985,7 +1995,7 @@ class Stats implements
      */
     public function topTenLargestGrandFamilyList(string $total = '10'): string
     {
-        return $this->familyRepository->topTenLargestGrandFamilyList($total);
+        return $this->familyRepository->topTenLargestGrandFamilyList((int) $total);
     }
 
     /**
@@ -2004,7 +2014,7 @@ class Stats implements
         string $number_of_surnames = '10',
         string $sorting = 'alpha'
     ): string {
-        return $this->individualRepository->commonSurnames($threshold, $number_of_surnames, $sorting);
+        return $this->individualRepository->commonSurnames((int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
     /**
@@ -2015,7 +2025,7 @@ class Stats implements
         string $number_of_surnames = '10',
         string $sorting = 'rcount'
     ): string {
-        return $this->individualRepository->commonSurnamesTotals($threshold, $number_of_surnames, $sorting);
+        return $this->individualRepository->commonSurnamesTotals((int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
     /**
@@ -2026,7 +2036,7 @@ class Stats implements
         string $number_of_surnames = '10',
         string $sorting = 'alpha'
     ): string {
-        return $this->individualRepository->commonSurnamesList($threshold, $number_of_surnames, $sorting);
+        return $this->individualRepository->commonSurnamesList((int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
     /**
@@ -2037,7 +2047,8 @@ class Stats implements
         string $number_of_surnames = '10',
         string $sorting = 'rcount'
     ): string {
-        return $this->individualRepository->commonSurnamesListTotals($threshold, $number_of_surnames, $sorting);
+        return $this->individualRepository
+            ->commonSurnamesListTotals((int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
     /**
@@ -2049,7 +2060,8 @@ class Stats implements
         string $color_to = null,
         string $number_of_surnames = '10'
     ): string {
-        return $this->individualRepository->chartCommonSurnames($size, $color_from, $color_to, $number_of_surnames);
+        return $this->individualRepository
+            ->chartCommonSurnames($size, $color_from, $color_to, (int) $number_of_surnames);
     }
 
     /**
@@ -2057,7 +2069,7 @@ class Stats implements
      */
     public function commonGiven(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individualRepository->commonGiven($threshold, $maxtoshow);
+        return $this->individualRepository->commonGiven((int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -2065,7 +2077,7 @@ class Stats implements
      */
     public function commonGivenTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individualRepository->commonGivenTotals($threshold, $maxtoshow);
+        return $this->individualRepository->commonGivenTotals((int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -2073,7 +2085,7 @@ class Stats implements
      */
     public function commonGivenList(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individualRepository->commonGivenList($threshold, $maxtoshow);
+        return $this->individualRepository->commonGivenList((int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -2081,7 +2093,7 @@ class Stats implements
      */
     public function commonGivenListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individualRepository->commonGivenListTotals($threshold, $maxtoshow);
+        return $this->individualRepository->commonGivenListTotals((int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -2089,7 +2101,7 @@ class Stats implements
      */
     public function commonGivenTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individualRepository->commonGivenTable($threshold, $maxtoshow);
+        return $this->individualRepository->commonGivenTable((int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -2097,7 +2109,7 @@ class Stats implements
      */
     public function commonGivenFemale(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individualRepository->commonGivenFemale($threshold, $maxtoshow);
+        return $this->individualRepository->commonGivenFemale((int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -2105,7 +2117,7 @@ class Stats implements
      */
     public function commonGivenFemaleTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individualRepository->commonGivenFemaleTotals($threshold, $maxtoshow);
+        return $this->individualRepository->commonGivenFemaleTotals((int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -2113,7 +2125,7 @@ class Stats implements
      */
     public function commonGivenFemaleList(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individualRepository->commonGivenFemaleList($threshold, $maxtoshow);
+        return $this->individualRepository->commonGivenFemaleList((int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -2121,7 +2133,7 @@ class Stats implements
      */
     public function commonGivenFemaleListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individualRepository->commonGivenFemaleListTotals($threshold, $maxtoshow);
+        return $this->individualRepository->commonGivenFemaleListTotals((int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -2129,7 +2141,7 @@ class Stats implements
      */
     public function commonGivenFemaleTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individualRepository->commonGivenFemaleTable($threshold, $maxtoshow);
+        return $this->individualRepository->commonGivenFemaleTable((int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -2137,7 +2149,7 @@ class Stats implements
      */
     public function commonGivenMale(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individualRepository->commonGivenMale($threshold, $maxtoshow);
+        return $this->individualRepository->commonGivenMale((int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -2145,7 +2157,7 @@ class Stats implements
      */
     public function commonGivenMaleTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individualRepository->commonGivenMaleTotals($threshold, $maxtoshow);
+        return $this->individualRepository->commonGivenMaleTotals((int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -2153,7 +2165,7 @@ class Stats implements
      */
     public function commonGivenMaleList(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individualRepository->commonGivenMaleList($threshold, $maxtoshow);
+        return $this->individualRepository->commonGivenMaleList((int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -2161,7 +2173,7 @@ class Stats implements
      */
     public function commonGivenMaleListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individualRepository->commonGivenMaleListTotals($threshold, $maxtoshow);
+        return $this->individualRepository->commonGivenMaleListTotals((int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -2169,7 +2181,7 @@ class Stats implements
      */
     public function commonGivenMaleTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individualRepository->commonGivenMaleTable($threshold, $maxtoshow);
+        return $this->individualRepository->commonGivenMaleTable((int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -2177,7 +2189,7 @@ class Stats implements
      */
     public function commonGivenUnknown(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individualRepository->commonGivenUnknown($threshold, $maxtoshow);
+        return $this->individualRepository->commonGivenUnknown((int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -2185,7 +2197,7 @@ class Stats implements
      */
     public function commonGivenUnknownTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individualRepository->commonGivenUnknownTotals($threshold, $maxtoshow);
+        return $this->individualRepository->commonGivenUnknownTotals((int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -2193,7 +2205,7 @@ class Stats implements
      */
     public function commonGivenUnknownList(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individualRepository->commonGivenUnknownList($threshold, $maxtoshow);
+        return $this->individualRepository->commonGivenUnknownList((int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -2201,7 +2213,7 @@ class Stats implements
      */
     public function commonGivenUnknownListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individualRepository->commonGivenUnknownListTotals($threshold, $maxtoshow);
+        return $this->individualRepository->commonGivenUnknownListTotals((int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -2209,7 +2221,7 @@ class Stats implements
      */
     public function commonGivenUnknownTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individualRepository->commonGivenUnknownTable($threshold, $maxtoshow);
+        return $this->individualRepository->commonGivenUnknownTable((int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -2221,7 +2233,7 @@ class Stats implements
         string $color_to   = null,
         string $maxtoshow  = '7'
     ): string {
-        return $this->individualRepository->chartCommonGiven($size, $color_from, $color_to, $maxtoshow);
+        return $this->individualRepository->chartCommonGiven($size, $color_from, $color_to, (int) $maxtoshow);
     }
 
     /**
@@ -2563,7 +2575,7 @@ class Stats implements
      *
      * @return null|string
      */
-    public function callBlock(string $block = '', ...$params)
+    public function callBlock(string $block = '', ...$params): ?string
     {
         /** @var ModuleBlockInterface $module */
         $module = Module::findByComponent('block', $this->tree, Auth::user())

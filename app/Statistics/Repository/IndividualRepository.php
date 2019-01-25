@@ -66,7 +66,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      *
      * @return \stdClass[]
      */
-    private function runSql($sql): array
+    private function runSql(string $sql): array
     {
         return Sql::runSql($sql);
     }
@@ -162,268 +162,268 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Find common give names.
      *
-     * @param string $threshold
-     * @param string $maxtoshow
+     * @param int $threshold
+     * @param int $maxtoshow
      *
      * @return string
      */
-    public function commonGiven(string $threshold = '1', string $maxtoshow = '10'): string
+    public function commonGiven(int $threshold = 1, int $maxtoshow = 10): string
     {
-        return $this->commonGivenQuery('B', 'nolist', false, (int) $threshold, (int) $maxtoshow);
+        return $this->commonGivenQuery('B', 'nolist', false, $threshold, $maxtoshow);
     }
 
     /**
      * Find common give names.
      *
-     * @param string $threshold
-     * @param string $maxtoshow
+     * @param int $threshold
+     * @param int $maxtoshow
      *
      * @return string
      */
-    public function commonGivenTotals(string $threshold = '1', string $maxtoshow = '10'): string
+    public function commonGivenTotals(int $threshold = 1, int $maxtoshow = 10): string
     {
-        return $this->commonGivenQuery('B', 'nolist', true, (int) $threshold, (int) $maxtoshow);
+        return $this->commonGivenQuery('B', 'nolist', true, $threshold, $maxtoshow);
     }
 
     /**
      * Find common give names.
      *
-     * @param string $threshold
-     * @param string $maxtoshow
+     * @param int $threshold
+     * @param int $maxtoshow
      *
      * @return string
      */
-    public function commonGivenList(string $threshold = '1', string $maxtoshow = '10'): string
+    public function commonGivenList(int $threshold = 1, int $maxtoshow = 10): string
     {
-        return $this->commonGivenQuery('B', 'list', false, (int) $threshold, (int) $maxtoshow);
+        return $this->commonGivenQuery('B', 'list', false, $threshold, $maxtoshow);
     }
 
     /**
      * Find common give names.
      *
-     * @param string $threshold
-     * @param string $maxtoshow
+     * @param int $threshold
+     * @param int $maxtoshow
      *
      * @return string
      */
-    public function commonGivenListTotals(string $threshold = '1', string $maxtoshow = '10'): string
+    public function commonGivenListTotals(int $threshold = 1, int $maxtoshow = 10): string
     {
-        return $this->commonGivenQuery('B', 'list', true, (int) $threshold, (int) $maxtoshow);
+        return $this->commonGivenQuery('B', 'list', true, $threshold, $maxtoshow);
     }
 
     /**
      * Find common give names.
      *
-     * @param string $threshold
-     * @param string $maxtoshow
+     * @param int $threshold
+     * @param int $maxtoshow
      *
      * @return string
      */
-    public function commonGivenTable(string $threshold = '1', string $maxtoshow = '10'): string
+    public function commonGivenTable(int $threshold = 1, int $maxtoshow = 10): string
     {
-        return $this->commonGivenQuery('B', 'table', false, (int) $threshold, (int) $maxtoshow);
+        return $this->commonGivenQuery('B', 'table', false, $threshold, $maxtoshow);
     }
 
     /**
      * Find common give names of females.
      *
-     * @param string $threshold
-     * @param string $maxtoshow
+     * @param int $threshold
+     * @param int $maxtoshow
      *
      * @return string
      */
-    public function commonGivenFemale(string $threshold = '1', string $maxtoshow = '10'): string
+    public function commonGivenFemale(int $threshold = 1, int $maxtoshow = 10): string
     {
-        return $this->commonGivenQuery('F', 'nolist', false, (int) $threshold, (int) $maxtoshow);
+        return $this->commonGivenQuery('F', 'nolist', false, $threshold, $maxtoshow);
     }
 
     /**
      * Find common give names of females.
      *
-     * @param string $threshold
-     * @param string $maxtoshow
+     * @param int $threshold
+     * @param int $maxtoshow
      *
      * @return string
      */
-    public function commonGivenFemaleTotals(string $threshold = '1', string $maxtoshow = '10'): string
+    public function commonGivenFemaleTotals(int $threshold = 1, int $maxtoshow = 10): string
     {
-        return $this->commonGivenQuery('F', 'nolist', true, (int) $threshold, (int) $maxtoshow);
+        return $this->commonGivenQuery('F', 'nolist', true, $threshold, $maxtoshow);
     }
 
     /**
      * Find common give names of females.
      *
-     * @param string $threshold
-     * @param string $maxtoshow
+     * @param int $threshold
+     * @param int $maxtoshow
      *
      * @return string
      */
-    public function commonGivenFemaleList(string $threshold = '1', string $maxtoshow = '10'): string
+    public function commonGivenFemaleList(int $threshold = 1, int $maxtoshow = 10): string
     {
-        return $this->commonGivenQuery('F', 'list', false, (int) $threshold, (int) $maxtoshow);
+        return $this->commonGivenQuery('F', 'list', false, $threshold, $maxtoshow);
     }
 
     /**
      * Find common give names of females.
      *
-     * @param string $threshold
-     * @param string $maxtoshow
+     * @param int $threshold
+     * @param int $maxtoshow
      *
      * @return string
      */
-    public function commonGivenFemaleListTotals(string $threshold = '1', string $maxtoshow = '10'): string
+    public function commonGivenFemaleListTotals(int $threshold = 1, int $maxtoshow = 10): string
     {
-        return $this->commonGivenQuery('F', 'list', true, (int) $threshold, (int) $maxtoshow);
+        return $this->commonGivenQuery('F', 'list', true, $threshold, $maxtoshow);
     }
 
     /**
      * Find common give names of females.
      *
-     * @param string $threshold
-     * @param string $maxtoshow
+     * @param int $threshold
+     * @param int $maxtoshow
      *
      * @return string
      */
-    public function commonGivenFemaleTable(string $threshold = '1', string $maxtoshow = '10'): string
+    public function commonGivenFemaleTable(int $threshold = 1, int $maxtoshow = 10): string
     {
-        return $this->commonGivenQuery('F', 'table', false, (int) $threshold, (int) $maxtoshow);
+        return $this->commonGivenQuery('F', 'table', false, $threshold, $maxtoshow);
     }
 
     /**
      * Find common give names of males.
      *
-     * @param string $threshold
-     * @param string $maxtoshow
+     * @param int $threshold
+     * @param int $maxtoshow
      *
      * @return string
      */
-    public function commonGivenMale(string $threshold = '1', string $maxtoshow = '10'): string
+    public function commonGivenMale(int $threshold = 1, int $maxtoshow = 10): string
     {
-        return $this->commonGivenQuery('M', 'nolist', false, (int) $threshold, (int) $maxtoshow);
+        return $this->commonGivenQuery('M', 'nolist', false, $threshold, $maxtoshow);
     }
 
     /**
      * Find common give names of males.
      *
-     * @param string $threshold
-     * @param string $maxtoshow
+     * @param int $threshold
+     * @param int $maxtoshow
      *
      * @return string
      */
-    public function commonGivenMaleTotals(string $threshold = '1', string $maxtoshow = '10'): string
+    public function commonGivenMaleTotals(int $threshold = 1, int $maxtoshow = 10): string
     {
-        return $this->commonGivenQuery('M', 'nolist', true, (int) $threshold, (int) $maxtoshow);
+        return $this->commonGivenQuery('M', 'nolist', true, $threshold, $maxtoshow);
     }
 
     /**
      * Find common give names of males.
      *
-     * @param string $threshold
-     * @param string $maxtoshow
+     * @param int $threshold
+     * @param int $maxtoshow
      *
      * @return string
      */
-    public function commonGivenMaleList(string $threshold = '1', string $maxtoshow = '10'): string
+    public function commonGivenMaleList(int $threshold = 1, int $maxtoshow = 10): string
     {
-        return $this->commonGivenQuery('M', 'list', false, (int) $threshold, (int) $maxtoshow);
+        return $this->commonGivenQuery('M', 'list', false, $threshold, $maxtoshow);
     }
 
     /**
      * Find common give names of males.
      *
-     * @param string $threshold
-     * @param string $maxtoshow
+     * @param int $threshold
+     * @param int $maxtoshow
      *
      * @return string
      */
-    public function commonGivenMaleListTotals(string $threshold = '1', string $maxtoshow = '10'): string
+    public function commonGivenMaleListTotals(int $threshold = 1, int $maxtoshow = 10): string
     {
-        return $this->commonGivenQuery('M', 'list', true, (int) $threshold, (int) $maxtoshow);
+        return $this->commonGivenQuery('M', 'list', true, $threshold, $maxtoshow);
     }
 
     /**
      * Find common give names of males.
      *
-     * @param string $threshold
-     * @param string $maxtoshow
+     * @param int $threshold
+     * @param int $maxtoshow
      *
      * @return string
      */
-    public function commonGivenMaleTable(string $threshold = '1', string $maxtoshow = '10'): string
+    public function commonGivenMaleTable(int $threshold = 1, int $maxtoshow = 10): string
     {
-        return $this->commonGivenQuery('M', 'table', false, (int) $threshold, (int) $maxtoshow);
+        return $this->commonGivenQuery('M', 'table', false, $threshold, $maxtoshow);
     }
 
     /**
      * Find common give names of unknown sexes.
      *
-     * @param string $threshold
-     * @param string $maxtoshow
+     * @param int $threshold
+     * @param int $maxtoshow
      *
      * @return string
      */
-    public function commonGivenUnknown(string $threshold = '1', string $maxtoshow = '10'): string
+    public function commonGivenUnknown(int $threshold = 1, int $maxtoshow = 10): string
     {
-        return $this->commonGivenQuery('U', 'nolist', false, (int) $threshold, (int) $maxtoshow);
+        return $this->commonGivenQuery('U', 'nolist', false, $threshold, $maxtoshow);
     }
 
     /**
      * Find common give names of unknown sexes.
      *
-     * @param string $threshold
-     * @param string $maxtoshow
+     * @param int $threshold
+     * @param int $maxtoshow
      *
      * @return string
      */
-    public function commonGivenUnknownTotals(string $threshold = '1', string $maxtoshow = '10'): string
+    public function commonGivenUnknownTotals(int $threshold = 1, int $maxtoshow = 10): string
     {
-        return $this->commonGivenQuery('U', 'nolist', true, (int) $threshold, (int) $maxtoshow);
+        return $this->commonGivenQuery('U', 'nolist', true, $threshold, $maxtoshow);
     }
 
     /**
      * Find common give names of unknown sexes.
      *
-     * @param string $threshold
-     * @param string $maxtoshow
+     * @param int $threshold
+     * @param int $maxtoshow
      *
      * @return string
      */
-    public function commonGivenUnknownList(string $threshold = '1', string $maxtoshow = '10'): string
+    public function commonGivenUnknownList(int $threshold = 1, int $maxtoshow = 10): string
     {
-        return $this->commonGivenQuery('U', 'list', false, (int) $threshold, (int) $maxtoshow);
+        return $this->commonGivenQuery('U', 'list', false, $threshold, $maxtoshow);
     }
 
     /**
      * Find common give names of unknown sexes.
      *
-     * @param string $threshold
-     * @param string $maxtoshow
+     * @param int $threshold
+     * @param int $maxtoshow
      *
      * @return string
      */
-    public function commonGivenUnknownListTotals(string $threshold = '1', string $maxtoshow = '10'): string
+    public function commonGivenUnknownListTotals(int $threshold = 1, int $maxtoshow = 10): string
     {
-        return $this->commonGivenQuery('U', 'list', true, (int) $threshold, (int) $maxtoshow);
+        return $this->commonGivenQuery('U', 'list', true, $threshold, $maxtoshow);
     }
 
     /**
      * Find common give names of unknown sexes.
      *
-     * @param string $threshold
-     * @param string $maxtoshow
+     * @param int $threshold
+     * @param int $maxtoshow
      *
      * @return string
      */
-    public function commonGivenUnknownTable(string $threshold = '1', string $maxtoshow = '10'): string
+    public function commonGivenUnknownTable(int $threshold = 1, int $maxtoshow = 10): string
     {
-        return $this->commonGivenQuery('U', 'table', false, (int) $threshold, (int) $maxtoshow);
+        return $this->commonGivenQuery('U', 'table', false, $threshold, $maxtoshow);
     }
 
     /**
      * Count the number of distinct given names, or count the number of
      * occurrences of a specific name or names.
      *
-     * @param string ...$params
+     * @param array ...$params
      *
      * @return string
      */
@@ -451,7 +451,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Count the surnames.
      *
-     * @param string ...$params
+     * @param array ...$params
      *
      * @return string
      */
@@ -538,8 +538,8 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @return string
      */
     private function commonSurnamesQuery(
-        $type,
-        $show_tot,
+        string $type,
+        bool $show_tot,
         int $threshold,
         int $number_of_surnames,
         string $sorting
@@ -570,69 +570,69 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Find common surnames.
      *
-     * @param string $threshold
-     * @param string $number_of_surnames
+     * @param int    $threshold
+     * @param int    $number_of_surnames
      * @param string $sorting
      *
      * @return string
      */
     public function commonSurnames(
-        string $threshold = '1',
-        string $number_of_surnames = '10',
+        int $threshold = 1,
+        int $number_of_surnames = 10,
         string $sorting = 'alpha'
     ): string {
-        return $this->commonSurnamesQuery('nolist', false, (int) $threshold, (int) $number_of_surnames, $sorting);
+        return $this->commonSurnamesQuery('nolist', false, $threshold, $number_of_surnames, $sorting);
     }
 
     /**
      * Find common surnames.
      *
-     * @param string $threshold
-     * @param string $number_of_surnames
+     * @param int    $threshold
+     * @param int    $number_of_surnames
      * @param string $sorting
      *
      * @return string
      */
     public function commonSurnamesTotals(
-        string $threshold = '1',
-        string $number_of_surnames = '10',
+        int $threshold = 1,
+        int $number_of_surnames = 10,
         string $sorting = 'rcount'
     ): string {
-        return $this->commonSurnamesQuery('nolist', true, (int) $threshold, (int) $number_of_surnames, $sorting);
+        return $this->commonSurnamesQuery('nolist', true, $threshold, $number_of_surnames, $sorting);
     }
 
     /**
      * Find common surnames.
      *
-     * @param string $threshold
-     * @param string $number_of_surnames
+     * @param int    $threshold
+     * @param int    $number_of_surnames
      * @param string $sorting
      *
      * @return string
      */
     public function commonSurnamesList(
-        string $threshold = '1',
-        string $number_of_surnames = '10',
+        int $threshold = 1,
+        int $number_of_surnames = 10,
         string $sorting = 'alpha'
     ): string {
-        return $this->commonSurnamesQuery('list', false, (int) $threshold, (int) $number_of_surnames, $sorting);
+        return $this->commonSurnamesQuery('list', false, $threshold, $number_of_surnames, $sorting);
     }
 
     /**
      * Find common surnames.
      *
-     * @param string $threshold
-     * @param string $number_of_surnames
+     * @param int    $threshold
+     * @param int    $number_of_surnames
      * @param string $sorting
      *
      * @return string
      */
     public function commonSurnamesListTotals(
-        string $threshold = '1',
-        string $number_of_surnames = '10',
+        int $threshold = 1,
+        int $number_of_surnames = 10,
         string $sorting = 'rcount'
     ): string {
-        return $this->commonSurnamesQuery('list', true, (int) $threshold, (int) $number_of_surnames, $sorting);
+        return $this->commonSurnamesQuery('list', true, $threshold, $number_of_surnames, $sorting);
     }
 
     /**
@@ -644,7 +644,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      *
      * @return array
      */
-    public function statsBirthQuery($sex = false, $year1 = -1, $year2 = -1): array
+    public function statsBirthQuery(bool $sex = false, int $year1 = -1, int $year2 = -1): array
     {
         if ($sex) {
             $sql =
@@ -700,7 +700,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      *
      * @return array
      */
-    public function statsDeathQuery($sex = false, $year1 = -1, $year2 = -1): array
+    public function statsDeathQuery(bool $sex = false, int $year1 = -1, int $year2 = -1): array
     {
         if ($sex) {
             $sql =
@@ -757,7 +757,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      *
      * @return array|string
      */
-    public function statsAgeQuery($related = 'BIRT', $sex = 'BOTH', $year1 = -1, $year2 = -1)
+    public function statsAgeQuery(string $related = 'BIRT', string $sex = 'BOTH', int $year1 = -1, int $year2 = -1)
     {
         $sex_search = '';
         $years      = '';
@@ -824,7 +824,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      *
      * @return string
      */
-    private function longlifeQuery($type, $sex): string
+    private function longlifeQuery(string $type, string $sex): string
     {
         $sex_search = ' 1=1';
         if ($sex === 'F') {
@@ -993,13 +993,12 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Find the oldest individuals.
      *
-     * @param string $type
      * @param string $sex
      * @param int    $total
      *
      * @return array
      */
-    private function topTenOldestQuery(string $type, string $sex, int $total): array
+    private function topTenOldestQuery(string $sex, int $total): array
     {
         if ($sex === 'F') {
             $sex_search = " AND i_sex='F' ";
@@ -1072,13 +1071,13 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Find the oldest individuals.
      *
-     * @param string $total
+     * @param int $total
      *
      * @return string
      */
-    public function topTenOldest(string $total = '10'): string
+    public function topTenOldest(int $total = 10): string
     {
-        $records = $this->topTenOldestQuery('nolist', 'BOTH', (int) $total);
+        $records = $this->topTenOldestQuery('BOTH', $total);
 
         return view(
             'statistics/individuals/top10-nolist',
@@ -1091,13 +1090,13 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Find the oldest living individuals.
      *
-     * @param string $total
+     * @param int $total
      *
      * @return string
      */
-    public function topTenOldestList(string $total = '10'): string
+    public function topTenOldestList(int $total = 10): string
     {
-        $records = $this->topTenOldestQuery('list', 'BOTH', (int) $total);
+        $records = $this->topTenOldestQuery('BOTH', $total);
 
         return view(
             'statistics/individuals/top10-list',
@@ -1110,13 +1109,13 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Find the oldest females.
      *
-     * @param string $total
+     * @param int $total
      *
      * @return string
      */
-    public function topTenOldestFemale(string $total = '10'): string
+    public function topTenOldestFemale(int $total = 10): string
     {
-        $records = $this->topTenOldestQuery('nolist', 'F', (int) $total);
+        $records = $this->topTenOldestQuery('F', $total);
 
         return view(
             'statistics/individuals/top10-nolist',
@@ -1129,13 +1128,13 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Find the oldest living females.
      *
-     * @param string $total
+     * @param int $total
      *
      * @return string
      */
-    public function topTenOldestFemaleList(string $total = '10'): string
+    public function topTenOldestFemaleList(int $total = 10): string
     {
-        $records = $this->topTenOldestQuery('list', 'F', (int) $total);
+        $records = $this->topTenOldestQuery('F', $total);
 
         return view(
             'statistics/individuals/top10-list',
@@ -1148,13 +1147,13 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Find the longest lived males.
      *
-     * @param string $total
+     * @param int $total
      *
      * @return string
      */
-    public function topTenOldestMale(string $total = '10'): string
+    public function topTenOldestMale(int $total = 10): string
     {
-        $records = $this->topTenOldestQuery('nolist', 'M', (int) $total);
+        $records = $this->topTenOldestQuery('M', $total);
 
         return view(
             'statistics/individuals/top10-nolist',
@@ -1167,13 +1166,13 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Find the longest lived males.
      *
-     * @param string $total
+     * @param int $total
      *
      * @return string
      */
-    public function topTenOldestMaleList(string $total = '10'): string
+    public function topTenOldestMaleList(int $total = 10): string
     {
-        $records = $this->topTenOldestQuery('list', 'M', (int) $total);
+        $records = $this->topTenOldestQuery('M', $total);
 
         return view(
             'statistics/individuals/top10-list',
@@ -1255,17 +1254,17 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Find the oldest living individuals.
      *
-     * @param string|null $total
+     * @param int $total
      *
      * @return string
      */
-    public function topTenOldestAlive(string $total = '10'): string
+    public function topTenOldestAlive(int $total = 10): string
     {
         if (!Auth::isMember($this->tree)) {
             return I18N::translate('This information is private and cannot be shown.');
         }
 
-        $records = $this->topTenOldestAliveQuery('BOTH', (int) $total);
+        $records = $this->topTenOldestAliveQuery('BOTH', $total);
 
         return view(
             'statistics/individuals/top10-nolist',
@@ -1278,17 +1277,17 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Find the oldest living individuals.
      *
-     * @param string|null $total
+     * @param int $total
      *
      * @return string
      */
-    public function topTenOldestListAlive(string $total = '10'): string
+    public function topTenOldestListAlive(int $total = 10): string
     {
         if (!Auth::isMember($this->tree)) {
             return I18N::translate('This information is private and cannot be shown.');
         }
 
-        $records = $this->topTenOldestAliveQuery('BOTH', (int) $total);
+        $records = $this->topTenOldestAliveQuery('BOTH', $total);
 
         return view(
             'statistics/individuals/top10-list',
@@ -1301,17 +1300,17 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Find the oldest living females.
      *
-     * @param string|null $total
+     * @param int $total
      *
      * @return string
      */
-    public function topTenOldestFemaleAlive(string $total = '10'): string
+    public function topTenOldestFemaleAlive(int $total = 10): string
     {
         if (!Auth::isMember($this->tree)) {
             return I18N::translate('This information is private and cannot be shown.');
         }
 
-        $records = $this->topTenOldestAliveQuery('F', (int) $total);
+        $records = $this->topTenOldestAliveQuery('F', $total);
 
         return view(
             'statistics/individuals/top10-nolist',
@@ -1324,17 +1323,17 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Find the oldest living females.
      *
-     * @param string|null $total
+     * @param int $total
      *
      * @return string
      */
-    public function topTenOldestFemaleListAlive(string $total = '10'): string
+    public function topTenOldestFemaleListAlive(int $total = 10): string
     {
         if (!Auth::isMember($this->tree)) {
             return I18N::translate('This information is private and cannot be shown.');
         }
 
-        $records = $this->topTenOldestAliveQuery('F', (int) $total);
+        $records = $this->topTenOldestAliveQuery('F', $total);
 
         return view(
             'statistics/individuals/top10-list',
@@ -1347,17 +1346,17 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Find the longest lived living males.
      *
-     * @param string|null $total
+     * @param int $total
      *
      * @return string
      */
-    public function topTenOldestMaleAlive(string $total = '10'): string
+    public function topTenOldestMaleAlive(int $total = 10): string
     {
         if (!Auth::isMember($this->tree)) {
             return I18N::translate('This information is private and cannot be shown.');
         }
 
-        $records = $this->topTenOldestAliveQuery('M', (int) $total);
+        $records = $this->topTenOldestAliveQuery('M', $total);
 
         return view(
             'statistics/individuals/top10-nolist',
@@ -1370,17 +1369,17 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Find the longest lived living males.
      *
-     * @param string|null $total
+     * @param int $total
      *
      * @return string
      */
-    public function topTenOldestMaleListAlive(string $total = '10'): string
+    public function topTenOldestMaleListAlive(int $total = 10): string
     {
         if (!Auth::isMember($this->tree)) {
             return I18N::translate('This information is private and cannot be shown.');
         }
 
-        $records = $this->topTenOldestAliveQuery('M', (int) $total);
+        $records = $this->topTenOldestAliveQuery('M', $total);
 
         return view(
             'statistics/individuals/top10-list',
@@ -1398,7 +1397,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      *
      * @return string
      */
-    private function averageLifespanQuery($sex = 'BOTH', $show_years = false): string
+    private function averageLifespanQuery(string $sex = 'BOTH', bool $show_years = false): string
     {
         if ($sex === 'F') {
             $sex_search = " AND i_sex='F' ";
@@ -1407,6 +1406,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         } else {
             $sex_search = '';
         }
+
         $rows = $this->runSql(
             "SELECT IFNULL(AVG(death.d_julianday2-birth.d_julianday1), 0) AS age" .
             " FROM `##dates` AS death, `##dates` AS birth, `##individuals` AS indi" .
@@ -1907,7 +1907,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
-     * @param string      $maxtoshow
+     * @param int         $maxtoshow
      *
      * @return string
      */
@@ -1915,10 +1915,10 @@ class IndividualRepository implements IndividualRepositoryInterface
         string $size = null,
         string $color_from = null,
         string $color_to = null,
-        string $maxtoshow = '7'
+        int $maxtoshow = 7
     ): string {
         $tot_indi = $this->totalIndividualsQuery();
-        $given    = $this->commonGivenQuery('B', 'chart', false, 1, (int) $maxtoshow);
+        $given    = $this->commonGivenQuery('B', 'chart', false, 1, $maxtoshow);
 
         return (new ChartCommonGiven())
             ->chartCommonGiven($tot_indi, $given, $size, $color_from, $color_to);
@@ -1930,7 +1930,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
-     * @param string      $number_of_surnames
+     * @param int         $number_of_surnames
      *
      * @return string
      */
@@ -1938,10 +1938,10 @@ class IndividualRepository implements IndividualRepositoryInterface
         string $size = null,
         string $color_from = null,
         string $color_to = null,
-        string $number_of_surnames = '10'
+        int $number_of_surnames = 10
     ): string {
         $tot_indi     = $this->totalIndividualsQuery();
-        $all_surnames = $this->topSurnames((int) $number_of_surnames, 0);
+        $all_surnames = $this->topSurnames($number_of_surnames, 0);
 
         return (new ChartCommonSurname($this->tree))
             ->chartCommonSurnames($tot_indi, $all_surnames, $size, $color_from, $color_to);
@@ -1968,7 +1968,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Create a chart showing individuals with/without sources.
      *
-     * @param string|null $size        // Optional parameter, set from tag
+     * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
      *

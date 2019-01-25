@@ -57,7 +57,7 @@ class ChartFamily extends AbstractGoogle
      * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
-     * @param string      $total
+     * @param int         $total
      *
      * @return string
      */
@@ -65,7 +65,7 @@ class ChartFamily extends AbstractGoogle
         string $size       = null,
         string $color_from = null,
         string $color_to   = null,
-        string $total      = '10'
+        int    $total      = 10
     ): string {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
@@ -75,10 +75,8 @@ class ChartFamily extends AbstractGoogle
         $size       = $size ?? $WT_STATS_L_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
         $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
         $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
-        $total      = $total ?? '10';
+        $sizes      = explode('x', $size);
 
-        $sizes = explode('x', $size);
-        $total = (int) $total;
         $rows  = $this->runSql(
             " SELECT f_numchil AS tot, f_id AS id" .
             " FROM `##families`" .
@@ -127,8 +125,13 @@ class ChartFamily extends AbstractGoogle
      *
      * @return string
      */
-    public function chartFamsWithSources(int $tot_fam, int $tot_fam_source, string $size = null, string $color_from = null, string $color_to = null): string
-    {
+    public function chartFamsWithSources(
+        int $tot_fam,
+        int $tot_fam_source,
+        string $size       = null,
+        string $color_from = null,
+        string $color_to   = null
+    ): string {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
@@ -168,16 +171,17 @@ class ChartFamily extends AbstractGoogle
      *
      * @param int    $no_child_fam The number of families with no children
      * @param string $size
-     * @param string $year1
-     * @param string $year2
+     * @param int    $year1
+     * @param int    $year2
      *
      * @return string
      */
-    public function chartNoChildrenFamilies(int $no_child_fam, string $size = '220x200', string $year1 = '-1', string $year2 = '-1'): string
-    {
-        $year1 = (int) $year1;
-        $year2 = (int) $year2;
-
+    public function chartNoChildrenFamilies(
+        int $no_child_fam,
+        string $size = '220x200',
+        int $year1   = -1,
+        int $year2   = -1
+    ): string {
         $sizes = explode('x', $size);
 
         if ($year1 >= 0 && $year2 >= 0) {
@@ -272,7 +276,7 @@ class ChartFamily extends AbstractGoogle
      *
      * @return \stdClass[]
      */
-    private function runSql($sql): array
+    private function runSql(string $sql): array
     {
         return Sql::runSql($sql);
     }

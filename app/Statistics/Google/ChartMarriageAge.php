@@ -56,7 +56,7 @@ class ChartMarriageAge extends AbstractGoogle
      *
      * @return string
      */
-    public function chartMarriageAge($size = '200x250'): string
+    public function chartMarriageAge(string $size = '200x250'): string
     {
         $sex   = 'BOTH';
         $sizes = explode('x', $size);
@@ -197,7 +197,7 @@ class ChartMarriageAge extends AbstractGoogle
      *
      * @return \stdClass[]
      */
-    private function runSql($sql): array
+    private function runSql(string $sql): array
     {
         return Sql::runSql($sql);
     }
