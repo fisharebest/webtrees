@@ -51,8 +51,6 @@ class HitCountRepository implements HitCountRepositoryInterface
      * @param string $page_parameter
      *
      * @return string
-     *
-     * @todo Use View
      */
     private function hitCountQuery($page_name, string $page_parameter = ''): string
     {
@@ -68,9 +66,12 @@ class HitCountRepository implements HitCountRepositoryInterface
 
         $hit_counter = new PageHitCounter(Auth::user(), $this->tree);
 
-        return '<span class="odometer">'
-            . I18N::digits($hit_counter->getCount($this->tree, $page_name, $page_parameter))
-            . '</span>';
+        return view(
+            'statistics/hit-count',
+            [
+                'count' => $hit_counter->getCount($this->tree, $page_name, $page_parameter),
+            ]
+        );
     }
 
     /**
