@@ -117,13 +117,11 @@ abstract class AbstractModule implements ModuleInterface
      *
      * @param string $name
      *
-     * @return ModuleInterface
+     * @return void
      */
-    final public function setName(string $name): ModuleInterface
+    final public function setName(string $name): void
     {
         $this->name = $name;
-
-        return $this;
     }
 
     /**
@@ -168,7 +166,7 @@ abstract class AbstractModule implements ModuleInterface
      *
      * @return string
      */
-    final public function getPreference($setting_name, $default = ''): string
+    final public function getPreference(string $setting_name, string $default = ''): string
     {
         return DB::table('module_setting')
             ->where('module_name', '=', $this->name())
@@ -187,7 +185,7 @@ abstract class AbstractModule implements ModuleInterface
      *
      * @return $this
      */
-    final public function setPreference($setting_name, $setting_value): self
+    final public function setPreference(string $setting_name, string $setting_value): void
     {
         DB::table('module_setting')->updateOrInsert([
             'module_name'  => $this->name(),
@@ -195,8 +193,6 @@ abstract class AbstractModule implements ModuleInterface
         ], [
             'setting_value' => $setting_value,
         ]);
-
-        return $this;
     }
 
     /**

@@ -29,9 +29,9 @@ interface ModuleInterface
      *
      * @param string $name
      *
-     * @return self
+     * @return void
      */
-    public function setName(string $name): self;
+    public function setName(string $name): void;
 
     /**
      * A unique internal name for this module (based on the installation folder).
@@ -79,4 +79,27 @@ interface ModuleInterface
      * @return int
      */
     public function accessLevel(Tree $tree, string $component): int;
+
+    /**
+     * Get a module setting. Return a default if the setting is not set.
+     *
+     * @param string $setting_name
+     * @param string $default
+     *
+     * @return string
+     */
+    public function getPreference(string $setting_name, string $default = ''): string;
+
+    /**
+     * Set a module setting.
+     *
+     * Since module settings are NOT NULL, setting a value to NULL will cause
+     * it to be deleted.
+     *
+     * @param string $setting_name
+     * @param string $setting_value
+     *
+     * @return $this
+     */
+    public function setPreference(string $setting_name, string $setting_value): void;
 }

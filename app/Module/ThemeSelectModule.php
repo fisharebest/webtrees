@@ -25,7 +25,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class ThemeSelectModule
  */
-class ThemeSelectModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
+class ThemeSelectModule extends AbstractModule implements  ModuleBlockInterface
 {
     use ModuleBlockTrait;
 

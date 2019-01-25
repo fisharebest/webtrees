@@ -30,7 +30,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class SlideShowModule
  */
-class SlideShowModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
+class SlideShowModule extends AbstractModule implements  ModuleBlockInterface
 {
     use ModuleBlockTrait;
 

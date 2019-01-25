@@ -1,0 +1,35 @@
+<?php use Fisharebest\Webtrees\I18N; ?>
+
+<?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('analytics') => I18N::translate('Tracking and analytics'), $title]]) ?>
+
+<h1><?= $title ?></h1>
+
+<form method="post" class="form-horizontal">
+    <?= csrf_field() ?>
+    <?= $form_fields ?>
+
+    <div class="row form-group">
+        <div class="col-sm-3">
+            <?= I18N::translate('Preview') ?>
+        </div>
+
+        <div class="col-sm-9">
+            <pre><code><?= e($preview) ?></code></pre>
+        </div>
+    </div>
+
+
+    <div class="row form-group">
+        <div class="offset-sm-3 col-sm-9">
+            <button type="submit" class="btn btn-primary">
+                <?= view('icons/save') ?>
+                <?= I18N::translate('save') ?>
+            </button>
+
+            <a href="<?= e(route('analytics')) ?>" class="btn btn-secondary">
+                <?= view('icons/cancel') ?>
+                <?= I18N::translate('cancel') ?>
+            </a>
+        </div>
+    </div>
+</form>

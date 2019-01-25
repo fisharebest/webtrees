@@ -30,13 +30,6 @@ use Symfony\Component\HttpFoundation\Request;
 interface ThemeInterface
 {
     /**
-     * Create scripts for analytics and tracking.
-     *
-     * @return string
-     */
-    public function analytics();
-
-    /**
      * Create a contact link for a user.
      *
      * @param User $user

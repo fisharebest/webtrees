@@ -28,7 +28,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class FamilyTreeStatisticsModule
  */
-class FamilyTreeStatisticsModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
+class FamilyTreeStatisticsModule extends AbstractModule implements  ModuleBlockInterface
 {
     use ModuleBlockTrait;
 

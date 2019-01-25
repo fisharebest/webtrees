@@ -30,7 +30,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class FamilyTreeFavoritesModule
  */
-class FamilyTreeFavoritesModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
+class FamilyTreeFavoritesModule extends AbstractModule implements  ModuleBlockInterface
 {
     use ModuleBlockTrait;
 

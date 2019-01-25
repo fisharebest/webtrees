@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Interface ModuleBlockInterface - Classes and libraries for module system
  */
-interface ModuleBlockInterface
+interface ModuleBlockInterface extends ModuleInterface
 {
     /**
      * Generate the HTML content of this block.

@@ -29,7 +29,7 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 /**
  * Class FamilyTreeNewsModule
  */
-class FamilyTreeNewsModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
+class FamilyTreeNewsModule extends AbstractModule implements  ModuleBlockInterface
 {
     use ModuleBlockTrait;
 

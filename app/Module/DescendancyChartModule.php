@@ -38,7 +38,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class DescendancyChartModule
  */
-class DescendancyChartModule extends AbstractModule implements ModuleInterface, ModuleChartInterface
+class DescendancyChartModule extends AbstractModule implements  ModuleChartInterface
 {
     use ModuleChartTrait;
 

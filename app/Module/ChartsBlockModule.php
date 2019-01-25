@@ -28,7 +28,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class ChartsBlockModule
  */
-class ChartsBlockModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
+class ChartsBlockModule extends AbstractModule implements  ModuleBlockInterface
 {
     use ModuleBlockTrait;
 

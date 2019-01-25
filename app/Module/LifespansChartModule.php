@@ -33,7 +33,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class LifespansChartModule
  */
-class LifespansChartModule extends AbstractModule implements ModuleInterface, ModuleChartInterface
+class LifespansChartModule extends AbstractModule implements  ModuleChartInterface
 {
     use ModuleChartTrait;
 

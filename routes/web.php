@@ -24,6 +24,9 @@ $routes = [];
 // Admin routes.
 if (Auth::isAdmin()) {
     $routes += [
+        'GET:analytics'                       => 'Admin\\AnalyticsController@list',
+        'GET:analytics-edit'                  => 'Admin\\AnalyticsController@edit',
+        'POST:analytics-edit'                 => 'Admin\\AnalyticsController@save',
         'GET:admin-blocks'                    => 'AdminController@blocks',
         'GET:admin-charts'                    => 'AdminController@charts',
         'GET:admin-control-panel'             => 'AdminController@controlPanel',
@@ -56,8 +59,6 @@ if (Auth::isAdmin()) {
         'POST:admin-site-registration'        => 'AdminSiteController@registrationSave',
         'GET:admin-site-languages'            => 'AdminSiteController@languagesForm',
         'POST:admin-site-languages'           => 'AdminSiteController@languagesSave',
-        'GET:admin-site-analytics'            => 'AdminSiteController@analyticsForm',
-        'POST:admin-site-analytics'           => 'AdminSiteController@analyticsSave',
         'GET:admin-site-logs'                 => 'AdminSiteController@logs',
         'GET:admin-site-logs-data'            => 'AdminSiteController@logsData',
         'POST:admin-site-logs-delete'         => 'AdminSiteController@logsDelete',

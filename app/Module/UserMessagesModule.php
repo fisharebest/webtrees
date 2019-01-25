@@ -31,7 +31,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class UserMessagesModule
  */
-class UserMessagesModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
+class UserMessagesModule extends AbstractModule implements  ModuleBlockInterface
 {
     use ModuleBlockTrait;
 

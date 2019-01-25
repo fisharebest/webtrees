@@ -25,7 +25,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 /**
  * Class ListsMenuModule - provide a menu option for the lists
  */
-class ListsMenuModule extends AbstractModule implements ModuleInterface, ModuleMenuInterface
+class ListsMenuModule extends AbstractModule implements  ModuleMenuInterface
 {
     use ModuleMenuTrait;
 

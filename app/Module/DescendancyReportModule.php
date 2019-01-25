@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class DescendancyReportModule
  */
-class DescendancyReportModule extends AbstractModule implements ModuleInterface, ModuleReportInterface
+class DescendancyReportModule extends AbstractModule implements  ModuleReportInterface
 {
     use ModuleReportTrait;
 

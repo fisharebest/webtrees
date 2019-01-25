@@ -29,7 +29,7 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 /**
  * Class UserJournalModule
  */
-class UserJournalModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
+class UserJournalModule extends AbstractModule implements  ModuleBlockInterface
 {
     use ModuleBlockTrait;
 

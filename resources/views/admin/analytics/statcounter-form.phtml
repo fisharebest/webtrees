@@ -1,0 +1,20 @@
+<?php use Fisharebest\Webtrees\I18N; ?>
+
+<div class="row form-group">
+    <label for="STATCOUNTER_PROJECT_ID" class="col-sm-3 col-form-label">
+        <?= /* I18N: A configuration setting */ I18N::translate('Site identification code') ?>
+    </label>
+    <div class="col-sm-9">
+        <input type="text" class="form-control" id="STATCOUNTER_PROJECT_ID" name="STATCOUNTER_PROJECT_ID" value="<?= e($STATCOUNTER_PROJECT_ID ?? '') ?>" maxlength="255" pattern="[0-9]+">
+    </div>
+</div>
+
+<!-- STATCOUNTER_SECURITY_ID -->
+<div class="row form-group">
+    <label for="STATCOUNTER_SECURITY_ID" class="col-sm-3 col-form-label">
+        <?= /* I18N: A configuration setting */ I18N::translate('Security code') ?>
+    </label>
+    <div class="col-sm-9">
+        <input type="text" class="form-control" id="STATCOUNTER_SECURITY_ID" name="STATCOUNTER_SECURITY_ID" value="<?= e($STATCOUNTER_SECURITY_ID ?? '') ?>" maxlength="255" pattern="[0-9a-zA-Z]+">
+    </div>
+</div>

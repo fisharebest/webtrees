@@ -22,7 +22,7 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Interface ModuleTabInterface - Classes and libraries for module system
  */
-interface ModuleTabInterface
+interface ModuleTabInterface extends ModuleInterface
 {
     /**
      * Users change change the order of tabs using the control panel.

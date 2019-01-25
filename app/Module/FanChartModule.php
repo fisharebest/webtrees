@@ -30,7 +30,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class FanChartModule
  */
-class FanChartModule extends AbstractModule implements ModuleInterface, ModuleChartInterface
+class FanChartModule extends AbstractModule implements  ModuleChartInterface
 {
     use ModuleChartTrait;
 

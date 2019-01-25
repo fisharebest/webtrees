@@ -34,7 +34,7 @@ use Symfony\Component\HttpFoundation\Response;
  * Class InteractiveTreeModule
  * Tip : you could change the number of generations loaded before ajax calls both in individual page and in treeview page to optimize speed and server load
  */
-class InteractiveTreeModule extends AbstractModule implements ModuleInterface, ModuleChartInterface, ModuleTabInterface
+class InteractiveTreeModule extends AbstractModule implements  ModuleChartInterface, ModuleTabInterface
 {
     use ModuleChartTrait;
     use ModuleTabTrait;

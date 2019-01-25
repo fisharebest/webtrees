@@ -31,7 +31,7 @@ use Fisharebest\Webtrees\Site;
 /**
  * Class IndividualFactsTabModule
  */
-class IndividualFactsTabModule extends AbstractModule implements ModuleInterface, ModuleTabInterface
+class IndividualFactsTabModule extends AbstractModule implements  ModuleTabInterface
 {
     use ModuleTabTrait;
 

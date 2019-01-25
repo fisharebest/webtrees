@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class CemeteryReportModule
  */
-class CemeteryReportModule extends AbstractModule implements ModuleInterface, ModuleReportInterface
+class CemeteryReportModule extends AbstractModule implements  ModuleReportInterface
 {
     use ModuleReportTrait;
 

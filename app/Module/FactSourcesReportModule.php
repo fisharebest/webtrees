@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class FactSourcesReportModule
  */
-class FactSourcesReportModule extends AbstractModule implements ModuleInterface, ModuleReportInterface
+class FactSourcesReportModule extends AbstractModule implements  ModuleReportInterface
 {
     use ModuleReportTrait;
 

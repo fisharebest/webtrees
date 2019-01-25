@@ -27,7 +27,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class LoggedInUsersModule
  */
-class LoggedInUsersModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
+class LoggedInUsersModule extends AbstractModule implements  ModuleBlockInterface
 {
     use ModuleBlockTrait;
 

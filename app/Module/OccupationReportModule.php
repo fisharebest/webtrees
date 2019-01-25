@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class OccupationReportModule
  */
-class OccupationReportModule extends AbstractModule implements ModuleInterface, ModuleReportInterface
+class OccupationReportModule extends AbstractModule implements  ModuleReportInterface
 {
     use ModuleReportTrait;
 

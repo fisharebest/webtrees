@@ -18,6 +18,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
+use Fisharebest\Webtrees\Module\BingWebmasterToolsModule;
+use Fisharebest\Webtrees\Module\GoogleAnalyticsModule;
+use Fisharebest\Webtrees\Module\GoogleWebmasterToolsModule;
+use Fisharebest\Webtrees\Module\MatomoAnalyticsModule;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
@@ -25,6 +29,7 @@ use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
+use Fisharebest\Webtrees\Module\StatcounterModule;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -126,16 +131,75 @@ class Module
     ];
 
     /**
+     * All core modules in the system.
+     *
+     * @return Collection
+     */
+    private static function coreModules(): Collection
+    {
+        // Array keys are module names, and should match module names from earlier versions of webtrees.
+        $modules = new Collection([
+            'bing-webmaster-tools'   => BingWebmasterToolsModule::class,
+            'google-analytics'       => GoogleAnalyticsModule::class,
+            'google-webmaster-tools' => GoogleWebmasterToolsModule::class,
+            'matomo-analytics'       => MatomoAnalyticsModule::class,
+            'statcounter'            => StatcounterModule::class,
+        ]);
+
+        return $modules->map(function (string $class, string $name): ModuleInterface {
+            $module = app()->make($class);
+
+            $module->setName($name);
+
+            return $module;
+        });
+    }
+
+    /**
+     * All custom modules in the system.  Custom modules are defined in modules_v4/
+     *
+     * @return Collection
+     */
+    private static function customModules(): Collection
+    {
+        $pattern   = WT_ROOT . Webtrees::MODULES_PATH . '*/module.php';
+        $filenames = glob($pattern);
+
+        return (new Collection($filenames))
+            ->filter(function (string $filename): bool {
+                // Special characters will break PHP variable names.
+                // This also allows us to ignore modules called "foo.example" and "foo.disable"
+                return !Str::contains(basename(dirname($filename)), ['.', ' ', '[', ']']);
+            })
+            ->map(function (string $filename): ?ModuleInterface {
+                try {
+                    $module = self::load($filename);
+
+                    if ($module instanceof ModuleInterface) {
+                        $module_name = 'custom-' . basename(dirname($filename));
+
+                        $module->setName($module_name);
+                    }
+
+                    return $module;
+                } catch (Throwable $ex) {
+                    $message = '<pre>' . e($ex->getMessage()) . "\n" . e($ex->getTraceAsString()) . '</pre>';
+                    FlashMessages::addMessage($message, 'danger');
+
+                    return null;
+                }
+            })
+            ->filter();
+    }
+
+    /**
      * All modules.
      *
      * @return Collection|ModuleInterface[]
      */
     public static function all(): Collection
     {
-        $pattern   = WT_ROOT . Webtrees::MODULES_PATH . '*/module.php';
-        $filenames = glob($pattern);
-
-        return app('cache.array')->rememberForever('all_modules', function () use ($filenames): Collection {
+        return app('cache.array')->rememberForever('all_modules', function (): Collection {
             // Modules have a default status, order etc.
             // We can override these from database settings.
             $module_info = DB::table('module')
@@ -144,49 +208,31 @@ class Module
                     return [$row->module_name => $row];
                 });
 
-            return (new Collection($filenames))
-                ->filter(function (string $filename): bool {
-                    // Module names with dots break things.
-                    return !Str::contains(basename(dirname($filename)), '.');
-                })
-                ->map(function (string $filename) use ($module_info): ?ModuleInterface {
-                    try {
-                        $module_name = basename(dirname($filename));
-                        $module      = self::load($filename);
+            return self::coreModules()
+                ->merge(self::customModules())
+                ->map(function (ModuleInterface $module) use ($module_info): ModuleInterface {
+                    $info = $module_info->get($module->name());
 
-                        if ($module instanceof ModuleInterface) {
-                            $module->setName($module_name);
+                    if ($info instanceof stdClass) {
+                        $module->setEnabled($info->status === 'enabled');
+
+                        if ($module instanceof ModuleMenuInterface && $info->menu_order !== null) {
+                            $module->setMenuOrder((int) $info->menu_order);
                         }
 
-                        $info = $module_info->get($module_name);
-
-                        if ($info instanceof stdClass) {
-                            $module->setEnabled($info->status === 'enabled');
-
-                            if ($module instanceof ModuleMenuInterface && $info->menu_order !== null) {
-                                $module->setMenuOrder((int) $info->menu_order);
-                            }
-
-                            if ($module instanceof ModuleSidebarInterface && $info->sidebar_order !== null) {
-                                $module->setSidebarOrder((int) $info->sidebar_order);
-                            }
-
-                            if ($module instanceof ModuleTabInterface && $info->tab_order !== null) {
-                                $module->setTabOrder((int) $info->tab_order);
-                            }
-                        } else {
-                            DB::table('module')->insert(['module_name' => $module_name]);
+                        if ($module instanceof ModuleSidebarInterface && $info->sidebar_order !== null) {
+                            $module->setSidebarOrder((int) $info->sidebar_order);
                         }
 
-                        return $module;
-                    } catch (Throwable $ex) {
-                        $message = '<pre>' . e($ex->getMessage()) . "\n" . e($ex->getTraceAsString()) . '</pre>';
-                        FlashMessages::addMessage($message, 'danger');
-
-                        return null;
+                        if ($module instanceof ModuleTabInterface && $info->tab_order !== null) {
+                            $module->setTabOrder((int) $info->tab_order);
+                        }
+                    } else {
+                        DB::table('module')->insert(['module_name' => $module->name()]);
                     }
+
+                    return $module;
                 })
-                ->filter()
                 ->sort(self::moduleSorter());
         });
     }
@@ -263,7 +309,7 @@ class Module
     public static function findByComponent(string $component, Tree $tree, User $user): Collection
     {
         $interface = self::COMPONENTS[$component];
-        
+
         return self::findByInterface($interface)
             ->filter(function (ModuleInterface $module) use ($component, $tree, $user): bool {
                 return $module->accessLevel($tree, $component) >= Auth::accessLevel($tree, $user);

@@ -31,7 +31,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Class StatisticsChartModule
  */
-class StatisticsChartModule extends AbstractModule implements ModuleInterface, ModuleChartInterface
+class StatisticsChartModule extends AbstractModule implements  ModuleChartInterface
 {
     use ModuleChartTrait;
 

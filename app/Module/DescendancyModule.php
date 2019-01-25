@@ -29,7 +29,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class DescendancyModule
  */
-class DescendancyModule extends AbstractModule implements ModuleInterface, ModuleSidebarInterface
+class DescendancyModule extends AbstractModule implements  ModuleSidebarInterface
 {
     use ModuleSidebarTrait;
 

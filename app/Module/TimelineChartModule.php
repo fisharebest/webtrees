@@ -30,7 +30,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class TimelineChartModule
  */
-class TimelineChartModule extends AbstractModule implements ModuleInterface, ModuleChartInterface
+class TimelineChartModule extends AbstractModule implements  ModuleChartInterface
 {
     use ModuleChartTrait;
 

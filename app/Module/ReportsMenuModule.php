@@ -28,7 +28,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class ReportsMenuModule - provide a menu option for the reports
  */
-class ReportsMenuModule extends AbstractModule implements ModuleInterface, ModuleMenuInterface
+class ReportsMenuModule extends AbstractModule implements  ModuleMenuInterface
 {
     use ModuleMenuTrait;
 

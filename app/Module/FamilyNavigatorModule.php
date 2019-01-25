@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Class FamilyNavigatorModule
  */
-class FamilyNavigatorModule extends AbstractModule implements ModuleInterface, ModuleSidebarInterface
+class FamilyNavigatorModule extends AbstractModule implements  ModuleSidebarInterface
 {
     use ModuleSidebarTrait;
 

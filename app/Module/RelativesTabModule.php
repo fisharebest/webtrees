@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Class RelativesTabModule
  */
-class RelativesTabModule extends AbstractModule implements ModuleInterface, ModuleTabInterface
+class RelativesTabModule extends AbstractModule implements  ModuleTabInterface
 {
     use ModuleTabTrait;
 

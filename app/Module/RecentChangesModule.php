@@ -28,7 +28,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class RecentChangesModule
  */
-class RecentChangesModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
+class RecentChangesModule extends AbstractModule implements  ModuleBlockInterface
 {
     use ModuleBlockTrait;
 

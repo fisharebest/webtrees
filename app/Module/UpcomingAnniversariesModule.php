@@ -28,7 +28,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class UpcomingAnniversariesModule
  */
-class UpcomingAnniversariesModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
+class UpcomingAnniversariesModule extends AbstractModule implements  ModuleBlockInterface
 {
     use ModuleBlockTrait;
 

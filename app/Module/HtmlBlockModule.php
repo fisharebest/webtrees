@@ -27,7 +27,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class HtmlBlockModule
  */
-class HtmlBlockModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
+class HtmlBlockModule extends AbstractModule implements  ModuleBlockInterface
 {
     use ModuleBlockTrait;
 

@@ -22,7 +22,7 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Interface ModuleSidebarInterface - Classes and libraries for module system
  */
-interface ModuleSidebarInterface
+interface ModuleSidebarInterface extends ModuleInterface
 {
     /**
      * Users change change the order of sidebars using the control panel.

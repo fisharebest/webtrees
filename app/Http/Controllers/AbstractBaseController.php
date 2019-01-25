@@ -17,33 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Webtrees\Exceptions\FamilyAccessDeniedException;
-use Fisharebest\Webtrees\Exceptions\FamilyNotFoundException;
-use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
-use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
-use Fisharebest\Webtrees\Exceptions\MediaAccessDeniedException;
-use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
-use Fisharebest\Webtrees\Exceptions\NoteAccessDeniedException;
-use Fisharebest\Webtrees\Exceptions\NoteNotFoundException;
-use Fisharebest\Webtrees\Exceptions\RecordAccessDeniedException;
-use Fisharebest\Webtrees\Exceptions\RecordNotFoundException;
-use Fisharebest\Webtrees\Exceptions\RepositoryAccessDeniedException;
-use Fisharebest\Webtrees\Exceptions\RepositoryNotFoundException;
-use Fisharebest\Webtrees\Exceptions\SourceAccessDeniedException;
-use Fisharebest\Webtrees\Exceptions\SourceNotFoundException;
-use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Media;
-use Fisharebest\Webtrees\Module;
-use Fisharebest\Webtrees\Module\ModuleChartInterface;
-use Fisharebest\Webtrees\Note;
-use Fisharebest\Webtrees\Repository;
-use Fisharebest\Webtrees\Source;
-use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Common functions for all controllers

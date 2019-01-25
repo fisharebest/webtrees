@@ -46,40 +46,6 @@ class AdminSiteController extends AbstractBaseController
     protected $layout = 'layouts/administration';
 
     /**
-     * @return Response
-     */
-    public function analyticsForm(): Response
-    {
-        /* I18N: e.g. http://www.google.com/analytics */
-        $title = I18N::translate('Tracking and analytics');
-
-        return $this->viewResponse('admin/site-analytics', [
-            'title' => $title,
-        ]);
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return RedirectResponse
-     */
-    public function analyticsSave(Request $request): RedirectResponse
-    {
-        Site::setPreference('BING_WEBMASTER_ID', $request->get('BING_WEBMASTER_ID'));
-        Site::setPreference('GOOGLE_WEBMASTER_ID', $request->get('GOOGLE_WEBMASTER_ID'));
-        Site::setPreference('GOOGLE_ANALYTICS_ID', $request->get('GOOGLE_ANALYTICS_ID'));
-        Site::setPreference('PIWIK_URL', $request->get('PIWIK_URL'));
-        Site::setPreference('PIWIK_SITE_ID', $request->get('PIWIK_SITE_ID'));
-        Site::setPreference('STATCOUNTER_PROJECT_ID', $request->get('STATCOUNTER_PROJECT_ID'));
-        Site::setPreference('STATCOUNTER_SECURITY_ID', $request->get('STATCOUNTER_SECURITY_ID'));
-
-        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
-        $url = route('admin-control-panel');
-
-        return new RedirectResponse($url);
-    }
-
-    /**
      * Show old user files in the data folder.
      *
      * @param Filesystem $filesystem

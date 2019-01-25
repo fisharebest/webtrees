@@ -28,7 +28,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class ChartsMenuModule - provide a menu option for the charts
  */
-class ChartsMenuModule extends AbstractModule implements ModuleInterface, ModuleMenuInterface
+class ChartsMenuModule extends AbstractModule implements  ModuleMenuInterface
 {
     use ModuleMenuTrait;
 

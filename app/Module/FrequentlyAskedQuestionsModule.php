@@ -31,7 +31,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class FrequentlyAskedQuestionsModule
  */
-class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleInterface, ModuleConfigInterface, ModuleMenuInterface
+class FrequentlyAskedQuestionsModule extends AbstractModule implements  ModuleConfigInterface, ModuleMenuInterface
 {
     use ModuleConfigTrait;
     use ModuleMenuTrait;

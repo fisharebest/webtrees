@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\Media;
 /**
  * Class AlbumModule
  */
-class AlbumModule extends AbstractModule implements ModuleInterface, ModuleTabInterface
+class AlbumModule extends AbstractModule implements  ModuleTabInterface
 {
     use ModuleTabTrait;
 

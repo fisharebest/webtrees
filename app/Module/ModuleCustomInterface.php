@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees\Module;
 /**
  * Interface ModuleCustomInterface - Classes and libraries for module system
  */
-interface ModuleCustomInterface
+interface ModuleCustomInterface extends ModuleInterface
 {
     /**
      * The person or organisation who created this module.

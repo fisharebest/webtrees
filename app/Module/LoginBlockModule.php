@@ -26,7 +26,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class LoginBlockModule
  */
-class LoginBlockModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
+class LoginBlockModule extends AbstractModule implements  ModuleBlockInterface
 {
     use ModuleBlockTrait;
 

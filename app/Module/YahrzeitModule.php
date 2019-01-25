@@ -30,7 +30,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class YahrzeitModule
  */
-class YahrzeitModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
+class YahrzeitModule extends AbstractModule implements  ModuleBlockInterface
 {
     use ModuleBlockTrait;
 

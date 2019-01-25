@@ -27,7 +27,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class UserWelcomeModule
  */
-class UserWelcomeModule extends AbstractModule implements ModuleInterface, ModuleBlockInterface
+class UserWelcomeModule extends AbstractModule implements  ModuleBlockInterface
 {
     use ModuleBlockTrait;
 

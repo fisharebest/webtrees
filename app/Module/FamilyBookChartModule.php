@@ -31,7 +31,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class FamilyBookChartModule
  */
-class FamilyBookChartModule extends AbstractModule implements ModuleInterface, ModuleChartInterface
+class FamilyBookChartModule extends AbstractModule implements  ModuleChartInterface
 {
     use ModuleChartTrait;
 

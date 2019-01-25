@@ -38,7 +38,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Class SiteMapModule
  */
-class SiteMapModule extends AbstractModule implements ModuleInterface, ModuleConfigInterface
+class SiteMapModule extends AbstractModule implements  ModuleConfigInterface
 {
     use ModuleConfigTrait;
 

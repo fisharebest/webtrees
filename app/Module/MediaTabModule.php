@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Class MediaTabModule
  */
-class MediaTabModule extends AbstractModule implements ModuleInterface, ModuleTabInterface
+class MediaTabModule extends AbstractModule implements  ModuleTabInterface
 {
     use ModuleTabTrait;
 

@@ -32,7 +32,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class PedigreeChartModule
  */
-class PedigreeChartModule extends AbstractModule implements ModuleInterface, ModuleChartInterface
+class PedigreeChartModule extends AbstractModule implements  ModuleChartInterface
 {
     use ModuleChartTrait;
 
