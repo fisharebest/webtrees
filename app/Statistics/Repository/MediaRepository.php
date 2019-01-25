@@ -35,29 +35,53 @@ class MediaRepository implements MediaRepositoryInterface
     private $tree;
 
     /**
+     * Available media types.
+     */
+    private const MEDIA_TYPE_ALL         = 'all';
+    private const MEDIA_TYPE_AUDIO       = 'audio';
+    private const MEDIA_TYPE_BOOK        = 'book';
+    private const MEDIA_TYPE_CARD        = 'card';
+    private const MEDIA_TYPE_CERTIFICATE = 'certificate';
+    private const MEDIA_TYPE_COAT        = 'coat';
+    private const MEDIA_TYPE_DOCUMENT    = 'document';
+    private const MEDIA_TYPE_ELECTRONIC  = 'electronic';
+    private const MEDIA_TYPE_FICHE       = 'fiche';
+    private const MEDIA_TYPE_FILM        = 'film';
+    private const MEDIA_TYPE_MAGAZINE    = 'magazine';
+    private const MEDIA_TYPE_MANUSCRIPT  = 'manuscript';
+    private const MEDIA_TYPE_MAP         = 'map';
+    private const MEDIA_TYPE_NEWSPAPER   = 'newspaper';
+    private const MEDIA_TYPE_PAINTING    = 'painting';
+    private const MEDIA_TYPE_PHOTO       = 'photo';
+    private const MEDIA_TYPE_TOMBSTONE   = 'tombstone';
+    private const MEDIA_TYPE_VIDEO       = 'video';
+    private const MEDIA_TYPE_OTHER       = 'other';
+    private const MEDIA_TYPE_UNKNOWN     = 'unknown';
+
+    /**
      * List of GEDCOM media types.
      *
      * @var string[]
      */
-    private static $media_types = [
-        'audio',
-        'book',
-        'card',
-        'certificate',
-        'coat',
-        'document',
-        'electronic',
-        'magazine',
-        'manuscript',
-        'map',
-        'fiche',
-        'film',
-        'newspaper',
-        'painting',
-        'photo',
-        'tombstone',
-        'video',
-        'other',
+    private const MEDIA_TYPES = [
+        self::MEDIA_TYPE_AUDIO,
+        self::MEDIA_TYPE_BOOK,
+        self::MEDIA_TYPE_CARD,
+        self::MEDIA_TYPE_CERTIFICATE,
+        self::MEDIA_TYPE_COAT,
+        self::MEDIA_TYPE_DOCUMENT,
+        self::MEDIA_TYPE_ELECTRONIC,
+        self::MEDIA_TYPE_FICHE,
+        self::MEDIA_TYPE_FILM,
+        self::MEDIA_TYPE_MAGAZINE,
+        self::MEDIA_TYPE_MANUSCRIPT,
+        self::MEDIA_TYPE_MAP,
+        self::MEDIA_TYPE_NEWSPAPER,
+        self::MEDIA_TYPE_PAINTING,
+        self::MEDIA_TYPE_PHOTO,
+        self::MEDIA_TYPE_TOMBSTONE,
+        self::MEDIA_TYPE_VIDEO,
+        self::MEDIA_TYPE_OTHER,
     ];
 
     /**
@@ -71,25 +95,17 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @return array
-     */
-    private function getMediaTypes(): array
-    {
-        return self::$media_types;
-    }
-
-    /**
-     * Count the number of media records with a given type.
+     * Returns the number of media records of the given type.
      *
-     * @param string $type The media type
+     * @param string $type The media type to query
      *
      * @return int
      */
     private function totalMediaTypeQuery(string $type): int
     {
-        if (($type !== 'all')
-            && ($type !== 'unknown')
-            && !\in_array($type, $this->getMediaTypes(), true)
+        if (($type !== self::MEDIA_TYPE_ALL)
+            && ($type !== self::MEDIA_TYPE_UNKNOWN)
+            && !\in_array($type, self::MEDIA_TYPES, true)
         ) {
             return 0;
         }
@@ -97,10 +113,10 @@ class MediaRepository implements MediaRepositoryInterface
         $query = DB::table('media')
             ->where('m_file', '=', $this->tree->id());
 
-        if ($type !== 'all') {
-            if ($type === 'unknown') {
+        if ($type !== self::MEDIA_TYPE_ALL) {
+            if ($type === self::MEDIA_TYPE_UNKNOWN) {
                 // There has to be a better way then this :(
-                foreach ($this->getMediaTypes() as $t) {
+                foreach (self::MEDIA_TYPES as $t) {
                     // Use function to add brackets
                     $query->where(function (Builder $query) use ($t) {
                         $query->where('m_gedcom', 'not like', '%3 TYPE ' . $t . '%')
@@ -124,7 +140,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMedia(): string
     {
-        return I18N::number($this->totalMediaTypeQuery('all'));
+        return I18N::number($this->totalMediaTypeQuery(self::MEDIA_TYPE_ALL));
     }
 
     /**
@@ -132,7 +148,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaAudio(): string
     {
-        return I18N::number($this->totalMediaTypeQuery('audio'));
+        return I18N::number($this->totalMediaTypeQuery(self::MEDIA_TYPE_AUDIO));
     }
 
     /**
@@ -140,7 +156,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaBook(): string
     {
-        return I18N::number($this->totalMediaTypeQuery('book'));
+        return I18N::number($this->totalMediaTypeQuery(self::MEDIA_TYPE_BOOK));
     }
 
     /**
@@ -148,7 +164,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaCard(): string
     {
-        return I18N::number($this->totalMediaTypeQuery('card'));
+        return I18N::number($this->totalMediaTypeQuery(self::MEDIA_TYPE_CARD));
     }
 
     /**
@@ -156,7 +172,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaCertificate(): string
     {
-        return I18N::number($this->totalMediaTypeQuery('certificate'));
+        return I18N::number($this->totalMediaTypeQuery(self::MEDIA_TYPE_CERTIFICATE));
     }
 
     /**
@@ -164,7 +180,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaCoatOfArms(): string
     {
-        return I18N::number($this->totalMediaTypeQuery('coat'));
+        return I18N::number($this->totalMediaTypeQuery(self::MEDIA_TYPE_COAT));
     }
 
     /**
@@ -172,7 +188,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaDocument(): string
     {
-        return I18N::number($this->totalMediaTypeQuery('document'));
+        return I18N::number($this->totalMediaTypeQuery(self::MEDIA_TYPE_DOCUMENT));
     }
 
     /**
@@ -180,31 +196,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaElectronic(): string
     {
-        return I18N::number($this->totalMediaTypeQuery('electronic'));
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function totalMediaMagazine(): string
-    {
-        return I18N::number($this->totalMediaTypeQuery('magazine'));
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function totalMediaManuscript(): string
-    {
-        return I18N::number($this->totalMediaTypeQuery('manuscript'));
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function totalMediaMap(): string
-    {
-        return I18N::number($this->totalMediaTypeQuery('map'));
+        return I18N::number($this->totalMediaTypeQuery(self::MEDIA_TYPE_ELECTRONIC));
     }
 
     /**
@@ -212,7 +204,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaFiche(): string
     {
-        return I18N::number($this->totalMediaTypeQuery('fiche'));
+        return I18N::number($this->totalMediaTypeQuery(self::MEDIA_TYPE_FICHE));
     }
 
     /**
@@ -220,7 +212,31 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaFilm(): string
     {
-        return I18N::number($this->totalMediaTypeQuery('film'));
+        return I18N::number($this->totalMediaTypeQuery(self::MEDIA_TYPE_FILM));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalMediaMagazine(): string
+    {
+        return I18N::number($this->totalMediaTypeQuery(self::MEDIA_TYPE_MAGAZINE));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalMediaManuscript(): string
+    {
+        return I18N::number($this->totalMediaTypeQuery(self::MEDIA_TYPE_MANUSCRIPT));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalMediaMap(): string
+    {
+        return I18N::number($this->totalMediaTypeQuery(self::MEDIA_TYPE_MAP));
     }
 
     /**
@@ -228,7 +244,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaNewspaper(): string
     {
-        return I18N::number($this->totalMediaTypeQuery('newspaper'));
+        return I18N::number($this->totalMediaTypeQuery(self::MEDIA_TYPE_NEWSPAPER));
     }
 
     /**
@@ -236,7 +252,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaPainting(): string
     {
-        return I18N::number($this->totalMediaTypeQuery('painting'));
+        return I18N::number($this->totalMediaTypeQuery(self::MEDIA_TYPE_PAINTING));
     }
 
     /**
@@ -244,7 +260,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaPhoto(): string
     {
-        return I18N::number($this->totalMediaTypeQuery('photo'));
+        return I18N::number($this->totalMediaTypeQuery(self::MEDIA_TYPE_PHOTO));
     }
 
     /**
@@ -252,7 +268,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaTombstone(): string
     {
-        return I18N::number($this->totalMediaTypeQuery('tombstone'));
+        return I18N::number($this->totalMediaTypeQuery(self::MEDIA_TYPE_TOMBSTONE));
     }
 
     /**
@@ -260,7 +276,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaVideo(): string
     {
-        return I18N::number($this->totalMediaTypeQuery('video'));
+        return I18N::number($this->totalMediaTypeQuery(self::MEDIA_TYPE_VIDEO));
     }
 
     /**
@@ -268,7 +284,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaOther(): string
     {
-        return I18N::number($this->totalMediaTypeQuery('other'));
+        return I18N::number($this->totalMediaTypeQuery(self::MEDIA_TYPE_OTHER));
     }
 
     /**
@@ -276,7 +292,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaUnknown(): string
     {
-        return I18N::number($this->totalMediaTypeQuery('unknown'));
+        return I18N::number($this->totalMediaTypeQuery(self::MEDIA_TYPE_UNKNOWN));
     }
 
     /**
@@ -288,12 +304,11 @@ class MediaRepository implements MediaRepositoryInterface
      */
     private function getSortedMediaTypeList(int $tot): array
     {
-        $med_types = $this->getMediaTypes();
-        $media     = [];
-        $c         = 0;
-        $max       = 0;
+        $media = [];
+        $c     = 0;
+        $max   = 0;
 
-        foreach ($med_types as $type) {
+        foreach (self::MEDIA_TYPES as $type) {
             $count = $this->totalMediaTypeQuery($type);
 
             if ($count > 0) {
@@ -307,9 +322,9 @@ class MediaRepository implements MediaRepositoryInterface
             }
         }
 
-        $count = $this->totalMediaTypeQuery('unknown');
+        $count = $this->totalMediaTypeQuery(self::MEDIA_TYPE_UNKNOWN);
         if ($count > 0) {
-            $media['unknown'] = $tot - $c;
+            $media[self::MEDIA_TYPE_UNKNOWN] = $tot - $c;
             if ($tot - $c > $max) {
                 $max = $count;
             }
@@ -324,10 +339,10 @@ class MediaRepository implements MediaRepositoryInterface
                 $c -= $cm;
             }
 
-            if (isset($media['other'])) {
-                $media['other'] += $c;
+            if (isset($media[self::MEDIA_TYPE_OTHER])) {
+                $media[self::MEDIA_TYPE_OTHER] += $c;
             } else {
-                $media['other'] = $c;
+                $media[self::MEDIA_TYPE_OTHER] = $c;
             }
         }
 
@@ -341,7 +356,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function chartMedia(string $size = null, string $color_from = null, string $color_to = null): string
     {
-        $tot   = $this->totalMediaTypeQuery('all');
+        $tot   = $this->totalMediaTypeQuery(self::MEDIA_TYPE_ALL);
         $media = $this->getSortedMediaTypeList($tot);
 
         return (new ChartMedia())
