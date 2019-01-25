@@ -706,47 +706,55 @@ class SearchService
             ->map(Individual::rowMapper())
             ->filter(GedcomRecord::accessFilter())
             ->filter(function (Individual $individual) use ($fields): bool {
-                if (empty($fields)) {
-                    return true;
-                }
-
                 // Check for XXXX:PLAC fields, which were only partially matched by SQL
                 foreach ($fields as $field_name => $field_value) {
-                    $regex_field_value = preg_quote($field_value, '/');
+                    $regex = '/' . preg_quote($field_value, '/') . '/i';
 
                     $parts = preg_split('/:/', $field_name . '::::');
 
                     if ($parts[1] === 'PLAC') {
                         // *:PLAC
-                        if (preg_match('/\n\d PLAC .*' . $regex_field_value . '/i', $individual->gedcom())) {
-                            continue;
+                        foreach ($individual->facts([$parts[0]]) as $fact) {
+                            if (preg_match($regex, $fact->place()->getGedcomName())) {
+                                return true;
+                            }
                         }
+
                     } elseif ($parts[0] === 'FAMS' && $parts[2] === 'PLAC') {
                         // FAMS:*:PLAC
                         foreach ($individual->getSpouseFamilies() as $family) {
-                            if (preg_match('/\n\d PLAC .*' . $regex_field_value . '/i', $family->gedcom())) {
-                                continue;
+                            foreach ($family->facts([$parts[1]]) as $fact) {
+                                if (preg_match($regex, $fact->place()->getGedcomName())) {
+                                    return true;
+                                }
                             }
                         }
                     } elseif ($parts[0] === 'FAMS') {
                         // e.g. searches for occupation, religion, note, etc.
                         foreach ($individual->getSpouseFamilies() as $family) {
-                            if (preg_match('/\n1 ' . $parts[1] . ' .*' . $regex_field_value . '/i', $family->gedcom())) {
-                                continue;
+                            foreach ($family->facts([$parts[1]]) as $fact) {
+                                if (preg_match($regex, $fact->value())) {
+                                    return true;
+                                }
                             }
                         }
                     } elseif ($parts[1] === 'TYPE') {
                         // e.g. FACT:TYPE or EVEN:TYPE
-                        if (preg_match('/\n1 ' . $parts[0] . '.*(\n2.*)*2 TYPE .*' . $regex_field_value . '/i', $individual->gedcom())) {
-                            continue;
+                        foreach ($individual->facts([$parts[0]]) as $fact) {
+                            if (preg_match($regex, $fact->attribute('TYPE'))) {
+                                return true;
+                            }
                         }
                     } else {
                         // e.g. searches for occupation, religion, note, etc.
-                        if (preg_match('/\n1 ' . $parts[0] . ' .*' . $regex_field_value . '/i', $individual->gedcom())) {
-                            continue;
+                        foreach ($individual->facts([$parts[0]]) as $fact) {
+                            if (preg_match($regex, $fact->value())) {
+                                return true;
+                            }
                         }
                     }
 
+                    // No match
                     return false;
                 }
 
