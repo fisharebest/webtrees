@@ -34,7 +34,6 @@ use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use Fisharebest\Webtrees\Webtrees;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
@@ -181,33 +180,22 @@ class ReportEngineController extends AbstractBaseController
      *
      * @param Request $request
      * @param Tree    $tree
+     * @param User    $user
      *
      * @return Response
      */
-    public function reportRun(Request $request, Tree $tree): Response
+    public function reportRun(Request $request, Tree $tree, User $user): Response
     {
-        $report   = $request->get('report');
+        $report   = $request->get('report', '');
         $output   = $request->get('output');
-        $vars     = $request->get('vars');
-        $varnames = $request->get('varnames');
-        $type     = $request->get('type');
+        $vars     = $request->get('vars', []);
+        $varnames = $request->get('varnames', []);
+        $type     = $request->get('type', []);
 
         $module = Module::findByName($report);
 
         if (!$module instanceof ModuleReportInterface) {
             throw new NotFoundHttpException('Report ' . $report . ' not found.');
-        }
-
-        if (!is_array($vars)) {
-            $vars = [];
-        }
-
-        if (!is_array($varnames)) {
-            $varnames = [];
-        }
-
-        if (!is_array($type)) {
-            $type = [];
         }
 
         //-- setup the arrays
@@ -221,7 +209,7 @@ class ReportEngineController extends AbstractBaseController
                         if ($record && $record->canShowName()) {
                             $newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($tree));
                         } else {
-                            return $this->reportSetup($request, $tree);
+                            return $this->reportSetup($request, $tree, $user);
                         }
                         break;
                     case 'FAM':
@@ -229,7 +217,7 @@ class ReportEngineController extends AbstractBaseController
                         if ($record && $record->canShowName()) {
                             $newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($tree));
                         } else {
-                            return $this->reportSetup($request, $tree);
+                            return $this->reportSetup($request, $tree, $user);
                         }
                         break;
                     case 'SOUR':
@@ -237,7 +225,7 @@ class ReportEngineController extends AbstractBaseController
                         if ($record && $record->canShowName()) {
                             $newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($tree));
                         } else {
-                            return $this->reportSetup($request, $tree);
+                            return $this->reportSetup($request, $tree, $user);
                         }
                         break;
                 }

@@ -52,7 +52,7 @@ class AnalyticsController extends AbstractAdminController
      */
     public function edit(Request $request): Response
     {
-        $module_name = $request->get('module');
+        $module_name = $request->get('module', '');
         $module      = Module::findByName($module_name);
 
         if ($module instanceof ModuleAnalyticsInterface) {
