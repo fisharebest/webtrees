@@ -972,7 +972,7 @@ class Stats implements
     /**
      * @inheritDoc
      */
-    public function statsBirthQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1): array
+    public function statsBirthQuery($sex = false, $year1 = -1, $year2 = -1): array
     {
         return $this->individualRepository->statsBirthQuery($sex, $year1, $year2);
     }
@@ -1052,7 +1052,7 @@ class Stats implements
     /**
      * @inheritDoc
      */
-    public function statsDeathQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1): array
+    public function statsDeathQuery($sex = false, $year1 = -1, $year2 = -1): array
     {
         return $this->individualRepository->statsDeathQuery($sex, $year1, $year2);
     }
@@ -1068,7 +1068,7 @@ class Stats implements
     /**
      * @inheritDoc
      */
-    public function statsAgeQuery($simple = true, $related = 'BIRT', $sex = 'BOTH', $year1 = -1, $year2 = -1)
+    public function statsAgeQuery($related = 'BIRT', $sex = 'BOTH', $year1 = -1, $year2 = -1)
     {
         return $this->individualRepository->statsAgeQuery($related, $sex, $year1, $year2);
     }
@@ -1419,7 +1419,7 @@ class Stats implements
     /**
      * @inheritDoc
      */
-    public function statsMarrQuery($simple = true, $first = false, $year1 = -1, $year2 = -1): array
+    public function statsMarrQuery($first = false, $year1 = -1, $year2 = -1): array
     {
         return $this->familyRepository->statsMarrQuery($first, $year1, $year2);
     }
@@ -1603,7 +1603,7 @@ class Stats implements
     /**
      * @inheritDoc
      */
-    public function statsMarrAgeQuery($simple = true, $sex = 'M', $year1 = -1, $year2 = -1): array
+    public function statsMarrAgeQuery($sex = 'M', $year1 = -1, $year2 = -1): array
     {
         return $this->familyRepository->statsMarrAgeQuery($sex, $year1, $year2);
     }
@@ -1903,7 +1903,7 @@ class Stats implements
     /**
      * @inheritDoc
      */
-    public function statsChildrenQuery($simple = true, $sex = 'BOTH', $year1 = -1, $year2 = -1): array
+    public function statsChildrenQuery($sex = 'BOTH', $year1 = -1, $year2 = -1): array
     {
         return $this->familyRepository->statsChildrenQuery($sex, $year1, $year2);
     }
@@ -1919,25 +1919,25 @@ class Stats implements
     /**
      * @inheritDoc
      */
-    public function topAgeBetweenSiblingsName(string $total = '10', string $one = ''): string
+    public function topAgeBetweenSiblingsName(string $total = '10'): string
     {
-        return $this->familyRepository->topAgeBetweenSiblingsName($total, $one);
+        return $this->familyRepository->topAgeBetweenSiblingsName($total);
     }
 
     /**
      * @inheritDoc
      */
-    public function topAgeBetweenSiblings(string $total = '10', string $one = ''): string
+    public function topAgeBetweenSiblings(string $total = '10'): string
     {
-        return $this->familyRepository->topAgeBetweenSiblings($total, $one);
+        return $this->familyRepository->topAgeBetweenSiblings($total);
     }
 
     /**
      * @inheritDoc
      */
-    public function topAgeBetweenSiblingsFullName(string $total = '10', string $one = ''): string
+    public function topAgeBetweenSiblingsFullName(string $total = '10'): string
     {
-        return $this->familyRepository->topAgeBetweenSiblingsFullName($total, $one);
+        return $this->familyRepository->topAgeBetweenSiblingsFullName($total);
     }
 
     /**
