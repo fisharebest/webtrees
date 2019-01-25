@@ -13,9 +13,9 @@
         </label>
         <div class="col-sm-9 wt-page-options-value">
             <select class="form-control" id="report" name="report">
-                <?php foreach ($reports as $file => $report) : ?>
-                    <option value="<?= e($file) ?>">
-                        <?= e($report) ?>
+                <?php foreach ($reports as $report) : ?>
+                    <option value="<?= e($report->name()) ?>">
+                        <?= e($report->title()) ?>
                     </option>
                 <?php endforeach ?>
             </select>

@@ -3,6 +3,7 @@
 <?php use Fisharebest\Webtrees\Module\ModuleBlockInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleChartInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleConfigInterface; ?>
+<?php use Fisharebest\Webtrees\Module\ModuleCustomInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleMenuInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleReportInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleSidebarInterface; ?>
@@ -101,7 +102,7 @@
                     </td>
                     <td class="d-none d-sm-table-cell">
                         <?= $module->description() ?>
-                        <?php if (!in_array($module->name(), $core_module_names)) : ?>
+                        <?php if ($module instanceof ModuleCustomInterface) : ?>
                             <br>
                             <?= view('icons/warning') ?>
                             <?= I18N::translate('Custom module') ?>

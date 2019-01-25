@@ -18,18 +18,94 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
+use Fisharebest\Webtrees\Module\AhnentafelReportModule;
+use Fisharebest\Webtrees\Module\AlbumModule;
+use Fisharebest\Webtrees\Module\AncestorsChartModule;
+use Fisharebest\Webtrees\Module\BatchUpdateModule;
 use Fisharebest\Webtrees\Module\BingWebmasterToolsModule;
+use Fisharebest\Webtrees\Module\BirthDeathMarriageReportModule;
+use Fisharebest\Webtrees\Module\BirthReportModule;
+use Fisharebest\Webtrees\Module\CalendarMenuModule;
+use Fisharebest\Webtrees\Module\CemeteryReportModule;
+use Fisharebest\Webtrees\Module\CensusAssistantModule;
+use Fisharebest\Webtrees\Module\ChangeReportModule;
+use Fisharebest\Webtrees\Module\ChartsBlockModule;
+use Fisharebest\Webtrees\Module\ChartsMenuModule;
+use Fisharebest\Webtrees\Module\CkeditorModule;
+use Fisharebest\Webtrees\Module\ClippingsCartModule;
+use Fisharebest\Webtrees\Module\CompactTreeChartModule;
+use Fisharebest\Webtrees\Module\DeathReportModule;
+use Fisharebest\Webtrees\Module\DescendancyChartModule;
+use Fisharebest\Webtrees\Module\DescendancyModule;
+use Fisharebest\Webtrees\Module\DescendancyReportModule;
+use Fisharebest\Webtrees\Module\ExtraInformationModule;
+use Fisharebest\Webtrees\Module\FactSourcesReportModule;
+use Fisharebest\Webtrees\Module\FamilyBookChartModule;
+use Fisharebest\Webtrees\Module\FamilyGroupReportModule;
+use Fisharebest\Webtrees\Module\FamilyNavigatorModule;
+use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
+use Fisharebest\Webtrees\Module\FamilyTreeNewsModule;
+use Fisharebest\Webtrees\Module\FamilyTreeStatisticsModule;
+use Fisharebest\Webtrees\Module\FanChartModule;
+use Fisharebest\Webtrees\Module\FrequentlyAskedQuestionsModule;
 use Fisharebest\Webtrees\Module\GoogleAnalyticsModule;
 use Fisharebest\Webtrees\Module\GoogleWebmasterToolsModule;
+use Fisharebest\Webtrees\Module\HourglassChartModule;
+use Fisharebest\Webtrees\Module\HtmlBlockModule;
+use Fisharebest\Webtrees\Module\IndividualFactsTabModule;
+use Fisharebest\Webtrees\Module\IndividualFamiliesReportModule;
+use Fisharebest\Webtrees\Module\IndividualReportModule;
+use Fisharebest\Webtrees\Module\InteractiveTreeModule;
+use Fisharebest\Webtrees\Module\LifespansChartModule;
+use Fisharebest\Webtrees\Module\ListsMenuModule;
+use Fisharebest\Webtrees\Module\LoggedInUsersModule;
+use Fisharebest\Webtrees\Module\LoginBlockModule;
+use Fisharebest\Webtrees\Module\MarriageReportModule;
 use Fisharebest\Webtrees\Module\MatomoAnalyticsModule;
+use Fisharebest\Webtrees\Module\MediaTabModule;
+use Fisharebest\Webtrees\Module\MissingFactsReportModule;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
+use Fisharebest\Webtrees\Module\NotesTabModule;
+use Fisharebest\Webtrees\Module\OccupationReportModule;
+use Fisharebest\Webtrees\Module\OnThisDayModule;
+use Fisharebest\Webtrees\Module\PedigreeChartModule;
+use Fisharebest\Webtrees\Module\PedigreeMapModule;
+use Fisharebest\Webtrees\Module\PedigreeReportModule;
+use Fisharebest\Webtrees\Module\PlacesModule;
+use Fisharebest\Webtrees\Module\RecentChangesModule;
+use Fisharebest\Webtrees\Module\RelatedIndividualsReportModule;
+use Fisharebest\Webtrees\Module\RelationshipsChartModule;
+use Fisharebest\Webtrees\Module\RelativesTabModule;
+use Fisharebest\Webtrees\Module\ReportsMenuModule;
+use Fisharebest\Webtrees\Module\ResearchTaskModule;
+use Fisharebest\Webtrees\Module\ReviewChangesModule;
+use Fisharebest\Webtrees\Module\SearchMenuModule;
+use Fisharebest\Webtrees\Module\SiteMapModule;
+use Fisharebest\Webtrees\Module\SlideShowModule;
+use Fisharebest\Webtrees\Module\SourcesTabModule;
 use Fisharebest\Webtrees\Module\StatcounterModule;
+use Fisharebest\Webtrees\Module\StatisticsChartModule;
+use Fisharebest\Webtrees\Module\StoriesModule;
+use Fisharebest\Webtrees\Module\ThemeSelectModule;
+use Fisharebest\Webtrees\Module\TimelineChartModule;
+use Fisharebest\Webtrees\Module\TopGivenNamesModule;
+use Fisharebest\Webtrees\Module\TopPageViewsModule;
+use Fisharebest\Webtrees\Module\TopSurnamesModule;
+use Fisharebest\Webtrees\Module\TreesMenuModule;
+use Fisharebest\Webtrees\Module\UpcomingAnniversariesModule;
+use Fisharebest\Webtrees\Module\UserFavoritesModule;
+use Fisharebest\Webtrees\Module\UserJournalModule;
+use Fisharebest\Webtrees\Module\UserMessagesModule;
+use Fisharebest\Webtrees\Module\UserWelcomeModule;
+use Fisharebest\Webtrees\Module\WelcomeBlockModule;
+use Fisharebest\Webtrees\Module\YahrzeitModule;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -41,85 +117,6 @@ use Throwable;
  */
 class Module
 {
-    // We use a list of core modules to help identify custom ones.
-    public const CORE_MODULES = [
-        'GEDFact_assistant',
-        'ahnentafel_report',
-        'ancestors_chart',
-        'batch_update',
-        'bdm_report',
-        'birth_report',
-        'calendar_menu',
-        'cemetery_report',
-        'change_report',
-        'charts',
-        'charts_menu',
-        'ckeditor',
-        'clippings',
-        'compact-chart',
-        'death_report',
-        'descendancy',
-        'descendancy_chart',
-        'descendancy_report',
-        'extra_info',
-        'fact_sources',
-        'family_book_chart',
-        'family_group_report',
-        'family_nav',
-        'fan_chart',
-        'faq',
-        'gedcom_block',
-        'gedcom_favorites',
-        'gedcom_news',
-        'gedcom_stats',
-        'hourglass_chart',
-        'html',
-        'individual_ext_report',
-        'individual_report',
-        'lifespans_chart',
-        'lightbox',
-        'lists_menu',
-        'logged_in',
-        'login_block',
-        'marriage_report',
-        'media',
-        'missing_facts_report',
-        'notes',
-        'occupation_report',
-        'pedigree-map',
-        'pedigree_chart',
-        'pedigree_report',
-        'personal_facts',
-        'places',
-        'random_media',
-        'recent_changes',
-        'relationships_chart',
-        'relative_ext_report',
-        'relatives',
-        'reports_menu',
-        'review_changes',
-        'search_menu',
-        'sitemap',
-        'sources_tab',
-        'statistics_chart',
-        'stories',
-        'theme_select',
-        'timeline_chart',
-        'todays_events',
-        'todo',
-        'top10_givnnames',
-        'top10_pageviews',
-        'top10_surnames',
-        'tree',
-        'trees_menu',
-        'upcoming_events',
-        'user_blog',
-        'user_favorites',
-        'user_messages',
-        'user_welcome',
-        'yahrzeit',
-    ];
-
     // Some types of module have different access levels in different trees.
     private const COMPONENTS = [
         'block'   => ModuleBlockInterface::class,
@@ -139,11 +136,86 @@ class Module
     {
         // Array keys are module names, and should match module names from earlier versions of webtrees.
         $modules = new Collection([
+            'GEDFact_assistant'      => CensusAssistantModule::class,
+            'ahnentafel_report'      => AhnentafelReportModule::class,
+            'ancestors_chart'        => AncestorsChartModule::class,
+            'batch_update'           => BatchUpdateModule::class,
+            'bdm_report'             => BirthDeathMarriageReportModule::class,
             'bing-webmaster-tools'   => BingWebmasterToolsModule::class,
+            'birth_report'           => BirthReportModule::class,
+            'calendar_menu'          => CalendarMenuModule::class,
+            'cemetery_report'        => CemeteryReportModule::class,
+            'change_report'          => ChangeReportModule::class,
+            'charts'                 => ChartsBlockModule::class,
+            'charts_menu'            => ChartsMenuModule::class,
+            'ckeditor'               => CkeditorModule::class,
+            'clippings'              => ClippingsCartModule::class,
+            'compact-chart'          => CompactTreeChartModule::class,
+            'death_report'           => DeathReportModule::class,
+            'descendancy'            => DescendancyModule::class,
+            'descendancy_chart'      => DescendancyChartModule::class,
+            'descendancy_report'     => DescendancyReportModule::class,
+            'extra_info'             => ExtraInformationModule::class,
+            'fact_sources'           => FactSourcesReportModule::class,
+            'family_book_chart'      => FamilyBookChartModule::class,
+            'family_group_report'    => FamilyGroupReportModule::class,
+            'family_nav'             => FamilyNavigatorModule::class,
+            'fan_chart'              => FanChartModule::class,
+            'faq'                    => FrequentlyAskedQuestionsModule::class,
+            'gedcom_block'           => WelcomeBlockModule::class,
+            'gedcom_favorites'       => FamilyTreeFavoritesModule::class,
+            'gedcom_news'            => FamilyTreeNewsModule::class,
+            'gedcom_stats'           => FamilyTreeStatisticsModule::class,
             'google-analytics'       => GoogleAnalyticsModule::class,
             'google-webmaster-tools' => GoogleWebmasterToolsModule::class,
+            'hourglass_chart'        => HourglassChartModule::class,
+            'html'                   => HtmlBlockModule::class,
+            'individual_ext_report'  => IndividualFamiliesReportModule::class,
+            'individual_report'      => IndividualReportModule::class,
+            'lifespans_chart'        => LifespansChartModule::class,
+            'lightbox'               => AlbumModule::class,
+            'lists_menu'             => ListsMenuModule::class,
+            'logged_in'              => LoggedInUsersModule::class,
+            'login_block'            => LoginBlockModule::class,
+            'marriage_report'        => MarriageReportModule::class,
             'matomo-analytics'       => MatomoAnalyticsModule::class,
+            'media'                  => MediaTabModule::class,
+            'missing_facts_report'   => MissingFactsReportModule::class,
+            'notes'                  => NotesTabModule::class,
+            'occupation_report'      => OccupationReportModule::class,
+            'pedigree-map'           => PedigreeMapModule::class,
+            'pedigree_chart'         => PedigreeChartModule::class,
+            'pedigree_report'        => PedigreeReportModule::class,
+            'personal_facts'         => IndividualFactsTabModule::class,
+            'places'                 => PlacesModule::class,
+            'random_media'           => SlideShowModule::class,
+            'recent_changes'         => RecentChangesModule::class,
+            'relationships_chart'    => RelationshipsChartModule::class,
+            'relative_ext_report'    => RelatedIndividualsReportModule::class,
+            'relatives'              => RelativesTabModule::class,
+            'reports_menu'           => ReportsMenuModule::class,
+            'review_changes'         => ReviewChangesModule::class,
+            'search_menu'            => SearchMenuModule::class,
+            'sitemap'                => SiteMapModule::class,
+            'sources_tab'            => SourcesTabModule::class,
             'statcounter'            => StatcounterModule::class,
+            'statistics_chart'       => StatisticsChartModule::class,
+            'stories'                => StoriesModule::class,
+            'theme_select'           => ThemeSelectModule::class,
+            'timeline_chart'         => TimelineChartModule::class,
+            'todays_events'          => OnThisDayModule::class,
+            'todo'                   => ResearchTaskModule::class,
+            'top10_givnnames'        => TopGivenNamesModule::class,
+            'top10_pageviews'        => TopPageViewsModule::class,
+            'top10_surnames'         => TopSurnamesModule::class,
+            'tree'                   => InteractiveTreeModule::class,
+            'trees_menu'             => TreesMenuModule::class,
+            'upcoming_events'        => UpcomingAnniversariesModule::class,
+            'user_blog'              => UserJournalModule::class,
+            'user_favorites'         => UserFavoritesModule::class,
+            'user_messages'          => UserMessagesModule::class,
+            'user_welcome'           => UserWelcomeModule::class,
+            'yahrzeit'               => YahrzeitModule::class,
         ]);
 
         return $modules->map(function (string $class, string $name): ModuleInterface {
@@ -171,14 +243,16 @@ class Module
                 // This also allows us to ignore modules called "foo.example" and "foo.disable"
                 return !Str::contains(basename(dirname($filename)), ['.', ' ', '[', ']']);
             })
-            ->map(function (string $filename): ?ModuleInterface {
+            ->map(function (string $filename): ?ModuleCustomInterface {
                 try {
                     $module = self::load($filename);
 
-                    if ($module instanceof ModuleInterface) {
+                    if ($module instanceof ModuleCustomInterface) {
                         $module_name = 'custom-' . basename(dirname($filename));
 
                         $module->setName($module_name);
+                    } else {
+                        return null;
                     }
 
                     return $module;

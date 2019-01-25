@@ -893,7 +893,6 @@ class AdminController extends AbstractBaseController
             'title'             => I18N::translate('Module administration'),
             'modules'           => Module::all(),
             'deleted_modules'   => $this->deletedModuleNames(),
-            'core_module_names' => Module::CORE_MODULES,
         ]);
     }
 

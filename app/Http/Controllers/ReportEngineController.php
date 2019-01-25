@@ -26,16 +26,19 @@ use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Report\ReportHtml;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
 use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Webtrees;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Controller for help text.
@@ -46,16 +49,16 @@ class ReportEngineController extends AbstractBaseController
      * A list of available reports.
      *
      * @param Tree $tree
+     * @param User $user
      *
      * @return Response
      */
-    public function reportList(Tree $tree): Response
+    public function reportList(Tree $tree, User $user): Response
     {
-        $reports = $this->allReports($tree);
         $title   = I18N::translate('Choose a report to run');
 
         return $this->viewResponse('report-select-page', [
-            'reports' => $reports,
+            'reports' => Module::findByComponent('report', $tree, $user),
             'title'   => $title,
         ]);
     }
@@ -65,20 +68,21 @@ class ReportEngineController extends AbstractBaseController
      *
      * @param Request $request
      * @param Tree    $tree
+     * @param User    $user
      *
      * @return Response
      */
-    public function reportSetup(Request $request, Tree $tree): Response
+    public function reportSetup(Request $request, Tree $tree, User $user): Response
     {
-        $pid     = $request->get('xref', '');
-        $report  = $request->get('report', '');
-        $reports = $this->allReports($tree);
+        $pid    = $request->get('xref', '');
+        $report = $request->get('report', '');
+        $module = Module::findByName($report);
 
-        if (!array_key_exists($report, $reports)) {
-            return $this->reportList($tree);
+        if (!$module instanceof ModuleReportInterface) {
+            return $this->reportList($tree, $user);
         }
 
-        $report_xml = WT_ROOT . Webtrees::MODULES_PATH . $report . '/report.xml';
+        $report_xml = WT_ROOT . 'resources/xml/reports/' . $module->name() . '.xml';
 
         $report_array = (new ReportParserSetup($report_xml))->reportProperties();
         $description  = $report_array['description'];
@@ -188,6 +192,12 @@ class ReportEngineController extends AbstractBaseController
         $varnames = $request->get('varnames');
         $type     = $request->get('type');
 
+        $module = Module::findByName($report);
+
+        if (!$module instanceof ModuleReportInterface) {
+            throw new NotFoundHttpException('Report ' . $report . ' not found.');
+        }
+
         if (!is_array($vars)) {
             $vars = [];
         }
@@ -241,7 +251,7 @@ class ReportEngineController extends AbstractBaseController
             }
         }
 
-        $report_xml = WT_ROOT . Webtrees::MODULES_PATH . $report . '/report.xml';
+        $report_xml =WT_ROOT . 'resources/xml/reports/' . $module->name() . '.xml';
 
 
         switch ($output) {
@@ -275,23 +285,5 @@ class ReportEngineController extends AbstractBaseController
 
                 return $response;
         }
-    }
-
-    /**
-     * A list of all available reports.
-     *
-     * @param Tree $tree
-     *
-     * @return string[]
-     */
-    private function allReports(Tree $tree): array
-    {
-        $reports = [];
-
-        foreach (Module::findByComponent('report', $tree, Auth::user()) as $report) {
-            $reports[$report->name()] = $report->title();
-        }
-
-        return $reports;
     }
 }
