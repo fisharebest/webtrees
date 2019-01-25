@@ -40,7 +40,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Class BatchUpdateModule
  */
-class BatchUpdateModule extends AbstractModule implements  ModuleConfigInterface
+class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
 {
     use ModuleConfigTrait;
 

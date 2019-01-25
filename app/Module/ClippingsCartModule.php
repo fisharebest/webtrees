@@ -50,7 +50,7 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 /**
  * Class ClippingsCartModule
  */
-class ClippingsCartModule extends AbstractModule implements  ModuleMenuInterface
+class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 {
     use ModuleMenuTrait;
 

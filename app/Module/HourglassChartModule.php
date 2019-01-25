@@ -31,7 +31,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class HourglassChartModule
  */
-class HourglassChartModule extends AbstractModule implements  ModuleChartInterface
+class HourglassChartModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
 

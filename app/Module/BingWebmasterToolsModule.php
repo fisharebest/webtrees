@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees\Module;
 /**
  * Class BingWebmasterToolsModule - add support for Bing webmaster tools
  */
-class BingWebmasterToolsModule extends AbstractModule implements  ModuleAnalyticsInterface
+class BingWebmasterToolsModule extends AbstractModule implements ModuleAnalyticsInterface
 {
     use ModuleAnalyticsTrait;
 
@@ -29,7 +29,8 @@ class BingWebmasterToolsModule extends AbstractModule implements  ModuleAnalytic
      *
      * @return string
      */
-    public function title(): string {
+    public function title(): string
+    {
         return 'Bing™ webmaster tools';
     }
 

@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class SearchMenuModule - provide a menu option for the search options
  */
-class SearchMenuModule extends AbstractModule implements  ModuleMenuInterface
+class SearchMenuModule extends AbstractModule implements ModuleMenuInterface
 {
     use ModuleMenuTrait;
 

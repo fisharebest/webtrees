@@ -29,7 +29,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class CompactTreeChartModule
  */
-class CompactTreeChartModule extends AbstractModule implements  ModuleChartInterface
+class CompactTreeChartModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
 

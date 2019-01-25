@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Individual;
  * Class ExtraInformationModule
  * A sidebar to show non-genealogy information about an individual
  */
-class ExtraInformationModule extends AbstractModule implements  ModuleSidebarInterface
+class ExtraInformationModule extends AbstractModule implements ModuleSidebarInterface
 {
     use ModuleSidebarTrait;
 

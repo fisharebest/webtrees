@@ -31,7 +31,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class PlacesMapModule
  */
-class PlacesModule extends AbstractModule implements  ModuleTabInterface
+class PlacesModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;
 

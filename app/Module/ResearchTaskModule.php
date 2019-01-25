@@ -31,7 +31,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class ResearchTaskModule
  */
-class ResearchTaskModule extends AbstractModule implements  ModuleBlockInterface
+class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
 

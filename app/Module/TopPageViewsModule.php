@@ -27,7 +27,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class TopPageViewsModule
  */
-class TopPageViewsModule extends AbstractModule implements  ModuleBlockInterface
+class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
 

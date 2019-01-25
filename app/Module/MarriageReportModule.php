@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class MarriageReportModule
  */
-class MarriageReportModule extends AbstractModule implements  ModuleReportInterface
+class MarriageReportModule extends AbstractModule implements ModuleReportInterface
 {
     use ModuleReportTrait;
 

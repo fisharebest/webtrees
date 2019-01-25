@@ -38,7 +38,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class RelationshipsChartModule
  */
-class RelationshipsChartModule extends AbstractModule implements  ModuleChartInterface, ModuleConfigInterface
+class RelationshipsChartModule extends AbstractModule implements ModuleChartInterface, ModuleConfigInterface
 {
     use ModuleChartTrait;
     use ModuleConfigTrait;

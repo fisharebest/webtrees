@@ -31,7 +31,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class ReviewChangesModule
  */
-class ReviewChangesModule extends AbstractModule implements  ModuleBlockInterface
+class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
 
