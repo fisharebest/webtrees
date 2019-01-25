@@ -47,6 +47,9 @@ class EventRepository implements EventRepositoryInterface
     private const EVENT_DEATH    = 'DEAT';
     private const EVENT_MARRIAGE = 'MARR';
     private const EVENT_DIVORCE  = 'DIV';
+    private const EVENT_ADOPTION = 'ADOP';
+    private const EVENT_BURIAL   = 'BURI';
+    private const EVENT_CENSUS   = 'CENS';
 
     /**
      * @var Tree
@@ -317,9 +320,9 @@ class EventRepository implements EventRepositoryInterface
                 self::EVENT_BIRTH    => I18N::translate('birth'),
                 self::EVENT_DEATH    => I18N::translate('death'),
                 self::EVENT_MARRIAGE => I18N::translate('marriage'),
-                'ADOP' => I18N::translate('adoption'),
-                'BURI' => I18N::translate('burial'),
-                'CENS' => I18N::translate('census added'),
+                self::EVENT_ADOPTION => I18N::translate('adoption'),
+                self::EVENT_BURIAL   => I18N::translate('burial'),
+                self::EVENT_CENSUS   => I18N::translate('census added'),
             ];
 
             return $event_types[$row->fact] ?? GedcomTag::getLabel($row->fact);
