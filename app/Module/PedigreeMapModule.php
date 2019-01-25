@@ -35,7 +35,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class PedigreeMapModule
  */
-class PedigreeMapModule extends AbstractModule implements  ModuleChartInterface
+class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
 

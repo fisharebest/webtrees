@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class AhnentafelReportModule
  */
-class AhnentafelReportModule extends AbstractModule implements  ModuleReportInterface
+class AhnentafelReportModule extends AbstractModule implements ModuleReportInterface
 {
     use ModuleReportTrait;
 

@@ -27,7 +27,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class TopSurnamesModule
  */
-class TopSurnamesModule extends AbstractModule implements  ModuleBlockInterface
+class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
 

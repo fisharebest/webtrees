@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class CalendarMenuModule - provide a menu option for the calendar
  */
-class CalendarMenuModule extends AbstractModule implements  ModuleMenuInterface
+class CalendarMenuModule extends AbstractModule implements ModuleMenuInterface
 {
     use ModuleMenuTrait;
 

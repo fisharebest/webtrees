@@ -28,7 +28,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class OnThisDayModule
  */
-class OnThisDayModule extends AbstractModule implements  ModuleBlockInterface
+class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
 

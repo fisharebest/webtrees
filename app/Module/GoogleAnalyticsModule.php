@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\User;
 /**
  * Class GoogleAnalyticsModule - add support for Google analytics.
  */
-class GoogleAnalyticsModule extends AbstractModule implements  ModuleAnalyticsInterface
+class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInterface
 {
     use ModuleAnalyticsTrait;
 
@@ -33,7 +33,8 @@ class GoogleAnalyticsModule extends AbstractModule implements  ModuleAnalyticsIn
      *
      * @return string
      */
-    public function title(): string {
+    public function title(): string
+    {
         return 'Google™ analytics';
     }
 

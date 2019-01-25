@@ -31,7 +31,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class StoriesModule
  */
-class StoriesModule extends AbstractModule implements  ModuleConfigInterface, ModuleMenuInterface, ModuleTabInterface
+class StoriesModule extends AbstractModule implements ModuleConfigInterface, ModuleMenuInterface, ModuleTabInterface
 {
     use ModuleTabTrait;
     use ModuleConfigTrait;

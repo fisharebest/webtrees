@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class TreesMenuModule - provide a menu option for the trees options
  */
-class TreesMenuModule extends AbstractModule implements  ModuleMenuInterface
+class TreesMenuModule extends AbstractModule implements ModuleMenuInterface
 {
     use ModuleMenuTrait;
 

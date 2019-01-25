@@ -30,7 +30,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class UserFavoritesModule
  */
-class UserFavoritesModule extends AbstractModule implements  ModuleBlockInterface
+class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
 

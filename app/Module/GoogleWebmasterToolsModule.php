@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees\Module;
 /**
  * Class GoogleWebmasterToolsModule - add support for Google webmaster tools.
  */
-class GoogleWebmasterToolsModule extends AbstractModule implements  ModuleAnalyticsInterface
+class GoogleWebmasterToolsModule extends AbstractModule implements ModuleAnalyticsInterface
 {
     use ModuleAnalyticsTrait;
 
@@ -29,7 +29,8 @@ class GoogleWebmasterToolsModule extends AbstractModule implements  ModuleAnalyt
      *
      * @return string
      */
-    public function title(): string {
+    public function title(): string
+    {
         return 'Google™ webmaster tools';
     }
 
