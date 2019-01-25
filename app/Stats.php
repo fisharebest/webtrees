@@ -2558,21 +2558,21 @@ class Stats implements
      * Create any of the other blocks.
      * Use as #callBlock:block_name#
      *
-     * @param string $block_name
+     * @param string $block
      * @param string ...$params
      *
-     * @return string
+     * @return null|string
      */
-    public function callBlock(string $block_name = '', ...$params): string
+    public function callBlock(string $block = '', ...$params)
     {
-        /** @var ModuleBlockInterface $block */
-        $block = Module::findByComponent('block', $this->tree, Auth::user())
-            ->filter(function (ModuleInterface $block) use ($block_name): bool {
-                return $block->name() === $block_name && $block->name() !== 'html';
+        /** @var ModuleBlockInterface $module */
+        $module = Module::findByComponent('block', $this->tree, Auth::user())
+            ->filter(function (ModuleInterface $module) use ($block): bool {
+                return $module->name() === $block && $module->name() !== 'html';
             })
             ->first();
 
-        if ($block === null) {
+        if ($module === null) {
             return '';
         }
 
@@ -2581,7 +2581,7 @@ class Stats implements
         foreach ($params as $config) {
             $bits = explode('=', $config);
 
-            if (count($bits) < 2) {
+            if (\count($bits) < 2) {
                 continue;
             }
 
@@ -2589,7 +2589,7 @@ class Stats implements
             $cfg[$v] = implode('=', $bits);
         }
 
-        return $block->getBlock($this->tree, 0, '', $cfg);
+        return $module->getBlock($this->tree, 0, '', $cfg);
     }
 
     /**

@@ -51,12 +51,10 @@ class FavoritesRepository implements FavoritesRepositoryInterface
      */
     public function gedcomFavorites(): string
     {
-        $module = Module::getModuleByName('gedcom_favorites');
+        $module = Module::findByClass(FamilyTreeFavoritesModule::class);
 
         if ($module instanceof FamilyTreeFavoritesModule) {
-            $block = new FamilyTreeFavoritesModule(Webtrees::MODULES_PATH . 'gedcom_favorites');
-
-            return $block->getBlock($this->tree, 0);
+            return $module->getBlock($this->tree, 0);
         }
 
         return '';
@@ -67,10 +65,10 @@ class FavoritesRepository implements FavoritesRepositoryInterface
      */
     public function userFavorites(): string
     {
-        if (Auth::check() && Module::getModuleByName('user_favorites')) {
-            $block = new UserFavoritesModule(Webtrees::MODULES_PATH . 'gedcom_favorites');
+        $module = Module::findByClass(UserFavoritesModule::class);
 
-            return $block->getBlock($this->tree, 0);
+        if ($module instanceof UserFavoritesModule) {
+            return $module->getBlock($this->tree, 0);
         }
 
         return '';
@@ -82,7 +80,7 @@ class FavoritesRepository implements FavoritesRepositoryInterface
     public function totalGedcomFavorites(): string
     {
         $count  = 0;
-        $module = Module::getModuleByName('gedcom_favorites');
+        $module = Module::findByClass(FamilyTreeFavoritesModule::class);
 
         if ($module instanceof FamilyTreeFavoritesModule) {
             $count = \count($module->getFavorites($this->tree));
@@ -97,7 +95,7 @@ class FavoritesRepository implements FavoritesRepositoryInterface
     public function totalUserFavorites(): string
     {
         $count  = 0;
-        $module = Module::getModuleByName('user_favorites');
+        $module = Module::findByClass(UserFavoritesModule::class);
 
         if ($module instanceof UserFavoritesModule) {
             $count = \count($module->getFavorites($this->tree, Auth::user()));
