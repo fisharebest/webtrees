@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\I18N;
 ?>
 
@@ -16,9 +18,9 @@ use Fisharebest\Webtrees\I18N;
                         <br>
                         <table class="center">
                             <tr>
-                                <td bgcolor="#<?= $WT_STATS_CHART_COLOR2 ?>" width="12"></td><td><?= I18N::translate('Highest population') ?></td>
-                                <td bgcolor="#<?= $WT_STATS_CHART_COLOR3 ?>" width="12"></td><td><?= I18N::translate('Lowest population') ?></td>
-                                <td bgcolor="#<?= $WT_STATS_CHART_COLOR1 ?>" width="12"></td><td><?= I18N::translate('Nobody at all') ?></td>
+                                <td bgcolor="#<?= $chart_color2 ?>" width="12"></td><td><?= I18N::translate('Highest population') ?></td>
+                                <td bgcolor="#<?= $chart_color3 ?>" width="12"></td><td><?= I18N::translate('Lowest population') ?></td>
+                                <td bgcolor="#<?= $chart_color1 ?>" width="12"></td><td><?= I18N::translate('Nobody at all') ?></td>
                             </tr>
                         </table>
                     </div>

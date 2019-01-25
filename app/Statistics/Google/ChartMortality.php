@@ -68,10 +68,10 @@ class ChartMortality extends AbstractGoogle
             return '';
         }
 
-        $WT_STATS_S_CHART_X = Theme::theme()->parameter('stats-small-chart-x');
-        $WT_STATS_S_CHART_Y = Theme::theme()->parameter('stats-small-chart-y');
+        $chart_x = Theme::theme()->parameter('stats-small-chart-x');
+        $chart_y = Theme::theme()->parameter('stats-small-chart-y');
 
-        $size         = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
+        $size         = $size ?? ($chart_x . 'x' . $chart_y);
         $color_living = $color_living ?? 'ffffff';
         $color_dead   = $color_dead ?? 'cccccc';
 
@@ -93,6 +93,15 @@ class ChartMortality extends AbstractGoogle
             I18N::translate('Living') . ' - ' . $per_l . I18N::$list_separator .
             I18N::translate('Dead') . ' - ' . $per_d;
 
-        return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_living},{$color_dead}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
+        $colors = [$color_living, $color_dead];
+
+        return view(
+            'statistics/other/chart-google',
+            [
+                'chart_title' => $chart_title,
+                'chart_url'   => $this->getPieChartUrl($chd, $size, $colors, $chl),
+                'sizes'       => $sizes,
+            ]
+        );
     }
 }

@@ -20,9 +20,9 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Helper\Century;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
-use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  *
@@ -51,6 +51,26 @@ class ChartMarriage extends AbstractGoogle
     }
 
     /**
+     * Returns the related database records.
+     *
+     * @return \stdClass[]
+     */
+    private function queryRecords(): array
+    {
+        $query = DB::table('dates')
+            ->selectRaw('FLOOR(d_year / 100 + 1) AS century')
+            ->selectRaw('COUNT(*) AS total')
+            ->where('d_file', '=', $this->tree->id())
+            ->where('d_year', '<>', 0)
+            ->where('d_fact', '=', 'MARR')
+            ->whereIn('d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
+            ->groupBy(['century'])
+            ->orderBy('century');
+
+        return $query->get()->all();
+    }
+
+    /**
      * General query on marriages.
      *
      * @param string|null $size
@@ -61,56 +81,47 @@ class ChartMarriage extends AbstractGoogle
      */
     public function chartMarriage(string $size = null, string $color_from = null, string $color_to = null): string
     {
-        $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
-        $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
-        $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
-        $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
+        $chart_color1 = (string) Theme::theme()->parameter('distribution-chart-no-values');
+        $chart_color2 = (string) Theme::theme()->parameter('distribution-chart-high-values');
+        $chart_x      = Theme::theme()->parameter('stats-small-chart-x');
+        $chart_y      = Theme::theme()->parameter('stats-small-chart-y');
 
-        $sql =
-            "SELECT FLOOR(d_year/100+1) AS century, COUNT(*) AS total" .
-            " FROM `##dates`" .
-            " WHERE d_file={$this->tree->id()} AND d_year<>0 AND d_fact='MARR' AND d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
-
-        $sql .= " GROUP BY century ORDER BY century";
-
-        $rows = $this->runSql($sql);
-
-        $size       = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
-        $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
-        $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
+        $size       = $size ?? ($chart_x . 'x' . $chart_y);
+        $color_from = $color_from ?? $chart_color1;
+        $color_to   = $color_to ?? $chart_color2;
 
         $sizes = explode('x', $size);
         $tot   = 0;
+        $rows  = $this->queryRecords();
 
         foreach ($rows as $values) {
             $values->total = (int) $values->total;
             $tot += (int) $values->total;
         }
+
         // Beware divide by zero
         if ($tot === 0) {
             return '';
         }
+
         $centuries = '';
         $counts    = [];
         foreach ($rows as $values) {
             $counts[] = intdiv(100 * $values->total, $tot);
             $centuries .= $this->centuryHelper->centuryName((int) $values->century) . ' - ' . I18N::number($values->total) . '|';
         }
-        $chd = $this->arrayToExtendedEncoding($counts);
-        $chl = substr($centuries, 0, -1);
 
-        return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Marriages by century') . '" title="' . I18N::translate('Marriages by century') . '" />';
-    }
+        $chd    = $this->arrayToExtendedEncoding($counts);
+        $chl    = substr($centuries, 0, -1);
+        $colors = [$color_from, $color_to];
 
-    /**
-     * Run an SQL query and cache the result.
-     *
-     * @param string $sql
-     *
-     * @return \stdClass[]
-     */
-    private function runSql(string $sql): array
-    {
-        return Sql::runSql($sql);
+        return view(
+            'statistics/other/chart-google',
+            [
+                'chart_title' => I18N::translate('v by century'),
+                'chart_url'   => $this->getPieChartUrl($chd, $size, $colors, $chl),
+                'sizes'       => $sizes,
+            ]
+        );
     }
 }

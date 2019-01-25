@@ -80,11 +80,11 @@ class ChartDistribution extends AbstractGoogle
         string $chart_type  = '',
         string $surname     = ''
     ): string {
-        $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
-        $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
-        $WT_STATS_CHART_COLOR3 = Theme::theme()->parameter('distribution-chart-low-values');
-        $WT_STATS_MAP_X        = Theme::theme()->parameter('distribution-chart-x');
-        $WT_STATS_MAP_Y        = Theme::theme()->parameter('distribution-chart-y');
+        $chart_color1 = Theme::theme()->parameter('distribution-chart-no-values');
+        $chart_color2 = Theme::theme()->parameter('distribution-chart-high-values');
+        $chart_color3 = Theme::theme()->parameter('distribution-chart-low-values');
+        $map_x        = Theme::theme()->parameter('distribution-chart-x');
+        $map_y        = Theme::theme()->parameter('distribution-chart-y');
 
         if ($tot_pl === 0) {
             return '';
@@ -115,11 +115,7 @@ class ChartDistribution extends AbstractGoogle
                 $surn_countries = [];
 
                 $rows = Database::prepare(
-                    "SELECT i_gedcom" .
-                    " FROM `##individuals`" .
-                    " JOIN `##name` ON n_id = i_id AND n_file = i_file" .
-                    " WHERE n_file = :tree_id" .
-                    " AND n_surn COLLATE :collate = :surname"
+                    'SELECT i_gedcom' . ' FROM `##individuals`' . ' JOIN `##name` ON n_id = i_id AND n_file = i_file' . ' WHERE n_file = :tree_id' . ' AND n_surn COLLATE :collate = :surname'
                 )->execute([
                     'tree_id' => $this->tree->id(),
                     'collate' => I18N::collation(),
@@ -217,9 +213,9 @@ class ChartDistribution extends AbstractGoogle
         }
 
         $chart_url = 'https://chart.googleapis.com/chart?cht=t&amp;chtm=' . $chart_shows;
-        $chart_url .= '&amp;chco=' . $WT_STATS_CHART_COLOR1 . ',' . $WT_STATS_CHART_COLOR3 . ',' . $WT_STATS_CHART_COLOR2; // country colours
+        $chart_url .= '&amp;chco=' . $chart_color1 . ',' . $chart_color3 . ',' . $chart_color2; // country colours
         $chart_url .= '&amp;chf=bg,s,ECF5FF'; // sea colour
-        $chart_url .= '&amp;chs=' . $WT_STATS_MAP_X . 'x' . $WT_STATS_MAP_Y;
+        $chart_url .= '&amp;chs=' . $map_x . 'x' . $map_y;
         $chart_url .= '&amp;chld=' . implode('', array_keys($surn_countries)) . '&amp;chd=s:';
 
         foreach ($surn_countries as $count) {
@@ -229,11 +225,11 @@ class ChartDistribution extends AbstractGoogle
         return view(
             'statistics/other/chart-distribution',
             [
-                'chart_title'           => $chart_title,
-                'chart_url'             => $chart_url,
-                'WT_STATS_CHART_COLOR1' => $WT_STATS_CHART_COLOR1,
-                'WT_STATS_CHART_COLOR2' => $WT_STATS_CHART_COLOR2,
-                'WT_STATS_CHART_COLOR3' => $WT_STATS_CHART_COLOR3,
+                'chart_title'  => $chart_title,
+                'chart_url'    => $chart_url,
+                'chart_color1' => $chart_color1,
+                'chart_color2' => $chart_color2,
+                'chart_color3' => $chart_color3,
             ]
         );
     }

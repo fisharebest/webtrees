@@ -65,10 +65,10 @@ class ChartSex extends AbstractGoogle
         string $color_male    = null,
         string $color_unknown = null
     ): string {
-        $WT_STATS_S_CHART_X = Theme::theme()->parameter('stats-small-chart-x');
-        $WT_STATS_S_CHART_Y = Theme::theme()->parameter('stats-small-chart-y');
+        $chart_x = Theme::theme()->parameter('stats-small-chart-x');
+        $chart_y = Theme::theme()->parameter('stats-small-chart-y');
 
-        $size          = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
+        $size          = $size ?? ($chart_x . 'x' . $chart_y);
         $color_female  = $color_female ?? 'ffd1dc';
         $color_male    = $color_male ?? '84beff';
         $color_unknown = $color_unknown ?? '777777';
@@ -104,22 +104,31 @@ class ChartSex extends AbstractGoogle
                 I18N::translate('Females') . ' - ' . $per_f . I18N::$list_separator .
                 I18N::translateContext('unknown people', 'Unknown') . ' - ' . $per_u;
 
-            return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
+            $colors = [$color_unknown, $color_female, $color_male];
+        } else {
+            $chd = $this->arrayToExtendedEncoding([
+                intdiv(4095 * $tot_f, $tot),
+                intdiv(4095 * $tot_m, $tot),
+            ]);
+
+            $chl =
+                I18N::translate('Females') . ' - ' . $per_f . '|' .
+                I18N::translate('Males') . ' - ' . $per_m;
+
+            $chart_title =
+                I18N::translate('Males') . ' - ' . $per_m . I18N::$list_separator .
+                I18N::translate('Females') . ' - ' . $per_f;
+
+            $colors = [$color_female, $color_male];
         }
 
-        $chd = $this->arrayToExtendedEncoding([
-            intdiv(4095 * $tot_f, $tot),
-            intdiv(4095 * $tot_m, $tot),
-        ]);
-
-        $chl =
-            I18N::translate('Females') . ' - ' . $per_f . '|' .
-            I18N::translate('Males') . ' - ' . $per_m;
-
-        $chart_title =
-            I18N::translate('Males') . ' - ' . $per_m . I18N::$list_separator .
-            I18N::translate('Females') . ' - ' . $per_f;
-
-        return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
+        return view(
+            'statistics/other/chart-google',
+            [
+                'chart_title' => $chart_title,
+                'chart_url'   => $this->getPieChartUrl($chd, $size, $colors, $chl),
+                'sizes'       => $sizes,
+            ]
+        );
     }
 }

@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 use Fisharebest\Webtrees\Statistics\Helper\Century;
-use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Tree;
 
 /**
@@ -45,8 +44,40 @@ class ChartAge extends AbstractGoogle
      */
     public function __construct(Tree $tree)
     {
-        $this->tree = $tree;
+        $this->tree          = $tree;
         $this->centuryHelper = new Century();
+    }
+
+    /**
+     * Returns the related database records.
+     *
+     * @return \stdClass[]
+     */
+    private function queryRecords(): array
+    {
+        return $this->runSql(
+            'SELECT'
+            . ' ROUND(AVG(death.d_julianday2-birth.d_julianday1)/365.25,1) AS age,'
+            . ' FLOOR(death.d_year/100+1) AS century,'
+            . ' i_sex AS sex'
+            . ' FROM'
+            . ' `##dates` AS death,'
+            . ' `##dates` AS birth,'
+            . ' `##individuals` AS indi'
+            . ' WHERE'
+            . ' indi.i_id=birth.d_gid AND'
+            . ' birth.d_gid=death.d_gid AND'
+            . ' death.d_file=' . $this->tree->id() . ' AND'
+            . ' birth.d_file=death.d_file AND'
+            . ' birth.d_file=indi.i_file AND'
+            . " birth.d_fact='BIRT' AND"
+            . " death.d_fact='DEAT' AND"
+            . ' birth.d_julianday1<>0 AND'
+            . " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND"
+            . " death.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND"
+            . ' death.d_julianday1>birth.d_julianday2'
+            . ' GROUP BY century, sex ORDER BY century, sex'
+        );
     }
 
     /**
@@ -59,29 +90,7 @@ class ChartAge extends AbstractGoogle
     public function chartAge(string $size = '230x250'): string
     {
         $sizes = explode('x', $size);
-        $rows  = $this->runSql(
-            "SELECT" .
-            " ROUND(AVG(death.d_julianday2-birth.d_julianday1)/365.25,1) AS age," .
-            " FLOOR(death.d_year/100+1) AS century," .
-            " i_sex AS sex" .
-            " FROM" .
-            " `##dates` AS death," .
-            " `##dates` AS birth," .
-            " `##individuals` AS indi" .
-            " WHERE" .
-            " indi.i_id=birth.d_gid AND" .
-            " birth.d_gid=death.d_gid AND" .
-            " death.d_file={$this->tree->id()} AND" .
-            " birth.d_file=death.d_file AND" .
-            " birth.d_file=indi.i_file AND" .
-            " birth.d_fact='BIRT' AND" .
-            " death.d_fact='DEAT' AND" .
-            " birth.d_julianday1<>0 AND" .
-            " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
-            " death.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
-            " death.d_julianday1>birth.d_julianday2" .
-            " GROUP BY century, sex ORDER BY century, sex"
-        );
+        $rows  = $this->queryRecords();
 
         if (empty($rows)) {
             return '';
@@ -143,18 +152,19 @@ class ChartAge extends AbstractGoogle
             $chtt = substr_replace($title, '|', $counter[$half], 1);
         }
 
-        return '<img src="' . "https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|N*f1*,000000,0,-1,11,1|N*f1*,000000,1,-1,11,1&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=" . rawurlencode($chtt) . "&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . '&amp;chdl=' . rawurlencode(I18N::translate('Males') . '|' . I18N::translate('Females') . '|' . I18N::translate('Average age at death')) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Average age related to death century') . '" title="' . I18N::translate('Average age related to death century') . '" />';
-    }
+        $chart_url = 'https://chart.googleapis.com/chart?cht=bvg&amp;chs=' . $sizes[0] . 'x' . $sizes[1]
+             . '&amp;chm=D,FF0000,2,0,3,1|N*f1*,000000,0,-1,11,1|N*f1*,000000,1,-1,11,1&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt='
+             . rawurlencode($chtt) . '&amp;chd=' . $chd . '&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl='
+             . rawurlencode($chxl) . '&amp;chdl='
+             . rawurlencode(I18N::translate('Males') . '|' . I18N::translate('Females') . '|' . I18N::translate('Average age at death'));
 
-    /**
-     * Run an SQL query and cache the result.
-     *
-     * @param string $sql
-     *
-     * @return \stdClass[]
-     */
-    private function runSql(string $sql): array
-    {
-        return Sql::runSql($sql);
+        return view(
+            'statistics/other/chart-google',
+            [
+                'chart_title' => I18N::translate('Average age related to death century'),
+                'chart_url'   => $chart_url,
+                'sizes'       => $sizes,
+            ]
+        );
     }
 }

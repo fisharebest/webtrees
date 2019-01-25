@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Google;
 
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 use Fisharebest\Webtrees\Theme;
@@ -25,22 +24,22 @@ use Fisharebest\Webtrees\Theme;
 /**
  *
  */
-class ChartMedia extends AbstractGoogle
+class ChartFamilyWithSources extends AbstractGoogle
 {
     /**
-     * Create a chart of media types.
+     * Create a chart of individuals with/without sources.
      *
-     * @param int         $tot        The total number of media files
-     * @param array       $media      The list of media types to display
+     * @param int         $tot_fam        The total number of families
+     * @param int         $tot_fam_source The total number of families with sources
      * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
      *
      * @return string
      */
-    public function chartMedia(
-        int $tot,
-        array $media,
+    public function chartFamsWithSources(
+        int $tot_fam,
+        int $tot_fam_source,
         string $size       = null,
         string $color_from = null,
         string $color_to   = null
@@ -53,33 +52,23 @@ class ChartMedia extends AbstractGoogle
         $size       = $size ?? ($chart_x . 'x' . $chart_y);
         $color_from = $color_from ?? $chart_color1;
         $color_to   = $color_to ?? $chart_color2;
-        $sizes      = explode('x', $size);
 
-        // Beware divide by zero
-        if ($tot === 0) {
-            return I18N::translate('None');
+        $sizes = explode('x', $size);
+
+        if ($tot_fam === 0) {
+            return '';
         }
 
-        // Build a table listing only the media types actually present in the GEDCOM
-        $mediaCounts = [];
-        $mediaTypes  = '';
-        $chart_title = '';
-
-        foreach ($media as $type => $count) {
-            $mediaCounts[] = intdiv(100 * $count, $tot);
-            $mediaTypes    .= GedcomTag::getFileFormTypeValue($type) . ' - ' . I18N::number($count) . '|';
-            $chart_title   .= GedcomTag::getFileFormTypeValue($type) . ' (' . $count . '), ';
-        }
-
-        $chart_title = substr($chart_title, 0, -2);
-        $chd         = $this->arrayToExtendedEncoding($mediaCounts);
-        $chl         = substr($mediaTypes, 0, -1);
-        $colors      = [$color_from, $color_to];
+        $tot_sfam_per  = $tot_fam_source / $tot_fam;
+        $with          = (int) (100 * $tot_sfam_per);
+        $chd           = $this->arrayToExtendedEncoding([100 - $with, $with]);
+        $chl           = I18N::translate('Without sources') . ' - ' . I18N::percentage(1 - $tot_sfam_per, 1) . '|' . I18N::translate('With sources') . ' - ' . I18N::percentage($tot_sfam_per, 1);
+        $colors        = [$color_from, $color_to];
 
         return view(
             'statistics/other/chart-google',
             [
-                'chart_title' => $chart_title,
+                'chart_title' => I18N::translate('Families with sources'),
                 'chart_url'   => $this->getPieChartUrl($chd, $size, $colors, $chl),
                 'sizes'       => $sizes,
             ]

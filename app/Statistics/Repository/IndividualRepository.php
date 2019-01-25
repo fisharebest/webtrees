@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Statistics\Google\ChartCommonGiven;
 use Fisharebest\Webtrees\Statistics\Google\ChartCommonSurname;
 use Fisharebest\Webtrees\Statistics\Google\ChartDeath;
 use Fisharebest\Webtrees\Statistics\Google\ChartFamily;
+use Fisharebest\Webtrees\Statistics\Google\ChartFamilyWithSources;
 use Fisharebest\Webtrees\Statistics\Google\ChartIndividual;
 use Fisharebest\Webtrees\Statistics\Google\ChartMortality;
 use Fisharebest\Webtrees\Statistics\Google\ChartSex;
@@ -481,7 +482,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @param int $number_of_surnames
      * @param int $threshold
      *
-     * @return array
+     * @return \stdClass[]
      */
     private function topSurnames(int $number_of_surnames, int $threshold): array
     {
@@ -2003,7 +2004,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $tot_fam        = $this->totalFamiliesQuery();
         $tot_fam_source = $this->totalFamsWithSourcesQuery();
 
-        return (new ChartFamily($this->tree))
+        return (new ChartFamilyWithSources())
             ->chartFamsWithSources($tot_fam, $tot_fam_source, $size, $color_from, $color_to);
     }
 

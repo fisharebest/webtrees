@@ -60,21 +60,21 @@ class ChartCommonSurname extends AbstractGoogle
         string $color_from = null,
         string $color_to = null
     ): string {
-        $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
-        $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
-        $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
-        $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
+        $chart_color1 = (string) Theme::theme()->parameter('distribution-chart-no-values');
+        $chart_color2 = (string) Theme::theme()->parameter('distribution-chart-high-values');
+        $chart_x      = Theme::theme()->parameter('stats-small-chart-x');
+        $chart_y      = Theme::theme()->parameter('stats-small-chart-y');
 
-        $size       = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
-        $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
-        $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
+        $size       = $size ?? ($chart_x . 'x' . $chart_y);
+        $color_from = $color_from ?? $chart_color1;
+        $color_to   = $color_to ?? $chart_color2;
         $sizes      = explode('x', $size);
 
         if (empty($all_surnames)) {
             return '';
         }
 
-        $SURNAME_TRADITION = $this->tree->getPreference('SURNAME_TRADITION');
+        $surname_tradition = $this->tree->getPreference('SURNAME_TRADITION');
 
         $tot = 0;
 
@@ -85,6 +85,7 @@ class ChartCommonSurname extends AbstractGoogle
         $chd = '';
         $chl = [];
 
+        /** @var array $surns */
         foreach ($all_surnames as $surns) {
             $count_per = 0;
             $max_name  = 0;
@@ -101,7 +102,7 @@ class ChartCommonSurname extends AbstractGoogle
                 }
             }
 
-            if ($SURNAME_TRADITION === 'polish') {
+            if ($surname_tradition === 'polish') {
                 // Most common surname should be in male variant (Kowalski, not Kowalska)
                 $top_name = preg_replace([
                     '/ska$/',
@@ -126,11 +127,16 @@ class ChartCommonSurname extends AbstractGoogle
         $chl[] = I18N::translate('Other') . ' - ' . I18N::number($tot_indi - $tot);
 
         $chart_title = implode(I18N::$list_separator, $chl);
-        $chl         = implode('|', $chl);
+        $chl         = rawurlencode(implode('|', $chl));
+        $colors      = [$color_from, $color_to];
 
-        return '<img src="https://chart.googleapis.com/chart?cht=p3&amp;chd=e:' . $chd . '&amp;chs='
-            . $size . '&amp;chco=' . $color_from . ',' . $color_to . '&amp;chf=bg,s,ffffff00&amp;chl='
-            . rawurlencode($chl) . '" width="' . $sizes[0] . '" height="' . $sizes[1] . '" alt="'
-            . $chart_title . '" title="' . $chart_title . '" />';
+        return view(
+            'statistics/other/chart-google',
+            [
+                'chart_title' => $chart_title,
+                'chart_url'   => $this->getPieChartUrl($chd, $size, $colors, $chl),
+                'sizes'       => $sizes,
+            ]
+        );
     }
 }

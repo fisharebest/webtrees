@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
 use Fisharebest\Webtrees\Module\UserFavoritesModule;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\FavoritesRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\Webtrees;
 
 /**
  * A repository providing methods for favorites related statistics.

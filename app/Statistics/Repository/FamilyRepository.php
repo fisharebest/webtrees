@@ -25,8 +25,10 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Statistics\Google\ChartChildren;
 use Fisharebest\Webtrees\Statistics\Google\ChartDivorce;
 use Fisharebest\Webtrees\Statistics\Google\ChartFamily;
+use Fisharebest\Webtrees\Statistics\Google\ChartFamilyLargest;
 use Fisharebest\Webtrees\Statistics\Google\ChartMarriage;
 use Fisharebest\Webtrees\Statistics\Google\ChartMarriageAge;
+use Fisharebest\Webtrees\Statistics\Google\ChartNoChildrenFamilies;
 use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Tree;
 use stdClass;
@@ -349,7 +351,7 @@ class FamilyRepository
     {
         $no_child_fam = $this->noChildrenFamiliesQuery();
 
-        return (new ChartFamily($this->tree))
+        return (new ChartNoChildrenFamilies($this->tree))
             ->chartNoChildrenFamilies($no_child_fam, $size, $year1, $year2);
     }
 
@@ -827,7 +829,7 @@ class FamilyRepository
         string $color_to   = null,
         int $total         = 10
     ): string {
-        return (new ChartFamily($this->tree))
+        return (new ChartFamilyLargest($this->tree))
             ->chartLargestFamilies($size, $color_from, $color_to, $total);
     }
 

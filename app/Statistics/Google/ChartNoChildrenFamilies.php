@@ -27,7 +27,7 @@ use Illuminate\Database\Query\JoinClause;
 /**
  *
  */
-class ChartChildren extends AbstractGoogle
+class ChartNoChildrenFamilies extends AbstractGoogle
 {
     /**
      * @var Tree
@@ -53,49 +53,72 @@ class ChartChildren extends AbstractGoogle
     /**
      * Returns the related database records.
      *
+     * @param int $year1
+     * @param int $year2
+     *
      * @return \stdClass[]
      */
-    private function queryRecords(): array
+    private function queryRecords(int $year1, int $year2): array
     {
         $query = DB::table('families')
-            ->selectRaw('ROUND(AVG(f_numchil),2) AS num')
             ->selectRaw('FLOOR(d_year / 100 + 1) AS century')
+            ->selectRaw('COUNT(*) AS count')
             ->join('dates', function (JoinClause $join) {
                 $join->on('d_file', '=', 'f_file')
                     ->on('d_gid', '=', 'f_id');
             })
             ->where('f_file', '=', $this->tree->id())
-            ->where('d_julianday1', '<>', 0)
+            ->where('f_numchil', '=', 0)
             ->where('d_fact', '=', 'MARR')
             ->whereIn('d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
             ->groupBy(['century'])
             ->orderBy('century');
 
+        if ($year1 >= 0 && $year2 >= 0) {
+            $query->whereBetween('d_year', [$year1, $year2]);
+        }
+
         return $query->get()->all();
     }
 
     /**
-     * General query on familes/children.
+     * Create a chart of children with no families.
      *
+     * @param int    $no_child_fam The number of families with no children
      * @param string $size
+     * @param int    $year1
+     * @param int    $year2
      *
      * @return string
      */
-    public function chartChildren(string $size = '220x200'): string
-    {
+    public function chartNoChildrenFamilies(
+        int $no_child_fam,
+        string $size = '220x200',
+        int $year1   = -1,
+        int $year2   = -1
+    ): string {
         $sizes = explode('x', $size);
         $max   = 0;
-        $rows  = $this->queryRecords();
+        $tot   = 0;
+        $rows  = $this->queryRecords($year1, $year2);
 
         if (empty($rows)) {
             return '';
         }
 
         foreach ($rows as $values) {
-            $values->num = (int) $values->num;
-            if ($max < $values->num) {
-                $max = $values->num;
+            $values->count = (int) $values->count;
+
+            if ($max < $values->count) {
+                $max = $values->count;
             }
+            $tot += $values->count;
+        }
+
+        $unknown = $no_child_fam - $tot;
+
+        if ($unknown > $max) {
+            $max = $unknown;
         }
 
         $chm    = '';
@@ -104,38 +127,48 @@ class ChartChildren extends AbstractGoogle
         $counts = [];
 
         foreach ($rows as $values) {
-            $chxl .= $this->centuryHelper->centuryName((int) $values->century) . '|';
-            if ($max <= 5) {
-                $counts[] = (int) ($values->num * 819.2 - 1);
-            } elseif ($max <= 10) {
-                $counts[] = (int) ($values->num * 409.6);
-            } else {
-                $counts[] = (int) ($values->num * 204.8);
-            }
-            $chm .= 't' . $values->num . ',000000,0,' . $i . ',11,1|';
+            $chxl     .= $this->centuryHelper->centuryName((int) $values->century) . '|';
+            $counts[] = intdiv(4095 * $values->count, $max + 1);
+            $chm      .= 't' . $values->count . ',000000,0,' . $i . ',11,1|';
             $i++;
         }
 
-        $chd = $this->arrayToExtendedEncoding($counts);
-        $chm = substr($chm, 0, -1);
+        $counts[] = intdiv(4095 * $unknown, $max + 1);
+        $chd      = $this->arrayToExtendedEncoding($counts);
+        $chm      .= 't' . $unknown . ',000000,0,' . $i . ',11,1';
+        $chxl     .= I18N::translateContext('unknown century', 'Unknown') . '|1:||' . I18N::translate('century') . '|2:|0|';
+        $step     = $max + 1;
 
-        if ($max <= 5) {
-            $chxl .= '1:||' . I18N::translate('century') . '|2:|0|1|2|3|4|5|3:||' . I18N::translate('Number of children') . '|';
-        } elseif ($max <= 10) {
-            $chxl .= '1:||' . I18N::translate('century') . '|2:|0|1|2|3|4|5|6|7|8|9|10|3:||' . I18N::translate('Number of children') . '|';
-        } else {
-            $chxl .= '1:||' . I18N::translate('century') . '|2:|0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|3:||' . I18N::translate('Number of children') . '|';
+        for ($d = ($max + 1); $d > 0; $d--) {
+            if (($max + 1) < ($d * 10 + 1) && fmod($max + 1, $d) === 0) {
+                $step = $d;
+            }
         }
 
+        if ($step === ($max + 1)) {
+            for ($d = $max; $d > 0; $d--) {
+                if ($max < ($d * 10 + 1) && fmod($max, $d) === 0) {
+                    $step = $d;
+                }
+            }
+        }
+
+        for ($n = $step; $n <= ($max + 1); $n += $step) {
+            $chxl .= $n . '|';
+        }
+
+        $chxl .= '3:||' . I18N::translate('Total families') . '|';
+
         $chart_url = 'https://chart.googleapis.com/chart?cht=bvg&amp;chs=' . $sizes[0] . 'x' . $sizes[1]
-            . '&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0,3,1|' . $chm
-            . '&amp;chd=e:' . $chd . '&amp;chco=0000FF&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl='
+            . '&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0:'
+            . ($i - 1) . ',3,1|' . $chm . '&amp;chd=e:'
+            . $chd . '&amp;chco=0000FF,ffffff00&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl='
             . rawurlencode($chxl);
 
         return view(
             'statistics/other/chart-google',
             [
-                'chart_title' => I18N::translate('Average number of children per family'),
+                'chart_title' => I18N::translate('Number of families without children'),
                 'chart_url'   => $chart_url,
                 'sizes'       => $sizes,
             ]

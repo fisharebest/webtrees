@@ -40,14 +40,14 @@ class ChartIndividual extends AbstractGoogle
     public function chartIndisWithSources(
         int $tot_indi, int $tot_indi_source, string $size = null, string $color_from = null, string $color_to = null
     ): string {
-        $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
-        $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
-        $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
-        $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
+        $chart_color1 = (string) Theme::theme()->parameter('distribution-chart-no-values');
+        $chart_color2 = (string) Theme::theme()->parameter('distribution-chart-high-values');
+        $chart_x      = Theme::theme()->parameter('stats-small-chart-x');
+        $chart_y      = Theme::theme()->parameter('stats-small-chart-y');
 
-        $size       = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
-        $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
-        $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
+        $size       = $size ?? ($chart_x . 'x' . $chart_y);
+        $color_from = $color_from ?? $chart_color1;
+        $color_to   = $color_to ?? $chart_color2;
 
         $sizes    = explode('x', $size);
 
@@ -59,16 +59,13 @@ class ChartIndividual extends AbstractGoogle
         $with          = (int) (100 * $tot_sindi_per);
         $chd           = $this->arrayToExtendedEncoding([100 - $with, $with]);
         $chl           = I18N::translate('Without sources') . ' - ' . I18N::percentage(1 - $tot_sindi_per, 1) . '|' . I18N::translate('With sources') . ' - ' . I18N::percentage($tot_sindi_per, 1);
-        $chart_title   = I18N::translate('Individuals with sources');
-
-        $chart_url = 'https://chart.googleapis.com/chart?cht=p3&chd=e:' . $chd
-            . '&chs=' . $size . '&chco=' . $color_from . ',' . $color_to . '&chf=bg,s,ffffff00&chl=' . $chl;
+        $colors        = [$color_from, $color_to];
 
         return view(
-            'statistics/other/chart-individuals-with-sources',
+            'statistics/other/chart-google',
             [
-                'chart_title' => $chart_title,
-                'chart_url'   => $chart_url,
+                'chart_title' => I18N::translate('Individuals with sources'),
+                'chart_url'   => $this->getPieChartUrl($chd, $size, $colors, $chl),
                 'sizes'       => $sizes,
             ]
         );

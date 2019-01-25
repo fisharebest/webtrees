@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Middleware\PageHitCounter;
-use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\HitCountRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;

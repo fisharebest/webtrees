@@ -17,8 +17,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics;
 
+use Fisharebest\Webtrees\Statistics\Helper\Sql;
+
 /**
  * Base class for all google charts.
+ *
+ * @deprecated The pie chart API is outdated and should be replaced
+ *             by the newer version https://developers.google.com/chart/ or
+ *             an open source one like chart.js
+ *
+ * @see https://developers.google.com/chart/image/docs/gallery/pie_charts
  */
 abstract class AbstractGoogle
 {
@@ -50,5 +58,34 @@ abstract class AbstractGoogle
         }
 
         return $encoding;
+    }
+
+    /**
+     * Returns the three-dimensional pie chart url.
+     *
+     * @param string $data
+     * @param string $size
+     * @param array  $colors
+     * @param string $labels
+     *
+     * @return string
+     */
+    protected function getPieChartUrl(string $data, string $size, array $colors, string $labels): string
+    {
+        return 'https://chart.googleapis.com/chart?cht=p3&chd=e:' . $data
+            . '&chs=' . $size . '&chco=' . implode(',', $colors) . '&chf=bg,s,ffffff00&chl='
+            . $labels;
+    }
+
+    /**
+     * Run an SQL query and cache the result.
+     *
+     * @param string $sql
+     *
+     * @return \stdClass[]
+     */
+    protected function runSql(string $sql): array
+    {
+        return Sql::runSql($sql);
     }
 }
