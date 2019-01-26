@@ -112,8 +112,6 @@ if (Auth::isAdmin()) {
         'POST:select2-flag'                   => 'AutocompleteController@select2Flag',
         'GET:upgrade'                         => 'AdminUpgradeController@wizard',
         'POST:upgrade'                        => 'AdminUpgradeController@step',
-        'GET:admin-module'                    => 'AdminModuleController@action',
-        'POST:admin-module'                   => 'AdminModuleController@action',
         'GET:map-provider'                    => 'AdminMapController@mapProviderEdit',
         'POST:map-provider'                   => 'AdminMapController@mapProviderSave',
         'GET:map-data'                        => 'AdminLocationController@mapData',
