@@ -257,7 +257,7 @@ try {
     DebugBar::startMeasure('controller_action');
 
     $middleware_stack = [
-        //CheckForMaintenanceMode::class,
+        CheckForMaintenanceMode::class,
     ];
 
     if (class_exists(DebugBar::class)) {
