@@ -43,64 +43,54 @@
                 <th>
                     <?= I18N::translate('Enabled') ?>
                 </th>
-                <th class="d-none d-sm-table-cell" data-orderable="false">
+                <th data-orderable="false">
                     <?= I18N::translate('Description') ?>
                 </th>
-                <th class="d-none d-sm-table-cell">
-                    <a href="<?= e(route('admin-menus')) ?>">
-                        <?= I18N::translate('Menus') ?>
-                    </a>
+                <th title="<?= I18N::translate('Preferences') ?>">
+                    <?= view('icons/preferences') ?>
+                    <span class="sr-only"><?= I18N::translate('Preferences') ?></span>
                 </th>
-                <th class="d-none d-sm-table-cell">
-                    <a href="<?= e(route('admin-tabs')) ?>">
-                        <?= I18N::translate('Tabs') ?>
-                    </a>
+                <th title="<?= I18N::translate('Menus') ?>">
+                    <?= view('icons/menu') ?>
+                    <span class="sr-only"><?= I18N::translate('Menus') ?></span>
                 </th>
-                <th class="d-none d-sm-table-cell">
-                    <a href="<?= e(route('admin-sidebars')) ?>">
-                        <?= I18N::translate('Sidebars') ?>
-                    </a>
+                <th title="<?= I18N::translate('Tabs') ?>">
+                    <?= view('icons/tab') ?>
+                    <span class="sr-only"><?= I18N::translate('Tabs') ?></span>
                 </th>
-                <th class="d-none d-sm-table-cell">
-                    <a href="<?= e(route('admin-blocks')) ?>">
-                        <?= I18N::translate('Blocks') ?>
-                    </a>
+                <th title="<?= I18N::translate('Sidebars') ?>">
+                    <?= view('icons/sidebar') ?>
+                    <span class="sr-only"><?= I18N::translate('Sidebars') ?></span>
                 </th>
-                <th class="d-none d-sm-table-cell">
-                    <a href="<?= e(route('admin-charts')) ?>">
-                        <?= I18N::translate('Charts') ?>
-                    </a>
+                <th title="<?= I18N::translate('Blocks') ?>">
+                    <?= view('icons/block') ?>
+                    <span class="sr-only"><?= I18N::translate('Blocks') ?></span>
                 </th>
-                <th class="d-none d-sm-table-cell">
-                    <a href="<?= e(route('admin-reports')) ?>">
-                        <?= I18N::translate('Reports') ?>
-                    </a>
+                <th title="<?= I18N::translate('Charts') ?>">
+                    <?= view('icons/chart') ?>
+                    <span class="sr-only"><?= I18N::translate('Charts') ?></span>
                 </th>
-                <th class="d-none">
-                    <?= I18N::translate('Themes') ?>
+                <th title="<?= I18N::translate('Reports') ?>">
+                    <?= view('icons/report') ?>
+                    <span class="sr-only"><?= I18N::translate('Reports') ?></span>
                 </th>
-                <th class="d-sm-none" data-orderable="false">
-                    <?= I18N::translate('Type') ?>
+                <th class="d-none" title="<?= I18N::translate('Themes') ?>">
+                    <?= view('icons/theme') ?>
+                    <span class="sr-only"><?= I18N::translate('Themes') ?></span>
                 </th>
             </tr>
         </thead>
+
         <tbody>
             <?php foreach ($modules as $module) : ?>
                 <tr>
-                    <th scope="row" data-sort="<?= $module->title() ?>" dir="auto">
-                        <?php if ($module instanceof ModuleConfigInterface && $module->isEnabled()) : ?>
-                            <a href="<?= e($module->getConfigLink()) ?>">
-                                <?= $module->title() ?>
-                            <?= view('icons/preferences') ?>
-                            </a>
-                        <?php else : ?>
-                            <?= $module->title() ?>
-                        <?php endif ?>
+                    <th scope="row" dir="auto">
+                        <?= $module->title() ?>
                     </th>
                     <td class="text-center" data-sort="<?= $module->isEnabled() ?>">
                         <?= Bootstrap4::checkbox('', false, ['name' => 'status-' . $module->name(), 'checked' => $module->isEnabled()]) ?>
                     </td>
-                    <td class="d-none d-sm-table-cell">
+                    <td>
                         <?= $module->description() ?>
                         <?php if ($module instanceof ModuleCustomInterface) : ?>
                             <br>
@@ -116,7 +106,17 @@
                             <?php endif ?>
                         <?php endif ?>
                     </td>
-                    <td class="text-center text-muted d-none d-sm-table-cell">
+                    <td class="text-center text-muted" title="<?= I18N::translate('Preferences') ?>">
+                        <?php if ($module instanceof ModuleConfigInterface) : ?>
+                            <a href="<?= e($module->getConfigLink()) ?>" title="<?= I18N::translate('Preferences') ?>">
+                                <?= view('icons/preferences') ?>
+                                <span class="sr-only">
+                                    <?= I18N::translate('Preferences') ?>
+                                </span>
+                            </a>
+                        <?php endif ?>
+                    </td>
+                    <td class="text-center text-muted" title="<?= I18N::translate('Menu') ?>">
                         <?php if ($module instanceof ModuleMenuInterface) : ?>
                             <?= view('icons/menu') ?>
                             <span class="sr-only"><?= I18N::translate('Menu') ?></span>
@@ -124,92 +124,67 @@
                             -
                         <?php endif ?>
                     </td>
-                    <td class="text-center text-muted d-none d-sm-table-cell">
-                        <?php if ($module instanceof ModuleTabInterface) : ?>
-                            <?= view('icons/tab') ?>
-                            <span class="sr-only"><?= I18N::translate('Tabs') ?></span>
-                        <?php else : ?>
-                            -
-                        <?php endif ?>
-                    </td>
-                    <td class="text-center text-muted d-none d-sm-table-cell">
-                        <?php if ($module instanceof ModuleSidebarInterface) : ?>
-                            <?= view('icons/sidebar') ?>
-                            <span class="sr-only"><?= I18N::translate('Sidebar') ?></span>
-                        <?php else : ?>
-                            -
-                        <?php endif ?>
-                    </td>
-                    <td class="text-center text-muted d-none d-sm-table-cell">
-                        <?php if ($module instanceof ModuleBlockInterface) : ?>
-                            <?php if ($module->isUserBlock()) : ?>
-                                <?= view('icons/block-user') ?>
-                                <span class="sr-only"><?= I18N::translate('My page') ?></span>
-                            <?php endif ?>
-                            <?php if ($module->isUserBlock()) : ?>
-                                <?= view('icons/block-tree') ?>
-                                <span class="sr-only"><?= I18N::translate('Home page') ?></span>
-                            <?php endif ?>
-                        <?php else : ?>
-                            -
-                        <?php endif ?>
-                    </td>
-                    <td class="text-center text-muted d-none d-sm-table-cell">
-                        <?php if ($module instanceof ModuleChartInterface) : ?>
-                            <?= view('icons/chart') ?>
-                            <span class="sr-only"><?= I18N::translate('Chart') ?></span>
-                        <?php else : ?>
-                            -
-                        <?php endif ?>
-                    </td>
-                    <td class="text-center text-muted d-none d-sm-table-cell">
-                        <?php if ($module instanceof ModuleReportInterface) : ?>
-                            <?= view('icons/report') ?>
-                            <span class="sr-only"><?= I18N::translate('Report') ?></span>
-                        <?php else : ?>
-                            -
-                        <?php endif ?>
-                    </td>
-                    <td class="text-center text-muted d-none">
-                        <?php if ($module instanceof ModuleThemeInterface) : ?>
-                            <?= view('icons/theme') ?>
-                            <span class="sr-only"><?= I18N::translate('Theme') ?></span>
-                        <?php else : ?>
-                            -
-                        <?php endif ?>
-                    </td>
-                    <td class="text-center text-muted d-sm-none">
-                        <?php if ($module instanceof ModuleMenuInterface) : ?>
-                            <?= view('icons/menu') ?>
-                            <span class="sr-only"><?= I18N::translate('Menu') ?></span>
-                        <?php endif ?>
+                    <td class="text-center text-muted" title="<?= I18N::translate('Tab') ?>">
                         <?php if ($module instanceof ModuleTabInterface) : ?>
                             <?= view('icons/tab') ?>
                             <span class="sr-only"><?= I18N::translate('Tab') ?></span>
+                        <?php else : ?>
+                            -
                         <?php endif ?>
+                    </td>
+                    <td class="text-center text-muted" title="<?= I18N::translate('Sidebar') ?>">
                         <?php if ($module instanceof ModuleSidebarInterface) : ?>
                             <?= view('icons/sidebar') ?>
                             <span class="sr-only"><?= I18N::translate('Sidebar') ?></span>
+                        <?php else : ?>
+                            -
                         <?php endif ?>
-                        <?php if ($module instanceof ModuleBlockInterface && $module->isUserBlock()) : ?>
-                            <?= view('icons/block-user') ?>
-                            <span class="sr-only"><?= I18N::translate('My page') ?></span>
+                    </td>
+                    <td class="text-center text-muted">
+                        <?php if ($module instanceof ModuleBlockInterface) : ?>
+                            <?php if ($module->isUserBlock()) : ?>
+                                <span title="<?= I18N::translate('My page') ?>">
+                                    <?= view('icons/block-user') ?>
+                                </span>
+                                <span class="sr-only">
+                                    <?= I18N::translate('My page') ?>
+                                </span>
+                            <?php endif ?>
+
+                            <?php if ($module->isTreeBlock()) : ?>
+                                <span title="<?= I18N::translate('Home page') ?>">
+                                    <?= view('icons/block-tree') ?>
+                                </span>
+                                <span class="sr-only">
+                                    <?= I18N::translate('Home page') ?>
+                                </span>
+                            <?php endif ?>
+                        <?php else : ?>
+                            -
                         <?php endif ?>
-                        <?php if ($module instanceof ModuleBlockInterface && $module->isUserBlock()) : ?>
-                            <?= view('icons/block-tree') ?>
-                            <span class="sr-only"><?= I18N::translate('Home page') ?></span>
-                        <?php endif ?>
+                    </td>
+                    <td class="text-center text-muted" title="<?= I18N::translate('Chart') ?>">
                         <?php if ($module instanceof ModuleChartInterface) : ?>
                             <?= view('icons/chart') ?>
                             <span class="sr-only"><?= I18N::translate('Chart') ?></span>
+                        <?php else : ?>
+                            -
                         <?php endif ?>
+                    </td>
+                    <td class="text-center text-muted" title="<?= I18N::translate('Report') ?>">
                         <?php if ($module instanceof ModuleReportInterface) : ?>
                             <?= view('icons/report') ?>
                             <span class="sr-only"><?= I18N::translate('Report') ?></span>
+                        <?php else : ?>
+                            -
                         <?php endif ?>
+                    </td>
+                    <td class="text-center text-muted d-none" title="<?= I18N::translate('Theme') ?>">
                         <?php if ($module instanceof ModuleThemeInterface) : ?>
                             <?= view('icons/theme') ?>
                             <span class="sr-only"><?= I18N::translate('Theme') ?></span>
+                        <?php else : ?>
+                            -
                         <?php endif ?>
                     </td>
                 </tr>

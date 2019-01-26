@@ -398,14 +398,18 @@ class Module
      * All modules which provide a specific function.
      *
      * @param string $interface
+     * @param bool   $include_disabled
      *
      * @return Collection|ModuleInterface[]
      */
-    public static function findByInterface(string $interface): Collection
+    public static function findByInterface(string $interface, $include_disabled = false): Collection
     {
         $modules = self::all()
             ->filter(function (ModuleInterface $module) use ($interface): bool {
-                return $module->isEnabled() && $module instanceof $interface;
+                return $module instanceof $interface;
+            })
+            ->filter(function (ModuleInterface $module) use ($include_disabled): bool {
+                return $include_disabled || $module->isEnabled();
             });
 
         switch ($interface) {

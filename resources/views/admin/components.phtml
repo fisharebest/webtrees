@@ -1,0 +1,149 @@
+<?php use Fisharebest\Webtrees\Bootstrap4; ?>
+<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
+<?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\Module\ModuleConfigInterface;
+use Fisharebest\Webtrees\View; ?>
+
+<?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('modules') => I18N::translate('Modules'), $title]]) ?>
+
+<h1><?= $title ?></h1>
+
+<form method="post">
+    <?= csrf_field() ?>
+    <table class="table table-bordered wt-table-menu">
+        <thead>
+            <tr>
+                <th><?= I18N::translate('Menu') ?></th>
+                <th class="text-center"><?= I18N::translate('Enabled') ?></th>
+                <th class="text-center"><?= I18N::translate('Access level') ?></th>
+                <?php if ($component === 'menu' || $component === 'sidebar' || $component === 'tab') : ?>
+                    <th class="text-center"><?= I18N::translate('Move up') ?></th>
+                    <th class="text-center"><?= I18N::translate('Move down') ?></th>
+                <?php endif ?>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php foreach ($modules as $module_name => $module) : ?>
+                <tr>
+                    <th scope="col">
+                        <input type="hidden" name="order[]" value="<?= e($module->name()) ?>"?>
+                        <?= $module->title() ?>
+                        <?php if ($module instanceof ModuleConfigInterface) : ?>
+                            <a href="<?= e($module->getConfigLink()) ?>" title="<?= I18N::translate('Preferences') ?>">
+                                <?= view('icons/preferences') ?>
+                                <span class="sr-only">
+                                    <?= I18N::translate('Preferences') ?>
+                                </span>
+                            </a>
+                        <?php endif ?>
+                    </th>
+
+                    <td class="text-center">
+                        <label class="d-block">
+                            <input type="checkbox" name="status-<?= e($module->name()) ?>" id="status-<?= e($module->name()) ?>" <?= $module->isEnabled() ? 'checked' : '' ?>>
+                            <span class="sr-only">
+                                <?= I18N::translate('Enabled') ?>
+                            </span>
+                        </label>
+                    </td>
+
+                    <td class="text-center">
+                        <div class="modal fade" id="access-level-<?= $module->name() ?>" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h2 class="modal-title">
+                                            <?= e($module->title()) ?> – <?= I18N::translate('Access level') ?>
+                                        </h2>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table class="table table-sm">
+                                            <tbody>
+                                                <?php foreach ($trees as $tree) : ?>
+                                                    <tr>
+                                                        <td>
+                                                            <?= e($tree->title()) ?>
+                                                        </td>
+                                                        <td>
+                                                            <?= Bootstrap4::select(FunctionsEdit::optionsAccessLevels(), $module->accessLevel($tree, $component), ['name' => 'access-' . $module->name() . '-' . $tree->id()]) ?>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#access-level-<?= $module->name() ?>">
+                            <?= view('icons/edit') ?>
+                            <span class="sr-only">
+                                 <?= I18N::translate('edit') ?>
+                            </span>
+                        </button>
+                    </td>
+
+                    <?php if ($component === 'menu' || $component === 'sidebar' || $component === 'tab') : ?>
+                        <td class="move up text-center">
+                            <a href="#" title="<?= I18N::translate('Move up') ?>">
+                                <?= view('icons/arrow-up') ?>
+                            </a>
+                        </td>
+
+                        <td class="move down text-center">
+                            <a href="#" title="<?= I18N::translate('Move down') ?>">
+                                <?= view('icons/arrow-down') ?>
+                            </a>
+                        </td>
+                    <?php endif ?>
+                </tr>
+            <?php endforeach ?>
+        </tbody>
+    </table>
+
+    <button class="btn btn-primary" type="submit">
+        <?= view('icons/save') ?>
+        <?= I18N::translate('save') ?>
+    </button>
+
+    <a class="btn btn-secondary" href="<?= e(route('admin-control-panel')) ?>">
+        <?= view('icons/cancel') ?>
+        <?= I18N::translate('cancel') ?>
+    </a>
+</form>
+
+
+<?php View::push('javascript') ?>
+<script>
+    $('.wt-table-menu td.move').click(function() {
+        var row = $(this).closest('tr');
+
+        if ($(this).hasClass('up')) {
+            row.prev().before(row);
+        } else {
+            row.next().after(row);
+        }
+
+        return false;
+    });
+</script>
+<?php View::endpush() ?>
+
+<?php View::push('styles') ?>
+<style>
+    .wt-table-menu tr:first-child .wt-icon-arrow-up {
+        display:none;
+    }
+    .wt-table-menu tr:last-child .wt-icon-arrow-down {
+        display:none;
+    }
+</style>
+<?php View::endpush() ?>

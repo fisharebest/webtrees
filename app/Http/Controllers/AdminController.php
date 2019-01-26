@@ -32,14 +32,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module;
-use Fisharebest\Webtrees\Module\ModuleBlockInterface;
-use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
-use Fisharebest\Webtrees\Module\ModuleInterface;
-use Fisharebest\Webtrees\Module\ModuleMenuInterface;
-use Fisharebest\Webtrees\Module\ModuleReportInterface;
-use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
-use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\DatatablesService;
@@ -75,37 +68,23 @@ class AdminController extends AbstractBaseController
     protected $layout = 'layouts/administration';
 
     /**
-     * Show the admin page for blocks.
-     *
-     * @return Response
-     */
-    public function blocks(): Response
-    {
-        return $this->components(ModuleBlockInterface::class, 'block', 'blocks', I18N::translate('Block'), I18N::translate('Blocks'));
-    }
-
-    /**
-     * Show the admin page for charts.
-     *
-     * @return Response
-     */
-    public function charts(): Response
-    {
-        return $this->components(ModuleChartInterface::class, 'chart', 'charts', I18N::translate('Chart'), I18N::translate('Charts'));
-    }
-
-    /**
      * The control panel shows a summary of the site and links to admin functions.
      *
-     * @param HousekeepingService $housekeeping_service
-     * @param UpgradeService      $upgrade_service
+     * @param HousekeepingService    $housekeeping_service
+     * @param UpgradeService         $upgrade_service
+     * @param Admin\ModuleController $module_controller
      *
      * @return Response
      */
-    public function controlPanel(HousekeepingService $housekeeping_service, UpgradeService $upgrade_service): Response
+    public function controlPanel(
+        HousekeepingService $housekeeping_service,
+        UpgradeService $upgrade_service,
+        Admin\ModuleController $module_controller
+    ): Response
     {
         $filesystem      = new Filesystem(new Local(WT_ROOT));
         $files_to_delete = $housekeeping_service->deleteOldWebtreesFiles($filesystem);
+        $deleted_modules = $module_controller->deletedModuleNames();
 
         return $this->viewResponse('admin/control-panel', [
             'title'           => I18N::translate('Control panel'),
@@ -127,7 +106,7 @@ class AdminController extends AbstractBaseController
             'notes'           => $this->totalNotes(),
             'files_to_delete' => $files_to_delete,
             'all_modules'     => Module::all(),
-            'deleted_modules' => $this->deletedModuleNames(),
+            'deleted_modules' => $deleted_modules,
             'config_modules'  => Module::findByInterface(ModuleConfigInterface::class),
         ]);
     }
@@ -193,7 +172,6 @@ class AdminController extends AbstractBaseController
 
         $earliest = $earliest->toDateString();
         $latest   = $latest->toDateString();
-
 
         $ged      = $request->get('ged');
         $from     = $request->get('from', $earliest);
@@ -332,45 +310,6 @@ class AdminController extends AbstractBaseController
         $response->headers->set('Content-Type', 'text/csv; charset=UTF-8');
 
         return $response;
-    }
-
-    /**
-     * Delete the database settings for a deleted module.
-     *
-     * @param Request $request
-     *
-     * @return RedirectResponse
-     */
-    public function deleteModuleSettings(Request $request): RedirectResponse
-    {
-        $module_name = $request->get('module_name');
-
-        DB::table('block_setting')
-            ->join('block', 'block_setting.block_id', '=', 'block.block_id')
-            ->join('module', 'block.module_name', '=', 'module.module_name')
-            ->where('module.module_name', '=', $module_name)
-            ->delete();
-
-        DB::table('block')
-            ->join('module', 'block.module_name', '=', 'module.module_name')
-            ->where('module.module_name', '=', $module_name)
-            ->delete();
-
-        DB::table('module_setting')
-            ->where('module_name', '=', $module_name)
-            ->delete();
-
-        DB::table('module_privacy')
-            ->where('module_name', '=', $module_name)
-            ->delete();
-
-        DB::table('module')
-            ->where('module_name', '=', $module_name)
-            ->delete();
-
-        FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been deleted.', $module_name), 'success');
-
-        return new RedirectResponse(route('admin-modules'));
     }
 
     /**
@@ -621,7 +560,7 @@ class AdminController extends AbstractBaseController
         $data = array_map(function (string $thumbnail): array {
             $original = $this->findOriginalFileFromThumbnail($thumbnail);
 
-            $original_url = route('unused-media-thumbnail', [
+            $original_url  = route('unused-media-thumbnail', [
                 'folder' => dirname($original),
                 'file'   => basename($original),
                 'w'      => 100,
@@ -883,60 +822,6 @@ class AdminController extends AbstractBaseController
     }
 
     /**
-     * Show the administrator a list of modules.
-     *
-     * @return Response
-     */
-    public function modules(): Response
-    {
-        return $this->viewResponse('admin/modules', [
-            'title'             => I18N::translate('Module administration'),
-            'modules'           => Module::all(),
-            'deleted_modules'   => $this->deletedModuleNames(),
-        ]);
-    }
-
-    /**
-     * Show the admin page for menus.
-     *
-     * @return Response
-     */
-    public function menus(): Response
-    {
-        return $this->components(ModuleMenuInterface::class, 'menu', 'menus', I18N::translate('Menu'), I18N::translate('Menus'));
-    }
-
-    /**
-     * Show the admin page for reports.
-     *
-     * @return Response
-     */
-    public function reports(): Response
-    {
-        return $this->components(ModuleReportInterface::class, 'report', 'reports', I18N::translate('Report'), I18N::translate('Reports'));
-    }
-
-    /**
-     * Show the admin page for sidebars.
-     *
-     * @return Response
-     */
-    public function sidebars(): Response
-    {
-        return $this->components(ModuleSidebarInterface::class, 'sidebar', 'sidebars', I18N::translate('Sidebar'), I18N::translate('Sidebars'));
-    }
-
-    /**
-     * Show the admin page for tabs.
-     *
-     * @return Response
-     */
-    public function tabs(): Response
-    {
-        return $this->components(ModuleTabInterface::class, 'tab', 'tabs', I18N::translate('Tab'), I18N::translate('Tabs'));
-    }
-
-    /**
      * @param Tree $tree
      *
      * @return Response
@@ -997,10 +882,10 @@ class AdminController extends AbstractBaseController
 
                 // Add (or update) the new data
                 DB::table('default_resn')->insert([
-                    'gedcom_id'  => $tree->id(),
-                    'xref'     => $xref,
-                    'tag_type' => $tag_type,
-                    'resn'     => $resn,
+                    'gedcom_id' => $tree->id(),
+                    'xref'      => $xref,
+                    'tag_type'  => $tag_type,
+                    'resn'      => $resn,
                 ]);
             }
         }
@@ -1024,70 +909,7 @@ class AdminController extends AbstractBaseController
             FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.', e($tree->title())), 'success');
         }
 
-
         return new RedirectResponse(route('admin-trees', ['ged' => $tree->name()]));
-    }
-
-    /**
-     * Update the access levels of the modules.
-     *
-     * @param Request $request
-     *
-     * @return RedirectResponse
-     */
-    public function updateModuleAccess(Request $request): RedirectResponse
-    {
-        $component = $request->get('component');
-        $interface = $request->get('interface');
-        $modules   = Module::findByInterface($interface);
-
-        foreach ($modules as $module) {
-            foreach (Tree::getAll() as $tree) {
-                $key          = 'access-' . $module->name() . '-' . $tree->id();
-                $access_level = (int) $request->get($key);
-
-                DB::table('module_privacy')->updateOrInsert([
-                    'module_name' => $module->name(),
-                    'gedcom_id'   => $tree->id(),
-                    'component'   => $component,
-                ], [
-                    'access_level' => $access_level,
-                ]);
-            }
-        }
-
-        return new RedirectResponse(route('admin-' . $component . 's'));
-    }
-
-    /**
-     * Update the enabled/disabled status of the modules.
-     *
-     * @param Request $request
-     *
-     * @return RedirectResponse
-     */
-    public function updateModuleStatus(Request $request): RedirectResponse
-    {
-        $modules = Module::all();
-
-        foreach ($modules as $module) {
-            $new_status = (bool) $request->get('status-' . $module->name());
-            $old_status = $module->isEnabled();
-
-            if ($new_status !== $old_status) {
-                DB::table('module')
-                    ->where('module_name', '=', $module->name())
-                    ->update(['status' => $new_status ? 'enabled' : 'disabled']);
-
-                if ($new_status) {
-                    FlashMessages::addMessage(I18N::translate('The module “%s” has been enabled.', $module->title()), 'success');
-                } else {
-                    FlashMessages::addMessage(I18N::translate('The module “%s” has been disabled.', $module->title()), 'success');
-                }
-            }
-        }
-
-        return new RedirectResponse(route('admin-modules'));
     }
 
     /**
@@ -1178,46 +1000,6 @@ class AdminController extends AbstractBaseController
     }
 
     /**
-     * Show the admin page for blocks, charts, menus, reports, sidebars, tabs, etc..
-     *
-     * @param string $interface
-     * @param string $component
-     * @param string $route
-     * @param string $component_title
-     * @param string $title
-     *
-     * @return Response
-     */
-    private function components(string $interface, string $component, string $route, string $component_title, string $title): Response
-    {
-        return $this->viewResponse('admin/module-components', [
-            'component'       => $component,
-            'component_title' => $component_title,
-            'interface'       => $interface,
-            'modules'         => Module::findByInterface($interface),
-            'title'           => $title,
-            'route'           => $route,
-        ]);
-    }
-
-    /**
-     * Generate a list of module names which exist in the database but not on disk.
-     *
-     * @return Collection|string[]
-     */
-    private function deletedModuleNames(): Collection
-    {
-        $database_modules = DB::table('module')->pluck('module_name');
-
-        $disk_modules = Module::all()
-            ->map(function (ModuleInterface $module): string {
-                return $module->name();
-            });
-
-        return $database_modules->diff($disk_modules);
-    }
-
-    /**
      * Find the media object that uses a particular media file.
      *
      * @param string $file
@@ -1267,7 +1049,6 @@ class AdminController extends AbstractBaseController
 
     /**
      * Compare two images, and return a quantified difference.
-     *
      * 0 (different) ... 100 (same)
      *
      * @param string $thumbanil
@@ -1314,7 +1095,6 @@ class AdminController extends AbstractBaseController
 
     /**
      * Scale an image to 10x10 and read the individual pixels.
-     *
      * This is a slow operation, add we will do it many times on
      * the "import wetbrees 1 thumbnails" page so cache the results.
      *

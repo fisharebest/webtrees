@@ -287,43 +287,53 @@
             </span>
         </h2>
     </div>
+
     <div class="card-body">
+        <ul class="fa-ul">
+            <li>
+                <span class="fa-li"><?= view('icons/preferences') ?></span>
+                <a href="<?= e(route('modules')) ?>">
+                    <?= I18N::translate('Module administration') ?>
+                </a>
+            </li>
+        </ul>
+
         <div class="row">
             <div class="col-sm-6">
                 <ul class="fa-ul">
                     <li>
                         <span class="fa-li"><?= view('icons/menu') ?></span>
-                        <a href="<?= e(route('admin-menus')) ?>">
+                        <a href="<?= e(route('menus')) ?>">
                             <?= I18N::translate('Menus') ?>
                         </a>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/tab') ?></span>
-                        <a href="<?= e(route('admin-tabs')) ?>">
+                        <a href="<?= e(route('tabs')) ?>">
                             <?= I18N::translate('Tabs') ?>
                         </a>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/block') ?></span>
-                        <a href="<?= e(route('admin-blocks')) ?>">
+                        <a href="<?= e(route('blocks')) ?>">
                             <?= I18N::translate('Blocks') ?>
                         </a>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/sidebar') ?></span>
-                        <a href="<?= e(route('admin-sidebars')) ?>">
+                        <a href="<?= e(route('sidebars')) ?>">
                             <?= I18N::translate('Sidebars') ?>
                         </a>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/chart') ?></span>
-                        <a href="<?= e(route('admin-charts')) ?>">
+                        <a href="<?= e(route('charts')) ?>">
                             <?= I18N::translate('Charts') ?>
                         </a>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/report') ?></span>
-                        <a href="<?= e(route('admin-reports')) ?>">
+                        <a href="<?= e(route('reports')) ?>">
                             <?= I18N::translate('Reports') ?>
                         </a>
                     </li>
@@ -342,15 +352,6 @@
                 </ul>
             </div>
         </div>
-
-        <ul class="fa-ul">
-            <li>
-                <span class="fa-li"><?= view('icons/preferences') ?></span>
-                <a href="<?= e(route('admin-modules')) ?>">
-                    <?= I18N::translate('Module administration') ?>
-                </a>
-            </li>
-        </ul>
     </div>
 </div>
 
