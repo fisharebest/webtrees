@@ -44,7 +44,7 @@ trait ModuleMenuTrait
      */
     public function getMenuOrder(): int
     {
-        return $this->menu_order ?: $this->defaultMenuOrder();
+        return $this->menu_order ?? $this->defaultMenuOrder();
     }
 
     /**

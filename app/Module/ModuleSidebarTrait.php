@@ -44,7 +44,7 @@ trait ModuleSidebarTrait
      */
     public function getSidebarOrder(): int
     {
-        return $this->sidebar_order ?: $this->defaultSidebarOrder();
+        return $this->sidebar_order ?? $this->defaultSidebarOrder();
     }
 
 

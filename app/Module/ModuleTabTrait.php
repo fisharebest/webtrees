@@ -44,7 +44,7 @@ trait ModuleTabTrait
      */
     public function getTabOrder(): int
     {
-        return $this->tab_order ?: $this->defaultTabOrder();
+        return $this->tab_order ?? $this->defaultTabOrder();
     }
 
     /**
