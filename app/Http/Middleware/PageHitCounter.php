@@ -54,8 +54,8 @@ class PageHitCounter implements MiddlewareInterface
     /**
      * PageHitCounter constructor.
      *
-     * @param User  $user
-     * @param ?Tree $tree
+     * @param User      $user
+     * @param Tree|null $tree
      */
     public function __construct(User $user, ?Tree $tree)
     {

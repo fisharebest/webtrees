@@ -29,7 +29,6 @@ use Fisharebest\Webtrees\Http\Middleware\Housekeeping;
 use Fisharebest\Webtrees\Http\Middleware\PageHitCounter;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Application;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
@@ -72,6 +71,9 @@ app()->instance('cache.array', new Repository(new ArrayStore()));
 // Extract the request parameters.
 $request = Request::createFromGlobals();
 app()->instance(Request::class, $request);
+
+// Dummy value, until we have created our first tree.
+app()->bind(Tree::class, function () { return null; });
 
 // Calculate the base URL, so we can generate absolute URLs.
 $request_uri = $request->getSchemeAndHttpHost() . $request->getRequestUri();
@@ -255,21 +257,21 @@ try {
     DebugBar::startMeasure('controller_action');
 
     $middleware_stack = [
-        CheckForMaintenanceMode::class,
+        //CheckForMaintenanceMode::class,
     ];
 
     if (class_exists(DebugBar::class)) {
-        $middleware_stack[] = DebugBarData::class;
+        //$middleware_stack[] = DebugBarData::class;
     }
 
     if ($request->getMethod() === Request::METHOD_GET) {
-        $middleware_stack[] = PageHitCounter::class;
-        $middleware_stack[] = Housekeeping::class;
+        //$middleware_stack[] = PageHitCounter::class;
+        //$middleware_stack[] = Housekeeping::class;
     }
 
     if ($request->getMethod() === Request::METHOD_POST) {
-        $middleware_stack[] = UseTransaction::class;
-        $middleware_stack[] = CheckCsrf::class;
+        //$middleware_stack[] = UseTransaction::class;
+        //$middleware_stack[] = CheckCsrf::class;
     }
 
     // Apply the middleware using the "onion" pattern.

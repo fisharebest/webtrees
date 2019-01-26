@@ -41,7 +41,7 @@ class ErrorController extends AbstractBaseController
      *
      * @return Response
      */
-    public function noRouteFound(Request $request, Tree $tree = null): Response
+    public function noRouteFound(Request $request, ?Tree $tree): Response
     {
         // The tree exists, we have access to it, and it is fully imported.
         if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {

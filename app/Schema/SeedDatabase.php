@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
+use Fisharebest\Webtrees\Module;
+
 /**
  * Populate the database
  */
@@ -34,6 +36,7 @@ class SeedDatabase implements SeedInterface
         (new SeedGedcomTable())->run();
         (new SeedGedcomSettingTable())->run();
         (new SeedDefaultResnTable())->run();
+        Module::all();
         (new SeedBlockTable())->run();
     }
 }

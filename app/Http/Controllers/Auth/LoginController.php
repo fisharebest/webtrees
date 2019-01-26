@@ -46,7 +46,7 @@ class LoginController extends AbstractBaseController
      *
      * @return Response
      */
-    public function loginPage(Request $request, Tree $tree = null): Response
+    public function loginPage(Request $request, ?Tree $tree): Response
     {
         // Already logged in?
         if (Auth::check()) {
