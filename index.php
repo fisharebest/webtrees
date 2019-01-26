@@ -261,17 +261,17 @@ try {
     ];
 
     if (class_exists(DebugBar::class)) {
-        //$middleware_stack[] = DebugBarData::class;
+        $middleware_stack[] = DebugBarData::class;
     }
 
     if ($request->getMethod() === Request::METHOD_GET) {
-        //$middleware_stack[] = PageHitCounter::class;
-        //$middleware_stack[] = Housekeeping::class;
+        $middleware_stack[] = PageHitCounter::class;
+        $middleware_stack[] = Housekeeping::class;
     }
 
     if ($request->getMethod() === Request::METHOD_POST) {
-        //$middleware_stack[] = UseTransaction::class;
-        //$middleware_stack[] = CheckCsrf::class;
+        $middleware_stack[] = UseTransaction::class;
+        $middleware_stack[] = CheckCsrf::class;
     }
 
     // Apply the middleware using the "onion" pattern.
