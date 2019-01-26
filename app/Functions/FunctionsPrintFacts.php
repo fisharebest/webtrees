@@ -32,6 +32,8 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
@@ -528,22 +530,23 @@ class FunctionsPrintFacts
                 }
 
                 $values = ['<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a>'];
-                foreach ($associates as $associate) {
-                    $relationship_name = Functions::getCloseRelationshipName($associate, $person);
-                    if ($relationship_name === '') {
-                        $relationship_name = GedcomTag::getLabel('RELA');
-                    }
 
-                    if ($parent instanceof Family) {
-                        // For family ASSO records (e.g. MARR), identify the spouse with a sex icon
-                        $relationship_name .= $associate->getSexImage();
-                    }
+                $module = Module::findByInterface(RelationshipsChartModule::class)->first();
 
-                    $values[] = '<a href="' . e(route('relationships', [
-                            'xref1' => $associate->xref(),
-                            'xref2' => $person->xref(),
-                            'ged'   => $person->tree()->name(),
-                        ])) . '" rel="nofollow">' . $relationship_name . '</a>';
+                if ($module instanceof RelationshipsChartModule) {
+                    foreach ($associates as $associate) {
+                        $relationship_name = Functions::getCloseRelationshipName($associate, $person);
+                        if ($relationship_name === '') {
+                            $relationship_name = GedcomTag::getLabel('RELA');
+                        }
+
+                        if ($parent instanceof Family) {
+                            // For family ASSO records (e.g. MARR), identify the spouse with a sex icon
+                            $relationship_name .= $associate->getSexImage();
+                        }
+
+                        $values[] = '<a href="' . $module->chartUrl($associate, ['xref2' => $person->xref()]) . '" rel="nofollow">' . $relationship_name . '</a>';
+                    }
                 }
                 $value = implode(' — ', $values);
 
