@@ -33,6 +33,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
@@ -531,7 +532,9 @@ class FunctionsPrintFacts
 
                 $values = ['<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a>'];
 
-                $module = Module::findByInterface(RelationshipsChartModule::class)->first();
+                $module = Module::findByComponent('chart', $person->tree(), Auth::user())->first(function (ModuleInterface $module) {
+                    return $module instanceof RelationshipsChartModule;
+                });
 
                 if ($module instanceof RelationshipsChartModule) {
                     foreach ($associates as $associate) {

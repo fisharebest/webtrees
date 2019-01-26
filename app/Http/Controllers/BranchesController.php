@@ -17,12 +17,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Tree;
@@ -97,7 +99,7 @@ class BranchesController extends AbstractBaseController
 
         // @TODO - convert this to use views
         $html = view('branches-list', [
-            'branches' => $this->getPatriarchsHtml($individuals, $ancestors, $surname, $soundex_dm, $soundex_std),
+            'branches' => $this->getPatriarchsHtml($tree, $individuals, $ancestors, $surname, $soundex_dm, $soundex_std),
         ]);
 
         return new Response($html);
@@ -193,6 +195,7 @@ class BranchesController extends AbstractBaseController
     /**
      * For each individual with no ancestors, list their descendants.
      *
+     * @param Tree         $tree
      * @param Individual[] $individuals
      * @param Individual[] $ancestors
      * @param string       $surname
@@ -201,7 +204,7 @@ class BranchesController extends AbstractBaseController
      *
      * @return string
      */
-    public function getPatriarchsHtml(array $individuals, array $ancestors, string $surname, bool $soundex_dm, bool $soundex_std): string
+    public function getPatriarchsHtml(Tree $tree, array $individuals, array $ancestors, string $surname, bool $soundex_dm, bool $soundex_std): string
     {
         $html = '';
         foreach ($individuals as $individual) {
@@ -212,7 +215,7 @@ class BranchesController extends AbstractBaseController
                     }
                 }
             }
-            $html .= $this->getDescendantsHtml($individuals, $ancestors, $surname, $soundex_dm, $soundex_std, $individual, null);
+            $html .= $this->getDescendantsHtml($tree, $individuals, $ancestors, $surname, $soundex_dm, $soundex_std, $individual, null);
         }
 
         return $html;
@@ -222,6 +225,7 @@ class BranchesController extends AbstractBaseController
      * Generate a recursive list of descendants of an individual.
      * If parents are specified, we can also show the pedigree (adopted, etc.).
      *
+     * @param Tree         $tree
      * @param Individual[] $individuals
      * @param Individual[] $ancestors
      * @param string       $surname
@@ -232,9 +236,11 @@ class BranchesController extends AbstractBaseController
      *
      * @return string
      */
-    private function getDescendantsHtml(array $individuals, array $ancestors, string $surname, bool $soundex_dm, bool $soundex_std, Individual $individual, Family $parents = null)
+    private function getDescendantsHtml(Tree $tree, array $individuals, array $ancestors, string $surname, bool $soundex_dm, bool $soundex_std, Individual $individual, Family $parents = null)
     {
-        $module = Module::findByInterface(RelationshipsChartModule::class)->first();
+        $module = Module::findByComponent('chart', $tree, Auth::user())->first(function (ModuleInterface $module) {
+            return $module instanceof RelationshipsChartModule;
+        });
 
         // A person has many names. Select the one that matches the searched surname
         $person_name = '';
@@ -315,7 +321,7 @@ class BranchesController extends AbstractBaseController
 
                 $fam_html .= '<ol>';
                 foreach ($family->getChildren() as $child) {
-                    $fam_html .= $this->getDescendantsHtml($individuals, $ancestors, $surname, $soundex_dm, $soundex_std, $child, $family);
+                    $fam_html .= $this->getDescendantsHtml($tree, $individuals, $ancestors, $surname, $soundex_dm, $soundex_std, $child, $family);
                 }
                 $fam_html .= '</ol>';
             }
