@@ -2,6 +2,8 @@
 <?php use Fisharebest\Webtrees\GedcomTag; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Individual; ?>
+<?php use Fisharebest\Webtrees\Module; ?>
+<?php use Fisharebest\Webtrees\Module\RelationshipsChartModule; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 <?php use Ramsey\Uuid\Uuid; ?>
 
@@ -12,6 +14,8 @@ $table_id = 'table-indi-' . Uuid::uuid4()->toString();
 
 $hundred_years_ago = new Date(date('Y') - 100);
 $unique_indis      = []; // Don't double-count indis with multiple names.
+
+$module = Module::findByInterface(RelationshipsChartModule::class)->first();
 ?>
 
 <?php View::push('javascript') ?>
@@ -256,9 +260,13 @@ for ($year = 1550; $year < 2030; $year += 10) {
 
                 <td class="center" data-sort="<?= $key ?>">
                     <?php if ($sosa) : ?>
-                        <a href="<?= e(route('relationships', ['xref1' => $individuals[1]->xref(), 'xref2' => $individual->xref(), 'ged' => $individual->tree()->name()])) ?>" title="<?= I18N::translate('Relationships') ?>" rel="nofollow">
+                        <?php if ($module instanceof RelationshipsChartModule) : ?>
+                            <a href="<?= e($module->chartUrl($individuals[1], ['xref2' => $individual->xref()])) ?>" rel="nofollow" title="<?= I18N::translate('Relationships') ?>" rel="nofollow">
+                                <?= I18N::number($key) ?>
+                            </a>
+                        <?php else : ?>
                             <?= I18N::number($key) ?>
-                        </a>
+                        <?php endif ?>
                     <?php endif ?>
                 </td>
 

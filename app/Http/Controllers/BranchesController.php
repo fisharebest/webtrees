@@ -22,6 +22,8 @@ use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
@@ -232,6 +234,8 @@ class BranchesController extends AbstractBaseController
      */
     private function getDescendantsHtml(array $individuals, array $ancestors, string $surname, bool $soundex_dm, bool $soundex_std, Individual $individual, Family $parents = null)
     {
+        $module = Module::findByInterface(RelationshipsChartModule::class)->first();
+
         // A person has many names. Select the one that matches the searched surname
         $person_name = '';
         foreach ($individual->getAllNames() as $name) {
@@ -255,13 +259,9 @@ class BranchesController extends AbstractBaseController
 
         // Is this individual one of our ancestors?
         $sosa = array_search($individual, $ancestors, true);
-        if (is_int($sosa)) {
+        if (is_int($sosa) && $module instanceof RelationshipsChartModule) {
             $sosa_class = 'search_hit';
-            $sosa_html  = ' <a class="details1 ' . $individual->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="' . e(route('relationships', [
-                    'xref1' => $individual->xref(),
-                    'xref2' => $ancestors[1]->xref(),
-                    'ged'   => $individual->tree()->name(),
-                ])) . '" rel="nofollow">' . $sosa . '</a>' . self::sosaGeneration($sosa);
+            $sosa_html = '<a class="details1 ' . $individual->getBoxStyle() . '" href="' . e($module->chartUrl($individual, ['xref2' => $individuals[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationships') . '">' .  I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
         } else {
             $sosa_class = '';
             $sosa_html  = '';
@@ -295,12 +295,9 @@ class BranchesController extends AbstractBaseController
                 $spouse = $family->getSpouse($individual);
                 if ($spouse instanceof Individual) {
                     $sosa = array_search($spouse, $ancestors, true);
-                    if (is_int($sosa)) {
+                    if (is_int($sosa) && $module instanceof RelationshipsChartModule) {
                         $sosa_class = 'search_hit';
-                        $sosa_html  = ' <a class="details1 ' . $spouse->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="' . e(route('relationships', [
-                                'xref2' => $ancestors[1]->xref(),
-                                'ged'   => $individual->tree()->name(),
-                            ])) . '" rel="nofollow"> ' . $sosa . ' </a>' . self::sosaGeneration($sosa);
+                        $sosa_html  = '<a class="details1 ' . $spouse->getBoxStyle() . '" href="' . e($module->chartUrl($individual, ['xref2' => $individuals[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationships') . '">' .  I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
                     } else {
                         $sosa_class = '';
                         $sosa_html  = '';
