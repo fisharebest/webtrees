@@ -31,7 +31,9 @@ use Fisharebest\Webtrees\Exceptions\RepositoryAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\RepositoryNotFoundException;
 use Fisharebest\Webtrees\Exceptions\SourceAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\SourceNotFoundException;
+use Fisharebest\Webtrees\Module\ModuleInterface;
 use stdClass;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * Authentication.
@@ -192,6 +194,21 @@ class Auth
     public static function logout()
     {
         Session::regenerate(true);
+    }
+
+    /**
+     * @param ModuleInterface $module
+     * @param string          $component
+     * @param Tree            $tree
+     * @param User            $user
+     *
+     * @return void
+     */
+    public static function checkComponentAccess(ModuleInterface $module, string $component, Tree $tree, User $user)
+    {
+        if ($module->accessLevel($tree, $component) < Auth::accessLevel($tree, $user)) {
+            throw new AccessDeniedHttpException('');
+        }
     }
 
     /**

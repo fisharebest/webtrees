@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -95,17 +96,19 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
      *
      * @param Request      $request
      * @param Tree         $tree
+     * @param User         $user
      * @param ChartService $chart_service
      *
      * @return Response
      */
-    public function getChartAction(Request $request, Tree $tree, ChartService $chart_service): Response
+    public function getChartAction(Request $request, Tree $tree, User $user, ChartService $chart_service): Response
     {
         $ajax       = (bool) $request->get('ajax');
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual);
+        Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
         if ($ajax) {
             return $this->chartCompact($individual, $chart_service);

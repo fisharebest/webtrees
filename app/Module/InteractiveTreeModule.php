@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Webtrees;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -176,16 +177,18 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
     /**
      * @param Request $request
      * @param Tree    $tree
+     * @param User    $user
      *
      * @return Response
      */
-    public function getChartAction(Request $request, Tree $tree): Response
+    public function getChartAction(Request $request, Tree $tree, User $user): Response
     {
         $xref = $request->get('xref', '');
 
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual);
+        Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
         $tv = new TreeView('tv');
 

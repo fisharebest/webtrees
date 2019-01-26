@@ -28,9 +28,11 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * Class AncestorsChartModule
@@ -113,17 +115,19 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
      *
      * @param Request      $request
      * @param Tree         $tree
+     * @param User         $user
      * @param ChartService $chart_service
      *
      * @return Response
      */
-    public function getChartAction(Request $request, Tree $tree, ChartService $chart_service): Response
+    public function getChartAction(Request $request, Tree $tree, User $user, ChartService $chart_service): Response
     {
         $ajax       = (bool) $request->get('ajax');
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual);
+        Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
         $minimum_generations = 2;
         $maximum_generations = (int) $tree->getPreference('MAX_PEDIGREE_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);

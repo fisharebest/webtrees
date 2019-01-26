@@ -17,12 +17,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -107,11 +109,14 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
      *
      * @param Request $request
      * @param Tree    $tree
+     * @param User    $user
      *
      * @return Response
      */
-    public function getChartAction(Request $request, Tree $tree): Response
+    public function getChartAction(Request $request, Tree $tree, User $user): Response
     {
+        Auth::checkComponentAccess($this, 'chart', $tree, $user);
+
         $ajax  = (bool) $request->get('ajax');
         $scale = (int) $request->get('scale', self::SCALE_DEFAULT);
         $scale = min($scale, self::SCALE_MAX);

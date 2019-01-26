@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -195,10 +196,11 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      *
      * @param Request $request
      * @param Tree    $tree
+     * @param User    $user
      *
      * @return Response
      */
-    public function getChartAction(Request $request, Tree $tree): Response
+    public function getChartAction(Request $request, Tree $tree, User $user): Response
     {
         $ajax = (bool) $request->get('ajax');
 
@@ -223,6 +225,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         if ($individual2 instanceof Individual) {
             Auth::checkIndividualAccess($individual2);
         }
+
+        Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
         if ($individual1 instanceof Individual && $individual2 instanceof Individual) {
             if ($ajax) {
