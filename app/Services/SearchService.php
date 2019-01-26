@@ -719,7 +719,6 @@ class SearchService
                                 return true;
                             }
                         }
-
                     } elseif ($parts[0] === 'FAMS' && $parts[2] === 'PLAC') {
                         // FAMS:*:PLAC
                         foreach ($individual->getSpouseFamilies() as $family) {
