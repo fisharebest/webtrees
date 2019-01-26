@@ -17,13 +17,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
+use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
+use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\TreesMenuModule;
 
@@ -40,7 +43,7 @@ class ModuleTest extends \Fisharebest\Webtrees\TestCase
      * @covers \Fisharebest\Webtrees\Module::all
      * @covers \Fisharebest\Webtrees\Module::coreModules
      * @covers \Fisharebest\Webtrees\Module::customModules
-     * @covers \Fisharebest\Webtrees\Module::menuSorter
+     * @covers \Fisharebest\Webtrees\Module::moduleSorter
      * @return void
      */
     public function testAll(): void
@@ -74,17 +77,29 @@ class ModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testFindByInterface(): void
     {
+        $this->assertNotEmpty(Module::findByInterface(ModuleAnalyticsInterface::class)->all());
         $this->assertNotEmpty(Module::findByInterface(ModuleBlockInterface::class)->all());
         $this->assertNotEmpty(Module::findByInterface(ModuleChartInterface::class)->all());
         $this->assertNotEmpty(Module::findByInterface(ModuleConfigInterface::class)->all());
         $this->assertNotEmpty(Module::findByInterface(ModuleMenuInterface::class)->all());
-        $this->assertNotEmpty(Module::findByInterface(ModuleReportInterface::class)->all());
+        $this->assertNotEmpty(Module::findByInterface(ModuleInterface::class)->all());
         $this->assertNotEmpty(Module::findByInterface(ModuleReportInterface::class)->all());
         $this->assertNotEmpty(Module::findByInterface(ModuleSidebarInterface::class)->all());
+        $this->assertNotEmpty(Module::findByInterface(ModuleTabInterface::class)->all());
 
         // THe core modules do not contain any of these.
         $this->assertEmpty(Module::findByInterface(ModuleHistoricEventsInterface::class)->all());
         $this->assertEmpty(Module::findByInterface(ModuleThemeInterface::class)->all());
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Module::findByClass
+     * @return void
+     */
+    public function testFindByClass(): void
+    {
+        $this->assertNull(Module::findByClass('not-a-valid-class-name'));
+        $this->assertInstanceOf(TreesMenuModule::class, Module::findByClass(TreesMenuModule::class));
     }
 
     /**
@@ -93,7 +108,7 @@ class ModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testFindByName(): void
     {
-        $this->assertNull(Module::findByName(Module::class));
+        $this->assertNull(Module::findByName('not-a-valid-module-name'));
         $this->assertInstanceOf(TreesMenuModule::class, Module::findByName('trees-menu'));
     }
 }
