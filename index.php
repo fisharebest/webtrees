@@ -63,7 +63,7 @@ Webtrees::init();
 // e.g. add these lines to your fastcgi_params file:
 // fastcgi_buffers 16 16m;
 // fastcgi_buffer_size 32m;
-DebugBar::init(Webtrees::DEBUG && class_exists('\\DebugBar\\StandardDebugBar'));
+DebugBar::init(class_exists('\\DebugBar\\StandardDebugBar'));
 
 // Use an array cache for database calls, etc.
 app()->instance('cache.array', new Repository(new ArrayStore()));
