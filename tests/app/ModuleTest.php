@@ -17,18 +17,62 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Module\ModuleBlockInterface;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Module\ModuleConfigInterface;
+use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
+use Fisharebest\Webtrees\Module\ModuleMenuInterface;
+use Fisharebest\Webtrees\Module\ModuleReportInterface;
+use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+
 /**
- * Test harness for the class Module
+ * Test the modules
+ *
+ * @coversNothing
  */
 class ModuleTest extends \Fisharebest\Webtrees\TestCase
 {
+    protected static $uses_database = true;
+
     /**
-     * Test that the class exists
+     * @covers \Fisharebest\Webtrees\Module::findByComponent
      *
      * @return void
      */
-    public function testClassExists(): void
+    public function testFindByComponent(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module'));
+        $tree = $this->importTree('demo.ged');
+        $user  = User::create('UserName', 'RealName', 'user@example.com', 'secret');
+
+        $this->assertNotEmpty(Module::findByComponent('block', $tree, $user)->all());
+        $this->assertNotEmpty(Module::findByComponent('chart', $tree, $user)->all());
+        $this->assertNotEmpty(Module::findByComponent('menu', $tree, $user)->all());
+        $this->assertNotEmpty(Module::findByComponent('report', $tree, $user)->all());
+        $this->assertNotEmpty(Module::findByComponent('sidebar', $tree, $user)->all());
+        $this->assertNotEmpty(Module::findByComponent('tab', $tree, $user)->all());
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Module::findByInterface
+     *
+     * @return void
+     */
+    public function testFindByInterface(): void
+    {
+        $tree = $this->importTree('demo.ged');
+        $user  = User::create('UserName', 'RealName', 'user@example.com', 'secret');
+
+        $this->assertNotEmpty(Module::findByInterface(ModuleBlockInterface::class)->all());
+        $this->assertNotEmpty(Module::findByInterface(ModuleChartInterface::class)->all());
+        $this->assertNotEmpty(Module::findByInterface(ModuleConfigInterface::class)->all());
+        $this->assertNotEmpty(Module::findByInterface(ModuleMenuInterface::class)->all());
+        $this->assertNotEmpty(Module::findByInterface(ModuleReportInterface::class)->all());
+        $this->assertNotEmpty(Module::findByInterface(ModuleReportInterface::class)->all());
+        $this->assertNotEmpty(Module::findByInterface(ModuleSidebarInterface::class)->all());
+
+        // THe core modules do not contain any of these.
+        $this->assertEmpty(Module::findByInterface(ModuleHistoricEventsInterface::class)->all());
+        $this->assertEmpty(Module::findByInterface(ModuleThemeInterface::class)->all());
     }
 }

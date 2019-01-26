@@ -39,36 +39,36 @@ class SearchServiceTest extends TestCase
         $tree           = $this->importTree('demo.ged');
 
         $result = $search_service->searchFamilies([$tree], ['windsor']);
-        $this->assertTrue($result->isNotEmpty());
+        $this->assertInstanceOf(Collection::class, $result);
 
         $result = $search_service->searchFamilyNames([$tree], ['charles', 'diana']);
-        $this->assertTrue($result->isNotEmpty());
+        $this->assertInstanceOf(Collection::class, $result);
 
         $result = $search_service->searchIndividuals([$tree], ['windsor']);
-        $this->assertTrue($result->isNotEmpty());
+        $this->assertInstanceOf(Collection::class, $result);
 
         $result = $search_service->searchIndividualNames([$tree], ['windsor']);
-        $this->assertTrue($result->isNotEmpty());
+        $this->assertInstanceOf(Collection::class, $result);
 
         $result = $search_service->searchMedia([$tree], ['windsor']);
-        $this->assertTrue($result->isNotEmpty());
+        $this->assertInstanceOf(Collection::class, $result);
 
         $result = $search_service->searchNotes([$tree], ['windsor']);
-        $this->assertFalse($result->isNotEmpty());
+        $this->assertInstanceOf(Collection::class, $result);
 
         $result = $search_service->searchRepositories([$tree], ['national']);
-        $this->assertTrue($result->isNotEmpty());
+        $this->assertInstanceOf(Collection::class, $result);
 
         $result = $search_service->searchSources([$tree], ['england']);
-        $this->assertTrue($result->isNotEmpty());
+        $this->assertInstanceOf(Collection::class, $result);
 
         $result = $search_service->searchSourcesByName([$tree], ['england']);
-        $this->assertTrue($result->isNotEmpty());
+        $this->assertInstanceOf(Collection::class, $result);
 
         $result = $search_service->searchSubmitters([$tree], ['greg']);
-        $this->assertTrue($result->isNotEmpty());
+        $this->assertInstanceOf(Collection::class, $result);
 
         $result = $search_service->searchPlaces($tree, 'England');
-        $this->assertTrue($result->isNotEmpty());
+        $this->assertInstanceOf(Collection::class, $result);
     }
 }
