@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Module\TreesMenuModule;
 
 /**
  * Test the modules
@@ -36,14 +37,28 @@ class ModuleTest extends \Fisharebest\Webtrees\TestCase
     protected static $uses_database = true;
 
     /**
+     * @covers \Fisharebest\Webtrees\Module::all
+     * @covers \Fisharebest\Webtrees\Module::coreModules
+     * @covers \Fisharebest\Webtrees\Module::customModules
+     * @covers \Fisharebest\Webtrees\Module::menuSorter
+     * @return void
+     */
+    public function testAll(): void
+    {
+        $this->assertNotEmpty(Module::all());
+    }
+
+    /**
      * @covers \Fisharebest\Webtrees\Module::findByComponent
-     *
+     * @covers \Fisharebest\Webtrees\Module::menuSorter
+     * @covers \Fisharebest\Webtrees\Module::sidebarSorter
+     * @covers \Fisharebest\Webtrees\Module::tabSorter
      * @return void
      */
     public function testFindByComponent(): void
     {
         $tree = $this->importTree('demo.ged');
-        $user  = User::create('UserName', 'RealName', 'user@example.com', 'secret');
+        $user = User::create('UserName', 'RealName', 'user@example.com', 'secret');
 
         $this->assertNotEmpty(Module::findByComponent('block', $tree, $user)->all());
         $this->assertNotEmpty(Module::findByComponent('chart', $tree, $user)->all());
@@ -55,14 +70,10 @@ class ModuleTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Module::findByInterface
-     *
      * @return void
      */
     public function testFindByInterface(): void
     {
-        $tree = $this->importTree('demo.ged');
-        $user  = User::create('UserName', 'RealName', 'user@example.com', 'secret');
-
         $this->assertNotEmpty(Module::findByInterface(ModuleBlockInterface::class)->all());
         $this->assertNotEmpty(Module::findByInterface(ModuleChartInterface::class)->all());
         $this->assertNotEmpty(Module::findByInterface(ModuleConfigInterface::class)->all());
@@ -74,5 +85,15 @@ class ModuleTest extends \Fisharebest\Webtrees\TestCase
         // THe core modules do not contain any of these.
         $this->assertEmpty(Module::findByInterface(ModuleHistoricEventsInterface::class)->all());
         $this->assertEmpty(Module::findByInterface(ModuleThemeInterface::class)->all());
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Module::findByName
+     * @return void
+     */
+    public function testFindByName(): void
+    {
+        $this->assertNull(Module::findByName(Module::class));
+        $this->assertInstanceOf(TreesMenuModule::class, Module::findByName('trees-menu'));
     }
 }
