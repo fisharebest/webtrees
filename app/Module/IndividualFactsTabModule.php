@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Site;
+use Illuminate\Support\Collection;
 
 /**
  * Class IndividualFactsTabModule
@@ -139,7 +140,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
         $parent_facts     = self::parentFacts($individual, 1, $min_date, $max_date);
         $associate_facts  = self::associateFacts($individual);
-        $historical_facts = self::historicalFacts($individual, $min_date, $max_date);
+        $historical_facts = self::historicalFacts($individual);
 
         $indifacts = array_merge($indifacts, $parent_facts, $associate_facts, $historical_facts);
 
@@ -440,29 +441,18 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
     /**
      * Get any historical events.
      *
-     * @param Individual $person
-     * @param Date       $min_date
-     * @param Date       $max_date
+     * @param Individual $individual
      *
      * @return Fact[]
      */
-    private static function historicalFacts(Individual $person, Date $min_date, Date $max_date): array
+    private static function historicalFacts(Individual $individual): array
     {
-        $facts = [];
-
-        if (file_exists(Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) {
-            $histo = [];
-            require Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php';
-            foreach ($histo as $hist) {
-                $fact = new Fact($hist, $person, 'histo');
-
-                if (self::includeFact($fact, $min_date, $max_date)) {
-                    $facts[] = $fact;
-                }
-            }
-        }
-
-        return $facts;
+        return Module::findByInterface(ModuleHistoricEventsInterface::class)
+            ->map(function (ModuleHistoricEventsInterface $module) use ($individual): Collection {
+                return $module->historicEventsForIndividual($individual);
+            })
+            ->flatten()
+            ->all();
     }
 
     /**

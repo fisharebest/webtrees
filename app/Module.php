@@ -243,14 +243,16 @@ class Module
             ->filter(function (string $filename): bool {
                 // Special characters will break PHP variable names.
                 // This also allows us to ignore modules called "foo.example" and "foo.disable"
-                return !Str::contains(basename(dirname($filename)), ['.', ' ', '[', ']']);
+                $module_name = basename(dirname($filename));
+
+                return !Str::contains($module_name, ['.', ' ', '[', ']']) && Str::length($module_name) <= 30;
             })
             ->map(function (string $filename): ?ModuleCustomInterface {
                 try {
                     $module = self::load($filename);
 
                     if ($module instanceof ModuleCustomInterface) {
-                        $module_name = 'custom-' . basename(dirname($filename));
+                        $module_name = '_' . basename(dirname($filename)) . '_';
 
                         $module->setName($module_name);
                     } else {

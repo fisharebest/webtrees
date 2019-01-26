@@ -17,45 +17,29 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Individual;
+use Illuminate\Support\Collection;
+
 /**
- * Interface ModuleAnalyticsInterface - Classes and libraries for module system
+ * Interface ModuleHistoricEventsInterface - Show historic facts on an individual‘s page
  */
-interface ModuleAnalyticsInterface extends ModuleInterface
+interface ModuleHistoricEventsInterface extends ModuleInterface
 {
     /**
-     * Should we add this tracker?
+     * All events provided by this module.
      *
-     * @return bool
-     */
-    public function analyticsCanShow(): bool;
-
-    /**
-     * Form fields to edit the parameters.
-     *
-     * @return string
-     */
-    public function analyticsFormFields(): string;
-
-    /**
-     * Home page for the service.
-     *
-     * @return string
-     */
-    public function analyticsHomePageUrl(): string;
-
-    /**
-     * The parameters that need to be embedded in the snippet.
+     * @param Individual $individual
      *
      * @return string[]
      */
-    public function analyticsParameters(): array;
+    public function historicEventsAll(): array;
 
     /**
-     * Embed placeholders in the snippet.
+     * Which events should we show for an individual?
      *
-     * @param string[] $parameters
+     * @param Individual $individual
      *
-     * @return string
+     * @return Collection
      */
-    public function analyticsSnippet(array $parameters): string;
+    public function historicEventsForIndividual(Individual $individual): Collection;
 }
