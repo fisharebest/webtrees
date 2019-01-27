@@ -24,8 +24,6 @@ use Illuminate\Database\Capsule\Manager as DB;
  */
 class Place
 {
-    public const GEDCOM_SEPARATOR = ', ';
-
     /** @var string[] e.g. array('Westminster', 'London', 'England') */
     private $gedcom_place;
 
@@ -43,7 +41,7 @@ class Place
         if ($gedcom_place === '') {
             $this->gedcom_place = [];
         } else {
-            $this->gedcom_place = explode(self::GEDCOM_SEPARATOR, $gedcom_place);
+            $this->gedcom_place = explode(Gedcom::PLACE_SEPARATOR, $gedcom_place);
         }
         $this->tree = $tree;
     }
@@ -85,7 +83,7 @@ class Place
      */
     public function getParentPlace(): Place
     {
-        return new self(implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, 1)), $this->tree);
+        return new self(implode(Gedcom::PLACE_SEPARATOR, array_slice($this->gedcom_place, 1)), $this->tree);
     }
 
     /**
@@ -96,7 +94,7 @@ class Place
     public function getChildPlaces(): array
     {
         if ($this->getPlaceId()) {
-            $parent_text = self::GEDCOM_SEPARATOR . $this->getGedcomName();
+            $parent_text = Gedcom::PLACE_SEPARATOR . $this->getGedcomName();
         } else {
             $parent_text = '';
         }
@@ -132,7 +130,7 @@ class Place
      */
     public function getGedcomName(): string
     {
-        return implode(self::GEDCOM_SEPARATOR, $this->gedcom_place);
+        return implode(Gedcom::PLACE_SEPARATOR, $this->gedcom_place);
     }
 
     /**
@@ -197,10 +195,10 @@ class Place
         // Abbreviate the place name, for lists
         if ($this->tree->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX')) {
             // The *last* $SHOW_PEDIGREE_PLACES components
-            $short_name = implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, -$SHOW_PEDIGREE_PLACES));
+            $short_name = implode(Gedcom::PLACE_SEPARATOR, array_slice($this->gedcom_place, -$SHOW_PEDIGREE_PLACES));
         } else {
             // The *first* $SHOW_PEDIGREE_PLACES components
-            $short_name = implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, 0, $SHOW_PEDIGREE_PLACES));
+            $short_name = implode(Gedcom::PLACE_SEPARATOR, array_slice($this->gedcom_place, 0, $SHOW_PEDIGREE_PLACES));
         }
 
         // Add a tool-tip showing the full name

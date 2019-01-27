@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Exception;
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Place;
@@ -233,7 +234,7 @@ class AdminLocationController extends AbstractBaseController
 
         // Create the file name
         $place_name = empty($hierarchy) ? 'Global' : $hierarchy[0]->fqpn; // $hierarchy[0] always holds the full placename
-        $place_name = str_replace(Place::GEDCOM_SEPARATOR, '-', $place_name);
+        $place_name = str_replace(Gedcom::PLACE_SEPARATOR, '-', $place_name);
         $filename   = 'Places-' . preg_replace('/[^a-zA-Z0-9\-\.]/', '', $place_name);
 
         // Fill in the place names for the starting conditions
@@ -369,7 +370,7 @@ class AdminLocationController extends AbstractBaseController
                     $fields = count($row);
 
                     // convert separate place fields into a comma separated placename
-                    $fqdn = implode(Place::GEDCOM_SEPARATOR, array_filter(array_reverse(array_slice($row, 1, $fields - 5))));
+                    $fqdn = implode(Gedcom::PLACE_SEPARATOR, array_filter(array_reverse(array_slice($row, 1, $fields - 5))));
 
                     $places[] = [
                         'pl_level' => $row[0],
@@ -410,13 +411,13 @@ class AdminLocationController extends AbstractBaseController
                     $updated++;
                 } elseif (!$valid && $options !== 'update') {
                     //add
-                    $place_parts = explode(Place::GEDCOM_SEPARATOR, $place['fqpn']);
+                    $place_parts = explode(Gedcom::PLACE_SEPARATOR, $place['fqpn']);
                     // work throught the place parts starting at level 0,
                     // looking for a record in the database, if not found then add it
                     $parent_id = 0;
                     for ($i = count($place_parts) - 1; $i >= 0; $i--) {
                         $new_parts    = array_slice($place_parts, $i);
-                        $new_fqpn     = implode(Place::GEDCOM_SEPARATOR, $new_parts);
+                        $new_fqpn     = implode(Gedcom::PLACE_SEPARATOR, $new_parts);
                         $new_location = new Location($new_fqpn, [
                             'fqpn'         => $new_fqpn,
                             'pl_id'        => 0,
@@ -604,7 +605,7 @@ class AdminLocationController extends AbstractBaseController
         ];
         foreach ($rows as $place) {
             $fqpn = implode(
-                Place::GEDCOM_SEPARATOR,
+                Gedcom::PLACE_SEPARATOR,
                 array_reverse(
                     array_filter(
                         array_slice($place, 1, $maxlevel + 1)
@@ -680,7 +681,7 @@ class AdminLocationController extends AbstractBaseController
                 ->first();
 
             $fqpn[]    = $row->pl_place;
-            $row->fqpn = implode(Place::GEDCOM_SEPARATOR, $fqpn);
+            $row->fqpn = implode(Gedcom::PLACE_SEPARATOR, $fqpn);
             $id        = (int) $row->pl_parent_id;
             $arr[]     = $row;
         }
@@ -745,7 +746,7 @@ class AdminLocationController extends AbstractBaseController
      */
     private function isLocationActive(string $place_name): bool
     {
-        $places = explode(Place::GEDCOM_SEPARATOR, $place_name);
+        $places = explode(Gedcom::PLACE_SEPARATOR, $place_name);
 
         $query = DB::table('places AS p0')
             ->where('p0.p_place', '=', $places[0])

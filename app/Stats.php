@@ -1567,7 +1567,7 @@ class Stats
             foreach ($rows as $row) {
                 if (preg_match('/\n1 ' . $fact . '(?:\n[2-9].*)*\n2 PLAC (.+)/', $row->ged, $match)) {
                     if ($country) {
-                        $tmp   = explode(Place::GEDCOM_SEPARATOR, $match[1]);
+                        $tmp   = explode(Gedcom::PLACE_SEPARATOR, $match[1]);
                         $place = end($tmp);
                     } else {
                         $place = $match[1];

@@ -235,7 +235,7 @@ class Location
      */
     private function getRecordFromName(string $gedcomName)
     {
-        $places = explode(Place::GEDCOM_SEPARATOR, $gedcomName);
+        $places = explode(Gedcom::PLACE_SEPARATOR, $gedcomName);
 
         $query = DB::table('placelocation AS pl0')
             ->where('pl0.pl_place', '=', $places[0])

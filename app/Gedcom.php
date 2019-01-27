@@ -48,4 +48,7 @@ class Gedcom
 
     // UTF-8 encoded files may begin with an optional byte-order-mark (U+FEFF).
     public const UTF8_BOM = "\xEF\xBB\xBF";
+
+    // Separates parts of a place name.
+    public const PLACE_SEPARATOR = ', ';
 }

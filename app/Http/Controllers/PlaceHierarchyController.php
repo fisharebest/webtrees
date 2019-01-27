@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
@@ -53,7 +54,7 @@ class PlaceHierarchyController extends AbstractBaseController
     {
         $action     = $request->query->get('action', 'hierarchy');
         $parent     = $request->query->get('parent', []);
-        $fqpn       = implode(Place::GEDCOM_SEPARATOR, array_reverse($parent));
+        $fqpn       = implode(Gedcom::PLACE_SEPARATOR, array_reverse($parent));
         $place      = new Place($fqpn, $tree);
         $content    = '';
         $showmap    = Site::getPreference('map-provider') !== '';
