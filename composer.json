@@ -80,8 +80,6 @@
            "zip --quiet --recurse-paths --move -9 webtrees.zip webtrees"
        ],
        "webtrees:check": [
-            "### PHP-CODE-ANALYZER",
-            "phpca --since-version=7.1 app/",
             "### PHP-CODE-FIXER",
             "phpcf app/",
             "### PAHOUT",
@@ -102,8 +100,6 @@
             "@composer global require wata727/pahout=*",
             "### PHAN",
             "@composer global require phan/phan=*",
-            "### PHP-CODE-ANALYZER",
-            "@composer global require wapmorgan/php-code-analyzer=*",
             "### PHP-CODE-FIXER",
             "@composer global require wapmorgan/php-code-fixer=*",
             "### PHP-PARALLEL-LINT",

@@ -23,6 +23,9 @@ before_script:
   - travis_retry composer config github-oauth.github.com "${GITHUB_OAUTH_TOKEN}"
 
 script:
+  - # Check for deprecated functions and non-built-in libraries
+  - composer require wapmorgan/php-code-fixer dev-master
+  - vendor/bin/phpca
   - mkdir -p build/logs
   - vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover tests/clover.xml
 
