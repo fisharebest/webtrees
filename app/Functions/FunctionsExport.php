@@ -94,24 +94,20 @@ class FunctionsExport
         $GEDC = "\n1 GEDC\n2 VERS 5.5.1\n2 FORM Lineage-Linked";
         $CHAR = "\n1 CHAR " . $char;
         $FILE = "\n1 FILE " . $tree->name();
-        $LANG = '';
         $COPR = '';
+        $LANG = '';
         $SUBN = '';
         $SUBM = "\n1 SUBM @SUBM@\n0 @SUBM@ SUBM\n1 NAME " . Auth::user()->getUserName(); // The SUBM record is mandatory
 
         // Preserve some values from the original header
         $record = GedcomRecord::getInstance('HEAD', $tree);
-        $fact   = $record->getFirstFact('LANG');
-        if ($fact instanceof Fact) {
-            $LANG = $fact->value();
-        }
-        $fact = $record->getFirstFact('SUBN');
-        if ($fact instanceof Fact) {
-            $SUBN = $fact->value();
-        }
         $fact = $record->getFirstFact('COPR');
         if ($fact instanceof Fact) {
-            $COPR = $fact->value();
+            $COPR = "\n1 COPR " .$fact->value();
+        }
+        $fact   = $record->getFirstFact('LANG');
+        if ($fact instanceof Fact) {
+            $LANG = "\n1 LANG " .$fact->value();
         }
         // Link to actual SUBM/SUBN records, if they exist
         $subn = DB::table('other')
