@@ -154,28 +154,22 @@ class IndividualController extends AbstractBaseController
     /**
      * @param Request $request
      * @param Tree    $tree
+     * @param User    $user
      *
      * @return Response
      */
-    public function tab(Request $request, Tree $tree): Response
+    public function tab(Request $request, Tree $tree, User $user): Response
     {
-        $xref   = $request->get('xref', '');
-        $record = Individual::getInstance($xref, $tree);
-        $tab    = $request->get('module');
-        $tabs   = Module::findByComponent('tab', $tree, Auth::user());
+        $xref        = $request->get('xref', '');
+        $record      = Individual::getInstance($xref, $tree);
+        $module_name = $request->get('module');
+        $module      = Module::findByName($module_name);
 
-        if ($record === null || !array_key_exists($tab, $tabs)) {
-            return new Response('', Response::HTTP_NOT_FOUND);
-        }
-
-        if (!$record->canShow()) {
-            return new Response('', Response::HTTP_FORBIDDEN);
-        }
-
-        $tab = $tabs[$tab];
+        Auth::checkIndividualAccess($record);
+        Auth::checkComponentAccess($module, 'tab', $tree, $user);
 
         $layout = view('layouts/ajax', [
-            'content' => $tab->getTabContent($record),
+            'content' => $module->getTabContent($record),
         ]);
 
         return new Response($layout);
@@ -321,7 +315,7 @@ class IndividualController extends AbstractBaseController
             $edit_links =
                 FontAwesome::linkIcon('delete', I18N::translate('Delete this name'), [
                     'class'        => 'btn btn-link',
-                    'data-confirm' =>  I18N::translate('Are you sure you want to delete this fact?'),
+                    'data-confirm' => I18N::translate('Are you sure you want to delete this fact?'),
                     'href'         => '#',
                     'onclick'      => 'return delete_fact(this.dataset.confirm", "' . e($individual->tree()->name()) . '", "' . e($individual->xref()) . '", "' . $fact->id() . '");',
                 ]) .
@@ -378,9 +372,10 @@ class IndividualController extends AbstractBaseController
         if ($individual->canEdit() && !$fact->isPendingDeletion()) {
             $edit_links = FontAwesome::linkIcon('edit', I18N::translate('Edit the gender'), [
                 'class' => 'btn btn-link',
-                'href'  => route('edit-fact', ['xref'    => $individual->xref(),
-                                               'fact_id' => $fact->id(),
-                                               'ged'     => $individual->tree()->name(),
+                'href'  => route('edit-fact', [
+                    'xref'    => $individual->xref(),
+                    'fact_id' => $fact->id(),
+                    'ged'     => $individual->tree()->name(),
                 ]),
             ]);
         } else {
