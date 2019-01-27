@@ -21,6 +21,7 @@ install:
 
 before_script:
   - travis_retry composer config github-oauth.github.com "${GITHUB_OAUTH_TOKEN}"
+  - echo "extension=ast.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 script:
   - mkdir -p build/logs
