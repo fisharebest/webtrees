@@ -526,8 +526,8 @@ class Fact
                 }
             }
             // Fact place
-            if (!$this->place()->isEmpty()) {
-                $attributes[] = $this->place()->getShortName();
+            if ($this->place()->gedcomName() <> '') {
+                $attributes[] = $this->place()->shortName();
             }
         }
 

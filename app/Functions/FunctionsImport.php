@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Source;
@@ -815,78 +816,21 @@ class FunctionsImport
 
         $places = array_unique($matches[1]);
 
-        foreach ($places as $place) {
-            // Find (or create) the place ID.
-            $place_id = self::importPlace($place, $tree);
+        foreach ($places as $place_name) {
+            $place = new Place($place_name, $tree);
 
+            // Calling Place::id() will create the entry in the database, if it doesn't already exist.
             // Link the place to the record
             try {
                 DB::table('placelinks')->insert([
-                    'pl_p_id' => $place_id,
+                    'pl_p_id' => $place->id(),
                     'pl_gid'  => $xref,
                     'pl_file' => $tree->id(),
                 ]);
             } catch (PDOException $ex) {
-                // Collation differences (Quebec and Québec) can cause the same place name to be found twice.
-                // @TODO - what if there is some other DB error?
+                // Already linked this place?
             }
         }
-    }
-
-    /**
-     * Find (or create) the place ID for a place name.
-     *
-     * @param string $place
-     * @param Tree   $tree
-     *
-     * @return int
-     */
-    private static function importPlace(string $place, Tree $tree): int
-    {
-        /** @var int[] $cache */
-        static $cache;
-
-        // The global, top-level, place has an ID of zero.
-        if ($place === '') {
-            return 0;
-        }
-
-        // Already imported?
-        $cache_key = $tree->id() . '/' . $place;
-        if (isset($cache[$cache_key])) {
-            return $cache[$cache_key];
-        }
-
-        // Find the parent place ID first
-        if (preg_match('/([^,]*), (.+)/', $place, $match)) {
-            $place     = $match[1];
-            $parent_id = self::importPlace($match[2], $tree);
-        } else {
-            $parent_id = 0;
-        }
-
-        // Does the place already exist?
-        $place_id = (int) DB::table('places')
-            ->where('p_file', '=', $tree->id())
-            ->where('p_parent_id', '=', $parent_id)
-            ->where('p_place', '=', mb_substr($place, 0, 150))
-            ->value('p_id');
-
-        if ($place_id === 0) {
-            DB::table('places')->insert([
-                'p_place'       => mb_substr($place, 0, 150),
-                'p_parent_id'   => $parent_id,
-                'p_file'        => $tree->id(),
-                'p_std_soundex' => Soundex::russell($place),
-                'p_dm_soundex'  => Soundex::daitchMokotoff($place),
-            ]);
-
-            $place_id = (int) DB::connection()->getPdo()->lastInsertId();
-        }
-
-        $cache[$cache_key] = $place_id;
-
-        return $place_id;
     }
 
     /**

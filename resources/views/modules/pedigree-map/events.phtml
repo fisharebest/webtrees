@@ -22,10 +22,10 @@
     <?= $date ?>
 </div>
 
-<?php if (!$place->isEmpty()) : ?>
+<?php if ($place->gedcomName() !== '') : ?>
     <div>
         <a href="<?= e($place->url()) ?>">
-            <?= $place->getFullName() ?>
+            <?= $place->fullName() ?>
         </a>
     </div>
 <?php endif ?>

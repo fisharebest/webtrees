@@ -1877,7 +1877,7 @@ class Stats
         arsort($places);
         foreach ($places as $place => $count) {
             $tmp     = new Place($place, $this->tree);
-            $place   = '<a href="' . e($tmp->url()) . '" class="list_item">' . $tmp->getFullName() . '</a>';
+            $place   = '<a href="' . e($tmp->url()) . '" class="list_item">' . $tmp->fullName() . '</a>';
             $top10[] = '<li>' . $place . ' - ' . I18N::number($count) . '</li>';
             if ($i++ == 10) {
                 break;
@@ -1901,7 +1901,7 @@ class Stats
         arsort($places);
         foreach ($places as $place => $count) {
             $tmp     = new Place($place, $this->tree);
-            $place   = '<a href="' . e($tmp->url()) . '" class="list_item">' . $tmp->getFullName() . '</a>';
+            $place   = '<a href="' . e($tmp->url()) . '" class="list_item">' . $tmp->fullName() . '</a>';
             $top10[] = '<li>' . $place . ' - ' . I18N::number($count) . '</li>';
             if ($i++ == 10) {
                 break;
@@ -1925,7 +1925,7 @@ class Stats
         arsort($places);
         foreach ($places as $place => $count) {
             $tmp     = new Place($place, $this->tree);
-            $place   = '<a href="' . e($tmp->url()) . '" class="list_item">' . $tmp->getFullName() . '</a>';
+            $place   = '<a href="' . e($tmp->url()) . '" class="list_item">' . $tmp->fullName() . '</a>';
             $top10[] = '<li>' . $place . ' - ' . I18N::number($count) . '</li>';
             if ($i++ == 10) {
                 break;

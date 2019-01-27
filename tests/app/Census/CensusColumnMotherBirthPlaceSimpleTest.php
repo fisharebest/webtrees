@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Place;
+use Illuminate\Support\Collection;
 use Mockery;
 
 /**
@@ -49,8 +50,8 @@ class CensusColumnMotherBirthPlaceSimpleTest extends \Fisharebest\Webtrees\TestC
         $placeParts = explode(', ', $place);
 
         $placeMock = Mockery::mock(Place::class);
-        $placeMock->shouldReceive('getGedcomName')->andReturn($place);
-        $placeMock->shouldReceive('lastPart')->andReturn(end($placeParts));
+        $placeMock->shouldReceive('gedcomName')->andReturn($place);
+        $placeMock->shouldReceive('lastParts')->andReturn(new Collection($placeParts));
 
         return $placeMock;
     }

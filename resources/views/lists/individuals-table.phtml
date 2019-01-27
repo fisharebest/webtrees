@@ -159,7 +159,7 @@ for ($year = 1550; $year < 2030; $year += 10) {
                                 data-filter-value="Y100"
                                 title="<?= I18N::translate('Show individuals who died within the last 100 years.') ?>"
                             >
-                                <?= I18N::translate('Death') ?>&lt&lt;=100
+                                <?= I18N::translate('Death') ?>&lt;=100
                             </button>
                         </div>
                         <div class="btn-group" data-toggle="buttons">
@@ -295,9 +295,7 @@ for ($year = 1550; $year < 2030; $year += 10) {
                 <!-- Birth place -->
                 <td>
                     <?php foreach ($individual->getAllBirthPlaces() as $n => $birth_place) : ?>
-                        <a href="<?= e($birth_place->url()) ?>" title="<?= strip_tags($birth_place->getFullName()) ?>">
-                            <?= $birth_place->getShortName() ?>
-                        </a>
+                        <?= $birth_place->shortName(true) ?>
                         <br>
                     <?php endforeach ?>
                 </td>
@@ -342,9 +340,7 @@ for ($year = 1550; $year < 2030; $year += 10) {
                 <!-- Death place -->
                 <td>
                     <?php foreach ($individual->getAllDeathPlaces() as $n => $death_place) : ?>
-                        <a href="<?= e($death_place->url()) ?>" title="<?= e(strip_tags($death_place->getFullName())) ?>">
-                            <?= $death_place->getShortName() ?>
-                        </a>
+                        <?= $death_place->shortName(true) ?>
                         <br>
                     <?php endforeach ?>
                 </td>

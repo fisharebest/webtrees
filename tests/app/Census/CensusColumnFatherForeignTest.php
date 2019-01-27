@@ -47,7 +47,7 @@ class CensusColumnFatherForeignTest extends \Fisharebest\Webtrees\TestCase
     private function getPlaceMock($place): Place
     {
         $placeMock = Mockery::mock(Place::class);
-        $placeMock->shouldReceive('getGedcomName')->andReturn($place);
+        $placeMock->shouldReceive('gedcomName')->andReturn($place);
 
         return $placeMock;
     }

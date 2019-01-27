@@ -51,4 +51,7 @@ class Gedcom
 
     // Separates parts of a place name.
     public const PLACE_SEPARATOR = ', ';
+
+    // Regex to match a (badly formed) GEDCOM place separator.
+    public const PLACE_SEPARATOR_REGEX = ' *, *';
 }

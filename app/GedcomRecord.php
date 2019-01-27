@@ -820,12 +820,12 @@ class GedcomRecord
     {
         foreach ($this->facts($facts, true) as $event) {
             // Only display if it has a date or place (or both)
-            if ($event->date()->isOK() && !$event->place()->isEmpty()) {
+            if ($event->date()->isOK() && $event->place()->gedcomName() <> '') {
                 $joiner = ' — ';
             } else {
                 $joiner = '';
             }
-            if ($event->date()->isOK() || !$event->place()->isEmpty()) {
+            if ($event->date()->isOK() || $event->place()->gedcomName() <> '') {
                 switch ($style) {
                     case 1:
                         return '<br><em>' . $event->label() . ' ' . FunctionsPrint::formatFactDate($event, $this, false, false) . $joiner . FunctionsPrint::formatFactPlace($event) . '</em>';

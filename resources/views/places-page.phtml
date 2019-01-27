@@ -14,11 +14,11 @@
 
             <?php foreach ($breadcrumbs as $item) : ?>
                 -
-                <a href="<?= e($item->url()) ?>" dir="auto"><?= $item->getPlaceName() ?></a>
+                <a href="<?= e($item->url()) ?>" dir="auto"><?= $item->placeName() ?></a>
             <?php endforeach ?>
 
             <?php if ($current) : ?>
-                - <?= $current->getPlaceName() ?>
+                - <?= $current->placeName() ?>
             <?php endif ?>
         </h5>
         <?php if ($note) : ?>

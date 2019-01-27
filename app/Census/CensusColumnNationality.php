@@ -44,7 +44,7 @@ class CensusColumnNationality extends AbstractCensusColumn implements CensusColu
      */
     public function generate(Individual $individual, Individual $head): string
     {
-        $place = $individual->getBirthPlace()->getGedcomName();
+        $place = $individual->getBirthPlace()->gedcomName();
 
         // No birthplace?  Assume born in the same country.
         if ($place === '') {
@@ -54,7 +54,7 @@ class CensusColumnNationality extends AbstractCensusColumn implements CensusColu
         // Did we emigrate or naturalise?
         foreach ($individual->facts(['IMMI' ,'EMIG', 'NATU'], true) as $fact) {
             if (Date::compare($fact->date(), $this->date()) <= 0) {
-                $place = $fact->place()->getGedcomName();
+                $place = $fact->place()->gedcomName();
             }
         }
 

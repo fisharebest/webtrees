@@ -42,7 +42,7 @@ class FactLocation extends Location
         $this->individual = $individual;
         $this->fact       = $fact;
 
-        parent::__construct($fact->place()->getGedcomName());
+        parent::__construct($fact->place()->gedcomName());
 
         $coords = $this->getCoordsFromGedcom();
         if ($coords !== null) {
@@ -158,7 +158,7 @@ class FactLocation extends Location
      */
     public function toolTip()
     {
-        return $this->fact->place()->getGedcomName();
+        return $this->fact->place()->gedcomName();
     }
 
     /**
@@ -169,7 +169,7 @@ class FactLocation extends Location
     private function getCoordsFromGedcom()
     {
         $coords = null;
-        if (!$this->fact->place()->isEmpty()) {
+        if ($this->fact->place()->gedcomName() <> '') {
             $gedcom = $this->fact->gedcom();
             $f1     = preg_match("/\d LATI (.*)/", $gedcom, $match1);
             $f2     = preg_match("/\d LONG (.*)/", $gedcom, $match2);

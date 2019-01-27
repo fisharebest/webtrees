@@ -5,10 +5,10 @@
         <div class="d-table-cell label">
             <?php if ($showlink) : ?>
                 <a href="<?= e($place->url()) ?>">
-                    <?= $place->getPlaceName() ?>
+                    <?= $place->placeName() ?>
                 </a>
             <?php else : ?>
-                <?= $place->getPlaceName() ?>
+                <?= $place->placeName() ?>
             <?php endif ?>
         </div>
         <div class="d-table-cell text-right">

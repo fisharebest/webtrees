@@ -356,7 +356,7 @@
         }
         echo ' ' . e($desc);
         if (!$event->place()->isEmpty()) {
-            echo ' — ' . $event->place()->getShortName();
+            echo ' — ' . $event->place()->shortName();
         }
         // Print spouses names for family events
         if ($event->record() instanceof Family) {

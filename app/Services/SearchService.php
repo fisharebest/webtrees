@@ -715,7 +715,7 @@ class SearchService
                     if ($parts[1] === 'PLAC') {
                         // *:PLAC
                         foreach ($individual->facts([$parts[0]]) as $fact) {
-                            if (preg_match($regex, $fact->place()->getGedcomName())) {
+                            if (preg_match($regex, $fact->place()->gedcomName())) {
                                 return true;
                             }
                         }
@@ -723,7 +723,7 @@ class SearchService
                         // FAMS:*:PLAC
                         foreach ($individual->getSpouseFamilies() as $family) {
                             foreach ($family->facts([$parts[1]]) as $fact) {
-                                if (preg_match($regex, $fact->place()->getGedcomName())) {
+                                if (preg_match($regex, $fact->place()->gedcomName())) {
                                     return true;
                                 }
                             }

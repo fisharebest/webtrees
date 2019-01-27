@@ -34,7 +34,7 @@ class CensusColumnBirthPlace extends AbstractCensusColumn implements CensusColum
      */
     public function generate(Individual $individual, Individual $head): string
     {
-        $birth_place  = $individual->getBirthPlace()->getGedcomName();
+        $birth_place  = $individual->getBirthPlace()->gedcomName();
         $census_place = $this->place();
 
         // Ignore the census country

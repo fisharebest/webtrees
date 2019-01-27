@@ -18,14 +18,18 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Collection;
 
 /**
  * A GEDCOM place (PLAC) object.
  */
 class Place
 {
-    /** @var string[] e.g. array('Westminster', 'London', 'England') */
-    private $gedcom_place;
+    /** @var string e.g. "Westminster, London, England" */
+    private $place_name;
+
+    /** @var Collection|string[] The parts of a place name, e.g. ["Westminster", "London", "England"] */
+    private $parts;
 
     /** @var Tree We may have the same place name in different trees. */
     private $tree;
@@ -33,47 +37,19 @@ class Place
     /**
      * Create a place.
      *
-     * @param string $gedcom_place
+     * @param string $place_name
      * @param Tree   $tree
      */
-    public function __construct($gedcom_place, Tree $tree)
+    public function __construct(string $place_name, Tree $tree)
     {
-        if ($gedcom_place === '') {
-            $this->gedcom_place = [];
-        } else {
-            $this->gedcom_place = explode(Gedcom::PLACE_SEPARATOR, $gedcom_place);
-        }
+        // Ignore any empty parts in place names such as "Village, , , Country".
+        $this->parts = (new Collection(preg_split(Gedcom::PLACE_SEPARATOR_REGEX, $place_name)))
+            ->filter();
+
+        // Rebuild the placename in the correct format.
+        $this->place_name = $this->parts->implode(Gedcom::PLACE_SEPARATOR);
+
         $this->tree = $tree;
-    }
-
-    /**
-     * Extract the country (last part) of a place name.
-     *
-     * @return string - e.g. "England"
-     */
-    public function lastPart(): string
-    {
-        return $this->gedcom_place[count($this->gedcom_place) - 1] ?? '';
-    }
-
-    /**
-     * Get the identifier for a place.
-     *
-     * @return int
-     */
-    public function getPlaceId(): int
-    {
-        $place_id = 0;
-
-        foreach (array_reverse($this->gedcom_place) as $place) {
-            $place_id = (int) DB::table('places')
-                ->where('p_file', '=', $this->tree->id())
-                ->where('p_place', '=', $place)
-                ->where('p_parent_id', '=', $place_id)
-                ->value('p_id');
-        }
-
-        return $place_id;
     }
 
     /**
@@ -81,9 +57,73 @@ class Place
      *
      * @return Place
      */
-    public function getParentPlace(): Place
+    public function parent(): Place
     {
-        return new self(implode(Gedcom::PLACE_SEPARATOR, array_slice($this->gedcom_place, 1)), $this->tree);
+        return new static($this->parts->slice(1)->implode(Gedcom::PLACE_SEPARATOR), $this->tree);
+    }
+
+    /**
+     * The database row that contains this place.
+     * Note that due to database collation, both "Quebec" and "Québec" will share the same row.
+     *
+     * @return int
+     */
+    public function id(): int
+    {
+        return app()->make('cache.array')->rememberForever('place:' . $this->place_name, function () {
+            // The "top-level" place won't exist in the database.
+            if ($this->parts->isEmpty()) {
+                return 0;
+            }
+
+            $parent_place = $this->parent();
+
+            $place_id = (int) DB::table('places')
+                ->where('p_file', '=', $this->tree->id())
+                ->where('p_place', '=', $this->parts->first())
+                ->where('p_parent_id', '=', $parent_place->id())
+                ->value('p_id');
+
+            if ($place_id === 0) {
+                $place = $this->parts->first();
+
+                DB::table('places')->insert([
+                    'p_file'        => $this->tree->id(),
+                    'p_place'       => $place,
+                    'p_parent_id'   => $parent_place->id(),
+                    'p_std_soundex' => Soundex::russell($place),
+                    'p_dm_soundex'  => Soundex::daitchMokotoff($place),
+                ]);
+
+                $place_id = (int) DB::connection()->getPdo()->lastInsertId();
+            }
+
+            return $place_id;
+        });
+    }
+
+    /**
+     * Extract the locality (first parts) of a place name.
+     *
+     * @param int $n
+     *
+     * @return Collection
+     */
+    public function firstParts(int $n): Collection
+    {
+        return $this->parts->slice(0, $n);
+    }
+
+    /**
+     * Extract the country (last parts) of a place name.
+     *
+     * @param int $n
+     *
+     * @return Collection
+     */
+    public function lastParts(int $n): Collection
+    {
+        return $this->parts->slice(-$n);
     }
 
     /**
@@ -93,15 +133,15 @@ class Place
      */
     public function getChildPlaces(): array
     {
-        if ($this->getPlaceId()) {
-            $parent_text = Gedcom::PLACE_SEPARATOR . $this->getGedcomName();
+        if ($this->place_name !== '') {
+            $parent_text = Gedcom::PLACE_SEPARATOR . $this->place_name;
         } else {
             $parent_text = '';
         }
 
         return DB::table('places')
             ->where('p_file', '=', $this->tree->id())
-            ->where('p_parent_id', '=', $this->getPlaceId())
+            ->where('p_parent_id', '=', $this->id())
             ->orderBy(DB::raw('p_place /*! COLLATE ' . I18N::collation() . ' */'))
             ->pluck('p_place')
             ->map(function (string $place) use ($parent_text): Place {
@@ -118,19 +158,19 @@ class Place
     public function url(): string
     {
         return route('place-hierarchy', [
-            'parent' => array_reverse($this->gedcom_place),
+            'parent' => $this->parts->reverse()->all(),
             'ged'    => $this->tree->name(),
         ]);
     }
 
     /**
-     * Format this name for GEDCOM data.
+     * Format this place for GEDCOM data.
      *
      * @return string
      */
-    public function getGedcomName(): string
+    public function gedcomName(): string
     {
-        return implode(Gedcom::PLACE_SEPARATOR, $this->gedcom_place);
+        return $this->place_name;
     }
 
     /**
@@ -138,85 +178,62 @@ class Place
      *
      * @return string
      */
-    public function getPlaceName(): string
+    public function placeName(): string
     {
-        if (empty($this->gedcom_place)) {
-            return  I18N::translate('unknown');
-        }
+        $place_name = $this->parts->first() ?? I18N::translate('unknown');
 
-        return '<span dir="auto">' . e($this->gedcom_place[0]) . '</span>';
-    }
-
-    /**
-     * Is this a null/empty/missing/invalid place?
-     *
-     * @return bool
-     */
-    public function isEmpty(): bool
-    {
-        return empty($this->gedcom_place);
+        return '<span dir="auto">' . e($place_name) . '</span>';
     }
 
     /**
      * Generate the place name for display, including the full hierarchy.
      *
+     * @param bool $link
+     *
      * @return string
      */
-    public function getFullName()
+    public function fullName(bool $link = false)
     {
-        if (true) {
-            // If a place hierarchy is a single entity
-            return '<span dir="auto">' . e(implode(I18N::$list_separator, $this->gedcom_place)) . '</span>';
+        if ($this->parts->isEmpty()) {
+            return '';
         }
 
-        // If a place hierarchy is a list of distinct items
-        $tmp = [];
-        foreach ($this->gedcom_place as $place) {
-            $tmp[] = '<span dir="auto">' . e($place) . '</span>';
+        $full_name = $this->parts->implode(I18N::$list_separator);
+
+        if ($link) {
+            return '<a dir="auto" href="' . e($this->url()) . '">' . e($full_name) . '</a>';
         }
 
-        return implode(I18N::$list_separator, $tmp);
+        return '<span dir="auto">' . e($full_name) . '</span>';
     }
 
     /**
      * For lists and charts, where the full name won’t fit.
      *
-     * @return string
-     */
-    public function getShortName()
-    {
-        $SHOW_PEDIGREE_PLACES = (int) $this->tree->getPreference('SHOW_PEDIGREE_PLACES');
-
-        if ($SHOW_PEDIGREE_PLACES >= count($this->gedcom_place)) {
-            // A short place name - no need to abbreviate
-            return $this->getFullName();
-        }
-
-        // Abbreviate the place name, for lists
-        if ($this->tree->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX')) {
-            // The *last* $SHOW_PEDIGREE_PLACES components
-            $short_name = implode(Gedcom::PLACE_SEPARATOR, array_slice($this->gedcom_place, -$SHOW_PEDIGREE_PLACES));
-        } else {
-            // The *first* $SHOW_PEDIGREE_PLACES components
-            $short_name = implode(Gedcom::PLACE_SEPARATOR, array_slice($this->gedcom_place, 0, $SHOW_PEDIGREE_PLACES));
-        }
-
-        // Add a tool-tip showing the full name
-        return '<span title="' . e($this->getGedcomName()) . '" dir="auto">' . e($short_name) . '</span>';
-    }
-
-    /**
-     * For the Place hierarchy "list all" option
+     * @param bool $link
      *
      * @return string
      */
-    public function getReverseName(): string
+    public function shortName(bool $link = false)
     {
-        $tmp = [];
-        foreach (array_reverse($this->gedcom_place) as $place) {
-            $tmp[] = '<span dir="auto">' . e($place) . '</span>';
+        $SHOW_PEDIGREE_PLACES = (int) $this->tree->getPreference('SHOW_PEDIGREE_PLACES');
+
+        // Abbreviate the place name, for lists
+        if ($this->tree->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX')) {
+            $parts = $this->lastParts($SHOW_PEDIGREE_PLACES);
+        } else {
+            $parts = $this->firstParts($SHOW_PEDIGREE_PLACES);
         }
 
-        return implode(I18N::$list_separator, $tmp);
+        $short_name = $parts->implode(I18N::$list_separator);
+
+        // Add a tool-tip showing the full name
+        $title = strip_tags($this->fullName());
+
+        if ($link) {
+            return '<a dir="auto" href="' . e($this->url()) . '" title="' . $title . '"">' . e($short_name) . '</a>';
+        }
+
+        return '<span dir="auto">' . e($short_name) . '</span>';
     }
 }

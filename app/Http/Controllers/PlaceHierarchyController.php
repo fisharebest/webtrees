@@ -102,7 +102,7 @@ class PlaceHierarchyController extends AbstractBaseController
                 'parent'         => $parent,
                 'place'          => $fqpn,
                 'content'        => $content,
-                'showeventslink' => null !== $data && !$place->isEmpty() && $action !== 'hierarchy-e',
+                'showeventslink' => null !== $data && $place->gedcomName() !== '' && $action !== 'hierarchy-e',
                 'nextaction'     => $nextaction,
             ]
         );
@@ -118,7 +118,7 @@ class PlaceHierarchyController extends AbstractBaseController
     {
         $places = $search_service->searchPlaces($tree, '')
             ->sort(function (Place $x, Place $y): int {
-                return $x->getGedcomName() <=> $y->getGedcomName();
+                return $x->gedcomName() <=> $y->gedcomName();
             })
             ->all();
 
@@ -182,7 +182,7 @@ class PlaceHierarchyController extends AbstractBaseController
                     ->on('pl_gid', '=', 'i_id');
             })
             ->where('i_file', '=', $tree->id())
-            ->where('pl_p_id', '=', $place->getPlaceId())
+            ->where('pl_p_id', '=', $place->id())
             ->select(['individuals.*'])
             ->distinct()
             ->get()
@@ -197,7 +197,7 @@ class PlaceHierarchyController extends AbstractBaseController
                     ->on('pl_gid', '=', 'f_id');
             })
             ->where('f_file', '=', $tree->id())
-            ->where('pl_p_id', '=', $place->getPlaceId())
+            ->where('pl_p_id', '=', $place->id())
             ->select(['families.*'])
             ->distinct()
             ->get()
@@ -219,12 +219,12 @@ class PlaceHierarchyController extends AbstractBaseController
     private function breadcrumbs($place): array
     {
         $breadcrumbs = [];
-        if (!$place->isEmpty()) {
+        if ($place->gedcomName() <> '') {
             $breadcrumbs[] = $place;
-            $parent_place  = $place->getParentPlace();
-            while (!$parent_place->isEmpty()) {
+            $parent_place  = $place->parent();
+            while ($parent_place->gedcomName() !== '') {
                 $breadcrumbs[] = $parent_place;
-                $parent_place  = $parent_place->getParentPlace();
+                $parent_place  = $parent_place->parent();
             }
             $breadcrumbs = array_reverse($breadcrumbs);
             $current     = array_pop($breadcrumbs);
@@ -257,11 +257,11 @@ class PlaceHierarchyController extends AbstractBaseController
             $showlink = false;
         }
         foreach ($places as $id => $place) {
-            $location = new Location($place->getGedcomName());
+            $location = new Location($place->gedcomName());
             //Stats
             $placeStats = [];
             foreach (['INDI', 'FAM'] as $type) {
-                $tmp               = $stats->statsPlaces($type, '', $place->getPlaceId());
+                $tmp               = $stats->statsPlaces($type, '', $place->id());
                 $placeStats[$type] = empty($tmp) ? 0 : $tmp[0]->tot;
             }
             //Flag
@@ -283,7 +283,7 @@ class PlaceHierarchyController extends AbstractBaseController
                         'name'  => 'globe',
                         'color' => '#1e90ff',
                     ],
-                    'tooltip' => $place->getGedcomName(),
+                    'tooltip' => $place->gedcomName(),
                     'summary' => view('place-sidebar', [
                         'showlink' => $showlink,
                         'flag'     => $flag,

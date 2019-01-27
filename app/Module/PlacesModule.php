@@ -153,7 +153,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
             // Add birth of children from this family to the facts array
             foreach ($family->getChildren() as $child) {
                 $childsBirth = $child->getFirstFact('BIRT');
-                if ($childsBirth && !$childsBirth->place()->isEmpty()) {
+                if ($childsBirth && $childsBirth->place()->gedcomName() !== '') {
                     $facts[] = $childsBirth;
                 }
             }

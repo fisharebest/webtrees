@@ -13,7 +13,7 @@
         <?= $fact->label() . ' — ' . $fact->date()->display(true); ?>
         <?= ' (' . I18N::timeAgo($fact->anniv * 365 * 24 * 60 * 60) . ')'; ?>
         <?php if (!$fact->place()->isEmpty()) : ?>
-            <?= ' — <a href="' . e($fact->place()->url()) . '">' . $fact->place()->getFullName() . '</a>'; ?>
+            <?= ' — <a href="' . e($fact->place()->url()) . '">' . $fact->place()->fullName() . '</a>'; ?>
         <?php endif ?>
     </div>
 <?php endforeach ?>

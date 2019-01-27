@@ -178,7 +178,7 @@ class AutocompleteController extends AbstractBaseController
         $data  = [];
 
         foreach ($this->search_service->searchPlaces($tree, $query) as $place) {
-            $data[] = ['value' => $place->getGedcomName()];
+            $data[] = ['value' => $place->gedcomName()];
         }
 
         if (empty($data) && $tree->getPreference('GEONAMES_ACCOUNT')) {
@@ -392,7 +392,7 @@ class AutocompleteController extends AbstractBaseController
         $found   = false;
 
         foreach ($this->search_service->searchPlaces($tree, $query) as $place) {
-            $place_name = $place->getGedcomName();
+            $place_name = $place->gedcomName();
             if ($place_name === $query) {
                 $found = true;
             }

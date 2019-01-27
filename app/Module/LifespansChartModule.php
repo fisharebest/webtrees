@@ -373,7 +373,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
                     ->on('pl_gid', '=', 'i_id');
             })
             ->where('i_file', '=', $tree->id())
-            ->where('pl_p_id', '=', $place->getPlaceId())
+            ->where('pl_p_id', '=', $place->id())
             ->pluck('i_id')
             ->all();
     }

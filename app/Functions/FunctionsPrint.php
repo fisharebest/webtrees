@@ -353,10 +353,10 @@ class FunctionsPrint
 
         if ($anchor) {
             // Show the full place name, for facts/events tab
-            $html = '<a href="' . e($event->place()->url()) . '">' . $event->place()->getFullName() . '</a>';
+            $html = $event->place()->fullName(true);
         } else {
             // Abbreviate the place name, for chart boxes
-            return $event->place()->getShortName();
+            return $event->place()->shortName();
         }
 
         if ($sub_records) {
@@ -365,7 +365,7 @@ class FunctionsPrint
                 if (preg_match_all('/\n3 (?:_HEB|ROMN) (.+)/', $placerec, $matches)) {
                     foreach ($matches[1] as $match) {
                         $wt_place = new Place($match, $tree);
-                        $html .= ' - ' . $wt_place->getFullName();
+                        $html .= ' - ' . $wt_place->fullName();
                     }
                 }
                 $map_lati = '';

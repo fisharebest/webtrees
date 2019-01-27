@@ -1021,7 +1021,7 @@ class ReportParserGenerate extends ReportParserBase
                         break;
                     case 'PLAC':
                         $tmp   = new Place($value, $this->tree);
-                        $value = $tmp->getShortName();
+                        $value = $tmp->shortName();
                         break;
                 }
                 if ($useBreak === '1') {

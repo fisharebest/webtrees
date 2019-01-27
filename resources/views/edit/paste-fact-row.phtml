@@ -21,7 +21,7 @@
                             – <?= $fact->date()->minimumDate()->format('%Y') ?>
                         <?php endif ?>
                         <?php if (!$fact->place()->isEmpty()) : ?>
-                            – <?= $fact->place()->getShortName() ?>
+                            – <?= $fact->place()->shortName() ?>
                         <?php endif ?>
                     </option>
                     <?php endforeach ?>

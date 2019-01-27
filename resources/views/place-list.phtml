@@ -11,7 +11,7 @@
         <ul class="col list_value_wrap mr-1">
             <?php foreach ($column as $item) : ?>
                 <li>
-                    <a href="<?= e($item->url()) ?>"><?= $item->getFullName() ?></a>
+                    <a href="<?= e($item->url()) ?>"><?= $item->fullName() ?></a>
                 </li>
             <?php endforeach ?>
         </ul>
