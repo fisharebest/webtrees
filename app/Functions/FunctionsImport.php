@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\JoinClause;
 use PDOException;
 
 /**
@@ -1125,35 +1126,28 @@ class FunctionsImport
         }
 
         // Place links
-        $placeids = DB::table('placelinks')
-            ->where('pl_gid', '=', $gid)
-            ->where('pl_file', '=', $tree->id())
-            ->pluck('pl_p_id');
-
         DB::table('placelinks')
             ->where('pl_gid', '=', $gid)
             ->where('pl_file', '=', $tree->id())
             ->delete();
 
+        // Orphaned places.  If we're deleting  "Westminster, London, England",
+        // then we may also need to delete "London, England" and "England".
+        do {
+            $affected = DB::table('places')
+                ->leftJoin('placelinks', function (JoinClause $join): void {
+                    $join
+                        ->on('p_id', '=', 'pl_p_id')
+                        ->on('p_file', '=', 'pl_file');
+                })
+                ->whereNull('pl_p_id')
+                ->delete();
+        } while ($affected > 0);
+
         DB::table('dates')
             ->where('d_gid', '=', $gid)
             ->where('d_file', '=', $tree->id())
             ->delete();
-
-        //-- delete any unlinked places
-        foreach ($placeids as $p_id) {
-            $num = DB::table('placelinks')
-                ->where('pl_p_id', '=', $p_id)
-                ->where('pl_file', '=', $tree->id())
-                ->count();
-
-            if ($num === 0) {
-                DB::table('places')
-                    ->where('p_id', '=', $p_id)
-                    ->where('p_file', '=', $tree->id())
-                    ->delete();
-            }
-        }
 
         DB::table('name')
             ->where('n_id', '=', $gid)
