@@ -73,7 +73,9 @@ $request = Request::createFromGlobals();
 app()->instance(Request::class, $request);
 
 // Dummy value, until we have created our first tree.
-app()->bind(Tree::class, function () { return null; });
+app()->bind(Tree::class, function () {
+    return null;
+});
 
 // Calculate the base URL, so we can generate absolute URLs.
 $request_uri = $request->getSchemeAndHttpHost() . $request->getRequestUri();
