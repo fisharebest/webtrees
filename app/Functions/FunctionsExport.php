@@ -125,7 +125,7 @@ class FunctionsExport
             $SUBM = "\n1 SUBM @{$subm}@";
         }
 
-        return $HEAD . $SOUR . $DEST . $DATE . $GEDC . $CHAR . $FILE . $COPR . $LANG . $SUBN . $SUBM . "\n";
+        return $HEAD . $SOUR . $DEST . $DATE . $SUBM . $SUBN . $FILE . $COPR . $GEDC . $CHAR . $LANG . "\n";
     }
 
     /**

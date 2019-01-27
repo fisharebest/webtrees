@@ -5,14 +5,14 @@
 1 DEST DISKETTE
 1 DATE 21 MAY 2018
 2 TIME 22:45:34
+1 SUBM @X1166@
+1 FILE demo.ged
+1 COPR Greg Roach
 1 GEDC
 2 VERS 5.5.1
 2 FORM Lineage-Linked
 1 CHAR UTF-8
-1 FILE demo.ged
 1 LANG English
-1 COPR Greg Roach
-1 SUBM @X1166@
 0 @X1030@ INDI
 1 NAME Queen Elizabeth II
 2 GIVN Elizabeth, Alexandra, Mary
