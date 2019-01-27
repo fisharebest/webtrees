@@ -29,7 +29,7 @@ script:
   - vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover tests/clover.xml
   -
   - composer require wata727/pahout
-  - vendor/bin/pahout --php-version 7.1.3 --ignore-paths=data .
+  - if [ "${TRAVIS_PHP_VERSION}" -ne nightly ]; then vendor/bin/pahout --php-version 7.1.3 --ignore-paths=data .; fi
   - composer remove wata727/pahout
   -
   - composer require wapmorgan/php-code-fixer
