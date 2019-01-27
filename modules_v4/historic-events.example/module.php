@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;

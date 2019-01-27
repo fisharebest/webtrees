@@ -67,8 +67,9 @@
         "ext-pdo_sqlite": "*",
         "maximebf/debugbar": "*",
         "mockery/mockery": "*",
+        "php-coveralls/php-coveralls": "*",
         "phpunit/phpunit": "*",
-        "php-coveralls/php-coveralls": "*"
+        "wapmorgan/php-code-fixer": "dev-master"
     },
     "scripts": {
        "webtrees:build": [
@@ -80,12 +81,6 @@
            "zip --quiet --recurse-paths --move -9 webtrees.zip webtrees"
        ],
        "webtrees:check": [
-            "### PHP-CODE-FIXER",
-            "phpcf app/",
-            "### PAHOUT",
-            "pahout --php-version 7.1.3 --ignore-paths=data .",
-            "### PHP-PARALLEL-LINT",
-            "parallel-lint --no-progress --exclude vendor .",
             "### PHP-CODE-SNIFFER",
             "phpcs --standard=PSR12 -s --exclude=Generic.Files.LineLength,PSR2.ControlStructures.ControlStructureSpacing app routes",
             "### PHAN",
@@ -96,14 +91,8 @@
             "psalm"
         ],
         "webtrees:tools": [
-            "### PAHOUT",
-            "@composer global require wata727/pahout=*",
             "### PHAN",
             "@composer global require phan/phan=*",
-            "### PHP-CODE-FIXER",
-            "@composer global require wapmorgan/php-code-fixer=*",
-            "### PHP-PARALLEL-LINT",
-            "@composer global require jakub-onderka/php-parallel-lint=*",
             "### PSALM",
             "@composer global require vimeo/psalm=*"
         ],

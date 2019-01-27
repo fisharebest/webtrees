@@ -23,11 +23,16 @@ before_script:
   - travis_retry composer config github-oauth.github.com "${GITHUB_OAUTH_TOKEN}"
 
 script:
-  - # Check for deprecated functions and non-built-in libraries
-  - composer require wapmorgan/php-code-fixer dev-master
-  - vendor/bin/phpca
   - mkdir -p build/logs
   - vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover tests/clover.xml
+  -
+  - composer require wata727/pahout
+  - vendor/bin/pahout --php-version 7.1.3 --ignore-paths=data .
+  - composer remove wata727/pahout
+  -
+  - composer require wapmorgan/php-code-fixer
+  - vendor/bin/phpcf --target=7.1 --exclude=vendor .
+  - composer remove wapmorgan/php-code-fixer
 
 after_script:
   - travis_retry php vendor/bin/php-coveralls -v
