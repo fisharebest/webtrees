@@ -155,6 +155,10 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
      */
     protected function countHit($page, $parameter): int
     {
+        if ($this->tree === null) {
+            return 0;
+        }
+
         $gedcom_id = $this->tree->id();
 
         // Don't increment the counter while we stay on the same page.

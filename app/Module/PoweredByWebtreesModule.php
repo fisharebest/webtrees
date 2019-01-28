@@ -18,11 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Footer;
-use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Webtrees;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class PoweredByWebtreesModule - provide a link to the project home page.
@@ -72,7 +68,7 @@ class PoweredByWebtreesModule extends AbstractModule implements ModuleFooterInte
     {
         return view('modules/powered-by-webtrees/footer', [
             'name' => Webtrees::NAME,
-            'url' => Webtrees::URL,
+            'url'  => Webtrees::URL,
         ]);
     }
 }

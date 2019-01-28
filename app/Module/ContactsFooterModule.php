@@ -118,7 +118,7 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
 
         if ($webmaster_user instanceof User) {
             return view('modules/contact-links/footer', [
-                'contact_links' => $this->contactLinkTechnical($contact_user),
+                'contact_links' => $this->contactLinkTechnical($webmaster_user),
             ]);
         }
 
