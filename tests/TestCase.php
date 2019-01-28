@@ -76,6 +76,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
         if (static::$uses_database) {
             DB::connection()->beginTransaction();
+
+            Module::boot();
         }
     }
 

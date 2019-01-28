@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Site;
+use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -103,7 +104,9 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
      */
     protected function isCookieWarningAcknowledged(): bool
     {
-        return $this->request->cookies->get('cookie', '') !== '';
+        $cookies = $this->request->cookies;
+
+        return $cookies instanceof ParameterBag && $cookies->get('cookie', '') !== '';
     }
 
     /**
