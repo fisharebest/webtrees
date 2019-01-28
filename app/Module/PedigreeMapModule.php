@@ -21,9 +21,12 @@ use Exception;
 use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\FactLocation;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Functions\FunctionsCharts;
+use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
@@ -133,7 +136,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
                 'action' => 'PedigreeMap',
                 'xref'   => $individual->xref(),
                 'ged'    => $individual->tree()->name(),
-        ] + $parameters);
+            ] + $parameters);
     }
 
     /**
@@ -159,13 +162,24 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
         $sosa_points = [];
 
         foreach ($facts as $id => $fact) {
-            $event = new FactLocation($fact, $indi);
-            $icon  = $event->getIconDetails();
-            if ($event->knownLatLon()) {
+            $location = new Location($fact->place()->gedcomName());
+
+            // Use the co-ordinates from the fact (if they exist).
+            $latitude  = $fact->latitude();
+            $longitude = $fact->longitude();
+
+            // Use the co-ordinates from the location otherwise.
+            if ($latitude === 0.0 && $longitude === 0.0) {
+                $latitude  = $location->latitude();
+                $longitude = $location->longitude();
+            }
+
+            $icon = ['color' => 'Gold', 'name' => 'bullseye '];
+            if ($latitude !== 0.0 || $longitude !== 0.0) {
                 $polyline         = null;
                 $color            = self::LINE_COLORS[log($id, 2) % $color_count];
                 $icon['color']    = $color; //make icon color the same as the line
-                $sosa_points[$id] = $event->getLatLonJSArray();
+                $sosa_points[$id] = [$latitude, $longitude];
                 $sosa_parent      = intdiv($id, 2);
                 if (array_key_exists($sosa_parent, $sosa_points)) {
                     // Would like to use a GeometryCollection to hold LineStrings
@@ -174,7 +188,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
                     $polyline = [
                         'points'  => [
                             $sosa_points[$sosa_parent],
-                            $event->getLatLonJSArray(),
+                            [$latitude, $longitude],
                         ],
                         'options' => [
                             'color' => $color,
@@ -187,14 +201,14 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
                     'valid'      => true,
                     'geometry'   => [
                         'type'        => 'Point',
-                        'coordinates' => $event->getGeoJsonCoords(),
+                        'coordinates' => [$longitude, $latitude],
                     ],
                     'properties' => [
                         'polyline' => $polyline,
                         'icon'     => $icon,
-                        'tooltip'  => $event->toolTip(),
-                        'summary'  => view('modules/pedigree-map/events', $event->shortSummary('pedigree', $id)),
-                        'zoom'     => (int) $event->getZoom(),
+                        'tooltip'  => strip_tags($fact->place()->fullName()),
+                        'summary'  => view('modules/pedigree-map/events', $this->summaryData($indi, $fact, $id)),
+                        'zoom'     => $location->zoom() ?: 2,
                     ],
                 ];
             }
@@ -203,6 +217,51 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
         $code = empty($facts) ? Response::HTTP_NO_CONTENT : Response::HTTP_OK;
 
         return new JsonResponse($geojson, $code);
+    }
+
+    /**
+     * @param Individual $individual
+     * @param Fact       $fact
+     * @param int        $sosa
+     *
+     * @return array
+     */
+    private function summaryData(Individual $individual, Fact $fact, int $sosa): array
+    {
+        $record      = $fact->record();
+        $name        = '';
+        $url         = '';
+        $tag         = $fact->label();
+        $addbirthtag = false;
+
+        if ($record instanceof Family) {
+            // Marriage
+            $spouse = $record->getSpouse($individual);
+            if ($spouse) {
+                $url  = $spouse->url();
+                $name = $spouse->getFullName();
+            }
+        } elseif ($record !== $individual) {
+            // Birth of a child
+            $url  = $record->url();
+            $name = $record->getFullName();
+            $tag  = GedcomTag::getLabel('_BIRT_CHIL', $record);
+        }
+
+        if ($sosa > 1) {
+            $addbirthtag = true;
+            $tag         = ucfirst(FunctionsCharts::getSosaName($sosa));
+        }
+
+        return [
+            'tag'    => $tag,
+            'url'    => $url,
+            'name'   => $name,
+            'value'  => $fact->value(),
+            'date'   => $fact->date()->display(true),
+            'place'  => $fact->place(),
+            'addtag' => $addbirthtag,
+        ];
     }
 
     /**

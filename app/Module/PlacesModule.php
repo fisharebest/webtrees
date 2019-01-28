@@ -19,10 +19,12 @@ namespace Fisharebest\Webtrees\Module;
 
 use Exception;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\FactLocation;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Webtrees;
 use stdClass;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -37,6 +39,19 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 
     private static $map_providers  = null;
     private static $map_selections = null;
+
+    public const ICONS = [
+        'BIRT' => ['color' => 'Crimson', 'name' => 'birthday-cake'],
+        'MARR' => ['color' => 'Green', 'name' => 'venus-mars'],
+        'DEAT' => ['color' => 'Black', 'name' => 'plus'],
+        'CENS' => ['color' => 'MediumBlue', 'name' => 'users'],
+        'RESI' => ['color' => 'MediumBlue', 'name' => 'home'],
+        'OCCU' => ['color' => 'MediumBlue', 'name' => 'briefcase'],
+        'GRAD' => ['color' => 'MediumBlue', 'name' => 'graduation-cap'],
+        'EDUC' => ['color' => 'MediumBlue', 'name' => 'university'],
+    ];
+
+    public const DEFAULT_ICON = ['color' => 'Gold', 'name' => 'bullseye '];
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
@@ -111,32 +126,79 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
         ];
 
         foreach ($facts as $id => $fact) {
-            $event = new FactLocation($fact, $indi);
-            $icon  = $event->getIconDetails();
-            if ($event->knownLatLon()) {
+            $location = new Location($fact->place()->gedcomName());
+
+            // Use the co-ordinates from the fact (if they exist).
+            $latitude  = $fact->latitude();
+            $longitude = $fact->longitude();
+
+            // Use the co-ordinates from the location otherwise.
+            if ($latitude === 0.0 && $longitude === 0.0) {
+                $latitude  = $location->latitude();
+                $longitude = $location->longitude();
+            }
+
+            $icon = self::ICONS[$fact->getTag()] ?? self::DEFAULT_ICON;
+
+            if ($latitude !== 0.0 || $longitude !== 0.0) {
                 $geojson['features'][] = [
                     'type'       => 'Feature',
                     'id'         => $id,
                     'valid'      => true,
                     'geometry'   => [
                         'type'        => 'Point',
-                        'coordinates' => $event->getGeoJsonCoords(),
+                        'coordinates' => [$latitude, $longitude],
                     ],
                     'properties' => [
                         'polyline' => null,
                         'icon'     => $icon,
-                        'tooltip'  => $event->toolTip(),
-                        'summary'  => view(
-                            'modules/places/event-sidebar',
-                            $event->shortSummary('individual', $id)
-                        ),
-                        'zoom'     => (int) $event->getZoom(),
+                        'tooltip'  => strip_tags($fact->place()->fullName()),
+                        'summary'  => view('modules/places/event-sidebar', $this->summaryData($indi, $fact)),
+                        'zoom'     => $location->zoom(),
                     ],
                 ];
             }
         }
 
         return (object) $geojson;
+    }
+
+    /**
+     * @param Individual $individual
+     * @param Fact       $fact
+     *
+     * @return mixed[]
+     */
+    private function summaryData(Individual $individual, Fact $fact): array
+    {
+        $record = $fact->record();
+        $name   = '';
+        $url    = '';
+        $tag    = $fact->label();
+
+        if ($record instanceof Family) {
+            // Marriage
+            $spouse = $record->getSpouse($individual);
+            if ($spouse instanceof Individual) {
+                $url  = $spouse->url();
+                $name = $spouse->getFullName();
+            }
+        } elseif ($record !== $individual) {
+            // Birth of a child
+            $url  = $record->url();
+            $name = $record->getFullName();
+            $tag  = GedcomTag::getLabel('_BIRT_CHIL', $record);
+        }
+
+        return [
+            'tag'    => $tag,
+            'url'    => $url,
+            'name'   => $name,
+            'value'  => $fact->value(),
+            'date'   => $fact->date()->display(true),
+            'place'  => $fact->place(),
+            'addtag' => false,
+        ];
     }
 
     /**
@@ -164,7 +226,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
         $useable_facts = array_filter(
             $facts,
             function (Fact $item): bool {
-                return !$item->place()->isEmpty();
+                return $item->place()->gedcomName() !== '';
             }
         );
 
@@ -221,7 +283,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                     'provider' => 'openstreetmap',
                     'style'    => 'mapnik',
                 ];
-                self::$map_providers = [
+                self::$map_providers  = [
                     'openstreetmap' => [
                         'name'   => 'OpenStreetMap',
                         'styles' => ['mapnik' => 'Mapnik'],

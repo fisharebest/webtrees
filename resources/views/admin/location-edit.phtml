@@ -14,17 +14,17 @@
 
 <form method="post">
     <?= csrf_field() ?>
-    <input type="hidden" name="place_id" value="<?= $place_id ?>">
+    <input type="hidden" name="place_id" value="<?= e($place_id) ?>">
     <input type="hidden" name="level" value="<?= count($hierarchy) ?>">
-    <input type="hidden" name="place_long" value="<?= $lng ?>">
-    <input type="hidden" name="place_lati" value="<?= $lat ?>">
+    <input type="hidden" name="place_long" value="<?= e($lng) ?>">
+    <input type="hidden" name="place_lati" value="<?= e($lat) ?>">
 
     <div class="form-group row">
         <label class="col-form-label col-sm-1" for="new_place_name">
             <?= I18N::translate('Place') ?>
         </label>
         <div class="col-sm-5">
-            <input type="text" id="new_place_name" name="new_place_name" value="<?= e($location->getPlace()) ?>"
+            <input type="text" id="new_place_name" name="new_place_name" value="<?= e($location->locationName()) ?>"
             class="form-control" required>
         </div>
         <label class="col-form-label col-sm-1" for="icon">
@@ -33,7 +33,7 @@
         <div class="col-sm-4">
             <div class="input-group" dir="ltr">
                 <?= FunctionsEdit::formControlFlag(
-                    $location->getIcon(),
+                    $location->icon(),
                     ['name' => 'icon', 'id' => 'icon', 'class' => 'form-control']
                 )
 ?>
@@ -48,7 +48,7 @@
         <div class="col-sm-3">
             <div class="input-group">
                 <input type="text" dir="ltr" id="new_place_lati" class="editable form-control" name="new_place_lati" required
-                placeholder="<?= I18N::translate('degrees') ?>" value="<?= $lat ?>"
+                placeholder="<?= I18N::translate('degrees') ?>" value="<?= e($lat) ?>"
                 >
             </div>
         </div>
@@ -59,7 +59,7 @@
         <div class="col-sm-3">
             <div class="input-group">
                 <input type="text" dir="ltr" id="new_place_long" class="editable form-control" name="new_place_long" required
-                placeholder="<?= I18N::translate('degrees') ?>" value="<?= $lng ?>"
+                placeholder="<?= I18N::translate('degrees') ?>" value="<?= e($lng) ?>"
                 >
             </div>
         </div>
@@ -67,7 +67,7 @@
             <?= I18N::translate('Zoom') ?>
         </label>
         <div class="col-sm-2">
-            <input type="text" id="new_zoom_factor" name="new_zoom_factor" value="<?= $location->getZoom() ?>"
+            <input type="text" id="new_zoom_factor" name="new_zoom_factor" value="<?= e($location->zoom()) ?>"
             class="form-control" required readonly>
         </div>
     </div>

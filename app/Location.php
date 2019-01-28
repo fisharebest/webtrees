@@ -17,240 +17,180 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Services\GedcomService;
 use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
 use stdClass;
 
 /**
  * Class Location
- *
- * @package Fisharebest\Webtrees
  */
 class Location
 {
+    /** @var string e.g. "Westminster, London, England" */
+    private $location_name;
+
+    /** @var Collection|string[] The parts of a location name, e.g. ["Westminster", "London", "England"] */
+    private $parts;
 
     /**
-     * @var stdClass $record
-     */
-    protected $record;
-
-    /**
-     * Location constructor.
+     * Create a location.
      *
-     * @param string $gedcomName
-     * @param array  $record
+     * @param string $location_name
      */
-    public function __construct($gedcomName, $record = [])
+    public function __construct(string $location_name)
     {
-        $tmp = $this->getRecordFromName($gedcomName);
-        if ($tmp !== null) {
-            $this->record = $tmp;
-        } elseif (!empty($record)) {
-            $this->record = (object) $record;
-        } else {
-            $this->record = (object) [
-                'fqpn'         => '',
-                'pl_id'        => 0,
-                'pl_parent_id' => 0,
-                'pl_level'     => null,
-                'pl_place'     => '',
-                'pl_long'      => null,
-                'pl_lati'      => null,
-                'pl_zoom'      => null,
-                'pl_icon'      => null,
-            ];
-        }
+        // Ignore any empty parts in location names such as "Village, , , Country".
+        $this->parts = (new Collection(preg_split(Gedcom::PLACE_SEPARATOR_REGEX, $location_name)))
+            ->filter();
+
+        // Rebuild the location name in the correct format.
+        $this->location_name = $this->parts->implode(Gedcom::PLACE_SEPARATOR);
     }
 
     /**
-     * @return bool
-     */
-    public function knownLatLon(): bool
-    {
-        return ($this->record->pl_lati && $this->record->pl_long);
-    }
-
-    /**
-     * @param string $format
+     * Get the higher level location.
      *
-     * @return string|float
+     * @return Location
      */
-    public function getLat($format = 'signed')
+    public function parent(): Location
     {
-        switch ($format) {
-            case 'signed':
-                return $this->record->pl_lati ?
-                    (float) strtr($this->record->pl_lati, [
-                        'N' => '',
-                        'S' => '-',
-                        ',' => '.',
-                    ]) : $this->record->pl_lati;
-            default:
-                return $this->record->pl_lati;
-        }
+        return new self($this->parts->slice(1)->implode(Gedcom::PLACE_SEPARATOR));
     }
 
     /**
-     * @param string $format
+     * The database row that contains this location.
+     * Note that due to database collation, both "Quebec" and "Québec" will share the same row.
      *
-     * @return string|float
-     */
-    public function getLon($format = 'signed')
-    {
-        switch ($format) {
-            case 'signed':
-                return $this->record->pl_long ?
-                    (float) strtr($this->record->pl_long, [
-                        'E' => '',
-                        'W' => '-',
-                        ',' => '.',
-                    ]) : $this->record->pl_long;
-            default:
-                return $this->record->pl_long;
-        }
-    }
-
-    /**
-     * @return array
-     */
-    public function getLatLonJSArray(): array
-    {
-        return [
-            $this->getLat('signed'),
-            $this->getLon('signed'),
-        ];
-    }
-
-    /**
-     * GeoJSON requires the parameters to be in the order longitude, latitude
-     *
-     * @return array
-     */
-    public function getGeoJsonCoords(): array
-    {
-        return [
-            $this->getLon('signed'),
-            $this->getLat('signed'),
-        ];
-    }
-
-    /**
      * @return int
      */
-    public function getId(): int
+    public function id(): int
     {
-        return $this->record->pl_id;
+        return app()->make('cache.array')->rememberForever(__CLASS__ . __METHOD__ . $this->location_name, function () {
+            // The "top-level" location won't exist in the database.
+            if ($this->parts->isEmpty()) {
+                return 0;
+            }
+
+            $parent_location_id = $this->parent()->id();
+
+            $location_id = (int) DB::table('placelocation')
+                ->where('pl_place', '=', $this->parts->first())
+                ->where('pl_parent_id', '=', $parent_location_id)
+                ->value('pl_id');
+
+            if ($location_id === 0) {
+                $location = $this->parts->first();
+
+                $location_id = 1 + (int) DB::table('placelocation')->max('pl_id');
+
+                DB::table('placelocation')->insert([
+                    'pl_id'        => $location_id,
+                    'pl_place'     => $location,
+                    'pl_parent_id' => $parent_location_id,
+                    'pl_level'     => $this->parts->count() - 1,
+                ]);
+            }
+
+            return $location_id;
+        });
     }
 
     /**
-     * @return int
-     */
-    public function getLevel(): int
-    {
-        return $this->record->pl_level;
-    }
-
-    /**
+     * Does this location exist in the database?  Note that calls to Location::id() will
+     * create the row, so this function is only meaningful when called before a call to Location::id().
+     *
      * @return bool
      */
-    public function isValid(): bool
-    {
-        return $this->record->pl_id !== 0;
-    }
+    public function exists(): bool {
+        $location_id = 0;
 
-    /**
-     * @return string
-     */
-    public function getPlace(): string
-    {
-        return $this->record->pl_place;
-    }
+        $this->parts->reverse()->each(function (string $place) use (&$location_id) {
+            if ($location_id !== null) {
+                $location_id = DB::table('placelocation')
+                    ->where('pl_parent_id', '=', $location_id)
+                    ->where('pl_place', '=', $place)
+                    ->value('pl_id');
+           }
+        });
 
-    /**
-     * @return string|null
-     */
-    public function getZoom()
-    {
-        return $this->record->pl_zoom;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getIcon()
-    {
-        return $this->record->pl_icon;
+        return $location_id !== null;
     }
 
     /**
      * @return stdClass
      */
-    public function getRecord(): stdClass
+    private function details(): stdClass
     {
-        return $this->record;
+        return app()->make('cache.array')->rememberForever(__CLASS__ . __METHOD__ . $this->id(), function () {
+            // The "top-level" location won't exist in the database.
+            if ($this->parts->isEmpty()) {
+                return (object) [
+                    'pl_id'        => '0',
+                    'pl_parent_id' => '0',
+                    'pl_level' => null,
+                    'pl_place' => '',
+                    'pl_lati' => null,
+                    'pl_long' => null,
+                    'pl_zoom' => null,
+                    'pl_icon' => null,
+                    'pl_media' => null,
+                ];
+            }
+
+            return DB::table('placelocation')
+                ->where('pl_id', '=', $this->id())
+                ->first();
+        });
     }
 
     /**
+     * Latitude of the location.
+     *
+     * @return float
+     */
+    public function latitude(): float{
+        $gedcom_service = new GedcomService();
+
+        return $gedcom_service->readLatitude($this->details()->pl_lati ?? '');
+    }
+
+    /**
+     * Latitude of the longitude.
+     *
+     * @return float
+     */
+    public function longitude(): float{
+        $gedcom_service = new GedcomService();
+
+        return $gedcom_service->readLongitude($this->details()->pl_long ?? '');
+    }
+
+    /**
+     * The icon for the location.
+     *
+     * @return string
+     */
+    public function icon(): string
+    {
+        return (string) $this->details()->pl_icon;
+    }
+
+    /**
+     * Zoom level for the location.
+     *
      * @return int
      */
-    public function add(): int
+    public function zoom(): int
     {
-        $this->record->pl_id = 1 + (int) DB::table('placelocation')->max('pl_id');
-
-        DB::table('placelocation')->insert([
-            'pl_id'        => $this->record->pl_id,
-            'pl_parent_id' => $this->record->pl_parent_id,
-            'pl_level'     => $this->record->pl_level,
-            'pl_place'     => $this->record->pl_place,
-            'pl_long'      => $this->record->pl_long ?? null,
-            'pl_lati'      => $this->record->pl_lati ?? null,
-            'pl_zoom'      => $this->record->pl_zoom ?? null,
-            'pl_icon'      => $this->record->pl_icon ?? null,
-        ]);
-
-        return $this->record->pl_id;
+        return (int) $this->details()->pl_zoom;
     }
 
     /**
-     * @param stdClass $new_data
-     *
-     * @return void
+     * @return string
      */
-    public function update(stdClass $new_data)
+    public function locationName(): string
     {
-        DB::table('placelocation')
-            ->where('pl_id', '=', $this->record->pl_id)
-            ->update([
-                'pl_lati' => $new_data->pl_lati ?? $this->record->pl_lati,
-                'pl_long' => $new_data->pl_long ?? $this->record->pl_long,
-                'pl_zoom' => $new_data->pl_zoom ?? $this->record->pl_zoom,
-                'pl_icon' => $new_data->pl_icon ?? $this->record->pl_icon,
-            ]);
-    }
-
-    /**
-     * @param string $gedcomName
-     *
-     * @return null|stdClass
-     */
-    private function getRecordFromName(string $gedcomName)
-    {
-        $places = explode(Gedcom::PLACE_SEPARATOR, $gedcomName);
-
-        $query = DB::table('placelocation AS pl0')
-            ->where('pl0.pl_place', '=', $places[0])
-            ->select(['pl0.*']);
-
-        array_shift($places);
-
-        foreach ($places as $n => $place) {
-            $query->join('placelocation AS pl' . ($n + 1), function (JoinClause $join) use ($n, $place): void {
-                $join
-                    ->on('pl' . ($n + 1) . '.pl_id', '=', 'pl' . $n . '.pl_parent_id')
-                    ->where('pl' . ($n + 1) . '.pl_place', '=', $place);
-            });
-        };
-
-        return $query->first();
+        return (string) $this->parts->first();
     }
 }

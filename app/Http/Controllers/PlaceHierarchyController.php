@@ -265,18 +265,18 @@ class PlaceHierarchyController extends AbstractBaseController
                 $placeStats[$type] = empty($tmp) ? 0 : $tmp[0]->tot;
             }
             //Flag
-            if ($location->getIcon() !== null && is_file($flag_path . $location->getIcon())) {
-                $flag = $flag_path . $location->getIcon();
+            if ($location->icon() !== '' && is_file($flag_path . $location->icon())) {
+                $flag = $flag_path . $location->icon();
             } else {
                 $flag = '';
             }
             $features[] = [
                 'type'       => 'Feature',
                 'id'         => $id,
-                'valid'      => $location->isValid() && $location->knownLatLon(),
+                'valid'      => $location->longitude() !== 0.0 || $location->latitude() !== 0.0,
                 'geometry'   => [
                     'type'        => 'Point',
-                    'coordinates' => $location->getGeoJsonCoords(),
+                    'coordinates' => [$location->longitude(), $location->latitude()],
                 ],
                 'properties' => [
                     'icon'    => [
@@ -290,7 +290,7 @@ class PlaceHierarchyController extends AbstractBaseController
                         'place'    => $place,
                         'stats'    => $placeStats,
                     ]),
-                    'zoom'    => (int) ($location->getZoom() ?? 2),
+                    'zoom'    => $location->zoom() ?: 2,
                 ],
             ];
         }

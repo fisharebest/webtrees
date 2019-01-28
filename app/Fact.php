@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Services\GedcomService;
 use InvalidArgumentException;
 
 /**
@@ -239,6 +240,38 @@ class Fact
         }
 
         return '';
+    }
+
+    /**
+     * Get the PLAC:MAP:LATI for the fact.
+     *
+     * @return float
+     */
+    public function latitude(): float
+    {
+        if (preg_match('/\n4 LATI (.+)/', $this->gedcom, $match)) {
+            $gedcom_service = new GedcomService();
+
+            return $gedcom_service->readLatitude($match[1]);
+        }
+
+        return 0.0;
+    }
+
+    /**
+     * Get the PLAC:MAP:LONG for the fact.
+     *
+     * @return float
+     */
+    public function longitude(): float
+    {
+        if (preg_match('/\n4 LATI (.+)/', $this->gedcom, $match)) {
+            $gedcom_service = new GedcomService();
+
+            return $gedcom_service->readLongitude($match[1]);
+        }
+
+        return 0.0;
     }
 
     /**

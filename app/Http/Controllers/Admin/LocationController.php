@@ -15,14 +15,15 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers;
+namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Exception;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Location;
-use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Services\GedcomService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
@@ -33,12 +34,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\StreamedResponse;
-use const WT_DATA_DIR;
 
 /**
  * Controller for maintaining geographic data.
  */
-class AdminLocationController extends AbstractBaseController
+class LocationController extends AbstractBaseController
 {
     /** @var string */
     protected $layout = 'layouts/administration';
@@ -84,9 +84,9 @@ class AdminLocationController extends AbstractBaseController
         $fqpn      = empty($hierarchy) ? '' : $hierarchy[0]->fqpn;
         $location  = new Location($fqpn);
 
-        if ($location->isValid()) {
-            $lat = $location->getLat();
-            $lng = $location->getLon();
+        if ($location->id() !== 0) {
+            $lat = $location->latitude();
+            $lng = $location->longitude();
             $id  = $place_id;
         } else {
             $lat = '';
@@ -94,7 +94,7 @@ class AdminLocationController extends AbstractBaseController
             $id  = $parent_id;
         }
 
-        $title = e($location->getPlace());
+        $title = e($location->locationName());
 
         $breadcrumbs = [
             route('admin-control-panel') => I18N::translate('Control panel'),
@@ -247,16 +247,8 @@ class AdminLocationController extends AbstractBaseController
         $places = [];
         $this->buildLevel($parent_id, $startfqpn, $places);
 
-        // Clean up co-ordinates
-        $places = array_map(function (array $place): array {
-            $place['pl_long'] = (float) strtr($place['pl_long'] ?? '0', ['E' => '', 'W' => '-', ',' => '.']);
-            $place['pl_lati'] = (float) strtr($place['pl_lati'] ?? '0', ['N' => '', 'S' => '-', ',' => '.']);
-
-            return $place;
-        }, $places);
-
         $places = array_filter($places, function (array $place): bool {
-            return $place['pl_long'] !== 0 && $place['pl_lati'] !== 0;
+            return $place['pl_long'] !== 0.0 && $place['pl_lati'] !== 0.0;
         });
 
         if ($format === 'csv') {
@@ -266,7 +258,7 @@ class AdminLocationController extends AbstractBaseController
             ];
 
             for ($i = 0; $i <= $maxlevel; $i++) {
-                $header[] = 'Place' . $i;
+                $header[] = 'Place' . ($i + 1);
             }
 
             $header[] = 'Longitude';
@@ -313,12 +305,13 @@ class AdminLocationController extends AbstractBaseController
      * level followed by a variable number of placename fields
      * followed by Longitude, Latitude, Zoom & Icon
      *
-     * @param Request $request
+     * @param Request       $request
+     * @param GedcomService $gedcom_service
      *
      * @return RedirectResponse
      * @throws Exception
      */
-    public function importLocationsAction(Request $request): RedirectResponse
+    public function importLocationsAction(Request $request, GedcomService $gedcom_service): RedirectResponse
     {
         $serverfile     = $request->get('serverfile');
         $options        = $request->get('import-options');
@@ -352,8 +345,8 @@ class AdminLocationController extends AbstractBaseController
                 foreach ($input_array->features as $feature) {
                     $places[] = array_combine($field_names, [
                         $feature->properties->level ?? substr_count($feature->properties->name, ','),
-                        ($feature->geometry->coordinates[0] < 0 ? 'W' : 'E') . abs($feature->geometry->coordinates[0]),
-                        ($feature->geometry->coordinates[1] < 0 ? 'S' : 'N') . abs($feature->geometry->coordinates[1]),
+                        $gedcom_service->writeLongitude($feature->geometry->coordinates[0]),
+                        $gedcom_service->writeLatitude($feature->geometry->coordinates[1]),
                         $feature->properties->zoom ?? null,
                         $feature->properties->icon ?? null,
                         $feature->properties->name,
@@ -367,17 +360,18 @@ class AdminLocationController extends AbstractBaseController
                         continue;
                     }
 
-                    $fields = count($row);
+                    $level = (int) $row[0];
+                    $count = count($row);
 
                     // convert separate place fields into a comma separated placename
-                    $fqdn = implode(Gedcom::PLACE_SEPARATOR, array_filter(array_reverse(array_slice($row, 1, $fields - 5))));
+                    $fqdn = implode(Gedcom::PLACE_SEPARATOR, array_reverse(array_slice($row, 1, 1 + $level)));
 
                     $places[] = [
-                        'pl_level' => $row[0],
-                        'pl_long'  => $row[$fields - 4],
-                        'pl_lati'  => $row[$fields - 3],
-                        'pl_zoom'  => $row[$fields - 2],
-                        'pl_icon'  => $row[$fields - 1],
+                        'pl_level' => $level,
+                        'pl_long'  => $row[$count - 4],
+                        'pl_lati'  => $row[$count - 3],
+                        'pl_zoom'  => $row[$count - 2],
+                        'pl_icon'  => $row[$count - 1],
                         'fqpn'     => $fqdn,
                     ];
                 }
@@ -395,48 +389,27 @@ class AdminLocationController extends AbstractBaseController
 
             foreach ($places as $place) {
                 $location = new Location($place['fqpn']);
-                $valid    = $location->isValid();
+                $exists   = $location->exists();
 
-                // can't match data type here because default table values are null
-                // but csv file return empty string
-                if ($valid && $options !== 'add' && (
-                        $place['pl_level'] != $location->getLevel() ||
-                        $place['pl_long'] != $location->getLon('DMS+') ||
-                        $place['pl_lati'] != $location->getLat('DMS+') ||
-                        $place['pl_zoom'] != $location->getZoom() ||
-                        $place['pl_icon'] != $location->getIcon()
-                    )) {
-                    // overwrite
-                    $location->update((object) $place);
-                    $updated++;
-                } elseif (!$valid && $options !== 'update') {
-                    //add
-                    $place_parts = explode(Gedcom::PLACE_SEPARATOR, $place['fqpn']);
-                    // work throught the place parts starting at level 0,
-                    // looking for a record in the database, if not found then add it
-                    $parent_id = 0;
-                    for ($i = count($place_parts) - 1; $i >= 0; $i--) {
-                        $new_parts    = array_slice($place_parts, $i);
-                        $new_fqpn     = implode(Gedcom::PLACE_SEPARATOR, $new_parts);
-                        $new_location = new Location($new_fqpn, [
-                            'fqpn'         => $new_fqpn,
-                            'pl_id'        => 0,
-                            'pl_parent_id' => $parent_id,
-                            'pl_level'     => count($new_parts) - 1,
-                            'pl_place'     => $new_parts[0],
-                            'pl_long'      => $i === 0 ? $place['pl_long'] : null,
-                            'pl_lati'      => $i === 0 ? $place['pl_lati'] : null,
-                            'pl_zoom'      => $i === 0 ? $place['pl_zoom'] : null,
-                            'pl_icon'      => $i === 0 ? $place['pl_icon'] : null,
+                if ($options === 'update' && !$exists) {
+                    continue;
+                }
+
+                if (!$exists) {
+                    $added++;
+                }
+
+                if (!$exists || $options === 'update') {
+                    DB::table('placelocation')
+                        ->where('pl_id', '=', $location->id())
+                        ->update([
+                            'pl_lati' => $place['pl_lati'] ?: null,
+                            'pl_long' => $place['pl_long'] ?: null,
+                            'pl_zoom' => $place['pl_zoom'] ?: null,
+                            'pl_icon' => $place['pl_icon'] ?: null,
                         ]);
 
-                        if ($new_location->isValid()) {
-                            $parent_id = $new_location->getId();
-                        } else {
-                            $parent_id = $new_location->add();
-                            $added++;
-                        }
-                    }
+                    $updated++;
                 }
             }
             FlashMessages::addMessage(
@@ -573,7 +546,7 @@ class AdminLocationController extends AbstractBaseController
             $stream = fopen('php://output', 'w');
 
             if ($stream !== false) {
-                fputcsv($stream, $columns);
+                fputcsv($stream, $columns, ';');
 
                 foreach ($places as $place) {
                     fputcsv($stream, $place, ';');
@@ -660,7 +633,7 @@ class AdminLocationController extends AbstractBaseController
         foreach ($rows as $row) {
             $index             = (int) $row->pl_id;
             $placename[$level] = $row->pl_place;
-            $places[]          = array_merge([$row->pl_level], $placename, [$row->pl_long, $row->pl_lati, $row->pl_zoom, $row->pl_icon]);
+            $places[]          = array_merge(['pl_level' => $row->pl_level], $placename, ['pl_long' => $row->pl_long, 'pl_lati' => $row->pl_lati, 'pl_zoom' => $row->pl_zoom, 'pl_icon' => $row->pl_icon]);
             $this->buildLevel($index, $placename, $places);
         }
     }

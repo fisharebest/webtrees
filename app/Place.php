@@ -59,7 +59,7 @@ class Place
      */
     public function parent(): Place
     {
-        return new static($this->parts->slice(1)->implode(Gedcom::PLACE_SEPARATOR), $this->tree);
+        return new self($this->parts->slice(1)->implode(Gedcom::PLACE_SEPARATOR), $this->tree);
     }
 
     /**
@@ -70,18 +70,18 @@ class Place
      */
     public function id(): int
     {
-        return app()->make('cache.array')->rememberForever('place:' . $this->place_name, function () {
+        return app()->make('cache.array')->rememberForever(__CLASS__ . __METHOD__ . $this->place_name, function () {
             // The "top-level" place won't exist in the database.
             if ($this->parts->isEmpty()) {
                 return 0;
             }
 
-            $parent_place = $this->parent();
+            $parent_place_id = $this->parent()->id();
 
             $place_id = (int) DB::table('places')
                 ->where('p_file', '=', $this->tree->id())
                 ->where('p_place', '=', $this->parts->first())
-                ->where('p_parent_id', '=', $parent_place->id())
+                ->where('p_parent_id', '=', $parent_place_id)
                 ->value('p_id');
 
             if ($place_id === 0) {
@@ -90,7 +90,7 @@ class Place
                 DB::table('places')->insert([
                     'p_file'        => $this->tree->id(),
                     'p_place'       => $place,
-                    'p_parent_id'   => $parent_place->id(),
+                    'p_parent_id'   => $parent_place_id,
                     'p_std_soundex' => Soundex::russell($place),
                     'p_dm_soundex'  => Soundex::daitchMokotoff($place),
                 ]);
