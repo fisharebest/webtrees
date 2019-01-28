@@ -355,7 +355,7 @@
             }
         }
         echo ' ' . e($desc);
-        if (!$event->place()->isEmpty()) {
+        if ($event->place()->gedcomName() !== '') {
             echo ' — ' . $event->place()->shortName();
         }
         // Print spouses names for family events
