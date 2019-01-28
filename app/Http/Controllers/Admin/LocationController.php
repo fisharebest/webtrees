@@ -43,6 +43,19 @@ class LocationController extends AbstractBaseController
     /** @var string */
     protected $layout = 'layouts/administration';
 
+    /** @var GedcomService */
+    private $gedcom_service;
+
+    /**
+     * Dependency injection.
+     *
+     * @param GedcomService $gedcom_service
+     */
+    public function __construct(GedcomService $gedcom_service)
+    {
+        $this->gedcom_service = $gedcom_service;
+    }
+
     /**
      * @param Request $request
      *
@@ -306,12 +319,11 @@ class LocationController extends AbstractBaseController
      * followed by Longitude, Latitude, Zoom & Icon
      *
      * @param Request       $request
-     * @param GedcomService $gedcom_service
      *
      * @return RedirectResponse
      * @throws Exception
      */
-    public function importLocationsAction(Request $request, GedcomService $gedcom_service): RedirectResponse
+    public function importLocationsAction(Request $request): RedirectResponse
     {
         $serverfile     = $request->get('serverfile');
         $options        = $request->get('import-options');
@@ -345,8 +357,8 @@ class LocationController extends AbstractBaseController
                 foreach ($input_array->features as $feature) {
                     $places[] = array_combine($field_names, [
                         $feature->properties->level ?? substr_count($feature->properties->name, ','),
-                        $gedcom_service->writeLongitude($feature->geometry->coordinates[0]),
-                        $gedcom_service->writeLatitude($feature->geometry->coordinates[1]),
+                        $this->gedcom_service->writeLongitude($feature->geometry->coordinates[0]),
+                        $this->gedcom_service->writeLatitude($feature->geometry->coordinates[1]),
                         $feature->properties->zoom ?? null,
                         $feature->properties->icon ?? null,
                         $feature->properties->name,
@@ -591,15 +603,12 @@ class LocationController extends AbstractBaseController
                 'geometry'   => [
                     'type'        => 'Point',
                     'coordinates' => [
-                        (float) $place['pl_long'],
-                        (float) $place['pl_lati'],
+                        $this->gedcom_service->readLongitude($place['pl_long'] ?? ''),
+                        $this->gedcom_service->readLatitude($place['pl_lati'] ?? ''),
                     ],
                 ],
                 'properties' => [
-                    'level' => $place[0],
                     'name'  => $fqpn,
-                    'zoom'  => $place['pl_zoom'],
-                    'icon'  => $place['pl_icon'],
                 ],
             ];
         }
