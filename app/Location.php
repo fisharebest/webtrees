@@ -102,7 +102,8 @@ class Location
      *
      * @return bool
      */
-    public function exists(): bool {
+    public function exists(): bool
+    {
         $location_id = 0;
 
         $this->parts->reverse()->each(function (string $place) use (&$location_id) {
@@ -111,7 +112,7 @@ class Location
                     ->where('pl_parent_id', '=', $location_id)
                     ->where('pl_place', '=', $place)
                     ->value('pl_id');
-           }
+            }
         });
 
         return $location_id !== null;
@@ -149,7 +150,8 @@ class Location
      *
      * @return float
      */
-    public function latitude(): float{
+    public function latitude(): float
+    {
         $gedcom_service = new GedcomService();
 
         return $gedcom_service->readLatitude($this->details()->pl_lati ?? '');
@@ -160,7 +162,8 @@ class Location
      *
      * @return float
      */
-    public function longitude(): float{
+    public function longitude(): float
+    {
         $gedcom_service = new GedcomService();
 
         return $gedcom_service->readLongitude($this->details()->pl_long ?? '');
