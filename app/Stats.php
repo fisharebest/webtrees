@@ -20,18 +20,19 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
-use Fisharebest\Webtrees\Http\Middleware\PageHitCounter;
 use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
+use Fisharebest\Webtrees\Module\HitCountFooterModule;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\UserFavoritesModule;
+use Illuminate\Database\Capsule\Manager as DB;
 use PDOException;
 use stdClass;
+use Symfony\Component\HttpFoundation\Request;
 use const PREG_SET_ORDER;
 
 /**
  * A selection of pre-formatted statistical queries.
- *
  * These are primarily used for embedded keywords on HTML blocks, but
  * are also used elsewhere in the code.
  */
@@ -410,7 +411,7 @@ class Stats
     /**
      * Create a chart showing individuals with/without sources.
      *
-     * @param string|null $size        // Optional parameter, set from tag
+     * @param string|null $size // Optional parameter, set from tag
      * @param string|null $color_from
      * @param string|null $color_to
      *
@@ -529,10 +530,10 @@ class Stats
         }
 
         $tot_sfam_per = $this->totalFamsWithSourcesQuery() / $tot_fam;
-        $with          = (int) (100 * $tot_sfam_per);
-        $chd           = $this->arrayToExtendedEncoding([100 - $with, $with]);
-        $chl           = I18N::translate('Without sources') . ' - ' . I18N::percentage(1 - $tot_sfam_per, 1) . '|' . I18N::translate('With sources') . ' - ' . I18N::percentage($tot_sfam_per, 1);
-        $chart_title   = I18N::translate('Families with sources');
+        $with         = (int) (100 * $tot_sfam_per);
+        $chd          = $this->arrayToExtendedEncoding([100 - $with, $with]);
+        $chl          = I18N::translate('Without sources') . ' - ' . I18N::percentage(1 - $tot_sfam_per, 1) . '|' . I18N::translate('With sources') . ' - ' . I18N::percentage($tot_sfam_per, 1);
+        $chart_title  = I18N::translate('Families with sources');
 
         return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
     }
@@ -733,11 +734,11 @@ class Stats
                 }
             }
             if ($types) {
-                $sql .= ' AND d_fact IN (' . implode(', ', array_fill(0, count($types), '?')) . ')';
+                $sql  .= ' AND d_fact IN (' . implode(', ', array_fill(0, count($types), '?')) . ')';
                 $vars = array_merge($vars, $types);
             }
         }
-        $sql .= ' AND d_fact NOT IN (' . implode(', ', array_fill(0, count($no_types), '?')) . ')';
+        $sql  .= ' AND d_fact NOT IN (' . implode(', ', array_fill(0, count($no_types), '?')) . ')';
         $vars = array_merge($vars, $no_types);
 
         $n = (int) Database::prepare($sql)->execute($vars)->fetchOne();
@@ -979,12 +980,12 @@ class Stats
         }
 
         if ($tot_u > 0) {
-            $chd = $this->arrayToExtendedEncoding([
+            $chd         = $this->arrayToExtendedEncoding([
                 intdiv(4095 * $tot_u, $tot),
                 intdiv(4095 * $tot_f, $tot),
                 intdiv(4095 * $tot_m, $tot),
             ]);
-            $chl =
+            $chl         =
                 I18N::translateContext('unknown people', 'Unknown') . ' - ' . $per_u . '|' .
                 I18N::translate('Females') . ' - ' . $per_f . '|' .
                 I18N::translate('Males') . ' - ' . $per_m;
@@ -996,7 +997,7 @@ class Stats
             return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
         }
 
-        $chd = $this->arrayToExtendedEncoding([
+        $chd         = $this->arrayToExtendedEncoding([
             intdiv(4095 * $tot_f, $tot),
             intdiv(4095 * $tot_m, $tot),
         ]);
@@ -1004,14 +1005,13 @@ class Stats
             I18N::translate('Females') . ' - ' . $per_f . '|' .
             I18N::translate('Males') . ' - ' . $per_m;
         $chart_title = I18N::translate('Males') . ' - ' . $per_m . I18N::$list_separator .
-                   I18N::translate('Females') . ' - ' . $per_f;
+            I18N::translate('Females') . ' - ' . $per_f;
 
         return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
     }
 
     /**
      * Count the number of living individuals.
-     *
      * The totalLiving/totalDeceased queries assume that every dead person will
      * have a DEAT record. It will not include individuals who were born more
      * than MAX_ALIVE_AGE years ago, and who have no DEAT record.
@@ -1112,7 +1112,7 @@ class Stats
             return '';
         }
 
-        $chd = $this->arrayToExtendedEncoding([
+        $chd         = $this->arrayToExtendedEncoding([
             intdiv(4095 * $tot_l, $tot),
             intdiv(4095 * $tot_d, $tot),
         ]);
@@ -1120,7 +1120,7 @@ class Stats
             I18N::translate('Living') . ' - ' . $per_l . '|' .
             I18N::translate('Dead') . ' - ' . $per_d . '|';
         $chart_title = I18N::translate('Living') . ' - ' . $per_l . I18N::$list_separator .
-                   I18N::translate('Dead') . ' - ' . $per_d;
+            I18N::translate('Dead') . ' - ' . $per_d;
 
         return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_living},{$color_dead}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
     }
@@ -1176,12 +1176,12 @@ class Stats
             if ($type == 'unknown') {
                 // There has to be a better way then this :(
                 foreach ($this->media_types as $t) {
-                    $sql .= " AND (m_gedcom NOT LIKE ? AND m_gedcom NOT LIKE ?)";
+                    $sql    .= " AND (m_gedcom NOT LIKE ? AND m_gedcom NOT LIKE ?)";
                     $vars[] = "%3 TYPE {$t}%";
                     $vars[] = "%1 _TYPE {$t}%";
                 }
             } else {
-                $sql .= " AND (m_gedcom LIKE ? OR m_gedcom LIKE ?)";
+                $sql    .= " AND (m_gedcom LIKE ? OR m_gedcom LIKE ?)";
                 $vars[] = "%3 TYPE {$type}%";
                 $vars[] = "%1 _TYPE {$type}%";
             }
@@ -2001,7 +2001,7 @@ class Stats
             $tot   = 0;
             foreach ($rows as $values) {
                 $values->total = (int) $values->total;
-                $tot += $values->total;
+                $tot           += $values->total;
             }
             // Beware divide by zero
             if ($tot == 0) {
@@ -2010,7 +2010,7 @@ class Stats
             $centuries = '';
             $counts    = [];
             foreach ($rows as $values) {
-                $counts[] = intdiv(100 * $values->total, $tot);
+                $counts[]  = intdiv(100 * $values->total, $tot);
                 $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
             }
             $chd = $this->arrayToExtendedEncoding($counts);
@@ -2087,7 +2087,7 @@ class Stats
             $tot   = 0;
             foreach ($rows as $values) {
                 $values->total = (int) $values->total;
-                $tot += $values->total;
+                $tot           += $values->total;
             }
             // Beware divide by zero
             if ($tot == 0) {
@@ -2096,7 +2096,7 @@ class Stats
             $centuries = '';
             $counts    = [];
             foreach ($rows as $values) {
-                $counts[] = intdiv(100 * $values->total, $tot);
+                $counts[]  = intdiv(100 * $values->total, $tot);
                 $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
             }
             $chd = $this->arrayToExtendedEncoding($counts);
@@ -2475,7 +2475,7 @@ class Stats
             $sex_search = '';
         }
 
-        $rows = $this->runSql(
+        $rows  = $this->runSql(
             "SELECT" .
             " birth.d_gid AS id," .
             " MIN(birth.d_julianday1) AS age" .
@@ -3332,7 +3332,7 @@ class Stats
             " GROUP BY family" .
             " ORDER BY age {$age_dir}"
         );
-        $rows = [];
+        $rows  = [];
         foreach ($drows as $family) {
             $rows[$family->family] = $family->age;
         }
@@ -3644,7 +3644,7 @@ class Stats
 
             foreach ($rows as $values) {
                 $values->total = (int) $values->total;
-                $tot += (int) $values->total;
+                $tot           += (int) $values->total;
             }
             // Beware divide by zero
             if ($tot === 0) {
@@ -3653,7 +3653,7 @@ class Stats
             $centuries = '';
             $counts    = [];
             foreach ($rows as $values) {
-                $counts[] = intdiv(100 * $values->total, $tot);
+                $counts[]  = intdiv(100 * $values->total, $tot);
                 $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
             }
             $chd = $this->arrayToExtendedEncoding($counts);
@@ -3732,7 +3732,7 @@ class Stats
             $tot   = 0;
             foreach ($rows as $values) {
                 $values->total = (int) $values->total;
-                $tot += $values->total;
+                $tot           += $values->total;
             }
             // Beware divide by zero
             if ($tot === 0) {
@@ -3741,7 +3741,7 @@ class Stats
             $centuries = '';
             $counts    = [];
             foreach ($rows as $values) {
-                $counts[] = intdiv(100 * $values->total, $tot);
+                $counts[]  = intdiv(100 * $values->total, $tot);
                 $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
             }
             $chd = $this->arrayToExtendedEncoding($counts);
@@ -3957,7 +3957,7 @@ class Stats
         if ($simple) {
             $sizes = explode('x', $size);
 
-            $rows  = $this->runSql(
+            $rows = $this->runSql(
                 "SELECT " .
                 " ROUND(AVG(married.d_julianday2-birth.d_julianday1-182.5)/365.25,1) AS age, " .
                 " FLOOR(married.d_year/100+1) AS century, " .
@@ -4011,7 +4011,7 @@ class Stats
                 if ($sizes[0] < 1000) {
                     $sizes[0] += 50;
                 }
-                $chxl .= $this->centuryName($century) . '|';
+                $chxl    .= $this->centuryName($century) . '|';
                 $average = 0;
                 if (isset($values['F'])) {
                     if ($max <= 50) {
@@ -4663,7 +4663,7 @@ class Stats
      *
      * @param string $type
      * @param int    $total
-     * @param bool   $one   Include each family only once if true
+     * @param bool   $one Include each family only once if true
      *
      * @return string
      */
@@ -4730,7 +4730,7 @@ class Stats
             if ($type == 'list') {
                 if ($one && !in_array($fam->family, $dist)) {
                     if ($child1->canShow() && $child2->canShow()) {
-                        $return = '<li>';
+                        $return  = '<li>';
                         $return  .= '<a href="' . e($child2->url()) . '">' . $child2->getFullName() . '</a> ';
                         $return  .= I18N::translate('and') . ' ';
                         $return  .= '<a href="' . e($child1->url()) . '">' . $child1->getFullName() . '</a>';
@@ -4741,7 +4741,7 @@ class Stats
                         $dist[]  = $fam->family;
                     }
                 } elseif (!$one && $child1->canShow() && $child2->canShow()) {
-                    $return = '<li>';
+                    $return  = '<li>';
                     $return  .= '<a href="' . e($child2->url()) . '">' . $child2->getFullName() . '</a> ';
                     $return  .= I18N::translate('and') . ' ';
                     $return  .= '<a href="' . e($child1->url()) . '">' . $child1->getFullName() . '</a>';
@@ -4936,7 +4936,7 @@ class Stats
         $tot = 0;
         foreach ($rows as $row) {
             $row->tot = (int) $row->tot;
-            $tot += $row->tot;
+            $tot      += $row->tot;
         }
         $chd = '';
         $chl = [];
@@ -4948,7 +4948,7 @@ class Stats
                 } else {
                     $per = intdiv(100 * $row->tot, $tot);
                 }
-                $chd .= $this->arrayToExtendedEncoding([$per]);
+                $chd   .= $this->arrayToExtendedEncoding([$per]);
                 $chl[] = htmlspecialchars_decode(strip_tags($family->getFullName())) . ' - ' . I18N::number($row->tot);
             }
         }
@@ -5604,7 +5604,7 @@ class Stats
             $max_name  = 0;
             $top_name  = '';
             foreach ($surns as $spfxsurn => $count) {
-                $per = $count;
+                $per       = $count;
                 $count_per += $per;
                 // select most common surname from all variants
                 if ($per > $max_name) {
@@ -5628,11 +5628,11 @@ class Stats
                     ], $top_name);
             }
             $per   = intdiv(100 * $count_per, $tot_indi);
-            $chd .= $this->arrayToExtendedEncoding([$per]);
+            $chd   .= $this->arrayToExtendedEncoding([$per]);
             $chl[] = $top_name . ' - ' . I18N::number($count_per);
         }
         $per   = intdiv(100 * ($tot_indi - $tot), $tot_indi);
-        $chd .= $this->arrayToExtendedEncoding([$per]);
+        $chd   .= $this->arrayToExtendedEncoding([$per]);
         $chl[] = I18N::translate('Other') . ' - ' . I18N::number($tot_indi - $tot);
 
         $chart_title = implode(I18N::$list_separator, $chl);
@@ -6029,11 +6029,11 @@ class Stats
             } else {
                 $per = intdiv(100 * $count, $tot_indi);
             }
-            $chd .= $this->arrayToExtendedEncoding([$per]);
+            $chd   .= $this->arrayToExtendedEncoding([$per]);
             $chl[] = $givn . ' - ' . I18N::number($count);
         }
         $per   = intdiv(100 * ($tot_indi - $tot), $tot_indi);
-        $chd .= $this->arrayToExtendedEncoding([$per]);
+        $chd   .= $this->arrayToExtendedEncoding([$per]);
         $chl[] = I18N::translate('Other') . ' - ' . I18N::number($tot_indi - $tot);
 
         $chart_title = implode(I18N::$list_separator, $chl);
@@ -6097,7 +6097,7 @@ class Stats
                     if ($type == 'list') {
                         $content .= '<br>';
                     }
-                    $content .= '<a href="' . e(route('message', ['to'  => $user->getUserName(), 'ged' => $this->tree->name()])) . '" class="btn btn-link" title="' . I18N::translate('Send a message') . '">' . view('icons/email') . '</a>';
+                    $content .= '<a href="' . e(route('message', ['to' => $user->getUserName(), 'ged' => $this->tree->name()])) . '" class="btn btn-link" title="' . I18N::translate('Send a message') . '">' . view('icons/email') . '</a>';
                 }
                 if ($type == 'list') {
                     $content .= '</li>';
@@ -6229,7 +6229,6 @@ class Stats
 
     /**
      * Find the newest user on the site.
-     *
      * If no user has registered (i.e. all created by the admin), then
      * return the current user.
      *
@@ -6333,7 +6332,7 @@ class Stats
         $is_logged_in = (bool) Database::prepare(
             "SELECT 1 FROM `##session` WHERE user_id = :user_id LIMIT 1"
         )->execute([
-            'user_id' => $user->id()
+            'user_id' => $user->id(),
         ])->fetchOne();
 
         return $is_logged_in ? $yes : $no;
@@ -6350,10 +6349,14 @@ class Stats
         $user    = User::find((int) $user_id);
 
         if ($user instanceof User) {
-            return Theme::theme()->contactLink($user);
+            return view('modules/contact-links/contact', [
+                'request' => app()->make(Request::class),
+                'user'    => $user,
+                'tree'    => $this->tree,
+            ]);
         }
 
-        return $user_id;
+        return '';
     }
 
     /**
@@ -6367,10 +6370,14 @@ class Stats
         $user    = User::find((int) $user_id);
 
         if ($user instanceof User) {
-            return Theme::theme()->contactLink($user);
+            return view('modules/contact-links/contact', [
+                'request' => app()->make(Request::class),
+                'user'    => $user,
+                'tree'    => $this->tree,
+            ]);
         }
 
-        return $user_id;
+        return '';
     }
 
     /**
@@ -6473,9 +6480,13 @@ class Stats
             $page_parameter = 'user:' . ($user ? $user->id() : Auth::id());
         }
 
-        $hit_counter = new PageHitCounter(Auth::user(), $this->tree);
+        $count = (int) DB::table('hit_counter')
+            ->where('gedcom_id', '=', $this->tree->id())
+            ->where('page_name', '=', $page_name)
+            ->where('page_parameter', '=', $page_parameter)
+            ->value('page_count');
 
-        return '<span class="odometer">' . I18N::digits($hit_counter->getCount($this->tree, $page_name, $page_parameter)) . '</span>';
+        return '<span class="odometer">' . I18N::digits($count) . '</span>';
     }
 
     /**
@@ -6721,7 +6732,7 @@ class Stats
             $cfg[$v] = implode('=', $bits);
         }
 
-        $content  = $block->getBlock($this->tree, 0, '', $cfg);
+        $content = $block->getBlock($this->tree, 0, '', $cfg);
 
         return $content;
     }

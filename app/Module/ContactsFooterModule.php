@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
@@ -129,7 +128,7 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
     /**
      * Create contact link for both technical and genealogy support.
      *
-     * @param User    $user
+     * @param User $user
      *
      * @return string
      */
@@ -141,7 +140,7 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
     /**
      * Create contact link for genealogy support.
      *
-     * @param User    $user
+     * @param User $user
      *
      * @return string
      */
@@ -153,7 +152,7 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
     /**
      * Create contact link for technical support.
      *
-     * @param User    $user
+     * @param User $user
      *
      * @return string
      */
@@ -165,29 +164,16 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
     /**
      * Create a contact link for a user.
      *
-     * @param User    $user
+     * @param User $user
      *
      * @return string
      */
     private function contactLink(User $user): string
     {
-        $method = $user->getPreference('contactmethod');
-
-        switch ($method) {
-            case 'none':
-                return '';
-
-            case 'mailto':
-                return '<a href="mailto:' . e($user->getEmail()) . '">' . e($user->getRealName()) . '</a>';
-
-            default:
-                $url = route(Auth::check() ? 'message' : 'contact', [
-                    'ged' => $this->tree->name(),
-                    'to'  => $user->getUserName(),
-                    'url' => $this->request->getRequestUri(),
-                ]);
-
-                return '<a href="' . e($url) . '">' . e($user->getRealName()) . '</a>';
-        }
+        return view('modules/contact-links/contact', [
+            'request' => $this->request,
+            'user'    => $user,
+            'tree'    => $this->tree,
+        ]);
     }
 }
