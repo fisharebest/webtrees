@@ -1,5 +1,6 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleBlockInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleChartInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleConfigInterface; ?>
@@ -73,6 +74,10 @@
                 <th title="<?= I18N::translate('Reports') ?>">
                     <?= view('icons/report') ?>
                     <span class="sr-only"><?= I18N::translate('Reports') ?></span>
+                </th>
+                <th title="<?= I18N::translate('Tracking and analytics') ?>">
+                    <?= view('icons/analytics') ?>
+                    <span class="sr-only"><?= I18N::translate('Tracking and analytics') ?></span>
                 </th>
                 <th class="d-none" title="<?= I18N::translate('Themes') ?>">
                     <?= view('icons/theme') ?>
@@ -175,6 +180,14 @@
                         <?php if ($module instanceof ModuleReportInterface) : ?>
                             <?= view('icons/report') ?>
                             <span class="sr-only"><?= I18N::translate('Report') ?></span>
+                        <?php else : ?>
+                            -
+                        <?php endif ?>
+                    </td>
+                    <td class="text-center text-muted" title="<?= I18N::translate('Tracking and analytics') ?>">
+                        <?php if ($module instanceof ModuleAnalyticsInterface) : ?>
+                            <?= view('icons/analytics') ?>
+                            <span class="sr-only"><?= I18N::translate('Tracking and analytics') ?></span>
                         <?php else : ?>
                             -
                         <?php endif ?>
