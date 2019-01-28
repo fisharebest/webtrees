@@ -26,9 +26,9 @@ use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\DebugBarData;
 use Fisharebest\Webtrees\Http\Middleware\Housekeeping;
-use Fisharebest\Webtrees\Http\Middleware\PageHitCounter;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
@@ -267,7 +267,6 @@ try {
     }
 
     if ($request->getMethod() === Request::METHOD_GET) {
-        $middleware_stack[] = PageHitCounter::class;
         $middleware_stack[] = Housekeeping::class;
     }
 
@@ -275,6 +274,9 @@ try {
         $middleware_stack[] = UseTransaction::class;
         $middleware_stack[] = CheckCsrf::class;
     }
+
+    // Boot the modules.
+    Module::boot();
 
     // Apply the middleware using the "onion" pattern.
     $pipeline = array_reduce($middleware_stack, function (Closure $next, string $middleware): Closure {

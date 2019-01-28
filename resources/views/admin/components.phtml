@@ -15,8 +15,10 @@ use Fisharebest\Webtrees\View; ?>
             <tr>
                 <th><?= I18N::translate('Menu') ?></th>
                 <th class="text-center"><?= I18N::translate('Enabled') ?></th>
-                <th class="text-center"><?= I18N::translate('Access level') ?></th>
-                <?php if ($component === 'menu' || $component === 'sidebar' || $component === 'tab') : ?>
+                <?php if ($uses_access) : ?>
+                    <th class="text-center"><?= I18N::translate('Access level') ?></th>
+                <?php endif ?>
+                <?php if ($uses_sorting) : ?>
                     <th class="text-center"><?= I18N::translate('Move up') ?></th>
                     <th class="text-center"><?= I18N::translate('Move down') ?></th>
                 <?php endif ?>
@@ -28,7 +30,9 @@ use Fisharebest\Webtrees\View; ?>
                 <tr>
                     <th scope="col">
                         <input type="hidden" name="order[]" value="<?= e($module->name()) ?>"?>
-                        <?= $module->title() ?>
+                        <span title="<?= e($module->description()) ?>">
+                            <?= $module->title() ?>
+                        </span>
                         <?php if ($module instanceof ModuleConfigInterface) : ?>
                             <a href="<?= e($module->getConfigLink()) ?>" title="<?= I18N::translate('Preferences') ?>">
                                 <?= view('icons/preferences') ?>
@@ -48,7 +52,8 @@ use Fisharebest\Webtrees\View; ?>
                         </label>
                     </td>
 
-                    <td class="text-center">
+                    <?php if ($uses_access) : ?>
+                        <td class="text-center">
                         <div class="modal fade" id="access-level-<?= $module->name() ?>" tabindex="-1" role="dialog">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -90,8 +95,9 @@ use Fisharebest\Webtrees\View; ?>
                             </span>
                         </button>
                     </td>
+                    <?php endif ?>
 
-                    <?php if ($component === 'menu' || $component === 'sidebar' || $component === 'tab') : ?>
+                    <?php if ($uses_sorting) : ?>
                         <td class="move up text-center">
                             <a href="#" title="<?= I18N::translate('Move up') ?>">
                                 <?= view('icons/arrow-up') ?>

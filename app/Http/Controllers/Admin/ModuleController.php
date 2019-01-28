@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
@@ -39,6 +40,22 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ModuleController extends AbstractAdminController
 {
+    private const COMPONENTS_WITH_ACCESS = [
+        'block',
+        'chart',
+        'menu',
+        'report',
+        'sidebar',
+        'tab',
+    ];
+
+    private const COMPONENTS_WITH_SORT = [
+        'footer',
+        'menu',
+        'sidebar',
+        'tab',
+    ];
+
     /**
      * Show the administrator a list of modules.
      *
@@ -89,6 +106,14 @@ class ModuleController extends AbstractAdminController
     /**
      * @return Response
      */
+    public function listFooters(): Response
+    {
+        return $this->listComponents(ModuleFooterInterface::class, 'footer', I18N::translate('Footers'));
+    }
+
+    /**
+     * @return Response
+     */
     public function listMenus(): Response
     {
         return $this->listComponents(ModuleMenuInterface::class, 'menu', I18N::translate('Menus'));
@@ -127,11 +152,16 @@ class ModuleController extends AbstractAdminController
      */
     private function listComponents(string $interface, string $component, string $title): Response
     {
+        $uses_access  = in_array($component, self::COMPONENTS_WITH_ACCESS);
+        $uses_sorting = in_array($component, self::COMPONENTS_WITH_SORT);
+
         return $this->viewResponse('admin/components', [
-            'component' => $component,
-            'modules'   => Module::findByInterface($interface, true),
-            'title'     => $title,
-            'trees'     => Tree::all(),
+            'component'    => $component,
+            'modules'      => Module::findByInterface($interface, true),
+            'title'        => $title,
+            'trees'        => Tree::all(),
+            'uses_access'  => $uses_access,
+            'uses_sorting' => $uses_sorting,
         ]);
     }
 
@@ -194,6 +224,21 @@ class ModuleController extends AbstractAdminController
         $this->updateAccessLevel($modules, 'chart', $request);
 
         return new RedirectResponse(route('charts'));
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
+    public function updateFooters(Request $request): RedirectResponse
+    {
+        $modules = Module::findByInterface(ModuleFooterInterface::class, true);
+
+        $this->updateStatus($modules, $request);
+        $this->updateOrder($modules, 'footer_order', $request);
+
+        return new RedirectResponse(route('footers'));
     }
 
     /**

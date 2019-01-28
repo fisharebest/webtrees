@@ -33,6 +33,8 @@ if (Auth::isAdmin()) {
         'POST:blocks'                         => 'Admin\\ModuleController@updateBlocks',
         'GET:charts'                          => 'Admin\\ModuleController@listCharts',
         'POST:charts'                         => 'Admin\\ModuleController@updateCharts',
+        'GET:footers'                         => 'Admin\\ModuleController@listFooters',
+        'POST:footers'                        => 'Admin\\ModuleController@updateFooters',
         'GET:menus'                           => 'Admin\\ModuleController@listMenus',
         'POST:menus'                          => 'Admin\\ModuleController@updateMenus',
         'GET:reports'                         => 'Admin\\ModuleController@listReports',

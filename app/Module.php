@@ -34,6 +34,8 @@ use Fisharebest\Webtrees\Module\ChartsMenuModule;
 use Fisharebest\Webtrees\Module\CkeditorModule;
 use Fisharebest\Webtrees\Module\ClippingsCartModule;
 use Fisharebest\Webtrees\Module\CompactTreeChartModule;
+use Fisharebest\Webtrees\Module\ContactsFooterModule;
+use Fisharebest\Webtrees\Module\CookieWarningModule;
 use Fisharebest\Webtrees\Module\DeathReportModule;
 use Fisharebest\Webtrees\Module\DescendancyChartModule;
 use Fisharebest\Webtrees\Module\DescendancyModule;
@@ -50,6 +52,7 @@ use Fisharebest\Webtrees\Module\FanChartModule;
 use Fisharebest\Webtrees\Module\FrequentlyAskedQuestionsModule;
 use Fisharebest\Webtrees\Module\GoogleAnalyticsModule;
 use Fisharebest\Webtrees\Module\GoogleWebmasterToolsModule;
+use Fisharebest\Webtrees\Module\HitCountFooterModule;
 use Fisharebest\Webtrees\Module\HourglassChartModule;
 use Fisharebest\Webtrees\Module\HtmlBlockModule;
 use Fisharebest\Webtrees\Module\IndividualFactsTabModule;
@@ -67,6 +70,7 @@ use Fisharebest\Webtrees\Module\MissingFactsReportModule;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
+use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
@@ -104,6 +108,7 @@ use Fisharebest\Webtrees\Module\UserFavoritesModule;
 use Fisharebest\Webtrees\Module\UserJournalModule;
 use Fisharebest\Webtrees\Module\UserMessagesModule;
 use Fisharebest\Webtrees\Module\UserWelcomeModule;
+use Fisharebest\Webtrees\Module\PoweredByWebtreesModule;
 use Fisharebest\Webtrees\Module\WelcomeBlockModule;
 use Fisharebest\Webtrees\Module\YahrzeitModule;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -144,6 +149,8 @@ class Module
         'ckeditor'               => CkeditorModule::class,
         'clippings'              => ClippingsCartModule::class,
         'compact-chart'          => CompactTreeChartModule::class,
+        'contact-links'          => ContactsFooterModule::class,
+        'cookie-warning'         => CookieWarningModule::class,
         'death_report'           => DeathReportModule::class,
         'descendancy'            => DescendancyModule::class,
         'descendancy_chart'      => DescendancyChartModule::class,
@@ -161,6 +168,7 @@ class Module
         'gedcom_stats'           => FamilyTreeStatisticsModule::class,
         'google-analytics'       => GoogleAnalyticsModule::class,
         'google-webmaster-tools' => GoogleWebmasterToolsModule::class,
+        'hit-counter'            => HitCountFooterModule::class,
         'hourglass_chart'        => HourglassChartModule::class,
         'html'                   => HtmlBlockModule::class,
         'individual_ext_report'  => IndividualFamiliesReportModule::class,
@@ -181,6 +189,7 @@ class Module
         'pedigree_report'        => PedigreeReportModule::class,
         'personal_facts'         => IndividualFactsTabModule::class,
         'places'                 => PlacesModule::class,
+        'powered-by-webtrees'    => PoweredByWebtreesModule::class,
         'random_media'           => SlideShowModule::class,
         'recent_changes'         => RecentChangesModule::class,
         'relationships_chart'    => RelationshipsChartModule::class,
@@ -294,6 +303,10 @@ class Module
                     if ($info instanceof stdClass) {
                         $module->setEnabled($info->status === 'enabled');
 
+                        if ($module instanceof ModuleFooterInterface && $info->footer_order !== null) {
+                            $module->setFooterOrder((int) $info->footer_order);
+                        }
+
                         if ($module instanceof ModuleMenuInterface && $info->menu_order !== null) {
                             $module->setMenuOrder((int) $info->menu_order);
                         }
@@ -313,6 +326,23 @@ class Module
                 })
                 ->sort(self::moduleSorter());
         });
+    }
+
+    /**
+     * Boot all the modules.
+     */
+    public static function boot(): void
+    {
+        foreach (self::all() as $module) {
+            if (method_exists($module, 'boot')) {
+                try {
+                    app()->dispatch($module, 'boot');
+                } catch (Throwable $ex) {
+                    $message = '<pre>' . e($ex->getMessage()) . "\n" . e($ex->getTraceAsString()) . '</pre>';
+                    FlashMessages::addMessage($message, 'danger');
+                }
+            }
+        }
     }
 
     /**
@@ -336,6 +366,18 @@ class Module
     {
         return function (ModuleInterface $x, ModuleInterface $y): int {
             return I18N::strcasecmp($x->title(), $y->title());
+        };
+    }
+
+    /**
+     * A function to sort footers
+     *
+     * @return Closure
+     */
+    private static function footerSorter(): Closure
+    {
+        return function (ModuleFooterInterface $x, ModuleFooterInterface $y): int {
+            return $x->getFooterOrder() <=> $y->getFooterOrder();
         };
     }
 
@@ -413,6 +455,9 @@ class Module
             });
 
         switch ($interface) {
+            case ModuleFooterInterface::class:
+                return $modules->sort(self::footerSorter());
+
             case ModuleMenuInterface::class:
                 return $modules->sort(self::menuSorter());
 

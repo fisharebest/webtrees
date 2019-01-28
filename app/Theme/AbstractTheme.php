@@ -101,138 +101,6 @@ abstract class AbstractTheme
     }
 
     /**
-     * Create a contact link for a user.
-     *
-     * @param User $user
-     *
-     * @return string
-     */
-    public function contactLink(User $user): string
-    {
-        $method = $user->getPreference('contactmethod');
-
-        switch ($method) {
-            case 'none':
-                return '';
-            case 'mailto':
-                return '<a href="mailto:' . e($user->getEmail()) . '">' . e($user->getRealName()) . '</a>';
-            default:
-                $url = route(Auth::check() ? 'message' : 'contact', [
-                    'ged' => $this->tree->name(),
-                    'to'  => $user->getUserName(),
-                    'url' => $this->request->getRequestUri(),
-                ]);
-
-                return '<a href="' . e($url) . '">' . e($user->getRealName()) . '</a>';
-        }
-    }
-
-    /**
-     * Create contact link for both technical and genealogy support.
-     *
-     * @param User $user
-     *
-     * @return string
-     */
-    public function contactLinkEverything(User $user): string
-    {
-        return I18N::translate('For technical support or genealogy questions contact %s.', $this->contactLink($user));
-    }
-
-    /**
-     * Create contact link for genealogy support.
-     *
-     * @param User $user
-     *
-     * @return string
-     */
-    public function contactLinkGenealogy(User $user): string
-    {
-        return I18N::translate('For help with genealogy questions contact %s.', $this->contactLink($user));
-    }
-
-    /**
-     * Create contact link for technical support.
-     *
-     * @param User $user
-     *
-     * @return string
-     */
-    public function contactLinkTechnical(User $user): string
-    {
-        return I18N::translate('For technical support and information contact %s.', $this->contactLink($user));
-    }
-
-    /**
-     * Create contact links for the page footer.
-     *
-     * @return string
-     */
-    public function contactLinks()
-    {
-        $contact_user   = User::find((int) $this->tree->getPreference('CONTACT_USER_ID'));
-        $webmaster_user = User::find((int) $this->tree->getPreference('WEBMASTER_USER_ID'));
-
-        if ($contact_user instanceof User && $contact_user === $webmaster_user) {
-            return $this->contactLinkEverything($contact_user);
-        }
-
-        if ($contact_user instanceof User && $webmaster_user instanceof User) {
-            return $this->contactLinkGenealogy($contact_user) . '<br>' . $this->contactLinkTechnical($webmaster_user);
-        }
-
-        if ($contact_user instanceof User) {
-            return $this->contactLinkGenealogy($contact_user);
-        }
-
-        if ($webmaster_user instanceof User) {
-            return $this->contactLinkTechnical($webmaster_user);
-        }
-
-        return '';
-    }
-
-    /**
-     * Create a cookie warning.
-     *
-     * @return string
-     */
-    public function cookieWarning()
-    {
-        // Do not track?
-        if ($this->request->server->get('HTTP_DNT', '')) {
-            return '';
-        }
-
-        // Cookies accepted?
-        if ($this->request->cookies->get('cookie', '')) {
-            return '';
-        }
-
-        // Not using trackers or analytics?
-        if (Site::getPreference('GOOGLE_ANALYTICS_ID') !== '1' && Site::getPreference('PIWIK_SITE_ID') !== '1' && Site::getPreference('STATCOUNTER_PROJECT_ID') !== '1') {
-            return '';
-        }
-
-        return
-            '<div class="wt-cookie-warning">' .
-            I18N::translate('Cookies') . ' - ' .
-            I18N::translate('This website uses cookies to learn about visitor behaviour.') . ' ' .
-            '<button onclick="document.cookie=\'cookie=1\'; this.parentNode.classList.add(\'hidden\');">' . I18N::translate('continue') . '</button>' .
-            '</div>';
-    }
-
-    /**
-     * Create the <DOCTYPE> tag.
-     *
-     * @return string
-     */
-    public function doctype(): string
-    {
-        return '<!DOCTYPE html>';
-    }
-
-    /**
      * Add markup to a flash message.
      *
      * @param stdClass $message
@@ -262,20 +130,6 @@ abstract class AbstractTheme
 
         if ($html) {
             return '<div class="flash-messages">' . $html . '</div>';
-        }
-
-        return '';
-    }
-
-    /**
-     * Add markup to the contact links.
-     *
-     * @return string
-     */
-    public function formatContactLinks()
-    {
-        if ($this->tree) {
-            return '<div class="wt-contact-links">' . $this->contactLinks() . '</div>';
         }
 
         return '';
@@ -658,16 +512,6 @@ abstract class AbstractTheme
         $this->tree    = $tree;
 
         $this->hookAfterInit();
-    }
-
-    /**
-     * A small "powered by webtrees" logo for the footer.
-     *
-     * @return string
-     */
-    public function logoPoweredBy(): string
-    {
-        return '<a href="' . e(Webtrees::URL) . '" class="wt-powered-by-webtrees" dir="ltr">' . e(Webtrees::NAME) . '</a>';
     }
 
     /**

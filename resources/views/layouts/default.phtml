@@ -4,6 +4,7 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Module; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface; ?>
+<?php use Fisharebest\Webtrees\Module\ModuleFooterInterface; ?>
 <?php use Fisharebest\Webtrees\Theme; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 <?php use Fisharebest\Webtrees\Webtrees; ?>
@@ -119,21 +120,7 @@
 
         <footer class="wt-footer-container">
             <div class="wt-footer-content container d-print-none">
-                <?= Theme::theme()->formatContactLinks() ?>
-                <?= Theme::theme()->logoPoweredBy() ?>
-
-                <?php if ($page_hits ?? 0 > 0) : ?>
-                <div class="wt-page-views">
-                    <?= I18N::plural(
-                        'This page has been viewed %s time.',
-                        'This page has been viewed %s times.',
-                        $page_hits,
-                        '<span class="odometer">' . I18N::digits($page_hits) . '</span>'
-                    ) ?>
-                </div>
-                <?php endif ?>
-
-                <?= Theme::theme()->cookieWarning()?>
+                <?= Module::findByInterface(ModuleFooterInterface::class)->map(function (ModuleFooterInterface $module) use ($tree): string { return app()->dispatch($module, 'getFooter'); })->implode('') ?>
             </div>
         </footer>
 

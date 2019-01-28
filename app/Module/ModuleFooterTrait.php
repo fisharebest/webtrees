@@ -17,58 +17,53 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Menu;
-use Fisharebest\Webtrees\Tree;
-
 /**
- * Trait ModuleMenuTrait - default implementation of ModuleMenuInterface
+ * Trait ModuleFooterTrait - default implementation of ModuleFooterInterface
  */
-trait ModuleMenuTrait
+trait ModuleFooterTrait
 {
-    /** @var int The default position for this menu.  It can be changed in the control panel. */
-    protected $menu_order = 0;
+    /** @var int The default position for this footer.  It can be changed in the control panel. */
+    protected $footer_order = 0;
 
     /**
-     * Users change change the order of menus using the control panel.
+     * Users change change the order of footers using the control panel.
      *
-     * @param int $menu_order
+     * @param int $footer_order
      *
      * @return void
      */
-    public function setMenuOrder(int $menu_order): void
+    public function setFooterOrder(int $footer_order): void
     {
-        $this->menu_order = $menu_order;
+        $this->footer_order = $footer_order;
     }
 
     /**
-     * Users change change the order of menus using the control panel.
+     * Users change change the order of footers using the control panel.
      *
      * @return int
      */
-    public function getMenuOrder(): int
+    public function getFooterOrder(): int
     {
-        return $this->menu_order ?? $this->defaultMenuOrder();
+        return $this->footer_order ?? $this->defaultFooterOrder();
     }
 
     /**
-     * The default position for this menu.
+     * The default position for this footer.
      *
      * @return int
      */
-    public function defaultMenuOrder(): int
+    public function defaultFooterOrder(): int
     {
         return 9999;
     }
 
     /**
-     * A menu, to be added to the main application menu.
+     * A footer, to be added at the bottom of every page.
      *
-     * @param Tree $tree
-     *
-     * @return Menu|null
+     * @return string
      */
-    public function getMenu(Tree $tree): ?Menu
+    public function getFooter(): string
     {
-        return null;
+        return '';
     }
 }

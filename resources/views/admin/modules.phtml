@@ -5,6 +5,7 @@
 <?php use Fisharebest\Webtrees\Module\ModuleChartInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleConfigInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleCustomInterface; ?>
+<?php use Fisharebest\Webtrees\Module\ModuleFooterInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleMenuInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleReportInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleSidebarInterface; ?>
@@ -74,6 +75,10 @@
                 <th title="<?= I18N::translate('Reports') ?>">
                     <?= view('icons/report') ?>
                     <span class="sr-only"><?= I18N::translate('Reports') ?></span>
+                </th>
+                <th title="<?= I18N::translate('Footers') ?>">
+                    <?= view('icons/footer') ?>
+                    <span class="sr-only"><?= I18N::translate('Footers') ?></span>
                 </th>
                 <th title="<?= I18N::translate('Tracking and analytics') ?>">
                     <?= view('icons/analytics') ?>
@@ -180,6 +185,14 @@
                         <?php if ($module instanceof ModuleReportInterface) : ?>
                             <?= view('icons/report') ?>
                             <span class="sr-only"><?= I18N::translate('Report') ?></span>
+                        <?php else : ?>
+                            -
+                        <?php endif ?>
+                    </td>
+                    <td class="text-center text-muted" title="<?= I18N::translate('Footer') ?>">
+                        <?php if ($module instanceof ModuleFooterInterface) : ?>
+                            <?= view('icons/footer') ?>
+                            <span class="sr-only"><?= I18N::translate('Footer') ?></span>
                         <?php else : ?>
                             -
                         <?php endif ?>

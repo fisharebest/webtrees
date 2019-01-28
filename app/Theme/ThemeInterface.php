@@ -30,29 +30,6 @@ use Symfony\Component\HttpFoundation\Request;
 interface ThemeInterface
 {
     /**
-     * Create a contact link for a user.
-     *
-     * @param User $user
-     *
-     * @return string
-     */
-    public function contactLink(User $user): string;
-
-    /**
-     * Create a cookie warning.
-     *
-     * @return string
-     */
-    public function cookieWarning();
-
-    /**
-     * Add markup to the contact links.
-     *
-     * @return string
-     */
-    public function formatContactLinks();
-
-    /**
      * Display an icon for this fact.
      *
      * @param Fact $fact
@@ -121,13 +98,6 @@ interface ThemeInterface
      * @return Menu[]
      */
     public function individualBoxMenu(Individual $individual): array;
-
-    /**
-     * A small "powered by webtrees" logo for the footer.
-     *
-     * @return string
-     */
-    public function logoPoweredBy(): string;
 
     /**
      * Themes menu.
