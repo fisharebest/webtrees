@@ -146,7 +146,7 @@ class TreeView
     {
         $chart_url = route('module', [
             'module' => 'tree',
-            'action' => 'Treeview',
+            'action' => 'Chart',
             'xref'   => $individual->xref(),
             'ged'    => $individual->tree()->name(),
         ]);
