@@ -170,7 +170,7 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
             ->where('gedcom_id', '=', $this->tree->id())
             ->where('page_name', '=', $page)
             ->where('page_parameter', '=', $parameter)
-            ->value('page_count');;
+            ->value('page_count');
 
         $count++;
 
