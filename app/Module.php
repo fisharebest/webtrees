@@ -329,23 +329,6 @@ class Module
     }
 
     /**
-     * Boot all the modules.
-     */
-    public static function boot(): void
-    {
-        foreach (self::all() as $module) {
-            if (method_exists($module, 'boot')) {
-                try {
-                    app()->dispatch($module, 'boot');
-                } catch (Throwable $ex) {
-                    $message = '<pre>' . e($ex->getMessage()) . "\n" . e($ex->getTraceAsString()) . '</pre>';
-                    FlashMessages::addMessage($message, 'danger');
-                }
-            }
-        }
-    }
-
-    /**
      * Load a module in a separate scope, to prevent it from modifying local variables.
      *
      * @param string $filename

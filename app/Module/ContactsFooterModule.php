@@ -39,6 +39,20 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
     protected $user;
 
     /**
+     * Dependency injection.
+     *
+     * @param Tree|null $tree
+     * @param User      $user
+     * @param Request   $request
+     */
+    public function __construct(?Tree $tree, User $user, Request $request)
+    {
+        $this->tree    = $tree;
+        $this->user    = $user;
+        $this->request = $request;
+    }
+
+    /**
      * How should this module be labelled on tabs, footers, etc.?
      *
      * @return string
@@ -60,21 +74,7 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
         return I18N::translate('A link to the site contacts.');
     }
 
-    /**
-     * Dependency injection.
-     *
-     * @param Tree|null $tree
-     * @param User      $user
-     * @param Request   $request
-     */
-    public function boot(?Tree $tree, User $user, Request $request): void
-    {
-        $this->tree    = $tree;
-        $this->user    = $user;
-        $this->request = $request;
-    }
-
-    /**
+   /**
      * The default position for this footer.  It can be changed in the control panel.
      *
      * @return int

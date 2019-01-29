@@ -41,6 +41,16 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
     ];
 
     /**
+     * Dependency injection.
+     *
+     * @param Request $request
+     */
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+    }
+
+    /**
      * How should this module be labelled on tabs, footers, etc.?
      *
      * @return string
@@ -60,16 +70,6 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
     {
         /* I18N: Description of the “Cookie warning” module */
         return I18N::translate('Tell visitors why this site uses cookies.');
-    }
-
-    /**
-     * Dependency injection.
-     *
-     * @param Request $request
-     */
-    public function boot(Request $request): void
-    {
-        $this->request = $request;
     }
 
     /**

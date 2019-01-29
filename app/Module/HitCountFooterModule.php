@@ -57,6 +57,45 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
     protected $page_hits = 0;
 
     /**
+     * Dependency injection.
+     *
+     * @param Tree|null $tree
+     * @param User      $user
+     * @param Request   $request
+     */
+    public function __construct(?Tree $tree, User $user, Request $request)
+    {
+        $this->tree    = $tree;
+        $this->user    = $user;
+        $this->request = $request;
+
+        if ($this->tree !== null && $this->tree->getPreference('SHOW_COUNTER')) {
+            $route = $request->get('route');
+
+            $page_name = self::PAGE_NAMES[$route] ?? '';
+
+            switch ($route) {
+                case 'family':
+                case 'individual':
+                case 'media':
+                case 'note':
+                case 'repository':
+                case 'source':
+                    $this->page_hits = $this->countHit($page_name, $request->get('xref', ''));
+                    break;
+
+                case 'tree-page':
+                    $this->page_hits = $this->countHit($page_name, 'gedcom:' . $this->tree->id());
+                    break;
+
+                case 'user-page':
+                    $this->page_hits = $this->countHit($page_name, 'user:' . $this->user->id());
+                    break;
+            }
+        }
+    }
+
+    /**
      * How should this module be labelled on tabs, footers, etc.?
      *
      * @return string
@@ -76,45 +115,6 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
     {
         /* I18N: Description of the “Hit counters” module */
         return I18N::translate('Count the visits to each page');
-    }
-
-    /**
-     * Dependency injection.
-     *
-     * @param Tree|null $tree
-     * @param User      $user
-     * @param Request   $request
-     */
-    public function boot(?Tree $tree, User $user, Request $request): void
-    {
-        $this->tree    = $tree;
-        $this->user    = $user;
-        $this->request = $request;
-
-        if ($this->tree !== null && $this->tree->getPreference('SHOW_COUNTER')) {
-            $route = $request->get('route');
-
-            $page_name = self::PAGE_NAMES[$route] ?? '';
-
-            switch ($route) {
-                case 'family':
-                case 'individual':
-                case 'media':
-                case 'note':
-                case 'repository':
-                case 'source':
-                $this->page_hits = $this->countHit($page_name, $request->get('xref', ''));
-                    break;
-
-                case 'tree-page':
-                    $this->page_hits = $this->countHit($page_name, 'gedcom:' . $this->tree->id());
-                    break;
-
-                case 'user-page':
-                    $this->page_hits = $this->countHit($page_name, 'user:' . $this->user->id());
-                    break;
-            }
-        }
     }
 
     /**

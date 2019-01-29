@@ -24,6 +24,7 @@ use Illuminate\Cache\ArrayStore;
 use Illuminate\Cache\Repository;
 use Illuminate\Database\Capsule\Manager as DB;
 use function basename;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Base class for unit tests
@@ -69,6 +70,14 @@ class TestCase extends \PHPUnit\Framework\TestCase
         // Use an array cache for database calls, etc.
         app()->instance('cache.array', new Repository(new ArrayStore()));
 
+        app()->bind(Tree::class, function () {
+            return null;
+        });
+
+        app()->instance(User::class, User::visitor());
+
+        app()->instance(Request::class, Request::createFromGlobals());
+
         defined('WT_ROOT') || define('WT_ROOT', dirname(__DIR__) . '/');
         defined('WT_BASE_URL') || define('WT_BASE_URL', 'http://localhost/');
         defined('WT_DATA_DIR') || define('WT_DATA_DIR', WT_ROOT . 'data/');
@@ -76,8 +85,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
         if (static::$uses_database) {
             DB::connection()->beginTransaction();
-
-            Module::boot();
         }
     }
 
