@@ -64,32 +64,6 @@ abstract class AbstractTheme
     protected $tree;
 
     /**
-     * Custom themes should place their initialization code in the function hookAfterInit(), not in
-     * the constructor, as all themes get constructed - whether they are used or not.
-     */
-    final public function __construct()
-    {
-    }
-
-    /**
-     * Create accessibility links for the header.
-     * "Skip to content" allows keyboard only users to navigate over the headers without
-     * pressing TAB many times.
-     *
-     * @return string
-     */
-    public function accessibilityLinks(): string
-    {
-        return
-            '<div class="wt-accessibility-links">' .
-            '<a class="sr-only sr-only-focusable btn btn-info btn-sm" href="#content">' .
-            /* I18N: Skip over the headers and menus, to the main content of the page */
-            I18N::translate('Skip to content') .
-            '</a>' .
-            '</div>';
-    }
-
-    /**
      * Where are our CSS, JS and other assets?
      *
      * @deprecated - use the constant directly
@@ -98,55 +72,6 @@ abstract class AbstractTheme
     public function assetUrl(): string
     {
         return self::ASSET_DIR;
-    }
-
-    /**
-     * Add markup to a flash message.
-     *
-     * @param stdClass $message
-     *
-     * @return string
-     */
-    protected function flashMessageContainer(stdClass $message): string
-    {
-        return $this->htmlAlert($message->text, $message->status, true);
-    }
-
-    /**
-     * Create a container for messages that are "flashed" to the session
-     * on one request, and displayed on another. If there are many messages,
-     * the container may need a max-height and scroll-bar.
-     *
-     * @param stdClass[] $messages
-     *
-     * @return string
-     */
-    protected function flashMessagesContainer(array $messages)
-    {
-        $html = '';
-        foreach ($messages as $message) {
-            $html .= $this->flashMessageContainer($message);
-        }
-
-        if ($html) {
-            return '<div class="flash-messages">' . $html . '</div>';
-        }
-
-        return '';
-    }
-
-    /**
-     * Create a pending changes link for the page footer.
-     *
-     * @return string
-     */
-    public function formatPendingChangesLink()
-    {
-        if ($this->pendingChangesExist()) {
-            return '<div class="pending-changes-link">' . $this->pendingChangesLink() . '</div>';
-        }
-
-        return '';
     }
 
     /**
@@ -184,33 +109,6 @@ abstract class AbstractTheme
      */
     public function hookAfterInit()
     {
-    }
-
-    /**
-     * Add HTML markup to create an alert
-     *
-     * @param string $html        The content of the alert
-     * @param string $level       One of 'success', 'info', 'warning', 'danger'
-     * @param bool   $dismissible If true, add a close button.
-     *
-     * @return string
-     */
-    public function htmlAlert($html, $level, $dismissible)
-    {
-        if ($dismissible) {
-            return
-                '<div class="alert alert-' . $level . ' alert-dismissible" role="alert">' .
-                '<button type="button" class="close" data-dismiss="alert" aria-label="' . I18N::translate('close') . '">' .
-                '<span aria-hidden="true">&times;</span>' .
-                '</button>' .
-                $html .
-                '</div>';
-        }
-
-        return
-            '<div class="alert alert-' . $level . '" role="alert">' .
-            $html .
-            '</div>';
     }
 
     /**
@@ -938,20 +836,6 @@ abstract class AbstractTheme
     }
 
     /**
-     * Format the secondary menu.
-     *
-     * @param Menu[] $menus
-     *
-     * @return string
-     */
-    public function secondaryMenuContent(array $menus): string
-    {
-        return implode('', array_map(function (Menu $menu): string {
-            return $menu->bootstrap4();
-        }, $menus));
-    }
-
-    /**
      * A list of CSS files to include for this page.
      *
      * @return string[]
@@ -979,16 +863,4 @@ abstract class AbstractTheme
      * @return string
      */
     abstract public function themeName(): string;
-
-    /**
-     * Create the <title> tag.
-     *
-     * @param string $title
-     *
-     * @return string
-     */
-    protected function title($title): string
-    {
-        return '<title>' . e($title) . '</title>';
-    }
 }
