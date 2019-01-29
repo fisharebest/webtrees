@@ -36,7 +36,7 @@
                         <span title="<?= e($module->description()) ?>">
                             <?= $module->title() ?>
                         </span>
-                        <?php if ($module instanceof ModuleConfigInterface) : ?>
+                        <?php if ($module instanceof ModuleConfigInterface && $module->isEnabled()) : ?>
                             <a href="<?= e($module->getConfigLink()) ?>" title="<?= I18N::translate('Preferences') ?>">
                                 <?= view('icons/preferences') ?>
                                 <span class="sr-only">

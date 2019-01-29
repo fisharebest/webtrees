@@ -34,7 +34,14 @@ trait ModuleAnalyticsTrait
      *
      * @return Response
      */
-    abstract function viewResponse($view_name, $view_data, $status = Response::HTTP_OK): Response;
+    abstract protected function viewResponse($view_name, $view_data, $status = Response::HTTP_OK): Response;
+
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
+    abstract public function title(): string;
 
     /**
      * Should we add this tracker?
@@ -116,6 +123,11 @@ trait ModuleAnalyticsTrait
      */
     public function postAdminAction(Request $request): RedirectResponse
     {
+        foreach (array_keys($this->analyticsParameters()) as $parameter) {
+            $new_value = $request->get($parameter, '');
+            $this->setPreference($parameter, $new_value);
+        }
+
         return new RedirectResponse(route('analytics'));
     }
 }
