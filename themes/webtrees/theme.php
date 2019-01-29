@@ -19,4 +19,4 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Theme\WebtreesTheme;
 
-return new WebtreesTheme;
+return app()->make(WebtreesTheme::class);

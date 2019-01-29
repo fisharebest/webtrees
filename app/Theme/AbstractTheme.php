@@ -58,6 +58,16 @@ abstract class AbstractTheme
     protected $tree;
 
     /**
+     * @param Request   $request
+     * @param Tree|null $tree The current tree (if there is one).
+     */
+    public function __construct(Request $request, ?Tree $tree)
+    {
+        $this->request = $request;
+        $this->tree    = $tree;
+    }
+
+    /**
      * Where are our CSS, JS and other assets?
      *
      * @deprecated - use the constant directly
@@ -93,16 +103,6 @@ abstract class AbstractTheme
     public function formatSecondaryMenuItem(Menu $menu): string
     {
         return $menu->bootstrap4();
-    }
-
-    /**
-     * Allow themes to do things after initialization (since they cannot use
-     * the constructor).
-     *
-     * @return void
-     */
-    public function hookAfterInit()
-    {
     }
 
     /**
@@ -387,23 +387,6 @@ abstract class AbstractTheme
         }
 
         return $menus;
-    }
-
-    /**
-     * Initialise the theme. We cannot pass these in a constructor, as the construction
-     * happens in a theme file, and we need to be able to change it.
-     *
-     * @param Request   $request
-     * @param Tree|null $tree The current tree (if there is one).
-     *
-     * @return void
-     */
-    final public function init(Request $request, Tree $tree = null)
-    {
-        $this->request = $request;
-        $this->tree    = $tree;
-
-        $this->hookAfterInit();
     }
 
     /**
@@ -695,26 +678,6 @@ abstract class AbstractTheme
     public function pendingChangesExist(): bool
     {
         return $this->tree && $this->tree->hasPendingEdit() && Auth::isModerator($this->tree);
-    }
-
-    /**
-     * Create a pending changes link. Some themes prefer an alert/banner to a menu.
-     *
-     * @return string
-     */
-    public function pendingChangesLink(): string
-    {
-        return '<a href="' . e(route('show-pending', ['ged' => $this->tree->name()])) . '">' . $this->pendingChangesLinkText() . '</a>';
-    }
-
-    /**
-     * Text to use in the pending changes link.
-     *
-     * @return string
-     */
-    public function pendingChangesLinkText(): string
-    {
-        return I18N::translate('There are pending changes for you to moderate.');
     }
 
     /**

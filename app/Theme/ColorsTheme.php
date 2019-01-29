@@ -22,6 +22,8 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * The colors theme.
@@ -42,10 +44,13 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface
     protected $palette;
 
     /**
-     * Create resources for the colors theme.
+     * @param Request   $request
+     * @param Tree|null $tree The current tree (if there is one).
      */
-    public function hookAfterInit()
+    public function __construct(Request $request, ?Tree $tree)
     {
+        parent::__construct($request, $tree);
+
         $this->palettes = [
             /* I18N: The name of a colour-scheme */
             'aquamarine'       => I18N::translate('Aqua Marine'),

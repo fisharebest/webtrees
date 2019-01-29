@@ -243,7 +243,7 @@ try {
     }
     foreach (Theme::installedThemes() as $theme) {
         if ($theme->themeId() === $theme_id) {
-            Theme::theme($theme)->init($request, $tree);
+            Theme::theme($theme);
             // Remember this setting
             if (Site::getPreference('ALLOW_USER_THEMES') === '1') {
                 Session::put('theme_id', $theme_id);

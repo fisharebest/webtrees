@@ -19,4 +19,4 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Theme\FabTheme;
 
-return new FabTheme;
+return app()->make(FabTheme::class);

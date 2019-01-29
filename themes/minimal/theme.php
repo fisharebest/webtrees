@@ -19,4 +19,4 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Theme\MinimalTheme;
 
-return new MinimalTheme;
+return app()->make(MinimalTheme::class);

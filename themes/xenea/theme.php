@@ -19,4 +19,4 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Theme\XeneaTheme;
 
-return new XeneaTheme;
+return app()->make(XeneaTheme::class);

@@ -80,7 +80,7 @@ class Theme
      */
     public static function theme(ThemeInterface $theme = null): ThemeInterface
     {
-        self::$theme = $theme ?? self::$theme ?? new WebtreesTheme();
+        self::$theme = $theme ?? self::$theme ?? app()->make(WebtreesTheme::class);
 
         return self::$theme;
     }

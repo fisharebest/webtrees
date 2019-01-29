@@ -19,4 +19,4 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Theme\CloudsTheme;
 
-return new CloudsTheme;
+return app()->make(CloudsTheme::class);
