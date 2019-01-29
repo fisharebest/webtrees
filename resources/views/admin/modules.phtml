@@ -5,6 +5,7 @@
 <?php use Fisharebest\Webtrees\Module\ModuleChartInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleConfigInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleCustomInterface; ?>
+<?php use Fisharebest\Webtrees\Module\ModuleExternalUrlInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleFooterInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleMenuInterface; ?>
@@ -119,6 +120,12 @@
                                     <?= $module::CUSTOM_WEBSITE ?>
                                 </a>
                             <?php endif ?>
+                        <?php endif ?>
+                        <?php if ($module instanceof ModuleExternalUrlInterface) : ?>
+                            <br>
+                            <a href="<?= e($module->externalUrl()) ?>">
+                                <?= e($module->externalUrl()) ?>
+                            </a>
                         <?php endif ?>
                     </td>
                     <td class="text-center text-muted" title="<?= I18N::translate('Preferences') ?>">

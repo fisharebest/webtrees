@@ -20,9 +20,11 @@ namespace Fisharebest\Webtrees\Module;
 /**
  * Class StatcounterModule - add support for statcounter.
  */
-class StatcounterModule extends AbstractModule implements ModuleAnalyticsInterface
+class StatcounterModule extends AbstractModule implements ModuleAnalyticsInterface, ModuleConfigInterface, ModuleExternalUrlInterface
 {
     use ModuleAnalyticsTrait;
+    use ModuleConfigTrait;
+    use ModuleExternalUrlTrait;
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
@@ -41,7 +43,7 @@ class StatcounterModule extends AbstractModule implements ModuleAnalyticsInterfa
      */
     public function analyticsFormFields(): string
     {
-        return view('admin/analytics/statcounter-form', $this->analyticsParameters());
+        return view('modules/statcounter/form', $this->analyticsParameters());
     }
 
     /**
@@ -49,7 +51,7 @@ class StatcounterModule extends AbstractModule implements ModuleAnalyticsInterfa
      *
      * @return string
      */
-    public function analyticsHomePageUrl(): string
+    public function externalUrl(): string
     {
         return 'https://statcounter.com';
     }
@@ -76,6 +78,6 @@ class StatcounterModule extends AbstractModule implements ModuleAnalyticsInterfa
      */
     public function analyticsSnippet(array $parameters): string
     {
-        return view('admin/analytics/statcounter-snippet', $parameters);
+        return view('modules/statcounter/snippet', $parameters);
     }
 }

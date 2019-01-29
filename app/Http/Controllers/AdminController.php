@@ -32,7 +32,16 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
+use Fisharebest\Webtrees\Module\ModuleBlockInterface;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
+use Fisharebest\Webtrees\Module\ModuleFooterInterface;
+use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
+use Fisharebest\Webtrees\Module\ModuleMenuInterface;
+use Fisharebest\Webtrees\Module\ModuleReportInterface;
+use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
+use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\DatatablesService;
@@ -80,33 +89,49 @@ class AdminController extends AbstractBaseController
         HousekeepingService $housekeeping_service,
         UpgradeService $upgrade_service,
         Admin\ModuleController $module_controller
-    ): Response {
+    ): Response
+    {
         $filesystem      = new Filesystem(new Local(WT_ROOT));
         $files_to_delete = $housekeeping_service->deleteOldWebtreesFiles($filesystem);
         $deleted_modules = $module_controller->deletedModuleNames();
 
+        // Analytics modules have their own configl so don't show them twice.
+        $config_modules = Module::findByInterface(ModuleConfigInterface::class, true)
+            ->filter(function (ModuleConfigInterface $module): bool {
+                return !$module instanceof ModuleAnalyticsInterface;
+            });
+
         return $this->viewResponse('admin/control-panel', [
-            'title'           => I18N::translate('Control panel'),
-            'server_warnings' => $this->serverWarnings(),
-            'latest_version'  => $upgrade_service->latestVersion(),
-            'all_users'       => User::all(),
-            'administrators'  => User::administrators(),
-            'managers'        => User::managers(),
-            'moderators'      => User::moderators(),
-            'unapproved'      => User::unapproved(),
-            'unverified'      => User::unverified(),
-            'all_trees'       => Tree::getAll(),
-            'changes'         => $this->totalChanges(),
-            'individuals'     => $this->totalIndividuals(),
-            'families'        => $this->totalFamilies(),
-            'sources'         => $this->totalSources(),
-            'media'           => $this->totalMediaObjects(),
-            'repositories'    => $this->totalRepositories(),
-            'notes'           => $this->totalNotes(),
-            'files_to_delete' => $files_to_delete,
-            'all_modules'     => Module::all(),
-            'deleted_modules' => $deleted_modules,
-            'config_modules'  => Module::findByInterface(ModuleConfigInterface::class),
+            'title'             => I18N::translate('Control panel'),
+            'server_warnings'   => $this->serverWarnings(),
+            'latest_version'    => $upgrade_service->latestVersion(),
+            'all_users'         => User::all(),
+            'administrators'    => User::administrators(),
+            'managers'          => User::managers(),
+            'moderators'        => User::moderators(),
+            'unapproved'        => User::unapproved(),
+            'unverified'        => User::unverified(),
+            'all_trees'         => Tree::getAll(),
+            'changes'           => $this->totalChanges(),
+            'individuals'       => $this->totalIndividuals(),
+            'families'          => $this->totalFamilies(),
+            'sources'           => $this->totalSources(),
+            'media'             => $this->totalMediaObjects(),
+            'repositories'      => $this->totalRepositories(),
+            'notes'             => $this->totalNotes(),
+            'files_to_delete'   => $files_to_delete,
+            'all_modules'       => Module::all(),
+            'deleted_modules'   => $deleted_modules,
+            'analytics_modules' => Module::findByInterface(ModuleAnalyticsInterface::class, true),
+            'block_modules'     => Module::findByInterface(ModuleBlockInterface::class, true),
+            'chart_modules'     => Module::findByInterface(ModuleChartInterface::class, true),
+            'config_modules'    => $config_modules,
+            'footer_modules'    => Module::findByInterface(ModuleFooterInterface::class, true),
+            'history_modules'   => Module::findByInterface(ModuleHistoricEventsInterface::class, true),
+            'menu_modules'      => Module::findByInterface(ModuleMenuInterface::class, true),
+            'report_modules'    => Module::findByInterface(ModuleReportInterface::class, true),
+            'sidebar_modules'   => Module::findByInterface(ModuleSidebarInterface::class, true),
+            'tab_modules'       => Module::findByInterface(ModuleTabInterface::class, true),
         ]);
     }
 

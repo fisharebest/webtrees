@@ -24,9 +24,11 @@ use Fisharebest\Webtrees\User;
 /**
  * Class GoogleAnalyticsModule - add support for Google analytics.
  */
-class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInterface
+class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInterface, ModuleConfigInterface, ModuleExternalUrlInterface
 {
     use ModuleAnalyticsTrait;
+    use ModuleConfigTrait;
+    use ModuleExternalUrlTrait;
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
@@ -45,7 +47,7 @@ class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
      */
     public function analyticsFormFields(): string
     {
-        return view('admin/analytics/google-analytics-form', $this->analyticsParameters());
+        return view('modules/google-analytics/form', $this->analyticsParameters());
     }
 
     /**
@@ -53,7 +55,7 @@ class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
      *
      * @return string
      */
-    public function analyticsHomePageUrl(): string
+    public function externalUrl(): string
     {
         return 'https://www.google.com/analytics';
     }
@@ -88,6 +90,6 @@ class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
             'dimension2' => $tree instanceof Tree ? Auth::accessLevel($tree, $user) : '-',
         ];
 
-        return view('admin/analytics/google-analytics-snippet', $parameters);
+        return view('modules/google-analytics/snippet', $parameters);
     }
 }

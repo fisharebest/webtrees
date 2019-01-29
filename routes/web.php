@@ -24,17 +24,20 @@ $routes = [];
 // Admin routes.
 if (Auth::isAdmin()) {
     $routes += [
-        'GET:analytics'                       => 'Admin\\AnalyticsController@list',
         'GET:analytics-edit'                  => 'Admin\\AnalyticsController@edit',
         'POST:analytics-edit'                 => 'Admin\\AnalyticsController@save',
         'GET:modules'                         => 'Admin\\ModuleController@list',
         'POST:modules'                        => 'Admin\\ModuleController@update',
+        'GET:analytics'                       => 'Admin\\ModuleController@listAnalytics',
+        'POST:analytics'                      => 'Admin\\ModuleController@updateAnalytics',
         'GET:blocks'                          => 'Admin\\ModuleController@listBlocks',
         'POST:blocks'                         => 'Admin\\ModuleController@updateBlocks',
         'GET:charts'                          => 'Admin\\ModuleController@listCharts',
         'POST:charts'                         => 'Admin\\ModuleController@updateCharts',
         'GET:footers'                         => 'Admin\\ModuleController@listFooters',
         'POST:footers'                        => 'Admin\\ModuleController@updateFooters',
+        'GET:history'                         => 'Admin\\ModuleController@listHistory',
+        'POST:history'                        => 'Admin\\ModuleController@updateHistory',
         'GET:menus'                           => 'Admin\\ModuleController@listMenus',
         'POST:menus'                          => 'Admin\\ModuleController@updateMenus',
         'GET:reports'                         => 'Admin\\ModuleController@listReports',

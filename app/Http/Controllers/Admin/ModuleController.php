@@ -20,9 +20,11 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
+use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
@@ -90,9 +92,27 @@ class ModuleController extends AbstractAdminController
     /**
      * @return Response
      */
+    public function listAnalytics(): Response
+    {
+        return $this->listComponents(
+            ModuleAnalyticsInterface::class,
+            'analytics',
+            I18N::translate('Tracking and analytics'),
+            I18N::translate('If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically.')
+        );
+    }
+
+    /**
+     * @return Response
+     */
     public function listBlocks(): Response
     {
-        return $this->listComponents(ModuleBlockInterface::class, 'block', I18N::translate('Blocks'));
+        return $this->listComponents(
+            ModuleBlockInterface::class,
+            'block',
+            I18N::translate('Blocks'),
+            ''
+        );
     }
 
     /**
@@ -100,7 +120,12 @@ class ModuleController extends AbstractAdminController
      */
     public function listCharts(): Response
     {
-        return $this->listComponents(ModuleChartInterface::class, 'chart', I18N::translate('Charts'));
+        return $this->listComponents(
+            ModuleChartInterface::class,
+            'chart',
+            I18N::translate('Charts'),
+            ''
+        );
     }
 
     /**
@@ -108,7 +133,25 @@ class ModuleController extends AbstractAdminController
      */
     public function listFooters(): Response
     {
-        return $this->listComponents(ModuleFooterInterface::class, 'footer', I18N::translate('Footers'));
+        return $this->listComponents(
+            ModuleFooterInterface::class,
+            'footer',
+            I18N::translate('Footers'),
+            ''
+        );
+    }
+
+    /**
+     * @return Response
+     */
+    public function listHistory(): Response
+    {
+        return $this->listComponents(
+            ModuleHistoricEventsInterface::class,
+            'history',
+            I18N::translate('Historic events'),
+            ''
+        );
     }
 
     /**
@@ -116,7 +159,12 @@ class ModuleController extends AbstractAdminController
      */
     public function listMenus(): Response
     {
-        return $this->listComponents(ModuleMenuInterface::class, 'menu', I18N::translate('Menus'));
+        return $this->listComponents(
+            ModuleMenuInterface::class,
+            'menu',
+            I18N::translate('Menus'),
+            ''
+        );
     }
 
     /**
@@ -124,7 +172,12 @@ class ModuleController extends AbstractAdminController
      */
     public function listReports(): Response
     {
-        return $this->listComponents(ModuleReportInterface::class, 'report', I18N::translate('Reports'));
+        return $this->listComponents(
+            ModuleReportInterface::class,
+            'report',
+            I18N::translate('Reports'),
+            ''
+        );
     }
 
     /**
@@ -132,7 +185,12 @@ class ModuleController extends AbstractAdminController
      */
     public function listSidebars(): Response
     {
-        return $this->listComponents(ModuleSidebarInterface::class, 'sidebar', I18N::translate('Sidebars'));
+        return $this->listComponents(
+            ModuleSidebarInterface::class,
+            'sidebar',
+            I18N::translate('Sidebars'),
+            ''
+        );
     }
 
     /**
@@ -140,23 +198,30 @@ class ModuleController extends AbstractAdminController
      */
     public function listTabs(): Response
     {
-        return $this->listComponents(ModuleTabInterface::class, 'tab', I18N::translate('Tabs'));
+        return $this->listComponents(
+            ModuleTabInterface::class,
+            'tab',
+            I18N::translate('Tabs'),
+            ''
+        );
     }
 
     /**
      * @param string $interface
      * @param string $component
      * @param string $title
+     * @param string $description
      *
      * @return Response
      */
-    private function listComponents(string $interface, string $component, string $title): Response
+    private function listComponents(string $interface, string $component, string $title, string $description): Response
     {
         $uses_access  = in_array($component, self::COMPONENTS_WITH_ACCESS);
         $uses_sorting = in_array($component, self::COMPONENTS_WITH_SORT);
 
         return $this->viewResponse('admin/components', [
             'component'    => $component,
+            'description'  => $description,
             'modules'      => Module::findByInterface($interface, true),
             'title'        => $title,
             'trees'        => Tree::all(),
@@ -194,6 +259,20 @@ class ModuleController extends AbstractAdminController
         }
 
         return new RedirectResponse(route('modules'));
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
+    public function updateAnalytics(Request $request): RedirectResponse
+    {
+        $modules = Module::findByInterface(ModuleAnalyticsInterface::class, true);
+
+        $this->updateStatus($modules, $request);
+
+        return new RedirectResponse(route('analytics'));
     }
 
     /**
@@ -239,6 +318,20 @@ class ModuleController extends AbstractAdminController
         $this->updateOrder($modules, 'footer_order', $request);
 
         return new RedirectResponse(route('footers'));
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
+    public function updateHistory(Request $request): RedirectResponse
+    {
+        $modules = Module::findByInterface(ModuleHistoricEventsInterface::class, true);
+
+        $this->updateStatus($modules, $request);
+
+        return new RedirectResponse(route('history'));
     }
 
     /**

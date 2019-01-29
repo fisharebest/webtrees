@@ -20,9 +20,11 @@ namespace Fisharebest\Webtrees\Module;
 /**
  * Class MatomoAnalyticsModule - add support for Matomo analytics.
  */
-class MatomoAnalyticsModule extends AbstractModule implements ModuleAnalyticsInterface
+class MatomoAnalyticsModule extends AbstractModule implements ModuleAnalyticsInterface, ModuleConfigInterface, ModuleExternalUrlInterface
 {
     use ModuleAnalyticsTrait;
+    use ModuleConfigTrait;
+    use ModuleExternalUrlTrait;
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
@@ -41,7 +43,7 @@ class MatomoAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
      */
     public function analyticsFormFields(): string
     {
-        return view('admin/analytics/matomo-analytics-form', $this->analyticsParameters());
+        return view('modules/matomo-analytics/form', $this->analyticsParameters());
     }
 
     /**
@@ -49,7 +51,7 @@ class MatomoAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
      *
      * @return string
      */
-    public function analyticsHomePageUrl(): string
+    public function externalUrl(): string
     {
         return 'https://matomo.org';
     }
@@ -75,6 +77,6 @@ class MatomoAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
      */
     public function analyticsSnippet(array $parameters): string
     {
-        return view('admin/analytics/matomo-analytics-snippet', $parameters);
+        return view('modules/matomo-analytics/snippet', $parameters);
     }
 }

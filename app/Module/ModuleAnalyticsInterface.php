@@ -17,6 +17,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 /**
  * Interface ModuleAnalyticsInterface - Classes and libraries for module system
  */
@@ -37,13 +41,6 @@ interface ModuleAnalyticsInterface extends ModuleInterface
     public function analyticsFormFields(): string;
 
     /**
-     * Home page for the service.
-     *
-     * @return string
-     */
-    public function analyticsHomePageUrl(): string;
-
-    /**
      * The parameters that need to be embedded in the snippet.
      *
      * @return string[]
@@ -58,4 +55,16 @@ interface ModuleAnalyticsInterface extends ModuleInterface
      * @return string
      */
     public function analyticsSnippet(array $parameters): string;
+
+    /**
+     * @return Response
+     */
+    public function getAdminAction(): Response;
+
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
+    public function postAdminAction(Request $request): RedirectResponse;
 }

@@ -20,9 +20,11 @@ namespace Fisharebest\Webtrees\Module;
 /**
  * Class GoogleWebmasterToolsModule - add support for Google webmaster tools.
  */
-class GoogleWebmasterToolsModule extends AbstractModule implements ModuleAnalyticsInterface
+class GoogleWebmasterToolsModule extends AbstractModule implements ModuleAnalyticsInterface, ModuleConfigInterface, ModuleExternalUrlInterface
 {
     use ModuleAnalyticsTrait;
+    use ModuleConfigTrait;
+    use ModuleExternalUrlTrait;
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
@@ -41,7 +43,7 @@ class GoogleWebmasterToolsModule extends AbstractModule implements ModuleAnalyti
      */
     public function analyticsFormFields(): string
     {
-        return view('admin/analytics/google-webmaster-form', $this->analyticsParameters());
+        return view('modules/google-webmaster-tools/form', $this->analyticsParameters());
     }
 
     /**
@@ -49,7 +51,7 @@ class GoogleWebmasterToolsModule extends AbstractModule implements ModuleAnalyti
      *
      * @return string
      */
-    public function analyticsHomePageUrl(): string
+    public function externalUrl(): string
     {
         return 'https://www.google.com/webmasters';
     }
@@ -75,6 +77,6 @@ class GoogleWebmasterToolsModule extends AbstractModule implements ModuleAnalyti
      */
     public function analyticsSnippet(array $parameters): string
     {
-        return view('admin/analytics/google-webmaster-snippet', $parameters);
+        return view('modules/google-webmaster-tools/snippet', $parameters);
     }
 }

@@ -18,13 +18,24 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
-use Illuminate\Support\Collection;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Trait ModuleAnalyticsTrait - default implementation of ModuleAnalyticsInterface
  */
 trait ModuleAnalyticsTrait
 {
+    /**
+     * @param $view_name
+     * @param $view_data
+     * @param $status
+     *
+     * @return Response
+     */
+    abstract function viewResponse($view_name, $view_data, $status = Response::HTTP_OK): Response;
+
     /**
      * Should we add this tracker?
      *
@@ -62,16 +73,6 @@ trait ModuleAnalyticsTrait
     }
 
     /**
-     * Home page for the service.
-     *
-     * @return string
-     */
-    public function analyticsHomePageURL(): string
-    {
-        return '';
-    }
-
-    /**
      * The parameters that need to be embedded in the snippet.
      *
      * @return string[]
@@ -91,5 +92,30 @@ trait ModuleAnalyticsTrait
     public function analyticsSnippet(array $parameters): string
     {
         return '';
+    }
+
+
+    /**
+     * @return Response
+     */
+    public function getAdminAction(): Response
+    {
+        $this->layout = 'layouts/administration';
+
+        return $this->viewResponse('admin/analytics-edit', [
+            'form_fields' => $this->analyticsFormFields(),
+            'preview'     => $this->analyticsSnippet($this->analyticsParameters()),
+            'title'       => $this->title(),
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
+    public function postAdminAction(Request $request): RedirectResponse
+    {
+        return new RedirectResponse(route('analytics'));
     }
 }

@@ -1,12 +1,15 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleConfigInterface;
-use Fisharebest\Webtrees\View; ?>
+<?php use Fisharebest\Webtrees\Module\ModuleExternalUrlInterface; ?>
+<?php use Fisharebest\Webtrees\Module\ModuleConfigInterface; ?>
+<?php use Fisharebest\Webtrees\View; ?>
 
 <?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('modules') => I18N::translate('Modules'), $title]]) ?>
 
 <h1><?= $title ?></h1>
+
+<p><?= $description ?></p>
 
 <form method="post">
     <?= csrf_field() ?>
@@ -39,6 +42,12 @@ use Fisharebest\Webtrees\View; ?>
                                 <span class="sr-only">
                                     <?= I18N::translate('Preferences') ?>
                                 </span>
+                            </a>
+                        <?php endif ?>
+                        <?php if ($module instanceof ModuleExternalUrlInterface) : ?>
+                            <br>
+                            <a href="<?= e($module->externalUrl()) ?>">
+                                <?= e($module->externalUrl()) ?>
                             </a>
                         <?php endif ?>
                     </th>

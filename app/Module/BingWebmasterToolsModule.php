@@ -20,9 +20,11 @@ namespace Fisharebest\Webtrees\Module;
 /**
  * Class BingWebmasterToolsModule - add support for Bing webmaster tools
  */
-class BingWebmasterToolsModule extends AbstractModule implements ModuleAnalyticsInterface
+class BingWebmasterToolsModule extends AbstractModule implements ModuleAnalyticsInterface, ModuleConfigInterface, ModuleExternalUrlInterface
 {
     use ModuleAnalyticsTrait;
+    use ModuleConfigTrait;
+    use ModuleExternalUrlTrait;
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
@@ -41,7 +43,7 @@ class BingWebmasterToolsModule extends AbstractModule implements ModuleAnalytics
      */
     public function analyticsFormFields(): string
     {
-        return view('admin/analytics/bing-webmaster-form', $this->analyticsParameters());
+        return view('modules/bing-webmaster-tools/form', $this->analyticsParameters());
     }
 
     /**
@@ -49,7 +51,7 @@ class BingWebmasterToolsModule extends AbstractModule implements ModuleAnalytics
      *
      * @return string
      */
-    public function analyticsHomePageUrl(): string
+    public function externalUrl(): string
     {
         return 'https://www.bing.com/toolbox/webmaster';
     }
@@ -75,6 +77,6 @@ class BingWebmasterToolsModule extends AbstractModule implements ModuleAnalytics
      */
     public function analyticsSnippet(array $parameters): string
     {
-        return view('admin/analytics/bing-webmaster-snippet', $parameters);
+        return view('modules/bing-webmaster-tools/snippet', $parameters);
     }
 }
