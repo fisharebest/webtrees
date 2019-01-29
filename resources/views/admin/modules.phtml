@@ -6,6 +6,7 @@
 <?php use Fisharebest\Webtrees\Module\ModuleConfigInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleCustomInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleFooterInterface; ?>
+<?php use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleMenuInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleReportInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleSidebarInterface; ?>
@@ -83,6 +84,10 @@
                 <th title="<?= I18N::translate('Tracking and analytics') ?>">
                     <?= view('icons/analytics') ?>
                     <span class="sr-only"><?= I18N::translate('Tracking and analytics') ?></span>
+                </th>
+                <th title="<?= I18N::translate('Historic events') ?>">
+                    <?= view('icons/history') ?>
+                    <span class="sr-only"><?= I18N::translate('Historic events') ?></span>
                 </th>
                 <th class="d-none" title="<?= I18N::translate('Themes') ?>">
                     <?= view('icons/theme') ?>
@@ -201,6 +206,14 @@
                         <?php if ($module instanceof ModuleAnalyticsInterface) : ?>
                             <?= view('icons/analytics') ?>
                             <span class="sr-only"><?= I18N::translate('Tracking and analytics') ?></span>
+                        <?php else : ?>
+                            -
+                        <?php endif ?>
+                    </td>
+                    <td class="text-center text-muted" title="<?= I18N::translate('Historic events') ?>">
+                        <?php if ($module instanceof ModuleHistoricEventsInterface) : ?>
+                            <?= view('icons/history') ?>
+                            <span class="sr-only"><?= I18N::translate('Historic events') ?></span>
                         <?php else : ?>
                             -
                         <?php endif ?>
