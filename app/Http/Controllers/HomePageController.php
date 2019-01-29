@@ -309,7 +309,7 @@ class HomePageController extends AbstractBaseController
     {
         $this->checkDefaultTreeBlocksExist();
 
-        $main_blocks = $this->treeBlocks(-1,'main');
+        $main_blocks = $this->treeBlocks(-1, 'main');
         $side_blocks = $this->treeBlocks(-1, 'side');
 
         $all_blocks  = $this->availableTreeBlocks();
@@ -697,7 +697,7 @@ class HomePageController extends AbstractBaseController
 
         // No default settings?  Create them.
         if (!$has_blocks) {
-            foreach (['main', 'side'] as $location ) {
+            foreach (['main', 'side'] as $location) {
                 foreach (self::DEFAULT_TREE_PAGE_BLOCKS[$location] as $block_order => $class) {
                     $module_name = Module::findByClass($class)->name();
 
@@ -744,7 +744,7 @@ class HomePageController extends AbstractBaseController
 
         // No default settings?  Create them.
         if (!$has_blocks) {
-            foreach (['main', 'side'] as $location ) {
+            foreach (['main', 'side'] as $location) {
                 foreach (self::DEFAULT_USER_PAGE_BLOCKS[$location] as $block_order => $class) {
                     $module_name = Module::findByClass($class)->name();
 
