@@ -275,9 +275,6 @@ try {
         $middleware_stack[] = CheckCsrf::class;
     }
 
-    // Boot the modules.
-    Module::boot();
-
     // Apply the middleware using the "onion" pattern.
     $pipeline = array_reduce($middleware_stack, function (Closure $next, string $middleware): Closure {
         // Create a closure to apply the middleware.
