@@ -468,16 +468,6 @@ class Tree
             }
         );
 
-        (new Builder(DB::connection()))->from('block')->insertUsing(
-            ['gedcom_id', 'location', 'block_order', 'module_name'],
-            function (Builder $query) use ($tree_id): void {
-                $query
-                    ->select([DB::raw($tree_id), 'location', 'block_order', 'module_name'])
-                    ->from('block')
-                    ->where('gedcom_id', '=', -1);
-            }
-        );
-
         // Gedcom and privacy settings
         $tree->setPreference('CONTACT_USER_ID', (string) Auth::id());
         $tree->setPreference('WEBMASTER_USER_ID', (string) Auth::id());

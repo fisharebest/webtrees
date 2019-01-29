@@ -118,20 +118,9 @@ class User
             'password'  => password_hash($password, PASSWORD_DEFAULT),
         ]);
 
-        // Set default blocks for this user
-        $user = self::findByIdentifier($user_name);
+        $user_id = (int) DB::connection()->getPdo()->lastInsertId();
 
-        (new Builder(DB::connection()))->from('block')->insertUsing(
-            ['user_id', 'location', 'block_order', 'module_name'],
-            function (Builder $query) use ($user): void {
-                $query
-                    ->select([DB::raw($user->id()), 'location', 'block_order', 'module_name'])
-                    ->from('block')
-                    ->where('user_id', '=', -1);
-            }
-        );
-
-        return $user;
+        return new static($user_id, $user_name, $real_name, $email);
     }
 
     /**
