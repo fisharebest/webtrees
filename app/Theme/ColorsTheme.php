@@ -121,7 +121,6 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface
         return array_filter([
             $this->menuPendingChanges(),
             $this->menuMyPages(),
-            $this->menuFavorites(),
             $this->menuThemes(),
             $this->menuPalette(),
             $this->menuLanguages(),

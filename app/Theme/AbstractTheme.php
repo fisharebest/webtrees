@@ -20,23 +20,17 @@ namespace Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module;
-use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\PedigreeChartModule;
-use Fisharebest\Webtrees\Module\UserFavoritesModule;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
-use Fisharebest\Webtrees\Webtrees;
-use stdClass;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -449,69 +443,6 @@ abstract class AbstractTheme
     }
 
     /**
-     * Favorites menu.
-     *
-     * @return Menu|null
-     */
-    public function menuFavorites()
-    {
-        global $controller;
-
-        $user_favorites_module = Module::findByClass(UserFavoritesModule::class);
-        $tree_favorites_module = Module::findByClass(FamilyTreeFavoritesModule::class);
-
-        $user_favorites = [];
-        if ($this->tree instanceof Tree && $user_favorites_module instanceof UserFavoritesModule && Auth::check()) {
-            $user_favorites = $user_favorites_module->getFavorites($this->tree, Auth::user());
-        }
-
-        $tree_favorites = [];
-        if ($this->tree instanceof Tree && $tree_favorites_module instanceof FamilyTreeFavoritesModule) {
-            $tree_favorites = $tree_favorites_module->getFavorites($this->tree);
-        }
-
-        $favorites = array_merge($user_favorites, $tree_favorites);
-
-        $submenus = [];
-        $records  = [];
-        foreach ($favorites as $favorite) {
-            switch ($favorite->favorite_type) {
-                case 'URL':
-                    $submenus[] = new Menu(e($favorite->title), $favorite->url);
-                    break;
-                default:
-                    $record = GedcomRecord::getInstance($favorite->xref, $this->tree);
-                    if ($record && $record->canShowName()) {
-                        $submenus[] = new Menu($record->getFullName(), $record->url());
-                        $records[]  = $record;
-                    }
-                    break;
-            }
-        }
-
-        // @TODO we no longer have a global $controller
-        if ($this->tree instanceof Tree && $user_favorites_module instanceof UserFavoritesModule && Auth::check() && isset($controller->record) && $controller->record instanceof GedcomRecord && !in_array($controller->record, $records)) {
-            $url = route('module', [
-                'module' => 'user_favorites',
-                'action' => 'AddFavorite',
-                'ged'    => $this->tree->name(),
-                'xref'   => $controller->record->xref(),
-            ]);
-
-            $submenus[] = new Menu(I18N::translate('Add to favorites'), '#', '', [
-                'data-url' => $url,
-                'onclick'  => 'jQuery.post(this.dataset.url,function() {location.reload();})',
-            ]);
-        }
-
-        if (empty($submenus)) {
-            return null;
-        }
-
-        return new Menu(I18N::translate('Favorites'), '#', 'menu-favorites', [], $submenus);
-    }
-
-    /**
      * A menu to show a list of available languages.
      *
      * @return Menu|null
@@ -789,11 +720,9 @@ abstract class AbstractTheme
     /**
      * Generate a list of items for the main menu.
      *
-     * @param Individual $individual
-     *
      * @return Menu[]
      */
-    public function primaryMenu(Individual $individual): array
+    public function primaryMenu(): array
     {
         return Module::findByComponent('menu', $this->tree, Auth::user())
             ->map(function (ModuleMenuInterface $menu): ?Menu {
@@ -827,7 +756,6 @@ abstract class AbstractTheme
         return array_filter([
             $this->menuPendingChanges(),
             $this->menuMyPages(),
-            $this->menuFavorites(),
             $this->menuThemes(),
             $this->menuLanguages(),
             $this->menuLogin(),

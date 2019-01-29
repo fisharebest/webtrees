@@ -58,13 +58,11 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface
     /**
      * Generate a list of items for the main menu.
      *
-     * @param Individual $individual
-     *
      * @return Menu[]
      */
-    public function primaryMenu(Individual $individual): array
+    public function primaryMenu(): array
     {
-        $primary_menu = parent::primaryMenu($individual);
+        $primary_menu = parent::primaryMenu();
 
         foreach ($primary_menu as $menu) {
             $submenus = $menu->getSubmenus();

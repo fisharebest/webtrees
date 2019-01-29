@@ -118,11 +118,9 @@ interface ThemeInterface
     /**
      * Generate a list of items for the main menu.
      *
-     * @param Individual $individual
-     *
      * @return Menu[]
      */
-    public function primaryMenu(Individual $individual): array;
+    public function primaryMenu(): array;
 
     /**
      * Generate a list of items for the user menu.
