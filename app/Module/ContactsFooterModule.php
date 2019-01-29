@@ -74,11 +74,11 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
         return I18N::translate('A link to the site contacts.');
     }
 
-   /**
-     * The default position for this footer.  It can be changed in the control panel.
-     *
-     * @return int
-     */
+    /**
+      * The default position for this footer.  It can be changed in the control panel.
+      *
+      * @return int
+      */
     public function defaultFooterOrder(): int
     {
         return 2;
