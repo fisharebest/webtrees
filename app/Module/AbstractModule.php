@@ -183,7 +183,7 @@ abstract class AbstractModule implements ModuleInterface
      * @param string $setting_name
      * @param string $setting_value
      *
-     * @return $this
+     * @return void
      */
     final public function setPreference(string $setting_name, string $setting_value): void
     {

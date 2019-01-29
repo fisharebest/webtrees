@@ -99,7 +99,7 @@ interface ModuleInterface
      * @param string $setting_name
      * @param string $setting_value
      *
-     * @return $this
+     * @return void
      */
     public function setPreference(string $setting_name, string $setting_value): void;
 }
