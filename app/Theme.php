@@ -17,43 +17,26 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Theme\ThemeInterface;
-use Fisharebest\Webtrees\Theme\WebtreesTheme;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Module\WebtreesTheme;
 
 /**
  * Provide access to the current theme.
  */
 class Theme
 {
-    /** @var ThemeInterface The current theme */
+    /** @var ModuleThemeInterface The current theme */
     private static $theme;
-
-    /** @var ThemeInterface[] All currently installed themes */
-    private static $installed_themes = [];
 
     /**
      * Create a list of all themes available on the system, including
      * any custom themes.
      *
-     * @return ThemeInterface[]
+     * @return ModuleThemeInterface[]
      */
     public static function installedThemes(): array
     {
-        if (empty(self::$installed_themes)) {
-            foreach (glob(WT_ROOT . '/themes/*/theme.php') as $theme_path) {
-                try {
-                    $theme = include $theme_path;
-                    // Themes beginning with an underscore are reserved for special use.
-                    if (substr_compare($theme->themeId(), '_', 0, 1) !== 0) {
-                        self::$installed_themes[] = $theme;
-                    }
-                } catch (\Exception $ex) {
-                    // Broken theme? Ignore it.
-                }
-            }
-        }
-
-        return self::$installed_themes;
+        return  Module::findByInterface(ModuleThemeInterface::class)->all();
     }
 
     /**
@@ -65,7 +48,7 @@ class Theme
     {
         $theme_names = [];
         foreach (self::installedThemes() as $theme) {
-            $theme_names[$theme->themeId()] = $theme->themeName();
+            $theme_names[$theme->name()] = $theme->title();
         }
 
         return $theme_names;
@@ -74,11 +57,11 @@ class Theme
     /**
      * The currently active theme
      *
-     * @param ThemeInterface|null $theme
+     * @param ModuleThemeInterface|null $theme
      *
-     * @return ThemeInterface
+     * @return ModuleThemeInterface
      */
-    public static function theme(ThemeInterface $theme = null): ThemeInterface
+    public static function theme(ModuleThemeInterface $theme = null): ModuleThemeInterface
     {
         self::$theme = $theme ?? self::$theme ?? app()->make(WebtreesTheme::class);
 

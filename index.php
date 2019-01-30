@@ -242,7 +242,7 @@ try {
         $theme_id = 'webtrees';
     }
     foreach (Theme::installedThemes() as $theme) {
-        if ($theme->themeId() === $theme_id) {
+        if ($theme->name() === $theme_id) {
             Theme::theme($theme);
             // Remember this setting
             if (Site::getPreference('ALLOW_USER_THEMES') === '1') {

@@ -15,7 +15,7 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Theme;
+namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
@@ -28,20 +28,30 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * The colors theme.
  */
-class ColorsTheme extends CloudsTheme implements ThemeInterface
+class ColorsTheme extends CloudsTheme
 {
-    /**
-     * Where are our CSS, JS and other assets?
-     */
-    protected const THEME_DIR  = 'colors';
-    public const ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-2.0.0/';
-    protected const STYLESHEET = self::ASSET_DIR . 'style.css';
+    protected const PERSON_BOX_CLASSES = [
+        'M' => 'person_box',
+        'F' => 'person_boxF',
+        'U' => 'person_boxNN',
+    ];
 
     /** @var string[] A list of color palettes */
     protected $palettes;
 
     /** @var string Which of the color palettes to use on this page */
     protected $palette;
+
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
+    public function title(): string
+    {
+        /* I18N: Name of a theme. */
+        return I18N::translate('colors');
+    }
 
     /**
      * @param Request   $request
@@ -55,36 +65,36 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface
             /* I18N: The name of a colour-scheme */
             'aquamarine'       => I18N::translate('Aqua Marine'),
             /* I18N: The name of a colour-scheme */
-            'ash'              =>    I18N::translate('Ash'),
+            'ash'              => I18N::translate('Ash'),
             /* I18N: The name of a colour-scheme */
-            'belgianchocolate' =>    I18N::translate('Belgian Chocolate'),
+            'belgianchocolate' => I18N::translate('Belgian Chocolate'),
             /* I18N: The name of a colour-scheme */
-            'bluelagoon'       =>    I18N::translate('Blue Lagoon'),
+            'bluelagoon'       => I18N::translate('Blue Lagoon'),
             /* I18N: The name of a colour-scheme */
-            'bluemarine'       =>    I18N::translate('Blue Marine'),
+            'bluemarine'       => I18N::translate('Blue Marine'),
             /* I18N: The name of a colour-scheme */
-            'coffeeandcream'   =>    I18N::translate('Coffee and Cream'),
+            'coffeeandcream'   => I18N::translate('Coffee and Cream'),
             /* I18N: The name of a colour-scheme */
-            'coldday'          =>    I18N::translate('Cold Day'),
+            'coldday'          => I18N::translate('Cold Day'),
             /* I18N: The name of a colour-scheme */
-            'greenbeam'        =>    I18N::translate('Green Beam'),
+            'greenbeam'        => I18N::translate('Green Beam'),
             /* I18N: The name of a colour-scheme */
-            'mediterranio'     =>    I18N::translate('Mediterranio'),
+            'mediterranio'     => I18N::translate('Mediterranio'),
             /* I18N: The name of a colour-scheme */
-            'mercury'          =>    I18N::translate('Mercury'),
+            'mercury'          => I18N::translate('Mercury'),
             /* I18N: The name of a colour-scheme */
-            'nocturnal'        =>    I18N::translate('Nocturnal'),
+            'nocturnal'        => I18N::translate('Nocturnal'),
             /* I18N: The name of a colour-scheme */
             /* I18N: The name of a colour-scheme */
-            'olivia'           =>    I18N::translate('Olivia'),
+            'olivia'           => I18N::translate('Olivia'),
             /* I18N: The name of a colour-scheme */
-            'pinkplastic'      =>    I18N::translate('Pink Plastic'),
+            'pinkplastic'      => I18N::translate('Pink Plastic'),
             /* I18N: The name of a colour-scheme */
-            'sage'             =>    I18N::translate('Sage'),
+            'sage'             => I18N::translate('Sage'),
             /* I18N: The name of a colour-scheme */
-            'shinytomato'      =>    I18N::translate('Shiny Tomato'),
+            'shinytomato'      => I18N::translate('Shiny Tomato'),
             /* I18N: The name of a colour-scheme */
-            'tealtop'          =>    I18N::translate('Teal Top'),
+            'tealtop'          => I18N::translate('Teal Top'),
         ];
         uasort($this->palettes, '\Fisharebest\Webtrees\I18N::strcasecmp');
 
@@ -146,7 +156,7 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface
             $menu = new Menu(I18N::translate('Palette'), '#', 'menu-color');
 
             foreach ($this->palettes as $palette_id => $palette_name) {
-                $url  = $this->request->getRequestUri();
+                $url = $this->request->getRequestUri();
                 $url = preg_replace('/&themecolor=[a-z]+/', '', $url);
                 $url .= '&themecolor=' . $palette_id;
 
@@ -173,20 +183,11 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface
      */
     public function stylesheets(): array
     {
-        return array_merge(parent::stylesheets(), [
+        return [
+            'themes/_common/css-2.0.0/style.css',
+            'themes/clouds/css-2.0.0/style.css',
             'themes/colors/css-2.0.0/style.css',
             'themes/colors/css-2.0.0/palette/' . $this->palette . '.css',
-        ]);
-    }
-
-    /**
-     * What is this theme called?
-     *
-     * @return string
-     */
-    public function themeName(): string
-    {
-        /* I18N: Name of a theme. */
-        return I18N::translate('colors');
+        ];
     }
 }

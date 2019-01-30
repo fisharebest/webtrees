@@ -17,11 +17,108 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Menu;
+
 /**
- * Interface ModuleThemeInterface - Classes and libraries for module system
- *
- * This class is not currently used
+ * Interface ModuleThemelInterface - Classes and libraries for module system
  */
 interface ModuleThemeInterface extends ModuleInterface
 {
+    /**
+     * Display an icon for this fact.
+     *
+     * @param Fact $fact
+     *
+     * @return string
+     */
+    public function icon(Fact $fact): string;
+
+    /**
+     * Display an individual in a box - for charts, etc.
+     *
+     * @param Individual $individual
+     *
+     * @return string
+     */
+    public function individualBox(Individual $individual): string;
+
+    /**
+     * Display an empty box - for a missing individual in a chart.
+     *
+     * @return string
+     */
+    public function individualBoxEmpty(): string;
+
+    /**
+     * Display an individual in a box - for charts, etc.
+     *
+     * @param Individual $individual
+     *
+     * @return string
+     */
+    public function individualBoxLarge(Individual $individual): string;
+
+    /**
+     * Display an individual in a box - for charts, etc.
+     *
+     * @param Individual $individual
+     *
+     * @return string
+     */
+    public function individualBoxSmall(Individual $individual): string;
+
+    /**
+     * Display an individual in a box - for charts, etc.
+     *
+     * @return string
+     */
+    public function individualBoxSmallEmpty(): string;
+
+    /**
+     * Links, to show in chart boxes;
+     *
+     * @param Individual $individual
+     *
+     * @return Menu[]
+     */
+    public function individualBoxMenu(Individual $individual): array;
+
+    /**
+     * Themes menu.
+     *
+     * @return Menu|null
+     */
+    public function menuThemes();
+
+    /**
+     * Misecellaneous dimensions, fonts, styles, etc.
+     *
+     * @param string $parameter_name
+     *
+     * @return string|int|float
+     */
+    public function parameter($parameter_name);
+
+    /**
+     * Generate a list of items for the main menu.
+     *
+     * @return Menu[]
+     */
+    public function primaryMenu(): array;
+
+    /**
+     * Generate a list of items for the user menu.
+     *
+     * @return Menu[]
+     */
+    public function secondaryMenu(): array;
+
+    /**
+     * A list of CSS files to include for this page.
+     *
+     * @return string[]
+     */
+    public function stylesheets(): array;
 }

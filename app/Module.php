@@ -33,6 +33,8 @@ use Fisharebest\Webtrees\Module\ChartsBlockModule;
 use Fisharebest\Webtrees\Module\ChartsMenuModule;
 use Fisharebest\Webtrees\Module\CkeditorModule;
 use Fisharebest\Webtrees\Module\ClippingsCartModule;
+use Fisharebest\Webtrees\Module\CloudsTheme;
+use Fisharebest\Webtrees\Module\ColorsTheme;
 use Fisharebest\Webtrees\Module\CompactTreeChartModule;
 use Fisharebest\Webtrees\Module\ContactsFooterModule;
 use Fisharebest\Webtrees\Module\CookieWarningModule;
@@ -41,6 +43,7 @@ use Fisharebest\Webtrees\Module\DescendancyChartModule;
 use Fisharebest\Webtrees\Module\DescendancyModule;
 use Fisharebest\Webtrees\Module\DescendancyReportModule;
 use Fisharebest\Webtrees\Module\ExtraInformationModule;
+use Fisharebest\Webtrees\Module\FabTheme;
 use Fisharebest\Webtrees\Module\FactSourcesReportModule;
 use Fisharebest\Webtrees\Module\FamilyBookChartModule;
 use Fisharebest\Webtrees\Module\FamilyGroupReportModule;
@@ -66,6 +69,7 @@ use Fisharebest\Webtrees\Module\LoginBlockModule;
 use Fisharebest\Webtrees\Module\MarriageReportModule;
 use Fisharebest\Webtrees\Module\MatomoAnalyticsModule;
 use Fisharebest\Webtrees\Module\MediaTabModule;
+use Fisharebest\Webtrees\Module\MinimalTheme;
 use Fisharebest\Webtrees\Module\MissingFactsReportModule;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
@@ -83,6 +87,7 @@ use Fisharebest\Webtrees\Module\PedigreeChartModule;
 use Fisharebest\Webtrees\Module\PedigreeMapModule;
 use Fisharebest\Webtrees\Module\PedigreeReportModule;
 use Fisharebest\Webtrees\Module\PlacesModule;
+use Fisharebest\Webtrees\Module\PoweredByWebtreesModule;
 use Fisharebest\Webtrees\Module\RecentChangesModule;
 use Fisharebest\Webtrees\Module\RelatedIndividualsReportModule;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
@@ -108,8 +113,9 @@ use Fisharebest\Webtrees\Module\UserFavoritesModule;
 use Fisharebest\Webtrees\Module\UserJournalModule;
 use Fisharebest\Webtrees\Module\UserMessagesModule;
 use Fisharebest\Webtrees\Module\UserWelcomeModule;
-use Fisharebest\Webtrees\Module\PoweredByWebtreesModule;
+use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Module\WelcomeBlockModule;
+use Fisharebest\Webtrees\Module\XeneaTheme;
 use Fisharebest\Webtrees\Module\YahrzeitModule;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
@@ -148,6 +154,8 @@ class Module
         'charts-menu'            => ChartsMenuModule::class,
         'ckeditor'               => CkeditorModule::class,
         'clippings'              => ClippingsCartModule::class,
+        'clouds'                 => CloudsTheme::class,
+        'colors'                 => ColorsTheme::class,
         'compact-chart'          => CompactTreeChartModule::class,
         'contact-links'          => ContactsFooterModule::class,
         'cookie-warning'         => CookieWarningModule::class,
@@ -156,6 +164,7 @@ class Module
         'descendancy_chart'      => DescendancyChartModule::class,
         'descendancy_report'     => DescendancyReportModule::class,
         'extra_info'             => ExtraInformationModule::class,
+        'fab'                    => FabTheme::class,
         'fact_sources'           => FactSourcesReportModule::class,
         'family_book_chart'      => FamilyBookChartModule::class,
         'family_group_report'    => FamilyGroupReportModule::class,
@@ -181,6 +190,7 @@ class Module
         'marriage_report'        => MarriageReportModule::class,
         'matomo-analytics'       => MatomoAnalyticsModule::class,
         'media'                  => MediaTabModule::class,
+        'minimal'                => MinimalTheme::class,
         'missing_facts_report'   => MissingFactsReportModule::class,
         'notes'                  => NotesTabModule::class,
         'occupation_report'      => OccupationReportModule::class,
@@ -217,6 +227,8 @@ class Module
         'user_favorites'         => UserFavoritesModule::class,
         'user_messages'          => UserMessagesModule::class,
         'user_welcome'           => UserWelcomeModule::class,
+        'webtrees'               => WebtreesTheme::class,
+        'xenea'                  => XeneaTheme::class,
         'yahrzeit'               => YahrzeitModule::class,
     ];
 
