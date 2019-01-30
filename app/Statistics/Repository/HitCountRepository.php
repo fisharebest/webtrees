@@ -18,10 +18,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Http\Middleware\PageHitCounter;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\HitCountRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  * A repository providing methods for hit count related statistics.
@@ -63,12 +63,16 @@ class HitCountRepository implements HitCountRepositoryInterface
             $page_parameter = 'user:' . ($user ? $user->id() : Auth::id());
         }
 
-        $hit_counter = new PageHitCounter(Auth::user(), $this->tree);
+        $count = (int) DB::table('hit_counter')
+            ->where('gedcom_id', '=', $this->tree->id())
+            ->where('page_name', '=', $page_name)
+            ->where('page_parameter', '=', $page_parameter)
+            ->value('page_count');
 
         return view(
             'statistics/hit-count',
             [
-                'count' => $hit_counter->getCount($this->tree, $page_name, $page_parameter),
+                'count' => $count,
             ]
         );
     }
