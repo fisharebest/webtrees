@@ -29,6 +29,8 @@ use Fisharebest\Webtrees\Http\Middleware\Housekeeping;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
@@ -227,30 +229,30 @@ try {
 
     DebugBar::startMeasure('init theme');
 
+    $themes = Module::findByInterface(ModuleThemeInterface::class);
+
     // Last theme used?
-    $theme_id = Session::get('theme_id');
-    // Default for tree
-    if (!array_key_exists($theme_id, Theme::themeNames()) && $tree) {
-        $theme_id = $tree->getPreference('THEME_DIR');
+    $theme = $themes->get(Session::get('theme_id', ''));
+
+    // Default for tree?
+    if ($theme === null && $tree instanceof Tree) {
+        $theme = $themes->get($tree->getPreference('THEME_DIR'));
     }
-    // Default for site
-    if (!array_key_exists($theme_id, Theme::themeNames())) {
-        $theme_id = Site::getPreference('THEME_DIR');
+
+    // Default for site?
+    if ($theme === null) {
+        $theme = $themes->get(Site::getPreference('THEME_DIR'));
     }
+
     // Default
-    if (!array_key_exists($theme_id, Theme::themeNames())) {
-        $theme_id = 'webtrees';
+    if ($theme === null) {
+        $theme = app()->make(WebtreesTheme::class);
     }
-    foreach (Theme::installedThemes() as $theme) {
-        if ($theme->name() === $theme_id) {
-            Theme::theme($theme);
-            // Remember this setting
-            if (Site::getPreference('ALLOW_USER_THEMES') === '1') {
-                Session::put('theme_id', $theme_id);
-            }
-            break;
-        }
-    }
+
+    Theme::theme($theme);
+
+    // Remember this setting
+    Session::put('theme_id', $theme->name());
 
     DebugBar::stopMeasure('init theme');
 

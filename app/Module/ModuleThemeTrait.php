@@ -584,8 +584,10 @@ trait ModuleThemeTrait
     public function menuThemes()
     {
         if ($this->tree !== null && Site::getPreference('ALLOW_USER_THEMES') === '1' && $this->tree->getPreference('ALLOW_THEME_DROPDOWN') === '1') {
+            $themes   = Module::findByInterface(ModuleThemeInterface::class);
             $submenus = [];
-            foreach (Theme::installedThemes() as $theme) {
+
+            foreach ($themes as $theme) {
                 $class      = 'menu-theme-' . $theme->name() . ($theme === $this ? ' active' : '');
                 $submenus[] = new Menu($theme->title(), '#', $class, [
                     'onclick'    => 'return false;',

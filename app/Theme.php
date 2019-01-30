@@ -29,25 +29,16 @@ class Theme
     private static $theme;
 
     /**
-     * Create a list of all themes available on the system, including
-     * any custom themes.
-     *
-     * @return ModuleThemeInterface[]
-     */
-    public static function installedThemes(): array
-    {
-        return  Module::findByInterface(ModuleThemeInterface::class)->all();
-    }
-
-    /**
      * An associative array of theme names, for <select> fields, etc.
      *
      * @return string[]
      */
     public static function themeNames(): array
     {
+        $themes = Module::findByInterface(ModuleThemeInterface::class);
+
         $theme_names = [];
-        foreach (self::installedThemes() as $theme) {
+        foreach ($themes as $theme) {
             $theme_names[$theme->name()] = $theme->title();
         }
 
