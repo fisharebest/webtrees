@@ -198,8 +198,7 @@ class Statistics implements
     public function __construct(
         ModuleService $module_service,
         Tree $tree
-    )
-    {
+    ) {
         $this->tree                  = $tree;
         $this->gedcomRepository      = new GedcomRepository($tree);
         $this->individualRepository  = new IndividualRepository($tree);
@@ -405,8 +404,7 @@ class Statistics implements
         string $size = null,
         string $color_from = null,
         string $color_to = null
-    ): string
-    {
+    ): string {
         return $this->individualRepository->chartIndisWithSources($size, $color_from, $color_to);
     }
 
@@ -449,8 +447,7 @@ class Statistics implements
         string $size = null,
         string $color_from = null,
         string $color_to = null
-    ): string
-    {
+    ): string {
         return $this->individualRepository->chartFamsWithSources($size, $color_from, $color_to);
     }
 
@@ -654,8 +651,7 @@ class Statistics implements
         string $color_female = null,
         string $color_male = null,
         string $color_unknown = null
-    ): string
-    {
+    ): string {
         return $this->individualRepository->chartSex($size, $color_female, $color_male, $color_unknown);
     }
 
@@ -890,8 +886,7 @@ class Statistics implements
         string $chart_shows = 'world',
         string $chart_type = '',
         string $surname = ''
-    ): string
-    {
+    ): string {
         return $this->placeRepository->chartDistribution($chart_shows, $chart_type, $surname);
     }
 
@@ -1903,8 +1898,7 @@ class Statistics implements
         string $color_from = null,
         string $color_to = null,
         string $total = '10'
-    ): string
-    {
+    ): string {
         return $this->familyRepository->chartLargestFamilies($size, $color_from, $color_to, (int) $total);
     }
 
@@ -1995,8 +1989,7 @@ class Statistics implements
         string $size = '220x200',
         string $year1 = '-1',
         string $year2 = '-1'
-    ): string
-    {
+    ): string {
         return $this->familyRepository->chartNoChildrenFamilies($size, (int) $year1, (int) $year2);
     }
 
@@ -2031,8 +2024,7 @@ class Statistics implements
         string $threshold = '1',
         string $number_of_surnames = '10',
         string $sorting = 'alpha'
-    ): string
-    {
+    ): string {
         return $this->individualRepository->commonSurnames((int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
@@ -2043,8 +2035,7 @@ class Statistics implements
         string $threshold = '1',
         string $number_of_surnames = '10',
         string $sorting = 'rcount'
-    ): string
-    {
+    ): string {
         return $this->individualRepository->commonSurnamesTotals((int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
@@ -2055,8 +2046,7 @@ class Statistics implements
         string $threshold = '1',
         string $number_of_surnames = '10',
         string $sorting = 'alpha'
-    ): string
-    {
+    ): string {
         return $this->individualRepository->commonSurnamesList((int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
@@ -2067,8 +2057,7 @@ class Statistics implements
         string $threshold = '1',
         string $number_of_surnames = '10',
         string $sorting = 'rcount'
-    ): string
-    {
+    ): string {
         return $this->individualRepository
             ->commonSurnamesListTotals((int) $threshold, (int) $number_of_surnames, $sorting);
     }
@@ -2081,8 +2070,7 @@ class Statistics implements
         string $color_from = null,
         string $color_to = null,
         string $number_of_surnames = '10'
-    ): string
-    {
+    ): string {
         return $this->individualRepository
             ->chartCommonSurnames($size, $color_from, $color_to, (int) $number_of_surnames);
     }
@@ -2255,8 +2243,7 @@ class Statistics implements
         string $color_from = null,
         string $color_to = null,
         string $maxtoshow = '7'
-    ): string
-    {
+    ): string {
         return $this->individualRepository->chartCommonGiven($size, $color_from, $color_to, (int) $maxtoshow);
     }
 

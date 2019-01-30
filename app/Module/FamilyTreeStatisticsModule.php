@@ -45,7 +45,8 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
      *
      * @param Statistics $statistics
      */
-    public function __construct(Statistics $statistics) {
+    public function __construct(Statistics $statistics)
+    {
         $this->statistics = $statistics;
     }
 
