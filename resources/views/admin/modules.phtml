@@ -8,6 +8,7 @@
 <?php use Fisharebest\Webtrees\Module\ModuleExternalUrlInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleFooterInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface; ?>
+<?php use Fisharebest\Webtrees\Module\ModuleLanguageInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleMenuInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleReportInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleSidebarInterface; ?>
@@ -90,9 +91,13 @@
                     <?= view('icons/history') ?>
                     <span class="sr-only"><?= I18N::translate('Historic events') ?></span>
                 </th>
-                <th class="d-none" title="<?= I18N::translate('Themes') ?>">
+                <th title="<?= I18N::translate('Themes') ?>">
                     <?= view('icons/theme') ?>
                     <span class="sr-only"><?= I18N::translate('Themes') ?></span>
+                </th>
+                <th title="<?= I18N::translate('Languages') ?>">
+                    <?= view('icons/language') ?>
+                    <span class="sr-only"><?= I18N::translate('Languages') ?></span>
                 </th>
             </tr>
         </thead>
@@ -225,10 +230,18 @@
                             -
                         <?php endif ?>
                     </td>
-                    <td class="text-center text-muted d-none" title="<?= I18N::translate('Theme') ?>">
+                    <td class="text-center text-muted" title="<?= I18N::translate('Theme') ?>">
                         <?php if ($module instanceof ModuleThemeInterface) : ?>
                             <?= view('icons/theme') ?>
                             <span class="sr-only"><?= I18N::translate('Theme') ?></span>
+                        <?php else : ?>
+                            -
+                        <?php endif ?>
+                    </td>
+                    <td class="text-center text-muted" title="<?= I18N::translate('Language') ?>">
+                        <?php if ($module instanceof ModuleLanguageInterface) : ?>
+                            <?= view('icons/language') ?>
+                            <span class="sr-only"><?= I18N::translate('Language') ?></span>
                         <?php else : ?>
                             -
                         <?php endif ?>

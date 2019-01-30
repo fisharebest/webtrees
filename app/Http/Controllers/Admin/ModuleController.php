@@ -26,10 +26,12 @@ use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
+use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
@@ -157,6 +159,19 @@ class ModuleController extends AbstractAdminController
     /**
      * @return Response
      */
+    public function listLanguages(): Response
+    {
+        return $this->listComponents(
+            ModuleLanguageInterface::class,
+            'language',
+            I18N::translate('Languages'),
+            ''
+        );
+    }
+
+    /**
+     * @return Response
+     */
     public function listMenus(): Response
     {
         return $this->listComponents(
@@ -202,6 +217,18 @@ class ModuleController extends AbstractAdminController
             ModuleTabInterface::class,
             'tab',
             I18N::translate('Tabs'),
+            ''
+        );
+    }
+    /**
+     * @return Response
+     */
+    public function listThemes(): Response
+    {
+        return $this->listComponents(
+            ModuleThemeInterface::class,
+            'theme',
+            I18N::translate('Themes'),
             ''
         );
     }
@@ -339,6 +366,20 @@ class ModuleController extends AbstractAdminController
      *
      * @return RedirectResponse
      */
+    public function updateLanguages(Request $request): RedirectResponse
+    {
+        $modules = Module::findByInterface(ModuleLanguageInterface::class, true);
+
+        $this->updateStatus($modules, $request);
+
+        return new RedirectResponse(route('language'));
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
     public function updateMenus(Request $request): RedirectResponse
     {
         $modules = Module::findByInterface(ModuleMenuInterface::class, true);
@@ -379,6 +420,20 @@ class ModuleController extends AbstractAdminController
         $this->updateAccessLevel($modules, 'sidebar', $request);
 
         return new RedirectResponse(route('sidebars'));
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
+    public function updateThemes(Request $request): RedirectResponse
+    {
+        $modules = Module::findByInterface(ModuleThemeInterface::class, true);
+
+        $this->updateStatus($modules, $request);
+
+        return new RedirectResponse(route('themes'));
     }
 
     /**

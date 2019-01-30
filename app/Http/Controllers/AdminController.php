@@ -38,10 +38,12 @@ use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
+use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\DatatablesService;
@@ -89,7 +91,8 @@ class AdminController extends AbstractBaseController
         HousekeepingService $housekeeping_service,
         UpgradeService $upgrade_service,
         Admin\ModuleController $module_controller
-    ): Response {
+    ): Response
+    {
         $filesystem      = new Filesystem(new Local(WT_ROOT));
         $files_to_delete = $housekeeping_service->deleteOldWebtreesFiles($filesystem);
         $deleted_modules = $module_controller->deletedModuleNames();
@@ -127,10 +130,12 @@ class AdminController extends AbstractBaseController
             'config_modules'    => $config_modules,
             'footer_modules'    => Module::findByInterface(ModuleFooterInterface::class, true),
             'history_modules'   => Module::findByInterface(ModuleHistoricEventsInterface::class, true),
+            'language_modules'  => Module::findByInterface(ModuleLanguageInterface::class, true),
             'menu_modules'      => Module::findByInterface(ModuleMenuInterface::class, true),
             'report_modules'    => Module::findByInterface(ModuleReportInterface::class, true),
             'sidebar_modules'   => Module::findByInterface(ModuleSidebarInterface::class, true),
             'tab_modules'       => Module::findByInterface(ModuleTabInterface::class, true),
+            'theme_modules'     => Module::findByInterface(ModuleThemeInterface::class, true),
         ]);
     }
 

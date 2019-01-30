@@ -17,18 +17,29 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Individual;
+use Illuminate\Support\Collection;
+
 /**
- * Trait ModuleExternalUrlITrait - default implementation of ModuleExternalUrlIInterface.
+ * Interface ModuleLanguageInterface - provide translation and localization.
  */
-trait ModuleExternalUrlTrait
+interface ModuleLanguageInterface extends ModuleInterface
 {
     /**
-     * Home page for the service.
+     * All events provided by this module.
      *
-     * @return string
+     * @param Individual $individual
+     *
+     * @return string[]
      */
-    public function externalUrl(): string
-    {
-        return '';
-    }
+    public function historicEventsAll(): array;
+
+    /**
+     * Which events should we show for an individual?
+     *
+     * @param Individual $individual
+     *
+     * @return Collection
+     */
+    public function historicEventsForIndividual(Individual $individual): Collection;
 }

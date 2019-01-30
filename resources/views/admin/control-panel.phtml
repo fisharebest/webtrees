@@ -358,6 +358,20 @@
                         </a>
                         <?= view('components/badge', ['count' => $history_modules->count()]) ?>
                     </li>
+                    <li>
+                        <span class="fa-li"><?= view('icons/theme') ?></span>
+                        <a href="<?= e(route('themes')) ?>">
+                            <?= I18N::translate('Themes') ?>
+                        </a>
+                        <?= view('components/badge', ['count' => $theme_modules->count()]) ?>
+                    </li>
+                    <li>
+                        <span class="fa-li"><?= view('icons/language') ?></span>
+                        <a href="<?= e(route('languages')) ?>">
+                            <?= I18N::translate('Languages') ?>
+                        </a>
+                        <?= view('components/badge', ['count' => $language_modules->count()]) ?>
+                    </li>
                 </ul>
             </div>
             <div class="col-sm-6">
