@@ -53,7 +53,8 @@ class PlaceHierarchyController extends AbstractBaseController
      *
      * @param Statistics $statistics
      */
-    public function __construct(Statistics $statistics) {
+    public function __construct(Statistics $statistics)
+    {
         $this->statistics = $statistics;
     }
 

@@ -41,7 +41,8 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param Statistics $statistics
      */
-    public function __construct(Statistics $statistics) {
+    public function __construct(Statistics $statistics)
+    {
         $this->statistics = $statistics;
     }
 
