@@ -20,7 +20,7 @@
                         <?php if ($fact->date()->isOK()) : ?>
                             – <?= $fact->date()->minimumDate()->format('%Y') ?>
                         <?php endif ?>
-                        <?php if (!$fact->place()->isEmpty()) : ?>
+                        <?php if (!$fact->place()->gedcomName() !== '') : ?>
                             – <?= $fact->place()->shortName() ?>
                         <?php endif ?>
                     </option>
