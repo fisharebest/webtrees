@@ -23,9 +23,12 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,8 +39,20 @@ use Symfony\Component\HttpFoundation\Response;
 class AccountController extends AbstractBaseController
 {
     /**
-     * Help for dates.
+     * @var ModuleService
+     */
+    private $module_service;
+
+    /**
+     * AdminUsersController constructor.
      *
+     * @param ModuleService $module_service
+     */
+    public function __construct(ModuleService $module_service) {
+        $this->module_service = $module_service;
+    }
+
+    /**
      * @param Tree    $tree
      * @param User    $user
      *
@@ -50,7 +65,7 @@ class AccountController extends AbstractBaseController
         $default_individual   = Individual::getInstance($tree->getUserPreference(Auth::user(), 'rootid'), $tree);
         $installed_languages  = FunctionsEdit::optionsInstalledLanguages();
         $show_delete_option   = !$user->getPreference('canadmin');
-        $themes               = $this->themeNames();
+        $themes               = $this->themeOptions();
         $timezone_ids         = DateTimeZone::listIdentifiers();
         $timezones            = array_combine($timezone_ids, $timezone_ids);
         $title                = I18N::translate('My account');
@@ -149,15 +164,13 @@ class AccountController extends AbstractBaseController
     }
 
     /**
-     * @return array
+     * @return Collection|string[]
      */
-    private function themeNames(): array
+    private function themeOptions(): Collection
     {
-        $default_option = [
-            /* I18N: default option in list of themes */
-            '' => I18N::translate('<default theme>'),
-        ];
-
-        return $default_option + Theme::themeNames();
+        return $this->module_service
+            ->findByInterface(ModuleThemeInterface::class)
+            ->map($this->module_service->titleMapper())
+            ->prepend(I18N::translate('<default theme>'), '');
     }
 }

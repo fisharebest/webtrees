@@ -24,12 +24,15 @@ use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Mail;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
 use stdClass;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -47,6 +50,20 @@ class AdminUsersController extends AbstractBaseController
 
     /** @var string */
     protected $layout = 'layouts/administration';
+
+    /**
+     * @var ModuleService
+     */
+    private $module_service;
+
+    /**
+     * AdminUsersController constructor.
+     *
+     * @param ModuleService $module_service
+     */
+    public function __construct(ModuleService $module_service) {
+        $this->module_service = $module_service;
+    }
 
     /**
      * @param Request $request
@@ -464,10 +481,13 @@ class AdminUsersController extends AbstractBaseController
     }
 
     /**
-     * @return string[]
+     * @return Collection|string[]
      */
-    private function themeOptions(): array
+    private function themeOptions(): Collection
     {
-        return ['' => I18N::translate('<default theme>')] + Theme::themeNames();
+        return $this->module_service
+            ->findByInterface(ModuleThemeInterface::class)
+            ->map($this->module_service->titleMapper())
+            ->prepend(I18N::translate('<default theme>'), '');
     }
 }

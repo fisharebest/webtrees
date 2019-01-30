@@ -419,6 +419,18 @@ class ModuleService
     }
 
     /**
+     * A function to convert modules into their titles - to create option lists, etc.
+     *
+     * @return Closure
+     */
+    public function titleMapper(): Closure
+    {
+        return function (ModuleInterface $module): string {
+            return $module->title();
+        };
+    }
+
+    /**
      * Modules which (a) provide a specific function and (b) we have permission to see.
      *
      * @param string $component

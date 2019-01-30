@@ -22,12 +22,15 @@ use Exception;
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use stdClass;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -42,6 +45,20 @@ class AdminSiteController extends AbstractBaseController
 {
     /** @var string */
     protected $layout = 'layouts/administration';
+
+    /**
+     * @var ModuleService
+     */
+    private $module_service;
+
+    /**
+     * AdminUsersController constructor.
+     *
+     * @param ModuleService $module_service
+     */
+    public function __construct(ModuleService $module_service) {
+        $this->module_service = $module_service;
+    }
 
     /**
      * Show old user files in the data folder.
@@ -376,7 +393,7 @@ class AdminSiteController extends AbstractBaseController
      */
     public function preferencesForm(): Response
     {
-        $all_themes = Theme::themeNames();
+        $all_themes = $this->themeOptions();
 
         $title = I18N::translate('Website preferences');
 
@@ -518,5 +535,15 @@ class AdminSiteController extends AbstractBaseController
             3 => I18N::translate('Predefined text that states only family members can request a user account'),
             4 => I18N::translate('Choose user defined welcome text typed below'),
         ];
+    }
+
+    /**
+     * @return Collection|string[]
+     */
+    private function themeOptions(): Collection
+    {
+        return $this->module_service
+            ->findByInterface(ModuleThemeInterface::class)
+            ->map($this->module_service->titleMapper());
     }
 }

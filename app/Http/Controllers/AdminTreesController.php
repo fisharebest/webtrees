@@ -32,6 +32,8 @@ use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Source;
@@ -41,6 +43,7 @@ use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use stdClass;
@@ -63,6 +66,20 @@ class AdminTreesController extends AbstractBaseController
 
     /** @var string */
     protected $layout = 'layouts/administration';
+
+    /**
+     * @var ModuleService
+     */
+    private $module_service;
+
+    /**
+     * AdminUsersController constructor.
+     *
+     * @param ModuleService $module_service
+     */
+    public function __construct(ModuleService $module_service) {
+        $this->module_service = $module_service;
+    }
 
     /**
      * @param Tree $tree
@@ -966,7 +983,7 @@ class AdminTreesController extends AbstractBaseController
             2 => I18N::translate('records'),
         ];
 
-        $theme_options = ['' => I18N::translate('<default theme>')] + Theme::themeNames();
+        $theme_options = $this->themeOptions();
 
         $privacy_options = [
             Auth::PRIV_USER => I18N::translate('Show to members'),
@@ -2113,5 +2130,16 @@ class AdminTreesController extends AbstractBaseController
         }
 
         return $tree_name . $tree_number;
+    }
+
+    /**
+     * @return Collection|string[]
+     */
+    private function themeOptions(): Collection
+    {
+        return $this->module_service
+            ->findByInterface(ModuleThemeInterface::class)
+            ->map($this->module_service->titleMapper())
+            ->prepend(I18N::translate('<default theme>'), '');
     }
 }
