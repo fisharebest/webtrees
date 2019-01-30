@@ -893,8 +893,8 @@
     },
     {
         "name": "illuminate/cache",
-        "version": "v5.7.21",
-        "version_normalized": "5.7.21.0",
+        "version": "v5.7.23",
+        "version_normalized": "5.7.23.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/cache.git",
@@ -944,8 +944,8 @@
     },
     {
         "name": "illuminate/container",
-        "version": "v5.7.21",
-        "version_normalized": "5.7.21.0",
+        "version": "v5.7.23",
+        "version_normalized": "5.7.23.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/container.git",
@@ -991,8 +991,8 @@
     },
     {
         "name": "illuminate/contracts",
-        "version": "v5.7.21",
-        "version_normalized": "5.7.21.0",
+        "version": "v5.7.23",
+        "version_normalized": "5.7.23.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/contracts.git",
@@ -1037,8 +1037,8 @@
     },
     {
         "name": "illuminate/database",
-        "version": "v5.7.21",
-        "version_normalized": "5.7.21.0",
+        "version": "v5.7.23",
+        "version_normalized": "5.7.23.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/database.git",
@@ -1098,8 +1098,8 @@
     },
     {
         "name": "illuminate/support",
-        "version": "v5.7.20",
-        "version_normalized": "5.7.20.0",
+        "version": "v5.7.23",
+        "version_normalized": "5.7.23.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/support.git",
