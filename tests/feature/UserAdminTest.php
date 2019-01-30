@@ -38,10 +38,8 @@ class UserAdminTest extends \Fisharebest\Webtrees\TestCase
         $admin = User::create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user  = User::create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $controller         = new AdminUsersController();
-        $datatables_service = new DatatablesService();
-        $request            = new Request();
-        $response           = $controller->data($datatables_service, $request, $admin);
+        $controller = app()->make(AdminUsersController::class);
+        $response   = app()->dispatch($controller, 'data');
 
         $this->assertContains('AdminName', $response->getContent());
         $this->assertContains('Administrator', $response->getContent());
@@ -61,10 +59,10 @@ class UserAdminTest extends \Fisharebest\Webtrees\TestCase
         $admin = User::create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user  = User::create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $controller         = new AdminUsersController();
-        $datatables_service = new DatatablesService();
-        $request            = new Request(['search' => ['value' => 'admin']]);
-        $response           = $controller->data($datatables_service, $request, $admin);
+        $request = new Request(['search' => ['value' => 'admin']]);
+        app()->instance(Request::class, $request);
+        $controller = app()->make(AdminUsersController::class);
+        $response   = app()->dispatch($controller, 'data');
 
         $this->assertContains('AdminName', $response->getContent());
         $this->assertContains('Administrator', $response->getContent());
@@ -84,10 +82,10 @@ class UserAdminTest extends \Fisharebest\Webtrees\TestCase
         $admin = User::create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user  = User::create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $controller         = new AdminUsersController();
-        $datatables_service = new DatatablesService();
-        $request  = new Request(['length' => 1]);
-        $response = $controller->data($datatables_service, $request, $admin);
+        $request = new Request(['length' => 1]);
+        app()->instance(Request::class, $request);
+        $controller = app()->make(AdminUsersController::class);
+        $response   = app()->dispatch($controller, 'data');
 
         $this->assertContains('AdminName', $response->getContent());
         $this->assertNotContains('UserName', $response->getContent());
@@ -103,17 +101,20 @@ class UserAdminTest extends \Fisharebest\Webtrees\TestCase
         $admin = User::create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user  = User::create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $controller         = new AdminUsersController();
-        $datatables_service = new DatatablesService();
+        $request = new Request(['order' => [['column' => 2, 'dir' => 'asc']]]);
+        app()->instance(Request::class, $request);
+        $controller = app()->make(AdminUsersController::class);
+        $response   = app()->dispatch($controller, 'data');
 
-        $request  = new Request(['order' => [['column' => 2, 'dir' => 'asc']]]);
-        $response = $controller->data($datatables_service, $request, $admin);
         $pos1     = strpos($response->getContent(), 'AdminName');
         $pos2     = strpos($response->getContent(), 'UserName');
         $this->assertLessThan($pos2, $pos1);
 
-        $request  = new Request(['order' => [['column' => 2, 'dir' => 'desc']]]);
-        $response = $controller->data($datatables_service, $request, $admin);
+        $request = new Request(['order' => [['column' => 2, 'dir' => 'desc']]]);
+        app()->instance(Request::class, $request);
+        $controller = app()->make(AdminUsersController::class);
+        $response   = app()->dispatch($controller, 'data');
+
         $pos1     = strpos($response->getContent(), 'AdminName');
         $pos2     = strpos($response->getContent(), 'UserName');
         $this->assertGreaterThan($pos2, $pos1);
