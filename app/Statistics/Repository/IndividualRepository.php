@@ -774,7 +774,6 @@ class IndividualRepository implements IndividualRepositoryInterface
                 $years = " AND birth.d_year BETWEEN '{$year1}' AND '{$year2}'";
             } elseif ($related === 'DEAT') {
                 $years = " AND death.d_year BETWEEN '{$year1}' AND '{$year2}'";
-
             }
         }
 
