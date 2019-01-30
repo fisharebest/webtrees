@@ -28,14 +28,12 @@ use Fisharebest\Webtrees\Http\Middleware\DebugBarData;
 use Fisharebest\Webtrees\Http\Middleware\Housekeeping;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\View;
@@ -43,6 +41,7 @@ use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Cache\ArrayStore;
 use Illuminate\Cache\Repository;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Collection;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Cached\CachedAdapter;
 use League\Flysystem\Cached\Storage\Memory;
@@ -230,6 +229,7 @@ try {
 
     DebugBar::startMeasure('init theme');
 
+    /** @var Collection|ModuleThemeInterface[] $themes */
     $themes = app()->make(ModuleService::class)->findByInterface(ModuleThemeInterface::class);
 
     // Last theme used?

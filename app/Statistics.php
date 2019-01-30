@@ -58,7 +58,7 @@ use ReflectionMethod;
  * These are primarily used for embedded keywords on HTML blocks, but
  * are also used elsewhere in the code.
  */
-class Stats implements
+class Statistics implements
     GedcomRepositoryInterface,
     IndividualRepositoryInterface,
     EventRepositoryInterface,
@@ -185,11 +185,20 @@ class Stats implements
     private $placeRepository;
 
     /**
+     * @var ModuleService
+     */
+    private $module_service;
+
+    /**
      * Create the statistics for a tree.
      *
-     * @param Tree $tree Generate statistics for this tree
+     * @param ModuleService $module_service
+     * @param Tree          $tree Generate statistics for this tree
      */
-    public function __construct(Tree $tree)
+    public function __construct(
+        ModuleService $module_service,
+        Tree $tree
+    )
     {
         $this->tree                  = $tree;
         $this->gedcomRepository      = new GedcomRepository($tree);
@@ -208,6 +217,7 @@ class Stats implements
         $this->messageRepository     = new MessageRepository();
         $this->contactRepository     = new ContactRepository($tree);
         $this->placeRepository       = new PlaceRepository($tree);
+        $this->module_service        = $module_service;
     }
 
     /**
@@ -392,10 +402,11 @@ class Stats implements
      * @inheritDoc
      */
     public function chartIndisWithSources(
-        string $size       = null,
+        string $size = null,
         string $color_from = null,
-        string $color_to   = null
-    ): string {
+        string $color_to = null
+    ): string
+    {
         return $this->individualRepository->chartIndisWithSources($size, $color_from, $color_to);
     }
 
@@ -435,10 +446,11 @@ class Stats implements
      * @inheritDoc
      */
     public function chartFamsWithSources(
-        string $size       = null,
+        string $size = null,
         string $color_from = null,
-        string $color_to   = null
-    ): string {
+        string $color_to = null
+    ): string
+    {
         return $this->individualRepository->chartFamsWithSources($size, $color_from, $color_to);
     }
 
@@ -638,11 +650,12 @@ class Stats implements
      * @inheritDoc
      */
     public function chartSex(
-        string $size          = null,
-        string $color_female  = null,
-        string $color_male    = null,
+        string $size = null,
+        string $color_female = null,
+        string $color_male = null,
         string $color_unknown = null
-    ): string {
+    ): string
+    {
         return $this->individualRepository->chartSex($size, $color_female, $color_male, $color_unknown);
     }
 
@@ -875,9 +888,10 @@ class Stats implements
      */
     public function chartDistribution(
         string $chart_shows = 'world',
-        string $chart_type  = '',
-        string $surname     = ''
-    ) : string {
+        string $chart_type = '',
+        string $surname = ''
+    ): string
+    {
         return $this->placeRepository->chartDistribution($chart_shows, $chart_type, $surname);
     }
 
@@ -1160,6 +1174,7 @@ class Stats implements
     {
         return $this->individualRepository->longestLifeMaleName();
     }
+
     /**
      * @inheritDoc
      */
@@ -1884,11 +1899,12 @@ class Stats implements
      * @inheritDoc
      */
     public function chartLargestFamilies(
-        string $size       = null,
+        string $size = null,
         string $color_from = null,
-        string $color_to   = null,
-        string $total      = '10'
-    ): string {
+        string $color_to = null,
+        string $total = '10'
+    ): string
+    {
         return $this->familyRepository->chartLargestFamilies($size, $color_from, $color_to, (int) $total);
     }
 
@@ -1976,10 +1992,11 @@ class Stats implements
      * @inheritDoc
      */
     public function chartNoChildrenFamilies(
-        string $size  = '220x200',
+        string $size = '220x200',
         string $year1 = '-1',
         string $year2 = '-1'
-    ): string {
+    ): string
+    {
         return $this->familyRepository->chartNoChildrenFamilies($size, (int) $year1, (int) $year2);
     }
 
@@ -2014,7 +2031,8 @@ class Stats implements
         string $threshold = '1',
         string $number_of_surnames = '10',
         string $sorting = 'alpha'
-    ): string {
+    ): string
+    {
         return $this->individualRepository->commonSurnames((int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
@@ -2025,7 +2043,8 @@ class Stats implements
         string $threshold = '1',
         string $number_of_surnames = '10',
         string $sorting = 'rcount'
-    ): string {
+    ): string
+    {
         return $this->individualRepository->commonSurnamesTotals((int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
@@ -2036,7 +2055,8 @@ class Stats implements
         string $threshold = '1',
         string $number_of_surnames = '10',
         string $sorting = 'alpha'
-    ): string {
+    ): string
+    {
         return $this->individualRepository->commonSurnamesList((int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
@@ -2047,7 +2067,8 @@ class Stats implements
         string $threshold = '1',
         string $number_of_surnames = '10',
         string $sorting = 'rcount'
-    ): string {
+    ): string
+    {
         return $this->individualRepository
             ->commonSurnamesListTotals((int) $threshold, (int) $number_of_surnames, $sorting);
     }
@@ -2060,7 +2081,8 @@ class Stats implements
         string $color_from = null,
         string $color_to = null,
         string $number_of_surnames = '10'
-    ): string {
+    ): string
+    {
         return $this->individualRepository
             ->chartCommonSurnames($size, $color_from, $color_to, (int) $number_of_surnames);
     }
@@ -2229,11 +2251,12 @@ class Stats implements
      * @inheritDoc
      */
     public function chartCommonGiven(
-        string $size       = null,
+        string $size = null,
         string $color_from = null,
-        string $color_to   = null,
-        string $maxtoshow  = '7'
-    ): string {
+        string $color_to = null,
+        string $maxtoshow = '7'
+    ): string
+    {
         return $this->individualRepository->chartCommonGiven($size, $color_from, $color_to, (int) $maxtoshow);
     }
 

@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\TreesMenuModule;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 
 /**
@@ -50,6 +51,9 @@ class ModuleServiceTest extends TestCase
      */
     public function testAll(): void
     {
+        $tree = Tree::create('name', 'title');
+        app()->instance(Tree::class, $tree);
+
         $module_service = new ModuleService();
 
         $this->assertNotEmpty($module_service->all());
@@ -64,6 +68,9 @@ class ModuleServiceTest extends TestCase
      */
     public function testFindByComponent(): void
     {
+        $tree = Tree::create('name', 'title');
+        app()->instance(Tree::class, $tree);
+
         $module_service = new ModuleService();
 
         $tree = $this->importTree('demo.ged');
@@ -83,6 +90,9 @@ class ModuleServiceTest extends TestCase
      */
     public function testFindByInterface(): void
     {
+        $tree = Tree::create('name', 'title');
+        app()->instance(Tree::class, $tree);
+
         $module_service = new ModuleService();
 
         $this->assertNotEmpty($module_service->findByInterface(ModuleAnalyticsInterface::class)->all());
@@ -106,6 +116,9 @@ class ModuleServiceTest extends TestCase
      */
     public function testFindByClass(): void
     {
+        $tree = Tree::create('name', 'title');
+        app()->instance(Tree::class, $tree);
+
         $module_service = new ModuleService();
 
         $this->assertNull($module_service->findByClass('not-a-valid-class-name'));
@@ -118,6 +131,9 @@ class ModuleServiceTest extends TestCase
      */
     public function testFindByName(): void
     {
+        $tree = Tree::create('name', 'title');
+        app()->instance(Tree::class, $tree);
+
         $module_service = new ModuleService();
 
         $this->assertNull($module_service->findByName('not-a-valid-module-name'));

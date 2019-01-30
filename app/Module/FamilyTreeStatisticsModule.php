@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Stats;
+use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,6 +34,20 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 
     /** Show this number of surnames by default */
     private const DEFAULT_NUMBER_OF_SURNAMES = '10';
+
+    /**
+     * @var Statistics
+     */
+    private $statistics;
+
+    /**
+     * TopGivenNamesModule constructor.
+     *
+     * @param Statistics $statistics
+     */
+    public function __construct(Statistics $statistics) {
+        $this->statistics = $statistics;
+    }
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
@@ -143,7 +157,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
             'stat_avg_life'        => $stat_avg_life,
             'stat_most_chil'       => $stat_most_chil,
             'stat_avg_chil'        => $stat_avg_chil,
-            'stats'                => new Stats($tree),
+            'stats'                => $this->statistics,
             'surnames'             => $surnames,
         ]);
 

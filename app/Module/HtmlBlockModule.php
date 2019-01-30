@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Stats;
+use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -30,6 +30,20 @@ use Symfony\Component\HttpFoundation\Request;
 class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
+
+    /**
+     * @var Statistics
+     */
+    private $statistics;
+
+    /**
+     * TopGivenNamesModule constructor.
+     *
+     * @param Statistics $statistics
+     */
+    public function __construct(Statistics $statistics) {
+        $this->statistics = $statistics;
+    }
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
@@ -75,13 +89,11 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
             return '';
         }
 
-        $stats = new Stats($tree);
-
         /*
         * Retrieve text, process embedded variables
         */
-        $title   = $stats->embedTags($title);
-        $content = $stats->embedTags($content);
+        $title   = $this->statistics->embedTags($title);
+        $content = $this->statistics->embedTags($content);
 
         if ($show_timestamp === '1') {
             $content .= '<br>' . FunctionsDate::formatTimestamp((int) $this->getBlockSetting($block_id, 'timestamp', (string) WT_TIMESTAMP));

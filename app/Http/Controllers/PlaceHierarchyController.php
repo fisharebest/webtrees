@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Stats;
+use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -42,6 +42,20 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class PlaceHierarchyController extends AbstractBaseController
 {
     private const MAP_MODULE = 'openstreetmap';
+
+    /**
+     * @var Statistics
+     */
+    private $statistics;
+
+    /**
+     * TopGivenNamesModule constructor.
+     *
+     * @param Statistics $statistics
+     */
+    public function __construct(Statistics $statistics) {
+        $this->statistics = $statistics;
+    }
 
     /**
      * @param Request       $request
@@ -250,7 +264,6 @@ class PlaceHierarchyController extends AbstractBaseController
         $places    = $placeObj->getChildPlaces();
         $features  = [];
         $flag_path = Webtrees::MODULES_PATH . 'openstreetmap/';
-        $stats     = new Stats($tree);
         $showlink  = true;
         if (empty($places)) {
             $places[] = $placeObj;
@@ -261,7 +274,7 @@ class PlaceHierarchyController extends AbstractBaseController
             //Stats
             $placeStats = [];
             foreach (['INDI', 'FAM'] as $type) {
-                $tmp               = $stats->statsPlaces($type, '', $place->id());
+                $tmp               = $this->statistics->statsPlaces($type, '', $place->id());
                 $placeStats[$type] = empty($tmp) ? 0 : $tmp[0]->tot;
             }
             //Flag
