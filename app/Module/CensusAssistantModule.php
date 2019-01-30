@@ -203,7 +203,7 @@ class CensusAssistantModule extends AbstractModule implements ModuleInterface
      * Add prefix cell (store XREF and drag/drop)
      * Add suffix cell (delete button)
      *
-     * @param CensusInterface $census
+     * @param CensusInterface $census§
      *
      * @return string
      */

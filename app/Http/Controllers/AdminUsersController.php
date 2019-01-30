@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Mail;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;

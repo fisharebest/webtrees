@@ -24,8 +24,6 @@ use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Session;
-use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;

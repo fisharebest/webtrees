@@ -21,7 +21,6 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
-use Fisharebest\Webtrees\Theme;
 
 /**
  *

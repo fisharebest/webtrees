@@ -19,13 +19,11 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Carbon\Carbon;
 use Exception;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;

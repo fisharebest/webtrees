@@ -347,13 +347,13 @@ class ModuleService
     }
 
     /**
-     * Load a module in a separate scope, to prevent it from modifying local variables.
+     * Load a module in a static scope, to prevent it from modifying local or object variables.
      *
      * @param string $filename
      *
      * @return mixed
      */
-    private function load(string $filename)
+    private static function load(string $filename)
     {
         return include $filename;
     }

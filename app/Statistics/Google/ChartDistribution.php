@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Statistics\Helper\Country;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 use Fisharebest\Webtrees\Statistics\Repository\PlaceRepository;
 use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
-use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 
 /**
