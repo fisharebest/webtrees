@@ -29,7 +29,6 @@ use Fisharebest\Webtrees\Statistics\Google\ChartBirth;
 use Fisharebest\Webtrees\Statistics\Google\ChartCommonGiven;
 use Fisharebest\Webtrees\Statistics\Google\ChartCommonSurname;
 use Fisharebest\Webtrees\Statistics\Google\ChartDeath;
-use Fisharebest\Webtrees\Statistics\Google\ChartFamily;
 use Fisharebest\Webtrees\Statistics\Google\ChartFamilyWithSources;
 use Fisharebest\Webtrees\Statistics\Google\ChartIndividual;
 use Fisharebest\Webtrees\Statistics\Google\ChartMortality;
@@ -38,6 +37,7 @@ use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\IndividualRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 
 /**
@@ -421,61 +421,57 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * Count the number of distinct given names, or count the number of
-     * occurrences of a specific name or names.
+     * Count the number of distinct given names (or the number of occurences of specific given names).
      *
-     * @param array ...$params
+     * @param string[] ...$params
      *
      * @return string
      */
     public function totalGivennames(...$params): string
     {
-        if ($params) {
-            $qs       = implode(',', array_fill(0, \count($params), '?'));
-            $params[] = $this->tree->id();
-            $total    = (int) Database::prepare(
-                "SELECT COUNT( n_givn) FROM `##name` WHERE n_givn IN ({$qs}) AND n_file=?"
-            )->execute(
-                $params
-            )->fetchOne();
+        $query = DB::table('name')
+            ->where('n_file', '=', $this->tree->id());
+
+        if (empty($params)) {
+            // Count number of distinct surnames
+            $query
+                ->whereNotIn('g_givn', ['', '@N.N.'])
+                ->groupBy('g_givn');
         } else {
-            $total = (int) Database::prepare(
-                "SELECT COUNT(DISTINCT n_givn) FROM `##name` WHERE n_givn IS NOT NULL AND n_file=?"
-            )->execute([
-                $this->tree->id(),
-            ])->fetchOne();
+            // Count number of occurences of specific surnames.
+            $query->whereIn('g_givn', $params);
         }
 
-        return I18N::number($total);
+        $count = $query->count();
+
+        return I18N::number($count);
     }
 
     /**
-     * Count the surnames.
+     * Count the number of distinct surnames (or the number of occurences of specific surnmaes).
      *
-     * @param array ...$params
+     * @param string[] ...$params
      *
      * @return string
      */
     public function totalSurnames(...$params): string
     {
-        if ($params) {
-            $opt      = 'IN (' . implode(',', array_fill(0, \count($params), '?')) . ')';
-            $distinct = '';
+        $query = DB::table('name')
+            ->where('n_file', '=', $this->tree->id());
+
+        if (empty($params)) {
+            // Count number of distinct surnames
+            $query
+                ->whereNotIn('n_surn', ['', '@N.N.'])
+                ->groupBy('n_surn');
         } else {
-            $opt      = "IS NOT NULL";
-            $distinct = 'DISTINCT';
+            // Count number of occurences of specific surnames.
+            $query->whereIn('n_surn', $params);
         }
-        $params[] = $this->tree->id();
 
-        $total = (int) Database::prepare(
-            "SELECT COUNT({$distinct} n_surn COLLATE '" . I18N::collation() . "')" .
-            " FROM `##name`" .
-            " WHERE n_surn COLLATE '" . I18N::collation() . "' {$opt} AND n_file=?"
-        )->execute(
-            $params
-        )->fetchOne();
-
-        return I18N::number($total);
+        $count = $query->count();
+        
+        return I18N::number($count);
     }
 
     /**
@@ -1505,14 +1501,14 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     private function totalLivingQuery(): int
     {
-        return DB::table('individuals')
-            ->where('i_file', '=', $this->tree->id())
-            ->where(
-                'i_gedcom',
-                'not regexp',
-                "\n1 (" . implode('|', Gedcom::DEATH_EVENTS) . ')'
-            )
-            ->count();
+        $query = DB::table('individuals')
+            ->where('i_file', '=', $this->tree->id());
+
+        foreach (Gedcom::DEATH_EVENTS as $death_event) {
+            $query->where('i_gedcom', 'NOT LIKE', '%\n1 ' . $death_event);
+        }
+
+        return $query->count();
     }
 
     /**
@@ -1524,11 +1520,11 @@ class IndividualRepository implements IndividualRepositoryInterface
     {
         return DB::table('individuals')
             ->where('i_file', '=', $this->tree->id())
-            ->where(
-                'i_gedcom',
-                'regexp',
-                "\n1 (" . implode('|', Gedcom::DEATH_EVENTS) . ')'
-            )
+            ->where(function (Builder $query): void {
+                foreach (Gedcom::DEATH_EVENTS as $death_event) {
+                    $query->orWhere('i_gedcom', 'NOT LIKE', '%\n1 ' . $death_event);
+                }
+            })
             ->count();
     }
 

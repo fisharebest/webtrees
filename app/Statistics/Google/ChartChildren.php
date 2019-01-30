@@ -59,7 +59,7 @@ class ChartChildren extends AbstractGoogle
     {
         $query = DB::table('families')
             ->selectRaw('ROUND(AVG(f_numchil),2) AS num')
-            ->selectRaw('FLOOR(d_year / 100 + 1) AS century')
+            ->selectRaw('ROUND((d_year - 50) / 100) AS century')
             ->join('dates', function (JoinClause $join) {
                 $join->on('d_file', '=', 'f_file')
                     ->on('d_gid', '=', 'f_id');

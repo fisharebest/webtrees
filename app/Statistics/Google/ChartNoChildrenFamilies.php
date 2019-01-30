@@ -61,7 +61,7 @@ class ChartNoChildrenFamilies extends AbstractGoogle
     private function queryRecords(int $year1, int $year2): array
     {
         $query = DB::table('families')
-            ->selectRaw('FLOOR(d_year / 100 + 1) AS century')
+            ->selectRaw('ROUND((d_year - 50) / 100) AS century')
             ->selectRaw('COUNT(*) AS count')
             ->join('dates', function (JoinClause $join) {
                 $join->on('d_file', '=', 'f_file')

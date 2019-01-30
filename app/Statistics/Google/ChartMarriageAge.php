@@ -61,7 +61,7 @@ class ChartMarriageAge extends AbstractGoogle
         return $this->runSql(
             'SELECT '
             . ' ROUND(AVG(married.d_julianday2-birth.d_julianday1-182.5)/365.25,1) AS age, '
-            . ' FLOOR(married.d_year/100+1) AS century, '
+            .  ' ROUND((married.d_year - 50) / 100) AS century,'
             . " 'M' AS sex "
             . 'FROM `##dates` AS married '
             . 'JOIN `##families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) '
@@ -75,7 +75,7 @@ class ChartMarriageAge extends AbstractGoogle
             . 'UNION ALL '
             . 'SELECT '
             . ' ROUND(AVG(married.d_julianday2-birth.d_julianday1-182.5)/365.25,1) AS age, '
-            . ' FLOOR(married.d_year/100+1) AS century, '
+            . ' ROUND((married.d_year - 50) / 100) AS century,'
             . " 'F' AS sex "
             . 'FROM `##dates` AS married '
             . 'JOIN `##families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) '

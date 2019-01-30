@@ -58,7 +58,7 @@ class ChartMarriage extends AbstractGoogle
     private function queryRecords(): array
     {
         $query = DB::table('dates')
-            ->selectRaw('FLOOR(d_year / 100 + 1) AS century')
+            ->selectRaw('ROUND((d_year - 50) / 100) AS century')
             ->selectRaw('COUNT(*) AS total')
             ->where('d_file', '=', $this->tree->id())
             ->where('d_year', '<>', 0)

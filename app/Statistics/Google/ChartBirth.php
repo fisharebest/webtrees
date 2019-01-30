@@ -58,7 +58,7 @@ class ChartBirth extends AbstractGoogle
     private function queryRecords(): array
     {
         $query = DB::table('dates')
-            ->selectRaw('FLOOR(d_year / 100 + 1) AS century')
+            ->selectRaw('ROUND((d_year - 50) / 100) AS century')
             ->selectRaw('COUNT(*) AS total')
             ->where('d_file', '=', $this->tree->id())
             ->where('d_year', '<>', 0)
@@ -107,7 +107,7 @@ class ChartBirth extends AbstractGoogle
         $counts    = [];
         foreach ($rows as $values) {
             $counts[] = intdiv(100 * $values->total, $tot);
-            $centuries .= $this->centuryHelper->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
+            $centuries .= $this->centuryHelper->centuryName((int) $values->century) . ' - ' . I18N::number((int) $values->total) . '|';
         }
 
         $chd    = $this->arrayToExtendedEncoding($counts);
