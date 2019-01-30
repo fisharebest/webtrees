@@ -102,11 +102,9 @@ class UserController extends AbstractBaseController
      */
     public function theme(Request $request): Response
     {
-        $theme = $request->get('theme');
-        if (Site::getPreference('ALLOW_USER_THEMES') === '1' && array_key_exists($theme, Theme::themeNames())) {
-            Session::put('theme_id', $theme);
-            Auth::user()->setPreference('theme', $theme);
-        }
+        $theme = $request->get('theme', '');
+        Session::put('theme_id', $theme);
+        Auth::user()->setPreference('theme', $theme);
 
         return new Response();
     }

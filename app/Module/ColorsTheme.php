@@ -147,33 +147,29 @@ class ColorsTheme extends CloudsTheme
     /**
      * Create a menu of palette options
      *
-     * @return Menu|null
+     * @return Menu
      */
-    public function menuPalette()
+    public function menuPalette(): Menu
     {
-        if ($this->tree !== null && Site::getPreference('ALLOW_USER_THEMES') === '1' && $this->tree->getPreference('ALLOW_THEME_DROPDOWN') === '1') {
-            /* I18N: A colour scheme */
-            $menu = new Menu(I18N::translate('Palette'), '#', 'menu-color');
+        /* I18N: A colour scheme */
+        $menu = new Menu(I18N::translate('Palette'), '#', 'menu-color');
 
-            foreach ($this->palettes as $palette_id => $palette_name) {
-                $url = $this->request->getRequestUri();
-                $url = preg_replace('/&themecolor=[a-z]+/', '', $url);
-                $url .= '&themecolor=' . $palette_id;
+        foreach ($this->palettes as $palette_id => $palette_name) {
+            $url = $this->request->getRequestUri();
+            $url = preg_replace('/&themecolor=[a-z]+/', '', $url);
+            $url .= '&themecolor=' . $palette_id;
 
-                $menu->addSubmenu(new Menu(
-                    $palette_name,
-                    '#',
-                    'menu-color-' . $palette_id . ($this->palette === $palette_id ? ' active' : ''),
-                    [
-                        'onclick' => 'document.location=\'' . $url . '\'',
-                    ]
-                ));
-            }
-
-            return $menu;
+            $menu->addSubmenu(new Menu(
+                $palette_name,
+                '#',
+                'menu-color-' . $palette_id . ($this->palette === $palette_id ? ' active' : ''),
+                [
+                    'onclick' => 'document.location=\'' . $url . '\'',
+                ]
+            ));
         }
 
-        return null;
+        return $menu;
     }
 
     /**

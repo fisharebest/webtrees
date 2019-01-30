@@ -99,19 +99,6 @@
         </div>
     </div>
 
-    <!-- ALLOW_USER_THEMES -->
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-form-label col-sm-3">
-                <?= /* I18N: A configuration setting */
-                I18N::translate('Allow users to select their own theme') ?>
-            </legend>
-            <div class="col-sm-9">
-                <?= Bootstrap4::radioButtons('ALLOW_USER_THEMES', FunctionsEdit::optionsNoYes(), (string) (int) Site::getPreference('ALLOW_USER_THEMES'), true) ?>
-            </div>
-        </div>
-    </fieldset>
-
     <!-- ALLOW_CHANGE_GEDCOM -->
     <fieldset class="form-group">
         <div class="row">

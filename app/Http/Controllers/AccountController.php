@@ -47,7 +47,6 @@ class AccountController extends AbstractBaseController
      */
     public function edit(Tree $tree, User $user): Response
     {
-        $allow_user_themes    = (bool) Site::getPreference('ALLOW_USER_THEMES');
         $my_individual_record = Individual::getInstance($tree->getUserPreference(Auth::user(), 'gedcomid'), $tree);
         $contact_methods      = FunctionsEdit::optionsContactMethods();
         $default_individual   = Individual::getInstance($tree->getUserPreference(Auth::user(), 'rootid'), $tree);
@@ -59,7 +58,6 @@ class AccountController extends AbstractBaseController
         $title                = I18N::translate('My account');
 
         return $this->viewResponse('edit-account-page', [
-            'allow_user_themes'    => $allow_user_themes,
             'contact_methods'      => $contact_methods,
             'default_individual'   => $default_individual,
             'installed_languages'  => $installed_languages,

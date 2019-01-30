@@ -27,7 +27,6 @@ class SeedSiteSettingTable implements SeedInterface
     private const SETTINGS = [
         'INDEX_DIRECTORY'         => 'data/',
         'USE_REGISTRATION_MODULE' => '1',
-        'ALLOW_USER_THEMES'       => '1',
         'ALLOW_CHANGE_GEDCOM'     => '1',
         'SMTP_ACTIVE'             => 'internal',
         'SMTP_HOST'               => 'localhost',

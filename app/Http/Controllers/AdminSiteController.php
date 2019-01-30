@@ -408,7 +408,6 @@ class AdminSiteController extends AbstractBaseController
 
         Site::setPreference('MEMORY_LIMIT', $request->get('MEMORY_LIMIT'));
         Site::setPreference('MAX_EXECUTION_TIME', (string) (int) $request->get('MAX_EXECUTION_TIME'));
-        Site::setPreference('ALLOW_USER_THEMES', (string) (bool) $request->get('ALLOW_USER_THEMES'));
         Site::setPreference('THEME_DIR', $request->get('THEME_DIR'));
         Site::setPreference('ALLOW_CHANGE_GEDCOM', (string) (bool) $request->get('ALLOW_CHANGE_GEDCOM'));
         Site::setPreference('TIMEZONE', $request->get('TIMEZONE'));

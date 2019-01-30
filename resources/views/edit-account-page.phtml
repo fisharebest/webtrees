@@ -140,7 +140,7 @@
         </div>
     </div>
 
-    <?php if ($allow_user_themes) : ?>
+    <?php if (count($themes) > 2) : ?>
         <div class="row form-group">
             <label class="col-sm-3 col-form-label wt-page-options-label" for="theme">
                 <?= I18N::translate('Theme') ?>
