@@ -211,7 +211,7 @@ class Statistics implements
         $this->browserRepository     = new BrowserRepository();
         $this->hitCountRepository    = new HitCountRepository($tree);
         $this->latestUserRepository  = new LatestUserRepository();
-        $this->favoritesRepository   = new FavoritesRepository($tree);
+        $this->favoritesRepository   = new FavoritesRepository($tree, $module_service);
         $this->newsRepository        = new NewsRepository($tree);
         $this->messageRepository     = new MessageRepository();
         $this->contactRepository     = new ContactRepository($tree);
@@ -2589,7 +2589,8 @@ class Statistics implements
     public function callBlock(string $block = '', ...$params): ?string
     {
         /** @var ModuleBlockInterface $module */
-        $module = app(ModuleService::class)->findByComponent('block', $this->tree, Auth::user())
+        $module = $this->module_service
+            ->findByComponent('block', $this->tree, Auth::user())
             ->filter(function (ModuleInterface $module) use ($block): bool {
                 return $module->name() === $block && $module->name() !== 'html';
             })

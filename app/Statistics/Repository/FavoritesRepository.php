@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
 use Fisharebest\Webtrees\Module\UserFavoritesModule;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -34,16 +33,23 @@ class FavoritesRepository implements FavoritesRepositoryInterface
     /**
      * @var Tree
      */
+
     private $tree;
+    /**
+     * @var ModuleService
+     */
+    private $module_service;
 
     /**
      * Constructor.
      *
-     * @param Tree $tree
+     * @param Tree          $tree
+     * @param ModuleService $module_service
      */
-    public function __construct(Tree $tree)
+    public function __construct(Tree $tree, ModuleService $module_service)
     {
-        $this->tree = $tree;
+        $this->tree           = $tree;
+        $this->module_service = $module_service;
     }
 
     /**
@@ -51,7 +57,8 @@ class FavoritesRepository implements FavoritesRepositoryInterface
      */
     public function gedcomFavorites(): string
     {
-        $module = app(ModuleService::class)->findByClass(FamilyTreeFavoritesModule::class);
+        $module = $this->module_service
+            ->findByClass(FamilyTreeFavoritesModule::class);
 
         if ($module instanceof FamilyTreeFavoritesModule) {
             return $module->getBlock($this->tree, 0);
@@ -65,7 +72,8 @@ class FavoritesRepository implements FavoritesRepositoryInterface
      */
     public function userFavorites(): string
     {
-        $module = app(ModuleService::class)->findByClass(UserFavoritesModule::class);
+        $module = $this->module_service
+            ->findByClass(UserFavoritesModule::class);
 
         if ($module instanceof UserFavoritesModule) {
             return $module->getBlock($this->tree, 0);
@@ -80,7 +88,8 @@ class FavoritesRepository implements FavoritesRepositoryInterface
     public function totalGedcomFavorites(): string
     {
         $count  = 0;
-        $module = app(ModuleService::class)->findByClass(FamilyTreeFavoritesModule::class);
+        $module = $this->module_service
+            ->findByClass(FamilyTreeFavoritesModule::class);
 
         if ($module instanceof FamilyTreeFavoritesModule) {
             $count = \count($module->getFavorites($this->tree));
@@ -95,7 +104,8 @@ class FavoritesRepository implements FavoritesRepositoryInterface
     public function totalUserFavorites(): string
     {
         $count  = 0;
-        $module = app(ModuleService::class)->findByClass(UserFavoritesModule::class);
+        $module = $this->module_service
+            ->findByClass(UserFavoritesModule::class);
 
         if ($module instanceof UserFavoritesModule) {
             $count = \count($module->getFavorites($this->tree, Auth::user()));
