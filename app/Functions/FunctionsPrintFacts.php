@@ -38,6 +38,7 @@ use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
@@ -532,7 +533,7 @@ class FunctionsPrintFacts
 
                 $values = ['<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a>'];
 
-                $module = Module::findByComponent('chart', $person->tree(), Auth::user())->first(function (ModuleInterface $module) {
+                $module = app(ModuleService::class)->findByComponent('chart', $person->tree(), Auth::user())->first(function (ModuleInterface $module) {
                     return $module instanceof RelationshipsChartModule;
                 });
 

@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
 use Fisharebest\Webtrees\Module\FamilyTreeNewsModule;
 use Fisharebest\Webtrees\Module\FamilyTreeStatisticsModule;
@@ -34,6 +33,7 @@ use Fisharebest\Webtrees\Module\UserFavoritesModule;
 use Fisharebest\Webtrees\Module\UserMessagesModule;
 use Fisharebest\Webtrees\Module\UserWelcomeModule;
 use Fisharebest\Webtrees\Module\WelcomeBlockModule;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -78,6 +78,21 @@ class HomePageController extends AbstractBaseController
             4 => LoggedInUsersModule::class,
         ],
     ];
+
+    /**
+     * @var ModuleService
+     */
+    private $module_service;
+
+    /**
+     * HomePageController constructor.
+     *
+     * @param ModuleService $module_service
+     */
+    public function __construct(ModuleService $module_service)
+    {
+        $this->module_service = $module_service;
+    }
 
     /**
      * Show a form to edit block config options.
@@ -145,7 +160,7 @@ class HomePageController extends AbstractBaseController
             throw new NotFoundHttpException();
         }
 
-        $module = Module::findByName($block->module_name);
+        $module = $this->module_service->findByName($block->module_name);
 
         if (!$module instanceof ModuleBlockInterface) {
             throw new NotFoundHttpException();
@@ -223,7 +238,7 @@ class HomePageController extends AbstractBaseController
             throw new NotFoundHttpException('This block does not exist');
         }
 
-        $module = Module::findByName($block->module_name);
+        $module = $this->module_service->findByName($block->module_name);
 
         if (!$module instanceof ModuleBlockInterface) {
             throw new NotFoundHttpException($block->module_name . ' is not a block');
@@ -616,7 +631,7 @@ class HomePageController extends AbstractBaseController
      */
     private function getBlockModule(Tree $tree, int $block_id): ModuleBlockInterface
     {
-        $active_blocks = Module::findByComponent('block', $tree, Auth::user());
+        $active_blocks = $this->module_service->findByComponent('block', $tree, Auth::user());
 
         $module_name = DB::table('block')
             ->where('block_id', '=', $block_id)
@@ -640,7 +655,7 @@ class HomePageController extends AbstractBaseController
      */
     private function availableTreeBlocks(): Collection
     {
-        return Module::findByInterface(ModuleBlockInterface::class)
+        return $this->module_service->findByInterface(ModuleBlockInterface::class)
             ->filter(function (ModuleBlockInterface $block): bool {
                 return $block->isTreeBlock();
             })
@@ -656,7 +671,7 @@ class HomePageController extends AbstractBaseController
      */
     private function availableUserBlocks(): Collection
     {
-        return Module::findByInterface(ModuleBlockInterface::class)
+        return $this->module_service->findByInterface(ModuleBlockInterface::class)
             ->filter(function (ModuleBlockInterface $block): bool {
                 return $block->isUserBlock();
             })
@@ -699,7 +714,7 @@ class HomePageController extends AbstractBaseController
         if (!$has_blocks) {
             foreach (['main', 'side'] as $location) {
                 foreach (self::DEFAULT_TREE_PAGE_BLOCKS[$location] as $block_order => $class) {
-                    $module_name = Module::findByClass($class)->name();
+                    $module_name = $this->module_service->findByClass($class)->name();
 
                     DB::table('block')->insert([
                         'gedcom_id'     => -1,
@@ -746,7 +761,7 @@ class HomePageController extends AbstractBaseController
         if (!$has_blocks) {
             foreach (['main', 'side'] as $location) {
                 foreach (self::DEFAULT_USER_PAGE_BLOCKS[$location] as $block_order => $class) {
-                    $module_name = Module::findByClass($class)->name();
+                    $module_name = $this->module_service->findByClass($class)->name();
 
                     DB::table('block')->insert([
                         'user_id'     => -1,

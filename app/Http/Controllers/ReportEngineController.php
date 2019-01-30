@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Report\ReportHtml;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
 use Fisharebest\Webtrees\Report\ReportPdf;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
@@ -45,6 +46,20 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class ReportEngineController extends AbstractBaseController
 {
     /**
+     * @var ModuleService
+     */
+    private $module_service;
+
+    /**
+     * ReportEngineController constructor.
+     *
+     * @param ModuleService $module_service
+     */
+    public function __construct(ModuleService $module_service) {
+        $this->module_service = $module_service;
+    }
+
+    /**
      * A list of available reports.
      *
      * @param Tree $tree
@@ -57,7 +72,7 @@ class ReportEngineController extends AbstractBaseController
         $title   = I18N::translate('Choose a report to run');
 
         return $this->viewResponse('report-select-page', [
-            'reports' => Module::findByComponent('report', $tree, $user),
+            'reports' => $this->module_service->findByComponent('report', $tree, $user),
             'title'   => $title,
         ]);
     }
@@ -75,7 +90,7 @@ class ReportEngineController extends AbstractBaseController
     {
         $pid    = $request->get('xref', '');
         $report = $request->get('report', '');
-        $module = Module::findByName($report);
+        $module = $this->module_service->findByName($report);
 
         if (!$module instanceof ModuleReportInterface) {
             return $this->reportList($tree, $user);
@@ -192,7 +207,7 @@ class ReportEngineController extends AbstractBaseController
         $varnames = $request->get('varnames', []);
         $type     = $request->get('type', []);
 
-        $module = Module::findByName($report);
+        $module = $this->module_service->findByName($report);
 
         if (!$module instanceof ModuleReportInterface) {
             throw new NotFoundHttpException('Report ' . $report . ' not found.');

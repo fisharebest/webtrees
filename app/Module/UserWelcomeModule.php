@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -30,6 +31,20 @@ use Symfony\Component\HttpFoundation\Request;
 class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
+
+    /**
+     * @var ModuleService
+     */
+    private $module_service;
+
+    /**
+     * UserWelcomeModule constructor.
+     *
+     * @param ModuleService $module_service
+     */
+    public function __construct(ModuleService $module_service) {
+        $this->module_service = $module_service;
+    }
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
@@ -69,7 +84,7 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
         $individual = Individual::getInstance($gedcomid, $tree);
         $links      = [];
 
-        $pedigree_chart = Module::findByComponent('chart', $tree, Auth::user())
+        $pedigree_chart = $this->module_service->findByComponent('chart', $tree, Auth::user())
             ->filter(function (ModuleInterface $module): bool {
                 return $module instanceof PedigreeChartModule;
             });

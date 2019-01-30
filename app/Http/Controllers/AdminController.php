@@ -48,6 +48,7 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\HousekeepingService;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
@@ -84,20 +85,22 @@ class AdminController extends AbstractBaseController
      * @param HousekeepingService    $housekeeping_service
      * @param UpgradeService         $upgrade_service
      * @param Admin\ModuleController $module_controller
+     * @param ModuleService          $module_service
      *
      * @return Response
      */
     public function controlPanel(
         HousekeepingService $housekeeping_service,
         UpgradeService $upgrade_service,
-        Admin\ModuleController $module_controller
+        Admin\ModuleController $module_controller,
+        ModuleService $module_service
     ): Response {
         $filesystem      = new Filesystem(new Local(WT_ROOT));
         $files_to_delete = $housekeeping_service->deleteOldWebtreesFiles($filesystem);
         $deleted_modules = $module_controller->deletedModuleNames();
 
         // Analytics modules have their own configl so don't show them twice.
-        $config_modules = Module::findByInterface(ModuleConfigInterface::class, true)
+        $config_modules = $module_service->findByInterface(ModuleConfigInterface::class, true)
             ->filter(function (ModuleConfigInterface $module): bool {
                 return !$module instanceof ModuleAnalyticsInterface;
             });
@@ -121,20 +124,20 @@ class AdminController extends AbstractBaseController
             'repositories'      => $this->totalRepositories(),
             'notes'             => $this->totalNotes(),
             'files_to_delete'   => $files_to_delete,
-            'all_modules'       => Module::all(),
+            'all_modules'       => $module_service->all(),
             'deleted_modules'   => $deleted_modules,
-            'analytics_modules' => Module::findByInterface(ModuleAnalyticsInterface::class, true),
-            'block_modules'     => Module::findByInterface(ModuleBlockInterface::class, true),
-            'chart_modules'     => Module::findByInterface(ModuleChartInterface::class, true),
+            'analytics_modules' => $module_service->findByInterface(ModuleAnalyticsInterface::class, true),
+            'block_modules'     => $module_service->findByInterface(ModuleBlockInterface::class, true),
+            'chart_modules'     => $module_service->findByInterface(ModuleChartInterface::class, true),
             'config_modules'    => $config_modules,
-            'footer_modules'    => Module::findByInterface(ModuleFooterInterface::class, true),
-            'history_modules'   => Module::findByInterface(ModuleHistoricEventsInterface::class, true),
-            'language_modules'  => Module::findByInterface(ModuleLanguageInterface::class, true),
-            'menu_modules'      => Module::findByInterface(ModuleMenuInterface::class, true),
-            'report_modules'    => Module::findByInterface(ModuleReportInterface::class, true),
-            'sidebar_modules'   => Module::findByInterface(ModuleSidebarInterface::class, true),
-            'tab_modules'       => Module::findByInterface(ModuleTabInterface::class, true),
-            'theme_modules'     => Module::findByInterface(ModuleThemeInterface::class, true),
+            'footer_modules'    => $module_service->findByInterface(ModuleFooterInterface::class, true),
+            'history_modules'   => $module_service->findByInterface(ModuleHistoricEventsInterface::class, true),
+            'language_modules'  => $module_service->findByInterface(ModuleLanguageInterface::class, true),
+            'menu_modules'      => $module_service->findByInterface(ModuleMenuInterface::class, true),
+            'report_modules'    => $module_service->findByInterface(ModuleReportInterface::class, true),
+            'sidebar_modules'   => $module_service->findByInterface(ModuleSidebarInterface::class, true),
+            'tab_modules'       => $module_service->findByInterface(ModuleTabInterface::class, true),
+            'theme_modules'     => $module_service->findByInterface(ModuleThemeInterface::class, true),
         ]);
     }
 

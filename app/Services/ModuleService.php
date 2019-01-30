@@ -15,9 +15,12 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Services;
 
 use Closure;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\AhnentafelReportModule;
 use Fisharebest\Webtrees\Module\AlbumModule;
 use Fisharebest\Webtrees\Module\AncestorsChartModule;
@@ -117,6 +120,9 @@ use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Module\WelcomeBlockModule;
 use Fisharebest\Webtrees\Module\XeneaTheme;
 use Fisharebest\Webtrees\Module\YahrzeitModule;
+use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -126,7 +132,7 @@ use Throwable;
 /**
  * Functions for managing and maintaining modules.
  */
-class Module
+class ModuleService
 {
     // Some types of module have different access levels in different trees.
     private const COMPONENTS = [
@@ -237,7 +243,7 @@ class Module
      *
      * @return Collection
      */
-    private static function coreModules(): Collection
+    private function coreModules(): Collection
     {
         $modules = new Collection(self::CORE_MODULES);
 
@@ -255,7 +261,7 @@ class Module
      *
      * @return Collection
      */
-    private static function customModules(): Collection
+    private function customModules(): Collection
     {
         $pattern   = WT_ROOT . Webtrees::MODULES_PATH . '*/module.php';
         $filenames = glob($pattern);
@@ -296,7 +302,7 @@ class Module
      *
      * @return Collection|ModuleInterface[]
      */
-    public static function all(): Collection
+    public function all(): Collection
     {
         return app('cache.array')->rememberForever('all_modules', function (): Collection {
             // Modules have a default status, order etc.
@@ -347,7 +353,7 @@ class Module
      *
      * @return mixed
      */
-    private static function load(string $filename)
+    private function load(string $filename)
     {
         return include $filename;
     }
@@ -357,7 +363,7 @@ class Module
      *
      * @return Closure
      */
-    private static function moduleSorter(): Closure
+    private function moduleSorter(): Closure
     {
         return function (ModuleInterface $x, ModuleInterface $y): int {
             return I18N::strcasecmp($x->title(), $y->title());
@@ -369,7 +375,7 @@ class Module
      *
      * @return Closure
      */
-    private static function footerSorter(): Closure
+    private function footerSorter(): Closure
     {
         return function (ModuleFooterInterface $x, ModuleFooterInterface $y): int {
             return $x->getFooterOrder() <=> $y->getFooterOrder();
@@ -381,7 +387,7 @@ class Module
      *
      * @return Closure
      */
-    private static function menuSorter(): Closure
+    private function menuSorter(): Closure
     {
         return function (ModuleMenuInterface $x, ModuleMenuInterface $y): int {
             return $x->getMenuOrder() <=> $y->getMenuOrder();
@@ -393,7 +399,7 @@ class Module
      *
      * @return Closure
      */
-    private static function sidebarSorter(): Closure
+    private function sidebarSorter(): Closure
     {
         return function (ModuleSidebarInterface $x, ModuleSidebarInterface $y): int {
             return $x->getSidebarOrder() <=> $y->getSidebarOrder();
@@ -405,7 +411,7 @@ class Module
      *
      * @return Closure
      */
-    private static function tabSorter(): Closure
+    private function tabSorter(): Closure
     {
         return function (ModuleTabInterface $x, ModuleTabInterface $y): int {
             return $x->getTabOrder() <=> $y->getTabOrder();
@@ -419,9 +425,9 @@ class Module
      * @param Tree   $tree
      * @param User   $user
      *
-     * @return Collection|ModuleBlockInterface[]|ModuleChartInterface[]|ModuleMenuInterface[]|ModuleReportInterface[]|ModuleSidebarInterface[]|ModuleTabInterface[]
+     * @return Collection|ModuleInterface[]
      */
-    public static function findByComponent(string $component, Tree $tree, User $user): Collection
+    public function findByComponent(string $component, Tree $tree, User $user): Collection
     {
         $interface = self::COMPONENTS[$component];
 
@@ -439,7 +445,7 @@ class Module
      *
      * @return Collection|ModuleInterface[]
      */
-    public static function findByInterface(string $interface, $include_disabled = false): Collection
+    public function findByInterface(string $interface, $include_disabled = false): Collection
     {
         $modules = self::all()
             ->filter(function (ModuleInterface $module) use ($interface): bool {
@@ -473,7 +479,7 @@ class Module
      *
      * @return ModuleInterface|null
      */
-    public static function findByName(string $module_name): ?ModuleInterface
+    public function findByName(string $module_name): ?ModuleInterface
     {
         return self::all()
             ->filter(function (ModuleInterface $module) use ($module_name): bool {
@@ -489,7 +495,7 @@ class Module
      *
      * @return ModuleInterface|null
      */
-    public static function findByClass(string $class_name): ?ModuleInterface
+    public function findByClass(string $class_name): ?ModuleInterface
     {
         return self::all()
             ->filter(function (ModuleInterface $module) use ($class_name): bool {

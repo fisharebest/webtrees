@@ -33,6 +33,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Support\Collection;
@@ -75,6 +76,21 @@ class IndividualController extends AbstractBaseController
         '_UID',
         '_WT_OBJE_SORT',
     ];
+
+    /**
+     * @var ModuleService
+     */
+    private $module_service;
+
+    /**
+     * IndividualController constructor.
+     *
+     * @param ModuleService $module_service
+     */
+    public function __construct(ModuleService $module_service)
+    {
+        $this->module_service = $module_service;
+    }
 
     /**
      * Show a individual's page.
@@ -163,7 +179,7 @@ class IndividualController extends AbstractBaseController
         $xref        = $request->get('xref', '');
         $record      = Individual::getInstance($xref, $tree);
         $module_name = $request->get('module');
-        $module      = Module::findByName($module_name);
+        $module      = $this->module_service->findByName($module_name);
 
         Auth::checkIndividualAccess($record);
         Auth::checkComponentAccess($module, 'tab', $tree, $user);
@@ -402,7 +418,7 @@ class IndividualController extends AbstractBaseController
      */
     public function getSidebars(Individual $individual): Collection
     {
-        return Module::findByComponent('sidebar', $individual->tree(), Auth::user())
+        return $this->module_service->findByComponent('sidebar', $individual->tree(), Auth::user())
             ->filter(function (ModuleSidebarInterface $sidebar) use ($individual): bool {
                 return $sidebar->hasSidebarContent($individual);
             });
@@ -418,7 +434,7 @@ class IndividualController extends AbstractBaseController
      */
     public function getTabs(Individual $individual): Collection
     {
-        return Module::findByComponent('tab', $individual->tree(), Auth::user())
+        return $this->module_service->findByComponent('tab', $individual->tree(), Auth::user())
             ->filter(function (ModuleTabInterface $tab) use ($individual): bool {
                 return $tab->hasTabContent($individual);
             });

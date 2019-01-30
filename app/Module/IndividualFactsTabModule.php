@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Site;
 use Illuminate\Support\Collection;
 
@@ -35,6 +36,20 @@ use Illuminate\Support\Collection;
 class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;
+
+    /**
+     * @var ModuleService
+     */
+    private $module_service;
+
+    /**
+     * UserWelcomeModule constructor.
+     *
+     * @param ModuleService $module_service
+     */
+    public function __construct(ModuleService $module_service) {
+        $this->module_service = $module_service;
+    }
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
@@ -95,7 +110,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                     break;
 
                 default:
-                    $use_extra_info_module = Module::findByComponent('sidebar', $individual->tree(), Auth::user())
+                    $use_extra_info_module = $this->module_service->findByComponent('sidebar', $individual->tree(), Auth::user())
                         ->filter(function (ModuleInterface $module): bool {
                             return $module instanceof ExtraInformationModule;
                         })->isNotEmpty();
@@ -445,9 +460,9 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return Fact[]
      */
-    private static function historicalFacts(Individual $individual): array
+    private function historicalFacts(Individual $individual): array
     {
-        return Module::findByInterface(ModuleHistoricEventsInterface::class)
+        return $this->module_service->findByInterface(ModuleHistoricEventsInterface::class)
             ->map(function (ModuleHistoricEventsInterface $module) use ($individual): Collection {
                 return $module->historicEventsForIndividual($individual);
             })

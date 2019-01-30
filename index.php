@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
@@ -229,7 +230,7 @@ try {
 
     DebugBar::startMeasure('init theme');
 
-    $themes = Module::findByInterface(ModuleThemeInterface::class);
+    $themes = app()->make(ModuleService::class)->findByInterface(ModuleThemeInterface::class);
 
     // Last theme used?
     $theme = $themes->get(Session::get('theme_id', ''));

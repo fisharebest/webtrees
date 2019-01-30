@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
@@ -332,7 +333,7 @@ trait ModuleThemeTrait
     public function individualBoxMenuCharts(Individual $individual): array
     {
         $menus = [];
-        foreach (Module::findByComponent('chart', $this->tree, Auth::user()) as $chart) {
+        foreach (app(ModuleService::class)->findByComponent('chart', $this->tree, Auth::user()) as $chart) {
             $menu = $chart->chartBoxMenu($individual);
             if ($menu) {
                 $menus[] = $menu;
@@ -538,7 +539,7 @@ trait ModuleThemeTrait
     {
         $gedcomid = $this->tree->getUserPreference(Auth::user(), 'gedcomid');
 
-        $pedigree_chart = Module::findByComponent('chart', $this->tree, Auth::user())
+        $pedigree_chart = app(ModuleService::class)->findByComponent('chart', $this->tree, Auth::user())
             ->filter(function (ModuleInterface $module): bool {
                 return $module instanceof PedigreeChartModule;
             });
@@ -583,7 +584,7 @@ trait ModuleThemeTrait
      */
     public function menuThemes()
     {
-        $themes = Module::findByInterface(ModuleThemeInterface::class);
+        $themes = app(ModuleService::class)->findByInterface(ModuleThemeInterface::class);
 
         $current_theme = app()->make(ModuleThemeInterface::class);
 
@@ -633,7 +634,7 @@ trait ModuleThemeTrait
      */
     public function primaryMenu(): array
     {
-        return Module::findByComponent('menu', $this->tree, Auth::user())
+        return app(ModuleService::class)->findByComponent('menu', $this->tree, Auth::user())
             ->map(function (ModuleMenuInterface $menu): ?Menu {
                 return $menu->getMenu($this->tree);
             })

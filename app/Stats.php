@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Statistics\Repository\BrowserRepository;
 use Fisharebest\Webtrees\Statistics\Repository\ContactRepository;
 use Fisharebest\Webtrees\Statistics\Repository\EventRepository;
@@ -2578,7 +2579,7 @@ class Stats implements
     public function callBlock(string $block = '', ...$params): ?string
     {
         /** @var ModuleBlockInterface $module */
-        $module = Module::findByComponent('block', $this->tree, Auth::user())
+        $module = app(ModuleService::class)->findByComponent('block', $this->tree, Auth::user())
             ->filter(function (ModuleInterface $module) use ($block): bool {
                 return $module->name() === $block && $module->name() !== 'html';
             })

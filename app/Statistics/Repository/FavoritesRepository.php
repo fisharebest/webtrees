@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
 use Fisharebest\Webtrees\Module\UserFavoritesModule;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\FavoritesRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 
@@ -50,7 +51,7 @@ class FavoritesRepository implements FavoritesRepositoryInterface
      */
     public function gedcomFavorites(): string
     {
-        $module = Module::findByClass(FamilyTreeFavoritesModule::class);
+        $module = app(ModuleService::class)->findByClass(FamilyTreeFavoritesModule::class);
 
         if ($module instanceof FamilyTreeFavoritesModule) {
             return $module->getBlock($this->tree, 0);
@@ -64,7 +65,7 @@ class FavoritesRepository implements FavoritesRepositoryInterface
      */
     public function userFavorites(): string
     {
-        $module = Module::findByClass(UserFavoritesModule::class);
+        $module = app(ModuleService::class)->findByClass(UserFavoritesModule::class);
 
         if ($module instanceof UserFavoritesModule) {
             return $module->getBlock($this->tree, 0);
@@ -79,7 +80,7 @@ class FavoritesRepository implements FavoritesRepositoryInterface
     public function totalGedcomFavorites(): string
     {
         $count  = 0;
-        $module = Module::findByClass(FamilyTreeFavoritesModule::class);
+        $module = app(ModuleService::class)->findByClass(FamilyTreeFavoritesModule::class);
 
         if ($module instanceof FamilyTreeFavoritesModule) {
             $count = \count($module->getFavorites($this->tree));
@@ -94,7 +95,7 @@ class FavoritesRepository implements FavoritesRepositoryInterface
     public function totalUserFavorites(): string
     {
         $count  = 0;
-        $module = Module::findByClass(UserFavoritesModule::class);
+        $module = app(ModuleService::class)->findByClass(UserFavoritesModule::class);
 
         if ($module instanceof UserFavoritesModule) {
             $count = \count($module->getFavorites($this->tree, Auth::user()));

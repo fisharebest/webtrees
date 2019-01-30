@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Site;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,15 +40,21 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
         MatomoAnalyticsModule::class,
         StatcounterModule::class,
     ];
+    /**
+     * @var ModuleService
+     */
+    private $module_service;
 
     /**
      * Dependency injection.
      *
-     * @param Request $request
+     * @param Request       $request
+     * @param ModuleService $module_service
      */
-    public function __construct(Request $request)
+    public function __construct(Request $request, ModuleService $module_service)
     {
         $this->request = $request;
+        $this->module_service = $module_service;
     }
 
     /**
@@ -120,7 +127,7 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
         }
 
         foreach (self::TRACKING_MODULES as $class) {
-            $module = Module::findByClass($class);
+            $module = $this->module_service->findByClass($class);
 
             if ($module instanceof ModuleAnalyticsInterface) {
                 if ($module->analyticsCanShow()) {

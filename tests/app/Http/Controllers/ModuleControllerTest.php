@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Application;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -38,7 +39,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testMissingModule(): void
     {
         $user       = Auth::user();
-        $controller = new ModuleController();
+        $controller = new ModuleController(new ModuleService());
         $request    = new Request(['route' => 'module']);
         $controller->action($request, $user, new Application());
     }
@@ -50,7 +51,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testInvalidModule(): void
     {
         $user       = Auth::user();
-        $controller = new ModuleController();
+        $controller = new ModuleController(new ModuleService());
         $request    = new Request(['route' => 'module', 'module' => 'no-such-module']);
         $controller->action($request, $user, new Application());
     }
@@ -62,7 +63,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testMissingAction(): void
     {
         $user       = Auth::user();
-        $controller = new ModuleController();
+        $controller = new ModuleController(new ModuleService());
         $request    = new Request(['route' => 'module', 'module' => 'sitemap']);
         $controller->action($request, $user, new Application());
     }
@@ -74,7 +75,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testInvalidAction(): void
     {
         $user       = Auth::user();
-        $controller = new ModuleController();
+        $controller = new ModuleController(new ModuleService());
         $request    = new Request(['route' => 'module', 'module' => 'sitemap', 'action' => 'no-such-action']);
         $controller->action($request, $user, new Application());
     }
@@ -88,7 +89,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         //$tree = $this->importTree('demo.ged');
         $user = Auth::user();
 
-        $controller = new ModuleController();
+        $controller = new ModuleController(new ModuleService());
 
         $request = new Request(['route' => 'module', 'module' => 'sitemap', 'action' => 'DoAdminStuff']);
         $controller->action($request, $user, new Application());
@@ -100,7 +101,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testSucessfulAction(): void
     {
         $user       = Auth::user();
-        $controller = new ModuleController();
+        $controller = new ModuleController(new ModuleService());
         $request    = new Request(['route' => 'module', 'module' => 'sitemap', 'action' => 'Index']);
         $response   = $controller->action($request, $user, new Application());
 

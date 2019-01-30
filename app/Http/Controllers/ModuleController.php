@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,6 +34,21 @@ use function strtolower;
 class ModuleController extends AbstractBaseController
 {
     /**
+     * @var ModuleService
+     */
+    private $module_service;
+
+    /**
+     * ModuleController constructor.
+     *
+     * @param ModuleService $module_service
+     */
+    public function __construct(ModuleService $module_service)
+    {
+        $this->module_service = $module_service;
+    }
+
+    /**
      * Perform an HTTP action for one of the modules.
      *
      * @param Request $request
@@ -48,7 +63,7 @@ class ModuleController extends AbstractBaseController
         // Check that the module is enabled.
         // The module itself will need to check any tree-level access,
         // which may be different for each component (tab, menu, etc.) of the module.
-        $module = Module::findByName($module_name);
+        $module = $this->module_service->findByName($module_name);
 
         // We'll call a function such as Module::getFooBarAction()
         $verb   = strtolower($request->getMethod());

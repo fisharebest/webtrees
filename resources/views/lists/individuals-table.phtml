@@ -2,9 +2,9 @@
 <?php use Fisharebest\Webtrees\GedcomTag; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Individual; ?>
-<?php use Fisharebest\Webtrees\Module; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleInterface; ?>
 <?php use Fisharebest\Webtrees\Module\RelationshipsChartModule; ?>
+<?php use Fisharebest\Webtrees\Services\ModuleService; ?>
 <?php use Fisharebest\Webtrees\Auth; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 <?php use Ramsey\Uuid\Uuid; ?>
@@ -17,7 +17,7 @@ $table_id = 'table-indi-' . Uuid::uuid4()->toString();
 $hundred_years_ago = new Date(date('Y') - 100);
 $unique_indis      = []; // Don't double-count indis with multiple names.
 
-$module = Module::findByComponent('chart', $tree, Auth::user())->first(function (ModuleInterface $module) {
+$module = app(ModuleService::class)->findByComponent('chart', $tree, Auth::user())->first(function (ModuleInterface $module) {
     return $module instanceof RelationshipsChartModule;
 });
 ?>

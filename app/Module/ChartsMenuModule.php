@@ -21,7 +21,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
-use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -31,6 +31,21 @@ use Symfony\Component\HttpFoundation\Request;
 class ChartsMenuModule extends AbstractModule implements ModuleMenuInterface
 {
     use ModuleMenuTrait;
+
+    /**
+     * @var ModuleService
+     */
+    private $module_service;
+
+    /**
+     * ChartsMenuModule constructor.
+     *
+     * @param ModuleService $module_service
+     */
+    public function __construct(ModuleService $module_service)
+    {
+        $this->module_service = $module_service;
+    }
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
@@ -76,7 +91,7 @@ class ChartsMenuModule extends AbstractModule implements ModuleMenuInterface
         $request    = Request::createFromGlobals();
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree) ?? $tree->significantIndividual(Auth::user());
-        $submenus   = Module::findByComponent('chart', $tree, Auth::user())
+        $submenus   = $this->module_service->findByComponent('chart', $tree, Auth::user())
             ->map(function (ModuleChartInterface $module) use ($individual): Menu {
                 return $module->chartMenu($individual);
             });

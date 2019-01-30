@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
@@ -32,6 +31,7 @@ use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
@@ -59,6 +59,21 @@ class ModuleController extends AbstractAdminController
         'sidebar',
         'tab',
     ];
+    
+    /**
+     * @var ModuleService
+     */
+    private $module_service;
+
+    /**
+     * ModuleController constructor.
+     *
+     * @param ModuleService $module_service
+     */
+    public function __construct(ModuleService $module_service)
+    {
+        $this->module_service = $module_service;
+    }
 
     /**
      * Show the administrator a list of modules.
@@ -68,9 +83,9 @@ class ModuleController extends AbstractAdminController
     public function list(): Response
     {
         return $this->viewResponse('admin/modules', [
-            'title'             => I18N::translate('Module administration'),
-            'modules'           => Module::all(),
-            'deleted_modules'   => $this->deletedModuleNames(),
+            'title'           => I18N::translate('Module administration'),
+            'modules'         => $this->module_service->all(),
+            'deleted_modules' => $this->deletedModuleNames(),
         ]);
     }
 
@@ -83,7 +98,7 @@ class ModuleController extends AbstractAdminController
     {
         $database_modules = DB::table('module')->pluck('module_name');
 
-        $disk_modules = Module::all()
+        $disk_modules = $this->module_service->all()
             ->map(function (ModuleInterface $module): string {
                 return $module->name();
             });
@@ -220,6 +235,7 @@ class ModuleController extends AbstractAdminController
             ''
         );
     }
+
     /**
      * @return Response
      */
@@ -249,7 +265,7 @@ class ModuleController extends AbstractAdminController
         return $this->viewResponse('admin/components', [
             'component'    => $component,
             'description'  => $description,
-            'modules'      => Module::findByInterface($interface, true),
+            'modules'      => $this->module_service->findByInterface($interface, true),
             'title'        => $title,
             'trees'        => Tree::all(),
             'uses_access'  => $uses_access,
@@ -266,7 +282,7 @@ class ModuleController extends AbstractAdminController
      */
     public function update(Request $request): RedirectResponse
     {
-        $modules = Module::all();
+        $modules = $this->module_service->all();
 
         foreach ($modules as $module) {
             $new_status = (bool) $request->get('status-' . $module->name());
@@ -295,7 +311,7 @@ class ModuleController extends AbstractAdminController
      */
     public function updateAnalytics(Request $request): RedirectResponse
     {
-        $modules = Module::findByInterface(ModuleAnalyticsInterface::class, true);
+        $modules = $this->module_service->findByInterface(ModuleAnalyticsInterface::class, true);
 
         $this->updateStatus($modules, $request);
 
@@ -309,7 +325,7 @@ class ModuleController extends AbstractAdminController
      */
     public function updateBlocks(Request $request): RedirectResponse
     {
-        $modules = Module::findByInterface(ModuleBlockInterface::class, true);
+        $modules = $this->module_service->findByInterface(ModuleBlockInterface::class, true);
 
         $this->updateStatus($modules, $request);
         $this->updateAccessLevel($modules, 'block', $request);
@@ -324,7 +340,7 @@ class ModuleController extends AbstractAdminController
      */
     public function updateCharts(Request $request): RedirectResponse
     {
-        $modules = Module::findByInterface(ModuleChartInterface::class, true);
+        $modules = $this->module_service->findByInterface(ModuleChartInterface::class, true);
 
         $this->updateStatus($modules, $request);
         $this->updateAccessLevel($modules, 'chart', $request);
@@ -339,7 +355,7 @@ class ModuleController extends AbstractAdminController
      */
     public function updateFooters(Request $request): RedirectResponse
     {
-        $modules = Module::findByInterface(ModuleFooterInterface::class, true);
+        $modules = $this->module_service->findByInterface(ModuleFooterInterface::class, true);
 
         $this->updateStatus($modules, $request);
         $this->updateOrder($modules, 'footer_order', $request);
@@ -354,7 +370,7 @@ class ModuleController extends AbstractAdminController
      */
     public function updateHistory(Request $request): RedirectResponse
     {
-        $modules = Module::findByInterface(ModuleHistoricEventsInterface::class, true);
+        $modules = $this->module_service->findByInterface(ModuleHistoricEventsInterface::class, true);
 
         $this->updateStatus($modules, $request);
 
@@ -368,7 +384,7 @@ class ModuleController extends AbstractAdminController
      */
     public function updateLanguages(Request $request): RedirectResponse
     {
-        $modules = Module::findByInterface(ModuleLanguageInterface::class, true);
+        $modules = $this->module_service->findByInterface(ModuleLanguageInterface::class, true);
 
         $this->updateStatus($modules, $request);
 
@@ -382,7 +398,7 @@ class ModuleController extends AbstractAdminController
      */
     public function updateMenus(Request $request): RedirectResponse
     {
-        $modules = Module::findByInterface(ModuleMenuInterface::class, true);
+        $modules = $this->module_service->findByInterface(ModuleMenuInterface::class, true);
 
         $this->updateStatus($modules, $request);
         $this->updateOrder($modules, 'menu_order', $request);
@@ -398,7 +414,7 @@ class ModuleController extends AbstractAdminController
      */
     public function updateReports(Request $request): RedirectResponse
     {
-        $modules = Module::findByInterface(ModuleReportInterface::class, true);
+        $modules = $this->module_service->findByInterface(ModuleReportInterface::class, true);
 
         $this->updateStatus($modules, $request);
         $this->updateAccessLevel($modules, 'report', $request);
@@ -413,7 +429,7 @@ class ModuleController extends AbstractAdminController
      */
     public function updateSidebars(Request $request): RedirectResponse
     {
-        $modules = Module::findByInterface(ModuleSidebarInterface::class, true);
+        $modules = $this->module_service->findByInterface(ModuleSidebarInterface::class, true);
 
         $this->updateStatus($modules, $request);
         $this->updateOrder($modules, 'sidebar_order', $request);
@@ -429,7 +445,7 @@ class ModuleController extends AbstractAdminController
      */
     public function updateThemes(Request $request): RedirectResponse
     {
-        $modules = Module::findByInterface(ModuleThemeInterface::class, true);
+        $modules = $this->module_service->findByInterface(ModuleThemeInterface::class, true);
 
         $this->updateStatus($modules, $request);
 
@@ -443,7 +459,7 @@ class ModuleController extends AbstractAdminController
      */
     public function updateTabs(Request $request): RedirectResponse
     {
-        $modules = Module::findByInterface(ModuleTabInterface::class, true);
+        $modules = $this->module_service->findByInterface(ModuleTabInterface::class, true);
 
         $this->updateStatus($modules, $request);
         $this->updateOrder($modules, 'tab_order', $request);
@@ -470,7 +486,7 @@ class ModuleController extends AbstractAdminController
             DB::table('module')
                 ->where('module_name', '=', $module->name())
                 ->update([
-                    $column => $order[$module->name()] ?? 0
+                    $column => $order[$module->name()] ?? 0,
                 ]);
         }
     }

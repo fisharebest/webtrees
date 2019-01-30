@@ -6,6 +6,7 @@
 <?php use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleFooterInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleThemeInterface; ?>
+<?php use Fisharebest\Webtrees\Services\ModuleService; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 <?php use Fisharebest\Webtrees\Webtrees; ?>
 
@@ -44,7 +45,7 @@
 
         <?= View::stack('styles') ?>
 
-        <?= Module::findByInterface(ModuleAnalyticsInterface::class)->filter(function (ModuleAnalyticsInterface $module): bool { return $module->analyticsCanShow(); })->map(function (ModuleAnalyticsInterface $module): string { return $module->analyticsSnippet($module->analyticsParameters()); })->implode('') ?>
+        <?= app()->make(ModuleService::class)->findByInterface(ModuleAnalyticsInterface::class)->filter(function (ModuleAnalyticsInterface $module): bool { return $module->analyticsCanShow(); })->map(function (ModuleAnalyticsInterface $module): string { return $module->analyticsSnippet($module->analyticsParameters()); })->implode('') ?>
 
         <?= DebugBar::renderHead() ?>
     </head>
@@ -120,7 +121,7 @@
 
         <footer class="wt-footer-container">
             <div class="wt-footer-content container d-print-none">
-                <?= Module::findByInterface(ModuleFooterInterface::class)->map(function (ModuleFooterInterface $module) use ($tree): string { return app()->dispatch($module, 'getFooter'); })->implode('') ?>
+                <?= app()->make(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(function (ModuleFooterInterface $module) use ($tree): string { return app()->dispatch($module, 'getFooter'); })->implode('') ?>
             </div>
         </footer>
 

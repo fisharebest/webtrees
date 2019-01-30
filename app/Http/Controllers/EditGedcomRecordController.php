@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\CensusAssistantModule;
 use Fisharebest\Webtrees\Services\ClipboardService;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -355,12 +356,13 @@ class EditGedcomRecordController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param ModuleService $module_service
      *
      * @return RedirectResponse
      */
-    public function updateFact(Request $request, Tree $tree): RedirectResponse
+    public function updateFact(Request $request, Tree $tree, ModuleService $module_service): RedirectResponse
     {
         $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id', '');
@@ -428,7 +430,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         $newged = substr($newged, 1); // Remove leading newline
 
-        $census_assistant = Module::findByClass(CensusAssistantModule::class);
+        $census_assistant = $module_service->findByClass(CensusAssistantModule::class);
         if ($census_assistant instanceof CensusAssistantModule && $record instanceof Individual) {
             $newged = $census_assistant->updateCensusAssistant($request, $record, $fact_id, $newged, $keep_chan);
         }

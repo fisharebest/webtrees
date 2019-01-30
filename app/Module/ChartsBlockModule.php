@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -31,6 +32,20 @@ use Symfony\Component\HttpFoundation\Request;
 class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
+
+    /**
+     * @var ModuleService
+     */
+    private $module_service;
+
+    /**
+     * ChartsBlockModule constructor.
+     *
+     * @param ModuleService $module_service
+     */
+    public function __construct(ModuleService $module_service) {
+        $this->module_service = $module_service;
+    }
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
@@ -88,7 +103,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                 default:
                 case 'pedigree':
                     /** @var PedigreeChartModule $module */
-                    $module    = Module::findByClass(PedigreeChartModule::class);
+                    $module    = $this->module_service->findByClass(PedigreeChartModule::class);
                     $title     = $module->chartTitle($person);
                     $chart_url = $module->chartUrl($person, [
                         'ajax'        => true,
@@ -103,7 +118,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
 
                 case 'descendants':
                     /** @var DescendancyChartModule $module */
-                    $module    = Module::findByClass(DescendancyChartModule::class);
+                    $module    = $this->module_service->findByClass(DescendancyChartModule::class);
                     $title     = $module->chartTitle($person);
                     $chart_url = $module->chartUrl($person, [
                         'ajax'        => true,
@@ -118,7 +133,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
 
                 case 'hourglass':
                     /** @var HourglassChartModule $module */
-                    $module    = Module::findByClass(HourglassChartModule::class);
+                    $module    = $this->module_service->findByClass(HourglassChartModule::class);
                     $title     = $module->chartTitle($person);
                     $chart_url = $module->chartUrl($person, [
                         'ajax'        => true,
@@ -132,7 +147,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
 
                 case 'treenav':
                     /** @var InteractiveTreeModule $module */
-                    $module  = Module::findByClass(InteractiveTreeModule::class);
+                    $module  = $this->module_service->findByClass(InteractiveTreeModule::class);
                     $title   = I18N::translate('Interactive tree of %s', $person->getFullName());
                     $tv      = new TreeView();
                     $content = '<script>$("head").append(\'<link rel="stylesheet" href="' . $module->css() . '" type="text/css" />\');</script>';

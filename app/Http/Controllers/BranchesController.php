@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
@@ -40,6 +41,17 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class BranchesController extends AbstractBaseController
 {
+    /** @var ModuleService */
+    protected $module_service;
+    /**
+     * BranchesController constructor.
+     *
+     * @param ModuleService $module_service
+     */
+    public function __construct(ModuleService $module_service)
+    {
+        $this->module_service = $module_service;
+    }
     /**
      * A form to request the page parameters.
      *
@@ -238,7 +250,7 @@ class BranchesController extends AbstractBaseController
      */
     private function getDescendantsHtml(Tree $tree, array $individuals, array $ancestors, string $surname, bool $soundex_dm, bool $soundex_std, Individual $individual, Family $parents = null)
     {
-        $module = Module::findByComponent('chart', $tree, Auth::user())->first(function (ModuleInterface $module) {
+        $module = $this->module_service->findByComponent('chart', $tree, Auth::user())->first(function (ModuleInterface $module) {
             return $module instanceof RelationshipsChartModule;
         });
 

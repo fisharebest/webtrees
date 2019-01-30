@@ -1,7 +1,7 @@
 <?php use Fisharebest\Webtrees\Auth; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Module; ?>
 <?php use Fisharebest\Webtrees\Module\CensusAssistantModule; ?>
+<?php use Fisharebest\Webtrees\Services\ModuleService; ?>
 
 <div class="dropdown wt-page-menu">
     <button class="btn btn-primary dropdown-toggle wt-page-menu-button" type="button" id="page-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -10,7 +10,7 @@
     </button>
     <div class="dropdown-menu dropdown-menu-right wt-page-menu-items" aria-labelledby="page-menu">
 
-        <?php if (false && Module::findByClass(CensusAssistantModule::class)) : ?>
+        <?php if (false && app()->make(ModuleService::class)->findByClass(CensusAssistantModule::class)) : ?>
             <a class="dropdown-item menu-obje-link" href="#" onclick="return ilinkitem('<?= e($record->xref()) ?>','manage','<?= e($record->tree()->name()) ?>');">
                 <?= I18N::translate('Manage the links') ?>
             </a>
