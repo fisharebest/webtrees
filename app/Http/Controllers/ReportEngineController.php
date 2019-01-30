@@ -55,7 +55,8 @@ class ReportEngineController extends AbstractBaseController
      *
      * @param ModuleService $module_service
      */
-    public function __construct(ModuleService $module_service) {
+    public function __construct(ModuleService $module_service)
+    {
         $this->module_service = $module_service;
     }
 

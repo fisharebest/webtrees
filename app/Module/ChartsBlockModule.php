@@ -43,7 +43,8 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param ModuleService $module_service
      */
-    public function __construct(ModuleService $module_service) {
+    public function __construct(ModuleService $module_service)
+    {
         $this->module_service = $module_service;
     }
 
