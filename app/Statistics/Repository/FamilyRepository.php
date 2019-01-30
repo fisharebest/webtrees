@@ -24,13 +24,13 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Statistics\Google\ChartChildren;
 use Fisharebest\Webtrees\Statistics\Google\ChartDivorce;
-use Fisharebest\Webtrees\Statistics\Google\ChartFamily;
 use Fisharebest\Webtrees\Statistics\Google\ChartFamilyLargest;
 use Fisharebest\Webtrees\Statistics\Google\ChartMarriage;
 use Fisharebest\Webtrees\Statistics\Google\ChartMarriageAge;
 use Fisharebest\Webtrees\Statistics\Google\ChartNoChildrenFamilies;
 use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
 
 /**
@@ -62,48 +62,33 @@ class FamilyRepository
      */
     private function familyQuery(string $type): string
     {
-        $rows = $this->runSql(
-            " SELECT f_numchil AS tot, f_id AS id" .
-            " FROM `##families`" .
-            " WHERE" .
-            " f_file={$this->tree->id()}" .
-            " AND f_numchil = (" .
-            "  SELECT max( f_numchil )" .
-            "  FROM `##families`" .
-            "  WHERE f_file ={$this->tree->id()}" .
-            " )" .
-            " LIMIT 1"
-        );
+        $row = DB::table('families')
+            ->where('f_file', '=', $this->tree->id())
+            ->orderBy('f_numchil', 'desc')
+            ->first();
 
-        if (!isset($rows[0])) {
+        if ($row === null) {
             return '';
         }
 
-        $row    = $rows[0];
-        $family = Family::getInstance($row->id, $this->tree);
+        /** @var Family $family */
+        $family = Family::rowMapper()($row);
 
-        if (!$family) {
-            return '';
+        if (!$family->canShow()) {
+            return I18N::translate('This information is private and cannot be shown.');
         }
 
         switch ($type) {
             default:
             case 'full':
-                if ($family->canShow()) {
-                    $result = $family->formatList();
-                } else {
-                    $result = I18N::translate('This information is private and cannot be shown.');
-                }
-                break;
-            case 'size':
-                $result = I18N::number((int) $row->tot);
-                break;
-            case 'name':
-                $result = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a>';
-                break;
-        }
+                return $family->formatList();
 
-        return $result;
+            case 'size':
+                return I18N::number((int) $row->f_numchil);
+
+            case 'name':
+                return '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a>';
+        }
     }
 
     /**
@@ -196,21 +181,21 @@ class FamilyRepository
         }
 
         // TODO
-//        if (I18N::direction() === 'rtl') {
-//            $top10 = str_replace([
-//                '[',
-//                ']',
-//                '(',
-//                ')',
-//                '+',
-//            ], [
-//                '&rlm;[',
-//                '&rlm;]',
-//                '&rlm;(',
-//                '&rlm;)',
-//                '&rlm;+',
-//            ], $top10);
-//        }
+        //        if (I18N::direction() === 'rtl') {
+        //            $top10 = str_replace([
+        //                '[',
+        //                ']',
+        //                '(',
+        //                ')',
+        //                '+',
+        //            ], [
+        //                '&rlm;[',
+        //                '&rlm;]',
+        //                '&rlm;(',
+        //                '&rlm;)',
+        //                '&rlm;+',
+        //            ], $top10);
+        //        }
 
         return $top10;
     }
@@ -479,7 +464,7 @@ class FamilyRepository
                         'age'    => $age,
                     ];
 
-                    $dist[]  = $fam->family;
+                    $dist[] = $fam->family;
                 }
             } elseif (!$one && $child1->canShow() && $child2->canShow()) {
                 $top10[] = [
@@ -492,21 +477,21 @@ class FamilyRepository
         }
 
         // TODO
-//        if (I18N::direction() === 'rtl') {
-//            $top10 = str_replace([
-//                '[',
-//                ']',
-//                '(',
-//                ')',
-//                '+',
-//            ], [
-//                '&rlm;[',
-//                '&rlm;]',
-//                '&rlm;(',
-//                '&rlm;)',
-//                '&rlm;+',
-//            ], $top10);
-//        }
+        //        if (I18N::direction() === 'rtl') {
+        //            $top10 = str_replace([
+        //                '[',
+        //                ']',
+        //                '(',
+        //                ')',
+        //                '+',
+        //            ], [
+        //                '&rlm;[',
+        //                '&rlm;]',
+        //                '&rlm;(',
+        //                '&rlm;)',
+        //                '&rlm;+',
+        //            ], $top10);
+        //        }
 
         return $top10;
     }
@@ -756,21 +741,21 @@ class FamilyRepository
         }
 
         // TODO
-//        if (I18N::direction() === 'rtl') {
-//            $top10 = str_replace([
-//                '[',
-//                ']',
-//                '(',
-//                ')',
-//                '+',
-//            ], [
-//                '&rlm;[',
-//                '&rlm;]',
-//                '&rlm;(',
-//                '&rlm;)',
-//                '&rlm;+',
-//            ], $top10);
-//        }
+        //        if (I18N::direction() === 'rtl') {
+        //            $top10 = str_replace([
+        //                '[',
+        //                ']',
+        //                '(',
+        //                ')',
+        //                '+',
+        //            ], [
+        //                '&rlm;[',
+        //                '&rlm;]',
+        //                '&rlm;(',
+        //                '&rlm;)',
+        //                '&rlm;+',
+        //            ], $top10);
+        //        }
 
         return $top10;
     }
@@ -824,11 +809,12 @@ class FamilyRepository
      * @return string
      */
     public function chartLargestFamilies(
-        string $size       = null,
+        string $size = null,
         string $color_from = null,
-        string $color_to   = null,
-        int $total         = 10
-    ): string {
+        string $color_to = null,
+        int $total = 10
+    ): string
+    {
         return (new ChartFamilyLargest($this->tree))
             ->chartLargestFamilies($size, $color_from, $color_to, $total);
     }

@@ -21,6 +21,8 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 use Fisharebest\Webtrees\Statistics\Helper\Century;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\JoinClause;
 
 /**
  *
@@ -55,29 +57,36 @@ class ChartAge extends AbstractGoogle
      */
     private function queryRecords(): array
     {
-        return $this->runSql(
-            'SELECT'
-            . ' ROUND(AVG(death.d_julianday2-birth.d_julianday1)/365.25,1) AS age,'
-            . ' ROUND((death.d_year - 50) / 100) AS century,'
-            . ' i_sex AS sex'
-            . ' FROM'
-            . ' `##dates` AS death,'
-            . ' `##dates` AS birth,'
-            . ' `##individuals` AS indi'
-            . ' WHERE'
-            . ' indi.i_id=birth.d_gid AND'
-            . ' birth.d_gid=death.d_gid AND'
-            . ' death.d_file=' . $this->tree->id() . ' AND'
-            . ' birth.d_file=death.d_file AND'
-            . ' birth.d_file=indi.i_file AND'
-            . " birth.d_fact='BIRT' AND"
-            . " death.d_fact='DEAT' AND"
-            . ' birth.d_julianday1<>0 AND'
-            . " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND"
-            . " death.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND"
-            . ' death.d_julianday1>birth.d_julianday2'
-            . ' GROUP BY century, sex ORDER BY century, sex'
-        );
+        $prefix = DB::connection()->getTablePrefix();
+
+        return DB::table('individuals')
+            ->join('dates AS birth', function (JoinClause $join): void {
+                $join
+                    ->on('birth.d_file', '=', 'i_file')
+                    ->on('birth.d_gid', '=', 'i_id');
+            })
+           ->join('dates AS death', function (JoinClause $join): void {
+                $join
+                    ->on('death.d_file', '=', 'i_file')
+                    ->on('death.d_gid', '=', 'i_id');
+            })
+            ->where('i_file', '=', $this->tree->id())
+            ->where('birth.d_fact', '=', 'BIRT')
+            ->where('death.d_fact', '=', 'DEAT')
+            ->whereIn('birth.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
+            ->whereIn('death.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
+            ->whereColumn('death.d_julianday1', '>=', 'birth.d_julianday2')
+            ->where('birth.d_julianday2', '<>', 0)
+            ->select([
+                DB::raw('ROUND(AVG(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) / 365.25,1) AS age'),
+                DB::raw('ROUND((' . $prefix . 'death.d_year - 50) / 100) AS century'),
+                'i_sex AS sex'
+            ])
+            ->groupBy(['century', 'sex'])
+            ->orderBy('century')
+            ->orderBy('sex')
+            ->get()
+            ->all();
     }
 
     /**

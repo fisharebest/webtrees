@@ -435,11 +435,11 @@ class IndividualRepository implements IndividualRepositoryInterface
         if (empty($params)) {
             // Count number of distinct surnames
             $query
-                ->whereNotIn('g_givn', ['', '@N.N.'])
-                ->groupBy('g_givn');
+                ->whereNotIn('n_givn', ['', '@N.N.'])
+                ->groupBy('n_givn');
         } else {
             // Count number of occurences of specific surnames.
-            $query->whereIn('g_givn', $params);
+            $query->whereIn('n_givn', $params);
         }
 
         $count = $query->count();
@@ -756,48 +756,27 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     public function statsAgeQuery(string $related = 'BIRT', string $sex = 'BOTH', int $year1 = -1, int $year2 = -1)
     {
-        $sex_search = '';
-        $years      = '';
+        $prefix = DB::connection()->getTablePrefix();
 
-        if ($sex === 'F') {
-            $sex_search = " AND i_sex='F'";
-        } elseif ($sex === 'M') {
-            $sex_search = " AND i_sex='M'";
-        }
+        $query = $this->birthAndDeathQuery($sex);
 
         if ($year1 >= 0 && $year2 >= 0) {
+            $query
+                ->whereIn('birth.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
+                ->whereIn('death.d_type', ['@#DGREGORIAN@', '@#DJULIAN@']);
+
             if ($related === 'BIRT') {
-                $years = " AND birth.d_year BETWEEN '{$year1}' AND '{$year2}'";
+                $query->whereBetween('birth.d_year', [$year1, $year2]);
             } elseif ($related === 'DEAT') {
-                $years = " AND death.d_year BETWEEN '{$year1}' AND '{$year2}'";
+                $query->whereBetween('death.d_year', [$year1, $year2]);
             }
         }
 
-        $rows = $this->runSql(
-            "SELECT" .
-            " death.d_julianday2-birth.d_julianday1 AS age" .
-            " FROM" .
-            " `##dates` AS death," .
-            " `##dates` AS birth," .
-            " `##individuals` AS indi" .
-            " WHERE" .
-            " indi.i_id=birth.d_gid AND" .
-            " birth.d_gid=death.d_gid AND" .
-            " death.d_file={$this->tree->id()} AND" .
-            " birth.d_file=death.d_file AND" .
-            " birth.d_file=indi.i_file AND" .
-            " birth.d_fact='BIRT' AND" .
-            " death.d_fact='DEAT' AND" .
-            " birth.d_julianday1 <> 0 AND" .
-            " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
-            " death.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
-            " death.d_julianday1>birth.d_julianday2" .
-            $years .
-            $sex_search .
-            " ORDER BY age DESC"
-        );
-
-        return $rows;
+        return $query
+            ->select(DB::raw($prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS days'))
+            ->orderby('days', 'desc')
+            ->get()
+            ->all();
     }
 
     /**
@@ -822,58 +801,35 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     private function longlifeQuery(string $type, string $sex): string
     {
-        $sex_search = ' 1=1';
-        if ($sex === 'F') {
-            $sex_search = " i_sex='F'";
-        } elseif ($sex === 'M') {
-            $sex_search = " i_sex='M'";
-        }
+        $prefix = DB::connection()->getTablePrefix();
 
-        $rows = $this->runSql(
-            " SELECT" .
-            " death.d_gid AS id," .
-            " death.d_julianday2-birth.d_julianday1 AS age" .
-            " FROM" .
-            " `##dates` AS death," .
-            " `##dates` AS birth," .
-            " `##individuals` AS indi" .
-            " WHERE" .
-            " indi.i_id=birth.d_gid AND" .
-            " birth.d_gid=death.d_gid AND" .
-            " death.d_file={$this->tree->id()} AND" .
-            " birth.d_file=death.d_file AND" .
-            " birth.d_file=indi.i_file AND" .
-            " birth.d_fact='BIRT' AND" .
-            " death.d_fact='DEAT' AND" .
-            " birth.d_julianday1<>0 AND" .
-            " death.d_julianday1>birth.d_julianday2 AND" .
-            $sex_search .
-            " ORDER BY" .
-            " age DESC LIMIT 1"
-        );
-        if (!isset($rows[0])) {
+        $row = $this->birthAndDeathQuery($sex)
+            ->orderBy('days', 'desc')
+            ->select(['individuals.*', DB::raw($prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS days')])
+            ->first();
+
+        if ($row === null) {
             return '';
         }
-        $row    = $rows[0];
-        $person = Individual::getInstance($row->id, $this->tree);
+
+        /** @var Individual $individual */
+        $individual = Individual::rowMapper()($row);
+
+        if (!$individual->canShow()) {
+            return I18N::translate('This information is private and cannot be shown.');
+        }
+
         switch ($type) {
             default:
             case 'full':
-                if ($person->canShowName()) {
-                    $result = $person->formatList();
-                } else {
-                    $result = I18N::translate('This information is private and cannot be shown.');
-                }
-                break;
-            case 'age':
-                $result = I18N::number((int) ($row->age / 365.25));
-                break;
-            case 'name':
-                $result = '<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a>';
-                break;
-        }
+                return $individual->formatList();
 
-        return $result;
+            case 'age':
+                return I18N::number((int) ($row->days / 365.25));
+
+            case 'name':
+                return '<a href="' . e($individual->url()) . '">' . $individual->getFullName() . '</a>';
+        }
     }
 
     /**
@@ -996,70 +952,27 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     private function topTenOldestQuery(string $sex, int $total): array
     {
-        if ($sex === 'F') {
-            $sex_search = " AND i_sex='F' ";
-        } elseif ($sex === 'M') {
-            $sex_search = " AND i_sex='M' ";
-        } else {
-            $sex_search = '';
-        }
+        $prefix = DB::connection()->getTablePrefix();
 
-        $rows = $this->runSql(
-            "SELECT " .
-            " MAX(death.d_julianday2-birth.d_julianday1) AS age, " .
-            " death.d_gid AS deathdate " .
-            "FROM " .
-            " `##dates` AS death, " .
-            " `##dates` AS birth, " .
-            " `##individuals` AS indi " .
-            "WHERE " .
-            " indi.i_id=birth.d_gid AND " .
-            " birth.d_gid=death.d_gid AND " .
-            " death.d_file={$this->tree->id()} AND " .
-            " birth.d_file=death.d_file AND " .
-            " birth.d_file=indi.i_file AND " .
-            " birth.d_fact='BIRT' AND " .
-            " death.d_fact='DEAT' AND " .
-            " birth.d_julianday1<>0 AND " .
-            " death.d_julianday1>birth.d_julianday2 " .
-            $sex_search .
-            "GROUP BY deathdate " .
-            "ORDER BY age DESC " .
-            "LIMIT " . $total
-        );
-
-        if (!isset($rows[0])) {
-            return [];
-        }
+        $rows = $this->birthAndDeathQuery($sex)
+            ->groupBy(['i_id', 'i_file'])
+            ->orderBy('days', 'desc')
+            ->select(['individuals.*', DB::raw('MAX(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) AS days')])
+            ->take($total)
+            ->get();
 
         $top10 = [];
         foreach ($rows as $row) {
-            $person = Individual::getInstance($row->deathdate, $this->tree);
+            /** @var Individual $individual */
+            $individual = Individual::rowMapper()($row);
 
-            if ($person->canShow()) {
+            if ($individual->canShow()) {
                 $top10[] = [
-                    'person' => $person,
-                    'age'    => $this->calculateAge((int) $row->age),
+                    'person' => $individual,
+                    'age'    => $this->calculateAge((int) $row->days),
                 ];
             }
         }
-
-        // TODO
-//        if (I18N::direction() === 'rtl') {
-//            $top10 = str_replace([
-//                '[',
-//                ']',
-//                '(',
-//                ')',
-//                '+',
-//            ], [
-//                '&rlm;[',
-//                '&rlm;]',
-//                '&rlm;(',
-//                '&rlm;)',
-//                '&rlm;+',
-//            ], $top10);
-//        }
 
         return $top10;
     }
@@ -1227,23 +1140,6 @@ class IndividualRepository implements IndividualRepositoryInterface
             ];
         }
 
-        // TODO
-//        if (I18N::direction() === 'rtl') {
-//            $top10 = str_replace([
-//                '[',
-//                ']',
-//                '(',
-//                ')',
-//                '+',
-//            ], [
-//                '&rlm;[',
-//                '&rlm;]',
-//                '&rlm;(',
-//                '&rlm;)',
-//                '&rlm;+',
-//            ], $top10);
-//        }
-
         return $top10;
     }
 
@@ -1395,37 +1291,18 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     private function averageLifespanQuery(string $sex = 'BOTH', bool $show_years = false): string
     {
-        if ($sex === 'F') {
-            $sex_search = " AND i_sex='F' ";
-        } elseif ($sex === 'M') {
-            $sex_search = " AND i_sex='M' ";
-        } else {
-            $sex_search = '';
-        }
+        $prefix = DB::connection()->getTablePrefix();
 
-        $rows = $this->runSql(
-            "SELECT IFNULL(AVG(death.d_julianday2-birth.d_julianday1), 0) AS age" .
-            " FROM `##dates` AS death, `##dates` AS birth, `##individuals` AS indi" .
-            " WHERE " .
-            " indi.i_id=birth.d_gid AND " .
-            " birth.d_gid=death.d_gid AND " .
-            " death.d_file=" . $this->tree->id() . " AND " .
-            " birth.d_file=death.d_file AND " .
-            " birth.d_file=indi.i_file AND " .
-            " birth.d_fact='BIRT' AND " .
-            " death.d_fact='DEAT' AND " .
-            " birth.d_julianday1<>0 AND " .
-            " death.d_julianday1>birth.d_julianday2 " .
-            $sex_search
-        );
-
-        $age = $rows[0]->age;
+        $days = (int) $this->birthAndDeathQuery($sex)
+            ->groupBy('i_id')
+            ->select(DB::raw('AVG(' . $prefix . 'death.d_julianday1 - ' . $prefix . 'birth.d_julianday2) AS days'))
+            ->value('days');
 
         if ($show_years) {
-            return $this->calculateAge((int) $rows[0]->age);
+            return $this->calculateAge($days);
         }
 
-        return I18N::number($age / 365.25);
+        return I18N::number((int) ($days / 365.25));
     }
 
     /**
@@ -2018,5 +1895,37 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         return (new ChartSex($this->tree))
             ->chartSex($tot_m, $tot_f, $tot_u, $size, $color_female, $color_male, $color_unknown);
+    }
+
+    /**
+     * Query individuals, with their births and deaths.
+     *
+     * @param string $sex
+     *
+     * @return Builder
+     */
+    private function birthAndDeathQuery(string $sex): Builder {
+        $query = DB::table('individuals')
+            ->where('i_file', '=', $this->tree->id())
+            ->join('dates AS birth', function (JoinClause $join): void {
+                $join
+                    ->on('birth.d_file', '=', 'i_file')
+                    ->on('birth.d_gid', '=', 'i_id');
+            })
+            ->join('dates AS death', function (JoinClause $join): void {
+                $join
+                    ->on('death.d_file', '=', 'i_file')
+                    ->on('death.d_gid', '=', 'i_id');
+            })
+            ->where('birth.d_fact', '=', 'BIRT')
+            ->where('death.d_fact', '=', 'DEAT')
+            ->whereColumn('death.d_julianday1', '>=', 'birth.d_julianday2')
+            ->where('birth.d_julianday2', '<>', 0);
+
+        if ($sex === 'M' || $sex === 'F') {
+            $query->where('i_sex', '=', $sex);
+        }
+
+        return $query;
     }
 }
