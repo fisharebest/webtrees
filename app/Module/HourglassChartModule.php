@@ -156,7 +156,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         return new Response(view('modules/hourglass-chart/chart', [
             'descendants' => $descendants,
             'ancestors'   => $ancestors,
-            'bhalfheight' => (int) (Theme::theme()->parameter('chart-box-y') / 2),
+            'bhalfheight' => (int) (app()->make(ModuleThemeInterface::class)->parameter('chart-box-y') / 2),
             'module_name' => $this->name(),
         ]));
     }
@@ -264,13 +264,13 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
                     if ($ct > 1) {
                         if ($i == 0) {
                             // First child
-                            echo '<td style="vertical-align:bottom"><img alt="" role="presentation" class="line1 tvertline" id="vline_' . $chil . '" src="' . Theme::theme()->parameter('image-vline') . '" width="3"></td>';
+                            echo '<td style="vertical-align:bottom"><img alt="" role="presentation" class="line1 tvertline" id="vline_' . $chil . '" src="' . app()->make(ModuleThemeInterface::class)->parameter('image-vline') . '" width="3"></td>';
                         } elseif ($i == $ct - 1) {
                             // Last child
-                            echo '<td style="vertical-align:top"><img alt="" role="presentation" class="bvertline" id="vline_' . $chil . '" src="' . Theme::theme()->parameter('image-vline') . '" width="3"></td>';
+                            echo '<td style="vertical-align:top"><img alt="" role="presentation" class="bvertline" id="vline_' . $chil . '" src="' . app()->make(ModuleThemeInterface::class)->parameter('image-vline') . '" width="3"></td>';
                         } else {
                             // Middle child
-                            echo '<td style="background: url(\'' . Theme::theme()->parameter('image-vline') . '\');"><img alt="" role="presentation" src="' . Theme::theme()->parameter('image-spacer') . '" width="3"></td>';
+                            echo '<td style="background: url(\'' . app()->make(ModuleThemeInterface::class)->parameter('image-vline') . '\');"><img alt="" role="presentation" src="' . app()->make(ModuleThemeInterface::class)->parameter('image-spacer') . '" width="3"></td>';
                         }
                     }
                     echo '</tr>';
@@ -278,21 +278,21 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
                 echo '</table>';
             }
             echo '</td>';
-            echo '<td class="myCharts" width="', Theme::theme()->parameter('chart-box-x'), '">';
+            echo '<td class="myCharts" width="', app()->make(ModuleThemeInterface::class)->parameter('chart-box-x'), '">';
         }
 
         // Print the descendency expansion arrow
         if ($generation == $generations) {
-            $tbwidth = Theme::theme()->parameter('chart-box-x') + 16;
+            $tbwidth = app()->make(ModuleThemeInterface::class)->parameter('chart-box-x') + 16;
             for ($j = $generation; $j < $generations; $j++) {
-                echo "<div style='width: ", $tbwidth, "px;'><br></div></td><td style='width:", Theme::theme()->parameter('chart-box-x'), "px'>";
+                echo "<div style='width: ", $tbwidth, "px;'><br></div></td><td style='width:", app()->make(ModuleThemeInterface::class)->parameter('chart-box-x'), "px'>";
             }
             $kcount = 0;
             foreach ($families as $family) {
                 $kcount += $family->getNumberOfChildren();
             }
             if ($kcount == 0) {
-                echo "</td><td style='width:", Theme::theme()->parameter('chart-box-x'), "px'>";
+                echo "</td><td style='width:", app()->make(ModuleThemeInterface::class)->parameter('chart-box-x'), "px'>";
             } else {
                 echo FontAwesome::linkIcon('arrow-start', I18N::translate('Children'), [
                     'href'         => '#',
@@ -306,13 +306,13 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
                 if ($show_spouse) {
                     echo str_repeat('<br><br><br>', count($families));
                 }
-                echo "</td><td style='width:", Theme::theme()->parameter('chart-box-x'), "px'>";
+                echo "</td><td style='width:", app()->make(ModuleThemeInterface::class)->parameter('chart-box-x'), "px'>";
             }
         }
 
         echo '<table cellspacing="0" cellpadding="0" border="0" id="table2_' . $pid . '"><tr><td> ';
         echo FunctionsPrint::printPedigreePerson($individual);
-        echo '</td><td> <img alt="" role="presentation" class="lineh1" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3">';
+        echo '</td><td> <img alt="" role="presentation" class="lineh1" src="' . app()->make(ModuleThemeInterface::class)->parameter('image-hline') . '" width="7" height="3">';
 
         //----- Print the spouse
         if ($show_spouse) {
@@ -323,14 +323,14 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
             }
             //-- add offset divs to make things line up better
             if ($generation == $generations) {
-                echo "<tr><td colspan '2'><div style='height:", (Theme::theme()->parameter('chart-box-y') / 4), 'px; width:', Theme::theme()->parameter('chart-box-x'), "px;'><br></div>";
+                echo "<tr><td colspan '2'><div style='height:", (app()->make(ModuleThemeInterface::class)->parameter('chart-box-y') / 4), 'px; width:', app()->make(ModuleThemeInterface::class)->parameter('chart-box-x'), "px;'><br></div>";
             }
         }
         echo '</td></tr></table>';
 
         // For the root individual, print a down arrow that allows changing the root of tree
         if ($show_menu && $generation == 1) {
-            echo '<div class="center" id="childarrow" style="position:absolute; width:', Theme::theme()->parameter('chart-box-x'), 'px;">';
+            echo '<div class="center" id="childarrow" style="position:absolute; width:', app()->make(ModuleThemeInterface::class)->parameter('chart-box-x'), 'px;">';
             echo FontAwesome::linkIcon('arrow-down', I18N::translate('Family'), [
                 'href' => '#',
                 'id'   => 'spouse-child-links',
@@ -433,12 +433,12 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         if ($family === null) {
             // Prints empty table columns for children w/o parents up to the max generation
             // This allows vertical line spacing to be consistent
-            echo '<table><tr><td> ' . Theme::theme()->individualBoxEmpty() . '</td>';
+            echo '<table><tr><td> ' . app()->make(ModuleThemeInterface::class)->individualBoxEmpty() . '</td>';
             echo '<td> ';
             // Recursively get the father’s family
             $this->printPersonPedigree($individual, $generation + 1, $generations, $show_spouse);
             echo '</td></tr>';
-            echo '<tr><td> ' . Theme::theme()->individualBoxEmpty() . '</td>';
+            echo '<tr><td> ' . app()->make(ModuleThemeInterface::class)->individualBoxEmpty() . '</td>';
             echo '<td> ';
             // Recursively get the mother’s family
             $this->printPersonPedigree($individual, $generation + 1, $generations, $show_spouse);
@@ -446,8 +446,8 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         } else {
             echo '<table cellspacing="0" cellpadding="0" border="0"  class="hourglassChart">';
             echo '<tr>';
-            echo '<td style="vertical-align:bottom"><img alt="" role="presnentation" class="line3 pvline" src="' . Theme::theme()->parameter('image-vline') . '" width="3"></td>';
-            echo '<td> <img alt="" role="presentation" class="lineh2" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3"></td>';
+            echo '<td style="vertical-align:bottom"><img alt="" role="presnentation" class="line3 pvline" src="' . app()->make(ModuleThemeInterface::class)->parameter('image-vline') . '" width="3"></td>';
+            echo '<td> <img alt="" role="presentation" class="lineh2" src="' . app()->make(ModuleThemeInterface::class)->parameter('image-hline') . '" width="7" height="3"></td>';
             echo '<td class="myCharts"> ';
             //-- print the father box
             echo FunctionsPrint::printPedigreePerson($family->getHusband());
@@ -473,9 +473,9 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
                 if ($generation < $genoffset - 1) {
                     echo '<table>';
                     for ($i = $generation; $i < ((2 ** (($genoffset - 1) - $generation)) / 2) + 2; $i++) {
-                        echo Theme::theme()->individualBoxEmpty();
+                        echo app()->make(ModuleThemeInterface::class)->individualBoxEmpty();
                         echo '</tr>';
-                        echo Theme::theme()->individualBoxEmpty();
+                        echo app()->make(ModuleThemeInterface::class)->individualBoxEmpty();
                         echo '</tr>';
                     }
                     echo '</table>';
@@ -483,8 +483,8 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
             }
             echo
             '</tr><tr>',
-                '<td style="vertical-align:top"><img alt="" role="presentation" class="pvline" src="' . Theme::theme()->parameter('image-vline') . '" width="3"></td>',
-                '<td> <img alt="" role="presentation" class="lineh3" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3"></td>',
+                '<td style="vertical-align:top"><img alt="" role="presentation" class="pvline" src="' . app()->make(ModuleThemeInterface::class)->parameter('image-vline') . '" width="3"></td>',
+                '<td> <img alt="" role="presentation" class="lineh3" src="' . app()->make(ModuleThemeInterface::class)->parameter('image-hline') . '" width="7" height="3"></td>',
             '<td class="myCharts"> ';
 
             echo FunctionsPrint::printPedigreePerson($family->getWife());

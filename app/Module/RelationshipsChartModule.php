@@ -284,11 +284,11 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         // @TODO - convert to views
         ob_start();
         if (I18N::direction() === 'ltr') {
-            $diagonal1 = Theme::theme()->parameter('image-dline');
-            $diagonal2 = Theme::theme()->parameter('image-dline2');
+            $diagonal1 = app()->make(ModuleThemeInterface::class)->parameter('image-dline');
+            $diagonal2 = app()->make(ModuleThemeInterface::class)->parameter('image-dline2');
         } else {
-            $diagonal1 = Theme::theme()->parameter('image-dline2');
-            $diagonal2 = Theme::theme()->parameter('image-dline');
+            $diagonal1 = app()->make(ModuleThemeInterface::class)->parameter('image-dline2');
+            $diagonal2 = app()->make(ModuleThemeInterface::class)->parameter('image-dline');
         }
 
         $num_paths = 0;
@@ -321,7 +321,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                         case 'bro':
                         case 'sis':
                         case 'sib':
-                            $table[$x + 1][$y] = '<div style="background:url(' . Theme::theme()->parameter('image-hline') . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px;">' . view('icons/arrow-end') . '</div></div>';
+                            $table[$x + 1][$y] = '<div style="background:url(' . app()->make(ModuleThemeInterface::class)->parameter('image-hline') . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px;">' . view('icons/arrow-end') . '</div></div>';
                             $x                 += 2;
                             break;
                         case 'son':
@@ -331,7 +331,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                                 $table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: start;">' . view('icons/arrow-down') . '</div></div>';
                                 $x                     += 2;
                             } else {
-                                $table[$x][$y - 1] = '<div style="background:url(' . Theme::theme()
+                                $table[$x][$y - 1] = '<div style="background:url(' . app()->make(ModuleThemeInterface::class)
                                         ->parameter('image-vline') . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . view('icons/arrow-down') . '</div></div>';
                             }
                             $y -= 2;
@@ -343,7 +343,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                                 $table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: end;">' . view('icons/arrow-down') . '</div></div>';
                                 $x                     += 2;
                             } else {
-                                $table[$x][$y + 1] = '<div style="background:url(' . Theme::theme()
+                                $table[$x][$y + 1] = '<div style="background:url(' . app()->make(ModuleThemeInterface::class)
                                         ->parameter('image-vline') . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . view('icons/arrow-up') . '</div></div>';
                             }
                             $y += 2;

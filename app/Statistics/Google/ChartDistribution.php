@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\Helper\Country;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 use Fisharebest\Webtrees\Statistics\Repository\PlaceRepository;
@@ -80,11 +81,11 @@ class ChartDistribution extends AbstractGoogle
         string $chart_type  = '',
         string $surname     = ''
     ): string {
-        $chart_color1 = Theme::theme()->parameter('distribution-chart-no-values');
-        $chart_color2 = Theme::theme()->parameter('distribution-chart-high-values');
-        $chart_color3 = Theme::theme()->parameter('distribution-chart-low-values');
-        $map_x        = Theme::theme()->parameter('distribution-chart-x');
-        $map_y        = Theme::theme()->parameter('distribution-chart-y');
+        $chart_color1 = app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-no-values');
+        $chart_color2 = app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-high-values');
+        $chart_color3 = app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-low-values');
+        $map_x        = app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-x');
+        $map_y        = app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-y');
 
         if ($tot_pl === 0) {
             return '';

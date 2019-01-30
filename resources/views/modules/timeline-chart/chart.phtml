@@ -4,7 +4,7 @@
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Individual; ?>
-<?php use Fisharebest\Webtrees\Theme; ?>
+<?php use Fisharebest\Webtrees\Module\ModuleThemeInterface; ?>
 
 <script>
   var bottomy     = <?= ($topyear - $baseyear) * $scale - 5 ?>;
@@ -186,20 +186,20 @@
 
       if (newy < boxmean) {
         if (textDirection === 'rtl') {
-          dbox.style.backgroundImage    = "url('<?= Theme::theme()->parameter('image-dline2') ?>')";
+          dbox.style.backgroundImage    = "url('<?= app()->make(ModuleThemeInterface::class)->parameter('image-dline2') ?>')";
           dbox.style.backgroundPosition = "0% 0%";
         } else {
-          dbox.style.backgroundImage    = "url('<?= Theme::theme()->parameter('image-dline') ?>')";
+          dbox.style.backgroundImage    = "url('<?= app()->make(ModuleThemeInterface::class)->parameter('image-dline') ?>')";
           dbox.style.backgroundPosition = "0% 100%";
         }
         dy             = -dy;
         dbox.style.top = (newy + bheight / 3) + "px";
       } else {
         if (textDirection === 'rtl') {
-          dbox.style.backgroundImage    = "url('<?= Theme::theme()->parameter('image-dline') ?>')";
+          dbox.style.backgroundImage    = "url('<?= app()->make(ModuleThemeInterface::class)->parameter('image-dline') ?>')";
           dbox.style.backgroundPosition = "0% 100%";
         } else {
-          dbox.style.backgroundImage    = "url('<?= Theme::theme()->parameter('image-dline2') ?>')";
+          dbox.style.backgroundImage    = "url('<?= app()->make(ModuleThemeInterface::class)->parameter('image-dline2') ?>')";
           dbox.style.backgroundPosition = "0% 0%";
         }
 
@@ -247,7 +247,7 @@
 <div id="timeline_chart">
     <!-- print the timeline line image -->
     <div id="line" style="position:absolute; <?= I18N::direction() === 'ltr' ? 'left:22px;' : 'right:22px;' ?> top:0;">
-        <img src="<?= Theme::theme()->parameter('image-vline') ?>" width="3" height="<?= 0 + ($topyear - $baseyear) * $scale ?>">
+        <img src="<?= app()->make(ModuleThemeInterface::class)->parameter('image-vline') ?>" width="3" height="<?= 0 + ($topyear - $baseyear) * $scale ?>">
     </div>
 
     <!-- print divs for the grid -->
@@ -307,7 +307,7 @@
 
         echo "<div id=\"fact$factcount\" style=\"position:absolute; " . (I18N::direction() === 'ltr' ? 'left: ' . ($xoffset) : 'right: ' . ($xoffset)) . 'px; top:' . ($yoffset) . 'px; font-size: 8pt; height: ' . ($bheight) . "px;\" onmousedown=\"factMouseDown(this, '" . $factcount . "', " . ($yoffset - $tyoffset) . ');">';
         echo '<table cellspacing="0" cellpadding="0" border="0" style="cursor: hand;"><tr><td>';
-        echo '<img src="' . Theme::theme()->parameter('image-hline') . '" name="boxline' . $factcount . '" id="boxline' . $factcount . '" height="3" width="10" style="padding-';
+        echo '<img src="' . app()->make(ModuleThemeInterface::class)->parameter('image-hline') . '" name="boxline' . $factcount . '" id="boxline' . $factcount . '" height="3" width="10" style="padding-';
         if (I18N::direction() === 'ltr') {
             echo 'left: 3px;">';
         } else {
@@ -385,7 +385,7 @@
         ?>
 
         <!-- diagonal line -->
-        <div id="dbox<?= $factcount ?>" style="position:absolute; <?= (I18N::direction() === 'ltr' ? 'left: ' . (0 + 25) : 'right: ' . (0 + 25)) ?>px; top:<?= ($dyoffset) ?>px; font-size: 8pt; height: <?= abs($tyoffset) ?>px; width: <?= abs($tyoffset) ?>px; background-image: url('<?= Theme::theme()->parameter($img) ?>'); background-position: 0% <?= $ypos ?>;">
+        <div id="dbox<?= $factcount ?>" style="position:absolute; <?= (I18N::direction() === 'ltr' ? 'left: ' . (0 + 25) : 'right: ' . (0 + 25)) ?>px; top:<?= ($dyoffset) ?>px; font-size: 8pt; height: <?= abs($tyoffset) ?>px; width: <?= abs($tyoffset) ?>px; background-image: url('<?= app()->make(ModuleThemeInterface::class)->parameter($img) ?>'); background-position: 0% <?= $ypos ?>;">
         </div>
     <?php endforeach ?>
 
@@ -396,7 +396,7 @@
             <table cellspacing="0" cellpadding="0">
                 <tr>
                     <td>
-                        <img src="<?= Theme::theme()->parameter('image-hline') ?>" name="ageline<?= $p ?>" id="ageline<?= $p ?>" width="25" height="3">
+                        <img src="<?= app()->make(ModuleThemeInterface::class)->parameter('image-hline') ?>" name="ageline<?= $p ?>" id="ageline<?= $p ?>" width="25" height="3">
                     </td>
                     <td>
                         <?php if (!empty($birthyears[$indi->xref()])) : ?>

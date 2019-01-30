@@ -91,7 +91,6 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = new ModuleController();
 
         $request = new Request(['route' => 'module', 'module' => 'sitemap', 'action' => 'DoAdminStuff']);
-        //Theme::theme(new WebtreesTheme())->init(new Request, $tree);
         $controller->action($request, $user, new Application());
     }
 

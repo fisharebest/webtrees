@@ -30,10 +30,10 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Services\ClipboardService;
-use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
 use Ramsey\Uuid\Uuid;
@@ -55,9 +55,9 @@ class FunctionsPrint
     public static function printPedigreePerson(Individual $person = null): string
     {
         if ($person instanceof Individual) {
-            return Theme::theme()->individualBox($person);
+            return app()->make(ModuleThemeInterface::class)->individualBox($person);
         } else {
-            return Theme::theme()->individualBoxEmpty();
+            return app()->make(ModuleThemeInterface::class)->individualBoxEmpty();
         }
     }
 

@@ -18,6 +18,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Http\Controllers\GedcomFileController;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Schema\SeedDatabase;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Illuminate\Cache\ArrayStore;
@@ -77,6 +79,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
         app()->instance(User::class, User::visitor());
 
         app()->instance(Request::class, Request::createFromGlobals());
+
+        app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);
 
         defined('WT_ROOT') || define('WT_ROOT', dirname(__DIR__) . '/');
         defined('WT_BASE_URL') || define('WT_BASE_URL', 'http://localhost/');

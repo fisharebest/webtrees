@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\Http\Controllers\ListController;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Services\IndividualListService;
 use Fisharebest\Webtrees\Services\LocalizationService;
@@ -47,7 +48,6 @@ class IndividualListTest extends \Fisharebest\Webtrees\TestCase
         $user = Auth::user();
         app()->instance(Tree::class, $tree);
         app()->instance(User::class, $user);
-        Theme::theme(app()->make(WebtreesTheme::class));
 
         $localization_service    = new LocalizationService(new LocaleEnUs());
         $individual_list_service = new IndividualListService($localization_service, $tree);

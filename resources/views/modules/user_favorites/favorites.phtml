@@ -1,13 +1,13 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Individual; ?>
-<?php use Fisharebest\Webtrees\Theme; ?>
+<?php use Fisharebest\Webtrees\Module\ModuleThemeInterface; ?>
 
 <?php foreach ($favorites as $favorite) : ?>
     <div class="person_box action_header<?= $favorite->record instanceof Individual ? $favorite->record->getSex() : '' ?>">
         <?php if ($favorite->favorite_type === 'URL') : ?>
             <a href="<?= e($favorite->url) ?>"><b><?= e($favorite->title) ?></b></a>
         <?php elseif ($favorite->record instanceof Individual) : ?>
-            <?= Theme::theme()->individualBoxLarge($favorite->record) ?>
+            <?= app()->make(ModuleThemeInterface::class)->individualBoxLarge($favorite->record) ?>
         <?php elseif ($favorite->record !== null) : ?>
             <?= $favorite->record->formatList() ?>
         <?php endif ?>

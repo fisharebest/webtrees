@@ -44,18 +44,4 @@ class Theme
 
         return $theme_names;
     }
-
-    /**
-     * The currently active theme
-     *
-     * @param ModuleThemeInterface|null $theme
-     *
-     * @return ModuleThemeInterface
-     */
-    public static function theme(ModuleThemeInterface $theme = null): ModuleThemeInterface
-    {
-        self::$theme = $theme ?? self::$theme ?? app()->make(WebtreesTheme::class);
-
-        return self::$theme;
-    }
 }

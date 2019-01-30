@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 use Fisharebest\Webtrees\Statistics\Helper\Century;
 use Fisharebest\Webtrees\Theme;
@@ -81,10 +82,10 @@ class ChartDivorce extends AbstractGoogle
      */
     public function chartDivorce(string $size = null, string $color_from = null, string $color_to = null): string
     {
-        $chart_color1 = (string) Theme::theme()->parameter('distribution-chart-no-values');
-        $chart_color2 = (string) Theme::theme()->parameter('distribution-chart-high-values');
-        $chart_x      = Theme::theme()->parameter('stats-small-chart-x');
-        $chart_y      = Theme::theme()->parameter('stats-small-chart-y');
+        $chart_color1 = (string) app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-no-values');
+        $chart_color2 = (string) app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-high-values');
+        $chart_x      = app()->make(ModuleThemeInterface::class)->parameter('stats-small-chart-x');
+        $chart_y      = app()->make(ModuleThemeInterface::class)->parameter('stats-small-chart-y');
 
         $size       = $size ?? ($chart_x . 'x' . $chart_y);
         $color_from = $color_from ?? $chart_color1;

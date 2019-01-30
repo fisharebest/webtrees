@@ -5,7 +5,7 @@
 <?php use Fisharebest\Webtrees\Module; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleFooterInterface; ?>
-<?php use Fisharebest\Webtrees\Theme; ?>
+<?php use Fisharebest\Webtrees\Module\ModuleThemeInterface; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 <?php use Fisharebest\Webtrees\Webtrees; ?>
 
@@ -28,9 +28,9 @@
             <?php endif ?>
         </title>
 
-        <link rel="icon" href="<?= Theme::theme()::ASSET_DIR ?>favicon.png" type="image/png">
-        <link rel="icon" type="image/png" href="<?= Theme::theme()::ASSET_DIR ?>favicon192.png" sizes="192x192">
-        <link rel="apple-touch-icon" sizes="180x180" href="<?= Theme::theme()::ASSET_DIR ?>favicon180.png">
+        <link rel="icon" href="<?= app()->make(ModuleThemeInterface::class)::ASSET_DIR ?>favicon.png" type="image/png">
+        <link rel="icon" type="image/png" href="<?= app()->make(ModuleThemeInterface::class)::ASSET_DIR ?>favicon192.png" sizes="192x192">
+        <link rel="apple-touch-icon" sizes="180x180" href="<?= app()->make(ModuleThemeInterface::class)::ASSET_DIR ?>favicon180.png">
 
         <?php if (I18N::direction() === 'rtl') : ?>
             <link rel="stylesheet" type="text/css" href="<?= e(Webtrees::ASSETS_PATH . 'css/vendor-rtl.css') ?>">
@@ -38,7 +38,7 @@
             <link rel="stylesheet" type="text/css" href="<?= e(Webtrees::ASSETS_PATH . 'css/vendor.css') ?>">
         <?php endif ?>
 
-        <?php foreach (Theme::theme()->stylesheets() as $stylesheet) : ?>
+        <?php foreach (app()->make(ModuleThemeInterface::class)->stylesheets() as $stylesheet) : ?>
             <link rel="stylesheet" type="text/css" href="<?=  $stylesheet ?>">
         <?php endforeach ?>
 
@@ -82,7 +82,7 @@
 
                     <div class="col wt-secondary-navigation">
                         <ul class="nav wt-secondary-menu">
-                            <?php foreach (Theme::theme()->secondaryMenu() as $menu) : ?>
+                            <?php foreach (app()->make(ModuleThemeInterface::class)->secondaryMenu() as $menu) : ?>
                                 <?= $menu->bootstrap4() ?>
                             <?php endforeach ?>
                         </ul>
@@ -91,7 +91,7 @@
                     <?php if ($tree !== null) : ?>
                     <nav class="col wt-primary-navigation">
                         <ul class="nav wt-primary-menu">
-                            <?php foreach (Theme::theme()->primaryMenu($individual ?? $tree->significantIndividual(Auth::user())) as $menu) : ?>
+                            <?php foreach (app()->make(ModuleThemeInterface::class)->primaryMenu($individual ?? $tree->significantIndividual(Auth::user())) as $menu) : ?>
                                 <?= $menu->bootstrap4() ?>
                             <?php endforeach ?>
                         </ul>

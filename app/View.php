@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Exception;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use function ob_end_clean;
 use Throwable;
 
@@ -196,7 +197,7 @@ class View
             // @TODO - this includes disabled modules.
             $paths = glob(WT_ROOT . Webtrees::MODULES_PATH . '*/' . self::TEMPLATE_PATH);
             // Theme views
-            $paths[] = WT_ROOT . Webtrees::THEMES_PATH . Theme::theme()->name() . '/' . self::TEMPLATE_PATH;
+            $paths[] = WT_ROOT . Webtrees::THEMES_PATH . app()->make(ModuleThemeInterface::class)->name() . '/' . self::TEMPLATE_PATH;
             // Core views
             $paths[] = WT_ROOT . self::TEMPLATE_PATH;
 

@@ -35,10 +35,10 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
-use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use const PREG_SET_ORDER;
@@ -179,7 +179,7 @@ class FunctionsPrintFacts
         echo '<th scope="row">';
 
         if ($tree->getPreference('SHOW_FACT_ICONS')) {
-            echo Theme::theme()->icon($fact), ' ';
+            echo app()->make(ModuleThemeInterface::class)->icon($fact), ' ';
         }
 
         switch ($fact->getTag()) {

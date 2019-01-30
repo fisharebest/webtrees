@@ -249,7 +249,8 @@ try {
         $theme = app()->make(WebtreesTheme::class);
     }
 
-    Theme::theme($theme);
+    // Bind this theme into the container
+    app()->instance(ModuleThemeInterface::class, $theme);
 
     // Remember this setting
     Session::put('theme_id', $theme->name());

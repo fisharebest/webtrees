@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
 use Fisharebest\Webtrees\Theme;
@@ -68,8 +69,8 @@ class ChartMortality extends AbstractGoogle
             return '';
         }
 
-        $chart_x = Theme::theme()->parameter('stats-small-chart-x');
-        $chart_y = Theme::theme()->parameter('stats-small-chart-y');
+        $chart_x = app()->make(ModuleThemeInterface::class)->parameter('stats-small-chart-x');
+        $chart_y = app()->make(ModuleThemeInterface::class)->parameter('stats-small-chart-y');
 
         $size         = $size ?? ($chart_x . 'x' . $chart_y);
         $color_living = $color_living ?? 'ffffff';

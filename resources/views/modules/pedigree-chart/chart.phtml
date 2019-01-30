@@ -1,6 +1,6 @@
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Theme; ?>
+<?php use Fisharebest\Webtrees\Module\ModuleThemeInterface; ?>
 
 <div id="pedigree-page">
     <div id="pedigree_chart" class="layout<?= e($orientation) ?>">
@@ -132,11 +132,11 @@
 
     // Set line styles & draw them
     ctx.strokeStyle   = canvas.css("color");
-    ctx.lineWidth     = <?= json_encode(Theme::theme()->parameter('line-width')) ?>;
-    ctx.shadowColor   = <?= json_encode(Theme::theme()->parameter('shadow-color')) ?>;
-    ctx.shadowBlur    = <?= json_encode(Theme::theme()->parameter('shadow-blur')) ?>;
-    ctx.shadowOffsetX = <?= json_encode(Theme::theme()->parameter('shadow-offset-x')) ?>;
-    ctx.shadowOffsetY = <?= json_encode(Theme::theme()->parameter('shadow-offset-y')) ?>;
+    ctx.lineWidth     = <?= json_encode(app()->make(ModuleThemeInterface::class)->parameter('line-width')) ?>;
+    ctx.shadowColor   = <?= json_encode(app()->make(ModuleThemeInterface::class)->parameter('shadow-color')) ?>;
+    ctx.shadowBlur    = <?= json_encode(app()->make(ModuleThemeInterface::class)->parameter('shadow-blur')) ?>;
+    ctx.shadowOffsetX = <?= json_encode(app()->make(ModuleThemeInterface::class)->parameter('shadow-offset-x')) ?>;
+    ctx.shadowOffsetY = <?= json_encode(app()->make(ModuleThemeInterface::class)->parameter('shadow-offset-y')) ?>;
     ctx.stroke();
   })();
 </script>

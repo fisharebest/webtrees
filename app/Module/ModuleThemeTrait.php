@@ -105,7 +105,7 @@ trait ModuleThemeTrait
 
         if (file_exists(self::ASSET_DIR . 'images/facts/NULL.png')) {
             // Spacer image - for alignment - until we move to a sprite.
-            return '<img src="' . Theme::theme()->assetUrl() . 'images/facts/NULL.png">';
+            return '<img src="' . app()->make(ModuleThemeInterface::class)->assetUrl() . 'images/facts/NULL.png">';
         }
 
         return '';
@@ -583,25 +583,22 @@ trait ModuleThemeTrait
      */
     public function menuThemes()
     {
-        if ($this->tree !== null && Site::getPreference('ALLOW_USER_THEMES') === '1' && $this->tree->getPreference('ALLOW_THEME_DROPDOWN') === '1') {
-            $themes   = Module::findByInterface(ModuleThemeInterface::class);
-            $submenus = [];
+        $themes = Module::findByInterface(ModuleThemeInterface::class);
 
-            foreach ($themes as $theme) {
-                $class      = 'menu-theme-' . $theme->name() . ($theme === $this ? ' active' : '');
-                $submenus[] = new Menu($theme->title(), '#', $class, [
+        $current_theme = app()->make(ModuleThemeInterface::class);
+
+        if ($themes->count() > 1) {
+            $submenus = $themes->map(function (ModuleThemeInterface $theme) use ($current_theme): Menu {
+                $active     = $theme->name() === $current_theme->name();
+                $class      = 'menu-theme-' . $theme->name() . ($active ? ' active' : '');
+
+                return new Menu($theme->title(), '#', $class, [
                     'onclick'    => 'return false;',
                     'data-theme' => $theme->name(),
                 ]);
-            }
-
-            usort($submenus, function (Menu $x, Menu $y): int {
-                return I18N::strcasecmp($x->getLabel(), $y->getLabel());
             });
 
-            $menu = new Menu(I18N::translate('Theme'), '#', 'menu-theme', [], $submenus);
-
-            return $menu;
+            return  new Menu(I18N::translate('Theme'), '#', 'menu-theme', [], $submenus->all());
         }
 
         return null;

@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
 use Fisharebest\Webtrees\Theme;
@@ -65,8 +66,8 @@ class ChartSex extends AbstractGoogle
         string $color_male    = null,
         string $color_unknown = null
     ): string {
-        $chart_x = Theme::theme()->parameter('stats-small-chart-x');
-        $chart_y = Theme::theme()->parameter('stats-small-chart-y');
+        $chart_x = app()->make(ModuleThemeInterface::class)->parameter('stats-small-chart-x');
+        $chart_y = app()->make(ModuleThemeInterface::class)->parameter('stats-small-chart-y');
 
         $size          = $size ?? ($chart_x . 'x' . $chart_y);
         $color_female  = $color_female ?? 'ffd1dc';

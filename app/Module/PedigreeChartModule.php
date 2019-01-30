@@ -190,8 +190,8 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      */
     public function chart(Individual $individual, int $generations, int $orientation, ChartService $chart_service): Response
     {
-        $bxspacing = Theme::theme()->parameter('chart-spacing-x');
-        $byspacing = Theme::theme()->parameter('chart-spacing-y');
+        $bxspacing = app()->make(ModuleThemeInterface::class)->parameter('chart-spacing-x');
+        $byspacing = app()->make(ModuleThemeInterface::class)->parameter('chart-spacing-y');
         $curgen    = 1; // Track which generation the algorithm is currently working on
         $addoffset = [];
 
@@ -258,10 +258,10 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
             // Offset multiple for current generation
             if ($orientation < static::OLDEST_AT_TOP) {
                 $genoffset  = 2 ** ($curgen - $orientation);
-                $boxspacing = Theme::theme()->parameter('chart-box-y') + $byspacing;
+                $boxspacing = app()->make(ModuleThemeInterface::class)->parameter('chart-box-y') + $byspacing;
             } else {
                 $genoffset  = 2 ** ($curgen - 1);
-                $boxspacing = Theme::theme()->parameter('chart-box-x') + $byspacing;
+                $boxspacing = app()->make(ModuleThemeInterface::class)->parameter('chart-box-x') + $byspacing;
             }
             // Calculate the yoffset position in the generation put child between parents
             $yoffset = ($boxpos * ($boxspacing * $genoffset)) + (($boxspacing / 2) * $genoffset) + ($boxspacing * $genoffset);
@@ -270,7 +270,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
             switch ($orientation) {
                 default:
                 case static::PORTRAIT:
-                    $xoffset = ($this->generations - $curgen) * ((Theme::theme()->parameter('chart-box-x') + $bxspacing) / 1.8);
+                    $xoffset = ($this->generations - $curgen) * ((app()->make(ModuleThemeInterface::class)->parameter('chart-box-x') + $bxspacing) / 1.8);
                     if (!$i && $this->root->getSpouseFamilies()) {
                         $xoffset -= static::ARROW_SIZE;
                     }
@@ -319,7 +319,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
                     break;
 
                 case static::LANDSCAPE:
-                    $xoffset = ($this->generations - $curgen) * (Theme::theme()->parameter('chart-box-x') + $bxspacing);
+                    $xoffset = ($this->generations - $curgen) * (app()->make(ModuleThemeInterface::class)->parameter('chart-box-x') + $bxspacing);
                     if ($curgen == 1) {
                         $xoffset += 10;
                     }
@@ -328,13 +328,13 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
                 case static::OLDEST_AT_TOP:
                     // Swap x & y offsets as chart is rotated
                     $xoffset = $yoffset;
-                    $yoffset = $curgen * (Theme::theme()->parameter('chart-box-y') + ($byspacing * 4));
+                    $yoffset = $curgen * (app()->make(ModuleThemeInterface::class)->parameter('chart-box-y') + ($byspacing * 4));
                     break;
 
                 case static::OLDEST_AT_BOTTOM:
                     // Swap x & y offsets as chart is rotated
                     $xoffset = $yoffset;
-                    $yoffset = ($this->generations - $curgen) * (Theme::theme()->parameter('chart-box-y') + ($byspacing * 2));
+                    $yoffset = ($this->generations - $curgen) * (app()->make(ModuleThemeInterface::class)->parameter('chart-box-y') + ($byspacing * 2));
                     if ($i && $this->root->getSpouseFamilies()) {
                         $yoffset += static::ARROW_SIZE;
                     }
@@ -366,8 +366,8 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
             return $item['y'];
         }, $this->nodes));
 
-        $canvas_width   = $max_xoffset + $bxspacing + Theme::theme()->parameter('chart-box-x') + $addoffset['x'];
-        $canvas_height  = $max_yoffset + $byspacing + Theme::theme()->parameter('chart-box-y') + $addoffset['y'];
+        $canvas_width   = $max_xoffset + $bxspacing + app()->make(ModuleThemeInterface::class)->parameter('chart-box-x') + $addoffset['x'];
+        $canvas_height  = $max_yoffset + $byspacing + app()->make(ModuleThemeInterface::class)->parameter('chart-box-y') + $addoffset['y'];
         $posn           = I18N::direction() === 'rtl' ? 'right' : 'left';
         $last_gen_start = (int) floor($this->treesize / 2);
         if ($orientation === static::OLDEST_AT_TOP || $orientation === static::OLDEST_AT_BOTTOM) {
