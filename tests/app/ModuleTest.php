@@ -86,10 +86,10 @@ class ModuleTest extends \Fisharebest\Webtrees\TestCase
         $this->assertNotEmpty(Module::findByInterface(ModuleReportInterface::class)->all());
         $this->assertNotEmpty(Module::findByInterface(ModuleSidebarInterface::class)->all());
         $this->assertNotEmpty(Module::findByInterface(ModuleTabInterface::class)->all());
+        $this->assertNotEmpty(Module::findByInterface(ModuleThemeInterface::class)->all());
 
         // THe core modules do not contain any of these.
         $this->assertEmpty(Module::findByInterface(ModuleHistoricEventsInterface::class)->all());
-        $this->assertEmpty(Module::findByInterface(ModuleThemeInterface::class)->all());
     }
 
     /**

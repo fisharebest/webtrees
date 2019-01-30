@@ -19,9 +19,9 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\Http\Controllers\ListController;
+use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Services\IndividualListService;
 use Fisharebest\Webtrees\Services\LocalizationService;
-use Fisharebest\Webtrees\Theme\WebtreesTheme;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -45,33 +45,31 @@ class IndividualListTest extends \Fisharebest\Webtrees\TestCase
 
         $tree = $this->importTree('demo.ged');
         $user = Auth::user();
+        app()->instance(Tree::class, $tree);
+        app()->instance(User::class, $user);
+        Theme::theme(app()->make(WebtreesTheme::class));
 
         $localization_service    = new LocalizationService(new LocaleEnUs());
         $individual_list_service = new IndividualListService($localization_service, $tree);
         $controller              = new ListController($individual_list_service, $localization_service);
 
         $request = new Request(['route' => 'individual-list']);
-        Theme::theme(new WebtreesTheme())->init(new Request, $tree);
         $response = $controller->individualList($request, $tree, $user);
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
 
         $request = new Request(['route' => 'individual-list', 'alpha' => 'B']);
-        Theme::theme(new WebtreesTheme())->init(new Request, $tree);
         $response = $controller->individualList($request, $tree, $user);
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
 
         $request = new Request(['route' => 'individual-list', 'alpha' => ',']);
-        Theme::theme(new WebtreesTheme())->init(new Request, $tree);
         $response = $controller->individualList($request, $tree, $user);
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
 
         $request = new Request(['route' => 'individual-list', 'alpha' => '@']);
-        Theme::theme(new WebtreesTheme())->init(new Request, $tree);
         $response = $controller->individualList($request, $tree, $user);
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
 
         $request = new Request(['route' => 'individual-list', 'surname' => 'BRAUN']);
-        Theme::theme(new WebtreesTheme())->init(new Request, $tree);
         $response = $controller->individualList($request, $tree, $user);
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
