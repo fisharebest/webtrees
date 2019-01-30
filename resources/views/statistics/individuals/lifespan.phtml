@@ -1,0 +1,52 @@
+<?php
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+
+/** @var \Fisharebest\Webtrees\Stats $stats */
+?>
+
+<h4 class="border-bottom p-2 mb-4">
+    <?= I18N::translate('Lifespan') ?>
+</h4>
+
+<div class="mb-3">
+    <div class="card-deck">
+        <div class="col-12 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header border-bottom-0">
+                    <?= I18N::translate('Average age at death') ?>
+                    <span class="badge badge-secondary badge-pill float-right"><?= $stats->averageLifespan(true) ?></span>
+                </h5>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header border-bottom-0">
+                    <?= I18N::translate('Males') ?>
+                    <span class="badge badge-secondary badge-pill float-right"><?= $stats->averageLifespanMale(true) ?></span>
+                </h5>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header border-bottom-0">
+                    <?= I18N::translate('Females') ?>
+                    <span class="badge badge-secondary badge-pill float-right"><?= $stats->averageLifespanFemale(true) ?></span>
+                </h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-deck">
+        <div class="col-12 mb-3">
+            <div class="card m-0">
+                <div class="card-body text-center">
+                    <?= $stats->statsAge() ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

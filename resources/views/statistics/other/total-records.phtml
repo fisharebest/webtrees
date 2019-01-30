@@ -1,0 +1,52 @@
+<?php
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+
+/** @var \Fisharebest\Webtrees\Stats $stats */
+?>
+
+<h4 class="border-bottom p-2 mb-4">
+    <?= I18N::translate('Records') ?>
+    <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalRecords() ?></span>
+</h4>
+
+<div class="mb-3">
+    <div class="card-deck">
+        <div class="col-12 col-lg-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header border-bottom-0">
+                    <?= I18N::translate('Media objects') ?>
+                    <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalMedia() ?></span>
+                </h5>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header border-bottom-0">
+                    <?= I18N::translate('Sources') ?>
+                    <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalSources() ?></span>
+                </h5>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header border-bottom-0">
+                    <?= I18N::translate('Notes') ?>
+                    <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalNotes() ?></span>
+                </h5>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header border-bottom-0">
+                    <?= I18N::translate('Repositories') ?>
+                    <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalRepositories() ?></span>
+                </h5>
+            </div>
+        </div>
+    </div>
+</div>

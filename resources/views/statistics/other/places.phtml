@@ -1,0 +1,53 @@
+<?php
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Place;
+
+/** @var \Fisharebest\Webtrees\Stats $stats */
+?>
+
+<h4 class="border-bottom p-2 mb-4">
+    <?= I18N::translate('Places') ?>
+    <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalPlaces() ?></span>
+</h4>
+
+<div class="mb-3">
+    <div class="card-deck">
+        <div class="col-12 col-md-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header">
+                    <?= I18N::translate('Birth places') ?>
+                </h5>
+                <?= $stats->commonBirthPlacesList(); ?>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header">
+                    <?= I18N::translate('Death places') ?>
+                </h5>
+                <?= $stats->commonDeathPlacesList(); ?>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header">
+                    <?= I18N::translate('Marriage places') ?>
+                </h5>
+                <?= $stats->commonMarriagePlacesList(); ?>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header">
+                    <?= I18N::translate('Events in countries') ?>
+                </h5>
+                <?= $stats->commonCountriesList(); ?>
+            </div>
+        </div>
+    </div>
+</div>

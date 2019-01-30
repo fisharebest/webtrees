@@ -1,0 +1,59 @@
+<?php
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+
+/** @var \Fisharebest\Webtrees\Stats $stats */
+?>
+
+<h4 class="border-bottom p-2 mb-4">
+    <?= I18N::translate('Children in family') ?>
+</h4>
+
+<div class="mb-3">
+    <div class="card-deck">
+        <div class="col-12 col-md-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header">
+                    <?= I18N::translate('Average number of children per family') ?>
+                    <span class="badge badge-secondary badge-pill float-right"><?= $stats->averageChildren() ?></span>
+                </h5>
+                <div class="card-body text-center">
+                    <?= $stats->statsChildren() ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header">
+                    <?= I18N::translate('Number of families without children') ?>
+                    <span class="badge badge-secondary badge-pill float-right"><?= $stats->noChildrenFamilies() ?></span>
+                </h5>
+                <div class="card-body text-center">
+                    <?= $stats->chartNoChildrenFamilies() ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-deck">
+        <div class="col-12 col-md-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header">
+                    <?= I18N::translate('Largest families') ?>
+                </h5>
+                <?= $stats->topTenLargestFamilyList(); ?>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header">
+                    <?= I18N::translate('Largest number of grandchildren') ?>
+                </h5>
+                <?= $stats->topTenLargestGrandFamilyList(); ?>
+            </div>
+        </div>
+    </div>
+</div>

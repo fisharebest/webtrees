@@ -1,0 +1,21 @@
+<?php
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\I18N;
+
+/* @var array  $records */
+/* @var Family $family */
+?>
+
+<ul class="list-group list-group-flush">
+    <?php foreach ($records as $record): ?>
+        <?php $family = $record['family']; ?>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="<?= e($family->url()) ?>"><?= $family->getFullName() ?></a>
+            <span class="badge badge-secondary badge-pill ml-3">
+                <?= I18N::plural('%s grandchild', '%s grandchildren', $record['count'], I18N::number($record['count'])) ?>
+            </span>
+        </li>
+    <?php endforeach; ?>
+</ul>

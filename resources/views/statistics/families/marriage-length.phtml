@@ -1,0 +1,37 @@
+<?php
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+
+/** @var \Fisharebest\Webtrees\Stats $stats */
+?>
+
+<h4 class="border-bottom p-2 mb-4">
+    <?= I18N::translate('Length of marriage') ?>
+</h4>
+
+<div class="mb-3">
+    <div class="card-deck">
+        <div class="col-12 col-md-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header">
+                    <?= I18N::translate('Longest marriage'), ' - ', $stats->topAgeOfMarriage() ?>
+                </h5>
+                <div class="card-body">
+                    <?= $stats->topAgeOfMarriageFamily() ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header">
+                    <?= I18N::translate('Shortest marriage'), ' - ', $stats->minAgeOfMarriage() ?>
+                </h5>
+                <div class="card-body">
+                    <?= $stats->minAgeOfMarriageFamily() ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

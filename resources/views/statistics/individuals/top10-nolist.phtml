@@ -1,0 +1,13 @@
+<?php
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\Individual;
+
+/* @var array      $records */
+/* @var Individual $person */
+?>
+
+<?php foreach ($records as $record): ?>
+    <?php $person = $record['person']; ?>
+    <a href="<?= e($person->url()) ?>"><?= $person->getFullName() ?></a> (<?= $record['age'] ?>)
+<?php endforeach; ?>
