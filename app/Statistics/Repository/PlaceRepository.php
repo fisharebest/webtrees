@@ -231,11 +231,11 @@ class PlaceRepository implements PlaceRepositoryInterface
      */
     public function commonDeathPlacesList(): string
     {
-        $places = $this->queryFactPlaces('DEAT','INDI');
+        $places = $this->queryFactPlaces('DEAT', 'INDI');
         return $this->renderTop10($places);
     }
 
-        /**
+    /**
      * A list of common marriage places.
      *
      * @return string
