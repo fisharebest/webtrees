@@ -80,7 +80,7 @@ class ExtraInformationModule extends AbstractModule implements ModuleSidebarInte
         $indifacts = [];
         // The individual’s own facts
         foreach ($individual->facts() as $fact) {
-            if (self::showFact($fact)) {
+            if ($this->showFact($fact)) {
                 $indifacts[] = $fact;
             }
         }
@@ -104,7 +104,7 @@ class ExtraInformationModule extends AbstractModule implements ModuleSidebarInte
      *
      * @return bool
      */
-    public static function showFact(Fact $fact)
+    public function showFact(Fact $fact)
     {
         switch ($fact->getTag()) {
             case 'AFN':

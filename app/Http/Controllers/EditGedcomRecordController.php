@@ -42,6 +42,20 @@ class EditGedcomRecordController extends AbstractEditController
     private const GEDCOM_FACT_REGEX = '^(1 .*(\n2 .*(\n3 .*(\n4 .*(\n5 .*(\n6 .*))))))?$';
 
     /**
+     * @var ModuleService
+     */
+    private $module_service;
+
+    /**
+     * EditGedcomRecordController constructor.
+     *
+     * @param ModuleService $module_service
+     */
+    public function __construct(ModuleService $module_service) {
+        $this->module_service = $module_service;
+    }
+
+    /**
      * Copy a fact to the clipboard.
      *
      * @param Request          $request
@@ -358,11 +372,10 @@ class EditGedcomRecordController extends AbstractEditController
     /**
      * @param Request       $request
      * @param Tree          $tree
-     * @param ModuleService $module_service
      *
      * @return RedirectResponse
      */
-    public function updateFact(Request $request, Tree $tree, ModuleService $module_service): RedirectResponse
+    public function updateFact(Request $request, Tree $tree): RedirectResponse
     {
         $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id', '');
@@ -430,7 +443,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         $newged = substr($newged, 1); // Remove leading newline
 
-        $census_assistant = $module_service->findByClass(CensusAssistantModule::class);
+        $census_assistant = $this->module_service->findByClass(CensusAssistantModule::class);
         if ($census_assistant instanceof CensusAssistantModule && $record instanceof Individual) {
             $newged = $census_assistant->updateCensusAssistant($request, $record, $fact_id, $newged, $keep_chan);
         }

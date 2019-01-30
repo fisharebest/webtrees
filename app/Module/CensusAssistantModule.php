@@ -207,7 +207,7 @@ class CensusAssistantModule extends AbstractModule implements ModuleInterface
      *
      * @return string
      */
-    public static function censusTableEmptyRow(CensusInterface $census): string
+    public function censusTableEmptyRow(CensusInterface $census): string
     {
         return '<tr class="wt-census-assistant-row"><td hidden></td>' . str_repeat('<td class="wt-census-assistant-field"><input type="text" class="form-control wt-census-assistant-form-control"></td>', count($census->columns())) . '<td><a class="icon-remove" href="#" title="' . I18N::translate('Remove') . '"></a></td></tr>';
     }
@@ -223,7 +223,7 @@ class CensusAssistantModule extends AbstractModule implements ModuleInterface
      *
      * @return string
      */
-    public static function censusTableRow(CensusInterface $census, Individual $individual, Individual $head): string
+    public function censusTableRow(CensusInterface $census, Individual $individual, Individual $head): string
     {
         $html = '';
         foreach ($census->columns() as $column) {
