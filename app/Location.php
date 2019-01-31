@@ -89,6 +89,10 @@ class Location
                     'pl_place'     => $location,
                     'pl_parent_id' => $parent_location_id,
                     'pl_level'     => $this->parts->count() - 1,
+                    'pl_lati'      => '',
+                    'pl_long'      => '',
+                    'pl_icon'      => '',
+                    'pl_zoom'      => 2,
                 ]);
             }
 

@@ -154,10 +154,8 @@ class LocationController extends AbstractBaseController
         $lng       = ($lng < 0 ? 'W' : 'E') . abs($lng);
         $hierarchy = $this->gethierarchy($parent_id);
         $level     = count($hierarchy);
-        $icon      = $request->get('icon', null);
-        $icon      = $icon === '' ? null : $icon;
-        $zoom      = $request->get('new_zoom_factor');
-        $zoom      = $zoom === '' ? null : $zoom;
+        $icon      = $request->get('icon', '');
+        $zoom      = (int) $request->get('new_zoom_factor', '2');
 
         if ($place_id === 0) {
             $place_id = 1 + (int) DB::table('placelocation')->max('pl_id');
@@ -166,9 +164,9 @@ class LocationController extends AbstractBaseController
                 'pl_id'        => $place_id,
                 'pl_parent_id' => $parent_id,
                 'pl_level'     => $level,
-                'pl_place'     => $request->get('new_place_name'),
-                'pl_lati'      => $request->get('lati_control') . $lat,
-                'pl_long'      => $request->get('long_control') . $lng,
+                'pl_place'     => $request->get('new_place_name', ''),
+                'pl_lati'      => $request->get('lati_control', '') . $lat,
+                'pl_long'      => $request->get('long_control', '') . $lng,
                 'pl_zoom'      => $zoom,
                 'pl_icon'      => $icon,
             ]);

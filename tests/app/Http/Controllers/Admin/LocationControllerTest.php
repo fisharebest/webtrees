@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Application;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
@@ -61,10 +62,10 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMapDataSave(): void
     {
-        //$controller = app()->make(LocationController::class);
-        //$response = app()->dispatch($controller, 'mapDataSave');
+        $controller = app()->make(LocationController::class);
+        $response = app()->dispatch($controller, 'mapDataSave');
 
-        //$this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(Response::class, $response);
     }
 
     /**
