@@ -443,20 +443,6 @@ class ModuleController extends AbstractAdminController
      *
      * @return RedirectResponse
      */
-    public function updateThemes(Request $request): RedirectResponse
-    {
-        $modules = $this->module_service->findByInterface(ModuleThemeInterface::class, true);
-
-        $this->updateStatus($modules, $request);
-
-        return new RedirectResponse(route('themes'));
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return RedirectResponse
-     */
     public function updateTabs(Request $request): RedirectResponse
     {
         $modules = $this->module_service->findByInterface(ModuleTabInterface::class, true);
@@ -466,6 +452,20 @@ class ModuleController extends AbstractAdminController
         $this->updateAccessLevel($modules, 'tab', $request);
 
         return new RedirectResponse(route('tabs'));
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
+    public function updateThemes(Request $request): RedirectResponse
+    {
+        $modules = $this->module_service->findByInterface(ModuleThemeInterface::class, true);
+
+        $this->updateStatus($modules, $request);
+
+        return new RedirectResponse(route('themes'));
     }
 
     /**

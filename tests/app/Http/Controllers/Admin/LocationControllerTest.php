@@ -26,11 +26,11 @@ use Symfony\Component\HttpFoundation\Response;
 use const T_REQUIRE;
 
 /**
- * Test the location controller
+ * Test the location admin controller
  *
  * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\LocationController
  */
-class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
+class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
 {
     protected static $uses_database = true;
 
