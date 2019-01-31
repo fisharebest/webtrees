@@ -36,7 +36,6 @@ use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\View;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Cache\ArrayStore;
