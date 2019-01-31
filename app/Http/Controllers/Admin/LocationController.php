@@ -323,8 +323,8 @@ class LocationController extends AbstractBaseController
      */
     public function importLocationsAction(Request $request): RedirectResponse
     {
-        $serverfile     = $request->get('serverfile');
-        $options        = $request->get('import-options');
+        $serverfile     = $request->get('serverfile', '');
+        $options        = $request->get('import-options', '');
         $clear_database = (bool) $request->get('cleardatabase');
 
         $filename    = '';
@@ -338,10 +338,10 @@ class LocationController extends AbstractBaseController
             'fqpn',
         ];
 
-        if ($serverfile !== '') {  // first choice is file on server
+        if ($serverfile !== ''  && is_dir(WT_DATA_DIR . 'places')) {  // first choice is file on server
             $filename = WT_DATA_DIR . 'places/' . $serverfile;
-        } elseif ($_FILES['localfile']['error'] === UPLOAD_ERR_OK) { // 2nd choice is local file
-            $filename = $_FILES['localfile']['tmp_name'];
+        } elseif ($request->files->has('localfile')) { // 2nd choice is local file
+            $filename = $request->files->get('localfile')->getPathName();
         }
 
         $fp = fopen($filename, 'r');
@@ -413,10 +413,10 @@ class LocationController extends AbstractBaseController
                     DB::table('placelocation')
                         ->where('pl_id', '=', $location->id())
                         ->update([
-                            'pl_lati' => $place['pl_lati'] ?: null,
-                            'pl_long' => $place['pl_long'] ?: null,
-                            'pl_zoom' => $place['pl_zoom'] ?: null,
-                            'pl_icon' => $place['pl_icon'] ?: null,
+                            'pl_lati' => $place['pl_lati'],
+                            'pl_long' => $place['pl_long'],
+                            'pl_zoom' => $place['pl_zoom'],
+                            'pl_icon' => $place['pl_icon'],
                         ]);
 
                     $updated++;

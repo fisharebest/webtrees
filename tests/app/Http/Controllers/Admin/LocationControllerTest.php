@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Application;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use const T_REQUIRE;
@@ -106,10 +107,14 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testImportLocationsAction(): void
     {
-        //$controller = app()->make(LocationController::class);
-        //$response = app()->dispatch($controller, 'importLocationsAction');
+        $csv = new UploadedFile(dirname(__DIR__, 4) . '/data/places.csv', 'places.csv',  'image/jpeg', UPLOAD_ERR_OK);
 
-        //$this->assertInstanceOf(Response::class, $response);
+        app()->instance(Request::class, new Request([], [], [], [], ['localfile' => $csv]));
+
+        $controller = app()->make(LocationController::class);
+        $response = app()->dispatch($controller, 'importLocationsAction');
+
+        $this->assertInstanceOf(Response::class, $response);
     }
 
     /**
