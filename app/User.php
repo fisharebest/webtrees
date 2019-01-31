@@ -234,17 +234,6 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * A closure which will create an object from a database row.
-     *
-     * @return Closure
-     */
-    public static function rowMapper(): Closure
-    {
-        return function (stdClass $row): User {
-            return new static((int) $row->user_id, $row->user_name, $row->real_name, $row->email);
-        };
-    }
 
     /**
      * Validate a supplied password
@@ -256,7 +245,7 @@ class User implements UserInterface
     public function checkPassword(string $password): bool
     {
         $password_hash = DB::table('user')
-            ->where('user_id', '=', $this->user_id)
+            ->where('user_id', '=', $this->id())
             ->value('password');
 
         if ($password_hash !== null && password_verify($password, $password_hash)) {
@@ -268,5 +257,17 @@ class User implements UserInterface
         }
 
         return false;
+    }
+
+    /**
+     * A closure which will create an object from a database row.
+     *
+     * @return Closure
+     */
+    public static function rowMapper(): Closure
+    {
+        return function (stdClass $row): User {
+            return new static((int) $row->user_id, $row->user_name, $row->real_name, $row->email);
+        };
     }
 }

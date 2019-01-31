@@ -82,19 +82,6 @@ class UserTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\User::checkPassword
-     * @return void
-     */
-    public function testCheckPasswordCaseSensitive(): void
-    {
-        $user_service = new UserService();
-        $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
-
-        $this->assertTrue($user->checkPassword('secret'));
-        $this->assertFalse($user->checkPassword('SECRET'));
-    }
-
-    /**
      * @covers \Fisharebest\Webtrees\User::setPreference
      * @covers \Fisharebest\Webtrees\User::getPreference
      * @return void

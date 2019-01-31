@@ -54,26 +54,13 @@ class UserServiceTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Services\UserService::checkPassword
-     * @return void
-     */
-    public function testCheckPasswordCaseSensitive(): void
-    {
-        $user_service = new UserService();
-        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
-
-        $this->assertTrue($user->checkPassword('secret'));
-        $this->assertFalse($user->checkPassword('SECRET'));
-    }
-
-    /**
      * @covers \Fisharebest\Webtrees\Services\UserService::find
      * @return void
      */
     public function testFindNonExistingUser(): void
     {
         $user_service = new UserService();
-        $user = $user_service->find(999);
+        $user         = $user_service->find(999);
 
         $this->assertNull($user);
     }
@@ -85,8 +72,8 @@ class UserServiceTest extends TestCase
     public function testFindExistingUser(): void
     {
         $user_service = new UserService();
-        $user1 = $user_service->create('user', 'User', 'user@example.com', 'secret');
-        $user2 = $user_service->find($user1->id());
+        $user1        = $user_service->create('user', 'User', 'user@example.com', 'secret');
+        $user2        = $user_service->find($user1->id());
 
         $this->assertSame($user1->id(), $user2->id());
     }
@@ -98,8 +85,8 @@ class UserServiceTest extends TestCase
     public function testFindUserByEmail(): void
     {
         $user_service = new UserService();
-        $user1 = $user_service->create('user', 'User', 'user@example.com', 'secret');
-        $user2 = $user_service->findByEmail($user1->email());
+        $user1        = $user_service->create('user', 'User', 'user@example.com', 'secret');
+        $user2        = $user_service->findByEmail($user1->email());
 
         $this->assertSame($user1->id(), $user2->id());
     }
@@ -111,8 +98,8 @@ class UserServiceTest extends TestCase
     public function testFindUserByUserName(): void
     {
         $user_service = new UserService();
-        $user1 = $user_service->create('user', 'User', 'user@example.com', 'secret');
-        $user2 = $user_service->findByUserName($user1->userName());
+        $user1        = $user_service->create('user', 'User', 'user@example.com', 'secret');
+        $user2        = $user_service->findByUserName($user1->userName());
 
         $this->assertSame($user1->id(), $user2->id());
     }
@@ -124,9 +111,9 @@ class UserServiceTest extends TestCase
     public function testFindUserByIdentifier(): void
     {
         $user_service = new UserService();
-        $user1 = $user_service->create('user', 'User', 'user@example.com', 'secret');
-        $user2 = $user_service->findByIdentifier($user1->userName());
-        $user3 = $user_service->findByIdentifier($user1->email());
+        $user1        = $user_service->create('user', 'User', 'user@example.com', 'secret');
+        $user2        = $user_service->findByIdentifier($user1->userName());
+        $user3        = $user_service->findByIdentifier($user1->email());
 
         $this->assertSame($user1->id(), $user2->id());
         $this->assertSame($user1->id(), $user3->id());
@@ -139,7 +126,7 @@ class UserServiceTest extends TestCase
     public function testFindUsersByIndividual(): void
     {
         $user_service = new UserService();
-        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
+        $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
         Auth::login($user);
         $tree = $this->importTree('demo.ged');
         $indi = $tree->createIndividual('0 @@ INDI');
@@ -158,8 +145,8 @@ class UserServiceTest extends TestCase
     public function testFindAllUsers(): void
     {
         $user_service = new UserService();
-        $user1 = $user_service->create('bbbbb', 'BBBBB', 'bbbbb@example.com', 'secret');
-        $user2 = $user_service->create('aaaaa', 'AAAAA', 'aaaaa@example.com', 'secret');
+        $user1        = $user_service->create('bbbbb', 'BBBBB', 'bbbbb@example.com', 'secret');
+        $user2        = $user_service->create('aaaaa', 'AAAAA', 'aaaaa@example.com', 'secret');
 
         $users = $user_service->all();
 
@@ -193,10 +180,10 @@ class UserServiceTest extends TestCase
     public function testFindManagers(): void
     {
         $user_service = new UserService();
-        $user1 = $user_service->create('user1', 'User1', 'user1@example.com', 'secret');
-        $user2 = $user_service->create('user2', 'User2', 'user2@example.com', 'secret');
-        $user3 = $user_service->create('user3', 'User3', 'user3@example.com', 'secret');
-        $user4 = $user_service->create('user4', 'User4', 'user4@example.com', 'secret');
+        $user1        = $user_service->create('user1', 'User1', 'user1@example.com', 'secret');
+        $user2        = $user_service->create('user2', 'User2', 'user2@example.com', 'secret');
+        $user3        = $user_service->create('user3', 'User3', 'user3@example.com', 'secret');
+        $user4        = $user_service->create('user4', 'User4', 'user4@example.com', 'secret');
 
         $tree = $this->importTree('demo.ged');
         $tree->setUserPreference($user1, 'canedit', 'admin');
@@ -217,10 +204,10 @@ class UserServiceTest extends TestCase
     public function testFindModerators(): void
     {
         $user_service = new UserService();
-        $user1 = $user_service->create('user1', 'User1', 'user1@example.com', 'secret');
-        $user2 = $user_service->create('user2', 'User2', 'user2@example.com', 'secret');
-        $user3 = $user_service->create('user3', 'User3', 'user3@example.com', 'secret');
-        $user4 = $user_service->create('user4', 'User4', 'user4@example.com', 'secret');
+        $user1        = $user_service->create('user1', 'User1', 'user1@example.com', 'secret');
+        $user2        = $user_service->create('user2', 'User2', 'user2@example.com', 'secret');
+        $user3        = $user_service->create('user3', 'User3', 'user3@example.com', 'secret');
+        $user4        = $user_service->create('user4', 'User4', 'user4@example.com', 'secret');
 
         $tree = $this->importTree('demo.ged');
         $tree->setUserPreference($user1, 'canedit', 'admin');
@@ -242,10 +229,10 @@ class UserServiceTest extends TestCase
     public function testFindUnapprovedAndUnverified(): void
     {
         $user_service = new UserService();
-        $user1 = $user_service->create('user1', 'User1', 'user1@example.com', 'secret');
-        $user2 = $user_service->create('user2', 'User2', 'user2@example.com', 'secret');
-        $user3 = $user_service->create('user3', 'User3', 'user3@example.com', 'secret');
-        $user4 = $user_service->create('user4', 'User4', 'user4@example.com', 'secret');
+        $user1        = $user_service->create('user1', 'User1', 'user1@example.com', 'secret');
+        $user2        = $user_service->create('user2', 'User2', 'user2@example.com', 'secret');
+        $user3        = $user_service->create('user3', 'User3', 'user3@example.com', 'secret');
+        $user4        = $user_service->create('user4', 'User4', 'user4@example.com', 'secret');
 
         $user1->setPreference('verified', '0');
         $user1->setPreference('verified_by_admin', '0');
