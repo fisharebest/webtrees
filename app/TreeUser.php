@@ -36,7 +36,6 @@ class TreeUser implements UserInterface
      */
     public function __construct(Tree $tree)
     {
-
         $this->tree = $tree;
     }
 

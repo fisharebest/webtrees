@@ -40,7 +40,8 @@ class GuestUser implements UserInterface
      * @param string $email
      * @param string $real_name
      */
-    public function __construct(string $email = 'GUEST_USER', string $real_name = 'GUEST_USER') {
+    public function __construct(string $email = 'GUEST_USER', string $real_name = 'GUEST_USER')
+    {
         $this->email = $email;
         $this->real_name = $real_name;
     }

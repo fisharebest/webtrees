@@ -813,8 +813,7 @@ class FamilyRepository
         string $color_from = null,
         string $color_to = null,
         int $total = 10
-    ): string
-    {
+    ): string {
         return (new ChartFamilyLargest($this->tree))
             ->chartLargestFamilies($size, $color_from, $color_to, $total);
     }

@@ -66,10 +66,10 @@ class ChartAge extends AbstractGoogle
                     ->on('birth.d_gid', '=', 'i_id');
             })
            ->join('dates AS death', function (JoinClause $join): void {
-                $join
+               $join
                     ->on('death.d_file', '=', 'i_file')
                     ->on('death.d_gid', '=', 'i_id');
-            })
+           })
             ->where('i_file', '=', $this->tree->id())
             ->where('birth.d_fact', '=', 'BIRT')
             ->where('death.d_fact', '=', 'DEAT')
