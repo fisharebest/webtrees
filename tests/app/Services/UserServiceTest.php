@@ -67,21 +67,6 @@ class UserServiceTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Services\UserService::setPreference
-     * @covers \Fisharebest\Webtrees\Services\UserService::getPreference
-     * @return void
-     */
-    public function testPreferences(): void
-    {
-        $user_service = new UserService();
-        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
-
-        $this->assertSame('', $user->getPreference('foo'));
-        $user->setPreference('foo', 'bar');
-        $this->assertSame('bar', $user->getPreference('foo'));
-    }
-
-    /**
      * @covers \Fisharebest\Webtrees\Services\UserService::find
      * @return void
      */

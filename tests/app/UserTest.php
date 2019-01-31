@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\UserService;
 
 /**
@@ -28,16 +29,21 @@ class UserTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\User::__construct
-     * @covers \Fisharebest\Webtrees\User::create
      * @covers \Fisharebest\Webtrees\User::id
+     * @covers \Fisharebest\Webtrees\User::email
+     * @covers \Fisharebest\Webtrees\User::realName
+     * @covers \Fisharebest\Webtrees\User::userName
      * @return void
      */
-    public function testCreate(): void
+    public function testConstructor(): void
     {
-        $user_service = new UserService();
-        $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
+        $user = new User(123, 'username', 'real name', 'email');
 
-        $this->assertSame(1, $user->id());
+        $this->assertInstanceOf(UserInterface::class, $user);
+        $this->assertSame(123, $user->id());
+        $this->assertSame('email', $user->email());
+        $this->assertSame('real name', $user->realName());
+        $this->assertSame('username', $user->userName());
     }
 
     /**
