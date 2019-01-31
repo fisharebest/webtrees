@@ -40,38 +40,17 @@ class UserServiceTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Services\UserService::setUserName
-     * @covers \Fisharebest\Webtrees\Services\UserService::userName
-     * @covers \Fisharebest\Webtrees\Services\UserService::setRealName
-     * @covers \Fisharebest\Webtrees\Services\UserService::realName
-     * @covers \Fisharebest\Webtrees\Services\UserService::setEmail
-     * @covers \Fisharebest\Webtrees\Services\UserService::email
-     * @covers \Fisharebest\Webtrees\Services\UserService::setPassword
-     * @covers \Fisharebest\Webtrees\Services\UserService::checkPassword
+     * @covers \Fisharebest\Webtrees\Services\UserService::delete
      * @return void
      */
-    public function testGettersAndSetters(): void
+    public function testDelete(): void
     {
         $user_service = new UserService();
-        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
+        $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
+        $user_id      = $user->id();
+        $user_service->delete($user);
 
-        $this->assertSame(1, $user->id());
-
-        $this->assertSame('user', $user->userName());
-        $user->setUserName('foo');
-        $this->assertSame('foo', $user->userName());
-
-        $this->assertSame('User', $user->realName());
-        $user->setRealName('Foo');
-        $this->assertSame('Foo', $user->realName());
-
-        $this->assertSame('user@example.com', $user->email());
-        $user->setEmail('foo@example.com');
-        $this->assertSame('foo@example.com', $user->email());
-
-        $this->assertTrue($user->checkPassword('secret'));
-        $user->setPassword('letmein');
-        $this->assertTrue($user->checkPassword('letmein'));
+        $this->assertNull($user_service->find($user_id));
     }
 
     /**
@@ -85,20 +64,6 @@ class UserServiceTest extends TestCase
 
         $this->assertTrue($user->checkPassword('secret'));
         $this->assertFalse($user->checkPassword('SECRET'));
-    }
-
-    /**
-     * @covers \Fisharebest\Webtrees\Services\UserService::delete
-     * @return void
-     */
-    public function testDelete(): void
-    {
-        $user_service = new UserService();
-        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
-        $user_id = $user->id();
-        $user_service->delete($user);
-
-        $this->assertNull($user_service->find($user_id));
     }
 
     /**

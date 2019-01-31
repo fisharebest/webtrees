@@ -89,20 +89,6 @@ class UserTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\User::delete
-     * @return void
-     */
-    public function testDelete(): void
-    {
-        $user_service = new UserService();
-        $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
-        $user_id      = $user->id();
-        $user_service->delete($user);
-
-        $this->assertNull($user_service->find($user_id));
-    }
-
-    /**
      * @covers \Fisharebest\Webtrees\User::setPreference
      * @covers \Fisharebest\Webtrees\User::getPreference
      * @return void

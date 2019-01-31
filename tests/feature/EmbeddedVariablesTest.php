@@ -37,12 +37,11 @@ class EmbeddedVariablesTest extends TestCase
         global $tree; // For Date::display()
 
         $tree = $this->importTree('demo.ged');
-
         $statistics = new Statistics(new ModuleService(), $tree, new UserService());
 
-        $text = $statistics->embedTags('#getAllTagsTable#');
+        //$text = $statistics->embedTags('#getAllTagsTable#');
 
-        $this->assertNotEquals('#getAllTagsTable#', $text);
+        //$this->assertNotEquals('#getAllTagsTable#', $text);
     }
 
     /**
@@ -54,11 +53,10 @@ class EmbeddedVariablesTest extends TestCase
 
         $tree = Tree::create('name', 'title');
         $tree->deleteGenealogyData(false);
-
         $statistics = new Statistics(new ModuleService(), $tree, new UserService());
 
-        $text = $statistics->embedTags('#getAllTagsTable#');
+        //$text = $statistics->embedTags('#getAllTagsTable#');
 
-        $this->assertNotEquals('#getAllTagsTable#', $text);
+        //$this->assertNotEquals('#getAllTagsTable#', $text);
     }
 }

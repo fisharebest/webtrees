@@ -39,11 +39,8 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMissingModule(): void
     {
-        $tree = Tree::create('name', 'title');
-        app()->instance(Tree::class, $tree);
-
-        $request    = new Request(['route' => 'module']);
-        app()->instance(Request::class, $request);
+        app()->instance(Tree::class, Tree::create('name', 'title'));
+        app()->instance(Request::class, new Request(['route' => 'module']));
 
         $controller = app()->make(ModuleController::class);
         app()->dispatch($controller, 'action');
