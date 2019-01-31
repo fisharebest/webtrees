@@ -317,4 +317,15 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $this->assertInstanceOf(Response::class, $response);
     }
 
+    /**
+     * @return void
+     */
+    public function testDeleteModuleSettings(): void
+    {
+        app()->instance(Tree::class, Tree::create('name', 'title'));
+        $controller = app()->make(ModuleController::class);
+        $response   = app()->dispatch($controller, 'deleteModuleSettings');
+
+        $this->assertInstanceOf(Response::class, $response);
+    }
 }

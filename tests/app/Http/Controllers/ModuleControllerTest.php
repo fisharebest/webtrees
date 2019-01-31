@@ -27,6 +27,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Test the module controller
  *
+ * @covers \Fisharebest\Webtrees\Http\Controllers\AbstractBaseController
  * @covers \Fisharebest\Webtrees\Http\Controllers\ModuleController
  */
 class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
