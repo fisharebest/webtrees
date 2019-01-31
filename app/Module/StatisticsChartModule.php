@@ -18,13 +18,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -121,11 +121,11 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      * A form to request the chart parameters.
      *
      * @param Tree $tree
-     * @param User $user
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function getChartAction(Tree $tree, User $user): Response
+    public function getChartAction(Tree $tree, UserInterface $user): Response
     {
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 

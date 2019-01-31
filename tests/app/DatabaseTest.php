@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Test harness for the class Statement
  */
-class DatabaseTest extends \Fisharebest\Webtrees\TestCase
+class DatabaseTest extends TestCase
 {
     /**
      * Test that the class exists

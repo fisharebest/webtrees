@@ -93,7 +93,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
             foreach ($record->facts(['_TODO']) as $task) {
                 $user_name = $task->attribute('_WT_USER');
 
-                if ($user_name === Auth::user()->getUserName() || empty($user_name) && $show_unassigned || !empty($user_name) && $show_other) {
+                if ($user_name === Auth::user()->userName() || empty($user_name) && $show_unassigned || !empty($user_name) && $show_other) {
                     $tasks[] = $task;
                 }
             }

@@ -38,7 +38,7 @@ class Migration39 implements MigrationInterface
         if (!DB::schema()->hasTable('favorite')) {
             DB::schema()->create('favorite', function (Blueprint $table): void {
                 $table->integer('favorite_id', true);
-                $table->integer('user_id')->index();
+                $table->integer('user_id');
                 $table->integer('gedcom_id');
                 $table->string('xref', 20)->nullable();
                 $table->enum('favorite_type', ['INDI', 'FAM', 'SOUR', 'REPO', 'OBJE', 'NOTE', 'URL']);
@@ -46,6 +46,7 @@ class Migration39 implements MigrationInterface
                 $table->string('title', 255)->nullable();
                 $table->string('note', 1000)->nullable();
 
+                $table->index('user_id');
                 $table->index(['gedcom_id', 'user_id']);
 
                 $table->foreign('user_id')->references('user_id')->on('user')->onDelete('cascade');

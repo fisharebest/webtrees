@@ -19,16 +19,15 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Algorithm\Dijkstra;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -193,13 +192,13 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     /**
      * A form to request the chart parameters.
      *
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function getChartAction(Request $request, Tree $tree, User $user): Response
+    public function getChartAction(Request $request, Tree $tree, UserInterface $user): Response
     {
         $ajax = (bool) $request->get('ajax');
 

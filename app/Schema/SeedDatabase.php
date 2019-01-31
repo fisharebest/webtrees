@@ -17,8 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
-use Fisharebest\Webtrees\Module;
-
 /**
  * Populate the database
  */

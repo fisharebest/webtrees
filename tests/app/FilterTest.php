@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Test harness for the class Filter
  */
-class FilterTest extends \Fisharebest\Webtrees\TestCase
+class FilterTest extends TestCase
 {
     /**
      * Test that the class exists

@@ -33,7 +33,7 @@
                     <a href="<?= e(route('admin-users-edit', ['user_id' => $user->id()])) ?>">
                         <?= e($user->getUserName()) ?>
                         —
-                        <span dir="auto"><?= e($user->getRealName()) ?></span>
+                        <span dir="auto"><?= e($user->realName()) ?></span>
                     </a>
                 </td>
                 <td>
@@ -51,7 +51,7 @@
                     <a href="<?= e(route('admin-users-edit', ['user_id' => $user->id()])) ?>">
                         <?= e($user->getUserName()) ?>
                         —
-                        <span dir="auto"><?= e($user->getRealName()) ?></span>
+                        <span dir="auto"><?= e($user->realName()) ?></span>
                     </a>
                 </td>
                 <td>

@@ -20,8 +20,8 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -30,6 +30,20 @@ use Symfony\Component\HttpFoundation\Request;
 class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
+
+    /**
+     * @var UserService
+     */
+    private $user_service;
+
+    /**
+     * LoggedInUsersModule constructor.
+     *
+     * @param UserService $user_service
+     */
+    public function __construct(UserService $user_service) {
+        $this->user_service = $user_service;
+    }
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
@@ -68,7 +82,7 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
         $anonymous = 0;
         $logged_in = [];
         $content   = '';
-        foreach (User::allLoggedIn() as $user) {
+        foreach ($this->user_service->allLoggedIn() as $user) {
             if (Auth::isAdmin() || $user->getPreference('visibleonline')) {
                 $logged_in[] = $user;
             } else {
@@ -94,13 +108,13 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
 
                 $content .= '<div class="logged_in_name">';
                 if ($individual) {
-                    $content .= '<a href="' . e($individual->url()) . '">' . e($user->getRealName()) . '</a>';
+                    $content .= '<a href="' . e($individual->url()) . '">' . e($user->realName()) . '</a>';
                 } else {
-                    $content .= e($user->getRealName());
+                    $content .= e($user->realName());
                 }
-                $content .= ' - ' . e($user->getUserName());
+                $content .= ' - ' . e($user->userName());
                 if (Auth::id() !== $user->id() && $user->getPreference('contactmethod') !== 'none') {
-                    $content .= '<a href="' . e(route('message', ['to'  => $user->getUserName(), 'ged' => $tree->name()])) . '" class="btn btn-link" title="' . I18N::translate('Send a message') . '">' . view('icons/email') . '</a>';
+                    $content .= '<a href="' . e(route('message', ['to'  => $user->userName(), 'ged' => $tree->name()])) . '" class="btn btn-link" title="' . I18N::translate('Send a message') . '">' . view('icons/email') . '</a>';
                 }
                 $content .= '</div>';
             }

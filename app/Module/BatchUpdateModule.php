@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -28,7 +29,6 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -71,13 +71,13 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
     /**
      * Main entry point
      *
-     * @param Request   $request
-     * @param User      $user
-     * @param Tree|null $tree
+     * @param Request       $request
+     * @param UserInterface $user
+     * @param Tree|null     $tree
      *
      * @return Response
      */
-    public function getAdminAction(Request $request, User $user, Tree $tree = null): Response
+    public function getAdminAction(Request $request, UserInterface $user, Tree $tree = null): Response
     {
         // We need a tree to work with.
         if ($tree === null) {
@@ -144,13 +144,13 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
     /**
      * Perform an update
      *
-     * @param Request   $request
-     * @param User      $user
-     * @param Tree|null $tree
+     * @param Request       $request
+     * @param UserInterface $user
+     * @param Tree|null     $tree
      *
      * @return RedirectResponse
      */
-    public function postAdminAction(Request $request, User $user, Tree $tree = null): RedirectResponse
+    public function postAdminAction(Request $request, UserInterface $user, Tree $tree = null): RedirectResponse
     {
         // We need a tree to work with.
         if ($tree === null) {
@@ -207,7 +207,6 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
 
         return new RedirectResponse($url);
     }
-
 
     /**
      * Find the next record that needs to be updated.

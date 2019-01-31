@@ -18,10 +18,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Exception;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Swift_Mailer;
 use Swift_Message;
 use Swift_NullTransport;
-use Swift_Preferences;
 use Swift_SendmailTransport;
 use Swift_SmtpTransport;
 use Swift_Transport;
@@ -35,25 +35,25 @@ class Mail
      * Send an external email message
      * Caution! gmail may rewrite the "From" header unless you have added the address to your account.
      *
-     * @param User   $from
-     * @param User   $to
-     * @param User   $reply_to
-     * @param string $subject
-     * @param string $message_text
-     * @param string $message_html
+     * @param UserInterface $from
+     * @param UserInterface $to
+     * @param UserInterface $reply_to
+     * @param string        $subject
+     * @param string        $message_text
+     * @param string        $message_html
      *
      * @return bool
      */
-    public static function send(User $from, User $to, User $reply_to, $subject, $message_text, $message_html): bool
+    public static function send(UserInterface $from, UserInterface $to, UserInterface $reply_to, $subject, $message_text, $message_html): bool
     {
         try {
             $message_text = preg_replace('/\r?\n/', "\r\n", $message_text);
             $message_html = preg_replace('/\r?\n/', "\r\n", $message_html);
 
             $message = (new Swift_Message($subject))
-                ->setFrom($from->getEmail(), $from->getRealName())
-                ->setTo($to->getEmail(), $to->getRealName())
-                ->setReplyTo($reply_to->getEmail(), $reply_to->getRealName())
+                ->setFrom($from->email(), $from->realName())
+                ->setTo($to->email(), $to->realName())
+                ->setReplyTo($reply_to->email(), $reply_to->realName())
                 ->setBody($message_html, 'text/html')
                 ->addPart($message_text, 'text/plain');
 

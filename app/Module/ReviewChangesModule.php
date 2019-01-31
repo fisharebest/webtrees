@@ -22,9 +22,10 @@ use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Mail;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\TreeUser;
 use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -34,6 +35,21 @@ use Symfony\Component\HttpFoundation\Request;
 class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
+
+    /**
+     * @var UserService
+     */
+    private $user_service;
+
+    /**
+     * ReviewChangesModule constructor.
+     *
+     * @param UserService $user_service
+     */
+    public function __construct(UserService $user_service)
+    {
+        $this->user_service = $user_service;
+    }
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
@@ -82,16 +98,16 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
             // There are pending changes - tell moderators/managers/administrators about them.
             if (WT_TIMESTAMP - (int) Site::getPreference('LAST_CHANGE_EMAIL') > (60 * 60 * 24 * $days)) {
                 // Which users have pending changes?
-                foreach (User::all() as $user) {
+                foreach ($this->user_service->all() as $user) {
                     if ($user->getPreference('contactmethod') !== 'none') {
                         foreach (Tree::getAll() as $tmp_tree) {
                             if ($tmp_tree->hasPendingEdit() && Auth::isManager($tmp_tree, $user)) {
                                 I18N::init($user->getPreference('language'));
 
                                 Mail::send(
-                                    User::userFromTree($tmp_tree),
+                                    new TreeUser($tmp_tree),
                                     $user,
-                                    User::userFromTree($tmp_tree),
+                                    new TreeUser($tmp_tree),
                                     I18N::translate('Pending changes'),
                                     view('emails/pending-changes-text', [
                                         'tree' => $tmp_tree,
@@ -117,8 +133,8 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
             }
             if ($sendmail === '1') {
                 $last_email_timestamp = (int) Site::getPreference('LAST_CHANGE_EMAIL');
-                $content .= I18N::translate('Last email reminder was sent ') . FunctionsDate::formatTimestamp($last_email_timestamp) . '<br>';
-                $content .= I18N::translate('Next email reminder will be sent after ') . FunctionsDate::formatTimestamp($last_email_timestamp + 60 * 60 * 24 * $days) . '<br><br>';
+                $content              .= I18N::translate('Last email reminder was sent ') . FunctionsDate::formatTimestamp($last_email_timestamp) . '<br>';
+                $content              .= I18N::translate('Next email reminder will be sent after ') . FunctionsDate::formatTimestamp($last_email_timestamp + 60 * 60 * 24 * $days) . '<br><br>';
             }
             $content .= '<ul>';
 

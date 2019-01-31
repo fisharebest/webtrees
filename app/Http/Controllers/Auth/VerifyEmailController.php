@@ -21,7 +21,9 @@ use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Mail;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\TreeUser;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,23 +37,24 @@ class VerifyEmailController extends AbstractBaseController
     /**
      * Respond to a verification link that was emailed to a user.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request     $request
+     * @param Tree        $tree
+     * @param UserService $user_service
      *
      * @return Response
      */
-    public function verify(Request $request, Tree $tree): Response
+    public function verify(Request $request, Tree $tree, UserService $user_service): Response
     {
         $username = $request->get('username', '');
         $token    = $request->get('token', '');
 
         $title = I18N::translate('User verification');
 
-        $user = User::findByUserName($username);
+        $user = $user_service->findByUserName($username);
 
         if ($user instanceof User && $user->getPreference('reg_hashcode') === $token) {
             // switch language to webmaster settings
-            $webmaster = User::find((int) $tree->getPreference('WEBMASTER_USER_ID'));
+            $webmaster = $user_service->find((int) $tree->getPreference('WEBMASTER_USER_ID'));
 
             if ($webmaster instanceof User) {
                 I18N::init($webmaster->getPreference('language'));
@@ -60,9 +63,9 @@ class VerifyEmailController extends AbstractBaseController
                 $subject = I18N::translate('New user at %s', WT_BASE_URL . ' ' . $tree->title());
 
                 Mail::send(
-                    User::userFromTree($tree),
+                    new TreeUser($tree),
                     $webmaster,
-                    User::userFromTree($tree),
+                    new TreeUser($tree),
                     $subject,
                     view('emails/verify-notify-text', ['user' => $user]),
                     view('emails/verify-notify-html', ['user' => $user])

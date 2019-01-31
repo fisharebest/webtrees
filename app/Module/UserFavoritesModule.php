@@ -18,10 +18,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -89,7 +89,6 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Should this block load asynchronously using AJAX?
-     *
      * Simple blocks are faster in-line, more comples ones
      * can be loaded later.
      *
@@ -147,12 +146,12 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Get the favorites for a user
      *
-     * @param Tree $tree
-     * @param User $user
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return stdClass[]
      */
-    public function getFavorites(Tree $tree, User $user): array
+    public function getFavorites(Tree $tree, UserInterface $user): array
     {
         return DB::table('favorite')
             ->where('gedcom_id', '=', $tree->id())
@@ -171,13 +170,13 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return RedirectResponse
      */
-    public function postAddFavoriteAction(Request $request, Tree $tree, User $user): RedirectResponse
+    public function postAddFavoriteAction(Request $request, Tree $tree, UserInterface $user): RedirectResponse
     {
         $note         = $request->get('note', '');
         $title        = $request->get('title', '');
@@ -203,13 +202,13 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return RedirectResponse
      */
-    public function postDeleteFavoriteAction(Request $request, Tree $tree, User $user): RedirectResponse
+    public function postDeleteFavoriteAction(Request $request, Tree $tree, UserInterface $user): RedirectResponse
     {
         $favorite_id = (int) $request->get('favorite_id');
 
@@ -224,15 +223,15 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
-     * @param Tree   $tree
-     * @param User   $user
-     * @param string $url
-     * @param string $title
-     * @param string $note
+     * @param Tree          $tree
+     * @param UserInterface $user
+     * @param string        $url
+     * @param string        $title
+     * @param string        $note
      *
      * @return void
      */
-    private function addUrlFavorite(Tree $tree, User $user, string $url, string $title, string $note)
+    private function addUrlFavorite(Tree $tree, UserInterface $user, string $url, string $title, string $note)
     {
         DB::table('favorite')->updateOrInsert([
             'gedcom_id' => $tree->id(),
@@ -246,14 +245,14 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
-     * @param Tree         $tree
-     * @param User         $user
-     * @param GedcomRecord $record
-     * @param string       $note
+     * @param Tree          $tree
+     * @param UserInterface $user
+     * @param GedcomRecord  $record
+     * @param string        $note
      *
      * @return void
      */
-    private function addRecordFavorite(Tree $tree, User $user, GedcomRecord $record, string $note)
+    private function addRecordFavorite(Tree $tree, UserInterface $user, GedcomRecord $record, string $note)
     {
         DB::table('favorite')->updateOrInsert([
             'gedcom_id' => $tree->id(),

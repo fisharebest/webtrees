@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Statistics\Repository\BrowserRepository;
 use Fisharebest\Webtrees\Statistics\Repository\ContactRepository;
 use Fisharebest\Webtrees\Statistics\Repository\EventRepository;
@@ -194,10 +195,12 @@ class Statistics implements
      *
      * @param ModuleService $module_service
      * @param Tree          $tree Generate statistics for this tree
+     * @param UserService   $user_service
      */
     public function __construct(
         ModuleService $module_service,
-        Tree $tree
+        Tree $tree,
+        UserService $user_service
     ) {
         $this->tree                  = $tree;
         $this->gedcomRepository      = new GedcomRepository($tree);
@@ -206,15 +209,15 @@ class Statistics implements
         $this->familyDatesRepository = new FamilyDatesRepository($tree);
         $this->mediaRepository       = new MediaRepository($tree);
         $this->eventRepository       = new EventRepository($tree);
-        $this->userRepository        = new UserRepository($tree);
+        $this->userRepository        = new UserRepository($tree, $user_service);
         $this->serverRepository      = new ServerRepository();
         $this->browserRepository     = new BrowserRepository();
-        $this->hitCountRepository    = new HitCountRepository($tree);
-        $this->latestUserRepository  = new LatestUserRepository();
+        $this->hitCountRepository    = new HitCountRepository($tree, $user_service);
+        $this->latestUserRepository  = new LatestUserRepository($user_service);
         $this->favoritesRepository   = new FavoritesRepository($tree, $module_service);
         $this->newsRepository        = new NewsRepository($tree);
         $this->messageRepository     = new MessageRepository();
-        $this->contactRepository     = new ContactRepository($tree);
+        $this->contactRepository     = new ContactRepository($tree, $user_service);
         $this->placeRepository       = new PlaceRepository($tree);
         $this->module_service        = $module_service;
     }

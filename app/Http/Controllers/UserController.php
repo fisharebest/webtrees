@@ -20,8 +20,8 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
-use Fisharebest\Webtrees\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -30,6 +30,21 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class UserController extends AbstractBaseController
 {
+    /**
+     * @var UserService
+     */
+    private $user_service;
+
+    /**
+     * UserController constructor.
+     *
+     * @param UserService $user_service
+     */
+    public function __construct(UserService $user_service)
+    {
+        $this->user_service = $user_service;
+    }
+
     /**
      * Delete a user.
      *
@@ -41,10 +56,10 @@ class UserController extends AbstractBaseController
     {
         $user_id = (int) $request->get('user_id');
 
-        $user = User::find($user_id);
+        $user = $this->user_service->find($user_id);
 
         if ($user && Auth::isAdmin() && Auth::user() !== $user) {
-            Log::addAuthenticationLog('Deleted user: ' . $user->getUserName());
+            Log::addAuthenticationLog('Deleted user: ' . $user->userName());
             $user->delete();
         }
 
@@ -80,10 +95,10 @@ class UserController extends AbstractBaseController
     {
         $user_id = (int) $request->get('user_id');
 
-        $user = User::find($user_id);
+        $user = $this->user_service->find($user_id);
 
         if ($user !== null && Auth::isAdmin() && Auth::user() !== $user) {
-            Log::addAuthenticationLog('Masquerade as user: ' . $user->getUserName());
+            Log::addAuthenticationLog('Masquerade as user: ' . $user->userName());
             Auth::login($user);
             Session::put('masquerade', '1');
         }

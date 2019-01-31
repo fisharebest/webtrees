@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Services;
 
 use Closure;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\AhnentafelReportModule;
@@ -121,7 +122,6 @@ use Fisharebest\Webtrees\Module\WelcomeBlockModule;
 use Fisharebest\Webtrees\Module\XeneaTheme;
 use Fisharebest\Webtrees\Module\YahrzeitModule;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
@@ -433,13 +433,13 @@ class ModuleService
     /**
      * Modules which (a) provide a specific function and (b) we have permission to see.
      *
-     * @param string $component
-     * @param Tree   $tree
-     * @param User   $user
+     * @param string        $component
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return Collection|ModuleInterface[]
      */
-    public function findByComponent(string $component, Tree $tree, User $user): Collection
+    public function findByComponent(string $component, Tree $tree, UserInterface $user): Collection
     {
         $interface = self::COMPONENTS[$component];
 

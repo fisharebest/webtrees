@@ -38,15 +38,14 @@ use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
-use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\CensusAssistantModule;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Select2;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Ramsey\Uuid\Uuid;
 
 /**
@@ -260,8 +259,8 @@ class FunctionsEdit
     {
         $options = ['' => '-'];
 
-        foreach (User::all() as $user) {
-            $options[$user->getUserName()] = $user->getRealName() . ' - ' . $user->getUserName();
+        foreach ((new UserService())->all() as $user) {
+            $options[$user->userName()] = $user->realName() . ' - ' . $user->userName();
         }
 
         return $options;
@@ -444,7 +443,6 @@ class FunctionsEdit
 
     /**
      * add a new tag input field
-     *
      * called for each fact to be edited on a form.
      * Fact level=0 means a new empty form : data are POSTed by name
      * else data are POSTed using arrays :
@@ -453,10 +451,10 @@ class FunctionsEdit
      *     tag[] : tag name
      *    text[] : tag value
      *
-     * @param Tree            $tree
-     * @param string          $tag        fact record to edit (eg 2 DATE xxxxx)
-     * @param string          $upperlevel optional upper level tag (eg BIRT)
-     * @param string          $label      An optional label to echo instead of the default
+     * @param Tree   $tree
+     * @param string $tag        fact record to edit (eg 2 DATE xxxxx)
+     * @param string $upperlevel optional upper level tag (eg BIRT)
+     * @param string $label      An optional label to echo instead of the default
      *
      * @return string
      */
@@ -673,13 +671,13 @@ class FunctionsEdit
                 '</div>';
         } elseif ($fact === 'PAGE') {
             $html .= '<input ' . Html::attributes([
-                    'autocomplete'          => 'off',
-                    'class'                 => 'form-control',
-                    'id'                    => $id,
-                    'name'                  => $name,
-                    'value'                 => $value,
-                    'type'                  => 'text',
-                    'data-autocomplete-url' => route('autocomplete-page', [
+                    'autocomplete'            => 'off',
+                    'class'                   => 'form-control',
+                    'id'                      => $id,
+                    'name'                    => $name,
+                    'value'                   => $value,
+                    'type'                    => 'text',
+                    'data-autocomplete-url'   => route('autocomplete-page', [
                         'ged'   => $tree->name(),
                         'query' => 'QUERY',
                     ]),
@@ -791,7 +789,7 @@ class FunctionsEdit
             $html .= '<p class="small text-muted">' . I18N::translate('Use this image for charts and on the individual’s page.') . '</p>';
         } elseif ($fact === 'TYPE' && $level === '3') {
             //-- Build the selector for the Media 'TYPE' Fact
-            $html .= '<select name="text[]"><option selected value="" ></option>';
+            $html          .= '<select name="text[]"><option selected value="" ></option>';
             $selectedValue = strtolower($value);
             if (!array_key_exists($selectedValue, GedcomTag::getFileFormTypes())) {
                 $html .= '<option selected value="' . e($value) . '" >' . e($value) . '</option>';
@@ -1099,7 +1097,7 @@ class FunctionsEdit
                 } elseif ($level1tag === '_TODO' && $key === 'DATE') {
                     echo self::addSimpleTag($tree, '2 ' . $key . ' ' . strtoupper(date('d M Y')), $level1tag);
                 } elseif ($level1tag === '_TODO' && $key === '_WT_USER') {
-                    echo self::addSimpleTag($tree, '2 ' . $key . ' ' . Auth::user()->getUserName(), $level1tag);
+                    echo self::addSimpleTag($tree, '2 ' . $key . ' ' . Auth::user()->userName(), $level1tag);
                 } elseif ($level1tag === 'NAME' && strstr($tree->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
                     echo self::addSimpleTag($tree, '2 ' . $key, $level1tag);
                 } elseif ($level1tag !== 'NAME') {

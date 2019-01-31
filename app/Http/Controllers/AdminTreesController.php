@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Algorithm\ConnectedComponent;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\File;
@@ -35,11 +36,11 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\SurnameTradition;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
@@ -73,12 +74,20 @@ class AdminTreesController extends AbstractBaseController
     private $module_service;
 
     /**
+     * @var UserService
+     */
+    private $user_service;
+
+    /**
      * AdminUsersController constructor.
      *
      * @param ModuleService $module_service
+     * @param UserService   $user_service
      */
-    public function __construct(ModuleService $module_service) {
+    public function __construct(ModuleService $module_service, UserService $user_service)
+    {
         $this->module_service = $module_service;
+        $this->user_service   = $user_service;
     }
 
     /**
@@ -708,7 +717,7 @@ class AdminTreesController extends AbstractBaseController
                     'i_sex',
                     'i_gedcom',
                 ])->from('individuals')
-                ->where('i_file', '=', $tree1->id());
+                    ->where('i_file', '=', $tree1->id());
             });
 
             (new Builder(DB::connection()))->from('families')->insertUsing([
@@ -727,7 +736,7 @@ class AdminTreesController extends AbstractBaseController
                     'f_gedcom',
                     'f_numchil',
                 ])->from('families')
-                ->where('f_file', '=', $tree1->id());
+                    ->where('f_file', '=', $tree1->id());
             });
 
             (new Builder(DB::connection()))->from('sources')->insertUsing([
@@ -742,7 +751,7 @@ class AdminTreesController extends AbstractBaseController
                     's_name',
                     's_gedcom',
                 ])->from('sources')
-                ->where('s_file', '=', $tree1->id());
+                    ->where('s_file', '=', $tree1->id());
             });
 
             (new Builder(DB::connection()))->from('media')->insertUsing([
@@ -755,7 +764,7 @@ class AdminTreesController extends AbstractBaseController
                     'm_id',
                     'm_gedcom',
                 ])->from('media')
-                ->where('m_file', '=', $tree1->id());
+                    ->where('m_file', '=', $tree1->id());
             });
 
             (new Builder(DB::connection()))->from('media_file')->insertUsing([
@@ -774,7 +783,7 @@ class AdminTreesController extends AbstractBaseController
                     'source_media_type',
                     'descriptive_title',
                 ])->from('media_file')
-                ->where('m_file', '=', $tree1->id());
+                    ->where('m_file', '=', $tree1->id());
             });
 
             (new Builder(DB::connection()))->from('other')->insertUsing([
@@ -1022,7 +1031,7 @@ class AdminTreesController extends AbstractBaseController
 
         $pedigree_individual = Individual::getInstance($tree->getPreference('PEDIGREE_ROOT_ID'), $tree);
 
-        $members = User::all()->filter(function (User $user) use ($tree): bool {
+        $members = $this->user_service->all()->filter(function (UserInterface $user) use ($tree): bool {
             return Auth::isMember($tree, $user);
         });
 
@@ -1224,7 +1233,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('i_file', '=', $tree->id())
                         ->where('i_id', '=', $old_xref)
                         ->update([
-                            'i_id' => $new_xref,
+                            'i_id'     => $new_xref,
                             'i_gedcom' => DB::raw("REPLACE(i_gedcom, '0 @$old_xref@ INDI', '0 @$new_xref@ INDI')"),
                         ]);
 
@@ -1232,7 +1241,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('f_husb', '=', $old_xref)
                         ->where('f_file', '=', $tree->id())
                         ->update([
-                            'f_husb' => $new_xref,
+                            'f_husb'   => $new_xref,
                             'f_gedcom' => DB::raw("REPLACE(f_gedcom, ' HUSB @$old_xref@', ' HUSB @$new_xref@')"),
                         ]);
 
@@ -1240,7 +1249,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('f_wife', '=', $old_xref)
                         ->where('f_file', '=', $tree->id())
                         ->update([
-                            'f_wife' => $new_xref,
+                            'f_wife'   => $new_xref,
                             'f_gedcom' => DB::raw("REPLACE(f_gedcom, ' WIFE @$old_xref@', ' WIFE @$new_xref@')"),
                         ]);
 
@@ -1304,7 +1313,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('f_file', '=', $tree->id())
                         ->where('f_id', '=', $old_xref)
                         ->update([
-                            'f_id' => $new_xref,
+                            'f_id'     => $new_xref,
                             'f_gedcom' => DB::raw("REPLACE(f_gedcom, '0 @$old_xref@ FAM', '0 @$new_xref@ FAM')"),
                         ]);
 
@@ -1344,7 +1353,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('s_file', '=', $tree->id())
                         ->where('s_id', '=', $old_xref)
                         ->update([
-                            's_id' => $new_xref,
+                            's_id'     => $new_xref,
                             's_gedcom' => DB::raw("REPLACE(s_gedcom, '0 @$old_xref@ SOUR', '0 @$new_xref@ SOUR')"),
                         ]);
 
@@ -1406,7 +1415,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('o_id', '=', $old_xref)
                         ->where('o_type', '=', 'REPO')
                         ->update([
-                            'o_id' => $new_xref,
+                            'o_id'     => $new_xref,
                             'o_gedcom' => DB::raw("REPLACE(o_gedcom, '0 @$old_xref@ REPO', '0 @$new_xref@ REPO')"),
                         ]);
 
@@ -1430,7 +1439,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('o_id', '=', $old_xref)
                         ->where('o_type', '=', 'NOTE')
                         ->update([
-                            'o_id' => $new_xref,
+                            'o_id'     => $new_xref,
                             'o_gedcom' => DB::raw("REPLACE(o_gedcom, '0 @$old_xref@ NOTE', '0 @$new_xref@ NOTE')"),
                         ]);
 
@@ -1505,7 +1514,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('m_file', '=', $tree->id())
                         ->where('m_id', '=', $old_xref)
                         ->update([
-                            'm_id' => $new_xref,
+                            'm_id'     => $new_xref,
                             'm_gedcom' => DB::raw("REPLACE(m_gedcom, '0 @$old_xref@ OBJE', '0 @$new_xref@ OBJE')"),
                         ]);
 
@@ -1575,7 +1584,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('o_id', '=', $old_xref)
                         ->where('o_type', '=', $type)
                         ->update([
-                            'o_id' => $new_xref,
+                            'o_id'     => $new_xref,
                             'o_gedcom' => DB::raw("REPLACE(o_gedcom, '0 @$old_xref@ $type', '0 @$new_xref@ $type')"),
                         ]);
 
@@ -1755,13 +1764,13 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function unconnected(Request $request, Tree $tree, User $user): Response
+    public function unconnected(Request $request, Tree $tree, UserInterface $user): Response
     {
         $associates = (bool) $request->get('associates');
 
@@ -1889,7 +1898,7 @@ class AdminTreesController extends AbstractBaseController
                         $record->updateFact($fact->id(), $gedcom, false);
                     }
                 }
-                
+
                 return $changes;
             })
             ->sort()

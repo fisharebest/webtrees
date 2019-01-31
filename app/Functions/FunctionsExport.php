@@ -97,7 +97,7 @@ class FunctionsExport
         $COPR = '';
         $LANG = '';
         $SUBN = '';
-        $SUBM = "\n1 SUBM @SUBM@\n0 @SUBM@ SUBM\n1 NAME " . Auth::user()->getUserName(); // The SUBM record is mandatory
+        $SUBM = "\n1 SUBM @SUBM@\n0 @SUBM@ SUBM\n1 NAME " . Auth::user()->userName(); // The SUBM record is mandatory
 
         // Preserve some values from the original header
         $record = GedcomRecord::getInstance('HEAD', $tree);

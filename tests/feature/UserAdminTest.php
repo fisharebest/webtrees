@@ -18,13 +18,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Http\Controllers\AdminUsersController;
-use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\Services\UserService;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Test the user administration pages
  */
-class UserAdminTest extends \Fisharebest\Webtrees\TestCase
+class UserAdminTest extends TestCase
 {
     protected static $uses_database = true;
 
@@ -35,8 +35,9 @@ class UserAdminTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testUserDetailsAreShownOnUserAdminPage(): void
     {
-        $admin = User::create('AdminName', 'Administrator', 'admin@example.com', 'secret');
-        $user  = User::create('UserName', 'RealName', 'user@example.com', 'secret');
+        $user_service = new UserService();
+        $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
+        $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
         $controller = app()->make(AdminUsersController::class);
         $response   = app()->dispatch($controller, 'data');
@@ -56,8 +57,9 @@ class UserAdminTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testFilteringUserAdminPage(): void
     {
-        $admin = User::create('AdminName', 'Administrator', 'admin@example.com', 'secret');
-        $user  = User::create('UserName', 'RealName', 'user@example.com', 'secret');
+        $user_service = new UserService();
+        $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
+        $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
         $request = new Request(['search' => ['value' => 'admin']]);
         app()->instance(Request::class, $request);
@@ -79,8 +81,9 @@ class UserAdminTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testPaginatingUserAdminPage(): void
     {
-        $admin = User::create('AdminName', 'Administrator', 'admin@example.com', 'secret');
-        $user  = User::create('UserName', 'RealName', 'user@example.com', 'secret');
+        $user_service = new UserService();
+        $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
+        $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
         $request = new Request(['length' => 1]);
         app()->instance(Request::class, $request);
@@ -98,16 +101,17 @@ class UserAdminTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testSortingUserAdminPage(): void
     {
-        $admin = User::create('AdminName', 'Administrator', 'admin@example.com', 'secret');
-        $user  = User::create('UserName', 'RealName', 'user@example.com', 'secret');
+        $user_service = new UserService();
+        $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
+        $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
         $request = new Request(['order' => [['column' => 2, 'dir' => 'asc']]]);
         app()->instance(Request::class, $request);
         $controller = app()->make(AdminUsersController::class);
         $response   = app()->dispatch($controller, 'data');
 
-        $pos1     = strpos($response->getContent(), 'AdminName');
-        $pos2     = strpos($response->getContent(), 'UserName');
+        $pos1 = strpos($response->getContent(), 'AdminName');
+        $pos2 = strpos($response->getContent(), 'UserName');
         $this->assertLessThan($pos2, $pos1);
 
         $request = new Request(['order' => [['column' => 2, 'dir' => 'desc']]]);
@@ -115,8 +119,8 @@ class UserAdminTest extends \Fisharebest\Webtrees\TestCase
         $controller = app()->make(AdminUsersController::class);
         $response   = app()->dispatch($controller, 'data');
 
-        $pos1     = strpos($response->getContent(), 'AdminName');
-        $pos2     = strpos($response->getContent(), 'UserName');
+        $pos1 = strpos($response->getContent(), 'AdminName');
+        $pos2 = strpos($response->getContent(), 'UserName');
         $this->assertGreaterThan($pos2, $pos1);
     }
 }

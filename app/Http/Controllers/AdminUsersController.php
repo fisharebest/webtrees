@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
@@ -27,9 +28,9 @@ use Fisharebest\Webtrees\Mail;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
@@ -57,12 +58,20 @@ class AdminUsersController extends AbstractBaseController
     private $module_service;
 
     /**
+     * @var UserService
+     */
+    private $user_service;
+
+    /**
      * AdminUsersController constructor.
      *
      * @param ModuleService $module_service
+     * @param UserService   $user_service
      */
-    public function __construct(ModuleService $module_service) {
+    public function __construct(ModuleService $module_service, UserService $user_service)
+    {
         $this->module_service = $module_service;
+        $this->user_service   = $user_service;
     }
 
     /**
@@ -77,9 +86,9 @@ class AdminUsersController extends AbstractBaseController
         $inactive_threshold   = time() - $months * 30 * self::SECONDS_PER_DAY;
         $unverified_threshold = time() - 7 * self::SECONDS_PER_DAY;
 
-        $users = User::all();
+        $users = $this->user_service->all();
 
-        $inactive_users = $users->filter(function (User $user) use ($inactive_threshold): bool {
+        $inactive_users = $users->filter(function (UserInterface $user) use ($inactive_threshold): bool {
             if ($user->getPreference('sessiontime') === '0') {
                 $datelogin = (int) $user->getPreference('reg_timestamp');
             } else {
@@ -89,7 +98,7 @@ class AdminUsersController extends AbstractBaseController
             return $datelogin < $inactive_threshold && $user->getPreference('verified');
         });
 
-        $unverified_users = $users->filter(function (User $user) use ($unverified_threshold): bool {
+        $unverified_users = $users->filter(function (UserInterface $user) use ($unverified_threshold): bool {
             if ($user->getPreference('sessiontime') === '0') {
                 $datelogin = (int) $user->getPreference('reg_timestamp');
             } else {
@@ -119,12 +128,12 @@ class AdminUsersController extends AbstractBaseController
      */
     public function cleanupAction(Request $request): RedirectResponse
     {
-        foreach (User::all() as $user) {
+        foreach ($this->user_service->all() as $user) {
             if ((bool) $request->get('del_' . $user->id())) {
-                Log::addAuthenticationLog('Deleted user: ' . $user->getUserName());
+                Log::addAuthenticationLog('Deleted user: ' . $user->userName());
                 $user->delete();
 
-                FlashMessages::addMessage(I18N::translate('The user %s has been deleted.', e($user->getUserName())), 'success');
+                FlashMessages::addMessage(I18N::translate('The user %s has been deleted.', e($user->userName())), 'success');
             }
         }
 
@@ -134,16 +143,16 @@ class AdminUsersController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param User    $user
+     * @param Request       $request
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function index(Request $request, User $user): Response
+    public function index(Request $request, UserInterface $user): Response
     {
         $filter = $request->get('filter', '');
 
-        $all_users = User::all();
+        $all_users = $this->user_service->all();
 
         $page_size = (int) $user->getPreference(' admin_users_page_size', '10');
 
@@ -160,11 +169,11 @@ class AdminUsersController extends AbstractBaseController
     /**
      * @param DatatablesService $datatables_service
      * @param Request           $request
-     * @param User              $user
+     * @param UserInterface     $user
      *
      * @return JsonResponse
      */
-    public function data(DatatablesService $datatables_service, Request $request, User $user): JsonResponse
+    public function data(DatatablesService $datatables_service, Request $request, UserInterface $user): JsonResponse
     {
         $installed_languages = [];
         foreach (I18N::installedLocales() as $installed_locale) {
@@ -241,7 +250,7 @@ class AdminUsersController extends AbstractBaseController
 
             // Link to send email to other users.
             if ($row->user_id != $user->id()) {
-                $datum[4] = '<a href="' . e(route('message', ['to'  => $datum[2], 'url' => route('admin-users')])) . '">' . $datum[4] . '</a>';
+                $datum[4] = '<a href="' . e(route('message', ['to' => $datum[2], 'url' => route('admin-users')])) . '">' . $datum[4] . '</a>';
             }
 
             // Highlight old registrations.
@@ -283,7 +292,7 @@ class AdminUsersController extends AbstractBaseController
     public function edit(Request $request): Response
     {
         $user_id = (int) $request->get('user_id');
-        $user    = User::find($user_id);
+        $user    = $this->user_service->find($user_id);
 
         if ($user === null) {
             throw new NotFoundHttpException(I18N::translate('%1$s does not exist.', 'user_id:' . $user_id));
@@ -315,12 +324,12 @@ class AdminUsersController extends AbstractBaseController
         $pass2     = $request->get('pass2');
 
         $errors = false;
-        if (User::findByUserName($username)) {
+        if ($this->user_service->findByUserName($username)) {
             FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
             $errors = true;
         }
 
-        if (User::findByEmail($email)) {
+        if ($this->user_service->findByEmail($email)) {
             FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
             $errors = true;
         }
@@ -340,7 +349,7 @@ class AdminUsersController extends AbstractBaseController
             return new RedirectResponse($url);
         }
 
-        $new_user = User::create($username, $real_name, $email, $pass1)
+        $new_user = $this->user_service->create($username, $real_name, $email, $pass1)
             ->setPreference('verified', '1')
             ->setPreference('language', WT_LOCALE)
             ->setPreference('timezone', Site::getPreference('TIMEZONE'))
@@ -357,12 +366,12 @@ class AdminUsersController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param User    $user
+     * @param Request       $request
+     * @param UserInterface $user
      *
      * @return RedirectResponse
      */
-    public function update(Request $request, User $user): RedirectResponse
+    public function update(Request $request, UserInterface $user): RedirectResponse
     {
         $user_id        = (int) $request->get('user_id');
         $username       = $request->get('username');
@@ -380,7 +389,7 @@ class AdminUsersController extends AbstractBaseController
         $verified       = (bool) $request->get('verified');
         $approved       = (bool) $request->get('approved');
 
-        $edit_user = User::find($user_id);
+        $edit_user = $this->user_service->find($user_id);
 
         if ($edit_user === null) {
             throw new NotFoundHttpException(I18N::translate('%1$s does not exist', 'user_id:' . $user_id));

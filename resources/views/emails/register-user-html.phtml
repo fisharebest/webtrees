@@ -1,10 +1,10 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 <p>
-    <?= I18N::translate('Hello %s…', e($user->getRealName())) ?>
+    <?= I18N::translate('Hello %s…', e($user->realName())) ?>
 </p>
 
 <p>
-    <?= /* I18N: %1$s is the site URL and %2$s is an email address */I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', e(WT_BASE_URL), e($user->getEmail())) ?>
+    <?= /* I18N: %1$s is the site URL and %2$s is an email address */I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', e(WT_BASE_URL), e($user->email())) ?>
 </p>
 
 <p>
@@ -12,8 +12,8 @@
 </p>
 
 <p>
-    <a href="<?= e(route('verify', ['username' => $user->getUserName(), 'token' => $user->getPreference('reg_hashcode'), 'ged' => $tree->name()], true)) ?>">
-        <?= e(route('verify', ['username' => $user->getUserName(), 'token' => $user->getPreference('reg_hashcode'), 'ged' => $tree->name()], true)) ?>
+    <a href="<?= e(route('verify', ['username' => $user->userName(), 'token' => $user->getPreference('reg_hashcode'), 'ged' => $tree->name()], true)) ?>">
+        <?= e(route('verify', ['username' => $user->userName(), 'token' => $user->getPreference('reg_hashcode'), 'ged' => $tree->name()], true)) ?>
     </a>
 </p>
 

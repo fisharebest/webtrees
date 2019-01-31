@@ -20,7 +20,7 @@
             <?= I18N::translate('Real name') ?>
         </label>
         <div class="col-sm-9">
-            <input class="form-control" type="text" id="real_name" name="real_name" required maxlength="64" value="<?= e($user->getRealName()) ?>" dir="auto">
+            <input class="form-control" type="text" id="real_name" name="real_name" required maxlength="64" value="<?= e($user->realName()) ?>" dir="auto">
             <p class="small text-muted">
                 <?= I18N::translate('This is your real name, as you would like it displayed on screen.') ?>
             </p>
@@ -69,7 +69,7 @@
             <?= I18N::translate('Email address') ?>
         </label>
         <div class="col-sm-9">
-            <input class="form-control" type="email" id="email" name="email" required maxlength="64" value="<?= e($user->getEmail()) ?>">
+            <input class="form-control" type="email" id="email" name="email" required maxlength="64" value="<?= e($user->email()) ?>">
             <p class="small text-muted">
                 <?= I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.') ?>
             </p>

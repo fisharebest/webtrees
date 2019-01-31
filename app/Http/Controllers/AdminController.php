@@ -31,7 +31,6 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
-use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
@@ -50,9 +49,9 @@ use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\HousekeepingService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UpgradeService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
@@ -86,6 +85,7 @@ class AdminController extends AbstractBaseController
      * @param UpgradeService         $upgrade_service
      * @param Admin\ModuleController $module_controller
      * @param ModuleService          $module_service
+     * @param UserService            $user_service
      *
      * @return Response
      */
@@ -93,8 +93,10 @@ class AdminController extends AbstractBaseController
         HousekeepingService $housekeeping_service,
         UpgradeService $upgrade_service,
         Admin\ModuleController $module_controller,
-        ModuleService $module_service
-    ): Response {
+        ModuleService $module_service,
+        UserService $user_service
+    ): Response
+    {
         $filesystem      = new Filesystem(new Local(WT_ROOT));
         $files_to_delete = $housekeeping_service->deleteOldWebtreesFiles($filesystem);
         $deleted_modules = $module_controller->deletedModuleNames();
@@ -109,12 +111,12 @@ class AdminController extends AbstractBaseController
             'title'             => I18N::translate('Control panel'),
             'server_warnings'   => $this->serverWarnings(),
             'latest_version'    => $upgrade_service->latestVersion(),
-            'all_users'         => User::all(),
-            'administrators'    => User::administrators(),
-            'managers'          => User::managers(),
-            'moderators'        => User::moderators(),
-            'unapproved'        => User::unapproved(),
-            'unverified'        => User::unverified(),
+            'all_users'         => $user_service->all(),
+            'administrators'    => $user_service->administrators(),
+            'managers'          => $user_service->managers(),
+            'moderators'        => $user_service->moderators(),
+            'unapproved'        => $user_service->unapproved(),
+            'unverified'        => $user_service->unverified(),
             'all_trees'         => Tree::getAll(),
             'changes'           => $this->totalChanges(),
             'individuals'       => $this->totalIndividuals(),
@@ -168,11 +170,12 @@ class AdminController extends AbstractBaseController
     /**
      * Show the edit history for a tree.
      *
-     * @param Request $request
+     * @param Request     $request
+     * @param UserService $user_service
      *
      * @return Response
      */
-    public function changesLog(Request $request): Response
+    public function changesLog(Request $request, UserService $user_service): Response
     {
         $tree_list = [];
         foreach (Tree::getAll() as $tree) {
@@ -182,8 +185,8 @@ class AdminController extends AbstractBaseController
         }
 
         $user_list = ['' => ''];
-        foreach (User::all() as $tmp_user) {
-            $user_list[$tmp_user->getUserName()] = $tmp_user->getUserName();
+        foreach ($user_service->all() as $tmp_user) {
+            $user_list[$tmp_user->userName()] = $tmp_user->userName();
         }
 
         $action = $request->get('action');

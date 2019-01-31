@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Exceptions\FamilyNotFoundException;
 use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
 use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
@@ -34,18 +35,18 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use League\Flysystem\Filesystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
-use function str_replace;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use function str_replace;
 
 /**
  * Class ClippingsCartModule
@@ -66,6 +67,21 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
     /** @var int The default access level for this module.  It can be changed in the control panel. */
     protected $access_level = Auth::PRIV_USER;
+
+    /**
+     * @var UserService
+     */
+    private $user_service;
+
+    /**
+     * ClippingsCartModule constructor.
+     *
+     * @param UserService $user_service
+     */
+    public function __construct(UserService $user_service)
+    {
+        $this->user_service = $user_service;
+    }
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
@@ -240,9 +256,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         // Create a source, to indicate the source of the data.
         $filetext .= "0 @WEBTREES@ SOUR\n1 TITL " . WT_BASE_URL . "\n";
-        $author = User::find((int) $tree->getPreference('CONTACT_USER_ID'));
+        $author   = $this->user_service->find((int) $tree->getPreference('CONTACT_USER_ID'));
         if ($author !== null) {
-            $filetext .= '1 AUTH ' . $author->getRealName() . "\n";
+            $filetext .= '1 AUTH ' . $author->realName() . "\n";
         }
         $filetext .= "0 TRLR\n";
 
@@ -272,12 +288,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     }
 
     /**
-     * @param Tree $tree
-     * @param User $user
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function getDownloadFormAction(Tree $tree, User $user): Response
+    public function getDownloadFormAction(Tree $tree, UserInterface $user): Response
     {
         $title = I18N::translate('Family tree clippings cart') . ' — ' . I18N::translate('Download');
 

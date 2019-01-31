@@ -17,10 +17,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Services\UserService;
+
 /**
  * Test the user functions
  */
-class UserTest extends \Fisharebest\Webtrees\TestCase
+class UserTest extends TestCase
 {
     protected static $uses_database = true;
 
@@ -32,39 +34,41 @@ class UserTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testCreate(): void
     {
-        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user_service = new UserService();
+        $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
 
         $this->assertSame(1, $user->id());
     }
 
     /**
      * @covers \Fisharebest\Webtrees\User::setUserName
-     * @covers \Fisharebest\Webtrees\User::getUserName
+     * @covers \Fisharebest\Webtrees\User::userName
      * @covers \Fisharebest\Webtrees\User::setRealName
-     * @covers \Fisharebest\Webtrees\User::getRealName
+     * @covers \Fisharebest\Webtrees\User::realName
      * @covers \Fisharebest\Webtrees\User::setEmail
-     * @covers \Fisharebest\Webtrees\User::getEmail
+     * @covers \Fisharebest\Webtrees\User::email
      * @covers \Fisharebest\Webtrees\User::setPassword
      * @covers \Fisharebest\Webtrees\User::checkPassword
      * @return void
      */
     public function testGettersAndSetters(): void
     {
-        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user_service = new UserService();
+        $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
 
         $this->assertSame(1, $user->id());
 
-        $this->assertSame('user', $user->getUserName());
+        $this->assertSame('user', $user->userName());
         $user->setUserName('foo');
-        $this->assertSame('foo', $user->getUserName());
+        $this->assertSame('foo', $user->userName());
 
-        $this->assertSame('User', $user->getRealName());
+        $this->assertSame('User', $user->realName());
         $user->setRealName('Foo');
-        $this->assertSame('Foo', $user->getRealName());
+        $this->assertSame('Foo', $user->realName());
 
-        $this->assertSame('user@example.com', $user->getEmail());
+        $this->assertSame('user@example.com', $user->email());
         $user->setEmail('foo@example.com');
-        $this->assertSame('foo@example.com', $user->getEmail());
+        $this->assertSame('foo@example.com', $user->email());
 
         $this->assertTrue($user->checkPassword('secret'));
         $user->setPassword('letmein');
@@ -77,7 +81,8 @@ class UserTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testCheckPasswordCaseSensitive(): void
     {
-        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user_service = new UserService();
+        $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
 
         $this->assertTrue($user->checkPassword('secret'));
         $this->assertFalse($user->checkPassword('SECRET'));
@@ -89,11 +94,12 @@ class UserTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testDelete(): void
     {
-        $user = User::create('user', 'User', 'user@example.com', 'secret');
-        $user_id = $user->id();
-        $user->delete();
+        $user_service = new UserService();
+        $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
+        $user_id      = $user->id();
+        $user_service->delete($user);
 
-        $this->assertNull(User::find($user_id));
+        $this->assertNull($user_service->find($user_id));
     }
 
     /**
@@ -103,202 +109,11 @@ class UserTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testPreferences(): void
     {
-        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user_service = new UserService();
+        $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
 
         $this->assertSame('', $user->getPreference('foo'));
         $user->setPreference('foo', 'bar');
         $this->assertSame('bar', $user->getPreference('foo'));
-    }
-
-    /**
-     * @covers \Fisharebest\Webtrees\User::find
-     * @return void
-     */
-    public function testFindNonExistingUser(): void
-    {
-        $user = User::find(999);
-
-        $this->assertNull($user);
-    }
-
-    /**
-     * @covers \Fisharebest\Webtrees\User::find
-     * @return void
-     */
-    public function testFindExistingUser(): void
-    {
-        $user1 = User::create('user', 'User', 'user@example.com', 'secret');
-        $user2 = User::find($user1->id());
-
-        $this->assertSame($user1->id(), $user2->id());
-    }
-
-    /**
-     * @covers \Fisharebest\Webtrees\User::findByEmail
-     * @return void
-     */
-    public function testFindUserByEmail(): void
-    {
-        $user1 = User::create('user', 'User', 'user@example.com', 'secret');
-        $user2 = User::findByEmail($user1->getEmail());
-
-        $this->assertSame($user1->id(), $user2->id());
-    }
-
-    /**
-     * @covers \Fisharebest\Webtrees\User::findByUserName
-     * @return void
-     */
-    public function testFindUserByUserName(): void
-    {
-        $user1 = User::create('user', 'User', 'user@example.com', 'secret');
-        $user2 = User::findByUserName($user1->getUserName());
-
-        $this->assertSame($user1->id(), $user2->id());
-    }
-
-    /**
-     * @covers \Fisharebest\Webtrees\User::findByIdentifier
-     * @return void
-     */
-    public function testFindUserByIdentifier(): void
-    {
-        $user1 = User::create('user', 'User', 'user@example.com', 'secret');
-        $user2 = User::findByIdentifier($user1->getUsername());
-        $user3 = User::findByIdentifier($user1->getEmail());
-
-        $this->assertSame($user1->id(), $user2->id());
-        $this->assertSame($user1->id(), $user3->id());
-    }
-
-    /**
-     * @covers \Fisharebest\Webtrees\User::findByIndividual
-     * @return void
-     */
-    public function testFindUsersByIndividual(): void
-    {
-        $user = User::create('user', 'User', 'user@example.com', 'secret');
-        Auth::login($user);
-        $tree = $this->importTree('demo.ged');
-        $indi = $tree->createIndividual('0 @@ INDI');
-        $tree->setUserPreference($user, 'gedcomid', $indi->xref());
-
-        $users = User::findByIndividual($indi);
-
-        $this->assertSame(1, count($users));
-        $this->assertSame($user->id(), $users[0]->id());
-    }
-
-    /**
-     * @covers \Fisharebest\Webtrees\User::all
-     * @return void
-     */
-    public function testFindAllUsers(): void
-    {
-        $user1 = User::create('bbbbb', 'BBBBB', 'bbbbb@example.com', 'secret');
-        $user2 = User::create('aaaaa', 'AAAAA', 'aaaaa@example.com', 'secret');
-
-        $users = User::all();
-
-        $this->assertSame(2, $users->count());
-        $this->assertSame($user2->id(), $users[0]->id());
-        $this->assertSame($user1->id(), $users[1]->id());
-    }
-
-    /**
-     * @covers \Fisharebest\Webtrees\User::administrators
-     * @return void
-     */
-    public function testFindAdministrators(): void
-    {
-        User::create('user', 'User', 'user@example.com', 'secret');
-
-        $admin = User::create('admin', 'Admin', 'admin@example.com', 'secret');
-        $admin->setPreference('canadmin', '1');
-
-        $users = User::administrators();
-
-        $this->assertSame(1, count($users));
-        $this->assertSame($admin->id(), $users[0]->id());
-    }
-
-    /**
-     * @covers \Fisharebest\Webtrees\User::managers
-     * @return void
-     */
-    public function testFindManagers(): void
-    {
-        $user1 = User::create('user1', 'User1', 'user1@example.com', 'secret');
-        $user2 = User::create('user2', 'User2', 'user2@example.com', 'secret');
-        $user3 = User::create('user3', 'User3', 'user3@example.com', 'secret');
-        $user4 = User::create('user4', 'User4', 'user4@example.com', 'secret');
-
-        $tree = $this->importTree('demo.ged');
-        $tree->setUserPreference($user1, 'canedit', 'admin');
-        $tree->setUserPreference($user2, 'canedit', 'accept');
-        $tree->setUserPreference($user3, 'canedit', 'edit');
-        $tree->setUserPreference($user4, 'canedit', 'access');
-
-        $users = User::managers();
-
-        $this->assertSame(1, count($users));
-        $this->assertSame($user1->id(), $users[0]->id());
-    }
-
-    /**
-     * @covers \Fisharebest\Webtrees\User::moderators
-     * @return void
-     */
-    public function testFindModerators(): void
-    {
-        $user1 = User::create('user1', 'User1', 'user1@example.com', 'secret');
-        $user2 = User::create('user2', 'User2', 'user2@example.com', 'secret');
-        $user3 = User::create('user3', 'User3', 'user3@example.com', 'secret');
-        $user4 = User::create('user4', 'User4', 'user4@example.com', 'secret');
-
-        $tree = $this->importTree('demo.ged');
-        $tree->setUserPreference($user1, 'canedit', 'admin');
-        $tree->setUserPreference($user2, 'canedit', 'accept');
-        $tree->setUserPreference($user3, 'canedit', 'edit');
-        $tree->setUserPreference($user4, 'canedit', 'access');
-
-        $users = User::moderators();
-
-        $this->assertSame(1, count($users));
-        $this->assertSame($user2->id(), $users[0]->id());
-    }
-
-    /**
-     * @covers \Fisharebest\Webtrees\User::unapproved
-     * @covers \Fisharebest\Webtrees\User::unverified
-     * @return void
-     */
-    public function testFindUnapprovedAndUnverified(): void
-    {
-        $user1 = User::create('user1', 'User1', 'user1@example.com', 'secret');
-        $user2 = User::create('user2', 'User2', 'user2@example.com', 'secret');
-        $user3 = User::create('user3', 'User3', 'user3@example.com', 'secret');
-        $user4 = User::create('user4', 'User4', 'user4@example.com', 'secret');
-
-        $user1->setPreference('verified', '0');
-        $user1->setPreference('verified_by_admin', '0');
-        $user2->setPreference('verified', '0');
-        $user2->setPreference('verified_by_admin', '1');
-        $user3->setPreference('verified', '1');
-        $user3->setPreference('verified_by_admin', '0');
-        $user4->setPreference('verified', '1');
-        $user4->setPreference('verified_by_admin', '1');
-
-        $users = User::unapproved();
-
-        $this->assertSame(2, $users->count());
-        $this->assertSame($user1->id(), $users[0]->id());
-        $this->assertSame($user3->id(), $users[1]->id());
-
-        $users = User::unverified();
-
-        $this->assertSame(2, $users->count());
-        $this->assertSame($user1->id(), $users[0]->id());
-        $this->assertSame($user2->id(), $users[1]->id());
     }
 }

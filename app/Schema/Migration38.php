@@ -40,12 +40,13 @@ class Migration38 implements MigrationInterface
                 $table->integer('pl_id')->primary();
                 $table->integer('pl_parent_id');
                 $table->integer('pl_level');
-                $table->string('pl_place', 255)->index();
+                $table->string('pl_place', 255);
                 $table->string('pl_long', 30);
                 $table->string('pl_lati', 30);
                 $table->integer('pl_zoom');
                 $table->string('pl_icon', 255);
 
+                $table->index('pl_place');
                 $table->unique(['pl_parent_id', 'pl_place']);
             });
         }

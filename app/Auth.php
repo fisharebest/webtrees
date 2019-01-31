@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Exceptions\FamilyAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\FamilyNotFoundException;
 use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
@@ -32,7 +33,7 @@ use Fisharebest\Webtrees\Exceptions\RepositoryNotFoundException;
 use Fisharebest\Webtrees\Exceptions\SourceAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\SourceNotFoundException;
 use Fisharebest\Webtrees\Module\ModuleInterface;
-use stdClass;
+use Fisharebest\Webtrees\Services\UserService;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
@@ -59,11 +60,11 @@ class Auth
     /**
      * Is the specified/current user an administrator?
      *
-     * @param User|null $user
+     * @param UserInterface|null $user
      *
      * @return bool
      */
-    public static function isAdmin(User $user = null): bool
+    public static function isAdmin(UserInterface $user = null): bool
     {
         $user = $user ?? self::user();
 
@@ -73,12 +74,12 @@ class Auth
     /**
      * Is the specified/current user a manager of a tree?
      *
-     * @param Tree      $tree
-     * @param User|null $user
+     * @param Tree               $tree
+     * @param UserInterface|null $user
      *
      * @return bool
      */
-    public static function isManager(Tree $tree, User $user = null): bool
+    public static function isManager(Tree $tree, UserInterface $user = null): bool
     {
         $user = $user ?? self::user();
 
@@ -88,12 +89,12 @@ class Auth
     /**
      * Is the specified/current user a moderator of a tree?
      *
-     * @param Tree      $tree
-     * @param User|null $user
+     * @param Tree               $tree
+     * @param UserInterface|null $user
      *
      * @return bool
      */
-    public static function isModerator(Tree $tree, User $user = null): bool
+    public static function isModerator(Tree $tree, UserInterface $user = null): bool
     {
         $user = $user ?? self::user();
 
@@ -103,12 +104,12 @@ class Auth
     /**
      * Is the specified/current user an editor of a tree?
      *
-     * @param Tree      $tree
-     * @param User|null $user
+     * @param Tree               $tree
+     * @param UserInterface|null $user
      *
      * @return bool
      */
-    public static function isEditor(Tree $tree, User $user = null): bool
+    public static function isEditor(Tree $tree, UserInterface $user = null): bool
     {
         $user = $user ?? self::user();
 
@@ -118,12 +119,12 @@ class Auth
     /**
      * Is the specified/current user a member of a tree?
      *
-     * @param Tree      $tree
-     * @param User|null $user
+     * @param Tree               $tree
+     * @param UserInterface|null $user
      *
      * @return bool
      */
-    public static function isMember(Tree $tree, User $user = null): bool
+    public static function isMember(Tree $tree, UserInterface $user = null): bool
     {
         $user = $user ?? self::user();
 
@@ -133,12 +134,12 @@ class Auth
     /**
      * What is the specified/current user's access level within a tree?
      *
-     * @param Tree      $tree
-     * @param User|null $user
+     * @param Tree               $tree
+     * @param UserInterface|null $user
      *
      * @return int
      */
-    public static function accessLevel(Tree $tree, User $user = null)
+    public static function accessLevel(Tree $tree, UserInterface $user = null)
     {
         $user = $user ?? self::user();
 
@@ -166,21 +167,21 @@ class Auth
     /**
      * The authenticated user, from the current session.
      *
-     * @return User
+     * @return UserInterface
      */
-    public static function user()
+    public static function user(): UserInterface
     {
-        return User::find(self::id()) ?? User::visitor();
+        return (new UserService())->find(self::id()) ?? new GuestUser();
     }
 
     /**
      * Login directly as an explicit user - for masquerading.
      *
-     * @param User $user
+     * @param UserInterface $user
      *
      * @return void
      */
-    public static function login(User $user)
+    public static function login(UserInterface $user)
     {
         Session::regenerate(false);
         Session::put('wt_user', $user->id());
@@ -200,11 +201,11 @@ class Auth
      * @param ModuleInterface $module
      * @param string          $component
      * @param Tree            $tree
-     * @param User            $user
+     * @param UserInterface   $user
      *
      * @return void
      */
-    public static function checkComponentAccess(ModuleInterface $module, string $component, Tree $tree, User $user)
+    public static function checkComponentAccess(ModuleInterface $module, string $component, Tree $tree, UserInterface $user)
     {
         if ($module->accessLevel($tree, $component) < Auth::accessLevel($tree, $user)) {
             throw new AccessDeniedHttpException('');

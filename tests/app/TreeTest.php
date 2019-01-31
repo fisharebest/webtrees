@@ -17,12 +17,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Services\UserService;
 use function stream_get_contents;
 
 /**
  * Test harness for the class Tree
  */
-class TreeTest extends \Fisharebest\Webtrees\TestCase
+class TreeTest extends TestCase
 {
     protected static $uses_database = true;
 
@@ -70,8 +71,9 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testUserTreePreferences(): void
     {
+        $user_service = new UserService();
         $tree = Tree::create('tree-name', 'Tree title');
-        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
 
         $pref = $tree->getUserPreference($user, 'foo', 'default');
         $this->assertSame('default', $pref);
@@ -105,8 +107,9 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testCreateInvalidIndividual(): void
     {
+        $user_service = new UserService();
         $tree = Tree::create('tree-name', 'Tree title');
-        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference('canadmin', '1');
         Auth::login($user);
 
@@ -120,8 +123,9 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testCreateIndividual(): void
     {
+        $user_service = new UserService();
         $tree = Tree::create('tree-name', 'Tree title');
-        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference('canadmin', '1');
         Auth::login($user);
 
@@ -141,8 +145,9 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testCreateInvalidFamily(): void
     {
+        $user_service = new UserService();
         $tree = Tree::create('tree-name', 'Tree title');
-        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference('canadmin', '1');
         Auth::login($user);
 
@@ -156,8 +161,9 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testCreateFamily(): void
     {
+        $user_service = new UserService();
         $tree = Tree::create('tree-name', 'Tree title');
-        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference('canadmin', '1');
         Auth::login($user);
 
@@ -177,8 +183,9 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testCreateInvalidMediaObject(): void
     {
+        $user_service = new UserService();
         $tree = Tree::create('tree-name', 'Tree title');
-        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference('canadmin', '1');
         Auth::login($user);
 
@@ -192,8 +199,9 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testCreateMediaObject(): void
     {
+        $user_service = new UserService();
         $tree = Tree::create('tree-name', 'Tree title');
-        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference('canadmin', '1');
         Auth::login($user);
 
@@ -213,8 +221,9 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testCreateInvalidRecord(): void
     {
+        $user_service = new UserService();
         $tree = Tree::create('tree-name', 'Tree title');
-        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference('canadmin', '1');
         Auth::login($user);
 
@@ -228,8 +237,9 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testCreateRecord(): void
     {
+        $user_service = new UserService();
         $tree = Tree::create('tree-name', 'Tree title');
-        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference('canadmin', '1');
         Auth::login($user);
 
@@ -248,8 +258,9 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testSignificantIndividual(): void
     {
+        $user_service = new UserService();
         $tree = Tree::create('tree-name', 'Tree title');
-        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference('auto_accept', '1');
         Auth::login($user);
 
@@ -303,8 +314,9 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testHasPendingEdits(): void
     {
+        $user_service = new UserService();
         $tree = $this->importTree('demo.ged');
-        $user = User::create('admin', 'Administrator', 'admin@example.com', 'secret');
+        $user = $user_service->create('admin', 'Administrator', 'admin@example.com', 'secret');
         $user->setPreference('canadmin', '1');
         Auth::login($user);
 

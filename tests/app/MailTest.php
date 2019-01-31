@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Test harness for the class Mail
  */
-class MailTest extends \Fisharebest\Webtrees\TestCase
+class MailTest extends TestCase
 {
     /**
      * Test that the class exists

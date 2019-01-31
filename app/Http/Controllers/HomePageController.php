@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
 use Fisharebest\Webtrees\Module\FamilyTreeNewsModule;
@@ -34,8 +35,8 @@ use Fisharebest\Webtrees\Module\UserMessagesModule;
 use Fisharebest\Webtrees\Module\UserWelcomeModule;
 use Fisharebest\Webtrees\Module\WelcomeBlockModule;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
@@ -85,25 +86,32 @@ class HomePageController extends AbstractBaseController
     private $module_service;
 
     /**
+     * @var UserService
+     */
+    private $user_service;
+
+    /**
      * HomePageController constructor.
      *
      * @param ModuleService $module_service
+     * @param UserService   $user_service
      */
-    public function __construct(ModuleService $module_service)
+    public function __construct(ModuleService $module_service, UserService $user_service)
     {
         $this->module_service = $module_service;
+        $this->user_service   = $user_service;
     }
 
     /**
      * Show a form to edit block config options.
      *
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function treePageBlockEdit(Request $request, Tree $tree, User $user): Response
+    public function treePageBlockEdit(Request $request, Tree $tree, UserInterface $user): Response
     {
         $block_id = (int) $request->get('block_id');
         $block    = $this->treeBlock($request, $tree, $user);
@@ -121,13 +129,13 @@ class HomePageController extends AbstractBaseController
     /**
      * Update block config options.
      *
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return RedirectResponse
      */
-    public function treePageBlockUpdate(Request $request, Tree $tree, User $user): RedirectResponse
+    public function treePageBlockUpdate(Request $request, Tree $tree, UserInterface $user): RedirectResponse
     {
         $block    = $this->treeBlock($request, $tree, $user);
         $block_id = (int) $request->get('block_id');
@@ -140,13 +148,13 @@ class HomePageController extends AbstractBaseController
     /**
      * Load a block and check we have permission to edit it.
      *
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return ModuleBlockInterface
      */
-    private function treeBlock(Request $request, Tree $tree, User $user): ModuleBlockInterface
+    private function treeBlock(Request $request, Tree $tree, UserInterface $user): ModuleBlockInterface
     {
         $block_id = (int) $request->get('block_id');
 
@@ -176,13 +184,13 @@ class HomePageController extends AbstractBaseController
     /**
      * Show a form to edit block config options.
      *
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function userPageBlockEdit(Request $request, Tree $tree, User $user): Response
+    public function userPageBlockEdit(Request $request, Tree $tree, UserInterface $user): Response
     {
         $block_id = (int) $request->get('block_id');
         $block    = $this->userBlock($request, $user);
@@ -200,13 +208,13 @@ class HomePageController extends AbstractBaseController
     /**
      * Update block config options.
      *
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return RedirectResponse
      */
-    public function userPageBlockUpdate(Request $request, Tree $tree, User $user): RedirectResponse
+    public function userPageBlockUpdate(Request $request, Tree $tree, UserInterface $user): RedirectResponse
     {
         $block    = $this->userBlock($request, $user);
         $block_id = (int) $request->get('block_id');
@@ -219,12 +227,12 @@ class HomePageController extends AbstractBaseController
     /**
      * Load a block and check we have permission to edit it.
      *
-     * @param Request $request
-     * @param User    $user
+     * @param Request       $request
+     * @param UserInterface $user
      *
      * @return ModuleBlockInterface
      */
-    private function userBlock(Request $request, User $user): ModuleBlockInterface
+    private function userBlock(Request $request, UserInterface $user): ModuleBlockInterface
     {
         $block_id = (int) $request->get('block_id');
 
@@ -327,10 +335,10 @@ class HomePageController extends AbstractBaseController
         $main_blocks = $this->treeBlocks(-1, 'main');
         $side_blocks = $this->treeBlocks(-1, 'side');
 
-        $all_blocks  = $this->availableTreeBlocks();
-        $title       = I18N::translate('Set the default blocks for new family trees');
-        $url_cancel  = route('admin-control-panel');
-        $url_save    = route('tree-page-default-update');
+        $all_blocks = $this->availableTreeBlocks();
+        $title      = I18N::translate('Set the default blocks for new family trees');
+        $url_cancel = route('admin-control-panel');
+        $url_save   = route('tree-page-default-update');
 
         return $this->viewResponse('edit-blocks-page', [
             'all_blocks'  => $all_blocks,
@@ -372,10 +380,10 @@ class HomePageController extends AbstractBaseController
         $main_blocks = $this->treeBlocks($tree->id(), 'main');
         $side_blocks = $this->treeBlocks($tree->id(), 'side');
 
-        $all_blocks  = $this->availableTreeBlocks();
-        $title       = I18N::translate('Change the “Home page” blocks');
-        $url_cancel  = route('tree-page', ['ged' => $tree->name()]);
-        $url_save    = route('tree-page-update', ['ged' => $tree->name()]);
+        $all_blocks = $this->availableTreeBlocks();
+        $title      = I18N::translate('Change the “Home page” blocks');
+        $url_cancel = route('tree-page', ['ged' => $tree->name()]);
+        $url_save   = route('tree-page-update', ['ged' => $tree->name()]);
 
         return $this->viewResponse('edit-blocks-page', [
             'all_blocks'  => $all_blocks,
@@ -416,11 +424,11 @@ class HomePageController extends AbstractBaseController
     /**
      * Show a users's page.
      *
-     * @param User $user
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function userPage(User $user): Response
+    public function userPage(UserInterface $user): Response
     {
         $has_blocks = DB::table('block')
             ->where('user_id', '=', $user->id())
@@ -451,13 +459,13 @@ class HomePageController extends AbstractBaseController
     /**
      * Load block asynchronously.
      *
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function userPageBlock(Request $request, Tree $tree, User $user): Response
+    public function userPageBlock(Request $request, Tree $tree, UserInterface $user): Response
     {
         $block_id = $request->get('block_id');
 
@@ -522,12 +530,12 @@ class HomePageController extends AbstractBaseController
     /**
      * Show a form to edit the blocks on the user's page.
      *
-     * @param Tree $tree
-     * @param User $user
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function userPageEdit(Tree $tree, User $user): Response
+    public function userPageEdit(Tree $tree, UserInterface $user): Response
     {
         $main_blocks = $this->userBlocks($user->id(), 'main');
         $side_blocks = $this->userBlocks($user->id(), 'side');
@@ -550,13 +558,13 @@ class HomePageController extends AbstractBaseController
     /**
      * Save the updted blocks on a user's page.
      *
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return RedirectResponse
      */
-    public function userPageUpdate(Request $request, Tree $tree, User $user): RedirectResponse
+    public function userPageUpdate(Request $request, Tree $tree, UserInterface $user): RedirectResponse
     {
         $defaults = (bool) $request->get('defaults');
 
@@ -583,11 +591,11 @@ class HomePageController extends AbstractBaseController
     public function userPageUserEdit(Request $request): Response
     {
         $user_id     = (int) $request->get('user_id');
-        $user        = User::find($user_id);
+        $user        = $this->user_service->find($user_id);
         $main_blocks = $this->userBlocks($user->id(), 'main');
         $side_blocks = $this->userBlocks($user->id(), 'side');
         $all_blocks  = $this->availableUserBlocks();
-        $title       = I18N::translate('Change the blocks on this user’s “My page”') . ' - ' . e($user->getUserName());
+        $title       = I18N::translate('Change the blocks on this user’s “My page”') . ' - ' . e($user->userName());
         $url_cancel  = route('admin-users');
         $url_save    = route('user-page-user-update', ['user_id' => $user_id]);
 
@@ -717,7 +725,7 @@ class HomePageController extends AbstractBaseController
                     $module_name = $this->module_service->findByClass($class)->name();
 
                     DB::table('block')->insert([
-                        'gedcom_id'     => -1,
+                        'gedcom_id'   => -1,
                         'location'    => $location,
                         'block_order' => $block_order,
                         'module_name' => $module_name,

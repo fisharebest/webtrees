@@ -18,8 +18,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 
 /**
  * Class GoogleAnalyticsModule - add support for Google analytics.
@@ -68,7 +68,7 @@ class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
     public function analyticsParameters(): array
     {
         return [
-            'GOOGLE_WEBMASTER_ID' => $this->getPreference('GOOGLE_WEBMASTER_ID')
+            'GOOGLE_WEBMASTER_ID' => $this->getPreference('GOOGLE_WEBMASTER_ID'),
         ];
     }
 
@@ -83,7 +83,7 @@ class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
     {
         // Add extra dimensions (i.e. filtering categories)
         $tree = app()->make(Tree::class);
-        $user = app()->make(User::class);
+        $user = app()->make(UserInterface::class);
 
         $parameters['dimensions'] = (object) [
             'dimension1' => $tree instanceof Tree ? $tree->name() : '-',

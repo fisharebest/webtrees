@@ -18,9 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Fisharebest\Webtrees\Site;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -53,7 +51,7 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
      */
     public function __construct(Request $request, ModuleService $module_service)
     {
-        $this->request = $request;
+        $this->request        = $request;
         $this->module_service = $module_service;
     }
 
@@ -103,6 +101,7 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
         if ($this->siteUsesAnalyticss()) {
             return view('modules/cookie-warning/footer');
         }
+
         return '';
     }
 

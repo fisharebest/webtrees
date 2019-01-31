@@ -19,13 +19,13 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Bootstrap4;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Report\ReportHtml;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
@@ -34,7 +34,6 @@ use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
@@ -63,14 +62,14 @@ class ReportEngineController extends AbstractBaseController
     /**
      * A list of available reports.
      *
-     * @param Tree $tree
-     * @param User $user
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function reportList(Tree $tree, User $user): Response
+    public function reportList(Tree $tree, UserInterface $user): Response
     {
-        $title   = I18N::translate('Choose a report to run');
+        $title = I18N::translate('Choose a report to run');
 
         return $this->viewResponse('report-select-page', [
             'reports' => $this->module_service->findByComponent('report', $tree, $user),
@@ -81,13 +80,13 @@ class ReportEngineController extends AbstractBaseController
     /**
      * Fetch the options/parameters for a report.
      *
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function reportSetup(Request $request, Tree $tree, User $user): Response
+    public function reportSetup(Request $request, Tree $tree, UserInterface $user): Response
     {
         $pid    = $request->get('xref', '');
         $report = $request->get('report', '');
@@ -134,7 +133,7 @@ class ReportEngineController extends AbstractBaseController
                     $input['control'] = FunctionsEdit::formControlSource($tree, $source, $attributes + ['required' => 'true']);
                     break;
                 case 'DATE':
-                    $attributes += [
+                    $attributes       += [
                         'type'  => 'text',
                         'value' => $input['default'],
                     ];
@@ -148,14 +147,14 @@ class ReportEngineController extends AbstractBaseController
                 default:
                     switch ($input['type']) {
                         case 'text':
-                            $attributes += [
+                            $attributes       += [
                                 'type'  => 'text',
                                 'value' => $input['default'],
                             ];
                             $input['control'] = '<input ' . Html::attributes($attributes) . '>';
                             break;
                         case 'checkbox':
-                            $attributes += [
+                            $attributes       += [
                                 'type'    => 'checkbox',
                                 'checked' => (bool) $input['default'],
                             ];
@@ -194,13 +193,13 @@ class ReportEngineController extends AbstractBaseController
     /**
      * Generate a report.
      *
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function reportRun(Request $request, Tree $tree, User $user): Response
+    public function reportRun(Request $request, Tree $tree, UserInterface $user): Response
     {
         $report   = $request->get('report', '');
         $output   = $request->get('output');
@@ -255,8 +254,7 @@ class ReportEngineController extends AbstractBaseController
             }
         }
 
-        $report_xml =WT_ROOT . 'resources/xml/reports/' . $module->name() . '.xml';
-
+        $report_xml = WT_ROOT . 'resources/xml/reports/' . $module->name() . '.xml';
 
         switch ($output) {
             default:

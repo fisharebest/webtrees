@@ -20,12 +20,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\ColorGenerator;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use stdClass;
@@ -90,21 +90,21 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         return route('module', [
                 'module'  => $this->name(),
                 'action'  => 'Chart',
-            'xrefs[]' => $individual->xref(),
-            'ged'     => $individual->tree()->name(),
-        ] + $parameters);
+                'xrefs[]' => $individual->xref(),
+                'ged'     => $individual->tree()->name(),
+            ] + $parameters);
     }
 
     /**
      * A form to request the chart parameters.
      *
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function getChartAction(Request $request, Tree $tree, User $user): Response
+    public function getChartAction(Request $request, Tree $tree, UserInterface $user): Response
     {
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
@@ -225,8 +225,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     }
 
     /**
-     *
-     *
      * @param Individual[] $individuals
      *
      * @return stdClass[]

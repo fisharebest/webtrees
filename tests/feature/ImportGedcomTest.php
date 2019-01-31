@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees;
  *
  * @coversNothing
  */
-class ImportGedcomTest extends \Fisharebest\Webtrees\TestCase
+class ImportGedcomTest extends TestCase
 {
     protected static $uses_database = true;
 

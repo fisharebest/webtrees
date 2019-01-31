@@ -18,12 +18,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use stdClass;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -118,13 +118,13 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
     /**
      * A form to request the chart parameters.
      *
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function getChartAction(Request $request, Tree $tree, User $user): Response
+    public function getChartAction(Request $request, Tree $tree, UserInterface $user): Response
     {
         $ajax       = (bool) $request->get('ajax');
         $xref       = $request->get('xref', '');
@@ -155,7 +155,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
             'ajax'        => true,
             'book_size'   => $book_size,
             'generations' => $generations,
-            'show_spouse' => $show_spouse
+            'show_spouse' => $show_spouse,
         ]);
 
         return $this->viewResponse('modules/family-book-chart/page', [
@@ -241,7 +241,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
                 echo '<table cellspacing="0" cellpadding="0" border="0" >';
                 foreach ($children as $i => $child) {
                     echo '<tr><td>';
-                    $kids = $this->printDescendency($generation + 1, $child);
+                    $kids    = $this->printDescendency($generation + 1, $child);
                     $numkids += $kids;
                     echo '</td>';
                     // Print the lines

@@ -18,9 +18,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\HitCountRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 
 /**
@@ -32,15 +32,21 @@ class HitCountRepository implements HitCountRepositoryInterface
      * @var Tree
      */
     private $tree;
+    /**
+     * @var UserService
+     */
+    private $user_service;
 
     /**
      * Constructor.
      *
-     * @param Tree $tree
+     * @param Tree        $tree
+     * @param UserService $user_service
      */
-    public function __construct(Tree $tree)
+    public function __construct(Tree $tree, UserService $user_service)
     {
-        $this->tree = $tree;
+        $this->tree         = $tree;
+        $this->user_service = $user_service;
     }
 
     /**
@@ -59,7 +65,7 @@ class HitCountRepository implements HitCountRepositoryInterface
             $page_parameter = 'gedcom:' . $this->tree->id();
         } elseif ($page_name === 'index.php') {
             // index.php?ctype=user
-            $user           = User::findByIdentifier($page_parameter);
+            $user           = $this->user_service->findByIdentifier($page_parameter);
             $page_parameter = 'user:' . ($user ? $user->id() : Auth::id());
         }
 

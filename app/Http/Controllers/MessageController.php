@@ -18,11 +18,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Mail;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\TreeUser;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -36,14 +39,29 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 class MessageController extends AbstractBaseController
 {
     /**
+     * @var UserService
+     */
+    private $user_service;
+
+    /**
+     * MessageController constructor.
+     *
+     * @param UserService $user_service
+     */
+    public function __construct(UserService $user_service)
+    {
+        $this->user_service = $user_service;
+    }
+
+    /**
      * A form to compose a message from a member.
      *
-     * @param Request $request
-     * @param User    $user
+     * @param Request       $request
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function broadcastPage(Request $request, User $user): Response
+    public function broadcastPage(Request $request, UserInterface $user): Response
     {
         $referer = $request->headers->get('referer', '');
 
@@ -53,10 +71,9 @@ class MessageController extends AbstractBaseController
         $url     = $request->get('url', $referer);
 
         $to_names = $this->recipientUsers($to)
-            ->map(function (User $user): string {
-                return $user->getRealName();
+            ->map(function (UserInterface $user): string {
+                return $user->realName();
             });
-
 
         $title = $this->recipientDescription($to);
 
@@ -76,13 +93,13 @@ class MessageController extends AbstractBaseController
     /**
      * Send a message.
      *
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return RedirectResponse
      */
-    public function broadcastAction(Request $request, Tree $tree, User $user): RedirectResponse
+    public function broadcastAction(Request $request, Tree $tree, UserInterface $user): RedirectResponse
     {
         $body    = $request->get('body', '');
         $subject = $request->get('subject', '');
@@ -105,8 +122,8 @@ class MessageController extends AbstractBaseController
         $errors = false;
 
         foreach ($to_users as $to_user) {
-            if ($this->deliverMessage($tree, $user->getEmail(), $user->getRealName(), $to_user, $subject, $body, $url, $ip)) {
-                FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to_user->getRealName())), 'success');
+            if ($this->deliverMessage($tree, $user, $to_user, $subject, $body, $url, $ip)) {
+                FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to_user->realName())), 'success');
             } else {
                 $errors = true;
             }
@@ -138,13 +155,13 @@ class MessageController extends AbstractBaseController
         $to         = $request->get('to', '');
         $url        = $request->get('url', $referer);
 
-        $to_user = User::findByUserName($to);
+        $to_user = $this->user_service->findByUserName($to);
 
         if (!in_array($to_user, $this->validContacts($tree))) {
             throw new AccessDeniedHttpException('Invalid contact user id');
         }
 
-        $to_name = $to_user->getRealName();
+        $to_name = $to_user->realName();
 
         $title = I18N::translate('Send a message');
 
@@ -177,7 +194,7 @@ class MessageController extends AbstractBaseController
         $to         = $request->get('to', '');
         $url        = $request->get('url', '');
 
-        $to_user = User::findByUserName($to);
+        $to_user = $this->user_service->findByUserName($to);
         $ip      = $request->getClientIp() ?? '127.0.0.1';
 
         if (!in_array($to_user, $this->validContacts($tree))) {
@@ -209,8 +226,10 @@ class MessageController extends AbstractBaseController
             ]));
         }
 
-        if ($this->deliverMessage($tree, $from_email, $from_name, $to_user, $subject, $body, $url, $ip)) {
-            FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to_user->getRealName())), 'success');
+        $sender = new GuestUser($from_email, $from_name);
+
+        if ($this->deliverMessage($tree, $sender, $to_user, $subject, $body, $url, $ip)) {
+            FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to_user->realName())), 'success');
 
             $url = $url ?: route('tree-page', ['ged' => $tree->name()]);
 
@@ -234,12 +253,12 @@ class MessageController extends AbstractBaseController
     /**
      * A form to compose a message from a member.
      *
-     * @param Request $request
-     * @param User    $user
+     * @param Request       $request
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function messagePage(Request $request, User $user): Response
+    public function messagePage(Request $request, UserInterface $user): Response
     {
         $referer = $request->headers->get('referer', '');
 
@@ -248,7 +267,7 @@ class MessageController extends AbstractBaseController
         $to      = $request->get('to', '');
         $url     = $request->get('url', $referer);
 
-        $to_user = User::findByUserName($to);
+        $to_user = $this->user_service->findByUserName($to);
 
         if ($to_user === null || $to_user->getPreference('contactmethod') === 'none') {
             throw new AccessDeniedHttpException('Invalid contact user id');
@@ -269,20 +288,20 @@ class MessageController extends AbstractBaseController
     /**
      * Send a message.
      *
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return RedirectResponse
      */
-    public function messageAction(Request $request, Tree $tree, User $user): RedirectResponse
+    public function messageAction(Request $request, Tree $tree, UserInterface $user): RedirectResponse
     {
         $body    = $request->get('body', '');
         $subject = $request->get('subject', '');
         $to      = $request->get('to', '');
         $url     = $request->get('url', '');
 
-        $to_user = User::findByUserName($to);
+        $to_user = $this->user_service->findByUserName($to);
         $ip      = $request->getClientIp() ?? '127.0.0.1';
 
         if ($to_user === null || $to_user->getPreference('contactmethod') === 'none') {
@@ -299,8 +318,8 @@ class MessageController extends AbstractBaseController
             ]));
         }
 
-        if ($this->deliverMessage($tree, $user->getEmail(), $user->getRealName(), $to_user, $subject, $body, $url, $ip)) {
-            FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to_user->getRealName())), 'success');
+        if ($this->deliverMessage($tree, $user, $to_user, $subject, $body, $url, $ip)) {
+            FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to_user->realName())), 'success');
 
             $url = $url ?: route('tree-page', ['ged' => $tree->name()]);
 
@@ -324,13 +343,13 @@ class MessageController extends AbstractBaseController
      *
      * @param Tree $tree
      *
-     * @return User[]
+     * @return UserInterface[]
      */
     private function validContacts(Tree $tree): array
     {
         $contacts = [
-            User::find((int) $tree->getPreference('CONTACT_USER_ID')),
-            User::find((int) $tree->getPreference('WEBMASTER_USER_ID')),
+            $this->user_service->find((int) $tree->getPreference('CONTACT_USER_ID')),
+            $this->user_service->find((int) $tree->getPreference('WEBMASTER_USER_ID')),
         ];
 
         return array_filter($contacts);
@@ -339,22 +358,18 @@ class MessageController extends AbstractBaseController
     /**
      * Add a message to a user's inbox, send it to them via email, or both.
      *
-     * @param Tree   $tree
-     * @param string $sender_email
-     * @param string $sender_name
-     * @param User   $recipient
-     * @param string $subject
-     * @param string $body
-     * @param string $url
-     * @param string $ip
+     * @param Tree          $tree
+     * @param UserInterface $sender
+     * @param UserInterface $recipient
+     * @param string        $subject
+     * @param string        $body
+     * @param string        $url
+     * @param string        $ip
      *
      * @return bool
      */
-    private function deliverMessage(Tree $tree, string $sender_email, string $sender_name, User $recipient, string $subject, string $body, string $url, string $ip): bool
+    private function deliverMessage(Tree $tree, UserInterface $sender, UserInterface $recipient, string $subject, string $body, string $url, string $ip): bool
     {
-        // Create a dummy user, so we can reply to visitors.
-        $sender = User::visitor($sender_name, $sender_email);
-
         $success = true;
 
         // Temporarily switch to the recipient's language
@@ -377,7 +392,7 @@ class MessageController extends AbstractBaseController
         // Send via the internal messaging system.
         if ($this->sendInternalMessage($recipient)) {
             DB::table('message')->insert([
-                'sender'     => Auth::check() ? Auth::user()->getEmail() : $sender_email,
+                'sender'     => Auth::check() ? Auth::user()->email() : $sender->email(),
                 'ip_address' => $ip,
                 'user_id'    => $recipient->id(),
                 'subject'    => $subject,
@@ -388,7 +403,7 @@ class MessageController extends AbstractBaseController
         // Send via email
         if ($this->sendEmail($recipient)) {
             $success = Mail::send(
-                User::userFromTree($tree),
+                new TreeUser($tree),
                 $recipient,
                 $sender,
                 I18N::translate('webtrees message') . ' - ' . $subject,
@@ -405,11 +420,11 @@ class MessageController extends AbstractBaseController
     /**
      * Should we send messages to this user via internal messaging?
      *
-     * @param User $user
+     * @param UserInterface $user
      *
      * @return bool
      */
-    private function sendInternalMessage(User $user): bool
+    private function sendInternalMessage(UserInterface $user): bool
     {
         return in_array($user->getPreference('contactmethod'), [
             'messaging',
@@ -422,11 +437,11 @@ class MessageController extends AbstractBaseController
     /**
      * Should we send messages to this user via email?
      *
-     * @param User $user
+     * @param UserInterface $user
      *
      * @return bool
      */
-    private function sendEmail(User $user): bool
+    private function sendEmail(UserInterface $user): bool
     {
         return in_array($user->getPreference('contactmethod'), [
             'messaging2',
@@ -441,20 +456,20 @@ class MessageController extends AbstractBaseController
      *
      * @param string $to
      *
-     * @return Collection|User[]
+     * @return Collection|UserInterface[]
      */
     private function recipientUsers(string $to): Collection
     {
         switch ($to) {
             default:
             case 'all':
-                return User::all();
+                return $this->user_service->all();
             case 'never_logged':
-                return User::all()->filter(function (User $user): bool {
+                return $this->user_service->all()->filter(function (UserInterface $user): bool {
                     return $user->getPreference('verified_by_admin') && $user->getPreference('reg_timestamp') > $user->getPreference('sessiontime');
                 });
             case 'last_6mo':
-                return User::all()->filter(function (User $user): bool {
+                return $this->user_service->all()->filter(function (UserInterface $user): bool {
                     return $user->getPreference('sessiontime') > 0 && WT_TIMESTAMP - $user->getPreference('sessiontime') > 60 * 60 * 24 * 30 * 6;
                 });
         }

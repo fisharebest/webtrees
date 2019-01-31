@@ -18,10 +18,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\UserRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 
 /**
  * A repository providing methods for user related statistics.
@@ -32,15 +33,21 @@ class UserRepository implements UserRepositoryInterface
      * @var Tree
      */
     private $tree;
+    /**
+     * @var UserService
+     */
+    private $user_service;
 
     /**
      * Constructor.
      *
-     * @param Tree $tree
+     * @param Tree        $tree
+     * @param UserService $user_service
      */
-    public function __construct(Tree $tree)
+    public function __construct(Tree $tree, UserService $user_service)
     {
-        $this->tree = $tree;
+        $this->tree         = $tree;
+        $this->user_service = $user_service;
     }
 
     /**
@@ -60,7 +67,7 @@ class UserRepository implements UserRepositoryInterface
         $NumAnonymous = 0;
         $loggedusers  = [];
 
-        foreach (User::allLoggedIn() as $user) {
+        foreach ($this->user_service->allLoggedIn() as $user) {
             if (Auth::isAdmin() || $user->getPreference('visibleonline')) {
                 $loggedusers[] = $user;
             } else {
@@ -96,9 +103,9 @@ class UserRepository implements UserRepositoryInterface
         if (Auth::check()) {
             foreach ($loggedusers as $user) {
                 if ($type === 'list') {
-                    $content .= '<li>' . e($user->getRealName()) . ' - ' . e($user->getUserName());
+                    $content .= '<li>' . e($user->realName()) . ' - ' . e($user->userName());
                 } else {
-                    $content .= e($user->getRealName()) . ' - ' . e($user->getUserName());
+                    $content .= e($user->realName()) . ' - ' . e($user->userName());
                 }
 
                 if (($user->getPreference('contactmethod') !== 'none')
@@ -107,7 +114,7 @@ class UserRepository implements UserRepositoryInterface
                     if ($type === 'list') {
                         $content .= '<br>';
                     }
-                    $content .= '<a href="' . e(route('message', ['to'  => $user->getUserName(), 'ged' => $this->tree->name()])) . '" class="btn btn-link" title="' . I18N::translate('Send a message') . '">' . view('icons/email') . '</a>';
+                    $content .= '<a href="' . e(route('message', ['to' => $user->userName(), 'ged' => $this->tree->name()])) . '" class="btn btn-link" title="' . I18N::translate('Send a message') . '">' . view('icons/email') . '</a>';
                 }
 
                 if ($type === 'list') {
@@ -142,11 +149,11 @@ class UserRepository implements UserRepositoryInterface
     /**
      * Returns true if the given user is visible to others.
      *
-     * @param User $user
+     * @param UserInterface $user
      *
      * @return bool
      */
-    private function isUserVisible(User $user): bool
+    private function isUserVisible(UserInterface $user): bool
     {
         return Auth::isAdmin() || $user->getPreference('visibleonline');
     }
@@ -156,7 +163,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function usersLoggedInTotal(): int
     {
-        return \count(User::allLoggedIn());
+        return \count($this->user_service->allLoggedIn());
     }
 
     /**
@@ -166,7 +173,7 @@ class UserRepository implements UserRepositoryInterface
     {
         $anonymous = 0;
 
-        foreach (User::allLoggedIn() as $user) {
+        foreach ($this->user_service->allLoggedIn() as $user) {
             if (!$this->isUserVisible($user)) {
                 ++$anonymous;
             }
@@ -182,7 +189,7 @@ class UserRepository implements UserRepositoryInterface
     {
         $visible = 0;
 
-        foreach (User::allLoggedIn() as $user) {
+        foreach ($this->user_service->allLoggedIn() as $user) {
             if ($this->isUserVisible($user)) {
                 ++$visible;
             }
@@ -205,7 +212,7 @@ class UserRepository implements UserRepositoryInterface
     public function userName(string $visitor_text = ''): string
     {
         if (Auth::check()) {
-            return e(Auth::user()->getUserName());
+            return e(Auth::user()->userName());
         }
 
         // if #username:visitor# was specified, then "visitor" will be returned when the user is not logged in
@@ -217,7 +224,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function userFullName(): string
     {
-        return Auth::check() ? '<span dir="auto">' . e(Auth::user()->getRealName()) . '</span>' : '';
+        return Auth::check() ? '<span dir="auto">' . e(Auth::user()->realName()) . '</span>' : '';
     }
 
     /**
@@ -227,7 +234,7 @@ class UserRepository implements UserRepositoryInterface
      */
     private function getUserCount(): int
     {
-        return \count(User::all());
+        return \count($this->user_service->all());
     }
 
     /**
@@ -237,7 +244,7 @@ class UserRepository implements UserRepositoryInterface
      */
     private function getAdminCount(): int
     {
-        return \count(User::administrators());
+        return \count($this->user_service->administrators());
     }
 
     /**

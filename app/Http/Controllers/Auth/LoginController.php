@@ -24,10 +24,10 @@ use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\UpgradeService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,6 +38,21 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class LoginController extends AbstractBaseController
 {
+    /**
+     * @var UserService
+     */
+    private $user_service;
+
+    /**
+     * LoginController constructor.
+     *
+     * @param UserService $user_service
+     */
+    public function __construct(UserService $user_service)
+    {
+        $this->user_service = $user_service;
+    }
+
     /**
      * Show a login page.
      *
@@ -153,7 +168,7 @@ class LoginController extends AbstractBaseController
             throw new Exception(I18N::translate('You cannot sign in because your browser does not accept cookies.'));
         }
 
-        $user = User::findByIdentifier($username);
+        $user = $this->user_service->findByIdentifier($username);
 
         if ($user === null) {
             Log::addAuthenticationLog('Login failed (no such user/email): ' . $username);
@@ -176,7 +191,7 @@ class LoginController extends AbstractBaseController
         }
 
         Auth::login($user);
-        Log::addAuthenticationLog('Login: ' . Auth::user()->getUserName() . '/' . Auth::user()->getRealName());
+        Log::addAuthenticationLog('Login: ' . Auth::user()->userName() . '/' . Auth::user()->realName());
         Auth::user()->setPreference('sessiontime', (string) WT_TIMESTAMP);
 
         Session::put('locale', Auth::user()->getPreference('language'));
@@ -194,7 +209,7 @@ class LoginController extends AbstractBaseController
     public function logoutAction(Tree $tree = null): RedirectResponse
     {
         if (Auth::check()) {
-            Log::addAuthenticationLog('Logout: ' . Auth::user()->getUserName() . '/' . Auth::user()->getRealName());
+            Log::addAuthenticationLog('Logout: ' . Auth::user()->userName() . '/' . Auth::user()->realName());
             Auth::logout();
             FlashMessages::addMessage(I18N::translate('You have signed out.'), 'info');
         }

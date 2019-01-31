@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsCharts;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
@@ -27,11 +28,9 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * Class AncestorsChartModule
@@ -112,14 +111,14 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * A form to request the chart parameters.
      *
-     * @param Request      $request
-     * @param Tree         $tree
-     * @param User         $user
-     * @param ChartService $chart_service
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
+     * @param ChartService  $chart_service
      *
      * @return Response
      */
-    public function getChartAction(Request $request, Tree $tree, User $user, ChartService $chart_service): Response
+    public function getChartAction(Request $request, Tree $tree, UserInterface $user, ChartService $chart_service): Response
     {
         $ajax       = (bool) $request->get('ajax');
         $xref       = $request->get('xref', '');
@@ -229,7 +228,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
                 'href' => $this->chartUrl($individual, [
                     'generations' => $generations,
                     'chart_style' => self::CHART_STYLE_LIST,
-                ])
+                ]),
             ]);
         }
         echo '</td><td class="details1">&nbsp;<span class="person_box' . ($sosa === 1 ? 'NN' : ($sosa % 2 ? 'F' : '')) . '">', I18N::number($sosa), '</span> ';

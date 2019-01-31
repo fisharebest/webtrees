@@ -23,9 +23,10 @@ use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Mail;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\TreeUser;
 use Illuminate\Database\Capsule\Manager as DB;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -38,6 +39,21 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class RegisterController extends AbstractBaseController
 {
+    /**
+     * @var UserService
+     */
+    private $user_service;
+
+    /**
+     * RegisterController constructor.
+     *
+     * @param UserService $user_service
+     */
+    public function __construct(UserService $user_service)
+    {
+        $this->user_service = $user_service;
+    }
+
     /**
      * Show a registration page.
      *
@@ -103,7 +119,7 @@ class RegisterController extends AbstractBaseController
 
         Log::addAuthenticationLog('User registration requested for: ' . $username);
 
-        $user = User::create($username, $realname, $email, $password1);
+        $user = $this->user_service->create($username, $realname, $email, $password1);
         $user
             ->setPreference('language', WT_LOCALE)
             ->setPreference('verified', '0')
@@ -120,16 +136,16 @@ class RegisterController extends AbstractBaseController
         // Send a verification message to the user.
         /* I18N: %s is a server name/URL */
         Mail::send(
-            User::userFromTree($tree),
+            new TreeUser($tree),
             $user,
-            User::userFromTree($tree),
+            new TreeUser($tree),
             I18N::translate('Your registration at %s', WT_BASE_URL),
             view('emails/register-user-text', ['user' => $user]),
             view('emails/register-user-html', ['user' => $user])
         );
 
         // Tell the genealogy contact about the registration.
-        $webmaster = User::find((int) $tree->getPreference('WEBMASTER_USER_ID'));
+        $webmaster = $this->user_service->find((int) $tree->getPreference('WEBMASTER_USER_ID'));
 
         if ($webmaster !== null) {
             I18N::init($webmaster->getPreference('language'));
@@ -139,7 +155,7 @@ class RegisterController extends AbstractBaseController
 
             /* I18N: %s is a server name/URL */
             Mail::send(
-                User::userFromTree($tree),
+                new TreeUser($tree),
                 $webmaster,
                 $user,
                 $subject,
@@ -150,7 +166,7 @@ class RegisterController extends AbstractBaseController
             $mail1_method = $webmaster->getPreference('contact_method');
             if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
                 DB::table('message')->insert([
-                    'sender'     => $user->getEmail(),
+                    'sender'     => $user->email(),
                     'ip_address' => $request->getClientIp(),
                     'user_id'    => $webmaster->id(),
                     'subject'    => $subject,
@@ -188,12 +204,12 @@ class RegisterController extends AbstractBaseController
         }
 
         // Username already exists
-        if (User::findByUserName($username) !== null) {
+        if ($this->user_service->findByUserName($username) !== null) {
             throw new Exception(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.' . $username));
         }
 
         // Email already exists
-        if (User::findByEmail($email) !== null) {
+        if ($this->user_service->findByEmail($email) !== null) {
             throw new Exception(I18N::translate('Duplicate email address. A user with that email already exists.'));
         }
 

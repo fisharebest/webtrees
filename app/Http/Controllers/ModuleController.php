@@ -18,8 +18,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Fisharebest\Webtrees\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
@@ -51,12 +51,12 @@ class ModuleController extends AbstractBaseController
     /**
      * Perform an HTTP action for one of the modules.
      *
-     * @param Request $request
-     * @param User    $user
+     * @param Request       $request
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function action(Request $request, User $user): Response
+    public function action(Request $request, UserInterface $user): Response
     {
         $module_name = $request->get('module', '');
 

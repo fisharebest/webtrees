@@ -26,7 +26,7 @@ use function set_error_handler;
 /**
  * Test the Webtrees class
  */
-class WebtreesTest extends \Fisharebest\Webtrees\TestCase
+class WebtreesTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\Webtrees::init

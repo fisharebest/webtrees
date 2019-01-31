@@ -18,10 +18,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -90,7 +90,6 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 
     /**
      * Should this block load asynchronously using AJAX?
-     *
      * Simple blocks are faster in-line, more comples ones
      * can be loaded later.
      *
@@ -171,13 +170,13 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return RedirectResponse
      */
-    public function postAddFavoriteAction(Request $request, Tree $tree, User $user): RedirectResponse
+    public function postAddFavoriteAction(Request $request, Tree $tree, UserInterface $user): RedirectResponse
     {
         $note         = $request->get('note', '');
         $title        = $request->get('title', '');
@@ -203,13 +202,13 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return RedirectResponse
      */
-    public function postDeleteFavoriteAction(Request $request, Tree $tree, User $user): RedirectResponse
+    public function postDeleteFavoriteAction(Request $request, Tree $tree, UserInterface $user): RedirectResponse
     {
         $favorite_id = (int) $request->get('favorite_id');
 

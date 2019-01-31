@@ -18,6 +18,7 @@ declare(strict_types=1);
 use Fisharebest\Localization\Locale as WebtreesLocale;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Exceptions\Handler;
@@ -218,7 +219,7 @@ try {
     $controller_class = '\\Fisharebest\\Webtrees\\Http\\Controllers\\' . $controller_name;
 
     app()->instance(Tree::class, $tree);
-    app()->instance(User::class, Auth::user());
+    app()->instance(UserInterface::class, Auth::user());
     app()->instance(LocaleInterface::class, WebtreesLocale::create(WT_LOCALE));
     app()->instance(TimeoutService::class, new TimeoutService(microtime(true)));
     app()->instance(Filesystem::class, $filesystem);

@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
@@ -59,11 +60,11 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
     /**
      * Dependency injection.
      *
-     * @param Tree|null $tree
-     * @param User      $user
-     * @param Request   $request
+     * @param Tree|null     $tree
+     * @param UserInterface $user
+     * @param Request       $request
      */
-    public function __construct(?Tree $tree, User $user, Request $request)
+    public function __construct(?Tree $tree, UserInterface $user, Request $request)
     {
         $this->tree    = $tree;
         $this->user    = $user;

@@ -25,9 +25,9 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
@@ -52,12 +52,20 @@ class AdminSiteController extends AbstractBaseController
     private $module_service;
 
     /**
+     * @var UserService
+     */
+    private $user_service;
+
+    /**
      * AdminUsersController constructor.
      *
      * @param ModuleService $module_service
+     * @param UserService   $user_service
      */
-    public function __construct(ModuleService $module_service) {
+    public function __construct(ModuleService $module_service, UserService $user_service)
+    {
         $this->module_service = $module_service;
+        $this->user_service   = $user_service;
     }
 
     /**
@@ -203,8 +211,8 @@ class AdminSiteController extends AbstractBaseController
         $to   = min(max($from, $to), $latest);
 
         $user_options = ['' => ''];
-        foreach (User::all() as $tmp_user) {
-            $user_options[$tmp_user->getUserName()] = $tmp_user->getUserName();
+        foreach ($this->user_service->all() as $tmp_user) {
+            $user_options[$tmp_user->userName()] = $tmp_user->userName();
         }
 
         $tree_options = ['' => ''] + Tree::getNameList();
@@ -480,8 +488,8 @@ class AdminSiteController extends AbstractBaseController
         $phpinfo = $matches[1];
 
         return $this->viewResponse('admin/server-information', [
-            'title'           => I18N::translate('Server information'),
-            'phpinfo'         => $phpinfo,
+            'title'   => I18N::translate('Server information'),
+            'phpinfo' => $phpinfo,
         ]);
     }
 

@@ -17,11 +17,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Controllers\GedcomFileController;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Schema\SeedDatabase;
 use Fisharebest\Webtrees\Services\TimeoutService;
+use Fisharebest\Webtrees\Services\UserService;
 use Illuminate\Cache\ArrayStore;
 use Illuminate\Cache\Repository;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -76,7 +78,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
             return null;
         });
 
-        app()->instance(User::class, User::visitor());
+        app()->instance(UserService::class, new UserService());
+        app()->instance(UserInterface::class, new GuestUser());
 
         app()->instance(Request::class, Request::createFromGlobals());
 

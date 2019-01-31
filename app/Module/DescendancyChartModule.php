@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsCharts;
@@ -29,7 +30,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Support\Collection;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\Request;
@@ -119,14 +119,14 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
     /**
      * A form to request the chart parameters.
      *
-     * @param Request      $request
-     * @param Tree         $tree
-     * @param User         $user
-     * @param ChartService $chart_service
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
+     * @param ChartService  $chart_service
      *
      * @return Response
      */
-    public function getChartAction(Request $request, Tree $tree, User $user, ChartService $chart_service): Response
+    public function getChartAction(Request $request, Tree $tree, UserInterface $user, ChartService $chart_service): Response
     {
         $ajax       = (bool) $request->get('ajax');
         $xref       = $request->get('xref', '');
@@ -265,10 +265,12 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
         echo '<td>';
         foreach ($person->getChildFamilies() as $cfamily) {
             foreach ($cfamily->getSpouses() as $parent) {
-                echo FontAwesome::linkIcon('arrow-up', I18N::translate('Start at parents'), ['href' => route('descendants', ['ged'         => $parent->tree()->name(),
-                                                                                                                             'xref'        => $parent->xref(),
-                                                                                                                             'generations' => $generations,
-                ]),
+                echo FontAwesome::linkIcon('arrow-up', I18N::translate('Start at parents'), [
+                    'href' => route('descendants', [
+                        'ged'         => $parent->tree()->name(),
+                        'xref'        => $parent->xref(),
+                        'generations' => $generations,
+                    ]),
                 ]);
                 // only show the arrow for one of the parents
                 break;
@@ -348,10 +350,12 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
         if ($spouse) {
             foreach ($spouse->getChildFamilies() as $cfamily) {
                 foreach ($cfamily->getSpouses() as $parent) {
-                    echo FontAwesome::linkIcon('arrow-up', I18N::translate('Start at parents'), ['href' => route('descendants', ['ged'         => $parent->tree()->name(),
-                                                                                                                                 'xref'        => $parent->xref(),
-                                                                                                                                 'generations' => $generations,
-                    ]),
+                    echo FontAwesome::linkIcon('arrow-up', I18N::translate('Start at parents'), [
+                        'href' => route('descendants', [
+                            'ged'         => $parent->tree()->name(),
+                            'xref'        => $parent->xref(),
+                            'generations' => $generations,
+                        ]),
                     ]);
                     // only show the arrow for one of the parents
                     break;
@@ -443,7 +447,6 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
 
         return new Response($html);
     }
-
 
     /**
      * Print a child family

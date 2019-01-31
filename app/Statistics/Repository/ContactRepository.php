@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\ContactRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
@@ -31,15 +32,21 @@ class ContactRepository implements ContactRepositoryInterface
      * @var Tree
      */
     private $tree;
+    /**
+     * @var UserService
+     */
+    private $user_service;
 
     /**
      * Constructor.
      *
-     * @param Tree $tree
+     * @param Tree        $tree
+     * @param UserService $user_service
      */
-    public function __construct(Tree $tree)
+    public function __construct(Tree $tree, UserService $user_service)
     {
-        $this->tree = $tree;
+        $this->tree         = $tree;
+        $this->user_service = $user_service;
     }
 
     /**
@@ -48,7 +55,7 @@ class ContactRepository implements ContactRepositoryInterface
     public function contactWebmaster(): string
     {
         $user_id = $this->tree->getPreference('WEBMASTER_USER_ID');
-        $user    = User::find((int) $user_id);
+        $user    = $this->user_service->find((int) $user_id);
 
         if ($user instanceof User) {
             return view('modules/contact-links/contact', [
@@ -67,7 +74,7 @@ class ContactRepository implements ContactRepositoryInterface
     public function contactGedcom(): string
     {
         $user_id = $this->tree->getPreference('CONTACT_USER_ID');
-        $user    = User::find((int) $user_id);
+        $user    = $this->user_service->find((int) $user_id);
 
         if ($user instanceof User) {
             return view('modules/contact-links/contact', [

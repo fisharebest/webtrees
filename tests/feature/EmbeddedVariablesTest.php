@@ -17,22 +17,48 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\UserService;
+
 /**
  * Test the user functions
  *
  * @coversNothing
  */
-class ImportGedcomTest extends \Fisharebest\Webtrees\TestCase
+class EmbeddedVariablesTest extends TestCase
 {
     protected static $uses_database = true;
 
     /**
      * @return void
      */
-    public function testImportTrees(): void
+    public function testAllEmbeddedVariables(): void
     {
+        global $tree; // For Date::display()
+
         $tree = $this->importTree('demo.ged');
 
-        $this->assertSame(1, $tree->id());
+        $statistics = new Statistics(new ModuleService(), $tree, new UserService());
+
+        $text = $statistics->embedTags('#getAllTagsTable#');
+
+        $this->assertNotEquals('#getAllTagsTable#', $text);
+    }
+
+    /**
+     * @return void
+     */
+    public function testAllEmbeddedVariablesWithEmptyTree(): void
+    {
+        global $tree; // For Date::display()
+
+        $tree = Tree::create('name', 'title');
+        $tree->deleteGenealogyData(false);
+
+        $statistics = new Statistics(new ModuleService(), $tree, new UserService());
+
+        $text = $statistics->embedTags('#getAllTagsTable#');
+
+        $this->assertNotEquals('#getAllTagsTable#', $text);
     }
 }

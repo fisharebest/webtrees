@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use FilesystemIterator;
 use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
@@ -35,8 +34,6 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use League\Flysystem\Filesystem;
-use RecursiveDirectoryIterator;
-use RecursiveIteratorIterator;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -47,7 +44,7 @@ class AutocompleteController extends AbstractBaseController
 {
     // For clients that request one page of data at a time.
     private const RESULTS_PER_PAGE = 20;
-    
+
     /** @var SearchService */
     private $search_service;
 
@@ -374,7 +371,6 @@ class AutocompleteController extends AbstractBaseController
         return new JsonResponse($this->placeSearch($tree, $page, $query, true));
     }
 
-
     /**
      * Look up a place name.
      *
@@ -528,8 +524,8 @@ class AutocompleteController extends AbstractBaseController
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
+     * @param Request $request
+     * @param Tree    $tree
      *
      * @return JsonResponse
      */

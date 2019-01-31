@@ -31,7 +31,6 @@ use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\TreesMenuModule;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 
 /**
  * Test the modules
@@ -68,13 +67,14 @@ class ModuleServiceTest extends TestCase
      */
     public function testFindByComponent(): void
     {
-        $tree = Tree::create('name', 'title');
+        $user_service = new UserService();
+        $tree         = Tree::create('name', 'title');
         app()->instance(Tree::class, $tree);
 
         $module_service = new ModuleService();
 
         $tree = $this->importTree('demo.ged');
-        $user = User::create('UserName', 'RealName', 'user@example.com', 'secret');
+        $user = $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
         $this->assertNotEmpty($module_service->findByComponent('block', $tree, $user)->all());
         $this->assertNotEmpty($module_service->findByComponent('chart', $tree, $user)->all());

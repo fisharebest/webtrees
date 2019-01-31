@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
 use Fisharebest\Webtrees\Gedcom;
@@ -26,7 +27,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Webtrees;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -116,7 +116,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
     }
 
     /** {@inheritdoc} */
-    public function canLoadAjax():  bool
+    public function canLoadAjax(): bool
     {
         return true;
     }
@@ -171,17 +171,17 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
                 'action' => 'Chart',
                 'xref'   => $individual->xref(),
                 'ged'    => $individual->tree()->name(),
-        ] + $parameters);
+            ] + $parameters);
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function getChartAction(Request $request, Tree $tree, User $user): Response
+    public function getChartAction(Request $request, Tree $tree, UserInterface $user): Response
     {
         $xref = $request->get('xref', '');
 

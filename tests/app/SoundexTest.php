@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Test harness for the class Soundex
  */
-class SoundexTest extends \Fisharebest\Webtrees\TestCase
+class SoundexTest extends TestCase
 {
     /**
      * Test that the class exists

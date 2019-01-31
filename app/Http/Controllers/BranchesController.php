@@ -18,18 +18,17 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
@@ -43,6 +42,7 @@ class BranchesController extends AbstractBaseController
 {
     /** @var ModuleService */
     protected $module_service;
+
     /**
      * BranchesController constructor.
      *
@@ -52,6 +52,7 @@ class BranchesController extends AbstractBaseController
     {
         $this->module_service = $module_service;
     }
+
     /**
      * A form to request the page parameters.
      *
@@ -82,13 +83,13 @@ class BranchesController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function list(Request $request, Tree $tree, User $user): Response
+    public function list(Request $request, Tree $tree, UserInterface $user): Response
     {
         $soundex_dm  = (bool) $request->get('soundex_dm');
         $soundex_std = (bool) $request->get('soundex_std');
@@ -279,7 +280,7 @@ class BranchesController extends AbstractBaseController
         $sosa = array_search($individual, $ancestors, true);
         if (is_int($sosa) && $module instanceof RelationshipsChartModule) {
             $sosa_class = 'search_hit';
-            $sosa_html = '<a class="details1 ' . $individual->getBoxStyle() . '" href="' . e($module->chartUrl($individual, ['xref2' => $individuals[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationships') . '">' .  I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
+            $sosa_html  = '<a class="details1 ' . $individual->getBoxStyle() . '" href="' . e($module->chartUrl($individual, ['xref2' => $individuals[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationships') . '">' . I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
         } else {
             $sosa_class = '';
             $sosa_html  = '';
@@ -315,7 +316,7 @@ class BranchesController extends AbstractBaseController
                     $sosa = array_search($spouse, $ancestors, true);
                     if (is_int($sosa) && $module instanceof RelationshipsChartModule) {
                         $sosa_class = 'search_hit';
-                        $sosa_html  = '<a class="details1 ' . $spouse->getBoxStyle() . '" href="' . e($module->chartUrl($individual, ['xref2' => $individuals[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationships') . '">' .  I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
+                        $sosa_html  = '<a class="details1 ' . $spouse->getBoxStyle() . '" href="' . e($module->chartUrl($individual, ['xref2' => $individuals[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationships') . '">' . I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
                     } else {
                         $sosa_class = '';
                         $sosa_html  = '';

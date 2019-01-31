@@ -620,7 +620,7 @@ class EditIndividualController extends AbstractEditController
         Auth::checkIndividualAccess($individual, true);
 
         // @TODO - Move the name-specific code to this function?
-        return (new EditGedcomRecordController())->updateFact($request, $tree);
+        return app()->make(EditGedcomRecordController::class)->updateFact($request, $tree);
     }
 
     /**
@@ -669,7 +669,7 @@ class EditIndividualController extends AbstractEditController
 
         // @TODO - Move the name-specific code to this function?
 
-        return (new EditGedcomRecordController())->updateFact($request, $tree);
+        return app()->make(EditGedcomRecordController::class)->updateFact($request, $tree);
     }
 
     /**

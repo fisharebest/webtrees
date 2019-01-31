@@ -32,18 +32,17 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
-use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\ModuleInterface;
-use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
-use const PREG_SET_ORDER;
 use Ramsey\Uuid\Uuid;
+use const PREG_SET_ORDER;
 
 /**
  * Class FunctionsPrintFacts - common functions
@@ -52,7 +51,6 @@ class FunctionsPrintFacts
 {
     /**
      * Print a fact record, for the individual/family/source/repository/etc. pages.
-     *
      * Although a Fact has a parent object, we also need to know
      * the GedcomRecord for which we are printing it. For example,
      * we can show the death of X on the page of Y, or the marriage
@@ -217,7 +215,7 @@ class FunctionsPrintFacts
                 ]) ?>
                 <?= FontAwesome::linkIcon('delete', I18N::translate('Delete'), [
                     'class'        => 'btn btn-link',
-                    'data-confirm' =>  I18N::translate('Are you sure you want to delete this fact?'),
+                    'data-confirm' => I18N::translate('Are you sure you want to delete this fact?'),
                     'href'         => '#',
                     'onclick'      => 'return delete_fact(this.dataset.confirm, "' . e($tree->name()) . '", "' . e($parent->xref()) . '", "' . $fact->id() . '");',
                 ]) ?>
@@ -424,9 +422,9 @@ class FunctionsPrintFacts
                     }
                     break;
                 case '_WT_USER':
-                    $user = User::findByIdentifier($match[2]); // may not exist
+                    $user = (new UserService())->findByIdentifier($match[2]); // may not exist
                     if ($user) {
-                        echo GedcomTag::getLabelValue('_WT_USER', '<span dir="auto">' . e($user->getRealName()) . '</span>');
+                        echo GedcomTag::getLabelValue('_WT_USER', '<span dir="auto">' . e($user->realName()) . '</span>');
                     } else {
                         echo GedcomTag::getLabelValue('_WT_USER', e($match[2]));
                     }
@@ -569,7 +567,6 @@ class FunctionsPrintFacts
 
     /**
      * print a source linked to a fact (2 SOUR)
-     *
      * this function is called by the FunctionsPrintFacts::print_fact function and other functions to
      * print any source information attached to the fact
      *
@@ -592,7 +589,7 @@ class FunctionsPrintFacts
         for ($j = 0; $j < $ct; $j++) {
             if (strpos($match[$j][1], '@') === false) {
                 $source = e($match[$j][1] . preg_replace('/\n\d CONT ?/', "\n", $match[$j][2]));
-                $data .= '<div class="fact_SOUR"><span class="label">' . I18N::translate('Source') . ':</span> <span class="field" dir="auto">' . Filter::formatText($source, $tree) . '</span></div>';
+                $data   .= '<div class="fact_SOUR"><span class="label">' . I18N::translate('Source') . ':</span> <span class="field" dir="auto">' . Filter::formatText($source, $tree) . '</span></div>';
             }
         }
         // Find source for each fact
@@ -610,7 +607,7 @@ class FunctionsPrintFacts
                     }
                     $srec      = substr($factrec, $spos1, $spos2 - $spos1);
                     $lt        = preg_match_all("/$nlevel \w+/", $srec, $matches);
-                    $data .= '<div class="fact_SOUR">';
+                    $data      .= '<div class="fact_SOUR">';
                     $elementID = Uuid::uuid4()->toString();
                     if ($tree->getPreference('EXPAND_SOURCES')) {
                         $plusminus = 'icon-minus';
@@ -817,7 +814,7 @@ class FunctionsPrintFacts
                     }
                     echo FontAwesome::linkIcon('delete', I18N::translate('Delete'), [
                         'class'        => 'btn btn-link',
-                        'data-confirm' =>  I18N::translate('Are you sure you want to delete this fact?'),
+                        'data-confirm' => I18N::translate('Are you sure you want to delete this fact?'),
                         'href'         => '#',
                         'onclick'      => 'return delete_fact(this.dataset.confirm, "' . e($tree->name()) . '", "' . e($parent->xref()) . '", "' . $fact->id() . '");',
                     ]);
@@ -1041,7 +1038,7 @@ class FunctionsPrintFacts
                     ]);
                     echo FontAwesome::linkIcon('delete', I18N::translate('Delete'), [
                         'class'        => 'btn btn-link',
-                        'data-confirm' =>  I18N::translate('Are you sure you want to delete this fact?'),
+                        'data-confirm' => I18N::translate('Are you sure you want to delete this fact?'),
                         'href'         => '#',
                         'onclick'      => 'return delete_fact(this.dataset.confirm, "' . e($tree->name()) . '", "' . e($parent->xref()) . '", "' . $fact->id() . '");',
                     ]);
@@ -1185,7 +1182,7 @@ class FunctionsPrintFacts
                     ]);
                     echo FontAwesome::linkIcon('delete', I18N::translate('Delete'), [
                         'class'        => 'btn btn-link',
-                        'data-confirm' =>  I18N::translate('Are you sure you want to delete this fact?'),
+                        'data-confirm' => I18N::translate('Are you sure you want to delete this fact?'),
                         'href'         => '#',
                         'onclick'      => 'return delete_fact(this.dataset.confirm", "' . e($tree->name()) . '", "' . e($parent->xref()) . '", "' . $fact->id() . '");',
                     ]);

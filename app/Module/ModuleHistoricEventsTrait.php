@@ -41,8 +41,6 @@ trait ModuleHistoricEventsTrait
     /**
      * All events provided by this module.
      *
-     * @param Individual $individual
-     *
      * @return string[]
      */
     public function historicEventsAll(): array

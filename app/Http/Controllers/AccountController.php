@@ -19,12 +19,14 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use DateTimeZone;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
@@ -42,23 +44,30 @@ class AccountController extends AbstractBaseController
      * @var ModuleService
      */
     private $module_service;
+    /**
+     * @var UserService
+     */
+    private $user_service;
 
     /**
      * AdminUsersController constructor.
      *
      * @param ModuleService $module_service
+     * @param UserService   $user_service
      */
-    public function __construct(ModuleService $module_service) {
+    public function __construct(ModuleService $module_service, UserService $user_service)
+    {
         $this->module_service = $module_service;
+        $this->user_service   = $user_service;
     }
 
     /**
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function edit(Tree $tree, User $user): Response
+    public function edit(Tree $tree, UserInterface $user): Response
     {
         $my_individual_record = Individual::getInstance($tree->getUserPreference(Auth::user(), 'gedcomid'), $tree);
         $contact_methods      = FunctionsEdit::optionsContactMethods();
@@ -84,14 +93,13 @@ class AccountController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     *
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return RedirectResponse
      */
-    public function update(Request $request, Tree $tree, User $user): RedirectResponse
+    public function update(Request $request, Tree $tree, UserInterface $user): RedirectResponse
     {
         $contact_method = (string) $request->get('contact_method');
         $email          = (string) $request->get('email');
@@ -110,8 +118,8 @@ class AccountController extends AbstractBaseController
         }
 
         // Change the username
-        if ($user_name !== $user->getUserName()) {
-            if (User::findByUserName($user_name) === null) {
+        if ($user_name !== $user->userName()) {
+            if ($this->user_service->findByUserName($user_name) === null) {
                 $user->setUserName($user_name);
             } else {
                 FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
@@ -119,8 +127,8 @@ class AccountController extends AbstractBaseController
         }
 
         // Change the email
-        if ($email !== $user->getEmail()) {
-            if (User::findByEmail($email) === null) {
+        if ($email !== $user->email()) {
+            if ($this->user_service->findByEmail($email) === null) {
                 $user->setEmail($email);
             } else {
                 FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));

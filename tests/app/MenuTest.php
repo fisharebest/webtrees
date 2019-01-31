@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Test harness for the class Menu
  */
-class MenuTest extends \Fisharebest\Webtrees\TestCase
+class MenuTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\Menu::__construct

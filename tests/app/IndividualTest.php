@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Test harness for the class Individual
  */
-class IndividualTest extends \Fisharebest\Webtrees\TestCase
+class IndividualTest extends TestCase
 {
     /**
      * Test that the class exists

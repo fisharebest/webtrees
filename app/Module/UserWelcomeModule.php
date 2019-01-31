@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
@@ -116,7 +115,7 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
         ];
         $content = view('modules/user_welcome/welcome', ['links' => $links]);
 
-        $real_name = '<span dir="auto">' . e(Auth::user()->getRealName()) . '</span>';
+        $real_name = '<span dir="auto">' . e(Auth::user()->realName()) . '</span>';
 
         /* I18N: A %s is the user’s name */
         $title = I18N::translate('Welcome %s', $real_name);

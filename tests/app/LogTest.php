@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Test harness for the class WT_Log
  */
-class LogTest extends \Fisharebest\Webtrees\TestCase
+class LogTest extends TestCase
 {
     /**
      * Test that the class exists

@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\FontAwesome;
@@ -30,12 +31,11 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
-use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Support\Collection;
 use stdClass;
 use Symfony\Component\HttpFoundation\Request;
@@ -80,16 +80,23 @@ class IndividualController extends AbstractBaseController
     /**
      * @var ModuleService
      */
+
     private $module_service;
+    /**
+     * @var UserService
+     */
+    private $user_service;
 
     /**
      * IndividualController constructor.
      *
      * @param ModuleService $module_service
+     * @param UserService   $user_service
      */
-    public function __construct(ModuleService $module_service)
+    public function __construct(ModuleService $module_service, UserService $user_service)
     {
         $this->module_service = $module_service;
+        $this->user_service   = $user_service;
     }
 
     /**
@@ -143,9 +150,9 @@ class IndividualController extends AbstractBaseController
         // If this individual is linked to a user account, show the link
         $user_link = '';
         if (Auth::isAdmin()) {
-            $users = User::findByIndividual($individual);
+            $users = $this->user_service->findByIndividual($individual);
             foreach ($users as $user) {
-                $user_link = ' —  <a href="' . e(route('admin-users', ['filter' => $user->getEmail()])) . '">' . e($user->getUserName()) . '</a>';
+                $user_link = ' —  <a href="' . e(route('admin-users', ['filter' => $user->email()])) . '">' . e($user->userName()) . '</a>';
             }
         }
 
@@ -168,13 +175,13 @@ class IndividualController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function tab(Request $request, Tree $tree, User $user): Response
+    public function tab(Request $request, Tree $tree, UserInterface $user): Response
     {
         $xref        = $request->get('xref', '');
         $record      = Individual::getInstance($xref, $tree);

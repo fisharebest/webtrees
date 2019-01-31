@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Test harness for the class GedcomRecord
  */
-class GedcomRecordTest extends \Fisharebest\Webtrees\TestCase
+class GedcomRecordTest extends TestCase
 {
     /**
      * /**

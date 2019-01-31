@@ -18,13 +18,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -89,13 +89,13 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * A form to request the chart parameters.
      *
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function getChartAction(Request $request, Tree $tree, User $user): Response
+    public function getChartAction(Request $request, Tree $tree, UserInterface $user): Response
     {
         $ajax       = (bool) $request->get('ajax');
         $xref       = $request->get('xref', '');
@@ -137,8 +137,9 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * Generate the initial generations of the chart
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Individual $individual
+     * @param int        $generations
+     * @param bool       $show_spouse
      *
      * @return Response
      */

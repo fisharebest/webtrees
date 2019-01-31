@@ -17,29 +17,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Individual;
-use Illuminate\Support\Collection;
-
 /**
  * Interface ModuleLanguageInterface - provide translation and localization.
  */
 interface ModuleLanguageInterface extends ModuleInterface
 {
-    /**
-     * All events provided by this module.
-     *
-     * @param Individual $individual
-     *
-     * @return string[]
-     */
-    public function historicEventsAll(): array;
-
-    /**
-     * Which events should we show for an individual?
-     *
-     * @param Individual $individual
-     *
-     * @return Collection
-     */
-    public function historicEventsForIndividual(Individual $individual): Collection;
 }

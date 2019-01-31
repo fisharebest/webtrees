@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\CensusAssistantModule;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -371,8 +370,8 @@ class EditGedcomRecordController extends AbstractEditController
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
+     * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
@@ -403,7 +402,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         $newged = '';
         if (!empty($_POST['NAME'])) {
-            $newged .= "\n1 NAME " . $_POST['NAME'];
+            $newged     .= "\n1 NAME " . $_POST['NAME'];
             $name_facts = [
                 'TYPE',
                 'NPFX',

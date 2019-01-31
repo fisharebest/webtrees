@@ -23,7 +23,7 @@ use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Schema\SeedDatabase;
-use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Webtrees;
 use PDOException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -36,6 +36,21 @@ use Throwable;
  */
 class SetupController extends AbstractBaseController
 {
+    /**
+     * @var UserService
+     */
+    private $user_service;
+
+    /**
+     * SetupController constructor.
+     *
+     * @param UserService $user_service
+     */
+    public function __construct(UserService $user_service)
+    {
+        $this->user_service = $user_service;
+    }
+
     /**
      * Installation wizard - check user input and proceed to the next step.
      *
@@ -276,13 +291,13 @@ class SetupController extends AbstractBaseController
         (new SeedDatabase())->run();
 
         // If we are re-installing, then this user may already exist.
-        $admin = User::findByIdentifier($data['wtemail']);
+        $admin = $this->user_service->findByIdentifier($data['wtemail']);
         if ($admin === null) {
-            $admin = User::findByIdentifier($data['wtuser']);
+            $admin = $this->user_service->findByIdentifier($data['wtuser']);
         }
         // Create the user
         if ($admin === null) {
-            $admin = User::create($data['wtuser'], $data['wtname'], $data['wtemail'], $data['wtpass'])
+            $admin = $this->user_service->create($data['wtuser'], $data['wtname'], $data['wtemail'], $data['wtpass'])
                 ->setPreference('language', WT_LOCALE)
                 ->setPreference('visibleonline', '1');
         } else {

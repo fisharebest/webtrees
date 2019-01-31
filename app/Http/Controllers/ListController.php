@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
@@ -29,7 +30,6 @@ use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
@@ -63,13 +63,13 @@ class ListController extends AbstractBaseController
     /**
      * Show a list of all individual or family records.
      *
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function familyList(Request $request, Tree $tree, User $user): Response
+    public function familyList(Request $request, Tree $tree, UserInterface $user): Response
     {
         return $this->individualList($request, $tree, $user);
     }
@@ -77,13 +77,13 @@ class ListController extends AbstractBaseController
     /**
      * Show a list of all individual or family records.
      *
-     * @param Request $request
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
      *
      * @return Response
      */
-    public function individualList(Request $request, Tree $tree, User $user): Response
+    public function individualList(Request $request, Tree $tree, UserInterface $user): Response
     {
         // This action can show lists of both families and individuals.
         $route    = $request->get('route');

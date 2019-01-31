@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Test harness for the class Media
  */
-class MediaTest extends \Fisharebest\Webtrees\TestCase
+class MediaTest extends TestCase
 {
     /**
      * Test that the class exists

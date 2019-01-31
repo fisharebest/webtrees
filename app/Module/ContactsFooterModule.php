@@ -17,7 +17,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,17 +41,24 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
     protected $user;
 
     /**
+     * @var UserService
+     */
+    private $user_service;
+
+    /**
      * Dependency injection.
      *
-     * @param Tree|null $tree
-     * @param User      $user
-     * @param Request   $request
+     * @param Tree|null     $tree
+     * @param UserInterface $user
+     * @param Request       $request
+     * @param UserService   $user_service
      */
-    public function __construct(?Tree $tree, User $user, Request $request)
+    public function __construct(?Tree $tree, UserInterface $user, Request $request, UserService $user_service)
     {
         $this->tree    = $tree;
         $this->user    = $user;
         $this->request = $request;
+        $this->user_service = $user_service;
     }
 
     /**
@@ -75,10 +84,10 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
     }
 
     /**
-      * The default position for this footer.  It can be changed in the control panel.
-      *
-      * @return int
-      */
+     * The default position for this footer.  It can be changed in the control panel.
+     *
+     * @return int
+     */
     public function defaultFooterOrder(): int
     {
         return 2;
@@ -95,8 +104,8 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
             return '';
         }
 
-        $contact_user   = User::find((int) $this->tree->getPreference('CONTACT_USER_ID'));
-        $webmaster_user = User::find((int) $this->tree->getPreference('WEBMASTER_USER_ID'));
+        $contact_user   = $this->user_service->find((int) $this->tree->getPreference('CONTACT_USER_ID'));
+        $webmaster_user = $this->user_service->find((int) $this->tree->getPreference('WEBMASTER_USER_ID'));
 
         if ($contact_user instanceof User && $contact_user === $webmaster_user) {
             return view('modules/contact-links/footer', [
@@ -128,11 +137,11 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
     /**
      * Create contact link for both technical and genealogy support.
      *
-     * @param User $user
+     * @param UserInterface $user
      *
      * @return string
      */
-    public function contactLinkEverything(User $user): string
+    public function contactLinkEverything(UserInterface $user): string
     {
         return I18N::translate('For technical support or genealogy questions contact %s.', $this->contactLink($user));
     }
@@ -140,11 +149,11 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
     /**
      * Create contact link for genealogy support.
      *
-     * @param User $user
+     * @param UserInterface $user
      *
      * @return string
      */
-    public function contactLinkGenealogy(User $user): string
+    public function contactLinkGenealogy(UserInterface $user): string
     {
         return I18N::translate('For help with genealogy questions contact %s.', $this->contactLink($user));
     }
@@ -152,11 +161,11 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
     /**
      * Create contact link for technical support.
      *
-     * @param User $user
+     * @param UserInterface $user
      *
      * @return string
      */
-    public function contactLinkTechnical(User $user): string
+    public function contactLinkTechnical(UserInterface $user): string
     {
         return I18N::translate('For technical support and information contact %s.', $this->contactLink($user));
     }
@@ -164,11 +173,11 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
     /**
      * Create a contact link for a user.
      *
-     * @param User $user
+     * @param UserInterface $user
      *
      * @return string
      */
-    private function contactLink(User $user): string
+    private function contactLink(UserInterface $user): string
     {
         return view('modules/contact-links/contact', [
             'request' => $this->request,

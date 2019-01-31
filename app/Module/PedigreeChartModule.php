@@ -18,13 +18,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use stdClass;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -133,14 +133,14 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
     /**
      * A form to request the chart parameters.
      *
-     * @param Request      $request
-     * @param Tree         $tree
-     * @param User         $user
-     * @param ChartService $chart_service
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
+     * @param ChartService  $chart_service
      *
      * @return Response
      */
-    public function getChartAction(Request $request, Tree $tree, User $user, ChartService $chart_service): Response
+    public function getChartAction(Request $request, Tree $tree, UserInterface $user, ChartService $chart_service): Response
     {
         $ajax       = (bool) $request->get('ajax');
         $xref       = $request->get('xref', '');

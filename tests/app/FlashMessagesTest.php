@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Test harness for the class FlashMessages
  */
-class FlashMessagesTest extends \Fisharebest\Webtrees\TestCase
+class FlashMessagesTest extends TestCase
 {
     /**
      * Test that the class exists

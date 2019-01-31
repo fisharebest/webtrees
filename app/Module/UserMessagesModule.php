@@ -18,9 +18,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -34,6 +36,20 @@ use Symfony\Component\HttpFoundation\Response;
 class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
+
+    /**
+     * @var UserService
+     */
+    private $user_service;
+
+    /**
+     * UserMessagesModule constructor.
+     *
+     * @param UserService $user_service
+     */
+    public function __construct(UserService $user_service) {
+        $this->user_service = $user_service;
+    }
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
@@ -101,7 +117,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             ->select(['message_id', 'sender', 'subject', 'body', DB::raw('UNIX_TIMESTAMP(created) AS created')])
             ->get();
 
-        $users = User::all()->filter(function (User $user) use ($tree): bool {
+        $users = $this->user_service->all()->filter(function (UserInterface $user) use ($tree): bool {
             $public_tree  = $tree->getPreference('REQUIRE_AUTHENTICATION') !== '1';
             $can_see_tree = $public_tree || Auth::accessLevel($tree, $user) <= Auth::PRIV_USER;
 
@@ -124,7 +140,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             $content .= '<select id="to" name="to">';
             $content .= '<option value="">' . I18N::translate('&lt;select&gt;') . '</option>';
             foreach ($users as $user) {
-                $content .= sprintf('<option value="%1$s">%2$s - %1$s</option>', e($user->getUserName()), e($user->getRealName()));
+                $content .= sprintf('<option value="%1$s">%2$s - %1$s</option>', e($user->userName()), e($user->realName()));
             }
             $content .= '</select>';
             $content .= '<button type="submit">' . I18N::translate('Send') . '</button><br><br>';
@@ -152,10 +168,10 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
                 $content .= '<td class="list_value_wrap">' . FunctionsDate::formatTimestamp((int) $message->created) . '</td>';
                 $content .= '<td class="list_value_wrap">';
 
-                $user = User::findByIdentifier($message->sender);
+                $user = $this->user_service->findByIdentifier($message->sender);
 
                 if ($user instanceof User) {
-                    $content .= '<span dir="auto">' . e($user->getRealName()) . '</span> - <span dir="auto">' . $user->getEmail() . '</span>';
+                    $content .= '<span dir="auto">' . e($user->realName()) . '</span> - <span dir="auto">' . $user->email() . '</span>';
                 } else {
                     $content .= '<a href="mailto:' . e($message->sender) . '">' . e($message->sender) . '</a>';
                 }
@@ -173,7 +189,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
                 // If this user still exists, show a reply link.
                 if ($user) {
                     $reply_url = route('message', [
-                        'to'      => $user->getUserName(),
+                        'to'      => $user->userName(),
                         'subject' => $message->subject,
                         'ged'     => $tree->name(),
                     ]);

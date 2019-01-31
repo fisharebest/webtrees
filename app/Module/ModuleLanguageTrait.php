@@ -17,12 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
-use Illuminate\Support\Collection;
-
 /**
  * Trait ModuleLanguageEventsTrait - default implementation of ModuleLanguageInterface.
  */

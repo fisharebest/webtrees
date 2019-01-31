@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Test harness for the class GedcomTag
  */
-class GedcomTagTest extends \Fisharebest\Webtrees\TestCase
+class GedcomTagTest extends TestCase
 {
     /**
      * Test that the class exists

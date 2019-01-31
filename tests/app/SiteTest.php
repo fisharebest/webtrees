@@ -17,14 +17,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use function mb_substr;
 use function str_repeat;
-use function strlen;
 
 /**
  * Test the site functions
  */
-class SiteTest extends \Fisharebest\Webtrees\TestCase
+class SiteTest extends TestCase
 {
     protected static $uses_database = true;
 

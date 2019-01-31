@@ -61,6 +61,7 @@ class LocalizationService
 
     // Locales that use a non-default alphabet.
     private const ALPHABETS_FOR_LOCALE = [
+        'ar'      => self::ARABIC_ALPHABET,
         'cs'      => self::CZECH_ALPHABET,
         'da'      => self::NORWEGIAN_ALPHABET,
         'es'      => self::SPANISH_ALPHABET,

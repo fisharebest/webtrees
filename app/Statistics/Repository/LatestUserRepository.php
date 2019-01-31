@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\LatestUserRepositoryInterface;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -32,8 +33,21 @@ use Illuminate\Database\Query\JoinClause;
 class LatestUserRepository implements LatestUserRepositoryInterface
 {
     /**
-     * Find the newest user on the site.
+     * @var UserService
+     */
+    private $user_service;
+
+    /**
+     * LatestUserRepository constructor.
      *
+     * @param UserService $user_service
+     */
+    public function __construct(UserService $user_service) {
+        $this->user_service = $user_service;
+    }
+
+    /**
+     * Find the newest user on the site.
      * If no user has registered (i.e. all created by the admin), then
      * return the current user.
      *
@@ -58,7 +72,7 @@ class LatestUserRepository implements LatestUserRepositoryInterface
             ->orderByDesc('us.setting_value')
             ->value('user_id');
 
-        $user = User::find($user_id) ?? Auth::user();
+        $user = $this->user_service->find($user_id) ?? Auth::user();
 
         return $user;
     }
@@ -76,7 +90,7 @@ class LatestUserRepository implements LatestUserRepositoryInterface
      */
     public function latestUserName(): string
     {
-        return e($this->latestUserQuery()->getUserName());
+        return e($this->latestUserQuery()->userName());
     }
 
     /**
@@ -84,7 +98,7 @@ class LatestUserRepository implements LatestUserRepositoryInterface
      */
     public function latestUserFullName(): string
     {
-        return e($this->latestUserQuery()->getRealName());
+        return e($this->latestUserQuery()->realName());
     }
 
     /**

@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Test harness for the class Date
  */
-class DateTest extends \Fisharebest\Webtrees\TestCase
+class DateTest extends TestCase
 {
     /**
      * Test that the class exists

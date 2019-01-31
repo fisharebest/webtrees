@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Test harness for the class I18N
  */
-class I18NTest extends \Fisharebest\Webtrees\TestCase
+class I18NTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\I18N::strtoupper

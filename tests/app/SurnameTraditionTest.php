@@ -30,7 +30,7 @@ use Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition;
 /**
  * Test harness for the class SurnameTradition
  */
-class SurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
+class SurnameTraditionTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\SurnameTradition::create

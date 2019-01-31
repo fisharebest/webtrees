@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Webtrees;
 use GuzzleHttp\Client;
@@ -29,9 +28,6 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class UpgradeService
 {
-    // Regular expression to match a version string such as "1.7.10" or "2.0.0-alpha.1"
-    private const REGEX_VERSION = '\d+\.\d+\.\d+(-[a-z0-9.-]+)?';
-
     // Only check the webtrees server infrequently.
     private const CHECK_FOR_UPDATE_INTERVAL = 24 * 60 * 60;
 

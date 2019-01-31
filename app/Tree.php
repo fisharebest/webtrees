@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -214,13 +215,13 @@ class Tree
     /**
      * Get the tree’s user-configuration settings.
      *
-     * @param User   $user
+     * @param UserInterface   $user
      * @param string $setting_name
      * @param string $default
      *
      * @return string
      */
-    public function getUserPreference(User $user, string $setting_name, string $default = ''): string
+    public function getUserPreference(UserInterface $user, string $setting_name, string $default = ''): string
     {
         // There are lots of settings, and we need to fetch lots of them on every page
         // so it is quicker to fetch them all in one go.
@@ -259,7 +260,7 @@ class Tree
             // Update the cache
             $this->user_preferences[$user->id()][$setting_name] = $setting_value;
             // Audit log of changes
-            Log::addConfigurationLog('Tree preference "' . $setting_name . '" set to "' . $setting_value . '" for user "' . $user->getUserName() . '"', $this);
+            Log::addConfigurationLog('Tree preference "' . $setting_name . '" set to "' . $setting_value . '" for user "' . $user->userName() . '"', $this);
         }
 
         return $this;
@@ -268,11 +269,11 @@ class Tree
     /**
      * Can a user accept changes for this tree?
      *
-     * @param User $user
+     * @param UserInterface $user
      *
      * @return bool
      */
-    public function canAcceptChanges(User $user): bool
+    public function canAcceptChanges(UserInterface $user): bool
     {
         return Auth::isModerator($this, $user);
     }
@@ -619,7 +620,7 @@ class Tree
             ->where('m_file', '=', $this->id)
             ->select(['m_gedcom AS gedcom', 'm_id AS xref', DB::raw('LENGTH(m_id) AS len'), DB::raw('5 AS n')]);
 
-        $rows = DB::table('individuals')
+        DB::table('individuals')
             ->where('i_file', '=', $this->id)
             ->select(['i_gedcom AS gedcom', 'i_id AS xref', DB::raw('LENGTH(i_id) AS len'), DB::raw('1 AS n')])
             ->union($union_families)
@@ -748,7 +749,7 @@ class Tree
         $gedcom = '0 @' . $xref . '@ ' . Str::after($gedcom, '0 @@ ');
 
         // Create a change record
-        $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
+        $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->userName();
 
         // Create a pending change
         DB::table('change')->insert([
@@ -787,7 +788,7 @@ class Tree
         $gedcom = '0 @' . $xref . '@ FAM' . Str::after($gedcom, '0 @@ FAM');
 
         // Create a change record
-        $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
+        $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->userName();
 
         // Create a pending change
         DB::table('change')->insert([
@@ -826,7 +827,7 @@ class Tree
         $gedcom = '0 @' . $xref . '@ INDI' . Str::after($gedcom, '0 @@ INDI');
 
         // Create a change record
-        $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
+        $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->userName();
 
         // Create a pending change
         DB::table('change')->insert([
@@ -865,7 +866,7 @@ class Tree
         $gedcom = '0 @' . $xref . '@ OBJE' . Str::after($gedcom, '0 @@ OBJE');
 
         // Create a change record
-        $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
+        $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->userName();
 
         // Create a pending change
         DB::table('change')->insert([
@@ -889,11 +890,11 @@ class Tree
     /**
      * What is the most significant individual in this tree.
      *
-     * @param User $user
+     * @param UserInterface $user
      *
      * @return Individual
      */
-    public function significantIndividual(User $user): Individual
+    public function significantIndividual(UserInterface $user): Individual
     {
         $individual = null;
 
