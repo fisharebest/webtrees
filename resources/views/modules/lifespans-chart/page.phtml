@@ -41,7 +41,7 @@
             <?= I18N::translate('Place') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <input class="form-control" id="placename" name="placename" type="text" data-autocomplete-url="<?= e(route('autocomplete-place')) ?>">
+            <input class="form-control" id="placename" name="placename" type="text" data-autocomplete-url="<?= e(route('autocomplete-place', ['query' => 'QUERY'])) ?>">
         </div>
     </div>
 
