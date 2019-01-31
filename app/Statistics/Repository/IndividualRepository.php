@@ -1904,7 +1904,8 @@ class IndividualRepository implements IndividualRepositoryInterface
      *
      * @return Builder
      */
-    private function birthAndDeathQuery(string $sex): Builder {
+    private function birthAndDeathQuery(string $sex): Builder
+    {
         $query = DB::table('individuals')
             ->where('i_file', '=', $this->tree->id())
             ->join('dates AS birth', function (JoinClause $join): void {

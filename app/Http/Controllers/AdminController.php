@@ -95,8 +95,7 @@ class AdminController extends AbstractBaseController
         Admin\ModuleController $module_controller,
         ModuleService $module_service,
         UserService $user_service
-    ): Response
-    {
+    ): Response {
         $filesystem      = new Filesystem(new Local(WT_ROOT));
         $files_to_delete = $housekeeping_service->deleteOldWebtreesFiles($filesystem);
         $deleted_modules = $module_controller->deletedModuleNames();
