@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 use Exception;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Services\GedcomService;
@@ -38,11 +37,8 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 /**
  * Controller for maintaining geographic data.
  */
-class LocationController extends AbstractBaseController
+class LocationController extends AbstractAdminController
 {
-    /** @var string */
-    protected $layout = 'layouts/administration';
-
     /** @var GedcomService */
     private $gedcom_service;
 
@@ -122,7 +118,7 @@ class LocationController extends AbstractBaseController
             $breadcrumbs[] = I18N::translate('Add');
         } else {
             $breadcrumbs[] = I18N::translate('Edit');
-            $title .= ' — ' . I18N::translate('Edit');
+            $title         .= ' — ' . I18N::translate('Edit');
         }
 
         return $this->viewResponse('admin/location-edit', [
@@ -175,8 +171,8 @@ class LocationController extends AbstractBaseController
                 ->where('pl_id', '=', $place_id)
                 ->update([
                     'pl_place' => $request->get('new_place_name'),
-                    'pl_lati'   => $request->get('lati_control') . $lat,
-                    'pl_long'   => $request->get('long_control') . $lng,
+                    'pl_lati'  => $request->get('lati_control') . $lat,
+                    'pl_long'  => $request->get('long_control') . $lng,
                     'pl_zoom'  => (int) $request->get('new_zoom_factor'),
                     'pl_icon'  => $icon,
                 ]);
@@ -316,7 +312,7 @@ class LocationController extends AbstractBaseController
      * level followed by a variable number of placename fields
      * followed by Longitude, Latitude, Zoom & Icon
      *
-     * @param Request       $request
+     * @param Request $request
      *
      * @return RedirectResponse
      * @throws Exception
@@ -338,7 +334,7 @@ class LocationController extends AbstractBaseController
             'fqpn',
         ];
 
-        if ($serverfile !== ''  && is_dir(WT_DATA_DIR . 'places')) {  // first choice is file on server
+        if ($serverfile !== '' && is_dir(WT_DATA_DIR . 'places')) {  // first choice is file on server
             $filename = WT_DATA_DIR . 'places/' . $serverfile;
         } elseif ($request->files->has('localfile')) { // 2nd choice is local file
             $filename = $request->files->get('localfile')->getPathName();
@@ -505,7 +501,7 @@ class LocationController extends AbstractBaseController
         // ... and process the differences
         $inserted = 0;
         if ($diff->isNotEmpty()) {
-            $nextRecordId    = 1 + (int) DB::table('placelocation')->max('pl_id');
+            $nextRecordId = 1 + (int) DB::table('placelocation')->max('pl_id');
 
             foreach ($diff as $place) {
                 // For Westminster, London, England, we must also create England and London, England
@@ -606,7 +602,7 @@ class LocationController extends AbstractBaseController
                     ],
                 ],
                 'properties' => [
-                    'name'  => $fqpn,
+                    'name' => $fqpn,
                 ],
             ];
         }

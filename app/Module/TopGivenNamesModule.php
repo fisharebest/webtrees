@@ -35,21 +35,6 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
     private const DEFAULT_STYLE  = 'table';
 
     /**
-     * @var Statistics
-     */
-    private $statistics;
-
-    /**
-     * TopGivenNamesModule constructor.
-     *
-     * @param Statistics $statistics
-     */
-    public function __construct(Statistics $statistics)
-    {
-        $this->statistics = $statistics;
-    }
-
-    /**
      * How should this module be labelled on tabs, menus, etc.?
      *
      * @return string
@@ -83,6 +68,8 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
+        $statistics = app()->make(Statistics::class);
+
         $num       = $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
 
@@ -91,15 +78,15 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
         switch ($infoStyle) {
             case 'list':
                 $content = view('modules/top10_givnnames/block', [
-                    'males'   => $this->statistics->commonGivenMaleListTotals('1', $num),
-                    'females' => $this->statistics->commonGivenFemaleListTotals('1', $num),
+                    'males'   => $statistics->commonGivenMaleListTotals('1', $num),
+                    'females' => $statistics->commonGivenFemaleListTotals('1', $num),
                 ]);
                 break;
             default:
             case 'table':
                 $content = view('modules/top10_givnnames/block', [
-                    'males'   => $this->statistics->commonGivenMaleTable('1', $num),
-                    'females' => $this->statistics->commonGivenFemaleTable('1', $num),
+                    'males'   => $statistics->commonGivenMaleTable('1', $num),
+                    'females' => $statistics->commonGivenFemaleTable('1', $num),
                 ]);
                 break;
         }

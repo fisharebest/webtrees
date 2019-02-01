@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Carbon\Carbon;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Webtrees;
 use GuzzleHttp\Client;
@@ -89,7 +90,9 @@ class UpgradeService
     {
         $last_update_timestamp = (int) Site::getPreference('LATEST_WT_VERSION_TIMESTAMP');
 
-        if ($last_update_timestamp < WT_TIMESTAMP - self::CHECK_FOR_UPDATE_INTERVAL) {
+        $current_timestamp = Carbon::now()->timestamp;
+
+        if ($last_update_timestamp < $current_timestamp - self::CHECK_FOR_UPDATE_INTERVAL) {
             try {
                 $client = new Client([
                     'timeout' => self::HTTP_TIMEOUT,
@@ -101,7 +104,7 @@ class UpgradeService
 
                 if ($response->getStatusCode() === Response::HTTP_OK) {
                     Site::setPreference('LATEST_WT_VERSION', $response->getBody()->getContents());
-                    Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', (string) WT_TIMESTAMP);
+                    Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', (string) $current_timestamp);
                 }
             } catch (RequestException $ex) {
                 // Can't connect to the server?

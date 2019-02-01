@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
-use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
@@ -59,7 +58,7 @@ class ModuleController extends AbstractAdminController
         'sidebar',
         'tab',
     ];
-    
+
     /**
      * @var ModuleService
      */
@@ -85,25 +84,8 @@ class ModuleController extends AbstractAdminController
         return $this->viewResponse('admin/modules', [
             'title'           => I18N::translate('Module administration'),
             'modules'         => $this->module_service->all(),
-            'deleted_modules' => $this->deletedModuleNames(),
+            'deleted_modules' => $this->module_service->deletedModules(),
         ]);
-    }
-
-    /**
-     * Generate a list of module names which exist in the database but not on disk.
-     *
-     * @return Collection|string[]
-     */
-    public function deletedModuleNames(): Collection
-    {
-        $database_modules = DB::table('module')->pluck('module_name');
-
-        $disk_modules = $this->module_service->all()
-            ->map(function (ModuleInterface $module): string {
-                return $module->name();
-            });
-
-        return $database_modules->diff($disk_modules);
     }
 
     /**

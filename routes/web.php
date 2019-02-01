@@ -24,6 +24,7 @@ $routes = [];
 // Admin routes.
 if (Auth::isAdmin()) {
     $routes += [
+        'GET:admin-control-panel'             => 'Admin\\ControlPanelController@controlPanel',
         'GET:analytics-edit'                  => 'Admin\\AnalyticsController@edit',
         'POST:analytics-edit'                 => 'Admin\\AnalyticsController@save',
         'GET:modules'                         => 'Admin\\ModuleController@list',
@@ -59,7 +60,6 @@ if (Auth::isAdmin()) {
         'GET:locations-import'                => 'Admin\\LocationController@importLocations',
         'POST:locations-import'               => 'Admin\\LocationController@importLocationsAction',
         'POST:locations-import-from-tree'     => 'Admin\\LocationController@importLocationsFromTree',
-        'GET:admin-control-panel'             => 'AdminController@controlPanel',
         'GET:admin-fix-level-0-media'         => 'AdminController@fixLevel0Media',
         'POST:admin-fix-level-0-media-action' => 'AdminController@fixLevel0MediaAction',
         'GET:admin-fix-level-0-media-data'    => 'AdminController@fixLevel0MediaData',
@@ -135,7 +135,7 @@ if (Auth::isAdmin()) {
 // Manager routes.
 if ($tree instanceof Tree && Auth::isManager($tree)) {
     $routes += [
-        'GET:admin-control-panel-manager' => 'AdminController@controlPanelManager',
+        'GET:admin-control-panel-manager' => 'Admin\\ControlPanelController@controlPanelManager',
         'GET:admin-changes-log'           => 'AdminController@changesLog',
         'GET:admin-changes-log-data'      => 'AdminController@changesLogData',
         'GET:admin-changes-log-download'  => 'AdminController@changesLogDownload',

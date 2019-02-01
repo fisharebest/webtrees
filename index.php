@@ -229,35 +229,33 @@ try {
 
     DebugBar::startMeasure('init theme');
 
-    // Don't initialize themes for POST requests.  They don't need themes.
-    if ($request->getMethod() === Request::METHOD_GET) {
-        /** @var Collection|ModuleThemeInterface[] $themes */
-        $themes = app()->make(ModuleService::class)->findByInterface(ModuleThemeInterface::class);
+    /** @var Collection|ModuleThemeInterface[] $themes */
+    $themes = app()->make(ModuleService::class)->findByInterface(ModuleThemeInterface::class);
 
-        // Last theme used?
-        $theme = $themes->get(Session::get('theme_id', ''));
+    // Last theme used?
+    $theme = $themes->get(Session::get('theme_id', ''));
 
-        // Default for tree?
-        if ($theme === null && $tree instanceof Tree) {
-            $theme = $themes->get($tree->getPreference('THEME_DIR'));
-        }
-
-        // Default for site?
-        if ($theme === null) {
-            $theme = $themes->get(Site::getPreference('THEME_DIR'));
-        }
-
-        // Default
-        if ($theme === null) {
-            $theme = app()->make(WebtreesTheme::class);
-        }
-
-        // Bind this theme into the container
-        app()->instance(ModuleThemeInterface::class, $theme);
-
-        // Remember this setting
-        Session::put('theme_id', $theme->name());
+    // Default for tree?
+    if ($theme === null && $tree instanceof Tree) {
+        $theme = $themes->get($tree->getPreference('THEME_DIR'));
     }
+
+    // Default for site?
+    if ($theme === null) {
+        $theme = $themes->get(Site::getPreference('THEME_DIR'));
+    }
+
+    // Default
+    if ($theme === null) {
+        $theme = app()->make(WebtreesTheme::class);
+    }
+
+    // Bind this theme into the container
+    app()->instance(ModuleThemeInterface::class, $theme);
+
+    // Remember this setting
+    Session::put('theme_id', $theme->name());
+
     DebugBar::stopMeasure('init theme');
 
     // Note that we can't stop this timer, as running the action will

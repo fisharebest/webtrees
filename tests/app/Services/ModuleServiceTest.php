@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\TreesMenuModule;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  * Test the modules
@@ -50,8 +51,7 @@ class ModuleServiceTest extends TestCase
      */
     public function testAll(): void
     {
-        $tree = Tree::create('name', 'title');
-        app()->instance(Tree::class, $tree);
+        app()->instance(Tree::class, Tree::create('name', 'title'));
 
         $module_service = new ModuleService();
 
@@ -68,8 +68,7 @@ class ModuleServiceTest extends TestCase
     public function testFindByComponent(): void
     {
         $user_service = new UserService();
-        $tree         = Tree::create('name', 'title');
-        app()->instance(Tree::class, $tree);
+        app()->instance(Tree::class, Tree::create('name', 'title'));
 
         $module_service = new ModuleService();
 
@@ -90,8 +89,7 @@ class ModuleServiceTest extends TestCase
      */
     public function testFindByInterface(): void
     {
-        $tree = Tree::create('name', 'title');
-        app()->instance(Tree::class, $tree);
+        app()->instance(Tree::class, Tree::create('name', 'title'));
 
         $module_service = new ModuleService();
 
@@ -116,8 +114,7 @@ class ModuleServiceTest extends TestCase
      */
     public function testFindByClass(): void
     {
-        $tree = Tree::create('name', 'title');
-        app()->instance(Tree::class, $tree);
+        app()->instance(Tree::class, Tree::create('name', 'title'));
 
         $module_service = new ModuleService();
 
@@ -131,12 +128,40 @@ class ModuleServiceTest extends TestCase
      */
     public function testFindByName(): void
     {
-        $tree = Tree::create('name', 'title');
-        app()->instance(Tree::class, $tree);
+        app()->instance(Tree::class, Tree::create('name', 'title'));
 
         $module_service = new ModuleService();
 
         $this->assertNull($module_service->findByName('not-a-valid-module-name'));
         $this->assertInstanceOf(TreesMenuModule::class, $module_service->findByName('trees-menu'));
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Services\ModuleService::configOnlyModules
+     * @return void
+     */
+    public function testconfigOnlyModules(): void
+    {
+        app()->instance(Tree::class, Tree::create('name', 'title'));
+        DB::table('module')->insert(['module_name' => 'not-a-module']);
+
+        $module_service = new ModuleService();
+
+        $this->assertSame(2, $module_service->configOnlyModules()->count());
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Services\ModuleService::deletedModules
+     * @return void
+     */
+    public function testDeletedModules(): void
+    {
+        app()->instance(Tree::class, Tree::create('name', 'title'));
+        DB::table('module')->insert(['module_name' => 'not-a-module']);
+
+        $module_service = new ModuleService();
+
+        $this->assertSame(1, $module_service->deletedModules()->count());
+        $this->assertSame('not-a-module', $module_service->deletedModules()->first());
     }
 }

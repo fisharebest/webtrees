@@ -165,7 +165,7 @@
         <ul class="fa-ul">
             <li>
                 <span class="fa-li"><?= view('icons/preferences') ?></span>
-                <a href="<?= e(route('admin-trees', ['ged' => $tree->name()])) ?>">
+                <a href="<?= e(route('admin-trees')) ?>">
                     <?= I18N::translate('Manage family trees') ?>
                 </a>
             </li>
@@ -221,13 +221,13 @@
                 <ul class="fa-ul">
                     <li>
                         <span class="fa-li"><?= view('icons/preferences') ?></span>
-                        <a href="<?= e(route('admin-users', ['ged' => $tree->name()])) ?>">
+                        <a href="<?= e(route('admin-users')) ?>">
                             <?= I18N::translate('User administration') ?>
                         </a>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/preferences') ?></span>
-                        <a href="<?= e(route('admin-users-create', ['ged' => $tree->name()])) ?>">
+                        <a href="<?= e(route('admin-users-create')) ?>">
                             <?= I18N::translate('Add a user') ?>
                         </a>
                     </li>

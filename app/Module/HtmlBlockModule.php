@@ -32,21 +32,6 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
     use ModuleBlockTrait;
 
     /**
-     * @var Statistics
-     */
-    private $statistics;
-
-    /**
-     * TopGivenNamesModule constructor.
-     *
-     * @param Statistics $statistics
-     */
-    public function __construct(Statistics $statistics)
-    {
-        $this->statistics = $statistics;
-    }
-
-    /**
      * How should this module be labelled on tabs, menus, etc.?
      *
      * @return string
@@ -80,6 +65,8 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
+        $statistics = app()->make(Statistics::class);
+
         $title          = $this->getBlockSetting($block_id, 'title', '');
         $content        = $this->getBlockSetting($block_id, 'html', '');
         $show_timestamp = $this->getBlockSetting($block_id, 'show_timestamp', '0');
@@ -93,8 +80,8 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
         /*
         * Retrieve text, process embedded variables
         */
-        $title   = $this->statistics->embedTags($title);
-        $content = $this->statistics->embedTags($content);
+        $title   = $statistics->embedTags($title);
+        $content = $statistics->embedTags($content);
 
         if ($show_timestamp === '1') {
             $content .= '<br>' . FunctionsDate::formatTimestamp((int) $this->getBlockSetting($block_id, 'timestamp', (string) WT_TIMESTAMP));

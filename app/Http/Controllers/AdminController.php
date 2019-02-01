@@ -31,34 +31,16 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
-use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
-use Fisharebest\Webtrees\Module\ModuleBlockInterface;
-use Fisharebest\Webtrees\Module\ModuleChartInterface;
-use Fisharebest\Webtrees\Module\ModuleConfigInterface;
-use Fisharebest\Webtrees\Module\ModuleFooterInterface;
-use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
-use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
-use Fisharebest\Webtrees\Module\ModuleMenuInterface;
-use Fisharebest\Webtrees\Module\ModuleReportInterface;
-use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
-use Fisharebest\Webtrees\Module\ModuleTabInterface;
-use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\DatatablesService;
-use Fisharebest\Webtrees\Services\HousekeepingService;
-use Fisharebest\Webtrees\Services\ModuleService;
-use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
-use Illuminate\Support\Collection;
 use Intervention\Image\ImageManager;
-use League\Flysystem\Adapter\Local;
-use League\Flysystem\Filesystem;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use stdClass;
@@ -77,94 +59,6 @@ class AdminController extends AbstractBaseController
 {
     /** @var string */
     protected $layout = 'layouts/administration';
-
-    /**
-     * The control panel shows a summary of the site and links to admin functions.
-     *
-     * @param HousekeepingService    $housekeeping_service
-     * @param UpgradeService         $upgrade_service
-     * @param Admin\ModuleController $module_controller
-     * @param ModuleService          $module_service
-     * @param UserService            $user_service
-     *
-     * @return Response
-     */
-    public function controlPanel(
-        HousekeepingService $housekeeping_service,
-        UpgradeService $upgrade_service,
-        Admin\ModuleController $module_controller,
-        ModuleService $module_service,
-        UserService $user_service
-    ): Response {
-        $filesystem      = new Filesystem(new Local(WT_ROOT));
-        $files_to_delete = $housekeeping_service->deleteOldWebtreesFiles($filesystem);
-        $deleted_modules = $module_controller->deletedModuleNames();
-
-        // Analytics modules have their own configl so don't show them twice.
-        $config_modules = $module_service->findByInterface(ModuleConfigInterface::class, true)
-            ->filter(function (ModuleConfigInterface $module): bool {
-                return !$module instanceof ModuleAnalyticsInterface;
-            });
-
-        return $this->viewResponse('admin/control-panel', [
-            'title'             => I18N::translate('Control panel'),
-            'server_warnings'   => $this->serverWarnings(),
-            'latest_version'    => $upgrade_service->latestVersion(),
-            'all_users'         => $user_service->all(),
-            'administrators'    => $user_service->administrators(),
-            'managers'          => $user_service->managers(),
-            'moderators'        => $user_service->moderators(),
-            'unapproved'        => $user_service->unapproved(),
-            'unverified'        => $user_service->unverified(),
-            'all_trees'         => Tree::getAll(),
-            'changes'           => $this->totalChanges(),
-            'individuals'       => $this->totalIndividuals(),
-            'families'          => $this->totalFamilies(),
-            'sources'           => $this->totalSources(),
-            'media'             => $this->totalMediaObjects(),
-            'repositories'      => $this->totalRepositories(),
-            'notes'             => $this->totalNotes(),
-            'files_to_delete'   => $files_to_delete,
-            'all_modules'       => $module_service->all(),
-            'deleted_modules'   => $deleted_modules,
-            'analytics_modules' => $module_service->findByInterface(ModuleAnalyticsInterface::class, true),
-            'block_modules'     => $module_service->findByInterface(ModuleBlockInterface::class, true),
-            'chart_modules'     => $module_service->findByInterface(ModuleChartInterface::class, true),
-            'config_modules'    => $config_modules,
-            'footer_modules'    => $module_service->findByInterface(ModuleFooterInterface::class, true),
-            'history_modules'   => $module_service->findByInterface(ModuleHistoricEventsInterface::class, true),
-            'language_modules'  => $module_service->findByInterface(ModuleLanguageInterface::class, true),
-            'menu_modules'      => $module_service->findByInterface(ModuleMenuInterface::class, true),
-            'report_modules'    => $module_service->findByInterface(ModuleReportInterface::class, true),
-            'sidebar_modules'   => $module_service->findByInterface(ModuleSidebarInterface::class, true),
-            'tab_modules'       => $module_service->findByInterface(ModuleTabInterface::class, true),
-            'theme_modules'     => $module_service->findByInterface(ModuleThemeInterface::class, true),
-        ]);
-    }
-
-    /**
-     * Managers see a restricted version of the contol panel.
-     *
-     * @return Response
-     */
-    public function controlPanelManager(): Response
-    {
-        $all_trees = array_filter(Tree::getAll(), function (Tree $tree): bool {
-            return Auth::isManager($tree);
-        });
-
-        return $this->viewResponse('admin/control-panel-manager', [
-            'title'        => I18N::translate('Control panel'),
-            'all_trees'    => $all_trees,
-            'changes'      => $this->totalChanges(),
-            'individuals'  => $this->totalIndividuals(),
-            'families'     => $this->totalFamilies(),
-            'sources'      => $this->totalSources(),
-            'media'        => $this->totalMediaObjects(),
-            'repositories' => $this->totalRepositories(),
-            'notes'        => $this->totalNotes(),
-        ]);
-    }
 
     /**
      * Show the edit history for a tree.
@@ -945,25 +839,6 @@ class AdminController extends AbstractBaseController
     }
 
     /**
-     * Create a response object from a view.
-     *
-     * @param string  $name
-     * @param mixed[] $data
-     * @param int     $status
-     *
-     * @return Response
-     */
-    protected function viewResponse($name, $data, $status = Response::HTTP_OK): Response
-    {
-        $html = view($this->layout, [
-            'content' => view($name, $data),
-            'title'   => strip_tags($data['title']),
-        ]);
-
-        return new Response($html, $status);
-    }
-
-    /**
      * Generate a query for filtering the changes log.
      *
      * @param Request $request
@@ -1213,26 +1088,6 @@ class AdminController extends AbstractBaseController
     /**
      * Generate a list of potential problems with the server.
      *
-     * @return string[]
-     */
-    private function serverWarnings(): array
-    {
-        $php_support_url   = 'https://secure.php.net/supported-versions.php';
-        $version_parts     = explode('.', PHP_VERSION);
-        $php_minor_version = $version_parts[0] . $version_parts[1];
-        $today             = date('Y-m-d');
-        $warnings          = [];
-
-        if ($php_minor_version === '70' && $today >= '2018-12-03' || $php_minor_version === '71' && $today >= '2019-12-01' || $php_minor_version === '72' && $today >= '2020-11-30') {
-            $warnings[] = I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible.', PHP_VERSION) . ' <a href="' . $php_support_url . '">' . $php_support_url . '</a>';
-        }
-
-        return $warnings;
-    }
-
-    /**
-     * Generate a list of potential problems with the server.
-     *
      * @param Tree $tree
      *
      * @return string[]
@@ -1277,127 +1132,5 @@ class AdminController extends AbstractBaseController
             ['' => I18N::translate('All facts and events')],
             $all_tags
         );
-    }
-
-    /**
-     * Count the number of pending changes in each tree.
-     *
-     * @return string[]
-     */
-    private function totalChanges(): array
-    {
-        return DB::table('gedcom')
-            ->leftJoin('change', function (JoinClause $join): void {
-                $join
-                    ->on('change.gedcom_id', '=', 'gedcom.gedcom_id')
-                    ->where('change.status', '=', 'pending');
-            })
-            ->groupBy('gedcom.gedcom_id')
-            ->pluck(DB::raw('COUNT(change_id)'), 'gedcom.gedcom_id')
-            ->all();
-    }
-
-    /**
-     * Count the number of families in each tree.
-     *
-     * @return Collection|int[]
-     */
-    private function totalFamilies(): Collection
-    {
-        return DB::table('gedcom')
-            ->leftJoin('families', 'f_file', '=', 'gedcom_id')
-            ->groupBy('gedcom_id')
-            ->pluck(DB::raw('COUNT(f_id)'), 'gedcom_id')
-            ->map(function (string $count) {
-                return (int) $count;
-            });
-    }
-
-    /**
-     * Count the number of individuals in each tree.
-     *
-     * @return Collection|int[]
-     */
-    private function totalIndividuals(): Collection
-    {
-        return DB::table('gedcom')
-            ->leftJoin('individuals', 'i_file', '=', 'gedcom_id')
-            ->groupBy('gedcom_id')
-            ->pluck(DB::raw('COUNT(i_id)'), 'gedcom_id')
-            ->map(function (string $count) {
-                return (int) $count;
-            });
-    }
-
-    /**
-     * Count the number of media objects in each tree.
-     *
-     * @return Collection|int[]
-     */
-    private function totalMediaObjects(): Collection
-    {
-        return DB::table('gedcom')
-            ->leftJoin('media', 'm_file', '=', 'gedcom_id')
-            ->groupBy('gedcom_id')
-            ->pluck(DB::raw('COUNT(m_id)'), 'gedcom_id')
-            ->map(function (string $count) {
-                return (int) $count;
-            });
-    }
-
-    /**
-     * Count the number of notes in each tree.
-     *
-     * @return Collection|int[]
-     */
-    private function totalNotes(): Collection
-    {
-        return DB::table('gedcom')
-            ->leftJoin('other', function (JoinClause $join): void {
-                $join
-                    ->on('o_file', '=', 'gedcom_id')
-                    ->where('o_type', '=', 'NOTE');
-            })
-            ->groupBy('gedcom_id')
-            ->pluck(DB::raw('COUNT(o_id)'), 'gedcom_id')
-            ->map(function (string $count) {
-                return (int) $count;
-            });
-    }
-
-    /**
-     * Count the number of repositorie in each tree.
-     *
-     * @return Collection|int[]
-     */
-    private function totalRepositories(): Collection
-    {
-        return DB::table('gedcom')
-            ->leftJoin('other', function (JoinClause $join): void {
-                $join
-                    ->on('o_file', '=', 'gedcom_id')
-                    ->where('o_type', '=', 'REPO');
-            })
-            ->groupBy('gedcom_id')
-            ->pluck(DB::raw('COUNT(o_id)'), 'gedcom_id')
-            ->map(function (string $count) {
-                return (int) $count;
-            });
-    }
-
-    /**
-     * Count the number of sources in each tree.
-     *
-     * @return Collection|int[]
-     */
-    private function totalSources(): Collection
-    {
-        return DB::table('gedcom')
-            ->leftJoin('sources', 's_file', '=', 'gedcom_id')
-            ->groupBy('gedcom_id')
-            ->pluck(DB::raw('COUNT(s_id)'), 'gedcom_id')
-            ->map(function (string $count) {
-                return (int) $count;
-            });
     }
 }

@@ -36,21 +36,6 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
     private const DEFAULT_NUMBER_OF_SURNAMES = '10';
 
     /**
-     * @var Statistics
-     */
-    private $statistics;
-
-    /**
-     * TopGivenNamesModule constructor.
-     *
-     * @param Statistics $statistics
-     */
-    public function __construct(Statistics $statistics)
-    {
-        $this->statistics = $statistics;
-    }
-
-    /**
      * How should this module be labelled on tabs, menus, etc.?
      *
      * @return string
@@ -84,6 +69,8 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
      */
     public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
+        $statistics = app()->make(Statistics::class);
+
         $show_last_update     = $this->getBlockSetting($block_id, 'show_last_update', '1');
         $show_common_surnames = $this->getBlockSetting($block_id, 'show_common_surnames', '1');
         $number_of_surnames   = (int) $this->getBlockSetting($block_id, 'number_of_surnames', self::DEFAULT_NUMBER_OF_SURNAMES);
@@ -158,7 +145,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
             'stat_avg_life'        => $stat_avg_life,
             'stat_most_chil'       => $stat_most_chil,
             'stat_avg_chil'        => $stat_avg_chil,
-            'stats'                => $this->statistics,
+            'stats'                => $statistics,
             'surnames'             => $surnames,
         ]);
 

@@ -75,15 +75,20 @@ use Fisharebest\Webtrees\Module\MatomoAnalyticsModule;
 use Fisharebest\Webtrees\Module\MediaTabModule;
 use Fisharebest\Webtrees\Module\MinimalTheme;
 use Fisharebest\Webtrees\Module\MissingFactsReportModule;
+use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
+use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
+use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\NotesTabModule;
 use Fisharebest\Webtrees\Module\OccupationReportModule;
 use Fisharebest\Webtrees\Module\OnThisDayModule;
@@ -134,14 +139,19 @@ use Throwable;
  */
 class ModuleService
 {
-    // Some types of module have different access levels in different trees.
+    // Components are managed together in the control panel.
     private const COMPONENTS = [
-        'block'   => ModuleBlockInterface::class,
-        'chart'   => ModuleChartInterface::class,
-        'menu'    => ModuleMenuInterface::class,
-        'report'  => ModuleReportInterface::class,
-        'sidebar' => ModuleSidebarInterface::class,
-        'tab'     => ModuleTabInterface::class,
+        'analytics' => ModuleAnalyticsInterface::class,
+        'block'     => ModuleBlockInterface::class,
+        'chart'     => ModuleChartInterface::class,
+        'footer'    => ModuleFooterInterface::class,
+        'history'   => ModuleHistoricEventsInterface::class,
+        'language'  => ModuleLanguageInterface::class,
+        'menu'      => ModuleMenuInterface::class,
+        'report'    => ModuleReportInterface::class,
+        'sidebar'   => ModuleSidebarInterface::class,
+        'tab'       => ModuleTabInterface::class,
+        'theme'     => ModuleThemeInterface::class,
     ];
 
     // Array keys are module names, and should match module names from earlier versions of webtrees.
@@ -313,8 +323,8 @@ class ModuleService
                     return [$row->module_name => $row];
                 });
 
-            return self::coreModules()
-                ->merge(self::customModules())
+            return $this->coreModules()
+                ->merge($this->customModules())
                 ->map(function (ModuleInterface $module) use ($module_info): ModuleInterface {
                     $info = $module_info->get($module->name());
 
@@ -342,7 +352,7 @@ class ModuleService
 
                     return $module;
                 })
-                ->sort(self::moduleSorter());
+                ->sort($this->moduleSorter());
         });
     }
 
@@ -443,7 +453,7 @@ class ModuleService
     {
         $interface = self::COMPONENTS[$component];
 
-        return self::findByInterface($interface)
+        return $this->findByInterface($interface)
             ->filter(function (ModuleInterface $module) use ($component, $tree, $user): bool {
                 return $module->accessLevel($tree, $component) >= Auth::accessLevel($tree, $user);
             });
@@ -459,7 +469,7 @@ class ModuleService
      */
     public function findByInterface(string $interface, $include_disabled = false): Collection
     {
-        $modules = self::all()
+        $modules = $this->all()
             ->filter(function (ModuleInterface $module) use ($interface): bool {
                 return $module instanceof $interface;
             })
@@ -469,16 +479,16 @@ class ModuleService
 
         switch ($interface) {
             case ModuleFooterInterface::class:
-                return $modules->sort(self::footerSorter());
+                return $modules->sort($this->footerSorter());
 
             case ModuleMenuInterface::class:
-                return $modules->sort(self::menuSorter());
+                return $modules->sort($this->menuSorter());
 
             case ModuleSidebarInterface::class:
-                return $modules->sort(self::sidebarSorter());
+                return $modules->sort($this->sidebarSorter());
 
             case ModuleTabInterface::class:
-                return $modules->sort(self::tabSorter());
+                return $modules->sort($this->tabSorter());
         }
 
         return $modules;
@@ -493,7 +503,7 @@ class ModuleService
      */
     public function findByName(string $module_name): ?ModuleInterface
     {
-        return self::all()
+        return $this->all()
             ->filter(function (ModuleInterface $module) use ($module_name): bool {
                 return $module->isEnabled() && $module->name() === $module_name;
             })
@@ -509,10 +519,50 @@ class ModuleService
      */
     public function findByClass(string $class_name): ?ModuleInterface
     {
-        return self::all()
+        return $this->all()
             ->filter(function (ModuleInterface $module) use ($class_name): bool {
                 return $module->isEnabled() && $module instanceof $class_name;
             })
             ->first();
     }
+
+    /**
+     * Configuration settings are available through the various "module component" pages.
+     * For modules that do not provide a component, we need to list them separately.
+     *
+     * @param string $class_name
+     *
+     * @return Collection|ModuleConfigInterface[]
+     */
+    public function configOnlyModules(): Collection
+    {
+        return $this->findByInterface(ModuleConfigInterface::class)
+            ->filter(function (ModuleConfigInterface $module): bool {
+                foreach (self::COMPONENTS as $interface) {
+                    if ($module instanceof $interface) {
+                        return false;
+                    }
+                }
+
+                return true;
+            });
+    }
+
+    /**
+     * Generate a list of module names which exist in the database but not on disk.
+     *
+     * @return Collection|string[]
+     */
+    public function deletedModules(): Collection
+    {
+        $database_modules = DB::table('module')->pluck('module_name');
+
+        $disk_modules = $this->all()
+            ->map(function (ModuleInterface $module): string {
+                return $module->name();
+            });
+
+        return $database_modules->diff($disk_modules);
+    }
+
 }
