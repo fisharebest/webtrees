@@ -15,7 +15,7 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers;
+namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Exception;
 use Fisharebest\Webtrees\I18N;
@@ -37,7 +37,7 @@ use ZipArchive;
 /**
  * Controller for upgrading to a new version of webtrees.
  */
-class AdminUpgradeController extends AbstractBaseController
+class UpgradeController extends AbstractAdminController
 {
     // Icons for success and failure
     private const SUCCESS = '<i class="fas fa-check" style="color:green"></i> ';

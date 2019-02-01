@@ -73,6 +73,8 @@ if (Auth::isAdmin()) {
         'POST:admin-media-delete'             => 'Admin\\MediaController@delete',
         'GET:admin-media-upload'              => 'Admin\\MediaController@upload',
         'POST:admin-media-upload'             => 'Admin\\MediaController@uploadAction',
+        'GET:upgrade'                         => 'Admin\\UpgradeController@wizard',
+        'POST:upgrade'                        => 'Admin\\UpgradeController@step',
         'GET:admin-users'                     => 'Admin\\UsersController@index',
         'GET:admin-users-data'                => 'Admin\\UsersController@data',
         'GET:admin-users-create'              => 'Admin\\UsersController@create',
@@ -127,8 +129,6 @@ if (Auth::isAdmin()) {
         'GET:broadcast'                       => 'MessageController@broadcastPage',
         'POST:broadcast'                      => 'MessageController@broadcastAction',
         'POST:select2-flag'                   => 'AutocompleteController@select2Flag',
-        'GET:upgrade'                         => 'AdminUpgradeController@wizard',
-        'POST:upgrade'                        => 'AdminUpgradeController@step',
     ];
 }
 
