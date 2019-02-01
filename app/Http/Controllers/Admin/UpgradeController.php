@@ -52,9 +52,6 @@ class UpgradeController extends AbstractAdminController
 
     private const LOCK_FILE = 'data/offline.txt';
 
-    /** @var string */
-    protected $layout = 'layouts/administration';
-
     /** @var TimeoutService */
     private $timeout_service;
 
