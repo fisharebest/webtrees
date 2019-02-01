@@ -57,7 +57,7 @@ class AdminSiteController extends AbstractBaseController
     private $user_service;
 
     /**
-     * AdminUsersController constructor.
+     * AdminSiteController constructor.
      *
      * @param ModuleService $module_service
      * @param UserService   $user_service

@@ -31,7 +31,7 @@
             <?= I18N::translate('Username') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <input type="text" class="form-control" id="user-name" name="user_name" value="<?= e($user->getUserName()) ?>" dir="auto" aria-describedby="username-description" required>
+            <input type="text" class="form-control" id="user-name" name="user_name" value="<?= e($user->userName()) ?>" dir="auto" aria-describedby="username-description" required>
             <p class="small text-muted" id="username-description">
                 <?= I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.') ?>
             </p>
@@ -195,7 +195,7 @@
         <div class="row form-group">
             <div class="col-sm-3 wt-page-options-label"></div>
             <div class="col-sm-9 wt-page-options-value">
-                <input class="btn btn-danger" type="submit" value="<?= I18N::translate('Delete your account') ?>" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($user->getUserName())) ?>" onclick="return confirm(this.dataset.confirm);">
+                <input class="btn btn-danger" type="submit" value="<?= I18N::translate('Delete your account') ?>" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($user->userName())) ?>" onclick="return confirm(this.dataset.confirm);">
             </div>
         </div>
     </form>

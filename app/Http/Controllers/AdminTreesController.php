@@ -79,7 +79,7 @@ class AdminTreesController extends AbstractBaseController
     private $user_service;
 
     /**
-     * AdminUsersController constructor.
+     * AdminTreesController constructor.
      *
      * @param ModuleService $module_service
      * @param UserService   $user_service

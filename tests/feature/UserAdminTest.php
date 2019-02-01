@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Http\Controllers\AdminUsersController;
+use Fisharebest\Webtrees\Http\Controllers\Admin\UsersController;
 use Fisharebest\Webtrees\Services\UserService;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -29,7 +29,7 @@ class UserAdminTest extends TestCase
     protected static $uses_database = true;
 
     /**
-     * @covers \Fisharebest\Webtrees\Http\Controllers\AdminUsersController
+     * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\UsersController
      * @covers \Fisharebest\Webtrees\Services\DatatablesService
      * @return void
      */
@@ -39,7 +39,7 @@ class UserAdminTest extends TestCase
         $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $controller = app()->make(AdminUsersController::class);
+        $controller = app()->make(UsersController::class);
         $response   = app()->dispatch($controller, 'data');
 
         $this->assertContains('AdminName', $response->getContent());
@@ -51,7 +51,7 @@ class UserAdminTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Http\Controllers\AdminUsersController
+     * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\UsersController
      * @covers \Fisharebest\Webtrees\Services\DatatablesService
      * @return void
      */
@@ -63,7 +63,7 @@ class UserAdminTest extends TestCase
 
         $request = new Request(['search' => ['value' => 'admin']]);
         app()->instance(Request::class, $request);
-        $controller = app()->make(AdminUsersController::class);
+        $controller = app()->make(UsersController::class);
         $response   = app()->dispatch($controller, 'data');
 
         $this->assertContains('AdminName', $response->getContent());
@@ -75,7 +75,7 @@ class UserAdminTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Http\Controllers\AdminUsersController
+     * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\UsersController
      * @covers \Fisharebest\Webtrees\Services\DatatablesService
      * @return void
      */
@@ -87,7 +87,7 @@ class UserAdminTest extends TestCase
 
         $request = new Request(['length' => 1]);
         app()->instance(Request::class, $request);
-        $controller = app()->make(AdminUsersController::class);
+        $controller = app()->make(UsersController::class);
         $response   = app()->dispatch($controller, 'data');
 
         $this->assertContains('AdminName', $response->getContent());
@@ -95,7 +95,7 @@ class UserAdminTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Http\Controllers\AdminUsersController
+     * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\UsersController
      * @covers \Fisharebest\Webtrees\Services\DatatablesService
      * @return void
      */
@@ -107,7 +107,7 @@ class UserAdminTest extends TestCase
 
         $request = new Request(['order' => [['column' => 2, 'dir' => 'asc']]]);
         app()->instance(Request::class, $request);
-        $controller = app()->make(AdminUsersController::class);
+        $controller = app()->make(UsersController::class);
         $response   = app()->dispatch($controller, 'data');
 
         $pos1 = strpos($response->getContent(), 'AdminName');
@@ -116,7 +116,7 @@ class UserAdminTest extends TestCase
 
         $request = new Request(['order' => [['column' => 2, 'dir' => 'desc']]]);
         app()->instance(Request::class, $request);
-        $controller = app()->make(AdminUsersController::class);
+        $controller = app()->make(UsersController::class);
         $response   = app()->dispatch($controller, 'data');
 
         $pos1 = strpos($response->getContent(), 'AdminName');

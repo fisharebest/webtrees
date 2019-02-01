@@ -60,7 +60,7 @@ class UsersController extends AbstractAdminController
     private $user_service;
 
     /**
-     * AdminUsersController constructor.
+     * UsersController constructor.
      *
      * @param ModuleService $module_service
      * @param UserService   $user_service
@@ -314,11 +314,11 @@ class UsersController extends AbstractAdminController
      */
     public function save(Request $request): RedirectResponse
     {
-        $username  = $request->get('username');
-        $real_name = $request->get('real_name');
-        $email     = $request->get('email');
-        $pass1     = $request->get('pass1');
-        $pass2     = $request->get('pass2');
+        $username  = $request->get('username', '');
+        $real_name = $request->get('real_name', '');
+        $email     = $request->get('email', '');
+        $pass1     = $request->get('pass1', '');
+        $pass2     = $request->get('pass2', '');
 
         $errors = false;
         if ($this->user_service->findByUserName($username)) {
@@ -371,15 +371,15 @@ class UsersController extends AbstractAdminController
     public function update(Request $request, UserInterface $user): RedirectResponse
     {
         $user_id        = (int) $request->get('user_id');
-        $username       = $request->get('username');
-        $real_name      = $request->get('real_name');
-        $email          = $request->get('email');
-        $pass1          = $request->get('pass1');
-        $theme          = $request->get('theme');
-        $language       = $request->get('language');
-        $timezone       = $request->get('timezone');
-        $contact_method = $request->get('contact_method');
-        $comment        = $request->get('comment');
+        $username       = $request->get('username', '');
+        $real_name      = $request->get('real_name', '');
+        $email          = $request->get('email', '');
+        $pass1          = $request->get('pass1', '');
+        $theme          = $request->get('theme', '');
+        $language       = $request->get('language', '');
+        $timezone       = $request->get('timezone', '');
+        $contact_method = $request->get('contact_method', '');
+        $comment        = $request->get('comment', '');
         $auto_accept    = (bool) $request->get('auto_accept');
         $canadmin       = (bool) $request->get('canadmin');
         $visible_online = (bool) $request->get('visible_online');

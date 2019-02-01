@@ -31,11 +31,34 @@ class ImportThumbnailsControllerTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @return void
      */
-    public function testIndex(): void
+    public function testWebtrees1Thumbnails(): void
     {
         $controller = app()->make(ImportThumbnailsController::class);
-        $response   = app()->dispatch($controller, 'index');
+        $response   = app()->dispatch($controller, 'webtrees1Thumbnails');
 
         $this->assertInstanceOf(Response::class, $response);
+    }
+
+    /**
+     * @return void
+     */
+    public function testWebtrees1ThumbnailsAction(): void
+    {
+        $controller = app()->make(ImportThumbnailsController::class);
+        $response   = app()->dispatch($controller, 'webtrees1ThumbnailsAction');
+
+        $this->assertInstanceOf(Response::class, $response);
+    }
+
+    /**
+     * @return void
+     */
+    public function testWebtrees1ThumbnailsData(): void
+    {
+        // This function still uses MySQL-specific code.
+        //$controller = app()->make(ImportThumbnailsController::class);
+        //$response   = app()->dispatch($controller, 'webtrees1ThumbnailsData');
+
+        //$this->assertInstanceOf(Response::class, $response);
     }
 }

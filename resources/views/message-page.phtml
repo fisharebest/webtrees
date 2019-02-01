@@ -21,7 +21,7 @@
             <?= I18N::translate('To') ?>
         </label>
         <div class="col-sm-9">
-            <input type="hidden" name="to" value="<?= e($to->getUserName()) ?>">
+            <input type="hidden" name="to" value="<?= e($to->userName()) ?>">
             <input class="form-control" id="to" type="text" value="<?= e($to->realName()) ?>" disabled>
         </div>
     </div>

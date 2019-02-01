@@ -15,7 +15,7 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers;
+namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
@@ -42,13 +42,10 @@ use Throwable;
 /**
  * Controller for media administration.
  */
-class AdminMediaController extends AbstractBaseController
+class MediaController extends AbstractAdminController
 {
     // How many files to upload on one form.
     private const MAX_UPLOAD_FILES = 10;
-
-    /** @var string */
-    protected $layout = 'layouts/administration';
 
     /**
      * @param Request $request
@@ -126,7 +123,7 @@ class AdminMediaController extends AbstractBaseController
         $media_folder  = $request->get('media_folder', '');
 
         // subfolders within $media_path
-        $subfolders = $request->get('subfolders'); // include|exclude
+        $subfolders = $request->get('subfolders', ''); // include|exclude
 
         $search_columns = ['multimedia_file_refn', 'descriptive_title'];
 
@@ -485,12 +482,12 @@ class AdminMediaController extends AbstractBaseController
             ->where('multimedia_file_refn', 'LIKE', '%/%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
+            ->where('path', 'LIKE', $media_folder . '%')
             ->select(DB::raw('setting_value || multimedia_file_refn AS path'))
-            ->having('path', 'LIKE', $media_folder . '%')
             ->orderBy('path');
 
         if ($subfolders === 'exclude') {
-            $query->having('path', 'NOT LIKE', $media_folder . '%/%');
+            $query->where('path', 'NOT LIKE', $media_folder . '%/%');
         }
 
         return $query->pluck('path')->all();

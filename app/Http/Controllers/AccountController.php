@@ -50,7 +50,7 @@ class AccountController extends AbstractBaseController
     private $user_service;
 
     /**
-     * AdminUsersController constructor.
+     * AccountController constructor.
      *
      * @param ModuleService $module_service
      * @param UserService   $user_service

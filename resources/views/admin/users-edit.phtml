@@ -33,7 +33,7 @@
             <?= I18N::translate('Username') ?>
         </label>
         <div class="col-sm-9">
-            <input class="form-control" type="text" id="username" name="username" required maxlength="32" value="<?= e($user->getUserName()) ?>" dir="auto">
+            <input class="form-control" type="text" id="username" name="username" required maxlength="32" value="<?= e($user->userName()) ?>" dir="auto">
             <p class="small text-muted">
                 <?= I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.') ?>
             </p>

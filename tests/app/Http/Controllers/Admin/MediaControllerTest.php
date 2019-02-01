@@ -17,17 +17,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
-use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Test UsersController class.
+ * Test MediaController class.
  *
- * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\UsersController
+ * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\MediaController
  */
-class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
+class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
 {
     protected static $uses_database = true;
 
@@ -36,7 +34,7 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testIndex(): void
     {
-        $controller = app()->make(UsersController::class);
+        $controller = app()->make(MediaController::class);
         $response   = app()->dispatch($controller, 'index');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -45,9 +43,10 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @return void
      */
-    public function testData(): void
+    public function testDataLocal(): void
     {
-        $controller = app()->make(UsersController::class);
+        app()->instance(Request::class, new Request(['files' => 'local']));
+        $controller = app()->make(MediaController::class);
         $response   = app()->dispatch($controller, 'data');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -56,10 +55,11 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @return void
      */
-    public function testCreate(): void
+    public function testDataExternal(): void
     {
-        $controller = app()->make(UsersController::class);
-        $response   = app()->dispatch($controller, 'create');
+        app()->instance(Request::class, new Request(['files' => 'external']));
+        $controller = app()->make(MediaController::class);
+        $response   = app()->dispatch($controller, 'data');
 
         $this->assertInstanceOf(Response::class, $response);
     }
@@ -67,10 +67,11 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @return void
      */
-    public function testSave(): void
+    public function testDataUnused(): void
     {
-        $controller = app()->make(UsersController::class);
-        $response   = app()->dispatch($controller, 'save');
+        app()->instance(Request::class, new Request(['files' => 'unused']));
+        $controller = app()->make(MediaController::class);
+        $response   = app()->dispatch($controller, 'data');
 
         $this->assertInstanceOf(Response::class, $response);
     }
@@ -78,14 +79,10 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @return void
      */
-    public function testEdit(): void
+    public function testDelete(): void
     {
-        /** @var User $user */
-        $user = app()->make(UserService::class)->create('user', 'real', 'email', 'pass');
-        app()->instance(Request::class, new Request(['user_id' => $user->id()]));
-
-        $controller = app()->make(UsersController::class);
-        $response   = app()->dispatch($controller, 'edit');
+        $controller = app()->make(MediaController::class);
+        $response   = app()->dispatch($controller, 'delete');
 
         $this->assertInstanceOf(Response::class, $response);
     }
@@ -93,14 +90,10 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @return void
      */
-    public function testUpdate(): void
+    public function testUpload(): void
     {
-        /** @var User $user */
-        $user = app()->make(UserService::class)->create('user', 'real', 'email', 'pass');
-        app()->instance(Request::class, new Request(['user_id' => $user->id()]));
-
-        $controller = app()->make(UsersController::class);
-        $response   = app()->dispatch($controller, 'update');
+        $controller = app()->make(MediaController::class);
+        $response   = app()->dispatch($controller, 'upload');
 
         $this->assertInstanceOf(Response::class, $response);
     }
@@ -108,21 +101,10 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @return void
      */
-    public function testCleanup(): void
+    public function testUploadAction(): void
     {
-        $controller = app()->make(UsersController::class);
-        $response   = app()->dispatch($controller, 'cleanup');
-
-        $this->assertInstanceOf(Response::class, $response);
-    }
-
-    /**
-     * @return void
-     */
-    public function testCleanupAction(): void
-    {
-        $controller = app()->make(UsersController::class);
-        $response   = app()->dispatch($controller, 'cleanupAction');
+        $controller = app()->make(MediaController::class);
+        $response   = app()->dispatch($controller, 'uploadAction');
 
         $this->assertInstanceOf(Response::class, $response);
     }

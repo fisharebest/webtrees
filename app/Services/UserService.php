@@ -263,7 +263,7 @@ class UserService
      *
      * @return User
      */
-    public static function create($user_name, $real_name, $email, $password): User
+    public static function create(string $user_name, string $real_name, string $email, string $password): User
     {
         DB::table('user')->insert([
             'user_name' => $user_name,
