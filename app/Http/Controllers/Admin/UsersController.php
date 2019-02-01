@@ -15,7 +15,7 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers;
+namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
@@ -45,12 +45,9 @@ use const WT_BASE_URL;
 /**
  * Controller for user administration.
  */
-class AdminUsersController extends AbstractBaseController
+class UsersController extends AbstractAdminController
 {
     private const SECONDS_PER_DAY = 24 * 60 * 60;
-
-    /** @var string */
-    protected $layout = 'layouts/administration';
 
     /**
      * @var ModuleService
