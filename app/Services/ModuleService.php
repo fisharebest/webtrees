@@ -564,5 +564,4 @@ class ModuleService
 
         return $database_modules->diff($disk_modules);
     }
-
 }

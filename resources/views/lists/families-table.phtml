@@ -45,7 +45,7 @@ $(this).toggleClass("ui-state-active");
 $(".parents", $(this).closest("table").DataTable().rows().nodes()).slideToggle();
 })
 /* Hide/show statistics */
-.on("click",  ".btn-toggle-statistics", function() {
+.on("click", ".btn-toggle-statistics", function() {
 $(this).toggleClass("ui-state-active");
 $("#family-charts-<?= e($table_id) ?>").slideToggle();
 })

@@ -107,7 +107,7 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testImportLocationsAction(): void
     {
-        $csv = new UploadedFile(dirname(__DIR__, 4) . '/data/places.csv', 'places.csv',  'image/jpeg', UPLOAD_ERR_OK);
+        $csv = new UploadedFile(dirname(__DIR__, 4) . '/data/places.csv', 'places.csv', 'image/jpeg', UPLOAD_ERR_OK);
 
         app()->instance(Request::class, new Request([], [], [], [], ['localfile' => $csv]));
 

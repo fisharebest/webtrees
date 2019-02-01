@@ -992,7 +992,7 @@ $(function () {
         if (osk_focus_element !== null) {
             var cursorPos = osk_focus_element.selectionStart;
             var v = osk_focus_element.value;
-            var textBefore = v.substring(0,  cursorPos);
+            var textBefore = v.substring(0, cursorPos);
             var textAfter  = v.substring(cursorPos, v.length);
             osk_focus_element.value = textBefore + key + textAfter;
             if ($('.wt-osk-pin-button').hasClass('active') === false) {
