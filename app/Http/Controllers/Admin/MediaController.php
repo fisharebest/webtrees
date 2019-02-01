@@ -482,7 +482,7 @@ class MediaController extends AbstractAdminController
             ->where('multimedia_file_refn', 'LIKE', '%/%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
-            ->where('path', 'LIKE', $media_folder . '%')
+            ->where(DB::raw('setting_value || multimedia_file_refn'), 'LIKE', $media_folder . '%')
             ->select(DB::raw('setting_value || multimedia_file_refn AS path'))
             ->orderBy('path');
 
