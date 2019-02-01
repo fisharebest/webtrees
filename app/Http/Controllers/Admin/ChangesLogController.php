@@ -32,6 +32,9 @@ use stdClass;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use function explode;
+use function implode;
+use function preg_replace_callback;
 
 /**
  * Controller for the changes log.
@@ -136,8 +139,8 @@ class ChangesLogController extends AbstractAdminController
         $query = $this->changesQuery($request);
 
         $callback = function (stdClass $row) use ($myers_diff): array {
-            $old_lines = preg_split('/[\n]+/', $row->old_gedcom, -1, PREG_SPLIT_NO_EMPTY);
-            $new_lines = preg_split('/[\n]+/', $row->new_gedcom, -1, PREG_SPLIT_NO_EMPTY);
+            $old_lines = explode("\n", $row->old_gedcom);
+            $new_lines = explode("\n", $row->new_gedcom);
 
             $differences = $myers_diff->calculate($old_lines, $new_lines);
             $diff_lines  = [];
@@ -283,5 +286,4 @@ class ChangesLogController extends AbstractAdminController
 
         return $query;
     }
-
 }

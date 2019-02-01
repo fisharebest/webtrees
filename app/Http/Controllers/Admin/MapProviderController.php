@@ -15,7 +15,7 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers;
+namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
@@ -26,11 +26,8 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for maps and geographic data.
  */
-class AdminMapController extends AbstractBaseController
+class MapProviderController extends AbstractAdminController
 {
-    /** @var string */
-    protected $layout = 'layouts/administration';
-
     /**
      * @return Response
      */
@@ -49,7 +46,9 @@ class AdminMapController extends AbstractBaseController
      */
     public function mapProviderSave(Request $request): RedirectResponse
     {
-        Site::setPreference('map-provider', $request->get('provider'));
+        $map_provider = $request->get('provider', '');
+
+        Site::setPreference('map-provider', $map_provider);
 
         return new RedirectResponse(route('admin-control-panel'));
     }
