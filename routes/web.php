@@ -136,9 +136,9 @@ if (Auth::isAdmin()) {
 if ($tree instanceof Tree && Auth::isManager($tree)) {
     $routes += [
         'GET:admin-control-panel-manager' => 'Admin\\ControlPanelController@controlPanelManager',
-        'GET:admin-changes-log'           => 'AdminController@changesLog',
-        'GET:admin-changes-log-data'      => 'AdminController@changesLogData',
-        'GET:admin-changes-log-download'  => 'AdminController@changesLogDownload',
+        'GET:admin-changes-log'           => 'Admin\\ChangesLogController@changesLog',
+        'GET:admin-changes-log-data'      => 'Admin\\ChangesLogController@changesLogData',
+        'GET:admin-changes-log-download'  => 'Admin\\ChangesLogController@changesLogDownload',
         'GET:tree-page-edit'              => 'HomePageController@treePageEdit',
         'POST:import'                     => 'GedcomFileController@import',
         'POST:tree-page-update'           => 'HomePageController@treePageUpdate',
