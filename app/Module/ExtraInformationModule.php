@@ -119,5 +119,5 @@ class ExtraInformationModule extends AbstractModule implements ModuleSidebarInte
     public function showFact(Fact $fact)
     {
         return in_array($fact->getTag(), static::FACTS_TO_SHOW);
-     }
+    }
 }
