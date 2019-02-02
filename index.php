@@ -51,10 +51,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 require __DIR__ . '/vendor/autoload.php';
 
-// Regular expressions for validating user input, etc.
-const WT_MINIMUM_PASSWORD_LENGTH = 6;
-const WT_REGEX_PASSWORD          = '.{' . WT_MINIMUM_PASSWORD_LENGTH . ',}';
-
 const WT_ROOT = __DIR__ . DIRECTORY_SEPARATOR;
 
 Webtrees::init();

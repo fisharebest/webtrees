@@ -317,8 +317,7 @@ class UsersController extends AbstractAdminController
         $username  = $request->get('username', '');
         $real_name = $request->get('real_name', '');
         $email     = $request->get('email', '');
-        $pass1     = $request->get('pass1', '');
-        $pass2     = $request->get('pass2', '');
+        $password  = $request->get('password', '');
 
         $errors = false;
         if ($this->user_service->findByUserName($username)) {
@@ -328,11 +327,6 @@ class UsersController extends AbstractAdminController
 
         if ($this->user_service->findByEmail($email)) {
             FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
-            $errors = true;
-        }
-
-        if ($pass1 !== $pass2) {
-            FlashMessages::addMessage(I18N::translate('The passwords do not match.'));
             $errors = true;
         }
 
@@ -346,7 +340,7 @@ class UsersController extends AbstractAdminController
             return new RedirectResponse($url);
         }
 
-        $new_user = $this->user_service->create($username, $real_name, $email, $pass1)
+        $new_user = $this->user_service->create($username, $real_name, $email, $password)
             ->setPreference('verified', '1')
             ->setPreference('language', WT_LOCALE)
             ->setPreference('timezone', Site::getPreference('TIMEZONE'))
@@ -374,7 +368,7 @@ class UsersController extends AbstractAdminController
         $username       = $request->get('username', '');
         $real_name      = $request->get('real_name', '');
         $email          = $request->get('email', '');
-        $pass1          = $request->get('pass1', '');
+        $password       = $request->get('password', '');
         $theme          = $request->get('theme', '');
         $language       = $request->get('language', '');
         $timezone       = $request->get('timezone', '');
@@ -421,8 +415,8 @@ class UsersController extends AbstractAdminController
             ->setPreference('verified', (string) $verified)
             ->setPreference('verified_by_admin', (string) $approved);
 
-        if ($pass1 !== '') {
-            $edit_user->setPassword($pass1);
+        if ($password !== '') {
+            $edit_user->setPassword($password);
         }
 
         // We cannot change our own admin status. Another admin will need to do it.

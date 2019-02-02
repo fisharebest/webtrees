@@ -52,25 +52,13 @@
     </div>
 
     <div class="form-group row">
-        <label class="col-sm-3 col-form-label wt-page-options-label" for="password1">
+        <label class="col-sm-3 col-form-label wt-page-options-label" for="password">
             <?= I18N::translate('Password') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <input class="form-control" type="password" id="password1" name="password1" placeholder="<?= /* I18N: placeholder text for new-password field */ I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, I18N::number(WT_MINIMUM_PASSWORD_LENGTH)) ?>" pattern="<?=  WT_REGEX_PASSWORD ?>" onchange="document.getElementById('password2').pattern = regex_quote(this.value);" required>
+            <input class="form-control" type="password" id="password" name="password" placeholder="<?= /* I18N: placeholder text for new-password field */ I18N::plural('Use at least %s character.', 'Use at least %s characters.', 8, I18N::number(8)) ?>" pattern=".{8,}" required>
             <p class="small text-muted">
                 <?= I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”.') ?>
-            </p>
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <label class="col-sm-3 col-form-label wt-page-options-label" for="password2">
-            <?= I18N::translate('Confirm password') ?>
-        </label>
-        <div class="col-sm-9 wt-page-options-value">
-            <input class="form-control" required type="password" id="password2" name="password2" placeholder="<?= /* I18N: placeholder text for repeat-password field */ I18N::translate('Type the password again.') ?>" pattern="<?= WT_REGEX_PASSWORD ?>">
-            <p class="small text-muted">
-                <?= I18N::translate('Type your password again, to make sure you have typed it correctly.') ?>
             </p>
         </div>
     </div>
@@ -97,11 +85,8 @@
     </div>
 </form>
 
-
 <?php View::push('javascript') ?>
 <script>
-  function regex_quote(str) {
-    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  }
+    $('#password').hideShowPassword('infer', true);
 </script>
 <?php View::endpush() ?>

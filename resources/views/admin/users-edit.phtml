@@ -1,10 +1,16 @@
-<?php use Fisharebest\Webtrees\Auth; ?>
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Individual; ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Bootstrap4;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\View; ?>
+<?php ?>
+<?php ?>
+<?php ?>
+<?php ?>
+<?php ?>
+<?php ?>
 
 <?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-users') => I18N::translate('User administration'), $title]]) ?>
 
@@ -42,24 +48,14 @@
 
     <!-- PASSWORD -->
     <div class="row form-group">
-        <label class="col-sm-3 col-form-label" for="pass1">
+        <label class="col-sm-3 col-form-label" for="password">
             <?= I18N::translate('Password') ?>
         </label>
         <div class="col-sm-9">
-            <input class="form-control" type="password" id="pass1" name="pass1" pattern = "<?= WT_REGEX_PASSWORD ?>" placeholder="<?= I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, I18N::number(WT_MINIMUM_PASSWORD_LENGTH)) ?>" <?= $user->id() ? '' : 'required' ?> onchange="form.pass2.pattern = regex_quote(this.value);" autocomplete="new-password">
+            <input class="form-control" type="password" id="password" name="password" pattern = ".{8,}" placeholder="<?= I18N::plural('Use at least %s character.', 'Use at least %s characters.', 8, I18N::number(8)) ?>" <?= $user->id() ? '' : 'required' ?> autocomplete="new-password">
             <p class="small text-muted">
                 <?= I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”.') ?>
             </p>
-        </div>
-    </div>
-
-    <!-- CONFIRM PASSWORD -->
-    <div class="row form-group">
-        <label class="col-sm-3 col-form-label" for="pass2">
-            <?= I18N::translate('Confirm password') ?>
-        </label>
-        <div class="col-sm-9">
-            <input class="form-control" type="password" id="pass2" name="pass2" pattern = "<?= WT_REGEX_PASSWORD ?>" placeholder="<?= I18N::translate('Type the password again.') ?>" <?= $user->id() ? '' : 'required' ?> autocomplete="new-password">
         </div>
     </div>
 
@@ -349,17 +345,17 @@
 
 <?php View::push('javascript') ?>
 <script>
-  $(".relpath").change(function() {
-    var fieldIDx = $(this).attr("id");
-    var idNum = fieldIDx.replace("RELATIONSHIP_PATH_LENGTH","");
-    var newIDx = "gedcomid"+idNum;
-    if ($("#"+newIDx).val() === "" && $("#".fieldIDx).val() !== "0") {
-      alert("<?= I18N::translate('You must specify an individual record before you can restrict the user to their immediate family.') ?>");
-      $(this).val("0");
-    }
-  });
-  function regex_quote(str) {
-    return str.replace(/[\\.?+*()[\](){}|]/g, "\\$&");
-  }
+    $(".relpath").change(function () {
+        var fieldIDx = $(this).attr("id");
+        var idNum    = fieldIDx.replace("RELATIONSHIP_PATH_LENGTH", "");
+        var newIDx   = "gedcomid" + idNum;
+        if ($("#" + newIDx).val() === "" && $("#".fieldIDx).val() !== "0") {
+            alert("<?= I18N::translate('You must specify an individual record before you can restrict the user to their immediate family.') ?>");
+            $(this).val("0");
+        }
+    });
+
+    $("#password").hideShowPassword('infer', true);
 </script>
 <?php View::endpush() ?>
+

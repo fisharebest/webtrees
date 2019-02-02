@@ -30,6 +30,8 @@ window.Sortable = require('sortablejs');
 
 import "select2";
 
+import "hideshowpassword";
+
 import "moment";
 
 import "jquery-colorbox";

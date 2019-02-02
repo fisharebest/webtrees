@@ -1,28 +1,13 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
-
-<script>
-  function checkform(frm) {
-    if (frm.password.value !== frm.password2.value) {
-      alert("<?= I18N::translate('The passwords do not match.') ?>");
-      frm.password.focus();
-      return false;
-    }
-    if (frm.password.value.length > 0 && frm.password.value.length < 6) {
-      alert("<?= I18N::translate('Passwords must contain at least 6 characters.') ?>");
-      frm.password.focus();
-      return false;
-    }
-    return true;
-  }
-</script>
+<?php use Fisharebest\Webtrees\View; ?>
 
 <h2 class="wt-page-title">
     <?= $title ?>
 </h2>
 
-<form class="wt-page-options wt-page-options-my-account" method="post" onsubmit="return checkform(this);">
+<form class="wt-page-options wt-page-options-my-account" method="post">
     <?= csrf_field() ?>
     <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
 
@@ -91,18 +76,6 @@
                 <?= I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”.') ?>
                 <br>
                 <?= I18N::translate('Leave the password blank if you want to keep the current password.') ?>
-            </p>
-        </div>
-    </div>
-
-    <div class="row form-group">
-        <label class="col-sm-3 col-form-label wt-page-options-label" for="password2">
-            <?= I18N::translate('Confirm password') ?>
-        </label>
-        <div class="col-sm-9 wt-page-options-value">
-            <input class="form-control" type="password" id="password2" name="password2" aria-describedby="password2-description" autocomplete="new-password">
-            <p class="small text-muted" id="password2-description">
-                <?= I18N::translate('Type your password again, to make sure you have typed it correctly.') ?>
             </p>
         </div>
     </div>
@@ -200,3 +173,9 @@
         </div>
     </form>
 <?php endif ?>
+
+<?php View::push('javascript') ?>
+<script>
+    $('#password').hideShowPassword('infer', true);
+</script>
+<?php View::endpush() ?>

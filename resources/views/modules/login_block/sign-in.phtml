@@ -1,4 +1,5 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\View; ?>
 
 <form name="login-form" method="POST" action="<?= route('login', ['url' => route('user-page')]) ?>">
     <?= csrf_field() ?>
@@ -52,4 +53,10 @@
         </div>
     </form>
 </div>
+
+<?php View::push('javascript') ?>
+<script>
+    $('#password').hideShowPassword('infer', true);
+</script>
+<?php View::endpush() ?>
 

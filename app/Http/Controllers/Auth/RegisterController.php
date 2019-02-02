@@ -97,15 +97,14 @@ class RegisterController extends AbstractBaseController
     {
         $this->checkRegistrationAllowed();
 
-        $comments  = $request->get('comments', '');
-        $email     = $request->get('email', '');
-        $password1 = $request->get('password1', '');
-        $password2 = $request->get('password2', '');
-        $realname  = $request->get('realname', '');
-        $username  = $request->get('username', '');
+        $comments = $request->get('comments', '');
+        $email    = $request->get('email', '');
+        $password = $request->get('password', '');
+        $realname = $request->get('realname', '');
+        $username = $request->get('username', '');
 
         try {
-            $this->doValidateRegistration($username, $email, $realname, $comments, $password1, $password2);
+            $this->doValidateRegistration($username, $email, $realname, $comments, $password);
         } catch (Exception $ex) {
             FlashMessages::addMessage($ex->getMessage(), 'danger');
 
@@ -119,7 +118,7 @@ class RegisterController extends AbstractBaseController
 
         Log::addAuthenticationLog('User registration requested for: ' . $username);
 
-        $user = $this->user_service->create($username, $realname, $email, $password1);
+        $user = $this->user_service->create($username, $realname, $email, $password);
         $user
             ->setPreference('language', WT_LOCALE)
             ->setPreference('verified', '0')
@@ -190,16 +189,15 @@ class RegisterController extends AbstractBaseController
      * @param string $email
      * @param string $realname
      * @param string $comments
-     * @param string $password1
-     * @param string $password2
+     * @param string $password
      *
      * @return void
      * @throws Exception
      */
-    private function doValidateRegistration(string $username, string $email, string $realname, string $comments, string $password1, string $password2)
+    private function doValidateRegistration(string $username, string $email, string $realname, string $comments, string $password)
     {
         // All fields are required
-        if ($username === '' || $email === '' || $realname === '' || $comments === '' || $password1 === '' || $password2 === '') {
+        if ($username === '' || $email === '' || $realname === '' || $comments === '' || $password === '') {
             throw new Exception(I18N::translate('All fields must be completed.'));
         }
 
@@ -216,10 +214,6 @@ class RegisterController extends AbstractBaseController
         // No external links
         if (preg_match('/(?!' . preg_quote(WT_BASE_URL, '/') . ')(((?:http|https):\/\/)[a-zA-Z0-9.-]+)/', $comments, $match)) {
             throw new Exception(I18N::translate('You are not allowed to send messages that contain external links.') . ' ' . I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', e($match[2]), e($match[1])));
-        }
-
-        if ($password1 !== $password2) {
-            throw new Exception('The passwords do not match.');
         }
     }
 
