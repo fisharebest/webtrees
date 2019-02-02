@@ -530,8 +530,6 @@ class ModuleService
      * Configuration settings are available through the various "module component" pages.
      * For modules that do not provide a component, we need to list them separately.
      *
-     * @param string $class_name
-     *
      * @return Collection|ModuleConfigInterface[]
      */
     public function configOnlyModules(): Collection
