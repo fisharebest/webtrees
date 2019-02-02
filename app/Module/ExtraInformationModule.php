@@ -30,6 +30,18 @@ class ExtraInformationModule extends AbstractModule implements ModuleSidebarInte
 {
     use ModuleSidebarTrait;
 
+    protected const FACTS_TO_SHOW = [
+        'AFN',
+        'CHAN',
+        'IDNO',
+        'REFN',
+        'RESN',
+        'RFN',
+        'RIN',
+        'SSN',
+        '_UID',
+    ];
+
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *
@@ -106,18 +118,6 @@ class ExtraInformationModule extends AbstractModule implements ModuleSidebarInte
      */
     public function showFact(Fact $fact)
     {
-        switch ($fact->getTag()) {
-            case 'AFN':
-            case 'CHAN':
-            case 'IDNO':
-            case 'REFN':
-            case 'RFN':
-            case 'RIN':
-            case 'SSN':
-            case '_UID':
-                return true;
-            default:
-                return false;
-        }
-    }
+        return in_array($fact->getTag(), static::FACTS_TO_SHOW);
+     }
 }

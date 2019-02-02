@@ -112,9 +112,10 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                     $extra_info_module = $this->module_service->findByComponent('sidebar', $individual->tree(), Auth::user())
                         ->filter(function (ModuleInterface $module): bool {
                             return $module instanceof ExtraInformationModule;
-                        });
+                        })
+                        ->first();
 
-                    if ($extra_info_module instanceof ExtraInformationModule && !$extra_info_module->showFact($fact)) {
+                    if (!$extra_info_module instanceof ExtraInformationModule || !$extra_info_module->showFact($fact)) {
                         $indifacts[] = $fact;
                     }
                     break;
