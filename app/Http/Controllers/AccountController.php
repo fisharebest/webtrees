@@ -155,17 +155,16 @@ class AccountController extends AbstractBaseController
     }
 
     /**
-     * @param User $user
+     * @param UserInterface $user
      *
      * @return RedirectResponse
      */
-    public function delete(User $user): RedirectResponse
+    public function delete(UserInterface $user): RedirectResponse
     {
         // An administrator can only be deleted by another administrator
-        if (!$user->getPreference('canadmin')) {
-            $currentUser = Auth::user();
+        if (!$user->getPreference('canadmin') && $user instanceof User) {
+            $this->user_service->delete($user);
             Auth::logout();
-            $currentUser->delete();
         }
 
         return new RedirectResponse(route('my-account'));

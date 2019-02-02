@@ -60,7 +60,7 @@ class UserController extends AbstractBaseController
 
         if ($user && Auth::isAdmin() && Auth::user() !== $user) {
             Log::addAuthenticationLog('Deleted user: ' . $user->userName());
-            $user->delete();
+            $this->user_service->delete($user);
         }
 
         return new Response();

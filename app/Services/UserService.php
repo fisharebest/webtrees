@@ -301,12 +301,6 @@ class UserService
             ->where('user_id', '=', $user->id())
             ->update(['user_id' => Auth::id()]);
 
-        // Take over the user's contact details
-        DB::table('gedcom_setting')
-            ->where('setting_value', '=', $user->id())
-            ->whereIn('setting_name', ['CONTACT_USER_ID', 'WEBMASTER_USER_ID'])
-            ->update(['setting_value' => Auth::id()]);
-
         // Delete settings and preferences
         DB::table('block_setting')
             ->join('block', 'block_setting.block_id', '=', 'block.block_id')

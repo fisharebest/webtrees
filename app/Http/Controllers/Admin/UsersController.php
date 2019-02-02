@@ -128,7 +128,7 @@ class UsersController extends AbstractAdminController
         foreach ($this->user_service->all() as $user) {
             if ((bool) $request->get('del_' . $user->id())) {
                 Log::addAuthenticationLog('Deleted user: ' . $user->userName());
-                $user->delete();
+                $this->user_service->delete($user);
 
                 FlashMessages::addMessage(I18N::translate('The user %s has been deleted.', e($user->userName())), 'success');
             }
