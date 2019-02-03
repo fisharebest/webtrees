@@ -38,17 +38,16 @@ class Handler
      */
     public function render(Request $request, Throwable $exception): Response
     {
+        $controller = new ErrorController();
+
         if ($exception instanceof HttpException) {
-            // Show a friendly page for expected exceptions.
             if ($request->isXmlHttpRequest()) {
-                $response = new Response($exception->getMessage(), $exception->getStatusCode());
+                $response = $controller->ajaxErrorResponse($exception);
             } else {
-                $controller = new ErrorController();
-                $response   = $controller->errorResponse($exception);
+                $response = $controller->errorResponse($exception);
             }
         } else {
-            $controller = new ErrorController();
-            $response   = $controller->unhandledExceptionResponse($request, $exception);
+            $response = $controller->unhandledExceptionResponse($request, $exception);
         }
 
         return $response;

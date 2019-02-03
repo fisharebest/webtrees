@@ -27,8 +27,10 @@ use Fisharebest\Webtrees\Services\UserService;
 use Illuminate\Cache\ArrayStore;
 use Illuminate\Cache\Repository;
 use Illuminate\Database\Capsule\Manager as DB;
-use function basename;
+use League\Flysystem\Filesystem;
+use League\Flysystem\Memory\MemoryAdapter;
 use Symfony\Component\HttpFoundation\Request;
+use function basename;
 
 /**
  * Base class for unit tests
@@ -82,6 +84,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         app()->instance(UserInterface::class, new GuestUser());
 
         app()->instance(Request::class, Request::createFromGlobals());
+        app()->instance(Filesystem::class, new Filesystem(new MemoryAdapter()));
 
         app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);
 
@@ -106,9 +109,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
         app('cache.array')->flush();
 
-        Site::$preferences = [];
-        Tree::$trees = [];
-        GedcomRecord::$gedcom_record_cache = null;
+        Site::$preferences                  = [];
+        Tree::$trees                        = [];
+        GedcomRecord::$gedcom_record_cache  = null;
         GedcomRecord::$pending_record_cache = null;
 
         Auth::logout();

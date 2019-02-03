@@ -71,9 +71,22 @@ class ErrorController extends AbstractBaseController
     public function errorResponse(HttpException $ex): Response
     {
         return $this->viewResponse('components/alert-danger', [
-            'title' => 'Error',
             'alert' => $ex->getMessage(),
         ], $ex->getStatusCode());
+    }
+
+    /**
+     * Convert an exception into an error message
+     *
+     * @param HttpException $ex
+     *
+     * @return Response
+     */
+    public function ajaxErrorResponse(HttpException $ex): Response
+    {
+        return new Response(view('components/alert-danger', [
+            'alert' => $ex->getMessage(),
+        ]), $ex->getStatusCode());
     }
 
     /**

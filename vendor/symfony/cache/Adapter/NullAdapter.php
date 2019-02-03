@@ -42,7 +42,7 @@ class NullAdapter implements AdapterInterface, CacheInterface
      */
     public function get(string $key, callable $callback, float $beta = null, array &$metadata = null)
     {
-        return $callback(($this->createCacheItem)());
+        return $callback(($this->createCacheItem)($key));
     }
 
     /**
@@ -58,7 +58,7 @@ class NullAdapter implements AdapterInterface, CacheInterface
     /**
      * {@inheritdoc}
      */
-    public function getItems(array $keys = array())
+    public function getItems(array $keys = [])
     {
         return $this->generateItems($keys);
     }

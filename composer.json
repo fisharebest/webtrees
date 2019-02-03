@@ -65,11 +65,13 @@
     },
     "require-dev": {
         "ext-pdo_sqlite": "*",
+        "league/flysystem-memory": "*",
         "maximebf/debugbar": "*",
         "mockery/mockery": "*",
         "php-coveralls/php-coveralls": "*",
         "phpunit/phpunit": "*",
-        "wapmorgan/php-code-fixer": "dev-master"
+        "wapmorgan/php-code-fixer": "*",
+        "wata727/pahout": "*"
     },
     "scripts": {
        "webtrees:build": [

@@ -19,6 +19,9 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UpgradeService;
+use Illuminate\Support\Collection;
+use League\Flysystem\Filesystem;
+use League\Flysystem\Memory\MemoryAdapter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -36,14 +39,13 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testWizard(): void
     {
-        $mock_timeout_service = $this->createMock(TimeoutService::class);
-        app()->instance(TimeoutService::class, $mock_timeout_service);
+        $controller = new UpgradeController(
+            new Filesystem(new MemoryAdapter()),
+            new TimeoutService(microtime(true)),
+            new UpgradeService(new TimeoutService(microtime(true)))
+        );
 
-        $mock_upgrade_service = $this->createMock(UpgradeService::class);
-        app()->instance(UpgradeService::class, $mock_upgrade_service);
-
-        $controller = app()->make(UpgradeController::class);
-        $response   = app()->dispatch($controller, 'wizard');
+        $response = $controller->wizard(new Request());
 
         $this->assertInstanceOf(Response::class, $response);
     }
@@ -53,15 +55,13 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testStepCheck(): void
     {
-        $mock_timeout_service = $this->createMock(TimeoutService::class);
-        app()->instance(TimeoutService::class, $mock_timeout_service);
+        $controller = new UpgradeController(
+            new Filesystem(new MemoryAdapter()),
+            new TimeoutService(microtime(true)),
+            new UpgradeService(new TimeoutService(microtime(true)))
+        );
 
-        $mock_upgrade_service = $this->createMock(UpgradeService::class);
-        app()->instance(UpgradeService::class, $mock_upgrade_service);
-
-        app()->instance(Request::class, new Request(['step' => 'Check']));
-        $controller = app()->make(UpgradeController::class);
-        $response   = app()->dispatch($controller, 'step');
+        $response = $controller->step(new Request(['step' => 'Check']), null);
 
         $this->assertInstanceOf(Response::class, $response);
     }
@@ -71,15 +71,13 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testStepPending(): void
     {
-        $mock_timeout_service = $this->createMock(TimeoutService::class);
-        app()->instance(TimeoutService::class, $mock_timeout_service);
+        $controller = new UpgradeController(
+            new Filesystem(new MemoryAdapter()),
+            new TimeoutService(microtime(true)),
+            new UpgradeService(new TimeoutService(microtime(true)))
+        );
 
-        $mock_upgrade_service = $this->createMock(UpgradeService::class);
-        app()->instance(UpgradeService::class, $mock_upgrade_service);
-
-        app()->instance(Request::class, new Request(['step' => 'Pending']));
-        $controller = app()->make(UpgradeController::class);
-        $response   = app()->dispatch($controller, 'step');
+        $response = $controller->step(new Request(['step' => 'Pending']), null);
 
         $this->assertInstanceOf(Response::class, $response);
     }
@@ -89,15 +87,14 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testStepExport(): void
     {
-        $mock_timeout_service = $this->createMock(TimeoutService::class);
-        app()->instance(TimeoutService::class, $mock_timeout_service);
+        $tree       = $this->importTree('demo.ged');
+        $controller = new UpgradeController(
+            new Filesystem(new MemoryAdapter()),
+            new TimeoutService(microtime(true)),
+            new UpgradeService(new TimeoutService(microtime(true)))
+        );
 
-        $mock_upgrade_service = $this->createMock(UpgradeService::class);
-        app()->instance(UpgradeService::class, $mock_upgrade_service);
-
-        app()->instance(Request::class, new Request(['step' => 'Export']));
-        $controller = app()->make(UpgradeController::class);
-        $response   = app()->dispatch($controller, 'step');
+        $response = $controller->step(new Request(['step' => 'Export']), $tree);
 
         $this->assertInstanceOf(Response::class, $response);
     }
@@ -107,15 +104,15 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testStepDownload(): void
     {
-        $mock_timeout_service = $this->createMock(TimeoutService::class);
-        app()->instance(TimeoutService::class, $mock_timeout_service);
-
         $mock_upgrade_service = $this->createMock(UpgradeService::class);
-        app()->instance(UpgradeService::class, $mock_upgrade_service);
+        $mock_upgrade_service->method('downloadFile')->willReturn(123456);
+        $controller = new UpgradeController(
+            new Filesystem(new MemoryAdapter()),
+            new TimeoutService(microtime(true)),
+            $mock_upgrade_service
+        );
 
-        app()->instance(Request::class, new Request(['step' => 'Download']));
-        $controller = app()->make(UpgradeController::class);
-        $response   = app()->dispatch($controller, 'step');
+        $response = $controller->step(new Request(['step' => 'Download']), null);
 
         $this->assertInstanceOf(Response::class, $response);
     }
@@ -125,15 +122,16 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testStepUnzip(): void
     {
-        $mock_timeout_service = $this->createMock(TimeoutService::class);
-        app()->instance(TimeoutService::class, $mock_timeout_service);
-
         $mock_upgrade_service = $this->createMock(UpgradeService::class);
-        app()->instance(UpgradeService::class, $mock_upgrade_service);
+        $mock_upgrade_service->method('webtreesZipContents')->willReturn(new Collection([]));
 
-        app()->instance(Request::class, new Request(['step' => 'Unzip']));
-        $controller = app()->make(UpgradeController::class);
-        $response   = app()->dispatch($controller, 'step');
+        $controller = new UpgradeController(
+            new Filesystem(new MemoryAdapter()),
+            new TimeoutService(microtime(true)),
+            $mock_upgrade_service
+        );
+
+        $response = $controller->step(new Request(['step' => 'Unzip']), null);
 
         $this->assertInstanceOf(Response::class, $response);
     }
@@ -143,15 +141,13 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testStepCopy(): void
     {
-        $mock_timeout_service = $this->createMock(TimeoutService::class);
-        app()->instance(TimeoutService::class, $mock_timeout_service);
+        $controller = new UpgradeController(
+            new Filesystem(new MemoryAdapter()),
+            new TimeoutService(microtime(true)),
+            new UpgradeService(new TimeoutService(microtime(true)))
+        );
 
-        $mock_upgrade_service = $this->createMock(UpgradeService::class);
-        app()->instance(UpgradeService::class, $mock_upgrade_service);
-
-        app()->instance(Request::class, new Request(['step' => 'Copy']));
-        $controller = app()->make(UpgradeController::class);
-        $response   = app()->dispatch($controller, 'step');
+        $response = $controller->step(new Request(['step' => 'Copy']), null);
 
         $this->assertInstanceOf(Response::class, $response);
     }

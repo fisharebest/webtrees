@@ -17,6 +17,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
+use Fisharebest\Webtrees\Services\HousekeepingService;
+use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\TimeoutService;
+use Fisharebest\Webtrees\Services\UpgradeService;
+use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\User;
+use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -33,8 +40,13 @@ class ControlPanelControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testControlPanel(): void
     {
-        $controller = app()->make(ControlPanelController::class);
-        $response   = app()->dispatch($controller, 'controlPanel');
+        $controller = new ControlPanelController();
+        $response   = $controller->controlPanel(
+            new HousekeepingService(),
+            new UpgradeService(new TimeoutService(microtime(true))),
+            new ModuleService(),
+            new UserService()
+        );
 
         $this->assertInstanceOf(Response::class, $response);
     }
@@ -44,8 +56,8 @@ class ControlPanelControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testControlPanelManager(): void
     {
-        $controller = app()->make(ControlPanelController::class);
-        $response   = app()->dispatch($controller, 'controlPanelManager');
+        $controller = new ControlPanelController();
+        $response   = $controller->controlPanelManager();
 
         $this->assertInstanceOf(Response::class, $response);
     }

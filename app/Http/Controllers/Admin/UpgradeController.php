@@ -17,40 +17,48 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
-use Exception;
+use Fisharebest\Flysystem\Adapter\ChrootAdapter;
+use Fisharebest\Webtrees\Exceptions\InternalServerErrorException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
-use GuzzleHttp\Client;
 use Illuminate\Database\Capsule\Manager as DB;
 use League\Flysystem\Adapter\Local;
+use League\Flysystem\Cached\CachedAdapter;
+use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;
-use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Throwable;
-use ZipArchive;
 
 /**
  * Controller for upgrading to a new version of webtrees.
  */
 class UpgradeController extends AbstractAdminController
 {
-    // Icons for success and failure
-    private const SUCCESS = '<i class="fas fa-check" style="color:green"></i> ';
-    private const FAILURE = '<i class="fas fa-times" style="color:red"></i> ';
+    // We make the upgrade in a number of small steps to keep within server time limits.
+    private const STEP_CHECK    = 'Check';
+    private const STEP_PREPARE  = 'Prepare';
+    private const STEP_PENDING  = 'Pending';
+    private const STEP_EXPORT   = 'Export';
+    private const STEP_DOWNLOAD = 'Download';
+    private const STEP_UNZIP    = 'Unzip';
+    private const STEP_COPY     = 'Copy';
+    private const STEP_CLEANUP  = 'Cleanup';
 
-    // Options for fetching files using GuzzleHTTP
-    private const GUZZLE_OPTIONS = [
-        'connect_timeout' => 25,
-        'read_timeout'    => 25,
-        'timeout'         => 55,
-    ];
+    // Somewhere for our temporary files
+    private const TMP_FOLDER = 'tmp/webtrees';
 
-    private const LOCK_FILE = 'data/offline.txt';
+    /** @var Filesystem */
+    private $filesystem;
+
+    /** @var Filesystem */
+    private $root_filesystem;
+
+    /** @var Filesystem */
+    private $temporary_filesystem;
 
     /** @var TimeoutService */
     private $timeout_service;
@@ -61,13 +69,21 @@ class UpgradeController extends AbstractAdminController
     /**
      * AdminUpgradeController constructor.
      *
+     * @param Filesystem     $filesystem
      * @param TimeoutService $timeout_service
      * @param UpgradeService $upgrade_service
      */
-    public function __construct(TimeoutService $timeout_service, UpgradeService $upgrade_service)
+    public function __construct(Filesystem $filesystem, TimeoutService $timeout_service, UpgradeService $upgrade_service)
     {
+        $this->filesystem      = $filesystem;
         $this->timeout_service = $timeout_service;
         $this->upgrade_service = $upgrade_service;
+
+        $this->root_filesystem      = new Filesystem(new CachedAdapter(new Local(WT_ROOT), new Memory()));
+        $this->temporary_filesystem = new Filesystem(new ChrootAdapter($this->filesystem, self::TMP_FOLDER));
+
+        // @TODO DO NOT OVERWRITE LIVE DATA DURING TESTING!
+        $this->root_filesystem = new Filesystem(new CachedAdapter(new Local(WT_ROOT . 'data/test'), new Memory()));
     }
 
     /**
@@ -96,40 +112,6 @@ class UpgradeController extends AbstractAdminController
     }
 
     /**
-     * Perform one step of the wizard
-     *
-     * @param Request   $request
-     * @param Tree|null $tree
-     *
-     * @return Response
-     */
-    public function step(Request $request, Tree $tree = null): Response
-    {
-        $step = $request->get('step');
-
-        switch ($step) {
-            case 'Check':
-                return $this->wizardStepCheck();
-            case 'Pending':
-                return $this->wizardStepPending();
-            case 'Export':
-                if ($tree instanceof Tree) {
-                    return $this->wizardStepExport($tree);
-                }
-
-                return $this->success('The tree no longer exists.');
-            case 'Download':
-                return $this->wizardStepDownload();
-            case 'Unzip':
-                return $this->wizardStepUnzip();
-            case 'Copy':
-                return $this->wizardStepCopy();
-            default:
-                throw new NotFoundHttpException();
-        }
-    }
-
-    /**
      * @return string[]
      */
     private function wizardSteps(): array
@@ -140,7 +122,7 @@ class UpgradeController extends AbstractAdminController
 
         foreach (Tree::getAll() as $tree) {
             $route = route('upgrade', [
-                'step' => 'Export',
+                'step' => self::STEP_EXPORT,
                 'ged'  => $tree->name(),
             ]);
 
@@ -148,13 +130,56 @@ class UpgradeController extends AbstractAdminController
         }
 
         return [
-                route('upgrade', ['step' => 'Check'])   => 'config.php',
-                route('upgrade', ['step' => 'Pending']) => I18N::translate('Check for pending changes…'),
+                route('upgrade', ['step' => self::STEP_CHECK])   => I18N::translate('Upgrade wizard'),
+                route('upgrade', ['step' => self::STEP_PREPARE]) => I18N::translate('Create a temporary folder…'),
+                route('upgrade', ['step' => self::STEP_PENDING]) => I18N::translate('Check for pending changes…'),
             ] + $export_steps + [
-                route('upgrade', ['step' => 'Download']) => I18N::translate('Download %s…', e($download_url)),
-                route('upgrade', ['step' => 'Unzip'])    => I18N::translate('Unzip %s to a temporary folder…', e(basename($download_url))),
-                route('upgrade', ['step' => 'Copy'])     => I18N::translate('Copy files…'),
+                route('upgrade', ['step' => self::STEP_DOWNLOAD]) => I18N::translate('Download %s…', e($download_url)),
+                route('upgrade', ['step' => self::STEP_UNZIP])    => I18N::translate('Unzip %s to a temporary folder…', e(basename($download_url))),
+                route('upgrade', ['step' => self::STEP_COPY])     => I18N::translate('Copy files…'),
+                route('upgrade', ['step' => self::STEP_CLEANUP])  => I18N::translate('Delete old files…'),
             ];
+    }
+
+    /**
+     * Perform one step of the wizard
+     *
+     * @param Request   $request
+     * @param Tree|null $tree
+     *
+     * @return Response
+     */
+    public function step(Request $request, ?Tree $tree): Response
+    {
+        $step = $request->get('step');
+
+        switch ($step) {
+            case self::STEP_CHECK:
+                //return $this->wizardStepCheck();
+
+            case self::STEP_PREPARE:
+                return $this->wizardStepPrepare();
+
+            case self::STEP_PENDING:
+                return $this->wizardStepPending();
+
+            case self::STEP_EXPORT:
+                return $this->wizardStepExport($tree);
+
+            case self::STEP_DOWNLOAD:
+                return $this->wizardStepDownload();
+
+            case self::STEP_UNZIP:
+                return $this->wizardStepUnzip();
+
+            case self::STEP_COPY:
+                return $this->wizardStepCopy();
+
+            case self::STEP_CLEANUP:
+                return $this->wizardStepCleanup();
+        }
+
+        throw new NotFoundHttpException();
     }
 
     /**
@@ -165,16 +190,33 @@ class UpgradeController extends AbstractAdminController
         $latest_version = $this->upgrade_service->latestVersion();
 
         if ($latest_version === '') {
-            return $this->failure(I18N::translate('No upgrade information is available.'));
+            throw new InternalServerErrorException(I18N::translate('No upgrade information is available.'));
         }
 
         if (version_compare(Webtrees::VERSION, $latest_version) >= 0) {
-            return $this->failure(I18N::translate('This is the latest version of webtrees. No upgrade is available.'));
+            $message = I18N::translate('This is the latest version of webtrees. No upgrade is available.');
+            throw new InternalServerErrorException($message);
         }
 
         /* I18N: %s is a version number, such as 1.2.3 */
+        $alert = I18N::translate('Upgrade to webtrees %s.', e($latest_version));
 
-        return $this->success(I18N::translate('Upgrade to webtrees %s.', e($latest_version)));
+        return new Response(view('components/alert-success', [
+            'alert' => $alert,
+        ]));
+    }
+
+    /**
+     * @return Response
+     */
+    private function wizardStepPrepare(): Response
+    {
+        $this->filesystem->deleteDir(self::TMP_FOLDER);
+        $this->filesystem->createDir(self::TMP_FOLDER);
+
+        return new Response(view('components/alert-success', [
+            'alert' => I18N::translate('The folder %s has been created.', WT_DATA_DIR . self::TMP_FOLDER),
+        ]));
     }
 
     /**
@@ -184,15 +226,13 @@ class UpgradeController extends AbstractAdminController
     {
         $changes = DB::table('change')->where('status', '=', 'pending')->exists();
 
-        if (!$changes) {
-            return $this->success(I18N::translate('There are no pending changes.'));
+        if ($changes) {
+            throw new InternalServerErrorException(I18N::translate('You should accept or reject all pending changes before upgrading.'));
         }
 
-        $route   = route('show-pending');
-        $message = I18N::translate('You should accept or reject all pending changes before upgrading.');
-        $message .= ' <a href="' . e($route) . '">' . I18N::translate('Pending changes') . '</a>';
-
-        return $this->failure($message);
+        return new Response(view('components/alert-success', [
+            'alert' => I18N::translate('There are no pending changes.'),
+        ]));
     }
 
     /**
@@ -203,21 +243,14 @@ class UpgradeController extends AbstractAdminController
     private function wizardStepExport(Tree $tree): Response
     {
         $filename = WT_DATA_DIR . $tree->name() . date('-Y-m-d') . '.ged';
+        $stream   = fopen($filename, 'w');
 
-        try {
-            $stream = fopen($filename, 'w');
+        $tree->exportGedcom($stream);
+        fclose($stream);
 
-            if ($stream !== false) {
-                $tree->exportGedcom($stream);
-                fclose($stream);
-
-                return $this->success(I18N::translate('The family tree has been exported to %s.', e($filename)));
-            }
-        } catch (Throwable $ex) {
-            // Can't write to the data folder.
-        }
-
-        return $this->failure(I18N::translate('The file %s could not be created.', e($filename)));
+        return new Response(view('components/alert-success', [
+            'alert' => I18N::translate('The family tree has been exported to %s.', e($filename)),
+        ]));
     }
 
     /**
@@ -225,48 +258,18 @@ class UpgradeController extends AbstractAdminController
      */
     private function wizardStepDownload(): Response
     {
-        try {
-            $download_url = $this->upgrade_service->downloadUrl();
-            $zip_file     = WT_DATA_DIR . basename($download_url);
-            $zip_stream   = fopen($zip_file, 'w');
+        $start_time   = microtime(true);
+        $download_url = $this->upgrade_service->downloadUrl();
+        $zip_file     = basename($download_url);
 
-            if ($zip_stream === false) {
-                throw new Exception('Cannot read ZIP file: ' . $zip_file);
-            }
+        $bytes    = $this->upgrade_service->downloadFile($download_url, $this->temporary_filesystem, $zip_file);
+        $kb       = I18N::number(intdiv($bytes + 1023, 1024));
+        $end_time = microtime(true);
+        $seconds  = I18N::number($end_time - $start_time, 2);
 
-            $start_time = microtime(true);
-            $client     = new Client();
-
-            $response = $client->get($download_url, self::GUZZLE_OPTIONS);
-            $stream   = $response->getBody();
-
-            while (!$stream->eof()) {
-                fwrite($zip_stream, $stream->read(65536));
-            }
-
-            $stream->close();
-            fclose($zip_stream);
-            $zip_size = filesize($zip_file);
-            $end_time = microtime(true);
-
-            if ($zip_size > 0) {
-                $kb      = I18N::number(intdiv($zip_size + 1023, 1024));
-                $seconds = I18N::number($end_time - $start_time, 2);
-
-                /* I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds */
-
-                return $this->success(I18N::translate('%1$s KB were downloaded in %2$s seconds.', $kb, $seconds));
-            }
-
-            if (!in_array('ssl', stream_get_transports())) {
-                // Guess why we might have failed...
-                return $this->failure(I18N::translate('This server does not support secure downloads using HTTPS.'));
-            }
-
-            return $this->failure('');
-        } catch (Exception $ex) {
-            return $this->failure($ex->getMessage());
-        }
+        return new Response(view('components/alert-success', [
+            'alert' => I18N::translate('%1$s KB were downloaded in %2$s seconds.', $kb, $seconds),
+        ]));
     }
 
     /**
@@ -274,36 +277,24 @@ class UpgradeController extends AbstractAdminController
      */
     private function wizardStepUnzip(): Response
     {
-        $download_url   = $this->upgrade_service->downloadUrl();
-        $zip_file       = WT_DATA_DIR . basename($download_url);
-        $tmp_folder     = WT_DATA_DIR . basename($download_url, '.zip');
-        $src_filesystem = new Filesystem(new ZipArchiveAdapter($zip_file, null, 'webtrees'));
-        $paths          = $src_filesystem->listContents('', true);
-        $paths          = array_filter($paths, function (array $file): bool {
-            return $file['type'] === 'file';
-        });
+        $start_time   = microtime(true);
+        $download_url = $this->upgrade_service->downloadUrl();
+        $zip_file     = basename($download_url);
+        $path         = basename($zip_file, '.zip');
+        $prefix       = WT_DATA_DIR . self::TMP_FOLDER . '/';
 
-        $start_time = microtime(true);
+        $this->upgrade_service->extractWebtreesZip($prefix . $zip_file, $prefix . $path);
 
-        // The Flysystem/ZipArchiveAdapter is very slow, taking over a second per file.
-        // So we do this step using the native PHP library.
-
-        $zip = new ZipArchive();
-        if ($zip->open($zip_file)) {
-            $zip->extractTo($tmp_folder);
-            $zip->close();
-            echo 'ok';
-        } else {
-            echo 'failed';
-        }
-
+        $count    = $this->upgrade_service->webtreesZipContents(WT_DATA_DIR . self::TMP_FOLDER . '/' . $zip_file)->count();
         $end_time = microtime(true);
         $seconds  = I18N::number($end_time - $start_time, 2);
-        $count    = count($paths);
 
         /* I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds */
+        $alert = I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', $count, I18N::number($count), $seconds);
 
-        return $this->success(I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', $count, $count, $seconds));
+        return new Response(view('components/alert-success', [
+            'alert' => $alert,
+        ]));
     }
 
     /**
@@ -311,56 +302,44 @@ class UpgradeController extends AbstractAdminController
      */
     private function wizardStepCopy(): Response
     {
-        $download_url   = $this->upgrade_service->downloadUrl();
-        $src_filesystem = new Filesystem(new Local(WT_DATA_DIR . basename($download_url, '.zip') . '/webtrees'));
-        $dst_filesystem = new Filesystem(new Local(WT_ROOT));
-        $paths          = $src_filesystem->listContents('', true);
-        $paths          = array_filter($paths, function (array $file): bool {
-            return $file['type'] === 'file';
-        });
+        // The zipfile contains a subfolder "webtrees".
+        $source_filesystem = new Filesystem(new ChrootAdapter($this->temporary_filesystem, 'webtrees'));
 
-        $lock_file_text = I18N::translate('This website is being upgraded. Try again in a few minutes.');
-        $dst_filesystem->put(self::LOCK_FILE, $lock_file_text);
+        $this->upgrade_service->startMaintenanceMode();
+        $this->upgrade_service->moveFiles($source_filesystem, $this->root_filesystem);
+        $this->upgrade_service->endMaintenanceMode();
 
-        foreach ($paths as $path) {
-            $dst_filesystem->put($path['path'], $src_filesystem->read($path['path']));
-
-            if ($this->timeout_service->isTimeNearlyUp()) {
-                return $this->failure(I18N::translate('The server’s time limit has been reached.'));
-            }
-        }
-
-        $dst_filesystem->delete(self::LOCK_FILE);
-
-        // Delete the temporary files - if there is enough time.
-        foreach ($paths as $path) {
-            $src_filesystem->delete($path['path']);
-
-            if (($this->timeout_service->isTimeNearlyUp())) {
-                break;
-            }
-        }
-
-        return $this->success(I18N::translate('The upgrade is complete.'));
+        return new Response(view('components/alert-success', [
+            'alert' => I18N::translate('The upgrade is complete.'),
+        ]));
     }
 
     /**
-     * @param string $message
-     *
      * @return Response
      */
-    private function success(string $message): Response
+    private function wizardStepCleanup(): Response
     {
-        return new Response(self::SUCCESS . $message);
-    }
+        $download_url = $this->upgrade_service->downloadUrl();
+        $zip_file     = basename($download_url);
 
-    /**
-     * @param string $message
-     *
-     * @return Response
-     */
-    private function failure(string $message): Response
-    {
-        return new Response(self::FAILURE . $message, Response::HTTP_INTERNAL_SERVER_ERROR);
+        $paths = $this->upgrade_service->webtreesZipContents(WT_DATA_DIR . self::TMP_FOLDER . '/' . $zip_file);
+
+        // Delete old files from previous versions
+        foreach (['vendor', 'app', 'resources'] as $folder) {
+            foreach ($this->root_filesystem->listContents($folder, true) as $path) {
+                if (!$paths->has($path['path'])) {
+                    $this->root_filesystem->delete($path['path']);
+                }
+            }
+        }
+
+        $this->filesystem->deleteDir(self::TMP_FOLDER);
+
+        $url    = route('control-panel');
+        $button = '<a href="' . e($url) . '" class="btn btn-primary">' . I18N::translate('continue') . '</a>';
+
+        return new Response(view('components/alert-success', [
+            'alert' => $button,
+        ]));
     }
 }
