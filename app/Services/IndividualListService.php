@@ -225,7 +225,8 @@ class IndividualListService
                 DB::raw('COUNT(*) AS total'),
             ])
             ->groupBy(['n_surn'])
-            ->groupBy(['n_surname']);
+            ->groupBy(['n_surname'])
+            ->orderBy('n_surname');
 
         $this->whereFamily($fams, $query);
         $this->whereMarriedName($marnm, $query);
