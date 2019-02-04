@@ -41,7 +41,6 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
     {
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
-            new TimeoutService(microtime(true)),
             new UpgradeService(new TimeoutService(microtime(true)))
         );
 
@@ -59,7 +58,6 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
-            new TimeoutService(microtime(true)),
             new UpgradeService(new TimeoutService(microtime(true)))
         );
 
@@ -73,10 +71,11 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testStepCheck(): void
     {
+        $mock_upgrade_service = $this->createMock(UpgradeService::class);
+        $mock_upgrade_service->method('latestVersion')->willReturn('999.999.999');
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
-            new TimeoutService(microtime(true)),
-            new UpgradeService(new TimeoutService(microtime(true)))
+            $mock_upgrade_service
         );
 
         $response = $controller->step(new Request(['step' => 'Check']), null);
@@ -91,7 +90,6 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
     {
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
-            new TimeoutService(microtime(true)),
             new UpgradeService(new TimeoutService(microtime(true)))
         );
 
@@ -108,7 +106,6 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
         $tree       = $this->importTree('demo.ged');
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
-            new TimeoutService(microtime(true)),
             new UpgradeService(new TimeoutService(microtime(true)))
         );
 
@@ -126,7 +123,6 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
         $mock_upgrade_service->method('downloadFile')->willReturn(123456);
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
-            new TimeoutService(microtime(true)),
             $mock_upgrade_service
         );
 
@@ -142,10 +138,8 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
     {
         $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $mock_upgrade_service->method('webtreesZipContents')->willReturn(new Collection([]));
-
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
-            new TimeoutService(microtime(true)),
             $mock_upgrade_service
         );
 
@@ -161,7 +155,6 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
     {
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
-            new TimeoutService(microtime(true)),
             new UpgradeService(new TimeoutService(microtime(true)))
         );
 
@@ -175,10 +168,10 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testStepCleanup(): void
     {
+        $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
-            new TimeoutService(microtime(true)),
-            new UpgradeService(new TimeoutService(microtime(true)))
+            $mock_upgrade_service
         );
 
         $response = $controller->step(new Request(['step' => 'Cleanup']), null);

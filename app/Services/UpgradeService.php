@@ -25,13 +25,14 @@ use Fisharebest\Webtrees\Webtrees;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use League\Flysystem\Cached\CachedAdapter;
 use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
-use function rewind;
 use Symfony\Component\HttpFoundation\Response;
 use ZipArchive;
+use function rewind;
 
 /**
  * Automatic upgrades.
@@ -107,9 +108,9 @@ class UpgradeService
         return $paths->filter(function (array $path): bool {
             return $path['type'] === 'file';
         })
-       ->map(function (array $path): string {
-           return $path['path'];
-       });
+            ->map(function (array $path): string {
+                return $path['path'];
+            });
     }
 
     /**
@@ -141,7 +142,7 @@ class UpgradeService
         while (!$stream->eof()) {
             fwrite($tmp, $stream->read(self::READ_BLOCK_SIZE));
 
-            if (!$this->timeout_service->isTimeNearlyUp()) {
+            if ($this->timeout_service->isTimeNearlyUp()) {
                 throw new InternalServerErrorException(I18N::translate('The server’s time limit has been reached.'));
             }
         }
@@ -151,7 +152,7 @@ class UpgradeService
         }
 
         // Copy from temporary storage to the file.
-        $bytes = ftell($stream);
+        $bytes = ftell($tmp);
         rewind($tmp);
         $filesystem->writeStream($path, $tmp);
         fclose($tmp);
@@ -172,8 +173,31 @@ class UpgradeService
                 $destination->put($path['path'], $source->read($path['path']));
                 $source->delete($path['path']);
 
-                if (!$this->timeout_service->isTimeNearlyUp()) {
+                if ($this->timeout_service->isTimeNearlyUp()) {
                     throw new InternalServerErrorException(I18N::translate('The server’s time limit has been reached.'));
+                }
+            }
+        }
+    }
+
+    /**
+     * Delete files in $destination that aren't in $source.
+     *
+     * @param Filesystem $filesystem
+     * @param Collection $folders_to_clean
+     * @param Collection   $files_to_keep
+     */
+    public function cleanFiles(Filesystem $filesystem, Collection $folders_to_clean, Collection $files_to_keep)
+    {
+        foreach ($folders_to_clean as $folder_to_clean) {
+            foreach ($filesystem->listContents($folder_to_clean, true) as $path) {
+                if ($path['type'] === 'file' && !$files_to_keep->contains($path['path'])) {
+                    $filesystem->delete($path['path']);
+                }
+
+                // If we run out of time, then just stop.
+                if ($this->timeout_service->isTimeNearlyUp()) {
+                    return;
                 }
             }
         }

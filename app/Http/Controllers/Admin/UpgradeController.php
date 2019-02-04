@@ -17,14 +17,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
+use ErrorException;
 use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Exceptions\InternalServerErrorException;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
+use GuzzleHttp\Exception\ConnectException;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Collection;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Cached\CachedAdapter;
 use League\Flysystem\Cached\Storage\Memory;
@@ -32,6 +34,7 @@ use League\Flysystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Throwable;
 
 /**
  * Controller for upgrading to a new version of webtrees.
@@ -48,8 +51,21 @@ class UpgradeController extends AbstractAdminController
     private const STEP_COPY     = 'Copy';
     private const STEP_CLEANUP  = 'Cleanup';
 
-    // Somewhere for our temporary files
-    private const TMP_FOLDER = 'tmp/webtrees';
+    // Where to store our temporary files.
+    private const UPGRADE_FOLDER = 'tmp/upgrade';
+
+    // What to call the downloaded ZIP archive.
+    private const ZIP_FILENAME = 'webtrees.zip';
+
+    // The ZIP archive stores everything inside this top-level folder.
+    private const ZIP_FILE_PREFIX = 'webtrees';
+
+    // Cruft can accumulate after upgrades.
+    private const FOLDERS_TO_CLEAN = [
+        'app',
+        'resources',
+        'vendor',
+    ];
 
     /** @var Filesystem */
     private $filesystem;
@@ -60,9 +76,6 @@ class UpgradeController extends AbstractAdminController
     /** @var Filesystem */
     private $temporary_filesystem;
 
-    /** @var TimeoutService */
-    private $timeout_service;
-
     /** @var UpgradeService */
     private $upgrade_service;
 
@@ -70,17 +83,15 @@ class UpgradeController extends AbstractAdminController
      * AdminUpgradeController constructor.
      *
      * @param Filesystem     $filesystem
-     * @param TimeoutService $timeout_service
      * @param UpgradeService $upgrade_service
      */
-    public function __construct(Filesystem $filesystem, TimeoutService $timeout_service, UpgradeService $upgrade_service)
+    public function __construct(Filesystem $filesystem, UpgradeService $upgrade_service)
     {
         $this->filesystem      = $filesystem;
-        $this->timeout_service = $timeout_service;
         $this->upgrade_service = $upgrade_service;
 
         $this->root_filesystem      = new Filesystem(new CachedAdapter(new Local(WT_ROOT), new Memory()));
-        $this->temporary_filesystem = new Filesystem(new ChrootAdapter($this->filesystem, self::TMP_FOLDER));
+        $this->temporary_filesystem = new Filesystem(new ChrootAdapter($this->filesystem, self::UPGRADE_FOLDER));
     }
 
     /**
@@ -204,15 +215,17 @@ class UpgradeController extends AbstractAdminController
     }
 
     /**
+     * Make sure the temporary folder exists.
+     *
      * @return Response
      */
     private function wizardStepPrepare(): Response
     {
-        $this->filesystem->deleteDir(self::TMP_FOLDER);
-        $this->filesystem->createDir(self::TMP_FOLDER);
+        $this->filesystem->deleteDir(self::UPGRADE_FOLDER);
+        $this->filesystem->createDir(self::UPGRADE_FOLDER);
 
         return new Response(view('components/alert-success', [
-            'alert' => I18N::translate('The folder %s has been created.', WT_DATA_DIR . self::TMP_FOLDER),
+            'alert' => I18N::translate('The folder %s has been created.', e(self::UPGRADE_FOLDER)),
         ]));
     }
 
@@ -239,10 +252,17 @@ class UpgradeController extends AbstractAdminController
      */
     private function wizardStepExport(Tree $tree): Response
     {
-        $filename = WT_DATA_DIR . $tree->name() . date('-Y-m-d') . '.ged';
-        $stream   = fopen($filename, 'w');
+        // We store the data in PHP temporary storage.
+        $stream   = fopen('php://temp', 'w+');
+        $filename = $tree->name() . date('-Y-m-d') . '.ged';
+
+        if ($this->filesystem->has($filename)) {
+            $this->filesystem->delete($filename);
+        }
 
         $tree->exportGedcom($stream);
+        fseek($stream, 0);
+        $this->filesystem->writeStream($tree->name() . date('-Y-m-d') . '.ged', $stream);
         fclose($stream);
 
         return new Response(view('components/alert-success', [
@@ -257,9 +277,13 @@ class UpgradeController extends AbstractAdminController
     {
         $start_time   = microtime(true);
         $download_url = $this->upgrade_service->downloadUrl();
-        $zip_file     = basename($download_url);
 
-        $bytes    = $this->upgrade_service->downloadFile($download_url, $this->temporary_filesystem, $zip_file);
+        try {
+            $bytes = $this->upgrade_service->downloadFile($download_url, $this->temporary_filesystem, self::ZIP_FILENAME);
+        } catch (Throwable $exception) {
+            throw new InternalServerErrorException($exception->getMessage());
+        }
+
         $kb       = I18N::number(intdiv($bytes + 1023, 1024));
         $end_time = microtime(true);
         $seconds  = I18N::number($end_time - $start_time, 2);
@@ -274,15 +298,11 @@ class UpgradeController extends AbstractAdminController
      */
     private function wizardStepUnzip(): Response
     {
-        $start_time   = microtime(true);
-        $download_url = $this->upgrade_service->downloadUrl();
-        $zip_file     = basename($download_url);
-        $path         = basename($zip_file, '.zip');
-        $prefix       = WT_DATA_DIR . self::TMP_FOLDER . '/';
-
-        $this->upgrade_service->extractWebtreesZip($prefix . $zip_file, $prefix . $path);
-
-        $count    = $this->upgrade_service->webtreesZipContents(WT_DATA_DIR . self::TMP_FOLDER . '/' . $zip_file)->count();
+        $zip_path   = WT_DATA_DIR . self::UPGRADE_FOLDER;
+        $zip_file   = $zip_path . '/' . self::ZIP_FILENAME;
+        $start_time = microtime(true);
+        $this->upgrade_service->extractWebtreesZip($zip_file, $zip_path);
+        $count    = $this->upgrade_service->webtreesZipContents($zip_file)->count();
         $end_time = microtime(true);
         $seconds  = I18N::number($end_time - $start_time, 2);
 
@@ -299,8 +319,7 @@ class UpgradeController extends AbstractAdminController
      */
     private function wizardStepCopy(): Response
     {
-        // The zipfile contains a subfolder "webtrees".
-        $source_filesystem = new Filesystem(new ChrootAdapter($this->temporary_filesystem, 'webtrees'));
+        $source_filesystem = new Filesystem(new ChrootAdapter($this->temporary_filesystem, self::ZIP_FILE_PREFIX));
 
         $this->upgrade_service->startMaintenanceMode();
         $this->upgrade_service->moveFiles($source_filesystem, $this->root_filesystem);
@@ -316,21 +335,14 @@ class UpgradeController extends AbstractAdminController
      */
     private function wizardStepCleanup(): Response
     {
-        $download_url = $this->upgrade_service->downloadUrl();
-        $zip_file     = basename($download_url);
+        $zip_path      = WT_DATA_DIR . self::UPGRADE_FOLDER;
+        $zip_file      = $zip_path . '/' . self::ZIP_FILENAME;
+        $files_to_keep = $this->upgrade_service->webtreesZipContents($zip_file);
+        $folders_to_clean = new Collection(self::FOLDERS_TO_CLEAN);
 
-        $paths = $this->upgrade_service->webtreesZipContents(WT_DATA_DIR . self::TMP_FOLDER . '/' . $zip_file);
+        $this->upgrade_service->cleanFiles($this->root_filesystem, $folders_to_clean, $files_to_keep);
 
-        // Delete old files from previous versions
-        foreach (['vendor', 'app', 'resources'] as $folder) {
-            foreach ($this->root_filesystem->listContents($folder, true) as $path) {
-                if (!$paths->has($path['path'])) {
-                    $this->root_filesystem->delete($path['path']);
-                }
-            }
-        }
-
-        $this->filesystem->deleteDir(self::TMP_FOLDER);
+        $this->filesystem->deleteDir(self::UPGRADE_FOLDER);
 
         $url    = route('control-panel');
         $button = '<a href="' . e($url) . '" class="btn btn-primary">' . I18N::translate('continue') . '</a>';
