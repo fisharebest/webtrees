@@ -53,6 +53,24 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @return void
      */
+    public function testWizardContinue(): void
+    {
+        $this->importTree('demo.ged');
+
+        $controller = new UpgradeController(
+            new Filesystem(new MemoryAdapter()),
+            new TimeoutService(microtime(true)),
+            new UpgradeService(new TimeoutService(microtime(true)))
+        );
+
+        $response = $controller->wizard(new Request(['continue' => '1']));
+
+        $this->assertInstanceOf(Response::class, $response);
+    }
+
+    /**
+     * @return void
+     */
     public function testStepCheck(): void
     {
         $controller = new UpgradeController(
@@ -148,6 +166,22 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
         );
 
         $response = $controller->step(new Request(['step' => 'Copy']), null);
+
+        $this->assertInstanceOf(Response::class, $response);
+    }
+
+    /**
+     * @return void
+     */
+    public function testStepCleanup(): void
+    {
+        $controller = new UpgradeController(
+            new Filesystem(new MemoryAdapter()),
+            new TimeoutService(microtime(true)),
+            new UpgradeService(new TimeoutService(microtime(true)))
+        );
+
+        $response = $controller->step(new Request(['step' => 'Cleanup']), null);
 
         $this->assertInstanceOf(Response::class, $response);
     }

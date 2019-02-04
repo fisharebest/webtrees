@@ -81,9 +81,6 @@ class UpgradeController extends AbstractAdminController
 
         $this->root_filesystem      = new Filesystem(new CachedAdapter(new Local(WT_ROOT), new Memory()));
         $this->temporary_filesystem = new Filesystem(new ChrootAdapter($this->filesystem, self::TMP_FOLDER));
-
-        // @TODO DO NOT OVERWRITE LIVE DATA DURING TESTING!
-        $this->root_filesystem = new Filesystem(new CachedAdapter(new Local(WT_ROOT . 'data/test'), new Memory()));
     }
 
     /**
@@ -155,7 +152,7 @@ class UpgradeController extends AbstractAdminController
 
         switch ($step) {
             case self::STEP_CHECK:
-                //return $this->wizardStepCheck();
+                return $this->wizardStepCheck();
 
             case self::STEP_PREPARE:
                 return $this->wizardStepPrepare();
