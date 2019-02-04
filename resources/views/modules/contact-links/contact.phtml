@@ -1,9 +1,0 @@
-<?php use Fisharebest\Webtrees\Auth; ?>
-
-<?php if ($user->getPreference('contactmethod') === 'mailto') : ?>
-    <a href="mailto:<?= e($user->email()) ?>"><?= e($user->realName()) ?></a>
-<?php elseif ($user->getPreference('contactmethod') !== 'none') : ?>
-    <a href="<?= e(route(Auth::check() ? 'message' : 'contact', ['ged' => $tree->name(), 'to'  => $user->userName(), 'url' => $request->getRequestUri()])) ?>">'
-        <?= e($user->realName()) ?>
-    </a>
-<?php endif ?>

@@ -54,15 +54,11 @@ class ContactRepository implements ContactRepositoryInterface
      */
     public function contactWebmaster(): string
     {
-        $user_id = $this->tree->getPreference('WEBMASTER_USER_ID');
-        $user    = $this->user_service->find((int) $user_id);
+        $user_id = (int) $this->tree->getPreference('WEBMASTER_USER_ID');
+        $user    = $this->user_service->find($user_id);
 
         if ($user instanceof User) {
-            return view('modules/contact-links/contact', [
-                'request' => app()->make(Request::class),
-                'user'    => $user,
-                'tree'    => $this->tree,
-            ]);
+            return $this->user_service->contactLink($user);
         }
 
         return '';
@@ -73,15 +69,11 @@ class ContactRepository implements ContactRepositoryInterface
      */
     public function contactGedcom(): string
     {
-        $user_id = $this->tree->getPreference('CONTACT_USER_ID');
-        $user    = $this->user_service->find((int) $user_id);
+        $user_id = (int) $this->tree->getPreference('CONTACT_USER_ID');
+        $user    = $this->user_service->find($user_id);
 
         if ($user instanceof User) {
-            return view('modules/contact-links/contact', [
-                'request' => app()->make(Request::class),
-                'user'    => $user,
-                'tree'    => $this->tree,
-            ]);
+            return $this->user_service->contactLink($user);
         }
 
         return '';

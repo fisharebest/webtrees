@@ -18,11 +18,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Functions for managing users.
@@ -312,5 +315,33 @@ class UserService
         DB::table('user_setting')->where('user_id', '=', $user->id())->delete();
         DB::table('message')->where('user_id', '=', $user->id())->delete();
         DB::table('user')->where('user_id', '=', $user->id())->delete();
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return string
+     */
+    public function contactLink(User $contact_user): string {
+        $tree    = app()->make(Tree::class);
+        $user    = app()->make(UserInterface::class);
+        $request = app()->make(Request::class);
+
+        if ($contact_user->getPreference('contactmethod') === 'mailto') {
+            $url = 'mailto:' . $contact_user->email();
+        } elseif ($user instanceof User) {
+            // Logged-in users send direct messages
+            $url = route('message');
+        } else {
+            // Visitors use the contact form.
+            $url = route('contact', [
+                'ged' => $tree ? $tree->name() : '',
+                'to'  => $contact_user->userName(),
+                'url' => $request->getRequestUri(),
+            ]);
+        }
+
+        return '<a href="' . e($url) . '" dir="auto">' . e($contact_user->realName()) . '</a>';
+
     }
 }

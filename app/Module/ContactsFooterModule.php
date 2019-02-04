@@ -55,9 +55,9 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
      */
     public function __construct(?Tree $tree, UserInterface $user, Request $request, UserService $user_service)
     {
-        $this->tree    = $tree;
-        $this->user    = $user;
-        $this->request = $request;
+        $this->tree         = $tree;
+        $this->user         = $user;
+        $this->request      = $request;
         $this->user_service = $user_service;
     }
 
@@ -137,52 +137,36 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
     /**
      * Create contact link for both technical and genealogy support.
      *
-     * @param UserInterface $user
+     * @param User $user
      *
      * @return string
      */
-    public function contactLinkEverything(UserInterface $user): string
+    public function contactLinkEverything(User $user): string
     {
-        return I18N::translate('For technical support or genealogy questions contact %s.', $this->contactLink($user));
+        return I18N::translate('For technical support or genealogy questions contact %s.', $this->user_service->contactLink($user));
     }
 
     /**
      * Create contact link for genealogy support.
      *
-     * @param UserInterface $user
+     * @param User $user
      *
      * @return string
      */
-    public function contactLinkGenealogy(UserInterface $user): string
+    public function contactLinkGenealogy(User $user): string
     {
-        return I18N::translate('For help with genealogy questions contact %s.', $this->contactLink($user));
+        return I18N::translate('For help with genealogy questions contact %s.', $this->user_service->contactLink($user));
     }
 
     /**
      * Create contact link for technical support.
      *
-     * @param UserInterface $user
+     * @param User $user
      *
      * @return string
      */
-    public function contactLinkTechnical(UserInterface $user): string
+    public function contactLinkTechnical(User $user): string
     {
-        return I18N::translate('For technical support and information contact %s.', $this->contactLink($user));
-    }
-
-    /**
-     * Create a contact link for a user.
-     *
-     * @param UserInterface $user
-     *
-     * @return string
-     */
-    private function contactLink(UserInterface $user): string
-    {
-        return view('modules/contact-links/contact', [
-            'request' => $this->request,
-            'user'    => $user,
-            'tree'    => $this->tree,
-        ]);
+        return I18N::translate('For technical support and information contact %s.', $this->user_service->contactLink($user));
     }
 }
