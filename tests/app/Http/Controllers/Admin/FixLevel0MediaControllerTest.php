@@ -35,10 +35,10 @@ class FixLevel0MediaControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testFixLevel0Media(): void
     {
-        $controller = app()->make(FixLevel0MediaController::class);
-        $response   = app()->dispatch($controller, 'fixLevel0Media');
+        $controller = new FixLevel0MediaController();
+        $response   = $controller->fixLevel0Media();
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 
     /**
@@ -47,12 +47,12 @@ class FixLevel0MediaControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testFixLevel0MediaAction(): void
     {
         $tree = Tree::create('name', 'title');
-        app()->instance(Request::class, new Request([], ['tree_id' => $tree->id()]));
+        $request = new Request(['tree_id' => $tree->id()]);
 
-        $controller = app()->make(FixLevel0MediaController::class);
-        $response   = app()->dispatch($controller, 'fixLevel0MediaAction');
+        $controller = new FixLevel0MediaController();
+        $response   = $controller->fixLevel0MediaAction($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 
     /**
@@ -60,10 +60,11 @@ class FixLevel0MediaControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testFixLevel0MediaData(): void
     {
+        $tree = Tree::create('name', 'title');
+        $controller = new FixLevel0MediaController();
         // Can't test this yet - the query uses MySQL-specific functions
-        //$controller = app()->make(FixLevel0MediaController::class);
-        //$response   = app()->dispatch($controller, 'fixLevel0MediaData');
+        //$response   = $controller->fixLevel0MediaData();
 
-        //$this->assertInstanceOf(Response::class, $response);
+        //$this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 }

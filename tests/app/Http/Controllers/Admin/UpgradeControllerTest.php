@@ -18,8 +18,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Exception;
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UpgradeService;
+use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Memory\MemoryAdapter;
@@ -158,6 +161,25 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
         $response = $controller->step(new Request(['step' => 'Pending']), null);
 
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+    }
+
+    /**
+     * @expectedException \Fisharebest\Webtrees\Exceptions\InternalServerErrorException
+     * @return void
+     */
+    public function testStepPendingEzist(): void
+    {
+        $tree = Tree::create('name', 'title');
+        $user = UserService::create('user', 'name', 'email', 'password');
+        Auth::login($user);
+        $tree->createIndividual("0 @@ INDI\n1 NAME Joe Bloggs");
+
+        $controller = new UpgradeController(
+            new Filesystem(new MemoryAdapter()),
+            new UpgradeService(new TimeoutService(microtime(true)))
+        );
+
+        $controller->step(new Request(['step' => 'Pending']), null);
     }
 
     /**

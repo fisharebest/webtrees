@@ -17,6 +17,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\User;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,10 +39,10 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testIndex(): void
     {
-        $controller = app()->make(UsersController::class);
-        $response   = app()->dispatch($controller, 'index');
+        $controller = new UsersController(new ModuleService(), new UserService());
+        $response   = $controller->index(new Request(), Auth::user());
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 
     /**
@@ -47,10 +50,10 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testData(): void
     {
-        $controller = app()->make(UsersController::class);
-        $response   = app()->dispatch($controller, 'data');
+        $controller = new UsersController(new ModuleService(), new UserService());
+        $response   = $controller->data(new DatatablesService(), new Request(), Auth::User());
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 
     /**
@@ -58,10 +61,10 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testCreate(): void
     {
-        $controller = app()->make(UsersController::class);
-        $response   = app()->dispatch($controller, 'create');
+        $controller = new UsersController(new ModuleService(), new UserService());
+        $response   = $controller->create(new Request());
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 
     /**
@@ -69,10 +72,10 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testSave(): void
     {
-        $controller = app()->make(UsersController::class);
-        $response   = app()->dispatch($controller, 'save');
+        $controller = new UsersController(new ModuleService(), new UserService());
+        $response   = $controller->save(new Request());
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -80,14 +83,11 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testEdit(): void
     {
-        /** @var User $user */
-        $user = app()->make(UserService::class)->create('user', 'real', 'email', 'pass');
-        app()->instance(Request::class, new Request(['user_id' => $user->id()]));
+        $user       = UserService::create('user', 'real', 'email', 'pass');
+        $controller = new UsersController(new ModuleService(), new UserService());
+        $response   = $controller->edit(new Request(['user_id' => $user->id()]));
 
-        $controller = app()->make(UsersController::class);
-        $response   = app()->dispatch($controller, 'edit');
-
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 
     /**
@@ -96,13 +96,11 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdate(): void
     {
         /** @var User $user */
-        $user = app()->make(UserService::class)->create('user', 'real', 'email', 'pass');
-        app()->instance(Request::class, new Request(['user_id' => $user->id()]));
+        $user       = UserService::create('user', 'real', 'email', 'pass');
+        $controller = new UsersController(new ModuleService(), new UserService());
+        $response   = $controller->update(new Request(['user_id' => $user->id()]), $user);
 
-        $controller = app()->make(UsersController::class);
-        $response   = app()->dispatch($controller, 'update');
-
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -110,10 +108,10 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testCleanup(): void
     {
-        $controller = app()->make(UsersController::class);
-        $response   = app()->dispatch($controller, 'cleanup');
+        $controller = new UsersController(new ModuleService(), new UserService());
+        $response   = $controller->cleanup(new Request());
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 
     /**
@@ -121,9 +119,9 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testCleanupAction(): void
     {
-        $controller = app()->make(UsersController::class);
-        $response   = app()->dispatch($controller, 'cleanupAction');
+        $controller = new UsersController(new ModuleService(), new UserService());
+        $response   = $controller->cleanupAction(new Request());
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_FOUND, $response->getStatusCode());
     }
 }
