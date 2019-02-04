@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
@@ -403,8 +404,6 @@ class UsersController extends AbstractAdminController
 
         $edit_user
             ->setRealName($real_name)
-            ->setEmail($email)
-            ->setUserName($username)
             ->setPreference('theme', $theme)
             ->setPreference('language', $language)
             ->setPreference('TIMEZONE', $timezone)
@@ -439,9 +438,21 @@ class UsersController extends AbstractAdminController
             $tree->setUserPreference($edit_user, 'RELATIONSHIP_PATH_LENGTH', (string) $path_length);
         }
 
-        $url = route('admin-users');
+        if ($this->user_service->findByEmail($email) instanceof User) {
+            FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'), 'danger');
 
-        return new RedirectResponse($url);
+            return new RedirectResponse(route('admin-users-edit', ['user_id' => $edit_user->id()]));
+        } elseif ($this->user_service->findByUserName($username) instanceof User) {
+            FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'), 'danger');
+
+            return new RedirectResponse(route('admin-users-edit', ['user_id' => $edit_user->id()]));
+        } else {
+            $edit_user
+                ->setEmail($email)
+                ->setUserName($username);
+        }
+
+        return new RedirectResponse(route('admin-users'));
     }
 
     /**
