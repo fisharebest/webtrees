@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
+use Exception;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Illuminate\Support\Collection;
@@ -46,7 +47,7 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $response = $controller->wizard(new Request());
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 
     /**
@@ -63,13 +64,27 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $response = $controller->wizard(new Request(['continue' => '1']));
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+    }
+
+    /**
+     * @expectedException \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     * @return void
+     */
+    public function testStepInvalid(): void
+    {
+        $controller = new UpgradeController(
+            new Filesystem(new MemoryAdapter()),
+            new UpgradeService(new TimeoutService(microtime(true)))
+        );
+
+        $controller->step(new Request(['step' => 'Invalid']), null);
     }
 
     /**
      * @return void
      */
-    public function testStepCheck(): void
+    public function testStepCheckOK(): void
     {
         $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $mock_upgrade_service->method('latestVersion')->willReturn('999.999.999');
@@ -80,7 +95,54 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $response = $controller->step(new Request(['step' => 'Check']), null);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+    }
+
+    /**
+     * @expectedException \Fisharebest\Webtrees\Exceptions\InternalServerErrorException
+     * @return void
+     */
+    public function testStepCheckUnavailable(): void
+    {
+        $mock_upgrade_service = $this->createMock(UpgradeService::class);
+        $mock_upgrade_service->method('latestVersion')->willReturn('');
+        $controller = new UpgradeController(
+            new Filesystem(new MemoryAdapter()),
+            $mock_upgrade_service
+        );
+
+        $controller->step(new Request(['step' => 'Check']), null);
+    }
+
+    /**
+     * @expectedException \Fisharebest\Webtrees\Exceptions\InternalServerErrorException
+     * @return void
+     */
+    public function testStepCheckFail(): void
+    {
+        $mock_upgrade_service = $this->createMock(UpgradeService::class);
+        $mock_upgrade_service->method('latestVersion')->willReturn('0.0.0');
+        $controller = new UpgradeController(
+            new Filesystem(new MemoryAdapter()),
+            $mock_upgrade_service
+        );
+
+        $controller->step(new Request(['step' => 'Check']), null);
+    }
+
+    /**
+     * @return void
+     */
+    public function testStepPrepare(): void
+    {
+        $controller = new UpgradeController(
+            new Filesystem(new MemoryAdapter()),
+            new UpgradeService(new TimeoutService(microtime(true)))
+        );
+
+        $response = $controller->step(new Request(['step' => 'Prepare']), null);
+
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 
     /**
@@ -95,7 +157,7 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $response = $controller->step(new Request(['step' => 'Pending']), null);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 
     /**
@@ -111,7 +173,28 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $response = $controller->step(new Request(['step' => 'Export']), $tree);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+
+        // Now overwrite the file we just created
+        $response = $controller->step(new Request(['step' => 'Export']), $tree);
+
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+    }
+
+    /**
+     * @expectedException \Fisharebest\Webtrees\Exceptions\InternalServerErrorException
+     * @return void
+     */
+    public function testStepDownloadFails(): void
+    {
+        $mock_upgrade_service = $this->createMock(UpgradeService::class);
+        $mock_upgrade_service->method('downloadFile')->will($this->throwException(new Exception()));
+        $controller = new UpgradeController(
+            new Filesystem(new MemoryAdapter()),
+            $mock_upgrade_service
+        );
+
+        $controller->step(new Request(['step' => 'Download']), null);
     }
 
     /**
@@ -128,7 +211,7 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $response = $controller->step(new Request(['step' => 'Download']), null);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 
     /**
@@ -145,7 +228,7 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $response = $controller->step(new Request(['step' => 'Unzip']), null);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 
     /**
@@ -160,7 +243,7 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $response = $controller->step(new Request(['step' => 'Copy']), null);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 
     /**
@@ -176,6 +259,6 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $response = $controller->step(new Request(['step' => 'Cleanup']), null);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 }
