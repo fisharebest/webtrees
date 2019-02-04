@@ -98,7 +98,8 @@ class UpgradeService
      *
      * @return Collection
      */
-    public function webtreesZipContents($zip_file): Collection {
+    public function webtreesZipContents($zip_file): Collection
+    {
         $zip_adapter    = new ZipArchiveAdapter($zip_file, null, 'webtrees');
         $zip_filesystem = new Filesystem(new CachedAdapter($zip_adapter, new Memory()));
         $paths          = new Collection($zip_filesystem->listContents('', true));
@@ -107,7 +108,7 @@ class UpgradeService
             return $path['type'] === 'file';
         })
        ->map(function (array $path): string {
-          return $path['path'];
+           return $path['path'];
        });
     }
 
@@ -164,7 +165,8 @@ class UpgradeService
      * @param Filesystem $source
      * @param Filesystem $destination
      */
-    public function moveFiles(Filesystem $source, Filesystem $destination) {
+    public function moveFiles(Filesystem $source, Filesystem $destination)
+    {
         foreach ($source->listContents() as $path) {
             if ($path['type'] === 'file') {
                 $destination->put($path['path'], $source->read($path['path']));
@@ -224,7 +226,7 @@ class UpgradeService
 
     public function endMaintenanceMode(): void
     {
-        if (file_exists(WT_ROOT . self::LOCK_FILE))  {
+        if (file_exists(WT_ROOT . self::LOCK_FILE)) {
             unlink(WT_ROOT . self::LOCK_FILE);
         }
     }
