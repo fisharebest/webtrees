@@ -72,6 +72,7 @@ class ErrorController extends AbstractBaseController
     {
         return $this->viewResponse('components/alert-danger', [
             'alert' => $ex->getMessage(),
+            'title' => $ex->getMessage(),
         ], $ex->getStatusCode());
     }
 
