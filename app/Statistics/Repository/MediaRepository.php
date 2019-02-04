@@ -330,7 +330,7 @@ class MediaRepository implements MediaRepositoryInterface
             }
         }
 
-        if (($max / $tot) > 0.6 && \count($media) > 10) {
+        if (\count($media) > 10 && ($max / $tot) > 0.6) {
             arsort($media);
             $media = \array_slice($media, 0, 10);
             $c     = $tot;

@@ -581,12 +581,13 @@ class FamilyRepository
     {
         $record = $this->ageBetweenSiblingsNoList($total);
 
-        return view(
-            'statistics/families/top10-nolist-age',
-            [
-                'record' => $record,
-            ]
-        );
+        if (empty($record)) {
+            return '';
+        }
+
+        return view('statistics/families/top10-nolist-age', [
+            'record' => $record,
+        ]);
     }
 
     /**
@@ -601,12 +602,9 @@ class FamilyRepository
     {
         $records = $this->ageBetweenSiblingsList($total, (bool) $one);
 
-        return view(
-            'statistics/families/top10-list-age',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/families/top10-list-age', [
+            'records' => $records,
+        ]);
     }
 
     /**
