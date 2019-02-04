@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -61,7 +60,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMissingAction(): void
     {
-        $request = new Request(['route' => 'module', 'module' => 'sitemap']);
+        $request    = new Request(['route' => 'module', 'module' => 'sitemap']);
         $controller = new ModuleController(new ModuleService());
         $controller->action($request, Auth::user());
     }
@@ -72,7 +71,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testInvalidAction(): void
     {
-        $request = new Request(['route' => 'module', 'module' => 'sitemap', 'action' => 'no-such-action']);
+        $request    = new Request(['route' => 'module', 'module' => 'sitemap', 'action' => 'no-such-action']);
         $controller = new ModuleController(new ModuleService());
         $controller->action($request, Auth::user());
     }
@@ -83,7 +82,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testVisitorCannotUseAdminAction(): void
     {
-        $request = new Request(['route' => 'module', 'module' => 'sitemap', 'action' => 'DoAdminStuff']);
+        $request    = new Request(['route' => 'module', 'module' => 'sitemap', 'action' => 'DoAdminStuff']);
         $controller = new ModuleController(new ModuleService());
         $controller->action($request, Auth::user());
     }
@@ -93,9 +92,9 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testSucessfulAction(): void
     {
-        $request = new Request(['route' => 'module', 'module' => 'sitemap', 'action' => 'Index']);
+        $request    = new Request(['route' => 'module', 'module' => 'sitemap', 'action' => 'Index']);
         $controller = new ModuleController(new ModuleService());
-        $response = $controller->action($request, Auth::user());
+        $response   = $controller->action($request, Auth::user());
 
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }

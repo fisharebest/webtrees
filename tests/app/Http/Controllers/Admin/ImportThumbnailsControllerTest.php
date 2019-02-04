@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -33,10 +34,10 @@ class ImportThumbnailsControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testWebtrees1Thumbnails(): void
     {
-        $controller = app()->make(ImportThumbnailsController::class);
-        $response   = app()->dispatch($controller, 'webtrees1Thumbnails');
+        $controller = new ImportThumbnailsController();
+        $response   = $controller->webtrees1Thumbnails();
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 
     /**
@@ -44,10 +45,10 @@ class ImportThumbnailsControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testWebtrees1ThumbnailsAction(): void
     {
-        $controller = app()->make(ImportThumbnailsController::class);
-        $response   = app()->dispatch($controller, 'webtrees1ThumbnailsAction');
+        $controller = new ImportThumbnailsController();
+        $response   = $controller->webtrees1ThumbnailsAction(new Request());
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 
     /**
@@ -56,9 +57,9 @@ class ImportThumbnailsControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testWebtrees1ThumbnailsData(): void
     {
         // This function still uses MySQL-specific code.
-        //$controller = app()->make(ImportThumbnailsController::class);
-        //$response   = app()->dispatch($controller, 'webtrees1ThumbnailsData');
+        //$controller = new ImportThumbnailsController();
+        //$response   = $controller->webtrees1ThumbnailsData(new Request());
 
-        //$this->assertInstanceOf(Response::class, $response);
+        //$this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 }
