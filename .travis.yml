@@ -17,11 +17,11 @@ cache:
 
 install:
   - curl -s http://getcomposer.org/installer | php
+  - pecl install ast
   - php composer.phar install --dev --no-interaction
 
 before_script:
   - travis_retry composer config github-oauth.github.com "${GITHUB_OAUTH_TOKEN}"
-  - pecl install ast
   - echo "${TRAVIS_PHP_VERSION}"
 
 script:
