@@ -17,6 +17,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
+use Fisharebest\Algorithm\MyersDiff;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -33,10 +39,10 @@ class ChangesLogControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testChangeLog(): void
     {
-        $controller = app()->make(ChangesLogController::class);
-        $response   = app()->dispatch($controller, 'changesLog');
+        $controller = new ChangesLogController();
+        $response   = $controller->changesLog(new Request(), new UserService());
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 
     /**
@@ -44,10 +50,24 @@ class ChangesLogControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testChangeLogData(): void
     {
-        $controller = app()->make(ChangesLogController::class);
-        $response   = app()->dispatch($controller, 'changesLogData');
+        $tree = Tree::create('name', 'title');
+        $user = UserService::create('user', 'name', 'email', 'password');
+        Auth::login($user);
+        $individual = $tree->createIndividual("0 @@ INDI\n1 NAME Joe Bloggs");
 
-        $this->assertInstanceOf(Response::class, $response);
+        $request    = new Request([
+            'search' => 'Joe',
+            'from'   => '2000-01-01',
+            'to'     => '2099-12-31',
+            'type'   => 'pending',
+            'xref'   => $individual->xref(),
+            'ged'    => $tree->name(),
+            'user'   => $user->userName(),
+        ]);
+        $controller = new ChangesLogController();
+        $response   = $controller->changesLogData($request, new DatatablesService(), new MyersDiff());
+
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 
     /**
@@ -55,9 +75,14 @@ class ChangesLogControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testChangeLogDownload(): void
     {
-        $controller = app()->make(ChangesLogController::class);
-        $response   = app()->dispatch($controller, 'changesLogDownload');
+        $tree = Tree::create('name', 'title');
+        $user = UserService::create('user', 'name', 'email', 'password');
+        Auth::login($user);
+        $tree->createIndividual("0 @@ INDI\n1 NAME Joe Bloggs");
 
-        $this->assertInstanceOf(Response::class, $response);
+        $controller = new ChangesLogController();
+        $response   = $controller->changesLogDownload(new Request());
+
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 }
