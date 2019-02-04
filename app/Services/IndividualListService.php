@@ -395,6 +395,11 @@ class IndividualListService
                 $this->whereInitialNorwegian($query, $field, $letter);
                 break;
 
+            case 'sv':
+            case 'fi':
+                $this->whereInitialSwedish($query, $field, $letter);
+                break;
+
             case 'hu':
                 $this->whereInitialHungarian($query, $field, $letter);
                 break;
@@ -516,6 +521,28 @@ class IndividualListService
                         ->where($field, 'LIKE', 'Å%')
                         ->orWhere($field, 'LIKE', 'AA%');
                 });
+                break;
+
+            default:
+                $query->where($field, 'LIKE', '\\' . $letter . '%');
+                break;
+        }
+    }
+
+    /**
+     * In Swedish and Finnish, AA gets listed under A, NOT Å (even though Swedish collation says they should).
+     *
+     * @param Builder    $query
+     * @param Expression $field
+     * @param string     $letter
+     */
+    private function whereInitialSwedish(Builder $query, Expression $field, string $letter): void
+    {
+        switch ($letter) {
+            case 'Å':
+                $query
+                    ->where($field, 'LIKE', 'Å%')
+                    ->where($field, 'NOT LIKE', 'AA%');
                 break;
 
             default:
