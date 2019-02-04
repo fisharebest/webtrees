@@ -86,7 +86,6 @@ class Database
             'enigne'         => 'InnoDB',
             'modes'          => [
                 'ANSI',
-                'ONLY_FULL_GROUP_BY',
                 'STRICT_TRANS_TABLES',
                 'NO_ZERO_IN_DATE',
                 'NO_ZERO_DATE',
