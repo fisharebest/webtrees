@@ -166,6 +166,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testUpdate(): void
     {
+        Tree::create('name', 'title');
         $controller = app()->make(ModuleController::class);
         $response   = app()->dispatch($controller, 'update');
 
@@ -177,6 +178,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testUpdateAnalytics(): void
     {
+        Tree::create('name', 'title');
         $controller = app()->make(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateAnalytics');
 
@@ -188,6 +190,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testUpdateBlocks(): void
     {
+        Tree::create('name', 'title');
         $controller = app()->make(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateBlocks');
 
@@ -199,6 +202,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testUpdateCharts(): void
     {
+        Tree::create('name', 'title');
         $controller = app()->make(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateCharts');
 
@@ -210,6 +214,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testUpdateFooters(): void
     {
+        Tree::create('name', 'title');
         $controller = app()->make(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateFooters');
 
@@ -221,6 +226,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testUpdateHistory(): void
     {
+        Tree::create('name', 'title');
         $controller = app()->make(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateHistory');
 
@@ -232,6 +238,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testUpdateLanguages(): void
     {
+        Tree::create('name', 'title');
         $controller = app()->make(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateLanguages');
 
@@ -243,6 +250,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testUpdateMenus(): void
     {
+        Tree::create('name', 'title');
         $controller = app()->make(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateMenus');
 
@@ -254,6 +262,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testUpdateReports(): void
     {
+        Tree::create('name', 'title');
         $controller = app()->make(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateReports');
 
@@ -265,6 +274,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testUpdateSidebars(): void
     {
+        Tree::create('name', 'title');
         $controller = app()->make(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateSidebars');
 
@@ -276,6 +286,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testUpdateTabs(): void
     {
+        Tree::create('name', 'title');
         $controller = app()->make(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateTabs');
 
@@ -287,6 +298,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testUpdateThemes(): void
     {
+        Tree::create('name', 'title');
         $controller = app()->make(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateThemes');
 

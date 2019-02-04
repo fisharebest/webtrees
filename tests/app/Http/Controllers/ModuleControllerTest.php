@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Application;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,11 +39,9 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMissingModule(): void
     {
-        app()->instance(Tree::class, Tree::create('name', 'title'));
-        app()->instance(Request::class, new Request(['route' => 'module']));
-
-        $controller = app()->make(ModuleController::class);
-        app()->dispatch($controller, 'action');
+        $request    = new Request(['route' => 'module']);
+        $controller = new ModuleController(new ModuleService());
+        $controller->action($request, Auth::user());
     }
 
     /**
@@ -53,14 +50,9 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testInvalidModule(): void
     {
-        $tree = Tree::create('name', 'title');
-        app()->instance(Tree::class, $tree);
-
         $request    = new Request(['route' => 'module', 'module' => 'no-such-module']);
-        app()->instance(Request::class, $request);
-
-        $controller = app()->make(ModuleController::class);
-        app()->dispatch($controller, 'action');
+        $controller = new ModuleController(new ModuleService());
+        $controller->action($request, Auth::user());
     }
 
     /**
@@ -69,14 +61,9 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMissingAction(): void
     {
-        $tree = Tree::create('name', 'title');
-        app()->instance(Tree::class, $tree);
-
-        $request    = new Request(['route' => 'module', 'module' => 'sitemap']);
-        app()->instance(Request::class, $request);
-
-        $controller = app()->make(ModuleController::class);
-        app()->dispatch($controller, 'action');
+        $request = new Request(['route' => 'module', 'module' => 'sitemap']);
+        $controller = new ModuleController(new ModuleService());
+        $controller->action($request, Auth::user());
     }
 
     /**
@@ -85,14 +72,9 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testInvalidAction(): void
     {
-        $tree = Tree::create('name', 'title');
-        app()->instance(Tree::class, $tree);
-
-        $request    = new Request(['route' => 'module', 'module' => 'sitemap', 'action' => 'no-such-action']);
-        app()->instance(Request::class, $request);
-
-        $controller = app()->make(ModuleController::class);
-        app()->dispatch($controller, 'action');
+        $request = new Request(['route' => 'module', 'module' => 'sitemap', 'action' => 'no-such-action']);
+        $controller = new ModuleController(new ModuleService());
+        $controller->action($request, Auth::user());
     }
 
     /**
@@ -101,14 +83,9 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testVisitorCannotUseAdminAction(): void
     {
-        $tree = Tree::create('name', 'title');
-        app()->instance(Tree::class, $tree);
-
         $request = new Request(['route' => 'module', 'module' => 'sitemap', 'action' => 'DoAdminStuff']);
-        app()->instance(Request::class, $request);
-
-        $controller = app()->make(ModuleController::class);
-        app()->dispatch($controller, 'action');
+        $controller = new ModuleController(new ModuleService());
+        $controller->action($request, Auth::user());
     }
 
     /**
@@ -116,15 +93,10 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testSucessfulAction(): void
     {
-        $tree = Tree::create('name', 'title');
-        app()->instance(Tree::class, $tree);
-
         $request = new Request(['route' => 'module', 'module' => 'sitemap', 'action' => 'Index']);
-        app()->instance(Request::class, $request);
+        $controller = new ModuleController(new ModuleService());
+        $response = $controller->action($request, Auth::user());
 
-        $controller = app()->make(ModuleController::class);
-        $response = app()->dispatch($controller, 'action');
-
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 }
