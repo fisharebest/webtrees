@@ -322,7 +322,8 @@ class UserService
      *
      * @return string
      */
-    public function contactLink(User $contact_user): string {
+    public function contactLink(User $contact_user): string
+    {
         $tree    = app()->make(Tree::class);
         $user    = app()->make(UserInterface::class);
         $request = app()->make(Request::class);
@@ -342,6 +343,5 @@ class UserService
         }
 
         return '<a href="' . e($url) . '" dir="auto">' . e($contact_user->realName()) . '</a>';
-
     }
 }
