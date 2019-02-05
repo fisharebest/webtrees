@@ -43,7 +43,8 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
      *
      * @param ClipboardService $clipboard_service
      */
-    public function __construct (ClipboardService $clipboard_service) {
+    public function __construct (ClipboardService $clipboard_service)
+    {
         $this->clipboard_service = $clipboard_service;
     }
 
