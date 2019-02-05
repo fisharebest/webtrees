@@ -27,7 +27,6 @@ class SiteUserTest extends TestCase
     protected static $uses_database = true;
 
     /**
-     * @covers \Fisharebest\Webtrees\SiteUser::__construct
      * @covers \Fisharebest\Webtrees\SiteUser::id
      * @covers \Fisharebest\Webtrees\SiteUser::email
      * @covers \Fisharebest\Webtrees\SiteUser::realName
