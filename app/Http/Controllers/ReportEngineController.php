@@ -136,6 +136,7 @@ class ReportEngineController extends AbstractBaseController
                     $attributes       += [
                         'type'  => 'text',
                         'value' => $input['default'],
+                        'dir'   => 'ltr',
                     ];
                     $input['control'] = '<input ' . Html::attributes($attributes) . '>';
                     $input['extra']   = FontAwesome::linkIcon('calendar', I18N::translate('Select a date'), [
