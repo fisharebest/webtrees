@@ -1926,11 +1926,11 @@ class ReportParserGenerate extends ReportParserBase
 
                             // This filter has been fully processed
                             unset($attrs[$attr]);
-                        } elseif (preg_match('/^REGEXP \/(.+)\//', $value, $match)) {
+                        } elseif (preg_match('/^LIKE \/(.+)\/$/', $value, $match)) {
                             // Convert newline escape sequences to actual new lines
-                            $sql_params[$attr . 'gedcom'] = str_replace('\n', "\n", $match[1]);
+                            $match[1] = str_replace('\n', "\n", $match[1]);
 
-                            $query->where('i_gedcom', 'REGEXP', $match[1]);
+                            $query->where('i_gedcom', 'LIKE', $match[1]);
 
                             // This filter has been fully processed
                             unset($attrs[$attr]);
@@ -1987,11 +1987,11 @@ class ReportParserGenerate extends ReportParserBase
 
                             // This filter has been fully processed
                             unset($attrs[$attr]);
-                        } elseif (preg_match('/^REGEXP \/(.+)\//', $value, $match)) {
+                        } elseif (preg_match('/^LIKE \/(.+)\/$/', $value, $match)) {
                             // Convert newline escape sequences to actual new lines
-                            $sql_params[$attr . 'gedcom'] = str_replace('\n', "\n", $match[1]);
+                            $match[1] = str_replace('\n', "\n", $match[1]);
 
-                            $query->where('f_gedcom', 'REGEXP', $match[1]);
+                            $query->where('f_gedcom', 'LIKE', $match[1]);
 
                             // This filter has been fully processed
                             unset($attrs[$attr]);
