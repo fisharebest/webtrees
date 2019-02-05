@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -47,7 +48,7 @@ class MediaController extends AbstractBaseController
         Auth::checkMediaAccess($media);
 
         return $this->viewResponse('media-page', [
-            'clipboard_facts' => $clipboard_service->pastableFacts($media),
+            'clipboard_facts' => $clipboard_service->pastableFacts($media, new Collection()),
             'families'        => $media->linkedFamilies('OBJE'),
             'facts'           => $this->facts($media),
             'individuals'     => $media->linkedIndividuals('OBJE'),
