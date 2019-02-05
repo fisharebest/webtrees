@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Script;
+<?php
+
+namespace Fisharebest\Localization\Script;
 
 /**
  * Class ScriptGlag - Representation of the Glagolitic script.

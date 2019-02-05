@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Variant;
+<?php
+
+namespace Fisharebest\Localization\Variant;
 
 /**
  * Class VariantValencia - Representation of the Valencia variant of ca-ES.

@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Script;
+<?php
+
+namespace Fisharebest\Localization\Script;
 
 /**
  * Class ScriptPhlv - Representation of the Book Pahlavi script.

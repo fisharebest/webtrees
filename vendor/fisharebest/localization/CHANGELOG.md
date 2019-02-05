@@ -1,6 +1,10 @@
 CHANGE LOG
 ==========
 
+## 1.13.0 (2019-02-05)
+ - Add PHP7.3 and PHP7.4 to the test matrix.
+ - Fix: Finnish should use Swedish collation algorithm.
+
 ## 1.12.0 (2018-09-25)
  - Add Sundanese (su)
 

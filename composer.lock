@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eb7f5ee54c3905ce0cbc56855652cebc",
+    "content-hash": "6d3019e13689fc626348836d47d2b55c",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -635,16 +635,16 @@
         },
         {
             "name": "fisharebest/localization",
-            "version": "1.12.0",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fisharebest/localization.git",
-                "reference": "df4684a211d5da48b1faba616a8db8953f9cbd1f"
+                "reference": "c134c025b3f62120428bd5d79c0110f940cded54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fisharebest/localization/zipball/df4684a211d5da48b1faba616a8db8953f9cbd1f",
-                "reference": "df4684a211d5da48b1faba616a8db8953f9cbd1f",
+                "url": "https://api.github.com/repos/fisharebest/localization/zipball/c134c025b3f62120428bd5d79c0110f940cded54",
+                "reference": "c134c025b3f62120428bd5d79c0110f940cded54",
                 "shasum": ""
             },
             "require": {
@@ -685,7 +685,7 @@
                 "translate",
                 "translation"
             ],
-            "time": "2018-09-25T10:40:27+00:00"
+            "time": "2019-02-05T22:45:07+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",

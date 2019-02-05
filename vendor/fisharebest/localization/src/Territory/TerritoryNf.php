@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Territory;
+<?php
+
+namespace Fisharebest\Localization\Territory;
 
 /**
  * Class AbstractTerritory - Representation of the territory NF - Norfolk Island.

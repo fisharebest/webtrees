@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Locale;
+<?php
+
+namespace Fisharebest\Localization\Locale;
 
 use Fisharebest\Localization\PluralRule\PluralRule2;
 use Fisharebest\Localization\Territory\TerritoryBr;

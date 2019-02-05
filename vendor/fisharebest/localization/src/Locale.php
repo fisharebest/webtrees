@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php
+
+namespace Fisharebest\Localization;
 
 use DomainException;
 use Fisharebest\Localization\Locale\LocaleInterface;

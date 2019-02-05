@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Territory;
+<?php
+
+namespace Fisharebest\Localization\Territory;
 
 /**
  * Class AbstractTerritory - Representation of the territory GS - South Georgia and the South Sandwich Islands.

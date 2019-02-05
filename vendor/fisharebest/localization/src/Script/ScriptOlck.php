@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Script;
+<?php
+
+namespace Fisharebest\Localization\Script;
 
 /**
  * Class ScriptOlck - Representation of the Ol Chiki (Ol Cemet’, Ol, Santali) script.

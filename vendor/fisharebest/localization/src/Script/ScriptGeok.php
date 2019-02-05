@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Script;
+<?php
+
+namespace Fisharebest\Localization\Script;
 
 /**
  * Class ScriptGeok - Representation of the Khutsuri (Asomtavruli and Nuskhuri) script.

@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Territory;
+<?php
+
+namespace Fisharebest\Localization\Territory;
 
 /**
  * Interface TerritoryInterface - Representation of a geographic area.

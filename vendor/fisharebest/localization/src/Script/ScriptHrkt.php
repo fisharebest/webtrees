@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Script;
+<?php
+
+namespace Fisharebest\Localization\Script;
 
 /**
  * Class ScriptHrkt - Representation of the Japanese syllabaries (alias for Hiragana + Katakana) script.

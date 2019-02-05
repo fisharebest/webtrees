@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Variant;
+<?php
+
+namespace Fisharebest\Localization\Variant;
 
 /**
  * Interface VariantInterface - Representation of a locale variant.

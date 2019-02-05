@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php
+
+namespace Fisharebest\Localization;
 
 /**
  * Class Translation - a set of translated messages, such as a .MO file.
