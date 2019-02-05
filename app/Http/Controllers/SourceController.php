@@ -19,8 +19,10 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -50,12 +52,13 @@ class SourceController extends AbstractBaseController
     /**
      * Show a repository's page.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request          $request
+     * @param Tree             $tree
+     * @param ClipboardService $clipboard_service
      *
      * @return Response
      */
-    public function show(Request $request, Tree $tree): Response
+    public function show(Request $request, Tree $tree, ClipboardService $clipboard_service): Response
     {
         $xref   = $request->get('xref', '');
         $record = Source::getInstance($xref, $tree);
@@ -63,14 +66,15 @@ class SourceController extends AbstractBaseController
         Auth::checkSourceAccess($record, false);
 
         return $this->viewResponse('source-page', [
-            'facts'         => $this->facts($record),
-            'families'      => $record->linkedFamilies('SOUR'),
-            'individuals'   => $record->linkedIndividuals('SOUR'),
-            'meta_robots'   => 'index,follow',
-            'notes'         => $record->linkedNotes('SOUR'),
-            'media_objects' => $record->linkedMedia('SOUR'),
-            'source'        => $record,
-            'title'         => $record->getFullName(),
+            'clipboard_facts' => $clipboard_service->pastableFacts($record, new Collection()),
+            'facts'           => $this->facts($record),
+            'families'        => $record->linkedFamilies('SOUR'),
+            'individuals'     => $record->linkedIndividuals('SOUR'),
+            'meta_robots'     => 'index,follow',
+            'notes'           => $record->linkedNotes('SOUR'),
+            'media_objects'   => $record->linkedMedia('SOUR'),
+            'source'          => $record,
+            'title'           => $record->getFullName(),
         ]);
     }
 

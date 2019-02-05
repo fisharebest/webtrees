@@ -78,6 +78,8 @@
         <?php endif ?>
 
         <?php if (Auth::isEditor($record->tree())) : ?>
+            <?= view('edit/paste-fact-row', ['record' => $record, 'facts' => $clipboard_facts]) ?>
+
             <?php FunctionsPrint::printAddNewFact($record, $facts, 'FAM') ?>
             <tr>
                 <th scope="row">

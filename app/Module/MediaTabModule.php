@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Services\ClipboardService;
 use Illuminate\Support\Collection;
 
 /**
@@ -33,6 +34,18 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
 
     /** @var  Fact[] A list of facts with media objects. */
     private $facts;
+
+    /** @var ClipboardService */
+    private $clipboard_service;
+
+    /**
+     * NotesTabModule constructor.
+     *
+     * @param ClipboardService $clipboard_service
+     */
+    public function __construct (ClipboardService $clipboard_service) {
+        $this->clipboard_service = $clipboard_service;
+    }
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
@@ -83,6 +96,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
     {
         return view('modules/media/tab', [
             'can_edit'   => $individual->canEdit(),
+            'clipboard_facts' => $this->clipboard_service->pastableFactsOfType($individual, $this->supportedFacts()),
             'individual' => $individual,
             'facts'      => $this->getFactsWithMedia($individual),
         ]);

@@ -68,7 +68,10 @@
                 <?php endforeach ?>
 
                 <?php if ($source->canEdit()) : ?>
+                    <?= view('edit/paste-fact-row', ['record' => $source, 'facts' => $clipboard_facts]) ?>
+
                     <?php FunctionsPrint::printAddNewFact($source, $facts, 'SOUR') ?>
+
                     <?php if ($source->tree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($source->tree())) : ?>
                         <tr>
                             <th scope="row">

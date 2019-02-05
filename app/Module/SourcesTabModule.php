@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Services\ClipboardService;
 use Illuminate\Support\Collection;
 
 /**
@@ -32,6 +33,19 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface
 
     /** @var Fact[] All facts belonging to this source. */
     private $facts;
+
+    /** @var ClipboardService */
+    private $clipboard_service;
+
+    /**
+     * SourcesTabModule constructor.
+     *
+     * @param ClipboardService $clipboard_service
+     */
+    public function __construct(ClipboardService $clipboard_service)
+    {
+        $this->clipboard_service = $clipboard_service;
+    }
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
@@ -81,9 +95,10 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface
     public function getTabContent(Individual $individual): string
     {
         return view('modules/sources_tab/tab', [
-            'can_edit'   => $individual->canEdit(),
-            'individual' => $individual,
-            'facts'      => $this->getFactsWithSources($individual),
+            'can_edit'        => $individual->canEdit(),
+            'clipboard_facts' => $this->clipboard_service->pastableFactsOfType($individual, $this->supportedFacts()),
+            'individual'      => $individual,
+            'facts'           => $this->getFactsWithSources($individual),
         ]);
     }
 

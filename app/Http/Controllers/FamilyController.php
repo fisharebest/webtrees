@@ -19,7 +19,9 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 use stdClass;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,24 +34,28 @@ class FamilyController extends AbstractBaseController
     /**
      * Show a family's page.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request          $request
+     * @param Tree             $tree
+     * @param ClipboardService $clipboard_service
      *
      * @return Response
      */
-    public function show(Request $request, Tree $tree): Response
+    public function show(Request $request, Tree $tree, ClipboardService $clipboard_service): Response
     {
         $xref   = $request->get('xref', '');
         $family = Family::getInstance($xref, $tree);
 
         Auth::checkFamilyAccess($family, false);
 
+        $clipboard_facts = $clipboard_service->pastableFacts($family, new Collection());
+
         return $this->viewResponse('family-page', [
-            'facts'       => $family->facts([], true),
-            'meta_robots' => 'index,follow',
-            'record'      => $family,
-            'significant' => $this->significant($family),
-            'title'       => $family->getFullName(),
+            'facts'           => $family->facts([], true),
+            'meta_robots'     => 'index,follow',
+            'clipboard_facts' => $clipboard_facts,
+            'record'          => $family,
+            'significant'     => $this->significant($family),
+            'title'           => $family->getFullName(),
         ]);
     }
 

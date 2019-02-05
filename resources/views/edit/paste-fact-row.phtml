@@ -1,6 +1,6 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<?php if (!empty($facts)) : ?>
+<?php if ($facts->isNotEmpty()) : ?>
 <tr>
     <th scope="row">
         <label for="paste-fact">
@@ -14,13 +14,15 @@
                     <?php foreach ($facts as $fact) : ?>
                     <option value="<?= e($fact->id()) ?>">
                         <?= $fact->label() ?>
-                        <?php if ($fact->value() !== '') : ?>
+                        <?php if ($fact->target() !== null) : ?>
+                            – <?= strip_tags($fact->target()->getFullName()) ?>
+                        <?php elseif ($fact->value() !== '') : ?>
                             – <?= e($fact->value()) ?>
                         <?php endif ?>
                         <?php if ($fact->date()->isOK()) : ?>
                             – <?= $fact->date()->minimumDate()->format('%Y') ?>
                         <?php endif ?>
-                        <?php if (!$fact->place()->gedcomName() !== '') : ?>
+                        <?php if ($fact->place()->gedcomName() !== '') : ?>
                             – <?= $fact->place()->shortName() ?>
                         <?php endif ?>
                     </option>

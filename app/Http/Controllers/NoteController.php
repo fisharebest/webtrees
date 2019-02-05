@@ -20,7 +20,9 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -32,12 +34,13 @@ class NoteController extends AbstractBaseController
     /**
      * Show a note's page.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request          $request
+     * @param Tree             $tree
+     * @param ClipboardService $clipboard_service
      *
      * @return Response
      */
-    public function show(Request $request, Tree $tree): Response
+    public function show(Request $request, Tree $tree, ClipboardService $clipboard_service): Response
     {
         $xref   = $request->get('xref', '');
         $record = Note::getInstance($xref, $tree);
@@ -45,6 +48,7 @@ class NoteController extends AbstractBaseController
         Auth::checkNoteAccess($record, false);
 
         return $this->viewResponse('note-page', [
+            'clipboard_facts' => $clipboard_service->pastableFacts($record, new Collection()),
             'facts'         => $this->facts($record),
             'families'      => $record->linkedFamilies('NOTE'),
             'individuals'   => $record->linkedIndividuals('NOTE'),

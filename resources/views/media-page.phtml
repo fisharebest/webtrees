@@ -114,6 +114,8 @@
                     <?php endif ?>
                 <?php endforeach ?>
                 <?php if ($media->canEdit()) : ?>
+                    <?= view('edit/paste-fact-row', ['record' => $media, 'facts' => $clipboard_facts]) ?>
+
                     <?php FunctionsPrint::printAddNewFact($media, $facts, 'OBJE') ?>
                     <tr>
                         <th>

@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,12 +33,13 @@ class MediaController extends AbstractBaseController
     /**
      * Show a repository's page.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request          $request
+     * @param Tree             $tree
+     * @param ClipboardService $clipboard_service
      *
      * @return Response
      */
-    public function show(Request $request, Tree $tree): Response
+    public function show(Request $request, Tree $tree, ClipboardService $clipboard_service): Response
     {
         $xref  = $request->get('xref', '');
         $media = Media::getInstance($xref, $tree);
@@ -45,14 +47,15 @@ class MediaController extends AbstractBaseController
         Auth::checkMediaAccess($media);
 
         return $this->viewResponse('media-page', [
-            'families'    => $media->linkedFamilies('OBJE'),
-            'facts'       => $this->facts($media),
-            'individuals' => $media->linkedIndividuals('OBJE'),
-            'media'       => $media,
-            'meta_robots' => 'index,follow',
-            'notes'       => $media->linkedNotes('OBJE'),
-            'sources'     => $media->linkedSources('OBJE'),
-            'title'       => $media->getFullName(),
+            'clipboard_facts' => $clipboard_service->pastableFacts($media),
+            'families'        => $media->linkedFamilies('OBJE'),
+            'facts'           => $this->facts($media),
+            'individuals'     => $media->linkedIndividuals('OBJE'),
+            'media'           => $media,
+            'meta_robots'     => 'index,follow',
+            'notes'           => $media->linkedNotes('OBJE'),
+            'sources'         => $media->linkedSources('OBJE'),
+            'title'           => $media->getFullName(),
         ]);
     }
 

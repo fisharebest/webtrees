@@ -86,6 +86,8 @@
                 <?php endforeach ?>
 
                 <?php if ($note->canEdit()) : ?>
+                    <?= view('edit/paste-fact-row', ['record' => $note, 'facts' => $clipboard_facts]) ?>
+
                     <?php FunctionsPrint::printAddNewFact($note, $facts, 'NOTE') ?>
                 <?php endif ?>
             </table>

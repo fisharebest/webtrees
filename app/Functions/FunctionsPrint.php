@@ -33,7 +33,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
-use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
 use Ramsey\Uuid\Uuid;
@@ -500,15 +499,6 @@ class FunctionsPrint
         uasort($translated_addfacts, function (string $x, string $y): int {
             return I18N::strcasecmp(I18N::translate($x), I18N::translate($y));
         });
-
-        $clipboard_service = new ClipboardService();
-
-        $pastable_facts = $clipboard_service->pastableFacts($record);
-
-        echo view('edit/paste-fact-row', [
-            'facts'  => $pastable_facts,
-            'record' => $record,
-        ]);
 
         echo view('edit/add-fact-row', [
             'add_facts'   => $translated_addfacts,

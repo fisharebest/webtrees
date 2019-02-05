@@ -20,7 +20,9 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -45,12 +47,13 @@ class RepositoryController extends AbstractBaseController
     /**
      * Show a repository's page.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request          $request
+     * @param Tree             $tree
+     * @param ClipboardService $clipboard_service
      *
      * @return Response
      */
-    public function show(Request $request, Tree $tree): Response
+    public function show(Request $request, Tree $tree, ClipboardService $clipboard_service): Response
     {
         $xref   = $request->get('xref', '');
         $record = Repository::getInstance($xref, $tree);
@@ -58,11 +61,12 @@ class RepositoryController extends AbstractBaseController
         Auth::checkRepositoryAccess($record, false);
 
         return $this->viewResponse('repository-page', [
-            'facts'       => $this->facts($record),
-            'meta_robots' => 'index,follow',
-            'repository'  => $record,
-            'sources'     => $record->linkedSources('REPO'),
-            'title'       => $record->getFullName(),
+            'clipboard_facts' => $clipboard_service->pastableFacts($record, new Collection()),
+            'facts'           => $this->facts($record),
+            'meta_robots'     => 'index,follow',
+            'repository'      => $record,
+            'sources'         => $record->linkedSources('REPO'),
+            'title'           => $record->getFullName(),
         ]);
     }
 

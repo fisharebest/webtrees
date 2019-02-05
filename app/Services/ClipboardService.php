@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Session;
+use Illuminate\Support\Collection;
 
 /**
  * Copy and past facts between records.
@@ -29,17 +30,6 @@ class ClipboardService
     // Maximum number of entries in the clipboard.
     private const CLIPBOARD_SIZE = 10;
 
-    // Some facts can be copied to multiple types of record.
-    // Others can only be copied to the same type.
-    // NOTE: just because GEDCOM permits these, it doesn't mean that they are advisable.
-    private const DESTINATION_TYPES = [
-        'CENS' => ['FAM', 'INDI'],
-        'RESI' => ['FAM', 'INDI'],
-        'NOTE' => ['FAM', 'INDI', 'OBJE', 'REPO', 'SOUR'],
-        'OBJE' => ['FAM', 'INDI', 'NOTE', 'SOUR'],
-        'SOUR' => ['FAM', 'INDI', 'NOTE', 'OBJE'],
-    ];
-
     /**
      * Copy a fact to the clipboard.
      *
@@ -47,27 +37,20 @@ class ClipboardService
      */
     public function copyFact(Fact $fact): void
     {
-        $clipboard = Session::get('clipboard', []);
-
-        $fact_type   = $fact->getTag();
+        $clipboard   = Session::get('clipboard', []);
         $record_type = $fact->record()::RECORD_TYPE;
+        $fact_id     = $fact->id();
 
-        $destination_types = self::DESTINATION_TYPES[$fact_type] ?? [$record_type];
+        // If we are copying the same fact twice, make sure the new one is at the end.
+        unset($clipboard[$record_type][$fact_id]);
 
-        $fact_id = $fact->id();
+        $clipboard[$record_type][$fact_id] = [
+            'factrec' => $fact->gedcom(),
+            'fact'    => $fact->getTag(),
+        ];
 
-        foreach ($destination_types as $destination_type) {
-            // If we are copying the same fact twice, make sure the new one is at the end.
-            unset($clipboard[$destination_type][$fact_id]);
-
-            $clipboard[$destination_type][$fact_id] = [
-                'factrec' => $fact->gedcom(),
-                'fact'    => $fact->getTag(),
-            ];
-
-            // The clipboard only holds a limited number of facts.
-            $clipboard[$destination_type] = array_slice($clipboard[$destination_type], -self::CLIPBOARD_SIZE);
-        }
+        // The clipboard only holds a limited number of facts.
+        $clipboard[$record_type] = array_slice($clipboard[$record_type], -self::CLIPBOARD_SIZE);
 
         Session::put('clipboard', $clipboard);
     }
@@ -96,25 +79,46 @@ class ClipboardService
     }
 
     /**
-     * Createa a list of facts that can be pasted into a given record
+     * Create a list of facts that can be pasted into a given record
      *
      * @param GedcomRecord $record
+     * @param Collection   $exclude_types
      *
-     * @return Fact[]
+     * @return Collection|Fact[]
      */
-    public function pastableFacts(GedcomRecord $record): array
+    public function pastableFacts(GedcomRecord $record, Collection $exclude_types): Collection
     {
         // The facts are stored in the session.
-        $clipboard = Session::get('clipboard', []);
+        return (new Collection(Session::get('clipboard', [])[$record::RECORD_TYPE] ?? []))
+            // Put the most recently copied fact at the top of the list.
+            ->reverse()
+            // Create facts for the record.
+            ->map(function (array $clipping) use ($record): Fact {
+                return new Fact($clipping['factrec'], $record, md5($clipping['factrec']));
+            })->filter(function (Fact $fact) use ($exclude_types): bool {
+                return $exclude_types->isEmpty() || !$exclude_types->contains($fact->getTag());
+            });
+    }
 
-        // Put the most recently copied fact at the top of the list.
-        $clipboard = array_reverse($clipboard[$record::RECORD_TYPE] ?? []);
-
-        // Create facts for the record.
-        $facts = array_map(function (array $clipping) use ($record): Fact {
-            return new Fact($clipping['factrec'], $record, md5($clipping['factrec']));
-        }, $clipboard);
-
-        return $facts;
+    /**
+     * Find facts of a given type, from all records.
+     *
+     * @param GedcomRecord $record
+     * @param Collection   $types
+     *
+     * @return Collection|Fact[]
+     */
+    public function pastableFactsOfType(GedcomRecord $record, Collection $types): Collection
+    {
+        // The facts are stored in the session.
+        return (new Collection(Session::get('clipboard', [])))
+            ->flatten(1)
+            ->reverse()
+            ->map(function (array $clipping) use ($record): Fact {
+                return new Fact($clipping['factrec'], $record, md5($clipping['factrec']));
+            })
+            ->filter(function (Fact $fact) use ($types): bool {
+                return $types->contains($fact->getTag());
+            });
     }
 }

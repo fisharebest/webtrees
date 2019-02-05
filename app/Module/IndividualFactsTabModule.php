@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Support\Collection;
 
@@ -35,19 +36,22 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 {
     use ModuleTabTrait;
 
-    /**
-     * @var ModuleService
-     */
+    /** @var ModuleService */
     private $module_service;
+
+    /** @var ClipboardService */
+    private $clipboard_service;
 
     /**
      * UserWelcomeModule constructor.
      *
-     * @param ModuleService $module_service
+     * @param ModuleService    $module_service
+     * @param ClipboardService $clipboard_service
      */
-    public function __construct(ModuleService $module_service)
+    public function __construct(ModuleService $module_service, ClipboardService $clipboard_service)
     {
-        $this->module_service = $module_service;
+        $this->module_service    = $module_service;
+        $this->clipboard_service = $clipboard_service;
     }
 
     /**
@@ -148,6 +152,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
         return view('modules/personal_facts/tab', [
             'can_edit'             => $individual->canEdit(),
+            'clipboard_facts'      => $this->clipboard_service->pastableFacts($individual, $exclude_facts),
             'has_historical_facts' => !empty($historical_facts),
             'individual'           => $individual,
             'facts'                => $indifacts,
