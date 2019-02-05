@@ -1930,7 +1930,7 @@ class ReportParserGenerate extends ReportParserBase
 
                             // This filter has been fully processed
                             unset($attrs[$attr]);
-                        } elseif (preg_match('/^(?:\w+):PLAC CONTAINS (.+)$/', $value, $match)) {
+                        } elseif (preg_match('/^(?:\w*):PLAC CONTAINS (.+)$/', $value, $match)) {
                             // Don't unset this filter. This is just initial filtering for performance
                             $query
                                 ->join('placelinks AS ' . $attr . 'a', function (JoinClause $join) use ($attr): void {
