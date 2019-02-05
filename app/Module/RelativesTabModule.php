@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Illuminate\Support\Collection;
 
 /**
  * Class RelativesTabModule
@@ -97,5 +98,15 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface
     public function canLoadAjax(): bool
     {
         return false;
+    }
+
+    /**
+     * This module handles the following facts - so don't show them on the "Facts and events" tab.
+     *
+     * @return Collection|string[]
+     */
+    public function supportedFacts(): Collection
+    {
+        return new Collection(['FAMC', 'FAMS', 'HUSB', 'WIFE', 'CHIL']);
     }
 }

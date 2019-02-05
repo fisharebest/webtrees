@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Individual;
+use Illuminate\Support\Collection;
 
 /**
  * Interface ModuleTabInterface - Classes and libraries for module system
@@ -81,4 +82,11 @@ interface ModuleTabInterface extends ModuleInterface
      * @return bool
      */
     public function isGrayedOut(Individual $individual): bool;
+
+    /**
+     * This module handles the following facts - so don't show them on the "Facts and events" tab.
+     *
+     * @return Collection|string[]
+     */
+    public function supportedFacts(): Collection;
 }

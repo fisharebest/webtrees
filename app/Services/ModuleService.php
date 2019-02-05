@@ -46,7 +46,7 @@ use Fisharebest\Webtrees\Module\DeathReportModule;
 use Fisharebest\Webtrees\Module\DescendancyChartModule;
 use Fisharebest\Webtrees\Module\DescendancyModule;
 use Fisharebest\Webtrees\Module\DescendancyReportModule;
-use Fisharebest\Webtrees\Module\ExtraInformationModule;
+use Fisharebest\Webtrees\Module\IndividualMetadataModule;
 use Fisharebest\Webtrees\Module\FabTheme;
 use Fisharebest\Webtrees\Module\FactSourcesReportModule;
 use Fisharebest\Webtrees\Module\FamilyBookChartModule;
@@ -179,7 +179,7 @@ class ModuleService
         'descendancy'            => DescendancyModule::class,
         'descendancy_chart'      => DescendancyChartModule::class,
         'descendancy_report'     => DescendancyReportModule::class,
-        'extra_info'             => ExtraInformationModule::class,
+        'extra_info'             => IndividualMetadataModule::class,
         'fab'                    => FabTheme::class,
         'fact_sources'           => FactSourcesReportModule::class,
         'family_book_chart'      => FamilyBookChartModule::class,

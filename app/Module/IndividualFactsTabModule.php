@@ -95,50 +95,35 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         $min_date = $individual->getEstimatedBirthDate();
         $max_date = $individual->getEstimatedDeathDate();
 
+        // Which facts and events are handled by other modules?
+        $sidebar_facts = $this->module_service
+            ->findByComponent('sidebar', $individual->tree(), Auth::user())
+            ->map(function (ModuleSidebarInterface $sidebar): Collection {
+                return $sidebar->supportedFacts();
+            });
+
+        $tab_facts = $this->module_service
+            ->findByComponent('tab', $individual->tree(), Auth::user())
+            ->map(function (ModuleTabInterface $sidebar): Collection {
+                return $sidebar->supportedFacts();
+            });
+
+        $exclude_facts = $sidebar_facts->merge($tab_facts)->flatten();
+
         $indifacts = [];
+
         // The individual’s own facts
         foreach ($individual->facts() as $fact) {
-            switch ($fact->getTag()) {
-                case 'SEX':
-                case 'NAME':
-                case 'SOUR':
-                case 'OBJE':
-                case 'NOTE':
-                case 'FAMC':
-                case 'FAMS':
-                    break;
-
-                default:
-                    $extra_info_module = $this->module_service->findByComponent('sidebar', $individual->tree(), Auth::user())
-                        ->filter(function (ModuleInterface $module): bool {
-                            return $module instanceof ExtraInformationModule;
-                        })
-                        ->first();
-
-                    if (!$extra_info_module instanceof ExtraInformationModule || !$extra_info_module->showFact($fact)) {
-                        $indifacts[] = $fact;
-                    }
-                    break;
+            if (!$exclude_facts->contains($fact->getTag())) {
+                $indifacts[] = $fact;
             }
         }
 
         // Add spouse-family facts
         foreach ($individual->getSpouseFamilies() as $family) {
             foreach ($family->facts() as $fact) {
-                switch ($fact->getTag()) {
-                    case 'SOUR':
-                    case 'NOTE':
-                    case 'OBJE':
-                    case 'CHAN':
-                    case '_UID':
-                    case 'RIN':
-                    case 'HUSB':
-                    case 'WIFE':
-                    case 'CHIL':
-                        break;
-                    default:
-                        $indifacts[] = $fact;
-                        break;
+                if (!$exclude_facts->contains($fact->getTag()) && $fact->getTag() !== 'CHAN') {
+                    $indifacts[] = $fact;
                 }
             }
 
@@ -516,5 +501,17 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         }
 
         return $facts;
+    }
+
+    /**
+     * This module handles the following facts - so don't show them on the "Facts and events" tab.
+     *
+     * @return Collection|string[]
+     */
+    public function supportedFacts(): Collection
+    {
+        // We don't actually displaye these facts, but they are displayed
+        // outside the tabs/sidebar systems. This just forces them to be excluded here.
+        return new Collection(['NAME', 'SEX']);
     }
 }

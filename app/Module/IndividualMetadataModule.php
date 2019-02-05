@@ -21,16 +21,18 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Illuminate\Support\Collection;
 
 /**
  * Class ExtraInformationModule
  * A sidebar to show non-genealogy information about an individual
  */
-class ExtraInformationModule extends AbstractModule implements ModuleSidebarInterface
+class IndividualMetadataModule extends AbstractModule implements ModuleSidebarInterface
 {
     use ModuleSidebarTrait;
 
-    protected const FACTS_TO_SHOW = [
+    // A list of facts that are handled by this module.
+    protected const HANDLED_FACTS = [
         'AFN',
         'CHAN',
         'IDNO',
@@ -118,6 +120,16 @@ class ExtraInformationModule extends AbstractModule implements ModuleSidebarInte
      */
     public function showFact(Fact $fact)
     {
-        return in_array($fact->getTag(), static::FACTS_TO_SHOW);
+        return in_array($fact->getTag(), static::HANDLED_FACTS);
+    }
+
+    /**
+     * This module handles the following facts - so don't show them on the "Facts and events" tab.
+     *
+     * @return Collection|string[]
+     */
+    public function supportedFacts(): Collection
+    {
+        return new Collection(static::HANDLED_FACTS);
     }
 }

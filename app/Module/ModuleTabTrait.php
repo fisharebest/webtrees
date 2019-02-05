@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Illuminate\Support\Collection;
+
 /**
  * Trait ModuleTabTrait - default implementation of ModuleTabInterface
  */
@@ -55,5 +57,15 @@ trait ModuleTabTrait
     public function defaultTabOrder(): int
     {
         return 9999;
+    }
+
+    /**
+     * This module handles the following facts - so don't show them on the "Facts and events" tab.
+     *
+     * @return Collection|string[]
+     */
+    public function supportedFacts(): Collection
+    {
+        return new Collection([]);
     }
 }
