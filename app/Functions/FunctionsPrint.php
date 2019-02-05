@@ -267,10 +267,11 @@ class FunctionsPrint
                 $html .= ' – <span class="date">' . $match[1] . '</span>';
             }
             if ($record instanceof Individual) {
-                if ($fact === 'BIRT' && $record->tree()->getPreference('SHOW_PARENTS_AGE')) {
+                if (in_array($fact, Gedcom::BIRTH_EVENTS) && $record->tree()->getPreference('SHOW_PARENTS_AGE')) {
                     // age of parents at child birth
                     $html .= self::formatParentsAges($record, $date);
-                } elseif ($fact !== 'BIRT' && $fact !== 'CHAN' && $fact !== '_TODO') {
+                }
+                if ($fact !== 'BIRT' && $fact !== 'CHAN' && $fact !== '_TODO') {
                     // age at event
                     $birth_date = $record->getBirthDate();
                     // Can't use getDeathDate(), as this also gives BURI/CREM events, which

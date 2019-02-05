@@ -68,6 +68,7 @@ class IndividualFamiliesReportModule extends AbstractModule implements ModuleRep
         return new Menu(
             $this->title(),
             route('report-setup', [
+                'xref'   => $individual->xref(),
                 'ged'    => $individual->tree()->name(),
                 'report' => $this->name(),
             ]),
