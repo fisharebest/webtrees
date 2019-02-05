@@ -1908,20 +1908,16 @@ class ReportParserGenerate extends ReportParserBase
 
                             // This filter has been fully processed
                             unset($attrs[$attr]);
-                        } elseif (preg_match('/^NAME CONTAINS (.*)$/', $value, $match)) {
-                            if ($match[1] !== '' || $sortby === 'NAME') {
-                                $query->join('name AS ' . $attr, function (JoinClause $join) use ($attr): void {
-                                    $join
-                                        ->on($attr . '.n_id', '=', 'i_id')
-                                        ->on($attr . '.n_file', '=', 'i_file');
-                                });
-                                // Search the DB only if there is any name supplied
-                                if ($match[1] != '') {
-                                    $names = explode(' ', $match[1]);
-                                    foreach ($names as $n => $name) {
-                                        $query->whereContains($attr . '.n_full', $name);
-                                    }
-                                }
+                        } elseif (preg_match('/^NAME CONTAINS (.+)$/', $value, $match)) {
+                            $query->join('name AS ' . $attr, function (JoinClause $join) use ($attr): void {
+                                $join
+                                    ->on($attr . '.n_id', '=', 'i_id')
+                                    ->on($attr . '.n_file', '=', 'i_file');
+                            });
+                            // Search the DB only if there is any name supplied
+                            $names = explode(' ', $match[1]);
+                            foreach ($names as $n => $name) {
+                                $query->whereContains($attr . '.n_full', $name);
                             }
 
                             // This filter has been fully processed
@@ -1937,16 +1933,22 @@ class ReportParserGenerate extends ReportParserBase
                         } elseif (preg_match('/^(?:\w+):PLAC CONTAINS (.+)$/', $value, $match)) {
                             // Don't unset this filter. This is just initial filtering for performance
                             $query
-                                ->join('places AS ' . $attr . 'a', 'p_file', '=', 'i_file')
-                                ->join('placelinks AS ' . $attr . 'b', function (JoinClause $join) use ($attr): void {
+                                ->join('placelinks AS ' . $attr . 'a', function (JoinClause $join) use ($attr): void {
                                     $join
-                                        ->on($attr . 'b.pl_file', '=', $attr . 'a.p_file')
-                                        ->on($attr . 'b.pl_p_id', '=', $attr . 'a.p_id');
+                                        ->on($attr . 'a.pl_file', '=', 'i_file')
+                                        ->on($attr . 'a.pl_gid', '=', 'i_id');
                                 })
-                                ->whereContains($attr . 'a.p_place', $match[1]);
+                                ->join('places AS ' . $attr . 'b', function (JoinClause $join) use ($attr): void {
+                                    $join
+                                        ->on($attr . 'b.p_file', '=', $attr . 'a.pl_file')
+                                        ->on($attr . 'b.p_id', '=', $attr . 'a.pl_p_id');
+                                })
+                                ->whereContains($attr . 'b.p_place', $match[1]);
                         } elseif (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
                             // Don't unset this filter. This is just initial filtering for performance
-                            $query->whereContains('i_gedcom', $match[3]);
+                            $match[3] = strtr($match[3], ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_', ' ' => '%']);
+                            $like = "%\n1 " . $match[1] . "%\n2 " . $match[2] . '%' . $match[3];
+                            $query->where('i_gedcom', 'LIKE', $like);
                         }
                     }
                 }
