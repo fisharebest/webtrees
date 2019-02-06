@@ -17,6 +17,7 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Application;
+use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Cache\Repository;
 
 /**
@@ -33,6 +34,25 @@ function app(string $abstract = null)
     } else {
         return Application::getInstance()->make($abstract);
     }
+}
+
+/**
+ * Generate a URL to an asset file in the public folder.
+ * Add a version parameter for cache-busting.
+ *
+ * @param string $path
+ *
+ * @return string
+ */
+function asset(string $path): string
+{
+    if (Webtrees::STABILITY === '') {
+        $version = Webtrees::VERSION;
+    } else {
+        $version = filemtime(WT_ROOT . 'public/' . $path);
+    }
+
+    return 'public/' . $path . '?v=' . $version;
 }
 
 /**

@@ -28,9 +28,24 @@
             <?php endif ?>
         </title>
 
-        <link rel="icon" href="themes/_common/css-2.0.0/favicon.png" type="image/png">
-        <link rel="icon" type="image/png" href="themes/_common/css-2.0.0/favicon192.png" sizes="192x192">
-        <link rel="apple-touch-icon" sizes="180x180" href="themes/_common/css-2.0.0/favicon180.png">
+        <!-- Generic favicons -->
+        <link rel="icon" sizes="32x32" href="<?= e(asset('favicon-32.png')) ?>">
+        <link rel="icon" sizes="57x57" href="<?= e(asset('favicon-57.png')) ?>">
+        <link rel="icon" sizes="76x76" href="<?= e(asset('favicon-76.png')) ?>">
+        <link rel="icon" sizes="96x96" href="<?= e(asset('favicon-96.png')) ?>">
+        <link rel="icon" sizes="128x128" href="<?= e(asset('favicon-128.png')) ?>">
+        <link rel="icon" sizes="192x192" href="<?= e(asset('favicon-192.png')) ?>">
+        <!-- Android -->
+        <link rel="shortcut icon" sizes="196x196" href=“<?= e(asset('favicon-196.png')) ?>">
+        <!-- iOS -->
+        <link rel="apple-touch-icon" sizes="120x120" href="<?= e(asset('favicon-120.png')) ?>">
+        <link rel="apple-touch-icon" sizes="152x152" href="<?= e(asset('favicon-152.png')) ?>">
+        <link rel="apple-touch-icon" sizes="180x180" href="<?= e(asset('favicon-180.png')) ?>">
+        <!-- Windows 8 IE 10 -->
+        <meta name="msapplication-TileColor" content="#FFFFFF">
+        <meta name="msapplication-TileImage" content="<?= e(asset('favicon-144.png')) ?>">
+        <!-- Windows 8.1 + IE11 and above -->
+        <meta name="msapplication-config" content="<?= e(asset('browserconfig.xml')) ?>">
 
         <?php if (I18N::direction() === 'rtl') : ?>
             <link rel="stylesheet" type="text/css" href="<?= e(Webtrees::ASSETS_PATH . 'css/vendor-rtl.css') ?>">
