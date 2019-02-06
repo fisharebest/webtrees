@@ -349,9 +349,11 @@ class PlaceRepository implements PlaceRepositoryInterface
         string $chart_type  = '',
         string $surname     = ''
     ): string {
-        $tot_pl = $this->totalPlacesQuery();
+        if ($this->totalPlacesQuery() === 0) {
+            return '';
+        }
 
         return (new ChartDistribution($this->tree))
-            ->chartDistribution($tot_pl, $chart_shows, $chart_type, $surname);
+            ->chartDistribution($chart_shows, $chart_type, $surname);
     }
 }

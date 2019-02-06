@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 use Fisharebest\Webtrees\Tree;
 
@@ -28,9 +27,9 @@ use Fisharebest\Webtrees\Tree;
 class ChartCommonSurname extends AbstractGoogle
 {
     /**
-     * @var Tree
+     * @var string
      */
-    private $tree;
+    private $surname_tradition;
 
     /**
      * Constructor.
@@ -39,7 +38,59 @@ class ChartCommonSurname extends AbstractGoogle
      */
     public function __construct(Tree $tree)
     {
-        $this->tree = $tree;
+        parent::__construct($tree);
+
+        $this->surname_tradition = $this->tree->getPreference('SURNAME_TRADITION');
+    }
+
+    /**
+     * Count up the different versions of a name and returns the one with the most matches. Takes
+     * different surname traditions into account.
+     *
+     * @param array $surns
+     *
+     * @return array [ name, count ]
+     */
+    private function getTopNameAndCount(array $surns): array
+    {
+        $max_name  = 0;
+        $count_per = 0;
+        $top_name  = '';
+
+        foreach ($surns as $spfxsurn => $count) {
+            $per = $count;
+            $count_per += $per;
+
+            // select most common surname from all variants
+            if ($per > $max_name) {
+                $max_name = $per;
+                $top_name = $spfxsurn;
+            }
+        }
+
+        if ($this->surname_tradition === 'polish') {
+            // Most common surname should be in male variant (Kowalski, not Kowalska)
+            $top_name = preg_replace(
+                [
+                    '/ska$/',
+                    '/cka$/',
+                    '/dzka$/',
+                    '/żka$/',
+                ],
+                [
+                    'ski',
+                    'cki',
+                    'dzki',
+                    'żki',
+                ],
+                $top_name
+            );
+        }
+
+        return [
+            $top_name,
+            $count_per
+        ];
     }
 
     /**
@@ -47,7 +98,6 @@ class ChartCommonSurname extends AbstractGoogle
      *
      * @param int         $tot_indi     The total number of individuals
      * @param array       $all_surnames The list of common surnames
-     * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
      *
@@ -56,86 +106,43 @@ class ChartCommonSurname extends AbstractGoogle
     public function chartCommonSurnames(
         int $tot_indi,
         array $all_surnames,
-        string $size = null,
         string $color_from = null,
         string $color_to = null
     ): string {
-        $chart_color1 = (string) app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-no-values');
-        $chart_color2 = (string) app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-high-values');
-        $chart_x      = app()->make(ModuleThemeInterface::class)->parameter('stats-small-chart-x');
-        $chart_y      = app()->make(ModuleThemeInterface::class)->parameter('stats-small-chart-y');
-
-        $size       = $size ?? ($chart_x . 'x' . $chart_y);
-        $color_from = $color_from ?? $chart_color1;
-        $color_to   = $color_to ?? $chart_color2;
-        $sizes      = explode('x', $size);
-
-        if (empty($all_surnames)) {
-            return '';
-        }
-
-        $surname_tradition = $this->tree->getPreference('SURNAME_TRADITION');
+        $chart_color1 = (string) $this->theme->parameter('distribution-chart-no-values');
+        $chart_color2 = (string) $this->theme->parameter('distribution-chart-high-values');
+        $color_from   = $color_from ?? $chart_color1;
+        $color_to     = $color_to   ?? $chart_color2;
 
         $tot = 0;
-
         foreach ($all_surnames as $surn => $surnames) {
             $tot += array_sum($surnames);
         }
 
-        $chd = '';
-        $chl = [];
+        $data = [
+            [
+                I18N::translate('Name'),
+                I18N::translate('Total')
+            ],
+        ];
 
-        /** @var array $surns */
         foreach ($all_surnames as $surns) {
-            $count_per = 0;
-            $max_name  = 0;
-            $top_name  = '';
-
-            foreach ($surns as $spfxsurn => $count) {
-                $per = $count;
-                $count_per += $per;
-
-                // select most common surname from all variants
-                if ($per > $max_name) {
-                    $max_name = $per;
-                    $top_name = $spfxsurn;
-                }
-            }
-
-            if ($surname_tradition === 'polish') {
-                // Most common surname should be in male variant (Kowalski, not Kowalska)
-                $top_name = preg_replace([
-                    '/ska$/',
-                    '/cka$/',
-                    '/dzka$/',
-                    '/żka$/',
-                ], [
-                    'ski',
-                    'cki',
-                    'dzki',
-                    'żki',
-                ], $top_name);
-            }
-
-            $per   = intdiv(100 * $count_per, $tot_indi);
-            $chd .= $this->arrayToExtendedEncoding([$per]);
-            $chl[] = $top_name . ' - ' . I18N::number($count_per);
+            $data[] = $this->getTopNameAndCount($surns);
         }
 
-        $per   = intdiv(100 * ($tot_indi - $tot), $tot_indi);
-        $chd .= $this->arrayToExtendedEncoding([$per]);
-        $chl[] = I18N::translate('Other') . ' - ' . I18N::number($tot_indi - $tot);
+        $data[] = [
+            I18N::translate('Other'),
+            $tot_indi - $tot
+        ];
 
-        $chart_title = implode(I18N::$list_separator, $chl);
-        $chl         = rawurlencode(implode('|', $chl));
-        $colors      = [$color_from, $color_to];
+        $colors = $this->interpolateRgb($color_from, $color_to, \count($data) - 1);
 
         return view(
-            'statistics/other/chart-google',
+            'statistics/other/charts/pie',
             [
-                'chart_title' => $chart_title,
-                'chart_url'   => $this->getPieChartUrl($chd, $size, $colors, $chl),
-                'sizes'       => $sizes,
+                'title'  => null,
+                'data'   => $data,
+                'colors' => $colors,
             ]
         );
     }

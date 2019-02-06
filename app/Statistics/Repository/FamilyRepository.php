@@ -326,18 +326,17 @@ class FamilyRepository
     /**
      * Create a chart of children with no families.
      *
-     * @param string $size
-     * @param int    $year1
-     * @param int    $year2
+     * @param int $year1
+     * @param int $year2
      *
      * @return string
      */
-    public function chartNoChildrenFamilies(string $size = '220x200', int $year1 = -1, int $year2 = -1): string
+    public function chartNoChildrenFamilies(int $year1 = -1, int $year2 = -1): string
     {
         $no_child_fam = $this->noChildrenFamiliesQuery();
 
         return (new ChartNoChildrenFamilies($this->tree))
-            ->chartNoChildrenFamilies($no_child_fam, $size, $year1, $year2);
+            ->chartNoChildrenFamilies($no_child_fam, $year1, $year2);
     }
 
     /**
@@ -662,14 +661,12 @@ class FamilyRepository
     /**
      * Genearl query on families/children.
      *
-     * @param string $size
-     *
      * @return string
      */
-    public function statsChildren(string $size = '220x200'): string
+    public function statsChildren(): string
     {
         return (new ChartChildren($this->tree))
-            ->chartChildren($size);
+            ->chartChildren();
     }
 
     /**
@@ -799,7 +796,6 @@ class FamilyRepository
     /**
      * Create a chart of the largest families.
      *
-     * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
      * @param int         $total
@@ -807,13 +803,12 @@ class FamilyRepository
      * @return string
      */
     public function chartLargestFamilies(
-        string $size = null,
         string $color_from = null,
         string $color_to = null,
         int $total = 10
     ): string {
         return (new ChartFamilyLargest($this->tree))
-            ->chartLargestFamilies($size, $color_from, $color_to, $total);
+            ->chartLargestFamilies($color_from, $color_to, $total);
     }
 
     /**
@@ -1545,14 +1540,12 @@ class FamilyRepository
     /**
      * General query on marriage ages.
      *
-     * @param string $size
-     *
      * @return string
      */
-    public function statsMarrAge(string $size = '200x250'): string
+    public function statsMarrAge(): string
     {
         return (new ChartMarriageAge($this->tree))
-            ->chartMarriageAge($size);
+            ->chartMarriageAge();
     }
 
     /**
@@ -1817,30 +1810,28 @@ class FamilyRepository
     /**
      * General query on marriages.
      *
-     * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
      *
      * @return string
      */
-    public function statsMarr(string $size = null, string $color_from = null, string $color_to = null): string
+    public function statsMarr(string $color_from = null, string $color_to = null): string
     {
         return (new ChartMarriage($this->tree))
-            ->chartMarriage($size, $color_from, $color_to);
+            ->chartMarriage($color_from, $color_to);
     }
 
     /**
      * General divorce query.
      *
-     * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
      *
      * @return string
      */
-    public function statsDiv(string $size = null, string $color_from = null, string $color_to = null): string
+    public function statsDiv(string $color_from = null, string $color_to = null): string
     {
         return (new ChartDivorce($this->tree))
-            ->chartDivorce($size, $color_from, $color_to);
+            ->chartDivorce($color_from, $color_to);
     }
 }

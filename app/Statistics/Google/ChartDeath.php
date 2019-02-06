@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\Helper\Century;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 use Fisharebest\Webtrees\Tree;
@@ -29,11 +28,6 @@ use Illuminate\Database\Capsule\Manager as DB;
  */
 class ChartDeath extends AbstractGoogle
 {
-    /**
-     * @var Tree
-     */
-    private $tree;
-
     /**
      * @var Century
      */
@@ -46,7 +40,8 @@ class ChartDeath extends AbstractGoogle
      */
     public function __construct(Tree $tree)
     {
-        $this->tree          = $tree;
+        parent::__construct($tree);
+
         $this->centuryHelper = new Century();
     }
 
@@ -73,54 +68,40 @@ class ChartDeath extends AbstractGoogle
     /**
      * Create a chart of death places.
      *
-     * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
      *
      * @return string
      */
-    public function chartDeath(string $size = null, string $color_from = null, string $color_to = null): string
+    public function chartDeath(string $color_from = null, string $color_to = null): string
     {
-        $chart_color1 = (string) app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-no-values');
-        $chart_color2 = (string) app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-high-values');
-        $chart_x      = app()->make(ModuleThemeInterface::class)->parameter('stats-small-chart-x');
-        $chart_y      = app()->make(ModuleThemeInterface::class)->parameter('stats-small-chart-y');
+        $chart_color1 = (string) $this->theme->parameter('distribution-chart-no-values');
+        $chart_color2 = (string) $this->theme->parameter('distribution-chart-high-values');
+        $color_from   = $color_from ?? $chart_color1;
+        $color_to     = $color_to   ?? $chart_color2;
 
-        $size       = $size ?? ($chart_x . 'x' . $chart_y);
-        $color_from = $color_from ?? $chart_color1;
-        $color_to   = $color_to ?? $chart_color2;
+        $data = [
+            [
+                I18N::translate('Century'),
+                I18N::translate('Total')
+            ],
+        ];
 
-        $sizes = explode('x', $size);
-        $tot   = 0;
-        $rows  = $this->queryRecords();
-
-        foreach ($rows as $values) {
-            $values->total = (int) $values->total;
-            $tot += $values->total;
+        foreach ($this->queryRecords() as $record) {
+            $data[] = [
+                $this->centuryHelper->centuryName((int) $record->century),
+                $record->total
+            ];
         }
 
-        // Beware divide by zero
-        if ($tot === 0) {
-            return '';
-        }
-
-        $centuries = '';
-        $counts    = [];
-        foreach ($rows as $values) {
-            $counts[] = intdiv(100 * $values->total, $tot);
-            $centuries .= $this->centuryHelper->centuryName((int) $values->century) . ' - ' . I18N::number($values->total) . '|';
-        }
-
-        $chd    = $this->arrayToExtendedEncoding($counts);
-        $chl    = rawurlencode(substr($centuries, 0, -1));
-        $colors = [$color_from, $color_to];
+        $colors = $this->interpolateRgb($color_from, $color_to, \count($data) - 1);
 
         return view(
-            'statistics/other/chart-google',
+            'statistics/other/charts/pie',
             [
-                'chart_title' => I18N::translate('Deaths by century'),
-                'chart_url'   => $this->getPieChartUrl($chd, $size, $colors, $chl),
-                'sizes'       => $sizes,
+                'title'  => I18N::translate('Deaths by century'),
+                'data'   => $data,
+                'colors' => $colors,
             ]
         );
     }

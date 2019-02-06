@@ -1,0 +1,67 @@
+<?php
+declare(strict_types=1);
+
+$id = 'google-chart-' . bin2hex(random_bytes(8));
+?>
+
+<?= view('statistics/other/chart-setup') ?>
+
+<h4 class="border-bottom p-2 mb-4">
+    <?= $chart_title ?>
+</h4>
+
+<div class="mb-3">
+    <div class="card-deck">
+        <div class="col-12 mb-3">
+            <div class="card m-0">
+                <div class="card-body">
+                    <div id="google_charts" class="text-center">
+                        <div id="<?= $id ?>"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+var callbackGeoChart = function () {
+    google.charts.setOnLoadCallback(drawRegionsMap);
+
+    function drawRegionsMap () {
+        var data = google.visualization.arrayToDataTable(
+            <?= json_encode($data) ?>
+        );
+
+        var options = {
+            title: '<?= $chart_title ?>',
+            region: '<?= $region ?>',
+            height: '100%',
+            width: '100%',
+            colorAxis: {
+                colors: [
+                    '#<?= $chart_color3 ?>',
+                    '#<?= $chart_color2 ?>'
+                ]
+            }
+        };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('<?= $id ?>'));
+
+        chart.draw(data, options);
+    }
+
+    $(window).resize(drawRegionsMap);
+};
+
+if (
+    document.readyState === "complete" ||
+    (document.readyState !== "loading" && !document.documentElement.doScroll)
+) {
+    callbackGeoChart();
+} else {
+    document.addEventListener("DOMContentLoaded", callbackGeoChart);
+}
+
+</script>

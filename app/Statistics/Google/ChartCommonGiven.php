@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 
 /**
@@ -31,7 +30,6 @@ class ChartCommonGiven extends AbstractGoogle
      *
      * @param int         $tot_indi   The total number of individuals
      * @param array       $given      The list of common given names
-     * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
      *
@@ -40,56 +38,43 @@ class ChartCommonGiven extends AbstractGoogle
     public function chartCommonGiven(
         int $tot_indi,
         array $given,
-        string $size = null,
         string $color_from = null,
         string $color_to = null
     ) : string {
-        $chart_color1 = (string) app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-no-values');
-        $chart_color2 = (string) app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-high-values');
-        $chart_x      = app()->make(ModuleThemeInterface::class)->parameter('stats-small-chart-x');
-        $chart_y      = app()->make(ModuleThemeInterface::class)->parameter('stats-small-chart-y');
-
-        $size       = $size ?? ($chart_x . 'x' . $chart_y);
-        $color_from = $color_from ?? $chart_color1;
-        $color_to   = $color_to ?? $chart_color2;
-        $sizes      = explode('x', $size);
-
-        if (empty($given)) {
-            return '';
-        }
+        $chart_color1 = (string) $this->theme->parameter('distribution-chart-no-values');
+        $chart_color2 = (string) $this->theme->parameter('distribution-chart-high-values');
+        $color_from   = $color_from ?? $chart_color1;
+        $color_to     = $color_to   ?? $chart_color2;
 
         $tot = 0;
         foreach ($given as $count) {
             $tot += $count;
         }
 
-        $chd = '';
-        $chl = [];
+        $data = [
+            [
+                I18N::translate('Name'),
+                I18N::translate('Total')
+            ],
+        ];
 
-        foreach ($given as $givn => $count) {
-            if ($tot === 0) {
-                $per = 0;
-            } else {
-                $per = intdiv(100 * $count, $tot_indi);
-            }
-            $chd .= $this->arrayToExtendedEncoding([$per]);
-            $chl[] = $givn . ' - ' . I18N::number($count);
+        foreach ($given as $name => $count) {
+            $data[] = [ $name, $count ];
         }
 
-        $per   = intdiv(100 * ($tot_indi - $tot), $tot_indi);
-        $chd .= $this->arrayToExtendedEncoding([$per]);
-        $chl[] = I18N::translate('Other') . ' - ' . I18N::number($tot_indi - $tot);
+        $data[] = [
+            I18N::translate('Other'),
+            $tot_indi - $tot
+        ];
 
-        $chart_title = implode(I18N::$list_separator, $chl);
-        $chl         = rawurlencode(implode('|', $chl));
-        $colors      = [$color_from, $color_to];
+        $colors = $this->interpolateRgb($color_from, $color_to, \count($data) - 1);
 
         return view(
-            'statistics/other/chart-google',
+            'statistics/other/charts/pie',
             [
-                'chart_title' => $chart_title,
-                'chart_url'   => $this->getPieChartUrl($chd, $size, $colors, $chl),
-                'sizes'       => $sizes,
+                'title'  => null,
+                'data'   => $data,
+                'colors' => $colors,
             ]
         );
     }

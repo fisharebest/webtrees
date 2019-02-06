@@ -30,11 +30,6 @@ use Illuminate\Database\Query\JoinClause;
 class ChartNoChildrenFamilies extends AbstractGoogle
 {
     /**
-     * @var Tree
-     */
-    private $tree;
-
-    /**
      * @var Century
      */
     private $centuryHelper;
@@ -46,7 +41,8 @@ class ChartNoChildrenFamilies extends AbstractGoogle
      */
     public function __construct(Tree $tree)
     {
-        $this->tree          = $tree;
+        parent::__construct($tree);
+
         $this->centuryHelper = new Century();
     }
 
@@ -62,7 +58,7 @@ class ChartNoChildrenFamilies extends AbstractGoogle
     {
         $query = DB::table('families')
             ->selectRaw('ROUND((d_year - 50) / 100) AS century')
-            ->selectRaw('COUNT(*) AS count')
+            ->selectRaw('COUNT(*) AS total')
             ->join('dates', function (JoinClause $join) {
                 $join->on('d_file', '=', 'f_file')
                     ->on('d_gid', '=', 'f_id');
@@ -84,93 +80,48 @@ class ChartNoChildrenFamilies extends AbstractGoogle
     /**
      * Create a chart of children with no families.
      *
-     * @param int    $no_child_fam The number of families with no children
-     * @param string $size
-     * @param int    $year1
-     * @param int    $year2
+     * @param int $no_child_fam The number of families with no children
+     * @param int $year1
+     * @param int $year2
      *
      * @return string
      */
     public function chartNoChildrenFamilies(
         int $no_child_fam,
-        string $size = '220x200',
-        int $year1   = -1,
-        int $year2   = -1
+        int $year1 = -1,
+        int $year2 = -1
     ): string {
-        $sizes = explode('x', $size);
-        $max   = 0;
-        $tot   = 0;
-        $rows  = $this->queryRecords($year1, $year2);
+        $data = [
+            [
+                I18N::translate('Century'),
+                I18N::translate('Total')
+            ]
+        ];
 
-        if (empty($rows)) {
-            return '';
+        $total = 0;
+
+        foreach ($this->queryRecords($year1, $year2) as $record) {
+            $total += $record->total;
+
+            $data[] = [
+                $this->centuryHelper->centuryName((int) $record->century),
+                $record->total
+            ];
         }
 
-        foreach ($rows as $values) {
-            $values->count = (int) $values->count;
-
-            if ($max < $values->count) {
-                $max = $values->count;
-            }
-            $tot += $values->count;
-        }
-
-        $unknown = $no_child_fam - $tot;
-
-        if ($unknown > $max) {
-            $max = $unknown;
-        }
-
-        $chm    = '';
-        $chxl   = '0:|';
-        $i      = 0;
-        $counts = [];
-
-        foreach ($rows as $values) {
-            $chxl     .= $this->centuryHelper->centuryName((int) $values->century) . '|';
-            $counts[] = intdiv(4095 * $values->count, $max + 1);
-            $chm      .= 't' . $values->count . ',000000,0,' . $i . ',11,1|';
-            $i++;
-        }
-
-        $counts[] = intdiv(4095 * $unknown, $max + 1);
-        $chd      = $this->arrayToExtendedEncoding($counts);
-        $chm      .= 't' . $unknown . ',000000,0,' . $i . ',11,1';
-        $chxl     .= I18N::translateContext('unknown century', 'Unknown') . '|1:||' . I18N::translate('century') . '|2:|0|';
-        $step     = $max + 1;
-
-        for ($d = ($max + 1); $d > 0; $d--) {
-            if (($max + 1) < ($d * 10 + 1) && fmod($max + 1, $d) === 0) {
-                $step = $d;
-            }
-        }
-
-        if ($step === ($max + 1)) {
-            for ($d = $max; $d > 0; $d--) {
-                if ($max < ($d * 10 + 1) && fmod($max, $d) === 0) {
-                    $step = $d;
-                }
-            }
-        }
-
-        for ($n = $step; $n <= ($max + 1); $n += $step) {
-            $chxl .= $n . '|';
-        }
-
-        $chxl .= '3:||' . I18N::translate('Total families') . '|';
-
-        $chart_url = 'https://chart.googleapis.com/chart?cht=bvg&amp;chs=' . $sizes[0] . 'x' . $sizes[1]
-            . '&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0:'
-            . ($i - 1) . ',3,1|' . $chm . '&amp;chd=e:'
-            . $chd . '&amp;chco=0000FF,ffffff00&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl='
-            . rawurlencode($chxl);
+        $data[] = [
+            I18N::translateContext('unknown century', 'Unknown'),
+            $no_child_fam - $total
+        ];
 
         return view(
-            'statistics/other/chart-google',
+            'statistics/other/charts/column',
             [
+                'data'        => $data,
+                'colors'      => ['#84beff'],
                 'chart_title' => I18N::translate('Number of families without children'),
-                'chart_url'   => $chart_url,
-                'sizes'       => $sizes,
+                'hAxis_title' => I18N::translate('Century'),
+                'vAxis_title' => I18N::translate('Total families'),
             ]
         );
     }

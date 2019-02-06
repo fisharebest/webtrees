@@ -28,11 +28,6 @@ use Fisharebest\Webtrees\Tree;
 class ChartMarriageAge extends AbstractGoogle
 {
     /**
-     * @var Tree
-     */
-    private $tree;
-
-    /**
      * @var Century
      */
     private $centuryHelper;
@@ -44,7 +39,8 @@ class ChartMarriageAge extends AbstractGoogle
      */
     public function __construct(Tree $tree)
     {
-        $this->tree          = $tree;
+        parent::__construct($tree);
+
         $this->centuryHelper = new Century();
     }
 
@@ -92,125 +88,48 @@ class ChartMarriageAge extends AbstractGoogle
     /**
      * General query on ages at marriage.
      *
-     * @param string $size
-     *
      * @return string
      */
-    public function chartMarriageAge(string $size = '200x250'): string
+    public function chartMarriageAge(): string
     {
-        $sex   = 'BOTH';
-        $sizes = explode('x', $size);
-        $rows  = $this->queryRecords($sex);
+        $sex = 'BOTH';
+        $out = [];
 
-        if (empty($rows)) {
-            return '';
+        foreach ($this->queryRecords($sex) as $record) {
+            $out[(int) $record->century][$record->sex] = (float) $record->age;
         }
 
-        $max = 0;
-
-        foreach ($rows as $values) {
-            $values->age = (int) $values->age;
-            if ($max < $values->age) {
-                $max = $values->age;
-            }
-        }
-
-        $chxl    = '0:|';
-        $chmm    = '';
-        $chmf    = '';
-        $i       = 0;
-        $countsm = '';
-        $countsf = '';
-        $countsa = '';
-        $out     = [];
-
-        foreach ($rows as $values) {
-            $out[(int) $values->century][$values->sex] = $values->age;
-        }
+        $data = [
+            [
+                I18N::translate('Century'),
+                I18N::translate('Males'),
+                I18N::translate('Females'),
+                I18N::translate('Average age'),
+            ]
+        ];
 
         foreach ($out as $century => $values) {
-            if ($sizes[0] < 1000) {
-                $sizes[0] += 50;
-            }
-            $chxl .= $this->centuryHelper->centuryName($century) . '|';
-            $average = 0;
-            if (isset($values['F'])) {
-                if ($max <= 50) {
-                    $value = $values['F'] * 2;
-                } else {
-                    $value = $values['F'];
-                }
-                $countsf .= $value . ',';
-                $average = $value;
-                $chmf    .= 't' . $values['F'] . ',000000,1,' . $i . ',11,1|';
-            } else {
-                $countsf .= '0,';
-                $chmf    .= 't0,000000,1,' . $i . ',11,1|';
-            }
-            if (isset($values['M'])) {
-                if ($max <= 50) {
-                    $value = $values['M'] * 2;
-                } else {
-                    $value = $values['M'];
-                }
-                $countsm .= $value . ',';
-                if ($average === 0) {
-                    $countsa .= $value . ',';
-                } else {
-                    $countsa .= (($value + $average) / 2) . ',';
-                }
-                $chmm .= 't' . $values['M'] . ',000000,0,' . $i . ',11,1|';
-            } else {
-                $countsm .= '0,';
-                if ($average === 0) {
-                    $countsa .= '0,';
-                } else {
-                    $countsa .= $value . ',';
-                }
-                $chmm .= 't0,000000,0,' . $i . ',11,1|';
-            }
-            $i++;
+            $female_age  = $values['F'] ?? 0;
+            $male_age    = $values['M'] ?? 0;
+            $average_age = ($female_age + $male_age) / 2.0;
+
+            $data[] = [
+                $this->centuryHelper->centuryName($century),
+                $male_age,
+                $female_age,
+                $average_age,
+            ];
         }
-
-        $countsm = substr($countsm, 0, -1);
-        $countsf = substr($countsf, 0, -1);
-        $countsa = substr($countsa, 0, -1);
-        $chmf    = substr($chmf, 0, -1);
-        $chd     = 't2:' . $countsm . '|' . $countsf . '|' . $countsa;
-
-        if ($max <= 50) {
-            $chxl .= '1:||' . I18N::translate('century') . '|2:|0|10|20|30|40|50|3:||' . I18N::translate('Age') . '|';
-        } else {
-            $chxl .= '1:||' . I18N::translate('century') . '|2:|0|10|20|30|40|50|60|70|80|90|100|3:||' . I18N::translate('Age') . '|';
-        }
-
-        if (\count($rows) > 4 || mb_strlen(I18N::translate('Average age in century of marriage')) < 30) {
-            $chtt = I18N::translate('Average age in century of marriage');
-        } else {
-            $offset  = 0;
-            $counter = [];
-
-            while ($offset = strpos(I18N::translate('Average age in century of marriage'), ' ', $offset + 1)) {
-                $counter[] = $offset;
-            }
-
-            $half = intdiv(\count($counter), 2);
-            $chtt = substr_replace(I18N::translate('Average age in century of marriage'), '|', $counter[$half], 1);
-        }
-
-        $chart_url = 'https://chart.googleapis.com/chart?cht=bvg&amp;chs=' . $sizes[0] . 'x' . $sizes[1]
-            . '&amp;chm=D,FF0000,2,0,3,1|' . $chmm . $chmf
-            . '&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=' . rawurlencode($chtt)
-            . '&amp;chd=' . $chd . '&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl='
-            . rawurlencode($chxl) . '&amp;chdl='
-            . rawurlencode(I18N::translate('Males') . '|' . I18N::translate('Females') . '|' . I18N::translate('Average age'));
 
         return view(
-            'statistics/other/chart-google',
+            'statistics/other/charts/combo',
             [
-                'chart_title' => I18N::translate('Average age in century of marriage'),
-                'chart_url'   => $chart_url,
-                'sizes'       => $sizes,
+                'data'            => $data,
+                'colors'          => ['#84beff', '#ffd1dc', '#ff0000'],
+                'chart_title'     => I18N::translate('Average age in century of marriage'),
+                'chart_sub_title' => I18N::translate('Average age at marriage'),
+                'hAxis_title'     => I18N::translate('Century'),
+                'vAxis_title'     => I18N::translate('Age'),
             ]
         );
     }

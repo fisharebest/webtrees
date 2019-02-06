@@ -354,12 +354,12 @@ class MediaRepository implements MediaRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function chartMedia(string $size = null, string $color_from = null, string $color_to = null): string
+    public function chartMedia(string $color_from = null, string $color_to = null): string
     {
         $tot   = $this->totalMediaTypeQuery(self::MEDIA_TYPE_ALL);
         $media = $this->getSortedMediaTypeList($tot);
 
-        return (new ChartMedia())
-            ->chartMedia($tot, $media, $size, $color_from, $color_to);
+        return (new ChartMedia($this->tree))
+            ->chartMedia($media, $color_from, $color_to);
     }
 }

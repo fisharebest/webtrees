@@ -23,21 +23,21 @@ use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 /**
  *
  */
-class ChartFamilyWithSources extends AbstractGoogle
+class ChartIndividualWithSources extends AbstractGoogle
 {
     /**
-     * Create a chart of individuals with/without sources.
+     * Create a chart showing individuals with/without sources.
      *
-     * @param int         $tot_fam        The total number of families
-     * @param int         $tot_fam_source The total number of families with sources
+     * @param int         $tot_indi        The total number of individuals
+     * @param int         $tot_indi_source The total number of individuals with sources
      * @param string|null $color_from
      * @param string|null $color_to
      *
      * @return string
      */
-    public function chartFamsWithSources(
-        int $tot_fam,
-        int $tot_fam_source,
+    public function chartIndisWithSources(
+        int $tot_indi,
+        int $tot_indi_source,
         string $color_from = null,
         string $color_to   = null
     ): string {
@@ -53,11 +53,11 @@ class ChartFamilyWithSources extends AbstractGoogle
             ],
             [
                 I18N::translate('Without sources'),
-                $tot_fam - $tot_fam_source
+                $tot_indi - $tot_indi_source
             ],
             [
                 I18N::translate('With sources'),
-                $tot_fam_source
+                $tot_indi_source
             ],
         ];
 
@@ -66,7 +66,7 @@ class ChartFamilyWithSources extends AbstractGoogle
         return view(
             'statistics/other/charts/pie',
             [
-                'title'            => I18N::translate('Families with sources'),
+                'title'            => I18N::translate('Individuals with sources'),
                 'data'             => $data,
                 'colors'           => $colors,
                 'labeledValueText' => 'percentage',

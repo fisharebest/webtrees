@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 
 /**
@@ -30,58 +29,44 @@ class ChartMedia extends AbstractGoogle
     /**
      * Create a chart of media types.
      *
-     * @param int         $tot        The total number of media files
      * @param array       $media      The list of media types to display
-     * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
      *
      * @return string
      */
     public function chartMedia(
-        int $tot,
         array $media,
-        string $size       = null,
         string $color_from = null,
         string $color_to   = null
     ): string {
-        $chart_color1 = (string) app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-no-values');
-        $chart_color2 = (string) app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-high-values');
-        $chart_x      = app()->make(ModuleThemeInterface::class)->parameter('stats-small-chart-x');
-        $chart_y      = app()->make(ModuleThemeInterface::class)->parameter('stats-small-chart-y');
+        $chart_color1 = (string) $this->theme->parameter('distribution-chart-no-values');
+        $chart_color2 = (string) $this->theme->parameter('distribution-chart-high-values');
+        $color_from   = $color_from ?? $chart_color1;
+        $color_to     = $color_to   ?? $chart_color2;
 
-        $size       = $size ?? ($chart_x . 'x' . $chart_y);
-        $color_from = $color_from ?? $chart_color1;
-        $color_to   = $color_to ?? $chart_color2;
-        $sizes      = explode('x', $size);
-
-        // Beware divide by zero
-        if ($tot === 0) {
-            return I18N::translate('None');
-        }
-
-        // Build a table listing only the media types actually present in the GEDCOM
-        $mediaCounts = [];
-        $mediaTypes  = '';
-        $chart_title = '';
+        $data = [
+            [
+                I18N::translate('Type'),
+                I18N::translate('Total')
+            ],
+        ];
 
         foreach ($media as $type => $count) {
-            $mediaCounts[] = intdiv(100 * $count, $tot);
-            $mediaTypes    .= GedcomTag::getFileFormTypeValue($type) . ' - ' . I18N::number($count) . '|';
-            $chart_title   .= GedcomTag::getFileFormTypeValue($type) . ' (' . $count . '), ';
+            $data[] = [
+                GedcomTag::getFileFormTypeValue($type),
+                $count
+            ];
         }
 
-        $chart_title = substr($chart_title, 0, -2);
-        $chd         = $this->arrayToExtendedEncoding($mediaCounts);
-        $chl         = substr($mediaTypes, 0, -1);
-        $colors      = [$color_from, $color_to];
+        $colors = $this->interpolateRgb($color_from, $color_to, \count($data) - 1);
 
         return view(
-            'statistics/other/chart-google',
+            'statistics/other/charts/pie',
             [
-                'chart_title' => $chart_title,
-                'chart_url'   => $this->getPieChartUrl($chd, $size, $colors, $chl),
-                'sizes'       => $sizes,
+                'title'  => null,
+                'data'   => $data,
+                'colors' => $colors,
             ]
         );
     }

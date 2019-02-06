@@ -158,7 +158,6 @@ interface IndividualRepositoryInterface
     /**
      * Generate a chart showing sex distribution.
      *
-     * @param string|null $size
      * @param string|null $color_female
      * @param string|null $color_male
      * @param string|null $color_unknown
@@ -166,7 +165,6 @@ interface IndividualRepositoryInterface
      * @return string
      */
     public function chartSex(
-        string $size          = null,
         string $color_female  = null,
         string $color_male    = null,
         string $color_unknown = null

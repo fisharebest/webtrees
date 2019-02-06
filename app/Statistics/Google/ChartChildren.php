@@ -30,11 +30,6 @@ use Illuminate\Database\Query\JoinClause;
 class ChartChildren extends AbstractGoogle
 {
     /**
-     * @var Tree
-     */
-    private $tree;
-
-    /**
      * @var Century
      */
     private $centuryHelper;
@@ -46,7 +41,8 @@ class ChartChildren extends AbstractGoogle
      */
     public function __construct(Tree $tree)
     {
-        $this->tree          = $tree;
+        parent::__construct($tree);
+
         $this->centuryHelper = new Century();
     }
 
@@ -58,7 +54,7 @@ class ChartChildren extends AbstractGoogle
     private function queryRecords(): array
     {
         $query = DB::table('families')
-            ->selectRaw('ROUND(AVG(f_numchil),2) AS num')
+            ->selectRaw('ROUND(AVG(f_numchil), 2) AS num')
             ->selectRaw('ROUND((d_year - 50) / 100) AS century')
             ->join('dates', function (JoinClause $join) {
                 $join->on('d_file', '=', 'f_file')
@@ -75,69 +71,34 @@ class ChartChildren extends AbstractGoogle
     }
 
     /**
-     * General query on familes/children.
-     *
-     * @param string $size
+     * Creates a children per family chart.
      *
      * @return string
      */
-    public function chartChildren(string $size = '220x200'): string
+    public function chartChildren(): string
     {
-        $sizes = explode('x', $size);
-        $max   = 0;
-        $rows  = $this->queryRecords();
+        $data = [
+            [
+                I18N::translate('Century'),
+                I18N::translate('Average number')
+            ]
+        ];
 
-        if (empty($rows)) {
-            return '';
+        foreach ($this->queryRecords() as $record) {
+            $data[] = [
+                $this->centuryHelper->centuryName((int) $record->century),
+                (float) $record->num
+            ];
         }
-
-        foreach ($rows as $values) {
-            $values->num = (int) $values->num;
-            if ($max < $values->num) {
-                $max = $values->num;
-            }
-        }
-
-        $chm    = '';
-        $chxl   = '0:|';
-        $i      = 0;
-        $counts = [];
-
-        foreach ($rows as $values) {
-            $chxl .= $this->centuryHelper->centuryName((int) $values->century) . '|';
-            if ($max <= 5) {
-                $counts[] = (int) ($values->num * 819.2 - 1);
-            } elseif ($max <= 10) {
-                $counts[] = (int) ($values->num * 409.6);
-            } else {
-                $counts[] = (int) ($values->num * 204.8);
-            }
-            $chm .= 't' . $values->num . ',000000,0,' . $i . ',11,1|';
-            $i++;
-        }
-
-        $chd = $this->arrayToExtendedEncoding($counts);
-        $chm = substr($chm, 0, -1);
-
-        if ($max <= 5) {
-            $chxl .= '1:||' . I18N::translate('century') . '|2:|0|1|2|3|4|5|3:||' . I18N::translate('Number of children') . '|';
-        } elseif ($max <= 10) {
-            $chxl .= '1:||' . I18N::translate('century') . '|2:|0|1|2|3|4|5|6|7|8|9|10|3:||' . I18N::translate('Number of children') . '|';
-        } else {
-            $chxl .= '1:||' . I18N::translate('century') . '|2:|0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|3:||' . I18N::translate('Number of children') . '|';
-        }
-
-        $chart_url = 'https://chart.googleapis.com/chart?cht=bvg&amp;chs=' . $sizes[0] . 'x' . $sizes[1]
-            . '&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0,3,1|' . $chm
-            . '&amp;chd=e:' . $chd . '&amp;chco=0000FF&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl='
-            . rawurlencode($chxl);
 
         return view(
-            'statistics/other/chart-google',
+            'statistics/other/charts/column',
             [
+                'data'        => $data,
+                'colors'      => ['#84beff'],
                 'chart_title' => I18N::translate('Average number of children per family'),
-                'chart_url'   => $chart_url,
-                'sizes'       => $sizes,
+                'hAxis_title' => I18N::translate('Century'),
+                'vAxis_title' => I18N::translate('Number of children'),
             ]
         );
     }

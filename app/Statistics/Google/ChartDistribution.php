@@ -17,25 +17,20 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Google;
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module\ModuleThemeInterface;
-use Fisharebest\Webtrees\Statistics\Helper\Country;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
-use Fisharebest\Webtrees\Statistics\Repository\PlaceRepository;
+use Fisharebest\Webtrees\Statistics\Helper\Country;
 use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
+use Fisharebest\Webtrees\Statistics\Repository\PlaceRepository;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\JoinClause;
 
 /**
  * Create a chart showing where events occurred.
  */
 class ChartDistribution extends AbstractGoogle
 {
-    /**
-     * @var Tree
-     */
-    private $tree;
-
     /**
      * @var Country
      */
@@ -52,184 +47,307 @@ class ChartDistribution extends AbstractGoogle
     private $placeRepository;
 
     /**
+     * @var string[]
+     */
+    private $country_to_iso3166;
+
+    /**
      * Constructor.
      *
      * @param Tree $tree
      */
     public function __construct(Tree $tree)
     {
-        $this->tree                 = $tree;
+        parent::__construct($tree);
+
         $this->countryHelper        = new Country();
         $this->individualRepository = new IndividualRepository($tree);
         $this->placeRepository      = new PlaceRepository($tree);
+
+        // Get the country names for each language
+        $this->country_to_iso3166 = $this->getIso3166Countries();
+    }
+
+    /**
+     * Returns the country names for each language.
+     *
+     * @return string[]
+     */
+    private function getIso3166Countries(): array
+    {
+        $countries = $this->countryHelper->getAllCountries();
+
+        // Get the country names for each language
+        $this->country_to_iso3166 = [];
+
+        foreach (I18N::activeLocales() as $locale) {
+            I18N::init($locale->languageTag());
+
+            foreach ($this->countryHelper->iso3166() as $three => $two) {
+                $this->country_to_iso3166[$three]             = $two;
+                $this->country_to_iso3166[$countries[$three]] = $two;
+            }
+        }
+
+        return $this->country_to_iso3166;
+    }
+
+    /**
+     * Returns the data structure required by google geochart.
+     *
+     * @param array $places
+     *
+     * @return array
+     */
+    private function createChartData(array $places): array
+    {
+        $data = [
+            [
+                I18N::translate('Country'),
+                I18N::translate('Total'),
+            ],
+        ];
+
+        // webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
+        foreach ($places as $country => $count) {
+            $data[] = [
+                [
+                    'v' => $country,
+                    'f' => $this->countryHelper->mapTwoLetterToName($country),
+                ],
+                $count
+            ];
+        }
+
+        return $data;
+    }
+
+    /**
+     * Returns the google geochart data for birth fact.
+     *
+     * @return array
+     */
+    private function getBirthChartData(): array
+    {
+        // Count how many people were born in each country
+        $surn_countries = [];
+        $b_countries    = $this->placeRepository->statsPlaces('INDI', 'BIRT', 0, true);
+
+        foreach ($b_countries as $country => $count) {
+            // Consolidate places (Germany, DEU => DE)
+            if (\array_key_exists($country, $this->country_to_iso3166)) {
+                $country_code = $this->country_to_iso3166[$country];
+
+                if (\array_key_exists($country_code, $surn_countries)) {
+                    $surn_countries[$country_code] += $count;
+                } else {
+                    $surn_countries[$country_code] = $count;
+                }
+            }
+        }
+
+        return $this->createChartData($surn_countries);
+    }
+
+    /**
+     * Returns the google geochart data for death fact.
+     *
+     * @return array
+     */
+    private function getDeathChartData(): array
+    {
+        // Count how many people were death in each country
+        $surn_countries = [];
+        $d_countries    = $this->placeRepository->statsPlaces('INDI', 'DEAT', 0, true);
+
+        foreach ($d_countries as $country => $count) {
+            // Consolidate places (Germany, DEU => DE)
+            if (\array_key_exists($country, $this->country_to_iso3166)) {
+                $country_code = $this->country_to_iso3166[$country];
+
+                if (\array_key_exists($country_code, $surn_countries)) {
+                    $surn_countries[$country_code] += $count;
+                } else {
+                    $surn_countries[$country_code] = $count;
+                }
+            }
+        }
+
+        return $this->createChartData($surn_countries);
+    }
+
+    /**
+     * Returns the google geochart data for marriages.
+     *
+     * @return array
+     */
+    private function getMarriageChartData(): array
+    {
+        // Count how many families got marriage in each country
+        $surn_countries = [];
+        $m_countries    = $this->placeRepository->statsPlaces('FAM');
+
+        // webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
+        foreach ($m_countries as $place) {
+            // Consolidate places (Germany, DEU => DE)
+            if (\array_key_exists($place->country, $this->country_to_iso3166)) {
+                $country_code = $this->country_to_iso3166[$place->country];
+
+                if (\array_key_exists($country_code, $surn_countries)) {
+                    $surn_countries[$country_code] += $place->tot;
+                } else {
+                    $surn_countries[$country_code] = $place->tot;
+                }
+            }
+        }
+
+        return $this->createChartData($surn_countries);
+    }
+
+    /**
+     * Returns the related database records.
+     *
+     * @param string $surname
+     *
+     * @return \stdClass[]
+     */
+    private function queryRecords(string $surname): array
+    {
+        $query = DB::table('individuals')
+            ->select(['i_gedcom'])
+            ->join('name', function (JoinClause $join) {
+                $join->on('n_id', '=', 'i_id')
+                    ->on('n_file', '=', 'i_file');
+            })
+            ->where('n_file', '=', $this->tree->id())
+            ->where(DB::raw('n_surn /*! COLLATE ' . I18N::collation() . ' */'), '=', $surname);
+
+        return $query->get()->all();
+    }
+
+    /**
+     * Returns the google geochart data for surnames.
+     *
+     * @param string $surname The surname used to create the chart
+     *
+     * @return array
+     */
+    private function getSurnameChartData(string $surname): array
+    {
+        if ($surname === '') {
+            $surname = $this->individualRepository->getCommonSurname();
+        }
+
+        // Count how many people are events in each country
+        $surn_countries = [];
+        $records        = $this->queryRecords($surname);
+
+        foreach ($records as $row) {
+            /** @var string[][] $matches */
+            if (preg_match_all('/^2 PLAC (?:.*, *)*(.*)/m', $row->i_gedcom, $matches)) {
+                // webtrees uses 3 letter country codes and localised country names,
+                // but google uses 2 letter codes.
+                foreach ($matches[1] as $country) {
+                    // Consolidate places (Germany, DEU => DE)
+                    if (\array_key_exists($country, $this->country_to_iso3166)) {
+                        $country_code = $this->country_to_iso3166[$country];
+
+                        if (\array_key_exists($country_code, $surn_countries)) {
+                            $surn_countries[$country_code]++;
+                        } else {
+                            $surn_countries[$country_code] = 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        return $this->createChartData($surn_countries);
+    }
+
+    /**
+     * Returns the google geochart data for individuals.
+     *
+     * @return array
+     */
+    private function getIndivdualChartData(): array
+    {
+        // Count how many people have events in each country
+        $surn_countries = [];
+        $a_countries    = $this->placeRepository->statsPlaces('INDI');
+
+        // webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
+        foreach ($a_countries as $place) {
+            // Consolidate places (Germany, DEU => DE)
+            if (\array_key_exists($place->country, $this->country_to_iso3166)) {
+                $country_code = $this->country_to_iso3166[$place->country];
+
+                if (\array_key_exists($country_code, $surn_countries)) {
+                    $surn_countries[$country_code] += $place->tot;
+                } else {
+                    $surn_countries[$country_code] = $place->tot;
+                }
+            }
+        }
+
+        return $this->createChartData($surn_countries);
     }
 
     /**
      * Create a chart showing where events occurred.
      *
-     * @param int    $tot_pl      The total number of places
-     * @param string $chart_shows
-     * @param string $chart_type
-     * @param string $surname
+     * @param string $chart_shows The type of chart map to show
+     * @param string $chart_type  The type of chart to show
+     * @param string $surname     The surname for surname based distribution chart
      *
      * @return string
      */
     public function chartDistribution(
-        int $tot_pl,
         string $chart_shows = 'world',
         string $chart_type  = '',
         string $surname     = ''
     ): string {
-        $chart_color1 = app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-no-values');
-        $chart_color2 = app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-high-values');
-        $chart_color3 = app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-low-values');
-        $map_x        = app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-x');
-        $map_y        = app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-y');
-
-        if ($tot_pl === 0) {
-            return '';
-        }
-
-        $countries = $this->countryHelper->getAllCountries();
-
-        // Get the country names for each language
-        $country_to_iso3166 = [];
-        foreach (I18N::activeLocales() as $locale) {
-            I18N::init($locale->languageTag());
-
-            foreach ($this->countryHelper->iso3166() as $three => $two) {
-                $country_to_iso3166[$three]             = $two;
-                $country_to_iso3166[$countries[$three]] = $two;
-            }
-        }
-
         I18N::init(WT_LOCALE);
 
         switch ($chart_type) {
             case 'surname_distribution_chart':
-                if ($surname === '') {
-                    $surname = $this->individualRepository->getCommonSurname();
-                }
                 $chart_title = I18N::translate('Surname distribution chart') . ': ' . $surname;
-                // Count how many people are events in each country
-                $surn_countries = [];
-
-                $rows = Database::prepare(
-                    'SELECT i_gedcom' . ' FROM `##individuals`' . ' JOIN `##name` ON n_id = i_id AND n_file = i_file' . ' WHERE n_file = :tree_id' . ' AND n_surn COLLATE :collate = :surname'
-                )->execute([
-                    'tree_id' => $this->tree->id(),
-                    'collate' => I18N::collation(),
-                    'surname' => $surname,
-                ])->fetchAll();
-
-                foreach ($rows as $row) {
-                    if (preg_match_all('/^2 PLAC (?:.*, *)*(.*)/m', $row->i_gedcom, $matches)) {
-                        // webtrees uses 3 letter country codes and localised country names,
-                        // but google uses 2 letter codes.
-                        foreach ($matches[1] as $country) {
-                            if (\array_key_exists($country, $country_to_iso3166)) {
-                                if (\array_key_exists($country_to_iso3166[$country], $surn_countries)) {
-                                    $surn_countries[$country_to_iso3166[$country]]++;
-                                } else {
-                                    $surn_countries[$country_to_iso3166[$country]] = 1;
-                                }
-                            }
-                        }
-                    }
-                }
-
+                $data        = $this->getSurnameChartData($surname);
                 break;
 
             case 'birth_distribution_chart':
                 $chart_title = I18N::translate('Birth by country');
-                // Count how many people were born in each country
-                $surn_countries = [];
-                $b_countries    = $this->placeRepository->statsPlaces('INDI', 'BIRT', 0, true);
-                foreach ($b_countries as $place => $count) {
-                    $country = $place;
-                    if (\array_key_exists($country, $country_to_iso3166)) {
-                        if (!isset($surn_countries[$country_to_iso3166[$country]])) {
-                            $surn_countries[$country_to_iso3166[$country]] = $count;
-                        } else {
-                            $surn_countries[$country_to_iso3166[$country]] += $count;
-                        }
-                    }
-                }
+                $data        = $this->getBirthChartData();
                 break;
 
             case 'death_distribution_chart':
                 $chart_title = I18N::translate('Death by country');
-                // Count how many people were death in each country
-                $surn_countries = [];
-                $d_countries    = $this->placeRepository->statsPlaces('INDI', 'DEAT', 0, true);
-                foreach ($d_countries as $place => $count) {
-                    $country = $place;
-                    if (\array_key_exists($country, $country_to_iso3166)) {
-                        if (!isset($surn_countries[$country_to_iso3166[$country]])) {
-                            $surn_countries[$country_to_iso3166[$country]] = $count;
-                        } else {
-                            $surn_countries[$country_to_iso3166[$country]] += $count;
-                        }
-                    }
-                }
+                $data        = $this->getDeathChartData();
                 break;
 
             case 'marriage_distribution_chart':
                 $chart_title = I18N::translate('Marriage by country');
-                // Count how many families got marriage in each country
-                $surn_countries = [];
-                $m_countries    = $this->placeRepository->statsPlaces('FAM');
-                // webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
-                foreach ($m_countries as $place) {
-                    $country = $place->country;
-                    if (\array_key_exists($country, $country_to_iso3166)) {
-                        if (!isset($surn_countries[$country_to_iso3166[$country]])) {
-                            $surn_countries[$country_to_iso3166[$country]] = $place->tot;
-                        } else {
-                            $surn_countries[$country_to_iso3166[$country]] += $place->tot;
-                        }
-                    }
-                }
+                $data        = $this->getMarriageChartData();
                 break;
 
             case 'indi_distribution_chart':
             default:
                 $chart_title = I18N::translate('Individual distribution chart');
-                // Count how many people have events in each country
-                $surn_countries = [];
-                $a_countries    = $this->placeRepository->statsPlaces('INDI');
-                // webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
-                foreach ($a_countries as $place) {
-                    $country = $place->country;
-                    if (\array_key_exists($country, $country_to_iso3166)) {
-                        if (!isset($surn_countries[$country_to_iso3166[$country]])) {
-                            $surn_countries[$country_to_iso3166[$country]] = $place->tot;
-                        } else {
-                            $surn_countries[$country_to_iso3166[$country]] += $place->tot;
-                        }
-                    }
-                }
+                $data        = $this->getIndivdualChartData();
                 break;
         }
 
-        $chart_url = 'https://chart.googleapis.com/chart?cht=t&amp;chtm=' . $chart_shows;
-        $chart_url .= '&amp;chco=' . $chart_color1 . ',' . $chart_color3 . ',' . $chart_color2; // country colours
-        $chart_url .= '&amp;chf=bg,s,ECF5FF'; // sea colour
-        $chart_url .= '&amp;chs=' . $map_x . 'x' . $map_y;
-        $chart_url .= '&amp;chld=' . implode('', array_keys($surn_countries)) . '&amp;chd=s:';
-
-        foreach ($surn_countries as $count) {
-            $chart_url .= substr(self::GOOGLE_CHART_ENCODING, (int) ($count / max($surn_countries) * 61), 1);
-        }
+        $chart_color2 = $this->theme->parameter('distribution-chart-high-values');
+        $chart_color3 = $this->theme->parameter('distribution-chart-low-values');
 
         return view(
-            'statistics/other/chart-distribution',
+            'statistics/other/charts/geo',
             [
                 'chart_title'  => $chart_title,
-                'chart_url'    => $chart_url,
-                'chart_color1' => $chart_color1,
                 'chart_color2' => $chart_color2,
                 'chart_color3' => $chart_color3,
+                'region'       => $chart_shows,
+                'data'         => $data,
             ]
         );
     }
