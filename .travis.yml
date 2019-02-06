@@ -17,7 +17,6 @@ cache:
 
 install:
   - curl -s http://getcomposer.org/installer | php
-  - pecl channel-update pecl.php.net
   - pecl install ast
   - php composer.phar install --dev --no-interaction
 
