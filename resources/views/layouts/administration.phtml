@@ -13,7 +13,7 @@
 
         <title><?= $title ?></title>
 
-        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="<?= e(asset('favicon.ico')) ?>" type="image/x-icon">
 
         <?php if (I18N::direction() === 'rtl') : ?>
             <link rel="stylesheet" type="text/css" href="<?= e(Webtrees::ASSETS_PATH . 'css/vendor-rtl.css') ?>">
