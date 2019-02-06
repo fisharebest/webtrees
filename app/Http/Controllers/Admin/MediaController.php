@@ -268,7 +268,7 @@ class MediaController extends AbstractAdminController
                     $delete_link = '<p><a data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($unused_file)) . '" data-url="' . e(route('admin-media-delete', [
                             'file'   => $unused_file,
                             'folder' => $media_folder,
-                        ])) . '" onclick="if (confirm(this.dataset.confirm)) jQuery.post(this.dataset.url, function (){location.reload();})" href="#">' . I18N::translate('Delete') . '</a></p>';
+                        ])) . '" onclick="if (confirm(this.dataset.confirm)) jQuery.post(this.dataset.url, function (){document.location.reload();})" href="#">' . I18N::translate('Delete') . '</a></p>';
 
                     $data[] = [
                         $this->mediaFileInfo($media_folder, $unused_file) . $delete_link,

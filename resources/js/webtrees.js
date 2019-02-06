@@ -34,7 +34,7 @@ function accept_changes(xref, ged)
             ged: ged,
         },
         function () {
-            location.reload();
+            document.location.reload();
         }
     );
     return false;
@@ -51,7 +51,7 @@ function reject_changes(xref, ged)
             ged: ged,
         },
         function () {
-            location.reload();
+            document.location.reload();
         }
     );
     return false;
@@ -68,7 +68,7 @@ function delete_record(xref, gedcom)
             ged: gedcom,
         },
         function () {
-            location.reload();
+            document.location.reload();
         }
     );
 
@@ -88,7 +88,7 @@ function delete_fact(message, ged, xref, fact_id)
                 ged: ged
             },
             function () {
-                location.reload();
+                document.location.reload();
             }
         );
     }
@@ -107,7 +107,7 @@ function copy_fact(ged, xref, fact_id)
             ged: ged,
         },
         function () {
-            location.reload();
+            document.location.reload();
         }
     );
     return false;
@@ -125,7 +125,7 @@ function paste_fact(ged, xref, element)
             ged: ged,
         },
         function () {
-            location.reload();
+            document.location.reload();
         }
     );
     return false;
@@ -142,7 +142,7 @@ function delete_user(message, user_id)
                 user_id: user_id,
             },
             function () {
-                location.reload();
+                document.location.reload();
             }
         );
     }
@@ -159,7 +159,7 @@ function masquerade(user_id)
             user_id: user_id,
         },
         function () {
-            location.reload();
+            document.location.reload();
         }
     );
     return false;
@@ -947,7 +947,7 @@ $(function () {
             route: 'language',
             language: $(this).data('language')
         }, function () {
-            window.location.reload();
+            document.location.reload();
         });
 
         return false;
@@ -959,7 +959,7 @@ $(function () {
             route: 'theme',
             theme: $(this).data('theme')
         }, function () {
-            window.location.reload();
+            document.location.reload();
         });
 
         return false;
