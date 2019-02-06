@@ -165,11 +165,10 @@ interface MediaRepositoryInterface
     /**
      * Create a chart of media types.
      *
-     * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
      *
      * @return string
      */
-    public function chartMedia(string $size = null, string $color_from = null, string $color_to = null): string;
+    public function chartMedia(string $color_from = null, string $color_to = null): string;
 }

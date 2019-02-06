@@ -849,6 +849,138 @@ function insertTextAtCursor(e, t)
     e.scrollTop = scrollTop;
 }
 
+
+/**
+ * Draws a google pie chart.
+ *
+ * @param {String} elementId        The element id of the HTML element the chart is rendered too
+ * @param {Array}  data             The chart data array
+ * @param {Array}  colors           The chart color array
+ * @param {String} title            The chart title
+ * @param {String} labeledValueText The type of how to display the slice text
+ */
+function drawPieChart(elementId, data, colors, title, labeledValueText)
+{
+    var data    = google.visualization.arrayToDataTable(data);
+    var options = {
+        title: title,
+        height: '100%',
+        width: '100%',
+        pieStartAngle: 0,
+        pieSliceText: 'none',
+        pieSliceTextStyle: {
+            color: '#777'
+        },
+        pieHole: 0.4,  // Donut
+        //is3D: true,  // 3D (not together with pieHole)
+        legend: {
+            alignment: 'center',
+            // Flickers on mouseover :(
+            labeledValueText: labeledValueText || 'value',
+            position: 'labeled'
+        },
+        chartArea: {
+            left: 0,
+            top: '5%',
+            height: '90%',
+            width: '100%'
+        },
+        tooltip: {
+            trigger: 'none',
+            text: 'both'
+        },
+        backgroundColor: 'transparent',
+        colors: colors
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById(elementId));
+
+    chart.draw(data, options);
+}
+
+/**
+ * Draws a google column chart.
+ *
+ * @param {String} elementId The element id of the HTML element the chart is rendered too
+ * @param {Array}  data      The chart data array
+ * @param {Object} options   The chart specific options to overwrite the default ones
+ */
+function drawColumnChart(elementId, data, options)
+{
+    var defaults = {
+        title: '',
+        subtitle: '',
+        height: '100%',
+        width: '100%',
+        vAxis: {
+            title: ''
+        },
+        hAxis: {
+            title: ''
+        },
+        legend: {
+            position: 'none'
+        },
+        backgroundColor: 'transparent'
+    };
+
+    options = Object.assign(defaults, options);
+
+    var chart = new google.visualization.ColumnChart(document.getElementById(elementId));
+    var data  = google.visualization.arrayToDataTable(data);
+
+    chart.draw(data, options);
+}
+
+/**
+ * Draws a google combo chart.
+ *
+ * @param {String} elementId The element id of the HTML element the chart is rendered too
+ * @param {Array}  data      The chart data array
+ * @param {Object} options   The chart specific options to overwrite the default ones
+ */
+function drawComboChart(elementId, data, options)
+{
+    var defaults = {
+        title: '',
+        subtitle: '',
+        titleTextStyle: {
+            color: '#757575',
+            fontName: 'Roboto',
+            fontSize: '16px',
+            bold: false,
+            italic: false
+        },
+        height: '100%',
+        width: '100%',
+        vAxis: {
+            title: ''
+        },
+        hAxis: {
+            title: ''
+        },
+        legend: {
+            position: 'none'
+        },
+        seriesType: 'bars',
+        series: {
+            2: {
+                type: 'line'
+            }
+        },
+        colors: [],
+        backgroundColor: 'transparent'
+    };
+
+    options = Object.assign(defaults, options);
+
+    var chart = new google.visualization.ComboChart(document.getElementById(elementId));
+    var data  = google.visualization.arrayToDataTable(data);
+
+    chart.draw(data, options);
+}
+
+
 // Send the CSRF token on all AJAX requests
 $.ajaxSetup({
     headers: {

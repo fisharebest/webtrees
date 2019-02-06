@@ -404,11 +404,10 @@ class Statistics implements
      * @inheritDoc
      */
     public function chartIndisWithSources(
-        string $size = null,
         string $color_from = null,
         string $color_to = null
     ): string {
-        return $this->individualRepository->chartIndisWithSources($size, $color_from, $color_to);
+        return $this->individualRepository->chartIndisWithSources($color_from, $color_to);
     }
 
     /**
@@ -447,11 +446,10 @@ class Statistics implements
      * @inheritDoc
      */
     public function chartFamsWithSources(
-        string $size = null,
         string $color_from = null,
         string $color_to = null
     ): string {
-        return $this->individualRepository->chartFamsWithSources($size, $color_from, $color_to);
+        return $this->individualRepository->chartFamsWithSources($color_from, $color_to);
     }
 
     /**
@@ -650,12 +648,11 @@ class Statistics implements
      * @inheritDoc
      */
     public function chartSex(
-        string $size = null,
         string $color_female = null,
         string $color_male = null,
         string $color_unknown = null
     ): string {
-        return $this->individualRepository->chartSex($size, $color_female, $color_male, $color_unknown);
+        return $this->individualRepository->chartSex($color_female, $color_male, $color_unknown);
     }
 
     /**
@@ -693,9 +690,9 @@ class Statistics implements
     /**
      * @inheritDoc
      */
-    public function chartMortality(string $size = null, string $color_living = null, string $color_dead = null): string
+    public function chartMortality(string $color_living = null, string $color_dead = null): string
     {
-        return $this->individualRepository->chartMortality($size, $color_living, $color_dead);
+        return $this->individualRepository->chartMortality($color_living, $color_dead);
     }
 
     /**
@@ -861,9 +858,9 @@ class Statistics implements
     /**
      * @inheritDoc
      */
-    public function chartMedia(string $size = null, string $color_from = null, string $color_to = null): string
+    public function chartMedia(string $color_from = null, string $color_to = null): string
     {
-        return $this->mediaRepository->chartMedia($size, $color_from, $color_to);
+        return $this->mediaRepository->chartMedia($color_from, $color_to);
     }
 
     /**
@@ -1000,9 +997,9 @@ class Statistics implements
     /**
      * @inheritDoc
      */
-    public function statsBirth(string $size = null, string $color_from = null, string $color_to = null): string
+    public function statsBirth(string $color_from = null, string $color_to = null): string
     {
-        return $this->individualRepository->statsBirth($size, $color_from, $color_to);
+        return $this->individualRepository->statsBirth($color_from, $color_to);
     }
 
     /**
@@ -1080,9 +1077,9 @@ class Statistics implements
     /**
      * @inheritDoc
      */
-    public function statsDeath(string $size = null, string $color_from = null, string $color_to = null): string
+    public function statsDeath(string $color_from = null, string $color_to = null): string
     {
-        return $this->individualRepository->statsDeath($size, $color_from, $color_to);
+        return $this->individualRepository->statsDeath($color_from, $color_to);
     }
 
     /**
@@ -1096,9 +1093,9 @@ class Statistics implements
     /**
      * @inheritDoc
      */
-    public function statsAge(string $size = '230x250'): string
+    public function statsAge(): string
     {
-        return $this->individualRepository->statsAge($size);
+        return $this->individualRepository->statsAge();
     }
 
     /**
@@ -1448,9 +1445,9 @@ class Statistics implements
     /**
      * @inheritDoc
      */
-    public function statsMarr(string $size = null, string $color_from = null, string $color_to = null): string
+    public function statsMarr(string $color_from = null, string $color_to = null): string
     {
-        return $this->familyRepository->statsMarr($size, $color_from, $color_to);
+        return $this->familyRepository->statsMarr($color_from, $color_to);
     }
 
     /**
@@ -1520,9 +1517,9 @@ class Statistics implements
     /**
      * @inheritDoc
      */
-    public function statsDiv(string $size = null, string $color_from = null, string $color_to = null): string
+    public function statsDiv(string $color_from = null, string $color_to = null): string
     {
-        return $this->familyRepository->statsDiv($size, $color_from, $color_to);
+        return $this->familyRepository->statsDiv($color_from, $color_to);
     }
 
     /**
@@ -1632,9 +1629,9 @@ class Statistics implements
     /**
      * @inheritDoc
      */
-    public function statsMarrAge(string $size = '200x250'): string
+    public function statsMarrAge(): string
     {
-        return $this->familyRepository->statsMarrAge($size);
+        return $this->familyRepository->statsMarrAge();
     }
 
     /**
@@ -1897,12 +1894,11 @@ class Statistics implements
      * @inheritDoc
      */
     public function chartLargestFamilies(
-        string $size = null,
         string $color_from = null,
         string $color_to = null,
         string $total = '10'
     ): string {
-        return $this->familyRepository->chartLargestFamilies($size, $color_from, $color_to, (int) $total);
+        return $this->familyRepository->chartLargestFamilies($color_from, $color_to, (int) $total);
     }
 
     /**
@@ -1989,11 +1985,10 @@ class Statistics implements
      * @inheritDoc
      */
     public function chartNoChildrenFamilies(
-        string $size = '220x200',
         string $year1 = '-1',
         string $year2 = '-1'
     ): string {
-        return $this->familyRepository->chartNoChildrenFamilies($size, (int) $year1, (int) $year2);
+        return $this->familyRepository->chartNoChildrenFamilies((int) $year1, (int) $year2);
     }
 
     /**
@@ -2069,13 +2064,12 @@ class Statistics implements
      * @inheritDoc
      */
     public function chartCommonSurnames(
-        string $size = null,
         string $color_from = null,
         string $color_to = null,
         string $number_of_surnames = '10'
     ): string {
         return $this->individualRepository
-            ->chartCommonSurnames($size, $color_from, $color_to, (int) $number_of_surnames);
+            ->chartCommonSurnames($color_from, $color_to, (int) $number_of_surnames);
     }
 
     /**
@@ -2242,12 +2236,11 @@ class Statistics implements
      * @inheritDoc
      */
     public function chartCommonGiven(
-        string $size = null,
         string $color_from = null,
         string $color_to = null,
         string $maxtoshow = '7'
     ): string {
-        return $this->individualRepository->chartCommonGiven($size, $color_from, $color_to, (int) $maxtoshow);
+        return $this->individualRepository->chartCommonGiven($color_from, $color_to, (int) $maxtoshow);
     }
 
     /**

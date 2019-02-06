@@ -17,64 +17,34 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics;
 
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\Helper\Sql;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Base class for all google charts.
- *
- * @deprecated The pie chart API is outdated and should be replaced
- *             by the newer version https://developers.google.com/chart/ or
- *             an open source one like chart.js
- *
- * @see https://developers.google.com/chart/image/docs/gallery/pie_charts
  */
 abstract class AbstractGoogle
 {
-    // Used in Google charts
-    public const GOOGLE_CHART_ENCODING = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.';
+    /**
+     * @var Tree
+     */
+    protected $tree;
 
     /**
-     * Convert numbers to Google's custom encoding.
-     *
-     * @link http://bendodson.com/news/google-extended-encoding-made-easy
-     *
-     * @param int[] $a
-     *
-     * @return string
+     * @var ModuleThemeInterface
      */
-    protected function arrayToExtendedEncoding(array $a): string
-    {
-        $xencoding = self::GOOGLE_CHART_ENCODING;
-        $encoding  = '';
-
-        foreach ($a as $value) {
-            if ($value < 0) {
-                $value = 0;
-            }
-
-            $first     = intdiv($value, 64);
-            $second    = $value % 64;
-            $encoding .= $xencoding[$first] . $xencoding[$second];
-        }
-
-        return $encoding;
-    }
+    protected $theme;
 
     /**
-     * Returns the three-dimensional pie chart url.
+     * Constructor.
      *
-     * @param string $data
-     * @param string $size
-     * @param array  $colors
-     * @param string $labels
-     *
-     * @return string
+     * @param Tree $tree
      */
-    protected function getPieChartUrl(string $data, string $size, array $colors, string $labels): string
+    public function __construct(Tree $tree)
     {
-        return 'https://chart.googleapis.com/chart?cht=p3&chd=e:' . $data
-            . '&chs=' . $size . '&chco=' . implode(',', $colors) . '&chf=bg,s,ffffff00&chl='
-            . $labels;
+        $this->tree  = $tree;
+        $this->theme = app()->make(ModuleThemeInterface::class);
     }
 
     /**
@@ -87,5 +57,62 @@ abstract class AbstractGoogle
     protected function runSql(string $sql): array
     {
         return Sql::runSql($sql);
+    }
+
+    /**
+     * Interpolates the number of color steps between a given start and end color.
+     *
+     * @param string $startColor The start color
+     * @param string $endColor   The end color
+     * @param int    $steps      The number of steps to interpolate
+     *
+     * @return array
+     */
+    public function interpolateRgb(string $startColor, string $endColor, int $steps): array
+    {
+        $s       = $this->hexToRgb($startColor);
+        $e       = $this->hexToRgb($endColor);
+        $colors  = [];
+        $factorR = ($e[0] - $s[0]) / $steps;
+        $factorG = ($e[1] - $s[1]) / $steps;
+        $factorB = ($e[2] - $s[2]) / $steps;
+
+        for ($x = 1; $x < $steps; ++$x) {
+            $colors[] = $this->rgbToHex(
+                (int) round($s[0] + ($factorR * $x)),
+                (int) round($s[1] + ($factorG * $x)),
+                (int) round($s[2] + ($factorB * $x))
+            );
+        }
+
+        $colors[] = $this->rgbToHex($e[0], $e[1], $e[2]);
+
+        return $colors;
+    }
+
+    /**
+     * Converts the color values to the HTML hex representation.
+     *
+     * @param int $r The red color value
+     * @param int $g The green color value
+     * @param int $b The blue color value
+     *
+     * @return string
+     */
+    private function rgbToHex(int $r, int $g, int $b): string
+    {
+        return sprintf('#%02x%02x%02x', $r, $g, $b);
+    }
+
+    /**
+     * Converts the HTML color hex representation to an array of color values.
+     *
+     * @param string $hex The HTML hex color code
+     *
+     * @return array
+     */
+    private function hexToRgb(string $hex): array
+    {
+        return array_map('hexdec', str_split(ltrim($hex, '#'), 2));
     }
 }

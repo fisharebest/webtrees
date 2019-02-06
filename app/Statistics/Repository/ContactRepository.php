@@ -21,7 +21,6 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\ContactRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
  * A repository providing methods for contact related statistics.

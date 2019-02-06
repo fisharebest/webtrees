@@ -19,9 +19,7 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
-use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
 /**
@@ -29,21 +27,6 @@ use Illuminate\Database\Capsule\Manager as DB;
  */
 class ChartFamilyLargest extends AbstractGoogle
 {
-    /**
-     * @var Tree
-     */
-    private $tree;
-
-    /**
-     * Constructor.
-     *
-     * @param Tree $tree
-     */
-    public function __construct(Tree $tree)
-    {
-        $this->tree = $tree;
-    }
-
     /**
      * Returns the related database records.
      *
@@ -54,9 +37,9 @@ class ChartFamilyLargest extends AbstractGoogle
     private function queryRecords(int $total): array
     {
         $query = DB::table('families')
-            ->select(['f_numchil AS tot', 'f_id AS id'])
+            ->select(['f_numchil AS total', 'f_id AS id'])
             ->where('f_file', '=', $this->tree->id())
-            ->orderBy('tot', 'desc')
+            ->orderBy('total', 'desc')
             ->limit($total);
 
         return $query->get()->all();
@@ -65,7 +48,6 @@ class ChartFamilyLargest extends AbstractGoogle
     /**
      * Create a chart of the largest families.
      *
-     * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
      * @param int         $total
@@ -73,58 +55,41 @@ class ChartFamilyLargest extends AbstractGoogle
      * @return string
      */
     public function chartLargestFamilies(
-        string $size       = null,
         string $color_from = null,
         string $color_to   = null,
         int    $total      = 10
     ): string {
-        $chart_color1 = (string) app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-no-values');
-        $chart_color2 = (string) app()->make(ModuleThemeInterface::class)->parameter('distribution-chart-high-values');
-        $chart_x      = app()->make(ModuleThemeInterface::class)->parameter('stats-large-chart-x');
-        $chart_y      = app()->make(ModuleThemeInterface::class)->parameter('stats-small-chart-y');
+        $chart_color1 = (string) $this->theme->parameter('distribution-chart-no-values');
+        $chart_color2 = (string) $this->theme->parameter('distribution-chart-high-values');
+        $color_from   = $color_from ?? $chart_color1;
+        $color_to     = $color_to   ?? $chart_color2;
 
-        $size       = $size ?? $chart_x . 'x' . $chart_y;
-        $color_from = $color_from ?? $chart_color1;
-        $color_to   = $color_to ?? $chart_color2;
-        $sizes      = explode('x', $size);
-        $rows       = $this->queryRecords($total);
+        $data = [
+            [
+                I18N::translate('Type'),
+                I18N::translate('Total')
+            ],
+        ];
 
-        if (!isset($rows[0])) {
-            return '';
-        }
-
-        $tot = 0;
-        foreach ($rows as $row) {
-            $tot += $row->tot;
-        }
-
-        $chd = '';
-        $chl = [];
-
-        foreach ($rows as $row) {
-            $family = Family::getInstance($row->id, $this->tree);
+        foreach ($this->queryRecords($total) as $record) {
+            $family = Family::getInstance($record->id, $this->tree);
 
             if ($family && $family->canShow()) {
-                if ($tot === 0) {
-                    $per = 0;
-                } else {
-                    $per = intdiv(100 * $row->tot, $tot);
-                }
-
-                $chd .= $this->arrayToExtendedEncoding([$per]);
-                $chl[] = htmlspecialchars_decode(strip_tags($family->getFullName())) . ' - ' . I18N::number($row->tot);
+                $data[] = [
+                    htmlspecialchars_decode(strip_tags($family->getFullName())),
+                    $record->total
+                ];
             }
         }
 
-        $chl    = rawurlencode(implode('|', $chl));
-        $colors = [$color_from, $color_to];
+        $colors = $this->interpolateRgb($color_from, $color_to, \count($data) - 1);
 
         return view(
-            'statistics/other/chart-google',
+            'statistics/other/charts/pie',
             [
-                'chart_title' => I18N::translate('Largest families'),
-                'chart_url'   => $this->getPieChartUrl($chd, $size, $colors, $chl),
-                'sizes'       => $sizes,
+                'title'       => I18N::translate('Largest families'),
+                'data'        => $data,
+                'colors'      => $colors,
             ]
         );
     }

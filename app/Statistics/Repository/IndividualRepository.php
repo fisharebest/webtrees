@@ -30,7 +30,7 @@ use Fisharebest\Webtrees\Statistics\Google\ChartCommonGiven;
 use Fisharebest\Webtrees\Statistics\Google\ChartCommonSurname;
 use Fisharebest\Webtrees\Statistics\Google\ChartDeath;
 use Fisharebest\Webtrees\Statistics\Google\ChartFamilyWithSources;
-use Fisharebest\Webtrees\Statistics\Google\ChartIndividual;
+use Fisharebest\Webtrees\Statistics\Google\ChartIndividualWithSources;
 use Fisharebest\Webtrees\Statistics\Google\ChartMortality;
 use Fisharebest\Webtrees\Statistics\Google\ChartSex;
 use Fisharebest\Webtrees\Statistics\Helper\Sql;
@@ -676,16 +676,15 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * General query on births.
      *
-     * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
      *
      * @return string
      */
-    public function statsBirth(string $size = null, string $color_from = null, string $color_to = null): string
+    public function statsBirth(string $color_from = null, string $color_to = null): string
     {
         return (new ChartBirth($this->tree))
-            ->chartBirth($size, $color_from, $color_to);
+            ->chartBirth($color_from, $color_to);
     }
 
     /**
@@ -732,16 +731,15 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * General query on deaths.
      *
-     * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
      *
      * @return string
      */
-    public function statsDeath(string $size = null, string $color_from = null, string $color_to = null): string
+    public function statsDeath(string $color_from = null, string $color_to = null): string
     {
         return (new ChartDeath($this->tree))
-            ->chartDeath($size, $color_from, $color_to);
+            ->chartDeath($color_from, $color_to);
     }
 
     /**
@@ -782,13 +780,11 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * General query on ages.
      *
-     * @param string $size
-     *
      * @return string
      */
-    public function statsAge(string $size = '230x250'): string
+    public function statsAge(): string
     {
-        return (new ChartAge($this->tree))->chartAge($size);
+        return (new ChartAge($this->tree))->chartAge();
     }
 
     /**
@@ -1776,7 +1772,6 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Create a chart of common given names.
      *
-     * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
      * @param int         $maxtoshow
@@ -1784,7 +1779,6 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @return string
      */
     public function chartCommonGiven(
-        string $size = null,
         string $color_from = null,
         string $color_to = null,
         int $maxtoshow = 7
@@ -1792,14 +1786,17 @@ class IndividualRepository implements IndividualRepositoryInterface
         $tot_indi = $this->totalIndividualsQuery();
         $given    = $this->commonGivenQuery('B', 'chart', false, 1, $maxtoshow);
 
-        return (new ChartCommonGiven())
-            ->chartCommonGiven($tot_indi, $given, $size, $color_from, $color_to);
+        if (empty($given)) {
+            return '';
+        }
+
+        return (new ChartCommonGiven($this->tree))
+            ->chartCommonGiven($tot_indi, $given, $color_from, $color_to);
     }
 
     /**
      * Create a chart of common surnames.
      *
-     * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
      * @param int         $number_of_surnames
@@ -1807,7 +1804,6 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @return string
      */
     public function chartCommonSurnames(
-        string $size = null,
         string $color_from = null,
         string $color_to = null,
         int $number_of_surnames = 10
@@ -1815,75 +1811,73 @@ class IndividualRepository implements IndividualRepositoryInterface
         $tot_indi     = $this->totalIndividualsQuery();
         $all_surnames = $this->topSurnames($number_of_surnames, 0);
 
+        if (empty($all_surnames)) {
+            return '';
+        }
+
         return (new ChartCommonSurname($this->tree))
-            ->chartCommonSurnames($tot_indi, $all_surnames, $size, $color_from, $color_to);
+            ->chartCommonSurnames($tot_indi, $all_surnames, $color_from, $color_to);
     }
 
     /**
      * Create a chart showing mortality.
      *
-     * @param string|null $size
      * @param string|null $color_living
      * @param string|null $color_dead
      *
      * @return string
      */
-    public function chartMortality(string $size = null, string $color_living = null, string $color_dead = null): string
+    public function chartMortality(string $color_living = null, string $color_dead = null): string
     {
         $tot_l = $this->totalLivingQuery();
         $tot_d = $this->totalDeceasedQuery();
 
         return (new ChartMortality($this->tree))
-            ->chartMortality($tot_l, $tot_d, $size, $color_living, $color_dead);
+            ->chartMortality($tot_l, $tot_d, $color_living, $color_dead);
     }
 
     /**
      * Create a chart showing individuals with/without sources.
      *
-     * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
      *
      * @return string
      */
     public function chartIndisWithSources(
-        string $size       = null,
         string $color_from = null,
         string $color_to   = null
     ): string {
         $tot_indi        = $this->totalIndividualsQuery();
         $tot_indi_source = $this->totalIndisWithSourcesQuery();
 
-        return (new ChartIndividual())
-            ->chartIndisWithSources($tot_indi, $tot_indi_source, $size, $color_from, $color_to);
+        return (new ChartIndividualWithSources($this->tree))
+            ->chartIndisWithSources($tot_indi, $tot_indi_source, $color_from, $color_to);
     }
 
     /**
      * Create a chart of individuals with/without sources.
      *
-     * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
      *
      * @return string
      */
     public function chartFamsWithSources(
-        string $size       = null,
         string $color_from = null,
         string $color_to   = null
     ): string {
         $tot_fam        = $this->totalFamiliesQuery();
         $tot_fam_source = $this->totalFamsWithSourcesQuery();
 
-        return (new ChartFamilyWithSources())
-            ->chartFamsWithSources($tot_fam, $tot_fam_source, $size, $color_from, $color_to);
+        return (new ChartFamilyWithSources($this->tree))
+            ->chartFamsWithSources($tot_fam, $tot_fam_source, $color_from, $color_to);
     }
 
     /**
      * @inheritDoc
      */
     public function chartSex(
-        string $size          = null,
         string $color_female  = null,
         string $color_male    = null,
         string $color_unknown = null
@@ -1893,7 +1887,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $tot_u = $this->totalSexUnknownQuery();
 
         return (new ChartSex($this->tree))
-            ->chartSex($tot_m, $tot_f, $tot_u, $size, $color_female, $color_male, $color_unknown);
+            ->chartSex($tot_m, $tot_f, $tot_u, $color_female, $color_male, $color_unknown);
     }
 
     /**
