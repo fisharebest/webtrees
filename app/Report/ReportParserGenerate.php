@@ -1944,10 +1944,15 @@ class ReportParserGenerate extends ReportParserBase
                                         ->on($attr . 'b.p_id', '=', $attr . 'a.pl_p_id');
                                 })
                                 ->whereContains($attr . 'b.p_place', $match[1]);
-                        } elseif (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
+                        } elseif (preg_match('/^(\w*):(\w+) CONTAINS (.+)$/', $value, $match)) {
                             // Don't unset this filter. This is just initial filtering for performance
                             $match[3] = strtr($match[3], ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_', ' ' => '%']);
-                            $like = "%\n1 " . $match[1] . "%\n2 " . $match[2] . '%' . $match[3];
+                            $like = "%\n1 " . $match[1] . "%\n2 " . $match[2] . '%' . $match[3] . '%';
+                            $query->where('i_gedcom', 'LIKE', $like);
+                        } elseif (preg_match('/^(\w+) CONTAINS (.+)$/', $value, $match)) {
+                            // Don't unset this filter. This is just initial filtering for performance
+                            $match[2] = strtr($match[2], ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_', ' ' => '%']);
+                            $like = "%\n1 " . $match[1] . "%" . $match[2] . '%';
                             $query->where('i_gedcom', 'LIKE', $like);
                         }
                     }
@@ -2019,19 +2024,30 @@ class ReportParserGenerate extends ReportParserBase
 
                             // This filter has been fully processed
                             unset($attrs[$attr]);
-                        } elseif (preg_match('/^(?:\w+):PLAC CONTAINS (.+)$/', $value, $match)) {
+                        } elseif (preg_match('/^(?:\w*):PLAC CONTAINS (.+)$/', $value, $match)) {
                             // Don't unset this filter. This is just initial filtering for performance
                             $query
-                                ->join('places AS ' . $attr . 'a', 'p_file', '=', 'f_file')
-                                ->join('placelinks AS ' . $attr . 'b', function (JoinClause $join) use ($attr): void {
+                                ->join('placelinks AS ' . $attr . 'a', function (JoinClause $join) use ($attr): void {
                                     $join
-                                        ->on($attr . 'b.pl_file', '=', $attr . 'a.p_file')
-                                        ->on($attr . 'b.pl_p_id', '=', $attr . 'a.p_id');
+                                        ->on($attr . 'a.pl_file', '=', 'f_file')
+                                        ->on($attr . 'a.pl_gid', '=', 'f_id');
                                 })
-                                ->whereContains($attr . 'a.p_place', $match[1]);
-                        } elseif (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
+                                ->join('places AS ' . $attr . 'b', function (JoinClause $join) use ($attr): void {
+                                    $join
+                                        ->on($attr . 'b.p_file', '=', $attr . 'a.pl_file')
+                                        ->on($attr . 'b.p_id', '=', $attr . 'a.pl_p_id');
+                                })
+                                ->whereContains($attr . 'b.p_place', $match[1]);
+                        } elseif (preg_match('/^(\w*):(\w+) CONTAINS (.+)$/', $value, $match)) {
                             // Don't unset this filter. This is just initial filtering for performance
-                            $query->whereContains('f_gedcom', $match[3]);
+                            $match[3] = strtr($match[3], ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_', ' ' => '%']);
+                            $like = "%\n1 " . $match[1] . "%\n2 " . $match[2] . '%' . $match[3] . '%';
+                            $query->where('f_gedcom', 'LIKE', $like);
+                        } elseif (preg_match('/^(\w+) CONTAINS (.+)$/', $value, $match)) {
+                            // Don't unset this filter. This is just initial filtering for performance
+                            $match[2] = strtr($match[2], ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_', ' ' => '%']);
+                            $like = "%\n1 " . $match[1] . "%" . $match[2] . '%';
+                            $query->where('f_gedcom', 'LIKE', $like);
                         }
                     }
                 }
