@@ -50,17 +50,6 @@ trait ModuleThemeTrait
     }
 
     /**
-     * Where are our CSS, JS and other assets?
-     *
-     * @deprecated - use the constant directly
-     * @return string A relative path, such as "themes/foo/"
-     */
-    public function assetUrl(): string
-    {
-        return self::ASSET_DIR;
-    }
-
-    /**
      * Add markup to the secondary menu.
      *
      * @return string
@@ -90,20 +79,23 @@ trait ModuleThemeTrait
     /**
      * Display an icon for this fact.
      *
+     * @TODO use CSS for this
+     *
      * @param Fact $fact
      *
      * @return string
      */
     public function icon(Fact $fact): string
     {
-        $icon = 'images/facts/' . $fact->getTag() . '.png';
-        if (file_exists(self::ASSET_DIR . $icon)) {
-            return '<img src="' . self::ASSET_DIR . $icon . '" title="' . GedcomTag::getLabel($fact->getTag()) . '">';
+        $asset = 'public/css/' . $this->name() . '/images/facts/' . $fact->getTag() . '.png';
+        if (file_exists(WT_ROOT . 'public' . $asset)) {
+            return '<img src="' . e(asset($asset)) . '" title="' . GedcomTag::getLabel($fact->getTag()) . '">';
         }
 
-        if (file_exists(self::ASSET_DIR . 'images/facts/NULL.png')) {
-            // Spacer image - for alignment - until we move to a sprite.
-            return '<img src="' . app()->make(ModuleThemeInterface::class)->assetUrl() . 'images/facts/NULL.png">';
+        // Spacer image - for alignment - until we move to a sprite.
+        $asset = 'public/css/' . $this->name() . '/images/facts/NULL.png';
+        if (file_exists(WT_ROOT . 'public' . $asset)) {
+            return '<img src="' . e(asset($asset)) . '">';
         }
 
         return '';

@@ -252,10 +252,10 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
         echo '<li>';
         echo '<table><tr><td>';
         if ($depth == $generations) {
-            echo '<img alt="" role="presentation" src="' . app()->make(ModuleThemeInterface::class)->parameter('image-spacer') . '" height="3" width="15"></td><td>';
+            echo '<img alt="" role="presentation" src="' . e(asset('css/images/spacer.png')) . '" height="3" width="15"></td><td>';
         } else {
-            echo '<img src="' . app()->make(ModuleThemeInterface::class)->parameter('image-spacer') . '" height="3" width="3">';
-            echo '<img src="' . app()->make(ModuleThemeInterface::class)->parameter('image-hline') . '" height="3" width="', 12, '"></td><td>';
+            echo '<img src="' . e(asset('css/images/spacer.png')) . '" height="3" width="3">';
+            echo '<img src="' . e(asset('css/images/hline.png')) . '" height="3" width="', 12, '"></td><td>';
         }
         echo FunctionsPrint::printPedigreePerson($person);
         echo '</td>';
@@ -326,7 +326,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
         $uid = Uuid::uuid4()->toString(); // create a unique ID
         // print marriage info
         echo '<li>';
-        echo '<img src="', app()->make(ModuleThemeInterface::class)->parameter('image-spacer'), '" height="2" width="', 19, '">';
+        echo '<img src="', e(asset('css/images/spacer.png')), '" height="2" width="', 19, '">';
         echo '<span class="details1">';
         echo '<a href="#" onclick="expand_layer(\'' . $uid . '\'); return false;" class="top"><i id="' . $uid . '_img" class="icon-minus" title="' . I18N::translate('View this family') . '"></i></a>';
         if ($family->canShow()) {

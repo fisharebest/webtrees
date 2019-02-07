@@ -29,13 +29,6 @@ class CloudsTheme extends AbstractModule implements ModuleThemeInterface
         primaryMenu as basePrimaryMenu;
     }
 
-    /**
-     * Where are our CSS, JS and other assets?
-     */
-    protected const THEME_DIR  = 'clouds';
-    public const    ASSET_DIR  = 'themes/clouds/css-2.0.0/';
-    protected const STYLESHEET = 'themes/clouds/css-2.0.0/style.css';
-
     protected const PERSON_BOX_CLASSES = [
         'M' => 'person_box',
         'F' => 'person_boxF',
@@ -87,13 +80,6 @@ class CloudsTheme extends AbstractModule implements ModuleThemeInterface
             'stats-small-chart-x'            => 440,
             'stats-small-chart-y'            => 125,
             'stats-large-chart-x'            => 900,
-            'image-dline'                    => static::ASSET_DIR . 'images/dline.png',
-            'image-dline2'                   => static::ASSET_DIR . 'images/dline2.png',
-            'image-hline'                    => static::ASSET_DIR . 'images/hline.png',
-            'image-spacer'                   => static::ASSET_DIR . 'images/spacer.png',
-            'image-vline'                    => static::ASSET_DIR . 'images/vline.png',
-            'image-minus'                    => static::ASSET_DIR . 'images/minus.png',
-            'image-plus'                     => static::ASSET_DIR . 'images/plus.png',
         ];
 
         return $parameters[$parameter_name];
@@ -129,8 +115,7 @@ class CloudsTheme extends AbstractModule implements ModuleThemeInterface
     public function stylesheets(): array
     {
         return [
-            'themes/_common/css-2.0.0/style.css',
-            'themes/clouds/css-2.0.0/style.css',
+            asset('css/clouds.min.css'),
         ];
     }
 }

@@ -4,7 +4,7 @@
 <?php use Fisharebest\Webtrees\View; ?>
 
 <!DOCTYPE html>
-<html <?= I18N::htmlAttributes() ?>>
+<html dir="<?= I18N::direction() ?>" lang="<?= WT_LOCALE ?>">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,12 +14,8 @@
 
         <link rel="icon" href="<?= e(asset('favicon.ico')) ?>" type="image/x-icon">
 
-        <?php if (I18N::direction() === 'rtl') : ?>
-            <link rel="stylesheet" type="text/css" href="<?= e(asset('css/vendor-rtl.min.css')) ?>">
-        <?php else : ?>
-            <link rel="stylesheet" type="text/css" href="<?= e(asset('css/vendor.min.css')) ?>">
-        <?php endif ?>
-        <link rel="stylesheet" type="text/css" href="<?= e(asset('css/administration.min.css')) ?>">
+        <link rel="stylesheet" href="<?= e(asset('css/vendor.min.css')) ?>">
+        <link rel="stylesheet" href="<?= e(asset('css/administration.min.css')) ?>">
 
         <?= View::stack('styles') ?>
 

@@ -264,13 +264,13 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
                     if ($ct > 1) {
                         if ($i == 0) {
                             // First child
-                            echo '<td style="vertical-align:bottom"><img alt="" role="presentation" class="line1 tvertline" id="vline_' . $chil . '" src="' . app()->make(ModuleThemeInterface::class)->parameter('image-vline') . '" width="3"></td>';
+                            echo '<td style="vertical-align:bottom"><img alt="" role="presentation" class="line1 tvertline" id="vline_' . $chil . '" src="' . e(asset('css/images/vline.png')) . '" width="3"></td>';
                         } elseif ($i == $ct - 1) {
                             // Last child
-                            echo '<td style="vertical-align:top"><img alt="" role="presentation" class="bvertline" id="vline_' . $chil . '" src="' . app()->make(ModuleThemeInterface::class)->parameter('image-vline') . '" width="3"></td>';
+                            echo '<td style="vertical-align:top"><img alt="" role="presentation" class="bvertline" id="vline_' . $chil . '" src="' . e(asset('css/images/vline.png')) . '" width="3"></td>';
                         } else {
                             // Middle child
-                            echo '<td style="background: url(\'' . app()->make(ModuleThemeInterface::class)->parameter('image-vline') . '\');"><img alt="" role="presentation" src="' . app()->make(ModuleThemeInterface::class)->parameter('image-spacer') . '" width="3"></td>';
+                            echo '<td style="background: url(\'' . e(asset('css/images/vline.png')) . '\');"><img alt="" role="presentation" src="' . e(asset('css/images/spacer.png')) . '" width="3"></td>';
                         }
                     }
                     echo '</tr>';
@@ -312,7 +312,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
 
         echo '<table cellspacing="0" cellpadding="0" border="0" id="table2_' . $pid . '"><tr><td> ';
         echo FunctionsPrint::printPedigreePerson($individual);
-        echo '</td><td> <img alt="" role="presentation" class="lineh1" src="' . app()->make(ModuleThemeInterface::class)->parameter('image-hline') . '" width="7" height="3">';
+        echo '</td><td> <img alt="" role="presentation" class="lineh1" src="' . e(asset('css/images/hline.png')) . '" width="7" height="3">';
 
         //----- Print the spouse
         if ($show_spouse) {
@@ -446,8 +446,8 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         } else {
             echo '<table cellspacing="0" cellpadding="0" border="0"  class="hourglassChart">';
             echo '<tr>';
-            echo '<td style="vertical-align:bottom"><img alt="" role="presnentation" class="line3 pvline" src="' . app()->make(ModuleThemeInterface::class)->parameter('image-vline') . '" width="3"></td>';
-            echo '<td> <img alt="" role="presentation" class="lineh2" src="' . app()->make(ModuleThemeInterface::class)->parameter('image-hline') . '" width="7" height="3"></td>';
+            echo '<td style="vertical-align:bottom"><img alt="" role="presnentation" class="line3 pvline" src="' . e(asset('css/images/vline.png')) . '" width="3"></td>';
+            echo '<td> <img alt="" role="presentation" class="lineh2" src="' . e(asset('css/images/hline.png')) . '" width="7" height="3"></td>';
             echo '<td class="myCharts"> ';
             //-- print the father box
             echo FunctionsPrint::printPedigreePerson($family->getHusband());
@@ -483,8 +483,8 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
             }
             echo
             '</tr><tr>',
-                '<td style="vertical-align:top"><img alt="" role="presentation" class="pvline" src="' . app()->make(ModuleThemeInterface::class)->parameter('image-vline') . '" width="3"></td>',
-                '<td> <img alt="" role="presentation" class="lineh3" src="' . app()->make(ModuleThemeInterface::class)->parameter('image-hline') . '" width="7" height="3"></td>',
+                '<td style="vertical-align:top"><img alt="" role="presentation" class="pvline" src="' . e(asset('css/images/vline.png')) . '" width="3"></td>',
+                '<td> <img alt="" role="presentation" class="lineh3" src="' . e(asset('css/images/hline.png')) . '" width="7" height="3"></td>',
             '<td class="myCharts"> ';
 
             echo FunctionsPrint::printPedigreePerson($family->getWife());

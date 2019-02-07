@@ -254,7 +254,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
                                 $h = ($kids - 1) * 4 + $h;
                             }
                             echo '<td class="align-bottom">',
-                            '<img id="vline_', $child->xref(), '" src="', app()->make(ModuleThemeInterface::class)->parameter('image-vline'), '" width="3" height="', $h - 4, '"></td>';
+                            '<img id="vline_', $child->xref(), '" src="', e(asset('css/images/vline.png')), '" width="3" height="', $h - 4, '"></td>';
                         } elseif ($i === count($children) - 1) {
                             // Adjust for the first column on left
                             $h = round(((($this->box->height) * $kids) + 8) / 2);
@@ -263,10 +263,10 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
                                 $h = ($kids - 1) * 4 + $h;
                             }
                             echo '<td class="align-top">',
-                            '<img class="bvertline" width="3" id="vline_', $child->xref(), '" src="', app()->make(ModuleThemeInterface::class)->parameter('image-vline'), '" height="', $h - 2, '"></td>';
+                            '<img class="bvertline" width="3" id="vline_', $child->xref(), '" src="', e(asset('css/images/vline.png')), '" height="', $h - 2, '"></td>';
                         } else {
-                            echo '<td class="align-bottomm"style="background: url(', app()->make(ModuleThemeInterface::class)->parameter('image-vline'), ');">',
-                            '<img class="spacer"  width="3" src="', app()->make(ModuleThemeInterface::class)->parameter('image-spacer'), '"></td>';
+                            echo '<td class="align-bottomm"style="background: url(', e(asset('css/images/vline.png')), ');">',
+                            '<img class="spacer"  width="3" src="', e(asset('css/images/spacer.png')), '"></td>';
                         }
                     }
                     echo '</tr>';
@@ -289,7 +289,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
         if ($person instanceof Individual) {
             echo FunctionsPrint::printPedigreePerson($person);
             echo '</td><td>',
-            '<img class="linef1" src="', app()->make(ModuleThemeInterface::class)->parameter('image-hline'), '" width="8" height="3">';
+            '<img class="linef1" src="', e(asset('css/images/hline.png')), '" width="8" height="3">';
         } else {
             echo '<div style="width:', $this->box->width + 19, 'px; height:', $this->box->height + 8, 'px;"></div>',
             '</td><td>';
@@ -391,9 +391,9 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
                     $lh = $savlh;
                 }
             }
-            echo '<img class="line3 pvline"  src="', app()->make(ModuleThemeInterface::class)->parameter('image-vline'), '" width="3" height="', $lh, '"></td>',
+            echo '<img class="line3 pvline"  src="', e(asset('css/images/vline.png')), '" width="3" height="', $lh, '"></td>',
             '<td>',
-            '<img class="linef2" src="', app()->make(ModuleThemeInterface::class)->parameter('image-hline'), '" height="3"></td>',
+            '<img class="linef2" src="', e(asset('css/images/hline.png')), '" height="3"></td>',
             '<td>';
             $lh = $savlh; // restore original line height
             //-- print the father box
@@ -416,8 +416,8 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
                 }
             }
             echo '</tr><tr>',
-            '<td class="align-top"><img class="pvline" alt="" role="presentation" src="', app()->make(ModuleThemeInterface::class)->parameter('image-vline'), '" width="3" height="', $lh, '"></td>',
-            '<td><img class="linef3" alt="" role="presentation" src="', app()->make(ModuleThemeInterface::class)->parameter('image-hline'), '" height="3"></td>',
+            '<td class="align-top"><img class="pvline" alt="" role="presentation" src="', e(asset('css/images/vline.png')), '" width="3" height="', $lh, '"></td>',
+            '<td><img class="linef3" alt="" role="presentation" src="', e(asset('css/images/hline.png')), '" height="3"></td>',
             '<td>';
             //-- print the mother box
             echo FunctionsPrint::printPedigreePerson($family->getWife());

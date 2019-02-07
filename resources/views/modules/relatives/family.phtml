@@ -192,7 +192,7 @@
                 <th scope="row">
                     <?php if (count($family->getChildren()) > 1) : ?>
                         <a href="<?= e(route('reorder-children', ['ged' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
-                            <i class="icon-media-shuffle"></i> <?= I18N::translate('Re-order children') ?>
+                            <?= I18N::translate('Re-order children') ?>
                         </a>
                     <?php endif; ?>
                 </th>

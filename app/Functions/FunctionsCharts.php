@@ -145,8 +145,8 @@ class FunctionsCharts
         $hfam = $husb->getPrimaryChildFamily();
         if ($hfam) {
             // remove the|| test for $sosa
-            echo '<td rowspan="2"><img src="' . app()->make(ModuleThemeInterface::class)->parameter('image-hline') . '"></td><td rowspan="2"><img  src="' . app()->make(ModuleThemeInterface::class)->parameter('image-vline') . '" width="3" height="' . ($pbheight - 14) . '"></td>';
-            echo '<td><img class="linea1 lined1"  src="' . app()->make(ModuleThemeInterface::class)->parameter('image-hline') . '"></td><td>';
+            echo '<td rowspan="2"><img src="' . e(asset('css/images/hline.png')) . '"></td><td rowspan="2"><img  src="' . e(asset('css/images/vline.png')) . '" width="3" height="' . ($pbheight - 14) . '"></td>';
+            echo '<td><img class="linea1 lined1"  src="' . e(asset('css/images/hline.png')) . '"></td><td>';
             // husband’s father
             if ($hfam && $hfam->getHusband()) {
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
@@ -175,7 +175,7 @@ class FunctionsCharts
         }
         if ($hfam) {
             // husband’s mother
-            echo '</tr><tr><td><img class="linea2 lined2"  src="' . app()->make(ModuleThemeInterface::class)->parameter('image-hline') . '"></td><td>';
+            echo '</tr><tr><td><img class="linea2 lined2"  src="' . e(asset('css/images/hline.png')) . '"></td><td>';
             if ($hfam && $hfam->getWife()) {
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 if ($sosa > 0) {
@@ -234,8 +234,8 @@ class FunctionsCharts
         // wife’s parents
         $wfam = $wife->getPrimaryChildFamily();
         if ($wfam) {
-            echo '<td rowspan="2"><img src="' . app()->make(ModuleThemeInterface::class)->parameter('image-hline') . '"></td><td rowspan="2"><img src="' . app()->make(ModuleThemeInterface::class)->parameter('image-vline') . '" width="3" height="' . ($pbheight - 14) . '"></td>';
-            echo '<td><img class="linea3 lined3" src="' . app()->make(ModuleThemeInterface::class)->parameter('image-hline') . '"></td><td>';
+            echo '<td rowspan="2"><img src="' . e(asset('css/images/hline.png')) . '"></td><td rowspan="2"><img src="' . e(asset('css/images/vline.png')) . '" width="3" height="' . ($pbheight - 14) . '"></td>';
+            echo '<td><img class="linea3 lined3" src="' . e(asset('css/images/hline.png')) . '"></td><td>';
             // wife’s father
             if ($wfam && $wfam->getHusband()) {
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
@@ -265,7 +265,7 @@ class FunctionsCharts
         }
         if ($wfam) {
             // wife’s mother
-            echo '</tr><tr><td><img class="linea4 lined4"  src="' . app()->make(ModuleThemeInterface::class)->parameter('image-hline') . '"></td><td>';
+            echo '</tr><tr><td><img class="linea4 lined4"  src="' . e(asset('css/images/hline.png')) . '"></td><td>';
             if ($wfam && $wfam->getWife()) {
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 if ($sosa > 0) {
@@ -399,7 +399,7 @@ class FunctionsCharts
                                     echo '<img height="' . $pbheight . 'px"';
                                 }
                             }
-                            echo ' width="3" src="' . app()->make(ModuleThemeInterface::class)->parameter('image-vline') . '">';
+                            echo ' width="3" src="' . e(asset('css/images/vline.png')) . '">';
                             echo '</td>';
                         }
                         echo '<td class="details1" style="text-align:center;">';
@@ -414,9 +414,9 @@ class FunctionsCharts
                             if ($div) {
                                 echo '–', $div->date()->minimumDate()->format('%Y');
                             }
-                            echo '<img class="linea5 lined5 " width="100%" height="3" src="' . app()->make(ModuleThemeInterface::class)->parameter('image-hline') . '">';
+                            echo '<img class="linea5 lined5 " width="100%" height="3" src="' . e(asset('css/images/hline.png')) . '">';
                         } else {
-                            echo '<img width="100%" height="3" src="' . app()->make(ModuleThemeInterface::class)->parameter('image-hline') . '">';
+                            echo '<img width="100%" height="3" src="' . e(asset('css/images/hline.png')) . '">';
                         }
                         echo '</td>';
                         // spouse information
@@ -514,7 +514,7 @@ class FunctionsCharts
         if ($kids) {
             echo '<table cellspacing="0" cellpadding="0" border="0" ><tr>';
             if ($kids > 1) {
-                echo '<td rowspan="', $kids, '"><img width="3px" height="', (($bheight) * ($kids - 1)), 'px" src="', app()->make(ModuleThemeInterface::class)->parameter('image-vline'), '"></td>';
+                echo '<td rowspan="', $kids, '"><img width="3px" height="', (($bheight) * ($kids - 1)), 'px" src="', e(asset('css/images/vline.png')), '"></td>';
             }
             $ctkids = count($fchildren);
             $i      = 1;
@@ -529,7 +529,7 @@ class FunctionsCharts
                 } else {
                     echo ' style="padding-left: 2px;"';
                 }
-                echo ' src="', app()->make(ModuleThemeInterface::class)->parameter('image-hline'), '"></td><td>';
+                echo ' src="', e(asset('css/images/hline.png')), '"></td><td>';
                 echo FunctionsPrint::printPedigreePerson($fchil);
                 echo '</td></tr>';
                 if ($i < $ctkids) {

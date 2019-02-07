@@ -29,16 +29,8 @@
     padding-left: 4px;
 }
 
-.select2-container[dir="rtl"] .select2-selection--single .select2-selection__rendered {
-    padding-right: 2px;
-}
-
-.select2-container[dir="rtl"] .select2-selection--single .NAME {
-    padding-right: 4px;
-}
-
 .wt-global {
-	background: url(paper_fibers.png); /* http://www.subtlepatterns.com */
+	background: url(administration/paper_fibers.png); /* http://www.subtlepatterns.com */
 }
 
 /* Show a placeholder for slow ajax responses. */
@@ -50,7 +42,7 @@
 
 @media (min-device-pixel-ratio: 2) {
 	.wt-global {
-		background: url(paper_fibers_@2X.png);
+		background: url(administration/paper_fibers_@2X.png);
 	}
 }
 

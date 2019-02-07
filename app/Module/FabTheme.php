@@ -26,11 +26,6 @@ class FabTheme extends AbstractModule implements ModuleThemeInterface
 {
     use ModuleThemeTrait;
 
-    /**
-     * Where are our CSS, JS and other assets?
-     */
-    public const    ASSET_DIR  = 'themes/fab/css-2.0.0/';
-
     protected const PERSON_BOX_CLASSES = [
         'M' => 'person_box',
         'F' => 'person_boxF',
@@ -81,13 +76,6 @@ class FabTheme extends AbstractModule implements ModuleThemeInterface
             'stats-small-chart-x'            => 440,
             'stats-small-chart-y'            => 125,
             'stats-large-chart-x'            => 900,
-            'image-dline'                    => static::ASSET_DIR . 'images/dline.png',
-            'image-dline2'                   => static::ASSET_DIR . 'images/dline2.png',
-            'image-hline'                    => static::ASSET_DIR . 'images/hline.png',
-            'image-spacer'                   => static::ASSET_DIR . 'images/spacer.png',
-            'image-vline'                    => static::ASSET_DIR . 'images/vline.png',
-            'image-minus'                    => static::ASSET_DIR . 'images/minus.png',
-            'image-plus'                     => static::ASSET_DIR . 'images/plus.png',
         ];
 
         return $parameters[$parameter_name];
@@ -101,8 +89,7 @@ class FabTheme extends AbstractModule implements ModuleThemeInterface
     public function stylesheets(): array
     {
         return [
-            'themes/_common/css-2.0.0/style.css',
-            'themes/fab/css-2.0.0/style.css',
+            asset('css/fab.min.css'),
         ];
     }
 }

@@ -216,10 +216,10 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
         echo '<li class="wt-ancestors-chart-list-item">';
         echo '<table><tbody><tr><td>';
         if ($sosa === 1) {
-            echo '<img src="', app()->make(ModuleThemeInterface::class)->parameter('image-spacer'), '" height="3" width="15"></td><td>';
+            echo '<img src="', e(asset('css/images/spacer.png')), '" height="3" width="15"></td><td>';
         } else {
-            echo '<img src="', app()->make(ModuleThemeInterface::class)->parameter('image-spacer'), '" height="3" width="2">';
-            echo '<img src="', app()->make(ModuleThemeInterface::class)->parameter('image-hline'), '" height="3" width="13"></td><td>';
+            echo '<img src="', e(asset('css/images/spacer.png')), '" height="3" width="2">';
+            echo '<img src="', e(asset('css/images/hline.png')), '" height="3" width="13"></td><td>';
         }
         echo FunctionsPrint::printPedigreePerson($individual);
         echo '</td><td>';
@@ -240,7 +240,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
         if ($family && $generations > 0) {
             // Marriage details
             echo '<span class="details1">';
-            echo '<img src="', app()->make(ModuleThemeInterface::class)->parameter('image-spacer'), '" height="2" width="15"><a href="#" onclick="return expand_layer(\'sosa_', $sosa, '\');" class="top"><i id="sosa_', $sosa, '_img" class="icon-minus" title="', I18N::translate('View this family'), '"></i></a>';
+            echo '<img src="', e(asset('css/images/spacer.png')), '" height="2" width="15"><a href="#" onclick="return expand_layer(\'sosa_', $sosa, '\');" class="top"><i id="sosa_', $sosa, '_img" class="icon-minus" title="', I18N::translate('View this family'), '"></i></a>';
             echo ' <span class="person_box">', I18N::number($sosa * 2), '</span> ', I18N::translate('and');
             echo ' <span class="person_boxF">', I18N::number($sosa * 2 + 1), '</span>';
             if ($family->canShow()) {

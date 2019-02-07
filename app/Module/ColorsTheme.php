@@ -180,10 +180,9 @@ class ColorsTheme extends CloudsTheme
     public function stylesheets(): array
     {
         return [
-            'themes/_common/css-2.0.0/style.css',
-            'themes/clouds/css-2.0.0/style.css',
-            'themes/colors/css-2.0.0/style.css',
-            'themes/colors/css-2.0.0/palette/' . $this->palette . '.css',
+            asset('css/clouds.min.css'),
+            asset('css/colors.min.css'),
+            asset('css/colors/' . $this->palette . '.css'),
         ];
     }
 }

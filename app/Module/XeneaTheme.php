@@ -26,11 +26,6 @@ class XeneaTheme extends AbstractModule implements ModuleThemeInterface
 {
     use ModuleThemeTrait;
 
-    /**
-     * Where are our CSS, JS and other assets?
-     */
-    public const ASSET_DIR = 'themes/xenea/css-2.0.0/';
-
     protected const PERSON_BOX_CLASSES = [
         'M' => 'person_box',
         'F' => 'person_boxF',
@@ -81,13 +76,6 @@ class XeneaTheme extends AbstractModule implements ModuleThemeInterface
             'stats-small-chart-x'            => 440,
             'stats-small-chart-y'            => 125,
             'stats-large-chart-x'            => 900,
-            'image-dline'                    => 'themes/xenea/css-2.0.0/images/dline.png',
-            'image-dline2'                   => 'themes/xenea/css-2.0.0/images/dline2.png',
-            'image-hline'                    => 'themes/xenea/css-2.0.0/images/hline.png',
-            'image-spacer'                   => 'themes/xenea/css-2.0.0/images/spacer.png',
-            'image-vline'                    => 'themes/xenea/css-2.0.0/images/vline.png',
-            'image-minus'                    => 'themes/xenea/css-2.0.0/images/minus.png',
-            'image-plus'                     => 'themes/xenea/css-2.0.0/images/plus.png',
         ];
 
         return $parameters[$parameter_name];
@@ -101,8 +89,7 @@ class XeneaTheme extends AbstractModule implements ModuleThemeInterface
     public function stylesheets(): array
     {
         return [
-            'themes/_common/css-2.0.0/style.css',
-            'themes/xenea/css-2.0.0/style.css'
+            asset('css/xenea.min.css'),
         ];
     }
 }

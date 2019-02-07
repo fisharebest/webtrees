@@ -10,7 +10,7 @@
 <?php use Fisharebest\Webtrees\Webtrees; ?>
 
 <!DOCTYPE html>
-<html <?= I18N::htmlAttributes() ?>>
+<html dir="<?= I18N::direction() ?>" lang="<?= WT_LOCALE ?>">
     <head>
         <meta charset="UTF-8">
         <meta name="csrf" content="<?= e(csrf_token()) ?>">
@@ -47,14 +47,9 @@
         <!--Windows 8.1 + IE11 and above-->
         <meta name="msapplication-config" content="<?= e(asset('browserconfig.xml')) ?>">
 
-        <?php if (I18N::direction() === 'rtl') : ?>
-            <link rel="stylesheet" type="text/css" href="<?= e(asset('css/vendor-rtl.min.css')) ?>">
-        <?php else : ?>
-            <link rel="stylesheet" type="text/css" href="<?= e(asset('css/vendor.min.css')) ?>">
-        <?php endif ?>
-
+        <link rel="stylesheet" href="<?= e(asset('css/vendor.min.css')) ?>">
         <?php foreach (app()->make(ModuleThemeInterface::class)->stylesheets() as $stylesheet) : ?>
-            <link rel="stylesheet" type="text/css" href="<?=  $stylesheet ?>">
+            <link rel="stylesheet" href="<?=  e($stylesheet) ?>">
         <?php endforeach ?>
 
         <?= View::stack('styles') ?>

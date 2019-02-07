@@ -282,11 +282,11 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         // @TODO - convert to views
         ob_start();
         if (I18N::direction() === 'ltr') {
-            $diagonal1 = app()->make(ModuleThemeInterface::class)->parameter('image-dline');
-            $diagonal2 = app()->make(ModuleThemeInterface::class)->parameter('image-dline2');
+            $diagonal1 = asset('css/images/dline.png');
+            $diagonal2 = asset('css/images/dline2.png');
         } else {
-            $diagonal1 = app()->make(ModuleThemeInterface::class)->parameter('image-dline2');
-            $diagonal2 = app()->make(ModuleThemeInterface::class)->parameter('image-dline');
+            $diagonal1 = asset('css/images/dline2.png');
+            $diagonal2 = asset('css/images/dline.png');
         }
 
         $num_paths = 0;
@@ -319,7 +319,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                         case 'bro':
                         case 'sis':
                         case 'sib':
-                            $table[$x + 1][$y] = '<div style="background:url(' . app()->make(ModuleThemeInterface::class)->parameter('image-hline') . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px;">' . view('icons/arrow-end') . '</div></div>';
+                            $table[$x + 1][$y] = '<div style="background:url(' . e(asset('css/images/hline.png')) . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px;">' . view('icons/arrow-end') . '</div></div>';
                             $x                 += 2;
                             break;
                         case 'son':
