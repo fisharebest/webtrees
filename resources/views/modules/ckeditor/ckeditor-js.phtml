@@ -14,13 +14,12 @@
     CKEDITOR.env.isCompatible = true;
 
     // Disable toolbars
-    CKEDITOR.config.removePlugins = "forms,newpage,preview,print,save,templates";
+    CKEDITOR.config.language = "<?= strtolower(WT_LOCALE) ?>";
+    CKEDITOR.config.removePlugins = "forms,newpage,preview,print,save,templates,flash,iframe";
     CKEDITOR.config.extraAllowedContent = "area[shape,coords,href,target,alt,title];map[name];img[usemap];*[class,style]";
 
     // Activate the editor
-    $("textarea.html-edit").ckeditor(function(config){config.removePlugins = "forms";}, {
-      language: "<?= strtolower(WT_LOCALE) ?>"
-    });
+    $("textarea.html-edit").ckeditor();
     </script>
     <?php View::endpush() ?>
 <?php endif ?>

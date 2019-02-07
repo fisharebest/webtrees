@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\I18N;
 class CkeditorModule extends AbstractModule implements ModuleInterface
 {
     // Location of our installation of CK editor.
-    public const CKEDITOR_PATH = 'public/ckeditor-4.5.2-custom/';
+    public const CKEDITOR_PATH = 'public/ckeditor-4.11.2-custom/';
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
