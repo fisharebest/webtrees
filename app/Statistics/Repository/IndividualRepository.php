@@ -1382,7 +1382,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             ->where('i_file', '=', $this->tree->id());
 
         foreach (Gedcom::DEATH_EVENTS as $death_event) {
-            $query->where('i_gedcom', 'NOT LIKE', '%\n1 ' . $death_event);
+            $query->where('i_gedcom', 'NOT LIKE', "%\n1 " . $death_event . '%');
         }
 
         return $query->count();
@@ -1399,7 +1399,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             ->where('i_file', '=', $this->tree->id())
             ->where(function (Builder $query): void {
                 foreach (Gedcom::DEATH_EVENTS as $death_event) {
-                    $query->orWhere('i_gedcom', 'NOT LIKE', '%\n1 ' . $death_event);
+                    $query->orWhere('i_gedcom', 'LIKE', "%\n1 " . $death_event . '%');
                 }
             })
             ->count();
