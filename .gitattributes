@@ -8,7 +8,9 @@
 Makefile          export-ignore
 package.json      export-ignore
 package-lock.json export-ignore
-phpdoc.xml        export-ignore
 phpunit.xml.dist  export-ignore
 tests/            export-ignore
 webpack.mix.js    export-ignore
+
+vendor/*/*/Tests export-ignore
+vendor/*/*/Tests export-ignore
