@@ -48,9 +48,9 @@
         <meta name="msapplication-config" content="<?= e(asset('browserconfig.xml')) ?>">
 
         <?php if (I18N::direction() === 'rtl') : ?>
-            <link rel="stylesheet" type="text/css" href="<?= e(Webtrees::ASSETS_PATH . 'css/vendor-rtl.css') ?>">
+            <link rel="stylesheet" type="text/css" href="<?= e(asset('css/vendor-rtl.min.css')) ?>">
         <?php else : ?>
-            <link rel="stylesheet" type="text/css" href="<?= e(Webtrees::ASSETS_PATH . 'css/vendor.css') ?>">
+            <link rel="stylesheet" type="text/css" href="<?= e(asset('css/vendor.min.css')) ?>">
         <?php endif ?>
 
         <?php foreach (app()->make(ModuleThemeInterface::class)->stylesheets() as $stylesheet) : ?>
@@ -139,8 +139,8 @@
             </div>
         </footer>
 
-        <script src="<?= e(Webtrees::ASSETS_PATH . 'js/vendor.js') ?>?<?= filemtime(WT_ROOT . Webtrees::ASSETS_PATH . 'js/vendor.js') ?>"></script>
-        <script src="<?= e(Webtrees::ASSETS_PATH . 'js/webtrees.js') ?>?<?= filemtime(WT_ROOT . Webtrees::ASSETS_PATH . 'js/webtrees.js') ?>"></script>
+        <script src="<?= e(asset('js/vendor.min.js')) ?>"></script>
+        <script src="<?= e(asset('js/webtrees.min.js')) ?>"></script>
 
         <script>
       activate_colorbox();

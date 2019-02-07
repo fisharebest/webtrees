@@ -57,9 +57,6 @@ class Webtrees
     // Location of themes (core and custom).
     public const THEMES_PATH = 'themes/';
 
-    // Location of CSS/JS/etc. assets. See also webpack.mix.js.
-    public const ASSETS_PATH = 'public/assets-2.0.0/';
-
     /**
      * Initialise the application.
      *
