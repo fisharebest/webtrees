@@ -8,6 +8,7 @@
 <?php use Fisharebest\Webtrees\Services\ModuleService; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 <?php use Fisharebest\Webtrees\Webtrees; ?>
+<?php use Symfony\Component\HttpFoundation\Request; ?>
 
 <!DOCTYPE html>
 <html dir="<?= I18N::direction() ?>" lang="<?= WT_LOCALE ?>">
@@ -59,11 +60,11 @@
         <?= DebugBar::renderHead() ?>
     </head>
 
-    <body class="wt-global">
+    <body class="wt-global wt-theme-<?= e(app()->make(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(e(app()->make(Request::class)->get('route'))) ?>">
         <header class="wt-header-wrapper d-print-none">
             <div class="container wt-header-container">
                 <div class="row wt-header-content">
-                    <div class="wt-accessibility-links">
+                    <div class="wt-accessibility-links position-fixed">
                         <a class="sr-only sr-only-focusable btn btn-info btn-sm" href="#content">
                             <?= /* I18N: Skip over the headers and menus, to the main content of the page */ I18N::translate('Skip to content') ?>
                         </a>
@@ -128,10 +129,8 @@
             </div>
         </main>
 
-        <footer class="wt-footer-container">
-            <div class="wt-footer-content container d-print-none">
-                <?= app()->make(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(function (ModuleFooterInterface $module) use ($tree): string { return app()->dispatch($module, 'getFooter'); })->implode('') ?>
-            </div>
+        <footer class="wt-footers container d-print-none">
+            <?= app()->make(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(function (ModuleFooterInterface $module) use ($tree): string { return app()->dispatch($module, 'getFooter'); })->implode('') ?>
         </footer>
 
         <script src="<?= e(asset('js/vendor.min.js')) ?>"></script>

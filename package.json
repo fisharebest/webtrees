@@ -7,6 +7,7 @@
   },
   "devDependencies": {
     "laravel-mix": "^4.0.14",
+    "postcss-custom-properties": "^8.0.9",
     "resolve-url-loader": "^2.3.1",
     "sass": "^1.17.0",
     "sass-loader": "^7.1.0",

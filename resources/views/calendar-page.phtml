@@ -91,16 +91,35 @@
                 <?php endif ?>
 
                 <a title="<?= I18N::translate('All individuals') ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => '', 'view' => $view, 'ged' => $tree->name()])) ?>" rel="nofollow">
-                    <i class="<?= $filtersx === '' ? 'icon-sex_m_15x15' : 'icon-sex_m_9x9' ?>"></i>
-                    <i class="<?= $filtersx === '' ? 'icon-sex_f_15x15' : 'icon-sex_f_9x9' ?>"></i>
+                    <?php if ($filtersx === '') : ?>
+                        <?= view('icons/sex-M') ?>
+                        <?= view('icons/sex-F') ?>
+                    <?php else: ?>
+                        <small>
+                            <?= view('icons/sex-M') ?>
+                            <?= view('icons/sex-F') ?>
+                        </small>
+                    <?php endif ?>
                 </a>
                 |
                 <a title="<?= I18N::translate('Males') ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => 'M', 'view' => $view, 'ged' => $tree->name()])) ?>" rel="nofollow">
-                    <i class="<?= $filtersx === 'M' ? 'icon-sex_m_15x15' : 'icon-sex_m_9x9' ?>"></i>
+                    <?php if ($filtersx === 'M') : ?>
+                        <?= view('icons/sex-M') ?>
+                    <?php else: ?>
+                        <small>
+                            <?= view('icons/sex-M') ?>
+                        </small>
+                    <?php endif ?>
                 </a>
                 |
                 <a title="<?= I18N::translate('Females') ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => 'F', 'view' => $view, 'ged' => $tree->name()])) ?>" rel="nofollow">
-                    <i class="<?= $filtersx === 'F' ? 'icon-sex_f_15x15' : 'icon-sex_f_9x9' ?>"></i>
+                    <?php if ($filtersx === 'F') : ?>
+                        <?= view('icons/sex-F') ?>
+                    <?php else: ?>
+                        <small>
+                            <?= view('icons/sex-F') ?>
+                        </small>
+                    <?php endif ?>
                 </a>
 
                 <select class="list_value" name="filterev" onchange="document.dateform.submit();">
@@ -141,7 +160,7 @@
 
     <table class="w-100">
         <tr>
-            <td class="topbottombar">
+            <td class="topbottombar text-center">
                 <a class="<?= $view === 'day' ? 'error' : '' ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'day', 'ged' => $tree->name()])) ?>" rel="nofollow">
                     <?= I18N::translate('View this day') ?>
                 </a>
@@ -154,7 +173,7 @@
                     <?= I18N::translate('View this year') ?>
                 </a>
             </td>
-            <td class="topbottombar">
+            <td class="topbottombar text-center">
                 <?php
                     $n = 0;
                 foreach (Date::calendarNames() as $newcal => $cal_name) {

@@ -13,15 +13,142 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* Bootstrap4-beta2 provides text-nowrap, but not text-wrap.  We need to wrap long buttons */
-.text-wrap {
-	white-space: normal !important;
+/* Common styling */
+
+/* Colors for chart boxes, etc. */
+:root {
+}
+
+/* Override Bootstrap formatting */
+.btn-link {
+}
+
+/*
+ * Any element that is loaded dynamically has the class wt-ajax-load.
+ * We can provide a "loading" placeholder for empty elements with this class.
+ */
+.wt-ajax-load:empty {
+}
+
+/* Default icons are provided by FontAwesome. */
+.wt-icon-sex-f {
+}
+
+.wt-icon-sex-m {
+}
+
+.wt-icon-sex-u {
+}
+
+.wt-icon-sex-x {
+}
+
+/*
+ * .wt-icon-arrow-down
+ * .wt-icon-arrow-end (right on LTR, left on RTL)
+ * .wt-icon-arrow-start (left on LTR, right on RTL)
+ * .wt-icon-arrow-up
+ * .wt-icon-bing-maps
+ * .wt-icon-calendar
+ * .wt-icon-copy
+ * .wt-icon-delete
+ * .wt-icon-edit
+ * .wt-icon-email
+ * .wt-icon-family
+ * .wt-icon-help
+ * .wt-icon-individual
+ * .wt-icon-google-maps
+ * .wt-icon-keyboard
+ * .wt-icon-media
+ * .wt-icon-note
+ * .wt-icon-openstreetmap
+ * .wt-icon-preferences
+ * .wt-icon-repository
+ * .wt-icon-source
+ * .wt-icon-submitter
+ */
+.wt-icon-arrow-down::before {
+}
+
+a > .wt-icon-arrow-down:hover::before {
+}
+
+.wt-icon-arrow-end::before {
+}
+
+a > .wt-icon-arrow-end:hover::before {
+}
+
+.wt-icon-arrow-start::before {
+}
+
+a > .wt-icon-arrow-start:hover::before {
+}
+
+.wt-icon-arrow-up::before {
+}
+
+a > .wt-icon-arrow-up:hover::before {
+}
+
+.wt-icon-bing-maps::before {
+}
+
+.wt-icon-calendar::before {
+}
+
+.wt-icon-coordinates::before {
+}
+
+.wt-icon-copy::before {
+}
+
+.wt-icon-delete::before {
+}
+
+.wt-icon-edit::before {
+}
+
+.wt-icon-family::before {
+}
+
+.wt-icon-help::before {
+}
+
+.wt-icon-google-maps::before {
+}
+
+.wt-icon-individual::before {
+}
+
+.wt-icon-keyboard::before {
+}
+
+.wt-icon-media::before {
+}
+
+.wt-icon-note::before {
+}
+
+.wt-icon-openstreetmap::before {
+}
+
+.wt-icon-preferences::before {
+}
+
+.wt-icon-repository::before {
+}
+
+.wt-icon-source::before {
+}
+
+.wt-icon-submitter::before {
 }
 
 /*
  * Pages have the following high-level structure:
  *
- * wt-global
+ * wt-global wt-theme-<THEME> wt-route-<ROUTE>
  * +---wt-header-wrapper
  *     +---wt-header-container
  *     |   +---wt-header-content
@@ -30,6 +157,8 @@
  *     |       +---wt-site-title
  *     |       +---wt-header-search
  *     |       |   +---wt-header-search-form
+ *     |       |       +---wt-header-search-field
+ *     |       |       +---wt-header-search-button
  *     |       +---wt-secondary-navigation
  *     |       |   +---wt-secondary-menu
  *     |       +---wt-primary-navigation
@@ -40,8 +169,11 @@
  *     |       +---wt-page-title
  *     |       +---wt-page-options wt-page-options-xxxxx
  *     |       +---wt-page-content
- *     +---wt-footer-container
- *         +---wt-footer-content
+ *     +---wt-footers
+ *         +---wt-footer wt-footer-contact
+ *         +---wt-footer wt-footer-cookies
+ *         +---wt-footer wt-footer-page-views
+ *         +---wt-footer wt-footer-powered-by
  */
 
 .wt-global {
@@ -65,8 +197,6 @@
 }
 
 .wt-accessibility-links {
-	/* When we focus on the links, they should appear without changing the layout. */
-	position: fixed;
 }
 
 .wt-site-logo {
@@ -90,6 +220,12 @@
 }
 
 .wt-header-search-form {
+}
+
+.wt-header-search-field {
+}
+
+.wt-header-search-button {
 }
 
 .wt-secondary-navigation {
@@ -133,23 +269,22 @@
 	text-align: center;
 }
 
-.wt-footer-container {
+.wt-footers {
 }
 
-.wt-footer-content {
-	text-align: center;
+.wt-footer {
 }
 
-.wt-contact-links {
+.wt-footer-contact {
 }
 
-.wt-powered-by-webtrees {
+.wt-footer-cookies {
 }
 
-.wt-page-views {
+.wt-footer-page-views {
 }
 
-.wt-cookie-warning {
+.wt-footer-powered-by {
 }
 
 /*

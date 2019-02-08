@@ -15,6 +15,16 @@
 
 /* The webtrees theme */
 
+/* Colors for chart boxes, etc. */
+:root {
+  --sex-f-fg: #ff2080;
+  --sex-m-fg: #81a9cb;
+  --sex-u-fg: #81a9cb;
+  --sex-f-bg: #e9daf1;
+  --sex-m-bg: #edf7fd;
+  --sex-u-bg: #ffffff;
+}
+
 /* Override Bootstrap formatting */
 .btn-link {
 	padding-left: 0.25rem;
@@ -43,10 +53,20 @@ table {
 	background: url(images/loading-32x32.gif) no-repeat 50% 50%;
 }
 
+/* Default icons are provided by FontAwesome. */
+.wt-icon-sex-f {
+}
+
+.wt-icon-sex-m {
+}
+
+.wt-icon-sex-u {
+}
+
+.wt-icon-sex-x {
+}
+
 /*
- * Icons use FontAwesome by default, but have additional classes to
- * allow them to be overridden
- *
  * .wt-icon-arrow-down
  * .wt-icon-arrow-end (right on LTR, left on RTL)
  * .wt-icon-arrow-start (left on LTR, right on RTL)
@@ -229,7 +249,7 @@ a > .wt-icon-arrow-up:hover::before {
 /*
  * Pages have the following high-level structure:
  *
- * wt-global
+ * wt-global wt-theme-<THEME> wt-route-<ROUTE>
  * +---wt-header-wrapper
  *     +---wt-header-container
  *     |   +---wt-header-content
@@ -250,11 +270,22 @@ a > .wt-icon-arrow-up:hover::before {
  *     |       +---wt-page-title
  *     |       +---wt-page-options wt-page-options-xxxxx
  *     |       +---wt-page-content
- *     +---wt-footer-container
- *         +---wt-footer-content
+ *     +---wt-footers
+ *         +---wt-footer wt-footer-contact
+ *         +---wt-footer wt-footer-cookies
+ *         +---wt-footer wt-footer-page-views
+ *         +---wt-footer wt-footer-powered-by
  */
 
 .wt-global {
+	/* Prevent redraws when dynamic content requires a scrollbar. */
+	overflow-y: scroll;
+	/* Keep the page as tall as the window, so the footer can remain at the bottom. */
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	/* Any wide content will have its own horizontal scrollbar */
+	overflow-x: hidden;
 	color: #555;
 }
 
@@ -296,6 +327,12 @@ a > .wt-icon-arrow-up:hover::before {
 }
 
 .wt-header-search-form {
+}
+
+.wt-header-search-field {
+}
+
+.wt-header-search-button {
 }
 
 .wt-secondary-navigation {
@@ -713,22 +750,31 @@ a > .wt-icon-arrow-up:hover::before {
 	margin-top: 1rem;
 }
 
-.wt-footer-container {
+.wt-footers {
 }
 
-.wt-footer-content {
+.wt-footer {
 }
 
-.wt-contact-links {
+.wt-footer-contact {
 }
 
-.wt-powered-by-webtrees {
+.wt-footer-cookies {
+	background: #aaa;
+	color: #fff;
+	height: 3em;
+	line-height: 2.5em;
+	transition: height 0.5s;
+}
+.wt-footer-cookies.hidden {
+	height: 0;
+	overflow: hidden;
 }
 
-.wt-page-views {
+.wt-footer-page-views {
 }
 
-.wt-cookie-warning {
+.wt-footer-powered-by {
 }
 
 /*
@@ -2627,7 +2673,7 @@ div.faq_body {
 	width: 70px;
 	height: 60px;
 	display: inline-block;
-	background-image: url(webtrees/images/lifespan-chunk.png);
+	background-image: url(images/lifespan-decade.png);
 	background-position-y: bottom;
 	background-repeat: no-repeat;
 	background-size: 70px 37px;
@@ -2717,12 +2763,31 @@ div.faq_body {
 	min-width: 500px;
 }
 
+/* Customize the default (font-awesome) icons */
+.wt-icon-sex-f {
+	content: url(images/sex-F.png);
+}
+
+.wt-icon-sex-m {
+	content: url(images/sex-M.png);
+}
+
+.wt-icon-sex-u {
+	content: url(images/sex-U.png);
+}
+
+.wt-icon-sex-x {
+	content: url(images/sex-U.png);
+}
+
+
 /* ====== Common Icons ========= */
 [class^="icon-"],
 [class*=" icon-"] {
 	display: inline-block;
 	vertical-align: text-bottom;
 	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .icon-add {
@@ -2879,42 +2944,6 @@ div.faq_body {
 	width: 12px;
 	height: 12px;
 	background-image: url(webtrees/images/selected.png);
-}
-
-.icon-sex_f_15x15 {
-	width: 15px;
-	height: 15px;
-	background-image: url(webtrees/images/sex_f_15x15.png);
-}
-
-.icon-sex_f_9x9 {
-	width: 9px;
-	height: 9px;
-	background-image: url(webtrees/images/sex_f_9x9.png);
-}
-
-.icon-sex_m_15x15 {
-	width: 15px;
-	height: 15px;
-	background-image: url(webtrees/images/sex_m_15x15.png);
-}
-
-.icon-sex_m_9x9 {
-	width: 9px;
-	height: 9px;
-	background-image: url(webtrees/images/sex_m_9x9.png);
-}
-
-.icon-sex_u_15x15 {
-	width: 15px;
-	height: 15px;
-	background-image: url(webtrees/images/sex_u_15x15.png);
-}
-
-.icon-sex_u_9x9 {
-	width: 9px;
-	height: 9px;
-	background-image: url(webtrees/images/sex_u_9x9.png);
 }
 
 .icon-source {
@@ -3185,16 +3214,4 @@ footer {
 	width: 20px;
 	height: 20px;
 	background-image: url(webtrees/images/user_add.png);
-}
-
-.cookie-warning {
-	background: #aaa;
-	color: #fff;
-	height: 3em;
-	line-height: 2.5em;
-	transition: height 0.5s;
-}
-.cookie-warning.hidden {
-	height: 0;
-	overflow: hidden;
 }

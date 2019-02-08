@@ -26,10 +26,10 @@
             <?= csrf_field() ?>
             <input type="hidden" name="module_name" value="<?= $module_name ?>">
             <?= I18N::translate('Preferences exist for the module “%s”, but this module no longer exists.', $module_name) ?>
-            <button type="submit" class="btn btn-secondary text-wrap">
+            <button type="submit" class="btn btn-secondary">
                 <?= I18N::translate('Delete the preferences for this module.') ?>
             </button>
-            </form>
+        </form>
     </div>
 <?php endforeach ?>
 

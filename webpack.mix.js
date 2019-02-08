@@ -12,11 +12,16 @@ const postcss_image_inliner = require("postcss-image-inliner")({
     assetPaths: ["resources/css"],
 });
 
+// https://github.com/postcss/postcss-custom-properties
+// Enable CSS variables in IE
+const postcss_custom_properties = require("postcss-custom-properties")();
+
 // https://github.com/postcss/postcss
 const postCssPlugins = [
     autoprefixer,
     postcss_image_inliner,
     postcss_rtl,
+    postcss_custom_properties,
 ];
 
 mix
@@ -29,6 +34,7 @@ mix
     .copy("node_modules/@fortawesome/fontawesome-free/webfonts/*", "public/webfonts/")
     .copy("node_modules/leaflet/dist/images/*", "public/css/images/")
     .copy("node_modules/dejavu-fonts-ttf/ttf/DejaVuSans.ttf", "resources/fonts/")
+    .copy("resources/css/colors/*", "public/css/colors/")
     .styles(["resources/css/common.css", "resources/css/clouds.css"], "resources/css/clouds.temp.css")
     .styles(["resources/css/common.css", "resources/css/clouds.css", "resources/css/colors.css"], "resources/css/colors.temp.css")
     .styles(["resources/css/common.css", "resources/css/fab.css"], "resources/css/fab.temp.css")
@@ -53,6 +59,22 @@ mix
     .postCss("resources/css/administration.css", "public/css/administration.min.css", postCssPlugins)
     .postCss("resources/css/clouds.temp.css", "public/css/clouds.min.css", postCssPlugins)
     .postCss("resources/css/colors.temp.css", "public/css/colors.min.css", postCssPlugins)
+    .postCss("resources/css/colors/aquamarine.css", "public/css/colors/", postCssPlugins)
+    .postCss("resources/css/colors/ash.css", "public/css/colors/ash.min.css", postCssPlugins)
+    .postCss("resources/css/colors/belgianchocolate.css", "public/css/colors/belgianchocolate.min.css", postCssPlugins)
+    .postCss("resources/css/colors/bluelagoon.css", "public/css/colors/bluelagoon.min.css", postCssPlugins)
+    .postCss("resources/css/colors/bluemarine.css", "public/css/colors/bluemarine.min.css", postCssPlugins)
+    .postCss("resources/css/colors/coffeeandcream.css", "public/css/colors/coffeeandcream.min.css", postCssPlugins)
+    .postCss("resources/css/colors/coldday.css", "public/css/colors/coldday.min.css", postCssPlugins)
+    .postCss("resources/css/colors/greenbeam.css", "public/css/colors/greenbeam.min.css", postCssPlugins)
+    .postCss("resources/css/colors/mediterranio.css", "public/css/colors/mediterranio.min.css", postCssPlugins)
+    .postCss("resources/css/colors/mercury.css", "public/css/colors/mercury.min.css", postCssPlugins)
+    .postCss("resources/css/colors/nocturnal.css", "public/css/colors/nocturnal.min.css", postCssPlugins)
+    .postCss("resources/css/colors/olivia.css", "public/css/colors/olivia.min.css", postCssPlugins)
+    .postCss("resources/css/colors/pinkplastic.css", "public/css/colors/pinkplastic.min.css", postCssPlugins)
+    .postCss("resources/css/colors/sage.css", "public/css/colors/sage.min.css", postCssPlugins)
+    .postCss("resources/css/colors/shinytomato.css", "public/css/colors/shinytomato.min.css", postCssPlugins)
+    .postCss("resources/css/colors/tealtop.css", "public/css/colors/tealtop.min.css", postCssPlugins)
     .postCss("resources/css/fab.temp.css", "public/css/fab.min.css", postCssPlugins)
     .postCss("resources/css/minimal.temp.css", "public/css/minimal.min.css", postCssPlugins)
     .postCss("resources/css/webtrees.temp.css", "public/css/webtrees.min.css", postCssPlugins)

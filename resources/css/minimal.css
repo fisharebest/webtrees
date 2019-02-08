@@ -15,6 +15,16 @@
 
 /* The minimal theme */
 
+/* Colors for chart boxes, etc. */
+:root {
+  --sex-f-fg: #888888;
+  --sex-m-fg: #888888;
+  --sex-u-fg: #888888;
+  --sex-f-bg: #dddddd;
+  --sex-m-bg: #dddddd;
+  --sex-u-bg: #dddddd;
+}
+
 /* Override Bootstrap formatting */
 .btn-link {
 	padding-left: 0.25rem;
@@ -43,10 +53,24 @@ table {
 	background: url(images/loading-32x32.gif) no-repeat 50% 50%;
 }
 
+/* Default icons are provided by FontAwesome. */
+.wt-icon-sex-f {
+	color: var(--sex-m-fg);
+}
+
+.wt-icon-sex-m {
+	color: var(--sex-m-fg);
+}
+
+.wt-icon-sex-u {
+	color: var(--sex-u-fg);
+}
+
+.wt-icon-sex-x {
+	color: var(--sex-u-fg);
+}
+
 /*
- * Icons use FontAwesome by default, but have additional classes to
- * allow them to be overridden
- *
  * .wt-icon-arrow-down
  * .wt-icon-arrow-end (right on LTR, left on RTL)
  * .wt-icon-arrow-start (left on LTR, right on RTL)
@@ -70,28 +94,11 @@ table {
  * .wt-icon-source
  * .wt-icon-submitter
  */
-.wt-icon-bing-maps::before {
-	width: 16px;
-	height: 16px;
-	content: url(minimal/icons/bing-maps.png);
-}
-
-.wt-icon-google-maps::before {
-	width: 16px;
-	height: 16px;
-	content: url(minimal/icons/google-maps.png);
-}
-
-.wt-icon-openstreetmap::before {
-	width: 16px;
-	height: 16px;
-	content: url(minimal/icons/openstreetmap.png);
-}
 
 /*
  * Pages have the following high-level structure:
  *
- * wt-global
+ * wt-global wt-theme-<THEME> wt-route-<ROUTE>
  * +---wt-header-wrapper
  *     +---wt-header-container
  *     |   +---wt-header-content
@@ -112,14 +119,20 @@ table {
  *     |       +---wt-page-title
  *     |       +---wt-page-options wt-page-options-xxxxx
  *     |       +---wt-page-content
- *     +---wt-footer-container
- *         +---wt-footer-content
+ *     +---wt-footers
+ *         +---wt-footer wt-footer-contact
+ *         +---wt-footer wt-footer-cookies
+ *         +---wt-footer wt-footer-page-views
+ *         +---wt-footer wt-footer-powered-by
  */
 
 .wt-global {
 	/* Avoid extremes of black and white.  It is better for users with dyslexia. */
 	color: #0a0a0a;
 	background-color: #f9f9f9;
+}
+
+.wt-header-wrapper {
 }
 
 .wt-header-container {
@@ -148,6 +161,12 @@ table {
 }
 
 .wt-header-search-form {
+}
+
+.wt-header-search-field {
+}
+
+.wt-header-search-button {
 }
 
 .wt-secondary-navigation {
@@ -199,22 +218,32 @@ table {
 	margin-top: 1rem;
 }
 
-.wt-footer-container {
+.wt-footers {
 }
 
-.wt-footer-content {
+.wt-footer {
 }
 
-.wt-contact-links {
+.wt-footer-contact {
 }
 
-.wt-powered-by-webtrees {
+.wt-footer-cookies {
+	background: #aaa;
+	color: #fff;
+	height: 3em;
+	line-height: 2.5em;
+	transition: height 0.5s;
 }
 
-.wt-page-views {
+.wt-footer-cookies.hidden {
+	height: 0;
+	overflow: hidden;
 }
 
-.wt-cookie-warning {
+.wt-footer-page-views {
+}
+
+.wt-footer-powered-by {
 }
 
 /*
@@ -1937,7 +1966,7 @@ div.faq_body {
 	width: 70px;
 	height: 60px;
 	display: inline-block;
-	background-image: url(minimal/images/lifespan-chunk.png);
+	background-image: url(images/lifespan-decade.png);
 	background-position-y: bottom;
 	background-repeat: no-repeat;
 	background-size: 70px 37px;
@@ -2091,6 +2120,7 @@ div.faq_body {
 	display: inline-block;
 	vertical-align: middle;
 	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .icon-add {
@@ -2244,42 +2274,6 @@ div.faq_body {
 	width: 12px;
 	height: 12px;
 	background-image: url(minimal/images/selected.png);
-}
-
-.icon-sex_f_15x15 {
-	width: 15px;
-	height: 15px;
-	background-image: url(minimal/images/sex_f_15x15.png);
-}
-
-.icon-sex_f_9x9 {
-	width: 9px;
-	height: 9px;
-	background-image: url(minimal/images/sex_f_9x9.png);
-}
-
-.icon-sex_m_15x15 {
-	width: 15px;
-	height: 15px;
-	background-image: url(minimal/images/sex_m_15x15.png);
-}
-
-.icon-sex_m_9x9 {
-	width: 9px;
-	height: 9px;
-	background-image: url(minimal/images/sex_m_9x9.png);
-}
-
-.icon-sex_u_15x15 {
-	width: 15px;
-	height: 15px;
-	background-image: url(minimal/images/sex_u_15x15.png);
-}
-
-.icon-sex_u_9x9 {
-	width: 9px;
-	height: 9px;
-	background-image: url(minimal/images/sex_u_9x9.png);
 }
 
 .icon-sfamily {
@@ -2673,14 +2667,3 @@ footer {
 	background-image: url(minimal/images/search.png);
 }
 
-.cookie-warning {
-	background: #aaa;
-	color: #fff;
-	height: 3em;
-	line-height: 2.5em;
-	transition: height 0.5s;
-}
-.cookie-warning.hidden {
-	height: 0;
-	overflow: hidden;
-}

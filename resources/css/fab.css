@@ -15,6 +15,16 @@
 
 /* The FAB theme */
 
+/* Colors for chart boxes, etc. */
+:root {
+  --sex-f-fg: #9c3163;
+  --sex-m-fg: #31639c;
+  --sex-u-fg: #319c43;
+  --sex-f-bg: #ffdddd;
+  --sex-m-bg: #ddddff;
+  --sex-u-bg: #ddffdd;
+}
+
 /* Override Bootstrap formatting */
 .btn-link {
 	padding-left: 0.25rem;
@@ -43,10 +53,24 @@ table {
 	background: url(images/loading-32x32.gif) no-repeat 50% 50%;
 }
 
+/* Default icons are provided by FontAwesome. */
+.wt-icon-sex-f::before {
+	color: var(--sex-f-fg);
+}
+
+.wt-icon-sex-m::before {
+	color: var(--sex-m-fg);
+}
+
+.wt-icon-sex-u::before {
+	color: var(--sex-u-fg);
+}
+
+.wt-icon-sex-x::before {
+	color: var(--sex-u-fg);
+}
+
 /*
- * Icons use FontAwesome by default, but have additional classes to
- * allow them to be overridden
- *
  * .wt-icon-arrow-down
  * .wt-icon-arrow-end (right on LTR, left on RTL)
  * .wt-icon-arrow-start (left on LTR, right on RTL)
@@ -70,28 +94,11 @@ table {
  * .wt-icon-source
  * .wt-icon-submitter
  */
-.wt-icon-bing-maps::before {
-	width: 16px;
-	height: 16px;
-	content: url(fab/icons/bing-maps.png);
-}
-
-.wt-icon-google-maps::before {
-	width: 16px;
-	height: 16px;
-	content: url(fab/icons/google-maps.png);
-}
-
-.wt-icon-openstreetmap::before {
-	width: 16px;
-	height: 16px;
-	content: url(fab/icons/openstreetmap.png);
-}
 
 /*
  * Pages have the following high-level structure:
  *
- * wt-global
+ * wt-global wt-theme-<THEME> wt-route-<ROUTE>
  * +---wt-header-wrapper
  *     +---wt-header-container
  *     |   +---wt-header-content
@@ -112,11 +119,22 @@ table {
  *     |       +---wt-page-title
  *     |       +---wt-page-options wt-page-options-xxxxx
  *     |       +---wt-page-content
- *     +---wt-footer-container
- *         +---wt-footer-content
+ *     +---wt-footers
+ *         +---wt-footer wt-footer-contact
+ *         +---wt-footer wt-footer-cookies
+ *         +---wt-footer wt-footer-page-views
+ *         +---wt-footer wt-footer-powered-by
  */
 
 .wt-global {
+	/* Prevent redraws when dynamic content requires a scrollbar. */
+	overflow-y: scroll;
+	/* Keep the page as tall as the window, so the footer can remain at the bottom. */
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	/* Any wide content will have its own horizontal scrollbar */
+	overflow-x: hidden;
 	color: #555;
 }
 
@@ -128,9 +146,6 @@ table {
 }
 
 .wt-header-content {
-}
-
-.wt-block-content {
 }
 
 .wt-accessibility-links {
@@ -153,6 +168,12 @@ table {
 }
 
 .wt-header-search-form {
+}
+
+.wt-header-search-field {
+}
+
+.wt-header-search-button {
 }
 
 .wt-secondary-navigation {
@@ -238,22 +259,31 @@ table {
 	margin-top: 1rem;
 }
 
-.wt-footer-container {
+.wt-footers {
 }
 
-.wt-footer-content {
+.wt-footer {
 }
 
-.wt-contact-links {
+.wt-footer-contact {
 }
 
-.wt-powered-by-webtrees {
+.wt-footer-cookies {
+	background: #aaa;
+	color: #fff;
+	height: 3em;
+	line-height: 2.5em;
+	transition: height 0.5s;
+}
+.wt-footer-cookies.hidden {
+	height: 0;
+	overflow: hidden;
 }
 
-.wt-page-views {
+.wt-footer-page-views {
 }
 
-.wt-cookie-warning {
+.wt-footer-powered-by {
 }
 
 /*
@@ -2201,7 +2231,7 @@ div.faq_body {
 	width: 70px;
 	height: 60px;
 	display: inline-block;
-	background-image: url(fab/images/lifespan-chunk.png);
+	background-image: url(images/lifespan-decade.png);
 	background-position-y: bottom;
 	background-repeat: no-repeat;
 	background-size: 70px 37px;
@@ -2304,6 +2334,7 @@ div.faq_body {
 	display: inline-block;
 	vertical-align: middle;
 	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .icon-add {
@@ -2472,42 +2503,6 @@ div.faq_body {
 	width: 12px;
 	height: 12px;
 	background-image: url(fab/images/selected.png);
-}
-
-.icon-sex_f_15x15 {
-	width: 15px;
-	height: 15px;
-	background-image: url(fab/images/sex_f_15x15.png);
-}
-
-.icon-sex_f_9x9 {
-	width: 9px;
-	height: 9px;
-	background-image: url(fab/images/sex_f_9x9.png);
-}
-
-.icon-sex_m_15x15 {
-	width: 15px;
-	height: 15px;
-	background-image: url(fab/images/sex_m_15x15.png);
-}
-
-.icon-sex_m_9x9 {
-	width: 9px;
-	height: 9px;
-	background-image: url(fab/images/sex_m_9x9.png);
-}
-
-.icon-sex_u_15x15 {
-	width: 15px;
-	height: 15px;
-	background-image: url(fab/images/sex_u_15x15.png);
-}
-
-.icon-sex_u_9x9 {
-	width: 9px;
-	height: 9px;
-	background-image: url(fab/images/sex_u_9x9.png);
 }
 
 .icon-slide_close {
@@ -2799,14 +2794,3 @@ footer {
 	background-image: url(fab/images/user_add.png);
 }
 
-.cookie-warning {
-	background: #aaa;
-	color: #fff;
-	height: 3em;
-	line-height: 2.5em;
-	transition: height 0.5s;
-}
-.cookie-warning.hidden {
-	height: 0;
-	overflow: hidden;
-}
