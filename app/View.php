@@ -105,7 +105,10 @@ class View
      */
     public static function endpush()
     {
-        self::$stacks[self::$stack][] = ob_get_clean();
+        $content = ob_get_clean();
+        $hash    = sha1($content);
+
+        self::$stacks[self::$stack][$hash] = $content;
     }
 
     /**
