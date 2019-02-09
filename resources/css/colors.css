@@ -558,6 +558,9 @@ table {
 	text-align: center;
 }
 
+.wt-page-options {
+}
+
 .wt-page-options-value {
     color: #333;
 }
@@ -591,7 +594,7 @@ table {
 }
 
 /*
- * The home/my pages
+ * The tree/user home pages
  *
  * wt-home-page / wt-user-page
  * +---wt-main-blocks
@@ -2334,11 +2337,6 @@ div.faq_body {
 	padding: 0;
 }
 
-[dir="rtl"] .generations {
-	margin: 0 15px 0 0;
-	background-position: right top;
-}
-
 .chart_common table {
 	padding: 0;
 	border-spacing: 0;
@@ -2515,7 +2513,6 @@ div.faq_body {
 	border: 1px solid #ddd;
 }
 
-/* ====== Common Icons ========= */
 [class^="icon-"],
 [class*=" icon-"] {
 	display: inline-block;
@@ -2745,25 +2742,19 @@ div.faq_body {
  * We can provide a "loading" placeholder for empty elements with this class.
  */
 .wt-ajax-load:empty {
-	height: 32px;
-	background: url(images/loading-32x32.gif) no-repeat 50% 50%;
 }
 
 /* Default icons are provided by FontAwesome. */
 .wt-icon-sex-f {
-	content: url(images/sex-F.png);
 }
 
 .wt-icon-sex-m {
-	content: url(images/sex-M.png);
 }
 
 .wt-icon-sex-u {
-	content: url(images/sex-U.png);
 }
 
 .wt-icon-sex-x {
-	content: url(images/sex-U.png);
 }
 
 /*

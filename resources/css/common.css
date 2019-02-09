@@ -136,7 +136,7 @@
 .wt-page-title {
 }
 
-.wt-page-content {
+.wt-page-options {
 }
 
 .wt-page-content .form-control {
@@ -145,6 +145,9 @@
 
 .wt-page-options-label {
 	text-align: center;
+}
+
+.wt-page-content {
 }
 
 .wt-footers {
@@ -779,7 +782,7 @@ a > .wt-icon-arrow-up:hover::before {
  * Creative Commons BY 3.0
  */
 .wt-mime {
-
+}
 
 .wt-mime-application-pdf {
 }

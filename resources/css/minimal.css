@@ -45,31 +45,6 @@ table {
 }
 
 /*
- * .wt-icon-arrow-down
- * .wt-icon-arrow-end (right on LTR, left on RTL)
- * .wt-icon-arrow-start (left on LTR, right on RTL)
- * .wt-icon-arrow-up
- * .wt-icon-bing-maps
- * .wt-icon-calendar
- * .wt-icon-copy
- * .wt-icon-delete
- * .wt-icon-edit
- * .wt-icon-email
- * .wt-icon-family
- * .wt-icon-help
- * .wt-icon-individual
- * .wt-icon-google-maps
- * .wt-icon-keyboard
- * .wt-icon-media
- * .wt-icon-note
- * .wt-icon-openstreetmap
- * .wt-icon-preferences
- * .wt-icon-repository
- * .wt-icon-source
- * .wt-icon-submitter
- */
-
-/*
  * Pages have the following high-level structure:
  *
  * wt-global wt-theme-<THEME> wt-route-<ROUTE>
@@ -101,6 +76,14 @@ table {
  */
 
 .wt-global {
+	/* Prevent redraws when dynamic content requires a scrollbar. */
+	overflow-y: scroll;
+	/* Keep the page as tall as the window, so the footer can remain at the bottom. */
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	/* Any wide content will have its own horizontal scrollbar */
+	overflow-x: hidden;
 	/* Avoid extremes of black and white.  It is better for users with dyslexia. */
 	color: #0a0a0a;
 	background-color: #f9f9f9;
@@ -213,6 +196,9 @@ table {
 }
 
 .wt-footer-powered-by {
+}
+
+.wt-footer-powered-by-webtrees {
 }
 
 /*
@@ -2071,7 +2057,58 @@ div.faq_body {
 	top: 0;
 	left: 0;
 }
-/* ====== Common Icons ========= */
+
+/*
+ * Any element that is loaded dynamically has the class wt-ajax-load.
+ * We can provide a "loading" placeholder for empty elements with this class.
+ */
+.wt-ajax-load:empty {
+	height: 32px;
+	background: url(images/loading-32x32.gif) no-repeat 50% 50%;
+}
+
+/* Default icons are provided by FontAwesome. */
+.wt-icon-sex-f {
+	color: var(--sex-m-fg);
+}
+
+.wt-icon-sex-m {
+	color: var(--sex-m-fg);
+}
+
+.wt-icon-sex-u {
+	color: var(--sex-u-fg);
+}
+
+.wt-icon-sex-x {
+	color: var(--sex-u-fg);
+}
+
+/*
+ * .wt-icon-arrow-down
+ * .wt-icon-arrow-end (right on LTR, left on RTL)
+ * .wt-icon-arrow-start (left on LTR, right on RTL)
+ * .wt-icon-arrow-up
+ * .wt-icon-bing-maps
+ * .wt-icon-calendar
+ * .wt-icon-copy
+ * .wt-icon-delete
+ * .wt-icon-edit
+ * .wt-icon-email
+ * .wt-icon-family
+ * .wt-icon-help
+ * .wt-icon-individual
+ * .wt-icon-google-maps
+ * .wt-icon-keyboard
+ * .wt-icon-media
+ * .wt-icon-note
+ * .wt-icon-openstreetmap
+ * .wt-icon-preferences
+ * .wt-icon-repository
+ * .wt-icon-source
+ * .wt-icon-submitter
+ */
+
 [class^="icon-"],
 [class*=" icon-"] {
 	display: inline-block;
@@ -2299,189 +2336,6 @@ div.faq_body {
 	content: url(minimal/images/silhouette_male.png);
 }
 
-header h1 {
-	clear: left;
-	float: left;
-	font-size: 26px;
-	font-weight: 900;
-	margin: 0;
-}
-
-header nav {
-	position: relative;
-	float: left;
-	width: 100%;
-	margin-top: 18px;
-	border-bottom: 1px solid;
-	margin-bottom: 10px;
-}
-
-/* Set stack level for top two header menu rows */
-.secondary-menu ul,
-.primary-menu ul {
-	z-index: 210;
-	max-height: 400px;
-	min-width: 140px;
-	overflow-y: auto;
-	overflow-x: hidden;
-}
-
-.title {
-	font-size: 20px;
-}
-
-/* ====== Secondary menu ======= */
-.secondary-menu {
-	float: right;
-	font-size: 14px;
-}
-
-.secondary-menu li {
-	display: inline;
-	position: relative;
-	white-space: nowrap;
-	float: left;
-	border: 1px solid #999;
-	line-height: 26px;
-
-}
-
-.secondary-menu li a {
-	padding: 5px 8px;
-}
-
-.secondary-menu ul {
-	position: absolute;
-	top: 26px;
-	left: 0;
-	right: auto;
-	display: none;
-	font-weight: normal;
-	font-size: 12px;
-	background: #fff;
-	border: 1px solid #999;
-}
-
-.secondary-menu ul li {
-	border: 0;
-	clear: both;
-	display: block;
-	line-height: 2;
-	text-align: left;
-}
-
-.secondary-menu,
-.secondary-menu ul {
-	list-style: none;
-	margin: 0;
-	padding: 1px;
-}
-
-.secondary-menu li:hover ul {
-	display: block;
-}
-
-
-.secondary-menu ul li a {
-	padding: 0 5px 0 2px;
-	display: block;
-}
-
-.secondary-menu .active {
-	font-weight: 900;
-}
-
-.header-search input {
-	border: none;
-}
-
-/* ====== Primary menu ========= */
-.primary-menu {
-	position: relative;
-	float: right;
-	right: 50%;
-	list-style: none;
-}
-
-.primary-menu li {
-	float: left;
-	position: relative;
-	left: 50%;
-	clear: right;
-	width: auto;
-	padding: 0 5px;
-	border: 1px solid #999;
-}
-
-.primary-menu li a {
-	display: block;
-	font-size: 14px;
-	text-align: center;
-	padding: 5px;
-	background-color: #fff;
-}
-
-.primary-menu ul {
-	position: absolute;
-	top: 27px;
-	left: 0;
-	right: auto;
-	display: none;
-	background: #fff;
-	white-space: nowrap;
-	border: 1px solid #999;
-	list-style: none;
-}
-
-.primary-menu ul li {
-	float: left;
-	width: 100%;
-	border: 0;
-	left: auto;
-	margin: 0;
-	padding: 0;
-	clear: left;
-}
-
-.primary-menu li:hover ul {
-	position: absolute;
-	margin: 0;
-	display: block;
-	text-align: left;
-	padding: 0;
-}
-
-.primary-menu ul li a {
-	padding: 5px;
-	text-align: left;
-	font-size: 12px;
-}
-
-/*
- * Any element that is loaded dynamically has the class wt-ajax-load.
- * We can provide a "loading" placeholder for empty elements with this class.
- */
-.wt-ajax-load:empty {
-	height: 32px;
-	background: url(images/loading-32x32.gif) no-repeat 50% 50%;
-}
-
-/* Default icons are provided by FontAwesome. */
-.wt-icon-sex-f {
-	color: var(--sex-m-fg);
-}
-
-.wt-icon-sex-m {
-	color: var(--sex-m-fg);
-}
-
-.wt-icon-sex-u {
-	color: var(--sex-u-fg);
-}
-
-.wt-icon-sex-x {
-	color: var(--sex-u-fg);
-}
 .icon-indis {
 	width: 24px;
 	height: 24px;

@@ -547,6 +547,9 @@ table {
 	text-align: center;
 }
 
+.wt-page-options {
+}
+
 .wt-page-options .form-group {
 	margin-bottom: 2px;
 }
@@ -2694,7 +2697,6 @@ div.faq_body {
 	min-width: 500px;
 }
 
-/* ====== Common Icons ========= */
 [class^="icon-"],
 [class*=" icon-"] {
 	display: inline-block;

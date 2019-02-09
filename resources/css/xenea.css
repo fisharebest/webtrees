@@ -523,6 +523,12 @@ table {
 	text-align: center;
 }
 
+.wt-page-options {
+}
+
+.wt-page-content {
+}
+
 .wt-page-options .form-group {
 	margin-bottom: 2px;
 }
@@ -548,6 +554,8 @@ table {
 }
 
 .wt-footer {
+	text-align: center;
+	margin: 0.5rem 0;
 }
 
 .wt-footer-contact {
@@ -2463,7 +2471,208 @@ div.faq_body {
 	min-width: 500px;
 }
 
-/* ====== Common Icons ========= */
+/*
+ * Any element that is loaded dynamically has the class wt-ajax-load.
+ * We can provide a "loading" placeholder for empty elements with this class.
+ */
+.wt-ajax-load:empty {
+	height: 32px;
+	background: url(images/loading-32x32.gif) no-repeat 50% 50%;
+}
+
+/* Default icons are provided by FontAwesome. */
+.wt-icon-sex-f {
+}
+
+.wt-icon-sex-m {
+}
+
+.wt-icon-sex-u {
+}
+
+.wt-icon-sex-x {
+}
+
+/*
+ * .wt-icon-arrow-down
+ * .wt-icon-arrow-end (right on LTR, left on RTL)
+ * .wt-icon-arrow-start (left on LTR, right on RTL)
+ * .wt-icon-arrow-up
+ * .wt-icon-bing-maps
+ * .wt-icon-calendar
+ * .wt-icon-copy
+ * .wt-icon-delete
+ * .wt-icon-edit
+ * .wt-icon-email
+ * .wt-icon-family
+ * .wt-icon-help
+ * .wt-icon-individual
+ * .wt-icon-google-maps
+ * .wt-icon-keyboard
+ * .wt-icon-media
+ * .wt-icon-note
+ * .wt-icon-openstreetmap
+ * .wt-icon-preferences
+ * .wt-icon-repository
+ * .wt-icon-source
+ * .wt-icon-submitter
+ */
+.wt-icon-arrow-down::before {
+	width: 20px;
+	height: 20px;
+	content: url(xenea/icons/arrow-down.png);
+}
+
+a > .wt-icon-arrow-down:hover::before {
+	width: 20px;
+	height: 20px;
+	content: url(xenea/icons/arrow-down-hover.png);
+}
+
+.wt-icon-arrow-end::before {
+	width: 20px;
+	height: 20px;
+	content: url(xenea/icons/arrow-right.png);
+}
+
+a > .wt-icon-arrow-end:hover::before {
+	width: 20px;
+	height: 20px;
+	content: url(xenea/icons/arrow-right-hover.png);
+}
+
+.wt-icon-arrow-start::before {
+	width: 20px;
+	height: 20px;
+	content: url(xenea/icons/arrow-left.png);
+}
+
+a > .wt-icon-arrow-start:hover::before {
+	width: 20px;
+	height: 20px;
+	content: url(xenea/icons/arrow-left-hover.png);
+}
+
+.wt-icon-arrow-up::before {
+	width: 20px;
+	height: 20px;
+	content: url(xenea/icons/arrow-up.png);
+}
+
+a > .wt-icon-arrow-up:hover::before {
+	width: 20px;
+	height: 20px;
+	content: url(xenea/icons/arrow-up-hover.png);
+}
+
+.wt-icon-bing-maps::before {
+	width: 16px;
+	height: 16px;
+	content: url(xenea/icons/bing-maps.png);
+}
+
+.wt-icon-calendar::before {
+	width: 19px;
+	height: 15px;
+	content: url(xenea/icons/calendar.png)
+}
+
+.wt-icon-coordinates::before {
+	width: 16px;
+	height: 16px;
+	content: url(xenea/icons/coordinates.png)
+}
+
+.wt-icon-copy::before {
+	width: 16px;
+	height: 16px;
+	content: url(xenea/icons/copy.png)
+}
+
+.wt-icon-delete::before {
+	width: 16px;
+	height: 16px;
+	content: url(xenea/icons/delete.png);
+}
+
+.wt-icon-edit::before {
+	width: 16px;
+	height: 16px;
+	content: url(xenea/icons/edit.png);
+}
+
+.wt-icon-family::before {
+	width: 14px;
+	height: 15px;
+	content: url(xenea/icons/family.png);
+}
+
+.wt-icon-help::before {
+	width: 16px;
+	height: 16px;
+	content: url(xenea/icons/help.png);
+}
+
+.wt-icon-google-maps::before {
+	width: 16px;
+	height: 16px;
+	content: url(xenea/icons/google-maps.png);
+}
+
+.wt-icon-individual::before {
+	width: 11px;
+	height: 15px;
+	content: url(xenea/icons/individual.png);
+}
+
+.wt-icon-keyboard::before {
+	width: 30px;
+	height: 15px;
+	content: url(xenea/icons/keyboard.png);
+}
+
+.wt-icon-media::before {
+	width: 18px;
+	height: 16px;
+	content: url(xenea/icons/media.png);
+}
+
+.wt-icon-note::before {
+	width: 20px;
+	height: 20px;
+	content: url(xenea/icons/note.png);
+}
+
+.wt-icon-openstreetmap::before {
+	width: 16px;
+	height: 16px;
+	content: url(xenea/icons/openstreetmap.png);
+}
+
+.wt-icon-preferences::before {
+	width: 25px;
+	height: 25px;
+	content: url(xenea/icons/preferences.png);
+}
+
+.wt-icon-repository::before {
+	width: 15px;
+	height: 15px;
+	content: url(xenea/icons/repository.png);
+}
+
+.wt-icon-source::before {
+	width: 18px;
+	height: 16px;
+	content: url(xenea/icons/source.png);
+}
+
+.wt-icon-submitter::before {
+	width: 11px;
+	height: 15px;
+	content: url(xenea/icons/individual.png);
+}
+
 [class^="icon-"],
 [class*=" icon-"] {
 	display: inline-block;
@@ -2719,208 +2928,6 @@ small > .wt-icon-sex-u {
 
 .wt-silhouette-M::before {
 	content: url(xenea/images/silhouette_male.png);
-}
-
-/*
- * Any element that is loaded dynamically has the class wt-ajax-load.
- * We can provide a "loading" placeholder for empty elements with this class.
- */
-.wt-ajax-load:empty {
-	height: 32px;
-	background: url(images/loading-32x32.gif) no-repeat 50% 50%;
-}
-
-/* Default icons are provided by FontAwesome. */
-.wt-icon-sex-f {
-}
-
-.wt-icon-sex-m {
-}
-
-.wt-icon-sex-u {
-}
-
-.wt-icon-sex-x {
-}
-
-/*
- * .wt-icon-arrow-down
- * .wt-icon-arrow-end (right on LTR, left on RTL)
- * .wt-icon-arrow-start (left on LTR, right on RTL)
- * .wt-icon-arrow-up
- * .wt-icon-bing-maps
- * .wt-icon-calendar
- * .wt-icon-copy
- * .wt-icon-delete
- * .wt-icon-edit
- * .wt-icon-email
- * .wt-icon-family
- * .wt-icon-help
- * .wt-icon-individual
- * .wt-icon-google-maps
- * .wt-icon-keyboard
- * .wt-icon-media
- * .wt-icon-note
- * .wt-icon-openstreetmap
- * .wt-icon-preferences
- * .wt-icon-repository
- * .wt-icon-source
- * .wt-icon-submitter
- */
-.wt-icon-arrow-down::before {
-	width: 20px;
-	height: 20px;
-	content: url(xenea/icons/arrow-down.png);
-}
-
-a > .wt-icon-arrow-down:hover::before {
-	width: 20px;
-	height: 20px;
-	content: url(xenea/icons/arrow-down-hover.png);
-}
-
-.wt-icon-arrow-end::before {
-	width: 20px;
-	height: 20px;
-	content: url(xenea/icons/arrow-right.png);
-}
-
-a > .wt-icon-arrow-end:hover::before {
-	width: 20px;
-	height: 20px;
-	content: url(xenea/icons/arrow-right-hover.png);
-}
-
-.wt-icon-arrow-start::before {
-	width: 20px;
-	height: 20px;
-	content: url(xenea/icons/arrow-left.png);
-}
-
-a > .wt-icon-arrow-start:hover::before {
-	width: 20px;
-	height: 20px;
-	content: url(xenea/icons/arrow-left-hover.png);
-}
-
-.wt-icon-arrow-up::before {
-	width: 20px;
-	height: 20px;
-	content: url(xenea/icons/arrow-up.png);
-}
-
-a > .wt-icon-arrow-up:hover::before {
-	width: 20px;
-	height: 20px;
-	content: url(xenea/icons/arrow-up-hover.png);
-}
-
-.wt-icon-bing-maps::before {
-	width: 16px;
-	height: 16px;
-	content: url(xenea/icons/bing-maps.png);
-}
-
-.wt-icon-calendar::before {
-	width: 19px;
-	height: 15px;
-	content: url(xenea/icons/calendar.png)
-}
-
-.wt-icon-coordinates::before {
-	width: 16px;
-	height: 16px;
-	content: url(xenea/icons/coordinates.png)
-}
-
-.wt-icon-copy::before {
-	width: 16px;
-	height: 16px;
-	content: url(xenea/icons/copy.png)
-}
-
-.wt-icon-delete::before {
-	width: 16px;
-	height: 16px;
-	content: url(xenea/icons/delete.png);
-}
-
-.wt-icon-edit::before {
-	width: 16px;
-	height: 16px;
-	content: url(xenea/icons/edit.png);
-}
-
-.wt-icon-family::before {
-	width: 14px;
-	height: 15px;
-	content: url(xenea/icons/family.png);
-}
-
-.wt-icon-help::before {
-	width: 16px;
-	height: 16px;
-	content: url(xenea/icons/help.png);
-}
-
-.wt-icon-google-maps::before {
-	width: 16px;
-	height: 16px;
-	content: url(xenea/icons/google-maps.png);
-}
-
-.wt-icon-individual::before {
-	width: 11px;
-	height: 15px;
-	content: url(xenea/icons/individual.png);
-}
-
-.wt-icon-keyboard::before {
-	width: 30px;
-	height: 15px;
-	content: url(xenea/icons/keyboard.png);
-}
-
-.wt-icon-media::before {
-	width: 18px;
-	height: 16px;
-	content: url(xenea/icons/media.png);
-}
-
-.wt-icon-note::before {
-	width: 20px;
-	height: 20px;
-	content: url(xenea/icons/note.png);
-}
-
-.wt-icon-openstreetmap::before {
-	width: 16px;
-	height: 16px;
-	content: url(xenea/icons/openstreetmap.png);
-}
-
-.wt-icon-preferences::before {
-	width: 25px;
-	height: 25px;
-	content: url(xenea/icons/preferences.png);
-}
-
-.wt-icon-repository::before {
-	width: 15px;
-	height: 15px;
-	content: url(xenea/icons/repository.png);
-}
-
-.wt-icon-source::before {
-	width: 18px;
-	height: 16px;
-	content: url(xenea/icons/source.png);
-}
-
-.wt-icon-submitter::before {
-	width: 11px;
-	height: 15px;
-	content: url(xenea/icons/individual.png);
 }
 
 .icon-indis {
