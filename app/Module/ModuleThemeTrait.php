@@ -124,7 +124,10 @@ trait ModuleThemeTrait
             $content = '<a href="' . e($individual->url()) . '">' . $content . '</a>' .
                 '<div class="namedef name1">' . $individual->getAddName() . '</div>';
             $icons   = '<div class="icons">' .
-                '<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
+                '<span class="iconz" title="' . I18N::translate('Zoom in/out on this box.') . '">' .
+                '<span class="iconz-zoom-icon">' . view('icons/zoom-in') . '</span>' .
+                '<span class="iconz-zoom-icon d-none">' . view('icons/zoom-out') . '</span>' .
+                '</span>' .
                 '<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
                 '<ul class="' . $person_box_class . '">' . implode('', array_map(function (Menu $menu): string {
                     return $menu->bootstrap4();

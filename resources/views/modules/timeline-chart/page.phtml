@@ -42,8 +42,12 @@
     <div class="row form-group">
         <div class="col-form-label col-sm-3 wt-page-options-label"></div>
         <div class="col-sm-9 wt-page-options-value">
-            <a href="<?= e($zoom_in_url) ?>" class="icon-zoomin" title="<?= I18N::translate('Zoom in') ?>"></a>
-            <a href="<?= e($zoom_out_url) ?>" class="icon-zoomout" title="<?= I18N::translate('Zoom out') ?>"></a>
+            <a href="<?= e($zoom_in_url) ?>" title="<?= I18N::translate('Zoom in') ?>">
+                <?= view('icons/zoom-in') ?>
+            </a>
+            <a href="<?= e($zoom_out_url) ?>" title="<?= I18N::translate('Zoom out') ?>">
+                <?= view('icons/zoom-in') ?>
+            </a>
         </div>
     </div>
 </form>

@@ -523,6 +523,12 @@ table {
 	text-align: center;
 }
 
+.wt-page-options {
+}
+
+.wt-page-content {
+}
+
 .wt-page-options .form-group {
 	margin-bottom: 2px;
 }
@@ -556,8 +562,6 @@ table {
 .wt-footer-cookies {
 	background: #aaa;
 	color: #fff;
-	height: 3em;
-	line-height: 2.5em;
 	transition: height 0.5s;
 }
 
@@ -617,6 +621,25 @@ table {
 	border: 0;
 	border-top: solid #81a9cb 1px;
 	border-right: solid #81a9cb 1px;
+}
+
+/*
+ * The individual page.
+ *
+ * wt-route-individual
+ * +---wt-header-wrapper
+ */
+
+.wt-individual-silhouette {
+	content: url(images/individual-silhouette-unknown.png);
+}
+
+.wt-individual-silhouette-F {
+	content: url(images/individual-silhouette-female.png);
+}
+
+.wt-individual-silhouette-M {
+	content: url(images/individual-silhouette-male.png);
 }
 
 /*
@@ -1871,32 +1894,6 @@ div.faq_body {
 	color: #fff;
 }
 
-/* ======= General sprite ==== */
-.male_gender,
-.female_gender,
-.unknown_gender {
-	display: block;
-	background: url(xenea/images/indi_sprite.png) no-repeat;
-}
-
-.female_gender {
-	background-position: -45px 3px;
-	width: 24px;
-	height: 30px;
-}
-
-.male_gender {
-	background-position: -72px 3px;
-	width: 24px;
-	height: 30px;
-}
-
-.unknown_gender {
-	background-position: -100px 4px;
-	width: 24px;
-	height: 30px;
-}
-
 /* ======== Indi tabs ======== */
 /* Facts & Events tab */
 #personal_facts_content .fact_NOTE,
@@ -2463,264 +2460,6 @@ div.faq_body {
 	min-width: 500px;
 }
 
-/* ====== Common Icons ========= */
-[class^="icon-"],
-[class*=" icon-"] {
-	display: inline-block;
-	vertical-align: text-bottom;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-
-.icon-add {
-	width: 14px;
-	height: 15px;
-	background-image: url(images/add.png);
-}
-
-.icon-cfamily {
-	width: 25px;
-	height: 25px;
-	background-image: url(xenea/images/cfamily.png);
-}
-
-.icon-childless {
-	width: 25px;
-	height: 25px;
-	background-image: url(xenea/images/childless.png);
-}
-
-.icon-children {
-	width: 16px;
-	height: 16px;
-	background-image: url(xenea/images/children.png);
-}
-
-.icon-clippings {
-	width: 22px;
-	height: 22px;
-	background-image: url(xenea/images/clippings.png);
-}
-
-.icon-edit_indi {
-	width: 25px;
-	height: 25px;
-	background-image: url(xenea/images/edit_indi.png);
-}
-
-.icon-fam-list {
-	width: 25px;
-	height: 25px;
-	background-image: url(xenea/images/cfamily.png);
-}
-
-.icon-indi-list {
-	width: 20px;
-	height: 20px;
-	background-image: url(xenea/images/indis.png);
-}
-
-.icon-loading-small {
-	width: 16px;
-	height: 16px;
-	background-image: url(xenea/images/indicator.gif);
-}
-
-.icon-media {
-	width: 20px;
-	height: 20px;
-	background-image: url(xenea/images/media.png);
-}
-
-.icon-media-list {
-	width: 20px;
-	height: 20px;
-	background-image: url(xenea/images/media.png);
-}
-
-.icon-media-next {
-	width: 20px;
-	height: 20px;
-	background-image: url(xenea/images/rdarrow.png);
-}
-
-.icon-media-play {
-	width: 20px;
-	height: 20px;
-	background-image: url(xenea/images/rarrow.png);
-}
-
-.icon-media-stop {
-	width: 20px;
-	height: 20px;
-	background-image: url(xenea/images/stop.png);
-}
-
-.icon-minus {
-	width: 11px;
-	height: 11px;
-	background-image: url(xenea/images/minus.png);
-}
-
-.icon-mypage {
-	width: 24px;
-	height: 24px;
-	background-image: url(xenea/images/mypage.png);
-}
-
-.icon-note {
-	width: 22px;
-	height: 22px;
-	background-image: url(xenea/icons/note.png);
-}
-
-.icon-plus {
-	width: 11px;
-	height: 11px;
-	background-image: url(xenea/images/plus.png);
-}
-
-.icon-reminder {
-	width: 15px;
-	height: 12px;
-	background-image: url(xenea/images/reminder.png);
-}
-
-.icon-remove {
-	width: 20px;
-	height: 20px;
-	background-image: url(xenea/images/remove.png);
-}
-
-.icon-resn-confidential {
-	width: 16px;
-	height: 16px;
-	background-image: url(xenea/images/resn_confidential.png);
-}
-
-.icon-resn-locked {
-	width: 16px;
-	height: 16px;
-	background-image: url(xenea/images/resn_locked.png);
-}
-
-.icon-resn-none {
-	width: 16px;
-	height: 16px;
-	background-image: url(xenea/images/resn_none.png);
-}
-
-.icon-resn-privacy {
-	width: 16px;
-	height: 16px;
-	background-image: url(xenea/images/resn_privacy.png);
-}
-
-.icon-rings {
-	width: 9px;
-	height: 9px;
-	background-image: url(xenea/images/rings.png);
-}
-
-.icon-selected {
-	width: 12px;
-	height: 12px;
-	background-image: url(xenea/images/selected.png);
-}
-
-.wt-icon-sex-f {
-	width: 1rem;
-	height: 1rem;
-	background-image: url(images/sex-F.png);
-}
-
-small > .wt-icon-sex-f {
-	width: 0.6rem;
-	height: 0.6rem;
-}
-
-.wt-icon-sex-m {
-	width: 1rem;
-	height: 1rem;
-	background-image: url(images/sex-M.png);
-}
-
-small > .wt-icon-sex-m {
-	width: 0.6rem;
-	height: 0.6rem;
-}
-
-.wt-icon-sex-u {
-	width: 1rem;
-	height: 1rem;
-	background-image: url(images/sex-U.png);
-}
-
-small > .wt-icon-sex-u {
-	width: 0.6rem;
-	height: 0.6rem;
-}
-
-.icon-source {
-	width: 20px;
-	height: 20px;
-	background-image: url(xenea/images/source.png);
-}
-
-.icon-warning {
-	width: 17px;
-	height: 17px;
-	background-image: url(xenea/images/warning.png);
-}
-
-.icon-zoomin {
-	width: 25px;
-	height: 25px;
-	background-image: url(xenea/images/zoomin.png);
-}
-
-.icon-zoomout {
-	width: 25px;
-	height: 25px;
-	background-image: url(xenea/images/zoomout.png);
-}
-
-/* Silhouettes on charts */
-.icon-silhouette-F {
-	width: 37px;
-	height: 50px;
-	background-image: url(xenea/images/silhouette_female_small.png);
-}
-
-.icon-silhouette-M {
-	width: 37px;
-	height: 50px;
-	background-image: url(xenea/images/silhouette_male_small.png);
-}
-
-.icon-silhouette-U {
-	width: 37px;
-	height: 50px;
-	background-image: url(xenea/images/silhouette_unknown_small.png);
-}
-
-.wt-silhoutte {
-	width: 200px;
-	height: 260px;
-}
-
-.wt-silhoutte::before {
-	content: url(xenea/images/silhouette_unknown.png);
-}
-
-.wt-silhoutte-F::before {
-	content: url(xenea/images/silhouette_female.png);
-}
-
-.wt-silhouette-M::before {
-	content: url(xenea/images/silhouette_male.png);
-}
-
 /*
  * Any element that is loaded dynamically has the class wt-ajax-load.
  * We can provide a "loading" placeholder for empty elements with this class.
@@ -2731,16 +2470,40 @@ small > .wt-icon-sex-u {
 }
 
 /* Default icons are provided by FontAwesome. */
+.wt-icon-anniversary {
+	content: url(images/anniversary.png);
+}
+
+.wt-icon-reorder {
+	content: url(images/reorder.png);
+}
+
 .wt-icon-sex-f {
+	content: url(images/sex-female.png);
 }
 
 .wt-icon-sex-m {
+	content: url(images/sex-male.png);
 }
 
 .wt-icon-sex-u {
+	content: url(images/sex-unknown.png);
 }
 
 .wt-icon-sex-x {
+	content: url(images/sex-unknown.png);
+}
+
+.wt-icon-warning {
+	content: url(images/warning.png);
+}
+
+.wt-icon-zoom-in {
+	content: url(xenea/images/zoomin.png);
+}
+
+.wt-icon-zoom-out {
+	content: url(xenea/images/zoomout.png);
 }
 
 /*
@@ -2921,6 +2684,189 @@ a > .wt-icon-arrow-up:hover::before {
 	width: 11px;
 	height: 15px;
 	content: url(xenea/icons/individual.png);
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+	display: inline-block;
+	vertical-align: text-bottom;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.icon-add {
+	width: 14px;
+	height: 15px;
+	background-image: url(images/add.png);
+}
+
+.icon-cfamily {
+	width: 25px;
+	height: 25px;
+	background-image: url(xenea/images/cfamily.png);
+}
+
+.icon-childless {
+	width: 25px;
+	height: 25px;
+	background-image: url(xenea/images/childless.png);
+}
+
+.icon-children {
+	width: 16px;
+	height: 16px;
+	background-image: url(xenea/images/children.png);
+}
+
+.icon-clippings {
+	width: 22px;
+	height: 22px;
+	background-image: url(xenea/images/clippings.png);
+}
+
+.icon-edit_indi {
+	width: 25px;
+	height: 25px;
+	background-image: url(xenea/images/edit_indi.png);
+}
+
+.icon-fam-list {
+	width: 25px;
+	height: 25px;
+	background-image: url(xenea/images/cfamily.png);
+}
+
+.icon-indi-list {
+	width: 20px;
+	height: 20px;
+	background-image: url(xenea/images/indis.png);
+}
+
+.icon-loading-small {
+	width: 16px;
+	height: 16px;
+	background-image: url(xenea/images/indicator.gif);
+}
+
+.icon-media {
+	width: 20px;
+	height: 20px;
+	background-image: url(xenea/images/media.png);
+}
+
+.icon-media-list {
+	width: 20px;
+	height: 20px;
+	background-image: url(xenea/images/media.png);
+}
+
+.icon-media-next {
+	width: 20px;
+	height: 20px;
+	background-image: url(xenea/images/rdarrow.png);
+}
+
+.icon-media-play {
+	width: 20px;
+	height: 20px;
+	background-image: url(xenea/images/rarrow.png);
+}
+
+.icon-media-stop {
+	width: 20px;
+	height: 20px;
+	background-image: url(xenea/images/stop.png);
+}
+
+.icon-minus {
+	width: 11px;
+	height: 11px;
+	background-image: url(xenea/images/minus.png);
+}
+
+.icon-mypage {
+	width: 24px;
+	height: 24px;
+	background-image: url(xenea/images/mypage.png);
+}
+
+.icon-note {
+	width: 22px;
+	height: 22px;
+	background-image: url(xenea/icons/note.png);
+}
+
+.icon-plus {
+	width: 11px;
+	height: 11px;
+	background-image: url(xenea/images/plus.png);
+}
+
+.icon-remove {
+	width: 20px;
+	height: 20px;
+	background-image: url(xenea/images/remove.png);
+}
+
+.icon-resn-confidential {
+	width: 16px;
+	height: 16px;
+	background-image: url(xenea/images/resn_confidential.png);
+}
+
+.icon-resn-locked {
+	width: 16px;
+	height: 16px;
+	background-image: url(xenea/images/resn_locked.png);
+}
+
+.icon-resn-none {
+	width: 16px;
+	height: 16px;
+	background-image: url(xenea/images/resn_none.png);
+}
+
+.icon-resn-privacy {
+	width: 16px;
+	height: 16px;
+	background-image: url(xenea/images/resn_privacy.png);
+}
+
+.icon-rings {
+	width: 9px;
+	height: 9px;
+	background-image: url(xenea/images/rings.png);
+}
+
+.icon-selected {
+	width: 12px;
+	height: 12px;
+	background-image: url(xenea/images/selected.png);
+}
+
+.icon-source {
+	width: 20px;
+	height: 20px;
+	background-image: url(xenea/images/source.png);
+}
+
+/* Silhouettes on charts */
+.icon-silhouette-F {
+	width: 37px;
+	height: 50px;
+	background-image: url(xenea/images/silhouette_female_small.png);
+}
+
+.icon-silhouette-M {
+	width: 37px;
+	height: 50px;
+	background-image: url(xenea/images/silhouette_male_small.png);
+}
+
+.icon-silhouette-U {
+	width: 37px;
+	height: 50px;
+	background-image: url(xenea/images/silhouette_unknown_small.png);
 }
 
 .icon-indis {

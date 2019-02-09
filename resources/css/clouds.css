@@ -547,6 +547,9 @@ table {
 	text-align: center;
 }
 
+.wt-page-options {
+}
+
 .wt-page-options .form-group {
 	margin-bottom: 2px;
 }
@@ -579,8 +582,6 @@ table {
 .wt-footer-cookies {
 	background: #666;
 	color: #fff;
-	height: 3em;
-	line-height: 2.5em;
 	transition: height 0.5s;
 }
 
@@ -657,28 +658,23 @@ table {
 }
 
 /*
- * Pending changes page
+ * The individual page.
  *
- * wt-pending-changes-page
+ * wt-route-individual
+ * +---wt-individual-silhouette wt-individual-silhouette-[MFU]
  */
 
-/*
- * Edit genealogy data page
- *
- * wt-edit-page, wt-edit-XXXX-page
- */
+.wt-individual-silhouette {
+	content: url(images/individual-silhouette-unknown.png);
+}
 
-/*
- * Configure home/my page blocks page
- *
- * wt-edit-blocks-page
- */
+.wt-individual-silhouette-F {
+	content: url(images/individual-silhouette-female.png);
+}
 
-/*
- * Login page
- *
- * wt-login-page
- */
+.wt-individual-silhouette-M {
+	content: url(images/individual-silhouette-male.png);
+}
 
 /*
  * Ancestors chart
@@ -1513,11 +1509,11 @@ a:hover .nameZoom {
 	2 normal view - large box
 */
 .box-style0 {
-	cursor: url(clouds/images/zoomin.png), n-resize;
+	cursor: n-resize;
 }
 
 .box-style0-expanded {
-	cursor: url(clouds/images/zoomout.png), n-resize;
+	cursor: n-resize;
 }
 
 .person_box_template {
@@ -2077,32 +2073,6 @@ div.faq_body {
 	font-weight: bold;
 	background: #000;
 	color: #fff;
-}
-
-/* ======= General sprite ==== */
-.male_gender,
-.female_gender,
-.unknown_gender {
-	display: block;
-	background: url(clouds/images/general_sprite.png) no-repeat left 0;
-}
-
-.female_gender {
-	background-position: -45px 3px;
-	width: 24px;
-	height: 30px;
-}
-
-.male_gender {
-	background-position: -72px 3px;
-	width: 24px;
-	height: 30px;
-}
-
-.unknown_gender {
-	background-position: -100px 4px;
-	width: 24px;
-	height: 30px;
 }
 
 /* ======== Indi tabs ======== */
@@ -2694,7 +2664,6 @@ div.faq_body {
 	min-width: 500px;
 }
 
-/* ====== Common Icons ========= */
 [class^="icon-"],
 [class*=" icon-"] {
 	display: inline-block;
@@ -2811,12 +2780,6 @@ div.faq_body {
 	background-image: url(clouds/images/plus.png);
 }
 
-.icon-reminder {
-	width: 15px;
-	height: 12px;
-	background-image: url(clouds/images/reminder.png);
-}
-
 .icon-remove {
 	width: 16px;
 	height: 16px;
@@ -2865,24 +2828,6 @@ div.faq_body {
 	background-image: url(clouds/images/source.png);
 }
 
-.icon-warning {
-	width: 17px;
-	height: 17px;
-	background-image: url(clouds/images/warning.png);
-}
-
-.icon-zoomin {
-	width: 25px;
-	height: 25px;
-	background-image: url(clouds/images/zoomin.png);
-}
-
-.icon-zoomout {
-	width: 25px;
-	height: 25px;
-	background-image: url(clouds/images/zoomout.png);
-}
-
 /* Silhouettes on charts */
 .icon-silhouette-F {
 	width: 37px;
@@ -2900,23 +2845,6 @@ div.faq_body {
 	width: 37px;
 	height: 45px;
 	background-image: url(clouds/images/silhouette_unknown_small.png);
-}
-
-.wt-silhoutte {
-	width: 200px;
-	height: 260px;
-}
-
-.wt-silhoutte::before {
-	content: url(clouds/images/silhouette_unknown.png);
-}
-
-.wt-silhoutte-F::before {
-	content: url(clouds/images/silhouette_female.png);
-}
-
-.wt-silhouette-M::before {
-	content: url(clouds/images/silhouette_male.png);
 }
 
 /* Tbl hdrs and Light Text */
@@ -2991,20 +2919,40 @@ footer .error {
 }
 
 /* Default icons are provided by FontAwesome. */
+.wt-icon-anniversary {
+	content: url(images/anniversary.png);
+}
+
+.wt-icon-reorder {
+	content: url(images/reorder.png);
+}
+
 .wt-icon-sex-f {
-	content: url(images/sex-F.png);
+	content: url(images/sex-female.png);
 }
 
 .wt-icon-sex-m {
-	content: url(images/sex-M.png);
+	content: url(images/sex-male.png);
 }
 
 .wt-icon-sex-u {
-	content: url(images/sex-U.png);
+	content: url(images/sex-unknown.png);
 }
 
 .wt-icon-sex-x {
-	content: url(images/sex-U.png);
+	content: url(images/sex-unknown.png);
+}
+
+.wt-icon-warning {
+	content: url(images/warning.png);
+}
+
+.wt-icon-zoom-in {
+	content: url(clouds/images/zoomin.png);
+}
+
+.wt-icon-zoom-out {
+	content: url(clouds/images/zoomout.png);
 }
 
 /*

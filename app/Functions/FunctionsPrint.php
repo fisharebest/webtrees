@@ -309,7 +309,7 @@ class FunctionsPrint
                                 $ageText = '(' . $age . ' ' . I18N::translate('after death') . ')';
                                 // Family events which occur after death are probably errors
                                 if ($event->record() instanceof Family) {
-                                    $ageText .= '<i class="icon-warning"></i>';
+                                    $ageText .= view('icons/warning');
                                 }
                             }
                         }

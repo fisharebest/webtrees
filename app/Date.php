@@ -548,7 +548,7 @@ class Date
         // Just years, in local digits, with warning for negative/
         if ($jd && $d1->minimumJulianDay()) {
             if ($d1->minimumJulianDay() > $jd) {
-                return '<i class="icon-warning"></i>';
+                return view('icons/warning');
             } else {
                 $years = $d1->minimumDate()->getAge($jd);
 

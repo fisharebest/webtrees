@@ -428,7 +428,7 @@ abstract class AbstractCalendarDate
             return '';
         }
         if ($jd < $this->minimum_julian_day) {
-            return '<i class="icon-warning"></i>';
+            return view('icons/warning');
         }
         [$y, $m, $d] = $this->calendar->jdToYmd($jd);
         $dy = $y - $this->year;

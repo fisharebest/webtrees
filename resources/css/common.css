@@ -136,7 +136,7 @@
 .wt-page-title {
 }
 
-.wt-page-content {
+.wt-page-options {
 }
 
 .wt-page-content .form-control {
@@ -145,6 +145,9 @@
 
 .wt-page-options-label {
 	text-align: center;
+}
+
+.wt-page-content {
 }
 
 .wt-footers {
@@ -669,6 +672,15 @@ fieldset.row > legend, fieldset.row > div {
 .wt-icon-sex-x {
 }
 
+.wt-icon-warning {
+}
+
+.wt-icon-zoom-in {
+}
+
+.wt-icon-zoom-out {
+}
+
 /*
  * .wt-icon-arrow-down
  * .wt-icon-arrow-end (right on LTR, left on RTL)
@@ -779,7 +791,7 @@ a > .wt-icon-arrow-up:hover::before {
  * Creative Commons BY 3.0
  */
 .wt-mime {
-
+}
 
 .wt-mime-application-pdf {
 }

@@ -208,7 +208,9 @@ for ($year = 1550; $year < 2030; $year += 10) {
                     I18N::translate('Sosa') ?></th>
                 <th><?= I18N::translate('Birth') ?></th>
                 <th>
-                    <i class="icon-reminder" title="<?= I18N::translate('Anniversary') ?>"></i>
+                    <span title="<?= I18N::translate('Anniversary') ?>">
+                        <?= view('icons/anniversary') ?>
+                    </span>
                 </th>
                 <th><?= I18N::translate('Place') ?></th>
                 <th>
@@ -216,7 +218,9 @@ for ($year = 1550; $year < 2030; $year += 10) {
                 </th>
                 <th><?= I18N::translate('Death') ?></th>
                 <th>
-                    <i class="icon-reminder" title="<?= I18N::translate('Anniversary') ?>"></i>
+                    <span title="<?= I18N::translate('Anniversary') ?>">
+                        <?= view('icons/anniversary') ?>
+                    </span>
                 </th>
                 <th><?= I18N::translate('Age') ?></th>
                 <th><?= I18N::translate('Place') ?></th>

@@ -558,6 +558,9 @@ table {
 	text-align: center;
 }
 
+.wt-page-options {
+}
+
 .wt-page-options-value {
     color: #333;
 }
@@ -578,8 +581,6 @@ table {
 .wt-footer-cookies {
 	background: #aaa;
 	color: #fff;
-	height: 3em;
-	line-height: 2.5em;
 	transition: height 0.5s;
 }
 
@@ -591,7 +592,7 @@ table {
 }
 
 /*
- * The home/my pages
+ * The tree/user home pages
  *
  * wt-home-page / wt-user-page
  * +---wt-main-blocks
@@ -623,28 +624,20 @@ table {
 }
 
 /*
- * Pending changes page
+ * The individual page.
  *
- * wt-pending-changes-page
+ * wt-route-individual
+ * +---wt-header-wrapper
  */
 
-/*
- * Edit genealogy data page
- *
- * wt-edit-page, wt-edit-XXXX-page
- */
+.wt-individual-silhouette {
+}
 
-/*
- * Configure home/my page blocks page
- *
- * wt-edit-blocks-page
- */
+.wt-individual-silhouette-F {
+}
 
-/*
- * Login page
- *
- * wt-login-page
- */
+.wt-individual-silhouette-M {
+}
 
 /*
  * Ancestors chart
@@ -1404,11 +1397,11 @@ a:hover .nameZoom {
 	2 normal view - large box
 */
 .box-style0 {
-	cursor: url(colors/images/zoomin.png), n-resize;
+	cursor: n-resize;
 }
 
 .box-style0-expanded {
-	cursor: url(colors/images/zoomout.png), n-resize;
+	cursor: n-resize;
 }
 
 .person_box_template .namedef i[class^="icon-sex"] {
@@ -1933,32 +1926,6 @@ div.faq_body {
 	color: #fff;
 }
 
-/* ======= General sprite ==== */
-.male_gender,
-.female_gender,
-.unknown_gender {
-	display: block;
-	background: url(colors/images/general_sprite.png) no-repeat left 0;
-}
-
-.female_gender {
-	background-position: -45px 3px;
-	width: 24px;
-	height: 30px;
-}
-
-.male_gender {
-	background-position: -72px 3px;
-	width: 24px;
-	height: 30px;
-}
-
-.unknown_gender {
-	background-position: -100px 4px;
-	width: 24px;
-	height: 30px;
-}
-
 /* ======== Indi tabs ======== */
 /* Facts & Events tab */
 #personal_facts_content .fact_NOTE,
@@ -2334,11 +2301,6 @@ div.faq_body {
 	padding: 0;
 }
 
-[dir="rtl"] .generations {
-	margin: 0 15px 0 0;
-	background-position: right top;
-}
-
 .chart_common table {
 	padding: 0;
 	border-spacing: 0;
@@ -2515,7 +2477,6 @@ div.faq_body {
 	border: 1px solid #ddd;
 }
 
-/* ====== Common Icons ========= */
 [class^="icon-"],
 [class*=" icon-"] {
 	display: inline-block;
@@ -2631,12 +2592,6 @@ div.faq_body {
 	background-image: url(colors/images/plus.png);
 }
 
-.icon-reminder {
-	width: 15px;
-	height: 12px;
-	background-image: url(colors/images/reminder.png);
-}
-
 .icon-remove {
 	width: 16px;
 	height: 16px;
@@ -2686,24 +2641,6 @@ div.faq_body {
 	background-image: url(colors/images/source.png);
 }
 
-.icon-warning {
-	width: 17px;
-	height: 17px;
-	background-image: url(colors/images/warning.png);
-}
-
-.icon-zoomin {
-	width: 25px;
-	height: 25px;
-	background-image: url(colors/images/zoomin.png);
-}
-
-.icon-zoomout {
-	width: 25px;
-	height: 25px;
-	background-image: url(colors/images/zoomout.png);
-}
-
 /* Silhouettes on charts */
 .icon-silhouette-F {
 	width: 37px;
@@ -2723,47 +2660,41 @@ div.faq_body {
 	background-image: url(colors/images/silhouette_unknown_small.png);
 }
 
-.wt-silhoutte {
-	width: 200px;
-	height: 260px;
-}
-
-.wt-silhoutte::before {
-	content: url(colors/images/silhouette_unknown.png);
-}
-
-.wt-silhoutte-F::before {
-	content: url(colors/images/silhouette_female.png);
-}
-
-.wt-silhouette-M::before {
-	content: url(colors/images/silhouette_male.png);
-}
-
 /*
  * Any element that is loaded dynamically has the class wt-ajax-load.
  * We can provide a "loading" placeholder for empty elements with this class.
  */
 .wt-ajax-load:empty {
-	height: 32px;
-	background: url(images/loading-32x32.gif) no-repeat 50% 50%;
 }
 
 /* Default icons are provided by FontAwesome. */
+.wt-icon-anniversary {
+}
+
+.wt-icon-reorder {
+}
+
 .wt-icon-sex-f {
-	content: url(images/sex-F.png);
 }
 
 .wt-icon-sex-m {
-	content: url(images/sex-M.png);
 }
 
 .wt-icon-sex-u {
-	content: url(images/sex-U.png);
 }
 
 .wt-icon-sex-x {
-	content: url(images/sex-U.png);
+}
+
+.wt-icon-warning {
+}
+
+.wt-icon-zoom-in {
+	content: url(colors/images/zoomin.png);
+}
+
+.wt-icon-zoom-out {
+	content: url(colors/images/zoomout.png);
 }
 
 /*

@@ -38,7 +38,7 @@
             <!-- Individual images -->
             <div class="col-sm-3">
                 <?php if (empty($individual_media)) : ?>
-                    <i class="wt-silhouette wt-silhouette-<?= $individual->getSex() ?>"></i>
+                    <i class="wt-individual-silhouette wt-individual-silhouette-<?= $individual->getSex() ?>"></i>
                 <?php elseif (count($individual_media) === 1) : ?>
                     <?= $individual_media[0]->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
                 <?php else : ?>
@@ -66,6 +66,7 @@
                     <?php if (count($individual->facts(['OBJE'])) > 1) : ?>
                         <div>
                             <a href="<?= e(route('reorder-media', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
+                                <?= view('icons/reorder') ?>
                                 <?= I18N::translate('Re-order media') ?>
                             </a>
                         </div>

@@ -88,6 +88,7 @@
                 <tr>
                     <td>
                         <a href="<?= e(route('reorder-spouses', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
+                            <?= view('icons/reorder') ?>
                             <?= I18N::translate('Re-order families') ?>
                         </a>
                     </td>

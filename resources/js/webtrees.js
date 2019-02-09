@@ -780,7 +780,6 @@ function autocomplete(selector)
 
 /* Show / Hide event data for boxes used on charts and elsewhere */
 $('body').on('click', '.iconz', function (e) {
-    'use strict';
     e.stopPropagation();
 
     var wrapper = $(this).closest('.person_box_template'),
@@ -820,16 +819,15 @@ $('body').on('click', '.iconz', function (e) {
         wrapper.css('cursor', 'progress');
         inout.load('index.php', {route: 'expand-chart-box', xref: wrapper.data('xref'), ged: wrapper.data('tree')}, function () {
             wrapper.css('cursor', '');
-            showDetails();
         });
-    } else {
-        if (wrapper.hasClass(basestyle)) {
-            showDetails();
-        } else {
-            hideDetails();
-        }
     }
-    wrapper.find('.iconz').toggleClass('icon-zoomin icon-zoomout');
+
+    if (wrapper.hasClass(basestyle)) {
+        showDetails();
+    } else {
+        hideDetails();
+    }
+    $('.iconz-zoom-icon', wrapper).toggleClass('d-none');
 });
 
 /**

@@ -164,7 +164,7 @@
                             <div class="wt-date-difference collapse small">
                                 <?php $days = $next->maximumJulianDay() - $prev->minimumJulianDay(); ?>
                                 <?php if ($days < 0 || $child_number > 1 && $days > 1 && $days < 240) : ?>
-                                    <i class="icon-warning"></i>
+                                    <?= view('icons/warning') ?>
                                 <?php endif ?>
 
                                 <?php $months = round($days / 30); ?>
@@ -192,6 +192,7 @@
                 <th scope="row">
                     <?php if (count($family->getChildren()) > 1) : ?>
                         <a href="<?= e(route('reorder-children', ['ged' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
+                            <?= view('icons/reorder') ?>
                             <?= I18N::translate('Re-order children') ?>
                         </a>
                     <?php endif; ?>
