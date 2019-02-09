@@ -90,216 +90,6 @@ table {
 }
 
 /*
- * Any element that is loaded dynamically has the class wt-ajax-load.
- * We can provide a "loading" placeholder for empty elements with this class.
- */
-.wt-ajax-load:empty {
-	height: 32px;
-	background: url(images/loading-32x32.gif) no-repeat 50% 50%;
-}
-
-/* Default icons are provided by FontAwesome. */
-.wt-icon-sex-f {
-	content: url(images/sex-F.png);
-}
-
-.wt-icon-sex-m {
-	content: url(images/sex-M.png);
-}
-
-.wt-icon-sex-u {
-	content: url(images/sex-U.png);
-}
-
-.wt-icon-sex-x {
-	content: url(images/sex-U.png);
-}
-
-/*
- * .wt-icon-arrow-down
- * .wt-icon-arrow-end (right on LTR, left on RTL)
- * .wt-icon-arrow-start (left on LTR, right on RTL)
- * .wt-icon-arrow-up
- * .wt-icon-bing-maps
- * .wt-icon-calendar
- * .wt-icon-copy
- * .wt-icon-delete
- * .wt-icon-edit
- * .wt-icon-email
- * .wt-icon-family
- * .wt-icon-help
- * .wt-icon-individual
- * .wt-icon-google-maps
- * .wt-icon-keyboard
- * .wt-icon-media
- * .wt-icon-note
- * .wt-icon-openstreetmap
- * .wt-icon-preferences
- * .wt-icon-repository
- * .wt-icon-source
- * .wt-icon-submitter
- */
-.wt-icon-arrow-down::before {
-	width: 20px;
-	height: 20px;
-	content: url(colors/icons/arrow-down.png);
-}
-
-a > .wt-icon-arrow-down:hover::before {
-	width: 20px;
-	height: 20px;
-	content: url(colors/icons/arrow-down-hover.png);
-}
-
-.wt-icon-arrow-end::before {
-	width: 20px;
-	height: 20px;
-	content: url(colors/icons/arrow-right.png);
-}
-
-a > .wt-icon-arrow-end:hover::before {
-	width: 20px;
-	height: 20px;
-	content: url(colors/icons/arrow-right-hover.png);
-}
-
-.wt-icon-arrow-start::before {
-	width: 20px;
-	height: 20px;
-	content: url(colors/icons/arrow-left.png);
-}
-
-a > .wt-icon-arrow-start:hover::before {
-	width: 20px;
-	height: 20px;
-	content: url(colors/icons/arrow-left-hover.png);
-}
-
-.wt-icon-arrow-up::before {
-	width: 20px;
-	height: 20px;
-	content: url(colors/icons/arrow-up.png);
-}
-
-a > .wt-icon-arrow-up:hover::before {
-	width: 20px;
-	height: 20px;
-	content: url(colors/icons/arrow-up-hover.png);
-}
-
-.wt-icon-bing-maps::before {
-	width: 16px;
-	height: 16px;
-	content: url(colors/icons/bing-maps.png);
-}
-
-.wt-icon-calendar::before {
-	width: 19px;
-	height: 15px;
-	content: url(colors/icons/calendar.png)
-}
-
-.wt-icon-coordinates::before {
-	width: 16px;
-	height: 16px;
-	content: url(colors/icons/coordinates.png)
-}
-
-.wt-icon-copy::before {
-	width: 16px;
-	height: 16px;
-	content: url(colors/icons/copy.png)
-}
-
-.wt-icon-delete::before {
-	width: 16px;
-	height: 16px;
-	content: url(colors/icons/delete.png);
-}
-
-.wt-icon-edit::before {
-	width: 16px;
-	height: 16px;
-	content: url(colors/icons/edit.png);
-}
-
-.wt-icon-family::before {
-	width: 14px;
-	height: 15px;
-	content: url(colors/icons/family.png);
-}
-
-.wt-icon-help::before {
-	width: 16px;
-	height: 16px;
-	content: url(colors/icons/help.png);
-}
-
-.wt-icon-google-maps::before {
-	width: 16px;
-	height: 16px;
-	content: url(colors/icons/google-maps.png);
-}
-
-.wt-icon-individual::before {
-	width: 11px;
-	height: 15px;
-	content: url(colors/icons/individual.png);
-}
-
-.wt-icon-keyboard::before {
-	width: 30px;
-	height: 15px;
-	content: url(colors/icons/keyboard.png);
-}
-
-.wt-icon-media::before {
-	width: 18px;
-	height: 16px;
-	content: url(colors/icons/media.png);
-}
-
-.wt-icon-note::before {
-	width: 20px;
-	height: 20px;
-	content: url(colors/icons/note.png);
-}
-
-.wt-icon-openstreetmap::before {
-	width: 16px;
-	height: 16px;
-	content: url(colors/icons/openstreetmap.png);
-}
-
-.wt-icon-preferences::before {
-	width: 25px;
-	height: 25px;
-	content: url(colors/icons/preferences.png);
-}
-
-.wt-icon-repository::before {
-	width: 15px;
-	height: 15px;
-	content: url(colors/icons/repository.png);
-}
-
-.wt-icon-source::before {
-	width: 18px;
-	height: 16px;
-	content: url(colors/icons/source.png);
-}
-
-.wt-icon-submitter::before {
-	width: 11px;
-	height: 15px;
-	content: url(colors/icons/individual.png);
-}
-
-i[class*="wt-icon-media"] {
-	opacity: 0.5;
-}
-
-/*
  * Pages have the following high-level structure:
  *
  * wt-global wt-theme-<THEME> wt-route-<ROUTE>
@@ -357,9 +147,6 @@ i[class*="wt-icon-media"] {
 }
 
 .wt-header-content {
-}
-
-.wt-block-content {
 }
 
 .wt-accessibility-links {
@@ -796,15 +583,11 @@ i[class*="wt-icon-media"] {
 	transition: height 0.5s;
 }
 
-.wt-footer-cookies.hidden {
-	height: 0;
-	overflow: hidden;
-}
-
 .wt-footer-page-views {
 }
 
 .wt-footer-powered-by {
+	content: url(colors/images/powered-by-webtrees.png);
 }
 
 /*
@@ -826,8 +609,17 @@ i[class*="wt-icon-media"] {
  * +---wt-block-content, wt-block-content-XXX
  */
 
+.wt-block {
+}
+
+.wt-block-header {
+}
+
 .wt-block-header::before {
 	content: url(colors/images/block-header-disk.png);
+}
+
+.wt-block-content {
 }
 
 /*
@@ -2948,156 +2740,216 @@ div.faq_body {
 	content: url(colors/images/silhouette_male.png);
 }
 
-[class^="icon-mime-"],
-[class*=" icon-mime-"] {
-	display: inline-block;
-	background: transparent url(colors/images/icon-mime-sprite.png) no-repeat;
-	width: 48px;
-	height: 48px;
+/*
+ * Any element that is loaded dynamically has the class wt-ajax-load.
+ * We can provide a "loading" placeholder for empty elements with this class.
+ */
+.wt-ajax-load:empty {
+	height: 32px;
+	background: url(images/loading-32x32.gif) no-repeat 50% 50%;
 }
 
-/* ===== Generic MIME types ===== */
-[class^="icon-mime-"],
-[class*=" icon-mime-"] {
-	background-position: -99px -49px;
+/* Default icons are provided by FontAwesome. */
+.wt-icon-sex-f {
+	content: url(images/sex-F.png);
 }
 
-[class^="icon-mime-application-"],
-[class*=" icon-mime-application-"] {
-	background-position: -99px -196px;
+.wt-icon-sex-m {
+	content: url(images/sex-M.png);
 }
 
-[class^="icon-mime-audio-"],
-[class*=" icon-mime-audio-"] {
-	background-position: -197px -98px;
+.wt-icon-sex-u {
+	content: url(images/sex-U.png);
 }
 
-[class^="icon-mime-image-"],
-[class*=" icon-mime-image-"] {
-	background-position: -148px -245px;
+.wt-icon-sex-x {
+	content: url(images/sex-U.png);
 }
 
-[class^="icon-mime-text-"],
-[class*=" icon-mime-text-"] {
-	background-position: -197px -147px;
+/*
+ * .wt-icon-arrow-down
+ * .wt-icon-arrow-end (right on LTR, left on RTL)
+ * .wt-icon-arrow-start (left on LTR, right on RTL)
+ * .wt-icon-arrow-up
+ * .wt-icon-bing-maps
+ * .wt-icon-calendar
+ * .wt-icon-copy
+ * .wt-icon-delete
+ * .wt-icon-edit
+ * .wt-icon-email
+ * .wt-icon-family
+ * .wt-icon-help
+ * .wt-icon-individual
+ * .wt-icon-google-maps
+ * .wt-icon-keyboard
+ * .wt-icon-media
+ * .wt-icon-note
+ * .wt-icon-openstreetmap
+ * .wt-icon-preferences
+ * .wt-icon-repository
+ * .wt-icon-source
+ * .wt-icon-submitter
+ */
+.wt-icon-arrow-down::before {
+	width: 20px;
+	height: 20px;
+	content: url(colors/icons/arrow-down.png);
 }
 
-[class^="icon-mime-video-"],
-[class*=" icon-mime-video-"] {
-	background-position: -148px -147px;
+a > .wt-icon-arrow-down:hover::before {
+	width: 20px;
+	height: 20px;
+	content: url(colors/icons/arrow-down-hover.png);
 }
 
-/* ===== Specific MIME types ===== */
-.icon-mime-application-pdf {
-	background-position: -1px -49px;
+.wt-icon-arrow-end::before {
+	width: 20px;
+	height: 20px;
+	content: url(colors/icons/arrow-right.png);
 }
 
-.icon-mime-application-msword {
-	background-position: -148px -49px;
+a > .wt-icon-arrow-end:hover::before {
+	width: 20px;
+	height: 20px;
+	content: url(colors/icons/arrow-right-hover.png);
 }
 
-.icon-mime-application-vnd-ms-excel {
-	background-position: -148px -196px;
+.wt-icon-arrow-start::before {
+	width: 20px;
+	height: 20px;
+	content: url(colors/icons/arrow-left.png);
 }
 
-.icon-mime-application-x-rar-compressed {
-	background-position: -50px -98px;
+a > .wt-icon-arrow-start:hover::before {
+	width: 20px;
+	height: 20px;
+	content: url(colors/icons/arrow-left-hover.png);
 }
 
-.icon-mime-application-zip {
-	background-position: -50px -147px;
+.wt-icon-arrow-up::before {
+	width: 20px;
+	height: 20px;
+	content: url(colors/icons/arrow-up.png);
 }
 
-.icon-mime-application-x-shockwave-flash {
-	background-position: -148px 0;
+a > .wt-icon-arrow-up:hover::before {
+	width: 20px;
+	height: 20px;
+	content: url(colors/icons/arrow-up-hover.png);
 }
 
-.icon-mime-audio-mp3 {
-	background-position: -50px -245px;
+.wt-icon-bing-maps::before {
+	width: 16px;
+	height: 16px;
+	content: url(colors/icons/bing-maps.png);
 }
 
-.icon-mime-audio-mpeg {
-	background-position: -50px 0;
+.wt-icon-calendar::before {
+	width: 19px;
+	height: 15px;
+	content: url(colors/icons/calendar.png)
 }
 
-.icon-mime-audio-x-ms-wma {
-	background-position: -1px -245px;
+.wt-icon-coordinates::before {
+	width: 16px;
+	height: 16px;
+	content: url(colors/icons/coordinates.png)
 }
 
-.icon-mime-audio-wav {
-	background-position: -1px -98px;
+.wt-icon-copy::before {
+	width: 16px;
+	height: 16px;
+	content: url(colors/icons/copy.png)
 }
 
-.icon-mime-text-html {
-	background-position: -99px -245px;
+.wt-icon-delete::before {
+	width: 16px;
+	height: 16px;
+	content: url(colors/icons/delete.png);
 }
 
-.icon-mime-text-x-gedcom {
-	background-position: -50px -49px;
+.wt-icon-edit::before {
+	width: 16px;
+	height: 16px;
+	content: url(colors/icons/edit.png);
 }
 
-.icon-mime-image-bmp {
-	background-position: 197px 0;
+.wt-icon-family::before {
+	width: 14px;
+	height: 15px;
+	content: url(colors/icons/family.png);
 }
 
-.icon-mime-image-gif {
-	background-position: -197px -49px;
+.wt-icon-help::before {
+	width: 16px;
+	height: 16px;
+	content: url(colors/icons/help.png);
 }
 
-.icon-mime-image-jpeg {
-	background-position: -1px -147px;
+.wt-icon-google-maps::before {
+	width: 16px;
+	height: 16px;
+	content: url(colors/icons/google-maps.png);
 }
 
-.icon-mime-image-png {
-	background-position: -99px -98px;
+.wt-icon-individual::before {
+	width: 11px;
+	height: 15px;
+	content: url(colors/icons/individual.png);
 }
 
-.icon-mime-image-svg {
-	background-position: -197px -196px;
+.wt-icon-keyboard::before {
+	width: 30px;
+	height: 15px;
+	content: url(colors/icons/keyboard.png);
 }
 
-.icon-mime-image-tiff {
-	background-position: -148px -98px;
+.wt-icon-media::before {
+	width: 18px;
+	height: 16px;
+	content: url(colors/icons/media.png);
 }
 
-.icon-mime-video-quicktime {
-	background-position: -99px -147px;
+.wt-icon-note::before {
+	width: 20px;
+	height: 20px;
+	content: url(colors/icons/note.png);
 }
 
-.icon-mime-video-avi {
-	background-position: -99px 0;
+.wt-icon-openstreetmap::before {
+	width: 16px;
+	height: 16px;
+	content: url(colors/icons/openstreetmap.png);
 }
 
-.icon-mime-video-x-ms-wmv {
-	background-position: -50px -196px;
-}
-/* ====== End Icon styles ====== */
-
-/* ====== Theme Footer ========= */
-
-footer {
-	clear: both;
-	text-align: center;
+.wt-icon-preferences::before {
+	width: 25px;
+	height: 25px;
+	content: url(colors/icons/preferences.png);
 }
 
-.contact-links {
-	margin: 30px 0 15px;
+.wt-icon-repository::before {
+	width: 15px;
+	height: 15px;
+	content: url(colors/icons/repository.png);
 }
 
-.powered-by-webtrees {
-	display: inline-block;
-	margin-top: 10px;
-	width: 100px;
-	height: 21px;
+.wt-icon-source::before {
+	width: 18px;
+	height: 16px;
+	content: url(colors/icons/source.png);
 }
 
-.powered-by-webtrees:after {
-	content: url(colors/images/powered-by-webtrees.png);
+.wt-icon-submitter::before {
+	width: 11px;
+	height: 15px;
+	content: url(colors/icons/individual.png);
 }
 
-/* ====== End Theme Footer ===== */
+i[class*="wt-icon-media"] {
+	opacity: 0.5;
+}
 
-/* ====== Theme Icons ========== */
 .icon-indis {
 	width: 25px;
 	height: 25px;
@@ -3157,3 +3009,29 @@ footer {
 	height: 25px;
 	background-image: url(colors/images/user_add.png);
 }
+
+/*
+ * Icons for file types
+ *
+ * Icons made by Zlatko Najdenovski
+ * https://www.flaticon.com/packs/file-formats-3"
+ * Creative Commons BY 3.0
+ */
+.wt-mime {
+}
+
+.wt-mime-application-pdf {
+}
+
+.wt-mime-audio {
+}
+
+.wt-mime-text {
+}
+
+.wt-mime-text-html {
+}
+
+.wt-mime-video {
+}
+

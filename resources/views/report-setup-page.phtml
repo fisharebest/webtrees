@@ -37,12 +37,12 @@
 
         <div class="col-sm-9 wt-page-options-value d-flex justify-content-around">
             <div class="text-center">
-                <label for="HTML"><i class="icon-mime-text-html"></i></label>
+                <label for="HTML"><?= view('icons/mime', ['type' => 'text/html']) ?></label>
                 <br>
                 <input type="radio" name="output" id="HTML" value="HTML" checked>
             </div>
             <div class="text-center">
-                <label for="PDF"><i class="icon-mime-application-pdf"></i></label>
+                <label for="PDF"><?= view('icons/mime', ['type' => 'application/pdf']) ?></label>
                 <br>
                 <input type="radio" name="output" value="PDF" id="PDF">
             </div>

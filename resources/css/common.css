@@ -24,128 +24,6 @@
 }
 
 /*
- * Any element that is loaded dynamically has the class wt-ajax-load.
- * We can provide a "loading" placeholder for empty elements with this class.
- */
-.wt-ajax-load:empty {
-}
-
-/* Default icons are provided by FontAwesome. */
-.wt-icon-sex-f {
-}
-
-.wt-icon-sex-m {
-}
-
-.wt-icon-sex-u {
-}
-
-.wt-icon-sex-x {
-}
-
-/*
- * .wt-icon-arrow-down
- * .wt-icon-arrow-end (right on LTR, left on RTL)
- * .wt-icon-arrow-start (left on LTR, right on RTL)
- * .wt-icon-arrow-up
- * .wt-icon-bing-maps
- * .wt-icon-calendar
- * .wt-icon-copy
- * .wt-icon-delete
- * .wt-icon-edit
- * .wt-icon-email
- * .wt-icon-family
- * .wt-icon-help
- * .wt-icon-individual
- * .wt-icon-google-maps
- * .wt-icon-keyboard
- * .wt-icon-media
- * .wt-icon-note
- * .wt-icon-openstreetmap
- * .wt-icon-preferences
- * .wt-icon-repository
- * .wt-icon-source
- * .wt-icon-submitter
- */
-.wt-icon-arrow-down::before {
-}
-
-a > .wt-icon-arrow-down:hover::before {
-}
-
-.wt-icon-arrow-end::before {
-}
-
-a > .wt-icon-arrow-end:hover::before {
-}
-
-.wt-icon-arrow-start::before {
-}
-
-a > .wt-icon-arrow-start:hover::before {
-}
-
-.wt-icon-arrow-up::before {
-}
-
-a > .wt-icon-arrow-up:hover::before {
-}
-
-.wt-icon-bing-maps::before {
-}
-
-.wt-icon-calendar::before {
-}
-
-.wt-icon-coordinates::before {
-}
-
-.wt-icon-copy::before {
-}
-
-.wt-icon-delete::before {
-}
-
-.wt-icon-edit::before {
-}
-
-.wt-icon-family::before {
-}
-
-.wt-icon-help::before {
-}
-
-.wt-icon-google-maps::before {
-}
-
-.wt-icon-individual::before {
-}
-
-.wt-icon-keyboard::before {
-}
-
-.wt-icon-media::before {
-}
-
-.wt-icon-note::before {
-}
-
-.wt-icon-openstreetmap::before {
-}
-
-.wt-icon-preferences::before {
-}
-
-.wt-icon-repository::before {
-}
-
-.wt-icon-source::before {
-}
-
-.wt-icon-submitter::before {
-}
-
-/*
  * Pages have the following high-level structure:
  *
  * wt-global wt-theme-<THEME> wt-route-<ROUTE>
@@ -288,7 +166,7 @@ a > .wt-icon-arrow-up:hover::before {
 }
 
 /*
- * The home/my pages
+ * The tree/user home pages
  *
  * wt-home-page / wt-user-page
  * +---wt-main-blocks
@@ -770,3 +648,151 @@ fieldset.row > legend, fieldset.row > div {
 	text-align: center;
 	}
 }
+
+/*
+ * Any element that is loaded dynamically has the class wt-ajax-load.
+ * We can provide a "loading" placeholder for empty elements with this class.
+ */
+.wt-ajax-load:empty {
+}
+
+/* Default icons are provided by FontAwesome. */
+.wt-icon-sex-f {
+}
+
+.wt-icon-sex-m {
+}
+
+.wt-icon-sex-u {
+}
+
+.wt-icon-sex-x {
+}
+
+/*
+ * .wt-icon-arrow-down
+ * .wt-icon-arrow-end (right on LTR, left on RTL)
+ * .wt-icon-arrow-start (left on LTR, right on RTL)
+ * .wt-icon-arrow-up
+ * .wt-icon-bing-maps
+ * .wt-icon-calendar
+ * .wt-icon-copy
+ * .wt-icon-delete
+ * .wt-icon-edit
+ * .wt-icon-email
+ * .wt-icon-family
+ * .wt-icon-help
+ * .wt-icon-individual
+ * .wt-icon-google-maps
+ * .wt-icon-keyboard
+ * .wt-icon-media
+ * .wt-icon-note
+ * .wt-icon-openstreetmap
+ * .wt-icon-preferences
+ * .wt-icon-repository
+ * .wt-icon-source
+ * .wt-icon-submitter
+ */
+.wt-icon-arrow-down::before {
+}
+
+a > .wt-icon-arrow-down:hover::before {
+}
+
+.wt-icon-arrow-end::before {
+}
+
+a > .wt-icon-arrow-end:hover::before {
+}
+
+.wt-icon-arrow-start::before {
+}
+
+a > .wt-icon-arrow-start:hover::before {
+}
+
+.wt-icon-arrow-up::before {
+}
+
+a > .wt-icon-arrow-up:hover::before {
+}
+
+.wt-icon-bing-maps::before {
+}
+
+.wt-icon-calendar::before {
+}
+
+.wt-icon-coordinates::before {
+}
+
+.wt-icon-copy::before {
+}
+
+.wt-icon-delete::before {
+}
+
+.wt-icon-edit::before {
+}
+
+.wt-icon-family::before {
+}
+
+.wt-icon-help::before {
+}
+
+.wt-icon-google-maps::before {
+}
+
+.wt-icon-individual::before {
+}
+
+.wt-icon-keyboard::before {
+}
+
+.wt-icon-media::before {
+}
+
+.wt-icon-note::before {
+}
+
+.wt-icon-openstreetmap::before {
+}
+
+.wt-icon-preferences::before {
+}
+
+.wt-icon-repository::before {
+}
+
+.wt-icon-source::before {
+}
+
+.wt-icon-submitter::before {
+}
+
+/*
+ * Icons for file types
+ *
+ * Icons made by Zlatko Najdenovski
+ * https://www.flaticon.com/packs/file-formats-3"
+ * Creative Commons BY 3.0
+ */
+.wt-mime {
+
+
+.wt-mime-application-pdf {
+}
+
+.wt-mime-audio {
+}
+
+.wt-mime-text {
+}
+
+.wt-mime-text-html {
+}
+
+.wt-mime-video {
+}
+

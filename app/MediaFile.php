@@ -234,14 +234,14 @@ class MediaFile
             }
         }
 
-        $image = '<img ' . Html::attributes($attributes + [
-                    'dir'    => 'auto',
-                    'src'    => $src,
-                    'srcset' => implode(',', $srcset),
-                    'alt'    => htmlspecialchars_decode(strip_tags($this->media->getFullName())),
-                ]) . '>';
-
         if ($this->isImage()) {
+            $image = '<img ' . Html::attributes($attributes + [
+                        'dir'    => 'auto',
+                        'src'    => $src,
+                        'srcset' => implode(',', $srcset),
+                        'alt'    => htmlspecialchars_decode(strip_tags($this->media->getFullName())),
+                    ]) . '>';
+
             $attributes = Html::attributes([
                 'class'      => 'gallery',
                 'type'       => $this->mimeType(),
@@ -249,6 +249,7 @@ class MediaFile
                 'data-title' => htmlspecialchars_decode(strip_tags($this->media->getFullName())),
             ]);
         } else {
+            $image = view('icons/mime', ['type' => $this->mimeType()]);
             $attributes = Html::attributes([
                 'type' => $this->mimeType(),
                 'href' => $this->downloadUrl(),

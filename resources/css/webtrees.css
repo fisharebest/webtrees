@@ -45,28 +45,6 @@ table {
 }
 
 /*
- * Any element that is loaded dynamically has the class wt-ajax-load.
- * We can provide a "loading" placeholder for empty elements with this class.
- */
-.wt-ajax-load:empty {
-	height: 32px;
-	background: url(images/loading-32x32.gif) no-repeat 50% 50%;
-}
-
-/* Default icons are provided by FontAwesome. */
-.wt-icon-sex-f {
-}
-
-.wt-icon-sex-m {
-}
-
-.wt-icon-sex-u {
-}
-
-.wt-icon-sex-x {
-}
-
-/*
  * .wt-icon-arrow-down
  * .wt-icon-arrow-end (right on LTR, left on RTL)
  * .wt-icon-arrow-start (left on LTR, right on RTL)
@@ -754,6 +732,8 @@ a > .wt-icon-arrow-up:hover::before {
 }
 
 .wt-footer {
+	text-align: center;
+	margin: 0.5rem 0;
 }
 
 .wt-footer-contact {
@@ -762,13 +742,9 @@ a > .wt-icon-arrow-up:hover::before {
 .wt-footer-cookies {
 	background: #aaa;
 	color: #fff;
-	height: 3em;
-	line-height: 2.5em;
+	height: 3rem;
+	line-height: 2.5rem;
 	transition: height 0.5s;
-}
-.wt-footer-cookies.hidden {
-	height: 0;
-	overflow: hidden;
 }
 
 .wt-footer-page-views {
@@ -777,8 +753,14 @@ a > .wt-icon-arrow-up:hover::before {
 .wt-footer-powered-by {
 }
 
+.wt-footer-powered-by-webtrees {
+	width: 100px;
+	height: 21px;
+	content: url(images/powered-by-webtrees.png);
+}
+
 /*
- * The home/my pages
+ * The tree/user home pages
  *
  * wt-home-page / wt-user-page
  * +---wt-main-blocks
@@ -3006,156 +2988,28 @@ div.faq_body {
 	content: url(webtrees/images/silhouette_male.png);
 }
 
-[class^="icon-mime-"],
-[class*=" icon-mime-"] {
-	display: inline-block;
-	background: transparent url(webtrees/images/icon-mime-sprite.png) no-repeat;
-	width: 48px;
-	height: 48px;
+/*
+ * Any element that is loaded dynamically has the class wt-ajax-load.
+ * We can provide a "loading" placeholder for empty elements with this class.
+ */
+.wt-ajax-load:empty {
+	height: 32px;
+	background: url(images/loading-32x32.gif) no-repeat 50% 50%;
 }
 
-/* ===== Generic MIME types ===== */
-[class^="icon-mime-"],
-[class*=" icon-mime-"] {
-	background-position: -99px -49px;
+/* Default icons are provided by FontAwesome. */
+.wt-icon-sex-f {
 }
 
-[class^="icon-mime-application-"],
-[class*=" icon-mime-application-"] {
-	background-position: -99px -196px;
+.wt-icon-sex-m {
 }
 
-[class^="icon-mime-audio-"],
-[class*=" icon-mime-audio-"] {
-	background-position: -197px -98px;
+.wt-icon-sex-u {
 }
 
-[class^="icon-mime-image-"],
-[class*=" icon-mime-image-"] {
-	background-position: -148px -245px;
+.wt-icon-sex-x {
 }
 
-[class^="icon-mime-text-"],
-[class*=" icon-mime-text-"] {
-	background-position: -197px -147px;
-}
-
-[class^="icon-mime-video-"],
-[class*=" icon-mime-video-"] {
-	background-position: -148px -147px;
-}
-
-/* ===== Specific MIME types ===== */
-.icon-mime-application-pdf {
-	background-position: -1px -49px;
-}
-
-.icon-mime-application-msword {
-	background-position: -148px -49px;
-}
-
-.icon-mime-application-vnd-ms-excel {
-	background-position: -148px -196px;
-}
-
-.icon-mime-application-x-rar-compressed {
-	background-position: -50px -98px;
-}
-
-.icon-mime-application-zip {
-	background-position: -50px -147px;
-}
-
-.icon-mime-application-x-shockwave-flash {
-	background-position: -148px 0;
-}
-
-.icon-mime-audio-mp3 {
-	background-position: -50px -245px;
-}
-
-.icon-mime-audio-mpeg {
-	background-position: -50px 0;
-}
-
-.icon-mime-audio-x-ms-wma {
-	background-position: -1px -245px;
-}
-
-.icon-mime-audio-wav {
-	background-position: -1px -98px;
-}
-
-.icon-mime-text-html {
-	background-position: -99px -245px;
-}
-
-.icon-mime-text-x-gedcom {
-	background-position: -50px -49px;
-}
-
-.icon-mime-image-bmp {
-	background-position: 197px 0;
-}
-
-.icon-mime-image-gif {
-	background-position: -197px -49px;
-}
-
-.icon-mime-image-jpeg {
-	background-position: -1px -147px;
-}
-
-.icon-mime-image-png {
-	background-position: -99px -98px;
-}
-
-.icon-mime-image-svg {
-	background-position: -197px -196px;
-}
-
-.icon-mime-image-tiff {
-	background-position: -148px -98px;
-}
-
-.icon-mime-video-quicktime {
-	background-position: -99px -147px;
-}
-
-.icon-mime-video-avi {
-	background-position: -99px 0;
-}
-
-.icon-mime-video-x-ms-wmv {
-	background-position: -50px -196px;
-}
-/* ====== End Icon styles ====== */
-
-/* ====== Theme Footer ========= */
-
-footer {
-	clear: both;
-	text-align: center;
-}
-
-.contact-links {
-	margin-top: 15px;
-}
-
-.powered-by-webtrees {
-	display: inline-block;
-	margin-top: 10px;
-	width: 100px;
-	height: 21px;
-}
-
-.powered-by-webtrees::after {
-	content: url(webtrees/images/powered-by-webtrees.png);
-}
-
-/* ====== End Theme Footer ===== */
-
-/* ====== Theme Icons ========== */
 .icon-indis {
 	width: 20px;
 	height: 20px;
@@ -3215,3 +3069,38 @@ footer {
 	height: 20px;
 	background-image: url(webtrees/images/user_add.png);
 }
+
+/*
+ * Icons for file types
+ *
+ * Icons made by Zlatko Najdenovski
+ * https://www.flaticon.com/packs/file-formats-3"
+ * Creative Commons BY 3.0
+ */
+.wt-mime {
+	background: url(images/mime.svg);
+	display: inline-block;
+	width: 48px;
+	height: 48px;
+}
+
+.wt-mime-application-pdf {
+	background: url(images/mime-application-pdf.svg);
+}
+
+.wt-mime-audio {
+	background: url(images/mime-audio.svg);
+}
+
+.wt-mime-text {
+	background: url(images/mime-text.svg);
+}
+
+.wt-mime-text-html {
+	background: url(images/mime-text-html.svg);
+}
+
+.wt-mime-video {
+	background: url(images/mime-video.svg);
+}
+
