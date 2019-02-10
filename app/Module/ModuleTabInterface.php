@@ -24,7 +24,9 @@ use Illuminate\Support\Collection;
  * Interface ModuleTabInterface - Classes and libraries for module system
  */
 interface ModuleTabInterface extends ModuleInterface
-{
+{	
+    public function tabTitle(): string;
+		
     /**
      * Users change change the order of tabs using the control panel.
      *
