@@ -1,8 +1,11 @@
 // https://laravel-mix.com
 const mix = require("laravel-mix");
 
+// https://github.com/postcss/postcss-import
+const postcss_import = require("postcss-import")();
+
 // https://github.com/postcss/autoprefixer
-const autoprefixer = require("autoprefixer")();
+const postcss_autoprefixer = require("autoprefixer")();
 
 // https://github.com/jakob101/postcss-inline-rtl
 const postcss_rtl = require("postcss-rtl")();
@@ -18,7 +21,8 @@ const postcss_custom_properties = require("postcss-custom-properties")();
 
 // https://github.com/postcss/postcss
 const postCssPlugins = [
-    autoprefixer,
+    postcss_import,
+    postcss_autoprefixer,
     postcss_image_inliner,
     postcss_rtl,
     postcss_custom_properties,

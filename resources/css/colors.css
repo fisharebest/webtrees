@@ -14,6 +14,7 @@
  */
 
 /* The colors theme is based on the clouds theme */
+@import "clouds.css";
 
 /* Colors for chart boxes, etc. */
 :root {
