@@ -217,14 +217,14 @@ class ListController extends AbstractBaseController
             $title = I18N::translate('Individuals') . ' — ' . $legend;
         } ?>
         <div class="d-flex flex-column wt-page-options wt-page-options-individual-list d-print-none">
-            <ul class="d-flex flex-wrap wt-initials-list">
+            <ul class="d-flex flex-wrap list-unstyled justify-content-center wt-initials-list wt-initials-list-surname">
 
                 <?php foreach ($this->individual_list_service->surnameAlpha($show_marnm === 'yes', $families, WT_LOCALE, I18N::collation()) as $letter => $count) : ?>
                     <li class="wt-initials-list-item d-flex">
                         <?php if ($count > 0) : ?>
-                            <a href="<?= e(route($route, ['alpha' => $letter, 'ged' => $tree->name()])) ?>" class="wt-initial<?= $letter === $alpha ? ' active' : '' ?> '" title="<?= I18N::number($count) ?>"><?= $this->surnameInitial((string) $letter) ?></a>
+                            <a href="<?= e(route($route, ['alpha' => $letter, 'ged' => $tree->name()])) ?>" class="wt-initial px-1<?= $letter === $alpha ? ' active' : '' ?> '" title="<?= I18N::number($count) ?>"><?= $this->surnameInitial((string) $letter) ?></a>
                         <?php else : ?>
-                            <span class="wt-initial text-muted"><?= $this->surnameInitial((string) $letter) ?></span>
+                            <span class="wt-initial px-1 text-muted"><?= $this->surnameInitial((string) $letter) ?></span>
 
                         <?php endif ?>
                     </li>
@@ -233,7 +233,7 @@ class ListController extends AbstractBaseController
                 <?php if (Session::has('initiated')) : ?>
                     <!-- Search spiders don't get the "show all" option as the other links give them everything. -->
                     <li class="wt-initials-list-item d-flex">
-                        <a class="wt-initial<?= $show_all === 'yes' ? ' active' : '' ?>" href="<?= e(route($route, ['show_all' => 'yes'] + $params)) ?>"><?= I18N::translate('All') ?></a>
+                        <a class="wt-initial px-1<?= $show_all === 'yes' ? ' active' : '' ?>" href="<?= e(route($route, ['show_all' => 'yes'] + $params)) ?>"><?= I18N::translate('All') ?></a>
                     </li>
                 <?php endif ?>
             </ul>
@@ -315,17 +315,17 @@ class ListController extends AbstractBaseController
                             // Don't show the list until we have some filter criteria
                             $show = ($falpha || $show_all_firstnames === 'yes') ? 'indi' : 'none';
                             $list = [];
-                            echo '<ul class="d-flex flex-wrap justify-content-center wt-initials-list">';
+                            echo '<ul class="d-flex flex-wrap list-unstyled justify-content-center wt-initials-list wt-initials-list-given-names">';
                             foreach ($givn_initials as $givn_initial => $count) {
                                 echo '<li class="wt-initials-list-item d-flex">';
                                 if ($count > 0) {
                                     if ($show === 'indi' && $givn_initial === $falpha && $show_all_firstnames === 'no') {
-                                        echo '<a class="wt-initial active" href="' . e(route($route, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($count) . '">' . $this->givenNameInitial((string) $givn_initial) . '</a>';
+                                        echo '<a class="wt-initial px-1 active" href="' . e(route($route, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($count) . '">' . $this->givenNameInitial((string) $givn_initial) . '</a>';
                                     } else {
-                                        echo '<a class="wt-initial" href="' . e(route($route, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($count) . '">' . $this->givenNameInitial((string) $givn_initial) . '</a>';
+                                        echo '<a class="wt-initial px-1" href="' . e(route($route, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($count) . '">' . $this->givenNameInitial((string) $givn_initial) . '</a>';
                                     }
                                 } else {
-                                    echo '<span class="wt-initial text-muted">' . $this->givenNameInitial((string) $givn_initial) . '</span>';
+                                    echo '<span class="wt-initial px-1 text-muted">' . $this->givenNameInitial((string) $givn_initial) . '</span>';
                                 }
                                 echo '</li>';
                             }
@@ -333,9 +333,9 @@ class ListController extends AbstractBaseController
                             if (Session::has('initiated')) {
                                 echo '<li class="wt-initials-list-item d-flex">';
                                 if ($show_all_firstnames === 'yes') {
-                                    echo '<span class="wt-initial warning">' . I18N::translate('All') . '</span>';
+                                    echo '<span class="wt-initial px-1 warning">' . I18N::translate('All') . '</span>';
                                 } else {
-                                    echo '<a class="wt-initial" href="' . e(route($route, ['show_all_firstnames' => 'yes'] + $params)) . '" title="' . I18N::number($count) . '">' . I18N::translate('All') . '</a>';
+                                    echo '<a class="wt-initial px-1" href="' . e(route($route, ['show_all_firstnames' => 'yes'] + $params)) . '" title="' . I18N::number($count) . '">' . I18N::translate('All') . '</a>';
                                 }
                                 echo '</li>';
                             }

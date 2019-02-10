@@ -34,32 +34,10 @@ mix
     .copy("node_modules/@fortawesome/fontawesome-free/webfonts/*", "public/webfonts/")
     .copy("node_modules/leaflet/dist/images/*", "public/css/images/")
     .copy("node_modules/dejavu-fonts-ttf/ttf/DejaVuSans.ttf", "resources/fonts/")
-    .copy("resources/css/colors/*", "public/css/colors/")
-    .styles(["resources/css/common.css", "resources/css/clouds.css"], "resources/css/clouds.temp.css")
-    .styles(["resources/css/common.css", "resources/css/clouds.css", "resources/css/colors.css"], "resources/css/colors.temp.css")
-    .styles(["resources/css/common.css", "resources/css/fab.css"], "resources/css/fab.temp.css")
-    .styles(["resources/css/common.css", "resources/css/minimal.css"], "resources/css/minimal.temp.css")
-    .styles(["resources/css/common.css", "resources/css/webtrees.css"], "resources/css/webtrees.temp.css")
-    .styles(["resources/css/common.css", "resources/css/xenea.css"], "resources/css/xenea.temp.css")
-    .styles([
-        "node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css",
-        "node_modules/@fortawesome/fontawesome-free/css/regular.css",
-        "node_modules/@fortawesome/fontawesome-free/css/solid.css",
-        "node_modules/@fortawesome/fontawesome-free/css/fontawesome.css",
-        "node_modules/font-awesome-rtl/font-awesome-rtl.css",
-        "node_modules/select2/dist/css/select2.min.css",
-        "node_modules/typeahead.js-bootstrap4-css/typeaheadjs.css",
-        "node_modules/leaflet/dist/leaflet.css",
-        "node_modules/beautifymarker/leaflet-beautify-marker-icon.css",
-        "node_modules/leaflet-geosearch/dist/style.css",
-        "node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css",
-        "node_modules/leaflet.markercluster/dist/MarkerCluster.css",
-    ], "public/css/vendor.temp.css")
     .postCss("resources/css/administration.css", "public/css/administration.min.css", postCssPlugins)
-    .postCss("resources/css/clouds.temp.css", "public/css/clouds.min.css", postCssPlugins)
-    .postCss("resources/css/colors.temp.css", "public/css/colors.min.css", postCssPlugins)
-    .postCss("resources/css/colors/aquamarine.css", "public/css/colors/", postCssPlugins)
+    .postCss("resources/css/clouds.css", "public/css/clouds.min.css", postCssPlugins)
+    .postCss("resources/css/colors.css", "public/css/colors.min.css", postCssPlugins)
+    .postCss("resources/css/colors/aquamarine.css", "public/css/colors/aquamarine.min.css", postCssPlugins)
     .postCss("resources/css/colors/ash.css", "public/css/colors/ash.min.css", postCssPlugins)
     .postCss("resources/css/colors/belgianchocolate.css", "public/css/colors/belgianchocolate.min.css", postCssPlugins)
     .postCss("resources/css/colors/bluelagoon.css", "public/css/colors/bluelagoon.min.css", postCssPlugins)
@@ -75,9 +53,8 @@ mix
     .postCss("resources/css/colors/sage.css", "public/css/colors/sage.min.css", postCssPlugins)
     .postCss("resources/css/colors/shinytomato.css", "public/css/colors/shinytomato.min.css", postCssPlugins)
     .postCss("resources/css/colors/tealtop.css", "public/css/colors/tealtop.min.css", postCssPlugins)
-    .postCss("resources/css/fab.temp.css", "public/css/fab.min.css", postCssPlugins)
-    .postCss("resources/css/minimal.temp.css", "public/css/minimal.min.css", postCssPlugins)
-    .postCss("resources/css/webtrees.temp.css", "public/css/webtrees.min.css", postCssPlugins)
-    .postCss("resources/css/xenea.temp.css", "public/css/xenea.min.css", postCssPlugins)
-    .postCss("public/css/vendor.temp.css", "public/css/vendor.min.css", postCssPlugins)
-;
+    .postCss("resources/css/fab.css", "public/css/fab.min.css", postCssPlugins)
+    .postCss("resources/css/minimal.css", "public/css/minimal.min.css", postCssPlugins)
+    .postCss("resources/css/webtrees.css", "public/css/webtrees.min.css", postCssPlugins)
+    .postCss("resources/css/xenea.css", "public/css/xenea.min.css", postCssPlugins)
+    .postCss("public/css/vendor.css", "public/css/vendor.min.css", postCssPlugins);

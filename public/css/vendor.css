@@ -1,0 +1,13 @@
+@import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../../node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css";
+@import "../../node_modules/@fortawesome/fontawesome-free/css/regular.css";
+@import "../../node_modules/@fortawesome/fontawesome-free/css/solid.css";
+@import "../../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css";
+@import "../../node_modules/font-awesome-rtl/font-awesome-rtl.css";
+@import "../../node_modules/select2/dist/css/select2.min.css";
+@import "../../node_modules/typeahead.js-bootstrap4-css/typeaheadjs.css";
+@import "../../node_modules/leaflet/dist/leaflet.css";
+@import "../../node_modules/beautifymarker/leaflet-beautify-marker-icon.css";
+@import "../../node_modules/leaflet-geosearch/dist/style.css";
+@import "../../node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css";
+@import "../../node_modules/leaflet.markercluster/dist/MarkerCluster.css";
