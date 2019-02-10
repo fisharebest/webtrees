@@ -26,7 +26,7 @@ trait ModuleTabTrait
 {
     /** @var int The default position for this tab.  It can be changed in the control panel. */
     protected $tab_order = 0;
-
+		
     /**
      * Users change change the order of tabs using the control panel.
      *
@@ -58,7 +58,11 @@ trait ModuleTabTrait
     {
         return 9999;
     }
-
+		
+    public function tabTitle(): string {
+      return $this->title();
+    }
+		
     /**
      * This module handles the following facts - so don't show them on the "Facts and events" tab.
      *
