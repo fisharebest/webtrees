@@ -774,7 +774,7 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         return $query
             ->select(DB::raw($prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS days'))
-            ->orderby('days', 'desc')
+            ->orderBy('days', 'desc')
             ->get()
             ->all();
     }
