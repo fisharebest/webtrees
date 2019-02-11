@@ -415,7 +415,6 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
         $families = $root->getSpouseFamilies();
         $html     = '';
         if (!empty($families)) {
-            $html = sprintf('<div id="childarrow"><a href="#" class="menuselect %s"></a><div id="childbox-pedigree">', $this->arrows->menu);
             $html = '<div id="childarrow"><a href="#" class="menuselect">' . $this->arrows->menu . '</a><div id="childbox-pedigree">';
 
             foreach ($families as $family) {

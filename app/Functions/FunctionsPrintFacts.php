@@ -1122,7 +1122,6 @@ class FunctionsPrintFacts
                     echo view('edit/icon-fact-copy', ['fact' => $fact]);
                     echo view('edit/icon-fact-delete', ['fact' => $fact]);
                     echo '</div>';
-
                 } else {
                     echo GedcomTag::getLabel($factname, $parent);
                 }
