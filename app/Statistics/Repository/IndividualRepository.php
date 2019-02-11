@@ -1294,8 +1294,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $prefix = DB::connection()->getTablePrefix();
 
         $days = (int) $this->birthAndDeathQuery($sex)
-            ->groupBy('i_id')
-            ->select(DB::raw('AVG(' . $prefix . 'death.d_julianday1 - ' . $prefix . 'birth.d_julianday2) AS days'))
+            ->select(DB::raw('AVG(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) AS days'))
             ->value('days');
 
         if ($show_years) {
