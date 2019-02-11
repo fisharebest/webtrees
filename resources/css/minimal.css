@@ -2073,7 +2073,52 @@ div.faq_body {
 }
 
 /* Default icons are provided by FontAwesome. */
+
+/* Some icons get mirrored on RTL pages.  Typiclly arrows */
+[dir=rtl] .wt-icon-flip-rtl {
+	transform: scale(-1, 1);
+}
+
 .wt-icon-anniversary {
+}
+
+.wt-icon-arrow-down {
+}
+
+a > .wt-icon-arrow-down:hover {
+}
+
+.wt-icon-arrow-end {
+}
+
+a > .wt-icon-arrow-end:hover {
+}
+
+.wt-icon-arrow-left {
+}
+
+a > .wt-icon-arrow-left:hover {
+}
+
+.wt-icon-arrow-right {
+}
+
+a > .wt-icon-arrow-right:hover {
+}
+
+.wt-icon-arrow-start {
+}
+
+a > .wt-icon-arrow-start:hover {
+}
+
+.wt-icon-arrow-up {
+}
+
+a > .wt-icon-arrow-up:hover {
+}
+
+.wt-icon-coordinates {
 }
 
 .wt-icon-reorder {
@@ -2099,10 +2144,6 @@ div.faq_body {
 }
 
 /*
- * .wt-icon-arrow-down
- * .wt-icon-arrow-end (right on LTR, left on RTL)
- * .wt-icon-arrow-start (left on LTR, right on RTL)
- * .wt-icon-arrow-up
  * .wt-icon-bing-maps
  * .wt-icon-calendar
  * .wt-icon-copy
@@ -2122,7 +2163,6 @@ div.faq_body {
  * .wt-icon-source
  * .wt-icon-submitter
  */
-
 [class^="icon-"],
 [class*=" icon-"] {
 	display: inline-block;

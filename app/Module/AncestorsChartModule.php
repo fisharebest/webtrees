@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsCharts;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Gedcom;
@@ -224,12 +223,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
         echo FunctionsPrint::printPedigreePerson($individual);
         echo '</td><td>';
         if ($sosa > 1) {
-            echo FontAwesome::linkIcon('arrow-down', $this->chartTitle($individual), [
-                'href' => $this->chartUrl($individual, [
-                    'generations' => $generations,
-                    'chart_style' => self::CHART_STYLE_LIST,
-                ]),
-            ]);
+            echo '<a href="' . e($this->chartUrl($individual, ['generations' => $generations, 'chart_style' => self::CHART_STYLE_LIST])) . '" title="' . strip_tags($this->chartTitle($individual)) . '">' . view('icons/arrow-down') . '<span class="sr-only">' . $this->chartTitle($individual) . '</span></a>';
         }
         echo '</td><td class="details1">&nbsp;<span class="person_box' . ($sosa === 1 ? 'NN' : ($sosa % 2 ? 'F' : '')) . '">', I18N::number($sosa), '</span> ';
         echo '</td><td class="details1">&nbsp;', FunctionsCharts::getSosaName($sosa), '</td>';

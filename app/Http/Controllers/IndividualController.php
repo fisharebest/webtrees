@@ -21,7 +21,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
@@ -339,16 +338,8 @@ class IndividualController extends AbstractBaseController
 
         if ($individual->canEdit() && !$fact->isPendingDeletion()) {
             $edit_links =
-                FontAwesome::linkIcon('delete', I18N::translate('Delete this name'), [
-                    'class'        => 'btn btn-link',
-                    'data-confirm' => I18N::translate('Are you sure you want to delete this fact?'),
-                    'href'         => '#',
-                    'onclick'      => 'return delete_fact(this.dataset.confirm", "' . e($individual->tree()->name()) . '", "' . e($individual->xref()) . '", "' . $fact->id() . '");',
-                ]) .
-                FontAwesome::linkIcon('edit', I18N::translate('Edit the name'), [
-                    'class' => 'btn btn-link',
-                    'href'  => route('edit-name', ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'ged' => $individual->tree()->name()]),
-                ]);
+                '<a class="btn btn-link" href="#" data-confirm="' . I18N::translate('Are you sure you want to delete this fact?') . '" onclick="return delete_fact(this.dataset.confirm, \'' . e($individual->tree()->name()) . '\', \'' . e($individual->xref()) . '\', \'' . $fact->id() . '\');" title="' . I18N::translate('Delete this name') . '">' . view('icons/delete') . '<span class="sr-only">' . I18N::translate('Delete this name') . '</span></a>' .
+                '<a class="btn btn-link" href="' . e(route('edit-name', ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'ged' => $individual->tree()->name()])) . '" title="' . I18N::translate('Edit the name') . '">' . view('icons/edit') . '<span class="sr-only">' . I18N::translate('Edit the name') . '</span></a>';
         } else {
             $edit_links = '';
         }
@@ -396,14 +387,7 @@ class IndividualController extends AbstractBaseController
         }
 
         if ($individual->canEdit() && !$fact->isPendingDeletion()) {
-            $edit_links = FontAwesome::linkIcon('edit', I18N::translate('Edit the gender'), [
-                'class' => 'btn btn-link',
-                'href'  => route('edit-fact', [
-                    'xref'    => $individual->xref(),
-                    'fact_id' => $fact->id(),
-                    'ged'     => $individual->tree()->name(),
-                ]),
-            ]);
+            $edit_links = '<a class="btn btn-link" href="' . e(route('edit-fact', ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'ged' => $individual->tree()->name()])) . '" title="' . I18N::translate('Edit the gender') . '">' . view('icons/edit') . '<span class="sr-only">' . I18N::translate('Edit the gender') . '</span></a>';
         } else {
             $edit_links = '';
         }

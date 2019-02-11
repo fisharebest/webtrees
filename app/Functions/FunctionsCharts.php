@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -51,9 +50,11 @@ class FunctionsCharts
         }
         echo '<td class="subheaders center" style="vertical-align: middle; text-indent: 0px; margin-top: 0px; white-space: nowrap; visibility: ', $visibility, ';">';
         echo $personLabel;
-        if ($daboville != '1' && $pid !== '') {
+        if ($daboville != '1' && $pid !== '' && $icon !== 'blank') {
             echo '<br>';
-            echo FontAwesome::linkIcon($icon, $pid, ['href' => '#' . $pid]);
+            echo '<a href="#' . e($pid) . '" title="' . e($pid) . '">';
+            echo view($icon);
+            echo '</a>';
         }
         echo '</td>';
     }
@@ -77,9 +78,11 @@ class FunctionsCharts
 
         echo '<td class="subheaders center" style="vertical-align: middle; text-indent: 0px; margin-top: 0px; white-space: nowrap; visibility: ', $visibility, ';">';
         echo (string) $sosa;
-        if ($sosa !== 1 && $pid !== '') {
+        if ($sosa !== 1 && $pid !== '' && $icon !== '') {
             echo '<br>';
-            echo FontAwesome::linkIcon($icon, $pid, ['href' => '#' . $pid]);
+            echo '<a href="#' . e($pid) . '">' . e($pid);
+            echo view($icon);
+            echo '</a>';
         }
         echo '</td>';
     }
@@ -151,10 +154,10 @@ class FunctionsCharts
             if ($hfam && $hfam->getHusband()) {
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 if ($sosa > 0) {
-                    self::printSosaNumber($sosa * 4, $hfam->getHusband()->xref(), 'arrow-down');
+                    self::printSosaNumber($sosa * 4, $hfam->getHusband()->xref(), 'icons/arrow-down');
                 }
                 if (!empty($gparid) && $hfam->getHusband()->xref() == $gparid) {
-                    self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'arrow-up');
+                    self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'icons/arrow-up');
                 }
                 echo '<td>';
                 echo FunctionsPrint::printPedigreePerson($hfam->getHusband());
@@ -170,7 +173,7 @@ class FunctionsCharts
         }
         if ($hfam && ($sosa != -1)) {
             echo '<td rowspan="2">';
-            echo FontAwesome::linkIcon('arrow-end', $hfam->getFullName(), ['href' => ($sosa == 0 ? $hfam->url() : '#' . $hfam->xref())]);
+            echo '<a href="' . ($sosa == 0 ? $hfam->url() : '#' . $hfam->xref()) . '">' . view('icons/arrow-right') . '</a>';
             echo '</td>';
         }
         if ($hfam) {
@@ -179,10 +182,10 @@ class FunctionsCharts
             if ($hfam && $hfam->getWife()) {
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 if ($sosa > 0) {
-                    self::printSosaNumber($sosa * 4 + 1, $hfam->getWife()->xref(), 'arrow-down');
+                    self::printSosaNumber($sosa * 4 + 1, $hfam->getWife()->xref(), 'icons/arrow-down');
                 }
                 if (!empty($gparid) && $hfam->getWife()->xref() == $gparid) {
-                    self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'arrow-up');
+                    self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'icons/arrow-up');
                 }
                 echo '<td>';
                 echo FunctionsPrint::printPedigreePerson($hfam->getWife());
@@ -240,10 +243,10 @@ class FunctionsCharts
             if ($wfam && $wfam->getHusband()) {
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 if ($sosa > 0) {
-                    self::printSosaNumber($sosa * 4 + 2, $wfam->getHusband()->xref(), 'arrow-down');
+                    self::printSosaNumber($sosa * 4 + 2, $wfam->getHusband()->xref(), 'icons/arrow-down');
                 }
                 if (!empty($gparid) && $wfam->getHusband()->xref() == $gparid) {
-                    self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'arrow-up');
+                    self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'icons/arrow-up');
                 }
                 echo '<td>';
                 echo FunctionsPrint::printPedigreePerson($wfam->getHusband());
@@ -259,8 +262,7 @@ class FunctionsCharts
         }
         if ($wfam && ($sosa != -1)) {
             echo '<td rowspan="2">';
-            echo FontAwesome::linkIcon('arrow-end', $wfam->getFullName(), ['href' => ($sosa == 0 ? $wfam->url() : '#' . $wfam->xref())]);
-
+            echo '<a href="' . ($sosa == 0 ? $wfam->url() : '#' . $wfam->xref()) . '">' . view('icons/arrow-right') . '</a>';
             echo '</td>';
         }
         if ($wfam) {
@@ -269,10 +271,10 @@ class FunctionsCharts
             if ($wfam && $wfam->getWife()) {
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 if ($sosa > 0) {
-                    self::printSosaNumber($sosa * 4 + 3, $wfam->getWife()->xref(), 'arrow-down');
+                    self::printSosaNumber($sosa * 4 + 3, $wfam->getWife()->xref(), 'icons/arrow-down');
                 }
                 if (!empty($gparid) && $wfam->getWife()->xref() == $gparid) {
-                    self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'arrow-up');
+                    self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'icons/arrow-up');
                 }
                 echo '<td>';
                 echo FunctionsPrint::printPedigreePerson($wfam->getWife());
@@ -357,11 +359,11 @@ class FunctionsCharts
                 echo '<tr>';
                 if ($sosa != 0) {
                     if ($child->xref() == $childid) {
-                        self::printSosaNumber($sosa, $childid, 'arrow-up');
+                        self::printSosaNumber($sosa, $childid, 'icons/arrow-up');
                     } elseif (empty($label)) {
-                        self::printDabovilleNumber('', '', 'arrow-up');
+                        self::printDabovilleNumber('', '', 'icons/arrow-up');
                     } else {
-                        self::printDabovilleNumber($label . ($nchi++) . '.', '', 'arrow-up');
+                        self::printDabovilleNumber($label . ($nchi++) . '.', '', 'icons/arrow-up');
                     }
                 }
                 if ($child->isPendingAddition()) {

@@ -21,7 +21,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
@@ -124,14 +123,17 @@ class ReportEngineController extends AbstractBaseController
                     $individual       = Individual::getInstance($pid, $tree);
                     $input['control'] = FunctionsEdit::formControlIndividual($tree, $individual, $attributes + ['required' => true]);
                     break;
+
                 case 'FAM':
                     $family           = Family::getInstance($pid, $tree);
                     $input['control'] = FunctionsEdit::formControlFamily($tree, $family, $attributes + ['required' => true]);
                     break;
+
                 case 'SOUR':
                     $source           = Source::getInstance($pid, $tree);
                     $input['control'] = FunctionsEdit::formControlSource($tree, $source, $attributes + ['required' => 'true']);
                     break;
+
                 case 'DATE':
                     $attributes       += [
                         'type'  => 'text',
@@ -139,12 +141,10 @@ class ReportEngineController extends AbstractBaseController
                         'dir'   => 'ltr',
                     ];
                     $input['control'] = '<input ' . Html::attributes($attributes) . '>';
-                    $input['extra']   = FontAwesome::linkIcon('calendar', I18N::translate('Select a date'), [
-                            'class'   => 'btn btn-link',
-                            'href'    => '#',
-                            'onclick' => 'return calendarWidget("calendar-widget-' . $n . '", "input-' . $n . '");',
-                        ]) . '<div id="calendar-widget-' . $n . '" style="position:absolute;visibility:hidden;background-color:white;z-index:1000;"></div>';
+                    $input['extra']   = '<a href="#" title="' . I18N::translate('Select a date') . '" class ="btn btn-link" onclick="' . e('return calendarWidget("calendar-widget-' . $n . '", "input-' . $n . '");') . '">' . view('icons/calendar') . '</a>' .
+                        '<div id="calendar-widget-' . $n . '" style="position:absolute;visibility:hidden;background-color:white;z-index:1000;"></div>';
                     break;
+
                 default:
                     switch ($input['type']) {
                         case 'text':
@@ -154,6 +154,7 @@ class ReportEngineController extends AbstractBaseController
                             ];
                             $input['control'] = '<input ' . Html::attributes($attributes) . '>';
                             break;
+
                         case 'checkbox':
                             $attributes       += [
                                 'type'    => 'checkbox',
@@ -161,6 +162,7 @@ class ReportEngineController extends AbstractBaseController
                             ];
                             $input['control'] = '<input ' . Html::attributes($attributes) . '>';
                             break;
+
                         case 'select':
                             $options = [];
                             foreach (preg_split('/[|]+/', $input['options']) as $option) {

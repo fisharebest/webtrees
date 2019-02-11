@@ -1,9 +1,9 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <?php if ($individual === null) : ?>
-    <?= view('icons/arrow-down') ?>
+    <?= view('icons/arrow-left') ?>
 <?php else : ?>
     <a href="<?= e(route('compact-tree', ['xref' => $individual->xref(), 'ged' => $individual->tree()->name()])) ?>" title="<?= I18N::translate('Compact tree of %s', strip_tags($individual->getFullName())) ?>">
-        <?= view('icons/arrow-down') ?>
+        <?= view('icons/arrow-left') ?>
     </a>
 <?php endif;

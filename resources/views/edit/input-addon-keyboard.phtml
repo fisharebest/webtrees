@@ -1,8 +1,12 @@
-<?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <div class="input-group-append">
     <span class="input-group-text">
-        <?= FontAwesome::linkIcon('keyboard', I18N::translate('Find a special character'), ['class' => 'wt-osk-trigger', 'href' => '#', 'data-id' => $id]) ?>
+        <a class="wt-osk-trigger" data-id="<?= e($id) ?>" href="#" title="<?= I18N::translate('Find a special character') ?>">
+            <?= view('icons/keyboard') ?>
+            <span class="sr-only">
+                <?= I18N::translate('Find a special character') ?>
+            </span>
+        </a>
     </span>
 </div>

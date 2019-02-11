@@ -22,7 +22,6 @@ use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeStat;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeTemp;
@@ -167,12 +166,10 @@ class FunctionsPrint
     public static function helpLink($topic): string
     {
         return
-            FontAwesome::linkIcon('help', I18N::translate('Help'), [
-                'data-toggle' => 'modal',
-                'href'        => '#',
-                'data-target' => '#wt-ajax-modal',
-                'data-href'   => route('help-text', ['topic' => $topic]),
-            ]);
+            '<a href="#" data-toggle="modal" data-target="#wt-ajax-modal" data-href="' . e(route('help-text', ['topic' => $topic])) . '" title="' . I18N::translate('Help') . '">' .
+            view('icons/help') .
+            '<span class="sr-only">' . I18N::translate('Help') . '</span>' .
+            '</a>';
     }
 
     /**
@@ -383,21 +380,21 @@ class FunctionsPrint
                 if ($map_lati && $map_long) {
                     $map_lati = trim(strtr($map_lati, 'NSEW,�', ' - -. ')); // S5,6789 ==> -5.6789
                     $map_long = trim(strtr($map_long, 'NSEW,�', ' - -. ')); // E3.456� ==> 3.456
-                    $html .= FontAwesome::linkIcon('google-maps', I18N::translate('Google Maps™'), [
-                        'class' => 'btn btn-link',
-                        'url'   => 'https://maps.google.com/maps?q=' . $map_lati . ',' . $map_long,
-                        'rel'   => 'nofollow',
-                    ]);
-                    $html .= FontAwesome::linkIcon('bing-maps', I18N::translate('Bing Maps™'), [
-                        'class' => 'btn btn-link',
-                        'url'   => 'https://www.bing.com/maps/?lvl=15&cp=' . $map_lati . '~' . $map_long,
-                        'rel'   => 'nofollow',
-                    ]);
-                    $html .= FontAwesome::linkIcon('openstreetmap', I18N::translate('OpenStreetMap™'), [
-                        'class' => 'btn btn-link',
-                        'url'   => 'https://www.openstreetmap.org/#map=15/' . $map_lati . '/' . $map_long,
-                        'rel'   => 'nofollow',
-                    ]);
+
+                    $html .= '<a href="https://maps.google.com/maps?q=' . e($map_lati) . ',' . e($map_long) .'" rel="nofollow" title="' . I18N::translate('Google Maps™') . '">' .
+                    view('icons/google-maps') .
+                    '<span class="sr-only">' . I18N::translate('Google Maps™') . '</span>' .
+                    '</a>';
+
+                    $html .= '<a href="https://www.bing.com/maps/?lvl=15&cp=' . e($map_lati) . '~' . e($map_long) .'" rel="nofollow" title="' . I18N::translate('Bing Maps™') . '">' .
+                    view('icons/bing-maps') .
+                    '<span class="sr-only">' . I18N::translate('Bing Maps™') . '</span>' .
+                    '</a>';
+
+                    $html .= '<a href="https://www.openstreetmap.org/#map=15/' . e($map_lati) . '/' . e($map_long) .'" rel="nofollow" title="' . I18N::translate('OpenStreetMap™') . '">' .
+                    view('icons/openstreetmap') .
+                    '<span class="sr-only">' . I18N::translate('OpenStreetMap™') . '</span>' .
+                    '</a>';
                 }
                 if (preg_match('/\d NOTE (.*)/', $placerec, $match)) {
                     $html .= '<br>' . self::printFactNotes($tree, $placerec, 3);

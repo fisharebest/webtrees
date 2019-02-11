@@ -1,5 +1,4 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Tree; ?>
 <?php use Fisharebest\Webtrees\Webtrees; ?>
@@ -64,7 +63,12 @@
             </td>
 
             <td>
-                <?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['href' => route('map-data-edit', ['place_id'  => $place->pl_id, 'parent_id' => $place->pl_parent_id]), 'class' => 'btn btn-primary']) ?>
+                <a class="btn btn-primary" href="<?= e(route('map-data-edit', ['place_id'  => $place->pl_id, 'parent_id' => $place->pl_parent_id])) ?>" title="<?= I18N::translate('Edit') ?>">
+                    <?= view('icons/edit') ?>
+                    <span class="sr-only">
+                        <?= I18N::translate('Edit') ?>
+                    </span>
+                </a>
             </td>
 
             <td>

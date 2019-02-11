@@ -224,22 +224,22 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
             default:
             case static::PORTRAIT:
             case static::LANDSCAPE:
-                $this->arrows->prevGen = 'fas fa-arrow-end wt-icon-arrow-end';
-                $this->arrows->menu    = 'fas fa-arrow-start wt-icon-arrow-start';
+                $this->arrows->prevGen = view('icons/arrow-right');
+                $this->arrows->menu    = view('icons/arrow-left');
                 $addoffset['x']        = $chart_has_ancestors ? static::ARROW_SIZE : 0;
                 $addoffset['y']        = 0;
                 break;
 
             case static::OLDEST_AT_TOP:
-                $this->arrows->prevGen = 'fas fa-arrow-up wt-icon-arrow-up';
-                $this->arrows->menu    = 'fas fa-arrow-down wt-icon-arrow-down';
+                $this->arrows->prevGen = view('icons/arrow-up');
+                $this->arrows->menu    = view('icons/arrow-down');
                 $addoffset['x']        = 0;
                 $addoffset['y']        = $this->root->getSpouseFamilies() ? static::ARROW_SIZE : 0;
                 break;
 
             case static::OLDEST_AT_BOTTOM:
-                $this->arrows->prevGen = 'fas fa-arrow-down wt-icon-arrow-down';
-                $this->arrows->menu    = 'fas fa-arrow-up wt-icon-arrow-up';
+                $this->arrows->prevGen = view('icons/arrow-down');
+                $this->arrows->menu    = view('icons/arrow-up');
                 $addoffset['x']        = 0;
                 $addoffset['y']        = $chart_has_ancestors ? static::ARROW_SIZE : 0;
                 break;
@@ -416,6 +416,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
         $html     = '';
         if (!empty($families)) {
             $html = sprintf('<div id="childarrow"><a href="#" class="menuselect %s"></a><div id="childbox-pedigree">', $this->arrows->menu);
+            $html = '<div id="childarrow"><a href="#" class="menuselect">' . $this->arrows->menu . '</a><div id="childbox-pedigree">';
 
             foreach ($families as $family) {
                 $html   .= '<span class="name1">' . I18N::translate('Family') . '</span>';
@@ -469,7 +470,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
                 if ($index > (int) ($this->treesize / 2) + (int) ($this->treesize / 4)) {
                     $rootParentId++;
                 }
-                $html .= '<a class="' . $this->arrows->prevGen . '" href="' . e($this->chartUrl($this->nodes[$rootParentId]['indi'], ['generations' => $generations, 'orientation' => $orientation])) . '"></a>';
+                $html .= '<a href="' . e($this->chartUrl($this->nodes[$rootParentId]['indi'], ['generations' => $generations, 'orientation' => $orientation])) . '">' . $this->arrows->prevGen . '</a>';
                 $html .= '</div>';
             } else {
                 $html .= '<div class="spacer"></div>';

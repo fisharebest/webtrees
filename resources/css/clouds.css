@@ -2932,9 +2932,68 @@ footer .error {
 	background: url(images/loading-32x32.gif) no-repeat 50% 50%;
 }
 
-/* Default icons are provided by FontAwesome. */
+/*
+ * Default icons are provided by FontAwesome.
+ * Some icons get mirrored on RTL pages.  Typiclly arrows
+ */
+[dir=rtl] .wt-icon-flip-rtl {
+	transform: scale(-1, 1);
+}
+
 .wt-icon-anniversary {
 	content: url(images/anniversary.png);
+}
+
+.wt-icon-arrow-down {
+	content: url(clouds/icons/arrow-down.png);
+}
+
+a > .wt-icon-arrow-down:hover {
+	content: url(clouds/icons/arrow-down-hover.png);
+}
+
+.wt-icon-arrow-end {
+	content: url(clouds/icons/arrow-right.png);
+}
+
+a > .wt-icon-arrow-end:hover {
+	content: url(clouds/icons/arrow-right-hover.png);
+}
+
+.wt-icon-arrow-left {
+	content: url(clouds/icons/arrow-left.png);
+}
+
+a > .wt-icon-arrow-left:hover {
+	content: url(clouds/icons/arrow-left-hover.png);
+}
+
+.wt-icon-arrow-right {
+	content: url(clouds/icons/arrow-right.png);
+}
+
+a > .wt-icon-arrow-right:hover {
+	content: url(clouds/icons/arrow-right-hover.png);
+}
+
+.wt-icon-arrow-start {
+	content: url(clouds/icons/arrow-left.png);
+}
+
+a > .wt-icon-arrow-start:hover {
+	content: url(clouds/icons/arrow-left-hover.png);
+}
+
+.wt-icon-arrow-up {
+	content: url(clouds/icons/arrow-up.png);
+}
+
+a > .wt-icon-arrow-up:hover {
+	content: url(clouds/icons/arrow-up-hover.png);
+}
+
+.wt-icon-coordinates {
+	content: url(images/coordinates.png)
 }
 
 .wt-icon-reorder {
@@ -2970,10 +3029,6 @@ footer .error {
 }
 
 /*
- * .wt-icon-arrow-down
- * .wt-icon-arrow-end (right on LTR, left on RTL)
- * .wt-icon-arrow-start (left on LTR, right on RTL)
- * .wt-icon-arrow-up
  * .wt-icon-bing-maps
  * .wt-icon-calendar
  * .wt-icon-copy
@@ -2993,54 +3048,6 @@ footer .error {
  * .wt-icon-source
  * .wt-icon-submitter
  */
-.wt-icon-arrow-down::before {
-	width: 20px;
-	height: 20px;
-	content: url(clouds/icons/arrow-down.png);
-}
-
-a > .wt-icon-arrow-down:hover::before {
-	width: 20px;
-	height: 20px;
-	content: url(clouds/icons/arrow-down-hover.png);
-}
-
-.wt-icon-arrow-end::before {
-	width: 20px;
-	height: 20px;
-	content: url(clouds/icons/arrow-right.png);
-}
-
-a > .wt-icon-arrow-end:hover::before {
-	width: 20px;
-	height: 20px;
-	content: url(clouds/icons/arrow-right-hover.png);
-}
-
-.wt-icon-arrow-start::before {
-	width: 20px;
-	height: 20px;
-	content: url(clouds/icons/arrow-left.png);
-}
-
-a > .wt-icon-arrow-start:hover::before {
-	width: 20px;
-	height: 20px;
-	content: url(clouds/icons/arrow-left-hover.png);
-}
-
-.wt-icon-arrow-up::before {
-	width: 20px;
-	height: 20px;
-	content: url(clouds/icons/arrow-up.png);
-}
-
-a > .wt-icon-arrow-up:hover::before {
-	width: 20px;
-	height: 20px;
-	content: url(clouds/icons/arrow-up-hover.png);
-}
-
 .wt-icon-bing-maps::before {
 	width: 16px;
 	height: 16px;
@@ -3051,12 +3058,6 @@ a > .wt-icon-arrow-up:hover::before {
 	width: 19px;
 	height: 15px;
 	content: url(clouds/icons/calendar.png)
-}
-
-.wt-icon-coordinates::before {
-	width: 16px;
-	height: 16px;
-	content: url(clouds/icons/coordinates.png)
 }
 
 .wt-icon-copy::before {

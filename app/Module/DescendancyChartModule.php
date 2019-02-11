@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsCharts;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Gedcom;
@@ -265,13 +264,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
         echo '<td>';
         foreach ($person->getChildFamilies() as $cfamily) {
             foreach ($cfamily->getSpouses() as $parent) {
-                echo FontAwesome::linkIcon('arrow-up', I18N::translate('Start at parents'), [
-                    'href' => route('descendants', [
-                        'ged'         => $parent->tree()->name(),
-                        'xref'        => $parent->xref(),
-                        'generations' => $generations,
-                    ]),
-                ]);
+                echo '<a href="' . e($this->chartUrl($parent, ['generations' => $generations])) . '" title="' .  I18N::translate('Start at parents') . '">' . view('icons/arrow-up') . '<span class="sr-only">' .  I18N::translate('Start at parents') . '</span></a>';
                 // only show the arrow for one of the parents
                 break;
             }
@@ -350,13 +343,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
         if ($spouse) {
             foreach ($spouse->getChildFamilies() as $cfamily) {
                 foreach ($cfamily->getSpouses() as $parent) {
-                    echo FontAwesome::linkIcon('arrow-up', I18N::translate('Start at parents'), [
-                        'href' => route('descendants', [
-                            'ged'         => $parent->tree()->name(),
-                            'xref'        => $parent->xref(),
-                            'generations' => $generations,
-                        ]),
-                    ]);
+                    echo '<a href="' . e($this->chartUrl($parent, ['generations' => $generations])) . '" title="' .  strip_tags($this->chartTitle($parent)) . '">' . view('icons/arrow-up') . '<span class="sr-only">' .  strip_tags($this->chartTitle($parent)) . '</span></a>';
                     // only show the arrow for one of the parents
                     break;
                 }

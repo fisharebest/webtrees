@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -270,7 +269,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
                             echo '<td style="vertical-align:top"><img alt="" role="presentation" class="bvertline" id="vline_' . $chil . '" src="' . e(asset('css/images/vline.png')) . '" width="3"></td>';
                         } else {
                             // Middle child
-                            echo '<td style="background: url(\'' . e(asset('css/images/vline.png')) . '\');"><img alt="" role="presentation" src="' . e(asset('css/images/spacer.png')) . '" width="3"></td>';
+                            echo '<td style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ');"><img alt="" role="presentation" src="' . e(asset('css/images/spacer.png')) . '" width="3"></td>';
                         }
                     }
                     echo '</tr>';
@@ -294,13 +293,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
             if ($kcount == 0) {
                 echo "</td><td style='width:", app()->make(ModuleThemeInterface::class)->parameter('chart-box-x'), "px'>";
             } else {
-                echo FontAwesome::linkIcon('arrow-start', I18N::translate('Children'), [
-                    'href'         => '#',
-                    'data-route'   => 'Descendants',
-                    'data-xref'    => $pid,
-                    'data-spouses' => $show_spouse,
-                    'data-tree'    => $individual->tree()->name(),
-                ]);
+                echo '<a href="#" title="' . I18N::translate('Children') . '" data-route="Descendants" data-xref="' .  e($pid) . '" data-spouses="' .  e($show_spouse) . '" data-tree="' .  e($individual->tree()->name()) . '">' . view('icons/arrow-left') . '</a>';
 
                 //-- move the arrow up to line up with the correct box
                 if ($show_spouse) {
@@ -331,10 +324,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         // For the root individual, print a down arrow that allows changing the root of tree
         if ($show_menu && $generation == 1) {
             echo '<div class="center" id="childarrow" style="position:absolute; width:', app()->make(ModuleThemeInterface::class)->parameter('chart-box-x'), 'px;">';
-            echo FontAwesome::linkIcon('arrow-down', I18N::translate('Family'), [
-                'href' => '#',
-                'id'   => 'spouse-child-links',
-            ]);
+            echo '<a href="#" title="' . I18N::translate('Family') . '" id="spouse-child-links">' . view('icons/arrow-down') . '</a>';
             echo '<div id="childbox">';
             echo '<table cellspacing="0" cellpadding="0" border="0" class="person_box"><tr><td> ';
 
@@ -457,13 +447,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
                 echo '<td id="td_' . e($ARID) . '">';
 
                 if ($generation == $generations - 1 && $family->getHusband()->getChildFamilies()) {
-                    echo FontAwesome::linkIcon('arrow-end', I18N::translate('Parents'), [
-                        'href'         => '#',
-                        'data-route'   => 'Ancestors',
-                        'data-xref'    => $ARID,
-                        'data-spouses' => (int) $show_spouse,
-                        'data-tree'    => $family->getHusband()->tree()->name(),
-                    ]);
+                    echo '<a href="#" title="' . I18N::translate('Parents') . '" data-route="Ancestors" data-xref="' .  e($ARID) . '" data-spouses="' .  e($show_spouse) . '" data-tree="' .  e($family->getHusband()->tree()->name()) . '">' . view('icons/arrow-right') . '</a>';
                 }
 
                 $this->printPersonPedigree($family->getHusband(), $generation + 1, $generations, $show_spouse);
@@ -494,13 +478,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
                 echo '<td id="td_' . e($ARID) . '">';
 
                 if ($generation == $generations - 1 && $family->getWife()->getChildFamilies()) {
-                    echo FontAwesome::linkIcon('arrow-end', I18N::translate('Parents'), [
-                        'href'         => '#',
-                        'data-route'   => 'Ancestors',
-                        'data-xref'    => $ARID,
-                        'data-spouses' => (int) $show_spouse,
-                        'data-tree'    => $family->getWife()->tree()->name(),
-                    ]);
+                    echo '<a href="#" title="' . I18N::translate('Parents') . '" data-route="Ancestors" data-xref="' .  e($ARID) . '" data-spouses="' .  e($show_spouse) . '" data-tree="' .  e($family->getWife()->tree()->name()) . '">' . view('icons/arrow-right') . '</a>';
                 }
 
                 $this->printPersonPedigree($family->getWife(), $generation + 1, $generations, $show_spouse);

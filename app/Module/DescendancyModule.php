@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\SearchService;
@@ -160,7 +159,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
             '<i class="plusminus ' . $icon . '"></i>' .
             $person->getSexImage() . $person->getFullName() . $lifespan .
             '</a>' .
-            FontAwesome::linkIcon('individual', $person->getFullName(), ['href' => $person->url()]) .
+            '<a href="' . e($person->url()) . '" title="' . strip_tags($person->getFullName()) . '">' . view('icons/individual') . '</a>' .
             '<div>' . $spouses . '</div>' .
             '</li>';
     }
@@ -179,20 +178,25 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
         $spouse = $family->getSpouse($person);
         if ($spouse) {
             $spouse_name = $spouse->getSexImage() . $spouse->getFullName();
-            $spouse_link = FontAwesome::linkIcon('individual', $spouse->getFullName(), ['href' => $person->url()]);
+            $spouse_link = '<a href="' . e($person->url()) . '" title="' . strip_tags($person->getFullName()) . '">' . view('icons/individual') . '</a>';
         } else {
             $spouse_name = '';
             $spouse_link = '';
         }
+
+        $family_link = '<a href="' . e($family->url()) . '" title="' . strip_tags($family->getFullName()) . '">' . view('icons/family') . '</a>';
 
         $marryear = $family->getMarriageYear();
         $marr     = $marryear ? '<i class="icon-rings"></i>' . $marryear : '';
 
         return
             '<li class="sb_desc_indi_li">' .
-            '<a class="sb_desc_indi" href="#"><i class="plusminus icon-minus"></i>' . $spouse_name . $marr . '</a>' .
+            '<a class="sb_desc_indi" href="#"><i class="plusminus icon-minus"></i>' .
+            $spouse_name .
+            $marr .
+            '</a>' .
             $spouse_link .
-            FontAwesome::linkIcon('family', $family->getFullName(), ['href' => $family->url()]) .
+            $family_link .
             '<div>' . $this->loadChildren($family, $generations) . '</div>' .
             '</li>';
     }

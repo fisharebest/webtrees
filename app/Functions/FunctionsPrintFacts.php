@@ -22,7 +22,6 @@ use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeAdop;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeQuay;
@@ -196,33 +195,14 @@ class FunctionsPrintFacts
                 break;
         }
 
+        echo $label;
+
         if ($fact->id() != 'histo' && $fact->canEdit()) {
-            ?>
-            <?= $label ?>
-            <div class="editfacts">
-                <?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), [
-                    'class' => 'btn btn-link',
-                    'href'  => route('edit-fact', [
-                        'xref'    => $parent->xref(),
-                        'fact_id' => $fact->id(),
-                        'ged'     => $tree->name(),
-                    ]),
-                ]) ?>
-                <?= FontAwesome::linkIcon('copy', I18N::translate('Copy'), [
-                    'class'   => 'btn btn-link',
-                    'href'    => '#',
-                    'onclick' => 'return copy_fact("' . e($tree->name()) . '", "' . e($parent->xref()) . '", "' . $fact->id() . '");',
-                ]) ?>
-                <?= FontAwesome::linkIcon('delete', I18N::translate('Delete'), [
-                    'class'        => 'btn btn-link',
-                    'data-confirm' => I18N::translate('Are you sure you want to delete this fact?'),
-                    'href'         => '#',
-                    'onclick'      => 'return delete_fact(this.dataset.confirm, "' . e($tree->name()) . '", "' . e($parent->xref()) . '", "' . $fact->id() . '");',
-                ]) ?>
-            </div>
-            <?php
-        } else {
-            echo $label;
+            echo '<div class="editfacts">';
+            echo view('edit/icon-fact-edit', ['fact' => $fact]);
+            echo view('edit/icon-fact-copy', ['fact' => $fact]);
+            echo view('edit/icon-fact-delete', ['fact' => $fact]);
+            echo '</div>';
         }
 
         echo '</th>';
@@ -798,26 +778,10 @@ class FunctionsPrintFacts
                         // Inline sources can't be edited. Attempting to save one will convert it
                         // into a link, and delete it.
                         // e.g. "1 SOUR my source" becomes "1 SOUR @my source@" which does not exist.
-                        echo FontAwesome::linkIcon('edit', I18N::translate('Edit'), [
-                            'class' => 'btn btn-link',
-                            'href'  => route('edit-fact', [
-                                'xref'    => $parent->xref(),
-                                'fact_id' => $fact->id(),
-                                'ged'     => $tree->name(),
-                            ]),
-                        ]);
-                        echo FontAwesome::linkIcon('copy', I18N::translate('Copy'), [
-                            'class'   => 'btn btn-link',
-                            'href'    => '#',
-                            'onclick' => 'return copy_fact("' . e($tree->name()) . '", "' . e($parent->xref()) . '", "' . $fact->id() . '");',
-                        ]);
+                        echo view('edit/icon-fact-edit', ['fact' => $fact]);
+                        echo view('edit/icon-fact-copy', ['fact' => $fact]);
                     }
-                    echo FontAwesome::linkIcon('delete', I18N::translate('Delete'), [
-                        'class'        => 'btn btn-link',
-                        'data-confirm' => I18N::translate('Are you sure you want to delete this fact?'),
-                        'href'         => '#',
-                        'onclick'      => 'return delete_fact(this.dataset.confirm, "' . e($tree->name()) . '", "' . e($parent->xref()) . '", "' . $fact->id() . '");',
-                    ]);
+                    echo view('edit/icon-fact-delete', ['fact' => $fact]);
                 } else {
                     echo GedcomTag::getLabel($factname, $parent);
                 }
@@ -1014,34 +978,17 @@ class FunctionsPrintFacts
             if ($can_edit) {
                 if ($level < 2) {
                     if ($note instanceof Note) {
+                        echo '<a href="' . e($note->url()) . '">';
                         echo GedcomTag::getLabel('SHARED_NOTE');
-                        echo FontAwesome::linkIcon('note', I18N::translate('View'), [
-                            'class' => 'btn btn-link',
-                            'href'  => $note->url(),
-                        ]);
+                        echo view('icons/note');
+                        echo '</a>';
                     } else {
                         echo GedcomTag::getLabel('NOTE');
                     }
                     echo '<div class="editfacts">';
-                    echo FontAwesome::linkIcon('edit', I18N::translate('Edit'), [
-                        'class' => 'btn btn-link',
-                        'href'  => route('edit-fact', [
-                            'xref'    => $parent->xref(),
-                            'fact_id' => $fact->id(),
-                            'ged'     => $tree->name(),
-                        ]),
-                    ]);
-                    echo FontAwesome::linkIcon('copy', I18N::translate('Copy'), [
-                        'class'   => 'btn btn-link',
-                        'href'    => '#',
-                        'onclick' => 'return copy_fact("' . e($tree->name()) . '", "' . e($parent->xref()) . '", "' . $fact->id() . '");',
-                    ]);
-                    echo FontAwesome::linkIcon('delete', I18N::translate('Delete'), [
-                        'class'        => 'btn btn-link',
-                        'data-confirm' => I18N::translate('Are you sure you want to delete this fact?'),
-                        'href'         => '#',
-                        'onclick'      => 'return delete_fact(this.dataset.confirm, "' . e($tree->name()) . '", "' . e($parent->xref()) . '", "' . $fact->id() . '");',
-                    ]);
+                    echo view('edit/icon-fact-edit', ['fact' => $fact]);
+                    echo view('edit/icon-fact-copy', ['fact' => $fact]);
+                    echo view('edit/icon-fact-delete', ['fact' => $fact]);
                     echo '</div>';
                 }
             } else {
@@ -1071,10 +1018,7 @@ class FunctionsPrintFacts
                     // Note is already printed
                     echo GedcomTag::getLabel($factname, $parent);
                     if ($note) {
-                        echo FontAwesome::linkIcon('note', I18N::translate('View'), [
-                            'class' => 'btn btn-link',
-                            'href'  => $note->url(),
-                        ]);
+                        echo '<a class="btn btn-link" href="' . e($note->url()) . '" title="' . I18N::translate('View') . '"><span class="sr-only">' . I18N::translate('View') . '</span></a>';
                     }
                 }
             }
@@ -1175,18 +1119,10 @@ class FunctionsPrintFacts
                 } elseif ($can_edit) {
                     echo GedcomTag::getLabel($factname, $parent);
                     echo '<div class="editfacts">';
-                    echo FontAwesome::linkIcon('copy', I18N::translate('Copy'), [
-                        'class'   => 'btn btn-link',
-                        'href'    => '#',
-                        'onclick' => 'return copy_fact("' . e($tree->name()) . '", "' . e($parent->xref()) . '", "' . $fact->id() . '");',
-                    ]);
-                    echo FontAwesome::linkIcon('delete', I18N::translate('Delete'), [
-                        'class'        => 'btn btn-link',
-                        'data-confirm' => I18N::translate('Are you sure you want to delete this fact?'),
-                        'href'         => '#',
-                        'onclick'      => 'return delete_fact(this.dataset.confirm", "' . e($tree->name()) . '", "' . e($parent->xref()) . '", "' . $fact->id() . '");',
-                    ]);
+                    echo view('edit/icon-fact-copy', ['fact' => $fact]);
+                    echo view('edit/icon-fact-delete', ['fact' => $fact]);
                     echo '</div>';
+
                 } else {
                     echo GedcomTag::getLabel($factname, $parent);
                 }

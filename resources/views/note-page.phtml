@@ -1,6 +1,5 @@
 <?php use Fisharebest\Webtrees\Auth; ?>
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrintFacts; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
@@ -75,7 +74,12 @@
                         <?= I18N::translate('Shared note') ?>
                         <?php if (Auth::isEditor($note->tree())) : ?>
                             <div class="editfacts">
-                                <?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => route('edit-note-object', ['xref' => $note->xref(), 'ged' => $note->tree()->name()])]) ?>
+                                <a class="btn btn-link" href="<?= e(route('edit-note-object', ['xref' => $note->xref(), 'ged' => $note->tree()->name()])) ?>" title="<?= I18N::translate('Edit') ?>">
+                                    <?= view('icons/edit') ?>
+                                    <span class="sr-only">
+                                        <?= I18N::translate('Edit') ?>
+                                    </span>
+                                </a>
                             </div>
                         <?php endif ?>
                     </th>

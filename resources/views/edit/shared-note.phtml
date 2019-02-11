@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <h2 class="wt-page-title"><?= $title ?></h2>
@@ -10,9 +9,14 @@
         <label class="col-sm-3 col-form-label wt-page-options-label" for="NOTE">
             <?= I18N::translate('Shared note') ?>
         </label>
+
         <div class="col-sm-9 wt-page-options-value">
             <textarea class="form-control" name="NOTE" id="NOTE" rows="15"><?= e($note->getNote()) ?></textarea>
-            <?= FontAwesome::linkIcon('keyboard', I18N::translate('Find a special character'), ['class' => 'wt-osk-trigger', 'href' => '#', 'data-id' => 'NOTE']) ?>
+
+            <a class="wt-osk-trigger" data-id="NOTE" href="#" title="<?= I18N::translate('Find a special character') ?>">
+                <?= view('icons/keyboard') ?>
+                <span class="sr-only"><?= I18N::translate('Find a special character') ?></span>
+            </a>
         </div>
     </div>
 
