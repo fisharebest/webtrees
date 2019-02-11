@@ -433,22 +433,23 @@ class IndividualRepository implements IndividualRepositoryInterface
             ->where('n_file', '=', $this->tree->id());
 
         if (empty($params)) {
-            // Count number of distinct surnames
+            // Count number of distinct given names.
             $query
-                ->whereNotIn('n_givn', ['', '@N.N.'])
-                ->groupBy('n_givn');
+                ->distinct()
+                ->where('n_givn', '<>', '@P.N.');
+                ->whereNotNull('n_givn');
         } else {
-            // Count number of occurences of specific surnames.
+            // Count number of occurences of specific given names.
             $query->whereIn('n_givn', $params);
         }
 
-        $count = $query->count();
+        $count = $query->count('n_givn');
 
         return I18N::number($count);
     }
 
     /**
-     * Count the number of distinct surnames (or the number of occurences of specific surnmaes).
+     * Count the number of distinct surnames (or the number of occurences of specific surnames).
      *
      * @param string[] ...$params
      *
@@ -461,16 +462,15 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         if (empty($params)) {
             // Count number of distinct surnames
-            $query
-                ->whereNotIn('n_surn', ['', '@N.N.'])
-                ->groupBy('n_surn');
+            $query->distinct()
+                ->whereNotNull('n_surn');
         } else {
             // Count number of occurences of specific surnames.
             $query->whereIn('n_surn', $params);
         }
 
-        $count = $query->count();
-        
+        $count = $query->count('n_surn');
+
         return I18N::number($count);
     }
 
