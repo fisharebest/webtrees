@@ -89,7 +89,8 @@ try {
     // No config file? Run the setup wizard
     if (!file_exists(Webtrees::CONFIG_FILE)) {
         define('WT_DATA_DIR', 'data/');
-        $controller = new SetupController();
+        /** @var SetupController $controller */
+        $controller = app()->make(SetupController::class);
         $response   = $controller->setup($request);
         $response->prepare($request)->send();
 
