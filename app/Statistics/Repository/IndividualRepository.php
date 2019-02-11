@@ -435,7 +435,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         if (empty($params)) {
             // Count number of distinct surnames
             $query
-                ->distinct('n_givn')
+                ->distinct()
                 ->whereNotNull('n_givn');
         } else {
             // Count number of occurences of specific surnames.
@@ -461,7 +461,7 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         if (empty($params)) {
             // Count number of distinct surnames
-            $query->distinct('n_surn')
+            $query->distinct()
                 ->whereNotNull('n_surn');
         } else {
             // Count number of occurences of specific surnames.
