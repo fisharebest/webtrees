@@ -28,6 +28,22 @@ const postCssPlugins = [
     postcss_custom_properties,
 ];
 
+mix.styles([
+    "node_modules/bootstrap/dist/css/bootstrap.min.css",
+    "node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css",
+    "node_modules/@fortawesome/fontawesome-free/css/regular.css",
+    "node_modules/@fortawesome/fontawesome-free/css/solid.css",
+    "node_modules/@fortawesome/fontawesome-free/css/fontawesome.css",
+    "node_modules/font-awesome-rtl/font-awesome-rtl.css",
+    "node_modules/select2/dist/css/select2.min.css",
+    "node_modules/typeahead.js-bootstrap4-css/typeaheadjs.css",
+    "node_modules/leaflet/dist/leaflet.css",
+    "node_modules/beautifymarker/leaflet-beautify-marker-icon.css",
+    "node_modules/leaflet-geosearch/dist/style.css",
+    "node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css",
+    "node_modules/leaflet.markercluster/dist/MarkerCluster.css",
+], "public/css/vendor.css");
+
 mix
     .autoload({
         jquery: ["$", "jQuery"],
