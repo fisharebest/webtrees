@@ -436,7 +436,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             // Count number of distinct given names.
             $query
                 ->distinct()
-                ->where('n_givn', '<>', '@P.N.');
+                ->where('n_givn', '<>', '@P.N.')
                 ->whereNotNull('n_givn');
         } else {
             // Count number of occurences of specific given names.
