@@ -25,22 +25,6 @@ namespace Fisharebest\Webtrees;
 class Bootstrap4 extends Html
 {
     /**
-     * Generate a badge containing a count of items.
-     *
-     * @param array $items
-     *
-     * @return string
-     */
-    public static function badgeCount(array $items)
-    {
-        if (empty($items)) {
-            return '';
-        }
-
-        return '<span class="badge badge-secondary">' . I18N::number(count($items)) . '</span>';
-    }
-
-    /**
      * Generate a checkbox.
      *
      * @param string   $label

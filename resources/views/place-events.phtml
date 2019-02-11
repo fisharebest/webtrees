@@ -5,13 +5,13 @@
     <li class="nav-item">
         <a class="nav-link active<?= empty($indilist) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#individuals">
             <?= I18N::translate('Individuals') ?>
-            <?= Bootstrap4::badgeCount($indilist) ?>
+            <?= view('components/badge', ['count' => count($indilist)]) ?>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link<?= empty($famlist) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#families">
             <?= I18N::translate('Families') ?>
-            <?= Bootstrap4::badgeCount($famlist) ?>
+            <?= view('components/badge', ['count' => count($famlist)]) ?>
         </a>
     </li>
 </ul>

@@ -37,25 +37,25 @@
         <li class="nav-item">
             <a class="nav-link<?= empty($individuals) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#individuals">
                 <?= I18N::translate('Individuals') ?>
-                <?= Bootstrap4::badgeCount($individuals) ?>
+                <?= view('components/badge', ['count' => count($individuals)]) ?>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link<?= empty($families) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#families">
                 <?= I18N::translate('Families') ?>
-                <?= Bootstrap4::badgeCount($families) ?>
+                <?= view('components/badge', ['count' => count($families)]) ?>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link<?= empty($media_objects) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#media">
                 <?= I18N::translate('Media objects') ?>
-                <?= Bootstrap4::badgeCount($media_objects) ?>
+                <?= view('components/badge', ['count' => count($media_objects)]) ?>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link<?= empty($notes) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#notes">
                 <?= I18N::translate('Notes') ?>
-                <?= Bootstrap4::badgeCount($notes) ?>
+                <?= view('components/badge', ['count' => count($notes)]) ?>
             </a>
         </li>
     </ul>

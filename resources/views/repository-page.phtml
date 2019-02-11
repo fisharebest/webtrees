@@ -37,7 +37,7 @@
         <li class="nav-item">
             <a class="nav-link<?= empty($sources) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#sources">
                 <?= I18N::translate('Sources') ?>
-                <?= Bootstrap4::badgeCount($sources) ?>
+                <?= view('components/badge', ['count' => count($sources)]) ?>
             </a>
         </li>
     </ul>

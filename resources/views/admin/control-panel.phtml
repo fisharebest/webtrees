@@ -300,13 +300,13 @@
                         <a href="<?= e(route('menus')) ?>">
                             <?= I18N::translate('Menus') ?>
                         </a>
-                        <?= view('components/badge', ['count' => $menu_modules->count()]) ?>
+                        <?= view('components/badge', ['count' => $menu_modules->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/tab') ?></span>
                         <a href="<?= e(route('tabs')) ?>">
                             <?= I18N::translate('Tabs') ?>
-                            <?= view('components/badge', ['count' => $tab_modules->count()]) ?>
+                            <?= view('components/badge', ['count' => $tab_modules->count(), 'context' => 'primary']) ?>
                         </a>
                     </li>
                     <li>
@@ -314,63 +314,63 @@
                         <a href="<?= e(route('blocks')) ?>">
                             <?= I18N::translate('Blocks') ?>
                         </a>
-                        <?= view('components/badge', ['count' => $block_modules->count()]) ?>
+                        <?= view('components/badge', ['count' => $block_modules->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/sidebar') ?></span>
                         <a href="<?= e(route('sidebars')) ?>">
                             <?= I18N::translate('Sidebars') ?>
                         </a>
-                        <?= view('components/badge', ['count' => $sidebar_modules->count()]) ?>
+                        <?= view('components/badge', ['count' => $sidebar_modules->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/chart') ?></span>
                         <a href="<?= e(route('charts')) ?>">
                             <?= I18N::translate('Charts') ?>
                         </a>
-                        <?= view('components/badge', ['count' => $chart_modules->count()]) ?>
+                        <?= view('components/badge', ['count' => $chart_modules->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/report') ?></span>
                         <a href="<?= e(route('reports')) ?>">
                             <?= I18N::translate('Reports') ?>
                         </a>
-                        <?= view('components/badge', ['count' => $report_modules->count()]) ?>
+                        <?= view('components/badge', ['count' => $report_modules->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/footer') ?></span>
                         <a href="<?= e(route('footers')) ?>">
                             <?= I18N::translate('Footers') ?>
                         </a>
-                        <?= view('components/badge', ['count' => $footer_modules->count()]) ?>
+                        <?= view('components/badge', ['count' => $footer_modules->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/analytics') ?></span>
                         <a href="<?= e(route('analytics')) ?>">
                             <?= I18N::translate('Tracking and analytics') ?>
                         </a>
-                        <?= view('components/badge', ['count' => $analytics_modules->count()]) ?>
+                        <?= view('components/badge', ['count' => $analytics_modules->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/history') ?></span>
                         <a href="<?= e(route('history')) ?>">
                             <?= I18N::translate('Historic events') ?>
                         </a>
-                        <?= view('components/badge', ['count' => $history_modules->count()]) ?>
+                        <?= view('components/badge', ['count' => $history_modules->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/theme') ?></span>
                         <a href="<?= e(route('themes')) ?>">
                             <?= I18N::translate('Themes') ?>
                         </a>
-                        <?= view('components/badge', ['count' => $theme_modules->count()]) ?>
+                        <?= view('components/badge', ['count' => $theme_modules->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/language') ?></span>
                         <a href="<?= e(route('languages')) ?>">
                             <?= I18N::translate('Languages') ?>
                         </a>
-                        <?= view('components/badge', ['count' => $language_modules->count()]) ?>
+                        <?= view('components/badge', ['count' => $language_modules->count(), 'context' => 'primary']) ?>
                     </li>
                 </ul>
             </div>
