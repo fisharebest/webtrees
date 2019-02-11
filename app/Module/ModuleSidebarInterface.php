@@ -32,7 +32,7 @@ interface ModuleSidebarInterface extends ModuleInterface
      */
     public function sidebarTitle(): string;
 
-		/**
+    /**
      * Users change change the order of sidebars using the control panel.
      *
      * @param int $sidebar_order

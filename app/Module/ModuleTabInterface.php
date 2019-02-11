@@ -31,7 +31,7 @@ interface ModuleTabInterface extends ModuleInterface
      * @return string
      */
     public function tabTitle(): string;
-		
+
     /**
      * Users change change the order of tabs using the control panel.
      *
