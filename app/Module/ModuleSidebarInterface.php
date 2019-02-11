@@ -25,6 +25,11 @@ use Illuminate\Support\Collection;
  */
 interface ModuleSidebarInterface extends ModuleInterface
 {
+    /**
+     * The text that appears on the sidebar's title.
+     *
+     * @return string
+     */
     public function sidebarTitle(): string;
 
 		/**

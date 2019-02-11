@@ -28,6 +28,16 @@ trait ModuleSidebarTrait
     protected $sidebar_order = 0;
 
     /**
+     * The text that appears on the sidebar's title.
+     *
+     * @return string
+     */
+    public function sidebarTitle(): string
+    {
+        return $this->title();
+    }
+
+    /**
      * Users change change the order of sidebars using the control panel.
      *
      * @param int $sidebar_order
@@ -60,10 +70,6 @@ trait ModuleSidebarTrait
         return 9999;
     }
 
-    public function sidebarTitle(): string {
-      return $this->title();
-    }
-		
     /**
      * This module handles the following facts - so don't show them on the "Facts and events" tab.
      *

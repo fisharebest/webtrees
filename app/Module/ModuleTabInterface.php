@@ -24,7 +24,12 @@ use Illuminate\Support\Collection;
  * Interface ModuleTabInterface - Classes and libraries for module system
  */
 interface ModuleTabInterface extends ModuleInterface
-{	
+{
+    /**
+     * The text that appears on the tab.
+     *
+     * @return string
+     */
     public function tabTitle(): string;
 		
     /**
