@@ -2691,7 +2691,7 @@ div.faq_body {
  * Default icons are provided by FontAwesome.
  * Some icons get mirrored on RTL pages.  Typiclly arrows
  */
-[dir=rtl] .wt-icon-flip-rtl {
+[dir=rtl] .wt-flip-rtl {
 }
 
 .wt-icon-anniversary {
@@ -2701,12 +2701,6 @@ div.faq_body {
 }
 
 a > .wt-icon-arrow-down:hover {
-}
-
-.wt-icon-arrow-end {
-}
-
-a > .wt-icon-arrow-end:hover {
 }
 
 .wt-icon-arrow-left {
@@ -2719,12 +2713,6 @@ a > .wt-icon-arrow-left:hover {
 }
 
 a > .wt-icon-arrow-right:hover {
-}
-
-.wt-icon-arrow-start {
-}
-
-a > .wt-icon-arrow-start:hover {
 }
 
 .wt-icon-arrow-up {

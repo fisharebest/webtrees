@@ -674,11 +674,6 @@ table {
 	content: url(images/individual-silhouette-unknown.png);
 }
 
-/* Mirror the image on RTL pages */
-[dir=rtl] .wt-individual-silhouette {
-	transform: scale(-1, 1);
-}
-
 .wt-individual-silhouette-F {
 	content: url(images/individual-silhouette-female.png);
 }
@@ -2936,7 +2931,7 @@ footer .error {
  * Default icons are provided by FontAwesome.
  * Some icons get mirrored on RTL pages.  Typiclly arrows
  */
-[dir=rtl] .wt-icon-flip-rtl {
+[dir=rtl] .wt-flip-rtl {
 	transform: scale(-1, 1);
 }
 
@@ -2950,14 +2945,6 @@ footer .error {
 
 a > .wt-icon-arrow-down:hover {
 	content: url(clouds/icons/arrow-down-hover.png);
-}
-
-.wt-icon-arrow-end {
-	content: url(clouds/icons/arrow-right.png);
-}
-
-a > .wt-icon-arrow-end:hover {
-	content: url(clouds/icons/arrow-right-hover.png);
 }
 
 .wt-icon-arrow-left {
@@ -2974,14 +2961,6 @@ a > .wt-icon-arrow-left:hover {
 
 a > .wt-icon-arrow-right:hover {
 	content: url(clouds/icons/arrow-right-hover.png);
-}
-
-.wt-icon-arrow-start {
-	content: url(clouds/icons/arrow-left.png);
-}
-
-a > .wt-icon-arrow-start:hover {
-	content: url(clouds/icons/arrow-left-hover.png);
 }
 
 .wt-icon-arrow-up {

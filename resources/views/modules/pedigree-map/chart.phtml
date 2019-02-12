@@ -4,19 +4,14 @@
 <div class="py-4">
     <div class="row gchart osm-wrapper">
         <div id="osm-map" class="col-sm-9 wt-ajax-load osm-user-map"></div>
-        <ul class='col-sm-3 osm-sidebar wt-page-options-value'></ul>
+        <ul class="col-sm-3 osm-sidebar wt-page-options-value list-unstyled p-0"></ul>
     </div>
 </div>
 
 <?php View::push('styles') ?>
 <style>
     .osm-wrapper, .osm-user-map {
-        height: 45vh
-    }
-
-    .osm-admin-map {
-        height: 55vh;
-        border: 1px solid darkGrey
+        height: 75vh
     }
 
     .osm-sidebar {
@@ -41,26 +36,6 @@
 
     .osm-sidebar .border-danger:hover {
         cursor: not-allowed
-    }
-
-    [dir=rtl] .leaflet-right {
-        right: auto;
-        left: 0
-    }
-
-    [dir=rtl] .leaflet-right .leaflet-control {
-        margin-right: 0;
-        margin-left: 10px
-    }
-
-    [dir=rtl] .leaflet-left {
-        left: auto;
-        right: 0
-    }
-
-    [dir=rtl] .leaflet-left .leaflet-control {
-        margin-left: 0;
-        margin-right: 10px
     }
 </style>
 <?php View::endpush() ?>
