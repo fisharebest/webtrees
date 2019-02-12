@@ -595,6 +595,9 @@ table {
 }
 
 .wt-footer-powered-by {
+}
+
+.wt-footer-powered-by-webtrees {
 	content: url(colors/images/powered-by-webtrees.png);
 }
 
