@@ -70,6 +70,10 @@ abstract class AbstractGoogle
      */
     public function interpolateRgb(string $startColor, string $endColor, int $steps): array
     {
+        if (!$steps) {
+            return [];
+        }
+
         $s       = $this->hexToRgb($startColor);
         $e       = $this->hexToRgb($endColor);
         $colors  = [];
