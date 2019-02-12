@@ -65,16 +65,6 @@ class WebtreesTheme extends AbstractModule implements ModuleThemeInterface
             'distribution-chart-high-values' => '84beff',
             'distribution-chart-low-values'  => 'c3dfff',
             'distribution-chart-no-values'   => 'ffffff',
-            'distribution-chart-x'           => 440,
-            'distribution-chart-y'           => 220,
-            'line-width'                     => 1.5,
-            'shadow-blur'                    => 0,
-            'shadow-color'                   => '',
-            'shadow-offset-x'                => 0,
-            'shadow-offset-y'                => 0,
-            'stats-small-chart-x'            => 440,
-            'stats-small-chart-y'            => 125,
-            'stats-large-chart-x'            => 900,
         ];
 
         return $parameters[$parameter_name];
