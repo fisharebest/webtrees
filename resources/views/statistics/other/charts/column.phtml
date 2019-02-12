@@ -12,39 +12,25 @@ $id = 'google-chart-' . bin2hex(random_bytes(8));
 
     <?= view('statistics/other/chart-setup') ?>
 
-    <div id="<?= $id ?>" title="<?= $chart_title ?>"></div>
+    <div id="<?= $id ?>" title="<?= $chart_title ?? '' ?>"></div>
 
     <script>
 
-    var callbackColumnChart = function () {
-        var options = {
-            title: '<?= $chart_title ?? '' ?>',
-            subtitle: '<?= $chart_sub_title ?? '' ?>',
-            vAxis: {
-                title: '<?= $vAxis_title ?? '' ?>'
-            },
-            hAxis: {
-                title: '<?= $hAxis_title ?? '' ?>'
-            },
-            colors: <?= json_encode($colors) ?>
-        };
+    google.charts.setOnLoadCallback(function () {
+        drawColumnChart(
+            '<?= $id ?>',
+            <?= json_encode($data) ?>,
+            <?= json_encode($chart_options) ?>
+        );
+    });
 
-        google.charts.setOnLoadCallback(function () {
-            drawColumnChart(
-                '<?= $id ?>',
-                <?= json_encode($data) ?>,
-                options
-            );
-        });
-
-        $(window).resize(function () {
-            drawColumnChart(
-                '<?= $id ?>',
-                <?= json_encode($data) ?>,
-                options
-            );
-        });
-    };
+    $(window).resize(function () {
+        drawColumnChart(
+            '<?= $id ?>',
+            <?= json_encode($data) ?>,
+            <?= json_encode($chart_options) ?>
+        );
+    });
 
     if (
         document.readyState === "complete" ||

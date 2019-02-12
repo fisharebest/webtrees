@@ -10,5 +10,5 @@ declare(strict_types=1);
     <?= view('statistics/other/chart-objects', ['stats' => $stats]) ?>
     <?= view('statistics/other/chart-sources', ['stats' => $stats]) ?>
     <?= view('statistics/other/places', ['stats' => $stats]) ?>
-    <?= $stats->chartDistribution() ?>
+    <?= view('statistics/other/chart-distribution', ['stats' => $stats]) ?>
 </div>

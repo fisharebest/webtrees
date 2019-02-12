@@ -1,0 +1,25 @@
+<?php
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+?>
+
+<?php if (count($data) === 1): ?>
+    <?= I18N::translate('This information is not available.'); ?>
+<?php else: ?>
+
+    <div class="mb-3">
+        <div class="card-deck">
+            <div class="col-12 mb-3">
+                <div class="card m-0">
+                    <div class="card-header">
+                        <?= $chart_title ?>
+                    </div>
+                    <div class="card-body">
+                        <?= view('statistics/other/charts/column', [ 'data' => $data, 'chart_options' => $chart_options]) ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

@@ -467,7 +467,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $indi   = [];
                         $fam    = [];
                         foreach ($rows as $row) {
-                            if (!in_array($row->indi, $indi) && !in_array($row->fams, $fam)) {
+                            if (!\in_array($row->indi, $indi, true) && !\in_array($row->fams, $fam, true)) {
                                 $this->fillYData($row->month, 0, 1, $x_axis, $z_axis, $ydata);
                             }
                             $indi[] = $row->indi;
@@ -483,7 +483,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         foreach (array_keys($z_axis) as $boundary) {
                             $rows = $statistics->statsMarrQuery(true, $prev_boundary, $boundary);
                             foreach ($rows as $row) {
-                                if (!in_array($row->indi, $indi) && !in_array($row->fams, $fam)) {
+                                if (!\in_array($row->indi, $indi, true) && !\in_array($row->fams, $fam, true)) {
                                     $this->fillYData($row->month, $boundary, 1, $x_axis, $z_axis, $ydata);
                                 }
                                 $indi[] = $row->indi;
@@ -646,7 +646,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                             $rows = $statistics->statsMarrAgeQuery($sex);
                             $indi = [];
                             foreach ($rows as $row) {
-                                if (!in_array($row->d_gid, $indi)) {
+                                if (!\in_array($row->d_gid, $indi, true)) {
                                     $years = (int) ($row->age / self::DAYS_IN_YEAR);
                                     $this->fillYData($years, 0, 1, $x_axis, $z_axis, $ydata);
                                     $indi[] = $row->d_gid;
@@ -660,7 +660,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                             $rows = $statistics->statsMarrAgeQuery($sex);
                             $indi = [];
                             foreach ($rows as $row) {
-                                if (!in_array($row->d_gid, $indi)) {
+                                if (!\in_array($row->d_gid, $indi, true)) {
                                     $years = (int) ($row->age / self::DAYS_IN_YEAR);
                                     $this->fillYData($years, $sex, 1, $x_axis, $z_axis, $ydata);
                                     $indi[] = $row->d_gid;
@@ -678,7 +678,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                             foreach (array_keys($z_axis) as $boundary) {
                                 $rows = $statistics->statsMarrAgeQuery($sex, $prev_boundary, $boundary);
                                 foreach ($rows as $row) {
-                                    if (!in_array($row->d_gid, $indi)) {
+                                    if (!\in_array($row->d_gid, $indi, true)) {
                                         $years = (int) ($row->age / self::DAYS_IN_YEAR);
                                         $this->fillYData($years, $boundary, 1, $x_axis, $z_axis, $ydata);
                                         $indi[] = $row->d_gid;
@@ -862,7 +862,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         $x = $this->findAxisEntry($x, $x_axis);
         $z = $this->findAxisEntry($z, $z_axis);
 
-        if (!array_key_exists($z, $z_axis)) {
+        if (!\array_key_exists($z, $z_axis)) {
             foreach (array_keys($z_axis) as $key) {
                 if ($value <= $key) {
                     $z = $key;
@@ -890,7 +890,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         if (is_numeric($value)) {
             $value = (int) $value;
 
-            if (!array_key_exists($value, $axis)) {
+            if (!\array_key_exists($value, $axis)) {
                 foreach (array_keys($axis) as $boundary) {
                     if ($value <= $boundary) {
                         $value = $boundary;
@@ -917,23 +917,25 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return string
      */
-    private function myPlot(string $chart_title, array $x_axis, string $x_axis_title, array $ydata, string $y_axis_title, array $z_axis, int $y_axis_type): string
-    {
-        // Bar dimensions
-        if (count($ydata) > 3) {
-            $chbh = '5,1';
-        } elseif (count($ydata) < 2) {
-            $chbh = '45,1';
-        } else {
-            $chbh = '20,3';
+    private function myPlot(
+        string $chart_title,
+        array $x_axis,
+        string $x_axis_title,
+        array $ydata,
+        string $y_axis_title,
+        array $z_axis,
+        int $y_axis_type
+    ): string {
+        if (!\count($ydata)) {
+            return I18N::translate('This information is not available.');
         }
 
         // Colors for z-axis
         $colors = [];
         $index  = 0;
-        while (count($colors) < count($ydata)) {
+        while (\count($colors) < \count($ydata)) {
             $colors[] = self::Z_AXIS_COLORS[$index];
-            $index    = ($index + 1) % count(self::Z_AXIS_COLORS);
+            $index    = ($index + 1) % \count(self::Z_AXIS_COLORS);
         }
 
         // Convert our sparse dataset into a fixed-size array
@@ -945,7 +947,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         }
         $ydata = $tmp;
 
-        // The chart data
+        // Convert the chart data to percentage
         if ($y_axis_type === self::Y_AXIS_PERCENT) {
             // Normalise each (non-zero!) set of data to total 100%
             array_walk($ydata, function (array &$x) {
@@ -958,68 +960,58 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
             });
         }
 
-        // Find the maximum value, so we can draw the scale
-        $ymax = max(array_map(function (array $x) {
-            return max($x);
-        }, $ydata));
-
-        // Google charts API requires data to be scaled 0 - 100.
-        $scale = max(array_map(function (array $x) {
-            return max($x);
-        }, $ydata));
-
-        if ($scale > 0) {
-            $scalefactor = 100.0 / $scale;
-            array_walk_recursive($ydata, function (&$n) use ($scalefactor) {
-                $n *= $scalefactor;
-            });
-        }
-
-        // Lables for the two axes.
-        $x_axis_labels = implode('|', $x_axis);
-        $y_axis_labels = '';
-
-        if ($y_axis_type === self::Y_AXIS_PERCENT) {
-            // Draw 10 intervals on the Y axis.
-            $intervals = 10;
-            for ($i = 1; $i <= $intervals; $i++) {
-                if ($ymax <= 20.0) {
-                    $y_axis_labels .= round($ymax * $i / $intervals, 1) . '|';
-                } else {
-                    $y_axis_labels .= round($ymax * $i / $intervals, 0) . '|';
-                }
-            }
-        } elseif ($y_axis_type === self::Y_AXIS_NUMBERS) {
-            // Draw up to 10 intervals on the Y axis.
-            $intervals = min(10, $ymax);
-            for ($i = 1; $i <= $intervals; $i++) {
-                $y_axis_labels .= round($ymax * $i / $intervals, 0) . '|';
-            }
-        }
-
-        $data = implode('|', array_map(function (array $x): string {
-            return implode(',', $x);
-        }, $ydata));
-
-        $attributes = [
-            'chbh' => $chbh,
-            'chd'  => 't:' . $data,
-            'chf'  => 'bg,s,ffffff00|c,s,ffffff00',
-            'chco' => implode(',', $colors),
-            'chs'  => self::CHART_WIDTH . 'x' . self::CHART_HEIGHT,
-            'cht'  => 'bvg',
-            'chtt' => $chart_title,
-            'chxl' => '0:|' . $x_axis_labels . '|1:||||' . $x_axis_title . '|2:|0|' . $y_axis_labels . '3:||' . $y_axis_title . '|',
-            'chxt' => 'x,x,y,y',
+        $data = [
+            array_merge(
+                [ I18N::translate('Century') ],
+                array_values($z_axis)
+            )
         ];
 
-        // More than one Z axis?  Show a legend for them.
-        if (count($z_axis) > 1) {
-            $attributes['chdl'] = implode('|', $z_axis);
+        $intermediate = [];
+        foreach ($ydata as $century => $months) {
+            foreach ($months as $month => $value) {
+                $intermediate[$month][] = [
+                    'v' => $value,
+                    'f' => ($y_axis_type === self::Y_AXIS_PERCENT) ? sprintf('%.1f%%', $value) : $value,
+                ];
+            }
         }
 
-        $url = Html::url('https://chart.googleapis.com/chart', $attributes);
+        foreach ($intermediate as $key => $values) {
+            $data[] = array_merge(
+                [ $x_axis[$key] ],
+                $values
+            );
+        }
 
-        return '<img src="' . e($url) . '" class="img-fluid" alt="' . e($chart_title) . '">';
+        $chart_options = [
+            'title' => '',
+            'subtitle' => '',
+            'height' => 400,
+            'width'  => '100%',
+            'legend' => [
+                'position'  => \count($z_axis) > 1 ? 'right' : 'none',
+                'alignment' => 'center',
+            ],
+            'tooltip' => [
+                'format' => '\'%\'',
+            ],
+            'vAxis' => [
+                'title' => $y_axis_title ?? '',
+            ],
+            'hAxis' => [
+                'title' => $x_axis_title ?? '',
+            ],
+            'colors' => $colors,
+        ];
+
+        return view(
+            'statistics/other/charts/custom',
+            [
+                'data'          => $data,
+                'chart_options' => $chart_options,
+                'chart_title'   => $chart_title,
+            ]
+        );
     }
 }

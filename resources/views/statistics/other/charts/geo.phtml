@@ -1,44 +1,38 @@
 <?php
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\I18N;
+
 $id = 'google-chart-' . bin2hex(random_bytes(8));
 ?>
 
-<?= view('statistics/other/chart-setup') ?>
+<?php if (count($data) === 1): ?>
+    <?= I18N::translate('This information is not available.'); ?>
+<?php else: ?>
 
-<h4 class="border-bottom p-2 mb-4">
-    <?= $chart_title ?>
-</h4>
+    <?= view('statistics/other/chart-setup') ?>
 
-<div class="mb-3">
-    <div class="card-deck">
-        <div class="col-12 mb-3">
-            <div class="card m-0">
-                <div class="card-body">
-                    <div id="google_charts">
-                        <div id="<?= $id ?>"></div>
+    <div class="mb-3">
+        <div class="card-deck">
+            <div class="col-12 mb-3">
+                <div class="card m-0">
+                    <div class="card-header">
+                        <?= $chart_title ?>
+                    </div>
+                    <div class="card-body">
+                        <div id="<?= $id ?>" title="<?= $chart_title ?>"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
+    <script>
 
-var callbackGeoChart = function () {
-    google.charts.setOnLoadCallback(drawRegionsMap);
-
-    function drawRegionsMap () {
-        var data = google.visualization.arrayToDataTable(
-            <?= json_encode($data) ?>
-        );
-
+    var callbackGeoChart = function () {
         var options = {
             title: '<?= $chart_title ?>',
             region: '<?= $region ?>',
-            height: '100%',
-            width: '100%',
             colorAxis: {
                 colors: [
                     '#<?= $chart_color3 ?>',
@@ -47,21 +41,31 @@ var callbackGeoChart = function () {
             }
         };
 
-        var chart = new google.visualization.GeoChart(document.getElementById('<?= $id ?>'));
+        google.charts.setOnLoadCallback(function () {
+            drawGeoChart(
+                '<?= $id ?>',
+                <?= json_encode($data) ?>,
+                options
+            );
+        });
 
-        chart.draw(data, options);
+        $(window).resize(function () {
+            drawGeoChart(
+                '<?= $id ?>',
+                <?= json_encode($data) ?>,
+                options
+            );
+        });
+    };
+
+    if (
+        document.readyState === "complete" ||
+        (document.readyState !== "loading" && !document.documentElement.doScroll)
+    ) {
+        callbackGeoChart();
+    } else {
+        document.addEventListener("DOMContentLoaded", callbackGeoChart);
     }
 
-    $(window).resize(drawRegionsMap);
-};
-
-if (
-    document.readyState === "complete" ||
-    (document.readyState !== "loading" && !document.documentElement.doScroll)
-) {
-    callbackGeoChart();
-} else {
-    document.addEventListener("DOMContentLoaded", callbackGeoChart);
-}
-
-</script>
+    </script>
+<?php endif; ?>
