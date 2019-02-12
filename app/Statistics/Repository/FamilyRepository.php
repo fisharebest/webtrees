@@ -581,7 +581,7 @@ class FamilyRepository
         $record = $this->ageBetweenSiblingsNoList($total);
 
         if (empty($record)) {
-            return '';
+            return I18N::translate('This information is not available.');
         }
 
         return view('statistics/families/top10-nolist-age', [

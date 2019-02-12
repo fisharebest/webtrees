@@ -18,7 +18,7 @@ use Fisharebest\Webtrees\I18N;
                     <?= I18N::translate('Average number of children per family') ?>
                     <span class="badge badge-secondary badge-pill float-right"><?= $stats->averageChildren() ?></span>
                 </h5>
-                <div class="card-body text-center">
+                <div class="card-body">
                     <?= $stats->statsChildren() ?>
                 </div>
             </div>
@@ -30,7 +30,7 @@ use Fisharebest\Webtrees\I18N;
                     <?= I18N::translate('Number of families without children') ?>
                     <span class="badge badge-secondary badge-pill float-right"><?= $stats->noChildrenFamilies() ?></span>
                 </h5>
-                <div class="card-body text-center">
+                <div class="card-body">
                     <?= $stats->chartNoChildrenFamilies() ?>
                 </div>
             </div>

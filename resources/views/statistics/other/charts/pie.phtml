@@ -1,44 +1,51 @@
 <?php
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\I18N;
+
 $id = 'google-chart-' . bin2hex(random_bytes(8));
 ?>
 
-<?= view('statistics/other/chart-setup') ?>
+<?php if (count($data) === 1): ?>
+    <?= I18N::translate('This information is not available.'); ?>
+<?php else: ?>
 
-<div id="<?= $id ?>"></div>
+    <?= view('statistics/other/chart-setup') ?>
 
-<script>
+    <div id="<?= $id ?>"></div>
 
-var callbackPieChart = function () {
-    google.charts.setOnLoadCallback(function () {
-        drawPieChart(
-            '<?= $id ?>',
-            <?= json_encode($data) ?>,
-            <?= json_encode($colors) ?>,
-            '<?= $title ?>',
-            '<?= $labeledValueText ?? 'value' ?>'
-        );
-    });
+    <script>
 
-    $(window).resize(function () {
-        drawPieChart(
-            '<?= $id ?>',
-            <?= json_encode($data) ?>,
-            <?= json_encode($colors) ?>,
-            '<?= $title ?>',
-            '<?= $labeledValueText ?? 'value' ?>'
-        );
-    });
-};
+    var callbackPieChart = function () {
+        google.charts.setOnLoadCallback(function () {
+            drawPieChart(
+                '<?= $id ?>',
+                <?= json_encode($data) ?>,
+                <?= json_encode($colors) ?>,
+                '<?= $title ?>',
+                '<?= $labeledValueText ?? 'value' ?>'
+            );
+        });
 
-if (
-    document.readyState === "complete" ||
-    (document.readyState !== "loading" && !document.documentElement.doScroll)
-) {
-    callbackPieChart();
-} else {
-    document.addEventListener("DOMContentLoaded", callbackPieChart);
-}
+        $(window).resize(function () {
+            drawPieChart(
+                '<?= $id ?>',
+                <?= json_encode($data) ?>,
+                <?= json_encode($colors) ?>,
+                '<?= $title ?>',
+                '<?= $labeledValueText ?? 'value' ?>'
+            );
+        });
+    };
 
-</script>
+    if (
+        document.readyState === "complete" ||
+        (document.readyState !== "loading" && !document.documentElement.doScroll)
+    ) {
+        callbackPieChart();
+    } else {
+        document.addEventListener("DOMContentLoaded", callbackPieChart);
+    }
+
+    </script>
+<?php endif; ?>

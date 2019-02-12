@@ -48,16 +48,20 @@ class ChartMortality extends AbstractGoogle
             [
                 I18N::translate('Century'),
                 I18N::translate('Total')
-            ],
-            [
+            ]
+        ];
+
+        if ($tot_l || $tot_d) {
+            $data[] = [
                 I18N::translate('Living'),
                 $tot_l
-            ],
-            [
+            ];
+
+            $data[] =  [
                 I18N::translate('Dead'),
                 $tot_d
-            ],
-        ];
+            ];
+        }
 
         $colors = $this->interpolateRgb($color_living, $color_dead, \count($data) - 1);
 

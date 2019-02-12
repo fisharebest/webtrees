@@ -109,10 +109,12 @@ class ChartNoChildrenFamilies extends AbstractGoogle
             ];
         }
 
-        $data[] = [
-            I18N::translateContext('unknown century', 'Unknown'),
-            $no_child_fam - $total
-        ];
+        if ($total) {
+            $data[] = [
+                I18N::translateContext('unknown century','Unknown'),
+                $no_child_fam - $total
+            ];
+        }
 
         return view(
             'statistics/other/charts/column',

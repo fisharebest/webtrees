@@ -51,15 +51,19 @@ class ChartIndividualWithSources extends AbstractGoogle
                 I18N::translate('Type'),
                 I18N::translate('Total')
             ],
-            [
+        ];
+
+        if ($tot_indi || $tot_indi_source) {
+            $data[] = [
                 I18N::translate('Without sources'),
                 $tot_indi - $tot_indi_source
-            ],
-            [
+            ];
+
+            $data[] = [
                 I18N::translate('With sources'),
                 $tot_indi_source
-            ],
-        ];
+            ];
+        }
 
         $colors = $this->interpolateRgb($color_from, $color_to, \count($data) - 1);
 

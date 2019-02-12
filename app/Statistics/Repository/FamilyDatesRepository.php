@@ -96,7 +96,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     private function getFirstLastEvent(string $type, string $operation): string
     {
         $row    = $this->eventQuery($type, $operation);
-        $result = '';
+        $result = I18N::translate('This information is not available.');
 
         if ($row) {
             $record = GedcomRecord::getInstance($row->id, $this->tree);
@@ -375,7 +375,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
             }
         }
 
-        return I18N::translate('Private');
+        return I18N::translate('This information is private and cannot be shown.');
     }
 
     /**

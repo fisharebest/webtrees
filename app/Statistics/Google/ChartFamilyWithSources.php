@@ -51,15 +51,19 @@ class ChartFamilyWithSources extends AbstractGoogle
                 I18N::translate('Type'),
                 I18N::translate('Total')
             ],
-            [
+        ];
+
+        if ($tot_fam || $tot_fam_source) {
+            $data[] = [
                 I18N::translate('Without sources'),
                 $tot_fam - $tot_fam_source
-            ],
-            [
+            ];
+
+            $data[] = [
                 I18N::translate('With sources'),
                 $tot_fam_source
-            ],
-        ];
+            ];
+        }
 
         $colors = $this->interpolateRgb($color_from, $color_to, \count($data) - 1);
 

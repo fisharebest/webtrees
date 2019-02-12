@@ -14,22 +14,36 @@ use Fisharebest\Webtrees\I18N;
     <div class="card-deck">
         <div class="col-12 col-md-6 mb-3">
             <div class="card m-0">
+                <?php $age    = $stats->youngestMarriageMaleAge('1') ?>
+                <?php $result = $stats->youngestMarriageMale() ?>
                 <h5 class="card-header">
-                    <?= I18N::translate('Youngest male'), ' - ', $stats->youngestMarriageMaleAge('1') ?>
+                    <?= I18N::translate('Youngest male') ?>
+                    <?php if ($age): ?><?= ' - ', $age ?><?php endif; ?>
                 </h5>
                 <div class="card-body">
-                    <?= $stats->youngestMarriageMale() ?>
+                    <?php if ($result): ?>
+                        <?= $result ?>
+                    <?php else: ?>
+                        <?= I18N::translate('This information is not available.'); ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
 
         <div class="col-12 col-md-6 mb-3">
             <div class="card m-0">
+                <?php $age    = $stats->youngestMarriageFemaleAge('1') ?>
+                <?php $result = $stats->youngestMarriageFemale() ?>
                 <h5 class="card-header">
-                    <?= I18N::translate('Youngest female'), ' - ', $stats->youngestMarriageFemaleAge('1') ?>
+                    <?= I18N::translate('Youngest female') ?>
+                    <?php if ($age): ?><?= ' - ', $age ?><?php endif; ?>
                 </h5>
                 <div class="card-body">
-                    <?= $stats->youngestMarriageFemale() ?>
+                    <?php if ($result): ?>
+                        <?= $result ?>
+                    <?php else: ?>
+                        <?= I18N::translate('This information is not available.'); ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -38,22 +52,36 @@ use Fisharebest\Webtrees\I18N;
     <div class="card-deck">
         <div class="col-12 col-md-6 mb-3">
             <div class="card m-0">
+                <?php $age    = $stats->oldestMarriageMaleAge('1') ?>
+                <?php $result = $stats->oldestMarriageMale() ?>
                 <h5 class="card-header">
-                    <?= I18N::translate('Oldest male'), ' - ', $stats->oldestMarriageMaleAge('1') ?>
+                    <?= I18N::translate('Oldest male') ?>
+                    <?php if ($age): ?><?= ' - ', $age ?><?php endif; ?>
                 </h5>
                 <div class="card-body">
-                    <?= $stats->oldestMarriageMale() ?>
+                    <?php if ($result): ?>
+                        <?= $result ?>
+                    <?php else: ?>
+                        <?= I18N::translate('This information is not available.'); ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
 
         <div class="col-12 col-md-6 mb-3">
             <div class="card m-0">
+                <?php $age    = $stats->oldestMarriageFemaleAge('1') ?>
+                <?php $result = $stats->oldestMarriageFemale() ?>
                 <h5 class="card-header">
-                    <?= I18N::translate('Oldest female'), ' - ', $stats->oldestMarriageFemaleAge('1') ?>
+                    <?= I18N::translate('Oldest female') ?>
+                    <?php if ($age): ?><?= ' - ', $age ?><?php endif; ?>
                 </h5>
                 <div class="card-body">
-                    <?= $stats->oldestMarriageFemale() ?>
+                    <?php if ($result): ?>
+                        <?= $result ?>
+                    <?php else: ?>
+                        <?= I18N::translate('This information is not available.'); ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -62,7 +90,7 @@ use Fisharebest\Webtrees\I18N;
     <div class="card-deck">
         <div class="col-lg-12 col-md-12 mb-3">
             <div class="card m-0">
-                <div class="card-body text-center">
+                <div class="card-body">
                     <?= $stats->statsMarrAge() ?>
                 </div>
             </div>

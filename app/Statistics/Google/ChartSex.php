@@ -54,19 +54,24 @@ class ChartSex extends AbstractGoogle
                 I18N::translate('Type'),
                 I18N::translate('Total')
             ],
-            [
+        ];
+
+        if ($tot_m || $tot_f || $tot_u) {
+            $data[] = [
                 I18N::translate('Males'),
                 $tot_m
-            ],
-            [
+            ];
+
+            $data[] = [
                 I18N::translate('Females'),
                 $tot_f
-            ],
-            [
+            ];
+
+            $data[] = [
                 I18N::translate('Unknown'),
                 $tot_u
-            ],
-        ];
+            ];
+        }
 
         return view(
             'statistics/other/charts/pie',
