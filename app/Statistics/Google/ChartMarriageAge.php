@@ -101,7 +101,7 @@ class ChartMarriageAge extends AbstractGoogle
             ->where('birth.d_julianday1', '<>', 0)
             ->groupBy(['century', 'sex']);
 
-       return $male->unionAll($female)
+        return $male->unionAll($female)
            ->orderBy('century')
            ->get()
            ->all();
