@@ -21,6 +21,8 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 use Fisharebest\Webtrees\Statistics\Helper\Century;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\JoinClause;
 
 /**
  *
@@ -47,42 +49,62 @@ class ChartMarriageAge extends AbstractGoogle
     /**
      * Returns the related database records.
      *
-     * @param string $sex
-     *
      * @return \stdClass[]
      */
-    private function queryRecords(string $sex): array
+    private function queryRecords(): array
     {
-        // TODO
-        return $this->runSql(
-            'SELECT '
-            . ' ROUND(AVG(married.d_julianday2-birth.d_julianday1-182.5)/365.25,1) AS age, '
-            .  ' ROUND((married.d_year - 50) / 100) AS century,'
-            . " 'M' AS sex "
-            . 'FROM `##dates` AS married '
-            . 'JOIN `##families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) '
-            . 'JOIN `##dates` AS birth ON (birth.d_gid=fam.f_husb AND birth.d_file=fam.f_file) '
-            . 'WHERE '
-            . " '{$sex}' IN ('M', 'BOTH') AND "
-            . " married.d_file={$this->tree->id()} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND "
-            . " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND "
-            . ' married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 '
-            . 'GROUP BY century, sex '
-            . 'UNION ALL '
-            . 'SELECT '
-            . ' ROUND(AVG(married.d_julianday2-birth.d_julianday1-182.5)/365.25,1) AS age, '
-            . ' ROUND((married.d_year - 50) / 100) AS century,'
-            . " 'F' AS sex "
-            . 'FROM `##dates` AS married '
-            . 'JOIN `##families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) '
-            . 'JOIN `##dates` AS birth ON (birth.d_gid=fam.f_wife AND birth.d_file=fam.f_file) '
-            . 'WHERE '
-            . " '{$sex}' IN ('F', 'BOTH') AND "
-            . " married.d_file={$this->tree->id()} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND "
-            . " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND "
-            . ' married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 '
-            . ' GROUP BY century, sex ORDER BY century'
-        );
+        $prefix = DB::connection()->getTablePrefix();
+
+        $male = DB::table('dates as married')
+            ->select([
+                DB::raw('ROUND(AVG(' . $prefix . 'married.d_julianday2 - ' . $prefix . 'birth.d_julianday1 - 182.5) / 365.25, 1) AS age'),
+                DB::raw('ROUND((' . $prefix . 'married.d_year - 50) / 100) AS century'),
+                DB::raw("'M' as sex")
+            ])
+            ->join('families as fam', function (JoinClause $join) {
+                $join->on('fam.f_id', '=', 'married.d_gid')
+                    ->on('fam.f_file', '=', 'married.d_file');
+            })
+            ->join('dates as birth', function (JoinClause $join) {
+                $join->on('birth.d_gid', '=', 'fam.f_husb')
+                    ->on('birth.d_file', '=', 'fam.f_file');
+            })
+            ->whereIn('married.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
+            ->where('married.d_file', '=', $this->tree->id())
+            ->where('married.d_fact', '=', 'MARR')
+            ->where('married.d_julianday1', '>', 'birth.d_julianday1')
+            ->whereIn('birth.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
+            ->where('birth.d_fact', '=', 'BIRT')
+            ->where('birth.d_julianday1', '<>', 0)
+            ->groupBy(['century', 'sex']);
+
+        $female = DB::table('dates as married')
+            ->select([
+                DB::raw('ROUND(AVG(' . $prefix . 'married.d_julianday2 - ' . $prefix . 'birth.d_julianday1 - 182.5) / 365.25, 1) AS age'),
+                DB::raw('ROUND((' . $prefix . 'married.d_year - 50) / 100) AS century'),
+                DB::raw("'F' as sex")
+            ])
+            ->join('families as fam', function (JoinClause $join) {
+                $join->on('fam.f_id', '=', 'married.d_gid')
+                    ->on('fam.f_file', '=', 'married.d_file');
+            })
+            ->join('dates as birth', function (JoinClause $join) {
+                $join->on('birth.d_gid', '=', 'fam.f_wife')
+                    ->on('birth.d_file', '=', 'fam.f_file');
+            })
+            ->whereIn('married.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
+            ->where('married.d_file', '=', $this->tree->id())
+            ->where('married.d_fact', '=', 'MARR')
+            ->where('married.d_julianday1', '>', 'birth.d_julianday1')
+            ->whereIn('birth.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
+            ->where('birth.d_fact', '=', 'BIRT')
+            ->where('birth.d_julianday1', '<>', 0)
+            ->groupBy(['century', 'sex']);
+
+       return $male->unionAll($female)
+           ->orderBy('century')
+           ->get()
+           ->all();
     }
 
     /**
@@ -92,10 +114,9 @@ class ChartMarriageAge extends AbstractGoogle
      */
     public function chartMarriageAge(): string
     {
-        $sex = 'BOTH';
         $out = [];
 
-        foreach ($this->queryRecords($sex) as $record) {
+        foreach ($this->queryRecords() as $record) {
             $out[(int) $record->century][$record->sex] = (float) $record->age;
         }
 

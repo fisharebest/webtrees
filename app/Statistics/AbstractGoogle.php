@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics;
 
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
-use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Tree;
 
 /**
@@ -45,18 +44,6 @@ abstract class AbstractGoogle
     {
         $this->tree  = $tree;
         $this->theme = app()->make(ModuleThemeInterface::class);
-    }
-
-    /**
-     * Run an SQL query and cache the result.
-     *
-     * @param string $sql
-     *
-     * @return \stdClass[]
-     */
-    protected function runSql(string $sql): array
-    {
-        return Sql::runSql($sql);
     }
 
     /**
