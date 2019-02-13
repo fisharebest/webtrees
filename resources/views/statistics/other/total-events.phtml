@@ -15,22 +15,28 @@ use Fisharebest\Webtrees\I18N;
     <div class="card-deck">
         <div class="col-12 col-md-6 mb-3">
             <div class="card m-0">
+                <?php $type   = $stats->firstEventType() ?>
+                <?php $result = $stats->firstEvent() ?>
                 <h5 class="card-header">
-                    <?= I18N::translate('First event'), ' - ', $stats->firstEventType() ?>
+                    <?= I18N::translate('First event') ?>
+                    <?php if ($type): ?><?= ' - ', $type ?><?php endif; ?>
                 </h5>
                 <div class="card-body">
-                    <?= $stats->firstEvent() ?>
+                    <?= $result ?>
                 </div>
             </div>
         </div>
 
         <div class="col-12 col-md-6 mb-3">
             <div class="card m-0">
+                <?php $type   = $stats->lastEventType() ?>
+                <?php $result = $stats->lastEvent() ?>
                 <h5 class="card-header">
-                    <?= I18N::translate('Last event'), ' - ', $stats->lastEventType() ?>
+                    <?= I18N::translate('Last event') ?>
+                    <?php if ($type): ?><?= ' - ', $type ?><?php endif; ?>
                 </h5>
                 <div class="card-body">
-                    <?= $stats->lastEvent() ?>
+                    <?= $result ?>
                 </div>
             </div>
         </div>

@@ -1787,7 +1787,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $given    = $this->commonGivenQuery('B', 'chart', false, 1, $maxtoshow);
 
         if (empty($given)) {
-            return '';
+            return I18N::translate('This information is not available.');
         }
 
         return (new ChartCommonGiven($this->tree))
@@ -1812,7 +1812,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $all_surnames = $this->topSurnames($number_of_surnames, 0);
 
         if (empty($all_surnames)) {
-            return '';
+            return I18N::translate('This information is not available.');
         }
 
         return (new ChartCommonSurname($this->tree))

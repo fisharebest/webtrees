@@ -14,22 +14,36 @@ use Fisharebest\Webtrees\I18N;
     <div class="card-deck">
         <div class="col-12 col-md-6 mb-3">
             <div class="card m-0">
+                <?php $age    = $stats->topAgeOfMarriage() ?>
+                <?php $result = $stats->topAgeOfMarriageFamily() ?>
                 <h5 class="card-header">
-                    <?= I18N::translate('Longest marriage'), ' - ', $stats->topAgeOfMarriage() ?>
+                    <?= I18N::translate('Longest marriage') ?>
+                    <?php if ($age): ?><?= ' - ', $age ?><?php endif; ?>
                 </h5>
                 <div class="card-body">
-                    <?= $stats->topAgeOfMarriageFamily() ?>
+                    <?php if ($result): ?>
+                        <?= $result ?>
+                    <?php else: ?>
+                        <?= I18N::translate('This information is not available.'); ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
 
         <div class="col-12 col-md-6 mb-3">
             <div class="card m-0">
+                <?php $age    = $stats->minAgeOfMarriage() ?>
+                <?php $result = $stats->minAgeOfMarriageFamily() ?>
                 <h5 class="card-header">
-                    <?= I18N::translate('Shortest marriage'), ' - ', $stats->minAgeOfMarriage() ?>
+                    <?= I18N::translate('Shortest marriage') ?>
+                    <?php if ($age): ?><?= ' - ', $age ?><?php endif; ?>
                 </h5>
                 <div class="card-body">
-                    <?= $stats->minAgeOfMarriageFamily() ?>
+                    <?php if ($result): ?>
+                        <?= $result ?>
+                    <?php else: ?>
+                        <?= I18N::translate('This information is not available.'); ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

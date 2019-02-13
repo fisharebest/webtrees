@@ -238,7 +238,7 @@ class EventRepository implements EventRepositoryInterface
     private function getFirstLastEvent(string $direction): string
     {
         $row    = $this->eventQuery($direction);
-        $result = '';
+        $result = I18N::translate('This information is not available.');
 
         if ($row) {
             $record = GedcomRecord::getInstance($row->id, $this->tree);

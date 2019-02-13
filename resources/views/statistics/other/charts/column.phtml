@@ -1,52 +1,59 @@
 <?php
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\I18N;
+
 $id = 'google-chart-' . bin2hex(random_bytes(8));
 ?>
 
-<?= view('statistics/other/chart-setup') ?>
+<?php if (count($data) === 1): ?>
+    <?= I18N::translate('This information is not available.'); ?>
+<?php else: ?>
 
-<div id="<?= $id ?>" title="<?= $chart_title ?>"></div>
+    <?= view('statistics/other/chart-setup') ?>
 
-<script>
+    <div id="<?= $id ?>" title="<?= $chart_title ?>"></div>
 
-var callbackColumnChart = function () {
-    var options = {
-        title: '<?= $chart_title ?? '' ?>',
-        subtitle: '<?= $chart_sub_title ?? '' ?>',
-        vAxis: {
-            title: '<?= $vAxis_title ?? '' ?>'
-        },
-        hAxis: {
-            title: '<?= $hAxis_title ?? '' ?>'
-        },
-        colors: <?= json_encode($colors) ?>
+    <script>
+
+    var callbackColumnChart = function () {
+        var options = {
+            title: '<?= $chart_title ?? '' ?>',
+            subtitle: '<?= $chart_sub_title ?? '' ?>',
+            vAxis: {
+                title: '<?= $vAxis_title ?? '' ?>'
+            },
+            hAxis: {
+                title: '<?= $hAxis_title ?? '' ?>'
+            },
+            colors: <?= json_encode($colors) ?>
+        };
+
+        google.charts.setOnLoadCallback(function () {
+            drawColumnChart(
+                '<?= $id ?>',
+                <?= json_encode($data) ?>,
+                options
+            );
+        });
+
+        $(window).resize(function () {
+            drawColumnChart(
+                '<?= $id ?>',
+                <?= json_encode($data) ?>,
+                options
+            );
+        });
     };
 
-    google.charts.setOnLoadCallback(function () {
-        drawColumnChart(
-            '<?= $id ?>',
-            <?= json_encode($data) ?>,
-            options
-        );
-    });
+    if (
+        document.readyState === "complete" ||
+        (document.readyState !== "loading" && !document.documentElement.doScroll)
+    ) {
+        callbackColumnChart();
+    } else {
+        document.addEventListener("DOMContentLoaded", callbackColumnChart);
+    }
 
-    $(window).resize(function () {
-        drawColumnChart(
-            '<?= $id ?>',
-            <?= json_encode($data) ?>,
-            options
-        );
-    });
-};
-
-if (
-    document.readyState === "complete" ||
-    (document.readyState !== "loading" && !document.documentElement.doScroll)
-) {
-    callbackColumnChart();
-} else {
-    document.addEventListener("DOMContentLoaded", callbackColumnChart);
-}
-
-</script>
+    </script>
+<?php endif; ?>

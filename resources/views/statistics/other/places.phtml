@@ -45,7 +45,14 @@ use Fisharebest\Webtrees\I18N;
                 <h5 class="card-header">
                     <?= I18N::translate('Events in countries') ?>
                 </h5>
-                <?= $stats->commonCountriesList(); ?>
+                <?php $result = $stats->commonCountriesList(); ?>
+                <?php if ($result): ?>
+                    <?= $result ?>
+                <?php else: ?>
+                    <div class="card-body">
+                        <?= I18N::translate('This information is not available.'); ?>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
