@@ -438,11 +438,11 @@ class UsersController extends AbstractAdminController
             $tree->setUserPreference($edit_user, 'RELATIONSHIP_PATH_LENGTH', (string) $path_length);
         }
 
-        if ($this->user_service->findByEmail($email) instanceof User) {
-            FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'), 'danger');
+        if ($edit_user->email() !== $email && $this->user_service->findByEmail($email) instanceof User) {
+            FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.') . $email, 'danger');
 
             return new RedirectResponse(route('admin-users-edit', ['user_id' => $edit_user->id()]));
-        } elseif ($this->user_service->findByUserName($username) instanceof User) {
+        } elseif ($edit_user->userName() !== $username && $this->user_service->findByUserName($username) instanceof User) {
             FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'), 'danger');
 
             return new RedirectResponse(route('admin-users-edit', ['user_id' => $edit_user->id()]));
