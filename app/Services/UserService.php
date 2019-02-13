@@ -332,7 +332,7 @@ class UserService
             $url = 'mailto:' . $contact_user->email();
         } elseif ($user instanceof User) {
             // Logged-in users send direct messages
-            $url = route('message', ['to' => $user->userName()]);
+            $url = route('message', ['to' => $contact_user->userName()]);
         } else {
             // Visitors use the contact form.
             $url = route('contact', [
