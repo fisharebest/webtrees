@@ -12,17 +12,17 @@
     <table border="1" id="change_blocks">
         <thead>
             <tr>
-                <th class="descriptionbox center vmiddle" colspan="2">
+                <th class="descriptionbox text-center vmiddle" colspan="2">
                     <label for="main_select">
                         <?= I18N::translate('Main section blocks') ?>
                     </label>
                 </th>
-                <th class="descriptionbox center vmiddle" colspan="3">
+                <th class="descriptionbox text-center vmiddle" colspan="3">
                     <label for="available_select">
                         <?= I18N::translate('Available blocks') ?>
                     </label>
                 </th>
-                <th class="descriptionbox center vmiddle" colspan="2">
+                <th class="descriptionbox text-center vmiddle" colspan="2">
                     <label for="side_select">
                         <?= I18N::translate('Right section blocks') ?>
                     </label>
@@ -31,7 +31,7 @@
         </thead>
         <tbody>
             <tr>
-                <td class="optionbox center vmiddle">
+                <td class="optionbox text-center vmiddle">
                     <a href="#" class="btn btn-link" onclick="<?= e('return move_up_block("main_select");') ?>" title="<?= I18N::translate('Move up') ?>">
                         <?= view('icons/arrow-up') ?>
                     </a>
@@ -57,7 +57,7 @@
                         <?php endforeach ?>
                     </select>
                 </td>
-                <td class="optionbox center vmiddle">
+                <td class="optionbox text-center vmiddle">
                     <a href="#" class="btn btn-link" onclick="<?= e('return move_left_right_block("available_select", "main_select");') ?>" title="<?= I18N::translate('Add') ?>">
                         <?= view('icons/arrow-left') ?>
                     </a>
@@ -71,7 +71,7 @@
                         <?php endforeach ?>
                     </select>
                 </td>
-                <td class="optionbox center vmiddle">
+                <td class="optionbox text-center vmiddle">
                     <a href="#" class="btn btn-link" onclick="<?= e('return move_left_right_block("available_select", "side_select");') ?>" title="<?= I18N::translate('Add') ?>">
                         <?= view('icons/arrow-right') ?>
                     </a>
@@ -85,7 +85,7 @@
                         <?php endforeach ?>
                     </select>
                 </td>
-                <td class="optionbox center vmiddle">
+                <td class="optionbox text-center vmiddle">
                     <a href="#" class="btn btn-link" onclick="<?= e('return move_up_block("side_select");') ?>" title="<?= I18N::translate('Move up') ?>">
                         <?= view('icons/arrow-up') ?>
                     </a>

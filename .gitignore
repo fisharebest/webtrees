@@ -1,7 +1,6 @@
 /.php_cs.cache
 /apidocs/
-/mix-manifest.json
+/public/mix-manifest.json
 /public/js/*.map
 /node_modules/
 /robots.txt
-/phpunit.xml.dist

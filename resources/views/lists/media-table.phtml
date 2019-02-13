@@ -88,17 +88,17 @@ $count_sources = DB::table('sources')
                 </td>
 
                 <!-- Count of linked individuals -->
-                <td class="center" data-sort="<?= $count_individuals[$media_object->xref()] ?? 0 ?>">
+                <td class="text-center" data-sort="<?= $count_individuals[$media_object->xref()] ?? 0 ?>">
                     <?= I18N::number($count_individuals[$media_object->xref()] ?? 0) ?>
                 </td>
 
                 <!-- Count of linked families -->
-                <td class="center" data-sort="<?= $count_families[$media_object->xref()] ?? 0 ?>">
+                <td class="text-center" data-sort="<?= $count_families[$media_object->xref()] ?? 0 ?>">
                     <?= I18N::number($count_families[$media_object->xref()] ?? 0) ?>
                 </td>
 
                 <!-- Count of sources -->
-                <td class="center" data-sort="<?= $count_sources[$media_object->xref()] ?? 0 ?>">
+                <td class="text-center" data-sort="<?= $count_sources[$media_object->xref()] ?? 0 ?>">
                     <?= I18N::number($count_sources[$media_object->xref()] ?? 0) ?>
                 </td>
 

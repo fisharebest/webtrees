@@ -228,7 +228,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
     {
         ob_start();
 
-        echo '<ul class="chart_common">';
+        echo '<ul class="wt-chart-descendants-list list-unstyled">';
         $this->printChildDescendancy($individual, $generations, $generations);
         echo '</ul>';
 

@@ -51,7 +51,7 @@ $count_sources = DB::table('sources')
                 </td>
 
                 <!-- Count of linked sources -->
-                <td class="center" data-sort="<?= $count_sources[$repository->xref()] ?? 0 ?>">
+                <td class="text-center" data-sort="<?= $count_sources[$repository->xref()] ?? 0 ?>">
                     <?= I18N::number($count_sources[$repository->xref()] ?? 0) ?>
                 </td>
 

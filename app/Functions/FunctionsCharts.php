@@ -48,7 +48,7 @@ class FunctionsCharts
         } else {
             $visibility = 'normal';
         }
-        echo '<td class="subheaders center" style="vertical-align: middle; text-indent: 0px; margin-top: 0px; white-space: nowrap; visibility: ', $visibility, ';">';
+        echo '<td class="subheaders text-center" style="vertical-align: middle; text-indent: 0px; margin-top: 0px; white-space: nowrap; visibility: ', $visibility, ';">';
         echo $personLabel;
         if ($daboville != '1' && $pid !== '' && $icon !== 'blank') {
             echo '<br>';
@@ -76,7 +76,7 @@ class FunctionsCharts
             $visibility = 'normal';
         }
 
-        echo '<td class="subheaders center" style="vertical-align: middle; text-indent: 0px; margin-top: 0px; white-space: nowrap; visibility: ', $visibility, ';">';
+        echo '<td class="subheaders text-center" style="vertical-align: middle; text-indent: 0px; margin-top: 0px; white-space: nowrap; visibility: ', $visibility, ';">';
         echo (string) $sosa;
         if ($sosa !== 1 && $pid !== '' && $icon !== '') {
             echo '<br>';
@@ -466,7 +466,7 @@ class FunctionsCharts
         bool   $show_cousins
     ) {
         echo '<hr>';
-        echo '<p class="family-break">';
+        echo '<p class="wt-family-break">';
         echo '<a name="', e($family->xref()), '"></a>';
         self::printFamilyParents($family, $sosa, $daboville, $parid, $gparid);
         echo '<br>';

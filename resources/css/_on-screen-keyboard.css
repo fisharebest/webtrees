@@ -1,0 +1,56 @@
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2019 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/*
+ * On-screen keyboard, for entering characters that are not on the keyboard
+ */
+.wt-osk {
+	position: fixed;
+	z-index: 1000;
+	top: 1rem;
+	display: none;
+}
+
+.wt-osk-keys {
+	background: #eee;
+	padding: 0.25rem;
+	font-size: larger;
+}
+
+.wt-osk-group {
+	display: inline-block;
+	margin: 0.25rem;
+	padding: 0.25rem 0;
+}
+
+.wt-osk-key {
+	background: #ddd;
+	border-radius: .25rem;
+	padding: 0.25rem;
+	cursor: pointer;
+}
+
+.wt-osk-key-shift {
+	color: #aaa;
+	font-size: smaller;
+}
+
+.wt-osk-keys.shifted .wt-osk-key {
+	color: #aaa;
+}
+
+.wt-osk-keys.shifted .wt-osk-key-shift {
+	color: #555;
+}

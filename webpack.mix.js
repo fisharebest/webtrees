@@ -48,10 +48,10 @@ mix
     .autoload({
         jquery: ["$", "jQuery"],
     })
+    .setPublicPath('public/')
     .sourceMaps()
     .js("resources/js/vendor.js", "public/js/vendor.min.js")
     .babel("resources/js/webtrees.js", "public/js/webtrees.min.js")
-    .copy("node_modules/@fortawesome/fontawesome-free/webfonts/*", "public/webfonts/")
     .copy("node_modules/leaflet/dist/images/*", "public/css/images/")
     .copy("node_modules/dejavu-fonts-ttf/ttf/DejaVuSans.ttf", "resources/fonts/")
     .postCss("resources/css/administration.css", "public/css/administration.min.css", postCssPlugins)

@@ -340,7 +340,7 @@ class ListController extends AbstractBaseController
                                 echo '</li>';
                             }
                             echo '</ul>';
-                            echo '<p class="center alpha_index">', implode(' | ', $list), '</p>';
+                            echo '<p class="text-center alpha_index">', implode(' | ', $list), '</p>';
                         }
                     }
                     if ($show === 'indi') {

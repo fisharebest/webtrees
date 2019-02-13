@@ -1,0 +1,187 @@
+<?php
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
+use Illuminate\Support\Collection;
+use Ramsey\Uuid\Uuid;
+
+/**
+ * @var Individual        $individual
+ * @var ModuleService     $module_service
+ * @var Collection|Menu[] $menus
+ */
+
+$module_service = app(ModuleService::class);
+
+$menus = $module_service->findByComponent('chart', $individual->tree(), Auth::user())->map(function (ModuleChartInterface $module) use ($individual): ?Menu {
+    return $module->chartBoxMenu($individual);
+})->filter();
+
+foreach ($individual->getSpouseFamilies() as $family) {
+    $menus[] = new Menu('<strong>' . I18N::translate('Family with spouse') . '</strong>', $family->url());
+    $spouse  = $family->getSpouse($individual);
+    if ($spouse && $spouse->canShow()) {
+        $menus->push(new Menu($spouse->getFullName(), $spouse->url()));
+    }
+    foreach ($family->getChildren() as $child) {
+        if ($child->canShow()) {
+            $menus->push(new Menu($child->getFullName(), $child->url()));
+        }
+    }
+}
+
+   // Do not show these facts in the expanded chart boxes.
+    $exclude = [
+        'ADDR',
+        'ALIA',
+        'ASSO',
+        'CHAN',
+        'CHIL',
+        'EMAIL',
+        'FAMC',
+        'FAMS',
+        'HUSB',
+        'NAME',
+        'NOTE',
+        'OBJE',
+        'PHON',
+        'RESI',
+        'RESN',
+        'SEX',
+        'SOUR',
+        'SSN',
+        'SUBM',
+        'TITL',
+        'URL',
+        'WIFE',
+        'WWW',
+        '_EMAIL',
+        '_TODO',
+        '_UID',
+        '_WT_OBJE_SORT',
+    ];
+
+
+/** @var Fact[] $all_facts */
+$all_facts = $individual->facts();
+foreach ($individual->getSpouseFamilies() as $family) {
+    foreach ($family->facts() as $fact) {
+        $all_facts[] = $fact;
+    }
+}
+Functions::sortFacts($all_facts);
+
+$all_facts = array_filter($all_facts, function (Fact $fact) use ($exclude): bool {
+    return !in_array($fact->getTag(), $exclude);
+});
+
+
+$id = Uuid::uuid4()->toString();
+
+/**
+ * @var Individual $individual
+ */
+?>
+<div class="wt-chart-box wt-chart-box-<?= strtolower($individual->getSex()) ?>" style="overflow: hidden;" data-xref="<?= e($individual->xref()) ?>" data-tree="<?= e($individual->tree()->name()) ?>">
+    <?php if ($individual->canShow() && $individual->tree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) : ?>
+        <div class="wt-chart-box-thumbnail float-left mr-1">
+            <?= $individual->displayImage(40, 50, 'crop', ['class' => 'wt-chart-box-thumbnail']) ?>
+        </div>
+    <?php endif ?>
+
+    <div class="wt-chart-box-extra float-right ml-1">
+        <div class="dropdown position-static wt-chart-box-zoom">
+            <a class="wt-chart-box-icon" href="#" role="button" id="chart-box-zoom-<?= $id ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div ><?= view('icons/zoom-in') ?></div>
+                <div class="d-none"><?= view('icons/zoom-out') ?></div>
+                <span class="sr-only"><?= I18N::translate('Links') ?></span>
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right wt-chart-box-dropdown wt-chart-box-zoom-dropdown" style="position: inherit" aria-labelledby="#chart-box-zoom-<?= $id ?>">
+                <?php foreach ($all_facts as $fact): ?>
+                    <?= $fact->summary() ?>
+                <?php endforeach ?>
+            </div>
+        </div>
+
+        <div class="dropdown position-static wt-chart-box-links">
+            <a class="wt-chart-box-icon" href="#" role="button" id="chart-box-menu-<?= $id ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="icon-pedigree" title="<?= I18N::translate('Links') ?>"></i>
+                <span class="sr-only"><?= I18N::translate('Links') ?></span>
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right wt-chart-box-dropdown wt-chart-box-links-dropdown" style="position: inherit" aria-labelledby="#chart-box-menu-<?= $id ?>">
+                <?php foreach ($menus as $menu): ?>
+                    <?= $menu->getMenuAsList() ?>
+                <?php endforeach ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="wt-chart-box-name font-weight-bold">
+        <a href="<?= e($individual->url()) ?>" class="wt-chart-box-name"><?= $individual->getFullName() ?></a>
+    </div>
+
+    <div class="wt-chart-box-name font-weight-bold">
+        <?= $individual->getAddName() ?>
+    </div>
+
+    <div class="wt-chart-box-lifespan">
+        <?= $individual->getLifeSpan() ?>
+    </div>
+
+    <div class="wt-chart-box-facts">
+        <div class="wt-chart-box-fact small">
+            <?php
+            $opt_tags = preg_split('/\W/', $individual->tree()->getPreference('CHART_BOX_TAGS'), 0, PREG_SPLIT_NO_EMPTY);
+            // Show BIRT or equivalent event
+
+            foreach (Gedcom::BIRTH_EVENTS as $birttag) {
+                if (!in_array($birttag, $opt_tags)) {
+                    $event = $individual->getFirstFact($birttag);
+                    if ($event instanceof Fact) {
+                        echo $event->summary();
+                        break;
+                    }
+                }
+            }
+            // Show optional events (before death)
+            foreach ($opt_tags as $key => $tag) {
+                if (!in_array($tag, Gedcom::DEATH_EVENTS)) {
+                    $event = $individual->getFirstFact($tag);
+                    if ($event instanceof Fact) {
+                        echo $event->summary();
+                        unset($opt_tags[$key]);
+                    }
+                }
+            }
+            // Show DEAT or equivalent event
+            foreach (Gedcom::DEATH_EVENTS as $deattag) {
+                $event = $individual->getFirstFact($deattag);
+                if ($event instanceof Fact) {
+                    echo $event->summary();
+                    if (in_array($deattag, $opt_tags)) {
+                        unset($opt_tags[array_search($deattag, $opt_tags)]);
+                    }
+                    break;
+                }
+            }
+            // Show remaining optional events (after death)
+            foreach ($opt_tags as $tag) {
+                $event = $individual->getFirstFact($tag);
+                if ($event instanceof Fact) {
+                    echo $event->summary();
+                }
+            }
+            ?>
+        </div>
+    </div>
+</div>

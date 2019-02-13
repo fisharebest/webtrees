@@ -196,7 +196,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
 
         $html = ob_get_clean();
 
-        $html = '<ul class="chart_common">' . $html . '</ul>';
+        $html = '<ul class="wt-ancestors-chart-list list-unstyled">' . $html . '</ul>';
 
         return new Response($html);
     }
@@ -212,7 +212,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
      */
     protected function printChildAscendancy(Individual $individual, $sosa, $generations)
     {
-        echo '<li class="wt-ancestors-chart-list-item">';
+        echo '<li class="wt-chart-ancestors-list-item">';
         echo '<table><tbody><tr><td>';
         if ($sosa === 1) {
             echo '<img src="', e(asset('css/images/spacer.png')), '" height="3" width="15"></td><td>';
@@ -225,7 +225,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
         if ($sosa > 1) {
             echo '<a href="' . e($this->chartUrl($individual, ['generations' => $generations, 'chart_style' => self::CHART_STYLE_LIST])) . '" title="' . strip_tags($this->chartTitle($individual)) . '">' . view('icons/arrow-down') . '<span class="sr-only">' . $this->chartTitle($individual) . '</span></a>';
         }
-        echo '</td><td class="details1">&nbsp;<span class="person_box' . ($sosa === 1 ? 'NN' : ($sosa % 2 ? 'F' : '')) . '">', I18N::number($sosa), '</span> ';
+        echo '</td><td class="details1">&nbsp;<span class="wt-chart-box wt-chart-box-' . ($sosa === 1 ? strtolower($individual->getSex()) : ($sosa % 2 ? 'f' : 'm')) . '">', I18N::number($sosa), '</span> ';
         echo '</td><td class="details1">&nbsp;', FunctionsCharts::getSosaName($sosa), '</td>';
         echo '</tr></tbody></table>';
 
@@ -235,15 +235,16 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
             // Marriage details
             echo '<span class="details1">';
             echo '<img src="', e(asset('css/images/spacer.png')), '" height="2" width="15"><a href="#" onclick="return expand_layer(\'sosa_', $sosa, '\');" class="top"><i id="sosa_', $sosa, '_img" class="icon-minus" title="', I18N::translate('View this family'), '"></i></a>';
-            echo ' <span class="person_box">', I18N::number($sosa * 2), '</span> ', I18N::translate('and');
-            echo ' <span class="person_boxF">', I18N::number($sosa * 2 + 1), '</span>';
+            echo ' <span class="wt-chart-box wt-chart-box-m">', I18N::number($sosa * 2), '</span> ';
+            echo I18N::translate('and');
+            echo ' <span class="wt-chart-box wt-chart-box-f">', I18N::number($sosa * 2 + 1), '</span>';
             if ($family->canShow()) {
                 foreach ($family->facts(Gedcom::MARRIAGE_EVENTS) as $fact) {
                     echo ' <a href="', e($family->url()), '" class="details1">', $fact->summary(), '</a>';
                 }
             }
             echo '</span>';
-            echo '<ul class="wt-ancestors-chart-list" id="sosa_', $sosa, '">';
+            echo '<ul class="wt-chart-ancestors-list list-unstyled" id="sosa_', $sosa, '">';
             if ($family->getHusband()) {
                 $this->printChildAscendancy($family->getHusband(), $sosa * 2, $generations - 1);
             }

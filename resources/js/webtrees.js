@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2018 webtrees development team
+ * Copyright (C) 2019 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -777,58 +777,6 @@ function autocomplete(selector)
         });
     });
 }
-
-/* Show / Hide event data for boxes used on charts and elsewhere */
-$('body').on('click', '.iconz', function (e) {
-    e.stopPropagation();
-
-    var wrapper = $(this).closest('.person_box_template'),
-    inout = wrapper.find('.inout'),
-    inout2 = wrapper.find('.inout2'),
-    namedef = wrapper.find('.namedef'),
-    basestyle = wrapper.attr('class').match(/(box-style[0-2])/)[1];
-
-    function showDetails()
-    {
-        wrapper.parent().css('z-index', 100);
-        toggleExpanded();
-        namedef.addClass('nameZoom');
-        inout2.hide(0, function () {
-            inout.slideDown();
-        });
-    }
-
-    function hideDetails()
-    {
-        inout.slideUp(function () {
-            inout2.show(0);
-            namedef.removeClass('nameZoom');
-            toggleExpanded();
-            wrapper.parent().css('z-index', '');
-        });
-    }
-
-    function toggleExpanded()
-    {
-        wrapper.toggleClass(function () {
-            return basestyle + ' ' + basestyle + '-expanded';
-        });
-    }
-
-    if (!inout.text().length) {
-        wrapper.css('cursor', 'progress');
-        inout.load('index.php', {route: 'expand-chart-box', xref: wrapper.data('xref'), ged: wrapper.data('tree')}, function () {
-            wrapper.css('cursor', '');
-        });
-    }
-
-    if (wrapper.hasClass(basestyle)) {
-        showDetails();
-    } else {
-        hideDetails();
-    }
-    $('.iconz-zoom-icon', wrapper).toggleClass('d-none');
-});
 
 /**
  * Insert text at the current cursor position in an input field.

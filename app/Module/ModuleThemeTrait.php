@@ -110,43 +110,7 @@ trait ModuleThemeTrait
      */
     public function individualBox(Individual $individual): string
     {
-        $person_box_class = self::PERSON_BOX_CLASSES[$individual->getSex()];
-
-        if ($individual->canShow() && $individual->tree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
-            $thumbnail = $individual->displayImage(40, 50, 'crop', []);
-        } else {
-            $thumbnail = '';
-        }
-
-        $content = '<span class="namedef name1">' . $individual->getFullName() . '</span>';
-        $icons   = '';
-        if ($individual->canShow()) {
-            $content = '<a href="' . e($individual->url()) . '">' . $content . '</a>' .
-                '<div class="namedef name1">' . $individual->getAddName() . '</div>';
-            $icons   = '<div class="icons">' .
-                '<span class="iconz" title="' . I18N::translate('Zoom in/out on this box.') . '">' .
-                '<span class="iconz-zoom-icon">' . view('icons/zoom-in') . '</span>' .
-                '<span class="iconz-zoom-icon d-none">' . view('icons/zoom-out') . '</span>' .
-                '</span>' .
-                '<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
-                '<ul class="' . $person_box_class . '">' . implode('', array_map(function (Menu $menu): string {
-                    return $menu->bootstrap4();
-                }, $this->individualBoxMenu($individual))) . '</ul>' .
-                '</div>' .
-                '</div>' .
-                '</div>';
-        }
-
-        return
-            '<div data-xref="' . e($individual->xref()) . '" data-tree="' . e($individual->tree()->name()) . '" class="person_box_template ' . $person_box_class . ' box-style1" style="width: ' . $this->parameter('chart-box-x') . 'px; height: ' . $this->parameter('chart-box-y') . 'px">' .
-            $icons .
-            '<div class="chart_textbox" style="max-height:' . $this->parameter('chart-box-y') . 'px;">' .
-            $thumbnail .
-            $content .
-            '<div class="inout2 details1">' . $this->individualBoxFacts($individual) . '</div>' .
-            '</div>' .
-            '<div class="inout"></div>' .
-            '</div>';
+        return view('chart-box', ['individual' => $individual]);
     }
 
     /**
@@ -156,7 +120,7 @@ trait ModuleThemeTrait
      */
     public function individualBoxEmpty(): string
     {
-        return '<div class="person_box_template person_boxNN box-style1" style="width: ' . $this->parameter('chart-box-x') . 'px; min-height: ' . $this->parameter('chart-box-y') . 'px"></div>';
+        return '<div class="wt-chart-box"></div>';
     }
 
     /**
@@ -168,40 +132,7 @@ trait ModuleThemeTrait
      */
     public function individualBoxLarge(Individual $individual): string
     {
-        $person_box_class = self::PERSON_BOX_CLASSES[$individual->getSex()];
-
-        if ($individual->tree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
-            $thumbnail = $individual->displayImage(40, 50, 'crop', []);
-        } else {
-            $thumbnail = '';
-        }
-
-        $content = '<span class="namedef name1">' . $individual->getFullName() . '</span>';
-        $icons   = '';
-        if ($individual->canShow()) {
-            $content = '<a href="' . e($individual->url()) . '">' . $content . '</a>' .
-                '<div class="namedef name2">' . $individual->getAddName() . '</div>';
-            $icons   = '<div class="icons">' .
-                '<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
-                '<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
-                '<ul class="' . $person_box_class . '">' . implode('', array_map(function (Menu $menu): string {
-                    return $menu->bootstrap4();
-                }, $this->individualBoxMenu($individual))) . '</ul>' .
-                '</div>' .
-                '</div>' .
-                '</div>';
-        }
-
-        return
-            '<div data-xref="' . e($individual->xref()) . '" data-tree="' . e($individual->tree()->name()) . '" class="person_box_template ' . $person_box_class . ' box-style2">' .
-            $icons .
-            '<div class="chart_textbox" style="max-height:' . $this->parameter('chart-box-y') . 'px;">' .
-            $thumbnail .
-            $content .
-            '<div class="inout2 details2">' . $this->individualBoxFacts($individual) . '</div>' .
-            '</div>' .
-            '<div class="inout"></div>' .
-            '</div>';
+        return $this->individualBox($individual);
     }
 
     /**
@@ -213,25 +144,7 @@ trait ModuleThemeTrait
      */
     public function individualBoxSmall(Individual $individual): string
     {
-        $person_box_class = self::PERSON_BOX_CLASSES[$individual->getSex()];
-
-        if ($individual->tree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
-            $thumbnail = $individual->displayImage(40, 50, 'crop', []);
-        } else {
-            $thumbnail = '';
-        }
-
-        return
-            '<div data-xref="' . $individual->xref() . '" class="person_box_template ' . $person_box_class . ' iconz box-style0" style="width: ' . $this->parameter('compact-chart-box-x') . 'px; min-height: ' . $this->parameter('compact-chart-box-y') . 'px">' .
-            '<div class="compact_view">' .
-            $thumbnail .
-            '<a href="' . e($individual->url()) . '">' .
-            '<span class="namedef name0">' . $individual->getFullName() . '</span>' .
-            '</a>' .
-            '<div class="inout2 details0">' . $individual->getLifeSpan() . '</div>' .
-            '</div>' .
-            '<div class="inout"></div>' .
-            '</div>';
+        return $this->individualBox($individual);
     }
 
     /**
@@ -241,7 +154,7 @@ trait ModuleThemeTrait
      */
     public function individualBoxSmallEmpty(): string
     {
-        return '<div class="person_box_template person_boxNN box-style1" style="width: ' . $this->parameter('compact-chart-box-x') . 'px; min-height: ' . $this->parameter('compact-chart-box-y') . 'px"></div>';
+        return '<div class="wt-chart-box"></div>';
     }
 
     /**

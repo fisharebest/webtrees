@@ -3,7 +3,7 @@
 <?php if ($individual === null) : ?>
     <?= view('icons/arrow-down') ?>
 <?php else : ?>
-    <a href="<?= e(route('compact-tree', ['xref' => $individual->xref(), 'ged' => $individual->tree()->name()])) ?>" title="<?= I18N::translate('Compact tree of %s', strip_tags($individual->getFullName())) ?>">
+    <a href="<?= e($module->chartUrl($individual)) ?>" title="<?= strip_tags($module->chartTitle($individual)) ?>">
         <?= view('icons/arrow-down') ?>
     </a>
 <?php endif;

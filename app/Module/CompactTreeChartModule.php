@@ -138,6 +138,7 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
 
         $html = view('modules/compact-chart/chart', [
             'ancestors' => $ancestors,
+            'module'    => $this,
         ]);
 
         return new Response($html);

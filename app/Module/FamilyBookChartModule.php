@@ -514,7 +514,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
         $this->printDescendency(1, $person);
         echo '</td><td class="align-middle">';
         $this->printPersonPedigree($person, 1);
-        echo '</td></tr></table><br><br><hr class="family-break"><br><br>';
+        echo '</td></tr></table><br><br><hr class="wt-family-break"><br><br>';
         foreach ($person->getSpouseFamilies() as $family) {
             foreach ($family->getChildren() as $child) {
                 $this->printFamilyBook($child, $descent_steps - 1);

@@ -101,22 +101,22 @@ $count_notes = DB::table('other')
                 </td>
 
                 <!-- Count of linked individuals -->
-                <td class="center" data-sort="<?= $count_individuals[$source->xref()] ?? 0 ?>">
+                <td class="text-center" data-sort="<?= $count_individuals[$source->xref()] ?? 0 ?>">
                     <?= I18N::number($count_individuals[$source->xref()] ?? 0) ?>
                 </td>
 
                 <!-- Count of linked families -->
-                <td class="center" data-sort="<?= $count_families[$source->xref()] ?? 0 ?>">
+                <td class="text-center" data-sort="<?= $count_families[$source->xref()] ?? 0 ?>">
                     <?= I18N::number($count_families[$source->xref()] ?? 0) ?>
                 </td>
 
                 <!-- Count of linked media objects -->
-                <td class="center" data-sort="<?= $count_media[$source->xref()] ?? 0 ?>">
+                <td class="text-center" data-sort="<?= $count_media[$source->xref()] ?? 0 ?>">
                     <?= I18N::number($count_media[$source->xref()] ?? 0) ?>
                 </td>
 
                 <!-- Count of linked notes -->
-                <td class="center" data-sort="<?= $count_notes[$source->xref()] ?? 0 ?>">
+                <td class="text-center" data-sort="<?= $count_notes[$source->xref()] ?? 0 ?>">
                     <?= I18N::number($count_notes[$source->xref()] ?? 0) ?>
                 </td>
 

@@ -790,7 +790,13 @@ class Individual extends GedcomRecord
      */
     public static function sexImage($sex, $size = 'small'): string
     {
-        return '<i class="icon-sex_' . strtolower($sex) . '_' . ($size == 'small' ? '9x9' : '15x15') . '"></i>';
+        $image = view('icons/sex-' . $sex);
+
+        if ($size === 'small') {
+            $image = '<small>' . $image . '</small>';
+        }
+
+        return $image;
     }
 
     /**

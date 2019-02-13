@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2018 webtrees development team
+ * Copyright (C) 2019 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -643,164 +643,47 @@ table {
 .wt-individual-silhouette {
 }
 
-.wt-individual-silhouette-F {
+.wt-individual-silhouette-f {
 }
 
-.wt-individual-silhouette-M {
-}
-
-/*
- * Ancestors chart
- *
- * wt-chart, wt-ancestors-chart
- * +---wt-ancestors-chart-list
- *     +---wt-ancestors-chart-list-item
- */
-.wt-ancestors-chart-list {
+.wt-individual-silhouette-m {
 }
 
 /*
- * Compact chart
+ * Chart-boxes are used to build the various charts.
  *
- * wt-chart, wt-compact-chart
+ * wt-chart-box
+ * +--- wt-chart-box-thumbnail
+ * +--- wt-chart-box-extra
+ *      +--- wt-chart-box-zoom
+ *           +--- wt-chart-box-icon
+ *           +--- wt-chart-box-dropdown wt-chart-box-zoom-dropdown
+ *      +--- wt-chart-box-links
+ *           +--- wt-chart-box-icon
+ *           +--- wt-chart-box-dropdown wt-chart-box-links-dropdown
+ * +--- wt-chart-box-name
+ * +--- wt-chart-box-lifespan
+ * +--- wt-chart-box-facts
+ *     +--- wt-chart-box-fact
  */
-
-.wt-ancestors-chart-list-item {
+.wt-chart-box,
+.wt-chart-box-menu {
 }
 
-/*
- * Descendants chart
- *
- * wt-chart, wt-descendants-chart
- * +---wt-descendants-chart-list
- *     +---wt-descendants-chart-list-item
- */
-.wt-descendants-chart-list {
+.wt-chart-box {
 }
 
-.wt-descendants-chart-list-item {
+.wt-chart-box-f,
+.wt-chart-box-f .wt-chart-box-dropdown {
 }
 
-/*
- * Family book chart
- *
- * wt-chart, wt-family-book-chart
- */
-
-/*
- * Fan chart
- *
- * wt-chart, wt-fan-chart
- */
-
-/*
- * Hourglass chart
- *
- * wt-chart, wt-hourglass-chart
- */
-
-/*
- * Hourglass chart
- *
- * wt-chart, wt-interactive-tree
- */
-
-/*
- * Lifespans chart
- *
- * wt-chart, wt-lifespans-chart
- */
-
-/*
- * Pedigree chart
- *
- * wt-chart, wt-pedigree-chart
- */
-
-/*
- * Pedigree map
- *
- * wt-chart, wt-pedigree-map
- */
-
-/*
- * Relationships chart
- *
- * wt-chart, wt-relationships-chart
- */
-
-/*
- * Statistics chart
- *
- * wt-chart, wt-statistics-chart
- */
-
-/*
- * Timeline chart
- *
- * wt-chart, wt-timeline-chart
- */
-
-/*
- * Family list and individual list
- *
- * wt-page-options
- * +---wt-initials-list, wt-initials-list-surnames
- *     +---wt-initial-list-item
- *         +---wt-initial
- *         +---wt-initial, active
- * +---wt-initials-list, wt-initials-list-given-names
- *     +---wt-initial-list-item
- *         +---wt-initial
- *         +---wt-initial, active
- * wt-page-content
- * +---wt-list, wt-{family,individual}-list
- */
-
-.wt-initials-list {
+.wt-chart-box-m,
+.wt-chart-box-m .wt-chart-box-dropdown {
 }
 
-.wt-initials-list-item {
+.wt-chart-box-name {
+	color: #555555;
 }
-
-.wt-initial {
-}
-
-/*
- * Media object list
- *
- * wt-list, wt-media-list
- */
-
-/*
- * Note object list
- *
- * wt-list, wt-note-list
- */
-
-/*
- * Source list
- *
- * wt-list, wt-source-list
- */
-
-/*
- * Repository list
- *
- * wt-list, wt-repository-list
- */
-
-/*
- * Branches list
- *
- * wt-branches-page
- */
-
-/*
- * Place hierarchy
- *
- * wt-place-hierarchy-page
- */
 
 /*
  * Calendar
@@ -821,10 +704,6 @@ table {
  */
 
 /* ios on click workaround */
-.iconz {
-	cursor: pointer;
-}
-
 a {
 	color: #333;
 	text-decoration: none;
@@ -884,34 +763,6 @@ img.block,
 
 hr {
 	margin-top: 5px;
-}
-
-.person_box, .action_header {
-	background-color: #ddf;
-	border: 1px solid #ccc;
-}
-
-.person_boxF, .action_headerF {
-	background-color: #fdd;
-	border: 1px solid #ccc;
-}
-
-.person_boxNN {
-	background-color: #fff;
-	border: 1px solid #ccc;
-	padding: 3px;
-}
-
-/* families tab person box */
-#relatives_content .person_box > .person_box,
-#relatives_content .person_boxF > .person_boxF,
-#relatives_content .person_boxNN > .person_boxNN {
-	border: 0;
-	min-height: 50px;
-}
-
-.center {
-	text-align: center;
 }
 
 table.center {
@@ -1363,10 +1214,6 @@ a:hover .nameZoom {
 	text-align: center;
 }
 
-.center2 {
-	text-align: center;
-}
-
 .gchart {
 	border: solid #999 1px;
 }
@@ -1380,10 +1227,6 @@ a:hover .nameZoom {
 #facts_content dd {
 	float: left;
 	width: 70%;
-}
-
-.clearfloat {
-	clear: both;
 }
 
 /* this keeps the tag color the same when it is a link as when not */
@@ -1411,45 +1254,6 @@ a:hover .nameZoom {
 
 #pending .indent {
 	padding: 0;
-}
-
-/* ======== Person box ======= */
-/* Box styles are
-	0 compact view
-	1 normal view - small box
-	2 normal view - large box
-*/
-.box-style0 {
-	cursor: n-resize;
-}
-
-.box-style0-expanded {
-	cursor: n-resize;
-}
-
-.person_box_template .namedef i[class^="icon-sex"] {
-	margin-left: 3px;
-}
-
-.person_box_template .icons {
-}
-
-.person_box_template .inout {
-	clear: both;
-	display: none;
-}
-
-.person_box_template img,
-.person_box_template a.gallery {
-	float: left;
-	height: 50px;
-	margin: 0 3px 0 0;
-	max-width: 60px;
-	width: auto;
-}
-
-.person_box_template i[class^="icon-silhouette"] {
-	float: left;
 }
 
 /* --- reportengine.php --- */
@@ -1714,14 +1518,6 @@ a:hover .nameZoom {
 }
 
 /* ==== Favourites block ===== */
-.blockcontent .person_box_template .details2 {
-	min-height: 40px;
-}
-
-.blockcontent [class*='box-style2'] {
-	margin: 5px 0;
-}
-
 .add_fav_head {
 	font-weight: 900;
 	margin: 5px 0;
@@ -1822,12 +1618,6 @@ div.faq_body {
 	font-size: 1.0em;
 }
 
-#indi_header h3.person_box,
-#indi_header h3.person_boxF,
-#indi_header h3.person_boxNN {
-	border: 1px solid #999;
-}
-
 #indi_header h3 .header_age {
 	padding: 5px 0 5px 5px;
 	float: right;
@@ -1915,7 +1705,7 @@ div.faq_body {
 	clear: both;
 }
 
-/* ===== markdown formatting ===== */
+/* markdown formatting */
 
 .markdown {
 	/* Tables and pre-formatted text can break the layout. */
@@ -2298,18 +2088,18 @@ div.faq_body {
 
 /* ====== Charts Styles ======== */
 #people label {
-	display:block;
+	display: block;
 }
 
 /* Ancestry chart */
-.wt-ancestors-chart-list {
+.wt-chart-ancestors-list {
 	background: transparent url(images/vline.png) left top repeat-y;
 	margin: 0 0 0 15px;
 	padding: 0;
 	display: block;
 }
 
-.wt-ancestors-chart-list-item {
+.wt-chart-ancestors-list-item {
 	margin: 5px 0;
 }
 
@@ -2939,49 +2729,6 @@ i[class*="wt-icon-media"] {
 	background-image: url(colors/images/user_add.png);
 }
 
-/*
- * Icons for file types
- *
- * Icons made by Zlatko Najdenovski
- * https://www.flaticon.com/packs/file-formats-3"
- * Creative Commons BY 3.0
- */
-.wt-mime {
-}
-
-.wt-mime-application-pdf {
-}
-
-.wt-mime-audio {
-}
-
-.wt-mime-text {
-}
-
-.wt-mime-text-html {
-}
-
-.wt-mime-video {
-}
-
-/*
- * On-screen keyboard, for entering characters that are not on the keyboard
- */
-.wt-osk {
-}
-.wt-osk-keys {
-}
-.wt-osk-group {
-}
-.wt-osk-key {
-}
-.wt-osk-key-shift {
-}
-.wt-osk-keys.shifted .wt-osk-key {
-}
-.wt-osk-keys.shifted .wt-osk-key-shift {
-}
-
 /* Census assistant */
 .wt-census-assistant-form-control:focus {
 }
@@ -3026,6 +2773,7 @@ i[class*="wt-icon-media"] {
 .select2-container .select2-selection--single .select2-selection__rendered {
 	padding-left: 2px;
 }
+
 .select2-selection--single .NAME {
 	padding-left: 4px;
 }
@@ -3041,104 +2789,77 @@ i[class*="wt-icon-media"] {
  */
 
 /* Ascentors */
-.wt-ancestors-chart .linea1 {margin-bottom: 4px;}
-.wt-ancestors-chart .linea2 {margin-bottom: 7px;}
-.wt-ancestors-chart .linea3 {margin-bottom: 4px;}
-.wt-ancestors-chart .linea4 {margin-bottom: 7px;}
-.wt-ancestors-chart .linea5 {vertical-align: top;}
+.wt-chart-ancestors .linea1 {
+	margin-bottom: 4px;
+}
+
+.wt-chart-ancestors .linea2 {
+	margin-bottom: 7px;
+}
+
+.wt-chart-ancestors .linea3 {
+	margin-bottom: 4px;
+}
+
+.wt-chart-ancestors .linea4 {
+	margin-bottom: 7px;
+}
+
+.wt-chart-ancestors .linea5 {
+	vertical-align: top;
+}
 
 /* Descendants */
-.wt-descendants-chart .lined1 {margin-bottom: 4px;}
-.wt-descendants-chart .lined2 {margin-bottom: 7px;}
-.wt-descendants-chart .lined3 {margin-bottom: 4px;}
-.wt-descendants-chart .lined4 {margin-bottom: 7px;}
-.wt-descendants-chart .linea5 {vertical-align: top;}
+.wt-chart-descendants .lined1 {
+	margin-bottom: 4px;
+}
+
+.wt-chart-descendants .lined2 {
+	margin-bottom: 7px;
+}
+
+.wt-chart-descendants .lined3 {
+	margin-bottom: 4px;
+}
+
+.wt-chart-descendants .lined4 {
+	margin-bottom: 7px;
+}
+
+.wt-chart-descendants .linea5 {
+	vertical-align: top;
+}
 
 /* Family book */
-.linef1 {margin-bottom: 3px;}
-.linef2 {margin-bottom: 3px;}
-.linef3 {margin-bottom: 7px;}
+.linef1 {
+	margin-bottom: 3px;
+}
+
+.linef2 {
+	margin-bottom: 3px;
+}
+
+.linef3 {
+	margin-bottom: 7px;
+}
 
 /* Hourglass */
-.lineh1 {margin-bottom: 4px;}
-.lineh2 {margin-bottom: 4px;}
-.lineh3 {margin-bottom: 7px;}
-
-/*
- * Ancestors chart
- *
- * wt-chart, wt-ancestors-chart
- * +---wt-ancestors-chart-list
- *     +---wt-ancestors-chart-list-item
- */
-.wt-ancestors-chart-list {
+.lineh1 {
+	margin-bottom: 4px;
 }
 
-.wt-ancestors-chart .family-break {
-	page-break-before: always;
+.lineh2 {
+	margin-bottom: 4px;
 }
 
-/*
- * Compact chart
- *
- * wt-chart, wt-compact-chart
- */
-
-.wt-ancestors-chart-list-item {
-	list-style: none outside none;
-}
-
-.wt-ancestors-chart .person_box_template {
-	line-height: 1.0;
-}
-
-/*
- * Descendants chart
- *
- * wt-chart, wt-descendants-chart
- * +---wt-descendants-chart-list
- *     +---wt-descendants-chart-list-item
- */
-.wt-descendants-chart-list {
-}
-
-.wt-descendants-chart-list-item {
-	list-style: none outside none;
-}
-
-#descendancy_chart .person_box_template, .wt-descendants-chart .person_box_template {
-	line-height: 1.0;
-}
-
-.wt-descendants-chart .family-break {
-	page-break-before: always;
-}
-
-/*
- * Family book chart
- *
- * wt-chart, wt-family-book-chart
- */
-.wt-family-book-chart .person_box_template {
-	line-height: 1.0;
-}
-
-.wt-family-book-chart hr {
-	page-break-after: always;
-}
-/*
- * Hourglass chart
- *
- * wt-chart, wt-hourglass-chart
- */
-.hourglassChart .person_box_template {
-	line-height: 1.0;
+.lineh3 {
+	margin-bottom: 7px;
 }
 
 /*
  * Pedigree chart
  *
- * wt-chart, wt-pedigree-chart
+ * wt-chart, wt-chart-pedigree
  */
 
 #pedigree_chart {
@@ -3148,10 +2869,6 @@ i[class*="wt-icon-media"] {
 
 #pedigree_canvas {
 	z-index: -1000;
-}
-
-.wt-pedigree-chart .person_box_template {
-	line-height: 1.0;
 }
 
 #childbox-pedigree {
@@ -3174,18 +2891,18 @@ i[class*="wt-icon-media"] {
 	z-index: 9999;
 }
 
-.wt-pedigree-chart, .wt-hourglass-chart {
+.wt-chart-pedigree, .wt-chart-hourglass {
 	overflow-y: auto;
 }
 
-.wt-pedigree-chart .spacer {
+.wt-chart-pedigree .spacer {
 	background-image: url(images/spacer.png);
-	height:           20px;
-	width:            1px;
+	height: 20px;
+	width: 1px;
 }
 
 #pedigree-page .shadow {
-	box-shadow: 0 0 0!important;  /* override vendor css shadow  */
+	box-shadow: 0 0 0 !important; /* override vendor css shadow  */
 }
 
 #childarrow,
@@ -3202,17 +2919,6 @@ i[class*="wt-icon-media"] {
 #childbox-pedigree a.name1 {
 	display: block;
 	margin-left: 5px;
-}
-
-/*
- * Relationships chart
- *
- * wt-chart, wt-relationships-chart
- */
-.wt-relationship-chart .person_box_template {
-	line-height: 1.0;
-}
-.vline-text, .hline-text {	font-size: 0.7rem;
 }
 
 /*
@@ -3246,6 +2952,7 @@ i[class*="wt-icon-media"] {
 	margin: 20px;
 	text-align: center;
 }
+
 .clipping-cart .wt-page-options {
 	max-width: 25rem;
 }

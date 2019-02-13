@@ -38,7 +38,7 @@
             <!-- Individual images -->
             <div class="col-sm-3">
                 <?php if (empty($individual_media)) : ?>
-                    <i class="wt-individual-silhouette wt-individual-silhouette-<?= $individual->getSex() ?>"></i>
+                    <i class="wt-individual-silhouette wt-individual-silhouette-<?= strtolower($individual->getSex()) ?>"></i>
                 <?php elseif (count($individual_media) === 1) : ?>
                     <?= $individual_media[0]->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
                 <?php else : ?>

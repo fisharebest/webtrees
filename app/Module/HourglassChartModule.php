@@ -323,7 +323,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
 
         // For the root individual, print a down arrow that allows changing the root of tree
         if ($show_menu && $generation == 1) {
-            echo '<div class="center" id="childarrow" style="position:absolute; width:', app()->make(ModuleThemeInterface::class)->parameter('chart-box-x'), 'px;">';
+            echo '<div class="text-center" id="childarrow" style="position:absolute; width:', app()->make(ModuleThemeInterface::class)->parameter('chart-box-x'), 'px;">';
             echo '<a href="#" title="' . I18N::translate('Family') . '" id="spouse-child-links">' . view('icons/arrow-down') . '</a>';
             echo '<div id="childbox">';
             echo '<table cellspacing="0" cellpadding="0" border="0" class="person_box"><tr><td> ';

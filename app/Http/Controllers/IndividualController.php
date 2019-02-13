@@ -201,40 +201,6 @@ class IndividualController extends AbstractBaseController
     }
 
     /**
-     * Show additional details for a chart box.
-     *
-     * @param Request $request
-     * @param Tree    $tree
-     *
-     * @return Response
-     */
-    public function expandChartBox(Request $request, Tree $tree): Response
-    {
-        $xref       = $request->get('xref', '');
-        $individual = Individual::getInstance($xref, $tree);
-
-        Auth::checkIndividualAccess($individual, false);
-
-        $facts = $individual->facts();
-        foreach ($individual->getSpouseFamilies() as $family) {
-            foreach ($family->facts() as $fact) {
-                $facts[] = $fact;
-            }
-        }
-        Functions::sortFacts($facts);
-
-        $facts = array_filter($facts, function (Fact $fact): bool {
-            return !in_array($fact->getTag(), self::EXCLUDE_CHART_FACTS);
-        });
-
-        $html = view('expand-chart-box', [
-            'facts' => $facts,
-        ]);
-
-        return new Response($html);
-    }
-
-    /**
      * Count the (non-pending-delete) name records for an individual.
      *
      * @param Individual $individual
@@ -329,10 +295,10 @@ class IndividualController extends AbstractBaseController
             }
         }
         if (strpos($fact->gedcom(), "\n2 SOUR") !== false) {
-            echo '<div id="indi_sour" class="clearfloat">', FunctionsPrintFacts::printFactSources($tree, $fact->gedcom(), 2), '</div>';
+            echo '<div id="indi_sour" class="clearfix">', FunctionsPrintFacts::printFactSources($tree, $fact->gedcom(), 2), '</div>';
         }
         if (strpos($fact->gedcom(), "\n2 NOTE") !== false) {
-            echo '<div id="indi_note" class="clearfloat">', FunctionsPrint::printFactNotes($tree, $fact->gedcom(), 2), '</div>';
+            echo '<div id="indi_note" class="clearfix">', FunctionsPrint::printFactNotes($tree, $fact->gedcom(), 2), '</div>';
         }
         $content = ob_get_clean();
 

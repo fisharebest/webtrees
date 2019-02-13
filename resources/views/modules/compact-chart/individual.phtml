@@ -1,6 +1,8 @@
 <?php if ($individual === null) : ?>
-    <div class="h-100 person_boxNN person_box_template">&nbsp;</div>
+    <div class="h-100 wt-chart-box">&nbsp;</div>
 <?php else : ?>
+    <?= view('chart-box', ['individual' => $individual]) ?>
+<!--
     <div class="h-100 person_box<?= ['M' => '', 'F' => 'F', 'U' => 'NN'][$individual->getSex()]?> person_box_template">
         <a href="<?= e($individual->url()) ?>">
             <?= $individual->getFullName() ?>
@@ -9,4 +11,5 @@
             <?= $individual->getLifeSpan() ?>
         </div>
     </div>
+-->
 <?php endif ?>
