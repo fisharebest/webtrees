@@ -116,14 +116,30 @@ class ChartNoChildrenFamilies extends AbstractGoogle
             ];
         }
 
+        $chart_title   = I18N::translate('Number of families without children');
+        $chart_options = [
+            'title' => $chart_title,
+            'subtitle' => '',
+            'legend' => [
+                'position'  => 'none',
+            ],
+            'vAxis' => [
+                'title' => I18N::translate('Total families'),
+            ],
+            'hAxis' => [
+                'title' => I18N::translate('Century'),
+            ],
+            'colors' => [
+                '#84beff'
+            ],
+        ];
+
         return view(
             'statistics/other/charts/column',
             [
-                'data'        => $data,
-                'colors'      => ['#84beff'],
-                'chart_title' => I18N::translate('Number of families without children'),
-                'hAxis_title' => I18N::translate('Century'),
-                'vAxis_title' => I18N::translate('Total families'),
+                'data'          => $data,
+                'chart_options' => $chart_options,
+                'chart_title'   => $chart_title,
             ]
         );
     }

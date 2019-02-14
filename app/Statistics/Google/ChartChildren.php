@@ -91,14 +91,30 @@ class ChartChildren extends AbstractGoogle
             ];
         }
 
+        $chart_title   = I18N::translate('Average number of children per family');
+        $chart_options = [
+            'title' => $chart_title,
+            'subtitle' => '',
+            'legend' => [
+                'position'  => 'none',
+            ],
+            'vAxis' => [
+                'title' => I18N::translate('Number of children'),
+            ],
+            'hAxis' => [
+                'title' => I18N::translate('Century'),
+            ],
+            'colors' => [
+                '#84beff'
+            ],
+        ];
+
         return view(
             'statistics/other/charts/column',
             [
-                'data'        => $data,
-                'colors'      => ['#84beff'],
-                'chart_title' => I18N::translate('Average number of children per family'),
-                'hAxis_title' => I18N::translate('Century'),
-                'vAxis_title' => I18N::translate('Number of children'),
+                'data'          => $data,
+                'chart_options' => $chart_options,
+                'chart_title'   => $chart_title,
             ]
         );
     }

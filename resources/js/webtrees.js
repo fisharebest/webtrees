@@ -858,6 +858,13 @@ function drawColumnChart(elementId, data, options)
     var defaults = {
         title: '',
         subtitle: '',
+        titleTextStyle: {
+            color: '#757575',
+            fontName: 'Roboto',
+            fontSize: '16px',
+            bold: false,
+            italic: false
+        },
         height: '100%',
         width: '100%',
         vAxis: {
@@ -928,6 +935,29 @@ function drawComboChart(elementId, data, options)
     chart.draw(data, options);
 }
 
+/**
+ * Draws a google geo chart.
+ *
+ * @param {String} elementId The element id of the HTML element the chart is rendered too
+ * @param {Array}  data      The chart data array
+ * @param {Object} options   The chart specific options to overwrite the default ones
+ */
+function drawGeoChart(elementId, data, options)
+{
+    var defaults = {
+        title: '',
+        subtitle: '',
+        height: '100%',
+        width: '100%'
+    };
+
+    options = Object.assign(defaults, options);
+
+    var chart = new google.visualization.GeoChart(document.getElementById(elementId));
+    var data  = google.visualization.arrayToDataTable(data);
+
+    chart.draw(data, options);
+}
 
 // Send the CSRF token on all AJAX requests
 $.ajaxSetup({
