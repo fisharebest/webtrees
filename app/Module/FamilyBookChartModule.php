@@ -40,6 +40,10 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
     private const DEFAULT_DESCENDANT_GENERATIONS = '5';
     private const DEFAULT_MAXIMUM_GENERATIONS    = '9';
 
+    // Limits
+    public const MINIMUM_GENERATIONS = 2;
+    public const MAXIMUM_GENERATIONS = 10;
+
     /** @var stdClass */
     private $box;
 
@@ -133,14 +137,10 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
         Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
-        $minimum_generations = 2;
-        $maximum_generations = (int) $tree->getPreference('MAX_DESCENDANCY_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
-        $default_generations = (int) $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS', self::DEFAULT_GENERATIONS);
-
         $show_spouse = (bool) $request->get('show_spouse');
-        $generations = (int) $request->get('generations', $default_generations);
-        $generations = min($generations, $maximum_generations);
-        $generations = max($generations, $minimum_generations);
+        $generations = (int) $request->get('generations', self::DEFAULT_GENERATIONS);
+        $generations = min($generations, self::MAXIMUM_GENERATIONS);
+        $generations = max($generations, self::MINIMUM_GENERATIONS);
 
         // Generations of ancestors/descendants in each mini-tree.
         $book_size = (int) $request->get('book_size', 2);
@@ -163,8 +163,8 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
             'book_size'           => $book_size,
             'generations'         => $generations,
             'individual'          => $individual,
-            'maximum_generations' => $maximum_generations,
-            'minimum_generations' => $minimum_generations,
+            'maximum_generations' => self::MAXIMUM_GENERATIONS,
+            'minimum_generations' => self::MINIMUM_GENERATIONS,
             'module_name'         => $this->name(),
             'show_spouse'         => $show_spouse,
             'title'               => $this->chartTitle($individual),

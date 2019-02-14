@@ -39,6 +39,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
     private const DEFAULT_MAXIMUM_GENERATIONS = '9';
 
     // Limits
+    private const MAXIMUM_GENERATIONS = 10;
     private const MINIMUM_GENERATIONS = 2;
 
     /**
@@ -103,12 +104,9 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
-        $maximum_generations = (int) $tree->getPreference('MAX_DESCENDANCY_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
-        $default_generations = (int) $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS', self::DEFAULT_GENERATIONS);
+        $generations = (int) $request->get('generations', self::DEFAULT_GENERATIONS);
 
-        $generations = (int) $request->get('generations', $default_generations);
-
-        $generations = min($generations, $maximum_generations);
+        $generations = min($generations, self::MAXIMUM_GENERATIONS);
         $generations = max($generations, self::MINIMUM_GENERATIONS);
 
         $show_spouse = (bool) $request->get('show_spouse');
@@ -125,7 +123,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
             'ajax_url'            => $ajax_url,
             'generations'         => $generations,
             'individual'          => $individual,
-            'maximum_generations' => $maximum_generations,
+            'maximum_generations' => self::MAXIMUM_GENERATIONS,
             'minimum_generations' => self::MINIMUM_GENERATIONS,
             'module_name'         => $this->name(),
             'show_spouse'         => $show_spouse,

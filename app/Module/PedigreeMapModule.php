@@ -42,6 +42,12 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
 
+    // Defaults
+    public const DEFAULT_GENERATIONS = '4';
+
+    // Limits
+    public const MAXIMUM_GENERATIONS = 10;
+
     private const LINE_COLORS = [
         '#FF0000',
         // Red
@@ -275,10 +281,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
     {
         $xref        = $request->get('reference');
         $individual  = Individual::getInstance($xref, $tree);
-        $generations = (int) $request->get(
-            'generations',
-            $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS')
-        );
+        $generations = (int) $request->get('generations', '4');
         $ancestors   = $chart_service->sosaStradonitzAncestors($individual, $generations);
         $facts       = [];
         foreach ($ancestors as $sosa => $person) {
@@ -395,8 +398,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
     {
         $xref           = $request->get('xref', '');
         $individual     = Individual::getInstance($xref, $tree);
-        $maxgenerations = $tree->getPreference('MAX_PEDIGREE_GENERATIONS');
-        $generations    = $request->get('generations', $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
+        $generations    = $request->get('generations', self::DEFAULT_GENERATIONS);
 
         if ($individual === null) {
             throw new IndividualNotFoundException();
@@ -413,7 +415,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
             'tree'           => $tree,
             'individual'     => $individual,
             'generations'    => $generations,
-            'maxgenerations' => $maxgenerations,
+            'maxgenerations' => self::MAXUMUM_GENERATIONS,
             'map'            => view(
                 'modules/pedigree-map/chart',
                 [

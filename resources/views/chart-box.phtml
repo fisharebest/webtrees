@@ -14,10 +14,16 @@ use Illuminate\Support\Collection;
 use Ramsey\Uuid\Uuid;
 
 /**
- * @var Individual        $individual
+ * @var Individual|null   $individual
  * @var ModuleService     $module_service
  * @var Collection|Menu[] $menus
  */
+
+if ($individual === null) {
+    echo '<div class="wt-chart-box"></div>';
+
+    return;
+}
 
 $module_service = app(ModuleService::class);
 
@@ -97,7 +103,7 @@ $id = Uuid::uuid4()->toString();
         </div>
     <?php endif ?>
 
-    <div class="wt-chart-box-extra float-right ml-1">
+    <div class="wt-chart-box-extra d-print-none float-right ml-1">
         <div class="dropdown position-static wt-chart-box-zoom">
             <a class="wt-chart-box-icon" href="#" role="button" id="chart-box-zoom-<?= $id ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div ><?= view('icons/zoom-in') ?></div>

@@ -1121,7 +1121,6 @@ class AdminTreesController extends AbstractBaseController
         ])));
         $tree->setPreference('CHART_BOX_TAGS', implode(',', $request->get('CHART_BOX_TAGS', [])));
         $tree->setPreference('CONTACT_USER_ID', $request->get('CONTACT_USER_ID'));
-        $tree->setPreference('DEFAULT_PEDIGREE_GENERATIONS', (string) (int) $request->get('DEFAULT_PEDIGREE_GENERATIONS'));
         $tree->setPreference('EXPAND_NOTES', (string) (bool) $request->get('EXPAND_NOTES'));
         $tree->setPreference('EXPAND_SOURCES', (string) (bool) $request->get('EXPAND_SOURCES'));
         $tree->setPreference('FAM_FACTS_ADD', implode(',', $request->get('FAM_FACTS_ADD', [])));
@@ -1136,15 +1135,11 @@ class AdminTreesController extends AbstractBaseController
         $tree->setPreference('INDI_FACTS_QUICK', implode(',', $request->get('INDI_FACTS_QUICK', [])));
         $tree->setPreference('INDI_FACTS_UNIQUE', implode(',', $request->get('INDI_FACTS_UNIQUE', [])));
         $tree->setPreference('LANGUAGE', $request->get('LANGUAGE'));
-        $tree->setPreference('MAX_DESCENDANCY_GENERATIONS', (string) (int) $request->get('MAX_DESCENDANCY_GENERATIONS'));
-        $tree->setPreference('MAX_PEDIGREE_GENERATIONS', (string) (int) $request->get('MAX_PEDIGREE_GENERATIONS'));
         $tree->setPreference('MEDIA_UPLOAD', $request->get('MEDIA_UPLOAD'));
         $tree->setPreference('META_DESCRIPTION', $request->get('META_DESCRIPTION'));
         $tree->setPreference('META_TITLE', $request->get('META_TITLE'));
         $tree->setPreference('NO_UPDATE_CHAN', (string) (bool) $request->get('NO_UPDATE_CHAN'));
-        $tree->setPreference('PEDIGREE_LAYOUT', (string) (bool) $request->get('PEDIGREE_LAYOUT'));
         $tree->setPreference('PEDIGREE_ROOT_ID', $request->get('PEDIGREE_ROOT_ID'));
-        $tree->setPreference('PEDIGREE_SHOW_GENDER', (string) (bool) $request->get('PEDIGREE_SHOW_GENDER'));
         $tree->setPreference('PREFER_LEVEL2_SOURCES', $request->get('PREFER_LEVEL2_SOURCES'));
         $tree->setPreference('QUICK_REQUIRED_FACTS', implode(',', $request->get('QUICK_REQUIRED_FACTS', [])));
         $tree->setPreference('QUICK_REQUIRED_FAMFACTS', implode(',', $request->get('QUICK_REQUIRED_FAMFACTS', [])));

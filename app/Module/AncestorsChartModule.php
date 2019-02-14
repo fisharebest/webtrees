@@ -48,7 +48,10 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
     protected const DEFAULT_COUSINS             = false;
     protected const DEFAULT_STYLE               = self::CHART_STYLE_LIST;
     protected const DEFAULT_GENERATIONS         = '3';
-    protected const DEFAULT_MAXIMUM_GENERATIONS = '9';
+
+    // Limits
+    protected const MINIMUM_GENERATIONS = 2;
+    protected const MAXIMUM_GENERATIONS = 10;
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
@@ -126,16 +129,12 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
         Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
-        $minimum_generations = 2;
-        $maximum_generations = (int) $tree->getPreference('MAX_PEDIGREE_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
-        $default_generations = (int) $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS', self::DEFAULT_GENERATIONS);
-
         $show_cousins = (bool) $request->get('show_cousins', self::DEFAULT_COUSINS);
         $chart_style  = $request->get('chart_style', self::DEFAULT_STYLE);
-        $generations  = (int) $request->get('generations', $default_generations);
+        $generations  = (int) $request->get('generations', self::DEFAULT_GENERATIONS);
 
-        $generations = min($generations, $maximum_generations);
-        $generations = max($generations, $minimum_generations);
+        $generations = min($generations, self::MINIMUM_GENERATIONS);
+        $generations = max($generations, self::MAXIMUM_GENERATIONS);
 
         if ($ajax) {
             $ancestors = $chart_service->sosaStradonitzAncestors($individual, $generations);
@@ -167,11 +166,11 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
             'ajax_url'            => $ajax_url,
             'chart_style'         => $chart_style,
             'chart_styles'        => $this->chartStyles(),
-            'default_generations' => $default_generations,
+            'default_generations' => self::DEFAULT_GENERATIONS,
             'generations'         => $generations,
             'individual'          => $individual,
-            'maximum_generations' => $maximum_generations,
-            'minimum_generations' => $minimum_generations,
+            'maximum_generations' => self::MAXIMUM_GENERATIONS,
+            'minimum_generations' => self::MINIMUM_GENERATIONS,
             'module_name'         => $this->name(),
             'show_cousins'        => $show_cousins,
             'title'               => $this->chartTitle($individual),

@@ -35,7 +35,10 @@
             <?= I18N::translate('Layout') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= Bootstrap4::select($orientations, $orientation, ['id' => 'orientation', 'name' => 'orientation']) ?>
+            <?= view('components/radio-inline', ['name' => 'orientation', 'value' => 'left', 'checked' => $orientation === 'left', 'text' => view('icons/pedigree-left') . I18N::translate('left')]) ?>
+            <?= view('components/radio-inline', ['name' => 'orientation', 'value' => 'right', 'checked' => $orientation === 'right', 'text' => view('icons/pedigree-right') . I18N::translate('right')]) ?>
+            <?= view('components/radio-inline', ['name' => 'orientation', 'value' => 'up', 'checked' => $orientation === 'up', 'text' => view('icons/pedigree-up') . I18N::translate('up')]) ?>
+            <?= view('components/radio-inline', ['name' => 'orientation', 'value' => 'down', 'checked' => $orientation === 'down', 'text' => view('icons/pedigree-down') . I18N::translate('down')]) ?>
         </div>
     </div>
 

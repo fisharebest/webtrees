@@ -18,11 +18,103 @@
  *
  * wt-chart, wt-chart-pedigree
  */
-.wt-chart-pedigree .wt-chart-box {
+.wt-chart-pedigree-left .wt-chart-box,
+.wt-chart-pedigree-right .wt-chart-box {
 	width: 15rem;
+}
+
+.wt-chart-pedigree-up .wt-chart-box,
+.wt-chart-pedigree-down .wt-chart-box {
+	width: 10rem;
+	height: 8rem;
 }
 
 .wt-chart-pedigree .wt-chart-box-lifespan {
 	display: none;
 }
+
+/* Pedigree chart with oldest on the right */
+.wt-chart-pedigree-right .wt-pedigree-lines {
+	right: 0;
+	top: 25%;
+	bottom: 25%;
+	border: var(--chart-line);
+	border-right: none;
+	border-radius: 20px 0 0 20px;
+	width: 25%;
+	height: 50%;
+	z-index: -1;
+}
+
+.wt-chart-pedigree-right .wt-generation-rev-2 > .wt-pedigree-lines {
+	top: 12.5%;
+	bottom: 12.5%;
+	height: 75%;
+}
+
+/* Pedigree chart with oldest on the left */
+.wt-chart-pedigree-left .wt-pedigree-lines {
+	left: 0;
+	top: 25%;
+	bottom: 25%;
+	border: var(--chart-line);
+	border-left: none;
+	border-radius: 0 20px 20px 0;
+	width: 25%;
+	height: 50%;
+	z-index: -1;
+}
+
+.wt-chart-pedigree-left .wt-generation-rev-2 > .wt-pedigree-lines {
+	top: 12.5%;
+	bottom: 12.5%;
+	height: 75%;
+}
+
+/* Pedigree chart with oldest at the bottom */
+.wt-chart-pedigree-down {
+	width: max-content;
+}
+
+.wt-chart-pedigree-down .wt-pedigree-lines {
+	bottom: 0;
+	left: 25%;
+	right: 25%;
+	border: var(--chart-line);
+	border-bottom: none;
+	border-radius: 20px 20px 0 0;
+	width: 50%;
+	height: 25%;
+	z-index: -1;
+}
+
+.wt-chart-pedigree-down .wt-generation-rev-2 > .wt-pedigree-lines {
+	left: 12.5%;
+	right: 12.5%;
+	width: 75%;
+}
+
+/* Pedigree chart with oldest at the top */
+.wt-chart-pedigree-up {
+	width: max-content;
+}
+
+.wt-chart-pedigree-up .wt-pedigree-lines {
+	top: 0;
+	left: 25%;
+	right: 25%;
+	border: var(--chart-line);
+	border-top: none;
+	border-radius: 0 0 20px 20px;
+	width: 50%;
+	height: 25%;
+	z-index: -1;
+}
+
+.wt-chart-pedigree-up .wt-generation-rev-2 > .wt-pedigree-lines {
+	left: 12.5%;
+	right: 12.5%;
+	width: 75%;
+}
+
 

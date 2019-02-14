@@ -1,0 +1,46 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+/**
+ * @var string   $icon
+ * @var string[] $siblings
+ * @var string[] $spouses
+ * @var string[] $children
+ */
+
+?>
+
+<div class="dropdown px-2">
+    <a href="#" role="button" id="pedigree-previous-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <?= $icon ?>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="pedigree-previous-link">
+        <?php if (count($siblings) > 1) : ?>
+            <strong class="dropdown-item-text"><?= I18N::translate('Siblings') ?></strong>
+        <?php elseif (count($siblings) > 0 ) : ?>
+            <strong class="dropdown-item-text"><?= I18N::translate('Sibling') ?></strong>
+        <?php endif ?>
+        <?php foreach ($siblings as $sibling) : ?>
+            <?= $sibling ?>
+        <?php endforeach ?>
+
+        <?php if (count($spouses) > 1) : ?>
+            <strong class="dropdown-item-text"><?= I18N::translate('Spouses') ?></strong>
+        <?php elseif (count($spouses) > 0 ) : ?>
+            <strong class="dropdown-item-text"><?= I18N::translate('Spouse') ?></strong>
+        <?php endif ?>
+        <?php foreach ($spouses as $spouse) : ?>
+            <?= $spouse ?>
+        <?php endforeach ?>
+
+        <?php if (count($children) > 1) : ?>
+            <strong class="dropdown-item-text"><?= I18N::translate('Children') ?></strong>
+        <?php elseif (count($children) > 0 ) : ?>
+            <strong class="dropdown-item-text"><?= I18N::translate('Child') ?></strong>
+        <?php endif ?>
+        <?php foreach ($children as $child) : ?>
+            <?= $child ?>
+        <?php endforeach ?>
+    </div>
+</div>

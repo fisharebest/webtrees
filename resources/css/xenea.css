@@ -14,6 +14,8 @@
  */
 
 /* The xenea theme */
+@import "_base.css";
+@import "_block-charts.css";
 @import "_chart-ancestors.css";
 @import "_chart-compact.css";
 @import "_chart-descendants.css";
@@ -45,6 +47,7 @@
   --sex-f-bg: #fff0f0;
   --sex-m-bg: #f0f9ff;
   --sex-u-bg: #ffffff;
+	--chart-line: solid gray thin;
 }
 
 /* Override Bootstrap formatting */
@@ -71,41 +74,34 @@ table {
  *
  * wt-global wt-theme-<THEME> wt-route-<ROUTE>
  * +---wt-header-wrapper
- *     +---wt-header-container
- *     |   +---wt-header-content
- *     |       +---wt-accessibility-links
- *     |       +---wt-site-logo
- *     |       +---wt-site-title
- *     |       +---wt-header-search
- *     |       |   +---wt-header-search-form
- *     |       |       +---wt-header-search-field
- *     |       |       +---wt-header-search-button
- *     |       +---wt-secondary-navigation
- *     |       |   +---wt-secondary-menu
- *     |       +---wt-primary-navigation
- *     |           +---wt-primary-menu
- *     +---wt-main-container
- *     |   +---wt-main-content
- *     |       +---wt-messages
- *     |       +---wt-page-title
- *     |       +---wt-page-options wt-page-options-xxxxx
- *     |       +---wt-page-content
- *     +---wt-footers
- *         +---wt-footer wt-footer-contact
- *         +---wt-footer wt-footer-cookies
- *         +---wt-footer wt-footer-page-views
- *         +---wt-footer wt-footer-powered-by
+ * |   +---wt-header-container
+ * |       +---wt-header-content
+ * |           +---wt-accessibility-links
+ * |           +---wt-site-logo
+ * |           +---wt-site-title
+ * |           +---wt-header-search
+ * |           |   +---wt-header-search-form
+ * |           |       +---wt-header-search-field
+ * |           |       +---wt-header-search-button
+ * |           +---wt-secondary-navigation
+ * |           |   +---wt-secondary-menu
+ * |           +---wt-primary-navigation
+ * |               +---wt-primary-menu
+ * +---wt-main-wrapper
+ * |   +---wt-main-container
+ * |       +---wt-main-content
+ * |           +---wt-messages
+ * |           +---wt-page-title
+ * |           +---wt-page-options wt-page-options-xxxxx
+ * |           +---wt-page-content
+ * +---wt-footers
+ *     +---wt-footer wt-footer-contact
+ *     +---wt-footer wt-footer-cookies
+ *     +---wt-footer wt-footer-page-views
+ *     +---wt-footer wt-footer-powered-by
  */
 
 .wt-global {
-	/* Prevent redraws when dynamic content requires a scrollbar. */
-	overflow-y: scroll;
-	/* Keep the page as tall as the window, so the footer can remain at the bottom. */
-	display: flex;
-	min-height: 100vh;
-	flex-direction: column;
-	/* Any wide content will have its own horizontal scrollbar */
-	overflow-x: hidden;
 	color: #006;
 }
 
@@ -534,8 +530,6 @@ table {
 }
 
 .wt-main-container {
-	/* Grow to fill content, to allow footer to stay at bottom of page. */
-	flex: 1;
 	/* Space between the header/footer and the main content. */
 	padding-top: 1rem;
 	padding-bottom: 1rem;

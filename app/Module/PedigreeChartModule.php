@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
-use stdClass;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -36,42 +35,27 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
 
-    // With more than 8 generations, we run out of pixels on the <canvas>
-    protected const MAX_GENERATIONS = 8;
-    protected const MIN_GENERATIONS = 2;
-
+    // Defaults
     protected const DEFAULT_GENERATIONS = '4';
 
-    /**
-     * Chart orientation codes
-     * Dont change them! the offset calculations rely on this order
-     */
-    public const PORTRAIT         = 0;
-    public const LANDSCAPE        = 1;
-    public const OLDEST_AT_TOP    = 2;
-    public const OLDEST_AT_BOTTOM = 3;
+    // Limits
+    protected const MAX_GENERATIONS     = 12;
+    protected const MIN_GENERATIONS     = 2;
 
-    protected const DEFAULT_ORIENTATION = self::LANDSCAPE;
+    // Chart orientation options.  These are used to generate icons, views, etc.
+    protected const ORIENTATION_LEFT  = 'left';
+    protected const ORIENTATION_RIGHT = 'right';
+    protected const ORIENTATION_UP    = 'up';
+    protected const ORIENTATION_DOWN  = 'down';
 
-    /** @var int Number of generation to display */
-    protected $generations;
+    protected const MIRROR_ORIENTATION = [
+        self::ORIENTATION_UP    => self::ORIENTATION_DOWN,
+        self::ORIENTATION_DOWN  => self::ORIENTATION_UP,
+        self::ORIENTATION_LEFT  => self::ORIENTATION_RIGHT,
+        self::ORIENTATION_RIGHT => self::ORIENTATION_LEFT,
+    ];
 
-    /** @var array data pertaining to each chart node */
-    protected $nodes = [];
-
-    /** @var int Number of nodes in the chart */
-    protected $treesize;
-
-    /** @var stdClass Determine which arrows to use for each of the chart orientations */
-    protected $arrows;
-
-    /** @var Individual */
-    protected $root;
-
-    /**
-     * Next and previous generation arrow size in pixels.
-     */
-    protected const ARROW_SIZE = 22;
+    protected const DEFAULT_ORIENTATION = self::ORIENTATION_RIGHT;
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
@@ -149,7 +133,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
         Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
-        $orientation = (int) $request->get('orientation', static::DEFAULT_ORIENTATION);
+        $orientation = $request->get('orientation', static::DEFAULT_ORIENTATION);
         $generations = (int) $request->get('generations', static::DEFAULT_GENERATIONS);
 
         $generations = min(static::MAX_GENERATIONS, $generations);
@@ -158,7 +142,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
         $generation_options = $this->generationOptions();
 
         if ($ajax) {
-            return $this->chart($individual, $generations, $orientation, $chart_service);
+            return $this->chart($individual, $orientation, $generations, $chart_service);
         }
 
         $ajax_url = $this->chartUrl($individual, [
@@ -181,221 +165,41 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
 
     /**
      * @param Individual   $individual
+     * @param string       $orientation
      * @param int          $generations
-     * @param int          $orientation
      * @param ChartService $chart_service
      *
      * @return Response
      */
-    public function chart(Individual $individual, int $generations, int $orientation, ChartService $chart_service): Response
+    public function chart(Individual $individual, string $orientation, int $generations, ChartService $chart_service): Response
     {
-        $bxspacing = app()->make(ModuleThemeInterface::class)->parameter('chart-spacing-x');
-        $byspacing = app()->make(ModuleThemeInterface::class)->parameter('chart-spacing-y');
-        $curgen    = 1; // Track which generation the algorithm is currently working on
-        $addoffset = [];
-
-        $this->root = $individual;
-
-        $this->treesize = (2 ** $generations) - 1;
-
-        $this->nodes = [];
-
         $ancestors = $chart_service->sosaStradonitzAncestors($individual, $generations);
 
-        // $ancestors starts array at index 1 we need to start at 0
-        for ($i = 0; $i < $this->treesize; ++$i) {
-            $this->nodes[$i] = [
-                'indi' => $ancestors->get($i + 1),
-                'x'    => 0,
-                'y'    => 0,
-            ];
-        }
+        // Father’s ancestors link to the father’s pedigree
+        // Mother’s ancestors link to the mother’s pedigree..
+        $links = $ancestors->map(function (?Individual $individual, $sosa) use ($ancestors, $orientation, $generations): string {
+            if ($individual instanceof Individual && $sosa >= 2 ** $generations / 2 && !empty($individual->getChildFamilies())) {
+                // The last row/column, and there are more generations.
+                if ($sosa >= 2 ** $generations * 3 / 4) {
+                    return $this->nextLink($ancestors->get(3), $orientation, $generations);
+                }
 
-        // Are there ancestors beyond the bounds of this chart
-        $chart_has_ancestors = false;
-
-        // Check earliest generation for any ancestors
-        for ($i = (int) ($this->treesize / 2); $i < $this->treesize; $i++) {
-            $chart_has_ancestors = $chart_has_ancestors || ($this->nodes[$i]['indi'] && $this->nodes[$i]['indi']->getChildFamilies());
-        }
-
-        $this->arrows = new stdClass();
-        switch ($orientation) {
-            default:
-            case static::PORTRAIT:
-            case static::LANDSCAPE:
-                $this->arrows->prevGen = view('icons/arrow-right');
-                $this->arrows->menu    = view('icons/arrow-left');
-                $addoffset['x']        = $chart_has_ancestors ? static::ARROW_SIZE : 0;
-                $addoffset['y']        = 0;
-                break;
-
-            case static::OLDEST_AT_TOP:
-                $this->arrows->prevGen = view('icons/arrow-up');
-                $this->arrows->menu    = view('icons/arrow-down');
-                $addoffset['x']        = 0;
-                $addoffset['y']        = $this->root->getSpouseFamilies() ? static::ARROW_SIZE : 0;
-                break;
-
-            case static::OLDEST_AT_BOTTOM:
-                $this->arrows->prevGen = view('icons/arrow-down');
-                $this->arrows->menu    = view('icons/arrow-up');
-                $addoffset['x']        = 0;
-                $addoffset['y']        = $chart_has_ancestors ? static::ARROW_SIZE : 0;
-                break;
-        }
-
-        // Create and position the DIV layers for the pedigree tree
-        for ($i = ($this->treesize - 1); $i >= 0; $i--) {
-            // Check to see if we have moved to the next generation
-            if ($i < (int) ($this->treesize / (2 ** $curgen))) {
-                $curgen++;
+                return $this->nextLink($ancestors->get(2), $orientation, $generations);
             }
 
-            // Box position in current generation
-            $boxpos = $i - (2 ** ($this->generations - $curgen));
-            // Offset multiple for current generation
-            if ($orientation < static::OLDEST_AT_TOP) {
-                $genoffset  = 2 ** ($curgen - $orientation);
-                $boxspacing = app()->make(ModuleThemeInterface::class)->parameter('chart-box-y') + $byspacing;
-            } else {
-                $genoffset  = 2 ** ($curgen - 1);
-                $boxspacing = app()->make(ModuleThemeInterface::class)->parameter('chart-box-x') + $byspacing;
-            }
-            // Calculate the yoffset position in the generation put child between parents
-            $yoffset = ($boxpos * ($boxspacing * $genoffset)) + (($boxspacing / 2) * $genoffset) + ($boxspacing * $genoffset);
-
-            // Calculate the xoffset
-            switch ($orientation) {
-                default:
-                case static::PORTRAIT:
-                    $xoffset = ($this->generations - $curgen) * ((app()->make(ModuleThemeInterface::class)->parameter('chart-box-x') + $bxspacing) / 1.8);
-                    if (!$i && $this->root->getSpouseFamilies()) {
-                        $xoffset -= static::ARROW_SIZE;
-                    }
-                    // Compact the tree
-                    if ($curgen < $this->generations) {
-                        if ($i % 2 == 0) {
-                            $yoffset = $yoffset - (($boxspacing / 2) * ($curgen - 1));
-                        } else {
-                            $yoffset = $yoffset + (($boxspacing / 2) * ($curgen - 1));
-                        }
-                        $parent = (int) (($i - 1) / 2);
-                        $pgen   = $curgen;
-                        while ($parent > 0) {
-                            if ($parent % 2 == 0) {
-                                $yoffset = $yoffset - (($boxspacing / 2) * $pgen);
-                            } else {
-                                $yoffset = $yoffset + (($boxspacing / 2) * $pgen);
-                            }
-                            $pgen++;
-                            if ($pgen > 3) {
-                                $temp = 0;
-                                for ($j = 1; $j < ($pgen - 2); $j++) {
-                                    $temp += ((2 ** $j) - 1);
-                                }
-                                if ($parent % 2 == 0) {
-                                    $yoffset = $yoffset - (($boxspacing / 2) * $temp);
-                                } else {
-                                    $yoffset = $yoffset + (($boxspacing / 2) * $temp);
-                                }
-                            }
-                            $parent = (int) (($parent - 1) / 2);
-                        }
-                        if ($curgen > 3) {
-                            $temp = 0;
-                            for ($j = 1; $j < ($curgen - 2); $j++) {
-                                $temp += ((2 ** $j) - 1);
-                            }
-                            if ($i % 2 == 0) {
-                                $yoffset = $yoffset - (($boxspacing / 2) * $temp);
-                            } else {
-                                $yoffset = $yoffset + (($boxspacing / 2) * $temp);
-                            }
-                        }
-                    }
-                    $yoffset -= (($boxspacing / 2) * (2 ** ($this->generations - 2)) - ($boxspacing / 2));
-                    break;
-
-                case static::LANDSCAPE:
-                    $xoffset = ($this->generations - $curgen) * (app()->make(ModuleThemeInterface::class)->parameter('chart-box-x') + $bxspacing);
-                    if ($curgen == 1) {
-                        $xoffset += 10;
-                    }
-                    break;
-
-                case static::OLDEST_AT_TOP:
-                    // Swap x & y offsets as chart is rotated
-                    $xoffset = $yoffset;
-                    $yoffset = $curgen * (app()->make(ModuleThemeInterface::class)->parameter('chart-box-y') + ($byspacing * 4));
-                    break;
-
-                case static::OLDEST_AT_BOTTOM:
-                    // Swap x & y offsets as chart is rotated
-                    $xoffset = $yoffset;
-                    $yoffset = ($this->generations - $curgen) * (app()->make(ModuleThemeInterface::class)->parameter('chart-box-y') + ($byspacing * 2));
-                    if ($i && $this->root->getSpouseFamilies()) {
-                        $yoffset += static::ARROW_SIZE;
-                    }
-                    break;
-            }
-            $this->nodes[$i]['x'] = (int) $xoffset;
-            $this->nodes[$i]['y'] = (int) $yoffset;
-        }
-
-        // Find the minimum x & y offsets and deduct that number from
-        // each value in the array so that offsets start from zero
-        $min_xoffset = min(array_map(function (array $item): int {
-            return $item['x'];
-        }, $this->nodes));
-        $min_yoffset = min(array_map(function (array $item): int {
-            return $item['y'];
-        }, $this->nodes));
-
-        array_walk($this->nodes, function (&$item) use ($min_xoffset, $min_yoffset) {
-            $item['x'] -= $min_xoffset;
-            $item['y'] -= $min_yoffset;
+            // A spacer to fix the "Left" layout.
+            return '<span class="invisible px-2">' . view('icons/arrow-' . $orientation) . '</span>';
         });
 
-        // Calculate chart & canvas dimensions
-        $max_xoffset = max(array_map(function ($item) {
-            return $item['x'];
-        }, $this->nodes));
-        $max_yoffset = max(array_map(function ($item) {
-            return $item['y'];
-        }, $this->nodes));
-
-        $canvas_width   = $max_xoffset + $bxspacing + app()->make(ModuleThemeInterface::class)->parameter('chart-box-x') + $addoffset['x'];
-        $canvas_height  = $max_yoffset + $byspacing + app()->make(ModuleThemeInterface::class)->parameter('chart-box-y') + $addoffset['y'];
-        $posn           = I18N::direction() === 'rtl' ? 'right' : 'left';
-        $last_gen_start = (int) floor($this->treesize / 2);
-        if ($orientation === static::OLDEST_AT_TOP || $orientation === static::OLDEST_AT_BOTTOM) {
-            $flex_direction = ' flex-column';
-        } else {
-            $flex_direction = '';
-        }
-
-        foreach ($this->nodes as $n => $node) {
-            if ($n >= $last_gen_start) {
-                $this->nodes[$n]['previous_gen'] = $this->gotoPreviousGen($n, $generations, $orientation, $chart_has_ancestors);
-            } else {
-                $this->nodes[$n]['previous_gen'] = '';
-            }
-        }
+        // Root individual links to their children.
+        $links->put(1, $this->previousLink($individual, $orientation, $generations));
 
         $html = view('modules/pedigree-chart/chart', [
-            'canvas_height'    => $canvas_height,
-            'canvas_width'     => $canvas_width,
-            'child_menu'       => $this->getMenu($individual, $generations, $orientation),
-            'flex_direction'   => $flex_direction,
-            'last_gen_start'   => $last_gen_start,
-            'orientation'      => $orientation,
-            'nodes'            => $this->nodes,
-            'landscape'        => static::LANDSCAPE,
-            'oldest_at_top'    => static::OLDEST_AT_TOP,
-            'oldest_at_bottom' => static::OLDEST_AT_BOTTOM,
-            'portrait'         => static::PORTRAIT,
-            'posn'             => $posn,
+            'ancestors'   => $ancestors,
+            'generations' => $generations,
+            'orientation' => $orientation,
+            'layout'      => 'right',
+            'links'       => $links,
         ]);
 
         return new Response($html);
@@ -404,79 +208,90 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
     /**
      * Build a menu for the chart root individual
      *
-     * @param Individual $root
+     * @param Individual $individual
+     * @param string     $orientation
      * @param int        $generations
-     * @param int        $orientation
      *
      * @return string
      */
-    public function getMenu(Individual $root, int $generations, int $orientation): string
+    public function nextLink(Individual $individual, string $orientation, int $generations): string
     {
-        $families = $root->getSpouseFamilies();
-        $html     = '';
-        if (!empty($families)) {
-            $html = '<div id="childarrow"><a href="#" class="menuselect">' . $this->arrows->menu . '</a><div id="childbox-pedigree">';
+        $icon  = view('icons/arrow-' . $orientation);
+        $title = $this->chartTitle($individual);
+        $url   = $this->chartUrl($individual, [
+            'orientation' => $orientation,
+            'generations' => $generations,
+        ]);
 
-            foreach ($families as $family) {
-                $html   .= '<span class="name1">' . I18N::translate('Family') . '</span>';
-                $spouse = $family->getSpouse($root);
-                if ($spouse) {
-                    $html .= '<a class="name1" href="' . e($this->chartUrl($spouse, ['generations' => $generations, 'orientation' => $orientation])) . '">' . $spouse->getFullName() . '</a>';
-                }
-                $children = $family->getChildren();
-                foreach ($children as $sibling) {
-                    $html .= '<a class="name1" href="' . e($this->chartUrl($sibling, ['generations' => $generations, 'orientation' => $orientation])) . '">' . $sibling->getFullName() . '</a>';
-                }
-            }
-
-            foreach ($root->getChildFamilies() as $family) {
-                $siblings = array_filter($family->getChildren(), function (Individual $item) use ($root): bool {
-                    return $root->xref() !== $item->xref();
-                });
-                if (!empty($siblings)) {
-                    $html .= '<span class="name1">';
-                    $html .= count($siblings) > 1 ? I18N::translate('Siblings') : I18N::translate('Sibling');
-                    $html .= '</span>';
-                    foreach ($siblings as $sibling) {
-                        $html .= '<a class="name1" href="' . e($this->chartUrl($sibling, ['generations' => $generations, 'orientation' => $orientation])) . '">' . $sibling->getFullName() . '</a>';
-                    }
-                }
-            }
-            $html .= '</div></div>';
-        }
-
-        return $html;
+        return '<a class="px-2" href="' . e($url) . '" title="' . strip_tags($title) . '">' . $icon . '<span class="sr-only">' . $title . '</span></a>';
     }
 
     /**
-     * Function gotoPreviousGen
-     * Create a link to generate a new chart based on the correct parent of the individual with this index
+     * Build a menu for the chart root individual
      *
-     * @param int  $index
-     * @param int  $generations
-     * @param int  $orientation
-     * @param bool $chart_has_ancestors
+     * @param Individual $individual
+     * @param string     $orientation
+     * @param int        $generations
      *
      * @return string
      */
-    public function gotoPreviousGen(int $index, int $generations, int $orientation, bool $chart_has_ancestors): string
+    public function previousLink(Individual $individual, string $orientation, int $generations): string
     {
-        $html = '';
-        if ($chart_has_ancestors) {
-            if ($this->nodes[$index]['indi'] && $this->nodes[$index]['indi']->getChildFamilies()) {
-                $html         .= '<div class="ancestorarrow">';
-                $rootParentId = 1;
-                if ($index > (int) ($this->treesize / 2) + (int) ($this->treesize / 4)) {
-                    $rootParentId++;
+        $icon = view('icons/arrow-' . self::MIRROR_ORIENTATION[$orientation]);
+
+        $siblings = [];
+        $spouses  = [];
+        $children = [];
+
+        foreach ($individual->getChildFamilies() as $family) {
+            foreach ($family->getChildren() as $child) {
+                if ($child !== $individual) {
+                    $siblings[] = $this->individualLink($child, $orientation, $generations);
                 }
-                $html .= '<a href="' . e($this->chartUrl($this->nodes[$rootParentId]['indi'], ['generations' => $generations, 'orientation' => $orientation])) . '">' . $this->arrows->prevGen . '</a>';
-                $html .= '</div>';
-            } else {
-                $html .= '<div class="spacer"></div>';
             }
         }
 
-        return $html;
+        foreach ($individual->getSpouseFamilies() as $family) {
+            foreach ($family->getSpouses() as $spouse) {
+                if ($spouse !== $individual) {
+                    $spouses[] = $this->individualLink($spouse, $orientation, $generations);
+                }
+            }
+
+            foreach ($family->getChildren() as $child) {
+                $children[] = $this->individualLink($child, $orientation, $generations);
+            }
+        }
+
+        return view('modules/pedigree-chart/previous', [
+            'icon'        => $icon,
+            'individual'  => $individual,
+            'generations' => $generations,
+            'orientation' => $orientation,
+            'chart'       => $this,
+            'siblings'    => $siblings,
+            'spouses'     => $spouses,
+            'children'    => $children,
+        ]);
+    }
+
+    /**
+     * @param Individual $individual
+     * @param string     $orientation
+     * @param int        $generations
+     *
+     * @return string
+     */
+    protected function individualLink(Individual $individual, string $orientation, int $generations): string
+    {
+        $text  = $individual->getFullName();
+        $title = $this->chartTitle($individual);
+        $url   = $this->chartUrl($individual, [
+            'orientation' => $orientation,
+            'generations' => $generations,
+        ]);
+
+        return '<a class="dropdown-item" href="' . e($url) . '" title="' . strip_tags($title) . '">' . $text . '</a>';
     }
 
     /**
@@ -493,10 +308,10 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
     protected function orientations(): array
     {
         return [
-            0 => I18N::translate('Portrait'),
-            1 => I18N::translate('Landscape'),
-            2 => I18N::translate('Oldest at top'),
-            3 => I18N::translate('Oldest at bottom'),
+            self::ORIENTATION_LEFT  => I18N::translate('Left'),
+            self::ORIENTATION_RIGHT => I18N::translate('Right'),
+            self::ORIENTATION_UP    => I18N::translate('Up'),
+            self::ORIENTATION_DOWN  => I18N::translate('Down'),
         ];
     }
 }
