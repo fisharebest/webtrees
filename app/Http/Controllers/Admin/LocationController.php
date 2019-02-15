@@ -508,26 +508,30 @@ class LocationController extends AbstractAdminController
                 $place_parts = explode(', ', $place);
                 $count       = count($place_parts);
 
-                $parent_id = 0;
-                for ($i = $count - 1; $i >= 0; $i--) {
-                    $parent   = implode(', ', array_slice($place_parts, $i));
-                    $place_id = $locations->search($parent);
+                try {
+                    $parent_id = 0;
+                    for ($i = $count - 1; $i >= 0; $i--) {
+                        $parent   = implode(', ', array_slice($place_parts, $i));
+                        $place_id = $locations->search($parent);
 
-                    if ($place_id === false) {
-                        DB::table('placelocation')->insert([
-                            'pl_id'        => $nextRecordId,
-                            'pl_parent_id' => $parent_id,
-                            'pl_level'     => $count - $i,
-                            'pl_place'     => $place_parts[$i],
-                        ]);
+                        if ($place_id === false) {
+                            DB::table('placelocation')->insert([
+                                'pl_id'        => $nextRecordId,
+                                'pl_parent_id' => $parent_id,
+                                'pl_level'     => $count - $i,
+                                'pl_place'     => $place_parts[$i],
+                            ]);
 
-                        $parent_id             = $nextRecordId;
-                        $locations[$parent_id] = $parent;
-                        $inserted++;
-                        $nextRecordId++;
-                    } else {
-                        $parent_id = $place_id;
+                            $parent_id             = $nextRecordId;
+                            $locations[$parent_id] = $parent;
+                            $inserted++;
+                            $nextRecordId++;
+                        } else {
+                            $parent_id = $place_id;
+                        }
                     }
+                } catch (\Illuminate\Database\QueryException $ex) {
+                    // Duplicates are expected due to collation differences.  e.g. Quebec / Québec
                 }
             }
         }
