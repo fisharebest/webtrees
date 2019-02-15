@@ -17,6 +17,16 @@
  * Base formatting, resets, etc.
  */
 
+/*
+ * Flexbox fixes for IE11
+ */
+@media (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	/* Move the body down below the mangled header */
+	div.wt-main-container {
+		padding-top: 4rem;
+	}
+}
+
 /* Keep the page as tall as the window, so the footer can remain at the bottom. */
 .wt-global {
 	display: flex;
