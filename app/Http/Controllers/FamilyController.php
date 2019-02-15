@@ -55,7 +55,7 @@ class FamilyController extends AbstractBaseController
             'clipboard_facts' => $clipboard_facts,
             'record'          => $family,
             'significant'     => $this->significant($family),
-            'title'           => $family->getFullName(),
+            'title'           => $family->fullName(),
         ]);
     }
 
@@ -75,9 +75,9 @@ class FamilyController extends AbstractBaseController
             'surname'    => '',
         ];
 
-        foreach ($family->getSpouses() + $family->getChildren() as $individual) {
+        foreach ($family->spouses() + $family->children() as $individual) {
             $significant->individual = $individual;
-            [$significant->surname] = explode(',', $individual->getSortName());
+            [$significant->surname] = explode(',', $individual->sortName());
             break;
         }
 

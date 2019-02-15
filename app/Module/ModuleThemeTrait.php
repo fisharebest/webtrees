@@ -172,7 +172,7 @@ trait ModuleThemeTrait
         // Show BIRT or equivalent event
         foreach (Gedcom::BIRTH_EVENTS as $birttag) {
             if (!in_array($birttag, $opt_tags)) {
-                $event = $individual->getFirstFact($birttag);
+                $event = $individual->firstFact($birttag);
                 if ($event) {
                     $html .= $event->summary();
                     break;
@@ -182,7 +182,7 @@ trait ModuleThemeTrait
         // Show optional events (before death)
         foreach ($opt_tags as $key => $tag) {
             if (!in_array($tag, Gedcom::DEATH_EVENTS)) {
-                $event = $individual->getFirstFact($tag);
+                $event = $individual->firstFact($tag);
                 if ($event !== null) {
                     $html .= $event->summary();
                     unset($opt_tags[$key]);
@@ -191,7 +191,7 @@ trait ModuleThemeTrait
         }
         // Show DEAT or equivalent event
         foreach (Gedcom::DEATH_EVENTS as $deattag) {
-            $event = $individual->getFirstFact($deattag);
+            $event = $individual->firstFact($deattag);
             if ($event) {
                 $html .= $event->summary();
                 if (in_array($deattag, $opt_tags)) {
@@ -202,7 +202,7 @@ trait ModuleThemeTrait
         }
         // Show remaining optional events (after death)
         foreach ($opt_tags as $tag) {
-            $event = $individual->getFirstFact($tag);
+            $event = $individual->firstFact($tag);
             if ($event) {
                 $html .= $event->summary();
             }
@@ -263,15 +263,15 @@ trait ModuleThemeTrait
     {
         $menus = [];
 
-        foreach ($individual->getSpouseFamilies() as $family) {
+        foreach ($individual->spouseFamilies() as $family) {
             $menus[] = new Menu('<strong>' . I18N::translate('Family with spouse') . '</strong>', $family->url());
-            $spouse  = $family->getSpouse($individual);
+            $spouse  = $family->spouse($individual);
             if ($spouse && $spouse->canShowName()) {
-                $menus[] = new Menu($spouse->getFullName(), $spouse->url());
+                $menus[] = new Menu($spouse->fullName(), $spouse->url());
             }
-            foreach ($family->getChildren() as $child) {
+            foreach ($family->children() as $child) {
                 if ($child->canShowName()) {
-                    $menus[] = new Menu($child->getFullName(), $child->url());
+                    $menus[] = new Menu($child->fullName(), $child->url());
                 }
             }
         }

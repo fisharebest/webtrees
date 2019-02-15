@@ -142,7 +142,7 @@ class EditNoteController extends AbstractEditController
             ]),
             'html' => view('modals/record-created', [
                 'title' => I18N::translate('The note has been created'),
-                'name'  => $record->getFullName(),
+                'name'  => $record->fullName(),
                 'url'   => $record->url(),
             ]),
         ]);

@@ -24,14 +24,14 @@
             </a>
         <?php endif ?>
 
-        <?php if (empty($individual->facts(['SEX']))) : ?>
+        <?php if ($individual->facts(['SEX'])->isEmpty()) : ?>
             <a class="dropdown-item menu-indi-editraw" href="<?= e(route('add-fact', ['fact' => 'SEX', 'ged' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
                 <?= I18N::translate('Edit the gender') ?>
             </a>
         <?php endif ?>
 
 
-        <a class="dropdown-item menu-indi-del" href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($individual->getFullName())) ?>" onclick="return confirm(this.dataset.confirm) && delete_record('<?= e($individual->xref()) ?>', '<?= e($individual->tree()->name()) ?>');">
+        <a class="dropdown-item menu-indi-del" href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($individual->fullName())) ?>" onclick="return confirm(this.dataset.confirm) && delete_record('<?= e($individual->xref()) ?>', '<?= e($individual->tree()->name()) ?>');">
             <?= I18N::translate('Delete') ?>
         </a>
 

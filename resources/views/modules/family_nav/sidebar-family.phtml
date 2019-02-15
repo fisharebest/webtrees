@@ -8,13 +8,13 @@
         </a>
     </caption>
     <tbody>
-        <?php foreach ($family->getSpouses() as $spouse) : ?>
-            <tr class="text-center wt-family-navigator-parent wt-gender-<?= $spouse->getSex() ?>">
+        <?php foreach ($family->spouses() as $spouse) : ?>
+            <tr class="text-center wt-family-navigator-parent wt-gender-<?= $spouse->sex() ?>">
                 <th class="text-nowrap align-middle wt-family-navigator-label" scope="row">
                     <?php if ($spouse === $individual) : ?>
                         <?= Functions::getCloseRelationshipName($individual, $spouse) ?>
                         <i class="icon-selected"></i>
-                    <?php elseif ($spouse->getPrimaryChildFamily() !== null) : ?>
+                    <?php elseif ($spouse->primaryChildFamily() !== null) : ?>
                     <div class="dropdown">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdown-<?= e($spouse->xref()) ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <?= Functions::getCloseRelationshipName($individual, $spouse) ?>
@@ -24,9 +24,9 @@
                             <div class="dropdown-header wt-family-navigator-dropdown-heading">
                                 <?= I18N::translate('Parents') ?>
                             </div>
-                            <?php foreach ($spouse->getPrimaryChildFamily()->getSpouses() as $parent) : ?>
+                            <?php foreach ($spouse->primaryChildFamily()->spouses() as $parent) : ?>
                                 <a class="dropdown-item" href="<?= e($parent->url()) ?>">
-                                    <?= $parent->getFullName() ?>
+                                    <?= $parent->fullName() ?>
                                 </a>
                             <?php endforeach ?>
                         </div>
@@ -39,32 +39,32 @@
                 <td class="wt-family-navigator-name">
                     <?php if ($spouse->canShow()) : ?>
                         <a href="<?= e($spouse->url()) ?>">
-                            <?= $spouse->getFullName() ?>
+                            <?= $spouse->fullName() ?>
                         </a>
                         <div class="small">
                             <?= $spouse->getLifeSpan() ?>
                         </div>
                     <?php else : ?>
-                        <?= $spouse->getFullName() ?>
+                        <?= $spouse->fullName() ?>
                     <?php endif ?>
                 </td>
             </tr>
         <?php endforeach ?>
 
-        <?php foreach ($family->getChildren() as $child) : ?>
-            <tr class="text-center wt-family-navigator-child wt-gender-<?= $child->getSex() ?>">
+        <?php foreach ($family->children() as $child) : ?>
+            <tr class="text-center wt-family-navigator-child wt-gender-<?= $child->sex() ?>">
                 <th class="text-nowrap align-middle" scope="row">
                     <?php if ($child === $individual) : ?>
                         <?= Functions::getCloseRelationshipName($individual, $child) ?>
                         <i class="icon-selected"></i>
-                    <?php elseif ($child->getSpouseFamilies() !== []) : ?>
+                    <?php elseif ($child->spouseFamilies() !== []) : ?>
                         <div class="dropdown">
                             <a class="dropdown-toggle" href="#" role="button" id="dropdown-<?= e($child->xref()) ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?= Functions::getCloseRelationshipName($individual, $child) ?>
                             </a>
 
                             <div class="dropdown-menu">
-                                <?php foreach ($child->getSpouseFamilies() as $n => $in_laws) : ?>
+                                <?php foreach ($child->spouseFamilies() as $n => $in_laws) : ?>
                                     <?php if ($n > 0) : ?>
                                         <div class="dropdown-divider"></div>
                                     <?php endif ?>
@@ -72,19 +72,19 @@
                                         <?= I18N::translate('Family') ?>
                                     </div>
 
-                                    <?php foreach ($in_laws->getSpouses() as $sibling_in_law) : ?>
+                                    <?php foreach ($in_laws->spouses() as $sibling_in_law) : ?>
                                         <?php if ($sibling_in_law !== $child) : ?>
                                             <a class="dropdown-item" href="<?= e($sibling_in_law->url()) ?>">
-                                                <?= $sibling_in_law->getFullName() ?>
+                                                <?= $sibling_in_law->fullName() ?>
                                             </a>
                                         <?php endif ?>
                                     <?php endforeach ?>
 
                                 <ul>
-                                    <?php foreach ($in_laws->getChildren() as $child_in_law) : ?>
+                                    <?php foreach ($in_laws->children() as $child_in_law) : ?>
                                     <li>
                                         <a class="dropdown-item" href="<?= e($child_in_law->url()) ?>">
-                                            <?= $child_in_law->getFullName() ?>
+                                            <?= $child_in_law->fullName() ?>
                                         </a>
                                     </li>
                                     <?php endforeach ?>
@@ -100,13 +100,13 @@
                 <td>
                     <?php if ($child->canShow()) : ?>
                         <a  href="<?= e($child->url()) ?>">
-                            <?= $child->getFullName() ?>
+                            <?= $child->fullName() ?>
                         </a>
                         <div class="small">
                             <?= $child->getLifeSpan() ?>
                         </div>
                     <?php else : ?>
-                        <?= $child->getFullName() ?>
+                        <?= $child->fullName() ?>
                     <?php endif ?>
                 </td>
             </tr>

@@ -235,7 +235,7 @@ use Fisharebest\Webtrees\View; ?>
                 <tr>
                     <td>
                         <?php if ($privacy_restriction->record) : ?>
-                            <a href="<?= e($privacy_restriction->record->url()) ?>"><?= $privacy_restriction->record->getFullName() ?></a>
+                            <a href="<?= e($privacy_restriction->record->url()) ?>"><?= $privacy_restriction->record->fullName() ?></a>
                         <?php elseif ($privacy_restriction->xref) : ?>
                             <div class="text-danger">
                                 <?= $privacy_restriction->xref ?> — <?= I18N::translate('This record does not exist.') ?>

@@ -75,7 +75,7 @@
         'individual'       => $individual,
         'family'           => $family,
         'type'             => 'FAMS',
-        'label'            => $family->getFullName(),
+        'label'            => $family->fullName(),
         'fam_access_level' => $fam_access_level,
     ]) ?>
 <?php endforeach ?>
@@ -105,7 +105,7 @@
             <tr>
                 <td>
                     <a href="<?= e(route('add-spouse-to-individual', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
-                        <?php if ($individual->getSex() !== 'F') : ?>
+                        <?php if ($individual->sex() !== 'F') : ?>
                             <?= I18N::translate('Add a wife') ?>
                         <?php else : ?>
                             <?= I18N::translate('Add a husband') ?>
@@ -117,7 +117,7 @@
             <tr>
                 <td>
                     <a href="<?= e(route('link-spouse-to-individual', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
-                        <?php if ($individual->getSex() !== 'F') : ?>
+                        <?php if ($individual->sex() !== 'F') : ?>
                             <?= I18N::translate('Add a wife using an existing individual') ?>
                         <?php else : ?>
                             <?= I18N::translate('Add a husband using an existing individual') ?>

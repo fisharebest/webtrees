@@ -65,15 +65,15 @@ if ($name_fact !== null) {
 
     // Inherit surname from parents, spouse or child
     if ($family) {
-        $father = $family->getHusband();
-        if ($father && $father->getFirstFact('NAME')) {
-            $father_name = $father->getFirstFact('NAME')->value();
+        $father = $family->husband();
+        if ($father && $father->firstFact('NAME')) {
+            $father_name = $father->firstFact('NAME')->value();
         } else {
             $father_name = '';
         }
-        $mother = $family->getWife();
-        if ($mother && $mother->getFirstFact('NAME')) {
-            $mother_name = $mother->getFirstFact('NAME')->value();
+        $mother = $family->wife();
+        if ($mother && $mother->firstFact('NAME')) {
+            $mother_name = $mother->firstFact('NAME')->value();
         } else {
             $mother_name = '';
         }
@@ -83,8 +83,8 @@ if ($name_fact !== null) {
         $father_name = '';
         $mother_name = '';
     }
-    if ($individual && $individual->getFirstFact('NAME')) {
-        $indi_name = $individual->getFirstFact('NAME')->value();
+    if ($individual && $individual->firstFact('NAME')) {
+        $indi_name = $individual->firstFact('NAME')->value();
     } else {
         $indi_name = '';
     }
@@ -94,7 +94,7 @@ if ($name_fact !== null) {
             $name_fields = array_merge($name_fields, $surname_tradition->newChildNames($father_name, $mother_name, $gender));
             break;
         case 'add_child_to_individual_action':
-            if ($individual->getSex() === 'F') {
+            if ($individual->sex() === 'F') {
                 $name_fields = array_merge($name_fields, $surname_tradition->newChildNames('', $indi_name, $gender));
             } else {
                 $name_fields = array_merge($name_fields, $surname_tradition->newChildNames($indi_name, '', $gender));

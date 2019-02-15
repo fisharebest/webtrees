@@ -23,7 +23,7 @@
         <?= $media_file->displayImage(200, 200, '', ['class' => 'slide-show-image']) ?>
         <figcaption class="slide-show-figcaption">
             <a href="<?= e($media->url()) ?>">
-                <b><?= $media->getFullName() ?></b>
+                <b><?= $media->fullName() ?></b>
             </a>
         </figcaption>
     </figure>
@@ -36,7 +36,7 @@
         <?php foreach ($media->linkedIndividuals('OBJE') as $individual) : ?>
             <?= I18N::translate('Individual') ?> —
             <a href="<?= e($individual->url()) ?>" class="slide-show-link">
-                <?= $individual->getFullName() ?>
+                <?= $individual->fullName() ?>
             </a>
             <br>
         <?php endforeach ?>
@@ -44,7 +44,7 @@
         <?php foreach ($media->linkedFamilies('OBJE') as $family) : ?>
             <?= I18N::translate('View this family') ?> —
             <a href="<?= e($family->url()) ?>" class="slide-show-link">
-                <?= $family->getFullName() ?>
+                <?= $family->fullName() ?>
             </a>
             <br>
         <?php endforeach ?>
@@ -52,7 +52,7 @@
         <?php foreach ($media->linkedSources('OBJE') as $source) : ?>
             <?= I18N::translate('View this source') ?> —
             <a href="<?= e($source->url()) ?>" class="slide-show-link">
-                <?= $source->getFullName() ?>
+                <?= $source->fullName() ?>
             </a>
             <br>
         <?php endforeach ?>

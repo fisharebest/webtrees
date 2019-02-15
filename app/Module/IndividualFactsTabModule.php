@@ -114,39 +114,40 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
         $exclude_facts = $sidebar_facts->merge($tab_facts)->flatten();
 
-        $indifacts = [];
 
         // The individual’s own facts
-        foreach ($individual->facts() as $fact) {
-            if (!$exclude_facts->contains($fact->getTag())) {
-                $indifacts[] = $fact;
-            }
-        }
+        $indifacts = $individual->facts()
+            ->filter(function (Fact $fact) use ($exclude_facts): bool {
+                return !$exclude_facts->contains($fact->getTag());
+            });
 
         // Add spouse-family facts
-        foreach ($individual->getSpouseFamilies() as $family) {
+        foreach ($individual->spouseFamilies() as $family) {
             foreach ($family->facts() as $fact) {
                 if (!$exclude_facts->contains($fact->getTag()) && $fact->getTag() !== 'CHAN') {
-                    $indifacts[] = $fact;
+                    $indifacts->push($fact);
                 }
             }
 
-            $spouse = $family->getSpouse($individual);
+            $spouse = $family->spouse($individual);
 
             if ($spouse instanceof Individual) {
                 $spouse_facts = $this->spouseFacts($individual, $spouse, $min_date, $max_date);
-                $indifacts    = array_merge($indifacts, $spouse_facts);
+                $indifacts    = $indifacts->merge($spouse_facts);
             }
 
             $child_facts = $this->childFacts($individual, $family, '_CHIL', '', $min_date, $max_date);
-            $indifacts   = array_merge($indifacts, $child_facts);
+            $indifacts   = $indifacts->merge($child_facts);
         }
 
         $parent_facts     = $this->parentFacts($individual, 1, $min_date, $max_date);
         $associate_facts  = $this->associateFacts($individual);
         $historical_facts = $this->historicalFacts($individual);
 
-        $indifacts = array_merge($indifacts, $parent_facts, $associate_facts, $historical_facts);
+        $indifacts = $indifacts
+            ->merge($parent_facts)
+            ->merge($associate_facts)
+            ->merge($historical_facts);
 
         Functions::sortFacts($indifacts);
 
@@ -238,9 +239,9 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         switch ($option) {
             case '_CHIL':
                 // Add grandchildren
-                foreach ($family->getChildren() as $child) {
-                    foreach ($child->getSpouseFamilies() as $cfamily) {
-                        switch ($child->getSex()) {
+                foreach ($family->children() as $child) {
+                    foreach ($child->spouseFamilies() as $cfamily) {
+                        switch ($child->sex()) {
                             case 'M':
                                 foreach ($this->childFacts($person, $cfamily, '_GCHI', 'son', $min_date, $max_date) as $fact) {
                                     $facts[] = $fact;
@@ -263,7 +264,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         }
 
         // For each child in the family
-        foreach ($family->getChildren() as $child) {
+        foreach ($family->children() as $child) {
             if ($child->xref() == $person->xref()) {
                 // We are not our own sibling!
                 continue;
@@ -317,7 +318,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             }
             // add child’s marriage
             if (strstr($SHOW_RELATIVES_EVENTS, '_MARR' . str_replace('_HSIB', '_SIBL', $option))) {
-                foreach ($child->getSpouseFamilies() as $sfamily) {
+                foreach ($child->spouseFamilies() as $sfamily) {
                     foreach ($sfamily->facts(['MARR']) as $fact) {
                         if ($this->includeFact($fact, $min_date, $max_date)) {
                             if ($option == '_GCHI' && $relation == 'dau') {
@@ -362,13 +363,13 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         $facts = [];
 
         if ($sosa == 1) {
-            foreach ($person->getChildFamilies() as $family) {
+            foreach ($person->childFamilies() as $family) {
                 // Add siblings
                 foreach ($this->childFacts($person, $family, '_SIBL', '', $min_date, $max_date) as $fact) {
                     $facts[] = $fact;
                 }
-                foreach ($family->getSpouses() as $spouse) {
-                    foreach ($spouse->getSpouseFamilies() as $sfamily) {
+                foreach ($family->spouses() as $spouse) {
+                    foreach ($spouse->spouseFamilies() as $sfamily) {
                         if ($family !== $sfamily) {
                             // Add half-siblings
                             foreach ($this->childFacts($person, $sfamily, '_HSIB', '', $min_date, $max_date) as $fact) {
@@ -377,7 +378,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                         }
                     }
                     // Add grandparents
-                    foreach ($this->parentFacts($spouse, $spouse->getSex() == 'F' ? 3 : 2, $min_date, $max_date) as $fact) {
+                    foreach ($this->parentFacts($spouse, $spouse->sex() == 'F' ? 3 : 2, $min_date, $max_date) as $fact) {
                         $facts[] = $fact;
                     }
                 }
@@ -385,7 +386,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
             if (strstr($SHOW_RELATIVES_EVENTS, '_MARR_PARE')) {
                 // add father/mother marriages
-                foreach ($person->getChildFamilies() as $sfamily) {
+                foreach ($person->childFamilies() as $sfamily) {
                     foreach ($sfamily->facts(['MARR']) as $fact) {
                         if ($this->includeFact($fact, $min_date, $max_date)) {
                             // marriage of parents (to each other)
@@ -395,7 +396,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                         }
                     }
                 }
-                foreach ($person->getChildStepFamilies() as $sfamily) {
+                foreach ($person->childStepFamilies() as $sfamily) {
                     foreach ($sfamily->facts(['MARR']) as $fact) {
                         if ($this->includeFact($fact, $min_date, $max_date)) {
                             // marriage of a parent (to another spouse)
@@ -409,8 +410,8 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             }
         }
 
-        foreach ($person->getChildFamilies() as $family) {
-            foreach ($family->getSpouses() as $parent) {
+        foreach ($person->childFamilies() as $family) {
+            foreach ($family->spouses() as $parent) {
                 if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT' . ($sosa == 1 ? '_PARE' : '_GPAR'))) {
                     foreach ($parent->facts(Gedcom::DEATH_EVENTS) as $fact) {
                         if ($this->includeFact($fact, $min_date, $max_date)) {
@@ -494,7 +495,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                         $factrec .= $match[0];
                     }
                     if ($associate instanceof Family) {
-                        foreach ($associate->getSpouses() as $spouse) {
+                        foreach ($associate->spouses() as $spouse) {
                             $factrec .= "\n2 _ASSO @" . $spouse->xref() . '@';
                         }
                     } else {

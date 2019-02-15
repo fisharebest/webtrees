@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Webtrees;
+use Illuminate\Support\Collection;
 use stdClass;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -178,15 +179,15 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 
         if ($record instanceof Family) {
             // Marriage
-            $spouse = $record->getSpouse($individual);
+            $spouse = $record->spouse($individual);
             if ($spouse instanceof Individual) {
                 $url  = $spouse->url();
-                $name = $spouse->getFullName();
+                $name = $spouse->fullName();
             }
         } elseif ($record !== $individual) {
             // Birth of a child
             $url  = $record->url();
-            $name = $record->getFullName();
+            $name = $record->fullName();
             $tag  = GedcomTag::getLabel('_BIRT_CHIL', $record);
         }
 
@@ -204,33 +205,29 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     /**
      * @param Individual $individual
      *
-     * @return array
+     * @return Collection|Fact[]
      * @throws Exception
      */
-    private function getPersonalFacts(Individual $individual): array
+    private function getPersonalFacts(Individual $individual): Collection
     {
         $facts = $individual->facts();
-        foreach ($individual->getSpouseFamilies() as $family) {
-            $facts = array_merge($facts, $family->facts());
+
+        foreach ($individual->spouseFamilies() as $family) {
+            $facts = $facts->merge($family->facts());
             // Add birth of children from this family to the facts array
-            foreach ($family->getChildren() as $child) {
-                $childsBirth = $child->getFirstFact('BIRT');
+            foreach ($family->children() as $child) {
+                $childsBirth = $child->firstFact('BIRT');
                 if ($childsBirth && $childsBirth->place()->gedcomName() !== '') {
-                    $facts[] = $childsBirth;
+                    $facts->push($childsBirth);
                 }
             }
         }
 
         Functions::sortFacts($facts);
 
-        $useable_facts = array_filter(
-            $facts,
-            function (Fact $item): bool {
-                return $item->place()->gedcomName() !== '';
-            }
-        );
-
-        return array_values($useable_facts);
+        return $facts->filter(function (Fact $item): bool {
+            return $item->place()->gedcomName() !== '';
+        });
     }
 
     /**

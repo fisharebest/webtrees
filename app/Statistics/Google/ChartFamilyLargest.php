@@ -76,7 +76,7 @@ class ChartFamilyLargest extends AbstractGoogle
 
             if ($family && $family->canShow()) {
                 $data[] = [
-                    htmlspecialchars_decode(strip_tags($family->getFullName())),
+                    htmlspecialchars_decode(strip_tags($family->fullName())),
                     $record->total
                 ];
             }

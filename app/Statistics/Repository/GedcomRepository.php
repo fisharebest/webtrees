@@ -58,7 +58,7 @@ class GedcomRepository implements GedcomRepositoryInterface
         $head = GedcomRecord::getInstance('HEAD', $this->tree);
 
         if ($head !== null) {
-            $sour = $head->getFirstFact('SOUR');
+            $sour = $head->firstFact('SOUR');
 
             if ($sour !== null) {
                 $source  = $sour->value();
@@ -140,7 +140,7 @@ class GedcomRepository implements GedcomRepositoryInterface
         $head = GedcomRecord::getInstance('HEAD', $this->tree);
 
         if ($head !== null) {
-            $fact = $head->getFirstFact('DATE');
+            $fact = $head->firstFact('DATE');
 
             if ($fact) {
                 return (new Date($fact->value()))->display();

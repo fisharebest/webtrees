@@ -3,9 +3,9 @@
 <?php else : ?>
     <?= view('chart-box', ['individual' => $individual]) ?>
 <!--
-    <div class="h-100 person_box<?= ['M' => '', 'F' => 'F', 'U' => 'NN'][$individual->getSex()]?> person_box_template">
+    <div class="h-100 person_box<?= ['M' => '', 'F' => 'F', 'U' => 'NN'][$individual->sex()]?> person_box_template">
         <a href="<?= e($individual->url()) ?>">
-            <?= $individual->getFullName() ?>
+            <?= $individual->fullName() ?>
         </a>
         <div class="small">
             <?= $individual->getLifeSpan() ?>

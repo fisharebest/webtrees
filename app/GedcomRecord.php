@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
 use stdClass;
 
 /**
@@ -119,7 +120,7 @@ class GedcomRecord
         return function (GedcomRecord $x, GedcomRecord $y): int {
             if ($x->canShowName()) {
                 if ($y->canShowName()) {
-                    return I18N::strcasecmp($x->getSortName(), $y->getSortName());
+                    return I18N::strcasecmp($x->sortName(), $y->sortName());
                 }
 
                 return -1; // only $y is private
@@ -478,7 +479,7 @@ class GedcomRecord
             return true;
         }
 
-        $cache_key =  'canShow' . $this->xref . ':' . $this->tree->id() . ':' . $access_level;
+        $cache_key = 'canShow' . $this->xref . ':' . $this->tree->id() . ':' . $access_level;
 
         return app('cache.array')->rememberForever($cache_key, function () use ($access_level) {
             return $this->canShowRecord($access_level);
@@ -586,13 +587,13 @@ class GedcomRecord
      * ['full'] = the name as specified in the record, e.g. 'Vincent van Gogh' or 'John Unknown'
      * ['sort'] = a sortable version of the name (not for display), e.g. 'Gogh, Vincent' or '@N.N., John'
      *
-     * @param int    $level
-     * @param string $fact_type
-     * @param Fact[] $facts
+     * @param int               $level
+     * @param string            $fact_type
+     * @param Collection|Fact[] $facts
      *
      * @return void
      */
-    protected function extractNamesFromFacts(int $level, string $fact_type, array $facts)
+    protected function extractNamesFromFacts(int $level, string $fact_type, Collection $facts)
     {
         $sublevel    = $level + 1;
         $subsublevel = $sublevel + 1;
@@ -742,7 +743,7 @@ class GedcomRecord
      *
      * @return string
      */
-    public function getFullName()
+    public function fullName()
     {
         if ($this->canShowName()) {
             $tmp = $this->getAllNames();
@@ -758,7 +759,7 @@ class GedcomRecord
      *
      * @return string
      */
-    public function getSortName(): string
+    public function sortName(): string
     {
         // The sortable name is never displayed, no need to call canShowName()
         $tmp = $this->getAllNames();
@@ -771,7 +772,7 @@ class GedcomRecord
      *
      * @return null|string
      */
-    public function getAddName()
+    public function alternateName()
     {
         if ($this->canShowName() && $this->getPrimaryName() != $this->getSecondaryName()) {
             $all_names = $this->getAllNames();
@@ -790,7 +791,7 @@ class GedcomRecord
     public function formatList(): string
     {
         $html = '<a href="' . e($this->url()) . '" class="list_item">';
-        $html .= '<b>' . $this->getFullName() . '</b>';
+        $html .= '<b>' . $this->fullName() . '</b>';
         $html .= $this->formatListDetails();
         $html .= '</a>';
 
@@ -1071,7 +1072,7 @@ class GedcomRecord
      *
      * @return Fact|null
      */
-    public function getFirstFact(string $tag)
+    public function firstFact(string $tag)
     {
         foreach ($this->facts() as $fact) {
             if ($fact->getTag() === $tag) {
@@ -1090,9 +1091,9 @@ class GedcomRecord
      * @param int|null $access_level
      * @param bool     $override Include private records, to allow us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES.
      *
-     * @return Fact[]
+     * @return Collection|Fact[]
      */
-    public function facts(array $filter = [], bool $sort = false, int $access_level = null, bool $override = false): array
+    public function facts(array $filter = [], bool $sort = false, int $access_level = null, bool $override = false): Collection
     {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);
@@ -1111,7 +1112,7 @@ class GedcomRecord
             Functions::sortFacts($facts);
         }
 
-        return $facts;
+        return new Collection($facts);
     }
 
     /**
@@ -1124,7 +1125,7 @@ class GedcomRecord
      */
     public function lastChangeTimestamp(bool $sorting = false)
     {
-        $chan = $this->getFirstFact('CHAN');
+        $chan = $this->firstFact('CHAN');
 
         if ($chan) {
             // The record does have a CHAN event
@@ -1158,7 +1159,7 @@ class GedcomRecord
      */
     public function lastChangeUser()
     {
-        $chan = $this->getFirstFact('CHAN');
+        $chan = $this->firstFact('CHAN');
 
         if ($chan === null) {
             return I18N::translate('Unknown');

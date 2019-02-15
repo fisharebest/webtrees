@@ -89,15 +89,15 @@ $count_notes = DB::table('other')
         <?php foreach ($sources as $source) : ?>
             <tr class="<?= $source->isPendingDeletion() ? 'old' : ($source->isPendingAddition() ? 'new' : '') ?>">
                 <!-- Title -->
-                <td data-sort="<?= e($source->getSortName()) ?>">
+                <td data-sort="<?= e($source->sortName()) ?>">
                     <a href="<?= e($source->url()) ?>">
-                        <?= $source->getFullName() ?>
+                        <?= $source->fullName() ?>
                     </a>
                 </td>
 
                 <!-- Author -->
                 <td>
-                    <?= e($source->getFirstFact('AUTH') ? $source->getFirstFact('AUTH')->value() : '') ?>
+                    <?= e($source->firstFact('AUTH') ? $source->firstFact('AUTH')->value() : '') ?>
                 </td>
 
                 <!-- Count of linked individuals -->

@@ -542,25 +542,25 @@ class MediaController extends AbstractAdminController
      */
     private function mediaObjectInfo(Media $media): string
     {
-        $html = '<b><a href="' . e($media->url()) . '">' . $media->getFullName() . '</a></b>' . '<br><i>' . e($media->getNote()) . '</i></br><br>';
+        $html = '<b><a href="' . e($media->url()) . '">' . $media->fullName() . '</a></b>' . '<br><i>' . e($media->getNote()) . '</i></br><br>';
 
         $linked = [];
         foreach ($media->linkedIndividuals('OBJE') as $link) {
-            $linked[] = '<a href="' . e($link->url()) . '">' . $link->getFullName() . '</a>';
+            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
         }
         foreach ($media->linkedFamilies('OBJE') as $link) {
-            $linked[] = '<a href="' . e($link->url()) . '">' . $link->getFullName() . '</a>';
+            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
         }
         foreach ($media->linkedSources('OBJE') as $link) {
-            $linked[] = '<a href="' . e($link->url()) . '">' . $link->getFullName() . '</a>';
+            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
         }
         foreach ($media->linkedNotes('OBJE') as $link) {
             // Invalid GEDCOM - you cannot link a NOTE to an OBJE
-            $linked[] = '<a href="' . e($link->url()) . '">' . $link->getFullName() . '</a>';
+            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
         }
         foreach ($media->linkedRepositories('OBJE') as $link) {
             // Invalid GEDCOM - you cannot link a REPO to an OBJE
-            $linked[] = '<a href="' . e($link->url()) . '">' . $link->getFullName() . '</a>';
+            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
         }
         if (!empty($linked)) {
             $html .= '<ul>';

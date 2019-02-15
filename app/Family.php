@@ -157,7 +157,7 @@ class Family extends GedcomRecord
      *
      * @return Individual|null
      */
-    public function getHusband($access_level = null)
+    public function husband($access_level = null): ?Individual
     {
         $SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
@@ -175,7 +175,7 @@ class Family extends GedcomRecord
      *
      * @return Individual|null
      */
-    public function getWife($access_level = null)
+    public function wife($access_level = null): ?Individual
     {
         $SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
@@ -229,13 +229,13 @@ class Family extends GedcomRecord
      *
      * @return Individual|null
      */
-    public function getSpouse(Individual $person, $access_level = null)
+    public function spouse(Individual $person, $access_level = null)
     {
         if ($person === $this->wife) {
-            return $this->getHusband($access_level);
+            return $this->husband($access_level);
         }
 
-        return $this->getWife($access_level);
+        return $this->wife($access_level);
     }
 
     /**
@@ -245,11 +245,11 @@ class Family extends GedcomRecord
      *
      * @return Individual[]
      */
-    public function getSpouses($access_level = null): array
+    public function spouses($access_level = null): array
     {
         return array_filter([
-            $this->getHusband($access_level),
-            $this->getWife($access_level),
+            $this->husband($access_level),
+            $this->wife($access_level),
         ]);
     }
 
@@ -260,7 +260,7 @@ class Family extends GedcomRecord
      *
      * @return Individual[]
      */
-    public function getChildren($access_level = null): array
+    public function children($access_level = null): array
     {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);
@@ -284,9 +284,9 @@ class Family extends GedcomRecord
      *
      * @return int
      */
-    public function getNumberOfChildren(): int
+    public function numberOfChildren(): int
     {
-        $nchi = count($this->getChildren());
+        $nchi = count($this->children());
         foreach ($this->facts(['NCHI']) as $fact) {
             $nchi = max($nchi, (int) $fact->value());
         }
@@ -301,7 +301,7 @@ class Family extends GedcomRecord
      */
     public function getMarriage()
     {
-        return $this->getFirstFact('MARR');
+        return $this->firstFact('MARR');
     }
 
     /**

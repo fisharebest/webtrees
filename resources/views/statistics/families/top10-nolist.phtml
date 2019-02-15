@@ -10,6 +10,6 @@ use Fisharebest\Webtrees\I18N;
 
 <?php foreach ($records as $record): ?>
     <?php $family = $record['family']; ?>
-    <a href="<?= e($family->url()) ?>"><?= $family->getFullName() ?></a>
+    <a href="<?= e($family->url()) ?>"><?= $family->fullName() ?></a>
     - <?= I18N::plural('%s child', '%s children', $record['count'], I18N::number($record['count'])) ?>
 <?php endforeach; ?>

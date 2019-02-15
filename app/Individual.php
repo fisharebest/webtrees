@@ -21,6 +21,7 @@ use Closure;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Collection;
 use stdClass;
 
 /**
@@ -352,8 +353,8 @@ class Individual extends GedcomRecord
         // If we found no conclusive dates then check the dates of close relatives.
 
         // Check parents (birth and adopted)
-        foreach ($this->getChildFamilies(Auth::PRIV_HIDE) as $family) {
-            foreach ($family->getSpouses(Auth::PRIV_HIDE) as $parent) {
+        foreach ($this->childFamilies(Auth::PRIV_HIDE) as $family) {
+            foreach ($family->spouses(Auth::PRIV_HIDE) as $parent) {
                 // Assume parents are no more than 45 years older than their children
                 preg_match_all('/\n2 DATE (.+)/', $parent->gedcom, $date_matches);
                 foreach ($date_matches[1] as $date_match) {
@@ -366,7 +367,7 @@ class Individual extends GedcomRecord
         }
 
         // Check spouses
-        foreach ($this->getSpouseFamilies(Auth::PRIV_HIDE) as $family) {
+        foreach ($this->spouseFamilies(Auth::PRIV_HIDE) as $family) {
             preg_match_all('/\n2 DATE (.+)/', $family->gedcom, $date_matches);
             foreach ($date_matches[1] as $date_match) {
                 $date = new Date($date_match);
@@ -376,7 +377,7 @@ class Individual extends GedcomRecord
                 }
             }
             // Check spouse dates
-            $spouse = $family->getSpouse($this, Auth::PRIV_HIDE);
+            $spouse = $family->spouse($this, Auth::PRIV_HIDE);
             if ($spouse) {
                 preg_match_all('/\n2 DATE (.+)/', $spouse->gedcom, $date_matches);
                 foreach ($date_matches[1] as $date_match) {
@@ -388,7 +389,7 @@ class Individual extends GedcomRecord
                 }
             }
             // Check child dates
-            foreach ($family->getChildren(Auth::PRIV_HIDE) as $child) {
+            foreach ($family->children(Auth::PRIV_HIDE) as $child) {
                 preg_match_all('/\n2 DATE (.+)/', $child->gedcom, $date_matches);
                 // Assume children born after age of 15
                 foreach ($date_matches[1] as $date_match) {
@@ -398,8 +399,8 @@ class Individual extends GedcomRecord
                     }
                 }
                 // Check grandchildren
-                foreach ($child->getSpouseFamilies(Auth::PRIV_HIDE) as $child_family) {
-                    foreach ($child_family->getChildren(Auth::PRIV_HIDE) as $grandchild) {
+                foreach ($child->spouseFamilies(Auth::PRIV_HIDE) as $child_family) {
+                    foreach ($child_family->children(Auth::PRIV_HIDE) as $grandchild) {
                         preg_match_all('/\n2 DATE (.+)/', $grandchild->gedcom, $date_matches);
                         // Assume grandchildren born after age of 30
                         foreach ($date_matches[1] as $date_match) {
@@ -457,7 +458,7 @@ class Individual extends GedcomRecord
         }
 
         if ($this->tree->getPreference('USE_SILHOUETTE')) {
-            return '<i class="icon-silhouette-' . $this->getSex() . '"></i>';
+            return '<i class="icon-silhouette-' . $this->sex() . '"></i>';
         }
 
         return '';
@@ -659,13 +660,13 @@ class Individual extends GedcomRecord
                     $min[] = $tmp->minimumJulianDay() - $this->tree->getPreference('MAX_ALIVE_AGE') * 365;
                     $max[] = $tmp->maximumJulianDay();
                 }
-                foreach ($this->getChildFamilies() as $family) {
+                foreach ($this->childFamilies() as $family) {
                     $tmp = $family->getMarriageDate();
                     if ($tmp->isOK()) {
                         $min[] = $tmp->maximumJulianDay() - 365 * 1;
                         $max[] = $tmp->minimumJulianDay() + 365 * 30;
                     }
-                    $husband = $family->getHusband();
+                    $husband = $family->husband();
                     if ($husband instanceof Individual) {
                         $tmp = $husband->getBirthDate();
                         if ($tmp->isOK()) {
@@ -673,7 +674,7 @@ class Individual extends GedcomRecord
                             $max[] = $tmp->minimumJulianDay() + 365 * 65;
                         }
                     }
-                    $wife = $family->getWife();
+                    $wife = $family->wife();
                     if ($wife instanceof Individual) {
                         $tmp = $wife->getBirthDate();
                         if ($tmp->isOK()) {
@@ -681,7 +682,7 @@ class Individual extends GedcomRecord
                             $max[] = $tmp->minimumJulianDay() + 365 * 45;
                         }
                     }
-                    foreach ($family->getChildren() as $child) {
+                    foreach ($family->children() as $child) {
                         $tmp = $child->getBirthDate();
                         if ($tmp->isOK()) {
                             $min[] = $tmp->maximumJulianDay() - 365 * 30;
@@ -689,13 +690,13 @@ class Individual extends GedcomRecord
                         }
                     }
                 }
-                foreach ($this->getSpouseFamilies() as $family) {
+                foreach ($this->spouseFamilies() as $family) {
                     $tmp = $family->getMarriageDate();
                     if ($tmp->isOK()) {
                         $min[] = $tmp->maximumJulianDay() - 365 * 45;
                         $max[] = $tmp->minimumJulianDay() - 365 * 15;
                     }
-                    $spouse = $family->getSpouse($this);
+                    $spouse = $family->spouse($this);
                     if ($spouse) {
                         $tmp = $spouse->getBirthDate();
                         if ($tmp->isOK()) {
@@ -703,10 +704,10 @@ class Individual extends GedcomRecord
                             $max[] = $tmp->minimumJulianDay() + 365 * 25;
                         }
                     }
-                    foreach ($family->getChildren() as $child) {
+                    foreach ($family->children() as $child) {
                         $tmp = $child->getBirthDate();
                         if ($tmp->isOK()) {
-                            $min[] = $tmp->maximumJulianDay() - 365 * ($this->getSex() == 'F' ? 45 : 65);
+                            $min[] = $tmp->maximumJulianDay() - 365 * ($this->sex() == 'F' ? 45 : 65);
                             $max[] = $tmp->minimumJulianDay() - 365 * 15;
                         }
                     }
@@ -759,7 +760,7 @@ class Individual extends GedcomRecord
      *
      * @return string
      */
-    public function getSex()
+    public function sex()
     {
         if (preg_match('/\n1 SEX ([MF])/', $this->gedcom . $this->pending, $match)) {
             return $match[1];
@@ -777,7 +778,7 @@ class Individual extends GedcomRecord
      */
     public function getSexImage($size = 'small'): string
     {
-        return self::sexImage($this->getSex(), $size);
+        return self::sexImage($this->sex(), $size);
     }
 
     /**
@@ -812,7 +813,7 @@ class Individual extends GedcomRecord
             'U' => 'NN',
         ];
 
-        return 'person_box' . $tmp[$this->getSex()];
+        return 'person_box' . $tmp[$this->sex()];
     }
 
     /**
@@ -820,9 +821,9 @@ class Individual extends GedcomRecord
      *
      * @param int|null $access_level
      *
-     * @return Family[]
+     * @return Collection|Family[]
      */
-    public function getSpouseFamilies($access_level = null): array
+    public function spouseFamilies($access_level = null): Collection
     {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);
@@ -830,15 +831,15 @@ class Individual extends GedcomRecord
 
         $SHOW_PRIVATE_RELATIONSHIPS = (bool) $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
-        $families = [];
+        $families = new Collection();
         foreach ($this->facts(['FAMS'], false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
             $family = $fact->target();
             if ($family instanceof Family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
-                $families[] = $family;
+                $families->push($family);
             }
         }
 
-        return $families;
+        return new Collection($families);
     }
 
     /**
@@ -851,10 +852,10 @@ class Individual extends GedcomRecord
      */
     public function getCurrentSpouse()
     {
-        $tmp    = $this->getSpouseFamilies();
-        $family = end($tmp);
-        if ($family) {
-            return $family->getSpouse($this);
+        $family = $this->spouseFamilies()->last();
+
+        if ($family instanceof Family) {
+            return $family->spouse($this);
         }
 
         return null;
@@ -865,15 +866,15 @@ class Individual extends GedcomRecord
      *
      * @return int
      */
-    public function getNumberOfChildren()
+    public function numberOfChildren()
     {
         if (preg_match('/\n1 NCHI (\d+)(?:\n|$)/', $this->gedcom(), $match)) {
             return (int) $match[1];
         }
 
         $children = [];
-        foreach ($this->getSpouseFamilies() as $fam) {
-            foreach ($fam->getChildren() as $child) {
+        foreach ($this->spouseFamilies() as $fam) {
+            foreach ($fam->children() as $child) {
                 $children[$child->xref()] = true;
             }
         }
@@ -886,9 +887,9 @@ class Individual extends GedcomRecord
      *
      * @param int|null $access_level
      *
-     * @return Family[]
+     * @return Collection|Family[]
      */
-    public function getChildFamilies($access_level = null): array
+    public function childFamilies($access_level = null): Collection
     {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);
@@ -896,11 +897,12 @@ class Individual extends GedcomRecord
 
         $SHOW_PRIVATE_RELATIONSHIPS = (bool) $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
-        $families = [];
+        $families = new Collection();
+
         foreach ($this->facts(['FAMC'], false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
             $family = $fact->target();
             if ($family instanceof Family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
-                $families[] = $family;
+                $families->push($family);
             }
         }
 
@@ -919,9 +921,9 @@ class Individual extends GedcomRecord
      *
      * @return Family|null
      */
-    public function getPrimaryChildFamily()
+    public function primaryChildFamily()
     {
-        $families = $this->getChildFamilies();
+        $families = $this->childFamilies();
         switch (count($families)) {
             case 0:
                 return null;
@@ -961,23 +963,23 @@ class Individual extends GedcomRecord
      *
      * @return Family[]
      */
-    public function getChildStepFamilies(): array
+    public function childStepFamilies(): array
     {
         $step_families = [];
-        $families      = $this->getChildFamilies();
+        $families      = $this->childFamilies();
         foreach ($families as $family) {
-            $father = $family->getHusband();
+            $father = $family->husband();
             if ($father) {
-                foreach ($father->getSpouseFamilies() as $step_family) {
-                    if (!in_array($step_family, $families, true)) {
+                foreach ($father->spouseFamilies() as $step_family) {
+                    if (!$families->containsStrict($step_family)) {
                         $step_families[] = $step_family;
                     }
                 }
             }
-            $mother = $family->getWife();
+            $mother = $family->wife();
             if ($mother) {
-                foreach ($mother->getSpouseFamilies() as $step_family) {
-                    if (!in_array($step_family, $families, true)) {
+                foreach ($mother->spouseFamilies() as $step_family) {
+                    if (!$families->containsStrict($step_family)) {
                         $step_families[] = $step_family;
                     }
                 }
@@ -992,15 +994,15 @@ class Individual extends GedcomRecord
      *
      * @return Family[]
      */
-    public function getSpouseStepFamilies(): array
+    public function spouseStepFamilies(): array
     {
         $step_families = [];
-        $families      = $this->getSpouseFamilies();
+        $families      = $this->spouseFamilies();
         foreach ($families as $family) {
-            $spouse = $family->getSpouse($this);
+            $spouse = $family->spouse($this);
             if ($spouse) {
-                foreach ($family->getSpouse($this)->getSpouseFamilies() as $step_family) {
-                    if (!in_array($step_family, $families, true)) {
+                foreach ($family->spouse($this)->spouseFamilies() as $step_family) {
+                    if (!$families->containsStrict($step_family)) {
                         $step_families[] = $step_family;
                     }
                 }
@@ -1037,18 +1039,18 @@ class Individual extends GedcomRecord
      */
     public function getStepFamilyLabel(Family $step_family): string
     {
-        foreach ($this->getChildFamilies() as $family) {
+        foreach ($this->childFamilies() as $family) {
             if ($family !== $step_family) {
                 // Must be a step-family
-                foreach ($family->getSpouses() as $parent) {
-                    foreach ($step_family->getSpouses() as $step_parent) {
+                foreach ($family->spouses() as $parent) {
+                    foreach ($step_family->spouses() as $step_parent) {
                         if ($parent === $step_parent) {
                             // One common parent - must be a step family
-                            if ($parent->getSex() == 'M') {
+                            if ($parent->sex() == 'M') {
                                 // Father’s family with someone else
-                                if ($step_family->getSpouse($step_parent)) {
+                                if ($step_family->spouse($step_parent)) {
                                     /* I18N: A step-family. %s is an individual’s name */
-                                    return I18N::translate('Father’s family with %s', $step_family->getSpouse($step_parent)->getFullName());
+                                    return I18N::translate('Father’s family with %s', $step_family->spouse($step_parent)->fullName());
                                 }
 
                                 /* I18N: A step-family. */
@@ -1056,9 +1058,9 @@ class Individual extends GedcomRecord
                             }
 
                             // Mother’s family with someone else
-                            if ($step_family->getSpouse($step_parent)) {
+                            if ($step_family->spouse($step_parent)) {
                                 /* I18N: A step-family. %s is an individual’s name */
-                                return I18N::translate('Mother’s family with %s', $step_family->getSpouse($step_parent)->getFullName());
+                                return I18N::translate('Mother’s family with %s', $step_family->spouse($step_parent)->fullName());
                             }
 
                             /* I18N: A step-family. */
@@ -1084,13 +1086,13 @@ class Individual extends GedcomRecord
      */
     public function getSpouseFamilyLabel(Family $family)
     {
-        $spouse = $family->getSpouse($this);
+        $spouse = $family->spouse($this);
         if ($spouse) {
             /* I18N: %s is the spouse name */
-            return I18N::translate('Family with %s', $spouse->getFullName());
+            return I18N::translate('Family with %s', $spouse->fullName());
         }
 
-        return $family->getFullName();
+        return $family->fullName();
     }
 
     /**
@@ -1103,7 +1105,7 @@ class Individual extends GedcomRecord
      */
     public function getPrimaryParentsNames($classname = '', $display = ''): string
     {
-        $fam = $this->getPrimaryChildFamily();
+        $fam = $this->primaryChildFamily();
         if (!$fam) {
             return '';
         }
@@ -1115,24 +1117,24 @@ class Individual extends GedcomRecord
             $txt .= ' style="display:' . $display . '"';
         }
         $txt .= '>';
-        $husb = $fam->getHusband();
+        $husb = $fam->husband();
         if ($husb) {
             // Temporarily reset the 'prefered' display name, as we always
             // want the default name, not the one selected for display on the indilist.
             $primary = $husb->getPrimaryName();
             $husb->setPrimaryName(null);
             /* I18N: %s is the name of an individual’s father */
-            $txt .= I18N::translate('Father: %s', $husb->getFullName()) . '<br>';
+            $txt .= I18N::translate('Father: %s', $husb->fullName()) . '<br>';
             $husb->setPrimaryName($primary);
         }
-        $wife = $fam->getWife();
+        $wife = $fam->wife();
         if ($wife) {
             // Temporarily reset the 'prefered' display name, as we always
             // want the default name, not the one selected for display on the indilist.
             $primary = $wife->getPrimaryName();
             $wife->setPrimaryName(null);
             /* I18N: %s is the name of an individual’s mother */
-            $txt .= I18N::translate('Mother: %s', $wife->getFullName());
+            $txt .= I18N::translate('Mother: %s', $wife->fullName());
             $wife->setPrimaryName($primary);
         }
         $txt .= '</div>';

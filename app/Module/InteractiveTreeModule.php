@@ -153,7 +153,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
     public function chartTitle(Individual $individual): string
     {
         /* I18N: %s is an individual’s name */
-        return I18N::translate('Interactive tree of %s', $individual->getFullName());
+        return I18N::translate('Interactive tree of %s', $individual->fullName());
     }
 
     /**

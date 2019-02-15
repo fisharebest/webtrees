@@ -113,10 +113,10 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface
     {
         if ($this->facts === null) {
             $facts = $individual->facts();
-            foreach ($individual->getSpouseFamilies() as $family) {
+            foreach ($individual->spouseFamilies() as $family) {
                 if ($family->canShow()) {
                     foreach ($family->facts() as $fact) {
-                        $facts[] = $fact;
+                        $facts->push($fact);
                     }
                 }
             }

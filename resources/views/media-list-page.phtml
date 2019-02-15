@@ -112,7 +112,7 @@
                     <div class="card mb-4">
                         <div class="card-header">
                             <h4 class="card-title">
-                                <a href="<?= e($media_object->url()) ?>"><?= $media_object->getFullName() ?></a>
+                                <a href="<?= e($media_object->url()) ?>"><?= $media_object->fullName() ?></a>
                             </h4>
                         </div>
                         <div class="card-body">
@@ -157,19 +157,19 @@
                         <div class="card-footer">
                             <?php foreach ($media_object->linkedIndividuals('OBJE') as $record) : ?>
                                 <?= view('icons/individual') ?>
-                                <a href="<?= e($record->url()) ?>"><?= $record->getFullName() ?></a>
+                                <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
                                 <br>
                             <?php endforeach ?>
 
                             <?php foreach ($media_object->linkedFamilies('OBJE') as $record) : ?>
                                 <?= view('icons/family') ?>
-                                <a href="<?= e($record->url()) ?>"><?= $record->getFullName() ?></a>
+                                <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
                                 <br>
                             <?php endforeach ?>
 
                             <?php foreach ($media_object->linkedSources('OBJE') as $record) : ?>
                                 <?= view('icons/source') ?>
-                                <a href="<?= e($record->url()) ?>"><?= $record->getFullName() ?></a>
+                                <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
                                 <br>
                             <?php endforeach ?>
                         </div>

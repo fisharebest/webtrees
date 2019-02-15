@@ -232,7 +232,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
             }
 
             /* I18N: %s are individual’s names */
-            $title = I18N::translate('Relationships between %1$s and %2$s', $individual1->getFullName(), $individual2->getFullName());
+            $title = I18N::translate('Relationships between %1$s and %2$s', $individual1->fullName(), $individual2->fullName());
 
             $ajax_url = $this->chartUrl($individual1, [
                 'ajax'      => true,
@@ -515,13 +515,13 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                 return [];
             }
             if (($rel1 === 'HUSB' || $rel1 === 'WIFE') && ($rel2 === 'HUSB' || $rel2 === 'WIFE')) {
-                $relationships[$i] = $spouse_codes[$next->getSex()];
+                $relationships[$i] = $spouse_codes[$next->sex()];
             } elseif (($rel1 === 'HUSB' || $rel1 === 'WIFE') && $rel2 === 'CHIL') {
-                $relationships[$i] = $child_codes[$next->getSex()];
+                $relationships[$i] = $child_codes[$next->sex()];
             } elseif ($rel1 === 'CHIL' && ($rel2 === 'HUSB' || $rel2 === 'WIFE')) {
-                $relationships[$i] = $parent_codes[$next->getSex()];
+                $relationships[$i] = $parent_codes[$next->sex()];
             } elseif ($rel1 === 'CHIL' && $rel2 === 'CHIL') {
-                $relationships[$i] = $sibling_codes[$next->getSex()];
+                $relationships[$i] = $sibling_codes[$next->sex()];
             }
         }
 

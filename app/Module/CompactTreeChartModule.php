@@ -88,7 +88,7 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
     public function chartTitle(Individual $individual): string
     {
         /* I18N: %s is an individual’s name */
-        return I18N::translate('Compact tree of %s', $individual->getFullName());
+        return I18N::translate('Compact tree of %s', $individual->fullName());
     }
 
     /**

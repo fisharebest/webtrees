@@ -824,7 +824,7 @@ class IndividualRepository implements IndividualRepositoryInterface
                 return I18N::number((int) ($row->days / 365.25));
 
             case 'name':
-                return '<a href="' . e($individual->url()) . '">' . $individual->getFullName() . '</a>';
+                return '<a href="' . e($individual->url()) . '">' . $individual->fullName() . '</a>';
         }
     }
 

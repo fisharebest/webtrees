@@ -115,7 +115,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
     public function chartTitle(Individual $individual): string
     {
         /* I18N: %s is an individual’s name */
-        return I18N::translate('Descendants of %s', $individual->getFullName());
+        return I18N::translate('Descendants of %s', $individual->fullName());
     }
 
     /**
@@ -257,8 +257,8 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
         // check if child has parents and add an arrow
         echo '<td></td>';
         echo '<td>';
-        foreach ($person->getChildFamilies() as $cfamily) {
-            foreach ($cfamily->getSpouses() as $parent) {
+        foreach ($person->childFamilies() as $cfamily) {
+            foreach ($cfamily->spouses() as $parent) {
                 echo '<a href="' . e($this->chartUrl($parent, ['generations' => $generations])) . '" title="' .  I18N::translate('Start at parents') . '">' . view('icons/arrow-up') . '<span class="sr-only">' .  I18N::translate('Start at parents') . '</span></a>';
                 // only show the arrow for one of the parents
                 break;
@@ -274,7 +274,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
         }
         $this->dabo_num[$level]++;
         $this->dabo_num[$level + 1] = 0;
-        $this->dabo_sex[$level]     = $person->getSex();
+        $this->dabo_sex[$level]     = $person->sex();
         for ($i = 0; $i <= $level; $i++) {
             $isf = $this->dabo_sex[$i];
             if ($isf === 'M') {
@@ -294,7 +294,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
         echo '</li>';
 
         // loop for each spouse
-        foreach ($person->getSpouseFamilies() as $family) {
+        foreach ($person->spouseFamilies() as $family) {
             $this->printFamilyDescendancy($person, $family, $depth, $generations);
         }
     }
@@ -325,7 +325,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
         echo '</span>';
 
         // print spouse
-        $spouse = $family->getSpouse($person);
+        $spouse = $family->spouse($person);
         echo '<ul class="generations" id="' . $uid . '">';
         echo '<li>';
         echo '<table><tr><td>';
@@ -336,8 +336,8 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
         echo '<td></td>';
         echo '<td>';
         if ($spouse) {
-            foreach ($spouse->getChildFamilies() as $cfamily) {
-                foreach ($cfamily->getSpouses() as $parent) {
+            foreach ($spouse->childFamilies() as $cfamily) {
+                foreach ($cfamily->spouses() as $parent) {
                     echo '<a href="' . e($this->chartUrl($parent, ['generations' => $generations])) . '" title="' .  strip_tags($this->chartTitle($parent)) . '">' . view('icons/arrow-up') . '<span class="sr-only">' .  strip_tags($this->chartTitle($parent)) . '</span></a>';
                     // only show the arrow for one of the parents
                     break;
@@ -348,7 +348,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
         echo '</td></tr>';
 
         // children
-        $children = $family->getChildren();
+        $children = $family->children();
         echo '<tr><td colspan="3" class="details1" >&nbsp;&nbsp;';
         if (!empty($children)) {
             echo GedcomTag::getLabel('NCHI') . ': ' . count($children);
@@ -448,9 +448,9 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
 
         $i = 1;
 
-        foreach ($individual->getSpouseFamilies() as $family) {
+        foreach ($individual->spouseFamilies() as $family) {
             FunctionsCharts::printSosaFamily($family, '', -1, $daboville, $individual->xref(), $gpid, false);
-            foreach ($family->getChildren() as $child) {
+            foreach ($family->children() as $child) {
                 $this->printChildFamily($child, $depth - 1, $daboville . ($i++) . '.', $individual->xref());
             }
         }

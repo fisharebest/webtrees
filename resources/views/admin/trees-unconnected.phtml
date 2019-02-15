@@ -14,14 +14,14 @@
     </button>
 </form>
 
-<p><?= I18N::translate('These groups of individuals are not related to %s.', $root->getFullName()) ?></p>
+<p><?= I18N::translate('These groups of individuals are not related to %s.', $root->fullName()) ?></p>
 
 <?php foreach ($individual_groups as $group) : ?>
     <h2><?= I18N::plural('%s individual', '%s individuals', count($group), I18N::number(count($group))) ?></h2>
     <ul>
         <?php foreach ($group as $individual) : ?>
             <li>
-                <a href="<?= e($individual->url()) ?>"><?= $individual->getFullName() ?></a>
+                <a href="<?= e($individual->url()) ?>"><?= $individual->fullName() ?></a>
             </li>
         <?php endforeach ?>
     </ul>

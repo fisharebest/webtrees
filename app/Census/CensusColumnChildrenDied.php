@@ -35,13 +35,13 @@ class CensusColumnChildrenDied extends AbstractCensusColumn implements CensusCol
      */
     public function generate(Individual $individual, Individual $head): string
     {
-        if ($individual->getSex() !== 'F') {
+        if ($individual->sex() !== 'F') {
             return '';
         }
 
         $count = 0;
-        foreach ($individual->getSpouseFamilies() as $family) {
-            foreach ($family->getChildren() as $child) {
+        foreach ($individual->spouseFamilies() as $family) {
+            foreach ($family->children() as $child) {
                 if (
                     $child->getBirthDate()->isOK() &&
                     Date::compare($child->getBirthDate(), $this->date()) < 0 &&

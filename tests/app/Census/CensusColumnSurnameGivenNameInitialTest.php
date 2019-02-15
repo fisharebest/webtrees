@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Individual;
+use Illuminate\Support\Collection;
 use Mockery;
 
 /**
@@ -50,7 +51,7 @@ class CensusColumnSurnameGivenNameInitialTest extends \Fisharebest\Webtrees\Test
                 'surname' => 'Sixpack',
             ],
         ]);
-        $individual->shouldReceive('getSpouseFamilies')->andReturn([]);
+        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection());
 
         $census = Mockery::mock(CensusInterface::class);
         $census->shouldReceive('censusDate')->andReturn('');
@@ -75,7 +76,7 @@ class CensusColumnSurnameGivenNameInitialTest extends \Fisharebest\Webtrees\Test
                 'surname' => 'Sixpack',
             ],
         ]);
-        $individual->shouldReceive('getSpouseFamilies')->andReturn([]);
+        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection());
 
         $census = Mockery::mock(CensusInterface::class);
         $census->shouldReceive('censusDate')->andReturn('');

@@ -25,7 +25,7 @@
 
 <div class="d-flex mb-4">
     <h2 class="wt-page-title mx-auto">
-        <?= $individual->getFullName() ?><?= $user_link ?>, <?= $individual->getLifeSpan() ?> <?= $age ?>
+        <?= $individual->fullName() ?><?= $user_link ?>, <?= $individual->getLifeSpan() ?> <?= $age ?>
     </h2>
     <?php if ($individual->canEdit() && !$individual->isPendingDeletion()) : ?>
         <?= view('individual-page-menu', ['individual' => $individual, 'count_names' => $count_names, 'count_sex' => $count_sex]) ?>
@@ -38,7 +38,7 @@
             <!-- Individual images -->
             <div class="col-sm-3">
                 <?php if (empty($individual_media)) : ?>
-                    <i class="wt-individual-silhouette wt-individual-silhouette-<?= strtolower($individual->getSex()) ?>"></i>
+                    <i class="wt-individual-silhouette wt-individual-silhouette-<?= strtolower($individual->sex()) ?>"></i>
                 <?php elseif (count($individual_media) === 1) : ?>
                     <?= $individual_media[0]->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
                 <?php else : ?>
@@ -63,7 +63,7 @@
                 <?php endif ?>
 
                 <?php if (Auth::isEditor($individual->tree())) : ?>
-                    <?php if (count($individual->facts(['OBJE'])) > 1) : ?>
+                    <?php if ($individual->facts(['OBJE'])->count() > 1) : ?>
                         <div>
                             <a href="<?= e(route('reorder-media', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
                                 <?= view('icons/reorder') ?>

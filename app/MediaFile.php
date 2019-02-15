@@ -239,14 +239,14 @@ class MediaFile
                         'dir'    => 'auto',
                         'src'    => $src,
                         'srcset' => implode(',', $srcset),
-                        'alt'    => htmlspecialchars_decode(strip_tags($this->media->getFullName())),
+                        'alt'    => htmlspecialchars_decode(strip_tags($this->media->fullName())),
                     ]) . '>';
 
             $attributes = Html::attributes([
                 'class'      => 'gallery',
                 'type'       => $this->mimeType(),
                 'href'       => $this->imageUrl(0, 0, 'contain'),
-                'data-title' => htmlspecialchars_decode(strip_tags($this->media->getFullName())),
+                'data-title' => htmlspecialchars_decode(strip_tags($this->media->fullName())),
             ]);
         } else {
             $image = view('icons/mime', ['type' => $this->mimeType()]);

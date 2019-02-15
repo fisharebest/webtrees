@@ -66,26 +66,23 @@ class RepositoryController extends AbstractBaseController
             'meta_robots'     => 'index,follow',
             'repository'      => $record,
             'sources'         => $record->linkedSources('REPO'),
-            'title'           => $record->getFullName(),
+            'title'           => $record->fullName(),
         ]);
     }
 
     /**
      * @param Repository $record
      *
-     * @return array
+     * @return Collection|Fact[]
      */
-    private function facts(Repository $record): array
+    private function facts(Repository $record): Collection
     {
-        $facts = $record->facts();
+        return $record->facts()
+            ->sort(function (Fact $x, Fact $y): int {
+                $sort_x = array_search($x->getTag(), self::FACT_ORDER) ?: PHP_INT_MAX;
+                $sort_y = array_search($y->getTag(), self::FACT_ORDER) ?: PHP_INT_MAX;
 
-        usort($facts, function (Fact $x, Fact $y): int {
-            $sort_x = array_search($x->getTag(), self::FACT_ORDER) ?: PHP_INT_MAX;
-            $sort_y = array_search($y->getTag(), self::FACT_ORDER) ?: PHP_INT_MAX;
-
-            return $sort_x <=> $sort_y;
-        });
-
-        return $facts;
+                return $sort_x <=> $sort_y;
+            });
     }
 }

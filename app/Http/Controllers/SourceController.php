@@ -74,26 +74,23 @@ class SourceController extends AbstractBaseController
             'notes'           => $record->linkedNotes('SOUR'),
             'media_objects'   => $record->linkedMedia('SOUR'),
             'source'          => $record,
-            'title'           => $record->getFullName(),
+            'title'           => $record->fullName(),
         ]);
     }
 
     /**
      * @param Source $record
      *
-     * @return array
+     * @return Collection|Fact[]
      */
-    private function facts(Source $record): array
+    private function facts(Source $record): Collection
     {
-        $facts = $record->facts();
+        return $record->facts()
+            ->sort(function (Fact $x, Fact $y): int {
+                $sort_x = array_search($x->getTag(), self::FACT_ORDER) ?: PHP_INT_MAX;
+                $sort_y = array_search($y->getTag(), self::FACT_ORDER) ?: PHP_INT_MAX;
 
-        usort($facts, function (Fact $x, Fact $y): int {
-            $sort_x = array_search($x->getTag(), self::FACT_ORDER) ?: PHP_INT_MAX;
-            $sort_y = array_search($y->getTag(), self::FACT_ORDER) ?: PHP_INT_MAX;
-
-            return $sort_x <=> $sort_y;
-        });
-
-        return $facts;
+                return $sort_x <=> $sort_y;
+            });
     }
 }

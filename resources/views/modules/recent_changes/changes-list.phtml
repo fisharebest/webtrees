@@ -2,7 +2,7 @@
 
 <?php foreach ($records as $record) : ?>
     <a href="<?= e($record->url()) ?>" class="list_item name2">
-        <?= $record->getFullName() ?>
+        <?= $record->fullName() ?>
     </a>
     <div class="indent mb-1">
         <?php if ($record->lastChangeTimestamp() !== '') : ?>

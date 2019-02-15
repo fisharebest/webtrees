@@ -101,11 +101,11 @@ class FunctionsExport
 
         // Preserve some values from the original header
         $record = GedcomRecord::getInstance('HEAD', $tree);
-        $fact = $record->getFirstFact('COPR');
+        $fact = $record->firstFact('COPR');
         if ($fact instanceof Fact) {
             $COPR = "\n1 COPR " .$fact->value();
         }
-        $fact   = $record->getFirstFact('LANG');
+        $fact   = $record->firstFact('LANG');
         if ($fact instanceof Fact) {
             $LANG = "\n1 LANG " .$fact->value();
         }

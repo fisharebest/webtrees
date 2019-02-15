@@ -124,7 +124,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
     public function chartTitle(Individual $individual): string
     {
         /* I18N: %s is an individual’s name */
-        return I18N::translate('Pedigree map of %s', $individual->getFullName());
+        return I18N::translate('Pedigree map of %s', $individual->fullName());
     }
 
     /**
@@ -242,15 +242,15 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
 
         if ($record instanceof Family) {
             // Marriage
-            $spouse = $record->sppouse($individual);
+            $spouse = $record->spouse($individual);
             if ($spouse) {
                 $url  = $spouse->url();
-                $name = $spouse->getFullName();
+                $name = $spouse->fullName();
             }
         } elseif ($record !== $individual) {
             // Birth of a child
             $url  = $record->url();
-            $name = $record->getFullName();
+            $name = $record->fullName();
             $tag  = GedcomTag::getLabel('_BIRT_CHIL', $record);
         }
 
@@ -286,7 +286,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
         $facts       = [];
         foreach ($ancestors as $sosa => $person) {
             if ($person->canShow()) {
-                $birth = $person->getFirstFact('BIRT');
+                $birth = $person->firstFact('BIRT');
                 if ($birth instanceof Fact && $birth->place()->gedcomName() !== '') {
                     $facts[$sosa] = $birth;
                 }
@@ -411,7 +411,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
         return $this->viewResponse('modules/pedigree-map/page', [
             'module_name'    => $this->name(),
             /* I18N: %s is an individual’s name */
-            'title'          => I18N::translate('Pedigree map of %s', $individual->getFullName()),
+            'title'          => I18N::translate('Pedigree map of %s', $individual->fullName()),
             'tree'           => $tree,
             'individual'     => $individual,
             'generations'    => $generations,

@@ -721,7 +721,7 @@ class SearchService
                         }
                     } elseif ($parts[0] === 'FAMS' && $parts[2] === 'PLAC') {
                         // FAMS:*:PLAC
-                        foreach ($individual->getSpouseFamilies() as $family) {
+                        foreach ($individual->spouseFamilies() as $family) {
                             foreach ($family->facts([$parts[1]]) as $fact) {
                                 if (preg_match($regex, $fact->place()->gedcomName())) {
                                     return true;
@@ -730,7 +730,7 @@ class SearchService
                         }
                     } elseif ($parts[0] === 'FAMS') {
                         // e.g. searches for occupation, religion, note, etc.
-                        foreach ($individual->getSpouseFamilies() as $family) {
+                        foreach ($individual->spouseFamilies() as $family) {
                             foreach ($family->facts([$parts[1]]) as $fact) {
                                 if (preg_match($regex, $fact->value())) {
                                     return true;

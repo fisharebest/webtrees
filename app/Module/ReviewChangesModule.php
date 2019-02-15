@@ -146,7 +146,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
             foreach ($changes as $change) {
                 $record = GedcomRecord::getInstance($change->xref, $tree);
                 if ($record->canShow()) {
-                    $content .= '<li><a href="' . e($record->url()) . '">' . $record->getFullName() . '</a></li>';
+                    $content .= '<li><a href="' . e($record->url()) . '">' . $record->fullName() . '</a></li>';
                 }
             }
             $content .= '</ul>';

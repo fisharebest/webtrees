@@ -564,11 +564,11 @@ class FunctionsEdit
         if ($fact === 'HUSB' || $fact === 'WIFE') {
             $family = Family::getInstance($xref, $tree);
             if ($family) {
-                $spouse_link = $family->getFirstFact($fact);
+                $spouse_link = $family->firstFact($fact);
                 if ($spouse_link) {
                     $spouse = $spouse_link->target();
                     if ($spouse instanceof Individual) {
-                        $html .= $spouse->getFullName();
+                        $html .= $spouse->fullName();
                     }
                 }
             }

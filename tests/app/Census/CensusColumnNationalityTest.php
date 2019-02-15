@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Place;
+use Illuminate\Support\Collection;
 use Mockery;
 
 /**
@@ -63,7 +64,7 @@ class CensusColumnNationalityTest extends \Fisharebest\Webtrees\TestCase
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock(''));
-        $individual->shouldReceive('facts')->with(['IMMI', 'EMIG', 'NATU'], true)->andReturn([]);
+        $individual->shouldReceive('facts')->with(['IMMI', 'EMIG', 'NATU'], true)->andReturn(new Collection());
 
         $census = Mockery::mock(CensusInterface::class);
         $census->shouldReceive('censusPlace')->andReturn('Deutschland');
@@ -83,7 +84,7 @@ class CensusColumnNationalityTest extends \Fisharebest\Webtrees\TestCase
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('Australia'));
-        $individual->shouldReceive('facts')->with(['IMMI', 'EMIG', 'NATU'], true)->andReturn([]);
+        $individual->shouldReceive('facts')->with(['IMMI', 'EMIG', 'NATU'], true)->andReturn(new Collection());
 
         $census = Mockery::mock(CensusInterface::class);
         $census->shouldReceive('censusPlace')->andReturn('England');
@@ -103,7 +104,7 @@ class CensusColumnNationalityTest extends \Fisharebest\Webtrees\TestCase
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('London, England'));
-        $individual->shouldReceive('facts')->with(['IMMI', 'EMIG', 'NATU'], true)->andReturn([]);
+        $individual->shouldReceive('facts')->with(['IMMI', 'EMIG', 'NATU'], true)->andReturn(new Collection());
 
         $census = Mockery::mock(CensusInterface::class);
         $census->shouldReceive('censusPlace')->andReturn('England');
@@ -137,10 +138,10 @@ class CensusColumnNationalityTest extends \Fisharebest\Webtrees\TestCase
 
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('London, England'));
-        $individual->shouldReceive('facts')->with(['IMMI', 'EMIG', 'NATU'], true)->andReturn([
+        $individual->shouldReceive('facts')->with(['IMMI', 'EMIG', 'NATU'], true)->andReturn(new Collection([
             $fact1,
             $fact2,
-        ]);
+        ]));
 
         $census = Mockery::mock(CensusInterface::class);
         $census->shouldReceive('censusPlace')->andReturn('England');

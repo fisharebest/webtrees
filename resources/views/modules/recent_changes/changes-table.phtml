@@ -50,8 +50,8 @@
                     <?php endif ?>
                 </td>
 
-                <td data-sort="<?= e($record->getSortName()) ?>">
-                    <a href="<?= e($record->url()) ?>"><?= $record->getFullName() ?></a>
+                <td data-sort="<?= e($record->sortName()) ?>">
+                    <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
                 </td>
 
                 <td data-sort="<?= $record->lastChangeTimestamp(true) ?>">

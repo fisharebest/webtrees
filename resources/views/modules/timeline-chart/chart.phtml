@@ -317,17 +317,17 @@
         $col = array_search($event->record(), $individuals);
         if ($col === false) {
             // Marriage event - use the color of the husband
-            $col = array_search($event->record()->getHusband(), $individuals);
+            $col = array_search($event->record()->husband(), $individuals);
         }
         if ($col === false) {
             // Marriage event - use the color of the wife
-            $col = array_search($event->record()->getWife(), $individuals);
+            $col = array_search($event->record()->wife(), $individuals);
         }
         $col = $col % 6;
         echo '</td><td class="person' . $col . '">';
         if (count($individuals) > 6) {
             // We only have six colours, so show naes if more than this number
-            echo $event->record()->getFullName() . ' — ';
+            echo $event->record()->fullName() . ' — ';
         }
         $record = $event->record();
         echo $event->label();
@@ -336,13 +336,13 @@
             echo FunctionsPrint::formatFactDate($event, $record, false, false);
         } elseif ($record instanceof Family) {
             echo $gdate->display();
-            if ($record->getHusband() && $record->getHusband()->getBirthDate()->isOK()) {
-                $ageh = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($record->getHusband()->getBirthDate(), $gdate));
+            if ($record->husband() && $record->husband()->getBirthDate()->isOK()) {
+                $ageh = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($record->husband()->getBirthDate(), $gdate));
             } else {
                 $ageh = null;
             }
-            if ($record->getWife() && $record->getWife()->getBirthDate()->isOK()) {
-                $agew = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($record->getWife()->getBirthDate(), $gdate));
+            if ($record->wife() && $record->wife()->getBirthDate()->isOK()) {
+                $agew = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($record->wife()->getBirthDate(), $gdate));
             } else {
                 $agew = null;
             }
@@ -360,7 +360,7 @@
         }
         // Print spouses names for family events
         if ($event->record() instanceof Family) {
-            echo ' — <a href="', e($event->record()->url()), '">', $event->record()->getFullName(), '</a>';
+            echo ' — <a href="', e($event->record()->url()), '">', $event->record()->fullName(), '</a>';
         }
         echo '</td></tr></table>';
         echo '</div>';

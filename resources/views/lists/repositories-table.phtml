@@ -44,9 +44,9 @@ $count_sources = DB::table('sources')
         <?php foreach ($repositories as $repository) : ?>
             <tr class="<?= $repository->isPendingDeletion() ? 'old' : ($repository->isPendingAddition() ? 'new' : '') ?>">
                 <!-- Repository name -->
-                <td data-sort="<?= e($repository->getSortName()) ?>">
+                <td data-sort="<?= e($repository->sortName()) ?>">
                     <a href="<?= e($repository->url()) ?>">
-                        <?= $repository->getFullName() ?>
+                        <?= $repository->fullName() ?>
                     </a>
                 </td>
 

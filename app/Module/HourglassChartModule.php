@@ -236,12 +236,12 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         echo '<table cellspacing="0" cellpadding="0" border="0" id="table_' . e($pid) . '" class="hourglassChart" style="float:' . $tablealign . '">';
         echo '<tr>';
         echo '<td style="text-align:' . $tablealign . '">';
-        $families = $individual->getSpouseFamilies();
+        $families = $individual->spouseFamilies();
         $children = [];
         if ($generation < $generations) {
             // Put all of the children in a common array
             foreach ($families as $family) {
-                foreach ($family->getChildren() as $child) {
+                foreach ($family->children() as $child) {
                     $children[] = $child;
                 }
             }
@@ -286,7 +286,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
             }
             $kcount = 0;
             foreach ($families as $family) {
-                $kcount += $family->getNumberOfChildren();
+                $kcount += $family->numberOfChildren();
             }
             if ($kcount == 0) {
                 echo "</td><td style='width:", app()->make(ModuleThemeInterface::class)->parameter('chart-box-x'), "px'>";
@@ -309,7 +309,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         if ($show_spouse) {
             foreach ($families as $family) {
                 echo "</td></tr><tr><td style='text-align:$otablealign'>";
-                echo FunctionsPrint::printPedigreePerson($family->getSpouse($individual));
+                echo FunctionsPrint::printPedigreePerson($family->spouse($individual));
                 echo '</td><td> </td>';
             }
             //-- add offset divs to make things line up better
@@ -326,53 +326,53 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
             echo '<div id="childbox">';
             echo '<table cellspacing="0" cellpadding="0" border="0" class="person_box"><tr><td> ';
 
-            foreach ($individual->getSpouseFamilies() as $family) {
+            foreach ($individual->spouseFamilies() as $family) {
                 echo "<span class='name1'>" . I18N::translate('Family') . '</span>';
-                $spouse = $family->getSpouse($individual);
+                $spouse = $family->spouse($individual);
                 if ($spouse !== null) {
                     echo '<a href="' . e(route('hourglass', [
                             'xref'        => $spouse->xref(),
                             'generations' => $generations,
                             'show_spouse' => (int) $show_spouse,
                             'ged'         => $spouse->tree()->name(),
-                        ])) . '" class="name1">' . $spouse->getFullName() . '</a>';
+                        ])) . '" class="name1">' . $spouse->fullName() . '</a>';
                 }
-                foreach ($family->getChildren() as $child) {
+                foreach ($family->children() as $child) {
                     echo '<a href="' . e(route('hourglass', [
                             'xref'        => $child->xref(),
                             'generations' => $generations,
                             'show_spouse' => (int) $show_spouse,
                             'ged'         => $child->tree()->name(),
-                        ])) . '" class="name1">' . $child->getFullName() . '</a>';
+                        ])) . '" class="name1">' . $child->fullName() . '</a>';
                 }
             }
 
             //-- print the siblings
-            foreach ($individual->getChildFamilies() as $family) {
-                if ($family->getHusband() || $family->getWife()) {
+            foreach ($individual->childFamilies() as $family) {
+                if ($family->husband() || $family->wife()) {
                     echo "<span class='name1'>" . I18N::translate('Parents') . '</span>';
-                    $husb = $family->getHusband();
+                    $husb = $family->husband();
                     if ($husb) {
                         echo '<a href="' . e(route('hourglass', [
                                 'xref'        => $husb->xref(),
                                 'generations' => $generations,
                                 'show_spouse' => (int) $show_spouse,
                                 'ged'         => $husb->tree()->name(),
-                            ])) . '" class="name1">' . $husb->getFullName() . '</a>';
+                            ])) . '" class="name1">' . $husb->fullName() . '</a>';
                     }
-                    $wife = $family->getWife();
+                    $wife = $family->wife();
                     if ($wife) {
                         echo '<a href="' . e(route('hourglass', [
                                 'xref'        => $wife->xref(),
                                 'generations' => $generations,
                                 'show_spouse' => (int) $show_spouse,
                                 'ged'         => $wife->tree()->name(),
-                            ])) . '" class="name1">' . $wife->getFullName() . '</a>';
+                            ])) . '" class="name1">' . $wife->fullName() . '</a>';
                     }
                 }
 
                 // filter out root person from children array so only siblings remain
-                $siblings       = array_filter($family->getChildren(), function (Individual $x) use ($individual): bool {
+                $siblings       = array_filter($family->children(), function (Individual $x) use ($individual): bool {
                     return $x !== $individual;
                 });
                 $count_siblings = count($siblings);
@@ -386,7 +386,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
                                 'generations' => $generations,
                                 'show_spouse' => (int) $show_spouse,
                                 'ged'         => $child->tree()->name(),
-                            ])) . '" class="name1">' . $child->getFullName() . '</a>';
+                            ])) . '" class="name1">' . $child->fullName() . '</a>';
                     }
                 }
             }
@@ -416,7 +416,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         // handle pedigree n generations lines
         $genoffset = $generations;
 
-        $family = $individual->getPrimaryChildFamily();
+        $family = $individual->primaryChildFamily();
 
         if ($family === null) {
             // Prints empty table columns for children w/o parents up to the max generation
@@ -438,17 +438,17 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
             echo '<td> <img alt="" role="presentation" class="lineh2" src="' . e(asset('css/images/hline.png')) . '" width="7" height="3"></td>';
             echo '<td class="myCharts"> ';
             //-- print the father box
-            echo FunctionsPrint::printPedigreePerson($family->getHusband());
+            echo FunctionsPrint::printPedigreePerson($family->husband());
             echo '</td>';
-            if ($family->getHusband()) {
-                $ARID = $family->getHusband()->xref();
+            if ($family->husband()) {
+                $ARID = $family->husband()->xref();
                 echo '<td id="td_' . e($ARID) . '">';
 
-                if ($generation == $generations - 1 && $family->getHusband()->getChildFamilies()) {
-                    echo '<a href="#" title="' . I18N::translate('Parents') . '" data-route="Ancestors" data-xref="' .  e($ARID) . '" data-spouses="' .  e($show_spouse) . '" data-tree="' .  e($family->getHusband()->tree()->name()) . '">' . view('icons/arrow-right') . '</a>';
+                if ($generation == $generations - 1 && $family->husband()->childFamilies()) {
+                    echo '<a href="#" title="' . I18N::translate('Parents') . '" data-route="Ancestors" data-xref="' .  e($ARID) . '" data-spouses="' .  e($show_spouse) . '" data-tree="' .  e($family->husband()->tree()->name()) . '">' . view('icons/arrow-right') . '</a>';
                 }
 
-                $this->printPersonPedigree($family->getHusband(), $generation + 1, $generations, $show_spouse);
+                $this->printPersonPedigree($family->husband(), $generation + 1, $generations, $show_spouse);
                 echo '</td>';
             } else {
                 echo '<td> ';
@@ -469,17 +469,17 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
                 '<td> <img alt="" role="presentation" class="lineh3" src="' . e(asset('css/images/hline.png')) . '" width="7" height="3"></td>',
             '<td class="myCharts"> ';
 
-            echo FunctionsPrint::printPedigreePerson($family->getWife());
+            echo FunctionsPrint::printPedigreePerson($family->wife());
             echo '</td>';
-            if ($family->getWife()) {
-                $ARID = $family->getWife()->xref();
+            if ($family->wife()) {
+                $ARID = $family->wife()->xref();
                 echo '<td id="td_' . e($ARID) . '">';
 
-                if ($generation == $generations - 1 && $family->getWife()->getChildFamilies()) {
-                    echo '<a href="#" title="' . I18N::translate('Parents') . '" data-route="Ancestors" data-xref="' .  e($ARID) . '" data-spouses="' .  e($show_spouse) . '" data-tree="' .  e($family->getWife()->tree()->name()) . '">' . view('icons/arrow-right') . '</a>';
+                if ($generation == $generations - 1 && $family->wife()->childFamilies()) {
+                    echo '<a href="#" title="' . I18N::translate('Parents') . '" data-route="Ancestors" data-xref="' .  e($ARID) . '" data-spouses="' .  e($show_spouse) . '" data-tree="' .  e($family->wife()->tree()->name()) . '">' . view('icons/arrow-right') . '</a>';
                 }
 
-                $this->printPersonPedigree($family->getWife(), $generation + 1, $generations, $show_spouse);
+                $this->printPersonPedigree($family->wife(), $generation + 1, $generations, $show_spouse);
                 echo '</td>';
             }
             echo '</tr></table>';

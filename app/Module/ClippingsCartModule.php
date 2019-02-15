@@ -379,7 +379,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $options = $this->familyOptions($family);
 
-        $title = I18N::translate('Add %s to the clippings cart', $family->getFullName());
+        $title = I18N::translate('Add %s to the clippings cart', $family->fullName());
 
         return $this->viewResponse('modules/clippings/add-options', [
             'options' => $options,
@@ -397,7 +397,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     private function familyOptions(Family $family): array
     {
-        $name = strip_tags($family->getFullName());
+        $name = strip_tags($family->fullName());
 
         return [
             'parents'     => $name,
@@ -451,7 +451,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     {
         $this->addRecordToCart($family);
 
-        foreach ($family->getSpouses() as $spouse) {
+        foreach ($family->spouses() as $spouse) {
             $this->addRecordToCart($spouse);
         }
     }
@@ -465,10 +465,10 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     {
         $this->addRecordToCart($family);
 
-        foreach ($family->getSpouses() as $spouse) {
+        foreach ($family->spouses() as $spouse) {
             $this->addRecordToCart($spouse);
         }
-        foreach ($family->getChildren() as $child) {
+        foreach ($family->children() as $child) {
             $this->addRecordToCart($child);
         }
     }
@@ -482,12 +482,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     {
         $this->addRecordToCart($family);
 
-        foreach ($family->getSpouses() as $spouse) {
+        foreach ($family->spouses() as $spouse) {
             $this->addRecordToCart($spouse);
         }
-        foreach ($family->getChildren() as $child) {
+        foreach ($family->children() as $child) {
             $this->addRecordToCart($child);
-            foreach ($child->getSpouseFamilies() as $child_family) {
+            foreach ($child->spouseFamilies() as $child_family) {
                 $this->addFamilyAndDescendantsToCart($child_family);
             }
         }
@@ -511,7 +511,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $options = $this->individualOptions($individual);
 
-        $title = I18N::translate('Add %s to the clippings cart', $individual->getFullName());
+        $title = I18N::translate('Add %s to the clippings cart', $individual->fullName());
 
         return $this->viewResponse('modules/clippings/add-options', [
             'options' => $options,
@@ -529,9 +529,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     private function individualOptions(Individual $individual): array
     {
-        $name = strip_tags($individual->getFullName());
+        $name = strip_tags($individual->fullName());
 
-        if ($individual->getSex() === 'F') {
+        if ($individual->sex() === 'F') {
             return [
                 'self'              => $name,
                 'parents'           => I18N::translate('%s, her parents and siblings', $name),
@@ -575,13 +575,13 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                 break;
 
             case 'parents':
-                foreach ($individual->getChildFamilies() as $family) {
+                foreach ($individual->childFamilies() as $family) {
                     $this->addFamilyAndChildrenToCart($family);
                 }
                 break;
 
             case 'spouses':
-                foreach ($individual->getSpouseFamilies() as $family) {
+                foreach ($individual->spouseFamilies() as $family) {
                     $this->addFamilyAndChildrenToCart($family);
                 }
                 break;
@@ -595,7 +595,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                 break;
 
             case 'descendants':
-                foreach ($individual->getSpouseFamilies() as $family) {
+                foreach ($individual->spouseFamilies() as $family) {
                     $this->addFamilyAndDescendantsToCart($family);
                 }
                 break;
@@ -613,8 +613,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     {
         $this->addRecordToCart($individual);
 
-        foreach ($individual->getChildFamilies() as $family) {
-            foreach ($family->getSpouses() as $parent) {
+        foreach ($individual->childFamilies() as $family) {
+            foreach ($family->spouses() as $parent) {
                 $this->addAncestorsToCart($parent);
             }
         }
@@ -627,9 +627,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     private function addAncestorFamiliesToCart(Individual $individual)
     {
-        foreach ($individual->getChildFamilies() as $family) {
+        foreach ($individual->childFamilies() as $family) {
             $this->addFamilyAndChildrenToCart($family);
-            foreach ($family->getSpouses() as $parent) {
+            foreach ($family->spouses() as $parent) {
                 $this->addAncestorsToCart($parent);
             }
         }
@@ -653,7 +653,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $options = $this->mediaOptions($media);
 
-        $title = I18N::translate('Add %s to the clippings cart', $media->getFullName());
+        $title = I18N::translate('Add %s to the clippings cart', $media->fullName());
 
         return $this->viewResponse('modules/clippings/add-options', [
             'options' => $options,
@@ -671,7 +671,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     private function mediaOptions(Media $media): array
     {
-        $name = strip_tags($media->getFullName());
+        $name = strip_tags($media->fullName());
 
         return [
             'self' => $name,
@@ -717,7 +717,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $options = $this->noteOptions($note);
 
-        $title = I18N::translate('Add %s to the clippings cart', $note->getFullName());
+        $title = I18N::translate('Add %s to the clippings cart', $note->fullName());
 
         return $this->viewResponse('modules/clippings/add-options', [
             'options' => $options,
@@ -735,7 +735,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     private function noteOptions(Note $note): array
     {
-        $name = strip_tags($note->getFullName());
+        $name = strip_tags($note->fullName());
 
         return [
             'self' => $name,
@@ -781,7 +781,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $options = $this->repositoryOptions($repository);
 
-        $title = I18N::translate('Add %s to the clippings cart', $repository->getFullName());
+        $title = I18N::translate('Add %s to the clippings cart', $repository->fullName());
 
         return $this->viewResponse('modules/clippings/add-options', [
             'options' => $options,
@@ -799,7 +799,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     private function repositoryOptions(Repository $repository): array
     {
-        $name = strip_tags($repository->getFullName());
+        $name = strip_tags($repository->fullName());
 
         return [
             'self' => $name,
@@ -845,7 +845,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $options = $this->sourceOptions($source);
 
-        $title = I18N::translate('Add %s to the clippings cart', $source->getFullName());
+        $title = I18N::translate('Add %s to the clippings cart', $source->fullName());
 
         return $this->viewResponse('modules/clippings/add-options', [
             'options' => $options,
@@ -863,10 +863,10 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     private function sourceOptions(Source $source): array
     {
-        $name = strip_tags($source->getFullName());
+        $name = strip_tags($source->fullName());
 
         return [
-            'only'   => strip_tags($source->getFullName()),
+            'only'   => strip_tags($source->fullName()),
             'linked' => I18N::translate('%s and the individuals that reference it.', $name),
         ];
     }

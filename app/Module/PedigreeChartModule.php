@@ -111,7 +111,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
     public function chartTitle(Individual $individual): string
     {
         /* I18N: %s is an individual’s name */
-        return I18N::translate('Pedigree tree of %s', $individual->getFullName());
+        return I18N::translate('Pedigree tree of %s', $individual->fullName());
     }
 
     /**
@@ -178,7 +178,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
         // Father’s ancestors link to the father’s pedigree
         // Mother’s ancestors link to the mother’s pedigree..
         $links = $ancestors->map(function (?Individual $individual, $sosa) use ($ancestors, $orientation, $generations): string {
-            if ($individual instanceof Individual && $sosa >= 2 ** $generations / 2 && !empty($individual->getChildFamilies())) {
+            if ($individual instanceof Individual && $sosa >= 2 ** $generations / 2 && !empty($individual->childFamilies())) {
                 // The last row/column, and there are more generations.
                 if ($sosa >= 2 ** $generations * 3 / 4) {
                     return $this->nextLink($ancestors->get(3), $orientation, $generations);
@@ -243,22 +243,22 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
         $spouses  = [];
         $children = [];
 
-        foreach ($individual->getChildFamilies() as $family) {
-            foreach ($family->getChildren() as $child) {
+        foreach ($individual->childFamilies() as $family) {
+            foreach ($family->children() as $child) {
                 if ($child !== $individual) {
                     $siblings[] = $this->individualLink($child, $orientation, $generations);
                 }
             }
         }
 
-        foreach ($individual->getSpouseFamilies() as $family) {
-            foreach ($family->getSpouses() as $spouse) {
+        foreach ($individual->spouseFamilies() as $family) {
+            foreach ($family->spouses() as $spouse) {
                 if ($spouse !== $individual) {
                     $spouses[] = $this->individualLink($spouse, $orientation, $generations);
                 }
             }
 
-            foreach ($family->getChildren() as $child) {
+            foreach ($family->children() as $child) {
                 $children[] = $this->individualLink($child, $orientation, $generations);
             }
         }
@@ -284,7 +284,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      */
     protected function individualLink(Individual $individual, string $orientation, int $generations): string
     {
-        $text  = $individual->getFullName();
+        $text  = $individual->fullName();
         $title = $this->chartTitle($individual);
         $url   = $this->chartUrl($individual, [
             'orientation' => $orientation,

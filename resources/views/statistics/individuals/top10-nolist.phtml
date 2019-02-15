@@ -9,5 +9,5 @@ use Fisharebest\Webtrees\Individual;
 
 <?php foreach ($records as $record): ?>
     <?php $person = $record['person']; ?>
-    <a href="<?= e($person->url()) ?>"><?= $person->getFullName() ?></a> (<?= $record['age'] ?>)
+    <a href="<?= e($person->url()) ?>"><?= $person->fullName() ?></a> (<?= $record['age'] ?>)
 <?php endforeach; ?>

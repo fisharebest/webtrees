@@ -345,7 +345,7 @@ class IndividualListService
     {
         $list = [];
         foreach ($this->individuals($surn, $salpha, $galpha, $marnm, true, I18N::collation()) as $indi) {
-            foreach ($indi->getSpouseFamilies() as $family) {
+            foreach ($indi->spouseFamilies() as $family) {
                 $list[$family->xref()] = $family;
             }
         }

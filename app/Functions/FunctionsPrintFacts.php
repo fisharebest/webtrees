@@ -104,7 +104,7 @@ class FunctionsPrintFacts
         // Who is this fact about? Need it to translate fact label correctly
         if ($parent instanceof Family && $record instanceof Individual) {
             // Family event
-            $label_person = $fact->record()->getSpouse($record);
+            $label_person = $fact->record()->spouse($record);
         } else {
             // Individual event
             $label_person = $parent;
@@ -211,14 +211,14 @@ class FunctionsPrintFacts
         // Event from another record?
         if ($parent !== $record) {
             if ($parent instanceof Family) {
-                foreach ($parent->getSpouses() as $spouse) {
+                foreach ($parent->spouses() as $spouse) {
                     if ($record !== $spouse) {
-                        echo '<a href="', e($spouse->url()), '">', $spouse->getFullName(), '</a> — ';
+                        echo '<a href="', e($spouse->url()), '">', $spouse->fullName(), '</a> — ';
                     }
                 }
                 echo '<a href="', e($parent->url()), '">', I18N::translate('View this family'), '</a><br>';
             } elseif ($parent instanceof Individual) {
-                echo '<a href="', e($parent->url()), '">', $parent->getFullName(), '</a><br>';
+                echo '<a href="', e($parent->url()), '">', $parent->fullName(), '</a><br>';
             }
         }
 
@@ -267,7 +267,7 @@ class FunctionsPrintFacts
             case 'REPO':
                 $repository = $fact->target();
                 if ($repository instanceof Repository) {
-                    echo '<div><a class="field" href="', e($repository->url()), '">', $repository->getFullName(), '</a></div>';
+                    echo '<div><a class="field" href="', e($repository->url()), '">', $repository->fullName(), '</a></div>';
                 } else {
                     echo '<div class="error">', e($fact->value()), '</div>';
                 }
@@ -297,7 +297,7 @@ class FunctionsPrintFacts
                         if (preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $fact->value(), $match)) {
                             $target = GedcomRecord::getInstance($match[1], $tree);
                             if ($target) {
-                                echo '<div><a href="', e($target->url()), '">', $target->getFullName(), '</a></div>';
+                                echo '<div><a href="', e($target->url()), '">', $target->fullName(), '</a></div>';
                             } else {
                                 echo '<div class="error">', e($fact->value()), '</div>';
                             }
@@ -393,7 +393,7 @@ class FunctionsPrintFacts
                 case 'FAMC': // 0 INDI / 1 ADOP / 2 FAMC / 3 ADOP
                     $family = Family::getInstance(str_replace('@', '', $match[2]), $tree);
                     if ($family) {
-                        echo GedcomTag::getLabelValue('FAM', '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a>');
+                        echo GedcomTag::getLabelValue('FAM', '<a href="' . e($family->url()) . '">' . $family->fullName() . '</a>');
                         if (preg_match('/\n3 ADOP (HUSB|WIFE|BOTH)/', $fact->gedcom(), $adop_match)) {
                             echo GedcomTag::getLabelValue('ADOP', GedcomCodeAdop::getValue($adop_match[1], $label_person));
                         }
@@ -451,7 +451,7 @@ class FunctionsPrintFacts
                             // Links
                             $linked_record = GedcomRecord::getInstance($xmatch[1], $tree);
                             if ($linked_record) {
-                                $link = '<a href="' . e($linked_record->url()) . '">' . $linked_record->getFullName() . '</a>';
+                                $link = '<a href="' . e($linked_record->url()) . '">' . $linked_record->fullName() . '</a>';
                                 echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], $link);
                             } else {
                                 echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], e($match[2]));
@@ -486,7 +486,7 @@ class FunctionsPrintFacts
             $associates = [$parent];
         } elseif ($parent instanceof Family) {
             // On a family page, we show links to both spouses
-            $associates = $parent->getSpouses();
+            $associates = $parent->spouses();
         } else {
             // On other pages, it does not make sense to show associates
             return '';
@@ -509,7 +509,7 @@ class FunctionsPrintFacts
                     $label = GedcomTag::getLabel('ASSO', $person);
                 }
 
-                $values = ['<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a>'];
+                $values = ['<a href="' . e($person->url()) . '">' . $person->fullName() . '</a>'];
 
                 $module = app(ModuleService::class)->findByComponent('chart', $person->tree(), Auth::user())->first(function (ModuleInterface $module) {
                     return $module instanceof RelationshipsChartModule;
@@ -524,7 +524,7 @@ class FunctionsPrintFacts
 
                         if ($parent instanceof Family) {
                             // For family ASSO records (e.g. MARR), identify the spouse with a sex icon
-                            $relationship_name .= $associate->getSexImage();
+                            $relationship_name .= $associate->sexImage();
                         }
 
                         $values[] = '<a href="' . $module->chartUrl($associate, ['xref2' => $person->xref()]) . '" rel="nofollow">' . $relationship_name . '</a>';
@@ -597,7 +597,7 @@ class FunctionsPrintFacts
                     if ($lt > 0) {
                         $data .= '<a href="#" onclick="return expand_layer(\'' . $elementID . '\');"><i id="' . $elementID . '_img" class="' . $plusminus . '"></i></a> ';
                     }
-                    $data .= GedcomTag::getLabelValue('SOUR', '<a href="' . e($source->url()) . '">' . $source->getFullName() . '</a>', null, 'span');
+                    $data .= GedcomTag::getLabelValue('SOUR', '<a href="' . e($source->url()) . '">' . $source->fullName() . '</a>', null, 'span');
                     $data .= '</div>';
 
                     $data .= "<div id=\"$elementID\"";
@@ -606,7 +606,7 @@ class FunctionsPrintFacts
                     }
                     $data .= ' class="source_citations">';
                     // PUBL
-                    $publ = $source->getFirstFact('PUBL');
+                    $publ = $source->firstFact('PUBL');
                     if ($publ) {
                         $data .= GedcomTag::getLabelValue('PUBL', $publ->value());
                     }
@@ -657,7 +657,7 @@ class FunctionsPrintFacts
                     }
                     echo '</div>';
                     echo '<div class="media-display-title">';
-                    echo '<a href="', e($media->url()), '">', $media->getFullName(), '</a>';
+                    echo '<a href="', e($media->url()), '">', $media->fullName(), '</a>';
                     // NOTE: echo the notes of the media
                     echo '<p>';
                     echo FunctionsPrint::printFactNotes($tree, $media->gedcom(), 1);
@@ -672,7 +672,7 @@ class FunctionsPrintFacts
                         $spouse = Individual::getInstance($match[1], $tree);
                         if ($spouse) {
                             echo '<a href="', e($spouse->url()), '">';
-                            echo $spouse->getFullName();
+                            echo $spouse->fullName();
                             echo '</a>';
                         }
                         $ct = preg_match('/WT_FAMILY_ID: (.*)/', $factrec, $match);
@@ -788,9 +788,9 @@ class FunctionsPrintFacts
                 echo '</th>';
                 echo '<td class="', $styleadd, '">';
                 if ($source) {
-                    echo '<a href="', e($source->url()), '">', $source->getFullName(), '</a>';
+                    echo '<a href="', e($source->url()), '">', $source->fullName(), '</a>';
                     // PUBL
-                    $publ = $source->getFirstFact('PUBL');
+                    $publ = $source->firstFact('PUBL');
                     if ($publ) {
                         echo GedcomTag::getLabelValue('PUBL', $publ->value());
                     }

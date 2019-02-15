@@ -1,5 +1,4 @@
 <?php use Fisharebest\Webtrees\Auth; ?>
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrintFacts; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
@@ -20,7 +19,7 @@
 
 <div class="d-flex mb-4">
     <h2 class="wt-page-title mx-auto">
-        <?= $note->getFullName() ?>
+        <?= $note->fullName() ?>
     </h2>
     <?php if ($note->canEdit() && !$note->isPendingDeletion()) : ?>
         <?= view('note-page-menu', ['record' => $note]) ?>

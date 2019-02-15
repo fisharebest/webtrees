@@ -34,7 +34,7 @@ class CensusColumnMarriedWithinYear extends AbstractCensusColumn implements Cens
      */
     public function generate(Individual $individual, Individual $head): string
     {
-        foreach ($individual->getSpouseFamilies() as $family) {
+        foreach ($individual->spouseFamilies() as $family) {
             foreach ($family->facts(['MARR']) as $fact) {
                 $marriage_jd = $fact->date()->julianDay();
                 $census_jd   = $this->date()->julianDay();

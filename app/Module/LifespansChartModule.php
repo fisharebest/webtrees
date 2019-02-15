@@ -267,7 +267,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             $rows[$next_row] = $death_year;
 
             $lifespans[] = (object) [
-                'background' => $colors[$individual->getSex()]->getNextColor(),
+                'background' => $colors[$individual->sex()]->getNextColor(),
                 'birth_year' => $birth_year,
                 'death_year' => $death_year,
                 'id'         => 'individual-' . md5($individual->xref()),
@@ -387,22 +387,22 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     {
         $xrefs = [];
 
-        foreach ($individual->getSpouseFamilies() as $family) {
-            foreach ($family->getChildren() as $child) {
+        foreach ($individual->spouseFamilies() as $family) {
+            foreach ($family->children() as $child) {
                 $xrefs[] = $child->xref();
             }
 
-            foreach ($family->getSpouses() as $spouse) {
+            foreach ($family->spouses() as $spouse) {
                 $xrefs[] = $spouse->xref();
             }
         }
 
-        foreach ($individual->getChildFamilies() as $family) {
-            foreach ($family->getChildren() as $child) {
+        foreach ($individual->childFamilies() as $family) {
+            foreach ($family->children() as $child) {
                 $xrefs[] = $child->xref();
             }
 
-            foreach ($family->getSpouses() as $spouse) {
+            foreach ($family->spouses() as $spouse) {
                 $xrefs[] = $spouse->xref();
             }
         }

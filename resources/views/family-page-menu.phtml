@@ -15,7 +15,7 @@
             <?= I18N::translate('Add a child to this family') ?>
         </a>
 
-        <?php if ($record->getNumberOfChildren() > 1) : ?>
+        <?php if ($record->numberOfChildren() > 1) : ?>
             <a class="dropdown-item menu-fam-orderchil" href="<?= e(route('reorder-children', ['ged' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
                 <?= I18N::translate('Re-order children') ?>
             </a>

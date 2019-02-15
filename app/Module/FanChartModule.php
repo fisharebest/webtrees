@@ -104,7 +104,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
     public function chartTitle(Individual $individual): string
     {
         /* I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name */
-        return I18N::translate('Fan chart of %s', $individual->getFullName());
+        return I18N::translate('Fan chart of %s', $individual->fullName());
     }
 
     /**
@@ -246,8 +246,8 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
             while ($sosa >= $p2) {
                 if ($ancestors->has($sosa)) {
                     $person  = $ancestors->get($sosa);
-                    $name    = $person->getFullName();
-                    $addname = $person->getAddName();
+                    $name    = $person->fullName();
+                    $addname = $person->alternateName();
 
                     $text = I18N::reverseText($name);
                     if ($addname) {
@@ -256,7 +256,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
 
                     $text .= "\n" . I18N::reverseText($person->getLifeSpan());
 
-                    $background = $backgrounds[$person->getSex()];
+                    $background = $backgrounds[$person->sex()];
 
                     imagefilledarc($image, (int) $cx, (int) $cy, (int) $rx, (int) $rx, (int) $deg1, (int) $deg2, $background, IMG_ARC_PIE);
 
@@ -355,7 +355,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
                     $html  .= '</ul>';
                     $html  .= '</div></div>';
                     $html  .= '</div>';
-                    $areas .= ' alt="' . strip_tags($person->getFullName()) . '" title="' . strip_tags($person->getFullName()) . '">';
+                    $areas .= ' alt="' . strip_tags($person->fullName()) . '" title="' . strip_tags($person->fullName()) . '">';
                 }
                 $deg1 -= $angle;
                 $deg2 -= $angle;

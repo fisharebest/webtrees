@@ -90,7 +90,7 @@ class EditSubmitterController extends AbstractEditController
             ]),
             'html' => view('modals/record-created', [
                 'title' => I18N::translate('The submitter has been created'),
-                'name'  => $record->getFullName(),
+                'name'  => $record->fullName(),
                 'url'   => $record->url(),
             ]),
         ]);

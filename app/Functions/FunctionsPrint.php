@@ -33,6 +33,7 @@ use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Ramsey\Uuid\Uuid;
 
@@ -43,7 +44,6 @@ class FunctionsPrint
 {
     /**
      * print the information for an individual chart box
-     *
      * find and print a given individuals information for a pedigree chart
      *
      * @param Individual|null $person The person to print
@@ -98,7 +98,7 @@ class FunctionsPrint
         $element_id = Uuid::uuid4()->toString();
         // NOTE: class "note-details" is (currently) used only by some third-party themes
         if ($note) {
-            $first_line = '<a href="' . e($note->url()) . '">' . $note->getFullName() . '</a>';
+            $first_line = '<a href="' . e($note->url()) . '">' . $note->fullName() . '</a>';
         } else {
             [$text] = explode("\n", strip_tags($html));
             $first_line = Str::limit($text, 100, I18N::translate('…'));
@@ -145,7 +145,7 @@ class FunctionsPrint
                     if ($note->canShow()) {
                         $noterec = $note->gedcom();
                         $nt      = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
-                        $data .= self::printNoteRecord($tree, ($nt > 0) ? $n1match[1] : '', 1, $noterec);
+                        $data    .= self::printNoteRecord($tree, ($nt > 0) ? $n1match[1] : '', 1, $noterec);
                     }
                 } else {
                     $data = '<div class="fact_NOTE"><span class="label">' . I18N::translate('Note') . '</span>: <span class="field error">' . $nmatch[1] . '</span></div>';
@@ -183,16 +183,16 @@ class FunctionsPrint
     public static function formatParentsAges(Individual $person, Date $birth_date): string
     {
         $html     = '';
-        $families = $person->getChildFamilies();
+        $families = $person->childFamilies();
         // Multiple sets of parents (e.g. adoption) cause complications, so ignore.
-        if ($birth_date->isOK() && count($families) == 1) {
-            $family = current($families);
-            foreach ($family->getSpouses() as $parent) {
+        if ($birth_date->isOK() && $families->count() == 1) {
+            $family = $families->first();
+            foreach ($family->spouses() as $parent) {
                 if ($parent->getBirthDate()->isOK()) {
                     $sex      = $parent->getSexImage();
                     $age      = Date::getAge($parent->getBirthDate(), $birth_date);
                     $deatdate = $parent->getDeathDate();
-                    switch ($parent->getSex()) {
+                    switch ($parent->sex()) {
                         case 'F':
                             // Highlight mothers who die in childbirth or shortly afterwards
                             if ($deatdate->isOK() && $deatdate->maximumJulianDay() < $birth_date->minimumJulianDay() + 90) {
@@ -274,7 +274,7 @@ class FunctionsPrint
                     // Can't use getDeathDate(), as this also gives BURI/CREM events, which
                     // wouldn't give the correct "days after death" result for people with
                     // no DEAT.
-                    $death_event = $record->getFirstFact('DEAT');
+                    $death_event = $record->firstFact('DEAT');
                     if ($death_event) {
                         $death_date = $death_event->date();
                     } else {
@@ -289,8 +289,8 @@ class FunctionsPrint
                             if (
                                 $fact_age != '' && $fact_age != $age ||
                                 $fact_age == '' && $husb_age == '' && $wife_age == '' ||
-                                $husb_age != '' && $record->getSex() == 'M' && $husb_age != $age ||
-                                $wife_age != '' && $record->getSex() == 'F' && $wife_age != $age
+                                $husb_age != '' && $record->sex() == 'M' && $husb_age != $age ||
+                                $wife_age != '' && $record->sex() == 'F' && $wife_age != $age
                             ) {
                                 $ageText = '(' . I18N::translate('Age') . ' ' . FunctionsDate::getAgeAtEvent($age) . ')';
                             }
@@ -362,39 +362,39 @@ class FunctionsPrint
                 if (preg_match_all('/\n3 (?:_HEB|ROMN) (.+)/', $placerec, $matches)) {
                     foreach ($matches[1] as $match) {
                         $wt_place = new Place($match, $tree);
-                        $html .= ' - ' . $wt_place->fullName();
+                        $html     .= ' - ' . $wt_place->fullName();
                     }
                 }
                 $map_lati = '';
                 $cts      = preg_match('/\d LATI (.*)/', $placerec, $match);
                 if ($cts > 0) {
                     $map_lati = $match[1];
-                    $html .= '<br><span class="label">' . I18N::translate('Latitude') . ': </span>' . $map_lati;
+                    $html     .= '<br><span class="label">' . I18N::translate('Latitude') . ': </span>' . $map_lati;
                 }
                 $map_long = '';
                 $cts      = preg_match('/\d LONG (.*)/', $placerec, $match);
                 if ($cts > 0) {
                     $map_long = $match[1];
-                    $html .= ' <span class="label">' . I18N::translate('Longitude') . ': </span>' . $map_long;
+                    $html     .= ' <span class="label">' . I18N::translate('Longitude') . ': </span>' . $map_long;
                 }
                 if ($map_lati && $map_long) {
                     $map_lati = trim(strtr($map_lati, 'NSEW,�', ' - -. ')); // S5,6789 ==> -5.6789
                     $map_long = trim(strtr($map_long, 'NSEW,�', ' - -. ')); // E3.456� ==> 3.456
 
-                    $html .= '<a href="https://maps.google.com/maps?q=' . e($map_lati) . ',' . e($map_long) .'" rel="nofollow" title="' . I18N::translate('Google Maps™') . '">' .
-                    view('icons/google-maps') .
-                    '<span class="sr-only">' . I18N::translate('Google Maps™') . '</span>' .
-                    '</a>';
+                    $html .= '<a href="https://maps.google.com/maps?q=' . e($map_lati) . ',' . e($map_long) . '" rel="nofollow" title="' . I18N::translate('Google Maps™') . '">' .
+                        view('icons/google-maps') .
+                        '<span class="sr-only">' . I18N::translate('Google Maps™') . '</span>' .
+                        '</a>';
 
-                    $html .= '<a href="https://www.bing.com/maps/?lvl=15&cp=' . e($map_lati) . '~' . e($map_long) .'" rel="nofollow" title="' . I18N::translate('Bing Maps™') . '">' .
-                    view('icons/bing-maps') .
-                    '<span class="sr-only">' . I18N::translate('Bing Maps™') . '</span>' .
-                    '</a>';
+                    $html .= '<a href="https://www.bing.com/maps/?lvl=15&cp=' . e($map_lati) . '~' . e($map_long) . '" rel="nofollow" title="' . I18N::translate('Bing Maps™') . '">' .
+                        view('icons/bing-maps') .
+                        '<span class="sr-only">' . I18N::translate('Bing Maps™') . '</span>' .
+                        '</a>';
 
-                    $html .= '<a href="https://www.openstreetmap.org/#map=15/' . e($map_lati) . '/' . e($map_long) .'" rel="nofollow" title="' . I18N::translate('OpenStreetMap™') . '">' .
-                    view('icons/openstreetmap') .
-                    '<span class="sr-only">' . I18N::translate('OpenStreetMap™') . '</span>' .
-                    '</a>';
+                    $html .= '<a href="https://www.openstreetmap.org/#map=15/' . e($map_lati) . '/' . e($map_long) . '" rel="nofollow" title="' . I18N::translate('OpenStreetMap™') . '">' .
+                        view('icons/openstreetmap') .
+                        '<span class="sr-only">' . I18N::translate('OpenStreetMap™') . '</span>' .
+                        '</a>';
                 }
                 if (preg_match('/\d NOTE (.*)/', $placerec, $match)) {
                     $html .= '<br>' . self::printFactNotes($tree, $placerec, 3);
@@ -421,12 +421,12 @@ class FunctionsPrint
      * Check for facts that may exist only once for a certain record type.
      * If the fact already exists in the second array, delete it from the first one.
      *
-     * @param string[] $uniquefacts
-     * @param Fact[]   $recfacts
+     * @param string[]          $uniquefacts
+     * @param Collection|Fact[] $recfacts
      *
      * @return string[]
      */
-    public static function checkFactUnique(array $uniquefacts, array $recfacts): array
+    public static function checkFactUnique(array $uniquefacts, Collection $recfacts): array
     {
         foreach ($recfacts as $factarray) {
             $fact = $factarray->getTag();
@@ -443,13 +443,13 @@ class FunctionsPrint
     /**
      * Print a new fact box on details pages
      *
-     * @param GedcomRecord $record    the person, family, source etc the fact will be added to
-     * @param Fact[]       $usedfacts an array of facts already used in this record
-     * @param string       $type      the type of record INDI, FAM, SOUR etc
+     * @param GedcomRecord      $record    the person, family, source etc the fact will be added to
+     * @param Collection|Fact[] $usedfacts an array of facts already used in this record
+     * @param string            $type      the type of record INDI, FAM, SOUR etc
      *
      * @return void
      */
-    public static function printAddNewFact(GedcomRecord $record, $usedfacts, $type): void
+    public static function printAddNewFact(GedcomRecord $record, Collection $usedfacts, $type): void
     {
         $tree = $record->tree();
 

@@ -542,7 +542,7 @@ class Fact
         $attributes = [];
         $target     = $this->target();
         if ($target instanceof GedcomRecord) {
-            $attributes[] = $target->getFullName();
+            $attributes[] = $target->fullName();
         } else {
             // Fact value
             $value = $this->value();

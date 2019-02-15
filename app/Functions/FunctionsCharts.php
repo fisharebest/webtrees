@@ -102,13 +102,13 @@ class FunctionsCharts
     {
         $pbheight = app()->make(ModuleThemeInterface::class)->parameter('chart-box-y') + 14;
 
-        $husb = $family->getHusband();
+        $husb = $family->husband();
         if ($husb) {
             echo '<a name="', $husb->xref(), '"></a>';
         } else {
             $husb = new Individual('M', "0 @M@ INDI\n1 SEX M", null, $family->tree());
         }
-        $wife = $family->getWife();
+        $wife = $family->wife();
         if ($wife) {
             echo '<a name="', $wife->xref(), '"></a>';
         } else {
@@ -116,7 +116,7 @@ class FunctionsCharts
         }
 
         if ($sosa) {
-            echo '<p class="name_head">', $family->getFullName(), '</p>';
+            echo '<p class="name_head">', $family->fullName(), '</p>';
         }
 
         /**
@@ -145,28 +145,28 @@ class FunctionsCharts
         echo '</td></tr></table>';
         echo '</td>';
         // husband’s parents
-        $hfam = $husb->getPrimaryChildFamily();
+        $hfam = $husb->primaryChildFamily();
         if ($hfam) {
             // remove the|| test for $sosa
             echo '<td rowspan="2"><img src="' . e(asset('css/images/hline.png')) . '"></td><td rowspan="2"><img  src="' . e(asset('css/images/vline.png')) . '" width="3" height="' . ($pbheight - 14) . '"></td>';
             echo '<td><img class="linea1 lined1"  src="' . e(asset('css/images/hline.png')) . '"></td><td>';
             // husband’s father
-            if ($hfam && $hfam->getHusband()) {
+            if ($hfam && $hfam->husband()) {
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 if ($sosa > 0) {
-                    self::printSosaNumber($sosa * 4, $hfam->getHusband()->xref(), 'icons/arrow-down');
+                    self::printSosaNumber($sosa * 4, $hfam->husband()->xref(), 'icons/arrow-down');
                 }
-                if (!empty($gparid) && $hfam->getHusband()->xref() == $gparid) {
+                if (!empty($gparid) && $hfam->husband()->xref() == $gparid) {
                     self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'icons/arrow-up');
                 }
                 echo '<td>';
-                echo FunctionsPrint::printPedigreePerson($hfam->getHusband());
+                echo FunctionsPrint::printPedigreePerson($hfam->husband());
                 echo '</td></tr></table>';
-            } elseif ($hfam && !$hfam->getHusband()) {
+            } elseif ($hfam && !$hfam->husband()) {
                 // Empty box for grandfather
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 echo '<td>';
-                echo FunctionsPrint::printPedigreePerson($hfam->getHusband());
+                echo FunctionsPrint::printPedigreePerson($hfam->husband());
                 echo '</td></tr></table>';
             }
             echo '</td>';
@@ -179,22 +179,22 @@ class FunctionsCharts
         if ($hfam) {
             // husband’s mother
             echo '</tr><tr><td><img class="linea2 lined2"  src="' . e(asset('css/images/hline.png')) . '"></td><td>';
-            if ($hfam && $hfam->getWife()) {
+            if ($hfam && $hfam->wife()) {
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 if ($sosa > 0) {
-                    self::printSosaNumber($sosa * 4 + 1, $hfam->getWife()->xref(), 'icons/arrow-down');
+                    self::printSosaNumber($sosa * 4 + 1, $hfam->wife()->xref(), 'icons/arrow-down');
                 }
-                if (!empty($gparid) && $hfam->getWife()->xref() == $gparid) {
+                if (!empty($gparid) && $hfam->wife()->xref() == $gparid) {
                     self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'icons/arrow-up');
                 }
                 echo '<td>';
-                echo FunctionsPrint::printPedigreePerson($hfam->getWife());
+                echo FunctionsPrint::printPedigreePerson($hfam->wife());
                 echo '</td></tr></table>';
-            } elseif ($hfam && !$hfam->getWife()) {
+            } elseif ($hfam && !$hfam->wife()) {
                 // Empty box for grandmother
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 echo '<td>';
-                echo FunctionsPrint::printPedigreePerson($hfam->getWife());
+                echo FunctionsPrint::printPedigreePerson($hfam->wife());
                 echo '</td></tr></table>';
             }
             echo '</td>';
@@ -235,27 +235,27 @@ class FunctionsCharts
         echo '</td></tr></table>';
         echo '</td>';
         // wife’s parents
-        $wfam = $wife->getPrimaryChildFamily();
+        $wfam = $wife->primaryChildFamily();
         if ($wfam) {
             echo '<td rowspan="2"><img src="' . e(asset('css/images/hline.png')) . '"></td><td rowspan="2"><img src="' . e(asset('css/images/vline.png')) . '" width="3" height="' . ($pbheight - 14) . '"></td>';
             echo '<td><img class="linea3 lined3" src="' . e(asset('css/images/hline.png')) . '"></td><td>';
             // wife’s father
-            if ($wfam && $wfam->getHusband()) {
+            if ($wfam && $wfam->husband()) {
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 if ($sosa > 0) {
-                    self::printSosaNumber($sosa * 4 + 2, $wfam->getHusband()->xref(), 'icons/arrow-down');
+                    self::printSosaNumber($sosa * 4 + 2, $wfam->husband()->xref(), 'icons/arrow-down');
                 }
-                if (!empty($gparid) && $wfam->getHusband()->xref() == $gparid) {
+                if (!empty($gparid) && $wfam->husband()->xref() == $gparid) {
                     self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'icons/arrow-up');
                 }
                 echo '<td>';
-                echo FunctionsPrint::printPedigreePerson($wfam->getHusband());
+                echo FunctionsPrint::printPedigreePerson($wfam->husband());
                 echo '</td></tr></table>';
-            } elseif ($wfam && !$wfam->getHusband()) {
+            } elseif ($wfam && !$wfam->husband()) {
                 // Empty box for grandfather
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 echo '<td>';
-                echo FunctionsPrint::printPedigreePerson($wfam->getHusband());
+                echo FunctionsPrint::printPedigreePerson($wfam->husband());
                 echo '</td></tr></table>';
             }
             echo '</td>';
@@ -268,22 +268,22 @@ class FunctionsCharts
         if ($wfam) {
             // wife’s mother
             echo '</tr><tr><td><img class="linea4 lined4"  src="' . e(asset('css/images/hline.png')) . '"></td><td>';
-            if ($wfam && $wfam->getWife()) {
+            if ($wfam && $wfam->wife()) {
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 if ($sosa > 0) {
-                    self::printSosaNumber($sosa * 4 + 3, $wfam->getWife()->xref(), 'icons/arrow-down');
+                    self::printSosaNumber($sosa * 4 + 3, $wfam->wife()->xref(), 'icons/arrow-down');
                 }
-                if (!empty($gparid) && $wfam->getWife()->xref() == $gparid) {
+                if (!empty($gparid) && $wfam->wife()->xref() == $gparid) {
                     self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'icons/arrow-up');
                 }
                 echo '<td>';
-                echo FunctionsPrint::printPedigreePerson($wfam->getWife());
+                echo FunctionsPrint::printPedigreePerson($wfam->wife());
                 echo '</td></tr></table>';
-            } elseif ($wfam && !$wfam->getWife()) {
+            } elseif ($wfam && !$wfam->wife()) {
                 // Empty box for grandmother
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 echo '<td>';
-                echo FunctionsPrint::printPedigreePerson($wfam->getWife());
+                echo FunctionsPrint::printPedigreePerson($wfam->wife());
                 echo '</td></tr></table>';
             }
             echo '</td>';
@@ -313,7 +313,7 @@ class FunctionsCharts
 
         $pbheight = $bheight + 14;
 
-        $children = $family->getChildren();
+        $children = $family->children();
         $numchil  = count($children);
 
         echo '<table border="0" cellpadding="0" cellspacing="0"><tr>';
@@ -377,7 +377,7 @@ class FunctionsCharts
                 echo '</td>';
                 if ($sosa != 0) {
                     // loop for all families where current child is a spouse
-                    $famids = $child->getSpouseFamilies();
+                    $famids = $child->spouseFamilies();
                     $maxfam = count($famids) - 1;
                     for ($f = 0; $f <= $maxfam; $f++) {
                         // multiple marriages
@@ -385,7 +385,7 @@ class FunctionsCharts
                             echo '</tr><tr><td></td>';
                             echo '<td style="text-align:end; vertical-align: top;">';
                             //find out how many cousins there are to establish vertical line on second families
-                            $fchildren = $famids[$f]->getChildren();
+                            $fchildren = $famids[$f]->children();
                             $kids      = count($fchildren);
 
                             if ($show_cousins) {
@@ -405,10 +405,10 @@ class FunctionsCharts
                             echo '</td>';
                         }
                         echo '<td class="details1" style="text-align:center;">';
-                        $spouse = $famids[$f]->getSpouse($child);
+                        $spouse = $famids[$f]->spouse($child);
 
-                        $marr = $famids[$f]->getFirstFact('MARR');
-                        $div  = $famids[$f]->getFirstFact('DIV');
+                        $marr = $famids[$f]->firstFact('MARR');
+                        $div  = $famids[$f]->firstFact('DIV');
                         if ($marr) {
                             // marriage date
                             echo $marr->date()->minimumDate()->format('%Y');
@@ -509,7 +509,7 @@ class FunctionsCharts
     private static function printCousins(Family $family)
     {
         $bheight   = app()->make(ModuleThemeInterface::class)->parameter('chart-box-y');
-        $fchildren = $family->getChildren();
+        $fchildren = $family->children();
         $kids      = count($fchildren);
 
         echo '<td>';

@@ -42,7 +42,7 @@
                 <td>
                     <?php if ($story->individual !== null) : ?>
                         <a href="<?= e($story->individual->url()) ?>#tab-stories">
-                            <?= $story->individual->getFullName() ?>
+                            <?= $story->individual->fullName() ?>
                         </a>
                     <?php else : ?>
                         <?= $story->xref ?>

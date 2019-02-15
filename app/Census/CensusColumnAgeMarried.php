@@ -36,7 +36,7 @@ class CensusColumnAgeMarried extends AbstractCensusColumn implements CensusColum
     public function generate(Individual $individual, Individual $head): string
     {
         if ($individual->getBirthDate()->isOK()) {
-            foreach ($individual->getSpouseFamilies() as $family) {
+            foreach ($individual->spouseFamilies() as $family) {
                 foreach ($family->facts(['MARR'], true) as $fact) {
                     if ($fact->date()->isOK()) {
                         return (string) Date::getAgeYears($individual->getBirthDate(), $fact->date());

@@ -103,7 +103,7 @@
 
     censusAssistant.setAttribute('hidden', '');
     document.querySelector('#census-assistant-class').value = census;
-    document.querySelector('#census-assistant-title').value = censusYear + ' ' + censusPlace + ' - <?= I18N::translate('Census transcript') ?> - <?= strip_tags($individual->getFullName()) ?> - <?= I18N::translate('Household') ?>';
+    document.querySelector('#census-assistant-title').value = censusYear + ' ' + censusPlace + ' - <?= I18N::translate('Census transcript') ?> - <?= strip_tags($individual->fullName()) ?> - <?= I18N::translate('Household') ?>';
 
     fetch('<?= route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusHeader', 'ged' => $individual->tree()->name()]) ?>&census=' + census)
       .then(function (response) {

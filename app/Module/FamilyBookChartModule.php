@@ -116,7 +116,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
     public function chartTitle(Individual $individual): string
     {
         /* I18N: %s is an individual’s name */
-        return I18N::translate('Family book of %s', $individual->getFullName());
+        return I18N::translate('Family book of %s', $individual->fullName());
     }
 
     /**
@@ -228,8 +228,8 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
             // Count is position from center to left, dgenerations is number of generations
             if ($generation < $this->dgenerations) {
                 // All children, from all partners
-                foreach ($person->getSpouseFamilies() as $family) {
-                    foreach ($family->getChildren() as $child) {
+                foreach ($person->spouseFamilies() as $family) {
+                    foreach ($family->children() as $child) {
                         $children[] = $child;
                     }
                 }
@@ -298,8 +298,8 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
         // Print the spouse
         if ($generation === 1 && $person instanceof Individual) {
             if ($this->show_spouse) {
-                foreach ($person->getSpouseFamilies() as $family) {
-                    $spouse = $family->getSpouse($person);
+                foreach ($person->spouseFamilies() as $family) {
+                    $spouse = $family->spouse($person);
                     echo '</td></tr><tr><td>';
                     echo FunctionsPrint::printPedigreePerson($spouse);
                     $numkids += 0.95;
@@ -334,7 +334,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
         //
         //Prints empty table columns for children w/o parents up to the max generation
         //This allows vertical line spacing to be consistent
-        if (count($person->getChildFamilies()) == 0) {
+        if (count($person->childFamilies()) == 0) {
             echo '<table cellspacing="0" cellpadding="0" border="0" >';
             $this->printEmptyBox();
 
@@ -349,14 +349,14 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
         }
 
         // Empty box section done, now for regular pedigree
-        foreach ($person->getChildFamilies() as $family) {
+        foreach ($person->childFamilies() as $family) {
             echo '<table cellspacing="0" cellpadding="0" border="0" ><tr><td class="align-bottom">';
             // Determine line height for two or more spouces
             // And then adjust the vertical line for the root person only
             $famcount = 0;
             if ($this->show_spouse) {
                 // count number of spouses
-                $famcount += count($person->getSpouseFamilies());
+                $famcount += count($person->spouseFamilies());
             }
             $savlh = $lh; // Save current line height
             if ($count == 1 && $genoffset <= $famcount) {
@@ -397,12 +397,12 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
             '<td>';
             $lh = $savlh; // restore original line height
             //-- print the father box
-            echo FunctionsPrint::printPedigreePerson($family->getHusband());
+            echo FunctionsPrint::printPedigreePerson($family->husband());
             echo '</td>';
-            if ($family->getHusband()) {
+            if ($family->husband()) {
                 echo '<td>';
                 //-- recursively get the father’s family
-                $this->printPersonPedigree($family->getHusband(), $count + 1);
+                $this->printPersonPedigree($family->husband(), $count + 1);
                 echo '</td>';
             } else {
                 echo '<td>';
@@ -420,12 +420,12 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
             '<td><img class="linef3" alt="" role="presentation" src="', e(asset('css/images/hline.png')), '" height="3"></td>',
             '<td>';
             //-- print the mother box
-            echo FunctionsPrint::printPedigreePerson($family->getWife());
+            echo FunctionsPrint::printPedigreePerson($family->wife());
             echo '</td>';
-            if ($family->getWife()) {
+            if ($family->wife()) {
                 echo '<td>';
                 //-- recursively print the mother’s family
-                $this->printPersonPedigree($family->getWife(), $count + 1);
+                $this->printPersonPedigree($family->wife(), $count + 1);
                 echo '</td>';
             } else {
                 echo '<td>';
@@ -460,8 +460,8 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
             return $depth;
         }
         $maxdc = $depth;
-        foreach ($individual->getSpouseFamilies() as $family) {
-            foreach ($family->getChildren() as $child) {
+        foreach ($individual->spouseFamilies() as $family) {
+            foreach ($family->children() as $child) {
                 $dc = $this->maxDescendencyGenerations($child, $depth + 1);
                 if ($dc >= $this->generations) {
                     return $dc;
@@ -507,7 +507,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
         echo
         '<h3>',
             /* I18N: %s is an individual’s name */
-        I18N::translate('Family of %s', $person->getFullName()),
+        I18N::translate('Family of %s', $person->fullName()),
         '</h3>',
         '<table cellspacing="0" cellpadding="0" border="0" ><tr><td class="align-middle">';
         $this->dgenerations = $this->generations;
@@ -515,8 +515,8 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
         echo '</td><td class="align-middle">';
         $this->printPersonPedigree($person, 1);
         echo '</td></tr></table><br><br><hr class="wt-family-break"><br><br>';
-        foreach ($person->getSpouseFamilies() as $family) {
-            foreach ($family->getChildren() as $child) {
+        foreach ($person->spouseFamilies() as $family) {
+            foreach ($family->children() as $child) {
                 $this->printFamilyBook($child, $descent_steps - 1);
             }
         }

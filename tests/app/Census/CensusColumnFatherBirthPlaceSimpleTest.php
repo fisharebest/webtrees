@@ -68,10 +68,10 @@ class CensusColumnFatherBirthPlaceSimpleTest extends \Fisharebest\Webtrees\TestC
         $father->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('Miami, Florida, United States'));
 
         $family = Mockery::mock(Family::class);
-        $family->shouldReceive('getHusband')->andReturn($father);
+        $family->shouldReceive('husband')->andReturn($father);
 
         $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getPrimaryChildFamily')->andReturn($family);
+        $individual->shouldReceive('primaryChildFamily')->andReturn($family);
 
         $census = Mockery::mock(CensusInterface::class);
         $census->shouldReceive('censusPlace')->andReturn('United States');

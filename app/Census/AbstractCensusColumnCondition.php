@@ -69,9 +69,9 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
     public function generate(Individual $individual, Individual $head): string
     {
         $family = $this->spouseFamily($individual);
-        $sex    = $individual->getSex();
+        $sex    = $individual->sex();
 
-        if ($family === null || count($family->facts(['MARR'])) === 0) {
+        if ($family === null || $family->facts(['MARR'])->isEmpty()) {
             if ($this->isChild($individual)) {
                 return $this->conditionChild($sex);
             }
@@ -79,11 +79,11 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
             return $this->conditionSingle($sex);
         }
 
-        if (count($family->facts(['DIV'])) > 0) {
+        if ($family->facts(['DIV'])->isNotEmpty()) {
             return $this->conditionDivorced($sex);
         }
 
-        $spouse = $family->getSpouse($individual);
+        $spouse = $family->spouse($individual);
         if ($spouse instanceof Individual && $this->isDead($spouse)) {
             return $this->conditionWidowed($sex);
         }

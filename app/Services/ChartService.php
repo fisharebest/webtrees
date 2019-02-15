@@ -49,16 +49,16 @@ class ChartService
                 break;
             }
 
-            $family = $ancestors[$sosa_stradonitz_number]->getPrimaryChildFamily();
+            $family = $ancestors[$sosa_stradonitz_number]->primaryChildFamily();
 
             if ($family instanceof Family) {
-                if ($family->getHusband() instanceof Individual) {
-                    $ancestors[$sosa_stradonitz_number * 2] = $family->getHusband();
+                if ($family->husband() instanceof Individual) {
+                    $ancestors[$sosa_stradonitz_number * 2] = $family->husband();
                     $queue[] = $sosa_stradonitz_number * 2;
                 }
 
-                if ($family->getWife() instanceof Individual) {
-                    $ancestors[$sosa_stradonitz_number * 2 + 1] = $family->getWife();
+                if ($family->wife() instanceof Individual) {
+                    $ancestors[$sosa_stradonitz_number * 2 + 1] = $family->wife();
                     $queue[] = $sosa_stradonitz_number * 2 + 1;
                 }
             }
@@ -80,8 +80,8 @@ class ChartService
         $descendants = new Collection([$individual]);
 
         if ($generations > 0) {
-            foreach ($individual->getSpouseFamilies() as $family) {
-                foreach ($family->getChildren() as $child) {
+            foreach ($individual->spouseFamilies() as $family) {
+                foreach ($family->children() as $child) {
                     $descendants = $descendants->merge($this->descendants($child, $generations - 1));
                 }
             }
@@ -100,11 +100,11 @@ class ChartService
      */
     public function descendantFamilies(Individual $individual, int $generations): Collection
     {
-        $descendants = new Collection($individual->getSpouseFamilies());
+        $descendants = new Collection($individual->spouseFamilies());
 
         if ($generations > 0) {
             foreach ($descendants as $family) {
-                foreach ($family->getChildren() as $child) {
+                foreach ($family->children() as $child) {
                     $descendants = $descendants->merge($this->descendantFamilies($child, $generations - 1));
                 }
             }

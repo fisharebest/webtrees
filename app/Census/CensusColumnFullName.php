@@ -54,10 +54,10 @@ class CensusColumnFullName extends AbstractCensusColumn implements CensusColumnI
         $names = $individual->getAllNames();
         $name  = $names[0];
 
-        foreach ($individual->getSpouseFamilies() as $family) {
+        foreach ($individual->spouseFamilies() as $family) {
             foreach ($family->facts(['MARR']) as $marriage) {
                 if ($marriage->date()->isOK() && Date::compare($marriage->date(), $census_date) < 0) {
-                    $spouse = $family->getSpouse($individual);
+                    $spouse = $family->spouse($individual);
                     foreach ($names as $individual_name) {
                         foreach ($spouse->getAllNames() as $spouse_name) {
                             if ($individual_name['type'] === '_MARNM' && $individual_name['surn'] === $spouse_name['surn']) {

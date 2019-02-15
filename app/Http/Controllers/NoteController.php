@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Services\ClipboardService;
@@ -58,24 +59,20 @@ class NoteController extends AbstractBaseController
             'meta_robots'   => 'index,follow',
             'sources'       => $record->linkedSources('NOTE'),
             'text'          => Filter::formatText($record->getNote(), $tree),
-            'title'         => $record->getFullName(),
+            'title'         => $record->fullName(),
         ]);
     }
 
     /**
      * @param Note $record
      *
-     * @return array
+     * @return Collection|Fact[]
      */
-    private function facts(Note $record): array
+    private function facts(Note $record): Collection
     {
-        $facts = [];
-        foreach ($record->facts() as $fact) {
-            if ($fact->getTag() != 'CONT') {
-                $facts[] = $fact;
-            }
-        }
-
-        return $facts;
+        return $record->facts()
+            ->filter(function (Fact $fact): bool {
+                return $fact->getTag() !== 'CONT';
+            });
     }
 }

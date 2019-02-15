@@ -86,9 +86,9 @@ $count_sources = DB::table('sources')
         <?php foreach ($notes as $note) : ?>
             <tr class="<?= $note->isPendingDeletion() ? 'old' : ($note->isPendingAddition() ? 'new' : '') ?>">
                 <!-- Title -->
-                <td data-sort="<?= e($note->getSortName()) ?>">
+                <td data-sort="<?= e($note->sortName()) ?>">
                     <a href="<?= e($note->url()) ?>">
-                        <?= $note->getFullName() ?>
+                        <?= $note->fullName() ?>
                     </a>
                 </td>
 

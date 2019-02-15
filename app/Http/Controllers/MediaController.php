@@ -56,23 +56,20 @@ class MediaController extends AbstractBaseController
             'meta_robots'     => 'index,follow',
             'notes'           => $media->linkedNotes('OBJE'),
             'sources'         => $media->linkedSources('OBJE'),
-            'title'           => $media->getFullName(),
+            'title'           => $media->fullName(),
         ]);
     }
 
     /**
      * @param Media $record
      *
-     * @return array
+     * @return Collection|Fact[]
      */
-    private function facts(Media $record): array
+    private function facts(Media $record): Collection
     {
-        $facts = $record->facts();
-
-        array_filter($facts, function (Fact $fact): bool {
-            return $fact->getTag() !== 'FILE';
-        });
-
-        return $facts;
+        return $record->facts()
+            ->filter(function (Fact $fact): bool {
+                return $fact->getTag() !== 'FILE';
+            });
     }
 }

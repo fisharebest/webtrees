@@ -929,7 +929,7 @@ class ReportParserGenerate extends ReportParserBase
             if (!$record->canShowName()) {
                 $this->current_element->addText(I18N::translate('Private'));
             } else {
-                $name = $record->getFullName();
+                $name = $record->fullName();
                 $name = preg_replace(
                     [
                         '/<span class="starredname">/',
@@ -947,7 +947,7 @@ class ReportParserGenerate extends ReportParserBase
                 if (!empty($attrs['truncate'])) {
                     $name = Str::limit($name, $attrs['truncate'], I18N::translate('…'));
                 } else {
-                    $addname = $record->getAddName();
+                    $addname = $record->alternateName();
                     $addname = preg_replace(
                         [
                             '/<span class="starredname">/',
@@ -1296,7 +1296,7 @@ class ReportParserGenerate extends ReportParserBase
 
         $record = GedcomRecord::getInstance($id, $this->tree);
         if (empty($attrs['diff']) && !empty($id)) {
-            $facts = $record->facts();
+            throw new \Exception('eek');
             Functions::sortFacts($facts);
             $this->repeats = [];
             $nonfacts      = explode(',', $tag);
@@ -2404,16 +2404,16 @@ class ReportParserGenerate extends ReportParserBase
             $this->list[$id] = $person;
             switch ($group) {
                 case 'child-family':
-                    foreach ($person->getChildFamilies() as $family) {
-                        $husband = $family->getHusband();
-                        $wife    = $family->getWife();
+                    foreach ($person->childFamilies() as $family) {
+                        $husband = $family->husband();
+                        $wife    = $family->wife();
                         if (!empty($husband)) {
                             $this->list[$husband->xref()] = $husband;
                         }
                         if (!empty($wife)) {
                             $this->list[$wife->xref()] = $wife;
                         }
-                        $children = $family->getChildren();
+                        $children = $family->children();
                         foreach ($children as $child) {
                             if (!empty($child)) {
                                 $this->list[$child->xref()] = $child;
@@ -2422,16 +2422,16 @@ class ReportParserGenerate extends ReportParserBase
                     }
                     break;
                 case 'spouse-family':
-                    foreach ($person->getSpouseFamilies() as $family) {
-                        $husband = $family->getHusband();
-                        $wife    = $family->getWife();
+                    foreach ($person->spouseFamilies() as $family) {
+                        $husband = $family->husband();
+                        $wife    = $family->wife();
                         if (!empty($husband)) {
                             $this->list[$husband->xref()] = $husband;
                         }
                         if (!empty($wife)) {
                             $this->list[$wife->xref()] = $wife;
                         }
-                        $children = $family->getChildren();
+                        $children = $family->children();
                         foreach ($children as $child) {
                             if (!empty($child)) {
                                 $this->list[$child->xref()] = $child;
@@ -2728,10 +2728,10 @@ class ReportParserGenerate extends ReportParserBase
         if (!isset($list[$pid]->generation)) {
             $list[$pid]->generation = 0;
         }
-        foreach ($person->getSpouseFamilies() as $family) {
+        foreach ($person->spouseFamilies() as $family) {
             if ($parents) {
-                $husband = $family->getHusband();
-                $wife    = $family->getWife();
+                $husband = $family->husband();
+                $wife    = $family->wife();
                 if ($husband) {
                     $list[$husband->xref()] = $husband;
                     if (isset($list[$pid]->generation)) {
@@ -2749,7 +2749,7 @@ class ReportParserGenerate extends ReportParserBase
                     }
                 }
             }
-            $children = $family->getChildren();
+            $children = $family->children();
             foreach ($children as $child) {
                 if ($child) {
                     $list[$child->xref()] = $child;
@@ -2788,9 +2788,9 @@ class ReportParserGenerate extends ReportParserBase
                 continue; // id can be something like “empty7”
             }
             $person = Individual::getInstance($id, $this->tree);
-            foreach ($person->getChildFamilies() as $family) {
-                $husband = $family->getHusband();
-                $wife    = $family->getWife();
+            foreach ($person->childFamilies() as $family) {
+                $husband = $family->husband();
+                $wife    = $family->wife();
                 if ($husband) {
                     $list[$husband->xref()]             = $husband;
                     $list[$husband->xref()]->generation = $list[$id]->generation + 1;
@@ -2808,7 +2808,7 @@ class ReportParserGenerate extends ReportParserBase
                     }
                 }
                 if ($children) {
-                    foreach ($family->getChildren() as $child) {
+                    foreach ($family->children() as $child) {
                         $list[$child->xref()] = $child;
                         if (isset($list[$id]->generation)) {
                             $list[$child->xref()]->generation = $list[$id]->generation;

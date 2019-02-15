@@ -279,7 +279,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
             $record = GedcomRecord::getInstance($row->id, $this->tree);
 
             if ($record) {
-                return '<a href="' . e($record->url()) . '">' . $record->getFullName() . '</a>';
+                return '<a href="' . e($record->url()) . '">' . $record->fullName() . '</a>';
             }
         }
 
@@ -367,7 +367,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
             $fact   = null;
 
             if ($record) {
-                $fact = $record->getFirstFact($row->fact);
+                $fact = $record->firstFact($row->fact);
             }
 
             if ($fact) {

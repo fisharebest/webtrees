@@ -35,7 +35,7 @@
         <div class="tab-pane fade <?= $tree_id === $active_tree_id ? 'show active' : '' ?>" id="tree-<?= e($tree_id) ?>" role="tabpanel" aria-labelledby="tree-<?= e($tree_id) ?>-tab">
             <?php foreach ($gedcom_changes as $xref => $record_changes) : ?>
                 <h3 class="pt-2">
-                    <a href="<?= e($record_changes[0]->record->url()) ?>"><?= $record_changes[0]->record->getFullName() ?></a>
+                    <a href="<?= e($record_changes[0]->record->url()) ?>"><?= $record_changes[0]->record->fullName() ?></a>
                 </h3>
 
                 <table class="table table-bordered table-sm">
@@ -73,7 +73,7 @@
                                     <?php endforeach ?>
                                 </td>
                                 <td>
-                                    <a href="<?= e(route('message', ['to' => $record_change->user_name, 'subject' => I18N::translate('Pending changes') . ' - ' . strip_tags($record_change->record->getFullName()), 'body' => WT_BASE_URL . $record_change->record->url(), 'ged' => $record_change->gedcom_name])) ?>" title="<?= I18N::translate('Send a message') ?>">
+                                    <a href="<?= e(route('message', ['to' => $record_change->user_name, 'subject' => I18N::translate('Pending changes') . ' - ' . strip_tags($record_change->record->fullName()), 'body' => WT_BASE_URL . $record_change->record->url(), 'ged' => $record_change->gedcom_name])) ?>" title="<?= I18N::translate('Send a message') ?>">
                                         <?= e($record_change->real_name) ?> - <?= e($record_change->user_name) ?>
                                     </a>
                                 </td>

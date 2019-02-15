@@ -24,9 +24,9 @@
         <?php foreach ($facts as $fact) : ?>
             <?php $record = $fact->record(); ?>
             <tr>
-                <td data-sort="<?= e($record->getSortName()) ?>">
+                <td data-sort="<?= e($record->sortName()) ?>">
                     <a href="<?= e($record->url()) ?>">
-                        <?= $record->getFullName() ?>
+                        <?= $record->fullName() ?>
                     </a>
                     <?php if ($record instanceof Individual) : ?>
                         <?= $record->getSexImage() ?>

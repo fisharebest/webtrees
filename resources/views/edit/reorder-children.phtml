@@ -12,7 +12,7 @@
                 <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
                 <h3 class="card-header">
                     <?= view('icons/drag-handle') ?>
-                    <?= $fact->target()->getFullName() ?>
+                    <?= $fact->target()->fullName() ?>
                 </h3>
                 <div class="card-body">
                     <?= $fact->target()->formatFirstMajorFact(Gedcom::BIRTH_EVENTS, 2) ?>

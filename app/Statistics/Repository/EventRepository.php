@@ -362,7 +362,7 @@ class EventRepository implements EventRepositoryInterface
             $record = GedcomRecord::getInstance($row->id, $this->tree);
 
             if ($record) {
-                return '<a href="' . e($record->url()) . '">' . $record->getFullName() . '</a>';
+                return '<a href="' . e($record->url()) . '">' . $record->fullName() . '</a>';
             }
         }
 
@@ -401,7 +401,7 @@ class EventRepository implements EventRepositoryInterface
             $fact   = null;
 
             if ($record) {
-                $fact = $record->getFirstFact($row->fact);
+                $fact = $record->firstFact($row->fact);
             }
 
             if ($fact) {

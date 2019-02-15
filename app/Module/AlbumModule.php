@@ -115,9 +115,9 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
         if ($this->media_list === null) {
             // Use facts from this individual and all their spouses
             $facts = $individual->facts();
-            foreach ($individual->getSpouseFamilies() as $family) {
+            foreach ($individual->spouseFamilies() as $family) {
                 foreach ($family->facts() as $fact) {
-                    $facts[] = $fact;
+                    $facts->push($fact);
                 }
             }
             // Use all media from each fact

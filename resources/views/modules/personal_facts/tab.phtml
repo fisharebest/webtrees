@@ -25,7 +25,7 @@
                 <?php FunctionsPrintFacts::printFact($fact, $individual) ?>
             <?php endforeach ?>
 
-            <?php if (empty($facts)) : ?>
+            <?php if ($facts->isEmpty()) : ?>
                 <tr>
                     <td colspan="2">
                         <?= I18N::translate('There are no facts for this individual.') ?>

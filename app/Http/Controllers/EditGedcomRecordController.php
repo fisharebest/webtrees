@@ -139,7 +139,7 @@ class EditGedcomRecordController extends AbstractEditController
                         // Delete the family
                         $family = GedcomRecord::getInstance($xref, $tree);
                         /* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */
-                        FlashMessages::addMessage(I18N::translate('The family “%s” has been deleted because it only has one member.', $family->getFullName()));
+                        FlashMessages::addMessage(I18N::translate('The family “%s” has been deleted because it only has one member.', $family->fullName()));
                         $family->deleteRecord();
                         // Delete any remaining link to this family
                         if ($match) {
@@ -148,12 +148,12 @@ class EditGedcomRecordController extends AbstractEditController
                             $new_gedcom = $this->removeLinks($new_gedcom, $linker->xref());
                             $relict->updateRecord($new_gedcom, false);
                             /* I18N: %s are names of records, such as sources, repositories or individuals */
-                            FlashMessages::addMessage(I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $relict->getFullName(), $family->getFullName()));
+                            FlashMessages::addMessage(I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $relict->fullName(), $family->fullName()));
                         }
                     } else {
                         // Remove links from $linker to $record
                         /* I18N: %s are names of records, such as sources, repositories or individuals */
-                        FlashMessages::addMessage(I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $linker->getFullName(), $record->getFullName()));
+                        FlashMessages::addMessage(I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $linker->fullName(), $record->fullName()));
                         $linker->updateRecord($new_gedcom, false);
                     }
                 }
@@ -202,7 +202,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         Auth::checkRecordAccess($record, true);
 
-        $title = I18N::translate('Edit the raw GEDCOM') . ' - ' . $record->getFullName();
+        $title = I18N::translate('Edit the raw GEDCOM') . ' - ' . $record->fullName();
 
         foreach ($record->facts() as $fact) {
             if (!$fact->isPendingDeletion() && $fact->id() === $fact_id) {
@@ -260,7 +260,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         Auth::checkRecordAccess($record, true);
 
-        $title = I18N::translate('Edit the raw GEDCOM') . ' - ' . $record->getFullName();
+        $title = I18N::translate('Edit the raw GEDCOM') . ' - ' . $record->fullName();
 
         return $this->viewResponse('edit/raw-gedcom-record', [
             'pattern' => self::GEDCOM_FACT_REGEX,
@@ -320,7 +320,7 @@ class EditGedcomRecordController extends AbstractEditController
         $record = GedcomRecord::getInstance($xref, $tree);
         Auth::checkRecordAccess($record, true);
 
-        $title = $record->getFullName() . ' - ' . GedcomTag::getLabel($fact, $record);
+        $title = $record->fullName() . ' - ' . GedcomTag::getLabel($fact, $record);
 
         return $this->viewResponse('edit/add-fact', [
             'fact'   => $fact,
@@ -358,7 +358,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         $can_edit_raw = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD');
 
-        $title = $record->getFullName() . ' - ' . GedcomTag::getLabel($edit_fact->getTag());
+        $title = $record->fullName() . ' - ' . GedcomTag::getLabel($edit_fact->getTag());
 
         return $this->viewResponse('edit/edit-fact', [
             'can_edit_raw' => $can_edit_raw,

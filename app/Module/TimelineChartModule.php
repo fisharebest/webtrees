@@ -244,9 +244,9 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             }
             // find all the fact information
             $facts = $individual->facts();
-            foreach ($individual->getSpouseFamilies() as $family) {
+            foreach ($individual->spouseFamilies() as $family) {
                 foreach ($family->facts() as $fact) {
-                    $facts[] = $fact;
+                    $facts->push($fact);
                 }
             }
             foreach ($facts as $event) {

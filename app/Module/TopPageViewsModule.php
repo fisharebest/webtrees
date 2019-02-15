@@ -85,7 +85,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
                 if ($count_placement == 'before') {
                     $content .= '<td dir="ltr" style="text-align:right">[' . $count . ']</td>';
                 }
-                $content .= '<td class="name2" ><a href="' . e($record->url()) . '">' . $record->getFullName() . '</a></td>';
+                $content .= '<td class="name2" ><a href="' . e($record->url()) . '">' . $record->fullName() . '</a></td>';
                 if ($count_placement == 'after') {
                     $content .= '<td dir="ltr" style="text-align:right">[' . $count . ']</td>';
                 }

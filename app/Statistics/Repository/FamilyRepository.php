@@ -87,7 +87,7 @@ class FamilyRepository
                 return I18N::number((int) $row->f_numchil);
 
             case 'name':
-                return '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a>';
+                return '<a href="' . e($family->url()) . '">' . $family->fullName() . '</a>';
         }
     }
 
@@ -288,9 +288,9 @@ class FamilyRepository
             $family = Family::getInstance($row->family, $this->tree);
             if ($family->canShow()) {
                 if ($type === 'list') {
-                    $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a></li>';
+                    $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->fullName() . '</a></li>';
                 } else {
-                    $top10[] = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a>';
+                    $top10[] = '<a href="' . e($family->url()) . '">' . $family->fullName() . '</a>';
                 }
             }
         }
@@ -531,9 +531,9 @@ class FamilyRepository
             $child2 = Individual::getInstance($fam->ch2, $this->tree);
 
             if ($child1->canShow() && $child2->canShow()) {
-                $return = '<a href="' . e($child2->url()) . '">' . $child2->getFullName() . '</a> ';
+                $return = '<a href="' . e($child2->url()) . '">' . $child2->fullName() . '</a> ';
                 $return .= I18N::translate('and') . ' ';
-                $return .= '<a href="' . e($child1->url()) . '">' . $child1->getFullName() . '</a>';
+                $return .= '<a href="' . e($child1->url()) . '">' . $child1->fullName() . '</a>';
                 $return .= ' <a href="' . e($family->url()) . '">[' . I18N::translate('View this family') . ']</a>';
             } else {
                 $return = I18N::translate('This information is private and cannot be shown.');
@@ -957,7 +957,7 @@ class FamilyRepository
                 break;
 
             case 'name':
-                $result = '<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a>';
+                $result = '<a href="' . e($person->url()) . '">' . $person->fullName() . '</a>';
                 break;
 
             case 'age':
@@ -1208,17 +1208,17 @@ class FamilyRepository
                 return $age;
             }
 
-            $husb = $family->getHusband();
-            $wife = $family->getWife();
+            $husb = $family->husband();
+            $wife = $family->wife();
 
             if (($husb && ($husb->getAllDeathDates() || !$husb->isDead()))
                 && ($wife && ($wife->getAllDeathDates() || !$wife->isDead()))
             ) {
                 if ($family && $family->canShow()) {
                     if ($type === 'list') {
-                        $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> (' . $age . ')' . '</li>';
+                        $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->fullName() . '</a> (' . $age . ')' . '</li>';
                     } else {
-                        $top10[] = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> (' . $age . ')';
+                        $top10[] = '<a href="' . e($family->url()) . '">' . $family->fullName() . '</a> (' . $age . ')';
                     }
                 }
                 if (++$i === $total) {
@@ -1614,7 +1614,7 @@ class FamilyRepository
                 break;
 
             case 'name':
-                $result = '<a href="' . e($family->url()) . '">' . $person->getFullName() . '</a>';
+                $result = '<a href="' . e($family->url()) . '">' . $person->fullName() . '</a>';
                 break;
 
             case 'age':

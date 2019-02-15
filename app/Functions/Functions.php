@@ -238,7 +238,7 @@ class Functions
      */
     private static function reflexivePronoun(Individual $individual)
     {
-        switch ($individual->getSex()) {
+        switch ($individual->sex()) {
             case 'M':
                 /* I18N: reflexive pronoun */
                 return I18N::translate('himself');
@@ -308,14 +308,14 @@ class Functions
                 $indi = $path['path'][count($path['path']) - 1];
 
                 // Parents and siblings
-                foreach ($indi->getChildFamilies(Auth::PRIV_HIDE) as $family) {
+                foreach ($indi->childFamilies(Auth::PRIV_HIDE) as $family) {
                     $visited[$family->xref()] = true;
-                    foreach ($family->getSpouses(Auth::PRIV_HIDE) as $spouse) {
+                    foreach ($family->spouses(Auth::PRIV_HIDE) as $spouse) {
                         if (!isset($visited[$spouse->xref()])) {
                             $new_path                = $path;
                             $new_path['path'][]      = $family;
                             $new_path['path'][]      = $spouse;
-                            $new_path['relations'][] = $parent_codes[$spouse->getSex()];
+                            $new_path['relations'][] = $parent_codes[$spouse->sex()];
                             if ($spouse === $individual2) {
                                 return $new_path;
                             }
@@ -324,12 +324,12 @@ class Functions
                             $visited[$spouse->xref()] = true;
                         }
                     }
-                    foreach ($family->getChildren(Auth::PRIV_HIDE) as $child) {
+                    foreach ($family->children(Auth::PRIV_HIDE) as $child) {
                         if (!isset($visited[$child->xref()])) {
                             $new_path                = $path;
                             $new_path['path'][]      = $family;
                             $new_path['path'][]      = $child;
-                            $new_path['relations'][] = $sibling_codes[$child->getSex()];
+                            $new_path['relations'][] = $sibling_codes[$child->sex()];
                             if ($child === $individual2) {
                                 return $new_path;
                             }
@@ -341,14 +341,14 @@ class Functions
                 }
 
                 // Spouses and children
-                foreach ($indi->getSpouseFamilies(Auth::PRIV_HIDE) as $family) {
+                foreach ($indi->spouseFamilies(Auth::PRIV_HIDE) as $family) {
                     $visited[$family->xref()] = true;
-                    foreach ($family->getSpouses(Auth::PRIV_HIDE) as $spouse) {
+                    foreach ($family->spouses(Auth::PRIV_HIDE) as $spouse) {
                         if (!isset($visited[$spouse->xref()])) {
                             $new_path                = $path;
                             $new_path['path'][]      = $family;
                             $new_path['path'][]      = $spouse;
-                            $new_path['relations'][] = $spouse_codes[$spouse->getSex()];
+                            $new_path['relations'][] = $spouse_codes[$spouse->sex()];
                             if ($spouse === $individual2) {
                                 return $new_path;
                             }
@@ -357,12 +357,12 @@ class Functions
                             $visited[$spouse->xref()] = true;
                         }
                     }
-                    foreach ($family->getChildren(Auth::PRIV_HIDE) as $child) {
+                    foreach ($family->children(Auth::PRIV_HIDE) as $child) {
                         if (!isset($visited[$child->xref()])) {
                             $new_path                = $path;
                             $new_path['path'][]      = $family;
                             $new_path['path'][]      = $child;
-                            $new_path['relations'][] = $child_codes[$child->getSex()];
+                            $new_path['relations'][] = $child_codes[$child->sex()];
                             if ($child === $individual2) {
                                 return $new_path;
                             }
@@ -652,7 +652,7 @@ class Functions
         // The path does not include the starting person. In some languages, the
         // translation for a man’s (relative) is different from a woman’s (relative),
         // due to inflection.
-        $sex1 = $person1 ? $person1->getSex() : 'U';
+        $sex1 = $person1 ? $person1->sex() : 'U';
 
         // The sex of the last person in the relationship determines the name in
         // many cases. e.g. great-aunt / great-uncle
@@ -676,17 +676,17 @@ class Functions
                 return I18N::translate('parent');
             case 'hus':
                 if ($person1 && $person2) {
-                    foreach ($person1->getSpouseFamilies() as $family) {
-                        if ($person2 === $family->getSpouse($person1)) {
-                            if ($family->facts(['MARR'])) {
-                                if ($family->facts(Gedcom::DIVORCE_EVENTS)) {
+                    foreach ($person1->spouseFamilies() as $family) {
+                        if ($person2 === $family->spouse($person1)) {
+                            if ($family->facts(['MARR'])->isNotEmpty()) {
+                                if ($family->facts(Gedcom::DIVORCE_EVENTS)->isNotEmpty()) {
                                     return I18N::translate('ex-husband');
                                 }
 
                                 return I18N::translate('husband');
                             }
 
-                            if ($family->facts(Gedcom::DIVORCE_EVENTS)) {
+                            if ($family->facts(Gedcom::DIVORCE_EVENTS)->isNotEmpty()) {
                                 return I18N::translateContext('MALE', 'ex-partner');
                             }
                         }
@@ -696,17 +696,17 @@ class Functions
                 return I18N::translateContext('MALE', 'partner');
             case 'wif':
                 if ($person1 && $person2) {
-                    foreach ($person1->getSpouseFamilies() as $family) {
-                        if ($person2 === $family->getSpouse($person1)) {
-                            if ($family->facts(['MARR'])) {
-                                if ($family->facts(Gedcom::DIVORCE_EVENTS)) {
+                    foreach ($person1->spouseFamilies() as $family) {
+                        if ($person2 === $family->spouse($person1)) {
+                            if ($family->facts(['MARR'])->isNotEmpty()) {
+                                if ($family->facts(Gedcom::DIVORCE_EVENTS)->isNotEmpty()) {
                                     return I18N::translate('ex-wife');
                                 }
 
                                 return I18N::translate('wife');
                             }
 
-                            if ($family->facts(Gedcom::DIVORCE_EVENTS)) {
+                            if ($family->facts(Gedcom::DIVORCE_EVENTS)->isNotEmpty()) {
                                 return I18N::translateContext('FEMALE', 'ex-partner');
                             }
                         }
@@ -716,17 +716,17 @@ class Functions
                 return I18N::translateContext('FEMALE', 'partner');
             case 'spo':
                 if ($person1 && $person2) {
-                    foreach ($person1->getSpouseFamilies() as $family) {
-                        if ($person2 === $family->getSpouse($person1)) {
-                            if ($family->facts(['MARR'])) {
-                                if ($family->facts(Gedcom::DIVORCE_EVENTS)) {
+                    foreach ($person1->spouseFamilies() as $family) {
+                        if ($person2 === $family->spouse($person1)) {
+                            if ($family->facts(['MARR'])->isNotEmpty()) {
+                                if ($family->facts(Gedcom::DIVORCE_EVENTS)->isNotEmpty()) {
                                     return I18N::translate('ex-spouse');
                                 }
 
                                 return I18N::translate('spouse');
                             }
 
-                            if ($family->facts(Gedcom::DIVORCE_EVENTS)) {
+                            if ($family->facts(Gedcom::DIVORCE_EVENTS)->isNotEmpty()) {
                                 return I18N::translate('ex-partner');
                             }
                         }

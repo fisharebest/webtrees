@@ -4,7 +4,7 @@
 <?php foreach ($facts as $fact) : ?>
     <?php $record = $fact->record(); ?>
     <a href="<?= e($record->url()) ?>" class="list_item name2">
-        <?= $record->getFullName() ?>
+        <?= $record->fullName() ?>
     </a>
     <?php if ($record instanceof Individual) : ?>
         <?= $record->getSexImage() ?>

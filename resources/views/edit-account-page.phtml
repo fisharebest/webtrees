@@ -42,7 +42,7 @@
         <div class="col-sm-9 wt-page-options-value">
             <select class="form-control" id="gedcom-id" aria-describedby="gedcom-id-description" disabled>
                 <?php if ($my_individual_record !== null) : ?>
-                    <option value=""><?= $my_individual_record->getFullName() ?></option>
+                    <option value=""><?= $my_individual_record->fullName() ?></option>
                 <?php else : ?>
                     <option value=""><?= I18N::translateContext('unknown people', 'Unknown') ?></option>
                 <?php endif ?>

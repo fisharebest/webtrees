@@ -68,10 +68,10 @@ class AbstractCensusColumn
      */
     public function father(Individual $individual)
     {
-        $family = $individual->getPrimaryChildFamily();
+        $family = $individual->primaryChildFamily();
 
         if ($family) {
-            return $family->getHusband();
+            return $family->husband();
         }
 
         return null;
@@ -86,10 +86,10 @@ class AbstractCensusColumn
      */
     public function mother(Individual $individual)
     {
-        $family = $individual->getPrimaryChildFamily();
+        $family = $individual->primaryChildFamily();
 
         if ($family) {
-            return $family->getWife();
+            return $family->wife();
         }
 
         return null;
@@ -106,7 +106,7 @@ class AbstractCensusColumn
     {
         // Exclude families that were created after this census date
         $families = [];
-        foreach ($individual->getSpouseFamilies() as $family) {
+        foreach ($individual->spouseFamilies() as $family) {
             if (Date::compare($family->getMarriageDate(), $this->date()) <= 0) {
                 $families[] = $family;
             }

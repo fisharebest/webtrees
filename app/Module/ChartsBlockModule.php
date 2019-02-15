@@ -148,7 +148,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                 case 'treenav':
                     /** @var InteractiveTreeModule $module */
                     $module  = $this->module_service->findByClass(InteractiveTreeModule::class);
-                    $title   = I18N::translate('Interactive tree of %s', $person->getFullName());
+                    $title   = I18N::translate('Interactive tree of %s', $person->fullName());
                     $tv      = new TreeView();
                     $content = '<script>$("head").append(\'<link rel="stylesheet" href="' . $module->css() . '" type="text/css" />\');</script>';
                     $content .= '<script src="' . $module->js() . '"></script>';

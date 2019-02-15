@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Individual;
+use Illuminate\Support\Collection;
 use Mockery;
 
 /**
@@ -44,7 +45,7 @@ class CensusColumnOccupationTest extends \Fisharebest\Webtrees\TestCase
     public function testNoOccupation(): void
     {
         $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('facts')->with(['OCCU'])->andReturn([]);
+        $individual->shouldReceive('facts')->with(['OCCU'])->andReturn(new Collection());
 
         $census = Mockery::mock(CensusInterface::class);
 
@@ -65,7 +66,7 @@ class CensusColumnOccupationTest extends \Fisharebest\Webtrees\TestCase
         $fact->shouldReceive('value')->andReturn('Farmer');
 
         $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('facts')->with(['OCCU'])->andReturn([$fact]);
+        $individual->shouldReceive('facts')->with(['OCCU'])->andReturn(new Collection([$fact]));
 
         $census = Mockery::mock(CensusInterface::class);
 

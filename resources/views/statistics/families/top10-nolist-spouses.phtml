@@ -9,5 +9,5 @@ use Fisharebest\Webtrees\Family;
 
 <?php foreach ($records as $record): ?>
     <?php $family = $record['family']; ?>
-    <a href="<?= e($family->url()) ?>"><?= $family->getFullName() ?></a> (<?= $record['age'] ?>)
+    <a href="<?= e($family->url()) ?>"><?= $family->fullName() ?></a> (<?= $record['age'] ?>)
 <?php endforeach; ?>

@@ -661,7 +661,7 @@ class FunctionsImport
                     'i_id'     => $xref,
                     'i_file'   => $tree_id,
                     'i_rin'    => $rin,
-                    'i_sex'    => $record->getSex(),
+                    'i_sex'    => $record->sex(),
                     'i_gedcom' => $gedrec,
                 ]);
 

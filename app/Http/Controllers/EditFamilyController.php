@@ -46,7 +46,7 @@ class EditFamilyController extends AbstractEditController
 
         Auth::checkFamilyAccess($family, true);
 
-        $title = $family->getFullName() . ' — ' . I18N::translate('Re-order children');
+        $title = $family->fullName() . ' — ' . I18N::translate('Re-order children');
 
         return $this->viewResponse('edit/reorder-children', [
             'title'  => $title,
@@ -110,7 +110,7 @@ class EditFamilyController extends AbstractEditController
 
         Auth::checkFamilyAccess($family, true);
 
-        $title = $family->getFullName() . ' - ' . I18N::translate('Add a child');
+        $title = $family->fullName() . ' - ' . I18N::translate('Add a child');
 
         return $this->viewResponse('edit/new-individual', [
             'tree'       => $tree,
@@ -263,7 +263,7 @@ class EditFamilyController extends AbstractEditController
         $spouse = $tree->createIndividual($gedrec);
 
         // Update the existing family - add marriage, etc
-        if ($family->getFirstFact('HUSB')) {
+        if ($family->firstFact('HUSB')) {
             $family->createFact('1 WIFE @' . $spouse->xref() . '@', true);
         } else {
             $family->createFact('1 HUSB @' . $spouse->xref() . '@', true);
@@ -300,15 +300,15 @@ class EditFamilyController extends AbstractEditController
         $family = Family::getInstance($xref, $tree);
         Auth::checkFamilyAccess($family, true);
 
-        $title = I18N::translate('Change family members') . ' – ' . $family->getFullName();
+        $title = I18N::translate('Change family members') . ' – ' . $family->fullName();
 
         return $this->viewResponse('edit/change-family-members', [
             'tree'     => $tree,
             'title'    => $title,
             'family'   => $family,
-            'father'   => $family->getHusband(),
-            'mother'   => $family->getWife(),
-            'children' => $family->getChildren(),
+            'father'   => $family->husband(),
+            'mother'   => $family->wife(),
+            'children' => $family->children(),
         ]);
     }
 
@@ -329,9 +329,9 @@ class EditFamilyController extends AbstractEditController
         $CHIL = $request->get('CHIL', []);
 
         // Current family members
-        $old_father   = $family->getHusband();
-        $old_mother   = $family->getWife();
-        $old_children = $family->getChildren();
+        $old_father   = $family->husband();
+        $old_mother   = $family->wife();
+        $old_children = $family->children();
 
         // New family members
         $new_father   = Individual::getInstance($HUSB, $tree);

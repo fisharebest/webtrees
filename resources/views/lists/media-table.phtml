@@ -74,16 +74,16 @@ $count_sources = DB::table('sources')
         <?php foreach ($media_objects as $media_object) : ?>
             <tr class="<?= $media_object->isPendingDeletion() ? 'old' : ($media_object->isPendingAddition() ? 'new' : '') ?>">
                 <!-- Thumbnails-->
-                <td data-sort="<?= e($media_object->getSortName()) ?>">
+                <td data-sort="<?= e($media_object->sortName()) ?>">
                     <?php foreach ($media_object->mediaFiles() as $media_file) : ?>
                         <?= $media_file->displayImage(100, 100, 'contain', []) ?>
                     <?php endforeach ?>
                 </td>
 
                 <!-- Title -->
-                <td data-sort="<?= e($media_object->getSortName()) ?>">
+                <td data-sort="<?= e($media_object->sortName()) ?>">
                     <a href="<?= e($media_object->url()) ?>">
-                        <?= $media_object->getFullName() ?>
+                        <?= $media_object->fullName() ?>
                     </a>
                 </td>
 

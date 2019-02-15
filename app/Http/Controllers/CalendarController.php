@@ -486,7 +486,7 @@ class CalendarController extends AbstractBaseController
             $record = $fact->record();
             if ($filtersx) {
                 // Filter on sex
-                if ($record instanceof Individual && $filtersx !== $record->getSex()) {
+                if ($record instanceof Individual && $filtersx !== $record->sex()) {
                     continue;
                 }
                 // Can't display families if the sex filter is on.
@@ -500,8 +500,8 @@ class CalendarController extends AbstractBaseController
                     continue;
                 }
                 if ($record instanceof Family) {
-                    $husb = $record->getHusband();
-                    $wife = $record->getWife();
+                    $husb = $record->husband();
+                    $wife = $record->wife();
                     if ($husb && $husb->isDead() || $wife && $wife->isDead()) {
                         continue;
                     }
@@ -554,7 +554,7 @@ class CalendarController extends AbstractBaseController
 
         foreach ($list as $id => $facts) {
             $tmp = GedcomRecord::getInstance($id, $tree);
-            $html .= $tag1 . '<a href="' . e($tmp->url()) . '">' . $tmp->getFullName() . '</a> ';
+            $html .= $tag1 . '<a href="' . e($tmp->url()) . '">' . $tmp->fullName() . '</a> ';
             $html .= '<div class="indent">' . $facts . '</div>' . $tag2;
         }
 

@@ -21,7 +21,7 @@
 
 <div class="d-flex mb-4">
     <h2 class="wt-page-title mx-auto">
-        <?= $record->getFullName() ?>
+        <?= $record->fullName() ?>
     </h2>
     <?php if ($record->canEdit() && !$record->isPendingDeletion()) : ?>
         <?= view('family-page-menu', ['record' => $record]) ?>
@@ -44,13 +44,13 @@
                         <td colspan="2">
                             <?php FunctionsCharts::printFamilyParents($record) ?>
                             <?php if (Auth::isEditor($record->tree())) : ?>
-                                <?php if ($record->getHusband() === null) : ?>
+                                <?php if ($record->husband() === null) : ?>
                                     <a href="<?= e(route('add-spouse-to-family', ['ged=' => $record->tree()->name(), 'xref' => $record->xref(), 'famtag' => 'HUSB'])) ?>">
                                         <?= I18N::translate('Add a father') ?>
                                     </a>
                                     <br>
                                 <?php endif ?>
-                                <?php if ($record->getWife() === null) : ?>
+                                <?php if ($record->wife() === null) : ?>
                                     <a href="<?= e(route('add-spouse-to-family', ['ged=' => $record->tree()->name(), 'xref' => $record->xref(), 'famtag' => 'WIFE'])) ?>">
                                         <?= I18N::translate('Add a mother') ?>
                                     </a>
@@ -65,7 +65,7 @@
     </table>
     <span class="subheaders"><?= I18N::translate('Family group information') ?></span>
     <table class="table wt-facts-table">
-        <?php if (empty($facts)) : ?>
+        <?php if ($facts->isEmpty()) : ?>
             <tr>
                 <td class="messagebox" colspan="2">
                     <?= I18N::translate('No facts exist for this family.') ?>

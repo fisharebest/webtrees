@@ -63,7 +63,7 @@ class GedcomRecordController extends AbstractBaseController
             'media_objects' => $record->linkedMedia($record::RECORD_TYPE),
             'record'        => $record,
             'sources'       => $record->linkedSources($record::RECORD_TYPE),
-            'title'         => $record->getFullName(),
+            'title'         => $record->fullName(),
         ]);
     }
 

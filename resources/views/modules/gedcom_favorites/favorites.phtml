@@ -3,7 +3,7 @@
 <?php use Fisharebest\Webtrees\Module\ModuleThemeInterface; ?>
 
 <?php foreach ($favorites as $favorite) : ?>
-    <div class="person_box action_header<?= $favorite->record instanceof Individual ? $favorite->record->getSex() : '' ?>">
+    <div class="person_box action_header<?= $favorite->record instanceof Individual ? $favorite->record->sex() : '' ?>">
         <?php if ($favorite->favorite_type === 'URL') : ?>
             <a href="<?= e($favorite->url) ?>"><b><?= e($favorite->title) ?></b></a>
         <?php elseif ($favorite->record instanceof Individual) : ?>

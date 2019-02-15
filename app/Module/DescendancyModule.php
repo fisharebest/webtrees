@@ -157,9 +157,9 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
                 'xref'   => $person->xref(),
             ])) . '">' .
             '<i class="plusminus ' . $icon . '"></i>' .
-            $person->getSexImage() . $person->getFullName() . $lifespan .
+            $person->sexImage() . $person->fullName() . $lifespan .
             '</a>' .
-            '<a href="' . e($person->url()) . '" title="' . strip_tags($person->getFullName()) . '">' . view('icons/individual') . '</a>' .
+            '<a href="' . e($person->url()) . '" title="' . strip_tags($person->fullName()) . '">' . view('icons/individual') . '</a>' .
             '<div>' . $spouses . '</div>' .
             '</li>';
     }
@@ -175,16 +175,16 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      */
     public function getFamilyLi(Family $family, Individual $person, $generations = 0): string
     {
-        $spouse = $family->getSpouse($person);
+        $spouse = $family->spouse($person);
         if ($spouse) {
-            $spouse_name = $spouse->getSexImage() . $spouse->getFullName();
-            $spouse_link = '<a href="' . e($person->url()) . '" title="' . strip_tags($person->getFullName()) . '">' . view('icons/individual') . '</a>';
+            $spouse_name = $spouse->sexImage() . $spouse->fullName();
+            $spouse_link = '<a href="' . e($person->url()) . '" title="' . strip_tags($person->fullName()) . '">' . view('icons/individual') . '</a>';
         } else {
             $spouse_name = '';
             $spouse_link = '';
         }
 
-        $family_link = '<a href="' . e($family->url()) . '" title="' . strip_tags($family->getFullName()) . '">' . view('icons/family') . '</a>';
+        $family_link = '<a href="' . e($family->url()) . '" title="' . strip_tags($family->fullName()) . '">' . view('icons/family') . '</a>';
 
         $marryear = $family->getMarriageYear();
         $marr     = $marryear ? '<i class="icon-rings"></i>' . $marryear : '';
@@ -213,7 +213,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
     {
         $out = '';
         if ($individual->canShow()) {
-            foreach ($individual->getSpouseFamilies() as $family) {
+            foreach ($individual->spouseFamilies() as $family) {
                 $out .= $this->getFamilyLi($family, $individual, $generations - 1);
             }
         }
@@ -236,7 +236,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
     {
         $out = '';
         if ($family->canShow()) {
-            $children = $family->getChildren();
+            $children = $family->children();
             if ($children) {
                 foreach ($children as $child) {
                     $out .= $this->getPersonLi($child, $generations - 1);

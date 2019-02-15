@@ -80,7 +80,7 @@ class EditRepositoryController extends AbstractEditController
             ]),
             'html' => view('modals/record-created', [
                 'title' => I18N::translate('The repository has been created'),
-                'name'  => $record->getFullName(),
+                'name'  => $record->fullName(),
                 'url'   => $record->url(),
             ]),
         ]);

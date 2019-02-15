@@ -17,7 +17,7 @@
 
     <div class="card">
         <label class="card-header py-1 px-2" for="fact0">
-            <?= $record->getFullName() ?>
+            <?= $record->fullName() ?>
         </label>
         <div class="card-body form-control py-1 px-2">
             <textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact0" rows="1">0 @<?= e($record->xref()) ?>@ <?= e($record::RECORD_TYPE) ?></textarea>

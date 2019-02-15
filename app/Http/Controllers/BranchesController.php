@@ -135,14 +135,14 @@ class BranchesController extends AbstractBaseController
         do {
             $sosa = key($ancestors);
 
-            $family = $ancestors[$sosa]->getPrimaryChildFamily();
+            $family = $ancestors[$sosa]->primaryChildFamily();
 
             if ($family !== null) {
-                if ($family->getHusband() !== null) {
-                    $ancestors[$sosa * 2] = $family->getHusband();
+                if ($family->husband() !== null) {
+                    $ancestors[$sosa * 2] = $family->husband();
                 }
-                if ($family->getWife() !== null) {
-                    $ancestors[$sosa * 2 + 1] = $family->getWife();
+                if ($family->wife() !== null) {
+                    $ancestors[$sosa * 2 + 1] = $family->wife();
                 }
             }
         } while (next($ancestors));
@@ -221,8 +221,8 @@ class BranchesController extends AbstractBaseController
     {
         $html = '';
         foreach ($individuals as $individual) {
-            foreach ($individual->getChildFamilies() as $family) {
-                foreach ($family->getSpouses() as $parent) {
+            foreach ($individual->childFamilies() as $family) {
+                foreach ($family->spouses() as $parent) {
                     if (in_array($parent, $individuals, true)) {
                         continue 3;
                     }
@@ -273,7 +273,7 @@ class BranchesController extends AbstractBaseController
 
         // No matching name? Typically children with a different surname. The branch stops here.
         if (!$person_name) {
-            return '<li title="' . strip_tags($individual->getFullName()) . '">' . $individual->getSexImage() . '…</li>';
+            return '<li title="' . strip_tags($individual->fullName()) . '">' . $individual->sexImage() . '…</li>';
         }
 
         // Is this individual one of our ancestors?
@@ -287,7 +287,7 @@ class BranchesController extends AbstractBaseController
         }
 
         // Generate HTML for this individual, and all their descendants
-        $indi_html = $individual->getSexImage() . '<a class="' . $sosa_class . '" href="' . e($individual->url()) . '">' . $person_name . '</a> ' . $individual->getLifeSpan() . $sosa_html;
+        $indi_html = $individual->sexImage() . '<a class="' . $sosa_class . '" href="' . e($individual->url()) . '">' . $person_name . '</a> ' . $individual->getLifeSpan() . $sosa_html;
 
         // If this is not a birth pedigree (e.g. an adoption), highlight it
         if ($parents) {
@@ -304,14 +304,14 @@ class BranchesController extends AbstractBaseController
         }
 
         // spouses and children
-        $spouse_families = $individual->getSpouseFamilies();
+        $spouse_families = $individual->spouseFamilies();
         if ($spouse_families) {
             usort($spouse_families, Family::marriageDateComparator());
             $fam_html = '';
             foreach ($spouse_families as $family) {
                 $fam_html .= $indi_html; // Repeat the individual details for each spouse.
 
-                $spouse = $family->getSpouse($individual);
+                $spouse = $family->spouse($individual);
                 if ($spouse instanceof Individual) {
                     $sosa = array_search($spouse, $ancestors, true);
                     if (is_int($sosa) && $module instanceof RelationshipsChartModule) {
@@ -324,16 +324,16 @@ class BranchesController extends AbstractBaseController
                     $marriage_year = $family->getMarriageYear();
                     if ($marriage_year) {
                         $fam_html .= ' <a href="' . e($family->url()) . '" title="' . strip_tags($family->getMarriageDate()->display()) . '"><i class="icon-rings"></i>' . $marriage_year . '</a>';
-                    } elseif ($family->getFirstFact('MARR')) {
+                    } elseif ($family->firstFact('MARR')) {
                         $fam_html .= ' <a href="' . e($family->url()) . '" title="' . I18N::translate('Marriage') . '"><i class="icon-rings"></i></a>';
                     } else {
                         $fam_html .= ' <a href="' . e($family->url()) . '" title="' . I18N::translate('Not married') . '"><i class="icon-rings"></i></a>';
                     }
-                    $fam_html .= ' ' . $spouse->getSexImage() . '<a class="' . $sosa_class . '" href="' . e($spouse->url()) . '">' . $spouse->getFullName() . '</a> ' . $spouse->getLifeSpan() . ' ' . $sosa_html;
+                    $fam_html .= ' ' . $spouse->sexImage() . '<a class="' . $sosa_class . '" href="' . e($spouse->url()) . '">' . $spouse->fullName() . '</a> ' . $spouse->getLifeSpan() . ' ' . $sosa_html;
                 }
 
                 $fam_html .= '<ol>';
-                foreach ($family->getChildren() as $child) {
+                foreach ($family->children() as $child) {
                     $fam_html .= $this->getDescendantsHtml($tree, $individuals, $ancestors, $surname, $soundex_dm, $soundex_std, $child, $family);
                 }
                 $fam_html .= '</ol>';

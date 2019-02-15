@@ -107,7 +107,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
     public function chartTitle(Individual $individual): string
     {
         /* I18N: %s is an individual’s name */
-        return I18N::translate('Ancestors of %s', $individual->getFullName());
+        return I18N::translate('Ancestors of %s', $individual->fullName());
     }
 
     /**
@@ -224,12 +224,12 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
         if ($sosa > 1) {
             echo '<a href="' . e($this->chartUrl($individual, ['generations' => $generations, 'chart_style' => self::CHART_STYLE_LIST])) . '" title="' . strip_tags($this->chartTitle($individual)) . '">' . view('icons/arrow-down') . '<span class="sr-only">' . $this->chartTitle($individual) . '</span></a>';
         }
-        echo '</td><td class="details1">&nbsp;<span class="wt-chart-box wt-chart-box-' . ($sosa === 1 ? strtolower($individual->getSex()) : ($sosa % 2 ? 'f' : 'm')) . '">', I18N::number($sosa), '</span> ';
+        echo '</td><td class="details1">&nbsp;<span class="wt-chart-box wt-chart-box-' . ($sosa === 1 ? strtolower($individual->sex()) : ($sosa % 2 ? 'f' : 'm')) . '">', I18N::number($sosa), '</span> ';
         echo '</td><td class="details1">&nbsp;', FunctionsCharts::getSosaName($sosa), '</td>';
         echo '</tr></tbody></table>';
 
         // Parents
-        $family = $individual->getPrimaryChildFamily();
+        $family = $individual->primaryChildFamily();
         if ($family && $generations > 0) {
             // Marriage details
             echo '<span class="details1">';
@@ -244,11 +244,11 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
             }
             echo '</span>';
             echo '<ul class="wt-chart-ancestors-list list-unstyled" id="sosa_', $sosa, '">';
-            if ($family->getHusband()) {
-                $this->printChildAscendancy($family->getHusband(), $sosa * 2, $generations - 1);
+            if ($family->husband()) {
+                $this->printChildAscendancy($family->husband(), $sosa * 2, $generations - 1);
             }
-            if ($family->getWife()) {
-                $this->printChildAscendancy($family->getWife(), $sosa * 2 + 1, $generations - 1);
+            if ($family->wife()) {
+                $this->printChildAscendancy($family->wife(), $sosa * 2 + 1, $generations - 1);
             }
             echo '</ul>';
         }
@@ -288,7 +288,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
 
         $families = [];
         foreach ($ancestors as $individual) {
-            foreach ($individual->getChildFamilies() as $family) {
+            foreach ($individual->childFamilies() as $family) {
                 $families[$family->xref()] = $family;
             }
         }
@@ -315,7 +315,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
 
         echo FunctionsPrint::printPedigreePerson($ancestors[1]);
         foreach ($ancestors as $sosa => $individual) {
-            foreach ($individual->getChildFamilies() as $family) {
+            foreach ($individual->childFamilies() as $family) {
                 FunctionsCharts::printSosaFamily($family, $individual->xref(), $sosa, '', '', '', $show_cousins);
             }
         }

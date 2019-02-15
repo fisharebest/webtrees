@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 
 /**
  * Class TreeView
@@ -100,7 +101,7 @@ class TreeView
                     $family = Family::getInstance($xref, $tree);
                     if ($family instanceof Family) {
                         // Prefer the paternal line
-                        $parent = $family->getHusband() ?? $family->getWife();
+                        $parent = $family->husband() ?? $family->wife();
 
                         // The family may have no parents (just children).
                         if ($parent instanceof Individual) {
@@ -124,8 +125,8 @@ class TreeView
     public function getDetails(Individual $individual): string
     {
         $html = $this->getPersonDetails($individual, null);
-        foreach ($individual->getSpouseFamilies() as $family) {
-            $spouse = $family->getSpouse($individual);
+        foreach ($individual->spouseFamilies() as $family) {
+            $spouse = $family->spouse($individual);
             if ($spouse) {
                 $html .= $this->getPersonDetails($spouse, $family);
             }
@@ -152,7 +153,7 @@ class TreeView
         ]);
 
         $hmtl = $this->getThumbnail($individual);
-        $hmtl .= '<a class="tv_link" href="' . e($individual->url()) . '">' . $individual->getFullName() . '</a> <a href="' . e($chart_url) . '" title="' . I18N::translate('Interactive tree of %s', strip_tags($individual->getFullName())) . '" class="wt-icon-individual tv_link tv_treelink"></a>';
+        $hmtl .= '<a class="tv_link" href="' . e($individual->url()) . '">' . $individual->fullName() . '</a> <a href="' . e($chart_url) . '" title="' . I18N::translate('Interactive tree of %s', strip_tags($individual->fullName())) . '" class="wt-icon-individual tv_link tv_treelink"></a>';
         foreach ($individual->facts(Gedcom::BIRTH_EVENTS, true) as $fact) {
             $hmtl .= $fact->summary();
         }
@@ -165,26 +166,26 @@ class TreeView
             $hmtl .= $fact->summary();
         }
 
-        return '<div class="tv' . $individual->getSex() . ' tv_person_expanded">' . $hmtl . '</div>';
+        return '<div class="tv' . $individual->sex() . ' tv_person_expanded">' . $hmtl . '</div>';
     }
 
     /**
      * Draw the children for some families
      *
-     * @param Family[] $familyList array of families to draw the children for
+     * @param Collection|Family[] $familyList array of families to draw the children for
      * @param int      $gen        number of generations to draw
      * @param bool     $ajax       true for an ajax call
      *
      * @return string
      */
-    private function drawChildren(array $familyList, int $gen = 1, bool $ajax = false): string
+    private function drawChildren(Collection $familyList, int $gen = 1, bool $ajax = false): string
     {
         $html          = '';
         $children2draw = [];
         $f2load        = [];
 
         foreach ($familyList as $f) {
-            $children = $f->getChildren();
+            $children = $f->children();
             if ($children) {
                 $f2load[] = $f->xref();
                 foreach ($children as $child) {
@@ -237,7 +238,7 @@ class TreeView
         }
 
         if ($pfamily instanceof Family) {
-            $partner = $pfamily->getSpouse($person);
+            $partner = $pfamily->spouse($person);
         } else {
             $partner = $person->getCurrentSpouse();
         }
@@ -252,7 +253,7 @@ class TreeView
 
         if ($state <= 0) {
             // draw children
-            $html .= $this->drawChildren($person->getSpouseFamilies(), $gen);
+            $html .= $this->drawChildren($person->spouseFamilies(), $gen);
         } else {
             // draw the parent’s lines
             $html .= $this->drawVerticalLine($line) . $this->drawHorizontalLine();
@@ -267,12 +268,12 @@ class TreeView
 
         if ($partner !== null) {
             $dashed = '';
-            foreach ($person->getSpouseFamilies() as $family) {
-                $spouse = $family->getSpouse($person);
+            foreach ($person->spouseFamilies() as $family) {
+                $spouse = $family->spouse($person);
                 if ($spouse instanceof Individual) {
-                    $spouse_parents = $spouse->getPrimaryChildFamily();
+                    $spouse_parents = $spouse->primaryChildFamily();
                     if ($spouse_parents instanceof Family) {
-                        $spouse_parent = $spouse_parents->getHusband() ?? $spouse_parents->getWife();
+                        $spouse_parent = $spouse_parents->husband() ?? $spouse_parents->wife();
 
                         if ($spouse_parent instanceof Individual) {
                             $fop[] = [$spouse_parent, $spouse_parents];
@@ -286,9 +287,9 @@ class TreeView
         }
         $html .= '</div></td>';
 
-        $primaryChildFamily = $person->getPrimaryChildFamily();
+        $primaryChildFamily = $person->primaryChildFamily();
         if ($primaryChildFamily instanceof Family) {
-            $parent = $primaryChildFamily->getHusband() ?? $primaryChildFamily->getWife();
+            $parent = $primaryChildFamily->husband() ?? $primaryChildFamily->wife();
         } else {
             $parent = null;
         }
@@ -344,13 +345,13 @@ class TreeView
      */
     private function drawPersonName(Individual $individual, string $dashed): string
     {
-        $family = $individual->getPrimaryChildFamily();
+        $family = $individual->primaryChildFamily();
         if ($family) {
-            $family_name = strip_tags($family->getFullName());
+            $family_name = strip_tags($family->fullName());
         } else {
             $family_name = I18N::translateContext('unknown family', 'unknown');
         }
-        switch ($individual->getSex()) {
+        switch ($individual->sex()) {
             case 'M':
                 /* I18N: e.g. “Son of [father name & mother name]” */
                 $title = ' title="' . I18N::translate('Son of %s', $family_name) . '"';
@@ -364,9 +365,9 @@ class TreeView
                 $title = ' title="' . I18N::translate('Child of %s', $family_name) . '"';
                 break;
         }
-        $sex = $individual->getSex();
+        $sex = $individual->sex();
 
-        return '<div class="tv' . $sex . ' ' . $dashed . '"' . $title . '><a href="' . e($individual->url()) . '"></a>' . $individual->getFullName() . ' <span class="dates">' . $individual->getLifeSpan() . '</span></div>';
+        return '<div class="tv' . $sex . ' ' . $dashed . '"' . $title . '><a href="' . e($individual->url()) . '"></a>' . $individual->fullName() . ' <span class="dates">' . $individual->getLifeSpan() . '</span></div>';
     }
 
     /**

@@ -11,9 +11,9 @@
 
     <div class="form-group row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="HUSB">
-            <?php if ($father !== null && $father->getSex() === 'M') : ?>
+            <?php if ($father !== null && $father->sex() === 'M') : ?>
                 <?= I18N::translate('Husband') ?>
-            <?php elseif ($father !== null && $father->getSex() === 'F') : ?>
+            <?php elseif ($father !== null && $father->sex() === 'F') : ?>
                 <?= I18N::translate('Wife') ?>
             <?php else : ?>
                 <?= I18N::translate('Spouse') ?>
@@ -26,9 +26,9 @@
 
     <div class="form-group row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="WIFE">
-            <?php if ($mother !== null && $mother->getSex() === 'M') : ?>
+            <?php if ($mother !== null && $mother->sex() === 'M') : ?>
                 <?= I18N::translate('Husband') ?>
-            <?php elseif ($mother !== null && $mother->getSex() === 'F') : ?>
+            <?php elseif ($mother !== null && $mother->sex() === 'F') : ?>
                 <?= I18N::translate('Wife') ?>
             <?php else : ?>
                 <?= I18N::translate('Spouse') ?>
@@ -42,9 +42,9 @@
     <?php foreach ($children as $n => $child) : ?>
         <div class="form-group row">
             <label class="col-sm-3 col-form-label wt-page-options-label" for="CHIL<?= e($n) ?>">
-                <?php if ($child !== null && $child->getSex() === 'M') : ?>
+                <?php if ($child !== null && $child->sex() === 'M') : ?>
                     <?= I18N::translate('Son') ?>
-                <?php elseif ($child !== null && $child->getSex() === 'F') : ?>
+                <?php elseif ($child !== null && $child->sex() === 'F') : ?>
                     <?= I18N::translate('Daughter') ?>
                 <?php else : ?>
                     <?= I18N::translate('Child') ?>

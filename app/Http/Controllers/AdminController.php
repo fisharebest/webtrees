@@ -170,9 +170,9 @@ class AdminController extends AbstractBaseController
 
         // If we are not auto-accepting, then we can show a link to the pending deletion
         if (Auth::user()->getPreference('auto_accept')) {
-            $record2_name = $record2->getFullName();
+            $record2_name = $record2->fullName();
         } else {
-            $record2_name = '<a class="alert-link" href="' . e($record2->url()) . '">' . $record2->getFullName() . '</a>';
+            $record2_name = '<a class="alert-link" href="' . e($record2->url()) . '">' . $record2->fullName() . '</a>';
         }
 
         // Update records that link to the one we will be removing.
@@ -183,7 +183,7 @@ class AdminController extends AbstractBaseController
                 /* I18N: The placeholders are the names of individuals, sources, etc. */
                 FlashMessages::addMessage(I18N::translate(
                     'The link from “%1$s” to “%2$s” has been updated.',
-                    '<a class="alert-link" href="' . e($record->url()) . '">' . $record->getFullName() . '</a>',
+                    '<a class="alert-link" href="' . e($record->url()) . '">' . $record->fullName() . '</a>',
                     $record2_name
                 ), 'info');
                 $gedcom = str_replace('@' . $xref2 . '@', '@' . $xref1 . '@', $record->gedcom());
@@ -248,7 +248,7 @@ class AdminController extends AbstractBaseController
         /* I18N: Records are individuals, sources, etc. */
         FlashMessages::addMessage(I18N::translate(
             'The records “%1$s” and “%2$s” have been merged.',
-            '<a class="alert-link" href="' . e($record1->url()) . '">' . $record1->getFullName() . '</a>',
+            '<a class="alert-link" href="' . e($record1->url()) . '">' . $record1->fullName() . '</a>',
             $record2_name
         ), 'success');
 

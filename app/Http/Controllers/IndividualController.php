@@ -171,7 +171,7 @@ class IndividualController extends AbstractBaseController
             'sidebars'         => $this->getSidebars($individual),
             'tabs'             => $this->getTabs($individual),
             'significant'      => $this->significant($individual),
-            'title'            => $individual->getFullName() . ' ' . $individual->getLifeSpan(),
+            'title'            => $individual->fullName() . ' ' . $individual->getLifeSpan(),
             'user_link'        => $user_link,
         ]);
     }
@@ -259,7 +259,7 @@ class IndividualController extends AbstractBaseController
 
         ob_start();
         echo '<dl><dt class="label">', I18N::translate('Name'), '</dt>';
-        echo '<dd class="field">', $dummy->getFullName(), '</dd>';
+        echo '<dd class="field">', $dummy->fullName(), '</dd>';
         $ct = preg_match_all('/\n2 (\w+) (.*)/', $fact->gedcom(), $nmatch, PREG_SET_ORDER);
         for ($i = 0; $i < $ct; $i++) {
             $tag = $nmatch[$i][1];
@@ -313,7 +313,7 @@ class IndividualController extends AbstractBaseController
         return '
 			<div class="' . $container_class . '">
         <div class="card-header" role="tab" id="name-header-' . $n . '">
-		        <a data-toggle="collapse" data-parent="#individual-names" href="#name-content-' . $n . '" aria-expanded="' . $aria . '" aria-controls="name-content-' . $n . '">' . $dummy->getFullName() . '</a>
+		        <a data-toggle="collapse" data-parent="#individual-names" href="#name-content-' . $n . '" aria-expanded="' . $aria . '" aria-controls="name-content-' . $n . '">' . $dummy->fullName() . '</a>
 		      ' . $edit_links . '
         </div>
 		    <div id="name-content-' . $n . '" class="' . $content_class . '" role="tabpanel" aria-labelledby="name-header-' . $n . '">
@@ -416,9 +416,9 @@ class IndividualController extends AbstractBaseController
             'surname'    => '',
         ];
 
-        [$significant->surname] = explode(',', $individual->getSortName());
+        [$significant->surname] = explode(',', $individual->sortName());
 
-        foreach ($individual->getChildFamilies() + $individual->getSpouseFamilies() as $family) {
+        foreach ($individual->childFamilies()->merge($individual->spouseFamilies()) as $family) {
             $significant->family = $family;
             break;
         }

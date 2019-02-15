@@ -46,7 +46,7 @@ class EditIndividualController extends AbstractEditController
 
         Auth::checkIndividualAccess($individual, true);
 
-        $title = $individual->getFullName() . ' — ' . I18N::translate('Re-order media');
+        $title = $individual->fullName() . ' — ' . I18N::translate('Re-order media');
 
         return $this->viewResponse('edit/reorder-media', [
             'title'      => $title,
@@ -107,7 +107,7 @@ class EditIndividualController extends AbstractEditController
 
         Auth::checkIndividualAccess($individual, true);
 
-        $title = $individual->getFullName() . ' — ' . I18N::translate('Re-order names');
+        $title = $individual->fullName() . ' — ' . I18N::translate('Re-order names');
 
         return $this->viewResponse('edit/reorder-names', [
             'title'      => $title,
@@ -168,7 +168,7 @@ class EditIndividualController extends AbstractEditController
 
         Auth::checkIndividualAccess($individual, true);
 
-        $title = $individual->getFullName() . ' — ' . I18N::translate('Re-order families');
+        $title = $individual->fullName() . ' — ' . I18N::translate('Re-order families');
 
         return $this->viewResponse('edit/reorder-spouses', [
             'title'      => $title,
@@ -232,7 +232,7 @@ class EditIndividualController extends AbstractEditController
 
         Auth::checkIndividualAccess($individual, true);
 
-        $title = $individual->getFullName() . ' - ' . I18N::translate('Add a child to create a one-parent family');
+        $title = $individual->fullName() . ' - ' . I18N::translate('Add a child to create a one-parent family');
 
         return $this->viewResponse('edit/new-individual', [
             'tree'       => $tree,
@@ -269,7 +269,7 @@ class EditIndividualController extends AbstractEditController
 
 
         // Create a family
-        if ($individual->getSex() === 'F') {
+        if ($individual->sex() === 'F') {
             $gedcom = "0 @@ FAM\n1 WIFE @" . $individual->xref() . '@';
         } else {
             $gedcom = "0 @@ FAM\n1 HUSB @" . $individual->xref() . '@';
@@ -327,10 +327,10 @@ class EditIndividualController extends AbstractEditController
         Auth::checkIndividualAccess($individual, true);
 
         if ($gender === 'F') {
-            $title  = $individual->getFullName() . ' - ' . I18N::translate('Add a mother');
+            $title  = $individual->fullName() . ' - ' . I18N::translate('Add a mother');
             $famtag = 'WIFE';
         } else {
-            $title  = $individual->getFullName() . ' - ' . I18N::translate('Add a father');
+            $title  = $individual->fullName() . ' - ' . I18N::translate('Add a father');
             $famtag = 'HUSB';
         }
 
@@ -393,7 +393,7 @@ class EditIndividualController extends AbstractEditController
         $parent = $tree->createIndividual($gedcom);
 
         // Link the family to the child
-        if ($parent->getSex() === 'F') {
+        if ($parent->sex() === 'F') {
             $family->createFact('1 WIFE @' . $parent->xref() . '@', true);
         } else {
             $family->createFact('1 HUSB @' . $parent->xref() . '@', true);
@@ -422,12 +422,12 @@ class EditIndividualController extends AbstractEditController
 
         Auth::checkIndividualAccess($individual, true);
 
-        if ($individual->getSex() === 'F') {
-            $title  = $individual->getFullName() . ' - ' . I18N::translate('Add a husband');
+        if ($individual->sex() === 'F') {
+            $title  = $individual->fullName() . ' - ' . I18N::translate('Add a husband');
             $famtag = 'HUSB';
             $gender = 'M';
         } else {
-            $title  = $individual->getFullName() . ' - ' . I18N::translate('Add a wife');
+            $title  = $individual->fullName() . ' - ' . I18N::translate('Add a wife');
             $famtag = 'WIFE';
             $gender = 'F';
         }
@@ -597,7 +597,7 @@ class EditIndividualController extends AbstractEditController
                     'family'     => null,
                     'name_fact'  => $fact,
                     'famtag'     => '',
-                    'gender'     => $individual->getSex(),
+                    'gender'     => $individual->sex(),
                 ]);
             }
         }
@@ -639,7 +639,7 @@ class EditIndividualController extends AbstractEditController
 
         Auth::checkIndividualAccess($individual, true);
 
-        $title = $individual->getFullName() . ' — ' . I18N::translate('Add a name');
+        $title = $individual->fullName() . ' — ' . I18N::translate('Add a name');
 
         return $this->viewResponse('edit/new-individual', [
             'tree'       => $tree,
@@ -649,7 +649,7 @@ class EditIndividualController extends AbstractEditController
             'family'     => null,
             'name_fact'  => null,
             'famtag'     => '',
-            'gender'     => $individual->getSex(),
+            'gender'     => $individual->sex(),
         ]);
     }
 
@@ -686,7 +686,7 @@ class EditIndividualController extends AbstractEditController
 
         Auth::checkIndividualAccess($individual, true);
 
-        $title = $individual->getFullName() . ' - ' . I18N::translate('Link this individual to an existing family as a child');
+        $title = $individual->fullName() . ' - ' . I18N::translate('Link this individual to an existing family as a child');
 
         return $this->viewResponse('edit/link-child-to-family', [
             'individual' => $individual,
@@ -754,11 +754,11 @@ class EditIndividualController extends AbstractEditController
 
         Auth::checkIndividualAccess($individual, true);
 
-        if ($individual->getSex() === 'F') {
-            $title = $individual->getFullName() . ' - ' . I18N::translate('Add a husband using an existing individual');
+        if ($individual->sex() === 'F') {
+            $title = $individual->fullName() . ' - ' . I18N::translate('Add a husband using an existing individual');
             $label = I18N::translate('Husband');
         } else {
-            $title = $individual->getFullName() . ' - ' . I18N::translate('Add a wife using an existing individual');
+            $title = $individual->fullName() . ' - ' . I18N::translate('Add a wife using an existing individual');
             $label = I18N::translate('Wife');
         }
 
@@ -786,7 +786,7 @@ class EditIndividualController extends AbstractEditController
         $spouse = Individual::getInstance($spouse, $tree);
         Auth::checkIndividualAccess($spouse, true);
 
-        if ($individual->getSex() === 'M') {
+        if ($individual->sex() === 'M') {
             $gedcom = "0 @@ FAM\n1 HUSB @" . $individual->xref() . "@\n1 WIFE @" . $spouse->xref() . '@';
         } else {
             $gedcom = "0 @@ FAM\n1 WIFE @" . $individual->xref() . "@\n1 HUSB @" . $spouse->xref() . '@';

@@ -117,7 +117,7 @@ class Media extends GedcomRecord
      */
     public function mediaFiles(): Collection
     {
-        return (new Collection($this->facts(['FILE'])))
+        return $this->facts(['FILE'])
             ->map(function (Fact $fact): MediaFile {
                 return new MediaFile($fact->gedcom(), $this);
             });
@@ -146,7 +146,7 @@ class Media extends GedcomRecord
      */
     public function getNote()
     {
-        $fact = $this->getFirstFact('NOTE');
+        $fact = $this->firstFact('NOTE');
         if ($fact instanceof Fact) {
             // Link to note object
             $note = $fact->target();

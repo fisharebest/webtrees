@@ -21,7 +21,7 @@
 
 <div class="d-flex mb-4">
     <h2 class="wt-page-title mx-auto">
-        <?= $media->getFullName() ?>
+        <?= $media->fullName() ?>
     </h2>
     <?php if ($media->canEdit() && !$media->isPendingDeletion()) : ?>
         <?= view('media-page-menu', ['record' => $media]) ?>

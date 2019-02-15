@@ -442,7 +442,7 @@ class GedcomTag
     public static function getLabel($tag, GedcomRecord $record = null)
     {
         if ($record instanceof Individual) {
-            $sex = $record->getSex();
+            $sex = $record->sex();
         } else {
             $sex = 'U';
         }

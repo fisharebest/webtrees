@@ -15,7 +15,7 @@
                     <option value="<?= e($fact->id()) ?>">
                         <?= $fact->label() ?>
                         <?php if ($fact->target() !== null) : ?>
-                            – <?= strip_tags($fact->target()->getFullName()) ?>
+                            – <?= strip_tags($fact->target()->fullName()) ?>
                         <?php elseif ($fact->value() !== '') : ?>
                             – <?= e($fact->value()) ?>
                         <?php endif ?>

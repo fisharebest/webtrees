@@ -68,10 +68,10 @@ class CensusColumnFatherBirthPlaceTest extends \Fisharebest\Webtrees\TestCase
         $father->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('London, England'));
 
         $family = Mockery::mock(Family::class);
-        $family->shouldReceive('getHusband')->andReturn($father);
+        $family->shouldReceive('husband')->andReturn($father);
 
         $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getPrimaryChildFamily')->andReturn($family);
+        $individual->shouldReceive('primaryChildFamily')->andReturn($family);
 
         $census = Mockery::mock(CensusInterface::class);
         $census->shouldReceive('censusPlace')->andReturn('England');
@@ -93,10 +93,10 @@ class CensusColumnFatherBirthPlaceTest extends \Fisharebest\Webtrees\TestCase
         $father->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('London, England'));
 
         $family = Mockery::mock(Family::class);
-        $family->shouldReceive('getHusband')->andReturn($father);
+        $family->shouldReceive('husband')->andReturn($father);
 
         $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getPrimaryChildFamily')->andReturn($family);
+        $individual->shouldReceive('primaryChildFamily')->andReturn($family);
 
         $census = Mockery::mock(CensusInterface::class);
         $census->shouldReceive('censusPlace')->andReturn('Ireland');
@@ -115,10 +115,10 @@ class CensusColumnFatherBirthPlaceTest extends \Fisharebest\Webtrees\TestCase
     public function testPlaceNoParent(): void
     {
         $family = Mockery::mock(Family::class);
-        $family->shouldReceive('getHusband')->andReturn(null);
+        $family->shouldReceive('husband')->andReturn(null);
 
         $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getPrimaryChildFamily')->andReturn($family);
+        $individual->shouldReceive('primaryChildFamily')->andReturn($family);
 
         $census = Mockery::mock(CensusInterface::class);
         $census->shouldReceive('censusPlace')->andReturn('England');
@@ -137,7 +137,7 @@ class CensusColumnFatherBirthPlaceTest extends \Fisharebest\Webtrees\TestCase
     public function testPlaceNoParentFamily(): void
     {
         $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getPrimaryChildFamily')->andReturn(null);
+        $individual->shouldReceive('primaryChildFamily')->andReturn(null);
 
         $census = Mockery::mock(CensusInterface::class);
         $census->shouldReceive('censusPlace')->andReturn('England');

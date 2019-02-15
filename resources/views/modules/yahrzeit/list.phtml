@@ -2,7 +2,7 @@
 
 <?php foreach ($yahrzeits as $yahrzeit) : ?>
     <a href="<?= e($yahrzeit->individual->url()) ?>" class="list_item name2">
-        <?= $yahrzeit->individual->getFullName() ?>
+        <?= $yahrzeit->individual->fullName() ?>
     </a>
     <?= $yahrzeit->individual->getSexImage() ?>
     <div class="indent">

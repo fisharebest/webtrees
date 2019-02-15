@@ -135,10 +135,10 @@ class FixLevel0MediaController extends AbstractAdminController
             $media      = Media::getInstance($datum->m_id, $tree, $datum->m_gedcom);
             $individual = Individual::getInstance($datum->i_id, $tree, $datum->i_gedcom);
 
-            $facts = $individual->facts([], true);
-            $facts = array_filter($facts, function (Fact $fact) use ($ignore_facts): bool {
-                return !$fact->isPendingDeletion() && !in_array($fact->getTag(), $ignore_facts);
-            });
+            $facts = $individual->facts([], true)
+                ->filter(function (Fact $fact) use ($ignore_facts): bool {
+                    return !$fact->isPendingDeletion() && !in_array($fact->getTag(), $ignore_facts);
+                });
 
             // The link to the media object may have been deleted in a pending change.
             $deleted = true;
@@ -162,8 +162,8 @@ class FixLevel0MediaController extends AbstractAdminController
             return [
                 $tree->name(),
                 $media->displayImage(100, 100, 'fit', ['class' => 'img-thumbnail']),
-                '<a href="' . e($media->url()) . '">' . $media->getFullName() . '</a>',
-                '<a href="' . e($individual->url()) . '">' . $individual->getFullName() . '</a>',
+                '<a href="' . e($media->url()) . '">' . $media->fullName() . '</a>',
+                '<a href="' . e($individual->url()) . '">' . $individual->fullName() . '</a>',
                 implode(' ', $facts),
             ];
         });

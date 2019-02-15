@@ -20,7 +20,7 @@
 
 <div class="d-flex mb-4">
     <h2 class="wt-page-title mx-auto">
-        <?= $record->getFullName() ?>
+        <?= $record->fullName() ?>
     </h2>
     <?php if ($record->canEdit() && !$record->isPendingDeletion()) : ?>
         <?= view('gedcom-record-page-menu', ['record' => $record]) ?>

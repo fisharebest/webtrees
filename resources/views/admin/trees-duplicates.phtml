@@ -11,7 +11,7 @@
         <ul>
             <?php foreach ($records as $duplicates) : ?>
                 <li>
-                    <?= $duplicates[0]->getFullName() ?>
+                    <?= $duplicates[0]->fullName() ?>
                     <?php foreach ($duplicates as $record) : ?>
                         —
                         <a href="<?= e($record->url()) ?>">

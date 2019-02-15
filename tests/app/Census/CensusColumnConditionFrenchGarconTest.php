@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
+use Illuminate\Support\Collection;
 use Mockery;
 
 /**
@@ -47,8 +48,8 @@ class CensusColumnConditionFrenchGarconTest extends \Fisharebest\Webtrees\TestCa
     public function testNoSpouseFamiliesMale(): void
     {
         $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getSex')->andReturn('M');
-        $individual->shouldReceive('getSpouseFamilies')->andReturn([]);
+        $individual->shouldReceive('sex')->andReturn('M');
+        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection());
         $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('1800'));
 
         $census = Mockery::mock(CensusInterface::class);
@@ -68,8 +69,8 @@ class CensusColumnConditionFrenchGarconTest extends \Fisharebest\Webtrees\TestCa
     public function testNoSpouseFamiliesFemale(): void
     {
         $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getSex')->andReturn('F');
-        $individual->shouldReceive('getSpouseFamilies')->andReturn([]);
+        $individual->shouldReceive('sex')->andReturn('F');
+        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection());
         $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('1800'));
 
         $census = Mockery::mock(CensusInterface::class);
@@ -90,12 +91,12 @@ class CensusColumnConditionFrenchGarconTest extends \Fisharebest\Webtrees\TestCa
     {
         $family = Mockery::mock(Family::class);
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-        $family->shouldReceive('facts')->with(['MARR'])->andReturn([]);
+        $family->shouldReceive('facts')->with(['MARR'])->andReturn(new Collection());
 
         $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
+        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection([$family]));
         $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('1800'));
-        $individual->shouldReceive('getSex')->andReturn('M');
+        $individual->shouldReceive('sex')->andReturn('M');
 
         $census = Mockery::mock(CensusInterface::class);
 
@@ -115,12 +116,12 @@ class CensusColumnConditionFrenchGarconTest extends \Fisharebest\Webtrees\TestCa
     {
         $family = Mockery::mock(Family::class);
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-        $family->shouldReceive('facts')->with(['MARR'])->andReturn([]);
+        $family->shouldReceive('facts')->with(['MARR'])->andReturn(new Collection());
 
         $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
+        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection([$family]));
         $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('1800'));
-        $individual->shouldReceive('getSex')->andReturn('F');
+        $individual->shouldReceive('sex')->andReturn('F');
 
         $census = Mockery::mock(CensusInterface::class);
 
@@ -145,13 +146,13 @@ class CensusColumnConditionFrenchGarconTest extends \Fisharebest\Webtrees\TestCa
 
         $family = Mockery::mock(Family::class);
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-        $family->shouldReceive('facts')->with(['MARR'])->andReturn([$fact]);
-        $family->shouldReceive('facts')->with(['DIV'])->andReturn([]);
-        $family->shouldReceive('getSpouse')->andReturn($spouse);
+        $family->shouldReceive('facts')->with(['MARR'])->andReturn(new Collection([$fact]));
+        $family->shouldReceive('facts')->with(['DIV'])->andReturn(new Collection());
+        $family->shouldReceive('spouse')->andReturn($spouse);
 
         $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getSex')->andReturn('M');
-        $individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
+        $individual->shouldReceive('sex')->andReturn('M');
+        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection([$family]));
 
         $census = Mockery::mock(CensusInterface::class);
 
@@ -176,13 +177,13 @@ class CensusColumnConditionFrenchGarconTest extends \Fisharebest\Webtrees\TestCa
 
         $family = Mockery::mock(Family::class);
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-        $family->shouldReceive('facts')->with(['MARR'])->andReturn([$fact]);
-        $family->shouldReceive('facts')->with(['DIV'])->andReturn([]);
-        $family->shouldReceive('getSpouse')->andReturn($spouse);
+        $family->shouldReceive('facts')->with(['MARR'])->andReturn(new Collection([$fact]));
+        $family->shouldReceive('facts')->with(['DIV'])->andReturn(new Collection());
+        $family->shouldReceive('spouse')->andReturn($spouse);
 
         $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getSex')->andReturn('F');
-        $individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
+        $individual->shouldReceive('sex')->andReturn('F');
+        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection([$family]));
 
         $census = Mockery::mock(CensusInterface::class);
 
@@ -202,11 +203,11 @@ class CensusColumnConditionFrenchGarconTest extends \Fisharebest\Webtrees\TestCa
     {
         $family = Mockery::mock(Family::class);
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-        $family->shouldReceive('facts')->with(['MARR'])->andReturn([]);
+        $family->shouldReceive('facts')->with(['MARR'])->andReturn(new Collection());
 
         $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getSex')->andReturn('M');
-        $individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
+        $individual->shouldReceive('sex')->andReturn('M');
+        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection([$family]));
         $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('1800'));
 
         $census = Mockery::mock(CensusInterface::class);
@@ -227,11 +228,11 @@ class CensusColumnConditionFrenchGarconTest extends \Fisharebest\Webtrees\TestCa
     {
         $family = Mockery::mock(Family::class);
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-        $family->shouldReceive('facts')->with(['MARR'])->andReturn([]);
+        $family->shouldReceive('facts')->with(['MARR'])->andReturn(new Collection());
 
         $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getSex')->andReturn('F');
-        $individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
+        $individual->shouldReceive('sex')->andReturn('F');
+        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection([$family]));
         $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('1800'));
 
         $census = Mockery::mock(CensusInterface::class);
@@ -252,11 +253,11 @@ class CensusColumnConditionFrenchGarconTest extends \Fisharebest\Webtrees\TestCa
     {
         $family = Mockery::mock(Family::class);
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-        $family->shouldReceive('facts')->with(['MARR'])->andReturn([]);
+        $family->shouldReceive('facts')->with(['MARR'])->andReturn(new Collection());
 
         $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getSex')->andReturn('M');
-        $individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
+        $individual->shouldReceive('sex')->andReturn('M');
+        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection([$family]));
         $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('1820'));
 
         $census = Mockery::mock(CensusInterface::class);
@@ -277,11 +278,11 @@ class CensusColumnConditionFrenchGarconTest extends \Fisharebest\Webtrees\TestCa
     {
         $family = Mockery::mock(Family::class);
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-        $family->shouldReceive('facts')->with(['MARR'])->andReturn([]);
+        $family->shouldReceive('facts')->with(['MARR'])->andReturn(new Collection());
 
         $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getSex')->andReturn('F');
-        $individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
+        $individual->shouldReceive('sex')->andReturn('F');
+        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection([$family]));
         $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('1820'));
 
         $census = Mockery::mock(CensusInterface::class);
@@ -304,12 +305,12 @@ class CensusColumnConditionFrenchGarconTest extends \Fisharebest\Webtrees\TestCa
 
         $family = Mockery::mock(Family::class);
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-        $family->shouldReceive('facts')->with(['MARR'])->andReturn([$fact]);
-        $family->shouldReceive('facts')->with(['DIV'])->andReturn([$fact]);
+        $family->shouldReceive('facts')->with(['MARR'])->andReturn(new Collection([$fact]));
+        $family->shouldReceive('facts')->with(['DIV'])->andReturn(new Collection([$fact]));
 
         $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getSex')->andReturn('M');
-        $individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
+        $individual->shouldReceive('sex')->andReturn('M');
+        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection([$family]));
 
         $census = Mockery::mock(CensusInterface::class);
 
@@ -331,12 +332,12 @@ class CensusColumnConditionFrenchGarconTest extends \Fisharebest\Webtrees\TestCa
 
         $family = Mockery::mock(Family::class);
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-        $family->shouldReceive('facts')->with(['MARR'])->andReturn([$fact]);
-        $family->shouldReceive('facts')->with(['DIV'])->andReturn([$fact]);
+        $family->shouldReceive('facts')->with(['MARR'])->andReturn(new Collection([$fact]));
+        $family->shouldReceive('facts')->with(['DIV'])->andReturn(new Collection([$fact]));
 
         $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getSex')->andReturn('F');
-        $individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
+        $individual->shouldReceive('sex')->andReturn('F');
+        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection([$family]));
 
         $census = Mockery::mock(CensusInterface::class);
 

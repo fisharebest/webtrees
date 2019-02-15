@@ -19,7 +19,7 @@
             $found |= !$fact->isPendingDeletion();
             $person = $fact->target();
             if ($person instanceof Individual) {
-                $row_class = 'wt-gender-' . $person->getSex();
+                $row_class = 'wt-gender-' . $person->sex();
                 if ($fact->isPendingAddition()) {
                     $row_class .= ' new';
                 } elseif ($fact->isPendingDeletion()) {
@@ -56,7 +56,7 @@
             $person = $fact->target();
             if ($person instanceof Individual) {
                 $found |= !$fact->isPendingDeletion();
-                $row_class = 'wt-gender-' . $person->getSex();
+                $row_class = 'wt-gender-' . $person->sex();
                 if ($fact->isPendingAddition()) {
                     $row_class .= ' new';
                 } elseif ($fact->isPendingDeletion()) {
@@ -136,7 +136,7 @@
         foreach ($family->facts(['CHIL'], false, $fam_access_level) as $fact) {
             $person = $fact->target();
             if ($person instanceof Individual) {
-                $row_class = 'wt-gender-' . $person->getSex();
+                $row_class = 'wt-gender-' . $person->sex();
                 if ($fact->isPendingAddition()) {
                     $child_number++;
                     $row_class .= ' new';
@@ -190,7 +190,7 @@
         <?php if ($family->canEdit()) : ?>
             <tr>
                 <th scope="row">
-                    <?php if (count($family->getChildren()) > 1) : ?>
+                    <?php if (count($family->children()) > 1) : ?>
                         <a href="<?= e(route('reorder-children', ['ged' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
                             <?= view('icons/reorder') ?>
                             <?= I18N::translate('Re-order children') ?>

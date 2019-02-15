@@ -172,7 +172,7 @@ class ImportThumbnailsController extends AbstractAdminController
             $media = $this->findMediaObjectsForMediaFile($original_path);
 
             $media_links = array_map(function (Media $media): string {
-                return '<a href="' . e($media->url()) . '">' . $media->getFullName() . '</a>';
+                return '<a href="' . e($media->url()) . '">' . $media->fullName() . '</a>';
             }, $media);
 
             $media_links = implode('<br>', $media_links);

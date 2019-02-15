@@ -57,10 +57,10 @@
     <div class="col-md-6 col-lg-4 col-xl-3 person<?= $n % 6 ?>">
         <?= $individual->getSexImage('large'); ?>
         <a href="<?= e($individual->url()) ?>">
-            <?= $individual->getFullName() ?>
-            <?php if ($individual->getAddName() !== '') : ?>
+            <?= $individual->fullName() ?>
+            <?php if ($individual->alternateName() !== '') : ?>
                 <br>
-                <?= $individual->getAddName() ?>
+                <?= $individual->alternateName() ?>
             <?php endif ?>
         </a>
         <a href="<?= e($remove_urls[$individual->xref()]) ?>">

@@ -388,7 +388,7 @@ class EditMediaController extends AbstractEditController
             ]),
             'html' => view('modals/record-created', [
                 'title' => I18N::translate('The media object has been created'),
-                'name'  => $record->getFullName(),
+                'name'  => $record->fullName(),
                 'url'   => $record->url(),
             ]),
         ]);
