@@ -347,7 +347,12 @@ class ModuleService
                             $module->setTabOrder((int) $info->tab_order);
                         }
                     } else {
-                        DB::table('module')->insert(['module_name' => $module->name()]);
+                        $module->setEnabled($module->isEnabledByDefault());
+
+                        DB::table('module')->insert([
+                            'module_name' => $module->name(),
+                            'status'      => $module->isEnabled() ? 'enabled' : 'disabled',
+                        ]);
                     }
 
                     return $module;

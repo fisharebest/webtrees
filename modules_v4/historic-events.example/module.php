@@ -22,6 +22,16 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
     }
 
     /**
+     * Should this module be enabled when it is first installed?
+     *
+     * @return bool
+     */
+    public function isEnabledByDefault(): bool
+    {
+        return false;
+    }
+
+    /**
      * All events provided by this module.
      *
      * @return string[]

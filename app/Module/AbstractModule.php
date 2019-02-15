@@ -159,6 +159,16 @@ abstract class AbstractModule implements ModuleInterface
     }
 
     /**
+     * Should this module be enabled when it is first installed?
+     *
+     * @return bool
+     */
+    public function isEnabledByDefault(): bool
+    {
+        return true;
+    }
+
+    /**
      * Get a module setting. Return a default if the setting is not set.
      *
      * @param string $setting_name
