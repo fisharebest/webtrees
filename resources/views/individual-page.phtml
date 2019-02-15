@@ -33,7 +33,7 @@
 </div>
 
 <div class="row">
-    <div class="col-sm-<?= $sidebars->isEmpty() ? '12' : '8' ?>">
+    <div class="col-sm">
         <div class="row mb-4">
             <!-- Individual images -->
             <div class="col-sm-3">
@@ -113,6 +113,7 @@
             </div>
         </div>
     </div>
+    <?php if ($sidebars->isNotEmpty()) : ?>
     <div class="col-sm-4" id="sidebar" role="tablist">
         <?php foreach ($sidebars as $sidebar) : ?>
             <div class="card">
@@ -130,6 +131,7 @@
             </div>
         <?php endforeach ?>
     </div>
+    <?php endif ?>
 </div>
 
 <?php View::push('javascript') ?>
