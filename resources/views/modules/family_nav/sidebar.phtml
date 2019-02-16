@@ -11,7 +11,7 @@
 
     <!-- spouse and children -->
     <?php foreach ($individual->spouseFamilies() as $family) : ?>
-        <?= view('modules/family_nav/sidebar-family', ['individual' => $individual, 'family' => $family, 'title' => $individual->spouseFamilyLabel($family)]) ?>
+        <?= view('modules/family_nav/sidebar-family', ['individual' => $individual, 'family' => $family, 'title' => $individual->getspouseFamilyLabel($family)]) ?>
     <?php endforeach ?>
 
     <!-- step children -->
