@@ -75,7 +75,7 @@ class FamilyController extends AbstractBaseController
             'surname'    => '',
         ];
 
-        foreach ($family->spouses() + $family->children() as $individual) {
+        foreach ($family->spouses()->merge($family->children()) as $individual) {
             $significant->individual = $individual;
             [$significant->surname] = explode(',', $individual->sortName());
             break;
