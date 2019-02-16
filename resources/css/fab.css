@@ -408,17 +408,12 @@ table {
 
 a {
 	text-decoration: none;
+	color: #369;
 }
 
 a:hover,
 a:active {
-	color: #369;
 	text-decoration: underline;
-}
-
-a:link,
-a:visited {
-	color: #369;
 }
 
 :focus {
