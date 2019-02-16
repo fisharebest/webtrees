@@ -148,7 +148,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                     'valid'      => true,
                     'geometry'   => [
                         'type'        => 'Point',
-                        'coordinates' => [$latitude, $longitude],
+                        'coordinates' => [$longitude, $latitude],
                     ],
                     'properties' => [
                         'polyline' => null,
