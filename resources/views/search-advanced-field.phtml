@@ -1,5 +1,17 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\GedcomTag; ?>
+<?php
+
+use Fisharebest\Webtrees\Bootstrap4;
+use Fisharebest\Webtrees\GedcomTag;
+
+/**
+ * @var string[] $date_options
+ * @var string   $field_name
+ * @var string   $field_value
+ * @var string   $modifier
+ * @var string[] $name_options
+ */
+
+?>
 
 <div class="row form-group">
     <label class="col-sm-3 col-form-label wt-page-options-label" for="fields[<?= e($field_name) ?>]">
@@ -7,8 +19,8 @@
     </label>
 
     <div class="col-sm-6 wt-page-options-value">
-        <input class="form-control form-control" type="text" id="fields[<?= e($field_name) ?>]" name="fields[<?= e($field_name) ?>]" value="<?= e($field_value) ?>">
-        </div>
+        <input class="form-control form-control" type="text" id="fields[<?= e($field_name) ?>]" name="fields[<?= e($field_name) ?>]" value="<?= e($field_value) ?>" <?php if (substr($field_name, -5) === ':DATE'): ?>onchange="valid_date(this, 'dmy')" <?php endif ?>>
+    </div>
 
     <div class="col-sm-3 wt-page-options-value">
         <?php if (preg_match('/(GIVN|SURN)$/', $field_name)) : ?>
