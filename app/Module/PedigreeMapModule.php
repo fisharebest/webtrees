@@ -242,7 +242,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
 
         if ($record instanceof Family) {
             // Marriage
-            $spouse = $record->getSpouse($individual);
+            $spouse = $record->sppouse($individual);
             if ($spouse) {
                 $url  = $spouse->url();
                 $name = $spouse->getFullName();
@@ -415,7 +415,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
             'tree'           => $tree,
             'individual'     => $individual,
             'generations'    => $generations,
-            'maxgenerations' => self::MAXUMUM_GENERATIONS,
+            'maxgenerations' => self::MAXIMUM_GENERATIONS,
             'map'            => view(
                 'modules/pedigree-map/chart',
                 [
