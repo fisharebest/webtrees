@@ -108,7 +108,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                     $chart_url = $module->chartUrl($person, [
                         'ajax'        => true,
                         'generations' => 3,
-                        'layout'      => PedigreeChartModule::PORTRAIT,
+                        'layout'      => PedigreeChartModule::ORIENTATION_RIGHT,
                     ]);
                     $content   = view('modules/charts/chart', [
                         'block_id'  => $block_id,

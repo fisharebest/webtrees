@@ -43,10 +43,10 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
     protected const MIN_GENERATIONS     = 2;
 
     // Chart orientation options.  These are used to generate icons, views, etc.
-    protected const ORIENTATION_LEFT  = 'left';
-    protected const ORIENTATION_RIGHT = 'right';
-    protected const ORIENTATION_UP    = 'up';
-    protected const ORIENTATION_DOWN  = 'down';
+    public const ORIENTATION_LEFT  = 'left';
+    public const ORIENTATION_RIGHT = 'right';
+    public const ORIENTATION_UP    = 'up';
+    public const ORIENTATION_DOWN  = 'down';
 
     protected const MIRROR_ORIENTATION = [
         self::ORIENTATION_UP    => self::ORIENTATION_DOWN,
