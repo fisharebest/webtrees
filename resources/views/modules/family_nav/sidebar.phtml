@@ -11,11 +11,11 @@
 
     <!-- spouse and children -->
     <?php foreach ($individual->spouseFamilies() as $family) : ?>
-        <?= view('modules/family_nav/sidebar-family', ['individual' => $individual, 'family' => $family, 'title' => $individual->spouse(FamilyLabel($family)]) ?>
+        <?= view('modules/family_nav/sidebar-family', ['individual' => $individual, 'family' => $family, 'title' => $individual->spouseFamilyLabel($family)]) ?>
     <?php endforeach ?>
 
     <!-- step children -->
-    <?php foreach ($individual->spouse(StepFamilies() as $family) : ?>
+    <?php foreach ($individual->spouseStepFamilies() as $family) : ?>
         <?= view('modules/family_nav/sidebar-family', ['individual' => $individual, 'family' => $family, 'title' => $family->fullName()]) ?>
     <?php endforeach ?>
 </div>
