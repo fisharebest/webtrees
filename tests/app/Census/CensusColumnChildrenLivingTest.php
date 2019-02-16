@@ -85,12 +85,12 @@ class CensusColumnChildrenLivingTest extends \Fisharebest\Webtrees\TestCase
         $child4->shouldReceive('getDeathDate')->andReturn(new Date(''));
 
         $family = Mockery::mock(Family::class);
-        $family->shouldReceive('children')->andReturn([
+        $family->shouldReceive('children')->andReturn(new Collection([
             $child1,
             $child2,
             $child3,
             $child4,
-        ]);
+        ]));
 
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('sex')->andReturn('F');
