@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -401,10 +402,10 @@ class EventRepository implements EventRepositoryInterface
             $fact   = null;
 
             if ($record) {
-                $fact = $record->firstFact($row->fact);
+                $fact = $record->facts([$row->fact])->first();
             }
 
-            if ($fact) {
+            if ($fact instanceof Fact) {
                 return FunctionsPrint::formatFactPlace($fact, true, true, true);
             }
         }

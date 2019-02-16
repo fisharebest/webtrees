@@ -961,9 +961,9 @@ class Individual extends GedcomRecord
     /**
      * Get a list of step-parent families.
      *
-     * @return Family[]
+     * @return Collection|Family[]
      */
-    public function childStepFamilies(): array
+    public function childStepFamilies(): Collection
     {
         $step_families = [];
         $families      = $this->childFamilies();
@@ -986,20 +986,22 @@ class Individual extends GedcomRecord
             }
         }
 
-        return $step_families;
+        return new Collection($step_families);
     }
 
     /**
      * Get a list of step-parent families.
      *
-     * @return Family[]
+     * @return Collection|Family[]
      */
-    public function spouseStepFamilies(): array
+    public function spouseStepFamilies(): Collection
     {
         $step_families = [];
         $families      = $this->spouseFamilies();
+
         foreach ($families as $family) {
             $spouse = $family->spouse($this);
+
             if ($spouse) {
                 foreach ($family->spouse($this)->spouseFamilies() as $step_family) {
                     if (!$families->containsStrict($step_family)) {
@@ -1009,7 +1011,7 @@ class Individual extends GedcomRecord
             }
         }
 
-        return $step_families;
+        return new Collection($step_families);
     }
 
     /**
@@ -1019,7 +1021,7 @@ class Individual extends GedcomRecord
      *
      * @return string
      */
-    public function getChildFamilyLabel(Family $family)
+    public function getChildFamilyLabel(Family $family): string
     {
         if (preg_match('/\n1 FAMC @' . $family->xref() . '@(?:\n[2-9].*)*\n2 PEDI (.+)/', $this->gedcom(), $match)) {
             // A specified pedigree

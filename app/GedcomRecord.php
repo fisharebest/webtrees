@@ -1066,24 +1066,6 @@ class GedcomRecord
     }
 
     /**
-     * Get the first (i.e. prefered) Fact for the given fact type
-     *
-     * @param string $tag
-     *
-     * @return Fact|null
-     */
-    public function firstFact(string $tag)
-    {
-        foreach ($this->facts() as $fact) {
-            if ($fact->getTag() === $tag) {
-                return $fact;
-            }
-        }
-
-        return null;
-    }
-
-    /**
      * The facts and events for this record.
      *
      * @param string[] $filter
@@ -1125,7 +1107,7 @@ class GedcomRecord
      */
     public function lastChangeTimestamp(bool $sorting = false)
     {
-        $chan = $this->firstFact('CHAN');
+        $chan = $this->facts(['CHAN'])->first();
 
         if ($chan) {
             // The record does have a CHAN event
@@ -1159,7 +1141,7 @@ class GedcomRecord
      */
     public function lastChangeUser()
     {
-        $chan = $this->firstFact('CHAN');
+        $chan = $this->facts(['CHAN'])->first();
 
         if ($chan === null) {
             return I18N::translate('Unknown');

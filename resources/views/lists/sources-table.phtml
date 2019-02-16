@@ -97,7 +97,7 @@ $count_notes = DB::table('other')
 
                 <!-- Author -->
                 <td>
-                    <?= e($source->firstFact('AUTH') ? $source->firstFact('AUTH')->value() : '') ?>
+                    <?= e($source->facts(['AUTH'])->isNotEmpty() ? $source->facts(['AUTH'])->first()->value() : '') ?>
                 </td>
 
                 <!-- Count of linked individuals -->

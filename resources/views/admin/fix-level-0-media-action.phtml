@@ -1,14 +1,27 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
+
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
+
+/**
+ * @var Fact       $fact
+ * @var Individual $individual
+ * @var Media      $media
+ */
+?>
 
 <button
-    class="btn btn-primary btn-small mb-1 wt-fix-button"
-    data-confirm="<?= I18N::translate('Move the media object?') ?>"
-    data-fact-id="<?= e($fact->id()) ?>"
-    data-tree-id="<?= e($tree->id()) ?>"
-    data-individual-xref="<?= e($individual->xref()) ?>"
-    data-media-xref="<?= e($media->xref()) ?>"
-    type="button"
+class="btn btn-primary btn-small mb-1 wt-fix-button"
+data-confirm="<?= I18N::translate('Move the media object?') ?>"
+data-fact-id="<?= e($fact->id()) ?>"
+data-tree-id="<?= e($tree->id()) ?>"
+data-individual-xref="<?= e($individual->xref()) ?>"
+data-media-xref="<?= e($media->xref()) ?>"
+type="button"
 >
     <?= $fact->label() ?>
+    <?= $fact->value() ?>
     <?= $fact->date()->display(false, '%Y', false) ?>
 </button>

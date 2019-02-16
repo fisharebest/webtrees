@@ -1296,8 +1296,7 @@ class ReportParserGenerate extends ReportParserBase
 
         $record = GedcomRecord::getInstance($id, $this->tree);
         if (empty($attrs['diff']) && !empty($id)) {
-            throw new \Exception('eek');
-            Functions::sortFacts($facts);
+            $facts = $record->facts([], true);
             $this->repeats = [];
             $nonfacts      = explode(',', $tag);
             foreach ($facts as $fact) {
@@ -2405,37 +2404,23 @@ class ReportParserGenerate extends ReportParserBase
             switch ($group) {
                 case 'child-family':
                     foreach ($person->childFamilies() as $family) {
-                        $husband = $family->husband();
-                        $wife    = $family->wife();
-                        if (!empty($husband)) {
-                            $this->list[$husband->xref()] = $husband;
+                        foreach ($family->spouses() as $spouse) {
+                            $this->list[$spouse->xref()] = $spouse;
                         }
-                        if (!empty($wife)) {
-                            $this->list[$wife->xref()] = $wife;
-                        }
-                        $children = $family->children();
-                        foreach ($children as $child) {
-                            if (!empty($child)) {
-                                $this->list[$child->xref()] = $child;
-                            }
+
+                        foreach ($family->children() as $child) {
+                            $this->list[$child->xref()] = $child;
                         }
                     }
                     break;
                 case 'spouse-family':
                     foreach ($person->spouseFamilies() as $family) {
-                        $husband = $family->husband();
-                        $wife    = $family->wife();
-                        if (!empty($husband)) {
-                            $this->list[$husband->xref()] = $husband;
+                        foreach ($family->spouses() as $spouse) {
+                            $this->list[$spouse->xref()] = $spouse;
                         }
-                        if (!empty($wife)) {
-                            $this->list[$wife->xref()] = $wife;
-                        }
-                        $children = $family->children();
-                        foreach ($children as $child) {
-                            if (!empty($child)) {
-                                $this->list[$child->xref()] = $child;
-                            }
+
+                        foreach ($family->children() as $child) {
+                            $this->list[$child->xref()] = $child;
                         }
                     }
                     break;
@@ -2749,10 +2734,13 @@ class ReportParserGenerate extends ReportParserBase
                     }
                 }
             }
+
             $children = $family->children();
+
             foreach ($children as $child) {
                 if ($child) {
                     $list[$child->xref()] = $child;
+
                     if (isset($list[$pid]->generation)) {
                         $list[$child->xref()]->generation = $list[$pid]->generation + 1;
                     } else {
@@ -2778,7 +2766,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function addAncestors(&$list, $pid, $children = false, $generations = -1)
+    private function addAncestors(array &$list, string $pid, bool $children = false, int $generations = -1)
     {
         $genlist                = [$pid];
         $list[$pid]->generation = 1;

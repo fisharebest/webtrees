@@ -564,7 +564,7 @@ class FunctionsEdit
         if ($fact === 'HUSB' || $fact === 'WIFE') {
             $family = Family::getInstance($xref, $tree);
             if ($family) {
-                $spouse_link = $family->firstFact($fact);
+                $spouse_link = $family->facts([$fact])->first();
                 if ($spouse_link) {
                     $spouse = $spouse_link->target();
                     if ($spouse instanceof Individual) {

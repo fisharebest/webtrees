@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\I18N;
@@ -263,7 +264,7 @@ class EditFamilyController extends AbstractEditController
         $spouse = $tree->createIndividual($gedrec);
 
         // Update the existing family - add marriage, etc
-        if ($family->firstFact('HUSB')) {
+        if ($family->facts(['HUSB'])->first() instanceof Fact) {
             $family->createFact('1 WIFE @' . $spouse->xref() . '@', true);
         } else {
             $family->createFact('1 HUSB @' . $spouse->xref() . '@', true);
@@ -405,7 +406,7 @@ class EditFamilyController extends AbstractEditController
         }
 
         foreach ($new_children as $new_child) {
-            if ($new_child && !in_array($new_child, $old_children)) {
+            if ($new_child && !$old_children->contains($new_child)) {
                 // Add new FAMC link
                 $new_child->createFact('1 FAMC @' . $family->xref() . '@', true);
                 // Add new CHIL link

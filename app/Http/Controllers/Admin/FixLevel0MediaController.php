@@ -151,20 +151,20 @@ class FixLevel0MediaController extends AbstractAdminController
                 $facts = [];
             }
 
-            $facts = array_map(function (Fact $fact) use ($individual, $media): string {
+            $facts = $facts->map(function (Fact $fact) use ($individual, $media): string {
                 return view('admin/fix-level-0-media-action', [
                     'fact'       => $fact,
                     'individual' => $individual,
                     'media'      => $media,
                 ]);
-            }, $facts);
+            });
 
             return [
                 $tree->name(),
                 $media->displayImage(100, 100, 'fit', ['class' => 'img-thumbnail']),
                 '<a href="' . e($media->url()) . '">' . $media->fullName() . '</a>',
                 '<a href="' . e($individual->url()) . '">' . $individual->fullName() . '</a>',
-                implode(' ', $facts),
+                $facts->implode(' '),
             ];
         });
     }

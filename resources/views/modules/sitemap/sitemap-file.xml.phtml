@@ -3,8 +3,8 @@
     <?php foreach ($records as $record) : ?>
         <url>
             <loc><?= e($record->url()) ?></loc>
-            <?php if ($record->firstFact('CHAN') !== null) : ?>
-                <lastmod><?= $record->firstFact('CHAN')->date()->minimumDate()->Format('%Y-%m-%d') ?></lastmod>
+            <?php if ($record->facts(['CHAN'])->isNotEmpty()) : ?>
+                <lastmod><?= $record->facts(['CHAN'])->first()->date()->minimumDate()->Format('%Y-%m-%d') ?></lastmod>
             <?php endif ?>
         </url>
     <?php endforeach ?>

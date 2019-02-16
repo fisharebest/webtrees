@@ -83,12 +83,11 @@ foreach ($individual->spouseFamilies() as $family) {
         $all_facts->push($fact);
     }
 }
-Functions::sortFacts($all_facts);
-
 $all_facts = $all_facts->filter(function (Fact $fact) use ($exclude): bool {
     return !in_array($fact->getTag(), $exclude);
 });
 
+Functions::sortFacts($all_facts);
 
 $id = Uuid::uuid4()->toString();
 
@@ -152,7 +151,7 @@ $id = Uuid::uuid4()->toString();
 
             foreach (Gedcom::BIRTH_EVENTS as $birttag) {
                 if (!in_array($birttag, $opt_tags)) {
-                    $event = $individual->firstFact($birttag);
+                    $event = $individual->facts([$birttag])->first();
                     if ($event instanceof Fact) {
                         echo $event->summary();
                         break;
@@ -162,7 +161,7 @@ $id = Uuid::uuid4()->toString();
             // Show optional events (before death)
             foreach ($opt_tags as $key => $tag) {
                 if (!in_array($tag, Gedcom::DEATH_EVENTS)) {
-                    $event = $individual->firstFact($tag);
+                    $event = $individual->facts([$tag])->first();
                     if ($event instanceof Fact) {
                         echo $event->summary();
                         unset($opt_tags[$key]);
@@ -171,7 +170,7 @@ $id = Uuid::uuid4()->toString();
             }
             // Show DEAT or equivalent event
             foreach (Gedcom::DEATH_EVENTS as $deattag) {
-                $event = $individual->firstFact($deattag);
+                $event = $individual->facts([$deattag])->first();
                 if ($event instanceof Fact) {
                     echo $event->summary();
                     if (in_array($deattag, $opt_tags)) {
@@ -182,7 +181,7 @@ $id = Uuid::uuid4()->toString();
             }
             // Show remaining optional events (after death)
             foreach ($opt_tags as $tag) {
-                $event = $individual->firstFact($tag);
+                $event = $individual->facts([$tag])->first();
                 if ($event instanceof Fact) {
                     echo $event->summary();
                 }

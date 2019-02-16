@@ -606,7 +606,7 @@ class FunctionsPrintFacts
                     }
                     $data .= ' class="source_citations">';
                     // PUBL
-                    $publ = $source->firstFact('PUBL');
+                    $publ = $source->facts(['PUBL'])->first();
                     if ($publ) {
                         $data .= GedcomTag::getLabelValue('PUBL', $publ->value());
                     }
@@ -790,7 +790,7 @@ class FunctionsPrintFacts
                 if ($source) {
                     echo '<a href="', e($source->url()), '">', $source->fullName(), '</a>';
                     // PUBL
-                    $publ = $source->firstFact('PUBL');
+                    $publ = $source->facts(['PUBL'])->first();
                     if ($publ) {
                         echo GedcomTag::getLabelValue('PUBL', $publ->value());
                     }

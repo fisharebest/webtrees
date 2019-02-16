@@ -286,7 +286,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
         $facts       = [];
         foreach ($ancestors as $sosa => $person) {
             if ($person->canShow()) {
-                $birth = $person->firstFact('BIRT');
+                $birth = $person->facts(['BIRT'])->first();
                 if ($birth instanceof Fact && $birth->place()->gedcomName() !== '') {
                     $facts[$sosa] = $birth;
                 }

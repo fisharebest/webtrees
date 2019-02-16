@@ -274,7 +274,7 @@ class FunctionsPrint
                     // Can't use getDeathDate(), as this also gives BURI/CREM events, which
                     // wouldn't give the correct "days after death" result for people with
                     // no DEAT.
-                    $death_event = $record->firstFact('DEAT');
+                    $death_event = $record->facts(['DEAT'])->first();
                     if ($death_event) {
                         $death_date = $death_event->date();
                     } else {

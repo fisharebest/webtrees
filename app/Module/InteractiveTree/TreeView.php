@@ -186,7 +186,7 @@ class TreeView
 
         foreach ($familyList as $f) {
             $children = $f->children();
-            if ($children) {
+            if ($children->isNotEmpty()) {
                 $f2load[] = $f->xref();
                 foreach ($children as $child) {
                     // Eliminate duplicates - e.g. when adopted by a step-parent

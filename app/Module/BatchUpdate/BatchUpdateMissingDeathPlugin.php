@@ -55,7 +55,7 @@ class BatchUpdateMissingDeathPlugin extends BatchUpdateBasePlugin
      */
     public function doesRecordNeedUpdate(GedcomRecord $record): bool
     {
-        return $record instanceof Individual && $record->firstFact('DEAT') === null && $record->isDead();
+        return $record instanceof Individual && $record->facts(['DEAT'])->isEmpty() && $record->isDead();
     }
 
     /**

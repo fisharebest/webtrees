@@ -372,13 +372,13 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
                 }
 
                 // filter out root person from children array so only siblings remain
-                $siblings       = array_filter($family->children(), function (Individual $x) use ($individual): bool {
+                $siblings       = $family->children()->filter(function (Individual $x) use ($individual): bool {
                     return $x !== $individual;
                 });
-                $count_siblings = count($siblings);
-                if ($count_siblings > 0) {
+
+                if ($siblings->count() > 0) {
                     echo '<span class="name1">';
-                    echo $count_siblings > 1 ? I18N::translate('Siblings') : I18N::translate('Sibling');
+                    echo $siblings->count() > 1 ? I18N::translate('Siblings') : I18N::translate('Sibling');
                     echo '</span>';
                     foreach ($siblings as $child) {
                         echo '<a href="' . e(route('hourglass', [

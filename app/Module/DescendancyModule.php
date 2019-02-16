@@ -237,7 +237,8 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
         $out = '';
         if ($family->canShow()) {
             $children = $family->children();
-            if ($children) {
+
+            if ($children->isNotEmpty()) {
                 foreach ($children as $child) {
                     $out .= $this->getPersonLi($child, $generations - 1);
                 }

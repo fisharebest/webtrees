@@ -324,7 +324,7 @@ class BranchesController extends AbstractBaseController
                     $marriage_year = $family->getMarriageYear();
                     if ($marriage_year) {
                         $fam_html .= ' <a href="' . e($family->url()) . '" title="' . strip_tags($family->getMarriageDate()->display()) . '"><i class="icon-rings"></i>' . $marriage_year . '</a>';
-                    } elseif ($family->firstFact('MARR')) {
+                    } elseif ($family->facts(['MARR'])->first()) {
                         $fam_html .= ' <a href="' . e($family->url()) . '" title="' . I18N::translate('Marriage') . '"><i class="icon-rings"></i></a>';
                     } else {
                         $fam_html .= ' <a href="' . e($family->url()) . '" title="' . I18N::translate('Not married') . '"><i class="icon-rings"></i></a>';

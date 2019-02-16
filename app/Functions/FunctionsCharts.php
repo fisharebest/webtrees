@@ -309,12 +309,10 @@ class FunctionsCharts
         string $label = '',
         bool $show_cousins = false
     ) {
-        $bheight = app()->make(ModuleThemeInterface::class)->parameter('chart-box-y');
-
+        $bheight  = app()->make(ModuleThemeInterface::class)->parameter('chart-box-y');
         $pbheight = $bheight + 14;
-
         $children = $family->children();
-        $numchil  = count($children);
+        $numchil  = $children->count();
 
         echo '<table border="0" cellpadding="0" cellspacing="0"><tr>';
         if ($sosa > 0) {
@@ -354,7 +352,8 @@ class FunctionsCharts
         echo '</tr>';
 
         $nchi = 1;
-        if ($children) {
+
+        if ($children->isNotEmpty()) {
             foreach ($children as $child) {
                 echo '<tr>';
                 if ($sosa != 0) {
@@ -385,8 +384,7 @@ class FunctionsCharts
                             echo '</tr><tr><td></td>';
                             echo '<td style="text-align:end; vertical-align: top;">';
                             //find out how many cousins there are to establish vertical line on second families
-                            $fchildren = $famids[$f]->children();
-                            $kids      = count($fchildren);
+                            $kids = $famids[$f]->children()->count();
 
                             if ($show_cousins) {
                                 if ($kids > 0) {
@@ -407,8 +405,8 @@ class FunctionsCharts
                         echo '<td class="details1" style="text-align:center;">';
                         $spouse = $famids[$f]->spouse($child);
 
-                        $marr = $famids[$f]->firstFact('MARR');
-                        $div  = $famids[$f]->firstFact('DIV');
+                        $marr = $famids[$f]->facts(['MARR'])->first();
+                        $div  = $famids[$f]->facts(['DIV'])->first();
                         if ($marr) {
                             // marriage date
                             echo $marr->date()->minimumDate()->format('%Y');
@@ -510,15 +508,15 @@ class FunctionsCharts
     {
         $bheight   = app()->make(ModuleThemeInterface::class)->parameter('chart-box-y');
         $fchildren = $family->children();
-        $kids      = count($fchildren);
+        $kids      = $fchildren->count();
 
         echo '<td>';
-        if ($kids) {
+        if ($fchildren->isNotEmpty()) {
             echo '<table cellspacing="0" cellpadding="0" border="0" ><tr>';
-            if ($kids > 1) {
+            if ($fchildren->count() > 1) {
                 echo '<td rowspan="', $kids, '"><img width="3px" height="', (($bheight) * ($kids - 1)), 'px" src="', e(asset('css/images/vline.png')), '"></td>';
             }
-            $ctkids = count($fchildren);
+            $ctkids = $fchildren->count();
             $i      = 1;
             foreach ($fchildren as $fchil) {
                 if ($i == 1) {

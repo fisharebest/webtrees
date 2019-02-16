@@ -350,13 +350,13 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
         // children
         $children = $family->children();
         echo '<tr><td colspan="3" class="details1" >&nbsp;&nbsp;';
-        if (!empty($children)) {
-            echo GedcomTag::getLabel('NCHI') . ': ' . count($children);
+        if ($children->isNotEmpty()) {
+            echo GedcomTag::getLabel('NCHI') . ': ' . $children->count();
         } else {
             // Distinguish between no children (NCHI 0) and no recorded
             // children (no CHIL records)
             if (strpos($family->gedcom(), '\n1 NCHI 0') !== false) {
-                echo GedcomTag::getLabel('NCHI') . ': ' . count($children);
+                echo GedcomTag::getLabel('NCHI') . ': ' . $children->count();
             } else {
                 echo I18N::translate('No children');
             }

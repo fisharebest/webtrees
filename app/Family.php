@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Collection;
 use stdClass;
 
 /**
@@ -243,14 +244,16 @@ class Family extends GedcomRecord
      *
      * @param int|null $access_level
      *
-     * @return Individual[]
+     * @return Collection|Individual[]
      */
-    public function spouses($access_level = null): array
+    public function spouses($access_level = null): Collection
     {
-        return array_filter([
+        $spouses = new Collection([
             $this->husband($access_level),
             $this->wife($access_level),
         ]);
+
+        return $spouses->filter();
     }
 
     /**
@@ -258,9 +261,9 @@ class Family extends GedcomRecord
      *
      * @param int|null $access_level
      *
-     * @return Individual[]
+     * @return Collection|Individual[]
      */
-    public function children($access_level = null): array
+    public function children($access_level = null): Collection
     {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);
@@ -268,11 +271,13 @@ class Family extends GedcomRecord
 
         $SHOW_PRIVATE_RELATIONSHIPS = (bool) $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
-        $children = [];
+        $children = new Collection();
+
         foreach ($this->facts(['CHIL'], false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
             $child = $fact->target();
+
             if ($child instanceof Individual && ($SHOW_PRIVATE_RELATIONSHIPS || $child->canShowName($access_level))) {
-                $children[] = $child;
+                $children->push($child);
             }
         }
 
@@ -286,7 +291,8 @@ class Family extends GedcomRecord
      */
     public function numberOfChildren(): int
     {
-        $nchi = count($this->children());
+        $nchi = $this->children()->count();
+
         foreach ($this->facts(['NCHI']) as $fact) {
             $nchi = max($nchi, (int) $fact->value());
         }
@@ -299,9 +305,9 @@ class Family extends GedcomRecord
      *
      * @return Fact|null
      */
-    public function getMarriage()
+    public function getMarriage(): ?Fact
     {
-        return $this->firstFact('MARR');
+        return $this->facts(['MARR'])->first();
     }
 
     /**
@@ -309,7 +315,7 @@ class Family extends GedcomRecord
      *
      * @return Date
      */
-    public function getMarriageDate()
+    public function getMarriageDate(): Date
     {
         $marriage = $this->getMarriage();
         if ($marriage) {

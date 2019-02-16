@@ -1,15 +1,25 @@
-<?php use Fisharebest\Webtrees\Auth; ?>
-<?php use Fisharebest\Webtrees\Config; ?>
-<?php use Fisharebest\Webtrees\Fact; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
-<?php use Fisharebest\Webtrees\Gedcom; ?>
-<?php use Fisharebest\Webtrees\GedcomTag; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\SurnameTradition; ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php
+
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Config;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\SurnameTradition;
+use Fisharebest\Webtrees\View;
+
+/**
+ * @var Individual|null $individual
+ * @var Fact|null       $name_fact
+ */
+
+?>
 
 <?php
-if ($individual !== null) {
+if ($individual instanceof Individual) {
     $xref       = $individual->xref();
     $cancel_url = $individual->url();
 } elseif ($family !== null) {
@@ -23,7 +33,7 @@ if ($individual !== null) {
 // Different cultures do surnames differently
 $surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'));
 
-if ($name_fact !== null) {
+if ($name_fact instanceof Fact) {
     // Editing an existing name
     $name_fact_id = $name_fact->id();
     $namerec      = $name_fact->gedcom();
@@ -66,14 +76,14 @@ if ($name_fact !== null) {
     // Inherit surname from parents, spouse or child
     if ($family) {
         $father = $family->husband();
-        if ($father && $father->firstFact('NAME')) {
-            $father_name = $father->firstFact('NAME')->value();
+        if ($father instanceof Individual && $father->facts(['NAME'])->isNotEmpty()) {
+            $father_name = $father->facts(['NAME'])->first()->value();
         } else {
             $father_name = '';
         }
         $mother = $family->wife();
-        if ($mother && $mother->firstFact('NAME')) {
-            $mother_name = $mother->firstFact('NAME')->value();
+        if ($mother instanceof Individual && $mother->facts(['NAME'])->isNotEmpty()) {
+            $mother_name = $mother->facts(['NAME'])->first()->value();
         } else {
             $mother_name = '';
         }
@@ -83,8 +93,8 @@ if ($name_fact !== null) {
         $father_name = '';
         $mother_name = '';
     }
-    if ($individual && $individual->firstFact('NAME')) {
-        $indi_name = $individual->firstFact('NAME')->value();
+    if ($individual && $individual->facts(['NAME'])->isNotEmpty()) {
+        $indi_name = $individual->facts(['NAME'])->first()->value();
     } else {
         $indi_name = '';
     }
@@ -277,15 +287,15 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
         ]);
         echo view('cards/add-note', [
             'level' => 2,
-            'tree' => $tree,
+            'tree'  => $tree,
         ]);
         echo view('cards/add-shared-note', [
             'level' => 2,
-            'tree' => $tree,
+            'tree'  => $tree,
         ]);
         echo view('cards/add-restriction', [
             'level' => 2,
-            'tree' => $tree,
+            'tree'  => $tree,
         ]);
     } else {
         echo view('cards/add-source-citation', [
@@ -299,15 +309,15 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
         ]);
         echo view('cards/add-note', [
             'level' => 1,
-            'tree' => $tree,
+            'tree'  => $tree,
         ]);
         echo view('cards/add-shared-note', [
             'level' => 1,
-            'tree' => $tree,
+            'tree'  => $tree,
         ]);
         echo view('cards/add-restriction', [
             'level' => 1,
-            'tree' => $tree,
+            'tree'  => $tree,
         ]);
     }
 
@@ -347,177 +357,177 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 
 <?php View::push('javascript') ?>
 <script>
-  var SURNAME_TRADITION = <?= json_encode($tree->getPreference('SURNAME_TRADITION')) ?>;
-  var gender            = <?= json_encode($gender) ?>;
-  var famtag            = <?= json_encode($famtag) ?>;
+    var SURNAME_TRADITION = <?= json_encode($tree->getPreference('SURNAME_TRADITION')) ?>;
+    var gender            = <?= json_encode($gender) ?>;
+    var famtag            = <?= json_encode($famtag) ?>;
 
-  var NAME = $("[name=NAME]");
+    var NAME = $("[name=NAME]");
 
-  function trim(str) {
-    str = str.replace(/\s\s+/g, " ");
-    return str.replace(/(^\s+)|(\s+$)/g, "");
-  }
-
-  function lang_class(str) {
-    if (str.match(/[\u0370-\u03FF]/)) return "greek";
-    if (str.match(/[\u0400-\u04FF]/)) return "cyrillic";
-    if (str.match(/[\u0590-\u05FF]/)) return "hebrew";
-    if (str.match(/[\u0600-\u06FF]/)) return "arabic";
-    return "latin"; // No matched text implies latin :-)
-  }
-
-  // Generate a full name from the name components
-  function generate_name() {
-    var npfx = $("[name=NPFX]").val();
-    var givn = $("[name=GIVN]").val();
-    var spfx = $("[name=SPFX]").val();
-    var surn = $("[name=SURN]").val();
-    var nsfx = $("[name=NSFX]").val();
-
-    if (SURNAME_TRADITION === "polish" && (gender === "F" || famtag === "WIFE")) {
-      surn = surn.replace(/ski$/, "ska");
-      surn = surn.replace(/cki$/, "cka");
-      surn = surn.replace(/dzki$/, "dzka");
-      surn = surn.replace(/żki$/, "żka");
+    function trim(str) {
+        str = str.replace(/\s\s+/g, " ");
+        return str.replace(/(^\s+)|(\s+$)/g, "");
     }
 
-    // Commas are used in the GIVN and SURN field to separate lists of surnames.
-    // For example, to differentiate the two Spanish surnames from an English
-    // double-barred name.
-    // Commas *may* be used in other fields, and will form part of the NAME.
-    var locale = document.documentElement.lang;
-    if (locale === "vi" || locale === "hu") {
-      // Default format: /SURN/ GIVN
-      return trim(npfx + " /" + trim(spfx + " " + surn).replace(/ *, */g, " ") + "/ " + givn.replace(/ *, */g, " ") + " " + nsfx);
-    } else if (locale === "zh-Hans" || locale === "zh-Hant") {
-      // Default format: /SURN/GIVN
-      return npfx + "/" + spfx + surn + "/" + givn + nsfx;
-    } else {
-      // Default format: GIVN /SURN/
-      return trim(npfx + " " + givn.replace(/ *, */g, " ") + " /" + trim(spfx + " " + surn).replace(/ *, */g, " ") + "/ " + nsfx);
-    }
-  }
-
-  // Update the NAME and _MARNM fields from the name components
-  // and also display the value in read-only "gedcom" format.
-  function updatewholename() {
-    // Don’t update the name if the user manually changed it
-    if (manualChange) {
-      return;
+    function lang_class(str) {
+        if (str.match(/[\u0370-\u03FF]/)) return "greek";
+        if (str.match(/[\u0400-\u04FF]/)) return "cyrillic";
+        if (str.match(/[\u0590-\u05FF]/)) return "hebrew";
+        if (str.match(/[\u0600-\u06FF]/)) return "arabic";
+        return "latin"; // No matched text implies latin :-)
     }
 
-    var npfx = $("[name=NPFX]").val();
-    var givn = $("[name=GIVN]").val();
-    var spfx = $("[name=SPFX]").val();
-    var surn = $("[name=SURN]").val();
-    var nsfx = $("[name=NSFX]").val();
-    var name = generate_name();
+    // Generate a full name from the name components
+    function generate_name() {
+        var npfx = $("[name=NPFX]").val();
+        var givn = $("[name=GIVN]").val();
+        var spfx = $("[name=SPFX]").val();
+        var surn = $("[name=SURN]").val();
+        var nsfx = $("[name=NSFX]").val();
 
-    var display_id = NAME.attr('id') + "_display";
-
-    NAME.val(name);
-    $("#" + display_id).text(name);
-    // Married names inherit some NSFX values, but not these
-    nsfx = nsfx.replace(/^(I|II|III|IV|V|VI|Junior|Jr\.?|Senior|Sr\.?)$/i, "");
-    // Update _MARNM field from _MARNM_SURN field and display it
-    // Be careful of mixing latin/hebrew/etc. character sets.
-    var ip       = document.getElementsByTagName("input");
-    var marnm_id = "";
-    var romn     = "";
-    var heb      = "";
-    for (var i = 0; i < ip.length; i++) {
-      var val = trim(ip[i].value);
-      if (ip[i].id.indexOf("_HEB") === 0)
-        heb = val;
-      if (ip[i].id.indexOf("ROMN") === 0)
-        romn = val;
-      if (ip[i].id.indexOf("_MARNM") === 0) {
-        if (ip[i].id.indexOf("_MARNM_SURN") === 0) {
-          var msurn = "";
-          if (val !== "") {
-            var lc = lang_class(document.getElementById(ip[i].id).value);
-            if (lang_class(name) === lc)
-              msurn = trim(npfx + " " + givn + " /" + val + "/ " + nsfx);
-            else if (lc === "hebrew")
-              msurn = heb.replace(/\/.*\//, "/" + val + "/");
-            else if (lang_class(romn) === lc)
-              msurn = romn.replace(/\/.*\//, "/" + val + "/");
-          }
-          document.getElementById(marnm_id).value                  = msurn;
-          document.getElementById(marnm_id + "_display").innerHTML = msurn;
-        } else {
-          marnm_id = ip[i].id;
+        if (SURNAME_TRADITION === "polish" && (gender === "F" || famtag === "WIFE")) {
+            surn = surn.replace(/ski$/, "ska");
+            surn = surn.replace(/cki$/, "cka");
+            surn = surn.replace(/dzki$/, "dzka");
+            surn = surn.replace(/żki$/, "żka");
         }
-      }
+
+        // Commas are used in the GIVN and SURN field to separate lists of surnames.
+        // For example, to differentiate the two Spanish surnames from an English
+        // double-barred name.
+        // Commas *may* be used in other fields, and will form part of the NAME.
+        var locale = document.documentElement.lang;
+        if (locale === "vi" || locale === "hu") {
+            // Default format: /SURN/ GIVN
+            return trim(npfx + " /" + trim(spfx + " " + surn).replace(/ *, */g, " ") + "/ " + givn.replace(/ *, */g, " ") + " " + nsfx);
+        } else if (locale === "zh-Hans" || locale === "zh-Hant") {
+            // Default format: /SURN/GIVN
+            return npfx + "/" + spfx + surn + "/" + givn + nsfx;
+        } else {
+            // Default format: GIVN /SURN/
+            return trim(npfx + " " + givn.replace(/ *, */g, " ") + " /" + trim(spfx + " " + surn).replace(/ *, */g, " ") + "/ " + nsfx);
+        }
     }
-  }
 
-  // Toggle the name editor fields between
-  // <input type="hidden"> <span style="display:inline">
-  // <input type="text">   <span style="display:none">
+    // Update the NAME and _MARNM fields from the name components
+    // and also display the value in read-only "gedcom" format.
+    function updatewholename() {
+        // Don’t update the name if the user manually changed it
+        if (manualChange) {
+            return;
+        }
 
-  var oldName = "";
+        var npfx = $("[name=NPFX]").val();
+        var givn = $("[name=GIVN]").val();
+        var spfx = $("[name=SPFX]").val();
+        var surn = $("[name=SURN]").val();
+        var nsfx = $("[name=NSFX]").val();
+        var name = generate_name();
 
-  // Calls to generate_name() trigger an update - hence need to
-  // set the manual change to true first. We are probably
-  // listening to the wrong events on the input fields...
-  var manualChange = generate_name() !== NAME.val();
+        var display_id = NAME.attr("id") + "_display";
 
-  function convertHidden(eid) {
-    var input1 = $("#" + eid);
-    var input2 = $("#" + eid + "_display");
-    // Note that IE does not allow us to change the type of an input, so we must create a new one.
-    if (input1.attr("type") === "hidden") {
-      input1.replaceWith(input1.clone().attr("type", "text"));
-      input2.hide();
-    } else {
-      input1.replaceWith(input1.clone().attr("type", "hidden"));
-      input2.show();
+        NAME.val(name);
+        $("#" + display_id).text(name);
+        // Married names inherit some NSFX values, but not these
+        nsfx = nsfx.replace(/^(I|II|III|IV|V|VI|Junior|Jr\.?|Senior|Sr\.?)$/i, "");
+        // Update _MARNM field from _MARNM_SURN field and display it
+        // Be careful of mixing latin/hebrew/etc. character sets.
+        var ip       = document.getElementsByTagName("input");
+        var marnm_id = "";
+        var romn     = "";
+        var heb      = "";
+        for (var i = 0; i < ip.length; i++) {
+            var val = trim(ip[i].value);
+            if (ip[i].id.indexOf("_HEB") === 0)
+                heb = val;
+            if (ip[i].id.indexOf("ROMN") === 0)
+                romn = val;
+            if (ip[i].id.indexOf("_MARNM") === 0) {
+                if (ip[i].id.indexOf("_MARNM_SURN") === 0) {
+                    var msurn = "";
+                    if (val !== "") {
+                        var lc = lang_class(document.getElementById(ip[i].id).value);
+                        if (lang_class(name) === lc)
+                            msurn = trim(npfx + " " + givn + " /" + val + "/ " + nsfx);
+                        else if (lc === "hebrew")
+                            msurn = heb.replace(/\/.*\//, "/" + val + "/");
+                        else if (lang_class(romn) === lc)
+                            msurn = romn.replace(/\/.*\//, "/" + val + "/");
+                    }
+                    document.getElementById(marnm_id).value                  = msurn;
+                    document.getElementById(marnm_id + "_display").innerHTML = msurn;
+                } else {
+                    marnm_id = ip[i].id;
+                }
+            }
+        }
     }
-  }
 
-  /**
-   * if the user manually changed the NAME field, then update the textual
-   * HTML representation of it
-   * If the value changed set manualChange to true so that changing
-   * the other fields doesn’t change the NAME line
-   */
-  function updateTextName(eid) {
-    var element = document.getElementById(eid);
-    if (element) {
-      if (element.value !== oldName) {
-        manualChange = true;
-      }
-      var delement = document.getElementById(eid + "_display");
-      if (delement) {
-        delement.innerHTML = element.value;
-      }
+    // Toggle the name editor fields between
+    // <input type="hidden"> <span style="display:inline">
+    // <input type="text">   <span style="display:none">
+
+    var oldName = "";
+
+    // Calls to generate_name() trigger an update - hence need to
+    // set the manual change to true first. We are probably
+    // listening to the wrong events on the input fields...
+    var manualChange = generate_name() !== NAME.val();
+
+    function convertHidden(eid) {
+        var input1 = $("#" + eid);
+        var input2 = $("#" + eid + "_display");
+        // Note that IE does not allow us to change the type of an input, so we must create a new one.
+        if (input1.attr("type") === "hidden") {
+            input1.replaceWith(input1.clone().attr("type", "text"));
+            input2.hide();
+        } else {
+            input1.replaceWith(input1.clone().attr("type", "hidden"));
+            input2.show();
+        }
     }
-  }
 
-  function checkform() {
-    var ip = document.getElementsByTagName("input");
-    for (var i = 0; i < ip.length; i++) {
-      // ADD slashes to _HEB and _AKA names
-      if (ip[i].id.indexOf("_AKA") === 0 || ip[i].id.indexOf("_HEB") === 0 || ip[i].id.indexOf("ROMN") === 0)
-        if (ip[i].value.indexOf("/") < 0 && ip[i].value !== "")
-          ip[i].value = ip[i].value.replace(/([^\s]+)\s*$/, "/$1/");
-      // Blank out temporary _MARNM_SURN
-      if (ip[i].id.indexOf("_MARNM_SURN") === 0)
-        ip[i].value = "";
-      // Convert "xxx yyy" and "xxx y yyy" surnames to "xxx,yyy"
-      if ((SURNAME_TRADITION === "spanish" || "SURNAME_TRADITION" === "portuguese") && ip[i].id.indexOf("SURN") === 0) {
-        ip[i].value = document.forms[0].SURN.value.replace(/^\s*([^\s,]{2,})\s+([iIyY] +)?([^\s,]{2,})\s*$/, "$1,$3");
-      }
+    /**
+     * if the user manually changed the NAME field, then update the textual
+     * HTML representation of it
+     * If the value changed set manualChange to true so that changing
+     * the other fields doesn’t change the NAME line
+     */
+    function updateTextName(eid) {
+        var element = document.getElementById(eid);
+        if (element) {
+            if (element.value !== oldName) {
+                manualChange = true;
+            }
+            var delement = document.getElementById(eid + "_display");
+            if (delement) {
+                delement.innerHTML = element.value;
+            }
+        }
     }
-    return true;
-  }
 
-  // If the name isn’t initially formed from the components in a standard way,
-  // then don’t automatically update it.
-  if (NAME.val() !== generate_name() && NAME.val() !== "//") {
-    convertHidden(NAME.attr("id"));
-  }
+    function checkform() {
+        var ip = document.getElementsByTagName("input");
+        for (var i = 0; i < ip.length; i++) {
+            // ADD slashes to _HEB and _AKA names
+            if (ip[i].id.indexOf("_AKA") === 0 || ip[i].id.indexOf("_HEB") === 0 || ip[i].id.indexOf("ROMN") === 0)
+                if (ip[i].value.indexOf("/") < 0 && ip[i].value !== "")
+                    ip[i].value = ip[i].value.replace(/([^\s]+)\s*$/, "/$1/");
+            // Blank out temporary _MARNM_SURN
+            if (ip[i].id.indexOf("_MARNM_SURN") === 0)
+                ip[i].value = "";
+            // Convert "xxx yyy" and "xxx y yyy" surnames to "xxx,yyy"
+            if ((SURNAME_TRADITION === "spanish" || "SURNAME_TRADITION" === "portuguese") && ip[i].id.indexOf("SURN") === 0) {
+                ip[i].value = document.forms[0].SURN.value.replace(/^\s*([^\s,]{2,})\s+([iIyY] +)?([^\s,]{2,})\s*$/, "$1,$3");
+            }
+        }
+        return true;
+    }
+
+    // If the name isn’t initially formed from the components in a standard way,
+    // then don’t automatically update it.
+    if (NAME.val() !== generate_name() && NAME.val() !== "//") {
+        convertHidden(NAME.attr("id"));
+    }
 </script>
 <?php View::endpush() ?>
 
