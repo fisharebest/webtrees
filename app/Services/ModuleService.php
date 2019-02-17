@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Module\BatchUpdateModule;
 use Fisharebest\Webtrees\Module\BingWebmasterToolsModule;
 use Fisharebest\Webtrees\Module\BirthDeathMarriageReportModule;
 use Fisharebest\Webtrees\Module\BirthReportModule;
+use Fisharebest\Webtrees\Module\BranchesListModule;
 use Fisharebest\Webtrees\Module\CalendarMenuModule;
 use Fisharebest\Webtrees\Module\CemeteryReportModule;
 use Fisharebest\Webtrees\Module\CensusAssistantModule;
@@ -51,6 +52,7 @@ use Fisharebest\Webtrees\Module\FabTheme;
 use Fisharebest\Webtrees\Module\FactSourcesReportModule;
 use Fisharebest\Webtrees\Module\FamilyBookChartModule;
 use Fisharebest\Webtrees\Module\FamilyGroupReportModule;
+use Fisharebest\Webtrees\Module\FamilyListModule;
 use Fisharebest\Webtrees\Module\FamilyNavigatorModule;
 use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
 use Fisharebest\Webtrees\Module\FamilyTreeNewsModule;
@@ -64,6 +66,7 @@ use Fisharebest\Webtrees\Module\HourglassChartModule;
 use Fisharebest\Webtrees\Module\HtmlBlockModule;
 use Fisharebest\Webtrees\Module\IndividualFactsTabModule;
 use Fisharebest\Webtrees\Module\IndividualFamiliesReportModule;
+use Fisharebest\Webtrees\Module\IndividualListModule;
 use Fisharebest\Webtrees\Module\IndividualReportModule;
 use Fisharebest\Webtrees\Module\InteractiveTreeModule;
 use Fisharebest\Webtrees\Module\LifespansChartModule;
@@ -72,6 +75,7 @@ use Fisharebest\Webtrees\Module\LoggedInUsersModule;
 use Fisharebest\Webtrees\Module\LoginBlockModule;
 use Fisharebest\Webtrees\Module\MarriageReportModule;
 use Fisharebest\Webtrees\Module\MatomoAnalyticsModule;
+use Fisharebest\Webtrees\Module\MediaListModule;
 use Fisharebest\Webtrees\Module\MediaTabModule;
 use Fisharebest\Webtrees\Module\MinimalTheme;
 use Fisharebest\Webtrees\Module\MissingFactsReportModule;
@@ -84,17 +88,20 @@ use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Module\NoteListModule;
 use Fisharebest\Webtrees\Module\NotesTabModule;
 use Fisharebest\Webtrees\Module\OccupationReportModule;
 use Fisharebest\Webtrees\Module\OnThisDayModule;
 use Fisharebest\Webtrees\Module\PedigreeChartModule;
 use Fisharebest\Webtrees\Module\PedigreeMapModule;
 use Fisharebest\Webtrees\Module\PedigreeReportModule;
+use Fisharebest\Webtrees\Module\PlaceHierarchyListModule;
 use Fisharebest\Webtrees\Module\PlacesModule;
 use Fisharebest\Webtrees\Module\PoweredByWebtreesModule;
 use Fisharebest\Webtrees\Module\RecentChangesModule;
@@ -102,11 +109,13 @@ use Fisharebest\Webtrees\Module\RelatedIndividualsReportModule;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Module\RelativesTabModule;
 use Fisharebest\Webtrees\Module\ReportsMenuModule;
+use Fisharebest\Webtrees\Module\RepositoryListModule;
 use Fisharebest\Webtrees\Module\ResearchTaskModule;
 use Fisharebest\Webtrees\Module\ReviewChangesModule;
 use Fisharebest\Webtrees\Module\SearchMenuModule;
 use Fisharebest\Webtrees\Module\SiteMapModule;
 use Fisharebest\Webtrees\Module\SlideShowModule;
+use Fisharebest\Webtrees\Module\SourceListModule;
 use Fisharebest\Webtrees\Module\SourcesTabModule;
 use Fisharebest\Webtrees\Module\StatcounterModule;
 use Fisharebest\Webtrees\Module\StatisticsChartModule;
@@ -147,6 +156,7 @@ class ModuleService
         'footer'    => ModuleFooterInterface::class,
         'history'   => ModuleHistoricEventsInterface::class,
         'language'  => ModuleLanguageInterface::class,
+        'list'      => ModuleListInterface::class,
         'menu'      => ModuleMenuInterface::class,
         'report'    => ModuleReportInterface::class,
         'sidebar'   => ModuleSidebarInterface::class,
@@ -163,6 +173,7 @@ class ModuleService
         'bdm_report'             => BirthDeathMarriageReportModule::class,
         'bing-webmaster-tools'   => BingWebmasterToolsModule::class,
         'birth_report'           => BirthReportModule::class,
+        'branches_list'          => BranchesListModule::class,
         'calendar-menu'          => CalendarMenuModule::class,
         'cemetery_report'        => CemeteryReportModule::class,
         'change_report'          => ChangeReportModule::class,
@@ -184,6 +195,7 @@ class ModuleService
         'fact_sources'           => FactSourcesReportModule::class,
         'family_book_chart'      => FamilyBookChartModule::class,
         'family_group_report'    => FamilyGroupReportModule::class,
+        'family_list'            => FamilyListModule::class,
         'family_nav'             => FamilyNavigatorModule::class,
         'fan_chart'              => FanChartModule::class,
         'faq'                    => FrequentlyAskedQuestionsModule::class,
@@ -197,6 +209,7 @@ class ModuleService
         'hourglass_chart'        => HourglassChartModule::class,
         'html'                   => HtmlBlockModule::class,
         'individual_ext_report'  => IndividualFamiliesReportModule::class,
+        'individual_list'        => IndividualListModule::class,
         'individual_report'      => IndividualReportModule::class,
         'lifespans_chart'        => LifespansChartModule::class,
         'lightbox'               => AlbumModule::class,
@@ -206,15 +219,18 @@ class ModuleService
         'marriage_report'        => MarriageReportModule::class,
         'matomo-analytics'       => MatomoAnalyticsModule::class,
         'media'                  => MediaTabModule::class,
+        'media_list'             => MediaListModule::class,
         'minimal'                => MinimalTheme::class,
         'missing_facts_report'   => MissingFactsReportModule::class,
         'notes'                  => NotesTabModule::class,
+        'note_list'              => NoteListModule::class,
         'occupation_report'      => OccupationReportModule::class,
         'pedigree-map'           => PedigreeMapModule::class,
         'pedigree_chart'         => PedigreeChartModule::class,
         'pedigree_report'        => PedigreeReportModule::class,
         'personal_facts'         => IndividualFactsTabModule::class,
         'places'                 => PlacesModule::class,
+        'places_list'            => PlaceHierarchyListModule::class,
         'powered-by-webtrees'    => PoweredByWebtreesModule::class,
         'random_media'           => SlideShowModule::class,
         'recent_changes'         => RecentChangesModule::class,
@@ -222,9 +238,11 @@ class ModuleService
         'relative_ext_report'    => RelatedIndividualsReportModule::class,
         'relatives'              => RelativesTabModule::class,
         'reports-menu'           => ReportsMenuModule::class,
+        'repository_list'        => RepositoryListModule::class,
         'review_changes'         => ReviewChangesModule::class,
         'search-menu'            => SearchMenuModule::class,
         'sitemap'                => SiteMapModule::class,
+        'source_list'            => SourceListModule::class,
         'sources_tab'            => SourcesTabModule::class,
         'statcounter'            => StatcounterModule::class,
         'statistics_chart'       => StatisticsChartModule::class,

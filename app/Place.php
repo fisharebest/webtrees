@@ -17,6 +17,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Module\ModuleInterface;
+use Fisharebest\Webtrees\Module\PlaceHierarchyListModule;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 
@@ -157,10 +161,20 @@ class Place
      */
     public function url(): string
     {
-        return route('place-hierarchy', [
-            'parent' => $this->parts->reverse()->all(),
-            'ged'    => $this->tree->name(),
-        ]);
+        //find a module providing the place hierarchy
+        $module = app(ModuleService::class)->findByComponent('list', $this->tree, Auth::user())->first(function (ModuleInterface $module) {
+            return $module instanceof PlaceHierarchyListModule;
+        });
+        
+        if ($module instanceof PlaceHierarchyListModule) {
+            return $module->listUrl($this->tree, [
+                'parent' => $this->parts->reverse()->all(),
+                'ged'    => $this->tree->name(),
+            ]);
+        } else {
+            //TODO: should we be allowed to return null here?
+            return \Fisharebest\Webtrees\Html::url('index.php', []);
+        }
     }
 
     /**

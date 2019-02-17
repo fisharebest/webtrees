@@ -331,6 +331,13 @@
                         <?= view('components/badge', ['count' => $chart_modules->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
+                        <span class="fa-li"><?= view('icons/list') ?></span>
+                        <a href="<?= e(route('lists')) ?>">
+                            <?= I18N::translate('Lists') ?>
+                        </a>
+                        <?= view('components/badge', ['count' => $list_modules->count(), 'context' => 'primary']) ?>
+                    </li>
+                    <li>
                         <span class="fa-li"><?= view('icons/report') ?></span>
                         <a href="<?= e(route('reports')) ?>">
                             <?= I18N::translate('Reports') ?>

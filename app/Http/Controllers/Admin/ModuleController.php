@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
@@ -46,6 +47,7 @@ class ModuleController extends AbstractAdminController
     private const COMPONENTS_WITH_ACCESS = [
         'block',
         'chart',
+        'list',
         'menu',
         'report',
         'sidebar',
@@ -162,6 +164,19 @@ class ModuleController extends AbstractAdminController
             ModuleLanguageInterface::class,
             'language',
             I18N::translate('Languages'),
+            ''
+        );
+    }
+    
+    /**
+     * @return Response
+     */
+    public function listLists(): Response
+    {
+        return $this->listComponents(
+            ModuleListInterface::class,
+            'list',
+            I18N::translate('Lists'),
             ''
         );
     }
@@ -372,7 +387,22 @@ class ModuleController extends AbstractAdminController
 
         return new RedirectResponse(route('language'));
     }
+    
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
+    public function updateLists(Request $request): RedirectResponse
+    {
+        $modules = $this->module_service->findByInterface(ModuleListInterface::class, true);
 
+        $this->updateStatus($modules, $request);
+        $this->updateAccessLevel($modules, 'list', $request);
+
+        return new RedirectResponse(route('lists'));
+    }
+    
     /**
      * @param Request $request
      *

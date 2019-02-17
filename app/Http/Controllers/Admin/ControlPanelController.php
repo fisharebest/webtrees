@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
@@ -94,6 +95,7 @@ class ControlPanelController extends AbstractAdminController
             'footer_modules'    => $module_service->findByInterface(ModuleFooterInterface::class, true),
             'history_modules'   => $module_service->findByInterface(ModuleHistoricEventsInterface::class, true),
             'language_modules'  => $module_service->findByInterface(ModuleLanguageInterface::class, true),
+            'list_modules'      => $module_service->findByInterface(ModuleListInterface::class, true),
             'menu_modules'      => $module_service->findByInterface(ModuleMenuInterface::class, true),
             'report_modules'    => $module_service->findByInterface(ModuleReportInterface::class, true),
             'sidebar_modules'   => $module_service->findByInterface(ModuleSidebarInterface::class, true),

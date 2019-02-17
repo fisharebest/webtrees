@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
 
 /**
  * Class FunctionsPrintLists - create sortable lists using datatables.net
@@ -28,14 +29,15 @@ class FunctionsPrintLists
     /**
      * Print a tagcloud of surnames.
      *
-     * @param int[][] $surnames array (of SURN, of array of SPFX_SURN, of counts)
-     * @param string  $route    individual-list or family-listlist
-     * @param bool    $totals   show totals after each name
-     * @param Tree    $tree     generate links to this tree
+     * @param int[][]              $surnames array (of SURN, of array of SPFX_SURN, of counts)
+     * @param Tree                 $tree  
+     * @param ?ModuleListInterface $module
+     * @param bool                 $totals   show totals after each name
+     * @param Tree                 $tree     generate links to this tree
      *
      * @return string
      */
-    public static function surnameTagCloud(array $surnames, string $route, bool $totals, Tree $tree): string
+    public static function surnameTagCloud(array $surnames, ?ModuleListInterface $module, bool $totals, Tree $tree): string
     {
         $minimum = PHP_INT_MAX;
         $maximum = 1;
@@ -55,17 +57,20 @@ class FunctionsPrintLists
                 } else {
                     $size = 75.0 + 125.0 * ($count - $minimum) / ($maximum - $minimum);
                 }
-                $url = route($route, [
-                    'surname' => $surn,
-                    'ged'     => $tree->name(),
-                ]);
-                $html .= '<a style="font-size:' . $size . '%" href="' . e($url) . '">';
+                
+                $tag = ($module instanceof ModuleListInterface)?'a':'span';
+                $html .= '<'.$tag.' style="font-size:' . $size . '%"';
+                if ($module instanceof ModuleListInterface) {
+                  $url = $module->listUrl($tree, ['surname' => $surn]);
+                  $html .= ' href="' . e($url) . '"';
+                }
+                $html .= '>';
                 if ($totals) {
                     $html .= I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $spfxsurn . '</span>', I18N::number($count));
                 } else {
                     $html .= $spfxsurn;
                 }
-                $html .= '</a> ';
+                $html .= '</'.$tag.'> ';
             }
         }
 
@@ -75,34 +80,35 @@ class FunctionsPrintLists
     /**
      * Print a list of surnames.
      *
-     * @param string[][][] $surnames array (of SURN, of array of SPFX_SURN, of array of XREF)
-     * @param int          $style    1=bullet list, 2=semicolon-separated list, 3=tabulated list with up to 4 columns
-     * @param bool         $totals   show totals after each name
-     * @param string       $route    individual-list or family-list
-     * @param Tree         $tree     Link back to the individual list in this tree
+     * @param string[][][]         $surnames array (of SURN, of array of SPFX_SURN, of array of XREF)
+     * @param int                  $style    1=bullet list, 2=semicolon-separated list, 3=tabulated list with up to 4 columns
+     * @param bool                 $totals   show totals after each name
+     * @param ?ModuleListInterface $module
+     * @param Tree                 $tree     Link back to the individual list in this tree
      *
      * @return string
      */
-    public static function surnameList($surnames, $style, $totals, $route, Tree $tree)
+    public static function surnameList($surnames, $style, $totals, ?ModuleListInterface $module, Tree $tree)
     {
         $html = [];
         foreach ($surnames as $surn => $surns) {
             // Each surname links back to the indilist
-            if ($surn) {
-                $url = route($route, [
-                    'surname' => $surn,
-                    'ged'     => $tree->name(),
-                ]);
-            } else {
-                $url = route($route, [
-                    'alpha' => ',',
-                    'ged'   => $tree->name(),
-                ]);
+            if ($module instanceof ModuleListInterface) {
+                if ($surn) {
+                  $url = $module->listUrl($tree, ['surname' => $surn]);
+                } else {                
+                  $url = $module->listUrl($tree, ['alpha'  => ',']);
+                }
             }
             // If all the surnames are just case variants, then merge them into one
             // Comment out this block if you want SMITH listed separately from Smith
-            $subhtml = '<a href="' . e($url) . '" dir="auto">' . e(implode(I18N::$list_separator, array_keys($surns))) . '</a>';
-
+            $tag = ($module instanceof ModuleListInterface)?'a':'span';
+            $subhtml = '<'.$tag;
+            if ($url !== null) {
+                $subhtml .= ' href="' . e($url) . '"';
+            }
+            $subhtml .= ' dir="auto">' . e(implode(I18N::$list_separator, array_keys($surns))) . '</'.$tag.'>';
+            
             if ($totals) {
                 $subtotal = 0;
                 foreach ($surns as $count) {

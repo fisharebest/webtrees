@@ -62,6 +62,10 @@ class BranchesController extends AbstractBaseController
      */
     public function page(Request $request): Response
     {
+        //route is assumed to be 'module'
+        $module = $request->get('module');
+        $action = $request->get('action');
+        
         $surname     = $request->get('surname', '');
         $soundex_std = (bool) $request->get('soundex_std');
         $soundex_dm  = (bool) $request->get('soundex_dm');
@@ -79,6 +83,8 @@ class BranchesController extends AbstractBaseController
             'soundex_std' => $soundex_std,
             'surname'     => $surname,
             'title'       => $title,
+            'module'      => $module,
+            'action'      => $action,
         ]);
     }
 
