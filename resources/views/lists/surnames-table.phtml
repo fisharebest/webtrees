@@ -10,7 +10,7 @@
                 <?= I18N::translate('Surname') ?>
             </th>
             <th>
-                <?php if ($route == 'family-list') :?>
+                <?php if ($families) :?>
                     <?= I18N::translate('Spouses') ?>
                 <?php else : ?>
                     <?= I18N::translate('Individuals') ?>
@@ -27,17 +27,17 @@
                     <?php foreach ($surns as $spfxsurn => $indis) : ?>
                         <?php if ($spfxsurn) : ?>
                             <?php if ($surn !== '') : ?>
-                                <a href="<?= route($route, ['surname' => $surn, 'ged' => $tree->name()]) ?>" dir="auto">
+                                <a href="<?= $router(['surname' => $surn, 'ged' => $tree->name()]) ?>" dir="auto">
                                     <?= e($spfxsurn) ?>
                                 </a>
                             <?php else : ?>
-                                <a href="<?= route($route, ['alpha' => ',', 'ged' => $tree->name()]) ?>" dir="auto">
+                                <a href="<?= $router(['alpha' => ',', 'ged' => $tree->name()]) ?>" dir="auto">
                                     <?= e($spfxsurn) ?>
                                 </a>
                             <?php endif ?>
                         <?php else : ?>
                             <!-- No surname, but a value from "2 SURN"? A common workaround for toponyms, etc. -->
-                            <a href="<?= route($route, ['surname' => $surn, 'ged' => $tree->name()]) ?>" dir="auto"><?= e($surn) ?></a>
+                            <a href="<?= $router(['surname' => $surn, 'ged' => $tree->name()]) ?>" dir="auto"><?= e($surn) ?></a>
                         <?php endif ?>
                         <br>
                     <?php endforeach ?>

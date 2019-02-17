@@ -17,10 +17,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  * Class ListsMenuModule - provide a menu option for the lists
@@ -29,6 +30,21 @@ class ListsMenuModule extends AbstractModule implements ModuleMenuInterface
 {
     use ModuleMenuTrait;
 
+    /**
+     * @var ModuleService
+     */
+    private $module_service;
+
+    /**
+     * ListsMenuModule constructor.
+     *
+     * @param ModuleService $module_service
+     */
+    public function __construct(ModuleService $module_service)
+    {
+        $this->module_service = $module_service;
+    }
+		
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *
@@ -70,45 +86,19 @@ class ListsMenuModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getMenu(Tree $tree): ?Menu
     {
-        // Do not show empty lists
-        $sources_exist = DB::table('sources')
-            ->where('s_file', '=', $tree->id())
-            ->exists();
+        $submenusCollection = $this->module_service->findByComponent('list', $tree, Auth::user())
+            ->map(function (ModuleListInterface $module) use ($tree): Menu {
+                return $module->listMenu($tree);
+            })
+            ->filter(function (Menu $menu): bool {
+                return ($menu !== null);
+            });
 
-        $repositories_exist = DB::table('other')
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', 'REPO')
-            ->exists();
-
-        $notes_exist = DB::table('other')
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', 'NOTE')
-            ->exists();
-
-        $media_exist = DB::table('media')
-            ->where('m_file', '=', $tree->id())
-            ->exists();
-
-        $submenus = [
-            new Menu(I18N::translate('Individuals'), route('individual-list', ['ged' => $tree->name()]), 'menu-list-indi'),
-            new Menu(I18N::translate('Families'), route('family-list', ['ged' => $tree->name()]), 'menu-list-fam'),
-            new Menu(I18N::translate('Branches'), route('branches', ['ged' => $tree->name()]), 'menu-branches', ['rel' => 'nofollow']),
-            new Menu(I18N::translate('Place hierarchy'), route('place-hierarchy', ['ged' => $tree->name()]), 'menu-list-plac', ['rel' => 'nofollow']),
-        ];
-        
-        if ($media_exist) {
-            $submenus[] = new Menu(I18N::translate('Media objects'), route('media-list', ['ged' => $tree->name()]), 'menu-list-obje', ['rel' => 'nofollow']);
-        }
-        if ($repositories_exist) {
-            $submenus[] = new Menu(I18N::translate('Repositories'), route('repository-list', ['ged' => $tree->name()]), 'menu-list-repo', ['rel' => 'nofollow']);
-        }
-        if ($sources_exist) {
-            $submenus[] = new Menu(I18N::translate('Sources'), route('source-list', ['ged' => $tree->name()]), 'menu-list-sour', ['rel' => 'nofollow']);
-        }
-        if ($notes_exist) {
-            $submenus[] = new Menu(I18N::translate('Shared notes'), route('note-list', ['ged' => $tree->name()]), 'menu-list-note', ['rel' => 'nofollow']);
+        if ($submenusCollection->isEmpty()) {
+            return null;
         }
 
+        $submenus = $submenusCollection->toArray();
         uasort($submenus, function (Menu $x, Menu $y) {
             return I18N::strcasecmp($x->getLabel(), $y->getLabel());
         });

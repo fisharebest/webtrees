@@ -6,7 +6,9 @@
 </h2>
 
 <form class="wt-page-options wt-page-options-branches d-print-none">
-    <input type="hidden" name="route" value="branches">
+    <input type="hidden" name="route" value="module">
+    <input type="hidden" name="module" value="<?= e($module) ?>">
+    <input type="hidden" name="action" value="<?= e($action) ?>">
     <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
 
     <div class="form-group row">
@@ -42,5 +44,5 @@
 </form>
 
 <?php if ($surname !== '') : ?>
-    <div class="wt-ajax-load wt-page-content wt-chart wt-branches" data-ajax-url="<?= e(route('branches-list', ['surname' => $surname, 'soundex_std' => $soundex_std, 'soundex_dm' => $soundex_dm, 'ged' => $tree->name()])) ?>"></div>
+    <div class="wt-ajax-load wt-page-content wt-chart wt-branches" data-ajax-url="<?= e($router(['surname' => $surname, 'soundex_std' => $soundex_std, 'soundex_dm' => $soundex_dm, 'ged' => $tree->name()])) ?>"></div>
 <?php endif ?>

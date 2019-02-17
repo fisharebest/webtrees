@@ -5,7 +5,7 @@
         <h4><?= $title ?></h4>
         <h5 class="text-center">
             <?php if ($current) : ?>
-                <a href="<?= e(route('place-hierarchy', ['ged' => $tree->name()])) ?>">
+                <a href="<?= e($router(['ged' => $tree->name()])) ?>">
                     <?= I18N::translate('World') ?>
                 </a>
             <?php else : ?>
@@ -29,13 +29,13 @@
         <?= $content ?>
         <div class="text-center">
             <?php if ($showeventslink) : ?>
-                <a class="formField" href= <?= e(route('place-hierarchy', ['ged' => $tree->name(), 'parent' => $parent, 'action' => 'hierarchy-e'])) ?>>
+                <a class="formField" href= <?= e($router(['ged' => $tree->name(), 'parent' => $parent, 'action2' => 'hierarchy-e'])) ?>>
                     <?= I18N::translate('View table of events occurring in %s', $place) ?>
                 </a>
                 |
             <?php endif ?>
 
-            <a href="<?= e(route('place-hierarchy', ['ged' => $tree->name(), 'action' => key($nextaction)])) ?>">
+            <a href="<?= e($router(['ged' => $tree->name(), 'action2' => key($nextaction)])) ?>">
                 <?= current($nextaction) ?>
             </a>
         </div>

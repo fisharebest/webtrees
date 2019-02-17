@@ -9,6 +9,7 @@
 <?php use Fisharebest\Webtrees\Module\ModuleFooterInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleLanguageInterface; ?>
+<?php use Fisharebest\Webtrees\Module\ModuleListInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleMenuInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleReportInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleSidebarInterface; ?>
@@ -74,6 +75,10 @@
                 <th title="<?= I18N::translate('Charts') ?>">
                     <?= view('icons/chart') ?>
                     <span class="sr-only"><?= I18N::translate('Charts') ?></span>
+                </th>
+                <th title="<?= I18N::translate('Lists') ?>">
+                    <?= view('icons/list') ?>
+                    <span class="sr-only"><?= I18N::translate('Lists') ?></span>
                 </th>
                 <th title="<?= I18N::translate('Reports') ?>">
                     <?= view('icons/report') ?>
@@ -194,6 +199,14 @@
                         <?php if ($module instanceof ModuleChartInterface) : ?>
                             <?= view('icons/chart') ?>
                             <span class="sr-only"><?= I18N::translate('Chart') ?></span>
+                        <?php else : ?>
+                            -
+                        <?php endif ?>
+                    </td>
+                    <td class="text-center text-muted" title="<?= I18N::translate('List') ?>">
+                        <?php if ($module instanceof ModuleListInterface) : ?>
+                            <?= view('icons/list') ?>
+                            <span class="sr-only"><?= I18N::translate('List') ?></span>
                         <?php else : ?>
                             -
                         <?php endif ?>

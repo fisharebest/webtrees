@@ -1,4 +1,13 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\Auth; ?>
+<?php use Fisharebest\Webtrees\Module\IndividualListModule; ?>
+<?php use Fisharebest\Webtrees\Module\FamilyListModule; ?>
+<?php use Fisharebest\Webtrees\Module\MediaListModule; ?>
+<?php use Fisharebest\Webtrees\Module\ModuleInterface; ?>
+<?php use Fisharebest\Webtrees\Module\NoteListModule; ?>
+<?php use Fisharebest\Webtrees\Module\RepositoryListModule; ?>
+<?php use Fisharebest\Webtrees\Module\SourceListModule; ?>
+<?php use Fisharebest\Webtrees\Services\ModuleService; ?>
 
 <?php foreach ($all_trees as $tree) : ?>
     <tr class="<?= $changes[$tree->id()] ? 'danger' : '' ?>">
@@ -26,7 +35,18 @@
         </td>
         <td class="d-none d-sm-table-cell text-right">
             <?php if ($individuals[$tree->id()]) : ?>
-                <a href="<?= e(route('individual-list', ['ged' => $tree->name()])) ?>">
+                <?php
+                  //find a module providing individual lists
+                  $module = app(ModuleService::class)->findByComponent('list', $tree, Auth::user())->first(function (ModuleInterface $module) {
+                      return $module instanceof IndividualListModule;
+                  });
+
+                  if ($module instanceof IndividualListModule) {
+                    echo '<a href="'.e($module->listUrl($tree)).'">';
+                  } else {
+                    echo '<a>';
+                  }            
+                ?>
                     <?= I18N::number($individuals[$tree->id()]) ?>
                 </a>
             <?php else : ?>
@@ -35,7 +55,18 @@
         </td>
         <td class="d-none d-lg-table-cell text-right">
             <?php if ($families[$tree->id()]) : ?>
-                <a href="<?= e(route('family-list', ['ged' => $tree->name()])) ?>">
+                <?php
+                  //find a module providing family lists
+                  $module = app(ModuleService::class)->findByComponent('list', $tree, Auth::user())->first(function (ModuleInterface $module) {
+                      return $module instanceof FamilyListModule;
+                  });
+
+                  if ($module instanceof FamilyListModule) {
+                    echo '<a href="'.e($module->listUrl($tree)).'">';
+                  } else {
+                    echo '<a>';
+                  }            
+                ?>
                     <?= I18N::number($families[$tree->id()]) ?>
                 </a>
             <?php else : ?>
@@ -44,7 +75,18 @@
         </td>
         <td class="d-none d-sm-table-cell text-right">
             <?php if ($sources[$tree->id()]) : ?>
-                <a href="<?= e(route('source-list', ['ged' => $tree->name()])) ?>">
+                <?php
+                  //find a module providing source lists
+                  $module = app(ModuleService::class)->findByComponent('list', $tree, Auth::user())->first(function (ModuleInterface $module) {
+                      return $module instanceof SourceListModule;
+                  });
+
+                  if ($module instanceof SourceListModule) {
+                    echo '<a href="'.e($module->listUrl($tree)).'">';
+                  } else {
+                    echo '<a>';
+                  }            
+                ?>
                     <?= I18N::number($sources[$tree->id()]) ?>
                 </a>
             <?php else : ?>
@@ -53,7 +95,18 @@
         </td>
         <td class="d-none d-lg-table-cell text-right">
             <?php if ($repositories[$tree->id()]) : ?>
-                <a href="<?= e(route('repository-list', ['ged' => $tree->name()])) ?>">
+                <?php
+                  //find a module providing repository lists
+                  $module = app(ModuleService::class)->findByComponent('list', $tree, Auth::user())->first(function (ModuleInterface $module) {
+                      return $module instanceof RepositoryListModule;
+                  });
+
+                  if ($module instanceof RepositoryListModule) {
+                    echo '<a href="'.e($module->listUrl($tree)).'">';
+                  } else {
+                    echo '<a>';
+                  }            
+                ?>
                     <?= I18N::number($repositories[$tree->id()]) ?>
                 </a>
             <?php else : ?>
@@ -62,7 +115,18 @@
         </td>
         <td class="d-none d-sm-table-cell text-right">
             <?php if ($media[$tree->id()]) : ?>
-                <a href="<?= e(route('media-list', ['ged' => $tree->name()])) ?>">
+                <?php
+                  //find a module providing media lists
+                  $module = app(ModuleService::class)->findByComponent('list', $tree, Auth::user())->first(function (ModuleInterface $module) {
+                      return $module instanceof MediaListModule;
+                  });
+
+                  if ($module instanceof MediaListModule) {
+                    echo '<a href="'.e($module->listUrl($tree)).'">';
+                  } else {
+                    echo '<a>';
+                  }            
+                ?>
                     <?= I18N::number($media[$tree->id()]) ?>
                 </a>
             <?php else : ?>
@@ -71,7 +135,18 @@
         </td>
         <td class="d-none d-lg-table-cell text-right">
             <?php if ($notes[$tree->id()]) : ?>
-                <a href="<?= e(route('note-list', ['ged' => $tree->name()])) ?>">
+                <?php
+                  //find a module providing note lists
+                  $module = app(ModuleService::class)->findByComponent('list', $tree, Auth::user())->first(function (ModuleInterface $module) {
+                      return $module instanceof NoteListModule;
+                  });
+
+                  if ($module instanceof NoteListModule) {
+                    echo '<a href="'.e($module->listUrl($tree)).'">';
+                  } else {
+                    echo '<a>';
+                  }            
+                ?>
                     <?= I18N::number($media[$tree->id()]) ?>
                 </a>
             <?php else : ?>

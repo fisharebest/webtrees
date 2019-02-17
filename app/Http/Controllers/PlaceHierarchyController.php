@@ -67,7 +67,15 @@ class PlaceHierarchyController extends AbstractBaseController
      */
     public function show(Request $request, Tree $tree, SearchService $search_service): Response
     {
-        $action     = $request->query->get('action', 'hierarchy');
+        //route is assumed to be 'module'
+        $module = $request->get('module');
+        $action = $request->get('action');
+        
+        $router = function (array $params) use ($module, $action) {
+            return route('module', ['module' => $module, 'action' => $action] + $params);
+        };
+        
+        $action2    = $request->query->get('action2', 'hierarchy');
         $parent     = $request->query->get('parent', []);
         $fqpn       = implode(Gedcom::PLACE_SEPARATOR, array_reverse($parent));
         $place      = new Place($fqpn, $tree);
@@ -86,7 +94,7 @@ class PlaceHierarchyController extends AbstractBaseController
             ]);
         }
 
-        switch ($action) {
+        switch ($action2) {
             case 'list':
                 $nextaction = ['hierarchy' => I18N::translate('Show place hierarchy')];
                 $content .= view('place-list', $this->getList($tree, $search_service));
@@ -96,7 +104,7 @@ class PlaceHierarchyController extends AbstractBaseController
                 $nextaction = ['list' => I18N::translate('Show all places in a list')];
                 $data       = $this->getHierarchy($tree, $place, $parent);
                 $content .= (null === $data || $showmap) ? '' : view('place-hierarchy', $data);
-                if (null === $data || $action === 'hierarchy-e') {
+                if (null === $data || $action2 === 'hierarchy-e') {
                     $content .= view('place-events', $this->getEvents($tree, $place));
                 }
                 break;
@@ -117,8 +125,9 @@ class PlaceHierarchyController extends AbstractBaseController
                 'parent'         => $parent,
                 'place'          => $fqpn,
                 'content'        => $content,
-                'showeventslink' => null !== $data && $place->gedcomName() !== '' && $action !== 'hierarchy-e',
+                'showeventslink' => null !== $data && $place->gedcomName() !== '' && $action2 !== 'hierarchy-e',
                 'nextaction'     => $nextaction,
+                'router'         => $router,
             ]
         );
     }

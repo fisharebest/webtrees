@@ -29,13 +29,13 @@ class FunctionsPrintLists
      * Print a tagcloud of surnames.
      *
      * @param int[][] $surnames array (of SURN, of array of SPFX_SURN, of counts)
-     * @param string  $route    individual-list or family-listlist
+     * @param         $router   a function taking an array of parameters, and returning string|null as url
      * @param bool    $totals   show totals after each name
      * @param Tree    $tree     generate links to this tree
      *
      * @return string
      */
-    public static function surnameTagCloud(array $surnames, string $route, bool $totals, Tree $tree): string
+    public static function surnameTagCloud(array $surnames, $router, bool $totals, Tree $tree): string
     {
         $minimum = PHP_INT_MAX;
         $maximum = 1;
@@ -55,11 +55,15 @@ class FunctionsPrintLists
                 } else {
                     $size = 75.0 + 125.0 * ($count - $minimum) / ($maximum - $minimum);
                 }
-                $url = route($route, [
+                $url = $router([
                     'surname' => $surn,
                     'ged'     => $tree->name(),
                 ]);
-                $html .= '<a style="font-size:' . $size . '%" href="' . e($url) . '">';
+                $html .= '<a style="font-size:' . $size . '%"';
+                if ($url !== null) {
+                  $html .= ' href="' . e($url) . '"';
+                }
+                $html .= '>';
                 if ($totals) {
                     $html .= I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $spfxsurn . '</span>', I18N::number($count));
                 } else {
@@ -78,31 +82,35 @@ class FunctionsPrintLists
      * @param string[][][] $surnames array (of SURN, of array of SPFX_SURN, of array of XREF)
      * @param int          $style    1=bullet list, 2=semicolon-separated list, 3=tabulated list with up to 4 columns
      * @param bool         $totals   show totals after each name
-     * @param string       $route    individual-list or family-list
+     * @param              $router   a function taking an array of parameters, and returning string|null as url
      * @param Tree         $tree     Link back to the individual list in this tree
      *
      * @return string
      */
-    public static function surnameList($surnames, $style, $totals, $route, Tree $tree)
+    public static function surnameList($surnames, $style, $totals, $router, Tree $tree)
     {
         $html = [];
         foreach ($surnames as $surn => $surns) {
             // Each surname links back to the indilist
             if ($surn) {
-                $url = route($route, [
+                $url = $router([
                     'surname' => $surn,
                     'ged'     => $tree->name(),
                 ]);
             } else {
-                $url = route($route, [
-                    'alpha' => ',',
-                    'ged'   => $tree->name(),
+                $url = $router([
+                    'alpha'  => ',',
+                    'ged'    => $tree->name(),
                 ]);
             }
             // If all the surnames are just case variants, then merge them into one
             // Comment out this block if you want SMITH listed separately from Smith
-            $subhtml = '<a href="' . e($url) . '" dir="auto">' . e(implode(I18N::$list_separator, array_keys($surns))) . '</a>';
-
+            $subhtml = '<a';
+            if ($url !== null) {
+                $subhtml .= ' href="' . e($url) . '"';
+            }
+            $subhtml .= ' dir="auto">' . e(implode(I18N::$list_separator, array_keys($surns))) . '</a>';
+            
             if ($totals) {
                 $subtotal = 0;
                 foreach ($surns as $count) {

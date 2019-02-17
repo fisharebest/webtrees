@@ -20,6 +20,9 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\IndividualListModule;
+use Fisharebest\Webtrees\Module\ModuleInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -120,7 +123,20 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 
             uksort($all_surnames, [I18N::class, 'strcasecmp']);
 
-            $surnames = FunctionsPrintLists::surnameList($all_surnames, 2, false, 'individual-list', $tree);
+            //find a module providing individual lists
+            $module = app(ModuleService::class)->findByComponent('list', $tree, Auth::user())->first(function (ModuleInterface $module) {
+                return $module instanceof IndividualListModule;
+            });
+
+            $router = function (array $params) use ($module, $tree) {
+                if ($module instanceof IndividualListModule) {
+                  return $module->listUrl($tree, $params);
+                } else {
+                  return null;
+                }            
+            };
+            
+            $surnames = FunctionsPrintLists::surnameList($all_surnames, 2, false, $router, $tree);
         } else {
             $surnames = '';
         }

@@ -51,23 +51,23 @@ class IndividualListTest extends TestCase
         $individual_list_service = new IndividualListService($localization_service, $tree);
         $controller              = new ListController($individual_list_service, $localization_service);
 
-        $request  = new Request(['route' => 'individual-list']);
+        $request  = new Request(['route' => 'module', 'module' => 'individual_list', 'action' => 'List']);
         $response = $controller->individualList($request, $tree, $user);
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
 
-        $request  = new Request(['route' => 'individual-list', 'alpha' => 'B']);
+        $request  = new Request(['route' => 'module', 'module' => 'individual_list', 'action' => 'List', 'alpha' => 'B']);
         $response = $controller->individualList($request, $tree, $user);
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
 
-        $request  = new Request(['route' => 'individual-list', 'alpha' => ',']);
+        $request  = new Request(['route' => 'module', 'module' => 'individual_list', 'action' => 'List', 'alpha' => ',']);
         $response = $controller->individualList($request, $tree, $user);
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
 
-        $request  = new Request(['route' => 'individual-list', 'alpha' => '@']);
+        $request  = new Request(['route' => 'module', 'module' => 'individual_list', 'action' => 'List', 'alpha' => '@']);
         $response = $controller->individualList($request, $tree, $user);
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
 
-        $request  = new Request(['route' => 'individual-list', 'surname' => 'BRAUN']);
+        $request  = new Request(['route' => 'module', 'module' => 'individual_list', 'action' => 'List', 'surname' => 'BRAUN']);
         $response = $controller->individualList($request, $tree, $user);
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }

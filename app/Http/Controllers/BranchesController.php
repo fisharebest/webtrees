@@ -62,6 +62,14 @@ class BranchesController extends AbstractBaseController
      */
     public function page(Request $request): Response
     {
+        //route is assumed to be 'module'
+        $module = $request->get('module');
+        $action = $request->get('action');
+
+        $router = function (array $params) use ($module, $action) {
+            return route('module', ['module' => $module, 'action' => 'List'] + $params);
+        };
+        
         $surname     = $request->get('surname', '');
         $soundex_std = (bool) $request->get('soundex_std');
         $soundex_dm  = (bool) $request->get('soundex_dm');
@@ -79,6 +87,9 @@ class BranchesController extends AbstractBaseController
             'soundex_std' => $soundex_std,
             'surname'     => $surname,
             'title'       => $title,
+            'router'      => $router,
+            'module'      => $module,
+            'action'      => $action,
         ]);
     }
 
@@ -306,9 +317,10 @@ class BranchesController extends AbstractBaseController
         // spouses and children
         $spouse_families = $individual->spouseFamilies();
         if ($spouse_families) {
-            usort($spouse_families, Family::marriageDateComparator());
+            $spouse_families_arr = $spouse_families->toArray();
+            usort($spouse_families_arr, Family::marriageDateComparator());
             $fam_html = '';
-            foreach ($spouse_families as $family) {
+            foreach ($spouse_families_arr as $family) {
                 $fam_html .= $indi_html; // Repeat the individual details for each spouse.
 
                 $spouse = $family->spouse($individual);
