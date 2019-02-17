@@ -524,7 +524,7 @@ class FunctionsPrintFacts
 
                         if ($parent instanceof Family) {
                             // For family ASSO records (e.g. MARR), identify the spouse with a sex icon
-                            $relationship_name .= $associate->sexImage();
+                            $relationship_name .= $associate->getSexImage();
                         }
 
                         $values[] = '<a href="' . $module->chartUrl($associate, ['xref2' => $person->xref()]) . '" rel="nofollow">' . $relationship_name . '</a>';
