@@ -18,7 +18,7 @@
  */
 
 /* Some icons need to be reversed on right-to-left pages */
-.wt-icon-flip-rtl {
+[dir=rtl] .wt-icon-flip-rtl {
 	transform: scale(-1, 1);
 }
 
