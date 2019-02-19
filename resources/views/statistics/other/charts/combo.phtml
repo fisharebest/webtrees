@@ -9,30 +9,19 @@ $id = 'google-chart-' . bin2hex(random_bytes(8));
 <?php if (count($data) === 1): ?>
     <?= I18N::translate('This information is not available.'); ?>
 <?php else: ?>
+
     <?= view('statistics/other/chart-setup') ?>
 
-    <div id="<?= $id ?>" title="<?= $chart_title ?>"></div>
+    <div id="<?= $id ?>" title="<?= $chart_title ?? '' ?>"></div>
 
     <script>
 
     var callbackComboChart = function () {
-        var options = {
-            title: '<?= $chart_title ?? '' ?>',
-            subtitle: '<?= $chart_sub_title ?? '' ?>',
-            vAxis: {
-                title: '<?= $vAxis_title ?? '' ?>'
-            },
-            hAxis: {
-                title: '<?= $hAxis_title ?? '' ?>'
-            },
-            colors: <?= json_encode($colors) ?>
-        };
-
         google.charts.setOnLoadCallback(function () {
             drawComboChart(
                 '<?= $id ?>',
                 <?= json_encode($data) ?>,
-                options
+                <?= json_encode($chart_options) ?>
             );
         });
 
@@ -40,7 +29,7 @@ $id = 'google-chart-' . bin2hex(random_bytes(8));
             drawComboChart(
                 '<?= $id ?>',
                 <?= json_encode($data) ?>,
-                options
+                <?= json_encode($chart_options) ?>
             );
         });
     };

@@ -142,15 +142,29 @@ class ChartMarriageAge extends AbstractGoogle
             ];
         }
 
+        $chart_title   = I18N::translate('Average age in century of marriage');
+        $chart_options = [
+            'title' => $chart_title,
+            'subtitle' => I18N::translate('Average age at marriage'),
+            'vAxis' => [
+                'title' => I18N::translate('Age'),
+            ],
+            'hAxis' => [
+                'title' => I18N::translate('Century'),
+            ],
+            'colors' => [
+                '#84beff',
+                '#ffd1dc',
+                '#ff0000',
+            ],
+        ];
+
         return view(
             'statistics/other/charts/combo',
             [
-                'data'            => $data,
-                'colors'          => ['#84beff', '#ffd1dc', '#ff0000'],
-                'chart_title'     => I18N::translate('Average age in century of marriage'),
-                'chart_sub_title' => I18N::translate('Average age at marriage'),
-                'hAxis_title'     => I18N::translate('Century'),
-                'vAxis_title'     => I18N::translate('Age'),
+                'data'          => $data,
+                'chart_options' => $chart_options,
+                'chart_title'   => $chart_title,
             ]
         );
     }
