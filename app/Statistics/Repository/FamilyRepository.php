@@ -1032,67 +1032,77 @@ class FamilyRepository
      * General query on age at marriage.
      *
      * @param string $type
-     * @param string $age_dir
+     * @param string $age_dir "ASC" or "DESC"
      * @param int    $total
      *
      * @return string
      */
     private function ageOfMarriageQuery(string $type, string $age_dir, int $total): string
     {
-        if ($age_dir !== 'ASC') {
-            $age_dir = 'DESC';
-        }
+        $prefix = DB::connection()->getTablePrefix();
 
-        $hrows = $this->runSql(
-            " SELECT DISTINCT fam.f_id AS family, MIN(husbdeath.d_julianday2-married.d_julianday1) AS age" .
-            " FROM `##families` AS fam" .
-            " LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->id()}" .
-            " LEFT JOIN `##dates` AS husbdeath ON husbdeath.d_file = {$this->tree->id()}" .
-            " WHERE" .
-            " fam.f_file = {$this->tree->id()} AND" .
-            " husbdeath.d_gid = fam.f_husb AND" .
-            " husbdeath.d_fact = 'DEAT' AND" .
-            " married.d_gid = fam.f_id AND" .
-            " married.d_fact = 'MARR' AND" .
-            " married.d_julianday1 < husbdeath.d_julianday2 AND" .
-            " married.d_julianday1 <> 0" .
-            " GROUP BY family" .
-            " ORDER BY age {$age_dir}"
-        );
+        $hrows = DB::table('families')
+            ->where('f_file', '=', $this->tree->id())
+            ->join('dates AS married', function (JoinClause $join): void {
+                $join
+                    ->on('married.d_file', '=', 'f_file')
+                    ->on('married.d_gid', '=', 'f_id')
+                    ->where('married.d_fact', '=', 'MARR')
+                    ->where('married.d_julianday1', '<>', 0);
+            })
+            ->join('dates AS husbdeath', function (JoinClause $join): void {
+                $join
+                    ->on('husbdeath.d_gid', '=', 'f_husb')
+                    ->on('husbdeath.d_file', '=', 'f_file')
+                    ->where('husbdeath.d_fact', '=', 'DEAT');
+            })
+            ->whereColumn('married.d_julianday1', '<', 'husbdeath.d_julianday2')
+            ->groupBy('f_id')
+            ->select(['f_id AS family', DB::raw('MIN(' . $prefix . 'husbdeath.d_julianday2 - ' . $prefix . 'married.d_julianday1) AS age')])
+            ->get()
+            ->all();
 
-        $wrows = $this->runSql(
-            " SELECT DISTINCT fam.f_id AS family, MIN(wifedeath.d_julianday2-married.d_julianday1) AS age" .
-            " FROM `##families` AS fam" .
-            " LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->id()}" .
-            " LEFT JOIN `##dates` AS wifedeath ON wifedeath.d_file = {$this->tree->id()}" .
-            " WHERE" .
-            " fam.f_file = {$this->tree->id()} AND" .
-            " wifedeath.d_gid = fam.f_wife AND" .
-            " wifedeath.d_fact = 'DEAT' AND" .
-            " married.d_gid = fam.f_id AND" .
-            " married.d_fact = 'MARR' AND" .
-            " married.d_julianday1 < wifedeath.d_julianday2 AND" .
-            " married.d_julianday1 <> 0" .
-            " GROUP BY family" .
-            " ORDER BY age {$age_dir}"
-        );
+        $wrows = DB::table('families')
+            ->where('f_file', '=', $this->tree->id())
+            ->join('dates AS married', function (JoinClause $join): void {
+                $join
+                    ->on('married.d_file', '=', 'f_file')
+                    ->on('married.d_gid', '=', 'f_id')
+                    ->where('married.d_fact', '=', 'MARR')
+                    ->where('married.d_julianday1', '<>', 0);
+            })
+            ->join('dates AS wifedeath', function (JoinClause $join): void {
+                $join
+                    ->on('wifedeath.d_gid', '=', 'f_wife')
+                    ->on('wifedeath.d_file', '=', 'f_file')
+                    ->where('wifedeath.d_fact', '=', 'DEAT');
+            })
+            ->whereColumn('married.d_julianday1', '<', 'wifedeath.d_julianday2')
+            ->groupBy('f_id')
+            ->select(['f_id AS family', DB::raw('MIN(' . $prefix . 'wifedeath.d_julianday2 - ' . $prefix . 'married.d_julianday1) AS age')])
+            ->get()
+            ->all();
 
-        $drows = $this->runSql(
-            " SELECT DISTINCT fam.f_id AS family, MIN(divorced.d_julianday2-married.d_julianday1) AS age" .
-            " FROM `##families` AS fam" .
-            " LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->id()}" .
-            " LEFT JOIN `##dates` AS divorced ON divorced.d_file = {$this->tree->id()}" .
-            " WHERE" .
-            " fam.f_file = {$this->tree->id()} AND" .
-            " married.d_gid = fam.f_id AND" .
-            " married.d_fact = 'MARR' AND" .
-            " divorced.d_gid = fam.f_id AND" .
-            " divorced.d_fact IN ('DIV', 'ANUL', '_SEPR', '_DETS') AND" .
-            " married.d_julianday1 < divorced.d_julianday2 AND" .
-            " married.d_julianday1 <> 0" .
-            " GROUP BY family" .
-            " ORDER BY age {$age_dir}"
-        );
+        $drows = DB::table('families')
+            ->where('f_file', '=', $this->tree->id())
+            ->join('dates AS married', function (JoinClause $join): void {
+                $join
+                    ->on('married.d_file', '=', 'f_file')
+                    ->on('married.d_gid', '=', 'f_id')
+                    ->where('married.d_fact', '=', 'MARR')
+                    ->where('married.d_julianday1', '<>', 0);
+            })
+            ->join('dates AS divorced', function (JoinClause $join): void {
+                $join
+                    ->on('divorced.d_gid', '=', 'f_id')
+                    ->on('divorced.d_file', '=', 'f_file')
+                    ->whereIn('divorced.d_fact', ['DIV', 'ANUL', '_SEPR']);
+            })
+            ->whereColumn('married.d_julianday1', '<', 'divorced.d_julianday2')
+            ->groupBy('f_id')
+            ->select(['f_id AS family', DB::raw('MIN(' . $prefix . 'divorced.d_julianday2 - ' . $prefix . 'married.d_julianday1) AS age')])
+            ->get()
+            ->all();
 
         $rows = [];
         foreach ($drows as $family) {
