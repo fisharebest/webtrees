@@ -79,7 +79,7 @@ class IndividualRepository implements IndividualRepositoryInterface
                     ->on('i_id', '=', 'n_id');
             })
             ->where('n_file', '=', $this->tree->id())
-            ->where('n_type' , '<>', '_MARNM')
+            ->where('n_type', '<>', '_MARNM')
             ->where('n_givn', '<>', '@P.N.')
             ->where(DB::raw('LENGTH(n_givn)'), '>', 1);
 
