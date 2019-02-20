@@ -317,7 +317,7 @@ class BranchesController extends AbstractBaseController
         // spouses and children
         $spouse_families = $individual->spouseFamilies()
             ->sort(Family::marriageDateComparator());
-        
+
         if ($spouse_families->isNotEmpty()) {
             $fam_html = '';
             foreach ($spouse_families as $family) {

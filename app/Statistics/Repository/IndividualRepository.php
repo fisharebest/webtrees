@@ -523,7 +523,10 @@ class IndividualRepository implements IndividualRepositoryInterface
     public function getCommonSurname(): string
     {
         $top_surname = $this->topSurnames(1, 0);
-        return implode(', ', array_keys(array_shift($top_surname)) ?? []);
+        
+        return $top_surname
+            ? implode(', ', array_keys(array_shift($top_surname)) ?? [])
+            : '';
     }
 
     /**
@@ -1362,7 +1365,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     private function getPercentage(int $count, int $total): string
     {
-        return I18N::percentage($count / $total, 1);
+        return ($total !== 0) ? I18N::percentage($count / $total, 1) : '';
     }
 
     /**

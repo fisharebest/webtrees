@@ -57,7 +57,7 @@ class ChartAge extends AbstractGoogle
 
         return DB::table('individuals')
             ->select([
-                DB::raw('ROUND(AVG(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) / 365.25,1) AS age'),
+                DB::raw('ROUND(AVG(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) / 365.25, 1) AS age'),
                 DB::raw('ROUND((' . $prefix . 'death.d_year - 50) / 100) AS century'),
                 'i_sex AS sex'
             ])
@@ -115,19 +115,33 @@ class ChartAge extends AbstractGoogle
                 $this->centuryHelper->centuryName($century),
                 $male_age,
                 $female_age,
-                $average_age,
+                round($average_age, 1),
             ];
         }
+
+        $chart_title   = I18N::translate('Average age related to death century');
+        $chart_options = [
+            'title' => $chart_title,
+            'subtitle' => I18N::translate('Average age at death'),
+            'vAxis' => [
+                'title' => I18N::translate('Age'),
+            ],
+            'hAxis' => [
+                'title' => I18N::translate('Century'),
+            ],
+            'colors' => [
+                '#84beff',
+                '#ffd1dc',
+                '#ff0000',
+            ],
+        ];
 
         return view(
             'statistics/other/charts/combo',
             [
-                'data'            => $data,
-                'colors'          => ['#84beff', '#ffd1dc', '#ff0000'],
-                'chart_title'     => I18N::translate('Average age related to death century'),
-                'chart_sub_title' => I18N::translate('Average age at death'),
-                'hAxis_title'     => I18N::translate('Century'),
-                'vAxis_title'     => I18N::translate('Age'),
+                'data'          => $data,
+                'chart_options' => $chart_options,
+                'chart_title'   => $chart_title,
             ]
         );
     }

@@ -326,7 +326,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
 
         // print spouse
         $spouse = $family->spouse($person);
-        echo '<ul class="generations" id="' . $uid . '">';
+        echo '<ul class="generations list-unstyled" id="' . $uid . '">';
         echo '<li>';
         echo '<table><tr><td>';
         echo FunctionsPrint::printPedigreePerson($spouse);
