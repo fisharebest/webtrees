@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Http\Controllers\GedcomFileController;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Schema\SeedDatabase;
+use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UserService;
 use Illuminate\Cache\ArrayStore;
@@ -131,10 +132,11 @@ class TestCase extends \PHPUnit\Framework\TestCase
         Database::registerMacros();
 
         // Create tables
-        Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
+        $migration_service = new MigrationService;
+        $migration_service->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
 
         // Create config data
-        (new SeedDatabase())->run();
+        $migration_service->seedDatabase();
     }
 
     /**
