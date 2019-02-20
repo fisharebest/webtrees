@@ -16,21 +16,23 @@ $id = 'google-chart-' . bin2hex(random_bytes(8));
 
     <script>
 
-    google.charts.setOnLoadCallback(function () {
-        drawColumnChart(
-            '<?= $id ?>',
-            <?= json_encode($data) ?>,
-            <?= json_encode($chart_options) ?>
-        );
-    });
+    var callbackColumnChart = function () {
+        google.charts.setOnLoadCallback(function () {
+            drawColumnChart(
+                '<?= $id ?>',
+                <?= json_encode($data) ?>,
+                <?= json_encode($chart_options) ?>
+            );
+        });
 
-    $(window).resize(function () {
-        drawColumnChart(
-            '<?= $id ?>',
-            <?= json_encode($data) ?>,
-            <?= json_encode($chart_options) ?>
-        );
-    });
+        $(window).resize(function () {
+            drawColumnChart(
+                '<?= $id ?>',
+                <?= json_encode($data) ?>,
+                <?= json_encode($chart_options) ?>
+            );
+        });
+    };
 
     if (
         document.readyState === "complete" ||

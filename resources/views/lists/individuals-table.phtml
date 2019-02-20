@@ -1,30 +1,37 @@
-<?php use Fisharebest\Webtrees\Date; ?>
-<?php use Fisharebest\Webtrees\GedcomTag; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Individual; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleInterface; ?>
-<?php use Fisharebest\Webtrees\Module\RelationshipsChartModule; ?>
-<?php use Fisharebest\Webtrees\Services\ModuleService; ?>
-<?php use Fisharebest\Webtrees\Auth; ?>
-<?php use Fisharebest\Webtrees\View; ?>
-<?php use Ramsey\Uuid\Uuid; ?>
-
-
 <?php
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\ModuleInterface;
+use Fisharebest\Webtrees\Module\RelationshipsChartModule;
+use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\View;
+use Ramsey\Uuid\Uuid;
+
 // lists requires a unique ID in case there are multiple lists per page
 $table_id = 'table-indi-' . Uuid::uuid4()->toString();
 
-$hundred_years_ago = new Date(date('Y') - 100);
-$unique_indis      = []; // Don't double-count indis with multiple names.
+$hundred_years_ago = new DateTime();
+$hundred_years_ago->modify('-100 years');
+$hundred_years_ago = new Date($hundred_years_ago->format('Y'));
 
-$module = app(ModuleService::class)->findByComponent('chart', $tree, Auth::user())->first(function (ModuleInterface $module) {
-    return $module instanceof RelationshipsChartModule;
-});
+$unique_indis = []; // Don't double-count indis with multiple names.
+
+$module = app(ModuleService::class)
+    ->findByComponent('chart', $tree, Auth::user())
+    ->first(function (ModuleInterface $module) {
+        return $module instanceof RelationshipsChartModule;
+    });
 ?>
 
 <?php View::push('javascript') ?>
 <script>
-$("#<?= e($table_id) ?>").dataTable( {
+
+$("#<?= e($table_id) ?>").dataTable({
     dom: '<"H"<"filtersH_<?= e($table_id) ?>">T<"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_<?= e($table_id) ?>">>',
     <?= I18N::datatablesI18N() ?>,
     autoWidth: false,
@@ -54,29 +61,35 @@ $("#<?= e($table_id) ?>").dataTable( {
 });
 
 $("#<?= e($table_id) ?>")
-/* Hide/show parents */
-.on("click", ".btn-toggle-parents", function() {
-    $(this).toggleClass("ui-state-active");
-    $(".parents", $(this).closest("table").DataTable().rows().nodes()).slideToggle();
-})
-/* Hide/show statistics */
-.on("click", ".btn-toggle-statistics", function() {
-    $(this).toggleClass("ui-state-active");
-    $("#individual-charts-<?= e($table_id) ?>").slideToggle();
-})
-/* Filter buttons in table header */
-.on("click", "button[data-filter-column]", function() {
-    var btn = $(this);
-    // De-activate the other buttons in this button group
-    btn.siblings().removeClass("active");
-    // Apply (or clear) this filter
-    var col = $("#<?= e($table_id) ?>").DataTable().column(btn.data("filter-column"));
-    if (btn.hasClass("active")) {
-        col.search("").draw();
-    } else {
-        col.search(btn.data("filter-value")).draw();
-    }
-});
+    /* Hide/show parents */
+    .on("click", ".btn-toggle-parents", function() {
+        $(this).toggleClass("ui-state-active");
+        $(".parents", $(this).closest("table").DataTable().rows().nodes()).slideToggle();
+    })
+    /* Hide/show statistics */
+    .on("click", ".btn-toggle-statistics", function() {
+        $(this).toggleClass("ui-state-active");
+        $("#individual-charts-<?= e($table_id) ?>").slideToggle({
+            complete: function () {
+                // Trigger resize to redraw the chart
+                $('div[id^="google-chart-"]').resize();
+            }
+        });
+    })
+    /* Filter buttons in table header */
+    .on("click", "button[data-filter-column]", function() {
+        var btn = $(this);
+        // De-activate the other buttons in this button group
+        btn.siblings().removeClass("active");
+        // Apply (or clear) this filter
+        var col = $("#<?= e($table_id) ?>").DataTable().column(btn.data("filter-column"));
+        if (btn.hasClass("active")) {
+            col.search("").draw();
+        } else {
+            col.search(btn.data("filter-value")).draw();
+        }
+    });
+
 </script>
 <?php View::endpush() ?>
     
@@ -86,14 +99,60 @@ $max_age = (int) $tree->getPreference('MAX_ALIVE_AGE');
 // Inititialise chart data
 $deat_by_age = [];
 for ($age = 0; $age <= $max_age; $age++) {
-    $deat_by_age[$age] = '';
+    $deat_by_age[$age]['M'] = 0;
+    $deat_by_age[$age]['F'] = 0;
+    $deat_by_age[$age]['U'] = 0;
 }
 $birt_by_decade = [];
 $deat_by_decade = [];
-for ($year = 1550; $year < 2030; $year += 10) {
-    $birt_by_decade[$year] = '';
-    $deat_by_decade[$year] = '';
+for ($year = 1400; $year < 2050; $year += 10) {
+    $birt_by_decade[$year]['M'] = 0;
+    $birt_by_decade[$year]['F'] = 0;
+    $birt_by_decade[$year]['U'] = 0;
+    $deat_by_decade[$year]['M'] = 0;
+    $deat_by_decade[$year]['F'] = 0;
+    $deat_by_decade[$year]['U'] = 0;
 }
+
+$birthData = [
+    [
+        [
+            'label' => I18N::translate('Century'),
+            'type'  => 'date',
+        ], [
+            'label' => I18N::translate('Males'),
+            'type'  => 'number',
+        ], [
+            'label' => I18N::translate('Females'),
+            'type'  => 'number',
+        ],
+    ]
+];
+
+$deathData = [
+    [
+        [
+            'label' => I18N::translate('Century'),
+            'type'  => 'date',
+        ], [
+            'label' => I18N::translate('Males'),
+            'type'  => 'number',
+        ], [
+            'label' => I18N::translate('Females'),
+            'type'  => 'number',
+        ],
+    ]
+];
+
+$deathAgeData = [
+    [
+        I18N::translate('Age'),
+        I18N::translate('Males'),
+        I18N::translate('Females'),
+        I18N::translate('Average age'),
+    ]
+];
+
 ?>
 
 <div class="indi-list">
@@ -291,8 +350,10 @@ for ($year = 1550; $year < 2030; $year += 10) {
                 <!-- Birth anniversary -->
                 <td class="text-center" data-sort="<?= -$individual->getEstimatedBirthDate()->julianDay() ?>">
                     <?php if (isset($birth_dates[0]) && $birth_dates[0]->gregorianYear() >= 1550 && $birth_dates[0]->gregorianYear() < 2030 && !isset($unique_indis[$individual->xref()])) : ?>
-                        <?php $birt_by_decade[(int) ($birth_dates[0]->gregorianYear() / 10) * 10] .= $individual->sex() ?>
-                        <?= Date::getAge($birth_dates[0], null) ?>
+                        <?php
+                            ++$birt_by_decade[(int) ($birth_dates[0]->gregorianYear() / 10) * 10][$individual->sex()];
+                        ?>
+                        <?= Date::getAge($birth_dates[0]) ?>
                     <?php endif ?>
                 </td>
 
@@ -321,8 +382,10 @@ for ($year = 1550; $year < 2030; $year += 10) {
                 <!-- Death anniversary -->
                 <td class="text-center" data-sort="<?= -$individual->getEstimatedDeathDate()->julianDay() ?>">
                     <?php if (isset($death_dates[0]) && $death_dates[0]->gregorianYear() >= 1550 && $death_dates[0]->gregorianYear() < 2030 && !isset($unique_indis[$individual->xref()])) : ?>
-                        <?php $deat_by_decade[(int) ($death_dates[0]->gregorianYear() / 10) * 10] .= $individual->sex() ?>
-                        <?= Date::getAge($death_dates[0], null) ?>
+                        <?php
+                            ++$deat_by_decade[(int) ($death_dates[0]->gregorianYear() / 10) * 10][$individual->sex()];
+                        ?>
+                        <?= Date::getAge($death_dates[0]) ?>
                     <?php endif ?>
                 </td>
 
@@ -331,7 +394,9 @@ for ($year = 1550; $year < 2030; $year += 10) {
                     <?php $age_at_death = I18N::number((int) Date::getAgeYears($birth_dates[0], $death_dates[0])); ?>
                     <?php $age_at_death_sort = Date::getAge($birth_dates[0], $death_dates[0]); ?>
                     <?php if (!isset($unique_indis[$individual->xref()]) && $age_at_death >= 0 && $age_at_death <= $max_age) : ?>
-                        <?php $deat_by_age[$age_at_death] .= $individual->sex(); ?>
+                        <?php
+                            ++$deat_by_age[$age_at_death][$individual->sex()];
+                        ?>
                     <?php endif ?>
                 <?php else : ?>
                     <?php $age_at_death = ''; ?>
@@ -393,22 +458,112 @@ for ($year = 1550; $year < 2030; $year += 10) {
             <?php endforeach ?>
         </tbody>
     </table>
+</div>
 
-    <div id="individual-charts-<?= e($table_id) ?>" style="display:none">
-        <table class="list-charts">
-            <tr>
-                <td>
-                    <?= view('lists/chart-by-decade', ['data' => $birt_by_decade, 'title' => I18N::translate('Decade of birth')]) ?>
-                </td>
-                <td>
-                    <?= view('lists/chart-by-decade', ['data' => $deat_by_decade, 'title' => I18N::translate('Decade of death')]) ?>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <?= view('lists/chart-by-age', ['data' => $deat_by_age, 'title' => I18N::translate('Age related to death year')]) ?>
-                </td>
-            </tr>
-        </table>
+<div id="individual-charts-<?= e($table_id) ?>" style="display: none;">
+    <div class="mb-3">
+        <div class="card-deck">
+            <div class="col-lg-12 col-md-12 mb-3">
+                <div class="card m-0">
+                    <div class="card-header">
+                        <?= I18N::translate('Decade of birth') ?>
+                    </div>
+                    <div class="card-body">
+                        <?php
+                            foreach ($birt_by_decade as $century => $values) {
+                                if (($values['M'] + $values['F']) > 0) {
+                                    $birthData[] = [
+                                        [
+                                            'v' => 'Date(' . $century . ', 0, 1)',
+                                            'f' => $century,
+                                        ],
+                                        $values['M'],
+                                        $values['F'],
+                                    ];
+                                }
+                            }
+                            ?>
+                        <?= view('lists/chart-by-decade', ['data' => $birthData, 'title' => I18N::translate('Decade of birth')]) ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-deck">
+            <div class="col-lg-12 col-md-12 mb-3">
+                <div class="card m-0">
+                    <div class="card-header">
+                        <?= I18N::translate('Decade of death') ?>
+                    </div>
+                    <div class="card-body">
+                        <?php
+                            foreach ($deat_by_decade as $century => $values) {
+                                if (($values['M'] + $values['F']) > 0) {
+                                    $deathData[] = [
+                                        [
+                                            'v' => 'Date(' . $century . ', 0, 1)',
+                                            'f' => $century,
+                                        ],
+                                        $values['M'],
+                                        $values['F'],
+                                    ];
+                                }
+                            }
+                        ?>
+                        <?= view('lists/chart-by-decade', ['data' => $deathData, 'title' => I18N::translate('Decade of death')]) ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-deck">
+            <div class="col-lg-12 col-md-12 mb-3">
+                <div class="card m-0">
+                    <div class="card-header">
+                        <?= I18N::translate('Age related to death year') ?>
+                    </div>
+                    <div class="card-body">
+                        <?php
+                            $totalAge = 0;
+                            $totalSum = 0;
+                            $max      = 0;
+
+                            foreach ($deat_by_age as $age => $values) {
+                                if (($values['M'] + $values['F']) > 0) {
+                                    if (($values['M'] + $values['F']) > $max) {
+                                        $max = $values['M'] + $values['F'];
+                                    }
+
+                                    $totalAge += $age * ($values['M'] + $values['F']);
+                                    $totalSum += $values['M'] + $values['F'];
+
+                                    $deathAgeData[] = [
+                                        $age,
+                                        $values['M'],
+                                        $values['F'],
+                                        null,
+                                    ];
+                                }
+                            }
+
+                            if ($totalSum > 0) {
+                                $deathAgeData[] = [
+                                    round($totalAge / $totalSum, 1),
+                                    null,
+                                    null,
+                                    0,
+                                ];
+
+                                $deathAgeData[] = [
+                                    round($totalAge / $totalSum, 1),
+                                    null,
+                                    null,
+                                    $max,
+                                ];
+                            }
+                        ?>
+                        <?= view('lists/chart-by-age', ['data' => $deathAgeData, 'title' => I18N::translate('Age related to death year')]) ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
