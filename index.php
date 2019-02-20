@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
+use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Session;
@@ -107,7 +108,8 @@ try {
     Database::createInstance($database_config);
 
     // Update the database schema, if necessary.
-    Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
+    app()->make(MigrationService::class)
+        ->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
 } catch (PDOException $exception) {
     I18N::init();
     if ($exception->getCode() === 1045) {

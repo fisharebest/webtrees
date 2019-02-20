@@ -22,7 +22,7 @@ use Fisharebest\Localization\Locale;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Schema\SeedDatabase;
+use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Webtrees;
 use PDOException;
@@ -36,19 +36,22 @@ use Throwable;
  */
 class SetupController extends AbstractBaseController
 {
-    /**
-     * @var UserService
-     */
+    /** @var MigrationService */
+    private $migration_service;
+
+    /** @var UserService */
     private $user_service;
 
     /**
      * SetupController constructor.
      *
-     * @param UserService $user_service
+     * @param MigrationService $migration_service
+     * @param UserService      $user_service
      */
-    public function __construct(UserService $user_service)
+    public function __construct(MigrationService $migration_service, UserService $user_service)
     {
-        $this->user_service = $user_service;
+        $this->user_service      = $user_service;
+        $this->migration_service = $migration_service;
     }
 
     /**
@@ -285,10 +288,10 @@ class SetupController extends AbstractBaseController
             'dbpass' => $data['dbpass'],
             'tblpfx' => $data['tblpfx'],
         ]);
-        Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
+        $this->migration_service->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
 
         // Add some default/necessary configuration data.
-        (new SeedDatabase())->run();
+        $this->migration_service->seedDatabase();
 
         // If we are re-installing, then this user may already exist.
         $admin = $this->user_service->findByIdentifier($data['wtemail']);
