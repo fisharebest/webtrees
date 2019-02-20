@@ -1427,53 +1427,48 @@ class FamilyRepository
     /**
      * General query on ages at marriage.
      *
-     * @param string $sex
+     * @param string $sex   "M" or "F"
      * @param int    $year1
      * @param int    $year2
      *
      * @return array
      */
-    public function statsMarrAgeQuery($sex = 'M', $year1 = -1, $year2 = -1): array
+    public function statsMarrAgeQuery($sex, $year1 = -1, $year2 = -1): array
     {
+        $prefix = DB::connection()->getTablePrefix();
+
+        $query = DB::table('dates AS married')
+            ->join('families', function (JoinClause $join): void {
+                $join
+                    ->on('f_file', '=', 'married.d_file')
+                    ->on('f_id', '=', 'married.d_gid');
+            })
+            ->join('dates AS birth', function (JoinClause $join) use ($sex): void {
+                $join
+                    ->on('birth.d_file', '=', 'married.d_file')
+                    ->on('birth.d_gid', '=', $sex === 'M' ? 'f_husb' : 'f_wife')
+                    ->where('birth.d_julianday1', '<>', 0)
+                    ->where('birth.d_fact', '=', 'BIRT')
+                    ->whereIn('birth.d_type', ['@#DGREGORIAN@', '@#DJULIAN@']);
+            })
+            ->where('married.d_file', '=', $this->tree->id())
+            ->where('married.d_fact', '=', 'MARR')
+            ->whereIn('married.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
+            ->whereColumn('married.d_julianday1', '>', 'birth.d_julianday1')
+            ->select(['f_id', 'birth.d_gid', DB::raw($prefix . 'married.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS age')]);
+
         if ($year1 >= 0 && $year2 >= 0) {
-            $years = " married.d_year BETWEEN {$year1} AND {$year2} AND ";
-        } else {
-            $years = '';
+            $query->whereBetween('married.d_year', [$year1, $year2]);
         }
 
-        $rows = $this->runSql(
-            "SELECT " .
-            " fam.f_id, " .
-            " birth.d_gid, " .
-            " married.d_julianday2-birth.d_julianday1 AS age " .
-            "FROM `##dates` AS married " .
-            "JOIN `##families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) " .
-            "JOIN `##dates` AS birth ON (birth.d_gid=fam.f_husb AND birth.d_file=fam.f_file) " .
-            "WHERE " .
-            " '{$sex}' IN ('M', 'BOTH') AND {$years} " .
-            " married.d_file={$this->tree->id()} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND " .
-            " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND " .
-            " married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 " .
-            "UNION ALL " .
-            "SELECT " .
-            " fam.f_id, " .
-            " birth.d_gid, " .
-            " married.d_julianday2-birth.d_julianday1 AS age " .
-            "FROM `##dates` AS married " .
-            "JOIN `##families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) " .
-            "JOIN `##dates` AS birth ON (birth.d_gid=fam.f_wife AND birth.d_file=fam.f_file) " .
-            "WHERE " .
-            " '{$sex}' IN ('F', 'BOTH') AND {$years} " .
-            " married.d_file={$this->tree->id()} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND " .
-            " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND " .
-            " married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 "
-        );
+        return $query
+            ->get()
+            ->map(function (stdClass $row): stdClass {
+                $row->age = (int) $row->age;
 
-        foreach ($rows as $row) {
-            $row->age = (int) $row->age;
-        }
-
-        return $rows;
+                return $row;
+            })
+            ->all();
     }
 
     /**

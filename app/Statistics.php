@@ -1621,7 +1621,7 @@ class Statistics implements
     /**
      * @inheritDoc
      */
-    public function statsMarrAgeQuery(string $sex = 'M', int $year1 = -1, int $year2 = -1): array
+    public function statsMarrAgeQuery(string $sex, int $year1 = -1, int $year2 = -1): array
     {
         return $this->familyRepository->statsMarrAgeQuery($sex, $year1, $year2);
     }
