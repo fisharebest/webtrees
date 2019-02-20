@@ -11,9 +11,9 @@
                 <?= I18N::translate('Map provider') ?>
             </div>
             <div class="col-sm-9">
-                <?= view('components/radio', ['name' => 'provider', 'value' => '', 'checked' => $provider === '', 'text' => 'Do not use maps']) ?>
+                <?= view('components/radio', ['id' => 'provider-default', 'name' => 'provider', 'value' => '', 'checked' => $provider === '', 'text' => 'Do not use maps']) ?>
                 <hr>
-                <?= view('components/radio', ['name' => 'provider', 'value' => 'OpenStreetMap.Mapnik', 'checked' => $provider === 'OpenStreetMap.Mapnik', 'text' => 'OpenStreetMap']) ?>
+                <?= view('components/radio', ['id' => 'provider-openstreetmap', 'name' => 'provider', 'value' => 'OpenStreetMap.Mapnik', 'checked' => $provider === 'OpenStreetMap.Mapnik', 'text' => 'OpenStreetMap']) ?>
                 <hr>
                 <!-- @TODO - other mapping providers (may need API keys, etc.) -->
             </div>
