@@ -18,7 +18,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Exception;
+use Fisharebest\Webtrees\Module\ModuleCustomInterface;
+use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
 use function ob_end_clean;
 use Throwable;
 
@@ -59,6 +62,11 @@ class View
     private static $stacks = [];
 
     /**
+     * @var ModuleService
+     */
+    private $module_service;
+
+    /**
      * Createa view from a template name and optional data.
      *
      * @param string $name
@@ -66,8 +74,9 @@ class View
      */
     public function __construct(string $name, $data = [])
     {
-        $this->name = $name;
-        $this->data = $data;
+        $this->name           = $name;
+        $this->data           = $data;
+        $this->module_service = app(ModuleService::class);
     }
 
     /**
@@ -196,9 +205,19 @@ class View
         static $paths = [];
 
         if (empty($paths)) {
-            // Module views
-            // @TODO - this includes disabled modules.
-            //$paths = glob(WT_ROOT . Webtrees::MODULES_PATH . '*/' . self::TEMPLATE_PATH);
+            $enabled_modules = $this->module_service
+                ->findByInterface(ModuleCustomInterface::class)
+                ->filter(function (ModuleInterface $module): bool {
+                    return $module->isEnabled();
+                });
+
+            /** @var ModuleInterface $module */
+            foreach ($enabled_modules as $module) {
+                // Custom module views
+                $module_name = trim($module->name(), '_');
+                $paths[]     = WT_ROOT . Webtrees::MODULES_PATH . $module_name . '/' . self::TEMPLATE_PATH;
+            }
+
             // Theme views
             // @TODO - this won't work during setup.
             //$paths[] = WT_ROOT . Webtrees::THEMES_PATH . app()->make(ModuleThemeInterface::class)->name() . '/' . self::TEMPLATE_PATH;
