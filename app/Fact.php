@@ -265,7 +265,7 @@ class Fact
      */
     public function longitude(): float
     {
-        if (preg_match('/\n4 LATI (.+)/', $this->gedcom, $match)) {
+        if (preg_match('/\n4 LONG (.+)/', $this->gedcom, $match)) {
             $gedcom_service = new GedcomService();
 
             return $gedcom_service->readLongitude($match[1]);
