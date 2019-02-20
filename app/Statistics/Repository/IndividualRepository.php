@@ -1116,7 +1116,6 @@ class IndividualRepository implements IndividualRepositoryInterface
         $top10 = [];
 
         foreach ($individuals as $individual) {
-
             $birth_jd = $individual->getBirthDate()->minimumJulianDay();
 
             $top10[] = [

@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Statistics\Google\ChartNoChildrenFamilies;
 use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use stdClass;
 
@@ -143,62 +144,45 @@ class FamilyRepository
      */
     private function topTenGrandFamilyQuery(int $total): array
     {
-        $rows = $this->runSql(
-            "SELECT COUNT(*) AS tot, f_id AS id" .
-            " FROM `##families`" .
-            " JOIN `##link` AS children ON children.l_file = {$this->tree->id()}" .
-            " JOIN `##link` AS mchildren ON mchildren.l_file = {$this->tree->id()}" .
-            " JOIN `##link` AS gchildren ON gchildren.l_file = {$this->tree->id()}" .
-            " WHERE" .
-            " f_file={$this->tree->id()} AND" .
-            " children.l_from=f_id AND" .
-            " children.l_type='CHIL' AND" .
-            " children.l_to=mchildren.l_from AND" .
-            " mchildren.l_type='FAMS' AND" .
-            " mchildren.l_to=gchildren.l_from AND" .
-            " gchildren.l_type='CHIL'" .
-            " GROUP BY id" .
-            " ORDER BY tot DESC" .
-            " LIMIT " . $total
-        );
+        return DB::table('families')
+            ->join('link AS children', function (JoinClause $join) {
+                $join
+                    ->on('children.l_from', '=', 'f_id')
+                    ->on('children.l_file', '=', 'f_file')
+                    ->where('children.l_type', '=', 'CHIL');
+            })->join('link AS mchildren', function (JoinClause $join) {
+                $join
+                    ->on('mchildren.l_file', '=', 'children.l_file')
+                    ->on('mchildren.l_from', '=', 'children.l_to')
+                    ->where('mchildren.l_type', '=', 'FAMS');
+            })->join('link AS gchildren', function (JoinClause $join) {
+                $join
+                    ->on('gchildren.l_file', '=', 'mchildren.l_file')
+                    ->on('gchildren.l_from', '=', 'mchildren.l_to')
+                    ->where('gchildren.l_type', '=', 'CHIL');
+            })
+            ->where('f_file', '=', $this->tree->id())
+            ->groupBy(['f_id', 'f_file'])
+            ->orderBy(DB::raw('COUNT(*)'), 'DESC')
+            ->select('families.*')
+            ->limit($total)
+            ->get()
+            ->map(Family::rowMapper())
+            ->filter(GedcomRecord::accessFilter())
+            ->map(function (Family $family): array {
+                $count = 0;
+                foreach ($family->children() as $child) {
+                    foreach ($child->spouseFamilies() as $spouse_family) {
+                        $count += $spouse_family->children()->count();
+                    }
+                }
 
-        if (!isset($rows[0])) {
-            return [];
-        }
-
-        $top10 = [];
-
-        foreach ($rows as $row) {
-            $family = Family::getInstance($row->id, $this->tree);
-
-            if ($family && $family->canShow()) {
-                $total = (int) $row->tot;
-
-                $top10[] = [
+                return [
                     'family' => $family,
-                    'count'  => $total,
+                    'count'  => $count,
                 ];
-            }
-        }
-
-        // TODO
-        //        if (I18N::direction() === 'rtl') {
-        //            $top10 = str_replace([
-        //                '[',
-        //                ']',
-        //                '(',
-        //                ')',
-        //                '+',
-        //            ], [
-        //                '&rlm;[',
-        //                '&rlm;]',
-        //                '&rlm;(',
-        //                '&rlm;)',
-        //                '&rlm;+',
-        //            ], $top10);
-        //        }
-
-        return $top10;
+            })
+            ->all();
     }
 
     /**
@@ -210,14 +194,9 @@ class FamilyRepository
      */
     public function topTenLargestGrandFamily(int $total = 10): string
     {
-        $records = $this->topTenGrandFamilyQuery($total);
-
-        return view(
-            'statistics/families/top10-nolist-grand',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/families/top10-nolist-grand', [
+            'records' => $this->topTenGrandFamilyQuery($total),
+        ]);
     }
 
     /**
@@ -229,14 +208,9 @@ class FamilyRepository
      */
     public function topTenLargestGrandFamilyList(int $total = 10): string
     {
-        $records = $this->topTenGrandFamilyQuery($total);
-
-        return view(
-            'statistics/families/top10-list-grand',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/families/top10-list-grand', [
+            'records' => $this->topTenGrandFamilyQuery($total),
+        ]);
     }
 
     /**
@@ -246,13 +220,10 @@ class FamilyRepository
      */
     private function noChildrenFamiliesQuery(): int
     {
-        $rows = $this->runSql(
-            " SELECT COUNT(*) AS tot" .
-            " FROM  `##families`" .
-            " WHERE f_numchil = 0 AND f_file = {$this->tree->id()}"
-        );
-
-        return (int) $rows[0]->tot;
+        return DB::table('families')
+            ->where('f_file', '=', $this->tree->id())
+            ->where('f_numchil', '=', 0)
+            ->count();
     }
 
     /**
@@ -707,49 +678,20 @@ class FamilyRepository
      */
     private function topTenFamilyQuery(int $total): array
     {
-        $rows = $this->runSql(
-            "SELECT f_numchil AS tot, f_id AS id" .
-            " FROM `##families`" .
-            " WHERE" .
-            " f_file={$this->tree->id()}" .
-            " ORDER BY tot DESC" .
-            " LIMIT " . $total
-        );
-
-        if (empty($rows)) {
-            return [];
-        }
-
-        $top10 = [];
-        foreach ($rows as $row) {
-            $family = Family::getInstance($row->id, $this->tree);
-
-            if ($family && $family->canShow()) {
-                $top10[] = [
+        return DB::table('families')
+            ->where('f_file', '=', $this->tree->id())
+            ->orderBy('f_numchil', 'DESC')
+            ->limit($total)
+            ->get()
+            ->map(Family::rowMapper())
+            ->filter(GedcomRecord::accessFilter())
+            ->map(function (Family $family): array {
+                return [
                     'family' => $family,
-                    'count'  => (int) $row->tot,
+                    'count'  => $family->numberOfChildren(),
                 ];
-            }
-        }
-
-        // TODO
-        //        if (I18N::direction() === 'rtl') {
-        //            $top10 = str_replace([
-        //                '[',
-        //                ']',
-        //                '(',
-        //                ')',
-        //                '+',
-        //            ], [
-        //                '&rlm;[',
-        //                '&rlm;]',
-        //                '&rlm;(',
-        //                '&rlm;)',
-        //                '&rlm;+',
-        //            ], $top10);
-        //        }
-
-        return $top10;
+           })
+            ->all();
     }
 
     /**
@@ -1764,48 +1706,59 @@ class FamilyRepository
     /**
      * General query on marriages.
      *
-     * @param bool $first
+     * @param bool $first_marriage
      * @param int  $year1
      * @param int  $year2
      *
      * @return array
      */
-    public function statsMarrQuery(bool $first = false, int $year1 = -1, int $year2 = -1): array
+    public function statsMarrQuery(bool $first_marriage = false, int $year1 = -1, int $year2 = -1): array
     {
-        if ($first) {
-            $years = '';
+        if ($first_marriage) {
+            $query = DB::table('families')
+                ->join('dates', function (JoinClause $join): void {
+                    $join
+                        ->on('d_gid', '=', 'f_id')
+                        ->on('d_file', '=', 'f_file')
+                        ->where('d_fact', '=', 'MARR')
+                        ->where('d_julianday2', '<>', 0);
+                })->join('individuals', function (JoinClause $join): void {
+                    $join
+                        ->on('i_file', '=', 'f_file');
+                })
+                ->where('f_file', '=', $this->tree->id())
+                ->where(function (Builder $query): void {
+                    $query
+                        ->whereColumn('i_id', '=', 'f_husb')
+                        ->orWhereColumn('i_id', '=', 'f_wife');
+                });
 
             if ($year1 >= 0 && $year2 >= 0) {
-                $years = " married.d_year BETWEEN '{$year1}' AND '{$year2}' AND";
+                $query->whereBetween('d_year', [$year1, $year2]);
             }
 
-            $sql =
-                " SELECT fam.f_id AS fams, fam.f_husb, fam.f_wife, married.d_julianday2 AS age, married.d_month AS month, indi.i_id AS indi" .
-                " FROM `##families` AS fam" .
-                " LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->id()}" .
-                " LEFT JOIN `##individuals` AS indi ON indi.i_file = {$this->tree->id()}" .
-                " WHERE" .
-                " married.d_gid = fam.f_id AND" .
-                " fam.f_file = {$this->tree->id()} AND" .
-                " married.d_fact = 'MARR' AND" .
-                " married.d_julianday2 <> 0 AND" .
-                $years .
-                " (indi.i_id = fam.f_husb OR indi.i_id = fam.f_wife)" .
-                " ORDER BY fams, indi, age ASC";
+            return $query
+                ->select(['f_id AS fams', 'f_husb', 'f_wife', 'd_julianday2 AS age', 'd_month AS month', 'i_id AS indi'])
+                ->orderBy('f_id')
+                ->orderBy('i_id')
+                ->orderBy('d_julianday2')
+                ->get()
+                ->all();
         } else {
-            $sql =
-                "SELECT d_month, COUNT(*) AS total" .
-                " FROM `##dates`" .
-                " WHERE d_file={$this->tree->id()} AND d_fact='MARR'";
+            $query = DB::table('dates')
+                ->where('d_file', '=', $this->tree->id())
+                ->where('d_fact', '=', 'MARR')
+                ->select(['d_month', DB::raw('COUNT(*) AS total')])
+                ->groupBy('d_month');
 
             if ($year1 >= 0 && $year2 >= 0) {
-                $sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
+                $query->whereBetween('d_year', [$year1, $year2]);
             }
 
-            $sql .= " GROUP BY d_month";
+            return $query
+                ->get()
+                ->all();
         }
-
-        return $this->runSql($sql);
     }
 
     /**
