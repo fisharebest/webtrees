@@ -315,12 +315,12 @@ class BranchesController extends AbstractBaseController
         }
 
         // spouses and children
-        $spouse_families = $individual->spouseFamilies();
-        if ($spouse_families) {
-            $spouse_families_arr = $spouse_families->toArray();
-            usort($spouse_families_arr, Family::marriageDateComparator());
+        $spouse_families = $individual->spouseFamilies()
+            ->sort(Family::marriageDateComparator());
+        
+        if ($spouse_families->isNotEmpty()) {
             $fam_html = '';
-            foreach ($spouse_families_arr as $family) {
+            foreach ($spouse_families as $family) {
                 $fam_html .= $indi_html; // Repeat the individual details for each spouse.
 
                 $spouse = $family->spouse($individual);
