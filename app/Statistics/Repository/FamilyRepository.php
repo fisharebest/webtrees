@@ -94,18 +94,6 @@ class FamilyRepository
     }
 
     /**
-     * Run an SQL query and cache the result.
-     *
-     * @param string $sql
-     *
-     * @return stdClass[]
-     */
-    private function runSql($sql): array
-    {
-        return Sql::runSql($sql);
-    }
-
-    /**
      * Find the family with the most children.
      *
      * @return string
@@ -302,37 +290,37 @@ class FamilyRepository
      */
     private function ageBetweenSiblingsQuery(int $total): array
     {
-        $rows = $this->runSql(
-            " SELECT DISTINCT" .
-            " link1.l_from AS family," .
-            " link1.l_to AS ch1," .
-            " link2.l_to AS ch2," .
-            " child1.d_julianday2-child2.d_julianday2 AS age" .
-            " FROM `##link` AS link1" .
-            " LEFT JOIN `##dates` AS child1 ON child1.d_file = {$this->tree->id()}" .
-            " LEFT JOIN `##dates` AS child2 ON child2.d_file = {$this->tree->id()}" .
-            " LEFT JOIN `##link` AS link2 ON link2.l_file = {$this->tree->id()}" .
-            " WHERE" .
-            " link1.l_file = {$this->tree->id()} AND" .
-            " link1.l_from = link2.l_from AND" .
-            " link1.l_type = 'CHIL' AND" .
-            " child1.d_gid = link1.l_to AND" .
-            " child1.d_fact = 'BIRT' AND" .
-            " link2.l_type = 'CHIL' AND" .
-            " child2.d_gid = link2.l_to AND" .
-            " child2.d_fact = 'BIRT' AND" .
-            " child1.d_julianday2 > child2.d_julianday2 AND" .
-            " child2.d_julianday2 <> 0 AND" .
-            " child1.d_gid <> child2.d_gid" .
-            " ORDER BY age DESC" .
-            " LIMIT " . $total
-        );
+        $prefix = DB::connection()->getTablePrefix();
 
-        if (!isset($rows[0])) {
-            return [];
-        }
-
-        return $rows;
+        return DB::table('link AS link1')
+            ->join('link AS link2', function (JoinClause $join): void {
+                $join
+                    ->on('link2.l_from', '=', 'link1.l_from')
+                    ->on('link2.l_type', '=', 'link1.l_type')
+                    ->on('link2.l_file', '=', 'link1.l_file');
+            })
+            ->join('dates AS child1', function (JoinClause $join): void {
+                $join
+                    ->on('child1.d_gid', '=', 'link1.l_to')
+                    ->on('child1.d_file', '=', 'link1.l_file')
+                    ->where('child1.d_fact', '=', 'BIRT')
+                    ->where('child1.d_julianday1', '<>', 0);
+            })
+            ->join('dates AS child2', function (JoinClause $join): void {
+                $join
+                    ->on('child2.d_gid', '=', 'link2.l_to')
+                    ->on('child2.d_file', '=', 'link2.l_file')
+                    ->where('child2.d_fact', '=', 'BIRT')
+                    ->whereColumn('child2.d_julianday2', '>', 'child1.d_julianday1');
+            })
+            ->where('link1.l_type', '=', 'CHIL')
+            ->where('link1.l_file', '=', $this->tree->id())
+            ->distinct()
+            ->select(['link1.l_from AS family', 'link1.l_to AS ch1', 'link2.l_to AS ch2', DB::raw($prefix . 'child2.d_julianday2 - ' . $prefix . 'child1.d_julianday1 AS age')])
+            ->orderBy('age', 'DESC')
+            ->take($total)
+            ->get()
+            ->all();
     }
 
     /**
@@ -563,53 +551,31 @@ class FamilyRepository
     /**
      * General query on familes/children.
      *
-     * @param string $sex
      * @param int    $year1
      * @param int    $year2
      *
      * @return stdClass[]
      */
-    public function statsChildrenQuery(string $sex = 'BOTH', int $year1 = -1, int $year2 = -1): array
+    public function statsChildrenQuery(int $year1 = -1, int $year2 = -1): array
     {
-        if ($sex === 'M') {
-            $sql =
-                "SELECT num, COUNT(*) AS total FROM " .
-                "(SELECT count(i_sex) AS num FROM `##link` " .
-                "LEFT OUTER JOIN `##individuals` " .
-                "ON l_from=i_id AND l_file=i_file AND i_sex='M' AND l_type='FAMC' " .
-                "JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->tree->id()} GROUP BY l_to" .
-                ") boys" .
-                " GROUP BY num" .
-                " ORDER BY num";
-        } elseif ($sex === 'F') {
-            $sql =
-                "SELECT num, COUNT(*) AS total FROM " .
-                "(SELECT count(i_sex) AS num FROM `##link` " .
-                "LEFT OUTER JOIN `##individuals` " .
-                "ON l_from=i_id AND l_file=i_file AND i_sex='F' AND l_type='FAMC' " .
-                "JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->tree->id()} GROUP BY l_to" .
-                ") girls" .
-                " GROUP BY num" .
-                " ORDER BY num";
-        } else {
-            $sql = "SELECT f_numchil, COUNT(*) AS total FROM `##families` ";
+        $query = DB::table('families')
+            ->where('f_file', '=', $this->tree->id())
+            ->groupBy('f_numchil')
+            ->select(['f_numchil', DB::raw('COUNT(*) AS total')]);
 
-            if ($year1 >= 0 && $year2 >= 0) {
-                $sql .=
-                    "AS fam LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->id()}"
-                    . " WHERE"
-                    . " married.d_gid = fam.f_id AND"
-                    . " fam.f_file = {$this->tree->id()} AND"
-                    . " married.d_fact = 'MARR' AND"
-                    . " married.d_year BETWEEN '{$year1}' AND '{$year2}'";
-            } else {
-                $sql .= "WHERE f_file={$this->tree->id()}";
-            }
-
-            $sql .= ' GROUP BY f_numchil';
+        if ($year1 >= 0 && $year2 >= 0) {
+            $query
+                ->join('dates', function (JoinClause $join): void {
+                    $join
+                        ->on('d_file', '=', 'f_file')
+                        ->on('d_gid', '=', 'f_id');
+                })
+                ->where('d_fact', '=', 'MARR')
+                ->whereIn('d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
+                ->whereBetween('d_year', [$year1, $year2]);
         }
 
-        return $this->runSql($sql);
+        return $query->get()->all();
     }
 
     /**
@@ -741,45 +707,52 @@ class FamilyRepository
      */
     public function monthFirstChildQuery(bool $sex = false): array
     {
+        $first_child_subquery = DB::table('link')
+            ->join('dates', function (JoinClause $join): void {
+                $join
+                    ->on('d_gid', '=', 'l_to')
+                    ->on('d_file', '=', 'l_file')
+                    ->where('d_julianday1', '<>', 0)
+                    ->whereIn('d_month', ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']);
+            })
+            ->where('l_file', '=', $this->tree->id())
+            ->where('l_type', '=', 'CHIL')
+            ->select(['l_from AS family_id', DB::raw('MIN(d_julianday1) AS min_birth_jd')])
+            ->groupBy('family_id');
+
+        $query = DB::table('link')
+            ->join('dates', function (JoinClause $join): void {
+                $join
+                    ->on('d_gid', '=', 'l_to')
+                    ->on('d_file', '=', 'l_file');
+            })
+            ->joinSub($first_child_subquery, 'subquery', function(JoinClause $join): void {
+                $join
+                    ->on('family_id', '=', 'l_from')
+                    ->on('min_birth_jd', '=', 'd_julianday1');
+            })
+            ->where('link.l_file', '=', $this->tree->id())
+            ->where('link.l_type', '=', 'CHIL');
+
+
         if ($sex) {
-            $sql_sex1 = ', i_sex';
-            $sql_sex2 = " JOIN `##individuals` AS child ON child1.d_file = i_file AND child1.d_gid = child.i_id ";
+            $query
+                ->join('individuals', function (JoinClause $join) use ($sex): void {
+                    $join
+                        ->on('i_file', '=', 'l_file')
+                        ->on('i_id', '=', 'l_to');
+                })
+                ->select(['d_month', 'i_sex', DB::raw('COUNT(*) AS total')])
+                ->groupBy(['d_month', 'i_sex']);
         } else {
-            $sql_sex1 = '';
-            $sql_sex2 = '';
+            $query
+                ->select(['d_month', DB::raw('COUNT(*) AS total')])
+                ->groupBy(['d_month']);
         }
 
-        $sql =
-            "SELECT d_month{$sql_sex1}, COUNT(*) AS total " .
-            "FROM (" .
-            " SELECT family{$sql_sex1}, MIN(date) AS d_date, d_month" .
-            " FROM (" .
-            "  SELECT" .
-            "  link1.l_from AS family," .
-            "  link1.l_to AS child," .
-            "  child1.d_julianday2 AS date," .
-            "  child1.d_month as d_month" .
-            $sql_sex1 .
-            "  FROM `##link` AS link1" .
-            "  LEFT JOIN `##dates` AS child1 ON child1.d_file = {$this->tree->id()}" .
-            $sql_sex2 .
-            "  WHERE" .
-            "  link1.l_file = {$this->tree->id()} AND" .
-            "  link1.l_type = 'CHIL' AND" .
-            "  child1.d_gid = link1.l_to AND" .
-            "  child1.d_fact = 'BIRT' AND" .
-            "  child1.d_month IN ('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC')" .
-            "  ORDER BY date" .
-            " ) AS children" .
-            " GROUP BY family, d_month{$sql_sex1}" .
-            ") AS first_child " .
-            "GROUP BY d_month";
-
-        if ($sex) {
-            $sql .= ', i_sex';
-        }
-
-        return $this->runSql($sql);
+        return $query
+            ->get()
+            ->all();
     }
 
     /**

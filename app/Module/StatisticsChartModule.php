@@ -414,7 +414,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
                         $z_axis = $this->axisAll();
-                        $rows   = $statistics->monthFirstChildQuery();
+                        $rows   = $statistics->monthFirstChildQuery(false);
                         foreach ($rows as $row) {
                             $this->fillYData($row->d_month, 0, $row->total, $x_axis, $z_axis, $ydata);
                         }
@@ -723,7 +723,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary = 0;
                         foreach (array_keys($z_axis) as $boundary) {
-                            $rows = $statistics->statsChildrenQuery('BOTH', $prev_boundary, $boundary);
+                            $rows = $statistics->statsChildrenQuery($prev_boundary, $boundary);
                             foreach ($rows as $row) {
                                 $this->fillYData($row->f_numchil, $boundary, $row->total, $x_axis, $z_axis, $ydata);
                             }

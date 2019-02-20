@@ -1920,9 +1920,9 @@ class Statistics implements
     /**
      * @inheritDoc
      */
-    public function statsChildrenQuery(string $sex = 'BOTH', int $year1 = -1, int $year2 = -1): array
+    public function statsChildrenQuery(int $year1 = -1, int $year2 = -1): array
     {
-        return $this->familyRepository->statsChildrenQuery($sex, $year1, $year2);
+        return $this->familyRepository->statsChildrenQuery($year1, $year2);
     }
 
     /**
