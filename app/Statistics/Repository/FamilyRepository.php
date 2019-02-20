@@ -17,9 +17,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Statistics\Google\ChartChildren;
@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Statistics\Google\ChartNoChildrenFamilies;
 use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\JoinClause;
 use stdClass;
 
 /**
@@ -676,11 +677,9 @@ class FamilyRepository
      */
     public function totalChildren(): string
     {
-        $total = (int) Database::prepare(
-            "SELECT SUM(f_numchil) FROM `##families` WHERE f_file = :tree_id"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        $total = (int) DB::table('families')
+            ->where('f_file', '=', $this->tree->id())
+            ->sum('f_numchil');
 
         return I18N::number($total);
     }
@@ -692,11 +691,9 @@ class FamilyRepository
      */
     public function averageChildren(): string
     {
-        $average = (float) Database::prepare(
-            "SELECT AVG(f_numchil) AS tot FROM `##families` WHERE f_file = :tree_id"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        $average = (float) DB::table('families')
+            ->where('f_file', '=', $this->tree->id())
+            ->avg('f_numchil');
 
         return I18N::number($average, 2);
     }
@@ -868,11 +865,11 @@ class FamilyRepository
      */
     public function totalMarriedMales(): string
     {
-        $n = (int) Database::prepare(
-            "SELECT COUNT(DISTINCT f_husb) FROM `##families` WHERE f_file = :tree_id AND f_gedcom LIKE '%\\n1 MARR%'"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        $n = (int) DB::table('families')
+            ->where('f_file', '=', $this->tree->id())
+            ->where('f_gedcom', 'LIKE', "%\n1 MARR%")
+            ->distinct()
+            ->count('f_husb');
 
         return I18N::number($n);
     }
@@ -884,11 +881,11 @@ class FamilyRepository
      */
     public function totalMarriedFemales(): string
     {
-        $n = (int) Database::prepare(
-            "SELECT COUNT(DISTINCT f_wife) FROM `##families` WHERE f_file = :tree_id AND f_gedcom LIKE '%\\n1 MARR%'"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        $n = (int) DB::table('families')
+            ->where('f_file', '=', $this->tree->id())
+            ->where('f_gedcom', 'LIKE', "%\n1 MARR%")
+            ->distinct()
+            ->count('f_wife');
 
         return I18N::number($n);
     }
@@ -1354,56 +1351,60 @@ class FamilyRepository
      */
     private function ageBetweenSpousesQuery(string $age_dir, int $total): array
     {
+        $prefix = DB::connection()->getTablePrefix();
+
+        $query = DB::table('families')
+            ->where('f_file', '=', $this->tree->id())
+            ->join('dates AS wife', function (JoinClause $join): void {
+                $join
+                    ->on('wife.d_gid', '=', 'f_wife')
+                    ->on('wife.d_file', '=', 'f_file')
+                    ->where('wife.d_fact', '=', 'BIRT')
+                    ->where('wife.d_julianday1', '<>', 0);
+            })
+            ->join('dates AS husb', function (JoinClause $join): void {
+                $join
+                    ->on('husb.d_gid', '=', 'f_husb')
+                    ->on('husb.d_file', '=', 'f_file')
+                    ->where('husb.d_fact', '=', 'BIRT')
+                    ->where('husb.d_julianday1', '<>', 0);
+            });
+
         if ($age_dir === 'DESC') {
-            $sql =
-                "SELECT f_id AS xref, MIN(wife.d_julianday2-husb.d_julianday1) AS age" .
-                " FROM `##families`" .
-                " JOIN `##dates` AS wife ON wife.d_gid = f_wife AND wife.d_file = f_file" .
-                " JOIN `##dates` AS husb ON husb.d_gid = f_husb AND husb.d_file = f_file" .
-                " WHERE f_file = :tree_id" .
-                " AND husb.d_fact = 'BIRT'" .
-                " AND wife.d_fact = 'BIRT'" .
-                " AND wife.d_julianday2 >= husb.d_julianday1 AND husb.d_julianday1 <> 0" .
-                " GROUP BY xref" .
-                " ORDER BY age DESC" .
-                " LIMIT :limit";
+            $query
+                ->whereColumn('wife.d_julianday1', '>=', 'husb.d_julianday1')
+                ->orderBy(DB::raw('MIN(' . $prefix . 'wife.d_julianday1) - MIN(' . $prefix . 'husb.d_julianday1)'), 'DESC');
         } else {
-            $sql =
-                "SELECT f_id AS xref, MIN(husb.d_julianday2-wife.d_julianday1) AS age" .
-                " FROM `##families`" .
-                " JOIN `##dates` AS wife ON wife.d_gid = f_wife AND wife.d_file = f_file" .
-                " JOIN `##dates` AS husb ON husb.d_gid = f_husb AND husb.d_file = f_file" .
-                " WHERE f_file = :tree_id" .
-                " AND husb.d_fact = 'BIRT'" .
-                " AND wife.d_fact = 'BIRT'" .
-                " AND husb.d_julianday2 >= wife.d_julianday1 AND wife.d_julianday1 <> 0" .
-                " GROUP BY xref" .
-                " ORDER BY age DESC" .
-                " LIMIT :limit";
+            $query
+                ->whereColumn('husb.d_julianday1', '>=', 'wife.d_julianday1')
+                ->orderBy(DB::raw('MIN(' . $prefix . 'husb.d_julianday1) - MIN(' . $prefix . 'wife.d_julianday1)'), 'DESC');
         }
 
-        $rows = Database::prepare(
-            $sql
-        )->execute([
-            'tree_id' => $this->tree->id(),
-            'limit'   => $total,
-        ])->fetchAll();
+        $families = $query
+            ->groupBy(['f_id', 'f_file'])
+            ->select('families.*')
+            ->take($total)
+            ->get()
+            ->map(Family::rowMapper())
+            ->filter(GedcomRecord::accessFilter());
 
         $top10 = [];
 
-        foreach ($rows as $fam) {
-            $family = Family::getInstance($fam->xref, $this->tree);
+        /** @var Family $family */
+        foreach ($families as $family) {
+            $husb_birt_jd = $family->husband()->getBirthDate()->minimumJulianDay();
+            $wife_birt_jd = $family->wife()->getBirthDate()->minimumJulianDay();
 
-            if ($fam->age < 0) {
-                break;
+            if ($age_dir === 'DESC') {
+                $diff = $wife_birt_jd - $husb_birt_jd;
+            } else {
+                $diff = $husb_birt_jd - $wife_birt_jd;
             }
 
-            if ($family->canShow()) {
-                $top10[] = [
-                    'family' => $family,
-                    'age'    => $this->calculateAge((int) $fam->age),
-                ];
-            }
+            $top10[] = [
+                'family' => $family,
+                'age'    => $this->calculateAge((int) $diff),
+            ];
         }
 
         return $top10;
