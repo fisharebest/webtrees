@@ -22,57 +22,57 @@ use Fisharebest\Webtrees\Services\UserService;
 
 /**
  * Test the user functions
- * \Fisharebest\Webtrees\Statistics\Repository\BrowserRepository
- * \Fisharebest\Webtrees\Statistics\Repository\ServerRepository
- * \Fisharebest\Webtrees\Statistics\Repository\LatestUserRepository
- * \Fisharebest\Webtrees\Statistics\Repository\FamilyDatesRepository
- * \Fisharebest\Webtrees\Statistics\Repository\HitCountRepository
- * \Fisharebest\Webtrees\Statistics\Repository\NewsRepository
- * \Fisharebest\Webtrees\Statistics\Repository\FavoritesRepository
- * \Fisharebest\Webtrees\Statistics\Repository\IndividualRepository
- * \Fisharebest\Webtrees\Statistics\Repository\MediaRepository
- * \Fisharebest\Webtrees\Statistics\Repository\MessageRepository
- * \Fisharebest\Webtrees\Statistics\Repository\ContactRepository
- * \Fisharebest\Webtrees\Statistics\Repository\GedcomRepository
- * \Fisharebest\Webtrees\Statistics\Repository\FamilyRepository
- * \Fisharebest\Webtrees\Statistics\Repository\EventRepository
- * \Fisharebest\Webtrees\Statistics\Repository\PlaceRepository
- * \Fisharebest\Webtrees\Statistics\Repository\Interfaces\MediaRepositoryInterface
- * \Fisharebest\Webtrees\Statistics\Repository\Interfaces\MessageRepositoryInterface
- * \Fisharebest\Webtrees\Statistics\Repository\Interfaces\HitCountRepositoryInterface
- * \Fisharebest\Webtrees\Statistics\Repository\Interfaces\FavoritesRepositoryInterface
- * \Fisharebest\Webtrees\Statistics\Repository\Interfaces\GedcomRepositoryInterface
- * \Fisharebest\Webtrees\Statistics\Repository\Interfaces\EventRepositoryInterface
- * \Fisharebest\Webtrees\Statistics\Repository\Interfaces\UserRepositoryInterface
- * \Fisharebest\Webtrees\Statistics\Repository\Interfaces\PlaceRepositoryInterface
- * \Fisharebest\Webtrees\Statistics\Repository\Interfaces\IndividualRepositoryInterface
- * \Fisharebest\Webtrees\Statistics\Repository\Interfaces\NewsRepositoryInterface
- * \Fisharebest\Webtrees\Statistics\Repository\Interfaces\FamilyDatesRepositoryInterface
- * \Fisharebest\Webtrees\Statistics\Repository\Interfaces\ContactRepositoryInterface
- * \Fisharebest\Webtrees\Statistics\Repository\Interfaces\ServerRepositoryInterface
- * \Fisharebest\Webtrees\Statistics\Repository\Interfaces\BrowserRepositoryInterface
- * \Fisharebest\Webtrees\Statistics\Repository\Interfaces\LatestUserRepositoryInterface
- * \Fisharebest\Webtrees\Statistics\Repository\UserRepository
- * \Fisharebest\Webtrees\Statistics\AbstractGoogle
- * \Fisharebest\Webtrees\Statistics\Google\ChartChildren
- * \Fisharebest\Webtrees\Statistics\Google\ChartAge
- * \Fisharebest\Webtrees\Statistics\Google\ChartCommonGiven
- * \Fisharebest\Webtrees\Statistics\Google\ChartMarriageAge
- * \Fisharebest\Webtrees\Statistics\Google\ChartCommonSurname
- * \Fisharebest\Webtrees\Statistics\Google\ChartDistribution
- * \Fisharebest\Webtrees\Statistics\Google\ChartFamilyLargest
- * \Fisharebest\Webtrees\Statistics\Google\ChartNoChildrenFamilies
- * \Fisharebest\Webtrees\Statistics\Google\ChartSex
- * \Fisharebest\Webtrees\Statistics\Google\ChartMedia
- * \Fisharebest\Webtrees\Statistics\Google\ChartMarriage
- * \Fisharebest\Webtrees\Statistics\Google\ChartFamilyWithSources
- * \Fisharebest\Webtrees\Statistics\Google\ChartMortality
- * \Fisharebest\Webtrees\Statistics\Google\ChartDeath
- * \Fisharebest\Webtrees\Statistics\Google\ChartIndividualWithSources
- * \Fisharebest\Webtrees\Statistics\Google\ChartBirth
- * \Fisharebest\Webtrees\Statistics\Google\ChartDivorce
- * \Fisharebest\Webtrees\Statistics\Helper\Country
- * \Fisharebest\Webtrees\Statistics\Helper\Century
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\BrowserRepository
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\ServerRepository
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\LatestUserRepository
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\FamilyDatesRepository
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\HitCountRepository
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\NewsRepository
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\FavoritesRepository
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\IndividualRepository
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\MediaRepository
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\MessageRepository
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\ContactRepository
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\GedcomRepository
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\FamilyRepository
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\EventRepository
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\PlaceRepository
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\Interfaces\MediaRepositoryInterface
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\Interfaces\MessageRepositoryInterface
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\Interfaces\HitCountRepositoryInterface
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\Interfaces\FavoritesRepositoryInterface
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\Interfaces\GedcomRepositoryInterface
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\Interfaces\EventRepositoryInterface
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\Interfaces\UserRepositoryInterface
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\Interfaces\PlaceRepositoryInterface
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\Interfaces\IndividualRepositoryInterface
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\Interfaces\NewsRepositoryInterface
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\Interfaces\FamilyDatesRepositoryInterface
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\Interfaces\ContactRepositoryInterface
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\Interfaces\ServerRepositoryInterface
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\Interfaces\BrowserRepositoryInterface
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\Interfaces\LatestUserRepositoryInterface
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\UserRepository
+ * @covers \Fisharebest\Webtrees\Statistics\AbstractGoogle
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartChildren
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartAge
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartCommonGiven
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartMarriageAge
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartCommonSurname
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartDistribution
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartFamilyLargest
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartNoChildrenFamilies
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartSex
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartMedia
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartMarriage
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartFamilyWithSources
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartMortality
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartDeath
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartIndividualWithSources
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartBirth
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartDivorce
+ * @covers \Fisharebest\Webtrees\Statistics\Helper\Country
+ * @covers \Fisharebest\Webtrees\Statistics\Helper\Century
  */
 
 class EmbeddedVariablesTest extends TestCase
