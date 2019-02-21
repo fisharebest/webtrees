@@ -22,6 +22,8 @@ use Fisharebest\Webtrees\Services\UserService;
 
 /**
  * Test the user functions
+ *
+ * @covers \Fisharebest\Webtrees\Statistics
  * @covers \Fisharebest\Webtrees\Statistics\Repository\BrowserRepository
  * @covers \Fisharebest\Webtrees\Statistics\Repository\ServerRepository
  * @covers \Fisharebest\Webtrees\Statistics\Repository\LatestUserRepository
@@ -74,7 +76,6 @@ use Fisharebest\Webtrees\Services\UserService;
  * @covers \Fisharebest\Webtrees\Statistics\Helper\Country
  * @covers \Fisharebest\Webtrees\Statistics\Helper\Century
  */
-
 class EmbeddedVariablesTest extends TestCase
 {
     protected static $uses_database = true;
