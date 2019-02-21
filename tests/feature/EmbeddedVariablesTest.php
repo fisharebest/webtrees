@@ -22,8 +22,6 @@ use Fisharebest\Webtrees\Services\UserService;
 
 /**
  * Test the user functions
- *
- * @coversNothing
  */
 class EmbeddedVariablesTest extends TestCase
 {
@@ -39,9 +37,9 @@ class EmbeddedVariablesTest extends TestCase
         $tree = $this->importTree('demo.ged');
         $statistics = new Statistics(new ModuleService(), $tree, new UserService());
 
-        //$text = $statistics->embedTags('#getAllTagsTable#');
+        $text = $statistics->embedTags('#getAllTagsTable#');
 
-        //$this->assertNotEquals('#getAllTagsTable#', $text);
+        $this->assertNotEquals('#getAllTagsTable#', $text);
     }
 
     /**
@@ -55,8 +53,8 @@ class EmbeddedVariablesTest extends TestCase
         $tree->deleteGenealogyData(false);
         $statistics = new Statistics(new ModuleService(), $tree, new UserService());
 
-        //$text = $statistics->embedTags('#getAllTagsTable#');
+        $text = $statistics->embedTags('#getAllTagsTable#');
 
-        //$this->assertNotEquals('#getAllTagsTable#', $text);
+        $this->assertNotEquals('#getAllTagsTable#', $text);
     }
 }
