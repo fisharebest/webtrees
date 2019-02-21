@@ -29,25 +29,6 @@ use PDOStatement;
  */
 class Database
 {
-    private const PDO_OPTIONS = [
-        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
-        PDO::ATTR_CASE               => PDO::CASE_LOWER,
-        PDO::ATTR_AUTOCOMMIT         => true,
-    ];
-
-    /** @var Database Implement the singleton pattern */
-    private static $instance;
-
-    /** @var PDO Native PHP database driver */
-    private static $pdo;
-
-    /** @var Statement[] Cache of prepared statements */
-    private static $prepared = [];
-
-    /** @var string Prefix allows multiple instances in one database */
-    private static $table_prefix = '';
-
     /**
      * Implement the singleton pattern, using a static accessor.
      *
@@ -58,18 +39,6 @@ class Database
      */
     public static function createInstance(array $config)
     {
-        self::$table_prefix = $config['tblpfx'];
-
-        $dsn = (substr($config['dbhost'], 0, 1) === '/' ?
-            "mysql:unix_socket='{$config['dbhost']};dbname={$config['dbname']}" : "mysql:host={$config['dbhost']};dbname={$config['dbname']};port={$config['dbport']}"
-        );
-
-        // Create the underlying PDO object.
-        self::$pdo = new PDO($dsn, $config['dbuser'], $config['dbpass'], self::PDO_OPTIONS);
-        self::$pdo->exec("SET NAMES 'utf8' COLLATE 'utf8_unicode_ci'");
-        self::$pdo->prepare("SET time_zone = :time_zone")->execute(['time_zone' => date('P')]);
-        self::$instance = new self();
-
         $capsule = new DB();
         $capsule->addConnection([
             'driver'         => 'mysql',
@@ -114,27 +83,6 @@ class Database
     }
 
     /**
-     * We don't access $instance directly, only via query(), exec() and prepare()
-     *
-     * @throws Exception
-     * @return Database
-     */
-    public static function getInstance()
-    {
-        return self::$instance;
-    }
-
-    /**
-     * Determine the most recently created value of an AUTO_INCREMENT field.
-     *
-     * @return int
-     */
-    public static function lastInsertId(): int
-    {
-        return (int) self::$pdo->lastInsertId();
-    }
-
-    /**
      * Execute an SQL statement, and log the result.
      *
      * @param string $sql The SQL statement to execute
@@ -146,54 +94,5 @@ class Database
         $sql = str_replace('##', self::$table_prefix, $sql);
 
         return self::$pdo->exec($sql);
-    }
-
-    /**
-     * Prepare an SQL statement for execution.
-     *
-     * @param string $sql
-     *
-     * @throws Exception
-     * @return Statement
-     */
-    public static function prepare(string $sql): Statement
-    {
-        if (self::$pdo === null) {
-            throw new Exception('No Connection Established');
-        }
-        $sql = str_replace('##', self::$table_prefix, $sql);
-
-        $hash = md5($sql);
-
-        if (!array_key_exists($hash, self::$prepared)) {
-            $prepared_statement = self::$pdo->prepare($sql);
-
-            if ($prepared_statement instanceof PDOStatement) {
-                self::$prepared[$hash] = new Statement($prepared_statement);
-            } else {
-                throw new PDOException("Unable to prepare statement " . $sql);
-            }
-        }
-
-        return self::$prepared[$hash];
-    }
-
-    /**
-     * Escape a string for use in a SQL "LIKE" clause
-     *
-     * @param string $string
-     *
-     * @return string
-     */
-    public static function escapeLike($string): string
-    {
-        return strtr(
-            $string,
-            [
-                '\\' => '\\\\',
-                '%'  => '\%',
-                '_'  => '\_',
-            ]
-        );
     }
 }
