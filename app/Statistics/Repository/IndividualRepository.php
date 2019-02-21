@@ -97,8 +97,8 @@ class IndividualRepository implements IndividualRepositoryInterface
         }
 
         $rows = $query
-            ->groupBy(['n_id', 'n_givn'])
-            ->select(['n_givn', DB::raw('COUNT(*) AS count')])
+            ->groupBy(['n_givn'])
+            ->select(['n_givn', DB::raw('COUNT(distinct n_id) AS count')])
             ->pluck('count', 'n_givn');
 
         $nameList = [];
@@ -109,9 +109,9 @@ class IndividualRepository implements IndividualRepositoryInterface
                 // Exclude initials and particles.
                 if (!preg_match('/^([A-Z]|[a-z]{1,3})$/', $given)) {
                     if (\array_key_exists($given, $nameList)) {
-                        $nameList[$given] += (int) $count;
+                        $nameList[$given] += $count;
                     } else {
-                        $nameList[$given] = (int) $count;
+                        $nameList[$given] = $count;
                     }
                 }
             }
@@ -483,6 +483,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             ->whereNotIn('n_surn', ['', '@N.N.'])
             ->select('n_surn')
             ->groupBy('n_surn')
+            ->orderByRaw('count(n_surn) desc')
             ->take($number_of_surnames)
             ->get()
             ->pluck('n_surn')
@@ -642,6 +643,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     public function statsBirthQuery(bool $sex = false, int $year1 = -1, int $year2 = -1): array
     {
         $query = DB::table('dates')
+            ->select(['d_month', DB::raw('COUNT(*) AS total')])
             ->where('d_file', '=', $this->tree->id())
             ->where('d_fact', '=', 'BIRT')
             ->whereIn('d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
@@ -653,15 +655,13 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         if ($sex) {
             $query
+                ->select(['d_month', 'i_sex', DB::raw('COUNT(*) AS total')])
                 ->join('individuals', function (JoinClause $join): void {
                     $join
                         ->on('i_id', '=', 'd_gid')
                         ->on('i_file', '=', 'd_file');
                 })
-                ->groupBy('i_sex')
-                ->select(['d_month', 'i_sex', DB::raw('COUNT(*) AS total')]);
-        } else {
-            $query->select(['d_month', DB::raw('COUNT(*) AS total')]);
+                ->groupBy('i_sex');
         }
 
         return $query->get()->all();
@@ -693,6 +693,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     public function statsDeathQuery(bool $sex = false, int $year1 = -1, int $year2 = -1): array
     {
         $query = DB::table('dates')
+            ->select(['d_month', DB::raw('COUNT(*) AS total')])
             ->where('d_file', '=', $this->tree->id())
             ->where('d_fact', '=', 'DEAT')
             ->whereIn('d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
@@ -704,15 +705,13 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         if ($sex) {
             $query
+                ->select(['d_month', 'i_sex', DB::raw('COUNT(*) AS total')])
                 ->join('individuals', function (JoinClause $join): void {
                     $join
                         ->on('i_id', '=', 'd_gid')
                         ->on('i_file', '=', 'd_file');
                 })
-                ->groupBy('i_sex')
-                ->select(['d_month', 'i_sex', DB::raw('COUNT(*) AS total')]);
-        } else {
-            $query->select(['d_month', DB::raw('COUNT(*) AS total')]);
+                ->groupBy('i_sex');
         }
 
         return $query->get()->all();

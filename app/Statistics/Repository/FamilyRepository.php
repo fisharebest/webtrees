@@ -254,6 +254,7 @@ class FamilyRepository
 
         $top10 = [];
 
+        /** @var Family $family */
         foreach ($families as $family) {
             if ($type === 'list') {
                 $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->fullName() . '</a></li>';
@@ -854,7 +855,8 @@ class FamilyRepository
             ->join('dates AS childbirth', function (JoinClause $join): void {
                 $join
                     ->on('childbirth.d_file', '=', 'parentfamily.l_file')
-                    ->on('childbirth.d_gid', '=', 'childfamily.l_to');
+                    ->on('childbirth.d_gid', '=', 'childfamily.l_to')
+                    ->where('childbirth.d_fact', '=', 'BIRT');
             })
             ->where('childfamily.l_file', '=', $this->tree->id())
             ->where('parentfamily.l_type', '=', $sex_field)
