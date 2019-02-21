@@ -109,9 +109,9 @@ class IndividualRepository implements IndividualRepositoryInterface
                 // Exclude initials and particles.
                 if (!preg_match('/^([A-Z]|[a-z]{1,3})$/', $given)) {
                     if (\array_key_exists($given, $nameList)) {
-                        $nameList[$given] += $count;
+                        $nameList[$given] += (int) $count;
                     } else {
-                        $nameList[$given] = $count;
+                        $nameList[$given] = (int) $count;
                     }
                 }
             }
