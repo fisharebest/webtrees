@@ -1658,46 +1658,13 @@ class FamilyRepository
     /**
      * General query on marriages.
      *
-     * @param bool $first_marriage
      * @param int  $year1
      * @param int  $year2
      *
-     * @return array
+     * @return Builder
      */
-    public function statsMarrQuery(bool $first_marriage = false, int $year1 = -1, int $year2 = -1): array
+    public function statsMarriageQuery(int $year1 = -1, int $year2 = -1): Builder
     {
-        if ($first_marriage) {
-            $query = DB::table('families')
-                ->join('dates', function (JoinClause $join): void {
-                    $join
-                        ->on('d_gid', '=', 'f_id')
-                        ->on('d_file', '=', 'f_file')
-                        ->where('d_fact', '=', 'MARR')
-                        ->where('d_julianday2', '<>', 0);
-                })->join('individuals', function (JoinClause $join): void {
-                    $join
-                        ->on('i_file', '=', 'f_file');
-                })
-                ->where('f_file', '=', $this->tree->id())
-                ->where(function (Builder $query): void {
-                    $query
-                        ->whereColumn('i_id', '=', 'f_husb')
-                        ->orWhereColumn('i_id', '=', 'f_wife');
-                });
-
-            if ($year1 >= 0 && $year2 >= 0) {
-                $query->whereBetween('d_year', [$year1, $year2]);
-            }
-
-            return $query
-                ->select(['f_id AS fams', 'f_husb', 'f_wife', 'd_julianday2 AS age', 'd_month AS month', 'i_id AS indi'])
-                ->orderBy('f_id')
-                ->orderBy('i_id')
-                ->orderBy('d_julianday2')
-                ->get()
-                ->all();
-        }
-
         $query = DB::table('dates')
             ->where('d_file', '=', $this->tree->id())
             ->where('d_fact', '=', 'MARR')
@@ -1708,9 +1675,46 @@ class FamilyRepository
             $query->whereBetween('d_year', [$year1, $year2]);
         }
 
+        return $query;
+    }
+
+    /**
+     * General query on marriages.
+     *
+     * @param int  $year1
+     * @param int  $year2
+     *
+     * @return Builder
+     */
+    public function statsFirstMarriageQuery(int $year1 = -1, int $year2 = -1): Builder
+    {
+        $query = DB::table('families')
+            ->join('dates', function (JoinClause $join): void {
+                $join
+                    ->on('d_gid', '=', 'f_id')
+                    ->on('d_file', '=', 'f_file')
+                    ->where('d_fact', '=', 'MARR')
+                    ->where('d_julianday2', '<>', 0);
+            })->join('individuals', function (JoinClause $join): void {
+                $join
+                    ->on('i_file', '=', 'f_file');
+            })
+            ->where('f_file', '=', $this->tree->id())
+            ->where(function (Builder $query): void {
+                $query
+                    ->whereColumn('i_id', '=', 'f_husb')
+                    ->orWhereColumn('i_id', '=', 'f_wife');
+            });
+
+        if ($year1 >= 0 && $year2 >= 0) {
+            $query->whereBetween('d_year', [$year1, $year2]);
+        }
+
         return $query
-            ->get()
-            ->all();
+            ->select(['f_id AS fams', 'f_husb', 'f_wife', 'd_julianday2 AS age', 'd_month AS month', 'i_id AS indi'])
+            ->orderBy('f_id')
+            ->orderBy('i_id')
+            ->orderBy('d_julianday2');
     }
 
     /**

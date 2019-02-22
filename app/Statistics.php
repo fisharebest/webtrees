@@ -52,6 +52,7 @@ use Fisharebest\Webtrees\Statistics\Repository\NewsRepository;
 use Fisharebest\Webtrees\Statistics\Repository\PlaceRepository;
 use Fisharebest\Webtrees\Statistics\Repository\ServerRepository;
 use Fisharebest\Webtrees\Statistics\Repository\UserRepository;
+use Illuminate\Database\Query\Builder;
 use ReflectionMethod;
 
 /**
@@ -98,7 +99,6 @@ class Statistics implements
         'statsPlaces',
         'statsBirthQuery',
         'statsDeathQuery',
-        'statsMarrQuery',
         'statsAgeQuery',
         'monthFirstChildQuery',
         'statsChildrenQuery',
@@ -233,7 +233,7 @@ class Statistics implements
 
         foreach (get_class_methods($this) as $method) {
             $reflection = new ReflectionMethod($this, $method);
-            if ($reflection->isPublic() && !\in_array($method, self::$public_but_not_allowed, true)) {
+            if ($reflection->isPublic() && !\in_array($method, self::$public_but_not_allowed, true) && (string) $reflection->getReturnType() !== Builder::class) {
                 $examples[$method] = $this->$method();
             }
         }
@@ -260,7 +260,7 @@ class Statistics implements
 
         foreach (get_class_methods($this) as $method) {
             $reflection = new ReflectionMethod($this, $method);
-            if ($reflection->isPublic() && !\in_array($method, self::$public_but_not_allowed, true)) {
+            if ($reflection->isPublic() && !\in_array($method, self::$public_but_not_allowed, true) && (string) $reflection->getReturnType() !== Builder::class) {
                 $examples[$method] = $method;
             }
         }
@@ -1437,9 +1437,17 @@ class Statistics implements
     /**
      * @inheritDoc
      */
-    public function statsMarrQuery(bool $first = false, int $year1 = -1, int $year2 = -1): array
+    public function statsMarriageQuery(int $year1 = -1, int $year2 = -1): Builder
     {
-        return $this->familyRepository->statsMarrQuery($first, $year1, $year2);
+        return $this->familyRepository->statsMarriageQuery($year1, $year2);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function statsFirstMarriageQuery(int $year1 = -1, int $year2 = -1): Builder
+    {
+        return $this->familyRepository->statsFirstMarriageQuery($year1, $year2);
     }
 
     /**

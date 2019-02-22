@@ -372,7 +372,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
                         $z_axis = $this->axisAll();
-                        $rows   = $statistics->statsMarrQuery();
+                        $rows   = $statistics->statsMarriageQuery()->get();
                         foreach ($rows as $row) {
                             $this->fillYData($row->d_month, 0, $row->total, $x_axis, $z_axis, $ydata);
                         }
@@ -382,7 +382,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
-                            $rows = $statistics->statsMarrQuery(false, $prev_boundary, $boundary);
+                            $rows = $statistics->statsMarriageQuery($prev_boundary, $boundary)->get();
                             foreach ($rows as $row) {
                                 $this->fillYData($row->d_month, $boundary, $row->total, $x_axis, $z_axis, $ydata);
                             }
@@ -431,7 +431,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
-                            $rows = $statistics->statsMarrQuery(false, $prev_boundary, $boundary);
+                            $rows = $statistics->statsMarriageQuery($prev_boundary, $boundary)->get();
                             foreach ($rows as $row) {
                                 $this->fillYData($row->d_month, $boundary, $row->total, $x_axis, $z_axis, $ydata);
                             }
@@ -463,7 +463,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
                         $z_axis = $this->axisAll();
-                        $rows   = $statistics->statsMarrQuery(true);
+                        $rows   = $statistics->statsFirstMarriageQuery()->get();
                         $indi   = [];
                         $fam    = [];
                         foreach ($rows as $row) {
@@ -481,7 +481,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $indi           = [];
                         $fam            = [];
                         foreach (array_keys($z_axis) as $boundary) {
-                            $rows = $statistics->statsMarrQuery(true, $prev_boundary, $boundary);
+                            $rows = $statistics->statsFirstMarriageQuery($prev_boundary, $boundary)->get();
                             foreach ($rows as $row) {
                                 if (!\in_array($row->indi, $indi, true) && !\in_array($row->fams, $fam, true)) {
                                     $this->fillYData($row->month, $boundary, 1, $x_axis, $z_axis, $ydata);
