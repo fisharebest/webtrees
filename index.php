@@ -112,6 +112,7 @@ try {
     app()->make(MigrationService::class)
         ->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
 } catch (PDOException $exception) {
+    defined('WT_DATA_DIR') || define('WT_DATA_DIR', 'data/');
     I18N::init();
     if ($exception->getCode() === 1045) {
         // Error during connection?
@@ -126,6 +127,7 @@ try {
 
     return;
 } catch (Throwable $exception) {
+    defined('WT_DATA_DIR') || define('WT_DATA_DIR', 'data/');
     I18N::init();
     $content  = view('errors/database-connection', ['error' => $exception->getMessage()]);
     $html     = view('layouts/error', ['content' => $content]);

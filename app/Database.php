@@ -34,6 +34,8 @@ class Database
      */
     public static function connect(array $config): void
     {
+        $config['dbtype'] = $config['dbtype'] ?? 'mysql';
+
         if ($config['dbtype'] === 'sqlite') {
             $config['dbname'] = WT_ROOT . 'data/' . $config['dbname'] . '.sqlite';
         }
