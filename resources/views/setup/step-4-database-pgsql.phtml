@@ -40,7 +40,7 @@
         <div class="col-sm-9">
             <input class="form-control" id="dbport" name="dbport" pattern="\d+" type="text" value="<?= e($dbport) ?>" dir="ltr">
             <p class="small text-muted">
-                <?= I18N::translate('Most sites are configured to use the default value of 3306.') ?>
+                <?= I18N::translate('Most sites are configured to use the default value of 5432.') ?>
             </p>
         </div>
     </div>
@@ -75,8 +75,9 @@
         </label>
         <div class="col-sm-9">
             <input class="form-control" dir="ltr" id="dbname" name="dbname" pattern="^[^`]+$" type="text" value="<?= e($dbname) ?>">
+
             <p class="small text-muted">
-                <?= I18N::translate('This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails.') ?>
+                <?= I18N::translate('Use letters A-Z, a-z, digits 0-9, or underscores') ?>
             </p>
         </div>
     </div>
