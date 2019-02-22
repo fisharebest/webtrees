@@ -57,8 +57,8 @@ use Fisharebest\Webtrees\Services\UserService;
  * @covers \Fisharebest\Webtrees\Statistics\Google\ChartIndividualWithSources
  * @covers \Fisharebest\Webtrees\Statistics\Google\ChartBirth
  * @covers \Fisharebest\Webtrees\Statistics\Google\ChartDivorce
- * @covers \Fisharebest\Webtrees\Statistics\Service\Country
- * @covers \Fisharebest\Webtrees\Statistics\Service\Century
+ * @covers \Fisharebest\Webtrees\Statistics\Service\CountryService
+ * @covers \Fisharebest\Webtrees\Statistics\Service\CenturyService
  */
 class EmbeddedVariablesTest extends TestCase
 {
