@@ -1299,7 +1299,6 @@ class FamilyRepository
                     'family' => $family,
                     'age'    => $this->calculateAge($diff),
                 ];
-
             })
             ->all();
     }
