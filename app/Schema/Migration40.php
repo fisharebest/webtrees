@@ -38,8 +38,8 @@ class Migration40 implements MigrationInterface
         if (!DB::schema()->hasTable('news')) {
             DB::schema()->create('news', function (Blueprint $table): void {
                 $table->integer('news_id', true);
-                $table->integer('user_id');
-                $table->integer('gedcom_id');
+                $table->integer('user_id')->nullable();
+                $table->integer('gedcom_id')->nullable();
                 $table->string('subject', 255);
                 $table->text('body');
                 $table->timestamp('updated')->useCurrent();
