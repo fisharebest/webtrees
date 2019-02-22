@@ -30,6 +30,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
+use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  * Controller for the installation wizard
@@ -224,8 +225,9 @@ class SetupController extends AbstractBaseController
                 'dbpass' => $dbpass,
                 'tblpfx' => '',
             ]);
-            Database::exec("CREATE DATABASE IF NOT EXISTS `{$dbname}` COLLATE utf8_unicode_ci");
-            Database::exec("USE `{$dbname}`");
+
+            DB::connection()->getPdo()->exec("CREATE DATABASE IF NOT EXISTS `{$dbname}` COLLATE utf8_unicode_ci");
+            DB::connection()->getPdo()->exec("USE `{$dbname}`");
         } catch (PDOException $ex) {
             return I18N::translate('Unable to connect using this username and password. Your server gave the following error.') . '<br><br>' . e($ex->getMessage()) . '<br><br>' . I18N::translate('Check the settings and try again.');
         }
