@@ -632,15 +632,14 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * Get a list of birth dates.
+     * Get a count of births by month.
      *
-     * @param bool $sex
      * @param int  $year1
      * @param int  $year2
      *
-     * @return array
+     * @return Builder
      */
-    public function statsBirthQuery(bool $sex = false, int $year1 = -1, int $year2 = -1): array
+    public function statsBirthQuery(int $year1 = -1, int $year2 = -1): Builder
     {
         $query = DB::table('dates')
             ->select(['d_month', DB::raw('COUNT(*) AS total')])
@@ -653,8 +652,20 @@ class IndividualRepository implements IndividualRepositoryInterface
             $query->whereBetween('d_year', [$year1, $year2]);
         }
 
-        if ($sex) {
-            $query
+        return $query;
+    }
+
+     /**
+     * Get a count of births by month.
+     *
+     * @param int  $year1
+     * @param int  $year2
+     *
+     * @return Builder
+     */
+    public function statsBirthBySexQuery(int $year1 = -1, int $year2 = -1): Builder
+    {
+        return $this->statsBirthQuery($year1, $year2)
                 ->select(['d_month', 'i_sex', DB::raw('COUNT(*) AS total')])
                 ->join('individuals', function (JoinClause $join): void {
                     $join
@@ -662,9 +673,6 @@ class IndividualRepository implements IndividualRepositoryInterface
                         ->on('i_file', '=', 'd_file');
                 })
                 ->groupBy('i_sex');
-        }
-
-        return $query->get()->all();
     }
 
     /**
@@ -684,13 +692,12 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Get a list of death dates.
      *
-     * @param bool $sex
      * @param int  $year1
      * @param int  $year2
      *
-     * @return array
+     * @return Builder
      */
-    public function statsDeathQuery(bool $sex = false, int $year1 = -1, int $year2 = -1): array
+    public function statsDeathQuery(int $year1 = -1, int $year2 = -1): Builder
     {
         $query = DB::table('dates')
             ->select(['d_month', DB::raw('COUNT(*) AS total')])
@@ -703,8 +710,20 @@ class IndividualRepository implements IndividualRepositoryInterface
             $query->whereBetween('d_year', [$year1, $year2]);
         }
 
-        if ($sex) {
-            $query
+        return $query;
+    }
+
+    /**
+     * Get a list of death dates.
+     *
+     * @param int  $year1
+     * @param int  $year2
+     *
+     * @return Builder
+     */
+    public function statsDeathBySexQuery(int $year1 = -1, int $year2 = -1): Builder
+    {
+        return $this->statsDeathQuery($year1, $year2)
                 ->select(['d_month', 'i_sex', DB::raw('COUNT(*) AS total')])
                 ->join('individuals', function (JoinClause $join): void {
                     $join
@@ -712,9 +731,6 @@ class IndividualRepository implements IndividualRepositoryInterface
                         ->on('i_file', '=', 'd_file');
                 })
                 ->groupBy('i_sex');
-        }
-
-        return $query->get()->all();
     }
 
     /**

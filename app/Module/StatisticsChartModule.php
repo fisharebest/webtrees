@@ -274,14 +274,14 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
                         $z_axis = $this->axisAll();
-                        $rows   = $statistics->statsBirthQuery();
+                        $rows   = $statistics->statsBirthQuery()->get();
                         foreach ($rows as $row) {
                             $this->fillYData($row->d_month, 0, $row->total, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_SEX:
                         $z_axis = $this->axisSexes();
-                        $rows = $statistics->statsBirthQuery(true);
+                        $rows = $statistics->statsBirthBySexQuery()->get();
                         foreach ($rows as $row) {
                             $this->fillYData($row->d_month, $row->i_sex, $row->total, $x_axis, $z_axis, $ydata);
                         }
@@ -291,7 +291,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
-                            $rows = $statistics->statsBirthQuery(false, $prev_boundary, $boundary);
+                            $rows = $statistics->statsBirthQuery($prev_boundary, $boundary)->get();
                             foreach ($rows as $row) {
                                 $this->fillYData($row->d_month, $boundary, $row->total, $x_axis, $z_axis, $ydata);
                             }
@@ -323,14 +323,14 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
                         $z_axis = $this->axisAll();
-                        $rows   = $statistics->statsDeathQuery();
+                        $rows   = $statistics->statsDeathQuery()->get();
                         foreach ($rows as $row) {
                             $this->fillYData($row->d_month, 0, $row->total, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_SEX:
                         $z_axis = $this->axisSexes();
-                        $rows = $statistics->statsDeathQuery(true);
+                        $rows = $statistics->statsDeathBySexQuery()->get();
                         foreach ($rows as $row) {
                             $this->fillYData($row->d_month, $row->i_sex, $row->total, $x_axis, $z_axis, $ydata);
                         }
@@ -340,7 +340,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
-                            $rows = $statistics->statsDeathQuery(false, $prev_boundary, $boundary);
+                            $rows = $statistics->statsDeathQuery($prev_boundary, $boundary)->get();
                             foreach ($rows as $row) {
                                 $this->fillYData($row->d_month, $boundary, $row->total, $x_axis, $z_axis, $ydata);
                             }

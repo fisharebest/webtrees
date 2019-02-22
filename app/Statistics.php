@@ -97,8 +97,6 @@ class Statistics implements
         'getAllTagsTable',
         'getAllTagsText',
         'statsPlaces',
-        'statsBirthQuery',
-        'statsDeathQuery',
         'statsAgeQuery',
         'monthFirstChildQuery',
         'statsChildrenQuery',
@@ -989,9 +987,17 @@ class Statistics implements
     /**
      * @inheritDoc
      */
-    public function statsBirthQuery(bool $sex = false, int $year1 = -1, int $year2 = -1): array
+    public function statsBirthQuery(int $year1 = -1, int $year2 = -1): Builder
     {
-        return $this->individualRepository->statsBirthQuery($sex, $year1, $year2);
+        return $this->individualRepository->statsBirthQuery($year1, $year2);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function statsBirthBySexQuery(int $year1 = -1, int $year2 = -1): Builder
+    {
+        return $this->individualRepository->statsBirthBySexQuery($year1, $year2);
     }
 
     /**
@@ -1069,9 +1075,17 @@ class Statistics implements
     /**
      * @inheritDoc
      */
-    public function statsDeathQuery(bool $sex = false, int $year1 = -1, int $year2 = -1): array
+    public function statsDeathQuery(int $year1 = -1, int $year2 = -1): Builder
     {
-        return $this->individualRepository->statsDeathQuery($sex, $year1, $year2);
+        return $this->individualRepository->statsDeathQuery($year1, $year2);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function statsDeathBySexQuery(int $year1 = -1, int $year2 = -1): Builder
+    {
+        return $this->individualRepository->statsDeathBySexQuery($year1, $year2);
     }
 
     /**
@@ -1936,9 +1950,9 @@ class Statistics implements
     /**
      * @inheritDoc
      */
-    public function statsChildren(string $size = '220x200'): string
+    public function statsChildren(): string
     {
-        return $this->familyRepository->statsChildren($size);
+        return $this->familyRepository->statsChildren();
     }
 
     /**
