@@ -708,7 +708,7 @@ class FamilyRepository
                     ->on('d_gid', '=', 'l_to')
                     ->on('d_file', '=', 'l_file');
             })
-            ->joinSub($first_child_subquery, 'subquery', function(JoinClause $join): void {
+            ->joinSub($first_child_subquery, 'subquery', function (JoinClause $join): void {
                 $join
                     ->on('family_id', '=', 'l_from')
                     ->on('min_birth_jd', '=', 'd_julianday1');
