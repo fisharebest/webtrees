@@ -82,7 +82,7 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
         /** @var Statistics $statistics */
         $statistics = app()->make(Statistics::class);
 
-        $content = '<div class="logged_in_count">' . $statistics->usersLoggedIn() . '</div>';
+        $content = '<div class="logged_in_count">' . $statistics->usersLoggedInList() . '</div>';
 
         if ($ctype !== '') {
             return view('modules/block-template', [
