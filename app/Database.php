@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Exception;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 
@@ -41,18 +40,19 @@ class Database
 
         $capsule = new DB();
         $capsule->addConnection([
-            'driver'         => $config['dbtype'],
-            'host'           => $config['dbhost'],
-            'port'           => $config['dbport'],
-            'database'       => $config['dbname'],
-            'username'       => $config['dbuser'],
-            'password'       => $config['dbpass'],
-            'prefix'         => $config['tblpfx'],
-            'prefix_indexes' => true,
-            'charset'        => 'utf8',
-            'collation'      => 'utf8_unicode_ci',
-            'engine'         => 'InnoDB',
-            'modes'          => [
+            'driver'                  => $config['dbtype'],
+            'host'                    => $config['dbhost'],
+            'port'                    => $config['dbport'],
+            'database'                => $config['dbname'],
+            'username'                => $config['dbuser'],
+            'password'                => $config['dbpass'],
+            'prefix'                  => $config['tblpfx'],
+            'prefix_indexes'          => true,
+            'charset'                 => 'utf8',
+            'collation'               => 'utf8_unicode_ci',
+            'engine'                  => 'InnoDB',
+            'foreign_key_constraints' => true,
+            'modes'                   => [
                 'ANSI',
                 'STRICT_TRANS_TABLES',
                 'NO_ZERO_IN_DATE',
