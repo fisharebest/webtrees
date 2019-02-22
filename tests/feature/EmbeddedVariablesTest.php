@@ -40,7 +40,6 @@ use Fisharebest\Webtrees\Services\UserService;
  * @covers \Fisharebest\Webtrees\Statistics\Repository\EventRepository
  * @covers \Fisharebest\Webtrees\Statistics\Repository\PlaceRepository
  * @covers \Fisharebest\Webtrees\Statistics\Repository\UserRepository
- * @covers \Fisharebest\Webtrees\Statistics\AbstractGoogle
  * @covers \Fisharebest\Webtrees\Statistics\Google\ChartChildren
  * @covers \Fisharebest\Webtrees\Statistics\Google\ChartAge
  * @covers \Fisharebest\Webtrees\Statistics\Google\ChartCommonGiven
@@ -58,8 +57,8 @@ use Fisharebest\Webtrees\Services\UserService;
  * @covers \Fisharebest\Webtrees\Statistics\Google\ChartIndividualWithSources
  * @covers \Fisharebest\Webtrees\Statistics\Google\ChartBirth
  * @covers \Fisharebest\Webtrees\Statistics\Google\ChartDivorce
- * @covers \Fisharebest\Webtrees\Statistics\Helper\Country
- * @covers \Fisharebest\Webtrees\Statistics\Helper\Century
+ * @covers \Fisharebest\Webtrees\Statistics\Service\Country
+ * @covers \Fisharebest\Webtrees\Statistics\Service\Century
  */
 class EmbeddedVariablesTest extends TestCase
 {
