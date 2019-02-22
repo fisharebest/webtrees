@@ -32,8 +32,10 @@
         "ext-pcre": "*",
         "ext-pdo": "*",
         "ext-pdo_mysql": "*",
+        "ext-pdo_sqlite": "*",
         "ext-session": "*",
         "ext-simplexml": "*",
+        "ext-sqlite3": "*",
         "ext-xml": "*",
         "ext-zip": "*",
         "doctrine/dbal": "~2.9",
@@ -64,7 +66,6 @@
         "webuni/commonmark-table-extension": "~0.9"
     },
     "require-dev": {
-        "ext-pdo_sqlite": "*",
         "league/flysystem-memory": "*",
         "maximebf/debugbar": "*",
         "mockery/mockery": "*",

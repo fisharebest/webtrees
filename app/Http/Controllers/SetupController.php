@@ -25,17 +25,24 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Webtrees;
+use Illuminate\Database\Capsule\Manager;
+use function in_array;
 use PDOException;
+use SQLite3;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
+use function extension_loaded;
 
 /**
  * Controller for the installation wizard
  */
 class SetupController extends AbstractBaseController
 {
+    // As required by illuminate/database 5.8
+    private const MINIMUM_SQLITE_VERSION = '3.7.11';
+
     private const DBTYPES        = ['mysql', 'sqlite', 'pgsql', 'sqlsvr'];
     private const DEFAULT_DBTYPE = 'mysql';
 
@@ -155,27 +162,58 @@ class SetupController extends AbstractBaseController
      */
     private function step4DatabaseConnection(array $data): Response
     {
-        if (!in_array($data['dbtype'], self::DBTYPES)) {
-            $data['dbtype'] = self::DEFAULT_DBTYPE;
-
-            return $this->step3DatabaseType($data);
+        if (!extension_loaded('pdo')) {
+            $data['errors'][] = I18N::translate('The PHP extension “%s” is not installed.', 'pdo');
         }
 
         switch ($data['dbtype']) {
+            case 'mysql':
+                if (!extension_loaded('pdo_mysql')) {
+                    $data['errors'][] = I18N::translate('The PHP extension “%s” is not installed.', 'pdo_mysql');
+                }
+
+                break;
+
             case 'sqlite':
+                if (!extension_loaded('pdo_sqlite')) {
+                    $data['errors'][] = I18N::translate('The PHP extension “%s” is not installed.', 'pdo_sqlite');
+                }
+
+                if (!extension_loaded('sqlite3')) {
+                    $data['errors'][] = I18N::translate('The PHP extension “%s” is not installed.', 'sqlite3');
+                }
+
+                if (version_compare($this->sqliteVersion(), self::MINIMUM_SQLITE_VERSION) < 0) {
+                    $data['errors'][] = I18N::translate('SQLite version %s is installed. SQLite version %s or later is required.', $this->sqliteVersion(), self::MINIMUM_SQLITE_VERSION);
+                }
+
                 $data['warnings'][] = I18N::translate('SQLite is only suitable for small sites, testing and evaluation.');
+
                 if ($data['dbname'] === '') {
-                    $data['dbname'] ='webtrees';
+                    $data['dbname'] = 'webtrees';
                 }
                 break;
+
             case 'pgsql':
-                $data['warnings'][] = I18N::translate('Support for PostgreSQL is experimental.\') . \' \' . I18N::translate(\'Please report any problems to the developers.');
+                if (!extension_loaded('pdo_pgsql')) {
+                    $data['errors'][] = I18N::translate('The PHP extension “%s” is not installed.', 'pdo_pgsql');
+                }
+
+                $data['warnings'][] = I18N::translate('Support for PostgreSQL is experimental.');
                 break;
 
             case 'sqlsvr':
-                $data['warnings'][] = I18N::translate('Support for SQL Server is experimental.') . ' ' . I18N::translate('Please report any problems to the developers.');
+                if (!extension_loaded('pdo_odbc')) {
+                    $data['errors'][] = I18N::translate('The PHP extension “%s” is not installed.', 'pdo_odbc');
+                }
+
+                $data['warnings'][] = I18N::translate('Support for SQL Server is experimental.');
                 break;
 
+        }
+
+        if (!empty($data['errors'])) {
+            return $this->step3DatabaseType($data);
         }
 
         return $this->viewResponse('setup/step-4-database-' . $data['dbtype'], $data);
@@ -188,12 +226,13 @@ class SetupController extends AbstractBaseController
      */
     private function step5Administrator(array $data): Response
     {
-        $error = $this->checkDatabase($data);
+        try {
+            $this->checkDatabase($data);
+        } catch (Throwable $ex) {
+            $data['errors'][] = $ex->getMessage();
 
-        if ($error !== '') {
-            $data['errors'][] = $error;
-
-            return $this->step4DatabaseConnection($data);
+            // Don't jump to step 4, as the error will make it jump to step 3.
+            return $this->viewResponse('setup/step-4-database-' . $data['dbtype'], $data);
         }
 
         return $this->viewResponse('setup/step-5-administrator', $data);
@@ -225,6 +264,14 @@ class SetupController extends AbstractBaseController
     }
 
     /**
+     * @return string
+     */
+    private function sqliteVersion(): string
+    {
+        return SQLite3::version()['versionString'];
+    }
+
+    /**
      * @param string $wtname
      * @param string $wtuser
      * @param string $wtpass
@@ -250,34 +297,25 @@ class SetupController extends AbstractBaseController
      *
      * @param mixed $data
      *
-     * @return string
+     * @throws Exception
      */
-    private function checkDatabase(array $data): string
+    private function checkDatabase(array $data): void
     {
-        // The character ` is not valid in database or table names (even if escaped).
-        // The form should prevent the user from entering them.
-        if ($data['dbname'] === '') {
-            return 'Invalid database name';
-        }
-
-        // Try to create the database, if it does not already exist.
+        // Try to create the SQLite database, if it does not already exist.
         if ($data['dbtype'] === 'sqlite') {
             touch(WT_ROOT . 'data/' . $data['dbname'] . '.sqlite');
         }
 
+        // Try to create the MySQL database, if it does not already exist.
         if ($data['dbtype'] === 'mysql') {
+            $tmp = $data;
+            $tmp['dbname'] = '';
+            Database::connect($tmp);
+            Manager::connection()->statement('CREATE DATABASE IF NOT EXISTS `' . $data['dbname'] . '` COLLATE utf8_unicode_ci');
         }
 
-        try {
-            Database::connect($data);
-
-            //Database::exec("CREATE DATABASE IF NOT EXISTS `{$dbname}` COLLATE utf8_unicode_ci");
-            //Database::exec("USE `{$dbname}`");
-        } catch (PDOException $ex) {
-            return e($ex->getMessage()) . '<br><br>' . I18N::translate('Check the settings and try again.');
-        }
-
-        return '';
+        // Try to connect to the database.
+        Database::connect($data);
     }
 
     /**
@@ -299,18 +337,6 @@ class SetupController extends AbstractBaseController
         }
 
         return $text1 === $text2;
-    }
-
-    /**
-     * Check the language parameters are OK.
-     *
-     * @param Request $request
-     *
-     * @return void
-     */
-    private function checkLanguage(Request $request): void
-    {
-        $language = I18N::init($request->get('lang', ''));
     }
 
     /**
