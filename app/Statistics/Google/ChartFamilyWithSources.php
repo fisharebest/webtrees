@@ -18,15 +18,19 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\AbstractGoogle;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
-use Fisharebest\Webtrees\Tree;
 
 /**
  * A chart showing families with sources.
  */
-class ChartFamilyWithSources extends AbstractGoogle
+class ChartFamilyWithSources
 {
+    /**
+     * @var ModuleThemeInterface
+     */
+    private $theme;
+
     /**
      * @var ColorService
      */
@@ -34,13 +38,10 @@ class ChartFamilyWithSources extends AbstractGoogle
 
     /**
      * Constructor.
-     *
-     * @param Tree $tree
      */
-    public function __construct(Tree $tree)
+    public function __construct()
     {
-        parent::__construct($tree);
-
+        $this->theme         = app()->make(ModuleThemeInterface::class);
         $this->color_service = new ColorService();
     }
 

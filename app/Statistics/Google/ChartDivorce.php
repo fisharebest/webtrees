@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\AbstractGoogle;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\Service\CenturyService;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Tree;
@@ -27,8 +27,18 @@ use Illuminate\Database\Capsule\Manager as DB;
 /**
  * A chart showing the divorces by century.
  */
-class ChartDivorce extends AbstractGoogle
+class ChartDivorce
 {
+    /**
+     * @var Tree
+     */
+    private $tree;
+
+    /**
+     * @var ModuleThemeInterface
+     */
+    private $theme;
+
     /**
      * @var CenturyService
      */
@@ -46,8 +56,8 @@ class ChartDivorce extends AbstractGoogle
      */
     public function __construct(Tree $tree)
     {
-        parent::__construct($tree);
-
+        $this->tree            = $tree;
+        $this->theme           = app()->make(ModuleThemeInterface::class);
         $this->century_service = new CenturyService();
         $this->color_service   = new ColorService();
     }

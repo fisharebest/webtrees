@@ -60,7 +60,6 @@ class EmbeddedVariablesTest extends TestCase
      * @covers \Fisharebest\Webtrees\Statistics\Repository\Interfaces\BrowserRepositoryInterface
      * @covers \Fisharebest\Webtrees\Statistics\Repository\Interfaces\LatestUserRepositoryInterface
      * @covers \Fisharebest\Webtrees\Statistics\Repository\UserRepository
-     * @covers \Fisharebest\Webtrees\Statistics\AbstractGoogle
      * @covers \Fisharebest\Webtrees\Statistics\Google\ChartChildren
      * @covers \Fisharebest\Webtrees\Statistics\Google\ChartAge
      * @covers \Fisharebest\Webtrees\Statistics\Google\ChartCommonGiven
@@ -128,7 +127,6 @@ class EmbeddedVariablesTest extends TestCase
      * @covers \Fisharebest\Webtrees\Statistics\Repository\Interfaces\BrowserRepositoryInterface
      * @covers \Fisharebest\Webtrees\Statistics\Repository\Interfaces\LatestUserRepositoryInterface
      * @covers \Fisharebest\Webtrees\Statistics\Repository\UserRepository
-     * @covers \Fisharebest\Webtrees\Statistics\AbstractGoogle
      * @covers \Fisharebest\Webtrees\Statistics\Google\ChartChildren
      * @covers \Fisharebest\Webtrees\Statistics\Google\ChartAge
      * @covers \Fisharebest\Webtrees\Statistics\Google\ChartCommonGiven

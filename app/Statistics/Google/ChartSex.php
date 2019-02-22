@@ -18,12 +18,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 
 /**
  * A chart showing the distribution of males and females.
  */
-class ChartSex extends AbstractGoogle
+class ChartSex
 {
     /**
      * Generate a chart showing sex distribution.

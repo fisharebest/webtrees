@@ -18,14 +18,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
-use Fisharebest\Webtrees\Tree;
 
 /**
  * A chart showing the mortality.
  */
-class ChartMortality extends AbstractGoogle
+class ChartMortality
 {
     /**
      * @var ColorService
@@ -34,13 +32,9 @@ class ChartMortality extends AbstractGoogle
 
     /**
      * Constructor.
-     *
-     * @param Tree $tree
      */
-    public function __construct(Tree $tree)
+    public function __construct()
     {
-        parent::__construct($tree);
-
         $this->color_service = new ColorService();
     }
 

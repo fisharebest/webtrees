@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\AbstractGoogle;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
 use Fisharebest\Webtrees\Statistics\Repository\PlaceRepository;
 use Fisharebest\Webtrees\Statistics\Service\CountryService;
@@ -29,8 +29,18 @@ use Illuminate\Database\Query\JoinClause;
 /**
  * A chart showing the distribution of different events on a map.
  */
-class ChartDistribution extends AbstractGoogle
+class ChartDistribution
 {
+    /**
+     * @var Tree
+     */
+    private $tree;
+
+    /**
+     * @var ModuleThemeInterface
+     */
+    private $theme;
+
     /**
      * @var CountryService
      */
@@ -58,8 +68,8 @@ class ChartDistribution extends AbstractGoogle
      */
     public function __construct(Tree $tree)
     {
-        parent::__construct($tree);
-
+        $this->tree                 = $tree;
+        $this->theme                = app()->make(ModuleThemeInterface::class);
         $this->country_service      = new CountryService();
         $this->individualRepository = new IndividualRepository($tree);
         $this->placeRepository      = new PlaceRepository($tree);

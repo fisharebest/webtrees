@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 use Fisharebest\Webtrees\Statistics\Service\CenturyService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -27,8 +26,13 @@ use Illuminate\Database\Query\JoinClause;
 /**
  * A chart showing the average number of children by century.
  */
-class ChartChildren extends AbstractGoogle
+class ChartChildren
 {
+    /**
+     * @var Tree
+     */
+    private $tree;
+
     /**
      * @var CenturyService
      */
@@ -41,8 +45,7 @@ class ChartChildren extends AbstractGoogle
      */
     public function __construct(Tree $tree)
     {
-        parent::__construct($tree);
-
+        $this->tree            = $tree;
         $this->century_service = new CenturyService();
     }
 

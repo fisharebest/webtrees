@@ -19,15 +19,19 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\AbstractGoogle;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
-use Fisharebest\Webtrees\Tree;
 
 /**
  * A chart showing the top used media types.
  */
-class ChartMedia extends AbstractGoogle
+class ChartMedia
 {
+    /**
+     * @var ModuleThemeInterface
+     */
+    private $theme;
+
     /**
      * @var ColorService
      */
@@ -35,13 +39,10 @@ class ChartMedia extends AbstractGoogle
 
     /**
      * Constructor.
-     *
-     * @param Tree $tree
      */
-    public function __construct(Tree $tree)
+    public function __construct()
     {
-        parent::__construct($tree);
-
+        $this->theme         = app()->make(ModuleThemeInterface::class);
         $this->color_service = new ColorService();
     }
 
