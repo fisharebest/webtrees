@@ -989,12 +989,9 @@ class IndividualRepository implements IndividualRepositoryInterface
     {
         $records = $this->topTenOldestQuery('BOTH', $total);
 
-        return view(
-            'statistics/individuals/top10-nolist',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-nolist', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1008,12 +1005,9 @@ class IndividualRepository implements IndividualRepositoryInterface
     {
         $records = $this->topTenOldestQuery('BOTH', $total);
 
-        return view(
-            'statistics/individuals/top10-list',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-list', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1027,12 +1021,9 @@ class IndividualRepository implements IndividualRepositoryInterface
     {
         $records = $this->topTenOldestQuery('F', $total);
 
-        return view(
-            'statistics/individuals/top10-nolist',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-nolist', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1046,12 +1037,9 @@ class IndividualRepository implements IndividualRepositoryInterface
     {
         $records = $this->topTenOldestQuery('F', $total);
 
-        return view(
-            'statistics/individuals/top10-list',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-list', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1065,12 +1053,9 @@ class IndividualRepository implements IndividualRepositoryInterface
     {
         $records = $this->topTenOldestQuery('M', $total);
 
-        return view(
-            'statistics/individuals/top10-nolist',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-nolist', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1084,23 +1069,20 @@ class IndividualRepository implements IndividualRepositoryInterface
     {
         $records = $this->topTenOldestQuery('M', $total);
 
-        return view(
-            'statistics/individuals/top10-list',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-list', [
+            'records' => $records,
+        ]);
     }
 
     /**
      * Find the oldest living individuals.
      *
-     * @param string $sex
+     * @param string $sex   "M", "F" or "BOTH"
      * @param int    $total
      *
      * @return array
      */
-    private function topTenOldestAliveQuery(string $sex = 'BOTH', int $total = 10): array
+    private function topTenOldestAliveQuery(string $sex, int $total): array
     {
         $query = DB::table('dates')
             ->join('individuals', function (JoinClause $join): void {
@@ -1119,28 +1101,23 @@ class IndividualRepository implements IndividualRepositoryInterface
             $query->where('i_sex', '=', $sex);
         }
 
-        $individuals = $query
+        return $query
             ->groupBy(['i_id', 'i_file'])
             ->orderBy(DB::raw('MIN(d_julianday1)'))
             ->select('individuals.*')
             ->take($total)
             ->get()
             ->map(Individual::rowMapper())
-            ->filter(GedcomRecord::accessFilter());
+            ->filter(GedcomRecord::accessFilter())
+            ->map(function (Individual $individual): array {
+                $birth_jd = $individual->getBirthDate()->minimumJulianDay();
 
-        $top10 = [];
-
-        /** @var Individual $individual */
-        foreach ($individuals as $individual) {
-            $birth_jd = $individual->getBirthDate()->minimumJulianDay();
-
-            $top10[] = [
-                'person' => $individual,
-                'age'    => $this->calculateAge(WT_CLIENT_JD - $birth_jd),
-            ];
-        }
-
-        return $top10;
+                return [
+                    'person' => $individual,
+                    'age'    => $this->calculateAge(WT_CLIENT_JD - $birth_jd),
+                ];
+            })
+            ->all();
     }
 
     /**
@@ -1158,12 +1135,9 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         $records = $this->topTenOldestAliveQuery('BOTH', $total);
 
-        return view(
-            'statistics/individuals/top10-nolist',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-nolist', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1181,12 +1155,9 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         $records = $this->topTenOldestAliveQuery('BOTH', $total);
 
-        return view(
-            'statistics/individuals/top10-list',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-list', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1204,12 +1175,9 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         $records = $this->topTenOldestAliveQuery('F', $total);
 
-        return view(
-            'statistics/individuals/top10-nolist',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-nolist', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1227,12 +1195,9 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         $records = $this->topTenOldestAliveQuery('F', $total);
 
-        return view(
-            'statistics/individuals/top10-list',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-list', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1250,12 +1215,9 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         $records = $this->topTenOldestAliveQuery('M', $total);
 
-        return view(
-            'statistics/individuals/top10-nolist',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-nolist', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1273,23 +1235,20 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         $records = $this->topTenOldestAliveQuery('M', $total);
 
-        return view(
-            'statistics/individuals/top10-list',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-list', [
+            'records' => $records,
+        ]);
     }
 
     /**
      * Find the average lifespan.
      *
-     * @param string $sex
+     * @param string $sex        "M", "F" or "BOTH"
      * @param bool   $show_years
      *
      * @return string
      */
-    private function averageLifespanQuery(string $sex = 'BOTH', bool $show_years = false): string
+    private function averageLifespanQuery(string $sex, bool $show_years): string
     {
         $prefix = DB::connection()->getTablePrefix();
 

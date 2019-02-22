@@ -17,10 +17,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -80,51 +79,10 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
-        $anonymous = 0;
-        $logged_in = [];
-        $content   = '';
-        foreach ($this->user_service->allLoggedIn() as $user) {
-            if (Auth::isAdmin() || $user->getPreference('visibleonline')) {
-                $logged_in[] = $user;
-            } else {
-                $anonymous++;
-            }
-        }
-        $count_logged_in = count($logged_in);
-        $content .= '<div class="logged_in_count">';
-        if ($anonymous) {
-            $content .= I18N::plural('%s anonymous signed-in user', '%s anonymous signed-in users', $anonymous, I18N::number($anonymous));
-            if ($count_logged_in) {
-                $content .= '&nbsp;|&nbsp;';
-            }
-        }
-        if ($count_logged_in) {
-            $content .= I18N::plural('%s signed-in user', '%s signed-in users', $count_logged_in, I18N::number($count_logged_in));
-        }
-        $content .= '</div>';
-        $content .= '<div class="logged_in_list">';
-        if (Auth::check()) {
-            foreach ($logged_in as $user) {
-                $individual = Individual::getInstance($tree->getUserPreference($user, 'gedcomid'), $tree);
+        /** @var Statistics $statistics */
+        $statistics = app()->make(Statistics::class);
 
-                $content .= '<div class="logged_in_name">';
-                if ($individual) {
-                    $content .= '<a href="' . e($individual->url()) . '">' . e($user->realName()) . '</a>';
-                } else {
-                    $content .= e($user->realName());
-                }
-                $content .= ' - ' . e($user->userName());
-                if (Auth::id() !== $user->id() && $user->getPreference('contactmethod') !== 'none') {
-                    $content .= '<a href="' . e(route('message', ['to'  => $user->userName(), 'ged' => $tree->name()])) . '" class="btn btn-link" title="' . I18N::translate('Send a message') . '">' . view('icons/email') . '</a>';
-                }
-                $content .= '</div>';
-            }
-        }
-        $content .= '</div>';
-
-        if ($anonymous === 0 && $count_logged_in === 0) {
-            return '';
-        }
+        $content = '<div class="logged_in_count">' . $statistics->usersLoggedIn() . '</div>';
 
         if ($ctype !== '') {
             return view('modules/block-template', [

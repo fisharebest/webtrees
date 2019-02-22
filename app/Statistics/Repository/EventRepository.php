@@ -74,7 +74,7 @@ class EventRepository implements EventRepositoryInterface
      *
      * @return int
      */
-    private function getEventCount(array $events = []): int
+    private function getEventCount(array $events): int
     {
         $query = DB::table('dates')
             ->where('d_file', '=', $this->tree->id());

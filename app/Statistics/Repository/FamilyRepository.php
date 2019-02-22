@@ -635,12 +635,9 @@ class FamilyRepository
     {
         $records = $this->topTenFamilyQuery($total);
 
-        return view(
-            'statistics/families/top10-nolist',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/families/top10-nolist', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -654,12 +651,9 @@ class FamilyRepository
     {
         $records = $this->topTenFamilyQuery($total);
 
-        return view(
-            'statistics/families/top10-list',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/families/top10-list', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1284,34 +1278,30 @@ class FamilyRepository
                 ->orderBy(DB::raw('MIN(' . $prefix . 'husb.d_julianday1) - MIN(' . $prefix . 'wife.d_julianday1)'), 'DESC');
         }
 
-        $families = $query
+        return $query
             ->groupBy(['f_id', 'f_file'])
             ->select('families.*')
             ->take($total)
             ->get()
             ->map(Family::rowMapper())
-            ->filter(GedcomRecord::accessFilter());
+            ->filter(GedcomRecord::accessFilter())
+            ->map(function (Family $family) use ($age_dir): array {
+                $husb_birt_jd = $family->husband()->getBirthDate()->minimumJulianDay();
+                $wife_birt_jd = $family->wife()->getBirthDate()->minimumJulianDay();
 
-        $top10 = [];
+                if ($age_dir === 'DESC') {
+                    $diff = $wife_birt_jd - $husb_birt_jd;
+                } else {
+                    $diff = $husb_birt_jd - $wife_birt_jd;
+                }
 
-        /** @var Family $family */
-        foreach ($families as $family) {
-            $husb_birt_jd = $family->husband()->getBirthDate()->minimumJulianDay();
-            $wife_birt_jd = $family->wife()->getBirthDate()->minimumJulianDay();
+                return [
+                    'family' => $family,
+                    'age'    => $this->calculateAge($diff),
+                ];
 
-            if ($age_dir === 'DESC') {
-                $diff = $wife_birt_jd - $husb_birt_jd;
-            } else {
-                $diff = $husb_birt_jd - $wife_birt_jd;
-            }
-
-            $top10[] = [
-                'family' => $family,
-                'age'    => $this->calculateAge($diff),
-            ];
-        }
-
-        return $top10;
+            })
+            ->all();
     }
 
     /**
@@ -1325,12 +1315,9 @@ class FamilyRepository
     {
         $records = $this->ageBetweenSpousesQuery('DESC', $total);
 
-        return view(
-            'statistics/families/top10-nolist-spouses',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/families/top10-nolist-spouses', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1344,12 +1331,9 @@ class FamilyRepository
     {
         $records = $this->ageBetweenSpousesQuery('DESC', $total);
 
-        return view(
-            'statistics/families/top10-list-spouses',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/families/top10-list-spouses', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1363,12 +1347,9 @@ class FamilyRepository
     {
         $records = $this->ageBetweenSpousesQuery('ASC', $total);
 
-        return view(
-            'statistics/families/top10-nolist-spouses',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/families/top10-nolist-spouses', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1382,12 +1363,9 @@ class FamilyRepository
     {
         $records = $this->ageBetweenSpousesQuery('ASC', $total);
 
-        return view(
-            'statistics/families/top10-list-spouses',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/families/top10-list-spouses', [
+            'records' => $records,
+        ]);
     }
 
     /**

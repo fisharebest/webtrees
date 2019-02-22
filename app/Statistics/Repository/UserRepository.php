@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\UserRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
@@ -53,46 +54,43 @@ class UserRepository implements UserRepositoryInterface
     /**
      * Who is currently logged in?
      *
-     * @TODO - this is duplicated from the LoggedInUsersModule class.
-     *
-     * @param string $type
+     * @param string $type "list" or "nolist"
      *
      * @return string
      */
     private function usersLoggedInQuery($type = 'nolist'): string
     {
-        $content = '';
-
-        // List active users
-        $NumAnonymous = 0;
-        $loggedusers  = [];
+        $content   = '';
+        $anonymous = 0;
+        $logged_in = [];
 
         foreach ($this->user_service->allLoggedIn() as $user) {
             if (Auth::isAdmin() || $user->getPreference('visibleonline')) {
-                $loggedusers[] = $user;
+                $logged_in[] = $user;
             } else {
-                $NumAnonymous++;
+                $anonymous++;
             }
         }
 
-        $LoginUsers = \count($loggedusers);
-        if ($LoginUsers === 0 && $NumAnonymous === 0) {
-            return I18N::translate('No signed-in and no anonymous users');
+        $count_logged_in = \count($logged_in);
+
+        if ($count_logged_in === 0 && $anonymous === 0) {
+            $content .= I18N::translate('No signed-in and no anonymous users');
         }
 
-        if ($NumAnonymous > 0) {
-            $content .= '<b>' . I18N::plural('%s anonymous signed-in user', '%s anonymous signed-in users', $NumAnonymous, I18N::number($NumAnonymous)) . '</b>';
+        if ($anonymous > 0) {
+            $content .= '<b>' . I18N::plural('%s anonymous signed-in user', '%s anonymous signed-in users', $anonymous, I18N::number($anonymous)) . '</b>';
         }
 
-        if ($LoginUsers > 0) {
-            if ($NumAnonymous) {
+        if ($count_logged_in > 0) {
+            if ($anonymous) {
                 if ($type === 'list') {
                     $content .= '<br><br>';
                 } else {
                     $content .= ' ' . I18N::translate('and') . ' ';
                 }
             }
-            $content .= '<b>' . I18N::plural('%s signed-in user', '%s signed-in users', $LoginUsers, I18N::number($LoginUsers)) . '</b>';
+            $content .= '<b>' . I18N::plural('%s signed-in user', '%s signed-in users', $count_logged_in, I18N::number($count_logged_in)) . '</b>';
             if ($type === 'list') {
                 $content .= '<ul>';
             } else {
@@ -101,12 +99,20 @@ class UserRepository implements UserRepositoryInterface
         }
 
         if (Auth::check()) {
-            foreach ($loggedusers as $user) {
+            foreach ($logged_in as $user) {
                 if ($type === 'list') {
-                    $content .= '<li>' . e($user->realName()) . ' - ' . e($user->userName());
-                } else {
-                    $content .= e($user->realName()) . ' - ' . e($user->userName());
+                    $content .= '<li>';
                 }
+
+                $individual = Individual::getInstance($this->tree->getUserPreference($user, 'gedcomid'), $this->tree);
+
+                if ($individual instanceof Individual && $individual->canShow()) {
+                    $content .= '<a href="' . e($individual->url()) . '">' . e($user->realName()) . '</a>';
+                } else {
+                    $content .= e($user->realName());
+                }
+
+                $content .= ' - ' . e($user->userName());
 
                 if (($user->getPreference('contactmethod') !== 'none')
                     && (Auth::id() !== $user->id())
@@ -135,7 +141,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function usersLoggedIn(): string
     {
-        return $this->usersLoggedInQuery();
+        return $this->usersLoggedInQuery('nolist');
     }
 
     /**
