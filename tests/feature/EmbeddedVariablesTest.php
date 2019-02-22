@@ -83,6 +83,7 @@ class EmbeddedVariablesTest extends TestCase
         $user->setPreference('canadmin', '1');
         Auth::login($user);
 
+        $text = $statistics->embedTags('#getAllTagsTable#');
         $this->assertNotEquals('#getAllTagsTable#', $text);
     }
 
@@ -106,6 +107,7 @@ class EmbeddedVariablesTest extends TestCase
         $user->setPreference('canadmin', '1');
         Auth::login($user);
 
+        $text = $statistics->embedTags('#getAllTagsTable#');
         $this->assertNotEquals('#getAllTagsTable#', $text);
     }
 }
