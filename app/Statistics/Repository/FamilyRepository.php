@@ -28,7 +28,6 @@ use Fisharebest\Webtrees\Statistics\Google\ChartFamilyLargest;
 use Fisharebest\Webtrees\Statistics\Google\ChartMarriage;
 use Fisharebest\Webtrees\Statistics\Google\ChartMarriageAge;
 use Fisharebest\Webtrees\Statistics\Google\ChartNoChildrenFamilies;
-use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
@@ -416,23 +415,6 @@ class FamilyRepository
                 ];
             }
         }
-
-        // TODO
-        //        if (I18N::direction() === 'rtl') {
-        //            $top10 = str_replace([
-        //                '[',
-        //                ']',
-        //                '(',
-        //                ')',
-        //                '+',
-        //            ], [
-        //                '&rlm;[',
-        //                '&rlm;]',
-        //                '&rlm;(',
-        //                '&rlm;)',
-        //                '&rlm;+',
-        //            ], $top10);
-        //        }
 
         return $top10;
     }
@@ -1316,7 +1298,7 @@ class FamilyRepository
 
             $top10[] = [
                 'family' => $family,
-                'age'    => $this->calculateAge((int) $diff),
+                'age'    => $this->calculateAge($diff),
             ];
         }
 
@@ -1714,21 +1696,21 @@ class FamilyRepository
                 ->orderBy('d_julianday2')
                 ->get()
                 ->all();
-        } else {
-            $query = DB::table('dates')
-                ->where('d_file', '=', $this->tree->id())
-                ->where('d_fact', '=', 'MARR')
-                ->select(['d_month', DB::raw('COUNT(*) AS total')])
-                ->groupBy('d_month');
-
-            if ($year1 >= 0 && $year2 >= 0) {
-                $query->whereBetween('d_year', [$year1, $year2]);
-            }
-
-            return $query
-                ->get()
-                ->all();
         }
+
+        $query = DB::table('dates')
+            ->where('d_file', '=', $this->tree->id())
+            ->where('d_fact', '=', 'MARR')
+            ->select(['d_month', DB::raw('COUNT(*) AS total')])
+            ->groupBy('d_month');
+
+        if ($year1 >= 0 && $year2 >= 0) {
+            $query->whereBetween('d_year', [$year1, $year2]);
+        }
+
+        return $query
+            ->get()
+            ->all();
     }
 
     /**

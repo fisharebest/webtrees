@@ -1114,6 +1114,7 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         $top10 = [];
 
+        /** @var Individual $individual */
         foreach ($individuals as $individual) {
             $birth_jd = $individual->getBirthDate()->minimumJulianDay();
 
@@ -1777,7 +1778,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             return I18N::translate('This information is not available.');
         }
 
-        return (new ChartCommonGiven($this->tree))
+        return (new ChartCommonGiven())
             ->chartCommonGiven($tot_indi, $given, $color_from, $color_to);
     }
 
@@ -1819,7 +1820,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $tot_l = $this->totalLivingQuery();
         $tot_d = $this->totalDeceasedQuery();
 
-        return (new ChartMortality($this->tree))
+        return (new ChartMortality())
             ->chartMortality($tot_l, $tot_d, $color_living, $color_dead);
     }
 
@@ -1838,7 +1839,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $tot_indi        = $this->totalIndividualsQuery();
         $tot_indi_source = $this->totalIndisWithSourcesQuery();
 
-        return (new ChartIndividualWithSources($this->tree))
+        return (new ChartIndividualWithSources())
             ->chartIndisWithSources($tot_indi, $tot_indi_source, $color_from, $color_to);
     }
 
@@ -1857,7 +1858,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $tot_fam        = $this->totalFamiliesQuery();
         $tot_fam_source = $this->totalFamsWithSourcesQuery();
 
-        return (new ChartFamilyWithSources($this->tree))
+        return (new ChartFamilyWithSources())
             ->chartFamsWithSources($tot_fam, $tot_fam_source, $color_from, $color_to);
     }
 
@@ -1873,7 +1874,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $tot_f = $this->totalSexFemalesQuery();
         $tot_u = $this->totalSexUnknownQuery();
 
-        return (new ChartSex($this->tree))
+        return (new ChartSex())
             ->chartSex($tot_m, $tot_f, $tot_u, $color_female, $color_male, $color_unknown);
     }
 

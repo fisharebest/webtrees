@@ -15,37 +15,13 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Statistics;
-
-use Fisharebest\Webtrees\Module\ModuleThemeInterface;
-use Fisharebest\Webtrees\Tree;
+namespace Fisharebest\Webtrees\Statistics\Service;
 
 /**
- * Base class for all google charts.
+ * Functions for managing and manipulating colors.
  */
-abstract class AbstractGoogle
+class ColorService
 {
-    /**
-     * @var Tree
-     */
-    protected $tree;
-
-    /**
-     * @var ModuleThemeInterface
-     */
-    protected $theme;
-
-    /**
-     * Constructor.
-     *
-     * @param Tree $tree
-     */
-    public function __construct(Tree $tree)
-    {
-        $this->tree  = $tree;
-        $this->theme = app()->make(ModuleThemeInterface::class);
-    }
-
     /**
      * Interpolates the number of color steps between a given start and end color.
      *

@@ -18,21 +18,25 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\AbstractGoogle;
-use Fisharebest\Webtrees\Statistics\Helper\Century;
+use Fisharebest\Webtrees\Statistics\Service\CenturyService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 
 /**
- *
+ * A chart showing the marriage ages by century.
  */
-class ChartMarriageAge extends AbstractGoogle
+class ChartMarriageAge
 {
     /**
-     * @var Century
+     * @var Tree
      */
-    private $centuryHelper;
+    private $tree;
+
+    /**
+     * @var CenturyService
+     */
+    private $century_service;
 
     /**
      * Constructor.
@@ -41,9 +45,8 @@ class ChartMarriageAge extends AbstractGoogle
      */
     public function __construct(Tree $tree)
     {
-        parent::__construct($tree);
-
-        $this->centuryHelper = new Century();
+        $this->tree            = $tree;
+        $this->century_service = new CenturyService();
     }
 
     /**
@@ -58,7 +61,7 @@ class ChartMarriageAge extends AbstractGoogle
         $male = DB::table('dates as married')
             ->select([
                 DB::raw('ROUND(AVG(' . $prefix . 'married.d_julianday2 - ' . $prefix . 'birth.d_julianday1 - 182.5) / 365.25, 1) AS age'),
-                DB::raw('ROUND((' . $prefix . 'married.d_year - 50) / 100) AS century'),
+                DB::raw('ROUND((' . $prefix . 'married.d_year + 49) / 100) AS century'),
                 DB::raw("'M' as sex")
             ])
             ->join('families as fam', function (JoinClause $join) {
@@ -81,7 +84,7 @@ class ChartMarriageAge extends AbstractGoogle
         $female = DB::table('dates as married')
             ->select([
                 DB::raw('ROUND(AVG(' . $prefix . 'married.d_julianday2 - ' . $prefix . 'birth.d_julianday1 - 182.5) / 365.25, 1) AS age'),
-                DB::raw('ROUND((' . $prefix . 'married.d_year - 50) / 100) AS century'),
+                DB::raw('ROUND((' . $prefix . 'married.d_year + 49) / 100) AS century'),
                 DB::raw("'F' as sex")
             ])
             ->join('families as fam', function (JoinClause $join) {
@@ -135,7 +138,7 @@ class ChartMarriageAge extends AbstractGoogle
             $average_age = ($female_age + $male_age) / 2.0;
 
             $data[] = [
-                $this->centuryHelper->centuryName($century),
+                $this->century_service->centuryName($century),
                 $male_age,
                 $female_age,
                 $average_age,
