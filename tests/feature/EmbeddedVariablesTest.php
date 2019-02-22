@@ -74,7 +74,14 @@ class EmbeddedVariablesTest extends TestCase
         $tree       = $this->importTree('demo.ged');
         $statistics = new Statistics(new ModuleService(), $tree, new UserService());
 
+        // As visitor
         $text = $statistics->embedTags('#getAllTagsTable#');
+        $this->assertNotEquals('#getAllTagsTable#', $text);
+
+        // As member
+        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user->setPreference('canadmin', '1');
+        Auth::login($user);
 
         $this->assertNotEquals('#getAllTagsTable#', $text);
     }
@@ -90,7 +97,14 @@ class EmbeddedVariablesTest extends TestCase
         $tree->deleteGenealogyData(false);
         $statistics = new Statistics(new ModuleService(), $tree, new UserService());
 
+        // As visitor
         $text = $statistics->embedTags('#getAllTagsTable#');
+        $this->assertNotEquals('#getAllTagsTable#', $text);
+
+        // As member
+        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user->setPreference('canadmin', '1');
+        Auth::login($user);
 
         $this->assertNotEquals('#getAllTagsTable#', $text);
     }
