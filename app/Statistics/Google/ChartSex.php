@@ -21,7 +21,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 
 /**
- *
+ * A chart showing the distribution of males and females.
  */
 class ChartSex extends AbstractGoogle
 {

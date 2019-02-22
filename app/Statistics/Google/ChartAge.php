@@ -19,20 +19,20 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
-use Fisharebest\Webtrees\Statistics\Helper\Century;
+use Fisharebest\Webtrees\Statistics\Service\CenturyService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 
 /**
- *
+ * A chart showing the average age of individuals related to the death century.
  */
 class ChartAge extends AbstractGoogle
 {
     /**
-     * @var Century
+     * @var CenturyService
      */
-    private $centuryHelper;
+    private $century_service;
 
     /**
      * Constructor.
@@ -43,7 +43,7 @@ class ChartAge extends AbstractGoogle
     {
         parent::__construct($tree);
 
-        $this->centuryHelper = new Century();
+        $this->century_service = new CenturyService();
     }
 
     /**
@@ -58,7 +58,7 @@ class ChartAge extends AbstractGoogle
         return DB::table('individuals')
             ->select([
                 DB::raw('ROUND(AVG(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) / 365.25, 1) AS age'),
-                DB::raw('ROUND((' . $prefix . 'death.d_year - 50) / 100) AS century'),
+                DB::raw('ROUND((' . $prefix . 'death.d_year + 49) / 100) AS century'),
                 'i_sex AS sex'
             ])
             ->join('dates AS birth', function (JoinClause $join): void {
@@ -112,7 +112,7 @@ class ChartAge extends AbstractGoogle
             $average_age = ($female_age + $male_age) / 2.0;
 
             $data[] = [
-                $this->centuryHelper->centuryName($century),
+                $this->century_service->centuryName($century),
                 $male_age,
                 $female_age,
                 round($average_age, 1),

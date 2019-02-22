@@ -19,22 +19,22 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
-use Fisharebest\Webtrees\Statistics\Helper\Country;
 use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
 use Fisharebest\Webtrees\Statistics\Repository\PlaceRepository;
+use Fisharebest\Webtrees\Statistics\Service\CountryService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 
 /**
- * Create a chart showing where events occurred.
+ * A chart showing the distribution of different events on a map.
  */
 class ChartDistribution extends AbstractGoogle
 {
     /**
-     * @var Country
+     * @var CountryService
      */
-    private $countryHelper;
+    private $country_service;
 
     /**
      * @var IndividualRepository
@@ -60,7 +60,7 @@ class ChartDistribution extends AbstractGoogle
     {
         parent::__construct($tree);
 
-        $this->countryHelper        = new Country();
+        $this->country_service      = new CountryService();
         $this->individualRepository = new IndividualRepository($tree);
         $this->placeRepository      = new PlaceRepository($tree);
 
@@ -75,21 +75,21 @@ class ChartDistribution extends AbstractGoogle
      */
     private function getIso3166Countries(): array
     {
-        $countries = $this->countryHelper->getAllCountries();
+        $countries = $this->country_service->getAllCountries();
 
         // Get the country names for each language
-        $this->country_to_iso3166 = [];
+        $country_to_iso3166 = [];
 
         foreach (I18N::activeLocales() as $locale) {
             I18N::init($locale->languageTag());
 
-            foreach ($this->countryHelper->iso3166() as $three => $two) {
-                $this->country_to_iso3166[$three]             = $two;
-                $this->country_to_iso3166[$countries[$three]] = $two;
+            foreach ($this->country_service->iso3166() as $three => $two) {
+                $country_to_iso3166[$three]             = $two;
+                $country_to_iso3166[$countries[$three]] = $two;
             }
         }
 
-        return $this->country_to_iso3166;
+        return $country_to_iso3166;
     }
 
     /**
@@ -113,7 +113,7 @@ class ChartDistribution extends AbstractGoogle
             $data[] = [
                 [
                     'v' => $country,
-                    'f' => $this->countryHelper->mapTwoLetterToName($country),
+                    'f' => $this->country_service->mapTwoLetterToName($country),
                 ],
                 $count
             ];

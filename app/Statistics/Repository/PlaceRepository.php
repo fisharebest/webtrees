@@ -21,8 +21,8 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Statistics\Google\ChartDistribution;
-use Fisharebest\Webtrees\Statistics\Helper\Country;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\PlaceRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Service\CountryService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
@@ -38,9 +38,9 @@ class PlaceRepository implements PlaceRepositoryInterface
     private $tree;
 
     /**
-     * @var Country
+     * @var CountryService
      */
-    private $countryHelper;
+    private $country_service;
 
     /**
      * BirthPlaces constructor.
@@ -50,7 +50,7 @@ class PlaceRepository implements PlaceRepositoryInterface
     public function __construct(Tree $tree)
     {
         $this->tree          = $tree;
-        $this->countryHelper = new Country();
+        $this->country_service = new CountryService();
     }
 
     /**
@@ -266,7 +266,7 @@ class PlaceRepository implements PlaceRepositoryInterface
         $country_names = [];
         foreach (I18N::activeLocales() as $locale) {
             I18N::init($locale->languageTag());
-            $all_countries = $this->countryHelper->getAllCountries();
+            $all_countries = $this->country_service->getAllCountries();
             foreach ($all_countries as $country_code => $country_name) {
                 $country_names[$country_name] = $country_code;
             }
@@ -287,7 +287,7 @@ class PlaceRepository implements PlaceRepositoryInterface
         }
 
         // get all the user’s countries names
-        $all_countries = $this->countryHelper->getAllCountries();
+        $all_countries = $this->country_service->getAllCountries();
 
         foreach ($all_db_countries as $country_code => $country) {
             foreach ($country as $country_name => $tot) {

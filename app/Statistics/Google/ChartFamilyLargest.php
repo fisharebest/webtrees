@@ -20,13 +20,32 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
+use Fisharebest\Webtrees\Statistics\Service\ColorService;
+use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
 /**
- *
+ * A chart showing the largest families (Families with most children).
  */
 class ChartFamilyLargest extends AbstractGoogle
 {
+    /**
+     * @var ColorService
+     */
+    private $color_service;
+
+    /**
+     * Constructor.
+     *
+     * @param Tree $tree
+     */
+    public function __construct(Tree $tree)
+    {
+        parent::__construct($tree);
+
+        $this->color_service = new ColorService();
+    }
+
     /**
      * Returns the related database records.
      *
@@ -82,7 +101,7 @@ class ChartFamilyLargest extends AbstractGoogle
             }
         }
 
-        $colors = $this->interpolateRgb($color_from, $color_to, \count($data) - 1);
+        $colors = $this->color_service->interpolateRgb($color_from, $color_to, \count($data) - 1);
 
         return view(
             'statistics/other/charts/pie',
