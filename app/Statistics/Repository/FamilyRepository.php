@@ -683,11 +683,12 @@ class FamilyRepository
     /**
      * Find the month in the year of the birth of the first child.
      *
-     * @param bool $sex
+     * @param int $year1
+     * @param int $year2
      *
-     * @return stdClass[]
+     * @return Builder
      */
-    public function monthFirstChildQuery(bool $sex = false): array
+    public function monthFirstChildQuery(int $year1 = -1, int $year2 = -1): Builder
     {
         $first_child_subquery = DB::table('link')
             ->join('dates', function (JoinClause $join): void {
@@ -714,27 +715,35 @@ class FamilyRepository
                     ->on('min_birth_jd', '=', 'd_julianday1');
             })
             ->where('link.l_file', '=', $this->tree->id())
-            ->where('link.l_type', '=', 'CHIL');
+            ->where('link.l_type', '=', 'CHIL')
+            ->select(['d_month', DB::raw('COUNT(*) AS total')])
+            ->groupBy(['d_month']);
 
+        if ($year1 >= 0 && $year2 >= 0) {
+            $query->whereBetween('d_year', [$year1, $year2]);
+        }
 
-        if ($sex) {
-            $query
-                ->join('individuals', function (JoinClause $join) use ($sex): void {
+        return $query;
+    }
+
+    /**
+     * Find the month in the year of the birth of the first child.
+     *
+     * @param int $year1
+     * @param int $year2
+     *
+     * @return Builder
+     */
+    public function monthFirstChildBySexQuery(int $year1 = -1, int $year2 = -1): Builder
+    {
+        return $this->monthFirstChildQuery($year1, $year2)
+                ->join('individuals', function (JoinClause $join): void {
                     $join
                         ->on('i_file', '=', 'l_file')
                         ->on('i_id', '=', 'l_to');
                 })
                 ->select(['d_month', 'i_sex', DB::raw('COUNT(*) AS total')])
                 ->groupBy(['d_month', 'i_sex']);
-        } else {
-            $query
-                ->select(['d_month', DB::raw('COUNT(*) AS total')])
-                ->groupBy(['d_month']);
-        }
-
-        return $query
-            ->get()
-            ->all();
     }
 
     /**

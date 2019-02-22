@@ -414,14 +414,14 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
                         $z_axis = $this->axisAll();
-                        $rows   = $statistics->monthFirstChildQuery(false);
+                        $rows   = $statistics->monthFirstChildQuery()->get();
                         foreach ($rows as $row) {
                             $this->fillYData($row->d_month, 0, $row->total, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_SEX:
                         $z_axis = $this->axisSexes();
-                        $rows = $statistics->monthFirstChildQuery(true);
+                        $rows = $statistics->monthFirstChildBySexQuery()->get();
                         foreach ($rows as $row) {
                             $this->fillYData($row->d_month, $row->i_sex, $row->total, $x_axis, $z_axis, $ydata);
                         }
@@ -431,7 +431,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
-                            $rows = $statistics->statsMarriageQuery($prev_boundary, $boundary)->get();
+                            $rows = $statistics->monthFirstChildQuery($prev_boundary, $boundary)->get();
                             foreach ($rows as $row) {
                                 $this->fillYData($row->d_month, $boundary, $row->total, $x_axis, $z_axis, $ydata);
                             }

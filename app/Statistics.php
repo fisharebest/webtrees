@@ -98,7 +98,6 @@ class Statistics implements
         'getAllTagsText',
         'statsPlaces',
         'statsAgeQuery',
-        'monthFirstChildQuery',
         'statsChildrenQuery',
         'statsMarrAgeQuery',
     ];
@@ -1867,9 +1866,17 @@ class Statistics implements
     /**
      * @inheritDoc
      */
-    public function monthFirstChildQuery(bool $sex = false): array
+    public function monthFirstChildQuery(int $year1 = -1, int $year2 = -1): Builder
     {
-        return $this->familyRepository->monthFirstChildQuery($sex);
+        return $this->familyRepository->monthFirstChildQuery($year1, $year2);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function monthFirstChildBySexQuery(int $year1 = -1, int $year2 = -1): Builder
+    {
+        return $this->familyRepository->monthFirstChildBySexQuery($year1, $year2);
     }
 
     /**

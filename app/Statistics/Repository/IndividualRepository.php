@@ -655,7 +655,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         return $query;
     }
 
-     /**
+    /**
      * Get a count of births by month.
      *
      * @param int  $year1
