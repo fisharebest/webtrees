@@ -161,8 +161,21 @@ class SetupController extends AbstractBaseController
             return $this->step3DatabaseType($data);
         }
 
-        if ($data['dbtype'] === 'sqlite' && $data['dbname'] === '') {
-            $data['dbname'] ='webtrees';
+        switch ($data['dbtype']) {
+            case 'sqlite':
+                $data['warnings'][] = I18N::translate('SQLite is only suitable for small sites, testing and evaluation.');
+                if ($data['dbname'] === '') {
+                    $data['dbname'] ='webtrees';
+                }
+                break;
+            case 'pgsql':
+                $data['warnings'][] = I18N::translate('Support for PostgreSQL is experimental.\') . \' \' . I18N::translate(\'Please report any problems to the developers.');
+                break;
+
+            case 'sqlsvr':
+                $data['warnings'][] = I18N::translate('Support for SQL Server is experimental.') . ' ' . I18N::translate('Please report any problems to the developers.');
+                break;
+
         }
 
         return $this->viewResponse('setup/step-4-database-' . $data['dbtype'], $data);
