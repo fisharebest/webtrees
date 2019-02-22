@@ -15,6 +15,7 @@
  */
 declare(strict_types=1);
 
+use Carbon\Carbon;
 use Fisharebest\Localization\Locale as WebtreesLocale;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
@@ -105,7 +106,7 @@ try {
     }
 
     // Read the connection settings and create the database
-    Database::createInstance($database_config);
+    Database::connect($database_config);
 
     // Update the database schema, if necessary.
     app()->make(MigrationService::class)
@@ -161,7 +162,7 @@ if ($max_execution_time !== '' && strpos(ini_get('disable_functions'), 'set_time
 Session::start();
 
 // Note that the database/webservers may not be synchronised, so use DB time throughout.
-define('WT_TIMESTAMP', DB::select('SELECT UNIX_TIMESTAMP() AS unix_timestamp')[0]->unix_timestamp);
+define('WT_TIMESTAMP', Carbon::now()->timestamp);
 
 // Users get their own time-zone. Visitors get the site time-zone.
 try {

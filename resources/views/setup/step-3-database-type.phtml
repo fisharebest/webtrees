@@ -1,0 +1,79 @@
+<?php use Fisharebest\Webtrees\I18N; ?>
+
+<form method="POST" autocomplete="off">
+    <input name="route" type="hidden" value="setup">
+    <input name="lang" type="hidden" value="<?= e($lang) ?>">
+    <input name="dbname" type="hidden" value="<?= e($dbname) ?>">
+    <input name="tblpfx" type="hidden" value="<?= e($tblpfx) ?>">
+    <input name="wtname" type="hidden" value="<?= e($wtname) ?>">
+    <input name="wtuser" type="hidden" value="<?= e($wtuser) ?>">
+    <input name="wtpass" type="hidden" value="<?= e($wtpass) ?>">
+    <input name="wtemail" type="hidden" value="<?= e($wtemail) ?>">
+
+    <h2>
+        <?= I18N::translate('Connection to database server') ?>
+    </h2>
+
+    <?php foreach ($errors as $error) : ?>
+        <p class="alert alert-danger"><?= $error ?></p>
+    <?php endforeach ?>
+
+    <?php foreach ($warnings as $warning) : ?>
+        <p class="alert alert-warning"><?= $warning ?></p>
+    <?php endforeach ?>
+
+    <p>
+        <?= I18N::translate('webtrees needs a database to store your genealogy data.') ?>
+    </p>
+
+    <div class="row form-group">
+        <label class="col-form-label col-sm-3" for="dbhost">
+            <?= I18N::translate('Database type') ?>
+        </label>
+        <div class="col-sm-9">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-mysql" value="mysql" <?= $dbtype === 'mysql' ? 'checked' : '' ?>>
+                <label class="form-check-label" for="dbtype-mysql">
+                    MySQL
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-sqlite" value="sqlite" <?= $dbtype === 'sqlite' ? 'checked' : '' ?>>
+                <label class="form-check-label" for="dbtype-sqlite">
+                    SQLite
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-pgsql" value="pgsql" <?= $dbtype === 'pgsql' ? 'checked' : '' ?>>
+                <label class="form-check-label" for="dbtype-pgsql">
+                    PostgreSQL
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-sqlsrv" value="sqlsrv" <?= $dbtype === 'sqlsrv' ? 'checked' : '' ?>>
+                <label class="form-check-label" for="dbtype-sqlsrv">
+                    SQL Server
+                </label>
+            </div>
+
+            <p class="small text-muted">
+            </p>
+        </div>
+    </div>
+
+
+    <hr>
+
+    <div class="d-flex justify-content-between">
+        <button class="btn btn-secondary" name="step" type="submit" value="2">
+            <?= I18N::translate('previous') ?>
+        </button>
+
+        <button class="btn btn-primary" name="step" type="submit" value="4">
+            <?= I18N::translate('next') ?>
+        </button>
+    </div>
+</form>

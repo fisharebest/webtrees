@@ -20,9 +20,6 @@ namespace Fisharebest\Webtrees;
 use Exception;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
-use PDO;
-use PDOException;
-use PDOStatement;
 
 /**
  * Extend PHP's native PDO class.
@@ -35,13 +32,16 @@ class Database
      * @param string[] $config
      *
      * @return void
-     * @throws Exception
      */
-    public static function createInstance(array $config)
+    public static function connect(array $config): void
     {
+        if ($config['dbtype'] === 'sqlite') {
+            $config['dbname'] = WT_ROOT . 'data/' . $config['dbname'] . '.sqlite';
+        }
+
         $capsule = new DB();
         $capsule->addConnection([
-            'driver'         => 'mysql',
+            'driver'         => $config['dbtype'],
             'host'           => $config['dbhost'],
             'port'           => $config['dbport'],
             'database'       => $config['dbname'],
@@ -51,7 +51,7 @@ class Database
             'prefix_indexes' => true,
             'charset'        => 'utf8',
             'collation'      => 'utf8_unicode_ci',
-            'enigne'         => 'InnoDB',
+            'engine'         => 'InnoDB',
             'modes'          => [
                 'ANSI',
                 'STRICT_TRANS_TABLES',
@@ -80,19 +80,5 @@ class Database
 
             return $this->where($column, 'LIKE', '%' . $search . '%', $boolean);
         });
-    }
-
-    /**
-     * Execute an SQL statement, and log the result.
-     *
-     * @param string $sql The SQL statement to execute
-     *
-     * @return int The number of rows affected by this SQL query
-     */
-    public static function exec($sql): int
-    {
-        $sql = str_replace('##', self::$table_prefix, $sql);
-
-        return self::$pdo->exec($sql);
     }
 }
