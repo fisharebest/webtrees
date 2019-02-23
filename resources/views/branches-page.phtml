@@ -44,5 +44,5 @@
 </form>
 
 <?php if ($surname !== '') : ?>
-    <div class="wt-ajax-load wt-page-content wt-chart wt-branches" data-ajax-url="<?= e($router(['surname' => $surname, 'soundex_std' => $soundex_std, 'soundex_dm' => $soundex_dm, 'ged' => $tree->name()])) ?>"></div>
+    <div class="wt-ajax-load wt-page-content wt-chart wt-branches" data-ajax-url="<?= e(route('module', ['module' => $module, 'action' => 'List', 'surname' => $surname, 'soundex_std' => $soundex_std, 'soundex_dm' => $soundex_dm, 'ged' => $tree->name()])) ?>"></div>
 <?php endif ?>

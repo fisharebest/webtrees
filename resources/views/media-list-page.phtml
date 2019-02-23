@@ -63,7 +63,7 @@
             <button type="submit" name="action2" value="1" class="btn btn-primary">
                 <?= /* I18N: A button label. */ I18N::translate('search') ?>
             </button>
-            <a class="btn btn-secondary" href="<?= e($router(['ged' => $tree->name()])) ?>">
+            <a class="btn btn-secondary" href="<?= e(route('module', ['module' => $module, 'action' => $action, 'ged' => $tree->name()])) ?>">
                 <?= /* I18N: A button label. */ I18N::translate('reset') ?>
             </a>
         </div>
@@ -77,14 +77,14 @@
         <div class="row text-center">
             <div class="col">
                 <?php if ($page > 1) : ?>
-                    <a href="<?= e($router(['ged' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => 1])) ?>">
+                    <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'ged' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => 1])) ?>">
                         <?= I18N::translate('first') ?>
                     </a>
                 <?php endif ?>
             </div>
             <div class="col">
                 <?php if ($page > 1) : ?>
-                    <a href="<?= e($router(['ged' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => $page - 1])) ?>">
+                    <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'ged' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => $page - 1])) ?>">
                         <?= I18N::translate('previous') ?>
                     </a>
                 <?php endif ?>
@@ -94,14 +94,14 @@
             </div>
             <div class="col">
                 <?php if ($page < $pages) : ?>
-                    <a href="<?= e($router(['ged' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => $page + 1])) ?>">
+                    <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'ged' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => $page + 1])) ?>">
                         <?= I18N::translate('next') ?>
                     </a>
                 <?php endif ?>
             </div>
             <div class="col">
                 <?php if ($page < $pages) : ?>
-                    <a href="<?= e($router(['ged' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => $pages])) ?>">
+                    <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'ged' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => $pages])) ?>">
                         <?= I18N::translate('last') ?>
                     </a>
                 <?php endif ?>
@@ -183,14 +183,14 @@
         <div class="row text-center">
             <div class="col">
                 <?php if ($page > 1) : ?>
-                    <a href="<?= e($router(['ged' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => 1])) ?>">
+                    <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'ged' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => 1])) ?>">
                         <?= I18N::translate('first') ?>
                     </a>
                 <?php endif ?>
             </div>
             <div class="col">
                 <?php if ($page > 1) : ?>
-                    <a href="<?= e($router(['ged' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => $page - 1])) ?>">
+                    <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'ged' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => $page - 1])) ?>">
                         <?= I18N::translate('previous') ?>
                     </a>
                 <?php endif ?>
@@ -200,14 +200,14 @@
             </div>
             <div class="col">
                 <?php if ($page < $pages) : ?>
-                    <a href="<?= e($router(['ged' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => $page + 1])) ?>">
+                    <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'ged' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => $page + 1])) ?>">
                         <?= I18N::translate('next') ?>
                     </a>
                 <?php endif ?>
             </div>
             <div class="col">
                 <?php if ($page < $pages) : ?>
-                    <a href="<?= e($router(['ged' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => $pages])) ?>">
+                    <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'ged' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => $pages])) ?>">
                         <?= I18N::translate('last') ?>
                     </a>
                 <?php endif ?>

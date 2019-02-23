@@ -71,7 +71,7 @@ class FamilyListModule extends AbstractModule implements ModuleListInterface
         Auth::checkComponentAccess($this, 'list', $tree, $user);
       
         $listController = new ListController(app(IndividualListService::class), app(LocalizationService::class));
-        return $listController->familyList($request, $tree, $user);
+        return $listController->familyList($this, $request, $tree, $user);
     }
     
     public function listUrlAttributes(): array

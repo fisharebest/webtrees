@@ -66,15 +66,7 @@ class PlaceHierarchyController extends AbstractBaseController
      * @return Response
      */
     public function show(Request $request, Tree $tree, SearchService $search_service): Response
-    {
-        //route is assumed to be 'module'
-        $module = $request->get('module');
-        $action = $request->get('action');
-        
-        $router = function (array $params) use ($module, $action) {
-            return route('module', ['module' => $module, 'action' => $action] + $params);
-        };
-        
+    {        
         $action2    = $request->query->get('action2', 'hierarchy');
         $parent     = $request->query->get('parent', []);
         $fqpn       = implode(Gedcom::PLACE_SEPARATOR, array_reverse($parent));
@@ -114,6 +106,10 @@ class PlaceHierarchyController extends AbstractBaseController
 
         $breadcrumbs = $this->breadcrumbs($place);
 
+        //route is assumed to be 'module'
+        $module = $request->get('module');
+        $action = $request->get('action');
+        
         return $this->viewResponse(
             'places-page',
             [
@@ -127,7 +123,8 @@ class PlaceHierarchyController extends AbstractBaseController
                 'content'        => $content,
                 'showeventslink' => null !== $data && $place->gedcomName() !== '' && $action2 !== 'hierarchy-e',
                 'nextaction'     => $nextaction,
-                'router'         => $router,
+                'module'         => $module,
+                'action'         => $action,
             ]
         );
     }

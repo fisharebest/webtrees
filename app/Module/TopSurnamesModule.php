@@ -106,32 +106,24 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
             return $module instanceof IndividualListModule;
         });
         
-        $router = function (array $params) use ($module, $tree) {
-            if ($module instanceof IndividualListModule) {
-              return $module->listUrl($tree, $params);
-            } else {
-              return null;
-            }            
-        };
-        
         switch ($infoStyle) {
             case 'tagcloud':
                 uksort($all_surnames, [I18N::class, 'strcasecmp']);
-                $content = FunctionsPrintLists::surnameTagCloud($all_surnames, $router, true, $tree);
+                $content = FunctionsPrintLists::surnameTagCloud($all_surnames, $module, true, $tree);
                 break;
             case 'list':
                 uasort($all_surnames, [$this, 'surnameCountSort']);
-                $content = FunctionsPrintLists::surnameList($all_surnames, 1, true, $router, $tree);
+                $content = FunctionsPrintLists::surnameList($all_surnames, 1, true, $module, $tree);
                 break;
             case 'array':
                 uasort($all_surnames, [$this, 'surnameCountSort']);
-                $content = FunctionsPrintLists::surnameList($all_surnames, 2, true, $router, $tree);
+                $content = FunctionsPrintLists::surnameList($all_surnames, 2, true, $module, $tree);
                 break;
             case 'table':
             default:
                 $content = view('lists/surnames-table', [
                     'surnames' => $all_surnames,
-                    'router'   => $router,
+                    'module'   => $module,
                     'families' => false,
                     'tree'     => $tree,
                 ]);

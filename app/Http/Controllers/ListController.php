@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Services\IndividualListService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Session;
@@ -64,41 +65,39 @@ class ListController extends AbstractBaseController
     /**
      * Show a list of all individual or family records.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ?ModuleListInterface  $module
+     * @param Request               $request
+     * @param Tree                  $tree
+     * @param UserInterface         $user
      *
      * @return Response
      */
-    public function familyList(Request $request, Tree $tree, UserInterface $user): Response
+    public function familyList(?ModuleListInterface $moduleListInterface, Request $request, Tree $tree, UserInterface $user): Response
     {
-        return $this->individualOrFamilyList(true, $request, $tree, $user);
+        return $this->individualOrFamilyList($moduleListInterface, true, $request, $tree, $user);
     }
 
     /**
      * Show a list of all individual or family records.
-     *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * 
+     * @param ?ModuleListInterface  $module
+     * @param Request               $request
+     * @param Tree                  $tree
+     * @param UserInterface         $user
      *
      * @return Response
      */
-    public function individualList(Request $request, Tree $tree, UserInterface $user): Response
+    public function individualList(?ModuleListInterface $moduleListInterface, Request $request, Tree $tree, UserInterface $user): Response
     {
-        return $this->individualOrFamilyList(false, $request, $tree, $user);
+        return $this->individualOrFamilyList($moduleListInterface, false, $request, $tree, $user);
     }
     
-    public function individualOrFamilyList(bool $families, Request $request, Tree $tree, UserInterface $user): Response
+    public function individualOrFamilyList(?ModuleListInterface $moduleListInterface, bool $families, Request $request, Tree $tree, UserInterface $user): Response
     {
         // This action can show lists of both families and individuals.
         //route is assumed to be 'module'
         $module = $request->get('module');
         $action = $request->get('action');
-
-        $router = function (array $params) use ($module, $action) {
-            return route('module', ['module' => $module, 'action' => $action] + $params);
-        };
         
         ob_start();
 
@@ -233,7 +232,7 @@ class ListController extends AbstractBaseController
                 <?php foreach ($this->individual_list_service->surnameAlpha($show_marnm === 'yes', $families, WT_LOCALE, I18N::collation()) as $letter => $count) : ?>
                     <li class="wt-initials-list-item d-flex">
                         <?php if ($count > 0) : ?>
-                            <a href="<?= e($router(['alpha' => $letter, 'ged' => $tree->name()])) ?>" class="wt-initial px-1<?= $letter === $alpha ? ' active' : '' ?> '" title="<?= I18N::number($count) ?>"><?= $this->surnameInitial((string) $letter) ?></a>
+                            <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'alpha' => $letter, 'ged' => $tree->name()])) ?>" class="wt-initial px-1<?= $letter === $alpha ? ' active' : '' ?> '" title="<?= I18N::number($count) ?>"><?= $this->surnameInitial((string) $letter) ?></a>
                         <?php else : ?>
                             <span class="wt-initial px-1 text-muted"><?= $this->surnameInitial((string) $letter) ?></span>
 
@@ -244,7 +243,7 @@ class ListController extends AbstractBaseController
                 <?php if (Session::has('initiated')) : ?>
                     <!-- Search spiders don't get the "show all" option as the other links give them everything. -->
                     <li class="wt-initials-list-item d-flex">
-                        <a class="wt-initial px-1<?= $show_all === 'yes' ? ' active' : '' ?>" href="<?= e($router(['show_all' => 'yes'] + $params)) ?>"><?= I18N::translate('All') ?></a>
+                        <a class="wt-initial px-1<?= $show_all === 'yes' ? ' active' : '' ?>" href="<?= e(route('module', ['module' => $module, 'action' => $action, 'show_all' => 'yes'] + $params)) ?>"><?= I18N::translate('All') ?></a>
                     </li>
                 <?php endif ?>
             </ul>
@@ -253,13 +252,13 @@ class ListController extends AbstractBaseController
             <?php if (Session::has('initiated') && $show !== 'none') : ?>
                 <?php if ($show_marnm === 'yes') : ?>
                     <p>
-                        <a href="<?= e($router(['show' => $show, 'show_marnm' => 'no'] + $params)) ?>">
+                        <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'show' => $show, 'show_marnm' => 'no'] + $params)) ?>">
                             <?= I18N::translate('Exclude individuals with “%s” as a married name', $legend) ?>
                         </a>
                     </p>
                 <?php else : ?>
                     <p>
-                        <a href="<?= e($router(['show' => $show, 'show_marnm' => 'yes'] + $params)) ?>">
+                        <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'show' => $show, 'show_marnm' => 'yes'] + $params)) ?>">
                             <?= I18N::translate('Include individuals with “%s” as a married name', $legend) ?>
                         </a>
                     </p>
@@ -268,13 +267,13 @@ class ListController extends AbstractBaseController
                 <?php if ($alpha !== '@' && $alpha !== ',' && !$surname) : ?>
                     <?php if ($show === 'surn') : ?>
                         <p>
-                            <a href="<?= e($router(['show' => 'indi', 'show_marnm' => 'no'] + $params)) ?>">
+                            <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'show' => 'indi', 'show_marnm' => 'no'] + $params)) ?>">
                                 <?= I18N::translate('Show the list of individuals') ?>
                             </a>
                         </p>
                     <?php else : ?>
                         <p>
-                            <a href="<?= e($router(['show' => 'surn', 'show_marnm' => 'no'] + $params)) ?>">
+                            <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'show' => 'surn', 'show_marnm' => 'no'] + $params)) ?>">
                                 <?= I18N::translate('Show the list of surnames') ?>
                             </a>
                         </p>
@@ -292,17 +291,17 @@ class ListController extends AbstractBaseController
                     // Show the surname list
                     switch ($tree->getPreference('SURNAME_LIST_STYLE')) {
                         case 'style1':
-                            echo FunctionsPrintLists::surnameList($surns, 3, true, $router, $tree);
+                            echo FunctionsPrintLists::surnameList($surns, 3, true, $moduleListInterface, $tree);
                             break;
                         case 'style3':                            
-                            echo FunctionsPrintLists::surnameTagCloud($surns, $router, true, $tree);
+                            echo FunctionsPrintLists::surnameTagCloud($surns, $moduleListInterface, true, $tree);
                             break;
                         case 'style2':
                         default:
                             echo view('lists/surnames-table', [
                                 'surnames' => $surns,
                                 'families' => $families,
-                                'router' => $router,
+                                'router' => $moduleListInterface,
                             ]);
                             break;
                     }
@@ -332,9 +331,9 @@ class ListController extends AbstractBaseController
                                 echo '<li class="wt-initials-list-item d-flex">';
                                 if ($count > 0) {
                                     if ($show === 'indi' && $givn_initial === $falpha && $show_all_firstnames === 'no') {
-                                        echo '<a class="wt-initial px-1 active" href="' . e($router(['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($count) . '">' . $this->givenNameInitial((string) $givn_initial) . '</a>';
+                                        echo '<a class="wt-initial px-1 active" href="' . e(route('module', ['module' => $module, 'action' => $action, 'falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($count) . '">' . $this->givenNameInitial((string) $givn_initial) . '</a>';
                                     } else {
-                                        echo '<a class="wt-initial px-1" href="' . e($router(['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($count) . '">' . $this->givenNameInitial((string) $givn_initial) . '</a>';
+                                        echo '<a class="wt-initial px-1" href="' . e(route('module', ['module' => $module, 'action' => $action, 'falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($count) . '">' . $this->givenNameInitial((string) $givn_initial) . '</a>';
                                     }
                                 } else {
                                     echo '<span class="wt-initial px-1 text-muted">' . $this->givenNameInitial((string) $givn_initial) . '</span>';
@@ -347,7 +346,7 @@ class ListController extends AbstractBaseController
                                 if ($show_all_firstnames === 'yes') {
                                     echo '<span class="wt-initial px-1 warning">' . I18N::translate('All') . '</span>';
                                 } else {
-                                    echo '<a class="wt-initial px-1" href="' . e($router(['show_all_firstnames' => 'yes'] + $params)) . '" title="' . I18N::number($count) . '">' . I18N::translate('All') . '</a>';
+                                    echo '<a class="wt-initial px-1" href="' . e(route('module', ['module' => $module, 'action' => $action, 'show_all_firstnames' => 'yes'] + $params)) . '" title="' . I18N::number($count) . '">' . I18N::translate('All') . '</a>';
                                 }
                                 echo '</li>';
                             }
@@ -396,10 +395,6 @@ class ListController extends AbstractBaseController
         //route is assumed to be 'module'
         $module = $request->get('module');
         $action = $request->get('action');
-
-        $router = function (array $params) use ($module, $action) {
-            return route('module', ['module' => $module, 'action' => $action] + $params);
-        };
         
         $formats = GedcomTag::getFileFormTypes();
 
@@ -446,7 +441,6 @@ class ListController extends AbstractBaseController
             'pages'         => $pages,
             'subdirs'       => $subdirs,
             'title'         => I18N::translate('Media'),
-            'router'        => $router,
             'module'        => $module,
             'action'        => $action,
         ]);

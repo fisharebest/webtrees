@@ -25,19 +25,28 @@
                 <td data-sort="<?= e($surn) ?>">
                     <!-- Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc. -->
                     <?php foreach ($surns as $spfxsurn => $indis) : ?>
-                        <?php if ($spfxsurn) : ?>
-                            <?php if ($surn !== '') : ?>
-                                <a href="<?= $router(['surname' => $surn, 'ged' => $tree->name()]) ?>" dir="auto">
-                                    <?= e($spfxsurn) ?>
-                                </a>
+                        <?php if ($module instanceof IndividualListModule) : ?>
+                            <?php if ($spfxsurn) : ?>
+                                <?php if ($surn !== '') : ?>
+                                    <a href="<?= $module->listUrl($tree, ['surname' => $surn]) ?>" dir="auto">
+                                        <?= e($spfxsurn) ?>
+                                    </a>
+                                <?php else : ?>
+                                    <a href="<?= $module->listUrl($tree, ['alpha' => ',']) ?>" dir="auto">
+                                        <?= e($spfxsurn) ?>
+                                    </a>
+                                <?php endif ?>
                             <?php else : ?>
-                                <a href="<?= $router(['alpha' => ',', 'ged' => $tree->name()]) ?>" dir="auto">
-                                    <?= e($spfxsurn) ?>
-                                </a>
+                                <!-- No surname, but a value from "2 SURN"? A common workaround for toponyms, etc. -->
+                                <a href="<?= $module->listUrl($tree, ['surname' => $surn]) ?>" dir="auto"><?= e($surn) ?></a>
                             <?php endif ?>
                         <?php else : ?>
-                            <!-- No surname, but a value from "2 SURN"? A common workaround for toponyms, etc. -->
-                            <a href="<?= $router(['surname' => $surn, 'ged' => $tree->name()]) ?>" dir="auto"><?= e($surn) ?></a>
+                            <?php if ($spfxsurn) : ?>
+                                <span dir="auto"><?= e($spfxsurn) ?></span>
+                            <?php else : ?>
+                                <!-- No surname, but a value from "2 SURN"? A common workaround for toponyms, etc. -->
+                                <span dir="auto"><?= e($surn) ?></span>
+                            <?php endif ?>    
                         <?php endif ?>
                         <br>
                     <?php endforeach ?>

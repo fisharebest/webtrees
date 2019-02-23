@@ -27,7 +27,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Class IndividualListModule
+ * Class BranchesListModule
  */
 class BranchesListModule extends AbstractModule implements ModuleListInterface
 {

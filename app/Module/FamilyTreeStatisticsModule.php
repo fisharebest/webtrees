@@ -127,16 +127,8 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
             $module = app(ModuleService::class)->findByComponent('list', $tree, Auth::user())->first(function (ModuleInterface $module) {
                 return $module instanceof IndividualListModule;
             });
-
-            $router = function (array $params) use ($module, $tree) {
-                if ($module instanceof IndividualListModule) {
-                  return $module->listUrl($tree, $params);
-                } else {
-                  return null;
-                }            
-            };
             
-            $surnames = FunctionsPrintLists::surnameList($all_surnames, 2, false, $router, $tree);
+            $surnames = FunctionsPrintLists::surnameList($all_surnames, 2, false, $module, $tree);
         } else {
             $surnames = '';
         }

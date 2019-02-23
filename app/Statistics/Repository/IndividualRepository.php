@@ -562,19 +562,11 @@ class IndividualRepository implements IndividualRepositoryInterface
             return $module instanceof IndividualListModule;
         });
         
-        $router = function (array $params) use ($module, $tree) {
-            if ($module instanceof IndividualListModule) {
-              return $module->listUrl($tree, $params);
-            } else {
-              return null;
-            }            
-        };
-        
         return FunctionsPrintLists::surnameList(
             $surnames,
             ($type === 'list' ? 1 : 2),
             $show_tot,
-            $router,
+            $module,
             $this->tree
         );
     }
