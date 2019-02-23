@@ -43,7 +43,7 @@ class Migration38 implements MigrationInterface
                 $table->string('pl_place', 255);
                 $table->string('pl_long', 30)->nullable();
                 $table->string('pl_lati', 30)->nullable();
-                $table->integer('pl_zoom')->default(0);
+                $table->integer('pl_zoom')->nullable();
                 $table->string('pl_icon', 255)->nullable();
 
                 $table->index('pl_place');
