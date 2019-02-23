@@ -17,7 +17,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
+use Carbon\Carbon;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\ServerRepositoryInterface;
 
 /**
@@ -30,8 +33,10 @@ class ServerRepository implements ServerRepositoryInterface
      */
     public function serverDate(): string
     {
-        // TODO: Duplicates BrowserRepository::browserDate
-        return FunctionsDate::timestampToGedcomDate((int) WT_TIMESTAMP)->display();
+        $format   = strtr(I18N::dateFormat(), ['%' => '']);
+        $timezone = Site::getPreference('TIMEZONE', 'UTC');
+
+        return I18N::localTime(Carbon::now(), $format, $timezone);
     }
 
     /**
@@ -39,7 +44,10 @@ class ServerRepository implements ServerRepositoryInterface
      */
     public function serverTime(): string
     {
-        return date('g:i a');
+        $format   = strtr(I18N::timeFormat(), ['%' => '']);
+        $timezone = Site::getPreference('TIMEZONE', 'UTC');
+
+        return I18N::localTime(Carbon::now(), $format, $timezone);
     }
 
     /**
@@ -47,7 +55,9 @@ class ServerRepository implements ServerRepositoryInterface
      */
     public function serverTime24(): string
     {
-        return date('G:i');
+        $timezone = Site::getPreference('TIMEZONE', 'UTC');
+
+        return I18N::localTime(Carbon::now(), 'G:i', $timezone);
     }
 
     /**
@@ -55,6 +65,8 @@ class ServerRepository implements ServerRepositoryInterface
      */
     public function serverTimezone(): string
     {
-        return date('T');
+        $timezone = Site::getPreference('TIMEZONE', 'UTC');
+
+        return I18N::localTime(Carbon::now(), 'T', $timezone);
     }
 }

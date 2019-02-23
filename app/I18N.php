@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Carbon\Carbon;
 use Collator;
 use Exception;
 use Fisharebest\Localization\Locale;
@@ -327,7 +328,6 @@ class I18N
 
     /**
      * Convert the digits 0-9 into the local script
-     *
      * Used for years, etc., where we do not want thousands-separators, decimals, etc.
      *
      * @param string|int $n
@@ -522,7 +522,6 @@ class I18N
 
     /**
      * Translate a number into the local representation.
-     *
      * e.g. 12345.67 becomes
      * en: 12,345.67
      * fr: 12 345,67
@@ -540,7 +539,6 @@ class I18N
 
     /**
      * Translate a fraction into a percentage.
-     *
      * e.g. 0.123 becomes
      * en: 12.3%
      * fr: 12,3 %
@@ -578,11 +576,8 @@ class I18N
 
     /**
      * UTF8 version of PHP::strrev()
-     *
      * Reverse RTL text for third-party libraries such as GD2 and googlechart.
-     *
      * These do not support UTF8 text direction, so we must mimic it for them.
-     *
      * Numbers are always rendered LTR, even in RTL text.
      * The visual direction of characters such as parentheses should be reversed.
      *
@@ -623,7 +618,6 @@ class I18N
 
     /**
      * Return the direction (ltr or rtl) for a given script
-     *
      * The PHP/intl library does not provde this information, so we need
      * our own lookup table.
      *
@@ -806,7 +800,6 @@ class I18N
 
     /**
      * Translate a string, and then substitute placeholders
-     *
      * echo I18N::translate('Hello World!');
      * echo I18N::translate('The %s sat on the mat', 'cat');
      *
@@ -838,5 +831,27 @@ class I18N
         $message = self::$translator->translateContext($context, $message);
 
         return sprintf($message, ...$args);
+    }
+
+    /**
+     * Display a timestamp in the user's local timezone.
+     *
+     * @param Carbon $timestamp
+     * @param string $format
+     * @param string $timezone
+     *
+     * @return string
+     */
+    public static function localTime(Carbon $timestamp, string $format = '', string $timezone = ''): string
+    {
+        $format = $format ?: strtr(self::dateFormat() . ' ' . self::timeFormat(), ['%' => '']);
+
+        $timezone = $timezone ?: Auth::user()->getPreference('TIMEZONE', Site::getPreference('TIMEZONE', 'UTC'));
+
+        $local_timestamp = $timestamp->copy();
+
+        $local_timestamp->tz = $timezone;
+
+        return $local_timestamp->format($format);
     }
 }

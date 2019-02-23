@@ -163,24 +163,8 @@ if ($max_execution_time !== '' && strpos(ini_get('disable_functions'), 'set_time
 // Sessions
 Session::start();
 
-// Note that the database/webservers may not be synchronised, so use DB time throughout.
-define('WT_TIMESTAMP', Carbon::now()->timestamp);
-
-// Users get their own time-zone. Visitors get the site time-zone.
-try {
-    if (Auth::check()) {
-        date_default_timezone_set(Auth::user()->getPreference('TIMEZONE'));
-    } else {
-        date_default_timezone_set(Site::getPreference('TIMEZONE'));
-    }
-} catch (ErrorException $exception) {
-    // Server upgrades and migrations can leave us with invalid timezone settings.
-    date_default_timezone_set('UTC');
-}
-
-define('WT_TIMESTAMP_OFFSET', (new DateTime('now'))->getOffset());
-
-define('WT_CLIENT_JD', 2440588 + intdiv(WT_TIMESTAMP + WT_TIMESTAMP_OFFSET, 86400));
+define('WT_TIMESTAMP', Carbon::now('UTC')->timestamp);
+define('WT_CLIENT_JD', 2440588 + intdiv(WT_TIMESTAMP, 86400));
 
 // Update the last-login time no more than once a minute
 if (WT_TIMESTAMP - Session::get('activity_time') >= 60) {

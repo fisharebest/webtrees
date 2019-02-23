@@ -50,10 +50,11 @@ class Database
             'password'                => $config['dbpass'],
             'prefix'                  => $config['tblpfx'],
             'prefix_indexes'          => true,
+            // For MySQL
             'charset'                 => 'utf8',
             'collation'               => 'utf8_unicode_ci',
+            'timezone'                => '+00:00',
             'engine'                  => 'InnoDB',
-            'foreign_key_constraints' => true,
             'modes'                   => [
                 'ANSI',
                 'STRICT_TRANS_TABLES',
@@ -61,6 +62,8 @@ class Database
                 'NO_ZERO_DATE',
                 'ERROR_FOR_DIVISION_BY_ZERO',
             ],
+            // For SQLite
+            'foreign_key_constraints' => true,
         ]);
         $capsule->setAsGlobal();
 

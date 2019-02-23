@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
+use Carbon\Carbon;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\BrowserRepositoryInterface;
@@ -31,8 +32,9 @@ class BrowserRepository implements BrowserRepositoryInterface
      */
     public function browserDate(): string
     {
-        // TODO: Duplicates ServerRepository::serverDate
-        return FunctionsDate::timestampToGedcomDate((int) WT_TIMESTAMP)->display();
+        $format = strtr(I18N::dateFormat(), ['%' => '']);
+
+        return I18N::localTime(Carbon::now(), $format);
     }
 
     /**
@@ -40,10 +42,9 @@ class BrowserRepository implements BrowserRepositoryInterface
      */
     public function browserTime(): string
     {
-        return date(
-            str_replace('%', '', I18N::timeFormat()),
-            WT_TIMESTAMP + WT_TIMESTAMP_OFFSET
-        );
+        $format = strtr(I18N::timeFormat(), ['%' => '']);
+
+        return I18N::localTime(Carbon::now(), $format);
     }
 
     /**
@@ -51,6 +52,6 @@ class BrowserRepository implements BrowserRepositoryInterface
      */
     public function browserTimezone(): string
     {
-        return date('T', WT_TIMESTAMP + WT_TIMESTAMP_OFFSET);
+        return I18N::localTime(Carbon::now(), 'T');
     }
 }
