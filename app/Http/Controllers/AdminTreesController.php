@@ -362,12 +362,15 @@ class AdminTreesController extends AbstractBaseController
 
         if (Tree::findByName($tree_name)) {
             FlashMessages::addMessage(I18N::translate('The family tree “%s” already exists.', e($tree_name)), 'danger');
+
+            $url = route('admin-trees');
         } else {
             $tree = Tree::create($tree_name, $tree_title);
             FlashMessages::addMessage(I18N::translate('The family tree “%s” has been created.', e($tree->name())), 'success');
+
+            $url = route('admin-trees', ['ged' => $tree->name()]);
         }
 
-        $url = route('admin-trees', ['ged' => $tree->name()]);
 
         return new RedirectResponse($url);
     }

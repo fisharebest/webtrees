@@ -18,21 +18,25 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\AbstractGoogle;
-use Fisharebest\Webtrees\Statistics\Helper\Century;
+use Fisharebest\Webtrees\Statistics\Service\CenturyService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 
 /**
- *
+ * A chart showing the average number of children by century.
  */
-class ChartChildren extends AbstractGoogle
+class ChartChildren
 {
     /**
-     * @var Century
+     * @var Tree
      */
-    private $centuryHelper;
+    private $tree;
+
+    /**
+     * @var CenturyService
+     */
+    private $century_service;
 
     /**
      * Constructor.
@@ -41,9 +45,8 @@ class ChartChildren extends AbstractGoogle
      */
     public function __construct(Tree $tree)
     {
-        parent::__construct($tree);
-
-        $this->centuryHelper = new Century();
+        $this->tree            = $tree;
+        $this->century_service = new CenturyService();
     }
 
     /**
@@ -55,7 +58,7 @@ class ChartChildren extends AbstractGoogle
     {
         $query = DB::table('families')
             ->selectRaw('ROUND(AVG(f_numchil), 2) AS num')
-            ->selectRaw('ROUND((d_year - 50) / 100) AS century')
+            ->selectRaw('ROUND((d_year + 49) / 100) AS century')
             ->join('dates', function (JoinClause $join) {
                 $join->on('d_file', '=', 'f_file')
                     ->on('d_gid', '=', 'f_id');
@@ -86,7 +89,7 @@ class ChartChildren extends AbstractGoogle
 
         foreach ($this->queryRecords() as $record) {
             $data[] = [
-                $this->centuryHelper->centuryName((int) $record->century),
+                $this->century_service->centuryName((int) $record->century),
                 (float) $record->num
             ];
         }

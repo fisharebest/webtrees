@@ -18,13 +18,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Exception;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 use GuzzleHttp\Client;
+use Illuminate\Database\Capsule\Manager as DB;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
@@ -184,9 +184,11 @@ class AdminUpgradeController extends AbstractBaseController
      */
     private function wizardStepPending(): Response
     {
-        $changes = Database::prepare("SELECT 1 FROM `##change` WHERE status='pending' LIMIT 1")->fetchOne();
+        $changes_exist = DB::table('change')
+            ->where('status', '=', 'pending')
+            ->exists();
 
-        if (empty($changes)) {
+        if (!$changes_exist) {
             return $this->success(I18N::translate('There are no pending changes.'));
         }
 

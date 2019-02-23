@@ -15,6 +15,7 @@
  */
 declare(strict_types=1);
 
+use Carbon\Carbon;
 use Fisharebest\Localization\Locale as WebtreesLocale;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
@@ -105,12 +106,13 @@ try {
     }
 
     // Read the connection settings and create the database
-    Database::createInstance($database_config);
+    Database::connect($database_config);
 
     // Update the database schema, if necessary.
     app()->make(MigrationService::class)
         ->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
 } catch (PDOException $exception) {
+    defined('WT_DATA_DIR') || define('WT_DATA_DIR', 'data/');
     I18N::init();
     if ($exception->getCode() === 1045) {
         // Error during connection?
@@ -125,6 +127,7 @@ try {
 
     return;
 } catch (Throwable $exception) {
+    defined('WT_DATA_DIR') || define('WT_DATA_DIR', 'data/');
     I18N::init();
     $content  = view('errors/database-connection', ['error' => $exception->getMessage()]);
     $html     = view('layouts/error', ['content' => $content]);
@@ -160,24 +163,8 @@ if ($max_execution_time !== '' && strpos(ini_get('disable_functions'), 'set_time
 // Sessions
 Session::start();
 
-// Note that the database/webservers may not be synchronised, so use DB time throughout.
-define('WT_TIMESTAMP', DB::select('SELECT UNIX_TIMESTAMP() AS unix_timestamp')[0]->unix_timestamp);
-
-// Users get their own time-zone. Visitors get the site time-zone.
-try {
-    if (Auth::check()) {
-        date_default_timezone_set(Auth::user()->getPreference('TIMEZONE'));
-    } else {
-        date_default_timezone_set(Site::getPreference('TIMEZONE'));
-    }
-} catch (ErrorException $exception) {
-    // Server upgrades and migrations can leave us with invalid timezone settings.
-    date_default_timezone_set('UTC');
-}
-
-define('WT_TIMESTAMP_OFFSET', (new DateTime('now'))->getOffset());
-
-define('WT_CLIENT_JD', 2440588 + intdiv(WT_TIMESTAMP + WT_TIMESTAMP_OFFSET, 86400));
+define('WT_TIMESTAMP', Carbon::now('UTC')->timestamp);
+define('WT_CLIENT_JD', 2440588 + intdiv(WT_TIMESTAMP, 86400));
 
 // Update the last-login time no more than once a minute
 if (WT_TIMESTAMP - Session::get('activity_time') >= 60) {

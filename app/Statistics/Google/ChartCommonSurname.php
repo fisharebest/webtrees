@@ -18,18 +18,29 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\AbstractGoogle;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Tree;
 
 /**
- *
+ * A chart showing the top surnames.
  */
-class ChartCommonSurname extends AbstractGoogle
+class ChartCommonSurname
 {
+    /**
+     * @var ModuleThemeInterface
+     */
+    private $theme;
+
     /**
      * @var string
      */
     private $surname_tradition;
+
+    /**
+     * @var ColorService
+     */
+    private $color_service;
 
     /**
      * Constructor.
@@ -38,9 +49,9 @@ class ChartCommonSurname extends AbstractGoogle
      */
     public function __construct(Tree $tree)
     {
-        parent::__construct($tree);
-
-        $this->surname_tradition = $this->tree->getPreference('SURNAME_TRADITION');
+        $this->theme             = app()->make(ModuleThemeInterface::class);
+        $this->surname_tradition = $tree->getPreference('SURNAME_TRADITION');
+        $this->color_service     = new ColorService();
     }
 
     /**
@@ -135,7 +146,7 @@ class ChartCommonSurname extends AbstractGoogle
             $tot_indi - $tot
         ];
 
-        $colors = $this->interpolateRgb($color_from, $color_to, \count($data) - 1);
+        $colors = $this->color_service->interpolateRgb($color_from, $color_to, \count($data) - 1);
 
         return view(
             'statistics/other/charts/pie',

@@ -25,22 +25,51 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Webtrees;
+use Illuminate\Database\Capsule\Manager;
+use function in_array;
 use PDOException;
+use SQLite3;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
+use function extension_loaded;
 
 /**
  * Controller for the installation wizard
  */
 class SetupController extends AbstractBaseController
 {
+    // As required by illuminate/database 5.8
+    private const MINIMUM_SQLITE_VERSION = '3.7.11';
+
+    private const DBTYPES        = ['mysql', 'sqlite', 'pgsql', 'sqlsvr'];
+    private const DEFAULT_DBTYPE = 'mysql';
+
+    // We need this information to complete the setup
+    private const DEFAULT_DATA = [
+        'lang'    => '',
+        'dbtype'  => 'mysql',
+        'dbhost'  => '',
+        'dbport'  => '',
+        'dbuser'  => '',
+        'dbpass'  => '',
+        'dbname'  => '',
+        'tblpfx'  => 'wt_',
+        'wtname'  => '',
+        'wtuser'  => '',
+        'wtpass'  => '',
+        'wtemail' => '',
+    ];
+
     /** @var MigrationService */
     private $migration_service;
 
     /** @var UserService */
     private $user_service;
+
+    /** @var string */
+    protected $layout = 'layouts/setup';
 
     /**
      * SetupController constructor.
@@ -63,82 +92,183 @@ class SetupController extends AbstractBaseController
      */
     public function setup(Request $request): Response
     {
-        define('WT_LOCALE', I18N::init('en-US'));
+        $step = (int) $request->get('step', '1');
+        $data = $this->userData($request);
 
-        $step     = (int) $request->get('step', '1');
-        $errors   = $this->serverErrors();
-        $warnings = $this->serverWarnings();
-        $data     = $this->extractParameters($request);
+        $data['lang']         = I18N::init($request->get('lang', $data['lang']));
+        $data['errors']       = $this->serverErrors();
+        $data['warnings']     = $this->serverWarnings();
+        $data['cpu_limit']    = $this->maxExecutionTime();
+        $data['locales']      = I18N::installedLocales();
+        $data['memory_limit'] = $this->memoryLimit();
 
-        if ($data['lang'] === '') {
-            $data['lang'] = Locale::httpAcceptLanguage($_SERVER, I18N::installedLocales(), new LocaleEnUs())->languageTag();
-        }
-
-        if ($data['dbuser'] !== '') {
-            $db_conn_error = $this->checkDatabaseConnection($data['dbhost'], $data['dbport'], $data['dbuser'], $data['dbpass']);
-        } else {
-            $db_conn_error = '';
-        }
-
-        if ($data['dbname'] !== '') {
-            $db_name_error = $this->checkDatabaseName($data['dbhost'], $data['dbport'], $data['dbuser'], $data['dbpass'], $data['dbname'], $data['tblpfx']);
-        } else {
-            $db_name_error = '';
-        }
-
-        if ($data['wtname'] !== '') {
-            $wt_user_error = $this->checkAdminUser($data['wtname'], $data['wtuser'], $data['wtpass'], $data['wtemail']);
-        } else {
-            $wt_user_error = '';
-        }
-
-        $data['cpu_limit']     = $this->maxExecutionTime();
-        $data['db_conn_error'] = $db_conn_error;
-        $data['db_name_error'] = $db_name_error;
-        $data['errors']        = $errors;
-        $data['locales']       = I18N::installedLocales();
-        $data['memory_limit']  = $this->memoryLimit();
-        $data['warnings']      = $warnings;
-        $data['wt_user_error'] = $wt_user_error;
-
-        if ($wt_user_error && $step > 5) {
-            $step = 5;
-        }
-        if ($db_name_error && $step > 4) {
-            $step = 4;
-        }
-        if ($db_conn_error && $step > 3) {
-            $step = 3;
-        }
-        if (!empty($errors) && $step > 2) {
-            $step = 2;
-        }
-        if ($this->checkLanguage($request) === false && $step > 1) {
-            $step = 1;
-        }
+        define('WT_LOCALE', $data['lang']);
 
         switch ($step) {
             default:
             case 1:
-                return $this->viewResponse('setup/step-1-language', $data);
+                return $this->step1Language($data);
             case 2:
-                return $this->viewResponse('setup/step-2-server-checks', $data);
+                return $this->step2CheckServer($data);
             case 3:
-                return $this->viewResponse('setup/step-3-database-connection', $data);
+                return $this->step3DatabaseType($data);
             case 4:
-                return $this->viewResponse('setup/step-4-database-name', $data);
+                return $this->step4DatabaseConnection($data);
             case 5:
-                return $this->viewResponse('setup/step-5-administrator', $data);
+                return $this->step5Administrator($data);
             case 6:
-                try {
-                    $this->createConfigFile($data);
-                } catch (Throwable $exception) {
-                    return $this->viewResponse('setup/step-6-failed', ['exception' => $exception]);
+                return $this->step6Install($data);
+        }
+    }
+
+    /**
+     * @param mixed[] $data
+     *
+     * @return Response
+     */
+    private function step1Language(array $data): Response
+    {
+        if ($data['lang'] === '') {
+            $data['lang'] = Locale::httpAcceptLanguage($_SERVER, I18N::installedLocales(), new LocaleEnUs())->languageTag();
+        }
+
+        return $this->viewResponse('setup/step-1-language', $data);
+    }
+
+    /**
+     * @param mixed[] $data
+     *
+     * @return Response
+     */
+    private function step2CheckServer(array $data): Response
+    {
+        return $this->viewResponse('setup/step-2-server-checks', $data);
+    }
+
+    /**
+     * @param mixed[] $data
+     *
+     * @return Response
+     */
+    private function step3DatabaseType(array $data): Response
+    {
+        return $this->viewResponse('setup/step-3-database-type', $data);
+    }
+
+    /**
+     * @param mixed[] $data
+     *
+     * @return Response
+     */
+    private function step4DatabaseConnection(array $data): Response
+    {
+        if (!extension_loaded('pdo')) {
+            $data['errors'][] = I18N::translate('The PHP extension “%s” is not installed.', 'pdo');
+        }
+
+        switch ($data['dbtype']) {
+            case 'mysql':
+                if (!extension_loaded('pdo_mysql')) {
+                    $data['errors'][] = I18N::translate('The PHP extension “%s” is not installed.', 'pdo_mysql');
                 }
 
-                // Done - start using webtrees!
-                return new RedirectResponse(route('admin-trees'));
+                break;
+
+            case 'sqlite':
+                if (!extension_loaded('pdo_sqlite')) {
+                    $data['errors'][] = I18N::translate('The PHP extension “%s” is not installed.', 'pdo_sqlite');
+                }
+
+                if (!extension_loaded('sqlite3')) {
+                    $data['errors'][] = I18N::translate('The PHP extension “%s” is not installed.', 'sqlite3');
+                }
+
+                if (version_compare($this->sqliteVersion(), self::MINIMUM_SQLITE_VERSION) < 0) {
+                    $data['errors'][] = I18N::translate('SQLite version %s is installed. SQLite version %s or later is required.', $this->sqliteVersion(), self::MINIMUM_SQLITE_VERSION);
+                }
+
+                $data['warnings'][] = I18N::translate('SQLite is only suitable for small sites, testing and evaluation.');
+
+                if ($data['dbname'] === '') {
+                    $data['dbname'] = 'webtrees';
+                }
+                break;
+
+            case 'pgsql':
+                if (!extension_loaded('pdo_pgsql')) {
+                    $data['errors'][] = I18N::translate('The PHP extension “%s” is not installed.', 'pdo_pgsql');
+                }
+
+                $data['warnings'][] = I18N::translate('Support for PostgreSQL is experimental.');
+                break;
+
+            case 'sqlsvr':
+                if (!extension_loaded('pdo_odbc')) {
+                    $data['errors'][] = I18N::translate('The PHP extension “%s” is not installed.', 'pdo_odbc');
+                }
+
+                $data['warnings'][] = I18N::translate('Support for SQL Server is experimental.');
+                break;
+
         }
+
+        if (!empty($data['errors'])) {
+            return $this->step3DatabaseType($data);
+        }
+
+        return $this->viewResponse('setup/step-4-database-' . $data['dbtype'], $data);
+    }
+
+    /**
+     * @param mixed[] $data
+     *
+     * @return Response
+     */
+    private function step5Administrator(array $data): Response
+    {
+        try {
+            $this->checkDatabase($data);
+        } catch (Throwable $ex) {
+            $data['errors'][] = $ex->getMessage();
+
+            // Don't jump to step 4, as the error will make it jump to step 3.
+            return $this->viewResponse('setup/step-4-database-' . $data['dbtype'], $data);
+        }
+
+        return $this->viewResponse('setup/step-5-administrator', $data);
+    }
+
+    /**
+     * @param mixed[] $data
+     *
+     * @return Response
+     */
+    private function step6Install(array $data): Response
+    {
+        $error = $this->checkAdminUser($data['wtname'], $data['wtuser'], $data['wtpass'], $data['wtemail']);
+
+        if ($error !== '') {
+            $data['errors'][] = $error;
+
+            return $this->step5Administrator($data);
+        }
+
+        try {
+            $this->createConfigFile($data);
+        } catch (Throwable $exception) {
+            return $this->viewResponse('setup/step-6-failed', ['exception' => $exception]);
+        }
+
+        // Done - start using webtrees!
+        return new RedirectResponse(route('admin-trees'));
+    }
+
+    /**
+     * @return string
+     */
+    private function sqliteVersion(): string
+    {
+        return SQLite3::version()['versionString'];
     }
 
     /**
@@ -165,72 +295,27 @@ class SetupController extends AbstractBaseController
     /**
      * Check we can write to the data folder.
      *
-     * @param string $dbhost
-     * @param string $dbport
-     * @param string $buser
-     * @param string $dbpass
+     * @param mixed $data
      *
-     * @return string
+     * @throws Exception
      */
-    private function checkDatabaseConnection($dbhost, $dbport, $buser, $dbpass): string
+    private function checkDatabase(array $data): void
     {
-        try {
-            Database::createInstance([
-                'dbhost' => $dbhost,
-                'dbport' => $dbport,
-                'dbname' => '',
-                'dbuser' => $buser,
-                'dbpass' => $dbpass,
-                'tblpfx' => '',
-            ]);
-        } catch (PDOException $ex) {
-            return I18N::translate('Unable to connect using this username and password. Your server gave the following error.') . '<br><br>' . e($ex->getMessage()) . '<br><br>' . I18N::translate('Check the settings and try again.');
+        // Try to create the SQLite database, if it does not already exist.
+        if ($data['dbtype'] === 'sqlite') {
+            touch(WT_ROOT . 'data/' . $data['dbname'] . '.sqlite');
         }
 
-        return '';
-    }
-
-    /**
-     * Check we can write to the data folder.
-     *
-     * @param string $dbhost
-     * @param string $dbport
-     * @param string $dbuser
-     * @param string $dbpass
-     * @param string $dbname
-     * @param string $tblpfx
-     *
-     * @return string
-     */
-    private function checkDatabaseName($dbhost, $dbport, $dbuser, $dbpass, $dbname, $tblpfx): string
-    {
-        // The character ` is not valid in database or table names (even if escaped).
-        // The form should prevent the user from entering them.
-        if ($dbname === '' || strpos($dbname, '`') !== false) {
-            return 'Invalid database name';
+        // Try to create the MySQL database, if it does not already exist.
+        if ($data['dbtype'] === 'mysql') {
+            $tmp = $data;
+            $tmp['dbname'] = '';
+            Database::connect($tmp);
+            Manager::connection()->statement('CREATE DATABASE IF NOT EXISTS `' . $data['dbname'] . '` COLLATE utf8_unicode_ci');
         }
 
-        if (strpos($tblpfx, '`') !== false) {
-            return 'Invalid table prefix';
-        }
-
-        try {
-            define('WT_TBLPREFIX', $tblpfx);
-            Database::createInstance([
-                'dbhost' => $dbhost,
-                'dbport' => $dbport,
-                'dbname' => '',
-                'dbuser' => $dbuser,
-                'dbpass' => $dbpass,
-                'tblpfx' => '',
-            ]);
-            Database::exec("CREATE DATABASE IF NOT EXISTS `{$dbname}` COLLATE utf8_unicode_ci");
-            Database::exec("USE `{$dbname}`");
-        } catch (PDOException $ex) {
-            return I18N::translate('Unable to connect using this username and password. Your server gave the following error.') . '<br><br>' . e($ex->getMessage()) . '<br><br>' . I18N::translate('Check the settings and try again.');
-        }
-
-        return '';
+        // Try to connect to the database.
+        Database::connect($data);
     }
 
     /**
@@ -255,24 +340,6 @@ class SetupController extends AbstractBaseController
     }
 
     /**
-     * Check the language parameters are OK.
-     *
-     * @param Request $request
-     *
-     * @return bool
-     */
-    private function checkLanguage(Request $request): bool
-    {
-        try {
-            I18N::init($request->get('lang', ''));
-        } catch (Exception $ex) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
      * @param string[] $data
      *
      * @return void
@@ -280,14 +347,7 @@ class SetupController extends AbstractBaseController
     private function createConfigFile(array $data): void
     {
         // Create/update the database tables.
-        Database::createInstance([
-            'dbhost' => $data['dbhost'],
-            'dbport' => $data['dbport'],
-            'dbname' => $data['dbname'],
-            'dbuser' => $data['dbuser'],
-            'dbpass' => $data['dbpass'],
-            'tblpfx' => $data['tblpfx'],
-        ]);
+        Database::connect($data);
         $this->migration_service->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
 
         // Add some default/necessary configuration data.
@@ -315,6 +375,7 @@ class SetupController extends AbstractBaseController
         // Write the config file. We already checked that this would work.
         $config_ini_php =
             '; <' . '?php exit; ?' . '> DO NOT DELETE THIS LINE' . PHP_EOL .
+            'dbtype="' . addcslashes($data['dbtype'], '"') . '"' . PHP_EOL .
             'dbhost="' . addcslashes($data['dbhost'], '"') . '"' . PHP_EOL .
             'dbport="' . addcslashes($data['dbport'], '"') . '"' . PHP_EOL .
             'dbuser="' . addcslashes($data['dbuser'], '"') . '"' . PHP_EOL .
@@ -328,23 +389,17 @@ class SetupController extends AbstractBaseController
     /**
      * @param Request $request
      *
-     * @return string[]
+     * @return mixed[]
      */
-    private function extractParameters(Request $request): array
+    private function userData(Request $request): array
     {
-        return [
-            'lang'    => $request->get('lang', ''),
-            'dbhost'  => $request->get('dbhost', 'localhost'),
-            'dbport'  => $request->get('dbport', '3306'),
-            'dbuser'  => $request->get('dbuser', ''),
-            'dbpass'  => $request->get('dbpass', ''),
-            'dbname'  => $request->get('dbname', ''),
-            'tblpfx'  => $request->get('tblpfx', 'wt_'),
-            'wtname'  => $request->get('wtname', ''),
-            'wtuser'  => $request->get('wtuser', ''),
-            'wtpass'  => $request->get('wtpass', ''),
-            'wtemail' => $request->get('wtemail', ''),
-        ];
+        $data = [];
+
+        foreach (self::DEFAULT_DATA as $key => $default) {
+            $data[$key] = $request->get($key, $default);
+        }
+
+        return $data;
     }
 
     /**
@@ -467,23 +522,5 @@ class SetupController extends AbstractBaseController
         }
 
         return $warnings;
-    }
-
-    /**
-     * Create a response object from a view.
-     *
-     * @param string  $name
-     * @param mixed[] $data
-     * @param int     $status
-     *
-     * @return Response
-     */
-    protected function viewResponse($name, $data, $status = Response::HTTP_OK): Response
-    {
-        $html = view('layouts/setup', [
-            'content' => view($name, $data),
-        ]);
-
-        return new Response($html, $status);
     }
 }

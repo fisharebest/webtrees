@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Carbon\Carbon;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Mail;
@@ -132,9 +132,11 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                 $content .= '<a href="' . e(route('show-pending', ['ged' => $tree->name()])) . '">' . I18N::translate('There are pending changes for you to moderate.') . '</a><br>';
             }
             if ($sendmail === '1') {
-                $last_email_timestamp = (int) Site::getPreference('LAST_CHANGE_EMAIL');
-                $content              .= I18N::translate('Last email reminder was sent ') . FunctionsDate::formatTimestamp($last_email_timestamp) . '<br>';
-                $content              .= I18N::translate('Next email reminder will be sent after ') . FunctionsDate::formatTimestamp($last_email_timestamp + 60 * 60 * 24 * $days) . '<br><br>';
+                $last_email_timestamp = Carbon::createFromTimestamp((int) Site::getPreference('LAST_CHANGE_EMAIL'));
+                $next_email_timestamp = $last_email_timestamp->copy()->addDays($days);
+
+                $content .= I18N::translate('Last email reminder was sent ') . I18N::localTime($last_email_timestamp) . '<br>';
+                $content .= I18N::translate('Next email reminder will be sent after ') . I18N::localTime($next_email_timestamp) . '<br><br>';
             }
             $content .= '<ul>';
 

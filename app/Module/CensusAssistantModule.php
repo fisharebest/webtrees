@@ -110,7 +110,7 @@ class CensusAssistantModule extends AbstractModule implements ModuleInterface
      *
      * @return string
      */
-    public function updateCensusAssistant(Request $request, Individual $individual, $fact_id, $newged, $keep_chan): string
+    public function updateCensusAssistant(Request $request, Individual $individual, string $fact_id, string $newged, bool $keep_chan): string
     {
         $ca_title       = $request->get('ca_title', '');
         $ca_place       = $request->get('ca_place', '');

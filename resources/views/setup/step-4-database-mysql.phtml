@@ -1,0 +1,122 @@
+<?php use Fisharebest\Webtrees\I18N; ?>
+
+<form method="POST" autocomplete="off">
+    <input name="route" type="hidden" value="setup">
+    <input name="lang" type="hidden" value="<?= e($lang) ?>">
+    <input name="dbtype" type="hidden" value="<?= e($dbtype) ?>">
+    <input name="wtname" type="hidden" value="<?= e($wtname) ?>">
+    <input name="wtuser" type="hidden" value="<?= e($wtuser) ?>">
+    <input name="wtpass" type="hidden" value="<?= e($wtpass) ?>">
+    <input name="wtemail" type="hidden" value="<?= e($wtemail) ?>">
+
+    <h2>
+        <?= I18N::translate('Database connection') ?> – MySQL
+    </h2>
+
+    <?php foreach ($errors as $error) : ?>
+        <p class="alert alert-danger"><?= $error ?></p>
+    <?php endforeach ?>
+
+    <?php foreach ($warnings as $warning) : ?>
+        <p class="alert alert-warning"><?= $warning ?></p>
+    <?php endforeach ?>
+
+    <div class="row form-group">
+        <label class="col-form-label col-sm-3" for="dbhost">
+            <?= I18N::translate('Server name') ?>
+        </label>
+
+        <div class="col-sm-9">
+            <input class="form-control" id="dbhost" name="dbhost" type="text" value="<?= e($dbhost) ?>" dir="ltr">
+
+            <p class="small text-muted">
+                <?= I18N::translate('Most sites are configured to use localhost. This means that your database runs on the same computer as your web server.') ?>
+            </p>
+
+            <p class="small text-muted">
+                <?= I18N::translate('If you connect to the database using a UNIX socket, enter the path here and leave the port number empty.') ?>
+            </p>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-form-label col-sm-3" for="dbport">
+            <?= I18N::translate('Port number') ?>
+        </label>
+
+        <div class="col-sm-9">
+            <input class="form-control" id="dbport" name="dbport" pattern="\d+" type="text" value="<?= e($dbport) ?>" dir="ltr">
+
+            <p class="small text-muted">
+                <?= I18N::translate('Most sites are configured to use the default value of 3306.') ?>
+            </p>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-form-label col-sm-3" for="dbuser">
+            <?= I18N::translate('Database user account') ?>
+        </label>
+
+        <div class="col-sm-9">
+            <input class="form-control" id="dbuser" name="dbuser" type="text" value="<?= e($dbuser) ?>" dir="ltr">
+
+            <p class="small text-muted">
+                <?= I18N::translate('This is case sensitive.') ?>
+            </p>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-form-label col-sm-3" for="dbpass">
+            <?= I18N::translate('Database password') ?>
+        </label>
+
+        <div class="col-sm-9">
+            <input class="form-control" id="dbpass" name="dbpass" type="password" value="<?= e($dbpass) ?>" dir="ltr">
+
+            <p class="small text-muted">
+                <?= I18N::translate('This is case sensitive.') ?>
+            </p>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-form-label col-sm-3" for="dbname">
+            <?= I18N::translate('Database name') ?>
+        </label>
+
+        <div class="col-sm-9">
+            <input class="form-control" dir="ltr" id="dbname" name="dbname" pattern="[a-zA-Z0-9_]+" type="text" value="<?= e($dbname) ?>">
+
+            <p class="small text-muted">
+                <?= I18N::translate('Use letters A-Z, a-z, digits 0-9, or underscores') ?>
+            </p>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-form-label col-sm-3" for="tblpfx">
+            <?= I18N::translate('Table prefix') ?>
+        </label>
+        <div class="col-sm-9">
+            <input class="form-control" dir="ltr" id="tblpfx" name="tblpfx" pattern="^[^`]*$" type="text" value="<?= e($tblpfx) ?>">
+            <p class="small text-muted">
+                <?= I18N::translate('The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database.') ?>
+                <?= I18N::translate('Use letters A-Z, a-z, digits 0-9, or underscores') ?>
+            </p>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="d-flex justify-content-between">
+        <button class="btn btn-primary" name="step" type="submit" value="5">
+            <?= I18N::translate('next') ?>
+        </button>
+
+        <button class="btn btn-secondary" name="step" type="submit" value="3">
+            <?= I18N::translate('previous') ?>
+        </button>
+    </div>
+</form>

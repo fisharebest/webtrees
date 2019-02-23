@@ -17,10 +17,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Carbon\Carbon;
 use Closure;
 use Exception;
 use Fisharebest\Webtrees\Functions\Functions;
-use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -1123,7 +1123,7 @@ class GedcomRecord
                 return $t;
             }
 
-            return strip_tags(FunctionsDate::formatTimestamp($t));
+            return I18N::localTime(Carbon::createFromTimestamp($t));
         }
 
         // The record does not have a CHAN event

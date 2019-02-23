@@ -286,7 +286,7 @@ class Shim
      */
     private static function calFromJdCalendar($julian_day, $mdy, $months, $months_short)
     {
-        [$month, $day, $year] = explode('/', $mdy);
+        list($month, $day, $year) = explode('/', $mdy);
 
         return array(
             'date'          => $month . '/' . $day . '/' . $year,
@@ -576,7 +576,7 @@ class Shim
      */
     private static function jdMonthNameCalendar(CalendarInterface $calendar, $julian_day, $months)
     {
-        [, $month] = $calendar->jdToYmd($julian_day);
+        list(, $month) = $calendar->jdToYmd($julian_day);
 
         return $months[$month];
     }
@@ -590,7 +590,7 @@ class Shim
      */
     private static function jdMonthNameJewishMonths($julian_day)
     {
-        [, , $year] = explode('/', self::jdToCalendar(self::$jewish_calendar, $julian_day, 347998, 324542846));
+        list(, , $year) = explode('/', self::jdToCalendar(self::$jewish_calendar, $julian_day, 347998, 324542846));
 
         if (self::$jewish_calendar->isLeapYear($year)) {
             return self::shouldEmulateBug54254() ? self::$MONTH_NAMES_JEWISH_54254 : self::$MONTH_NAMES_JEWISH_LEAP_YEAR;
@@ -614,7 +614,7 @@ class Shim
     private static function jdToCalendar(CalendarInterface $calendar, $julian_day, $min_jd, $max_jd)
     {
         if ($julian_day >= $min_jd && $julian_day <= $max_jd) {
-            [$year, $month, $day] = $calendar->jdToYmd($julian_day);
+            list($year, $month, $day) = $calendar->jdToYmd($julian_day);
 
             return $month . '/' . $day . '/' . $year;
         } else {

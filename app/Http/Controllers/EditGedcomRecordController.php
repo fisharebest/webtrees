@@ -441,7 +441,7 @@ class EditGedcomRecordController extends AbstractEditController
             }
         }
 
-        $newged = substr($newged, 1); // Remove leading newline
+        $newged = trim($newged); // Remove leading newline
 
         $census_assistant = $this->module_service->findByClass(CensusAssistantModule::class);
         if ($census_assistant instanceof CensusAssistantModule && $record instanceof Individual) {

@@ -15,15 +15,14 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Statistics\Helper;
+namespace Fisharebest\Webtrees\Statistics\Service;
 
 use Fisharebest\Webtrees\I18N;
-use NumberFormatter;
 
 /**
- *
+ * Functions for managing centuries.
  */
-class Century
+class CenturyService
 {
     /**
      * Century name, English => 21st, Polish => XXI, etc.

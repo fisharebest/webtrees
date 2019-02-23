@@ -18,13 +18,26 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\AbstractGoogle;
+use Fisharebest\Webtrees\Statistics\Service\ColorService;
 
 /**
- *
+ * A chart showing the mortality.
  */
-class ChartMortality extends AbstractGoogle
+class ChartMortality
 {
+    /**
+     * @var ColorService
+     */
+    private $color_service;
+
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->color_service = new ColorService();
+    }
+
     /**
      * Create a chart showing mortality.
      *
@@ -63,7 +76,7 @@ class ChartMortality extends AbstractGoogle
             ];
         }
 
-        $colors = $this->interpolateRgb($color_living, $color_dead, \count($data) - 1);
+        $colors = $this->color_service->interpolateRgb($color_living, $color_dead, \count($data) - 1);
 
         return view(
             'statistics/other/charts/pie',

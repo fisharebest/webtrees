@@ -18,20 +18,36 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\AbstractGoogle;
-use Fisharebest\Webtrees\Statistics\Helper\Century;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Statistics\Service\CenturyService;
+use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
 /**
- *
+ * A chart showing birth by century.
  */
-class ChartBirth extends AbstractGoogle
+class ChartBirth
 {
     /**
-     * @var Century
+     * @var Tree
      */
-    private $centuryHelper;
+    private $tree;
+
+    /**
+     * @var ModuleThemeInterface
+     */
+    private $theme;
+
+    /**
+     * @var CenturyService
+     */
+    private $century_service;
+
+    /**
+     * @var ColorService
+     */
+    private $color_service;
 
     /**
      * Constructor.
@@ -40,9 +56,10 @@ class ChartBirth extends AbstractGoogle
      */
     public function __construct(Tree $tree)
     {
-        parent::__construct($tree);
-
-        $this->centuryHelper = new Century();
+        $this->tree            = $tree;
+        $this->theme           = app()->make(ModuleThemeInterface::class);
+        $this->century_service = new CenturyService();
+        $this->color_service   = new ColorService();
     }
 
     /**
@@ -53,7 +70,7 @@ class ChartBirth extends AbstractGoogle
     private function queryRecords(): array
     {
         $query = DB::table('dates')
-            ->selectRaw('ROUND((d_year - 50) / 100) AS century')
+            ->selectRaw('ROUND((d_year + 49) / 100) AS century')
             ->selectRaw('COUNT(*) AS total')
             ->where('d_file', '=', $this->tree->id())
             ->where('d_year', '<>', 0)
@@ -89,12 +106,12 @@ class ChartBirth extends AbstractGoogle
 
         foreach ($this->queryRecords() as $record) {
             $data[] = [
-                $this->centuryHelper->centuryName((int) $record->century),
+                $this->century_service->centuryName((int) $record->century),
                 $record->total
             ];
         }
 
-        $colors = $this->interpolateRgb($color_from, $color_to, \count($data) - 1);
+        $colors = $this->color_service->interpolateRgb($color_from, $color_to, \count($data) - 1);
 
         return view(
             'statistics/other/charts/pie',

@@ -18,10 +18,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\IndividualListModule;
@@ -36,7 +36,6 @@ use Fisharebest\Webtrees\Statistics\Google\ChartFamilyWithSources;
 use Fisharebest\Webtrees\Statistics\Google\ChartIndividualWithSources;
 use Fisharebest\Webtrees\Statistics\Google\ChartMortality;
 use Fisharebest\Webtrees\Statistics\Google\ChartSex;
-use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\IndividualRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -64,18 +63,6 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * Run an SQL query and cache the result.
-     *
-     * @param string $sql
-     *
-     * @return \stdClass[]
-     */
-    private function runSql(string $sql): array
-    {
-        return Sql::runSql($sql);
-    }
-
-    /**
      * Find common given names.
      *
      * @param string $sex
@@ -88,39 +75,46 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     private function commonGivenQuery(string $sex, string $type, bool $show_tot, int $threshold, int $maxtoshow)
     {
+        $query = DB::table('name')
+            ->join('individuals', function (JoinClause $join): void {
+                $join
+                    ->on('i_file', '=', 'n_file')
+                    ->on('i_id', '=', 'n_id');
+            })
+            ->where('n_file', '=', $this->tree->id())
+            ->where('n_type', '<>', '_MARNM')
+            ->where('n_givn', '<>', '@P.N.')
+            ->where(DB::raw('LENGTH(n_givn)'), '>', 1);
+
         switch ($sex) {
             case 'M':
-                $sex_sql = "i_sex='M'";
-                break;
             case 'F':
-                $sex_sql = "i_sex='F'";
-                break;
             case 'U':
-                $sex_sql = "i_sex='U'";
+                $query->where('i_sex', '=', $sex);
                 break;
+
             case 'B':
             default:
-                $sex_sql = "i_sex<>'U'";
+                $query->where('i_sex', '<>', 'U');
                 break;
         }
 
-        $ged_id = $this->tree->id();
-
-        $rows     = Database::prepare("SELECT n_givn, COUNT(*) AS num FROM `##name` JOIN `##individuals` ON (n_id=i_id AND n_file=i_file) WHERE n_file={$ged_id} AND n_type<>'_MARNM' AND n_givn NOT IN ('@P.N.', '') AND LENGTH(n_givn)>1 AND {$sex_sql} GROUP BY n_id, n_givn")
-            ->fetchAll();
+        $rows = $query
+            ->groupBy(['n_givn'])
+            ->select(['n_givn', DB::raw('COUNT(distinct n_id) AS count')])
+            ->pluck('count', 'n_givn');
 
         $nameList = [];
-        foreach ($rows as $row) {
-            $row->num = (int) $row->num;
 
+        foreach ($rows as $n_givn => $count) {
             // Split “John Thomas” into “John” and “Thomas” and count against both totals
-            foreach (explode(' ', $row->n_givn) as $given) {
+            foreach (explode(' ', $n_givn) as $given) {
                 // Exclude initials and particles.
                 if (!preg_match('/^([A-Z]|[a-z]{1,3})$/', $given)) {
                     if (\array_key_exists($given, $nameList)) {
-                        $nameList[$given] += (int) $row->num;
+                        $nameList[$given] += (int) $count;
                     } else {
-                        $nameList[$given] = (int) $row->num;
+                        $nameList[$given] = (int) $count;
                     }
                 }
             }
@@ -486,26 +480,28 @@ class IndividualRepository implements IndividualRepositoryInterface
     private function topSurnames(int $number_of_surnames, int $threshold): array
     {
         // Use the count of base surnames.
-        $top_surnames = Database::prepare(
-            "SELECT n_surn FROM `##name`" .
-            " WHERE n_file = :tree_id AND n_type != '_MARNM' AND n_surn NOT IN ('@N.N.', '')" .
-            " GROUP BY n_surn" .
-            " ORDER BY COUNT(n_surn) DESC" .
-            " LIMIT :limit"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-            'limit'   => $number_of_surnames,
-        ])->fetchOneColumn();
+        $top_surnames = DB::table('name')
+            ->where('n_file', '=', $this->tree->id())
+            ->where('n_type', '<>', '_MARNM')
+            ->whereNotIn('n_surn', ['', '@N.N.'])
+            ->select('n_surn')
+            ->groupBy('n_surn')
+            ->orderByRaw('count(n_surn) desc')
+            ->take($number_of_surnames)
+            ->get()
+            ->pluck('n_surn')
+            ->all();
 
         $surnames = [];
         foreach ($top_surnames as $top_surname) {
-            $variants = Database::prepare(
-                "SELECT n_surname COLLATE utf8_bin, COUNT(*) FROM `##name` WHERE n_file = :tree_id AND n_surn COLLATE :collate = :surname GROUP BY 1"
-            )->execute([
-                'collate' => I18N::collation(),
-                'surname' => $top_surname,
-                'tree_id' => $this->tree->id(),
-            ])->fetchAssoc();
+            $variants = DB::table('name')
+                ->where('n_file', '=', $this->tree->id())
+                ->where(DB::raw('n_surn /* COLLATE ' . I18N::collation() . ' */'), '=', $top_surname)
+                ->select('n_surn', DB::raw('COUNT(*) AS count'))
+                ->groupBy('n_surn')
+                ->get()
+                ->pluck('count', 'n_surn')
+                ->all();
 
             if (array_sum($variants) > $threshold) {
                 $surnames[$top_surname] = $variants;
@@ -652,44 +648,47 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * Get a list of birth dates.
+     * Get a count of births by month.
      *
-     * @param bool $sex
      * @param int  $year1
      * @param int  $year2
      *
-     * @return array
+     * @return Builder
      */
-    public function statsBirthQuery(bool $sex = false, int $year1 = -1, int $year2 = -1): array
+    public function statsBirthQuery(int $year1 = -1, int $year2 = -1): Builder
     {
-        if ($sex) {
-            $sql =
-                "SELECT d_month, i_sex, COUNT(*) AS total FROM `##dates` " .
-                "JOIN `##individuals` ON d_file = i_file AND d_gid = i_id " .
-                "WHERE " .
-                "d_file={$this->tree->id()} AND " .
-                "d_fact='BIRT' AND " .
-                "d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
-        } else {
-            $sql =
-                "SELECT d_month, COUNT(*) AS total FROM `##dates` " .
-                "WHERE " .
-                "d_file={$this->tree->id()} AND " .
-                "d_fact='BIRT' AND " .
-                "d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
-        }
+        $query = DB::table('dates')
+            ->select(['d_month', DB::raw('COUNT(*) AS total')])
+            ->where('d_file', '=', $this->tree->id())
+            ->where('d_fact', '=', 'BIRT')
+            ->whereIn('d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
+            ->groupBy('d_month');
 
         if ($year1 >= 0 && $year2 >= 0) {
-            $sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
+            $query->whereBetween('d_year', [$year1, $year2]);
         }
 
-        $sql .= " GROUP BY d_month";
+        return $query;
+    }
 
-        if ($sex) {
-            $sql .= ", i_sex";
-        }
-
-        return $this->runSql($sql);
+    /**
+     * Get a count of births by month.
+     *
+     * @param int  $year1
+     * @param int  $year2
+     *
+     * @return Builder
+     */
+    public function statsBirthBySexQuery(int $year1 = -1, int $year2 = -1): Builder
+    {
+        return $this->statsBirthQuery($year1, $year2)
+                ->select(['d_month', 'i_sex', DB::raw('COUNT(*) AS total')])
+                ->join('individuals', function (JoinClause $join): void {
+                    $join
+                        ->on('i_id', '=', 'd_gid')
+                        ->on('i_file', '=', 'd_file');
+                })
+                ->groupBy('i_sex');
     }
 
     /**
@@ -709,42 +708,45 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Get a list of death dates.
      *
-     * @param bool $sex
      * @param int  $year1
      * @param int  $year2
      *
-     * @return array
+     * @return Builder
      */
-    public function statsDeathQuery(bool $sex = false, int $year1 = -1, int $year2 = -1): array
+    public function statsDeathQuery(int $year1 = -1, int $year2 = -1): Builder
     {
-        if ($sex) {
-            $sql =
-                "SELECT d_month, i_sex, COUNT(*) AS total FROM `##dates` " .
-                "JOIN `##individuals` ON d_file = i_file AND d_gid = i_id " .
-                "WHERE " .
-                "d_file={$this->tree->id()} AND " .
-                "d_fact='DEAT' AND " .
-                "d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
-        } else {
-            $sql =
-                "SELECT d_month, COUNT(*) AS total FROM `##dates` " .
-                "WHERE " .
-                "d_file={$this->tree->id()} AND " .
-                "d_fact='DEAT' AND " .
-                "d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
-        }
+        $query = DB::table('dates')
+            ->select(['d_month', DB::raw('COUNT(*) AS total')])
+            ->where('d_file', '=', $this->tree->id())
+            ->where('d_fact', '=', 'DEAT')
+            ->whereIn('d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
+            ->groupBy('d_month');
 
         if ($year1 >= 0 && $year2 >= 0) {
-            $sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
+            $query->whereBetween('d_year', [$year1, $year2]);
         }
 
-        $sql .= " GROUP BY d_month";
+        return $query;
+    }
 
-        if ($sex) {
-            $sql .= ", i_sex";
-        }
-
-        return $this->runSql($sql);
+    /**
+     * Get a list of death dates.
+     *
+     * @param int  $year1
+     * @param int  $year2
+     *
+     * @return Builder
+     */
+    public function statsDeathBySexQuery(int $year1 = -1, int $year2 = -1): Builder
+    {
+        return $this->statsDeathQuery($year1, $year2)
+                ->select(['d_month', 'i_sex', DB::raw('COUNT(*) AS total')])
+                ->join('individuals', function (JoinClause $join): void {
+                    $join
+                        ->on('i_id', '=', 'd_gid')
+                        ->on('i_file', '=', 'd_file');
+                })
+                ->groupBy('i_sex');
     }
 
     /**
@@ -1003,12 +1005,9 @@ class IndividualRepository implements IndividualRepositoryInterface
     {
         $records = $this->topTenOldestQuery('BOTH', $total);
 
-        return view(
-            'statistics/individuals/top10-nolist',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-nolist', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1022,12 +1021,9 @@ class IndividualRepository implements IndividualRepositoryInterface
     {
         $records = $this->topTenOldestQuery('BOTH', $total);
 
-        return view(
-            'statistics/individuals/top10-list',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-list', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1041,12 +1037,9 @@ class IndividualRepository implements IndividualRepositoryInterface
     {
         $records = $this->topTenOldestQuery('F', $total);
 
-        return view(
-            'statistics/individuals/top10-nolist',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-nolist', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1060,12 +1053,9 @@ class IndividualRepository implements IndividualRepositoryInterface
     {
         $records = $this->topTenOldestQuery('F', $total);
 
-        return view(
-            'statistics/individuals/top10-list',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-list', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1079,12 +1069,9 @@ class IndividualRepository implements IndividualRepositoryInterface
     {
         $records = $this->topTenOldestQuery('M', $total);
 
-        return view(
-            'statistics/individuals/top10-nolist',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-nolist', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1098,64 +1085,55 @@ class IndividualRepository implements IndividualRepositoryInterface
     {
         $records = $this->topTenOldestQuery('M', $total);
 
-        return view(
-            'statistics/individuals/top10-list',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-list', [
+            'records' => $records,
+        ]);
     }
 
     /**
      * Find the oldest living individuals.
      *
-     * @param string $sex
+     * @param string $sex   "M", "F" or "BOTH"
      * @param int    $total
      *
      * @return array
      */
-    private function topTenOldestAliveQuery(string $sex = 'BOTH', int $total = 10): array
+    private function topTenOldestAliveQuery(string $sex, int $total): array
     {
-        if ($sex === 'F') {
-            $sex_search = " AND i_sex='F'";
-        } elseif ($sex === 'M') {
-            $sex_search = " AND i_sex='M'";
-        } else {
-            $sex_search = '';
+        $query = DB::table('dates')
+            ->join('individuals', function (JoinClause $join): void {
+                $join
+                    ->on('i_id', '=', 'd_gid')
+                    ->on('i_file', '=', 'd_file');
+            })
+            ->where('d_file', '=', $this->tree->id())
+            ->where('d_julianday1', '<>', 0)
+            ->where('d_fact', '=', 'BIRT')
+            ->where('i_gedcom', 'NOT LIKE', "%\n1 DEAT%")
+            ->where('i_gedcom', 'NOT LIKE', "%\n1 BURI%")
+            ->where('i_gedcom', 'NOT LIKE', "%\n1 CREM%");
+
+        if ($sex === 'F' || $sex === 'M') {
+            $query->where('i_sex', '=', $sex);
         }
 
-        $rows = $this->runSql(
-            "SELECT" .
-            " birth.d_gid AS id," .
-            " MIN(birth.d_julianday1) AS age" .
-            " FROM" .
-            " `##dates` AS birth," .
-            " `##individuals` AS indi" .
-            " WHERE" .
-            " indi.i_id=birth.d_gid AND" .
-            " indi.i_gedcom NOT REGEXP '\\n1 (" . implode('|', Gedcom::DEATH_EVENTS) . ")' AND" .
-            " birth.d_file={$this->tree->id()} AND" .
-            " birth.d_fact='BIRT' AND" .
-            " birth.d_file=indi.i_file AND" .
-            " birth.d_julianday1<>0" .
-            $sex_search .
-            " GROUP BY id" .
-            " ORDER BY age" .
-            " ASC LIMIT " . $total
-        );
+        return $query
+            ->groupBy(['i_id', 'i_file'])
+            ->orderBy(DB::raw('MIN(d_julianday1)'))
+            ->select('individuals.*')
+            ->take($total)
+            ->get()
+            ->map(Individual::rowMapper())
+            ->filter(GedcomRecord::accessFilter())
+            ->map(function (Individual $individual): array {
+                $birth_jd = $individual->getBirthDate()->minimumJulianDay();
 
-        $top10 = [];
-
-        foreach ($rows as $row) {
-            $person = Individual::getInstance($row->id, $this->tree);
-
-            $top10[] = [
-                'person' => $person,
-                'age'    => $this->calculateAge(WT_CLIENT_JD - ((int) $row->age)),
-            ];
-        }
-
-        return $top10;
+                return [
+                    'person' => $individual,
+                    'age'    => $this->calculateAge(WT_CLIENT_JD - $birth_jd),
+                ];
+            })
+            ->all();
     }
 
     /**
@@ -1173,12 +1151,9 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         $records = $this->topTenOldestAliveQuery('BOTH', $total);
 
-        return view(
-            'statistics/individuals/top10-nolist',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-nolist', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1196,12 +1171,9 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         $records = $this->topTenOldestAliveQuery('BOTH', $total);
 
-        return view(
-            'statistics/individuals/top10-list',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-list', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1219,12 +1191,9 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         $records = $this->topTenOldestAliveQuery('F', $total);
 
-        return view(
-            'statistics/individuals/top10-nolist',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-nolist', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1242,12 +1211,9 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         $records = $this->topTenOldestAliveQuery('F', $total);
 
-        return view(
-            'statistics/individuals/top10-list',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-list', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1265,12 +1231,9 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         $records = $this->topTenOldestAliveQuery('M', $total);
 
-        return view(
-            'statistics/individuals/top10-nolist',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-nolist', [
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -1288,23 +1251,20 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         $records = $this->topTenOldestAliveQuery('M', $total);
 
-        return view(
-            'statistics/individuals/top10-list',
-            [
-                'records' => $records,
-            ]
-        );
+        return view('statistics/individuals/top10-list', [
+            'records' => $records,
+        ]);
     }
 
     /**
      * Find the average lifespan.
      *
-     * @param string $sex
+     * @param string $sex        "M", "F" or "BOTH"
      * @param bool   $show_years
      *
      * @return string
      */
-    private function averageLifespanQuery(string $sex = 'BOTH', bool $show_years = false): string
+    private function averageLifespanQuery(string $sex, bool $show_years): string
     {
         $prefix = DB::connection()->getTablePrefix();
 
@@ -1809,7 +1769,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             return I18N::translate('This information is not available.');
         }
 
-        return (new ChartCommonGiven($this->tree))
+        return (new ChartCommonGiven())
             ->chartCommonGiven($tot_indi, $given, $color_from, $color_to);
     }
 
@@ -1851,7 +1811,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $tot_l = $this->totalLivingQuery();
         $tot_d = $this->totalDeceasedQuery();
 
-        return (new ChartMortality($this->tree))
+        return (new ChartMortality())
             ->chartMortality($tot_l, $tot_d, $color_living, $color_dead);
     }
 
@@ -1870,7 +1830,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $tot_indi        = $this->totalIndividualsQuery();
         $tot_indi_source = $this->totalIndisWithSourcesQuery();
 
-        return (new ChartIndividualWithSources($this->tree))
+        return (new ChartIndividualWithSources())
             ->chartIndisWithSources($tot_indi, $tot_indi_source, $color_from, $color_to);
     }
 
@@ -1889,7 +1849,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $tot_fam        = $this->totalFamiliesQuery();
         $tot_fam_source = $this->totalFamsWithSourcesQuery();
 
-        return (new ChartFamilyWithSources($this->tree))
+        return (new ChartFamilyWithSources())
             ->chartFamsWithSources($tot_fam, $tot_fam_source, $color_from, $color_to);
     }
 
@@ -1905,7 +1865,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $tot_f = $this->totalSexFemalesQuery();
         $tot_u = $this->totalSexUnknownQuery();
 
-        return (new ChartSex($this->tree))
+        return (new ChartSex())
             ->chartSex($tot_m, $tot_f, $tot_u, $color_female, $color_male, $color_unknown);
     }
 

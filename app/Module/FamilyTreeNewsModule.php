@@ -17,10 +17,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Carbon\Carbon;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use stdClass;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -70,8 +72,12 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         $articles = DB::table('news')
             ->where('gedcom_id', '=', $tree->id())
             ->orderByDesc('updated')
-            ->select(['news_id', 'user_id', 'gedcom_id', DB::raw('UNIX_TIMESTAMP(updated) AS updated'), 'subject', 'body'])
-            ->get();
+            ->get()
+            ->map(function (stdClass $row): stdClass {
+                $row->updated = new Carbon($row->updated);
+
+                return $row;
+            });
 
         $content = view('modules/gedcom_news/list', [
             'articles' => $articles,

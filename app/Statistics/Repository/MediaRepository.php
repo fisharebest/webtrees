@@ -359,7 +359,7 @@ class MediaRepository implements MediaRepositoryInterface
         $tot   = $this->totalMediaTypeQuery(self::MEDIA_TYPE_ALL);
         $media = $this->getSortedMediaTypeList($tot);
 
-        return (new ChartMedia($this->tree))
+        return (new ChartMedia())
             ->chartMedia($media, $color_from, $color_to);
     }
 }

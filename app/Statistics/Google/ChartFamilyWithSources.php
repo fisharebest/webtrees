@@ -18,13 +18,33 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\AbstractGoogle;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Statistics\Service\ColorService;
 
 /**
- *
+ * A chart showing families with sources.
  */
-class ChartFamilyWithSources extends AbstractGoogle
+class ChartFamilyWithSources
 {
+    /**
+     * @var ModuleThemeInterface
+     */
+    private $theme;
+
+    /**
+     * @var ColorService
+     */
+    private $color_service;
+
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->theme         = app()->make(ModuleThemeInterface::class);
+        $this->color_service = new ColorService();
+    }
+
     /**
      * Create a chart of individuals with/without sources.
      *
@@ -65,7 +85,7 @@ class ChartFamilyWithSources extends AbstractGoogle
             ];
         }
 
-        $colors = $this->interpolateRgb($color_from, $color_to, \count($data) - 1);
+        $colors = $this->color_service->interpolateRgb($color_from, $color_to, \count($data) - 1);
 
         return view(
             'statistics/other/charts/pie',
