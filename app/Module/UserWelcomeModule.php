@@ -84,7 +84,7 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
         $individual = Individual::getInstance($gedcomid, $tree);
         $links      = [];
 
-        $pedigree_chart = $this->module_service->findByComponent('chart', $tree, Auth::user())
+        $pedigree_chart = $this->module_service->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
             ->filter(function (ModuleInterface $module): bool {
                 return $module instanceof PedigreeChartModule;
             });

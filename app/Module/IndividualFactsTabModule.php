@@ -101,13 +101,13 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
         // Which facts and events are handled by other modules?
         $sidebar_facts = $this->module_service
-            ->findByComponent('sidebar', $individual->tree(), Auth::user())
+            ->findByComponent(ModuleSidebarInterface::class, $individual->tree(), Auth::user())
             ->map(function (ModuleSidebarInterface $sidebar): Collection {
                 return $sidebar->supportedFacts();
             });
 
         $tab_facts = $this->module_service
-            ->findByComponent('tab', $individual->tree(), Auth::user())
+            ->findByComponent(ModuleTabInterface::class, $individual->tree(), Auth::user())
             ->map(function (ModuleTabInterface $sidebar): Collection {
                 return $sidebar->supportedFacts();
             });

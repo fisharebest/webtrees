@@ -17,6 +17,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
+use Fisharebest\Webtrees\Module\ModuleBlockInterface;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
+use Fisharebest\Webtrees\Module\ModuleMenuInterface;
+use Fisharebest\Webtrees\Module\ModuleReportInterface;
+use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
+use Fisharebest\Webtrees\Module\ModuleTabInterface;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -25,38 +33,50 @@ use Illuminate\Database\Schema\Blueprint;
  */
 class Migration42 implements MigrationInterface
 {
+    private const COMPONENT_TO_INTERFACE = [
+        'block'   => ModuleBlockInterface::class,
+        'chart'   => ModuleChartInterface::class,
+        'list'    => ModuleListInterface::class,
+        'menu'    => ModuleMenuInterface::class,
+        'report'  => ModuleReportInterface::class,
+        'sidebar' => ModuleSidebarInterface::class,
+        'tab'     => ModuleTabInterface::class,
+        'theme'   => ModuleThemeInterface::class,
+    ];
+
     /**
      * Upgrade to to the next version
      *
      * @return void
      */
     public function upgrade(): void
-    {        
-        //apparently not possible to change enum column directly via laravel
+    {
+        // doctrine/dbal cannot modify tables containing ENUM fields
         $data = DB::table('module_privacy')->get();
+
         DB::schema()->drop('module_privacy');
 
         DB::schema()->create('module_privacy', function (Blueprint $table): void {
+            $table->increments('id');
             $table->string('module_name', 32);
             $table->integer('gedcom_id');
-            $table->enum('component', ['block', 'chart', 'list', 'menu', 'report', 'sidebar', 'tab', 'theme']);
+            $table->string('interface');
             $table->tinyInteger('access_level');
 
-            $table->primary(['module_name', 'gedcom_id', 'component']);
-            $table->unique(['gedcom_id', 'module_name', 'component']);
+            $table->unique(['gedcom_id', 'module_name', 'interface']);
+            $table->unique(['module_name', 'gedcom_id', 'interface']);
 
-            $table->foreign('module_name')->references('module_name')->on('module');
-            $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom');
+            $table->foreign('module_name')->references('module_name')->on('module')->onDelete('cascade');
+            $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom')->onDelete('cascade');
         });
-        
-        $rows = $data->toArray();
-        foreach ($rows as $row) {
-          DB::table('module_privacy')->insert([
-              'module_name' => $row->module_name,
-              'gedcom_id'   => $row->gedcom_id,
-              'component'   => $row->component,
-              'access_level'   => $row->access_level,
-          ]);
+
+        foreach ($data as $datum) {
+            DB::table('module_privacy')->insert([
+                'module_name'  => $datum->module_name,
+                'gedcom_id'    => $datum->gedcom_id,
+                'interface'    => self::COMPONENT_TO_INTERFACE[$datum->component],
+                'access_level' => $datum->access_level,
+            ]);
         }
     }
 }

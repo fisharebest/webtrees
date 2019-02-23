@@ -75,12 +75,12 @@ class ModuleServiceTest extends TestCase
         $tree = $this->importTree('demo.ged');
         $user = $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $this->assertNotEmpty($module_service->findByComponent('block', $tree, $user)->all());
-        $this->assertNotEmpty($module_service->findByComponent('chart', $tree, $user)->all());
-        $this->assertNotEmpty($module_service->findByComponent('menu', $tree, $user)->all());
-        $this->assertNotEmpty($module_service->findByComponent('report', $tree, $user)->all());
-        $this->assertNotEmpty($module_service->findByComponent('sidebar', $tree, $user)->all());
-        $this->assertNotEmpty($module_service->findByComponent('tab', $tree, $user)->all());
+        $this->assertNotEmpty($module_service->findByComponent(ModuleBlockInterface::class, $tree, $user)->all());
+        $this->assertNotEmpty($module_service->findByComponent(ModuleChartInterface::class, $tree, $user)->all());
+        $this->assertNotEmpty($module_service->findByComponent(ModuleMenuInterface::class, $tree, $user)->all());
+        $this->assertNotEmpty($module_service->findByComponent(ModuleReportInterface::class, $tree, $user)->all());
+        $this->assertNotEmpty($module_service->findByComponent(ModuleSidebarInterface::class, $tree, $user)->all());
+        $this->assertNotEmpty($module_service->findByComponent(ModuleTabInterface::class, $tree, $user)->all());
     }
 
     /**

@@ -6,6 +6,7 @@ use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -22,7 +23,7 @@ $hundred_years_ago = new Date($hundred_years_ago->format('Y'));
 $unique_indis = []; // Don't double-count indis with multiple names.
 
 $module = app(ModuleService::class)
-    ->findByComponent('chart', $tree, Auth::user())
+    ->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
     ->first(function (ModuleInterface $module) {
         return $module instanceof RelationshipsChartModule;
     });

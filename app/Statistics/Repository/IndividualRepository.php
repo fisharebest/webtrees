@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\IndividualListModule;
 use Fisharebest\Webtrees\Module\ModuleInterface;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Statistics\Google\ChartAge;
 use Fisharebest\Webtrees\Statistics\Google\ChartBirth;
@@ -558,7 +559,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         }
 
         //find a module providing individual lists
-        $module = app(ModuleService::class)->findByComponent('list', $tree, Auth::user())->first(function (ModuleInterface $module) {
+        $module = app(ModuleService::class)->findByComponent(ModuleListInterface::class, $this->tree, Auth::user())->first(function (ModuleInterface $module) {
             return $module instanceof IndividualListModule;
         });
         

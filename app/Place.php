@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Module\ModuleInterface;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\PlaceHierarchyListModule;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -162,7 +163,7 @@ class Place
     public function url(): string
     {
         //find a module providing the place hierarchy
-        $module = app(ModuleService::class)->findByComponent('list', $this->tree, Auth::user())->first(function (ModuleInterface $module) {
+        $module = app(ModuleService::class)->findByComponent(ModuleListInterface::class, $this->tree, Auth::user())->first(function (ModuleInterface $module) {
             return $module instanceof PlaceHierarchyListModule;
         });
         

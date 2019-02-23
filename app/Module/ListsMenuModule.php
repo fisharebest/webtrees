@@ -86,23 +86,19 @@ class ListsMenuModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getMenu(Tree $tree): ?Menu
     {
-        $submenusCollection = $this->module_service->findByComponent('list', $tree, Auth::user())
-            ->map(function (ModuleListInterface $module) use ($tree): Menu {
+        $submenus = $this->module_service->findByComponent(ModuleListInterface::class, $tree, Auth::user())
+            ->map(function (ModuleListInterface $module) use ($tree): ?Menu {
                 return $module->listMenu($tree);
             })
-            ->filter(function (Menu $menu): bool {
-                return ($menu !== null);
+            ->filter()
+            ->sort(function (Menu $x, Menu $y) {
+                return $x->getLabel() <=> $y->getLabel();
             });
 
-        if ($submenusCollection->isEmpty()) {
+        if ($submenus->isEmpty()) {
             return null;
         }
 
-        $submenus = $submenusCollection->toArray();
-        uasort($submenus, function (Menu $x, Menu $y) {
-            return I18N::strcasecmp($x->getLabel(), $y->getLabel());
-        });
-
-        return new Menu(I18N::translate('Lists'), '#', 'menu-list', [], $submenus);
+        return new Menu(I18N::translate('Lists'), '#', 'menu-list', [], $submenus->all());
     }
 }

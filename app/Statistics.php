@@ -2613,9 +2613,9 @@ class Statistics implements
      */
     public function callBlock(string $block = '', ...$params): ?string
     {
-        /** @var ModuleBlockInterface $module */
+        /** @var ModuleBlockInterface|null $module */
         $module = $this->module_service
-            ->findByComponent('block', $this->tree, Auth::user())
+            ->findByComponent(ModuleBlockInterface::class, $this->tree, Auth::user())
             ->filter(function (ModuleInterface $module) use ($block): bool {
                 return $module->name() === $block && $module->name() !== 'html';
             })

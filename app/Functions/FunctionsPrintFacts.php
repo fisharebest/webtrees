@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
@@ -511,7 +512,7 @@ class FunctionsPrintFacts
 
                 $values = ['<a href="' . e($person->url()) . '">' . $person->fullName() . '</a>'];
 
-                $module = app(ModuleService::class)->findByComponent('chart', $person->tree(), Auth::user())->first(function (ModuleInterface $module) {
+                $module = app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $person->tree(), Auth::user())->first(function (ModuleInterface $module) {
                     return $module instanceof RelationshipsChartModule;
                 });
 

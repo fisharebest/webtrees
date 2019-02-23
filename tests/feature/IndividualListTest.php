@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\Http\Controllers\ListController;
+use Fisharebest\Webtrees\Module\IndividualListModule;
 use Fisharebest\Webtrees\Services\IndividualListService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Symfony\Component\HttpFoundation\Request;
@@ -47,28 +48,29 @@ class IndividualListTest extends TestCase
         app()->instance(Tree::class, $tree);
         app()->instance(User::class, $user);
 
+        $list_module             = new IndividualListModule();
         $localization_service    = new LocalizationService(new LocaleEnUs());
         $individual_list_service = new IndividualListService($localization_service, $tree);
         $controller              = new ListController($individual_list_service, $localization_service);
 
         $request  = new Request(['route' => 'module', 'module' => 'individual_list', 'action' => 'List']);
-        $response = $controller->individualList($request, $tree, $user);
+        $response = $controller->individualList($request, $tree, $user, $list_module);
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
 
         $request  = new Request(['route' => 'module', 'module' => 'individual_list', 'action' => 'List', 'alpha' => 'B']);
-        $response = $controller->individualList($request, $tree, $user);
+        $response = $controller->individualList($request, $tree, $user, $list_module);
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
 
         $request  = new Request(['route' => 'module', 'module' => 'individual_list', 'action' => 'List', 'alpha' => ',']);
-        $response = $controller->individualList($request, $tree, $user);
+        $response = $controller->individualList($request, $tree, $user, $list_module);
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
 
         $request  = new Request(['route' => 'module', 'module' => 'individual_list', 'action' => 'List', 'alpha' => '@']);
-        $response = $controller->individualList($request, $tree, $user);
+        $response = $controller->individualList($request, $tree, $user, $list_module);
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
 
         $request  = new Request(['route' => 'module', 'module' => 'individual_list', 'action' => 'List', 'surname' => 'BRAUN']);
-        $response = $controller->individualList($request, $tree, $user);
+        $response = $controller->individualList($request, $tree, $user, $list_module);
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 }

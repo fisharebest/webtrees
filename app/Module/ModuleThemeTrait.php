@@ -238,7 +238,7 @@ trait ModuleThemeTrait
     public function individualBoxMenuCharts(Individual $individual): array
     {
         $menus = [];
-        foreach (app(ModuleService::class)->findByComponent('chart', $this->tree, Auth::user()) as $chart) {
+        foreach (app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $this->tree, Auth::user()) as $chart) {
             $menu = $chart->chartBoxMenu($individual);
             if ($menu) {
                 $menus[] = $menu;
@@ -444,7 +444,7 @@ trait ModuleThemeTrait
     {
         $gedcomid = $this->tree->getUserPreference(Auth::user(), 'gedcomid');
 
-        $pedigree_chart = app(ModuleService::class)->findByComponent('chart', $this->tree, Auth::user())
+        $pedigree_chart = app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $this->tree, Auth::user())
             ->filter(function (ModuleInterface $module): bool {
                 return $module instanceof PedigreeChartModule;
             });
@@ -539,7 +539,7 @@ trait ModuleThemeTrait
      */
     public function primaryMenu(): array
     {
-        return app(ModuleService::class)->findByComponent('menu', $this->tree, Auth::user())
+        return app(ModuleService::class)->findByComponent(ModuleMenuInterface::class, $this->tree, Auth::user())
             ->map(function (ModuleMenuInterface $menu): ?Menu {
                 return $menu->getMenu($this->tree);
             })

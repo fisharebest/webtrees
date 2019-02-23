@@ -71,7 +71,7 @@ class ReportEngineController extends AbstractBaseController
         $title = I18N::translate('Choose a report to run');
 
         return $this->viewResponse('report-select-page', [
-            'reports' => $this->module_service->findByComponent('report', $tree, $user),
+            'reports' => $this->module_service->findByComponent(ModuleReportInterface::class, $tree, $user),
             'title'   => $title,
         ]);
     }

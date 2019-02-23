@@ -45,20 +45,20 @@ use Symfony\Component\HttpFoundation\Response;
 class ModuleController extends AbstractAdminController
 {
     private const COMPONENTS_WITH_ACCESS = [
-        'block',
-        'chart',
-        'list',
-        'menu',
-        'report',
-        'sidebar',
-        'tab',
+        ModuleBlockInterface::class,
+        ModuleChartInterface::class,
+        ModuleListInterface::class,
+        ModuleMenuInterface::class,
+        ModuleReportInterface::class,
+        ModuleSidebarInterface::class,
+        ModuleTabInterface::class,
     ];
 
     private const COMPONENTS_WITH_SORT = [
-        'footer',
-        'menu',
-        'sidebar',
-        'tab',
+        ModuleFooterInterface::class,
+        ModuleMenuInterface::class,
+        ModuleSidebarInterface::class,
+        ModuleTabInterface::class,
     ];
 
     /**
@@ -254,14 +254,14 @@ class ModuleController extends AbstractAdminController
      *
      * @return Response
      */
-    private function listComponents(string $interface, string $component, string $title, string $description): Response
+    private function listComponents(string $interface, string $title, string $description): Response
     {
-        $uses_access  = in_array($component, self::COMPONENTS_WITH_ACCESS);
-        $uses_sorting = in_array($component, self::COMPONENTS_WITH_SORT);
+        $uses_access  = in_array($interface, self::COMPONENTS_WITH_ACCESS);
+        $uses_sorting = in_array($interface, self::COMPONENTS_WITH_SORT);
 
         return $this->viewResponse('admin/components', [
-            'component'    => $component,
             'description'  => $description,
+            'interface'    => $interface,
             'modules'      => $this->module_service->findByInterface($interface, true),
             'title'        => $title,
             'trees'        => Tree::all(),

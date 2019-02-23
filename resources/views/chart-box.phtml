@@ -27,7 +27,7 @@ if ($individual === null) {
 
 $module_service = app(ModuleService::class);
 
-$menus = $module_service->findByComponent('chart', $individual->tree(), Auth::user())->map(function (ModuleChartInterface $module) use ($individual): ?Menu {
+$menus = $module_service->findByComponent(ModuleChartInterface::class, $individual->tree(), Auth::user())->map(function (ModuleChartInterface $module) use ($individual): ?Menu {
     return $module->chartBoxMenu($individual);
 })->filter();
 

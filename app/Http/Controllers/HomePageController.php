@@ -639,7 +639,7 @@ class HomePageController extends AbstractBaseController
      */
     private function getBlockModule(Tree $tree, int $block_id): ModuleBlockInterface
     {
-        $active_blocks = $this->module_service->findByComponent('block', $tree, Auth::user());
+        $active_blocks = $this->module_service->findByComponent(ModuleBlockInterface::class, $tree, Auth::user());
 
         $module_name = DB::table('block')
             ->where('block_id', '=', $block_id)

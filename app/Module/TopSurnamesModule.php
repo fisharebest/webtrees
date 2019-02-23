@@ -102,7 +102,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
         }
         
         //find a module providing individual lists
-        $module = app(ModuleService::class)->findByComponent('list', $tree, Auth::user())->first(function (ModuleInterface $module) {
+        $module = app(ModuleService::class)->findByComponent(ModuleListInterface::class, $tree, Auth::user())->first(function (ModuleInterface $module) {
             return $module instanceof IndividualListModule;
         });
         

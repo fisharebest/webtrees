@@ -71,7 +71,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         Auth::checkComponentAccess($this, 'list', $tree, $user);
       
         $listController = new ListController(app(IndividualListService::class), app(LocalizationService::class));
-        return $listController->individualList($this, $request, $tree, $user);
+        return $listController->individualList($request, $tree, $user, $this);
     }
     
     public function listUrlAttributes(): array

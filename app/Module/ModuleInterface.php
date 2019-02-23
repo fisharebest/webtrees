@@ -81,11 +81,11 @@ interface ModuleInterface
      * Get a the current access level for a module
      *
      * @param Tree   $tree
-     * @param string $component tab, block, menu, etc
+     * @param string $interface
      *
      * @return int
      */
-    public function accessLevel(Tree $tree, string $component): int;
+    public function accessLevel(Tree $tree, string $interface): int;
 
     /**
      * Get a module setting. Return a default if the setting is not set.

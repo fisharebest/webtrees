@@ -209,11 +209,11 @@ abstract class AbstractModule implements ModuleInterface
      * Get a the current access level for a module
      *
      * @param Tree   $tree
-     * @param string $component tab, block, menu, etc
+     * @param string $interface
      *
      * @return int
      */
-    final public function accessLevel(Tree $tree, string $component): int
+    final public function accessLevel(Tree $tree, string $interface): int
     {
         $access_levels = app('cache.array')
             ->rememberForever('module_privacy' . $tree->id(), function () use ($tree): Collection {
@@ -222,8 +222,8 @@ abstract class AbstractModule implements ModuleInterface
                     ->get();
             });
 
-        $row = $access_levels->filter(function (stdClass $row) use ($component): bool {
-            return $row->component === $component && $row->module_name === $this->name();
+        $row = $access_levels->filter(function (stdClass $row) use ($interface): bool {
+            return $row->interface === $interface && $row->module_name === $this->name();
         })->first();
 
         return $row ? (int) $row->access_level : $this->access_level;

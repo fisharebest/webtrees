@@ -150,18 +150,18 @@ class ModuleService
 {
     // Components are managed together in the control panel.
     private const COMPONENTS = [
-        'analytics' => ModuleAnalyticsInterface::class,
-        'block'     => ModuleBlockInterface::class,
-        'chart'     => ModuleChartInterface::class,
-        'footer'    => ModuleFooterInterface::class,
-        'history'   => ModuleHistoricEventsInterface::class,
-        'language'  => ModuleLanguageInterface::class,
-        'list'      => ModuleListInterface::class,
-        'menu'      => ModuleMenuInterface::class,
-        'report'    => ModuleReportInterface::class,
-        'sidebar'   => ModuleSidebarInterface::class,
-        'tab'       => ModuleTabInterface::class,
-        'theme'     => ModuleThemeInterface::class,
+        ModuleAnalyticsInterface::class,
+        ModuleBlockInterface::class,
+        ModuleChartInterface::class,
+        ModuleFooterInterface::class,
+        ModuleHistoricEventsInterface::class,
+        ModuleLanguageInterface::class,
+        ModuleListInterface::class,
+        ModuleMenuInterface::class,
+        ModuleReportInterface::class,
+        ModuleSidebarInterface::class,
+        ModuleTabInterface::class,
+        ModuleThemeInterface::class,
     ];
 
     // Array keys are module names, and should match module names from earlier versions of webtrees.
@@ -466,19 +466,17 @@ class ModuleService
     /**
      * Modules which (a) provide a specific function and (b) we have permission to see.
      *
-     * @param string        $component
+     * @param string        $interface
      * @param Tree          $tree
      * @param UserInterface $user
      *
      * @return Collection|ModuleInterface[]
      */
-    public function findByComponent(string $component, Tree $tree, UserInterface $user): Collection
+    public function findByComponent(string $interface, Tree $tree, UserInterface $user): Collection
     {
-        $interface = self::COMPONENTS[$component];
-
         return $this->findByInterface($interface)
-            ->filter(function (ModuleInterface $module) use ($component, $tree, $user): bool {
-                return $module->accessLevel($tree, $component) >= Auth::accessLevel($tree, $user);
+            ->filter(function (ModuleInterface $module) use ($interface, $tree, $user): bool {
+                return $module->accessLevel($tree, $interface) >= Auth::accessLevel($tree, $user);
             });
     }
 

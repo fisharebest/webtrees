@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -257,7 +258,7 @@ class BranchesController extends AbstractBaseController
      */
     private function getDescendantsHtml(Tree $tree, array $individuals, array $ancestors, string $surname, bool $soundex_dm, bool $soundex_std, Individual $individual, Family $parents = null)
     {
-        $module = $this->module_service->findByComponent('chart', $tree, Auth::user())->first(function (ModuleInterface $module) {
+        $module = $this->module_service->findByComponent(ModuleChartInterface::class, $tree, Auth::user())->first(function (ModuleInterface $module) {
             return $module instanceof RelationshipsChartModule;
         });
 

@@ -4,7 +4,8 @@
 <?php use Fisharebest\Webtrees\Module\FamilyListModule; ?>
 <?php use Fisharebest\Webtrees\Module\MediaListModule; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleInterface; ?>
-<?php use Fisharebest\Webtrees\Module\NoteListModule; ?>
+<?php use Fisharebest\Webtrees\Module\ModuleListInterface;
+use Fisharebest\Webtrees\Module\NoteListModule; ?>
 <?php use Fisharebest\Webtrees\Module\RepositoryListModule; ?>
 <?php use Fisharebest\Webtrees\Module\SourceListModule; ?>
 <?php use Fisharebest\Webtrees\Services\ModuleService; ?>
@@ -37,7 +38,7 @@
             <?php if ($individuals[$tree->id()]) : ?>
                 <?php
                   //find a module providing individual lists
-                  $module = app(ModuleService::class)->findByComponent('list', $tree, Auth::user())->first(function (ModuleInterface $module) {
+                  $module = app(ModuleService::class)->findByComponent(ModuleListInterface::class, $tree, Auth::user())->first(function (ModuleInterface $module) {
                       return $module instanceof IndividualListModule;
                   });
 
@@ -57,7 +58,7 @@
             <?php if ($families[$tree->id()]) : ?>
                 <?php
                   //find a module providing family lists
-                  $module = app(ModuleService::class)->findByComponent('list', $tree, Auth::user())->first(function (ModuleInterface $module) {
+                  $module = app(ModuleService::class)->findByComponent(ModuleListInterface::class, $tree, Auth::user())->first(function (ModuleInterface $module) {
                       return $module instanceof FamilyListModule;
                   });
 
@@ -77,7 +78,7 @@
             <?php if ($sources[$tree->id()]) : ?>
                 <?php
                   //find a module providing source lists
-                  $module = app(ModuleService::class)->findByComponent('list', $tree, Auth::user())->first(function (ModuleInterface $module) {
+                  $module = app(ModuleService::class)->findByComponent(ModuleListInterface::class, $tree, Auth::user())->first(function (ModuleInterface $module) {
                       return $module instanceof SourceListModule;
                   });
 
@@ -97,7 +98,7 @@
             <?php if ($repositories[$tree->id()]) : ?>
                 <?php
                   //find a module providing repository lists
-                  $module = app(ModuleService::class)->findByComponent('list', $tree, Auth::user())->first(function (ModuleInterface $module) {
+                  $module = app(ModuleService::class)->findByComponent(ModuleListInterface::class, $tree, Auth::user())->first(function (ModuleInterface $module) {
                       return $module instanceof RepositoryListModule;
                   });
 
@@ -117,7 +118,7 @@
             <?php if ($media[$tree->id()]) : ?>
                 <?php
                   //find a module providing media lists
-                  $module = app(ModuleService::class)->findByComponent('list', $tree, Auth::user())->first(function (ModuleInterface $module) {
+                  $module = app(ModuleService::class)->findByComponent(ModuleListInterface::class, $tree, Auth::user())->first(function (ModuleInterface $module) {
                       return $module instanceof MediaListModule;
                   });
 
@@ -137,7 +138,7 @@
             <?php if ($notes[$tree->id()]) : ?>
                 <?php
                   //find a module providing note lists
-                  $module = app(ModuleService::class)->findByComponent('list', $tree, Auth::user())->first(function (ModuleInterface $module) {
+                  $module = app(ModuleService::class)->findByComponent(ModuleListInterface::class, $tree, Auth::user())->first(function (ModuleInterface $module) {
                       return $module instanceof NoteListModule;
                   });
 

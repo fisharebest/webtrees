@@ -65,34 +65,43 @@ class ListController extends AbstractBaseController
     /**
      * Show a list of all individual or family records.
      *
-     * @param ?ModuleListInterface  $module
-     * @param Request               $request
-     * @param Tree                  $tree
-     * @param UserInterface         $user
+     * @param Request                  $request
+     * @param Tree                     $tree
+     * @param UserInterface            $user
+     * @param ModuleListInterface|null $moduleListInterface
      *
      * @return Response
      */
-    public function familyList(?ModuleListInterface $moduleListInterface, Request $request, Tree $tree, UserInterface $user): Response
+    public function familyList(Request $request, Tree $tree, UserInterface $user, ?ModuleListInterface $moduleListInterface): Response
     {
-        return $this->individualOrFamilyList($moduleListInterface, true, $request, $tree, $user);
+        return $this->individualOrFamilyList($request, $tree, $user, true, $moduleListInterface);
     }
 
     /**
      * Show a list of all individual or family records.
-     * 
-     * @param ?ModuleListInterface  $module
-     * @param Request               $request
-     * @param Tree                  $tree
-     * @param UserInterface         $user
+     *
+     * @param Request                  $request
+     * @param Tree                     $tree
+     * @param UserInterface            $user
+     * @param ModuleListInterface|null $moduleListInterface
      *
      * @return Response
      */
-    public function individualList(?ModuleListInterface $moduleListInterface, Request $request, Tree $tree, UserInterface $user): Response
+    public function individualList(Request $request, Tree $tree, UserInterface $user, ?ModuleListInterface $moduleListInterface): Response
     {
-        return $this->individualOrFamilyList($moduleListInterface, false, $request, $tree, $user);
+        return $this->individualOrFamilyList($request, $tree, $user, false, $moduleListInterface);
     }
-    
-    public function individualOrFamilyList(?ModuleListInterface $moduleListInterface, bool $families, Request $request, Tree $tree, UserInterface $user): Response
+
+    /**
+     * @param Request                  $request
+     * @param Tree                     $tree
+     * @param UserInterface            $user
+     * @param bool                     $families
+     * @param ModuleListInterface|null $moduleListInterface
+     *
+     * @return Response
+     */
+    public function individualOrFamilyList(Request $request, Tree $tree, UserInterface $user, bool $families, ?ModuleListInterface $moduleListInterface): Response
     {
         // This action can show lists of both families and individuals.
         //route is assumed to be 'module'
