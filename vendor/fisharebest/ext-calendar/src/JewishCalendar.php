@@ -624,7 +624,7 @@ class JewishCalendar implements CalendarInterface
      */
     public function jdToHebrew($julian_day, $alafim_garesh, $alafim, $gereshayim)
     {
-        [$year, $month, $day] = $this->jdToYmd($julian_day);
+        list($year, $month, $day) = $this->jdToYmd($julian_day);
 
         return
             $this->numberToHebrewNumeralsIso8859($day, $gereshayim) . ' ' .
