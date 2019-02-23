@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Closure;
 use Fisharebest\Webtrees\Services\HousekeepingService;
+use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,6 +35,10 @@ class Housekeeping implements MiddlewareInterface
 
     // Delete thumnnails after 90 days.
     private const MAX_THUMBNAIL_AGE = 60 * 60 * 24 * 90;
+
+    // Delete files in /data/tmp after 1 hour.
+    private const TMP_DIR = 'data/tmp';
+    private const MAX_TMP_FILE_AGE = 60 * 60;
 
     // Delete error logs after 90 days.
     private const MAX_LOG_AGE = 60 * 60 * 24 * 90;
@@ -88,10 +93,16 @@ class Housekeeping implements MiddlewareInterface
      */
     private function runHousekeeping()
     {
-        $this->housekeeping_service->deleteOldCacheFiles($this->filesystem, 'cache', self::MAX_CACHE_AGE);
+        // Clear files in the (user-specified) data folder - which might not be local
+        $this->housekeeping_service->deleteOldFiles($this->filesystem, 'cache', self::MAX_CACHE_AGE);
 
-        $this->housekeeping_service->deleteOldCacheFiles($this->filesystem, 'thumbnail-cache', self::MAX_THUMBNAIL_AGE);
+        $this->housekeeping_service->deleteOldFiles($this->filesystem, 'thumbnail-cache', self::MAX_THUMBNAIL_AGE);
 
+        // Clear files in /data (for things that need to be local files)
+        $filesystem = new Filesystem(new Local(WT_ROOT));
+        $this->housekeeping_service->deleteOldFiles($filesystem, self::TMP_DIR, self::MAX_TMP_FILE_AGE);
+
+        // Clear entries in database tables
         $this->housekeeping_service->deleteOldLogs(self::MAX_LOG_AGE);
 
         $this->housekeeping_service->deleteOldSessions(self::MAX_SESSION_AGE);

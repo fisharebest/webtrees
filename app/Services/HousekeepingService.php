@@ -406,17 +406,17 @@ class HousekeepingService
      * Delete old cache files.
      *
      * @param Filesystem $filesystem
-     * @param string     $path_to_cache
-     * @param int        $max_age_in_seconds
+     * @param string     $path
+     * @param int        $max_age    Seconds
      *
      * @return void
      */
-    public function deleteOldCacheFiles(Filesystem $filesystem, string $path_to_cache, int $max_age_in_seconds)
+    public function deleteOldFiles(Filesystem $filesystem, string $path, int $max_age)
     {
-        $list = $filesystem->listContents($path_to_cache, true);
+        $list = $filesystem->listContents($path, true);
 
         foreach ($list as $metadata) {
-            if ($metadata['timestamp'] ?? WT_TIMESTAMP < WT_TIMESTAMP - $max_age_in_seconds) {
+            if ($metadata['timestamp'] ?? WT_TIMESTAMP < WT_TIMESTAMP - $max_age) {
                 $this->deleteFileOrFolder($filesystem, $metadata['path']);
             }
         }
