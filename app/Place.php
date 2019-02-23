@@ -76,29 +76,35 @@ class Place
                 return 0;
             }
 
-            $parent_place_id = $this->parent()->id();
+            $parent_place_id = 0;
 
-            $place_id = (int) DB::table('places')
-                ->where('p_file', '=', $this->tree->id())
-                ->where('p_place', '=', $this->parts->first())
-                ->where('p_parent_id', '=', $parent_place_id)
-                ->value('p_id');
+            foreach ($this->parts->reverse() as $part) {
+                $place_id = (int) DB::table('places')
+                    ->where('p_file', '=', $this->tree->id())
+                    ->where('p_place', '=', $part)
+                    ->where('p_parent_id', '=', $parent_place_id)
+                    ->value('p_id');
 
-            if ($place_id === 0) {
-                $place = $this->parts->first();
+                if ($place_id === 0) {
+                    DB::table('places')->insert([
+                        'p_file'        => $this->tree->id(),
+                        'p_place'       => $part,
+                        'p_parent_id'   => $parent_place_id,
+                        'p_std_soundex' => Soundex::russell($part),
+                        'p_dm_soundex'  => Soundex::daitchMokotoff($part),
+                    ]);
 
-                DB::table('places')->insert([
-                    'p_file'        => $this->tree->id(),
-                    'p_place'       => $place,
-                    'p_parent_id'   => $parent_place_id,
-                    'p_std_soundex' => Soundex::russell($place),
-                    'p_dm_soundex'  => Soundex::daitchMokotoff($place),
-                ]);
-
-                $place_id = (int) DB::connection()->getPdo()->lastInsertId();
+                    $parent_place_id = (int) DB::connection()->getPdo()->lastInsertId();
+                } else {
+                    $parent_place_id = $place_id;
+                }
             }
 
-            return $place_id;
+            return (int) DB::table('places')
+                ->where('p_file', '=', $this->tree->id())
+                ->where('p_place', '=', $this->parts->last())
+                ->where('p_parent_id', '=', 0)
+                ->value('p_id');
         });
     }
 
