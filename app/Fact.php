@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Closure;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Services\GedcomService;
 use InvalidArgumentException;
@@ -156,8 +157,8 @@ class Fact
     /** @var Place The place of this fact, from the “2 PLAC …” attribute */
     private $place;
 
-    /** @var int Temporary(!) variable Used by Functions::sortFacts() */
-    public $sortOrder;
+    /** @var int Used by Functions::sortFacts() */
+    private $sortOrder;
 
     /**
      * Create an event object from a gedcom fragment.
@@ -579,45 +580,42 @@ class Fact
     }
 
     /**
-     * Static Helper functions to sort events
+     * Helper functions to sort facts
      *
-     * @param Fact $a Fact one
-     * @param Fact $b Fact two
-     *
-     * @return int
+     * @return Closure
      */
-    public static function compareDate(Fact $a, Fact $b): int
+    private static function dateComparator(): Closure
     {
-        if ($a->date()->isOK() && $b->date()->isOK()) {
-            // If both events have dates, compare by date
-            $ret = Date::compare($a->date(), $b->date());
+        return function (Fact $a, Fact $b): int {
+            if ($a->date()->isOK() && $b->date()->isOK()) {
+                // If both events have dates, compare by date
+                $ret = Date::compare($a->date(), $b->date());
 
-            if ($ret === 0) {
-                // If dates are the same, compare by fact type
-                $ret = self::compareType($a, $b);
-
-                // If the fact type is also the same, retain the initial order
                 if ($ret === 0) {
-                    $ret = $a->sortOrder - $b->sortOrder;
+                    // If dates overlap, compare by fact type
+                    $ret = self::typeComparator()($a, $b);
+
+                    // If the fact type is also the same, retain the initial order
+                    if ($ret === 0) {
+                        $ret = $a->sortOrder <=> $b->sortOrder;
+                    }
                 }
+
+                return $ret;
             }
 
-            return $ret;
-        }
+            // One or both events have no date - retain the initial order
+            return $a->sortOrder <=> $b->sortOrder;
 
-        // One or both events have no date - retain the initial order
-        return $a->sortOrder - $b->sortOrder;
+        };
     }
 
     /**
-     * Static method to compare two events by their type.
+     * Helper functions to sort facts.
      *
-     * @param Fact $a Fact one
-     * @param Fact $b Fact two
-     *
-     * @return int
+     * @return Closure
      */
-    public static function compareType(Fact $a, Fact $b): int
+    public static function typeComparator(): Closure
     {
         static $factsort = [];
 
@@ -625,60 +623,123 @@ class Fact
             $factsort = array_flip(self::FACT_ORDER);
         }
 
-        // Facts from same families stay grouped together
-        // Keep MARR and DIV from the same families from mixing with events from other FAMs
-        // Use the original order in which the facts were added
-        if ($a->record instanceof Family && $b->record instanceof Family && $a->record !== $b->record) {
-            return $a->sortOrder - $b->sortOrder;
-        }
+        return function (Fact $a, Fact $b) use ($factsort): int {
+            // Facts from same families stay grouped together
+            // Keep MARR and DIV from the same families from mixing with events from other FAMs
+            // Use the original order in which the facts were added
+            if ($a->record instanceof Family && $b->record instanceof Family && $a->record !== $b->record) {
+                return $a->sortOrder - $b->sortOrder;
+            }
 
-        $atag = $a->getTag();
-        $btag = $b->getTag();
+            $atag = $a->getTag();
+            $btag = $b->getTag();
 
-        // Events not in the above list get mapped onto one that is.
-        if (!array_key_exists($atag, $factsort)) {
-            if (preg_match('/^(_(BIRT|MARR|DEAT|BURI)_)/', $atag, $match)) {
-                $atag = $match[1];
+            // Events not in the above list get mapped onto one that is.
+            if (!array_key_exists($atag, $factsort)) {
+                if (preg_match('/^(_(BIRT|MARR|DEAT|BURI)_)/', $atag, $match)) {
+                    $atag = $match[1];
+                } else {
+                    $atag = '_????_';
+                }
+            }
+
+            if (!array_key_exists($btag, $factsort)) {
+                if (preg_match('/^(_(BIRT|MARR|DEAT|BURI)_)/', $btag, $match)) {
+                    $btag = $match[1];
+                } else {
+                    $btag = '_????_';
+                }
+            }
+
+            // - Don't let dated after DEAT/BURI facts sort non-dated facts before DEAT/BURI
+            // - Treat dated after BURI facts as BURI instead
+            if ($a->attribute('DATE') !== '' && $factsort[$atag] > $factsort['BURI'] && $factsort[$atag] < $factsort['CHAN']) {
+                $atag = 'BURI';
+            }
+
+            if ($b->attribute('DATE') !== '' && $factsort[$btag] > $factsort['BURI'] && $factsort[$btag] < $factsort['CHAN']) {
+                $btag = 'BURI';
+            }
+
+            $ret = $factsort[$atag] - $factsort[$btag];
+
+            // If facts are the same then put dated facts before non-dated facts
+            if ($ret == 0) {
+                if ($a->attribute('DATE') !== '' && $b->attribute('DATE') === '') {
+                    return -1;
+                }
+
+                if ($b->attribute('DATE') !== '' && $a->attribute('DATE') === '') {
+                    return 1;
+                }
+
+                // If no sorting preference, then keep original ordering
+                $ret = $a->sortOrder - $b->sortOrder;
+            }
+
+            return $ret;
+        };
+    }
+
+    /**
+     * A multi-key sort
+     * 1. First divide the facts into two arrays one set with dates and one set without dates
+     * 2. Sort each of the two new arrays, the date using the compare date function, the non-dated
+     * using the compare type function
+     * 3. Then merge the arrays back into the original array using the compare type function
+     *
+     * @param Fact[] $unsorted
+     *
+     * @return Fact[]
+     */
+    public static function sortFacts($unsorted): array
+    {
+        $dated    = [];
+        $nondated = [];
+        $sorted   = [];
+
+        // Split the array into dated and non-dated arrays
+        $order = 0;
+
+        foreach ($unsorted as $fact) {
+            $fact->sortOrder = $order;
+            $order++;
+
+            if ($fact->date()->isOK()) {
+                $dated[] = $fact;
             } else {
-                $atag = '_????_';
+                $nondated[] = $fact;
             }
         }
 
-        if (!array_key_exists($btag, $factsort)) {
-            if (preg_match('/^(_(BIRT|MARR|DEAT|BURI)_)/', $btag, $match)) {
-                $btag = $match[1];
+        usort($dated, self::dateComparator());
+        usort($nondated, self::typeComparator());
+
+        // Merge the arrays
+        $dc = count($dated);
+        $nc = count($nondated);
+        $i  = 0;
+        $j  = 0;
+
+        // while there is anything in the dated array continue merging
+        while ($i < $dc) {
+            // compare each fact by type to merge them in order
+            if ($j < $nc && self::typeComparator()($dated[$i], $nondated[$j]) > 0) {
+                $sorted[] = $nondated[$j];
+                $j++;
             } else {
-                $btag = '_????_';
+                $sorted[] = $dated[$i];
+                $i++;
             }
         }
 
-        // - Don't let dated after DEAT/BURI facts sort non-dated facts before DEAT/BURI
-        // - Treat dated after BURI facts as BURI instead
-        if ($a->attribute('DATE') !== '' && $factsort[$atag] > $factsort['BURI'] && $factsort[$atag] < $factsort['CHAN']) {
-            $atag = 'BURI';
+        // get anything that might be left in the nondated array
+        while ($j < $nc) {
+            $sorted[] = $nondated[$j];
+            $j++;
         }
 
-        if ($b->attribute('DATE') !== '' && $factsort[$btag] > $factsort['BURI'] && $factsort[$btag] < $factsort['CHAN']) {
-            $btag = 'BURI';
-        }
-
-        $ret = $factsort[$atag] - $factsort[$btag];
-
-        // If facts are the same then put dated facts before non-dated facts
-        if ($ret == 0) {
-            if ($a->attribute('DATE') !== '' && $b->attribute('DATE') === '') {
-                return -1;
-            }
-
-            if ($b->attribute('DATE') !== '' && $a->attribute('DATE') === '') {
-                return 1;
-            }
-
-            // If no sorting preference, then keep original ordering
-            $ret = $a->sortOrder - $b->sortOrder;
-        }
-
-        return $ret;
+        return $sorted;
     }
 
     /**

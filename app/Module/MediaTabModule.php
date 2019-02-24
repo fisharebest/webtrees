@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -127,7 +126,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
                     $this->facts[] = $fact;
                 }
             }
-            Functions::sortFacts($this->facts);
+            $this->facts = Fact::sortFacts($this->facts);
         }
 
         return $this->facts;

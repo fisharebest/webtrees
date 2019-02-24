@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Functions;
 
 use Exception;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -145,64 +144,6 @@ class Functions
         }
 
         return $text;
-    }
-
-    /**
-     * A multi-key sort
-     * 1. First divide the facts into two arrays one set with dates and one set without dates
-     * 2. Sort each of the two new arrays, the date using the compare date function, the non-dated
-     * using the compare type function
-     * 3. Then merge the arrays back into the original array using the compare type function
-     *
-     * @param Fact[] $arr
-     *
-     * @return void
-     */
-    public static function sortFacts(&$arr)
-    {
-        $dated    = [];
-        $nondated = [];
-        //-- split the array into dated and non-dated arrays
-        $order = 0;
-        foreach ($arr as $event) {
-            $event->sortOrder = $order;
-            $order++;
-            if ($event->date()->isOK()) {
-                $dated[] = $event;
-            } else {
-                $nondated[] = $event;
-            }
-        }
-
-        //-- sort each type of array
-        usort($dated, '\Fisharebest\Webtrees\Fact::compareDate');
-        usort($nondated, '\Fisharebest\Webtrees\Fact::compareType');
-
-        //-- merge the arrays back together comparing by Facts
-        $dc = count($dated);
-        $nc = count($nondated);
-        $i  = 0;
-        $j  = 0;
-        $k  = 0;
-        // while there is anything in the dated array continue merging
-        while ($i < $dc) {
-            // compare each fact by type to merge them in order
-            if ($j < $nc && Fact::compareType($dated[$i], $nondated[$j]) > 0) {
-                $arr[$k] = $nondated[$j];
-                $j++;
-            } else {
-                $arr[$k] = $dated[$i];
-                $i++;
-            }
-            $k++;
-        }
-
-        // get anything that might be left in the nondated array
-        while ($j < $nc) {
-            $arr[$k] = $nondated[$j];
-            $j++;
-            $k++;
-        }
     }
 
     /**

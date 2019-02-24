@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Date\GregorianDate;
-use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -285,7 +285,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         $baseyear -= 5;
         $topyear  += 5;
 
-        Functions::sortFacts($indifacts);
+        $indifacts = Fact::sortFacts($indifacts);
 
         $html = view('modules/timeline-chart/chart', [
             'baseyear'    => $baseyear,

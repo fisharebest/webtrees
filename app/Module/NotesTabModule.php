@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ClipboardService;
@@ -126,7 +125,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
                     $this->facts[] = $fact;
                 }
             }
-            Functions::sortFacts($this->facts);
+            $this->facts = Fact::sortFacts($this->facts);
         }
 
         return $this->facts;

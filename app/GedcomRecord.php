@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees;
 use Carbon\Carbon;
 use Closure;
 use Exception;
-use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -1091,7 +1090,7 @@ class GedcomRecord
         }
 
         if ($sort) {
-            Functions::sortFacts($facts);
+            $facts = Fact::sortFacts($facts);
         }
 
         return new Collection($facts);

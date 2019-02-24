@@ -21,7 +21,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -149,7 +148,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             ->merge($associate_facts)
             ->merge($historical_facts);
 
-        Functions::sortFacts($indifacts);
+        $indifacts = Fact::sortFacts($indifacts);
 
         return view('modules/personal_facts/tab', [
             'can_edit'             => $individual->canEdit(),

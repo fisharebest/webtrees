@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees\Module;
 use Exception;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -223,7 +222,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
             }
         }
 
-        Functions::sortFacts($facts);
+        $facts = Fact::sortFacts($facts);
 
         return $facts->filter(function (Fact $item): bool {
             return $item->place()->gedcomName() !== '';
