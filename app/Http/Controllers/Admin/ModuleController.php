@@ -312,7 +312,7 @@ class ModuleController extends AbstractAdminController
         $modules = $this->module_service->findByInterface(ModuleBlockInterface::class, true);
 
         $this->updateStatus($modules, $request);
-        $this->updateAccessLevel($modules, 'block', $request);
+        $this->updateAccessLevel($modules, ModuleBlockInterface::class, $request);
 
         return new RedirectResponse(route('blocks'));
     }
@@ -327,7 +327,7 @@ class ModuleController extends AbstractAdminController
         $modules = $this->module_service->findByInterface(ModuleChartInterface::class, true);
 
         $this->updateStatus($modules, $request);
-        $this->updateAccessLevel($modules, 'chart', $request);
+        $this->updateAccessLevel($modules, ModuleChartInterface::class, $request);
 
         return new RedirectResponse(route('charts'));
     }
@@ -385,7 +385,7 @@ class ModuleController extends AbstractAdminController
         $modules = $this->module_service->findByInterface(ModuleListInterface::class, true);
 
         $this->updateStatus($modules, $request);
-        $this->updateAccessLevel($modules, 'list', $request);
+        $this->updateAccessLevel($modules, ModuleListInterface::class, $request);
 
         return new RedirectResponse(route('lists'));
     }
@@ -401,7 +401,7 @@ class ModuleController extends AbstractAdminController
 
         $this->updateStatus($modules, $request);
         $this->updateOrder($modules, 'menu_order', $request);
-        $this->updateAccessLevel($modules, 'menu', $request);
+        $this->updateAccessLevel($modules, ModuleMenuInterface::class, $request);
 
         return new RedirectResponse(route('menus'));
     }
@@ -416,7 +416,7 @@ class ModuleController extends AbstractAdminController
         $modules = $this->module_service->findByInterface(ModuleReportInterface::class, true);
 
         $this->updateStatus($modules, $request);
-        $this->updateAccessLevel($modules, 'report', $request);
+        $this->updateAccessLevel($modules, ModuleReportInterface::class, $request);
 
         return new RedirectResponse(route('reports'));
     }
@@ -432,7 +432,7 @@ class ModuleController extends AbstractAdminController
 
         $this->updateStatus($modules, $request);
         $this->updateOrder($modules, 'sidebar_order', $request);
-        $this->updateAccessLevel($modules, 'sidebar', $request);
+        $this->updateAccessLevel($modules, ModuleSidebarInterface::class, $request);
 
         return new RedirectResponse(route('sidebars'));
     }
@@ -448,7 +448,7 @@ class ModuleController extends AbstractAdminController
 
         $this->updateStatus($modules, $request);
         $this->updateOrder($modules, 'tab_order', $request);
-        $this->updateAccessLevel($modules, 'tab', $request);
+        $this->updateAccessLevel($modules, ModuleTabInterface::class, $request);
 
         return new RedirectResponse(route('tabs'));
     }
@@ -523,12 +523,12 @@ class ModuleController extends AbstractAdminController
      * Update the access levels of the modules.
      *
      * @param Collection $modules
-     * @param string     $component
+     * @param string     $interface
      * @param Request    $request
      *
      * @return void
      */
-    private function updateAccessLevel(Collection $modules, string $component, Request $request): void
+    private function updateAccessLevel(Collection $modules, string $interface, Request $request): void
     {
         $trees = Tree::all();
 
@@ -537,11 +537,11 @@ class ModuleController extends AbstractAdminController
                 $key          = 'access-' . $module->name() . '-' . $tree->id();
                 $access_level = (int) $request->get($key);
 
-                if ($access_level !== $module->accessLevel($tree, $component)) {
+                if ($access_level !== $module->accessLevel($tree, $interface)) {
                     DB::table('module_privacy')->updateOrInsert([
                         'module_name' => $module->name(),
                         'gedcom_id'   => $tree->id(),
-                        'component'   => $component,
+                        'interface'   => $interface,
                     ], [
                         'access_level' => $access_level,
                     ]);
