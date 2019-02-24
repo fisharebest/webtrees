@@ -21,8 +21,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\Module\ModuleInterface;
-use Fisharebest\Webtrees\Module\IndividualListModule;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\Request;

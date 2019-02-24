@@ -29,11 +29,10 @@ class FunctionsPrintLists
     /**
      * Print a tagcloud of surnames.
      *
-     * @param int[][]              $surnames array (of SURN, of array of SPFX_SURN, of counts)
-     * @param Tree                 $tree  
-     * @param ?ModuleListInterface $module
-     * @param bool                 $totals   show totals after each name
-     * @param Tree                 $tree     generate links to this tree
+     * @param int[][]                  $surnames array (of SURN, of array of SPFX_SURN, of counts)
+     * @param ModuleListInterface|null $module
+     * @param bool                     $totals   show totals after each name
+     * @param Tree                     $tree     generate links to this tree
      *
      * @return string
      */

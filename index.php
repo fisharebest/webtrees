@@ -42,7 +42,6 @@ use Fisharebest\Webtrees\View;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Cache\ArrayStore;
 use Illuminate\Cache\Repository;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Cached\CachedAdapter;

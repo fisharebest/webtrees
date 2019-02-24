@@ -17,14 +17,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
-use ErrorException;
 use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Exceptions\InternalServerErrorException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
-use GuzzleHttp\Exception\ConnectException;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use League\Flysystem\Adapter\Local;

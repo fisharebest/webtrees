@@ -17,15 +17,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
-use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Application;
-use Fisharebest\Webtrees\Location;
-use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use const T_REQUIRE;
 
 /**
  * Test the location admin controller

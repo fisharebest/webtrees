@@ -26,14 +26,13 @@ use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager;
-use function in_array;
-use PDOException;
 use SQLite3;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 use function extension_loaded;
+use function in_array;
 
 /**
  * Controller for the installation wizard

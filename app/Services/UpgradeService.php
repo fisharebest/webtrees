@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Webtrees;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 use League\Flysystem\Cached\CachedAdapter;
 use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;

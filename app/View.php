@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Exception;
-use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use function ob_end_clean;
 use Throwable;
 

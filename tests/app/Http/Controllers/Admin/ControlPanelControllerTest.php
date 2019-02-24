@@ -22,8 +22,6 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\User;
-use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
