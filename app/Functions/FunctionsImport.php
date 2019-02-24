@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Functions;
 
+use Exception;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -593,7 +594,6 @@ class FunctionsImport
 
     /**
      * import record into database
-     *
      * this function will parse the given gedcom record and add it to the database
      *
      * @param string $gedrec the raw gedcom record to parse
@@ -601,8 +601,9 @@ class FunctionsImport
      * @param bool   $update whether or not this is an updated record that has been accepted
      *
      * @return void
+     * @throws Exception
      */
-    public static function importRecord($gedrec, Tree $tree, $update)
+    public static function importRecord($gedrec, Tree $tree, $update): void
     {
         $tree_id = $tree->id();
 
@@ -625,9 +626,7 @@ class FunctionsImport
             $type = $match[1];
             $xref = $type; // For HEAD/TRLR, use type as pseudo XREF.
         } else {
-            echo I18N::translate('Invalid GEDCOM format'), '<br><pre>', $gedrec, '</pre>';
-
-            return;
+            throw new Exception(I18N::translate('Invalid GEDCOM record') . '<br><pre>' . e($gedrec) . '</pre>');
         }
 
         // If the user has downloaded their GEDCOM data (containing media objects) and edited it
