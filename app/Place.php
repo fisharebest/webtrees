@@ -47,7 +47,7 @@ class Place
     public function __construct(string $place_name, Tree $tree)
     {
         // Ignore any empty parts in place names such as "Village, , , Country".
-        $this->parts = (new Collection(preg_split(Gedcom::PLACE_SEPARATOR_REGEX, $place_name)))
+        $this->parts = Collection::make(preg_split(Gedcom::PLACE_SEPARATOR_REGEX, $place_name))
             ->filter();
 
         // Rebuild the placename in the correct format.

@@ -273,15 +273,14 @@ class ModuleService
      */
     private function coreModules(): Collection
     {
-        $modules = new Collection(self::CORE_MODULES);
+        return Collection::make(self::CORE_MODULES)
+            ->map(function (string $class, string $name): ModuleInterface {
+                $module = app()->make($class);
 
-        return $modules->map(function (string $class, string $name): ModuleInterface {
-            $module = app()->make($class);
+                $module->setName($name);
 
-            $module->setName($name);
-
-            return $module;
-        });
+                return $module;
+            });
     }
 
     /**
@@ -294,7 +293,7 @@ class ModuleService
         $pattern   = WT_ROOT . Webtrees::MODULES_PATH . '*/module.php';
         $filenames = glob($pattern);
 
-        return (new Collection($filenames))
+        return Collection::make($filenames)
             ->filter(function (string $filename): bool {
                 // Special characters will break PHP variable names.
                 // This also allows us to ignore modules called "foo.example" and "foo.disable"
@@ -452,6 +451,34 @@ class ModuleService
     }
 
     /**
+     * A function filter modules by type
+     *
+     * @param string $interface
+     *
+     * @return Closure
+     */
+    private function interfaceFilter(string $interface): Closure
+    {
+        return function (ModuleInterface $module) use ($interface): bool {
+            return $module instanceof $interface;
+        };
+    }
+
+    /**
+     * A function filter modules by enabled/disabled
+     *
+     * @param bool $include_disabled
+     *
+     * @return Closure
+     */
+    private function enabledFilter(bool $include_disabled): Closure
+    {
+        return function (ModuleInterface $module) use ($include_disabled): bool {
+            return $include_disabled || $module->isEnabled();
+        };
+    }
+
+    /**
      * A function to convert modules into their titles - to create option lists, etc.
      *
      * @return Closure
@@ -491,12 +518,8 @@ class ModuleService
     public function findByInterface(string $interface, $include_disabled = false): Collection
     {
         $modules = $this->all()
-            ->filter(function (ModuleInterface $module) use ($interface): bool {
-                return $module instanceof $interface;
-            })
-            ->filter(function (ModuleInterface $module) use ($include_disabled): bool {
-                return $include_disabled || $module->isEnabled();
-            });
+            ->filter($this->interfaceFilter($interface))
+            ->filter($this->enabledFilter($include_disabled));
 
         switch ($interface) {
             case ModuleFooterInterface::class:
@@ -519,30 +542,16 @@ class ModuleService
      * Find a specified module, if it is currently active.
      *
      * @param string $module_name
+     * @param bool   $include_disabled
      *
      * @return ModuleInterface|null
      */
-    public function findByName(string $module_name): ?ModuleInterface
+    public function findByName(string $module_name, bool $include_disabled = false): ?ModuleInterface
     {
         return $this->all()
+            ->filter($this->enabledFilter($include_disabled))
             ->filter(function (ModuleInterface $module) use ($module_name): bool {
-                return $module->isEnabled() && $module->name() === $module_name;
-            })
-            ->first();
-    }
-
-    /**
-     * Find a specified module, if it is currently active.
-     *
-     * @param string $class_name
-     *
-     * @return ModuleInterface|null
-     */
-    public function findByClass(string $class_name): ?ModuleInterface
-    {
-        return $this->all()
-            ->filter(function (ModuleInterface $module) use ($class_name): bool {
-                return $module->isEnabled() && $module instanceof $class_name;
+                return $module->name() === $module_name;
             })
             ->first();
     }

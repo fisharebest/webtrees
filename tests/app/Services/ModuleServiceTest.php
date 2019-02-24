@@ -104,36 +104,8 @@ class ModuleServiceTest extends TestCase
         $this->assertNotEmpty($module_service->findByInterface(ModuleTabInterface::class)->all());
         $this->assertNotEmpty($module_service->findByInterface(ModuleThemeInterface::class)->all());
 
-        // THe core modules do not contain any of these.
-        $this->assertEmpty($module_service->findByInterface(ModuleHistoricEventsInterface::class)->all());
-    }
-
-    /**
-     * @covers \Fisharebest\Webtrees\Services\ModuleService::findByClass
-     * @return void
-     */
-    public function testFindByClass(): void
-    {
-        app()->instance(Tree::class, Tree::create('name', 'title'));
-
-        $module_service = new ModuleService();
-
-        $this->assertNull($module_service->findByClass('not-a-valid-class-name'));
-        $this->assertInstanceOf(TreesMenuModule::class, $module_service->findByClass(TreesMenuModule::class));
-    }
-
-    /**
-     * @covers \Fisharebest\Webtrees\Services\ModuleService::findByName
-     * @return void
-     */
-    public function testFindByName(): void
-    {
-        app()->instance(Tree::class, Tree::create('name', 'title'));
-
-        $module_service = new ModuleService();
-
-        $this->assertNull($module_service->findByName('not-a-valid-module-name'));
-        $this->assertInstanceOf(TreesMenuModule::class, $module_service->findByName('trees-menu'));
+        // Search for an invalid module type
+        $this->assertNull($module_service->findByInterface('not-a-valid-class-or-interface'));
     }
 
     /**

@@ -2,7 +2,7 @@
 <?php use Fisharebest\Webtrees\Services\ModuleService; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
-<?php if (app()->make(ModuleService::class)->findByClass(CkeditorModule::class)): ?>
+<?php if (app()->make(ModuleService::class)->findByInterface(CkeditorModule::class)): ?>
     <?php View::push('javascript') ?>
     <script src="<?= e(CkeditorModule::CKEDITOR_PATH) ?>ckeditor.js"></script>
     <script src="<?= e(CkeditorModule::CKEDITOR_PATH) ?>adapters/jquery.js"></script>
