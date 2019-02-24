@@ -65,7 +65,14 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     {
         return 'menu-list-plac';
     }
-    
+
+    /**
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
+     *
+     * @return Response
+     */
     public function getListAction(Request $request, Tree $tree, UserInterface $user): Response
     {
         Auth::checkComponentAccess($this, 'list', $tree, $user);
@@ -73,7 +80,10 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
         $listController = new PlaceHierarchyController(app(Statistics::class));
         return $listController->show($request, $tree, app(SearchService::class));
     }
-    
+
+    /**
+     * @return string[]
+     */
     public function listUrlAttributes(): array
     {
         return [];

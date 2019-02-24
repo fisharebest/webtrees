@@ -65,7 +65,13 @@ class SourceListModule extends AbstractModule implements ModuleListInterface
     {
         return 'menu-list-sour';
     }
-    
+
+    /**
+     * @param Tree          $tree
+     * @param UserInterface $user
+     *
+     * @return Response
+     */
     public function getListAction(Tree $tree, UserInterface $user): Response
     {
         Auth::checkComponentAccess($this, 'list', $tree, $user);
@@ -73,12 +79,20 @@ class SourceListModule extends AbstractModule implements ModuleListInterface
         $listController = new ListController(app(IndividualListService::class), app(LocalizationService::class));
         return $listController->sourceList($tree);
     }
-    
+
+    /**
+     * @return string[]
+     */
     public function listUrlAttributes(): array
     {
         return [];
     }
-    
+
+    /**
+     * @param Tree $tree
+     *
+     * @return bool
+     */
     public function listIsEmpty(Tree $tree): bool
     {
         return !DB::table('sources')

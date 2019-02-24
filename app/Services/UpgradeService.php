@@ -97,9 +97,11 @@ class UpgradeService
     /**
      * Create a list of all the files in a webtrees .ZIP archive
      *
+     * @param string $zip_file
+     *
      * @return Collection
      */
-    public function webtreesZipContents($zip_file): Collection
+    public function webtreesZipContents(string $zip_file): Collection
     {
         $zip_adapter    = new ZipArchiveAdapter($zip_file, null, 'webtrees');
         $zip_filesystem = new Filesystem(new CachedAdapter($zip_adapter, new Memory()));

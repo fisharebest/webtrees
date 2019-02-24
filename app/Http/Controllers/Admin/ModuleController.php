@@ -248,7 +248,6 @@ class ModuleController extends AbstractAdminController
 
     /**
      * @param string $interface
-     * @param string $component
      * @param string $title
      * @param string $description
      *

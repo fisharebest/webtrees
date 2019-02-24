@@ -318,7 +318,7 @@ class UserService
     }
 
     /**
-     * @param User $user
+     * @param User $contact_user
      *
      * @return string
      */

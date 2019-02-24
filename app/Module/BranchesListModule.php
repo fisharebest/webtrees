@@ -64,7 +64,13 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
     {
         return 'menu-branches';
     }
-    
+
+    /**
+     * @param Tree  $tree
+     * @param array $parameters
+     *
+     * @return string
+     */
     public function listUrl(Tree $tree, array $parameters = []): string
     {
         return route('module', [
@@ -73,7 +79,14 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
                 'ged'    => $tree->name(),
         ] + $parameters);
     }
-    
+
+    /**
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
+     *
+     * @return Response
+     */
     public function getPageAction(Request $request, Tree $tree, UserInterface $user): Response
     {
         Auth::checkComponentAccess($this, 'list', $tree, $user);
@@ -81,7 +94,14 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
         $listController = new BranchesController(app(ModuleService::class));
         return $listController->page($request);
     }
-    
+
+    /**
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
+     *
+     * @return Response
+     */
     public function getListAction(Request $request, Tree $tree, UserInterface $user): Response
     {
         Auth::checkComponentAccess($this, 'list', $tree, $user);
@@ -89,7 +109,10 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
         $listController = new BranchesController(app(ModuleService::class));
         return $listController->list($request, $tree, $user);
     }
-    
+
+    /**
+     * @return string[]
+     */
     public function listUrlAttributes(): array
     {
         return [];

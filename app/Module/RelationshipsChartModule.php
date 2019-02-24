@@ -604,7 +604,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      *
      * @param int $max_recursion
      *
-     * @return array
+     * @return string[]
      */
     private function recursionOptions(int $max_recursion): array
     {

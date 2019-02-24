@@ -66,7 +66,14 @@ class MediaListModule extends AbstractModule implements ModuleListInterface
     {
         return 'menu-list-obje';
     }
-    
+
+    /**
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
+     *
+     * @return Response
+     */
     public function getListAction(Request $request, Tree $tree, UserInterface $user): Response
     {
         Auth::checkComponentAccess($this, 'list', $tree, $user);
@@ -74,12 +81,20 @@ class MediaListModule extends AbstractModule implements ModuleListInterface
         $listController = new ListController(app(IndividualListService::class), app(LocalizationService::class));
         return $listController->mediaList($request, $tree);
     }
-    
+
+    /**
+     * @return string[]
+     */
     public function listUrlAttributes(): array
     {
         return [];
     }
-    
+
+    /**
+     * @param Tree $tree
+     *
+     * @return bool
+     */
     public function listIsEmpty(Tree $tree): bool
     {
         return !DB::table('media')

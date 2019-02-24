@@ -18,8 +18,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class FunctionsPrintLists - create sortable lists using datatables.net
@@ -80,11 +80,11 @@ class FunctionsPrintLists
     /**
      * Print a list of surnames.
      *
-     * @param string[][][]         $surnames array (of SURN, of array of SPFX_SURN, of array of XREF)
-     * @param int                  $style    1=bullet list, 2=semicolon-separated list, 3=tabulated list with up to 4 columns
-     * @param bool                 $totals   show totals after each name
-     * @param ?ModuleListInterface $module
-     * @param Tree                 $tree     Link back to the individual list in this tree
+     * @param string[][][]             $surnames array (of SURN, of array of SPFX_SURN, of array of XREF)
+     * @param int                      $style    1=bullet list, 2=semicolon-separated list, 3=tabulated list with up to 4 columns
+     * @param bool                     $totals   show totals after each name
+     * @param ModuleListInterface|null $module
+     * @param Tree                     $tree     Link back to the individual list in this tree
      *
      * @return string
      */

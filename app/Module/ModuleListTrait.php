@@ -92,7 +92,12 @@ trait ModuleListTrait
     {
         return ['rel' => 'nofollow'];
     }
-		
+
+    /**
+     * @param Tree $tree
+     *
+     * @return bool
+     */
     public function listIsEmpty(Tree $tree): bool
     {
         return false;

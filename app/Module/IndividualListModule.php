@@ -65,7 +65,14 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
     {
         return 'menu-list-indi';
     }
-    
+
+    /**
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param UserInterface $user
+     *
+     * @return Response
+     */
     public function getListAction(Request $request, Tree $tree, UserInterface $user): Response
     {
         Auth::checkComponentAccess($this, 'list', $tree, $user);
@@ -73,7 +80,10 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         $listController = new ListController(app(IndividualListService::class), app(LocalizationService::class));
         return $listController->individualList($request, $tree, $user, $this);
     }
-    
+
+    /**
+     * @return string[]
+     */
     public function listUrlAttributes(): array
     {
         return [];

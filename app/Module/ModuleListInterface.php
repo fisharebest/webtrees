@@ -65,6 +65,11 @@ interface ModuleListInterface extends ModuleInterface
      * @return string[]
      */
     public function listUrlAttributes(): array;
-		
+
+    /**
+     * @param Tree $tree
+     *
+     * @return bool
+     */
     public function listIsEmpty(Tree $tree): bool;
 }
