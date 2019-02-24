@@ -20,9 +20,12 @@ namespace Fisharebest\Webtrees\Services;
 use Closure;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Exceptions\InternalServerErrorException;
+use Fisharebest\Webtrees\Exceptions\TooManySearchResultsException;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
@@ -72,6 +75,7 @@ class SearchService
 
         return $query
             ->get()
+            ->each($this->rowLimiter())
             ->map(Family::rowMapper())
             ->filter(GedcomRecord::accessFilter())
             ->filter($this->rawGedcomFilter($search));
@@ -133,6 +137,7 @@ class SearchService
 
         return $query
             ->get()
+            ->each($this->rowLimiter())
             ->map(Individual::rowMapper())
             ->filter(GedcomRecord::accessFilter())
             ->filter($this->rawGedcomFilter($search));
@@ -703,6 +708,7 @@ class SearchService
 
         return $query
             ->get()
+            ->each($this->rowLimiter())
             ->map(Individual::rowMapper())
             ->filter(GedcomRecord::accessFilter())
             ->filter(function (Individual $individual) use ($fields): bool {
@@ -831,6 +837,7 @@ class SearchService
 
         return $query
             ->get()
+            ->each($this->rowLimiter())
             ->map(Individual::rowMapper())
             ->filter(GedcomRecord::accessFilter());
     }
@@ -949,6 +956,26 @@ class SearchService
             }
 
             return true;
+        };
+    }
+
+    /**
+     * Searching for short or common text can give more results than the system can process.
+     *
+     * @param int $limit
+     *
+     * @return Closure
+     */
+    private function rowLimiter(int $limit = 1000): Closure
+    {
+        return function () use ($limit) {
+            static $n = 0;
+
+            if (++$n > $limit) {
+                $message = I18N::translate('The search returned too many results.');
+
+                throw new InternalServerErrorException($message);
+            }
         };
     }
 }
