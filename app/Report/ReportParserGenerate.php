@@ -2373,7 +2373,7 @@ class ReportParserGenerate extends ReportParserBase
 
         $maxgen = -1;
         if (isset($attrs['maxgen'])) {
-            $maxgen = $attrs['maxgen'];
+            $maxgen = (int) $attrs['maxgen'];
         }
         if ($maxgen === '*') {
             $maxgen = -1;
