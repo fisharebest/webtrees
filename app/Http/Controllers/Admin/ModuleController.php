@@ -97,7 +97,6 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleAnalyticsInterface::class,
-            'analytics',
             I18N::translate('Tracking and analytics'),
             I18N::translate('If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically.')
         );
@@ -110,7 +109,6 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleBlockInterface::class,
-            'block',
             I18N::translate('Blocks'),
             ''
         );
@@ -123,7 +121,6 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleChartInterface::class,
-            'chart',
             I18N::translate('Charts'),
             ''
         );
@@ -136,7 +133,6 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleFooterInterface::class,
-            'footer',
             I18N::translate('Footers'),
             ''
         );
@@ -149,7 +145,6 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleHistoricEventsInterface::class,
-            'history',
             I18N::translate('Historic events'),
             ''
         );
@@ -162,7 +157,6 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleLanguageInterface::class,
-            'language',
             I18N::translate('Languages'),
             ''
         );
@@ -175,7 +169,6 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleListInterface::class,
-            'list',
             I18N::translate('Lists'),
             ''
         );
@@ -188,7 +181,6 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleMenuInterface::class,
-            'menu',
             I18N::translate('Menus'),
             ''
         );
@@ -201,7 +193,6 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleReportInterface::class,
-            'report',
             I18N::translate('Reports'),
             ''
         );
@@ -214,7 +205,6 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleSidebarInterface::class,
-            'sidebar',
             I18N::translate('Sidebars'),
             ''
         );
@@ -227,7 +217,6 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleTabInterface::class,
-            'tab',
             I18N::translate('Tabs'),
             ''
         );
@@ -240,7 +229,6 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleThemeInterface::class,
-            'theme',
             I18N::translate('Themes'),
             ''
         );
