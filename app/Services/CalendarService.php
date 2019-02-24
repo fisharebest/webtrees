@@ -196,7 +196,7 @@ class CalendarService
 
         switch ($sort_by) {
             case 'anniv':
-                $facts = Fact::sortFacts($facts);
+                $facts = Fact::sortFacts($facts)->all();
                 break;
 
             case 'alpha':

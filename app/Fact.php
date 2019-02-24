@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees;
 use Closure;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Services\GedcomService;
+use Illuminate\Support\Collection;
 use InvalidArgumentException;
 
 /**
@@ -690,9 +691,9 @@ class Fact
      *
      * @param Fact[] $unsorted
      *
-     * @return Fact[]
+     * @return Collection|Fact[]
      */
-    public static function sortFacts($unsorted): array
+    public static function sortFacts($unsorted): Collection
     {
         $dated    = [];
         $nondated = [];
@@ -739,7 +740,7 @@ class Fact
             $j++;
         }
 
-        return $sorted;
+        return new Collection($sorted);
     }
 
     /**

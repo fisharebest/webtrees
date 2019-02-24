@@ -125,7 +125,7 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface
                     $this->facts[] = $fact;
                 }
             }
-            $this->facts = Fact::sortFacts($this->facts);
+            $this->facts = Fact::sortFacts($this->facts)->all();
         }
 
         return $this->facts;
