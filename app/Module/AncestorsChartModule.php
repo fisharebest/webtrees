@@ -47,7 +47,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
     // Defaults
     protected const DEFAULT_COUSINS             = false;
     protected const DEFAULT_STYLE               = self::CHART_STYLE_LIST;
-    protected const DEFAULT_GENERATIONS         = '3';
+    protected const DEFAULT_GENERATIONS         = '4';
 
     // Limits
     protected const MINIMUM_GENERATIONS = 2;
@@ -133,8 +133,8 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
         $chart_style  = $request->get('chart_style', self::DEFAULT_STYLE);
         $generations  = (int) $request->get('generations', self::DEFAULT_GENERATIONS);
 
-        $generations = min($generations, self::MINIMUM_GENERATIONS);
-        $generations = max($generations, self::MAXIMUM_GENERATIONS);
+        $generations = min($generations, self::MAXIMUM_GENERATIONS);
+        $generations = max($generations, self::MINIMUM_GENERATIONS);
 
         if ($ajax) {
             $ancestors = $chart_service->sosaStradonitzAncestors($individual, $generations);
