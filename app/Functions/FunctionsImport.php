@@ -822,14 +822,19 @@ class FunctionsImport
 
             // Calling Place::id() will create the entry in the database, if it doesn't already exist.
             // Link the place to the record
-            try {
-                DB::table('placelinks')->insert([
-                    'pl_p_id' => $place->id(),
-                    'pl_gid'  => $xref,
-                    'pl_file' => $tree->id(),
-                ]);
-            } catch (PDOException $ex) {
-                // Already linked this place?
+            while ($place->id() !== 0) {
+                try {
+                    DB::table('placelinks')->insert([
+                        'pl_p_id' => $place->id(),
+                        'pl_gid'  => $xref,
+                        'pl_file' => $tree->id(),
+                    ]);
+                } catch (PDOException $ex) {
+                    // Already linked this place - so presumably also any parent places.
+                    break;
+                }
+
+                $place = $place->parent();
             }
         }
     }
