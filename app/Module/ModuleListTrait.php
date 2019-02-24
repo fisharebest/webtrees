@@ -39,7 +39,7 @@ trait ModuleListTrait
         }
         
         return new Menu(
-            $this->title(),
+            $this->listTitle(),
             $this->listUrl($tree),
             $this->listMenuClass(),
             $this->listUrlAttributes()

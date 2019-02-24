@@ -26,7 +26,7 @@ To write a module, you need to understand the PHP programming langauge.
 The rest of this document is aimed at PHP developers.
 
 TIP: The built-in modules can be found in `app/Module/*.php`.
-These contain lots of usefule examples that you can copy/paste.
+These contain lots of useful examples that you can copy/paste.
 
 ## Creating a custom module.
 
@@ -77,6 +77,7 @@ They *may* implement one or more of the following
 * `ModuleAnalyticsInterface` - adds a tracking/analytics provider.
 * `ModuleBlockInterface` - adds a block to the home pages.
 * `ModuleChartInterface` - adds a chart to the chart menu.
+* `ModuleListInterface` - adds a list to the list menu.
 * `ModuleConfigInterface` - adds a configuration page to the control panel.
 * `ModuleMenuInterface` - adds an entry to the main menu.
 * `ModuleReportInterface` - adds a report to the report menu.
