@@ -60,8 +60,8 @@ class FunctionsPrintLists
                 $tag = ($module instanceof ModuleListInterface)?'a':'span';
                 $html .= '<'.$tag.' style="font-size:' . $size . '%"';
                 if ($module instanceof ModuleListInterface) {
-                  $url = $module->listUrl($tree, ['surname' => $surn]);
-                  $html .= ' href="' . e($url) . '"';
+                    $url = $module->listUrl($tree, ['surname' => $surn]);
+                    $html .= ' href="' . e($url) . '"';
                 }
                 $html .= '>';
                 if ($totals) {
@@ -94,9 +94,9 @@ class FunctionsPrintLists
             // Each surname links back to the indilist
             if ($module instanceof ModuleListInterface) {
                 if ($surn) {
-                  $url = $module->listUrl($tree, ['surname' => $surn]);
-                } else {                
-                  $url = $module->listUrl($tree, ['alpha'  => ',']);
+                    $url = $module->listUrl($tree, ['surname' => $surn]);
+                } else {
+                    $url = $module->listUrl($tree, ['alpha'  => ',']);
                 }
             }
             // If all the surnames are just case variants, then merge them into one
