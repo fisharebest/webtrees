@@ -607,7 +607,6 @@ class Fact
 
             // One or both events have no date - retain the initial order
             return $a->sortOrder <=> $b->sortOrder;
-
         };
     }
 
