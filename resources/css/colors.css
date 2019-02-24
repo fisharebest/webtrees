@@ -2482,27 +2482,35 @@ div.faq_body {
 }
 
 .wt-icon-arrow-down {
+	content: url(colors/icons/arrow-down.png);
 }
 
 a > .wt-icon-arrow-down:hover {
+	content: url(colors/icons/arrow-down-hover.png);
 }
 
 .wt-icon-arrow-left {
+	content: url(colors/icons/arrow-left.png);
 }
 
 a > .wt-icon-arrow-left:hover {
+	content: url(colors/icons/arrow-left-hover.png);
 }
 
 .wt-icon-arrow-right {
+	content: url(colors/icons/arrow-right.png);
 }
 
 a > .wt-icon-arrow-right:hover {
+	content: url(colors/icons/arrow-right-hover.png);
 }
 
 .wt-icon-arrow-up {
+	content: url(colors/icons/arrow-up.png);
 }
 
 a > .wt-icon-arrow-up:hover {
+	content: url(colors/icons/arrow-up-hover.png);
 }
 
 .wt-icon-coordinates {
