@@ -44,7 +44,7 @@ class ListsMenuModule extends AbstractModule implements ModuleMenuInterface
     {
         $this->module_service = $module_service;
     }
-		
+        
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *

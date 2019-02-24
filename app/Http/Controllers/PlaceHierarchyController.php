@@ -66,7 +66,7 @@ class PlaceHierarchyController extends AbstractBaseController
      * @return Response
      */
     public function show(Request $request, Tree $tree, SearchService $search_service): Response
-    {        
+    {
         $action2    = $request->query->get('action2', 'hierarchy');
         $parent     = $request->query->get('parent', []);
         $fqpn       = implode(Gedcom::PLACE_SEPARATOR, array_reverse($parent));

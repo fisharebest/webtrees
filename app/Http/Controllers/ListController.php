@@ -302,7 +302,7 @@ class ListController extends AbstractBaseController
                         case 'style1':
                             echo FunctionsPrintLists::surnameList($surns, 3, true, $moduleListInterface, $tree);
                             break;
-                        case 'style3':                            
+                        case 'style3':
                             echo FunctionsPrintLists::surnameTagCloud($surns, $moduleListInterface, true, $tree);
                             break;
                         case 'style2':
