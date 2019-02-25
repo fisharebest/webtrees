@@ -722,7 +722,7 @@ class HomePageController extends AbstractBaseController
         if (!$has_blocks) {
             foreach (['main', 'side'] as $location) {
                 foreach (self::DEFAULT_TREE_PAGE_BLOCKS[$location] as $block_order => $class) {
-                    $module_name = $this->module_service->findByInterface($class)->name();
+                    $module_name = $this->module_service->findByInterface($class)->first()->name();
 
                     DB::table('block')->insert([
                         'gedcom_id'   => -1,
@@ -769,7 +769,7 @@ class HomePageController extends AbstractBaseController
         if (!$has_blocks) {
             foreach (['main', 'side'] as $location) {
                 foreach (self::DEFAULT_USER_PAGE_BLOCKS[$location] as $block_order => $class) {
-                    $module_name = $this->module_service->findByInterface($class)->name();
+                    $module_name = $this->module_service->findByInterface($class)->first()->name();
 
                     DB::table('block')->insert([
                         'user_id'     => -1,
