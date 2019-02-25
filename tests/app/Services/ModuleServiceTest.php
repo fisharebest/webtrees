@@ -105,7 +105,7 @@ class ModuleServiceTest extends TestCase
         $this->assertNotEmpty($module_service->findByInterface(ModuleThemeInterface::class)->all());
 
         // Search for an invalid module type
-        $this->assertNull($module_service->findByInterface('not-a-valid-class-or-interface'));
+        $this->assertEmpty($module_service->findByInterface('not-a-valid-class-or-interface')->all());
     }
 
     /**
