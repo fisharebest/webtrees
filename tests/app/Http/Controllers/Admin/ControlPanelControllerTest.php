@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\Services\HousekeepingService;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -43,6 +44,7 @@ class ControlPanelControllerTest extends \Fisharebest\Webtrees\TestCase
             new HousekeepingService(),
             new UpgradeService(new TimeoutService(microtime(true))),
             new ModuleService(),
+            new ServerCheckService(),
             new UserService()
         );
 
