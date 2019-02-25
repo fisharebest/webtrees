@@ -23,6 +23,7 @@ use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MigrationService;
+use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager;
@@ -31,30 +32,30 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
-use function extension_loaded;
-use function in_array;
+use function ini_get;
+use const WT_DATA_DIR;
 
 /**
  * Controller for the installation wizard
  */
 class SetupController extends AbstractBaseController
 {
-    // As required by illuminate/database 5.8
-    private const MINIMUM_SQLITE_VERSION = '3.7.11';
+    /** @var string */
+    protected $layout = 'layouts/setup';
 
-    private const DBTYPES        = ['mysql', 'sqlite', 'pgsql', 'sqlsvr'];
     private const DEFAULT_DBTYPE = 'mysql';
+    private const DEFAULT_PREFIX = 'wt_';
 
     // We need this information to complete the setup
     private const DEFAULT_DATA = [
         'lang'    => '',
-        'dbtype'  => 'mysql',
+        'dbtype'  => self::DEFAULT_DBTYPE,
         'dbhost'  => '',
         'dbport'  => '',
         'dbuser'  => '',
         'dbpass'  => '',
         'dbname'  => '',
-        'tblpfx'  => 'wt_',
+        'tblpfx'  => self::DEFAULT_PREFIX,
         'wtname'  => '',
         'wtuser'  => '',
         'wtpass'  => '',
@@ -64,22 +65,28 @@ class SetupController extends AbstractBaseController
     /** @var MigrationService */
     private $migration_service;
 
+    /** @var ServerCheckService */
+    private $server_check_service;
+
     /** @var UserService */
     private $user_service;
-
-    /** @var string */
-    protected $layout = 'layouts/setup';
 
     /**
      * SetupController constructor.
      *
-     * @param MigrationService $migration_service
-     * @param UserService      $user_service
+     * @param MigrationService   $migration_service
+     * @param ServerCheckService $server_check_service
+     * @param UserService        $user_service
      */
-    public function __construct(MigrationService $migration_service, UserService $user_service)
+    public function __construct(
+        MigrationService $migration_service,
+        ServerCheckService $server_check_service,
+        UserService $user_service
+    )
     {
-        $this->user_service      = $user_service;
-        $this->migration_service = $migration_service;
+        $this->user_service         = $user_service;
+        $this->migration_service    = $migration_service;
+        $this->server_check_service = $server_check_service;
     }
 
     /**
@@ -95,11 +102,26 @@ class SetupController extends AbstractBaseController
         $data = $this->userData($request);
 
         $data['lang']         = I18N::init($request->get('lang', $data['lang']));
-        $data['errors']       = $this->serverErrors();
-        $data['warnings']     = $this->serverWarnings();
         $data['cpu_limit']    = $this->maxExecutionTime();
         $data['locales']      = I18N::installedLocales();
         $data['memory_limit'] = $this->memoryLimit();
+
+        // Only show database errors after the user has chosen a driver.
+        if ($step >= 4) {
+            $data['errors']   = $this->server_check_service->serverErrors($data['dbtype']);
+            $data['warnings'] = $this->server_check_service->serverWarnings($data['dbtype']);
+        } else {
+            $data['errors']       = $this->server_check_service->serverErrors();
+            $data['warnings']     = $this->server_check_service->serverWarnings();
+        }
+
+        if (!$this->checkFolderIsWritable(WT_DATA_DIR)) {
+            $data['errors']->push(
+                '<code>' . e(realpath(WT_DATA_DIR)) . '</code><br>' .
+                I18N::translate('Oops! webtrees was unable to create files in this folder.') . ' ' .
+                I18N::translate('This usually means that you need to change the folder permissions to 777.')
+            );
+        }
 
         define('WT_LOCALE', $data['lang']);
 
@@ -151,6 +173,10 @@ class SetupController extends AbstractBaseController
      */
     private function step3DatabaseType(array $data): Response
     {
+        if ($data['errors']->isNotEmpty()) {
+            return $this->viewResponse('setup/step-2-server-checks', $data);
+        }
+
         return $this->viewResponse('setup/step-3-database-type', $data);
     }
 
@@ -161,57 +187,7 @@ class SetupController extends AbstractBaseController
      */
     private function step4DatabaseConnection(array $data): Response
     {
-        if (!extension_loaded('pdo')) {
-            $data['errors'][] = I18N::translate('The PHP extension “%s” is not installed.', 'pdo');
-        }
-
-        switch ($data['dbtype']) {
-            case 'mysql':
-                if (!extension_loaded('pdo_mysql')) {
-                    $data['errors'][] = I18N::translate('The PHP extension “%s” is not installed.', 'pdo_mysql');
-                }
-
-                break;
-
-            case 'sqlite':
-                if (!extension_loaded('pdo_sqlite')) {
-                    $data['errors'][] = I18N::translate('The PHP extension “%s” is not installed.', 'pdo_sqlite');
-                }
-
-                if (!extension_loaded('sqlite3')) {
-                    $data['errors'][] = I18N::translate('The PHP extension “%s” is not installed.', 'sqlite3');
-                }
-
-                if (version_compare($this->sqliteVersion(), self::MINIMUM_SQLITE_VERSION) < 0) {
-                    $data['errors'][] = I18N::translate('SQLite version %s is installed. SQLite version %s or later is required.', $this->sqliteVersion(), self::MINIMUM_SQLITE_VERSION);
-                }
-
-                $data['warnings'][] = I18N::translate('SQLite is only suitable for small sites, testing and evaluation.');
-
-                if ($data['dbname'] === '') {
-                    $data['dbname'] = 'webtrees';
-                }
-                break;
-
-            case 'pgsql':
-                if (!extension_loaded('pdo_pgsql')) {
-                    $data['errors'][] = I18N::translate('The PHP extension “%s” is not installed.', 'pdo_pgsql');
-                }
-
-                $data['warnings'][] = I18N::translate('Support for PostgreSQL is experimental.');
-                break;
-
-            case 'sqlsvr':
-                if (!extension_loaded('pdo_odbc')) {
-                    $data['errors'][] = I18N::translate('The PHP extension “%s” is not installed.', 'pdo_odbc');
-                }
-
-                $data['warnings'][] = I18N::translate('Support for SQL Server is experimental.');
-                break;
-
-        }
-
-        if (!empty($data['errors'])) {
+        if ($data['errors']->isNotEmpty()) {
             return $this->step3DatabaseType($data);
         }
 
@@ -228,7 +204,7 @@ class SetupController extends AbstractBaseController
         try {
             $this->checkDatabase($data);
         } catch (Throwable $ex) {
-            $data['errors'][] = $ex->getMessage();
+            $data['errors']->push($ex->getMessage());
 
             // Don't jump to step 4, as the error will make it jump to step 3.
             return $this->viewResponse('setup/step-4-database-' . $data['dbtype'], $data);
@@ -247,7 +223,7 @@ class SetupController extends AbstractBaseController
         $error = $this->checkAdminUser($data['wtname'], $data['wtuser'], $data['wtpass'], $data['wtemail']);
 
         if ($error !== '') {
-            $data['errors'][] = $error;
+            $data['errors']->push($error);
 
             return $this->step5Administrator($data);
         }
@@ -260,14 +236,6 @@ class SetupController extends AbstractBaseController
 
         // Done - start using webtrees!
         return new RedirectResponse(route('admin-trees'));
-    }
-
-    /**
-     * @return string
-     */
-    private function sqliteVersion(): string
-    {
-        return SQLite3::version()['versionString'];
     }
 
     /**
@@ -307,7 +275,7 @@ class SetupController extends AbstractBaseController
 
         // Try to create the MySQL database, if it does not already exist.
         if ($data['dbtype'] === 'mysql') {
-            $tmp = $data;
+            $tmp           = $data;
             $tmp['dbname'] = '';
             Database::connect($tmp);
             Manager::connection()->statement('CREATE DATABASE IF NOT EXISTS `' . $data['dbname'] . '` COLLATE utf8_unicode_ci');
@@ -442,84 +410,5 @@ class SetupController extends AbstractBaseController
         }
 
         return (int) $memory_limit;
-    }
-
-    /**
-     * A list of major server issues.
-     *
-     * @return array
-     */
-    private function serverErrors(): array
-    {
-        $extensions = [
-            'mbstring',
-            'iconv',
-            'pcre',
-            'pdo',
-            'pdo_mysql',
-            'session',
-        ];
-        $functions  = ['parse_ini_file'];
-        $errors     = [];
-
-        if (!$this->checkFolderIsWritable(WT_DATA_DIR)) {
-            $errors[] = '<code>' . e(realpath(WT_DATA_DIR)) . '</code><br>' . I18N::translate('Oops! webtrees was unable to create files in this folder.') . '<br>' . I18N::translate('This usually means that you need to change the folder permissions to 777.') . '<br>' . I18N::translate('You must change this before you can continue.');
-        }
-
-        foreach ($extensions as $extension) {
-            if (!extension_loaded($extension)) {
-                $errors[] = I18N::translate('PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it.', $extension);
-            }
-        }
-
-        $disable_functions = explode(',', ini_get('disable_functions'));
-        $disable_functions = array_map(function (string $func): string {
-            return trim($func);
-        }, $disable_functions);
-
-        foreach ($functions as $function) {
-            if (in_array($function, $disable_functions)) {
-                /* I18N: %s is a PHP function/module/setting */
-                $errors[] = I18N::translate('%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it.', $function . '()');
-            }
-        }
-
-        return $errors;
-    }
-
-    /**
-     * A list of minor server issues.
-     *
-     * @return array
-     */
-    private function serverWarnings(): array
-    {
-        $extensions = [
-            /* I18N: a program feature */
-            'gd'        => I18N::translate('creating thumbnails of images'),
-            /* I18N: a program feature */
-            'xml'       => I18N::translate('reporting'),
-            /* I18N: a program feature */
-            'simplexml' => I18N::translate('reporting'),
-        ];
-        $settings   = [
-            /* I18N: a program feature */
-            'file_uploads' => I18N::translate('file upload capability'),
-        ];
-        $warnings   = [];
-
-        foreach ($extensions as $extension => $features) {
-            if (!extension_loaded($extension)) {
-                $warnings[] = I18N::translate('PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it.', $extension, $features);
-            }
-        }
-
-        foreach ($settings as $setting => $features) {
-            if (!ini_get($setting)) {
-                $warnings[] = I18N::translate('PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it.', $setting, $features);
-            }
-        }
-
-        return $warnings;
     }
 }

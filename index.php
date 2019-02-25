@@ -144,11 +144,6 @@ define('WT_DATA_DIR', realpath(Site::getPreference('INDEX_DIRECTORY', 'data/')) 
 
 $filesystem = new Filesystem(new CachedAdapter(new Local(WT_DATA_DIR), new Memory()));
 
-// Some broken servers block access to their own temp folder using open_basedir...
-$filesystem->createDir('tmp');
-putenv('TMPDIR=' . WT_DATA_DIR . 'tmp');
-Swift_Preferences::getInstance()->setTempDir(WT_DATA_DIR . 'tmp');
-
 // Request more resources - if we can/want to
 $memory_limit = Site::getPreference('MEMORY_LIMIT');
 if ($memory_limit !== '' && strpos(ini_get('disable_functions'), 'ini_set') === false) {

@@ -33,6 +33,7 @@ use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\HousekeepingService;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
@@ -54,6 +55,7 @@ class ControlPanelController extends AbstractAdminController
      * @param HousekeepingService $housekeeping_service
      * @param UpgradeService      $upgrade_service
      * @param ModuleService       $module_service
+     * @param ServerCheckService  $server_check_service
      * @param UserService         $user_service
      *
      * @return Response
@@ -62,6 +64,7 @@ class ControlPanelController extends AbstractAdminController
         HousekeepingService $housekeeping_service,
         UpgradeService $upgrade_service,
         ModuleService $module_service,
+        ServerCheckService $server_check_service,
         UserService $user_service
     ): Response {
         $filesystem      = new Filesystem(new Local(WT_ROOT));
@@ -69,7 +72,8 @@ class ControlPanelController extends AbstractAdminController
 
         return $this->viewResponse('admin/control-panel', [
             'title'             => I18N::translate('Control panel'),
-            'server_warnings'   => $this->serverWarnings(),
+            'server_errors'     => $server_check_service->serverErrors(),
+            'server_warnings'   => $server_check_service->serverWarnings(),
             'latest_version'    => $upgrade_service->latestVersion(),
             'all_users'         => $user_service->all(),
             'administrators'    => $user_service->administrators(),
@@ -126,26 +130,6 @@ class ControlPanelController extends AbstractAdminController
             'repositories' => $this->totalRepositories(),
             'notes'        => $this->totalNotes(),
         ]);
-    }
-
-    /**
-     * Generate a list of potential problems with the server.
-     *
-     * @return string[]
-     */
-    private function serverWarnings(): array
-    {
-        $php_support_url   = 'https://secure.php.net/supported-versions.php';
-        $version_parts     = explode('.', PHP_VERSION);
-        $php_minor_version = $version_parts[0] . $version_parts[1];
-        $today             = date('Y-m-d');
-        $warnings          = [];
-
-        if ($php_minor_version === '70' && $today >= '2018-12-03' || $php_minor_version === '71' && $today >= '2019-12-01' || $php_minor_version === '72' && $today >= '2020-11-30') {
-            $warnings[] = I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible.', PHP_VERSION) . ' <a href="' . $php_support_url . '">' . $php_support_url . '</a>';
-        }
-
-        return $warnings;
     }
 
     /**

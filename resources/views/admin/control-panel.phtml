@@ -14,6 +14,10 @@
         </h2>
     </div>
     <div class="card-body">
+        <?php foreach ($server_errors as $server_error) : ?>
+            <p class="alert alert-danger"><?= $server_error ?></p>
+        <?php endforeach ?>
+
         <?php foreach ($server_warnings as $server_warning) : ?>
             <p class="alert alert-warning"><?= $server_warning ?></p>
         <?php endforeach ?>
