@@ -310,7 +310,7 @@ class ListController extends AbstractBaseController
                             echo view('lists/surnames-table', [
                                 'surnames' => $surns,
                                 'families' => $families,
-                                'router' => $moduleListInterface,
+                                'module'   => $moduleListInterface,
                             ]);
                             break;
                     }
