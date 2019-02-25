@@ -18,8 +18,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Closure;
+use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Session;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
@@ -42,7 +44,9 @@ class CheckCsrf implements MiddlewareInterface
         $session_token = Session::get('CSRF_TOKEN');
 
         if ($client_token !== $session_token) {
-            throw new AccessDeniedHttpException(I18N::translate('This form has expired. Try again.'));
+            FlashMessages::addMessage(I18N::translate('This form has expired. Try again.'));
+
+            return new RedirectResponse($request->getRequestUri());
         }
 
         return $next($request);
