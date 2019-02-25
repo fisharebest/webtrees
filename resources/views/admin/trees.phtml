@@ -330,11 +330,11 @@
                             <div class="col-sm-10">
                                 <div class="input-group" dir="ltr">
                                     <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <?= WT_BASE_URL ?>?ged=
-                                    </span>
+                                        <span class="input-group-text" dir="ltr">
+                                            <?= WT_BASE_URL ?>?ged=
+                                        </span>
                                     </div>
-                                    <input class="form-control" id="tree_name" maxlength="31" name="tree_name" pattern="[^&lt;&gt;&amp;&quot;#^$*?{}()\[\]/\\]*" required type="text" value="<?= $default_tree_name ?>">
+                                    <input class="form-control" id="tree_name" maxlength="31" name="tree_name" pattern="[^&lt;&gt;&amp;&quot;#^$*?{}()\[\]/\\]*" required type="text" value="<?= $default_tree_name ?>" dir="ltr">
                                 </div>
                                 <p class="small text-muted">
                                     <?= I18N::translate('Avoid spaces and punctuation. A family name might be a good choice.') ?>

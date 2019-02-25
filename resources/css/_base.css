@@ -22,6 +22,11 @@
 	transform: scale(-1, 1);
 }
 
+/* Remove border-radius for left-to-right input groups on right-to-left pages */
+[dir=rtl] .input-group[dir=ltr] [dir=ltr] {
+	border-radius: 0;
+}
+
 /*
  * Flexbox fixes for IE11
  */

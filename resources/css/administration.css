@@ -14,6 +14,7 @@
  */
 
 /* The administration theme is mostly vanilla bootstrap. */
+@import "_base.css";
 
 /* Tree Preferences - fit thumbnail into parent for Default Individual*/
 .select2-selection.select2-selection--single {
