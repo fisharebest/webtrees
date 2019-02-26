@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Carbon\Carbon;
 use DomainException;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Date\AbstractCalendarDate;
@@ -542,7 +543,7 @@ class Date
             }
         } else {
             // If second date not specified, use today’s date
-            $jd = WT_CLIENT_JD;
+            $jd = unixtojd(Carbon::now()->timestamp);
         }
 
         // Just years, in local digits, with warning for negative/
@@ -571,7 +572,7 @@ class Date
     public static function getAgeGedcom(Date $d1, Date $d2 = null)
     {
         if ($d2 === null) {
-            return $d1->date1->getAgeFull(WT_CLIENT_JD);
+            return $d1->date1->getAgeFull(unixtojd(Carbon::now()->timestamp));
         }
 
         if (self::compare($d1, $d2) !== 0) {

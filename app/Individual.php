@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Carbon\Carbon;
 use Closure;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
@@ -329,6 +330,7 @@ class Individual extends GedcomRecord
     public function isDead(): bool
     {
         $MAX_ALIVE_AGE = (int) $this->tree->getPreference('MAX_ALIVE_AGE');
+        $today_jd      = unixtojd(Carbon::now()->timestamp);
 
         // "1 DEAT Y" or "1 DEAT/2 DATE" or "1 DEAT/2 PLAC"
         if (preg_match('/\n1 (?:' . implode('|', Gedcom::DEATH_EVENTS) . ')(?: Y|(?:\n[2-9].+)*\n2 (DATE|PLAC) )/', $this->gedcom)) {
@@ -339,7 +341,7 @@ class Individual extends GedcomRecord
         if (preg_match_all('/\n2 DATE (.+)/', $this->gedcom, $date_matches)) {
             foreach ($date_matches[1] as $date_match) {
                 $date = new Date($date_match);
-                if ($date->isOK() && $date->maximumJulianDay() <= WT_CLIENT_JD - 365 * $MAX_ALIVE_AGE) {
+                if ($date->isOK() && $date->maximumJulianDay() <= $today_jd - 365 * $MAX_ALIVE_AGE) {
                     return true;
                 }
             }
@@ -359,7 +361,7 @@ class Individual extends GedcomRecord
                 preg_match_all('/\n2 DATE (.+)/', $parent->gedcom, $date_matches);
                 foreach ($date_matches[1] as $date_match) {
                     $date = new Date($date_match);
-                    if ($date->isOK() && $date->maximumJulianDay() <= WT_CLIENT_JD - 365 * ($MAX_ALIVE_AGE + 45)) {
+                    if ($date->isOK() && $date->maximumJulianDay() <= $today_jd - 365 * ($MAX_ALIVE_AGE + 45)) {
                         return true;
                     }
                 }
@@ -372,7 +374,7 @@ class Individual extends GedcomRecord
             foreach ($date_matches[1] as $date_match) {
                 $date = new Date($date_match);
                 // Assume marriage occurs after age of 10
-                if ($date->isOK() && $date->maximumJulianDay() <= WT_CLIENT_JD - 365 * ($MAX_ALIVE_AGE - 10)) {
+                if ($date->isOK() && $date->maximumJulianDay() <= $today_jd - 365 * ($MAX_ALIVE_AGE - 10)) {
                     return true;
                 }
             }
@@ -383,7 +385,7 @@ class Individual extends GedcomRecord
                 foreach ($date_matches[1] as $date_match) {
                     $date = new Date($date_match);
                     // Assume max age difference between spouses of 40 years
-                    if ($date->isOK() && $date->maximumJulianDay() <= WT_CLIENT_JD - 365 * ($MAX_ALIVE_AGE + 40)) {
+                    if ($date->isOK() && $date->maximumJulianDay() <= $today_jd - 365 * ($MAX_ALIVE_AGE + 40)) {
                         return true;
                     }
                 }
@@ -394,7 +396,7 @@ class Individual extends GedcomRecord
                 // Assume children born after age of 15
                 foreach ($date_matches[1] as $date_match) {
                     $date = new Date($date_match);
-                    if ($date->isOK() && $date->maximumJulianDay() <= WT_CLIENT_JD - 365 * ($MAX_ALIVE_AGE - 15)) {
+                    if ($date->isOK() && $date->maximumJulianDay() <= $today_jd - 365 * ($MAX_ALIVE_AGE - 15)) {
                         return true;
                     }
                 }
@@ -405,7 +407,7 @@ class Individual extends GedcomRecord
                         // Assume grandchildren born after age of 30
                         foreach ($date_matches[1] as $date_match) {
                             $date = new Date($date_match);
-                            if ($date->isOK() && $date->maximumJulianDay() <= WT_CLIENT_JD - 365 * ($MAX_ALIVE_AGE - 30)) {
+                            if ($date->isOK() && $date->maximumJulianDay() <= $today_jd - 365 * ($MAX_ALIVE_AGE - 30)) {
                                 return true;
                             }
                         }

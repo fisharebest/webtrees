@@ -158,7 +158,6 @@ if ($max_execution_time !== '' && strpos(ini_get('disable_functions'), 'set_time
 Session::start();
 
 define('WT_TIMESTAMP', Carbon::now('UTC')->timestamp);
-define('WT_CLIENT_JD', 2440588 + intdiv(WT_TIMESTAMP, 86400));
 
 // Update the last-login time no more than once a minute
 if (WT_TIMESTAMP - Session::get('activity_time') >= 60) {

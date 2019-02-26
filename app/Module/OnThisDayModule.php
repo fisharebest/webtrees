@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Carbon\Carbon;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
@@ -126,8 +127,8 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
 
         $events_filter = implode('|', $event_array);
 
-        $startjd = WT_CLIENT_JD;
-        $endjd   = WT_CLIENT_JD;
+        $startjd = unixtojd(Carbon::now()->timestamp);
+        $endjd   = $startjd;
 
         $facts = $calendar_service->getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
 

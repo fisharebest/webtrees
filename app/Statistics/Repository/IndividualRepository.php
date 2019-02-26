@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
+use Carbon\Carbon;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
@@ -1123,7 +1124,7 @@ class IndividualRepository implements IndividualRepositoryInterface
 
                 return [
                     'person' => $individual,
-                    'age'    => $this->calculateAge(WT_CLIENT_JD - $birth_jd),
+                    'age'    => $this->calculateAge(unixtojd(Carbon::now()->timestamp) - $birth_jd),
                 ];
             })
             ->all();

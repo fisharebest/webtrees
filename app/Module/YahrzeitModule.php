@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Carbon\Carbon;
 use Fisharebest\ExtCalendar\JewishCalendar;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
@@ -85,8 +86,8 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
         extract($cfg, EXTR_OVERWRITE);
 
         $jewish_calendar = new JewishCalendar();
-        $startjd         = WT_CLIENT_JD;
-        $endjd           = WT_CLIENT_JD + $days - 1;
+        $startjd         = unixtojd(Carbon::now()->timestamp);
+        $endjd           = $startjd + $days - 1;
 
         // The standard anniversary rules cover most of the Yahrzeit rules, we just
         // need to handle a few special cases.
