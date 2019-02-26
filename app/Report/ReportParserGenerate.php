@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use Carbon\Carbon;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
@@ -604,7 +605,7 @@ class ReportParserGenerate extends ReportParserBase
      */
     private function nowStartHandler()
     {
-        $g = FunctionsDate::timestampToGedcomDate(WT_TIMESTAMP);
+        $g = FunctionsDate::timestampToGedcomDate(Carbon::now()->timestamp);
         $this->current_element->addText($g->display());
     }
 

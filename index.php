@@ -157,14 +157,15 @@ if ($max_execution_time !== '' && strpos(ini_get('disable_functions'), 'set_time
 // Sessions
 Session::start();
 
-define('WT_TIMESTAMP', Carbon::now('UTC')->timestamp);
+// Update the last-login time no more than once a minute.
+$next_session_update = Carbon::createFromTimestamp((int) Session::get('session_time_updates'))->addMinute();
+if ($next_session_update < Carbon::now()) {
+    $timestamp_now = Carbon::now()->timestamp;
 
-// Update the last-login time no more than once a minute
-if (WT_TIMESTAMP - Session::get('activity_time') >= 60) {
     if (Session::get('masquerade') === null) {
-        Auth::user()->setPreference('sessiontime', (string) WT_TIMESTAMP);
+        Auth::user()->setPreference('sessiontime', (string) $timestamp_now);
     }
-    Session::put('activity_time', WT_TIMESTAMP);
+    Session::put('session_time_updates', $timestamp_now);
 }
 
 DebugBar::startMeasure('routing');

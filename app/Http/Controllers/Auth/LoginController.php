@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Auth;
 
+use Carbon\Carbon;
 use Exception;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\FlashMessages;
@@ -192,7 +193,7 @@ class LoginController extends AbstractBaseController
 
         Auth::login($user);
         Log::addAuthenticationLog('Login: ' . Auth::user()->userName() . '/' . Auth::user()->realName());
-        Auth::user()->setPreference('sessiontime', (string) WT_TIMESTAMP);
+        Auth::user()->setPreference('sessiontime', (string) Carbon::now()->timestamp);
 
         Session::put('locale', Auth::user()->getPreference('language'));
         Session::put('theme_id', Auth::user()->getPreference('theme'));

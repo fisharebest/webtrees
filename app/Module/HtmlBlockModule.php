@@ -81,9 +81,9 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
         $title   = $statistics->embedTags($title);
         $content = $statistics->embedTags($content);
 
-        $block_timestamp = (int) $this->getBlockSetting($block_id, 'timestamp', (string) WT_TIMESTAMP);
+        $block_timestamp = (int) $this->getBlockSetting($block_id, 'timestamp', (string) Carbon::now()->timestamp);
 
-        if ($show_timestamp === '1' && $block_timestamp > 0) {
+        if ($show_timestamp === '1') {
             $content .= '<br>' . I18N::localTime(Carbon::createFromTimestamp($block_timestamp));
         }
 

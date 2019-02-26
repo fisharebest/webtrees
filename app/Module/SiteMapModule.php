@@ -179,9 +179,10 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             throw new NotFoundHttpException('Bad sitemap file');
         }
 
-        $timestamp = (int) $this->getPreference('sitemap-' . $file . '.timestamp');
+        $timestamp   = (int) $this->getPreference('sitemap-' . $file . '.timestamp');
+        $expiry_time = Carbon::now()->subSeconds(self::CACHE_LIFE)->timestamp;
 
-        if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE) {
+        if ($timestamp > $expiry_time) {
             $content = $this->getPreference('sitemap-' . $file . '.xml');
         } else {
             $tree = Tree::findById((int) $match[1]);

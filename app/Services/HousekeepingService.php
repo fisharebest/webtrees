@@ -415,8 +415,10 @@ class HousekeepingService
     {
         $list = $filesystem->listContents($path, true);
 
+        $timestamp = Carbon::now()->timestamp;
+
         foreach ($list as $metadata) {
-            if ($metadata['timestamp'] ?? WT_TIMESTAMP < WT_TIMESTAMP - $max_age) {
+            if ($metadata['timestamp'] ?? $timestamp < $timestamp - $max_age) {
                 $this->deleteFileOrFolder($filesystem, $metadata['path']);
             }
         }

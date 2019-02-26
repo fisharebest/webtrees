@@ -95,8 +95,11 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
             ->exists();
 
         if ($changes_exist && $sendmail === '1') {
+            $last_email_timestamp = Carbon::createFromTimestamp((int) Site::getPreference('LAST_CHANGE_EMAIL'));
+            $next_email_timestamp = $last_email_timestamp->addDays($days);
+
             // There are pending changes - tell moderators/managers/administrators about them.
-            if (WT_TIMESTAMP - (int) Site::getPreference('LAST_CHANGE_EMAIL') > (60 * 60 * 24 * $days)) {
+            if ($next_email_timestamp < Carbon::now()) {
                 // Which users have pending changes?
                 foreach ($this->user_service->all() as $user) {
                     if ($user->getPreference('contactmethod') !== 'none') {
@@ -123,7 +126,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                         }
                     }
                 }
-                Site::setPreference('LAST_CHANGE_EMAIL', (string) WT_TIMESTAMP);
+                Site::setPreference('LAST_CHANGE_EMAIL', (string) Carbon::now()->timestamp);
             }
         }
         if (Auth::isEditor($tree) && $tree->hasPendingEdit()) {
