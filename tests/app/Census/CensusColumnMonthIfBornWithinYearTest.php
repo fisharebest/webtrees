@@ -19,23 +19,12 @@ namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
-use Mockery;
 
 /**
  * Test harness for the class CensusColumnMonthIfBornWithinYear
  */
 class CensusColumnMonthIfBornWithinYearTest extends \Fisharebest\Webtrees\TestCase
 {
-    /**
-     * Delete mock objects
-     *
-     * @return void
-     */
-    public function tearDown()
-    {
-        Mockery::close();
-    }
-
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
@@ -44,11 +33,11 @@ class CensusColumnMonthIfBornWithinYearTest extends \Fisharebest\Webtrees\TestCa
      */
     public function testBornWithinYear(): void
     {
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getBirthDate')->andReturn(new Date('01 JAN 1860'));
+        $individual = $this->createMock(Individual::class);
+        $individual->method('getBirthDate')->willReturn(new Date('01 JAN 1860'));
 
-        $census = Mockery::mock(CensusInterface::class);
-        $census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
+        $census = $this->createMock(CensusInterface::class);
+        $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnMonthIfBornWithinYear($census, '', '');
 
@@ -63,11 +52,11 @@ class CensusColumnMonthIfBornWithinYearTest extends \Fisharebest\Webtrees\TestCa
      */
     public function testBornOverYearBeforeTheCensus(): void
     {
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getBirthDate')->andReturn(new Date('01 JAN 1859'));
+        $individual = $this->createMock(Individual::class);
+        $individual->method('getBirthDate')->willReturn(new Date('01 JAN 1859'));
 
-        $census = Mockery::mock(CensusInterface::class);
-        $census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
+        $census = $this->createMock(CensusInterface::class);
+        $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnMonthIfBornWithinYear($census, '', '');
 
@@ -82,11 +71,11 @@ class CensusColumnMonthIfBornWithinYearTest extends \Fisharebest\Webtrees\TestCa
      */
     public function testBornAfterTheCensus(): void
     {
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getBirthDate')->andReturn(new Date('02 JUN 1860'));
+        $individual = $this->createMock(Individual::class);
+        $individual->method('getBirthDate')->willReturn(new Date('02 JUN 1860'));
 
-        $census = Mockery::mock(CensusInterface::class);
-        $census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
+        $census = $this->createMock(CensusInterface::class);
+        $census->method('censusDate')->willReturn('01 JUN 1860');
 
 
         $column = new CensusColumnMonthIfBornWithinYear($census, '', '');
@@ -103,11 +92,11 @@ class CensusColumnMonthIfBornWithinYearTest extends \Fisharebest\Webtrees\TestCa
      */
     public function testNoBirth(): void
     {
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getBirthDate')->andReturn(new Date(''));
+        $individual = $this->createMock(Individual::class);
+        $individual->method('getBirthDate')->willReturn(new Date(''));
 
-        $census = Mockery::mock(CensusInterface::class);
-        $census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
+        $census = $this->createMock(CensusInterface::class);
+        $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnMonthIfBornWithinYear($census, '', '');
 

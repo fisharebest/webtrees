@@ -19,23 +19,12 @@ namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
-use Mockery;
 
 /**
  * Test harness for the class CensusColumnFullName
  */
 class CensusColumnFullNameTest extends \Fisharebest\Webtrees\TestCase
 {
-    /**
-     * Delete mock objects
-     *
-     * @return void
-     */
-    public function tearDown()
-    {
-        Mockery::close();
-    }
-
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnFullName
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
@@ -44,12 +33,12 @@ class CensusColumnFullNameTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testFullName(): void
     {
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getAllNames')->andReturn([['full' => 'Joe Bloggs']]);
-        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection());
+        $individual = $this->createMock(Individual::class);
+        $individual->method('getAllNames')->willReturn([['full' => 'Joe Bloggs']]);
+        $individual->method('spouseFamilies')->willReturn(new Collection());
 
-        $census = Mockery::mock(CensusInterface::class);
-        $census->shouldReceive('censusDate')->andReturn('');
+        $census = $this->createMock(CensusInterface::class);
+        $census->method('censusDate')->willReturn('');
 
         $column = new CensusColumnFullName($census, '', '');
 

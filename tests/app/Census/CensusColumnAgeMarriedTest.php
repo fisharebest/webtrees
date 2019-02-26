@@ -22,23 +22,12 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
-use Mockery;
 
 /**
  * Test harness for the class CensusColumnAgeMarried
  */
 class CensusColumnAgeMarriedTest extends \Fisharebest\Webtrees\TestCase
 {
-    /**
-     * Delete mock objects
-     *
-     * @return void
-     */
-    public function tearDown()
-    {
-        Mockery::close();
-    }
-
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMarried
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
@@ -47,18 +36,18 @@ class CensusColumnAgeMarriedTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testAgeMarried(): void
     {
-        $fact = Mockery::mock(Fact::class);
-        $fact->shouldReceive('date')->andReturn(new Date('01 DEC 1859'));
+        $fact = $this->createMock(Fact::class);
+        $fact->method('date')->willReturn(new Date('01 DEC 1859'));
 
-        $family = Mockery::mock(Family::class);
-        $family->shouldReceive('facts')->with(['MARR'], true)->andReturn(new Collection([$fact]));
+        $family = $this->createMock(Family::class);
+        $family->method('facts')->with(['MARR'], true)->willReturn(new Collection([$fact]));
 
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getBirthDate')->andReturn(new Date('15 MAR 1840'));
-        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection([$family]));
+        $individual = $this->createMock(Individual::class);
+        $individual->method('getBirthDate')->willReturn(new Date('15 MAR 1840'));
+        $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = Mockery::mock(CensusInterface::class);
-        $census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
+        $census = $this->createMock(CensusInterface::class);
+        $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnAgeMarried($census, '', '');
 
@@ -73,12 +62,12 @@ class CensusColumnAgeMarriedTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testNoBirthDate(): void
     {
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getBirthDate')->andReturn(new Date(''));
-        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection());
+        $individual = $this->createMock(Individual::class);
+        $individual->method('getBirthDate')->willReturn(new Date(''));
+        $individual->method('spouseFamilies')->willReturn(new Collection());
 
-        $census = Mockery::mock(CensusInterface::class);
-        $census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
+        $census = $this->createMock(CensusInterface::class);
+        $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnAgeMarried($census, '', '');
 
@@ -93,15 +82,15 @@ class CensusColumnAgeMarriedTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testNoMarriage(): void
     {
-        $family = Mockery::mock(Family::class);
-        $family->shouldReceive('facts')->with(['MARR'])->andReturn(new Collection());
+        $family = $this->createMock(Family::class);
+        $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getBirthDate')->andReturn(new Date(''));
-        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection([$family]));
+        $individual = $this->createMock(Individual::class);
+        $individual->method('getBirthDate')->willReturn(new Date(''));
+        $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = Mockery::mock(CensusInterface::class);
-        $census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
+        $census = $this->createMock(CensusInterface::class);
+        $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnAgeMarried($census, '', '');
 
@@ -116,12 +105,12 @@ class CensusColumnAgeMarriedTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testNoSpouseFamily(): void
     {
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getBirthDate')->andReturn(new Date('15 MAR 1840'));
-        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection());
+        $individual = $this->createMock(Individual::class);
+        $individual->method('getBirthDate')->willReturn(new Date('15 MAR 1840'));
+        $individual->method('spouseFamilies')->willReturn(new Collection());
 
-        $census = Mockery::mock(CensusInterface::class);
-        $census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
+        $census = $this->createMock(CensusInterface::class);
+        $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnAgeMarried($census, '', '');
 

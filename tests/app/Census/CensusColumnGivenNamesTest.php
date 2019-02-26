@@ -18,23 +18,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Individual;
-use Mockery;
 
 /**
  * Test harness for the class CensusColumnGivenNames
  */
 class CensusColumnGivenNamesTest extends \Fisharebest\Webtrees\TestCase
 {
-    /**
-     * Delete mock objects
-     *
-     * @return void
-     */
-    public function tearDown()
-    {
-        Mockery::close();
-    }
-
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnGivenNames
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
@@ -43,10 +32,10 @@ class CensusColumnGivenNamesTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testGivenNames(): void
     {
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getAllNames')->andReturn([['givn' => 'Joe']]);
+        $individual = $this->createMock(Individual::class);
+        $individual->method('getAllNames')->willReturn([['givn' => 'Joe']]);
 
-        $census = Mockery::mock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnGivenNames($census, '', '');
 
@@ -61,10 +50,10 @@ class CensusColumnGivenNamesTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testNoName(): void
     {
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getAllNames')->andReturn([]);
+        $individual = $this->createMock(Individual::class);
+        $individual->method('getAllNames')->willReturn([]);
 
-        $census = Mockery::mock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnGivenNames($census, '', '');
 

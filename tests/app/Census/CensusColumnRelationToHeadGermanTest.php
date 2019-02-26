@@ -18,23 +18,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Individual;
-use Mockery;
 
 /**
  * Test harness for the class CensusColumnRelationToHead
  */
 class CensusColumnRelationToHeadGermanTest extends \Fisharebest\Webtrees\TestCase
 {
-    /**
-     * Delete mock objects
-     *
-     * @return void
-     */
-    public function tearDown()
-    {
-        Mockery::close();
-    }
-
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnRelationToHeadGerman
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
@@ -43,9 +32,9 @@ class CensusColumnRelationToHeadGermanTest extends \Fisharebest\Webtrees\TestCas
      */
     public function testNull(): void
     {
-        $individual = Mockery::mock(Individual::class);
+        $individual = $this->createMock(Individual::class);
 
-        $census = Mockery::mock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnRelationToHeadGerman($census, '', '');
 

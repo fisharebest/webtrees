@@ -17,25 +17,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
-use Mockery;
 
 /**
  * Test harness for the class CensusColumnOccupation
  */
 class CensusColumnOccupationTest extends \Fisharebest\Webtrees\TestCase
 {
-    /**
-     * Delete mock objects
-     *
-     * @return void
-     */
-    public function tearDown()
-    {
-        Mockery::close();
-    }
-
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnOccupation
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
@@ -44,10 +34,10 @@ class CensusColumnOccupationTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testNoOccupation(): void
     {
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('facts')->with(['OCCU'])->andReturn(new Collection());
+        $individual = $this->createMock(Individual::class);
+        $individual->method('facts')->with(['OCCU'])->willReturn(new Collection());
 
-        $census = Mockery::mock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnOccupation($census, '', '');
 
@@ -62,13 +52,13 @@ class CensusColumnOccupationTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testOccupation(): void
     {
-        $fact = Mockery::mock(Fact::class);
-        $fact->shouldReceive('value')->andReturn('Farmer');
+        $fact = $this->createMock(Fact::class);
+        $fact->method('value')->willReturn('Farmer');
 
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('facts')->with(['OCCU'])->andReturn(new Collection([$fact]));
+        $individual = $this->createMock(Individual::class);
+        $individual->method('facts')->with(['OCCU'])->willReturn(new Collection([$fact]));
 
-        $census = Mockery::mock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnOccupation($census, '', '');
 

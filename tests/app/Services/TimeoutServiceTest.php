@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\TestCase;
-use Mockery;
 
 /**
  * Mock function.
@@ -53,6 +52,15 @@ function microtime(...$args)
 }
 
 /**
+ * Class mockGlobals
+ */
+class mockGlobals
+{
+    public function microtime() {}
+    public function ini_get() {}
+}
+
+/**
  * Test harness for the class TimeoutService
  */
 class TimeoutServiceTest extends TestCase
@@ -61,23 +69,19 @@ class TimeoutServiceTest extends TestCase
     public static $mock_functions;
 
     /**
-     * Initialize the test script
-     *
      * @return void
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
-        self::$mock_functions = Mockery::mock();
+        self::$mock_functions = $this->createMock(mockGlobals::class);
     }
 
     /**
-     * Initialize the test script
-     *
      * @return void
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::setUp();
 
@@ -97,10 +101,9 @@ class TimeoutServiceTest extends TestCase
         $timeout_service = new TimeoutService($now);
 
         self::$mock_functions
-            ->shouldReceive('ini_get')
+            ->method('ini_get')
             ->with('max_execution_time')
-            ->once()
-            ->andReturn('0');
+            ->willReturn('0');
 
         $this->assertFalse($timeout_service->isTimeNearlyUp());
     }
@@ -118,16 +121,14 @@ class TimeoutServiceTest extends TestCase
         $timeout_service = new TimeoutService($now);
 
         self::$mock_functions
-            ->shouldReceive('ini_get')
+            ->method('ini_get')
             ->with('max_execution_time')
-            ->once()
-            ->andReturn('30');
+            ->willReturn('30');
 
         self::$mock_functions
-            ->shouldReceive('microtime')
-            ->with('true')
-            ->once()
-            ->andReturn($now + 60.0);
+            ->method('microtime')
+            ->with(true)
+            ->willReturn($now + 60.0);
 
         $this->assertTrue($timeout_service->isTimeNearlyUp());
     }
@@ -145,16 +146,14 @@ class TimeoutServiceTest extends TestCase
         $timeout_service = new TimeoutService($now);
 
         self::$mock_functions
-            ->shouldReceive('ini_get')
+            ->method('ini_get')
             ->with('max_execution_time')
-            ->once()
-            ->andReturn('30');
+            ->willReturn('30');
 
         self::$mock_functions
-            ->shouldReceive('microtime')
-            ->with('true')
-            ->once()
-            ->andReturn($now + 10.0);
+            ->method('microtime')
+            ->with(true)
+            ->willReturn($now + 10.0);
 
         $this->assertFalse($timeout_service->isTimeNearlyUp());
     }
@@ -172,10 +171,9 @@ class TimeoutServiceTest extends TestCase
         $timeout_service = new TimeoutService($now);
 
         self::$mock_functions
-            ->shouldReceive('microtime')
-            ->with('true')
-            ->once()
-            ->andReturn($now + 1.4);
+            ->method('microtime')
+            ->with(true)
+            ->willReturn($now + 1.4);
 
         $this->assertFalse($timeout_service->isTimeLimitUp());
     }
@@ -193,10 +191,9 @@ class TimeoutServiceTest extends TestCase
         $timeout_service = new TimeoutService($now);
 
         self::$mock_functions
-            ->shouldReceive('microtime')
-            ->with('true')
-            ->once()
-            ->andReturn($now + 1.6);
+            ->method('microtime')
+            ->with(true)
+            ->willReturn($now + 1.6);
 
         $this->assertTrue($timeout_service->isTimeLimitUp());
     }

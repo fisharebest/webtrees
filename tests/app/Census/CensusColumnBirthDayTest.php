@@ -20,23 +20,12 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Individual;
-use Mockery;
 
 /**
  * Test harness for the class CensusColumnAge
  */
 class CensusColumnBirthDayTest extends \Fisharebest\Webtrees\TestCase
 {
-    /**
-     * Delete mock objects
-     *
-     * @return void
-     */
-    public function tearDown()
-    {
-        Mockery::close();
-    }
-
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthDay
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
@@ -45,17 +34,17 @@ class CensusColumnBirthDayTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testGenerateColumn(): void
     {
-        $cal_date = Mockery::mock(GregorianDate::class);
-        $cal_date->shouldReceive('format')->andReturn('30');
+        $cal_date = $this->createMock(GregorianDate::class);
+        $cal_date->method('format')->willReturn('30');
 
-        $date = Mockery::mock(Date::class);
-        $date->shouldReceive('minimumDate')->andReturn($cal_date);
+        $date = $this->createMock(Date::class);
+        $date->method('minimumDate')->willReturn($cal_date);
 
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getEstimatedBirthDate')->andReturn($date);
+        $individual = $this->createMock(Individual::class);
+        $individual->method('getEstimatedBirthDate')->willReturn($date);
 
-        $census = Mockery::mock(CensusInterface::class);
-        $census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
+        $census = $this->createMock(CensusInterface::class);
+        $census->method('censusDate')->willReturn('30 JUN 1832');
 
         $column = new CensusColumnBirthDay($census, '', '');
 

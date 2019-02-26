@@ -20,23 +20,12 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Individual;
-use Mockery;
 
 /**
  * Test harness for the class CensusColumnBirthDaySlashMonthYearTest
  */
 class CensusColumnBirthDaySlashMonthYearTest extends \Fisharebest\Webtrees\TestCase
 {
-    /**
-     * Delete mock objects
-     *
-     * @return void
-     */
-    public function tearDown()
-    {
-        Mockery::close();
-    }
-
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthDaySlashMonthYearTest
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
@@ -45,19 +34,19 @@ class CensusColumnBirthDaySlashMonthYearTest extends \Fisharebest\Webtrees\TestC
      */
     public function testGenerateColumn(): void
     {
-        $cal_date = Mockery::mock(GregorianDate::class);
-        $cal_date->shouldReceive('format')->andReturn('30/6 1832');
+        $cal_date = $this->createMock(GregorianDate::class);
+        $cal_date->method('format')->willReturn('30/6 1832');
 
-        $date = Mockery::mock(Date::class);
-        $date->shouldReceive('minimumJulianDay')->andReturn(2390364);
-        $date->shouldReceive('maximumJulianDay')->andReturn(2390364);
-        $date->shouldReceive('minimumDate')->andReturn($cal_date);
+        $date = $this->createMock(Date::class);
+        $date->method('minimumJulianDay')->willReturn(2390364);
+        $date->method('maximumJulianDay')->willReturn(2390364);
+        $date->method('minimumDate')->willReturn($cal_date);
 
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getBirthDate')->andReturn($date);
+        $individual = $this->createMock(Individual::class);
+        $individual->method('getBirthDate')->willReturn($date);
 
-        $census = Mockery::mock(CensusInterface::class);
-        $census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
+        $census = $this->createMock(CensusInterface::class);
+        $census->method('censusDate')->willReturn('30 JUN 1832');
 
         $column = new CensusColumnBirthDaySlashMonthYear($census, '', '');
 

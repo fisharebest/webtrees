@@ -19,23 +19,12 @@ namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
-use Mockery;
 
 /**
  * Test harness for the class CensusColumnSurnameGivenNameInitial
  */
 class CensusColumnSurnameGivenNameInitialTest extends \Fisharebest\Webtrees\TestCase
 {
-    /**
-     * Delete mock objects
-     *
-     * @return void
-     */
-    public function tearDown()
-    {
-        Mockery::close();
-    }
-
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnSurnameGivenNameInitial
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
@@ -44,17 +33,17 @@ class CensusColumnSurnameGivenNameInitialTest extends \Fisharebest\Webtrees\Test
      */
     public function testOneGivenName(): void
     {
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getAllNames')->andReturn([
+        $individual = $this->createMock(Individual::class);
+        $individual->method('getAllNames')->willReturn([
             [
                 'givn' => 'Joe',
                 'surname' => 'Sixpack',
             ],
         ]);
-        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection());
+        $individual->method('spouseFamilies')->willReturn(new Collection());
 
-        $census = Mockery::mock(CensusInterface::class);
-        $census->shouldReceive('censusDate')->andReturn('');
+        $census = $this->createMock(CensusInterface::class);
+        $census->method('censusDate')->willReturn('');
 
         $column = new CensusColumnSurnameGivenNameInitial($census, '', '');
 
@@ -69,17 +58,17 @@ class CensusColumnSurnameGivenNameInitialTest extends \Fisharebest\Webtrees\Test
      */
     public function testMultipleGivenNames(): void
     {
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getAllNames')->andReturn([
+        $individual = $this->createMock(Individual::class);
+        $individual->method('getAllNames')->willReturn([
             [
                 'givn' => 'Joe Fred',
                 'surname' => 'Sixpack',
             ],
         ]);
-        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection());
+        $individual->method('spouseFamilies')->willReturn(new Collection());
 
-        $census = Mockery::mock(CensusInterface::class);
-        $census->shouldReceive('censusDate')->andReturn('');
+        $census = $this->createMock(CensusInterface::class);
+        $census->method('censusDate')->willReturn('');
 
         $column = new CensusColumnSurnameGivenNameInitial($census, '', '');
 

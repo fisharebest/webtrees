@@ -68,7 +68,6 @@
         "ext-pdo_sqlite": "*",
         "league/flysystem-memory": "*",
         "maximebf/debugbar": "*",
-        "mockery/mockery": "*",
         "php-coveralls/php-coveralls": "*",
         "phpunit/phpunit": "*",
         "wapmorgan/php-code-fixer": "*",

@@ -18,25 +18,15 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
-use Mockery;
 
 /**
  * Test harness for the class CensusColumnChildrenDied
  */
 class CensusColumnChildrenDiedTest extends \Fisharebest\Webtrees\TestCase
 {
-    /**
-     * Delete mock objects
-     *
-     * @return void
-     */
-    public function tearDown()
-    {
-        Mockery::close();
-    }
-
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnChildrenDied
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
@@ -45,10 +35,10 @@ class CensusColumnChildrenDiedTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMale(): void
     {
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('sex')->andReturn('M');
+        $individual = $this->createMock(Individual::class);
+        $individual->method('sex')->willReturn('M');
 
-        $census = Mockery::mock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnChildrenDied($census, '', '');
 
@@ -64,39 +54,34 @@ class CensusColumnChildrenDiedTest extends \Fisharebest\Webtrees\TestCase
     public function testCountChildren(): void
     {
         // Stillborn
-        $child1 = Mockery::mock(Individual::class);
-        $child1->shouldReceive('getBirthDate')->andReturn(new Date('01 FEB 1904'));
-        $child1->shouldReceive('getDeathDate')->andReturn(new Date('01 FEB 1904'));
+        $child1 = $this->createMock(Individual::class);
+        $child1->method('getBirthDate')->willReturn(new Date('01 FEB 1904'));
+        $child1->method('getDeathDate')->willReturn(new Date('01 FEB 1904'));
 
         // Died after census
-        $child2 = Mockery::mock(Individual::class);
-        $child2->shouldReceive('getBirthDate')->andReturn(new Date('02 FEB 1904'));
-        $child2->shouldReceive('getDeathDate')->andReturn(new Date('20 DEC 1912'));
+        $child2 = $this->createMock(Individual::class);
+        $child2->method('getBirthDate')->willReturn(new Date('02 FEB 1904'));
+        $child2->method('getDeathDate')->willReturn(new Date('20 DEC 1912'));
 
         // Died before census
-        $child3 = Mockery::mock(Individual::class);
-        $child3->shouldReceive('getBirthDate')->andReturn(new Date('02 FEB 1904'));
-        $child3->shouldReceive('getDeathDate')->andReturn(new Date('20 DEC 1910'));
+        $child3 = $this->createMock(Individual::class);
+        $child3->method('getBirthDate')->willReturn(new Date('02 FEB 1904'));
+        $child3->method('getDeathDate')->willReturn(new Date('20 DEC 1910'));
 
         // Still living
-        $child4 = Mockery::mock(Individual::class);
-        $child4->shouldReceive('getBirthDate')->andReturn(new Date('01 FEB 1904'));
-        $child4->shouldReceive('getDeathDate')->andReturn(new Date(''));
+        $child4 = $this->createMock(Individual::class);
+        $child4->method('getBirthDate')->willReturn(new Date('01 FEB 1904'));
+        $child4->method('getDeathDate')->willReturn(new Date(''));
 
-        $family = Mockery::mock(Family::class);
-        $family->shouldReceive('children')->andReturn([
-            $child1,
-            $child2,
-            $child3,
-            $child4,
-        ]);
+        $family = $this->createMock(Family::class);
+        $family->method('children')->willReturn(new Collection([$child1, $child2, $child3, $child4]));
 
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('sex')->andReturn('F');
-        $individual->shouldReceive('spouseFamilies')->andReturn(new Collection([$family]));
+        $individual = $this->createMock(Individual::class);
+        $individual->method('sex')->willReturn('F');
+        $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = Mockery::mock(CensusInterface::class);
-        $census->shouldReceive('censusDate')->andReturn('30 MAR 1911');
+        $census = $this->createMock(CensusInterface::class);
+        $census->method('censusDate')->willReturn('30 MAR 1911');
 
         $column = new CensusColumnChildrenDied($census, '', '');
 

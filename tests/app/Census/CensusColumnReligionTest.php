@@ -18,23 +18,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Individual;
-use Mockery;
 
 /**
  * Test harness for the class CensusColumnReligion
  */
 class CensusColumnReligionTest extends \Fisharebest\Webtrees\TestCase
 {
-    /**
-     * Delete mock objects
-     *
-     * @return void
-     */
-    public function tearDown()
-    {
-        Mockery::close();
-    }
-
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnReligion
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
@@ -43,10 +32,10 @@ class CensusColumnReligionTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testReligion(): void
     {
-        $individual = Mockery::mock(Individual::class);
+        $individual = $this->createMock(Individual::class);
 
-        $census = Mockery::mock(CensusInterface::class);
-        $census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
+        $census = $this->createMock(CensusInterface::class);
+        $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnReligion($census, '', '');
 

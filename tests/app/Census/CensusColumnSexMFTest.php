@@ -18,23 +18,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Individual;
-use Mockery;
 
 /**
  * Test harness for the class CensusColumnSexMF
  */
 class CensusColumnSexMFTest extends \Fisharebest\Webtrees\TestCase
 {
-    /**
-     * Delete mock objects
-     *
-     * @return void
-     */
-    public function tearDown()
-    {
-        Mockery::close();
-    }
-
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnSexMF
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
@@ -43,10 +32,10 @@ class CensusColumnSexMFTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMale(): void
     {
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('sex')->andReturn('M');
+        $individual = $this->createMock(Individual::class);
+        $individual->method('sex')->willReturn('M');
 
-        $census = Mockery::mock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnSexMF($census, '', '');
 
@@ -61,10 +50,10 @@ class CensusColumnSexMFTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testFeale(): void
     {
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('sex')->andReturn('F');
+        $individual = $this->createMock(Individual::class);
+        $individual->method('sex')->willReturn('F');
 
-        $census = Mockery::mock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnSexMF($census, '', '');
 
@@ -79,10 +68,10 @@ class CensusColumnSexMFTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testUnknownSex(): void
     {
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('sex')->andReturn('U');
+        $individual = $this->createMock(Individual::class);
+        $individual->method('sex')->willReturn('U');
 
-        $census = Mockery::mock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnSexMF($census, '', '');
 

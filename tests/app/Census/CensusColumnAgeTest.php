@@ -19,23 +19,12 @@ namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
-use Mockery;
 
 /**
  * Test harness for the class CensusColumnAge
  */
 class CensusColumnAgeTest extends \Fisharebest\Webtrees\TestCase
 {
-    /**
-     * Delete mock objects
-     *
-     * @return void
-     */
-    public function tearDown()
-    {
-        Mockery::close();
-    }
-
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnAge
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
@@ -44,11 +33,11 @@ class CensusColumnAgeTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testGenerateColumn(): void
     {
-        $individual = Mockery::mock(Individual::class);
-        $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('01 JAN 1800'));
+        $individual = $this->createMock(Individual::class);
+        $individual->method('getEstimatedBirthDate')->willReturn(new Date('01 JAN 1800'));
 
-        $census = Mockery::mock(CensusInterface::class);
-        $census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
+        $census = $this->createMock(CensusInterface::class);
+        $census->method('censusDate')->willReturn('30 JUN 1832');
 
         $column = new CensusColumnAge($census, '', '');
 
