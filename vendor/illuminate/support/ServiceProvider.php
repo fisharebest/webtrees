@@ -3,18 +3,21 @@
 namespace Illuminate\Support;
 
 use Illuminate\Console\Application as Artisan;
+use Illuminate\Contracts\Support\DeferrableProvider;
 
 abstract class ServiceProvider
 {
     /**
      * The application instance.
      *
-     * @var \Illuminate\Contracts\Foundation\Application|\Illuminate\Foundation\Application
+     * @var \Illuminate\Contracts\Foundation\Application
      */
     protected $app;
 
     /**
      * Indicates if loading of the provider is deferred.
+     *
+     * @deprecated Implement the \Illuminate\Contracts\Support\DeferrableProvider interface instead. Will be removed in Laravel 5.9.
      *
      * @var bool
      */
@@ -37,12 +40,22 @@ abstract class ServiceProvider
     /**
      * Create a new service provider instance.
      *
-     * @param  \Illuminate\Contracts\Foundation\Application|\Illuminate\Foundation\Application  $app
+     * @param  \Illuminate\Contracts\Foundation\Application  $app
      * @return void
      */
     public function __construct($app)
     {
         $this->app = $app;
+    }
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
     }
 
     /**
@@ -134,17 +147,19 @@ abstract class ServiceProvider
      * Register paths to be published by the publish command.
      *
      * @param  array  $paths
-     * @param  string  $group
+     * @param  mixed  $groups
      * @return void
      */
-    protected function publishes(array $paths, $group = null)
+    protected function publishes(array $paths, $groups = null)
     {
         $this->ensurePublishArrayInitialized($class = static::class);
 
         static::$publishes[$class] = array_merge(static::$publishes[$class], $paths);
 
-        if ($group) {
-            $this->addPublishGroup($group, $paths);
+        if (! is_null($groups)) {
+            foreach ((array) $groups as $group) {
+                $this->addPublishGroup($group, $paths);
+            }
         }
     }
 
@@ -295,6 +310,6 @@ abstract class ServiceProvider
      */
     public function isDeferred()
     {
-        return $this->defer;
+        return $this->defer || $this instanceof DeferrableProvider;
     }
 }

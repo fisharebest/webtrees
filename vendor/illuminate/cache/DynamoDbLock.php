@@ -2,29 +2,29 @@
 
 namespace Illuminate\Cache;
 
-class MemcachedLock extends Lock
+class DynamoDbLock extends Lock
 {
     /**
-     * The Memcached instance.
+     * The DynamoDB client instance.
      *
-     * @var \Memcached
+     * @var \Illuminate\Cache\DynamoDbStore
      */
-    protected $memcached;
+    protected $dynamo;
 
     /**
      * Create a new lock instance.
      *
-     * @param  \Memcached  $memcached
+     * @param  \Illuminate\Cache\DynamoDbStore  $dynamo
      * @param  string  $name
      * @param  int  $seconds
      * @param  string|null  $owner
      * @return void
      */
-    public function __construct($memcached, $name, $seconds, $owner = null)
+    public function __construct(DynamoDbStore $dynamo, $name, $seconds, $owner = null)
     {
         parent::__construct($name, $seconds, $owner);
 
-        $this->memcached = $memcached;
+        $this->dynamo = $dynamo;
     }
 
     /**
@@ -34,7 +34,7 @@ class MemcachedLock extends Lock
      */
     public function acquire()
     {
-        return $this->memcached->add(
+        return $this->dynamo->add(
             $this->name, $this->owner, $this->seconds
         );
     }
@@ -47,18 +47,18 @@ class MemcachedLock extends Lock
     public function release()
     {
         if ($this->isOwnedByCurrentProcess()) {
-            $this->memcached->delete($this->name);
+            $this->dynamo->forget($this->name);
         }
     }
 
     /**
-     * Releases this lock in disregard of ownership.
+     * Release this lock in disregard of ownership.
      *
      * @return void
      */
     public function forceRelease()
     {
-        $this->memcached->delete($this->name);
+        $this->dynamo->forget($this->name);
     }
 
     /**
@@ -68,6 +68,6 @@ class MemcachedLock extends Lock
      */
     protected function getCurrentOwner()
     {
-        return $this->memcached->get($this->name);
+        return $this->dynamo->get($this->name);
     }
 }
