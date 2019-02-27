@@ -60,12 +60,6 @@
 	padding: 0 .25rem;
 }
 
-.card-header .btn-link {
-	font-size: 0;
-	line-height: 0;
-	border: 0;
-}
-
 .container-fluid {
 	padding-left: 5px;
 	padding-right: 5px;
