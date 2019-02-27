@@ -56,8 +56,12 @@ function microtime(...$args)
  */
 class mockGlobals
 {
-    public function microtime() {}
-    public function ini_get() {}
+    public function microtime()
+    {
+    }
+    public function ini_get()
+    {
+    }
 }
 
 /**
