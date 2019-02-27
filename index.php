@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\DebugBarData;
 use Fisharebest\Webtrees\Http\Middleware\Housekeeping;
+use Fisharebest\Webtrees\Http\Middleware\MiddlewareInterface;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
@@ -255,6 +256,11 @@ try {
     if ($request->getMethod() === Request::METHOD_POST) {
         $middleware_stack[] = UseTransaction::class;
         $middleware_stack[] = CheckCsrf::class;
+    }
+
+    // Allow modules to provide middleware.
+    foreach (app()->make(ModuleService::class)->findByInterface(MiddlewareInterface::class) as $middleware) {
+        $middleware[] = $middleware;
     }
 
     // Apply the middleware using the "onion" pattern.

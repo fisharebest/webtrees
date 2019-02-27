@@ -6,6 +6,7 @@ use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsTrait;
+use Illuminate\Support\Collection;
 
 return new class extends AbstractModule implements ModuleCustomInterface, ModuleHistoricEventsInterface {
     use ModuleCustomTrait;
@@ -34,11 +35,11 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
     /**
      * All events provided by this module.
      *
-     * @return string[]
+     * @return Collection|string[]
      */
-    public function historicEventsAll(): array
+    public function historicEventsAll(): Collection
     {
-        return [
+        return new Collection([
             "1 EVEN George Washington\n2 TYPE 1st President of the United States\n2 DATE 30 APR 1789",
             "1 EVEN John Adams\n2 TYPE 2nd President of the United States\n2 DATE 4 MAR 1797",
             "1 EVEN Thomas Jefferson\n2 TYPE 3rd President of the United States\n2 DATE 4 MAR 1801",
@@ -84,6 +85,6 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
             "1 EVEN George W Bush\n2 TYPE 43rd President of the United States\n2 DATE 20 JAN 2001",
             "1 EVEN Barack Obama\n2 TYPE 44th President of the United States\n2 DATE 20 JAN 2009",
             "1 EVEN Donald Trump\n2 TYPE 45th President of the United States\n2 DATE 20 JAN 2017",
-        ];
+        ]);
     }
 };

@@ -28,9 +28,9 @@ interface ModuleHistoricEventsInterface extends ModuleInterface
     /**
      * All events provided by this module.
      *
-     * @return string[]
+     * @return Collection|string[]
      */
-    public function historicEventsAll(): array;
+    public function historicEventsAll(): Collection;
 
     /**
      * Which events should we show for an individual?
