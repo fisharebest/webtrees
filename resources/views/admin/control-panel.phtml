@@ -96,7 +96,8 @@
 </div>
 
 <!-- FAMILY TREES -->
-<div class="card mb-4 <?= array_sum($changes) ? 'card-outline-danger' : '' ?>">
+<!-- d-block allows tables in cards in Chrome -->
+<div class="card mb-4 d-block <?= array_sum($changes) ? 'card-outline-danger' : '' ?>">
     <div class="card-header">
         <h2 class="mb-0">
             <?= I18N::translate('Family trees') ?>
