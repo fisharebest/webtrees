@@ -83,7 +83,7 @@ class GedcomFileController extends AbstractBaseController
                 $data = DB::table('gedcom_chunk')
                     ->where('gedcom_id', '=', $tree->id())
                     ->where('imported', '=', '0')
-                    ->orderby('gedcom_chunk_id')
+                    ->orderBy('gedcom_chunk_id')
                     ->select(['gedcom_chunk_id', 'chunk_data'])
                     ->first();
 
@@ -204,7 +204,7 @@ class GedcomFileController extends AbstractBaseController
             DB::connection()->rollBack();
 
             return $this->viewResponse('admin/import-fail', [
-                'error' => $ex->getmessage(),
+                'error' => $ex->getMessage(),
             ]);
         }
     }
