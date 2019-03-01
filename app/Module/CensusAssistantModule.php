@@ -29,7 +29,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Class CensusAssistantModule
  */
-class CensusAssistantModule extends AbstractModule implements ModuleInterface
+class CensusAssistantModule extends AbstractModule
 {
     /**
      * How should this module be labelled on tabs, menus, etc.?

@@ -22,7 +22,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 /**
  * A default user - to store default preferences.
  */
-class DefaultUser extends User implements UserInterface
+class DefaultUser extends User
 {
     public function __construct()
     {

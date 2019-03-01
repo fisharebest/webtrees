@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees\SurnameTradition;
 /**
  * Children take their father’s surname.
  */
-class PatrilinealSurnameTradition extends DefaultSurnameTradition implements SurnameTraditionInterface
+class PatrilinealSurnameTradition extends DefaultSurnameTradition
 {
     /**
      * What names are given to a new child

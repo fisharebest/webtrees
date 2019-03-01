@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees\SurnameTradition;
 /**
  * Children take their mother’s surname.
  */
-class MatrilinealSurnameTradition extends DefaultSurnameTradition implements SurnameTraditionInterface
+class MatrilinealSurnameTradition extends DefaultSurnameTradition
 {
     /**
      * What names are given to a new child

@@ -23,7 +23,7 @@ namespace Fisharebest\Webtrees\SurnameTradition;
  * Sons get their father’s given name plus “sson”
  * Daughters get their father’s given name plus “sdottir”
  */
-class IcelandicSurnameTradition extends DefaultSurnameTradition implements SurnameTraditionInterface
+class IcelandicSurnameTradition extends DefaultSurnameTradition
 {
     /**
      * Does this surname tradition use surnames?

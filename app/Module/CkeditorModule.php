@@ -22,7 +22,7 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Class CkeditorModule
  */
-class CkeditorModule extends AbstractModule implements ModuleInterface
+class CkeditorModule extends AbstractModule
 {
     // Location of our installation of CK editor.
     public const CKEDITOR_PATH = 'public/ckeditor-4.11.2-custom/';
