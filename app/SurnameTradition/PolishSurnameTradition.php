@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees\SurnameTradition;
 /**
  * Children take their father’s surname. Wives take their husband’s surname. Surnames are inflected to indicate an individual’s sex.
  */
-class PolishSurnameTradition extends PaternalSurnameTradition implements SurnameTraditionInterface
+class PolishSurnameTradition extends PaternalSurnameTradition
 {
     /** @var string[] Inflect a surname for females */
     protected $inflect_female = [

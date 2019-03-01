@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees\SurnameTradition;
 /**
  * Lithuanian — Children take their father’s surname. Wives take their husband’s surname. Surnames are inflected to indicate an individual’s sex and marital status.
  */
-class LithuanianSurnameTradition extends PaternalSurnameTradition implements SurnameTraditionInterface
+class LithuanianSurnameTradition extends PaternalSurnameTradition
 {
     /** @var string[] Inflect a surname for wives */
     protected $inflect_wife = [
