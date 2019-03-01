@@ -51,7 +51,7 @@ class ChangesLogControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testChangeLogData(): void
     {
         $tree = Tree::create('name', 'title');
-        $user = UserService::create('user', 'name', 'email', 'password');
+        $user = (new UserService)->create('user', 'name', 'email', 'password');
         Auth::login($user);
         $individual = $tree->createIndividual("0 @@ INDI\n1 NAME Joe Bloggs");
 
@@ -76,7 +76,7 @@ class ChangesLogControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testChangeLogDownload(): void
     {
         $tree = Tree::create('name', 'title');
-        $user = UserService::create('user', 'name', 'email', 'password');
+        $user = (new UserService)->create('user', 'name', 'email', 'password');
         Auth::login($user);
         $tree->createIndividual("0 @@ INDI\n1 NAME Joe Bloggs");
 

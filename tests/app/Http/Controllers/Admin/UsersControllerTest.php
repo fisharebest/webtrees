@@ -83,7 +83,7 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testEdit(): void
     {
-        $user       = UserService::create('user', 'real', 'email', 'pass');
+        $user       = (new UserService)->create('user', 'real', 'email', 'pass');
         $controller = new UsersController(new ModuleService(), new UserService());
         $response   = $controller->edit(new Request(['user_id' => $user->id()]));
 
@@ -96,7 +96,7 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdate(): void
     {
         /** @var User $user */
-        $user       = UserService::create('user', 'real', 'email', 'pass');
+        $user       = (new UserService)->create('user', 'real', 'email', 'pass');
         $controller = new UsersController(new ModuleService(), new UserService());
         $response   = $controller->update(new Request(['user_id' => $user->id()]), $user);
 
