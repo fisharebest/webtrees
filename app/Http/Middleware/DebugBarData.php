@@ -36,6 +36,8 @@ class DebugBarData implements MiddlewareInterface
      */
     public function handle(Request $request, Closure $next): Response
     {
+        // This timer gets stopped automatically when we generate the response.
+        DebugBar::startMeasure('controller_action');
         $response = $next($request);
 
         if ($response instanceof RedirectResponse) {

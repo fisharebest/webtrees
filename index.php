@@ -169,8 +169,6 @@ if ($next_session_update < Carbon::now()) {
     Session::put('session_time_updates', $timestamp_now);
 }
 
-DebugBar::startMeasure('routing');
-
 try {
     // Most requests will need the current tree and user.
     $tree = Tree::findByName($request->get('ged')) ?? null;
@@ -186,6 +184,8 @@ try {
 
     // Most layouts will require a tree for the page header/footer
     View::share('tree', $tree);
+
+    DebugBar::startMeasure('routing');
 
     // Load the route and routing table.
     $route  = $request->get('route');
@@ -236,10 +236,6 @@ try {
     Session::put('theme_id', $theme->name());
 
     DebugBar::stopMeasure('init theme');
-
-    // Note that we can't stop this timer, as running the action will
-    // generate the response - which includes (and stops) the timer
-    DebugBar::startMeasure('controller_action');
 
     $middleware_stack = [
         CheckForMaintenanceMode::class,
