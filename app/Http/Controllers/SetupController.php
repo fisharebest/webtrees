@@ -314,7 +314,7 @@ class SetupController extends AbstractBaseController
     {
         // Create/update the database tables.
         Database::connect($data);
-        $this->migration_service->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
+        MigrationService::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
 
         // Add some default/necessary configuration data.
         $this->migration_service->seedDatabase();
@@ -326,7 +326,7 @@ class SetupController extends AbstractBaseController
         }
         // Create the user
         if ($admin === null) {
-            $admin = $this->user_service->create($data['wtuser'], $data['wtname'], $data['wtemail'], $data['wtpass'])
+            $admin = UserService::create($data['wtuser'], $data['wtname'], $data['wtemail'], $data['wtpass'])
                 ->setPreference('language', WT_LOCALE)
                 ->setPreference('visibleonline', '1');
         } else {

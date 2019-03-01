@@ -341,7 +341,7 @@ class UsersController extends AbstractAdminController
             return new RedirectResponse($url);
         }
 
-        $new_user = $this->user_service->create($username, $real_name, $email, $password)
+        $new_user = UserService::create($username, $real_name, $email, $password)
             ->setPreference('verified', '1')
             ->setPreference('language', WT_LOCALE)
             ->setPreference('timezone', Site::getPreference('TIMEZONE'))

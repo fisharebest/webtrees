@@ -118,7 +118,7 @@ class RegisterController extends AbstractBaseController
 
         Log::addAuthenticationLog('User registration requested for: ' . $username);
 
-        $user = $this->user_service->create($username, $realname, $email, $password);
+        $user = UserService::create($username, $realname, $email, $password);
         $user
             ->setPreference('language', WT_LOCALE)
             ->setPreference('verified', '0')
