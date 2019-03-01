@@ -145,6 +145,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 
             $changes = DB::table('change')
                 ->where('gedcom_id', '=', $tree->id())
+                ->where('status', '=', 'pending')
                 ->select(['xref'])
                 ->get();
 
