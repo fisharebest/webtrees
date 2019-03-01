@@ -125,7 +125,7 @@ class FixLevel0MediaController extends AbstractAdminController
                     ->on('individuals.i_id', '=', 'link.l_from');
             })
             ->where('i_gedcom', 'LIKE', DB::raw("CONCAT('%\n1 OBJE @', " . $prefix . "media.m_id, '@%')"))
-            ->orderby('individuals.i_file')
+            ->orderBy('individuals.i_file')
             ->orderBy('individuals.i_id')
             ->orderBy('media.m_id')
             ->select(['media.m_file', 'media.m_id', 'media.m_gedcom', 'individuals.i_id', 'individuals.i_gedcom']);

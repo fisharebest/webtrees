@@ -119,7 +119,7 @@ class ReportPdfText extends ReportBaseText
         }
 
         // Get the line width for the text in points
-        $lw = $renderer->getStringWidth($this->text);
+        $lw = $renderer->GetStringWidth($this->text);
         // Line Feed counter - Number of lines in the text
         $lfct = substr_count($this->text, "\n") + 1;
         // If there is still remaining wrap width...
@@ -132,7 +132,7 @@ class ReportPdfText extends ReportBaseText
                 // Go throught the text line by line
                 foreach ($lines as $line) {
                     // Line width in points + a little margin
-                    $lw = $renderer->getStringWidth($line);
+                    $lw = $renderer->GetStringWidth($line);
                     // If the line has to be wraped
                     if ($lw > $wrapWidthRemaining) {
                         $words    = explode(' ', $line);
@@ -140,14 +140,14 @@ class ReportPdfText extends ReportBaseText
                         $lw       = 0;
                         foreach ($words as $word) {
                             $addspace--;
-                            $lw += $renderer->getStringWidth($word . ' ');
+                            $lw += $renderer->GetStringWidth($word . ' ');
                             if ($lw <= $wrapWidthRemaining) {
                                 $newtext .= $word;
                                 if ($addspace != 0) {
                                     $newtext .= ' ';
                                 }
                             } else {
-                                $lw = $renderer->getStringWidth($word . ' ');
+                                $lw = $renderer->GetStringWidth($word . ' ');
                                 $newtext .= "\n$word";
                                 if ($addspace != 0) {
                                     $newtext .= ' ';
