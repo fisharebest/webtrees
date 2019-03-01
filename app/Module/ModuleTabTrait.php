@@ -25,7 +25,7 @@ use Illuminate\Support\Collection;
 trait ModuleTabTrait
 {
     /** @var int The default position for this tab.  It can be changed in the control panel. */
-    protected $tab_order = 0;
+    protected $tab_order;
 
     /**
      * The text that appears on the tab.

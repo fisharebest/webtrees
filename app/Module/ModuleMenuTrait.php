@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Tree;
 trait ModuleMenuTrait
 {
     /** @var int The default position for this menu.  It can be changed in the control panel. */
-    protected $menu_order = 0;
+    protected $menu_order;
 
     /**
      * Users change change the order of menus using the control panel.

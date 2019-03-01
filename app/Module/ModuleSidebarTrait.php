@@ -25,7 +25,7 @@ use Illuminate\Support\Collection;
 trait ModuleSidebarTrait
 {
     /** @var int The default position for this sidebar.  It can be changed in the control panel. */
-    protected $sidebar_order = 0;
+    protected $sidebar_order;
 
     /**
      * The text that appears on the sidebar's title.

@@ -79,7 +79,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
      */
     public function defaultTabOrder(): int
     {
-        return 7;
+        return 9;
     }
 
     /** {@inheritdoc} */

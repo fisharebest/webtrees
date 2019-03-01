@@ -82,7 +82,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
      */
     public function defaultTabOrder(): int
     {
-        return 1;
+        return 8;
     }
 
     /** {@inheritdoc} */

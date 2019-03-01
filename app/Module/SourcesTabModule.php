@@ -75,7 +75,7 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface
      */
     public function defaultTabOrder(): int
     {
-        return 4;
+        return 3;
     }
 
     /** {@inheritdoc} */

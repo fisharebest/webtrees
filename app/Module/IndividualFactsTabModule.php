@@ -82,7 +82,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      */
     public function defaultTabOrder(): int
     {
-        return 2;
+        return 1;
     }
 
     /** {@inheritdoc} */

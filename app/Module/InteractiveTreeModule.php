@@ -69,7 +69,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
      */
     public function defaultTabOrder(): int
     {
-        return 9;
+        return 7;
     }
 
     /** {@inheritdoc} */

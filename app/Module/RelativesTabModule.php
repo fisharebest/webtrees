@@ -58,7 +58,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface
      */
     public function defaultTabOrder(): int
     {
-        return 3;
+        return 2;
     }
 
     /** {@inheritdoc} */

@@ -23,7 +23,7 @@ namespace Fisharebest\Webtrees\Module;
 trait ModuleFooterTrait
 {
     /** @var int The default position for this footer.  It can be changed in the control panel. */
-    protected $footer_order = 0;
+    protected $footer_order;
 
     /**
      * Users change change the order of footers using the control panel.
