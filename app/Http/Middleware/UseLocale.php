@@ -32,19 +32,6 @@ use Throwable;
  */
 class UseLocale implements MiddlewareInterface
 {
-    /** @var Tree|null */
-    private $tree;
-
-    /**
-     * UseTheme constructor.
-     *
-     * @param Tree|null $tree
-     */
-    public function __construct(?Tree $tree)
-    {
-        $this->tree = $tree;
-    }
-
     /**
      * @param Request $request
      * @param Closure $next
@@ -54,8 +41,10 @@ class UseLocale implements MiddlewareInterface
      */
     public function handle(Request $request, Closure $next): Response
     {
+        $tree = app()->make(Tree::class);
+
         // Select a locale
-        define('WT_LOCALE', I18N::init('', $this->tree));
+        define('WT_LOCALE', I18N::init('', $tree));
         Session::put('locale', WT_LOCALE);
 
         app()->instance(LocaleInterface::class, WebtreesLocale::create(WT_LOCALE));

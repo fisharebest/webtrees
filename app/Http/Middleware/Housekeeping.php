@@ -38,7 +38,7 @@ class Housekeeping implements MiddlewareInterface
     private const MAX_THUMBNAIL_AGE = 60 * 60 * 24 * 90;
 
     // Delete files in /data/tmp after 1 hour.
-    private const TMP_DIR = 'data/tmp';
+    private const TMP_DIR          = 'data/tmp';
     private const MAX_TMP_FILE_AGE = 60 * 60;
 
     // Delete error logs after 90 days.
@@ -50,21 +50,16 @@ class Housekeeping implements MiddlewareInterface
     // Run the cleanup every 100 requests.
     private const PROBABILITY = 100;
 
-    /** @var Filesystem */
-    private $filesystem;
-
     /** @var HousekeepingService */
     private $housekeeping_service;
 
     /**
      * Housekeeping constructor.
      *
-     * @param FilesystemInterface $filesystem
      * @param HousekeepingService $housekeeping_service
      */
-    public function __construct(FilesystemInterface $filesystem, HousekeepingService $housekeeping_service)
+    public function __construct(HousekeepingService $housekeeping_service)
     {
-        $this->filesystem           = $filesystem;
         $this->housekeeping_service = $housekeeping_service;
     }
 
@@ -94,14 +89,16 @@ class Housekeeping implements MiddlewareInterface
      */
     private function runHousekeeping()
     {
-        // Clear files in the (user-specified) data folder - which might not be local
-        $this->housekeeping_service->deleteOldFiles($this->filesystem, 'cache', self::MAX_CACHE_AGE);
+        $data_filesystem = app()->make(FilesystemInterface::class);
+        $root_filesystem = new Filesystem(new Local(WT_ROOT));
 
-        $this->housekeeping_service->deleteOldFiles($this->filesystem, 'thumbnail-cache', self::MAX_THUMBNAIL_AGE);
+        // Clear files in the (user-specified) data folder - which might not be local files
+        $this->housekeeping_service->deleteOldFiles($data_filesystem, 'cache', self::MAX_CACHE_AGE);
 
-        // Clear files in /data (for things that need to be local files)
-        $filesystem = new Filesystem(new Local(WT_ROOT));
-        $this->housekeeping_service->deleteOldFiles($filesystem, self::TMP_DIR, self::MAX_TMP_FILE_AGE);
+        $this->housekeeping_service->deleteOldFiles($data_filesystem, 'thumbnail-cache', self::MAX_THUMBNAIL_AGE);
+
+        // Clear files in /data - which need to be local files
+        $this->housekeeping_service->deleteOldFiles($root_filesystem, self::TMP_DIR, self::MAX_TMP_FILE_AGE);
 
         // Clear entries in database tables
         $this->housekeeping_service->deleteOldLogs(self::MAX_LOG_AGE);

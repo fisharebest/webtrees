@@ -37,19 +37,14 @@ class UseTheme implements MiddlewareInterface
     /** @var ModuleService */
     private $module_service;
 
-    /** @var Tree|null */
-    private $tree;
-
     /**
      * UseTheme constructor.
      *
      * @param ModuleService $module_service
-     * @param Tree|null     $tree
      */
-    public function __construct(ModuleService $module_service, ?Tree $tree)
+    public function __construct(ModuleService $module_service)
     {
         $this->module_service = $module_service;
-        $this->tree           = $tree;
     }
 
     /**
@@ -89,8 +84,10 @@ class UseTheme implements MiddlewareInterface
         yield $themes->get(Session::get('theme_id', ''));
 
         // Default for tree
-        if ($this->tree instanceof Tree) {
-            yield $themes->get($this->tree->getPreference('THEME_DIR'));
+        $tree = app()->make(Tree::class);
+
+        if ($tree instanceof Tree) {
+            yield $themes->get($tree->getPreference('THEME_DIR'));
         }
 
         // Default for site
