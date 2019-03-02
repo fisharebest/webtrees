@@ -240,7 +240,7 @@ class ImportThumbnailsController extends AbstractAdminController
                     ->on('media_file.m_id', '=', 'media.m_id');
             })
             ->join('gedcom_setting', 'media.m_file', '=', 'gedcom_setting.gedcom_id')
-            ->where(DB::raw('CONCAT(setting_value, multimedia_file_refn)'), '=', $file)
+            ->where(DB::raw('setting_value || multimedia_file_refn'), '=', $file)
             ->select(['media.*'])
             ->distinct()
             ->get()
