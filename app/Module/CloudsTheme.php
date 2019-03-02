@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * The clouds theme.
@@ -26,7 +27,7 @@ use Fisharebest\Webtrees\Menu;
 class CloudsTheme extends AbstractModule implements ModuleThemeInterface
 {
     use ModuleThemeTrait {
-        primaryMenu as basePrimaryMenu;
+        genealogyMenu as baseGenealogyMenu;
     }
 
     /**
@@ -71,11 +72,13 @@ class CloudsTheme extends AbstractModule implements ModuleThemeInterface
     /**
      * Generate a list of items for the main menu.
      *
+     * @param Tree|null $tree
+     *
      * @return Menu[]
      */
-    public function primaryMenu(): array
+    public function genealogyMenu(?Tree $tree): array
     {
-        $primary_menu = $this->basePrimaryMenu();
+        $primary_menu = $this->baseGenealogyMenu($tree);
 
         foreach ($primary_menu as $menu) {
             $submenus = $menu->getSubmenus();

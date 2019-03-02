@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Carbon\Carbon;
 use Closure;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Session;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -52,6 +53,8 @@ class UseSession implements MiddlewareInterface
             }
             Session::put('session_time_updates', $timestamp_now);
         }
+
+        app()->instance(UserInterface::class, Auth::user());
 
         return $next($request);
     }

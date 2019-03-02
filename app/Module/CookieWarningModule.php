@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -90,9 +91,11 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
     /**
      * A footer, to be added at the bottom of every page.
      *
+     * @param Tree|null $tree
+     *
      * @return string
      */
-    public function getFooter(): string
+    public function getFooter(?Tree $tree): string
     {
         if ($this->isCookieWarningAcknowledged()) {
             return '';

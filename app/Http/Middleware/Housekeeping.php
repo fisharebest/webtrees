@@ -21,6 +21,7 @@ use Closure;
 use Fisharebest\Webtrees\Services\HousekeepingService;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
@@ -58,10 +59,10 @@ class Housekeeping implements MiddlewareInterface
     /**
      * Housekeeping constructor.
      *
-     * @param Filesystem          $filesystem
+     * @param FilesystemInterface $filesystem
      * @param HousekeepingService $housekeeping_service
      */
-    public function __construct(Filesystem $filesystem, HousekeepingService $housekeeping_service)
+    public function __construct(FilesystemInterface $filesystem, HousekeepingService $housekeeping_service)
     {
         $this->filesystem           = $filesystem;
         $this->housekeeping_service = $housekeeping_service;

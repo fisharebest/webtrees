@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Tree;
+
 /**
  * Interface ModuleFooterInterface - Add content to the bottom of every page.
  */
@@ -48,7 +50,9 @@ interface ModuleFooterInterface extends ModuleInterface
     /**
      * A footer, to be added at the bottom of every page.
      *
+     * @param Tree|null $tree
+     *
      * @return string
      */
-    public function getFooter(): string;
+    public function getFooter(?Tree $tree): string;
 }

@@ -88,9 +88,9 @@ table {
  * |           |       +---wt-header-search-field
  * |           |       +---wt-header-search-button
  * |           +---wt-secondary-navigation
- * |           |   +---wt-secondary-menu
+ * |           |   +---wt-user-menu
  * |           +---wt-primary-navigation
- * |               +---wt-primary-menu
+ * |               +---wt-genealogy-menu
  * +---wt-main-wrapper
  * |   +---wt-main-container
  * |       +---wt-main-content
@@ -161,24 +161,24 @@ table {
 	white-space: nowrap;
 }
 
-.wt-secondary-menu {
+.wt-user-menu {
 	flex-wrap: nowrap;
 }
 
-.wt-secondary-menu .nav-link {
+.wt-user-menu .nav-link {
 	display: inline-block;
 	padding: 0.5rem;
 }
 
-.wt-secondary-menu .nav-item + .nav-item::before {
+.wt-user-menu .nav-item + .nav-item::before {
 	content: "|";
 }
 
-.wt-secondary-menu .dropdown-toggle:after {
+.wt-user-menu .dropdown-toggle:after {
 	display: none;
 }
 
-.wt-secondary-menu .dropdown-item {
+.wt-user-menu .dropdown-item {
 	padding-left: 1rem;
 	padding-right: 1rem;
 }
@@ -188,15 +188,15 @@ table {
 	flex: 1 0 auto;
 }
 
-.wt-primary-menu {
+.wt-genealogy-menu {
 	display: flex; flex-wrap: wrap;
 }
 
-.wt-primary-menu .nav-item {
+.wt-genealogy-menu .nav-item {
 	padding: 0 0.75rem;
 }
 
-.wt-primary-menu .nav-link {
+.wt-genealogy-menu .nav-link {
 	/* All menu icons are 22px x 22px */
 	height: calc(22px + 1rem);
 	width: 22px;
@@ -205,12 +205,12 @@ table {
 	overflow: hidden;
 }
 
-.wt-primary-menu .dropdown-item {
+.wt-genealogy-menu .dropdown-item {
 	/* Space between icons and align with submenu icons */
 	padding: 0 5px 0 0;
 }
 
-.wt-primary-menu .dropdown-item::before {
+.wt-genealogy-menu .dropdown-item::before {
 	/* All submenu icons are 22px x 22px */
 	height: 22px;
 	width: 22px;
@@ -221,19 +221,19 @@ table {
 	line-height: 1.8;
 }
 
-.wt-primary-menu .nav-item::before {
+.wt-genealogy-menu .nav-item::before {
 	/* The size of the menu icons */
 	width: 22px;
 	height: 22px;
 }
 
-.wt-primary-menu .dropdown-item::before {
+.wt-genealogy-menu .dropdown-item::before {
 	/* The size of the submneu icons */
 	width: 22px;
 	height: 22px;
 }
 
-.wt-primary-menu .dropdown-item:first-child {
+.wt-genealogy-menu .dropdown-item:first-child {
 	font-weight: bold;
 	text-align: center;
 	border-bottom: solid thin #ddd;
@@ -770,8 +770,8 @@ fieldset,
 .person3,
 .person4,
 .person5,
-.wt-primary-menu ul,
-.secondary-menu li ul,
+.wt-genealogy-menu ul,
+.user-menu li ul,
 footer,
 #indi_main_blocks,
 #tabs{

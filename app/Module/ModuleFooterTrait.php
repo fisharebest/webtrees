@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Tree;
+
 /**
  * Trait ModuleFooterTrait - default implementation of ModuleFooterInterface
  */
@@ -60,9 +62,11 @@ trait ModuleFooterTrait
     /**
      * A footer, to be added at the bottom of every page.
      *
+     * @param Tree|null $tree
+     *
      * @return string
      */
-    public function getFooter(): string
+    public function getFooter(?Tree $tree): string
     {
         return '';
     }

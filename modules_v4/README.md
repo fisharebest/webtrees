@@ -1,16 +1,16 @@
 # THIRD-PARTY MODULES
 
 Many webtrees functions are provided by “modules”.
-Modules allows you to add additional features to webtrees.
+Modules allows you to add additional features to webtrees and modify existing features.
 
 ## Installing and uninstalling modules
 
 A module is a folder containing a file called `module.php`.
 There may be other files in the folder.
 
-To install a module, copy its folder to here.
+To install a module, copy its folder to `modules_v4`.
 
-To uninstall it, delete its folder from here.
+To uninstall it, delete its folder from `modules_v4`.
 
 Note that module names (i.e. their folder names) must not contain
 spaces or the characters `.`, `[` and `]`.
@@ -72,7 +72,7 @@ Look at the functions and comments in `app/ModuleCustomTrait.php`.
 ## Available interfaces
 
 Custom modules *must* implement `ModuleCustomInterface` interface.
-They *may* implement one or more of the following
+They *may* implement one or more of the following interfaces:
 
 * `ModuleAnalyticsInterface` - adds a tracking/analytics provider.
 * `ModuleBlockInterface` - adds a block to the home pages.
@@ -85,11 +85,16 @@ They *may* implement one or more of the following
 * `ModuleTabInterface` - adds a tab to the individual pages.
 * `ModuleThemeInterface` - adds a theme (this interface is still being developed).
 
-For each interface that you implement, you must also use the corresponding trait.
-If you don't do this, your module may break whenever the interface is updated.
+For each module interface that you implement, you must also use the corresponding trait.
+If you don't do this, your module may break whenever the module interface is updated.
 
 Where possible, the interfaces won't change - however new methods may be added
 and existing methods may be deprecated.
+
+Modules may also implement the following interfaces, which allow them to integrate
+more deeply into the application.
+
+* `MiddlewareInterface` - allows a module to intercept the HTTP request/response cycle.
 
 ## How to extend/modify an existing modules
 
@@ -102,6 +107,9 @@ use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
 use Fisharebest\Webtrees\Module\PedigreeChartModule;
 
+/**
+ * Creating an anoymous class will prevent conflicts with other custom modules.
+ */
 return new class extends PedigreeChartModule implements ModuleCustomInterface {
     use ModuleCustomTrait;
     
@@ -114,6 +122,67 @@ return new class extends PedigreeChartModule implements ModuleCustomInterface {
     }
     
     // Change the default layout...
-    public const DEFAULT_ORIENTATION = self::OLDEST_AT_TOP;
+    public const DEFAULT_ORIENTATION = self::ORIENTATION_DOWN;
+};
+```
+
+## Type-hinting dependencies
+
+webtrees uses the “Dependency Injection” pattern extensively.  This is a system for
+automatically generating objects.  The advantages over using `new SomeClass()` are
+
+* Easier testing - you can pass "dummy" objects to your class.
+* Run-time resolution - you can request an Interface, and webtrees will find a specific instance for you.
+
+Note that you cannot type-hint the following objects, as they are not created
+until after the modules. 
+
+* other modules
+* interfaces, such as `UserInterface` (the current user)
+* the current tree `Tree` or objects that depend on it (`Statistics`)
+as these objects are not created until after the module is created.
+
+Instead, you can fetch these items when they are needed from the "application container" using:
+``` $user = app()->make('UserInterface')```
+
+```php
+<?php 
+use Fisharebest\Webtrees\Module\AbstractModule;
+use Fisharebest\Webtrees\Module\ModuleCustomInterface;
+use Fisharebest\Webtrees\Module\ModuleCustomTrait;
+use Fisharebest\Webtrees\Services\TimeoutService;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+/**
+ * Creating an anoymous class will prevent conflicts with other custom modules.
+ */
+return new class extends AbstractModule implements ModuleCustomInterface {
+    use ModuleCustomTrait;
+    
+    /** @var TimeoutService */
+    private $timeout_service;
+    
+    /**
+     * @param TimeoutService $timeout_service
+     */
+    public function __construct(TimeoutService $timeout_service)
+    {
+        $this->timeout_service = $timeout_service;   
+    }
+
+    /**
+     * Methods that are called in response to HTTP requests use
+     * dependency-injection.  You'll almost certainly need the request
+     * object.  The restrictions on the constructor do not apply here.
+     * 
+     * @param Request $requests
+     * 
+     * @return Response
+     */
+    public function getFooBarAction(Request $request): Response
+    {
+        return new Response('');    
+    }
 };
 ```

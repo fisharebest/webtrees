@@ -45,13 +45,15 @@ class ColorsTheme extends CloudsTheme
     /**
      * Generate a list of items for the user menu.
      *
+     * @param Tree|null $tree
+     *
      * @return Menu[]
      */
-    public function secondaryMenu(): array
+    public function userMenu(?Tree $tree): array
     {
         return array_filter([
-            $this->menuPendingChanges(),
-            $this->menuMyPages(),
+            $this->menuPendingChanges($tree),
+            $this->menuMyPages($tree),
             $this->menuThemes(),
             $this->menuPalette(),
             $this->menuLanguages(),

@@ -84,9 +84,9 @@ table {
  * |           |       +---wt-header-search-field
  * |           |       +---wt-header-search-button
  * |           +---wt-secondary-navigation
- * |           |   +---wt-secondary-menu
+ * |           |   +---wt-user-menu
  * |           +---wt-primary-navigation
- * |               +---wt-primary-menu
+ * |               +---wt-genealogy-menu
  * +---wt-main-wrapper
  * |   +---wt-main-container
  * |       +---wt-main-content
@@ -150,11 +150,11 @@ table {
 	white-space: nowrap;
 }
 
-.wt-secondary-menu {
+.wt-user-menu {
 	flex-wrap: nowrap;
 }
 
-.wt-secondary-menu .nav-link {
+.wt-user-menu .nav-link {
 	padding: 0.5rem;
 }
 
@@ -169,11 +169,11 @@ table {
 	border-bottom: 2px solid #aaa;
 }
 
-.wt-primary-menu {
+.wt-genealogy-menu {
 	justify-content: center;
 }
 
-.wt-primary-menu .nav-link {
+.wt-genealogy-menu .nav-link {
 	padding: 0.5rem;
 }
 

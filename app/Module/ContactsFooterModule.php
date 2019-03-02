@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
@@ -34,12 +33,6 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
     /** @var Request */
     protected $request;
 
-    /** @var Tree|null */
-    protected $tree;
-
-    /** @var User */
-    protected $user;
-
     /**
      * @var UserService
      */
@@ -48,15 +41,11 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
     /**
      * Dependency injection.
      *
-     * @param Tree|null     $tree
-     * @param UserInterface $user
-     * @param Request       $request
-     * @param UserService   $user_service
+     * @param Request     $request
+     * @param UserService $user_service
      */
-    public function __construct(?Tree $tree, UserInterface $user, Request $request, UserService $user_service)
+    public function __construct(Request $request, UserService $user_service)
     {
-        $this->tree         = $tree;
-        $this->user         = $user;
         $this->request      = $request;
         $this->user_service = $user_service;
     }
@@ -96,16 +85,18 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
     /**
      * A footer, to be added at the bottom of every page.
      *
+     * @param Tree|null $tree
+     *
      * @return string
      */
-    public function getFooter(): string
+    public function getFooter(?Tree $tree): string
     {
-        if ($this->tree === null) {
+        if ($tree === null) {
             return '';
         }
 
-        $contact_user   = $this->user_service->find((int) $this->tree->getPreference('CONTACT_USER_ID'));
-        $webmaster_user = $this->user_service->find((int) $this->tree->getPreference('WEBMASTER_USER_ID'));
+        $contact_user   = $this->user_service->find((int) $tree->getPreference('CONTACT_USER_ID'));
+        $webmaster_user = $this->user_service->find((int) $tree->getPreference('WEBMASTER_USER_ID'));
 
         if ($contact_user instanceof User && $contact_user === $webmaster_user) {
             return view('modules/contact-links/footer', [

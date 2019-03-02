@@ -36,31 +36,28 @@ trait ModuleThemeTrait
     /** @var  Request */
     protected $request;
 
-    /** @var Tree|null */
-    protected $tree;
-
     /**
      * @param Request   $request
-     * @param Tree|null $tree The current tree (if there is one).
      */
-    public function __construct(Request $request, ?Tree $tree)
+    public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->tree    = $tree;
     }
 
     /**
      * Add markup to the secondary menu.
      *
+     * @param Tree|null $tree
+     *
      * @return string
      */
-    public function formatSecondaryMenu(): string
+    public function formatUserMenu(?Tree $tree): string
     {
         return
-            '<ul class="nav wt-secondary-menu">' .
-            implode('', array_map(function (Menu $menu): string {
-                return $this->formatSecondaryMenuItem($menu);
-            }, $this->secondaryMenu())) .
+            '<ul class="nav wt-user-menu">' .
+            implode('', array_map(function (Menu $menu) use ($tree): string {
+                return $this->formatUserMenuItem($menu);
+            }, $this->userMenu($tree))) .
             '</ul>';
     }
 
@@ -71,7 +68,7 @@ trait ModuleThemeTrait
      *
      * @return string
      */
-    public function formatSecondaryMenuItem(Menu $menu): string
+    public function formatUserMenuItem(Menu $menu): string
     {
         return $menu->bootstrap4();
     }
@@ -238,7 +235,7 @@ trait ModuleThemeTrait
     public function individualBoxMenuCharts(Individual $individual): array
     {
         $menus = [];
-        foreach (app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $this->tree, Auth::user()) as $chart) {
+        foreach (app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $individual->tree, Auth::user()) as $chart) {
             $menu = $chart->chartBoxMenu($individual);
             if ($menu) {
                 $menus[] = $menu;
@@ -282,16 +279,18 @@ trait ModuleThemeTrait
     /**
      * Generate a menu item to change the blocks on the current (index.php) page.
      *
+     * @param Tree $tree
+     *
      * @return Menu|null
      */
-    public function menuChangeBlocks()
+    public function menuChangeBlocks(Tree $tree)
     {
         if (Auth::check() && $this->request->get('route') === 'user-page') {
-            return new Menu(I18N::translate('Customize this page'), route('user-page-edit', ['ged' => $this->tree->name()]), 'menu-change-blocks');
+            return new Menu(I18N::translate('Customize this page'), route('user-page-edit', ['ged' => $tree->name()]), 'menu-change-blocks');
         }
 
-        if (Auth::isManager($this->tree) && $this->request->get('route') === 'tree-page') {
-            return new Menu(I18N::translate('Customize this page'), route('tree-page-edit', ['ged' => $this->tree->name()]), 'menu-change-blocks');
+        if (Auth::isManager($tree) && $this->request->get('route') === 'tree-page') {
+            return new Menu(I18N::translate('Customize this page'), route('tree-page-edit', ['ged' => $tree->name()]), 'menu-change-blocks');
         }
 
         return null;
@@ -300,15 +299,17 @@ trait ModuleThemeTrait
     /**
      * Generate a menu item for the control panel.
      *
+     * @param Tree $tree
+     *
      * @return Menu|null
      */
-    public function menuControlPanel()
+    public function menuControlPanel(Tree $tree)
     {
         if (Auth::isAdmin()) {
             return new Menu(I18N::translate('Control panel'), route('admin-control-panel'), 'menu-admin');
         }
 
-        if (Auth::isManager($this->tree)) {
+        if (Auth::isManager($tree)) {
             return new Menu(I18N::translate('Control panel'), route('admin-control-panel-manager'), 'menu-admin');
         }
 
@@ -391,11 +392,13 @@ trait ModuleThemeTrait
     /**
      * A link to the user's individual record (individual.php).
      *
+     * @param Tree $tree
+     *
      * @return Menu|null
      */
-    public function menuMyIndividualRecord()
+    public function menuMyIndividualRecord(Tree $tree)
     {
-        $record = Individual::getInstance($this->tree->getUserPreference(Auth::user(), 'gedcomid'), $this->tree);
+        $record = Individual::getInstance($tree->getUserPreference(Auth::user(), 'gedcomid'), $tree);
 
         if ($record) {
             return new Menu(I18N::translate('My individual record'), $record->url(), 'menu-myrecord');
@@ -407,28 +410,32 @@ trait ModuleThemeTrait
     /**
      * A link to the user's personal home page.
      *
+     * @param Tree $tree
+     *
      * @return Menu
      */
-    public function menuMyPage(): Menu
+    public function menuMyPage(Tree $tree): Menu
     {
-        return new Menu(I18N::translate('My page'), route('user-page', ['ged' => $this->tree->name()]), 'menu-mypage');
+        return new Menu(I18N::translate('My page'), route('user-page', ['ged' => $tree->name()]), 'menu-mypage');
     }
 
     /**
      * A menu for the user's personal pages.
      *
+     * @param Tree|null $tree
+     *
      * @return Menu|null
      */
-    public function menuMyPages()
+    public function menuMyPages(?Tree $tree)
     {
-        if (Auth::id() && $this->tree !== null) {
+        if ($tree instanceof Tree && Auth::id()) {
             return new Menu(I18N::translate('My pages'), '#', 'menu-mymenu', [], array_filter([
-                $this->menuMyPage(),
-                $this->menuMyIndividualRecord(),
-                $this->menuMyPedigree(),
+                $this->menuMyPage($tree),
+                $this->menuMyIndividualRecord($tree),
+                $this->menuMyPedigree($tree),
                 $this->menuMyAccount(),
-                $this->menuControlPanel(),
-                $this->menuChangeBlocks(),
+                $this->menuControlPanel($tree),
+                $this->menuChangeBlocks($tree),
             ]));
         }
 
@@ -438,13 +445,15 @@ trait ModuleThemeTrait
     /**
      * A link to the user's individual record.
      *
+     * @param Tree $tree
+     *
      * @return Menu|null
      */
-    public function menuMyPedigree()
+    public function menuMyPedigree(Tree $tree)
     {
-        $gedcomid = $this->tree->getUserPreference(Auth::user(), 'gedcomid');
+        $gedcomid = $tree->getUserPreference(Auth::user(), 'gedcomid');
 
-        $pedigree_chart = app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $this->tree, Auth::user())
+        $pedigree_chart = app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
             ->filter(function (ModuleInterface $module): bool {
                 return $module instanceof PedigreeChartModule;
             });
@@ -454,7 +463,7 @@ trait ModuleThemeTrait
                 I18N::translate('My pedigree'),
                 route('pedigree', [
                     'xref' => $gedcomid,
-                    'ged'  => $this->tree->name(),
+                    'ged'  => $tree->name(),
                 ]),
                 'menu-mypedigree'
             );
@@ -466,13 +475,15 @@ trait ModuleThemeTrait
     /**
      * Create a pending changes menu.
      *
+     * @param Tree|null $tree
+     *
      * @return Menu|null
      */
-    public function menuPendingChanges()
+    public function menuPendingChanges(?Tree $tree)
     {
-        if ($this->pendingChangesExist()) {
+        if ($tree instanceof Tree && $tree->hasPendingEdit() && Auth::isModerator($tree)) {
             $url = route('show-pending', [
-                'ged' => $this->tree ? $this->tree->name() : '',
+                'ged' => $tree->name(),
                 'url' => $this->request->getRequestUri(),
             ]);
 
@@ -523,38 +534,34 @@ trait ModuleThemeTrait
     }
 
     /**
-     * Are there any pending changes for us to approve?
-     *
-     * @return bool
-     */
-    public function pendingChangesExist(): bool
-    {
-        return $this->tree && $this->tree->hasPendingEdit() && Auth::isModerator($this->tree);
-    }
-
-    /**
      * Generate a list of items for the main menu.
+     *
+     * @param Tree|null $tree
      *
      * @return Menu[]
      */
-    public function primaryMenu(): array
+    public function genealogyMenu(?Tree $tree): array
     {
-        return app(ModuleService::class)->findByComponent(ModuleMenuInterface::class, $this->tree, Auth::user())
-            ->map(function (ModuleMenuInterface $menu): ?Menu {
-                return $menu->getMenu($this->tree);
+        if ($tree === null) {
+            return [];
+        }
+
+        return app(ModuleService::class)->findByComponent(ModuleMenuInterface::class, $tree, Auth::user())
+            ->map(function (ModuleMenuInterface $menu) use ($tree): ?Menu {
+                return $menu->getMenu($tree);
             })
             ->filter()
             ->all();
     }
 
     /**
-     * Create the primary menu.
+     * Create the genealogy menu.
      *
      * @param Menu[] $menus
      *
      * @return string
      */
-    public function primaryMenuContent(array $menus): string
+    public function genealogyMenuContent(array $menus): string
     {
         return implode('', array_map(function (Menu $menu): string {
             return $menu->bootstrap4();
@@ -564,13 +571,15 @@ trait ModuleThemeTrait
     /**
      * Generate a list of items for the user menu.
      *
+     * @param Tree|null $tree
+     *
      * @return Menu[]
      */
-    public function secondaryMenu(): array
+    public function userMenu(?Tree $tree): array
     {
         return array_filter([
-            $this->menuPendingChanges(),
-            $this->menuMyPages(),
+            $this->menuPendingChanges($tree),
+            $this->menuMyPages($tree),
             $this->menuThemes(),
             $this->menuLanguages(),
             $this->menuLogin(),

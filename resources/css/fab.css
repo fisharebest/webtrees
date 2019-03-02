@@ -84,9 +84,9 @@ table {
  * |           |       +---wt-header-search-field
  * |           |       +---wt-header-search-button
  * |           +---wt-secondary-navigation
- * |           |   +---wt-secondary-menu
+ * |           |   +---wt-user-menu
  * |           +---wt-primary-navigation
- * |               +---wt-primary-menu
+ * |               +---wt-genealogy-menu
  * +---wt-main-wrapper
  * |   +---wt-main-container
  * |       +---wt-main-content
@@ -149,20 +149,20 @@ table {
 	white-space: nowrap;
 }
 
-.wt-secondary-menu {
+.wt-user-menu {
 	flex-wrap: nowrap;
 }
 
-.wt-secondary-menu .nav-link {
+.wt-user-menu .nav-link {
 	display: inline-block;
 	padding: 0.5rem;
 }
 
-.wt-secondary-menu .nav-item::after {
+.wt-user-menu .nav-item::after {
 	content: "|";
 }
 
-.wt-secondary-menu .dropdown-toggle::after {
+.wt-user-menu .dropdown-toggle::after {
 	display: none;
 }
 
@@ -172,21 +172,21 @@ table {
 	background-color: #eee;
 }
 
-.wt-primary-menu {
+.wt-genealogy-menu {
 	justify-content: center;
 }
 
-.wt-primary-menu .dropdown-toggle::after {
+.wt-genealogy-menu .dropdown-toggle::after {
 	display: none;
 }
 
-.wt-primary-menu .nav-link {
+.wt-genealogy-menu .nav-link {
 	white-space: nowrap;
 	display: inline-block;
 	padding: 0.5rem;
 }
 
-.wt-primary-menu .nav-item + .nav-item::before {
+.wt-genealogy-menu .nav-item + .nav-item::before {
 	content: "|";
 }
 

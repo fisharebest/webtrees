@@ -29,6 +29,7 @@ use League\Flysystem\Adapter\Local;
 use League\Flysystem\Cached\CachedAdapter;
 use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -80,10 +81,10 @@ class UpgradeController extends AbstractAdminController
     /**
      * AdminUpgradeController constructor.
      *
-     * @param Filesystem     $filesystem
-     * @param UpgradeService $upgrade_service
+     * @param FilesystemInterface $filesystem
+     * @param UpgradeService      $upgrade_service
      */
-    public function __construct(Filesystem $filesystem, UpgradeService $upgrade_service)
+    public function __construct(FilesystemInterface $filesystem, UpgradeService $upgrade_service)
     {
         $this->filesystem      = $filesystem;
         $this->upgrade_service = $upgrade_service;

@@ -22,7 +22,7 @@
 	color: #fff;
 }
 
-.wt-primary-menu, .btn-primary:hover {
+.wt-genealogy-menu, .btn-primary:hover {
 	background: #7be000;
 }
 
@@ -57,7 +57,7 @@
 }
 
 /* Light Text */
-.secondary-menu li a {
+.user-menu li a {
 	color: #fff;
 }
 

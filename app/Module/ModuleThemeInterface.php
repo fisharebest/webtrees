@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Interface ModuleThemelInterface - Classes and libraries for module system
@@ -104,16 +105,20 @@ interface ModuleThemeInterface extends ModuleInterface
     /**
      * Generate a list of items for the main menu.
      *
+     * @param Tree|null $tree
+     *
      * @return Menu[]
      */
-    public function primaryMenu(): array;
+    public function genealogyMenu(?Tree $tree): array;
 
     /**
      * Generate a list of items for the user menu.
      *
+     * @param Tree|null $tree
+     *
      * @return Menu[]
      */
-    public function secondaryMenu(): array;
+    public function userMenu(?Tree $tree): array;
 
     /**
      * A list of CSS files to include for this page.

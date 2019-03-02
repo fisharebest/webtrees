@@ -17,18 +17,21 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Closure;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Http\Middleware\MiddlewareInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Class HitCountFooterModule - show the popular sites in the footer.
+ * Class HitCountFooterModule - show the number of page hits in the footer.
  */
-class HitCountFooterModule extends AbstractModule implements ModuleFooterInterface
+class HitCountFooterModule extends AbstractModule implements ModuleFooterInterface, MiddlewareInterface
 {
     use ModuleFooterTrait;
 
@@ -45,56 +48,8 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
         'user-page'  => 'index.php',
     ];
 
-    /** @var Request */
-    protected $request;
-
-    /** @var Tree|null */
-    protected $tree;
-
-    /** @var User */
-    protected $user;
-
-    /** @var int */
+    /** @var int Count of visits to the current page */
     protected $page_hits = 0;
-
-    /**
-     * Dependency injection.
-     *
-     * @param Tree|null     $tree
-     * @param UserInterface $user
-     * @param Request       $request
-     */
-    public function __construct(?Tree $tree, UserInterface $user, Request $request)
-    {
-        $this->tree    = $tree;
-        $this->user    = $user;
-        $this->request = $request;
-
-        if ($this->tree !== null && $this->tree->getPreference('SHOW_COUNTER')) {
-            $route = $request->get('route');
-
-            $page_name = self::PAGE_NAMES[$route] ?? '';
-
-            switch ($route) {
-                case 'family':
-                case 'individual':
-                case 'media':
-                case 'note':
-                case 'repository':
-                case 'source':
-                    $this->page_hits = $this->countHit($page_name, $request->get('xref', ''));
-                    break;
-
-                case 'tree-page':
-                    $this->page_hits = $this->countHit($page_name, 'gedcom:' . $this->tree->id());
-                    break;
-
-                case 'user-page':
-                    $this->page_hits = $this->countHit($page_name, 'user:' . $this->user->id());
-                    break;
-            }
-        }
-    }
 
     /**
      * How should this module be labelled on tabs, footers, etc.?
@@ -131,11 +86,13 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
     /**
      * A footer, to be added at the bottom of every page.
      *
+     * @param Tree|null $tree
+     *
      * @return string
      */
-    public function getFooter(): string
+    public function getFooter(?Tree $tree): string
     {
-        if ($this->tree === null || $this->page_hits === 0) {
+        if ($this->page_hits === 0) {
             return '';
         }
 
@@ -149,30 +106,25 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
     /**
      * Increment the page count.
      *
+     * @param Tree   $tree
      * @param string $page
      * @param string $parameter
      *
      * @return int
      */
-    protected function countHit($page, $parameter): int
+    protected function countHit(Tree $tree, string $page, string $parameter): int
     {
-        if ($this->tree === null) {
-            return 0;
-        }
-
-        $gedcom_id = $this->tree->id();
-
         // Don't increment the counter while we stay on the same page.
         if (
-            Session::get('last_gedcom_id') === $gedcom_id &&
+            Session::get('last_gedcom_id') === $tree->id() &&
             Session::get('last_page_name') === $page &&
             Session::get('last_page_parameter') === $parameter
         ) {
-            return Session::get('last_count');
+            return (int) Session::get('last_count');
         }
 
         $count = (int) DB::table('hit_counter')
-            ->where('gedcom_id', '=', $this->tree->id())
+            ->where('gedcom_id', '=', $tree->id())
             ->where('page_name', '=', $page)
             ->where('page_parameter', '=', $parameter)
             ->value('page_count');
@@ -180,18 +132,58 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
         $count++;
 
         DB::table('hit_counter')->updateOrInsert([
-            'gedcom_id'      => $this->tree->id(),
+            'gedcom_id'      => $tree->id(),
             'page_name'      => $page,
             'page_parameter' => $parameter,
         ], [
             'page_count' => $count,
         ]);
 
-        Session::put('last_gedcom_id', $gedcom_id);
+        Session::put('last_gedcom_id', $tree->id());
         Session::put('last_page_name', $page);
         Session::put('last_page_parameter', $parameter);
         Session::put('last_count', $count);
 
         return $count;
     }
+
+    /**
+     * @param Request $request
+     * @param Closure $next
+     *
+     * @return Response
+     */
+    public function handle(Request $request, Closure $next): Response
+    {
+        $tree = app()->make(Tree::class);
+
+        if ($tree instanceof Tree && $tree->getPreference('SHOW_COUNTER')) {
+            $route = $request->get('route');
+
+            $page_name = self::PAGE_NAMES[$route] ?? '';
+
+            switch ($route) {
+                case 'family':
+                case 'individual':
+                case 'media':
+                case 'note':
+                case 'repository':
+                case 'source':
+                    $this->page_hits = $this->countHit($tree, $page_name, $request->get('xref', ''));
+                    break;
+
+                case 'tree-page':
+                    $this->page_hits = $this->countHit($tree, $page_name, 'gedcom:' . $tree->id());
+                    break;
+
+                case 'user-page':
+                    $user = app()->make(UserInterface::class);
+                    $this->page_hits = $this->countHit($tree, $page_name, 'user:' . $user->id());
+                    break;
+            }
+        }
+
+        return $next($request);
+    }
+
 }

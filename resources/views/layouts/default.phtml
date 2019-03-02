@@ -92,8 +92,8 @@
                     <?php endif ?>
 
                     <div class="col wt-secondary-navigation">
-                        <ul class="nav wt-secondary-menu">
-                            <?php foreach (app()->make(ModuleThemeInterface::class)->secondaryMenu() as $menu) : ?>
+                        <ul class="nav wt-user-menu">
+                            <?php foreach (app()->make(ModuleThemeInterface::class)->userMenu($tree) as $menu) : ?>
                                 <?= $menu->bootstrap4() ?>
                             <?php endforeach ?>
                         </ul>
@@ -101,8 +101,8 @@
 
                     <?php if ($tree !== null) : ?>
                     <nav class="col wt-primary-navigation">
-                        <ul class="nav wt-primary-menu">
-                            <?php foreach (app()->make(ModuleThemeInterface::class)->primaryMenu($individual ?? $tree->significantIndividual(Auth::user())) as $menu) : ?>
+                        <ul class="nav wt-genealogy-menu">
+                            <?php foreach (app()->make(ModuleThemeInterface::class)->genealogyMenu($tree) as $menu) : ?>
                                 <?= $menu->bootstrap4() ?>
                             <?php endforeach ?>
                         </ul>
@@ -130,7 +130,7 @@
         </main>
 
         <footer class="wt-footers container d-print-none">
-            <?= app()->make(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(function (ModuleFooterInterface $module) use ($tree): string { return app()->dispatch($module, 'getFooter'); })->implode('') ?>
+            <?= app()->make(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(function (ModuleFooterInterface $module) use ($tree): string { return $module->getFooter($tree); })->implode('') ?>
         </footer>
 
         <script src="<?= e(asset('js/vendor.min.js')) ?>"></script>

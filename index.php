@@ -15,8 +15,6 @@
  */
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Exceptions\Handler;
@@ -44,6 +42,7 @@ use League\Flysystem\Adapter\Local;
 use League\Flysystem\Cached\CachedAdapter;
 use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -64,6 +63,9 @@ DebugBar::init(class_exists('\\DebugBar\\StandardDebugBar'));
 // Use an array cache for database calls, etc.
 app()->instance('cache.array', new Repository(new ArrayStore()));
 
+// Start the timer.
+app()->instance(TimeoutService::class, new TimeoutService(microtime(true)));
+
 // Extract the request parameters.
 $request = Request::createFromGlobals();
 app()->instance(Request::class, $request);
@@ -79,8 +81,6 @@ $request_uri = $request->getSchemeAndHttpHost() . $request->getRequestUri();
 // Remove any PHP script name and parameters.
 $base_uri = preg_replace('/[^\/]+\.php(\?.*)?$/', '', $request_uri);
 define('WT_BASE_URL', $base_uri);
-
-DebugBar::startMeasure('init database');
 
 // Connect to the database
 try {
@@ -101,12 +101,17 @@ try {
         throw new Exception('Invalid config file: ' . Webtrees::CONFIG_FILE);
     }
 
+    DebugBar::startMeasure('init database');
+
     // Read the connection settings and create the database
     Database::connect($database_config);
 
     // Update the database schema, if necessary.
     app()->make(MigrationService::class)
         ->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
+
+    DebugBar::stopMeasure('init database');
+
 } catch (PDOException $exception) {
     defined('WT_DATA_DIR') || define('WT_DATA_DIR', 'data/');
     I18N::init();
@@ -132,8 +137,6 @@ try {
 
     return;
 }
-
-DebugBar::stopMeasure('init database');
 
 // The config.ini.php file must always be in a fixed location.
 // Other user files can be stored elsewhere...
@@ -164,43 +167,41 @@ try {
     View::share('tree', $tree);
 
     app()->instance(Tree::class, $tree);
-    app()->instance(UserInterface::class, Auth::user());
-    app()->instance(TimeoutService::class, new TimeoutService(microtime(true)));
-    app()->instance(Filesystem::class, $filesystem);
+    app()->instance(FilesystemInterface::class, $filesystem);
 
     $middleware_stack = [
-        CheckForMaintenanceMode::class,
-        UseSession::class,
-        UseLocale::class,
+        app()->make(CheckForMaintenanceMode::class),
+        app()->make(UseSession::class),
+        app()->make(UseLocale::class),
     ];
 
     if (class_exists(DebugBar::class)) {
-        $middleware_stack[] = DebugBarData::class;
+        $middleware_stack[] = app()->make(DebugBarData::class);
     }
 
     if ($request->getMethod() === Request::METHOD_GET) {
-        $middleware_stack[] = Housekeeping::class;
-        $middleware_stack[] = UseTheme::class;
+        $middleware_stack[] = app()->make(Housekeeping::class);
+        $middleware_stack[] = app()->make(UseTheme::class);
     }
 
     if ($request->getMethod() === Request::METHOD_POST) {
-        $middleware_stack[] = UseTransaction::class;
-        $middleware_stack[] = CheckCsrf::class;
+        $middleware_stack[] = app()->make(UseTransaction::class);
+        $middleware_stack[] = app()->make(CheckCsrf::class);
     }
 
     // Allow modules to provide middleware.
     foreach (app()->make(ModuleService::class)->findByInterface(MiddlewareInterface::class) as $middleware) {
-        $middleware_stack[] = get_class($middleware);
+        $middleware_stack[] = $middleware;
     }
 
-    // We build the "onion" from the inside outwards, and some middleware (e.g. UseTheme) is dependant on others (e.g. UseLocale)
+    // We build the "onion" from the inside outwards, and some middlewares are dependant on others.
     $middleware_stack = array_reverse($middleware_stack);
 
     // Apply the middleware using the "onion" pattern.
-    $pipeline = array_reduce($middleware_stack, function (Closure $next, string $middleware): Closure {
+    $pipeline = array_reduce($middleware_stack, function (Closure $next, MiddlewareInterface $middleware): Closure {
         // Create a closure to apply the middleware.
         return function (Request $request) use ($middleware, $next): Response {
-            return app()->make($middleware)->handle($request, $next);
+            return $middleware->handle($request, $next);
         };
     }, function (Request $request): Response {
         // Load the route and routing table.
