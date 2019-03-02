@@ -69,10 +69,11 @@ class EmbeddedVariablesTest extends TestCase
      */
     public function testAllEmbeddedVariables(): void
     {
-        global $tree; // For Date::display()
-
         $tree       = $this->importTree('demo.ged');
         $statistics = new Statistics(new ModuleService(), $tree, new UserService());
+
+        // For Date::display()
+        app()->instance(Tree::class, $tree);
 
         // As visitor
         $text = $statistics->embedTags('#getAllTagsTable#');
@@ -92,11 +93,11 @@ class EmbeddedVariablesTest extends TestCase
      */
     public function testAllEmbeddedVariablesWithEmptyTree(): void
     {
-        global $tree; // For Date::display()
-
-        $tree = Tree::create('name', 'title');
-        $tree->deleteGenealogyData(false);
+        $tree       = Tree::create('name', 'title');
         $statistics = new Statistics(new ModuleService(), $tree, new UserService());
+
+        // For Date::display()
+        app()->instance(Tree::class, $tree);
 
         // As visitor
         $text = $statistics->embedTags('#getAllTagsTable#');
