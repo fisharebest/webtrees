@@ -47,6 +47,7 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Ramsey\Uuid\Uuid;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class FunctionsEdit - common functions for editing
@@ -460,9 +461,8 @@ class FunctionsEdit
      */
     public static function addSimpleTag(Tree $tree, $tag, $upperlevel = '', $label = ''): string
     {
-        // @TODO $xref is no longer set (from edit_interface).
-        global $request;
-        $xref = $request->get('xref', '');
+        $request = app()->make(Request::class);
+        $xref    = $request->get('xref', '');
 
         // Some form fields need access to previous form fields.
         static $previous_ids = [
