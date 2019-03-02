@@ -31,12 +31,6 @@ use function uasort;
  */
 class ColorsTheme extends CloudsTheme
 {
-    protected const PERSON_BOX_CLASSES = [
-        'M' => 'person_box',
-        'F' => 'person_boxF',
-        'U' => 'person_boxNN',
-    ];
-
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *
