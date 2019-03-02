@@ -55,7 +55,7 @@ trait ModuleThemeTrait
     {
         return
             '<ul class="nav wt-user-menu">' .
-            implode('', array_map(function (Menu $menu) use ($tree): string {
+            implode('', array_map(function (Menu $menu): string {
                 return $this->formatUserMenuItem($menu);
             }, $this->userMenu($tree))) .
             '</ul>';
