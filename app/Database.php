@@ -83,6 +83,7 @@ class Database
         Builder::macro('whereContains', function ($column, string $search, string $boolean = 'and'): Builder {
             $search = strtr($search, ['\\' => '\\\\', '%' => '\\%', '_' => '\\_', ' ' => '%']);
 
+            /** @psalm-suppress InvalidScope - The scope of $this depends on its use, not its definition */
             return $this->where($column, 'LIKE', '%' . $search . '%', $boolean);
         });
     }
