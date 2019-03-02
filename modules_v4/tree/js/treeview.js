@@ -305,7 +305,6 @@ TreeViewHandler.prototype.expandBox = function (box, event) {
 		collapsed = box.clone();
 		bc.append(collapsed.addClass("collapsedContent").css("display", "none"));
 		// we add a waiting image at the right side of the box
-		// TODO : manage rtl (left side instead of right in rtl mode)
 		var loading_image = this.loadingImage.find("img").clone().addClass("tv_box_loading").css("display", "block");
 		box.prepend(loading_image);
 		tv.updating = true;
