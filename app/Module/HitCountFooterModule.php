@@ -185,5 +185,4 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
 
         return $next($request);
     }
-
 }
