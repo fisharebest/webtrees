@@ -157,7 +157,7 @@ class ServerCheckService
         }, $disable_functions);
 
         if (in_array($function, $disable_functions)) {
-            $errors[] = I18N::translate('The PHP function “%1$s” is disabled.', $function . '()');
+            return I18N::translate('The PHP function “%1$s” is disabled.', $function . '()');
         }
 
         return '';
