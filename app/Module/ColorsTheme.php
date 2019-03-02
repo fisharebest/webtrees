@@ -106,7 +106,8 @@ class ColorsTheme extends CloudsTheme
     /**
      * @return string
      */
-    private function palette(): string {
+    private function palette(): string
+    {
         $palettes = $this->palettes();
 
         // If we've selected a new palette, and we are logged in, set this value as a default.
@@ -146,7 +147,8 @@ class ColorsTheme extends CloudsTheme
     /**
      * @return string[]
      */
-    private function palettes(): array {
+    private function palettes(): array
+    {
         $palettes = [
             /* I18N: The name of a colour-scheme */
             'aquamarine'       => I18N::translate('Aqua Marine'),

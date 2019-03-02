@@ -111,7 +111,6 @@ try {
         ->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
 
     DebugBar::stopMeasure('init database');
-
 } catch (PDOException $exception) {
     defined('WT_DATA_DIR') || define('WT_DATA_DIR', 'data/');
     I18N::init();
