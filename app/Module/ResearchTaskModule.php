@@ -80,7 +80,8 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
 
         extract($cfg, EXTR_OVERWRITE);
 
-        $end_jd = $show_future ? 99999999 : unixtojd(Carbon::now()->timestamp);
+        $end_date = $show_future ? Carbon::maxValue() : Carbon::now();
+        $end_jd   = unixtojd($end_date->timestamp);
 
         $individuals = $this->individualsWithTasks($tree, $end_jd);
         $families    = $this->familiesWithTasks($tree, $end_jd);

@@ -482,7 +482,7 @@ class CalendarController extends AbstractBaseController
     private function applyFilter(array $facts, string $filterof, string $filtersx): array
     {
         $filtered      = [];
-        $hundred_years = unixtojd(Carbon::now()->timestamp) - 36525;
+        $hundred_years = unixtojd(Carbon::now()->subYears(100)->timestamp);
         foreach ($facts as $fact) {
             $record = $fact->record();
             if ($filtersx) {
