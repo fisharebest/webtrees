@@ -36,11 +36,13 @@ class CensusColumnGivenNameInitial extends AbstractCensusColumn implements Censu
     {
         foreach ($individual->getAllNames() as $name) {
             $given = $name['givn'];
-            if (strpos($given, ' ') === false) {
+            $space_pos = strpos($given, ' ');
+
+            if ($space_pos === false) {
                 return $given;
             }
 
-            return substr($given, 0, strpos($given, ' ') + 2);
+            return substr($given, 0, $space_pos + 2);
         }
 
         return '';
