@@ -172,8 +172,8 @@ class Place
                 'ged'    => $this->tree->name(),
             ]);
         } else {
-            //TODO: should we be allowed to return null here?
-            return \Fisharebest\Webtrees\Html::url('index.php', []);
+            // The place-list module is disabled...
+            return '#';
         }
     }
 
