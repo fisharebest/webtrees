@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Illuminate\Container\Container;
+use ReflectionClass;
 use ReflectionMethod;
 use ReflectionParameter;
 use function array_map;
@@ -47,12 +48,22 @@ class Application extends Container
     /**
      * @param array $parameters
      *
-     * @return array
+     * @return mixed[]
      */
     private function makeParameters(array $parameters): array
     {
         return array_map(function (ReflectionParameter $parameter) {
-            return $this->make($parameter->getClass()->name);
+            $class = $parameter->getClass();
+
+            if ($class instanceof ReflectionClass) {
+                return $this->make($class->getName());
+            }
+
+            if ($parameter->isDefaultValueAvailable()) {
+                return $parameter->getDefaultValue();
+            }
+
+            return null;
         }, $parameters);
     }
 }
