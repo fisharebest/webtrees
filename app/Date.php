@@ -256,9 +256,8 @@ class Date
      */
     public function display($url = false, $date_format = null, $convert_calendars = true)
     {
-        // @TODO, This is set in index.php - but it is not safe to rely on globals.
-        // We need a new DateFormatterService class
-        global $tree;
+        // Do we need a new DateFormatterService class?
+        $tree = app()->make(Tree::class);
 
         $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
 

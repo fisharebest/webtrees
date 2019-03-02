@@ -24,25 +24,20 @@ use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\DebugBarData;
 use Fisharebest\Webtrees\Http\Middleware\Housekeeping;
 use Fisharebest\Webtrees\Http\Middleware\MiddlewareInterface;
+use Fisharebest\Webtrees\Http\Middleware\SetPhpLimits;
+use Fisharebest\Webtrees\Http\Middleware\UseFilesystem;
 use Fisharebest\Webtrees\Http\Middleware\UseLocale;
 use Fisharebest\Webtrees\Http\Middleware\UseSession;
 use Fisharebest\Webtrees\Http\Middleware\UseTheme;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
+use Fisharebest\Webtrees\Http\Middleware\UseTree;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
-use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Cache\ArrayStore;
 use Illuminate\Cache\Repository;
-use League\Flysystem\Adapter\Local;
-use League\Flysystem\Cached\CachedAdapter;
-use League\Flysystem\Cached\Storage\Memory;
-use League\Flysystem\Filesystem;
-use League\Flysystem\FilesystemInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -70,11 +65,6 @@ app()->instance(TimeoutService::class, new TimeoutService(microtime(true)));
 $request = Request::createFromGlobals();
 app()->instance(Request::class, $request);
 
-// Dummy value, until we have created our first tree.
-app()->bind(Tree::class, function () {
-    return null;
-});
-
 // Calculate the base URL, so we can generate absolute URLs.
 $request_uri = $request->getSchemeAndHttpHost() . $request->getRequestUri();
 
@@ -94,24 +84,6 @@ try {
 
         return;
     }
-
-    $database_config = parse_ini_file(Webtrees::CONFIG_FILE);
-
-    if ($database_config === false) {
-        throw new Exception('Invalid config file: ' . Webtrees::CONFIG_FILE);
-    }
-
-    DebugBar::startMeasure('init database');
-
-    // Read the connection settings and create the database
-    Database::connect($database_config);
-
-    // Update the database schema, if necessary.
-    app()->make(MigrationService::class)
-        ->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
-
-    DebugBar::stopMeasure('init database');
-
 } catch (PDOException $exception) {
     defined('WT_DATA_DIR') || define('WT_DATA_DIR', 'data/');
     I18N::init();
@@ -138,55 +110,40 @@ try {
     return;
 }
 
-// The config.ini.php file must always be in a fixed location.
-// Other user files can be stored elsewhere...
-define('WT_DATA_DIR', realpath(Site::getPreference('INDEX_DIRECTORY', 'data/')) . DIRECTORY_SEPARATOR);
-
-$filesystem = new Filesystem(new CachedAdapter(new Local(WT_DATA_DIR), new Memory()));
-
-// Request more resources - if we can/want to
-$memory_limit = Site::getPreference('MEMORY_LIMIT');
-if ($memory_limit !== '' && strpos(ini_get('disable_functions'), 'ini_set') === false) {
-    ini_set('memory_limit', $memory_limit);
-}
-$max_execution_time = Site::getPreference('MAX_EXECUTION_TIME');
-if ($max_execution_time !== '' && strpos(ini_get('disable_functions'), 'set_time_limit') === false) {
-    set_time_limit((int) $max_execution_time);
-}
-
 try {
-    // Most requests will need the current tree and user.
-    $tree = Tree::findByName($request->get('ged')) ?? null;
+    $database_config = parse_ini_file(Webtrees::CONFIG_FILE);
 
-    // No tree specified/available?  Choose one.
-    if ($tree === null && $request->getMethod() === Request::METHOD_GET) {
-        $tree = Tree::findByName(Site::getPreference('DEFAULT_GEDCOM')) ?? array_values(Tree::getAll())[0] ?? null;
+    if ($database_config === false) {
+        throw new Exception('Invalid config file: ' . Webtrees::CONFIG_FILE);
     }
 
-    // Most layouts will require a tree for the page header/footer
-    View::share('tree', $tree);
+    // Read the connection settings and create the database
+    Database::connect($database_config);
 
-    app()->instance(Tree::class, $tree);
-    app()->instance(FilesystemInterface::class, $filesystem);
+    // Update the database schema, if necessary.
+    app()->make(MigrationService::class)->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
 
     $middleware_stack = [
-        app()->make(CheckForMaintenanceMode::class),
-        app()->make(UseSession::class),
-        app()->make(UseLocale::class),
+        CheckForMaintenanceMode::class,
+        SetPhpLimits::class,
+        UseFilesystem::class,
+        UseSession::class,
+        UseTree::class,
+        UseLocale::class,
     ];
 
     if (class_exists(DebugBar::class)) {
-        $middleware_stack[] = app()->make(DebugBarData::class);
+        $middleware_stack[] = DebugBarData::class;
     }
 
     if ($request->getMethod() === Request::METHOD_GET) {
-        $middleware_stack[] = app()->make(Housekeeping::class);
-        $middleware_stack[] = app()->make(UseTheme::class);
+        $middleware_stack[] = Housekeeping::class;
+        $middleware_stack[] = UseTheme::class;
     }
 
     if ($request->getMethod() === Request::METHOD_POST) {
-        $middleware_stack[] = app()->make(UseTransaction::class);
-        $middleware_stack[] = app()->make(CheckCsrf::class);
+        $middleware_stack[] = UseTransaction::class;
+        $middleware_stack[] = CheckCsrf::class;
     }
 
     // Allow modules to provide middleware.
@@ -196,6 +153,11 @@ try {
 
     // We build the "onion" from the inside outwards, and some middlewares are dependant on others.
     $middleware_stack = array_reverse($middleware_stack);
+
+    // Create the middleware *after* loading the modules, to give modules the opportunity to replace middleware.
+    $middleware_stack = array_map(function ($middleware): MiddlewareInterface {
+        return $middleware instanceof MiddlewareInterface ? $middleware : app()->make($middleware);
+    }, $middleware_stack);
 
     // Apply the middleware using the "onion" pattern.
     $pipeline = array_reduce($middleware_stack, function (Closure $next, MiddlewareInterface $middleware): Closure {

@@ -126,16 +126,17 @@ return new class extends PedigreeChartModule implements ModuleCustomInterface {
 };
 ```
 
-## Type-hinting dependencies
+## Dependency Injection
 
 webtrees uses the “Dependency Injection” pattern extensively.  This is a system for
 automatically generating objects.  The advantages over using `new SomeClass()` are
 
 * Easier testing - you can pass "dummy" objects to your class.
 * Run-time resolution - you can request an Interface, and webtrees will find a specific instance for you.
+* Can swap implementations at runtime.
 
-Note that you cannot type-hint the following objects, as they are not created
-until after the modules. 
+Note that you cannot type-hint the following objects in the constructor, as they are not
+created until after the modules. 
 
 * other modules
 * interfaces, such as `UserInterface` (the current user)
@@ -164,11 +165,17 @@ return new class extends AbstractModule implements ModuleCustomInterface {
     private $timeout_service;
     
     /**
+     * This module needs the timeout service.
+     * 
      * @param TimeoutService $timeout_service
      */
     public function __construct(TimeoutService $timeout_service)
     {
         $this->timeout_service = $timeout_service;   
+        
+        // You can replace core webtrees classes by providing alternate implementations:
+        app()->bind('name of webtrees class', 'name of replacement class');
+        app()->bind('name of webtrees class', new \stdClass());
     }
 
     /**
@@ -176,13 +183,13 @@ return new class extends AbstractModule implements ModuleCustomInterface {
      * dependency-injection.  You'll almost certainly need the request
      * object.  The restrictions on the constructor do not apply here.
      * 
-     * @param Request $requests
+     * @param Request $request
      * 
      * @return Response
      */
     public function getFooBarAction(Request $request): Response
     {
-        return new Response('');    
+        return new Response($request->get('foo'));    
     }
 };
 ```
