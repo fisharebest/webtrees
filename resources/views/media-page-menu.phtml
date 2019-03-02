@@ -10,7 +10,7 @@
     </button>
     <div class="dropdown-menu dropdown-menu-right wt-page-menu-items" aria-labelledby="page-menu">
 
-        <?php if (false && app()->make(ModuleService::class)->findByInterface(CensusAssistantModule::class)) : ?>
+        <?php if (false && app(ModuleService::class)->findByInterface(CensusAssistantModule::class)) : ?>
             <a class="dropdown-item menu-obje-link" href="#" onclick="return ilinkitem('<?= e($record->xref()) ?>','manage','<?= e($record->tree()->name()) ?>');">
                 <?= I18N::translate('Manage the links') ?>
             </a>

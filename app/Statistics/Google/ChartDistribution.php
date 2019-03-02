@@ -69,7 +69,7 @@ class ChartDistribution
     public function __construct(Tree $tree)
     {
         $this->tree                 = $tree;
-        $this->theme                = app()->make(ModuleThemeInterface::class);
+        $this->theme                = app(ModuleThemeInterface::class);
         $this->country_service      = new CountryService();
         $this->individualRepository = new IndividualRepository($tree);
         $this->placeRepository      = new PlaceRepository($tree);

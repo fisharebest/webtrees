@@ -34,7 +34,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testList(): void
     {
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'list');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -45,7 +45,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListAnalytics(): void
     {
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listAnalytics');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -56,7 +56,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListBlocks(): void
     {
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listBlocks');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -67,7 +67,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListCharts(): void
     {
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listCharts');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -78,7 +78,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListFooters(): void
     {
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listFooters');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -89,7 +89,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListHistory(): void
     {
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listHistory');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -100,7 +100,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListLanguages(): void
     {
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listLanguages');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -111,7 +111,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListMenus(): void
     {
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listMenus');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -122,7 +122,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListReports(): void
     {
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listReports');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -133,7 +133,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListSidebars(): void
     {
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listSidebars');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -144,7 +144,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListTabs(): void
     {
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listTabs');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -155,7 +155,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListThemes(): void
     {
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listThemes');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -167,7 +167,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdate(): void
     {
         Tree::create('name', 'title');
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'update');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -179,7 +179,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateAnalytics(): void
     {
         Tree::create('name', 'title');
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateAnalytics');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -191,7 +191,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateBlocks(): void
     {
         Tree::create('name', 'title');
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateBlocks');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -203,7 +203,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateCharts(): void
     {
         Tree::create('name', 'title');
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateCharts');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -215,7 +215,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateFooters(): void
     {
         Tree::create('name', 'title');
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateFooters');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -227,7 +227,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateHistory(): void
     {
         Tree::create('name', 'title');
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateHistory');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -239,7 +239,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateLanguages(): void
     {
         Tree::create('name', 'title');
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateLanguages');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -251,7 +251,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateMenus(): void
     {
         Tree::create('name', 'title');
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateMenus');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -263,7 +263,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateReports(): void
     {
         Tree::create('name', 'title');
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateReports');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -275,7 +275,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateSidebars(): void
     {
         Tree::create('name', 'title');
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateSidebars');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -287,7 +287,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateTabs(): void
     {
         Tree::create('name', 'title');
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateTabs');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -299,7 +299,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateThemes(): void
     {
         Tree::create('name', 'title');
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateThemes');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -310,7 +310,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testDeleteModuleSettings(): void
     {
-        $controller = app()->make(ModuleController::class);
+        $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'deleteModuleSettings');
 
         $this->assertInstanceOf(Response::class, $response);

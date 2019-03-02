@@ -77,7 +77,7 @@ try {
         define('WT_DATA_DIR', 'data/');
 
         /** @var SetupController $controller */
-        $controller = app()->make(SetupController::class);
+        $controller = app(SetupController::class);
         $response   = $controller->setup($request);
         $response->prepare($request)->send();
 
@@ -94,7 +94,7 @@ try {
     Database::connect($database_config);
 
     // Update the database schema, if necessary.
-    app()->make(MigrationService::class)->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
+    app(MigrationService::class)->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
 
     $middleware_stack = [
         CheckForMaintenanceMode::class,
@@ -120,7 +120,7 @@ try {
     }
 
     // Allow modules to provide middleware.
-    foreach (app()->make(ModuleService::class)->findByInterface(MiddlewareInterface::class) as $middleware) {
+    foreach (app(ModuleService::class)->findByInterface(MiddlewareInterface::class) as $middleware) {
         $middleware_stack[] = $middleware;
     }
 
@@ -129,7 +129,7 @@ try {
 
     // Create the middleware *after* loading the modules, to give modules the opportunity to replace middleware.
     $middleware_stack = array_map(function ($middleware): MiddlewareInterface {
-        return $middleware instanceof MiddlewareInterface ? $middleware : app()->make($middleware);
+        return $middleware instanceof MiddlewareInterface ? $middleware : app($middleware);
     }, $middleware_stack);
 
     // Apply the middleware using the "onion" pattern.
@@ -148,7 +148,7 @@ try {
         [$controller_name, $action] = explode('@', $controller_action);
         $controller_class = '\\Fisharebest\\Webtrees\\Http\\Controllers\\' . $controller_name;
 
-        $controller = app()->make($controller_class);
+        $controller = app($controller_class);
 
         return app()->dispatch($controller, $action);
     });

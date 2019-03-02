@@ -144,7 +144,7 @@ created until after the modules.
 as these objects are not created until after the module is created.
 
 Instead, you can fetch these items when they are needed from the "application container" using:
-``` $user = app()->make('UserInterface')```
+``` $user = app(UserInterface::class)```
 
 ```php
 <?php 

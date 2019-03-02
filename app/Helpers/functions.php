@@ -25,7 +25,7 @@ use Illuminate\Cache\Repository;
  *
  * @param string|null $abstract
  *
- * @return Application|Repository|mixed
+ * @return mixed
  */
 function app(string $abstract = null)
 {

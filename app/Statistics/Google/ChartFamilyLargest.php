@@ -52,7 +52,7 @@ class ChartFamilyLargest
     public function __construct(Tree $tree)
     {
         $this->tree          = $tree;
-        $this->theme         = app()->make(ModuleThemeInterface::class);
+        $this->theme         = app(ModuleThemeInterface::class);
         $this->color_service = new ColorService();
     }
 

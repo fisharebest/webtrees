@@ -45,7 +45,7 @@ class TreeUserTest extends TestCase
         $this->assertSame('title', $user->realName());
         $this->assertSame('', $user->userName());
 
-        app()->make('cache.array')->flush();
+        app('cache.array')->flush();
         $tree->setPreference('WEBTREES_EMAIL', 'foo@example.com');
         $this->assertSame('foo@example.com', $user->email());
     }

@@ -7,7 +7,7 @@
         <?php if ($favorite->favorite_type === 'URL') : ?>
             <a href="<?= e($favorite->url) ?>"><b><?= e($favorite->title) ?></b></a>
         <?php elseif ($favorite->record instanceof Individual) : ?>
-            <?= app()->make(ModuleThemeInterface::class)->individualBoxLarge($favorite->record) ?>
+            <?= app(ModuleThemeInterface::class)->individualBoxLarge($favorite->record) ?>
         <?php elseif ($favorite->record !== null) : ?>
             <?= $favorite->record->formatList() ?>
         <?php endif ?>

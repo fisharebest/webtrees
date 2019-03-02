@@ -84,7 +84,7 @@ class UseTheme implements MiddlewareInterface
         yield $themes->get(Session::get('theme_id', ''));
 
         // Default for tree
-        $tree = app()->make(Tree::class);
+        $tree = app(Tree::class);
 
         if ($tree instanceof Tree) {
             yield $themes->get($tree->getPreference('THEME_DIR'));
@@ -94,6 +94,6 @@ class UseTheme implements MiddlewareInterface
         yield $themes->get(Site::getPreference('THEME_DIR'));
 
         // Default for application
-        yield app()->make(WebtreesTheme::class);
+        yield app(WebtreesTheme::class);
     }
 }

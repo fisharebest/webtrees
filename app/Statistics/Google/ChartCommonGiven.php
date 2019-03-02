@@ -41,7 +41,7 @@ class ChartCommonGiven
      */
     public function __construct()
     {
-        $this->theme         = app()->make(ModuleThemeInterface::class);
+        $this->theme         = app(ModuleThemeInterface::class);
         $this->color_service = new ColorService();
     }
 

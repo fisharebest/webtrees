@@ -461,7 +461,7 @@ class FunctionsEdit
      */
     public static function addSimpleTag(Tree $tree, $tag, $upperlevel = '', $label = ''): string
     {
-        $request = app()->make(Request::class);
+        $request = app(Request::class);
         $xref    = $request->get('xref', '');
 
         // Some form fields need access to previous form fields.

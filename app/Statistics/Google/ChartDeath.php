@@ -57,7 +57,7 @@ class ChartDeath
     public function __construct(Tree $tree)
     {
         $this->tree            = $tree;
-        $this->theme           = app()->make(ModuleThemeInterface::class);
+        $this->theme           = app(ModuleThemeInterface::class);
         $this->century_service = new CenturyService();
         $this->color_service   = new ColorService();
     }

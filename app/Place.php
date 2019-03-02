@@ -74,7 +74,7 @@ class Place
      */
     public function id(): int
     {
-        return app()->make('cache.array')->rememberForever(__CLASS__ . __METHOD__ . $this->place_name, function () {
+        return app('cache.array')->rememberForever(__CLASS__ . __METHOD__ . $this->place_name, function () {
             // The "top-level" place won't exist in the database.
             if ($this->parts->isEmpty()) {
                 return 0;

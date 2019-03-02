@@ -182,8 +182,8 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
     public function chart(Individual $individual, int $generations, int $book_size, bool $show_spouse): Response
     {
         $this->box = (object) [
-            'width'  => app()->make(ModuleThemeInterface::class)->parameter('chart-box-x'),
-            'height' => app()->make(ModuleThemeInterface::class)->parameter('chart-box-y'),
+            'width'  => app(ModuleThemeInterface::class)->parameter('chart-box-x'),
+            'height' => app(ModuleThemeInterface::class)->parameter('chart-box-y'),
         ];
 
         $this->show_spouse = $show_spouse;
@@ -487,7 +487,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
 
     private function printEmptyBox()
     {
-        echo app()->make(ModuleThemeInterface::class)->individualBoxEmpty();
+        echo app(ModuleThemeInterface::class)->individualBoxEmpty();
     }
 
     /**

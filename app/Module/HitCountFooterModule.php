@@ -155,7 +155,7 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $tree = app()->make(Tree::class);
+        $tree = app(Tree::class);
 
         if ($tree instanceof Tree && $tree->getPreference('SHOW_COUNTER')) {
             $route = $request->get('route');
@@ -177,7 +177,7 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
                     break;
 
                 case 'user-page':
-                    $user = app()->make(UserInterface::class);
+                    $user = app(UserInterface::class);
                     $this->page_hits = $this->countHit($tree, $page_name, 'user:' . $user->id());
                     break;
             }

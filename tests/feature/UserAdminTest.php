@@ -39,7 +39,7 @@ class UserAdminTest extends TestCase
         $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $controller = app()->make(UsersController::class);
+        $controller = app(UsersController::class);
         $response   = app()->dispatch($controller, 'data');
 
         $this->assertContains('AdminName', $response->getContent());
@@ -63,7 +63,7 @@ class UserAdminTest extends TestCase
 
         $request = new Request(['search' => ['value' => 'admin']]);
         app()->instance(Request::class, $request);
-        $controller = app()->make(UsersController::class);
+        $controller = app(UsersController::class);
         $response   = app()->dispatch($controller, 'data');
 
         $this->assertContains('AdminName', $response->getContent());
@@ -87,7 +87,7 @@ class UserAdminTest extends TestCase
 
         $request = new Request(['length' => 1]);
         app()->instance(Request::class, $request);
-        $controller = app()->make(UsersController::class);
+        $controller = app(UsersController::class);
         $response   = app()->dispatch($controller, 'data');
 
         $this->assertContains('AdminName', $response->getContent());
@@ -107,7 +107,7 @@ class UserAdminTest extends TestCase
 
         $request = new Request(['order' => [['column' => 2, 'dir' => 'asc']]]);
         app()->instance(Request::class, $request);
-        $controller = app()->make(UsersController::class);
+        $controller = app(UsersController::class);
         $response   = app()->dispatch($controller, 'data');
 
         $pos1 = strpos($response->getContent(), 'AdminName');
@@ -116,7 +116,7 @@ class UserAdminTest extends TestCase
 
         $request = new Request(['order' => [['column' => 2, 'dir' => 'desc']]]);
         app()->instance(Request::class, $request);
-        $controller = app()->make(UsersController::class);
+        $controller = app(UsersController::class);
         $response   = app()->dispatch($controller, 'data');
 
         $pos1 = strpos($response->getContent(), 'AdminName');

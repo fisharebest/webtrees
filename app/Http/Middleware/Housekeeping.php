@@ -89,7 +89,7 @@ class Housekeeping implements MiddlewareInterface
      */
     private function runHousekeeping()
     {
-        $data_filesystem = app()->make(FilesystemInterface::class);
+        $data_filesystem = app(FilesystemInterface::class);
         $root_filesystem = new Filesystem(new Local(WT_ROOT));
 
         // Clear files in the (user-specified) data folder - which might not be local files

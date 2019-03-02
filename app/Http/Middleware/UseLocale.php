@@ -41,7 +41,7 @@ class UseLocale implements MiddlewareInterface
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $tree = app()->make(Tree::class);
+        $tree = app(Tree::class);
 
         // Select a locale
         define('WT_LOCALE', I18N::init('', $tree));

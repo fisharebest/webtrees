@@ -153,7 +153,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         return new Response(view('modules/hourglass-chart/chart', [
             'descendants' => $descendants,
             'ancestors'   => $ancestors,
-            'bhalfheight' => (int) (app()->make(ModuleThemeInterface::class)->parameter('chart-box-y') / 2),
+            'bhalfheight' => (int) (app(ModuleThemeInterface::class)->parameter('chart-box-y') / 2),
             'module_name' => $this->name(),
         ]));
     }
@@ -275,21 +275,21 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
                 echo '</table>';
             }
             echo '</td>';
-            echo '<td class="myCharts" width="', app()->make(ModuleThemeInterface::class)->parameter('chart-box-x'), '">';
+            echo '<td class="myCharts" width="', app(ModuleThemeInterface::class)->parameter('chart-box-x'), '">';
         }
 
         // Print the descendency expansion arrow
         if ($generation == $generations) {
-            $tbwidth = app()->make(ModuleThemeInterface::class)->parameter('chart-box-x') + 16;
+            $tbwidth = app(ModuleThemeInterface::class)->parameter('chart-box-x') + 16;
             for ($j = $generation; $j < $generations; $j++) {
-                echo "<div style='width: ", $tbwidth, "px;'><br></div></td><td style='width:", app()->make(ModuleThemeInterface::class)->parameter('chart-box-x'), "px'>";
+                echo "<div style='width: ", $tbwidth, "px;'><br></div></td><td style='width:", app(ModuleThemeInterface::class)->parameter('chart-box-x'), "px'>";
             }
             $kcount = 0;
             foreach ($families as $family) {
                 $kcount += $family->numberOfChildren();
             }
             if ($kcount == 0) {
-                echo "</td><td style='width:", app()->make(ModuleThemeInterface::class)->parameter('chart-box-x'), "px'>";
+                echo "</td><td style='width:", app(ModuleThemeInterface::class)->parameter('chart-box-x'), "px'>";
             } else {
                 echo '<a href="#" title="' . I18N::translate('Children') . '" data-route="Descendants" data-xref="' .  e($pid) . '" data-spouses="' .  e($show_spouse) . '" data-tree="' .  e($individual->tree()->name()) . '">' . view('icons/arrow-left') . '</a>';
 
@@ -297,7 +297,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
                 if ($show_spouse) {
                     echo str_repeat('<br><br><br>', count($families));
                 }
-                echo "</td><td style='width:", app()->make(ModuleThemeInterface::class)->parameter('chart-box-x'), "px'>";
+                echo "</td><td style='width:", app(ModuleThemeInterface::class)->parameter('chart-box-x'), "px'>";
             }
         }
 
@@ -314,14 +314,14 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
             }
             //-- add offset divs to make things line up better
             if ($generation == $generations) {
-                echo "<tr><td colspan '2'><div style='height:", (app()->make(ModuleThemeInterface::class)->parameter('chart-box-y') / 4), 'px; width:', app()->make(ModuleThemeInterface::class)->parameter('chart-box-x'), "px;'><br></div>";
+                echo "<tr><td colspan '2'><div style='height:", (app(ModuleThemeInterface::class)->parameter('chart-box-y') / 4), 'px; width:', app(ModuleThemeInterface::class)->parameter('chart-box-x'), "px;'><br></div>";
             }
         }
         echo '</td></tr></table>';
 
         // For the root individual, print a down arrow that allows changing the root of tree
         if ($show_menu && $generation == 1) {
-            echo '<div class="text-center" id="childarrow" style="position:absolute; width:', app()->make(ModuleThemeInterface::class)->parameter('chart-box-x'), 'px;">';
+            echo '<div class="text-center" id="childarrow" style="position:absolute; width:', app(ModuleThemeInterface::class)->parameter('chart-box-x'), 'px;">';
             echo '<a href="#" title="' . I18N::translate('Family') . '" id="spouse-child-links">' . view('icons/arrow-down') . '</a>';
             echo '<div id="childbox">';
             echo '<table cellspacing="0" cellpadding="0" border="0" class="person_box"><tr><td> ';
@@ -421,12 +421,12 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         if ($family === null) {
             // Prints empty table columns for children w/o parents up to the max generation
             // This allows vertical line spacing to be consistent
-            echo '<table><tr><td> ' . app()->make(ModuleThemeInterface::class)->individualBoxEmpty() . '</td>';
+            echo '<table><tr><td> ' . app(ModuleThemeInterface::class)->individualBoxEmpty() . '</td>';
             echo '<td> ';
             // Recursively get the father’s family
             $this->printPersonPedigree($individual, $generation + 1, $generations, $show_spouse);
             echo '</td></tr>';
-            echo '<tr><td> ' . app()->make(ModuleThemeInterface::class)->individualBoxEmpty() . '</td>';
+            echo '<tr><td> ' . app(ModuleThemeInterface::class)->individualBoxEmpty() . '</td>';
             echo '<td> ';
             // Recursively get the mother’s family
             $this->printPersonPedigree($individual, $generation + 1, $generations, $show_spouse);
@@ -455,9 +455,9 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
                 if ($generation < $genoffset - 1) {
                     echo '<table>';
                     for ($i = $generation; $i < ((2 ** (($genoffset - 1) - $generation)) / 2) + 2; $i++) {
-                        echo app()->make(ModuleThemeInterface::class)->individualBoxEmpty();
+                        echo app(ModuleThemeInterface::class)->individualBoxEmpty();
                         echo '</tr>';
-                        echo app()->make(ModuleThemeInterface::class)->individualBoxEmpty();
+                        echo app(ModuleThemeInterface::class)->individualBoxEmpty();
                         echo '</tr>';
                     }
                     echo '</table>';

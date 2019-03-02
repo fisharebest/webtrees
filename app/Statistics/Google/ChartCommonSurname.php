@@ -49,7 +49,7 @@ class ChartCommonSurname
      */
     public function __construct(Tree $tree)
     {
-        $this->theme             = app()->make(ModuleThemeInterface::class);
+        $this->theme             = app(ModuleThemeInterface::class);
         $this->surname_tradition = $tree->getPreference('SURNAME_TRADITION');
         $this->color_service     = new ColorService();
     }

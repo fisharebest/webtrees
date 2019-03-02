@@ -203,7 +203,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
         $transparent = imagecolorallocate($image, 0, 0, 0);
         imagecolortransparent($image, $transparent);
 
-        $theme = app()->make(ModuleThemeInterface::class);
+        $theme = app(ModuleThemeInterface::class);
 
         $foreground = $this->imageColor($image, $theme->parameter('chart-font-color'));
 

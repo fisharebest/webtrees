@@ -178,7 +178,7 @@ class FunctionsPrintFacts
         echo '<th scope="row">';
 
         if ($tree->getPreference('SHOW_FACT_ICONS')) {
-            echo app()->make(ModuleThemeInterface::class)->icon($fact), ' ';
+            echo app(ModuleThemeInterface::class)->icon($fact), ' ';
         }
 
         switch ($fact->getTag()) {

@@ -502,7 +502,7 @@ trait ModuleThemeTrait
     {
         $themes = app(ModuleService::class)->findByInterface(ModuleThemeInterface::class);
 
-        $current_theme = app()->make(ModuleThemeInterface::class);
+        $current_theme = app(ModuleThemeInterface::class);
 
         if ($themes->count() > 1) {
             $submenus = $themes->map(function (ModuleThemeInterface $theme) use ($current_theme): Menu {

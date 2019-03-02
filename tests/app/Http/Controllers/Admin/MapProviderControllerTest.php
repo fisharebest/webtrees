@@ -33,7 +33,7 @@ class MapProviderControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMapProviderEdit(): void
     {
-        $controller = app()->make(MapProviderController::class);
+        $controller = app(MapProviderController::class);
         $response   = app()->dispatch($controller, 'mapProviderEdit');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -44,7 +44,7 @@ class MapProviderControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMapProviderSave(): void
     {
-        $controller = app()->make(MapProviderController::class);
+        $controller = app(MapProviderController::class);
         $response   = app()->dispatch($controller, 'mapProviderSave');
 
         $this->assertInstanceOf(Response::class, $response);

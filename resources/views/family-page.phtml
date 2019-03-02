@@ -31,7 +31,7 @@
 <div class="wt-page-content">
     <table id="family-table" class="w-100" role="presentation">
         <tr style="vertical-align:top;">
-            <td style="width: <?= app()->make(ModuleThemeInterface::class)->parameter('chart-box-x') + 30 ?>px;">
+            <td style="width: <?= app(ModuleThemeInterface::class)->parameter('chart-box-x') + 30 ?>px;">
                 <?php FunctionsCharts::printFamilyChildren($record) ?>
             </td>
             <td>

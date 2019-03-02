@@ -53,9 +53,9 @@ class FunctionsPrint
     public static function printPedigreePerson(Individual $person = null): string
     {
         if ($person instanceof Individual) {
-            return app()->make(ModuleThemeInterface::class)->individualBox($person);
+            return app(ModuleThemeInterface::class)->individualBox($person);
         } else {
-            return app()->make(ModuleThemeInterface::class)->individualBoxEmpty();
+            return app(ModuleThemeInterface::class)->individualBoxEmpty();
         }
     }
 

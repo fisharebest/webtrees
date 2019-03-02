@@ -68,7 +68,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
-        $statistics = app()->make(Statistics::class);
+        $statistics = app(Statistics::class);
 
         $num       = $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);

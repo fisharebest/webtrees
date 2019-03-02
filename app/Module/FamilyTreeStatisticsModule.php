@@ -70,7 +70,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
      */
     public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
-        $statistics = app()->make(Statistics::class);
+        $statistics = app(Statistics::class);
 
         $show_last_update     = $this->getBlockSetting($block_id, 'show_last_update', '1');
         $show_common_surnames = $this->getBlockSetting($block_id, 'show_common_surnames', '1');

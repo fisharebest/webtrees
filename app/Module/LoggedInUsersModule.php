@@ -80,7 +80,7 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
     public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
         /** @var Statistics $statistics */
-        $statistics = app()->make(Statistics::class);
+        $statistics = app(Statistics::class);
 
         $content = '<div class="logged_in_count">' . $statistics->usersLoggedInList() . '</div>';
 

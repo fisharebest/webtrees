@@ -100,7 +100,7 @@ class FunctionsCharts
      */
     public static function printFamilyParents(Family $family, int $sosa = 0, string $daboville = '', string $parid = '', string $gparid = '')
     {
-        $pbheight = app()->make(ModuleThemeInterface::class)->parameter('chart-box-y') + 14;
+        $pbheight = app(ModuleThemeInterface::class)->parameter('chart-box-y') + 14;
 
         $husb = $family->husband();
         if ($husb) {
@@ -309,7 +309,7 @@ class FunctionsCharts
         string $label = '',
         bool $show_cousins = false
     ) {
-        $bheight  = app()->make(ModuleThemeInterface::class)->parameter('chart-box-y');
+        $bheight  = app(ModuleThemeInterface::class)->parameter('chart-box-y');
         $pbheight = $bheight + 14;
         $children = $family->children();
         $numchil  = $children->count();
@@ -506,7 +506,7 @@ class FunctionsCharts
      */
     private static function printCousins(Family $family)
     {
-        $bheight   = app()->make(ModuleThemeInterface::class)->parameter('chart-box-y');
+        $bheight   = app(ModuleThemeInterface::class)->parameter('chart-box-y');
         $fchildren = $family->children();
         $kids      = $fchildren->count();
 

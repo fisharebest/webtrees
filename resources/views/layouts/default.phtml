@@ -49,18 +49,18 @@
         <meta name="msapplication-config" content="<?= e(asset('browserconfig.xml')) ?>">
 
         <link rel="stylesheet" href="<?= e(asset('css/vendor.min.css')) ?>">
-        <?php foreach (app()->make(ModuleThemeInterface::class)->stylesheets() as $stylesheet) : ?>
+        <?php foreach (app(ModuleThemeInterface::class)->stylesheets() as $stylesheet) : ?>
             <link rel="stylesheet" href="<?=  e($stylesheet) ?>">
         <?php endforeach ?>
 
         <?= View::stack('styles') ?>
 
-        <?= app()->make(ModuleService::class)->findByInterface(ModuleAnalyticsInterface::class)->filter(function (ModuleAnalyticsInterface $module): bool { return $module->analyticsCanShow(); })->map(function (ModuleAnalyticsInterface $module): string { return $module->analyticsSnippet($module->analyticsParameters()); })->implode('') ?>
+        <?= app(ModuleService::class)->findByInterface(ModuleAnalyticsInterface::class)->filter(function (ModuleAnalyticsInterface $module): bool { return $module->analyticsCanShow(); })->map(function (ModuleAnalyticsInterface $module): string { return $module->analyticsSnippet($module->analyticsParameters()); })->implode('') ?>
 
         <?= DebugBar::renderHead() ?>
     </head>
 
-    <body class="wt-global wt-theme-<?= e(app()->make(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(e(app()->make(Request::class)->get('route'))) ?>">
+    <body class="wt-global wt-theme-<?= e(app(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(e(app(Request::class)->get('route'))) ?>">
         <header class="wt-header-wrapper d-print-none">
             <div class="container wt-header-container">
                 <div class="row wt-header-content">
@@ -93,7 +93,7 @@
 
                     <div class="col wt-secondary-navigation">
                         <ul class="nav wt-user-menu">
-                            <?php foreach (app()->make(ModuleThemeInterface::class)->userMenu($tree) as $menu) : ?>
+                            <?php foreach (app(ModuleThemeInterface::class)->userMenu($tree) as $menu) : ?>
                                 <?= $menu->bootstrap4() ?>
                             <?php endforeach ?>
                         </ul>
@@ -102,7 +102,7 @@
                     <?php if ($tree !== null) : ?>
                     <nav class="col wt-primary-navigation">
                         <ul class="nav wt-genealogy-menu">
-                            <?php foreach (app()->make(ModuleThemeInterface::class)->genealogyMenu($tree) as $menu) : ?>
+                            <?php foreach (app(ModuleThemeInterface::class)->genealogyMenu($tree) as $menu) : ?>
                                 <?= $menu->bootstrap4() ?>
                             <?php endforeach ?>
                         </ul>
@@ -130,7 +130,7 @@
         </main>
 
         <footer class="wt-footers container d-print-none">
-            <?= app()->make(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(function (ModuleFooterInterface $module) use ($tree): string { return $module->getFooter($tree); })->implode('') ?>
+            <?= app(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(function (ModuleFooterInterface $module) use ($tree): string { return $module->getFooter($tree); })->implode('') ?>
         </footer>
 
         <script src="<?= e(asset('js/vendor.min.js')) ?>"></script>

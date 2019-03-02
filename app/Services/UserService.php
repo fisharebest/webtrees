@@ -324,9 +324,9 @@ class UserService
      */
     public function contactLink(User $contact_user): string
     {
-        $tree    = app()->make(Tree::class);
-        $user    = app()->make(UserInterface::class);
-        $request = app()->make(Request::class);
+        $tree    = app(Tree::class);
+        $user    = app(UserInterface::class);
+        $request = app(Request::class);
 
         if ($contact_user->getPreference('contactmethod') === 'mailto') {
             $url = 'mailto:' . $contact_user->email();

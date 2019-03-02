@@ -34,7 +34,7 @@ class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testIndex(): void
     {
-        $controller = app()->make(MediaController::class);
+        $controller = app(MediaController::class);
         $response   = app()->dispatch($controller, 'index');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -46,7 +46,7 @@ class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testDataLocal(): void
     {
         app()->instance(Request::class, new Request(['files' => 'local']));
-        $controller = app()->make(MediaController::class);
+        $controller = app(MediaController::class);
         $response   = app()->dispatch($controller, 'data');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -58,7 +58,7 @@ class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testDataExternal(): void
     {
         app()->instance(Request::class, new Request(['files' => 'external']));
-        $controller = app()->make(MediaController::class);
+        $controller = app(MediaController::class);
         $response   = app()->dispatch($controller, 'data');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -70,7 +70,7 @@ class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testDataUnused(): void
     {
         app()->instance(Request::class, new Request(['files' => 'unused']));
-        $controller = app()->make(MediaController::class);
+        $controller = app(MediaController::class);
         $response   = app()->dispatch($controller, 'data');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -81,7 +81,7 @@ class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testDelete(): void
     {
-        $controller = app()->make(MediaController::class);
+        $controller = app(MediaController::class);
         $response   = app()->dispatch($controller, 'delete');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -92,7 +92,7 @@ class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testUpload(): void
     {
-        $controller = app()->make(MediaController::class);
+        $controller = app(MediaController::class);
         $response   = app()->dispatch($controller, 'upload');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -103,7 +103,7 @@ class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testUploadAction(): void
     {
-        $controller = app()->make(MediaController::class);
+        $controller = app(MediaController::class);
         $response   = app()->dispatch($controller, 'uploadAction');
 
         $this->assertInstanceOf(Response::class, $response);

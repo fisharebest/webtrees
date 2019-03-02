@@ -82,8 +82,8 @@ class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
     public function analyticsSnippet(array $parameters): string
     {
         // Add extra dimensions (i.e. filtering categories)
-        $tree = app()->make(Tree::class);
-        $user = app()->make(UserInterface::class);
+        $tree = app(Tree::class);
+        $user = app(UserInterface::class);
 
         $parameters['dimensions'] = (object) [
             'dimension1' => $tree instanceof Tree ? $tree->name() : '-',

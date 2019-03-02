@@ -257,7 +257,7 @@ class Date
     public function display($url = false, $date_format = null, $convert_calendars = true)
     {
         // Do we need a new DateFormatterService class?
-        $tree = app()->make(Tree::class);
+        $tree = app(Tree::class);
 
         $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
 

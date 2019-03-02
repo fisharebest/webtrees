@@ -36,7 +36,7 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMapData(): void
     {
-        $controller = app()->make(LocationController::class);
+        $controller = app(LocationController::class);
         $response = app()->dispatch($controller, 'mapData');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -47,7 +47,7 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMapDataEdit(): void
     {
-        $controller = app()->make(LocationController::class);
+        $controller = app(LocationController::class);
         $response = app()->dispatch($controller, 'mapDataEdit');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -58,7 +58,7 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMapDataSave(): void
     {
-        $controller = app()->make(LocationController::class);
+        $controller = app(LocationController::class);
         $response = app()->dispatch($controller, 'mapDataSave');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -69,7 +69,7 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMapDataDelete(): void
     {
-        $controller = app()->make(LocationController::class);
+        $controller = app(LocationController::class);
         $response = app()->dispatch($controller, 'mapDataDelete');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -80,7 +80,7 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testExportLocations(): void
     {
-        $controller = app()->make(LocationController::class);
+        $controller = app(LocationController::class);
         $response = app()->dispatch($controller, 'exportLocations');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -91,7 +91,7 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testImportLocations(): void
     {
-        $controller = app()->make(LocationController::class);
+        $controller = app(LocationController::class);
         $response = app()->dispatch($controller, 'importLocations');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -106,7 +106,7 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
 
         app()->instance(Request::class, new Request([], [], [], [], ['localfile' => $csv]));
 
-        $controller = app()->make(LocationController::class);
+        $controller = app(LocationController::class);
         $response = app()->dispatch($controller, 'importLocationsAction');
 
         $this->assertInstanceOf(Response::class, $response);
@@ -119,7 +119,7 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
     {
         app()->instance(Tree::class, Tree::create('name', 'title'));
 
-        $controller = app()->make(LocationController::class);
+        $controller = app(LocationController::class);
         $response = app()->dispatch($controller, 'importLocationsFromTree');
 
         $this->assertInstanceOf(Response::class, $response);

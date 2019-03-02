@@ -275,7 +275,7 @@ class ModuleService
     {
         return Collection::make(self::CORE_MODULES)
             ->map(function (string $class, string $name): ModuleInterface {
-                $module = app()->make($class);
+                $module = app($class);
 
                 $module->setName($name);
 
