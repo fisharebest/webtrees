@@ -15,9 +15,6 @@
  */
 declare(strict_types=1);
 
-use Carbon\Carbon;
-use Fisharebest\Localization\Locale as WebtreesLocale;
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Database;
@@ -29,21 +26,20 @@ use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\DebugBarData;
 use Fisharebest\Webtrees\Http\Middleware\Housekeeping;
 use Fisharebest\Webtrees\Http\Middleware\MiddlewareInterface;
+use Fisharebest\Webtrees\Http\Middleware\UseLocale;
+use Fisharebest\Webtrees\Http\Middleware\UseSession;
+use Fisharebest\Webtrees\Http\Middleware\UseTheme;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module\ModuleThemeInterface;
-use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
-use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Cache\ArrayStore;
 use Illuminate\Cache\Repository;
-use Illuminate\Support\Collection;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Cached\CachedAdapter;
 use League\Flysystem\Cached\Storage\Memory;
@@ -155,20 +151,6 @@ if ($max_execution_time !== '' && strpos(ini_get('disable_functions'), 'set_time
     set_time_limit((int) $max_execution_time);
 }
 
-// Sessions
-Session::start();
-
-// Update the last-login time no more than once a minute.
-$next_session_update = Carbon::createFromTimestamp((int) Session::get('session_time_updates'))->addMinute();
-if ($next_session_update < Carbon::now()) {
-    $timestamp_now = Carbon::now()->timestamp;
-
-    if (Session::get('masquerade') === null) {
-        Auth::user()->setPreference('sessiontime', (string) $timestamp_now);
-    }
-    Session::put('session_time_updates', $timestamp_now);
-}
-
 try {
     // Most requests will need the current tree and user.
     $tree = Tree::findByName($request->get('ged')) ?? null;
@@ -178,67 +160,18 @@ try {
         $tree = Tree::findByName(Site::getPreference('DEFAULT_GEDCOM')) ?? array_values(Tree::getAll())[0] ?? null;
     }
 
-    // Select a locale
-    define('WT_LOCALE', I18N::init('', $tree));
-    Session::put('locale', WT_LOCALE);
-
     // Most layouts will require a tree for the page header/footer
     View::share('tree', $tree);
 
-    DebugBar::startMeasure('routing');
-
-    // Load the route and routing table.
-    $route  = $request->get('route');
-    $routes = require 'routes/web.php';
-
-    // Find the controller and action for the selected route
-    $controller_action = $routes[$request->getMethod() . ':' . $route] ?? 'ErrorController@noRouteFound';
-    [$controller_name, $action] = explode('@', $controller_action);
-    $controller_class = '\\Fisharebest\\Webtrees\\Http\\Controllers\\' . $controller_name;
-
     app()->instance(Tree::class, $tree);
     app()->instance(UserInterface::class, Auth::user());
-    app()->instance(LocaleInterface::class, WebtreesLocale::create(WT_LOCALE));
     app()->instance(TimeoutService::class, new TimeoutService(microtime(true)));
     app()->instance(Filesystem::class, $filesystem);
 
-    $controller = app()->make($controller_class);
-
-    DebugBar::stopMeasure('routing');
-
-    DebugBar::startMeasure('init theme');
-
-    /** @var Collection|ModuleThemeInterface[] $themes */
-    $themes = app()->make(ModuleService::class)->findByInterface(ModuleThemeInterface::class);
-
-    // Last theme used?
-    $theme = $themes->get(Session::get('theme_id', ''));
-
-    // Default for tree?
-    if ($theme === null && $tree instanceof Tree) {
-        $theme = $themes->get($tree->getPreference('THEME_DIR'));
-    }
-
-    // Default for site?
-    if ($theme === null) {
-        $theme = $themes->get(Site::getPreference('THEME_DIR'));
-    }
-
-    // Default
-    if ($theme === null) {
-        $theme = app()->make(WebtreesTheme::class);
-    }
-
-    // Bind this theme into the container
-    app()->instance(ModuleThemeInterface::class, $theme);
-
-    // Remember this setting
-    Session::put('theme_id', $theme->name());
-
-    DebugBar::stopMeasure('init theme');
-
     $middleware_stack = [
         CheckForMaintenanceMode::class,
+        UseSession::class,
+        UseLocale::class,
     ];
 
     if (class_exists(DebugBar::class)) {
@@ -247,6 +180,7 @@ try {
 
     if ($request->getMethod() === Request::METHOD_GET) {
         $middleware_stack[] = Housekeeping::class;
+        $middleware_stack[] = UseTheme::class;
     }
 
     if ($request->getMethod() === Request::METHOD_POST) {
@@ -256,8 +190,11 @@ try {
 
     // Allow modules to provide middleware.
     foreach (app()->make(ModuleService::class)->findByInterface(MiddlewareInterface::class) as $middleware) {
-        $middleware[] = $middleware;
+        $middleware_stack[] = get_class($middleware);
     }
+
+    // We build the "onion" from the inside outwards, and some middleware (e.g. UseTheme) is dependant on others (e.g. UseLocale)
+    $middleware_stack = array_reverse($middleware_stack);
 
     // Apply the middleware using the "onion" pattern.
     $pipeline = array_reduce($middleware_stack, function (Closure $next, string $middleware): Closure {
@@ -265,7 +202,18 @@ try {
         return function (Request $request) use ($middleware, $next): Response {
             return app()->make($middleware)->handle($request, $next);
         };
-    }, function (Request $request) use ($controller, $action): Response {
+    }, function (Request $request): Response {
+        // Load the route and routing table.
+        $route  = $request->get('route');
+        $routes = require 'routes/web.php';
+
+        // Find the controller and action for the selected route
+        $controller_action = $routes[$request->getMethod() . ':' . $route] ?? 'ErrorController@noRouteFound';
+        [$controller_name, $action] = explode('@', $controller_action);
+        $controller_class = '\\Fisharebest\\Webtrees\\Http\\Controllers\\' . $controller_name;
+
+        $controller = app()->make($controller_class);
+
         return app()->dispatch($controller, $action);
     });
 

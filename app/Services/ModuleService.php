@@ -373,8 +373,7 @@ class ModuleService
                     }
 
                     return $module;
-                })
-                ->sort($this->moduleSorter());
+                });
         });
     }
 
@@ -501,7 +500,7 @@ class ModuleService
      */
     public function findByComponent(string $interface, Tree $tree, UserInterface $user): Collection
     {
-        return $this->findByInterface($interface)
+        return $this->findByInterface($interface, false, true)
             ->filter(function (ModuleInterface $module) use ($interface, $tree, $user): bool {
                 return $module->accessLevel($tree, $interface) >= Auth::accessLevel($tree, $user);
             });
@@ -512,10 +511,11 @@ class ModuleService
      *
      * @param string $interface
      * @param bool   $include_disabled
+     * @param bool   $sort
      *
      * @return Collection|ModuleInterface[]
      */
-    public function findByInterface(string $interface, $include_disabled = false): Collection
+    public function findByInterface(string $interface, $include_disabled = false, $sort = false): Collection
     {
         $modules = $this->all()
             ->filter($this->interfaceFilter($interface))
@@ -533,9 +533,14 @@ class ModuleService
 
             case ModuleTabInterface::class:
                 return $modules->sort($this->tabSorter());
-        }
 
-        return $modules;
+            default:
+                if ($sort) {
+                    return $modules->sort($this->moduleSorter());
+                }
+
+                return $modules;
+        }
     }
 
     /**

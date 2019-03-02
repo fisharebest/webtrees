@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 /** @var Tree|null $tree */
+$tree = app()->make(Tree::class);
 
 $routes = [];
 
