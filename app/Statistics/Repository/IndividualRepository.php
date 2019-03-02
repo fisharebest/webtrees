@@ -1440,7 +1440,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         return DB::table('individuals')
             ->select(['i_id'])
             ->distinct()
-            ->join('link', function (JoinClause $join) {
+            ->join('link', function (JoinClause $join): void {
                 $join->on('i_id', '=', 'l_from')
                     ->on('i_file', '=', 'l_file');
             })
@@ -1459,7 +1459,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         return DB::table('families')
             ->select(['f_id'])
             ->distinct()
-            ->join('link', function (JoinClause $join) {
+            ->join('link', function (JoinClause $join): void {
                 $join->on('f_id', '=', 'l_from')
                     ->on('f_file', '=', 'l_file');
             })

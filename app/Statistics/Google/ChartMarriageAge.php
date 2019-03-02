@@ -64,11 +64,11 @@ class ChartMarriageAge
                 DB::raw('ROUND((' . $prefix . 'married.d_year + 49) / 100) AS century'),
                 DB::raw("'M' as sex")
             ])
-            ->join('families as fam', function (JoinClause $join) {
+            ->join('families as fam', function (JoinClause $join): void {
                 $join->on('fam.f_id', '=', 'married.d_gid')
                     ->on('fam.f_file', '=', 'married.d_file');
             })
-            ->join('dates as birth', function (JoinClause $join) {
+            ->join('dates as birth', function (JoinClause $join): void {
                 $join->on('birth.d_gid', '=', 'fam.f_husb')
                     ->on('birth.d_file', '=', 'fam.f_file');
             })
@@ -87,11 +87,11 @@ class ChartMarriageAge
                 DB::raw('ROUND((' . $prefix . 'married.d_year + 49) / 100) AS century'),
                 DB::raw("'F' as sex")
             ])
-            ->join('families as fam', function (JoinClause $join) {
+            ->join('families as fam', function (JoinClause $join): void {
                 $join->on('fam.f_id', '=', 'married.d_gid')
                     ->on('fam.f_file', '=', 'married.d_file');
             })
-            ->join('dates as birth', function (JoinClause $join) {
+            ->join('dates as birth', function (JoinClause $join): void {
                 $join->on('birth.d_gid', '=', 'fam.f_wife')
                     ->on('birth.d_file', '=', 'fam.f_file');
             })

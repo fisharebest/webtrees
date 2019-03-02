@@ -67,7 +67,7 @@ class Migration37 implements MigrationInterface
                 'multimedia_format',
                 'source_media_type',
                 'descriptive_title',
-            ], function (Builder $query) {
+            ], function (Builder $query): void {
                 $query->select([
                     'm_id',
                     'm_file',

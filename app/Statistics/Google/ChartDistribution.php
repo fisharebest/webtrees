@@ -225,7 +225,7 @@ class ChartDistribution
     {
         $query = DB::table('individuals')
             ->select(['i_gedcom'])
-            ->join('name', function (JoinClause $join) {
+            ->join('name', function (JoinClause $join): void {
                 $join->on('n_id', '=', 'i_id')
                     ->on('n_file', '=', 'i_file');
             })

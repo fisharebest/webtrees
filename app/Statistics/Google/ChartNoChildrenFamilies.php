@@ -62,7 +62,7 @@ class ChartNoChildrenFamilies
         $query = DB::table('families')
             ->selectRaw('ROUND((d_year + 49) / 100) AS century')
             ->selectRaw('COUNT(*) AS total')
-            ->join('dates', function (JoinClause $join) {
+            ->join('dates', function (JoinClause $join): void {
                 $join->on('d_file', '=', 'f_file')
                     ->on('d_gid', '=', 'f_id');
             })

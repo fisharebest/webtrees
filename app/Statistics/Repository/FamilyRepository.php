@@ -132,17 +132,17 @@ class FamilyRepository
     private function topTenGrandFamilyQuery(int $total): array
     {
         return DB::table('families')
-            ->join('link AS children', function (JoinClause $join) {
+            ->join('link AS children', function (JoinClause $join): void {
                 $join
                     ->on('children.l_from', '=', 'f_id')
                     ->on('children.l_file', '=', 'f_file')
                     ->where('children.l_type', '=', 'CHIL');
-            })->join('link AS mchildren', function (JoinClause $join) {
+            })->join('link AS mchildren', function (JoinClause $join): void {
                 $join
                     ->on('mchildren.l_file', '=', 'children.l_file')
                     ->on('mchildren.l_from', '=', 'children.l_to')
                     ->where('mchildren.l_type', '=', 'FAMS');
-            })->join('link AS gchildren', function (JoinClause $join) {
+            })->join('link AS gchildren', function (JoinClause $join): void {
                 $join
                     ->on('gchildren.l_file', '=', 'mchildren.l_file')
                     ->on('gchildren.l_from', '=', 'mchildren.l_to')

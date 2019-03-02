@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees;
 use Closure;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Collection;
 use stdClass;
 
 /**
@@ -176,18 +177,17 @@ class User implements UserInterface
      */
     public function getPreference(string $setting_name, string $default = ''): string
     {
-        $preferences = app('cache.array')->rememberForever('user_setting' . $this->user_id, function () {
+        $preferences = app('cache.array')->rememberForever('user_setting' . $this->user_id, function (): Collection {
             if ($this->user_id) {
                 return DB::table('user_setting')
                     ->where('user_id', '=', $this->user_id)
-                    ->pluck('setting_value', 'setting_name')
-                    ->all();
+                    ->pluck('setting_value', 'setting_name');
             } else {
-                return [];
+                return new Collection();
             }
         });
 
-        return $preferences[$setting_name] ?? $default;
+        return $preferences->get($setting_name) ?? $default;
     }
 
     /**

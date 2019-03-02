@@ -127,7 +127,7 @@ class PlaceRepository implements PlaceRepositoryInterface
         }
 
         $query = DB::table('places')
-            ->join('placelinks', function (JoinClause $join) {
+            ->join('placelinks', function (JoinClause $join): void {
                 $join->on('pl_file', '=', 'p_file')
                     ->on('pl_p_id', '=', 'p_id');
             })
@@ -149,12 +149,12 @@ class PlaceRepository implements PlaceRepositoryInterface
         }
 
         if ($what === 'INDI') {
-            $query->join('individuals', function (JoinClause $join) {
+            $query->join('individuals', function (JoinClause $join): void {
                 $join->on('pl_file', '=', 'i_file')
                     ->on('pl_gid', '=', 'i_id');
             });
         } elseif ($what === 'FAM') {
-            $query->join('families', function (JoinClause $join) {
+            $query->join('families', function (JoinClause $join): void {
                 $join->on('pl_file', '=', 'f_file')
                     ->on('pl_gid', '=', 'f_id');
             });

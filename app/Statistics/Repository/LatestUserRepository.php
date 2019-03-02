@@ -64,8 +64,8 @@ class LatestUserRepository implements LatestUserRepositoryInterface
 
         $user_id = DB::table('user as u')
             ->select(['u.user_id'])
-            ->leftJoin('user_setting as us', function (JoinClause $join) {
-                $join->on(function (Builder $query) {
+            ->leftJoin('user_setting as us', function (JoinClause $join): void {
+                $join->on(function (Builder $query): void {
                     $query->whereColumn('u.user_id', '=', 'us.user_id')
                         ->where('us.setting_name', '=', 'reg_timestamp');
                 });
