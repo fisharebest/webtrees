@@ -20,11 +20,13 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Exception;
 use Fisharebest\Localization\Locale;
 use Fisharebest\Localization\Locale\LocaleEnUs;
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager;
 use SQLite3;
@@ -339,17 +341,13 @@ class SetupController extends AbstractBaseController
             ->setPreference('verified_by_admin', '1');
 
         // Write the config file. We already checked that this would work.
-        $config_ini_php =
-            '; <' . '?php exit; ?' . '> DO NOT DELETE THIS LINE' . PHP_EOL .
-            'dbtype="' . addcslashes($data['dbtype'], '"') . '"' . PHP_EOL .
-            'dbhost="' . addcslashes($data['dbhost'], '"') . '"' . PHP_EOL .
-            'dbport="' . addcslashes($data['dbport'], '"') . '"' . PHP_EOL .
-            'dbuser="' . addcslashes($data['dbuser'], '"') . '"' . PHP_EOL .
-            'dbpass="' . addcslashes($data['dbpass'], '"') . '"' . PHP_EOL .
-            'dbname="' . addcslashes($data['dbname'], '"') . '"' . PHP_EOL .
-            'tblpfx="' . addcslashes($data['tblpfx'], '"') . '"' . PHP_EOL;
+        $config_ini_php = view('setup/config.ini', $data);
 
         file_put_contents(Webtrees::CONFIG_FILE, $config_ini_php);
+
+        // Login as the new user
+        Session::start();
+        Auth::login($admin);
     }
 
     /**

@@ -31,7 +31,6 @@ use Fisharebest\Webtrees\Http\Middleware\UseSession;
 use Fisharebest\Webtrees\Http\Middleware\UseTheme;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Fisharebest\Webtrees\Http\Middleware\UseTree;
-use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
@@ -72,11 +71,11 @@ $request_uri = $request->getSchemeAndHttpHost() . $request->getRequestUri();
 $base_uri = preg_replace('/[^\/]+\.php(\?.*)?$/', '', $request_uri);
 define('WT_BASE_URL', $base_uri);
 
-// Connect to the database
 try {
     // No config file? Run the setup wizard
     if (!file_exists(Webtrees::CONFIG_FILE)) {
         define('WT_DATA_DIR', 'data/');
+
         /** @var SetupController $controller */
         $controller = app()->make(SetupController::class);
         $response   = $controller->setup($request);
@@ -84,33 +83,7 @@ try {
 
         return;
     }
-} catch (PDOException $exception) {
-    defined('WT_DATA_DIR') || define('WT_DATA_DIR', 'data/');
-    I18N::init();
-    if ($exception->getCode() === 1045) {
-        // Error during connection?
-        $content = view('errors/database-connection', ['error' => $exception->getMessage()]);
-    } else {
-        // Error in a migration script?
-        $content = view('errors/database-error', ['error' => $exception->getMessage()]);
-    }
-    $html     = view('layouts/error', ['content' => $content]);
-    $response = new Response($html, Response::HTTP_SERVICE_UNAVAILABLE);
-    $response->prepare($request)->send();
 
-    return;
-} catch (Throwable $exception) {
-    defined('WT_DATA_DIR') || define('WT_DATA_DIR', 'data/');
-    I18N::init();
-    $content  = view('errors/database-connection', ['error' => $exception->getMessage()]);
-    $html     = view('layouts/error', ['content' => $content]);
-    $response = new Response($html, Response::HTTP_SERVICE_UNAVAILABLE);
-    $response->prepare($request)->send();
-
-    return;
-}
-
-try {
     $database_config = parse_ini_file(Webtrees::CONFIG_FILE);
 
     if ($database_config === false) {

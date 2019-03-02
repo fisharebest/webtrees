@@ -54,7 +54,10 @@ class UseTree implements MiddlewareInterface
         // Most layouts will require a tree for the page header/footer
         View::share('tree', $tree);
 
-        app()->instance(Tree::class, $tree);
+        // Need a closure, as the container does not allow you to bind null.
+        app()->bind(Tree::class, function() use ($tree): ?Tree {
+            return $tree;
+        });
 
         return $next($request);
     }
