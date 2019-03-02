@@ -17,8 +17,8 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Application;
+use Fisharebest\Webtrees\View;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Cache\Repository;
 
 /**
  * Get the IoC container, or fetch something from it.
@@ -105,5 +105,5 @@ function route(string $route, array $parameters = [], bool $absolute = true): st
  */
 function view(string $name, array $data = [])
 {
-    return \Fisharebest\Webtrees\View::make($name, $data);
+    return View::make($name, $data);
 }
