@@ -18,10 +18,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Closure;
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Exceptions\InternalServerErrorException;
-use Fisharebest\Webtrees\Exceptions\TooManySearchResultsException;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -47,19 +45,6 @@ use function mb_stripos;
  */
 class SearchService
 {
-    /** @var LocaleInterface */
-    private $locale;
-
-    /**
-     * SearchService constructor.
-     *
-     * @param LocaleInterface $locale
-     */
-    public function __construct(LocaleInterface $locale)
-    {
-        $this->locale = $locale;
-    }
-
     /**
      * @param Tree[]   $trees
      * @param string[] $search
@@ -108,7 +93,7 @@ class SearchService
             ->where('husb_name.n_type', '<>', '_MARNM');
 
         $prefix = DB::connection()->getTablePrefix();
-        $field  = DB::raw('(' . $prefix . 'husb_name.n_full || ' . $prefix . 'wife_name.n_full)');
+        $field  = DB::raw($prefix . 'husb_name.n_full || ' . $prefix . 'wife_name.n_full');
 
         $this->whereTrees($query, 'f_file', $trees);
         $this->whereSearch($query, $field, $search);
@@ -893,10 +878,8 @@ class SearchService
             $field = $field->getValue();
         }
 
-        $field = DB::raw($field . ' /*! COLLATE ' . 'utf8_' . $this->locale->collation() . ' */');
-
         foreach ($search_terms as $search_term) {
-            $query->whereContains($field, $search_term);
+            $query->whereContains(DB::raw($field), $search_term);
         }
     }
 
