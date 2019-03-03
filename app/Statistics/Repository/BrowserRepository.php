@@ -34,7 +34,6 @@ class BrowserRepository implements BrowserRepositoryInterface
         $format = strtr(I18N::dateFormat(), ['%' => '']);
 
         return Carbon::now()->local()->format($format);
-
     }
 
     /**
