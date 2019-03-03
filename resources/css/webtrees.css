@@ -38,6 +38,7 @@
 @import "_list-sources.css";
 @import "_mime-type-icons.css";
 @import "_on-screen-keyboard.css";
+@import "_tab-relatives.css";
 
 /* Colors for chart boxes, etc. */
 :root {

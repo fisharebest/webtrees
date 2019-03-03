@@ -353,7 +353,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                     $table[$x][$y] = FunctionsPrint::printPedigreePerson($individual);
                 }
             }
-            echo '<div class="wt-chart wt-relationship-chart">';
+            echo '<div class="wt-chart wt-chart-relationships">';
             echo '<table style="border-collapse: collapse; margin: 20px 50px;">';
             for ($y = $max_y; $y >= $min_y; --$y) {
                 echo '<tr>';

@@ -14,18 +14,11 @@
  */
 
 /*
- * Relationships chart
+ * Close relatives tab
  *
- * wt-chart, wt-chart-relationships
+ * wt-tabs-individual
+ * +--- wt-tab-relatives
  */
-.wt-chart-relationships .wt-chart-box {
-	width: 15rem;
-}
-
-.wt-chart-relationships .wt-chart-box-lifespan {
+.wt-tab-relatives .wt-chart-box-lifespan {
 	display: none;
-}
-
-.vline-text, .hline-text {
-	font-size: 0.7rem;
 }
