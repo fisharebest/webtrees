@@ -42,9 +42,9 @@
 
 /* Colors for chart boxes, etc. */
 :root {
-  --sex-f-fg: #ffdddd;
-  --sex-m-fg: #ddddff;
-  --sex-u-fg: #ddffdd;
+  --sex-f-fg: #ff8888;
+  --sex-m-fg: #8888ff;
+  --sex-u-fg: #88ff88;
   --sex-f-bg: #ffdddd;
   --sex-m-bg: #ddddff;
   --sex-u-bg: #ddffdd;
@@ -350,18 +350,17 @@ table {
 	height: 5rem;
 	padding: 2px;
 	line-height: 1.1;
+	border: none;
 }
 
 .wt-chart-box-f,
 .wt-chart-box-f .wt-chart-box-dropdown {
 	background: var(--sex-f-bg);
-	border: solid var(--sex-f-fg) thin;
 }
 
 .wt-chart-box-m,
 .wt-chart-box-m .wt-chart-box-dropdown {
 	background: var(--sex-m-bg);
-	border: solid var(--sex-m-fg) thin;
 }
 
 /*
@@ -2074,7 +2073,7 @@ a > .wt-icon-arrow-up:hover {
 }
 
 .wt-icon-sex-f {
-	color: var(--sex-m-fg);
+	color: var(--sex-f-fg);
 }
 
 .wt-icon-sex-m {
