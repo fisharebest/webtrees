@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Localization\Locale\LocaleEnUs;
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Controllers\GedcomFileController;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
@@ -88,6 +90,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         app()->instance(Filesystem::class, new Filesystem(new MemoryAdapter()));
 
         app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);
+        app()->bind(LocaleInterface::class, LocaleEnUs::class);
 
         defined('WT_ROOT') || define('WT_ROOT', dirname(__DIR__) . '/');
         defined('WT_BASE_URL') || define('WT_BASE_URL', 'http://localhost/');
