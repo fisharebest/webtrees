@@ -28,6 +28,14 @@
 }
 
 /*
+ * Chrome 72 has problems with all cards in the control panel.
+ * Chrome 73 has problems with the family-tree card in the control panel.
+ */
+.wt-route-admin-control-panel .card {
+	display: block;
+}
+
+/*
  * Flexbox fixes for IE11
  */
 @media (-ms-high-contrast: active), (-ms-high-contrast: none) {

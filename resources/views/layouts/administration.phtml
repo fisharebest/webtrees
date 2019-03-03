@@ -2,6 +2,7 @@
 <?php use Fisharebest\Webtrees\FlashMessages; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
+<?php use Symfony\Component\HttpFoundation\Request; ?>
 
 <!DOCTYPE html>
 <html dir="<?= I18N::direction() ?>" lang="<?= WT_LOCALE ?>">
@@ -21,7 +22,7 @@
 
         <?= DebugBar::renderHead() ?>
     </head>
-    <body class="container wt-global">
+    <body class="container wt-global wt-route-<?= e(app(Request::class)->get('route')) ?>">
         <header>
             <div class="wt-accessibility-links position-fixed">
                 <a class="sr-only sr-only-focusable btn btn-info btn-sm" href="#content">
