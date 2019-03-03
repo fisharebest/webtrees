@@ -27,6 +27,19 @@ use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use function array_key_exists;
+use function array_keys;
+use function array_map;
+use function array_merge;
+use function array_sum;
+use function array_values;
+use function array_walk;
+use function count;
+use function explode;
+use function in_array;
+use function is_numeric;
+use function sprintf;
+use function strip_tags;
 
 /**
  * Class StatisticsChartModule
@@ -466,7 +479,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $indi   = [];
                         $fam    = [];
                         foreach ($rows as $row) {
-                            if (!\in_array($row->indi, $indi, true) && !\in_array($row->fams, $fam, true)) {
+                            if (!in_array($row->indi, $indi, true) && !in_array($row->fams, $fam, true)) {
                                 $this->fillYData($row->month, 0, 1, $x_axis, $z_axis, $ydata);
                             }
                             $indi[] = $row->indi;
@@ -482,7 +495,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         foreach (array_keys($z_axis) as $boundary) {
                             $rows = $statistics->statsFirstMarriageQuery($prev_boundary, $boundary)->get();
                             foreach ($rows as $row) {
-                                if (!\in_array($row->indi, $indi, true) && !\in_array($row->fams, $fam, true)) {
+                                if (!in_array($row->indi, $indi, true) && !in_array($row->fams, $fam, true)) {
                                     $this->fillYData($row->month, $boundary, 1, $x_axis, $z_axis, $ydata);
                                 }
                                 $indi[] = $row->indi;
@@ -645,7 +658,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                             $rows = $statistics->statsMarrAgeQuery($sex);
                             $indi = [];
                             foreach ($rows as $row) {
-                                if (!\in_array($row->d_gid, $indi, true)) {
+                                if (!in_array($row->d_gid, $indi, true)) {
                                     $years = (int) ($row->age / self::DAYS_IN_YEAR);
                                     $this->fillYData($years, 0, 1, $x_axis, $z_axis, $ydata);
                                     $indi[] = $row->d_gid;
@@ -659,7 +672,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                             $rows = $statistics->statsMarrAgeQuery($sex);
                             $indi = [];
                             foreach ($rows as $row) {
-                                if (!\in_array($row->d_gid, $indi, true)) {
+                                if (!in_array($row->d_gid, $indi, true)) {
                                     $years = (int) ($row->age / self::DAYS_IN_YEAR);
                                     $this->fillYData($years, $sex, 1, $x_axis, $z_axis, $ydata);
                                     $indi[] = $row->d_gid;
@@ -677,7 +690,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                             foreach (array_keys($z_axis) as $boundary) {
                                 $rows = $statistics->statsMarrAgeQuery($sex, $prev_boundary, $boundary);
                                 foreach ($rows as $row) {
-                                    if (!\in_array($row->d_gid, $indi, true)) {
+                                    if (!in_array($row->d_gid, $indi, true)) {
                                         $years = (int) ($row->age / self::DAYS_IN_YEAR);
                                         $this->fillYData($years, $boundary, 1, $x_axis, $z_axis, $ydata);
                                         $indi[] = $row->d_gid;
@@ -696,7 +709,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
             case self::X_AXIS_NUMBER_OF_CHILDREN:
                 $chart_title  = I18N::translate('Number of children');
                 $x_axis_title = I18N::translate('Children');
-                $x_axis       = $this->axisNumbers('1,2,3,4,5,6,7,8,9,10');
+                $x_axis       = $this->axisNumbers('0,1,2,3,4,5,6,7,8,9,10');
 
                 switch ($y_axis_type) {
                     case self::Y_AXIS_NUMBERS:
@@ -830,11 +843,17 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         $axis = [];
         foreach ($boundaries as $n => $boundary) {
             if ($n === 0) {
+                $prev_boundary = 0;
+            } else {
+                $prev_boundary = $boundaries[$n - 1] + 1;
+            }
+
+            if ($prev_boundary === $boundary) {
                 /* I18N: A range of numbers */
-                $axis[$boundary - 1] = I18N::translate('%1$s–%2$s', I18N::number(0), I18N::number($boundary));
+                $axis[$boundary] = I18N::number($boundary);
             } else {
                 /* I18N: A range of numbers */
-                $axis[$boundary - 1] = I18N::translate('%1$s–%2$s', I18N::number($boundaries[$n - 1]), I18N::number($boundary));
+                $axis[$boundary] = I18N::translate('%1$s–%2$s', I18N::number($prev_boundary), I18N::number($boundary));
             }
         }
 
@@ -861,7 +880,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         $x = $this->findAxisEntry($x, $x_axis);
         $z = $this->findAxisEntry($z, $z_axis);
 
-        if (!\array_key_exists($z, $z_axis)) {
+        if (!array_key_exists($z, $z_axis)) {
             foreach (array_keys($z_axis) as $key) {
                 if ($value <= $key) {
                     $z = $key;
@@ -889,7 +908,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         if (is_numeric($value)) {
             $value = (int) $value;
 
-            if (!\array_key_exists($value, $axis)) {
+            if (!array_key_exists($value, $axis)) {
                 foreach (array_keys($axis) as $boundary) {
                     if ($value <= $boundary) {
                         $value = $boundary;
@@ -898,7 +917,6 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                 }
             }
         }
-
 
         return $value;
     }
@@ -925,16 +943,16 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         array $z_axis,
         int $y_axis_type
     ): string {
-        if (!\count($ydata)) {
+        if (!count($ydata)) {
             return I18N::translate('This information is not available.');
         }
 
         // Colors for z-axis
         $colors = [];
         $index  = 0;
-        while (\count($colors) < \count($ydata)) {
+        while (count($colors) < count($ydata)) {
             $colors[] = self::Z_AXIS_COLORS[$index];
-            $index    = ($index + 1) % \count(self::Z_AXIS_COLORS);
+            $index    = ($index + 1) % count(self::Z_AXIS_COLORS);
         }
 
         // Convert our sparse dataset into a fixed-size array
@@ -989,7 +1007,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
             'height' => 400,
             'width'  => '100%',
             'legend' => [
-                'position'  => \count($z_axis) > 1 ? 'right' : 'none',
+                'position'  => count($z_axis) > 1 ? 'right' : 'none',
                 'alignment' => 'center',
             ],
             'tooltip' => [
