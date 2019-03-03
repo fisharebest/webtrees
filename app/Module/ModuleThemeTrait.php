@@ -235,7 +235,7 @@ trait ModuleThemeTrait
     public function individualBoxMenuCharts(Individual $individual): array
     {
         $menus = [];
-        foreach (app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $individual->tree, Auth::user()) as $chart) {
+        foreach (app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $individual->tree(), Auth::user()) as $chart) {
             $menu = $chart->chartBoxMenu($individual);
             if ($menu) {
                 $menus[] = $menu;
