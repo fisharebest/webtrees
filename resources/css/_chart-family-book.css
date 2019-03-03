@@ -22,6 +22,9 @@
 	width: 20rem;
 }
 
+.wt-chart-family-book .wt-chart-box-lifespan {
+	display: none;
+}
 .wt-chart-family-book .wt-family-break {
 	page-break-before: always;
 }
