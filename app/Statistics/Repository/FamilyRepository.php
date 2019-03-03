@@ -1680,6 +1680,7 @@ class FamilyRepository
                     ->on('d_gid', '=', 'f_id')
                     ->on('d_file', '=', 'f_file')
                     ->where('d_fact', '=', 'MARR')
+                    ->whereIn('d_month', ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'])
                     ->where('d_julianday2', '<>', 0);
             })->join('individuals', function (JoinClause $join): void {
                 $join
