@@ -1,5 +1,10 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Module\IndividualListModule; ?>
+<?php
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\FamilyListModule;
+use Fisharebest\Webtrees\Module\IndividualListModule;
+
+?>
 
 <table class="table table-bordered table-sm datatables wt-table-surname" data-info="false" data-paging="false" data-searching="false" data-state-save="true" data-order="<?= e(json_encode($order ?? [[1, 'desc']])) ?>">
     <caption class="sr-only">
@@ -26,7 +31,7 @@
                 <td data-sort="<?= e($surn) ?>">
                     <!-- Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc. -->
                     <?php foreach ($surns as $spfxsurn => $indis) : ?>
-                        <?php if ($module instanceof IndividualListModule) : ?>
+                        <?php if ($module instanceof IndividualListModule || $module instanceof FamilyListModule) : ?>
                             <?php if ($spfxsurn) : ?>
                                 <?php if ($surn !== '') : ?>
                                     <a href="<?= $module->listUrl($tree, ['surname' => $surn]) ?>" dir="auto">
