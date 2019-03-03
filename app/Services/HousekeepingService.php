@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Carbon\Carbon;
 use Exception;
+use Fisharebest\Webtrees\Carbon;
 use Illuminate\Database\Capsule\Manager as DB;
 use League\Flysystem\Filesystem;
 
@@ -415,7 +415,7 @@ class HousekeepingService
     {
         $list = $filesystem->listContents($path, true);
 
-        $timestamp = Carbon::now()->timestamp;
+        $timestamp = Carbon::now()->unix();
 
         foreach ($list as $metadata) {
             if ($metadata['timestamp'] ?? $timestamp < $timestamp - $max_age) {

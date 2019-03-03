@@ -67,16 +67,4 @@ class FunctionsDate
                 );
         }
     }
-
-    /**
-     * Convert a unix-style timestamp into a Date object
-     *
-     * @param int $time
-     *
-     * @return Date
-     */
-    public static function timestampToGedcomDate(int $time): Date
-    {
-        return new Date(strtoupper(gmdate('j M Y', $time)));
-    }
 }

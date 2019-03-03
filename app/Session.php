@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Carbon\Carbon;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Request;

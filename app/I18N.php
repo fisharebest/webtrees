@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Carbon\Carbon;
 use Collator;
 use Exception;
 use Fisharebest\Localization\Locale;
@@ -831,27 +830,5 @@ class I18N
         $message = self::$translator->translateContext($context, $message);
 
         return sprintf($message, ...$args);
-    }
-
-    /**
-     * Display a timestamp in the user's local timezone.
-     *
-     * @param Carbon $timestamp
-     * @param string $format
-     * @param string $timezone
-     *
-     * @return string
-     */
-    public static function localTime(Carbon $timestamp, string $format = '', string $timezone = ''): string
-    {
-        $format = $format ?: strtr(self::dateFormat() . ' ' . self::timeFormat(), ['%' => '']);
-
-        $timezone = $timezone ?: Auth::user()->getPreference('TIMEZONE', Site::getPreference('TIMEZONE', 'UTC'));
-
-        $local_timestamp = $timestamp->copy();
-
-        $local_timestamp->tz = $timezone;
-
-        return $local_timestamp->format($format);
     }
 }

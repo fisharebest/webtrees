@@ -416,8 +416,8 @@ $deathAgeData = [
                 </td>
 
                 <!-- Last change -->
-                <td data-sort="<?= $individual->lastChangeTimestamp(true) ?>">
-                    <?= $individual->lastChangeTimestamp() ?>
+                <td data-sort="<?= $individual->lastChangeTimestamp()->unix() ?>">
+                    <?= view('components/datetime', ['timestamp' => $individual->lastChangeTimestamp()]) ?>
                 </td>
 
                 <!-- Filter by sex -->

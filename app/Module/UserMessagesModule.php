@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Carbon\Carbon;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
@@ -118,7 +118,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             ->orderByDesc('message_id')
             ->get()
             ->map(function (stdClass $row): stdClass {
-                $row->created = new Carbon($row->created);
+                $row->created = Carbon::make($row->created);
 
                 return $row;
             });
@@ -171,7 +171,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
                 $content .= '<tr>';
                 $content .= '<td class="list_value_wrap center"><input type="checkbox" name="message_id[]" value="' . $message->message_id . '" id="cb_message' . $message->message_id . '"></td>';
                 $content .= '<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message' . $message->message_id . '\');"><i id="message' . $message->message_id . '_img" class="icon-plus"></i> <b dir="auto">' . e($message->subject) . '</b></a></td>';
-                $content .= '<td class="list_value_wrap">' . I18N::localTime($message->created) . '</td>';
+                $content .= '<td class="list_value_wrap">' . view('components/datetime', ['timestamp' => $message->created]) . '</td>';
                 $content .= '<td class="list_value_wrap">';
 
                 $user = $this->user_service->findByIdentifier($message->sender);

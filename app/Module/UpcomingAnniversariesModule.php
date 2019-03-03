@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Carbon\Carbon;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
@@ -138,8 +138,8 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 
         $events_filter = implode('|', $event_array);
 
-        $startjd = unixtojd(Carbon::now()->timestamp) + 1;
-        $endjd   = unixtojd(Carbon::now()->timestamp) + $days;
+        $startjd = Carbon::now()->julianDay() + 1;
+        $endjd   = Carbon::now()->julianDay() + $days;
 
         $facts = $calendar_service->getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
 

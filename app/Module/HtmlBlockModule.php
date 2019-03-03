@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Carbon\Carbon;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
@@ -81,10 +81,10 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
         $title   = $statistics->embedTags($title);
         $content = $statistics->embedTags($content);
 
-        $block_timestamp = (int) $this->getBlockSetting($block_id, 'timestamp', (string) Carbon::now()->timestamp);
+        $block_timestamp = (int) $this->getBlockSetting($block_id, 'timestamp', (string) Carbon::now()->unix());
 
         if ($show_timestamp === '1') {
-            $content .= '<br>' . I18N::localTime(Carbon::createFromTimestamp($block_timestamp));
+            $content .= '<br>' . view('components/datetime', ['timestamp' => Carbon::createFromTimestamp($block_timestamp)]);
         }
 
         if ($ctype !== '') {
@@ -146,7 +146,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
         $this->setBlockSetting($block_id, 'title', $request->get('title', ''));
         $this->setBlockSetting($block_id, 'html', $request->get('html', ''));
         $this->setBlockSetting($block_id, 'show_timestamp', $request->get('show_timestamp', ''));
-        $this->setBlockSetting($block_id, 'timestamp', (string) Carbon::now()->timestamp);
+        $this->setBlockSetting($block_id, 'timestamp', (string) Carbon::now()->unix());
         $this->setBlockSetting($block_id, 'languages', implode(',', $languages));
     }
 

@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Carbon\Carbon;
 use DomainException;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\FrenchDate;
 use Fisharebest\Webtrees\Date\GregorianDate;
@@ -482,7 +482,7 @@ class CalendarController extends AbstractBaseController
     private function applyFilter(array $facts, string $filterof, string $filtersx): array
     {
         $filtered      = [];
-        $hundred_years = unixtojd(Carbon::now()->subYears(100)->timestamp);
+        $hundred_years = Carbon::now()->subYears(100)->julianDay();
         foreach ($facts as $fact) {
             $record = $fact->record();
             if ($filtersx) {

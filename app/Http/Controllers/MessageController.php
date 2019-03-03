@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Carbon\Carbon;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GuestUser;
@@ -470,12 +470,12 @@ class MessageController extends AbstractBaseController
                     return $user->getPreference('verified_by_admin') && $user->getPreference('reg_timestamp') > $user->getPreference('sessiontime');
                 });
             case 'last_6mo':
-                $six_months_ago = Carbon::now()->subMonths(6);
+                $six_months_ago = Carbon::now()->subMonths(6)->unix();
 
                 return $this->user_service->all()->filter(function (UserInterface $user) use ($six_months_ago): bool {
                     $session_time = (int) $user->getPreference('sessiontime');
 
-                    return $session_time > 0 && $session_time < $six_months_ago->timestamp;
+                    return $session_time > 0 && $session_time < $six_months_ago;
                 });
         }
     }

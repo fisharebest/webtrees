@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Carbon\Carbon;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Exceptions\InternalServerErrorException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
@@ -269,7 +269,7 @@ class UpgradeService
     {
         $last_update_timestamp = (int) Site::getPreference('LATEST_WT_VERSION_TIMESTAMP');
 
-        $current_timestamp = Carbon::now()->timestamp;
+        $current_timestamp = Carbon::now()->unix();
 
         if ($last_update_timestamp < $current_timestamp - self::CHECK_FOR_UPDATE_INTERVAL) {
             try {

@@ -97,6 +97,10 @@ class ComposerStaticInit74b5eb00e70cef0c1fba9491b929fdd1
             'Doctrine\\Common\\Cache\\' => 22,
             'Doctrine\\Common\\' => 16,
         ),
+        'C' => 
+        array (
+            'Carbon\\' => 7,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -280,10 +284,10 @@ class ComposerStaticInit74b5eb00e70cef0c1fba9491b929fdd1
         array (
             0 => __DIR__ . '/..' . '/doctrine/event-manager/lib/Doctrine/Common',
         ),
-    );
-
-    public static $fallbackDirsPsr4 = array (
-        0 => __DIR__ . '/..' . '/nesbot/carbon/src',
+        'Carbon\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -318,7 +322,6 @@ class ComposerStaticInit74b5eb00e70cef0c1fba9491b929fdd1
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit74b5eb00e70cef0c1fba9491b929fdd1::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit74b5eb00e70cef0c1fba9491b929fdd1::$prefixDirsPsr4;
-            $loader->fallbackDirsPsr4 = ComposerStaticInit74b5eb00e70cef0c1fba9491b929fdd1::$fallbackDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit74b5eb00e70cef0c1fba9491b929fdd1::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit74b5eb00e70cef0c1fba9491b929fdd1::$classMap;
 

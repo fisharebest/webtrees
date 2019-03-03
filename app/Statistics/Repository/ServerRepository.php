@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
-use Carbon\Carbon;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\ServerRepositoryInterface;
@@ -35,7 +35,7 @@ class ServerRepository implements ServerRepositoryInterface
         $format   = strtr(I18N::dateFormat(), ['%' => '']);
         $timezone = Site::getPreference('TIMEZONE', 'UTC');
 
-        return I18N::localTime(Carbon::now(), $format, $timezone);
+        return Carbon::now()->local()->timezone($timezone)->format($format);
     }
 
     /**
@@ -46,7 +46,7 @@ class ServerRepository implements ServerRepositoryInterface
         $format   = strtr(I18N::timeFormat(), ['%' => '']);
         $timezone = Site::getPreference('TIMEZONE', 'UTC');
 
-        return I18N::localTime(Carbon::now(), $format, $timezone);
+        return Carbon::now()->local()->timezone($timezone)->format($format);
     }
 
     /**
@@ -56,7 +56,7 @@ class ServerRepository implements ServerRepositoryInterface
     {
         $timezone = Site::getPreference('TIMEZONE', 'UTC');
 
-        return I18N::localTime(Carbon::now(), 'G:i', $timezone);
+        return Carbon::now()->local()->timezone($timezone)->format('G:i');
     }
 
     /**
@@ -66,6 +66,6 @@ class ServerRepository implements ServerRepositoryInterface
     {
         $timezone = Site::getPreference('TIMEZONE', 'UTC');
 
-        return I18N::localTime(Carbon::now(), 'T', $timezone);
+        return Carbon::now()->local()->timezone($timezone)->format('T');
     }
 }

@@ -401,8 +401,8 @@ $marriageAgeData = [
                 </td>
 
                 <!-- Last change -->
-                <td data-sort="<?= $family->lastChangeTimestamp(true) ?>">
-                    <?= $family->lastChangeTimestamp() ?>
+                <td data-sort="<?= $family->lastChangeTimestamp()->unix() ?>">
+                    <?= view('components/datetime', ['timestamp' => $family->lastChangeTimestamp()]) ?>
                 </td>
 
                 <!-- Filter by marriage date -->

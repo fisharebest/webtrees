@@ -54,8 +54,8 @@
                     <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
                 </td>
 
-                <td data-sort="<?= $record->lastChangeTimestamp(true) ?>">
-                    <?= $record->lastChangeTimestamp() ?>
+                <td data-sort="<?= $record->lastChangeTimestamp()->unix() ?>">
+                    <?= view('components/datetime', ['timestamp' => $record->lastChangeTimestamp()]) ?>
                 </td>
 
                 <?php if ($show_user) : ?>

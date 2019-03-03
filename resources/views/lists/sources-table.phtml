@@ -121,8 +121,8 @@ $count_notes = DB::table('other')
                 </td>
 
                 <!-- Last change -->
-                <td data-sort="<?= $source->lastChangeTimestamp(true) ?>">
-                    <?= $source->lastChangeTimestamp() ?>
+                <td data-sort="<?= $source->lastChangeTimestamp()->unix() ?>">
+                    <?= view('components/datetime', ['timestamp' => $source->lastChangeTimestamp()]) ?>
                 </td>
             </tr>
         <?php endforeach ?>

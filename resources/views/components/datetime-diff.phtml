@@ -1,0 +1,10 @@
+<?php
+
+use Fisharebest\Webtrees\Carbon;
+
+/** @var Carbon $timestamp */
+?>
+
+<span class="wt-timestamp" title="<?= e($timestamp->local()->isoFormat('LLLL')) ?>" dir="auto">
+    <?= e($timestamp->local()->diffForHumans()) ?>
+</span>

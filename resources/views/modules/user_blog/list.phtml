@@ -16,7 +16,7 @@
 
     <div class="news_box">
         <div class="news_title"><?= e($article->subject) ?></div>
-        <div class="news_date"><?= I18N::localTime($article->updated) ?></div>
+        <div class="news_date"><?= view('components/datetime', ['timestamp' => $article->updated]) ?></div>
         <div style="white-space: pre-wrap"><?= e($article->body) ?></div>
 
         <?php if (Auth::isManager($tree)) : ?>

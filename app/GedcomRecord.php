@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Carbon\Carbon;
 use Closure;
 use Exception;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
@@ -143,7 +142,7 @@ class GedcomRecord
     public static function lastChangeComparator(int $direction = 1): Closure
     {
         return function (GedcomRecord $x, GedcomRecord $y) use ($direction): int {
-            return $direction * ($x->lastChangeTimestamp(true) <=> $y->lastChangeTimestamp(true));
+            return $direction * ($x->lastChangeTimestamp() <=> $y->lastChangeTimestamp());
         };
     }
 
@@ -1097,40 +1096,30 @@ class GedcomRecord
     }
 
     /**
-     * Get the last-change timestamp for this record, either as a formatted string
-     * (for display) or as a unix timestamp (for sorting)
+     * Get the last-change timestamp for this record
      *
-     * @param bool $sorting
-     *
-     * @return string|int
+     * @return Carbon
      */
-    public function lastChangeTimestamp(bool $sorting = false)
+    public function lastChangeTimestamp(): Carbon
     {
+        /** @var Fact|null $chan */
         $chan = $this->facts(['CHAN'])->first();
 
-        if ($chan) {
+        if ($chan instanceof Fact) {
             // The record does have a CHAN event
             $d = $chan->date()->minimumDate();
+
             if (preg_match('/\n3 TIME (\d\d):(\d\d):(\d\d)/', $chan->gedcom(), $match)) {
-                $t = mktime((int) $match[1], (int) $match[2], (int) $match[3], (int) $d->format('%n'), (int) $d->format('%j'), (int) $d->format('%Y'));
+                return Carbon::create($d->year(), $d->month(), $d->day(), (int) $match[1], (int) $match[2], (int) $match[3]);
             } elseif (preg_match('/\n3 TIME (\d\d):(\d\d)/', $chan->gedcom(), $match)) {
-                $t = mktime((int) $match[1], (int) $match[2], 0, (int) $d->format('%n'), (int) $d->format('%j'), (int) $d->format('%Y'));
-            } else {
-                $t = mktime(0, 0, 0, (int) $d->format('%n'), (int) $d->format('%j'), (int) $d->format('%Y'));
-            }
-            if ($sorting) {
-                return $t;
+                return Carbon::create($d->year(), $d->month(), $d->day(), (int) $match[1], (int) $match[2]);
             }
 
-            return I18N::localTime(Carbon::createFromTimestamp($t));
+            return Carbon::create($d->year(), $d->month(), $d->day());
         }
 
         // The record does not have a CHAN event
-        if ($sorting) {
-            return '0';
-        }
-
-        return '';
+        return Carbon::createFromTimestamp(0);
     }
 
     /**

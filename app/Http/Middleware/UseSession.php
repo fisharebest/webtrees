@@ -17,9 +17,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Carbon\Carbon;
 use Closure;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Session;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,7 +46,7 @@ class UseSession implements MiddlewareInterface
         // Update the last-login time no more than once a minute.
         $next_session_update = Carbon::createFromTimestamp((int) Session::get('session_time_updates'))->addMinute();
         if ($next_session_update < Carbon::now()) {
-            $timestamp_now = Carbon::now()->timestamp;
+            $timestamp_now = Carbon::now()->unix();
 
             if (Session::get('masquerade') === null) {
                 Auth::user()->setPreference('sessiontime', (string) $timestamp_now);

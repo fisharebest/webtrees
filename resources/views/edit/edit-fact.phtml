@@ -91,7 +91,7 @@
         </label>
         <div class="col-sm-9">
             <?= Bootstrap4::checkbox(I18N::translate('Keep the existing “last change” information'), true, ['name' => 'keep_chan', 'checked' => (bool) $tree->getPreference('NO_UPDATE_CHAN')]) ?>
-            <?= GedcomTag::getLabelValue('DATE', $record->lastChangeTimestamp()) ?>
+            <?= GedcomTag::getLabelValue('DATE', view('components/datetime', ['timestamp' => $record->lastChangeTimestamp()])) ?>
             <?= GedcomTag::getLabelValue('_WT_USER', e($record->lastChangeUser())) ?>
         </div>
     </div>

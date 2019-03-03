@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Carbon\Carbon;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -80,9 +80,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
 
         extract($cfg, EXTR_OVERWRITE);
 
-        $end_date = $show_future ? Carbon::maxValue() : Carbon::now();
-        $end_jd   = unixtojd($end_date->timestamp);
-
+        $end_jd      = $show_future ? Carbon::maxValue()->julianDay() : Carbon::now()->julianDay();
         $individuals = $this->individualsWithTasks($tree, $end_jd);
         $families    = $this->familiesWithTasks($tree, $end_jd);
 

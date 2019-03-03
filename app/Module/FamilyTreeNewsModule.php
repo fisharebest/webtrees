@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Carbon\Carbon;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -74,7 +74,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             ->orderByDesc('updated')
             ->get()
             ->map(function (stdClass $row): stdClass {
-                $row->updated = new Carbon($row->updated);
+                $row->updated = Carbon::make($row->updated);
 
                 return $row;
             });

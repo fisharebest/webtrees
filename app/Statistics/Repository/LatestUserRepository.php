@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\UserService;
@@ -107,12 +108,11 @@ class LatestUserRepository implements LatestUserRepositoryInterface
      */
     public function latestUserRegDate(string $format = null): string
     {
-        $format = $format ?? I18N::dateFormat();
-        $user   = $this->latestUserQuery();
+        $format    = $format ?? I18N::dateFormat();
+        $user      = $this->latestUserQuery();
+        $timestamp = (int) $user->getPreference('reg_timestamp');
 
-        return FunctionsDate::timestampToGedcomDate(
-            (int) $user->getPreference('reg_timestamp')
-        )->display(false, $format);
+        return Carbon::createFromTimestamp($timestamp)->format(strtr($format, ['%' => '']));
     }
 
     /**

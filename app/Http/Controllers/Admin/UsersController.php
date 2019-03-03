@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
-use Carbon\Carbon;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
@@ -239,9 +239,9 @@ class UsersController extends AbstractAdminController
                 e($row->email),
                 $installed_languages[$row->language] ?? $row->language,
                 $row->registered_at,
-                $row->registered_at > 0 ? I18N::localTime(Carbon::createFromTimestamp((int) $row->registered_at)) : '',
+                $row->registered_at ? view('components/datetime-diff', ['timestamp' => Carbon::createFromTimestamp((int) $row->registered_at)]) : '',
                 $row->active_at,
-                $row->active_at > 0 ? I18N::localTime(Carbon::createFromTimestamp((int) $row->active_at)) : I18N::translate('Never'),
+                $row->active_at ? view('components/datetime-diff', ['timestamp' => Carbon::createFromTimestamp((int) $row->active_at)]) : I18N::translate('Never'),
                 $row->verified ? I18N::translate('yes') : I18N::translate('no'),
                 $row->verified_by_admin ? I18N::translate('yes') : I18N::translate('no'),
             ];

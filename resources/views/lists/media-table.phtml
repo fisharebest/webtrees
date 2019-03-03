@@ -103,8 +103,8 @@ $count_sources = DB::table('sources')
                 </td>
 
                 <!-- Last change -->
-                <td data-sort="<?= $media_object->lastChangeTimestamp(true) ?>">
-                    <?= $media_object->lastChangeTimestamp() ?>
+                <td data-sort="<?= $media_object->lastChangeTimestamp()->unix() ?>">
+                    <?= view('components/datetime', ['timestamp' => $media_object->lastChangeTimestamp()]) ?>
                 </td>
             </tr>
         <?php endforeach ?>

@@ -77,7 +77,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <?= I18N::localTime($record_change->change_time) ?>
+                                    <?= view('components/datetime', ['timestamp' => $record_change->change_time]) ?>
                                 </td>
                                 <td>
                                     <form action="<?= e(route('reject-pending', ['change_id' => $record_change->change_id, 'xref' => $record_change->xref, 'ged' => $record_change->gedcom_name, 'url' => $url])) ?>" method="POST">

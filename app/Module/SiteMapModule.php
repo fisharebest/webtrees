@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Carbon\Carbon;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Html;
@@ -117,7 +117,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
     {
         $timestamp = (int) $this->getPreference('sitemap.timestamp');
 
-        if ($timestamp > Carbon::now()->timestamp - self::CACHE_LIFE) {
+        if ($timestamp > Carbon::now()->subSeconds(self::CACHE_LIFE)->unix()) {
             $content = $this->getPreference('sitemap.xml');
         } else {
             $count_individuals = DB::table('individuals')
@@ -180,7 +180,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
         }
 
         $timestamp   = (int) $this->getPreference('sitemap-' . $file . '.timestamp');
-        $expiry_time = Carbon::now()->subSeconds(self::CACHE_LIFE)->timestamp;
+        $expiry_time = Carbon::now()->subSeconds(self::CACHE_LIFE)->unix();
 
         if ($timestamp > $expiry_time) {
             $content = $this->getPreference('sitemap-' . $file . '.xml');

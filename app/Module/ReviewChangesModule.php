@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Carbon\Carbon;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Mail;
@@ -85,8 +85,8 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
-        $sendmail = $this->getBlockSetting($block_id, 'sendmail', '1');
-        $days     = $this->getBlockSetting($block_id, 'days', '1');
+        $sendmail = (bool) $this->getBlockSetting($block_id, 'sendmail', '1');
+        $days     = (int) $this->getBlockSetting($block_id, 'days', '1');
 
         extract($cfg, EXTR_OVERWRITE);
 
@@ -94,7 +94,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
             ->where('status', 'pending')
             ->exists();
 
-        if ($changes_exist && $sendmail === '1') {
+        if ($changes_exist && $sendmail) {
             $last_email_timestamp = Carbon::createFromTimestamp((int) Site::getPreference('LAST_CHANGE_EMAIL'));
             $next_email_timestamp = $last_email_timestamp->addDays($days);
 
@@ -126,7 +126,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                         }
                     }
                 }
-                Site::setPreference('LAST_CHANGE_EMAIL', (string) Carbon::now()->timestamp);
+                Site::setPreference('LAST_CHANGE_EMAIL', (string) Carbon::now()->unix());
             }
         }
         if (Auth::isEditor($tree) && $tree->hasPendingEdit()) {
@@ -134,12 +134,12 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
             if (Auth::isModerator($tree)) {
                 $content .= '<a href="' . e(route('show-pending', ['ged' => $tree->name()])) . '">' . I18N::translate('There are pending changes for you to moderate.') . '</a><br>';
             }
-            if ($sendmail === '1') {
+            if ($sendmail) {
                 $last_email_timestamp = Carbon::createFromTimestamp((int) Site::getPreference('LAST_CHANGE_EMAIL'));
                 $next_email_timestamp = $last_email_timestamp->copy()->addDays($days);
 
-                $content .= I18N::translate('Last email reminder was sent ') . I18N::localTime($last_email_timestamp) . '<br>';
-                $content .= I18N::translate('Next email reminder will be sent after ') . I18N::localTime($next_email_timestamp) . '<br><br>';
+                $content .= I18N::translate('Last email reminder was sent ') . view('components/datetime', ['timestamp' => $last_email_timestamp]) . '<br>';
+                $content .= I18N::translate('Next email reminder will be sent after ') . view('components/datetime', ['timestamp' => $next_email_timestamp]) . '<br><br>';
             }
             $content .= '<ul>';
 

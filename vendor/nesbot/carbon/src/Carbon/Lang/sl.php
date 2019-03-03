@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,7 +9,25 @@
  * file that was distributed with this source code.
  */
 
-return array(
+/*
+ * Authors:
+ * - Philippe Vaucher
+ * - Tsutomu Kuroda
+ * - tjku
+ * - Max Melentiev
+ * - Juanito Fatas
+ * - Akira Matsuda
+ * - Christopher Dell
+ * - Enrique Vidal
+ * - Simone Carletti
+ * - Aaron Patterson
+ * - Nicolás Hock Isaza
+ * - Miha Rebernik
+ * - Gal Jakič
+ * - Glavić
+ * - Anže Časar
+ */
+return [
     'year' => ':count leto|:count leti|:count leta|:count let',
     'y' => ':count leto|:count leti|:count leta|:count let',
     'month' => ':count mesec|:count meseca|:count mesece|:count mesecev',
@@ -40,4 +58,48 @@ return array(
     'diff_tomorrow' => 'jutri',
     'diff_before_yesterday' => 'predvčerajšnjim',
     'diff_after_tomorrow' => 'pojutrišnjem',
-);
+    'first_day_of_week' => 1,
+    'day_of_first_week_of_year' => 1,
+    'period_start_date' => 'od :date',
+    'period_end_date' => 'do :date',
+    'formats' => [
+        'LT' => 'H:mm',
+        'LTS' => 'H:mm:ss',
+        'L' => 'DD.MM.YYYY',
+        'LL' => 'D. MMMM YYYY',
+        'LLL' => 'D. MMMM YYYY H:mm',
+        'LLLL' => 'dddd, D. MMMM YYYY H:mm',
+    ],
+    'calendar' => [
+        'sameDay' => '[danes ob] LT',
+        'nextDay' => '[jutri ob] LT',
+        'nextWeek' => 'dddd [ob] LT',
+        'lastDay' => '[včeraj ob] LT',
+        'lastWeek' => function (\Carbon\CarbonInterface $date) {
+            switch ($date->dayOfWeek) {
+                case 0:
+                    return '[preteklo] [nedeljo] [ob] LT';
+                case 1:
+                    return '[pretekli] [ponedeljek] [ob] LT';
+                case 2:
+                    return '[pretekli] [torek] [ob] LT';
+                case 3:
+                    return '[preteklo] [sredo] [ob] LT';
+                case 4:
+                    return '[pretekli] [četrtek] [ob] LT';
+                case 5:
+                    return '[pretekli] [petek] [ob] LT';
+                case 6:
+                    return '[preteklo] [soboto] [ob] LT';
+            }
+        },
+        'sameElse' => 'L',
+    ],
+    'months' => ['Januar', 'Februar', 'Marec', 'April', 'Maj', 'Junij', 'Julij', 'Avgust', 'September', 'Oktober', 'November', 'December'],
+    'months_short' => ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Avg', 'Sep', 'Okt', 'Nov', 'Dec'],
+    'weekdays' => ['Nedelja', 'Ponedeljek', 'Torek', 'Sreda', 'Četrtek', 'Petek', 'Sobota'],
+    'weekdays_short' => ['Ned', 'Pon', 'Tor', 'Sre', 'Čet', 'Pet', 'Sob'],
+    'weekdays_min' => ['Ne', 'Po', 'To', 'Sr', 'Če', 'Pe', 'So'],
+    'list' => [', ', ' in '],
+    'meridiem' => ['dopoldan', 'popoldan'],
+];

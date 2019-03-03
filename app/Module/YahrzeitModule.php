@@ -17,9 +17,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Carbon\Carbon;
 use Fisharebest\ExtCalendar\JewishCalendar;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Date\JewishDate;
@@ -86,7 +86,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
         extract($cfg, EXTR_OVERWRITE);
 
         $jewish_calendar = new JewishCalendar();
-        $startjd         = unixtojd(Carbon::now()->timestamp);
+        $startjd         = Carbon::now()->julianDay();
         $endjd           = $startjd + $days - 1;
 
         // The standard anniversary rules cover most of the Yahrzeit rules, we just

@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use Carbon\Carbon;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -131,12 +131,11 @@ class ReportParserSetup extends ReportParserBase
 
         if (isset($attrs['default'])) {
             if ($attrs['default'] === 'NOW') {
-                $this->input['default'] = date('d M Y');
+                $this->input['default'] = Carbon::now()->format('d M Y');
             } else {
                 $match = [];
                 if (preg_match('/NOW([+\-]\d+)/', $attrs['default'], $match) > 0) {
-                    $timestamp = Carbon::now()->addDays((int) $match[1])->timestamp;
-                    $this->input['default'] = date('d M Y', $timestamp);
+                    $this->input['default'] = Carbon::now()->addDays((int) $match[1])->format('d M Y');
                 } else {
                     $this->input['default'] = $attrs['default'];
                 }

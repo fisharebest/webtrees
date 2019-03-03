@@ -17,9 +17,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
-use Carbon\Carbon;
 use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -74,8 +74,8 @@ class ChangesLogController extends AbstractAdminController
         $earliest = DB::table('change')->min('change_time');
         $latest   = DB::table('change')->max('change_time');
 
-        $earliest = $earliest ? new Carbon($earliest) : Carbon::now();
-        $latest   = $latest ? new Carbon($latest) : Carbon::now();
+        $earliest = $earliest ? Carbon::make($earliest) : Carbon::now();
+        $latest   = $latest ? Carbon::make($latest) : Carbon::now();
 
         $earliest = $earliest->toDateString();
         $latest   = $latest->toDateString();
@@ -258,7 +258,7 @@ class ChangesLogController extends AbstractAdminController
 
         if ($to !== '') {
             // before end of the day
-            $query->where('change_time', '<', (new Carbon($to))->addDay());
+            $query->where('change_time', '<', Carbon::make($to)->addDay());
         }
 
         if ($type !== '') {

@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Carbon\Carbon;
 use Exception;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
@@ -192,8 +192,8 @@ class AdminSiteController extends AbstractBaseController
         $earliest = DB::table('log')->min('log_time');
         $latest   = DB::table('log')->max('log_time');
 
-        $earliest = $earliest ? new Carbon($earliest) : Carbon::now();
-        $latest   = $latest ? new Carbon($latest) : Carbon::now();
+        $earliest = $earliest ? Carbon::make($earliest) : Carbon::now();
+        $latest   = $latest ? Carbon::make($latest) : Carbon::now();
 
         $earliest = $earliest->toDateString();
         $latest   = $latest->toDateString();
@@ -328,7 +328,7 @@ class AdminSiteController extends AbstractBaseController
 
         if ($to !== '') {
             // before end of the day
-            $query->where('log_time', '<', (new Carbon($to))->addDay());
+            $query->where('log_time', '<', Carbon::make($to)->addDay());
         }
 
         if ($type !== '') {

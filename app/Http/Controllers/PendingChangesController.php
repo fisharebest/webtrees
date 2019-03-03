@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Carbon\Carbon;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
@@ -261,7 +261,7 @@ class PendingChangesController extends AbstractBaseController
 
         $changes = [];
         foreach ($rows as $row) {
-            $row->change_time = new Carbon($row->change_time);
+            $row->change_time = Carbon::make($row->change_time);
 
             $change_tree = Tree::findById((int) $row->gedcom_id);
 

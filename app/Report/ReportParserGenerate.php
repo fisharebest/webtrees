@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use Carbon\Carbon;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
@@ -605,8 +605,7 @@ class ReportParserGenerate extends ReportParserBase
      */
     private function nowStartHandler()
     {
-        $g = FunctionsDate::timestampToGedcomDate(Carbon::now()->timestamp);
-        $this->current_element->addText($g->display());
+        $this->current_element->addText(Carbon::now()->local()->isoFormat('LLLL'));
     }
 
     /**
