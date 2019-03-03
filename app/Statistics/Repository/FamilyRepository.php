@@ -1698,10 +1698,7 @@ class FamilyRepository
         }
 
         return $query
-            ->select(['f_id AS fams', 'f_husb', 'f_wife', 'd_julianday2 AS age', 'd_month AS month', 'i_id AS indi'])
-            ->orderBy('f_id')
-            ->orderBy('i_id')
-            ->orderBy('d_julianday2');
+            ->select(['f_id AS fams', 'f_husb', 'f_wife', 'd_julianday2 AS age', 'd_month AS month', 'i_id AS indi']);
     }
 
     /**
