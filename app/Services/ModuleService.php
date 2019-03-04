@@ -327,9 +327,11 @@ class ModuleService
     /**
      * All modules.
      *
+     * @param bool $include_disabled
+     *
      * @return Collection|ModuleInterface[]
      */
-    public function all(): Collection
+    public function all(bool $include_disabled = false): Collection
     {
         return app('cache.array')->rememberForever('all_modules', function (): Collection {
             // Modules have a default status, order etc.
@@ -374,7 +376,7 @@ class ModuleService
 
                     return $module;
                 });
-        });
+        })->filter($this->enabledFilter($include_disabled));
     }
 
     /**
@@ -517,9 +519,8 @@ class ModuleService
      */
     public function findByInterface(string $interface, $include_disabled = false, $sort = false): Collection
     {
-        $modules = $this->all()
-            ->filter($this->interfaceFilter($interface))
-            ->filter($this->enabledFilter($include_disabled));
+        $modules = $this->all($include_disabled)
+            ->filter($this->interfaceFilter($interface));
 
         switch ($interface) {
             case ModuleFooterInterface::class:
@@ -553,8 +554,7 @@ class ModuleService
      */
     public function findByName(string $module_name, bool $include_disabled = false): ?ModuleInterface
     {
-        return $this->all()
-            ->filter($this->enabledFilter($include_disabled))
+        return $this->all($include_disabled)
             ->filter(function (ModuleInterface $module) use ($module_name): bool {
                 return $module->name() === $module_name;
             })

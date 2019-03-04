@@ -3,5 +3,8 @@
 <?php if ($count > 0) : ?>
     <span class="badge badge-<?= $context ?? 'secondary' ?>">
         <?= I18N::number($count) ?>
+        <?php if (($total ?? $count) > $count) : ?>
+            / <?= I18N::number($total) ?>
+        <?php endif ?>
     </span>
 <?php endif ?>
