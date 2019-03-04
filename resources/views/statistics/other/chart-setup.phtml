@@ -4,7 +4,7 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\View;
 ?>
 
-<?php View::push('javascript') ?>
+<?php View::pushunique('javascript') ?>
 <script src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
 
@@ -23,4 +23,4 @@ google.charts.load(
 );
 
 </script>
-<?php View::endpush() ?>
+<?php View::endpushunique() ?>

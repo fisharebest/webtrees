@@ -18,8 +18,15 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Exception;
-use function ob_end_clean;
 use Throwable;
+use function array_filter;
+use function extract;
+use function implode;
+use function is_dir;
+use function is_file;
+use function ob_end_clean;
+use function ob_start;
+use function sha1;
 
 /**
  * Simple view/template class.
@@ -94,6 +101,7 @@ class View
     public static function push(string $stack)
     {
         self::$stack = $stack;
+
         ob_start();
     }
 
@@ -105,9 +113,34 @@ class View
     public static function endpush()
     {
         $content = ob_get_clean();
-        $hash    = sha1($content);
 
-        self::$stacks[self::$stack][$hash] = $content;
+        self::$stacks[self::$stack][] = $content;
+    }
+
+    /**
+     * Variant of push that will only add one copy of each item.
+     *
+     * @param string $stack
+     *
+     * @return void
+     */
+    public static function pushunique(string $stack)
+    {
+        self::$stack = $stack;
+
+        ob_start();
+    }
+
+    /**
+     * Variant of push that will only add one copy of each item.
+     *
+     * @return void
+     */
+    public static function endpushunique()
+    {
+        $content = ob_get_clean();
+
+        self::$stacks[self::$stack][sha1($content)] = $content;
     }
 
     /**
