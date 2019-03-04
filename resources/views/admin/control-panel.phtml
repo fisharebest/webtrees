@@ -1,5 +1,6 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Webtrees; ?>
+<?php use Fisharebest\Webtrees\Module\ModuleConfigInterface;
+use Fisharebest\Webtrees\Webtrees; ?>
 
 <h1><?= $title ?></h1>
 
@@ -300,6 +301,7 @@
                 <h3>
                     <?= I18N::translate('Genealogy') ?>
                 </h3>
+
                 <ul class="fa-ul">
                     <li>
                         <span class="fa-li"><?= view('icons/menu') ?></span>
@@ -330,9 +332,11 @@
                         <?= view('components/badge', ['count' => $report_modules_enabled->count(), 'total' => $report_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                 </ul>
+
                 <h3>
                     <?= I18N::translate('Website') ?>
                 </h3>
+
                 <ul class="fa-ul">
                     <li>
                         <span class="fa-li"><?= view('icons/footer') ?></span>
@@ -363,11 +367,27 @@
                         <?= view('components/badge', ['count' => $language_modules_enabled->count(), 'total' => $language_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                 </ul>
+
+                <h3>
+                    <?= I18N::translate('Home page') ?>
+                </h3>
+
+                <ul class="fa-ul">
+                    <li>
+                        <span class="fa-li"><?= view('icons/block') ?></span>
+                        <a href="<?= e(route('blocks')) ?>">
+                            <?= I18N::translate('Blocks') ?>
+                        </a>
+                        <?= view('components/badge', ['count' => $block_modules_enabled->count(), 'total' => $block_modules_disabled->count(), 'context' => 'primary']) ?>
+                    </li>
+                </ul>
             </div>
+
             <div class="col-sm-6">
                 <h3>
                     <?= I18N::translate('Individual page') ?>
                 </h3>
+
                 <ul class="fa-ul">
                     <li>
                         <span class="fa-li"><?= view('icons/tab') ?></span>
@@ -391,28 +411,25 @@
                         <?= view('components/badge', ['count' => $history_modules_enabled->count(), 'total' => $history_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                 </ul>
-                <h3>
-                    <?= I18N::translate('Home page') ?>
-                </h3>
-                <ul class="fa-ul">
-                    <li>
-                        <span class="fa-li"><?= view('icons/block') ?></span>
-                        <a href="<?= e(route('blocks')) ?>">
-                            <?= I18N::translate('Blocks') ?>
-                        </a>
-                        <?= view('components/badge', ['count' => $block_modules_enabled->count(), 'total' => $block_modules_disabled->count(), 'context' => 'primary']) ?>
-                    </li>
-                </ul>
+
                 <h3>
                     <?= I18N::translate('Other') ?>
                 </h3>
+
                 <ul class="fa-ul">
-                    <?php foreach ($config_modules as $module) : ?>
+                    <?php foreach ($other_modules as $module) : ?>
                         <li>
-                            <span class="fa-li"><?= view('icons/preferences') ?></span>
-                            <a href="<?= e($module->getConfigLink()) ?>">
+                            <span class="fa-li"><?= view('icons/module') ?></span>
+                            <?php if ($module->isEnabled() && $module instanceof ModuleConfigInterface): ?>
+                                <a href="<?= e($module->getConfigLink()) ?>">
+                                    <?= $module->title() ?>
+                                    <span class="fa"><?= view('icons/preferences') ?></span>
+                                </a>
+                            <?php elseif ($module->isEnabled()) :?>
                                 <?= $module->title() ?>
-                            </a>
+                            <?php else :?>
+                                <del class="text-muted"><?= $module->title() ?></del>
+                            <?php endif ?>
                         </li>
                     <?php endforeach ?>
                 </ul>

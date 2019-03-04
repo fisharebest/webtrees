@@ -1,15 +1,29 @@
 <?php
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2019 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Module\AbstractModule;
-use Fisharebest\Webtrees\Module\ModuleCustomInterface;
-use Fisharebest\Webtrees\Module\ModuleCustomTrait;
-use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
-use Fisharebest\Webtrees\Module\ModuleHistoricEventsTrait;
+namespace Fisharebest\Webtrees\Module;
+
 use Illuminate\Support\Collection;
 
-return new class extends AbstractModule implements ModuleCustomInterface, ModuleHistoricEventsInterface {
-    use ModuleCustomTrait;
+/**
+ * Class BritishMonarchs
+ */
+class BritishMonarchs extends AbstractModule implements ModuleHistoricEventsInterface
+{
     use ModuleHistoricEventsTrait;
 
     /**
@@ -19,7 +33,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
      */
     public function title(): string
     {
-        return 'British Monarchs';
+        return 'British monarchs';
     }
 
     /**
@@ -90,4 +104,6 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
             "1 EVEN Elizabeth II\n2 TYPE British Queen\n2 DATE FROM 06 FEB 1952",
         ]);
     }
-};
+}
+
+;

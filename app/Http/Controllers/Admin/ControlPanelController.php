@@ -100,7 +100,7 @@ class ControlPanelController extends AbstractAdminController
             'block_modules_enabled'      => $module_service->findByInterface(ModuleBlockInterface::class, false),
             'chart_modules_disabled'     => $module_service->findByInterface(ModuleChartInterface::class, true),
             'chart_modules_enabled'      => $module_service->findByInterface(ModuleChartInterface::class, false),
-            'config_modules'             => $module_service->configOnlyModules(),
+            'other_modules'              => $module_service->otherModules(true),
             'footer_modules_disabled'    => $module_service->findByInterface(ModuleFooterInterface::class, true),
             'footer_modules_enabled'     => $module_service->findByInterface(ModuleFooterInterface::class, false),
             'history_modules_disabled'   => $module_service->findByInterface(ModuleHistoricEventsInterface::class, true),
