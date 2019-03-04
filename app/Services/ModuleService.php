@@ -148,7 +148,7 @@ use Throwable;
  */
 class ModuleService
 {
-    // Components are managed together in the control panel.
+    // Components are pieces of user-facing functionality, are managed together in the control panel.
     private const COMPONENTS = [
         ModuleAnalyticsInterface::class,
         ModuleBlockInterface::class,
