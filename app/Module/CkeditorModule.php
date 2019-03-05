@@ -22,8 +22,10 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Class CkeditorModule
  */
-class CkeditorModule extends AbstractModule
+class CkeditorModule extends AbstractModule implements ModuleExternalUrlInterface
 {
+    use ModuleExternalUrlTrait;
+
     // Location of our installation of CK editor.
     public const CKEDITOR_PATH = 'public/ckeditor-4.11.2-custom/';
 
@@ -47,5 +49,15 @@ class CkeditorModule extends AbstractModule
     {
         /* I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get” */
         return I18N::translate('Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes.');
+    }
+
+    /**
+     * Home page for the service.
+     *
+     * @return string
+     */
+    public function externalUrl(): string
+    {
+        return 'https://ckeditor.com';
     }
 }
