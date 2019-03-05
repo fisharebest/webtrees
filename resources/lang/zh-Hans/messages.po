@@ -84,20 +84,20 @@ msgstr "%1$s KB 将在%2$s秒后下载完。"
 #: app/Http/Controllers/AdminUsersController.php:392
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "不存在 %1$s"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/AdminTreesController.php:223
 #: app/Http/Controllers/AdminUsersController.php:294
 #, php-format
 msgid "%1$s does not exist."
-msgstr "%1$s 不存在。"
+msgstr "不存在 %1$s。"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/AdminTreesController.php:220
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr "%1$s 不存在。你的意思是 %2$s?"
+msgstr "不存在 %1$s。你的意思是 %2$s?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: app/Http/Controllers/AdminTreesController.php:253
@@ -687,12 +687,12 @@ msgstr ""
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:63
 msgid "A chart displaying relationships between two individuals."
-msgstr ""
+msgstr "一种显示两个人之间关系的图表。"
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:49
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr ""
+msgstr "一种以家庭方式显示个人的祖先和后代的图表。"
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:49
