@@ -66,8 +66,7 @@ class ControlPanelController extends AbstractAdminController
         ModuleService $module_service,
         ServerCheckService $server_check_service,
         UserService $user_service
-    ): Response
-    {
+    ): Response {
         $filesystem      = new Filesystem(new Local(WT_ROOT));
         $files_to_delete = $housekeeping_service->deleteOldWebtreesFiles($filesystem);
 
