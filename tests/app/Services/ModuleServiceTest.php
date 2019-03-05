@@ -110,14 +110,14 @@ class ModuleServiceTest extends TestCase
      * @covers \Fisharebest\Webtrees\Services\ModuleService::configOnlyModules
      * @return void
      */
-    public function testconfigOnlyModules(): void
+    public function testOtherOnlyModules(): void
     {
         app()->instance(Tree::class, Tree::create('name', 'title'));
         DB::table('module')->insert(['module_name' => 'not-a-module']);
 
         $module_service = new ModuleService();
 
-        $this->assertSame(2, $module_service->configOnlyModules()->count());
+        $this->assertSame(4, $module_service->otherModules()->count());
     }
 
     /**

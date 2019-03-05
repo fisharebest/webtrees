@@ -600,7 +600,7 @@ class ModuleService
     {
         $database_modules = DB::table('module')->pluck('module_name');
 
-        $disk_modules = $this->all()
+        $disk_modules = $this->all(true)
             ->map(function (ModuleInterface $module): string {
                 return $module->name();
             });
