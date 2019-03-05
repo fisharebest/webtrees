@@ -7,12 +7,12 @@ use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
-use Symfony\Component\HttpFoundation\Request;
 
-return new /**
+/**
  * Class UserInterface
  */
-class extends AbstractModule implements ModuleCustomInterface {
+return new class extends AbstractModule implements ModuleCustomInterface
+{
     use ModuleCustomTrait;
 
     /**
