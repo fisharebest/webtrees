@@ -6,14 +6,16 @@ Modules allows you to add additional features to webtrees and modify existing fe
 ## Installing and uninstalling modules
 
 A module is a folder containing a file called `module.php`.
-There may be other files in the folder.
+There may be other files in the folder, such as CSS, JS, templates,
+languages, data, etc.
 
 To install a module, copy its folder to `modules_v4`.
 
 To uninstall it, delete its folder from `modules_v4`.
 
-Note that module names (i.e. their folder names) must not contain
-spaces or the characters `.`, `[` and `]`.
+Note that module names (i.e. the folder names) must not contain
+spaces or the characters `.`, `[` and `]`.  It must also have a
+maximum length of 30 characters.
 
 TIP: renaming a module from `<module>` to `<module.disable>`
 is a quick way to hide it from webtrees.  This works because
