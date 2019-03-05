@@ -19,6 +19,7 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Exceptions\Handler;
 use Fisharebest\Webtrees\Http\Controllers\SetupController;
+use Fisharebest\Webtrees\Http\Middleware\BootModules;
 use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\DebugBarData;
@@ -104,6 +105,7 @@ try {
         UseTree::class,
         UseLocale::class,
         UseTheme::class,
+        BootModules::class,
     ];
 
     if (class_exists(DebugBar::class)) {
@@ -154,7 +156,7 @@ try {
     });
 
     $response = call_user_func($pipeline, $request);
-} catch (Exception $exception) {
+} catch (\Throwable $exception) {
     $response = (new Handler())->render($request, $exception);
 }
 

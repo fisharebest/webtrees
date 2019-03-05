@@ -53,7 +53,7 @@ class BootModules implements MiddlewareInterface
                 continue;
             }
 
-            return app()->dispatch($module, 'boot');
+            app()->dispatch($module, 'boot');
         }
 
         return $next($request);

@@ -1,9 +1,18 @@
 <?php
+
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
+use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\View;
+use Symfony\Component\HttpFoundation\Request;
 
-return new class extends AbstractModule implements ModuleCustomInterface {
+return new /**
+ * Class UserInterface
+ */
+class extends AbstractModule implements ModuleCustomInterface {
     use ModuleCustomTrait;
 
     /**
@@ -64,5 +73,40 @@ return new class extends AbstractModule implements ModuleCustomInterface {
     public function customModuleSupportUrl(): string
     {
         return 'https://www.example.com/support';
+    }
+
+    /**
+     *  Constructor.
+     */
+    public function __construct()
+    {
+        // IMPORTANT - the constructor is called on *all* modules, even ones that are disabled.
+        // It is also called before the webtrees framework is initialised, and so other components
+        // will not yet exist.
+    }
+
+    /**
+     *  Boostrap.
+     *
+     * @param UserInterface $user A user (or visitor) object.
+     * @param Tree|null     $tree Note that $tree can be null (if all trees are private).
+     */
+    public function boot(UserInterface $user, ?Tree $tree): void
+    {
+        // The boot() function is called after the framework has been booted.
+
+        if (!Auth::isAdmin($user) && $tree !== null) {
+            return;
+        }
+
+        // Here is also a good place to register any views (templates) used by the module.
+        // This command allows the module to use: view($this->name() . '::', 'fish')
+        // to access the file ./resources/views/fish.phtml
+        View::registerNamespace($this->name(), __DIR__ . '/resources/views/');
+
+        // We can also provide replacements for existing views (which use an empty namespace).
+        // Note that you can also replace views in other modules.
+        View::registerCustomView('::individual-page', $this->name() . '::my-individual-page');
+        View::registerCustomView('::layouts/administration', $this->name() . '::layouts/my-administration');
     }
 };

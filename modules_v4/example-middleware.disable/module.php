@@ -31,6 +31,10 @@ return new class extends AbstractModule implements ModuleCustomInterface, Middle
     }
 
     /**
+     * For a description of request and response objects, refer to the Symfony HttpFoundation documentation.
+     *
+     * @see https://symfony.com/doc/current/components/http_foundation.html
+     *
      * @param Request $request
      * @param Closure $next
      *
