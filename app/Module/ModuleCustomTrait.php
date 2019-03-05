@@ -29,17 +29,17 @@ trait ModuleCustomTrait
      */
     public function customModuleAuthorName(): string
     {
-        return 'Unknown author';
+        return '';
     }
 
     /**
      * The version of this module.
      *
-     * @return string
+     * @return string  e.g. '1.2.3'
      */
     public function customModuleVersion(): string
     {
-        return '0.0.0';
+        return '';
     }
 
     /**
@@ -49,7 +49,7 @@ trait ModuleCustomTrait
      */
     public function customModuleLatestVersionUrl(): string
     {
-        return 'https://www.exmaple.com/latest-version';
+        return '';
     }
 
     /**
@@ -59,6 +59,6 @@ trait ModuleCustomTrait
      */
     public function customModuleSupportUrl(): string
     {
-        return 'https://www.exmaple.com/support';
+        return '';
     }
 }

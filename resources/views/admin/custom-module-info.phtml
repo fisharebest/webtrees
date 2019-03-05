@@ -1,0 +1,30 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleCustomInterface;
+
+/** @var ModuleCustomInterface $module */
+
+?>
+
+<div class="wt-custom-module-info">
+    <?= view('icons/warning') ?>
+    <?= I18N::translate('Custom module') ?>
+    <?php if ($module->customModuleVersion() !== '') : ?>
+        <br>
+        <?= view('icons/module') ?>
+        <?= $module->customModuleVersion() ?>
+    <?php endif ?>
+    <?php if ($module->customModuleAuthorName() !== '') : ?>
+        <br>
+        <?= view('icons/individual') ?>
+        <?= $module->customModuleAuthorName() ?>
+    <?php endif ?>
+    <?php if ($module->customModuleSupportUrl() !== '') : ?>
+        <br>
+        <?= view('icons/help') ?>
+        <a href="<?= e($module->customModuleSupportUrl()) ?>">
+            <?= e($module->customModuleSupportUrl()) ?>
+        </a>
+    <?php endif ?>
+</div>

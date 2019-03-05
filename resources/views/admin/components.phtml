@@ -1,11 +1,16 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleExternalUrlInterface; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleConfigInterface; ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php
 
-<?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('modules') => I18N::translate('Modules'), $title]]) ?>
+use Fisharebest\Webtrees\Bootstrap4;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleConfigInterface;
+use Fisharebest\Webtrees\Module\ModuleCustomInterface;
+use Fisharebest\Webtrees\Module\ModuleExternalUrlInterface;
+use Fisharebest\Webtrees\View;
+
+?>
+
+<?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('modules') => I18N::translate('All modules'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
@@ -44,11 +49,11 @@
                                 </span>
                             </a>
                         <?php endif ?>
+                        <?php if ($module instanceof ModuleCustomInterface) : ?>
+                            <?= view('admin/custom-module-info', ['module' => $module]) ?>
+                        <?php endif ?>
                         <?php if ($module instanceof ModuleExternalUrlInterface) : ?>
-                            <br>
-                            <a href="<?= e($module->externalUrl()) ?>">
-                                <?= e($module->externalUrl()) ?>
-                            </a>
+                            <?= view('admin/external-module-info', ['module' => $module]) ?>
                         <?php endif ?>
                     </th>
 

@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Collator;
+use DomainException;
 use Exception;
 use Fisharebest\Localization\Locale;
 use Fisharebest\Localization\Locale\LocaleEnUs;
@@ -240,7 +241,7 @@ class I18N
 
         $locales = [];
         foreach ($codes as $code) {
-            if (file_exists(WT_ROOT . 'language/' . $code . '.mo')) {
+            if (file_exists(WT_ROOT . 'resources/lang/' . $code . '/messages.mo')) {
                 try {
                     $locales[] = Locale::create($code);
                 } catch (Exception $ex) {
@@ -248,6 +249,7 @@ class I18N
                 }
             }
         }
+
         usort($locales, '\Fisharebest\Localization\Locale::compare');
 
         return $locales;
@@ -383,7 +385,7 @@ class I18N
         if ($code !== '') {
             // Create the specified locale
             self::$locale = Locale::create($code);
-        } elseif (Session::has('locale') && file_exists(WT_ROOT . 'language/' . Session::get('locale') . '.mo')) {
+        } elseif (Session::has('locale') && file_exists(WT_ROOT . 'resources/lang/' . Session::get('locale') . '/messages.mo')) {
             // Select a previously used locale
             self::$locale = Locale::create(Session::get('locale'));
         } else {
@@ -407,26 +409,10 @@ class I18N
         }
 
         // Load the translation file(s)
-        // Note that glob() returns false instead of an empty array when open_basedir_restriction
-        // is in force and no files are found. See PHP bug #47358.
-        if (defined('GLOB_BRACE')) {
-            $translation_files = array_merge(
-                [WT_ROOT . 'language/' . self::$locale->languageTag() . '.mo'],
-                glob(Webtrees::MODULES_PATH . '*/language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ?: [],
-                glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ?: []
-            );
-        } else {
-            // Some servers do not have GLOB_BRACE - see http://php.net/manual/en/function.glob.php
-            $translation_files = array_merge(
-                [WT_ROOT . 'language/' . self::$locale->languageTag() . '.mo'],
-                glob(Webtrees::MODULES_PATH . '*/language/' . self::$locale->languageTag() . '.csv') ?: [],
-                glob(Webtrees::MODULES_PATH . '*/language/' . self::$locale->languageTag() . '.php') ?: [],
-                glob(Webtrees::MODULES_PATH . '*/language/' . self::$locale->languageTag() . '.mo') ?: [],
-                glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.csv') ?: [],
-                glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.php') ?: [],
-                glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.mo') ?: []
-            );
-        }
+        $translation_files = [
+            WT_ROOT . 'resources/lang/' . self::$locale->languageTag() . '/messages.mo',
+        ];
+
         // Rebuild files after one hour
         $rebuild_cache = time() > $filemtime + 3600;
         // Rebuild files if any translation file has been updated
@@ -483,10 +469,11 @@ class I18N
     public static function installedLocales(): array
     {
         $locales = [];
-        foreach (glob(WT_ROOT . 'language/*.mo') as $file) {
+
+        foreach (glob(WT_ROOT . 'resources/lang/*/messages.mo') as $file) {
             try {
                 $locales[] = Locale::create(basename($file, '.mo'));
-            } catch (Exception $ex) {
+            } catch (DomainException $ex) {
                 // Not a recognised locale
             }
         }

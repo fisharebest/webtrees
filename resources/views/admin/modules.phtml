@@ -119,23 +119,10 @@
                     <td>
                         <?= $module->description() ?>
                         <?php if ($module instanceof ModuleCustomInterface) : ?>
-                            <br>
-                            <?= view('icons/warning') ?>
-                            <?= I18N::translate('Custom module') ?>
-                            <?php if ($module::CUSTOM_VERSION) : ?>
-                                - <?= I18N::translate('Version') ?> <?= $module::CUSTOM_VERSION ?>
-                            <?php endif ?>
-                            <?php if ($module::CUSTOM_WEBSITE) : ?>
-                                - <a href="<?= $module::CUSTOM_WEBSITE ?>">
-                                    <?= $module::CUSTOM_WEBSITE ?>
-                                </a>
-                            <?php endif ?>
+                            <?= view('admin/custom-module-info', ['module' => $module]) ?>
                         <?php endif ?>
                         <?php if ($module instanceof ModuleExternalUrlInterface) : ?>
-                            <br>
-                            <a href="<?= e($module->externalUrl()) ?>">
-                                <?= e($module->externalUrl()) ?>
-                            </a>
+                            <?= view('admin/external-module-info', ['module' => $module]) ?>
                         <?php endif ?>
                     </td>
                     <td class="text-center text-muted" title="<?= I18N::translate('Preferences') ?>">

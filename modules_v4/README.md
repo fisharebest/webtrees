@@ -6,14 +6,16 @@ Modules allows you to add additional features to webtrees and modify existing fe
 ## Installing and uninstalling modules
 
 A module is a folder containing a file called `module.php`.
-There may be other files in the folder.
+There may be other files in the folder, such as CSS, JS, templates,
+languages, data, etc.
 
 To install a module, copy its folder to `modules_v4`.
 
 To uninstall it, delete its folder from `modules_v4`.
 
-Note that module names (i.e. their folder names) must not contain
-spaces or the characters `.`, `[` and `]`.
+Note that module names (i.e. the folder names) must not contain
+spaces or the characters `.`, `[` and `]`.  It must also have a
+maximum length of 30 characters.
 
 TIP: renaming a module from `<module>` to `<module.disable>`
 is a quick way to hide it from webtrees.  This works because
@@ -152,6 +154,7 @@ use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
 use Fisharebest\Webtrees\Services\TimeoutService;
+use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -162,34 +165,33 @@ return new class extends AbstractModule implements ModuleCustomInterface {
     use ModuleCustomTrait;
     
     /** @var TimeoutService */
-    private $timeout_service;
+    protected $timeout_service;
     
     /**
-     * This module needs the timeout service.
+     * IMPORTANT - the constructor is called for *all* modules, even ones
+     * that are disabled.  You should do little more than initialise your
+     * private/protected members.
      * 
      * @param TimeoutService $timeout_service
      */
     public function __construct(TimeoutService $timeout_service)
     {
-        $this->timeout_service = $timeout_service;   
-        
-        // You can replace core webtrees classes by providing alternate implementations:
-        app()->bind('name of webtrees class', 'name of replacement class');
-        app()->bind('name of webtrees class', new \stdClass());
+        $this->timeout_service = $timeout_service;
     }
 
     /**
      * Methods that are called in response to HTTP requests use
      * dependency-injection.  You'll almost certainly need the request
-     * object.  The restrictions on the constructor do not apply here.
+     * object.
      * 
-     * @param Request $request
+     * @param Request   $request
+     * @param Tree|null $tree                       
      * 
      * @return Response
      */
-    public function getFooBarAction(Request $request): Response
+    public function getFooBarAction(Request $request, ?Tree $tree): Response
     {
-        return new Response($request->get('foo'));    
+        return new Response();    
     }
 };
 ```

@@ -84,9 +84,9 @@ class ModuleController extends AbstractAdminController
     public function list(): Response
     {
         return $this->viewResponse('admin/modules', [
-            'title'           => I18N::translate('Module administration'),
-            'modules'         => $this->module_service->all(),
-            'deleted_modules' => $this->module_service->deletedModules(),
+            'title'           => I18N::translate('All modules'),
+            'modules'         => $this->module_service->all(true),
+            'deleted_modules' => $this->module_service->deletedModules(true),
         ]);
     }
 
@@ -249,7 +249,7 @@ class ModuleController extends AbstractAdminController
         return $this->viewResponse('admin/components', [
             'description'  => $description,
             'interface'    => $interface,
-            'modules'      => $this->module_service->findByInterface($interface, true),
+            'modules'      => $this->module_service->findByInterface($interface, true, true),
             'title'        => $title,
             'trees'        => Tree::all(),
             'uses_access'  => $uses_access,

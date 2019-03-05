@@ -30,8 +30,6 @@ class HousekeepingService
     // This is a list of old files and directories, from earlier versions of webtrees.
     // git diff 1.7.9..master --name-status | grep ^D
     private const OLD_PATHS = [
-        // Removed in 1.0.2
-        'language/en.mo',
         // Removed in 1.0.3
         'themechange.php',
         // Removed in 1.1.0
@@ -210,15 +208,6 @@ class HousekeepingService
         // Removed in 1.7.0
         'admin_site_other.php',
         'js',
-        'language/en_GB.mo',
-        // Replaced with en-GB.mo
-        'language/en_US.mo',
-        // Replaced with en-US.mo
-        'language/pt_BR.mo',
-        // Replaced with pt-BR.mo
-        'language/zh_CN.mo',
-        // Replaced with zh-Hans.mo
-        'language/extra',
         'library',
         'save.php',
         'themes/clouds/css-1.6.2',
@@ -343,6 +332,7 @@ class HousekeepingService
         'index_edit.php',
         'indilist.php',
         'inverselink.php',
+        'language',
         'lifespan.php',
         'login.php',
         'logout.php',
