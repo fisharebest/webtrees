@@ -49,7 +49,8 @@ class SearchService
      * @param Tree[]   $trees
      * @param string[] $search
      *
-     * @return Collection|Family[]
+     * @return Collection
+     * @return Family[]
      */
     public function searchFamilies(array $trees, array $search): Collection
     {
@@ -74,7 +75,8 @@ class SearchService
      * @param int      $offset
      * @param int      $limit
      *
-     * @return Collection|Family[]
+     * @return Collection
+     * @return Family[]
      */
     public function searchFamilyNames(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -111,7 +113,8 @@ class SearchService
      * @param Tree[]   $trees
      * @param string[] $search
      *
-     * @return Collection|Individual[]
+     * @return Collection
+     * @return Individual[]
      */
     public function searchIndividuals(array $trees, array $search): Collection
     {
@@ -136,7 +139,8 @@ class SearchService
      * @param int      $offset
      * @param int      $limit
      *
-     * @return Collection|Individual[]
+     * @return Collection
+     * @return Individual[]
      */
     public function searchIndividualNames(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -164,7 +168,8 @@ class SearchService
      * @param int      $offset
      * @param int      $limit
      *
-     * @return Collection|Media[]
+     * @return Collection
+     * @return Media[]
      */
     public function searchMedia(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -184,7 +189,8 @@ class SearchService
      * @param int      $offset
      * @param int      $limit
      *
-     * @return Collection|Note[]
+     * @return Collection
+     * @return Note[]
      */
     public function searchNotes(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -205,7 +211,8 @@ class SearchService
      * @param int      $offset
      * @param int      $limit
      *
-     * @return Collection|Repository[]
+     * @return Collection
+     * @return Repository[]
      */
     public function searchRepositories(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -226,7 +233,8 @@ class SearchService
      * @param int      $offset
      * @param int      $limit
      *
-     * @return Collection|Source[]
+     * @return Collection
+     * @return Source[]
      */
     public function searchSources(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -246,7 +254,8 @@ class SearchService
      * @param int      $offset
      * @param int      $limit
      *
-     * @return Collection|Source[]
+     * @return Collection
+     * @return Source[]
      */
     public function searchSourcesByName(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -267,7 +276,8 @@ class SearchService
      * @param int      $offset
      * @param int      $limit
      *
-     * @return Collection|GedcomRecord[]
+     * @return Collection
+     * @return GedcomRecord[]
      */
     public function searchSubmitters(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -288,7 +298,8 @@ class SearchService
      * @param int    $offset
      * @param int    $limit
      *
-     * @return Collection|Place[]
+     * @return Collection
+     * @return Place[]
      */
     public function searchPlaces(Tree $tree, string $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -346,7 +357,8 @@ class SearchService
      * @param string[] $fields
      * @param string[] $modifiers
      *
-     * @return Collection|Individual[]
+     * @return Collection
+     * @return Individual[]
      */
     public function searchIndividualsAdvanced(array $trees, array $fields, array $modifiers): Collection
     {
@@ -759,7 +771,8 @@ class SearchService
      * @param string $place
      * @param Tree[] $search_trees
      *
-     * @return Collection|Individual[]
+     * @return Collection
+     * @return Individual[]
      */
     public function searchIndividualsPhonetic(string $soundex, string $lastname, string $firstname, string $place, array $search_trees): Collection
     {

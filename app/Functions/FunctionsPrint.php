@@ -421,8 +421,8 @@ class FunctionsPrint
      * Check for facts that may exist only once for a certain record type.
      * If the fact already exists in the second array, delete it from the first one.
      *
-     * @param string[]          $uniquefacts
-     * @param Collection|Fact[] $recfacts
+     * @param string[]   $uniquefacts
+     * @param Collection $recfacts
      *
      * @return string[]
      */
@@ -443,9 +443,9 @@ class FunctionsPrint
     /**
      * Print a new fact box on details pages
      *
-     * @param GedcomRecord      $record    the person, family, source etc the fact will be added to
-     * @param Collection|Fact[] $usedfacts an array of facts already used in this record
-     * @param string            $type      the type of record INDI, FAM, SOUR etc
+     * @param GedcomRecord $record    the person, family, source etc the fact will be added to
+     * @param Collection   $usedfacts an array of facts already used in this record
+     * @param string       $type      the type of record INDI, FAM, SOUR etc
      *
      * @return void
      */

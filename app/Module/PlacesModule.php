@@ -204,7 +204,8 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     /**
      * @param Individual $individual
      *
-     * @return Collection|Fact[]
+     * @return Collection
+     * @return Fact[]
      * @throws Exception
      */
     private function getPersonalFacts(Individual $individual): Collection

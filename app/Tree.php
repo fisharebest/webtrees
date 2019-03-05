@@ -281,7 +281,8 @@ class Tree
     /**
      * All the trees that we have permission to access.
      *
-     * @return Collection|Tree[]
+     * @return Collection
+     * @return Tree[]
      */
     public static function all(): Collection
     {

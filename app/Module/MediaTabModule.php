@@ -141,7 +141,8 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
     /**
      * This module handles the following facts - so don't show them on the "Facts and events" tab.
      *
-     * @return Collection|string[]
+     * @return Collection
+     * @return string[]
      */
     public function supportedFacts(): Collection
     {

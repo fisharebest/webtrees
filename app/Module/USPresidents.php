@@ -49,7 +49,8 @@ class USPresidents extends AbstractModule implements ModuleHistoricEventsInterfa
     /**
      * All events provided by this module.
      *
-     * @return Collection|string[]
+     * @return Collection
+     * @return string[]
      */
     public function historicEventsAll(): Collection
     {
