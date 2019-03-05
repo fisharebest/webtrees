@@ -27,7 +27,7 @@ class USPresidents extends AbstractModule implements ModuleHistoricEventsInterfa
     use ModuleHistoricEventsTrait;
 
     /**
-     * How should this module be labelled on tabs, menus, etc.?
+     * How should this module be identified in the control panel, etc.?
      *
      * @return string
      */

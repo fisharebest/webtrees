@@ -54,7 +54,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     public const DEFAULT_ICON = ['color' => 'Gold', 'name' => 'bullseye '];
 
     /**
-     * How should this module be labelled on tabs, menus, etc.?
+     * How should this module be identified in the control panel, etc.?
      *
      * @return string
      */

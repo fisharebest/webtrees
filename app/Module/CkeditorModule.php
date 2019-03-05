@@ -30,7 +30,7 @@ class CkeditorModule extends AbstractModule implements ModuleExternalUrlInterfac
     public const CKEDITOR_PATH = 'public/ckeditor-4.11.2-custom/';
 
     /**
-     * How should this module be labelled on tabs, menus, etc.?
+     * How should this module be identified in the control panel, etc.?
      *
      * @return string
      */

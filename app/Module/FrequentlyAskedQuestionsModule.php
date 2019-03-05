@@ -37,7 +37,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     use ModuleMenuTrait;
 
     /**
-     * How should this module be labelled on tabs, menus, etc.?
+     * How should this module be identified in the control panel, etc.?
      *
      * @return string
      */

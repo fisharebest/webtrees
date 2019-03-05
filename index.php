@@ -103,6 +103,7 @@ try {
         UseSession::class,
         UseTree::class,
         UseLocale::class,
+        UseTheme::class,
     ];
 
     if (class_exists(DebugBar::class)) {
@@ -111,7 +112,6 @@ try {
 
     if ($request->getMethod() === Request::METHOD_GET) {
         $middleware_stack[] = Housekeeping::class;
-        $middleware_stack[] = UseTheme::class;
     }
 
     if ($request->getMethod() === Request::METHOD_POST) {

@@ -37,7 +37,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
     private const DEFAULT_NUMBER_OF_SURNAMES = '10';
 
     /**
-     * How should this module be labelled on tabs, menus, etc.?
+     * How should this module be identified in the control panel, etc.?
      *
      * @return string
      */

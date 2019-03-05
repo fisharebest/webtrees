@@ -37,7 +37,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
     private const DEFAULT_STYLE  = 'table';
 
     /**
-     * How should this module be labelled on tabs, menus, etc.?
+     * How should this module be identified in the control panel, etc.?
      *
      * @return string
      */

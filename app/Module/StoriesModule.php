@@ -41,7 +41,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     protected $access_level = Auth::PRIV_HIDE;
 
     /**
-     * How should this module be labelled on tabs, menus, etc.?
+     * How should this module be identified in the control panel, etc.?
      *
      * @return string
      */

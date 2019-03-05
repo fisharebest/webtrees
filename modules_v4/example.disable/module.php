@@ -7,13 +7,13 @@ return new class extends AbstractModule implements ModuleCustomInterface {
     use ModuleCustomTrait;
 
     /**
-     * How should this module be labelled on tabs, menus, etc.?
+     * How should this module be identified in the control panel, etc.?
      *
      * @return string
      */
     public function title(): string
     {
-        return 'My Custom module';
+        return 'My custom module';
     }
 
     /**
@@ -53,7 +53,7 @@ return new class extends AbstractModule implements ModuleCustomInterface {
      */
     public function customModuleLatestVersionUrl(): string
     {
-        return 'https://www.webtrees.net';
+        return 'https://www.example.com/latest-version.txt';
     }
 
     /**
