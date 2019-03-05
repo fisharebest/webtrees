@@ -1,6 +1,19 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleConfigInterface;
-use Fisharebest\Webtrees\Webtrees; ?>
+<?php
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleConfigInterface;
+use Fisharebest\Webtrees\Module\ModuleCustomInterface;
+use Fisharebest\Webtrees\Webtrees;
+use Illuminate\Support\Collection;
+
+/**
+ * @var string     $latest_version
+ * @var string     $title
+ * @var Collection $server_errors
+ * @var Collection $server_warnings
+ */
+
+?>
 
 <h1><?= $title ?></h1>
 
@@ -114,7 +127,9 @@ use Fisharebest\Webtrees\Webtrees; ?>
             <thead>
                 <tr>
                     <th><?= I18N::translate('Family tree') ?></th>
-                    <th><span class="sr-only"><?= I18N::translate('Manage family trees') ?></span></th>
+                    <th>
+                        <span class="sr-only"><?= I18N::translate('Manage family trees') ?></span>
+                    </th>
                     <th class="text-right"><?= I18N::translate('Pending changes') ?></th>
                     <th class="d-none d-sm-table-cell text-right"><?= I18N::translate('Individuals') ?></th>
                     <th class="d-none d-lg-table-cell text-right"><?= I18N::translate('Families') ?></th>
@@ -425,10 +440,13 @@ use Fisharebest\Webtrees\Webtrees; ?>
                                     <?= $module->title() ?>
                                     <span class="fa"><?= view('icons/preferences') ?></span>
                                 </a>
-                            <?php elseif ($module->isEnabled()) :?>
+                            <?php elseif ($module->isEnabled()) : ?>
                                 <?= $module->title() ?>
-                            <?php else :?>
+                            <?php else : ?>
                                 <del class="text-muted"><?= $module->title() ?></del>
+                            <?php endif ?>
+                            <?php if ($module instanceof ModuleCustomInterface): ?>
+                                <?= view('admin/custom-module-info', ['module' => $module]) ?>
                             <?php endif ?>
                         </li>
                     <?php endforeach ?>
@@ -522,7 +540,9 @@ use Fisharebest\Webtrees\Webtrees; ?>
             </p>
             <ul class="list-unstyled">
                 <?php foreach ($files_to_delete as $file_to_delete) : ?>
-                    <li dir="ltr"><code><?= e($file_to_delete) ?></code></li>
+                    <li dir="ltr">
+                        <code><?= e($file_to_delete) ?></code>
+                    </li>
                 <?php endforeach ?>
             </ul>
         </div>
