@@ -1,5 +1,8 @@
 <?php
 
+namespace MyCustomNamespace;
+
+use Closure;
 use Fisharebest\Webtrees\Http\Middleware\MiddlewareInterface;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;

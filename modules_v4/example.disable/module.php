@@ -1,5 +1,7 @@
 <?php
 
+namespace MyCustomNamespace;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Module\AbstractModule;
@@ -94,7 +96,7 @@ return new class extends AbstractModule implements ModuleCustomInterface
     public function boot(UserInterface $user, ?Tree $tree): void
     {
         // The boot() function is called after the framework has been booted.
-
+        // We can now use the current user, tree, etc.
         if (!Auth::isAdmin($user) && $tree !== null) {
             return;
         }
