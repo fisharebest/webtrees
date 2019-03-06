@@ -470,7 +470,7 @@ class I18N
     {
         $locales = [];
 
-        foreach (glob(WT_ROOT . 'resources/lang/*',GLOB_NOSORT | GLOB_ONLYDIR) as $file) {
+        foreach (glob(WT_ROOT . 'resources/lang/*', GLOB_NOSORT | GLOB_ONLYDIR) as $file) {
             try {
                 $locales[] = Locale::create(basename($file, '.mo'));
             } catch (DomainException $ex) {
