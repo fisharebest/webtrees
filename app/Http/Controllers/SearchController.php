@@ -244,11 +244,11 @@ class SearchController extends AbstractBaseController
             return new RedirectResponse($families->first()->url());
         }
 
-        if (empty($individuals) && $families->isEmpty() && $sources->count() === 1 && $notes->isEmpty()) {
+        if ($individuals->isEmpty() && $families->isEmpty() && $sources->count() === 1 && $notes->isEmpty()) {
             return new RedirectResponse($sources->first()->url());
         }
 
-        if (empty($individuals) && $families->isEmpty() && $sources->isEmpty() && $notes->count() === 1) {
+        if ($individuals->isEmpty() && $families->isEmpty() && $sources->isEmpty() && $notes->count() === 1) {
             return new RedirectResponse($notes->first()->url());
         }
 

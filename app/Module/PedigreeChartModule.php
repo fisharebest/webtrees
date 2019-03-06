@@ -178,7 +178,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
         // Father’s ancestors link to the father’s pedigree
         // Mother’s ancestors link to the mother’s pedigree..
         $links = $ancestors->map(function (?Individual $individual, $sosa) use ($ancestors, $orientation, $generations): string {
-            if ($individual instanceof Individual && $sosa >= 2 ** $generations / 2 && !empty($individual->childFamilies())) {
+            if ($individual instanceof Individual && $sosa >= 2 ** $generations / 2 && $individual->childFamilies()->isNotEmpty()) {
                 // The last row/column, and there are more generations.
                 if ($sosa >= 2 ** $generations * 3 / 4) {
                     return $this->nextLink($ancestors->get(3), $orientation, $generations);
