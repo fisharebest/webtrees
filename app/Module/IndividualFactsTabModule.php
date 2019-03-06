@@ -54,7 +54,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
     }
 
     /**
-     * How should this module be labelled on tabs, menus, etc.?
+     * How should this module be identified in the control panel, etc.?
      *
      * @return string
      */
@@ -511,7 +511,8 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
     /**
      * This module handles the following facts - so don't show them on the "Facts and events" tab.
      *
-     * @return Collection|string[]
+     * @return Collection
+     * @return string[]
      */
     public function supportedFacts(): Collection
     {

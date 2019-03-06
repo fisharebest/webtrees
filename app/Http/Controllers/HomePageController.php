@@ -659,7 +659,8 @@ class HomePageController extends AbstractBaseController
     /**
      * Get all the available blocks for a tree page.
      *
-     * @return Collection|ModuleBlockInterface[]
+     * @return Collection
+     * @return ModuleBlockInterface[]
      */
     private function availableTreeBlocks(): Collection
     {
@@ -675,7 +676,8 @@ class HomePageController extends AbstractBaseController
     /**
      * Get all the available blocks for a user page.
      *
-     * @return Collection|ModuleBlockInterface[]
+     * @return Collection
+     * @return ModuleBlockInterface[]
      */
     private function availableUserBlocks(): Collection
     {
@@ -694,7 +696,8 @@ class HomePageController extends AbstractBaseController
      * @param int    $tree_id
      * @param string $location "main" or "side"
      *
-     * @return Collection|ModuleBlockInterface[]
+     * @return Collection
+     * @return ModuleBlockInterface[]
      */
     private function treeBlocks(int $tree_id, string $location): Collection
     {
@@ -741,7 +744,8 @@ class HomePageController extends AbstractBaseController
      * @param int    $user_id
      * @param string $location "main" or "side"
      *
-     * @return Collection|ModuleBlockInterface[]
+     * @return Collection
+     * @return ModuleBlockInterface[]
      */
     private function userBlocks(int $user_id, string $location): Collection
     {
@@ -898,7 +902,8 @@ class HomePageController extends AbstractBaseController
      * @param Collection $blocks
      * @param Collection $active_blocks
      *
-     * @return Collection|ModuleBlockInterface[]
+     * @return Collection
+     * @return ModuleBlockInterface[]
      */
     private function filterActiveBlocks(Collection $blocks, Collection $active_blocks): Collection
     {

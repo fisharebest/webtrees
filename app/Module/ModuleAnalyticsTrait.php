@@ -37,7 +37,7 @@ trait ModuleAnalyticsTrait
     abstract protected function viewResponse($view_name, $view_data, $status = Response::HTTP_OK): Response;
 
     /**
-     * How should this module be labelled on tabs, menus, etc.?
+     * How should this module be identified in the control panel, etc.?
      *
      * @return string
      */

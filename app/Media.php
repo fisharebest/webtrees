@@ -113,7 +113,8 @@ class Media extends GedcomRecord
     /**
      * Get the media files for this media object
      *
-     * @return Collection|MediaFile[]
+     * @return Collection
+     * @return MediaFile[]
      */
     public function mediaFiles(): Collection
     {

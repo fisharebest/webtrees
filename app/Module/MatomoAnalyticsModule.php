@@ -27,7 +27,7 @@ class MatomoAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
     use ModuleExternalUrlTrait;
 
     /**
-     * How should this module be labelled on tabs, menus, etc.?
+     * How should this module be identified in the control panel, etc.?
      *
      * @return string
      */

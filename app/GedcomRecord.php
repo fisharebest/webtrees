@@ -585,9 +585,9 @@ class GedcomRecord
      * ['full'] = the name as specified in the record, e.g. 'Vincent van Gogh' or 'John Unknown'
      * ['sort'] = a sortable version of the name (not for display), e.g. 'Gogh, Vincent' or '@N.N., John'
      *
-     * @param int               $level
-     * @param string            $fact_type
-     * @param Collection|Fact[] $facts
+     * @param int        $level
+     * @param string     $fact_type
+     * @param Collection $facts
      *
      * @return void
      */
@@ -1071,7 +1071,8 @@ class GedcomRecord
      * @param int|null $access_level
      * @param bool     $override Include private records, to allow us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES.
      *
-     * @return Collection|Fact[]
+     * @return Collection
+     * @return Fact[]
      */
     public function facts(array $filter = [], bool $sort = false, int $access_level = null, bool $override = false): Collection
     {

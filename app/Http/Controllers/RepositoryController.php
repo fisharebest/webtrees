@@ -73,7 +73,8 @@ class RepositoryController extends AbstractBaseController
     /**
      * @param Repository $record
      *
-     * @return Collection|Fact[]
+     * @return Collection
+     * @return Fact[]
      */
     private function facts(Repository $record): Collection
     {

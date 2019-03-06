@@ -18,11 +18,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Exception;
+use Illuminate\Support\Str;
+use InvalidArgumentException;
+use RuntimeException;
 use Throwable;
-use function array_filter;
+use function array_key_exists;
+use function explode;
 use function extract;
 use function implode;
-use function is_dir;
 use function is_file;
 use function ob_end_clean;
 use function ob_start;
@@ -33,8 +36,7 @@ use function sha1;
  */
 class View
 {
-    // Where do our templates live
-    private const TEMPLATE_PATH = 'resources/views/';
+    public const NAMESPACE_SEPARATOR = '::';
 
     // File extension for our template files.
     private const TEMPLATE_EXTENSION = '.phtml';
@@ -48,6 +50,18 @@ class View
      * @var mixed[] Data to be inserted into the view.
      */
     private $data;
+
+    /**
+     * @var string[] Where do the templates live, for each namespace.
+     */
+    private static $namespaces = [
+        '' => WT_ROOT . 'resources/views/',
+    ];
+
+    /**
+     * @var string[] Modules can replace core views with their own.
+     */
+    private static $replacements = [];
 
     /**
      * @var mixed[] Data to be inserted into all views.
@@ -183,24 +197,71 @@ class View
     }
 
     /**
-     * Allow a theme to override the default views.
+     * @param string $namespace
+     * @param string $path
+     *
+     * @throws InvalidArgumentException
+     */
+    public static function registerNamespace(string $namespace, string $path): void
+    {
+        if ($namespace === '') {
+            throw new InvalidArgumentException('Cannot register the default namespace');
+        }
+
+        if (!Str::endsWith($path, '/')) {
+            throw new InvalidArgumentException('Paths must end with a directory separator');
+        }
+
+        self::$namespaces[$namespace] = $path;
+    }
+
+    /**
+     * @param string $old
+     * @param string $new
+     *
+     * @throws InvalidArgumentException
+     */
+    public static function registerCustomView(string $old, string $new): void
+    {
+        if (Str::contains($old, self::NAMESPACE_SEPARATOR) && Str::contains($new, self::NAMESPACE_SEPARATOR)) {
+            self::$replacements[$old] = $new;
+        } else {
+            throw new InvalidArgumentException();
+        }
+    }
+
+    /**
+     * Find the file for a view.
      *
      * @param string $view_name
      *
      * @return string
      * @throws Exception
      */
-    public function getFilenameForView($view_name): string
+    public function getFilenameForView(string $view_name): string
     {
-        foreach ($this->paths() as $path) {
-            $view_file = $path . $view_name . self::TEMPLATE_EXTENSION;
-
-            if (is_file($view_file)) {
-                return $view_file;
-            }
+        if (!Str::contains($view_name, self::NAMESPACE_SEPARATOR)) {
+            $view_name = self::NAMESPACE_SEPARATOR . $view_name;
         }
 
-        throw new Exception('View not found: ' . e($view_name));
+        // Apply replacements / customisations
+        while (array_key_exists($view_name, self::$replacements)) {
+            $view_name = self::$replacements[$view_name];
+        }
+
+        [$namespace, $view_name] = explode(self::NAMESPACE_SEPARATOR, $view_name, 2);
+
+        if ((self::$namespaces[$namespace] ?? null) === null) {
+            throw new RuntimeException('Namespace "' . e($namespace) .  '" not found.');
+        }
+
+        $view_file = self::$namespaces[$namespace] . $view_name . self::TEMPLATE_EXTENSION;
+
+        if (!is_file($view_file)) {
+            throw new RuntimeException('View file not found: ' . e($view_file));
+        }
+
+        return $view_file;
     }
 
     /**
@@ -218,30 +279,5 @@ class View
         DebugBar::addView($name, $data);
 
         return $view->render();
-    }
-
-    /**
-     * @return string[]
-     */
-    private function paths(): array
-    {
-        static $paths = [];
-
-        if (empty($paths)) {
-            // Module views
-            // @TODO - this includes disabled modules.
-            //$paths = glob(WT_ROOT . Webtrees::MODULES_PATH . '*/' . self::TEMPLATE_PATH);
-            // Theme views
-            // @TODO - this won't work during setup.
-            //$paths[] = WT_ROOT . Webtrees::THEMES_PATH . app(ModuleThemeInterface::class)->name() . '/' . self::TEMPLATE_PATH;
-            // Core views
-            $paths[] = WT_ROOT . self::TEMPLATE_PATH;
-
-            $paths = array_filter($paths, function (string $path): bool {
-                return is_dir($path);
-            });
-        }
-
-        return $paths;
     }
 }

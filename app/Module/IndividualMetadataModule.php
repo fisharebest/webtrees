@@ -45,7 +45,7 @@ class IndividualMetadataModule extends AbstractModule implements ModuleSidebarIn
     ];
 
     /**
-     * How should this module be labelled on tabs, menus, etc.?
+     * How should this module be identified in the control panel, etc.?
      *
      * @return string
      */
@@ -126,7 +126,8 @@ class IndividualMetadataModule extends AbstractModule implements ModuleSidebarIn
     /**
      * This module handles the following facts - so don't show them on the "Facts and events" tab.
      *
-     * @return Collection|string[]
+     * @return Collection
+     * @return string[]
      */
     public function supportedFacts(): Collection
     {

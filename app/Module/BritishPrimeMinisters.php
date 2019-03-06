@@ -29,7 +29,7 @@ class BritishPrimeMinisters extends AbstractModule implements ModuleHistoricEven
     use ModuleHistoricEventsTrait;
 
     /**
-     * How should this module be labelled on tabs, menus, etc.?
+     * How should this module be identified in the control panel, etc.?
      *
      * @return string
      */
@@ -51,7 +51,8 @@ class BritishPrimeMinisters extends AbstractModule implements ModuleHistoricEven
     /**
      * All events provided by this module.
      *
-     * @return Collection|string[]
+     * @return Collection
+     * @return string[]
      */
     public function historicEventsAll(): Collection
     {

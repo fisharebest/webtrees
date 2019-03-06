@@ -43,7 +43,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
     private const MINIMUM_GENERATIONS = 2;
 
     /**
-     * How should this module be labelled on tabs, menus, etc.?
+     * How should this module be identified in the control panel, etc.?
      *
      * @return string
      */

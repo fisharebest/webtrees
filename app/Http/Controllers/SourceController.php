@@ -81,7 +81,8 @@ class SourceController extends AbstractBaseController
     /**
      * @param Source $record
      *
-     * @return Collection|Fact[]
+     * @return Collection
+     * @return Fact[]
      */
     private function facts(Source $record): Collection
     {

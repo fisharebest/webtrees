@@ -2140,7 +2140,8 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @return Collection|string[]
+     * @return Collection
+     * @return string[]
      */
     private function themeOptions(): Collection
     {

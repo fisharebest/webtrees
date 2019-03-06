@@ -17,7 +17,7 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Application;
-use Fisharebest\Webtrees\View;
+use Fisharebest\Webtrees\View as WebtreesView;
 use Fisharebest\Webtrees\Webtrees;
 
 /**
@@ -105,5 +105,5 @@ function route(string $route, array $parameters = [], bool $absolute = true): st
  */
 function view(string $name, array $data = [])
 {
-    return View::make($name, $data);
+    return WebtreesView::make($name, $data);
 }

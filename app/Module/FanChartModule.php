@@ -51,7 +51,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
     private const DEFAULT_WIDTH       = 100;
 
     /**
-     * How should this module be labelled on tabs, menus, etc.?
+     * How should this module be identified in the control panel, etc.?
      *
      * @return string
      */

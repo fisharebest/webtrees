@@ -29,7 +29,7 @@ class BritishSocialHistory extends AbstractModule implements ModuleHistoricEvent
     use ModuleHistoricEventsTrait;
 
     /**
-     * How should this module be labelled on tabs, menus, etc.?
+     * How should this module be identified in the control panel, etc.?
      *
      * @return string
      */
@@ -51,7 +51,8 @@ class BritishSocialHistory extends AbstractModule implements ModuleHistoricEvent
     /**
      * All events provided by this module.
      *
-     * @return Collection|string[]
+     * @return Collection
+     * @return string[]
      */
     public function historicEventsAll(): Collection
     {

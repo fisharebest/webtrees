@@ -395,7 +395,8 @@ class MediaController extends AbstractAdminController
     /**
      * Generate a list of all folders from all the trees.
      *
-     * @return Collection|string[]
+     * @return Collection
+     * @return string[]
      */
     private function allMediaFolders(): Collection
     {
@@ -472,7 +473,8 @@ class MediaController extends AbstractAdminController
      * @param string $media_folder
      * @param string $subfolders
      *
-     * @return Collection|string[]
+     * @return Collection
+     * @return string[]
      */
     private function allMediaFiles(string $media_folder, string $subfolders): array
     {

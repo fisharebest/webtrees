@@ -166,7 +166,8 @@ class ControlPanelController extends AbstractAdminController
     /**
      * Count the number of families in each tree.
      *
-     * @return Collection|int[]
+     * @return Collection
+     * @return int[]
      */
     private function totalFamilies(): Collection
     {
@@ -182,7 +183,8 @@ class ControlPanelController extends AbstractAdminController
     /**
      * Count the number of individuals in each tree.
      *
-     * @return Collection|int[]
+     * @return Collection
+     * @return int[]
      */
     private function totalIndividuals(): Collection
     {
@@ -198,7 +200,8 @@ class ControlPanelController extends AbstractAdminController
     /**
      * Count the number of media objects in each tree.
      *
-     * @return Collection|int[]
+     * @return Collection
+     * @return int[]
      */
     private function totalMediaObjects(): Collection
     {
@@ -214,7 +217,8 @@ class ControlPanelController extends AbstractAdminController
     /**
      * Count the number of notes in each tree.
      *
-     * @return Collection|int[]
+     * @return Collection
+     * @return int[]
      */
     private function totalNotes(): Collection
     {
@@ -234,7 +238,8 @@ class ControlPanelController extends AbstractAdminController
     /**
      * Count the number of repositorie in each tree.
      *
-     * @return Collection|int[]
+     * @return Collection
+     * @return int[]
      */
     private function totalRepositories(): Collection
     {
@@ -254,7 +259,8 @@ class ControlPanelController extends AbstractAdminController
     /**
      * Count the number of sources in each tree.
      *
-     * @return Collection|int[]
+     * @return Collection
+     * @return int[]
      */
     private function totalSources(): Collection
     {

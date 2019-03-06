@@ -66,7 +66,8 @@ class NoteController extends AbstractBaseController
     /**
      * @param Note $record
      *
-     * @return Collection|Fact[]
+     * @return Collection
+     * @return Fact[]
      */
     private function facts(Note $record): Collection
     {

@@ -63,7 +63,8 @@ class MediaController extends AbstractBaseController
     /**
      * @param Media $record
      *
-     * @return Collection|Fact[]
+     * @return Collection
+     * @return Fact[]
      */
     private function facts(Media $record): Collection
     {

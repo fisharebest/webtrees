@@ -46,7 +46,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
     private const CACHE_LIFE         = 1209600; // Two weeks
 
     /**
-     * How should this module be labelled on tabs, menus, etc.?
+     * How should this module be identified in the control panel, etc.?
      *
      * @return string
      */
@@ -209,7 +209,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int    $limit
      * @param int    $offset
      *
-     * @return Collection|GedcomRecord[]
+     * @return Collection
+     * @return GedcomRecord[]
      */
     private function sitemapRecords(Tree $tree, string $type, int $limit, int $offset): Collection
     {
@@ -249,7 +250,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $limit
      * @param int  $offset
      *
-     * @return Collection|Individual[]
+     * @return Collection
+     * @return Individual[]
      */
     private function sitemapIndividuals(Tree $tree, int $limit, int $offset): Collection
     {
@@ -267,7 +269,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $limit
      * @param int  $offset
      *
-     * @return Collection|Media[]
+     * @return Collection
+     * @return Media[]
      */
     private function sitemapMedia(Tree $tree, int $limit, int $offset): Collection
     {
@@ -285,7 +288,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $limit
      * @param int  $offset
      *
-     * @return Collection|Note[]
+     * @return Collection
+     * @return Note[]
      */
     private function sitemapNotes(Tree $tree, int $limit, int $offset): Collection
     {
@@ -304,7 +308,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $limit
      * @param int  $offset
      *
-     * @return Collection|Repository[]
+     * @return Collection
+     * @return Repository[]
      */
     private function sitemapRepositories(Tree $tree, int $limit, int $offset): Collection
     {
@@ -323,7 +328,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $limit
      * @param int  $offset
      *
-     * @return Collection|Source[]
+     * @return Collection
+     * @return Source[]
      */
     private function sitemapSources(Tree $tree, int $limit, int $offset): Collection
     {

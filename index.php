@@ -19,6 +19,7 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Exceptions\Handler;
 use Fisharebest\Webtrees\Http\Controllers\SetupController;
+use Fisharebest\Webtrees\Http\Middleware\BootModules;
 use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\DebugBarData;
@@ -103,6 +104,8 @@ try {
         UseSession::class,
         UseTree::class,
         UseLocale::class,
+        UseTheme::class,
+        BootModules::class,
     ];
 
     if (class_exists(DebugBar::class)) {
@@ -111,7 +114,6 @@ try {
 
     if ($request->getMethod() === Request::METHOD_GET) {
         $middleware_stack[] = Housekeeping::class;
-        $middleware_stack[] = UseTheme::class;
     }
 
     if ($request->getMethod() === Request::METHOD_POST) {
@@ -154,7 +156,7 @@ try {
     });
 
     $response = call_user_func($pipeline, $request);
-} catch (Exception $exception) {
+} catch (\Throwable $exception) {
     $response = (new Handler())->render($request, $exception);
 }
 
