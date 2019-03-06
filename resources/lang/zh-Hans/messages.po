@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:51+0100\n"
-"PO-Revision-Date: 2019-03-06 17:09+0800\n"
+"PO-Revision-Date: 2019-03-06 17:17+0800\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <http://translate.webtrees.net/projects/webtrees/webtrees/zh-Hans/>\n"
 "Language: zh_CN\n"
@@ -9528,7 +9528,7 @@ msgstr "犹太名称"
 #. I18N: gedcom tag NPFX
 #: app/GedcomTag.php:899
 msgid "Name prefix"
-msgstr "名称前缀"
+msgstr "字辈"
 
 #. I18N: gedcom tag NSFX
 #: app/GedcomTag.php:902
