@@ -600,7 +600,7 @@ class Tree
      *
      * @return void
      */
-    public function exportGedcom($stream)
+    public function exportGedcom($stream): void
     {
         $buffer = FunctionsExport::reformatRecord(FunctionsExport::gedcomHeader($this, 'UTF-8'));
 
@@ -652,7 +652,7 @@ class Tree
      *
      * @return void
      */
-    public function importGedcomFile(string $path, string $filename)
+    public function importGedcomFile(string $path, string $filename): void
     {
         // Read the file in blocks of roughly 64K. Ensure that each block
         // contains complete gedcom records. This will ensure we don’t split
