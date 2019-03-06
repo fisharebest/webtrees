@@ -34,6 +34,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
+use function random_bytes;
 use function ini_get;
 use const WT_DATA_DIR;
 
@@ -295,7 +296,8 @@ class SetupController extends AbstractBaseController
      */
     private function checkFolderIsWritable(string $data_dir): bool
     {
-        $text1 = uniqid();
+        $text1 = random_bytes(32);
+
         try {
             file_put_contents($data_dir . 'test.txt', $text1);
             $text2 = file_get_contents(WT_DATA_DIR . 'test.txt');
