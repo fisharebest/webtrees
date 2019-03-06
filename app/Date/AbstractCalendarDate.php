@@ -148,14 +148,6 @@ abstract class AbstractCalendarDate
     }
 
     /**
-     * @return CalendarInterface
-     */
-    public function calendar(): CalendarInterface
-    {
-        return $this->calendar();
-    }
-
-    /**
      * @return int
      */
     public function maximumJulianDay(): int
