@@ -38,18 +38,12 @@ use const PHP_MINOR_VERSION;
  */
 class ServerCheckService
 {
-    const PHP_SUPPORT_URL   = 'https://secure.php.net/supported-versions.php';
-    const PHP_MINOR_VERSION = PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;
-    const PHP_SUPPORT_DATES = [
+    private const PHP_SUPPORT_URL   = 'https://secure.php.net/supported-versions.php';
+    private const PHP_MINOR_VERSION = PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;
+    private const PHP_SUPPORT_DATES = [
         '7.1' => '2019-12-01',
         '7.2' => '2020-11-30',
         '7.3' => '2021-12-06',
-    ];
-
-    const PHP_LIBRARIES = [
-        'gd',
-        'xml',
-        'simplexml',
     ];
 
     // As required by illuminate/database 5.8
