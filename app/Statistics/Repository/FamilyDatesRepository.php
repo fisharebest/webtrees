@@ -76,7 +76,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
             ->select(['d_gid as id', 'd_year as year', 'd_fact AS fact', 'd_type AS type'])
             ->where('d_file', '=', $this->tree->id())
             ->where('d_fact', '=', $fact)
-            ->where('d_julianday1', '=', function (Builder $query) use ($operation, $fact) {
+            ->where('d_julianday1', '=', function (Builder $query) use ($operation, $fact): void {
                 $query->selectRaw($operation . '(d_julianday1)')
                     ->from('dates')
                     ->where('d_file', '=', $this->tree->id())

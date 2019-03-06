@@ -32,7 +32,7 @@ class Place
     /** @var string e.g. "Westminster, London, England" */
     private $place_name;
 
-    /** @var Collection|string[] The parts of a place name, e.g. ["Westminster", "London", "England"] */
+    /** @var Collection The parts of a place name, e.g. ["Westminster", "London", "England"] */
     private $parts;
 
     /** @var Tree We may have the same place name in different trees. */
@@ -74,7 +74,7 @@ class Place
      */
     public function id(): int
     {
-        return app('cache.array')->rememberForever(__CLASS__ . __METHOD__ . $this->place_name, function () {
+        return app('cache.array')->rememberForever(__CLASS__ . __METHOD__ . $this->place_name, function (): int {
             // The "top-level" place won't exist in the database.
             if ($this->parts->isEmpty()) {
                 return 0;

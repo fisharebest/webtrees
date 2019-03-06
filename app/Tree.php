@@ -286,7 +286,7 @@ class Tree
      */
     public static function all(): Collection
     {
-        return app('cache.array')->rememberForever(__CLASS__, function () {
+        return app('cache.array')->rememberForever(__CLASS__, function (): Collection {
             // Admins see all trees
             $query = DB::table('gedcom')
                 ->leftJoin('gedcom_setting', function (JoinClause $join): void {

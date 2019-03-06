@@ -154,9 +154,13 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             ]);
         }
 
-        $individuals = array_map(function (string $xref) use ($tree) {
+        $individuals = array_map(function (string $xref) use ($tree): ?Individual {
             return Individual::getInstance($xref, $tree);
         }, $xrefs);
+
+        $individuals = array_filter($individuals, function (?Individual $individual): bool {
+            return $individual instanceof Individual && $individual->canShow();
+        });
 
         if ($ajax) {
             return $this->chart($tree, $xrefs, $scale);
@@ -218,12 +222,12 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         $xrefs = array_unique($xrefs);
 
         /** @var Individual[] $individuals */
-        $individuals = array_map(function (string $xref) use ($tree) {
+        $individuals = array_map(function (string $xref) use ($tree): ?Individual {
             return Individual::getInstance($xref, $tree);
         }, $xrefs);
 
-        $individuals = array_filter($individuals, function (Individual $individual = null): bool {
-            return $individual !== null && $individual->canShow();
+        $individuals = array_filter($individuals, function (?Individual $individual): bool {
+            return $individual instanceof Individual && $individual->canShow();
         });
 
         $baseyear    = (int) date('Y');

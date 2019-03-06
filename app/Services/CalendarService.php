@@ -95,12 +95,12 @@ class CalendarService
         // Events that start or end during the period
         $query = DB::table('dates')
             ->where('d_file', '=', $tree->id())
-            ->where(function (Builder $query) use ($jd1, $jd2) {
-                $query->where(function (Builder $query) use ($jd1, $jd2) {
+            ->where(function (Builder $query) use ($jd1, $jd2): void {
+                $query->where(function (Builder $query) use ($jd1, $jd2): void {
                     $query
                         ->where('d_julianday1', '>=', $jd1)
                         ->where('d_julianday1', '<=', $jd2);
-                })->orWhere(function (Builder $query) use ($jd1, $jd2) {
+                })->orWhere(function (Builder $query) use ($jd1, $jd2): void {
                     $query
                         ->where('d_julianday2', '>=', $jd1)
                         ->where('d_julianday2', '<=', $jd2);

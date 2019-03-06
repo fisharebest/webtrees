@@ -79,8 +79,10 @@ class UpgradeService
      *
      * @param string $zip_file
      * @param string $target_folder
+     *
+     * @return void
      */
-    public function extractWebtreesZip(string $zip_file, string $target_folder)
+    public function extractWebtreesZip(string $zip_file, string $target_folder): void
     {
         // The Flysystem ZIP archive adapter is painfully slow, so use the native PHP library.
         $zip = new ZipArchive();
@@ -166,8 +168,10 @@ class UpgradeService
      *
      * @param Filesystem $source
      * @param Filesystem $destination
+     *
+     * @return void
      */
-    public function moveFiles(Filesystem $source, Filesystem $destination)
+    public function moveFiles(Filesystem $source, Filesystem $destination): void
     {
         foreach ($source->listContents() as $path) {
             if ($path['type'] === 'file') {
@@ -187,8 +191,10 @@ class UpgradeService
      * @param Filesystem $filesystem
      * @param Collection $folders_to_clean
      * @param Collection   $files_to_keep
+     *
+     * @return void
      */
-    public function cleanFiles(Filesystem $filesystem, Collection $folders_to_clean, Collection $files_to_keep)
+    public function cleanFiles(Filesystem $filesystem, Collection $folders_to_clean, Collection $files_to_keep): void
     {
         foreach ($folders_to_clean as $folder_to_clean) {
             foreach ($filesystem->listContents($folder_to_clean, true) as $path) {

@@ -39,9 +39,9 @@ class UserService
      *
      * @return User|null
      */
-    public function find($user_id)
+    public function find($user_id): ?User
     {
-        return app('cache.array')->rememberForever(__CLASS__ . $user_id, function () use ($user_id) {
+        return app('cache.array')->rememberForever(__CLASS__ . $user_id, function () use ($user_id): ?User {
             return DB::table('user')
                 ->where('user_id', '=', $user_id)
                 ->get()
