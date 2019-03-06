@@ -2399,7 +2399,7 @@ class ReportParserGenerate extends ReportParserBase
 
         $this->list = [];
         $person     = Individual::getInstance($id, $this->tree);
-        if (!empty($person)) {
+        if ($person instanceof Individual) {
             $this->list[$id] = $person;
             switch ($group) {
                 case 'child-family':
