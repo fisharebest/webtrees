@@ -86,7 +86,7 @@ class ModuleController extends AbstractAdminController
         return $this->viewResponse('admin/modules', [
             'title'           => I18N::translate('All modules'),
             'modules'         => $this->module_service->all(true),
-            'deleted_modules' => $this->module_service->deletedModules(true),
+            'deleted_modules' => $this->module_service->deletedModules(),
         ]);
     }
 

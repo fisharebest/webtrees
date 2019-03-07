@@ -144,7 +144,7 @@ class ServerCheckService
      *
      * @param string $function
      *
-     * @return string
+     * @return bool
      */
     public function isFunctionDisabled(string $function): bool
     {

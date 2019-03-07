@@ -150,11 +150,11 @@ class AbstractCensusColumn
      *
      * @return string - e.g. "England"
      */
-    protected function lastPartOfPlace($place): string
+    protected function lastPartOfPlace(string $place): string
     {
-        $place = explode(', ', $place);
+        $parts = explode(', ', $place);
 
-        return end($place);
+        return end($parts);
     }
 
     /**
@@ -164,7 +164,7 @@ class AbstractCensusColumn
      *
      * @return string - e.g. "London" (for census of England) and "London, England" elsewhere
      */
-    protected function notCountry($place)
+    protected function notCountry(string $place): string
     {
         $parts = explode(', ', $place);
 
