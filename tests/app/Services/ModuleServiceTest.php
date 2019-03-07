@@ -117,7 +117,7 @@ class ModuleServiceTest extends TestCase
 
         $module_service = new ModuleService();
 
-        $this->assertSame(5, $module_service->otherModules()->count());
+        $this->assertSame(4, $module_service->otherModules()->count());
     }
 
     /**
