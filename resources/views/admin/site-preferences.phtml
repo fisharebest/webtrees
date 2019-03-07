@@ -35,39 +35,6 @@
         </div>
     </div>
 
-    <!-- MEMORY_LIMIT -->
-    <div class="row form-group">
-        <label for="MEMORY_LIMIT" class="col-sm-3 col-form-label">
-            <?= /* I18N: A configuration setting */
-            I18N::translate('Memory limit') ?>
-        </label>
-        <div class="col-sm-9">
-            <input type="text" class="form-control" id="MEMORY_LIMIT" name="MEMORY_LIMIT" value="<?= e(Site::getPreference('MEMORY_LIMIT')) ?>" pattern="[0-9]+[KMG]" placeholder="<?= get_cfg_var('memory_limit') ?>" maxlength="255">
-            <p class="small text-muted">
-                <?= /* I18N: %s is an amount of memory, such as 32MB */
-                I18N::translate('By default, your server allows scripts to use %s of memory.', get_cfg_var('memory_limit')) ?>
-                <?= I18N::translate('You can request a higher or lower limit, although the server may ignore this request.') ?>
-                <?= I18N::translate('Leave this blank to use the default value.') ?>
-            </p>
-        </div>
-    </div>
-
-    <!-- MAX_EXECUTION_TIME -->
-    <div class="row form-group">
-        <label for="MAX_EXECUTION_TIME" class="col-sm-3 col-form-label">
-            <?= /* I18N: A configuration setting */
-            I18N::translate('PHP time limit') ?>
-        </label>
-        <div class="col-sm-9">
-            <input type="text" class="form-control" id="MAX_EXECUTION_TIME" name="MAX_EXECUTION_TIME" value="<?= e(Site::getPreference('MAX_EXECUTION_TIME')) ?>" pattern="[0-9]*" placeholder="<?= get_cfg_var('max_execution_time') ?>" maxlength="255">
-            <p class="small text-muted">
-                <?= I18N::plural('By default, your server allows scripts to run for %s second.', 'By default, your server allows scripts to run for %s seconds.', $max_execution_time, I18N::number($max_execution_time)); ?>
-                <?= I18N::translate('You can request a higher or lower limit, although the server may ignore this request.') ?>
-                <?= I18N::translate('Leave this blank to use the default value.') ?>
-            </p>
-        </div>
-    </div>
-
     <!-- TIMEZONE -->
     <div class="row form-group">
         <label for="TIMEZONE" class="col-sm-3 col-form-label">

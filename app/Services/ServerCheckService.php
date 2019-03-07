@@ -26,6 +26,7 @@ use function explode;
 use function extension_loaded;
 use function in_array;
 use function ini_get;
+use function strtolower;
 use function sys_get_temp_dir;
 use function trim;
 use function version_compare;
@@ -139,7 +140,26 @@ class ServerCheckService
     }
 
     /**
-     * Check if a PHP extension is loaded.
+     * Check if a PHP function is in the list of disabled functions.
+     *
+     * @param string $function
+     *
+     * @return string
+     */
+    public function isFunctionDisabled(string $function): bool
+    {
+        $disable_functions = explode(',', ini_get('disable_functions'));
+        $disable_functions = array_map(function (string $func): string {
+            return trim(strtolower($func));
+        }, $disable_functions);
+
+        $function = strtolower($function);
+
+        return in_array($function, $disable_functions, true) || !function_exists($function);
+    }
+
+    /**
+     * Create a warning message for a disabled function.
      *
      * @param string $function
      *
@@ -147,12 +167,7 @@ class ServerCheckService
      */
     private function checkPhpFunction(string $function): string
     {
-        $disable_functions = explode(',', ini_get('disable_functions'));
-        $disable_functions = array_map(function (string $func): string {
-            return trim($func);
-        }, $disable_functions);
-
-        if (in_array($function, $disable_functions)) {
+        if ($this->isFunctionDisabled($function)) {
             return I18N::translate('The PHP function “%1$s” is disabled.', $function . '()');
         }
 

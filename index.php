@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\DebugBarData;
 use Fisharebest\Webtrees\Http\Middleware\Housekeeping;
 use Fisharebest\Webtrees\Http\Middleware\MiddlewareInterface;
-use Fisharebest\Webtrees\Http\Middleware\SetPhpLimits;
 use Fisharebest\Webtrees\Http\Middleware\UseFilesystem;
 use Fisharebest\Webtrees\Http\Middleware\UseLocale;
 use Fisharebest\Webtrees\Http\Middleware\UseSession;
@@ -99,7 +98,6 @@ try {
 
     $middleware_stack = [
         CheckForMaintenanceMode::class,
-        SetPhpLimits::class,
         UseFilesystem::class,
         UseSession::class,
         UseTree::class,

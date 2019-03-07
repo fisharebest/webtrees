@@ -10,6 +10,9 @@ use Fisharebest\Webtrees\Module\ModuleCustomTrait;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * An example module to demonstrate middleware.
+ */
 return new class extends AbstractModule implements ModuleCustomInterface, MiddlewareInterface {
     use ModuleCustomTrait;
 
