@@ -252,7 +252,7 @@ class UpgradeController extends AbstractAdminController
     private function wizardStepExport(Tree $tree): Response
     {
         // We store the data in PHP temporary storage.
-        $stream   = fopen('php://temp', 'w+');
+        $stream   = fopen('php://temp', 'wb+');
         $filename = $tree->name() . date('-Y-m-d') . '.ged';
 
         if ($this->filesystem->has($filename)) {

@@ -174,7 +174,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
      *
      * @return void
      */
-    public function getOptions(Request $request)
+    public function getOptions(Request $request): void
     {
         parent::getOptions($request);
 

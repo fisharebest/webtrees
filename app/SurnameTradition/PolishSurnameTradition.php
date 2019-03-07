@@ -22,16 +22,16 @@ namespace Fisharebest\Webtrees\SurnameTradition;
  */
 class PolishSurnameTradition extends PaternalSurnameTradition
 {
-    /** @var string[] Inflect a surname for females */
-    protected $inflect_female = [
+    // Inflect a surname for females
+    private const INFLECT_FEMALE = [
         'cki\b'  => 'cka',
         'dzki\b' => 'dzka',
         'ski\b'  => 'ska',
         'żki\b'  => 'żka',
     ];
 
-    /** @var string[] Inflect a surname for males */
-    protected $inflect_male = [
+    // Inflect a surname for males
+    private const INFLECT_MALE = [
         'cka\b'  => 'cki',
         'dzka\b' => 'dzki',
         'ska\b'  => 'ski',
@@ -52,14 +52,14 @@ class PolishSurnameTradition extends PaternalSurnameTradition
         if (preg_match(self::REGEX_SURN, $father_name, $match)) {
             if ($child_sex === 'F') {
                 return array_filter([
-                    'NAME' => $this->inflect($match['NAME'], $this->inflect_female),
-                    'SURN' => $this->inflect($match['SURN'], $this->inflect_male),
+                    'NAME' => $this->inflect($match['NAME'], self::INFLECT_FEMALE),
+                    'SURN' => $this->inflect($match['SURN'], self::INFLECT_MALE),
                 ]);
             }
 
             return array_filter([
-                'NAME' => $this->inflect($match['NAME'], $this->inflect_male),
-                'SURN' => $this->inflect($match['SURN'], $this->inflect_male),
+                'NAME' => $this->inflect($match['NAME'], self::INFLECT_MALE),
+                'SURN' => $this->inflect($match['SURN'], self::INFLECT_MALE),
             ]);
         }
 
@@ -80,8 +80,8 @@ class PolishSurnameTradition extends PaternalSurnameTradition
     {
         if ($parent_sex === 'M' && preg_match(self::REGEX_SURN, $child_name, $match)) {
             return array_filter([
-                'NAME' => $this->inflect($match['NAME'], $this->inflect_male),
-                'SURN' => $this->inflect($match['SURN'], $this->inflect_male),
+                'NAME' => $this->inflect($match['NAME'], self::INFLECT_MALE),
+                'SURN' => $this->inflect($match['SURN'], self::INFLECT_MALE),
             ]);
         }
 
@@ -103,7 +103,7 @@ class PolishSurnameTradition extends PaternalSurnameTradition
         if ($spouse_sex === 'F' && preg_match(self::REGEX_SURN, $spouse_name, $match)) {
             return [
                 'NAME'   => '//',
-                '_MARNM' => $this->inflect($match['NAME'], $this->inflect_female),
+                '_MARNM' => $this->inflect($match['NAME'], self::INFLECT_FEMALE),
             ];
         }
 

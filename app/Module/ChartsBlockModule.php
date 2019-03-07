@@ -213,7 +213,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id)
+    public function saveBlockConfiguration(Request $request, int $block_id): void
     {
         $this->setBlockSetting($block_id, 'type', $request->get('type', 'pedigree'));
         $this->setBlockSetting($block_id, 'pid', $request->get('pid', ''));
@@ -227,7 +227,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id): void
     {
         $PEDIGREE_ROOT_ID = $tree->getPreference('PEDIGREE_ROOT_ID');
         $gedcomid         = $tree->getUserPreference(Auth::user(), 'gedcomid');

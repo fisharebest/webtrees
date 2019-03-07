@@ -54,9 +54,9 @@ class FunctionsPrint
     {
         if ($person instanceof Individual) {
             return app(ModuleThemeInterface::class)->individualBox($person);
-        } else {
-            return app(ModuleThemeInterface::class)->individualBoxEmpty();
         }
+
+        return app(ModuleThemeInterface::class)->individualBoxEmpty();
     }
 
     /**
@@ -69,7 +69,7 @@ class FunctionsPrint
      *
      * @return string
      */
-    private static function printNoteRecord(Tree $tree, $text, $nlevel, $nrec)
+    private static function printNoteRecord(Tree $tree, $text, $nlevel, $nrec): string
     {
         $text .= Functions::getCont($nlevel, $nrec);
 
@@ -185,7 +185,7 @@ class FunctionsPrint
         $html     = '';
         $families = $person->childFamilies();
         // Multiple sets of parents (e.g. adoption) cause complications, so ignore.
-        if ($birth_date->isOK() && $families->count() == 1) {
+        if ($birth_date->isOK() && $families->count() === 1) {
             $family = $families->first();
             foreach ($family->spouses() as $parent) {
                 if ($parent->getBirthDate()->isOK()) {
@@ -281,26 +281,26 @@ class FunctionsPrint
                         $death_date = new Date('');
                     }
                     $ageText = '';
-                    if ((Date::compare($date, $death_date) <= 0 || !$record->isDead()) || $fact == 'DEAT') {
+                    if ((Date::compare($date, $death_date) <= 0 || !$record->isDead()) || $fact === 'DEAT') {
                         // Before death, print age
                         $age = Date::getAgeGedcom($birth_date, $date);
                         // Only show calculated age if it differs from recorded age
-                        if ($age != '' && $age != '0d') {
+                        if ($age !== '' && $age !== '0d') {
                             if (
-                                $fact_age != '' && $fact_age != $age ||
-                                $fact_age == '' && $husb_age == '' && $wife_age == '' ||
-                                $husb_age != '' && $record->sex() == 'M' && $husb_age != $age ||
-                                $wife_age != '' && $record->sex() == 'F' && $wife_age != $age
+                                $fact_age !== '' && $fact_age !== $age ||
+                                $fact_age === '' && $husb_age === '' && $wife_age === '' ||
+                                $husb_age !== '' && $record->sex() === 'M' && $husb_age !== $age ||
+                                $wife_age !== '' && $record->sex() === 'F' && $wife_age !== $age
                             ) {
                                 $ageText = '(' . I18N::translate('Age') . ' ' . FunctionsDate::getAgeAtEvent($age) . ')';
                             }
                         }
                     }
-                    if ($fact != 'DEAT' && Date::compare($date, $death_date) >= 0) {
+                    if ($fact !== 'DEAT' && Date::compare($date, $death_date) >= 0) {
                         // After death, print time since death
                         $age = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($death_date, $date));
-                        if ($age != '') {
-                            if (Date::getAgeGedcom($death_date, $date) == '0d') {
+                        if ($age !== '') {
+                            if (Date::getAgeGedcom($death_date, $date) === '0d') {
                                 $ageText = '(' . I18N::translate('on the date of death') . ')';
                             } else {
                                 $ageText = '(' . $age . ' ' . I18N::translate('after death') . ')';
@@ -326,7 +326,7 @@ class FunctionsPrint
                      I18N::translate('Husband') => $husb_age,
                      I18N::translate('Wife')    => $wife_age,
                  ] as $label => $age) {
-            if ($age != '') {
+            if ($age !== '') {
                 $html .= ' <span class="label">' . $label . ':</span> <span class="age">' . FunctionsDate::getAgeAtEvent($age) . '</span>';
             }
         }

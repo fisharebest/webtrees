@@ -38,19 +38,19 @@ class FunctionsCharts
      *
      * @return void
      */
-    public static function printDabovilleNumber(string $daboville, string $pid = '', string $icon = '')
+    public static function printDabovilleNumber(string $daboville, string $pid = '', string $icon = ''): void
     {
         // Remove trailing "."
         $personLabel = substr($daboville, 0, -1);
 
-        if ($icon == '') {
+        if ($icon === '') {
             $visibility = 'hidden';
         } else {
             $visibility = 'normal';
         }
         echo '<td class="subheaders text-center" style="vertical-align: middle; text-indent: 0px; margin-top: 0px; white-space: nowrap; visibility: ', $visibility, ';">';
         echo $personLabel;
-        if ($daboville != '1' && $pid !== '' && $icon !== 'blank') {
+        if ($daboville !== '1' && $pid !== '' && $icon !== 'blank') {
             echo '<br>';
             echo '<a href="#' . e($pid) . '" title="' . e($pid) . '">';
             echo view($icon);
@@ -68,9 +68,9 @@ class FunctionsCharts
      *
      * @return void
      */
-    public static function printSosaNumber(int $sosa, string $pid = '', string $icon = '')
+    public static function printSosaNumber(int $sosa, string $pid = '', string $icon = ''): void
     {
-        if ($icon == '') {
+        if ($icon === '') {
             $visibility = 'hidden';
         } else {
             $visibility = 'normal';
@@ -98,7 +98,7 @@ class FunctionsCharts
      *
      * @return void
      */
-    public static function printFamilyParents(Family $family, int $sosa = 0, string $daboville = '', string $parid = '', string $gparid = '')
+    public static function printFamilyParents(Family $family, int $sosa = 0, string $daboville = '', string $parid = '', string $gparid = ''): void
     {
         $pbheight = app(ModuleThemeInterface::class)->parameter('chart-box-y') + 14;
 
@@ -126,7 +126,7 @@ class FunctionsCharts
         echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
 
         if ($parid) {
-            if ($husb->xref() == $parid) {
+            if ($husb->xref() === $parid) {
                 self::printDabovilleNumber($daboville, '', 'blank');
             } else {
                 self::printDabovilleNumber($daboville, '', '');
@@ -156,7 +156,7 @@ class FunctionsCharts
                 if ($sosa > 0) {
                     self::printSosaNumber($sosa * 4, $hfam->husband()->xref(), 'icons/arrow-down');
                 }
-                if (!empty($gparid) && $hfam->husband()->xref() == $gparid) {
+                if (!empty($gparid) && $hfam->husband()->xref() === $gparid) {
                     self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'icons/arrow-up');
                 }
                 echo '<td>';
@@ -171,9 +171,9 @@ class FunctionsCharts
             }
             echo '</td>';
         }
-        if ($hfam && ($sosa != -1)) {
+        if ($hfam && ($sosa !== -1)) {
             echo '<td rowspan="2">';
-            echo '<a href="' . ($sosa == 0 ? $hfam->url() : '#' . $hfam->xref()) . '">' . view('icons/arrow-right') . '</a>';
+            echo '<a href="' . ($sosa === 0 ? $hfam->url() : '#' . $hfam->xref()) . '">' . view('icons/arrow-right') . '</a>';
             echo '</td>';
         }
         if ($hfam) {
@@ -184,7 +184,7 @@ class FunctionsCharts
                 if ($sosa > 0) {
                     self::printSosaNumber($sosa * 4 + 1, $hfam->wife()->xref(), 'icons/arrow-down');
                 }
-                if (!empty($gparid) && $hfam->wife()->xref() == $gparid) {
+                if (!empty($gparid) && $hfam->wife()->xref() === $gparid) {
                     self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'icons/arrow-up');
                 }
                 echo '<td>';
@@ -203,9 +203,7 @@ class FunctionsCharts
         echo '<br>';
         if ($sosa && $family->canShow()) {
             foreach ($family->facts(Gedcom::MARRIAGE_EVENTS) as $fact) {
-                echo '<a href="', e($family->url()), '" class="details1">';
-                echo $fact->summary();
-                echo '</a>';
+                echo '<a href="' . e($family->url()) . '" class="details1">' . $fact->summary() . '</a>';
             }
         }
         echo '<br>';
@@ -216,7 +214,7 @@ class FunctionsCharts
         echo '<table cellspacing="0" cellpadding="0" border="0"><tr><td rowspan="2">';
         echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
         if ($parid) {
-            if ($wife->xref() == $parid) {
+            if ($wife->xref() === $parid) {
                 self::printDabovilleNumber($daboville, '', 'blank');
             } else {
                 self::printDabovilleNumber($daboville, '', '');
@@ -245,7 +243,7 @@ class FunctionsCharts
                 if ($sosa > 0) {
                     self::printSosaNumber($sosa * 4 + 2, $wfam->husband()->xref(), 'icons/arrow-down');
                 }
-                if (!empty($gparid) && $wfam->husband()->xref() == $gparid) {
+                if (!empty($gparid) && $wfam->husband()->xref() === $gparid) {
                     self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'icons/arrow-up');
                 }
                 echo '<td>';
@@ -260,9 +258,9 @@ class FunctionsCharts
             }
             echo '</td>';
         }
-        if ($wfam && ($sosa != -1)) {
+        if ($wfam && ($sosa !== -1)) {
             echo '<td rowspan="2">';
-            echo '<a href="' . ($sosa == 0 ? $wfam->url() : '#' . $wfam->xref()) . '">' . view('icons/arrow-right') . '</a>';
+            echo '<a href="' . ($sosa === 0 ? $wfam->url() : '#' . $wfam->xref()) . '">' . view('icons/arrow-right') . '</a>';
             echo '</td>';
         }
         if ($wfam) {
@@ -273,7 +271,7 @@ class FunctionsCharts
                 if ($sosa > 0) {
                     self::printSosaNumber($sosa * 4 + 3, $wfam->wife()->xref(), 'icons/arrow-down');
                 }
-                if (!empty($gparid) && $wfam->wife()->xref() == $gparid) {
+                if (!empty($gparid) && $wfam->wife()->xref() === $gparid) {
                     self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'icons/arrow-up');
                 }
                 echo '<td>';
@@ -308,7 +306,7 @@ class FunctionsCharts
         int $sosa = 0,
         string $label = '',
         bool $show_cousins = false
-    ) {
+    ): void {
         $bheight  = app(ModuleThemeInterface::class)->parameter('chart-box-y');
         $pbheight = $bheight + 14;
         $children = $family->children();
@@ -326,7 +324,7 @@ class FunctionsCharts
         }
         echo '</span>';
 
-        if ($sosa == 0 && Auth::isEditor($family->tree())) {
+        if ($sosa === 0 && Auth::isEditor($family->tree())) {
             echo '<br>';
             echo '<a href="' . e(route('add-child-to-family', [
                     'gender' => 'U',
@@ -356,8 +354,8 @@ class FunctionsCharts
         if ($children->isNotEmpty()) {
             foreach ($children as $child) {
                 echo '<tr>';
-                if ($sosa != 0) {
-                    if ($child->xref() == $childid) {
+                if ($sosa !== 0) {
+                    if ($child->xref() === $childid) {
                         self::printSosaNumber($sosa, $childid, 'icons/arrow-up');
                     } elseif (empty($label)) {
                         self::printDabovilleNumber('', '', 'icons/arrow-up');
@@ -374,7 +372,7 @@ class FunctionsCharts
                 }
                 echo FunctionsPrint::printPedigreePerson($child);
                 echo '</td>';
-                if ($sosa != 0) {
+                if ($sosa !== 0) {
                     // loop for all families where current child is a spouse
                     $famids = $child->spouseFamilies();
                     $maxfam = count($famids) - 1;
@@ -388,16 +386,14 @@ class FunctionsCharts
 
                             if ($show_cousins) {
                                 if ($kids > 0) {
-                                    echo '<img height="' . ((($kids * 80 / 2))) . 'px"';
+                                    echo '<img height="' . ($kids * 80 / 2) . 'px"';
                                 } else {
                                     echo '<img height="' . ($pbheight - 14) / 2 . 'px"';
                                 }
+                            } elseif ($f === $maxfam) {
+                                echo '<img height="' . ($bheight / 2) . 'px"';
                             } else {
-                                if ($f == $maxfam) {
-                                    echo '<img height="' . ((($bheight / 2))) . 'px"';
-                                } else {
-                                    echo '<img height="' . $pbheight . 'px"';
-                                }
+                                echo '<img height="' . $pbheight . 'px"';
                             }
                             echo ' width="3" src="' . e(asset('css/images/vline.png')) . '">';
                             echo '</td>';
@@ -433,7 +429,7 @@ class FunctionsCharts
             }
         } elseif ($sosa < 1) {
             // message 'no children' except for sosa
-            if (preg_match('/\n1 NCHI (\d+)/', $family->gedcom(), $match) && $match[1] == 0) {
+            if (preg_match('/\n1 NCHI (\d+)/', $family->gedcom(), $match) && $match[1] === '0') {
                 echo '<tr><td><i class="icon-childless"></i> ' . I18N::translate('This family remained childless') . '</td></tr>';
             }
         }
@@ -462,7 +458,7 @@ class FunctionsCharts
         string $parid,
         string $gparid,
         bool   $show_cousins
-    ) {
+    ): void {
         echo '<hr>';
         echo '<p class="wt-family-break">';
         echo '<a name="', e($family->xref()), '"></a>';
@@ -486,7 +482,7 @@ class FunctionsCharts
         $path = '';
 
         while ($sosa > 1) {
-            if ($sosa % 2 == 1) {
+            if ($sosa % 2 === 1) {
                 $path = 'mot' . $path;
             } else {
                 $path = 'fat' . $path;
@@ -504,7 +500,7 @@ class FunctionsCharts
      *
      * @return void
      */
-    private static function printCousins(Family $family)
+    private static function printCousins(Family $family): void
     {
         $bheight   = app(ModuleThemeInterface::class)->parameter('chart-box-y');
         $fchildren = $family->children();
@@ -514,12 +510,12 @@ class FunctionsCharts
         if ($fchildren->isNotEmpty()) {
             echo '<table cellspacing="0" cellpadding="0" border="0" ><tr>';
             if ($fchildren->count() > 1) {
-                echo '<td rowspan="', $kids, '"><img width="3px" height="', (($bheight) * ($kids - 1)), 'px" src="', e(asset('css/images/vline.png')), '"></td>';
+                echo '<td rowspan="', $kids, '"><img width="3px" height="', ($bheight * ($kids - 1)), 'px" src="', e(asset('css/images/vline.png')), '"></td>';
             }
             $ctkids = $fchildren->count();
             $i      = 1;
             foreach ($fchildren as $fchil) {
-                if ($i == 1) {
+                if ($i === 1) {
                     echo '<td><img class="linea1" width="10px" height="3px" style="vertical-align:middle"';
                 } else {
                     echo '<td><img class="linea1" width="10px" height="3px"';
@@ -538,11 +534,9 @@ class FunctionsCharts
                 }
             }
             echo '</table>';
-        } else {
+        } elseif (preg_match('/\n1 NCHI (\d+)/', $family->gedcom(), $match) && $match[1] === '0') {
             // If there is known that there are no children (as opposed to no known children)
-            if (preg_match('/\n1 NCHI (\d+)/', $family->gedcom(), $match) && $match[1] == 0) {
-                echo ' <i class="icon-childless" title="', I18N::translate('This family remained childless'), '"></i>';
-            }
+            echo ' <i class="icon-childless" title="', I18N::translate('This family remained childless'), '"></i>';
         }
         echo '</td>';
     }

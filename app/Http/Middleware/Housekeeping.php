@@ -87,7 +87,7 @@ class Housekeeping implements MiddlewareInterface
      *
      * @return void
      */
-    private function runHousekeeping()
+    private function runHousekeeping(): void
     {
         $data_filesystem = app(FilesystemInterface::class);
         $root_filesystem = new Filesystem(new Local(WT_ROOT));

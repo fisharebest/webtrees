@@ -134,7 +134,7 @@ class UpgradeService
         }
 
         // We store the data in PHP temporary storage.
-        $tmp = fopen('php://temp', 'w+');
+        $tmp = fopen('php://temp', 'wb+');
 
         // Read from the URL
         $client   = new Client();

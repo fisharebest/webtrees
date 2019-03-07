@@ -382,34 +382,34 @@ class IndividualListService
     private function whereInitial(Builder $query, string $field, string $letter, string $locale, string $collation): void
     {
         // Use MySQL-specific comments so we can run these queries on other RDBMS.
-        $field = $this->fieldWithCollation($field, $collation);
+        $field_with_collation = $this->fieldWithCollation($field, $collation);
 
         switch ($locale) {
             case 'cs':
-                $this->whereInitialCzech($query, $field, $letter);
+                $this->whereInitialCzech($query, $field_with_collation, $letter);
                 break;
 
             case 'da':
             case 'nb':
             case 'nn':
-                $this->whereInitialNorwegian($query, $field, $letter);
+                $this->whereInitialNorwegian($query, $field_with_collation, $letter);
                 break;
 
             case 'sv':
             case 'fi':
-                $this->whereInitialSwedish($query, $field, $letter);
+                $this->whereInitialSwedish($query, $field_with_collation, $letter);
                 break;
 
             case 'hu':
-                $this->whereInitialHungarian($query, $field, $letter);
+                $this->whereInitialHungarian($query, $field_with_collation, $letter);
                 break;
 
             case 'nl':
-                $this->whereInitialDutch($query, $field, $letter);
+                $this->whereInitialDutch($query, $field_with_collation, $letter);
                 break;
 
             default:
-                $query->where($field, 'LIKE', '\\' . $letter . '%');
+                $query->where($field_with_collation, 'LIKE', '\\' . $letter . '%');
         }
     }
 

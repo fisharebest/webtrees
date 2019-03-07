@@ -112,7 +112,7 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      *
      * @return string
      */
-    private function conditionChild($sex)
+    private function conditionChild($sex): string
     {
         if ($sex === 'F') {
             return $this->girl;
@@ -128,7 +128,7 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      *
      * @return string
      */
-    private function conditionSingle($sex)
+    private function conditionSingle($sex): string
     {
         if ($sex === 'F') {
             return $this->spinster;
@@ -144,7 +144,7 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      *
      * @return string
      */
-    private function conditionDivorced($sex)
+    private function conditionDivorced($sex): string
     {
         if ($sex === 'F') {
             return $this->divorcee;
@@ -172,7 +172,7 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      *
      * @return string
      */
-    private function conditionWidowed($sex)
+    private function conditionWidowed($sex): string
     {
         if ($sex === 'F') {
             return $this->widow;
@@ -188,7 +188,7 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      *
      * @return string
      */
-    private function conditionMarried($sex)
+    private function conditionMarried($sex): string
     {
         if ($sex === 'F') {
             return $this->wife;

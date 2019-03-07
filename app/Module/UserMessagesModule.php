@@ -250,7 +250,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id)
+    public function saveBlockConfiguration(Request $request, int $block_id): void
     {
     }
 
@@ -262,7 +262,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id): void
     {
     }
 }

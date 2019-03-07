@@ -283,7 +283,7 @@ trait ModuleThemeTrait
      *
      * @return Menu|null
      */
-    public function menuChangeBlocks(Tree $tree)
+    public function menuChangeBlocks(Tree $tree): ?Menu
     {
         if (Auth::check() && $this->request->get('route') === 'user-page') {
             return new Menu(I18N::translate('Customize this page'), route('user-page-edit', ['ged' => $tree->name()]), 'menu-change-blocks');
@@ -303,7 +303,7 @@ trait ModuleThemeTrait
      *
      * @return Menu|null
      */
-    public function menuControlPanel(Tree $tree)
+    public function menuControlPanel(Tree $tree): ?Menu
     {
         if (Auth::isAdmin()) {
             return new Menu(I18N::translate('Control panel'), route('admin-control-panel'), 'menu-admin');
@@ -321,7 +321,7 @@ trait ModuleThemeTrait
      *
      * @return Menu|null
      */
-    public function menuLanguages()
+    public function menuLanguages(): ?Menu
     {
         $menu = new Menu(I18N::translate('Language'), '#', 'menu-language');
 
@@ -346,7 +346,7 @@ trait ModuleThemeTrait
      *
      * @return Menu|null
      */
-    public function menuLogin()
+    public function menuLogin(): ?Menu
     {
         if (Auth::check()) {
             return null;
@@ -366,7 +366,7 @@ trait ModuleThemeTrait
      *
      * @return Menu|null
      */
-    public function menuLogout()
+    public function menuLogout(): ?Menu
     {
         if (Auth::check()) {
             return new Menu(I18N::translate('Sign out'), route('logout'), 'menu-logout');
@@ -380,7 +380,7 @@ trait ModuleThemeTrait
      *
      * @return Menu|null
      */
-    public function menuMyAccount()
+    public function menuMyAccount(): ?Menu
     {
         if (Auth::check()) {
             return new Menu(I18N::translate('My account'), route('my-account'));
@@ -396,7 +396,7 @@ trait ModuleThemeTrait
      *
      * @return Menu|null
      */
-    public function menuMyIndividualRecord(Tree $tree)
+    public function menuMyIndividualRecord(Tree $tree): ?Menu
     {
         $record = Individual::getInstance($tree->getUserPreference(Auth::user(), 'gedcomid'), $tree);
 
@@ -426,7 +426,7 @@ trait ModuleThemeTrait
      *
      * @return Menu|null
      */
-    public function menuMyPages(?Tree $tree)
+    public function menuMyPages(?Tree $tree): ?Menu
     {
         if ($tree instanceof Tree && Auth::id()) {
             return new Menu(I18N::translate('My pages'), '#', 'menu-mymenu', [], array_filter([
@@ -449,7 +449,7 @@ trait ModuleThemeTrait
      *
      * @return Menu|null
      */
-    public function menuMyPedigree(Tree $tree)
+    public function menuMyPedigree(Tree $tree): ?Menu
     {
         $gedcomid = $tree->getUserPreference(Auth::user(), 'gedcomid');
 
@@ -479,7 +479,7 @@ trait ModuleThemeTrait
      *
      * @return Menu|null
      */
-    public function menuPendingChanges(?Tree $tree)
+    public function menuPendingChanges(?Tree $tree): ?Menu
     {
         if ($tree instanceof Tree && $tree->hasPendingEdit() && Auth::isModerator($tree)) {
             $url = route('show-pending', [
@@ -498,7 +498,7 @@ trait ModuleThemeTrait
      *
      * @return Menu|null
      */
-    public function menuThemes()
+    public function menuThemes(): ?Menu
     {
         $themes = app(ModuleService::class)->findByInterface(ModuleThemeInterface::class);
 

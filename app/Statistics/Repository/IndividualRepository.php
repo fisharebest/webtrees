@@ -147,11 +147,11 @@ class IndividualRepository implements IndividualRepositoryInterface
 
             case 'nolist':
             default:
-                array_walk($nameList, function (int &$value, string $key) use ($show_tot): void {
+                array_walk($nameList, function (string &$value, string $key) use ($show_tot): void {
                     if ($show_tot) {
-                        $value = '<span dir="auto">' . e($key);
+                        $value = '<span dir="auto">' . e($key) . '</span>';
                     } else {
-                        $value = '<span dir="auto">' . e($key) . ' (' . I18N::number($value) . ')';
+                        $value = '<span dir="auto">' . e($key) . '</span> (' . I18N::number((int) $value) . ')';
                     }
                 });
 

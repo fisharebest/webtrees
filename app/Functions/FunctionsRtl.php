@@ -98,9 +98,9 @@ class FunctionsRtl
      *
      * @return string The string with all texts encapsulated as required
      */
-    public static function spanLtrRtl($inputText): string
+    public static function spanLtrRtl(string $inputText): string
     {
-        if ($inputText == '') {
+        if ($inputText === '') {
             // Nothing to do
             return '';
         }
@@ -139,10 +139,10 @@ class FunctionsRtl
                     $currentLen += $endPos;
                     $element    = substr($workingText, 0, $currentLen);
                     $temp       = strtolower(substr($element, 0, 3));
-                    if (strlen($element) < 7 && $temp == '<br') {
+                    if (strlen($element) < 7 && $temp === '<br') {
                         if ($numberState) {
                             $numberState = false;
-                            if (self::$currentState == 'RTL') {
+                            if (self::$currentState === 'RTL') {
                                 self::$waitingText .= self::UTF8_PDF;
                             }
                         }
@@ -162,7 +162,7 @@ class FunctionsRtl
                     }
                     $currentLen += $endPos;
                     $entity     = substr($workingText, 0, $currentLen);
-                    if (strtolower($entity) == '&nbsp;') {
+                    if (strtolower($entity) === '&nbsp;') {
                         $entity .= '&nbsp;'; // Ensure consistent case for this entity
                     }
                     if (self::$waitingText == '') {
@@ -173,7 +173,7 @@ class FunctionsRtl
                     $workingText = substr($workingText, $currentLen);
                     break;
                 case '{':
-                    if (substr($workingText, 1, 1) == '{') {
+                    if (substr($workingText, 1, 1) === '{') {
                         // Assume this '{{' starts a TCPDF directive
                         $endPos = strpos($workingText, '}}'); // look for the terminating '}}'
                         if ($endPos === false) {
@@ -196,7 +196,7 @@ class FunctionsRtl
                         $charArray = self::getChar($workingText . "\n", $offset);
                         if (strpos(self::NUMBERS, $charArray['letter']) === false) {
                             // This is not a digit. Is it numeric punctuation?
-                            if (substr($workingText . "\n", $offset, 6) == '&nbsp;') {
+                            if (substr($workingText . "\n", $offset, 6) === '&nbsp;') {
                                 $offset += 6; // This could be numeric punctuation
                             } elseif (strpos(self::NUMBER_PUNCTUATION, $charArray['letter']) !== false) {
                                 $offset += $charArray['length']; // This could be numeric punctuation
@@ -206,11 +206,11 @@ class FunctionsRtl
                             if (strpos(self::NUMBERS, $charArray['letter']) === false) {
                                 // This is not a digit. End the run of digits and punctuation.
                                 $numberState = false;
-                                if (self::$currentState == 'RTL') {
+                                if (self::$currentState === 'RTL') {
                                     if (strpos(self::NUMBER_PREFIX, $currentLetter) === false) {
                                         $currentLetter = self::UTF8_PDF . $currentLetter;
                                     } else {
-                                        $currentLetter = $currentLetter . self::UTF8_PDF; // Include a trailing + or - in the run
+                                        $currentLetter .= self::UTF8_PDF; // Include a trailing + or - in the run
                                     }
                                 }
                             }
@@ -223,13 +223,13 @@ class FunctionsRtl
                             $nextChar = substr($workingText . "\n", $offset, 1);
                             if (strpos(self::NUMBERS, $nextChar) !== false) {
                                 $numberState = true; // We found a digit: the lead-in is therefore numeric
-                                if (self::$currentState == 'RTL') {
+                                if (self::$currentState === 'RTL') {
                                     $currentLetter = self::UTF8_LRE . $currentLetter;
                                 }
                             }
                         } elseif (strpos(self::NUMBERS, $currentLetter) !== false) {
                             $numberState = true; // The current letter is a digit
-                            if (self::$currentState == 'RTL') {
+                            if (self::$currentState === 'RTL') {
                                 $currentLetter = self::UTF8_LRE . $currentLetter;
                             }
                         }
@@ -244,7 +244,7 @@ class FunctionsRtl
                                 break;
                             }
 
-                            if (self::$currentState == 'RTL') {
+                            if (self::$currentState === 'RTL') {
                                 break;
                             }
                             // Switch to RTL only if this isn't a solitary RTL letter
@@ -285,7 +285,7 @@ class FunctionsRtl
                         }
                         if ($closeParIndex !== false) {
                             // This closing parenthesis has to inherit the matching opening parenthesis' directionality
-                            if (!empty($openParDirection[$closeParIndex]) && $openParDirection[$closeParIndex] != '?') {
+                            if (!empty($openParDirection[$closeParIndex]) && $openParDirection[$closeParIndex] !== '?') {
                                 $newState = $openParDirection[$closeParIndex];
                             }
                             $openParDirection[$closeParIndex] = '';
@@ -592,7 +592,7 @@ class FunctionsRtl
      *
      * @return void
      */
-    public static function breakCurrentSpan(&$result)
+    public static function breakCurrentSpan(&$result): void
     {
         // Interrupt the current span, insert that <br>, and then continue the current span
         $result .= self::$waitingText;
@@ -609,12 +609,12 @@ class FunctionsRtl
      *
      * @return void
      */
-    public static function beginCurrentSpan(&$result)
+    public static function beginCurrentSpan(&$result): void
     {
-        if (self::$currentState == 'LTR') {
+        if (self::$currentState === 'LTR') {
             $result .= self::START_LTR;
         }
-        if (self::$currentState == 'RTL') {
+        if (self::$currentState === 'RTL') {
             $result .= self::START_RTL;
         }
 
@@ -629,7 +629,7 @@ class FunctionsRtl
      *
      * @return void
      */
-    public static function finishCurrentSpan(&$result, $theEnd = false)
+    public static function finishCurrentSpan(&$result, $theEnd = false): void
     {
         $textSpan = substr($result, self::$posSpanStart);
         $result   = substr($result, 0, self::$posSpanStart);
@@ -1126,7 +1126,7 @@ class FunctionsRtl
         }
 
         if (self::$currentState != 'LTR' && self::$currentState != 'RTL') {
-            $result = $result . $textSpan;
+            $result .= $textSpan;
         }
 
         $result .= $trailingBreaks; // Get rid of any waiting <br>

@@ -42,7 +42,7 @@ class Log
      *
      * @return void
      */
-    private static function addLog($message, $log_type, Tree $tree = null)
+    private static function addLog($message, $log_type, Tree $tree = null): void
     {
         // Can't use requestFromGloabls() as this will fail if we have already processed an uploaded file.
         $request    = Request::create('', '', [], [], [], $_SERVER);
@@ -65,7 +65,7 @@ class Log
      *
      * @return void
      */
-    public static function addAuthenticationLog($message)
+    public static function addAuthenticationLog($message): void
     {
         self::addLog($message, self::TYPE_AUTHENTICATION, null);
     }
@@ -78,7 +78,7 @@ class Log
      *
      * @return void
      */
-    public static function addConfigurationLog($message, Tree $tree = null)
+    public static function addConfigurationLog($message, Tree $tree = null): void
     {
         self::addLog($message, self::TYPE_CONFIGURATION, $tree);
     }
@@ -91,7 +91,7 @@ class Log
      *
      * @return void
      */
-    public static function addEditLog($message, Tree $tree)
+    public static function addEditLog($message, Tree $tree): void
     {
         self::addLog($message, self::TYPE_EDIT, $tree);
     }
@@ -103,7 +103,7 @@ class Log
      *
      * @return void
      */
-    public static function addErrorLog($message)
+    public static function addErrorLog($message): void
     {
         self::addLog($message, self::TYPE_ERROR);
     }
@@ -115,7 +115,7 @@ class Log
      *
      * @return void
      */
-    public static function addMediaLog($message)
+    public static function addMediaLog($message): void
     {
         self::addLog($message, self::TYPE_MEDIA, null);
     }
@@ -130,7 +130,7 @@ class Log
      *
      * @return void
      */
-    public static function addSearchLog($message, array $trees)
+    public static function addSearchLog($message, array $trees): void
     {
         foreach ($trees as $tree) {
             self::addLog($message, self::TYPE_SEARCH, $tree);

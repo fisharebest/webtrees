@@ -87,7 +87,7 @@ class ImportThumbnailsController extends AbstractAdminController
 
                 foreach ($media_objects as $media_object) {
                     $prefix = WT_DATA_DIR . $media_object->tree()->getPreference('MEDIA_DIRECTORY');
-                    $gedcom = "1 FILE " . substr($move_to, strlen($prefix)) . "\n2 FORM " . $extension;
+                    $gedcom = '1 FILE ' . substr($move_to, strlen($prefix)) . "\n2 FORM " . $extension;
 
                     if ($media_object->firstImageFile() === null) {
                         // The media object doesn't have an image.  Add this as a secondary file.

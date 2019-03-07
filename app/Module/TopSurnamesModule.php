@@ -190,7 +190,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id)
+    public function saveBlockConfiguration(Request $request, int $block_id): void
     {
         $this->setBlockSetting($block_id, 'num', $request->get('num', self::DEFAULT_NUMBER));
         $this->setBlockSetting($block_id, 'infoStyle', $request->get('infoStyle', self::DEFAULT_STYLE));
@@ -204,7 +204,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id): void
     {
         $num       = $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);

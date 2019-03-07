@@ -67,9 +67,6 @@ class BatchUpdateMissingDeathPlugin extends BatchUpdateBasePlugin
      */
     public function updateRecord(GedcomRecord $record): string
     {
-        $old_gedcom = $record->gedcom();
-        $new_gedcom = $old_gedcom . "\n1 DEAT Y";
-
-        return $new_gedcom;
+        return $record->gedcom() . "\n1 DEAT Y";
     }
 }

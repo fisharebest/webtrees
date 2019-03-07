@@ -69,7 +69,7 @@ interface ModuleBlockInterface extends ModuleInterface
      *
      * @return void
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id);
+    public function editBlockConfiguration(Tree $tree, int $block_id): void;
 
     /**
      * Update the configuration for a block.
@@ -79,5 +79,5 @@ interface ModuleBlockInterface extends ModuleInterface
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id);
+    public function saveBlockConfiguration(Request $request, int $block_id): void;
 }

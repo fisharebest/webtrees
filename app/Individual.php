@@ -96,11 +96,11 @@ class Individual extends GedcomRecord
      * @throws \Exception
      * @return Individual|null
      */
-    public static function getInstance(string $xref, Tree $tree, string $gedcom = null)
+    public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?self
     {
         $record = parent::getInstance($xref, $tree, $gedcom);
 
-        if ($record instanceof Individual) {
+        if ($record instanceof self) {
             return $record;
         }
 
@@ -232,19 +232,19 @@ class Individual extends GedcomRecord
         for ($n = 0; $n <= $distance; ++$n) {
             if (array_key_exists($n, $cache)) {
                 // We have already calculated all records with this length
-                if ($n % 2 == 0 && in_array($target, $cache[$n], true)) {
+                if ($n % 2 === 0 && in_array($target, $cache[$n], true)) {
                     return true;
                 }
             } else {
                 // Need to calculate these paths
                 $cache[$n] = [];
-                if ($n % 2 == 0) {
+                if ($n % 2 === 0) {
                     // Add FAM->INDI links
                     foreach ($cache[$n - 1] as $family) {
                         foreach ($family->facts(['HUSB', 'WIFE', 'CHIL'], false, Auth::PRIV_HIDE) as $fact) {
                             $individual = $fact->target();
                             // Don’t backtrack
-                            if ($individual instanceof Individual && !in_array($individual, $cache[$n - 2], true)) {
+                            if ($individual instanceof self && !in_array($individual, $cache[$n - 2], true)) {
                                 $cache[$n][] = $individual;
                             }
                         }
@@ -310,9 +310,9 @@ class Individual extends GedcomRecord
      * @param string $xref
      * @param int    $tree_id
      *
-     * @return null|string
+     * @return string|null
      */
-    protected static function fetchGedcomRecord(string $xref, int $tree_id)
+    protected static function fetchGedcomRecord(string $xref, int $tree_id): ?string
     {
         return DB::table('individuals')
             ->where('i_id', '=', $xref)
@@ -421,9 +421,9 @@ class Individual extends GedcomRecord
     /**
      * Find the highlighted media object for an individual
      *
-     * @return null|MediaFile
+     * @return MediaFile|null
      */
-    public function findHighlightedMediaFile()
+    public function findHighlightedMediaFile(): ?MediaFile
     {
         foreach ($this->facts(['OBJE']) as $fact) {
             $media = $fact->target();
@@ -668,7 +668,7 @@ class Individual extends GedcomRecord
                         $max[] = $tmp->minimumJulianDay() + 365 * 30;
                     }
                     $husband = $family->husband();
-                    if ($husband instanceof Individual) {
+                    if ($husband instanceof self) {
                         $tmp = $husband->getBirthDate();
                         if ($tmp->isOK()) {
                             $min[] = $tmp->maximumJulianDay() + 365 * 15;
@@ -676,7 +676,7 @@ class Individual extends GedcomRecord
                         }
                     }
                     $wife = $family->wife();
-                    if ($wife instanceof Individual) {
+                    if ($wife instanceof self) {
                         $tmp = $wife->getBirthDate();
                         if ($tmp->isOK()) {
                             $min[] = $tmp->maximumJulianDay() + 365 * 15;
@@ -708,7 +708,7 @@ class Individual extends GedcomRecord
                     foreach ($family->children() as $child) {
                         $tmp = $child->getBirthDate();
                         if ($tmp->isOK()) {
-                            $min[] = $tmp->maximumJulianDay() - 365 * ($this->sex() == 'F' ? 45 : 65);
+                            $min[] = $tmp->maximumJulianDay() - 365 * ($this->sex() === 'F' ? 45 : 65);
                             $max[] = $tmp->minimumJulianDay() - 365 * 15;
                         }
                     }
@@ -761,7 +761,7 @@ class Individual extends GedcomRecord
      *
      * @return string
      */
-    public function sex()
+    public function sex(): string
     {
         if (preg_match('/\n1 SEX ([MF])/', $this->gedcom . $this->pending, $match)) {
             return $match[1];
@@ -852,7 +852,7 @@ class Individual extends GedcomRecord
      *
      * @return Individual|null
      */
-    public function getCurrentSpouse()
+    public function getCurrentSpouse(): ?Individual
     {
         $family = $this->spouseFamilies()->last();
 
@@ -868,7 +868,7 @@ class Individual extends GedcomRecord
      *
      * @return int
      */
-    public function numberOfChildren()
+    public function numberOfChildren(): int
     {
         if (preg_match('/\n1 NCHI (\d+)(?:\n|$)/', $this->gedcom(), $match)) {
             return (int) $match[1];
@@ -924,7 +924,7 @@ class Individual extends GedcomRecord
      *
      * @return Family|null
      */
-    public function primaryChildFamily()
+    public function primaryChildFamily(): ?Family
     {
         $families = $this->childFamilies();
         switch (count($families)) {
@@ -1053,7 +1053,7 @@ class Individual extends GedcomRecord
                     foreach ($step_family->spouses() as $step_parent) {
                         if ($parent === $step_parent) {
                             // One common parent - must be a step family
-                            if ($parent->sex() == 'M') {
+                            if ($parent->sex() === 'M') {
                                 // Father’s family with someone else
                                 if ($step_family->spouse($step_parent)) {
                                     /* I18N: A step-family. %s is an individual’s name */
@@ -1091,7 +1091,7 @@ class Individual extends GedcomRecord
      *
      * @return string
      */
-    public function getSpouseFamilyLabel(Family $family)
+    public function getSpouseFamilyLabel(Family $family): string
     {
         $spouse = $family->spouse($this);
         if ($spouse) {
@@ -1187,8 +1187,10 @@ class Individual extends GedcomRecord
      * @param string $type
      * @param string $full
      * @param string $gedcom
+     *
+     * @return void
      */
-    protected function addName(string $type, string $full, string $gedcom)
+    protected function addName(string $type, string $full, string $gedcom): void
     {
         ////////////////////////////////////////////////////////////////////////////
         // Extract the structured name parts - use for "sortable" names and indexes
@@ -1215,7 +1217,7 @@ class Individual extends GedcomRecord
 
         // Fix bad slashes. e.g. 'John/Smith' => 'John/Smith/'
         if (substr_count($full, '/') % 2 === 1) {
-            $full = $full . '/';
+            $full .= '/';
         }
 
         // GEDCOM uses "//" to indicate an unknown surname
@@ -1305,9 +1307,9 @@ class Individual extends GedcomRecord
 
         foreach ($SURNS as $SURN) {
             // Scottish 'Mc and Mac ' prefixes both sort under 'Mac'
-            if (strcasecmp(substr($SURN, 0, 2), 'Mc') == 0) {
+            if (strcasecmp(substr($SURN, 0, 2), 'Mc') === 0) {
                 $SURN = substr_replace($SURN, 'Mac', 0, 2);
-            } elseif (strcasecmp(substr($SURN, 0, 4), 'Mac ') == 0) {
+            } elseif (strcasecmp(substr($SURN, 0, 4), 'Mac ') === 0) {
                 $SURN = substr_replace($SURN, 'Mac', 0, 4);
             }
 
@@ -1333,7 +1335,7 @@ class Individual extends GedcomRecord
      *
      * @return void
      */
-    public function extractNames()
+    public function extractNames(): void
     {
         $this->extractNamesFromFacts(
             1,

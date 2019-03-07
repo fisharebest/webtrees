@@ -57,7 +57,7 @@ class UserService
      *
      * @return User|null
      */
-    public function findByEmail($email)
+    public function findByEmail($email): ?User
     {
         return DB::table('user')
             ->where('email', '=', $email)
@@ -73,7 +73,7 @@ class UserService
      *
      * @return User|null
      */
-    public function findByIdentifier($identifier)
+    public function findByIdentifier($identifier): ?User
     {
         return DB::table('user')
             ->where('user_name', '=', $identifier)
@@ -110,7 +110,7 @@ class UserService
      *
      * @return User|null
      */
-    public function findByUserName($user_name)
+    public function findByUserName($user_name): ?User
     {
         return DB::table('user')
             ->where('user_name', '=', $user_name)
@@ -295,7 +295,7 @@ class UserService
      *
      * @return void
      */
-    public function delete(User $user)
+    public function delete(User $user): void
     {
         // Don't delete the logs, just set the user to null.
         DB::table('log')

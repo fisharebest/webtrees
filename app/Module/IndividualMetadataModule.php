@@ -118,9 +118,9 @@ class IndividualMetadataModule extends AbstractModule implements ModuleSidebarIn
      *
      * @return bool
      */
-    public function showFact(Fact $fact)
+    public function showFact(Fact $fact): bool
     {
-        return in_array($fact->getTag(), static::HANDLED_FACTS);
+        return in_array($fact->getTag(), static::HANDLED_FACTS, true);
     }
 
     /**

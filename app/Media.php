@@ -57,11 +57,11 @@ class Media extends GedcomRecord
      *
      * @return Media|null
      */
-    public static function getInstance(string $xref, Tree $tree, string $gedcom = null)
+    public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?self
     {
         $record = parent::getInstance($xref, $tree, $gedcom);
 
-        if ($record instanceof Media) {
+        if ($record instanceof self) {
             return $record;
         }
 
@@ -100,9 +100,9 @@ class Media extends GedcomRecord
      * @param string $xref
      * @param int    $tree_id
      *
-     * @return null|string
+     * @return string|null
      */
-    protected static function fetchGedcomRecord(string $xref, int $tree_id)
+    protected static function fetchGedcomRecord(string $xref, int $tree_id): ?string
     {
         return DB::table('media')
             ->where('m_id', '=', $xref)
@@ -129,7 +129,7 @@ class Media extends GedcomRecord
      *
      * @return MediaFile|null
      */
-    public function firstImageFile()
+    public function firstImageFile(): ?MediaFile
     {
         foreach ($this->mediaFiles() as $media_file) {
             if ($media_file->isImage()) {
@@ -145,7 +145,7 @@ class Media extends GedcomRecord
      *
      * @return string
      */
-    public function getNote()
+    public function getNote(): string
     {
         $fact = $this->facts(['NOTE'])->first();
 
@@ -168,7 +168,7 @@ class Media extends GedcomRecord
      *
      * @return void
      */
-    public function extractNames()
+    public function extractNames(): void
     {
         $names = [];
         foreach ($this->mediaFiles() as $media_file) {

@@ -127,7 +127,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id)
+    public function saveBlockConfiguration(Request $request, int $block_id): void
     {
     }
 
@@ -139,7 +139,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id): void
     {
     }
 
@@ -231,7 +231,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    private function addUrlFavorite(Tree $tree, UserInterface $user, string $url, string $title, string $note)
+    private function addUrlFavorite(Tree $tree, UserInterface $user, string $url, string $title, string $note): void
     {
         DB::table('favorite')->updateOrInsert([
             'gedcom_id' => $tree->id(),
@@ -252,7 +252,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    private function addRecordFavorite(Tree $tree, UserInterface $user, GedcomRecord $record, string $note)
+    private function addRecordFavorite(Tree $tree, UserInterface $user, GedcomRecord $record, string $note): void
     {
         DB::table('favorite')->updateOrInsert([
             'gedcom_id' => $tree->id(),

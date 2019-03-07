@@ -197,7 +197,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id)
+    public function saveBlockConfiguration(Request $request, int $block_id): void
     {
         $this->setBlockSetting($block_id, 'filter', $request->get('filter', '1'));
         $this->setBlockSetting($block_id, 'infoStyle', $request->get('infoStyle', 'table'));
@@ -213,7 +213,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id): void
     {
         $default_events = implode(',', self::DEFAULT_EVENTS);
 

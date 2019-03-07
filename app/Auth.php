@@ -139,7 +139,7 @@ class Auth
      *
      * @return int
      */
-    public static function accessLevel(Tree $tree, UserInterface $user = null)
+    public static function accessLevel(Tree $tree, UserInterface $user = null): int
     {
         $user = $user ?? self::user();
 
@@ -159,7 +159,7 @@ class Auth
      *
      * @return int|null
      */
-    public static function id()
+    public static function id(): ?int
     {
         return Session::get('wt_user');
     }
@@ -181,7 +181,7 @@ class Auth
      *
      * @return void
      */
-    public static function login(UserInterface $user)
+    public static function login(UserInterface $user): void
     {
         Session::regenerate(false);
         Session::put('wt_user', $user->id());
@@ -192,7 +192,7 @@ class Auth
      *
      * @return void
      */
-    public static function logout()
+    public static function logout(): void
     {
         Session::regenerate(true);
     }
@@ -205,9 +205,9 @@ class Auth
      *
      * @return void
      */
-    public static function checkComponentAccess(ModuleInterface $module, string $component, Tree $tree, UserInterface $user)
+    public static function checkComponentAccess(ModuleInterface $module, string $component, Tree $tree, UserInterface $user): void
     {
-        if ($module->accessLevel($tree, $component) < Auth::accessLevel($tree, $user)) {
+        if ($module->accessLevel($tree, $component) < self::accessLevel($tree, $user)) {
             throw new AccessDeniedHttpException('');
         }
     }
@@ -220,7 +220,7 @@ class Auth
      * @throws FamilyNotFoundException
      * @throws FamilyAccessDeniedException
      */
-    public static function checkFamilyAccess(Family $family = null, $edit = false)
+    public static function checkFamilyAccess(Family $family = null, $edit = false): void
     {
         if ($family === null) {
             throw new FamilyNotFoundException();
@@ -239,7 +239,7 @@ class Auth
      * @throws IndividualNotFoundException
      * @throws IndividualAccessDeniedException
      */
-    public static function checkIndividualAccess(Individual $individual = null, $edit = false)
+    public static function checkIndividualAccess(Individual $individual = null, $edit = false): void
     {
         if ($individual === null) {
             throw new IndividualNotFoundException();
@@ -258,7 +258,7 @@ class Auth
      * @throws MediaNotFoundException
      * @throws MediaAccessDeniedException
      */
-    public static function checkMediaAccess(Media $media = null, $edit = false)
+    public static function checkMediaAccess(Media $media = null, $edit = false): void
     {
         if ($media === null) {
             throw new MediaNotFoundException();
@@ -277,7 +277,7 @@ class Auth
      * @throws NoteNotFoundException
      * @throws NoteAccessDeniedException
      */
-    public static function checkNoteAccess(Note $note = null, $edit = false)
+    public static function checkNoteAccess(Note $note = null, $edit = false): void
     {
         if ($note === null) {
             throw new NoteNotFoundException();
@@ -296,7 +296,7 @@ class Auth
      * @throws RecordNotFoundException
      * @throws RecordAccessDeniedException
      */
-    public static function checkRecordAccess(GedcomRecord $record = null, $edit = false)
+    public static function checkRecordAccess(GedcomRecord $record = null, $edit = false): void
     {
         if ($record === null) {
             throw new RecordNotFoundException();
@@ -315,7 +315,7 @@ class Auth
      * @throws RepositoryNotFoundException
      * @throws RepositoryAccessDeniedException
      */
-    public static function checkRepositoryAccess(Repository $repository = null, $edit = false)
+    public static function checkRepositoryAccess(Repository $repository = null, $edit = false): void
     {
         if ($repository === null) {
             throw new RepositoryNotFoundException();
@@ -334,7 +334,7 @@ class Auth
      * @throws SourceNotFoundException
      * @throws SourceAccessDeniedException
      */
-    public static function checkSourceAccess(Source $source = null, $edit = false)
+    public static function checkSourceAccess(Source $source = null, $edit = false): void
     {
         if ($source === null) {
             throw new SourceNotFoundException();

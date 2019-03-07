@@ -211,7 +211,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      *
      * @return void
      */
-    private function printDescendency(Individual $individual, int $generation, int $generations, bool $show_spouse, bool $show_menu)
+    private function printDescendency(Individual $individual, int $generation, int $generations, bool $show_spouse, bool $show_menu): void
     {
         static $lastGenSecondFam = false;
 
@@ -279,7 +279,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         }
 
         // Print the descendency expansion arrow
-        if ($generation == $generations) {
+        if ($generation === $generations) {
             $tbwidth = app(ModuleThemeInterface::class)->parameter('chart-box-x') + 16;
             for ($j = $generation; $j < $generations; $j++) {
                 echo "<div style='width: ", $tbwidth, "px;'><br></div></td><td style='width:", app(ModuleThemeInterface::class)->parameter('chart-box-x'), "px'>";
@@ -407,7 +407,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      *
      * @return void
      */
-    private function printPersonPedigree(Individual $individual, int $generation, int $generations, bool $show_spouse)
+    private function printPersonPedigree(Individual $individual, int $generation, int $generations, bool $show_spouse): void
     {
         if ($generation >= $generations) {
             return;

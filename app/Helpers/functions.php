@@ -31,9 +31,9 @@ function app(string $abstract = null)
 {
     if ($abstract === null) {
         return Application::getInstance();
-    } else {
-        return Application::getInstance()->make($abstract);
     }
+
+    return Application::getInstance()->make($abstract);
 }
 
 /**

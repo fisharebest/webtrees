@@ -36,7 +36,7 @@ class Html
             if (is_string($value)) {
                 $html[] = e($key) . '="' . e($value) . '"';
             } elseif (is_int($value)) {
-                $html[] = e($key) . '="' . (string) $value . '"';
+                $html[] = e($key) . '="' . $value . '"';
             } elseif ($value !== false) {
                 $html[] = e($key);
             }
@@ -55,7 +55,7 @@ class Html
      */
     public static function url($path, array $data): string
     {
-        $path = strtr($path, ' ', '%20');
+        $path = str_replace(' ', '%20', $path);
 
         return $path . '?' . http_build_query($data, '', '&', PHP_QUERY_RFC3986);
     }

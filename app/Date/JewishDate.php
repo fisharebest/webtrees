@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Date;
 
 use Fisharebest\ExtCalendar\JewishCalendar;
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -67,7 +68,9 @@ class JewishDate extends AbstractCalendarDate
      */
     protected function formatDay(): string
     {
-        if (WT_LOCALE === 'he' || WT_LOCALE === 'yi') {
+        $locale = app(LocaleInterface::class)->language()->code();
+
+        if ($locale === 'he' || $locale === 'yi') {
             return (new JewishCalendar())->numberToHebrewNumerals($this->day, true);
         }
 
@@ -84,7 +87,9 @@ class JewishDate extends AbstractCalendarDate
      */
     protected function formatShortYear(): string
     {
-        if (WT_LOCALE === 'he' || WT_LOCALE === 'yi') {
+        $locale = app(LocaleInterface::class)->language()->code();
+
+        if ($locale === 'he' || $locale === 'yi') {
             return (new JewishCalendar())->numberToHebrewNumerals($this->year, false);
         }
 
@@ -98,7 +103,9 @@ class JewishDate extends AbstractCalendarDate
      */
     protected function formatLongYear(): string
     {
-        if (WT_LOCALE === 'he' || WT_LOCALE === 'yi') {
+        $locale = app(LocaleInterface::class)->language()->code();
+
+        if ($locale === 'he' || $locale === 'yi') {
             return (new JewishCalendar())->numberToHebrewNumerals($this->year, true);
         }
 
@@ -337,7 +344,7 @@ class JewishDate extends AbstractCalendarDate
      */
     protected function nextMonth(): array
     {
-        if ($this->month == 6 && !$this->isLeapYear()) {
+        if ($this->month === 6 && !$this->isLeapYear()) {
             return [
                 $this->year,
                 8,
@@ -345,7 +352,7 @@ class JewishDate extends AbstractCalendarDate
         }
 
         return [
-            $this->year + ($this->month == 13 ? 1 : 0),
+            $this->year + ($this->month === 13 ? 1 : 0),
             ($this->month % 13) + 1,
         ];
     }

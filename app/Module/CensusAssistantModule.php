@@ -84,9 +84,9 @@ class CensusAssistantModule extends AbstractModule
             $html = $this->censusTableRow(new $census(), $individual, $head);
 
             return new Response($html);
-        } else {
-            throw new NotFoundHttpException();
         }
+
+        throw new NotFoundHttpException();
     }
 
     /**

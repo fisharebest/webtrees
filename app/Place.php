@@ -171,10 +171,10 @@ class Place
                 'parent' => $this->parts->reverse()->all(),
                 'ged'    => $this->tree->name(),
             ]);
-        } else {
-            // The place-list module is disabled...
-            return '#';
         }
+
+        // The place-list module is disabled...
+        return '#';
     }
 
     /**
@@ -206,7 +206,7 @@ class Place
      *
      * @return string
      */
-    public function fullName(bool $link = false)
+    public function fullName(bool $link = false): string
     {
         if ($this->parts->isEmpty()) {
             return '';
@@ -228,7 +228,7 @@ class Place
      *
      * @return string
      */
-    public function shortName(bool $link = false)
+    public function shortName(bool $link = false): string
     {
         $SHOW_PEDIGREE_PLACES = (int) $this->tree->getPreference('SHOW_PEDIGREE_PLACES');
 

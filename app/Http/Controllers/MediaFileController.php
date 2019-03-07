@@ -231,9 +231,8 @@ class MediaFileController extends AbstractBaseController
     private function glideSignature(): Signature
     {
         $glide_key = Site::getPreference('glide-key');
-        $signature = SignatureFactory::create($glide_key);
 
-        return $signature;
+        return SignatureFactory::create($glide_key);
     }
 
     /**

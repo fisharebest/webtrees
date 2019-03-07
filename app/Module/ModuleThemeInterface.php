@@ -91,7 +91,7 @@ interface ModuleThemeInterface extends ModuleInterface
      *
      * @return Menu|null
      */
-    public function menuThemes();
+    public function menuThemes(): ?Menu;
 
     /**
      * Misecellaneous dimensions, fonts, styles, etc.

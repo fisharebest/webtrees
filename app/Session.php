@@ -32,7 +32,7 @@ class Session
      *
      * @return void
      */
-    public static function start()
+    public static function start(): void
     {
         $domain   = '';
         $path     = parse_url(WT_BASE_URL, PHP_URL_PATH);
@@ -77,7 +77,7 @@ class Session
      *
      * @return void
      */
-    public static function put(string $name, $value)
+    public static function put(string $name, $value): void
     {
         $_SESSION[$name] = $value;
     }
@@ -89,7 +89,7 @@ class Session
      *
      * @return void
      */
-    public static function forget(string $name)
+    public static function forget(string $name): void
     {
         unset($_SESSION[$name]);
     }
@@ -111,7 +111,7 @@ class Session
      *
      * @return void
      */
-    public static function clear()
+    public static function clear(): void
     {
         $_SESSION = [];
     }
@@ -123,7 +123,7 @@ class Session
      *
      * @return void
      */
-    public static function regenerate(bool $destroy = false)
+    public static function regenerate(bool $destroy = false): void
     {
         if ($destroy) {
             self::clear();
@@ -141,7 +141,7 @@ class Session
      *
      * @return void
      */
-    public static function setId(string $id)
+    public static function setId(string $id): void
     {
         session_id($id);
     }
@@ -151,7 +151,7 @@ class Session
      *
      * @return void
      */
-    private static function setSaveHandler()
+    private static function setSaveHandler(): void
     {
         session_set_save_handler(
             function (): bool {
@@ -273,10 +273,10 @@ class Session
      */
     public static function getCsrfToken(): string
     {
-        if (!Session::has('CSRF_TOKEN')) {
-            Session::put('CSRF_TOKEN', Str::random(32));
+        if (!self::has('CSRF_TOKEN')) {
+            self::put('CSRF_TOKEN', Str::random(32));
         }
 
-        return Session::get('CSRF_TOKEN');
+        return self::get('CSRF_TOKEN');
     }
 }

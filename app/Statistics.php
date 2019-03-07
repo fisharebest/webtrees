@@ -2609,7 +2609,7 @@ class Statistics implements
      * @param string $block
      * @param string ...$params
      *
-     * @return null|string
+     * @return string|null
      */
     public function callBlock(string $block = '', ...$params): ?string
     {

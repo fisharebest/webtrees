@@ -713,7 +713,7 @@ class FunctionsEdit
                 'name' => $name,
             ]);
         } elseif ($fact === 'RELA') {
-            $html .= Bootstrap4::select(FunctionsEdit::optionsRelationships($value), $value, [
+            $html .= Bootstrap4::select(self::optionsRelationships($value), $value, [
                 'id'   => $id,
                 'name' => $name,
             ]);
@@ -728,7 +728,7 @@ class FunctionsEdit
                 '</div>';
         } elseif ($fact === 'RESN') {
             $html .= '<div class="input-group">';
-            $html .= Bootstrap4::select(FunctionsEdit::optionsRestrictions(true), $value, [
+            $html .= Bootstrap4::select(self::optionsRestrictions(true), $value, [
                 'id'   => $id,
                 'name' => $name,
             ]);
@@ -765,7 +765,7 @@ class FunctionsEdit
                 ]) .
                 '</div>';
         } elseif ($fact === 'TEMP') {
-            $html .= Bootstrap4::select(FunctionsEdit::optionsTemples(), $value, [
+            $html .= Bootstrap4::select(self::optionsTemples(), $value, [
                 'id'   => $id,
                 'name' => $name,
             ]);
@@ -773,7 +773,7 @@ class FunctionsEdit
             /* I18N: Examples of valid time formats (hours:minutes:seconds) */
             $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . I18N::translate('hh:mm or hh:mm:ss') . '">';
         } elseif ($fact === '_WT_USER') {
-            $html .= Bootstrap4::select(FunctionsEdit::optionsUsers(), $value, [
+            $html .= Bootstrap4::select(self::optionsUsers(), $value, [
                 'id'   => $id,
                 'name' => $name,
             ]);
@@ -860,7 +860,7 @@ class FunctionsEdit
      *
      * @return void
      */
-    public static function addSimpleTags(Tree $tree, $fact)
+    public static function addSimpleTags(Tree $tree, $fact): void
     {
         // For new individuals, these facts default to "Y"
         if ($fact === 'MARR') {
@@ -896,7 +896,7 @@ class FunctionsEdit
      *
      * @return void
      */
-    public static function createAddForm(Tree $tree, $fact)
+    public static function createAddForm(Tree $tree, $fact): void
     {
         self::$tags = [];
 
@@ -943,7 +943,7 @@ class FunctionsEdit
      *
      * @return void
      */
-    public static function createEditForm(Fact $fact)
+    public static function createEditForm(Fact $fact): void
     {
         $record = $fact->record();
         $tree   = $record->tree();
@@ -1022,7 +1022,7 @@ class FunctionsEdit
             }
 
             self::$tags[] = $type;
-            $subrecord    = (string) $level . ' ' . $type . ' ' . $text;
+            $subrecord    = $level . ' ' . $type . ' ' . $text;
 
             // Dates need different labels, depending on whether they are inside sources.
             if ($inSource && $type === 'DATE') {
@@ -1051,10 +1051,10 @@ class FunctionsEdit
             if (!empty($expected_subtags[$type])) {
                 foreach ($expected_subtags[$type] as $subtag) {
                     if (!in_array($subtag, $subtags)) {
-                        echo self::addSimpleTag($tree, (string) ($level + 1) . ' ' . $subtag, '', GedcomTag::getLabel($label . ':' . $subtag));
+                        echo self::addSimpleTag($tree, ($level + 1) . ' ' . $subtag, '', GedcomTag::getLabel($label . ':' . $subtag));
                         if (!empty($expected_subtags[$subtag])) {
                             foreach ($expected_subtags[$subtag] as $subsubtag) {
-                                echo self::addSimpleTag($tree, (string) ($level + 2) . ' ' . $subsubtag, '', GedcomTag::getLabel($label . ':' . $subtag . ':' . $subsubtag));
+                                echo self::addSimpleTag($tree, ($level + 2) . ' ' . $subsubtag, '', GedcomTag::getLabel($label . ':' . $subtag . ':' . $subsubtag));
                             }
                         }
                     }
@@ -1078,7 +1078,7 @@ class FunctionsEdit
      *
      * @return void
      */
-    public static function insertMissingSubtags(Tree $tree, $level1tag, $add_date = false)
+    public static function insertMissingSubtags(Tree $tree, $level1tag, $add_date = false): void
     {
         // handle  MARRiage TYPE
         $type_val = '';

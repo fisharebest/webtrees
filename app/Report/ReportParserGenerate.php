@@ -168,7 +168,7 @@ class ReportParserGenerate extends ReportParserBase
 
         foreach ($attrs as $key => $value) {
             if (preg_match("/^\\$(\w+)$/", $value, $match)) {
-                if ((isset($this->vars[$match[1]]['id'])) && (!isset($this->vars[$match[1]]['gedcom']))) {
+                if (isset($this->vars[$match[1]]['id']) && !isset($this->vars[$match[1]]['gedcom'])) {
                     $value = $this->vars[$match[1]]['id'];
                 }
             }
@@ -1064,10 +1064,7 @@ class ReportParserGenerate extends ReportParserBase
         $this->repeats         = [];
         $this->repeat_bytes    = xml_get_current_line_number($this->parser);
 
-        $tag = '';
-        if (isset($attrs['tag'])) {
-            $tag = $attrs['tag'];
-        }
+        $tag = $attrs['tag'] ?? '';
         if (!empty($tag)) {
             if ($tag === '@desc') {
                 $value = $this->desc;
@@ -1300,7 +1297,7 @@ class ReportParserGenerate extends ReportParserBase
             $this->repeats = [];
             $nonfacts      = explode(',', $tag);
             foreach ($facts as $fact) {
-                if (!in_array($fact->getTag(), $nonfacts)) {
+                if (!in_array($fact->getTag(), $nonfacts, true)) {
                     $this->repeats[] = $fact->gedcom();
                 }
             }
@@ -1854,11 +1851,7 @@ class ReportParserGenerate extends ReportParserBase
             $sortby = 'NAME';
         }
 
-        if (isset($attrs['list'])) {
-            $listname = $attrs['list'];
-        } else {
-            $listname = 'individual';
-        }
+        $listname = $attrs['list'] ?? 'individual';
 
         // Some filters/sorts can be applied using SQL, while others require PHP
         switch ($listname) {
@@ -1951,7 +1944,7 @@ class ReportParserGenerate extends ReportParserBase
                         } elseif (preg_match('/^(\w+) CONTAINS (.+)$/', $value, $match)) {
                             // Don't unset this filter. This is just initial filtering for performance
                             $match[2] = strtr($match[2], ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_', ' ' => '%']);
-                            $like = "%\n1 " . $match[1] . "%" . $match[2] . '%';
+                            $like = "%\n1 " . $match[1] . '%' . $match[2] . '%';
                             $query->where('i_gedcom', 'LIKE', $like);
                         }
                     }
@@ -2045,7 +2038,7 @@ class ReportParserGenerate extends ReportParserBase
                         } elseif (preg_match('/^(\w+) CONTAINS (.+)$/', $value, $match)) {
                             // Don't unset this filter. This is just initial filtering for performance
                             $match[2] = strtr($match[2], ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_', ' ' => '%']);
-                            $like = "%\n1 " . $match[1] . "%" . $match[2] . '%';
+                            $like = "%\n1 " . $match[1] . '%' . $match[2] . '%';
                             $query->where('f_gedcom', 'LIKE', $like);
                         }
                     }
@@ -2361,10 +2354,8 @@ class ReportParserGenerate extends ReportParserBase
             return;
         }
 
-        $sortby = 'NAME';
-        if (isset($attrs['sortby'])) {
-            $sortby = $attrs['sortby'];
-        }
+        $sortby = $attrs['sortby'] ?? 'NAME';
+
         $match = [];
         if (preg_match("/\\$(\w+)/", $sortby, $match)) {
             $sortby = $this->vars[$match[1]]['id'];
@@ -2379,19 +2370,15 @@ class ReportParserGenerate extends ReportParserBase
             $maxgen = -1;
         }
 
-        $group = 'child-family';
-        if (isset($attrs['group'])) {
-            $group = $attrs['group'];
-        }
+        $group = $attrs['group'] ?? 'child-family';
+
         if (preg_match("/\\$(\w+)/", $group, $match)) {
             $group = $this->vars[$match[1]]['id'];
             $group = trim($group);
         }
 
-        $id = '';
-        if (isset($attrs['id'])) {
-            $id = $attrs['id'];
-        }
+        $id = $attrs['id'] ?? '';
+
         if (preg_match("/\\$(\w+)/", $id, $match)) {
             $id = $this->vars[$match[1]]['id'];
             $id = trim($id);
@@ -2798,11 +2785,7 @@ class ReportParserGenerate extends ReportParserBase
                 if ($children) {
                     foreach ($family->children() as $child) {
                         $list[$child->xref()] = $child;
-                        if (isset($list[$id]->generation)) {
-                            $list[$child->xref()]->generation = $list[$id]->generation;
-                        } else {
-                            $list[$child->xref()]->generation = 1;
-                        }
+                        $list[$child->xref()]->generation = $list[$id]->generation ?? 1;
                     }
                 }
             }

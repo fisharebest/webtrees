@@ -194,7 +194,7 @@ class ReportPdfTextbox extends ReportBaseTextbox
                 // This is text elements. Number of LF but at least one line
                 $cHT = ($cHT + 1) * $renderer->getCellHeightRatio();
                 // Calculate the cell hight with the largest font size used within this Box
-                $cHT = $cHT * $renderer->largestFontHeight;
+                $cHT *= $renderer->largestFontHeight;
                 // Add cell padding
                 if ($this->padding) {
                     if (is_array($cM['cell'])) {
@@ -249,7 +249,7 @@ class ReportPdfTextbox extends ReportBaseTextbox
             if (!$renderer->getRTL()) {
                 $cXM = $cX;
             } else {
-                $cXM = ($renderer->getPageWidth()) - $cX - $cW;
+                $cXM = $renderer->getPageWidth() - $cX - $cW;
             }
             $renderer->Rect($cXM, $cY, $cW, $cH, $cS);
         }
@@ -316,7 +316,7 @@ class ReportPdfTextbox extends ReportBaseTextbox
         }
         // New line and some clean up
         if (!$this->newline) {
-            $renderer->SetXY(($cX + $cW), $cY);
+            $renderer->SetXY($cX + $cW, $cY);
             $renderer->lastCellHeight = $cH;
         } else {
             // addMarginX() also updates X

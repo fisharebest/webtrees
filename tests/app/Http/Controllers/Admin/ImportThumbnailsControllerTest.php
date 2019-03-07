@@ -56,10 +56,9 @@ class ImportThumbnailsControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testWebtrees1ThumbnailsData(): void
     {
-        // This function still uses MySQL-specific code.
-        //$controller = new ImportThumbnailsController();
-        //$response   = $controller->webtrees1ThumbnailsData(new Request());
+        $controller = new ImportThumbnailsController();
+        $response   = $controller->webtrees1ThumbnailsData(new Request());
 
-        //$this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 }

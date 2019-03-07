@@ -313,7 +313,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
      *
      * @return array|null
      */
-    private function getMapProviderData(Request $request)
+    private function getMapProviderData(Request $request): ?array
     {
         if (self::$map_providers === null) {
             $providersFile        = WT_ROOT . Webtrees::MODULES_PATH . 'openstreetmap/providers/providers.xml';
@@ -352,7 +352,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
                         'styles' => ['mapnik' => 'Mapnik'],
                     ],
                 ];
-            };
+            }
         }
 
         //Ugly!!!

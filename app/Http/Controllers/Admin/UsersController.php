@@ -442,15 +442,17 @@ class UsersController extends AbstractAdminController
             FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.') . $email, 'danger');
 
             return new RedirectResponse(route('admin-users-edit', ['user_id' => $edit_user->id()]));
-        } elseif ($edit_user->userName() !== $username && $this->user_service->findByUserName($username) instanceof User) {
+        }
+
+        if ($edit_user->userName() !== $username && $this->user_service->findByUserName($username) instanceof User) {
             FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'), 'danger');
 
             return new RedirectResponse(route('admin-users-edit', ['user_id' => $edit_user->id()]));
-        } else {
-            $edit_user
-                ->setEmail($email)
-                ->setUserName($username);
         }
+
+        $edit_user
+            ->setEmail($email)
+            ->setUserName($username);
 
         return new RedirectResponse(route('admin-users'));
     }

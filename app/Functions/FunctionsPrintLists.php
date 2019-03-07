@@ -87,7 +87,7 @@ class FunctionsPrintLists
      *
      * @return string
      */
-    public static function surnameList($surnames, $style, $totals, ?ModuleListInterface $module, Tree $tree)
+    public static function surnameList($surnames, $style, $totals, ?ModuleListInterface $module, Tree $tree): string
     {
         $html = [];
         foreach ($surnames as $surn => $surns) {
@@ -98,7 +98,10 @@ class FunctionsPrintLists
                 } else {
                     $url = $module->listUrl($tree, ['alpha'  => ',']);
                 }
+            } else {
+                $url = null;
             }
+
             // If all the surnames are just case variants, then merge them into one
             // Comment out this block if you want SMITH listed separately from Smith
             $tag = ($module instanceof ModuleListInterface)?'a':'span';
@@ -135,14 +138,14 @@ class FunctionsPrintLists
                 } else {
                     $col = 1;
                 }
-                $newcol = ceil($count / $col);
+                $newcol = (int) ceil($count / $col);
                 $html2  = '<table class="list_table"><tr>';
                 $html2 .= '<td class="list_value" style="padding: 14px;">';
 
                 foreach ($html as $surns) {
                     $html2 .= $surns . '<br>';
                     $i++;
-                    if ($i == $newcol && $i < $count) {
+                    if ($i === $newcol && $i < $count) {
                         $html2 .= '</td><td class="list_value" style="padding: 14px;">';
                         $newcol = $i + ceil($count / $col);
                     }

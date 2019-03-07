@@ -35,7 +35,7 @@ class FlashMessages
      *
      * @return void
      */
-    public static function addMessage($text, $status = 'info')
+    public static function addMessage($text, $status = 'info'): void
     {
         $message         = new stdClass();
         $message->text   = $text;

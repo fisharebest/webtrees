@@ -162,7 +162,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id)
+    public function saveBlockConfiguration(Request $request, int $block_id): void
     {
         $this->setBlockSetting($block_id, 'num', $request->get('num', '10'));
         $this->setBlockSetting($block_id, 'count_placement', $request->get('count_placement', 'before'));
@@ -176,7 +176,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id): void
     {
         $num             = $this->getBlockSetting($block_id, 'num', '10');
         $count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');

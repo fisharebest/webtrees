@@ -62,7 +62,7 @@ abstract class BatchUpdateBasePlugin
      *
      * @return void
      */
-    public function getOptions(Request $request)
+    public function getOptions(Request $request): void
     {
         $this->chan = (bool) $request->get('chan');
     }

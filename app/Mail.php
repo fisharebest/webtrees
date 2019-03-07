@@ -73,7 +73,7 @@ class Mail
      *
      * @return Swift_Transport
      */
-    public static function transport()
+    public static function transport(): Swift_Transport
     {
         switch (Site::getPreference('SMTP_ACTIVE')) {
             case 'sendmail':
@@ -89,7 +89,7 @@ class Mail
                 $smtp_pass = Site::getPreference('SMTP_AUTH_PASS');
                 $smtp_encr = Site::getPreference('SMTP_SSL');
 
-                $transport = (new Swift_SmtpTransport($smtp_host, $smtp_port, $smtp_encr));
+                $transport = new Swift_SmtpTransport($smtp_host, $smtp_port, $smtp_encr);
 
                 $transport->setLocalDomain(Site::getPreference('SMTP_HELO'));
 

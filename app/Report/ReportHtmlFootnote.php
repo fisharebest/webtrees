@@ -84,7 +84,8 @@ class ReportHtmlFootnote extends ReportBaseFootnote
         if ($cellWidth > 0) {
             $this->text = $html->textWrap($this->text, $cellWidth);
         }
-        $this->text = $this->text . "\n\n";
+
+        $this->text .= "\n\n";
         $ct         = substr_count($this->text, "\n");
         $fsize      = $html->getCurrentStyleHeight();
 

@@ -209,7 +209,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      *
      * @return string
      */
-    public function loadSpouses(Individual $individual, $generations)
+    public function loadSpouses(Individual $individual, $generations): string
     {
         $out = '';
         if ($individual->canShow()) {
@@ -232,7 +232,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      *
      * @return string
      */
-    public function loadChildren(Family $family, $generations)
+    public function loadChildren(Family $family, $generations): string
     {
         $out = '';
         if ($family->canShow()) {

@@ -150,7 +150,7 @@ class ServerCheckService
     {
         $disable_functions = explode(',', ini_get('disable_functions'));
         $disable_functions = array_map(function (string $func): string {
-            return trim(strtolower($func));
+            return strtolower(trim($func));
         }, $disable_functions);
 
         $function = strtolower($function);

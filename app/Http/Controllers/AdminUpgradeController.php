@@ -50,7 +50,7 @@ class AdminUpgradeController extends AbstractBaseController
         'timeout'         => 55,
     ];
 
-    const LOCK_FILE = 'data/offline.txt';
+    private const LOCK_FILE = 'data/offline.txt';
 
     /** @var string */
     protected $layout = 'layouts/administration';
@@ -209,7 +209,7 @@ class AdminUpgradeController extends AbstractBaseController
         $filename = WT_DATA_DIR . $tree->name() . date('-Y-m-d') . '.ged';
 
         try {
-            $stream = fopen($filename, 'w');
+            $stream = fopen($filename, 'wb');
 
             if ($stream !== false) {
                 $tree->exportGedcom($stream);
@@ -232,7 +232,7 @@ class AdminUpgradeController extends AbstractBaseController
         try {
             $download_url = $this->upgrade_service->downloadUrl();
             $zip_file     = WT_DATA_DIR . basename($download_url);
-            $zip_stream   = fopen($zip_file, 'w');
+            $zip_stream   = fopen($zip_file, 'wb');
             
             if ($zip_stream === false) {
                 throw new Exception('Cannot read ZIP file: ' . $zip_file);
@@ -338,7 +338,7 @@ class AdminUpgradeController extends AbstractBaseController
         foreach ($paths as $path) {
             $src_filesystem->delete($path['path']);
 
-            if (($this->timeout_service->isTimeNearlyUp())) {
+            if ($this->timeout_service->isTimeNearlyUp()) {
                 break;
             }
         }

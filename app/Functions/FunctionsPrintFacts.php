@@ -62,7 +62,7 @@ class FunctionsPrintFacts
      *
      * @return void
      */
-    public static function printFact(Fact $fact, GedcomRecord $record)
+    public static function printFact(Fact $fact, GedcomRecord $record): void
     {
         // Keep a track of children and grandchildren, so we can display their birth order "#1", "#2", etc.
         static $children = [], $grandchildren = [];
@@ -126,12 +126,12 @@ class FunctionsPrintFacts
         }
 
         // Event of close associates
-        if ($fact->id() == 'asso') {
+        if ($fact->id() === 'asso') {
             $styleadd = trim($styleadd . ' wt-relation-fact collapse');
         }
 
         // historical facts
-        if ($fact->id() == 'histo') {
+        if ($fact->id() === 'histo') {
             $styleadd = trim($styleadd . ' wt-historic-fact collapse');
         }
 
@@ -161,7 +161,7 @@ class FunctionsPrintFacts
             case 'MARR':
                 // This is a hack for a proprietory extension. Is it still used/needed?
                 $utype = strtoupper($type);
-                if ($utype == 'CIVIL' || $utype == 'PARTNERS' || $utype == 'RELIGIOUS') {
+                if ($utype === 'CIVIL' || $utype === 'PARTNERS' || $utype === 'RELIGIOUS') {
                     $label = GedcomTag::getLabel('MARR_' . $utype, $label_person);
                     $type  = ''; // Do not print this again
                 } else {
@@ -198,7 +198,7 @@ class FunctionsPrintFacts
 
         echo $label;
 
-        if ($fact->id() != 'histo' && $fact->canEdit()) {
+        if ($fact->id() !== 'histo' && $fact->canEdit()) {
             echo '<div class="editfacts">';
             echo view('edit/icon-fact-edit', ['fact' => $fact]);
             echo view('edit/icon-fact-copy', ['fact' => $fact]);
@@ -314,7 +314,7 @@ class FunctionsPrintFacts
         if ($type) {
             $utype = strtoupper($type);
             // Events of close relatives, e.g. _MARR_CHIL
-            if (substr($fact->getTag(), 0, 6) == '_MARR_' && ($utype == 'CIVIL' || $utype == 'PARTNERS' || $utype == 'RELIGIOUS')) {
+            if (substr($fact->getTag(), 0, 6) === '_MARR_' && ($utype === 'CIVIL' || $utype === 'PARTNERS' || $utype === 'RELIGIOUS')) {
                 // Translate MARR/TYPE using the code that supports MARR_CIVIL, etc. tags
                 $type = GedcomTag::getLabel('MARR_' . $utype);
             } else {
@@ -378,7 +378,7 @@ class FunctionsPrintFacts
                     foreach (preg_split('/ *, */', $match[2]) as $event) {
                         $events[] = GedcomTag::getLabel($event);
                     }
-                    if (count($events) == 1) {
+                    if (count($events) === 1) {
                         echo GedcomTag::getLabelValue('EVEN', $event);
                     } else {
                         echo GedcomTag::getLabelValue('EVEN', implode(I18N::$list_separator, $events));
@@ -637,10 +637,10 @@ class FunctionsPrintFacts
      *
      * @return void
      */
-    public static function printMediaLinks(Tree $tree, $factrec, $level)
+    public static function printMediaLinks(Tree $tree, $factrec, $level): void
     {
         $nlevel = $level + 1;
-        if (preg_match_all("/$level OBJE @(.*)@/", $factrec, $omatch, PREG_SET_ORDER) == 0) {
+        if (preg_match_all("/$level OBJE @(.*)@/", $factrec, $omatch, PREG_SET_ORDER) === 0) {
             return;
         }
         $objectNum = 0;
@@ -708,7 +708,7 @@ class FunctionsPrintFacts
      *
      * @return void
      */
-    public static function printMainSources(Fact $fact, $level)
+    public static function printMainSources(Fact $fact, int $level): void
     {
         $factrec = $fact->gedcom();
         $parent  = $fact->record();
@@ -717,13 +717,13 @@ class FunctionsPrintFacts
         $nlevel = $level + 1;
         if ($fact->isPendingAddition()) {
             $styleadd = 'new';
-            $can_edit = $level == 1 && $fact->canEdit();
+            $can_edit = $level === 1 && $fact->canEdit();
         } elseif ($fact->isPendingDeletion()) {
             $styleadd = 'old';
             $can_edit = false;
         } else {
             $styleadd = '';
-            $can_edit = $level == 1 && $fact->canEdit();
+            $can_edit = $level === 1 && $fact->canEdit();
         }
 
         // -- find source for each fact
@@ -753,7 +753,7 @@ class FunctionsPrintFacts
                 $factlines = explode("\n", $factrec); // 1 BIRT Y\n2 SOUR ...
                 $factwords = explode(' ', $factlines[0]); // 1 BIRT Y
                 $factname  = $factwords[1]; // BIRT
-                if ($factname == 'EVEN' || $factname == 'FACT') {
+                if ($factname === 'EVEN' || $factname === 'FACT') {
                     // Add ' EVEN' to provide sensible output for an event with an empty TYPE record
                     $ct = preg_match('/2 TYPE (.*)/', $factrec, $ematch);
                     if ($ct > 0) {
@@ -768,10 +768,8 @@ class FunctionsPrintFacts
                             'fact_id' => $fact->id(),
                             'ged'     => $tree->name(),
                         ])) . '" title="', I18N::translate('Edit'), '">';
-                    if ($tree->getPreference('SHOW_FACT_ICONS')) {
-                        if ($level == 1) {
-                            echo '<i class="icon-source"></i> ';
-                        }
+                    if ($tree->getPreference('SHOW_FACT_ICONS') && $level === 1) {
+                        echo '<i class="icon-source"></i> ';
                     }
                     echo GedcomTag::getLabel($factname, $parent), '</a>';
                     echo '<div class="editfacts">';
@@ -832,11 +830,11 @@ class FunctionsPrintFacts
                     echo self::printSourceStructure($tree, self::getSourceStructure($srec));
                     echo '<div class="indent">';
                     self::printMediaLinks($tree, $srec, $nlevel);
-                    if ($nlevel == 2) {
+                    if ($nlevel === 2) {
                         self::printMediaLinks($tree, $source->gedcom(), 1);
                     }
                     echo FunctionsPrint::printFactNotes($tree, $srec, $nlevel);
-                    if ($nlevel == 2) {
+                    if ($nlevel === 2) {
                         echo FunctionsPrint::printFactNotes($tree, $source->gedcom(), 1);
                     }
                     echo '</div>';
@@ -942,7 +940,7 @@ class FunctionsPrintFacts
      *
      * @return void
      */
-    public static function printMainNotes(Fact $fact, $level)
+    public static function printMainNotes(Fact $fact, int $level): void
     {
         $factrec = $fact->gedcom();
         $parent  = $fact->record();
@@ -950,13 +948,13 @@ class FunctionsPrintFacts
 
         if ($fact->isPendingAddition()) {
             $styleadd = ' new';
-            $can_edit = $level == 1 && $fact->canEdit();
+            $can_edit = $level === 1 && $fact->canEdit();
         } elseif ($fact->isPendingDeletion()) {
             $styleadd = ' old';
             $can_edit = false;
         } else {
             $styleadd = '';
-            $can_edit = $level == 1 && $fact->canEdit();
+            $can_edit = $level === 1 && $fact->canEdit();
         }
 
         $ct = preg_match_all("/$level NOTE (.*)/", $factrec, $match, PREG_SET_ORDER);
@@ -1006,7 +1004,7 @@ class FunctionsPrintFacts
                 $factlines = explode("\n", $factrec); // 1 BIRT Y\n2 NOTE ...
                 $factwords = explode(' ', $factlines[0]); // 1 BIRT Y
                 $factname  = $factwords[1]; // BIRT
-                if ($factname == 'EVEN' || $factname == 'FACT') {
+                if ($factname === 'EVEN' || $factname === 'FACT') {
                     // Add ' EVEN' to provide sensible output for an event with an empty TYPE record
                     $ct = preg_match('/2 TYPE (.*)/', $factrec, $ematch);
                     if ($ct > 0) {
@@ -1015,7 +1013,7 @@ class FunctionsPrintFacts
                     } else {
                         echo GedcomTag::getLabel($factname, $parent);
                     }
-                } elseif ($factname != 'NOTE') {
+                } elseif ($factname !== 'NOTE') {
                     // Note is already printed
                     echo GedcomTag::getLabel($factname, $parent);
                     if ($note) {
@@ -1075,7 +1073,7 @@ class FunctionsPrintFacts
      *
      * @return void
      */
-    public static function printMainMedia(Fact $fact, $level)
+    public static function printMainMedia(Fact $fact, $level): void
     {
         $factrec = $fact->gedcom();
         $parent  = $fact->record();

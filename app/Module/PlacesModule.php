@@ -247,7 +247,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
      *
      * @return array|null
      */
-    private function getMapProviderData(Request $request)
+    private function getMapProviderData(Request $request): ?array
     {
         if (self::$map_providers === null) {
             $providersFile        = WT_ROOT . Webtrees::MODULES_PATH . 'openstreetmap/providers/providers.xml';
@@ -286,7 +286,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                         'styles' => ['mapnik' => 'Mapnik'],
                     ],
                 ];
-            };
+            }
         }
 
         //Ugly!!!

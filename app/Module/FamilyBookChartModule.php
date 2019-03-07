@@ -248,7 +248,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
                     if (count($children) > 1) {
                         if ($i === 0) {
                             // Adjust for the first column on left
-                            $h = round(((($this->box->height) * $kids) + 8) / 2); // Assumes border = 1 and padding = 3
+                            $h = round((($this->box->height * $kids) + 8) / 2); // Assumes border = 1 and padding = 3
                             //  Adjust for other vertical columns
                             if ($kids > 1) {
                                 $h = ($kids - 1) * 4 + $h;
@@ -257,7 +257,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
                             '<img id="vline_', $child->xref(), '" src="', e(asset('css/images/vline.png')), '" width="3" height="', $h - 4, '"></td>';
                         } elseif ($i === count($children) - 1) {
                             // Adjust for the first column on left
-                            $h = round(((($this->box->height) * $kids) + 8) / 2);
+                            $h = round((($this->box->height * $kids) + 8) / 2);
                             // Adjust for other vertical columns
                             if ($kids > 1) {
                                 $h = ($kids - 1) * 4 + $h;
@@ -322,7 +322,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return void
      */
-    private function printPersonPedigree($person, $count)
+    private function printPersonPedigree($person, $count): void
     {
         if ($count >= $this->generations) {
             return;
@@ -330,7 +330,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
 
         $genoffset = $this->generations; // handle pedigree n generations lines
         //-- calculate how tall the lines should be
-        $lh = ($this->bhalfheight) * (2 ** ($genoffset - $count - 1));
+        $lh = $this->bhalfheight * (2 ** ($genoffset - $count - 1));
         //
         //Prints empty table columns for children w/o parents up to the max generation
         //This allows vertical line spacing to be consistent
@@ -386,7 +386,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                     }
                 }
-                $lh = (($famcount - 1) * ($this->box->height) - ($linefactor));
+                $lh = (($famcount - 1) * $this->box->height - $linefactor);
                 if ($genoffset > 5) {
                     $lh = $savlh;
                 }
@@ -408,7 +408,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
                 echo '<td>';
                 if ($genoffset > $count) {
                     echo '<table cellspacing="0" cellpadding="0" border="0" >';
-                    for ($i = 1; $i < (pow(2, ($genoffset) - $count) / 2); $i++) {
+                    for ($i = 1; $i < ((2 ** ($genoffset - $count)) / 2); $i++) {
                         $this->printEmptyBox();
                         echo '</tr>';
                     }
@@ -431,7 +431,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
                 echo '<td>';
                 if ($count < $genoffset - 1) {
                     echo '<table cellspacing="0" cellpadding="0" border="0" >';
-                    for ($i = 1; $i < (pow(2, ($genoffset - 1) - $count) / 2) + 1; $i++) {
+                    for ($i = 1; $i < ((2 ** (($genoffset - 1) - $count)) / 2) + 1; $i++) {
                         $this->printEmptyBox();
                         echo '</tr>';
                         $this->printEmptyBox();
@@ -485,7 +485,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
      * @return void
      */
 
-    private function printEmptyBox()
+    private function printEmptyBox(): void
     {
         echo app(ModuleThemeInterface::class)->individualBoxEmpty();
     }
@@ -498,7 +498,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return void
      */
-    private function printFamilyBook(Individual $person, $descent_steps)
+    private function printFamilyBook(Individual $person, $descent_steps): void
     {
         if ($descent_steps == 0) {
             return;

@@ -103,7 +103,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
                         $today     = new JewishDate($jd);
                         $hd        = $fact->date()->minimumDate();
                         $hd1       = new JewishDate($hd);
-                        $hd1->year += 1;
+                        ++$hd1->year;
                         $hd1->setJdFromYmd();
                         // Special rules. See http://www.hebcal.com/help/anniv.html
                         // Everything else is taken care of by our standard anniversary rules.
@@ -212,7 +212,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id)
+    public function saveBlockConfiguration(Request $request, int $block_id): void
     {
         $this->setBlockSetting($block_id, 'days', $request->get('days', self::DEFAULT_DAYS));
         $this->setBlockSetting($block_id, 'infoStyle', $request->get('infoStyle', self::DEFAULT_STYLE));
@@ -227,7 +227,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id): void
     {
         $calendar  = $this->getBlockSetting($block_id, 'calendar', 'jewish');
         $days      = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);

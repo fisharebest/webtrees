@@ -40,7 +40,7 @@ class SurnameTradition
      *
      * @return SurnameTraditionInterface
      */
-    public static function create($name)
+    public static function create($name): SurnameTraditionInterface
     {
         switch ($name) {
             case 'paternal':

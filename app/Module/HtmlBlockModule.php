@@ -140,7 +140,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id)
+    public function saveBlockConfiguration(Request $request, int $block_id): void
     {
         $languages = (array) $request->get('lang');
         $this->setBlockSetting($block_id, 'title', $request->get('title', ''));
@@ -158,7 +158,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id): void
     {
         $templates = [
             I18N::translate('Keyword examples')      => view('modules/html/template-keywords', []),

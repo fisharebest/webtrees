@@ -152,7 +152,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id)
+    public function saveBlockConfiguration(Request $request, int $block_id): void
     {
         $days = $request->get('days', self::DEFAULT_DAYS);
 
@@ -174,7 +174,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id): void
     {
         $days      = (int) $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_INFO_STYLE);

@@ -74,7 +74,7 @@ class GedcomRecord
      *                             empty string for records with pending deletions
      * @param Tree        $tree
      */
-    public function __construct(string $xref, string $gedcom, $pending, Tree $tree)
+    public function __construct(string $xref, string $gedcom, ?string $pending, Tree $tree)
     {
         $this->xref    = $xref;
         $this->gedcom  = $gedcom;
@@ -151,7 +151,7 @@ class GedcomRecord
      *
      * @return void
      */
-    private function parseFacts()
+    private function parseFacts(): void
     {
         // Split the record into facts
         if ($this->gedcom) {
@@ -294,9 +294,9 @@ class GedcomRecord
      * @param string $xref
      * @param int    $tree_id
      *
-     * @return null|string
+     * @return string|null
      */
-    protected static function fetchGedcomRecord(string $xref, int $tree_id)
+    protected static function fetchGedcomRecord(string $xref, int $tree_id): ?string
     {
         // We don't know what type of object this is. Try each one in turn.
         $data = Individual::fetchGedcomRecord($xref, $tree_id);
@@ -357,7 +357,7 @@ class GedcomRecord
      *
      * @return string
      */
-    public function gedcom()
+    public function gedcom(): string
     {
         return $this->pending ?? $this->gedcom;
     }
@@ -514,9 +514,9 @@ class GedcomRecord
      *
      * @return string
      */
-    public function privatizeGedcom(int $access_level)
+    public function privatizeGedcom(int $access_level): string
     {
-        if ($access_level == Auth::PRIV_HIDE) {
+        if ($access_level === Auth::PRIV_HIDE) {
             // We may need the original record, for example when downloading a GEDCOM or clippings cart
             return $this->gedcom;
         }
@@ -562,7 +562,7 @@ class GedcomRecord
      *
      * @return void
      */
-    protected function addName(string $type, string $value, string $gedcom)
+    protected function addName(string $type, string $value, string $gedcom): void
     {
         $this->getAllNames[] = [
             'type'   => $type,
@@ -591,7 +591,7 @@ class GedcomRecord
      *
      * @return void
      */
-    protected function extractNamesFromFacts(int $level, string $fact_type, Collection $facts)
+    protected function extractNamesFromFacts(int $level, string $fact_type, Collection $facts): void
     {
         $sublevel    = $level + 1;
         $subsublevel = $sublevel + 1;
@@ -599,7 +599,7 @@ class GedcomRecord
             if (preg_match_all("/^{$level} ({$fact_type}) (.+)((\n[{$sublevel}-9].+)*)/m", $fact->gedcom(), $matches, PREG_SET_ORDER)) {
                 foreach ($matches as $match) {
                     // Treat 1 NAME / 2 TYPE married the same as _MARNM
-                    if ($match[1] == 'NAME' && strpos($match[3], "\n2 TYPE married") !== false) {
+                    if ($match[1] === 'NAME' && strpos($match[3], "\n2 TYPE married") !== false) {
                         $this->addName('_MARNM', $match[2], $fact->gedcom());
                     } else {
                         $this->addName($match[1], $match[2], $fact->gedcom());
@@ -619,7 +619,7 @@ class GedcomRecord
      *
      * @return void
      */
-    public function extractNames()
+    public function extractNames(): void
     {
         $this->addName(static::RECORD_TYPE, $this->getFallBackName(), '');
     }
@@ -701,7 +701,7 @@ class GedcomRecord
             if (count($all_names) > 1) {
                 $primary_script = I18N::textScript($all_names[$this->getPrimaryName()]['sort']);
                 foreach ($all_names as $n => $name) {
-                    if ($n != $this->getPrimaryName() && $name['type'] != '_MARNM' && I18N::textScript($name['sort']) != $primary_script) {
+                    if ($n !== $this->getPrimaryName() && $name['type'] !== '_MARNM' && I18N::textScript($name['sort']) !== $primary_script) {
                         $this->getSecondaryName = $n;
                         break;
                     }
@@ -719,7 +719,7 @@ class GedcomRecord
      *
      * @return void
      */
-    public function setPrimaryName(int $n = null)
+    public function setPrimaryName(int $n = null): void
     {
         $this->getPrimaryName   = $n;
         $this->getSecondaryName = null;
@@ -741,7 +741,7 @@ class GedcomRecord
      *
      * @return string
      */
-    public function fullName()
+    public function fullName(): string
     {
         if ($this->canShowName()) {
             $tmp = $this->getAllNames();
@@ -768,11 +768,11 @@ class GedcomRecord
     /**
      * Get the full name in an alternative character set
      *
-     * @return null|string
+     * @return string|null
      */
-    public function alternateName()
+    public function alternateName(): ?string
     {
-        if ($this->canShowName() && $this->getPrimaryName() != $this->getSecondaryName()) {
+        if ($this->canShowName() && $this->getPrimaryName() !== $this->getSecondaryName()) {
             $all_names = $this->getAllNames();
 
             return $all_names[$this->getSecondaryName()]['full'];
@@ -819,12 +819,12 @@ class GedcomRecord
     {
         foreach ($this->facts($facts, true) as $event) {
             // Only display if it has a date or place (or both)
-            if ($event->date()->isOK() && $event->place()->gedcomName() <> '') {
+            if ($event->date()->isOK() && $event->place()->gedcomName() !== '') {
                 $joiner = ' — ';
             } else {
                 $joiner = '';
             }
-            if ($event->date()->isOK() || $event->place()->gedcomName() <> '') {
+            if ($event->date()->isOK() || $event->place()->gedcomName() !== '') {
                 switch ($style) {
                     case 1:
                         return '<br><em>' . $event->label() . ' ' . FunctionsPrint::formatFactDate($event, $this, false, false) . $joiner . FunctionsPrint::formatFactPlace($event) . '</em>';
@@ -1112,7 +1112,9 @@ class GedcomRecord
 
             if (preg_match('/\n3 TIME (\d\d):(\d\d):(\d\d)/', $chan->gedcom(), $match)) {
                 return Carbon::create($d->year(), $d->month(), $d->day(), (int) $match[1], (int) $match[2], (int) $match[3]);
-            } elseif (preg_match('/\n3 TIME (\d\d):(\d\d)/', $chan->gedcom(), $match)) {
+            }
+
+            if (preg_match('/\n3 TIME (\d\d):(\d\d)/', $chan->gedcom(), $match)) {
                 return Carbon::create($d->year(), $d->month(), $d->day(), (int) $match[1], (int) $match[2]);
             }
 
@@ -1128,7 +1130,7 @@ class GedcomRecord
      *
      * @return string
      */
-    public function lastChangeUser()
+    public function lastChangeUser(): string
     {
         $chan = $this->facts(['CHAN'])->first();
 
@@ -1152,7 +1154,7 @@ class GedcomRecord
      *
      * @return void
      */
-    public function createFact(string $gedcom, bool $update_chan)
+    public function createFact(string $gedcom, bool $update_chan): void
     {
         $this->updateFact('', $gedcom, $update_chan);
     }
@@ -1165,7 +1167,7 @@ class GedcomRecord
      *
      * @return void
      */
-    public function deleteFact(string $fact_id, bool $update_chan)
+    public function deleteFact(string $fact_id, bool $update_chan): void
     {
         $this->updateFact($fact_id, '', $update_chan);
     }
@@ -1180,7 +1182,7 @@ class GedcomRecord
      * @return void
      * @throws Exception
      */
-    public function updateFact(string $fact_id, string $gedcom, bool $update_chan)
+    public function updateFact(string $fact_id, string $gedcom, bool $update_chan): void
     {
         // MSDOS line endings will break things in horrible ways
         $gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom);
@@ -1210,7 +1212,7 @@ class GedcomRecord
                         $new_gedcom .= "\n" . $gedcom;
                     }
                     $fact_id = 'NOT A VALID FACT ID'; // Only replace/delete one copy of a duplicate fact
-                } elseif ($fact->getTag() != 'CHAN' || !$update_chan) {
+                } elseif ($fact->getTag() !== 'CHAN' || !$update_chan) {
                     $new_gedcom .= "\n" . $fact->gedcom();
                 }
             }
@@ -1224,7 +1226,7 @@ class GedcomRecord
             $new_gedcom .= "\n" . $gedcom;
         }
 
-        if ($new_gedcom != $old_gedcom) {
+        if ($new_gedcom !== $old_gedcom) {
             // Save the changes
             DB::table('change')->insert([
                 'gedcom_id'  => $this->tree->id(),
@@ -1253,7 +1255,7 @@ class GedcomRecord
      *
      * @return void
      */
-    public function updateRecord(string $gedcom, bool $update_chan)
+    public function updateRecord(string $gedcom, bool $update_chan): void
     {
         // MSDOS line endings will break things in horrible ways
         $gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom);
@@ -1294,7 +1296,7 @@ class GedcomRecord
      *
      * @return void
      */
-    public function deleteRecord()
+    public function deleteRecord(): void
     {
         // Create a pending change
         if (!$this->isPendingDeletion()) {
@@ -1327,7 +1329,7 @@ class GedcomRecord
      *
      * @return void
      */
-    public function removeLinks(string $xref, bool $update_chan)
+    public function removeLinks(string $xref, bool $update_chan): void
     {
         $value = '@' . $xref . '@';
 

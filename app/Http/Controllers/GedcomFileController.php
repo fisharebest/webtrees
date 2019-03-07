@@ -58,11 +58,11 @@ class GedcomFileController extends AbstractBaseController
             $import_offset = (int) DB::table('gedcom_chunk')
                 ->where('gedcom_id', '=', $tree->id())
                 ->where('imported', '=', '1')
-                ->sum(DB::raw("LENGTH(chunk_data)"));
+                ->sum(DB::raw('LENGTH(chunk_data)'));
 
             $import_total = (int) DB::table('gedcom_chunk')
                 ->where('gedcom_id', '=', $tree->id())
-                ->sum(DB::raw("LENGTH(chunk_data)"));
+                ->sum(DB::raw('LENGTH(chunk_data)'));
 
             // Finished?
             if ($import_offset === $import_total) {
@@ -106,7 +106,7 @@ class GedcomFileController extends AbstractBaseController
 
                     // What character set is this? Need to convert it to UTF8
                     if (preg_match('/[\r\n][ \t]*1 CHAR(?:ACTER)? (.+)/', $data->chunk_data, $match)) {
-                        $charset = trim(strtoupper($match[1]));
+                        $charset = strtoupper(trim($match[1]));
                     } else {
                         $charset = 'ASCII';
                     }

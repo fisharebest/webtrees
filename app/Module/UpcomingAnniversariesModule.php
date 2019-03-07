@@ -216,7 +216,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id)
+    public function saveBlockConfiguration(Request $request, int $block_id): void
     {
         $this->setBlockSetting($block_id, 'days', $request->get('days', self::DEFAULT_DAYS));
         $this->setBlockSetting($block_id, 'filter', $request->get('filter', ''));
@@ -233,7 +233,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
      *
      * @return void
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id): void
     {
         $default_events = implode(',', self::DEFAULT_EVENTS);
 

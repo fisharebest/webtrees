@@ -88,7 +88,7 @@ class CensusTableParser extends AbstractBlockParser
      *
      * @return TableRow|null
      */
-    private function parseRow($line, $type)
+    private function parseRow($line, $type): ?TableRow
     {
         if (strpos($line, '|') === false) {
             return null;

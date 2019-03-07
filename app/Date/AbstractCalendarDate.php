@@ -107,7 +107,7 @@ abstract class AbstractCalendarDate
         $this->maximum_julian_day = $date->maximum_julian_day;
 
         // Construct from an equivalent xxxxDate object
-        if (get_class($this) == get_class($date)) {
+        if (get_class($this) === get_class($date)) {
             $this->year  = $date->year;
             $this->month = $date->month;
             $this->day   = $date->day;
@@ -125,23 +125,23 @@ abstract class AbstractCalendarDate
         }
 
         // ...else construct an inequivalent xxxxDate object
-        if ($date->year == 0) {
+        if ($date->year === 0) {
             // Incomplete date - convert on basis of anniversary in current year
             $today = $date->calendar->jdToYmd(Carbon::now()->julianDay());
-            $jd    = $date->calendar->ymdToJd($today[0], $date->month, $date->day == 0 ? $today[2] : $date->day);
+            $jd    = $date->calendar->ymdToJd($today[0], $date->month, $date->day === 0 ? $today[2] : $date->day);
         } else {
             // Complete date
             $jd = intdiv($date->maximum_julian_day + $date->minimum_julian_day, 2);
         }
         [$this->year, $this->month, $this->day] = $this->calendar->jdToYmd($jd);
         // New date has same precision as original date
-        if ($date->year == 0) {
+        if ($date->year === 0) {
             $this->year = 0;
         }
-        if ($date->month == 0) {
+        if ($date->month === 0) {
             $this->month = 0;
         }
-        if ($date->day == 0) {
+        if ($date->day === 0) {
             $this->day = 0;
         }
         $this->setJdFromYmd();
@@ -202,15 +202,15 @@ abstract class AbstractCalendarDate
      *
      * @return void
      */
-    public function setJdFromYmd()
+    public function setJdFromYmd(): void
     {
-        if ($this->year == 0) {
+        if ($this->year === 0) {
             $this->minimum_julian_day = 0;
             $this->maximum_julian_day = 0;
-        } elseif ($this->month == 0) {
+        } elseif ($this->month === 0) {
             $this->minimum_julian_day = $this->calendar->ymdToJd($this->year, 1, 1);
             $this->maximum_julian_day = $this->calendar->ymdToJd($this->nextYear($this->year), 1, 1) - 1;
-        } elseif ($this->day == 0) {
+        } elseif ($this->day === 0) {
             [$ny, $nm] = $this->nextMonth();
             $this->minimum_julian_day = $this->calendar->ymdToJd($this->year, $this->month, 1);
             $this->maximum_julian_day = $this->calendar->ymdToJd($ny, $nm, 1) - 1;
@@ -377,13 +377,13 @@ abstract class AbstractCalendarDate
      */
     public function getAge(int $jd): int
     {
-        if ($this->year == 0 || $jd == 0) {
+        if ($this->year === 0 || $jd === 0) {
             return 0;
         }
         if ($this->minimum_julian_day < $jd && $this->maximum_julian_day > $jd) {
             return 0;
         }
-        if ($this->minimum_julian_day == $jd) {
+        if ($this->minimum_julian_day === $jd) {
             return 0;
         }
         [$y, $m, $d] = $this->calendar->jdToYmd($jd);
@@ -411,13 +411,13 @@ abstract class AbstractCalendarDate
      */
     public function getAgeFull(int $jd): string
     {
-        if ($this->year == 0 || $jd == 0) {
+        if ($this->year === 0 || $jd === 0) {
             return '';
         }
         if ($this->minimum_julian_day < $jd && $this->maximum_julian_day > $jd) {
             return '';
         }
-        if ($this->minimum_julian_day == $jd) {
+        if ($this->minimum_julian_day === $jd) {
             return '';
         }
         if ($jd < $this->minimum_julian_day) {
@@ -853,7 +853,7 @@ abstract class AbstractCalendarDate
      */
     protected function formatGedcomDay(): string
     {
-        if ($this->day == 0) {
+        if ($this->day === 0) {
             return '';
         }
 
@@ -868,7 +868,7 @@ abstract class AbstractCalendarDate
     protected function formatGedcomMonth(): string
     {
         // Our simple lookup table doesn't work correctly for Adar on leap years
-        if ($this->month == 7 && $this->calendar instanceof JewishCalendar && !$this->calendar->isLeapYear($this->year)) {
+        if ($this->month === 7 && $this->calendar instanceof JewishCalendar && !$this->calendar->isLeapYear($this->year)) {
             return 'ADR';
         }
 
@@ -882,7 +882,7 @@ abstract class AbstractCalendarDate
      */
     protected function formatGedcomYear(): string
     {
-        if ($this->year == 0) {
+        if ($this->year === 0) {
             return '';
         }
 
@@ -959,10 +959,10 @@ abstract class AbstractCalendarDate
      */
     public function calendarUrl(string $date_format, Tree $tree): string
     {
-        if (strpbrk($date_format, 'dDj') && $this->day) {
+        if ($this->day !== 0 && strpbrk($date_format, 'dDj')) {
             // If the format includes a day, and the date also includes a day, then use the day view
             $view = 'day';
-        } elseif (strpbrk($date_format, 'FMmn') && $this->month) {
+        } elseif ($this->month !== 0 && strpbrk($date_format, 'FMmn')) {
             // If the format includes a month, and the date also includes a month, then use the month view
             $view = 'month';
         } else {

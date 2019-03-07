@@ -242,7 +242,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                     // Add the media files to the archive
                     foreach ($object->mediaFiles() as $media_file) {
                         if (file_exists($media_file->getServerFilename())) {
-                            $fp = fopen($media_file->getServerFilename(), 'r');
+                            $fp = fopen($media_file->getServerFilename(), 'rb');
                             $zip_filesystem->writeStream($path . $media_file->filename(), $fp);
                             fclose($fp);
                         }
@@ -447,7 +447,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      *
      * @return void
      */
-    private function addFamilyToCart(Family $family)
+    private function addFamilyToCart(Family $family): void
     {
         $this->addRecordToCart($family);
 
@@ -461,7 +461,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      *
      * @return void
      */
-    private function addFamilyAndChildrenToCart(Family $family)
+    private function addFamilyAndChildrenToCart(Family $family): void
     {
         $this->addRecordToCart($family);
 
@@ -478,7 +478,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      *
      * @return void
      */
-    private function addFamilyAndDescendantsToCart(Family $family)
+    private function addFamilyAndDescendantsToCart(Family $family): void
     {
         $this->addRecordToCart($family);
 
@@ -609,7 +609,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      *
      * @return void
      */
-    private function addAncestorsToCart(Individual $individual)
+    private function addAncestorsToCart(Individual $individual): void
     {
         $this->addRecordToCart($individual);
 
@@ -625,7 +625,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      *
      * @return void
      */
-    private function addAncestorFamiliesToCart(Individual $individual)
+    private function addAncestorFamiliesToCart(Individual $individual): void
     {
         foreach ($individual->childFamilies() as $family) {
             $this->addFamilyAndChildrenToCart($family);
@@ -938,7 +938,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      *
      * @return void
      */
-    private function addRecordToCart(GedcomRecord $record)
+    private function addRecordToCart(GedcomRecord $record): void
     {
         $cart = Session::get('cart', []);
 

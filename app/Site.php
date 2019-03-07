@@ -61,7 +61,7 @@ class Site
      *
      * @return void
      */
-    public static function setPreference($setting_name, $setting_value)
+    public static function setPreference($setting_name, $setting_value): void
     {
         // The database column is only this long.
         $setting_value = mb_substr($setting_value, 0, 2000);

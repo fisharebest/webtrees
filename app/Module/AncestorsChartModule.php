@@ -209,7 +209,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
      *
      * @return void
      */
-    protected function printChildAscendancy(Individual $individual, $sosa, $generations)
+    protected function printChildAscendancy(Individual $individual, $sosa, $generations): void
     {
         echo '<li class="wt-chart-ancestors-list-item">';
         echo '<table><tbody><tr><td>';

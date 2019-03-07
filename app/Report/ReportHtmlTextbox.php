@@ -193,7 +193,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox
                 // Number of LF but at least one line
                 $cHT = ($cHT + 1) * $renderer->cellHeightRatio;
                 // Calculate the cell hight with the largest font size used
-                $cHT = $cHT * $renderer->largestFontHeight;
+                $cHT *= $renderer->largestFontHeight;
                 if ($cH < $cHT) {
                     $cH = $cHT;
                 }

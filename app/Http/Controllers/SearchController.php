@@ -273,6 +273,32 @@ class SearchController extends AbstractBaseController
     }
 
     /**
+     * Convert the query into an array of search terms
+     *
+     * @param string $query
+     *
+     * @return string[]
+     */
+    private function extractSearchTerms(string $query): array
+    {
+        $search_terms = [];
+
+        // Words in double quotes stay together
+        while (preg_match('/"([^"]+)"/', $query, $match)) {
+            $search_terms[] = trim($match[1]);
+            $query          = str_replace($match[0], '', $query);
+        }
+
+        // Other words get treated separately
+        while (preg_match('/[\S]+/', $query, $match)) {
+            $search_terms[] = trim($match[0]);
+            $query          = str_replace($match[0], '', $query);
+        }
+
+        return $search_terms;
+    }
+
+    /**
      * The phonetic search.
      *
      * @param Request $request
@@ -363,11 +389,11 @@ class SearchController extends AbstractBaseController
 
         switch ($context) {
             case 'all':
-                $records = $this->search_service->searchIndividuals([$tree], [$search])->all();
+                $records = $this->search_service->searchIndividuals([$tree], [$search]);
                 $count   = $this->replaceRecords($records, $search, $replace);
                 FlashMessages::addMessage(I18N::plural('%s individual has been updated.', '%s individuals have been updated.', $count, I18N::number($count)));
 
-                $records = $this->search_service->searchFamilies([$tree], [$search])->all();
+                $records = $this->search_service->searchFamilies([$tree], [$search]);
                 $count   = $this->replaceRecords($records, $search, $replace);
                 FlashMessages::addMessage(I18N::plural('%s family has been updated.', '%s families have been updated.', $count, I18N::number($count)));
 
@@ -397,17 +423,17 @@ class SearchController extends AbstractBaseController
                     '_AKA',
                 ], $adv_name_tags));
 
-                $records = $this->search_service->searchIndividuals([$tree], [$search])->all();
+                $records = $this->search_service->searchIndividuals([$tree], [$search]);
                 $count   = $this->replaceIndividualNames($records, $search, $replace, $name_tags);
                 FlashMessages::addMessage(I18N::plural('%s individual has been updated.', '%s individuals have been updated.', $count, I18N::number($count)));
                 break;
 
             case 'place':
-                $records = $this->search_service->searchIndividuals([$tree], [$search])->all();
+                $records = $this->search_service->searchIndividuals([$tree], [$search]);
                 $count   = $this->replacePlaces($records, $search, $replace);
                 FlashMessages::addMessage(I18N::plural('%s individual has been updated.', '%s individuals have been updated.', $count, I18N::number($count)));
 
-                $records = $this->search_service->searchFamilies([$tree], [$search])->all();
+                $records = $this->search_service->searchFamilies([$tree], [$search]);
                 $count   = $this->replacePlaces($records, $search, $replace);
                 FlashMessages::addMessage(I18N::plural('%s family has been updated.', '%s families have been updated.', $count, I18N::number($count)));
                 break;
@@ -421,6 +447,84 @@ class SearchController extends AbstractBaseController
         ]);
 
         return new RedirectResponse($url);
+    }
+
+    /**
+     * @param Collection $records
+     * @param string     $search
+     * @param string     $replace
+     *
+     * @return int
+     */
+    private function replaceRecords(Collection $records, string $search, string $replace): int
+    {
+        $count = 0;
+        $query = preg_quote($search, '/');
+
+        foreach ($records as $record) {
+            $old_record = $record->gedcom();
+            $new_record = preg_replace('/(\n\d [A-Z0-9_]+ )' . $query . '/i', '$1' . $replace, $old_record);
+
+            if ($new_record !== $old_record) {
+                $record->updateRecord($new_record, true);
+                $count++;
+            }
+        }
+
+        return $count;
+    }
+
+    /**
+     * @param Collection $records
+     * @param string     $search
+     * @param string     $replace
+     * @param string[]   $name_tags
+     *
+     * @return int
+     */
+    private function replaceIndividualNames(Collection $records, string $search, string $replace, array $name_tags): int
+    {
+        $pattern     = '/(\n\d (?:' . implode('|', $name_tags) . ') (?:.*))' . preg_quote($search, '/') . '/i';
+        $replacement = '$1' . $replace;
+        $count       = 0;
+
+        foreach ($records as $record) {
+            $old_gedcom = $record->gedcom();
+            $new_gedcom = preg_replace($pattern, $replacement, $old_gedcom);
+
+            if ($new_gedcom !== $old_gedcom) {
+                $record->updateRecord($new_gedcom, true);
+                $count++;
+            }
+        }
+
+        return $count;
+    }
+
+    /**
+     * @param Collection $records
+     * @param string     $search
+     * @param string     $replace
+     *
+     * @return int
+     */
+    private function replacePlaces(Collection $records, string $search, string $replace): int
+    {
+        $pattern     = '/(\n\d PLAC\b.* )' . preg_quote($search, '/') . '([,\n])/i';
+        $replacement = '$1' . $replace . '$2';
+        $count       = 0;
+
+        foreach ($records as $record) {
+            $old_gedcom = $record->gedcom();
+            $new_gedcom = preg_replace($pattern, $replacement, $old_gedcom);
+
+            if ($new_gedcom !== $old_gedcom) {
+                $record->updateRecord($new_gedcom, true);
+                $count++;
+            }
+        }
+
+        return $count;
     }
 
     /**
@@ -465,84 +569,6 @@ class SearchController extends AbstractBaseController
             'other_fields' => $other_fields,
             'title'        => $title,
         ]);
-    }
-
-    /**
-     * @param GedcomRecord[] $records
-     * @param string         $search
-     * @param string         $replace
-     * @param string[]       $name_tags
-     *
-     * @return int
-     */
-    private function replaceIndividualNames(array $records, string $search, string $replace, array $name_tags): int
-    {
-        $pattern     = '/(\n\d (?:' . implode('|', $name_tags) . ') (?:.*))' . preg_quote($search, '/') . '/i';
-        $replacement = '$1' . $replace;
-        $count       = 0;
-
-        foreach ($records as $record) {
-            $old_gedcom = $record->gedcom();
-            $new_gedcom = preg_replace($pattern, $replacement, $old_gedcom);
-
-            if ($new_gedcom !== $old_gedcom) {
-                $record->updateRecord($new_gedcom, true);
-                $count++;
-            }
-        }
-
-        return $count;
-    }
-
-    /**
-     * @param GedcomRecord[] $records
-     * @param string         $search
-     * @param string         $replace
-     *
-     * @return int
-     */
-    private function replacePlaces(array $records, string $search, string $replace): int
-    {
-        $pattern     = '/(\n\d PLAC\b.* )' . preg_quote($search, '/') . '([,\n])/i';
-        $replacement = '$1' . $replace . '$2';
-        $count       = 0;
-
-        foreach ($records as $record) {
-            $old_gedcom = $record->gedcom();
-            $new_gedcom = preg_replace($pattern, $replacement, $old_gedcom);
-
-            if ($new_gedcom !== $old_gedcom) {
-                $record->updateRecord($new_gedcom, true);
-                $count++;
-            }
-        }
-
-        return $count;
-    }
-
-    /**
-     * @param GedcomRecord[] $records
-     * @param string         $search
-     * @param string         $replace
-     *
-     * @return int
-     */
-    private function replaceRecords(array $records, string $search, string $replace): int
-    {
-        $count = 0;
-        $query = preg_quote($search, '/');
-
-        foreach ($records as $record) {
-            $old_record = $record->gedcom();
-            $new_record = preg_replace('/(\n\d [A-Z0-9_]+ )' . $query . '/i', '$1' . $replace, $old_record);
-
-            if ($new_record !== $old_record) {
-                $record->updateRecord($new_record, true);
-                $count++;
-            }
-        }
-
-        return $count;
     }
 
     /**
@@ -593,31 +619,5 @@ class SearchController extends AbstractBaseController
             'CONTAINS' => I18N::translate('Contains'),
             'SDX'      => I18N::translate('Sounds like'),
         ];
-    }
-
-    /**
-     * Convert the query into an array of search terms
-     *
-     * @param string $query
-     *
-     * @return string[]
-     */
-    private function extractSearchTerms(string $query): array
-    {
-        $search_terms = [];
-
-        // Words in double quotes stay together
-        while (preg_match('/"([^"]+)"/', $query, $match)) {
-            $search_terms[] = trim($match[1]);
-            $query          = str_replace($match[0], '', $query);
-        }
-
-        // Other words get treated separately
-        while (preg_match('/[\S]+/', $query, $match)) {
-            $search_terms[] = trim($match[0]);
-            $query          = str_replace($match[0], '', $query);
-        }
-
-        return $search_terms;
     }
 }

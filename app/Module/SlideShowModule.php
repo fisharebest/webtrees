@@ -198,7 +198,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id)
+    public function saveBlockConfiguration(Request $request, int $block_id): void
     {
         $this->setBlockSetting($block_id, 'filter', $request->get('filter', 'all'));
         $this->setBlockSetting($block_id, 'controls', $request->get('controls', ''));
@@ -231,7 +231,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id): void
     {
         $filter   = $this->getBlockSetting($block_id, 'filter', 'all');
         $controls = $this->getBlockSetting($block_id, 'controls', '1');
