@@ -5,7 +5,7 @@
 	<Input name="pid" lookup="INDI" type="text"><var var="I18N::translate('Individual')" /></Input>
 	<Input name="relatives" type="select" options="child-family=>I18N::translate('Parents and siblings')|spouse-family=>I18N::translate('Spouses and children')|direct-ancestors=>I18N::translate('Direct line ancestors')|ancestors=>I18N::translate('Direct line ancestors and their families')|descendants=>I18N::translate('Descendants')|all=>I18N::translate('All')"><var var="I18N::translate('Choose relatives')" /></Input>
 	<Input name="sortby" type="select" default="BIRT:DATE" options="NAME=>I18N::translate('sort by name')|BIRT:DATE=>I18N::translate('sort by date of birth')|DEAT:DATE=>I18N::translate('sort by date of death')"><var var="I18N::translate('Sort order')" /></Input>
-	<Input name="pageSize" type="select" default="A4" options="letter=>I18N::translateContext('paper size','Letter')|A3=>I18N::translateContext('paper size', 'A3')|A4=>I18N::translateContext('paper size','A4')|legal=>I18N::translateContext('paper size','Legal')"><var var="I18N::translate('Page size')" /></Input>
+	<Input name="pageSize" type="select" options="A4=>I18N::translateContext('paper size','A4')|A3=>I18N::translateContext('paper size', 'A3')|US-Letter=>I18N::translateContext('paper size','Letter')|US-Tabloid=>I18N::translateContext('paper size','Tabloid')"><var var="I18N::translate('Page size')" /></Input>
 	<!--
 	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>I18N::translateContext('font name', 'Arial')|dejavusans=>I18N::translateContext('font name', 'DejaVu')|helvetica=>I18N::translateContext('font name', 'Helvetica')"><var var="I18N::translate('Font')"/></Input>
 	-->

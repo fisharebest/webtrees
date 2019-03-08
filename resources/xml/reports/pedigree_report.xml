@@ -4,7 +4,7 @@
 	<Description><var var="I18N::translate('A report of an individual’s ancestors, formatted as a tree.')" /></Description>
 	<Input name="pid" lookup="INDI" type="text" default=""><var var="I18N::translate('Individual')" /></Input>
 	<Input name="orientation" type="select" default="portrait" options="portrait=>I18N::translate('Portrait')|landscape=>I18N::translate('Landscape')"><var var="I18N::translate('Orientation')"/></Input>
-	<Input name="pageSize" type="select" default="A4" options="letter=>I18N::translateContext('paper size','Letter')|A3=>I18N::translateContext('paper size', 'A3')|A4=>I18N::translateContext('paper size','A4')|legal=>I18N::translateContext('paper size','Legal')"><var var="I18N::translate('Page size')" /></Input>
+	<Input name="pageSize" type="select" options="A4=>I18N::translateContext('paper size','A4')|A3=>I18N::translateContext('paper size', 'A3')|US-Letter=>I18N::translateContext('paper size','Letter')|US-Tabloid=>I18N::translateContext('paper size','Tabloid')"><var var="I18N::translate('Page size')" /></Input>
 	<!--
 	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>I18N::translateContext('font name', 'Arial')|dejavusans=>I18N::translateContext('font name', 'DejaVu')|helvetica=>I18N::translateContext('font name', 'Helvetica')"><var var="I18N::translate('Font')"/></Input>
 	-->

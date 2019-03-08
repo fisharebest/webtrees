@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\I18N;
@@ -140,6 +141,8 @@ class ReportParserSetup extends ReportParserBase
                     $this->input['default'] = $attrs['default'];
                 }
             }
+        } elseif ($attrs['name'] === 'pageSize') {
+            $this->input['default'] = app(LocaleInterface::class)->territory()->paperSize();
         }
     }
 

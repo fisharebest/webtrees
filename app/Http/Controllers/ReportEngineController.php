@@ -165,7 +165,7 @@ class ReportEngineController extends AbstractBaseController
 
                         case 'select':
                             $options = [];
-                            foreach (preg_split('/[|]+/', $input['options']) as $option) {
+                            foreach (explode('|', $input['options']) as $option) {
                                 [$key, $value] = explode('=>', $option);
                                 if (preg_match('/^I18N::number\((.+?)(,([\d+]))?\)$/', $value, $match)) {
                                     $number        = (float) $match[1];
