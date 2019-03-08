@@ -79,7 +79,7 @@ class IndividualMetadataModule extends AbstractModule implements ModuleSidebarIn
     /** {@inheritdoc} */
     public function hasSidebarContent(Individual $individual): bool
     {
-        return true;
+        return $individual->facts(static::HANDLED_FACTS)->isNotEmpty();
     }
 
     /**
@@ -91,36 +91,15 @@ class IndividualMetadataModule extends AbstractModule implements ModuleSidebarIn
      */
     public function getSidebarContent(Individual $individual): string
     {
-        $indifacts = [];
-        // The individual’s own facts
-        foreach ($individual->facts() as $fact) {
-            if ($this->showFact($fact)) {
-                $indifacts[] = $fact;
-            }
-        }
-
         ob_start();
-        if (!$indifacts) {
-            echo I18N::translate('There are no facts for this individual.');
-        } else {
-            foreach ($indifacts as $fact) {
-                FunctionsPrintFacts::printFact($fact, $individual);
-            }
+
+        foreach ($individual->facts(static::HANDLED_FACTS) as $fact) {
+            FunctionsPrintFacts::printFact($fact, $individual);
         }
 
-        return strip_tags(ob_get_clean(), '<a><div><span>');
-    }
+        $html = ob_get_clean();
 
-    /**
-     * Does this module display a particular fact
-     *
-     * @param Fact $fact
-     *
-     * @return bool
-     */
-    public function showFact(Fact $fact): bool
-    {
-        return in_array($fact->getTag(), static::HANDLED_FACTS, true);
+        return strip_tags($html, '<a><div><span>');
     }
 
     /**
