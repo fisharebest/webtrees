@@ -11,8 +11,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 /**
  * An example module to modify PHP and database configuration.
  */
-return new class extends AbstractModule implements ModuleCustomInterface
-{
+return new class extends AbstractModule implements ModuleCustomInterface {
     use ModuleCustomTrait;
 
     /** @var ServerCheckService */

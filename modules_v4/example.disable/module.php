@@ -13,8 +13,7 @@ use Fisharebest\Webtrees\View;
 /**
  * Example module
  */
-return new class extends AbstractModule implements ModuleCustomInterface
-{
+return new class extends AbstractModule implements ModuleCustomInterface {
     use ModuleCustomTrait;
 
     /**
