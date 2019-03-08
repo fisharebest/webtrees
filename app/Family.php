@@ -346,7 +346,11 @@ class Family extends GedcomRecord
     {
         $marriage = $this->getMarriage();
 
-        return $marriage->place();
+        if ($marriage instanceof Fact) {
+            return $marriage->place();
+        }
+
+        return new Place('', $this->tree);
     }
 
     /**
@@ -357,7 +361,7 @@ class Family extends GedcomRecord
     public function getAllMarriageDates(): array
     {
         foreach (Gedcom::MARRIAGE_EVENTS as $event) {
-            $array = $this->getAllEventDates([$event];
+            $array = $this->getAllEventDates([$event]);
 
             if (!empty($array)) {
                 return $array;
