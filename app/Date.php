@@ -472,7 +472,7 @@ class Date
      */
     public static function getAgeYears(Date $d1, Date $d2): int
     {
-        if (Date::compare($d1, $d2) === 0) {
+        if (self::compare($d1, $d2) === 0) {
             // Overlapping dates
             $jd = $d1->minimumJulianDay();
         } else {

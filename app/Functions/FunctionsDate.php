@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Functions;
 
-use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\I18N;
 use LogicException;
 

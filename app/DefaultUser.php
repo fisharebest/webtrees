@@ -17,8 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Contracts\UserInterface;
-
 /**
  * A default user - to store default preferences.
  */

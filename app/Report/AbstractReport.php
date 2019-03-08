@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use DomainException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Webtrees;

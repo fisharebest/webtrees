@@ -1080,11 +1080,11 @@ class GedcomRecord
             $access_level = Auth::accessLevel($this->tree);
         }
 
-        $facts = [];
+        $facts = new Collection();
         if ($this->canShow($access_level) || $override) {
             foreach ($this->facts as $fact) {
                 if (($filter === [] || in_array($fact->getTag(), $filter)) && $fact->canShow($access_level)) {
-                    $facts[] = $fact;
+                    $facts->push($fact);
                 }
             }
         }

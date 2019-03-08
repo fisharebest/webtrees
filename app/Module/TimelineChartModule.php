@@ -232,7 +232,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 
         $baseyear    = (int) date('Y');
         $topyear     = 0;
-        $indifacts   = [];
+        $indifacts   = new Collection();
         $birthyears  = [];
         $birthmonths = [];
         $birthdays   = [];
@@ -268,17 +268,17 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
                             $topyear = max($topyear, (int) date('Y'));
                         }
 
-                        // do not add the same fact twice (prevents marriages from being added multiple times)
-                        if (!in_array($event, $indifacts, true)) {
-                            $indifacts[] = $event;
-                        }
+                        $indifacts->push($event);
                     }
                 }
             }
         }
 
+        // do not add the same fact twice (prevents marriages from being added multiple times)
+        $indifacts = $indifacts->unique();
+
         if ($scale === 0) {
-            $scale = (int) (($topyear - $baseyear) / 20 * count($indifacts) / 4);
+            $scale = (int) (($topyear - $baseyear) / 20 * $indifacts->count() / 4);
             if ($scale < 6) {
                 $scale = 6;
             }

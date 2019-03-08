@@ -84,7 +84,7 @@ foreach ($individual->spouseFamilies() as $family) {
 }
 $all_facts = $all_facts->filter(function (Fact $fact) use ($exclude): bool {
     return !in_array($fact->getTag(), $exclude);
-})->all();
+});
 
 $all_facts = Fact::sortFacts($all_facts);
 

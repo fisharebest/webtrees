@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
-use PDOException;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 

@@ -688,12 +688,12 @@ class Fact
      * using the compare type function
      * 3. Then merge the arrays back into the original array using the compare type function
      *
-     * @param Fact[] $unsorted
+     * @param Collection $unsorted
      *
      * @return Collection
      * @return Fact[]
      */
-    public static function sortFacts($unsorted): Collection
+    public static function sortFacts(Collection $unsorted): Collection
     {
         $dated    = [];
         $nondated = [];

@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
 use function uasort;
 
 /**

@@ -33,6 +33,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
 
 /**
  * Calculate anniversaries, etc.
@@ -196,7 +197,7 @@ class CalendarService
 
         switch ($sort_by) {
             case 'anniv':
-                $facts = Fact::sortFacts($facts)->all();
+                $facts = Fact::sortFacts(Collection::make($facts))->all();
                 break;
 
             case 'alpha':
