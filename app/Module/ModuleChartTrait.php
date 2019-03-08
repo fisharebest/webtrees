@@ -26,6 +26,16 @@ use Fisharebest\Webtrees\Menu;
 trait ModuleChartTrait
 {
     /**
+     * @return string
+     */
+    abstract public function name(): string;
+
+    /**
+     * @return string
+     */
+    abstract public function title(): string;
+
+    /**
      * A menu item for this chart for an individual box in a chart.
      *
      * @param Individual $individual

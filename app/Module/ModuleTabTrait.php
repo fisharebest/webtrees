@@ -28,6 +28,11 @@ trait ModuleTabTrait
     protected $tab_order;
 
     /**
+     * @return string
+     */
+    abstract public function title(): string;
+
+    /**
      * The text that appears on the tab.
      *
      * @return string
