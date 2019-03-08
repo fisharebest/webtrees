@@ -153,8 +153,8 @@ try {
         return app()->dispatch($controller, $action);
     });
 
-    $response = call_user_func($pipeline, $request);
-} catch (\Throwable $exception) {
+    $response = $pipeline($request);
+} catch (Throwable $exception) {
     $response = (new Handler())->render($request, $exception);
 }
 
