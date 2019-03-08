@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class HourglassChartModule
@@ -188,10 +189,13 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function postDescendantsAction(Request $request, Tree $tree): Response
     {
+        $show_spouse = (bool) $request->get('show_spouse');
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
-        $show_spouse = (bool) $request->get('show_spouse');
+        if ($individual === null) {
+            throw new NotFoundHttpException();
+        }
 
         ob_start();
         $this->printDescendency($individual, 1, 2, $show_spouse, false);
