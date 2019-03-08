@@ -31,8 +31,8 @@ abstract class AbstractReport
     protected const UNITS = 'pt';
 
     // A point is 1/72 of an inch
-    protected const INCH_TO_POINTS = 1.0 / 72.0;
-    protected const MM_TO_POINTS   = 25.4 / 72.0;
+    protected const INCH_TO_POINTS = 72.0;
+    protected const MM_TO_POINTS   = 72.0 / 25.4;
 
     protected const PAPER_SIZES = [
         // ISO 216
