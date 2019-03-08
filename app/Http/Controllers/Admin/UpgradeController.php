@@ -66,20 +66,20 @@ class UpgradeController extends AbstractAdminController
         'vendor',
     ];
 
-    /** @var Filesystem */
+    /** @var FilesystemInterface */
     private $filesystem;
 
-    /** @var Filesystem */
+    /** @var FilesystemInterface */
     private $root_filesystem;
 
-    /** @var Filesystem */
+    /** @var FilesystemInterface */
     private $temporary_filesystem;
 
     /** @var UpgradeService */
     private $upgrade_service;
 
     /**
-     * AdminUpgradeController constructor.
+     * UpgradeController constructor.
      *
      * @param FilesystemInterface $filesystem
      * @param UpgradeService      $upgrade_service
