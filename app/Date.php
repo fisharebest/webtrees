@@ -497,7 +497,7 @@ class Date
      */
     public static function getAgeDays(Date $d1, Date $d2): int
     {
-        if ($d2->maximumJulianDay() >= $d1->minimumJulianDay() && $d2->minimumJulianDay() <= $d1->minimumJulianDay()) {
+        if ($d2->maximumJulianDay() >= $d1->minimumJulianDay() && $d2->minimumJulianDay() <= $d1->maximumJulianDay()) {
             // Overlapping dates
             $jd = $d1->minimumJulianDay();
         } else {
@@ -524,7 +524,7 @@ class Date
     public static function getAge(Date $d1, Date $d2 = null): string
     {
         if ($d2 instanceof self) {
-            if ($d2->maximumJulianDay() >= $d1->minimumJulianDay() && $d2->minimumJulianDay() <= $d1->minimumJulianDay()) {
+            if ($d2->maximumJulianDay() >= $d1->minimumJulianDay() && $d2->minimumJulianDay() <= $d1->maximumJulianDay()) {
                 // Overlapping dates
                 $jd = $d1->minimumJulianDay();
             } else {
