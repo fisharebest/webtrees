@@ -80,7 +80,7 @@ class FunctionsCharts
         echo (string) $sosa;
         if ($sosa !== 1 && $pid !== '' && $icon !== '') {
             echo '<br>';
-            echo '<a href="#' . e($pid) . '">' . e($pid);
+            echo '<a href="#' . e($pid) . '">';
             echo view($icon);
             echo '</a>';
         }
@@ -146,12 +146,11 @@ class FunctionsCharts
         echo '</td>';
         // husband’s parents
         $hfam = $husb->primaryChildFamily();
-        if ($hfam) {
-            // remove the|| test for $sosa
+        if ($hfam instanceof Family) {
             echo '<td rowspan="2"><img src="' . e(asset('css/images/hline.png')) . '"></td><td rowspan="2"><img  src="' . e(asset('css/images/vline.png')) . '" width="3" height="' . ($pbheight - 14) . '"></td>';
             echo '<td><img class="linea1 lined1"  src="' . e(asset('css/images/hline.png')) . '"></td><td>';
             // husband’s father
-            if ($hfam && $hfam->husband()) {
+            if ($hfam->husband() instanceof Individual) {
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 if ($sosa > 0) {
                     self::printSosaNumber($sosa * 4, $hfam->husband()->xref(), 'icons/arrow-down');
@@ -162,24 +161,23 @@ class FunctionsCharts
                 echo '<td>';
                 echo FunctionsPrint::printPedigreePerson($hfam->husband());
                 echo '</td></tr></table>';
-            } elseif ($hfam && !$hfam->husband()) {
+            } else {
                 // Empty box for grandfather
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 echo '<td>';
-                echo FunctionsPrint::printPedigreePerson($hfam->husband());
+                echo FunctionsPrint::printPedigreePerson(null);
                 echo '</td></tr></table>';
             }
             echo '</td>';
-        }
-        if ($hfam && ($sosa !== -1)) {
-            echo '<td rowspan="2">';
-            echo '<a href="' . ($sosa === 0 ? $hfam->url() : '#' . $hfam->xref()) . '">' . view('icons/arrow-right') . '</a>';
-            echo '</td>';
-        }
-        if ($hfam) {
+            if ($sosa !== -1) {
+                echo '<td rowspan="2">';
+                echo '<a href="' . ($sosa === 0 ? $hfam->url() : '#' . $hfam->xref()) . '">' . view('icons/arrow-right') . '</a>';
+                echo '</td>';
+            }
+
             // husband’s mother
             echo '</tr><tr><td><img class="linea2 lined2"  src="' . e(asset('css/images/hline.png')) . '"></td><td>';
-            if ($hfam && $hfam->wife()) {
+            if ($hfam->wife() instanceof Individual) {
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 if ($sosa > 0) {
                     self::printSosaNumber($sosa * 4 + 1, $hfam->wife()->xref(), 'icons/arrow-down');
@@ -190,11 +188,11 @@ class FunctionsCharts
                 echo '<td>';
                 echo FunctionsPrint::printPedigreePerson($hfam->wife());
                 echo '</td></tr></table>';
-            } elseif ($hfam && !$hfam->wife()) {
+            } else {
                 // Empty box for grandmother
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 echo '<td>';
-                echo FunctionsPrint::printPedigreePerson($hfam->wife());
+                echo FunctionsPrint::printPedigreePerson(null);
                 echo '</td></tr></table>';
             }
             echo '</td>';
@@ -234,11 +232,11 @@ class FunctionsCharts
         echo '</td>';
         // wife’s parents
         $wfam = $wife->primaryChildFamily();
-        if ($wfam) {
+        if ($wfam instanceof Family) {
             echo '<td rowspan="2"><img src="' . e(asset('css/images/hline.png')) . '"></td><td rowspan="2"><img src="' . e(asset('css/images/vline.png')) . '" width="3" height="' . ($pbheight - 14) . '"></td>';
             echo '<td><img class="linea3 lined3" src="' . e(asset('css/images/hline.png')) . '"></td><td>';
             // wife’s father
-            if ($wfam && $wfam->husband()) {
+            if ($wfam->husband() instanceof Individual) {
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 if ($sosa > 0) {
                     self::printSosaNumber($sosa * 4 + 2, $wfam->husband()->xref(), 'icons/arrow-down');
@@ -249,24 +247,22 @@ class FunctionsCharts
                 echo '<td>';
                 echo FunctionsPrint::printPedigreePerson($wfam->husband());
                 echo '</td></tr></table>';
-            } elseif ($wfam && !$wfam->husband()) {
+            } else {
                 // Empty box for grandfather
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 echo '<td>';
-                echo FunctionsPrint::printPedigreePerson($wfam->husband());
+                echo FunctionsPrint::printPedigreePerson(null);
                 echo '</td></tr></table>';
             }
             echo '</td>';
-        }
-        if ($wfam && ($sosa !== -1)) {
-            echo '<td rowspan="2">';
-            echo '<a href="' . ($sosa === 0 ? $wfam->url() : '#' . $wfam->xref()) . '">' . view('icons/arrow-right') . '</a>';
-            echo '</td>';
-        }
-        if ($wfam) {
+            if ($sosa !== -1) {
+                echo '<td rowspan="2">';
+                echo '<a href="' . ($sosa === 0 ? $wfam->url() : '#' . $wfam->xref()) . '">' . view('icons/arrow-right') . '</a>';
+                echo '</td>';
+            }
             // wife’s mother
             echo '</tr><tr><td><img class="linea4 lined4"  src="' . e(asset('css/images/hline.png')) . '"></td><td>';
-            if ($wfam && $wfam->wife()) {
+            if ($wfam->wife() instanceof Individual) {
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 if ($sosa > 0) {
                     self::printSosaNumber($sosa * 4 + 3, $wfam->wife()->xref(), 'icons/arrow-down');
@@ -277,11 +273,11 @@ class FunctionsCharts
                 echo '<td>';
                 echo FunctionsPrint::printPedigreePerson($wfam->wife());
                 echo '</td></tr></table>';
-            } elseif ($wfam && !$wfam->wife()) {
+            } else {
                 // Empty box for grandmother
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 echo '<td>';
-                echo FunctionsPrint::printPedigreePerson($wfam->wife());
+                echo FunctionsPrint::printPedigreePerson(null);
                 echo '</td></tr></table>';
             }
             echo '</td>';
