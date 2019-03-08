@@ -33,6 +33,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Send messages to users and groups of users.
@@ -194,9 +195,13 @@ class MessageController extends AbstractBaseController
         $subject    = $request->get('subject', '');
         $to         = $request->get('to', '');
         $url        = $request->get('url', '');
+        $ip         = $request->getClientIp() ?? '127.0.0.1';
 
         $to_user = $this->user_service->findByUserName($to);
-        $ip      = $request->getClientIp() ?? '127.0.0.1';
+
+        if ($to_user === null) {
+            throw new NotFoundHttpException();
+        }
 
         if (!in_array($to_user, $this->validContacts($tree))) {
             throw new AccessDeniedHttpException('Invalid contact user id');
