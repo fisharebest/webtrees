@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:51+0100\n"
-"PO-Revision-Date: 2019-03-06 17:17+0800\n"
+"PO-Revision-Date: 2019-03-08 15:41+0800\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <http://translate.webtrees.net/projects/webtrees/webtrees/zh-Hans/>\n"
 "Language: zh_CN\n"
@@ -1310,7 +1310,7 @@ msgstr "添加一个儿子或女儿"
 #: resources/views/family-page.php:123 resources/views/media-page.php:124
 #: resources/views/modules/sources_tab/tab.php:36
 msgid "Add a source citation"
-msgstr "添加来源引文"
+msgstr "添加来源中的引文"
 
 #: app/Module/StoriesModule.php:226
 #: resources/views/modules/stories/config.php:26
@@ -3676,7 +3676,7 @@ msgstr "引用"
 #: modules_v3/fact_sources/report.xml:277
 #: modules_v3/fact_sources/report.xml:323
 msgid "Citation details"
-msgstr "引用的细节"
+msgstr "引文所在页码"
 
 #. I18N: gedcom tag CITN
 #: app/GedcomTag.php:608
@@ -13390,7 +13390,7 @@ msgstr "第四月"
 #: app/GedcomTag.php:1055 resources/views/admin/trees-preferences.php:783
 #: resources/views/modals/source-fields.php:50
 msgid "Text"
-msgstr "文本"
+msgstr "文本内容"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7605
