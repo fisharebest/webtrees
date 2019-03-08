@@ -30,6 +30,7 @@ use League\Flysystem\Cached\CachedAdapter;
 use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
+use RuntimeException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -171,6 +172,10 @@ class UpgradeController extends AbstractAdminController
                 return $this->wizardStepPending();
 
             case self::STEP_EXPORT:
+                if ($tree === null) {
+                    throw new RuntimeException('Exporting a non-existant tree?');
+                }
+
                 return $this->wizardStepExport($tree);
 
             case self::STEP_DOWNLOAD:
@@ -252,7 +257,12 @@ class UpgradeController extends AbstractAdminController
     private function wizardStepExport(Tree $tree): Response
     {
         // We store the data in PHP temporary storage.
-        $stream   = fopen('php://temp', 'wb+');
+        $stream = fopen('php://temp', 'wb+');
+
+        if ($stream === false) {
+            throw new RuntimeException('Failed to create temporary stream');
+        }
+
         $filename = $tree->name() . date('-Y-m-d') . '.ged';
 
         if ($this->filesystem->has($filename)) {
@@ -334,9 +344,9 @@ class UpgradeController extends AbstractAdminController
      */
     private function wizardStepCleanup(): Response
     {
-        $zip_path      = WT_DATA_DIR . self::UPGRADE_FOLDER;
-        $zip_file      = $zip_path . '/' . self::ZIP_FILENAME;
-        $files_to_keep = $this->upgrade_service->webtreesZipContents($zip_file);
+        $zip_path         = WT_DATA_DIR . self::UPGRADE_FOLDER;
+        $zip_file         = $zip_path . '/' . self::ZIP_FILENAME;
+        $files_to_keep    = $this->upgrade_service->webtreesZipContents($zip_file);
         $folders_to_clean = new Collection(self::FOLDERS_TO_CLEAN);
 
         $this->upgrade_service->cleanFiles($this->root_filesystem, $folders_to_clean, $files_to_keep);
