@@ -103,7 +103,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                 default:
                 case 'pedigree':
                     /** @var PedigreeChartModule $module */
-                    $module    = $this->module_service->findByInterface(PedigreeChartModule::class);
+                    $module    = $this->module_service->findByInterface(PedigreeChartModule::class)->first();
                     $title     = $module->chartTitle($person);
                     $chart_url = $module->chartUrl($person, [
                         'ajax'        => true,
@@ -118,7 +118,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
 
                 case 'descendants':
                     /** @var DescendancyChartModule $module */
-                    $module    = $this->module_service->findByInterface(DescendancyChartModule::class);
+                    $module    = $this->module_service->findByInterface(DescendancyChartModule::class)->first();
                     $title     = $module->chartTitle($person);
                     $chart_url = $module->chartUrl($person, [
                         'ajax'        => true,
@@ -133,7 +133,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
 
                 case 'hourglass':
                     /** @var HourglassChartModule $module */
-                    $module    = $this->module_service->findByInterface(HourglassChartModule::class);
+                    $module    = $this->module_service->findByInterface(HourglassChartModule::class)->first();
                     $title     = $module->chartTitle($person);
                     $chart_url = $module->chartUrl($person, [
                         'ajax'        => true,
