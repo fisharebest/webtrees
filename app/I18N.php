@@ -380,8 +380,6 @@ class I18N
      */
     public static function init(string $code = '', Tree $tree = null): string
     {
-        mb_internal_encoding('UTF-8');
-
         if ($code !== '') {
             // Create the specified locale
             self::$locale = Locale::create($code);
@@ -472,7 +470,7 @@ class I18N
 
         foreach (glob(WT_ROOT . 'resources/lang/*/messages.mo') as $file) {
             try {
-                $locales[] = Locale::create(basename($file, '.mo'));
+                $locales[] = Locale::create(basename(dirname($file)));
             } catch (DomainException $ex) {
                 // Not a recognised locale
             }
