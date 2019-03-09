@@ -19,6 +19,9 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\FamilyListModule;
+use Fisharebest\Webtrees\Module\IndividualListModule;
+use Fisharebest\Webtrees\Module\MediaListModule;
 use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
@@ -31,6 +34,9 @@ use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Module\NoteListModule;
+use Fisharebest\Webtrees\Module\RepositoryListModule;
+use Fisharebest\Webtrees\Module\SourceListModule;
 use Fisharebest\Webtrees\Services\HousekeepingService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\ServerCheckService;
@@ -89,6 +95,12 @@ class ControlPanelController extends AbstractAdminController
             'media'                      => $this->totalMediaObjects(),
             'repositories'               => $this->totalRepositories(),
             'notes'                      => $this->totalNotes(),
+            'individual_list_module'     => $module_service->findByInterface(IndividualListModule::class)->first(),
+            'family_list_module'         => $module_service->findByInterface(FamilyListModule::class)->first(),
+            'media_list_module'          => $module_service->findByInterface(MediaListModule::class)->first(),
+            'note_list_module'           => $module_service->findByInterface(NoteListModule::class)->first(),
+            'repository_list_module'     => $module_service->findByInterface(RepositoryListModule::class)->first(),
+            'source_list_module'         => $module_service->findByInterface(SourceListModule::class)->first(),
             'files_to_delete'            => $files_to_delete,
             'all_modules_disabled'       => $module_service->all(true),
             'all_modules_enabled'        => $module_service->all(false),
@@ -124,24 +136,32 @@ class ControlPanelController extends AbstractAdminController
     /**
      * Managers see a restricted version of the contol panel.
      *
+     * @param ModuleService $module_service
+     *
      * @return Response
      */
-    public function controlPanelManager(): Response
+    public function controlPanelManager(ModuleService $module_service): Response
     {
         $all_trees = array_filter(Tree::getAll(), function (Tree $tree): bool {
             return Auth::isManager($tree);
         });
 
         return $this->viewResponse('admin/control-panel-manager', [
-            'title'        => I18N::translate('Control panel'),
-            'all_trees'    => $all_trees,
-            'changes'      => $this->totalChanges(),
-            'individuals'  => $this->totalIndividuals(),
-            'families'     => $this->totalFamilies(),
-            'sources'      => $this->totalSources(),
-            'media'        => $this->totalMediaObjects(),
-            'repositories' => $this->totalRepositories(),
-            'notes'        => $this->totalNotes(),
+            'title'                  => I18N::translate('Control panel'),
+            'all_trees'              => $all_trees,
+            'changes'                => $this->totalChanges(),
+            'individuals'            => $this->totalIndividuals(),
+            'families'               => $this->totalFamilies(),
+            'sources'                => $this->totalSources(),
+            'media'                  => $this->totalMediaObjects(),
+            'repositories'           => $this->totalRepositories(),
+            'notes'                  => $this->totalNotes(),
+            'individual_list_module' => $module_service->findByInterface(IndividualListModule::class)->first(),
+            'family_list_module'     => $module_service->findByInterface(FamilyListModule::class)->first(),
+            'media_list_module'      => $module_service->findByInterface(MediaListModule::class)->first(),
+            'note_list_module'       => $module_service->findByInterface(NoteListModule::class)->first(),
+            'repository_list_module' => $module_service->findByInterface(RepositoryListModule::class)->first(),
+            'source_list_module'     => $module_service->findByInterface(SourceListModule::class)->first(),
         ]);
     }
 
