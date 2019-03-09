@@ -6,7 +6,7 @@ namespace Fisharebest\Localization\Script;
  * Class ScriptPhlp - Representation of the Psalter Pahlavi script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class ScriptPhlp extends AbstractScript implements ScriptInterface

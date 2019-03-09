@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\Territory029;
  * Class LanguagePap - Representation of the Papiamentu language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguagePap extends AbstractLanguage implements LanguageInterface

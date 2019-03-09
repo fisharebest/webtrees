@@ -10,7 +10,7 @@ use Fisharebest\Localization\Territory\TerritoryIr;
  * Class LanguageFa - Representation of the Persian language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageFa extends AbstractLanguage implements LanguageInterface

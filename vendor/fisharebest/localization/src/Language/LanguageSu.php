@@ -10,7 +10,7 @@ use Fisharebest\Localization\Territory\TerritoryId;
  * Class LanguageSu - Representation of the Sotho language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageSu extends AbstractLanguage implements LanguageInterface

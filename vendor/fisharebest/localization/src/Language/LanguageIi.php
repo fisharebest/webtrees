@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryCn;
  * Class LanguageIi - Representation of the Sichuan Yi language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageIi extends AbstractLanguage implements LanguageInterface

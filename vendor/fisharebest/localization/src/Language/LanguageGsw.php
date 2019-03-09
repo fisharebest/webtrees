@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryCh;
  * Class LanguageGsw - Representation of the Swiss German language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageGsw extends AbstractLanguage implements LanguageInterface

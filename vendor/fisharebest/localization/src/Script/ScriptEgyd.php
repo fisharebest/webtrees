@@ -6,7 +6,7 @@ namespace Fisharebest\Localization\Script;
  * Class ScriptEgyd - Representation of the Egyptian demotic script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class ScriptEgyd extends AbstractScript implements ScriptInterface

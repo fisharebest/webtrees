@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryEs;
  * Class LanguageEs - Representation of the Spanish language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageEs extends AbstractLanguage implements LanguageInterface

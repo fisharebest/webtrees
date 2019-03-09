@@ -6,7 +6,7 @@ namespace Fisharebest\Localization\Script;
  * Class ScriptCyrl - Representation of the Cyrillic script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class ScriptCyrl extends AbstractScript implements ScriptInterface

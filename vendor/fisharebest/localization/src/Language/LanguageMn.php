@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryMn;
  * Class LanguageMn - Representation of the Mongolian language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageMn extends AbstractLanguage implements LanguageInterface

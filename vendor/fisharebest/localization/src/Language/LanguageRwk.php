@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryTz;
  * Class LanguageRwk - Representation of the Rwa language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageRwk extends AbstractLanguage implements LanguageInterface

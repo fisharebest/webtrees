@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryIt;
  * Class LanguageScn - Representation of the Sicilian language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageScn extends AbstractLanguage implements LanguageInterface

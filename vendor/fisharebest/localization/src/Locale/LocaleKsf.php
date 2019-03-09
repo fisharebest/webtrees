@@ -8,7 +8,7 @@ use Fisharebest\Localization\Language\LanguageKsf;
  * Class LocaleKsf - Bafia
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LocaleKsf extends AbstractLocale implements LocaleInterface

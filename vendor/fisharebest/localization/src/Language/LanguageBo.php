@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryCn;
  * Class LanguageBo - Representation of the Tibetan language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageBo extends AbstractLanguage implements LanguageInterface

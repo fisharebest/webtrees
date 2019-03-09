@@ -8,7 +8,7 @@ use Fisharebest\Localization\Language\LanguageSw;
  * Class LocaleSw - Swahili
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LocaleSw extends AbstractLocale implements LocaleInterface

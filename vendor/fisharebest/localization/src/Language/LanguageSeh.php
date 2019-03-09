@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryMz;
  * Class LanguageSeh - Representation of the Sena language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageSeh extends AbstractLanguage implements LanguageInterface

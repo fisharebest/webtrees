@@ -6,7 +6,7 @@ namespace Fisharebest\Localization\Script;
  * Class ScriptSarb - Representation of the Old South Arabian script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class ScriptSarb extends AbstractScript implements ScriptInterface

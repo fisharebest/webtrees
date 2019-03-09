@@ -10,7 +10,7 @@ use Fisharebest\Localization\Territory\TerritoryEr;
  * Class LanguageTif - Representation of the Tigre language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageTig extends AbstractLanguage implements LanguageInterface

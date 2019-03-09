@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryGb;
  * Class LanguageGd - Representation of the Scottish Gaelic language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageGd extends AbstractLanguage implements LanguageInterface

@@ -8,7 +8,7 @@ use Fisharebest\Localization\Language\LanguageFr;
  * Class LocaleFr - French
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LocaleFr extends AbstractLocale implements LocaleInterface
@@ -31,7 +31,7 @@ class LocaleFr extends AbstractLocale implements LocaleInterface
     public function numberSymbols()
     {
         return array(
-            self::GROUP   => self::NBSP,
+            self::GROUP   => self::NARROW_NBSP,
             self::DECIMAL => self::COMMA,
         );
     }

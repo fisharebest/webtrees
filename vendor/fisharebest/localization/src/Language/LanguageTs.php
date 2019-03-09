@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryZa;
  * Class LanguageTs - Representation of the Tsonga language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageTs extends AbstractLanguage implements LanguageInterface

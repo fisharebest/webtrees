@@ -8,7 +8,7 @@ namespace Fisharebest\Localization\PluralRule;
  * @link          https://developer.mozilla.org/en-US/docs/Mozilla/Localization/Localization_and_Plurals
  * @link          http://docs.translatehouse.org/projects/localization-guide/en/latest/l10n/pluralforms.html
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 interface PluralRuleInterface

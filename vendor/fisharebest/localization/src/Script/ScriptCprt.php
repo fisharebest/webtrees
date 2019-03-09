@@ -6,7 +6,7 @@ namespace Fisharebest\Localization\Script;
  * Class ScriptCprt - Representation of the Cypriot script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class ScriptCprt extends AbstractScript implements ScriptInterface

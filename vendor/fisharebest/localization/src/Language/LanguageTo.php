@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryTo;
  * Class LanguageTo - Representation of the Tonga (Tonga Islands) language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageTo extends AbstractLanguage implements LanguageInterface

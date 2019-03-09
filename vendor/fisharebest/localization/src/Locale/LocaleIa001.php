@@ -2,19 +2,19 @@
 
 namespace Fisharebest\Localization\Locale;
 
-use Fisharebest\Localization\Territory\TerritoryFr;
+use Fisharebest\Localization\Territory\Territory001;
 
 /**
  * Class LocaleIaFr
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
-class LocaleIaFr extends LocaleIa
+class LocaleIa001 extends LocaleIa
 {
     public function territory()
     {
-        return new TerritoryFr();
+        return new Territory001();
     }
 }

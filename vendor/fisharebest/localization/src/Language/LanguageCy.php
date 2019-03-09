@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryGb;
  * Class LanguageCy - Representation of the Welsh language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageCy extends AbstractLanguage implements LanguageInterface

@@ -8,7 +8,7 @@ use Fisharebest\Localization\Language\LanguageNah;
  * Class LocaleNah - Nahuatl
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LocaleNah extends AbstractLocale implements LocaleInterface

@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryFr;
  * Class LanguageFr - Representation of the French language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageFr extends AbstractLanguage implements LanguageInterface

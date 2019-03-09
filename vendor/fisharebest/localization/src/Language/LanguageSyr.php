@@ -10,7 +10,7 @@ use Fisharebest\Localization\Territory\TerritoryIq;
  * Class LanguageSyr - Representation of the Syriac language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageSyr extends AbstractLanguage implements LanguageInterface

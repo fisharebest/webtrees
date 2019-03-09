@@ -10,7 +10,7 @@ use Fisharebest\Localization\Territory\TerritoryIn;
  * Class LanguagePa - Representation of the Panjabi language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguagePa extends AbstractLanguage implements LanguageInterface

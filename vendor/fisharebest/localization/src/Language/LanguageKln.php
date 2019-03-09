@@ -8,7 +8,7 @@ use Fisharebest\Localization\Territory\TerritoryKe;
  * Class LanguageKln - Representation of the Kalenjin language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageKln extends AbstractLanguage implements LanguageInterface

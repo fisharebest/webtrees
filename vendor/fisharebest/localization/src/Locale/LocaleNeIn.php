@@ -8,7 +8,7 @@ use Fisharebest\Localization\Territory\TerritoryIn;
  * Class LocaleNeIn
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LocaleNeIn extends LocaleNe
