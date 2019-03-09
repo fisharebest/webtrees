@@ -1,59 +1,62 @@
 {
-	"name": "fisharebest/webtrees",
-	"description": "webtrees online genealogy",
-	"keywords": ["webtrees", "genealogy"],
-	"license": "GPL-3.0-or-later",
-	"autoload": {
-		"psr-4": {
-			"Fisharebest\\Webtrees\\": "app/"
-		}
-	},
-	"config": {
-		"platform": {
-			"php" : "5.3.9"
-		}
-	},
-	"require": {
-		"ext-gd": "*",
-		"ext-iconv": "*",
-		"ext-mbstring": "*",
+    "name": "fisharebest/webtrees",
+    "description": "webtrees online genealogy",
+    "keywords": [
+        "webtrees",
+        "genealogy"
+    ],
+    "license": "GPL-3.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Fisharebest\\Webtrees\\": "app/"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "5.3.9"
+        }
+    },
+    "require": {
+        "ext-gd": "*",
+        "ext-iconv": "*",
+        "ext-mbstring": "*",
         "ext-json": "*",
-		"ext-pcre": "*",
-		"ext-pdo": "*",
-		"ext-pdo_mysql": "*",
-		"ext-session": "*",
-		"ext-simplexml": "*",
-		"ext-xml": "*",
-		"ezyang/htmlpurifier": "~4.10",
-		"fisharebest/algorithm": "~1.5",
-		"fisharebest/ext-calendar": "~2.4",
-		"fisharebest/localization": "~1.12",
-		"fisharebest/php-polyfill": "~1.5",
-		"michelf/php-markdown": "~1.8",
-		"lutana/pclzip": "2.8.2.1",
-		"ramsey/uuid": "~2.9",
-		"swiftmailer/swiftmailer": "~5.0",
-		"tecnickcom/tcpdf": "~6.2",
-		"symfony/http-foundation": "^2.6"
-	},
-	"require-dev": {
-		"mockery/mockery": "*",
+        "ext-pcre": "*",
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*",
+        "ext-session": "*",
+        "ext-simplexml": "*",
+        "ext-xml": "*",
+        "ezyang/htmlpurifier": "~4.10",
+        "fisharebest/algorithm": "~1.5",
+        "fisharebest/ext-calendar": "~2.4",
+        "fisharebest/localization": "~1.14",
+        "fisharebest/php-polyfill": "~1.5",
+        "michelf/php-markdown": "~1.8",
+        "lutana/pclzip": "2.8.2.1",
+        "ramsey/uuid": "~2.9",
+        "swiftmailer/swiftmailer": "~5.0",
+        "tecnickcom/tcpdf": "~6.2",
+        "symfony/http-foundation": "^2.6"
+    },
+    "require-dev": {
+        "mockery/mockery": "*",
         "phpunit/phpunit": "<6.0",
-		"php-coveralls/php-coveralls": "*"
-	},
+        "php-coveralls/php-coveralls": "*"
+    },
     "scripts": {
-       "webtrees:build": [
-           "@composer webtrees:mo",
-           "git checkout language/en-US.mo",
-           "rm -Rf webtrees/",
-           "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
-           "cp language/*.mo webtrees/language/",
-           "echo npm install -g uglify-js",
-           "echo npm install -g uglifycss",
-           "find webtrees -name '*.js' ! -name '*.min.js' -exec uglifyjs -o {}.OUT {} \\; -exec rm {} \\;  -exec mv {}.OUT {} \\;",
-           "find webtrees -name '*.css' ! -name '*.min.css' -exec uglifycss --output {}.OUT {} \\; -exec rm {} \\;  -exec mv {}.OUT {} \\;",
-           "zip --quiet --recurse-paths --move -9 webtrees.zip webtrees"
-       ],
+        "webtrees:build": [
+            "@composer webtrees:mo",
+            "git checkout language/en-US.mo",
+            "rm -Rf webtrees/",
+            "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
+            "cp language/*.mo webtrees/language/",
+            "echo npm install -g uglify-js",
+            "echo npm install -g uglifycss",
+            "find webtrees -name '*.js' ! -name '*.min.js' -exec uglifyjs -o {}.OUT {} \\; -exec rm {} \\;  -exec mv {}.OUT {} \\;",
+            "find webtrees -name '*.css' ! -name '*.min.css' -exec uglifycss --output {}.OUT {} \\; -exec rm {} \\;  -exec mv {}.OUT {} \\;",
+            "zip --quiet --recurse-paths --move -9 webtrees.zip webtrees"
+        ],
         "webtrees:mo": [
             "for FILE in language/*.po; do msgfmt --output=$(dirname $FILE)/$(basename $FILE .po).mo $FILE; done",
             "rm -Rf data/cache/language*"
