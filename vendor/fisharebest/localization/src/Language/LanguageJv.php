@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Language;
+<?php
+
+namespace Fisharebest\Localization\Language;
 
 use Fisharebest\Localization\PluralRule\PluralRule0;
 use Fisharebest\Localization\Script\ScriptJava;
@@ -8,7 +10,7 @@ use Fisharebest\Localization\Territory\TerritoryId;
  * Class LanguageJv - Representation of the Javanese language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageJv extends AbstractLanguage implements LanguageInterface

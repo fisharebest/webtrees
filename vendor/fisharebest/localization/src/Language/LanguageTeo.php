@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Language;
+<?php
+
+namespace Fisharebest\Localization\Language;
 
 use Fisharebest\Localization\PluralRule\PluralRule1;
 use Fisharebest\Localization\Territory\TerritoryUg;
@@ -7,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryUg;
  * Class LanguageTeo - Representation of the Teso language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageTeo extends AbstractLanguage implements LanguageInterface

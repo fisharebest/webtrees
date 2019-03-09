@@ -1,10 +1,12 @@
-<?php namespace Fisharebest\Localization\Script;
+<?php
+
+namespace Fisharebest\Localization\Script;
 
 /**
  * Class ScriptOrya - Representation of the Oriya script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class ScriptOrya extends AbstractScript implements ScriptInterface

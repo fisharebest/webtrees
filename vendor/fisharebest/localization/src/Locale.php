@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php
+
+namespace Fisharebest\Localization;
 
 use DomainException;
 use Fisharebest\Localization\Locale\LocaleInterface;
@@ -7,11 +9,24 @@ use Fisharebest\Localization\Locale\LocaleInterface;
  * Class Locale - Static functions to generate and compare locales.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class Locale
 {
+    /**
+     * Some browsers let the user choose "Chinese, Traditional", but add headers for "zh-HK"...
+     *
+     * @var array
+     */
+    private static $http_accept_chinese = array(
+        'zh-cn' => 'zh-hans-cn',
+        'zh-sg' => 'zh-hans-sg',
+        'zh-hk' => 'zh-hant-hk',
+        'zh-mo' => 'zh-hant-mo',
+        'zh-tw' => 'zh-hant-tw',
+    );
+
     /**
      * Callback for PHP sort functions - allows lists of locales to be sorted.
      * Diacritics are removed and text is capitalized to allow fast/simple sorting.
@@ -42,9 +57,9 @@ class Locale
 
         if (class_exists($class)) {
             return new $class();
-        } else {
-            throw new DomainException($code);
         }
+
+        throw new DomainException($code);
     }
 
     /**
@@ -76,12 +91,9 @@ class Locale
                 return $x[0];
             }, $preferences);
 
-            // If "de-DE" requested, but not "de", then add it at a lower priority
-            foreach ($preferences as $code => $priority) {
-                if (preg_match('/^([a-z]+)[^a-z]/', $code, $match) && !isset($preferences[$match[1]])) {
-                    $preferences[$match[1]] = $priority * 0.5;
-                }
-            }
+            // "Common sense" logic for badly configured clients.
+            $preferences = self::httpAcceptChinese($preferences);
+            $preferences = self::httpAcceptDowngrade($preferences);
 
             foreach (array_keys($preferences) as $code) {
                 try {
@@ -96,5 +108,52 @@ class Locale
         }
 
         return $default;
+    }
+
+    /**
+     * If a client requests "de-DE" (but not "de"), then add "de" as a lower-priority fallback.
+     *
+     * @param $preferences
+     *
+     * @return int[]
+     */
+    private static function httpAcceptDowngrade($preferences)
+    {
+        foreach ($preferences as $code => $priority) {
+            // Three parts: "zh-hans-cn" => "zh-hans" and "zh"
+            if (preg_match('/^(([a-z]+)-[a-z]+)-[a-z]+$/', $code, $match)) {
+                if (!isset($preferences[$match[2]])) {
+                    $preferences[$match[2]] = $priority * 0.5;
+                }
+                if (!isset($preferences[$match[1]])) {
+                    $preferences[$match[1]] = $priority * 0.5;
+                }
+            }
+            // Two parts: "de-de" => "de"
+            if (preg_match('/^([a-z]+)-[a-z]+$/', $code, $match) && !isset($preferences[$match[1]])) {
+                $preferences[$match[1]] = $priority * 0.5;
+            }
+        }
+
+        return $preferences;
+    }
+
+    /**
+     * Some browsers allow the user to select "Chinese (simplified)", but then use zh-CN instead of zh-Hans.
+     * This goes against the advice of w3.org.
+     *
+     * @param int[] $preferences
+     *
+     * @return int[]
+     */
+    private static function httpAcceptChinese($preferences)
+    {
+        foreach (self::$http_accept_chinese as $old => $new) {
+            if (array_key_exists($old, $preferences) && !array_key_exists($new, $preferences)) {
+                $preferences[$new] = $preferences[$old] * 0.5;
+            }
+        }
+
+        return $preferences;
     }
 }

@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Locale;
+<?php
+
+namespace Fisharebest\Localization\Locale;
 
 use Fisharebest\Localization\Territory\TerritoryYt;
 
@@ -6,7 +8,7 @@ use Fisharebest\Localization\Territory\TerritoryYt;
  * Class LocaleFrYt
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LocaleFrYt extends LocaleFr

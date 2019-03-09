@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Language;
+<?php
+
+namespace Fisharebest\Localization\Language;
 
 use Fisharebest\Localization\PluralRule\PluralRuleUnknown;
 use Fisharebest\Localization\Script\ScriptLatn;
@@ -8,7 +10,7 @@ use Fisharebest\Localization\Territory\Territory001;
  * Class AbstractLanguage - Representation of a language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 abstract class AbstractLanguage

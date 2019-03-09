@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Language;
+<?php
+
+namespace Fisharebest\Localization\Language;
 
 use Fisharebest\Localization\PluralRule\PluralRule1;
 use Fisharebest\Localization\Territory\TerritoryEs;
@@ -7,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryEs;
  * Class LanguageCa - Representation of the Catalan language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageCa extends AbstractLanguage implements LanguageInterface

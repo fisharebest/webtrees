@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Language;
+<?php
+
+namespace Fisharebest\Localization\Language;
 
 use Fisharebest\Localization\PluralRule\PluralRule0;
 use Fisharebest\Localization\Territory\TerritoryMl;
@@ -7,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryMl;
  * Class LanguageSes - Representation of the Koyraboro Senni Songhai language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageSes extends AbstractLanguage implements LanguageInterface

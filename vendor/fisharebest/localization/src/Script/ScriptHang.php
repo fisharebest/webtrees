@@ -1,10 +1,12 @@
-<?php namespace Fisharebest\Localization\Script;
+<?php
+
+namespace Fisharebest\Localization\Script;
 
 /**
  * Class ScriptHang - Representation of the Hangul script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class ScriptHang extends AbstractScript implements ScriptInterface

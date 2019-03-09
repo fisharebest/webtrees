@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Locale;
+<?php
+
+namespace Fisharebest\Localization\Locale;
 
 use Fisharebest\Localization\Language\LanguageFi;
 
@@ -6,11 +8,16 @@ use Fisharebest\Localization\Language\LanguageFi;
  * Class LocaleFi - Finnish
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LocaleFi extends AbstractLocale implements LocaleInterface
 {
+    public function collation()
+    {
+        return 'swedish_ci';
+    }
+
     public function endonym()
     {
         return 'suomi';

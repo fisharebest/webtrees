@@ -1,10 +1,12 @@
-<?php namespace Fisharebest\Localization\Territory;
+<?php
+
+namespace Fisharebest\Localization\Territory;
 
 /**
  * Class AbstractTerritory - Representation of the territory DJ - Djibouti.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class TerritoryDj extends AbstractTerritory implements TerritoryInterface

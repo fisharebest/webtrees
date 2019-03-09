@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Language;
+<?php
+
+namespace Fisharebest\Localization\Language;
 
 use Fisharebest\Localization\PluralRule\PluralRule8;
 use Fisharebest\Localization\Territory\TerritorySk;
@@ -7,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritorySk;
  * Class LanguageSk - Representation of the Slovak language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageSk extends AbstractLanguage implements LanguageInterface

@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Language;
+<?php
+
+namespace Fisharebest\Localization\Language;
 
 use Fisharebest\Localization\Territory\TerritoryCm;
 
@@ -6,7 +8,7 @@ use Fisharebest\Localization\Territory\TerritoryCm;
  * Class LanguageAgq - Representation of the Aghem language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageAgq extends AbstractLanguage implements LanguageInterface

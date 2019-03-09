@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Locale;
+<?php
+
+namespace Fisharebest\Localization\Locale;
 
 use Fisharebest\Localization\Language\LanguageTn;
 
@@ -6,7 +8,7 @@ use Fisharebest\Localization\Language\LanguageTn;
  * Class LocaleTn - Tswana
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LocaleTn extends AbstractLocale implements LocaleInterface

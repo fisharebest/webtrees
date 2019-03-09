@@ -1,6 +1,15 @@
 CHANGE LOG
 ==========
 
+## 1.14.0 (2019-03-09)
+ - Better negotiation for browsers that request zh-CN instead of zh-Hans
+ - Update to CLDR-34 and latest versions of iana-subtag-registry
+ - Add PHP7.4 to the test matrix.
+
+## 1.13.0 (2019-02-05)
+ - Add PHP7.3 to the test matrix.
+ - Fix: Finnish should use Swedish collation algorithm.
+
 ## 1.12.0 (2018-09-25)
  - Add Sundanese (su)
 

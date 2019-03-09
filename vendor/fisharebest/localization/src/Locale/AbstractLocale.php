@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Locale;
+<?php
+
+namespace Fisharebest\Localization\Locale;
 
 use Fisharebest\Localization\PluralRule\PluralRuleInterface;
 use Fisharebest\Localization\Script\ScriptInterface;
@@ -9,7 +11,7 @@ use Fisharebest\Localization\Variant\VariantInterface;
  * Class AbstractLocale - The “root” locale, from which all others are derived.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 abstract class AbstractLocale
@@ -31,7 +33,8 @@ abstract class AbstractLocale
     const HYPHEN       = '-';
     const LTR_MARK     = "\xE2\x80\x8E"; // Left-to-right marker
     const MINUS_SIGN   = "\xE2\x88\x92";
-    const NBSP         = "\xC2\xA0"; // A non-breaking space
+    const NARROW_NBSP  = "\xE2\x80\xAF"; // Narrow non-breaking space
+    const NBSP         = "\xC2\xA0"; // Non-breaking space
     const PRIME        = '\'';
     const RTL_MARK     = "\xE2\x80\x8F"; // Right-to-left marker
 

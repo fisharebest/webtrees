@@ -1,10 +1,12 @@
-<?php namespace Fisharebest\Localization\Variant;
+<?php
+
+namespace Fisharebest\Localization\Variant;
 
 /**
  * Interface VariantInterface - Representation of a locale variant.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 interface VariantInterface

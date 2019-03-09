@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Language;
+<?php
+
+namespace Fisharebest\Localization\Language;
 
 use Fisharebest\Localization\PluralRule\PluralRule0;
 use Fisharebest\Localization\Territory\TerritoryVn;
@@ -7,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryVn;
  * Class LanguageVi - Representation of the Vietnamese language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageVi extends AbstractLanguage implements LanguageInterface

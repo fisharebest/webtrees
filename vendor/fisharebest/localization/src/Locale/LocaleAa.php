@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Locale;
+<?php
+
+namespace Fisharebest\Localization\Locale;
 
 use Fisharebest\Localization\Language\LanguageAa;
 
@@ -6,7 +8,7 @@ use Fisharebest\Localization\Language\LanguageAa;
  * Class LocaleAa - Afar
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LocaleAa extends AbstractLocale implements LocaleInterface

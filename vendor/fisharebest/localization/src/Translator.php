@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php
+
+namespace Fisharebest\Localization;
 
 use Fisharebest\Localization\PluralRule\PluralRuleInterface;
 
@@ -6,7 +8,7 @@ use Fisharebest\Localization\PluralRule\PluralRuleInterface;
  * Class Translator - use a translation to translate messages.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class Translator

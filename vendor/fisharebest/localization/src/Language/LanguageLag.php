@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Language;
+<?php
+
+namespace Fisharebest\Localization\Language;
 
 use Fisharebest\Localization\PluralRule\PluralRuleZeroOneOther;
 use Fisharebest\Localization\Territory\TerritoryTz;
@@ -7,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryTz;
  * Class LanguageLag - Representation of the Langi language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageLag extends AbstractLanguage implements LanguageInterface

@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Locale;
+<?php
+
+namespace Fisharebest\Localization\Locale;
 
 use Fisharebest\Localization\Language\LanguageRo;
 
@@ -6,7 +8,7 @@ use Fisharebest\Localization\Language\LanguageRo;
  * Class LocaleRo - Romanian
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LocaleRo extends AbstractLocale implements LocaleInterface

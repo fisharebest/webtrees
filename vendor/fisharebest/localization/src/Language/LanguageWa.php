@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Language;
+<?php
+
+namespace Fisharebest\Localization\Language;
 
 use Fisharebest\Localization\PluralRule\PluralRule2;
 use Fisharebest\Localization\Territory\TerritoryBe;
@@ -7,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryBe;
  * Class LanguageXh - Representation of the Walloon language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageWa extends AbstractLanguage implements LanguageInterface

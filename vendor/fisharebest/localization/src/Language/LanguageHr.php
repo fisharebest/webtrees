@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Language;
+<?php
+
+namespace Fisharebest\Localization\Language;
 
 use Fisharebest\Localization\PluralRule\PluralRule7;
 use Fisharebest\Localization\Territory\TerritoryHr;
@@ -7,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryHr;
  * Class LanguageHr - Representation of the Croatian language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageHr extends AbstractLanguage implements LanguageInterface

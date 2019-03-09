@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Language;
+<?php
+
+namespace Fisharebest\Localization\Language;
 
 use Fisharebest\Localization\PluralRule\PluralRuleOneTwoOther;
 use Fisharebest\Localization\Script\ScriptCans;
@@ -8,7 +10,7 @@ use Fisharebest\Localization\Territory\TerritoryCa;
  * Class LanguageEl - Representation of the Modern Greek (1453-) language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageIu extends AbstractLanguage implements LanguageInterface

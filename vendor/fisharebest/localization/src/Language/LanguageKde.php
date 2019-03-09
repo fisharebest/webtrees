@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Language;
+<?php
+
+namespace Fisharebest\Localization\Language;
 
 use Fisharebest\Localization\PluralRule\PluralRule0;
 use Fisharebest\Localization\Territory\TerritoryTz;
@@ -7,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryTz;
  * Class LanguageKde - Representation of the Makonde language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageKde extends AbstractLanguage implements LanguageInterface

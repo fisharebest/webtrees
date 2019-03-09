@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Locale;
+<?php
+
+namespace Fisharebest\Localization\Locale;
 
 use Fisharebest\Localization\Language\LanguageBo;
 
@@ -6,7 +8,7 @@ use Fisharebest\Localization\Language\LanguageBo;
  * Class LocaleBo - Tibetan
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LocaleBo extends AbstractLocale implements LocaleInterface

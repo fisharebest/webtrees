@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Locale;
+<?php
+
+namespace Fisharebest\Localization\Locale;
 
 use Fisharebest\Localization\Language\LanguagePap;
 
@@ -6,7 +8,7 @@ use Fisharebest\Localization\Language\LanguagePap;
  * Class LocalePap - Papiamentu
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LocalePap extends AbstractLocale implements LocaleInterface

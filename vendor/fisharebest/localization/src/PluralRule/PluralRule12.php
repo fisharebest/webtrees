@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\PluralRule;
+<?php
+
+namespace Fisharebest\Localization\PluralRule;
 
 /**
  * Class PluralRule12 - Select a plural form for a specified number.
@@ -7,7 +9,7 @@
  * nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5);
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class PluralRule12 implements PluralRuleInterface

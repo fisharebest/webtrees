@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Language;
+<?php
+
+namespace Fisharebest\Localization\Language;
 
 use Fisharebest\Localization\PluralRule\PluralRule8;
 use Fisharebest\Localization\Territory\TerritoryCz;
@@ -7,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryCz;
  * Class LanguageCs - Representation of the Czech language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageCs extends AbstractLanguage implements LanguageInterface

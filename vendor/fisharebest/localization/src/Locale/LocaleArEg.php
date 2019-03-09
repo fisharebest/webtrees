@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Locale;
+<?php
+
+namespace Fisharebest\Localization\Locale;
 
 use Fisharebest\Localization\Territory\TerritoryEg;
 
@@ -6,7 +8,7 @@ use Fisharebest\Localization\Territory\TerritoryEg;
  * Class LocaleArEg
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LocaleArEg extends LocaleAr

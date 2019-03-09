@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\PluralRule;
+<?php
+
+namespace Fisharebest\Localization\PluralRule;
 
 use DomainException;
 
@@ -8,7 +10,7 @@ use DomainException;
  * We cannot use this language for translation, but we can use its other attributes.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class PluralRuleUnknown implements PluralRuleInterface

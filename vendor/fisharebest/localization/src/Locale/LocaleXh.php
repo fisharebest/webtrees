@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Locale;
+<?php
+
+namespace Fisharebest\Localization\Locale;
 
 use Fisharebest\Localization\Language\LanguageXh;
 
@@ -6,14 +8,14 @@ use Fisharebest\Localization\Language\LanguageXh;
  * Class LocaleXh - Xhosa
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LocaleXh extends AbstractLocale implements LocaleInterface
 {
     public function endonym()
     {
-        return 'Xhosa';
+        return 'isiXhosa';
     }
 
     public function endonymSortable()
@@ -24,5 +26,12 @@ class LocaleXh extends AbstractLocale implements LocaleInterface
     public function language()
     {
         return new LanguageXh();
+    }
+
+    public function numberSymbols()
+    {
+        return array(
+            self::GROUP => self::NBSP,
+        );
     }
 }

@@ -1,15 +1,17 @@
-<?php namespace Fisharebest\Localization\Locale;
+<?php
+
+namespace Fisharebest\Localization\Locale;
 
 use Fisharebest\Localization\Territory\TerritoryMr;
 
 /**
- * Class LocaleFfMr
+ * Class LocaleFfLatn - Fulah
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
-class LocaleFfMr extends LocaleFf
+class LocaleFfLatnMr extends LocaleFfLatn
 {
     public function territory()
     {

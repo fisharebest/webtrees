@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Locale;
+<?php
+
+namespace Fisharebest\Localization\Locale;
 
 use Fisharebest\Localization\Language\LanguageHr;
 
@@ -6,7 +8,7 @@ use Fisharebest\Localization\Language\LanguageHr;
  * Class LocaleHr - Croatian
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LocaleHr extends AbstractLocale implements LocaleInterface
@@ -37,5 +39,15 @@ class LocaleHr extends AbstractLocale implements LocaleInterface
             self::GROUP   => self::DOT,
             self::DECIMAL => self::COMMA,
         );
+    }
+
+    /**
+     * How to format a floating point number (%s) as a percentage.
+     *
+     * @return string
+     */
+    protected function percentFormat()
+    {
+        return self::PLACEHOLDER . self::NBSP . self::PERCENT;
     }
 }

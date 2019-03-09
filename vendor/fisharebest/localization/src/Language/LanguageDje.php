@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Language;
+<?php
+
+namespace Fisharebest\Localization\Language;
 
 use Fisharebest\Localization\Territory\TerritoryNe;
 
@@ -6,7 +8,7 @@ use Fisharebest\Localization\Territory\TerritoryNe;
  * Class LanguageDje - Representation of the Zarma language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageDje extends AbstractLanguage implements LanguageInterface

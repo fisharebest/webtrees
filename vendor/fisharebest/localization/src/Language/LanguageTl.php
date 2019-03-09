@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Language;
+<?php
+
+namespace Fisharebest\Localization\Language;
 
 use Fisharebest\Localization\PluralRule\PluralRuleTagalog;
 use Fisharebest\Localization\Territory\TerritoryPh;
@@ -7,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryPh;
  * Class LanguageTl - Representation of the Tagalog language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageTl extends AbstractLanguage implements LanguageInterface

@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization\Locale;
+<?php
+
+namespace Fisharebest\Localization\Locale;
 
 use Fisharebest\Localization\Language\LanguageAst;
 
@@ -6,7 +8,7 @@ use Fisharebest\Localization\Language\LanguageAst;
  * Class LocaleAst - Asturian
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LocaleAst extends AbstractLocale implements LocaleInterface
