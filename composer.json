@@ -79,11 +79,9 @@
     },
     "scripts": {
        "webtrees:build": [
-           "@composer webtrees:mo",
-           "git checkout language/en-US.mo",
            "rm -Rf webtrees/",
            "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
-           "cp language/*.mo webtrees/language/",
+            "for FILE in resources/lang/*/messages.po; do msgfmt --output=webtrees/$(dirname $FILE)/$(basename $FILE .po).mo $FILE; done",
            "zip --quiet --recurse-paths --move -9 webtrees.zip webtrees"
        ],
        "webtrees:check": [
