@@ -28,7 +28,7 @@ Further documentation is available at [wiki.webtrees.net](https://wiki.webtrees.
 ### License
 
 * **webtrees: online genealogy**
-* Copyright (C) 2018 webtrees development team
+* Copyright (C) 2019 webtrees development team
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
