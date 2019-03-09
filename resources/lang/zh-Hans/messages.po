@@ -6,7 +6,7 @@ msgstr ""
 "PO-Revision-Date: 2019-03-09 16:33+0800\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <http://translate.webtrees.net/projects/webtrees/webtrees/zh-Hans/>\n"
-"Language: zh-Hans\n"
+"Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10822,7 +10822,7 @@ msgstr "应根据家谱的标准输入的地方。地方记录地方最具体的
 
 #: resources/views/places-page.php:26
 msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
-msgstr "地图上仅显示包含有效经纬度的地方"
+msgstr "地图上仅显示包含有效经纬度的地方,没有经纬度的地方会出现红色边框"
 
 #: resources/views/layouts/default.php:142
 #: resources/views/modules/random_media/slide-show.php:8
