@@ -795,7 +795,7 @@ class HomePageController extends AbstractBaseController
      *
      * @return void
      */
-    private function updateTreeBlocks(int $tree_id, array $main_blocks, array $side_blocks)
+    private function updateTreeBlocks(int $tree_id, array $main_blocks, array $side_blocks): void
     {
         $existing_block_ids = DB::table('block')
             ->where('gedcom_id', '=', $tree_id)
@@ -851,7 +851,7 @@ class HomePageController extends AbstractBaseController
      *
      * @return void
      */
-    private function updateUserBlocks(int $user_id, array $main_blocks, array $side_blocks)
+    private function updateUserBlocks(int $user_id, array $main_blocks, array $side_blocks): void
     {
         $existing_block_ids = DB::table('block')
             ->where('user_id', '=', $user_id)

@@ -61,13 +61,13 @@ class ReportParserBase
             }
         );
 
-        $fp = fopen($report, 'r');
+        $fp = fopen($report, 'rb');
 
         if ($fp === false) {
             throw new Exception('Cannot open ' . $report);
         }
 
-        while (($data = fread($fp, 4096))) {
+        while ($data = fread($fp, 4096)) {
             if (!xml_parse($this->xml_parser, $data, feof($fp))) {
                 throw new DomainException(sprintf(
                     'XML error: %s at line %d',

@@ -158,7 +158,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id)
+    public function saveBlockConfiguration(Request $request, int $block_id): void
     {
         $this->setBlockSetting($block_id, 'show_other', $request->get('show_other', ''));
         $this->setBlockSetting($block_id, 'show_unassigned', $request->get('show_unassigned', ''));
@@ -173,7 +173,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id): void
     {
         $show_other      = $this->getBlockSetting($block_id, 'show_other', self::DEFAULT_SHOW_OTHER);
         $show_unassigned = $this->getBlockSetting($block_id, 'show_unassigned', self::DEFAULT_SHOW_UNASSIGNED);

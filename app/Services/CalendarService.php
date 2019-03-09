@@ -33,6 +33,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
 
 /**
  * Calculate anniversaries, etc.
@@ -95,12 +96,12 @@ class CalendarService
         // Events that start or end during the period
         $query = DB::table('dates')
             ->where('d_file', '=', $tree->id())
-            ->where(function (Builder $query) use ($jd1, $jd2) {
-                $query->where(function (Builder $query) use ($jd1, $jd2) {
+            ->where(function (Builder $query) use ($jd1, $jd2): void {
+                $query->where(function (Builder $query) use ($jd1, $jd2): void {
                     $query
                         ->where('d_julianday1', '>=', $jd1)
                         ->where('d_julianday1', '<=', $jd2);
-                })->orWhere(function (Builder $query) use ($jd1, $jd2) {
+                })->orWhere(function (Builder $query) use ($jd1, $jd2): void {
                     $query
                         ->where('d_julianday2', '>=', $jd1)
                         ->where('d_julianday2', '<=', $jd2);
@@ -196,7 +197,7 @@ class CalendarService
 
         switch ($sort_by) {
             case 'anniv':
-                $facts = Fact::sortFacts($facts)->all();
+                $facts = Fact::sortFacts(Collection::make($facts))->all();
                 break;
 
             case 'alpha':
@@ -242,7 +243,7 @@ class CalendarService
             // SIMPLE CASES:
             // a) Non-hebrew anniversaries
             // b) Hebrew months TVT, SHV, IYR, SVN, TMZ, AAV, ELL
-            if (!$anniv instanceof JewishDate || in_array($anniv->month, [1, 5, 6, 9, 10, 11, 12, 13])) {
+            if (!$anniv instanceof JewishDate || in_array($anniv->month, [1, 5, 6, 9, 10, 11, 12, 13], true)) {
                 $this->defaultAnniversaries($query, $anniv);
             } else {
                 // SPECIAL CASES:

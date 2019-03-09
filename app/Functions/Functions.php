@@ -35,7 +35,7 @@ class Functions
      *
      * @return string
      */
-    public static function fileUploadErrorText($error_code)
+    public static function fileUploadErrorText($error_code): string
     {
         switch ($error_code) {
             case UPLOAD_ERR_OK:
@@ -96,7 +96,7 @@ class Functions
         $tag          = trim($tag);
         $searchTarget = "~[\n]" . $tag . "[\s]~";
         $ct           = preg_match_all($searchTarget, $gedrec, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
-        if ($ct == 0) {
+        if ($ct === 0) {
             return '';
         }
         if ($ct < $num) {
@@ -177,7 +177,7 @@ class Functions
      *
      * @return string
      */
-    private static function reflexivePronoun(Individual $individual)
+    private static function reflexivePronoun(Individual $individual): string
     {
         switch ($individual->sex()) {
             case 'M':
@@ -204,7 +204,7 @@ class Functions
      * @return array     An array of nodes on the relationship path, or false if no path found
      * @throws Exception If no relationship exists
      */
-    public static function getRelationship(Individual $individual1, Individual $individual2, $maxlength = 4)
+    public static function getRelationship(Individual $individual1, Individual $individual2, $maxlength = 4): array
     {
         $spouse_codes = [
             'M' => 'hus',
@@ -363,7 +363,7 @@ class Functions
      *
      * @return string
      */
-    public static function cousinName($n, $sex)
+    public static function cousinName($n, $sex): string
     {
         if ($sex === 'M') {
             switch ($n) {
@@ -2226,7 +2226,7 @@ class Functions
                     return self::cousinName($up + $down - 3, $sex2);
                 case 'es':
                     // Source: Wes Groleau. See http://UniGen.us/Parentesco.html & http://UniGen.us/Parentesco-D.html
-                    if ($down == $up) {
+                    if ($down === $up) {
                         return self::cousinName($cousin, $sex2);
                     }
 

@@ -31,21 +31,6 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
     use ModuleBlockTrait;
 
     /**
-     * @var UserService
-     */
-    private $user_service;
-
-    /**
-     * LoggedInUsersModule constructor.
-     *
-     * @param UserService $user_service
-     */
-    public function __construct(UserService $user_service)
-    {
-        $this->user_service = $user_service;
-    }
-
-    /**
      * How should this module be identified in the control panel, etc.?
      *
      * @return string
@@ -123,7 +108,7 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id)
+    public function saveBlockConfiguration(Request $request, int $block_id): void
     {
     }
 
@@ -135,7 +120,7 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id): void
     {
     }
 }

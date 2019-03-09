@@ -143,33 +143,25 @@ class Date
         // Unambiguous dates - override calendar escape
         if (preg_match('/^(TSH|CSH|KSL|TVT|SHV|ADR|ADS|NSN|IYR|SVN|TMZ|AAV|ELL)$/', $m)) {
             $cal = JewishDate::ESCAPE;
-        } else {
-            if (preg_match('/^(VEND|BRUM|FRIM|NIVO|PLUV|VENT|GERM|FLOR|PRAI|MESS|THER|FRUC|COMP)$/', $m)) {
-                $cal = FrenchDate::ESCAPE;
-            } else {
-                if (preg_match('/^(MUHAR|SAFAR|RABI[AT]|JUMA[AT]|RAJAB|SHAAB|RAMAD|SHAWW|DHUAQ|DHUAH)$/', $m)) {
-                    $cal = HijriDate::ESCAPE; // This is a WT extension
-                } else {
-                    if (preg_match('/^(FARVA|ORDIB|KHORD|TIR|MORDA|SHAHR|MEHR|ABAN|AZAR|DEY|BAHMA|ESFAN)$/', $m)) {
-                        $cal = JalaliDate::ESCAPE; // This is a WT extension
-                    } elseif (preg_match('/^\d{1,4}( B\.C\.)|\d\d\d\d\/\d\d$/', $y)) {
-                        $cal = JulianDate::ESCAPE;
-                    }
-                }
-            }
+        } elseif (preg_match('/^(VEND|BRUM|FRIM|NIVO|PLUV|VENT|GERM|FLOR|PRAI|MESS|THER|FRUC|COMP)$/', $m)) {
+            $cal = FrenchDate::ESCAPE;
+        } elseif (preg_match('/^(MUHAR|SAFAR|RABI[AT]|JUMA[AT]|RAJAB|SHAAB|RAMAD|SHAWW|DHUAQ|DHUAH)$/', $m)) {
+            $cal = HijriDate::ESCAPE; // This is a WT extension
+        } elseif (preg_match('/^(FARVA|ORDIB|KHORD|TIR|MORDA|SHAHR|MEHR|ABAN|AZAR|DEY|BAHMA|ESFAN)$/', $m)) {
+            $cal = JalaliDate::ESCAPE; // This is a WT extension
+        } elseif (preg_match('/^\d{1,4}( B\.C\.)|\d\d\d\d\/\d\d$/', $y)) {
+            $cal = JulianDate::ESCAPE;
         }
 
         // Ambiguous dates - don't override calendar escape
-        if ($cal == '') {
+        if ($cal === '') {
             if (preg_match('/^(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)$/', $m)) {
                 $cal =  GregorianDate::ESCAPE;
+            } elseif (preg_match('/^[345]\d\d\d$/', $y)) {
+                // Year 3000-5999
+                $cal = JewishDate::ESCAPE;
             } else {
-                if (preg_match('/^[345]\d\d\d$/', $y)) {
-                    // Year 3000-5999
-                    $cal = JewishDate::ESCAPE;
-                } else {
-                    $cal = GregorianDate::ESCAPE;
-                }
+                $cal = GregorianDate::ESCAPE;
             }
         }
         // Now construct an object of the correct type
@@ -253,7 +245,7 @@ class Date
      *
      * @return string
      */
-    public function display($url = false, $date_format = null, $convert_calendars = true)
+    public function display($url = false, $date_format = null, $convert_calendars = true): string
     {
         // Do we need a new DateFormatterService class?
         $tree = app(Tree::class);
@@ -283,7 +275,7 @@ class Date
         $conv1 = '';
         $conv2 = '';
         foreach ($calendar_format as $cal_fmt) {
-            if ($cal_fmt != 'none') {
+            if ($cal_fmt !== 'none') {
                 $d1conv = $this->date1->convertToCalendar($cal_fmt);
                 if ($d1conv->inValidRange()) {
                     $d1tmp = $d1conv->format($date_format, $this->qual1);
@@ -407,7 +399,7 @@ class Date
      *
      * @return AbstractCalendarDate
      */
-    public function maximumDate()
+    public function maximumDate(): AbstractCalendarDate
     {
         return $this->date2 ?? $this->date1;
     }
@@ -480,7 +472,7 @@ class Date
      */
     public static function getAgeYears(Date $d1, Date $d2): int
     {
-        if ($d2->maximumJulianDay() >= $d1->minimumJulianDay() && $d2->minimumJulianDay() <= $d1->minimumJulianDay()) {
+        if (self::compare($d1, $d2) === 0) {
             // Overlapping dates
             $jd = $d1->minimumJulianDay();
         } else {
@@ -490,9 +482,9 @@ class Date
 
         if ($jd && $d1->minimumJulianDay() && $d1->minimumJulianDay() <= $jd) {
             return $d1->minimumDate()->getAge($jd);
-        } else {
-            return -1;
         }
+
+        return -1;
     }
 
     /**
@@ -505,7 +497,7 @@ class Date
      */
     public static function getAgeDays(Date $d1, Date $d2): int
     {
-        if ($d2->maximumJulianDay() >= $d1->minimumJulianDay() && $d2->minimumJulianDay() <= $d1->minimumJulianDay()) {
+        if ($d2->maximumJulianDay() >= $d1->minimumJulianDay() && $d2->minimumJulianDay() <= $d1->maximumJulianDay()) {
             // Overlapping dates
             $jd = $d1->minimumJulianDay();
         } else {
@@ -516,9 +508,9 @@ class Date
         // Days - integer only (for sorting, rather than for display)
         if ($jd && $d1->minimumJulianDay()) {
             return $jd - $d1->minimumJulianDay();
-        } else {
-            return -1;
         }
+
+        return -1;
     }
 
     /**
@@ -531,8 +523,8 @@ class Date
      */
     public static function getAge(Date $d1, Date $d2 = null): string
     {
-        if ($d2 instanceof Date) {
-            if ($d2->maximumJulianDay() >= $d1->minimumJulianDay() && $d2->minimumJulianDay() <= $d1->minimumJulianDay()) {
+        if ($d2 instanceof self) {
+            if ($d2->maximumJulianDay() >= $d1->minimumJulianDay() && $d2->minimumJulianDay() <= $d1->maximumJulianDay()) {
                 // Overlapping dates
                 $jd = $d1->minimumJulianDay();
             } else {
@@ -548,14 +540,14 @@ class Date
         if ($jd && $d1->minimumJulianDay()) {
             if ($d1->minimumJulianDay() > $jd) {
                 return view('icons/warning');
-            } else {
-                $years = $d1->minimumDate()->getAge($jd);
-
-                return I18N::number($years);
             }
-        } else {
-            return '';
+
+            $years = $d1->minimumDate()->getAge($jd);
+
+            return I18N::number($years);
         }
+
+        return '';
     }
 
     /**
@@ -567,7 +559,7 @@ class Date
      *
      * @return string
      */
-    public static function getAgeGedcom(Date $d1, Date $d2 = null)
+    public static function getAgeGedcom(Date $d1, Date $d2 = null): string
     {
         if ($d2 === null) {
             return $d1->date1->getAgeFull(Carbon::now()->julianDay());
@@ -597,7 +589,7 @@ class Date
      *
      * @return int
      */
-    public static function compare(Date $a, Date $b)
+    public static function compare(Date $a, Date $b): int
     {
         // Get min/max JD for each date.
         switch ($a->qual1) {
@@ -668,7 +660,7 @@ class Date
      *
      * @return int
      */
-    public function gregorianYear()
+    public function gregorianYear(): int
     {
         if ($this->isOK()) {
             $gregorian_calendar = new GregorianCalendar();

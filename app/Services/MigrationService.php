@@ -41,7 +41,7 @@ class MigrationService
      * @throws PDOException
      * @return bool  Were any updates applied
      */
-    public static function updateSchema($namespace, $schema_name, $target_version): bool
+    public function updateSchema($namespace, $schema_name, $target_version): bool
     {
         try {
             $current_version = (int) Site::getPreference($schema_name);

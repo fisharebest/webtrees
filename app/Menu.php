@@ -61,7 +61,7 @@ class Menu
      *
      * @return string
      */
-    public function bootstrap4()
+    public function bootstrap4(): string
     {
         if (!empty($this->submenus)) {
             $submenus = '';

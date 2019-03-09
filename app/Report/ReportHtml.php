@@ -139,7 +139,7 @@ class ReportHtml extends AbstractReport
      *
      * @return void
      */
-    public function setup()
+    public function setup(): void
     {
         parent::setup();
 

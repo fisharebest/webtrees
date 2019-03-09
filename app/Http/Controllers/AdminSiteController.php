@@ -429,8 +429,6 @@ class AdminSiteController extends AbstractBaseController
             FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', e($INDEX_DIRECTORY)), 'danger');
         }
 
-        Site::setPreference('MEMORY_LIMIT', $request->get('MEMORY_LIMIT'));
-        Site::setPreference('MAX_EXECUTION_TIME', (string) (int) $request->get('MAX_EXECUTION_TIME'));
         Site::setPreference('THEME_DIR', $request->get('THEME_DIR'));
         Site::setPreference('ALLOW_CHANGE_GEDCOM', (string) (bool) $request->get('ALLOW_CHANGE_GEDCOM'));
         Site::setPreference('TIMEZONE', $request->get('TIMEZONE'));

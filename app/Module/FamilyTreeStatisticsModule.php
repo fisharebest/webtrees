@@ -208,7 +208,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id)
+    public function saveBlockConfiguration(Request $request, int $block_id): void
     {
         $this->setBlockSetting($block_id, 'show_last_update', $request->get('show_last_update', ''));
         $this->setBlockSetting($block_id, 'show_common_surnames', $request->get('show_common_surnames', ''));
@@ -240,7 +240,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
      *
      * @return void
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id): void
     {
         $show_last_update     = $this->getBlockSetting($block_id, 'show_last_update', '1');
         $show_common_surnames = $this->getBlockSetting($block_id, 'show_common_surnames', '1');

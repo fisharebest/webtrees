@@ -67,5 +67,3 @@ class BritishSocialHistory extends AbstractModule implements ModuleHistoricEvent
         ]);
     }
 }
-
-;

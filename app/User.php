@@ -182,9 +182,9 @@ class User implements UserInterface
                 return DB::table('user_setting')
                     ->where('user_id', '=', $this->user_id)
                     ->pluck('setting_value', 'setting_name');
-            } else {
-                return new Collection();
             }
+
+            return new Collection();
         });
 
         return $preferences->get($setting_name) ?? $default;

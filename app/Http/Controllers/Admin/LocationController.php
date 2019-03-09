@@ -340,7 +340,7 @@ class LocationController extends AbstractAdminController
             $filename = $request->files->get('localfile')->getPathName();
         }
 
-        $fp = fopen($filename, 'r');
+        $fp = fopen($filename, 'rb');
         if ($fp !== false) {
             $string = stream_get_contents($fp);
 
@@ -553,7 +553,7 @@ class LocationController extends AbstractAdminController
     private function exportCSV(string $filename, array $columns, array $places): Response
     {
         $response = new StreamedResponse(function () use ($columns, $places) {
-            $stream = fopen('php://output', 'w');
+            $stream = fopen('php://output', 'wb');
 
             if ($stream !== false) {
                 fputcsv($stream, $columns, ';');
@@ -628,7 +628,7 @@ class LocationController extends AbstractAdminController
      * @return void
      * @throws Exception
      */
-    private function buildLevel(int $parent_id, array $placename, array &$places)
+    private function buildLevel(int $parent_id, array $placename, array &$places): void
     {
         $level = array_search('', $placename);
 
@@ -740,7 +740,7 @@ class LocationController extends AbstractAdminController
                     ->on('p' . ($n + 1) . '.p_id', '=', 'p' . $n . '.p_parent_id')
                     ->where('p' . ($n + 1) . '.p_place', '=', $place);
             });
-        };
+        }
 
         return $query->exists();
     }

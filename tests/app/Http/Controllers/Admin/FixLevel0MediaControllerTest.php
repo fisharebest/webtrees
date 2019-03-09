@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
+use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -46,7 +47,7 @@ class FixLevel0MediaControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testFixLevel0MediaAction(): void
     {
-        $tree = Tree::create('name', 'title');
+        $tree    = Tree::create('name', 'title');
         $request = new Request(['tree_id' => $tree->id()]);
 
         $controller = new FixLevel0MediaController();
@@ -60,11 +61,12 @@ class FixLevel0MediaControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testFixLevel0MediaData(): void
     {
-        $tree = Tree::create('name', 'title');
-        $controller = new FixLevel0MediaController();
-        // Can't test this yet - the query uses MySQL-specific functions
-        //$response   = $controller->fixLevel0MediaData();
+        $datatables_service = new DatatablesService();
+        $tree               = Tree::create('name', 'title');
+        $request            = new Request(['tree_id' => $tree->id()]);
+        $controller         = new FixLevel0MediaController();
+        $response           = $controller->fixLevel0MediaData($request, $datatables_service);
 
-        //$this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 }

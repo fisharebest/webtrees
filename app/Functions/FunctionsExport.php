@@ -24,12 +24,11 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
-use Fisharebest\Webtrees\Note;
-use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Collection;
 
 /**
  * Class FunctionsExport - common functions
@@ -67,7 +66,7 @@ class FunctionsExport
                         break;
                     }
                     $newrec .= mb_substr($line, 0, $pos) . Gedcom::EOL;
-                    $line = $level . ' CONC ' . mb_substr($line, $pos);
+                    $line   = $level . ' CONC ' . mb_substr($line, $pos);
                 } while (mb_strlen($line) > Gedcom::LINE_LENGTH);
             }
             $newrec .= $line . Gedcom::EOL;
@@ -101,13 +100,13 @@ class FunctionsExport
 
         // Preserve some values from the original header
         $record = GedcomRecord::getInstance('HEAD', $tree);
-        $fact = $record->facts(['COPR'])->first();
+        $fact   = $record->facts(['COPR'])->first();
         if ($fact instanceof Fact) {
-            $COPR = "\n1 COPR " .$fact->value();
+            $COPR = "\n1 COPR " . $fact->value();
         }
-        $fact   = $record->facts(['LANG'])->first();
+        $fact = $record->facts(['LANG'])->first();
         if ($fact instanceof Fact) {
-            $LANG = "\n1 LANG " .$fact->value();
+            $LANG = "\n1 LANG " . $fact->value();
         }
         // Link to actual SUBM/SUBN records, if they exist
         $subn = DB::table('other')
@@ -136,7 +135,7 @@ class FunctionsExport
      *
      * @return string
      */
-    public static function convertMediaPath($rec, $path): string
+    private static function convertMediaPath($rec, $path): string
     {
         if ($path && preg_match('/\n1 FILE (.+)/', $rec, $match)) {
             $old_file_name = $match[1];
@@ -163,125 +162,84 @@ class FunctionsExport
      * Export the database in GEDCOM format
      *
      * @param Tree     $tree         Which tree to export
-     * @param resource $gedout       Handle to a writable stream
+     * @param resource $stream       Handle to a writable stream
      * @param int      $access_level Apply privacy filters
      * @param string   $media_path   Add this prefix to media file names
      * @param string   $encoding     UTF-8 or ANSI
      *
      * @return void
      */
-    public static function exportGedcom(Tree $tree, $gedout, int $access_level, string $media_path, string $encoding)
+    public static function exportGedcom(Tree $tree, $stream, int $access_level, string $media_path, string $encoding): void
     {
-        $head = self::gedcomHeader($tree, $encoding);
-
-        if ($encoding === 'ANSI') {
-            $head = utf8_decode($head);
-        }
-
-        $head = self::reformatRecord($head);
-        fwrite($gedout, $head);
-
-        // Buffer the output. Lots of small fwrite() calls can be very slow when writing large gedcoms.
-        $buffer = '';
+        $header = new Collection([self::gedcomHeader($tree, $encoding)]);
 
         // Generate the OBJE/SOUR/REPO/NOTE records first, as their privacy calcualations involve
         // database queries, and we wish to avoid large gaps between queries due to MySQL connection timeouts.
-        $tmp_gedcom = '';
-
-        $rows = DB::table('media')
+        $media = DB::table('media')
             ->where('m_file', '=', $tree->id())
             ->orderBy('m_id')
-            ->select(['m_id AS xref', 'm_gedcom AS gedcom'])
-            ->get();
+            ->get()
+            ->map(Media::rowMapper())
+            ->map(function (Media $record) use ($access_level): string {
+                return $record->privatizeGedcom($access_level);
+            })
+            ->map(function (string $gedcom) use ($media_path): string {
+                return self::convertMediaPath($gedcom, $media_path);
+            });
 
-        foreach ($rows as $row) {
-            $rec = Media::getInstance($row->xref, $tree, $row->gedcom)->privatizeGedcom($access_level);
-            $rec = self::convertMediaPath($rec, $media_path);
-            if ($encoding === 'ANSI') {
-                $rec = utf8_decode($rec);
-            }
-            $tmp_gedcom .= self::reformatRecord($rec);
-        }
-
-        $rows = DB::table('sources')
+        $sources = DB::table('sources')
             ->where('s_file', '=', $tree->id())
             ->orderBy('s_id')
-            ->select(['s_id AS xref', 's_gedcom AS gedcom'])
-            ->get();
+            ->get()
+            ->map(Source::rowMapper())
+            ->map(function (Source $record) use ($access_level): string {
+                return $record->privatizeGedcom($access_level);
+            });
 
-        foreach ($rows as $row) {
-            $rec = Source::getInstance($row->xref, $tree, $row->gedcom)->privatizeGedcom($access_level);
-            if ($encoding === 'ANSI') {
-                $rec = utf8_decode($rec);
-            }
-            $tmp_gedcom .= self::reformatRecord($rec);
-        }
-
-        $rows = DB::table('other')
+        $other = DB::table('other')
             ->where('o_file', '=', $tree->id())
             ->whereNotIn('o_type', ['HEAD', 'TRLR'])
             ->orderBy('o_id')
-            ->select(['o_id AS xref', 'o_gedcom AS gedcom', 'o_type AS type'])
-            ->get();
+            ->get()
+            ->map(GedcomRecord::rowMapper())
+            ->map(function (GedcomRecord $record) use ($access_level): string {
+                return $record->privatizeGedcom($access_level);
+            });
 
-        foreach ($rows as $row) {
-            switch ($row->type) {
-                case 'NOTE':
-                    $record = Note::getInstance($row->xref, $tree, $row->gedcom);
-                    break;
-                case 'REPO':
-                    $record = Repository::getInstance($row->xref, $tree, $row->gedcom);
-                    break;
-                default:
-                    $record = GedcomRecord::getInstance($row->xref, $tree, $row->gedcom);
-                    break;
-            }
-
-            $rec = $record->privatizeGedcom($access_level);
-            if ($encoding === 'ANSI') {
-                $rec = utf8_decode($rec);
-            }
-            $tmp_gedcom .= self::reformatRecord($rec);
-        }
-
-        $rows = DB::table('individuals')
+        $individuals = DB::table('individuals')
             ->where('i_file', '=', $tree->id())
             ->orderBy('i_id')
-            ->select(['i_id AS xref', 'i_gedcom AS gedcom'])
-            ->get();
+            ->get()
+            ->map(Individual::rowMapper())
+            ->map(function (Individual $record) use ($access_level): string {
+                return $record->privatizeGedcom($access_level);
+            });
 
-        foreach ($rows as $row) {
-            $rec = Individual::getInstance($row->xref, $tree, $row->gedcom)->privatizeGedcom($access_level);
-            if ($encoding === 'ANSI') {
-                $rec = utf8_decode($rec);
-            }
-            $buffer .= self::reformatRecord($rec);
-            if (strlen($buffer) > 65536) {
-                fwrite($gedout, $buffer);
-                $buffer = '';
-            }
-        }
-
-        $rows = DB::table('families')
+        $families = DB::table('families')
             ->where('f_file', '=', $tree->id())
             ->orderBy('f_id')
-            ->select(['f_id AS xref', 'f_gedcom AS gedcom'])
-            ->get();
+            ->get()
+            ->map(Family::rowMapper())
+            ->map(function (Family $record) use ($access_level): string {
+                return $record->privatizeGedcom($access_level);
+            });
 
-        foreach ($rows as $row) {
-            $rec = Family::getInstance($row->xref, $tree, $row->gedcom)->privatizeGedcom($access_level);
-            if ($encoding === 'ANSI') {
-                $rec = utf8_decode($rec);
-            }
-            $buffer .= self::reformatRecord($rec);
-            if (strlen($buffer) > 65536) {
-                fwrite($gedout, $buffer);
-                $buffer = '';
-            }
-        }
+        $trailer = new Collection(['0 TRLR' . Gedcom::EOL]);
 
-        fwrite($gedout, $buffer);
-        fwrite($gedout, $tmp_gedcom);
-        fwrite($gedout, '0 TRLR' . Gedcom::EOL);
+        $records = $header
+            ->merge($media)
+            ->merge($sources)
+            ->merge($other)
+            ->merge($individuals)
+            ->merge($families)
+            ->merge($trailer)
+            ->map(function (string $gedcom) use ($encoding): string {
+                return $encoding === 'ANSI' ? utf8_decode($gedcom) : $gedcom;
+            })
+            ->map(function (string $gedcom): string {
+                return self::reformatRecord($gedcom);
+            });
+
+        fwrite($stream, $records->implode(''));
     }
 }

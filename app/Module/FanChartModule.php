@@ -179,7 +179,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
         $ancestors = $chart_service->sosaStradonitzAncestors($individual, $generations);
 
         $gen  = $generations - 1;
-        $sosa = 2 ** ($generations) - 1;
+        $sosa = 2 ** $generations - 1;
 
         // fan size
         $fanw = 640 * $fan_width / 100;
@@ -192,7 +192,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
             $fanh = $fanh * ($gen + 1) / ($gen * 2);
         }
         if ($chart_style === self::STYLE_THREE_QUARTER_CIRCLE) {
-            $fanh = $fanh * 0.86;
+            $fanh *= 0.86;
         }
         $scale = $fanw / 640;
 
@@ -430,7 +430,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
                     if (!empty($line)) {
                         $line .= ' ';
                     }
-                    $line .= "$word";
+                    $line .= $word;
                 } else {
                     $p = max(0, (int) (($maxlen - $len) / 2));
                     if (!empty($line)) {

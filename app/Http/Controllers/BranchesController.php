@@ -256,7 +256,7 @@ class BranchesController extends AbstractBaseController
      *
      * @return string
      */
-    private function getDescendantsHtml(Tree $tree, array $individuals, array $ancestors, string $surname, bool $soundex_dm, bool $soundex_std, Individual $individual, Family $parents = null)
+    private function getDescendantsHtml(Tree $tree, array $individuals, array $ancestors, string $surname, bool $soundex_dm, bool $soundex_std, Individual $individual, Family $parents = null): string
     {
         $module = $this->module_service->findByComponent(ModuleChartInterface::class, $tree, Auth::user())->first(function (ModuleInterface $module) {
             return $module instanceof RelationshipsChartModule;

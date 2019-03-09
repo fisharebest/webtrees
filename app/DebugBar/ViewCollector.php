@@ -37,7 +37,7 @@ class ViewCollector extends DataCollector implements Renderable
      *
      * @return void
      */
-    public function addView(string $view, array $data)
+    public function addView(string $view, array $data): void
     {
         $num = count($this->views) + 1;
         $key = '#' . $num . ' ' . $view;

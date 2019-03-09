@@ -95,20 +95,18 @@ class CalendarController extends AbstractBaseController
             }
             $ged_date = new Date("FROM {$cal} {$match[1]} TO {$cal} {$match[2]}");
             $view     = 'year';
-        } else {
+        } elseif (preg_match('/^(\d+)(\?+)$/', $year, $match)) {
             // advanced-year "decade/century wildcard"
-            if (preg_match('/^(\d+)(\?+)$/', $year, $match)) {
-                $y1       = $match[1] . str_replace('?', '0', $match[2]);
-                $y2       = $match[1] . str_replace('?', '9', $match[2]);
-                $ged_date = new Date("FROM {$cal} {$y1} TO {$cal} {$y2}");
-                $view     = 'year';
-            } else {
-                if ($year < 0) {
-                    $year = (-$year) . ' B.C.';
-                } // need BC to parse date
-                $ged_date = new Date("{$cal} {$day} {$month} {$year}");
-                $year     = $ged_date->minimumDate()->year; // need negative year for year entry field.
-            }
+            $y1       = $match[1] . str_replace('?', '0', $match[2]);
+            $y2       = $match[1] . str_replace('?', '9', $match[2]);
+            $ged_date = new Date("FROM {$cal} {$y1} TO {$cal} {$y2}");
+            $view     = 'year';
+        } else {
+            if ($year < 0) {
+                $year = (-$year) . ' B.C.';
+            } // need BC to parse date
+            $ged_date = new Date("{$cal} {$day} {$month} {$year}");
+            $year     = $ged_date->minimumDate()->year; // need negative year for year entry field.
         }
         $cal_date = $ged_date->minimumDate();
 
@@ -214,19 +212,17 @@ class CalendarController extends AbstractBaseController
             }
             $ged_date = new Date("FROM {$cal} {$match[1]} TO {$cal} {$match[2]}");
             $view     = 'year';
-        } else {
+        } elseif (preg_match('/^(\d+)(\?+)$/', $year, $match)) {
             // advanced-year "decade/century wildcard"
-            if (preg_match('/^(\d+)(\?+)$/', $year, $match)) {
-                $y1       = $match[1] . str_replace('?', '0', $match[2]);
-                $y2       = $match[1] . str_replace('?', '9', $match[2]);
-                $ged_date = new Date("FROM {$cal} {$y1} TO {$cal} {$y2}");
-                $view     = 'year';
-            } else {
-                if ($year < 0) {
-                    $year = (-$year) . ' B.C.';
-                } // need BC to parse date
-                $ged_date = new Date("{$cal} {$day} {$month} {$year}");
-            }
+            $y1       = $match[1] . str_replace('?', '0', $match[2]);
+            $y2       = $match[1] . str_replace('?', '9', $match[2]);
+            $ged_date = new Date("FROM {$cal} {$y1} TO {$cal} {$y2}");
+            $view     = 'year';
+        } else {
+            if ($year < 0) {
+                $year = (-$year) . ' B.C.';
+            } // need BC to parse date
+            $ged_date = new Date("{$cal} {$day} {$month} {$year}");
         }
         $cal_date = $ged_date->minimumDate();
 
@@ -443,7 +439,7 @@ class CalendarController extends AbstractBaseController
                                     $alt_date = new JalaliDate($cal_date->minimumJulianDay() + $d - 1);
                                     break;
                                 default:
-                                    throw new DomainException("Invalid calendar: " . $convcal);
+                                    throw new DomainException('Invalid calendar: ' . $convcal);
                             }
                             if (get_class($alt_date) !== get_class($cal_date) && $alt_date->inValidRange()) {
                                 echo '<span class="rtl_cal_day">' . $alt_date->format('%j %M') . '</span>';

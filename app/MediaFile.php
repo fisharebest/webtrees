@@ -212,11 +212,11 @@ class MediaFile
      * @param int      $width      Pixels
      * @param int      $height     Pixels
      * @param string   $fit        "crop" or "contain"
-     * @param string[] $attributes Additional HTML attributes
+     * @param string[] $image_attributes Additional HTML attributes
      *
      * @return string
      */
-    public function displayImage($width, $height, $fit, $attributes = []): string
+    public function displayImage($width, $height, $fit, $image_attributes = []): string
     {
         if ($this->isExternal()) {
             $src    = $this->multimedia_file_refn;
@@ -235,14 +235,14 @@ class MediaFile
         }
 
         if ($this->isImage()) {
-            $image = '<img ' . Html::attributes($attributes + [
+            $image = '<img ' . Html::attributes($image_attributes + [
                         'dir'    => 'auto',
                         'src'    => $src,
                         'srcset' => implode(',', $srcset),
                         'alt'    => htmlspecialchars_decode(strip_tags($this->media->fullName())),
                     ]) . '>';
 
-            $attributes = Html::attributes([
+            $link_attributes = Html::attributes([
                 'class'      => 'gallery',
                 'type'       => $this->mimeType(),
                 'href'       => $this->imageUrl(0, 0, 'contain'),
@@ -250,13 +250,14 @@ class MediaFile
             ]);
         } else {
             $image = view('icons/mime', ['type' => $this->mimeType()]);
-            $attributes = Html::attributes([
+
+            $link_attributes = Html::attributes([
                 'type' => $this->mimeType(),
                 'href' => $this->downloadUrl(),
             ]);
         }
 
-        return '<a ' . $attributes . '>' . $image . '</a>';
+        return '<a ' . $link_attributes . '>' . $image . '</a>';
     }
 
     /**
@@ -355,7 +356,7 @@ class MediaFile
      *
      * @return string
      */
-    public function getServerFilename()
+    public function getServerFilename(): string
     {
         $MEDIA_DIRECTORY = $this->media->tree()->getPreference('MEDIA_DIRECTORY');
 
@@ -432,7 +433,7 @@ class MediaFile
      *
      * @return string
      */
-    public function extension()
+    public function extension(): string
     {
         if (preg_match('/\.([a-zA-Z0-9]+)$/', $this->multimedia_file_refn, $match)) {
             return strtolower($match[1]);

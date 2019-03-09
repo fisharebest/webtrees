@@ -241,7 +241,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      *
      * @return void
      */
-    private function printChildDescendancy(Individual $person, $depth, int $generations)
+    private function printChildDescendancy(Individual $person, $depth, int $generations): void
     {
         echo '<li>';
         echo '<table><tr><td>';
@@ -309,7 +309,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      *
      * @return void
      */
-    private function printFamilyDescendancy(Individual $person, Family $family, int $depth, int $generations)
+    private function printFamilyDescendancy(Individual $person, Family $family, int $depth, int $generations): void
     {
         $uid = Uuid::uuid4()->toString(); // create a unique ID
         // print marriage info
@@ -440,7 +440,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      *
      * @return void
      */
-    private function printChildFamily(Individual $individual, $depth, $daboville = '1.', $gpid = '')
+    private function printChildFamily(Individual $individual, $depth, $daboville = '1.', $gpid = ''): void
     {
         if ($depth < 2) {
             return;

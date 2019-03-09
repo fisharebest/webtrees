@@ -74,7 +74,7 @@ class ReportHtmlText extends ReportBaseText
                     echo "</div>\n";
                     $renderer->setX($startX + $renderer->getStringWidth($temptext));
                     if ($renderer->countLines($temptext) != 1) {
-                        $renderer->setXy(0, ($startY + $renderer->getTextCellHeight($temptext)));
+                        $renderer->setXy(0, $startY + $renderer->getTextCellHeight($temptext));
                     }
                 }
             }

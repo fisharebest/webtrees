@@ -66,7 +66,7 @@ class AbstractCensusColumn
      *
      * @return Individual|null
      */
-    public function father(Individual $individual)
+    public function father(Individual $individual): ?Individual
     {
         $family = $individual->primaryChildFamily();
 
@@ -84,7 +84,7 @@ class AbstractCensusColumn
      *
      * @return Individual|null
      */
-    public function mother(Individual $individual)
+    public function mother(Individual $individual): ?Individual
     {
         $family = $individual->primaryChildFamily();
 
@@ -102,7 +102,7 @@ class AbstractCensusColumn
      *
      * @return Family|null
      */
-    public function spouseFamily(Individual $individual)
+    public function spouseFamily(Individual $individual): ?Family
     {
         // Exclude families that were created after this census date
         $families = [];
@@ -150,11 +150,11 @@ class AbstractCensusColumn
      *
      * @return string - e.g. "England"
      */
-    protected function lastPartOfPlace($place): string
+    protected function lastPartOfPlace(string $place): string
     {
-        $place = explode(', ', $place);
+        $parts = explode(', ', $place);
 
-        return end($place);
+        return end($parts);
     }
 
     /**
@@ -164,7 +164,7 @@ class AbstractCensusColumn
      *
      * @return string - e.g. "London" (for census of England) and "London, England" elsewhere
      */
-    protected function notCountry($place)
+    protected function notCountry(string $place): string
     {
         $parts = explode(', ', $place);
 

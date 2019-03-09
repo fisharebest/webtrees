@@ -401,7 +401,7 @@ class HousekeepingService
      *
      * @return void
      */
-    public function deleteOldFiles(Filesystem $filesystem, string $path, int $max_age)
+    public function deleteOldFiles(Filesystem $filesystem, string $path, int $max_age): void
     {
         $list = $filesystem->listContents($path, true);
 
@@ -419,7 +419,7 @@ class HousekeepingService
      *
      * @return void
      */
-    public function deleteOldLogs(int $max_age_in_seconds)
+    public function deleteOldLogs(int $max_age_in_seconds): void
     {
         $timestamp = Carbon::now()->subSeconds($max_age_in_seconds);
 
@@ -434,7 +434,7 @@ class HousekeepingService
      *
      * @return void
      */
-    public function deleteOldSessions(int $max_age_in_seconds)
+    public function deleteOldSessions(int $max_age_in_seconds): void
     {
         $timestamp = Carbon::now()->subSeconds($max_age_in_seconds);
 

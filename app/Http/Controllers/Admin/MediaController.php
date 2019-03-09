@@ -473,7 +473,6 @@ class MediaController extends AbstractAdminController
      * @param string $media_folder
      * @param string $subfolders
      *
-     * @return Collection
      * @return string[]
      */
     private function allMediaFiles(string $media_folder, string $subfolders): array

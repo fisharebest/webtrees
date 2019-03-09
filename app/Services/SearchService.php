@@ -921,7 +921,7 @@ class SearchService
      */
     private function whereTrees(Builder $query, string $tree_id_field, array $trees): void
     {
-        $tree_ids = array_map(function (Tree $tree) {
+        $tree_ids = array_map(function (Tree $tree): int {
             return $tree->id();
         }, $trees);
 
@@ -964,7 +964,7 @@ class SearchService
      */
     private function rowLimiter(int $limit = 1000): Closure
     {
-        return function () use ($limit) {
+        return function () use ($limit): void {
             static $n = 0;
 
             if (++$n > $limit) {

@@ -103,5 +103,3 @@ class USPresidents extends AbstractModule implements ModuleHistoricEventsInterfa
         ]);
     }
 }
-
-;

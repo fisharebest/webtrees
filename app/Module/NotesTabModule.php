@@ -30,7 +30,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;
 
-    /** @var Fact[] A list facts for this note. */
+    /** @var Collection A list facts for this note. */
     private $facts;
 
     /** @var ClipboardService */
@@ -81,13 +81,13 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
     /** {@inheritdoc} */
     public function hasTabContent(Individual $individual): bool
     {
-        return $individual->canEdit() || $this->getFactsWithNotes($individual);
+        return $individual->canEdit() || $this->getFactsWithNotes($individual)->isNotEmpty();
     }
 
     /** {@inheritdoc} */
     public function isGrayedOut(Individual $individual): bool
     {
-        return !$this->getFactsWithNotes($individual);
+        return $this->getFactsWithNotes($individual)->isEmpty();
     }
 
     /** {@inheritdoc} */
@@ -106,12 +106,13 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
      *
      * @param Individual $individual
      *
-     * @return Fact[]
+     * @return Collection
      */
-    private function getFactsWithNotes(Individual $individual): array
+    private function getFactsWithNotes(Individual $individual): Collection
     {
         if ($this->facts === null) {
             $facts = $individual->facts();
+
             foreach ($individual->spouseFamilies() as $family) {
                 if ($family->canShow()) {
                     foreach ($family->facts() as $fact) {
@@ -119,13 +120,15 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
                     }
                 }
             }
-            $this->facts = [];
+
+            $this->facts = new Collection();
+
             foreach ($facts as $fact) {
                 if (preg_match('/(?:^1|\n\d) NOTE/', $fact->gedcom())) {
-                    $this->facts[] = $fact;
+                    $this->facts->push($fact);
                 }
             }
-            $this->facts = Fact::sortFacts($this->facts)->all();
+            $this->facts = Fact::sortFacts($this->facts);
         }
 
         return $this->facts;

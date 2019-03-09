@@ -11,10 +11,9 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 
 /**
- * Class UserInterface
+ * Example module
  */
-return new class extends AbstractModule implements ModuleCustomInterface
-{
+return new class extends AbstractModule implements ModuleCustomInterface {
     use ModuleCustomTrait;
 
     /**

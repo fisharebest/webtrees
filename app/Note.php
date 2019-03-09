@@ -56,11 +56,11 @@ class Note extends GedcomRecord
      *
      * @return Note|null
      */
-    public static function getInstance(string $xref, Tree $tree, string $gedcom = null)
+    public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?self
     {
         $record = parent::getInstance($xref, $tree, $gedcom);
 
-        if ($record instanceof Note) {
+        if ($record instanceof self) {
             return $record;
         }
 
@@ -72,7 +72,7 @@ class Note extends GedcomRecord
      *
      * @return string
      */
-    public function getNote()
+    public function getNote(): string
     {
         if (preg_match('/^0 @' . Gedcom::REGEX_XREF . '@ NOTE ?(.*(?:\n1 CONT ?.*)*)/', $this->gedcom . $this->pending, $match)) {
             return preg_replace("/\n1 CONT ?/", "\n", $match[1]);
@@ -125,9 +125,9 @@ class Note extends GedcomRecord
      * @param string $xref
      * @param int    $tree_id
      *
-     * @return null|string
+     * @return string|null
      */
-    protected static function fetchGedcomRecord(string $xref, int $tree_id)
+    protected static function fetchGedcomRecord(string $xref, int $tree_id): ?string
     {
         return DB::table('other')
             ->where('o_id', '=', $xref)
@@ -142,7 +142,7 @@ class Note extends GedcomRecord
      *
      * @return void
      */
-    public function extractNames()
+    public function extractNames(): void
     {
         $text = $this->getNote();
 

@@ -439,7 +439,7 @@ class GedcomTag
      *
      * @return string
      */
-    public static function getLabel($tag, GedcomRecord $record = null)
+    public static function getLabel($tag, GedcomRecord $record = null): string
     {
         if ($record instanceof Individual) {
             $sex = $record->sex();
@@ -2344,7 +2344,7 @@ class GedcomTag
      *
      * @return string
      */
-    public static function getFileFormTypeValue($type)
+    public static function getFileFormTypeValue($type): ?string
     {
         switch (strtolower($type)) {
             case 'audio':

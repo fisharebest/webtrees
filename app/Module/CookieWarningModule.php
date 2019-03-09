@@ -131,10 +131,8 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
         foreach (self::TRACKING_MODULES as $class) {
             $module = $this->module_service->findByInterface($class);
 
-            if ($module instanceof ModuleAnalyticsInterface) {
-                if ($module->analyticsCanShow()) {
-                    return true;
-                }
+            if (($module instanceof ModuleAnalyticsInterface) && $module->analyticsCanShow()) {
+                return true;
             }
         }
 

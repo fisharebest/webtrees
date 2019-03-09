@@ -10,7 +10,7 @@
 	<Input name="occu" type="checkbox" default="0"><var var="I18N::translate('Show occupations')" /></Input>
 	<Input name="resi" type="checkbox" default="0"><var var="I18N::translate('Show residences')" /></Input>
 	<Input name="children" type="checkbox" default="0"><var var="I18N::translate('Show children of ancestors')" /></Input>
-	<Input name="pageSize" type="select" default="A4" options="letter=>I18N::translateContext('paper size','Letter')|A3=>I18N::translateContext('paper size', 'A3')|A4=>I18N::translateContext('paper size','A4')|legal=>I18N::translateContext('paper size','Legal')"><var var="I18N::translate('Page size')" /></Input>
+	<Input name="pageSize" type="select" options="A4=>I18N::translateContext('paper size','A4')|A3=>I18N::translateContext('paper size', 'A3')|US-Letter=>I18N::translateContext('paper size','Letter')|US-Tabloid=>I18N::translateContext('paper size','Tabloid')"><var var="I18N::translate('Page size')" /></Input>
 	<!--
 	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>I18N::translateContext('font name', 'Arial')|dejavusans=>I18N::translateContext('font name', 'DejaVu')|helvetica=>I18N::translateContext('font name', 'Helvetica')"><var var="I18N::translate('Font')"/></Input>
 	-->

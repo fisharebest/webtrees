@@ -3532,7 +3532,7 @@ class Soundex
 
         // Combine words, e.g. “New York” as “Newyork”
         if (count($words) > 1) {
-            $soundex_array[] = soundex(strtr($text, ' ', ''));
+            $soundex_array[] = soundex(str_replace(' ', '', $text));
         }
 
         // A varchar(255) column can only hold 51 4-character codes (plus 50 delimiters)
@@ -3558,7 +3558,7 @@ class Soundex
         }
         // Combine words, e.g. “New York” as “Newyork”
         if (count($words) > 1) {
-            $soundex_array = array_merge($soundex_array, self::daitchMokotoffWord(strtr($text, ' ', '')));
+            $soundex_array = array_merge($soundex_array, self::daitchMokotoffWord(str_replace(' ', '', $text)));
         }
 
         // A varchar(255) column can only hold 36 6-character codes (plus 35 delimiters)
@@ -3598,7 +3598,7 @@ class Soundex
         while (count($partialResult) !== 0 && $currPos <= $lastPos) {
             // Find the DM coding table entry for the chunk at the current position
             $thisEntry = substr($name, $currPos, self::MAXCHAR); // Get maximum length chunk
-            while ($thisEntry != '') {
+            while ($thisEntry !== '') {
                 if (isset(self::DM_SOUNDS[$thisEntry])) {
                     break;
                 }
@@ -3615,11 +3615,11 @@ class Soundex
             $currPos += strlen($thisEntry);
 
             // Not at beginning of input string
-            if ($state != 1) {
+            if ($state !== 1) {
                 if ($currPos <= $lastPos) {
                     // Determine whether the next chunk is a vowel
                     $nextEntry = substr($name, $currPos, self::MAXCHAR); // Get maximum length chunk
-                    while ($nextEntry != '') {
+                    while ($nextEntry !== '') {
                         if (isset(self::DM_SOUNDS[$nextEntry])) {
                             break;
                         }
@@ -3628,7 +3628,7 @@ class Soundex
                 } else {
                     $nextEntry = '';
                 }
-                if ($nextEntry != '' && self::DM_SOUNDS[$nextEntry][0] != '0') {
+                if ($nextEntry !== '' && self::DM_SOUNDS[$nextEntry][0] !== '0') {
                     $state = 2;
                 } else {
                     // Next chunk is a vowel
@@ -3638,7 +3638,7 @@ class Soundex
 
             while ($state < count($soundTableEntry)) {
                 // empty means 'ignore this sound in this state'
-                if ($soundTableEntry[$state] == '') {
+                if ($soundTableEntry[$state] === '') {
                     foreach ($workingResult as $workingEntry) {
                         $tempEntry                        = $workingEntry;
                         $tempEntry[count($tempEntry) - 1] .= '!'; // Prevent false 'doubles'
@@ -3649,15 +3649,14 @@ class Soundex
                         if ($soundTableEntry[$state] !== $workingEntry[count($workingEntry) - 1]) {
                             // Incoming sound isn't a duplicate of the previous sound
                             $workingEntry[] = $soundTableEntry[$state];
-                        } else {
+                        } elseif ($noVowels) {
                             // Incoming sound is a duplicate of the previous sound
                             // For Hebrew and Arabic, we need to create a pair of D-M sound codes,
                             // one of the pair with only a single occurrence of the duplicate sound,
                             // the other with both occurrences
-                            if ($noVowels) {
-                                $workingEntry[] = $soundTableEntry[$state];
-                            }
+                            $workingEntry[] = $soundTableEntry[$state];
                         }
+
                         if (count($workingEntry) < 7) {
                             $partialResult[] = $workingEntry;
                         } else {
@@ -3671,7 +3670,7 @@ class Soundex
                         }
                     }
                 }
-                $state = $state + 3; // Advance to next triplet while keeping the same basic state
+                $state += 3; // Advance to next triplet while keeping the same basic state
             }
         }
 

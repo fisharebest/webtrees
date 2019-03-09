@@ -239,13 +239,13 @@ class Tree
     /**
      * Set the tree’s user-configuration settings.
      *
-     * @param User   $user
-     * @param string $setting_name
-     * @param string $setting_value
+     * @param UserInterface $user
+     * @param string        $setting_name
+     * @param string        $setting_value
      *
      * @return $this
      */
-    public function setUserPreference(User $user, string $setting_name, string $setting_value): Tree
+    public function setUserPreference(UserInterface $user, string $setting_name, string $setting_value): Tree
     {
         if ($this->getUserPreference($user, $setting_name) !== $setting_value) {
             // Update the database
@@ -286,7 +286,7 @@ class Tree
      */
     public static function all(): Collection
     {
-        return app('cache.array')->rememberForever(__CLASS__, function () {
+        return app('cache.array')->rememberForever(__CLASS__, function (): Collection {
             // Admins see all trees
             $query = DB::table('gedcom')
                 ->leftJoin('gedcom_setting', function (JoinClause $join): void {
@@ -379,7 +379,7 @@ class Tree
      *
      * @return Tree|null
      */
-    public static function findByName($tree_name)
+    public static function findByName($tree_name): ?Tree
     {
         foreach (self::getAll() as $tree) {
             if ($tree->name === $tree_name) {
@@ -474,6 +474,7 @@ class Tree
         $tree->setPreference('CONTACT_USER_ID', (string) Auth::id());
         $tree->setPreference('WEBMASTER_USER_ID', (string) Auth::id());
         $tree->setPreference('LANGUAGE', WT_LOCALE); // Default to the current admin’s language
+
         switch (WT_LOCALE) {
             case 'es':
                 $tree->setPreference('SURNAME_TRADITION', 'spanish');
@@ -537,7 +538,7 @@ class Tree
      *
      * @return void
      */
-    public function deleteGenealogyData(bool $keep_media)
+    public function deleteGenealogyData(bool $keep_media): void
     {
         DB::table('gedcom_chunk')->where('gedcom_id', '=', $this->id)->delete();
         DB::table('individuals')->where('i_file', '=', $this->id)->delete();
@@ -566,7 +567,7 @@ class Tree
      *
      * @return void
      */
-    public function delete()
+    public function delete(): void
     {
         // If this is the default tree, then unset it
         if (Site::getPreference('DEFAULT_GEDCOM') === $this->name) {
@@ -600,7 +601,7 @@ class Tree
      *
      * @return void
      */
-    public function exportGedcom($stream)
+    public function exportGedcom($stream): void
     {
         $buffer = FunctionsExport::reformatRecord(FunctionsExport::gedcomHeader($this, 'UTF-8'));
 
@@ -652,7 +653,7 @@ class Tree
      *
      * @return void
      */
-    public function importGedcomFile(string $path, string $filename)
+    public function importGedcomFile(string $path, string $filename): void
     {
         // Read the file in blocks of roughly 64K. Ensure that each block
         // contains complete gedcom records. This will ensure we don’t split

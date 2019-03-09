@@ -31,7 +31,7 @@ class File
      *
      * @return bool Does the folder now exist
      */
-    public static function mkdir($path)
+    public static function mkdir($path): bool
     {
         if (is_dir($path)) {
             return true;
@@ -40,6 +40,7 @@ class File
         if (dirname($path) && !is_dir(dirname($path))) {
             self::mkdir(dirname($path));
         }
+
         try {
             mkdir($path);
 

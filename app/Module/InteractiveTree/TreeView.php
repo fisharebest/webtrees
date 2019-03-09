@@ -68,35 +68,31 @@ class TreeView
      * Return a JSON structure to a JSON request
      *
      * @param Tree   $tree
-     * @param string $list list of JSON requests
+     * @param string $request list of JSON requests
      *
      * @return string
      */
-    public function getPersons(Tree $tree, string $list): string
+    public function getPersons(Tree $tree, string $request): string
     {
-        $list = explode(';', $list);
+        $json_requests = explode(';', $request);
         $r    = [];
-        foreach ($list as $jsonRequest) {
-            $firstLetter = substr($jsonRequest, 0, 1);
-            $jsonRequest = substr($jsonRequest, 1);
+        foreach ($json_requests as $json_request) {
+            $firstLetter = substr($json_request, 0, 1);
+            $json_request = substr($json_request, 1);
 
             switch ($firstLetter) {
                 case 'c':
-                    $xrefs    = explode(',', $jsonRequest);
-                    $families = [];
+                    $families = Collection::make(explode(',', $json_request))
+                        ->map(function (string $xref) use ($tree): ?Family {
+                            return Family::getInstance($xref, $tree);
+                        })
+                        ->filter();
 
-                    foreach ($xrefs as $xref) {
-                        $family = Family::getInstance($xref, $tree);
-
-                        if ($family instanceof Family) {
-                            $families[] = $family;
-                        }
-                    }
                     $r[] = $this->drawChildren($families, 1, true);
                     break;
 
                 case 'p':
-                    [$xref, $order] = explode('@', $jsonRequest);
+                    [$xref, $order] = explode('@', $json_request);
 
                     $family = Family::getInstance($xref, $tree);
                     if ($family instanceof Family) {

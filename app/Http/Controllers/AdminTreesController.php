@@ -479,7 +479,7 @@ class AdminTreesController extends AbstractBaseController
                     if ($record->canShow()) {
                         foreach ($record->mediaFiles() as $media_file) {
                             if (file_exists($media_file->getServerFilename())) {
-                                $fp = fopen($media_file->getServerFilename(), 'r');
+                                $fp = fopen($media_file->getServerFilename(), 'rb');
                                 $zip_filesystem->writeStream($path . $media_file->filename(), $fp);
                                 fclose($fp);
                             }
@@ -506,7 +506,7 @@ class AdminTreesController extends AbstractBaseController
             );
         } else {
             $response = new StreamedResponse(function () use ($tree, $access_level, $media_path, $encoding) {
-                $stream = fopen('php://output', 'w');
+                $stream = fopen('php://output', 'wb');
                 FunctionsExport::exportGedcom($tree, $stream, $access_level, $media_path, $encoding);
                 fclose($stream);
             });
@@ -537,7 +537,7 @@ class AdminTreesController extends AbstractBaseController
 
         try {
             // To avoid partial trees on timeout/diskspace/etc, write to a temporary file first
-            $stream = fopen($filename . '.tmp', 'w');
+            $stream = fopen($filename . '.tmp', 'wb');
             $tree->exportGedcom($stream);
             fclose($stream);
             rename($filename . '.tmp', $filename);

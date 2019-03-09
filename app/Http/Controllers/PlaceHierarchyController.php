@@ -166,7 +166,7 @@ class PlaceHierarchyController extends AbstractBaseController
      * @return array|null
      * @throws \Exception
      */
-    private function getHierarchy($tree, $place, $parent)
+    private function getHierarchy($tree, $place, $parent): ?array
     {
         $child_places = $place->getChildPlaces();
         $numfound     = count($child_places);
@@ -177,7 +177,7 @@ class PlaceHierarchyController extends AbstractBaseController
             return
                 [
                     'tree'      => $tree,
-                    'col_class' => "w-" . ($divisor === 2 ? "25" : "50"),
+                    'col_class' => 'w-' . ($divisor === 2 ? '25' : '50'),
                     'columns'   => array_chunk($child_places, (int) ceil($numfound / $divisor)),
                     'place'     => $place,
                     'parent'    => $parent,
@@ -240,7 +240,7 @@ class PlaceHierarchyController extends AbstractBaseController
     private function breadcrumbs($place): array
     {
         $breadcrumbs = [];
-        if ($place->gedcomName() <> '') {
+        if ($place->gedcomName() !== '') {
             $breadcrumbs[] = $place;
             $parent_place  = $place->parent();
             while ($parent_place->gedcomName() !== '') {

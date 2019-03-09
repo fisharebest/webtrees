@@ -327,7 +327,7 @@ class Fact
         return
             $this->record->canEdit() && !$this->isPendingDeletion() && (
                 Auth::isManager($this->record->tree()) ||
-                Auth::isEditor($this->record->tree()) && strpos($this->gedcom, "\n2 RESN locked") === false && $this->getTag() != 'RESN' && $this->getTag() != 'CHAN'
+                Auth::isEditor($this->record->tree()) && strpos($this->gedcom, "\n2 RESN locked") === false && $this->getTag() !== 'RESN' && $this->getTag() !== 'CHAN'
             );
     }
 
@@ -398,7 +398,7 @@ class Fact
      *
      * @return void
      */
-    public function setTag($tag)
+    public function setTag($tag): void
     {
         $this->tag = $tag;
     }
@@ -433,7 +433,7 @@ class Fact
      *
      * @return void
      */
-    public function setPendingDeletion()
+    public function setPendingDeletion(): void
     {
         $this->pending_deletion = true;
         $this->pending_addition = false;
@@ -454,7 +454,7 @@ class Fact
      *
      * @return void
      */
-    public function setPendingAddition()
+    public function setPendingAddition(): void
     {
         $this->pending_addition = true;
         $this->pending_deletion = false;
@@ -554,14 +554,14 @@ class Fact
             // Fact date
             $date = $this->date();
             if ($date->isOK()) {
-                if (in_array($this->getTag(), Gedcom::BIRTH_EVENTS) && $this->record() instanceof Individual && $this->record()->tree()->getPreference('SHOW_PARENTS_AGE')) {
+                if ($this->record() instanceof Individual && in_array($this->getTag(), Gedcom::BIRTH_EVENTS, true) && $this->record()->tree()->getPreference('SHOW_PARENTS_AGE')) {
                     $attributes[] = $date->display() . FunctionsPrint::formatParentsAges($this->record(), $date);
                 } else {
                     $attributes[] = $date->display();
                 }
             }
             // Fact place
-            if ($this->place()->gedcomName() <> '') {
+            if ($this->place()->gedcomName() !== '') {
                 $attributes[] = $this->place()->shortName();
             }
         }
@@ -688,12 +688,12 @@ class Fact
      * using the compare type function
      * 3. Then merge the arrays back into the original array using the compare type function
      *
-     * @param Fact[] $unsorted
+     * @param Collection $unsorted
      *
      * @return Collection
      * @return Fact[]
      */
-    public static function sortFacts($unsorted): Collection
+    public static function sortFacts(Collection $unsorted): Collection
     {
         $dated    = [];
         $nondated = [];

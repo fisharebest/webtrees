@@ -26,6 +26,7 @@ use function explode;
 use function extension_loaded;
 use function in_array;
 use function ini_get;
+use function strtolower;
 use function sys_get_temp_dir;
 use function trim;
 use function version_compare;
@@ -38,18 +39,12 @@ use const PHP_MINOR_VERSION;
  */
 class ServerCheckService
 {
-    const PHP_SUPPORT_URL   = 'https://secure.php.net/supported-versions.php';
-    const PHP_MINOR_VERSION = PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;
-    const PHP_SUPPORT_DATES = [
+    private const PHP_SUPPORT_URL   = 'https://secure.php.net/supported-versions.php';
+    private const PHP_MINOR_VERSION = PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;
+    private const PHP_SUPPORT_DATES = [
         '7.1' => '2019-12-01',
         '7.2' => '2020-11-30',
         '7.3' => '2021-12-06',
-    ];
-
-    const PHP_LIBRARIES = [
-        'gd',
-        'xml',
-        'simplexml',
     ];
 
     // As required by illuminate/database 5.8
@@ -145,7 +140,26 @@ class ServerCheckService
     }
 
     /**
-     * Check if a PHP extension is loaded.
+     * Check if a PHP function is in the list of disabled functions.
+     *
+     * @param string $function
+     *
+     * @return bool
+     */
+    public function isFunctionDisabled(string $function): bool
+    {
+        $disable_functions = explode(',', ini_get('disable_functions'));
+        $disable_functions = array_map(function (string $func): string {
+            return strtolower(trim($func));
+        }, $disable_functions);
+
+        $function = strtolower($function);
+
+        return in_array($function, $disable_functions, true) || !function_exists($function);
+    }
+
+    /**
+     * Create a warning message for a disabled function.
      *
      * @param string $function
      *
@@ -153,12 +167,7 @@ class ServerCheckService
      */
     private function checkPhpFunction(string $function): string
     {
-        $disable_functions = explode(',', ini_get('disable_functions'));
-        $disable_functions = array_map(function (string $func): string {
-            return trim($func);
-        }, $disable_functions);
-
-        if (in_array($function, $disable_functions)) {
+        if ($this->isFunctionDisabled($function)) {
             return I18N::translate('The PHP function “%1$s” is disabled.', $function . '()');
         }
 

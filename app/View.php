@@ -98,7 +98,7 @@ class View
      *
      * @return void
      */
-    public static function share(string $key, $value)
+    public static function share(string $key, $value): void
     {
         self::$shared_data[$key] = $value;
     }
@@ -112,7 +112,7 @@ class View
      *
      * @return void
      */
-    public static function push(string $stack)
+    public static function push(string $stack): void
     {
         self::$stack = $stack;
 
@@ -124,7 +124,7 @@ class View
      *
      * @return void
      */
-    public static function endpush()
+    public static function endpush(): void
     {
         $content = ob_get_clean();
 
@@ -138,7 +138,7 @@ class View
      *
      * @return void
      */
-    public static function pushunique(string $stack)
+    public static function pushunique(string $stack): void
     {
         self::$stack = $stack;
 
@@ -150,7 +150,7 @@ class View
      *
      * @return void
      */
-    public static function endpushunique()
+    public static function endpushunique(): void
     {
         $content = ob_get_clean();
 
@@ -182,7 +182,7 @@ class View
     public function render(): string
     {
         $variables_for_view = $this->data + self::$shared_data;
-        extract($variables_for_view);
+        extract($variables_for_view, EXTR_SKIP);
 
         try {
             ob_start();

@@ -194,7 +194,7 @@ class RegisterController extends AbstractBaseController
      * @return void
      * @throws Exception
      */
-    private function doValidateRegistration(string $username, string $email, string $realname, string $comments, string $password)
+    private function doValidateRegistration(string $username, string $email, string $realname, string $comments, string $password): void
     {
         // All fields are required
         if ($username === '' || $email === '' || $realname === '' || $comments === '' || $password === '') {
@@ -253,7 +253,7 @@ class RegisterController extends AbstractBaseController
      * @return void
      * @throws NotFoundHttpException
      */
-    private function checkRegistrationAllowed()
+    private function checkRegistrationAllowed(): void
     {
         if (Site::getPreference('USE_REGISTRATION_MODULE') !== '1') {
             throw new NotFoundHttpException();

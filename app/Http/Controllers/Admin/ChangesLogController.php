@@ -203,10 +203,10 @@ class ChangesLogController extends AbstractAdminController
                     '"' . $row->change_time . '"',
                     '"' . $row->status . '"',
                     '"' . $row->xref . '"',
-                    '"' . strtr($row->old_gedcom, '"', '""') . '"',
-                    '"' . strtr($row->new_gedcom, '"', '""') . '"',
-                    '"' . strtr($row->user_name, '"', '""') . '"',
-                    '"' . strtr($row->gedcom_name, '"', '""') . '"',
+                    '"' . str_replace('"', '""', $row->old_gedcom) . '"',
+                    '"' . str_replace('"', '""', $row->new_gedcom) . '"',
+                    '"' . str_replace('"', '""', $row->user_name) . '"',
+                    '"' . str_replace('"', '""', $row->gedcom_name) . '"',
                 ]);
             })
             ->implode("\n");

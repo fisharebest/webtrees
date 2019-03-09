@@ -106,5 +106,3 @@ class BritishMonarchs extends AbstractModule implements ModuleHistoricEventsInte
         ]);
     }
 }
-
-;

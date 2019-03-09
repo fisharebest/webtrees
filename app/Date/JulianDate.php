@@ -54,7 +54,7 @@ class JulianDate extends AbstractGregorianJulianDate
      */
     protected function nextYear(int $year): int
     {
-        if ($year == -1) {
+        if ($year === -1) {
             return 1;
         }
 

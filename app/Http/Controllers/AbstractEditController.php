@@ -86,7 +86,7 @@ abstract class AbstractEditController extends AbstractBaseController
      *
      * @return void
      */
-    protected function splitSource()
+    protected function splitSource(): void
     {
         $this->glevelsSOUR = [];
         $this->tagSOUR     = [];
@@ -112,15 +112,14 @@ abstract class AbstractEditController extends AbstractBaseController
                     $inSOUR = false;
                     $dest   = 'R';
                 }
+            } elseif ($this->tag[$i] === 'SOUR') {
+                $inSOUR    = true;
+                $levelSOUR = $this->glevels[$i];
+                $dest      = 'S';
             } else {
-                if ($this->tag[$i] === 'SOUR') {
-                    $inSOUR    = true;
-                    $levelSOUR = $this->glevels[$i];
-                    $dest      = 'S';
-                } else {
-                    $dest = 'R';
-                }
+                $dest = 'R';
             }
+
             if ($dest === 'S') {
                 $this->glevelsSOUR[] = $this->glevels[$i];
                 $this->tagSOUR[]     = $this->tag[$i];
@@ -269,7 +268,7 @@ abstract class AbstractEditController extends AbstractBaseController
      *
      * @return string
      */
-    protected function addNewFact(Request $request, Tree $tree, $fact)
+    protected function addNewFact(Request $request, Tree $tree, $fact): string
     {
         $FACT = $request->get($fact, '');
         $DATE = $request->get($fact . '_DATE', '');

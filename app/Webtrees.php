@@ -62,7 +62,7 @@ class Webtrees
      *
      * @return void
      */
-    public static function init()
+    public static function init(): void
     {
         // Show all errors and warnings in development, fewer in production.
         error_reporting(self::ERROR_REPORTING);

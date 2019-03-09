@@ -46,7 +46,7 @@ class Family extends GedcomRecord
      *                             empty string for records with pending deletions
      * @param Tree        $tree
      */
-    public function __construct(string $xref, string $gedcom, $pending, Tree $tree)
+    public function __construct(string $xref, string $gedcom, ?string $pending, Tree $tree)
     {
         parent::__construct($xref, $gedcom, $pending, $tree);
 
@@ -100,11 +100,11 @@ class Family extends GedcomRecord
      *
      * @return Family|null
      */
-    public static function getInstance(string $xref, Tree $tree, string $gedcom = null)
+    public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?self
     {
         $record = parent::getInstance($xref, $tree, $gedcom);
 
-        if ($record instanceof Family) {
+        if ($record instanceof self) {
             return $record;
         }
 
@@ -141,9 +141,9 @@ class Family extends GedcomRecord
      * @param string $xref
      * @param int    $tree_id
      *
-     * @return null|string
+     * @return string|null
      */
-    protected static function fetchGedcomRecord(string $xref, int $tree_id)
+    protected static function fetchGedcomRecord(string $xref, int $tree_id): ?string
     {
         return DB::table('families')
             ->where('f_id', '=', $xref)
@@ -230,7 +230,7 @@ class Family extends GedcomRecord
      *
      * @return Individual|null
      */
-    public function spouse(Individual $person, $access_level = null)
+    public function spouse(Individual $person, $access_level = null): ?Individual
     {
         if ($person === $this->wife) {
             return $this->husband($access_level);
@@ -346,7 +346,11 @@ class Family extends GedcomRecord
     {
         $marriage = $this->getMarriage();
 
-        return $marriage->place();
+        if ($marriage instanceof Fact) {
+            return $marriage->place();
+        }
+
+        return new Place('', $this->tree);
     }
 
     /**
@@ -357,7 +361,9 @@ class Family extends GedcomRecord
     public function getAllMarriageDates(): array
     {
         foreach (Gedcom::MARRIAGE_EVENTS as $event) {
-            if ($array = $this->getAllEventDates([$event])) {
+            $array = $this->getAllEventDates([$event]);
+
+            if (!empty($array)) {
                 return $array;
             }
         }
@@ -430,7 +436,7 @@ class Family extends GedcomRecord
             // Add the matched names first
             foreach ($husb_names as $husb_name) {
                 foreach ($wife_names as $wife_name) {
-                    if ($husb_name['script'] == $wife_name['script']) {
+                    if ($husb_name['script'] === $wife_name['script']) {
                         $this->getAllNames[] = [
                             'type' => $husb_name['type'],
                             'sort' => $husb_name['sort'] . ' + ' . $wife_name['sort'],
@@ -444,7 +450,7 @@ class Family extends GedcomRecord
             // Add the unmatched names second (there may be no matched names)
             foreach ($husb_names as $husb_name) {
                 foreach ($wife_names as $wife_name) {
-                    if ($husb_name['script'] != $wife_name['script']) {
+                    if ($husb_name['script'] !== $wife_name['script']) {
                         $this->getAllNames[] = [
                             'type' => $husb_name['type'],
                             'sort' => $husb_name['sort'] . ' + ' . $wife_name['sort'],

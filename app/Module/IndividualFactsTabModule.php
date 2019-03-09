@@ -206,7 +206,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             foreach ($spouse->facts(Gedcom::DEATH_EVENTS) as $fact) {
                 if ($this->includeFact($fact, $min_date, $max_date)) {
                     // Convert the event to a close relatives event.
-                    $rela_fact = clone($fact);
+                    $rela_fact = clone $fact;
                     $rela_fact->setTag('_' . $fact->getTag() . '_SPOU');
                     $facts[] = $rela_fact;
                 }
@@ -275,17 +275,17 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                     if ($option == '_CHIL' || $this->includeFact($fact, $min_date, $max_date)) {
                         if ($option == '_GCHI' && $relation == 'dau') {
                             // Convert the event to a close relatives event.
-                            $rela_fact = clone($fact);
+                            $rela_fact = clone $fact;
                             $rela_fact->setTag('_' . $fact->getTag() . '_GCH1');
                             $facts[] = $rela_fact;
                         } elseif ($option == '_GCHI' && $relation == 'son') {
                             // Convert the event to a close relatives event.
-                            $rela_fact = clone($fact);
+                            $rela_fact = clone $fact;
                             $rela_fact->setTag('_' . $fact->getTag() . '_GCH2');
                             $facts[] = $rela_fact;
                         } else {
                             // Convert the event to a close relatives event.
-                            $rela_fact = clone($fact);
+                            $rela_fact = clone $fact;
                             $rela_fact->setTag('_' . $fact->getTag() . $option);
                             $facts[] = $rela_fact;
                         }
@@ -298,17 +298,17 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                     if ($this->includeFact($fact, $min_date, $max_date)) {
                         if ($option == '_GCHI' && $relation == 'dau') {
                             // Convert the event to a close relatives event.
-                            $rela_fact = clone($fact);
+                            $rela_fact = clone $fact;
                             $rela_fact->setTag('_' . $fact->getTag() . '_GCH1');
                             $facts[] = $rela_fact;
                         } elseif ($option == '_GCHI' && $relation == 'son') {
                             // Convert the event to a close relatives event.
-                            $rela_fact = clone($fact);
+                            $rela_fact = clone $fact;
                             $rela_fact->setTag('_' . $fact->getTag() . '_GCH2');
                             $facts[] = $rela_fact;
                         } else {
                             // Convert the event to a close relatives event.
-                            $rela_fact = clone($fact);
+                            $rela_fact = clone $fact;
                             $rela_fact->setTag('_' . $fact->getTag() . $option);
                             $facts[] = $rela_fact;
                         }
@@ -322,17 +322,17 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                         if ($this->includeFact($fact, $min_date, $max_date)) {
                             if ($option == '_GCHI' && $relation == 'dau') {
                                 // Convert the event to a close relatives event.
-                                $rela_fact = clone($fact);
+                                $rela_fact = clone $fact;
                                 $rela_fact->setTag('_' . $fact->getTag() . '_GCH1');
                                 $facts[] = $rela_fact;
                             } elseif ($option == '_GCHI' && $relation == 'son') {
                                 // Convert the event to a close relatives event.
-                                $rela_fact = clone($fact);
+                                $rela_fact = clone $fact;
                                 $rela_fact->setTag('_' . $fact->getTag() . '_GCH2');
                                 $facts[] = $rela_fact;
                             } else {
                                 // Convert the event to a close relatives event.
-                                $rela_fact = clone($fact);
+                                $rela_fact = clone $fact;
                                 $rela_fact->setTag('_' . $fact->getTag() . $option);
                                 $facts[] = $rela_fact;
                             }
@@ -389,7 +389,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                     foreach ($sfamily->facts(['MARR']) as $fact) {
                         if ($this->includeFact($fact, $min_date, $max_date)) {
                             // marriage of parents (to each other)
-                            $rela_fact = clone($fact);
+                            $rela_fact = clone $fact;
                             $rela_fact->setTag('_' . $fact->getTag() . '_FAMC');
                             $facts[] = $rela_fact;
                         }
@@ -400,7 +400,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                         if ($this->includeFact($fact, $min_date, $max_date)) {
                             // marriage of a parent (to another spouse)
                             // Convert the event to a close relatives event
-                            $rela_fact = clone($fact);
+                            $rela_fact = clone $fact;
                             $rela_fact->setTag('_' . $fact->getTag() . '_PARE');
                             $facts[] = $rela_fact;
                         }
@@ -417,19 +417,19 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                             switch ($sosa) {
                                 case 1:
                                     // Convert the event to a close relatives event.
-                                    $rela_fact = clone($fact);
+                                    $rela_fact = clone $fact;
                                     $rela_fact->setTag('_' . $fact->getTag() . '_PARE');
                                     $facts[] = $rela_fact;
                                     break;
                                 case 2:
                                     // Convert the event to a close relatives event
-                                    $rela_fact = clone($fact);
+                                    $rela_fact = clone $fact;
                                     $rela_fact->setTag('_' . $fact->getTag() . '_GPA1');
                                     $facts[] = $rela_fact;
                                     break;
                                 case 3:
                                     // Convert the event to a close relatives event
-                                    $rela_fact = clone($fact);
+                                    $rela_fact = clone $fact;
                                     $rela_fact->setTag('_' . $fact->getTag() . '_GPA2');
                                     $facts[] = $rela_fact;
                                     break;

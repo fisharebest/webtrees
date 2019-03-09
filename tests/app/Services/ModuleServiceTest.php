@@ -107,10 +107,10 @@ class ModuleServiceTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Services\ModuleService::configOnlyModules
+     * @covers \Fisharebest\Webtrees\Services\ModuleService::otherModules
      * @return void
      */
-    public function testOtherOnlyModules(): void
+    public function testOtherModules(): void
     {
         app()->instance(Tree::class, Tree::create('name', 'title'));
         DB::table('module')->insert(['module_name' => 'not-a-module']);

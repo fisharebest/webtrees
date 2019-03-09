@@ -48,7 +48,7 @@ class DebugBar
      *
      * @return void
      */
-    public static function init(bool $enable = true)
+    public static function init(bool $enable = true): void
     {
         if ($enable) {
             self::$debugbar = new StandardDebugBar();
@@ -68,8 +68,8 @@ class DebugBar
     public static function initPDO(PDO $pdo): PDO
     {
         if (self::$debugbar instanceof StandardDebugBar) {
-            $pdo = new TraceablePDO($pdo);
-            self::$debugbar->addCollector(new PDOCollector($pdo));
+            $traceable_pdo = new TraceablePDO($pdo);
+            self::$debugbar->addCollector(new PDOCollector($traceable_pdo));
         }
 
         return $pdo;
@@ -108,7 +108,7 @@ class DebugBar
      *
      * @return void
      */
-    public static function stackData()
+    public static function stackData(): void
     {
         if (self::$debugbar instanceof StandardDebugBar) {
             self::$debugbar->stackData();
@@ -120,7 +120,7 @@ class DebugBar
      *
      * @return void
      */
-    public static function sendDataInHeaders()
+    public static function sendDataInHeaders(): void
     {
         if (self::$debugbar instanceof StandardDebugBar) {
             self::$debugbar->sendDataInHeaders();
@@ -136,7 +136,7 @@ class DebugBar
      *
      * @return void
      */
-    public static function addMessage($message, $label = 'info', $isString = true)
+    public static function addMessage($message, $label = 'info', $isString = true): void
     {
         if (self::$debugbar instanceof StandardDebugBar) {
             $collector = self::$debugbar->getCollector('messages');
@@ -154,7 +154,7 @@ class DebugBar
      *
      * @return void
      */
-    public static function startMeasure($name)
+    public static function startMeasure($name): void
     {
         if (self::$debugbar instanceof StandardDebugBar) {
             $collector = self::$debugbar->getCollector('time');
@@ -172,7 +172,7 @@ class DebugBar
      *
      * @return void
      */
-    public static function stopMeasure($name)
+    public static function stopMeasure($name): void
     {
         if (self::$debugbar instanceof StandardDebugBar) {
             $collector = self::$debugbar->getCollector('time');
@@ -191,7 +191,7 @@ class DebugBar
      *
      * @return void
      */
-    public static function addView(string $view, array $data)
+    public static function addView(string $view, array $data): void
     {
         if (self::$debugbar instanceof StandardDebugBar) {
             $collector = self::$debugbar->getCollector('views');

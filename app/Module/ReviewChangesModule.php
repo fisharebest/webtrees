@@ -213,7 +213,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id)
+    public function saveBlockConfiguration(Request $request, int $block_id): void
     {
         $this->setBlockSetting($block_id, 'days', $request->get('num', '1'));
         $this->setBlockSetting($block_id, 'sendmail', $request->get('sendmail', ''));
@@ -227,7 +227,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id): void
     {
         $sendmail = $this->getBlockSetting($block_id, 'sendmail', '1');
         $days     = $this->getBlockSetting($block_id, 'days', '1');

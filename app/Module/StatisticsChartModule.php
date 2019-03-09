@@ -875,7 +875,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return void
      */
-    private function fillYData($x, $z, $value, array $x_axis, array $z_axis, array &$ydata)
+    private function fillYData($x, $z, $value, array $x_axis, array $z_axis, array &$ydata): void
     {
         $x = $this->findAxisEntry($x, $x_axis);
         $z = $this->findAxisEntry($z, $z_axis);

@@ -55,11 +55,11 @@ class Source extends GedcomRecord
      *
      * @return Source|null
      */
-    public static function getInstance(string $xref, Tree $tree, string $gedcom = null)
+    public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?self
     {
         $record = parent::getInstance($xref, $tree, $gedcom);
 
-        if ($record instanceof Source) {
+        if ($record instanceof self) {
             return $record;
         }
 
@@ -106,9 +106,9 @@ class Source extends GedcomRecord
      * @param string $xref
      * @param int    $tree_id
      *
-     * @return null|string
+     * @return string|null
      */
-    protected static function fetchGedcomRecord(string $xref, int $tree_id)
+    protected static function fetchGedcomRecord(string $xref, int $tree_id): ?string
     {
         return DB::table('sources')
             ->where('s_id', '=', $xref)
@@ -121,8 +121,8 @@ class Source extends GedcomRecord
      *
      * @return void
      */
-    public function extractNames()
+    public function extractNames(): void
     {
-        parent::extractNamesFromFacts(1, 'TITL', $this->facts(['TITL']));
+        $this->extractNamesFromFacts(1, 'TITL', $this->facts(['TITL']));
     }
 }

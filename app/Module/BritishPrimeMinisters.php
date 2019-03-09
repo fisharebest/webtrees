@@ -133,5 +133,3 @@ class BritishPrimeMinisters extends AbstractModule implements ModuleHistoricEven
         ]);
     }
 }
-
-;

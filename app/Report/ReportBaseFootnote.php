@@ -124,10 +124,10 @@ class ReportBaseFootnote extends ReportBaseElement
      *
      * @return void
      */
-    public function setNum(int $n)
+    public function setNum(int $n): void
     {
         $this->num     = $n;
-        $this->numText = (string) $n . ' ';
+        $this->numText = $n . ' ';
     }
 
     /**

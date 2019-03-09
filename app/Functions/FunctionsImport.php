@@ -311,7 +311,7 @@ class FunctionsImport
                 case 'HEAD':
                     $tag = 'HEAD';
                     // HEAD records don't have an XREF or DATA
-                    if ($level == '0') {
+                    if ($level === '0') {
                         $xref = '';
                         $data = '';
                     }
@@ -420,8 +420,8 @@ class FunctionsImport
                         $data =
                             $match[1] . "\n" .
                             ($level + 1) . " MAP\n" .
-                            ($level + 2) . ' LATI ' . ($match[5] . (round($match[2] + ($match[3] / 60) + ($match[4] / 3600), 4))) . "\n" .
-                            ($level + 2) . ' LONG ' . ($match[9] . (round($match[6] + ($match[7] / 60) + ($match[8] / 3600), 4)));
+                            ($level + 2) . ' LATI ' . ($match[5] . round($match[2] + ($match[3] / 60) + ($match[4] / 3600), 4)) . "\n" .
+                            ($level + 2) . ' LONG ' . ($match[9] . round($match[6] + ($match[7] / 60) + ($match[8] / 3600), 4));
                     }
                     break;
                 case 'POSTAL_CODE':
@@ -465,7 +465,7 @@ class FunctionsImport
                     $tag = 'RESN';
                     // RESN values are lower case (confidential, privacy, locked, none)
                     $data = strtolower($data);
-                    if ($data == 'invisible') {
+                    if ($data === 'invisible') {
                         $data = 'confidential'; // From old versions of Legacy.
                     }
                     break;
@@ -496,7 +496,7 @@ class FunctionsImport
                 case 'STATUS':
                 case 'STAT':
                     $tag = 'STAT';
-                    if ($data == 'CANCELLED') {
+                    if ($data === 'CANCELLED') {
                         // PhpGedView mis-spells this tag - correct it.
                         $data = 'CANCELED';
                     }
@@ -526,7 +526,7 @@ class FunctionsImport
                 case 'TRLR':
                     $tag = 'TRLR';
                     // TRLR records don't have an XREF or DATA
-                    if ($level == '0') {
+                    if ($level === '0') {
                         $xref = '';
                         $data = '';
                     }
@@ -539,12 +539,12 @@ class FunctionsImport
                     break;
             }
             // Suppress "Y", for facts/events with a DATE or PLAC
-            if ($data == 'y') {
+            if ($data === 'y') {
                 $data = 'Y';
             }
-            if ($level == '1' && $data == 'Y') {
-                for ($i = $n + 1; $i < $num_matches - 1 && $matches[$i][1] != '1'; ++$i) {
-                    if ($matches[$i][3] == 'DATE' || $matches[$i][3] == 'PLAC') {
+            if ($level === '1' && $data === 'Y') {
+                for ($i = $n + 1; $i < $num_matches - 1 && $matches[$i][1] !== '1'; ++$i) {
+                    if ($matches[$i][3] === 'DATE' || $matches[$i][3] === 'PLAC') {
                         $data = '';
                         break;
                     }
@@ -557,19 +557,19 @@ class FunctionsImport
                     if (strpos($data, "\t") !== false) {
                         $data = str_replace("\t", ' ', $data);
                     }
-                    if (substr($data, 0, 1) == ' ' || substr($data, -1, 1) == ' ') {
+                    if (substr($data, 0, 1) === ' ' || substr($data, -1, 1) === ' ') {
                         $data = trim($data);
                     }
                     while (strpos($data, '  ')) {
                         $data = str_replace('  ', ' ', $data);
                     }
-                    $newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level == '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag != 'NOTE' ? '' : ' ' . $data);
+                    $newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level === '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag !== 'NOTE' ? '' : ' ' . $data);
                     break;
                 case 'NOTE':
                 case 'TEXT':
                 case 'DATA':
                 case 'CONT':
-                    $newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level == '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag != 'NOTE' ? '' : ' ' . $data);
+                    $newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level === '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag !== 'NOTE' ? '' : ' ' . $data);
                     break;
                 case 'FILE':
                     // Strip off the user-defined path prefix
@@ -580,7 +580,7 @@ class FunctionsImport
                     // convert backslashes in filenames to forward slashes
                     $data = preg_replace("/\\\/", '/', $data);
 
-                    $newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level == '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag != 'NOTE' ? '' : ' ' . $data);
+                    $newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level === '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag !== 'NOTE' ? '' : ' ' . $data);
                     break;
                 case 'CONC':
                     // Merge CONC lines, to simplify access later on.
@@ -810,7 +810,7 @@ class FunctionsImport
      *
      * @return void
      */
-    public static function updatePlaces(string $xref, Tree $tree, string $gedrec)
+    public static function updatePlaces(string $xref, Tree $tree, string $gedrec): void
     {
         preg_match_all('/^[2-9] PLAC (.+)/m', $gedrec, $matches);
 
@@ -847,12 +847,12 @@ class FunctionsImport
      *
      * @return void
      */
-    public static function updateDates($xref, $ged_id, $gedrec)
+    public static function updateDates($xref, $ged_id, $gedrec): void
     {
         if (strpos($gedrec, '2 DATE ') && preg_match_all("/\n1 (\w+).*(?:\n[2-9].*)*(?:\n2 DATE (.+))(?:\n[2-9].*)*/", $gedrec, $matches, PREG_SET_ORDER)) {
             foreach ($matches as $match) {
                 $fact = $match[1];
-                if (($fact == 'FACT' || $fact == 'EVEN') && preg_match("/\n2 TYPE ([A-Z]{3,5})/", $match[0], $tmatch)) {
+                if (($fact === 'FACT' || $fact === 'EVEN') && preg_match("/\n2 TYPE ([A-Z]{3,5})/", $match[0], $tmatch)) {
                     $fact = $tmatch[1];
                 }
                 $date = new Date($match[2]);
@@ -896,7 +896,7 @@ class FunctionsImport
      *
      * @return void
      */
-    public static function updateLinks($xref, $ged_id, $gedrec)
+    public static function updateLinks($xref, $ged_id, $gedrec): void
     {
         if (preg_match_all('/^\d+ (' . Gedcom::REGEX_TAG . ') @(' . Gedcom::REGEX_XREF . ')@/m', $gedrec, $matches, PREG_SET_ORDER)) {
             $data = [];
@@ -928,7 +928,7 @@ class FunctionsImport
      *
      * @return void
      */
-    public static function updateNames($xref, $ged_id, GedcomRecord $record)
+    public static function updateNames($xref, $ged_id, GedcomRecord $record): void
     {
         foreach ($record->getAllNames() as $n => $name) {
             if ($record instanceof Individual) {
@@ -1077,7 +1077,7 @@ class FunctionsImport
      *
      * @return void
      */
-    public static function acceptAllChanges($xref, Tree $tree)
+    public static function acceptAllChanges($xref, Tree $tree): void
     {
         $changes = DB::table('change')
             ->join('gedcom', 'change.gedcom_id', '=', 'gedcom.gedcom_id')
@@ -1098,9 +1098,7 @@ class FunctionsImport
             }
 
             DB::table('change')
-                ->where('gedcom_id', '=', $tree->id())
-                ->where('xref', '=', $xref)
-                ->where('status', 'pending')
+                ->where('change_id', '=', $change->change_id)
                 ->update(['status' => 'accepted']);
 
             Log::addEditLog("Accepted change {$change->change_id} for {$xref} / {$change->gedcom_name} into database", $tree);
@@ -1115,7 +1113,7 @@ class FunctionsImport
      *
      * @return void
      */
-    public static function updateRecord($gedrec, Tree $tree, bool $delete)
+    public static function updateRecord($gedrec, Tree $tree, bool $delete): void
     {
         if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ (' . Gedcom::REGEX_TAG . ')/', $gedrec, $match)) {
             [, $gid, $type] = $match;

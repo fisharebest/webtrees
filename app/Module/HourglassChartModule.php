@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class HourglassChartModule
@@ -188,10 +189,13 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function postDescendantsAction(Request $request, Tree $tree): Response
     {
+        $show_spouse = (bool) $request->get('show_spouse');
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
-        $show_spouse = (bool) $request->get('show_spouse');
+        if ($individual === null) {
+            throw new NotFoundHttpException();
+        }
 
         ob_start();
         $this->printDescendency($individual, 1, 2, $show_spouse, false);
@@ -211,7 +215,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      *
      * @return void
      */
-    private function printDescendency(Individual $individual, int $generation, int $generations, bool $show_spouse, bool $show_menu)
+    private function printDescendency(Individual $individual, int $generation, int $generations, bool $show_spouse, bool $show_menu): void
     {
         static $lastGenSecondFam = false;
 
@@ -279,7 +283,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         }
 
         // Print the descendency expansion arrow
-        if ($generation == $generations) {
+        if ($generation === $generations) {
             $tbwidth = app(ModuleThemeInterface::class)->parameter('chart-box-x') + 16;
             for ($j = $generation; $j < $generations; $j++) {
                 echo "<div style='width: ", $tbwidth, "px;'><br></div></td><td style='width:", app(ModuleThemeInterface::class)->parameter('chart-box-x'), "px'>";
@@ -407,7 +411,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      *
      * @return void
      */
-    private function printPersonPedigree(Individual $individual, int $generation, int $generations, bool $show_spouse)
+    private function printPersonPedigree(Individual $individual, int $generation, int $generations, bool $show_spouse): void
     {
         if ($generation >= $generations) {
             return;

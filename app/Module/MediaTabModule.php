@@ -31,7 +31,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;
 
-    /** @var  Fact[] A list of facts with media objects. */
+    /** @var  Collection A list of facts with media objects. */
     private $facts;
 
     /** @var ClipboardService */
@@ -82,7 +82,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
     /** {@inheritdoc} */
     public function hasTabContent(Individual $individual): bool
     {
-        return $individual->canEdit() || $this->getFactsWithMedia($individual);
+        return $individual->canEdit() || $this->getFactsWithMedia($individual)->isNotEmpty();
     }
 
     /** {@inheritdoc} */
@@ -107,9 +107,10 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
      *
      * @param Individual $individual
      *
+     * @return Collection
      * @return Fact[]
      */
-    private function getFactsWithMedia(Individual $individual): array
+    private function getFactsWithMedia(Individual $individual): Collection
     {
         if ($this->facts === null) {
             $facts = $individual->facts();
@@ -120,13 +121,15 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
                     }
                 }
             }
-            $this->facts = [];
+
+            $this->facts = new Collection();
+
             foreach ($facts as $fact) {
                 if (preg_match('/(?:^1|\n\d) OBJE @' . Gedcom::REGEX_XREF . '@/', $fact->gedcom())) {
-                    $this->facts[] = $fact;
+                    $this->facts->push($fact);
                 }
             }
-            $this->facts = Fact::sortFacts($this->facts)->all();
+            $this->facts = Fact::sortFacts($this->facts);
         }
 
         return $this->facts;

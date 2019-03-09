@@ -162,7 +162,7 @@ class LoginController extends AbstractBaseController
      * @return void
      * @throws Exception
      */
-    private function doLogin(string $username, string $password)
+    private function doLogin(string $username, string $password): void
     {
         if (!$_COOKIE) {
             Log::addAuthenticationLog('Login failed (no session cookies): ' . $username);

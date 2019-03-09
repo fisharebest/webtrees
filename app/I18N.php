@@ -260,7 +260,7 @@ class I18N
      *
      * @return string
      */
-    public static function collation()
+    public static function collation(): string
     {
         $collation = self::$locale->collation();
         switch ($collation) {
@@ -588,7 +588,7 @@ class I18N
 
         $reversed = '';
         $digits   = '';
-        while ($text != '') {
+        while ($text !== '') {
             $letter = mb_substr($text, 0, 1);
             $text   = mb_substr($text, 1);
             if (strpos(self::DIGITS, $letter) !== false) {
@@ -611,7 +611,7 @@ class I18N
      *
      * @return string
      */
-    public static function scriptDirection($script)
+    public static function scriptDirection($script): string
     {
         switch ($script) {
             case 'Arab':
@@ -632,13 +632,13 @@ class I18N
      *
      * @return int
      */
-    public static function strcasecmp($string1, $string2)
+    public static function strcasecmp($string1, $string2): int
     {
         if (self::$collator instanceof Collator) {
             return self::$collator->compare($string1, $string2);
-        } else {
-            return strcmp(self::strtolower($string1), self::strtolower($string2));
         }
+
+        return strcmp(self::strtolower($string1), self::strtolower($string2));
     }
 
     /**
@@ -732,7 +732,7 @@ class I18N
      *
      * @return string
      */
-    public static function timeAgo($seconds)
+    public static function timeAgo($seconds): string
     {
         $minute = 60;
         $hour   = 60 * $minute;
