@@ -191,7 +191,18 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
         return
             '<li class="sb_desc_indi_li">' .
-            '<a class="sb_desc_indi" href="#"><i class="plusminus icon-minus"></i>' .
+            
+            //this url causes the ajax request (in sidebar.phtml) to return the entire individual page, which isn't intended here
+            //'<a class="sb_desc_indi" href="#"><i class="plusminus icon-minus"></i>' .
+                
+            '<a class="sb_desc_indi" href="' . e(route('module', [
+                'module' => $this->name(),
+                'action' => 'Descendants',
+                //in particular do not set a xref here - this results in getDescendantsAction returning '', as apparently intended
+                //the whole approach here is rather inelegant anyway
+                //'ged'    => $person->tree()->name(),
+                //'xref'   => $person->xref(),
+            ])) . '"><i class="plusminus icon-minus"></i>' .   
             $spouse_name .
             $marr .
             '</a>' .
