@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:51+0100\n"
-"PO-Revision-Date: 2019-03-08 15:41+0800\n"
+"PO-Revision-Date: 2019-03-09 16:33+0800\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <http://translate.webtrees.net/projects/webtrees/webtrees/zh-Hans/>\n"
 "Language: zh_CN\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.2.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -3569,7 +3569,7 @@ msgstr "中国"
 
 #: app/Http/Controllers/ReportEngineController.php:54
 msgid "Choose a report to run"
-msgstr "选择一个报告来运行"
+msgstr "选择要获取的报告"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
@@ -3579,7 +3579,7 @@ msgstr "选择亲戚"
 
 #: app/Http/Controllers/AdminSiteController.php:692
 msgid "Choose user defined welcome text typed below"
-msgstr "选择用户定义的文本在下面输入欢迎文本"
+msgstr "在下面选择用户定义的欢迎文本"
 
 #. I18N: gedcom tag CHR
 #: app/GedcomTag.php:598 modules_v3/family_group_report/report.xml:206
@@ -7356,7 +7356,7 @@ msgstr "包括子文件夹"
 #. I18N: Label for a configuration option
 #: resources/views/lifespans-page.php:27
 msgid "Include the individual’s immediate family"
-msgstr "包括这个人的直系亲属吗?"
+msgstr "包括这个人的直系亲属吗"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7372
@@ -10822,7 +10822,7 @@ msgstr "应根据家谱的标准输入的地方。地方记录地方最具体的
 
 #: resources/views/places-page.php:26
 msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
-msgstr ""
+msgstr "地图上仅显示包含有效经纬度的地方"
 
 #: resources/views/layouts/default.php:142
 #: resources/views/modules/random_media/slide-show.php:8
@@ -16113,19 +16113,19 @@ msgstr "出生"
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:93
 msgid "birth name"
-msgstr "奶名"
+msgstr "出生名"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:90
 msgctxt "FEMALE"
 msgid "birth name"
-msgstr "奶名"
+msgstr "出生名"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:87
 msgctxt "MALE"
 msgid "birth name"
-msgstr "奶名"
+msgstr "出生名"
 
 #. I18N: Extend privacy to dead individuals who were…
 #: resources/views/admin/trees-privacy.php:111
@@ -16274,19 +16274,19 @@ msgstr "世纪"
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:105
 msgid "change of name"
-msgstr "更换姓名"
+msgstr "改后姓名"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:102
 msgctxt "FEMALE"
 msgid "change of name"
-msgstr "更换姓名"
+msgstr "改后姓名"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:99
 msgctxt "MALE"
 msgid "change of name"
-msgstr "更换姓名"
+msgstr "改后姓名"
 
 #: app/Functions/Functions.php:738
 msgid "child"
