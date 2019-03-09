@@ -8,7 +8,7 @@ use Fisharebest\Localization\Language\LanguageVi;
  * Class LocaleVi - Vietnamese
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LocaleVi extends AbstractLocale implements LocaleInterface

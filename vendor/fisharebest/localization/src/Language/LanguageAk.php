@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryGh;
  * Class LanguageAk - Representation of the Akan language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageAk extends AbstractLanguage implements LanguageInterface

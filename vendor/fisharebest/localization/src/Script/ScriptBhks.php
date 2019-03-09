@@ -6,7 +6,7 @@ namespace Fisharebest\Localization\Script;
  * Class ScriptBhks - Representation of the Bhaiksuki script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class ScriptBhks extends AbstractScript implements ScriptInterface

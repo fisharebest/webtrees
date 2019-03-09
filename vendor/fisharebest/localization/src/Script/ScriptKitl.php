@@ -6,7 +6,7 @@ namespace Fisharebest\Localization\Script;
  * Class ScriptKitl - Representation of the Khitan large script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class ScriptKitl extends AbstractScript implements ScriptInterface

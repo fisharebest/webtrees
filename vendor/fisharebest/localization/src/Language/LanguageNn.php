@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryNo;
  * Class LanguageNn - Representation of the Norwegian Nynorsk language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageNn extends AbstractLanguage implements LanguageInterface

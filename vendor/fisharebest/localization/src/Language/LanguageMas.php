@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryKe;
  * Class LanguageMas - Representation of the Masai language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageMas extends AbstractLanguage implements LanguageInterface

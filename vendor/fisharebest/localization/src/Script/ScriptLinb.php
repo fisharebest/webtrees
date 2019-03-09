@@ -6,7 +6,7 @@ namespace Fisharebest\Localization\Script;
  * Class ScriptLinb - Representation of the Linear B script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class ScriptLinb extends AbstractScript implements ScriptInterface

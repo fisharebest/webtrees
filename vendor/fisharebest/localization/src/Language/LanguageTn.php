@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryBw;
  * Class LanguageTn - Representation of the Tswana language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageTn extends AbstractLanguage implements LanguageInterface

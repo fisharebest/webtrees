@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryTm;
  * Class LanguageTk - Representation of the Turkmen language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageTk extends AbstractLanguage implements LanguageInterface

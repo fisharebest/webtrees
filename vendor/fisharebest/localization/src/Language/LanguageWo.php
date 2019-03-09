@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritorySn;
  * Class LanguageXh - Representation of the Wolof language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageWo extends AbstractLanguage implements LanguageInterface

@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryTr;
  * Class LanguageTr - Representation of the Turkish language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageTr extends AbstractLanguage implements LanguageInterface

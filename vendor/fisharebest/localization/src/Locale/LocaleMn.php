@@ -8,7 +8,7 @@ use Fisharebest\Localization\Language\LanguageMn;
  * Class LocaleMn - Mongolian
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LocaleMn extends AbstractLocale implements LocaleInterface

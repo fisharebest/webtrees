@@ -10,7 +10,7 @@ use Fisharebest\Localization\Territory\TerritoryNp;
  * Class LanguageNe - Representation of the Nepali language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageNe extends AbstractLanguage implements LanguageInterface

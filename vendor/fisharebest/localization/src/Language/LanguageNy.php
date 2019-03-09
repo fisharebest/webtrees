@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryMw;
  * Class LanguageNy - Representation of the Chewa language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageNy extends AbstractLanguage implements LanguageInterface

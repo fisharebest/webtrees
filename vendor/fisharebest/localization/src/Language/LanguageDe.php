@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryDe;
  * Class LanguageDe - Representation of the German language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageDe extends AbstractLanguage implements LanguageInterface

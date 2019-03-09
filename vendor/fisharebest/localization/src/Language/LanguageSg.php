@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryCf;
  * Class LanguageSg - Representation of the Sango language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageSg extends AbstractLanguage implements LanguageInterface

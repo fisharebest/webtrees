@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryMy;
  * Class LanguageMs - Representation of the Malay language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageMs extends AbstractLanguage implements LanguageInterface

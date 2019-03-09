@@ -10,7 +10,7 @@ use Fisharebest\Localization\Territory\TerritoryIn;
  * Class LanguageAs - Representation of the Assamese language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageAs extends AbstractLanguage implements LanguageInterface

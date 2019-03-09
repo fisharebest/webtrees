@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryLu;
  * Class LanguageLb - Representation of the Luxembourgish language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageLb extends AbstractLanguage implements LanguageInterface

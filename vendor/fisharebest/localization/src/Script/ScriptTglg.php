@@ -6,7 +6,7 @@ namespace Fisharebest\Localization\Script;
  * Class ScriptTglg - Representation of the Tagalog (Baybayin, Alibata) script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class ScriptTglg extends AbstractScript implements ScriptInterface

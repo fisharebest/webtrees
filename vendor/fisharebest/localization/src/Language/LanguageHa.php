@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryNg;
  * Class LanguageHa - Representation of the Hausa language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageHa extends AbstractLanguage implements LanguageInterface

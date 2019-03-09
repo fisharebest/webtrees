@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryUs;
  * Class LanguageChr - Representation of the Cherokee language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageChr extends AbstractLanguage implements LanguageInterface

@@ -6,7 +6,7 @@ namespace Fisharebest\Localization\Script;
  * Class ScriptTfng - Representation of the Tifinagh script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class ScriptTfng extends AbstractScript implements ScriptInterface

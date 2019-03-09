@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryMu;
  * Class LanguageMfe - Representation of the Morisyen language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageMfe extends AbstractLanguage implements LanguageInterface

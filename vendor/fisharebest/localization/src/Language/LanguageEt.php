@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryEe;
  * Class LanguageEt - Representation of the Estonian language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageEt extends AbstractLanguage implements LanguageInterface

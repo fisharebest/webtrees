@@ -9,7 +9,7 @@ use Fisharebest\Localization\Territory\TerritoryTz;
  * Class LanguageAsa - Representation of the Asu (Tanzania) language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LanguageAsa extends AbstractLanguage implements LanguageInterface

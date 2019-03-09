@@ -8,7 +8,7 @@ use Fisharebest\Localization\Language\LanguageAk;
  * Class LocaleAk - Akan
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2018 Greg Roach
+ * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
 class LocaleAk extends AbstractLocale implements LocaleInterface
