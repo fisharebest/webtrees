@@ -221,6 +221,7 @@ class AdminTreesController extends AbstractBaseController
                 'SOUR',
                 'OBJE',
                 '_LOC',
+                'NOTE',
             ],
         ];
 
