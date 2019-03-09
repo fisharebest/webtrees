@@ -232,8 +232,8 @@ class Migration0 implements MigrationInterface
             $table->string('m_id', 20);
             $table->string('m_ext', 6)->nullable();
             $table->string('m_type', 20)->nullable();
-            $table->string('m_titl', 255)->nullable();
-            $table->string('m_filename', 512)->nullable();
+            $table->string('m_titl', 248)->nullable();
+            $table->string('m_filename', 248)->nullable();
             $table->integer('m_file');
             $table->longText('m_gedcom')->nullable();
 

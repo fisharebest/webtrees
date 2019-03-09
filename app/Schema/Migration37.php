@@ -43,7 +43,7 @@ class Migration37 implements MigrationInterface
             $table->integer('id', true);
             $table->string('m_id', 20);
             $table->integer('m_file');
-            $table->string('multimedia_file_refn', 512); // GEDCOM only allows 30 characters
+            $table->string('multimedia_file_refn', 248); // GEDCOM only allows 30 characters
             $table->string('multimedia_format', 4);
             $table->string('source_media_type', 15);
             $table->string('descriptive_title', 248);
@@ -54,9 +54,6 @@ class Migration37 implements MigrationInterface
             $table->index(['m_file', 'multimedia_format']);
             $table->index(['m_file', 'source_media_type']);
             $table->index(['m_file', 'descriptive_title']);
-
-            // Need to set row format so that we can index fields longer than 255 characters.
-            $table->engine = 'InnoDB ROW_FORMAT=COMPRESSED';
         });
 
         if (DB::schema()->hasColumn('media', 'm_filename')) {
