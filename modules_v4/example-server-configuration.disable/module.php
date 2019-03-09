@@ -7,6 +7,7 @@ use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Illuminate\Database\Capsule\Manager as DB;
+use function realpath;
 
 /**
  * An example module to modify PHP and database configuration.
@@ -70,6 +71,10 @@ return new class extends AbstractModule implements ModuleCustomInterface {
             $this->phpTimeLimit();
         }
 
+        if (!$this->server_check_service->isFunctionDisabled('putenv')) {
+            $this->phpEnvironment();
+        }
+
         if (DB::connection()->getDriverName() === 'mysql') {
             $this->mysql();
         }
@@ -88,6 +93,21 @@ return new class extends AbstractModule implements ModuleCustomInterface {
         // a request that will be ignored.
 
         //set_time_limit(45);
+    }
+
+    /**
+     * Modify the PHP environment variables.
+     */
+    private function phpEnvironment(): void
+    {
+        // Some servers block access to the system temporary folder using open_basedir...
+        //
+        // Create a temporary folder somewhere we have read/write access, and tell PHP to use it.
+        //$tmp = __DIR__ . '/../../data/tmp';
+        //if (!is_dir($tmp)) {
+        //    mkdir($tmp);
+        //}
+        //putenv('TMPDIR=' . $tmp);
     }
 
     /**
