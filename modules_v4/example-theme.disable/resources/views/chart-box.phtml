@@ -1,0 +1,5 @@
+<!-- A nice orange border around the existing chart box -->
+<div style="outline: dashed thick orange">
+    <!-- We cannot (yet) use view('::chart-box') to reference the original, as it creates an infinite loop -->
+    <?php include WT_ROOT . '/resources/views/chart-box.phtml'; ?>
+</div>
