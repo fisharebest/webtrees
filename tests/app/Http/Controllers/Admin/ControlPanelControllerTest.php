@@ -56,8 +56,9 @@ class ControlPanelControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testControlPanelManager(): void
     {
-        $controller = new ControlPanelController();
-        $response   = $controller->controlPanelManager();
+        $controller     = new ControlPanelController();
+        $module_service = new ModuleService();
+        $response       = $controller->controlPanelManager($module_service);
 
         $this->assertInstanceOf(Response::class, $response);
     }
