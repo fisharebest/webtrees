@@ -218,7 +218,7 @@ class FunctionsEdit
     }
 
     /**
-     * A list of GEDCOM restrictions (e.g. for an edit control).
+     * A list of GEDCOM restrictions for inline data.
      *
      * @param bool $include_empty
      *
@@ -228,10 +228,32 @@ class FunctionsEdit
     {
         $options = [
             'none'         => I18N::translate('Show to visitors'),
-            // Not valid GEDCOM, but very useful
             'privacy'      => I18N::translate('Show to members'),
             'confidential' => I18N::translate('Show to managers'),
             'locked'       => I18N::translate('Only managers can edit'),
+        ];
+
+        if ($include_empty) {
+            $options = ['' => ''] + $options;
+        }
+
+        return $options;
+    }
+
+    /**
+     * A list of GEDCOM restrictions for privacy rules.
+     *
+     * @param bool $include_empty
+     *
+     * @return string[]
+     */
+    public static function optionsRestrictionsRule($include_empty): array
+    {
+        $options = [
+            'none'         => I18N::translate('Show to visitors'),
+            'privacy'      => I18N::translate('Show to members'),
+            'confidential' => I18N::translate('Show to managers'),
+            'hidden'       => I18N::translate('Hide from everyone'),
         ];
 
         if ($include_empty) {
