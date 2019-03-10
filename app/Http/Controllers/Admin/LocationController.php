@@ -289,8 +289,8 @@ class LocationController extends AbstractAdminController
         $parent_id = (int) $request->get('parent_id');
 
         $files = array_merge(
-            glob(WT_DATA_DIR . 'places/*.csv'),
-            glob(WT_DATA_DIR . 'places/*.geojson')
+            glob(WT_DATA_DIR . 'places/*.csv', GLOB_NOSORT),
+            glob(WT_DATA_DIR . 'places/*.geojson', GLOB_NOSORT)
         );
 
         $files = array_map(function (string $place): string {

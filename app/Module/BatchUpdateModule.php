@@ -337,7 +337,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
     private function getPluginList(): array
     {
         $plugins = [];
-        $files   = glob(__DIR__ . '/BatchUpdate/BatchUpdate*Plugin.php');
+        $files   = glob(__DIR__ . '/BatchUpdate/BatchUpdate*Plugin.php', GLOB_NOSORT);
 
         foreach ($files as $file) {
             $base_class = basename($file, '.php');

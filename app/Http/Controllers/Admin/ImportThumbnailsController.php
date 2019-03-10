@@ -215,7 +215,7 @@ class ImportThumbnailsController extends AbstractAdminController
         // Second option - a .PNG thumbnail for some other image type
         if (substr_compare($original, '.png', -4, 4) === 0) {
             $pattern = substr($original, 0, -3) . '*';
-            $matches = glob($pattern);
+            $matches = glob($pattern, GLOB_NOSORT);
             if (!empty($matches) && is_file($matches[0])) {
                 $original = $matches[0];
             }

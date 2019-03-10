@@ -26,6 +26,7 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Translation;
 use Fisharebest\Localization\Translator;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use const GLOB_NOSORT;
 
 /**
  * Internationalization (i18n) and localization (l10n).
@@ -468,7 +469,7 @@ class I18N
     {
         $locales = [];
 
-        foreach (glob(WT_ROOT . 'resources/lang/*/messages.mo') as $file) {
+        foreach (glob(WT_ROOT . 'resources/lang/*/messages.mo', GLOB_NOSORT) as $file) {
             try {
                 $locales[] = Locale::create(basename(dirname($file)));
             } catch (DomainException $ex) {
