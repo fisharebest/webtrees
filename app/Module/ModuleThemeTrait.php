@@ -33,17 +33,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 trait ModuleThemeTrait
 {
-    /** @var  Request */
-    protected $request;
-
-    /**
-     * @param Request   $request
-     */
-    public function __construct(Request $request)
-    {
-        $this->request = $request;
-    }
-
     /**
      * Add markup to the secondary menu.
      *
@@ -285,11 +274,13 @@ trait ModuleThemeTrait
      */
     public function menuChangeBlocks(Tree $tree): ?Menu
     {
-        if (Auth::check() && $this->request->get('route') === 'user-page') {
+        $request = app(Request::class);
+
+        if (Auth::check() && $request->get('route') === 'user-page') {
             return new Menu(I18N::translate('Customize this page'), route('user-page-edit', ['ged' => $tree->name()]), 'menu-change-blocks');
         }
 
-        if (Auth::isManager($tree) && $this->request->get('route') === 'tree-page') {
+        if (Auth::isManager($tree) && $request->get('route') === 'tree-page') {
             return new Menu(I18N::translate('Customize this page'), route('tree-page-edit', ['ged' => $tree->name()]), 'menu-change-blocks');
         }
 
@@ -353,7 +344,7 @@ trait ModuleThemeTrait
         }
 
         // Return to this page after login...
-        $url = $this->request->getRequestUri();
+        $url = app(Request::class)->getRequestUri();
 
         // ...but switch from the tree-page to the user-page
         $url = str_replace('route=tree-page', 'route=user-page', $url);
@@ -484,7 +475,7 @@ trait ModuleThemeTrait
         if ($tree instanceof Tree && $tree->hasPendingEdit() && Auth::isModerator($tree)) {
             $url = route('show-pending', [
                 'ged' => $tree->name(),
-                'url' => $this->request->getRequestUri(),
+                'url' => app(Request::class)->getRequestUri(),
             ]);
 
             return new Menu(I18N::translate('Pending changes'), $url, 'menu-pending');
