@@ -962,17 +962,25 @@ class FunctionsEdit
                 'PAGE',
                 'DATA',
             ],
-            'DATA' => ['TEXT'],
             'PLAC' => ['MAP'],
             'MAP'  => [
                 'LATI',
                 'LONG',
             ],
         ];
+        
+        if ('SOUR' !== $record::RECORD_TYPE) {
+          //source citations within other records, i.e. n SOUR / +1 DATA / +2 TEXT
+          $expected_subtags['DATA'][] = 'TEXT';
+        } //else: source records themselves, i.e. 0 SOUR / 1 DATA don't get a 2 TEXT!
 
         if ($record->tree()->getPreference('FULL_SOURCES')) {
             $expected_subtags['SOUR'][] = 'QUAY';
-            $expected_subtags['DATA'][] = 'DATE';
+            
+            if ('SOUR' !== $record::RECORD_TYPE) {
+              //source citations within other records, i.e. n SOUR / +1 DATA / +2 DATE
+              $expected_subtags['DATA'][] = 'DATE';
+            } //else: source records themselves, i.e. 0 SOUR / 1 DATA don't get a 2 DATE!
         }
 
         if (GedcomCodeTemp::isTagLDS($level1type)) {
@@ -1065,7 +1073,9 @@ class FunctionsEdit
         }
 
         if ($level1type !== '_PRIM') {
-            self::insertMissingSubtags($tree, $level1type, $add_date);
+          //0 SOUR / 1 DATA doesn't get a 2 DATE!
+          $add_date = $add_date && ('SOUR' !== $record::RECORD_TYPE);
+          self::insertMissingSubtags($tree, $level1type, $add_date);
         }
     }
 
