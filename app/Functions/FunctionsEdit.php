@@ -247,7 +247,7 @@ class FunctionsEdit
      *
      * @return string[]
      */
-    public static function optionsRestrictionsRule($include_empty): array
+    public static function optionsRestrictionsRule(): array
     {
         $options = [
             'none'         => I18N::translate('Show to visitors'),
@@ -255,10 +255,6 @@ class FunctionsEdit
             'confidential' => I18N::translate('Show to managers'),
             'hidden'       => I18N::translate('Hide from everyone'),
         ];
-
-        if ($include_empty) {
-            $options = ['' => ''] + $options;
-        }
 
         return $options;
     }
