@@ -740,17 +740,31 @@ class FunctionsEdit
                 'PAGE',
                 'DATA',
             ],
-            'DATA' => ['TEXT'],
             'PLAC' => ['MAP'],
             'MAP'  => [
                 'LATI',
                 'LONG',
             ],
         ];
+        
+        if ($record::RECORD_TYPE !== 'SOUR') {
+          //source citations within other records, i.e. n SOUR / +1 DATA / +2 TEXT
+          $expected_subtags['DATA'][] = 'TEXT';
+        } //else: source records themselves, i.e. 0 SOUR / 1 DATA don't get a 2 TEXT!
 
+        if ($record::RECORD_TYPE === 'SOUR') {
+         //source records themselves, i.e. 0 SOUR / 1 DATA / 2 EVEN get a 3 DATE and a 3 PLAC
+          $expected_subtags['EVEN'][] = 'DATE';
+          $expected_subtags['EVEN'][] = 'PLAC';
+        }
+        
         if ($record->tree()->getPreference('FULL_SOURCES')) {
             $expected_subtags['SOUR'][] = 'QUAY';
-            $expected_subtags['DATA'][] = 'DATE';
+            
+            if ($record::RECORD_TYPE !== 'SOUR') {
+              //source citations within other records, i.e. n SOUR / +1 DATA / +2 DATE
+              $expected_subtags['DATA'][] = 'DATE';
+            } //else: source records themselves, i.e. 0 SOUR / 1 DATA don't get a 2 DATE!
         }
 
         if (GedcomCodeTemp::isTagLDS($level1type)) {
@@ -843,7 +857,11 @@ class FunctionsEdit
         }
 
         if ($level1type !== '_PRIM') {
+          //0 SOUR / 1 DATA doesn't get a 2 DATE!
+          //0 SOUR / 1 DATA doesn't get a 2 EVEN here either, we rather handle this via cards/add-sour-data-even         
+          if ($record::RECORD_TYPE !== 'SOUR') {
             self::insertMissingSubtags($tree, $level1type, $add_date);
+          }          
         }
     }
 
