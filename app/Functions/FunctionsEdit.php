@@ -974,6 +974,12 @@ class FunctionsEdit
           $expected_subtags['DATA'][] = 'TEXT';
         } //else: source records themselves, i.e. 0 SOUR / 1 DATA don't get a 2 TEXT!
 
+        if ('SOUR' === $record::RECORD_TYPE) {
+         //source records themselves, i.e. 0 SOUR / 1 DATA / 2 EVEN get a 3 DATE and a 3 PLAC
+          $expected_subtags['EVEN'][] = 'DATE';
+          $expected_subtags['EVEN'][] = 'PLAC';
+        }
+        
         if ($record->tree()->getPreference('FULL_SOURCES')) {
             $expected_subtags['SOUR'][] = 'QUAY';
             
@@ -1074,8 +1080,10 @@ class FunctionsEdit
 
         if ($level1type !== '_PRIM') {
           //0 SOUR / 1 DATA doesn't get a 2 DATE!
-          $add_date = $add_date && ('SOUR' !== $record::RECORD_TYPE);
-          self::insertMissingSubtags($tree, $level1type, $add_date);
+          //0 SOUR / 1 DATA doesn't get a 2 EVEN here either, we rather handle this via cards/add-sour-data-even         
+          if ('SOUR' !== $record::RECORD_TYPE) {
+            self::insertMissingSubtags($tree, $level1type, $add_date);
+          }          
         }
     }
 
@@ -1124,7 +1132,7 @@ class FunctionsEdit
                         echo self::addSimpleTag($tree, '3 MAP');
                         echo self::addSimpleTag($tree, '4 LATI');
                         echo self::addSimpleTag($tree, '4 LONG');
-                        break;
+                        break;                        
                     case 'EVEN':
                         echo self::addSimpleTag($tree, '3 DATE');
                         echo self::addSimpleTag($tree, '3 PLAC');
