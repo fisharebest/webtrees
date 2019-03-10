@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -317,8 +318,19 @@ class FunctionsPrint
                 }
             }
         } elseif (strpos($factrec, "\n2 PLAC ") === false && in_array($fact, Config::emptyFacts())) {
-            // There is no DATE.  If there is also no PLAC, then print "yes"
-            $html .= I18N::translate('yes');
+            //note: the decision whether to print "yes" for emptyFacts doesn't always depend on DATE and PLAC only,
+            //and therefore doesn't actually belong here.            
+            if ($record instanceof Source) {
+                //0 SOUR / 1 DATA
+                //never has DATE and PLAC.
+                //we only have to print "yes" if it has no subtags at all (which doesn't make much sense semantically but is allowed)
+                if (($fact === 'DATA') and (strpos($factrec, "\n2 ") === false)) {
+                  $html .= I18N::translate('yes');
+                }
+            } else {
+                // There is no DATE.  If there is also no PLAC, then print "yes"
+                $html .= I18N::translate('yes');        
+            }      
         }
         // print gedcom ages
         foreach ([
