@@ -432,6 +432,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
         // Update _MARNM field from _MARNM_SURN field and display it
         // Be careful of mixing latin/hebrew/etc. character sets.
         var ip       = document.getElementsByTagName("input");
+        var locale   = document.documentElement.lang;
         var marnm_id = "";
         var romn     = "";
         var heb      = "";
@@ -446,12 +447,20 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
                     var msurn = "";
                     if (val !== "") {
                         var lc = lang_class(document.getElementById(ip[i].id).value);
-                        if (lang_class(name) === lc)
-                            msurn = trim(npfx + " " + givn + " /" + val + "/ " + nsfx);
-                        else if (lc === "hebrew")
+                        if (lang_class(name) === lc) {
+                            // See generate_name()
+                            if (locale === "vi" || locale === "hu") {
+                                // Default format: /SURN/ GIVN
+                                msurn = trim(npfx + " /" + val + "/ " + givn + " " + nsfx);
+                            } else {
+                                // Default format: GIVN /SURN/
+                                msurn = trim(npfx + " " + givn + " /" + val + "/ " + nsfx);
+                            }
+                        } else if (lc === "hebrew") {
                             msurn = heb.replace(/\/.*\//, "/" + val + "/");
-                        else if (lang_class(romn) === lc)
+                        } else if (lang_class(romn) === lc) {
                             msurn = romn.replace(/\/.*\//, "/" + val + "/");
+                        }
                     }
                     document.getElementById(marnm_id).value                  = msurn;
                     document.getElementById(marnm_id + "_display").innerHTML = msurn;
