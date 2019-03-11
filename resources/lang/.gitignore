@@ -1,3 +1,4 @@
 */*.mo
 !en-US/messages.mo
+!zh-Hans/messages.mo
 webtees.pot
