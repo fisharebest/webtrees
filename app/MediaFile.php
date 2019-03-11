@@ -225,11 +225,7 @@ class MediaFile
             // Generate multiple images for displays with higher pixel densities.
             $src    = $this->imageUrl($width, $height, $fit);
             $srcset = [];
-            foreach ([
-                         2,
-                         3,
-                         4,
-                     ] as $x) {
+            foreach ([2, 3, 4] as $x) {
                 $srcset[] = $this->imageUrl($width * $x, $height * $x, $fit) . ' ' . $x . 'x';
             }
         }
@@ -360,7 +356,7 @@ class MediaFile
     {
         $MEDIA_DIRECTORY = $this->media->tree()->getPreference('MEDIA_DIRECTORY');
 
-        if ($this->isExternal() || !$this->multimedia_file_refn) {
+        if ($this->multimedia_file_refn === '' || $this->isExternal()) {
             // External image, or (in the case of corrupt GEDCOM data) no image at all
             return $this->multimedia_file_refn;
         }

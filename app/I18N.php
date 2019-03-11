@@ -26,6 +26,7 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Translation;
 use Fisharebest\Localization\Translator;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use const GLOB_NOSORT;
 
 /**
  * Internationalization (i18n) and localization (l10n).
@@ -380,8 +381,6 @@ class I18N
      */
     public static function init(string $code = '', Tree $tree = null): string
     {
-        mb_internal_encoding('UTF-8');
-
         if ($code !== '') {
             // Create the specified locale
             self::$locale = Locale::create($code);
@@ -470,9 +469,9 @@ class I18N
     {
         $locales = [];
 
-        foreach (glob(WT_ROOT . 'resources/lang/*/messages.mo') as $file) {
+        foreach (glob(WT_ROOT . 'resources/lang/*/messages.mo', GLOB_NOSORT) as $file) {
             try {
-                $locales[] = Locale::create(basename($file, '.mo'));
+                $locales[] = Locale::create(basename(dirname($file)));
             } catch (DomainException $ex) {
                 // Not a recognised locale
             }

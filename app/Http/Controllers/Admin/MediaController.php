@@ -192,7 +192,7 @@ class MediaController extends AbstractAdminController
 
                     $media_files = $media->mediaFiles()
                         ->filter(function (MediaFile $media_file) use ($row): bool {
-                            return $media_file->filename() == $row->multimedia_file_refn;
+                            return $media_file->filename() === $row->multimedia_file_refn;
                         })
                         ->map(function (MediaFile $media_file): string {
                             return $media_file->displayImage(150, 150, '', []);

@@ -141,14 +141,20 @@ use Illuminate\Support\Collection;
             </thead>
             <tbody>
                 <?= view('admin/control-panel-tree-list', [
-                    'all_trees'    => $all_trees,
-                    'changes'      => $changes,
-                    'individuals'  => $individuals,
-                    'families'     => $families,
-                    'sources'      => $sources,
-                    'repositories' => $repositories,
-                    'media'        => $media,
-                    'notes'        => $notes,
+                    'all_trees'              => $all_trees,
+                    'changes'                => $changes,
+                    'families'               => $families,
+                    'individuals'            => $individuals,
+                    'media'                  => $media,
+                    'notes'                  => $notes,
+                    'repositories'           => $repositories,
+                    'sources'                => $sources,
+                    'family_list_module'     => $family_list_module,
+                    'individual_list_module' => $individual_list_module,
+                    'media_list_module'      => $media_list_module,
+                    'note_list_module'       => $note_list_module,
+                    'repository_list_module' => $repository_list_module,
+                    'source_list_module'     => $source_list_module,
                 ]); ?>
             </tbody>
             <tfoot>

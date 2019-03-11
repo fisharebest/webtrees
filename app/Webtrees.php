@@ -64,6 +64,8 @@ class Webtrees
      */
     public static function init(): void
     {
+        mb_internal_encoding('UTF-8');
+
         // Show all errors and warnings in development, fewer in production.
         error_reporting(self::ERROR_REPORTING);
 

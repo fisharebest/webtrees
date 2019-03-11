@@ -299,7 +299,7 @@ class ModuleService
     private function customModules(): Collection
     {
         $pattern   = WT_ROOT . Webtrees::MODULES_PATH . '*/module.php';
-        $filenames = glob($pattern);
+        $filenames = glob($pattern, GLOB_NOSORT);
 
         return Collection::make($filenames)
             ->filter(function (string $filename): bool {
@@ -323,13 +323,15 @@ class ModuleService
 
                     return $module;
                 } catch (Throwable $ex) {
-                    $message = '<pre>' . e($ex->getMessage()) . "\n" . e($ex->getTraceAsString()) . '</pre>';
-                    FlashMessages::addMessage($message, 'danger');
-
-                    return null;
+                    // It would be nice to show this error in a flash-message or similar, but the framework
+                    // has not yet been initialised so we have no themes, languages, sessions, etc.
+                    throw $ex;
                 }
             })
-            ->filter();
+            ->filter()
+            ->mapWithKeys(function (ModuleCustomInterface $module): array {
+                return [$module->name() => $module];
+            });
     }
 
     /**

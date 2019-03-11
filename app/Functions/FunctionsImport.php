@@ -771,7 +771,7 @@ class FunctionsImport
                     DB::table('media_file')->insert([
                         'm_id'                 => $xref,
                         'm_file'               => $tree_id,
-                        'multimedia_file_refn' => mb_substr($media_file->filename(), 0, 512),
+                        'multimedia_file_refn' => mb_substr($media_file->filename(), 0, 248),
                         'multimedia_format'    => mb_substr($media_file->format(), 0, 4),
                         'source_media_type'    => mb_substr($media_file->type(), 0, 15),
                         'descriptive_title'    => mb_substr($media_file->title(), 0, 248),
@@ -1024,7 +1024,7 @@ class FunctionsImport
         $xref = DB::table('media_file')
             ->where('m_file', '=', $tree->id())
             ->where('descriptive_title', '=', $titl)
-            ->where('multimedia_file_refn', '=', $file)
+            ->where('multimedia_file_refn', '=', mb_substr($file, 0, 248))
             ->value('m_id');
 
         if (!$xref) {
@@ -1058,7 +1058,7 @@ class FunctionsImport
                 DB::table('media_file')->insert([
                     'm_id'                 => $xref,
                     'm_file'               => $tree->id(),
-                    'multimedia_file_refn' => mb_substr($media_file->filename(), 0, 512),
+                    'multimedia_file_refn' => mb_substr($media_file->filename(), 0, 248),
                     'multimedia_format'    => mb_substr($media_file->format(), 0, 4),
                     'source_media_type'    => mb_substr($media_file->type(), 15),
                     'descriptive_title'    => mb_substr($media_file->title(), 248),

@@ -218,7 +218,7 @@ class FunctionsEdit
     }
 
     /**
-     * A list of GEDCOM restrictions (e.g. for an edit control).
+     * A list of GEDCOM restrictions for inline data.
      *
      * @param bool $include_empty
      *
@@ -228,7 +228,6 @@ class FunctionsEdit
     {
         $options = [
             'none'         => I18N::translate('Show to visitors'),
-            // Not valid GEDCOM, but very useful
             'privacy'      => I18N::translate('Show to members'),
             'confidential' => I18N::translate('Show to managers'),
             'locked'       => I18N::translate('Only managers can edit'),
@@ -237,6 +236,25 @@ class FunctionsEdit
         if ($include_empty) {
             $options = ['' => ''] + $options;
         }
+
+        return $options;
+    }
+
+    /**
+     * A list of GEDCOM restrictions for privacy rules.
+     *
+     * @param bool $include_empty
+     *
+     * @return string[]
+     */
+    public static function optionsRestrictionsRule(): array
+    {
+        $options = [
+            'none'         => I18N::translate('Show to visitors'),
+            'privacy'      => I18N::translate('Show to members'),
+            'confidential' => I18N::translate('Show to managers'),
+            'hidden'       => I18N::translate('Hide from everyone'),
+        ];
 
         return $options;
     }
@@ -582,7 +600,7 @@ class FunctionsEdit
                     'census_places' => Census::censusPlaces(WT_LOCALE),
                 ]);
 
-                $census_assistant = app(ModuleService::class)->findByInterface(CensusAssistantModule::class);
+                $census_assistant = app(ModuleService::class)->findByInterface(CensusAssistantModule::class)->first();
                 $record           = Individual::getInstance($xref, $tree);
 
                 if ($census_assistant instanceof CensusAssistantModule && $record instanceof Individual) {
