@@ -31,7 +31,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
-use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemInterface;
 use stdClass;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -71,11 +71,11 @@ class AdminSiteController extends AbstractBaseController
     /**
      * Show old user files in the data folder.
      *
-     * @param Filesystem $filesystem
+     * @param FilesystemInterface $filesystem
      *
      * @return Response
      */
-    public function cleanData(Filesystem $filesystem): Response
+    public function cleanData(FilesystemInterface $filesystem): Response
     {
         $protected = [
             '.htaccess',
@@ -107,12 +107,12 @@ class AdminSiteController extends AbstractBaseController
     /**
      * Delete old user files in the data folder.
      *
-     * @param Request    $request
-     * @param Filesystem $filesystem
+     * @param Request             $request
+     * @param FilesystemInterface $filesystem
      *
      * @return RedirectResponse
      */
-    public function cleanDataAction(Request $request, Filesystem $filesystem): RedirectResponse
+    public function cleanDataAction(Request $request, FilesystemInterface $filesystem): RedirectResponse
     {
         $to_delete = (array) $request->get('to_delete');
         $to_delete = array_filter($to_delete);
@@ -260,47 +260,6 @@ class AdminSiteController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     *
-     * @return Response
-     */
-    public function logsDelete(Request $request): Response
-    {
-        $this->logsQuery($request)->delete();
-
-        return new Response('');
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return Response
-     */
-    public function logsExport(Request $request): Response
-    {
-        $content = $this->logsQuery($request)
-            ->orderBy('log_id')
-            ->get()
-            ->map(function (stdClass $row): string {
-                return
-                    '"' . $row->log_time . '",' .
-                    '"' . $row->log_type . '",' .
-                    '"' . str_replace('"', '""', $row->log_message) . '",' .
-                    '"' . $row->ip_address . '",' .
-                    '"' . str_replace('"', '""', $row->user_name) . '",' .
-                    '"' . str_replace('"', '""', $row->gedcom_name) . '"' .
-                    "\n";
-            })
-            ->implode('');
-
-        $response = new Response($content);
-        $response->headers->set('Content-Type', 'text/plain');
-        $response->headers->set('Content-Disposition', 'attachment; filename="webtrees-logs.csv');
-
-        return $response;
-    }
-
-    /**
      * Generate a query for filtering the site log.
      *
      * @param Request $request
@@ -355,6 +314,47 @@ class AdminSiteController extends AbstractBaseController
     }
 
     /**
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function logsDelete(Request $request): Response
+    {
+        $this->logsQuery($request)->delete();
+
+        return new Response('');
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function logsExport(Request $request): Response
+    {
+        $content = $this->logsQuery($request)
+            ->orderBy('log_id')
+            ->get()
+            ->map(function (stdClass $row): string {
+                return
+                    '"' . $row->log_time . '",' .
+                    '"' . $row->log_type . '",' .
+                    '"' . str_replace('"', '""', $row->log_message) . '",' .
+                    '"' . $row->ip_address . '",' .
+                    '"' . str_replace('"', '""', $row->user_name) . '",' .
+                    '"' . str_replace('"', '""', $row->gedcom_name) . '"' .
+                    "\n";
+            })
+            ->implode('');
+
+        $response = new Response($content);
+        $response->headers->set('Content-Type', 'text/plain');
+        $response->headers->set('Content-Disposition', 'attachment; filename="webtrees-logs.csv');
+
+        return $response;
+    }
+
+    /**
      * @return Response
      */
     public function mailForm(): Response
@@ -369,6 +369,42 @@ class AdminSiteController extends AbstractBaseController
             'mail_transport_options' => $mail_transport_options,
             'title'                  => $title,
         ]);
+    }
+
+    /**
+     * A list SSL modes (e.g. for an edit control).
+     *
+     * @return string[]
+     */
+    private function mailSslOptions(): array
+    {
+        return [
+            'none' => I18N::translate('none'),
+            /* I18N: Secure Sockets Layer - a secure communications protocol*/
+            'ssl'  => I18N::translate('ssl'),
+            /* I18N: Transport Layer Security - a secure communications protocol */
+            'tls'  => I18N::translate('tls'),
+        ];
+    }
+
+    /**
+     * A list SSL modes (e.g. for an edit control).
+     *
+     * @return string[]
+     */
+    private function mailTransportOptions(): array
+    {
+        $options = [
+            /* I18N: "sendmail" is the name of some mail software */
+            'sendmail' => I18N::translate('Use sendmail to send messages'),
+            'external' => I18N::translate('Use SMTP to send messages'),
+        ];
+
+        if (!function_exists('proc_open')) {
+            unset($options['sendmail']);
+        }
+
+        return $options;
     }
 
     /**
@@ -410,6 +446,17 @@ class AdminSiteController extends AbstractBaseController
             'max_execution_time' => (int) get_cfg_var('max_execution_time'),
             'title'              => $title,
         ]);
+    }
+
+    /**
+     * @return Collection
+     * @return string[]
+     */
+    private function themeOptions(): Collection
+    {
+        return $this->module_service
+            ->findByInterface(ModuleThemeInterface::class)
+            ->map($this->module_service->titleMapper());
     }
 
     /**
@@ -455,6 +502,22 @@ class AdminSiteController extends AbstractBaseController
     }
 
     /**
+     * A list of registration rules (e.g. for an edit control).
+     *
+     * @return string[]
+     */
+    private function registrationTextOptions(): array
+    {
+        return [
+            0 => I18N::translate('No predefined text'),
+            1 => I18N::translate('Predefined text that states all users can request a user account'),
+            2 => I18N::translate('Predefined text that states admin will decide on each request for a user account'),
+            3 => I18N::translate('Predefined text that states only family members can request a user account'),
+            4 => I18N::translate('Choose user defined welcome text typed below'),
+        ];
+    }
+
+    /**
      * @param Request $request
      *
      * @return RedirectResponse
@@ -489,68 +552,5 @@ class AdminSiteController extends AbstractBaseController
             'title'   => I18N::translate('Server information'),
             'phpinfo' => $phpinfo,
         ]);
-    }
-
-    /**
-     * A list SSL modes (e.g. for an edit control).
-     *
-     * @return string[]
-     */
-    private function mailSslOptions(): array
-    {
-        return [
-            'none' => I18N::translate('none'),
-            /* I18N: Secure Sockets Layer - a secure communications protocol*/
-            'ssl'  => I18N::translate('ssl'),
-            /* I18N: Transport Layer Security - a secure communications protocol */
-            'tls'  => I18N::translate('tls'),
-        ];
-    }
-
-    /**
-     * A list SSL modes (e.g. for an edit control).
-     *
-     * @return string[]
-     */
-    private function mailTransportOptions(): array
-    {
-        $options = [
-            /* I18N: "sendmail" is the name of some mail software */
-            'sendmail' => I18N::translate('Use sendmail to send messages'),
-            'external' => I18N::translate('Use SMTP to send messages'),
-        ];
-
-        if (!function_exists('proc_open')) {
-            unset($options['sendmail']);
-        }
-
-        return $options;
-    }
-
-    /**
-     * A list of registration rules (e.g. for an edit control).
-     *
-     * @return string[]
-     */
-    private function registrationTextOptions(): array
-    {
-        return [
-            0 => I18N::translate('No predefined text'),
-            1 => I18N::translate('Predefined text that states all users can request a user account'),
-            2 => I18N::translate('Predefined text that states admin will decide on each request for a user account'),
-            3 => I18N::translate('Predefined text that states only family members can request a user account'),
-            4 => I18N::translate('Choose user defined welcome text typed below'),
-        ];
-    }
-
-    /**
-     * @return Collection
-     * @return string[]
-     */
-    private function themeOptions(): Collection
-    {
-        return $this->module_service
-            ->findByInterface(ModuleThemeInterface::class)
-            ->map($this->module_service->titleMapper());
     }
 }
