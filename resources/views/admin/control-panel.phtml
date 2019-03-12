@@ -318,7 +318,7 @@ use Illuminate\Support\Collection;
         </ul>
 
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <h3>
                     <?= I18N::translate('Genealogy') ?>
                 </h3>
@@ -389,6 +389,10 @@ use Illuminate\Support\Collection;
                     </li>
                 </ul>
 
+            </div>
+
+            <div class="col-sm-4">
+
                 <h3>
                     <?= I18N::translate('Home page') ?>
                 </h3>
@@ -402,9 +406,7 @@ use Illuminate\Support\Collection;
                         <?= view('components/badge', ['count' => $block_modules_enabled->count(), 'total' => $block_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                 </ul>
-            </div>
 
-            <div class="col-sm-6">
                 <h3>
                     <?= I18N::translate('Individual page') ?>
                 </h3>
@@ -433,6 +435,10 @@ use Illuminate\Support\Collection;
                     </li>
                 </ul>
 
+            </div>
+
+            <div class="col-sm-4">
+
                 <h3>
                     <?= I18N::translate('Other') ?>
                 </h3>
@@ -449,7 +455,7 @@ use Illuminate\Support\Collection;
                             <?php elseif ($module->isEnabled()) : ?>
                                 <?= $module->title() ?>
                             <?php else : ?>
-                                <del class="text-muted"><?= $module->title() ?></del>
+                                <span class="text-muted"><?= $module->title() ?></span>
                             <?php endif ?>
                             <?php if ($module instanceof ModuleCustomInterface): ?>
                                 <?= view('admin/custom-module-info', ['module' => $module]) ?>

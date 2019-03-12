@@ -585,7 +585,7 @@ class ModuleService
      */
     public function otherModules(bool $include_disabled = false): Collection
     {
-        return $this->all($include_disabled)
+        return $this->findByInterface(ModuleInterface::class, $include_disabled, true)
             ->filter(function (ModuleInterface $module): bool {
                 foreach (self::COMPONENTS as $interface) {
                     if ($module instanceof $interface) {

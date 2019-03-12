@@ -33,12 +33,6 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
     /** @var Request */
     protected $request;
 
-    // We only need to show a warning if we are using tracking
-    protected const TRACKING_MODULES = [
-        GoogleAnalyticsModule::class,
-        MatomoAnalyticsModule::class,
-        StatcounterModule::class,
-    ];
     /**
      * @var ModuleService
      */
@@ -101,7 +95,7 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
             return '';
         }
 
-        if ($this->siteUsesAnalyticss()) {
+        if ($this->siteUsesAnalytics()) {
             return view('modules/cookie-warning/footer');
         }
 
@@ -121,21 +115,13 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
     /**
      * @return bool
      */
-    protected function siteUsesAnalyticss(): bool
+    protected function siteUsesAnalytics(): bool
     {
-        // If the browser sets the DNT header, then we won't use analytics.
-        if ($this->request->server->get('HTTP_DNT') === '1') {
-            return false;
-        }
-
-        foreach (self::TRACKING_MODULES as $class) {
-            $module = $this->module_service->findByInterface($class);
-
-            if (($module instanceof ModuleAnalyticsInterface) && $module->analyticsCanShow()) {
-                return true;
-            }
-        }
-
-        return false;
+        return $this->module_service
+            ->findByInterface(ModuleAnalyticsInterface::class)
+            ->filter(function (ModuleAnalyticsInterface $module): bool {
+                return $module->analyticsCanShow();
+            })
+            ->isNotEmpty();
     }
 }

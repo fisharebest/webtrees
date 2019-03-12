@@ -1,7 +1,10 @@
 <?php use Fisharebest\Webtrees\DebugBar; ?>
 <?php use Fisharebest\Webtrees\FlashMessages; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php use Fisharebest\Webtrees\Module\ModuleCustomInterface;
+use Fisharebest\Webtrees\Module\ModuleGlobalInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\View; ?>
 <?php use Symfony\Component\HttpFoundation\Request; ?>
 
 <!DOCTYPE html>
@@ -19,6 +22,8 @@
         <link rel="stylesheet" href="<?= e(asset('css/administration.min.css')) ?>">
 
         <?= View::stack('styles') ?>
+
+        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(function (ModuleGlobalInterface $module): string { return $module instanceof ModuleCustomInterface ? '' : $module->headContent(); })->implode('') ?>
 
         <?= DebugBar::renderHead() ?>
     </head>
@@ -67,6 +72,8 @@
         <script src="<?= e(asset('js/webtrees.min.js')) ?>"></script>
 
         <?= View::stack('javascript') ?>
+
+        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(function (ModuleGlobalInterface $module): string { return $module instanceof ModuleCustomInterface ? '' : $module->bodyContent(); })->implode('') ?>
 
         <?= DebugBar::render() ?>
     </body>

@@ -68,6 +68,16 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
     }
 
     /**
+     * Should this module be enabled when it is first installed?
+     *
+     * @return bool
+     */
+    public function isEnabledByDefault(): bool
+    {
+        return false;
+    }
+
+    /**
      * @return Response
      */
     public function getAdminAction(): Response

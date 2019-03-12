@@ -63,6 +63,13 @@ trait ModuleAnalyticsTrait
      */
     public function analyticsCanShow(): bool
     {
+        // If the browser sets the DNT header, then we won't use analytics.
+        $request = app(Request::class);
+
+        if ($request->server->get('HTTP_DNT') === '1') {
+            return false;
+        }
+
         foreach ($this->analyticsParameters() as $parameter) {
             if ($parameter === '') {
                 return false;

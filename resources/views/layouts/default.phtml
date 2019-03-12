@@ -3,6 +3,7 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleFooterInterface; ?>
+<?php use Fisharebest\Webtrees\Module\ModuleGlobalInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleThemeInterface; ?>
 <?php use Fisharebest\Webtrees\Services\ModuleService; ?>
 <?php use Fisharebest\Webtrees\View; ?>
@@ -54,7 +55,7 @@
 
         <?= View::stack('styles') ?>
 
-        <?= app(ModuleService::class)->findByInterface(ModuleAnalyticsInterface::class)->filter(function (ModuleAnalyticsInterface $module): bool { return $module->analyticsCanShow(); })->map(function (ModuleAnalyticsInterface $module): string { return $module->analyticsSnippet($module->analyticsParameters()); })->implode('') ?>
+        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(function (ModuleGlobalInterface $module): string { return $module->headContent(); })->implode('') ?>
 
         <?= DebugBar::renderHead() ?>
     </head>
@@ -148,6 +149,8 @@
     </script>
 
         <?= View::stack('javascript') ?>
+
+        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(function (ModuleGlobalInterface $module): string { return $module->bodyContent(); })->implode('') ?>
 
         <?= DebugBar::render() ?>
     </body>
