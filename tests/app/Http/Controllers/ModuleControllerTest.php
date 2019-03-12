@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Module\SiteMapModule;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -92,8 +93,15 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testSucessfulAction(): void
     {
+        // The sitemap module is disabled by defualt.
+        $module_service = $this->createMock(ModuleService::class);
+        $module_service
+            ->method('findByName')
+            ->with('sitemap')
+            ->willReturn(new SiteMapModule());
+
         $request    = new Request(['route' => 'module', 'module' => 'sitemap', 'action' => 'Index']);
-        $controller = new ModuleController(new ModuleService());
+        $controller = new ModuleController($module_service);
         $response   = $controller->action($request, Auth::user());
 
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
