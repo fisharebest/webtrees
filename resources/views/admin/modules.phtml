@@ -34,7 +34,7 @@
     </div>
 <?php endforeach ?>
 
-<form method="POST">
+<form method="post">
     <input type="hidden" name="route" value="admin-update-module-status">
     <?= csrf_field() ?>
     <table class="table table-bordered table-hover table-sm table-module-administration" data-info="false" data-paging="false" data-state-save="true" data-filter="false">
@@ -127,12 +127,16 @@
                     </td>
                     <td class="text-center text-muted" title="<?= I18N::translate('Preferences') ?>">
                         <?php if ($module instanceof ModuleConfigInterface) : ?>
-                            <a href="<?= e($module->getConfigLink()) ?>" title="<?= I18N::translate('Preferences') ?>">
+                            <?php if ($module->isEnabled()) : ?>
+                                <a href="<?= e($module->getConfigLink()) ?>" title="<?= I18N::translate('Preferences') ?>">
+                                    <?= view('icons/preferences') ?>
+                                    <span class="sr-only">
+                                        <?= I18N::translate('Preferences') ?>
+                                    </span>
+                                </a>
+                            <?php else : ?>
                                 <?= view('icons/preferences') ?>
-                                <span class="sr-only">
-                                    <?= I18N::translate('Preferences') ?>
-                                </span>
-                            </a>
+                            <?php endif ?>
                         <?php endif ?>
                     </td>
                     <td class="text-center text-muted" title="<?= I18N::translate('Menu') ?>">

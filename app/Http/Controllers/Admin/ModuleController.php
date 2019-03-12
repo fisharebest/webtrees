@@ -266,7 +266,7 @@ class ModuleController extends AbstractAdminController
      */
     public function update(Request $request): RedirectResponse
     {
-        $modules = $this->module_service->all();
+        $modules = $this->module_service->all(true);
 
         foreach ($modules as $module) {
             $new_status = (bool) $request->get('status-' . $module->name());

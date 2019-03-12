@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees\Services;
 use Closure;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\AhnentafelReportModule;
 use Fisharebest\Webtrees\Module\AlbumModule;
@@ -46,6 +45,7 @@ use Fisharebest\Webtrees\Module\ColorsTheme;
 use Fisharebest\Webtrees\Module\CompactTreeChartModule;
 use Fisharebest\Webtrees\Module\ContactsFooterModule;
 use Fisharebest\Webtrees\Module\CookieWarningModule;
+use Fisharebest\Webtrees\Module\CustomCssJsModule;
 use Fisharebest\Webtrees\Module\DeathReportModule;
 use Fisharebest\Webtrees\Module\DescendancyChartModule;
 use Fisharebest\Webtrees\Module\DescendancyModule;
@@ -193,6 +193,7 @@ class ModuleService
         'compact-chart'           => CompactTreeChartModule::class,
         'contact-links'           => ContactsFooterModule::class,
         'cookie-warning'          => CookieWarningModule::class,
+        'custom-css-js'           => CustomCssJsModule::class,
         'death_report'            => DeathReportModule::class,
         'descendancy'             => DescendancyModule::class,
         'descendancy_chart'       => DescendancyChartModule::class,
@@ -275,222 +276,6 @@ class ModuleService
     ];
 
     /**
-     * All core modules in the system.
-     *
-     * @return Collection
-     */
-    private function coreModules(): Collection
-    {
-        return Collection::make(self::CORE_MODULES)
-            ->map(function (string $class, string $name): ModuleInterface {
-                $module = app($class);
-
-                $module->setName($name);
-
-                return $module;
-            });
-    }
-
-    /**
-     * All custom modules in the system.  Custom modules are defined in modules_v4/
-     *
-     * @return Collection
-     */
-    private function customModules(): Collection
-    {
-        $pattern   = WT_ROOT . Webtrees::MODULES_PATH . '*/module.php';
-        $filenames = glob($pattern, GLOB_NOSORT);
-
-        return Collection::make($filenames)
-            ->filter(function (string $filename): bool {
-                // Special characters will break PHP variable names.
-                // This also allows us to ignore modules called "foo.example" and "foo.disable"
-                $module_name = basename(dirname($filename));
-
-                return !Str::contains($module_name, ['.', ' ', '[', ']']) && Str::length($module_name) <= 30;
-            })
-            ->map(function (string $filename): ?ModuleCustomInterface {
-                try {
-                    $module = self::load($filename);
-
-                    if ($module instanceof ModuleCustomInterface) {
-                        $module_name = '_' . basename(dirname($filename)) . '_';
-
-                        $module->setName($module_name);
-                    } else {
-                        return null;
-                    }
-
-                    return $module;
-                } catch (Throwable $ex) {
-                    // It would be nice to show this error in a flash-message or similar, but the framework
-                    // has not yet been initialised so we have no themes, languages, sessions, etc.
-                    throw $ex;
-                }
-            })
-            ->filter()
-            ->mapWithKeys(function (ModuleCustomInterface $module): array {
-                return [$module->name() => $module];
-            });
-    }
-
-    /**
-     * All modules.
-     *
-     * @param bool $include_disabled
-     *
-     * @return Collection
-     * @return ModuleInterface[]
-     */
-    public function all(bool $include_disabled = false): Collection
-    {
-        return app('cache.array')->rememberForever('all_modules', function (): Collection {
-            // Modules have a default status, order etc.
-            // We can override these from database settings.
-            $module_info = DB::table('module')
-                ->get()
-                ->mapWithKeys(function (stdClass $row): array {
-                    return [$row->module_name => $row];
-                });
-
-            return $this->coreModules()
-                ->merge($this->customModules())
-                ->map(function (ModuleInterface $module) use ($module_info): ModuleInterface {
-                    $info = $module_info->get($module->name());
-
-                    if ($info instanceof stdClass) {
-                        $module->setEnabled($info->status === 'enabled');
-
-                        if ($module instanceof ModuleFooterInterface && $info->footer_order !== null) {
-                            $module->setFooterOrder((int) $info->footer_order);
-                        }
-
-                        if ($module instanceof ModuleMenuInterface && $info->menu_order !== null) {
-                            $module->setMenuOrder((int) $info->menu_order);
-                        }
-
-                        if ($module instanceof ModuleSidebarInterface && $info->sidebar_order !== null) {
-                            $module->setSidebarOrder((int) $info->sidebar_order);
-                        }
-
-                        if ($module instanceof ModuleTabInterface && $info->tab_order !== null) {
-                            $module->setTabOrder((int) $info->tab_order);
-                        }
-                    } else {
-                        $module->setEnabled($module->isEnabledByDefault());
-
-                        DB::table('module')->insert([
-                            'module_name' => $module->name(),
-                            'status'      => $module->isEnabled() ? 'enabled' : 'disabled',
-                        ]);
-                    }
-
-                    return $module;
-                });
-        })->filter($this->enabledFilter($include_disabled));
-    }
-
-    /**
-     * Load a module in a static scope, to prevent it from modifying local or object variables.
-     *
-     * @param string $filename
-     *
-     * @return mixed
-     */
-    private static function load(string $filename)
-    {
-        return include $filename;
-    }
-
-    /**
-     * A function to sort modules by name
-     *
-     * @return Closure
-     */
-    private function moduleSorter(): Closure
-    {
-        return function (ModuleInterface $x, ModuleInterface $y): int {
-            return I18N::strcasecmp($x->title(), $y->title());
-        };
-    }
-
-    /**
-     * A function to sort footers
-     *
-     * @return Closure
-     */
-    private function footerSorter(): Closure
-    {
-        return function (ModuleFooterInterface $x, ModuleFooterInterface $y): int {
-            return $x->getFooterOrder() <=> $y->getFooterOrder();
-        };
-    }
-
-    /**
-     * A function to sort menus
-     *
-     * @return Closure
-     */
-    private function menuSorter(): Closure
-    {
-        return function (ModuleMenuInterface $x, ModuleMenuInterface $y): int {
-            return $x->getMenuOrder() <=> $y->getMenuOrder();
-        };
-    }
-
-    /**
-     * A function to sort menus
-     *
-     * @return Closure
-     */
-    private function sidebarSorter(): Closure
-    {
-        return function (ModuleSidebarInterface $x, ModuleSidebarInterface $y): int {
-            return $x->getSidebarOrder() <=> $y->getSidebarOrder();
-        };
-    }
-
-    /**
-     * A function to sort menus
-     *
-     * @return Closure
-     */
-    private function tabSorter(): Closure
-    {
-        return function (ModuleTabInterface $x, ModuleTabInterface $y): int {
-            return $x->getTabOrder() <=> $y->getTabOrder();
-        };
-    }
-
-    /**
-     * A function filter modules by type
-     *
-     * @param string $interface
-     *
-     * @return Closure
-     */
-    private function interfaceFilter(string $interface): Closure
-    {
-        return function (ModuleInterface $module) use ($interface): bool {
-            return $module instanceof $interface;
-        };
-    }
-
-    /**
-     * A function filter modules by enabled/disabled
-     *
-     * @param bool $include_disabled
-     *
-     * @return Closure
-     */
-    private function enabledFilter(bool $include_disabled): Closure
-    {
-        return function (ModuleInterface $module) use ($include_disabled): bool {
-            return $include_disabled || $module->isEnabled();
-        };
-    }
-
-    /**
      * A function to convert modules into their titles - to create option lists, etc.
      *
      * @return Closure
@@ -555,6 +340,222 @@ class ModuleService
 
                 return $modules;
         }
+    }
+
+    /**
+     * All modules.
+     *
+     * @param bool $include_disabled
+     *
+     * @return Collection
+     * @return ModuleInterface[]
+     */
+    public function all(bool $include_disabled = false): Collection
+    {
+        return app('cache.array')->rememberForever('all_modules', function (): Collection {
+            // Modules have a default status, order etc.
+            // We can override these from database settings.
+            $module_info = DB::table('module')
+                ->get()
+                ->mapWithKeys(function (stdClass $row): array {
+                    return [$row->module_name => $row];
+                });
+
+            return $this->coreModules()
+                ->merge($this->customModules())
+                ->map(function (ModuleInterface $module) use ($module_info): ModuleInterface {
+                    $info = $module_info->get($module->name());
+
+                    if ($info instanceof stdClass) {
+                        $module->setEnabled($info->status === 'enabled');
+
+                        if ($module instanceof ModuleFooterInterface && $info->footer_order !== null) {
+                            $module->setFooterOrder((int) $info->footer_order);
+                        }
+
+                        if ($module instanceof ModuleMenuInterface && $info->menu_order !== null) {
+                            $module->setMenuOrder((int) $info->menu_order);
+                        }
+
+                        if ($module instanceof ModuleSidebarInterface && $info->sidebar_order !== null) {
+                            $module->setSidebarOrder((int) $info->sidebar_order);
+                        }
+
+                        if ($module instanceof ModuleTabInterface && $info->tab_order !== null) {
+                            $module->setTabOrder((int) $info->tab_order);
+                        }
+                    } else {
+                        $module->setEnabled($module->isEnabledByDefault());
+
+                        DB::table('module')->insert([
+                            'module_name' => $module->name(),
+                            'status'      => $module->isEnabled() ? 'enabled' : 'disabled',
+                        ]);
+                    }
+
+                    return $module;
+                });
+        })->filter($this->enabledFilter($include_disabled));
+    }
+
+    /**
+     * All core modules in the system.
+     *
+     * @return Collection
+     */
+    private function coreModules(): Collection
+    {
+        return Collection::make(self::CORE_MODULES)
+            ->map(function (string $class, string $name): ModuleInterface {
+                $module = app($class);
+
+                $module->setName($name);
+
+                return $module;
+            });
+    }
+
+    /**
+     * All custom modules in the system.  Custom modules are defined in modules_v4/
+     *
+     * @return Collection
+     */
+    private function customModules(): Collection
+    {
+        $pattern   = WT_ROOT . Webtrees::MODULES_PATH . '*/module.php';
+        $filenames = glob($pattern, GLOB_NOSORT);
+
+        return Collection::make($filenames)
+            ->filter(function (string $filename): bool {
+                // Special characters will break PHP variable names.
+                // This also allows us to ignore modules called "foo.example" and "foo.disable"
+                $module_name = basename(dirname($filename));
+
+                return !Str::contains($module_name, ['.', ' ', '[', ']']) && Str::length($module_name) <= 30;
+            })
+            ->map(function (string $filename): ?ModuleCustomInterface {
+                try {
+                    $module = self::load($filename);
+
+                    if ($module instanceof ModuleCustomInterface) {
+                        $module_name = '_' . basename(dirname($filename)) . '_';
+
+                        $module->setName($module_name);
+                    } else {
+                        return null;
+                    }
+
+                    return $module;
+                } catch (Throwable $ex) {
+                    // It would be nice to show this error in a flash-message or similar, but the framework
+                    // has not yet been initialised so we have no themes, languages, sessions, etc.
+                    throw $ex;
+                }
+            })
+            ->filter()
+            ->mapWithKeys(function (ModuleCustomInterface $module): array {
+                return [$module->name() => $module];
+            });
+    }
+
+    /**
+     * Load a module in a static scope, to prevent it from modifying local or object variables.
+     *
+     * @param string $filename
+     *
+     * @return mixed
+     */
+    private static function load(string $filename)
+    {
+        return include $filename;
+    }
+
+    /**
+     * A function filter modules by enabled/disabled
+     *
+     * @param bool $include_disabled
+     *
+     * @return Closure
+     */
+    private function enabledFilter(bool $include_disabled): Closure
+    {
+        return function (ModuleInterface $module) use ($include_disabled): bool {
+            return $include_disabled || $module->isEnabled();
+        };
+    }
+
+    /**
+     * A function filter modules by type
+     *
+     * @param string $interface
+     *
+     * @return Closure
+     */
+    private function interfaceFilter(string $interface): Closure
+    {
+        return function (ModuleInterface $module) use ($interface): bool {
+            return $module instanceof $interface;
+        };
+    }
+
+    /**
+     * A function to sort footers
+     *
+     * @return Closure
+     */
+    private function footerSorter(): Closure
+    {
+        return function (ModuleFooterInterface $x, ModuleFooterInterface $y): int {
+            return $x->getFooterOrder() <=> $y->getFooterOrder();
+        };
+    }
+
+    /**
+     * A function to sort menus
+     *
+     * @return Closure
+     */
+    private function menuSorter(): Closure
+    {
+        return function (ModuleMenuInterface $x, ModuleMenuInterface $y): int {
+            return $x->getMenuOrder() <=> $y->getMenuOrder();
+        };
+    }
+
+    /**
+     * A function to sort menus
+     *
+     * @return Closure
+     */
+    private function sidebarSorter(): Closure
+    {
+        return function (ModuleSidebarInterface $x, ModuleSidebarInterface $y): int {
+            return $x->getSidebarOrder() <=> $y->getSidebarOrder();
+        };
+    }
+
+    /**
+     * A function to sort menus
+     *
+     * @return Closure
+     */
+    private function tabSorter(): Closure
+    {
+        return function (ModuleTabInterface $x, ModuleTabInterface $y): int {
+            return $x->getTabOrder() <=> $y->getTabOrder();
+        };
+    }
+
+    /**
+     * A function to sort modules by name
+     *
+     * @return Closure
+     */
+    private function moduleSorter(): Closure
+    {
+        return function (ModuleInterface $x, ModuleInterface $y): int {
+            return I18N::strcasecmp($x->title(), $y->title());
+        };
     }
 
     /**

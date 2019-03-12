@@ -447,16 +447,27 @@ use Illuminate\Support\Collection;
                     <?php foreach ($other_modules as $module) : ?>
                         <li>
                             <span class="fa-li"><?= view('icons/module') ?></span>
-                            <?php if ($module->isEnabled() && $module instanceof ModuleConfigInterface): ?>
-                                <a href="<?= e($module->getConfigLink()) ?>">
+
+                            <?php if ($module->isEnabled()): ?>
+                                <?php if ($module instanceof ModuleConfigInterface): ?>
+                                    <a href="<?= e($module->getConfigLink()) ?>">
                                     <?= $module->title() ?>
                                     <span class="fa"><?= view('icons/preferences') ?></span>
-                                </a>
-                            <?php elseif ($module->isEnabled()) : ?>
-                                <?= $module->title() ?>
+                                    </a>
+                                <?php else : ?>
+                                    <?= $module->title() ?>
+                                <?php endif ?>
                             <?php else : ?>
-                                <span class="text-muted"><?= $module->title() ?></span>
+                                <span class="text-muted">
+                                    <span class="fa-li"><?= view('icons/module') ?></span>
+                                     <?= $module->title() ?>
+                                    <?php if ($module instanceof ModuleConfigInterface): ?>
+                                        <span class="fa"><?= view('icons/preferences') ?></span>
+                                    <?php endif ?>
+                                    </span>
+                                </span>
                             <?php endif ?>
+
                             <?php if ($module instanceof ModuleCustomInterface): ?>
                                 <?= view('admin/custom-module-info', ['module' => $module]) ?>
                             <?php endif ?>
