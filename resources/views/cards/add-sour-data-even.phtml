@@ -1,0 +1,16 @@
+<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
+<?php use Fisharebest\Webtrees\I18N; ?>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <a href="#" data-toggle="collapse" data-target="#add-sour-data-even-object" aria-expanded="false" aria-controls="add-sour-data-even-object">
+            <?= I18N::translate('Add an event') ?>
+        </a>
+    </div>
+
+    <div class="card-body collapse" id="add-sour-data-even-object">
+        <?= FunctionsEdit::addSimpleTag($tree, 2 . ' EVEN') ?>
+        <?= FunctionsEdit::addSimpleTag($tree, 3 . ' DATE') ?>
+        <?= FunctionsEdit::addSimpleTag($tree, 3 . ' PLAC') ?>
+    </div>
+</div>
