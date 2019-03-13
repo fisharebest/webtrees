@@ -102,7 +102,7 @@ class SetupController extends AbstractBaseController
         $step = (int) $request->get('step', '1');
         $data = $this->userData($request);
 
-        $data['lang']         = I18N::init($request->get('lang', $data['lang']));
+        $data['lang']         = I18N::init($request->get('lang', $data['lang']), null, false);
         $data['cpu_limit']    = $this->maxExecutionTime();
         $data['locales']      = I18N::installedLocales();
         $data['memory_limit'] = $this->memoryLimit();

@@ -61,4 +61,16 @@ trait ModuleCustomTrait
     {
         return '';
     }
+
+    /**
+     * Additional/updated translations.
+     *
+     * @param string $language
+     *
+     * @return string[]
+     */
+    public function customTranslations(string $language): array
+    {
+        return [];
+    }
 }

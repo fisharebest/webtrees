@@ -26,6 +26,8 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Translation;
 use Fisharebest\Localization\Translator;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Module\ModuleCustomInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
 use const GLOB_NOSORT;
 
 /**
@@ -33,6 +35,10 @@ use const GLOB_NOSORT;
  */
 class I18N
 {
+    // MO files use special characters for plurals and context.
+    public const PLURAL  = '\x00';
+    public const CONTEXT = '\x04';
+
     /** @var LocaleInterface The current locale (e.g. LocaleEnGb) */
     private static $locale;
 
@@ -376,10 +382,11 @@ class I18N
      *
      * @param string    $code Use this locale/language code, or choose one automatically
      * @param Tree|null $tree
+     * @param bool      $custom Load custom translations
      *
      * @return string $string
      */
-    public static function init(string $code = '', Tree $tree = null): string
+    public static function init(string $code = '', Tree $tree = null, $custom = true): string
     {
         if ($code !== '') {
             // Create the specified locale
@@ -436,6 +443,16 @@ class I18N
             }
         } else {
             $translations = include $cache_file;
+        }
+
+        // Add translations from custom modules (but not during setup)
+        if ($custom) {
+            $custom_modules = app(ModuleService::class)->findByInterface(ModuleCustomInterface::class);
+
+            foreach ($custom_modules as $custom_module) {
+                $custom_translations = $custom_module->customTranslations(self::$locale->languageTag());
+                $translations        = array_merge($translations, $custom_translations);
+            }
         }
 
         // Create a translator
