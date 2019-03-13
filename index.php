@@ -96,6 +96,23 @@ try {
     // Update the database schema, if necessary.
     app(MigrationService::class)->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
 
+    // Middleware allows code to intercept the request before it reaches the controller, and to
+    // intercept the response afterwards.
+    //
+    //                   +----------------------------------+
+    //                   |           Middleware1            |
+    //                   | +------------------------------+ |
+    //                   | |         Middleware2          | |
+    //                   | | +--------------------------+ | |
+    //                   | | |                          | | |
+    //       Request ----|-|-|-> Controller::action() --|-|-|---> Response
+    //                   | | |                          | | |
+    //                   | | +--------------------------+ | |
+    //                   | |                              | |
+    //                   | +------------------------------+ |
+    //                   |                                  |
+    //                   +----------------------------------+
+
     $middleware_stack = [
         CheckForMaintenanceMode::class,
         UseFilesystem::class,
@@ -124,15 +141,20 @@ try {
         $middleware_stack[] = $middleware;
     }
 
-    // We build the "onion" from the inside outwards, and some middlewares are dependant on others.
+    // We build the pipeline from controller outwards, so process the last middleware first.
+
     $middleware_stack = array_reverse($middleware_stack);
 
-    // Create the middleware *after* loading the modules, to give modules the opportunity to replace middleware.
+    // Construct the core middleware *after* loading the modules, to reduce dependencies.
+
     $middleware_stack = array_map(function ($middleware): MiddlewareInterface {
         return $middleware instanceof MiddlewareInterface ? $middleware : app($middleware);
     }, $middleware_stack);
 
-    // Apply the middleware using the "onion" pattern.
+    // Create a pipleline, which applies the middleware as a nested function call.
+    //
+    // Response = Middleware1(Middleware2(Controller::action(Request)))
+
     $pipeline = array_reduce($middleware_stack, function (Closure $next, MiddlewareInterface $middleware): Closure {
         // Create a closure to apply the middleware.
         return function (Request $request) use ($middleware, $next): Response {
