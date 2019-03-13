@@ -13,8 +13,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Example module
  */
-return new class extends AbstractModule implements ModuleCustomInterface
-{
+return new class extends AbstractModule implements ModuleCustomInterface {
     use ModuleCustomTrait;
 
     /**
@@ -97,7 +96,7 @@ return new class extends AbstractModule implements ModuleCustomInterface
     {
         // The boot() function is called after the framework has been booted.
         // We can now use the current user, tree, etc.
-        if (!Auth::isAdmin($user) && $tree !== null) {
+        if ($tree !== null && !Auth::isAdmin($user)) {
             return;
         }
     }
