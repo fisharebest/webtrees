@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use const GLOB_NOSORT;
+use Illuminate\Support\Collection;
 
 /**
  * Internationalization (i18n) and localization (l10n).
