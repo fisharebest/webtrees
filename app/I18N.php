@@ -332,13 +332,13 @@ class I18N
     /**
      * Initialise the translation adapter with a locale setting.
      *
-     * @param string    $code Use this locale/language code, or choose one automatically
+     * @param string    $code  Use this locale/language code, or choose one automatically
      * @param Tree|null $tree
-     * @param bool      $custom Load custom translations
+     * @param bool      $setup During setup, we cannot access the database.
      *
      * @return string $string
      */
-    public static function init(string $code = '', Tree $tree = null, $custom = true): string
+    public static function init(string $code = '', Tree $tree = null, $setup = true): string
     {
         if ($code !== '') {
             // Create the specified locale
@@ -355,7 +355,16 @@ class I18N
 
             // Negotiate with the browser.
             // Search engines don't negotiate.  They get the default locale of the tree.
-            self::$locale = Locale::httpAcceptLanguage($_SERVER, self::installedLocales(), $default_locale);
+            if ($setup) {
+                $installed_locales = app(ModuleService::class)->setupLanguages()
+                    ->map(function (ModuleLanguageInterface $module): LocaleInterface {
+                        return $module->locale();
+                    });
+            } else {
+                $installed_locales = self::installedLocales();
+            }
+
+            self::$locale = Locale::httpAcceptLanguage($_SERVER, $installed_locales->all(), $default_locale);
         }
 
         $cache_dir  = WT_DATA_DIR . 'cache/';
@@ -398,7 +407,7 @@ class I18N
         }
 
         // Add translations from custom modules (but not during setup)
-        if ($custom) {
+        if (!$setup) {
             $custom_modules = app(ModuleService::class)
                 ->findByInterface(ModuleCustomInterface::class);
 
@@ -433,16 +442,16 @@ class I18N
     /**
      * All locales for which a translation file exists.
      *
+     * @return Collection
      * @return LocaleInterface[]
      */
-    public static function installedLocales(): array
+    public static function installedLocales(): Collection
     {
         return app(ModuleService::class)
             ->findByInterface(ModuleLanguageInterface::class, true)
             ->map(function (ModuleLanguageInterface $module): LocaleInterface {
                 return $module->locale();
-            })
-            ->all();
+            });
     }
 
     /**

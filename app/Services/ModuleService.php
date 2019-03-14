@@ -599,7 +599,9 @@ class ModuleService
             ->filter(function (ModuleInterface $module) {
                 return $module instanceof ModuleLanguageInterface && $module->isEnabledByDefault();
             })
-            ->sort($this->moduleSorter());
+            ->sort(function (ModuleLanguageInterface $x, ModuleLanguageInterface $y) {
+                return $x->locale()->endonymSortable() <=> $y->locale()->endonymSortable();
+            });
     }
 
     /**
