@@ -46,17 +46,17 @@ class ReportParserBase
 
         xml_set_element_handler(
             $this->xml_parser,
-            function ($parser, string $name, array $attrs) {
+            function ($parser, string $name, array $attrs): void {
                 $this->startElement($parser, $name, $attrs);
             },
-            function ($parser, string $name) {
+            function ($parser, string $name): void {
                 $this->endElement($parser, $name);
             }
         );
 
         xml_set_character_data_handler(
             $this->xml_parser,
-            function ($parser, $data) {
+            function ($parser, $data): void {
                 $this->characterData($parser, $data);
             }
         );
@@ -91,7 +91,7 @@ class ReportParserBase
      *
      * @return void
      */
-    protected function startElement($parser, string $name, array $attrs)
+    protected function startElement($parser, string $name, array $attrs): void
     {
         $method = $name . 'StartHandler';
 
@@ -108,7 +108,7 @@ class ReportParserBase
      *
      * @return void
      */
-    protected function endElement($parser, string $name)
+    protected function endElement($parser, string $name): void
     {
         $method = $name . 'EndHandler';
 
@@ -125,7 +125,7 @@ class ReportParserBase
      *
      * @return void
      */
-    protected function characterData($parser, $data)
+    protected function characterData($parser, $data): void
     {
         $this->text .= $data;
     }

@@ -161,7 +161,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    protected function startElement($parser, string $name, array $attrs)
+    protected function startElement($parser, string $name, array $attrs): void
     {
         $newattrs = [];
 
@@ -196,7 +196,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    protected function endElement($parser, string $name)
+    protected function endElement($parser, string $name): void
     {
         if (($this->process_footnote || $name === 'Footnote') && ($this->process_ifs === 0 || $name === 'if') && ($this->process_gedcoms === 0 || $name === 'Gedcom') && ($this->process_repeats === 0 || $name === 'Facts' || $name === 'RepeatTag' || $name === 'List' || $name === 'Relatives')) {
             $start_method = $name . 'StartHandler';
@@ -217,7 +217,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    protected function characterData($parser, $data)
+    protected function characterData($parser, $data): void
     {
         if ($this->print_data && $this->process_gedcoms === 0 && $this->process_ifs === 0 && $this->process_repeats === 0) {
             $this->current_element->addText($data);
