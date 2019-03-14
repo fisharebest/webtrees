@@ -72,6 +72,71 @@ use Fisharebest\Webtrees\Module\IndividualListModule;
 use Fisharebest\Webtrees\Module\IndividualMetadataModule;
 use Fisharebest\Webtrees\Module\IndividualReportModule;
 use Fisharebest\Webtrees\Module\InteractiveTreeModule;
+use Fisharebest\Webtrees\Module\LanguageAfrikaans;
+use Fisharebest\Webtrees\Module\LanguageAlbanian;
+use Fisharebest\Webtrees\Module\LanguageArabic;
+use Fisharebest\Webtrees\Module\LanguageBosnian;
+use Fisharebest\Webtrees\Module\LanguageBulgarian;
+use Fisharebest\Webtrees\Module\LanguageCatalan;
+use Fisharebest\Webtrees\Module\LanguageChineseSimplified;
+use Fisharebest\Webtrees\Module\LanguageChineseTraditional;
+use Fisharebest\Webtrees\Module\LanguageCroatian;
+use Fisharebest\Webtrees\Module\LanguageCzech;
+use Fisharebest\Webtrees\Module\LanguageDanish;
+use Fisharebest\Webtrees\Module\LanguageDivehi;
+use Fisharebest\Webtrees\Module\LanguageDutch;
+use Fisharebest\Webtrees\Module\LanguageEnglishAustralia;
+use Fisharebest\Webtrees\Module\LanguageEnglishGreatBritain;
+use Fisharebest\Webtrees\Module\LanguageEnglishUnitedStates;
+use Fisharebest\Webtrees\Module\LanguageEstonian;
+use Fisharebest\Webtrees\Module\LanguageFaroese;
+use Fisharebest\Webtrees\Module\LanguageFarsi;
+use Fisharebest\Webtrees\Module\LanguageFinnish;
+use Fisharebest\Webtrees\Module\LanguageFrench;
+use Fisharebest\Webtrees\Module\LanguageFrenchCanada;
+use Fisharebest\Webtrees\Module\LanguageGalician;
+use Fisharebest\Webtrees\Module\LanguageGeorgian;
+use Fisharebest\Webtrees\Module\LanguageGerman;
+use Fisharebest\Webtrees\Module\LanguageGreek;
+use Fisharebest\Webtrees\Module\LanguageHebrew;
+use Fisharebest\Webtrees\Module\LanguageHungarian;
+use Fisharebest\Webtrees\Module\LanguageIcelandic;
+use Fisharebest\Webtrees\Module\LanguageIndonesian;
+use Fisharebest\Webtrees\Module\LanguageItalian;
+use Fisharebest\Webtrees\Module\LanguageJapanese;
+use Fisharebest\Webtrees\Module\LanguageJavanese;
+use Fisharebest\Webtrees\Module\LanguageKazhak;
+use Fisharebest\Webtrees\Module\LanguageKorean;
+use Fisharebest\Webtrees\Module\LanguageLatvian;
+use Fisharebest\Webtrees\Module\LanguageLingala;
+use Fisharebest\Webtrees\Module\LanguageLithuanian;
+use Fisharebest\Webtrees\Module\LanguageMalay;
+use Fisharebest\Webtrees\Module\LanguageMaori;
+use Fisharebest\Webtrees\Module\LanguageMarathi;
+use Fisharebest\Webtrees\Module\LanguageNepalese;
+use Fisharebest\Webtrees\Module\LanguageNorwegianBokmal;
+use Fisharebest\Webtrees\Module\LanguageNorwegianNynorsk;
+use Fisharebest\Webtrees\Module\LanguageOccitan;
+use Fisharebest\Webtrees\Module\LanguagePolish;
+use Fisharebest\Webtrees\Module\LanguagePortuguese;
+use Fisharebest\Webtrees\Module\LanguagePortugueseBrazil;
+use Fisharebest\Webtrees\Module\LanguageRomanian;
+use Fisharebest\Webtrees\Module\LanguageRussian;
+use Fisharebest\Webtrees\Module\LanguageSerbian;
+use Fisharebest\Webtrees\Module\LanguageSerbianLatin;
+use Fisharebest\Webtrees\Module\LanguageSlovakian;
+use Fisharebest\Webtrees\Module\LanguageSlovenian;
+use Fisharebest\Webtrees\Module\LanguageSpanish;
+use Fisharebest\Webtrees\Module\LanguageSundanese;
+use Fisharebest\Webtrees\Module\LanguageSwahili;
+use Fisharebest\Webtrees\Module\LanguageSwedish;
+use Fisharebest\Webtrees\Module\LanguageTamil;
+use Fisharebest\Webtrees\Module\LanguageTatar;
+use Fisharebest\Webtrees\Module\LanguageThai;
+use Fisharebest\Webtrees\Module\LanguageTurkish;
+use Fisharebest\Webtrees\Module\LanguageUkranian;
+use Fisharebest\Webtrees\Module\LanguageVietnamese;
+use Fisharebest\Webtrees\Module\LanguageYiddish;
 use Fisharebest\Webtrees\Module\LifespansChartModule;
 use Fisharebest\Webtrees\Module\ListsMenuModule;
 use Fisharebest\Webtrees\Module\LoggedInUsersModule;
@@ -219,6 +284,71 @@ class ModuleService
         'individual_ext_report'   => IndividualFamiliesReportModule::class,
         'individual_list'         => IndividualListModule::class,
         'individual_report'       => IndividualReportModule::class,
+        'language-af'             => LanguageAfrikaans::class,
+        'language-ar'             => LanguageArabic::class,
+        'language-bs'             => LanguageBosnian::class,
+        'language-bu'             => LanguageBulgarian::class,
+        'language-ca'             => LanguageCatalan::class,
+        'language-cs'             => LanguageCzech::class,
+        'language-da'             => LanguageDanish::class,
+        'language-de'             => LanguageGerman::class,
+        'language-dv'             => LanguageDivehi::class,
+        'language-el'             => LanguageGreek::class,
+        'language-en-AU'          => LanguageEnglishAustralia::class,
+        'language-en-GB'          => LanguageEnglishGreatBritain::class,
+        'language-en-US'          => LanguageEnglishUnitedStates::class,
+        'language-es'             => LanguageSpanish::class,
+        'language-et'             => LanguageEstonian::class,
+        'language-fa'             => LanguageFarsi::class,
+        'language-fi'             => LanguageFinnish::class,
+        'language-fo'             => LanguageFaroese::class,
+        'language-fr'             => LanguageFrench::class,
+        'language-fr-CA'          => LanguageFrenchCanada::class,
+        'language-gl'             => LanguageGalician::class,
+        'language-he'             => LanguageHebrew::class,
+        'language-hr'             => LanguageCroatian::class,
+        'language-hu'             => LanguageHungarian::class,
+        'language-id'             => LanguageIndonesian::class,
+        'language-is'             => LanguageIcelandic::class,
+        'language-it'             => LanguageItalian::class,
+        'language-ja'             => LanguageJapanese::class,
+        'language-jv'             => LanguageJavanese::class,
+        'language-ka'             => LanguageGeorgian::class,
+        'language-kk'             => LanguageKazhak::class,
+        'language-ko'             => LanguageKorean::class,
+        'language-ln'             => LanguageLingala::class,
+        'language-lt'             => LanguageLithuanian::class,
+        'language-lv'             => LanguageLatvian::class,
+        'language-mi'             => LanguageMaori::class,
+        'language-mr'             => LanguageMarathi::class,
+        'language-ms'             => LanguageMalay::class,
+        'language-nb'             => LanguageNorwegianBokmal::class,
+        'language-ne'             => LanguageNepalese::class,
+        'language-nl'             => LanguageDutch::class,
+        'language-nn'             => LanguageNorwegianNynorsk::class,
+        'language-oc'             => LanguageOccitan::class,
+        'language-pl'             => LanguagePolish::class,
+        'language-pt'             => LanguagePortuguese::class,
+        'language-pt-BR'          => LanguagePortugueseBrazil::class,
+        'language-ro'             => LanguageRomanian::class,
+        'language-ru'             => LanguageRussian::class,
+        'language-sk'             => LanguageSlovakian::class,
+        'language-sl'             => LanguageSlovenian::class,
+        'language-sq'             => LanguageAlbanian::class,
+        'language-sr'             => LanguageSerbian::class,
+        'language-sr-Latn'        => LanguageSerbianLatin::class,
+        'language-su'             => LanguageSundanese::class,
+        'language-sv'             => LanguageSwedish::class,
+        'language-sw'             => LanguageSwahili::class,
+        'language-ta'             => LanguageTamil::class,
+        'language-th'             => LanguageThai::class,
+        'language-tr'             => LanguageTurkish::class,
+        'language-tt'             => LanguageTatar::class,
+        'language-uk'             => LanguageUkranian::class,
+        'language-vi'             => LanguageVietnamese::class,
+        'language-yi'             => LanguageYiddish::class,
+        'language-zh-Hans'        => LanguageChineseSimplified::class,
+        'language-zh-Hant'        => LanguageChineseTraditional::class,
         'lifespans_chart'         => LifespansChartModule::class,
         'lightbox'                => AlbumModule::class,
         'lists-menu'              => ListsMenuModule::class,
@@ -459,6 +589,20 @@ class ModuleService
     }
 
     /**
+     * During setup, we'll need access to some languages.
+     *
+     * @return Collection
+     */
+    public function setupLanguages(): Collection
+    {
+        return $this->coreModules()
+            ->filter(function (ModuleInterface $module) {
+                return $module instanceof ModuleLanguageInterface && $module->isEnabledByDefault();
+            })
+            ->sort($this->moduleSorter());
+    }
+
+    /**
      * Load a module in a static scope, to prevent it from modifying local or object variables.
      *
      * @param string $filename
@@ -547,14 +691,20 @@ class ModuleService
     }
 
     /**
-     * A function to sort modules by name
+     * A function to sort modules by name.
+     *
+     * Languages have a "sortable" name, so that "British English" sorts as "English, British".
+     * This provides a more natural order in the language menu.
      *
      * @return Closure
      */
     private function moduleSorter(): Closure
     {
         return function (ModuleInterface $x, ModuleInterface $y): int {
-            return I18N::strcasecmp($x->title(), $y->title());
+            $title1 = $x instanceof ModuleLanguageInterface ? $x->locale()->endonymSortable() : $x->title();
+            $title2 = $y instanceof ModuleLanguageInterface ? $y->locale()->endonymSortable() : $y->title();
+
+            return I18N::strcasecmp($title1, $title2);
         };
     }
 

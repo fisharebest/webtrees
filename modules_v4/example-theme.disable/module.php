@@ -28,7 +28,7 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
     public function boot(): void
     {
         // Register a namespace for our views.
-        View::registerNamespace($this->name(), $this->resourceFolder() . 'views/');
+        View::registerNamespace($this->name(), $this->resourcesFolder() . 'views/');
 
         // Replace an existing view with our own version.
         View::registerCustomView('::chart-box', $this->name() . '::chart-box');
@@ -39,7 +39,7 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
      *
      * @return string
      */
-    public function resourceFolder(): string
+    public function resourcesFolder(): string
     {
         return __DIR__ . '/resources/';
     }

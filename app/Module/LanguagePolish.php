@@ -18,14 +18,20 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Localization\Locale\LocalePl;
 
 /**
- * Interface ModuleLanguageInterface - provide translation and localization.
+ * Class LanguagePolish.
  */
-interface ModuleLanguageInterface extends ModuleInterface
+class LanguagePolish extends AbstractModule implements ModuleLanguageInterface
 {
+    use ModuleLanguageTrait;
+
     /**
      * @return LocaleInterface
      */
-    public function locale(): LocaleInterface;
+    public function locale(): LocaleInterface
+    {
+        return new LocalePl();
+    }
 }

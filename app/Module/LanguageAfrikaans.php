@@ -17,15 +17,21 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Localization\Locale\LocaleAf;
 use Fisharebest\Localization\Locale\LocaleInterface;
 
 /**
- * Interface ModuleLanguageInterface - provide translation and localization.
+ * Class LanguageAfrikaans.
  */
-interface ModuleLanguageInterface extends ModuleInterface
+class LanguageAfrikaans extends AbstractModule implements ModuleLanguageInterface
 {
+    use ModuleLanguageTrait;
+
     /**
      * @return LocaleInterface
      */
-    public function locale(): LocaleInterface;
+    public function locale(): LocaleInterface
+    {
+        return new LocaleAf();
+    }
 }

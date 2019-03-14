@@ -26,7 +26,9 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Translation;
 use Fisharebest\Localization\Translator;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Module\LanguageEnglishUnitedStates;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
+use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use const GLOB_NOSORT;
 
@@ -189,77 +191,27 @@ class I18N
         '’ ' => '‘',
     ];
 
-    // Default list of locales to show in the menu.
-    private const DEFAULT_LOCALES = [
-        'ar',
-        'bg',
-        'bs',
-        'ca',
-        'cs',
-        'da',
-        'de',
-        'el',
-        'en-GB',
-        'en-US',
-        'es',
-        'et',
-        'fi',
-        'fr',
-        'he',
-        'hr',
-        'hu',
-        'is',
-        'it',
-        'ka',
-        'kk',
-        'lt',
-        'mr',
-        'nb',
-        'nl',
-        'nn',
-        'pl',
-        'pt',
-        'ru',
-        'sk',
-        'sv',
-        'tr',
-        'uk',
-        'vi',
-        'zh-Hans',
-    ];
-
     /** @var string Punctuation used to separate list items, typically a comma */
     public static $list_separator;
 
     /**
-     * The prefered locales for this site, or a default list if no preference.
+     * The preferred locales for this site, or a default list if no preference.
      *
      * @return LocaleInterface[]
      */
     public static function activeLocales(): array
     {
-        $code_list = Site::getPreference('LANGUAGES');
+        $locales = app(ModuleService::class)
+            ->findByInterface(ModuleLanguageInterface::class)
+            ->map(function (ModuleLanguageInterface $module): LocaleInterface {
+                return $module->locale();
+            });
 
-        if ($code_list === '') {
-            $codes = self::DEFAULT_LOCALES;
-        } else {
-            $codes = explode(',', $code_list);
+        if ($locales->isEmpty()) {
+            return [new LocaleEnUs()];
         }
 
-        $locales = [];
-        foreach ($codes as $code) {
-            if (file_exists(WT_ROOT . 'resources/lang/' . $code . '/messages.mo')) {
-                try {
-                    $locales[] = Locale::create($code);
-                } catch (Exception $ex) {
-                    // No such locale exists?
-                }
-            }
-        }
-
-        usort($locales, '\Fisharebest\Localization\Locale::compare');
-
-        return $locales;
+        return $locales->all();
     }
 
     /**
@@ -447,7 +399,8 @@ class I18N
 
         // Add translations from custom modules (but not during setup)
         if ($custom) {
-            $custom_modules = app(ModuleService::class)->findByInterface(ModuleCustomInterface::class);
+            $custom_modules = app(ModuleService::class)
+                ->findByInterface(ModuleCustomInterface::class);
 
             foreach ($custom_modules as $custom_module) {
                 $custom_translations = $custom_module->customTranslations(self::$locale->languageTag());
@@ -484,18 +437,12 @@ class I18N
      */
     public static function installedLocales(): array
     {
-        $locales = [];
-
-        foreach (glob(WT_ROOT . 'resources/lang/*/messages.mo', GLOB_NOSORT) as $file) {
-            try {
-                $locales[] = Locale::create(basename(dirname($file)));
-            } catch (DomainException $ex) {
-                // Not a recognised locale
-            }
-        }
-        usort($locales, '\Fisharebest\Localization\Locale::compare');
-
-        return $locales;
+        return app(ModuleService::class)
+            ->findByInterface(ModuleLanguageInterface::class, true)
+            ->map(function (ModuleLanguageInterface $module): LocaleInterface {
+                return $module->locale();
+            })
+            ->all();
     }
 
     /**
@@ -666,7 +613,7 @@ class I18N
      */
     public static function strtolower($string): string
     {
-        if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES)) {
+        if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES, true)) {
             $string = strtr($string, self::DOTLESS_I_TOLOWER);
         }
 
@@ -682,7 +629,7 @@ class I18N
      */
     public static function strtoupper($string): string
     {
-        if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES)) {
+        if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES, true)) {
             $string = strtr($string, self::DOTLESS_I_TOUPPER);
         }
 

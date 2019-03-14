@@ -150,39 +150,6 @@ class AdminSiteController extends AbstractBaseController
     }
 
     /**
-     * @return Response
-     */
-    public function languagesForm(): Response
-    {
-        $language_tags = [];
-        foreach (I18N::activeLocales() as $active_locale) {
-            $language_tags[] = $active_locale->languageTag();
-        }
-
-        $title = I18N::translate('Languages');
-
-        return $this->viewResponse('admin/site-languages', [
-            'language_tags' => $language_tags,
-            'title'         => $title,
-        ]);
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return RedirectResponse
-     */
-    public function languagesSave(Request $request): RedirectResponse
-    {
-        Site::setPreference('LANGUAGES', implode(',', $request->get('LANGUAGES', [])));
-
-        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
-        $url = route('admin-control-panel');
-
-        return new RedirectResponse($url);
-    }
-
-    /**
      * @param Request $request
      *
      * @return Response

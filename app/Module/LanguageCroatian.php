@@ -17,15 +17,21 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Localization\Locale\LocaleHr;
 use Fisharebest\Localization\Locale\LocaleInterface;
 
 /**
- * Interface ModuleLanguageInterface - provide translation and localization.
+ * Class LanguageCroatian.
  */
-interface ModuleLanguageInterface extends ModuleInterface
+class LanguageCroatian extends AbstractModule implements ModuleLanguageInterface
 {
+    use ModuleLanguageTrait;
+
     /**
      * @return LocaleInterface
      */
-    public function locale(): LocaleInterface;
+    public function locale(): LocaleInterface
+    {
+        return new LocaleHr();
+    }
 }

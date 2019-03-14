@@ -18,14 +18,20 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Localization\Locale\LocaleUk;
 
 /**
- * Interface ModuleLanguageInterface - provide translation and localization.
+ * Class LanguageUkranian.
  */
-interface ModuleLanguageInterface extends ModuleInterface
+class LanguageUkranian extends AbstractModule implements ModuleLanguageInterface
 {
+    use ModuleLanguageTrait;
+
     /**
      * @return LocaleInterface
      */
-    public function locale(): LocaleInterface;
+    public function locale(): LocaleInterface
+    {
+        return new LocaleUk();
+    }
 }

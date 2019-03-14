@@ -372,7 +372,7 @@ class ModuleController extends AbstractAdminController
 
         $this->updateStatus($modules, $request);
 
-        return new RedirectResponse(route('language'));
+        return new RedirectResponse(route('languages'));
     }
     
     /**

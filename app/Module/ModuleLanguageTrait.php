@@ -17,9 +17,30 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Localization\Locale\LocaleEnUs;
+use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Webtrees\I18N;
+
 /**
  * Trait ModuleLanguageEventsTrait - default implementation of ModuleLanguageInterface.
  */
 trait ModuleLanguageTrait
 {
+    public function title(): string
+    {
+        return  $this->locale()->endonym();
+    }
+
+    public function description(): string
+    {
+        return $this->locale()->endonym() . ' ' . $this->locale()->languageTag();
+    }
+
+    /**
+     * @return LocaleInterface
+     */
+    public function locale(): LocaleInterface
+    {
+        return new LocaleEnUs();
+    }
 }

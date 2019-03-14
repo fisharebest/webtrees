@@ -18,14 +18,20 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Localization\Locale\LocaleIs;
 
 /**
- * Interface ModuleLanguageInterface - provide translation and localization.
+ * Class LanguageIcelandic.
  */
-interface ModuleLanguageInterface extends ModuleInterface
+class LanguageIcelandic extends AbstractModule implements ModuleLanguageInterface
 {
+    use ModuleLanguageTrait;
+
     /**
      * @return LocaleInterface
      */
-    public function locale(): LocaleInterface;
+    public function locale(): LocaleInterface
+    {
+        return new LocaleIs();
+    }
 }

@@ -30,6 +30,20 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 trait ModuleCustomTrait
 {
     /**
+     * Where does this module store its resources
+     *
+     * @return string
+     */
+    abstract public function resourcesFolder(): string;
+
+    /**
+     * A unique internal name for this module (based on the installation folder).
+     *
+     * @return string
+     */
+    abstract public function name(): string;
+
+    /**
      * The person or organisation who created this module.
      *
      * @return string
@@ -81,17 +95,6 @@ trait ModuleCustomTrait
         return [];
     }
 
-
-    /**
-     * Where does this module store its resources
-     *
-     * @return string
-     */
-    public function resourceFolder(): string
-    {
-        return WT_ROOT . 'resources/';
-    }
-
     /**
      * Create a URL for an asset.
      *
@@ -101,7 +104,7 @@ trait ModuleCustomTrait
      */
     public function assetUrl(string $asset): string
     {
-        $file = $this->resourceFolder() . $asset;
+        $file = $this->resourcesFolder() . $asset;
 
         // Add the file's modification time to the URL, so we can set long expiry cache headers.
         $hash = filemtime($file);
@@ -134,7 +137,7 @@ trait ModuleCustomTrait
         // Find the file for this asset.
         // Note that we could also generate CSS files using views/templates.
         // e.g. $file = view(....
-        $file = $this->resourceFolder() . $asset;
+        $file = $this->resourcesFolder() . $asset;
 
         if (!file_exists($file)) {
             throw new NotFoundHttpException($file);

@@ -17,15 +17,21 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Localization\Locale\LocaleDa;
 use Fisharebest\Localization\Locale\LocaleInterface;
 
 /**
- * Interface ModuleLanguageInterface - provide translation and localization.
+ * Class LanguageDanish.
  */
-interface ModuleLanguageInterface extends ModuleInterface
+class LanguageDanish extends AbstractModule implements ModuleLanguageInterface
 {
+    use ModuleLanguageTrait;
+
     /**
      * @return LocaleInterface
      */
-    public function locale(): LocaleInterface;
+    public function locale(): LocaleInterface
+    {
+        return new LocaleDa();
+    }
 }

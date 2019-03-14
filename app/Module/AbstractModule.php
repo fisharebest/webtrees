@@ -230,6 +230,16 @@ abstract class AbstractModule implements ModuleInterface
     }
 
     /**
+     * Where does this module store its resources
+     *
+     * @return string
+     */
+    public function resourcesFolder(): string
+    {
+        return WT_ROOT . 'resources/';
+    }
+
+    /**
      * Create a response object from a view.
      *
      * @param string  $view_name

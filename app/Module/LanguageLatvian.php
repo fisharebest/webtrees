@@ -18,14 +18,30 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Localization\Locale\LocaleLv;
 
 /**
- * Interface ModuleLanguageInterface - provide translation and localization.
+ * Class LanguageLatvian.
  */
-interface ModuleLanguageInterface extends ModuleInterface
+class LanguageLatvian extends AbstractModule implements ModuleLanguageInterface
 {
+    use ModuleLanguageTrait;
+
+    /**
+     * Should this module be enabled when it is first installed?
+     *
+     * @return bool
+     */
+    public function isEnabledByDefault(): bool
+    {
+        return false;
+    }
+
     /**
      * @return LocaleInterface
      */
-    public function locale(): LocaleInterface;
+    public function locale(): LocaleInterface
+    {
+        return new LocaleLv();
+    }
 }

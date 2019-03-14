@@ -17,15 +17,21 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Localization\Locale\LocaleCs;
 use Fisharebest\Localization\Locale\LocaleInterface;
 
 /**
- * Interface ModuleLanguageInterface - provide translation and localization.
+ * Class LanguageCzech.
  */
-interface ModuleLanguageInterface extends ModuleInterface
+class LanguageCzech extends AbstractModule implements ModuleLanguageInterface
 {
+    use ModuleLanguageTrait;
+
     /**
      * @return LocaleInterface
      */
-    public function locale(): LocaleInterface;
+    public function locale(): LocaleInterface
+    {
+        return new LocaleCs();
+    }
 }

@@ -94,8 +94,6 @@ if (Auth::isAdmin()) {
         'POST:admin-site-mail'                => 'AdminSiteController@mailSave',
         'GET:admin-site-registration'         => 'AdminSiteController@registrationForm',
         'POST:admin-site-registration'        => 'AdminSiteController@registrationSave',
-        'GET:admin-site-languages'            => 'AdminSiteController@languagesForm',
-        'POST:admin-site-languages'           => 'AdminSiteController@languagesSave',
         'GET:admin-site-logs'                 => 'AdminSiteController@logs',
         'GET:admin-site-logs-data'            => 'AdminSiteController@logsData',
         'POST:admin-site-logs-delete'         => 'AdminSiteController@logsDelete',

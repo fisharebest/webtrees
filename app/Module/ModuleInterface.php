@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Interface ModuleInterface - Classes and libraries for module system
@@ -109,4 +110,11 @@ interface ModuleInterface
      * @return void
      */
     public function setPreference(string $setting_name, string $setting_value): void;
+
+    /**
+     * Where does this module store its resources
+     *
+     * @return string
+     */
+    public function resourcesFolder(): string;
 }
