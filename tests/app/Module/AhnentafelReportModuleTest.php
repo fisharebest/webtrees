@@ -17,18 +17,51 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Report\ReportHtml;
+use Fisharebest\Webtrees\Report\ReportParserGenerate;
+use Fisharebest\Webtrees\Report\ReportPdf;
+use Fisharebest\Webtrees\Tree;
+
 /**
  * Test harness for the class AhnentafelReportModule
+ *
+ * @covers \Fisharebest\Webtrees\Report\ReportHtml
+ * @covers \Fisharebest\Webtrees\Report\ReportParserGenerate;
+ * @covers \Fisharebest\Webtrees\Report\ReportPdf;
  */
 class AhnentafelReportModuleTest extends \Fisharebest\Webtrees\TestCase
 {
+    protected static $uses_database = true;
+
     /**
-     * Test that the class exists
-     *
      * @return void
      */
-    public function testClassExists(): void
+    public function testReportRunsWithoutError(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\AhnentafelReportModule'));
+        $tree = $this->importTree('demo.ged');
+        app()->instance(Tree::class, $tree);
+        $xml  = WT_ROOT . 'resources/xml/reports/ahnentafel_report.xml';
+        $vars = [
+            'pid'      => ['id' => 'i1'],
+            'maxgen'   => ['id' => '3'],
+            'sources'  => ['id' => 'on'],
+            'pageSize' => ['id' => 'A4'],
+            'notes'    => ['id' => 'on'],
+            'occu'     => ['id' => 'on'],
+            'resi'     => ['id' => 'on'],
+            'children' => ['id' => 'on'],
+        ];
+
+        ob_start();
+        new ReportParserGenerate($xml, new ReportHtml(), $vars, $tree);
+        $html = ob_get_clean();
+        $this->assertStringStartsWith('<', $html);
+        $this->assertStringEndsWith('>', $html);
+
+        ob_start();
+        new ReportParserGenerate($xml, new ReportPdf(), $vars, $tree);
+        $pdf = ob_get_clean();
+        $this->assertStringStartsWith('%PDF', $pdf);
+        $this->assertStringEndsWith("%%EOF\n", $pdf);
     }
 }

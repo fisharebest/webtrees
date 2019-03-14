@@ -17,18 +17,47 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Report\ReportHtml;
+use Fisharebest\Webtrees\Report\ReportParserGenerate;
+use Fisharebest\Webtrees\Report\ReportPdf;
+use Fisharebest\Webtrees\Tree;
+
 /**
  * Test harness for the class FactSourcesReportModule
+ *
+ * @covers \Fisharebest\Webtrees\Report\ReportHtml
+ * @covers \Fisharebest\Webtrees\Report\ReportParserGenerate;
+ * @covers \Fisharebest\Webtrees\Report\ReportPdf;
  */
 class FactSourcesReportModuleTest extends \Fisharebest\Webtrees\TestCase
 {
+    protected static $uses_database = true;
+
     /**
-     * Test that the class exists
-     *
      * @return void
      */
-    public function testClassExists(): void
+    public function testReportRunsWithoutError(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\FactSourcesReportModule'));
+        $tree = $this->importTree('demo.ged');
+        app()->instance(Tree::class, $tree);
+        $xml  = WT_ROOT . 'resources/xml/reports/fact_sources.xml';
+        $vars = [
+            'id'       => ['id' => 's1'],
+            'stype'    => ['id' => 'facts'],
+            'sortby'   => ['id' => 'BIRT:DATE'],
+            'pageSize' => ['id' => 'A4'],
+        ];
+
+        ob_start();
+        new ReportParserGenerate($xml, new ReportHtml(), $vars, $tree);
+        $html = ob_get_clean();
+        $this->assertStringStartsWith('<', $html);
+        $this->assertStringEndsWith('>', $html);
+
+        ob_start();
+        new ReportParserGenerate($xml, new ReportPdf(), $vars, $tree);
+        $pdf = ob_get_clean();
+        $this->assertStringStartsWith('%PDF', $pdf);
+        $this->assertStringEndsWith("%%EOF\n", $pdf);
     }
 }

@@ -40,9 +40,6 @@ class IndividualListTest extends TestCase
      */
     public function testIndividualList(): void
     {
-        // Needed for Date::display()
-        global $tree;
-
         $tree = $this->importTree('demo.ged');
         $user = Auth::user();
         app()->instance(Tree::class, $tree);

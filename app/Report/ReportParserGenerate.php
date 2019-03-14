@@ -674,7 +674,7 @@ class ReportParserGenerate extends ReportParserBase
                         }
                     } else {
                         $temp      = explode(' ', trim($tgedrec));
-                        $level     = $temp[0] + 1;
+                        $level     = 1 + (int) $temp[0];
                         $newgedrec = Functions::getSubRecord($level, "$level $tag", $tgedrec);
                         $tgedrec   = $newgedrec;
                     }
