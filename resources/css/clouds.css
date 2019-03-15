@@ -1882,36 +1882,6 @@ div.faq_body {
 	margin: 0 20px;
 }
 
-#loading {
-	text-align: center;
-}
-
-/* ======= Sidebar setup ===== */
-#main {
-	min-width: 600px;
-	width: 100%;
-	display: table;
-	table-layout: fixed;
-}
-
-#indi_left {
-	display: table-cell;
-}
-
-#tabs {
-	background-color: #fff;
-	width: 100%;
-	overflow: visible;
-	padding-top: 0.2em;
-}
-
-/* sidebar */
-#sidebar {
-	width: 20%;
-	display: table-cell;
-	vertical-align: top;
-}
-
 /* Sidebar - Family navigator */
 .wt-family-navigator-dropdown-heading {
 	font-weight: bold;

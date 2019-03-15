@@ -1736,32 +1736,6 @@ div.faq_body {
 	padding: 2px 6px;
 }
 
-/* ======= Sidebar setup ===== */
-#main {
-	min-width: 600px;
-	width: 100%;
-	display: table;
-	table-layout: fixed;
-}
-
-#indi_left {
-	display: table-cell;
-}
-
-#tabs {
-	background-color: #fff;
-	border-color: #ddd;
-	margin-left: 10px;
-	overflow: visible;
-}
-
-/* sidebar */
-#sidebar {
-	width: 20%;
-	display: table-cell;
-	vertical-align: top;
-}
-
 /* Sidebar - Family navigator */
 .wt-family-navigator-dropdown {
 	background: #edf7fd;
