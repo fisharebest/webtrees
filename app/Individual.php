@@ -927,7 +927,7 @@ class Individual extends GedcomRecord
     public function primaryChildFamily(): ?Family
     {
         $families = $this->childFamilies();
-        switch (count($families)) {
+        switch ($families->count()) {
             case 0:
                 return null;
             case 1:

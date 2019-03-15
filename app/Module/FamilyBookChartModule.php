@@ -334,7 +334,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
         //
         //Prints empty table columns for children w/o parents up to the max generation
         //This allows vertical line spacing to be consistent
-        if (count($person->childFamilies()) == 0) {
+        if ($person->childFamilies()->isEmpty()) {
             echo '<table cellspacing="0" cellpadding="0" border="0" >';
             $this->printEmptyBox();
 
@@ -356,7 +356,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
             $famcount = 0;
             if ($this->show_spouse) {
                 // count number of spouses
-                $famcount += count($person->spouseFamilies());
+                $famcount += $person->spouseFamilies()->count();
             }
             $savlh = $lh; // Save current line height
             if ($count == 1 && $genoffset <= $famcount) {
