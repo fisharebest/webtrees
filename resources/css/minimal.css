@@ -1044,77 +1044,13 @@ div.faq_body {
 	border-color: #aaa;
 }
 
-.dataTables_paginate {
-	float: left;
-	margin-bottom: 3px;
-}
-
-.dataTables_processing {
-	float: left;
-}
-
-.dataTables_filter {
-	float: right;
-	font-weight: normal;
-}
-
-.dataTables_info {
-	float: left;
-	font-weight: normal;
-	padding: 4px;
-}
-
-.recent_changes_block .dataTables_info,
-.upcoming_events_block .dataTables_info,
-.todays_events_block .dataTables_info,
-.todo_block .dataTables_info,
-.yahrzeit_block .dataTables_info {
-	padding: 0;
-}
-
-.upcoming_events_block .dataTables_info,
-.todays_events_block .dataTables_info {
-	padding: 2px 0 0;
-}
-
 .upcoming_events_block button,
 .todays_events_block button {
 	margin: 0 20px;
 }
 
-.dataTables_length {
-	float: right;
-	font-weight: normal;
-}
-
-.dataTables_length select,
-.dataTables_filter input {
-	padding: 1px;
-}
-
-.dt-clear {
-	clear: both;
-}
-
 #loading {
 	text-align: center;
-}
-
-.DataTables_sort_wrapper {
-	position: relative;
-	margin: 0 20px;
-}
-
-.DataTables_sort_wrapper span {
-	left: 0;
-	margin-left: -20px;
-	margin-top: -8px;
-	position: absolute;
-	top: 50%;
-}
-
-.dataTables_wrapper {
-	margin-bottom: 10px;
 }
 
 /* ======= Sidebar setup ===== */
