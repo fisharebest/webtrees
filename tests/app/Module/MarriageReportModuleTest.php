@@ -26,8 +26,8 @@ use Fisharebest\Webtrees\Tree;
  * Test harness for the class MarriageReportModule
  *
  * @covers \Fisharebest\Webtrees\Report\ReportHtml
- * @covers \Fisharebest\Webtrees\Report\ReportParserGenerate;
- * @covers \Fisharebest\Webtrees\Report\ReportPdf;
+ * @covers \Fisharebest\Webtrees\Report\ReportParserGenerate
+ * @covers \Fisharebest\Webtrees\Report\ReportPdf
  */
 class MarriageReportModuleTest extends \Fisharebest\Webtrees\TestCase
 {

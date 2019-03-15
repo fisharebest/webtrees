@@ -26,8 +26,8 @@ use Fisharebest\Webtrees\Tree;
  * Test harness for the class DescendancyReportModule
  *
  * @covers \Fisharebest\Webtrees\Report\ReportHtml
- * @covers \Fisharebest\Webtrees\Report\ReportParserGenerate;
- * @covers \Fisharebest\Webtrees\Report\ReportPdf;
+ * @covers \Fisharebest\Webtrees\Report\ReportParserGenerate
+ * @covers \Fisharebest\Webtrees\Report\ReportPdf
  */
 class DescendancyReportModuleTest extends \Fisharebest\Webtrees\TestCase
 {

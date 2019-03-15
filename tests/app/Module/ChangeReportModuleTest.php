@@ -27,8 +27,8 @@ use Illuminate\Support\Carbon;
  * Test harness for the class ChangeReportModule
  *
  * @covers \Fisharebest\Webtrees\Report\ReportHtml
- * @covers \Fisharebest\Webtrees\Report\ReportParserGenerate;
- * @covers \Fisharebest\Webtrees\Report\ReportPdf;
+ * @covers \Fisharebest\Webtrees\Report\ReportParserGenerate
+ * @covers \Fisharebest\Webtrees\Report\ReportPdf
  */
 class ChangeReportModuleTest extends \Fisharebest\Webtrees\TestCase
 {
