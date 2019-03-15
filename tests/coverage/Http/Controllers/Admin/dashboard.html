@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /Users/gr4376/Projects/webtrees/app/Http/Controllers/Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../../../.css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../../../.css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href="../../../.css/style.css" rel="stylesheet" type="text/css">
+  <link href="../../../.css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="../../../index.html">/Users/gr4376/Projects/webtrees/app</a></li>
+         <li class="breadcrumb-item"><a href="../../index.html">Http</a></li>
+         <li class="breadcrumb-item"><a href="../index.html">Controllers</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Admin</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="FixLevel0MediaController.php.html#36">Fisharebest\Webtrees\Http\Controllers\Admin\FixLevel0MediaController</a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="MediaController.php.html#45">Fisharebest\Webtrees\Http\Controllers\Admin\MediaController</a></td><td class="text-right">52%</td></tr>
+       <tr><td><a href="LocationController.php.html#40">Fisharebest\Webtrees\Http\Controllers\Admin\LocationController</a></td><td class="text-right">60%</td></tr>
+       <tr><td><a href="ImportThumbnailsController.php.html#38">Fisharebest\Webtrees\Http\Controllers\Admin\ImportThumbnailsController</a></td><td class="text-right">68%</td></tr>
+       <tr><td><a href="UsersController.php.html#49">Fisharebest\Webtrees\Http\Controllers\Admin\UsersController</a></td><td class="text-right">77%</td></tr>
+       <tr><td><a href="ModuleController.php.html#45">Fisharebest\Webtrees\Http\Controllers\Admin\ModuleController</a></td><td class="text-right">89%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="MediaController.php.html#45">Fisharebest\Webtrees\Http\Controllers\Admin\MediaController</a></td><td class="text-right">389</td></tr>
+       <tr><td><a href="LocationController.php.html#40">Fisharebest\Webtrees\Http\Controllers\Admin\LocationController</a></td><td class="text-right">342</td></tr>
+       <tr><td><a href="UsersController.php.html#49">Fisharebest\Webtrees\Http\Controllers\Admin\UsersController</a></td><td class="text-right">62</td></tr>
+       <tr><td><a href="ImportThumbnailsController.php.html#38">Fisharebest\Webtrees\Http\Controllers\Admin\ImportThumbnailsController</a></td><td class="text-right">58</td></tr>
+       <tr><td><a href="ModuleController.php.html#45">Fisharebest\Webtrees\Http\Controllers\Admin\ModuleController</a></td><td class="text-right">46</td></tr>
+       <tr><td><a href="FixLevel0MediaController.php.html#36">Fisharebest\Webtrees\Http\Controllers\Admin\FixLevel0MediaController</a></td><td class="text-right">38</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="MediaController.php.html#544"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\MediaController::mediaObjectInfo">mediaObjectInfo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LocationController.php.html#553"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::exportCSV">exportCSV</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LocationController.php.html#755"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::childLocationStatus">childLocationStatus</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LocationController.php.html#727"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::isLocationActive">isLocationActive</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ModuleController.php.html#383"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\ModuleController::updateLists">updateLists</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ModuleController.php.html#168"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\ModuleController::listLists">listLists</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MediaController.php.html#505"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\MediaController::mediaFileInfo">mediaFileInfo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MediaController.php.html#321"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\MediaController::uploadAction">uploadAction</abbr></a></td><td class="text-right">13%</td></tr>
+       <tr><td><a href="ImportThumbnailsController.php.html#306"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\ImportThumbnailsController::scaledImagePixels">scaledImagePixels</abbr></a></td><td class="text-right">33%</td></tr>
+       <tr><td><a href="ModuleController.php.html#531"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\ModuleController::updateAccessLevel">updateAccessLevel</abbr></a></td><td class="text-right">33%</td></tr>
+       <tr><td><a href="ImportThumbnailsController.php.html#59"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\ImportThumbnailsController::webtrees1ThumbnailsAction">webtrees1ThumbnailsAction</abbr></a></td><td class="text-right">35%</td></tr>
+       <tr><td><a href="LocationController.php.html#653"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::gethierarchy">gethierarchy</abbr></a></td><td class="text-right">36%</td></tr>
+       <tr><td><a href="LocationController.php.html#583"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::exportGeoJSON">exportGeoJSON</abbr></a></td><td class="text-right">38%</td></tr>
+       <tr><td><a href="LocationController.php.html#679"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::getPlaceListLocation">getPlaceListLocation</abbr></a></td><td class="text-right">39%</td></tr>
+       <tr><td><a href="UsersController.php.html#127"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\UsersController::cleanupAction">cleanupAction</abbr></a></td><td class="text-right">42%</td></tr>
+       <tr><td><a href="ImportThumbnailsController.php.html#210"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\ImportThumbnailsController::findOriginalFileFromThumbnail">findOriginalFileFromThumbnail</abbr></a></td><td class="text-right">42%</td></tr>
+       <tr><td><a href="FixLevel0MediaController.php.html#95"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\FixLevel0MediaController::fixLevel0MediaData">fixLevel0MediaData</abbr></a></td><td class="text-right">45%</td></tr>
+       <tr><td><a href="MediaController.php.html#86"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\MediaController::delete">delete</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="MediaController.php.html#114"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\MediaController::data">data</abbr></a></td><td class="text-right">55%</td></tr>
+       <tr><td><a href="FixLevel0MediaController.php.html#58"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\FixLevel0MediaController::fixLevel0MediaAction">fixLevel0MediaAction</abbr></a></td><td class="text-right">56%</td></tr>
+       <tr><td><a href="LocationController.php.html#439"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::importLocationsFromTree">importLocationsFromTree</abbr></a></td><td class="text-right">59%</td></tr>
+       <tr><td><a href="LocationController.php.html#234"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::exportLocations">exportLocations</abbr></a></td><td class="text-right">60%</td></tr>
+       <tr><td><a href="UsersController.php.html#366"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\UsersController::update">update</abbr></a></td><td class="text-right">62%</td></tr>
+       <tr><td><a href="UsersController.php.html#80"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\UsersController::cleanup">cleanup</abbr></a></td><td class="text-right">63%</td></tr>
+       <tr><td><a href="LocationController.php.html#631"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::buildLevel">buildLevel</abbr></a></td><td class="text-right">63%</td></tr>
+       <tr><td><a href="LocationController.php.html#791"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::mapLocationData">mapLocationData</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="UsersController.php.html#316"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\UsersController::save">save</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="ImportThumbnailsController.php.html#260"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\ImportThumbnailsController::imageDiff">imageDiff</abbr></a></td><td class="text-right">73%</td></tr>
+       <tr><td><a href="LocationController.php.html#198"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::mapDataDelete">mapDataDelete</abbr></a></td><td class="text-right">77%</td></tr>
+       <tr><td><a href="LocationController.php.html#143"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::mapDataSave">mapDataSave</abbr></a></td><td class="text-right">77%</td></tr>
+       <tr><td><a href="LocationController.php.html#320"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::importLocationsAction">importLocationsAction</abbr></a></td><td class="text-right">79%</td></tr>
+       <tr><td><a href="LocationController.php.html#88"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::mapDataEdit">mapDataEdit</abbr></a></td><td class="text-right">81%</td></tr>
+       <tr><td><a href="ChangesLogController.php.html#229"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\ChangesLogController::changesQuery">changesQuery</abbr></a></td><td class="text-right">82%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="MediaController.php.html#321"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\MediaController::uploadAction">uploadAction</abbr></a></td><td class="text-right">103</td></tr>
+       <tr><td><a href="MediaController.php.html#544"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\MediaController::mediaObjectInfo">mediaObjectInfo</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="ImportThumbnailsController.php.html#59"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\ImportThumbnailsController::webtrees1ThumbnailsAction">webtrees1ThumbnailsAction</abbr></a></td><td class="text-right">25</td></tr>
+       <tr><td><a href="MediaController.php.html#114"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\MediaController::data">data</abbr></a></td><td class="text-right">24</td></tr>
+       <tr><td><a href="UsersController.php.html#366"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\UsersController::update">update</abbr></a></td><td class="text-right">22</td></tr>
+       <tr><td><a href="LocationController.php.html#320"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::importLocationsAction">importLocationsAction</abbr></a></td><td class="text-right">19</td></tr>
+       <tr><td><a href="LocationController.php.html#679"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::getPlaceListLocation">getPlaceListLocation</abbr></a></td><td class="text-right">14</td></tr>
+       <tr><td><a href="MediaController.php.html#505"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\MediaController::mediaFileInfo">mediaFileInfo</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="LocationController.php.html#553"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::exportCSV">exportCSV</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="FixLevel0MediaController.php.html#95"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\FixLevel0MediaController::fixLevel0MediaData">fixLevel0MediaData</abbr></a></td><td class="text-right">11</td></tr>
+       <tr><td><a href="FixLevel0MediaController.php.html#58"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\FixLevel0MediaController::fixLevel0MediaAction">fixLevel0MediaAction</abbr></a></td><td class="text-right">11</td></tr>
+       <tr><td><a href="ChangesLogController.php.html#229"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\ChangesLogController::changesQuery">changesQuery</abbr></a></td><td class="text-right">10</td></tr>
+       <tr><td><a href="ModuleController.php.html#531"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\ModuleController::updateAccessLevel">updateAccessLevel</abbr></a></td><td class="text-right">8</td></tr>
+       <tr><td><a href="ImportThumbnailsController.php.html#306"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\ImportThumbnailsController::scaledImagePixels">scaledImagePixels</abbr></a></td><td class="text-right">8</td></tr>
+       <tr><td><a href="LocationController.php.html#439"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::importLocationsFromTree">importLocationsFromTree</abbr></a></td><td class="text-right">8</td></tr>
+       <tr><td><a href="LocationController.php.html#234"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::exportLocations">exportLocations</abbr></a></td><td class="text-right">8</td></tr>
+       <tr><td><a href="ImportThumbnailsController.php.html#260"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\ImportThumbnailsController::imageDiff">imageDiff</abbr></a></td><td class="text-right">7</td></tr>
+       <tr><td><a href="ImportThumbnailsController.php.html#210"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\ImportThumbnailsController::findOriginalFileFromThumbnail">findOriginalFileFromThumbnail</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="UsersController.php.html#80"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\UsersController::cleanup">cleanup</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="LocationController.php.html#727"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::isLocationActive">isLocationActive</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="LocationController.php.html#88"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::mapDataEdit">mapDataEdit</abbr></a></td><td class="text-right">5</td></tr>
+       <tr><td><a href="UsersController.php.html#127"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\UsersController::cleanupAction">cleanupAction</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="UsersController.php.html#316"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\UsersController::save">save</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="LocationController.php.html#143"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::mapDataSave">mapDataSave</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="MediaController.php.html#86"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\MediaController::delete">delete</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="LocationController.php.html#791"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::mapLocationData">mapLocationData</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="LocationController.php.html#198"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::mapDataDelete">mapDataDelete</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="LocationController.php.html#653"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::gethierarchy">gethierarchy</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="LocationController.php.html#583"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::exportGeoJSON">exportGeoJSON</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="LocationController.php.html#631"><abbr title="Fisharebest\Webtrees\Http\Controllers\Admin\LocationController::buildLevel">buildLevel</abbr></a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 6.1.4</a> using <a href="https://secure.php.net/" target="_top">PHP 7.3.2</a> with <a href="https://xdebug.org/">Xdebug 2.7.0RC2</a> and <a href="https://phpunit.de/">PHPUnit 7.5.6</a> at Fri Mar 15 15:50:13 UTC 2019.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../../../.js/jquery.min.js" type="text/javascript"></script>
+  <script src="../../../.js/d3.min.js" type="text/javascript"></script>
+  <script src="../../../.js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([0,0,0,0,0,0,2,2,1,1,3,2], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([7,0,1,0,6,3,4,6,4,2,14,62], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[100,0,"<a href=\"AbstractAdminController.php.html#25\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\AbstractAdminController<\/a>"],[91.66666666666666,25,"<a href=\"ChangesLogController.php.html#42\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ChangesLogController<\/a>"],[99.17355371900827,9,"<a href=\"ControlPanelController.php.html#56\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ControlPanelController<\/a>"],[50,14,"<a href=\"FixLevel0MediaController.php.html#36\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\FixLevel0MediaController<\/a>"],[68.21705426356588,30,"<a href=\"ImportThumbnailsController.php.html#38\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ImportThumbnailsController<\/a>"],[60.1063829787234,66,"<a href=\"LocationController.php.html#40\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\LocationController<\/a>"],[100,2,"<a href=\"MapProviderController.php.html#29\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\MapProviderController<\/a>"],[52,55,"<a href=\"MediaController.php.html#45\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\MediaController<\/a>"],[89.71428571428571,44,"<a href=\"ModuleController.php.html#45\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController<\/a>"],[98.27586206896551,30,"<a href=\"UpgradeController.php.html#42\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UpgradeController<\/a>"],[77.99043062200957,43,"<a href=\"UsersController.php.html#49\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UsersController<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[91.83673469387756,8,"<a href=\"ChangesLogController.php.html#52\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ChangesLogController::changesLog<\/a>"],[96.7741935483871,6,"<a href=\"ChangesLogController.php.html#137\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ChangesLogController::changesLogData<\/a>"],[100,1,"<a href=\"ChangesLogController.php.html#196\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ChangesLogController::changesLogDownload<\/a>"],[82.85714285714286,10,"<a href=\"ChangesLogController.php.html#229\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ChangesLogController::changesQuery<\/a>"],[100,1,"<a href=\"ControlPanelController.php.html#69\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ControlPanelController::controlPanel<\/a>"],[94.44444444444444,1,"<a href=\"ControlPanelController.php.html#143\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ControlPanelController::controlPanelManager<\/a>"],[100,1,"<a href=\"ControlPanelController.php.html#173\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ControlPanelController::totalChanges<\/a>"],[100,1,"<a href=\"ControlPanelController.php.html#192\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ControlPanelController::totalFamilies<\/a>"],[100,1,"<a href=\"ControlPanelController.php.html#209\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ControlPanelController::totalIndividuals<\/a>"],[100,1,"<a href=\"ControlPanelController.php.html#226\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ControlPanelController::totalMediaObjects<\/a>"],[100,1,"<a href=\"ControlPanelController.php.html#243\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ControlPanelController::totalNotes<\/a>"],[100,1,"<a href=\"ControlPanelController.php.html#264\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ControlPanelController::totalRepositories<\/a>"],[100,1,"<a href=\"ControlPanelController.php.html#285\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ControlPanelController::totalSources<\/a>"],[100,1,"<a href=\"FixLevel0MediaController.php.html#44\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\FixLevel0MediaController::fixLevel0Media<\/a>"],[56.25,7,"<a href=\"FixLevel0MediaController.php.html#58\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\FixLevel0MediaController::fixLevel0MediaAction<\/a>"],[45,6,"<a href=\"FixLevel0MediaController.php.html#95\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\FixLevel0MediaController::fixLevel0MediaData<\/a>"],[100,1,"<a href=\"ImportThumbnailsController.php.html#45\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ImportThumbnailsController::webtrees1Thumbnails<\/a>"],[35.483870967741936,8,"<a href=\"ImportThumbnailsController.php.html#59\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ImportThumbnailsController::webtrees1ThumbnailsAction<\/a>"],[93.75,5,"<a href=\"ImportThumbnailsController.php.html#120\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ImportThumbnailsController::webtrees1ThumbnailsData<\/a>"],[42.857142857142854,4,"<a href=\"ImportThumbnailsController.php.html#210\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ImportThumbnailsController::findOriginalFileFromThumbnail<\/a>"],[100,1,"<a href=\"ImportThumbnailsController.php.html#234\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ImportThumbnailsController::findMediaObjectsForMediaFile<\/a>"],[73.33333333333333,7,"<a href=\"ImportThumbnailsController.php.html#260\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ImportThumbnailsController::imageDiff<\/a>"],[33.33333333333333,4,"<a href=\"ImportThumbnailsController.php.html#306\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ImportThumbnailsController::scaledImagePixels<\/a>"],[100,1,"<a href=\"LocationController.php.html#50\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\LocationController::__construct<\/a>"],[92.3076923076923,2,"<a href=\"LocationController.php.html#60\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\LocationController::mapData<\/a>"],[81.25,5,"<a href=\"LocationController.php.html#88\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\LocationController::mapDataEdit<\/a>"],[77.77777777777779,4,"<a href=\"LocationController.php.html#143\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\LocationController::mapDataSave<\/a>"],[77.77777777777779,3,"<a href=\"LocationController.php.html#198\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\LocationController::mapDataDelete<\/a>"],[60,6,"<a href=\"LocationController.php.html#234\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\LocationController::exportLocations<\/a>"],[91.66666666666666,1,"<a href=\"LocationController.php.html#287\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\LocationController::importLocations<\/a>"],[79.6875,17,"<a href=\"LocationController.php.html#320\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\LocationController::importLocationsAction<\/a>"],[59.64912280701754,6,"<a href=\"LocationController.php.html#439\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\LocationController::importLocationsFromTree<\/a>"],[0,3,"<a href=\"LocationController.php.html#553\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\LocationController::exportCSV<\/a>"],[38.88888888888889,2,"<a href=\"LocationController.php.html#583\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\LocationController::exportGeoJSON<\/a>"],[63.63636363636363,2,"<a href=\"LocationController.php.html#631\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\LocationController::buildLevel<\/a>"],[36.36363636363637,2,"<a href=\"LocationController.php.html#653\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\LocationController::gethierarchy<\/a>"],[39.130434782608695,6,"<a href=\"LocationController.php.html#679\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\LocationController::getPlaceListLocation<\/a>"],[0,2,"<a href=\"LocationController.php.html#727\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\LocationController::isLocationActive<\/a>"],[0,1,"<a href=\"LocationController.php.html#755\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\LocationController::childLocationStatus<\/a>"],[66.66666666666666,3,"<a href=\"LocationController.php.html#791\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\LocationController::mapLocationData<\/a>"],[100,1,"<a href=\"MapProviderController.php.html#34\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\MapProviderController::mapProviderEdit<\/a>"],[100,1,"<a href=\"MapProviderController.php.html#47\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\MapProviderController::mapProviderSave<\/a>"],[100,1,"<a href=\"MediaController.php.html#55\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\MediaController::index<\/a>"],[50,3,"<a href=\"MediaController.php.html#86\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\MediaController::delete<\/a>"],[55.23809523809524,12,"<a href=\"MediaController.php.html#114\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\MediaController::data<\/a>"],[90,2,"<a href=\"MediaController.php.html#297\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\MediaController::upload<\/a>"],[13.88888888888889,12,"<a href=\"MediaController.php.html#321\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\MediaController::uploadAction<\/a>"],[100,1,"<a href=\"MediaController.php.html#401\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\MediaController::allMediaFolders<\/a>"],[100,10,"<a href=\"MediaController.php.html#434\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\MediaController::scanFolders<\/a>"],[100,1,"<a href=\"MediaController.php.html#465\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\MediaController::allDiskFiles<\/a>"],[91.66666666666666,2,"<a href=\"MediaController.php.html#478\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\MediaController::allMediaFiles<\/a>"],[0,3,"<a href=\"MediaController.php.html#505\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\MediaController::mediaFileInfo<\/a>"],[0,8,"<a href=\"MediaController.php.html#544\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\MediaController::mediaObjectInfo<\/a>"],[100,1,"<a href=\"ModuleController.php.html#74\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::__construct<\/a>"],[100,1,"<a href=\"ModuleController.php.html#84\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::list<\/a>"],[100,1,"<a href=\"ModuleController.php.html#96\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::listAnalytics<\/a>"],[100,1,"<a href=\"ModuleController.php.html#108\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::listBlocks<\/a>"],[100,1,"<a href=\"ModuleController.php.html#120\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::listCharts<\/a>"],[100,1,"<a href=\"ModuleController.php.html#132\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::listFooters<\/a>"],[100,1,"<a href=\"ModuleController.php.html#144\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::listHistory<\/a>"],[100,1,"<a href=\"ModuleController.php.html#156\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::listLanguages<\/a>"],[0,1,"<a href=\"ModuleController.php.html#168\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::listLists<\/a>"],[100,1,"<a href=\"ModuleController.php.html#180\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::listMenus<\/a>"],[100,1,"<a href=\"ModuleController.php.html#192\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::listReports<\/a>"],[100,1,"<a href=\"ModuleController.php.html#204\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::listSidebars<\/a>"],[100,1,"<a href=\"ModuleController.php.html#216\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::listTabs<\/a>"],[100,1,"<a href=\"ModuleController.php.html#228\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::listThemes<\/a>"],[100,1,"<a href=\"ModuleController.php.html#244\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::listComponents<\/a>"],[91.66666666666666,5,"<a href=\"ModuleController.php.html#267\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::update<\/a>"],[100,1,"<a href=\"ModuleController.php.html#296\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::updateAnalytics<\/a>"],[100,1,"<a href=\"ModuleController.php.html#310\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::updateBlocks<\/a>"],[100,1,"<a href=\"ModuleController.php.html#325\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::updateCharts<\/a>"],[100,1,"<a href=\"ModuleController.php.html#340\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::updateFooters<\/a>"],[100,1,"<a href=\"ModuleController.php.html#355\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::updateHistory<\/a>"],[100,1,"<a href=\"ModuleController.php.html#369\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::updateLanguages<\/a>"],[0,1,"<a href=\"ModuleController.php.html#383\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::updateLists<\/a>"],[100,1,"<a href=\"ModuleController.php.html#398\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::updateMenus<\/a>"],[100,1,"<a href=\"ModuleController.php.html#414\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::updateReports<\/a>"],[100,1,"<a href=\"ModuleController.php.html#429\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::updateSidebars<\/a>"],[100,1,"<a href=\"ModuleController.php.html#445\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::updateTabs<\/a>"],[100,1,"<a href=\"ModuleController.php.html#461\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::updateThemes<\/a>"],[100,2,"<a href=\"ModuleController.php.html#479\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::updateOrder<\/a>"],[90.9090909090909,5,"<a href=\"ModuleController.php.html#501\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::updateStatus<\/a>"],[33.33333333333333,4,"<a href=\"ModuleController.php.html#531\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::updateAccessLevel<\/a>"],[100,1,"<a href=\"ModuleController.php.html#560\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\ModuleController::deleteModuleSettings<\/a>"],[100,1,"<a href=\"UpgradeController.php.html#88\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UpgradeController::__construct<\/a>"],[100,2,"<a href=\"UpgradeController.php.html#102\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UpgradeController::wizard<\/a>"],[100,2,"<a href=\"UpgradeController.php.html#125\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UpgradeController::wizardSteps<\/a>"],[95,11,"<a href=\"UpgradeController.php.html#160\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UpgradeController::step<\/a>"],[100,3,"<a href=\"UpgradeController.php.html#200\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UpgradeController::wizardStepCheck<\/a>"],[100,1,"<a href=\"UpgradeController.php.html#226\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UpgradeController::wizardStepPrepare<\/a>"],[100,2,"<a href=\"UpgradeController.php.html#239\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UpgradeController::wizardStepPending<\/a>"],[91.66666666666666,3,"<a href=\"UpgradeController.php.html#257\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UpgradeController::wizardStepExport<\/a>"],[100,2,"<a href=\"UpgradeController.php.html#285\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UpgradeController::wizardStepDownload<\/a>"],[100,1,"<a href=\"UpgradeController.php.html#308\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UpgradeController::wizardStepUnzip<\/a>"],[100,1,"<a href=\"UpgradeController.php.html#329\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UpgradeController::wizardStepCopy<\/a>"],[100,1,"<a href=\"UpgradeController.php.html#345\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UpgradeController::wizardStepCleanup<\/a>"],[100,1,"<a href=\"UsersController.php.html#69\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UsersController::__construct<\/a>"],[63.63636363636363,5,"<a href=\"UsersController.php.html#80\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UsersController::cleanup<\/a>"],[42.857142857142854,3,"<a href=\"UsersController.php.html#127\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UsersController::cleanupAction<\/a>"],[100,1,"<a href=\"UsersController.php.html#149\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UsersController::index<\/a>"],[95.65217391304348,10,"<a href=\"UsersController.php.html#174\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UsersController::data<\/a>"],[100,1,"<a href=\"UsersController.php.html#270\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UsersController::create<\/a>"],[92.3076923076923,2,"<a href=\"UsersController.php.html#290\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UsersController::edit<\/a>"],[66.66666666666666,4,"<a href=\"UsersController.php.html#316\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UsersController::save<\/a>"],[62.06896551724138,13,"<a href=\"UsersController.php.html#366\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UsersController::update<\/a>"],[100,1,"<a href=\"UsersController.php.html#463\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UsersController::roles<\/a>"],[100,1,"<a href=\"UsersController.php.html#484\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UsersController::monthOptions<\/a>"],[100,1,"<a href=\"UsersController.php.html#500\">Fisharebest\\Webtrees\\Http\\Controllers\\Admin\\UsersController::themeOptions<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

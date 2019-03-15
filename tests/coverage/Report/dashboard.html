@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /Users/gr4376/Projects/webtrees/app/Report</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../.css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../.css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href="../.css/style.css" rel="stylesheet" type="text/css">
+  <link href="../.css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="../index.html">/Users/gr4376/Projects/webtrees/app</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Report</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ReportBaseImage.php.html#23">Fisharebest\Webtrees\Report\ReportBaseImage</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportPdfPageheader.php.html#23">Fisharebest\Webtrees\Report\ReportPdfPageheader</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBasePageheader.php.html#23">Fisharebest\Webtrees\Report\ReportBasePageheader</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportPdfImage.php.html#23">Fisharebest\Webtrees\Report\ReportPdfImage</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportPdfHtml.php.html#23">Fisharebest\Webtrees\Report\ReportPdfHtml</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportHtmlHtml.php.html#23">Fisharebest\Webtrees\Report\ReportHtmlHtml</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportHtmlImage.php.html#23">Fisharebest\Webtrees\Report\ReportHtmlImage</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportHtmlPageheader.php.html#23">Fisharebest\Webtrees\Report\ReportHtmlPageheader</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportParserSetup.php.html#28">Fisharebest\Webtrees\Report\ReportParserSetup</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBaseHtml.php.html#23">Fisharebest\Webtrees\Report\ReportBaseHtml</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportHtmlFootnote.php.html#23">Fisharebest\Webtrees\Report\ReportHtmlFootnote</a></td><td class="text-right">52%</td></tr>
+       <tr><td><a href="ReportBaseElement.php.html#23">Fisharebest\Webtrees\Report\ReportBaseElement</a></td><td class="text-right">55%</td></tr>
+       <tr><td><a href="ReportParserBase.php.html#26">Fisharebest\Webtrees\Report\ReportParserBase</a></td><td class="text-right">55%</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#27">Fisharebest\Webtrees\Report\ReportTcpdf</a></td><td class="text-right">61%</td></tr>
+       <tr><td><a href="ReportHtmlCell.php.html#23">Fisharebest\Webtrees\Report\ReportHtmlCell</a></td><td class="text-right">64%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#47">Fisharebest\Webtrees\Report\ReportParserGenerate</a></td><td class="text-right">70%</td></tr>
+       <tr><td><a href="ReportBaseLine.php.html#23">Fisharebest\Webtrees\Report\ReportBaseLine</a></td><td class="text-right">71%</td></tr>
+       <tr><td><a href="ReportHtmlText.php.html#23">Fisharebest\Webtrees\Report\ReportHtmlText</a></td><td class="text-right">76%</td></tr>
+       <tr><td><a href="ReportPdfTextbox.php.html#23">Fisharebest\Webtrees\Report\ReportPdfTextbox</a></td><td class="text-right">78%</td></tr>
+       <tr><td><a href="ReportHtml.php.html#28">Fisharebest\Webtrees\Report\ReportHtml</a></td><td class="text-right">82%</td></tr>
+       <tr><td><a href="ReportPdfCell.php.html#25">Fisharebest\Webtrees\Report\ReportPdfCell</a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="ReportHtmlTextbox.php.html#23">Fisharebest\Webtrees\Report\ReportHtmlTextbox</a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="ReportPdf.php.html#26">Fisharebest\Webtrees\Report\ReportPdf</a></td><td class="text-right">86%</td></tr>
+       <tr><td><a href="ReportPdfFootnote.php.html#23">Fisharebest\Webtrees\Report\ReportPdfFootnote</a></td><td class="text-right">87%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ReportParserGenerate.php.html#47">Fisharebest\Webtrees\Report\ReportParserGenerate</a></td><td class="text-right">7930</td></tr>
+       <tr><td><a href="ReportParserSetup.php.html#28">Fisharebest\Webtrees\Report\ReportParserSetup</a></td><td class="text-right">272</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#27">Fisharebest\Webtrees\Report\ReportTcpdf</a></td><td class="text-right">213</td></tr>
+       <tr><td><a href="ReportHtmlImage.php.html#23">Fisharebest\Webtrees\Report\ReportHtmlImage</a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="ReportPdfImage.php.html#23">Fisharebest\Webtrees\Report\ReportPdfImage</a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="ReportHtml.php.html#28">Fisharebest\Webtrees\Report\ReportHtml</a></td><td class="text-right">114</td></tr>
+       <tr><td><a href="ReportPdfTextbox.php.html#23">Fisharebest\Webtrees\Report\ReportPdfTextbox</a></td><td class="text-right">100</td></tr>
+       <tr><td><a href="ReportHtmlHtml.php.html#23">Fisharebest\Webtrees\Report\ReportHtmlHtml</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="ReportHtmlCell.php.html#23">Fisharebest\Webtrees\Report\ReportHtmlCell</a></td><td class="text-right">73</td></tr>
+       <tr><td><a href="ReportPdfHtml.php.html#23">Fisharebest\Webtrees\Report\ReportPdfHtml</a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="ReportHtmlFootnote.php.html#23">Fisharebest\Webtrees\Report\ReportHtmlFootnote</a></td><td class="text-right">64</td></tr>
+       <tr><td><a href="ReportHtmlTextbox.php.html#23">Fisharebest\Webtrees\Report\ReportHtmlTextbox</a></td><td class="text-right">55</td></tr>
+       <tr><td><a href="ReportBaseHtml.php.html#23">Fisharebest\Webtrees\Report\ReportBaseHtml</a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="ReportHtmlText.php.html#23">Fisharebest\Webtrees\Report\ReportHtmlText</a></td><td class="text-right">29</td></tr>
+       <tr><td><a href="ReportPdfCell.php.html#25">Fisharebest\Webtrees\Report\ReportPdfCell</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="ReportPdfFootnote.php.html#23">Fisharebest\Webtrees\Report\ReportPdfFootnote</a></td><td class="text-right">19</td></tr>
+       <tr><td><a href="ReportPdf.php.html#26">Fisharebest\Webtrees\Report\ReportPdf</a></td><td class="text-right">18</td></tr>
+       <tr><td><a href="ReportParserBase.php.html#26">Fisharebest\Webtrees\Report\ReportParserBase</a></td><td class="text-right">15</td></tr>
+       <tr><td><a href="ReportPdfPageheader.php.html#23">Fisharebest\Webtrees\Report\ReportPdfPageheader</a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ReportHtmlPageheader.php.html#23">Fisharebest\Webtrees\Report\ReportHtmlPageheader</a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ReportPdf.php.html#258"><abbr title="Fisharebest\Webtrees\Report\ReportPdf::createPageHeader">createPageHeader</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportParserSetup.php.html#85"><abbr title="Fisharebest\Webtrees\Report\ReportParserSetup::titleStartHandler">titleStartHandler</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportHtmlHtml.php.html#34"><abbr title="Fisharebest\Webtrees\Report\ReportHtmlHtml::render">render</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportHtmlImage.php.html#32"><abbr title="Fisharebest\Webtrees\Report\ReportHtmlImage::render">render</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportHtmlImage.php.html#89"><abbr title="Fisharebest\Webtrees\Report\ReportHtmlImage::getHeight">getHeight</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportHtmlPageheader.php.html#32"><abbr title="Fisharebest\Webtrees\Report\ReportHtmlPageheader::render">render</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportPdf.php.html#276"><abbr title="Fisharebest\Webtrees\Report\ReportPdf::createImage">createImage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#212"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::removePageHeader">removePageHeader</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#200"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::removeHeader">removeHeader</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportParserBase.php.html#94"><abbr title="Fisharebest\Webtrees\Report\ReportParserBase::startElement">startElement</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportParserBase.php.html#111"><abbr title="Fisharebest\Webtrees\Report\ReportParserBase::endElement">endElement</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportParserBase.php.html#128"><abbr title="Fisharebest\Webtrees\Report\ReportParserBase::characterData">characterData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportParserSetup.php.html#107"><abbr title="Fisharebest\Webtrees\Report\ReportParserSetup::descriptionEndHandler">descriptionEndHandler</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#389"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::pageHeaderStartHandler">pageHeaderStartHandler</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#402"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::pageHeaderEndHandler">pageHeaderEndHandler</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportParserSetup.php.html#95"><abbr title="Fisharebest\Webtrees\Report\ReportParserSetup::titleEndHandler">titleEndHandler</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#164"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::addPageHeader">addPageHeader</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportHtml.php.html#636"><abbr title="Fisharebest\Webtrees\Report\ReportHtml::getPageHeight">getPageHeight</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportParserSetup.php.html#67"><abbr title="Fisharebest\Webtrees\Report\ReportParserSetup::varStartHandler">varStartHandler</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportParserSetup.php.html#53"><abbr title="Fisharebest\Webtrees\Report\ReportParserSetup::reportStartHandler">reportStartHandler</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBaseCell.php.html#162"><abbr title="Fisharebest\Webtrees\Report\ReportBaseCell::getHeight">getHeight</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportPdfPageheader.php.html#32"><abbr title="Fisharebest\Webtrees\Report\ReportPdfPageheader::render">render</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportPdfImage.php.html#122"><abbr title="Fisharebest\Webtrees\Report\ReportPdfImage::getWidth">getWidth</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportPdfImage.php.html#110"><abbr title="Fisharebest\Webtrees\Report\ReportPdfImage::getHeight">getHeight</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#1639"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::spStartHandler">spStartHandler</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#1653"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::highlightedImageStartHandler">highlightedImageStartHandler</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#1706"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::imageStartHandler">imageStartHandler</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportPdfImage.php.html#32"><abbr title="Fisharebest\Webtrees\Report\ReportPdfImage::render">render</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportParserSetup.php.html#41"><abbr title="Fisharebest\Webtrees\Report\ReportParserSetup::reportProperties">reportProperties</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportPdfHtml.php.html#33"><abbr title="Fisharebest\Webtrees\Report\ReportPdfHtml::render">render</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportPdf.php.html#322"><abbr title="Fisharebest\Webtrees\Report\ReportPdf::createHTML">createHTML</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportPdf.php.html#294"><abbr title="Fisharebest\Webtrees\Report\ReportPdf::createImageFromObject">createImageFromObject</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportParserSetup.php.html#121"><abbr title="Fisharebest\Webtrees\Report\ReportParserSetup::inputStartHandler">inputStartHandler</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#224"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::removeBody">removeBody</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#236"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::removeFooter">removeFooter</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBaseImage.php.html#75"><abbr title="Fisharebest\Webtrees\Report\ReportBaseImage::getHeight">getHeight</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBaseCell.php.html#186"><abbr title="Fisharebest\Webtrees\Report\ReportBaseCell::getWidth">getWidth</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBaseElement.php.html#38"><abbr title="Fisharebest\Webtrees\Report\ReportBaseElement::render">render</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBaseElement.php.html#62"><abbr title="Fisharebest\Webtrees\Report\ReportBaseElement::getWidth">getWidth</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBaseElement.php.html#94"><abbr title="Fisharebest\Webtrees\Report\ReportBaseElement::addNewline">addNewline</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBaseElement.php.html#117"><abbr title="Fisharebest\Webtrees\Report\ReportBaseElement::setWrapWidth">setWrapWidth</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBaseElement.php.html#129"><abbr title="Fisharebest\Webtrees\Report\ReportBaseElement::renderFootnote">renderFootnote</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBaseElement.php.html#140"><abbr title="Fisharebest\Webtrees\Report\ReportBaseElement::setText">setText</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportPdf.php.html#163"><abbr title="Fisharebest\Webtrees\Report\ReportPdf::clearPageHeader">clearPageHeader</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#358"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::getFootnotesHeight">getFootnotesHeight</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBaseHtml.php.html#40"><abbr title="Fisharebest\Webtrees\Report\ReportBaseHtml::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBaseHtml.php.html#51"><abbr title="Fisharebest\Webtrees\Report\ReportBaseHtml::getStart">getStart</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBaseHtml.php.html#67"><abbr title="Fisharebest\Webtrees\Report\ReportBaseHtml::getEnd">getEnd</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBaseHtml.php.html#79"><abbr title="Fisharebest\Webtrees\Report\ReportBaseHtml::addElement">addElement</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBaseImage.php.html#57"><abbr title="Fisharebest\Webtrees\Report\ReportBaseImage::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBaseImage.php.html#87"><abbr title="Fisharebest\Webtrees\Report\ReportBaseImage::getWidth">getWidth</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBaseLine.php.html#73"><abbr title="Fisharebest\Webtrees\Report\ReportBaseLine::getHeight">getHeight</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportHtml.php.html#396"><abbr title="Fisharebest\Webtrees\Report\ReportHtml::createPageHeader">createPageHeader</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportHtml.php.html#558"><abbr title="Fisharebest\Webtrees\Report\ReportHtml::clearPageHeader">clearPageHeader</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportHtml.php.html#518"><abbr title="Fisharebest\Webtrees\Report\ReportHtml::addPageHeader">addPageHeader</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#257"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::clearPageHeader">clearPageHeader</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportHtml.php.html#460"><abbr title="Fisharebest\Webtrees\Report\ReportHtml::createHTML">createHTML</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportHtml.php.html#432"><abbr title="Fisharebest\Webtrees\Report\ReportHtml::createImageFromObject">createImageFromObject</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportHtml.php.html#414"><abbr title="Fisharebest\Webtrees\Report\ReportHtml::createImage">createImage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#306"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::getStyle">getStyle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportParserSetup.php.html#154"><abbr title="Fisharebest\Webtrees\Report\ReportParserSetup::inputEndHandler">inputEndHandler</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBasePageheader.php.html#53"><abbr title="Fisharebest\Webtrees\Report\ReportBasePageheader::addElement">addElement</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBasePageheader.php.html#41"><abbr title="Fisharebest\Webtrees\Report\ReportBasePageheader::textBox">textBox</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBasePageheader.php.html#31"><abbr title="Fisharebest\Webtrees\Report\ReportBasePageheader::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportBaseLine.php.html#85"><abbr title="Fisharebest\Webtrees\Report\ReportBaseLine::getWidth">getWidth</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#2604"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::htmlEndHandler">htmlEndHandler</abbr></a></td><td class="text-right">22%</td></tr>
+       <tr><td><a href="ReportHtml.php.html#194"><abbr title="Fisharebest\Webtrees\Report\ReportHtml::runPageHeader">runPageHeader</abbr></a></td><td class="text-right">25%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#2584"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::htmlStartHandler">htmlStartHandler</abbr></a></td><td class="text-right">25%</td></tr>
+       <tr><td><a href="ReportHtmlFootnote.php.html#103"><abbr title="Fisharebest\Webtrees\Report\ReportHtmlFootnote::getWidth">getWidth</abbr></a></td><td class="text-right">28%</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#64"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::header">header</abbr></a></td><td class="text-right">33%</td></tr>
+       <tr><td><a href="ReportHtmlText.php.html#34"><abbr title="Fisharebest\Webtrees\Report\ReportHtmlText::render">render</abbr></a></td><td class="text-right">35%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#275"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::docStartHandler">docStartHandler</abbr></a></td><td class="text-right">46%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#1835"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::listStartHandler">listStartHandler</abbr></a></td><td class="text-right">47%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#2690"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::addDescendancy">addDescendancy</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#132"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::footer">footer</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="ReportHtmlCell.php.html#32"><abbr title="Fisharebest\Webtrees\Report\ReportHtmlCell::render">render</abbr></a></td><td class="text-right">64%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#437"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::cellStartHandler">cellStartHandler</abbr></a></td><td class="text-right">65%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#2803"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::getGedcomValue">getGedcomValue</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="AbstractReport.php.html#345"><abbr title="Fisharebest\Webtrees\Report\AbstractReport::getStyle">getStyle</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#717"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::textBoxStartHandler">textBoxStartHandler</abbr></a></td><td class="text-right">70%</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#112"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::footnotes">footnotes</abbr></a></td><td class="text-right">71%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#2349"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::relativesStartHandler">relativesStartHandler</abbr></a></td><td class="text-right">74%</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#343"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::getMaxLineWidth">getMaxLineWidth</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#373"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::getCurrentStyleHeight">getCurrentStyleHeight</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#419"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::newPage">newPage</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="ReportHtml.php.html#594"><abbr title="Fisharebest\Webtrees\Report\ReportHtml::getCurrentStyleHeight">getCurrentStyleHeight</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#2333"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::listTotalStartHandler">listTotalStartHandler</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#1777"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::lineStartHandler">lineStartHandler</abbr></a></td><td class="text-right">77%</td></tr>
+       <tr><td><a href="ReportPdfTextbox.php.html#32"><abbr title="Fisharebest\Webtrees\Report\ReportPdfTextbox::render">render</abbr></a></td><td class="text-right">78%</td></tr>
+       <tr><td><a href="ReportParserBase.php.html#41"><abbr title="Fisharebest\Webtrees\Report\ReportParserBase::__construct">__construct</abbr></a></td><td class="text-right">79%</td></tr>
+       <tr><td><a href="ReportHtml.php.html#227"><abbr title="Fisharebest\Webtrees\Report\ReportHtml::run">run</abbr></a></td><td class="text-right">79%</td></tr>
+       <tr><td><a href="ReportBaseFootnote.php.html#68"><abbr title="Fisharebest\Webtrees\Report\ReportBaseFootnote::__construct">__construct</abbr></a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="ReportBaseFootnote.php.html#108"><abbr title="Fisharebest\Webtrees\Report\ReportBaseFootnote::setWrapWidth">setWrapWidth</abbr></a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#1569"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::footnoteStartHandler">footnoteStartHandler</abbr></a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#1416"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::setVarStartHandler">setVarStartHandler</abbr></a></td><td class="text-right">82%</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#324"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::addMarginX">addMarginX</abbr></a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="ReportHtml.php.html#480"><abbr title="Fisharebest\Webtrees\Report\ReportHtml::addPage">addPage</abbr></a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#2755"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::addAncestors">addAncestors</abbr></a></td><td class="text-right">84%</td></tr>
+       <tr><td><a href="ReportPdfText.php.html#34"><abbr title="Fisharebest\Webtrees\Report\ReportPdfText::render">render</abbr></a></td><td class="text-right">84%</td></tr>
+       <tr><td><a href="ReportHtml.php.html#797"><abbr title="Fisharebest\Webtrees\Report\ReportHtml::write">write</abbr></a></td><td class="text-right">84%</td></tr>
+       <tr><td><a href="ReportPdfCell.php.html#34"><abbr title="Fisharebest\Webtrees\Report\ReportPdfCell::render">render</abbr></a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#1269"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::factsStartHandler">factsStartHandler</abbr></a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="ReportHtmlTextbox.php.html#32"><abbr title="Fisharebest\Webtrees\Report\ReportHtmlTextbox::render">render</abbr></a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#899"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::getPersonNameStartHandler">getPersonNameStartHandler</abbr></a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="ReportPdfFootnote.php.html#92"><abbr title="Fisharebest\Webtrees\Report\ReportPdfFootnote::getWidth">getWidth</abbr></a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#1317"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::factsEndHandler">factsEndHandler</abbr></a></td><td class="text-right">86%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#1597"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::footnoteEndHandler">footnoteEndHandler</abbr></a></td><td class="text-right">87%</td></tr>
+       <tr><td><a href="ReportHtml.php.html#142"><abbr title="Fisharebest\Webtrees\Report\ReportHtml::setup">setup</abbr></a></td><td class="text-right">87%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#2238"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::listEndHandler">listEndHandler</abbr></a></td><td class="text-right">87%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#1219"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::varStartHandler">varStartHandler</abbr></a></td><td class="text-right">88%</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#980"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::gedcomValueStartHandler">gedcomValueStartHandler</abbr></a></td><td class="text-right">88%</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#92"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::body">body</abbr></a></td><td class="text-right">88%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ReportParserGenerate.php.html#1835"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::listStartHandler">listStartHandler</abbr></a></td><td class="text-right">1054</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#1706"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::imageStartHandler">imageStartHandler</abbr></a></td><td class="text-right">272</td></tr>
+       <tr><td><a href="ReportHtmlImage.php.html#32"><abbr title="Fisharebest\Webtrees\Report\ReportHtmlImage::render">render</abbr></a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#275"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::docStartHandler">docStartHandler</abbr></a></td><td class="text-right">145</td></tr>
+       <tr><td><a href="ReportPdfImage.php.html#32"><abbr title="Fisharebest\Webtrees\Report\ReportPdfImage::render">render</abbr></a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="ReportPdfTextbox.php.html#32"><abbr title="Fisharebest\Webtrees\Report\ReportPdfTextbox::render">render</abbr></a></td><td class="text-right">100</td></tr>
+       <tr><td><a href="ReportHtmlHtml.php.html#34"><abbr title="Fisharebest\Webtrees\Report\ReportHtmlHtml::render">render</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#1653"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::highlightedImageStartHandler">highlightedImageStartHandler</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="ReportHtmlFootnote.php.html#103"><abbr title="Fisharebest\Webtrees\Report\ReportHtmlFootnote::getWidth">getWidth</abbr></a></td><td class="text-right">85</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#437"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::cellStartHandler">cellStartHandler</abbr></a></td><td class="text-right">83</td></tr>
+       <tr><td><a href="ReportHtmlCell.php.html#32"><abbr title="Fisharebest\Webtrees\Report\ReportHtmlCell::render">render</abbr></a></td><td class="text-right">73</td></tr>
+       <tr><td><a href="ReportPdfHtml.php.html#33"><abbr title="Fisharebest\Webtrees\Report\ReportPdfHtml::render">render</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="ReportHtmlTextbox.php.html#32"><abbr title="Fisharebest\Webtrees\Report\ReportHtmlTextbox::render">render</abbr></a></td><td class="text-right">55</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#717"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::textBoxStartHandler">textBoxStartHandler</abbr></a></td><td class="text-right">52</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#2690"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::addDescendancy">addDescendancy</abbr></a></td><td class="text-right">48</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#2349"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::relativesStartHandler">relativesStartHandler</abbr></a></td><td class="text-right">39</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#2803"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::getGedcomValue">getGedcomValue</abbr></a></td><td class="text-right">34</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#64"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::header">header</abbr></a></td><td class="text-right">33</td></tr>
+       <tr><td><a href="ReportParserSetup.php.html#121"><abbr title="Fisharebest\Webtrees\Report\ReportParserSetup::inputStartHandler">inputStartHandler</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="ReportHtml.php.html#227"><abbr title="Fisharebest\Webtrees\Report\ReportHtml::run">run</abbr></a></td><td class="text-right">22</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#1777"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::lineStartHandler">lineStartHandler</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="ReportPdfCell.php.html#34"><abbr title="Fisharebest\Webtrees\Report\ReportPdfCell::render">render</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="ReportHtmlText.php.html#34"><abbr title="Fisharebest\Webtrees\Report\ReportHtmlText::render">render</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="ReportParserSetup.php.html#67"><abbr title="Fisharebest\Webtrees\Report\ReportParserSetup::varStartHandler">varStartHandler</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#1416"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::setVarStartHandler">setVarStartHandler</abbr></a></td><td class="text-right">17</td></tr>
+       <tr><td><a href="ReportHtml.php.html#194"><abbr title="Fisharebest\Webtrees\Report\ReportHtml::runPageHeader">runPageHeader</abbr></a></td><td class="text-right">15</td></tr>
+       <tr><td><a href="ReportPdfFootnote.php.html#92"><abbr title="Fisharebest\Webtrees\Report\ReportPdfFootnote::getWidth">getWidth</abbr></a></td><td class="text-right">14</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#980"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::gedcomValueStartHandler">gedcomValueStartHandler</abbr></a></td><td class="text-right">14</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#1269"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::factsStartHandler">factsStartHandler</abbr></a></td><td class="text-right">13</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#1317"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::factsEndHandler">factsEndHandler</abbr></a></td><td class="text-right">13</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#2238"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::listEndHandler">listEndHandler</abbr></a></td><td class="text-right">13</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#2755"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::addAncestors">addAncestors</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#899"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::getPersonNameStartHandler">getPersonNameStartHandler</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#1639"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::spStartHandler">spStartHandler</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#1219"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::varStartHandler">varStartHandler</abbr></a></td><td class="text-right">11</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#132"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::footer">footer</abbr></a></td><td class="text-right">8</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#2604"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::htmlEndHandler">htmlEndHandler</abbr></a></td><td class="text-right">7</td></tr>
+       <tr><td><a href="ReportPdfPageheader.php.html#32"><abbr title="Fisharebest\Webtrees\Report\ReportPdfPageheader::render">render</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#358"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::getFootnotesHeight">getFootnotesHeight</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#306"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::getStyle">getStyle</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ReportHtmlPageheader.php.html#32"><abbr title="Fisharebest\Webtrees\Report\ReportHtmlPageheader::render">render</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ReportParserSetup.php.html#154"><abbr title="Fisharebest\Webtrees\Report\ReportParserSetup::inputEndHandler">inputEndHandler</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ReportParserBase.php.html#94"><abbr title="Fisharebest\Webtrees\Report\ReportParserBase::startElement">startElement</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ReportParserBase.php.html#111"><abbr title="Fisharebest\Webtrees\Report\ReportParserBase::endElement">endElement</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ReportBaseHtml.php.html#51"><abbr title="Fisharebest\Webtrees\Report\ReportBaseHtml::getStart">getStart</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#1569"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::footnoteStartHandler">footnoteStartHandler</abbr></a></td><td class="text-right">5</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#92"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::body">body</abbr></a></td><td class="text-right">5</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#112"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::footnotes">footnotes</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="ReportParserBase.php.html#41"><abbr title="Fisharebest\Webtrees\Report\ReportParserBase::__construct">__construct</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="ReportHtml.php.html#797"><abbr title="Fisharebest\Webtrees\Report\ReportHtml::write">write</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="ReportHtml.php.html#142"><abbr title="Fisharebest\Webtrees\Report\ReportHtml::setup">setup</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#2584"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::htmlStartHandler">htmlStartHandler</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="ReportPdfText.php.html#34"><abbr title="Fisharebest\Webtrees\Report\ReportPdfText::render">render</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#1597"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::footnoteEndHandler">footnoteEndHandler</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="AbstractReport.php.html#345"><abbr title="Fisharebest\Webtrees\Report\AbstractReport::getStyle">getStyle</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="ReportParserGenerate.php.html#2333"><abbr title="Fisharebest\Webtrees\Report\ReportParserGenerate::listTotalStartHandler">listTotalStartHandler</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="ReportHtml.php.html#594"><abbr title="Fisharebest\Webtrees\Report\ReportHtml::getCurrentStyleHeight">getCurrentStyleHeight</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#343"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::getMaxLineWidth">getMaxLineWidth</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#373"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::getCurrentStyleHeight">getCurrentStyleHeight</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#419"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::newPage">newPage</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="ReportBaseFootnote.php.html#68"><abbr title="Fisharebest\Webtrees\Report\ReportBaseFootnote::__construct">__construct</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="ReportBaseFootnote.php.html#108"><abbr title="Fisharebest\Webtrees\Report\ReportBaseFootnote::setWrapWidth">setWrapWidth</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="ReportHtml.php.html#480"><abbr title="Fisharebest\Webtrees\Report\ReportHtml::addPage">addPage</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="ReportTcpdf.php.html#324"><abbr title="Fisharebest\Webtrees\Report\ReportTcpdf::addMarginX">addMarginX</abbr></a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 6.1.4</a> using <a href="https://secure.php.net/" target="_top">PHP 7.3.2</a> with <a href="https://xdebug.org/">Xdebug 2.7.0RC2</a> and <a href="https://phpunit.de/">PHPUnit 7.5.6</a> at Fri Mar 15 15:50:13 UTC 2019.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../.js/jquery.min.js" type="text/javascript"></script>
+  <script src="../.js/d3.min.js" type="text/javascript"></script>
+  <script src="../.js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([10,0,0,0,0,0,3,2,4,5,5,4], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([65,0,0,4,2,2,2,4,12,21,12,109], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[93.75,19,"<a href=\"AbstractReport.php.html#27\">Fisharebest\\Webtrees\\Report\\AbstractReport<\/a>"],[90.47619047619048,4,"<a href=\"ReportBaseCell.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportBaseCell<\/a>"],[55.55555555555556,9,"<a href=\"ReportBaseElement.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportBaseElement<\/a>"],[91.30434782608695,7,"<a href=\"ReportBaseFootnote.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportBaseFootnote<\/a>"],[0,5,"<a href=\"ReportBaseHtml.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportBaseHtml<\/a>"],[0,3,"<a href=\"ReportBaseImage.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportBaseImage<\/a>"],[71.42857142857143,3,"<a href=\"ReportBaseLine.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportBaseLine<\/a>"],[0,3,"<a href=\"ReportBasePageheader.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportBasePageheader<\/a>"],[100,4,"<a href=\"ReportBaseText.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportBaseText<\/a>"],[100,2,"<a href=\"ReportBaseTextbox.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportBaseTextbox<\/a>"],[100,1,"<a href=\"ReportExpressionLanguageProvider.php.html#26\">Fisharebest\\Webtrees\\Report\\ReportExpressionLanguageProvider<\/a>"],[82.4468085106383,80,"<a href=\"ReportHtml.php.html#28\">Fisharebest\\Webtrees\\Report\\ReportHtml<\/a>"],[64.64646464646465,31,"<a href=\"ReportHtmlCell.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportHtmlCell<\/a>"],[52.054794520547944,20,"<a href=\"ReportHtmlFootnote.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportHtmlFootnote<\/a>"],[0,9,"<a href=\"ReportHtmlHtml.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportHtmlHtml<\/a>"],[0,13,"<a href=\"ReportHtmlImage.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportHtmlImage<\/a>"],[100,7,"<a href=\"ReportHtmlLine.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportHtmlLine<\/a>"],[0,2,"<a href=\"ReportHtmlPageheader.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportHtmlPageheader<\/a>"],[76.5432098765432,23,"<a href=\"ReportHtmlText.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportHtmlText<\/a>"],[85.18518518518519,48,"<a href=\"ReportHtmlTextbox.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportHtmlTextbox<\/a>"],[55.88235294117647,9,"<a href=\"ReportParserBase.php.html#26\">Fisharebest\\Webtrees\\Report\\ReportParserBase<\/a>"],[70.55129099790649,538,"<a href=\"ReportParserGenerate.php.html#47\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate<\/a>"],[0,16,"<a href=\"ReportParserSetup.php.html#28\">Fisharebest\\Webtrees\\Report\\ReportParserSetup<\/a>"],[86,18,"<a href=\"ReportPdf.php.html#26\">Fisharebest\\Webtrees\\Report\\ReportPdf<\/a>"],[85.07462686567165,19,"<a href=\"ReportPdfCell.php.html#25\">Fisharebest\\Webtrees\\Report\\ReportPdfCell<\/a>"],[87.6923076923077,19,"<a href=\"ReportPdfFootnote.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportPdfFootnote<\/a>"],[0,8,"<a href=\"ReportPdfHtml.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportPdfHtml<\/a>"],[0,13,"<a href=\"ReportPdfImage.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportPdfImage<\/a>"],[91.66666666666666,6,"<a href=\"ReportPdfLine.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportPdfLine<\/a>"],[0,2,"<a href=\"ReportPdfPageheader.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportPdfPageheader<\/a>"],[93.33333333333333,18,"<a href=\"ReportPdfText.php.html#25\">Fisharebest\\Webtrees\\Report\\ReportPdfText<\/a>"],[78.91566265060241,63,"<a href=\"ReportPdfTextbox.php.html#23\">Fisharebest\\Webtrees\\Report\\ReportPdfTextbox<\/a>"],[61.46788990825688,53,"<a href=\"ReportTcpdf.php.html#27\">Fisharebest\\Webtrees\\Report\\ReportTcpdf<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[100,1,"<a href=\"AbstractReport.php.html#119\">Fisharebest\\Webtrees\\Report\\AbstractReport::clearHeader<\/a>"],[100,1,"<a href=\"AbstractReport.php.html#126\">Fisharebest\\Webtrees\\Report\\AbstractReport::createPageHeader<\/a>"],[100,1,"<a href=\"AbstractReport.php.html#135\">Fisharebest\\Webtrees\\Report\\AbstractReport::addElement<\/a>"],[100,1,"<a href=\"AbstractReport.php.html#142\">Fisharebest\\Webtrees\\Report\\AbstractReport::run<\/a>"],[100,1,"<a href=\"AbstractReport.php.html#164\">Fisharebest\\Webtrees\\Report\\AbstractReport::createCell<\/a>"],[100,1,"<a href=\"AbstractReport.php.html#184\">Fisharebest\\Webtrees\\Report\\AbstractReport::createTextBox<\/a>"],[100,1,"<a href=\"AbstractReport.php.html#207\">Fisharebest\\Webtrees\\Report\\AbstractReport::createText<\/a>"],[100,1,"<a href=\"AbstractReport.php.html#217\">Fisharebest\\Webtrees\\Report\\AbstractReport::createHTML<\/a>"],[100,1,"<a href=\"AbstractReport.php.html#229\">Fisharebest\\Webtrees\\Report\\AbstractReport::createLine<\/a>"],[100,1,"<a href=\"AbstractReport.php.html#244\">Fisharebest\\Webtrees\\Report\\AbstractReport::createImage<\/a>"],[100,1,"<a href=\"AbstractReport.php.html#259\">Fisharebest\\Webtrees\\Report\\AbstractReport::createImageFromObject<\/a>"],[100,1,"<a href=\"AbstractReport.php.html#268\">Fisharebest\\Webtrees\\Report\\AbstractReport::createFootnote<\/a>"],[100,1,"<a href=\"AbstractReport.php.html#277\">Fisharebest\\Webtrees\\Report\\AbstractReport::setup<\/a>"],[100,1,"<a href=\"AbstractReport.php.html#297\">Fisharebest\\Webtrees\\Report\\AbstractReport::setProcessing<\/a>"],[100,1,"<a href=\"AbstractReport.php.html#309\">Fisharebest\\Webtrees\\Report\\AbstractReport::addTitle<\/a>"],[100,1,"<a href=\"AbstractReport.php.html#321\">Fisharebest\\Webtrees\\Report\\AbstractReport::addDescription<\/a>"],[100,1,"<a href=\"AbstractReport.php.html#333\">Fisharebest\\Webtrees\\Report\\AbstractReport::addStyle<\/a>"],[66.66666666666666,2,"<a href=\"AbstractReport.php.html#345\">Fisharebest\\Webtrees\\Report\\AbstractReport::getStyle<\/a>"],[100,1,"<a href=\"ReportBaseCell.php.html#135\">Fisharebest\\Webtrees\\Report\\ReportBaseCell::__construct<\/a>"],[0,1,"<a href=\"ReportBaseCell.php.html#162\">Fisharebest\\Webtrees\\Report\\ReportBaseCell::getHeight<\/a>"],[100,1,"<a href=\"ReportBaseCell.php.html#174\">Fisharebest\\Webtrees\\Report\\ReportBaseCell::setUrl<\/a>"],[0,1,"<a href=\"ReportBaseCell.php.html#186\">Fisharebest\\Webtrees\\Report\\ReportBaseCell::getWidth<\/a>"],[0,1,"<a href=\"ReportBaseElement.php.html#38\">Fisharebest\\Webtrees\\Report\\ReportBaseElement::render<\/a>"],[100,1,"<a href=\"ReportBaseElement.php.html#50\">Fisharebest\\Webtrees\\Report\\ReportBaseElement::getHeight<\/a>"],[0,1,"<a href=\"ReportBaseElement.php.html#62\">Fisharebest\\Webtrees\\Report\\ReportBaseElement::getWidth<\/a>"],[100,1,"<a href=\"ReportBaseElement.php.html#74\">Fisharebest\\Webtrees\\Report\\ReportBaseElement::addText<\/a>"],[0,1,"<a href=\"ReportBaseElement.php.html#94\">Fisharebest\\Webtrees\\Report\\ReportBaseElement::addNewline<\/a>"],[100,1,"<a href=\"ReportBaseElement.php.html#104\">Fisharebest\\Webtrees\\Report\\ReportBaseElement::getValue<\/a>"],[0,1,"<a href=\"ReportBaseElement.php.html#117\">Fisharebest\\Webtrees\\Report\\ReportBaseElement::setWrapWidth<\/a>"],[0,1,"<a href=\"ReportBaseElement.php.html#129\">Fisharebest\\Webtrees\\Report\\ReportBaseElement::renderFootnote<\/a>"],[0,1,"<a href=\"ReportBaseElement.php.html#140\">Fisharebest\\Webtrees\\Report\\ReportBaseElement::setText<\/a>"],[80,2,"<a href=\"ReportBaseFootnote.php.html#68\">Fisharebest\\Webtrees\\Report\\ReportBaseFootnote::__construct<\/a>"],[100,1,"<a href=\"ReportBaseFootnote.php.html#85\">Fisharebest\\Webtrees\\Report\\ReportBaseFootnote::addText<\/a>"],[80,2,"<a href=\"ReportBaseFootnote.php.html#108\">Fisharebest\\Webtrees\\Report\\ReportBaseFootnote::setWrapWidth<\/a>"],[100,1,"<a href=\"ReportBaseFootnote.php.html#127\">Fisharebest\\Webtrees\\Report\\ReportBaseFootnote::setNum<\/a>"],[100,1,"<a href=\"ReportBaseFootnote.php.html#140\">Fisharebest\\Webtrees\\Report\\ReportBaseFootnote::setAddlink<\/a>"],[0,1,"<a href=\"ReportBaseHtml.php.html#40\">Fisharebest\\Webtrees\\Report\\ReportBaseHtml::__construct<\/a>"],[0,2,"<a href=\"ReportBaseHtml.php.html#51\">Fisharebest\\Webtrees\\Report\\ReportBaseHtml::getStart<\/a>"],[0,1,"<a href=\"ReportBaseHtml.php.html#67\">Fisharebest\\Webtrees\\Report\\ReportBaseHtml::getEnd<\/a>"],[0,1,"<a href=\"ReportBaseHtml.php.html#79\">Fisharebest\\Webtrees\\Report\\ReportBaseHtml::addElement<\/a>"],[0,1,"<a href=\"ReportBaseImage.php.html#57\">Fisharebest\\Webtrees\\Report\\ReportBaseImage::__construct<\/a>"],[0,1,"<a href=\"ReportBaseImage.php.html#75\">Fisharebest\\Webtrees\\Report\\ReportBaseImage::getHeight<\/a>"],[0,1,"<a href=\"ReportBaseImage.php.html#87\">Fisharebest\\Webtrees\\Report\\ReportBaseImage::getWidth<\/a>"],[100,1,"<a href=\"ReportBaseLine.php.html#58\">Fisharebest\\Webtrees\\Report\\ReportBaseLine::__construct<\/a>"],[0,1,"<a href=\"ReportBaseLine.php.html#73\">Fisharebest\\Webtrees\\Report\\ReportBaseLine::getHeight<\/a>"],[0,1,"<a href=\"ReportBaseLine.php.html#85\">Fisharebest\\Webtrees\\Report\\ReportBaseLine::getWidth<\/a>"],[0,1,"<a href=\"ReportBasePageheader.php.html#31\">Fisharebest\\Webtrees\\Report\\ReportBasePageheader::__construct<\/a>"],[0,1,"<a href=\"ReportBasePageheader.php.html#41\">Fisharebest\\Webtrees\\Report\\ReportBasePageheader::textBox<\/a>"],[0,1,"<a href=\"ReportBasePageheader.php.html#53\">Fisharebest\\Webtrees\\Report\\ReportBasePageheader::addElement<\/a>"],[100,1,"<a href=\"ReportBaseText.php.html#56\">Fisharebest\\Webtrees\\Report\\ReportBaseText::__construct<\/a>"],[100,2,"<a href=\"ReportBaseText.php.html#72\">Fisharebest\\Webtrees\\Report\\ReportBaseText::setWrapWidth<\/a>"],[100,1,"<a href=\"ReportBaseText.php.html#89\">Fisharebest\\Webtrees\\Report\\ReportBaseText::getStyleName<\/a>"],[100,1,"<a href=\"ReportBaseTextbox.php.html#134\">Fisharebest\\Webtrees\\Report\\ReportBaseTextbox::__construct<\/a>"],[100,1,"<a href=\"ReportBaseTextbox.php.html#157\">Fisharebest\\Webtrees\\Report\\ReportBaseTextbox::addElement<\/a>"],[100,1,"<a href=\"ReportExpressionLanguageProvider.php.html#31\">Fisharebest\\Webtrees\\Report\\ReportExpressionLanguageProvider::getFunctions<\/a>"],[87.5,4,"<a href=\"ReportHtml.php.html#142\">Fisharebest\\Webtrees\\Report\\ReportHtml::setup<\/a>"],[100,4,"<a href=\"ReportHtml.php.html#178\">Fisharebest\\Webtrees\\Report\\ReportHtml::addElement<\/a>"],[25,5,"<a href=\"ReportHtml.php.html#194\">Fisharebest\\Webtrees\\Report\\ReportHtml::runPageHeader<\/a>"],[100,3,"<a href=\"ReportHtml.php.html#212\">Fisharebest\\Webtrees\\Report\\ReportHtml::footnotes<\/a>"],[79.66101694915254,19,"<a href=\"ReportHtml.php.html#227\">Fisharebest\\Webtrees\\Report\\ReportHtml::run<\/a>"],[100,1,"<a href=\"ReportHtml.php.html#326\">Fisharebest\\Webtrees\\Report\\ReportHtml::createCell<\/a>"],[100,1,"<a href=\"ReportHtml.php.html#349\">Fisharebest\\Webtrees\\Report\\ReportHtml::createTextBox<\/a>"],[100,1,"<a href=\"ReportHtml.php.html#374\">Fisharebest\\Webtrees\\Report\\ReportHtml::createText<\/a>"],[100,1,"<a href=\"ReportHtml.php.html#386\">Fisharebest\\Webtrees\\Report\\ReportHtml::createFootnote<\/a>"],[0,1,"<a href=\"ReportHtml.php.html#396\">Fisharebest\\Webtrees\\Report\\ReportHtml::createPageHeader<\/a>"],[0,1,"<a href=\"ReportHtml.php.html#414\">Fisharebest\\Webtrees\\Report\\ReportHtml::createImage<\/a>"],[0,1,"<a href=\"ReportHtml.php.html#432\">Fisharebest\\Webtrees\\Report\\ReportHtml::createImageFromObject<\/a>"],[100,1,"<a href=\"ReportHtml.php.html#447\">Fisharebest\\Webtrees\\Report\\ReportHtml::createLine<\/a>"],[0,1,"<a href=\"ReportHtml.php.html#460\">Fisharebest\\Webtrees\\Report\\ReportHtml::createHTML<\/a>"],[100,1,"<a href=\"ReportHtml.php.html#470\">Fisharebest\\Webtrees\\Report\\ReportHtml::clearHeader<\/a>"],[83.33333333333334,2,"<a href=\"ReportHtml.php.html#480\">Fisharebest\\Webtrees\\Report\\ReportHtml::addPage<\/a>"],[100,2,"<a href=\"ReportHtml.php.html#504\">Fisharebest\\Webtrees\\Report\\ReportHtml::addMaxY<\/a>"],[0,1,"<a href=\"ReportHtml.php.html#518\">Fisharebest\\Webtrees\\Report\\ReportHtml::addPageHeader<\/a>"],[100,3,"<a href=\"ReportHtml.php.html#530\">Fisharebest\\Webtrees\\Report\\ReportHtml::checkFootnote<\/a>"],[0,1,"<a href=\"ReportHtml.php.html#558\">Fisharebest\\Webtrees\\Report\\ReportHtml::clearPageHeader<\/a>"],[100,2,"<a href=\"ReportHtml.php.html#570\">Fisharebest\\Webtrees\\Report\\ReportHtml::countLines<\/a>"],[100,1,"<a href=\"ReportHtml.php.html#584\">Fisharebest\\Webtrees\\Report\\ReportHtml::getCurrentStyle<\/a>"],[75,2,"<a href=\"ReportHtml.php.html#594\">Fisharebest\\Webtrees\\Report\\ReportHtml::getCurrentStyleHeight<\/a>"],[100,2,"<a href=\"ReportHtml.php.html#611\">Fisharebest\\Webtrees\\Report\\ReportHtml::getFootnotesHeight<\/a>"],[100,1,"<a href=\"ReportHtml.php.html#626\">Fisharebest\\Webtrees\\Report\\ReportHtml::getRemainingWidth<\/a>"],[0,1,"<a href=\"ReportHtml.php.html#636\">Fisharebest\\Webtrees\\Report\\ReportHtml::getPageHeight<\/a>"],[100,1,"<a href=\"ReportHtml.php.html#648\">Fisharebest\\Webtrees\\Report\\ReportHtml::getStringWidth<\/a>"],[100,1,"<a href=\"ReportHtml.php.html#662\">Fisharebest\\Webtrees\\Report\\ReportHtml::getTextCellHeight<\/a>"],[100,1,"<a href=\"ReportHtml.php.html#676\">Fisharebest\\Webtrees\\Report\\ReportHtml::getX<\/a>"],[100,1,"<a href=\"ReportHtml.php.html#686\">Fisharebest\\Webtrees\\Report\\ReportHtml::getY<\/a>"],[100,1,"<a href=\"ReportHtml.php.html#696\">Fisharebest\\Webtrees\\Report\\ReportHtml::pageNo<\/a>"],[100,1,"<a href=\"ReportHtml.php.html#708\">Fisharebest\\Webtrees\\Report\\ReportHtml::setCurrentStyle<\/a>"],[100,1,"<a href=\"ReportHtml.php.html#720\">Fisharebest\\Webtrees\\Report\\ReportHtml::setX<\/a>"],[100,2,"<a href=\"ReportHtml.php.html#734\">Fisharebest\\Webtrees\\Report\\ReportHtml::setY<\/a>"],[100,1,"<a href=\"ReportHtml.php.html#752\">Fisharebest\\Webtrees\\Report\\ReportHtml::setXy<\/a>"],[100,3,"<a href=\"ReportHtml.php.html#766\">Fisharebest\\Webtrees\\Report\\ReportHtml::textWrap<\/a>"],[84.61538461538461,4,"<a href=\"ReportHtml.php.html#797\">Fisharebest\\Webtrees\\Report\\ReportHtml::write<\/a>"],[64.64646464646465,31,"<a href=\"ReportHtmlCell.php.html#32\">Fisharebest\\Webtrees\\Report\\ReportHtmlCell::render<\/a>"],[100,1,"<a href=\"ReportHtmlFootnote.php.html#32\">Fisharebest\\Webtrees\\Report\\ReportHtmlFootnote::render<\/a>"],[100,2,"<a href=\"ReportHtmlFootnote.php.html#48\">Fisharebest\\Webtrees\\Report\\ReportHtmlFootnote::renderFootnote<\/a>"],[100,3,"<a href=\"ReportHtmlFootnote.php.html#78\">Fisharebest\\Webtrees\\Report\\ReportHtmlFootnote::getFootnoteHeight<\/a>"],[28.57142857142857,14,"<a href=\"ReportHtmlFootnote.php.html#103\">Fisharebest\\Webtrees\\Report\\ReportHtmlFootnote::getWidth<\/a>"],[0,9,"<a href=\"ReportHtmlHtml.php.html#34\">Fisharebest\\Webtrees\\Report\\ReportHtmlHtml::render<\/a>"],[0,12,"<a href=\"ReportHtmlImage.php.html#32\">Fisharebest\\Webtrees\\Report\\ReportHtmlImage::render<\/a>"],[0,1,"<a href=\"ReportHtmlImage.php.html#89\">Fisharebest\\Webtrees\\Report\\ReportHtmlImage::getHeight<\/a>"],[100,7,"<a href=\"ReportHtmlLine.php.html#32\">Fisharebest\\Webtrees\\Report\\ReportHtmlLine::render<\/a>"],[0,2,"<a href=\"ReportHtmlPageheader.php.html#32\">Fisharebest\\Webtrees\\Report\\ReportHtmlPageheader::render<\/a>"],[35.714285714285715,7,"<a href=\"ReportHtmlText.php.html#34\">Fisharebest\\Webtrees\\Report\\ReportHtmlText::render<\/a>"],[100,2,"<a href=\"ReportHtmlText.php.html#92\">Fisharebest\\Webtrees\\Report\\ReportHtmlText::getHeight<\/a>"],[97.91666666666666,14,"<a href=\"ReportHtmlText.php.html#110\">Fisharebest\\Webtrees\\Report\\ReportHtmlText::getWidth<\/a>"],[85.18518518518519,48,"<a href=\"ReportHtmlTextbox.php.html#32\">Fisharebest\\Webtrees\\Report\\ReportHtmlTextbox::render<\/a>"],[79.16666666666666,4,"<a href=\"ReportParserBase.php.html#41\">Fisharebest\\Webtrees\\Report\\ReportParserBase::__construct<\/a>"],[0,2,"<a href=\"ReportParserBase.php.html#94\">Fisharebest\\Webtrees\\Report\\ReportParserBase::startElement<\/a>"],[0,2,"<a href=\"ReportParserBase.php.html#111\">Fisharebest\\Webtrees\\Report\\ReportParserBase::endElement<\/a>"],[0,1,"<a href=\"ReportParserBase.php.html#128\">Fisharebest\\Webtrees\\Report\\ReportParserBase::characterData<\/a>"],[100,1,"<a href=\"ReportParserGenerate.php.html#141\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::__construct<\/a>"],[100,15,"<a href=\"ReportParserGenerate.php.html#164\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::startElement<\/a>"],[100,14,"<a href=\"ReportParserGenerate.php.html#199\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::endElement<\/a>"],[100,5,"<a href=\"ReportParserGenerate.php.html#220\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::characterData<\/a>"],[93.33333333333333,5,"<a href=\"ReportParserGenerate.php.html#234\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::styleStartHandler<\/a>"],[46.93877551020408,28,"<a href=\"ReportParserGenerate.php.html#275\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::docStartHandler<\/a>"],[100,1,"<a href=\"ReportParserGenerate.php.html#367\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::docEndHandler<\/a>"],[100,1,"<a href=\"ReportParserGenerate.php.html#377\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::headerStartHandler<\/a>"],[0,1,"<a href=\"ReportParserGenerate.php.html#389\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::pageHeaderStartHandler<\/a>"],[0,1,"<a href=\"ReportParserGenerate.php.html#402\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::pageHeaderEndHandler<\/a>"],[100,1,"<a href=\"ReportParserGenerate.php.html#415\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::bodyStartHandler<\/a>"],[100,1,"<a href=\"ReportParserGenerate.php.html#425\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::footerStartHandler<\/a>"],[65.85365853658537,35,"<a href=\"ReportParserGenerate.php.html#437\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::cellStartHandler<\/a>"],[100,1,"<a href=\"ReportParserGenerate.php.html#594\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::cellEndHandler<\/a>"],[100,1,"<a href=\"ReportParserGenerate.php.html#605\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::nowStartHandler<\/a>"],[100,1,"<a href=\"ReportParserGenerate.php.html#615\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::pageNumStartHandler<\/a>"],[100,1,"<a href=\"ReportParserGenerate.php.html#625\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::totalPagesStartHandler<\/a>"],[97.43589743589743,14,"<a href=\"ReportParserGenerate.php.html#637\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::gedcomStartHandler<\/a>"],[100,2,"<a href=\"ReportParserGenerate.php.html#701\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::gedcomEndHandler<\/a>"],[70.58823529411765,30,"<a href=\"ReportParserGenerate.php.html#717\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::textBoxStartHandler<\/a>"],[100,1,"<a href=\"ReportParserGenerate.php.html#843\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::textBoxEndHandler<\/a>"],[90,3,"<a href=\"ReportParserGenerate.php.html#858\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::textStartHandler<\/a>"],[100,1,"<a href=\"ReportParserGenerate.php.html#883\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::textEndHandler<\/a>"],[85.71428571428571,12,"<a href=\"ReportParserGenerate.php.html#899\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::getPersonNameStartHandler<\/a>"],[88.88888888888889,14,"<a href=\"ReportParserGenerate.php.html#980\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::gedcomValueStartHandler<\/a>"],[91.30434782608695,14,"<a href=\"ReportParserGenerate.php.html#1055\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::repeatTagStartHandler<\/a>"],[92.15686274509804,11,"<a href=\"ReportParserGenerate.php.html#1125\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::repeatTagEndHandler<\/a>"],[88,11,"<a href=\"ReportParserGenerate.php.html#1219\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::varStartHandler<\/a>"],[85.18518518518519,13,"<a href=\"ReportParserGenerate.php.html#1269\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::factsStartHandler<\/a>"],[86.88524590163934,13,"<a href=\"ReportParserGenerate.php.html#1317\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::factsEndHandler<\/a>"],[82.92682926829268,16,"<a href=\"ReportParserGenerate.php.html#1416\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::setVarStartHandler<\/a>"],[93.02325581395348,11,"<a href=\"ReportParserGenerate.php.html#1483\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::ifStartHandler<\/a>"],[100,2,"<a href=\"ReportParserGenerate.php.html#1553\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::ifEndHandler<\/a>"],[80,5,"<a href=\"ReportParserGenerate.php.html#1569\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::footnoteStartHandler<\/a>"],[87.5,3,"<a href=\"ReportParserGenerate.php.html#1597\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::footnoteEndHandler<\/a>"],[100,1,"<a href=\"ReportParserGenerate.php.html#1616\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::footnoteTextsStartHandler<\/a>"],[100,3,"<a href=\"ReportParserGenerate.php.html#1627\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::brStartHandler<\/a>"],[0,3,"<a href=\"ReportParserGenerate.php.html#1639\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::spStartHandler<\/a>"],[0,9,"<a href=\"ReportParserGenerate.php.html#1653\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::highlightedImageStartHandler<\/a>"],[0,16,"<a href=\"ReportParserGenerate.php.html#1706\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::imageStartHandler<\/a>"],[77.14285714285715,17,"<a href=\"ReportParserGenerate.php.html#1777\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::lineStartHandler<\/a>"],[47.05882352941176,81,"<a href=\"ReportParserGenerate.php.html#1835\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::listStartHandler<\/a>"],[87.5,13,"<a href=\"ReportParserGenerate.php.html#2238\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::listEndHandler<\/a>"],[75,2,"<a href=\"ReportParserGenerate.php.html#2333\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::listTotalStartHandler<\/a>"],[74.07407407407408,27,"<a href=\"ReportParserGenerate.php.html#2349\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::relativesStartHandler<\/a>"],[94.44444444444444,13,"<a href=\"ReportParserGenerate.php.html#2469\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::relativesEndHandler<\/a>"],[100,1,"<a href=\"ReportParserGenerate.php.html#2559\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::generationStartHandler<\/a>"],[100,1,"<a href=\"ReportParserGenerate.php.html#2570\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::newPageStartHandler<\/a>"],[25,2,"<a href=\"ReportParserGenerate.php.html#2584\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::htmlStartHandler<\/a>"],[22.22222222222222,3,"<a href=\"ReportParserGenerate.php.html#2604\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::htmlEndHandler<\/a>"],[100,1,"<a href=\"ReportParserGenerate.php.html#2625\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::inputStartHandler<\/a>"],[100,1,"<a href=\"ReportParserGenerate.php.html#2635\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::inputEndHandler<\/a>"],[100,1,"<a href=\"ReportParserGenerate.php.html#2645\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::reportStartHandler<\/a>"],[100,1,"<a href=\"ReportParserGenerate.php.html#2655\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::reportEndHandler<\/a>"],[100,1,"<a href=\"ReportParserGenerate.php.html#2665\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::titleEndHandler<\/a>"],[100,1,"<a href=\"ReportParserGenerate.php.html#2675\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::descriptionEndHandler<\/a>"],[50,16,"<a href=\"ReportParserGenerate.php.html#2690\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::addDescendancy<\/a>"],[84.61538461538461,12,"<a href=\"ReportParserGenerate.php.html#2755\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::addAncestors<\/a>"],[66.66666666666666,20,"<a href=\"ReportParserGenerate.php.html#2803\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::getGedcomValue<\/a>"],[100,3,"<a href=\"ReportParserGenerate.php.html#2878\">Fisharebest\\Webtrees\\Report\\ReportParserGenerate::substituteVars<\/a>"],[0,1,"<a href=\"ReportParserSetup.php.html#41\">Fisharebest\\Webtrees\\Report\\ReportParserSetup::reportProperties<\/a>"],[0,1,"<a href=\"ReportParserSetup.php.html#53\">Fisharebest\\Webtrees\\Report\\ReportParserSetup::reportStartHandler<\/a>"],[0,4,"<a href=\"ReportParserSetup.php.html#67\">Fisharebest\\Webtrees\\Report\\ReportParserSetup::varStartHandler<\/a>"],[0,1,"<a href=\"ReportParserSetup.php.html#85\">Fisharebest\\Webtrees\\Report\\ReportParserSetup::titleStartHandler<\/a>"],[0,1,"<a href=\"ReportParserSetup.php.html#95\">Fisharebest\\Webtrees\\Report\\ReportParserSetup::titleEndHandler<\/a>"],[0,1,"<a href=\"ReportParserSetup.php.html#107\">Fisharebest\\Webtrees\\Report\\ReportParserSetup::descriptionEndHandler<\/a>"],[0,5,"<a href=\"ReportParserSetup.php.html#121\">Fisharebest\\Webtrees\\Report\\ReportParserSetup::inputStartHandler<\/a>"],[0,2,"<a href=\"ReportParserSetup.php.html#154\">Fisharebest\\Webtrees\\Report\\ReportParserSetup::inputEndHandler<\/a>"],[100,2,"<a href=\"ReportPdf.php.html#69\">Fisharebest\\Webtrees\\Report\\ReportPdf::setup<\/a>"],[90,4,"<a href=\"ReportPdf.php.html#116\">Fisharebest\\Webtrees\\Report\\ReportPdf::addElement<\/a>"],[100,1,"<a href=\"ReportPdf.php.html#142\">Fisharebest\\Webtrees\\Report\\ReportPdf::run<\/a>"],[100,1,"<a href=\"ReportPdf.php.html#153\">Fisharebest\\Webtrees\\Report\\ReportPdf::clearHeader<\/a>"],[0,1,"<a href=\"ReportPdf.php.html#163\">Fisharebest\\Webtrees\\Report\\ReportPdf::clearPageHeader<\/a>"],[100,1,"<a href=\"ReportPdf.php.html#188\">Fisharebest\\Webtrees\\Report\\ReportPdf::createCell<\/a>"],[100,1,"<a href=\"ReportPdf.php.html#211\">Fisharebest\\Webtrees\\Report\\ReportPdf::createTextBox<\/a>"],[100,1,"<a href=\"ReportPdf.php.html#236\">Fisharebest\\Webtrees\\Report\\ReportPdf::createText<\/a>"],[100,1,"<a href=\"ReportPdf.php.html#248\">Fisharebest\\Webtrees\\Report\\ReportPdf::createFootnote<\/a>"],[0,1,"<a href=\"ReportPdf.php.html#258\">Fisharebest\\Webtrees\\Report\\ReportPdf::createPageHeader<\/a>"],[0,1,"<a href=\"ReportPdf.php.html#276\">Fisharebest\\Webtrees\\Report\\ReportPdf::createImage<\/a>"],[0,1,"<a href=\"ReportPdf.php.html#294\">Fisharebest\\Webtrees\\Report\\ReportPdf::createImageFromObject<\/a>"],[100,1,"<a href=\"ReportPdf.php.html#309\">Fisharebest\\Webtrees\\Report\\ReportPdf::createLine<\/a>"],[0,1,"<a href=\"ReportPdf.php.html#322\">Fisharebest\\Webtrees\\Report\\ReportPdf::createHTML<\/a>"],[85.07462686567165,19,"<a href=\"ReportPdfCell.php.html#34\">Fisharebest\\Webtrees\\Report\\ReportPdfCell::render<\/a>"],[100,1,"<a href=\"ReportPdfFootnote.php.html#32\">Fisharebest\\Webtrees\\Report\\ReportPdfFootnote::render<\/a>"],[91.66666666666666,3,"<a href=\"ReportPdfFootnote.php.html#46\">Fisharebest\\Webtrees\\Report\\ReportPdfFootnote::renderFootnote<\/a>"],[100,1,"<a href=\"ReportPdfFootnote.php.html#79\">Fisharebest\\Webtrees\\Report\\ReportPdfFootnote::getFootnoteHeight<\/a>"],[85.71428571428571,14,"<a href=\"ReportPdfFootnote.php.html#92\">Fisharebest\\Webtrees\\Report\\ReportPdfFootnote::getWidth<\/a>"],[0,8,"<a href=\"ReportPdfHtml.php.html#33\">Fisharebest\\Webtrees\\Report\\ReportPdfHtml::render<\/a>"],[0,11,"<a href=\"ReportPdfImage.php.html#32\">Fisharebest\\Webtrees\\Report\\ReportPdfImage::render<\/a>"],[0,1,"<a href=\"ReportPdfImage.php.html#110\">Fisharebest\\Webtrees\\Report\\ReportPdfImage::getHeight<\/a>"],[0,1,"<a href=\"ReportPdfImage.php.html#122\">Fisharebest\\Webtrees\\Report\\ReportPdfImage::getWidth<\/a>"],[91.66666666666666,6,"<a href=\"ReportPdfLine.php.html#32\">Fisharebest\\Webtrees\\Report\\ReportPdfLine::render<\/a>"],[0,2,"<a href=\"ReportPdfPageheader.php.html#32\">Fisharebest\\Webtrees\\Report\\ReportPdfPageheader::render<\/a>"],[84.61538461538461,3,"<a href=\"ReportPdfText.php.html#34\">Fisharebest\\Webtrees\\Report\\ReportPdfText::render<\/a>"],[100,1,"<a href=\"ReportPdfText.php.html#96\">Fisharebest\\Webtrees\\Report\\ReportPdfText::getHeight<\/a>"],[97.91666666666666,14,"<a href=\"ReportPdfText.php.html#108\">Fisharebest\\Webtrees\\Report\\ReportPdfText::getWidth<\/a>"],[78.91566265060241,63,"<a href=\"ReportPdfTextbox.php.html#32\">Fisharebest\\Webtrees\\Report\\ReportPdfTextbox::render<\/a>"],[33.33333333333333,9,"<a href=\"ReportTcpdf.php.html#64\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::header<\/a>"],[88.88888888888889,5,"<a href=\"ReportTcpdf.php.html#92\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::body<\/a>"],[71.42857142857143,4,"<a href=\"ReportTcpdf.php.html#112\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::footnotes<\/a>"],[50,5,"<a href=\"ReportTcpdf.php.html#132\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::footer<\/a>"],[100,1,"<a href=\"ReportTcpdf.php.html#152\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::addHeader<\/a>"],[0,1,"<a href=\"ReportTcpdf.php.html#164\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::addPageHeader<\/a>"],[100,1,"<a href=\"ReportTcpdf.php.html#176\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::addBody<\/a>"],[100,1,"<a href=\"ReportTcpdf.php.html#188\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::addFooter<\/a>"],[0,1,"<a href=\"ReportTcpdf.php.html#200\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::removeHeader<\/a>"],[0,1,"<a href=\"ReportTcpdf.php.html#212\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::removePageHeader<\/a>"],[0,1,"<a href=\"ReportTcpdf.php.html#224\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::removeBody<\/a>"],[0,1,"<a href=\"ReportTcpdf.php.html#236\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::removeFooter<\/a>"],[100,1,"<a href=\"ReportTcpdf.php.html#246\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::clearHeader<\/a>"],[0,1,"<a href=\"ReportTcpdf.php.html#257\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::clearPageHeader<\/a>"],[100,1,"<a href=\"ReportTcpdf.php.html#270\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::setReport<\/a>"],[100,1,"<a href=\"ReportTcpdf.php.html#280\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::getCurrentStyle<\/a>"],[100,1,"<a href=\"ReportTcpdf.php.html#292\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::setCurrentStyle<\/a>"],[0,2,"<a href=\"ReportTcpdf.php.html#306\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::getStyle<\/a>"],[83.33333333333334,2,"<a href=\"ReportTcpdf.php.html#324\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::addMarginX<\/a>"],[75,2,"<a href=\"ReportTcpdf.php.html#343\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::getMaxLineWidth<\/a>"],[0,2,"<a href=\"ReportTcpdf.php.html#358\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::getFootnotesHeight<\/a>"],[75,2,"<a href=\"ReportTcpdf.php.html#373\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::getCurrentStyleHeight<\/a>"],[100,3,"<a href=\"ReportTcpdf.php.html#390\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::checkFootnote<\/a>"],[75,2,"<a href=\"ReportTcpdf.php.html#419\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::newPage<\/a>"],[100,1,"<a href=\"ReportTcpdf.php.html#434\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::checkPageBreakPDF<\/a>"],[100,1,"<a href=\"ReportTcpdf.php.html#444\">Fisharebest\\Webtrees\\Report\\ReportTcpdf::getRemainingWidthPDF<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

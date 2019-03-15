@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /Users/gr4376/Projects/webtrees/app/Statistics/Google</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../../.css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../../.css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href="../../.css/style.css" rel="stylesheet" type="text/css">
+  <link href="../../.css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="../../index.html">/Users/gr4376/Projects/webtrees/app</a></li>
+         <li class="breadcrumb-item"><a href="../index.html">Statistics</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Google</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ChartDistribution.php.html#32">Fisharebest\Webtrees\Statistics\Google\ChartDistribution</a></td><td class="text-right">45%</td></tr>
+       <tr><td><a href="ChartMarriageAge.php.html#29">Fisharebest\Webtrees\Statistics\Google\ChartMarriageAge</a></td><td class="text-right">87%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ChartDistribution.php.html#32">Fisharebest\Webtrees\Statistics\Google\ChartDistribution</a></td><td class="text-right">240</td></tr>
+       <tr><td><a href="ChartMarriageAge.php.html#29">Fisharebest\Webtrees\Statistics\Google\ChartMarriageAge</a></td><td class="text-right">5</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ChartDistribution.php.html#140"><abbr title="Fisharebest\Webtrees\Statistics\Google\ChartDistribution::getBirthChartData">getBirthChartData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ChartDistribution.php.html#167"><abbr title="Fisharebest\Webtrees\Statistics\Google\ChartDistribution::getDeathChartData">getDeathChartData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ChartDistribution.php.html#194"><abbr title="Fisharebest\Webtrees\Statistics\Google\ChartDistribution::getMarriageChartData">getMarriageChartData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ChartDistribution.php.html#224"><abbr title="Fisharebest\Webtrees\Statistics\Google\ChartDistribution::queryRecords">queryRecords</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ChartDistribution.php.html#245"><abbr title="Fisharebest\Webtrees\Statistics\Google\ChartDistribution::getSurnameChartData">getSurnameChartData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ChartDistribution.php.html#315"><abbr title="Fisharebest\Webtrees\Statistics\Google\ChartDistribution::chartDistribution">chartDistribution</abbr></a></td><td class="text-right">61%</td></tr>
+       <tr><td><a href="ChartMarriageAge.php.html#118"><abbr title="Fisharebest\Webtrees\Statistics\Google\ChartMarriageAge::chartMarriageAge">chartMarriageAge</abbr></a></td><td class="text-right">65%</td></tr>
+       <tr><td><a href="ChartCommonSurname.php.html#65"><abbr title="Fisharebest\Webtrees\Statistics\Google\ChartCommonSurname::getTopNameAndCount">getTopNameAndCount</abbr></a></td><td class="text-right">80%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ChartDistribution.php.html#245"><abbr title="Fisharebest\Webtrees\Statistics\Google\ChartDistribution::getSurnameChartData">getSurnameChartData</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="ChartDistribution.php.html#140"><abbr title="Fisharebest\Webtrees\Statistics\Google\ChartDistribution::getBirthChartData">getBirthChartData</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="ChartDistribution.php.html#167"><abbr title="Fisharebest\Webtrees\Statistics\Google\ChartDistribution::getDeathChartData">getDeathChartData</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="ChartDistribution.php.html#194"><abbr title="Fisharebest\Webtrees\Statistics\Google\ChartDistribution::getMarriageChartData">getMarriageChartData</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="ChartDistribution.php.html#315"><abbr title="Fisharebest\Webtrees\Statistics\Google\ChartDistribution::chartDistribution">chartDistribution</abbr></a></td><td class="text-right">8</td></tr>
+       <tr><td><a href="ChartCommonSurname.php.html#65"><abbr title="Fisharebest\Webtrees\Statistics\Google\ChartCommonSurname::getTopNameAndCount">getTopNameAndCount</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="ChartMarriageAge.php.html#118"><abbr title="Fisharebest\Webtrees\Statistics\Google\ChartMarriageAge::chartMarriageAge">chartMarriageAge</abbr></a></td><td class="text-right">3</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 6.1.4</a> using <a href="https://secure.php.net/" target="_top">PHP 7.3.2</a> with <a href="https://xdebug.org/">Xdebug 2.7.0RC2</a> and <a href="https://phpunit.de/">PHPUnit 7.5.6</a> at Fri Mar 15 15:50:13 UTC 2019.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../../.js/jquery.min.js" type="text/javascript"></script>
+  <script src="../../.js/d3.min.js" type="text/javascript"></script>
+  <script src="../../.js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([0,0,0,0,0,1,0,0,0,1,2,13], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([5,0,0,0,0,0,0,2,0,1,1,42], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[100,5,"<a href=\"ChartAge.php.html#29\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartAge<\/a>"],[100,4,"<a href=\"ChartBirth.php.html#30\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartBirth<\/a>"],[100,4,"<a href=\"ChartChildren.php.html#29\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartChildren<\/a>"],[100,4,"<a href=\"ChartCommonGiven.php.html#27\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartCommonGiven<\/a>"],[92.3076923076923,8,"<a href=\"ChartCommonSurname.php.html#28\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartCommonSurname<\/a>"],[100,4,"<a href=\"ChartDeath.php.html#30\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartDeath<\/a>"],[45.94594594594595,36,"<a href=\"ChartDistribution.php.html#32\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartDistribution<\/a>"],[100,4,"<a href=\"ChartDivorce.php.html#30\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartDivorce<\/a>"],[100,6,"<a href=\"ChartFamilyLargest.php.html#30\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartFamilyLargest<\/a>"],[100,4,"<a href=\"ChartFamilyWithSources.php.html#27\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartFamilyWithSources<\/a>"],[100,4,"<a href=\"ChartIndividualWithSources.php.html#27\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartIndividualWithSources<\/a>"],[100,4,"<a href=\"ChartMarriage.php.html#30\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartMarriage<\/a>"],[87.5,5,"<a href=\"ChartMarriageAge.php.html#29\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartMarriageAge<\/a>"],[100,3,"<a href=\"ChartMedia.php.html#28\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartMedia<\/a>"],[100,4,"<a href=\"ChartMortality.php.html#26\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartMortality<\/a>"],[97.5,7,"<a href=\"ChartNoChildrenFamilies.php.html#29\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartNoChildrenFamilies<\/a>"],[100,4,"<a href=\"ChartSex.php.html#25\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartSex<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[100,1,"<a href=\"ChartAge.php.html#46\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartAge::__construct<\/a>"],[100,1,"<a href=\"ChartAge.php.html#57\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartAge::queryRecords<\/a>"],[100,3,"<a href=\"ChartAge.php.html#96\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartAge::chartAge<\/a>"],[100,1,"<a href=\"ChartBirth.php.html#57\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartBirth::__construct<\/a>"],[100,1,"<a href=\"ChartBirth.php.html#70\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartBirth::queryRecords<\/a>"],[100,2,"<a href=\"ChartBirth.php.html#93\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartBirth::chartBirth<\/a>"],[100,1,"<a href=\"ChartChildren.php.html#46\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartChildren::__construct<\/a>"],[100,1,"<a href=\"ChartChildren.php.html#57\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartChildren::queryRecords<\/a>"],[100,2,"<a href=\"ChartChildren.php.html#81\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartChildren::chartChildren<\/a>"],[100,1,"<a href=\"ChartCommonGiven.php.html#42\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartCommonGiven::__construct<\/a>"],[100,3,"<a href=\"ChartCommonGiven.php.html#58\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartCommonGiven::chartCommonGiven<\/a>"],[100,1,"<a href=\"ChartCommonSurname.php.html#50\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartCommonSurname::__construct<\/a>"],[80,4,"<a href=\"ChartCommonSurname.php.html#65\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartCommonSurname::getTopNameAndCount<\/a>"],[100,3,"<a href=\"ChartCommonSurname.php.html#117\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartCommonSurname::chartCommonSurnames<\/a>"],[100,1,"<a href=\"ChartDeath.php.html#57\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartDeath::__construct<\/a>"],[100,1,"<a href=\"ChartDeath.php.html#70\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartDeath::queryRecords<\/a>"],[100,2,"<a href=\"ChartDeath.php.html#93\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartDeath::chartDeath<\/a>"],[100,1,"<a href=\"ChartDistribution.php.html#69\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartDistribution::__construct<\/a>"],[100,3,"<a href=\"ChartDistribution.php.html#86\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartDistribution::getIso3166Countries<\/a>"],[100,2,"<a href=\"ChartDistribution.php.html#112\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartDistribution::createChartData<\/a>"],[0,4,"<a href=\"ChartDistribution.php.html#140\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartDistribution::getBirthChartData<\/a>"],[0,4,"<a href=\"ChartDistribution.php.html#167\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartDistribution::getDeathChartData<\/a>"],[0,4,"<a href=\"ChartDistribution.php.html#194\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartDistribution::getMarriageChartData<\/a>"],[0,1,"<a href=\"ChartDistribution.php.html#224\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartDistribution::queryRecords<\/a>"],[0,7,"<a href=\"ChartDistribution.php.html#245\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartDistribution::getSurnameChartData<\/a>"],[100,4,"<a href=\"ChartDistribution.php.html#283\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartDistribution::getIndivdualChartData<\/a>"],[61.29032258064516,6,"<a href=\"ChartDistribution.php.html#315\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartDistribution::chartDistribution<\/a>"],[100,1,"<a href=\"ChartDivorce.php.html#57\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartDivorce::__construct<\/a>"],[100,1,"<a href=\"ChartDivorce.php.html#70\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartDivorce::queryRecords<\/a>"],[100,2,"<a href=\"ChartDivorce.php.html#93\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartDivorce::chartDivorce<\/a>"],[100,1,"<a href=\"ChartFamilyLargest.php.html#52\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartFamilyLargest::__construct<\/a>"],[100,1,"<a href=\"ChartFamilyLargest.php.html#66\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartFamilyLargest::queryRecords<\/a>"],[100,4,"<a href=\"ChartFamilyLargest.php.html#86\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartFamilyLargest::chartLargestFamilies<\/a>"],[100,1,"<a href=\"ChartFamilyWithSources.php.html#42\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartFamilyWithSources::__construct<\/a>"],[100,3,"<a href=\"ChartFamilyWithSources.php.html#58\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartFamilyWithSources::chartFamsWithSources<\/a>"],[100,1,"<a href=\"ChartIndividualWithSources.php.html#42\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartIndividualWithSources::__construct<\/a>"],[100,3,"<a href=\"ChartIndividualWithSources.php.html#58\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartIndividualWithSources::chartIndisWithSources<\/a>"],[100,1,"<a href=\"ChartMarriage.php.html#57\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartMarriage::__construct<\/a>"],[100,1,"<a href=\"ChartMarriage.php.html#70\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartMarriage::queryRecords<\/a>"],[100,2,"<a href=\"ChartMarriage.php.html#93\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartMarriage::chartMarriage<\/a>"],[100,1,"<a href=\"ChartMarriageAge.php.html#46\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartMarriageAge::__construct<\/a>"],[100,1,"<a href=\"ChartMarriageAge.php.html#57\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartMarriageAge::queryRecords<\/a>"],[65.38461538461539,3,"<a href=\"ChartMarriageAge.php.html#118\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartMarriageAge::chartMarriageAge<\/a>"],[100,1,"<a href=\"ChartMedia.php.html#43\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartMedia::__construct<\/a>"],[100,2,"<a href=\"ChartMedia.php.html#58\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartMedia::chartMedia<\/a>"],[100,1,"<a href=\"ChartMortality.php.html#36\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartMortality::__construct<\/a>"],[100,3,"<a href=\"ChartMortality.php.html#51\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartMortality::chartMortality<\/a>"],[100,1,"<a href=\"ChartNoChildrenFamilies.php.html#46\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartNoChildrenFamilies::__construct<\/a>"],[93.33333333333333,3,"<a href=\"ChartNoChildrenFamilies.php.html#60\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartNoChildrenFamilies::queryRecords<\/a>"],[100,3,"<a href=\"ChartNoChildrenFamilies.php.html#92\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartNoChildrenFamilies::chartNoChildrenFamilies<\/a>"],[100,4,"<a href=\"ChartSex.php.html#39\">Fisharebest\\Webtrees\\Statistics\\Google\\ChartSex::chartSex<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /Users/gr4376/Projects/webtrees/app/Functions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../.css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../.css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href="../.css/style.css" rel="stylesheet" type="text/css">
+  <link href="../.css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="../index.html">/Users/gr4376/Projects/webtrees/app</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Functions</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Functions.php.html#29">Fisharebest\Webtrees\Functions\Functions</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsCharts.php.html#30">Fisharebest\Webtrees\Functions\FunctionsCharts</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsDate.php.html#26">Fisharebest\Webtrees\Functions\FunctionsDate</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#55">Fisharebest\Webtrees\Functions\FunctionsEdit</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsExport.php.html#36">Fisharebest\Webtrees\Functions\FunctionsExport</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#42">Fisharebest\Webtrees\Functions\FunctionsImport</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrint.php.html#43">Fisharebest\Webtrees\Functions\FunctionsPrint</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrintFacts.php.html#50">Fisharebest\Webtrees\Functions\FunctionsPrintFacts</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrintLists.php.html#27">Fisharebest\Webtrees\Functions\FunctionsPrintLists</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsRtl.php.html#25">Fisharebest\Webtrees\Functions\FunctionsRtl</a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Functions.php.html#29">Fisharebest\Webtrees\Functions\Functions</a></td><td class="text-right">575322</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#42">Fisharebest\Webtrees\Functions\FunctionsImport</a></td><td class="text-right">61256</td></tr>
+       <tr><td><a href="FunctionsPrintFacts.php.html#50">Fisharebest\Webtrees\Functions\FunctionsPrintFacts</a></td><td class="text-right">58322</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#55">Fisharebest\Webtrees\Functions\FunctionsEdit</a></td><td class="text-right">46872</td></tr>
+       <tr><td><a href="FunctionsRtl.php.html#25">Fisharebest\Webtrees\Functions\FunctionsRtl</a></td><td class="text-right">41820</td></tr>
+       <tr><td><a href="FunctionsPrint.php.html#43">Fisharebest\Webtrees\Functions\FunctionsPrint</a></td><td class="text-right">8930</td></tr>
+       <tr><td><a href="FunctionsCharts.php.html#30">Fisharebest\Webtrees\Functions\FunctionsCharts</a></td><td class="text-right">7656</td></tr>
+       <tr><td><a href="FunctionsPrintLists.php.html#27">Fisharebest\Webtrees\Functions\FunctionsPrintLists</a></td><td class="text-right">812</td></tr>
+       <tr><td><a href="FunctionsExport.php.html#36">Fisharebest\Webtrees\Functions\FunctionsExport</a></td><td class="text-right">462</td></tr>
+       <tr><td><a href="FunctionsDate.php.html#26">Fisharebest\Webtrees\Functions\FunctionsDate</a></td><td class="text-right">72</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Functions.php.html#38"><abbr title="Fisharebest\Webtrees\Functions\Functions::fileUploadErrorText">fileUploadErrorText</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#985"><abbr title="Fisharebest\Webtrees\Functions\FunctionsImport::convertInlineMedia">convertInlineMedia</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrint.php.html#183"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrint::formatParentsAges">formatParentsAges</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrint.php.html#166"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrint::helpLink">helpLink</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrint.php.html#123"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrint::printFactNotes">printFactNotes</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrint.php.html#72"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrint::printNoteRecord">printNoteRecord</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrint.php.html#53"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrint::printPedigreePerson">printPedigreePerson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#1116"><abbr title="Fisharebest\Webtrees\Functions\FunctionsImport::updateRecord">updateRecord</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#1080"><abbr title="Fisharebest\Webtrees\Functions\FunctionsImport::acceptAllChanges">acceptAllChanges</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#1009"><abbr title="Fisharebest\Webtrees\Functions\FunctionsImport::createMediaObject">createMediaObject</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#931"><abbr title="Fisharebest\Webtrees\Functions\FunctionsImport::updateNames">updateNames</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrint.php.html#347"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrint::formatFactPlace">formatFactPlace</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#899"><abbr title="Fisharebest\Webtrees\Functions\FunctionsImport::updateLinks">updateLinks</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#850"><abbr title="Fisharebest\Webtrees\Functions\FunctionsImport::updateDates">updateDates</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#813"><abbr title="Fisharebest\Webtrees\Functions\FunctionsImport::updatePlaces">updatePlaces</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#606"><abbr title="Fisharebest\Webtrees\Functions\FunctionsImport::importRecord">importRecord</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#52"><abbr title="Fisharebest\Webtrees\Functions\FunctionsImport::reformatRecord">reformatRecord</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsExport.php.html#172"><abbr title="Fisharebest\Webtrees\Functions\FunctionsExport::exportGedcom">exportGedcom</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsExport.php.html#138"><abbr title="Fisharebest\Webtrees\Functions\FunctionsExport::convertMediaPath">convertMediaPath</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsExport.php.html#86"><abbr title="Fisharebest\Webtrees\Functions\FunctionsExport::gedcomHeader">gedcomHeader</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrint.php.html#236"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrint::formatFactDate">formatFactDate</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrint.php.html#429"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrint::checkFactUnique">checkFactUnique</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#1099"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::insertMissingSubtags">insertMissingSubtags</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrintLists.php.html#39"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintLists::surnameTagCloud">surnameTagCloud</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsRtl.php.html#632"><abbr title="Fisharebest\Webtrees\Functions\FunctionsRtl::finishCurrentSpan">finishCurrentSpan</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsRtl.php.html#612"><abbr title="Fisharebest\Webtrees\Functions\FunctionsRtl::beginCurrentSpan">beginCurrentSpan</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsRtl.php.html#595"><abbr title="Fisharebest\Webtrees\Functions\FunctionsRtl::breakCurrentSpan">breakCurrentSpan</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsRtl.php.html#560"><abbr title="Fisharebest\Webtrees\Functions\FunctionsRtl::getChar">getChar</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsRtl.php.html#512"><abbr title="Fisharebest\Webtrees\Functions\FunctionsRtl::starredName">starredName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsRtl.php.html#101"><abbr title="Fisharebest\Webtrees\Functions\FunctionsRtl::spanLtrRtl">spanLtrRtl</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsRtl.php.html#76"><abbr title="Fisharebest\Webtrees\Functions\FunctionsRtl::stripLrmRlm">stripLrmRlm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrintLists.php.html#90"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintLists::surnameList">surnameList</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrintFacts.php.html#1076"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintFacts::printMainMedia">printMainMedia</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrint.php.html#452"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrint::printAddNewFact">printAddNewFact</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrintFacts.php.html#943"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintFacts::printMainNotes">printMainNotes</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrintFacts.php.html#906"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintFacts::getSourceStructure">getSourceStructure</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrintFacts.php.html#859"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintFacts::printSourceStructure">printSourceStructure</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrintFacts.php.html#711"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintFacts::printMainSources">printMainSources</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrintFacts.php.html#640"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintFacts::printMediaLinks">printMediaLinks</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrintFacts.php.html#560"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintFacts::printFactSources">printFactSources</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrintFacts.php.html#481"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintFacts::formatAssociateRelationship">formatAssociateRelationship</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsPrintFacts.php.html#65"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintFacts::printFact">printFact</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsExport.php.html#45"><abbr title="Fisharebest\Webtrees\Functions\FunctionsExport::reformatRecord">reformatRecord</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#964"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::createEditForm">createEditForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Functions.php.html#89"><abbr title="Fisharebest\Webtrees\Functions\Functions::getSubRecord">getSubRecord</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsCharts.php.html#71"><abbr title="Fisharebest\Webtrees\Functions\FunctionsCharts::printSosaNumber">printSosaNumber</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#89"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::optionsAccessLevels">optionsAccessLevels</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#68"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::editLanguageCheckboxes">editLanguageCheckboxes</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsDate.php.html#35"><abbr title="Fisharebest\Webtrees\Functions\FunctionsDate::getAgeAtEvent">getAgeAtEvent</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsCharts.php.html#499"><abbr title="Fisharebest\Webtrees\Functions\FunctionsCharts::printCousins">printCousins</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsCharts.php.html#476"><abbr title="Fisharebest\Webtrees\Functions\FunctionsCharts::getSosaName">getSosaName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsCharts.php.html#449"><abbr title="Fisharebest\Webtrees\Functions\FunctionsCharts::printSosaFamily">printSosaFamily</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsCharts.php.html#299"><abbr title="Fisharebest\Webtrees\Functions\FunctionsCharts::printFamilyChildren">printFamilyChildren</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsCharts.php.html#101"><abbr title="Fisharebest\Webtrees\Functions\FunctionsCharts::printFamilyParents">printFamilyParents</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsCharts.php.html#41"><abbr title="Fisharebest\Webtrees\Functions\FunctionsCharts::printDabovilleNumber">printDabovilleNumber</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#119"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::optionsCalendarConversions">optionsCalendarConversions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Functions.php.html#588"><abbr title="Fisharebest\Webtrees\Functions\Functions::getRelationshipNameFromPath">getRelationshipNameFromPath</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Functions.php.html#504"><abbr title="Fisharebest\Webtrees\Functions\Functions::cousinName2">cousinName2</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Functions.php.html#366"><abbr title="Fisharebest\Webtrees\Functions\Functions::cousinName">cousinName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Functions.php.html#330"><abbr title="Fisharebest\Webtrees\Functions\Functions::getRelationshipName">getRelationshipName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Functions.php.html#207"><abbr title="Fisharebest\Webtrees\Functions\Functions::getRelationship">getRelationship</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Functions.php.html#180"><abbr title="Fisharebest\Webtrees\Functions\Functions::reflexivePronoun">reflexivePronoun</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Functions.php.html#158"><abbr title="Fisharebest\Webtrees\Functions\Functions::getCloseRelationshipName">getCloseRelationshipName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Functions.php.html#131"><abbr title="Fisharebest\Webtrees\Functions\Functions::getCont">getCont</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#104"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::optionsActiveLanguages">optionsActiveLanguages</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#129"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::optionsContactMethods">optionsContactMethods</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#917"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::createAddForm">createAddForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#318"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::formControlFlag">formControlFlag</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#881"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::addSimpleTags">addSimpleTags</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#480"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::addSimpleTag">addSimpleTag</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#450"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::formControlSubmitter">formControlSubmitter</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#428"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::formControlSource">formControlSource</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#406"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::formControlRepository">formControlRepository</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#384"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::formControlNote">formControlNote</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#362"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::formControlMediaObject">formControlMediaObject</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#340"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::formControlIndividual">formControlIndividual</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#297"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::formControlFamily">formControlFamily</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#145"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::optionsHideShow">optionsHideShow</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#277"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::optionsUsers">optionsUsers</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#267"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::optionsTemples">optionsTemples</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#250"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::optionsRestrictionsRule">optionsRestrictionsRule</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#227"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::optionsRestrictions">optionsRestrictions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#209"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::optionsRelationships">optionsRelationships</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#194"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::optionsNoYes">optionsNoYes</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#175"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::numericOptions">numericOptions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#158"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::optionsInstalledLanguages">optionsInstalledLanguages</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FunctionsRtl.php.html#1145"><abbr title="Fisharebest\Webtrees\Functions\FunctionsRtl::utf8WordWrap">utf8WordWrap</abbr></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Functions.php.html#588"><abbr title="Fisharebest\Webtrees\Functions\Functions::getRelationshipNameFromPath">getRelationshipNameFromPath</abbr></a></td><td class="text-right">419256</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#52"><abbr title="Fisharebest\Webtrees\Functions\FunctionsImport::reformatRecord">reformatRecord</abbr></a></td><td class="text-right">32580</td></tr>
+       <tr><td><a href="FunctionsPrintFacts.php.html#65"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintFacts::printFact">printFact</abbr></a></td><td class="text-right">13572</td></tr>
+       <tr><td><a href="FunctionsRtl.php.html#632"><abbr title="Fisharebest\Webtrees\Functions\FunctionsRtl::finishCurrentSpan">finishCurrentSpan</abbr></a></td><td class="text-right">10100</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#480"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::addSimpleTag">addSimpleTag</abbr></a></td><td class="text-right">9702</td></tr>
+       <tr><td><a href="FunctionsRtl.php.html#101"><abbr title="Fisharebest\Webtrees\Functions\FunctionsRtl::spanLtrRtl">spanLtrRtl</abbr></a></td><td class="text-right">6806</td></tr>
+       <tr><td><a href="Functions.php.html#366"><abbr title="Fisharebest\Webtrees\Functions\Functions::cousinName">cousinName</abbr></a></td><td class="text-right">2352</td></tr>
+       <tr><td><a href="FunctionsPrint.php.html#236"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrint::formatFactDate">formatFactDate</abbr></a></td><td class="text-right">1640</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#1099"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::insertMissingSubtags">insertMissingSubtags</abbr></a></td><td class="text-right">1640</td></tr>
+       <tr><td><a href="FunctionsCharts.php.html#101"><abbr title="Fisharebest\Webtrees\Functions\FunctionsCharts::printFamilyParents">printFamilyParents</abbr></a></td><td class="text-right">1560</td></tr>
+       <tr><td><a href="FunctionsPrintFacts.php.html#711"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintFacts::printMainSources">printMainSources</abbr></a></td><td class="text-right">930</td></tr>
+       <tr><td><a href="FunctionsPrintFacts.php.html#943"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintFacts::printMainNotes">printMainNotes</abbr></a></td><td class="text-right">812</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#964"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::createEditForm">createEditForm</abbr></a></td><td class="text-right">702</td></tr>
+       <tr><td><a href="FunctionsCharts.php.html#299"><abbr title="Fisharebest\Webtrees\Functions\FunctionsCharts::printFamilyChildren">printFamilyChildren</abbr></a></td><td class="text-right">650</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#606"><abbr title="Fisharebest\Webtrees\Functions\FunctionsImport::importRecord">importRecord</abbr></a></td><td class="text-right">600</td></tr>
+       <tr><td><a href="FunctionsPrintLists.php.html#90"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintLists::surnameList">surnameList</abbr></a></td><td class="text-right">342</td></tr>
+       <tr><td><a href="Functions.php.html#207"><abbr title="Fisharebest\Webtrees\Functions\Functions::getRelationship">getRelationship</abbr></a></td><td class="text-right">342</td></tr>
+       <tr><td><a href="Functions.php.html#504"><abbr title="Fisharebest\Webtrees\Functions\Functions::cousinName2">cousinName2</abbr></a></td><td class="text-right">342</td></tr>
+       <tr><td><a href="FunctionsPrintFacts.php.html#1076"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintFacts::printMainMedia">printMainMedia</abbr></a></td><td class="text-right">306</td></tr>
+       <tr><td><a href="FunctionsPrint.php.html#347"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrint::formatFactPlace">formatFactPlace</abbr></a></td><td class="text-right">240</td></tr>
+       <tr><td><a href="FunctionsPrintFacts.php.html#640"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintFacts::printMediaLinks">printMediaLinks</abbr></a></td><td class="text-right">210</td></tr>
+       <tr><td><a href="FunctionsPrintFacts.php.html#481"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintFacts::formatAssociateRelationship">formatAssociateRelationship</abbr></a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="FunctionsPrint.php.html#183"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrint::formatParentsAges">formatParentsAges</abbr></a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="FunctionsPrintFacts.php.html#560"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintFacts::printFactSources">printFactSources</abbr></a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="FunctionsPrintLists.php.html#39"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintLists::surnameTagCloud">surnameTagCloud</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="FunctionsPrintFacts.php.html#859"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintFacts::printSourceStructure">printSourceStructure</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Functions.php.html#38"><abbr title="Fisharebest\Webtrees\Functions\Functions::fileUploadErrorText">fileUploadErrorText</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#1116"><abbr title="Fisharebest\Webtrees\Functions\FunctionsImport::updateRecord">updateRecord</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="FunctionsCharts.php.html#499"><abbr title="Fisharebest\Webtrees\Functions\FunctionsCharts::printCousins">printCousins</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#850"><abbr title="Fisharebest\Webtrees\Functions\FunctionsImport::updateDates">updateDates</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="FunctionsPrint.php.html#452"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrint::printAddNewFact">printAddNewFact</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="FunctionsDate.php.html#35"><abbr title="Fisharebest\Webtrees\Functions\FunctionsDate::getAgeAtEvent">getAgeAtEvent</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="FunctionsExport.php.html#45"><abbr title="Fisharebest\Webtrees\Functions\FunctionsExport::reformatRecord">reformatRecord</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="FunctionsPrint.php.html#123"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrint::printFactNotes">printFactNotes</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Functions.php.html#89"><abbr title="Fisharebest\Webtrees\Functions\Functions::getSubRecord">getSubRecord</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="FunctionsRtl.php.html#1145"><abbr title="Fisharebest\Webtrees\Functions\FunctionsRtl::utf8WordWrap">utf8WordWrap</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#917"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::createAddForm">createAddForm</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="FunctionsExport.php.html#138"><abbr title="Fisharebest\Webtrees\Functions\FunctionsExport::convertMediaPath">convertMediaPath</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#881"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::addSimpleTags">addSimpleTags</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#1009"><abbr title="Fisharebest\Webtrees\Functions\FunctionsImport::createMediaObject">createMediaObject</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="FunctionsRtl.php.html#560"><abbr title="Fisharebest\Webtrees\Functions\FunctionsRtl::getChar">getChar</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="FunctionsRtl.php.html#512"><abbr title="Fisharebest\Webtrees\Functions\FunctionsRtl::starredName">starredName</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="FunctionsCharts.php.html#41"><abbr title="Fisharebest\Webtrees\Functions\FunctionsCharts::printDabovilleNumber">printDabovilleNumber</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="FunctionsCharts.php.html#71"><abbr title="Fisharebest\Webtrees\Functions\FunctionsCharts::printSosaNumber">printSosaNumber</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="FunctionsPrint.php.html#72"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrint::printNoteRecord">printNoteRecord</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="FunctionsExport.php.html#86"><abbr title="Fisharebest\Webtrees\Functions\FunctionsExport::gedcomHeader">gedcomHeader</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#931"><abbr title="Fisharebest\Webtrees\Functions\FunctionsImport::updateNames">updateNames</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#899"><abbr title="Fisharebest\Webtrees\Functions\FunctionsImport::updateLinks">updateLinks</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#985"><abbr title="Fisharebest\Webtrees\Functions\FunctionsImport::convertInlineMedia">convertInlineMedia</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Functions.php.html#131"><abbr title="Fisharebest\Webtrees\Functions\Functions::getCont">getCont</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#813"><abbr title="Fisharebest\Webtrees\Functions\FunctionsImport::updatePlaces">updatePlaces</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="FunctionsRtl.php.html#612"><abbr title="Fisharebest\Webtrees\Functions\FunctionsRtl::beginCurrentSpan">beginCurrentSpan</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Functions.php.html#158"><abbr title="Fisharebest\Webtrees\Functions\Functions::getCloseRelationshipName">getCloseRelationshipName</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Functions.php.html#180"><abbr title="Fisharebest\Webtrees\Functions\Functions::reflexivePronoun">reflexivePronoun</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="FunctionsCharts.php.html#476"><abbr title="Fisharebest\Webtrees\Functions\FunctionsCharts::getSosaName">getSosaName</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="FunctionsPrintFacts.php.html#906"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrintFacts::getSourceStructure">getSourceStructure</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#68"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::editLanguageCheckboxes">editLanguageCheckboxes</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#175"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::numericOptions">numericOptions</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="FunctionsImport.php.html#1080"><abbr title="Fisharebest\Webtrees\Functions\FunctionsImport::acceptAllChanges">acceptAllChanges</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="FunctionsPrint.php.html#429"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrint::checkFactUnique">checkFactUnique</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#227"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::optionsRestrictions">optionsRestrictions</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#362"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::formControlMediaObject">formControlMediaObject</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#384"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::formControlNote">formControlNote</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="FunctionsExport.php.html#172"><abbr title="Fisharebest\Webtrees\Functions\FunctionsExport::exportGedcom">exportGedcom</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#450"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::formControlSubmitter">formControlSubmitter</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="FunctionsPrint.php.html#53"><abbr title="Fisharebest\Webtrees\Functions\FunctionsPrint::printPedigreePerson">printPedigreePerson</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#340"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::formControlIndividual">formControlIndividual</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#428"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::formControlSource">formControlSource</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#209"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::optionsRelationships">optionsRelationships</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#318"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::formControlFlag">formControlFlag</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#406"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::formControlRepository">formControlRepository</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#104"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::optionsActiveLanguages">optionsActiveLanguages</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#158"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::optionsInstalledLanguages">optionsInstalledLanguages</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#277"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::optionsUsers">optionsUsers</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="FunctionsEdit.php.html#297"><abbr title="Fisharebest\Webtrees\Functions\FunctionsEdit::formControlFamily">formControlFamily</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 6.1.4</a> using <a href="https://secure.php.net/" target="_top">PHP 7.3.2</a> with <a href="https://xdebug.org/">Xdebug 2.7.0RC2</a> and <a href="https://phpunit.de/">PHPUnit 7.5.6</a> at Fri Mar 15 15:50:13 UTC 2019.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../.js/jquery.min.js" type="text/javascript"></script>
+  <script src="../.js/d3.min.js" type="text/javascript"></script>
+  <script src="../.js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([10,0,0,0,0,0,0,0,0,0,0,0], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([87,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,758,"<a href=\"Functions.php.html#29\">Fisharebest\\Webtrees\\Functions\\Functions<\/a>"],[0,87,"<a href=\"FunctionsCharts.php.html#30\">Fisharebest\\Webtrees\\Functions\\FunctionsCharts<\/a>"],[0,8,"<a href=\"FunctionsDate.php.html#26\">Fisharebest\\Webtrees\\Functions\\FunctionsDate<\/a>"],[0,216,"<a href=\"FunctionsEdit.php.html#55\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit<\/a>"],[0,21,"<a href=\"FunctionsExport.php.html#36\">Fisharebest\\Webtrees\\Functions\\FunctionsExport<\/a>"],[0,247,"<a href=\"FunctionsImport.php.html#42\">Fisharebest\\Webtrees\\Functions\\FunctionsImport<\/a>"],[0,94,"<a href=\"FunctionsPrint.php.html#43\">Fisharebest\\Webtrees\\Functions\\FunctionsPrint<\/a>"],[0,241,"<a href=\"FunctionsPrintFacts.php.html#50\">Fisharebest\\Webtrees\\Functions\\FunctionsPrintFacts<\/a>"],[0,28,"<a href=\"FunctionsPrintLists.php.html#27\">Fisharebest\\Webtrees\\Functions\\FunctionsPrintLists<\/a>"],[0,204,"<a href=\"FunctionsRtl.php.html#25\">Fisharebest\\Webtrees\\Functions\\FunctionsRtl<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,9,"<a href=\"Functions.php.html#38\">Fisharebest\\Webtrees\\Functions\\Functions::fileUploadErrorText<\/a>"],[0,7,"<a href=\"Functions.php.html#89\">Fisharebest\\Webtrees\\Functions\\Functions::getSubRecord<\/a>"],[0,4,"<a href=\"Functions.php.html#131\">Fisharebest\\Webtrees\\Functions\\Functions::getCont<\/a>"],[0,3,"<a href=\"Functions.php.html#158\">Fisharebest\\Webtrees\\Functions\\Functions::getCloseRelationshipName<\/a>"],[0,3,"<a href=\"Functions.php.html#180\">Fisharebest\\Webtrees\\Functions\\Functions::reflexivePronoun<\/a>"],[0,18,"<a href=\"Functions.php.html#207\">Fisharebest\\Webtrees\\Functions\\Functions::getRelationship<\/a>"],[0,1,"<a href=\"Functions.php.html#330\">Fisharebest\\Webtrees\\Functions\\Functions::getRelationshipName<\/a>"],[0,48,"<a href=\"Functions.php.html#366\">Fisharebest\\Webtrees\\Functions\\Functions::cousinName<\/a>"],[0,18,"<a href=\"Functions.php.html#504\">Fisharebest\\Webtrees\\Functions\\Functions::cousinName2<\/a>"],[0,647,"<a href=\"Functions.php.html#588\">Fisharebest\\Webtrees\\Functions\\Functions::getRelationshipNameFromPath<\/a>"],[0,5,"<a href=\"FunctionsCharts.php.html#41\">Fisharebest\\Webtrees\\Functions\\FunctionsCharts::printDabovilleNumber<\/a>"],[0,5,"<a href=\"FunctionsCharts.php.html#71\">Fisharebest\\Webtrees\\Functions\\FunctionsCharts::printSosaNumber<\/a>"],[0,39,"<a href=\"FunctionsCharts.php.html#101\">Fisharebest\\Webtrees\\Functions\\FunctionsCharts::printFamilyParents<\/a>"],[0,25,"<a href=\"FunctionsCharts.php.html#299\">Fisharebest\\Webtrees\\Functions\\FunctionsCharts::printFamilyChildren<\/a>"],[0,1,"<a href=\"FunctionsCharts.php.html#449\">Fisharebest\\Webtrees\\Functions\\FunctionsCharts::printSosaFamily<\/a>"],[0,3,"<a href=\"FunctionsCharts.php.html#476\">Fisharebest\\Webtrees\\Functions\\FunctionsCharts::getSosaName<\/a>"],[0,9,"<a href=\"FunctionsCharts.php.html#499\">Fisharebest\\Webtrees\\Functions\\FunctionsCharts::printCousins<\/a>"],[0,8,"<a href=\"FunctionsDate.php.html#35\">Fisharebest\\Webtrees\\Functions\\FunctionsDate::getAgeAtEvent<\/a>"],[0,3,"<a href=\"FunctionsEdit.php.html#68\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::editLanguageCheckboxes<\/a>"],[0,1,"<a href=\"FunctionsEdit.php.html#89\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::optionsAccessLevels<\/a>"],[0,2,"<a href=\"FunctionsEdit.php.html#104\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::optionsActiveLanguages<\/a>"],[0,1,"<a href=\"FunctionsEdit.php.html#119\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::optionsCalendarConversions<\/a>"],[0,1,"<a href=\"FunctionsEdit.php.html#129\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::optionsContactMethods<\/a>"],[0,1,"<a href=\"FunctionsEdit.php.html#145\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::optionsHideShow<\/a>"],[0,2,"<a href=\"FunctionsEdit.php.html#158\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::optionsInstalledLanguages<\/a>"],[0,3,"<a href=\"FunctionsEdit.php.html#175\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::numericOptions<\/a>"],[0,1,"<a href=\"FunctionsEdit.php.html#194\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::optionsNoYes<\/a>"],[0,2,"<a href=\"FunctionsEdit.php.html#209\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::optionsRelationships<\/a>"],[0,2,"<a href=\"FunctionsEdit.php.html#227\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::optionsRestrictions<\/a>"],[0,1,"<a href=\"FunctionsEdit.php.html#250\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::optionsRestrictionsRule<\/a>"],[0,1,"<a href=\"FunctionsEdit.php.html#267\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::optionsTemples<\/a>"],[0,2,"<a href=\"FunctionsEdit.php.html#277\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::optionsUsers<\/a>"],[0,2,"<a href=\"FunctionsEdit.php.html#297\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::formControlFamily<\/a>"],[0,2,"<a href=\"FunctionsEdit.php.html#318\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::formControlFlag<\/a>"],[0,2,"<a href=\"FunctionsEdit.php.html#340\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::formControlIndividual<\/a>"],[0,2,"<a href=\"FunctionsEdit.php.html#362\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::formControlMediaObject<\/a>"],[0,2,"<a href=\"FunctionsEdit.php.html#384\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::formControlNote<\/a>"],[0,2,"<a href=\"FunctionsEdit.php.html#406\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::formControlRepository<\/a>"],[0,2,"<a href=\"FunctionsEdit.php.html#428\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::formControlSource<\/a>"],[0,2,"<a href=\"FunctionsEdit.php.html#450\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::formControlSubmitter<\/a>"],[0,98,"<a href=\"FunctionsEdit.php.html#480\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::addSimpleTag<\/a>"],[0,6,"<a href=\"FunctionsEdit.php.html#881\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::addSimpleTags<\/a>"],[0,7,"<a href=\"FunctionsEdit.php.html#917\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::createAddForm<\/a>"],[0,26,"<a href=\"FunctionsEdit.php.html#964\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::createEditForm<\/a>"],[0,40,"<a href=\"FunctionsEdit.php.html#1099\">Fisharebest\\Webtrees\\Functions\\FunctionsEdit::insertMissingSubtags<\/a>"],[0,8,"<a href=\"FunctionsExport.php.html#45\">Fisharebest\\Webtrees\\Functions\\FunctionsExport::reformatRecord<\/a>"],[0,5,"<a href=\"FunctionsExport.php.html#86\">Fisharebest\\Webtrees\\Functions\\FunctionsExport::gedcomHeader<\/a>"],[0,6,"<a href=\"FunctionsExport.php.html#138\">Fisharebest\\Webtrees\\Functions\\FunctionsExport::convertMediaPath<\/a>"],[0,2,"<a href=\"FunctionsExport.php.html#172\">Fisharebest\\Webtrees\\Functions\\FunctionsExport::exportGedcom<\/a>"],[0,180,"<a href=\"FunctionsImport.php.html#52\">Fisharebest\\Webtrees\\Functions\\FunctionsImport::reformatRecord<\/a>"],[0,24,"<a href=\"FunctionsImport.php.html#606\">Fisharebest\\Webtrees\\Functions\\FunctionsImport::importRecord<\/a>"],[0,4,"<a href=\"FunctionsImport.php.html#813\">Fisharebest\\Webtrees\\Functions\\FunctionsImport::updatePlaces<\/a>"],[0,8,"<a href=\"FunctionsImport.php.html#850\">Fisharebest\\Webtrees\\Functions\\FunctionsImport::updateDates<\/a>"],[0,5,"<a href=\"FunctionsImport.php.html#899\">Fisharebest\\Webtrees\\Functions\\FunctionsImport::updateLinks<\/a>"],[0,5,"<a href=\"FunctionsImport.php.html#931\">Fisharebest\\Webtrees\\Functions\\FunctionsImport::updateNames<\/a>"],[0,4,"<a href=\"FunctionsImport.php.html#985\">Fisharebest\\Webtrees\\Functions\\FunctionsImport::convertInlineMedia<\/a>"],[0,5,"<a href=\"FunctionsImport.php.html#1009\">Fisharebest\\Webtrees\\Functions\\FunctionsImport::createMediaObject<\/a>"],[0,3,"<a href=\"FunctionsImport.php.html#1080\">Fisharebest\\Webtrees\\Functions\\FunctionsImport::acceptAllChanges<\/a>"],[0,9,"<a href=\"FunctionsImport.php.html#1116\">Fisharebest\\Webtrees\\Functions\\FunctionsImport::updateRecord<\/a>"],[0,2,"<a href=\"FunctionsPrint.php.html#53\">Fisharebest\\Webtrees\\Functions\\FunctionsPrint::printPedigreePerson<\/a>"],[0,5,"<a href=\"FunctionsPrint.php.html#72\">Fisharebest\\Webtrees\\Functions\\FunctionsPrint::printNoteRecord<\/a>"],[0,8,"<a href=\"FunctionsPrint.php.html#123\">Fisharebest\\Webtrees\\Functions\\FunctionsPrint::printFactNotes<\/a>"],[0,1,"<a href=\"FunctionsPrint.php.html#166\">Fisharebest\\Webtrees\\Functions\\FunctionsPrint::helpLink<\/a>"],[0,12,"<a href=\"FunctionsPrint.php.html#183\">Fisharebest\\Webtrees\\Functions\\FunctionsPrint::formatParentsAges<\/a>"],[0,40,"<a href=\"FunctionsPrint.php.html#236\">Fisharebest\\Webtrees\\Functions\\FunctionsPrint::formatFactDate<\/a>"],[0,15,"<a href=\"FunctionsPrint.php.html#347\">Fisharebest\\Webtrees\\Functions\\FunctionsPrint::formatFactPlace<\/a>"],[0,3,"<a href=\"FunctionsPrint.php.html#429\">Fisharebest\\Webtrees\\Functions\\FunctionsPrint::checkFactUnique<\/a>"],[0,8,"<a href=\"FunctionsPrint.php.html#452\">Fisharebest\\Webtrees\\Functions\\FunctionsPrint::printAddNewFact<\/a>"],[0,116,"<a href=\"FunctionsPrintFacts.php.html#65\">Fisharebest\\Webtrees\\Functions\\FunctionsPrintFacts::printFact<\/a>"],[0,13,"<a href=\"FunctionsPrintFacts.php.html#481\">Fisharebest\\Webtrees\\Functions\\FunctionsPrintFacts::formatAssociateRelationship<\/a>"],[0,11,"<a href=\"FunctionsPrintFacts.php.html#560\">Fisharebest\\Webtrees\\Functions\\FunctionsPrintFacts::printFactSources<\/a>"],[0,14,"<a href=\"FunctionsPrintFacts.php.html#640\">Fisharebest\\Webtrees\\Functions\\FunctionsPrintFacts::printMediaLinks<\/a>"],[0,30,"<a href=\"FunctionsPrintFacts.php.html#711\">Fisharebest\\Webtrees\\Functions\\FunctionsPrintFacts::printMainSources<\/a>"],[0,9,"<a href=\"FunctionsPrintFacts.php.html#859\">Fisharebest\\Webtrees\\Functions\\FunctionsPrintFacts::printSourceStructure<\/a>"],[0,3,"<a href=\"FunctionsPrintFacts.php.html#906\">Fisharebest\\Webtrees\\Functions\\FunctionsPrintFacts::getSourceStructure<\/a>"],[0,28,"<a href=\"FunctionsPrintFacts.php.html#943\">Fisharebest\\Webtrees\\Functions\\FunctionsPrintFacts::printMainNotes<\/a>"],[0,17,"<a href=\"FunctionsPrintFacts.php.html#1076\">Fisharebest\\Webtrees\\Functions\\FunctionsPrintFacts::printMainMedia<\/a>"],[0,10,"<a href=\"FunctionsPrintLists.php.html#39\">Fisharebest\\Webtrees\\Functions\\FunctionsPrintLists::surnameTagCloud<\/a>"],[0,18,"<a href=\"FunctionsPrintLists.php.html#90\">Fisharebest\\Webtrees\\Functions\\FunctionsPrintLists::surnameList<\/a>"],[0,1,"<a href=\"FunctionsRtl.php.html#76\">Fisharebest\\Webtrees\\Functions\\FunctionsRtl::stripLrmRlm<\/a>"],[0,82,"<a href=\"FunctionsRtl.php.html#101\">Fisharebest\\Webtrees\\Functions\\FunctionsRtl::spanLtrRtl<\/a>"],[0,5,"<a href=\"FunctionsRtl.php.html#512\">Fisharebest\\Webtrees\\Functions\\FunctionsRtl::starredName<\/a>"],[0,5,"<a href=\"FunctionsRtl.php.html#560\">Fisharebest\\Webtrees\\Functions\\FunctionsRtl::getChar<\/a>"],[0,1,"<a href=\"FunctionsRtl.php.html#595\">Fisharebest\\Webtrees\\Functions\\FunctionsRtl::breakCurrentSpan<\/a>"],[0,3,"<a href=\"FunctionsRtl.php.html#612\">Fisharebest\\Webtrees\\Functions\\FunctionsRtl::beginCurrentSpan<\/a>"],[0,100,"<a href=\"FunctionsRtl.php.html#632\">Fisharebest\\Webtrees\\Functions\\FunctionsRtl::finishCurrentSpan<\/a>"],[0,7,"<a href=\"FunctionsRtl.php.html#1145\">Fisharebest\\Webtrees\\Functions\\FunctionsRtl::utf8WordWrap<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

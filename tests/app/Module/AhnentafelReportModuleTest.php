@@ -17,9 +17,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Report\ReportHtml;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportPdf;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 
 /**
@@ -70,11 +72,15 @@ class AhnentafelReportModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testReportRunsWithoutError(): void
     {
+        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user->setPreference('canadmin', '1');
+        Auth::login($user);
+
         $tree = $this->importTree('demo.ged');
         app()->instance(Tree::class, $tree);
         $xml  = WT_ROOT . 'resources/xml/reports/ahnentafel_report.xml';
         $vars = [
-            'pid'      => ['id' => 'i1'],
+            'pid'      => ['id' => 'X1030'],
             'maxgen'   => ['id' => '3'],
             'sources'  => ['id' => 'on'],
             'pageSize' => ['id' => 'A4'],

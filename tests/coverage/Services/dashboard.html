@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /Users/gr4376/Projects/webtrees/app/Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../.css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../.css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href="../.css/style.css" rel="stylesheet" type="text/css">
+  <link href="../.css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="../index.html">/Users/gr4376/Projects/webtrees/app</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Services</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="CalendarService.php.html#41">Fisharebest\Webtrees\Services\CalendarService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ChartService.php.html#27">Fisharebest\Webtrees\Services\ChartService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ClipboardService.php.html#28">Fisharebest\Webtrees\Services\ClipboardService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GedcomService.php.html#23">Fisharebest\Webtrees\Services\GedcomService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="HousekeepingService.php.html#28">Fisharebest\Webtrees\Services\HousekeepingService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="IndividualListService.php.html#33">Fisharebest\Webtrees\Services\IndividualListService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LocalizationService.php.html#31">Fisharebest\Webtrees\Services\LocalizationService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MigrationService.php.html#32">Fisharebest\Webtrees\Services\MigrationService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RomanNumeralsService.php.html#23">Fisharebest\Webtrees\Services\RomanNumeralsService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#40">Fisharebest\Webtrees\Services\ServerCheckService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UpgradeService.php.html#39">Fisharebest\Webtrees\Services\UpgradeService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SearchService.php.html#46">Fisharebest\Webtrees\Services\SearchService</a></td><td class="text-right">29%</td></tr>
+       <tr><td><a href="ModuleService.php.html#218">Fisharebest\Webtrees\Services\ModuleService</a></td><td class="text-right">59%</td></tr>
+       <tr><td><a href="UserService.php.html#33">Fisharebest\Webtrees\Services\UserService</a></td><td class="text-right">84%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="SearchService.php.html#46">Fisharebest\Webtrees\Services\SearchService</a></td><td class="text-right">6379</td></tr>
+       <tr><td><a href="CalendarService.php.html#41">Fisharebest\Webtrees\Services\CalendarService</a></td><td class="text-right">4692</td></tr>
+       <tr><td><a href="IndividualListService.php.html#33">Fisharebest\Webtrees\Services\IndividualListService</a></td><td class="text-right">4160</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#40">Fisharebest\Webtrees\Services\ServerCheckService</a></td><td class="text-right">1056</td></tr>
+       <tr><td><a href="UpgradeService.php.html#39">Fisharebest\Webtrees\Services\UpgradeService</a></td><td class="text-right">992</td></tr>
+       <tr><td><a href="GedcomService.php.html#23">Fisharebest\Webtrees\Services\GedcomService</a></td><td class="text-right">342</td></tr>
+       <tr><td><a href="ChartService.php.html#27">Fisharebest\Webtrees\Services\ChartService</a></td><td class="text-right">210</td></tr>
+       <tr><td><a href="HousekeepingService.php.html#28">Fisharebest\Webtrees\Services\HousekeepingService</a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="ModuleService.php.html#218">Fisharebest\Webtrees\Services\ModuleService</a></td><td class="text-right">171</td></tr>
+       <tr><td><a href="LocalizationService.php.html#31">Fisharebest\Webtrees\Services\LocalizationService</a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="RomanNumeralsService.php.html#23">Fisharebest\Webtrees\Services\RomanNumeralsService</a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="ClipboardService.php.html#28">Fisharebest\Webtrees\Services\ClipboardService</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="UserService.php.html#33">Fisharebest\Webtrees\Services\UserService</a></td><td class="text-right">24</td></tr>
+       <tr><td><a href="MigrationService.php.html#32">Fisharebest\Webtrees\Services\MigrationService</a></td><td class="text-right">20</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="CalendarService.php.html#51"><abbr title="Fisharebest\Webtrees\Services\CalendarService::calendarMonthsInYear">calendarMonthsInYear</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ModuleService.php.html#640"><abbr title="Fisharebest\Webtrees\Services\ModuleService::interfaceFilter">interfaceFilter</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#61"><abbr title="Fisharebest\Webtrees\Services\ServerCheckService::serverErrors">serverErrors</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SearchService.php.html#906"><abbr title="Fisharebest\Webtrees\Services\SearchService::wherePhonetic">wherePhonetic</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SearchService.php.html#777"><abbr title="Fisharebest\Webtrees\Services\SearchService::searchIndividualsPhonetic">searchIndividualsPhonetic</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SearchService.php.html#363"><abbr title="Fisharebest\Webtrees\Services\SearchService::searchIndividualsAdvanced">searchIndividualsAdvanced</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RomanNumeralsService.php.html#73"><abbr title="Fisharebest\Webtrees\Services\RomanNumeralsService::romanNumeralsToNumber">romanNumeralsToNumber</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RomanNumeralsService.php.html#49"><abbr title="Fisharebest\Webtrees\Services\RomanNumeralsService::numberToRomanNumerals">numberToRomanNumerals</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ModuleService.php.html#721"><abbr title="Fisharebest\Webtrees\Services\ModuleService::findByName">findByName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ModuleService.php.html#703"><abbr title="Fisharebest\Webtrees\Services\ModuleService::moduleSorter">moduleSorter</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ModuleService.php.html#652"><abbr title="Fisharebest\Webtrees\Services\ModuleService::footerSorter">footerSorter</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ModuleService.php.html#626"><abbr title="Fisharebest\Webtrees\Services\ModuleService::enabledFilter">enabledFilter</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#110"><abbr title="Fisharebest\Webtrees\Services\ServerCheckService::checkPhpExtension">checkPhpExtension</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ModuleService.php.html#614"><abbr title="Fisharebest\Webtrees\Services\ModuleService::load">load</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ModuleService.php.html#596"><abbr title="Fisharebest\Webtrees\Services\ModuleService::setupLanguages">setupLanguages</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ModuleService.php.html#413"><abbr title="Fisharebest\Webtrees\Services\ModuleService::titleMapper">titleMapper</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MigrationService.php.html#74"><abbr title="Fisharebest\Webtrees\Services\MigrationService::seedDatabase">seedDatabase</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MigrationService.php.html#44"><abbr title="Fisharebest\Webtrees\Services\MigrationService::updateSchema">updateSchema</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LocalizationService.php.html#175"><abbr title="Fisharebest\Webtrees\Services\LocalizationService::weekendStart">weekendStart</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LocalizationService.php.html#165"><abbr title="Fisharebest\Webtrees\Services\LocalizationService::weekendEnd">weekendEnd</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LocalizationService.php.html#144"><abbr title="Fisharebest\Webtrees\Services\LocalizationService::initialLetter">initialLetter</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CalendarService.php.html#91"><abbr title="Fisharebest\Webtrees\Services\CalendarService::getCalendarEvents">getCalendarEvents</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#86"><abbr title="Fisharebest\Webtrees\Services\ServerCheckService::serverWarnings">serverWarnings</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#127"><abbr title="Fisharebest\Webtrees\Services\ServerCheckService::checkPhpIni">checkPhpIni</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LocalizationService.php.html#102"><abbr title="Fisharebest\Webtrees\Services\LocalizationService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UpgradeService.php.html#174"><abbr title="Fisharebest\Webtrees\Services\UpgradeService::moveFiles">moveFiles</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserService.php.html#253"><abbr title="Fisharebest\Webtrees\Services\UserService::allLoggedIn">allLoggedIn</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UpgradeService.php.html#306"><abbr title="Fisharebest\Webtrees\Services\UpgradeService::serverParameters">serverParameters</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UpgradeService.php.html#274"><abbr title="Fisharebest\Webtrees\Services\UpgradeService::fetchLatestVersion">fetchLatestVersion</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UpgradeService.php.html#258"><abbr title="Fisharebest\Webtrees\Services\UpgradeService::endMaintenanceMode">endMaintenanceMode</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UpgradeService.php.html#251"><abbr title="Fisharebest\Webtrees\Services\UpgradeService::startMaintenanceMode">startMaintenanceMode</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UpgradeService.php.html#242"><abbr title="Fisharebest\Webtrees\Services\UpgradeService::downloadUrl">downloadUrl</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UpgradeService.php.html#228"><abbr title="Fisharebest\Webtrees\Services\UpgradeService::latestVersion">latestVersion</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UpgradeService.php.html#216"><abbr title="Fisharebest\Webtrees\Services\UpgradeService::isUpgradeAvailable">isUpgradeAvailable</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UpgradeService.php.html#197"><abbr title="Fisharebest\Webtrees\Services\UpgradeService::cleanFiles">cleanFiles</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UpgradeService.php.html#129"><abbr title="Fisharebest\Webtrees\Services\UpgradeService::downloadFile">downloadFile</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#149"><abbr title="Fisharebest\Webtrees\Services\ServerCheckService::isFunctionDisabled">isFunctionDisabled</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UpgradeService.php.html#105"><abbr title="Fisharebest\Webtrees\Services\UpgradeService::webtreesZipContents">webtreesZipContents</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UpgradeService.php.html#85"><abbr title="Fisharebest\Webtrees\Services\UpgradeService::extractWebtreesZip">extractWebtreesZip</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UpgradeService.php.html#72"><abbr title="Fisharebest\Webtrees\Services\UpgradeService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#275"><abbr title="Fisharebest\Webtrees\Services\ServerCheckService::databaseDriverWarnings">databaseDriverWarnings</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#236"><abbr title="Fisharebest\Webtrees\Services\ServerCheckService::databaseDriverErrors">databaseDriverErrors</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#214"><abbr title="Fisharebest\Webtrees\Services\ServerCheckService::checkSystemTemporaryFolder">checkSystemTemporaryFolder</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#198"><abbr title="Fisharebest\Webtrees\Services\ServerCheckService::checkSqliteVersion">checkSqliteVersion</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#180"><abbr title="Fisharebest\Webtrees\Services\ServerCheckService::checkPhpVersion">checkPhpVersion</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#168"><abbr title="Fisharebest\Webtrees\Services\ServerCheckService::checkPhpFunction">checkPhpFunction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LocalizationService.php.html#112"><abbr title="Fisharebest\Webtrees\Services\LocalizationService::alphabet">alphabet</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LocalizationService.php.html#125"><abbr title="Fisharebest\Webtrees\Services\LocalizationService::calendar">calendar</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="IndividualListService.php.html#539"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::whereInitialSwedish">whereInitialSwedish</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ClipboardService.php.html#66"><abbr title="Fisharebest\Webtrees\Services\ClipboardService::pasteFact">pasteFact</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GedcomService.php.html#307"><abbr title="Fisharebest\Webtrees\Services\GedcomService::writeDegrees">writeDegrees</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GedcomService.php.html#295"><abbr title="Fisharebest\Webtrees\Services\GedcomService::writeLongitude">writeLongitude</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GedcomService.php.html#285"><abbr title="Fisharebest\Webtrees\Services\GedcomService::writeLatitude">writeLatitude</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GedcomService.php.html#251"><abbr title="Fisharebest\Webtrees\Services\GedcomService::readDegrees">readDegrees</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GedcomService.php.html#239"><abbr title="Fisharebest\Webtrees\Services\GedcomService::readLongitude">readLongitude</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GedcomService.php.html#229"><abbr title="Fisharebest\Webtrees\Services\GedcomService::readLatitude">readLatitude</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GedcomService.php.html#219"><abbr title="Fisharebest\Webtrees\Services\GedcomService::isUserDefinedTag">isUserDefinedTag</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GedcomService.php.html#205"><abbr title="Fisharebest\Webtrees\Services\GedcomService::canonicalTag">canonicalTag</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ClipboardService.php.html#113"><abbr title="Fisharebest\Webtrees\Services\ClipboardService::pastableFactsOfType">pastableFactsOfType</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ClipboardService.php.html#90"><abbr title="Fisharebest\Webtrees\Services\ClipboardService::pastableFacts">pastableFacts</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ClipboardService.php.html#38"><abbr title="Fisharebest\Webtrees\Services\ClipboardService::copyFact">copyFact</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GedcomService.php.html#337"><abbr title="Fisharebest\Webtrees\Services\GedcomService::writePlace">writePlace</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ChartService.php.html#104"><abbr title="Fisharebest\Webtrees\Services\ChartService::descendantFamilies">descendantFamilies</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ChartService.php.html#80"><abbr title="Fisharebest\Webtrees\Services\ChartService::descendants">descendants</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ChartService.php.html#38"><abbr title="Fisharebest\Webtrees\Services\ChartService::sosaStradonitzAncestors">sosaStradonitzAncestors</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CalendarService.php.html#445"><abbr title="Fisharebest\Webtrees\Services\CalendarService::nisanAnniversaries">nisanAnniversaries</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CalendarService.php.html#418"><abbr title="Fisharebest\Webtrees\Services\CalendarService::adarIIAnniversaries">adarIIAnniversaries</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CalendarService.php.html#395"><abbr title="Fisharebest\Webtrees\Services\CalendarService::tevetAnniversaries">tevetAnniversaries</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CalendarService.php.html#367"><abbr title="Fisharebest\Webtrees\Services\CalendarService::kislevAnniversaries">kislevAnniversaries</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CalendarService.php.html#348"><abbr title="Fisharebest\Webtrees\Services\CalendarService::cheshvanAnniversaries">cheshvanAnniversaries</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CalendarService.php.html#329"><abbr title="Fisharebest\Webtrees\Services\CalendarService::defaultAnniversaries">defaultAnniversaries</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CalendarService.php.html#223"><abbr title="Fisharebest\Webtrees\Services\CalendarService::getAnniversaryEvents">getAnniversaryEvents</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CalendarService.php.html#168"><abbr title="Fisharebest\Webtrees\Services\CalendarService::getEventsList">getEventsList</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GedcomService.php.html#325"><abbr title="Fisharebest\Webtrees\Services\GedcomService::readPlace">readPlace</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserService.php.html#333"><abbr title="Fisharebest\Webtrees\Services\UserService::contactLink">contactLink</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="IndividualListService.php.html#511"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::whereInitialNorwegian">whereInitialNorwegian</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="IndividualListService.php.html#94"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::surnameAlpha">surnameAlpha</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="IndividualListService.php.html#459"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::whereInitialHungarian">whereInitialHungarian</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="IndividualListService.php.html#439"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::whereInitialDutch">whereInitialDutch</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="IndividualListService.php.html#421"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::whereInitialCzech">whereInitialCzech</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="IndividualListService.php.html#382"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::whereInitial">whereInitial</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="IndividualListService.php.html#365"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::fieldWithCollation">fieldWithCollation</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="IndividualListService.php.html#344"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::families">families</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="IndividualListService.php.html#271"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::individuals">individuals</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="IndividualListService.php.html#218"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::surnames">surnames</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="IndividualListService.php.html#156"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::givenAlpha">givenAlpha</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="IndividualListService.php.html#77"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::whereMarriedName">whereMarriedName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="IndividualListService.php.html#59"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::whereFamily">whereFamily</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="IndividualListService.php.html#47"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="HousekeepingService.php.html#454"><abbr title="Fisharebest\Webtrees\Services\HousekeepingService::deleteFileOrFolder">deleteFileOrFolder</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="HousekeepingService.php.html#437"><abbr title="Fisharebest\Webtrees\Services\HousekeepingService::deleteOldSessions">deleteOldSessions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="HousekeepingService.php.html#422"><abbr title="Fisharebest\Webtrees\Services\HousekeepingService::deleteOldLogs">deleteOldLogs</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="HousekeepingService.php.html#404"><abbr title="Fisharebest\Webtrees\Services\HousekeepingService::deleteOldFiles">deleteOldFiles</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="HousekeepingService.php.html#382"><abbr title="Fisharebest\Webtrees\Services\HousekeepingService::deleteOldWebtreesFiles">deleteOldWebtreesFiles</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GedcomService.php.html#349"><abbr title="Fisharebest\Webtrees\Services\GedcomService::readSex">readSex</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ModuleService.php.html#483"><abbr title="Fisharebest\Webtrees\Services\ModuleService::all">all</abbr></a></td><td class="text-right">58%</td></tr>
+       <tr><td><a href="SearchService.php.html#965"><abbr title="Fisharebest\Webtrees\Services\SearchService::rowLimiter">rowLimiter</abbr></a></td><td class="text-right">60%</td></tr>
+       <tr><td><a href="ModuleService.php.html#553"><abbr title="Fisharebest\Webtrees\Services\ModuleService::customModules">customModules</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="ModuleService.php.html#448"><abbr title="Fisharebest\Webtrees\Services\ModuleService::findByInterface">findByInterface</abbr></a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="SearchService.php.html#854"><abbr title="Fisharebest\Webtrees\Services\SearchService::paginateQuery">paginateQuery</abbr></a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="SearchService.php.html#938"><abbr title="Fisharebest\Webtrees\Services\SearchService::rawGedcomFilter">rawGedcomFilter</abbr></a></td><td class="text-right">85%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="SearchService.php.html#363"><abbr title="Fisharebest\Webtrees\Services\SearchService::searchIndividualsAdvanced">searchIndividualsAdvanced</abbr></a></td><td class="text-right">8930</td></tr>
+       <tr><td><a href="CalendarService.php.html#223"><abbr title="Fisharebest\Webtrees\Services\CalendarService::getAnniversaryEvents">getAnniversaryEvents</abbr></a></td><td class="text-right">342</td></tr>
+       <tr><td><a href="CalendarService.php.html#168"><abbr title="Fisharebest\Webtrees\Services\CalendarService::getEventsList">getEventsList</abbr></a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="IndividualListService.php.html#459"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::whereInitialHungarian">whereInitialHungarian</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="SearchService.php.html#777"><abbr title="Fisharebest\Webtrees\Services\SearchService::searchIndividualsPhonetic">searchIndividualsPhonetic</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="IndividualListService.php.html#271"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::individuals">individuals</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="IndividualListService.php.html#382"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::whereInitial">whereInitial</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="CalendarService.php.html#91"><abbr title="Fisharebest\Webtrees\Services\CalendarService::getCalendarEvents">getCalendarEvents</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="CalendarService.php.html#51"><abbr title="Fisharebest\Webtrees\Services\CalendarService::calendarMonthsInYear">calendarMonthsInYear</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="IndividualListService.php.html#156"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::givenAlpha">givenAlpha</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="ChartService.php.html#38"><abbr title="Fisharebest\Webtrees\Services\ChartService::sosaStradonitzAncestors">sosaStradonitzAncestors</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="IndividualListService.php.html#218"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::surnames">surnames</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="UpgradeService.php.html#197"><abbr title="Fisharebest\Webtrees\Services\UpgradeService::cleanFiles">cleanFiles</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#236"><abbr title="Fisharebest\Webtrees\Services\ServerCheckService::databaseDriverErrors">databaseDriverErrors</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#127"><abbr title="Fisharebest\Webtrees\Services\ServerCheckService::checkPhpIni">checkPhpIni</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="GedcomService.php.html#251"><abbr title="Fisharebest\Webtrees\Services\GedcomService::readDegrees">readDegrees</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="UpgradeService.php.html#129"><abbr title="Fisharebest\Webtrees\Services\UpgradeService::downloadFile">downloadFile</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="CalendarService.php.html#367"><abbr title="Fisharebest\Webtrees\Services\CalendarService::kislevAnniversaries">kislevAnniversaries</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="HousekeepingService.php.html#454"><abbr title="Fisharebest\Webtrees\Services\HousekeepingService::deleteFileOrFolder">deleteFileOrFolder</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="IndividualListService.php.html#94"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::surnameAlpha">surnameAlpha</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#275"><abbr title="Fisharebest\Webtrees\Services\ServerCheckService::databaseDriverWarnings">databaseDriverWarnings</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="RomanNumeralsService.php.html#49"><abbr title="Fisharebest\Webtrees\Services\RomanNumeralsService::numberToRomanNumerals">numberToRomanNumerals</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="UpgradeService.php.html#174"><abbr title="Fisharebest\Webtrees\Services\UpgradeService::moveFiles">moveFiles</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="UpgradeService.php.html#274"><abbr title="Fisharebest\Webtrees\Services\UpgradeService::fetchLatestVersion">fetchLatestVersion</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#180"><abbr title="Fisharebest\Webtrees\Services\ServerCheckService::checkPhpVersion">checkPhpVersion</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="UserService.php.html#333"><abbr title="Fisharebest\Webtrees\Services\UserService::contactLink">contactLink</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="ChartService.php.html#80"><abbr title="Fisharebest\Webtrees\Services\ChartService::descendants">descendants</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="ChartService.php.html#104"><abbr title="Fisharebest\Webtrees\Services\ChartService::descendantFamilies">descendantFamilies</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="ModuleService.php.html#483"><abbr title="Fisharebest\Webtrees\Services\ModuleService::all">all</abbr></a></td><td class="text-right">19</td></tr>
+       <tr><td><a href="LocalizationService.php.html#144"><abbr title="Fisharebest\Webtrees\Services\LocalizationService::initialLetter">initialLetter</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="RomanNumeralsService.php.html#73"><abbr title="Fisharebest\Webtrees\Services\RomanNumeralsService::romanNumeralsToNumber">romanNumeralsToNumber</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="GedcomService.php.html#349"><abbr title="Fisharebest\Webtrees\Services\GedcomService::readSex">readSex</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#198"><abbr title="Fisharebest\Webtrees\Services\ServerCheckService::checkSqliteVersion">checkSqliteVersion</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="ModuleService.php.html#703"><abbr title="Fisharebest\Webtrees\Services\ModuleService::moduleSorter">moduleSorter</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#214"><abbr title="Fisharebest\Webtrees\Services\ServerCheckService::checkSystemTemporaryFolder">checkSystemTemporaryFolder</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="CalendarService.php.html#445"><abbr title="Fisharebest\Webtrees\Services\CalendarService::nisanAnniversaries">nisanAnniversaries</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="SearchService.php.html#906"><abbr title="Fisharebest\Webtrees\Services\SearchService::wherePhonetic">wherePhonetic</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="IndividualListService.php.html#344"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::families">families</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="MigrationService.php.html#44"><abbr title="Fisharebest\Webtrees\Services\MigrationService::updateSchema">updateSchema</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="HousekeepingService.php.html#382"><abbr title="Fisharebest\Webtrees\Services\HousekeepingService::deleteOldWebtreesFiles">deleteOldWebtreesFiles</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="CalendarService.php.html#418"><abbr title="Fisharebest\Webtrees\Services\CalendarService::adarIIAnniversaries">adarIIAnniversaries</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="IndividualListService.php.html#511"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::whereInitialNorwegian">whereInitialNorwegian</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="HousekeepingService.php.html#404"><abbr title="Fisharebest\Webtrees\Services\HousekeepingService::deleteOldFiles">deleteOldFiles</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="CalendarService.php.html#395"><abbr title="Fisharebest\Webtrees\Services\CalendarService::tevetAnniversaries">tevetAnniversaries</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="CalendarService.php.html#348"><abbr title="Fisharebest\Webtrees\Services\CalendarService::cheshvanAnniversaries">cheshvanAnniversaries</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="CalendarService.php.html#329"><abbr title="Fisharebest\Webtrees\Services\CalendarService::defaultAnniversaries">defaultAnniversaries</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="ModuleService.php.html#448"><abbr title="Fisharebest\Webtrees\Services\ModuleService::findByInterface">findByInterface</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="SearchService.php.html#854"><abbr title="Fisharebest\Webtrees\Services\SearchService::paginateQuery">paginateQuery</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ClipboardService.php.html#90"><abbr title="Fisharebest\Webtrees\Services\ClipboardService::pastableFacts">pastableFacts</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="UpgradeService.php.html#85"><abbr title="Fisharebest\Webtrees\Services\UpgradeService::extractWebtreesZip">extractWebtreesZip</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="UpgradeService.php.html#306"><abbr title="Fisharebest\Webtrees\Services\UpgradeService::serverParameters">serverParameters</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="IndividualListService.php.html#59"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::whereFamily">whereFamily</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="UpgradeService.php.html#258"><abbr title="Fisharebest\Webtrees\Services\UpgradeService::endMaintenanceMode">endMaintenanceMode</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="IndividualListService.php.html#421"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::whereInitialCzech">whereInitialCzech</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="IndividualListService.php.html#439"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::whereInitialDutch">whereInitialDutch</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="IndividualListService.php.html#539"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::whereInitialSwedish">whereInitialSwedish</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ModuleService.php.html#596"><abbr title="Fisharebest\Webtrees\Services\ModuleService::setupLanguages">setupLanguages</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ModuleService.php.html#626"><abbr title="Fisharebest\Webtrees\Services\ModuleService::enabledFilter">enabledFilter</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ModuleService.php.html#721"><abbr title="Fisharebest\Webtrees\Services\ModuleService::findByName">findByName</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="GedcomService.php.html#307"><abbr title="Fisharebest\Webtrees\Services\GedcomService::writeDegrees">writeDegrees</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#168"><abbr title="Fisharebest\Webtrees\Services\ServerCheckService::checkPhpFunction">checkPhpFunction</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#149"><abbr title="Fisharebest\Webtrees\Services\ServerCheckService::isFunctionDisabled">isFunctionDisabled</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ClipboardService.php.html#66"><abbr title="Fisharebest\Webtrees\Services\ClipboardService::pasteFact">pasteFact</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ServerCheckService.php.html#110"><abbr title="Fisharebest\Webtrees\Services\ServerCheckService::checkPhpExtension">checkPhpExtension</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="IndividualListService.php.html#77"><abbr title="Fisharebest\Webtrees\Services\IndividualListService::whereMarriedName">whereMarriedName</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ModuleService.php.html#553"><abbr title="Fisharebest\Webtrees\Services\ModuleService::customModules">customModules</abbr></a></td><td class="text-right">5</td></tr>
+       <tr><td><a href="SearchService.php.html#938"><abbr title="Fisharebest\Webtrees\Services\SearchService::rawGedcomFilter">rawGedcomFilter</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="SearchService.php.html#965"><abbr title="Fisharebest\Webtrees\Services\SearchService::rowLimiter">rowLimiter</abbr></a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 6.1.4</a> using <a href="https://secure.php.net/" target="_top">PHP 7.3.2</a> with <a href="https://xdebug.org/">Xdebug 2.7.0RC2</a> and <a href="https://phpunit.de/">PHPUnit 7.5.6</a> at Fri Mar 15 15:50:13 UTC 2019.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../.js/jquery.min.js" type="text/javascript"></script>
+  <script src="../.js/d3.min.js" type="text/javascript"></script>
+  <script src="../.js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([11,0,0,1,0,0,1,0,0,1,0,2], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([95,0,0,0,0,0,1,2,0,3,0,37], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,68,"<a href=\"CalendarService.php.html#41\">Fisharebest\\Webtrees\\Services\\CalendarService<\/a>"],[0,14,"<a href=\"ChartService.php.html#27\">Fisharebest\\Webtrees\\Services\\ChartService<\/a>"],[0,6,"<a href=\"ClipboardService.php.html#28\">Fisharebest\\Webtrees\\Services\\ClipboardService<\/a>"],[100,6,"<a href=\"DatatablesService.php.html#29\">Fisharebest\\Webtrees\\Services\\DatatablesService<\/a>"],[0,18,"<a href=\"GedcomService.php.html#23\">Fisharebest\\Webtrees\\Services\\GedcomService<\/a>"],[0,13,"<a href=\"HousekeepingService.php.html#28\">Fisharebest\\Webtrees\\Services\\HousekeepingService<\/a>"],[0,64,"<a href=\"IndividualListService.php.html#33\">Fisharebest\\Webtrees\\Services\\IndividualListService<\/a>"],[0,8,"<a href=\"LocalizationService.php.html#31\">Fisharebest\\Webtrees\\Services\\LocalizationService<\/a>"],[0,4,"<a href=\"MigrationService.php.html#32\">Fisharebest\\Webtrees\\Services\\MigrationService<\/a>"],[59.59595959595959,44,"<a href=\"ModuleService.php.html#218\">Fisharebest\\Webtrees\\Services\\ModuleService<\/a>"],[0,7,"<a href=\"RomanNumeralsService.php.html#23\">Fisharebest\\Webtrees\\Services\\RomanNumeralsService<\/a>"],[29.318181818181817,133,"<a href=\"SearchService.php.html#46\">Fisharebest\\Webtrees\\Services\\SearchService<\/a>"],[0,32,"<a href=\"ServerCheckService.php.html#40\">Fisharebest\\Webtrees\\Services\\ServerCheckService<\/a>"],[100,4,"<a href=\"TimeoutService.php.html#23\">Fisharebest\\Webtrees\\Services\\TimeoutService<\/a>"],[0,31,"<a href=\"UpgradeService.php.html#39\">Fisharebest\\Webtrees\\Services\\UpgradeService<\/a>"],[84.84848484848484,23,"<a href=\"UserService.php.html#33\">Fisharebest\\Webtrees\\Services\\UserService<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,8,"<a href=\"CalendarService.php.html#51\">Fisharebest\\Webtrees\\Services\\CalendarService::calendarMonthsInYear<\/a>"],[0,9,"<a href=\"CalendarService.php.html#91\">Fisharebest\\Webtrees\\Services\\CalendarService::getCalendarEvents<\/a>"],[0,13,"<a href=\"CalendarService.php.html#168\">Fisharebest\\Webtrees\\Services\\CalendarService::getEventsList<\/a>"],[0,18,"<a href=\"CalendarService.php.html#223\">Fisharebest\\Webtrees\\Services\\CalendarService::getAnniversaryEvents<\/a>"],[0,3,"<a href=\"CalendarService.php.html#329\">Fisharebest\\Webtrees\\Services\\CalendarService::defaultAnniversaries<\/a>"],[0,3,"<a href=\"CalendarService.php.html#348\">Fisharebest\\Webtrees\\Services\\CalendarService::cheshvanAnniversaries<\/a>"],[0,5,"<a href=\"CalendarService.php.html#367\">Fisharebest\\Webtrees\\Services\\CalendarService::kislevAnniversaries<\/a>"],[0,3,"<a href=\"CalendarService.php.html#395\">Fisharebest\\Webtrees\\Services\\CalendarService::tevetAnniversaries<\/a>"],[0,3,"<a href=\"CalendarService.php.html#418\">Fisharebest\\Webtrees\\Services\\CalendarService::adarIIAnniversaries<\/a>"],[0,3,"<a href=\"CalendarService.php.html#445\">Fisharebest\\Webtrees\\Services\\CalendarService::nisanAnniversaries<\/a>"],[0,6,"<a href=\"ChartService.php.html#38\">Fisharebest\\Webtrees\\Services\\ChartService::sosaStradonitzAncestors<\/a>"],[0,4,"<a href=\"ChartService.php.html#80\">Fisharebest\\Webtrees\\Services\\ChartService::descendants<\/a>"],[0,4,"<a href=\"ChartService.php.html#104\">Fisharebest\\Webtrees\\Services\\ChartService::descendantFamilies<\/a>"],[0,1,"<a href=\"ClipboardService.php.html#38\">Fisharebest\\Webtrees\\Services\\ClipboardService::copyFact<\/a>"],[0,2,"<a href=\"ClipboardService.php.html#66\">Fisharebest\\Webtrees\\Services\\ClipboardService::pasteFact<\/a>"],[0,2,"<a href=\"ClipboardService.php.html#90\">Fisharebest\\Webtrees\\Services\\ClipboardService::pastableFacts<\/a>"],[0,1,"<a href=\"ClipboardService.php.html#113\">Fisharebest\\Webtrees\\Services\\ClipboardService::pastableFactsOfType<\/a>"],[100,6,"<a href=\"DatatablesService.php.html#44\">Fisharebest\\Webtrees\\Services\\DatatablesService::handle<\/a>"],[0,1,"<a href=\"GedcomService.php.html#205\">Fisharebest\\Webtrees\\Services\\GedcomService::canonicalTag<\/a>"],[0,1,"<a href=\"GedcomService.php.html#219\">Fisharebest\\Webtrees\\Services\\GedcomService::isUserDefinedTag<\/a>"],[0,1,"<a href=\"GedcomService.php.html#229\">Fisharebest\\Webtrees\\Services\\GedcomService::readLatitude<\/a>"],[0,1,"<a href=\"GedcomService.php.html#239\">Fisharebest\\Webtrees\\Services\\GedcomService::readLongitude<\/a>"],[0,5,"<a href=\"GedcomService.php.html#251\">Fisharebest\\Webtrees\\Services\\GedcomService::readDegrees<\/a>"],[0,1,"<a href=\"GedcomService.php.html#285\">Fisharebest\\Webtrees\\Services\\GedcomService::writeLatitude<\/a>"],[0,1,"<a href=\"GedcomService.php.html#295\">Fisharebest\\Webtrees\\Services\\GedcomService::writeLongitude<\/a>"],[0,2,"<a href=\"GedcomService.php.html#307\">Fisharebest\\Webtrees\\Services\\GedcomService::writeDegrees<\/a>"],[0,1,"<a href=\"GedcomService.php.html#325\">Fisharebest\\Webtrees\\Services\\GedcomService::readPlace<\/a>"],[0,1,"<a href=\"GedcomService.php.html#337\">Fisharebest\\Webtrees\\Services\\GedcomService::writePlace<\/a>"],[0,3,"<a href=\"GedcomService.php.html#349\">Fisharebest\\Webtrees\\Services\\GedcomService::readSex<\/a>"],[0,3,"<a href=\"HousekeepingService.php.html#382\">Fisharebest\\Webtrees\\Services\\HousekeepingService::deleteOldWebtreesFiles<\/a>"],[0,3,"<a href=\"HousekeepingService.php.html#404\">Fisharebest\\Webtrees\\Services\\HousekeepingService::deleteOldFiles<\/a>"],[0,1,"<a href=\"HousekeepingService.php.html#422\">Fisharebest\\Webtrees\\Services\\HousekeepingService::deleteOldLogs<\/a>"],[0,1,"<a href=\"HousekeepingService.php.html#437\">Fisharebest\\Webtrees\\Services\\HousekeepingService::deleteOldSessions<\/a>"],[0,5,"<a href=\"HousekeepingService.php.html#454\">Fisharebest\\Webtrees\\Services\\HousekeepingService::deleteFileOrFolder<\/a>"],[0,1,"<a href=\"IndividualListService.php.html#47\">Fisharebest\\Webtrees\\Services\\IndividualListService::__construct<\/a>"],[0,2,"<a href=\"IndividualListService.php.html#59\">Fisharebest\\Webtrees\\Services\\IndividualListService::whereFamily<\/a>"],[0,2,"<a href=\"IndividualListService.php.html#77\">Fisharebest\\Webtrees\\Services\\IndividualListService::whereMarriedName<\/a>"],[0,5,"<a href=\"IndividualListService.php.html#94\">Fisharebest\\Webtrees\\Services\\IndividualListService::surnameAlpha<\/a>"],[0,7,"<a href=\"IndividualListService.php.html#156\">Fisharebest\\Webtrees\\Services\\IndividualListService::givenAlpha<\/a>"],[0,6,"<a href=\"IndividualListService.php.html#218\">Fisharebest\\Webtrees\\Services\\IndividualListService::surnames<\/a>"],[0,9,"<a href=\"IndividualListService.php.html#271\">Fisharebest\\Webtrees\\Services\\IndividualListService::individuals<\/a>"],[0,3,"<a href=\"IndividualListService.php.html#344\">Fisharebest\\Webtrees\\Services\\IndividualListService::families<\/a>"],[0,1,"<a href=\"IndividualListService.php.html#365\">Fisharebest\\Webtrees\\Services\\IndividualListService::fieldWithCollation<\/a>"],[0,9,"<a href=\"IndividualListService.php.html#382\">Fisharebest\\Webtrees\\Services\\IndividualListService::whereInitial<\/a>"],[0,2,"<a href=\"IndividualListService.php.html#421\">Fisharebest\\Webtrees\\Services\\IndividualListService::whereInitialCzech<\/a>"],[0,2,"<a href=\"IndividualListService.php.html#439\">Fisharebest\\Webtrees\\Services\\IndividualListService::whereInitialDutch<\/a>"],[0,10,"<a href=\"IndividualListService.php.html#459\">Fisharebest\\Webtrees\\Services\\IndividualListService::whereInitialHungarian<\/a>"],[0,3,"<a href=\"IndividualListService.php.html#511\">Fisharebest\\Webtrees\\Services\\IndividualListService::whereInitialNorwegian<\/a>"],[0,2,"<a href=\"IndividualListService.php.html#539\">Fisharebest\\Webtrees\\Services\\IndividualListService::whereInitialSwedish<\/a>"],[0,1,"<a href=\"LocalizationService.php.html#102\">Fisharebest\\Webtrees\\Services\\LocalizationService::__construct<\/a>"],[0,1,"<a href=\"LocalizationService.php.html#112\">Fisharebest\\Webtrees\\Services\\LocalizationService::alphabet<\/a>"],[0,1,"<a href=\"LocalizationService.php.html#125\">Fisharebest\\Webtrees\\Services\\LocalizationService::calendar<\/a>"],[0,3,"<a href=\"LocalizationService.php.html#144\">Fisharebest\\Webtrees\\Services\\LocalizationService::initialLetter<\/a>"],[0,1,"<a href=\"LocalizationService.php.html#165\">Fisharebest\\Webtrees\\Services\\LocalizationService::weekendEnd<\/a>"],[0,1,"<a href=\"LocalizationService.php.html#175\">Fisharebest\\Webtrees\\Services\\LocalizationService::weekendStart<\/a>"],[0,3,"<a href=\"MigrationService.php.html#44\">Fisharebest\\Webtrees\\Services\\MigrationService::updateSchema<\/a>"],[0,1,"<a href=\"MigrationService.php.html#74\">Fisharebest\\Webtrees\\Services\\MigrationService::seedDatabase<\/a>"],[0,1,"<a href=\"ModuleService.php.html#413\">Fisharebest\\Webtrees\\Services\\ModuleService::titleMapper<\/a>"],[100,1,"<a href=\"ModuleService.php.html#430\">Fisharebest\\Webtrees\\Services\\ModuleService::findByComponent<\/a>"],[80,6,"<a href=\"ModuleService.php.html#448\">Fisharebest\\Webtrees\\Services\\ModuleService::findByInterface<\/a>"],[58.333333333333336,11,"<a href=\"ModuleService.php.html#483\">Fisharebest\\Webtrees\\Services\\ModuleService::all<\/a>"],[100,1,"<a href=\"ModuleService.php.html#536\">Fisharebest\\Webtrees\\Services\\ModuleService::coreModules<\/a>"],[66.66666666666666,5,"<a href=\"ModuleService.php.html#553\">Fisharebest\\Webtrees\\Services\\ModuleService::customModules<\/a>"],[0,2,"<a href=\"ModuleService.php.html#596\">Fisharebest\\Webtrees\\Services\\ModuleService::setupLanguages<\/a>"],[0,1,"<a href=\"ModuleService.php.html#614\">Fisharebest\\Webtrees\\Services\\ModuleService::load<\/a>"],[0,2,"<a href=\"ModuleService.php.html#626\">Fisharebest\\Webtrees\\Services\\ModuleService::enabledFilter<\/a>"],[0,1,"<a href=\"ModuleService.php.html#640\">Fisharebest\\Webtrees\\Services\\ModuleService::interfaceFilter<\/a>"],[0,1,"<a href=\"ModuleService.php.html#652\">Fisharebest\\Webtrees\\Services\\ModuleService::footerSorter<\/a>"],[100,1,"<a href=\"ModuleService.php.html#664\">Fisharebest\\Webtrees\\Services\\ModuleService::menuSorter<\/a>"],[100,1,"<a href=\"ModuleService.php.html#676\">Fisharebest\\Webtrees\\Services\\ModuleService::sidebarSorter<\/a>"],[100,1,"<a href=\"ModuleService.php.html#688\">Fisharebest\\Webtrees\\Services\\ModuleService::tabSorter<\/a>"],[0,3,"<a href=\"ModuleService.php.html#703\">Fisharebest\\Webtrees\\Services\\ModuleService::moduleSorter<\/a>"],[0,2,"<a href=\"ModuleService.php.html#721\">Fisharebest\\Webtrees\\Services\\ModuleService::findByName<\/a>"],[100,3,"<a href=\"ModuleService.php.html#739\">Fisharebest\\Webtrees\\Services\\ModuleService::otherModules<\/a>"],[100,1,"<a href=\"ModuleService.php.html#759\">Fisharebest\\Webtrees\\Services\\ModuleService::deletedModules<\/a>"],[0,4,"<a href=\"RomanNumeralsService.php.html#49\">Fisharebest\\Webtrees\\Services\\RomanNumeralsService::numberToRomanNumerals<\/a>"],[0,3,"<a href=\"RomanNumeralsService.php.html#73\">Fisharebest\\Webtrees\\Services\\RomanNumeralsService::romanNumeralsToNumber<\/a>"],[100,1,"<a href=\"SearchService.php.html#55\">Fisharebest\\Webtrees\\Services\\SearchService::searchFamilies<\/a>"],[100,1,"<a href=\"SearchService.php.html#81\">Fisharebest\\Webtrees\\Services\\SearchService::searchFamilyNames<\/a>"],[100,1,"<a href=\"SearchService.php.html#119\">Fisharebest\\Webtrees\\Services\\SearchService::searchIndividuals<\/a>"],[100,1,"<a href=\"SearchService.php.html#145\">Fisharebest\\Webtrees\\Services\\SearchService::searchIndividualNames<\/a>"],[100,1,"<a href=\"SearchService.php.html#174\">Fisharebest\\Webtrees\\Services\\SearchService::searchMedia<\/a>"],[100,1,"<a href=\"SearchService.php.html#195\">Fisharebest\\Webtrees\\Services\\SearchService::searchNotes<\/a>"],[100,1,"<a href=\"SearchService.php.html#217\">Fisharebest\\Webtrees\\Services\\SearchService::searchRepositories<\/a>"],[100,1,"<a href=\"SearchService.php.html#239\">Fisharebest\\Webtrees\\Services\\SearchService::searchSources<\/a>"],[100,1,"<a href=\"SearchService.php.html#260\">Fisharebest\\Webtrees\\Services\\SearchService::searchSourcesByName<\/a>"],[100,1,"<a href=\"SearchService.php.html#282\">Fisharebest\\Webtrees\\Services\\SearchService::searchSubmitters<\/a>"],[100,2,"<a href=\"SearchService.php.html#304\">Fisharebest\\Webtrees\\Services\\SearchService::searchPlaces<\/a>"],[0,94,"<a href=\"SearchService.php.html#363\">Fisharebest\\Webtrees\\Services\\SearchService::searchIndividualsAdvanced<\/a>"],[0,9,"<a href=\"SearchService.php.html#777\">Fisharebest\\Webtrees\\Services\\SearchService::searchIndividualsPhonetic<\/a>"],[83.33333333333334,6,"<a href=\"SearchService.php.html#854\">Fisharebest\\Webtrees\\Services\\SearchService::paginateQuery<\/a>"],[100,3,"<a href=\"SearchService.php.html#888\">Fisharebest\\Webtrees\\Services\\SearchService::whereSearch<\/a>"],[0,3,"<a href=\"SearchService.php.html#906\">Fisharebest\\Webtrees\\Services\\SearchService::wherePhonetic<\/a>"],[100,1,"<a href=\"SearchService.php.html#922\">Fisharebest\\Webtrees\\Services\\SearchService::whereTrees<\/a>"],[85.71428571428571,3,"<a href=\"SearchService.php.html#938\">Fisharebest\\Webtrees\\Services\\SearchService::rawGedcomFilter<\/a>"],[60,2,"<a href=\"SearchService.php.html#965\">Fisharebest\\Webtrees\\Services\\SearchService::rowLimiter<\/a>"],[0,1,"<a href=\"ServerCheckService.php.html#61\">Fisharebest\\Webtrees\\Services\\ServerCheckService::serverErrors<\/a>"],[0,1,"<a href=\"ServerCheckService.php.html#86\">Fisharebest\\Webtrees\\Services\\ServerCheckService::serverWarnings<\/a>"],[0,2,"<a href=\"ServerCheckService.php.html#110\">Fisharebest\\Webtrees\\Services\\ServerCheckService::checkPhpExtension<\/a>"],[0,5,"<a href=\"ServerCheckService.php.html#127\">Fisharebest\\Webtrees\\Services\\ServerCheckService::checkPhpIni<\/a>"],[0,2,"<a href=\"ServerCheckService.php.html#149\">Fisharebest\\Webtrees\\Services\\ServerCheckService::isFunctionDisabled<\/a>"],[0,2,"<a href=\"ServerCheckService.php.html#168\">Fisharebest\\Webtrees\\Services\\ServerCheckService::checkPhpFunction<\/a>"],[0,4,"<a href=\"ServerCheckService.php.html#180\">Fisharebest\\Webtrees\\Services\\ServerCheckService::checkPhpVersion<\/a>"],[0,3,"<a href=\"ServerCheckService.php.html#198\">Fisharebest\\Webtrees\\Services\\ServerCheckService::checkSqliteVersion<\/a>"],[0,3,"<a href=\"ServerCheckService.php.html#214\">Fisharebest\\Webtrees\\Services\\ServerCheckService::checkSystemTemporaryFolder<\/a>"],[0,5,"<a href=\"ServerCheckService.php.html#236\">Fisharebest\\Webtrees\\Services\\ServerCheckService::databaseDriverErrors<\/a>"],[0,4,"<a href=\"ServerCheckService.php.html#275\">Fisharebest\\Webtrees\\Services\\ServerCheckService::databaseDriverWarnings<\/a>"],[100,1,"<a href=\"TimeoutService.php.html#39\">Fisharebest\\Webtrees\\Services\\TimeoutService::__construct<\/a>"],[100,2,"<a href=\"TimeoutService.php.html#51\">Fisharebest\\Webtrees\\Services\\TimeoutService::isTimeNearlyUp<\/a>"],[100,1,"<a href=\"TimeoutService.php.html#72\">Fisharebest\\Webtrees\\Services\\TimeoutService::isTimeLimitUp<\/a>"],[0,1,"<a href=\"UpgradeService.php.html#72\">Fisharebest\\Webtrees\\Services\\UpgradeService::__construct<\/a>"],[0,2,"<a href=\"UpgradeService.php.html#85\">Fisharebest\\Webtrees\\Services\\UpgradeService::extractWebtreesZip<\/a>"],[0,1,"<a href=\"UpgradeService.php.html#105\">Fisharebest\\Webtrees\\Services\\UpgradeService::webtreesZipContents<\/a>"],[0,5,"<a href=\"UpgradeService.php.html#129\">Fisharebest\\Webtrees\\Services\\UpgradeService::downloadFile<\/a>"],[0,4,"<a href=\"UpgradeService.php.html#174\">Fisharebest\\Webtrees\\Services\\UpgradeService::moveFiles<\/a>"],[0,6,"<a href=\"UpgradeService.php.html#197\">Fisharebest\\Webtrees\\Services\\UpgradeService::cleanFiles<\/a>"],[0,1,"<a href=\"UpgradeService.php.html#216\">Fisharebest\\Webtrees\\Services\\UpgradeService::isUpgradeAvailable<\/a>"],[0,1,"<a href=\"UpgradeService.php.html#228\">Fisharebest\\Webtrees\\Services\\UpgradeService::latestVersion<\/a>"],[0,1,"<a href=\"UpgradeService.php.html#242\">Fisharebest\\Webtrees\\Services\\UpgradeService::downloadUrl<\/a>"],[0,1,"<a href=\"UpgradeService.php.html#251\">Fisharebest\\Webtrees\\Services\\UpgradeService::startMaintenanceMode<\/a>"],[0,2,"<a href=\"UpgradeService.php.html#258\">Fisharebest\\Webtrees\\Services\\UpgradeService::endMaintenanceMode<\/a>"],[0,4,"<a href=\"UpgradeService.php.html#274\">Fisharebest\\Webtrees\\Services\\UpgradeService::fetchLatestVersion<\/a>"],[0,2,"<a href=\"UpgradeService.php.html#306\">Fisharebest\\Webtrees\\Services\\UpgradeService::serverParameters<\/a>"],[100,3,"<a href=\"UserService.php.html#42\">Fisharebest\\Webtrees\\Services\\UserService::find<\/a>"],[100,2,"<a href=\"UserService.php.html#60\">Fisharebest\\Webtrees\\Services\\UserService::findByEmail<\/a>"],[100,2,"<a href=\"UserService.php.html#76\">Fisharebest\\Webtrees\\Services\\UserService::findByIdentifier<\/a>"],[100,1,"<a href=\"UserService.php.html#94\">Fisharebest\\Webtrees\\Services\\UserService::findByIndividual<\/a>"],[100,2,"<a href=\"UserService.php.html#113\">Fisharebest\\Webtrees\\Services\\UserService::findByUserName<\/a>"],[100,1,"<a href=\"UserService.php.html#128\">Fisharebest\\Webtrees\\Services\\UserService::all<\/a>"],[100,1,"<a href=\"UserService.php.html#143\">Fisharebest\\Webtrees\\Services\\UserService::administrators<\/a>"],[100,1,"<a href=\"UserService.php.html#165\">Fisharebest\\Webtrees\\Services\\UserService::managers<\/a>"],[100,1,"<a href=\"UserService.php.html#187\">Fisharebest\\Webtrees\\Services\\UserService::moderators<\/a>"],[100,1,"<a href=\"UserService.php.html#209\">Fisharebest\\Webtrees\\Services\\UserService::unapproved<\/a>"],[100,1,"<a href=\"UserService.php.html#231\">Fisharebest\\Webtrees\\Services\\UserService::unverified<\/a>"],[0,1,"<a href=\"UserService.php.html#253\">Fisharebest\\Webtrees\\Services\\UserService::allLoggedIn<\/a>"],[100,1,"<a href=\"UserService.php.html#277\">Fisharebest\\Webtrees\\Services\\UserService::create<\/a>"],[100,1,"<a href=\"UserService.php.html#298\">Fisharebest\\Webtrees\\Services\\UserService::delete<\/a>"],[0,4,"<a href=\"UserService.php.html#333\">Fisharebest\\Webtrees\\Services\\UserService::contactLink<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

@@ -17,9 +17,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Report\ReportHtml;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportPdf;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 
 /**
@@ -71,11 +73,15 @@ class IndividualReportModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testReportRunsWithoutError(): void
     {
+        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user->setPreference('canadmin', '1');
+        Auth::login($user);
+
         $tree = $this->importTree('demo.ged');
         app()->instance(Tree::class, $tree);
         $xml  = WT_ROOT . 'resources/xml/reports/individual_report.xml';
         $vars = [
-            'id'       => ['id' => 'i1'],
+            'id'       => ['id' => 'X1030'],
             'sources'   => ['id' => 'on'],
             'notes'     => ['id' => 'on'],
             'photos'    => ['id' => 'highlighted'],
