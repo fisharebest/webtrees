@@ -15,7 +15,7 @@
     </tbody>
 </table>
 
-<?php if (empty($parent_families) && $can_edit) : ?>
+<?php if ($parent_families->isEmpty() && $can_edit) : ?>
     <table class="table table-sm wt-facts-table" role="presentation">
         <tbody>
             <tr>
