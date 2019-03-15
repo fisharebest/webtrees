@@ -25,9 +25,41 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Test harness for the class CemeteryReportModule
  *
+ * @covers \Fisharebest\Webtrees\Module\CemeteryReportModule
+ * @covers \Fisharebest\Webtrees\Module\ModuleReportTrait
+ * @covers \Fisharebest\Webtrees\Report\AbstractReport
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseCell
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseElement
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseFootnote
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseHtml
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseImage
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseLine
+ * @covers \Fisharebest\Webtrees\Report\ReportBasePageheader
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseText
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseTextbox
+ * @covers \Fisharebest\Webtrees\Report\ReportExpressionLanguageProvider
  * @covers \Fisharebest\Webtrees\Report\ReportHtml
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlCell
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlFootnote
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlHtml
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlImage
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlLine
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlPageheader
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlText
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlTextbox
+ * @covers \Fisharebest\Webtrees\Report\ReportParserBase
  * @covers \Fisharebest\Webtrees\Report\ReportParserGenerate
+ * @covers \Fisharebest\Webtrees\Report\ReportParserSetup
  * @covers \Fisharebest\Webtrees\Report\ReportPdf
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfCell
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfFootnote
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfHtml
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfImage
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfLine
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfPageheader
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfText
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfTextbox
+ * @covers \Fisharebest\Webtrees\Report\ReportTcpdf
  */
 class CemeteryReportModuleTest extends \Fisharebest\Webtrees\TestCase
 {
