@@ -117,7 +117,8 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         }
 
         $ajax_url = $this->chartUrl($individual, [
-            'ajax' => true,
+            'ajax'        => true,
+            'show_spouse' => $show_spouse,
         ]);
 
         return $this->viewResponse('modules/hourglass-chart/page', [
