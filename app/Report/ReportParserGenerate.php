@@ -1040,6 +1040,10 @@ class ReportParserGenerate extends ReportParserBase
                 ])) {
                     $value = Filter::formatText($value, $this->tree); // We'll strip HTML in addText()
                 }
+
+                if (!empty($attrs['truncate'])) {
+                    $value = Str::limit($value, $attrs['truncate'], I18N::translate('…'));
+                }
                 $this->current_element->addText($value);
             }
         }
