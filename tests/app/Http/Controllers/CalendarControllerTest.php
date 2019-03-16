@@ -69,4 +69,3 @@ class CalendarControllerTest extends \Fisharebest\Webtrees\TestCase
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 }
-
