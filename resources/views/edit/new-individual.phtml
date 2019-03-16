@@ -47,17 +47,6 @@ if ($name_fact instanceof Fact) {
         'SURN' => $name_fact->attribute('SURN'),
         'NSFX' => $name_fact->attribute('NSFX'),
     ];
-
-    // Populate any missing subfields from the NAME field
-    $npfx_accept = implode('|', Config::namePrefixes());
-    if (preg_match('/(((' . $npfx_accept . ')\.? +)*)([^\n\/"]*)("(.*)")? *\/(([a-z]{2,3} +)*)(.*)\/ *(.*)/i', $name_fields['NAME'], $name_bits)) {
-        $name_fields['NPFX'] = $name_fields['NPFX'] ?: $name_bits[1];
-        $name_fields['GIVN'] = $name_fields['GIVN'] ?: $name_bits[4];
-        $name_fields['NICK'] = $name_fields['NICK'] ?: $name_bits[6];
-        $name_fields['SPFX'] = $name_fields['SPFX'] ?: trim($name_bits[7]);
-        $name_fields['SURN'] = $name_fields['SURN'] ?: preg_replace('~/[^/]*/~', ',', $name_bits[9]);
-        $name_fields['NSFX'] = $name_fields['NSFX'] ?: $name_bits[10];
-    }
 } else {
     // Creating a new name
     $name_fact_id = '';
@@ -358,54 +347,20 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 <?php View::push('javascript') ?>
 <script>
     var SURNAME_TRADITION = <?= json_encode($tree->getPreference('SURNAME_TRADITION')) ?>;
-    var gender            = <?= json_encode($gender) ?>;
-    var famtag            = <?= json_encode($famtag) ?>;
 
     var NAME = $("[name=NAME]");
 
-    function trim(str) {
-        str = str.replace(/\s\s+/g, " ");
-        return str.replace(/(^\s+)|(\s+$)/g, "");
-    }
-
-    function lang_class(str) {
-        if (str.match(/[\u0370-\u03FF]/)) return "greek";
-        if (str.match(/[\u0400-\u04FF]/)) return "cyrillic";
-        if (str.match(/[\u0590-\u05FF]/)) return "hebrew";
-        if (str.match(/[\u0600-\u06FF]/)) return "arabic";
-        return "latin"; // No matched text implies latin :-)
-    }
-
     // Generate a full name from the name components
     function generate_name() {
-        var npfx = $("[name=NPFX]").val();
-        var givn = $("[name=GIVN]").val();
-        var spfx = $("[name=SPFX]").val();
-        var surn = $("[name=SURN]").val();
-        var nsfx = $("[name=NSFX]").val();
+        var npfx      = document.querySelector("[name=NPFX]").value;
+        var givn      = document.querySelector("[name=GIVN]").value;
+        var spfx      = document.querySelector("[name=SPFX]").value;
+        var surn      = document.querySelector("[name=SURN]").value;
+        var nsfx      = document.querySelector("[name=NSFX]").value;
+        var sex_input = document.querySelector("[name=SEX]:checked");
+        var sex       = sex_input ? sex_input.value : "U";
 
-        if (SURNAME_TRADITION === "polish" && (gender === "F" || famtag === "WIFE")) {
-            surn = surn.replace(/ski$/, "ska");
-            surn = surn.replace(/cki$/, "cka");
-            surn = surn.replace(/dzki$/, "dzka");
-            surn = surn.replace(/żki$/, "żka");
-        }
-
-        // Commas are used in the GIVN and SURN field to separate lists of surnames.
-        // For example, to differentiate the two Spanish surnames from an English
-        // double-barred name.
-        // Commas *may* be used in other fields, and will form part of the NAME.
-        var locale = document.documentElement.lang;
-        if (locale === "vi" || locale === "hu") {
-            // Default format: /SURN/ GIVN
-            return trim(npfx + " /" + trim(spfx + " " + surn).replace(/ *, */g, " ") + "/ " + givn.replace(/ *, */g, " ") + " " + nsfx);
-        } else if (locale === "zh-Hans" || locale === "zh-Hant") {
-            // Default format: /SURN/GIVN
-            return npfx + "/" + spfx + surn + "/" + givn + nsfx;
-        } else {
-            // Default format: GIVN /SURN/
-            return trim(npfx + " " + givn.replace(/ *, */g, " ") + " /" + trim(spfx + " " + surn).replace(/ *, */g, " ") + "/ " + nsfx);
-        }
+        return webtrees.buildNameFromParts(npfx, givn, spfx, surn, nsfx, sex);
     }
 
     // Update the NAME and _MARNM fields from the name components
@@ -416,49 +371,49 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
             return;
         }
 
-        var npfx = $("[name=NPFX]").val();
-        var givn = $("[name=GIVN]").val();
-        var spfx = $("[name=SPFX]").val();
-        var surn = $("[name=SURN]").val();
-        var nsfx = $("[name=NSFX]").val();
+        var npfx = document.querySelector("[name=NPFX]").value;
+        var givn = document.querySelector("[name=GIVN]").value;
+        var spfx = document.querySelector("[name=SPFX]").value;
+        var nsfx = document.querySelector("[name=NSFX]").value;
         var name = generate_name();
 
         var display_id = NAME.attr("id") + "_display";
 
         NAME.val(name);
         $("#" + display_id).text(name);
+
         // Married names inherit some NSFX values, but not these
         nsfx = nsfx.replace(/^(I|II|III|IV|V|VI|Junior|Jr\.?|Senior|Sr\.?)$/i, "");
+
         // Update _MARNM field from _MARNM_SURN field and display it
-        // Be careful of mixing latin/hebrew/etc. character sets.
         var ip       = document.getElementsByTagName("input");
-        var locale   = document.documentElement.lang;
         var marnm_id = "";
         var romn     = "";
         var heb      = "";
+
         for (var i = 0; i < ip.length; i++) {
-            var val = trim(ip[i].value);
-            if (ip[i].id.indexOf("_HEB") === 0)
+            var val = ip[i].value;
+
+            if (ip[i].id.indexOf("_HEB") === 0) {
+                // Remember this field - we might need it later
                 heb = val;
-            if (ip[i].id.indexOf("ROMN") === 0)
+            }
+            if (ip[i].id.indexOf("ROMN") === 0) {
+                // Remember this field - we might need it later
                 romn = val;
+            }
             if (ip[i].id.indexOf("_MARNM") === 0) {
                 if (ip[i].id.indexOf("_MARNM_SURN") === 0) {
                     var msurn = "";
                     if (val !== "") {
-                        var lc = lang_class(document.getElementById(ip[i].id).value);
-                        if (lang_class(name) === lc) {
-                            // See generate_name()
-                            if (locale === "vi" || locale === "hu") {
-                                // Default format: /SURN/ GIVN
-                                msurn = trim(npfx + " /" + val + "/ " + givn + " " + nsfx);
-                            } else {
-                                // Default format: GIVN /SURN/
-                                msurn = trim(npfx + " " + givn + " /" + val + "/ " + nsfx);
-                            }
-                        } else if (lc === "hebrew") {
+                        if (webtrees.detectScript(val) === webtrees.detectScript(name)) {
+                            // Same script as NAME field?
+                            msurn = webtrees.buildNameFromParts(npfx, givn, spfx, val, nsfx);
+                        } else if (heb !== "" && webtrees.detectScript(val) === webtrees.detectScript(heb)) {
+                            // Same script as _HEB field?
                             msurn = heb.replace(/\/.*\//, "/" + val + "/");
-                        } else if (lang_class(romn) === lc) {
+                        } else if (romn !== "" && webtrees.detectScript(val) === webtrees.detectScript(romn)) {
+                            //. Same script as ROMN field
                             msurn = romn.replace(/\/.*\//, "/" + val + "/");
                         }
                     }
@@ -485,12 +440,12 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
     function convertHidden(eid) {
         var input1 = $("#" + eid);
         var input2 = $("#" + eid + "_display");
-        // Note that IE does not allow us to change the type of an input, so we must create a new one.
+
         if (input1.attr("type") === "hidden") {
-            input1.replaceWith(input1.clone().attr("type", "text"));
+            input1.attr("type", "text");
             input2.hide();
         } else {
-            input1.replaceWith(input1.clone().attr("type", "hidden"));
+            input1.attr("type", "hidden");
             input2.show();
         }
     }
