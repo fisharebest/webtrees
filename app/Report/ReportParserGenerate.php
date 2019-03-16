@@ -1042,6 +1042,7 @@ class ReportParserGenerate extends ReportParserBase
                 }
 
                 if (!empty($attrs['truncate'])) {
+                    $value = strip_tags($value);
                     $value = Str::limit($value, $attrs['truncate'], I18N::translate('…'));
                 }
                 $this->current_element->addText($value);
