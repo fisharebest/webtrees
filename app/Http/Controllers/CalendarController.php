@@ -56,7 +56,7 @@ class CalendarController extends AbstractBaseController
      */
     public function __construct(CalendarService $calendar_service, LocalizationService $localization_service)
     {
-        $this->calendar_service = $calendar_service;
+        $this->calendar_service     = $calendar_service;
         $this->localization_service = $localization_service;
     }
 
@@ -64,10 +64,11 @@ class CalendarController extends AbstractBaseController
      * A form to request the page parameters.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function page(Request $request): Response
+    public function page(Request $request, Tree $tree): Response
     {
         $cal      = $request->get('cal', '');
         $day      = $request->get('day', '');
@@ -166,6 +167,7 @@ class CalendarController extends AbstractBaseController
             'title'         => $title,
             'today'         => $today,
             'today_month'   => $today_month,
+            'tree'          => $tree,
             'view'          => $view,
             'year'          => $year,
         ]);
@@ -174,13 +176,12 @@ class CalendarController extends AbstractBaseController
     /**
      * Show anniveraries that occured on a given day/month/year.
      *
-     * @param Request         $request
-     * @param Tree            $tree
-     * @param CalendarService $calendar_service
+     * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function calendar(Request $request, Tree $tree, CalendarService $calendar_service): Response
+    public function calendar(Request $request, Tree $tree): Response
     {
         $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
 
@@ -254,7 +255,7 @@ class CalendarController extends AbstractBaseController
 
         switch ($view) {
             case 'day':
-                $found_facts = $this->applyFilter($calendar_service->getAnniversaryEvents($cal_date->minimumJulianDay(), $filterev, $tree), $filterof, $filtersx);
+                $found_facts = $this->applyFilter($this->calendar_service->getAnniversaryEvents($cal_date->minimumJulianDay(), $filterev, $tree), $filterof, $filtersx);
                 break;
             case 'month':
                 $cal_date->day = 0;
@@ -267,7 +268,7 @@ class CalendarController extends AbstractBaseController
                 $jds = range($cal_date->minimumJulianDay(), $cal_date->maximumJulianDay());
 
                 foreach ($jds as $jd) {
-                    foreach ($this->applyFilter($calendar_service->getAnniversaryEvents($jd, $filterev, $tree), $filterof, $filtersx) as $fact) {
+                    foreach ($this->applyFilter($this->calendar_service->getAnniversaryEvents($jd, $filterev, $tree), $filterof, $filtersx) as $fact) {
                         $tmp = $fact->date()->minimumDate();
                         if ($tmp->day >= 1 && $tmp->day <= $tmp->daysInMonth()) {
                             // If the day is valid (for its own calendar), display it in the
@@ -283,7 +284,7 @@ class CalendarController extends AbstractBaseController
             case 'year':
                 $cal_date->month = 0;
                 $cal_date->setJdFromYmd();
-                $found_facts = $this->applyFilter($calendar_service->getCalendarEvents($ged_date->minimumJulianDay(), $ged_date->maximumJulianDay(), explode('-', $filterev), $tree), $filterof, $filtersx);
+                $found_facts = $this->applyFilter($this->calendar_service->getCalendarEvents($ged_date->minimumJulianDay(), $ged_date->maximumJulianDay(), explode('-', $filterev), $tree), $filterof, $filtersx);
                 // Eliminate duplicates (e.g. BET JUL 1900 AND SEP 1900 will appear twice in 1900)
                 $found_facts = array_unique($found_facts);
                 break;
@@ -417,9 +418,6 @@ class CalendarController extends AbstractBaseController
                         // Show a converted date
                         foreach (explode('_and_', $CALENDAR_FORMAT) as $convcal) {
                             switch ($convcal) {
-                                case 'none':
-                                    $alt_date = $cal_date;
-                                    break;
                                 case 'french':
                                     $alt_date = new FrenchDate($cal_date->minimumJulianDay() + $d - 1);
                                     break;
@@ -438,8 +436,10 @@ class CalendarController extends AbstractBaseController
                                 case 'jalali':
                                     $alt_date = new JalaliDate($cal_date->minimumJulianDay() + $d - 1);
                                     break;
+                                case 'none':
                                 default:
-                                    throw new DomainException('Invalid calendar: ' . $convcal);
+                                    $alt_date = $cal_date;
+                                    break;
                             }
                             if (get_class($alt_date) !== get_class($cal_date) && $alt_date->inValidRange()) {
                                 echo '<span class="rtl_cal_day">' . $alt_date->format('%j %M') . '</span>';
@@ -550,7 +550,7 @@ class CalendarController extends AbstractBaseController
         $html = '';
 
         foreach ($list as $id => $facts) {
-            $tmp = GedcomRecord::getInstance($id, $tree);
+            $tmp  = GedcomRecord::getInstance($id, $tree);
             $html .= $tag1 . '<a href="' . e($tmp->url()) . '">' . $tmp->fullName() . '</a> ';
             $html .= '<div class="indent">' . $facts . '</div>' . $tag2;
         }
