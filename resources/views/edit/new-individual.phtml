@@ -390,10 +390,9 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
         var marnm_id = "";
         var romn     = "";
         var heb      = "";
+        var i;
 
-        for (var i = 0; i < ip.length; i++) {
-            var val = ip[i].value;
-
+        for (i = 0; i < ip.length; i++) {
             if (ip[i].id.indexOf("_HEB") === 0) {
                 // Remember this field - we might need it later
                 heb = val;
@@ -402,6 +401,11 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
                 // Remember this field - we might need it later
                 romn = val;
             }
+        }
+
+        for (i = 0; i < ip.length; i++) {
+            var val = ip[i].value;
+
             if (ip[i].id.indexOf("_MARNM") === 0) {
                 if (ip[i].id.indexOf("_MARNM_SURN") === 0) {
                     var msurn = "";
