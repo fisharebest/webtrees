@@ -339,7 +339,7 @@ class I18N
      *
      * @return string $string
      */
-    public static function init(string $code = '', Tree $tree = null, $setup = true): string
+    public static function init(string $code = '', Tree $tree = null, $setup = false): string
     {
         if ($code !== '') {
             // Create the specified locale
