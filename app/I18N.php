@@ -203,7 +203,7 @@ class I18N
     public static function activeLocales(): array
     {
         $locales = app(ModuleService::class)
-            ->findByInterface(ModuleLanguageInterface::class)
+            ->findByInterface(ModuleLanguageInterface::class, false, true)
             ->map(function (ModuleLanguageInterface $module): LocaleInterface {
                 return $module->locale();
             });
