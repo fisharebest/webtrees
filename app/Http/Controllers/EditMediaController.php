@@ -239,7 +239,7 @@ class EditMediaController extends AbstractEditController
         $new             = $MEDIA_DIRECTORY . $file;
 
         // Update the filesystem, if we can.
-        if (!$media_file->isExternal()) {
+        if ($old !== $new && !$media_file->isExternal()) {
             // Don't overwrite existing file
             if (file_exists(WT_DATA_DIR . $new) && file_exists(WT_DATA_DIR . $old)) {
                 FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
