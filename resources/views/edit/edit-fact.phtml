@@ -15,19 +15,6 @@
     <?php
     $level1type = $edit_fact->getTag();
     switch ($record::RECORD_TYPE) {
-        case 'REPO':
-            // REPO:NAME facts may take a NOTE (but the REPO record may not).
-            if ($level1type === 'NAME') {
-                echo view('cards/add-note', [
-                    'level' => 2,
-                    'tree' => $tree,
-                ]);
-                echo view('cards/add-shared-note', [
-                    'level' => 2,
-                    'tree' => $tree,
-                ]);
-            }
-            break;
         case 'FAM':
         case 'INDI':
             // FAM and INDI records have real facts. They can take NOTE/SOUR/OBJE/etc.
