@@ -80,7 +80,8 @@ class PedigreeReportModuleTest extends \Fisharebest\Webtrees\TestCase
         app()->instance(Tree::class, $tree);
         $xml  = WT_ROOT . 'resources/xml/reports/pedigree_report.xml';
         $vars = [
-            'pid'       => ['id' => 'X1030'],
+            'pid'         => ['id' => 'X1030'],
+            'spouses'     => ['id' => 'on'],
             'orientation' => ['id' => 'portrait'],
         ];
 
