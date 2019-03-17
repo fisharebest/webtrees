@@ -295,30 +295,40 @@ class AdminController extends AbstractBaseController
         $resns     = (array) $request->get('resn');
 
         foreach ($xrefs as $n => $xref) {
-            $tag_type = (string) $tag_types[$n];
-            $resn     = (string) $resns[$n];
+            $tag_type = $tag_types[$n];
+            $resn     = $resns[$n];
 
+            // Delete any existing data
+            if ($tag_type !== '' && $xref !== '') {
+                DB::table('default_resn')
+                    ->where('gedcom_id', '=', $tree->id())
+                    ->where('tag_type', '=', $tag_type)
+                    ->where('xref', '=', $xref)
+                    ->delete();
+            }
+
+            if ($tag_type !== '' && $xref === '') {
+                DB::table('default_resn')
+                    ->where('gedcom_id', '=', $tree->id())
+                    ->where('tag_type', '=', $tag_type)
+                    ->whereNull('xref')
+                    ->delete();
+            }
+
+            if ($tag_type === '' && $xref !== '') {
+                DB::table('default_resn')
+                    ->where('gedcom_id', '=', $tree->id())
+                    ->whereNull('tag_type')
+                    ->where('xref', '=', $xref)
+                    ->delete();
+            }
+
+            // Add (or update) the new data
             if ($tag_type !== '' || $xref !== '') {
-                // Delete any existing data
-                if ($xref === '') {
-                    DB::table('default_resn')
-                        ->where('gedcom_id', '=', $tree->id())
-                        ->where('xref', '=', $xref)
-                        ->delete();
-                }
-                if ($tag_type === '' && $xref !== '') {
-                    DB::table('default_resn')
-                        ->where('gedcom_id', '=', $tree->id())
-                        ->whereNull('tag_type')
-                        ->where('xref', '=', $xref)
-                        ->delete();
-                }
-
-                // Add (or update) the new data
                 DB::table('default_resn')->insert([
                     'gedcom_id' => $tree->id(),
-                    'xref'      => $xref,
-                    'tag_type'  => $tag_type,
+                    'xref'      => $xref === '' ? null : $xref,
+                    'tag_type'  => $tag_type === '' ? null : $tag_type,
                     'resn'      => $resn,
                 ]);
             }
