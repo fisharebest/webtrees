@@ -69,9 +69,11 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
-        $filter   = $this->getBlockSetting($block_id, 'filter', 'all');
-        $controls = $this->getBlockSetting($block_id, 'controls', '1');
-        $start    = (bool) $this->getBlockSetting($block_id, 'start', '0');
+        $request       = app(Request::class);
+        $default_start = $this->getBlockSetting($block_id, 'start', '0');
+        $filter        = $this->getBlockSetting($block_id, 'filter', 'all');
+        $controls      = $this->getBlockSetting($block_id, 'controls', '1');
+        $start         = (bool) $request->get('start', $default_start);
 
         $media_types = [
             $this->getBlockSetting($block_id, 'filter_audio', '0') ? 'audio' : null,
