@@ -1064,25 +1064,27 @@ $(function () {
         }
     }
 
-  // Autocomplete
+    // Autocomplete
     autocomplete('input[data-autocomplete-url]');
 
-  // Select2 - activate autocomplete fields
-    $('select.select2').select2({
-      // Do not escape.
+    // Select2 - activate autocomplete fields
+    $("select.select2").select2({
+        width: "100%",
+        // Do not escape.
         escapeMarkup: function (x) {
-            return x }
-      // Same formatting for both selections and rsult
-      //templateResult: templateOptionForSelect2,
-      //templateSelection: templateOptionForSelect2
+            return x;
+        },
+        // Same formatting for both selections and rsult
+        //templateResult: templateOptionForSelect2,
+        //templateSelection: templateOptionForSelect2
     })
-  // If we clear the select (using the "X" button), we need an empty
-  // value (rather than no value at all) for inputs with name="array[]"
-    .on('select2:unselect', function (evt) {
-        $(evt.delegateTarget).append('<option value="" selected="selected"></option>');
-    })
+    // If we clear the select (using the "X" button), we need an empty
+    // value (rather than no value at all) for inputs with name="array[]"
+    .on("select2:unselect", function (evt) {
+        $(evt.delegateTarget).append("<option value=\"\" selected=\"selected\"></option>");
+    });
 
-  // Datatables - locale aware sorting
+    // Datatables - locale aware sorting
     $.fn.dataTableExt.oSort['text-asc'] = function (x, y) {
         return x.localeCompare(y, document.documentElement.lang, {'sensitivity': 'base'});
     };
