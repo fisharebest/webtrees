@@ -1213,25 +1213,6 @@ a:hover .nameZoom {
 	vertical-align: top;
 }
 
-/* ==== Favourites block ===== */
-.add_fav_head {
-	font-weight: 900;
-	margin: 5px 0;
-}
-
-.add_fav_head i {
-	margin: 0 5px 1px;
-}
-
-.add_fav_ref label {
-	display: inline-block;
-	min-width: 100px;
-}
-
-.add_fav_ref input {
-	margin: 0 5px;
-}
-
 /* === Who is online block === */
 .logged_in_list {
 	margin: 5px 0 0;
