@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Str;
 use stdClass;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -77,7 +78,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 
         if ($ctype !== '') {
             return view('modules/block-template', [
-                'block'      => str_replace('_', '-', $this->name()),
+                'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => '',
                 'title'      => $this->title(),

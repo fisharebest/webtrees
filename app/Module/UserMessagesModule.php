@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Str;
 use stdClass;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -213,7 +214,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             $count = $messages->count();
 
             return view('modules/block-template', [
-                'block'      => str_replace('_', '-', $this->name()),
+                'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => '',
                 'title'      => I18N::plural('%s message', '%s messages', $count, I18N::number($count)),

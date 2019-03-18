@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -171,7 +172,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
             }
 
             return view('modules/block-template', [
-                'block'      => str_replace('_', '-', $this->name()),
+                'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => $config_url,
                 'title'      => $this->title(),

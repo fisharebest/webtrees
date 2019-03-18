@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -118,7 +119,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
 
         if ($ctype !== '') {
             return view('modules/block-template', [
-                'block'      => str_replace('_', '-', $this->name()),
+                'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => '',
                 'title'      => $individual->tree()->title(),

@@ -17,12 +17,12 @@
  * Charts block
  *
  */
-.wt-block-charts-block .wt-chart-box {
+.wt-block-charts .wt-chart-box {
 	width: 10rem;
 }
 
-.wt-block-charts-block .wt-chart-box-thumbnail,
-.wt-block-charts-block .wt-chart-box-extra,
-.wt-block-charts-block .wt-chart-box-facts {
+.wt-block-charts .wt-chart-box-thumbnail,
+.wt-block-charts .wt-chart-box-extra,
+.wt-block-charts .wt-chart-box-facts {
 	display: none;
 }
