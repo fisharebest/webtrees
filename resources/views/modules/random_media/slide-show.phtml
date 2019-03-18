@@ -20,7 +20,7 @@
     <?php endif ?>
 
     <figure class="text-center slide-show-figure">
-        <?= $media_file->displayImage(200, 200, '', ['class' => 'slide-show-image']) ?>
+        <?= $media_file->displayImage(200, 200, '', ['class' => 'slide-show-image img-fluid']) ?>
         <figcaption class="slide-show-figcaption">
             <a href="<?= e($media->url()) ?>">
                 <b><?= $media->fullName() ?></b>
