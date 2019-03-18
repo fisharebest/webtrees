@@ -664,7 +664,7 @@ class HomePageController extends AbstractBaseController
      */
     private function availableTreeBlocks(): Collection
     {
-        return $this->module_service->findByInterface(ModuleBlockInterface::class)
+        return $this->module_service->findByInterface(ModuleBlockInterface::class, false, true)
             ->filter(function (ModuleBlockInterface $block): bool {
                 return $block->isTreeBlock();
             })
@@ -681,7 +681,7 @@ class HomePageController extends AbstractBaseController
      */
     private function availableUserBlocks(): Collection
     {
-        return $this->module_service->findByInterface(ModuleBlockInterface::class)
+        return $this->module_service->findByInterface(ModuleBlockInterface::class, false, true)
             ->filter(function (ModuleBlockInterface $block): bool {
                 return $block->isUserBlock();
             })
