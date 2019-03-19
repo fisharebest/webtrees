@@ -385,7 +385,7 @@ class I18N
         $rebuild_cache = time() > $filemtime + 3600;
         // Rebuild files if any translation file has been updated
         foreach ($translation_files as $translation_file) {
-            if (filemtime($translation_file) > $filemtime) {
+            if (file_exists($translation_file) && filemtime($translation_file) > $filemtime) {
                 $rebuild_cache = true;
                 break;
             }
@@ -394,8 +394,10 @@ class I18N
         if ($rebuild_cache) {
             $translations = [];
             foreach ($translation_files as $translation_file) {
-                $translation  = new Translation($translation_file);
-                $translations = array_merge($translations, $translation->asArray());
+                if (file_exists($translation_file)) {
+                    $translation = new Translation($translation_file);
+                    $translations = array_merge($translations, $translation->asArray());
+                }
             }
             try {
                 File::mkdir($cache_dir);
