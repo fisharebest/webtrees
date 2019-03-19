@@ -51,24 +51,4 @@ class DeathReportModule extends AbstractModule implements ModuleReportInterface
         /* I18N: Description of the “Deaths” module */
         return I18N::translate('A report of individuals who died in a given time or place.');
     }
-
-    /**
-     * Return a menu item for this report.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu
-     */
-    public function getReportMenu(Individual $individual): Menu
-    {
-        return new Menu(
-            $this->title(),
-            route('report-setup', [
-                'ged'    => $individual->tree()->name(),
-                'report' => $this->name(),
-            ]),
-            'menu-report-' . $this->name(),
-            ['rel' => 'nofollow']
-        );
-    }
 }

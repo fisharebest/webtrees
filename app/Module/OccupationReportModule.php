@@ -55,24 +55,4 @@ class OccupationReportModule extends AbstractModule implements ModuleReportInter
         /* I18N: Description of the “Occupations” module */
         return I18N::translate('A report of individuals who had a given occupation.');
     }
-
-    /**
-     * Return a menu item for this report.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu
-     */
-    public function getReportMenu(Individual $individual): Menu
-    {
-        return new Menu(
-            $this->title(),
-            route('report-setup', [
-                'ged'    => $individual->tree()->name(),
-                'report' => $this->name(),
-            ]),
-            'menu-report-' . $this->name(),
-            ['rel' => 'nofollow']
-        );
-    }
 }

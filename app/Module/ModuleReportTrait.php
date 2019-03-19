@@ -17,9 +17,43 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Menu;
+
 /**
  * Trait ModuleReportTrait - default implementation of ModuleReportInterface
  */
 trait ModuleReportTrait
 {
+    /**
+     * Name of the XML report file, relative to the resources folder.
+     *
+     * @return string
+     */
+    public function xmlFilename(): string
+    {
+        return $this->resourcesFolder() . 'xml/reports/' . $this->name() . '.xml';
+    }
+
+
+    /**
+     * Return a menu item for this report.
+     *
+     * @param Individual $individual
+     *
+     * @return Menu
+     */
+    public function getReportMenu(Individual $individual): Menu
+    {
+        return new Menu(
+            $this->title(),
+            route('report-setup', [
+                'xref'   => $individual->xref(),
+                'ged'    => $individual->tree()->name(),
+                'report' => $this->name(),
+            ]),
+            'menu-report-' . $this->name(),
+            ['rel' => 'nofollow']
+        );
+    }
 }

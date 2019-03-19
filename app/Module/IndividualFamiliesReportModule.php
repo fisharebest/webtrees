@@ -55,25 +55,4 @@ class IndividualFamiliesReportModule extends AbstractModule implements ModuleRep
         /* I18N: Description of the “Related families” */
         return I18N::translate('A report of the families that are closely related to an individual.');
     }
-
-    /**
-     * Return a menu item for this report.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu
-     */
-    public function getReportMenu(Individual $individual): Menu
-    {
-        return new Menu(
-            $this->title(),
-            route('report-setup', [
-                'xref'   => $individual->xref(),
-                'ged'    => $individual->tree()->name(),
-                'report' => $this->name(),
-            ]),
-            'menu-report-' . $this->name(),
-            ['rel' => 'nofollow']
-        );
-    }
 }
