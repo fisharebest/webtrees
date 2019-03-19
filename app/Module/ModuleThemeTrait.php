@@ -491,7 +491,7 @@ trait ModuleThemeTrait
      */
     public function menuThemes(): ?Menu
     {
-        $themes = app(ModuleService::class)->findByInterface(ModuleThemeInterface::class);
+        $themes = app(ModuleService::class)->findByInterface(ModuleThemeInterface::class, false, true);
 
         $current_theme = app(ModuleThemeInterface::class);
 
