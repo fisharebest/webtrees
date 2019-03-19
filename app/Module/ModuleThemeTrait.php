@@ -88,62 +88,6 @@ trait ModuleThemeTrait
     }
 
     /**
-     * Display an individual in a box - for charts, etc.
-     *
-     * @param Individual $individual
-     *
-     * @return string
-     */
-    public function individualBox(Individual $individual): string
-    {
-        return view('chart-box', ['individual' => $individual]);
-    }
-
-    /**
-     * Display an empty box - for a missing individual in a chart.
-     *
-     * @return string
-     */
-    public function individualBoxEmpty(): string
-    {
-        return '<div class="wt-chart-box"></div>';
-    }
-
-    /**
-     * Display an individual in a box - for charts, etc.
-     *
-     * @param Individual $individual
-     *
-     * @return string
-     */
-    public function individualBoxLarge(Individual $individual): string
-    {
-        return $this->individualBox($individual);
-    }
-
-    /**
-     * Display an individual in a box - for charts, etc.
-     *
-     * @param Individual $individual
-     *
-     * @return string
-     */
-    public function individualBoxSmall(Individual $individual): string
-    {
-        return $this->individualBox($individual);
-    }
-
-    /**
-     * Display an individual in a box - for charts, etc.
-     *
-     * @return string
-     */
-    public function individualBoxSmallEmpty(): string
-    {
-        return '<div class="wt-chart-box"></div>';
-    }
-
-    /**
      * Generate the facts, for display in charts.
      *
      * @param Individual $individual

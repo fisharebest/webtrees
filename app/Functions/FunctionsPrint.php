@@ -53,10 +53,10 @@ class FunctionsPrint
     public static function printPedigreePerson(Individual $person = null): string
     {
         if ($person instanceof Individual) {
-            return app(ModuleThemeInterface::class)->individualBox($person);
+            return view('chart-box', ['individual' => $person]);
         }
 
-        return app(ModuleThemeInterface::class)->individualBoxEmpty();
+        return '<div class="wt-chart-box"></div>';
     }
 
     /**
