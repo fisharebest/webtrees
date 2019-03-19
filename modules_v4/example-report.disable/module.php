@@ -40,7 +40,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
      */
     public function xmlFilename(): string
     {
-        return $this->resourcesFolder() . 'report.xml';
+        return 'report.xml';
 
     }
 };
