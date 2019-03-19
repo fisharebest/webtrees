@@ -41,7 +41,7 @@
 
 <?php if (Auth::isManager($tree)) : ?>
     <p>
-        <a href="<?= e(route('module', ['module' => 'gedcom_news', 'action' => 'EditNews', 'ged' => $tree->name()])) ?>">
+        <a class="btn btn-link" href="<?= e(route('module', ['module' => 'gedcom_news', 'action' => 'EditNews', 'ged' => $tree->name()])) ?>">
             <?= I18N::translate('Add a news article') ?>
         </a>
     </p>
