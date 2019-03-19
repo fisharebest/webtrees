@@ -3,7 +3,6 @@
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Illuminate\Support\Collection;
 
 /**
@@ -19,7 +18,7 @@ use Illuminate\Support\Collection;
         <?php if ($favorite->favorite_type === 'URL') : ?>
             <a href="<?= e($favorite->url) ?>"><b><?= e($favorite->title) ?></b></a>
         <?php elseif ($favorite->record instanceof Individual) : ?>
-            <?= app(ModuleThemeInterface::class)->individualBoxLarge($favorite->record) ?>
+            <?= view('chart-box', ['individual' => $favorite->record]) ?>
         <?php elseif ($favorite->record !== null) : ?>
             <?= $favorite->record->formatList() ?>
         <?php endif ?>

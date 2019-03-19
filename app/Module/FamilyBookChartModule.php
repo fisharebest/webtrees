@@ -336,12 +336,12 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
         //This allows vertical line spacing to be consistent
         if ($person->childFamilies()->isEmpty()) {
             echo '<table cellspacing="0" cellpadding="0" border="0" >';
-            $this->printEmptyBox();
+            echo '<div class="wt-chart-box"></div>';
 
             //-- recursively get the father’s family
             $this->printPersonPedigree($person, $count + 1);
             echo '</td><td></tr>';
-            $this->printEmptyBox();
+            echo '<div class="wt-chart-box"></div>';
 
             //-- recursively get the mother’s family
             $this->printPersonPedigree($person, $count + 1);
@@ -409,7 +409,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
                 if ($genoffset > $count) {
                     echo '<table cellspacing="0" cellpadding="0" border="0" >';
                     for ($i = 1; $i < ((2 ** ($genoffset - $count)) / 2); $i++) {
-                        $this->printEmptyBox();
+                        echo '<div class="wt-chart-box"></div>';
                         echo '</tr>';
                     }
                     echo '</table>';
@@ -432,9 +432,9 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
                 if ($count < $genoffset - 1) {
                     echo '<table cellspacing="0" cellpadding="0" border="0" >';
                     for ($i = 1; $i < ((2 ** (($genoffset - 1) - $count)) / 2) + 1; $i++) {
-                        $this->printEmptyBox();
+                        echo '<div class="wt-chart-box"></div>';
                         echo '</tr>';
-                        $this->printEmptyBox();
+                        echo '<div class="wt-chart-box"></div>';
                         echo '</tr>';
                     }
                     echo '</table>';
@@ -477,17 +477,6 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
         }
 
         return $maxdc;
-    }
-
-    /**
-     * Print empty box
-     *
-     * @return void
-     */
-
-    private function printEmptyBox(): void
-    {
-        echo app(ModuleThemeInterface::class)->individualBoxEmpty();
     }
 
     /**
