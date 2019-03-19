@@ -32,7 +32,7 @@ trait ModuleReportTrait
      */
     public function xmlFilename(): string
     {
-        return $this->resourcesFolder() . 'xml/reports/' . $this->name() . '.xml';
+        return 'xml/reports/' . $this->name() . '.xml';
     }
 
 
