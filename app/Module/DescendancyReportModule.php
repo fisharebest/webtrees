@@ -51,25 +51,4 @@ class DescendancyReportModule extends AbstractModule implements ModuleReportInte
         /* I18N: Description of the “Descendants” module */
         return I18N::translate('A report of an individual’s descendants, in a narrative style.');
     }
-
-    /**
-     * Return a menu item for this report.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu
-     */
-    public function getReportMenu(Individual $individual): Menu
-    {
-        return new Menu(
-            $this->title(),
-            route('report-setup', [
-                'xref'   => $individual->xref(),
-                'ged'    => $individual->tree()->name(),
-                'report' => $this->name(),
-            ]),
-            'menu-report-' . $this->name(),
-            ['rel' => 'nofollow']
-        );
-    }
 }

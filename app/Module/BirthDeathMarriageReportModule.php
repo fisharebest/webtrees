@@ -51,24 +51,4 @@ class BirthDeathMarriageReportModule extends AbstractModule implements ModuleRep
         /* I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death */
         return I18N::translate('A report of vital records for a given date or place.');
     }
-
-    /**
-     * Return a menu item for this report.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu
-     */
-    public function getReportMenu(Individual $individual): Menu
-    {
-        return new Menu(
-            $this->title(),
-            route('report-setup', [
-                'ged'    => $individual->tree()->name(),
-                'report' => $this->name(),
-            ]),
-            'menu-report-' . $this->name(),
-            ['rel' => 'nofollow']
-        );
-    }
 }
