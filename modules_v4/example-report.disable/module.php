@@ -41,6 +41,5 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
     public function xmlFilename(): string
     {
         return 'report.xml';
-
     }
 };
