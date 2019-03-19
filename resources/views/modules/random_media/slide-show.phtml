@@ -60,15 +60,16 @@
 </div>
 
 <script>
-    // Reload automatically?
     var play = <?= json_encode($start_automatically); ?>;
 
+    if (play) {
+        var timeout = setTimeout(slideShowReload, 6000);
+    }
+
     function slideShowReload() {
-        if (play) {
-            var block = $("#block-<?= $block_id ?>").parent();
-            clearTimeout(timeout);
-            block.load(block.data('ajaxUrl') + '&start=' + (play ? '1' : '0'));
-        }
+        var block = $("#block-<?= $block_id ?>").parent();
+        clearTimeout(timeout);
+        block.load(block.data('ajaxUrl') + '&start=' + (play ? '1' : '0'));
 
         return false;
     }
@@ -84,13 +85,11 @@
         $(".wt-icon-media-stop").parent().attr('hidden', true);
         $(".wt-icon-media-play").parent().attr('hidden', false);
         play = false;
+        clearTimeout(timeout);
         return false;
     });
 
     $(".wt-icon-media-next").on('click', function () {
-        play = true;
         return slideShowReload();
     });
-
-    var timeout = setTimeout(slideShowReload, 6000);
 </script>
