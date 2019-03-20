@@ -41,18 +41,27 @@ class Bootstrap4 extends Html
             $class = 'form-check';
         }
 
-        $input_attributes = self::attributes([
+        $input_attributes = [
                 'class' => 'form-check-input',
                 'type'  => 'checkbox',
                 'value' => '1',
-            ] + $attributes);
+            ] + $attributes;
 
-        return
-            '<div class="' . $class . '">' .
-            '<input ' . $input_attributes . '> ' . e($label) .
-            '<label class="form-check-label">' .
-            '</label>' .
-            '</div>';
+        // Add id attribute if missing
+        $input_attributes['id'] = $input_attributes['id'] ?? Uuid::uuid4()->toString();
+
+        $label            = e($label);
+        $label_attributes = self::attributes(['for' => $input_attributes['id']]);
+        $input_attributes = self::attributes($input_attributes);
+
+        return <<<HTML
+<div class="{$class}">
+    <input {$input_attributes}>
+    <label class="form-check-label" {$label_attributes}>
+        {$label}
+    </label>
+</div>
+HTML;
     }
 
     /**
