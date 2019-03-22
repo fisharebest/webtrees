@@ -231,12 +231,19 @@ class UsersController extends AbstractAdminController
                 $admin_options = '';
             }
 
+            // Link to send email to other users.
+            if ($row->user_id != $user->id()) {
+                $row->email = '<a href="' . e(route('message', ['to' => $row->user_name])) . '">' . e($row->email) . '</a>';
+            } else {
+                $row->email = e($row->email);
+            }
+
             $datum = [
                 '<div class="dropdown"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="edit-user-button-' . $row->user_id . '" aria-haspopup="true" aria-expanded="false">' . view('icons/edit') . ' <span class="caret"></span></button><div class="dropdown-menu" aria-labelledby="edit-user-button-' . $row->user_id . '"><div class="dropdown-item"><a href="' . e(route('admin-users-edit', ['user_id' => $row->user_id])) . '">' . view('icons/edit') . ' ' . I18N::translate('Edit') . '</a></div><div class="divider"></div><div class="dropdown-item"><a href="' . e(route('user-page-user-edit', ['user_id' => $row->user_id])) . '">' . view('icons/block') . ' ' . I18N::translate('Change the blocks on this user’s “My page”') . '</a></div>' . $admin_options . '</div></div>',
                 $row->user_id,
                 '<span dir="auto">' . e($row->user_name) . '</span>',
                 '<span dir="auto">' . e($row->real_name) . '</span>',
-                e($row->email),
+                $row->email,
                 $installed_languages[$row->language] ?? $row->language,
                 $row->registered_at,
                 $row->registered_at ? view('components/datetime-diff', ['timestamp' => Carbon::createFromTimestamp((int) $row->registered_at)]) : '',
@@ -245,11 +252,6 @@ class UsersController extends AbstractAdminController
                 $row->verified ? I18N::translate('yes') : I18N::translate('no'),
                 $row->verified_by_admin ? I18N::translate('yes') : I18N::translate('no'),
             ];
-
-            // Link to send email to other users.
-            if ($row->user_id != $user->id()) {
-                $datum[4] = '<a href="' . e(route('message', ['to' => $datum[2], 'url' => route('admin-users')])) . '">' . $datum[4] . '</a>';
-            }
 
             // Highlight old registrations.
             if (date('U') - $datum[6] > 604800 && !$datum[10]) {
