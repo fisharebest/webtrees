@@ -1,12 +1,12 @@
-<?php use Fisharebest\Webtrees\Bootstrap4;
+<?php
+
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\View; ?>
-<?php ?>
-<?php ?>
-<?php ?>
-<?php ?>
+use Fisharebest\Webtrees\View;
+use Ramsey\Uuid\Uuid;
+
+?>
 
 <?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-trees') => I18N::translate('Manage family trees'), $title]]) ?>
 
@@ -29,7 +29,7 @@ use Fisharebest\Webtrees\View; ?>
             </div>
         </div>
         <div class="col-sm-8">
-            <?= Bootstrap4::select(['0' => I18N::translate('Show to visitors'), '1' => I18N::translate('Show to members')], $tree->getPreference('REQUIRE_AUTHENTICATION'), ['id' => 'REQUIRE_AUTHENTICATION', 'name' => 'REQUIRE_AUTHENTICATION']) ?>
+            <?= view('components/select', ['name' => 'REQUIRE_AUTHENTICATION', 'selected' => $tree->getPreference('REQUIRE_AUTHENTICATION'), 'values' => ['0' => I18N::translate('Show to visitors'), '1' => I18N::translate('Show to members')]]) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Family tree” configuration setting */ I18N::translate('Enabling this option will force all visitors to sign in before they can view any data on the website.') ?>
             </p>
@@ -53,7 +53,7 @@ use Fisharebest\Webtrees\View; ?>
             </div>
         </div>
         <div class="col-sm-8">
-            <?= Bootstrap4::select(array_slice(FunctionsEdit::optionsAccessLevels(), 0, 2, true), $tree->getPreference('SHOW_DEAD_PEOPLE'), ['id' => 'SHOW_DEAD_PEOPLE', 'name' => 'SHOW_DEAD_PEOPLE']) ?>
+            <?= view('components/select', ['name' => 'SHOW_DEAD_PEOPLE', 'selected' => $tree->getPreference('SHOW_DEAD_PEOPLE'), 'values' => array_slice(FunctionsEdit::optionsAccessLevels(), 0, 2, true)]) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Show dead individuals” configuration setting */ I18N::translate('Set the privacy access level for all dead individuals.') ?>
             </p>
@@ -94,7 +94,7 @@ use Fisharebest\Webtrees\View; ?>
                 </legend>
             </div>
             <div class="col-sm-8">
-                <?= Bootstrap4::select(['0' => I18N::translate('Show to visitors'), '1' => I18N::translate('Show to members')], $tree->getPreference('HIDE_LIVE_PEOPLE'), ['id' => 'HIDE_LIVE_PEOPLE', 'name' => 'HIDE_LIVE_PEOPLE']) ?>
+                <?= view('components/select', ['name' => 'HIDE_LIVE_PEOPLE', 'selected' => $tree->getPreference('HIDE_LIVE_PEOPLE'), 'values' => ['0' => I18N::translate('Show to visitors'), '1' => I18N::translate('Show to members')]]) ?>
                 <p class="small text-muted">
                     <?= /* I18N: Help text for the “Show living individuals” configuration setting */ I18N::translate('If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public.') ?>
                 </p>
@@ -136,7 +136,7 @@ use Fisharebest\Webtrees\View; ?>
             </div>
         </div>
         <div class="col-sm-8">
-            <?= Bootstrap4::select(array_slice(FunctionsEdit::optionsAccessLevels(), 0, 3, true), $tree->getPreference('SHOW_LIVING_NAMES'), ['id' => 'SHOW_LIVING_NAMES', 'name' => 'SHOW_LIVING_NAMES']) ?>
+            <?= view('components/select', ['name' => 'SHOW_LIVING_NAMES', 'selected' => $tree->getPreference('SHOW_LIVING_NAMES'), 'values' => array_slice(FunctionsEdit::optionsAccessLevels(), 0, 3, true)]) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Show names of private individuals” configuration setting */ I18N::translate('This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record.') ?>
             </p>
@@ -155,7 +155,7 @@ use Fisharebest\Webtrees\View; ?>
             </div>
         </div>
         <div class="col-sm-8">
-            <?= Bootstrap4::select(['0' => I18N::translate('Hide from everyone'), '1' => I18N::translate('Show to visitors')], $tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS'), ['id' => 'SHOW_PRIVATE_RELATIONSHIPS', 'name' => 'SHOW_PRIVATE_RELATIONSHIPS']) ?>
+            <?= view('components/select', ['name' => 'SHOW_PRIVATE_RELATIONSHIPS', 'selected' => $tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS'), 'values' => ['0' => I18N::translate('Hide from everyone'), '1' => I18N::translate('Show to visitors')]]) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Show private relationships” configuration setting */ I18N::translate('This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals.') ?>
             </p>
@@ -178,29 +178,29 @@ use Fisharebest\Webtrees\View; ?>
                     <option value="media"><?= I18N::translate('Media object') ?></option>
                 </select>
                 <span class="select-record select-individual">
-                    <?= FunctionsEdit::formControlIndividual($tree, null, ['name' => 'xref[]', 'class' => 'form-control', 'style' => 'width:100%;']) ?>
+                   <?= view('components/select-individual', ['name' => 'xref[]', 'id' => Uuid::uuid4()->toString(), 'tree' => $tree]) ?>
                 </span>
                 <span class="select-record select-family d-none">
-                    <?= FunctionsEdit::formControlFamily($tree, null, ['name' => 'xref[]', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+                   <?= view('components/select-family', ['name' => 'xref[]', 'id' => Uuid::uuid4()->toString(), 'tree' => $tree, 'disabled' => true]) ?>
                 </span>
                 <span class="select-record select-source d-none">
-                    <?= FunctionsEdit::formControlSource($tree, null, ['name' => 'xref[]', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+                   <?= view('components/select-source', ['name' => 'xref[]', 'id' => Uuid::uuid4()->toString(), 'tree' => $tree, 'disabled' => true]) ?>
                 </span>
                 <span class="select-record select-repository d-none">
-                    <?= FunctionsEdit::formControlRepository($tree, null, ['name' => 'xref[]', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+                   <?= view('components/select-repository', ['name' => 'xref[]', 'id' => Uuid::uuid4()->toString(), 'tree' => $tree, 'disabled' => true]) ?>
                 </span>
                 <span class="select-record select-note d-none">
-                    <?= FunctionsEdit::formControlNote($tree, null, ['name' => 'xref[]', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+                   <?= view('components/select-note', ['name' => 'xref[]', 'id' => Uuid::uuid4()->toString(), 'tree' => $tree, 'disabled' => true]) ?>
                 </span>
                 <span class="select-record select-media d-none">
-                    <?= FunctionsEdit::formControlMediaObject($tree, null, ['name' => 'xref[]', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+                   <?= view('components/select-media', ['name' => 'xref[]', 'id' => Uuid::uuid4()->toString(), 'tree' => $tree, 'disabled' => true]) ?>
                 </span>
             </td>
             <td>
-                <?= Bootstrap4::select($all_tags, '', ['name' => 'tag_type[]']) ?>
+                <?= view('components/select', ['name' => 'tag_type[]', 'id' => Uuid::uuid4()->toString(), 'selected' => '', 'values' => $all_tags]) ?>
             </td>
             <td>
-                <?= Bootstrap4::select($privacy_constants, 'privacy', ['name' => 'resn[]']) ?>
+                <?= view('components/select', ['name' => 'resn[]', 'id' => Uuid::uuid4()->toString(), 'selected' => 'privacy', 'values' => $privacy_constants]) ?>
             </td>
             <td>
             </td>

@@ -5,7 +5,9 @@
 
 <h1><?= $title ?></h1>
 
-<table class="table table-sm table-bordered table-user-list">
+<table class="table table-sm table-bordered table-user-list"
+    <?= view('lists/datatables-attributes') ?>
+>
     <thead>
         <tr>
             <th><?= I18N::translate('Edit') ?></th>
@@ -29,15 +31,12 @@
 <?php View::push('javascript') ?>
 <script>
   $(".table-user-list").dataTable({
-    stateSave:           true,
-    stateDuration:       300,
     processing:          true,
     serverSide:          true,
     ajax:                {
       url: "<?= e(route('admin-users-data')) ?>"
     },
     autoWidth:           false,
-    pageLength:          <?= $page_size ?>,
     sorting:             [[2, "asc"]],
     columns:             [
       /* details           */ {sortable: false},
@@ -52,8 +51,7 @@
       /* last_login        */ {dataSort: 8},
       /* verified          */ null,
       /* approved          */ null
-    ],
-        <?= I18N::datatablesI18N() ?>
+    ]
   }).fnFilter("<?= e($filter) ?>"); // Pre-fill the search box
 </script>
 <?php View::endpush() ?>

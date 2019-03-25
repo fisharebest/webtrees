@@ -288,6 +288,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             $title = I18N::translate('Edit the FAQ');
         }
 
+        $tree_names = ['' => I18N::translate('All')] + Tree::getIdList();
+
         return $this->viewResponse('modules/faq/edit', [
             'block_id'    => $block_id,
             'block_order' => $block_order,
@@ -296,7 +298,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             'languages'   => $languages,
             'title'       => $title,
             'tree'        => $tree,
-            'tree_names'  => Tree::getIdList(),
+            'tree_names'  => $tree_names,
         ]);
     }
 

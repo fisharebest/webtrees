@@ -1,0 +1,35 @@
+<?php
+
+use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Tree;
+
+/**
+ * @var Repository|null $repository
+ * @var string|null $id
+ * @var string      $name
+ * @var Tree        $tree
+ */
+
+?>
+
+<select
+    autocomplete="off"
+    class="form-control select2"
+    data-ajax--delay="350"
+    data-ajax--minimum-input-length="2"
+    data-ajax--type="POST"
+    data-ajax--url="<?= e(route('select2-repository', ['ged' => $tree->name()])) ?>"
+    data-allow-clear="true"
+    id="<?= e($id ?? $name) ?>"
+    name="<?= e($name) ?>"
+    <?= ($disabled ?? false) ? 'disabled' : '' ?>
+    <?= ($required ?? false) ? 'required' : '' ?>
+>
+    <?php if (($repository ?? null) instanceof Repository): ?>
+        <option value="<?= e($repository->xref()) ?>" selected>
+            <?= view('selects/repository', ['repository' => $repository]) ?>
+        </option>
+    <?php else: ?>
+        <option></option>
+    <?php endif ?>
+</select>

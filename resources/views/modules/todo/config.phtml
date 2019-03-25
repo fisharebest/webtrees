@@ -1,5 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <p>
@@ -13,7 +11,7 @@
         <?= I18N::translate('Show research tasks that are assigned to other users') ?>
     </label>
     <div class="col-sm-9">
-        <?= Bootstrap4::radioButtons('show_other', FunctionsEdit::optionsNoYes(), $show_other, true) ?>
+        <?= view('components/radios-inline', ['name' => 'show_other', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $show_other]) ?>
     </div>
 </div>
 
@@ -23,7 +21,7 @@
         <?= I18N::translate('Show research tasks that are not assigned to any user') ?>
     </label>
     <div class="col-sm-9">
-        <?= Bootstrap4::radioButtons('show_unassigned', FunctionsEdit::optionsNoYes(), $show_unassigned, true) ?>
+        <?= view('components/radios-inline', ['name' => 'show_unasigned', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $show_unassigned]) ?>
     </div>
 </div>
 
@@ -32,6 +30,6 @@
         <?= I18N::translate('Show research tasks that have a date in the future') ?>
     </label>
     <div class="col-sm-9">
-        <?= Bootstrap4::radioButtons('show_future', FunctionsEdit::optionsNoYes(), $show_future, true) ?>
+        <?= view('components/radios-inline', ['name' => 'show_future', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $show_future]) ?>
     </div>
 </div>

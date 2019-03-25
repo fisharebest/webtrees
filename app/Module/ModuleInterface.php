@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Interface ModuleInterface - Classes and libraries for module system

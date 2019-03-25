@@ -1,6 +1,25 @@
+<?php
+
+/**
+ * @var bool|null   $checked
+ * @var bool|null   $disabled
+ * @var string|null $id
+ * @var string      $label
+ * @var string      $name
+ * @var string      $value
+ */
+
+?>
+
 <div class="form-check form-check-inline">
-	<input class="form-check-input" type="radio" name="<?= e($name) ?>" id="radio-<?= e($name) ?>-no" value="<?= $value ?>" <?= $checked ? 'checked' : '' ?>>
-	<label class="form-check-label" for="radio-<?= e($name) ?>-no">
-    <?= $text ?>
-	</label>
+    <input type="radio" class="form-check-input"
+    name="<?= e($name) ?>"
+    id="<?= e($id ?? $name . '-' . $value) ?>"
+    value="<?= e($value) ?>"
+        <?= $checked ?? false ? 'checked' : '' ?>
+        <?= $disabled ?? false ? 'disabled' : '' ?>
+    >
+    <label class="form-check-label" for="<?= e($id ?? $name . '-' . $value) ?>">
+        <?= $label ?>
+    </label>
 </div>

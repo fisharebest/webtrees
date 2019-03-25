@@ -18,19 +18,15 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Collator;
-use DomainException;
 use Exception;
 use Fisharebest\Localization\Locale;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Translation;
 use Fisharebest\Localization\Translator;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
-use Fisharebest\Webtrees\Module\LanguageEnglishUnitedStates;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
-use const GLOB_NOSORT;
 use Illuminate\Support\Collection;
 
 /**
@@ -243,48 +239,6 @@ class I18N
     {
         /* I18N: This is the format string for full dates. See http://php.net/date for codes */
         return self::$translator->translate('%j %F %Y');
-    }
-
-    /**
-     * Generate consistent I18N for datatables.js
-     *
-     * @param int[] $lengths An optional array of page lengths
-     *
-     * @return string
-     */
-    public static function datatablesI18N(array $lengths = [
-        10,
-        20,
-        30,
-        50,
-        100,
-        -1,
-    ]): string
-    {
-        $length_options = Bootstrap4::select(FunctionsEdit::numericOptions($lengths), '10');
-
-        return
-            '"formatNumber": function(n) { return String(n).replace(/[0-9]/g, function(w) { return ("' . self::$locale->digits('0123456789') . '")[+w]; }); },' .
-            '"language": {' .
-            ' "paginate": {' .
-            '  "first":    "' . self::translate('first') . '",' .
-            '  "last":     "' . self::translate('last') . '",' .
-            '  "next":     "' . self::translate('next') . '",' .
-            '  "previous": "' . self::translate('previous') . '"' .
-            ' },' .
-            ' "emptyTable":     "' . self::translate('No records to display') . '",' .
-            ' "info":           "' . /* I18N: %s are placeholders for numbers */
-            self::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_') . '",' .
-            ' "infoEmpty":      "' . self::translate('Showing %1$s to %2$s of %3$s', self::$locale->digits('0'), self::$locale->digits('0'), self::$locale->digits('0')) . '",' .
-            ' "infoFiltered":   "' . /* I18N: %s is a placeholder for a number */
-            self::translate('(filtered from %s total entries)', '_MAX_') . '",' .
-            ' "lengthMenu":     "' . /* I18N: %s is a number of records per page */
-            self::translate('Display %s', addslashes($length_options)) . '",' .
-            ' "loadingRecords": "' . self::translate('Loading…') . '",' .
-            ' "processing":     "' . self::translate('Loading…') . '",' .
-            ' "search":         "' . self::translate('Filter') . '",' .
-            ' "zeroRecords":    "' . self::translate('No records to display') . '"' .
-            '}';
     }
 
     /**

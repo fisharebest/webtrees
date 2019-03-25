@@ -1,5 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
@@ -18,10 +16,7 @@
             <?= I18N::translate('Individual 1') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= FunctionsEdit::formControlIndividual($tree, $individual1, [
-                'id'   => 'xref',
-                'name' => 'xref',
-            ]) ?>
+            <?= view('components/select-individual', ['name' => 'xref', 'individual' => $individual1, 'tree' => $tree]) ?>
             <button class="btn btn-link small" id="btn-swap-individuals" type="button">
                 <?= /* I18N: Reverse the order of two individuals */
                 I18N::translate('Swap individuals') ?>
@@ -34,10 +29,7 @@
             <?= I18N::translate('Individual 2') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= FunctionsEdit::formControlIndividual($tree, $individual2, [
-                'id'   => 'xref2',
-                'name' => 'xref2',
-            ]) ?>
+            <?= view('components/select-individual', ['name' => 'xref2', 'individual' => $individual2, 'tree' => $tree]) ?>
         </div>
     </div>
 
@@ -50,7 +42,7 @@
                     <input type="hidden" name="ancestors" value="1">
                     <?= I18N::translate('Find relationships via ancestors') ?>
                 <?php else : ?>
-                    <?= Bootstrap4::radioButtons('ancestors', $ancestors_options, $ancestors, false) ?>
+                    <?= view('components/radios', ['name' => 'ancestors', 'options' => $ancestors_options, 'selected' => $ancestors]) ?>
                 <?php endif ?>
             </div>
         </div>
@@ -65,7 +57,7 @@
                     <?= I18N::translate('Find the closest relationships') ?>
                     <input type="hidden" name="recursion" value="0">
                 <?php else : ?>
-                    <?= Bootstrap4::radioButtons('recursion', $recursion_options, $recursion, false) ?>
+                    <?= view('components/radios', ['name' => 'recursion', 'options' => $recursion_options, 'selected' => $recursion]) ?>
                 <?php endif ?>
             </div>
         </div>

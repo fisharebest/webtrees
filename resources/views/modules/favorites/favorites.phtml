@@ -1,6 +1,5 @@
 <?php
 
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
@@ -66,19 +65,19 @@ use Illuminate\Support\Collection;
                             </div>
                         </div>
                         <div class="col-sm-8 col-md-9">
-                            <?= FunctionsEdit::formControlIndividual($tree, null, ['id' => 'xref', 'name' => 'indi-xref']) ?>
+                            <?= view('components/select-individual', ['name' => 'indi-xref', 'tree' => $tree]) ?>
                         </div>
 
                         <div class="col-sm-4 col-md-3">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="type" value="fam" id="fav-fam-<?= e($block_id) ?>">
-                                <label for="fav-fam-<?= e($block_id) ?>">
+                                <label for="fam-xref">
                                     <?= I18N::translate('Family') ?>
                                 </label>
                             </div>
                         </div>
                         <div class="col-sm-8 col-md-9">
-                            <?= FunctionsEdit::formControlFamily($tree, null, ['id' => 'xref', 'name' => 'fam-xref']) ?>
+                            <?= view('components/select-family', ['name' => 'fam-xref', 'tree' => $tree]) ?>
                         </div>
 
                         <div class="col-sm-4 col-md-3">
@@ -90,7 +89,7 @@ use Illuminate\Support\Collection;
                             </div>
                         </div>
                         <div class="col-sm-8 col-md-9">
-                            <?= FunctionsEdit::formControlMediaObject($tree, null, ['id' => 'xref', 'name' => 'obje-xref']) ?>
+                            <?= view('components/select-media', ['name' => 'obje-xref', 'tree' => $tree]) ?>
                         </div>
 
                         <div class="col-sm-4 col-md-3">
@@ -102,7 +101,7 @@ use Illuminate\Support\Collection;
                             </div>
                         </div>
                         <div class="col-sm-8 col-md-9">
-                            <?= FunctionsEdit::formControlSource($tree, null, ['id' => 'xref', 'name' => 'sour-xref']) ?>
+                            <?= view('components/select-source', ['name' => 'sour-xref', 'tree' => $tree]) ?>
                         </div>
 
                         <div class="col-sm-4 col-md-3">
@@ -113,8 +112,8 @@ use Illuminate\Support\Collection;
                                 </label>
                             </div>
                         </div>
-                        <div class="col-sm-8 col-md-">
-                            <?= FunctionsEdit::formControlRepository($tree, null, ['id' => 'xref', 'name' => 'repo-xref']) ?>
+                        <div class="col-sm-8 col-md-9">
+                            <?= view('components/select-repository', ['name' => 'repo-xref', 'tree' => $tree]) ?>
                         </div>
 
                         <div class="col-sm-4 col-md-3">

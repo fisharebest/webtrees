@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
-use Fisharebest\Webtrees\Select2;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
@@ -243,19 +242,6 @@ class AutocompleteController extends AbstractBaseController
                 'more' => $results->count() > self::RESULTS_PER_PAGE,
             ],
         ]);
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return JsonResponse
-     */
-    public function select2Flag(Request $request): JsonResponse
-    {
-        $page  = (int) $request->get('page');
-        $query = $request->get('q', '');
-
-        return new JsonResponse(Select2::flagSearch($page, $query));
     }
 
     /**

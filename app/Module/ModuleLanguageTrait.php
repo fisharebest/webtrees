@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Webtrees\I18N;
 
 /**
  * Trait ModuleLanguageEventsTrait - default implementation of ModuleLanguageInterface.

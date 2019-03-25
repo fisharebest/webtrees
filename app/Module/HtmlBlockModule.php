@@ -161,17 +161,18 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
      */
     public function editBlockConfiguration(Tree $tree, int $block_id): void
     {
-        $templates = [
-            I18N::translate('Keyword examples')      => view('modules/html/template-keywords', []),
-            I18N::translate('Narrative description') => view('modules/html/template-narrative', []),
-            I18N::translate('Statistics')            => view('modules/html/template-statistics', []),
-        ];
-
         $title          = $this->getBlockSetting($block_id, 'title', '');
         $html           = $this->getBlockSetting($block_id, 'html', '');
         $show_timestamp = $this->getBlockSetting($block_id, 'show_timestamp', '0');
         $languages      = explode(',', $this->getBlockSetting($block_id, 'languages'));
         $all_trees      = Tree::getNameList();
+
+        $templates = [
+            $html                                    => I18N::translate('Custom'),
+            view('modules/html/template-keywords')   => I18N::translate('Keyword examples'),
+            view('modules/html/template-narrative')  => I18N::translate('Narrative description'),
+            view('modules/html/template-statistics') => I18N::translate('Statistics'),
+        ];
 
         echo view('modules/html/config', [
             'all_trees'      => $all_trees,

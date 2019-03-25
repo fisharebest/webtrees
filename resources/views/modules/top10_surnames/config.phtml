@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <div class="form-group row">
@@ -15,6 +14,6 @@
         <?= I18N::translate('Presentation style') ?>
     </label>
     <div class="col-sm-9">
-        <?= Bootstrap4::select($info_styles, $infoStyle, ['id' => 'infoStyle', 'name' => 'infoStyle']) ?>
+        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $infoStyle, 'values' => $info_styles]) ?>
     </div>
 </div>

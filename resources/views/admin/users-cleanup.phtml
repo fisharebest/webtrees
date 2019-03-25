@@ -1,6 +1,4 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\Carbon; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsDate; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-users') => I18N::translate('User administration'), $title]]) ?>
@@ -14,7 +12,7 @@
             <?= I18N::translate('Number of months since the last sign-in for a user’s account to be considered inactive: ') ?>
         </label>
         <div class="col-sm-2">
-            <?= Bootstrap4::select($options, $months, ['id' => 'months', 'name' => 'months']) ?>
+            <?= view('components/select', ['name' => 'months', 'selected' => $months, 'values' => $options]) ?>
         </div>
         <div class="col-sm-2">
             <button type="submit" class="btn btn-primary">

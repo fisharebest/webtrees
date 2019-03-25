@@ -1,7 +1,6 @@
 <?php use Fisharebest\Webtrees\DebugBar; ?>
 <?php use Fisharebest\Webtrees\FlashMessages; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleFooterInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleGlobalInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleThemeInterface; ?>
@@ -81,11 +80,11 @@
                                 <div class="input-group">
                                     <label class="sr-only" for="quick-search"><?= I18N::translate('Search') ?></label>
                                     <input type="search" class="form-control wt-header-search-field" id="quick-search" name="query" size="15" placeholder="<?= I18N::translate('Search') ?>">
-                                    <span class="input-group-btn">
+                                    <div class="input-group-append">
                                         <button type="submit" class="btn btn-primary wt-header-search-button">
                                             <?= view('icons/search') ?>
                                         </button>
-                                    </span>
+                                    </div>
                                 </div>
                             </form>
                         </div>

@@ -31,7 +31,7 @@ $menus = $module_service->findByComponent(ModuleChartInterface::class, $individu
 })->filter();
 
 foreach ($individual->spouseFamilies() as $family) {
-    $menus[] = new Menu('<strong>' . I18N::translate('Family with spouse') . '</strong>', $family->url());
+    $menus->push(new Menu('<strong>' . I18N::translate('Family with spouse') . '</strong>', $family->url()));
     $spouse  = $family->spouse($individual);
     if ($spouse && $spouse->canShow()) {
         $menus->push(new Menu($spouse->fullName(), $spouse->url()));
@@ -124,7 +124,9 @@ $id = Uuid::uuid4()->toString();
 
             <div class="dropdown-menu dropdown-menu-right wt-chart-box-dropdown wt-chart-box-links-dropdown" style="position: inherit" aria-labelledby="#chart-box-menu-<?= $id ?>">
                 <?php foreach ($menus as $menu): ?>
-                    <?= $menu->getMenuAsList() ?>
+                    <a class="dropdown-item p-1 <?= e($menu->getClass()) ?>" href="<?= e($menu->getLink()) ?>">
+                        <?= $menu->getLabel() ?>
+                    </a>
                 <?php endforeach ?>
             </div>
         </div>

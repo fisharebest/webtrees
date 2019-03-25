@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface; ?>
 <?php use Fisharebest\Webtrees\Module\ModuleBlockInterface; ?>
@@ -37,7 +36,12 @@
 <form method="post">
     <input type="hidden" name="route" value="admin-update-module-status">
     <?= csrf_field() ?>
-    <table class="table table-bordered table-hover table-sm table-module-administration" data-info="false" data-paging="false" data-state-save="true" data-filter="false">
+    <table class="table table-bordered table-hover table-sm table-module-administration"
+        <?= view('lists/datatables-attributes') ?>
+        data-info="false"
+        data-paging="false"
+        data-filter="false"
+    >
         <caption class="sr-only">
             <?= I18N::translate('Module administration') ?>
         </caption>
@@ -114,7 +118,7 @@
                         <?= $module->title() ?>
                     </th>
                     <td class="text-center" data-sort="<?= $module->isEnabled() ?>">
-                        <?= Bootstrap4::checkbox('', false, ['name' => 'status-' . $module->name(), 'checked' => $module->isEnabled()]) ?>
+                        <?= view('components/checkbox', ['label' => '', 'name' => 'status-' . $module->name(), 'checked' => $module->isEnabled()]) ?>
                     </td>
                     <td>
                         <?= $module->description() ?>
@@ -263,6 +267,6 @@
 <script>
   'use strict';
 
-  $(".table-module-administration").dataTable({<?= I18N::datatablesI18N() ?>});
+  $(".table-module-administration").dataTable();
 </script>
 <?php View::endpush() ?>

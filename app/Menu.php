@@ -209,34 +209,6 @@ class Menu
     }
 
     /**
-     * Render this menu as an HTML list
-     *
-     * @return string
-     */
-    public function getMenuAsList(): string
-    {
-        $attrs = '';
-        foreach ($this->attrs as $key => $value) {
-            $attrs .= ' ' . $key . '="' . e($value) . '"';
-        }
-        if ($this->link) {
-            $link = ' href="' . e($this->link) . '"';
-        } else {
-            $link = '';
-        }
-        $html = '<a' . $link . $attrs . '>' . $this->label . '</a>';
-        if (!empty($this->submenus)) {
-            $html .= '<ul>';
-            foreach ($this->submenus as $submenu) {
-                $html .= $submenu->getMenuAsList();
-            }
-            $html .= '</ul>';
-        }
-
-        return '<li class="' . $this->class . '">' . $html . '</li>';
-    }
-
-    /**
      * Get the sub-menus.
      *
      * @return Menu[]

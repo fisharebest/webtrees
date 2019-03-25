@@ -185,7 +185,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
                 $record = $this->getRecord($all_data[$xref], $tree);
                 if ($plugin->doesRecordNeedUpdate($record)) {
                     $new_gedcom = $plugin->updateRecord($record);
-                    $record->updateRecord($new_gedcom, !$plugin->chan);
+                    $record->updateRecord($new_gedcom, false);
                 }
 
                 $parameters['xref'] = $this->findNextXref($plugin, $xref, $all_data, $tree);
@@ -196,7 +196,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
                     $record = $this->getRecord($value, $tree);
                     if ($plugin->doesRecordNeedUpdate($record)) {
                         $new_gedcom = $plugin->updateRecord($record);
-                        $record->updateRecord($new_gedcom, !$plugin->chan);
+                        $record->updateRecord($new_gedcom, false);
                     }
                 }
                 $parameters['xref'] = '';

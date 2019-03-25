@@ -1,0 +1,35 @@
+<?php
+
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tree;
+
+/**
+ * @var Individual|null $individual
+ * @var string|null $id
+ * @var string      $name
+ * @var Tree        $tree
+ */
+
+?>
+
+<select
+    autocomplete="off"
+    class="form-control select2"
+    data-ajax--delay="350"
+    data-ajax--minimum-input-length="2"
+    data-ajax--type="POST"
+    data-ajax--url="<?= e(route('select2-individual', ['ged' => $tree->name()])) ?>"
+    data-allow-clear="true"
+    id="<?= e($id ?? $name) ?>"
+    name="<?= e($name) ?>"
+    <?= ($disabled ?? false) ? 'disabled' : '' ?>
+    <?= ($required ?? false) ? 'required' : '' ?>
+>
+    <?php if (($individual ?? null) instanceof Individual): ?>
+        <option value="<?= e($individual->xref()) ?>" selected>
+            <?= view('selects/individual', ['individual' => $individual]) ?>
+        </option>
+    <?php else: ?>
+        <option></option>
+    <?php endif ?>
+</select>

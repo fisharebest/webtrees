@@ -1,6 +1,9 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
+
+?>
 
 <?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('map-data')  => I18N::translate('Geographic data'), $title]]) ?>
 
@@ -50,12 +53,7 @@
                 <?= I18N::translate('Delete all existing geographic data before importing the file.') ?>
             </legend>
             <div class="col-sm-8">
-                <?= Bootstrap4::radioButtons(
-                    'cleardatabase',
-                    [I18N::translate('no'), I18N::translate('yes')],
-                    '0',
-                    true
-                ) ?>
+                <?= view('components/radios-inline', ['name' => 'cleardatabase', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => false]) ?>
             </div>
         </div>
     </fieldset>
@@ -67,15 +65,7 @@
                 <?= I18N::translate('Import Options.') ?>
             </legend>
             <div class="col-sm-8">
-                <?= Bootstrap4::select(
-                    [
-                        'addupdate' => I18N::translate('Add new, and update existing records'),
-                        'add'      => I18N::translate('Only add new records'),
-                        'update'    => I18N::translate('Only update existing records'),
-                    ],
-                    '0',
-                    ['id' => 'import-options', 'name' => 'import-options']
-                ) ?>
+                <?= view('components/select', ['name' => 'import-options', 'selected' => '', 'values' => ['addupdate' => I18N::translate('Add new, and update existing records'), 'add' => I18N::translate('Only add new records'), 'update' => I18N::translate('Only update existing records')]]) ?>
             </div>
         </div>
     </fieldset>

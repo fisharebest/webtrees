@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
@@ -58,7 +57,7 @@
         </label>
 
         <div class="col-sm-9">
-            <?= Bootstrap4::select(['' => I18N::translate('All')] + $tree_names, $tree->name(), ['id' => 'gedcom_id', 'name' => 'gedcom_id']) ?>
+            <?= view('components/select', ['name' => 'gedcom_id', 'selected' => $tree->name(), 'values' => $tree_names]) ?>
             <p class="small text-muted">
                 <?= /* I18N: FAQ = “Frequently Asked Question” */
                 I18N::translate('An FAQ can be displayed on just one of the family trees, or on all the family trees.') ?>

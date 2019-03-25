@@ -21,7 +21,6 @@ $hundred_years_ago = new Date($hundred_years_ago->format('Y'));
 
 $("#<?= e($table_id) ?>").dataTable({
     dom: '<"H"<"filtersH_<?= e($table_id) ?>"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_<?= e($table_id) ?>">>',
-    <?= I18N::datatablesI18N() ?>,
     autoWidth: false,
     processing: true,
     retrieve: true,
@@ -43,9 +42,7 @@ $("#<?= e($table_id) ?>").dataTable({
     ],
     sorting: [
         [1, "asc"]
-    ],
-    displayLength: 20,
-    pagingType: "full_numbers"
+    ]
 });
 
 $("#<?= e($table_id) ?>")
@@ -144,7 +141,9 @@ $marriageAgeData = [
 ?>
 
 <div class="fam-list">
-    <table id="<?= e($table_id) ?>">
+    <table id="<?= e($table_id) ?>"
+        <?= view('lists/datatables-attributes') ?>
+    >
         <thead>
             <tr>
                 <th colspan="14">

@@ -7,13 +7,14 @@
 
     <div class="form-group">
         <div class="form-row">
-            <div class="col-form-label col-sm-3">
+            <label class="col-form-label col-sm-3" for="provider-default">
                 <?= I18N::translate('Map provider') ?>
-            </div>
+            </label>
             <div class="col-sm-9">
-                <?= view('components/radio', ['id' => 'provider-default', 'name' => 'provider', 'value' => '', 'checked' => $provider === '', 'text' => 'Do not use maps']) ?>
-                <hr>
-                <?= view('components/radio', ['id' => 'provider-openstreetmap', 'name' => 'provider', 'value' => 'OpenStreetMap.Mapnik', 'checked' => $provider === 'OpenStreetMap.Mapnik', 'text' => 'OpenStreetMap']) ?>
+                <?= view('components/radios', ['name' => 'provider-default', 'selected' => $provider, 'options' => [
+                ''  => I18N::translate('Do not use maps'),
+                'i' => I18N::translate('OpenStreetMap™'),
+                ]]) ?>
                 <hr>
                 <!-- @TODO - other mapping providers (may need API keys, etc.) -->
             </div>

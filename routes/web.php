@@ -129,7 +129,6 @@ if (Auth::isAdmin()) {
         'GET:unused-media-thumbnail'          => 'MediaFileController@unusedMediaThumbnail',
         'GET:broadcast'                       => 'MessageController@broadcastPage',
         'POST:broadcast'                      => 'MessageController@broadcastAction',
-        'POST:select2-flag'                   => 'AutocompleteController@select2Flag',
     ];
 }
 

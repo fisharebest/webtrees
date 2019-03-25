@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <form action="<?= e(route('link-media-to-record')) ?>" id="wt-modal-form" method="POST">
@@ -13,7 +12,7 @@
             <label class="col-form-label" for="link">
                 <?= I18N::translate('Individual') ?>
             </label>
-            <?= FunctionsEdit::formControlIndividual($tree, null, ['id' => 'link', 'name' => 'link']) ?>
+            <?= view('components/select-individual', ['name' => 'link', 'tree' => $tree]) ?>
         </div>
     </div>
 

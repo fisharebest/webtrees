@@ -1786,6 +1786,7 @@ div.faq_body {
 
 /*-- Fan chart ---- */
 .fan_chart_menu {
+	background: #fff;
 	position: absolute;
 	display: none;
 	z-index: 100;

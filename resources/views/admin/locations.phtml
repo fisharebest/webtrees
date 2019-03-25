@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Tree; ?>
 <?php use Fisharebest\Webtrees\Webtrees; ?>
@@ -130,11 +129,7 @@
             <?= I18N::translate('Import all places from a family tree') ?>
         </label>
         <div class="col-sm-6">
-            <?= Bootstrap4::select(
-                Tree::getNameList(),
-                '',
-                ['id' => 'ged', 'name' => 'ged']
-            ) ?>
+            <?= view('components/select', ['name' => 'ged', 'selected' => '', 'values' => Tree::getNameList()]) ?>
         </div>
         <div class="col-sm-2">
             <button type="submit" class="btn btn-primary">

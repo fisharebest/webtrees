@@ -1,5 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
@@ -18,7 +16,7 @@
             <?= I18N::translate('Individual') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= FunctionsEdit::formControlIndividual($tree, $individual, ['id' => 'xref', 'name' => 'xref']) ?>
+            <?= view('components/select-individual', ['name' => 'xref', 'individual' => $individual, 'tree' => $tree]) ?>
         </div>
     </div>
 
@@ -37,8 +35,8 @@
                 <?= I18N::translate('Layout') ?>
             </legend>
             <div class="col-sm-9 wt-page-options-value">
-                <?= Bootstrap4::radioButtons('chart_style', $chart_styles, $chart_style, true) ?>
-                <?= Bootstrap4::checkbox(I18N::translate('Show cousins'), false, ['name' => 'show_cousins', 'disabled' => $chart_style !== 'booklet', 'checked' => $show_cousins]) ?>
+                <?= view('components/radios-inline', ['name' => 'chart_style', 'options' => $chart_styles, 'selected' => $chart_style]) ?>
+                <?= view('components/checkbox', ['label' => I18N::translate('Show cousins'), 'name' => 'show_cousins', 'disabled' => $chart_style !== 'booklet', 'checked' => $show_cousins]) ?>
             </div>
         </div>
     </fieldset>

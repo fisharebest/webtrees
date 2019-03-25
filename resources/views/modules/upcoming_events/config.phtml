@@ -1,5 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <div class="form-group row">
@@ -17,7 +15,7 @@
         <?= I18N::translate('Show only events of living individuals') ?>
     </label>
     <div class="col-sm-9">
-        <?= Bootstrap4::radioButtons('filter', FunctionsEdit::optionsNoYes(), $filter, true) ?>
+        <?= view('components/radios-inline', ['name' => 'filter', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $filter]) ?>
     </div>
 </div>
 
@@ -26,7 +24,7 @@
         <?= I18N::translate('Events') ?>
     </label>
     <div class="col-sm-9">
-        <?= Bootstrap4::multiSelect($all_events, $event_array, ['id' => 'events', 'name' => 'events[]', 'class' => 'select2']) ?>
+        <?= view('components/select', ['name' => 'events[]', 'id' => 'events', 'selected' => $event_array, 'values' => $all_events, 'class' => 'select2']) ?>
     </div>
 </div>
 
@@ -35,7 +33,7 @@
         <?= /* I18N: Label for a configuration option */ I18N::translate('Presentation style') ?>
     </label>
     <div class="col-sm-9">
-        <?= Bootstrap4::select($info_styles, $infoStyle, ['id' => 'infoStyle', 'name' => 'infoStyle']) ?>
+        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $info_styles, 'values' => $info_styles]) ?>
     </div>
 </div>
 
@@ -44,6 +42,6 @@
         <?= /* I18N: Label for a configuration option */ I18N::translate('Sort order') ?>
     </label>
     <div class="col-sm-9">
-        <?= Bootstrap4::select($sort_styles, $sortStyle, ['id' => 'sortStyle', 'name' => 'sortStyle']) ?>
+        <?= view('components/select', ['name' => 'sortStyle', 'selected' => $sortStyle, 'values' => $sort_styles]) ?>
     </div>
 </div>
