@@ -8,7 +8,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 return [
     'year' => ':count वर्ष',
     'y' => ':count वर्ष',
@@ -74,4 +73,5 @@ return [
     'list' => [', ', ' आणि '],
     'first_day_of_week' => 0,
     'day_of_first_week_of_year' => 1,
+    'weekend' => [0, 0],
 ];

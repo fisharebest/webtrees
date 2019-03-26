@@ -4,13 +4,50 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased][unreleased]
 
+## [0.18.4] - 2019-03-23
+
+### Changed
+
+ - Modified how URL normalization decodes certain characters in order to align with the JS library's output
+ - Disallowed unescaped `(` in parenthesized link title
+
+### Fixed
+
+ - Fixed two exponential backtracking issues
+
+## [0.18.3] - 2019-03-21
+
+This is a **security update** release.
+
+### Changed
+
+ - XML/HTML entities in attributes will no longer be preserved when rendering (#353)
+
+### Fixed
+
+ - Fix XSS vulnerability caused by improper preservation of entities when rendering (#353)
+
+### Deprecated
+
+ - Deprecated the `$preserveEntites` argument of `Xml::escape()` for removal in the next release (#353)
+
+## [0.18.2] - 2019-03-16
+
+### Fixed
+
+ - Fixed adjoining `Text` elements not being collapsed after delimiter processing
+
+### Deprecated
+
+ - Deprecated the `CommonmarkConverter::VERSION` constant for removal in 1.0.0
+
 ## [0.18.1] - 2018-12-29
 
 This is a **security update** release.
 
 ### Fixed
 
- - Fix XSS vulnerability caused by URL normalization not encoding newlines (#337)
+ - Fix XSS vulnerability caused by URL normalization not handling/encoding newlines properly (#337, CVE-2018-20583)
 
 ## [0.18.0] - 2018-09-18
 
@@ -665,7 +702,11 @@ An unused constant and static method were deprecated and will be removed in a fu
 ### Added
  - Initial commit (compatible with jgm/stmd:spec.txt @ 0275f34)
 
-[unreleased]: https://github.com/thephpleague/commonmark/compare/0.18.0...HEAD
+[unreleased]: https://github.com/thephpleague/commonmark/compare/0.18.4...HEAD
+[0.18.4]: https://github.com/thephpleague/commonmark/compare/0.18.3...0.18.4
+[0.18.3]: https://github.com/thephpleague/commonmark/compare/0.18.2...0.18.3
+[0.18.2]: https://github.com/thephpleague/commonmark/compare/0.18.1...0.18.2
+[0.18.1]: https://github.com/thephpleague/commonmark/compare/0.18.0...0.18.1
 [0.18.0]: https://github.com/thephpleague/commonmark/compare/0.17.5...0.18.0
 [0.17.5]: https://github.com/thephpleague/commonmark/compare/0.17.4...0.17.5
 [0.17.4]: https://github.com/thephpleague/commonmark/compare/0.17.3...0.17.4
