@@ -66,6 +66,7 @@
     "require-dev": {
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
+        "gettext/gettext": "~4.6",
         "league/flysystem-memory": "~1.0",
         "maximebf/debugbar": "~1.15",
         "php-coveralls/php-coveralls": "~2.1",
@@ -100,7 +101,11 @@
             "### PSALM",
             "@composer global require vimeo/psalm=*"
         ],
+        "webtrees:c": [
+            "Fisharebest\\Webtrees\\ComposerScripts::compileTranslations"
+        ],
         "webtrees:mo": [
+            "Fisharebest\\Webtrees\\ComposerScripts::compileTranslations",
             "for FILE in resources/lang/*/messages.po; do msgfmt --output=$(dirname $FILE)/$(basename $FILE .po).mo $FILE; done",
             "rm -Rf data/cache/language*"
         ],
