@@ -1235,17 +1235,17 @@
     },
     {
         "name": "league/commonmark",
-        "version": "0.18.4",
-        "version_normalized": "0.18.4.0",
+        "version": "0.18.5",
+        "version_normalized": "0.18.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/commonmark.git",
-            "reference": "93fa5e85c2e5e7f59ee2537449abc677096fb1c8"
+            "reference": "f94e18d68260f43a7d846279cad88405854b1306"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/93fa5e85c2e5e7f59ee2537449abc677096fb1c8",
-            "reference": "93fa5e85c2e5e7f59ee2537449abc677096fb1c8",
+            "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/f94e18d68260f43a7d846279cad88405854b1306",
+            "reference": "f94e18d68260f43a7d846279cad88405854b1306",
             "shasum": ""
         },
         "require": {
@@ -1268,7 +1268,7 @@
         "suggest": {
             "league/commonmark-extras": "Library of useful extensions including smart punctuation"
         },
-        "time": "2019-03-24T02:45:32+00:00",
+        "time": "2019-03-28T13:52:31+00:00",
         "bin": [
             "bin/commonmark"
         ],
@@ -2814,63 +2814,6 @@
         "keywords": [
             "compatibility",
             "mbstring",
-            "polyfill",
-            "portable",
-            "shim"
-        ]
-    },
-    {
-        "name": "symfony/polyfill-php71",
-        "version": "v1.11.0",
-        "version_normalized": "1.11.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/polyfill-php71.git",
-            "reference": "8fc094a6b4f646b3ecd2400069420ef82f23a93e"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-php71/zipball/8fc094a6b4f646b3ecd2400069420ef82f23a93e",
-            "reference": "8fc094a6b4f646b3ecd2400069420ef82f23a93e",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "time": "2019-02-06T07:57:58+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.11-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Polyfill\\Php71\\": ""
-            },
-            "files": [
-                "bootstrap.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Nicolas Grekas",
-                "email": "p@tchwork.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony polyfill backporting some PHP 7.1+ features to lower PHP versions",
-        "homepage": "https://symfony.com",
-        "keywords": [
-            "compatibility",
             "polyfill",
             "portable",
             "shim"
