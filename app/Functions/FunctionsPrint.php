@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Functions;
 
-use Fisharebest\Webtrees\Config;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
@@ -315,9 +314,6 @@ class FunctionsPrint
                     }
                 }
             }
-        } elseif (strpos($factrec, "\n2 PLAC ") === false && in_array($fact, Config::emptyFacts())) {
-            // There is no DATE.  If there is also no PLAC, then print "yes"
-            $html .= I18N::translate('yes');
         }
         // print gedcom ages
         foreach ([
