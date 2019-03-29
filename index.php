@@ -87,10 +87,6 @@ try {
 
     $database_config = parse_ini_file(Webtrees::CONFIG_FILE);
 
-    if ($database_config === false) {
-        throw new Exception('Invalid config file: ' . Webtrees::CONFIG_FILE);
-    }
-
     // Read the connection settings and create the database
     Database::connect($database_config);
 
