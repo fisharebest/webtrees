@@ -345,7 +345,7 @@ class FunctionsPrintFacts
         // Print any other "2 XXXX" attributes, in the order in which they appear.
         preg_match_all('/\n2 (' . Gedcom::REGEX_TAG . ') (.+)/', $fact->gedcom(), $matches, PREG_SET_ORDER);
         
-        //0 SOUR / 1 DATA / 2 EVEN / 3 DATE and 3 PLAC must be collected separately 
+        //0 SOUR / 1 DATA / 2 EVEN / 3 DATE and 3 PLAC must be collected separately
         preg_match_all('/\n2 EVEN .*((\n[3].*)*)/', $fact->gedcom(), $evenMatches, PREG_SET_ORDER);
         $currentEvenMatch = 0;
         
