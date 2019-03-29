@@ -37,6 +37,7 @@ use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Cache\ArrayStore;
 use Illuminate\Cache\Repository;
+use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -113,49 +114,33 @@ try {
     //                   |                                  |
     //                   +----------------------------------+
 
-    $middleware_stack = [
-        CheckForMaintenanceMode::class,
-        UseFilesystem::class,
-        UseSession::class,
-        UseTree::class,
-        UseLocale::class,
-        UseTheme::class,
+    // Create the middleware, from the "inside" to the "outside".
+    /** @var Collection $middleware_stack */
+    $middleware_stack = app(ModuleService::class)
+        ->findByInterface(MiddlewareInterface::class);
+
+    // Core middleware.
+    $middleware_stack = $middleware_stack->merge([
+        CheckCsrf::class,
+        UseTransaction::class,
+        Housekeeping::class,
+        DebugBarData::class,
         BootModules::class,
-    ];
-
-    if (class_exists(DebugBar::class)) {
-        $middleware_stack[] = DebugBarData::class;
-    }
-
-    if ($request->getMethod() === Request::METHOD_GET) {
-        $middleware_stack[] = Housekeeping::class;
-    }
-
-    if ($request->getMethod() === Request::METHOD_POST) {
-        $middleware_stack[] = UseTransaction::class;
-        $middleware_stack[] = CheckCsrf::class;
-    }
-
-    // Allow modules to provide middleware.
-    foreach (app(ModuleService::class)->findByInterface(MiddlewareInterface::class) as $middleware) {
-        $middleware_stack[] = $middleware;
-    }
-
-    // We build the pipeline from controller outwards, so process the last middleware first.
-
-    $middleware_stack = array_reverse($middleware_stack);
+        UseTheme::class,
+        UseLocale::class,
+        UseTree::class,
+        UseSession::class,
+        UseFilesystem::class,
+        CheckForMaintenanceMode::class,
+    ]);
 
     // Construct the core middleware *after* loading the modules, to reduce dependencies.
-
-    $middleware_stack = array_map(function ($middleware): MiddlewareInterface {
+    $middleware_stack = $middleware_stack->map(function ($middleware): MiddlewareInterface {
         return $middleware instanceof MiddlewareInterface ? $middleware : app($middleware);
-    }, $middleware_stack);
+    });
 
-    // Create a pipleline, which applies the middleware as a nested function call.
-    //
-    // Response = Middleware1(Middleware2(Controller::action(Request)))
-
-    $pipeline = array_reduce($middleware_stack, function (Closure $next, MiddlewareInterface $middleware): Closure {
+    // Create a pipeline, which applies the middleware as a nested function call.
+    $pipeline = $middleware_stack->reduce(function (Closure $next, MiddlewareInterface $middleware): Closure {
         // Create a closure to apply the middleware.
         return function (Request $request) use ($middleware, $next): Response {
             return $middleware->handle($request, $next);

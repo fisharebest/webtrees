@@ -36,18 +36,22 @@ class DebugBarData implements MiddlewareInterface
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // This timer gets stopped automatically when we generate the response.
-        DebugBar::startMeasure('controller_action');
-        $response = $next($request);
+        if (class_exists(DebugBar::class)) {
+            // This timer gets stopped automatically when we generate the response.
+            DebugBar::startMeasure('controller_action');
+            $response = $next($request);
 
-        if ($response instanceof RedirectResponse) {
-            // Show the debug data on the next page
-            DebugBar::stackData();
-        } elseif ($request->isXmlHttpRequest()) {
-            // Use HTTP headers and some jQuery to add debug to the current page.
-            DebugBar::sendDataInHeaders();
+            if ($response instanceof RedirectResponse) {
+                // Show the debug data on the next page
+                DebugBar::stackData();
+            } elseif ($request->isXmlHttpRequest()) {
+                // Use HTTP headers and some jQuery to add debug to the current page.
+                DebugBar::sendDataInHeaders();
+            }
+
+            return $response;
         }
 
-        return $response;
+        return $next($request);
     }
 }
