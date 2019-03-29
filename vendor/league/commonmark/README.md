@@ -104,6 +104,7 @@ Documentation can be found at [commonmark.thephpleague.com][docs].
 - [Sculpin](https://github.com/bcremer/sculpin-commonmark-bundle)
 - [Symfony 2 & 3](https://github.com/webuni/commonmark-bundle)
 - [Symfony 4](https://github.com/avensome/commonmark-bundle)
+- [Twig Markdown extension](https://github.com/twigphp/markdown-extension)
 - [Twig-based renderer](https://github.com/webuni/commonmark-twig-renderer)
 - [Twig filter and tag](https://github.com/aptoma/twig-markdown)
 
@@ -196,7 +197,7 @@ Also a huge thank you to [JetBrains](https://www.jetbrains.com/) for supporting 
 
 ## License ##
 
-**league/commonmark** is licensed under the BSD-3 license.  See the `LICENSE` file for more details.
+**league/commonmark** is licensed under the BSD-3 license.  See the [`LICENSE`](LICENSE) file for more details.
 
 ## Governance
 

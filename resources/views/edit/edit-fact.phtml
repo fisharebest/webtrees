@@ -1,5 +1,4 @@
 <?php use Fisharebest\Webtrees\Auth; ?>
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\Config; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\GedcomTag; ?>
@@ -15,38 +14,6 @@
     <?php
     $level1type = $edit_fact->getTag();
     switch ($record::RECORD_TYPE) {
-        case 'SOUR':
-            // SOUR:DATA facts may take a NOTE (but the SOUR record may not).
-            if ($level1type === 'DATA') {
-                echo view('cards/add-note', [
-                    'level' => 2,
-                    'tree' => $tree,
-                ]);
-                echo view('cards/add-shared-note', [
-                    'level' => 2,
-                    'tree' => $tree,
-                ]);
-            }
-            // SOUR:DATA facts may also take multiple EVEN.
-            if ($level1type === 'DATA') {
-                echo view('cards/add-sour-data-even', [
-                    'tree' => $tree,
-                ]);              
-            }
-            break;
-        case 'REPO':
-            // REPO:NAME facts may take a NOTE (but the REPO record may not).
-            if ($level1type === 'NAME') {
-                echo view('cards/add-note', [
-                    'level' => 2,
-                    'tree' => $tree,
-                ]);
-                echo view('cards/add-shared-note', [
-                    'level' => 2,
-                    'tree' => $tree,
-                ]);
-            }
-            break;
         case 'FAM':
         case 'INDI':
             // FAM and INDI records have real facts. They can take NOTE/SOUR/OBJE/etc.
@@ -109,7 +76,7 @@
             <?= I18N::translate('Last change') ?>
         </label>
         <div class="col-sm-9">
-            <?= Bootstrap4::checkbox(I18N::translate('Keep the existing “last change” information'), true, ['name' => 'keep_chan', 'checked' => (bool) $tree->getPreference('NO_UPDATE_CHAN')]) ?>
+            <?= view('components/checkbox-inline', ['label' => I18N::translate('Keep the existing “last change” information'), 'name' => 'keep_chan', 'checked' => (bool) $tree->getPreference('NO_UPDATE_CHAN')]) ?>
             <?= GedcomTag::getLabelValue('DATE', view('components/datetime', ['timestamp' => $record->lastChangeTimestamp()])) ?>
             <?= GedcomTag::getLabelValue('_WT_USER', e($record->lastChangeUser())) ?>
         </div>

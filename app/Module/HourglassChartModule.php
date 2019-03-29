@@ -117,7 +117,9 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         }
 
         $ajax_url = $this->chartUrl($individual, [
-            'ajax' => true,
+            'ajax'        => true,
+            'generations' => $generations,
+            'show_spouse' => $show_spouse,
         ]);
 
         return $this->viewResponse('modules/hourglass-chart/page', [
@@ -425,12 +427,12 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         if ($family === null) {
             // Prints empty table columns for children w/o parents up to the max generation
             // This allows vertical line spacing to be consistent
-            echo '<table><tr><td> ' . app(ModuleThemeInterface::class)->individualBoxEmpty() . '</td>';
+            echo '<table><tr><td><div class="wt-chart-box"></div></td>';
             echo '<td> ';
             // Recursively get the father’s family
             $this->printPersonPedigree($individual, $generation + 1, $generations, $show_spouse);
             echo '</td></tr>';
-            echo '<tr><td> ' . app(ModuleThemeInterface::class)->individualBoxEmpty() . '</td>';
+            echo '<tr><td><div class="wt-chart-box"></div></td>';
             echo '<td> ';
             // Recursively get the mother’s family
             $this->printPersonPedigree($individual, $generation + 1, $generations, $show_spouse);
@@ -459,9 +461,9 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
                 if ($generation < $genoffset - 1) {
                     echo '<table>';
                     for ($i = $generation; $i < ((2 ** (($genoffset - 1) - $generation)) / 2) + 2; $i++) {
-                        echo app(ModuleThemeInterface::class)->individualBoxEmpty();
+                        echo '<div class="wt-chart-box"></div>';
                         echo '</tr>';
-                        echo app(ModuleThemeInterface::class)->individualBoxEmpty();
+                        echo '<div class="wt-chart-box"></div>';
                         echo '</tr>';
                     }
                     echo '</table>';

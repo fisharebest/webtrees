@@ -53,7 +53,10 @@ class Individual extends GedcomRecord
             $individual = Individual::getInstance($row->i_id, Tree::findById((int) $row->i_file), $row->i_gedcom);
 
             if ($row->n_num ?? null) {
+                $individual = clone $individual;
                 $individual->setPrimaryName($row->n_num);
+
+                return $individual;
             }
 
             return $individual;
@@ -927,7 +930,7 @@ class Individual extends GedcomRecord
     public function primaryChildFamily(): ?Family
     {
         $families = $this->childFamilies();
-        switch (count($families)) {
+        switch ($families->count()) {
             case 0:
                 return null;
             case 1:

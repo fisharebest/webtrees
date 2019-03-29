@@ -29,7 +29,6 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Source;
@@ -54,10 +53,10 @@ class FunctionsPrint
     public static function printPedigreePerson(Individual $person = null): string
     {
         if ($person instanceof Individual) {
-            return app(ModuleThemeInterface::class)->individualBox($person);
+            return view('chart-box', ['individual' => $person]);
         }
 
-        return app(ModuleThemeInterface::class)->individualBoxEmpty();
+        return '<div class="wt-chart-box"></div>';
     }
 
     /**

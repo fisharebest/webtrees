@@ -1,0 +1,156 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Illuminate\Support\Collection;
+
+/**
+ * @var int        $block_id
+ * @var bool       $can_edit
+ * @var Collection $favorites
+ * @var string     $module_name
+ */
+?>
+
+<?php foreach ($favorites as $favorite) : ?>
+    <div class="person_box action_header<?= $favorite->record instanceof Individual ? $favorite->record->sex() : '' ?>">
+        <?php if ($favorite->favorite_type === 'URL') : ?>
+            <a href="<?= e($favorite->url) ?>"><b><?= e($favorite->title) ?></b></a>
+        <?php elseif ($favorite->record instanceof Individual) : ?>
+            <?= view('chart-box', ['individual' => $favorite->record]) ?>
+        <?php elseif ($favorite->record !== null) : ?>
+            <?= $favorite->record->formatList() ?>
+        <?php endif ?>
+
+        <div class="wt-favorites-block-note">
+            <?= e((string) $favorite->note) ?>
+        </div>
+    </div>
+
+    <?php if ($can_edit) : ?>
+        <form action="<?= e(route('module', ['module' => $module_name, 'action' => 'DeleteFavorite', 'ged' => $tree->name(), 'favorite_id' => $favorite->favorite_id])) ?>" method="post">
+            <?= csrf_field() ?>
+            <button type="submit" class="btn btn-link" data-confirm="<?= I18N::translate('Are you sure you want to remove this item from your list of favorites?') ?>" onclick="return confirm(this.dataset.confirm);">
+                <?= I18N::translate('Remove') ?>
+            </button>
+        </form>
+    <?php endif ?>
+<?php endforeach ?>
+
+<?php if ($can_edit) : ?>
+    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#favorite-form-<?= e($block_id) ?>">
+        <?= I18N::translate('Add a favorite') ?>
+    </button>
+
+    <div class="modal fade" id="favorite-form-<?= e($block_id) ?>" tabindex="-1" role="dialog" aria-labelledby="favorite-form-<?= e($block_id) ?>-label" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <form action="<?= e(route('module', ['module' => $module_name, 'action' => 'AddFavorite', 'ged' => $tree->name()])) ?>" method="post">
+                    <?= csrf_field() ?>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="favorite-form-<?= e($block_id) ?>-label">
+                            <?= I18N::translate('Add a favorite') ?>
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body row">
+                        <div class="col-sm-4 col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="type" value="indi" id="fav-indi-<?= e($block_id) ?>" checked>
+                                <label for="fav-indi-<?= e($block_id) ?>">
+                                    <?= I18N::translate('Individual') ?>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-md-9">
+                            <?= view('components/select-individual', ['name' => 'indi-xref', 'tree' => $tree]) ?>
+                        </div>
+
+                        <div class="col-sm-4 col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="type" value="fam" id="fav-fam-<?= e($block_id) ?>">
+                                <label for="fam-xref">
+                                    <?= I18N::translate('Family') ?>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-md-9">
+                            <?= view('components/select-family', ['name' => 'fam-xref', 'tree' => $tree]) ?>
+                        </div>
+
+                        <div class="col-sm-4 col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="type" value="obje" id="fav-obje-<?= e($block_id) ?>">
+                                <label for="fav-obje-<?= e($block_id) ?>">
+                                    <?= I18N::translate('Media object') ?>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-md-9">
+                            <?= view('components/select-media', ['name' => 'obje-xref', 'tree' => $tree]) ?>
+                        </div>
+
+                        <div class="col-sm-4 col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="type" value="sour" id="fav-sour-<?= e($block_id) ?>">
+                                <label for="fav-sour-<?= e($block_id) ?>">
+                                    <?= I18N::translate('Source') ?>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-md-9">
+                            <?= view('components/select-source', ['name' => 'sour-xref', 'tree' => $tree]) ?>
+                        </div>
+
+                        <div class="col-sm-4 col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="type" value="repo" id="fav-repo-<?= e($block_id) ?>">
+                                <label for="fav-repo-<?= e($block_id) ?>">
+                                    <?= I18N::translate('Repository') ?>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-md-9">
+                            <?= view('components/select-repository', ['name' => 'repo-xref', 'tree' => $tree]) ?>
+                        </div>
+
+                        <div class="col-sm-4 col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="type" value="url" id="fav-url-<?= e($block_id) ?>">
+                                <label for="fav-url-<?= e($block_id) ?>">
+                                    <?= I18N::translate('URL') ?>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-md-">
+                            <input type="text" name="url" id="url" size="20" value="" placeholder="<?= I18N::translate('URL') ?>">
+                            <input type="text" name="title" id="title" size="20" value="" placeholder="<?= I18N::translate('Title') ?>">
+                        </div>
+
+                        <div class="col-sm-4 col-md-3">
+                            <label for="fav-note-<?= e($block_id) ?>">
+                                <?= I18N::translate('Note') ?>
+                            </label>
+                        </div>
+                        <div class="col-sm-8 col-md-">
+                            <textarea name="note" id="fav-repo-<?= e($block_id) ?>" rows="3" class="form-control" placeholder="<?= I18N::translate('Enter an optional note about this favorite') ?>"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            <?= view('icons/cancel') ?>
+                            <?= I18N::translate('cancel') ?>
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <?= view('icons/save') ?>
+                            <?= I18N::translate('save') ?>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endif ?>

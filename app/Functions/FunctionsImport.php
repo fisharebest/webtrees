@@ -1060,8 +1060,8 @@ class FunctionsImport
                     'm_file'               => $tree->id(),
                     'multimedia_file_refn' => mb_substr($media_file->filename(), 0, 248),
                     'multimedia_format'    => mb_substr($media_file->format(), 0, 4),
-                    'source_media_type'    => mb_substr($media_file->type(), 15),
-                    'descriptive_title'    => mb_substr($media_file->title(), 248),
+                    'source_media_type'    => mb_substr($media_file->type(), 0, 15),
+                    'descriptive_title'    => mb_substr($media_file->title(), 0, 248),
                 ]);
             }
         }

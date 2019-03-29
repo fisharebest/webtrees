@@ -185,7 +185,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
                 $record = $this->getRecord($all_data[$xref], $tree);
                 if ($plugin->doesRecordNeedUpdate($record)) {
                     $new_gedcom = $plugin->updateRecord($record);
-                    $record->updateRecord($new_gedcom, !$plugin->chan);
+                    $record->updateRecord($new_gedcom, false);
                 }
 
                 $parameters['xref'] = $this->findNextXref($plugin, $xref, $all_data, $tree);
@@ -196,7 +196,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
                     $record = $this->getRecord($value, $tree);
                     if ($plugin->doesRecordNeedUpdate($record)) {
                         $new_gedcom = $plugin->updateRecord($record);
-                        $record->updateRecord($new_gedcom, !$plugin->chan);
+                        $record->updateRecord($new_gedcom, false);
                     }
                 }
                 $parameters['xref'] = '';
@@ -337,7 +337,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
     private function getPluginList(): array
     {
         $plugins = [];
-        $files   = glob(__DIR__ . '/BatchUpdate/BatchUpdate*Plugin.php');
+        $files   = glob(__DIR__ . '/BatchUpdate/BatchUpdate*Plugin.php', GLOB_NOSORT);
 
         foreach ($files as $file) {
             $base_class = basename($file, '.php');

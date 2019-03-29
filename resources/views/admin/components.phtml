@@ -1,6 +1,5 @@
 <?php
 
-use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
@@ -88,8 +87,7 @@ use Fisharebest\Webtrees\View;
                                                             <?= e($tree->title()) ?>
                                                         </td>
                                                         <td>
-                                                            <?= Bootstrap4::select(FunctionsEdit::optionsAccessLevels(), $module->accessLevel($tree, $interface), ['name' => 'access-' . $module->name() . '-' . $tree->id()]) ?>
-                                                        </td>
+                                                            <?= view('components/select', ['name' => 'access-' . $module->name() . '-' . $tree->id(), 'selected' => $module->accessLevel($tree, $interface), 'values' => FunctionsEdit::optionsAccessLevels()]) ?>
                                                     </tr>
                                                 <?php endforeach ?>
                                             </tbody>

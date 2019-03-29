@@ -431,7 +431,7 @@ class CalendarService
                 ->orWhere(function (Builder $query): void {
                     $query
                         ->where('d_mon', '=', 6)
-                        ->where(DB::raw('MOD(7 * d_year + 1, 19)'), '>=', 7);
+                        ->where(DB::raw('(7 * d_year + 1 % 19)'), '>=', 7);
                 });
         });
     }

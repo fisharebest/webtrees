@@ -18,20 +18,26 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Collator;
-use DomainException;
 use Exception;
 use Fisharebest\Localization\Locale;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Translation;
 use Fisharebest\Localization\Translator;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Module\ModuleCustomInterface;
+use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
+use Illuminate\Support\Collection;
 
 /**
  * Internationalization (i18n) and localization (l10n).
  */
 class I18N
 {
+    // MO files use special characters for plurals and context.
+    public const PLURAL  = '\x00';
+    public const CONTEXT = '\x04';
+
     /** @var LocaleInterface The current locale (e.g. LocaleEnGb) */
     private static $locale;
 
@@ -182,77 +188,27 @@ class I18N
         '’ ' => '‘',
     ];
 
-    // Default list of locales to show in the menu.
-    private const DEFAULT_LOCALES = [
-        'ar',
-        'bg',
-        'bs',
-        'ca',
-        'cs',
-        'da',
-        'de',
-        'el',
-        'en-GB',
-        'en-US',
-        'es',
-        'et',
-        'fi',
-        'fr',
-        'he',
-        'hr',
-        'hu',
-        'is',
-        'it',
-        'ka',
-        'kk',
-        'lt',
-        'mr',
-        'nb',
-        'nl',
-        'nn',
-        'pl',
-        'pt',
-        'ru',
-        'sk',
-        'sv',
-        'tr',
-        'uk',
-        'vi',
-        'zh-Hans',
-    ];
-
     /** @var string Punctuation used to separate list items, typically a comma */
     public static $list_separator;
 
     /**
-     * The prefered locales for this site, or a default list if no preference.
+     * The preferred locales for this site, or a default list if no preference.
      *
      * @return LocaleInterface[]
      */
     public static function activeLocales(): array
     {
-        $code_list = Site::getPreference('LANGUAGES');
+        $locales = app(ModuleService::class)
+            ->findByInterface(ModuleLanguageInterface::class, false, true)
+            ->map(function (ModuleLanguageInterface $module): LocaleInterface {
+                return $module->locale();
+            });
 
-        if ($code_list === '') {
-            $codes = self::DEFAULT_LOCALES;
-        } else {
-            $codes = explode(',', $code_list);
+        if ($locales->isEmpty()) {
+            return [new LocaleEnUs()];
         }
 
-        $locales = [];
-        foreach ($codes as $code) {
-            if (file_exists(WT_ROOT . 'resources/lang/' . $code . '/messages.mo')) {
-                try {
-                    $locales[] = Locale::create($code);
-                } catch (Exception $ex) {
-                    // No such locale exists?
-                }
-            }
-        }
-
-        usort($locales, '\Fisharebest\Localization\Locale::compare');
-
-        return $locales;
+        return $locales->all();
     }
 
     /**
@@ -283,48 +239,6 @@ class I18N
     {
         /* I18N: This is the format string for full dates. See http://php.net/date for codes */
         return self::$translator->translate('%j %F %Y');
-    }
-
-    /**
-     * Generate consistent I18N for datatables.js
-     *
-     * @param int[] $lengths An optional array of page lengths
-     *
-     * @return string
-     */
-    public static function datatablesI18N(array $lengths = [
-        10,
-        20,
-        30,
-        50,
-        100,
-        -1,
-    ]): string
-    {
-        $length_options = Bootstrap4::select(FunctionsEdit::numericOptions($lengths), '10');
-
-        return
-            '"formatNumber": function(n) { return String(n).replace(/[0-9]/g, function(w) { return ("' . self::$locale->digits('0123456789') . '")[+w]; }); },' .
-            '"language": {' .
-            ' "paginate": {' .
-            '  "first":    "' . self::translate('first') . '",' .
-            '  "last":     "' . self::translate('last') . '",' .
-            '  "next":     "' . self::translate('next') . '",' .
-            '  "previous": "' . self::translate('previous') . '"' .
-            ' },' .
-            ' "emptyTable":     "' . self::translate('No records to display') . '",' .
-            ' "info":           "' . /* I18N: %s are placeholders for numbers */
-            self::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_') . '",' .
-            ' "infoEmpty":      "' . self::translate('Showing %1$s to %2$s of %3$s', self::$locale->digits('0'), self::$locale->digits('0'), self::$locale->digits('0')) . '",' .
-            ' "infoFiltered":   "' . /* I18N: %s is a placeholder for a number */
-            self::translate('(filtered from %s total entries)', '_MAX_') . '",' .
-            ' "lengthMenu":     "' . /* I18N: %s is a number of records per page */
-            self::translate('Display %s', addslashes($length_options)) . '",' .
-            ' "loadingRecords": "' . self::translate('Loading…') . '",' .
-            ' "processing":     "' . self::translate('Loading…') . '",' .
-            ' "search":         "' . self::translate('Filter') . '",' .
-            ' "zeroRecords":    "' . self::translate('No records to display') . '"' .
-            '}';
     }
 
     /**
@@ -373,12 +287,13 @@ class I18N
     /**
      * Initialise the translation adapter with a locale setting.
      *
-     * @param string    $code Use this locale/language code, or choose one automatically
+     * @param string    $code  Use this locale/language code, or choose one automatically
      * @param Tree|null $tree
+     * @param bool      $setup During setup, we cannot access the database.
      *
      * @return string $string
      */
-    public static function init(string $code = '', Tree $tree = null): string
+    public static function init(string $code = '', Tree $tree = null, $setup = false): string
     {
         if ($code !== '') {
             // Create the specified locale
@@ -395,7 +310,16 @@ class I18N
 
             // Negotiate with the browser.
             // Search engines don't negotiate.  They get the default locale of the tree.
-            self::$locale = Locale::httpAcceptLanguage($_SERVER, self::installedLocales(), $default_locale);
+            if ($setup) {
+                $installed_locales = app(ModuleService::class)->setupLanguages()
+                    ->map(function (ModuleLanguageInterface $module): LocaleInterface {
+                        return $module->locale();
+                    });
+            } else {
+                $installed_locales = self::installedLocales();
+            }
+
+            self::$locale = Locale::httpAcceptLanguage($_SERVER, $installed_locales->all(), $default_locale);
         }
 
         $cache_dir  = WT_DATA_DIR . 'cache/';
@@ -437,6 +361,17 @@ class I18N
             $translations = include $cache_file;
         }
 
+        // Add translations from custom modules (but not during setup)
+        if (!$setup) {
+            $custom_modules = app(ModuleService::class)
+                ->findByInterface(ModuleCustomInterface::class);
+
+            foreach ($custom_modules as $custom_module) {
+                $custom_translations = $custom_module->customTranslations(self::$locale->languageTag());
+                $translations        = array_merge($translations, $custom_translations);
+            }
+        }
+
         // Create a translator
         self::$translator = new Translator($translations, self::$locale->pluralRule());
 
@@ -462,22 +397,16 @@ class I18N
     /**
      * All locales for which a translation file exists.
      *
+     * @return Collection
      * @return LocaleInterface[]
      */
-    public static function installedLocales(): array
+    public static function installedLocales(): Collection
     {
-        $locales = [];
-
-        foreach (glob(WT_ROOT . 'resources/lang/*/messages.mo') as $file) {
-            try {
-                $locales[] = Locale::create(basename(dirname($file)));
-            } catch (DomainException $ex) {
-                // Not a recognised locale
-            }
-        }
-        usort($locales, '\Fisharebest\Localization\Locale::compare');
-
-        return $locales;
+        return app(ModuleService::class)
+            ->findByInterface(ModuleLanguageInterface::class, true)
+            ->map(function (ModuleLanguageInterface $module): LocaleInterface {
+                return $module->locale();
+            });
     }
 
     /**
@@ -648,7 +577,7 @@ class I18N
      */
     public static function strtolower($string): string
     {
-        if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES)) {
+        if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES, true)) {
             $string = strtr($string, self::DOTLESS_I_TOLOWER);
         }
 
@@ -664,7 +593,7 @@ class I18N
      */
     public static function strtoupper($string): string
     {
-        if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES)) {
+        if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES, true)) {
             $string = strtr($string, self::DOTLESS_I_TOUPPER);
         }
 

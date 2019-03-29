@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
@@ -29,7 +28,7 @@
             <label for="type">
                 <?= I18N::translate('Type') ?>
             </label>
-            <?= Bootstrap4::select(['' => '', 'auth' => 'auth', 'config' => 'config', 'debug' => 'debug', 'edit' => 'edit', 'error' => 'error', 'media' => 'media', 'search' => 'search'], $type, ['id' => 'type', 'name' => 'type']) ?>
+            <?= view('components/select', ['name' => 'type', 'selected' => $type, 'values' => ['' => '', 'auth' => 'auth', 'config' => 'config', 'debug' => 'debug', 'edit' => 'edit', 'error' => 'error', 'media' => 'media', 'search' => 'search']]) ?>
         </div>
 
         <div class="form-group col-xs-6 col-sm-4">
@@ -52,14 +51,14 @@
             <label for="username">
                 <?= I18N::translate('User') ?>
             </label>
-            <?= Bootstrap4::select($user_options, $username, ['id' => 'username', 'name' => 'username']) ?>
+            <?= view('components/select', ['name' => 'username', 'selected' => $username, 'values' => $user_options]) ?>
         </div>
 
         <div class="form-group col-sm-4">
             <label for="gedc">
                 <?= I18N::translate('Family tree') ?>
             </label>
-            <?= Bootstrap4::select($tree_options, $gedc, ['id' => 'gedc', 'name' => 'gedc']) ?>
+            <?= view('components/select', ['name' => 'gedc', 'selected' => $gedc, 'values' => $tree_options]) ?>
         </div>
     </div>
 
@@ -82,7 +81,11 @@
 </form>
 
 <?php if ($action) : ?>
-    <table class="table table-bordered table-sm table-hover table-site-logs" data-ajax="<?= e(route('admin-site-logs-data', ['from' => $from, 'to' => $to, 'type' => $type, 'text' => $text, 'ip' => $ip, 'user' => $username, 'gedc' => $gedc])) ?>" data-server-side="true">
+    <table class="table table-bordered table-sm table-hover table-site-logs"
+        <?= view('lists/datatables-attributes') ?>
+        data-ajax="<?= e(route('admin-site-logs-data', ['from' => $from, 'to' => $to, 'type' => $type, 'text' => $text, 'ip' => $ip, 'user' => $username, 'gedc' => $gedc])) ?>"
+        data-server-side="true"
+    >
         <thead>
             <tr>
                 <th></th>
@@ -123,8 +126,7 @@
       /* IP address  */ { },
       /* User        */ { },
       /* Family tree */ { }
-    ],
-    <?= I18N::datatablesI18N([10, 20, 50, 100, 500, 1000, -1]) ?>
+    ]
   });
 </script>
 <?php View::endpush() ?>

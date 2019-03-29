@@ -20,10 +20,13 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Exception;
 use Fisharebest\Localization\Locale;
 use Fisharebest\Localization\Locale\LocaleEnUs;
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Services\MigrationService;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
@@ -33,8 +36,8 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
-use function random_bytes;
 use function ini_get;
+use function random_bytes;
 use const WT_DATA_DIR;
 
 /**
@@ -42,13 +45,8 @@ use const WT_DATA_DIR;
  */
 class SetupController extends AbstractBaseController
 {
-    /** @var string */
-    protected $layout = 'layouts/setup';
-
     private const DEFAULT_DBTYPE = 'mysql';
     private const DEFAULT_PREFIX = 'wt_';
-
-    // We need this information to complete the setup
     private const DEFAULT_DATA = [
         'lang'    => '',
         'dbtype'  => self::DEFAULT_DBTYPE,
@@ -64,6 +62,9 @@ class SetupController extends AbstractBaseController
         'wtemail' => '',
     ];
 
+    // We need this information to complete the setup
+    /** @var string */
+    protected $layout = 'layouts/setup';
     /** @var MigrationService */
     private $migration_service;
 
@@ -102,9 +103,9 @@ class SetupController extends AbstractBaseController
         $step = (int) $request->get('step', '1');
         $data = $this->userData($request);
 
-        $data['lang']         = I18N::init($request->get('lang', $data['lang']));
+        $data['lang']         = I18N::init($request->get('lang', $data['lang']), null, true);
         $data['cpu_limit']    = $this->maxExecutionTime();
-        $data['locales']      = I18N::installedLocales();
+        $data['locales']      = $this->setupLocales();
         $data['memory_limit'] = $this->memoryLimit();
 
         // Only show database errors after the user has chosen a driver.
@@ -112,8 +113,8 @@ class SetupController extends AbstractBaseController
             $data['errors']   = $this->server_check_service->serverErrors($data['dbtype']);
             $data['warnings'] = $this->server_check_service->serverWarnings($data['dbtype']);
         } else {
-            $data['errors']       = $this->server_check_service->serverErrors();
-            $data['warnings']     = $this->server_check_service->serverWarnings();
+            $data['errors']   = $this->server_check_service->serverErrors();
+            $data['warnings'] = $this->server_check_service->serverWarnings();
         }
 
         if (!$this->checkFolderIsWritable(WT_DATA_DIR)) {
@@ -144,6 +145,102 @@ class SetupController extends AbstractBaseController
     }
 
     /**
+     * @param Request $request
+     *
+     * @return mixed[]
+     */
+    private function userData(Request $request): array
+    {
+        $data = [];
+
+        foreach (self::DEFAULT_DATA as $key => $default) {
+            $data[$key] = $request->get($key, $default);
+        }
+
+        return $data;
+    }
+
+    /**
+     * The server's memory limit
+     *
+     * @return int
+     */
+    private function maxExecutionTime(): int
+    {
+        return (int) ini_get('max_execution_time');
+    }
+
+    /**
+     * Which languages are available during the installation.
+     *
+     * @return LocaleInterface[]
+     */
+    private function setupLocales(): array
+    {
+        return app(ModuleService::class)
+            ->setupLanguages()
+            ->map(function (ModuleLanguageInterface $module): LocaleInterface {
+                return $module->locale();
+            })
+            ->all();
+    }
+
+    /**
+     * The server's memory limit (in MB).
+     *
+     * @return int
+     */
+    private function memoryLimit(): int
+    {
+        $memory_limit = ini_get('memory_limit');
+
+        switch (substr($memory_limit, -1)) {
+            case 'k':
+            case 'K':
+                $memory_limit = substr($memory_limit, 0, -1) / 1024;
+                break;
+            case 'm':
+            case 'M':
+                $memory_limit = substr($memory_limit, 0, -1);
+                break;
+            case 'g':
+            case 'G':
+                $memory_limit = substr($memory_limit, 0, -1) * 1024;
+                break;
+            case 't':
+            case 'T':
+                $memory_limit = substr($memory_limit, 0, -1) * 1024 * 1024;
+                break;
+            default:
+                $memory_limit = $memory_limit / 1024 / 1024;
+        }
+
+        return (int) $memory_limit;
+    }
+
+    /**
+     * Check we can write to the data folder.
+     *
+     * @param string $data_dir
+     *
+     * @return bool
+     */
+    private function checkFolderIsWritable(string $data_dir): bool
+    {
+        $text1 = random_bytes(32);
+
+        try {
+            file_put_contents($data_dir . 'test.txt', $text1);
+            $text2 = file_get_contents(WT_DATA_DIR . 'test.txt');
+            unlink(WT_DATA_DIR . 'test.txt');
+        } catch (Exception $ex) {
+            return false;
+        }
+
+        return $text1 === $text2;
+    }
+
+    /**
      * @param mixed[] $data
      *
      * @return Response
@@ -151,7 +248,7 @@ class SetupController extends AbstractBaseController
     private function step1Language(array $data): Response
     {
         if ($data['lang'] === '') {
-            $data['lang'] = Locale::httpAcceptLanguage($_SERVER, I18N::installedLocales(), new LocaleEnUs())->languageTag();
+            $data['lang'] = Locale::httpAcceptLanguage($_SERVER, $data['locales'], new LocaleEnUs())->languageTag();
         }
 
         return $this->viewResponse('setup/step-1-language', $data);
@@ -215,6 +312,32 @@ class SetupController extends AbstractBaseController
     }
 
     /**
+     * Check we can write to the data folder.
+     *
+     * @param mixed $data
+     *
+     * @throws Exception
+     */
+    private function checkDatabase(array $data): void
+    {
+        // Try to create the SQLite database, if it does not already exist.
+        if ($data['dbtype'] === 'sqlite') {
+            touch(WT_ROOT . 'data/' . $data['dbname'] . '.sqlite');
+        }
+
+        // Try to create the MySQL database, if it does not already exist.
+        if ($data['dbtype'] === 'mysql') {
+            $tmp           = $data;
+            $tmp['dbname'] = '';
+            Database::connect($tmp);
+            Manager::connection()->statement('CREATE DATABASE IF NOT EXISTS `' . $data['dbname'] . '` COLLATE utf8_unicode_ci');
+        }
+
+        // Try to connect to the database.
+        Database::connect($data);
+    }
+
+    /**
      * @param mixed[] $data
      *
      * @return Response
@@ -261,54 +384,6 @@ class SetupController extends AbstractBaseController
     }
 
     /**
-     * Check we can write to the data folder.
-     *
-     * @param mixed $data
-     *
-     * @throws Exception
-     */
-    private function checkDatabase(array $data): void
-    {
-        // Try to create the SQLite database, if it does not already exist.
-        if ($data['dbtype'] === 'sqlite') {
-            touch(WT_ROOT . 'data/' . $data['dbname'] . '.sqlite');
-        }
-
-        // Try to create the MySQL database, if it does not already exist.
-        if ($data['dbtype'] === 'mysql') {
-            $tmp           = $data;
-            $tmp['dbname'] = '';
-            Database::connect($tmp);
-            Manager::connection()->statement('CREATE DATABASE IF NOT EXISTS `' . $data['dbname'] . '` COLLATE utf8_unicode_ci');
-        }
-
-        // Try to connect to the database.
-        Database::connect($data);
-    }
-
-    /**
-     * Check we can write to the data folder.
-     *
-     * @param string $data_dir
-     *
-     * @return bool
-     */
-    private function checkFolderIsWritable(string $data_dir): bool
-    {
-        $text1 = random_bytes(32);
-
-        try {
-            file_put_contents($data_dir . 'test.txt', $text1);
-            $text2 = file_get_contents(WT_DATA_DIR . 'test.txt');
-            unlink(WT_DATA_DIR . 'test.txt');
-        } catch (Exception $ex) {
-            return false;
-        }
-
-        return $text1 === $text2;
-    }
-
-    /**
      * @param string[] $data
      *
      * @return void
@@ -349,64 +424,5 @@ class SetupController extends AbstractBaseController
         // Login as the new user
         Session::start();
         Auth::login($admin);
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return mixed[]
-     */
-    private function userData(Request $request): array
-    {
-        $data = [];
-
-        foreach (self::DEFAULT_DATA as $key => $default) {
-            $data[$key] = $request->get($key, $default);
-        }
-
-        return $data;
-    }
-
-    /**
-     * The server's memory limit
-     *
-     * @return int
-     */
-    private function maxExecutionTime(): int
-    {
-        return (int) ini_get('max_execution_time');
-    }
-
-    /**
-     * The server's memory limit (in MB).
-     *
-     * @return int
-     */
-    private function memoryLimit(): int
-    {
-        $memory_limit = ini_get('memory_limit');
-
-        switch (substr($memory_limit, -1)) {
-            case 'k':
-            case 'K':
-                $memory_limit = substr($memory_limit, 0, -1) / 1024;
-                break;
-            case 'm':
-            case 'M':
-                $memory_limit = substr($memory_limit, 0, -1);
-                break;
-            case 'g':
-            case 'G':
-                $memory_limit = substr($memory_limit, 0, -1) * 1024;
-                break;
-            case 't':
-            case 'T':
-                $memory_limit = substr($memory_limit, 0, -1) * 1024 * 1024;
-                break;
-            default:
-                $memory_limit = $memory_limit / 1024 / 1024;
-        }
-
-        return (int) $memory_limit;
     }
 }

@@ -20,11 +20,12 @@ namespace Fisharebest\Webtrees\Module;
 /**
  * Class BingWebmasterToolsModule - add support for Bing webmaster tools
  */
-class BingWebmasterToolsModule extends AbstractModule implements ModuleAnalyticsInterface, ModuleConfigInterface, ModuleExternalUrlInterface
+class BingWebmasterToolsModule extends AbstractModule implements ModuleAnalyticsInterface, ModuleConfigInterface, ModuleExternalUrlInterface, ModuleGlobalInterface
 {
     use ModuleAnalyticsTrait;
     use ModuleConfigTrait;
     use ModuleExternalUrlTrait;
+    use ModuleGlobalTrait;
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -34,6 +35,16 @@ class BingWebmasterToolsModule extends AbstractModule implements ModuleAnalytics
     public function title(): string
     {
         return 'Bing™ webmaster tools';
+    }
+
+    /**
+     * Should this module be enabled when it is first installed?
+     *
+     * @return bool
+     */
+    public function isEnabledByDefault(): bool
+    {
+        return false;
     }
 
     /**
@@ -78,5 +89,20 @@ class BingWebmasterToolsModule extends AbstractModule implements ModuleAnalytics
     public function analyticsSnippet(array $parameters): string
     {
         return view('modules/bing-webmaster-tools/snippet', $parameters);
+    }
+
+    /**
+     * Raw content, to be added at the end of the <head> element.
+     * Typically, this will be <link> and <meta> elements.
+     *
+     * @return string
+     */
+    public function headContent(): string
+    {
+        if ($this->analyticsCanShow()) {
+            return $this->analyticsSnippet($this->analyticsParameters());
+        }
+
+        return '';
     }
 }

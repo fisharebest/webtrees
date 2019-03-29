@@ -1736,84 +1736,6 @@ div.faq_body {
 	padding: 2px 6px;
 }
 
-.dataTables_paginate {
-	float: left;
-	margin-bottom: 3px;
-}
-
-.dataTables_processing {
-	float: left;
-}
-
-.dataTables_filter {
-	float: right;
-	font-weight: normal;
-}
-
-.dataTables_info {
-	float: left;
-	font-weight: normal;
-	padding: 4px;
-}
-
-.dataTables_length {
-	float: right;
-	font-weight: normal;
-}
-
-.dataTables_length select,
-.dataTables_filter input {
-	font-size: 11px;
-	padding: 1px;
-}
-
-.dt-clear {
-	clear: both;
-}
-
-.DataTables_sort_wrapper {
-	position: relative;
-	margin: 0 20px;
-}
-
-.DataTables_sort_wrapper span {
-	left: 0;
-	margin-left: -20px;
-	margin-top: -8px;
-	position: absolute;
-	top: 50%;
-}
-
-.dataTables_wrapper {
-	margin-bottom: 10px;
-}
-
-/* ======= Sidebar setup ===== */
-#main {
-	min-width: 600px;
-	width: 100%;
-	display: table;
-	table-layout: fixed;
-}
-
-#indi_left {
-	display: table-cell;
-}
-
-#tabs {
-	background-color: #fff;
-	border-color: #ddd;
-	margin-left: 10px;
-	overflow: visible;
-}
-
-/* sidebar */
-#sidebar {
-	width: 20%;
-	display: table-cell;
-	vertical-align: top;
-}
-
 /* Sidebar - Family navigator */
 .wt-family-navigator-dropdown {
 	background: #edf7fd;
@@ -2152,6 +2074,7 @@ div.faq_body {
 
 /*-- Fan chart ---- */
 .fan_chart_menu {
+	background: #fff;
 	position: absolute;
 	display: none;
 	z-index: 100;

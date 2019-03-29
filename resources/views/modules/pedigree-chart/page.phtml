@@ -1,5 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <h2 class="wt-page-title">
@@ -17,7 +15,7 @@
             <?= I18N::translate('Individual') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= FunctionsEdit::formControlIndividual($tree, $individual, ['id' => 'xref', 'name' => 'xref']) ?>
+            <?= view('components/select-individual', ['name' => 'xref', 'individual' => $individual, 'tree' => $tree]) ?>
         </div>
     </div>
 
@@ -26,7 +24,7 @@
             <?= I18N::translate('Generations') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= Bootstrap4::select($generation_options, $generations, ['id' => 'generations', 'name' => 'generations']) ?>
+            <?= view('components/select', ['name' => 'generations', 'selected' => $generations, 'values' => $generation_options]) ?>
         </div>
     </div>
 
@@ -35,10 +33,7 @@
             <?= I18N::translate('Layout') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/radio-inline', ['name' => 'orientation', 'value' => 'left', 'checked' => $orientation === 'left', 'text' => view('icons/pedigree-left') . I18N::translate('left')]) ?>
-            <?= view('components/radio-inline', ['name' => 'orientation', 'value' => 'right', 'checked' => $orientation === 'right', 'text' => view('icons/pedigree-right') . I18N::translate('right')]) ?>
-            <?= view('components/radio-inline', ['name' => 'orientation', 'value' => 'up', 'checked' => $orientation === 'up', 'text' => view('icons/pedigree-up') . I18N::translate('up')]) ?>
-            <?= view('components/radio-inline', ['name' => 'orientation', 'value' => 'down', 'checked' => $orientation === 'down', 'text' => view('icons/pedigree-down') . I18N::translate('down')]) ?>
+            <?= view('components/radios-inline', ['name' => 'orientation', 'options' => ['left' => view('icons/pedigree-left') . I18N::translate('left'), 'right' => view('icons/pedigree-right') . I18N::translate('right'), 'up' => view('icons/pedigree-up') . I18N::translate('up'), 'down' => view('icons/pedigree-down') . I18N::translate('down'), ], 'selected' => $orientation]) ?>
         </div>
     </div>
 

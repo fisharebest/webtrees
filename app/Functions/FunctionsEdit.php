@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Census\Census;
 use Fisharebest\Webtrees\Config;
 use Fisharebest\Webtrees\Date;
@@ -41,7 +40,6 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module\CensusAssistantModule;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
-use Fisharebest\Webtrees\Select2;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Source;
@@ -218,7 +216,7 @@ class FunctionsEdit
     }
 
     /**
-     * A list of GEDCOM restrictions (e.g. for an edit control).
+     * A list of GEDCOM restrictions for inline data.
      *
      * @param bool $include_empty
      *
@@ -228,7 +226,6 @@ class FunctionsEdit
     {
         $options = [
             'none'         => I18N::translate('Show to visitors'),
-            // Not valid GEDCOM, but very useful
             'privacy'      => I18N::translate('Show to members'),
             'confidential' => I18N::translate('Show to managers'),
             'locked'       => I18N::translate('Only managers can edit'),
@@ -237,6 +234,25 @@ class FunctionsEdit
         if ($include_empty) {
             $options = ['' => ''] + $options;
         }
+
+        return $options;
+    }
+
+    /**
+     * A list of GEDCOM restrictions for privacy rules.
+     *
+     * @param bool $include_empty
+     *
+     * @return string[]
+     */
+    public static function optionsRestrictionsRule(): array
+    {
+        $options = [
+            'none'         => I18N::translate('Show to visitors'),
+            'privacy'      => I18N::translate('Show to members'),
+            'confidential' => I18N::translate('Show to managers'),
+            'hidden'       => I18N::translate('Hide from everyone'),
+        ];
 
         return $options;
     }
@@ -265,181 +281,6 @@ class FunctionsEdit
         }
 
         return $options;
-    }
-
-    /**
-     * Create a form control to select a family.
-     *
-     * @param Tree        $tree
-     * @param Family|null $family
-     * @param mixed[]     $attributes
-     *
-     * @return string
-     */
-    public static function formControlFamily(Tree $tree, Family $family = null, array $attributes = []): string
-    {
-        $value   = '';
-        $options = ['' => ''];
-
-        if ($family !== null) {
-            $value   = $family->xref();
-            $options = [$value => view('selects/family', ['family' => $family])];
-        }
-
-        return Bootstrap4::select($options, $value, Select2::familyConfig($tree) + $attributes);
-    }
-
-    /**
-     * Create a form control to select a flag.
-     *
-     * @param string  $flag
-     * @param mixed[] $attributes
-     *
-     * @return string
-     */
-    public static function formControlFlag($flag, array $attributes = []): string
-    {
-        $value   = '';
-        $options = ['' => ''];
-
-        if ($flag !== '') {
-            $value   = $flag;
-            $options = [$value => Select2::flagValue($flag)];
-        }
-
-        return Bootstrap4::select($options, $value, Select2::flagConfig() + $attributes);
-    }
-
-    /**
-     * Create a form control to select an individual.
-     *
-     * @param Tree            $tree
-     * @param Individual|null $individual
-     * @param mixed[]         $attributes
-     *
-     * @return string
-     */
-    public static function formControlIndividual(Tree $tree, Individual $individual = null, array $attributes = []): string
-    {
-        $value   = '';
-        $options = ['' => ''];
-
-        if ($individual !== null) {
-            $value   = $individual->xref();
-            $options = [$value => view('selects/individual', ['individual' => $individual])];
-        }
-
-        return Bootstrap4::select($options, $value, Select2::individualConfig($tree) + $attributes);
-    }
-
-    /**
-     * Create a form control to select a media object.
-     *
-     * @param Tree       $tree
-     * @param Media|null $media
-     * @param mixed[]    $attributes
-     *
-     * @return string
-     */
-    public static function formControlMediaObject(Tree $tree, Media $media = null, array $attributes = []): string
-    {
-        $value   = '';
-        $options = ['' => ''];
-
-        if ($media !== null) {
-            $value   = $media->xref();
-            $options = [$value => view('selects/media', ['media' => $media])];
-        }
-
-        return Bootstrap4::select($options, $value, Select2::mediaObjectConfig($tree) + $attributes);
-    }
-
-    /**
-     * Create a form control to select a note.
-     *
-     * @param Tree      $tree
-     * @param Note|null $note
-     * @param mixed[]   $attributes
-     *
-     * @return string
-     */
-    public static function formControlNote(Tree $tree, Note $note = null, array $attributes = []): string
-    {
-        $value   = '';
-        $options = ['' => ''];
-
-        if ($note !== null) {
-            $value   = $note->xref();
-            $options = [$value => view('selects/note', ['note' => $note])];
-        }
-
-        return Bootstrap4::select($options, $value, Select2::noteConfig($tree) + $attributes);
-    }
-
-    /**
-     * Create a form control to select a repository.
-     *
-     * @param Tree            $tree
-     * @param Repository|null $repository
-     * @param mixed[]         $attributes
-     *
-     * @return string
-     */
-    public static function formControlRepository(Tree $tree, Repository $repository = null, array $attributes = []): string
-    {
-        $value   = '';
-        $options = ['' => ''];
-
-        if ($repository !== null) {
-            $value   = $repository->xref();
-            $options = [$value => view('selects/repository', ['repository' => $repository])];
-        }
-
-        return Bootstrap4::select($options, $value, Select2::repositoryConfig($tree) + $attributes);
-    }
-
-    /**
-     * Create a form control to select a source.
-     *
-     * @param Tree        $tree
-     * @param Source|null $source
-     * @param mixed[]     $attributes
-     *
-     * @return string
-     */
-    public static function formControlSource(Tree $tree, Source $source = null, array $attributes = []): string
-    {
-        $value   = '';
-        $options = ['' => ''];
-
-        if ($source !== null) {
-            $value   = $source->xref();
-            $options = [$value => view('selects/source', ['source' => $source])];
-        }
-
-        return Bootstrap4::select($options, $value, Select2::sourceConfig($tree) + $attributes);
-    }
-
-    /**
-     * Create a form control to select a submitter.
-     *
-     * @param Tree              $tree
-     * @param GedcomRecord|null $submitter
-     * @param mixed[]           $attributes
-     *
-     * @return string
-     */
-    public static function formControlSubmitter(Tree $tree, GedcomRecord $submitter = null, array $attributes = []): string
-    {
-        $value   = '';
-        $options = ['' => ''];
-
-        if ($submitter !== null) {
-            $value   = $submitter->xref();
-            $options = [$value => view('selects/submitter', ['submitter' => $submitter])];
-        }
-
-        return Bootstrap4::select($options, $value, Select2::submitterConfig($tree) + $attributes);
     }
 
     /**
@@ -596,22 +437,11 @@ class FunctionsEdit
         } elseif ($fact === 'SURN' || $fact === '_MARNM_SURN') {
             $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" data-autocomplete-type="SURN" oninput="updatewholename()">';
         } elseif ($fact === 'ADOP') {
-            $html .= Bootstrap4::select(GedcomCodeAdop::getValues(), $value, [
-                'id'   => $id,
-                'name' => $name,
-            ]);
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'values' => GedcomCodeAdop::getValues()]);
         } elseif ($fact === 'ALIA') {
-            $html .= self::formControlIndividual($tree, Individual::getInstance($value, $tree), [
-                'id'   => $id,
-                'name' => $name,
-            ]);
+            $html .= view('components/select-individual', ['id' => $id, 'name' => $name, 'individual' => Individual::getInstance($value, $tree), 'tree' => $tree]);
         } elseif ($fact === 'ASSO' || $fact === '_ASSO') {
-            // @TODO we no longer have/user createNewRecord()
-            $html .=
-                self::formControlIndividual($tree, Individual::getInstance($value, $tree), [
-                    'id'   => $id,
-                    'name' => $name,
-                ]);
+            $html .= view('components/select-individual', ['id' => $id, 'name' => $name, 'individual' => Individual::getInstance($value, $tree), 'tree' => $tree]);
             if ($level === '1') {
                 $html .= '<p class="small text-muted">' . I18N::translate('An associate is another individual who was involved with this individual, such as a friend or an employer.') . '</p>';
             } else {
@@ -637,11 +467,8 @@ class FunctionsEdit
         } elseif ($fact === 'FAMC') {
             $html .=
                 '<div class="input-group">' .
-                '<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modal-create-family" data-element-id="' . $id . '" title="' . I18N::translate('Create a family') . '">' . view('icons/add') . '</button></span>' .
-                self::formControlFamily($tree, Family::getInstance($value, $tree), [
-                    'id'   => $id,
-                    'name' => $name,
-                ]) .
+                '<div class="input-group-prepend"><button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modal-create-family" data-element-id="' . $id . '" title="' . I18N::translate('Create a family') . '">' . view('icons/add') . '</button></div>' .
+                view('components/select-family', ['id' => $id, 'name' => $name, 'family' => Family::getInstance($value, $tree), 'tree' => $tree]) .
                 '</div>';
         } elseif ($fact === 'LATI') {
             $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" oninput="valid_lati_long(this, \'N\', \'S\')">';
@@ -650,24 +477,18 @@ class FunctionsEdit
         } elseif ($fact === 'NOTE' && $islink) {
             $html .=
                 '<div class="input-group">' .
-                '<span class="input-group-btn">' .
+                '<div class="input-group-prepend">' .
                 '<button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#wt-ajax-modal" data-href="' . e(route('create-note-object', ['ged' => $tree->name()])) . '" data-select-id="' . $id . '" title="' . I18N::translate('Create a shared note') . '">' .
                 '' . view('icons/add') . '<' .
                 '/button>' .
-                '</span>' .
-                self::formControlNote($tree, Note::getInstance($value, $tree), [
-                    'id'   => $id,
-                    'name' => $name,
-                ]) .
+                '</div>' .
+                view('components/select-note', ['id' => $id, 'name' => $name, 'note' => Note::getInstance($value, $tree), 'tree' => $tree]) .
                 '</div>';
         } elseif ($fact === 'OBJE') {
             $html .=
                 '<div class="input-group">' .
-                '<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-media-object', ['ged' => $tree->name()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a media object') . '">' . view('icons/add') . '</button></span>' .
-                self::formControlMediaObject($tree, Media::getInstance($value, $tree), [
-                    'id'   => $id,
-                    'name' => $name,
-                ]) .
+                '<div class="input-group-prepend"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-media-object', ['ged' => $tree->name()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a media object') . '">' . view('icons/add') . '</button></div>' .
+                view('components/select-media', ['id' => $id, 'name' => $name, 'media' => Media::getInstance($value, $tree), 'tree' => $tree]) .
                 '</div>';
         } elseif ($fact === 'PAGE') {
             $html .= '<input ' . Html::attributes([
@@ -684,10 +505,7 @@ class FunctionsEdit
                     'data-autocomplete-extra' => '#' . $previous_ids['SOUR'],
                 ]) . '>';
         } elseif ($fact === 'PEDI') {
-            $html .= Bootstrap4::select(GedcomCodePedi::getValues(), $value, [
-                'id'   => $id,
-                'name' => $name,
-            ]);
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'values' => GedcomCodePedi::getValues()]);
         } elseif ($fact === 'PLAC') {
             $html .= '<div class="input-group">';
             $html .= '<input ' . Html::attributes([
@@ -708,30 +526,18 @@ class FunctionsEdit
             $html .= view('edit/input-addon-help', ['fact' => 'PLAC']);
             $html .= '</div>';
         } elseif ($fact === 'QUAY') {
-            $html .= Bootstrap4::select(GedcomCodeQuay::getValues(), $value, [
-                'id'   => $id,
-                'name' => $name,
-            ]);
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'values' => GedcomCodeQuay::getValues()]);
         } elseif ($fact === 'RELA') {
-            $html .= Bootstrap4::select(self::optionsRelationships($value), $value, [
-                'id'   => $id,
-                'name' => $name,
-            ]);
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'values' => self::optionsRelationships($value)]);
         } elseif ($fact === 'REPO') {
             $html .=
                 '<div class="input-group">' .
-                '<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-repository', ['ged' => $tree->name()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a repository') . '">' . view('icons/add') . '</button></span>' .
-                self::formControlRepository($tree, Repository::getInstance($value, $tree), [
-                    'id'   => $id,
-                    'name' => $name,
-                ]) .
+                '<div class="input-group-prepend"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-repository', ['ged' => $tree->name()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a repository') . '">' . view('icons/add') . '</button></div>' .
+                view('components/select-repository', ['id' => $id, 'name' => $name, 'repository' => Repository::getInstance($value, $tree), 'tree' => $tree]) .
                 '</div>';
         } elseif ($fact === 'RESN') {
             $html .= '<div class="input-group">';
-            $html .= Bootstrap4::select(self::optionsRestrictions(true), $value, [
-                'id'   => $id,
-                'name' => $name,
-            ]);
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'values' => self::optionsRestrictions(true)]);
             $html .= view('edit/input-addon-help', ['fact' => 'RESN']);
             $html .= '</span>';
             $html .= '</div>';
@@ -739,54 +545,34 @@ class FunctionsEdit
             if ($value !== 'M' && $value !== 'F') {
                 $value = 'U';
             }
-            $html .= Bootstrap4::radioButtons($name, [
-                'M' => I18N::translate('Male'),
-                'F' => I18N::translate('Female'),
-                'U' => I18N::translateContext('unknown gender', 'Unknown'),
-            ], $value, true);
+            $html .= view('components/radios-inline', ['name' => $name, 'options' => ['M' => I18N::translate('Male'), 'F' => I18N::translate('Female'), 'U' => I18N::translateContext('unknown gender', 'Unknown')], 'selected' => $value]);
         } elseif ($fact === 'SOUR') {
             $html .=
                 '<div class="input-group">' .
-                '<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-source', ['ged' => $tree->name()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a source') . '">' . view('icons/add') . '</button></span>' .
-                self::formControlSource($tree, Source::getInstance($value, $tree), [
-                    'id'   => $id,
-                    'name' => $name,
-                ]) .
+                '<div class="input-group-prepend"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-source', ['ged' => $tree->name()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a source') . '">' . view('icons/add') . '</button></div>' .
+                view('components/select-source', ['id' => $id, 'name' => $name, 'source' => Source::getInstance($value, $tree), 'tree' => $tree]) .
                 '</div>';
         } elseif ($fact === 'STAT') {
-            $html .= Bootstrap4::select(GedcomCodeStat::statusNames($upperlevel), $value);
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'values' => GedcomCodeStat::statusNames($upperlevel)]);
         } elseif ($fact === 'SUBM') {
             $html .=
                 '<div class="input-group">' .
-                '<span class="input-group-btn"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-submitter', ['ged' => $tree->name()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a submitter') . '">' . view('icons/add') . '</button></span>' .
-                self::formControlSubmitter($tree, GedcomRecord::getInstance($value, $tree), [
-                    'id'   => $id,
-                    'name' => $name,
-                ]) .
+                '<div class="input-group-prepend"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-submitter', ['ged' => $tree->name()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a submitter') . '">' . view('icons/add') . '</button></div>' .
+                view('components/select-submitter', ['id' => $id, 'name' => $name, 'submitter' => GedcomRecord::getInstance($value, $tree), 'tree' => $tree]) .
                 '</div>';
         } elseif ($fact === 'TEMP') {
-            $html .= Bootstrap4::select(self::optionsTemples(), $value, [
-                'id'   => $id,
-                'name' => $name,
-            ]);
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'values' => self::optionsTemples()]);
         } elseif ($fact === 'TIME') {
             /* I18N: Examples of valid time formats (hours:minutes:seconds) */
             $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . I18N::translate('hh:mm or hh:mm:ss') . '">';
         } elseif ($fact === '_WT_USER') {
-            $html .= Bootstrap4::select(self::optionsUsers(), $value, [
-                'id'   => $id,
-                'name' => $name,
-            ]);
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'values' => self::optionsUsers()]);
         } elseif ($fact === '_PRIM') {
-            $html .= Bootstrap4::select([
-                ''  => '',
-                'Y' => I18N::translate('always'),
-                'N' => I18N::translate('never'),
-            ], $value, [
-                'id'   => $id,
-                'name' => $name,
-            ]);
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'values' => ['' => '', 'Y' => I18N::translate('always'), 'N' => I18N::translate('never')]]);
             $html .= '<p class="small text-muted">' . I18N::translate('Use this image for charts and on the individual’s page.') . '</p>';
+        } elseif ($fact === 'TYPE' && $level === '0') {
+            // Level 0 TYPE fields are only used for NAME records
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'values' => GedcomCodeName::getValues()]);
         } elseif ($fact === 'TYPE' && $level === '3') {
             //-- Build the selector for the Media 'TYPE' Fact
             $html          .= '<select name="text[]"><option selected value="" ></option>';
@@ -837,14 +623,6 @@ class FunctionsEdit
                 $html .= '>' . GedcomTag::getLabel('MARR_' . strtoupper($key)) . '</option>';
             }
             $html .= '</select>';
-        } elseif ($fact === 'TYPE' && $level === '0') {
-            // NAME TYPE : hide text field and show a selection list
-            $html .= Bootstrap4::select(GedcomCodeName::getValues(), $value, [
-                'id'      => $id,
-                'name'    => $name,
-                'oninput' => 'document.getElementById(\'' . $id . '\').value=this.value"',
-            ]);
-            $html .= '<script>document.getElementById("' . $id . '").style.display="none";</script>';
         }
 
         $html .= '</div></div>';

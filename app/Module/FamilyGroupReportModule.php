@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -61,10 +62,14 @@ class FamilyGroupReportModule extends AbstractModule implements ModuleReportInte
      */
     public function getReportMenu(Individual $individual): Menu
     {
+        $family = $individual->spouseFamilies()->first() ?? $individual->childFamilies();
+        $xref   = $family instanceof Family ? $family->xref() : '';
+
         return new Menu(
             $this->title(),
             route('report-setup', [
                 'ged'    => $individual->tree()->name(),
+                'xref'   => $xref,
                 'report' => $this->name(),
             ]),
             'menu-report-' . $this->name(),

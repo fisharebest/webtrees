@@ -192,7 +192,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
             '<div class="row form-group">' .
             '<label class="col-sm-3 col-form-label">' . I18N::translate('Surname option') . '</label>' .
             '<div class="col-sm-9">' .
-            '<select class="form-control" name="surname" onchange="this.form.submit();">' .
+            '<select class="form-control" name="surname">' .
             '<option value="replace" ' .
             ($this->surname == 'replace' ? 'selected' : '') .
             '">' . I18N::translate('Wife’s surname replaced by husband’s surname') . '</option><option value="add" ' .

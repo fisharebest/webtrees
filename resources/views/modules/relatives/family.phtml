@@ -4,7 +4,6 @@
 <?php use Fisharebest\Webtrees\GedcomTag; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Individual; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleThemeInterface; ?>
 
 <table class="table table-sm wt-facts-table">
     <caption>
@@ -32,7 +31,7 @@
                         <?= Functions::getCloseRelationshipName($individual, $person) ?>
                     </th>
                     <td class="border-0 p-0">
-                        <?= app(ModuleThemeInterface::class)->individualBoxLarge($person) ?>
+                        <?= view('chart-box', ['individual' => $person]) ?>
                     </td>
                 </tr>
                 <?php
@@ -70,7 +69,7 @@
                         <?= Functions::getCloseRelationshipName($individual, $person) ?>
                     </th>
                     <td class="border-0 p-0">
-                        <?= app(ModuleThemeInterface::class)->individualBoxLarge($person) ?>
+                        <?= view('chart-box', ['individual' => $person]) ?>
                     </td>
                 </tr>
                 <?php
@@ -179,7 +178,7 @@
                         <?= Functions::getCloseRelationshipName($individual, $person) ?>
                     </th>
                     <td class="border-0 p-0">
-                        <?= app(ModuleThemeInterface::class)->individualBoxLarge($person) ?>
+                        <?= view('chart-box', ['individual' => $person]) ?>
                     </td>
                 </tr>
                 <?php

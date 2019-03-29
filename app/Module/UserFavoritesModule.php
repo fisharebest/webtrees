@@ -19,10 +19,16 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Str;
 use stdClass;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -68,15 +74,17 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
-        $content = view('modules/user_favorites/favorites', [
-            'block_id'  => $block_id,
-            'favorites' => $this->getFavorites($tree, Auth::user()),
-            'tree'      => $tree,
+        $content = view('modules/favorites/favorites', [
+            'block_id'    => $block_id,
+            'can_edit'    => true,
+            'favorites'   => $this->getFavorites($tree, Auth::user()),
+            'module_name' => $this->name(),
+            'tree'        => $tree,
         ]);
 
         if ($ctype !== '') {
             return view('modules/block-template', [
-                'block'      => str_replace('_', '-', $this->name()),
+                'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => '',
                 'title'      => $this->title(),
@@ -178,20 +186,20 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postAddFavoriteAction(Request $request, Tree $tree, UserInterface $user): RedirectResponse
     {
-        $note         = $request->get('note', '');
-        $title        = $request->get('title', '');
-        $url          = $request->get('url', '');
-        $xref         = $request->get('xref', '');
-        $fav_category = $request->get('fav_category', '');
+        $note  = $request->get('note', '');
+        $title = $request->get('title', '');
+        $url   = $request->get('url', '');
+        $type  = $request->get('type', '');
+        $xref  = $request->get($type . '-xref', '');
 
-        $record = GedcomRecord::getInstance($xref, $tree);
+        $record = $this->getRecordForType($type, $xref, $tree);
 
         if (Auth::check()) {
-            if ($fav_category === 'url' && $url !== '') {
+            if ($type === 'url' && $url !== '') {
                 $this->addUrlFavorite($tree, $user, $url, $title ?: $url, $note);
             }
 
-            if ($fav_category === 'record' && $record instanceof GedcomRecord && $record->canShow()) {
+            if ($record instanceof GedcomRecord && $record->canShow()) {
                 $this->addRecordFavorite($tree, $user, $record, $note);
             }
         }
@@ -212,10 +220,12 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
     {
         $favorite_id = (int) $request->get('favorite_id');
 
-        DB::table('favorite')
-            ->where('favorite_id', '=', $favorite_id)
-            ->where('user_id', '=', $user->id())
-            ->delete();
+        if (Auth::check()) {
+            DB::table('favorite')
+                ->where('favorite_id', '=', $favorite_id)
+                ->where('user_id', '=', $user->id())
+                ->delete();
+        }
 
         $url = route('user-page', ['ged' => $tree->name()]);
 
@@ -262,5 +272,35 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
             'favorite_type' => $record::RECORD_TYPE,
             'note'          => $note,
         ]);
+    }
+
+    /**
+     * @param string $type
+     * @param string $xref
+     * @param Tree   $tree
+     *
+     * @return GedcomRecord|null
+     */
+    private function getRecordForType(string $type, string $xref, Tree $tree): ?GedcomRecord
+    {
+        switch ($type) {
+            case 'indi':
+                return Individual::getInstance($xref, $tree);
+
+            case 'fam':
+                return Family::getInstance($xref, $tree);
+
+            case 'sour':
+                return Source::getInstance($xref, $tree);
+
+            case 'repo':
+                return Repository::getInstance($xref, $tree);
+
+            case 'obje':
+                return Media::getInstance($xref, $tree);
+
+            default:
+                return null;
+        }
     }
 }

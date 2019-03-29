@@ -40,7 +40,7 @@
 <?php endif ?>
 
 <p>
-    <a href="<?= e(route('module', ['module' => 'user_blog', 'action' => 'EditJournal', 'ged' => $tree->name()])) ?>">
-        <?= I18N::translate('Add a news article') ?>
+    <a class="btn btn-link" href="<?= e(route('module', ['module' => 'user_blog', 'action' => 'EditJournal', 'ged' => $tree->name()])) ?>">
+        <?= I18N::translate('Add a journal entry') ?>
     </a>
 </p>

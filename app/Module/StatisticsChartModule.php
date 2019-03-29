@@ -177,12 +177,12 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      */
     public function getIndividualsAction(Statistics $statistics): Response
     {
-        $html = view('modules/statistics-chart/individuals', [
+        $this->layout = 'layouts/ajax';
+
+        return $this->viewResponse('modules/statistics-chart/individuals', [
             'show_oldest_living' => Auth::check(),
             'stats'              => $statistics,
         ]);
-
-        return new Response($html);
     }
 
     /**
@@ -192,11 +192,11 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      */
     public function getFamiliesAction(Statistics $stats): Response
     {
-        $html = view('modules/statistics-chart/families', [
+        $this->layout = 'layouts/ajax';
+
+        return $this->viewResponse('modules/statistics-chart/families', [
             'stats' => $stats,
         ]);
-
-        return new Response($html);
     }
 
     /**
@@ -206,11 +206,11 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      */
     public function getOtherAction(Statistics $stats): Response
     {
-        $html = view('modules/statistics-chart/other', [
+        $this->layout = 'layouts/ajax';
+
+        return $this->viewResponse('modules/statistics-chart/other', [
             'stats' => $stats,
         ]);
-
-        return new Response($html);
     }
 
     /**
@@ -220,12 +220,12 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      */
     public function getCustomAction(Tree $tree): Response
     {
-        $html = view('modules/statistics-chart/custom', [
+        $this->layout = 'layouts/ajax';
+
+        return $this->viewResponse('modules/statistics-chart/custom', [
             'module' => $this,
             'tree'   => $tree,
         ]);
-
-        return new Response($html);
     }
 
     /**

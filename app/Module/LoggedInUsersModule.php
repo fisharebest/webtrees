@@ -18,9 +18,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -71,7 +71,7 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
 
         if ($ctype !== '') {
             return view('modules/block-template', [
-                'block'      => str_replace('_', '-', $this->name()),
+                'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => '',
                 'title'      => $this->title(),

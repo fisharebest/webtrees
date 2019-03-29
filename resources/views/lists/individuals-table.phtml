@@ -34,7 +34,6 @@ $module = app(ModuleService::class)
 
 $("#<?= e($table_id) ?>").dataTable({
     dom: '<"H"<"filtersH_<?= e($table_id) ?>">T<"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_<?= e($table_id) ?>">>',
-    <?= I18N::datatablesI18N() ?>,
     autoWidth: false,
     processing: true,
     retrieve: true,
@@ -56,9 +55,7 @@ $("#<?= e($table_id) ?>").dataTable({
         /* Filter death */ { sortable: false },
         /* Filter tree  */ { sortable: false }
     ],
-    sorting: <?= json_encode($sosa ? [[4, "asc"]] : [[1, "asc"]]) ?>,
-    displayLength: 20,
-    pagingType: "full_numbers"
+    sorting: <?= json_encode($sosa ? [[4, "asc"]] : [[1, "asc"]]) ?>
 });
 
 $("#<?= e($table_id) ?>")
@@ -157,7 +154,9 @@ $deathAgeData = [
 ?>
 
 <div class="indi-list">
-    <table id="<?= e($table_id) ?>">
+    <table id="<?= e($table_id) ?>"
+        <?= view('lists/datatables-attributes') ?>
+    >
         <thead>
             <tr>
                 <th colspan="16">

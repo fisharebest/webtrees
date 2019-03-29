@@ -209,7 +209,7 @@ class CensusAssistantModule extends AbstractModule
      */
     public function censusTableEmptyRow(CensusInterface $census): string
     {
-        return '<tr class="wt-census-assistant-row"><td hidden></td>' . str_repeat('<td class="wt-census-assistant-field"><input type="text" class="form-control wt-census-assistant-form-control"></td>', count($census->columns())) . '<td><a class="icon-remove" href="#" title="' . I18N::translate('Remove') . '"></a></td></tr>';
+        return '<tr class="wt-census-assistant-row"><td hidden></td>' . str_repeat('<td class="wt-census-assistant-field p-0"><input type="text" class="form-control wt-census-assistant-form-control p-0"></td>', count($census->columns())) . '<td><a class="icon-remove" href="#" title="' . I18N::translate('Remove') . '"></a></td></tr>';
     }
 
     /**
@@ -227,7 +227,7 @@ class CensusAssistantModule extends AbstractModule
     {
         $html = '';
         foreach ($census->columns() as $column) {
-            $html .= '<td class="wt-census-assistant-field"><input class="form-control wt-census-assistant-form-control" type="text" value="' . $column->generate($individual, $head) . '" name="ca_individuals[' . $individual->xref() . '][]"></td>';
+            $html .= '<td class="wt-census-assistant-field p-0"><input class="form-control wt-census-assistant-form-control p-0" type="text" value="' . $column->generate($individual, $head) . '" name="ca_individuals[' . $individual->xref() . '][]"></td>';
         }
 
         return '<tr class="wt-census-assistant-row"><td class="wt-census-assistant-field" hidden>' . $individual->xref() . '</td>' . $html . '<td class="wt-census-assistant-field"><a class="icon-remove" href="#" title="' . I18N::translate('Remove') . '"></a></td></tr>';

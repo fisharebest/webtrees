@@ -99,7 +99,7 @@ class CalendarMenuModule extends AbstractModule implements ModuleMenuInterface
     protected function calendarMonthMenu(Tree $tree): Menu
     {
         return new Menu(I18N::translate('Month'), route('calendar', [
-            'view' => 'day',
+            'view' => 'month',
             'ged'  => $tree->name(),
         ]), 'menu-calendar-month', ['rel' => 'nofollow']);
     }
@@ -112,7 +112,7 @@ class CalendarMenuModule extends AbstractModule implements ModuleMenuInterface
     protected function calendarYearMenu(Tree $tree): Menu
     {
         return new Menu(I18N::translate('Year'), route('calendar', [
-            'view' => 'day',
+            'view' => 'year',
             'ged'  => $tree->name(),
         ]), 'menu-calendar-year', ['rel' => 'nofollow']);
     }

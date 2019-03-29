@@ -18,10 +18,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -95,9 +93,9 @@ class ReportEngineController extends AbstractBaseController
             return $this->reportList($tree, $user);
         }
 
-        $report_xml = WT_ROOT . 'resources/xml/reports/' . $module->name() . '.xml';
+        $xml_filename = $module->resourcesFolder() . $module->xmlFilename();
 
-        $report_array = (new ReportParserSetup($report_xml))->reportProperties();
+        $report_array = (new ReportParserSetup($xml_filename))->reportProperties();
         $description  = $report_array['description'];
         $title        = $report_array['title'];
 
@@ -120,18 +118,33 @@ class ReportEngineController extends AbstractBaseController
 
             switch ($input['lookup']) {
                 case 'INDI':
-                    $individual       = Individual::getInstance($pid, $tree);
-                    $input['control'] = FunctionsEdit::formControlIndividual($tree, $individual, $attributes + ['required' => true]);
+                    $input['control'] = view('components/select-individual', [
+                        'id'         => 'input-' . $n,
+                        'name'       => 'vars[' . $input['name'] . ']',
+                        'individual' => Individual::getInstance($pid, $tree),
+                        'tree'       => $tree,
+                        'required'   => true,
+                    ]);
                     break;
 
                 case 'FAM':
-                    $family           = Family::getInstance($pid, $tree);
-                    $input['control'] = FunctionsEdit::formControlFamily($tree, $family, $attributes + ['required' => true]);
+                    $input['control'] = view('components/select-family', [
+                        'id'       => 'input-' . $n,
+                        'name'     => 'vars[' . $input['name'] . ']',
+                        'family'   => Family::getInstance($pid, $tree),
+                        'tree'     => $tree,
+                        'required' => true,
+                    ]);
                     break;
 
                 case 'SOUR':
-                    $source           = Source::getInstance($pid, $tree);
-                    $input['control'] = FunctionsEdit::formControlSource($tree, $source, $attributes + ['required' => 'true']);
+                    $input['control'] = view('components/select-source', [
+                        'id'       => 'input-' . $n,
+                        'name'     => 'vars[' . $input['name'] . ']',
+                        'family'   => Source::getInstance($pid, $tree),
+                        'tree'     => $tree,
+                        'required' => true,
+                    ]);
                     break;
 
                 case 'DATE':
@@ -177,7 +190,7 @@ class ReportEngineController extends AbstractBaseController
                                     $options[$key] = I18N::translateContext($match[1], $match[2]);
                                 }
                             }
-                            $input['control'] = Bootstrap4::select($options, $input['default'], $attributes);
+                            $input['control'] = view('components/select', ['name' => 'vars[' . $input['name'] . ']', 'id'   => 'input-' . $n, 'selected' => $input['default'], 'values' => $options]);
                             break;
                     }
             }
@@ -257,13 +270,13 @@ class ReportEngineController extends AbstractBaseController
             }
         }
 
-        $report_xml = WT_ROOT . 'resources/xml/reports/' . $module->name() . '.xml';
+        $xml_filename = $module->resourcesFolder() . $module->xmlFilename();
 
         switch ($output) {
             default:
             case 'HTML':
                 ob_start();
-                new ReportParserGenerate($report_xml, new ReportHtml(), $vars, $tree);
+                new ReportParserGenerate($xml_filename, new ReportHtml(), $vars, $tree);
                 $html = ob_get_clean();
 
                 $this->layout = 'layouts/report';
@@ -275,7 +288,7 @@ class ReportEngineController extends AbstractBaseController
 
             case 'PDF':
                 ob_start();
-                new ReportParserGenerate($report_xml, new ReportPdf(), $vars, $tree);
+                new ReportParserGenerate($xml_filename, new ReportPdf(), $vars, $tree);
                 $pdf = ob_get_clean();
 
                 $response = new Response($pdf);

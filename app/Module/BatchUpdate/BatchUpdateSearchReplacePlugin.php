@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
-use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Symfony\Component\HttpFoundation\Request;
@@ -183,19 +182,17 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
             '<div class="row form-group">' .
             '<label class="col-sm-3 col-form-label">' . I18N::translate('Search text/pattern') . '</label>' .
             '<div class="col-sm-9">' .
-            '<input class="form-control" name="search" size="40" value="' . e($this->search) .
-            '" onchange="this.form.submit();">' .
+            '<input class="form-control" name="search" size="40" value="' . e($this->search) . '">' .
             '</div></div>' .
             '<div class="row form-group">' .
             '<label class="col-sm-3 col-form-label">' . I18N::translate('Replacement text') . '</label>' .
             '<div class="col-sm-9">' .
-            '<input class="form-control" name="replace" size="40" value="' . e($this->replace) .
-            '" onchange="this.form.submit();"></td></tr>' .
+            '<input class="form-control" name="replace" size="40" value="' . e($this->replace) . '"></td></tr>' .
             '</div></div>' .
             '<div class="row form-group">' .
             '<label class="col-sm-3 col-form-label">' . I18N::translate('Search method') . '</label>' .
             '<div class="col-sm-9">' .
-            '<select class="form-control" name="method" onchange="this.form.submit();">' .
+            '<select class="form-control" name="method">' .
             '<option value="exact" ' . ($this->method == 'exact' ? 'selected' : '') . '>' . I18N::translate('Exact text') . '</option>' .
             '<option value="words" ' . ($this->method == 'words' ? 'selected' : '') . '>' . I18N::translate('Whole words only') . '</option>' .
             '<option value="wildcards" ' . ($this->method == 'wildcards' ? 'selected' : '') . '>' . I18N::translate('Wildcards') . '</option>' .
@@ -206,10 +203,10 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
             '<div class="row form-group">' .
             '<label class="col-sm-3 col-form-label">' . I18N::translate('Case insensitive') . '</label>' .
             '<div class="col-sm-9">' .
-            Bootstrap4::radioButtons('case', [
+            view('components/radios-inline', ['name' => 'case', 'selected' => $this->case, 'options' => [
                 ''  => I18N::translate('no'),
                 'i' => I18N::translate('yes'),
-            ], ($this->case ? 'i' : ''), true, ['onchange' => 'this.form.submit();']) .
+            ]]) .
             '<p class="small text-muted">' .
             /* I18N: Help text for "Case insensitive" searches */
             I18N::translate('Match both upper and lower case letters.') . '</p>' .

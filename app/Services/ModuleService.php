@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees\Services;
 use Closure;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\AhnentafelReportModule;
 use Fisharebest\Webtrees\Module\AlbumModule;
@@ -46,6 +45,7 @@ use Fisharebest\Webtrees\Module\ColorsTheme;
 use Fisharebest\Webtrees\Module\CompactTreeChartModule;
 use Fisharebest\Webtrees\Module\ContactsFooterModule;
 use Fisharebest\Webtrees\Module\CookieWarningModule;
+use Fisharebest\Webtrees\Module\CustomCssJsModule;
 use Fisharebest\Webtrees\Module\DeathReportModule;
 use Fisharebest\Webtrees\Module\DescendancyChartModule;
 use Fisharebest\Webtrees\Module\DescendancyModule;
@@ -72,6 +72,71 @@ use Fisharebest\Webtrees\Module\IndividualListModule;
 use Fisharebest\Webtrees\Module\IndividualMetadataModule;
 use Fisharebest\Webtrees\Module\IndividualReportModule;
 use Fisharebest\Webtrees\Module\InteractiveTreeModule;
+use Fisharebest\Webtrees\Module\LanguageAfrikaans;
+use Fisharebest\Webtrees\Module\LanguageAlbanian;
+use Fisharebest\Webtrees\Module\LanguageArabic;
+use Fisharebest\Webtrees\Module\LanguageBosnian;
+use Fisharebest\Webtrees\Module\LanguageBulgarian;
+use Fisharebest\Webtrees\Module\LanguageCatalan;
+use Fisharebest\Webtrees\Module\LanguageChineseSimplified;
+use Fisharebest\Webtrees\Module\LanguageChineseTraditional;
+use Fisharebest\Webtrees\Module\LanguageCroatian;
+use Fisharebest\Webtrees\Module\LanguageCzech;
+use Fisharebest\Webtrees\Module\LanguageDanish;
+use Fisharebest\Webtrees\Module\LanguageDivehi;
+use Fisharebest\Webtrees\Module\LanguageDutch;
+use Fisharebest\Webtrees\Module\LanguageEnglishAustralia;
+use Fisharebest\Webtrees\Module\LanguageEnglishGreatBritain;
+use Fisharebest\Webtrees\Module\LanguageEnglishUnitedStates;
+use Fisharebest\Webtrees\Module\LanguageEstonian;
+use Fisharebest\Webtrees\Module\LanguageFaroese;
+use Fisharebest\Webtrees\Module\LanguageFarsi;
+use Fisharebest\Webtrees\Module\LanguageFinnish;
+use Fisharebest\Webtrees\Module\LanguageFrench;
+use Fisharebest\Webtrees\Module\LanguageFrenchCanada;
+use Fisharebest\Webtrees\Module\LanguageGalician;
+use Fisharebest\Webtrees\Module\LanguageGeorgian;
+use Fisharebest\Webtrees\Module\LanguageGerman;
+use Fisharebest\Webtrees\Module\LanguageGreek;
+use Fisharebest\Webtrees\Module\LanguageHebrew;
+use Fisharebest\Webtrees\Module\LanguageHungarian;
+use Fisharebest\Webtrees\Module\LanguageIcelandic;
+use Fisharebest\Webtrees\Module\LanguageIndonesian;
+use Fisharebest\Webtrees\Module\LanguageItalian;
+use Fisharebest\Webtrees\Module\LanguageJapanese;
+use Fisharebest\Webtrees\Module\LanguageJavanese;
+use Fisharebest\Webtrees\Module\LanguageKazhak;
+use Fisharebest\Webtrees\Module\LanguageKorean;
+use Fisharebest\Webtrees\Module\LanguageLatvian;
+use Fisharebest\Webtrees\Module\LanguageLingala;
+use Fisharebest\Webtrees\Module\LanguageLithuanian;
+use Fisharebest\Webtrees\Module\LanguageMalay;
+use Fisharebest\Webtrees\Module\LanguageMaori;
+use Fisharebest\Webtrees\Module\LanguageMarathi;
+use Fisharebest\Webtrees\Module\LanguageNepalese;
+use Fisharebest\Webtrees\Module\LanguageNorwegianBokmal;
+use Fisharebest\Webtrees\Module\LanguageNorwegianNynorsk;
+use Fisharebest\Webtrees\Module\LanguageOccitan;
+use Fisharebest\Webtrees\Module\LanguagePolish;
+use Fisharebest\Webtrees\Module\LanguagePortuguese;
+use Fisharebest\Webtrees\Module\LanguagePortugueseBrazil;
+use Fisharebest\Webtrees\Module\LanguageRomanian;
+use Fisharebest\Webtrees\Module\LanguageRussian;
+use Fisharebest\Webtrees\Module\LanguageSerbian;
+use Fisharebest\Webtrees\Module\LanguageSerbianLatin;
+use Fisharebest\Webtrees\Module\LanguageSlovakian;
+use Fisharebest\Webtrees\Module\LanguageSlovenian;
+use Fisharebest\Webtrees\Module\LanguageSpanish;
+use Fisharebest\Webtrees\Module\LanguageSundanese;
+use Fisharebest\Webtrees\Module\LanguageSwahili;
+use Fisharebest\Webtrees\Module\LanguageSwedish;
+use Fisharebest\Webtrees\Module\LanguageTamil;
+use Fisharebest\Webtrees\Module\LanguageTatar;
+use Fisharebest\Webtrees\Module\LanguageThai;
+use Fisharebest\Webtrees\Module\LanguageTurkish;
+use Fisharebest\Webtrees\Module\LanguageUkranian;
+use Fisharebest\Webtrees\Module\LanguageVietnamese;
+use Fisharebest\Webtrees\Module\LanguageYiddish;
 use Fisharebest\Webtrees\Module\LifespansChartModule;
 use Fisharebest\Webtrees\Module\ListsMenuModule;
 use Fisharebest\Webtrees\Module\LoggedInUsersModule;
@@ -193,6 +258,7 @@ class ModuleService
         'compact-chart'           => CompactTreeChartModule::class,
         'contact-links'           => ContactsFooterModule::class,
         'cookie-warning'          => CookieWarningModule::class,
+        'custom-css-js'           => CustomCssJsModule::class,
         'death_report'            => DeathReportModule::class,
         'descendancy'             => DescendancyModule::class,
         'descendancy_chart'       => DescendancyChartModule::class,
@@ -218,6 +284,71 @@ class ModuleService
         'individual_ext_report'   => IndividualFamiliesReportModule::class,
         'individual_list'         => IndividualListModule::class,
         'individual_report'       => IndividualReportModule::class,
+        'language-af'             => LanguageAfrikaans::class,
+        'language-ar'             => LanguageArabic::class,
+        'language-bs'             => LanguageBosnian::class,
+        'language-bu'             => LanguageBulgarian::class,
+        'language-ca'             => LanguageCatalan::class,
+        'language-cs'             => LanguageCzech::class,
+        'language-da'             => LanguageDanish::class,
+        'language-de'             => LanguageGerman::class,
+        'language-dv'             => LanguageDivehi::class,
+        'language-el'             => LanguageGreek::class,
+        'language-en-AU'          => LanguageEnglishAustralia::class,
+        'language-en-GB'          => LanguageEnglishGreatBritain::class,
+        'language-en-US'          => LanguageEnglishUnitedStates::class,
+        'language-es'             => LanguageSpanish::class,
+        'language-et'             => LanguageEstonian::class,
+        'language-fa'             => LanguageFarsi::class,
+        'language-fi'             => LanguageFinnish::class,
+        'language-fo'             => LanguageFaroese::class,
+        'language-fr'             => LanguageFrench::class,
+        'language-fr-CA'          => LanguageFrenchCanada::class,
+        'language-gl'             => LanguageGalician::class,
+        'language-he'             => LanguageHebrew::class,
+        'language-hr'             => LanguageCroatian::class,
+        'language-hu'             => LanguageHungarian::class,
+        'language-id'             => LanguageIndonesian::class,
+        'language-is'             => LanguageIcelandic::class,
+        'language-it'             => LanguageItalian::class,
+        'language-ja'             => LanguageJapanese::class,
+        'language-jv'             => LanguageJavanese::class,
+        'language-ka'             => LanguageGeorgian::class,
+        'language-kk'             => LanguageKazhak::class,
+        'language-ko'             => LanguageKorean::class,
+        'language-ln'             => LanguageLingala::class,
+        'language-lt'             => LanguageLithuanian::class,
+        'language-lv'             => LanguageLatvian::class,
+        'language-mi'             => LanguageMaori::class,
+        'language-mr'             => LanguageMarathi::class,
+        'language-ms'             => LanguageMalay::class,
+        'language-nb'             => LanguageNorwegianBokmal::class,
+        'language-ne'             => LanguageNepalese::class,
+        'language-nl'             => LanguageDutch::class,
+        'language-nn'             => LanguageNorwegianNynorsk::class,
+        'language-oc'             => LanguageOccitan::class,
+        'language-pl'             => LanguagePolish::class,
+        'language-pt'             => LanguagePortuguese::class,
+        'language-pt-BR'          => LanguagePortugueseBrazil::class,
+        'language-ro'             => LanguageRomanian::class,
+        'language-ru'             => LanguageRussian::class,
+        'language-sk'             => LanguageSlovakian::class,
+        'language-sl'             => LanguageSlovenian::class,
+        'language-sq'             => LanguageAlbanian::class,
+        'language-sr'             => LanguageSerbian::class,
+        'language-sr-Latn'        => LanguageSerbianLatin::class,
+        'language-su'             => LanguageSundanese::class,
+        'language-sv'             => LanguageSwedish::class,
+        'language-sw'             => LanguageSwahili::class,
+        'language-ta'             => LanguageTamil::class,
+        'language-th'             => LanguageThai::class,
+        'language-tr'             => LanguageTurkish::class,
+        'language-tt'             => LanguageTatar::class,
+        'language-uk'             => LanguageUkranian::class,
+        'language-vi'             => LanguageVietnamese::class,
+        'language-yi'             => LanguageYiddish::class,
+        'language-zh-Hans'        => LanguageChineseSimplified::class,
+        'language-zh-Hant'        => LanguageChineseTraditional::class,
         'lifespans_chart'         => LifespansChartModule::class,
         'lightbox'                => AlbumModule::class,
         'lists-menu'              => ListsMenuModule::class,
@@ -273,220 +404,6 @@ class ModuleService
         'xenea'                   => XeneaTheme::class,
         'yahrzeit'                => YahrzeitModule::class,
     ];
-
-    /**
-     * All core modules in the system.
-     *
-     * @return Collection
-     */
-    private function coreModules(): Collection
-    {
-        return Collection::make(self::CORE_MODULES)
-            ->map(function (string $class, string $name): ModuleInterface {
-                $module = app($class);
-
-                $module->setName($name);
-
-                return $module;
-            });
-    }
-
-    /**
-     * All custom modules in the system.  Custom modules are defined in modules_v4/
-     *
-     * @return Collection
-     */
-    private function customModules(): Collection
-    {
-        $pattern   = WT_ROOT . Webtrees::MODULES_PATH . '*/module.php';
-        $filenames = glob($pattern);
-
-        return Collection::make($filenames)
-            ->filter(function (string $filename): bool {
-                // Special characters will break PHP variable names.
-                // This also allows us to ignore modules called "foo.example" and "foo.disable"
-                $module_name = basename(dirname($filename));
-
-                return !Str::contains($module_name, ['.', ' ', '[', ']']) && Str::length($module_name) <= 30;
-            })
-            ->map(function (string $filename): ?ModuleCustomInterface {
-                try {
-                    $module = self::load($filename);
-
-                    if ($module instanceof ModuleCustomInterface) {
-                        $module_name = '_' . basename(dirname($filename)) . '_';
-
-                        $module->setName($module_name);
-                    } else {
-                        return null;
-                    }
-
-                    return $module;
-                } catch (Throwable $ex) {
-                    $message = '<pre>' . e($ex->getMessage()) . "\n" . e($ex->getTraceAsString()) . '</pre>';
-                    FlashMessages::addMessage($message, 'danger');
-
-                    return null;
-                }
-            })
-            ->filter();
-    }
-
-    /**
-     * All modules.
-     *
-     * @param bool $include_disabled
-     *
-     * @return Collection
-     * @return ModuleInterface[]
-     */
-    public function all(bool $include_disabled = false): Collection
-    {
-        return app('cache.array')->rememberForever('all_modules', function (): Collection {
-            // Modules have a default status, order etc.
-            // We can override these from database settings.
-            $module_info = DB::table('module')
-                ->get()
-                ->mapWithKeys(function (stdClass $row): array {
-                    return [$row->module_name => $row];
-                });
-
-            return $this->coreModules()
-                ->merge($this->customModules())
-                ->map(function (ModuleInterface $module) use ($module_info): ModuleInterface {
-                    $info = $module_info->get($module->name());
-
-                    if ($info instanceof stdClass) {
-                        $module->setEnabled($info->status === 'enabled');
-
-                        if ($module instanceof ModuleFooterInterface && $info->footer_order !== null) {
-                            $module->setFooterOrder((int) $info->footer_order);
-                        }
-
-                        if ($module instanceof ModuleMenuInterface && $info->menu_order !== null) {
-                            $module->setMenuOrder((int) $info->menu_order);
-                        }
-
-                        if ($module instanceof ModuleSidebarInterface && $info->sidebar_order !== null) {
-                            $module->setSidebarOrder((int) $info->sidebar_order);
-                        }
-
-                        if ($module instanceof ModuleTabInterface && $info->tab_order !== null) {
-                            $module->setTabOrder((int) $info->tab_order);
-                        }
-                    } else {
-                        $module->setEnabled($module->isEnabledByDefault());
-
-                        DB::table('module')->insert([
-                            'module_name' => $module->name(),
-                            'status'      => $module->isEnabled() ? 'enabled' : 'disabled',
-                        ]);
-                    }
-
-                    return $module;
-                });
-        })->filter($this->enabledFilter($include_disabled));
-    }
-
-    /**
-     * Load a module in a static scope, to prevent it from modifying local or object variables.
-     *
-     * @param string $filename
-     *
-     * @return mixed
-     */
-    private static function load(string $filename)
-    {
-        return include $filename;
-    }
-
-    /**
-     * A function to sort modules by name
-     *
-     * @return Closure
-     */
-    private function moduleSorter(): Closure
-    {
-        return function (ModuleInterface $x, ModuleInterface $y): int {
-            return I18N::strcasecmp($x->title(), $y->title());
-        };
-    }
-
-    /**
-     * A function to sort footers
-     *
-     * @return Closure
-     */
-    private function footerSorter(): Closure
-    {
-        return function (ModuleFooterInterface $x, ModuleFooterInterface $y): int {
-            return $x->getFooterOrder() <=> $y->getFooterOrder();
-        };
-    }
-
-    /**
-     * A function to sort menus
-     *
-     * @return Closure
-     */
-    private function menuSorter(): Closure
-    {
-        return function (ModuleMenuInterface $x, ModuleMenuInterface $y): int {
-            return $x->getMenuOrder() <=> $y->getMenuOrder();
-        };
-    }
-
-    /**
-     * A function to sort menus
-     *
-     * @return Closure
-     */
-    private function sidebarSorter(): Closure
-    {
-        return function (ModuleSidebarInterface $x, ModuleSidebarInterface $y): int {
-            return $x->getSidebarOrder() <=> $y->getSidebarOrder();
-        };
-    }
-
-    /**
-     * A function to sort menus
-     *
-     * @return Closure
-     */
-    private function tabSorter(): Closure
-    {
-        return function (ModuleTabInterface $x, ModuleTabInterface $y): int {
-            return $x->getTabOrder() <=> $y->getTabOrder();
-        };
-    }
-
-    /**
-     * A function filter modules by type
-     *
-     * @param string $interface
-     *
-     * @return Closure
-     */
-    private function interfaceFilter(string $interface): Closure
-    {
-        return function (ModuleInterface $module) use ($interface): bool {
-            return $module instanceof $interface;
-        };
-    }
-
-    /**
-     * A function filter modules by enabled/disabled
-     *
-     * @param bool $include_disabled
-     *
-     * @return Closure
-     */
-    private function enabledFilter(bool $include_disabled): Closure
-    {
-        return function (ModuleInterface $module) use ($include_disabled): bool {
-            return $include_disabled || $module->isEnabled();
-        };
-    }
 
     /**
      * A function to convert modules into their titles - to create option lists, etc.
@@ -556,6 +473,244 @@ class ModuleService
     }
 
     /**
+     * All modules.
+     *
+     * @param bool $include_disabled
+     *
+     * @return Collection
+     * @return ModuleInterface[]
+     */
+    public function all(bool $include_disabled = false): Collection
+    {
+        return app('cache.array')->rememberForever('all_modules', function (): Collection {
+            // Modules have a default status, order etc.
+            // We can override these from database settings.
+            $module_info = DB::table('module')
+                ->get()
+                ->mapWithKeys(function (stdClass $row): array {
+                    return [$row->module_name => $row];
+                });
+
+            return $this->coreModules()
+                ->merge($this->customModules())
+                ->map(function (ModuleInterface $module) use ($module_info): ModuleInterface {
+                    $info = $module_info->get($module->name());
+
+                    if ($info instanceof stdClass) {
+                        $module->setEnabled($info->status === 'enabled');
+
+                        if ($module instanceof ModuleFooterInterface && $info->footer_order !== null) {
+                            $module->setFooterOrder((int) $info->footer_order);
+                        }
+
+                        if ($module instanceof ModuleMenuInterface && $info->menu_order !== null) {
+                            $module->setMenuOrder((int) $info->menu_order);
+                        }
+
+                        if ($module instanceof ModuleSidebarInterface && $info->sidebar_order !== null) {
+                            $module->setSidebarOrder((int) $info->sidebar_order);
+                        }
+
+                        if ($module instanceof ModuleTabInterface && $info->tab_order !== null) {
+                            $module->setTabOrder((int) $info->tab_order);
+                        }
+                    } else {
+                        $module->setEnabled($module->isEnabledByDefault());
+
+                        DB::table('module')->insert([
+                            'module_name' => $module->name(),
+                            'status'      => $module->isEnabled() ? 'enabled' : 'disabled',
+                        ]);
+                    }
+
+                    return $module;
+                });
+        })->filter($this->enabledFilter($include_disabled));
+    }
+
+    /**
+     * All core modules in the system.
+     *
+     * @return Collection
+     */
+    private function coreModules(): Collection
+    {
+        return Collection::make(self::CORE_MODULES)
+            ->map(function (string $class, string $name): ModuleInterface {
+                $module = app($class);
+
+                $module->setName($name);
+
+                return $module;
+            });
+    }
+
+    /**
+     * All custom modules in the system.  Custom modules are defined in modules_v4/
+     *
+     * @return Collection
+     */
+    private function customModules(): Collection
+    {
+        $pattern   = WT_ROOT . Webtrees::MODULES_PATH . '*/module.php';
+        $filenames = glob($pattern, GLOB_NOSORT);
+
+        return Collection::make($filenames)
+            ->filter(function (string $filename): bool {
+                // Special characters will break PHP variable names.
+                // This also allows us to ignore modules called "foo.example" and "foo.disable"
+                $module_name = basename(dirname($filename));
+
+                return !Str::contains($module_name, ['.', ' ', '[', ']']) && Str::length($module_name) <= 30;
+            })
+            ->map(function (string $filename): ?ModuleCustomInterface {
+                try {
+                    $module = self::load($filename);
+
+                    if ($module instanceof ModuleCustomInterface) {
+                        $module_name = '_' . basename(dirname($filename)) . '_';
+
+                        $module->setName($module_name);
+                    } else {
+                        return null;
+                    }
+
+                    return $module;
+                } catch (Throwable $ex) {
+                    // It would be nice to show this error in a flash-message or similar, but the framework
+                    // has not yet been initialised so we have no themes, languages, sessions, etc.
+                    throw $ex;
+                }
+            })
+            ->filter()
+            ->mapWithKeys(function (ModuleCustomInterface $module): array {
+                return [$module->name() => $module];
+            });
+    }
+
+    /**
+     * During setup, we'll need access to some languages.
+     *
+     * @return Collection
+     */
+    public function setupLanguages(): Collection
+    {
+        return $this->coreModules()
+            ->filter(function (ModuleInterface $module) {
+                return $module instanceof ModuleLanguageInterface && $module->isEnabledByDefault();
+            })
+            ->sort(function (ModuleLanguageInterface $x, ModuleLanguageInterface $y) {
+                return $x->locale()->endonymSortable() <=> $y->locale()->endonymSortable();
+            });
+    }
+
+    /**
+     * Load a module in a static scope, to prevent it from modifying local or object variables.
+     *
+     * @param string $filename
+     *
+     * @return mixed
+     */
+    private static function load(string $filename)
+    {
+        return include $filename;
+    }
+
+    /**
+     * A function filter modules by enabled/disabled
+     *
+     * @param bool $include_disabled
+     *
+     * @return Closure
+     */
+    private function enabledFilter(bool $include_disabled): Closure
+    {
+        return function (ModuleInterface $module) use ($include_disabled): bool {
+            return $include_disabled || $module->isEnabled();
+        };
+    }
+
+    /**
+     * A function filter modules by type
+     *
+     * @param string $interface
+     *
+     * @return Closure
+     */
+    private function interfaceFilter(string $interface): Closure
+    {
+        return function (ModuleInterface $module) use ($interface): bool {
+            return $module instanceof $interface;
+        };
+    }
+
+    /**
+     * A function to sort footers
+     *
+     * @return Closure
+     */
+    private function footerSorter(): Closure
+    {
+        return function (ModuleFooterInterface $x, ModuleFooterInterface $y): int {
+            return $x->getFooterOrder() <=> $y->getFooterOrder();
+        };
+    }
+
+    /**
+     * A function to sort menus
+     *
+     * @return Closure
+     */
+    private function menuSorter(): Closure
+    {
+        return function (ModuleMenuInterface $x, ModuleMenuInterface $y): int {
+            return $x->getMenuOrder() <=> $y->getMenuOrder();
+        };
+    }
+
+    /**
+     * A function to sort menus
+     *
+     * @return Closure
+     */
+    private function sidebarSorter(): Closure
+    {
+        return function (ModuleSidebarInterface $x, ModuleSidebarInterface $y): int {
+            return $x->getSidebarOrder() <=> $y->getSidebarOrder();
+        };
+    }
+
+    /**
+     * A function to sort menus
+     *
+     * @return Closure
+     */
+    private function tabSorter(): Closure
+    {
+        return function (ModuleTabInterface $x, ModuleTabInterface $y): int {
+            return $x->getTabOrder() <=> $y->getTabOrder();
+        };
+    }
+
+    /**
+     * A function to sort modules by name.
+     *
+     * Languages have a "sortable" name, so that "British English" sorts as "English, British".
+     * This provides a more natural order in the language menu.
+     *
+     * @return Closure
+     */
+    private function moduleSorter(): Closure
+    {
+        return function (ModuleInterface $x, ModuleInterface $y): int {
+            $title1 = $x instanceof ModuleLanguageInterface ? $x->locale()->endonymSortable() : $x->title();
+            $title2 = $y instanceof ModuleLanguageInterface ? $y->locale()->endonymSortable() : $y->title();
+
+            return I18N::strcasecmp($title1, $title2);
+        };
+    }
+
+    /**
      * Find a specified module, if it is currently active.
      *
      * @param string $module_name
@@ -583,7 +738,7 @@ class ModuleService
      */
     public function otherModules(bool $include_disabled = false): Collection
     {
-        return $this->all($include_disabled)
+        return $this->findByInterface(ModuleInterface::class, $include_disabled, true)
             ->filter(function (ModuleInterface $module): bool {
                 foreach (self::COMPONENTS as $interface) {
                     if ($module instanceof $interface) {

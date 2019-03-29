@@ -17,18 +17,84 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Report\ReportHtml;
+use Fisharebest\Webtrees\Report\ReportParserGenerate;
+use Fisharebest\Webtrees\Report\ReportPdf;
+use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Tree;
+
 /**
  * Test harness for the class OccupationReportModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\ModuleReportTrait
+ * @covers \Fisharebest\Webtrees\Module\OccupationReportModule
+ * @covers \Fisharebest\Webtrees\Report\AbstractReport
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseCell
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseElement
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseFootnote
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseHtml
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseImage
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseLine
+ * @covers \Fisharebest\Webtrees\Report\ReportBasePageheader
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseText
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseTextbox
+ * @covers \Fisharebest\Webtrees\Report\ReportExpressionLanguageProvider
+ * @covers \Fisharebest\Webtrees\Report\ReportHtml
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlCell
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlFootnote
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlHtml
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlImage
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlLine
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlPageheader
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlText
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlTextbox
+ * @covers \Fisharebest\Webtrees\Report\ReportParserBase
+ * @covers \Fisharebest\Webtrees\Report\ReportParserGenerate
+ * @covers \Fisharebest\Webtrees\Report\ReportParserSetup
+ * @covers \Fisharebest\Webtrees\Report\ReportPdf
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfCell
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfFootnote
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfHtml
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfImage
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfLine
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfPageheader
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfText
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfTextbox
+ * @covers \Fisharebest\Webtrees\Report\ReportTcpdf
  */
 class OccupationReportModuleTest extends \Fisharebest\Webtrees\TestCase
 {
+    protected static $uses_database = true;
+
     /**
-     * Test that the class exists
-     *
      * @return void
      */
-    public function testClassExists(): void
+    public function testReportRunsWithoutError(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\OccupationReportModule'));
+        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user->setPreference('canadmin', '1');
+        Auth::login($user);
+
+        $tree = $this->importTree('demo.ged');
+        app()->instance(Tree::class, $tree);
+        $xml  = WT_ROOT . 'resources/xml/reports/occupation_report.xml';
+        $vars = [
+            'occupation' => ['id' => 'king'],
+            'pageSize'  => ['id' => 'A4'],
+            'sortby'    => ['id' => 'NAME'],
+        ];
+
+        ob_start();
+        new ReportParserGenerate($xml, new ReportHtml(), $vars, $tree);
+        $html = ob_get_clean();
+        $this->assertStringStartsWith('<', $html);
+        $this->assertStringEndsWith('>', $html);
+
+        ob_start();
+        new ReportParserGenerate($xml, new ReportPdf(), $vars, $tree);
+        $pdf = ob_get_clean();
+        $this->assertStringStartsWith('%PDF', $pdf);
+        $this->assertStringEndsWith("%%EOF\n", $pdf);
     }
 }

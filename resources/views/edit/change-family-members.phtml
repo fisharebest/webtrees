@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <h2 class="wt-page-title"><?= $title ?></h2>
@@ -20,7 +19,7 @@
             <?php endif ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= FunctionsEdit::formControlIndividual($tree, $father, ['id' => 'HUSB', 'name' => 'HUSB']) ?>
+            <?= view('components/select-individual', ['name' => 'HUSB', 'individual' => $father, 'tree' => $tree]) ?>
         </div>
     </div>
 
@@ -35,7 +34,7 @@
             <?php endif ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= FunctionsEdit::formControlIndividual($tree, $mother, ['id' => 'WIFE', 'name' => 'WIFE']) ?>
+            <?= view('components/select-individual', ['name' => 'WIFE', 'individual' => $mother, 'tree' => $tree]) ?>
         </div>
     </div>
 
@@ -51,7 +50,7 @@
                 <?php endif ?>
             </label>
             <div class="col-sm-9 wt-page-options-value">
-                <?= FunctionsEdit::formControlIndividual($tree, $child, ['id' => 'CHIL' . $n, 'name' => 'CHIL[]']) ?>
+                <?= view('components/select-individual', ['name' => 'CHIL[]', 'id' => 'CHIL' . $n, 'individual' => $child, 'tree' => $tree]) ?>
             </div>
         </div>
     <?php endforeach ?>
@@ -61,7 +60,7 @@
             <?= I18N::translate('Child') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= FunctionsEdit::formControlIndividual($tree, null, ['id' => 'CHIL[]' . (count($children) + 1), 'name' => 'CHIL[]']) ?>
+            <?= view('components/select-individual', ['name' => 'CHIL[]', 'id' => 'CHIL' . (count($children) + 1), 'tree' => $tree]) ?>
         </div>
     </div>
 

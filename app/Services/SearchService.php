@@ -151,8 +151,7 @@ class SearchService
                     ->on('name.n_id', '=', 'individuals.i_id');
             })
             ->orderBy('n_sort')
-            ->select(['individuals.*', 'n_sort', 'n_num'])
-            ->distinct();
+            ->select(['individuals.*', 'n_num']);
 
         $this->whereTrees($query, 'i_file', $trees);
         $this->whereSearch($query, 'n_full', $search);
@@ -874,6 +873,7 @@ class SearchService
                 }
             }
         }
+
 
         return $collection;
     }

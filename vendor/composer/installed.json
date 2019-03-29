@@ -894,17 +894,17 @@
     },
     {
         "name": "illuminate/cache",
-        "version": "v5.8.3",
-        "version_normalized": "5.8.3.0",
+        "version": "v5.8.8",
+        "version_normalized": "5.8.8.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/cache.git",
-            "reference": "d6930868e1139f7470d70c97957e8b8e18937284"
+            "reference": "684bb0f3424c0dc1ff8c2cf9b3bd8429c83eab20"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/cache/zipball/d6930868e1139f7470d70c97957e8b8e18937284",
-            "reference": "d6930868e1139f7470d70c97957e8b8e18937284",
+            "url": "https://api.github.com/repos/illuminate/cache/zipball/684bb0f3424c0dc1ff8c2cf9b3bd8429c83eab20",
+            "reference": "684bb0f3424c0dc1ff8c2cf9b3bd8429c83eab20",
             "shasum": ""
         },
         "require": {
@@ -917,7 +917,7 @@
             "illuminate/filesystem": "Required to use the file cache driver (5.8.*).",
             "illuminate/redis": "Required to use the redis cache driver (5.8.*)."
         },
-        "time": "2019-02-18T18:37:54+00:00",
+        "time": "2019-03-21T13:40:24+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -945,8 +945,8 @@
     },
     {
         "name": "illuminate/container",
-        "version": "v5.8.3",
-        "version_normalized": "5.8.3.0",
+        "version": "v5.8.8",
+        "version_normalized": "5.8.8.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/container.git",
@@ -992,8 +992,8 @@
     },
     {
         "name": "illuminate/contracts",
-        "version": "v5.8.3",
-        "version_normalized": "5.8.3.0",
+        "version": "v5.8.8",
+        "version_normalized": "5.8.8.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/contracts.git",
@@ -1038,17 +1038,17 @@
     },
     {
         "name": "illuminate/database",
-        "version": "v5.8.3",
-        "version_normalized": "5.8.3.0",
+        "version": "v5.8.8",
+        "version_normalized": "5.8.8.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/database.git",
-            "reference": "9a0895e9237f61ce7b974c26fe0e52ded35f8668"
+            "reference": "05a0f0b4588b6376bfc7213e1a781dd8120e7c8e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/database/zipball/9a0895e9237f61ce7b974c26fe0e52ded35f8668",
-            "reference": "9a0895e9237f61ce7b974c26fe0e52ded35f8668",
+            "url": "https://api.github.com/repos/illuminate/database/zipball/05a0f0b4588b6376bfc7213e1a781dd8120e7c8e",
+            "reference": "05a0f0b4588b6376bfc7213e1a781dd8120e7c8e",
             "shasum": ""
         },
         "require": {
@@ -1066,7 +1066,7 @@
             "illuminate/filesystem": "Required to use the migrations (5.8.*).",
             "illuminate/pagination": "Required to paginate the result set (5.8.*)."
         },
-        "time": "2019-03-05T13:45:48+00:00",
+        "time": "2019-03-26T17:13:31+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1100,17 +1100,17 @@
     },
     {
         "name": "illuminate/support",
-        "version": "v5.8.3",
-        "version_normalized": "5.8.3.0",
+        "version": "v5.8.8",
+        "version_normalized": "5.8.8.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/support.git",
-            "reference": "0f0291d1bc2f036af3fceb8e46900b58812533c4"
+            "reference": "5bce502f0bdb97ebbda0eb4f6cb75455d5a01529"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/support/zipball/0f0291d1bc2f036af3fceb8e46900b58812533c4",
-            "reference": "0f0291d1bc2f036af3fceb8e46900b58812533c4",
+            "url": "https://api.github.com/repos/illuminate/support/zipball/5bce502f0bdb97ebbda0eb4f6cb75455d5a01529",
+            "reference": "5bce502f0bdb97ebbda0eb4f6cb75455d5a01529",
             "shasum": ""
         },
         "require": {
@@ -1132,7 +1132,7 @@
             "symfony/var-dumper": "Required to use the dd function (^4.2).",
             "vlucas/phpdotenv": "Required to use the env helper (^3.3)."
         },
-        "time": "2019-03-05T13:38:58+00:00",
+        "time": "2019-03-25T21:36:23+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1235,17 +1235,17 @@
     },
     {
         "name": "league/commonmark",
-        "version": "0.18.1",
-        "version_normalized": "0.18.1.0",
+        "version": "0.18.5",
+        "version_normalized": "0.18.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/commonmark.git",
-            "reference": "e5029f74ba39e043ce4b3ca6c05dc719d8aafd94"
+            "reference": "f94e18d68260f43a7d846279cad88405854b1306"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/e5029f74ba39e043ce4b3ca6c05dc719d8aafd94",
-            "reference": "e5029f74ba39e043ce4b3ca6c05dc719d8aafd94",
+            "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/f94e18d68260f43a7d846279cad88405854b1306",
+            "reference": "f94e18d68260f43a7d846279cad88405854b1306",
             "shasum": ""
         },
         "require": {
@@ -1261,14 +1261,14 @@
             "erusev/parsedown": "~1.0",
             "michelf/php-markdown": "~1.4",
             "mikehaertl/php-shellcommand": "^1.2",
-            "phpunit/phpunit": "^5.7|^6.5",
+            "phpunit/phpunit": "^5.7.27|^6.5.14",
             "scrutinizer/ocular": "^1.1",
             "symfony/finder": "^3.0|^4.0"
         },
         "suggest": {
             "league/commonmark-extras": "Library of useful extensions including smart punctuation"
         },
-        "time": "2018-12-30T01:55:29+00:00",
+        "time": "2019-03-28T13:52:31+00:00",
         "bin": [
             "bin/commonmark"
         ],
@@ -1553,17 +1553,17 @@
     },
     {
         "name": "nesbot/carbon",
-        "version": "2.14.2",
-        "version_normalized": "2.14.2.0",
+        "version": "2.16.1",
+        "version_normalized": "2.16.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/briannesbitt/Carbon.git",
-            "reference": "a1f4f9abcde8241ce33bf5090896e9c16d0b4232"
+            "reference": "b509524136d579f6b15ad9af4e5bd4533d1ab6c2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/a1f4f9abcde8241ce33bf5090896e9c16d0b4232",
-            "reference": "a1f4f9abcde8241ce33bf5090896e9c16d0b4232",
+            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/b509524136d579f6b15ad9af4e5bd4533d1ab6c2",
+            "reference": "b509524136d579f6b15ad9af4e5bd4533d1ab6c2",
             "shasum": ""
         },
         "require": {
@@ -1579,7 +1579,7 @@
             "phpunit/phpunit": "^7.5 || ^8.0",
             "squizlabs/php_codesniffer": "^3.4"
         },
-        "time": "2019-02-28T09:07:12+00:00",
+        "time": "2019-03-20T12:20:01+00:00",
         "type": "library",
         "extra": {
             "laravel": {
@@ -2038,36 +2038,39 @@
     },
     {
         "name": "swiftmailer/swiftmailer",
-        "version": "v6.1.3",
-        "version_normalized": "6.1.3.0",
+        "version": "v6.2.0",
+        "version_normalized": "6.2.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/swiftmailer/swiftmailer.git",
-            "reference": "8ddcb66ac10c392d3beb54829eef8ac1438595f4"
+            "reference": "6fa3232ff9d3f8237c0fae4b7ff05e1baa4cd707"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/8ddcb66ac10c392d3beb54829eef8ac1438595f4",
-            "reference": "8ddcb66ac10c392d3beb54829eef8ac1438595f4",
+            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/6fa3232ff9d3f8237c0fae4b7ff05e1baa4cd707",
+            "reference": "6fa3232ff9d3f8237c0fae4b7ff05e1baa4cd707",
             "shasum": ""
         },
         "require": {
             "egulias/email-validator": "~2.0",
-            "php": ">=7.0.0"
+            "php": ">=7.0.0",
+            "symfony/polyfill-iconv": "^1.0",
+            "symfony/polyfill-intl-idn": "^1.10",
+            "symfony/polyfill-mbstring": "^1.0"
         },
         "require-dev": {
             "mockery/mockery": "~0.9.1",
-            "symfony/phpunit-bridge": "~3.3@dev"
+            "symfony/phpunit-bridge": "^3.4.19|^4.1.8"
         },
         "suggest": {
             "ext-intl": "Needed to support internationalized email addresses",
             "true/punycode": "Needed to support internationalized email addresses, if ext-intl is not installed"
         },
-        "time": "2018-09-11T07:12:52+00:00",
+        "time": "2019-03-10T07:52:41+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "6.1-dev"
+                "dev-master": "6.2-dev"
             }
         },
         "installation-source": "dist",
@@ -2572,17 +2575,17 @@
     },
     {
         "name": "symfony/polyfill-ctype",
-        "version": "v1.10.0",
-        "version_normalized": "1.10.0.0",
+        "version": "v1.11.0",
+        "version_normalized": "1.11.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-ctype.git",
-            "reference": "e3d826245268269cd66f8326bd8bc066687b4a19"
+            "reference": "82ebae02209c21113908c229e9883c419720738a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/e3d826245268269cd66f8326bd8bc066687b4a19",
-            "reference": "e3d826245268269cd66f8326bd8bc066687b4a19",
+            "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/82ebae02209c21113908c229e9883c419720738a",
+            "reference": "82ebae02209c21113908c229e9883c419720738a",
             "shasum": ""
         },
         "require": {
@@ -2591,11 +2594,11 @@
         "suggest": {
             "ext-ctype": "For best performance"
         },
-        "time": "2018-08-06T14:22:27+00:00",
+        "time": "2019-02-06T07:57:58+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.9-dev"
+                "dev-master": "1.11-dev"
             }
         },
         "installation-source": "dist",
@@ -2618,7 +2621,7 @@
             },
             {
                 "name": "Gert de Pagter",
-                "email": "BackEndTea@gmail.com"
+                "email": "backendtea@gmail.com"
             }
         ],
         "description": "Symfony polyfill for ctype functions",
@@ -2631,18 +2634,143 @@
         ]
     },
     {
-        "name": "symfony/polyfill-mbstring",
-        "version": "v1.10.0",
-        "version_normalized": "1.10.0.0",
+        "name": "symfony/polyfill-iconv",
+        "version": "v1.11.0",
+        "version_normalized": "1.11.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/symfony/polyfill-mbstring.git",
-            "reference": "c79c051f5b3a46be09205c73b80b346e4153e494"
+            "url": "https://github.com/symfony/polyfill-iconv.git",
+            "reference": "f037ea22acfaee983e271dd9c3b8bb4150bd8ad7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/c79c051f5b3a46be09205c73b80b346e4153e494",
-            "reference": "c79c051f5b3a46be09205c73b80b346e4153e494",
+            "url": "https://api.github.com/repos/symfony/polyfill-iconv/zipball/f037ea22acfaee983e271dd9c3b8bb4150bd8ad7",
+            "reference": "f037ea22acfaee983e271dd9c3b8bb4150bd8ad7",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "suggest": {
+            "ext-iconv": "For best performance"
+        },
+        "time": "2019-02-06T07:57:58+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.11-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Polyfill\\Iconv\\": ""
+            },
+            "files": [
+                "bootstrap.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Nicolas Grekas",
+                "email": "p@tchwork.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony polyfill for the Iconv extension",
+        "homepage": "https://symfony.com",
+        "keywords": [
+            "compatibility",
+            "iconv",
+            "polyfill",
+            "portable",
+            "shim"
+        ]
+    },
+    {
+        "name": "symfony/polyfill-intl-idn",
+        "version": "v1.11.0",
+        "version_normalized": "1.11.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/polyfill-intl-idn.git",
+            "reference": "c766e95bec706cdd89903b1eda8afab7d7a6b7af"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/c766e95bec706cdd89903b1eda8afab7d7a6b7af",
+            "reference": "c766e95bec706cdd89903b1eda8afab7d7a6b7af",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "symfony/polyfill-mbstring": "^1.3",
+            "symfony/polyfill-php72": "^1.9"
+        },
+        "suggest": {
+            "ext-intl": "For best performance"
+        },
+        "time": "2019-03-04T13:44:35+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.9-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Polyfill\\Intl\\Idn\\": ""
+            },
+            "files": [
+                "bootstrap.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            },
+            {
+                "name": "Laurent Bassin",
+                "email": "laurent@bassin.info"
+            }
+        ],
+        "description": "Symfony polyfill for intl's idn_to_ascii and idn_to_utf8 functions",
+        "homepage": "https://symfony.com",
+        "keywords": [
+            "compatibility",
+            "idn",
+            "intl",
+            "polyfill",
+            "portable",
+            "shim"
+        ]
+    },
+    {
+        "name": "symfony/polyfill-mbstring",
+        "version": "v1.11.0",
+        "version_normalized": "1.11.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/polyfill-mbstring.git",
+            "reference": "fe5e94c604826c35a32fa832f35bd036b6799609"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fe5e94c604826c35a32fa832f35bd036b6799609",
+            "reference": "fe5e94c604826c35a32fa832f35bd036b6799609",
             "shasum": ""
         },
         "require": {
@@ -2651,11 +2779,11 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
-        "time": "2018-09-21T13:07:52+00:00",
+        "time": "2019-02-06T07:57:58+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.9-dev"
+                "dev-master": "1.11-dev"
             }
         },
         "installation-source": "dist",
@@ -2692,85 +2820,28 @@
         ]
     },
     {
-        "name": "symfony/polyfill-php71",
-        "version": "v1.10.0",
-        "version_normalized": "1.10.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/polyfill-php71.git",
-            "reference": "1766834a22738196eb45486c4ca23c5739513bf4"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-php71/zipball/1766834a22738196eb45486c4ca23c5739513bf4",
-            "reference": "1766834a22738196eb45486c4ca23c5739513bf4",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "time": "2018-08-06T14:22:27+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.9-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Polyfill\\Php71\\": ""
-            },
-            "files": [
-                "bootstrap.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Nicolas Grekas",
-                "email": "p@tchwork.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony polyfill backporting some PHP 7.1+ features to lower PHP versions",
-        "homepage": "https://symfony.com",
-        "keywords": [
-            "compatibility",
-            "polyfill",
-            "portable",
-            "shim"
-        ]
-    },
-    {
         "name": "symfony/polyfill-php72",
-        "version": "v1.10.0",
-        "version_normalized": "1.10.0.0",
+        "version": "v1.11.0",
+        "version_normalized": "1.11.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-php72.git",
-            "reference": "9050816e2ca34a8e916c3a0ae8b9c2fccf68b631"
+            "reference": "ab50dcf166d5f577978419edd37aa2bb8eabce0c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/9050816e2ca34a8e916c3a0ae8b9c2fccf68b631",
-            "reference": "9050816e2ca34a8e916c3a0ae8b9c2fccf68b631",
+            "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/ab50dcf166d5f577978419edd37aa2bb8eabce0c",
+            "reference": "ab50dcf166d5f577978419edd37aa2bb8eabce0c",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.3"
         },
-        "time": "2018-09-21T13:07:52+00:00",
+        "time": "2019-02-06T07:57:58+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.9-dev"
+                "dev-master": "1.11-dev"
             }
         },
         "installation-source": "dist",

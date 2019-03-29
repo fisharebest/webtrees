@@ -24,11 +24,12 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class GoogleAnalyticsModule - add support for Google analytics.
  */
-class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInterface, ModuleConfigInterface, ModuleExternalUrlInterface
+class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInterface, ModuleConfigInterface, ModuleExternalUrlInterface, ModuleGlobalInterface
 {
     use ModuleAnalyticsTrait;
     use ModuleConfigTrait;
     use ModuleExternalUrlTrait;
+    use ModuleGlobalTrait;
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -38,6 +39,16 @@ class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
     public function title(): string
     {
         return 'Google™ analytics';
+    }
+
+    /**
+     * Should this module be enabled when it is first installed?
+     *
+     * @return bool
+     */
+    public function isEnabledByDefault(): bool
+    {
+        return false;
     }
 
     /**
@@ -91,5 +102,20 @@ class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
         ];
 
         return view('modules/google-analytics/snippet', $parameters);
+    }
+
+    /**
+     * Raw content, to be added at the end of the <head> element.
+     * Typically, this will be <link> and <meta> elements.
+     *
+     * @return string
+     */
+    public function headContent(): string
+    {
+        if ($this->analyticsCanShow()) {
+            return $this->analyticsSnippet($this->analyticsParameters());
+        }
+
+        return '';
     }
 }

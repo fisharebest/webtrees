@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @var string   $name
+ * @var mixed    $selected
+ * @var string[] $options
+ */
+
+?>
+
+<?php foreach ($options as $value => $label) : ?>
+    <?= view('components/radio', ['label' => $label, 'name' => $name, 'value' => (string) $value, 'checked' => $value === $selected]) ?>
+<?php endforeach ?>

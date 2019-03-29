@@ -52,19 +52,19 @@ abstract class AbstractReport
     public $left_margin = 18.0 * self::MM_TO_POINTS;
 
     /** @var float Right Margin */
-    public $right_margin = 18.0 * self::MM_TO_POINTS;
+    public $right_margin = 9.9 * self::MM_TO_POINTS;
 
     /** @var float Top Margin */
-    public $top_margin = 18.0 * self::MM_TO_POINTS;
+    public $top_margin = 26.8 * self::MM_TO_POINTS;
 
     /** @var float Bottom Margin */
-    public $bottom_margin = 18.0 * self::MM_TO_POINTS;
+    public $bottom_margin = 21.6 * self::MM_TO_POINTS;
 
     /** @var float Header Margin */
-    public $header_margin = 5.0 * self::MM_TO_POINTS;
+    public $header_margin = 4.9 * self::MM_TO_POINTS;
 
     /** @var float Footer Margin */
-    public $footer_margin = 10.0 * self::MM_TO_POINTS;
+    public $footer_margin = 9.9 * self::MM_TO_POINTS;
 
     /** @var string Page orientation (portrait, landscape) */
     public $orientation = 'portrait';

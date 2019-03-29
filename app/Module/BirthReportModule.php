@@ -18,8 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Menu;
 
 /**
  * Class BirthReportModule
@@ -50,25 +48,5 @@ class BirthReportModule extends AbstractModule implements ModuleReportInterface
         // This text also appears in the .XML file - update both together
         /* I18N: Description of the “Births” module */
         return I18N::translate('A report of individuals who were born in a given time or place.');
-    }
-
-    /**
-     * Return a menu item for this report.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu
-     */
-    public function getReportMenu(Individual $individual): Menu
-    {
-        return new Menu(
-            $this->title(),
-            route('report-setup', [
-                'ged'    => $individual->tree()->name(),
-                'report' => $this->name(),
-            ]),
-            'menu-report-' . $this->name(),
-            ['rel' => 'nofollow']
-        );
     }
 }

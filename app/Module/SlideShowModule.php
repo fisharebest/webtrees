@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -68,9 +69,11 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
-        $filter   = $this->getBlockSetting($block_id, 'filter', 'all');
-        $controls = $this->getBlockSetting($block_id, 'controls', '1');
-        $start    = (bool) $this->getBlockSetting($block_id, 'start', '0');
+        $request       = app(Request::class);
+        $default_start = $this->getBlockSetting($block_id, 'start', '0');
+        $filter        = $this->getBlockSetting($block_id, 'filter', 'all');
+        $controls      = $this->getBlockSetting($block_id, 'controls', '1');
+        $start         = (bool) $request->get('start', $default_start);
 
         $media_types = [
             $this->getBlockSetting($block_id, 'filter_audio', '0') ? 'audio' : null,
@@ -161,7 +164,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
             }
 
             return view('modules/block-template', [
-                'block'      => str_replace('_', '-', $this->name()),
+                'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => $config_url,
                 'title'      => $this->title(),

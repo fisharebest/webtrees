@@ -18,9 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
 use Fisharebest\Algorithm\MyersDiff;
-use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\I18N;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -28,9 +26,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 abstract class BatchUpdateBasePlugin
 {
-    /** @var bool User option; update change record */
-    public $chan = false;
-
     /**
      * @param GedcomRecord $record
      *
@@ -64,7 +59,6 @@ abstract class BatchUpdateBasePlugin
      */
     public function getOptions(Request $request): void
     {
-        $this->chan = (bool) $request->get('chan');
     }
 
     /**
@@ -74,15 +68,7 @@ abstract class BatchUpdateBasePlugin
      */
     public function getOptionsForm(): string
     {
-        return
-            '<div class="row form-group">' .
-            '<label class="col-sm-3 col-form-label">' . I18N::translate('Keep the existing “last change” information') . '</label>' .
-            '<div class="col-sm-9">' .
-            Bootstrap4::radioButtons('chan', [
-                0 => I18N::translate('no'),
-                1 => I18N::translate('yes'),
-            ], ($this->chan ? 1 : 0), true, ['onchange' => 'this.form.submit();']) .
-            '</div></div>';
+        return '';
     }
 
     /**

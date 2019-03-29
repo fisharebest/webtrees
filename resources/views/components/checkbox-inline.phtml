@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @var bool|null   $checked
+ * @var bool|null   $disabled
+ * @var string|null $id
+ * @var string      $label
+ * @var string      $name
+ * @var string      $value
+ */
+
+?>
+
+<div class="form-check form-check-inline">
+    <input type="checkbox" class="form-check-input"
+        name="<?= e($name) ?>"
+        id="<?= e($id ?? $name . '-' . ($value ?? '1')) ?>"
+        value="<?= e($value ?? '1') ?>"
+        <?= $checked ?? false ? 'checked' : '' ?>
+        <?= $disabled ?? false ? 'disabled' : '' ?>
+    >
+    <label class="form-check-label" for="<?= e($id ?? $name . '-' . ($value ?? '1')) ?>">
+        <?= $label ?>
+    </label>
+</div>
