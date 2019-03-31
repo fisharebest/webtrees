@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:51+0100\n"
-"PO-Revision-Date: 2018-07-20 00:00+0000\n"
-"Last-Translator: Ahmed Magdy <ahm3dksa@gmail.com>\n"
-"Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/webtrees/ar/>\n"
+"PO-Revision-Date: 2019-03-31 21:08+0000\n"
+"Last-Translator: Muadh Hamidaddin <muadh@hamidaddin.net>\n"
+"Language-Team: Arabic <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -84,7 +84,7 @@ msgstr "%1$s هو عدد الكيلوبايت بينما %2$s هو عدد الث
 #: app/Http/Controllers/AdminUsersController.php:392
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s غير موجود"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/AdminTreesController.php:223
@@ -110,12 +110,12 @@ msgstr "%1$s لا يوجد لديه رابط إلى %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "لم يتم استخراج أي ملفات في  %2$s ثانية."
+msgstr[0] "تم استخراج %1$s ملف في  %2$s ثانية."
 msgstr[1] "تم استخراج ملف واحد %1$s في %2$s ثانية."
 msgstr[2] "تم استخراج ملفين %1$s في %2$s ثانية."
 msgstr[3] "تم استخراج %1$s ملفات في %2$s ثانية."
-msgstr[4] "تم استخراج %1$s ملفات في %2$s ثانية."
-msgstr[5] "تم استخراج %1$s ملفات في %2$s ثانية."
+msgstr[4] "تم استخراج %1$s ملفاَ في %2$s ثانية."
+msgstr[5] "تم استخراج %1$s ملفاَ في %2$s ثانية."
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: app/Http/Controllers/AdminTreesController.php:244
@@ -216,12 +216,12 @@ msgstr "%s ونسلهم"
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] "%s مستخدم مجهول مسجل دخولاً"
-msgstr[1] "%s مستخدم مجهول مسجل دخولاً"
-msgstr[2] "%s مستخدم مجهول مسجل دخولاً"
+msgstr[0] "%s مستخدم مسجل مجهول"
+msgstr[1] "%s مستخدم مسجل مجهول"
+msgstr[2] "%s مستخدمان مسجلان مجهولان"
 msgstr[3] "%s مستخدمين  مجهولين مسجلين دخولاً"
-msgstr[4] "%s مستخدمين  مجهولين مسجلين دخولاً"
-msgstr[5] "%s مستخدمين  مجهولين مسجلين دخولاً"
+msgstr[4] "%s مستخدماَ مسجلاَ مجهولاَ"
+msgstr[5] "%s مستخدماً مسجلاَ مجهولاَ"
 
 #: app/Functions/FunctionsCharts.php:300 app/Stats.php:4653 app/Stats.php:4655
 #, php-format
@@ -309,12 +309,12 @@ msgstr[5] "%s فرداً"
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] "تم تحديث %s فرداً."
-msgstr[1] "تم تحديث %s فرداً."
-msgstr[2] "تم تحديث %s فرداً."
-msgstr[3] "تم تحديث %s فرداً."
-msgstr[4] "تم تحديث %s أفراد."
-msgstr[5] "تم تحديث %s أفراد."
+msgstr[0] "لم يتم تحديث أحد."
+msgstr[1] "تم تحديث فرداً واحداً."
+msgstr[2] "تم تحديث فردان."
+msgstr[3] "تم تحديث %s أفراد."
+msgstr[4] "تم تحديث %s فرداً."
+msgstr[5] "تم تحديث %s فرداً."
 
 #: app/Http/Controllers/LifespansChartController.php:383
 #, php-format
@@ -359,12 +359,12 @@ msgstr "%s معطل على هذا الخادم ولا يمكنك تثبيت webt
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "لم يتم توريد أي مكان."
+msgstr[1] "تم توريد مكان واحد."
+msgstr[2] "تم توريد مكانين."
+msgstr[3] "تم توريد %s أماكن."
+msgstr[4] "تم توريد %s مكاناً."
+msgstr[5] "تم توريد %s مكاناَ."
 
 #: app/Module/UserMessagesModule.php:177
 #, php-format
@@ -439,12 +439,12 @@ msgstr "%s بفارق جيل واحد نزولاً"
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "لم يتم تحديث أي مستودع."
+msgstr[1] "تم تحديث مستودعاَ واحد."
+msgstr[2] "تم تحديث مستودعان."
+msgstr[3] "تم تحديث %s مستودعات."
+msgstr[4] "تك تحديث %s مستودعاً."
+msgstr[5] "تم تحديث %s مستودعاً."
 
 #: app/I18N.php:872
 #, php-format
@@ -812,42 +812,42 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.php:20
 msgid "A URL"
-msgstr ""
+msgstr "عنوان على الشبكة"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:63
 msgid "A chart displaying relationships between two individuals."
-msgstr "رسم بياني يظهر العلاقة بين فردين."
+msgstr "مخطط يظهر العلاقة بين فردين."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:49
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr "رسم بياني يظهر أسلاف وأحفاد الفرد على شكل كتاب للعائلة."
+msgstr "مخطط يظهر أسلاف وأحفاد الفرد على شكل كتاب للعائلة."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:49
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "رسم بياني لأسلاف الفرد علي شكل مشجر مضغوط."
+msgstr "مخطط لأسلاف الفرد علي شكل مشجر مضغوط."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:49
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr "رسم بياني لأسلاف الفرد، منسق بشكل مشجر."
+msgstr "مخطط لأسلاف الفرد، منسق بشكل مشجر."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:49
 msgid "A chart of an individual’s ancestors."
-msgstr "رسم بياني لأسلاف الفرد."
+msgstr "مخطط لأسلاف الفرد."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:49
 msgid "A chart of an individual’s descendants."
-msgstr "رسم بياني لأحفاد الفرد."
+msgstr "مخطط لأحفاد الفرد."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:49
 msgid "A chart of individuals’ lifespans."
-msgstr "رسم بياني لأعمار الأفراد."
+msgstr "مخطط لأعمار الأفراد."
 
 #: resources/views/edit/link-child-to-family.php:28
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
@@ -1511,7 +1511,7 @@ msgstr "إضافة قصص سردية للأفراد في المشجر."
 
 #: resources/views/admin/map-import-form.php:72
 msgid "Add new, and update existing records"
-msgstr ""
+msgstr "إضافة جديد، وتحديث سجلات موجودة"
 
 #: resources/views/admin/trees-import.php:83
 msgid "Add spaces where long lines were wrapped"
@@ -1820,7 +1820,7 @@ msgstr "العمر عند الزواج"
 #: resources/views/statistics-chart-custom.php:196
 #: resources/views/statistics-chart-custom.php:209
 msgid "Age interval"
-msgstr ""
+msgstr "فترة عمرية"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.php:548
@@ -2038,7 +2038,7 @@ msgstr "لقد نتج خطأ غير متوقع في قاعدة البيانات.
 #: resources/views/modules/pedigree-map/pedigree-map.php:82
 #: resources/views/place-map.php:85
 msgid "An unknown error occurred"
-msgstr ""
+msgstr "حدث خطأ غير معروف"
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -3457,7 +3457,7 @@ msgstr "سبب الوفاة"
 
 #: resources/views/modals/media-file-fields.php:93
 msgid "Caution!"
-msgstr ""
+msgstr "إحتراس!"
 
 #: resources/views/admin/trees-renumber.php:32
 #: resources/views/admin/trees.php:426
@@ -3810,7 +3810,7 @@ msgstr "مزين"
 
 #: resources/views/modules/census-assistant.php:29
 msgid "Citation"
-msgstr ""
+msgstr "إقتباس"
 
 #. I18N: gedcom tag PAGE
 #: app/GedcomTag.php:925 modules_v3/fact_sources/report.xml:74
@@ -3958,7 +3958,7 @@ msgstr "مشجر مضغوط لـ: %s"
 
 #: resources/views/admin/webtrees1-thumbnails.php:25
 msgid "Comparison"
-msgstr ""
+msgstr "مقارنة"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:130
@@ -4148,11 +4148,11 @@ msgstr "إنشاء"
 
 #: app/Functions/FunctionsEdit.php:676
 msgid "Create a family"
-msgstr ""
+msgstr "إنشاء عائلة"
 
 #: resources/views/modals/create-family.php:12
 msgid "Create a family from existing individuals"
-msgstr ""
+msgstr "إنشاء عائلة من أفراد موجودين"
 
 #: resources/views/admin/trees.php:308
 msgid "Create a family tree"
@@ -4186,11 +4186,11 @@ msgstr "إنشاء مصدر جديد"
 #: app/Functions/FunctionsEdit.php:785
 #: resources/views/modals/create-submitter.php:7
 msgid "Create a submitter"
-msgstr ""
+msgstr "إنشاء مقدم"
 
 #: resources/views/modals/media-file-fields.php:69
 msgid "Create a unique filename"
-msgstr ""
+msgstr "إنشاء إسم ملف فريد"
 
 #: app/Http/Controllers/EditIndividualController.php:524
 msgid "Create an individual"
@@ -5438,7 +5438,7 @@ msgstr "تعديل"
 #: app/Http/Controllers/EditMediaController.php:150
 #: resources/views/modals/edit-media-file.php:6
 msgid "Edit a media file"
-msgstr ""
+msgstr "إنشاء ملف وسائط"
 
 #. I18N: Options for editing
 #: resources/views/admin/trees-preferences.php:850
@@ -5493,7 +5493,7 @@ msgstr "تعديل معلومات هذا الفرد وإستبدالها بتف�
 #. I18N: A restriction on editing data
 #: resources/views/modals/restriction-fields.php:22
 msgid "Editing restriction"
-msgstr ""
+msgstr "تقييد التحرير"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/Controllers/AdminUsersController.php:449
@@ -6381,7 +6381,7 @@ msgstr "العلم"
 #: resources/views/admin/locations.php:45
 #, php-format
 msgid "Flag of %s"
-msgstr ""
+msgstr "علم %s"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7312
@@ -7288,7 +7288,7 @@ msgstr "رقم تعريف"
 
 #: resources/views/admin/fix-level-0-media.php:9
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
-msgstr ""
+msgstr "إذا كان كائن الوسائط مرتبط الى فرد، بينما كان يلزم أن رتبط إلى حدث أو معلومة، عندئذِ يمكن نقله إلى موقعه الصحيح."
 
 #. I18N: Help text for the “Language” configuration setting
 #: resources/views/admin/trees-preferences.php:78
@@ -7326,7 +7326,7 @@ msgstr "عند عدم معرفة إسم العائلة أو عدم الرغبة 
 
 #: resources/views/admin/webtrees1-thumbnails.php:13
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
-msgstr ""
+msgstr "اذا كانت الصورة المصغرة مماثلة للصورة الأصل، فلا داعي لحذفها. بينما إذا كانت مغايرة، فيلزم إضافتها لكائن وسائط."
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.php:75
@@ -7417,7 +7417,7 @@ msgstr "توريد"
 
 #: resources/views/admin/map-import-form.php:67
 msgid "Import Options."
-msgstr ""
+msgstr "خيارت التوريد."
 
 #: app/Http/Controllers/AdminTreesController.php:583
 msgid "Import a GEDCOM file"
@@ -7430,11 +7430,11 @@ msgstr "توريد جميع الأماكن من مشجر"
 #: app/Http/Controllers/AdminController.php:548
 #: resources/views/admin/control-panel.php:386
 msgid "Import custom thumbnails from webtrees version 1"
-msgstr ""
+msgstr "توريد صور مصغرة خاصة من نسخة webtrees 1"
 
 #: app/Http/Controllers/AdminLocationController.php:312
 msgid "Import geographic data"
-msgstr ""
+msgstr "توريد بيانات جغرافية"
 
 #: resources/views/admin/trees-import.php:71
 msgid "Import preferences"
@@ -7474,11 +7474,11 @@ msgstr "في هذه السنة …"
 #. I18N: "thumbs" is fixed text.  Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.php:9
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-msgstr ""
+msgstr "في نسخة webtrees 1، كان بالإستطاعة إضافة صور مصغرة خاصة لكائن الوسائط بإنشاء ملف في مجلد \"thumbs\"."
 
 #: resources/views/admin/webtrees1-thumbnails.php:11
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
-msgstr ""
+msgstr "في نسخة webtrees 2، الصور المصغرة الخاصة مخزنه كملف وسائط ثاني في نفس كائن الوسائط."
 
 #: resources/views/admin/trees-unconnected.php:11
 msgid "Include associates"
@@ -7955,7 +7955,7 @@ msgstr "الحفاظ على كائنات الوسائط"
 
 #: resources/views/modals/on-screen-keyboard.php:8
 msgid "Keep open"
-msgstr ""
+msgstr "يترك مفتوح"
 
 #. I18N: A configuration setting
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:77
@@ -8221,7 +8221,7 @@ msgstr "عند ترك هذا فارغاً، سيتم إستخدام القيمة
 
 #: resources/views/admin/media-upload.php:36
 msgid "Leave this entry blank to keep the original filename"
-msgstr ""
+msgstr "يترك هذا المدخل فارغ للحفاظ على الإسم الأصلي"
 
 #: resources/views/lists/families-table.php:138
 #: resources/views/lists/individuals-table.php:190
@@ -8320,7 +8320,7 @@ msgstr "ليما، بيرو"
 #: app/Http/Controllers/AdminController.php:389
 #: resources/views/admin/control-panel.php:380
 msgid "Link media objects to facts and events"
-msgstr ""
+msgstr "ربط كائن الوسائط لمعلومات أو أحداث"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.php:22
@@ -8577,7 +8577,7 @@ msgstr "إدارة شجرات العوائل"
 #: resources/views/admin/trees-renumber.php:3
 #: resources/views/admin/trees-unconnected.php:4
 msgid "Manage family trees "
-msgstr ""
+msgstr "إدارة مشجرات العائلة "
 
 #: app/Http/Controllers/AdminMediaController.php:70
 #: resources/views/admin/control-panel.php:368
@@ -8648,7 +8648,7 @@ msgstr "خريطة"
 #: resources/views/admin/control-panel.php:417
 #: resources/views/admin/map-provider.php:12
 msgid "Map provider"
-msgstr ""
+msgstr "مزود الخريطة"
 
 #: app/Date/CalendarDate.php:366
 msgctxt "Abbreviation for March"
@@ -9553,7 +9553,7 @@ msgstr "إلى اليمين"
 
 #: resources/views/admin/fix-level-0-media-action.php:5
 msgid "Move the media object?"
-msgstr ""
+msgstr "نقل كائن الوسائط؟"
 
 #: resources/views/edit-blocks-page.php:158
 #: resources/views/edit-blocks-page.php:200
@@ -9968,7 +9968,7 @@ msgstr "لم يعثر على رابط بين الفردين."
 #: resources/views/modules/pedigree-map/pedigree-map.php:81
 #: resources/views/modules/places/tab.php:77 resources/views/place-map.php:84
 msgid "No mappable items"
-msgstr ""
+msgstr "لا يوجد عناصر معينة"
 
 #: resources/views/admin/merge-records-step-2.php:51
 #: resources/views/admin/merge-records-step-2.php:98
@@ -10368,7 +10368,7 @@ msgstr "في هذا اليوم …"
 
 #: resources/views/admin/map-import-form.php:73
 msgid "Only add new records"
-msgstr ""
+msgstr "إضافة سجلات جديدة فقط"
 
 #: app/Functions/FunctionsEdit.php:232
 #: app/Functions/FunctionsPrintFacts.php:270
@@ -10381,7 +10381,7 @@ msgstr "المشرفين فقط بإمكانهم التعديل"
 
 #: resources/views/admin/map-import-form.php:74
 msgid "Only update existing records"
-msgstr ""
+msgstr "تحديث سجلات موجودة فقط"
 
 #: resources/views/errors/database-connection.php:5
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
@@ -10460,7 +10460,7 @@ msgstr "معلومات أخرى لإظهارها في المخطط"
 
 #: resources/views/modals/media-file-fields.php:95
 msgid "Other genealogy applications might not recognize this data."
-msgstr ""
+msgstr "تطبيقات المشجرات الأخرى قد لا تتعرف على هذه البيانات."
 
 #: resources/views/admin/trees-preferences.php:1070
 msgid "Other preferences"
@@ -10972,7 +10972,7 @@ msgstr "يجب إدخال الأماكن وفقا لمعايير علم الأن
 
 #: resources/views/places-page.php:26
 msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
-msgstr ""
+msgstr "الأماكن بدون إحداثيات صحيحة لا تظهر في الخريطة وجانب الإدخال محاط ببرواز أحمر"
 
 #: resources/views/layouts/default.php:142
 #: resources/views/modules/random_media/slide-show.php:8
@@ -11151,12 +11151,12 @@ msgstr "الخصوصية"
 
 #: app/Http/Controllers/StaticPageController.php:36
 msgid "Privacy policy"
-msgstr ""
+msgstr "سياسة الخصوصية"
 
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.php:5
 msgid "Privacy restriction"
-msgstr ""
+msgstr "قيود الخصوصية"
 
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.php:160
@@ -11390,7 +11390,7 @@ msgstr "إعادة ترتيب الوسائط"
 #: app/Http/Controllers/EditIndividualController.php:109
 #: resources/views/individual-page-menu.php:24
 msgid "Re-order names"
-msgstr ""
+msgstr "إعادة ترتيب الأسماء"
 
 #: resources/views/admin/users-create.php:14
 #: resources/views/admin/users-edit.php:19 resources/views/admin/users.php:14
@@ -11403,7 +11403,7 @@ msgstr "الإسم الحقيقي"
 
 #: resources/views/admin/map-import-form.php:100
 msgid "Really delete all geographic data?"
-msgstr ""
+msgstr "حذف جميع البيانت الجغرافية كلياَ؟"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:44 modules_v3/change_report/report.xml:92
@@ -11731,7 +11731,7 @@ msgstr "مهام البحث يتم حفظها كعلامة Gedcom “_TODO” و
 #: resources/views/modules/pedigree-map/pedigree-map.php:80
 #: resources/views/modules/places/tab.php:76 resources/views/place-map.php:83
 msgid "Reset to initial map state"
-msgstr ""
+msgstr "إعادة ضبط حالة الخريطة للأصل"
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:973
@@ -11897,7 +11897,7 @@ msgstr "سولت لايك سيتي، يوتا"
 
 #: resources/views/modals/media-file-fields.php:60
 msgid "Same as uploaded file"
-msgstr ""
+msgstr "مثل الملف المحمل"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7659
@@ -12653,7 +12653,7 @@ msgstr "إظهار الصور"
 
 #: app/Http/Controllers/PlaceHierarchyController.php:72
 msgid "Show place hierarchy"
-msgstr ""
+msgstr "إظهار تسلسل الأماكن الهرمي"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.php:146
@@ -12707,7 +12707,7 @@ msgstr "إظهار القسم %1$s %2$s من إسم المكان."
 #. I18N: Description of the “OSM” module
 #: app/Module/PedigreeMapModule.php:71
 msgid "Show the birthplace of ancestors on a map."
-msgstr ""
+msgstr "إظهار مكان ولادة الأسلاف في الخريطة."
 
 #: resources/views/modules/html/config.php:41
 msgid "Show the date and time of update"
@@ -12733,7 +12733,7 @@ msgstr "إظهار قائمة أسماء العائلات"
 #. I18N: Description of the “OSM” module
 #: app/Module/PlacesModule.php:50
 msgid "Show the location of events on a map."
-msgstr ""
+msgstr "إظهار مواقع الأحداث في الخريطة."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.php:35
@@ -12879,7 +12879,7 @@ msgstr "بإمكان أعضاء الموقع إرسال الرسائل لبعض�
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:175
 msgid "Site preferences"
-msgstr ""
+msgstr "تفضيلات الموقع"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-analytics.php:20
@@ -13368,7 +13368,7 @@ msgstr "أسلوب تسمية العائلة"
 #: resources/views/modules/gedcom_stats/statistics.php:52
 #: resources/views/statistics-chart-custom.php:233
 msgid "Surnames"
-msgstr ""
+msgstr "الأسماء الأولى"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:111
@@ -13562,7 +13562,7 @@ msgstr "تم توريد ملف  الجيدكوم %s."
 
 #: resources/views/modals/media-file-fields.php:94
 msgid "The GEDCOM standard does not allow URLs in media objects."
-msgstr ""
+msgstr "لا يسمح معيار GEDCOM بعناوين روابط شبكة في كائنات الوسائط."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:376
@@ -13606,7 +13606,7 @@ msgstr "تتيح سلة المقتطفات  للمستخدم أخذ مقتطفا
 
 #: resources/views/privacy-policy.php:8
 msgid "The data in this website has been collected for the purposes of genealogical research."
-msgstr ""
+msgstr "البيانات الموجودة في هذا الموقع تم جمعها لأغراض أبحاث علم الأنساب."
 
 #: resources/views/admin/trees-preferences.php:441
 msgid "The date and time of the last update"
@@ -13615,7 +13615,7 @@ msgstr "وقت وتأريخ أخر تحديث"
 #: app/Http/Controllers/AdminLocationController.php:178
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr ""
+msgstr "التفاصيل \"ل%s\" تم تحديثها."
 
 #. I18N: %s is a filename
 #: app/Http/Controllers/AdminTreesController.php:509
@@ -13785,7 +13785,7 @@ msgstr "تم تغيير إسم ملف الوسائط %1$s إلى %2$s بنجاح
 
 #: app/Http/Controllers/EditMediaController.php:385
 msgid "The media object has been created"
-msgstr ""
+msgstr "تم إنشاء كائن الوسائط"
 
 #: resources/views/setup/step-2-server-checks.php:36
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -13841,7 +13841,7 @@ msgstr "سيطلب من المستخدم الجديد تأكيد عنوان ال
 
 #: app/Http/Controllers/EditNoteController.php:145
 msgid "The note has been created"
-msgstr ""
+msgstr "تم إنشاء المذكرة"
 
 #: app/Http/Controllers/SetupController.php:140
 msgid "The password needs to be at least six characters long."
@@ -13903,7 +13903,7 @@ msgstr "صيغة التعبير النمطي يبدو أنها خاطئة. لا 
 
 #: app/Http/Controllers/EditRepositoryController.php:84
 msgid "The repository has been created"
-msgstr ""
+msgstr "تم إنشاء المستودع"
 
 #: resources/views/setup/step-2-server-checks.php:29
 msgid "The server configuration is OK."
@@ -13921,15 +13921,15 @@ msgstr "إظهار إحصائيات ومعلومات عن المشجر، مثل 
 
 #: app/Http/Controllers/EditSourceController.php:126
 msgid "The source has been created"
-msgstr ""
+msgstr "تم إنشاء المصدر"
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:197
 msgid "The specified folder does not contain an installation of PhpGedView."
-msgstr ""
+msgstr "المجلد المحدد لا يوجد فيه تطبيق PhpGedView."
 
 #: app/Http/Controllers/EditSubmitterController.php:94
 msgid "The submitter has been created"
-msgstr ""
+msgstr "تم إنشاء المقدم"
 
 #: resources/views/help/name.php:9
 #, php-format
@@ -14053,7 +14053,7 @@ msgstr "لا توجد معلومات عن هذا الفرد."
 
 #: app/Http/Controllers/AdminMediaController.php:731
 msgid "There are no links to this media object."
-msgstr ""
+msgstr "لا توجد روابط لكائن الوسائط هذا."
 
 #: resources/views/modules/media/tab.php:16
 msgid "There are no media objects for this individual."
@@ -14498,7 +14498,7 @@ msgstr "هذا السجل غير موجود أو  ليست لديك صلاحية
 
 #: resources/views/admin/trees-privacy.php:238
 msgid "This record does not exist."
-msgstr ""
+msgstr "السجل غير موجود."
 
 #: resources/views/gedcom-record-page.php:11
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
@@ -14581,11 +14581,11 @@ msgstr "هذه لائحة بالمعلومات مفرقة بفواصل والت�
 
 #: resources/views/privacy-policy.php:25
 msgid "This site does not use any third-party tracking or analytics services."
-msgstr ""
+msgstr "هذا الموقع لا يستخدم خدمات تتبع أو تحليل من أي طرف ثالث."
 
 #: resources/views/privacy-policy.php:16
 msgid "This site uses cookies to store your preferences on this site, such as the language you have selected."
-msgstr ""
+msgstr "هذا الموقع يستخدم ملفات تعريف الإرتباط لتخزين خياراتك فيه، مثل اللغة المستخدم المختارة."
 
 #: app/Exceptions/SourceAccessDeniedException.php:33
 #: app/Exceptions/SourceNotFoundException.php:33
@@ -14665,7 +14665,7 @@ msgstr "الخميس"
 
 #: resources/views/admin/webtrees1-thumbnails.php:22
 msgid "Thumbnail image"
-msgstr ""
+msgstr "صور مصغرة"
 
 #: resources/views/admin/trees-preferences.php:340
 #: resources/views/admin/trees-preferences.php:346
@@ -15544,7 +15544,7 @@ msgstr "إظهار"
 #: resources/views/places-page.php:33
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr ""
+msgstr "إظهار لائحة بالأحداث التي تقع في %s"
 
 #: resources/views/calendar-page.php:149
 msgid "View this day"
@@ -16146,7 +16146,7 @@ msgstr "إضافة"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:76
 msgid "add place"
-msgstr ""
+msgstr "إضافة مكان"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:69
@@ -16714,7 +16714,7 @@ msgstr "زوجة سابقة"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:82
 msgid "export file"
-msgstr ""
+msgstr "تصدير ملف"
 
 #: app/Http/Controllers/AdminTreesController.php:892
 #: modules_v3/fact_sources/report.xml:6
@@ -18677,7 +18677,7 @@ msgstr "توريد"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:96
 msgid "import file"
-msgstr ""
+msgstr "توريد ملف"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:356
@@ -18740,7 +18740,7 @@ msgstr "قائمة"
 #: app/Http/Controllers/AdminLocationController.php:464
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr ""
+msgstr "مواقع تم تحديثها: %s، مواقع تمت إضافتها: %s"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:135
@@ -18805,7 +18805,7 @@ msgstr "والد أم"
 #. I18N: A system where children take their mother’s surname
 #: app/SurnameTradition.php:86
 msgid "matrilineal"
-msgstr "إنتساب أمموي"
+msgstr "إنتساب أموي"
 
 #: resources/views/modules/recent_changes/config.php:11
 #: resources/views/modules/upcoming_events/config.php:11
@@ -18870,17 +18870,17 @@ msgstr "إبن أخ"
 #: app/Functions/Functions.php:1161
 msgctxt "husband’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "إبن أخو الزوج"
 
 #: app/Functions/Functions.php:1157
 msgctxt "husband’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "إبن شقيق الزوج"
 
 #: app/Functions/Functions.php:1159
 msgctxt "husband’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "إبن أخت الزوج"
 
 #: app/Functions/Functions.php:913
 msgctxt "sibling’s son"
@@ -18895,17 +18895,17 @@ msgstr "إبن أخت"
 #: app/Functions/Functions.php:1401
 msgctxt "wife’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "إبن أخو الزوجة"
 
 #: app/Functions/Functions.php:1397
 msgctxt "wife’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "إبن شقيق الزوجة"
 
 #: app/Functions/Functions.php:1399
 msgctxt "wife’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "إبن أخت الزوجة"
 
 #: app/Functions/Functions.php:999
 msgctxt "brother’s daughter’s husband"
@@ -18930,17 +18930,17 @@ msgstr "ولد أخ"
 #: app/Functions/Functions.php:1149
 msgctxt "husband’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "ولد أخو الزوج"
 
 #: app/Functions/Functions.php:1145
 msgctxt "husband’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "ولد شقيق الزوج"
 
 #: app/Functions/Functions.php:1147
 msgctxt "husband’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "ولد أخت الزوج"
 
 #: app/Functions/Functions.php:909
 msgctxt "sibling’s child"
@@ -18955,21 +18955,21 @@ msgstr "ولد أخت"
 #: app/Functions/Functions.php:1389
 msgctxt "wife’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "ولد أخو الزوجة"
 
 #: app/Functions/Functions.php:1385
 msgctxt "wife’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "ولد شقيق الزوجة"
 
 #: app/Functions/Functions.php:1387
 msgctxt "wife’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "ولد أخت الزوجة"
 
 #: app/Functions/FunctionsEdit.php:808
 msgid "never"
-msgstr "لم"
+msgstr "كلا"
 
 #. I18N: A button label, next page
 #: app/Datatables.php:47 app/I18N.php:312
@@ -18984,7 +18984,7 @@ msgstr "لم"
 #: resources/views/setup/step-4-database-name.php:56
 #: resources/views/setup/step-5-administrator.php:76
 msgid "next"
-msgstr "اللاحق"
+msgstr "التالي"
 
 #: app/Functions/Functions.php:807
 msgctxt "brother’s daughter"
@@ -18994,17 +18994,17 @@ msgstr "بنت أخ"
 #: app/Functions/Functions.php:1155
 msgctxt "husband’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "بنت أخو الزوج"
 
 #: app/Functions/Functions.php:1151
 msgctxt "husband’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "بنت شقيق الزوج"
 
 #: app/Functions/Functions.php:1153
 msgctxt "husband’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "بنت أخت الزوج"
 
 #: app/Functions/Functions.php:911
 msgctxt "sibling’s daughter"
@@ -19019,17 +19019,17 @@ msgstr "بنت أخت"
 #: app/Functions/Functions.php:1395
 msgctxt "wife’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "بنت أخو الزوجة"
 
 #: app/Functions/Functions.php:1391
 msgctxt "wife’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "بنت شقيق الزوجة"
 
 #: app/Functions/Functions.php:1393
 msgctxt "wife’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "بنت أخت الزوجة"
 
 #: app/Functions/Functions.php:1025
 msgctxt "brother’s son’s wife"
