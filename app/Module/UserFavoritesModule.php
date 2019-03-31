@@ -33,6 +33,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
 use stdClass;
+
 /**
  * Class UserFavoritesModule
  */

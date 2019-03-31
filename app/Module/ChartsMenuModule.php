@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Request;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
+
 /**
  * Class ChartsMenuModule - provide a menu option for the charts
  */

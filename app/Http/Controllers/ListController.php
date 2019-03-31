@@ -37,6 +37,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
+
 /**
  * Controller for lists of GEDCOM records.
  */

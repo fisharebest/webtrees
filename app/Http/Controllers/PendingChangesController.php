@@ -37,6 +37,7 @@ use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+
 /**
  * Show, accept and reject pending changes.
  */

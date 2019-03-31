@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Http\Controllers\Admin\UsersController;
 use Fisharebest\Webtrees\Services\UserService;
+
 /**
  * Test the user administration pages
  */

@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Fisharebest\Webtrees\User;
 use Illuminate\Support\Str;
+
 /**
  * Controller for requesting password resets.
  */

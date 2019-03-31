@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
+
 /**
  * Class ReviewChangesModule
  */

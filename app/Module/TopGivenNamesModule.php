@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
+
 /**
  * Class TopGivenNamesModule
  */

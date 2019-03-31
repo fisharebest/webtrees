@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\RedirectResponse;
 use Fisharebest\Webtrees\ResponseInterface;
 use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Site;
+
 /**
  * Controller for maps and geographic data.
  */

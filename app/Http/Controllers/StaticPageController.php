@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\ResponseInterface;
 use Fisharebest\Webtrees\Tree;
+
 /**
  * Controller for static pages.
  */

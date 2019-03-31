@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
+
 /**
  * Controller for the source page.
  */

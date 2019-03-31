@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\ResponseInterface;
 use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Tree;
 use stdClass;
+
 /**
  * Class FamilyBookChartModule
  */

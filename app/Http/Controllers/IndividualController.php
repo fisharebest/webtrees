@@ -40,6 +40,7 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use stdClass;
+
 /**
  * Controller for the individual page.
  */

@@ -22,7 +22,7 @@ use function is_string;
 /**
  * Temporary class, to support migration to PSR-7, PSR-15 and PSR-17
  */
-Class MiddlewareDispatcher implements RequestHandlerInterface
+class MiddlewareDispatcher implements RequestHandlerInterface
 {
     /** @var MiddlewareInterface[] */
     private $queue;

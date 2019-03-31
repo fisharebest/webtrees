@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
+
 /**
  * Class AncestorsChartModule
  */

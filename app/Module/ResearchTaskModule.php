@@ -29,6 +29,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+
 /**
  * Class ResearchTaskModule
  */

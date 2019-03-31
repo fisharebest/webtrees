@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Response;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
+
 /**
  * Test the changes log controller
  *

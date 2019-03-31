@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\ParameterBag;
+
 /**
  * Class PoweredByWebtreesModule - show a cookie warning, to comply with the GDPR.
  */

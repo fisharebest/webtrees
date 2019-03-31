@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Tree;
+
 /**
  * Interface ModuleBlockInterface - Classes and libraries for module system
  */

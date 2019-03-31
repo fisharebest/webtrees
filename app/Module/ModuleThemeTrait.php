@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Request;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
+
 /**
  * Trait ModuleThemeTrait - default implementation of ModuleThemeInterface
  */

@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\ResponseInterface;
 use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
+
 /**
  * Class InteractiveTreeModule
  * Tip : you could change the number of generations loaded before ajax calls both in individual page and in treeview page to optimize speed and server load

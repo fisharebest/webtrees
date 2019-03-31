@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
+
 /**
  * Test the module controller
  *

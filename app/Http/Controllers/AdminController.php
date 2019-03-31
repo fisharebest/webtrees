@@ -34,6 +34,7 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
+
 /**
  * Controller for the administration pages
  */

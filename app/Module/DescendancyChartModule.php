@@ -34,6 +34,7 @@ use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Ramsey\Uuid\Uuid;
+
 /**
  * Class DescendancyChartModule
  */

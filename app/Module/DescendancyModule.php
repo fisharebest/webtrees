@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\ResponseInterface;
 use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
+
 /**
  * Class DescendancyModule
  */

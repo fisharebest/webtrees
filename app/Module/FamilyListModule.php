@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Services\IndividualListService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Auth;
+
 /**
  * Class FamilyListModule
  */

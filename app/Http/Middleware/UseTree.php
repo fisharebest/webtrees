@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
+
 /**
  * Middleware to set a global tree.
  */

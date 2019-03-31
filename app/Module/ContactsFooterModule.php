@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+
 /**
  * Class ContactsFooterModule - provide a link to the site owner.
  */

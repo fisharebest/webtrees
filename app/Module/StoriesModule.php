@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
+
 /**
  * Class StoriesModule
  */

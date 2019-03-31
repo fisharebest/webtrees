@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Tree;
+
 /**
  * Common logic for edit controllers.
  */

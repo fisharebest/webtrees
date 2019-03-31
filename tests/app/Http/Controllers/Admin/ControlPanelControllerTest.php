@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
+
 /**
  * Test the control panel controller
  *

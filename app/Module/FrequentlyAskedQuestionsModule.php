@@ -27,6 +27,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 use stdClass;
+
 /**
  * Class FrequentlyAskedQuestionsModule
  */

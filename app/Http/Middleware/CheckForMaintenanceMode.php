@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\RequestHandlerInterface;
 use Fisharebest\Webtrees\Response;
 use Fisharebest\Webtrees\ResponseInterface;
 use Fisharebest\Webtrees\ServerRequestInterface;
+
 /**
  * Middleware to check whether the site is offline.
  */

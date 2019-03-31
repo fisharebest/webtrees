@@ -34,6 +34,7 @@ use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Support\Collection;
+
 /**
  * Controller to allow the user to edit their account details.
  */

@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Support\Collection;
 use stdClass;
+
 /**
  * Class PlacesMapModule
  */

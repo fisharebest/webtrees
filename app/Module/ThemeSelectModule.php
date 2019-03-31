@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
+
 /**
  * Class ThemeSelectModule
  */

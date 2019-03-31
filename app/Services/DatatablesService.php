@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\JsonResponse;
 use Fisharebest\Webtrees\ServerRequestInterface;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
+
 /**
  * Paginate and search queries for datatables.
  */

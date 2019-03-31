@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Http\Controllers\ListController;
 use Fisharebest\Webtrees\Module\IndividualListModule;
 use Fisharebest\Webtrees\Services\IndividualListService;
 use Fisharebest\Webtrees\Services\LocalizationService;
+
 /**
  * Test the individual lists.
  *

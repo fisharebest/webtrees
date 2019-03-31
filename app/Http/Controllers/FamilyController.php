@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use stdClass;
+
 /**
  * Controller for the family page.
  */

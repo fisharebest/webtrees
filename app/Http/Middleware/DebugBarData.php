@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\RedirectResponse;
 use Fisharebest\Webtrees\RequestHandlerInterface;
 use Fisharebest\Webtrees\ResponseInterface;
 use Fisharebest\Webtrees\ServerRequestInterface;
+
 /**
  * Middleware to add debugging info to the PHP debugbar.
  */

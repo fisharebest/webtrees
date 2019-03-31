@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
+
 /**
  * Functions for managing users.
  */

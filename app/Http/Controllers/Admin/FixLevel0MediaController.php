@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use stdClass;
+
 /**
  * Controller for fixing media links.
  */

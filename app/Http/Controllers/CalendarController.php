@@ -36,6 +36,7 @@ use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Tree;
+
 /**
  * Show anniveraries for events in a given day/month/year.
  */

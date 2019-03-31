@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
+
 /**
  * Class TopSurnamesModule
  */

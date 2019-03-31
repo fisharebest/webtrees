@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
+
 /**
  * Class YahrzeitModule
  */

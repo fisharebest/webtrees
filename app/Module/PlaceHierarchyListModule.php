@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
+
 /**
  * Class IndividualListModule
  */

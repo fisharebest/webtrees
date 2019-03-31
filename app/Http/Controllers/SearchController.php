@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
+
 /**
  * Search for (and optionally replace) genealogy data
  */
