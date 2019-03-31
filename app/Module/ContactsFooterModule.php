@@ -18,11 +18,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use Symfony\Component\HttpFoundation\Request;
-
 /**
  * Class ContactsFooterModule - provide a link to the site owner.
  */
@@ -30,7 +29,7 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
 {
     use ModuleFooterTrait;
 
-    /** @var Request */
+    /** @var ServerRequestInterface */
     protected $request;
 
     /**
@@ -41,10 +40,10 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
     /**
      * Dependency injection.
      *
-     * @param Request     $request
-     * @param UserService $user_service
+     * @param ServerRequestInterface $request
+     * @param UserService            $user_service
      */
-    public function __construct(Request $request, UserService $user_service)
+    public function __construct(ServerRequestInterface $request, UserService $user_service)
     {
         $this->request      = $request;
         $this->user_service = $user_service;

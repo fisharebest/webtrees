@@ -20,12 +20,11 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Controller for the media page.
  */
@@ -34,13 +33,13 @@ class MediaController extends AbstractBaseController
     /**
      * Show a repository's page.
      *
-     * @param Request          $request
-     * @param Tree             $tree
-     * @param ClipboardService $clipboard_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param ClipboardService       $clipboard_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function show(Request $request, Tree $tree, ClipboardService $clipboard_service): Response
+    public function show(ServerRequestInterface $request, Tree $tree, ClipboardService $clipboard_service): ResponseInterface
     {
         $xref  = $request->get('xref', '');
         $media = Media::getInstance($xref, $tree);

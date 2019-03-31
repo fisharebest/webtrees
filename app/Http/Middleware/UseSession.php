@@ -17,14 +17,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Closure;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\MiddlewareInterface;
+use Fisharebest\Webtrees\RequestHandlerInterface;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Session;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Throwable;
 
 /**
  * Middleware to activate sessions.
@@ -32,13 +32,12 @@ use Throwable;
 class UseSession implements MiddlewareInterface
 {
     /**
-     * @param Request $request
-     * @param Closure $next
+     * @param ServerRequestInterface  $request
+     * @param RequestHandlerInterface $handler
      *
-     * @return Response
-     * @throws Throwable
+     * @return ResponseInterface
      */
-    public function handle(Request $request, Closure $next): Response
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // Sessions
         Session::start();
@@ -56,6 +55,6 @@ class UseSession implements MiddlewareInterface
 
         app()->instance(UserInterface::class, Auth::user());
 
-        return $next($request);
+        return $handler->handle($request);
     }
 }

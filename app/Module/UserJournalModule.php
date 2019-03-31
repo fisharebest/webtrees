@@ -20,13 +20,13 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\RedirectResponse;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
 use stdClass;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
@@ -120,12 +120,12 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
-     * @param int     $block_id
+     * @param ServerRequestInterface $request
+     * @param int                    $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
     }
 
@@ -142,11 +142,11 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getEditJournalAction(Request $request): Response
+    public function getEditJournalAction(ServerRequestInterface $request): ResponseInterface
     {
         if (!Auth::check()) {
             throw new AccessDeniedHttpException();
@@ -177,12 +177,12 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postEditJournalAction(Request $request, Tree $tree): RedirectResponse
+    public function postEditJournalAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         if (!Auth::check()) {
             throw new AccessDeniedHttpException();
@@ -216,12 +216,12 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postDeleteJournalAction(Request $request, Tree $tree): RedirectResponse
+    public function postDeleteJournalAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $news_id = $request->get('news_id');
 

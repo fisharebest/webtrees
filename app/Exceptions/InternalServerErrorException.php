@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Exceptions;
 
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 /**

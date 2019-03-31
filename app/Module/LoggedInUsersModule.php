@@ -18,11 +18,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
-use Symfony\Component\HttpFoundation\Request;
-
 /**
  * Class LoggedInUsersModule
  */
@@ -103,12 +102,12 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
-     * @param int     $block_id
+     * @param ServerRequestInterface $request
+     * @param int                    $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
     }
 

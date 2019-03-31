@@ -26,11 +26,11 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
+use Fisharebest\Webtrees\Response;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Class InteractiveTreeModule
  * Tip : you could change the number of generations loaded before ajax calls both in individual page and in treeview page to optimize speed and server load
@@ -175,13 +175,13 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getChartAction(Request $request, Tree $tree, UserInterface $user): Response
+    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -204,12 +204,12 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getDetailsAction(Request $request, Tree $tree): Response
+    public function getDetailsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $pid        = $request->get('pid', Gedcom::REGEX_XREF);
         $individual = Individual::getInstance($pid, $tree);
@@ -229,12 +229,12 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getPersonsAction(Request $request, Tree $tree): Response
+    public function getPersonsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $q        = $request->get('q', '');
         $instance = $request->get('instance', '');

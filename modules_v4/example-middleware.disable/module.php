@@ -3,12 +3,14 @@
 namespace MyCustomNamespace;
 
 use Closure;
-use Fisharebest\Webtrees\Http\Middleware\MiddlewareInterface;
+use Fisharebest\Webtrees\MiddlewareInterface;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\RequestHandlerInterface;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
+use Throwable;
 
 /**
  * An example module to demonstrate middleware.
@@ -37,22 +39,19 @@ return new class extends AbstractModule implements ModuleCustomInterface, Middle
     }
 
     /**
-     * For a description of request and response objects, refer to the Symfony HttpFoundation documentation.
+     * @param ServerRequestInterface  $request
+     * @param RequestHandlerInterface $handler
      *
-     * @see https://symfony.com/doc/current/components/http_foundation.html
-     *
-     * @param Request $request
-     * @param Closure $next
-     *
-     * @return Response
+     * @return ResponseInterface
+     * @throws Throwable
      */
-    public function handle(Request $request, Closure $next): Response
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // Code here is executed before we process the request/response.
         // We can prevent the request being executed by throwing an exception.
 
         // Generate the response from the request.
-        $response = $next($request);
+        $response = $handler->handle($request);
 
         // Code here is executed after we process the request/response.
         $response->headers->set('X-Powered-By', 'Fish');

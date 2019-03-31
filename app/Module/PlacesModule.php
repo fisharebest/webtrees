@@ -23,13 +23,12 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\JsonResponse;
 use Fisharebest\Webtrees\Location;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Support\Collection;
 use stdClass;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
-
 /**
  * Class PlacesMapModule
  */
@@ -231,11 +230,11 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return JsonResponse
      */
-    public function getProviderStylesAction(Request $request): JsonResponse
+    public function getProviderStylesAction(ServerRequestInterface $request): JsonResponse
     {
         $styles = $this->getMapProviderData($request);
 
@@ -243,11 +242,11 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return array|null
      */
-    private function getMapProviderData(Request $request): ?array
+    private function getMapProviderData(ServerRequestInterface $request): ?array
     {
         if (self::$map_providers === null) {
             $providersFile        = WT_ROOT . Webtrees::MODULES_PATH . 'openstreetmap/providers/providers.xml';

@@ -29,14 +29,14 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\RedirectResponse;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Response;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Show, accept and reject pending changes.
  */
@@ -45,12 +45,12 @@ class PendingChangesController extends AbstractBaseController
     /**
      * Accept all changes to a tree.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function acceptAllChanges(Request $request, Tree $tree): RedirectResponse
+    public function acceptAllChanges(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $url = $request->get('url', '');
 
@@ -85,12 +85,12 @@ class PendingChangesController extends AbstractBaseController
     /**
      * Accept a change (and all previous changes) to a single record.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function acceptChange(Request $request, Tree $tree): RedirectResponse
+    public function acceptChange(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $url       = $request->get('url', '');
         $xref      = $request->get('xref', '');
@@ -129,12 +129,12 @@ class PendingChangesController extends AbstractBaseController
     /**
      * Accept all changes to a single record.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function acceptChanges(Request $request, Tree $tree): Response
+    public function acceptChanges(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -159,12 +159,12 @@ class PendingChangesController extends AbstractBaseController
     /**
      * Reject all changes to a tree.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function rejectAllChanges(Request $request, Tree $tree): RedirectResponse
+    public function rejectAllChanges(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $url = $request->get('url', '');
 
@@ -182,12 +182,12 @@ class PendingChangesController extends AbstractBaseController
     /**
      * Reject a change (and all subsequent changes) to a single record.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function rejectChange(Request $request, Tree $tree): RedirectResponse
+    public function rejectChange(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $url       = $request->get('url', '');
         $xref      = $request->get('xref', '');
@@ -210,12 +210,12 @@ class PendingChangesController extends AbstractBaseController
     /**
      * Accept all changes to a single record.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function rejectChanges(Request $request, Tree $tree): Response
+    public function rejectChanges(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -240,12 +240,12 @@ class PendingChangesController extends AbstractBaseController
     /**
      * Show the pending changes for the current tree.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function showChanges(Request $request, Tree $tree): Response
+    public function showChanges(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $url = $request->get('url', route('tree-page', ['ged' => $tree->name()]));
 

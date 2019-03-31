@@ -27,13 +27,13 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Response;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Ramsey\Uuid\Uuid;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Class DescendancyChartModule
  */
@@ -121,14 +121,14 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
     /**
      * A form to request the chart parameters.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
-     * @param ChartService  $chart_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
+     * @param ChartService           $chart_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getChartAction(Request $request, Tree $tree, UserInterface $user, ChartService $chart_service): Response
+    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user, ChartService $chart_service): ResponseInterface
     {
         $ajax       = (bool) $request->get('ajax');
         $xref       = $request->get('xref', '');
@@ -168,13 +168,13 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
     }
 
     /**
-     * @param Request      $request
-     * @param Tree         $tree
-     * @param ChartService $chart_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param ChartService           $chart_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function chart(Request $request, Tree $tree, ChartService $chart_service): Response
+    public function chart(ServerRequestInterface $request, Tree $tree, ChartService $chart_service): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
@@ -217,9 +217,9 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      * @param Individual $individual
      * @param int        $generations
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    private function descendantsList(Individual $individual, int $generations): Response
+    private function descendantsList(Individual $individual, int $generations): ResponseInterface
     {
         ob_start();
 
@@ -378,9 +378,9 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      * @param Tree       $tree
      * @param Collection $individuals
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    private function descendantsIndividuals(Tree $tree, Collection $individuals): Response
+    private function descendantsIndividuals(Tree $tree, Collection $individuals): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
@@ -397,9 +397,9 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      * @param Tree       $tree
      * @param Collection $families
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    private function descendantsFamilies(Tree $tree, Collection $families): Response
+    private function descendantsFamilies(Tree $tree, Collection $families): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
@@ -417,9 +417,9 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      * @param Individual $individual
      * @param int        $generations
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    private function descendantsBooklet(Individual $individual, int $generations): Response
+    private function descendantsBooklet(Individual $individual, int $generations): ResponseInterface
     {
         ob_start();
 

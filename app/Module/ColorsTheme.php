@@ -20,10 +20,10 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
 use function uasort;
 
 /**
@@ -69,7 +69,7 @@ class ColorsTheme extends CloudsTheme
      */
     public function menuPalette(): Menu
     {
-        $request = app(Request::class);
+        $request = app(ServerRequestInterface::class);
 
         /* I18N: A colour scheme */
         $menu = new Menu(I18N::translate('Palette'), '#', 'menu-color');

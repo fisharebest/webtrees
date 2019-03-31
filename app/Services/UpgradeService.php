@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Exceptions\InternalServerErrorException;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Response;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Webtrees;
 use GuzzleHttp\Client;
@@ -29,7 +30,6 @@ use League\Flysystem\Cached\CachedAdapter;
 use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
-use Symfony\Component\HttpFoundation\Response;
 use ZipArchive;
 use function rewind;
 

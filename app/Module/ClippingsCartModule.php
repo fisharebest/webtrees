@@ -34,7 +34,10 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\RedirectResponse;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Source;
@@ -42,9 +45,6 @@ use Fisharebest\Webtrees\Tree;
 use League\Flysystem\Filesystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use function str_replace;
 
@@ -124,7 +124,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getMenu(Tree $tree): ?Menu
     {
-        $request = Request::createFromGlobals();
+        $request = app(ServerRequestInterface::class);
 
         $route = $request->get('route', '');
 
@@ -166,12 +166,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return BinaryFileResponse
      */
-    public function getDownloadAction(Request $request, Tree $tree): BinaryFileResponse
+    public function getDownloadAction(ServerRequestInterface $request, Tree $tree): BinaryFileResponse
     {
         $privatize_export = $request->get('privatize_export', '');
         $convert          = (bool) $request->get('convert');
@@ -291,9 +291,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param Tree          $tree
      * @param UserInterface $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getDownloadFormAction(Tree $tree, UserInterface $user): Response
+    public function getDownloadFormAction(Tree $tree, UserInterface $user): ResponseInterface
     {
         $title = I18N::translate('Family tree clippings cart') . ' — ' . I18N::translate('Download');
 
@@ -307,9 +307,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     /**
      * @param Tree $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function getEmptyAction(Tree $tree): RedirectResponse
+    public function getEmptyAction(Tree $tree): ResponseInterface
     {
         $cart                = Session::get('cart', []);
         $cart[$tree->name()] = [];
@@ -325,12 +325,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postRemoveAction(Request $request, Tree $tree): RedirectResponse
+    public function postRemoveAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -350,9 +350,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getShowAction(Tree $tree): Response
+    public function getShowAction(Tree $tree): ResponseInterface
     {
         return $this->viewResponse('modules/clippings/show', [
             'records' => $this->allRecordsInCart($tree),
@@ -362,12 +362,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAddFamilyAction(Request $request, Tree $tree): Response
+    public function getAddFamilyAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -409,12 +409,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAddFamilyAction(Request $request, Tree $tree): RedirectResponse
+    public function postAddFamilyAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref   = $request->get('xref', '');
         $option = $request->get('option', '');
@@ -494,12 +494,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAddIndividualAction(Request $request, Tree $tree): Response
+    public function getAddIndividualAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -553,12 +553,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAddIndividualAction(Request $request, Tree $tree): RedirectResponse
+    public function postAddIndividualAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref   = $request->get('xref', '');
         $option = $request->get('option', '');
@@ -636,12 +636,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAddMediaAction(Request $request, Tree $tree): Response
+    public function getAddMediaAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -679,12 +679,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAddMediaAction(Request $request, Tree $tree): RedirectResponse
+    public function postAddMediaAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -700,12 +700,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAddNoteAction(Request $request, Tree $tree): Response
+    public function getAddNoteAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -743,12 +743,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAddNoteAction(Request $request, Tree $tree): RedirectResponse
+    public function postAddNoteAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -764,12 +764,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAddRepositoryAction(Request $request, Tree $tree): Response
+    public function getAddRepositoryAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -807,12 +807,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAddRepositoryAction(Request $request, Tree $tree): RedirectResponse
+    public function postAddRepositoryAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -828,12 +828,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAddSourceAction(Request $request, Tree $tree): Response
+    public function getAddSourceAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -872,12 +872,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAddSourceAction(Request $request, Tree $tree): RedirectResponse
+    public function postAddSourceAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref   = $request->get('xref', '');
         $option = $request->get('option', '');

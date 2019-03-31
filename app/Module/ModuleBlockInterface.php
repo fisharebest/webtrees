@@ -17,9 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-
 /**
  * Interface ModuleBlockInterface - Classes and libraries for module system
  */
@@ -74,10 +73,10 @@ interface ModuleBlockInterface extends ModuleInterface
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
-     * @param int     $block_id
+     * @param ServerRequestInterface $request
+     * @param int                    $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void;
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void;
 }

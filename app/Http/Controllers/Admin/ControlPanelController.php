@@ -37,6 +37,7 @@ use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\NoteListModule;
 use Fisharebest\Webtrees\Module\RepositoryListModule;
 use Fisharebest\Webtrees\Module\SourceListModule;
+use Fisharebest\Webtrees\ResponseInterface;
 use Fisharebest\Webtrees\Services\HousekeepingService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\ServerCheckService;
@@ -48,8 +49,6 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Controller for the administration pages
  */
@@ -64,7 +63,7 @@ class ControlPanelController extends AbstractAdminController
      * @param ServerCheckService  $server_check_service
      * @param UserService         $user_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
     public function controlPanel(
         HousekeepingService $housekeeping_service,
@@ -72,7 +71,7 @@ class ControlPanelController extends AbstractAdminController
         ModuleService $module_service,
         ServerCheckService $server_check_service,
         UserService $user_service
-    ): Response {
+    ): ResponseInterface {
         $filesystem      = new Filesystem(new Local(WT_ROOT));
         $files_to_delete = $housekeeping_service->deleteOldWebtreesFiles($filesystem);
 
@@ -138,9 +137,9 @@ class ControlPanelController extends AbstractAdminController
      *
      * @param ModuleService $module_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function controlPanelManager(ModuleService $module_service): Response
+    public function controlPanelManager(ModuleService $module_service): ResponseInterface
     {
         $all_trees = array_filter(Tree::getAll(), function (Tree $tree): bool {
             return Auth::isManager($tree);

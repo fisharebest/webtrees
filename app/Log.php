@@ -18,8 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Illuminate\Database\Capsule\Manager as DB;
-use Symfony\Component\HttpFoundation\Request;
-
 /**
  * Record webtrees events in the database
  */

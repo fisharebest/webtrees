@@ -23,11 +23,11 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Response;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Tree;
 use stdClass;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Class FamilyBookChartModule
  */
@@ -122,13 +122,13 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
     /**
      * A form to request the chart parameters.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getChartAction(Request $request, Tree $tree, UserInterface $user): Response
+    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $ajax       = (bool) $request->get('ajax');
         $xref       = $request->get('xref', '');
@@ -177,9 +177,9 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
      * @param int        $book_size
      * @param bool       $show_spouse
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function chart(Individual $individual, int $generations, int $book_size, bool $show_spouse): Response
+    public function chart(Individual $individual, int $generations, int $book_size, bool $show_spouse): ResponseInterface
     {
         $this->box = (object) [
             'width'  => app(ModuleThemeInterface::class)->parameter('chart-box-x'),

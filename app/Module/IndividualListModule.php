@@ -20,13 +20,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Controllers\ListController;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\IndividualListService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Auth;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Class IndividualListModule
  */
@@ -67,17 +66,18 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getListAction(Request $request, Tree $tree, UserInterface $user): Response
+    public function getListAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         Auth::checkComponentAccess($this, 'list', $tree, $user);
       
         $listController = new ListController(app(IndividualListService::class), app(LocalizationService::class));
+
         return $listController->individualList($request, $tree, $user, $this);
     }
 

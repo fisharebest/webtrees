@@ -20,11 +20,11 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Controllers\ListController;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\ResponseInterface;
 use Fisharebest\Webtrees\Services\IndividualListService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Auth;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Database\Capsule\Manager as DB;
 
 /**
@@ -70,9 +70,9 @@ class NoteListModule extends AbstractModule implements ModuleListInterface
      * @param Tree          $tree
      * @param UserInterface $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getListAction(Tree $tree, UserInterface $user): Response
+    public function getListAction(Tree $tree, UserInterface $user): ResponseInterface
     {
         Auth::checkComponentAccess($this, 'list', $tree, $user);
       

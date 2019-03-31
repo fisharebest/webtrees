@@ -18,9 +18,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\RedirectResponse;
+use Fisharebest\Webtrees\Request;
+use Fisharebest\Webtrees\Response;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 
 /**
  * Trait ModuleAnalyticsTrait - default implementation of ModuleAnalyticsInterface
@@ -32,9 +34,9 @@ trait ModuleAnalyticsTrait
      * @param $view_data
      * @param $status
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    abstract protected function viewResponse($view_name, $view_data, $status = Response::HTTP_OK): Response;
+    abstract protected function viewResponse($view_name, $view_data, $status = Response::HTTP_OK): ResponseInterface;
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -121,11 +123,10 @@ trait ModuleAnalyticsTrait
         return '';
     }
 
-
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAdminAction(): Response
+    public function getAdminAction(): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -137,11 +138,11 @@ trait ModuleAnalyticsTrait
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAdminAction(Request $request): RedirectResponse
+    public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         foreach (array_keys($this->analyticsParameters()) as $parameter) {
             $new_value = $request->get($parameter, '');

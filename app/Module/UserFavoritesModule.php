@@ -24,15 +24,15 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\RedirectResponse;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
 use stdClass;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-
 /**
  * Class UserFavoritesModule
  */
@@ -130,12 +130,12 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
-     * @param int     $block_id
+     * @param ServerRequestInterface $request
+     * @param int                    $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
     }
 
@@ -178,13 +178,13 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAddFavoriteAction(Request $request, Tree $tree, UserInterface $user): RedirectResponse
+    public function postAddFavoriteAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $note  = $request->get('note', '');
         $title = $request->get('title', '');
@@ -210,13 +210,13 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postDeleteFavoriteAction(Request $request, Tree $tree, UserInterface $user): RedirectResponse
+    public function postDeleteFavoriteAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $favorite_id = (int) $request->get('favorite_id');
 

@@ -20,13 +20,12 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\Request;
-
 /**
  * Functions for managing users.
  */
@@ -334,7 +333,7 @@ class UserService
     {
         $tree    = app(Tree::class);
         $user    = app(UserInterface::class);
-        $request = app(Request::class);
+        $request = app(ServerRequestInterface::class);
 
         if ($contact_user->getPreference('contactmethod') === 'mailto') {
             $url = 'mailto:' . $contact_user->email();

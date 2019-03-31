@@ -21,13 +21,12 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\RedirectResponse;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Class StoriesModule
  */
@@ -162,9 +161,9 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAdminAction(Tree $tree): Response
+    public function getAdminAction(Tree $tree): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -191,12 +190,12 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAdminEditAction(Request $request, Tree $tree): Response
+    public function getAdminEditAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -236,12 +235,12 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAdminEditAction(Request $request, Tree $tree): RedirectResponse
+    public function postAdminEditAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $block_id    = (int) $request->get('block_id');
         $xref        = $request->get('xref', '');
@@ -281,12 +280,12 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function postAdminDeleteAction(Request $request, Tree $tree): Response
+    public function postAdminDeleteAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $block_id = (int) $request->get('block_id');
 
@@ -310,9 +309,9 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getShowListAction(Tree $tree): Response
+    public function getShowListAction(Tree $tree): ResponseInterface
     {
         $stories = DB::table('block')
             ->where('module_name', '=', $this->name())

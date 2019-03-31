@@ -20,13 +20,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
-use Symfony\Component\HttpFoundation\Request;
-
 /**
  * Class FamilyTreeStatisticsModule
  */
@@ -204,12 +203,12 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
-     * @param int     $block_id
+     * @param ServerRequestInterface $request
+     * @param int                    $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
         $this->setBlockSetting($block_id, 'show_last_update', $request->get('show_last_update', ''));
         $this->setBlockSetting($block_id, 'show_common_surnames', $request->get('show_common_surnames', ''));

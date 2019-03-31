@@ -26,14 +26,14 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module\BatchUpdate\BatchUpdateBasePlugin;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\RedirectResponse;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -71,13 +71,13 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
     /**
      * Main entry point
      *
-     * @param Request       $request
-     * @param UserInterface $user
-     * @param Tree|null     $tree
+     * @param ServerRequestInterface $request
+     * @param UserInterface          $user
+     * @param Tree|null              $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAdminAction(Request $request, UserInterface $user, Tree $tree = null): Response
+    public function getAdminAction(ServerRequestInterface $request, UserInterface $user, Tree $tree = null): ResponseInterface
     {
         // We need a tree to work with.
         if ($tree === null) {
@@ -144,13 +144,13 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
     /**
      * Perform an update
      *
-     * @param Request       $request
-     * @param UserInterface $user
-     * @param Tree|null     $tree
+     * @param ServerRequestInterface $request
+     * @param UserInterface          $user
+     * @param Tree|null              $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAdminAction(Request $request, UserInterface $user, Tree $tree = null): RedirectResponse
+    public function postAdminAction(ServerRequestInterface $request, UserInterface $user, Tree $tree = null): ResponseInterface
     {
         // We need a tree to work with.
         if ($tree === null) {

@@ -23,9 +23,13 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\JsonResponse;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Mail;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\RedirectResponse;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -36,10 +40,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use stdClass;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use const WT_BASE_URL;
 
@@ -73,11 +73,11 @@ class UsersController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function cleanup(Request $request): Response
+    public function cleanup(ServerRequestInterface $request): ResponseInterface
     {
         $months = (int) $request->get('months', 6);
 
@@ -120,11 +120,11 @@ class UsersController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function cleanupAction(Request $request): RedirectResponse
+    public function cleanupAction(ServerRequestInterface $request): ResponseInterface
     {
         foreach ($this->user_service->all() as $user) {
             if ((bool) $request->get('del_' . $user->id())) {
@@ -141,12 +141,12 @@ class UsersController extends AbstractAdminController
     }
 
     /**
-     * @param Request       $request
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function index(Request $request, UserInterface $user): Response
+    public function index(ServerRequestInterface $request, UserInterface $user): ResponseInterface
     {
         $filter = $request->get('filter', '');
 
@@ -165,13 +165,13 @@ class UsersController extends AbstractAdminController
     }
 
     /**
-     * @param DatatablesService $datatables_service
-     * @param Request           $request
-     * @param UserInterface     $user
+     * @param DatatablesService      $datatables_service
+     * @param ServerRequestInterface $request
+     * @param UserInterface          $user
      *
      * @return JsonResponse
      */
-    public function data(DatatablesService $datatables_service, Request $request, UserInterface $user): JsonResponse
+    public function data(DatatablesService $datatables_service, ServerRequestInterface $request, UserInterface $user): JsonResponse
     {
         $installed_languages = [];
         foreach (I18N::installedLocales() as $installed_locale) {
@@ -265,11 +265,11 @@ class UsersController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function create(Request $request): Response
+    public function create(ServerRequestInterface $request): ResponseInterface
     {
         $email     = $request->get('email', '');
         $real_name = $request->get('real_name', '');
@@ -285,11 +285,11 @@ class UsersController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function edit(Request $request): Response
+    public function edit(ServerRequestInterface $request): ResponseInterface
     {
         $user_id = (int) $request->get('user_id');
         $user    = $this->user_service->find($user_id);
@@ -311,11 +311,11 @@ class UsersController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function save(Request $request): RedirectResponse
+    public function save(ServerRequestInterface $request): ResponseInterface
     {
         $username  = $request->get('username', '');
         $real_name = $request->get('real_name', '');
@@ -360,12 +360,12 @@ class UsersController extends AbstractAdminController
     }
 
     /**
-     * @param Request       $request
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param UserInterface          $user
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function update(Request $request, UserInterface $user): RedirectResponse
+    public function update(ServerRequestInterface $request, UserInterface $user): ResponseInterface
     {
         $user_id        = (int) $request->get('user_id');
         $username       = $request->get('username', '');

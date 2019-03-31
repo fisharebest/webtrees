@@ -17,14 +17,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Closure;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\MiddlewareInterface;
+use Fisharebest\Webtrees\RedirectResponse;
+use Fisharebest\Webtrees\Request;
+use Fisharebest\Webtrees\RequestHandlerInterface;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Session;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use function in_array;
 
 /**
@@ -38,13 +39,12 @@ class CheckCsrf implements MiddlewareInterface
     ];
 
     /**
-     * @param Request $request
-     * @param Closure $next
+     * @param ServerRequestInterface  $request
+     * @param RequestHandlerInterface $handler
      *
-     * @return Response
-     * @throws AccessDeniedHttpException
+     * @return ResponseInterface
      */
-    public function handle(Request $request, Closure $next): Response
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if ($request->getMethod() === Request::METHOD_POST) {
             $route = $request->get('route');
@@ -61,6 +61,6 @@ class CheckCsrf implements MiddlewareInterface
             }
         }
 
-        return $next($request);
+        return $handler->handle($request);
     }
 }

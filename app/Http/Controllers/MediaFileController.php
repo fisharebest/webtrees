@@ -21,6 +21,10 @@ use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
+use Fisharebest\Webtrees\RedirectResponse;
+use Fisharebest\Webtrees\Response;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Intervention\Image\Exception\NotReadableException;
@@ -32,9 +36,6 @@ use League\Glide\ServerFactory;
 use League\Glide\Signatures\Signature;
 use League\Glide\Signatures\SignatureException;
 use League\Glide\Signatures\SignatureFactory;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -48,12 +49,12 @@ class MediaFileController extends AbstractBaseController
     /**
      * Download a non-image media file.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function mediaDownload(Request $request, Tree $tree): Response
+    public function mediaDownload(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id');
@@ -96,12 +97,12 @@ class MediaFileController extends AbstractBaseController
     /**
      * Show an image/thumbnail, with/without a watermark.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function mediaThumbnail(Request $request, Tree $tree): Response
+    public function mediaThumbnail(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id', '');
@@ -136,11 +137,11 @@ class MediaFileController extends AbstractBaseController
     /**
      * Generate a thumbnail for an unsed media file (i.e. not used by any media object).
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function unusedMediaThumbnail(Request $request): Response
+    public function unusedMediaThumbnail(ServerRequestInterface $request): ResponseInterface
     {
         $folder = $request->get('folder', '');
         $file   = $request->get('file', '');
@@ -169,9 +170,9 @@ class MediaFileController extends AbstractBaseController
      * @param MediaFile $media_file
      * @param array     $params
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    private function generateImage(MediaFile $media_file, array $params): Response
+    private function generateImage(MediaFile $media_file, array $params): ResponseInterface
     {
         try {
             // Validate HTTP signature
@@ -258,9 +259,9 @@ class MediaFileController extends AbstractBaseController
      *
      * @param int $status HTTP status code
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    private function httpStatusAsImage(int $status): Response
+    private function httpStatusAsImage(int $status): ResponseInterface
     {
         $svg = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="#F88" /><text x="5" y="55" font-family="Verdana" font-size="35">' . $status . '</text></svg>';
 
@@ -275,9 +276,9 @@ class MediaFileController extends AbstractBaseController
      *
      * @param string $extension
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    private function fileExtensionAsImage(string $extension): Response
+    private function fileExtensionAsImage(string $extension): ResponseInterface
     {
         $extension = '.' . strtolower($extension);
 

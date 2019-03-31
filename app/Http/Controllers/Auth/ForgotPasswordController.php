@@ -22,15 +22,14 @@ use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Mail;
+use Fisharebest\Webtrees\RedirectResponse;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Fisharebest\Webtrees\User;
 use Illuminate\Support\Str;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Controller for requesting password resets.
  */
@@ -39,9 +38,9 @@ class ForgotPasswordController extends AbstractBaseController
     /**
      * Show a password reset page.
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function forgotPasswordPage(): Response
+    public function forgotPasswordPage(): ResponseInterface
     {
         $title = I18N::translate('Request a new password');
 
@@ -53,13 +52,13 @@ class ForgotPasswordController extends AbstractBaseController
     /**
      * Send a password reset email.
      *
-     * @param Request     $request
-     * @param Tree        $tree
-     * @param UserService $user_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserService            $user_service
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function forgotPasswordAction(Request $request, Tree $tree, UserService $user_service): RedirectResponse
+    public function forgotPasswordAction(ServerRequestInterface $request, Tree $tree, UserService $user_service): ResponseInterface
     {
         $identifier = $request->get('identifier', '');
 

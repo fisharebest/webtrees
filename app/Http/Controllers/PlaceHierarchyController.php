@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Statistics;
@@ -30,8 +32,6 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -59,13 +59,13 @@ class PlaceHierarchyController extends AbstractBaseController
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param SearchService $search_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param SearchService          $search_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function show(Request $request, Tree $tree, SearchService $search_service): Response
+    public function show(ServerRequestInterface $request, Tree $tree, SearchService $search_service): ResponseInterface
     {
         $action2    = $request->query->get('action2', 'hierarchy');
         $parent     = $request->query->get('parent', []);

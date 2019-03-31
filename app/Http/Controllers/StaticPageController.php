@@ -18,9 +18,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\ResponseInterface;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Controller for static pages.
  */
@@ -29,9 +28,9 @@ class StaticPageController extends AbstractBaseController
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function privacyPolicy(Tree $tree): Response
+    public function privacyPolicy(Tree $tree): ResponseInterface
     {
         $title = I18N::translate('Privacy policy');
 

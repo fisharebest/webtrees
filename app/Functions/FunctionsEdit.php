@@ -40,13 +40,12 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module\CensusAssistantModule;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Ramsey\Uuid\Uuid;
-use Symfony\Component\HttpFoundation\Request;
-
 /**
  * Class FunctionsEdit - common functions for editing
  */
@@ -241,8 +240,6 @@ class FunctionsEdit
     /**
      * A list of GEDCOM restrictions for privacy rules.
      *
-     * @param bool $include_empty
-     *
      * @return string[]
      */
     public static function optionsRestrictionsRule(): array
@@ -302,7 +299,7 @@ class FunctionsEdit
      */
     public static function addSimpleTag(Tree $tree, $tag, $upperlevel = '', $label = ''): string
     {
-        $request = app(Request::class);
+        $request = app(ServerRequestInterface::class);
         $xref    = $request->get('xref', '');
 
         // Some form fields need access to previous form fields.

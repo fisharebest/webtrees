@@ -25,14 +25,15 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\RedirectResponse;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Response;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -78,9 +79,9 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAdminAction(): Response
+    public function getAdminAction(): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -104,11 +105,11 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAdminAction(Request $request): RedirectResponse
+    public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         foreach (Tree::all() as $tree) {
             $include_in_sitemap = (bool) $request->get('sitemap' . $tree->id());
@@ -121,9 +122,9 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getIndexAction(): Response
+    public function getIndexAction(): ResponseInterface
     {
         $timestamp = (int) $this->getPreference('sitemap.timestamp');
 
@@ -177,11 +178,11 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getFileAction(Request $request): Response
+    public function getFileAction(ServerRequestInterface $request): ResponseInterface
     {
         $file = $request->get('file', '');
 

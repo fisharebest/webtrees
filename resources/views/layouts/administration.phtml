@@ -6,9 +6,9 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\CustomCssJsModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleGlobalInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\View;
-use Symfony\Component\HttpFoundation\Request;
 
 ?>
 
@@ -32,7 +32,7 @@ use Symfony\Component\HttpFoundation\Request;
 
         <?= DebugBar::renderHead() ?>
     </head>
-    <body class="container wt-global wt-route-<?= e(app(Request::class)->get('route')) ?>">
+    <body class="container wt-global wt-route-<?= e(app(ServerRequestInterface::class)->get('route')) ?>">
         <header>
             <div class="wt-accessibility-links position-fixed">
                 <a class="sr-only sr-only-focusable btn btn-info btn-sm" href="#content">

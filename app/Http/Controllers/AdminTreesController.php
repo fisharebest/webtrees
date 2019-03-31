@@ -34,6 +34,9 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\RedirectResponse;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -49,9 +52,6 @@ use League\Flysystem\Filesystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use stdClass;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Throwable;
@@ -93,9 +93,9 @@ class AdminTreesController extends AbstractBaseController
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function check(Tree $tree): Response
+    public function check(Tree $tree): ResponseInterface
     {
         // We need to work with raw GEDCOM data, as we are looking for errors
         // which may prevent the GedcomRecord objects from working.
@@ -349,11 +349,11 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function create(Request $request): RedirectResponse
+    public function create(ServerRequestInterface $request): ResponseInterface
     {
         $tree_name  = $request->get('tree_name', '');
         $tree_title = $request->get('tree_title', '');
@@ -379,9 +379,9 @@ class AdminTreesController extends AbstractBaseController
     /**
      * @param Tree $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function delete(Tree $tree): RedirectResponse
+    public function delete(Tree $tree): ResponseInterface
     {
         /* I18N: %s is the name of a family tree */
         FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', e($tree->title())), 'success');
@@ -396,9 +396,9 @@ class AdminTreesController extends AbstractBaseController
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function duplicates(Tree $tree): Response
+    public function duplicates(Tree $tree): ResponseInterface
     {
         $duplicates = $this->duplicateRecords($tree);
 
@@ -414,9 +414,9 @@ class AdminTreesController extends AbstractBaseController
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function export(Tree $tree): Response
+    public function export(Tree $tree): ResponseInterface
     {
         $title = I18N::translate('Export a GEDCOM file') . ' — ' . e($tree->title());
 
@@ -427,12 +427,12 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function exportClient(Request $request, Tree $tree): Response
+    public function exportClient(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         // Validate user parameters
         $convert          = (bool) $request->get('convert');
@@ -525,9 +525,9 @@ class AdminTreesController extends AbstractBaseController
     /**
      * @param Tree $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function exportServer(Tree $tree): RedirectResponse
+    public function exportServer(Tree $tree): ResponseInterface
     {
         $filename = WT_DATA_DIR . $tree->name();
 
@@ -560,12 +560,12 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function importAction(Request $request, Tree $tree): RedirectResponse
+    public function importAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $source             = $request->get('source');
         $keep_media         = (bool) $request->get('keep_media');
@@ -607,9 +607,9 @@ class AdminTreesController extends AbstractBaseController
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function importForm(Tree $tree): Response
+    public function importForm(Tree $tree): ResponseInterface
     {
         $default_gedcom_file = $tree->getPreference('gedcom_filename');
         $gedcom_media_path   = $tree->getPreference('GEDCOM_MEDIA_PATH');
@@ -629,9 +629,9 @@ class AdminTreesController extends AbstractBaseController
     /**
      * @param Tree|null $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function index(Tree $tree = null): Response
+    public function index(Tree $tree = null): ResponseInterface
     {
         $multiple_tree_threshold = (int) Site::getPreference('MULTIPLE_TREE_THRESHOLD', self::MULTIPLE_TREE_THRESHOLD);
         $gedcom_files            = $this->gedcomFiles(WT_DATA_DIR);
@@ -662,11 +662,11 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function merge(Request $request): Response
+    public function merge(ServerRequestInterface $request): ResponseInterface
     {
         $tree1_name = $request->get('tree1_name');
         $tree2_name = $request->get('tree2_name');
@@ -694,11 +694,11 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function mergeAction(Request $request): RedirectResponse
+    public function mergeAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree1_name = $request->get('tree1_name');
         $tree2_name = $request->get('tree2_name');
@@ -899,12 +899,12 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function places(Request $request, Tree $tree): Response
+    public function places(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $search  = $request->get('search', '');
         $replace = $request->get('replace', '');
@@ -927,12 +927,12 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function placesAction(Request $request, Tree $tree): RedirectResponse
+    public function placesAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $search  = $request->get('search', '');
         $replace = $request->get('replace', '');
@@ -959,9 +959,9 @@ class AdminTreesController extends AbstractBaseController
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function preferences(Tree $tree): Response
+    public function preferences(Tree $tree): ResponseInterface
     {
         $french_calendar_start    = new Date('22 SEP 1792');
         $french_calendar_end      = new Date('31 DEC 1805');
@@ -1083,9 +1083,9 @@ class AdminTreesController extends AbstractBaseController
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function renumber(Tree $tree): Response
+    public function renumber(Tree $tree): ResponseInterface
     {
         $xrefs = $this->duplicateXrefs($tree);
 
@@ -1099,12 +1099,12 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function preferencesUpdate(Request $request, Tree $tree): RedirectResponse
+    public function preferencesUpdate(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         // Coming soon
         if ((bool) $request->get('all_trees')) {
@@ -1218,9 +1218,9 @@ class AdminTreesController extends AbstractBaseController
      * @param Tree           $tree
      * @param TimeoutService $timeout_service
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function renumberAction(Tree $tree, TimeoutService $timeout_service): RedirectResponse
+    public function renumberAction(Tree $tree, TimeoutService $timeout_service): ResponseInterface
     {
         $xrefs = $this->duplicateXrefs($tree);
 
@@ -1713,9 +1713,9 @@ class AdminTreesController extends AbstractBaseController
     /**
      * @param Tree $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function setDefault(Tree $tree): RedirectResponse
+    public function setDefault(Tree $tree): ResponseInterface
     {
         Site::setPreference('DEFAULT_GEDCOM', $tree->name());
 
@@ -1730,9 +1730,9 @@ class AdminTreesController extends AbstractBaseController
     /**
      * @param Tree $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function synchronize(Tree $tree): RedirectResponse
+    public function synchronize(Tree $tree): ResponseInterface
     {
         $url = route('admin-trees', ['ged' => $tree->name()]);
 
@@ -1763,13 +1763,13 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function unconnected(Request $request, Tree $tree, UserInterface $user): Response
+    public function unconnected(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $associates = (bool) $request->get('associates');
 

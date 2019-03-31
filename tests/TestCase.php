@@ -32,7 +32,6 @@ use Illuminate\Cache\Repository;
 use Illuminate\Database\Capsule\Manager as DB;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Memory\MemoryAdapter;
-use Symfony\Component\HttpFoundation\Request;
 use function basename;
 
 /**

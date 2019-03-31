@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees;
 
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
-use Symfony\Component\HttpFoundation\Request;
 use function session_status;
 
 /**

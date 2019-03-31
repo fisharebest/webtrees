@@ -23,14 +23,15 @@ use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Response;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use stdClass;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use function explode;
 use function implode;
@@ -44,12 +45,12 @@ class ChangesLogController extends AbstractAdminController
     /**
      * Show the edit history for a tree.
      *
-     * @param Request     $request
-     * @param UserService $user_service
+     * @param ServerRequestInterface $request
+     * @param UserService            $user_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function changesLog(Request $request, UserService $user_service): Response
+    public function changesLog(ServerRequestInterface $request, UserService $user_service): ResponseInterface
     {
         $tree_list = [];
         foreach (Tree::getAll() as $tree) {
@@ -128,13 +129,13 @@ class ChangesLogController extends AbstractAdminController
     /**
      * Show the edit history for a tree.
      *
-     * @param Request           $request
-     * @param DatatablesService $datatables_service
-     * @param MyersDiff         $myers_diff
+     * @param ServerRequestInterface $request
+     * @param DatatablesService      $datatables_service
+     * @param MyersDiff              $myers_diff
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function changesLogData(Request $request, DatatablesService $datatables_service, MyersDiff $myers_diff): Response
+    public function changesLogData(ServerRequestInterface $request, DatatablesService $datatables_service, MyersDiff $myers_diff): ResponseInterface
     {
         $query = $this->changesQuery($request);
 
@@ -189,11 +190,11 @@ class ChangesLogController extends AbstractAdminController
     /**
      * Show the edit history for a tree.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function changesLogDownload(Request $request): Response
+    public function changesLogDownload(ServerRequestInterface $request): ResponseInterface
     {
         $content = $this->changesQuery($request)
             ->get()
@@ -222,11 +223,11 @@ class ChangesLogController extends AbstractAdminController
     /**
      * Generate a query for filtering the changes log.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return Builder
      */
-    private function changesQuery(Request $request): Builder
+    private function changesQuery(ServerRequestInterface $request): Builder
     {
         $from     = $request->get('from', '');
         $to       = $request->get('to', '');

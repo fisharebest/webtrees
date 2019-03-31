@@ -19,15 +19,14 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\RedirectResponse;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 use stdClass;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Class FrequentlyAskedQuestionsModule
  */
@@ -91,9 +90,9 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAdminAction(Tree $tree): Response
+    public function getAdminAction(Tree $tree): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -130,12 +129,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAdminDeleteAction(Request $request, Tree $tree): RedirectResponse
+    public function postAdminDeleteAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $block_id = (int) $request->get('block_id');
 
@@ -153,12 +152,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAdminMoveDownAction(Request $request, Tree $tree): RedirectResponse
+    public function postAdminMoveDownAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $block_id = (int) $request->get('block_id');
 
@@ -202,12 +201,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAdminMoveUpAction(Request $request, Tree $tree): RedirectResponse
+    public function postAdminMoveUpAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $block_id = (int) $request->get('block_id');
 
@@ -251,12 +250,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAdminEditAction(Request $request, Tree $tree): Response
+    public function getAdminEditAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -303,12 +302,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAdminEditAction(Request $request, Tree $tree): RedirectResponse
+    public function postAdminEditAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $block_id    = (int) $request->get('block_id');
         $faqbody     = $request->get('faqbody', '');
@@ -350,9 +349,9 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getShowAction(Tree $tree): Response
+    public function getShowAction(Tree $tree): ResponseInterface
     {
         // Filter foreign languages.
         $faqs = $this->faqsForTree($tree)

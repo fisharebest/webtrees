@@ -22,9 +22,14 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\JsonResponse;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
+use Fisharebest\Webtrees\RedirectResponse;
+use Fisharebest\Webtrees\Response;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
@@ -32,10 +37,6 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use stdClass;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Throwable;
 
@@ -48,11 +49,11 @@ class MediaController extends AbstractAdminController
     private const MAX_UPLOAD_FILES = 10;
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function index(Request $request): Response
+    public function index(ServerRequestInterface $request): ResponseInterface
     {
         $files        = $request->get('files', 'local'); // local|unused|external
         $media_folder = $request->get('media_folder', '');
@@ -79,11 +80,11 @@ class MediaController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function delete(Request $request): Response
+    public function delete(ServerRequestInterface $request): ResponseInterface
     {
         $delete_file  = $request->get('file', '');
         $media_folder = $request->get('folder', '');
@@ -106,12 +107,12 @@ class MediaController extends AbstractAdminController
     }
 
     /**
-     * @param Request           $request
-     * @param DatatablesService $datatables_service
+     * @param ServerRequestInterface $request
+     * @param DatatablesService      $datatables_service
      *
      * @return JsonResponse
      */
-    public function data(Request $request, DatatablesService $datatables_service): JsonResponse
+    public function data(ServerRequestInterface $request, DatatablesService $datatables_service): JsonResponse
     {
         $files  = $request->get('files'); // local|external|unused
         $search = $request->get('search');
@@ -292,9 +293,9 @@ class MediaController extends AbstractAdminController
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function upload(): Response
+    public function upload(): ResponseInterface
     {
         $media_folders = $this->allMediaFolders();
 
@@ -314,11 +315,11 @@ class MediaController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function uploadAction(Request $request): RedirectResponse
+    public function uploadAction(ServerRequestInterface $request): ResponseInterface
     {
         $all_folders = $this->allMediaFolders();
 

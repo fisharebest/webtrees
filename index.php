@@ -24,13 +24,17 @@ use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\DebugBarData;
 use Fisharebest\Webtrees\Http\Middleware\Housekeeping;
-use Fisharebest\Webtrees\Http\Middleware\MiddlewareInterface;
 use Fisharebest\Webtrees\Http\Middleware\UseFilesystem;
 use Fisharebest\Webtrees\Http\Middleware\UseLocale;
 use Fisharebest\Webtrees\Http\Middleware\UseSession;
 use Fisharebest\Webtrees\Http\Middleware\UseTheme;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Fisharebest\Webtrees\Http\Middleware\UseTree;
+use Fisharebest\Webtrees\Http\RequestHandlers\RequestHandler;
+use Fisharebest\Webtrees\MiddlewareDispatcher;
+use Fisharebest\Webtrees\MiddlewareInterface;
+use Fisharebest\Webtrees\Request;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
@@ -38,8 +42,6 @@ use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Cache\ArrayStore;
 use Illuminate\Cache\Repository;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -63,7 +65,7 @@ app()->instance(TimeoutService::class, new TimeoutService(microtime(true)));
 
 // Extract the request parameters.
 $request = Request::createFromGlobals();
-app()->instance(Request::class, $request);
+app()->instance(ServerRequestInterface::class, $request);
 
 // Calculate the base URL, so we can generate absolute URLs.
 $request_uri = $request->getSchemeAndHttpHost() . $request->getRequestUri();
@@ -110,53 +112,26 @@ try {
     //                   |                                  |
     //                   +----------------------------------+
 
-    // Create the middleware, from the "inside" to the "outside".
-    /** @var Collection $middleware_stack */
-    $middleware_stack = app(ModuleService::class)
-        ->findByInterface(MiddlewareInterface::class);
-
     // Core middleware.
-    $middleware_stack = $middleware_stack->merge([
-        CheckCsrf::class,
-        UseTransaction::class,
-        Housekeeping::class,
-        DebugBarData::class,
-        BootModules::class,
+    $middleware_stack = new Collection([
+        CheckForMaintenanceMode::class,
+        UseFilesystem::class,
+        UseSession::class,
+        UseTree::class,
         UseTheme::class,
         UseLocale::class,
-        UseTree::class,
-        UseSession::class,
-        UseFilesystem::class,
-        CheckForMaintenanceMode::class,
+        BootModules::class,
+        DebugBarData::class,
+        Housekeeping::class,
+        UseTransaction::class,
+        CheckCsrf::class,
     ]);
 
-    // Construct the core middleware *after* loading the modules, to reduce dependencies.
-    $middleware_stack = $middleware_stack->map(function ($middleware): MiddlewareInterface {
-        return $middleware instanceof MiddlewareInterface ? $middleware : app($middleware);
-    });
+    $module_middleware = app(ModuleService::class)->findByInterface(MiddlewareInterface::class);
+    $middleware_stack  = $middleware_stack->merge($module_middleware);
 
-    // Create a pipeline, which applies the middleware as a nested function call.
-    $pipeline = $middleware_stack->reduce(function (Closure $next, MiddlewareInterface $middleware): Closure {
-        // Create a closure to apply the middleware.
-        return function (Request $request) use ($middleware, $next): Response {
-            return $middleware->handle($request, $next);
-        };
-    }, function (Request $request): Response {
-        // Load the route and routing table.
-        $route  = $request->get('route');
-        $routes = require 'routes/web.php';
-
-        // Find the controller and action for the selected route
-        $controller_action = $routes[$request->getMethod() . ':' . $route] ?? 'ErrorController@noRouteFound';
-        [$controller_name, $action] = explode('@', $controller_action);
-        $controller_class = '\\Fisharebest\\Webtrees\\Http\\Controllers\\' . $controller_name;
-
-        $controller = app($controller_class);
-
-        return app()->dispatch($controller, $action);
-    });
-
-    $response = $pipeline($request);
+    $dispatcher = new MiddlewareDispatcher($middleware_stack->all(), new RequestHandler());
+    $response   = $dispatcher->handle($request);
 } catch (Throwable $exception) {
     $response = (new Handler())->render($request, $exception);
 }

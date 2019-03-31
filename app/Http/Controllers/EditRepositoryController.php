@@ -18,11 +18,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\JsonResponse;
+use Fisharebest\Webtrees\Response;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Controller for edit forms and responses.
  */
@@ -31,9 +31,9 @@ class EditRepositoryController extends AbstractEditController
     /**
      * Show a form to create a new repository.
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function createRepository(): Response
+    public function createRepository(): ResponseInterface
     {
         return new Response(view('modals/create-repository'));
     }
@@ -41,12 +41,12 @@ class EditRepositoryController extends AbstractEditController
     /**
      * Process a form to create a new repository.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return JsonResponse
      */
-    public function createRepositoryAction(Request $request, Tree $tree): JsonResponse
+    public function createRepositoryAction(ServerRequestInterface $request, Tree $tree): JsonResponse
     {
         $name                = $request->get('repository-name', '');
         $privacy_restriction = $request->get('privacy-restriction', '');

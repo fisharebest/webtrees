@@ -15,22 +15,13 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Middleware;
+namespace Fisharebest\Webtrees;
 
-use Closure;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse as BaseJsonResponse;
 
 /**
- * Middleware.
+ * Temporary class, to support migration to PSR-7, PSR-15 and PSR-17
  */
-interface MiddlewareInterface
+class JsonResponse extends BaseJsonResponse implements ResponseInterface
 {
-    /**
-     * @param Request $request
-     * @param Closure $next
-     *
-     * @return Response
-     */
-    public function handle(Request $request, Closure $next): Response;
 }

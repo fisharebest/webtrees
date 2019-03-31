@@ -21,12 +21,11 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Controllers\PlaceHierarchyController;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Class IndividualListModule
  */
@@ -67,13 +66,13 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getListAction(Request $request, Tree $tree, UserInterface $user): Response
+    public function getListAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         Auth::checkComponentAccess($this, 'list', $tree, $user);
       

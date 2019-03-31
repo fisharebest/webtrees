@@ -18,8 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Test the module admin controller
  *

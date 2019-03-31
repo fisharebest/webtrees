@@ -18,11 +18,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\ParameterBag;
-use Symfony\Component\HttpFoundation\Request;
-
 /**
  * Class PoweredByWebtreesModule - show a cookie warning, to comply with the GDPR.
  */
@@ -30,7 +29,7 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
 {
     use ModuleFooterTrait;
 
-    /** @var Request */
+    /** @var ServerRequestInterface */
     protected $request;
 
     /**
@@ -41,10 +40,10 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
     /**
      * Dependency injection.
      *
-     * @param Request       $request
-     * @param ModuleService $module_service
+     * @param ServerRequestInterface $request
+     * @param ModuleService          $module_service
      */
-    public function __construct(Request $request, ModuleService $module_service)
+    public function __construct(ServerRequestInterface $request, ModuleService $module_service)
     {
         $this->request        = $request;
         $this->module_service = $module_service;

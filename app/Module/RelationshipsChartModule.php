@@ -27,13 +27,13 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\RedirectResponse;
+use Fisharebest\Webtrees\Response;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Class RelationshipsChartModule
  */
@@ -124,9 +124,9 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAdminAction(): Response
+    public function getAdminAction(): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -141,11 +141,11 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAdminAction(Request $request): RedirectResponse
+    public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         foreach (Tree::getAll() as $tree) {
             $recursion = $request->get('relationship-recursion-' . $tree->id(), '');
@@ -192,13 +192,13 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     /**
      * A form to request the chart parameters.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getChartAction(Request $request, Tree $tree, UserInterface $user): Response
+    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $ajax = (bool) $request->get('ajax');
 
@@ -267,9 +267,9 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      * @param int        $recursion
      * @param int        $ancestors
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function chart(Individual $individual1, Individual $individual2, int $recursion, int $ancestors): Response
+    public function chart(Individual $individual1, Individual $individual2, int $recursion, int $ancestors): ResponseInterface
     {
         $tree = $individual1->tree();
 

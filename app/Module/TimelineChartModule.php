@@ -24,11 +24,11 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Response;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Class TimelineChartModule
  */
@@ -107,13 +107,13 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
     /**
      * A form to request the chart parameters.
      *
-     * @param Request $request
-     * @param Tree    $tree
-     * @param UserInterface    $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getChartAction(Request $request, Tree $tree, UserInterface $user): Response
+    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
@@ -215,9 +215,9 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
      * @param array $xrefs
      * @param int   $scale
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    protected function chart(Tree $tree, array $xrefs, int $scale): Response
+    protected function chart(Tree $tree, array $xrefs, int $scale): ResponseInterface
     {
         $xrefs = array_unique($xrefs);
 

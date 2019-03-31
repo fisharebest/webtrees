@@ -26,15 +26,14 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\RedirectResponse;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Controller for the administration pages
  */
@@ -46,12 +45,12 @@ class AdminController extends AbstractBaseController
     /**
      * Merge two genealogy records.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function mergeRecords(Request $request, Tree $tree): Response
+    public function mergeRecords(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $title = I18N::translate('Merge records') . ' — ' . e($tree->title());
 
@@ -134,12 +133,12 @@ class AdminController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function mergeRecordsAction(Request $request, Tree $tree): Response
+    public function mergeRecordsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref1 = $request->get('xref1', '');
         $xref2 = $request->get('xref2', '');
@@ -258,9 +257,9 @@ class AdminController extends AbstractBaseController
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function treePrivacyEdit(Tree $tree): Response
+    public function treePrivacyEdit(Tree $tree): ResponseInterface
     {
         $title                = e($tree->name()) . ' — ' . I18N::translate('Privacy');
         $all_tags             = $this->tagsForPrivacy($tree);
@@ -277,12 +276,12 @@ class AdminController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function treePrivacyUpdate(Request $request, Tree $tree): RedirectResponse
+    public function treePrivacyUpdate(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $delete_default_resn_id = (array) $request->get('delete');
 

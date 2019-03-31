@@ -22,11 +22,11 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Response;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Class FanChartModule
  */
@@ -110,14 +110,14 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
     /**
      * A form to request the chart parameters.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
-     * @param ChartService  $chart_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
+     * @param ChartService           $chart_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getChartAction(Request $request, Tree $tree, UserInterface $user, ChartService $chart_service): Response
+    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user, ChartService $chart_service): ResponseInterface
     {
         $ajax       = (bool) $request->get('ajax');
         $xref       = $request->get('xref', '');
@@ -172,9 +172,9 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
      * @param int          $generations
      * @param ChartService $chart_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    protected function chart(Individual $individual, int $chart_style, int $fan_width, int $generations, ChartService $chart_service): Response
+    protected function chart(Individual $individual, int $chart_style, int $fan_width, int $generations, ChartService $chart_service): ResponseInterface
     {
         $ancestors = $chart_service->sosaStradonitzAncestors($individual, $generations);
 

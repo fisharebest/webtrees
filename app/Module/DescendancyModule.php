@@ -20,11 +20,11 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Response;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Class DescendancyModule
  */
@@ -65,13 +65,13 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param SearchService $search_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param SearchService          $search_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getSearchAction(Request $request, Tree $tree, SearchService $search_service): Response
+    public function getSearchAction(ServerRequestInterface $request, Tree $tree, SearchService $search_service): ResponseInterface
     {
         $search = $request->get('search', '');
 
@@ -94,12 +94,12 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getDescendantsAction(Request $request, Tree $tree): Response
+    public function getDescendantsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
 

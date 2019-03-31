@@ -17,29 +17,29 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Closure;
 use Fisharebest\Webtrees\DebugBar;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
+use Fisharebest\Webtrees\MiddlewareInterface;
+use Fisharebest\Webtrees\RedirectResponse;
+use Fisharebest\Webtrees\RequestHandlerInterface;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 /**
  * Middleware to add debugging info to the PHP debugbar.
  */
 class DebugBarData implements MiddlewareInterface
 {
     /**
-     * @param Request $request
-     * @param Closure $next
+     * @param ServerRequestInterface  $request
+     * @param RequestHandlerInterface $handler
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function handle(Request $request, Closure $next): Response
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if (class_exists(DebugBar::class)) {
             // This timer gets stopped automatically when we generate the response.
             DebugBar::startMeasure('controller_action');
-            $response = $next($request);
+            $response = $handler->handle($request);
 
             if ($response instanceof RedirectResponse) {
                 // Show the debug data on the next page
@@ -52,6 +52,6 @@ class DebugBarData implements MiddlewareInterface
             return $response;
         }
 
-        return $next($request);
+        return $handler->handle($request);
     }
 }

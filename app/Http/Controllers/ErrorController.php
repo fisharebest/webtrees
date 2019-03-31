@@ -19,10 +19,11 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\RedirectResponse;
+use Fisharebest\Webtrees\Response;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
 use Whoops\Handler\PlainTextHandler;
@@ -36,12 +37,12 @@ class ErrorController extends AbstractBaseController
     /**
      * No route was match?  Send the user somewhere sensible, if we can.
      *
-     * @param Request   $request
-     * @param Tree|null $tree
+     * @param ServerRequestInterface $request
+     * @param Tree|null              $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function noRouteFound(Request $request, ?Tree $tree): Response
+    public function noRouteFound(ServerRequestInterface $request, ?Tree $tree): ResponseInterface
     {
         // The tree exists, we have access to it, and it is fully imported.
         if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
@@ -66,9 +67,9 @@ class ErrorController extends AbstractBaseController
      *
      * @param HttpException $ex
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function errorResponse(HttpException $ex): Response
+    public function errorResponse(HttpException $ex): ResponseInterface
     {
         return $this->viewResponse('components/alert-danger', [
             'alert' => $ex->getMessage(),
@@ -81,9 +82,9 @@ class ErrorController extends AbstractBaseController
      *
      * @param HttpException $ex
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function ajaxErrorResponse(HttpException $ex): Response
+    public function ajaxErrorResponse(HttpException $ex): ResponseInterface
     {
         return new Response(view('components/alert-danger', [
             'alert' => $ex->getMessage(),
@@ -93,12 +94,12 @@ class ErrorController extends AbstractBaseController
     /**
      * Convert an exception into an error message
      *
-     * @param Request   $request
-     * @param Throwable $ex
+     * @param ServerRequestInterface $request
+     * @param Throwable              $ex
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function unhandledExceptionResponse(Request $request, Throwable $ex): Response
+    public function unhandledExceptionResponse(ServerRequestInterface $request, Throwable $ex): ResponseInterface
     {
         // Create a stack dump for the exception
         $whoops = new Run();

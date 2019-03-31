@@ -19,12 +19,11 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Request;
+use Fisharebest\Webtrees\Response;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Test the changes log controller
  *

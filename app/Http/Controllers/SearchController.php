@@ -21,14 +21,13 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\RedirectResponse;
+use Fisharebest\Webtrees\ResponseInterface;
+use Fisharebest\Webtrees\ServerRequestInterface;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Search for (and optionally replace) genealogy data
  */
@@ -137,12 +136,12 @@ class SearchController extends AbstractBaseController
     /**
      * The "omni-search" box in the header.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function quick(Request $request, Tree $tree): Response
+    public function quick(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $query = $request->get('query', '');
 
@@ -160,12 +159,12 @@ class SearchController extends AbstractBaseController
     /**
      * The standard search.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function general(Request $request, Tree $tree): Response
+    public function general(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $query = $request->get('query', '');
 
@@ -301,12 +300,12 @@ class SearchController extends AbstractBaseController
     /**
      * The phonetic search.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function phonetic(Request $request, Tree $tree): Response
+    public function phonetic(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $firstname = $request->get('firstname', '');
         $lastname  = $request->get('lastname', '');
@@ -349,11 +348,11 @@ class SearchController extends AbstractBaseController
     /**
      * Search and replace.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function replace(Request $request): Response
+    public function replace(ServerRequestInterface $request): ResponseInterface
     {
         $search  = $request->get('search', '');
         $replace = $request->get('replace', '');
@@ -376,12 +375,12 @@ class SearchController extends AbstractBaseController
     /**
      * Search and replace.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function replaceAction(Request $request, Tree $tree): RedirectResponse
+    public function replaceAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $search  = $request->get('search', '');
         $replace = $request->get('replace', '');
@@ -530,12 +529,12 @@ class SearchController extends AbstractBaseController
     /**
      * A structured search.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function advanced(Request $request, Tree $tree): Response
+    public function advanced(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $default_fields = array_fill_keys(self::DEFAULT_ADVANCED_FIELDS, '');
 

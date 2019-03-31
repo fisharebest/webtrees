@@ -19,8 +19,6 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Http\Controllers\Admin\UsersController;
 use Fisharebest\Webtrees\Services\UserService;
-use Symfony\Component\HttpFoundation\Request;
-
 /**
  * Test the user administration pages
  */
