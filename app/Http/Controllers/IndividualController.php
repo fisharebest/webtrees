@@ -45,45 +45,10 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class IndividualController extends AbstractBaseController
 {
-    // Do not show these facts in the expanded chart boxes.
-    private const EXCLUDE_CHART_FACTS = [
-        'ADDR',
-        'ALIA',
-        'ASSO',
-        'CHAN',
-        'CHIL',
-        'EMAIL',
-        'FAMC',
-        'FAMS',
-        'HUSB',
-        'NAME',
-        'NOTE',
-        'OBJE',
-        'PHON',
-        'RESI',
-        'RESN',
-        'SEX',
-        'SOUR',
-        'SSN',
-        'SUBM',
-        'TITL',
-        'URL',
-        'WIFE',
-        'WWW',
-        '_EMAIL',
-        '_TODO',
-        '_UID',
-        '_WT_OBJE_SORT',
-    ];
-
-    /**
-     * @var ModuleService
-     */
-
+    /** @var ModuleService */
     private $module_service;
-    /**
-     * @var UserService
-     */
+
+    /** @var UserService */
     private $user_service;
 
     /**
