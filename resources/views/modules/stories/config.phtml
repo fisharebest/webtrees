@@ -13,7 +13,7 @@
         <?= I18N::translate('Family tree') ?>
     </label>
 
-    <?= view('components/select', ['name' => 'ged', 'selected' => $tree->name(), 'values' => $tree_names]) ?>
+    <?= view('components/select', ['name' => 'ged', 'selected' => $tree->name(), 'options' => $tree_names]) ?>
     <button type="submit" class="btn btn-primary">
         <?= I18N::translate('show') ?>
     </button>

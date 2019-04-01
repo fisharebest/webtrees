@@ -15,7 +15,7 @@
         <?= I18N::translate('Presentation style') ?>
     </label>
     <div class="col-sm-9">
-        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $info_styles, 'values' => $info_styles]) ?>
+        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $info_styles, 'options' => $info_styles]) ?>
     </div>
 </div>
 
@@ -33,6 +33,6 @@
         <?= /* I18N: label for a yes/no option */ I18N::translate('Show the user who made the change') ?>
     </label>
     <div class="col-sm-9">
-        <?= view('components/radios-inline', ['name' => 'show_user', 'values' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $show_user]) ?>
+        <?= view('components/radios-inline', ['name' => 'show_user', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $show_user]) ?>
     </div>
 </div>

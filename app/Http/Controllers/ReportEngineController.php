@@ -190,7 +190,7 @@ class ReportEngineController extends AbstractBaseController
                                     $options[$key] = I18N::translateContext($match[1], $match[2]);
                                 }
                             }
-                            $input['control'] = view('components/select', ['name' => 'vars[' . $input['name'] . ']', 'id'   => 'input-' . $n, 'selected' => $input['default'], 'values' => $options]);
+                            $input['control'] = view('components/select', ['name' => 'vars[' . $input['name'] . ']', 'id'   => 'input-' . $n, 'selected' => $input['default'], 'options' => $options]);
                             break;
                     }
             }

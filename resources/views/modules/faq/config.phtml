@@ -18,7 +18,7 @@
     <label for="ged" class="sr-only">
         <?= I18N::translate('Family tree') ?>
     </label>
-    <?= view('components/select', ['name' => 'ged', 'selected' => $tree->name(), 'values' => $tree_names]) ?>
+    <?= view('components/select', ['name' => 'ged', 'selected' => $tree->name(), 'options' => $tree_names]) ?>
     <input type="submit" class="btn btn-primary" value="<?= I18N::translate('show') ?>">
 </form>
 </p>

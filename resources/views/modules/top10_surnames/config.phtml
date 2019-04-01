@@ -14,6 +14,6 @@
         <?= I18N::translate('Presentation style') ?>
     </label>
     <div class="col-sm-9">
-        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $infoStyle, 'values' => $info_styles]) ?>
+        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $infoStyle, 'options' => $info_styles]) ?>
     </div>
 </div>

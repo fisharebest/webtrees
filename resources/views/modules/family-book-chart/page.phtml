@@ -25,7 +25,7 @@
             <?= I18N::translate('Generations') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select', ['name' => 'book_size', 'selected' => $book_size, 'values' => FunctionsEdit::numericOptions(range(2, 5))]) ?>
+            <?= view('components/select', ['name' => 'book_size', 'selected' => $book_size, 'options' => FunctionsEdit::numericOptions(range(2, 5))]) ?>
         </div>
     </div>
 
@@ -34,7 +34,7 @@
             <?= I18N::translate('Descendant generations') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select', ['name' => 'generations', 'selected' => $generations, 'values' => FunctionsEdit::numericOptions(range($minimum_generations, $maximum_generations))]) ?>
+            <?= view('components/select', ['name' => 'generations', 'selected' => $generations, 'options' => FunctionsEdit::numericOptions(range($minimum_generations, $maximum_generations))]) ?>
         </div>
     </div>
 

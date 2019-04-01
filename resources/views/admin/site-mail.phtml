@@ -19,7 +19,7 @@
             <?= /* I18N: A configuration setting */ I18N::translate('Messages') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'SMTP_ACTIVE', 'selected' => Site::getPreference('SMTP_ACTIVE'), 'values' => $mail_transport_options]) ?>
+            <?= view('components/select', ['name' => 'SMTP_ACTIVE', 'selected' => Site::getPreference('SMTP_ACTIVE'), 'options' => $mail_transport_options]) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Messages” site configuration setting */ I18N::translate('webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details.') ?>
             </p>
@@ -114,7 +114,7 @@
             <?= /* I18N: A configuration setting */ I18N::translate('Secure connection') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'SMTP_SSL', 'selected' => Site::getPreference('SMTP_SSL'), 'values' => $mail_ssl_options]) ?>
+            <?= view('components/select', ['name' => 'SMTP_SSL', 'selected' => Site::getPreference('SMTP_SSL'), 'options' => $mail_ssl_options]) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Secure connection” site configuration setting */ I18N::translate('Most servers do not use secure connections.') ?>
             </p>

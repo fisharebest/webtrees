@@ -17,7 +17,7 @@
         <?= I18N::translate('Presentation style') ?>
     </label>
     <div class="col-sm-9">
-        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $infoStyle, 'values' => $styles]) ?>
+        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $infoStyle, 'options' => $styles]) ?>
     </div>
 </div>
 
@@ -26,6 +26,6 @@
         <?= I18N::translate('Calendar') ?>
     </label>
     <div class="col-sm-9">
-        <?= view('components/select', ['name' => 'calendar', 'selected' => $calendar, 'values' => $calendars]) ?>
+        <?= view('components/select', ['name' => 'calendar', 'selected' => $calendar, 'options' => $calendars]) ?>
     </div>
 </div>

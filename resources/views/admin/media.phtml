@@ -39,7 +39,7 @@
                                 <div class="input-group-text"><?= e($data_folder) ?></div>
                             </div>
                                 <?php if ($media_folders->count() > 1) : ?>
-                                    <?= view('components/select', ['name' => 'media_folder', 'selected' => $media_folder, 'values' => $media_folders]) ?>
+                                    <?= view('components/select', ['name' => 'media_folder', 'selected' => $media_folder, 'options' => $media_folders]) ?>
 
                                 <?php else : ?>
                                     <?= e($media_folder) ?>

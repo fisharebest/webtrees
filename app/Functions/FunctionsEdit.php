@@ -437,7 +437,7 @@ class FunctionsEdit
         } elseif ($fact === 'SURN' || $fact === '_MARNM_SURN') {
             $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" data-autocomplete-type="SURN" oninput="updatewholename()">';
         } elseif ($fact === 'ADOP') {
-            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'values' => GedcomCodeAdop::getValues()]);
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => GedcomCodeAdop::getValues()]);
         } elseif ($fact === 'ALIA') {
             $html .= view('components/select-individual', ['id' => $id, 'name' => $name, 'individual' => Individual::getInstance($value, $tree), 'tree' => $tree]);
         } elseif ($fact === 'ASSO' || $fact === '_ASSO') {
@@ -505,7 +505,7 @@ class FunctionsEdit
                     'data-autocomplete-extra' => '#' . $previous_ids['SOUR'],
                 ]) . '>';
         } elseif ($fact === 'PEDI') {
-            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'values' => GedcomCodePedi::getValues()]);
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => GedcomCodePedi::getValues()]);
         } elseif ($fact === 'PLAC') {
             $html .= '<div class="input-group">';
             $html .= '<input ' . Html::attributes([
@@ -526,9 +526,9 @@ class FunctionsEdit
             $html .= view('edit/input-addon-help', ['fact' => 'PLAC']);
             $html .= '</div>';
         } elseif ($fact === 'QUAY') {
-            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'values' => GedcomCodeQuay::getValues()]);
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => GedcomCodeQuay::getValues()]);
         } elseif ($fact === 'RELA') {
-            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'values' => self::optionsRelationships($value)]);
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => self::optionsRelationships($value)]);
         } elseif ($fact === 'REPO') {
             $html .=
                 '<div class="input-group">' .
@@ -537,7 +537,7 @@ class FunctionsEdit
                 '</div>';
         } elseif ($fact === 'RESN') {
             $html .= '<div class="input-group">';
-            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'values' => self::optionsRestrictions(true)]);
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => self::optionsRestrictions(true)]);
             $html .= view('edit/input-addon-help', ['fact' => 'RESN']);
             $html .= '</span>';
             $html .= '</div>';
@@ -553,7 +553,7 @@ class FunctionsEdit
                 view('components/select-source', ['id' => $id, 'name' => $name, 'source' => Source::getInstance($value, $tree), 'tree' => $tree]) .
                 '</div>';
         } elseif ($fact === 'STAT') {
-            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'values' => GedcomCodeStat::statusNames($upperlevel)]);
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => GedcomCodeStat::statusNames($upperlevel)]);
         } elseif ($fact === 'SUBM') {
             $html .=
                 '<div class="input-group">' .
@@ -561,18 +561,18 @@ class FunctionsEdit
                 view('components/select-submitter', ['id' => $id, 'name' => $name, 'submitter' => GedcomRecord::getInstance($value, $tree), 'tree' => $tree]) .
                 '</div>';
         } elseif ($fact === 'TEMP') {
-            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'values' => self::optionsTemples()]);
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => self::optionsTemples()]);
         } elseif ($fact === 'TIME') {
             /* I18N: Examples of valid time formats (hours:minutes:seconds) */
             $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . I18N::translate('hh:mm or hh:mm:ss') . '">';
         } elseif ($fact === '_WT_USER') {
-            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'values' => self::optionsUsers()]);
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => self::optionsUsers()]);
         } elseif ($fact === '_PRIM') {
-            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'values' => ['' => '', 'Y' => I18N::translate('always'), 'N' => I18N::translate('never')]]);
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => ['' => '', 'Y' => I18N::translate('always'), 'N' => I18N::translate('never')]]);
             $html .= '<p class="small text-muted">' . I18N::translate('Use this image for charts and on the individual’s page.') . '</p>';
         } elseif ($fact === 'TYPE' && $level === '0') {
             // Level 0 TYPE fields are only used for NAME records
-            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'values' => GedcomCodeName::getValues()]);
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => GedcomCodeName::getValues()]);
         } elseif ($fact === 'TYPE' && $level === '3') {
             //-- Build the selector for the Media 'TYPE' Fact
             $html          .= '<select name="text[]"><option selected value="" ></option>';

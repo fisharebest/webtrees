@@ -12,7 +12,7 @@
             <?= I18N::translate('Number of months since the last sign-in for a user’s account to be considered inactive: ') ?>
         </label>
         <div class="col-sm-2">
-            <?= view('components/select', ['name' => 'months', 'selected' => $months, 'values' => $options]) ?>
+            <?= view('components/select', ['name' => 'months', 'selected' => $months, 'options' => $options]) ?>
         </div>
         <div class="col-sm-2">
             <button type="submit" class="btn btn-primary">

@@ -82,7 +82,7 @@
             <?= I18N::translate('Language') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select', ['name' => 'language', 'selected' => $user->getPreference('language'), 'values' => $installed_languages]) ?>
+            <?= view('components/select', ['name' => 'language', 'selected' => $user->getPreference('language'), 'options' => $installed_languages]) ?>
         </div>
     </div>
 
@@ -91,7 +91,7 @@
             <?= I18N::translate('Time zone') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select', ['name' => 'timezone', 'selected' => $user->getPreference('TIMEZONE', 'UTC'), 'values' => $timezones]) ?>
+            <?= view('components/select', ['name' => 'timezone', 'selected' => $user->getPreference('TIMEZONE', 'UTC'), 'options' => $timezones]) ?>
             <p class="small text-muted" id="timezone-description">
                 <?= I18N::translate('The time zone is required for date calculations, such as knowing today’s date.') ?>
             </p>
@@ -116,7 +116,7 @@
                 <?= I18N::translate('Theme') ?>
             </label>
             <div class="col-sm-9 wt-page-options-value">
-                <?= view('components/select', ['name' => 'theme', 'selected' => $user->getPreference('theme'), 'values' => $themes]) ?>
+                <?= view('components/select', ['name' => 'theme', 'selected' => $user->getPreference('theme'), 'options' => $themes]) ?>
                 <p class="small text-muted" id="theme-description">
                     <?= /* I18N: Help text for the "Default theme" site configuration setting */
                     I18N::translate('You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc.') ?>
@@ -130,7 +130,7 @@
             <?= I18N::translate('Contact method') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select', ['name' => 'contact_method', 'id' => 'contact-method', 'selected' => $user->getPreference('contactmethod'), 'values' => $contact_methods]) ?>
+            <?= view('components/select', ['name' => 'contact_method', 'id' => 'contact-method', 'selected' => $user->getPreference('contactmethod'), 'options' => $contact_methods]) ?>
             <p class="small text-muted" id="contact-method-description">
             <?= I18N::translate('Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all.') ?>
             </p>

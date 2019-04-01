@@ -28,7 +28,7 @@
             <label for="type">
                 <?= I18N::translate('Status') ?>
             </label>
-            <?= view('components/select', ['name' => 'type', 'selected' => $type, 'values' => $statuses]) ?>
+            <?= view('components/select', ['name' => 'type', 'selected' => $type, 'options' => $statuses]) ?>
         </div>
 
         <div class="form-group col-xs-6 col-md-3">
@@ -58,14 +58,14 @@
             <label for="username">
                 <?= I18N::translate('User') ?>
             </label>
-            <?= view('components/select', ['name' => 'username', 'selected' => $username, 'values' => $user_list]) ?>
+            <?= view('components/select', ['name' => 'username', 'selected' => $username, 'options' => $user_list]) ?>
         </div>
 
         <div class="form-group col-xs-6 col-md-3">
             <label for="ged">
                 <?= I18N::translate('Family tree') ?>
             </label>
-            <?= view('components/select', ['name' => 'ged', 'selected' => $ged, 'values' => $tree_list]) ?>
+            <?= view('components/select', ['name' => 'ged', 'selected' => $ged, 'options' => $tree_list]) ?>
         </div>
     </div>
 

@@ -28,7 +28,7 @@
             <label for="type">
                 <?= I18N::translate('Type') ?>
             </label>
-            <?= view('components/select', ['name' => 'type', 'selected' => $type, 'values' => ['' => '', 'auth' => 'auth', 'config' => 'config', 'debug' => 'debug', 'edit' => 'edit', 'error' => 'error', 'media' => 'media', 'search' => 'search']]) ?>
+            <?= view('components/select', ['name' => 'type', 'selected' => $type, 'options' => ['' => '', 'auth' => 'auth', 'config' => 'config', 'debug' => 'debug', 'edit' => 'edit', 'error' => 'error', 'media' => 'media', 'search' => 'search']]) ?>
         </div>
 
         <div class="form-group col-xs-6 col-sm-4">
@@ -51,14 +51,14 @@
             <label for="username">
                 <?= I18N::translate('User') ?>
             </label>
-            <?= view('components/select', ['name' => 'username', 'selected' => $username, 'values' => $user_options]) ?>
+            <?= view('components/select', ['name' => 'username', 'selected' => $username, 'options' => $user_options]) ?>
         </div>
 
         <div class="form-group col-sm-4">
             <label for="gedc">
                 <?= I18N::translate('Family tree') ?>
             </label>
-            <?= view('components/select', ['name' => 'gedc', 'selected' => $gedc, 'values' => $tree_options]) ?>
+            <?= view('components/select', ['name' => 'gedc', 'selected' => $gedc, 'options' => $tree_options]) ?>
         </div>
     </div>
 

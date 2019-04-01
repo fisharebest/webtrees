@@ -57,7 +57,7 @@
         </label>
 
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'gedcom_id', 'selected' => $tree->name(), 'values' => $tree_names]) ?>
+            <?= view('components/select', ['name' => 'gedcom_id', 'selected' => $tree->name(), 'options' => $tree_names]) ?>
             <p class="small text-muted">
                 <?= /* I18N: FAQ = “Frequently Asked Question” */
                 I18N::translate('An FAQ can be displayed on just one of the family trees, or on all the family trees.') ?>

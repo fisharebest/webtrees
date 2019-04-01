@@ -31,8 +31,8 @@
     <p class="form-inline">
         <?= I18N::translate(/* I18N: Copy all the records from [family tree 1] into [family tree 2] */
             'Copy all the records from %1$s into %2$s.',
-            view('components/select', ['name' => 'tree1_name', 'selected' => $tree1 ? $tree1->name() : '', 'values' => $tree_list]),
-            view('components/select', ['name' => 'tree2_name', 'selected' => $tree2 ? $tree2->name() : '', 'values' => $tree_list])
+            view('components/select', ['name' => 'tree1_name', 'selected' => $tree1 ? $tree1->name() : '', 'options' => $tree_list]),
+            view('components/select', ['name' => 'tree2_name', 'selected' => $tree2 ? $tree2->name() : '', 'options' => $tree_list])
         ) ?>
     </p>
 

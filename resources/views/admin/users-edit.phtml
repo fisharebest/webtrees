@@ -122,7 +122,7 @@ use Fisharebest\Webtrees\View;
             <?= /* I18N: A configuration setting */ I18N::translate('Time zone') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'timezone', 'selected' => $user->getPreference('TIMEZONE', 'UTC'), 'values' => array_combine(\DateTimeZone::listIdentifiers(), \DateTimeZone::listIdentifiers())]) ?>
+            <?= view('components/select', ['name' => 'timezone', 'selected' => $user->getPreference('TIMEZONE', 'UTC'), 'options' => array_combine(\DateTimeZone::listIdentifiers(), \DateTimeZone::listIdentifiers())]) ?>
             <p class="small text-muted">
                 <?= I18N::translate('The time zone is required for date calculations, such as knowing today’s date.') ?>
             </p>
@@ -171,7 +171,7 @@ use Fisharebest\Webtrees\View;
             <?= /* I18N: A configuration setting */ I18N::translate('Preferred contact method') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'contact_method', 'selected' => $user->getPreference('contactmethod'), 'values' => $contact_methods]) ?>
+            <?= view('components/select', ['name' => 'contact_method', 'selected' => $user->getPreference('contactmethod'), 'options' => $contact_methods]) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Preferred contact method” configuration setting */
                 I18N::translate('Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all.') ?>
@@ -185,7 +185,7 @@ use Fisharebest\Webtrees\View;
             <?= I18N::translate('Theme') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'theme', 'selected' => $user->getPreference('theme'), 'values' => $theme_options]) ?>
+            <?= view('components/select', ['name' => 'theme', 'selected' => $user->getPreference('theme'), 'options' => $theme_options]) ?>
         </div>
     </div>
 

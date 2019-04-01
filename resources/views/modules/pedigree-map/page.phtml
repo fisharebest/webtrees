@@ -23,7 +23,7 @@
             <?= I18N::translate('Generations') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select', ['name' => 'generations', 'selected' => $generations, 'values' => FunctionsEdit::numericOptions(range(2, $maxgenerations))]) ?>
+            <?= view('components/select', ['name' => 'generations', 'selected' => $generations, 'options' => FunctionsEdit::numericOptions(range(2, $maxgenerations))]) ?>
         </div>
     </div>
 

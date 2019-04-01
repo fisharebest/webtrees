@@ -129,7 +129,7 @@
             <?= I18N::translate('Import all places from a family tree') ?>
         </label>
         <div class="col-sm-6">
-            <?= view('components/select', ['name' => 'ged', 'selected' => '', 'values' => Tree::getNameList()]) ?>
+            <?= view('components/select', ['name' => 'ged', 'selected' => '', 'options' => Tree::getNameList()]) ?>
         </div>
         <div class="col-sm-2">
             <button type="submit" class="btn btn-primary">

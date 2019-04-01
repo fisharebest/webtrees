@@ -87,7 +87,7 @@ use Fisharebest\Webtrees\View;
                                                             <?= e($tree->title()) ?>
                                                         </td>
                                                         <td>
-                                                            <?= view('components/select', ['name' => 'access-' . $module->name() . '-' . $tree->id(), 'selected' => $module->accessLevel($tree, $interface), 'values' => FunctionsEdit::optionsAccessLevels()]) ?>
+                                                            <?= view('components/select', ['name' => 'access-' . $module->name() . '-' . $tree->id(), 'selected' => $module->accessLevel($tree, $interface), 'options' => FunctionsEdit::optionsAccessLevels()]) ?>
                                                     </tr>
                                                 <?php endforeach ?>
                                             </tbody>

@@ -20,7 +20,7 @@
             <?= I18N::translate('Pedigree') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'PEDI', 'selected' => '', 'values' => GedcomCodePedi::getValues($individual)]) ?>
+            <?= view('components/select', ['name' => 'PEDI', 'selected' => '', 'options' => GedcomCodePedi::getValues($individual)]) ?>
             <p class="small text-muted">
                 <?= I18N::translate('A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed.') ?>
             </p>

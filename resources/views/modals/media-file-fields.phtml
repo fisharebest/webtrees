@@ -76,7 +76,7 @@
         <?= I18N::translate('A file on the server') ?>
     </label>
     <div class="col-sm-10">
-        <?= view('components/select', ['name' => 'unused', 'selected' => '', 'values' => $unused_files]) ?>
+        <?= view('components/select', ['name' => 'unused', 'selected' => '', 'options' => $unused_files]) ?>
         <small class="text-muted">
         </small>
     </div>
@@ -112,7 +112,7 @@
         <?= I18N::translate('Media type') ?>
     </label>
     <div class="col-sm-10">
-        <?= view('components/select', ['name' => 'type', 'selected' => $media_file ? $media_file->type() : '', 'values' => ['' => ''] + GedcomTag::getFileFormTypes()]) ?>
+        <?= view('components/select', ['name' => 'type', 'selected' => $media_file ? $media_file->type() : '', 'options' => ['' => ''] + GedcomTag::getFileFormTypes()]) ?>
     </div>
 </div>
 

@@ -22,7 +22,7 @@
             <?= I18N::translate('Folder') ?>
         </label>
         <div class="col-sm-3 wt-page-options-value">
-            <?= view('components/select', ['name' => 'folder', 'selected' => $folder, 'values' => $folders]) ?>
+            <?= view('components/select', ['name' => 'folder', 'selected' => $folder, 'options' => $folders]) ?>
             <?= view('components/checkbox-inline', ['label' => /* I18N: Label for check-box */ I18N::translate('Include subfolders'), 'name' => 'subdirs', 'checked' => $subdirs === '1']) ?>
         </div>
 
@@ -30,7 +30,7 @@
             <?= I18N::translate('Media objects per page') ?>
         </label>
         <div class="col-sm-3 wt-page-options-value">
-            <?= view('components/select', ['name' => 'max', 'selected' => $max, 'values' => FunctionsEdit::numericOptions([10, 20, 30, 40, 50, 75, 100, 150, 200])]) ?>
+            <?= view('components/select', ['name' => 'max', 'selected' => $max, 'options' => FunctionsEdit::numericOptions([10, 20, 30, 40, 50, 75, 100, 150, 200])]) ?>
         </div>
     </div>
 
@@ -39,7 +39,7 @@
             <?= I18N::translate('Type') ?>
         </label>
         <div class="col-sm-3 wt-page-options-value">
-            <?= view('components/select', ['name' => 'form_type', 'id' => 'form-type', 'selected' => $form_type, 'values' => ['' => ''] + $formats]) ?>
+            <?= view('components/select', ['name' => 'form_type', 'id' => 'form-type', 'selected' => $form_type, 'options' => ['' => ''] + $formats]) ?>
         </div>
 
         <div class="col-sm-3 col-form-label wt-page-options-label">

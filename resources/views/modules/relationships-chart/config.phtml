@@ -17,7 +17,7 @@
                 I18N::translate('Relationships') ?>
             </label>
             <div class="col-sm-9">
-                <?= view('components/select', ['name' => 'relationship-ancestors-' . $tree->id(), 'selected' => $tree->getPreference('RELATIONSHIP_ANCESTORS', $default_ancestors), 'values' => $ancestors_options]) ?>
+                <?= view('components/select', ['name' => 'relationship-ancestors-' . $tree->id(), 'selected' => $tree->getPreference('RELATIONSHIP_ANCESTORS', $default_ancestors), 'options' => $ancestors_options]) ?>
             </div>
         </div>
 

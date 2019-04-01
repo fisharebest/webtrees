@@ -14,7 +14,7 @@
         <?= I18N::translate('Events') ?>
     </label>
     <div class="col-sm-9">
-        <?= view('components/select', ['name' => 'events[]', 'id' => 'events', 'selected' => $event_array, 'values' => $all_events, 'class' => 'select2']) ?>
+        <?= view('components/select', ['name' => 'events[]', 'id' => 'events', 'selected' => $event_array, 'options' => $all_events, 'class' => 'select2']) ?>
     </div>
 </div>
 
@@ -23,7 +23,7 @@
         <?= /* I18N: Label for a configuration option */ I18N::translate('Presentation style') ?>
     </label>
     <div class="col-sm-9">
-        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $infoStyle, 'values' => $info_styles]) ?>
+        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $infoStyle, 'options' => $info_styles]) ?>
     </div>
 </div>
 
@@ -32,6 +32,6 @@
         <?= /* I18N: Label for a configuration option */ I18N::translate('Sort order') ?>
     </label>
     <div class="col-sm-9">
-        <?= view('components/select', ['name' => 'sortStyle', 'selected' => $sortStyle, 'values' => $sort_styles]) ?>
+        <?= view('components/select', ['name' => 'sortStyle', 'selected' => $sortStyle, 'options' => $sort_styles]) ?>
     </div>
 </div>

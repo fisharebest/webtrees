@@ -5,7 +5,7 @@
         <?= I18N::translate('Chart type') ?>
     </label>
     <div class="col-sm-9">
-        <?= view('components/select', ['name' => 'type', 'selected' => $type, 'values' => $charts]) ?>
+        <?= view('components/select', ['name' => 'type', 'selected' => $type, 'options' => $charts]) ?>
     </div>
 </div>
 

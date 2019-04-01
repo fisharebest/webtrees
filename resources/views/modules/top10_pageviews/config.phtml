@@ -14,6 +14,6 @@
         <?= /* I18N: Label for a configuration option */ I18N::translate('Show counts before or after name') ?>
     </label>
     <div class="col-sm-9">
-        <?= view('components/select', ['name' => 'count_placement', 'selected' => $count_placement, 'values' => $options]) ?>
+        <?= view('components/select', ['name' => 'count_placement', 'selected' => $count_placement, 'options' => $options]) ?>
     </div>
 </div>

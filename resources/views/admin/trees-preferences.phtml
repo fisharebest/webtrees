@@ -103,10 +103,10 @@ use Fisharebest\Webtrees\I18N;
             <div class="col-sm-9">
                 <div class="row">
                     <div class="col-sm-6" style="padding-left: 0;">
-                        <?= view('components/select', ['name' => 'CALENDAR_FORMAT0', 'selected' => $calendar_formats[0], 'values' => FunctionsEdit::optionsCalendarConversions()]) ?>
+                        <?= view('components/select', ['name' => 'CALENDAR_FORMAT0', 'selected' => $calendar_formats[0], 'options' => FunctionsEdit::optionsCalendarConversions()]) ?>
                     </div>
                     <div class="col-sm-6" style="padding-right: 0;">
-                        <?= view('components/select', ['name' => 'CALENDAR_FORMAT1', 'selected' => $calendar_formats[1], 'values' => FunctionsEdit::optionsCalendarConversions()]) ?>
+                        <?= view('components/select', ['name' => 'CALENDAR_FORMAT1', 'selected' => $calendar_formats[1], 'options' => FunctionsEdit::optionsCalendarConversions()]) ?>
                     </div>
                 </div>
                 <p class="small text-muted">
@@ -264,7 +264,7 @@ use Fisharebest\Webtrees\I18N;
             <?= /* I18N: A configuration setting */ I18N::translate('Default theme') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'THEME_DIR', 'selected' => $tree->getPreference('THEME_DIR'), 'values' => $theme_options]) ?>
+            <?= view('components/select', ['name' => 'THEME_DIR', 'selected' => $tree->getPreference('THEME_DIR'), 'options' => $theme_options]) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Default theme” configuration setting */ I18N::translate('You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc.') ?>
             </p>
@@ -303,7 +303,7 @@ use Fisharebest\Webtrees\I18N;
             <?= /* I18N: A configuration setting */ I18N::translate('Who can upload new media files') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'MEDIA_UPLOAD', 'selected' => $tree->getPreference('MEDIA_UPLOAD'), 'values' => $privacy_options]) ?>
+            <?= view('components/select', ['name' => 'MEDIA_UPLOAD', 'selected' => $tree->getPreference('MEDIA_UPLOAD'), 'options' => $privacy_options]) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Who can upload new media files” configuration setting */ I18N::translate('If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only.') ?>
             </p>
@@ -317,7 +317,7 @@ use Fisharebest\Webtrees\I18N;
                 <?= /* I18N: A configuration setting */ I18N::translate('Show a download link in the media viewer') ?>
             </legend>
             <div class="col-sm-9">
-                <?= view('components/select', ['name' => 'SHOW_MEDIA_DOWNLOAD', 'selected' => $tree->getPreference('SHOW_MEDIA_DOWNLOAD'), 'values' => FunctionsEdit::optionsAccessLevels()]) ?>
+                <?= view('components/select', ['name' => 'SHOW_MEDIA_DOWNLOAD', 'selected' => $tree->getPreference('SHOW_MEDIA_DOWNLOAD'), 'options' => FunctionsEdit::optionsAccessLevels()]) ?>
                 <p class="small text-muted">
                     <?= /* I18N: Help text for the “Show a download link in the media viewer” configuration setting */ I18N::translate('This option will make it easier for users to download images.') ?>
                 </p>
@@ -365,7 +365,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Images without watermarks') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'SHOW_NO_WATERMARK', 'selected' => $tree->getPreference('SHOW_NO_WATERMARK'), 'values' => FunctionsEdit::optionsAccessLevels()]) ?>
+            <?= view('components/select', ['name' => 'SHOW_NO_WATERMARK', 'selected' => $tree->getPreference('SHOW_NO_WATERMARK'), 'options' => FunctionsEdit::optionsAccessLevels()]) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Images without watermarks” configuration setting */ I18N::translate('Watermarks are optional and normally shown just to visitors.') ?>
             </p>
@@ -380,7 +380,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Surname list style') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'SURNAME_LIST_STYLE', 'selected' => $tree->getPreference('SURNAME_LIST_STYLE'), 'values' => $surname_list_styles]) ?>
+            <?= view('components/select', ['name' => 'SURNAME_LIST_STYLE', 'selected' => $tree->getPreference('SURNAME_LIST_STYLE'), 'options' => $surname_list_styles]) ?>
             <p class="small text-muted">
             </p>
         </div>
@@ -460,7 +460,7 @@ use Fisharebest\Webtrees\I18N;
         </label>
         <div class="col-sm-9">
             <div class="input-group">
-                <?= view('components/select', ['name' => 'CHART_BOX_TAGS[]', 'id' => 'CHART_BOX_TAGS', 'selected' => explode(',', $tree->getPreference('CHART_BOX_TAGS')), 'values' => $all_indi_facts, 'class' => 'select2']) ?>
+                <?= view('components/select', ['name' => 'CHART_BOX_TAGS[]', 'id' => 'CHART_BOX_TAGS', 'selected' => explode(',', $tree->getPreference('CHART_BOX_TAGS')), 'options' => $all_indi_facts, 'class' => 'select2']) ?>
             </div>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Other facts to show in charts” configuration setting */ I18N::translate('This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field.') ?>
@@ -627,8 +627,8 @@ use Fisharebest\Webtrees\I18N;
             </legend>
             <div class="col-sm-9">
                 <?= /* I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name */ I18N::translate('Show the %1$s %2$s parts of a place name.',
-                    view('components/select', ['name' => 'SHOW_PEDIGREE_PLACES_SUFFIX', 'selected' => $tree->getPreference('SHOW_PEDIGREE_PLACES'), 'values' => ['0' => I18N::translateContext('Show the [first/last] [N] parts of a place name.', 'first'), '1' => I18N::translateContext('Show the [first/last] [N] parts of a place name.', 'last')]]),
-                    view('components/select', ['name' => 'SHOW_PEDIGREE_PLACES', 'selected' => $tree->getPreference('SHOW_PEDIGREE_PLACES'), 'values' => FunctionsEdit::numericOptions(range(1, 9))])
+                    view('components/select', ['name' => 'SHOW_PEDIGREE_PLACES_SUFFIX', 'selected' => $tree->getPreference('SHOW_PEDIGREE_PLACES'), 'options' => ['0' => I18N::translateContext('Show the [first/last] [N] parts of a place name.', 'first'), '1' => I18N::translateContext('Show the [first/last] [N] parts of a place name.', 'last')]]),
+                    view('components/select', ['name' => 'SHOW_PEDIGREE_PLACES', 'selected' => $tree->getPreference('SHOW_PEDIGREE_PLACES'), 'options' => FunctionsEdit::numericOptions(range(1, 9))])
                 ) ?>
                 <p class="small text-muted">
                     <?= /* I18N: Help text for the “Abbreviate place names” configuration setting */ I18N::translate('Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>.') ?>
@@ -735,7 +735,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('All individual facts') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'INDI_FACTS_ADD[]', 'id' => 'INDI_FACTS_ADD', 'selected' => explode(',', $tree->getPreference('INDI_FACTS_ADD')), 'values' => $all_indi_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'INDI_FACTS_ADD[]', 'id' => 'INDI_FACTS_ADD', 'selected' => explode(',', $tree->getPreference('INDI_FACTS_ADD')), 'options' => $all_indi_facts, 'class' => 'select2']) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “All individual facts” configuration setting */ I18N::translate('This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list.') ?>
             </p>
@@ -748,7 +748,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Unique individual facts') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'INDI_FACTS_UNIQUE[]', 'id' => 'INDI_FACTS_UNIQUE', 'selected' => explode(',', $tree->getPreference('INDI_FACTS_UNIQUE')), 'values' => $all_indi_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'INDI_FACTS_UNIQUE[]', 'id' => 'INDI_FACTS_UNIQUE', 'selected' => explode(',', $tree->getPreference('INDI_FACTS_UNIQUE')), 'options' => $all_indi_facts, 'class' => 'select2']) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Unique individual facts” configuration setting */ I18N::translate('This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list.') ?>
             </p>
@@ -761,7 +761,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Facts for new individuals') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'QUICK_REQUIRED_FACTS[]', 'id' => 'QUICK_REQUIRED_FACTS', 'selected' => explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS')), 'values' => $all_indi_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'QUICK_REQUIRED_FACTS[]', 'id' => 'QUICK_REQUIRED_FACTS', 'selected' => explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS')), 'options' => $all_indi_facts, 'class' => 'select2']) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Facts for new individuals” configuration setting */ I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form.') ?>
             </p>
@@ -774,7 +774,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Quick individual facts') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'INDI_FACTS_QUICK[]', 'id' => 'INDI_FACTS_QUICK', 'selected' => explode(',', $tree->getPreference('INDI_FACTS_QUICK')), 'values' => $all_fam_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'INDI_FACTS_QUICK[]', 'id' => 'INDI_FACTS_QUICK', 'selected' => explode(',', $tree->getPreference('INDI_FACTS_QUICK')), 'options' => $all_fam_facts, 'class' => 'select2']) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Quick individual facts” configuration setting */ I18N::translate('The most common individual facts and events are listed separately, so that they can be added more easily.') ?>
             </p>
@@ -789,7 +789,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('All family facts') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'FAM_FACTS_ADD[]', 'id' => 'FAM_FACTS_ADD', 'selected' => explode(',', $tree->getPreference('FAM_FACTS_ADD')), 'values' => $all_fam_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'FAM_FACTS_ADD[]', 'id' => 'FAM_FACTS_ADD', 'selected' => explode(',', $tree->getPreference('FAM_FACTS_ADD')), 'options' => $all_fam_facts, 'class' => 'select2']) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “All family facts” configuration setting */ I18N::translate('This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list.') ?>
             </p>
@@ -802,7 +802,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Unique family facts') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'FAM_FACTS_UNIQUE[]', 'id' => 'FAM_FACTS_UNIQUE', 'selected' => explode(',', $tree->getPreference('FAM_FACTS_UNIQUE')), 'values' => $all_fam_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'FAM_FACTS_UNIQUE[]', 'id' => 'FAM_FACTS_UNIQUE', 'selected' => explode(',', $tree->getPreference('FAM_FACTS_UNIQUE')), 'options' => $all_fam_facts, 'class' => 'select2']) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Unique family facts” configuration setting */ I18N::translate('This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list.') ?>
             </p>
@@ -815,7 +815,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Facts for new families') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'QUICK_REQUIRED_FAMFACTS[]', 'id' => 'QUICK_REQUIRED_FAMFACTS', 'selected' => explode(',', $tree->getPreference('QUICK_REQUIRED_FAMFACTS')), 'values' => $all_fam_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'QUICK_REQUIRED_FAMFACTS[]', 'id' => 'QUICK_REQUIRED_FAMFACTS', 'selected' => explode(',', $tree->getPreference('QUICK_REQUIRED_FAMFACTS')), 'options' => $all_fam_facts, 'class' => 'select2']) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Facts for new families” configuration setting */ I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form.') ?>
             </p>
@@ -828,7 +828,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Quick family facts') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'FAM_FACTS_QUICK[]', 'id' => 'FAM_FACTS_QUICK', 'selected' => explode(',', $tree->getPreference('FAM_FACTS_QUICK')), 'values' => $all_fam_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'FAM_FACTS_QUICK[]', 'id' => 'FAM_FACTS_QUICK', 'selected' => explode(',', $tree->getPreference('FAM_FACTS_QUICK')), 'options' => $all_fam_facts, 'class' => 'select2']) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Quick family facts” configuration setting */ I18N::translate('The most common family facts and events are listed separately, so that they can be added more easily.') ?>
             </p>
@@ -843,7 +843,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('All source facts') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'SOUR_FACTS_ADD[]', 'id' => 'SOUR_FACTS_ADD', 'selected' => explode(',', $tree->getPreference('SOUR_FACTS_ADD')), 'values' => $all_sour_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'SOUR_FACTS_ADD[]', 'id' => 'SOUR_FACTS_ADD', 'selected' => explode(',', $tree->getPreference('SOUR_FACTS_ADD')), 'options' => $all_sour_facts, 'class' => 'select2']) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “All source facts” configuration setting */ I18N::translate('This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list.') ?>
             </p>
@@ -856,7 +856,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Unique source facts') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'SOUR_FACTS_UNIQUE[]', 'id' => 'SOUR_FACTS_UNIQUE', 'selected' => explode(',', $tree->getPreference('SOUR_FACTS_UNIQUE')), 'values' => $all_sour_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'SOUR_FACTS_UNIQUE[]', 'id' => 'SOUR_FACTS_UNIQUE', 'selected' => explode(',', $tree->getPreference('SOUR_FACTS_UNIQUE')), 'options' => $all_sour_facts, 'class' => 'select2']) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Unique source facts” configuration setting */ I18N::translate('This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list.') ?>
             </p>
@@ -869,7 +869,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Quick source facts') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'SOUR_FACTS_QUICK[]', 'id' => 'SOUR_FACTS_QUICK', 'selected' => explode(',', $tree->getPreference('SOUR_FACTS_QUICK')), 'values' => $all_sour_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'SOUR_FACTS_QUICK[]', 'id' => 'SOUR_FACTS_QUICK', 'selected' => explode(',', $tree->getPreference('SOUR_FACTS_QUICK')), 'options' => $all_sour_facts, 'class' => 'select2']) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Quick source facts” configuration setting */ I18N::translate('The most common source facts are listed separately, so that they can be added more easily.') ?>
             </p>
@@ -884,7 +884,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('All repository facts') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'REPO_FACTS_ADD[]', 'id' => 'REPO_FACTS_ADD', 'selected' => explode(',', $tree->getPreference('REPO_FACTS_ADD')), 'values' => $all_repo_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'REPO_FACTS_ADD[]', 'id' => 'REPO_FACTS_ADD', 'selected' => explode(',', $tree->getPreference('REPO_FACTS_ADD')), 'options' => $all_repo_facts, 'class' => 'select2']) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “All repository facts” configuration setting */ I18N::translate('This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list.') ?>
             </p>
@@ -897,7 +897,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Unique repository facts') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'REPO_FACTS_UNIQUE[]', 'id' => 'REPO_FACTS_UNIQUE', 'selected' => explode(',', $tree->getPreference('REPO_FACTS_UNIQUE')), 'values' => $all_repo_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'REPO_FACTS_UNIQUE[]', 'id' => 'REPO_FACTS_UNIQUE', 'selected' => explode(',', $tree->getPreference('REPO_FACTS_UNIQUE')), 'options' => $all_repo_facts, 'class' => 'select2']) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Unique repository facts” configuration setting */ I18N::translate('This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list.') ?>
             </p>
@@ -910,7 +910,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Quick repository facts') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'REPO_FACTS_QUICK[]', 'id' => 'REPO_FACTS_QUICK', 'selected' => explode(',', $tree->getPreference('REPO_FACTS_QUICK')), 'values' => $all_repo_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'REPO_FACTS_QUICK[]', 'id' => 'REPO_FACTS_QUICK', 'selected' => explode(',', $tree->getPreference('REPO_FACTS_QUICK')), 'options' => $all_repo_facts, 'class' => 'select2']) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Quick repository facts” configuration setting */ I18N::translate('The most common repository facts are listed separately, so that they can be added more easily.') ?>
             </p>
@@ -925,7 +925,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Advanced name facts') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'ADVANCED_NAME_FACTS[]', 'id' => 'ADVANCED_NAME_FACTS', 'selected' => explode(',', $tree->getPreference('ADVANCED_NAME_FACTS')), 'values' => $all_name_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'ADVANCED_NAME_FACTS[]', 'id' => 'ADVANCED_NAME_FACTS', 'selected' => explode(',', $tree->getPreference('ADVANCED_NAME_FACTS')), 'options' => $all_name_facts, 'class' => 'select2']) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Advanced name facts” configuration setting */ I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets.') ?>
             </p>
@@ -938,7 +938,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Advanced place name facts') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'ADVANCED_PLAC_FACTS[]', 'id' => 'ADVANCED_PLAC_FACTS', 'selected' => explode(',', $tree->getPreference('ADVANCED_PLAC_FACTS')), 'values' => $all_plac_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'ADVANCED_PLAC_FACTS[]', 'id' => 'ADVANCED_PLAC_FACTS', 'selected' => explode(',', $tree->getPreference('ADVANCED_PLAC_FACTS')), 'options' => $all_plac_facts, 'class' => 'select2']) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Advanced place name facts” configuration setting */ I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets.') ?>
             </p>

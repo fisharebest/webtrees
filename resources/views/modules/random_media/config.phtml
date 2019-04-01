@@ -6,7 +6,7 @@ use Fisharebest\Webtrees\I18N; ?>
         <?= I18N::translate('Show only individuals, events, or all') ?>
     </label>
     <div class="col-sm-9">
-        <?= view('components/select', ['name' => 'filter', 'selected' => $filter, 'values' => ['indi' => I18N::translate('Individuals'), 'event' => I18N::translate('Facts and events'), 'all' => I18N::translate('All')]]) ?>
+        <?= view('components/select', ['name' => 'filter', 'selected' => $filter, 'options' => ['indi' => I18N::translate('Individuals'), 'event' => I18N::translate('Facts and events'), 'all' => I18N::translate('All')]]) ?>
     </div>
 </div>
 
