@@ -22,6 +22,8 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
+use Fisharebest\Webtrees\Http\RedirectResponse;
+use Fisharebest\Webtrees\Http\Response;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\UpgradeService;
@@ -30,9 +32,8 @@ use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for user login and logout.
@@ -57,12 +58,12 @@ class LoginController extends AbstractBaseController
     /**
      * Show a login page.
      *
-     * @param Request   $request
-     * @param Tree|null $tree
+     * @param ServerRequestInterface $request
+     * @param Tree|null              $tree
      *
      * @return Response
      */
-    public function loginPage(Request $request, ?Tree $tree): Response
+    public function loginPage(ServerRequestInterface $request, ?Tree $tree): ResponseInterface
     {
         // Already logged in?
         if (Auth::check()) {
@@ -112,12 +113,12 @@ class LoginController extends AbstractBaseController
     /**
      * Perform a login.
      *
-     * @param Request        $request
-     * @param UpgradeService $upgrade_service
+     * @param ServerRequestInterface $request
+     * @param UpgradeService         $upgrade_service
      *
      * @return RedirectResponse
      */
-    public function loginAction(Request $request, UpgradeService $upgrade_service): RedirectResponse
+    public function loginAction(ServerRequestInterface $request, UpgradeService $upgrade_service): ResponseInterface
     {
         $username = $request->get('username', '');
         $password = $request->get('password', '');
@@ -207,7 +208,7 @@ class LoginController extends AbstractBaseController
      *
      * @return RedirectResponse
      */
-    public function logoutAction(Tree $tree = null): RedirectResponse
+    public function logoutAction(Tree $tree = null): ResponseInterface
     {
         if (Auth::check()) {
             Log::addAuthenticationLog('Logout: ' . Auth::user()->userName() . '/' . Auth::user()->realName());

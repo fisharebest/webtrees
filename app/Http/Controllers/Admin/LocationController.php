@@ -17,22 +17,32 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
+use function addcslashes;
 use Exception;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\Http\JsonResponse;
+use Fisharebest\Webtrees\Http\RedirectResponse;
+use Fisharebest\Webtrees\Http\Response;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Services\GedcomService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Message\UploadedFileInterface;
+use function route;
 use stdClass;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
-use Symfony\Component\HttpFoundation\StreamedResponse;
+use function app;
+use function fclose;
+use function fputcsv;
+use function rewind;
+use const UPLOAD_ERR_OK;
 
 /**
  * Controller for maintaining geographic data.
@@ -53,11 +63,11 @@ class LocationController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return Response
      */
-    public function mapData(Request $request): Response
+    public function mapData(ServerRequestInterface $request): ResponseInterface
     {
         $parent_id   = (int) $request->get('parent_id', 0);
         $hierarchy   = $this->gethierarchy($parent_id);
@@ -81,11 +91,11 @@ class LocationController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return Response
      */
-    public function mapDataEdit(Request $request): Response
+    public function mapDataEdit(ServerRequestInterface $request): ResponseInterface
     {
         $parent_id = (int) $request->get('parent_id');
         $place_id  = (int) $request->get('place_id');
@@ -136,11 +146,11 @@ class LocationController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return RedirectResponse
      */
-    public function mapDataSave(Request $request): RedirectResponse
+    public function mapDataSave(ServerRequestInterface $request): ResponseInterface
     {
         $parent_id = (int) $request->get('parent_id');
         $place_id  = (int) $request->get('place_id');
@@ -191,11 +201,11 @@ class LocationController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return RedirectResponse
      */
-    public function mapDataDelete(Request $request): RedirectResponse
+    public function mapDataDelete(ServerRequestInterface $request): ResponseInterface
     {
         $place_id  = (int) $request->get('place_id');
         $parent_id = (int) $request->get('parent_id');
@@ -227,11 +237,11 @@ class LocationController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function exportLocations(Request $request): Response
+    public function exportLocations(ServerRequestInterface $request): ResponseInterface
     {
         $parent_id = (int) $request->get('parent_id');
         $format    = $request->get('format');
@@ -280,11 +290,11 @@ class LocationController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return Response
      */
-    public function importLocations(Request $request): Response
+    public function importLocations(ServerRequestInterface $request): ResponseInterface
     {
         $parent_id = (int) $request->get('parent_id');
 
@@ -312,16 +322,17 @@ class LocationController extends AbstractAdminController
      * level followed by a variable number of placename fields
      * followed by Longitude, Latitude, Zoom & Icon
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return RedirectResponse
      * @throws Exception
      */
-    public function importLocationsAction(Request $request): RedirectResponse
+    public function importLocationsAction(ServerRequestInterface $request): ResponseInterface
     {
-        $serverfile     = $request->get('serverfile', '');
-        $options        = $request->get('import-options', '');
-        $clear_database = (bool) $request->get('cleardatabase');
+        $serverfile     = $request->getParsedBody()['serverfile'] ?? '';
+        $options        = $request->getParsedBody()['import-options'] ?? '';
+        $clear_database = (bool) ($request->getParsedBody()['cleardatabase'] ?? false);
+        $local_file     = $request->getUploadedFiles()['localfile'] ?? null;
 
         $filename    = '';
         $places      = [];
@@ -334,13 +345,19 @@ class LocationController extends AbstractAdminController
             'fqpn',
         ];
 
-        if ($serverfile !== '' && is_dir(WT_DATA_DIR . 'places')) {  // first choice is file on server
-            $filename = WT_DATA_DIR . 'places/' . $serverfile;
-        } elseif ($request->files->has('localfile')) { // 2nd choice is local file
-            $filename = $request->files->get('localfile')->getPathName();
+        $url = route('map-data', ['parent_id' => 0]);
+
+
+        if ($serverfile !== '' && is_dir(WT_DATA_DIR . 'places')) {
+            // first choice is file on server
+            $fp = fopen(WT_DATA_DIR . 'places/' . $serverfile, 'rb+');
+        } elseif ($local_file instanceof UploadedFileInterface && $local_file->getError() === UPLOAD_ERR_OK) {
+            // 2nd choice is local file
+            $fp = $local_file->getStream()->detach();
+        } else {
+            return new RedirectResponse($url);
         }
 
-        $fp = fopen($filename, 'rb');
         if ($fp !== false) {
             $string = stream_get_contents($fp);
 
@@ -411,8 +428,8 @@ class LocationController extends AbstractAdminController
                         ->update([
                             'pl_lati' => $place['pl_lati'],
                             'pl_long' => $place['pl_long'],
-                            'pl_zoom' => $place['pl_zoom'],
-                            'pl_icon' => $place['pl_icon'],
+                            'pl_zoom' => $place['pl_zoom'] ? $place['pl_zoom'] : null,
+                            'pl_icon' => $place['pl_icon'] ? $place['pl_icon'] : null,
                         ]);
 
                     $updated++;
@@ -426,8 +443,6 @@ class LocationController extends AbstractAdminController
             throw new Exception('Unable to open file: ' . $filename);
         }
 
-        $url = route('map-data', ['parent_id' => 0]);
-
         return new RedirectResponse($url);
     }
 
@@ -436,7 +451,7 @@ class LocationController extends AbstractAdminController
      *
      * @return RedirectResponse
      */
-    public function importLocationsFromTree(Tree $tree): RedirectResponse
+    public function importLocationsFromTree(Tree $tree): ResponseInterface
     {
         // Get all the places from the places table ...
         $places = DB::table('places AS p0')
@@ -550,27 +565,26 @@ class LocationController extends AbstractAdminController
      *
      * @return Response
      */
-    private function exportCSV(string $filename, array $columns, array $places): Response
+    private function exportCSV(string $filename, array $columns, array $places): ResponseInterface
     {
-        $response = new StreamedResponse(static function () use ($columns, $places) {
-            $stream = fopen('php://output', 'wb');
+        $resource = fopen('php://temp', 'rb+');
 
-            if ($stream !== false) {
-                fputcsv($stream, $columns, ';');
+        fputcsv($resource, $columns, ';');
 
-                foreach ($places as $place) {
-                    fputcsv($stream, $place, ';');
-                }
+        foreach ($places as $place) {
+            fputcsv($resource, $place, ';');
+        }
 
-                fclose($stream);
-            }
-        });
+        rewind($resource);
 
-        $disposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $filename);
-        $response->headers->set('Content-Disposition', $disposition);
-        $response->headers->set('Content-Type', 'text/csv; charset=UTF-8');
+        $stream   = app(StreamFactoryInterface::class)->createStreamFromResource($resource);
+        $filename = addcslashes($filename, '"');
 
-        return $response;
+        return app(ResponseFactoryInterface::class)
+            ->createResponse()
+            ->withBody($stream)
+            ->withHeader('Content-type', 'text/csv; charset=UTF-8')
+            ->withHeader('Content-disposition', 'attachment; filename="' . $filename . '"');
     }
 
     /**
@@ -578,9 +592,9 @@ class LocationController extends AbstractAdminController
      * @param array  $rows
      * @param int    $maxlevel
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    private function exportGeoJSON(string $filename, array $rows, int $maxlevel): Response
+    private function exportGeoJSON(string $filename, array $rows, int $maxlevel): ResponseInterface
     {
         $geojson = [
             'type'     => 'FeatureCollection',

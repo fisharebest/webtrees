@@ -30,9 +30,10 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Ramsey\Uuid\Uuid;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
 
 /**
  * Class DescendancyChartModule
@@ -121,14 +122,14 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
     /**
      * A form to request the chart parameters.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
-     * @param ChartService  $chart_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
+     * @param ChartService           $chart_service
      *
      * @return Response
      */
-    public function getChartAction(Request $request, Tree $tree, UserInterface $user, ChartService $chart_service): Response
+    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user, ChartService $chart_service): ResponseInterface
     {
         $ajax       = (bool) $request->get('ajax');
         $xref       = $request->get('xref', '');
@@ -168,13 +169,13 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
     }
 
     /**
-     * @param Request      $request
-     * @param Tree         $tree
-     * @param ChartService $chart_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param ChartService           $chart_service
      *
      * @return Response
      */
-    public function chart(Request $request, Tree $tree, ChartService $chart_service): Response
+    public function chart(ServerRequestInterface $request, Tree $tree, ChartService $chart_service): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
@@ -219,7 +220,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      *
      * @return Response
      */
-    private function descendantsList(Individual $individual, int $generations): Response
+    private function descendantsList(Individual $individual, int $generations): ResponseInterface
     {
         ob_start();
 
@@ -380,7 +381,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      *
      * @return Response
      */
-    private function descendantsIndividuals(Tree $tree, Collection $individuals): Response
+    private function descendantsIndividuals(Tree $tree, Collection $individuals): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
@@ -399,7 +400,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      *
      * @return Response
      */
-    private function descendantsFamilies(Tree $tree, Collection $families): Response
+    private function descendantsFamilies(Tree $tree, Collection $families): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
@@ -419,7 +420,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      *
      * @return Response
      */
-    private function descendantsBooklet(Individual $individual, int $generations): Response
+    private function descendantsBooklet(Individual $individual, int $generations): ResponseInterface
     {
         ob_start();
 

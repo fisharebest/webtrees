@@ -29,7 +29,7 @@ use League\Flysystem\Cached\CachedAdapter;
 use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
 use ZipArchive;
 use function rewind;
 
@@ -287,7 +287,7 @@ class UpgradeService
                     'query' => $this->serverParameters(),
                 ]);
 
-                if ($response->getStatusCode() === Response::HTTP_OK) {
+                if ($response->getStatusCode() === Response::STATUS_OK) {
                     Site::setPreference('LATEST_WT_VERSION', $response->getBody()->getContents());
                     Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', (string) $current_timestamp);
                 }

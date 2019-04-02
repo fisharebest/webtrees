@@ -15,22 +15,16 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Middleware;
+namespace Fisharebest\Webtrees\Http;
 
-use Closure;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Symfony\Component\HttpFoundation\JsonResponse as SymfonyJsonResponse;
 
 /**
- * Middleware.
+ * Convert a Symfony response into a PSR-7 response.
  */
-interface MiddlewareInterface
+class JsonResponse extends SymfonyJsonResponse implements ResponseInterface
 {
-    /**
-     * @param Request $request
-     * @param Closure $next
-     *
-     * @return Response
-     */
-    public function handle(Request $request, Closure $next): Response;
+    use MessageTrait;
+    use ResponseTrait;
 }

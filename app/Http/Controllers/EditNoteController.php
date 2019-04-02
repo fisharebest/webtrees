@@ -18,13 +18,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\JsonResponse;
+use Fisharebest\Webtrees\Http\RedirectResponse;
+use Fisharebest\Webtrees\Http\Response;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for edit forms and responses.
@@ -36,7 +37,7 @@ class EditNoteController extends AbstractEditController
      *
      * @return Response
      */
-    public function createNoteObject(): Response
+    public function createNoteObject(): ResponseInterface
     {
         return new Response(view('modals/create-note-object'));
     }
@@ -44,12 +45,12 @@ class EditNoteController extends AbstractEditController
     /**
      * Show a form to create a new note object.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function editNoteObject(Request $request, Tree $tree): Response
+    public function editNoteObject(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -67,12 +68,12 @@ class EditNoteController extends AbstractEditController
     /**
      * Show a form to create a new note object.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return RedirectResponse
      */
-    public function updateNoteObject(Request $request, Tree $tree): RedirectResponse
+    public function updateNoteObject(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -105,12 +106,12 @@ class EditNoteController extends AbstractEditController
     /**
      * Process a form to create a new note object.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return JsonResponse
      */
-    public function createNoteObjectAction(Request $request, Tree $tree): JsonResponse
+    public function createNoteObjectAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $note                = $request->get('note', '');
         $privacy_restriction = $request->get('privacy-restriction', '');

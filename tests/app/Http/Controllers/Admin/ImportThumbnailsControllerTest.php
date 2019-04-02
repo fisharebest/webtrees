@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Request;
+use Fisharebest\Webtrees\Http\Response;
 
 /**
  * Test ImportThumbnailsController class.
@@ -37,7 +37,7 @@ class ImportThumbnailsControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = new ImportThumbnailsController();
         $response   = $controller->webtrees1Thumbnails();
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -48,7 +48,7 @@ class ImportThumbnailsControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = new ImportThumbnailsController();
         $response   = $controller->webtrees1ThumbnailsAction(new Request());
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -59,6 +59,6 @@ class ImportThumbnailsControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = new ImportThumbnailsController();
         $response   = $controller->webtrees1ThumbnailsData(new Request());
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 }

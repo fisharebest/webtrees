@@ -7,8 +7,8 @@ use Fisharebest\Webtrees\Http\Middleware\MiddlewareInterface;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * An example module to demonstrate middleware.
@@ -41,12 +41,12 @@ return new class extends AbstractModule implements ModuleCustomInterface, Middle
      *
      * @see https://symfony.com/doc/current/components/http_foundation.html
      *
-     * @param Request $request
-     * @param Closure $next
+     * @param ServerRequestInterface $request
+     * @param Closure                $next
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function handle(Request $request, Closure $next): Response
+    public function process(ServerRequestInterface $request, Closure $next): ResponseInterface
     {
         // Code here is executed before we process the request/response.
         // We can prevent the request being executed by throwing an exception.

@@ -21,7 +21,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class ContactsFooterModule - provide a link to the site owner.
@@ -29,9 +28,6 @@ use Symfony\Component\HttpFoundation\Request;
 class ContactsFooterModule extends AbstractModule implements ModuleFooterInterface
 {
     use ModuleFooterTrait;
-
-    /** @var Request */
-    protected $request;
 
     /**
      * @var UserService
@@ -41,12 +37,10 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
     /**
      * Dependency injection.
      *
-     * @param Request     $request
      * @param UserService $user_service
      */
-    public function __construct(Request $request, UserService $user_service)
+    public function __construct(UserService $user_service)
     {
-        $this->request      = $request;
         $this->user_service = $user_service;
     }
 

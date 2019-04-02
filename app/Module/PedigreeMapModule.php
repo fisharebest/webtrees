@@ -24,6 +24,8 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsCharts;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Http\JsonResponse;
+use Fisharebest\Webtrees\Http\Response;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
@@ -31,9 +33,8 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class PedigreeMapModule
@@ -146,13 +147,13 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
     }
 
     /**
-     * @param Request      $request
-     * @param Tree         $tree
-     * @param ChartService $chart_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param ChartService           $chart_service
      *
      * @return JsonResponse
      */
-    public function getMapDataAction(Request $request, Tree $tree, ChartService $chart_service): JsonResponse
+    public function getMapDataAction(ServerRequestInterface $request, Tree $tree, ChartService $chart_service): ResponseInterface
     {
         $xref        = $request->get('reference');
         $indi        = Individual::getInstance($xref, $tree);
@@ -220,9 +221,35 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
             }
         }
 
-        $code = empty($facts) ? Response::HTTP_NO_CONTENT : Response::HTTP_OK;
+        $code = empty($facts) ? Response::STATUS_NO_CONTENT : Response::STATUS_OK;
 
         return new JsonResponse($geojson, $code);
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param ChartService           $chart_service
+     *
+     * @return array
+     */
+    private function getPedigreeMapFacts(ServerRequestInterface $request, Tree $tree, ChartService $chart_service): array
+    {
+        $xref        = $request->get('reference');
+        $individual  = Individual::getInstance($xref, $tree);
+        $generations = (int) $request->get('generations', '4');
+        $ancestors   = $chart_service->sosaStradonitzAncestors($individual, $generations);
+        $facts       = [];
+        foreach ($ancestors as $sosa => $person) {
+            if ($person->canShow()) {
+                $birth = $person->facts(['BIRT'])->first();
+                if ($birth instanceof Fact && $birth->place()->gedcomName() !== '') {
+                    $facts[$sosa] = $birth;
+                }
+            }
+        }
+
+        return $facts;
     }
 
     /**
@@ -271,37 +298,11 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
     }
 
     /**
-     * @param Request      $request
-     * @param Tree         $tree
-     * @param ChartService $chart_service
-     *
-     * @return array
-     */
-    private function getPedigreeMapFacts(Request $request, Tree $tree, ChartService $chart_service): array
-    {
-        $xref        = $request->get('reference');
-        $individual  = Individual::getInstance($xref, $tree);
-        $generations = (int) $request->get('generations', '4');
-        $ancestors   = $chart_service->sosaStradonitzAncestors($individual, $generations);
-        $facts       = [];
-        foreach ($ancestors as $sosa => $person) {
-            if ($person->canShow()) {
-                $birth = $person->facts(['BIRT'])->first();
-                if ($birth instanceof Fact && $birth->place()->gedcomName() !== '') {
-                    $facts[$sosa] = $birth;
-                }
-            }
-        }
-
-        return $facts;
-    }
-
-    /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return JsonResponse
      */
-    public function getProviderStylesAction(Request $request): JsonResponse
+    public function getProviderStylesAction(ServerRequestInterface $request): ResponseInterface
     {
         $styles = $this->getMapProviderData($request);
 
@@ -309,11 +310,11 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return array|null
      */
-    private function getMapProviderData(Request $request): ?array
+    private function getMapProviderData(ServerRequestInterface $request): ?array
     {
         if (self::$map_providers === null) {
             $providersFile        = WT_ROOT . Webtrees::MODULES_PATH . 'openstreetmap/providers/providers.xml';
@@ -389,16 +390,16 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      * @param Tree    $tree
      *
      * @return object
      */
-    public function getPedigreeMapAction(Request $request, Tree $tree)
+    public function getPedigreeMapAction(ServerRequestInterface $request, Tree $tree)
     {
-        $xref           = $request->get('xref', '');
-        $individual     = Individual::getInstance($xref, $tree);
-        $generations    = $request->get('generations', self::DEFAULT_GENERATIONS);
+        $xref        = $request->get('xref', '');
+        $individual  = Individual::getInstance($xref, $tree);
+        $generations = $request->get('generations', self::DEFAULT_GENERATIONS);
 
         if ($individual === null) {
             throw new IndividualNotFoundException();

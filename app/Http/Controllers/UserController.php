@@ -22,8 +22,9 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * User actions
@@ -48,11 +49,11 @@ class UserController extends AbstractBaseController
     /**
      * Delete a user.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return Response
      */
-    public function delete(Request $request): Response
+    public function delete(ServerRequestInterface $request): ResponseInterface
     {
         $user_id = (int) $request->get('user_id');
 
@@ -69,11 +70,11 @@ class UserController extends AbstractBaseController
     /**
      * Select a language.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return Response
      */
-    public function language(Request $request): Response
+    public function language(ServerRequestInterface $request): ResponseInterface
     {
         $language = $request->get('language', '');
 
@@ -87,11 +88,11 @@ class UserController extends AbstractBaseController
     /**
      * Masquerade as another user.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return Response
      */
-    public function masquerade(Request $request): Response
+    public function masquerade(ServerRequestInterface $request): ResponseInterface
     {
         $user_id = (int) $request->get('user_id');
 
@@ -109,11 +110,11 @@ class UserController extends AbstractBaseController
     /**
      * Select a theme.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return Response
      */
-    public function theme(Request $request): Response
+    public function theme(ServerRequestInterface $request): ResponseInterface
     {
         $theme = $request->get('theme', '');
         Session::put('theme_id', $theme);

@@ -25,7 +25,8 @@ use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ServerRequestInterface;
+use function app;
 
 /**
  * Functions for managing users.
@@ -334,7 +335,7 @@ class UserService
     {
         $tree    = app(Tree::class);
         $user    = app(UserInterface::class);
-        $request = app(Request::class);
+        $request = app(ServerRequestInterface::class);
 
         if ($contact_user->getPreference('contactmethod') === 'mailto') {
             $url = 'mailto:' . $contact_user->email();
@@ -346,7 +347,7 @@ class UserService
             $url = route('contact', [
                 'ged' => $tree ? $tree->name() : '',
                 'to'  => $contact_user->userName(),
-                'url' => $request->getRequestUri(),
+                'url' => $request->getUri(),
             ]);
         }
 

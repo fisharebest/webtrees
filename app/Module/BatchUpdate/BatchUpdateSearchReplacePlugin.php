@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
 
 /**
@@ -118,11 +118,11 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
     /**
      * Process the user-supplied options.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return void
      */
-    public function getOptions(Request $request): void
+    public function getOptions(ServerRequestInterface $request): void
     {
         parent::getOptions($request);
 

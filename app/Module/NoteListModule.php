@@ -24,8 +24,9 @@ use Fisharebest\Webtrees\Services\IndividualListService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Auth;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
 use Illuminate\Database\Capsule\Manager as DB;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class IndividualListModule
@@ -72,7 +73,7 @@ class NoteListModule extends AbstractModule implements ModuleListInterface
      *
      * @return Response
      */
-    public function getListAction(Tree $tree, UserInterface $user): Response
+    public function getListAction(Tree $tree, UserInterface $user): ResponseInterface
     {
         Auth::checkComponentAccess($this, 'list', $tree, $user);
       

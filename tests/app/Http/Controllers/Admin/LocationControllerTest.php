@@ -18,9 +18,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use function dirname;
 
 /**
  * Test the location admin controller
@@ -37,9 +36,9 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testMapData(): void
     {
         $controller = app(LocationController::class);
-        $response = app()->dispatch($controller, 'mapData');
+        $response   = app()->dispatch($controller, 'mapData');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -48,9 +47,9 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testMapDataEdit(): void
     {
         $controller = app(LocationController::class);
-        $response = app()->dispatch($controller, 'mapDataEdit');
+        $response   = app()->dispatch($controller, 'mapDataEdit');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -59,9 +58,9 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testMapDataSave(): void
     {
         $controller = app(LocationController::class);
-        $response = app()->dispatch($controller, 'mapDataSave');
+        $response   = app()->dispatch($controller, 'mapDataSave');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -70,9 +69,9 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testMapDataDelete(): void
     {
         $controller = app(LocationController::class);
-        $response = app()->dispatch($controller, 'mapDataDelete');
+        $response   = app()->dispatch($controller, 'mapDataDelete');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -81,9 +80,9 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testExportLocations(): void
     {
         $controller = app(LocationController::class);
-        $response = app()->dispatch($controller, 'exportLocations');
+        $response   = app()->dispatch($controller, 'exportLocations');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -92,9 +91,9 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testImportLocations(): void
     {
         $controller = app(LocationController::class);
-        $response = app()->dispatch($controller, 'importLocations');
+        $response   = app()->dispatch($controller, 'importLocations');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -102,14 +101,14 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testImportLocationsAction(): void
     {
-        $csv = new UploadedFile(dirname(__DIR__, 4) . '/data/places.csv', 'places.csv', 'image/jpeg', UPLOAD_ERR_OK);
+        $csv = $this->createUploadedFile(dirname(__DIR__, 4) . '/data/places.csv', 'text/csv');
 
-        app()->instance(Request::class, new Request([], [], [], [], ['localfile' => $csv]));
+        $this->createRequest('POST', [], [], ['localfile' => $csv]);
 
         $controller = app(LocationController::class);
-        $response = app()->dispatch($controller, 'importLocationsAction');
+        $response   = app()->dispatch($controller, 'importLocationsAction');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -120,8 +119,8 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
         app()->instance(Tree::class, Tree::create('name', 'title'));
 
         $controller = app(LocationController::class);
-        $response = app()->dispatch($controller, 'importLocationsFromTree');
+        $response   = app()->dispatch($controller, 'importLocationsFromTree');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 }

@@ -21,7 +21,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class BatchUpdateMarriedNamesPlugin Batch Update plugin: add missing 2 _MARNM records
@@ -170,11 +170,11 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
     /**
      * Process the user-supplied options.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return void
      */
-    public function getOptions(Request $request): void
+    public function getOptions(ServerRequestInterface $request): void
     {
         parent::getOptions($request);
 

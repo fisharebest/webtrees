@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class ChartsMenuModule - provide a menu option for the charts
@@ -88,7 +88,7 @@ class ChartsMenuModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getMenu(Tree $tree): ?Menu
     {
-        $request    = Request::createFromGlobals();
+        $request    = app(ServerRequestInterface::class);
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree) ?? $tree->significantIndividual(Auth::user());
         $submenus   = $this->module_service->findByComponent(ModuleChartInterface::class, $tree, Auth::user())

@@ -20,8 +20,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\ParameterBag;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class PoweredByWebtreesModule - show a cookie warning, to comply with the GDPR.
@@ -29,9 +28,6 @@ use Symfony\Component\HttpFoundation\Request;
 class CookieWarningModule extends AbstractModule implements ModuleFooterInterface
 {
     use ModuleFooterTrait;
-
-    /** @var Request */
-    protected $request;
 
     /**
      * @var ModuleService
@@ -41,12 +37,10 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
     /**
      * Dependency injection.
      *
-     * @param Request       $request
-     * @param ModuleService $module_service
+     * @param ModuleService          $module_service
      */
-    public function __construct(Request $request, ModuleService $module_service)
+    public function __construct(ModuleService $module_service)
     {
-        $this->request        = $request;
         $this->module_service = $module_service;
     }
 
@@ -107,9 +101,12 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
      */
     protected function isCookieWarningAcknowledged(): bool
     {
-        $cookies = $this->request->cookies;
+        // We store acceptance of cookies in a .... cookie.
+        $request = app(ServerRequestInterface::class);
 
-        return $cookies instanceof ParameterBag && $cookies->get('cookie', '') !== '';
+        $cookies_ok = $request->getCookieParams()['cookie'] ?? '';
+
+        return $cookies_ok !== '';
     }
 
     /**

@@ -1,0 +1,13 @@
+<?php
+declare(strict_types=1);
+
+use ChangelogGenerator\ChangelogConfig;
+
+return [
+    (new ChangelogConfig(
+        'narrowspark',
+        'http-emitter',
+        'v0.8.0',
+        ['Added', 'Changed', 'Deprecated', 'Removed', 'Fixed', 'Security']
+    ))
+];

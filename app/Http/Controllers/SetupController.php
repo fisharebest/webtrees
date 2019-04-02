@@ -17,12 +17,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use function define;
 use Exception;
 use Fisharebest\Localization\Locale;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Http\RedirectResponse;
+use Fisharebest\Webtrees\Http\Response;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Services\MigrationService;
@@ -32,9 +35,8 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
 use function ini_get;
 use function random_bytes;
@@ -47,7 +49,7 @@ class SetupController extends AbstractBaseController
 {
     private const DEFAULT_DBTYPE = 'mysql';
     private const DEFAULT_PREFIX = 'wt_';
-    private const DEFAULT_DATA = [
+    private const DEFAULT_DATA   = [
         'lang'    => '',
         'dbtype'  => self::DEFAULT_DBTYPE,
         'dbhost'  => '',
@@ -94,16 +96,21 @@ class SetupController extends AbstractBaseController
     /**
      * Installation wizard - check user input and proceed to the next step.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return Response
      */
-    public function setup(Request $request): Response
+    public function setup(ServerRequestInterface $request): ResponseInterface
     {
-        $step = (int) $request->get('step', '1');
+        // Required by I18N.
+        define('WT_DATA_DIR', 'data/');
+
         $data = $this->userData($request);
 
-        $data['lang']         = I18N::init($request->get('lang', $data['lang']), null, true);
+        $step = (int) ($request->getParsedBody()['step'] ?? '1');
+        $lang = $request->getParsedBody()['lang'] ?? $data['lang'];
+
+        $data['lang']         = I18N::init($lang, null, true);
         $data['cpu_limit']    = $this->maxExecutionTime();
         $data['locales']      = $this->setupLocales();
         $data['memory_limit'] = $this->memoryLimit();
@@ -145,16 +152,16 @@ class SetupController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return mixed[]
      */
-    private function userData(Request $request): array
+    private function userData(ServerRequestInterface $request): array
     {
         $data = [];
 
         foreach (self::DEFAULT_DATA as $key => $default) {
-            $data[$key] = $request->get($key, $default);
+            $data[$key] = $request->getParsedBody()[$key] ?? $default;
         }
 
         return $data;
@@ -245,7 +252,7 @@ class SetupController extends AbstractBaseController
      *
      * @return Response
      */
-    private function step1Language(array $data): Response
+    private function step1Language(array $data): ResponseInterface
     {
         if ($data['lang'] === '') {
             $data['lang'] = Locale::httpAcceptLanguage($_SERVER, $data['locales'], new LocaleEnUs())->languageTag();
@@ -259,7 +266,7 @@ class SetupController extends AbstractBaseController
      *
      * @return Response
      */
-    private function step2CheckServer(array $data): Response
+    private function step2CheckServer(array $data): ResponseInterface
     {
         return $this->viewResponse('setup/step-2-server-checks', $data);
     }
@@ -269,7 +276,7 @@ class SetupController extends AbstractBaseController
      *
      * @return Response
      */
-    private function step3DatabaseType(array $data): Response
+    private function step3DatabaseType(array $data): ResponseInterface
     {
         if ($data['errors']->isNotEmpty()) {
             return $this->viewResponse('setup/step-2-server-checks', $data);
@@ -283,7 +290,7 @@ class SetupController extends AbstractBaseController
      *
      * @return Response
      */
-    private function step4DatabaseConnection(array $data): Response
+    private function step4DatabaseConnection(array $data): ResponseInterface
     {
         if ($data['errors']->isNotEmpty()) {
             return $this->step3DatabaseType($data);
@@ -297,7 +304,7 @@ class SetupController extends AbstractBaseController
      *
      * @return Response
      */
-    private function step5Administrator(array $data): Response
+    private function step5Administrator(array $data): ResponseInterface
     {
         try {
             $this->checkDatabase($data);
@@ -342,7 +349,7 @@ class SetupController extends AbstractBaseController
      *
      * @return Response
      */
-    private function step6Install(array $data): Response
+    private function step6Install(array $data): ResponseInterface
     {
         $error = $this->checkAdminUser($data['wtname'], $data['wtuser'], $data['wtpass'], $data['wtemail']);
 

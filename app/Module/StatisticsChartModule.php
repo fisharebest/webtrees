@@ -24,8 +24,9 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use function array_key_exists;
 use function array_keys;
@@ -132,12 +133,12 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     /**
      * A form to request the chart parameters.
      *
-     * @param Tree $tree
+     * @param Tree          $tree
      * @param UserInterface $user
      *
      * @return Response
      */
-    public function getChartAction(Tree $tree, UserInterface $user): Response
+    public function getChartAction(Tree $tree, UserInterface $user): ResponseInterface
     {
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
@@ -175,7 +176,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return Response
      */
-    public function getIndividualsAction(Statistics $statistics): Response
+    public function getIndividualsAction(Statistics $statistics): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
@@ -190,7 +191,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return Response
      */
-    public function getFamiliesAction(Statistics $stats): Response
+    public function getFamiliesAction(Statistics $stats): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
@@ -204,7 +205,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return Response
      */
-    public function getOtherAction(Statistics $stats): Response
+    public function getOtherAction(Statistics $stats): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
@@ -218,7 +219,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return Response
      */
-    public function getCustomAction(Tree $tree): Response
+    public function getCustomAction(Tree $tree): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
@@ -229,12 +230,12 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     }
 
     /**
-     * @param Request    $request
-     * @param Statistics $statistics
+     * @param ServerRequestInterface $request
+     * @param Statistics             $statistics
      *
      * @return Response
      */
-    public function getCustomChartAction(Request $request, Statistics $statistics): Response
+    public function getCustomChartAction(ServerRequestInterface $request, Statistics $statistics): ResponseInterface
     {
         $x_axis_type = (int) $request->get('x-as');
         $y_axis_type = (int) $request->get('y-as');

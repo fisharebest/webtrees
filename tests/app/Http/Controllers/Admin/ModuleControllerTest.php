@@ -18,7 +18,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Test the module admin controller
@@ -37,7 +38,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'list');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -48,7 +49,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listAnalytics');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -59,7 +60,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listBlocks');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -70,7 +71,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listCharts');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -81,7 +82,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listFooters');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -92,7 +93,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listHistory');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -103,7 +104,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listLanguages');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -114,7 +115,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listMenus');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -125,7 +126,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listReports');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -136,7 +137,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listSidebars');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -147,7 +148,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listTabs');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -158,7 +159,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'listThemes');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -170,7 +171,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'update');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -182,7 +183,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateAnalytics');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -194,7 +195,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateBlocks');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -206,7 +207,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateCharts');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -218,7 +219,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateFooters');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -230,7 +231,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateHistory');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -242,7 +243,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateLanguages');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -254,7 +255,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateMenus');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -266,7 +267,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateReports');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -278,7 +279,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateSidebars');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -290,7 +291,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateTabs');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -302,7 +303,7 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'updateThemes');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -313,6 +314,6 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(ModuleController::class);
         $response   = app()->dispatch($controller, 'deleteModuleSettings');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 }

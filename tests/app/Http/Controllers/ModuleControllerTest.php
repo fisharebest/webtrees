@@ -20,8 +20,8 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Module\SiteMapModule;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Request;
+use Fisharebest\Webtrees\Http\Response;
 
 /**
  * Test the module controller
@@ -104,6 +104,6 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = new ModuleController($module_service);
         $response   = $controller->action($request, Auth::user());
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 }

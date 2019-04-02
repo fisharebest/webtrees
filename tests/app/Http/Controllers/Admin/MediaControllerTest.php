@@ -17,8 +17,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Request;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Test MediaController class.
@@ -37,7 +38,7 @@ class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(MediaController::class);
         $response   = app()->dispatch($controller, 'index');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -45,11 +46,11 @@ class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testDataLocal(): void
     {
-        app()->instance(Request::class, new Request(['files' => 'local']));
+        app()->instance(ServerRequestInterface::class, new Request(['files' => 'local']));
         $controller = app(MediaController::class);
         $response   = app()->dispatch($controller, 'data');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -57,11 +58,11 @@ class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testDataExternal(): void
     {
-        app()->instance(Request::class, new Request(['files' => 'external']));
+        app()->instance(ServerRequestInterface::class, new Request(['files' => 'external']));
         $controller = app(MediaController::class);
         $response   = app()->dispatch($controller, 'data');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -69,11 +70,11 @@ class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testDataUnused(): void
     {
-        app()->instance(Request::class, new Request(['files' => 'unused']));
+        app()->instance(ServerRequestInterface::class, new Request(['files' => 'unused']));
         $controller = app(MediaController::class);
         $response   = app()->dispatch($controller, 'data');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -84,7 +85,7 @@ class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(MediaController::class);
         $response   = app()->dispatch($controller, 'delete');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -95,7 +96,7 @@ class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(MediaController::class);
         $response   = app()->dispatch($controller, 'upload');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -106,6 +107,6 @@ class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(MediaController::class);
         $response   = app()->dispatch($controller, 'uploadAction');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 }

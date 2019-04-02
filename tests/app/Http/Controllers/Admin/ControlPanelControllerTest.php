@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Test the control panel controller
@@ -48,7 +49,7 @@ class ControlPanelControllerTest extends \Fisharebest\Webtrees\TestCase
             new UserService()
         );
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -60,6 +61,6 @@ class ControlPanelControllerTest extends \Fisharebest\Webtrees\TestCase
         $module_service = new ModuleService();
         $response       = $controller->controlPanelManager($module_service);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 }

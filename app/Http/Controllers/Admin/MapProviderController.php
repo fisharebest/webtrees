@@ -17,11 +17,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
+use Fisharebest\Webtrees\Http\RedirectResponse;
+use Fisharebest\Webtrees\Http\Response;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for maps and geographic data.
@@ -31,7 +32,7 @@ class MapProviderController extends AbstractAdminController
     /**
      * @return Response
      */
-    public function mapProviderEdit(): Response
+    public function mapProviderEdit(): ResponseInterface
     {
         return $this->viewResponse('admin/map-provider', [
             'title'    => I18N::translate('Map provider'),
@@ -40,11 +41,11 @@ class MapProviderController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return RedirectResponse
      */
-    public function mapProviderSave(Request $request): RedirectResponse
+    public function mapProviderSave(ServerRequestInterface $request): ResponseInterface
     {
         $map_provider = $request->get('provider', '');
 

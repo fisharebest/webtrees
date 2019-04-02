@@ -31,8 +31,9 @@ use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -64,7 +65,7 @@ class ReportEngineController extends AbstractBaseController
      *
      * @return Response
      */
-    public function reportList(Tree $tree, UserInterface $user): Response
+    public function reportList(Tree $tree, UserInterface $user): ResponseInterface
     {
         $title = I18N::translate('Choose a report to run');
 
@@ -77,13 +78,13 @@ class ReportEngineController extends AbstractBaseController
     /**
      * Fetch the options/parameters for a report.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
      * @return Response
      */
-    public function reportSetup(Request $request, Tree $tree, UserInterface $user): Response
+    public function reportSetup(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $pid    = $request->get('xref', '');
         $report = $request->get('report', '');
@@ -209,13 +210,13 @@ class ReportEngineController extends AbstractBaseController
     /**
      * Generate a report.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
      * @return Response
      */
-    public function reportRun(Request $request, Tree $tree, UserInterface $user): Response
+    public function reportRun(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $report   = $request->get('report', '');
         $output   = $request->get('output');

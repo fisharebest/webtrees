@@ -28,8 +28,9 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class InteractiveTreeModule
@@ -175,13 +176,13 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
      * @return Response
      */
-    public function getChartAction(Request $request, Tree $tree, UserInterface $user): Response
+    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -204,12 +205,12 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function getDetailsAction(Request $request, Tree $tree): Response
+    public function getDetailsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $pid        = $request->get('pid', Gedcom::REGEX_XREF);
         $individual = Individual::getInstance($pid, $tree);
@@ -229,12 +230,12 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function getPersonsAction(Request $request, Tree $tree): Response
+    public function getPersonsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $q        = $request->get('q', '');
         $instance = $request->get('instance', '');

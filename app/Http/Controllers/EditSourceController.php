@@ -17,11 +17,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Http\JsonResponse;
+use Fisharebest\Webtrees\Http\Response;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for edit forms and responses.
@@ -33,7 +34,7 @@ class EditSourceController extends AbstractEditController
      *
      * @return Response
      */
-    public function createSource(): Response
+    public function createSource(): ResponseInterface
     {
         return new Response(view('modals/create-source'));
     }
@@ -41,12 +42,12 @@ class EditSourceController extends AbstractEditController
     /**
      * Process a form to create a new source.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return JsonResponse
      */
-    public function createSourceAction(Request $request, Tree $tree): JsonResponse
+    public function createSourceAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $title               = $request->get('source-title', '');
         $abbreviation        = $request->get('source-abbreviation', '');

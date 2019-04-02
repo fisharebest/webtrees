@@ -22,8 +22,8 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Request;
+use Fisharebest\Webtrees\Http\Response;
 
 /**
  * Test the changes log controller
@@ -42,7 +42,7 @@ class ChangesLogControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = new ChangesLogController();
         $response   = $controller->changesLog(new Request(), new UserService());
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -67,7 +67,7 @@ class ChangesLogControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = new ChangesLogController();
         $response   = $controller->changesLogData($request, new DatatablesService(), new MyersDiff());
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -83,6 +83,6 @@ class ChangesLogControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = new ChangesLogController();
         $response   = $controller->changesLogDownload(new Request());
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 }

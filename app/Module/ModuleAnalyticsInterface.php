@@ -17,9 +17,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\RedirectResponse;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Interface ModuleAnalyticsInterface - Classes and libraries for module system
@@ -59,12 +60,12 @@ interface ModuleAnalyticsInterface extends ModuleInterface
     /**
      * @return Response
      */
-    public function getAdminAction(): Response;
+    public function getAdminAction(): ResponseInterface;
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return RedirectResponse
      */
-    public function postAdminAction(Request $request): RedirectResponse;
+    public function postAdminAction(ServerRequestInterface $request): ResponseInterface;
 }

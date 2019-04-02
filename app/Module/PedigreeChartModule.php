@@ -25,8 +25,9 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class PedigreeChartModule
@@ -117,14 +118,14 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
     /**
      * A form to request the chart parameters.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
-     * @param ChartService  $chart_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
+     * @param ChartService           $chart_service
      *
      * @return Response
      */
-    public function getChartAction(Request $request, Tree $tree, UserInterface $user, ChartService $chart_service): Response
+    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user, ChartService $chart_service): ResponseInterface
     {
         $ajax       = (bool) $request->get('ajax');
         $xref       = $request->get('xref', '');
@@ -171,7 +172,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      *
      * @return Response
      */
-    public function chart(Individual $individual, string $orientation, int $generations, ChartService $chart_service): Response
+    public function chart(Individual $individual, string $orientation, int $generations, ChartService $chart_service): ResponseInterface
     {
         $ancestors = $chart_service->sosaStradonitzAncestors($individual, $generations);
 
