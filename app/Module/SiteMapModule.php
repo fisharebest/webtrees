@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -30,9 +31,8 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -44,17 +44,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
 
     private const RECORDS_PER_VOLUME = 500; // Keep sitemap files small, for memory, CPU and max_allowed_packet limits.
     private const CACHE_LIFE         = 1209600; // Two weeks
-
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
-    public function title(): string
-    {
-        /* I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps */
-        return I18N::translate('Sitemaps');
-    }
 
     /**
      * A sentence describing what this module does.
@@ -78,9 +67,9 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAdminAction(): Response
+    public function getAdminAction(): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -104,11 +93,22 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
     }
 
     /**
-     * @param Request $request
+     * How should this module be identified in the control panel, etc.?
      *
-     * @return RedirectResponse
+     * @return string
      */
-    public function postAdminAction(Request $request): RedirectResponse
+    public function title(): string
+    {
+        /* I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps */
+        return I18N::translate('Sitemaps');
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         foreach (Tree::all() as $tree) {
             $include_in_sitemap = (bool) $request->get('sitemap' . $tree->id());
@@ -117,13 +117,13 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
 
         FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->title()), 'success');
 
-        return new RedirectResponse($this->getConfigLink());
+        return redirect($this->getConfigLink());
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getIndexAction(): Response
+    public function getIndexAction(): ResponseInterface
     {
         $timestamp = (int) $this->getPreference('sitemap.timestamp');
 
@@ -171,17 +171,17 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             $this->setPreference('sitemap.xml', $content);
         }
 
-        return new Response($content, Response::HTTP_OK, [
+        return response($content, StatusCodeInterface::STATUS_OK, [
             'Content-Type' => 'application/xml',
         ]);
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getFileAction(Request $request): Response
+    public function getFileAction(ServerRequestInterface $request): ResponseInterface
     {
         $file = $request->get('file', '');
 
@@ -208,7 +208,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             $this->setPreference('sitemap.xml', $content);
         }
 
-        return new Response($content, Response::HTTP_OK, [
+        return response($content, StatusCodeInterface::STATUS_OK, [
             'Content-Type' => 'application/xml',
         ]);
     }

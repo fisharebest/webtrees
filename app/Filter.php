@@ -19,12 +19,16 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\CommonMark\CensusTableExtension;
 use Fisharebest\Webtrees\CommonMark\XrefExtension;
+use League\CommonMark\Block\Element\Document;
+use League\CommonMark\Block\Element\Paragraph;
 use League\CommonMark\Block\Renderer\DocumentRenderer;
 use League\CommonMark\Block\Renderer\ParagraphRenderer;
 use League\CommonMark\Converter;
 use League\CommonMark\DocParser;
 use League\CommonMark\Environment;
 use League\CommonMark\HtmlRenderer;
+use League\CommonMark\Inline\Element\Link;
+use League\CommonMark\Inline\Element\Text;
 use League\CommonMark\Inline\Parser\AutolinkParser;
 use League\CommonMark\Inline\Renderer\LinkRenderer;
 use League\CommonMark\Inline\Renderer\TextRenderer;
@@ -87,10 +91,10 @@ class Filter
         ]);
 
         $environment
-            ->addBlockRenderer(\League\CommonMark\Block\Element\Document::class, new DocumentRenderer())
-            ->addBlockRenderer(\League\CommonMark\Block\Element\Paragraph::class, new ParagraphRenderer())
-            ->addInlineRenderer(\League\CommonMark\Inline\Element\Text::class, new TextRenderer())
-            ->addInlineRenderer(\League\CommonMark\Inline\Element\Link::class, new LinkRenderer())
+            ->addBlockRenderer(Document::class, new DocumentRenderer())
+            ->addBlockRenderer(Paragraph::class, new ParagraphRenderer())
+            ->addInlineRenderer(Text::class, new TextRenderer())
+            ->addInlineRenderer(Link::class, new LinkRenderer())
             ->addInlineParser(new AutolinkParser());
 
         $environment->addExtension(new CensusTableExtension());

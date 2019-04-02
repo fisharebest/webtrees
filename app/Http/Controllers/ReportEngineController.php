@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use function addcslashes;
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
@@ -31,9 +33,9 @@ use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use function response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -62,9 +64,9 @@ class ReportEngineController extends AbstractBaseController
      * @param Tree          $tree
      * @param UserInterface $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function reportList(Tree $tree, UserInterface $user): Response
+    public function reportList(Tree $tree, UserInterface $user): ResponseInterface
     {
         $title = I18N::translate('Choose a report to run');
 
@@ -77,13 +79,13 @@ class ReportEngineController extends AbstractBaseController
     /**
      * Fetch the options/parameters for a report.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function reportSetup(Request $request, Tree $tree, UserInterface $user): Response
+    public function reportSetup(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $pid    = $request->get('xref', '');
         $report = $request->get('report', '');
@@ -209,13 +211,13 @@ class ReportEngineController extends AbstractBaseController
     /**
      * Generate a report.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function reportRun(Request $request, Tree $tree, UserInterface $user): Response
+    public function reportRun(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $report   = $request->get('report', '');
         $output   = $request->get('output');
@@ -291,17 +293,10 @@ class ReportEngineController extends AbstractBaseController
                 new ReportParserGenerate($xml_filename, new ReportPdf(), $vars, $tree);
                 $pdf = ob_get_clean();
 
-                $response = new Response($pdf);
-
-                $disposition = $response->headers->makeDisposition(
-                    ResponseHeaderBag::DISPOSITION_INLINE,
-                    $report . '.pdf'
-                );
-
-                $response->headers->set('Content-Disposition', $disposition);
-                $response->headers->set('Content-Type', 'application/pdf');
-
-                return $response;
+                return response($pdf, StatusCodeInterface::STATUS_OK, [
+                    'Content-type' => 'application/pdf',
+                    'Content-disposition' => 'attachment; filename="' . addcslashes($report, '"') . '"',
+                ]);
         }
     }
 }

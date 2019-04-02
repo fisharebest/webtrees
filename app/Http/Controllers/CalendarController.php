@@ -33,8 +33,8 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Show anniveraries for events in a given day/month/year.
@@ -62,21 +62,21 @@ class CalendarController extends AbstractBaseController
     /**
      * A form to request the page parameters.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function page(Request $request, Tree $tree): Response
+    public function page(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $cal      = $request->get('cal', '');
-        $day      = $request->get('day', '');
-        $month    = $request->get('month', '');
-        $year     = $request->get('year', '');
-        $view     = $request->get('view', 'day');
-        $filterev = $request->get('filterev', 'BIRT-MARR-DEAT');
-        $filterof = $request->get('filterof', 'all');
-        $filtersx = $request->get('filtersx', '');
+        $cal      = $request->getQueryParams()['cal'] ?? '';
+        $day      = $request->getQueryParams()['day'] ?? '';
+        $month    = $request->getQueryParams()['month'] ?? '';
+        $year     = $request->getQueryParams()['year'] ?? '';
+        $view     = $request->getQueryParams()['view'] ?? 'day';
+        $filterev = $request->getQueryParams()['filterev'] ?? 'BIRT-MARR-DEAT';
+        $filterof = $request->getQueryParams()['filterof'] ?? 'all';
+        $filtersx = $request->getQueryParams()['filtersx'] ?? '';
 
         if ($cal . $day . $month . $year === '') {
             // No date specified? Use the most likely calendar
@@ -175,23 +175,23 @@ class CalendarController extends AbstractBaseController
     /**
      * Show anniveraries that occured on a given day/month/year.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function calendar(Request $request, Tree $tree): Response
+    public function calendar(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
 
-        $cal      = $request->get('cal', '');
-        $day      = $request->get('day', '');
-        $month    = $request->get('month', '');
-        $year     = $request->get('year', '');
-        $view     = $request->get('view', '');
-        $filterev = $request->get('filterev', 'BIRT-MARR-DEAT');
-        $filterof = $request->get('filterof', 'all');
-        $filtersx = $request->get('filtersx', '');
+        $cal      = $request->getQueryParams()['cal'] ?? '';
+        $day      = $request->getQueryParams()['day'] ?? '';
+        $month    = $request->getQueryParams()['month'] ?? '';
+        $year     = $request->getQueryParams()['year'] ?? '';
+        $view     = $request->getQueryParams()['view'] ?? 'day';
+        $filterev = $request->getQueryParams()['filterev'] ?? 'BIRT-MARR-DEAT';
+        $filterof = $request->getQueryParams()['filterof'] ?? 'all';
+        $filtersx = $request->getQueryParams()['filtersx'] ?? '';
 
         if ($cal . $day . $month . $year === '') {
             // No date specified? Use the most likely calendar
@@ -462,7 +462,7 @@ class CalendarController extends AbstractBaseController
 
         $html = ob_get_clean();
 
-        return new Response($html);
+        return response($html);
     }
 
     /**

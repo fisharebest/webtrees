@@ -18,16 +18,15 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Test FixLevel0MediaControllerTest class.
  *
  * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\FixLevel0MediaController
  */
-class FixLevel0MediaControllerTest extends \Fisharebest\Webtrees\TestCase
+class FixLevel0MediaControllerTest extends TestCase
 {
     protected static $uses_database = true;
 
@@ -37,9 +36,10 @@ class FixLevel0MediaControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testFixLevel0Media(): void
     {
         $controller = new FixLevel0MediaController();
-        $response   = $controller->fixLevel0Media();
+        self::createRequest('GET', ['route' => 'admin-fix-level-0-media']);
+        $response = $controller->fixLevel0Media();
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -47,13 +47,17 @@ class FixLevel0MediaControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testFixLevel0MediaAction(): void
     {
-        $tree    = Tree::create('name', 'title');
-        $request = new Request(['tree_id' => $tree->id()]);
-
+        $tree       = Tree::create('name', 'title');
+        $request    = self::createRequest('POST', ['route' => 'admin-fix-level-0-media'], [
+            'tree_id'   => $tree->id(),
+            'fact_id'   => '',
+            'indi_xref' => '',
+            'obje_xref' => '',
+        ]);
         $controller = new FixLevel0MediaController();
         $response   = $controller->fixLevel0MediaAction($request);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -63,10 +67,10 @@ class FixLevel0MediaControllerTest extends \Fisharebest\Webtrees\TestCase
     {
         $datatables_service = new DatatablesService();
         $tree               = Tree::create('name', 'title');
-        $request            = new Request(['tree_id' => $tree->id()]);
         $controller         = new FixLevel0MediaController();
+        $request            = self::createRequest('GET', ['route' => 'admin-fix-level-0-media-data', ['tree_id' => $tree->id()]]);
         $response           = $controller->fixLevel0MediaData($request, $datatables_service);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 }

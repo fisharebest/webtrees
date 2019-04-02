@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Exceptions;
 
-use Symfony\Component\HttpFoundation\Response;
+use Fig\Http\Message\StatusCodeInterface;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 /**
@@ -32,6 +32,6 @@ class InternalServerErrorException extends HttpException
      */
     public function __construct(string $message)
     {
-        parent::__construct(Response::HTTP_INTERNAL_SERVER_ERROR, $message);
+        parent::__construct(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR, $message);
     }
 }

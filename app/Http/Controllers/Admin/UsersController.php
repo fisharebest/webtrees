@@ -35,11 +35,9 @@ use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use const WT_BASE_URL;
 
@@ -73,13 +71,13 @@ class UsersController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function cleanup(Request $request): Response
+    public function cleanup(ServerRequestInterface $request): ResponseInterface
     {
-        $months = (int) $request->get('months', 6);
+        $months = (int) ($request->getQueryParams()['months'] ?? 6);
 
         $inactive_threshold   = time() - $months * 30 * self::SECONDS_PER_DAY;
         $unverified_threshold = time() - 7 * self::SECONDS_PER_DAY;
@@ -120,14 +118,14 @@ class UsersController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function cleanupAction(Request $request): RedirectResponse
+    public function cleanupAction(ServerRequestInterface $request): ResponseInterface
     {
         foreach ($this->user_service->all() as $user) {
-            if ((bool) $request->get('del_' . $user->id())) {
+            if ((bool) $request->getParsedBody()['del_' . $user->id()]) {
                 Log::addAuthenticationLog('Deleted user: ' . $user->userName());
                 $this->user_service->delete($user);
 
@@ -137,18 +135,18 @@ class UsersController extends AbstractAdminController
 
         $url = route('admin-users-cleanup');
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
-     * @param Request       $request
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function index(Request $request, UserInterface $user): Response
+    public function index(ServerRequestInterface $request, UserInterface $user): ResponseInterface
     {
-        $filter = $request->get('filter', '');
+        $filter = $request->getQueryParams()['filter'] ?? '';
 
         $all_users = $this->user_service->all();
 
@@ -165,13 +163,13 @@ class UsersController extends AbstractAdminController
     }
 
     /**
-     * @param DatatablesService $datatables_service
-     * @param Request           $request
-     * @param UserInterface     $user
+     * @param DatatablesService      $datatables_service
+     * @param ServerRequestInterface $request
+     * @param UserInterface          $user
      *
-     * @return JsonResponse
+     * @return ResponseInterface
      */
-    public function data(DatatablesService $datatables_service, Request $request, UserInterface $user): JsonResponse
+    public function data(DatatablesService $datatables_service, ServerRequestInterface $request, UserInterface $user): ResponseInterface
     {
         $installed_languages = [];
         foreach (I18N::installedLocales() as $installed_locale) {
@@ -223,8 +221,8 @@ class UsersController extends AbstractAdminController
         $search_columns = ['user_name', 'real_name', 'email'];
         $sort_columns   = [];
 
-        $callback = function (stdClass $row) use ($installed_languages, $user): array {
-            if ($row->user_id != $user->id()) {
+        $callback = static function (stdClass $row) use ($installed_languages, $user): array {
+            if ($row->user_id !== $user->id()) {
                 $admin_options = '<div class="dropdown-item"><a href="#" onclick="return masquerade(' . $row->user_id . ')">' . view('icons/user') . ' ' . I18N::translate('Masquerade as this user') . '</a></div>' . '<div class="dropdown-item"><a href="#" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($row->user_name)) . '" onclick="delete_user(this.dataset.confirm, ' . $row->user_id . ');">' . view('icons/delete') . ' ' . I18N::translate('Delete') . '</a></div>';
             } else {
                 // Do not delete ourself!
@@ -265,15 +263,15 @@ class UsersController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function create(Request $request): Response
+    public function create(ServerRequestInterface $request): ResponseInterface
     {
-        $email     = $request->get('email', '');
-        $real_name = $request->get('real_name', '');
-        $username  = $request->get('username', '');
+        $email     = $request->getQueryParams()['email'] ?? '';
+        $real_name = $request->getQueryParams()['real_name'] ?? '';
+        $username  = $request->getQueryParams()['username'] ?? '';
         $title     = I18N::translate('Add a user');
 
         return $this->viewResponse('admin/users-create', [
@@ -285,13 +283,13 @@ class UsersController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function edit(Request $request): Response
+    public function edit(ServerRequestInterface $request): ResponseInterface
     {
-        $user_id = (int) $request->get('user_id');
+        $user_id = (int) $request->getQueryParams()['user_id'];
         $user    = $this->user_service->find($user_id);
 
         if ($user === null) {
@@ -311,16 +309,16 @@ class UsersController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function save(Request $request): RedirectResponse
+    public function save(ServerRequestInterface $request): ResponseInterface
     {
-        $username  = $request->get('username', '');
-        $real_name = $request->get('real_name', '');
-        $email     = $request->get('email', '');
-        $password  = $request->get('password', '');
+        $username  = $request->getParsedBody()['username'];
+        $real_name = $request->getParsedBody()['real_name'];
+        $email     = $request->getParsedBody()['email'];
+        $password  = $request->getParsedBody()['password'];
 
         $errors = false;
         if ($this->user_service->findByUserName($username)) {
@@ -340,7 +338,7 @@ class UsersController extends AbstractAdminController
                 'username'  => $username,
             ]);
 
-            return new RedirectResponse($url);
+            return redirect($url);
         }
 
         $new_user = $this->user_service->create($username, $real_name, $email, $password)
@@ -356,32 +354,32 @@ class UsersController extends AbstractAdminController
             'user_id' => $new_user->id(),
         ]);
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
-     * @param Request       $request
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param UserInterface          $user
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function update(Request $request, UserInterface $user): RedirectResponse
+    public function update(ServerRequestInterface $request, UserInterface $user): ResponseInterface
     {
-        $user_id        = (int) $request->get('user_id');
-        $username       = $request->get('username', '');
-        $real_name      = $request->get('real_name', '');
-        $email          = $request->get('email', '');
-        $password       = $request->get('password', '');
-        $theme          = $request->get('theme', '');
-        $language       = $request->get('language', '');
-        $timezone       = $request->get('timezone', '');
-        $contact_method = $request->get('contact_method', '');
-        $comment        = $request->get('comment', '');
-        $auto_accept    = (bool) $request->get('auto_accept');
-        $canadmin       = (bool) $request->get('canadmin');
-        $visible_online = (bool) $request->get('visible_online');
-        $verified       = (bool) $request->get('verified');
-        $approved       = (bool) $request->get('approved');
+        $user_id        = (int) $request->getParsedBody()['user_id'];
+        $username       = $request->getParsedBody()['username'];
+        $real_name      = $request->getParsedBody()['real_name'];
+        $email          = $request->getParsedBody()['email'];
+        $password       = $request->getParsedBody()['password'];
+        $theme          = $request->getParsedBody()['theme'];
+        $language       = $request->getParsedBody()['language'];
+        $timezone       = $request->getParsedBody()['timezone'];
+        $contact_method = $request->getParsedBody()['contact_method'];
+        $comment        = $request->getParsedBody()['comment'];
+        $auto_accept    = (bool) $request->getParsedBody()['auto_accept'];
+        $canadmin       = (bool) $request->getParsedBody()['canadmin'];
+        $visible_online = (bool) $request->getParsedBody()['visible_online'];
+        $verified       = (bool) $request->getParsedBody()['verified'];
+        $approved       = (bool) $request->getParsedBody()['approved'];
 
         $edit_user = $this->user_service->find($user_id);
 
@@ -426,9 +424,9 @@ class UsersController extends AbstractAdminController
         }
 
         foreach (Tree::getAll() as $tree) {
-            $path_length = (int) $request->get('RELATIONSHIP_PATH_LENGTH' . $tree->id());
-            $gedcom_id   = $request->get('gedcomid' . $tree->id(), '');
-            $can_edit    = $request->get('canedit' . $tree->id(), '');
+            $path_length = (int) $request->getParsedBody()['RELATIONSHIP_PATH_LENGTH' . $tree->id()];
+            $gedcom_id   = $request->getParsedBody()['gedcomid' . $tree->id()];
+            $can_edit    = $request->getParsedBody()['canedit' . $tree->id()];
 
             // Do not allow a path length to be set if the individual ID is not
             if ($gedcom_id === '') {
@@ -443,20 +441,20 @@ class UsersController extends AbstractAdminController
         if ($edit_user->email() !== $email && $this->user_service->findByEmail($email) instanceof User) {
             FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.') . $email, 'danger');
 
-            return new RedirectResponse(route('admin-users-edit', ['user_id' => $edit_user->id()]));
+            return redirect(route('admin-users-edit', ['user_id' => $edit_user->id()]));
         }
 
         if ($edit_user->userName() !== $username && $this->user_service->findByUserName($username) instanceof User) {
             FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'), 'danger');
 
-            return new RedirectResponse(route('admin-users-edit', ['user_id' => $edit_user->id()]));
+            return redirect(route('admin-users-edit', ['user_id' => $edit_user->id()]));
         }
 
         $edit_user
             ->setEmail($email)
             ->setUserName($username);
 
-        return new RedirectResponse(route('admin-users'));
+        return redirect(route('admin-users'));
     }
 
     /**

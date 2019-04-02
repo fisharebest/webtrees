@@ -17,6 +17,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Psr\Http\Message\ServerRequestInterface;
+use function app;
+
 /**
  * Check for PHP timeouts.
  */
@@ -28,7 +31,7 @@ class TimeoutService
     /** @var float Seconds until we run out of time */
     private const TIME_UP_THRESHOLD = 3.0;
 
-    /** @var float The start time of the request */
+    /** @var float|null The start time of the request */
     private $start_time;
 
     /**
@@ -36,7 +39,7 @@ class TimeoutService
      *
      * @param float $start_time
      */
-    public function __construct(float $start_time)
+    public function __construct(float $start_time = null)
     {
         $this->start_time = $start_time;
     }
@@ -74,5 +77,19 @@ class TimeoutService
         $now = microtime(true);
 
         return $now > $this->start_time + $limit;
+    }
+
+    /**
+     * @return float
+     */
+    protected function startTime(): float
+    {
+        if ($this->start_time === null) {
+            $request = app(ServerRequestInterface::class);
+
+            $this->start_time = (float) ($request->getServerParams()['REQUEST_TIME_FLOAT'] ?? microtime(true));
+        }
+
+        return $this->start_time;
     }
 }

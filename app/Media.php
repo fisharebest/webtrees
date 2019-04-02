@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
+use Exception;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
@@ -53,7 +54,7 @@ class Media extends GedcomRecord
      * @param Tree        $tree
      * @param string|null $gedcom
      *
-     * @throws \Exception
+     * @throws Exception
      *
      * @return Media|null
      */

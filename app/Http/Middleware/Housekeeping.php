@@ -17,14 +17,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Closure;
+use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Services\HousekeepingService;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 /**
  * Run the housekeeping service at irregular intervals.
@@ -64,18 +65,17 @@ class Housekeeping implements MiddlewareInterface
     }
 
     /**
-     * @param Request $request
-     * @param Closure $next
+     * @param ServerRequestInterface  $request
+     * @param RequestHandlerInterface $handler
      *
-     * @return Response
-     * @throws AccessDeniedHttpException
+     * @return ResponseInterface
      */
-    public function handle(Request $request, Closure $next): Response
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $response = $next($request);
+        $response = $handler->handle($request);
 
         // Run the cleanup after random page requests.
-        if ($request->getMethod() === Request::METHOD_GET && random_int(1, self::PROBABILITY) === 1) {
+        if ($request->getMethod() === RequestMethodInterface::METHOD_GET && random_int(1, self::PROBABILITY) === 1) {
             $this->runHousekeeping();
         }
 

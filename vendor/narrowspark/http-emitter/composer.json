@@ -1,0 +1,66 @@
+{
+    "name": "narrowspark/http-emitter",
+    "type": "library",
+    "description": "Emitting psr-7 responses.",
+    "keywords": [
+        "narrowspark",
+        "http",
+        "emitter",
+        "sapi",
+        "psr-7"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Bannert",
+            "email": "d.bannert@anolilab.de",
+            "homepage": "http://www.anolilab.de",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "psr/http-message": "^1.0"
+    },
+    "provide": {
+        "psr/http-message-implementation": "^1.0"
+    },
+    "require-dev": {
+        "narrowspark/coding-standard": "^1.4.0",
+        "phpunit/phpunit": "^7.0",
+        "zendframework/zend-diactoros": "^1.8.0"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "preferred-install": "dist"
+    },
+    "autoload": {
+        "psr-4": {
+            "Narrowspark\\HttpEmitter\\": "src/"
+        },
+        "exclude-from-classmap": [
+            "tests/"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Narrowspark\\HttpEmitter\\Tests\\": "tests/"
+        },
+        "files": [
+            "tests/OverwritePhpFunctions.php"
+        ]
+    },
+    "minimum-stability": "stable",
+    "scripts": {
+        "coverage": "phpunit --coverage-html=\"build/logs\"",
+        "cs": "php-cs-fixer fix",
+        "phpstan": "phpstan analyse -c phpstan.neon -l 7 src --memory-limit=-1",
+        "test": "phpunit",
+        "changelog":  "changelog-generator generate --config=\".changelog\" --file --prepend"
+    },
+    "support": {
+        "issues": "https://github.com/narrowspark/http-emitter/issues",
+        "source": "https://github.com/narrowspark/http-emitter"
+    }
+}

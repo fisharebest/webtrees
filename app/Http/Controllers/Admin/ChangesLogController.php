@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
@@ -28,10 +29,9 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use function explode;
 use function implode;
 use function preg_replace_callback;
@@ -44,12 +44,12 @@ class ChangesLogController extends AbstractAdminController
     /**
      * Show the edit history for a tree.
      *
-     * @param Request     $request
-     * @param UserService $user_service
+     * @param ServerRequestInterface $request
+     * @param UserService            $user_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function changesLog(Request $request, UserService $user_service): Response
+    public function changesLog(ServerRequestInterface $request, UserService $user_service): ResponseInterface
     {
         $tree_list = [];
         foreach (Tree::getAll() as $tree) {
@@ -63,7 +63,7 @@ class ChangesLogController extends AbstractAdminController
             $user_list[$tmp_user->userName()] = $tmp_user->userName();
         }
 
-        $action = $request->get('action');
+        $action = $request->getQueryParams()['action'] ?? '';
 
         // @TODO This ought to be a POST action
         if ($action === 'delete') {
@@ -80,15 +80,15 @@ class ChangesLogController extends AbstractAdminController
         $earliest = $earliest->toDateString();
         $latest   = $latest->toDateString();
 
-        $ged      = $request->get('ged');
-        $from     = $request->get('from', $earliest);
-        $to       = $request->get('to', $latest);
-        $type     = $request->get('type', '');
-        $oldged   = $request->get('oldged', '');
-        $newged   = $request->get('newged', '');
-        $xref     = $request->get('xref', '');
-        $username = $request->get('username', '');
-        $search   = $request->get('search', []);
+        $ged      = $request->getQueryParams()['ged'] ?? '';
+        $from     = $request->getQueryParams()['from'] ?? $earliest;
+        $to       = $request->getQueryParams()['to'] ?? $latest;
+        $type     = $request->getQueryParams()['type'] ?? '';
+        $oldged   = $request->getQueryParams()['oldged'] ?? '';
+        $newged   = $request->getQueryParams()['newged'] ?? '';
+        $xref     = $request->getQueryParams()['xref'] ?? '';
+        $username = $request->getQueryParams()['username'] ?? '';
+        $search   = $request->getQueryParams()['search'] ?? [];
         $search   = $search['value'] ?? null;
 
         if (!array_key_exists($ged, $tree_list)) {
@@ -128,13 +128,13 @@ class ChangesLogController extends AbstractAdminController
     /**
      * Show the edit history for a tree.
      *
-     * @param Request           $request
-     * @param DatatablesService $datatables_service
-     * @param MyersDiff         $myers_diff
+     * @param ServerRequestInterface $request
+     * @param DatatablesService      $datatables_service
+     * @param MyersDiff              $myers_diff
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function changesLogData(Request $request, DatatablesService $datatables_service, MyersDiff $myers_diff): Response
+    public function changesLogData(ServerRequestInterface $request, DatatablesService $datatables_service, MyersDiff $myers_diff): ResponseInterface
     {
         $query = $this->changesQuery($request);
 
@@ -189,11 +189,11 @@ class ChangesLogController extends AbstractAdminController
     /**
      * Show the edit history for a tree.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function changesLogDownload(Request $request): Response
+    public function changesLogDownload(ServerRequestInterface $request): ResponseInterface
     {
         $content = $this->changesQuery($request)
             ->get()
@@ -211,33 +211,32 @@ class ChangesLogController extends AbstractAdminController
             })
             ->implode("\n");
 
-        $response    = new Response($content);
-        $disposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, 'changes.csv');
-        $response->headers->set('Content-Disposition', $disposition);
-        $response->headers->set('Content-Type', 'text/csv; charset=UTF-8');
-
-        return $response;
+        return response($content, StatusCodeInterface::STATUS_OK, [
+            'Content-type'        => 'text/csv; charset=UTF-8',
+            'Content-disposition' => 'attachment; filename="changes.csv"',
+        ]);
     }
 
     /**
      * Generate a query for filtering the changes log.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return Builder
      */
-    private function changesQuery(Request $request): Builder
+    private function changesQuery(ServerRequestInterface $request): Builder
     {
-        $from     = $request->get('from', '');
-        $to       = $request->get('to', '');
-        $type     = $request->get('type', '');
-        $oldged   = $request->get('oldged', '');
-        $newged   = $request->get('newged', '');
-        $xref     = $request->get('xref', '');
-        $username = $request->get('username', '');
-        $ged      = $request->get('ged', '');
-        $search   = $request->get('search', '');
+        $from     = $request->getQueryParams()['from'] ?? '';
+        $to       = $request->getQueryParams()['to'] ?? '';
+        $type     = $request->getQueryParams()['type'] ?? '';
+        $oldged   = $request->getQueryParams()['oldged'] ?? '';
+        $newged   = $request->getQueryParams()['newged'] ?? '';
+        $xref     = $request->getQueryParams()['xref'] ?? '';
+        $username = $request->getQueryParams()['username'] ?? '';
+        $ged      = $request->getQueryParams()['ged'] ?? '';
+        $search   = $request->getQueryParams()['search'] ?? [];
         $search   = $search['value'] ?? '';
+
 
         $query = DB::table('change')
             ->leftJoin('user', 'user.user_id', '=', 'change.user_id')

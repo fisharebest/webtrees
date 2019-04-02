@@ -26,9 +26,9 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Support\Collection;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class PlacesMapModule
@@ -231,23 +231,23 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return JsonResponse
+     * @return ResponseInterface
      */
-    public function getProviderStylesAction(Request $request): JsonResponse
+    public function getProviderStylesAction(ServerRequestInterface $request): ResponseInterface
     {
         $styles = $this->getMapProviderData($request);
 
-        return new JsonResponse($styles);
+        return response($styles);
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return array|null
      */
-    private function getMapProviderData(Request $request): ?array
+    private function getMapProviderData(ServerRequestInterface $request): ?array
     {
         if (self::$map_providers === null) {
             $providersFile        = WT_ROOT . Webtrees::MODULES_PATH . 'openstreetmap/providers/providers.xml';
@@ -257,7 +257,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
             ];
 
             try {
-                $xml = simplexml_load_file($providersFile);
+                $xml = simplexml_load_string(file_get_contents($providersFile));
                 // need to convert xml structure into arrays & strings
                 foreach ($xml as $provider) {
                     $style_keys = array_map(

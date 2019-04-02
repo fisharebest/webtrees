@@ -26,8 +26,8 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for email verification.
@@ -37,13 +37,13 @@ class VerifyEmailController extends AbstractBaseController
     /**
      * Respond to a verification link that was emailed to a user.
      *
-     * @param Request     $request
-     * @param Tree        $tree
-     * @param UserService $user_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserService            $user_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function verify(Request $request, Tree $tree, UserService $user_service): Response
+    public function verify(ServerRequestInterface $request, Tree $tree, UserService $user_service): ResponseInterface
     {
         $username = $request->get('username', '');
         $token    = $request->get('token', '');

@@ -28,9 +28,8 @@ use Fisharebest\Webtrees\Module\CensusAssistantModule;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -58,13 +57,13 @@ class EditGedcomRecordController extends AbstractEditController
     /**
      * Copy a fact to the clipboard.
      *
-     * @param Request          $request
-     * @param Tree             $tree
-     * @param ClipboardService $clipboard_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param ClipboardService       $clipboard_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function copyFact(Request $request, Tree $tree, ClipboardService $clipboard_service): Response
+    public function copyFact(ServerRequestInterface $request, Tree $tree, ClipboardService $clipboard_service): ResponseInterface
     {
         $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id');
@@ -82,18 +81,18 @@ class EditGedcomRecordController extends AbstractEditController
             }
         }
 
-        return new Response();
+        return response();
     }
 
     /**
      * Delete a fact.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function deleteFact(Request $request, Tree $tree): Response
+    public function deleteFact(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id');
@@ -109,18 +108,18 @@ class EditGedcomRecordController extends AbstractEditController
             }
         }
 
-        return new Response();
+        return response();
     }
 
     /**
      * Delete a record.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function deleteRecord(Request $request, Tree $tree): Response
+    public function deleteRecord(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -162,19 +161,19 @@ class EditGedcomRecordController extends AbstractEditController
             $record->deleteRecord();
         }
 
-        return new Response();
+        return response();
     }
 
     /**
      * Paste a fact from the clipboard into a record.
      *
-     * @param Request          $request
-     * @param Tree             $tree
-     * @param ClipboardService $clipboard_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param ClipboardService       $clipboard_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function pasteFact(Request $request, Tree $tree, ClipboardService $clipboard_service): Response
+    public function pasteFact(ServerRequestInterface $request, Tree $tree, ClipboardService $clipboard_service): ResponseInterface
     {
         $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id');
@@ -185,16 +184,16 @@ class EditGedcomRecordController extends AbstractEditController
 
         $clipboard_service->pasteFact($fact_id, $record);
 
-        return new Response();
+        return response();
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function editRawFact(Request $request, Tree $tree): Response
+    public function editRawFact(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id');
@@ -214,16 +213,16 @@ class EditGedcomRecordController extends AbstractEditController
             }
         }
 
-        return new RedirectResponse($record->url());
+        return redirect($record->url());
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function editRawFactAction(Request $request, Tree $tree): Response
+    public function editRawFactAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id');
@@ -244,16 +243,16 @@ class EditGedcomRecordController extends AbstractEditController
             }
         }
 
-        return new RedirectResponse($record->url());
+        return redirect($record->url());
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function editRawRecord(Request $request, Tree $tree): Response
+    public function editRawRecord(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref   = $request->get('xref', '');
         $record = GedcomRecord::getInstance($xref, $tree);
@@ -270,12 +269,12 @@ class EditGedcomRecordController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function editRawRecordAction(Request $request, Tree $tree): Response
+    public function editRawRecordAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref     = $request->get('xref', '');
         $facts    = (array) $request->get('fact');
@@ -303,16 +302,16 @@ class EditGedcomRecordController extends AbstractEditController
 
         $record->updateRecord($gedcom, false);
 
-        return new RedirectResponse($record->url());
+        return redirect($record->url());
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function addFact(Request $request, Tree $tree): Response
+    public function addFact(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
         $fact = $request->get('fact', '');
@@ -331,12 +330,12 @@ class EditGedcomRecordController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function editFact(Request $request, Tree $tree): Response
+    public function editFact(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id', '');
@@ -370,12 +369,12 @@ class EditGedcomRecordController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function updateFact(Request $request, Tree $tree): RedirectResponse
+    public function updateFact(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id', '');
@@ -463,7 +462,7 @@ class EditGedcomRecordController extends AbstractEditController
             }
         }
 
-        return new RedirectResponse($record->url());
+        return redirect($record->url());
     }
 
     /**

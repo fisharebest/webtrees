@@ -29,9 +29,8 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -58,14 +57,14 @@ class MessageController extends AbstractBaseController
     /**
      * A form to compose a message from a member.
      *
-     * @param Request       $request
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function broadcastPage(Request $request, UserInterface $user): Response
+    public function broadcastPage(ServerRequestInterface $request, UserInterface $user): ResponseInterface
     {
-        $referer = $request->headers->get('referer', '');
+        $referer = $request->getHeaderLine('referer');
 
         $body    = $request->get('body', '');
         $subject = $request->get('subject', '');
@@ -95,13 +94,13 @@ class MessageController extends AbstractBaseController
     /**
      * Send a message.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function broadcastAction(Request $request, Tree $tree, UserInterface $user): RedirectResponse
+    public function broadcastAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $body    = $request->get('body', '');
         $subject = $request->get('subject', '');
@@ -112,7 +111,7 @@ class MessageController extends AbstractBaseController
         $to_users = $this->recipientUsers($to);
 
         if ($body === '' || $subject === '') {
-            return new RedirectResponse(route('broadcast', [
+            return redirect(route('broadcast', [
                 'body'    => $body,
                 'subject' => $subject,
                 'to'      => $to,
@@ -135,20 +134,20 @@ class MessageController extends AbstractBaseController
             FlashMessages::addMessage(I18N::translate('The message was not sent.'), 'danger');
         }
 
-        return new RedirectResponse(route('admin-control-panel'));
+        return redirect(route('admin-control-panel'));
     }
 
     /**
      * A form to compose a message from a visitor.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function contactPage(Request $request, Tree $tree): Response
+    public function contactPage(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $referer = $request->headers->get('referer', '');
+        $referer = $request->getHeaderLine('referer');
 
         $body       = $request->get('body', '');
         $from_email = $request->get('from_email', '');
@@ -182,12 +181,12 @@ class MessageController extends AbstractBaseController
     /**
      * Send a message.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function contactAction(Request $request, Tree $tree): RedirectResponse
+    public function contactAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $body       = $request->get('body', '');
         $from_email = $request->get('from_email', '');
@@ -221,7 +220,7 @@ class MessageController extends AbstractBaseController
         }
 
         if ($errors) {
-            return new RedirectResponse(route('contact', [
+            return redirect(route('contact', [
                 'body'       => $body,
                 'from_email' => $from_email,
                 'from_name'  => $from_name,
@@ -239,7 +238,7 @@ class MessageController extends AbstractBaseController
 
             $url = $url ?: route('tree-page', ['ged' => $tree->name()]);
 
-            return new RedirectResponse($url);
+            return redirect($url);
         }
 
         FlashMessages::addMessage(I18N::translate('The message was not sent.'), 'danger');
@@ -253,20 +252,20 @@ class MessageController extends AbstractBaseController
             'url'        => $url,
         ]);
 
-        return new RedirectResponse($redirect_url);
+        return redirect($redirect_url);
     }
 
     /**
      * A form to compose a message from a member.
      *
-     * @param Request       $request
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function messagePage(Request $request, UserInterface $user): Response
+    public function messagePage(ServerRequestInterface $request, UserInterface $user): ResponseInterface
     {
-        $referer = $request->headers->get('referer', '');
+        $referer = $request->getHeaderLine('referer');
 
         $body    = $request->get('body', '');
         $subject = $request->get('subject', '');
@@ -294,13 +293,13 @@ class MessageController extends AbstractBaseController
     /**
      * Send a message.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function messageAction(Request $request, Tree $tree, UserInterface $user): RedirectResponse
+    public function messageAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $body    = $request->get('body', '');
         $subject = $request->get('subject', '');
@@ -315,7 +314,7 @@ class MessageController extends AbstractBaseController
         }
 
         if ($body === '' || $subject === '') {
-            return new RedirectResponse(route('message', [
+            return redirect(route('message', [
                 'body'    => $body,
                 'subject' => $subject,
                 'to'      => $to,
@@ -329,7 +328,7 @@ class MessageController extends AbstractBaseController
 
             $url = $url ?: route('tree-page', ['ged' => $tree->name()]);
 
-            return new RedirectResponse($url);
+            return redirect($url);
         }
 
         FlashMessages::addMessage(I18N::translate('The message was not sent.'), 'danger');
@@ -341,7 +340,7 @@ class MessageController extends AbstractBaseController
             'url'     => $url,
         ]);
 
-        return new RedirectResponse($redirect_url);
+        return redirect($redirect_url);
     }
 
     /**

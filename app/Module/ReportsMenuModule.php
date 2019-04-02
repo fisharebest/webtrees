@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ServerRequestInterface;
+use function app;
 
 /**
  * Class ReportsMenuModule - provide a menu option for the reports
@@ -89,8 +90,8 @@ class ReportsMenuModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getMenu(Tree $tree): ?Menu
     {
-        $request    = Request::createFromGlobals();
-        $xref       = $request->get('xref', '');
+        $request    = app(ServerRequestInterface::class);
+        $xref       = $request->getQueryParams()['xref'] ?? '';
         $individual = Individual::getInstance($xref, $tree) ?? $tree->significantIndividual(Auth::user());
         $submenus   = $this->module_service->findByComponent(ModuleReportInterface::class, $tree, Auth::user())
             ->map(static function (ModuleReportInterface $module) use ($individual): Menu {

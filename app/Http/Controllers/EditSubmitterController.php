@@ -19,9 +19,8 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for edit forms and responses.
@@ -31,22 +30,22 @@ class EditSubmitterController extends AbstractEditController
     /**
      * Show a form to create a new submitter.
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function createSubmitter(): Response
+    public function createSubmitter(): ResponseInterface
     {
-        return new Response(view('modals/create-submitter'));
+        return response(view('modals/create-submitter'));
     }
 
     /**
      * Process a form to create a new submitter.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return JsonResponse
+     * @return ResponseInterface
      */
-    public function createSubmitterAction(Request $request, Tree $tree): JsonResponse
+    public function createSubmitterAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $name                = $request->get('submitter_name', '');
         $address             = $request->get('submitter_address', '');
@@ -83,7 +82,7 @@ class EditSubmitterController extends AbstractEditController
 
         $record = $tree->createRecord($gedcom);
 
-        return new JsonResponse([
+        return response([
             'id'   => $record->xref(),
             'text' => view('selects/submitter', [
                 'submitter' => $record,

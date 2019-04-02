@@ -2,18 +2,21 @@
 
 namespace MyCustomNamespace;
 
-use Closure;
-use Fisharebest\Webtrees\Http\Middleware\MiddlewareInterface;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use function in_array;
 
 /**
  * An example module to demonstrate middleware.
  */
-return new class extends AbstractModule implements ModuleCustomInterface, MiddlewareInterface {
+return new class extends AbstractModule implements ModuleCustomInterface, MiddlewareInterface
+{
     use ModuleCustomTrait;
 
     /**
@@ -33,7 +36,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Middle
      */
     public function description(): string
     {
-        return 'This adds a custom HTTP headers to all responses';
+        return 'This is an example of middleware';
     }
 
     /**
@@ -41,21 +44,29 @@ return new class extends AbstractModule implements ModuleCustomInterface, Middle
      *
      * @see https://symfony.com/doc/current/components/http_foundation.html
      *
-     * @param Request $request
-     * @param Closure $next
+     * @param ServerRequestInterface  $request
+     * @param RequestHandlerInterface $handler
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function handle(Request $request, Closure $next): Response
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // Code here is executed before we process the request/response.
         // We can prevent the request being executed by throwing an exception.
 
-        // Generate the response from the request.
-        $response = $next($request);
+        $blacklist = [];
+        $ip_address = $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1';
+
+        if (in_array($ip_address, $blacklist, true)) {
+            throw new AccessDeniedHttpException();
+        }
+
+        // Generate the response from the next middleware handler.
+        $response = $handler->handle($request);
 
         // Code here is executed after we process the request/response.
-        $response->headers->set('X-Powered-By', 'Fish');
+        // We can modify the response.
+        $response = $response->withHeader('X-Powered-By', 'Fish');
 
         return $response;
     }

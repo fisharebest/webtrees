@@ -17,10 +17,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use ErrorException;
 use function date_default_timezone_set;
 use function error_reporting;
+use Fisharebest\Webtrees\Exceptions\Handler;
 use function set_error_handler;
+use function set_exception_handler;
 
 /**
  * Definitions for the webtrees application.
@@ -67,19 +68,12 @@ class Webtrees
         mb_internal_encoding('UTF-8');
 
         // Show all errors and warnings in development, fewer in production.
-        error_reporting(self::ERROR_REPORTING);
+        error_reporting(Webtrees::ERROR_REPORTING);
 
         // PHP requires a time zone to be set. We'll set a better one later on.
         date_default_timezone_set('UTC');
 
-        // Convert PHP warnings/notices into exceptions
-        set_error_handler(static function (int $errno, string $errstr, string $errfile, int $errline): bool {
-            // Ignore errors that are silenced with '@'
-            if (error_reporting() & $errno) {
-                throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
-            }
-
-            return true;
-        });
+        set_error_handler(Handler::phpErrorHandler());
+        set_exception_handler(Handler::phpExceptionHandler());
     }
 }

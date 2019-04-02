@@ -1,13 +1,22 @@
-<?php use Fisharebest\Webtrees\DebugBar; ?>
-<?php use Fisharebest\Webtrees\FlashMessages; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleFooterInterface; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleGlobalInterface; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleThemeInterface; ?>
-<?php use Fisharebest\Webtrees\Services\ModuleService; ?>
-<?php use Fisharebest\Webtrees\View; ?>
-<?php use Fisharebest\Webtrees\Webtrees; ?>
-<?php use Symfony\Component\HttpFoundation\Request; ?>
+<?php
+
+use Fisharebest\Webtrees\DebugBar;
+use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleFooterInterface;
+use Fisharebest\Webtrees\Module\ModuleGlobalInterface;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\View;
+use Fisharebest\Webtrees\Webtrees;
+use Psr\Http\Message\ServerRequestInterface;
+
+/**
+ * @var string $title
+ * @var string $content
+ */
+
+?>
 
 <!DOCTYPE html>
 <html dir="<?= I18N::direction() ?>" lang="<?= WT_LOCALE ?>">
@@ -49,7 +58,7 @@
 
         <link rel="stylesheet" href="<?= e(asset('css/vendor.min.css')) ?>">
         <?php foreach (app(ModuleThemeInterface::class)->stylesheets() as $stylesheet) : ?>
-            <link rel="stylesheet" href="<?=  e($stylesheet) ?>">
+            <link rel="stylesheet" href="<?= e($stylesheet) ?>">
         <?php endforeach ?>
 
         <?= View::stack('styles') ?>
@@ -59,13 +68,14 @@
         <?= DebugBar::renderHead() ?>
     </head>
 
-    <body class="wt-global wt-theme-<?= e(app(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(app(Request::class)->get('route')) ?>">
+    <body class="wt-global wt-theme-<?= e(app(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(app(ServerRequestInterface::class)->getQueryParams()['route']) ?>">
         <header class="wt-header-wrapper d-print-none">
             <div class="container wt-header-container">
                 <div class="row wt-header-content">
                     <div class="wt-accessibility-links position-fixed">
                         <a class="sr-only sr-only-focusable btn btn-info btn-sm" href="#content">
-                            <?= /* I18N: Skip over the headers and menus, to the main content of the page */ I18N::translate('Skip to content') ?>
+                            <?= /* I18N: Skip over the headers and menus, to the main content of the page */
+                            I18N::translate('Skip to content') ?>
                         </a>
                     </div>
                     <div class="col wt-site-logo"></div>
@@ -99,13 +109,13 @@
                     </div>
 
                     <?php if ($tree !== null) : ?>
-                    <nav class="col wt-primary-navigation">
-                        <ul class="nav wt-genealogy-menu">
-                            <?php foreach (app(ModuleThemeInterface::class)->genealogyMenu($tree) as $menu) : ?>
-                                <?= $menu->bootstrap4() ?>
-                            <?php endforeach ?>
-                        </ul>
-                    </nav>
+                        <nav class="col wt-primary-navigation">
+                            <ul class="nav wt-genealogy-menu">
+                                <?php foreach (app(ModuleThemeInterface::class)->genealogyMenu($tree) as $menu) : ?>
+                                    <?= $menu->bootstrap4() ?>
+                                <?php endforeach ?>
+                            </ul>
+                        </nav>
                     <?php endif ?>
                 </div>
             </div>
@@ -136,16 +146,18 @@
         <script src="<?= e(asset('js/webtrees.min.js')) ?>"></script>
 
         <script>
-      activate_colorbox();
-      jQuery.extend(jQuery.colorbox.settings, {
-       width: "85%",
-       height: "85%",
-       transition: "none",
-       slideshowStart: "<?= I18N::translate('Play') ?>",
-       slideshowStop: "<?= I18N::translate('Stop') ?>",
-       title: function() { return this.dataset.title; }
-      });
-    </script>
+            activate_colorbox();
+            jQuery.extend(jQuery.colorbox.settings, {
+                width:          "85%",
+                height:         "85%",
+                transition:     "none",
+                slideshowStart: "<?= I18N::translate('Play') ?>",
+                slideshowStop:  "<?= I18N::translate('Stop') ?>",
+                title:          function () {
+                    return this.dataset.title;
+                },
+            });
+        </script>
 
         <?= View::stack('javascript') ?>
 

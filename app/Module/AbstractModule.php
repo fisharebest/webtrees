@@ -17,12 +17,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
+use Psr\Http\Message\ResponseInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class AbstractModule - common functions for blocks
@@ -246,9 +247,9 @@ abstract class AbstractModule implements ModuleInterface
      * @param mixed[] $view_data
      * @param int     $status
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    final protected function viewResponse($view_name, $view_data, $status = Response::HTTP_OK): Response
+    final protected function viewResponse($view_name, $view_data, $status = StatusCodeInterface::STATUS_OK): ResponseInterface
     {
         // Make the view's data available to the layout.
         $layout_data = $view_data;
@@ -259,6 +260,6 @@ abstract class AbstractModule implements ModuleInterface
         // Insert the view into the layout
         $html = view($this->layout, $layout_data);
 
-        return new Response($html, $status);
+        return response($html, $status);
     }
 }

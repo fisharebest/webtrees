@@ -18,8 +18,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Http\Controllers\Admin\UsersController;
+use Fisharebest\Webtrees\Http\Request;
+use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Test the user administration pages
@@ -36,18 +39,25 @@ class UserAdminTest extends TestCase
     public function testUserDetailsAreShownOnUserAdminPage(): void
     {
         $user_service = new UserService();
-        $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
+        $admin        = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $controller = app(UsersController::class);
-        $response   = app()->dispatch($controller, 'data');
+        $request = self::createRequest('GET', [
+            'length' => '10',
+        ]);
 
-        $this->assertContains('AdminName', $response->getContent());
-        $this->assertContains('Administrator', $response->getContent());
-        $this->assertContains('admin@example.com', $response->getContent());
-        $this->assertContains('UserName', $response->getContent());
-        $this->assertContains('RealName', $response->getContent());
-        $this->assertContains('user@example.com', $response->getContent());
+        $controller = new UsersController(new ModuleService(), new UserService());
+        $response   = $controller->data(new DatatablesService(), $request, $admin);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
+        $this->assertSame('application/json', $response->getHeaderLine('Content-type'));
+        $html = (string) $response->getBody();
+
+        $this->assertContains('AdminName', $html);
+        $this->assertContains('Administrator', $html);
+        $this->assertContains('admin@example.com', $html);
+        $this->assertContains('UserName', $html);
+        $this->assertContains('RealName', $html);
+        $this->assertContains('user@example.com', $html);
     }
 
     /**
@@ -58,20 +68,25 @@ class UserAdminTest extends TestCase
     public function testFilteringUserAdminPage(): void
     {
         $user_service = new UserService();
-        $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
+        $admin = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
         $request = new Request(['search' => ['value' => 'admin']]);
-        app()->instance(Request::class, $request);
-        $controller = app(UsersController::class);
-        $response   = app()->dispatch($controller, 'data');
+        app()->instance(ServerRequestInterface::class, $request);
 
-        $this->assertContains('AdminName', $response->getContent());
-        $this->assertContains('Administrator', $response->getContent());
-        $this->assertContains('admin@example.com', $response->getContent());
-        $this->assertNotContains('UserName', $response->getContent());
-        $this->assertNotContains('RealName', $response->getContent());
-        $this->assertNotContains('user@example.com', $response->getContent());
+        $controller = new UsersController(new ModuleService(), new UserService());
+        $response   = $controller->data(new DatatablesService(), $request, $admin);
+
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
+        $this->assertSame('application/json', $response->getHeaderLine('Content-type'));
+        $html = (string) $response->getBody();
+
+        $this->assertContains('AdminName', $html);
+        $this->assertContains('Administrator', $html);
+        $this->assertContains('admin@example.com', $html);
+        $this->assertNotContains('UserName', $html);
+        $this->assertNotContains('RealName', $html);
+        $this->assertNotContains('user@example.com', $html);
     }
 
     /**
@@ -82,16 +97,21 @@ class UserAdminTest extends TestCase
     public function testPaginatingUserAdminPage(): void
     {
         $user_service = new UserService();
-        $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
+        $admin = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
         $request = new Request(['length' => 1]);
-        app()->instance(Request::class, $request);
-        $controller = app(UsersController::class);
-        $response   = app()->dispatch($controller, 'data');
+        app()->instance(ServerRequestInterface::class, $request);
 
-        $this->assertContains('AdminName', $response->getContent());
-        $this->assertNotContains('UserName', $response->getContent());
+        $controller = new UsersController(new ModuleService(), new UserService());
+        $response   = $controller->data(new DatatablesService(), $request, $admin);
+
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
+        $this->assertSame('application/json', $response->getHeaderLine('Content-type'));
+        $html = (string) $response->getBody();
+
+        $this->assertContains('AdminName', $html);
+        $this->assertNotContains('UserName', $html);
     }
 
     /**
@@ -102,25 +122,35 @@ class UserAdminTest extends TestCase
     public function testSortingUserAdminPage(): void
     {
         $user_service = new UserService();
-        $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
+        $admin = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
         $request = new Request(['order' => [['column' => 2, 'dir' => 'asc']]]);
-        app()->instance(Request::class, $request);
-        $controller = app(UsersController::class);
-        $response   = app()->dispatch($controller, 'data');
+        app()->instance(ServerRequestInterface::class, $request);
 
-        $pos1 = strpos($response->getContent(), 'AdminName');
-        $pos2 = strpos($response->getContent(), 'UserName');
+        $controller = new UsersController(new ModuleService(), new UserService());
+        $response   = $controller->data(new DatatablesService(), $request, $admin);
+
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
+        $this->assertSame('application/json', $response->getHeaderLine('Content-type'));
+        $html = (string) $response->getBody();
+
+        $pos1 = strpos($html, 'AdminName');
+        $pos2 = strpos($html, 'UserName');
         $this->assertLessThan($pos2, $pos1);
 
         $request = new Request(['order' => [['column' => 2, 'dir' => 'desc']]]);
-        app()->instance(Request::class, $request);
-        $controller = app(UsersController::class);
-        $response   = app()->dispatch($controller, 'data');
+        app()->instance(ServerRequestInterface::class, $request);
 
-        $pos1 = strpos($response->getContent(), 'AdminName');
-        $pos2 = strpos($response->getContent(), 'UserName');
+        $controller = new UsersController(new ModuleService(), new UserService());
+        $response   = $controller->data(new DatatablesService(), $request, $admin);
+
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
+        $this->assertSame('application/json', $response->getHeaderLine('Content-type'));
+        $html = (string) $response->getBody();
+
+        $pos1 = strpos($html, 'AdminName');
+        $pos2 = strpos($html, 'UserName');
         $this->assertGreaterThan($pos2, $pos1);
     }
 }

@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\GedcomCode;
 
 use Fisharebest\Webtrees\I18N;
+use InvalidArgumentException;
 
 /**
  * Class GedcomCodeStat - Functions and logic for GEDCOM "STAT" codes
@@ -83,7 +84,7 @@ class GedcomCodeStat
                     'UNCLEARED',
                 ];
             default:
-                throw new \InvalidArgumentException('Internal error - bad argument to GedcomCodeStat::statusCodes("' . $tag . '")');
+                throw new InvalidArgumentException('Internal error - bad argument to GedcomCodeStat::statusCodes("' . $tag . '")');
         }
     }
 

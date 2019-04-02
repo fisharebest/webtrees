@@ -20,8 +20,8 @@ namespace Fisharebest\Webtrees\Services;
 use Closure;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Paginate and search queries for datatables.
@@ -33,21 +33,21 @@ class DatatablesService
      *
      * @link http://www.datatables.net/usage/server-side
      *
-     * @param Request  $request        Includes the datatables request parameters.
-     * @param Builder  $query          A query to fetch the unfiltered rows and columns.
-     * @param string[] $search_columns The names of searchable columns.
-     * @param string[] $sort_columns   How to sort columns.
-     * @param Closure  $callback       Converts a row-object to an array-of-columns.
+     * @param ServerRequestInterface $request        Includes the datatables request parameters.
+     * @param Builder                $query          A query to fetch the unfiltered rows and columns.
+     * @param string[]               $search_columns The names of searchable columns.
+     * @param string[]               $sort_columns   How to sort columns.
+     * @param Closure                $callback       Converts a row-object to an array-of-columns.
      *
-     * @return JsonResponse
+     * @return ResponseInterface
      */
-    public function handle(Request $request, Builder $query, array $search_columns, array $sort_columns, Closure $callback): JsonResponse
+    public function handle(ServerRequestInterface $request, Builder $query, array $search_columns, array $sort_columns, Closure $callback): ResponseInterface
     {
-        $search = $request->get('search', [])['value'] ?? '';
-        $start  = (int) $request->get('start');
-        $length = (int) $request->get('length');
-        $order  = $request->get('order', []);
-        $draw   = (int) $request->get('draw');
+        $search = $request->getQueryParams()['search']['value'] ?? '';
+        $start  = (int) ($request->getQueryParams()['start'] ?? 0);
+        $length = (int) ($request->getQueryParams()['length'] ?? 0);
+        $order  = $request->getQueryParams()['order'] ?? [];
+        $draw   = (int) ($request->getQueryParams()['draw'] ?? 0);
 
         // Count unfiltered records
         $recordsTotal = (clone $query)->count();
@@ -89,7 +89,7 @@ class DatatablesService
 
         $data = $data->map($callback)->all();
 
-        return new JsonResponse([
+        return response([
             'draw'            => $draw,
             'recordsTotal'    => $recordsTotal,
             'recordsFiltered' => $recordsFiltered,

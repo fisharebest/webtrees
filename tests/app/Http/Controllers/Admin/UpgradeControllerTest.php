@@ -22,19 +22,18 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Memory\MemoryAdapter;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Test UpgradeController class.
  *
  * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\UpgradeController
  */
-class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
+class UpgradeControllerTest extends TestCase
 {
     protected static $uses_database = true;
 
@@ -45,12 +44,13 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
     {
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
-            new UpgradeService(new TimeoutService(microtime(true)))
+            new UpgradeService(new TimeoutService())
         );
 
-        $response = $controller->wizard(new Request());
+        $request  = self::createRequest('GET', ['route' => 'wizard']);
+        $response = $controller->wizard($request);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -62,12 +62,13 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
-            new UpgradeService(new TimeoutService(microtime(true)))
+            new UpgradeService(new TimeoutService())
         );
 
-        $response = $controller->wizard(new Request(['continue' => '1']));
+        $request  = self::createRequest('GET', ['route' => 'wizard', 'continue' => '1']);
+        $response = $controller->wizard($request);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -78,10 +79,11 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
     {
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
-            new UpgradeService(new TimeoutService(microtime(true)))
+            new UpgradeService(new TimeoutService())
         );
 
-        $controller->step(new Request(['step' => 'Invalid']), null);
+        $request = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Invalid']);
+        $controller->step($request, null);
     }
 
     /**
@@ -96,9 +98,10 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
             $mock_upgrade_service
         );
 
-        $response = $controller->step(new Request(['step' => 'Check']), null);
+        $request  = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Check']);
+        $response = $controller->step($request, null);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -114,7 +117,8 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
             $mock_upgrade_service
         );
 
-        $controller->step(new Request(['step' => 'Check']), null);
+        $request = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Check']);
+        $controller->step($request, null);
     }
 
     /**
@@ -130,7 +134,8 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
             $mock_upgrade_service
         );
 
-        $controller->step(new Request(['step' => 'Check']), null);
+        $request = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Check']);
+        $controller->step($request, null);
     }
 
     /**
@@ -140,12 +145,13 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
     {
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
-            new UpgradeService(new TimeoutService(microtime(true)))
+            new UpgradeService(new TimeoutService())
         );
 
-        $response = $controller->step(new Request(['step' => 'Prepare']), null);
+        $request  = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Prepare']);
+        $response = $controller->step($request, null);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -155,19 +161,20 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
     {
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
-            new UpgradeService(new TimeoutService(microtime(true)))
+            new UpgradeService(new TimeoutService())
         );
 
-        $response = $controller->step(new Request(['step' => 'Pending']), null);
+        $request  = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Pending']);
+        $response = $controller->step($request, null);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
      * @expectedException \Fisharebest\Webtrees\Exceptions\InternalServerErrorException
      * @return void
      */
-    public function testStepPendingEzist(): void
+    public function testStepPendingExist(): void
     {
         $tree = Tree::create('name', 'title');
         $user = (new UserService)->create('user', 'name', 'email', 'password');
@@ -176,10 +183,11 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
-            new UpgradeService(new TimeoutService(microtime(true)))
+            new UpgradeService(new TimeoutService())
         );
 
-        $controller->step(new Request(['step' => 'Pending']), null);
+        $request = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Pending']);
+        $controller->step($request, null);
     }
 
     /**
@@ -190,17 +198,18 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
         $tree       = $this->importTree('demo.ged');
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
-            new UpgradeService(new TimeoutService(microtime(true)))
+            new UpgradeService(new TimeoutService())
         );
 
-        $response = $controller->step(new Request(['step' => 'Export']), $tree);
+        $request  = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Export']);
+        $response = $controller->step($request, $tree);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
 
         // Now overwrite the file we just created
-        $response = $controller->step(new Request(['step' => 'Export']), $tree);
+        $response = $controller->step($request, $tree);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -216,7 +225,8 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
             $mock_upgrade_service
         );
 
-        $controller->step(new Request(['step' => 'Download']), null);
+        $request = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Download']);
+        $controller->step($request, null);
     }
 
     /**
@@ -231,9 +241,10 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
             $mock_upgrade_service
         );
 
-        $response = $controller->step(new Request(['step' => 'Download']), null);
+        $request  = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Download']);
+        $response = $controller->step($request, null);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -248,9 +259,10 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
             $mock_upgrade_service
         );
 
-        $response = $controller->step(new Request(['step' => 'Unzip']), null);
+        $request  = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Unzip']);
+        $response = $controller->step($request, null);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -260,12 +272,13 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
     {
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
-            new UpgradeService(new TimeoutService(microtime(true)))
+            new UpgradeService(new TimeoutService())
         );
 
-        $response = $controller->step(new Request(['step' => 'Copy']), null);
+        $request  = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Copy']);
+        $response = $controller->step($request, null);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -274,13 +287,14 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testStepCleanup(): void
     {
         $mock_upgrade_service = $this->createMock(UpgradeService::class);
-        $controller = new UpgradeController(
+        $controller           = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
             $mock_upgrade_service
         );
 
-        $response = $controller->step(new Request(['step' => 'Cleanup']), null);
+        $request  = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Cleanup']);
+        $response = $controller->step($request, null);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 }

@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use function count;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -53,6 +54,7 @@ use Fisharebest\Webtrees\Statistics\Repository\PlaceRepository;
 use Fisharebest\Webtrees\Statistics\Repository\ServerRepository;
 use Fisharebest\Webtrees\Statistics\Repository\UserRepository;
 use Illuminate\Database\Query\Builder;
+use function in_array;
 use ReflectionMethod;
 
 /**
@@ -230,7 +232,7 @@ class Statistics implements
 
         foreach (get_class_methods($this) as $method) {
             $reflection = new ReflectionMethod($this, $method);
-            if ($reflection->isPublic() && !\in_array($method, self::$public_but_not_allowed, true) && (string) $reflection->getReturnType() !== Builder::class) {
+            if ($reflection->isPublic() && !in_array($method, self::$public_but_not_allowed, true) && (string) $reflection->getReturnType() !== Builder::class) {
                 $examples[$method] = $this->$method();
             }
         }
@@ -257,7 +259,7 @@ class Statistics implements
 
         foreach (get_class_methods($this) as $method) {
             $reflection = new ReflectionMethod($this, $method);
-            if ($reflection->isPublic() && !\in_array($method, self::$public_but_not_allowed, true) && (string) $reflection->getReturnType() !== Builder::class) {
+            if ($reflection->isPublic() && !in_array($method, self::$public_but_not_allowed, true) && (string) $reflection->getReturnType() !== Builder::class) {
                 $examples[$method] = $method;
             }
         }
@@ -2630,7 +2632,7 @@ class Statistics implements
         foreach ($params as $config) {
             $bits = explode('=', $config);
 
-            if (\count($bits) < 2) {
+            if (count($bits) < 2) {
                 continue;
             }
 

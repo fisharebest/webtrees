@@ -17,15 +17,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
+use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Test the module admin controller
  *
  * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\ModuleController
  */
-class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
+class ModuleControllerTest extends TestCase
 {
     protected static $uses_database = true;
 
@@ -34,10 +35,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testList(): void
     {
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'list');
+        $controller = new ModuleController(new ModuleService());
+        self::createRequest('GET', ['route' => 'modules']);
+        $response   = $controller->list();
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -45,10 +47,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListAnalytics(): void
     {
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'listAnalytics');
+        $controller = new ModuleController(new ModuleService());
+        self::createRequest('GET', ['route' => 'analytics']);
+        $response   = $controller->listAnalytics();
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -56,10 +59,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListBlocks(): void
     {
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'listBlocks');
+        $controller = new ModuleController(new ModuleService());
+        self::createRequest('GET', ['route' => 'blocks']);
+        $response   = $controller->listBlocks();
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -67,10 +71,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListCharts(): void
     {
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'listCharts');
+        $controller = new ModuleController(new ModuleService());
+        self::createRequest('GET', ['route' => 'charts']);
+        $response   = $controller->listCharts();
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -78,10 +83,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListFooters(): void
     {
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'listFooters');
+        $controller = new ModuleController(new ModuleService());
+        self::createRequest('GET', ['route' => 'footers']);
+        $response   = $controller->listFooters();
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -89,10 +95,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListHistory(): void
     {
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'listHistory');
+        $controller = new ModuleController(new ModuleService());
+        self::createRequest('GET', ['route' => 'history']);
+        $response   = $controller->listHistory();
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -100,10 +107,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListLanguages(): void
     {
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'listLanguages');
+        $controller = new ModuleController(new ModuleService());
+        self::createRequest('GET', ['route' => 'languages']);
+        $response   = $controller->listLanguages();
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -111,10 +119,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListMenus(): void
     {
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'listMenus');
+        $controller = new ModuleController(new ModuleService());
+        self::createRequest('GET', ['route' => 'menus']);
+        $response   = $controller->listMenus();
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -122,10 +131,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListReports(): void
     {
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'listReports');
+        $controller = new ModuleController(new ModuleService());
+        self::createRequest('GET', ['route' => 'reports']);
+        $response   = $controller->listReports();
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -133,10 +143,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListSidebars(): void
     {
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'listSidebars');
+        $controller = new ModuleController(new ModuleService());
+        self::createRequest('GET', ['route' => 'sidebars']);
+        $response   = $controller->listSidebars();
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -144,10 +155,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListTabs(): void
     {
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'listTabs');
+        $controller = new ModuleController(new ModuleService());
+        self::createRequest('GET', ['route' => 'tabs']);
+        $response   = $controller->listTabs();
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -155,10 +167,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testListThemes(): void
     {
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'listThemes');
+        $controller = new ModuleController(new ModuleService());
+        self::createRequest('GET', ['route' => 'themes']);
+        $response   = $controller->listThemes();
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -167,10 +180,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdate(): void
     {
         Tree::create('name', 'title');
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'update');
+        $controller = new ModuleController(new ModuleService());
+        $request    = self::createRequest('POST', ['route' => 'modules']);
+        $response   = $controller->update($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -179,10 +193,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateAnalytics(): void
     {
         Tree::create('name', 'title');
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'updateAnalytics');
+        $controller = new ModuleController(new ModuleService());
+        $request    = self::createRequest('POST', ['route' => 'analytics']);
+        $response   = $controller->updateAnalytics($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -191,10 +206,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateBlocks(): void
     {
         Tree::create('name', 'title');
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'updateBlocks');
+        $controller = new ModuleController(new ModuleService());
+        $request    = self::createRequest('POST', ['route' => 'blocks']);
+        $response   = $controller->updateBlocks($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -203,10 +219,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateCharts(): void
     {
         Tree::create('name', 'title');
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'updateCharts');
+        $controller = new ModuleController(new ModuleService());
+        $request    = self::createRequest('POST', ['route' => 'charts']);
+        $response   = $controller->updateCharts($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -215,10 +232,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateFooters(): void
     {
         Tree::create('name', 'title');
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'updateFooters');
+        $controller = new ModuleController(new ModuleService());
+        $request    = self::createRequest('POST', ['route' => 'footers']);
+        $response   = $controller->updateFooters($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -227,10 +245,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateHistory(): void
     {
         Tree::create('name', 'title');
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'updateHistory');
+        $controller = new ModuleController(new ModuleService());
+        $request    = self::createRequest('POST', ['route' => 'history']);
+        $response   = $controller->updateHistory($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -239,10 +258,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateLanguages(): void
     {
         Tree::create('name', 'title');
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'updateLanguages');
+        $controller = new ModuleController(new ModuleService());
+        $request    = self::createRequest('POST', ['route' => 'languages']);
+        $response   = $controller->updateLanguages($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -251,10 +271,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateMenus(): void
     {
         Tree::create('name', 'title');
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'updateMenus');
+        $controller = new ModuleController(new ModuleService());
+        $request    = self::createRequest('POST', ['route' => 'menus']);
+        $response   = $controller->updateMenus($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -263,10 +284,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateReports(): void
     {
         Tree::create('name', 'title');
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'updateReports');
+        $controller = new ModuleController(new ModuleService());
+        $request    = self::createRequest('POST', ['route' => 'reports']);
+        $response   = $controller->updateReports($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -275,10 +297,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateSidebars(): void
     {
         Tree::create('name', 'title');
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'updateSidebars');
+        $controller = new ModuleController(new ModuleService());
+        $request    = self::createRequest('POST', ['route' => 'sidebars']);
+        $response   = $controller->updateSidebars($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -287,10 +310,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateTabs(): void
     {
         Tree::create('name', 'title');
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'updateTabs');
+        $controller = new ModuleController(new ModuleService());
+        $request    = self::createRequest('POST', ['route' => 'tabs']);
+        $response   = $controller->updateTabs($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -299,10 +323,11 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testUpdateThemes(): void
     {
         Tree::create('name', 'title');
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'updateThemes');
+        $controller = new ModuleController(new ModuleService());
+        $request    = self::createRequest('POST', ['route' => 'themes']);
+        $response   = $controller->updateThemes($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -310,9 +335,10 @@ class ModuleControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testDeleteModuleSettings(): void
     {
-        $controller = app(ModuleController::class);
-        $response   = app()->dispatch($controller, 'deleteModuleSettings');
+        $controller = new ModuleController(new ModuleService());
+        $request    = self::createRequest('POST', ['route' => 'delete-module-settings'], ['module_name' => 'foo']);
+        $response   = $controller->deleteModuleSettings($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 }

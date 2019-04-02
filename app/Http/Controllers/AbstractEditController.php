@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Common logic for edit controllers.
@@ -262,13 +262,13 @@ abstract class AbstractEditController extends AbstractBaseController
     /**
      * Create a form to add a new fact.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      * @param Tree    $tree
      * @param string  $fact
      *
      * @return string
      */
-    protected function addNewFact(Request $request, Tree $tree, $fact): string
+    protected function addNewFact(ServerRequestInterface $request, Tree $tree, $fact): string
     {
         $FACT = $request->get($fact, '');
         $DATE = $request->get($fact . '_DATE', '');
@@ -358,11 +358,11 @@ abstract class AbstractEditController extends AbstractBaseController
     /**
      * Create a form to add a sex record.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return string
      */
-    protected function addNewSex(Request $request): string
+    protected function addNewSex(ServerRequestInterface $request): string
     {
         switch ($request->get('SEX', '')) {
             case 'M':
@@ -377,12 +377,12 @@ abstract class AbstractEditController extends AbstractBaseController
     /**
      * Assemble the pieces of a newly created record into gedcom
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      * @param Tree    $tree
      *
      * @return string
      */
-    protected function addNewName(Request $request, Tree $tree): string
+    protected function addNewName(ServerRequestInterface $request, Tree $tree): string
     {
         $gedrec = "\n1 NAME " . $request->get('NAME', '');
 

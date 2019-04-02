@@ -17,45 +17,44 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
-use Whoops\Handler\PlainTextHandler;
-use Whoops\Run;
+use function str_replace;
 
 /**
  * Controller for error handling.
  */
-class ErrorController extends AbstractBaseController
+class ErrorController extends AbstractBaseController implements StatusCodeInterface
 {
     /**
      * No route was match?  Send the user somewhere sensible, if we can.
      *
-     * @param Request   $request
-     * @param Tree|null $tree
+     * @param ServerRequestInterface $request
+     * @param Tree|null              $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function noRouteFound(Request $request, ?Tree $tree): Response
+    public function noRouteFound(ServerRequestInterface $request, ?Tree $tree): ResponseInterface
     {
         // The tree exists, we have access to it, and it is fully imported.
         if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
-            return new RedirectResponse(route('tree-page', ['ged' => $tree->name()]));
+            return redirect(route('tree-page', ['ged' => $tree->name()]));
         }
 
         // Not logged in?
         if (!Auth::check()) {
-            return new RedirectResponse(route('login', ['url' => $request->getRequestUri()]));
+            return redirect(route('login', ['url' => $request->getUri()]));
         }
 
         // No tree or tree not imported?
         if (Auth::isAdmin()) {
-            return new RedirectResponse(route('admin-trees'));
+            return redirect(route('admin-trees'));
         }
 
         return $this->viewResponse('errors/no-tree-access', ['title' => '']);
@@ -66,9 +65,9 @@ class ErrorController extends AbstractBaseController
      *
      * @param HttpException $ex
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function errorResponse(HttpException $ex): Response
+    public function errorResponse(HttpException $ex): ResponseInterface
     {
         return $this->viewResponse('components/alert-danger', [
             'alert' => $ex->getMessage(),
@@ -81,11 +80,11 @@ class ErrorController extends AbstractBaseController
      *
      * @param HttpException $ex
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function ajaxErrorResponse(HttpException $ex): Response
+    public function ajaxErrorResponse(HttpException $ex): ResponseInterface
     {
-        return new Response(view('components/alert-danger', [
+        return response(view('components/alert-danger', [
             'alert' => $ex->getMessage(),
         ]), $ex->getStatusCode());
     }
@@ -93,41 +92,30 @@ class ErrorController extends AbstractBaseController
     /**
      * Convert an exception into an error message
      *
-     * @param Request   $request
-     * @param Throwable $ex
+     * @param ServerRequestInterface $request
+     * @param Throwable              $ex
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function unhandledExceptionResponse(Request $request, Throwable $ex): Response
+    public function unhandledExceptionResponse(ServerRequestInterface $request, Throwable $ex): ResponseInterface
     {
         // Create a stack dump for the exception
-        $whoops = new Run();
-        $whoops->allowQuit(false);
-        $whoops->writeToOutput(false);
-        $whoops->pushHandler(new PlainTextHandler());
-        $error = $whoops->handleException($ex);
-
-        // We do not need to show the full path.
-        $error = str_replace(' ' . WT_ROOT, ' /', $error);
+        $trace = $ex->getTraceAsString();
+        $trace = str_replace(WT_ROOT, '…/', $trace);
 
         try {
-            Log::addErrorLog($error);
+            Log::addErrorLog($trace);
         } catch (Throwable $ex2) {
             // Must have been a problem with the database.  Nothing we can do here.
         }
 
-        if ($request->isXmlHttpRequest()) {
-            return new Response(view('components/alert-danger', ['alert' => $error]), Response::HTTP_INTERNAL_SERVER_ERROR);
+        if ($request->getHeaderLine('X-Requested-With') !== '') {
+            return response(view('components/alert-danger', ['alert' => $trace]), self::STATUS_INTERNAL_SERVER_ERROR);
         }
 
-        try {
-            return $this->viewResponse('errors/unhandled-exception', [
-                'title' => 'Error',
-                'error' => $error,
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
-        } catch (Throwable $ex2) {
-            // An error occured in the layout?  Just show the error.
-            return new Response('<html><body><pre>' . e($error) . '</pre></body></html>', Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
+        return $this->viewResponse('errors/unhandled-exception', [
+            'title' => 'Error',
+            'error' => $trace,
+        ], self::STATUS_INTERNAL_SERVER_ERROR);
     }
 }

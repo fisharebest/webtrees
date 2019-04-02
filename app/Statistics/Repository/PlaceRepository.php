@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
+use function array_key_exists;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Place;
@@ -26,6 +27,7 @@ use Fisharebest\Webtrees\Statistics\Service\CountryService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
+use stdClass;
 
 /**
  * A repository providing methods for place related statistics.
@@ -118,7 +120,7 @@ class PlaceRepository implements PlaceRepositoryInterface
      * @param int    $parent
      * @param bool   $country
      *
-     * @return int[]|\stdClass[]
+     * @return int[]|stdClass[]
      */
     public function statsPlaces(string $what = 'ALL', string $fact = '', int $parent = 0, bool $country = false): array
     {
@@ -277,7 +279,7 @@ class PlaceRepository implements PlaceRepositoryInterface
         $all_db_countries = [];
         foreach ($countries as $place) {
             $country = trim($place->country);
-            if (\array_key_exists($country, $country_names)) {
+            if (array_key_exists($country, $country_names)) {
                 if (isset($all_db_countries[$country_names[$country]][$country])) {
                     $all_db_countries[$country_names[$country]][$country] += (int) $place->tot;
                 } else {

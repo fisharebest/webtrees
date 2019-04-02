@@ -30,9 +30,8 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class RelationshipsChartModule
@@ -52,17 +51,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     public const DEFAULT_ANCESTORS = '0';
 
     /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
-    public function title(): string
-    {
-        /* I18N: Name of a module/chart */
-        return I18N::translate('Relationships');
-    }
-
-    /**
      * A sentence describing what this module does.
      *
      * @return string
@@ -71,6 +59,18 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     {
         /* I18N: Description of the “RelationshipsChart” module */
         return I18N::translate('A chart displaying relationships between two individuals.');
+    }
+
+    /**
+     * Return a menu item for this chart - for use in individual boxes.
+     *
+     * @param Individual $individual
+     *
+     * @return Menu|null
+     */
+    public function chartBoxMenu(Individual $individual): ?Menu
+    {
+        return $this->chartMenu($individual);
     }
 
     /**
@@ -112,21 +112,20 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     }
 
     /**
-     * Return a menu item for this chart - for use in individual boxes.
+     * How should this module be identified in the control panel, etc.?
      *
-     * @param Individual $individual
-     *
-     * @return Menu|null
+     * @return string
      */
-    public function chartBoxMenu(Individual $individual): ?Menu
+    public function title(): string
     {
-        return $this->chartMenu($individual);
+        /* I18N: Name of a module/chart */
+        return I18N::translate('Relationships');
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAdminAction(): Response
+    public function getAdminAction(): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -138,26 +137,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
             'recursion_options' => $this->recursionConfigOptions(),
             'title'             => I18N::translate('Chart preferences') . ' — ' . $this->title(),
         ]);
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return RedirectResponse
-     */
-    public function postAdminAction(Request $request): RedirectResponse
-    {
-        foreach (Tree::getAll() as $tree) {
-            $recursion = $request->get('relationship-recursion-' . $tree->id(), '');
-            $ancestors = $request->get('relationship-ancestors-' . $tree->id(), '');
-
-            $tree->setPreference('RELATIONSHIP_RECURSION', $recursion);
-            $tree->setPreference('RELATIONSHIP_ANCESTORS', $ancestors);
-        }
-
-        FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->title()), 'success');
-
-        return new RedirectResponse($this->getConfigLink());
     }
 
     /**
@@ -190,15 +169,35 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     }
 
     /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function postAdminAction(ServerRequestInterface $request): ResponseInterface
+    {
+        foreach (Tree::getAll() as $tree) {
+            $recursion = $request->get('relationship-recursion-' . $tree->id(), '');
+            $ancestors = $request->get('relationship-ancestors-' . $tree->id(), '');
+
+            $tree->setPreference('RELATIONSHIP_RECURSION', $recursion);
+            $tree->setPreference('RELATIONSHIP_ANCESTORS', $ancestors);
+        }
+
+        FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->title()), 'success');
+
+        return redirect($this->getConfigLink());
+    }
+
+    /**
      * A form to request the chart parameters.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getChartAction(Request $request, Tree $tree, UserInterface $user): Response
+    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $ajax = (bool) $request->get('ajax');
 
@@ -267,9 +266,9 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      * @param int        $recursion
      * @param int        $ancestors
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function chart(Individual $individual1, Individual $individual2, int $recursion, int $ancestors): Response
+    public function chart(Individual $individual1, Individual $individual2, int $recursion, int $ancestors): ResponseInterface
     {
         $tree = $individual1->tree();
 
@@ -340,7 +339,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                                 $table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: end;">' . view('icons/arrow-down') . '</div></div>';
                                 $x                     += 2;
                             } else {
-                                $table[$x][$y + 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"')  . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . view('icons/arrow-up') . '</div></div>';
+                                $table[$x][$y + 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . view('icons/arrow-up') . '</div></div>';
                             }
                             $y += 2;
                             break;
@@ -376,7 +375,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
         $html = ob_get_clean();
 
-        return new Response($html);
+        return response($html);
     }
 
     /**
@@ -468,67 +467,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     }
 
     /**
-     * Convert a path (list of XREFs) to an "old-style" string of relationships.
-     * Return an empty array, if privacy rules prevent us viewing any node.
-     *
-     * @param Tree     $tree
-     * @param string[] $path Alternately Individual / Family
-     *
-     * @return string[]
-     */
-    private function oldStyleRelationshipPath(Tree $tree, array $path): array
-    {
-        $spouse_codes  = [
-            'M' => 'hus',
-            'F' => 'wif',
-            'U' => 'spo',
-        ];
-        $parent_codes  = [
-            'M' => 'fat',
-            'F' => 'mot',
-            'U' => 'par',
-        ];
-        $child_codes   = [
-            'M' => 'son',
-            'F' => 'dau',
-            'U' => 'chi',
-        ];
-        $sibling_codes = [
-            'M' => 'bro',
-            'F' => 'sis',
-            'U' => 'sib',
-        ];
-        $relationships = [];
-
-        for ($i = 1, $count = count($path); $i < $count; $i += 2) {
-            $family = Family::getInstance($path[$i], $tree);
-            $prev   = Individual::getInstance($path[$i - 1], $tree);
-            $next   = Individual::getInstance($path[$i + 1], $tree);
-            if (preg_match('/\n\d (HUSB|WIFE|CHIL) @' . $prev->xref() . '@/', $family->gedcom(), $match)) {
-                $rel1 = $match[1];
-            } else {
-                return [];
-            }
-            if (preg_match('/\n\d (HUSB|WIFE|CHIL) @' . $next->xref() . '@/', $family->gedcom(), $match)) {
-                $rel2 = $match[1];
-            } else {
-                return [];
-            }
-            if (($rel1 === 'HUSB' || $rel1 === 'WIFE') && ($rel2 === 'HUSB' || $rel2 === 'WIFE')) {
-                $relationships[$i] = $spouse_codes[$next->sex()];
-            } elseif (($rel1 === 'HUSB' || $rel1 === 'WIFE') && $rel2 === 'CHIL') {
-                $relationships[$i] = $child_codes[$next->sex()];
-            } elseif ($rel1 === 'CHIL' && ($rel2 === 'HUSB' || $rel2 === 'WIFE')) {
-                $relationships[$i] = $parent_codes[$next->sex()];
-            } elseif ($rel1 === 'CHIL' && $rel2 === 'CHIL') {
-                $relationships[$i] = $sibling_codes[$next->sex()];
-            }
-        }
-
-        return $relationships;
-    }
-
-    /**
      * Find all ancestors of a list of individuals
      *
      * @param string $xref1
@@ -597,6 +535,67 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
             ->where('l2.l_from', '=', $xref2)
             ->pluck('l1.l_to')
             ->all();
+    }
+
+    /**
+     * Convert a path (list of XREFs) to an "old-style" string of relationships.
+     * Return an empty array, if privacy rules prevent us viewing any node.
+     *
+     * @param Tree     $tree
+     * @param string[] $path Alternately Individual / Family
+     *
+     * @return string[]
+     */
+    private function oldStyleRelationshipPath(Tree $tree, array $path): array
+    {
+        $spouse_codes  = [
+            'M' => 'hus',
+            'F' => 'wif',
+            'U' => 'spo',
+        ];
+        $parent_codes  = [
+            'M' => 'fat',
+            'F' => 'mot',
+            'U' => 'par',
+        ];
+        $child_codes   = [
+            'M' => 'son',
+            'F' => 'dau',
+            'U' => 'chi',
+        ];
+        $sibling_codes = [
+            'M' => 'bro',
+            'F' => 'sis',
+            'U' => 'sib',
+        ];
+        $relationships = [];
+
+        for ($i = 1, $count = count($path); $i < $count; $i += 2) {
+            $family = Family::getInstance($path[$i], $tree);
+            $prev   = Individual::getInstance($path[$i - 1], $tree);
+            $next   = Individual::getInstance($path[$i + 1], $tree);
+            if (preg_match('/\n\d (HUSB|WIFE|CHIL) @' . $prev->xref() . '@/', $family->gedcom(), $match)) {
+                $rel1 = $match[1];
+            } else {
+                return [];
+            }
+            if (preg_match('/\n\d (HUSB|WIFE|CHIL) @' . $next->xref() . '@/', $family->gedcom(), $match)) {
+                $rel2 = $match[1];
+            } else {
+                return [];
+            }
+            if (($rel1 === 'HUSB' || $rel1 === 'WIFE') && ($rel2 === 'HUSB' || $rel2 === 'WIFE')) {
+                $relationships[$i] = $spouse_codes[$next->sex()];
+            } elseif (($rel1 === 'HUSB' || $rel1 === 'WIFE') && $rel2 === 'CHIL') {
+                $relationships[$i] = $child_codes[$next->sex()];
+            } elseif ($rel1 === 'CHIL' && ($rel2 === 'HUSB' || $rel2 === 'WIFE')) {
+                $relationships[$i] = $parent_codes[$next->sex()];
+            } elseif ($rel1 === 'CHIL' && $rel2 === 'CHIL') {
+                $relationships[$i] = $sibling_codes[$next->sex()];
+            }
+        }
+
+        return $relationships;
     }
 
     /**

@@ -17,15 +17,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Closure;
 use Fisharebest\Localization\Locale as WebtreesLocale;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Throwable;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 /**
  * Middleware to set a global theme.
@@ -33,13 +33,12 @@ use Throwable;
 class UseLocale implements MiddlewareInterface
 {
     /**
-     * @param Request $request
-     * @param Closure $next
+     * @param ServerRequestInterface  $request
+     * @param RequestHandlerInterface $handler
      *
-     * @return Response
-     * @throws Throwable
+     * @return ResponseInterface
      */
-    public function handle(Request $request, Closure $next): Response
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $tree = app(Tree::class);
 
@@ -49,6 +48,6 @@ class UseLocale implements MiddlewareInterface
 
         app()->instance(LocaleInterface::class, WebtreesLocale::create(WT_LOCALE));
 
-        return $next($request);
+        return $handler->handle($request);
     }
 }

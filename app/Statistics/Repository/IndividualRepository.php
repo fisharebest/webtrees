@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
+use function array_key_exists;
+use function array_slice;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
@@ -43,6 +45,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
+use stdClass;
 
 /**
  *
@@ -113,7 +116,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             foreach (explode(' ', $n_givn) as $given) {
                 // Exclude initials and particles.
                 if (!preg_match('/^([A-Z]|[a-z]{1,3})$/', $given)) {
-                    if (\array_key_exists($given, $nameList)) {
+                    if (array_key_exists($given, $nameList)) {
                         $nameList[$given] += (int) $count;
                     } else {
                         $nameList[$given] = (int) $count;
@@ -122,7 +125,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             }
         }
         arsort($nameList);
-        $nameList = \array_slice($nameList, 0, $maxtoshow);
+        $nameList = array_slice($nameList, 0, $maxtoshow);
 
         foreach ($nameList as $given => $total) {
             if ($total < $threshold) {
@@ -477,7 +480,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @param int $number_of_surnames
      * @param int $threshold
      *
-     * @return \stdClass[]
+     * @return stdClass[]
      */
     private function topSurnames(int $number_of_surnames, int $threshold): array
     {

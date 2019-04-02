@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
+use Exception;
 use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
 
@@ -51,7 +52,7 @@ class Repository extends GedcomRecord
      * @param Tree        $tree
      * @param string|null $gedcom
      *
-     * @throws \Exception
+     * @throws Exception
      *
      * @return Repository|null
      */

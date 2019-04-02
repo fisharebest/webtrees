@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
+use Exception;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -96,7 +97,7 @@ class Individual extends GedcomRecord
      * @param Tree        $tree
      * @param string|null $gedcom
      *
-     * @throws \Exception
+     * @throws Exception
      * @return Individual|null
      */
     public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?self

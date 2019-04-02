@@ -27,9 +27,8 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Fisharebest\Webtrees\User;
 use Illuminate\Support\Str;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for requesting password resets.
@@ -39,9 +38,9 @@ class ForgotPasswordController extends AbstractBaseController
     /**
      * Show a password reset page.
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function forgotPasswordPage(): Response
+    public function forgotPasswordPage(): ResponseInterface
     {
         $title = I18N::translate('Request a new password');
 
@@ -53,13 +52,13 @@ class ForgotPasswordController extends AbstractBaseController
     /**
      * Send a password reset email.
      *
-     * @param Request     $request
-     * @param Tree        $tree
-     * @param UserService $user_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserService            $user_service
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function forgotPasswordAction(Request $request, Tree $tree, UserService $user_service): RedirectResponse
+    public function forgotPasswordAction(ServerRequestInterface $request, Tree $tree, UserService $user_service): ResponseInterface
     {
         $identifier = $request->get('identifier', '');
 
@@ -87,12 +86,12 @@ class ForgotPasswordController extends AbstractBaseController
 
             FlashMessages::addMessage(I18N::translate('A new password has been created and emailed to %s. You can change this password after you sign in.', e($identifier)), 'success');
 
-            return new RedirectResponse(route('login', ['username' => $user->userName()]));
+            return redirect(route('login', ['username' => $user->userName()]));
         }
 
         FlashMessages::addMessage(I18N::translate('There is no account with the username or email “%s”.', e($identifier)), 'danger');
 
-        return new RedirectResponse(route('forgot-password'));
+        return redirect(route('forgot-password'));
     }
 
     /**

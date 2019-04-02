@@ -33,8 +33,8 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Find all branches of families with a given surname.
@@ -57,11 +57,11 @@ class BranchesController extends AbstractBaseController
     /**
      * A form to request the page parameters.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function page(Request $request): Response
+    public function page(ServerRequestInterface $request): ResponseInterface
     {
         //route is assumed to be 'module'
         $module = $request->get('module');
@@ -90,13 +90,13 @@ class BranchesController extends AbstractBaseController
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function list(Request $request, Tree $tree, UserInterface $user): Response
+    public function list(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $soundex_dm  = (bool) $request->get('soundex_dm');
         $soundex_std = (bool) $request->get('soundex_std');
@@ -122,7 +122,7 @@ class BranchesController extends AbstractBaseController
             'branches' => $this->getPatriarchsHtml($tree, $individuals, $ancestors, $surname, $soundex_dm, $soundex_std),
         ]);
 
-        return new Response($html);
+        return response($html);
     }
 
     /**

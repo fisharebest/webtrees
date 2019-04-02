@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Exception;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
@@ -30,8 +31,8 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -59,16 +60,16 @@ class PlaceHierarchyController extends AbstractBaseController
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param SearchService $search_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param SearchService          $search_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function show(Request $request, Tree $tree, SearchService $search_service): Response
+    public function show(ServerRequestInterface $request, Tree $tree, SearchService $search_service): ResponseInterface
     {
-        $action2    = $request->query->get('action2', 'hierarchy');
-        $parent     = $request->query->get('parent', []);
+        $action2    = $request->getQueryParams()['action2'] ?? 'hierarchy';
+        $parent     = $request->getQueryParams()['parent'] ?? [];
         $fqpn       = implode(Gedcom::PLACE_SEPARATOR, array_reverse($parent));
         $place      = new Place($fqpn, $tree);
         $content    = '';
@@ -164,7 +165,7 @@ class PlaceHierarchyController extends AbstractBaseController
      * @param string $parent []
      *
      * @return array|null
-     * @throws \Exception
+     * @throws Exception
      */
     private function getHierarchy($tree, $place, $parent): ?array
     {
@@ -192,7 +193,7 @@ class PlaceHierarchyController extends AbstractBaseController
      * @param Place $place
      *
      * @return array
-     * @throws \Exception
+     * @throws Exception
      */
     private function getEvents($tree, $place): array
     {

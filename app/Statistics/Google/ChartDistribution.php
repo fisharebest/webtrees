@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Google;
 
+use function array_key_exists;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
@@ -25,6 +26,7 @@ use Fisharebest\Webtrees\Statistics\Service\CountryService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
+use stdClass;
 
 /**
  * A chart showing the distribution of different events on a map.
@@ -145,10 +147,10 @@ class ChartDistribution
 
         foreach ($b_countries as $country => $count) {
             // Consolidate places (Germany, DEU => DE)
-            if (\array_key_exists($country, $this->country_to_iso3166)) {
+            if (array_key_exists($country, $this->country_to_iso3166)) {
                 $country_code = $this->country_to_iso3166[$country];
 
-                if (\array_key_exists($country_code, $surn_countries)) {
+                if (array_key_exists($country_code, $surn_countries)) {
                     $surn_countries[$country_code] += $count;
                 } else {
                     $surn_countries[$country_code] = $count;
@@ -172,10 +174,10 @@ class ChartDistribution
 
         foreach ($d_countries as $country => $count) {
             // Consolidate places (Germany, DEU => DE)
-            if (\array_key_exists($country, $this->country_to_iso3166)) {
+            if (array_key_exists($country, $this->country_to_iso3166)) {
                 $country_code = $this->country_to_iso3166[$country];
 
-                if (\array_key_exists($country_code, $surn_countries)) {
+                if (array_key_exists($country_code, $surn_countries)) {
                     $surn_countries[$country_code] += $count;
                 } else {
                     $surn_countries[$country_code] = $count;
@@ -200,10 +202,10 @@ class ChartDistribution
         // webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
         foreach ($m_countries as $place) {
             // Consolidate places (Germany, DEU => DE)
-            if (\array_key_exists($place->country, $this->country_to_iso3166)) {
+            if (array_key_exists($place->country, $this->country_to_iso3166)) {
                 $country_code = $this->country_to_iso3166[$place->country];
 
-                if (\array_key_exists($country_code, $surn_countries)) {
+                if (array_key_exists($country_code, $surn_countries)) {
                     $surn_countries[$country_code] += $place->tot;
                 } else {
                     $surn_countries[$country_code] = $place->tot;
@@ -219,7 +221,7 @@ class ChartDistribution
      *
      * @param string $surname
      *
-     * @return \stdClass[]
+     * @return stdClass[]
      */
     private function queryRecords(string $surname): array
     {
@@ -259,10 +261,10 @@ class ChartDistribution
                 // but google uses 2 letter codes.
                 foreach ($matches[1] as $country) {
                     // Consolidate places (Germany, DEU => DE)
-                    if (\array_key_exists($country, $this->country_to_iso3166)) {
+                    if (array_key_exists($country, $this->country_to_iso3166)) {
                         $country_code = $this->country_to_iso3166[$country];
 
-                        if (\array_key_exists($country_code, $surn_countries)) {
+                        if (array_key_exists($country_code, $surn_countries)) {
                             $surn_countries[$country_code]++;
                         } else {
                             $surn_countries[$country_code] = 1;
@@ -289,10 +291,10 @@ class ChartDistribution
         // webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
         foreach ($a_countries as $place) {
             // Consolidate places (Germany, DEU => DE)
-            if (\array_key_exists($place->country, $this->country_to_iso3166)) {
+            if (array_key_exists($place->country, $this->country_to_iso3166)) {
                 $country_code = $this->country_to_iso3166[$place->country];
 
-                if (\array_key_exists($country_code, $surn_countries)) {
+                if (array_key_exists($country_code, $surn_countries)) {
                     $surn_countries[$country_code] += $place->tot;
                 } else {
                     $surn_countries[$country_code] = $place->tot;

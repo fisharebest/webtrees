@@ -26,9 +26,8 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for the gedcom record page.
@@ -38,12 +37,12 @@ class GedcomRecordController extends AbstractBaseController
     /**
      * Show a gedcom record's page.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function show(Request $request, Tree $tree): Response
+    public function show(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref   = $request->get('xref', '');
         $record = GedcomRecord::getInstance($xref, $tree);
@@ -51,7 +50,7 @@ class GedcomRecordController extends AbstractBaseController
         Auth::checkRecordAccess($record);
 
         if ($this->hasCustomPage($record)) {
-            return new RedirectResponse($record->url());
+            return redirect($record->url());
         }
 
         return $this->viewResponse('gedcom-record-page', [

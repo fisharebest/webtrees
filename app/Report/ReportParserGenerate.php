@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use DomainException;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
@@ -234,7 +235,7 @@ class ReportParserGenerate extends ReportParserBase
     private function styleStartHandler(array $attrs)
     {
         if (empty($attrs['name'])) {
-            throw new \DomainException('REPORT ERROR Style: The "name" of the style is missing or not set in the XML file.');
+            throw new DomainException('REPORT ERROR Style: The "name" of the style is missing or not set in the XML file.');
         }
 
         // array Style that will be passed on
@@ -1193,7 +1194,7 @@ class ReportParserGenerate extends ReportParserBase
                 );
 
                 if (!xml_parse($repeat_parser, $reportxml, true)) {
-                    throw new \DomainException(sprintf(
+                    throw new DomainException(sprintf(
                         'RepeatTagEHandler XML error: %s at line %d',
                         xml_error_string(xml_get_error_code($repeat_parser)),
                         xml_get_current_line_number($repeat_parser)
@@ -1224,7 +1225,7 @@ class ReportParserGenerate extends ReportParserBase
     private function varStartHandler(array $attrs)
     {
         if (empty($attrs['var'])) {
-            throw new \DomainException('REPORT ERROR var: The attribute "var=" is missing or not set in the XML file on line: ' . xml_get_current_line_number($this->parser));
+            throw new DomainException('REPORT ERROR var: The attribute "var=" is missing or not set in the XML file on line: ' . xml_get_current_line_number($this->parser));
         }
 
         $var = $attrs['var'];
@@ -1394,7 +1395,7 @@ class ReportParserGenerate extends ReportParserBase
                 );
 
                 if (!xml_parse($repeat_parser, $reportxml, true)) {
-                    throw new \DomainException(sprintf(
+                    throw new DomainException(sprintf(
                         'FactsEHandler XML error: %s at line %d',
                         xml_error_string(xml_get_error_code($repeat_parser)),
                         xml_get_current_line_number($repeat_parser)
@@ -1421,7 +1422,7 @@ class ReportParserGenerate extends ReportParserBase
     private function setVarStartHandler(array $attrs)
     {
         if (empty($attrs['name'])) {
-            throw new \DomainException('REPORT ERROR var: The attribute "name" is missing or not set in the XML file');
+            throw new DomainException('REPORT ERROR var: The attribute "name" is missing or not set in the XML file');
         }
 
         $name  = $attrs['name'];
@@ -2056,7 +2057,7 @@ class ReportParserGenerate extends ReportParserBase
                 break;
 
             default:
-                throw new \DomainException('Invalid list name: ' . $listname);
+                throw new DomainException('Invalid list name: ' . $listname);
         }
 
         $filters  = [];
@@ -2309,7 +2310,7 @@ class ReportParserGenerate extends ReportParserBase
                     );
 
                     if (!xml_parse($repeat_parser, $reportxml, true)) {
-                        throw new \DomainException(sprintf(
+                        throw new DomainException(sprintf(
                             'ListEHandler XML error: %s at line %d',
                             xml_error_string(xml_get_error_code($repeat_parser)),
                             xml_get_current_line_number($repeat_parser)
@@ -2543,7 +2544,7 @@ class ReportParserGenerate extends ReportParserBase
                 );
 
                 if (!xml_parse($repeat_parser, $reportxml, true)) {
-                    throw new \DomainException(sprintf('RelativesEHandler XML error: %s at line %d', xml_error_string(xml_get_error_code($repeat_parser)), xml_get_current_line_number($repeat_parser)));
+                    throw new DomainException(sprintf('RelativesEHandler XML error: %s at line %d', xml_error_string(xml_get_error_code($repeat_parser)), xml_get_current_line_number($repeat_parser)));
                 }
                 xml_parser_free($repeat_parser);
             }

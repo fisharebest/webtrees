@@ -421,44 +421,35 @@
         ]
     },
     {
-        "name": "filp/whoops",
-        "version": "2.3.1",
-        "version_normalized": "2.3.1.0",
+        "name": "fig/http-message-util",
+        "version": "1.1.3",
+        "version_normalized": "1.1.3.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/filp/whoops.git",
-            "reference": "bc0fd11bc455cc20ee4b5edabc63ebbf859324c7"
+            "url": "https://github.com/php-fig/http-message-util.git",
+            "reference": "35b19404371b31b3a43823c755398c48c9966db4"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/filp/whoops/zipball/bc0fd11bc455cc20ee4b5edabc63ebbf859324c7",
-            "reference": "bc0fd11bc455cc20ee4b5edabc63ebbf859324c7",
+            "url": "https://api.github.com/repos/php-fig/http-message-util/zipball/35b19404371b31b3a43823c755398c48c9966db4",
+            "reference": "35b19404371b31b3a43823c755398c48c9966db4",
             "shasum": ""
         },
         "require": {
-            "php": "^5.5.9 || ^7.0",
-            "psr/log": "^1.0.1"
+            "php": "^5.3 || ^7.0",
+            "psr/http-message": "^1.0"
         },
-        "require-dev": {
-            "mockery/mockery": "^0.9 || ^1.0",
-            "phpunit/phpunit": "^4.8.35 || ^5.7",
-            "symfony/var-dumper": "^2.6 || ^3.0 || ^4.0"
-        },
-        "suggest": {
-            "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
-            "whoops/soap": "Formats errors as SOAP responses"
-        },
-        "time": "2018-10-23T09:00:00+00:00",
+        "time": "2018-11-19T16:19:58+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "2.2-dev"
+                "dev-master": "1.1.x-dev"
             }
         },
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "Whoops\\": "src/Whoops/"
+                "Fig\\Http\\Message\\": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -467,20 +458,18 @@
         ],
         "authors": [
             {
-                "name": "Filipe Dobreira",
-                "homepage": "https://github.com/filp",
-                "role": "Developer"
+                "name": "PHP-FIG",
+                "homepage": "http://www.php-fig.org/"
             }
         ],
-        "description": "php error handling for cool kids",
-        "homepage": "https://filp.github.io/whoops/",
+        "description": "Utility classes and constants for use with PSR-7 (psr/http-message)",
         "keywords": [
-            "error",
-            "exception",
-            "handling",
-            "library",
-            "throwable",
-            "whoops"
+            "http",
+            "http-message",
+            "psr",
+            "psr-7",
+            "request",
+            "response"
         ]
     },
     {
@@ -1552,6 +1541,65 @@
         ]
     },
     {
+        "name": "narrowspark/http-emitter",
+        "version": "0.8.0",
+        "version_normalized": "0.8.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/narrowspark/http-emitter.git",
+            "reference": "19044447b8cb6a821a72ace3e343b10782f4600e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/narrowspark/http-emitter/zipball/19044447b8cb6a821a72ace3e343b10782f4600e",
+            "reference": "19044447b8cb6a821a72ace3e343b10782f4600e",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.1",
+            "psr/http-message": "^1.0"
+        },
+        "provide": {
+            "psr/http-message-implementation": "^1.0"
+        },
+        "require-dev": {
+            "narrowspark/coding-standard": "^1.4.0",
+            "phpunit/phpunit": "^7.0",
+            "zendframework/zend-diactoros": "^1.8.0"
+        },
+        "time": "2019-03-08T14:27:56+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Narrowspark\\HttpEmitter\\": "src/"
+            },
+            "exclude-from-classmap": [
+                "tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Daniel Bannert",
+                "email": "d.bannert@anolilab.de",
+                "homepage": "http://www.anolilab.de",
+                "role": "Developer"
+            }
+        ],
+        "description": "Emitting psr-7 responses.",
+        "keywords": [
+            "emitter",
+            "http",
+            "narrowspark",
+            "psr-7",
+            "sapi"
+        ]
+    },
+    {
         "name": "nesbot/carbon",
         "version": "2.16.3",
         "version_normalized": "2.16.3.0",
@@ -1614,6 +1662,178 @@
         ]
     },
     {
+        "name": "nyholm/psr7",
+        "version": "1.1.0",
+        "version_normalized": "1.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Nyholm/psr7.git",
+            "reference": "701fe7ea8c12c07b985b156d589134d328160cf7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Nyholm/psr7/zipball/701fe7ea8c12c07b985b156d589134d328160cf7",
+            "reference": "701fe7ea8c12c07b985b156d589134d328160cf7",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.1",
+            "php-http/message-factory": "^1.0",
+            "psr/http-factory": "^1.0",
+            "psr/http-message": "^1.0"
+        },
+        "provide": {
+            "psr/http-factory-implementation": "1.0",
+            "psr/http-message-implementation": "1.0"
+        },
+        "require-dev": {
+            "http-interop/http-factory-tests": "dev-master",
+            "php-http/psr7-integration-tests": "dev-master",
+            "phpunit/phpunit": "^7.5"
+        },
+        "time": "2019-02-16T17:20:43+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Nyholm\\Psr7\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Tobias Nyholm",
+                "email": "tobias.nyholm@gmail.com"
+            },
+            {
+                "name": "Martijn van der Ven",
+                "email": "martijn@vanderven.se"
+            }
+        ],
+        "description": "A fast PHP7 implementation of PSR-7",
+        "homepage": "http://tnyholm.se",
+        "keywords": [
+            "psr-17",
+            "psr-7"
+        ]
+    },
+    {
+        "name": "nyholm/psr7-server",
+        "version": "0.3.0",
+        "version_normalized": "0.3.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Nyholm/psr7-server.git",
+            "reference": "1b71a848fcb066fb805b7a9ab3f41ff65bffcde8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Nyholm/psr7-server/zipball/1b71a848fcb066fb805b7a9ab3f41ff65bffcde8",
+            "reference": "1b71a848fcb066fb805b7a9ab3f41ff65bffcde8",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.1",
+            "psr/http-factory": "^1.0",
+            "psr/http-message": "^1.0"
+        },
+        "require-dev": {
+            "nyholm/nsa": "^1.1",
+            "nyholm/psr7": "^1.0",
+            "phpunit/phpunit": "^7.0"
+        },
+        "time": "2018-09-02T10:41:28+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Nyholm\\Psr7Server\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Tobias Nyholm",
+                "email": "tobias.nyholm@gmail.com"
+            },
+            {
+                "name": "Martijn van der Ven",
+                "email": "martijn@vanderven.se"
+            }
+        ],
+        "description": "Helper classes to handle PSR-7 server requests",
+        "homepage": "http://tnyholm.se",
+        "keywords": [
+            "psr-17",
+            "psr-7"
+        ]
+    },
+    {
+        "name": "oscarotero/middleland",
+        "version": "v1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/oscarotero/middleland.git",
+            "reference": "abd480afe264714095d043edd76c542a99f1695b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/oscarotero/middleland/zipball/abd480afe264714095d043edd76c542a99f1695b",
+            "reference": "abd480afe264714095d043edd76c542a99f1695b",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.0",
+            "psr/container": "^1.0",
+            "psr/http-server-middleware": "^1.0"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "^2.0",
+            "phpunit/phpunit": "^6.0",
+            "zendframework/zend-diactoros": "^1.3"
+        },
+        "time": "2018-01-24T20:41:57+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Middleland\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Oscar Otero",
+                "email": "oom@oscarotero.com",
+                "homepage": "http://oscarotero.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "PSR-15 middleware dispatcher",
+        "homepage": "https://github.com/oscarotero/dispatcher",
+        "keywords": [
+            "http",
+            "middleware",
+            "psr-15",
+            "psr-7"
+        ]
+    },
+    {
         "name": "paragonie/random_compat",
         "version": "v9.99.99",
         "version_normalized": "9.99.99.0",
@@ -1658,6 +1878,58 @@
             "polyfill",
             "pseudorandom",
             "random"
+        ]
+    },
+    {
+        "name": "php-http/message-factory",
+        "version": "v1.0.2",
+        "version_normalized": "1.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/php-http/message-factory.git",
+            "reference": "a478cb11f66a6ac48d8954216cfed9aa06a501a1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/php-http/message-factory/zipball/a478cb11f66a6ac48d8954216cfed9aa06a501a1",
+            "reference": "a478cb11f66a6ac48d8954216cfed9aa06a501a1",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4",
+            "psr/http-message": "^1.0"
+        },
+        "time": "2015-12-19T14:08:53+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Http\\Message\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Márk Sági-Kazár",
+                "email": "mark.sagikazar@gmail.com"
+            }
+        ],
+        "description": "Factory interfaces for PSR-7 HTTP Message",
+        "homepage": "http://php-http.org",
+        "keywords": [
+            "factory",
+            "http",
+            "message",
+            "stream",
+            "uri"
         ]
     },
     {
@@ -1760,6 +2032,60 @@
         ]
     },
     {
+        "name": "psr/http-factory",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/php-fig/http-factory.git",
+            "reference": "378bfe27931ecc54ff824a20d6f6bfc303bbd04c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/php-fig/http-factory/zipball/378bfe27931ecc54ff824a20d6f6bfc303bbd04c",
+            "reference": "378bfe27931ecc54ff824a20d6f6bfc303bbd04c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=7.0.0",
+            "psr/http-message": "^1.0"
+        },
+        "time": "2018-07-30T21:54:04+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Psr\\Http\\Message\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "PHP-FIG",
+                "homepage": "http://www.php-fig.org/"
+            }
+        ],
+        "description": "Common interfaces for PSR-7 HTTP message factories",
+        "keywords": [
+            "factory",
+            "http",
+            "message",
+            "psr",
+            "psr-17",
+            "psr-7",
+            "request",
+            "response"
+        ]
+    },
+    {
         "name": "psr/http-message",
         "version": "1.0.1",
         "version_normalized": "1.0.1.0",
@@ -1806,6 +2132,116 @@
             "http",
             "http-message",
             "psr",
+            "psr-7",
+            "request",
+            "response"
+        ]
+    },
+    {
+        "name": "psr/http-server-handler",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/php-fig/http-server-handler.git",
+            "reference": "aff2f80e33b7f026ec96bb42f63242dc50ffcae7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/php-fig/http-server-handler/zipball/aff2f80e33b7f026ec96bb42f63242dc50ffcae7",
+            "reference": "aff2f80e33b7f026ec96bb42f63242dc50ffcae7",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=7.0",
+            "psr/http-message": "^1.0"
+        },
+        "time": "2018-10-30T16:46:14+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Psr\\Http\\Server\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "PHP-FIG",
+                "homepage": "http://www.php-fig.org/"
+            }
+        ],
+        "description": "Common interface for HTTP server-side request handler",
+        "keywords": [
+            "handler",
+            "http",
+            "http-interop",
+            "psr",
+            "psr-15",
+            "psr-7",
+            "request",
+            "response",
+            "server"
+        ]
+    },
+    {
+        "name": "psr/http-server-middleware",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/php-fig/http-server-middleware.git",
+            "reference": "2296f45510945530b9dceb8bcedb5cb84d40c5f5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/php-fig/http-server-middleware/zipball/2296f45510945530b9dceb8bcedb5cb84d40c5f5",
+            "reference": "2296f45510945530b9dceb8bcedb5cb84d40c5f5",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=7.0",
+            "psr/http-message": "^1.0",
+            "psr/http-server-handler": "^1.0"
+        },
+        "time": "2018-10-30T17:12:04+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Psr\\Http\\Server\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "PHP-FIG",
+                "homepage": "http://www.php-fig.org/"
+            }
+        ],
+        "description": "Common interface for HTTP server-side middleware",
+        "keywords": [
+            "http",
+            "http-interop",
+            "middleware",
+            "psr",
+            "psr-15",
             "psr-7",
             "request",
             "response"

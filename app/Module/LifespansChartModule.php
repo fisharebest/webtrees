@@ -28,9 +28,9 @@ use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class LifespansChartModule
@@ -98,13 +98,13 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * A form to request the chart parameters.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getChartAction(Request $request, Tree $tree, UserInterface $user): Response
+    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
@@ -184,9 +184,9 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      * @param array  $xrefs
      * @param string $subtitle
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    protected function chart(Tree $tree, array $xrefs, string $subtitle): Response
+    protected function chart(Tree $tree, array $xrefs, string $subtitle): ResponseInterface
     {
         /** @var Individual[] $individuals */
         $individuals = array_map(static function (string $xref) use ($tree) {
@@ -221,7 +221,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             'subtitle'   => $subtitle,
         ]);
 
-        return new Response($html);
+        return response($html);
     }
 
     /**

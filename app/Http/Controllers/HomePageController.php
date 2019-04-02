@@ -40,9 +40,8 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -105,13 +104,13 @@ class HomePageController extends AbstractBaseController
     /**
      * Show a form to edit block config options.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function treePageBlockEdit(Request $request, Tree $tree, UserInterface $user): Response
+    public function treePageBlockEdit(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $block_id = (int) $request->get('block_id');
         $block    = $this->treeBlock($request, $tree, $user);
@@ -129,32 +128,32 @@ class HomePageController extends AbstractBaseController
     /**
      * Update block config options.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function treePageBlockUpdate(Request $request, Tree $tree, UserInterface $user): RedirectResponse
+    public function treePageBlockUpdate(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $block    = $this->treeBlock($request, $tree, $user);
         $block_id = (int) $request->get('block_id');
 
         $block->saveBlockConfiguration($request, $block_id);
 
-        return new RedirectResponse(route('tree-page', ['ged' => $tree->name()]));
+        return redirect(route('tree-page', ['ged' => $tree->name()]));
     }
 
     /**
      * Load a block and check we have permission to edit it.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
      * @return ModuleBlockInterface
      */
-    private function treeBlock(Request $request, Tree $tree, UserInterface $user): ModuleBlockInterface
+    private function treeBlock(ServerRequestInterface $request, Tree $tree, UserInterface $user): ModuleBlockInterface
     {
         $block_id = (int) $request->get('block_id');
 
@@ -184,13 +183,13 @@ class HomePageController extends AbstractBaseController
     /**
      * Show a form to edit block config options.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function userPageBlockEdit(Request $request, Tree $tree, UserInterface $user): Response
+    public function userPageBlockEdit(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $block_id = (int) $request->get('block_id');
         $block    = $this->userBlock($request, $user);
@@ -208,31 +207,31 @@ class HomePageController extends AbstractBaseController
     /**
      * Update block config options.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function userPageBlockUpdate(Request $request, Tree $tree, UserInterface $user): RedirectResponse
+    public function userPageBlockUpdate(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $block    = $this->userBlock($request, $user);
         $block_id = (int) $request->get('block_id');
 
         $block->saveBlockConfiguration($request, $block_id);
 
-        return new RedirectResponse(route('user-page', ['ged' => $tree->name()]));
+        return redirect(route('user-page', ['ged' => $tree->name()]));
     }
 
     /**
      * Load a block and check we have permission to edit it.
      *
-     * @param Request       $request
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param UserInterface          $user
      *
      * @return ModuleBlockInterface
      */
-    private function userBlock(Request $request, UserInterface $user): ModuleBlockInterface
+    private function userBlock(ServerRequestInterface $request, UserInterface $user): ModuleBlockInterface
     {
         $block_id = (int) $request->get('block_id');
 
@@ -266,9 +265,9 @@ class HomePageController extends AbstractBaseController
      *
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function treePage(Tree $tree): Response
+    public function treePage(Tree $tree): ResponseInterface
     {
         $has_blocks = DB::table('block')
             ->where('gedcom_id', '=', $tree->id())
@@ -300,12 +299,12 @@ class HomePageController extends AbstractBaseController
     /**
      * Load block asynchronously.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function treePageBlock(Request $request, Tree $tree): Response
+    public function treePageBlock(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $block_id = $request->get('block_id');
 
@@ -320,15 +319,15 @@ class HomePageController extends AbstractBaseController
             'content' => $module->getBlock($tree, $block_id, 'gedcom'),
         ]);
 
-        return new Response($html);
+        return response($html);
     }
 
     /**
      * Show a form to edit the default blocks for new trees.
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function treePageDefaultEdit(): Response
+    public function treePageDefaultEdit(): ResponseInterface
     {
         $this->checkDefaultTreeBlocksExist();
 
@@ -354,18 +353,18 @@ class HomePageController extends AbstractBaseController
     /**
      * Save updated default blocks for new trees.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function treePageDefaultUpdate(Request $request): RedirectResponse
+    public function treePageDefaultUpdate(ServerRequestInterface $request): ResponseInterface
     {
         $main_blocks = (array) $request->get('main');
         $side_blocks = (array) $request->get('side');
 
         $this->updateTreeBlocks(-1, $main_blocks, $side_blocks);
 
-        return new RedirectResponse(route('admin-control-panel'));
+        return redirect(route('admin-control-panel'));
     }
 
     /**
@@ -373,9 +372,9 @@ class HomePageController extends AbstractBaseController
      *
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function treePageEdit(Tree $tree): Response
+    public function treePageEdit(Tree $tree): ResponseInterface
     {
         $main_blocks = $this->treeBlocks($tree->id(), 'main');
         $side_blocks = $this->treeBlocks($tree->id(), 'side');
@@ -399,12 +398,12 @@ class HomePageController extends AbstractBaseController
     /**
      * Save updated blocks on a tree's page.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function treePageUpdate(Request $request, Tree $tree): RedirectResponse
+    public function treePageUpdate(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $defaults = (bool) $request->get('defaults');
 
@@ -418,7 +417,7 @@ class HomePageController extends AbstractBaseController
 
         $this->updateTreeBlocks($tree->id(), $main_blocks, $side_blocks);
 
-        return new RedirectResponse(route('tree-page', ['ged' => $tree->name()]));
+        return redirect(route('tree-page', ['ged' => $tree->name()]));
     }
 
     /**
@@ -426,9 +425,9 @@ class HomePageController extends AbstractBaseController
      *
      * @param UserInterface $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function userPage(UserInterface $user): Response
+    public function userPage(UserInterface $user): ResponseInterface
     {
         $has_blocks = DB::table('block')
             ->where('user_id', '=', $user->id())
@@ -459,13 +458,13 @@ class HomePageController extends AbstractBaseController
     /**
      * Load block asynchronously.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function userPageBlock(Request $request, Tree $tree, UserInterface $user): Response
+    public function userPageBlock(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $block_id = $request->get('block_id');
 
@@ -480,15 +479,15 @@ class HomePageController extends AbstractBaseController
             'content' => $module->getBlock($tree, $block_id, 'user'),
         ]);
 
-        return new Response($html);
+        return response($html);
     }
 
     /**
      * Show a form to edit the default blocks for new uesrs.
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function userPageDefaultEdit(): Response
+    public function userPageDefaultEdit(): ResponseInterface
     {
         $this->checkDefaultUserBlocksExist();
 
@@ -513,18 +512,18 @@ class HomePageController extends AbstractBaseController
     /**
      * Save the updated default blocks for new users.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function userPageDefaultUpdate(Request $request): RedirectResponse
+    public function userPageDefaultUpdate(ServerRequestInterface $request): ResponseInterface
     {
         $main_blocks = (array) $request->get('main');
         $side_blocks = (array) $request->get('side');
 
         $this->updateUserBlocks(-1, $main_blocks, $side_blocks);
 
-        return new RedirectResponse(route('admin-control-panel'));
+        return redirect(route('admin-control-panel'));
     }
 
     /**
@@ -533,9 +532,9 @@ class HomePageController extends AbstractBaseController
      * @param Tree          $tree
      * @param UserInterface $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function userPageEdit(Tree $tree, UserInterface $user): Response
+    public function userPageEdit(Tree $tree, UserInterface $user): ResponseInterface
     {
         $main_blocks = $this->userBlocks($user->id(), 'main');
         $side_blocks = $this->userBlocks($user->id(), 'side');
@@ -558,13 +557,13 @@ class HomePageController extends AbstractBaseController
     /**
      * Save the updted blocks on a user's page.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function userPageUpdate(Request $request, Tree $tree, UserInterface $user): RedirectResponse
+    public function userPageUpdate(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $defaults = (bool) $request->get('defaults');
 
@@ -578,17 +577,17 @@ class HomePageController extends AbstractBaseController
 
         $this->updateUserBlocks($user->id(), $main_blocks, $side_blocks);
 
-        return new RedirectResponse(route('user-page', ['ged' => $tree->name()]));
+        return redirect(route('user-page', ['ged' => $tree->name()]));
     }
 
     /**
      * Show a form to edit the blocks for another user's page.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function userPageUserEdit(Request $request): Response
+    public function userPageUserEdit(ServerRequestInterface $request): ResponseInterface
     {
         $user_id     = (int) $request->get('user_id');
         $user        = $this->user_service->find($user_id);
@@ -613,11 +612,11 @@ class HomePageController extends AbstractBaseController
     /**
      * Save the updated blocks for another user's page.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function userPageUserUpdate(Request $request): RedirectResponse
+    public function userPageUserUpdate(ServerRequestInterface $request): ResponseInterface
     {
         $user_id     = (int) $request->get('user_id');
         $main_blocks = (array) $request->get('main');
@@ -625,7 +624,7 @@ class HomePageController extends AbstractBaseController
 
         $this->updateUserBlocks($user_id, $main_blocks, $side_blocks);
 
-        return new RedirectResponse(route('admin-control-panel'));
+        return redirect(route('admin-control-panel'));
     }
 
     /**
@@ -787,6 +786,60 @@ class HomePageController extends AbstractBaseController
     }
 
     /**
+     * Save the updated blocks for a user.
+     *
+     * @param int   $user_id
+     * @param array $main_blocks
+     * @param array $side_blocks
+     *
+     * @return void
+     */
+    private function updateUserBlocks(int $user_id, array $main_blocks, array $side_blocks): void
+    {
+        $existing_block_ids = DB::table('block')
+            ->where('user_id', '=', $user_id)
+            ->pluck('block_id');
+
+        // Deleted blocks
+        foreach ($existing_block_ids as $existing_block_id) {
+            if (!in_array($existing_block_id, $main_blocks) && !in_array($existing_block_id, $side_blocks)) {
+                DB::table('block_setting')
+                    ->where('block_id', '=', $existing_block_id)
+                    ->delete();
+
+                DB::table('block')
+                    ->where('block_id', '=', $existing_block_id)
+                    ->delete();
+            }
+        }
+
+        foreach ([
+                     'main' => $main_blocks,
+                     'side' => $side_blocks,
+                 ] as $location => $updated_blocks) {
+            foreach ($updated_blocks as $block_order => $block_id) {
+                if (is_numeric($block_id)) {
+                    // Updated block
+                    DB::table('block')
+                        ->where('block_id', '=', $block_id)
+                        ->update([
+                            'block_order' => $block_order,
+                            'location'    => $location,
+                        ]);
+                } else {
+                    // New block
+                    DB::table('block')->insert([
+                        'user_id'     => $user_id,
+                        'location'    => $location,
+                        'block_order' => $block_order,
+                        'module_name' => $block_id,
+                    ]);
+                }
+            }
+        }
+    }
+
+    /**
      * Save the updated blocks for a tree.
      *
      * @param int   $tree_id
@@ -833,60 +886,6 @@ class HomePageController extends AbstractBaseController
                     // New block
                     DB::table('block')->insert([
                         'gedcom_id'   => $tree_id,
-                        'location'    => $location,
-                        'block_order' => $block_order,
-                        'module_name' => $block_id,
-                    ]);
-                }
-            }
-        }
-    }
-
-    /**
-     * Save the updated blocks for a user.
-     *
-     * @param int   $user_id
-     * @param array $main_blocks
-     * @param array $side_blocks
-     *
-     * @return void
-     */
-    private function updateUserBlocks(int $user_id, array $main_blocks, array $side_blocks): void
-    {
-        $existing_block_ids = DB::table('block')
-            ->where('user_id', '=', $user_id)
-            ->pluck('block_id');
-
-        // Deleted blocks
-        foreach ($existing_block_ids as $existing_block_id) {
-            if (!in_array($existing_block_id, $main_blocks) && !in_array($existing_block_id, $side_blocks)) {
-                DB::table('block_setting')
-                    ->where('block_id', '=', $existing_block_id)
-                    ->delete();
-
-                DB::table('block')
-                    ->where('block_id', '=', $existing_block_id)
-                    ->delete();
-            }
-        }
-
-        foreach ([
-                     'main' => $main_blocks,
-                     'side' => $side_blocks,
-                 ] as $location => $updated_blocks) {
-            foreach ($updated_blocks as $block_order => $block_id) {
-                if (is_numeric($block_id)) {
-                    // Updated block
-                    DB::table('block')
-                        ->where('block_id', '=', $block_id)
-                        ->update([
-                            'block_order' => $block_order,
-                            'location'    => $location,
-                        ]);
-                } else {
-                    // New block
-                    DB::table('block')->insert([
-                        'user_id'     => $user_id,
                         'location'    => $location,
                         'block_order' => $block_order,
                         'module_name' => $block_id,

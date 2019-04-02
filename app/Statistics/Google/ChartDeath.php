@@ -17,12 +17,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Google;
 
+use function count;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\Service\CenturyService;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use stdClass;
 
 /**
  * A chart showing the deaths by century.
@@ -65,7 +67,7 @@ class ChartDeath
     /**
      * Returns the related database records.
      *
-     * @return \stdClass[]
+     * @return stdClass[]
      */
     private function queryRecords(): array
     {
@@ -111,7 +113,7 @@ class ChartDeath
             ];
         }
 
-        $colors = $this->color_service->interpolateRgb($color_from, $color_to, \count($data) - 1);
+        $colors = $this->color_service->interpolateRgb($color_from, $color_to, count($data) - 1);
 
         return view(
             'statistics/other/charts/pie',

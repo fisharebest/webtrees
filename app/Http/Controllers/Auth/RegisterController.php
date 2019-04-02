@@ -28,10 +28,9 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Illuminate\Database\Capsule\Manager as DB;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Ramsey\Uuid\Uuid;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -57,12 +56,11 @@ class RegisterController extends AbstractBaseController
     /**
      * Show a registration page.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
-     * @throws NotFoundHttpException
+     * @return ResponseInterface
      */
-    public function registerPage(Request $request): Response
+    public function registerPage(ServerRequestInterface $request): ResponseInterface
     {
         $this->checkRegistrationAllowed();
 
@@ -88,12 +86,12 @@ class RegisterController extends AbstractBaseController
     /**
      * Perform a registration.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function registerAction(Request $request, Tree $tree): Response
+    public function registerAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $this->checkRegistrationAllowed();
 
@@ -108,7 +106,7 @@ class RegisterController extends AbstractBaseController
         } catch (Exception $ex) {
             FlashMessages::addMessage($ex->getMessage(), 'danger');
 
-            return new RedirectResponse(route('register', [
+            return redirect(route('register', [
                 'comments' => $comments,
                 'email'    => $email,
                 'realname' => $realname,
@@ -220,10 +218,9 @@ class RegisterController extends AbstractBaseController
     /**
      * Show an email verification page.
      *
-     * @return Response
-     * @throws NotFoundHttpException
+     * @return ResponseInterface
      */
-    public function verifyPage(): Response
+    public function verifyPage(): ResponseInterface
     {
         $this->checkRegistrationAllowed();
 
@@ -237,14 +234,13 @@ class RegisterController extends AbstractBaseController
     /**
      * Perform a registration.
      *
-     * @return RedirectResponse
-     * @throws NotFoundHttpException
+     * @return ResponseInterface
      */
-    public function verifyAction(): RedirectResponse
+    public function verifyAction(): ResponseInterface
     {
         $this->checkRegistrationAllowed();
 
-        return new RedirectResponse(route('tree-page'));
+        return redirect(route('tree-page'));
     }
 
     /**

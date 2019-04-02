@@ -17,15 +17,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use function app;
 use Fisharebest\Localization\Locale\LocaleEnUs;
-use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Module\SiteMapModule;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Services\LocalizationService;
-use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Request;
 
 /**
  * Test the module controller
@@ -50,22 +47,28 @@ class CalendarControllerTest extends \Fisharebest\Webtrees\TestCase
         $localization_service = new LocalizationService(new LocaleEnUs());
         $controller           = new CalendarController($calendar_service, $localization_service);
 
-        $request  = new Request(['view' => 'day']);
+        $request  = self::createRequest('GET', ['route' => 'calendar', 'view' => 'day']);
         $response = $controller->page($request, $tree);
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
-        $response = $controller->calendar($request, $tree);
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
 
-        $request  = new Request(['view' => 'month']);
-        $response = $controller->page($request, $tree);
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $request  = self::createRequest('GET', ['route' => 'calendar-events', 'view' => 'day']);
         $response = $controller->calendar($request, $tree);
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
 
-        $request  = new Request(['view' => 'year']);
+        $request  = self::createRequest('GET', ['route' => 'calendar', 'view' => 'month']);
         $response = $controller->page($request, $tree);
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
+
+        $request  = self::createRequest('GET', ['route' => 'calendar-events', 'view' => 'month']);
         $response = $controller->calendar($request, $tree);
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
+
+        $request  = self::createRequest('GET', ['route' => 'calendar', 'view' => 'year']);
+        $response = $controller->page($request, $tree);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
+
+        $request  = self::createRequest('GET', ['route' => 'calendar-events', 'view' => 'year']);
+        $response = $controller->calendar($request, $tree);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 }

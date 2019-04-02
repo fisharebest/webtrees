@@ -25,11 +25,10 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Intervention\Image\ImageManager;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 /**
@@ -40,9 +39,9 @@ class ImportThumbnailsController extends AbstractAdminController
     /**
      * Import custom thumbnails from webtres 1.x.
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function webtrees1Thumbnails(): Response
+    public function webtrees1Thumbnails(): ResponseInterface
     {
         return $this->viewResponse('admin/webtrees1-thumbnails', [
             'title' => I18N::translate('Import custom thumbnails from webtrees version 1'),
@@ -52,16 +51,16 @@ class ImportThumbnailsController extends AbstractAdminController
     /**
      * Import custom thumbnails from webtres 1.x.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function webtrees1ThumbnailsAction(Request $request): Response
+    public function webtrees1ThumbnailsAction(ServerRequestInterface $request): ResponseInterface
     {
-        $thumbnail = $request->get('thumbnail', '');
-        $action    = $request->get('action', '');
-        $xrefs     = $request->get('xref', []);
-        $geds      = $request->get('ged', []);
+        $thumbnail = $request->getParsedBody()['thumbnail'];
+        $action    = $request->getParsedBody()['action'];
+        $xrefs     = $request->getParsedBody()['xref'];
+        $geds      = $request->getParsedBody()['ged'];
 
         $media_objects = [];
 
@@ -107,22 +106,21 @@ class ImportThumbnailsController extends AbstractAdminController
                 break;
         }
 
-        return new JsonResponse([]);
+        return response([]);
     }
 
     /**
      * Import custom thumbnails from webtres 1.x.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return JsonResponse
+     * @return ResponseInterface
      */
-    public function webtrees1ThumbnailsData(Request $request): JsonResponse
+    public function webtrees1ThumbnailsData(ServerRequestInterface $request): ResponseInterface
     {
-        $start  = (int) $request->get('start', 0);
-        $length = (int) $request->get('length', 20);
-        $search = $request->get('search', []);
-        $search = $search['value'] ?? '';
+        $start  = (int) $request->getQueryParams()['start'];
+        $length = (int) $request->getQueryParams()['length'];
+        $search = $request->getQueryParams()['search']['value'];
 
         // Fetch all thumbnails
         $thumbnails = [];
@@ -192,8 +190,8 @@ class ImportThumbnailsController extends AbstractAdminController
             ];
         }, $thumbnails);
 
-        return new JsonResponse([
-            'draw'            => (int) $request->get('draw'),
+        return response([
+            'draw'            => (int) $request->getQueryParams()['draw'],
             'recordsTotal'    => $recordsTotal,
             'recordsFiltered' => $recordsFiltered,
             'data'            => $data,

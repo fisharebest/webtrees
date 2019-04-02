@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Exceptions\InternalServerErrorException;
 use Fisharebest\Webtrees\I18N;
@@ -29,7 +30,6 @@ use League\Flysystem\Cached\CachedAdapter;
 use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
-use Symfony\Component\HttpFoundation\Response;
 use ZipArchive;
 use function rewind;
 
@@ -287,7 +287,7 @@ class UpgradeService
                     'query' => $this->serverParameters(),
                 ]);
 
-                if ($response->getStatusCode() === Response::HTTP_OK) {
+                if ($response->getStatusCode() === StatusCodeInterface::STATUS_OK) {
                     Site::setPreference('LATEST_WT_VERSION', $response->getBody()->getContents());
                     Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', (string) $current_timestamp);
                 }

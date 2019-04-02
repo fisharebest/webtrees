@@ -17,11 +17,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Exceptions;
 
+use Closure;
+use ErrorException;
 use Fisharebest\Webtrees\Http\Controllers\ErrorController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
+use function error_reporting;
+use function ob_end_clean;
+use function ob_get_level;
 
 /**
  * Convert an exception into an HTTP response
@@ -29,27 +34,65 @@ use Throwable;
 class Handler
 {
     /**
+     * An error handler that can be passed to set_error_handler().
+     * Converts errors to exceptions
+     *
+     * @return Closure
+     */
+    public static function phpErrorHandler(): Closure
+    {
+        return static function (int $errno, string $errstr, string $errfile, int $errline): bool {
+            // Ignore errors that are silenced with '@'
+            if (error_reporting() & $errno) {
+                throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+            }
+
+            return true;
+        };
+    }
+
+    /**
+     * A final exception handler that can be passed to set_exception_handler().
+     * Display any exception that are not caught by the middleware exception handler.
+     * Typically, this will be errors in index.php, errors in the exception handler
+     * and errors while displaying errors.
+     *
+     * @return Closure
+     */
+    public static function phpExceptionHandler(): Closure
+    {
+        return static function (Throwable $ex): void {
+            $trace = $ex->getTraceAsString();
+            $trace = str_replace(WT_ROOT, '…/', $trace);
+
+            while (ob_get_level() > 0) {
+                ob_end_clean();
+            }
+
+            echo '<html lang="en"><head><title>Error</title><meta charset="UTF-8"></head><body><pre>' . $trace . '</pre></body></html>';
+        };
+    }
+
+    /**
      * Render an exception into an HTTP response.
      *
-     * @param  Request   $request
-     * @param  Throwable $exception
+     * @param ServerRequestInterface $request
+     * @param Throwable              $exception
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function render(Request $request, Throwable $exception): Response
+    public function render(ServerRequestInterface $request, Throwable $exception): ResponseInterface
     {
         $controller = new ErrorController();
 
         if ($exception instanceof HttpException) {
-            if ($request->isXmlHttpRequest()) {
-                $response = $controller->ajaxErrorResponse($exception);
-            } else {
-                $response = $controller->errorResponse($exception);
+            if ($request->getHeaderLine('X-Requested-With') !== '') {
+                return $controller->ajaxErrorResponse($exception);
             }
-        } else {
-            $response = $controller->unhandledExceptionResponse($request, $exception);
+
+            return $controller->errorResponse($exception);
         }
 
-        return $response;
+        return $controller->unhandledExceptionResponse($request, $exception);
     }
 }

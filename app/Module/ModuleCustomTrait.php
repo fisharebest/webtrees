@@ -17,10 +17,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Carbon;
 use Illuminate\Support\Str;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -120,11 +121,11 @@ trait ModuleCustomTrait
     /**
      * Serve a CSS/JS file.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAssetAction(Request $request): Response
+    public function getAssetAction(ServerRequestInterface $request): ResponseInterface
     {
         // The file being requested.  e.g. "css/theme.css"
         $asset = $request->get('asset');
@@ -163,11 +164,9 @@ trait ModuleCustomTrait
 
         $headers = [
             'Content-Type' => $mime_type,
+            'Expires' => $expiry_date,
         ];
 
-        $response = new Response($content, Response::HTTP_OK, $headers);
-
-        return $response
-            ->setExpires($expiry_date);
+        return response($content, StatusCodeInterface::STATUS_OK, $headers);
     }
 }

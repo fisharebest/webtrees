@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
+use stdClass;
+
 /**
  * A repository providing methods for place related statistics.
  */
@@ -30,7 +32,7 @@ interface PlaceRepositoryInterface
      * @param int    $parent
      * @param bool   $country
      *
-     * @return int[]|\stdClass[]
+     * @return int[]|stdClass[]
      */
     public function statsPlaces(string $what = 'ALL', string $fact = '', int $parent = 0, bool $country = false): array;
 

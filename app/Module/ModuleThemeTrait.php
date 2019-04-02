@@ -26,42 +26,14 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ServerRequestInterface;
+use function app;
 
 /**
  * Trait ModuleThemeTrait - default implementation of ModuleThemeInterface
  */
 trait ModuleThemeTrait
 {
-    /**
-     * Add markup to the secondary menu.
-     *
-     * @param Tree|null $tree
-     *
-     * @return string
-     */
-    public function formatUserMenu(?Tree $tree): string
-    {
-        return
-            '<ul class="nav wt-user-menu">' .
-            implode('', array_map(function (Menu $menu): string {
-                return $this->formatUserMenuItem($menu);
-            }, $this->userMenu($tree))) .
-            '</ul>';
-    }
-
-    /**
-     * Add markup to an item in the secondary menu.
-     *
-     * @param Menu $menu
-     *
-     * @return string
-     */
-    public function formatUserMenuItem(Menu $menu): string
-    {
-        return $menu->bootstrap4();
-    }
-
     /**
      * Display an icon for this fact.
      *
@@ -218,7 +190,7 @@ trait ModuleThemeTrait
      */
     public function menuChangeBlocks(Tree $tree): ?Menu
     {
-        $request = app(Request::class);
+        $request = app(ServerRequestInterface::class);
 
         if (Auth::check() && $request->get('route') === 'user-page') {
             return new Menu(I18N::translate('Customize this page'), route('user-page-edit', ['ged' => $tree->name()]), 'menu-change-blocks');
@@ -288,7 +260,7 @@ trait ModuleThemeTrait
         }
 
         // Return to this page after login...
-        $url = app(Request::class)->getRequestUri();
+        $url = app(ServerRequestInterface::class)->getUri();
 
         // ...but switch from the tree-page to the user-page
         $url = str_replace('route=tree-page', 'route=user-page', $url);
@@ -419,7 +391,7 @@ trait ModuleThemeTrait
         if ($tree instanceof Tree && $tree->hasPendingEdit() && Auth::isModerator($tree)) {
             $url = route('show-pending', [
                 'ged' => $tree->name(),
-                'url' => app(Request::class)->getRequestUri(),
+                'url' => app(ServerRequestInterface::class)->getUri(),
             ]);
 
             return new Menu(I18N::translate('Pending changes'), $url, 'menu-pending');
@@ -450,7 +422,7 @@ trait ModuleThemeTrait
                 ]);
             });
 
-            return  new Menu(I18N::translate('Theme'), '#', 'menu-theme', [], $submenus->all());
+            return new Menu(I18N::translate('Theme'), '#', 'menu-theme', [], $submenus->all());
         }
 
         return null;

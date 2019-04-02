@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class UpcomingAnniversariesModule
@@ -212,12 +212,12 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      * @param int     $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
         $this->setBlockSetting($block_id, 'days', $request->get('days', self::DEFAULT_DAYS));
         $this->setBlockSetting($block_id, 'filter', $request->get('filter', ''));

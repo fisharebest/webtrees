@@ -31,11 +31,9 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Throwable;
 
@@ -48,15 +46,15 @@ class MediaController extends AbstractAdminController
     private const MAX_UPLOAD_FILES = 10;
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function index(Request $request): Response
+    public function index(ServerRequestInterface $request): ResponseInterface
     {
-        $files        = $request->get('files', 'local'); // local|unused|external
-        $media_folder = $request->get('media_folder', '');
-        $subfolders   = $request->get('subfolders', 'include'); // include/exclude
+        $files        = $request->getQueryParams()['files'] ?? 'local'; // local|unused|external
+        $media_folder = $request->getQueryParams()['media_folder'] ?? '';
+        $subfolders   = $request->getQueryParams()['subfolders'] ?? 'include'; // include/exclude
 
         $media_folders = $this->allMediaFolders();
 
@@ -79,14 +77,14 @@ class MediaController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function delete(Request $request): Response
+    public function delete(ServerRequestInterface $request): ResponseInterface
     {
-        $delete_file  = $request->get('file', '');
-        $media_folder = $request->get('folder', '');
+        $delete_file  = $request->getParsedBody()['file'];
+        $media_folder = $request->getParsedBody()['folder'];
 
         // Only delete valid (i.e. unused) media files
         $disk_files = $this->allDiskFiles($media_folder, 'include');
@@ -102,28 +100,28 @@ class MediaController extends AbstractAdminController
             }
         }
 
-        return new Response();
+        return response();
     }
 
     /**
-     * @param Request           $request
-     * @param DatatablesService $datatables_service
+     * @param ServerRequestInterface $request
+     * @param DatatablesService      $datatables_service
      *
-     * @return JsonResponse
+     * @return ResponseInterface
      */
-    public function data(Request $request, DatatablesService $datatables_service): JsonResponse
+    public function data(ServerRequestInterface $request, DatatablesService $datatables_service): ResponseInterface
     {
-        $files  = $request->get('files'); // local|external|unused
-        $search = $request->get('search');
+        $files  = $request->getQueryParams()['files']; // local|external|unused
+        $search = $request->getQueryParams()['search'];
         $search = $search['value'];
-        $start  = (int) $request->get('start');
-        $length = (int) $request->get('length');
+        $start  = (int) $request->getQueryParams()['start'];
+        $length = (int) $request->getQueryParams()['length'];
 
         // Files within this folder
-        $media_folder  = $request->get('media_folder', '');
+        $media_folder = $request->getQueryParams()['media_folder'];
 
         // subfolders within $media_path
-        $subfolders = $request->get('subfolders', ''); // include|exclude
+        $subfolders = $request->getQueryParams()['subfolders']; // include|exclude
 
         $search_columns = ['multimedia_file_refn', 'descriptive_title'];
 
@@ -231,7 +229,7 @@ class MediaController extends AbstractAdminController
 
                 // Sort files - only option is column 0
                 sort($unused_files);
-                $order = $request->get('order', []);
+                $order = $request->getQueryParams()['order'];
                 if ($order && $order[0]['dir'] === 'desc') {
                     $unused_files = array_reverse($unused_files);
                 }
@@ -259,7 +257,7 @@ class MediaController extends AbstractAdminController
                     $create_form = '';
                     foreach ($media_trees as $media_tree => $media_directory) {
                         if (Str::startsWith($media_folder . $unused_file, $media_directory)) {
-                            $tmp = substr($media_folder . $unused_file, strlen($media_directory));
+                            $tmp         = substr($media_folder . $unused_file, strlen($media_directory));
                             $create_form .=
                                 '<p><a href="#" data-toggle="modal" data-target="#modal-create-media-from-file" data-file="' . e($tmp) . '" data-tree="' . e($media_tree) . '" onclick="document.getElementById(\'file\').value=this.dataset.file; document.getElementById(\'ged\').value=this.dataset.tree;">' . I18N::translate('Create') . '</a> — ' . e($media_tree) . '<p>';
                         }
@@ -283,8 +281,8 @@ class MediaController extends AbstractAdminController
         }
 
         // See http://www.datatables.net/usage/server-side
-        return new JsonResponse([
-            'draw'            => $request->get('draw'),
+        return response([
+            'draw'            => (int) $request->getQueryParams()['draw'],
             'recordsTotal'    => $recordsTotal,
             'recordsFiltered' => $recordsFiltered,
             'data'            => $data,
@@ -292,9 +290,9 @@ class MediaController extends AbstractAdminController
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function upload(): Response
+    public function upload(): ResponseInterface
     {
         $media_folders = $this->allMediaFolders();
 
@@ -314,11 +312,11 @@ class MediaController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function uploadAction(Request $request): RedirectResponse
+    public function uploadAction(ServerRequestInterface $request): ResponseInterface
     {
         $all_folders = $this->allMediaFolders();
 
@@ -389,7 +387,7 @@ class MediaController extends AbstractAdminController
 
         $url = route('admin-media-upload');
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
@@ -440,7 +438,7 @@ class MediaController extends AbstractAdminController
             foreach (scandir($dir, SCANDIR_SORT_NONE) as $path) {
                 if (is_dir($dir . $path)) {
                     // What if there are user-defined subfolders “thumbs” or “watermarks”?
-                    if ($path != '.' && $path != '..' && $path != 'thumbs' && $path != 'watermark' && $recursive) {
+                    if ($path !== '.' && $path !== '..' && $path !== 'thumbs' && $path !== 'watermark' && $recursive) {
                         foreach ($this->scanFolders($dir . $path . '/', $recursive) as $subpath) {
                             $files[] = $path . '/' . $subpath;
                         }
@@ -464,7 +462,7 @@ class MediaController extends AbstractAdminController
      */
     private function allDiskFiles(string $media_folder, string $subfolders): array
     {
-        return $this->scanFolders(WT_DATA_DIR . $media_folder, $subfolders == 'include');
+        return $this->scanFolders(WT_DATA_DIR . $media_folder, $subfolders === 'include');
     }
 
     /**
@@ -521,7 +519,7 @@ class MediaController extends AbstractAdminController
                 $imgsize = getimagesize($full_path);
                 $html    .= '<dt>' . I18N::translate('Image dimensions') . '</dt>';
                 /* I18N: image dimensions, width × height */
-                $html    .= '<dd>' . I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1'])) . '</dd>';
+                $html .= '<dd>' . I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1'])) . '</dd>';
             } catch (Throwable $ex) {
                 // Not an image, or not a valid image?
             }

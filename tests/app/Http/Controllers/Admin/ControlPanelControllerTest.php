@@ -23,14 +23,14 @@ use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test the control panel controller
  *
  * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\ControlPanelController
  */
-class ControlPanelControllerTest extends \Fisharebest\Webtrees\TestCase
+class ControlPanelControllerTest extends TestCase
 {
     protected static $uses_database = true;
 
@@ -40,7 +40,8 @@ class ControlPanelControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testControlPanel(): void
     {
         $controller = new ControlPanelController();
-        $response   = $controller->controlPanel(
+        self::createRequest('GET', ['route' => 'control-panel']);
+        $response = $controller->controlPanel(
             new HousekeepingService(),
             new UpgradeService(new TimeoutService(microtime(true))),
             new ModuleService(),
@@ -48,7 +49,7 @@ class ControlPanelControllerTest extends \Fisharebest\Webtrees\TestCase
             new UserService()
         );
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -56,10 +57,10 @@ class ControlPanelControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testControlPanelManager(): void
     {
-        $controller     = new ControlPanelController();
-        $module_service = new ModuleService();
-        $response       = $controller->controlPanelManager($module_service);
+        $controller = new ControlPanelController();
+        self::createRequest('GET', ['route' => 'control-panel']);
+        $response = $controller->controlPanelManager(new ModuleService());
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 }

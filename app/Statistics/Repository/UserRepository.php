@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
+use function count;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
@@ -72,7 +73,7 @@ class UserRepository implements UserRepositoryInterface
             }
         }
 
-        $count_logged_in = \count($logged_in);
+        $count_logged_in = count($logged_in);
 
         if ($count_logged_in === 0 && $anonymous === 0) {
             $content .= I18N::translate('No signed-in and no anonymous users');
@@ -169,7 +170,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function usersLoggedInTotal(): int
     {
-        return \count($this->user_service->allLoggedIn());
+        return count($this->user_service->allLoggedIn());
     }
 
     /**
@@ -240,7 +241,7 @@ class UserRepository implements UserRepositoryInterface
      */
     private function getUserCount(): int
     {
-        return \count($this->user_service->all());
+        return count($this->user_service->all());
     }
 
     /**
@@ -250,7 +251,7 @@ class UserRepository implements UserRepositoryInterface
      */
     private function getAdminCount(): int
     {
-        return \count($this->user_service->administrators());
+        return count($this->user_service->administrators());
     }
 
     /**

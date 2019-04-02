@@ -35,9 +35,8 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for configuring the modules.
@@ -79,9 +78,9 @@ class ModuleController extends AbstractAdminController
     /**
      * Show the administrator a list of modules.
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function list(): Response
+    public function list(): ResponseInterface
     {
         return $this->viewResponse('admin/modules', [
             'title'           => I18N::translate('All modules'),
@@ -91,9 +90,9 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function listAnalytics(): Response
+    public function listAnalytics(): ResponseInterface
     {
         return $this->listComponents(
             ModuleAnalyticsInterface::class,
@@ -103,9 +102,9 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function listBlocks(): Response
+    public function listBlocks(): ResponseInterface
     {
         return $this->listComponents(
             ModuleBlockInterface::class,
@@ -115,9 +114,9 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function listCharts(): Response
+    public function listCharts(): ResponseInterface
     {
         return $this->listComponents(
             ModuleChartInterface::class,
@@ -127,9 +126,9 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function listFooters(): Response
+    public function listFooters(): ResponseInterface
     {
         return $this->listComponents(
             ModuleFooterInterface::class,
@@ -139,9 +138,9 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function listHistory(): Response
+    public function listHistory(): ResponseInterface
     {
         return $this->listComponents(
             ModuleHistoricEventsInterface::class,
@@ -151,9 +150,9 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function listLanguages(): Response
+    public function listLanguages(): ResponseInterface
     {
         return $this->listComponents(
             ModuleLanguageInterface::class,
@@ -161,11 +160,11 @@ class ModuleController extends AbstractAdminController
             ''
         );
     }
-    
+
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function listLists(): Response
+    public function listLists(): ResponseInterface
     {
         return $this->listComponents(
             ModuleListInterface::class,
@@ -175,9 +174,9 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function listMenus(): Response
+    public function listMenus(): ResponseInterface
     {
         return $this->listComponents(
             ModuleMenuInterface::class,
@@ -187,9 +186,9 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function listReports(): Response
+    public function listReports(): ResponseInterface
     {
         return $this->listComponents(
             ModuleReportInterface::class,
@@ -199,9 +198,9 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function listSidebars(): Response
+    public function listSidebars(): ResponseInterface
     {
         return $this->listComponents(
             ModuleSidebarInterface::class,
@@ -211,9 +210,9 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function listTabs(): Response
+    public function listTabs(): ResponseInterface
     {
         return $this->listComponents(
             ModuleTabInterface::class,
@@ -223,9 +222,9 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function listThemes(): Response
+    public function listThemes(): ResponseInterface
     {
         return $this->listComponents(
             ModuleThemeInterface::class,
@@ -239,12 +238,12 @@ class ModuleController extends AbstractAdminController
      * @param string $title
      * @param string $description
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    private function listComponents(string $interface, string $title, string $description): Response
+    private function listComponents(string $interface, string $title, string $description): ResponseInterface
     {
-        $uses_access  = in_array($interface, self::COMPONENTS_WITH_ACCESS);
-        $uses_sorting = in_array($interface, self::COMPONENTS_WITH_SORT);
+        $uses_access  = in_array($interface, self::COMPONENTS_WITH_ACCESS, true);
+        $uses_sorting = in_array($interface, self::COMPONENTS_WITH_SORT, true);
 
         return $this->viewResponse('admin/components', [
             'description'  => $description,
@@ -260,16 +259,16 @@ class ModuleController extends AbstractAdminController
     /**
      * Update the enabled/disabled status of the modules.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function update(Request $request): RedirectResponse
+    public function update(ServerRequestInterface $request): ResponseInterface
     {
         $modules = $this->module_service->all(true);
 
         foreach ($modules as $module) {
-            $new_status = (bool) $request->get('status-' . $module->name());
+            $new_status = (bool) ($request->getParsedBody()['status-' . $module->name()] ?? false);
             $old_status = $module->isEnabled();
 
             if ($new_status !== $old_status) {
@@ -285,117 +284,117 @@ class ModuleController extends AbstractAdminController
             }
         }
 
-        return new RedirectResponse(route('modules'));
+        return redirect(route('modules'));
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function updateAnalytics(Request $request): RedirectResponse
+    public function updateAnalytics(ServerRequestInterface $request): ResponseInterface
     {
         $modules = $this->module_service->findByInterface(ModuleAnalyticsInterface::class, true);
 
         $this->updateStatus($modules, $request);
 
-        return new RedirectResponse(route('analytics'));
+        return redirect(route('analytics'));
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function updateBlocks(Request $request): RedirectResponse
+    public function updateBlocks(ServerRequestInterface $request): ResponseInterface
     {
         $modules = $this->module_service->findByInterface(ModuleBlockInterface::class, true);
 
         $this->updateStatus($modules, $request);
         $this->updateAccessLevel($modules, ModuleBlockInterface::class, $request);
 
-        return new RedirectResponse(route('blocks'));
+        return redirect(route('blocks'));
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function updateCharts(Request $request): RedirectResponse
+    public function updateCharts(ServerRequestInterface $request): ResponseInterface
     {
         $modules = $this->module_service->findByInterface(ModuleChartInterface::class, true);
 
         $this->updateStatus($modules, $request);
         $this->updateAccessLevel($modules, ModuleChartInterface::class, $request);
 
-        return new RedirectResponse(route('charts'));
+        return redirect(route('charts'));
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function updateFooters(Request $request): RedirectResponse
+    public function updateFooters(ServerRequestInterface $request): ResponseInterface
     {
         $modules = $this->module_service->findByInterface(ModuleFooterInterface::class, true);
 
         $this->updateStatus($modules, $request);
         $this->updateOrder($modules, 'footer_order', $request);
 
-        return new RedirectResponse(route('footers'));
+        return redirect(route('footers'));
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function updateHistory(Request $request): RedirectResponse
+    public function updateHistory(ServerRequestInterface $request): ResponseInterface
     {
         $modules = $this->module_service->findByInterface(ModuleHistoricEventsInterface::class, true);
 
         $this->updateStatus($modules, $request);
 
-        return new RedirectResponse(route('history'));
+        return redirect(route('history'));
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function updateLanguages(Request $request): RedirectResponse
+    public function updateLanguages(ServerRequestInterface $request): ResponseInterface
     {
         $modules = $this->module_service->findByInterface(ModuleLanguageInterface::class, true);
 
         $this->updateStatus($modules, $request);
 
-        return new RedirectResponse(route('languages'));
+        return redirect(route('languages'));
     }
-    
+
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function updateLists(Request $request): RedirectResponse
+    public function updateLists(ServerRequestInterface $request): ResponseInterface
     {
         $modules = $this->module_service->findByInterface(ModuleListInterface::class, true);
 
         $this->updateStatus($modules, $request);
         $this->updateAccessLevel($modules, ModuleListInterface::class, $request);
 
-        return new RedirectResponse(route('lists'));
+        return redirect(route('lists'));
     }
-    
+
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function updateMenus(Request $request): RedirectResponse
+    public function updateMenus(ServerRequestInterface $request): ResponseInterface
     {
         $modules = $this->module_service->findByInterface(ModuleMenuInterface::class, true);
 
@@ -403,30 +402,30 @@ class ModuleController extends AbstractAdminController
         $this->updateOrder($modules, 'menu_order', $request);
         $this->updateAccessLevel($modules, ModuleMenuInterface::class, $request);
 
-        return new RedirectResponse(route('menus'));
+        return redirect(route('menus'));
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function updateReports(Request $request): RedirectResponse
+    public function updateReports(ServerRequestInterface $request): ResponseInterface
     {
         $modules = $this->module_service->findByInterface(ModuleReportInterface::class, true);
 
         $this->updateStatus($modules, $request);
         $this->updateAccessLevel($modules, ModuleReportInterface::class, $request);
 
-        return new RedirectResponse(route('reports'));
+        return redirect(route('reports'));
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function updateSidebars(Request $request): RedirectResponse
+    public function updateSidebars(ServerRequestInterface $request): ResponseInterface
     {
         $modules = $this->module_service->findByInterface(ModuleSidebarInterface::class, true);
 
@@ -434,15 +433,15 @@ class ModuleController extends AbstractAdminController
         $this->updateOrder($modules, 'sidebar_order', $request);
         $this->updateAccessLevel($modules, ModuleSidebarInterface::class, $request);
 
-        return new RedirectResponse(route('sidebars'));
+        return redirect(route('sidebars'));
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function updateTabs(Request $request): RedirectResponse
+    public function updateTabs(ServerRequestInterface $request): ResponseInterface
     {
         $modules = $this->module_service->findByInterface(ModuleTabInterface::class, true);
 
@@ -450,35 +449,35 @@ class ModuleController extends AbstractAdminController
         $this->updateOrder($modules, 'tab_order', $request);
         $this->updateAccessLevel($modules, ModuleTabInterface::class, $request);
 
-        return new RedirectResponse(route('tabs'));
+        return redirect(route('tabs'));
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function updateThemes(Request $request): RedirectResponse
+    public function updateThemes(ServerRequestInterface $request): ResponseInterface
     {
         $modules = $this->module_service->findByInterface(ModuleThemeInterface::class, true);
 
         $this->updateStatus($modules, $request);
 
-        return new RedirectResponse(route('themes'));
+        return redirect(route('themes'));
     }
 
     /**
      * Update the access levels of the modules.
      *
-     * @param Collection $modules
-     * @param string     $column
-     * @param Request    $request
+     * @param Collection             $modules
+     * @param string                 $column
+     * @param ServerRequestInterface $request
      *
      * @return void
      */
-    private function updateOrder(Collection $modules, string $column, Request $request): void
+    private function updateOrder(Collection $modules, string $column, ServerRequestInterface $request): void
     {
-        $order = (array) $request->get('order');
+        $order = (array) ($request->getParsedBody()['order'] ?? []);
         $order = array_flip($order);
 
         foreach ($modules as $module) {
@@ -493,15 +492,15 @@ class ModuleController extends AbstractAdminController
     /**
      * Update the access levels of the modules.
      *
-     * @param Collection $modules
-     * @param Request    $request
+     * @param Collection             $modules
+     * @param ServerRequestInterface $request
      *
      * @return void
      */
-    private function updateStatus(Collection $modules, Request $request): void
+    private function updateStatus(Collection $modules, ServerRequestInterface $request): void
     {
         foreach ($modules as $module) {
-            $enabled = (bool) $request->get('status-' . $module->name());
+            $enabled = (bool) ($request->getParsedBody()['status-' . $module->name()] ?? false);
 
             if ($enabled !== $module->isEnabled()) {
                 DB::table('module')
@@ -522,20 +521,20 @@ class ModuleController extends AbstractAdminController
     /**
      * Update the access levels of the modules.
      *
-     * @param Collection $modules
-     * @param string     $interface
-     * @param Request    $request
+     * @param Collection             $modules
+     * @param string                 $interface
+     * @param ServerRequestInterface $request
      *
      * @return void
      */
-    private function updateAccessLevel(Collection $modules, string $interface, Request $request): void
+    private function updateAccessLevel(Collection $modules, string $interface, ServerRequestInterface $request): void
     {
         $trees = Tree::all();
 
         foreach ($modules as $module) {
             foreach ($trees as $tree) {
                 $key          = 'access-' . $module->name() . '-' . $tree->id();
-                $access_level = (int) $request->get($key);
+                $access_level = (int) ($request->getParsedBody()[$key] ?? 0);
 
                 if ($access_level !== $module->accessLevel($tree, $interface)) {
                     DB::table('module_privacy')->updateOrInsert([
@@ -553,13 +552,13 @@ class ModuleController extends AbstractAdminController
     /**
      * Delete the database settings for a deleted module.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function deleteModuleSettings(Request $request): RedirectResponse
+    public function deleteModuleSettings(ServerRequestInterface $request): ResponseInterface
     {
-        $module_name = $request->get('module_name');
+        $module_name = $request->getParsedBody()['module_name'];
 
         DB::table('block_setting')
             ->join('block', 'block_setting.block_id', '=', 'block.block_id')
@@ -586,6 +585,6 @@ class ModuleController extends AbstractAdminController
 
         FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been deleted.', $module_name), 'success');
 
-        return new RedirectResponse(route('modules'));
+        return redirect(route('modules'));
     }
 }

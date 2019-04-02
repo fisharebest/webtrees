@@ -17,9 +17,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Closure;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fig\Http\Message\StatusCodeInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 /**
  * Middleware to check whether the site is offline.
@@ -27,24 +29,24 @@ use Symfony\Component\HttpFoundation\Response;
 class CheckForMaintenanceMode implements MiddlewareInterface
 {
     /**
-     * @param Request $request
-     * @param Closure $next
+     * @param ServerRequestInterface  $request
+     * @param RequestHandlerInterface $handler
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function handle(Request $request, Closure $next): Response
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $file = WT_ROOT . 'data/offline.txt';
 
         if (file_exists($file)) {
             $html = view('layouts/offline', [
                 'message' => file_get_contents($file),
-                'url'     => $request->getRequestUri(),
+                'url'     => $request->getUri(),
             ]);
 
-            return new Response($html, Response::HTTP_SERVICE_UNAVAILABLE);
+            return response($html, StatusCodeInterface::STATUS_SERVICE_UNAVAILABLE);
         }
 
-        return $next($request);
+        return $handler->handle($request);
     }
 }

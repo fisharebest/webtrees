@@ -17,14 +17,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\TestCase;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Test the changes log controller
  *
  * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\MapProviderController
  */
-class MapProviderControllerTest extends \Fisharebest\Webtrees\TestCase
+class MapProviderControllerTest extends TestCase
 {
     protected static $uses_database = true;
 
@@ -33,10 +34,11 @@ class MapProviderControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMapProviderEdit(): void
     {
-        $controller = app(MapProviderController::class);
-        $response   = app()->dispatch($controller, 'mapProviderEdit');
+        $controller = new MapProviderController();
+        self::createRequest('GET', ['route' => 'map-provider']);
+        $response   = $controller->mapProviderEdit();
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -44,9 +46,10 @@ class MapProviderControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMapProviderSave(): void
     {
-        $controller = app(MapProviderController::class);
-        $response   = app()->dispatch($controller, 'mapProviderSave');
+        $controller = new MapProviderController();
+        $request    = self::createRequest('POST', ['route' => 'map-provider'], ['provider' => '']);
+        $response   = $controller->mapProviderSave($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 }

@@ -22,8 +22,8 @@ use Fisharebest\Webtrees\Census\CensusInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -54,26 +54,26 @@ class CensusAssistantModule extends AbstractModule
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getCensusHeaderAction(Request $request): Response
+    public function getCensusHeaderAction(ServerRequestInterface $request): ResponseInterface
     {
         $census = $request->get('census');
 
         $html = $this->censusTableHeader(new $census());
 
-        return new Response($html);
+        return response($html);
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getCensusIndividualAction(Request $request, Tree $tree): Response
+    public function getCensusIndividualAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $census = $request->get('census', '');
 
@@ -83,7 +83,7 @@ class CensusAssistantModule extends AbstractModule
         if ($individual instanceof Individual && $head instanceof Individual) {
             $html = $this->censusTableRow(new $census(), $individual, $head);
 
-            return new Response($html);
+            return response($html);
         }
 
         throw new NotFoundHttpException();
@@ -102,15 +102,15 @@ class CensusAssistantModule extends AbstractModule
     }
 
     /**
-     * @param Request    $request
-     * @param Individual $individual
-     * @param string     $fact_id
-     * @param string     $newged
-     * @param bool       $keep_chan
+     * @param ServerRequestInterface $request
+     * @param Individual             $individual
+     * @param string                 $fact_id
+     * @param string                 $newged
+     * @param bool                   $keep_chan
      *
      * @return string
      */
-    public function updateCensusAssistant(Request $request, Individual $individual, string $fact_id, string $newged, bool $keep_chan): string
+    public function updateCensusAssistant(ServerRequestInterface $request, Individual $individual, string $fact_id, string $newged, bool $keep_chan): string
     {
         $ca_title       = $request->get('ca_title', '');
         $ca_place       = $request->get('ca_place', '');

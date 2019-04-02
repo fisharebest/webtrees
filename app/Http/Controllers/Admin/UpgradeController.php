@@ -30,9 +30,9 @@ use League\Flysystem\Cached\CachedAdapter;
 use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use RuntimeException;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
@@ -95,17 +95,17 @@ class UpgradeController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function wizard(Request $request): Response
+    public function wizard(ServerRequestInterface $request): ResponseInterface
     {
-        $continue = (bool) $request->get('continue');
+        $continue = $request->getQueryParams()['continue'] ?? '';
 
         $title = I18N::translate('Upgrade wizard');
 
-        if ($continue) {
+        if ($continue === '1') {
             return $this->viewResponse('admin/upgrade/steps', [
                 'steps' => $this->wizardSteps(),
                 'title' => $title,
@@ -152,14 +152,14 @@ class UpgradeController extends AbstractAdminController
     /**
      * Perform one step of the wizard
      *
-     * @param Request   $request
-     * @param Tree|null $tree
+     * @param ServerRequestInterface $request
+     * @param Tree|null              $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function step(Request $request, ?Tree $tree): Response
+    public function step(ServerRequestInterface $request, ?Tree $tree): ResponseInterface
     {
-        $step = $request->get('step');
+        $step = $request->getParsedBody()['step'];
 
         switch ($step) {
             case self::STEP_CHECK:
@@ -195,9 +195,9 @@ class UpgradeController extends AbstractAdminController
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    private function wizardStepCheck(): Response
+    private function wizardStepCheck(): ResponseInterface
     {
         $latest_version = $this->upgrade_service->latestVersion();
 
@@ -213,7 +213,7 @@ class UpgradeController extends AbstractAdminController
         /* I18N: %s is a version number, such as 1.2.3 */
         $alert = I18N::translate('Upgrade to webtrees %s.', e($latest_version));
 
-        return new Response(view('components/alert-success', [
+        return response(view('components/alert-success', [
             'alert' => $alert,
         ]));
     }
@@ -221,22 +221,22 @@ class UpgradeController extends AbstractAdminController
     /**
      * Make sure the temporary folder exists.
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    private function wizardStepPrepare(): Response
+    private function wizardStepPrepare(): ResponseInterface
     {
         $this->filesystem->deleteDir(self::UPGRADE_FOLDER);
         $this->filesystem->createDir(self::UPGRADE_FOLDER);
 
-        return new Response(view('components/alert-success', [
+        return response(view('components/alert-success', [
             'alert' => I18N::translate('The folder %s has been created.', e(self::UPGRADE_FOLDER)),
         ]));
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    private function wizardStepPending(): Response
+    private function wizardStepPending(): ResponseInterface
     {
         $changes = DB::table('change')->where('status', '=', 'pending')->exists();
 
@@ -244,7 +244,7 @@ class UpgradeController extends AbstractAdminController
             throw new InternalServerErrorException(I18N::translate('You should accept or reject all pending changes before upgrading.'));
         }
 
-        return new Response(view('components/alert-success', [
+        return response(view('components/alert-success', [
             'alert' => I18N::translate('There are no pending changes.'),
         ]));
     }
@@ -252,9 +252,9 @@ class UpgradeController extends AbstractAdminController
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    private function wizardStepExport(Tree $tree): Response
+    private function wizardStepExport(Tree $tree): ResponseInterface
     {
         // We store the data in PHP temporary storage.
         $stream = fopen('php://temp', 'wb+');
@@ -274,15 +274,15 @@ class UpgradeController extends AbstractAdminController
         $this->filesystem->writeStream($tree->name() . date('-Y-m-d') . '.ged', $stream);
         fclose($stream);
 
-        return new Response(view('components/alert-success', [
+        return response(view('components/alert-success', [
             'alert' => I18N::translate('The family tree has been exported to %s.', e($filename)),
         ]));
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    private function wizardStepDownload(): Response
+    private function wizardStepDownload(): ResponseInterface
     {
         $start_time   = microtime(true);
         $download_url = $this->upgrade_service->downloadUrl();
@@ -297,15 +297,15 @@ class UpgradeController extends AbstractAdminController
         $end_time = microtime(true);
         $seconds  = I18N::number($end_time - $start_time, 2);
 
-        return new Response(view('components/alert-success', [
+        return response(view('components/alert-success', [
             'alert' => I18N::translate('%1$s KB were downloaded in %2$s seconds.', $kb, $seconds),
         ]));
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    private function wizardStepUnzip(): Response
+    private function wizardStepUnzip(): ResponseInterface
     {
         $zip_path   = WT_DATA_DIR . self::UPGRADE_FOLDER;
         $zip_file   = $zip_path . '/' . self::ZIP_FILENAME;
@@ -318,15 +318,15 @@ class UpgradeController extends AbstractAdminController
         /* I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds */
         $alert = I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', $count, I18N::number($count), $seconds);
 
-        return new Response(view('components/alert-success', [
+        return response(view('components/alert-success', [
             'alert' => $alert,
         ]));
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    private function wizardStepCopy(): Response
+    private function wizardStepCopy(): ResponseInterface
     {
         $source_filesystem = new Filesystem(new ChrootAdapter($this->temporary_filesystem, self::ZIP_FILE_PREFIX));
 
@@ -334,15 +334,15 @@ class UpgradeController extends AbstractAdminController
         $this->upgrade_service->moveFiles($source_filesystem, $this->root_filesystem);
         $this->upgrade_service->endMaintenanceMode();
 
-        return new Response(view('components/alert-success', [
+        return response(view('components/alert-success', [
             'alert' => I18N::translate('The upgrade is complete.'),
         ]));
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    private function wizardStepCleanup(): Response
+    private function wizardStepCleanup(): ResponseInterface
     {
         $zip_path         = WT_DATA_DIR . self::UPGRADE_FOLDER;
         $zip_file         = $zip_path . '/' . self::ZIP_FILENAME;
@@ -356,7 +356,7 @@ class UpgradeController extends AbstractAdminController
         $url    = route('control-panel');
         $button = '<a href="' . e($url) . '" class="btn btn-primary">' . I18N::translate('continue') . '</a>';
 
-        return new Response(view('components/alert-success', [
+        return response(view('components/alert-success', [
             'alert' => $button,
         ]));
     }

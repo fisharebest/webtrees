@@ -20,8 +20,8 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\I18N;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for help text.
@@ -158,11 +158,11 @@ class HelpTextController extends AbstractBaseController
     /**
      * Help for dates.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function helpText(Request $request): Response
+    public function helpText(ServerRequestInterface $request): ResponseInterface
     {
         $topic = $request->get('topic');
 
@@ -264,7 +264,7 @@ class HelpTextController extends AbstractBaseController
             'text'  => $text,
         ]);
 
-        return new Response($html);
+        return response($html);
     }
 
     /**

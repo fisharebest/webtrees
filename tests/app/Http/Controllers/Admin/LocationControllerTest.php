@@ -17,17 +17,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
+use Fisharebest\Webtrees\Services\GedcomService;
+use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use function dirname;
 
 /**
  * Test the location admin controller
  *
  * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\LocationController
  */
-class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
+class LocationControllerTest extends TestCase
 {
     protected static $uses_database = true;
 
@@ -36,10 +36,11 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMapData(): void
     {
-        $controller = app(LocationController::class);
-        $response = app()->dispatch($controller, 'mapData');
+        $controller = new LocationController(new GedcomService());
+        $request    = self::createRequest('GET', ['route' => 'map-data']);
+        $response   = $controller->mapData($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -47,10 +48,11 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMapDataEdit(): void
     {
-        $controller = app(LocationController::class);
-        $response = app()->dispatch($controller, 'mapDataEdit');
+        $controller = new LocationController(new GedcomService());
+        $request    = self::createRequest('GET', ['route' => 'map-data-edit', 'place_id' => '0', 'parent_id' => '0']);
+        $response   = $controller->mapDataEdit($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -58,10 +60,21 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMapDataSave(): void
     {
-        $controller = app(LocationController::class);
-        $response = app()->dispatch($controller, 'mapDataSave');
+        $controller = new LocationController(new GedcomService());
+        $request    = self::createRequest('POST', ['route' => 'map-data-edit'], [
+            'parent_id' => '0',
+            'place_id' => '0',
+            'new_place_lati' => '-12.345',
+            'new_place_long' => '-123.45',
+            'icon' => '',
+            'new_zoom_factor' => '2',
+            'new_place_name' => 'place',
+            'lati_control' => 'S',
+            'long_control' => 'W',
+        ]);
+        $response   = $controller->mapDataSave($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -69,10 +82,11 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMapDataDelete(): void
     {
-        $controller = app(LocationController::class);
-        $response = app()->dispatch($controller, 'mapDataDelete');
+        $controller = new LocationController(new GedcomService());
+        $request    = self::createRequest('POST', ['route' => 'map-data-delete'], ['parent_id' => '0', 'place_id' => '0']);
+        $response   = $controller->mapDataDelete($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -80,10 +94,12 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testExportLocations(): void
     {
-        $controller = app(LocationController::class);
-        $response = app()->dispatch($controller, 'exportLocations');
+        $controller = new LocationController(new GedcomService());
+        $request    = self::createRequest('GET', ['route' => 'locations-export', 'parent_id' => '0', 'format' => 'geojson']);
+        $response   = $controller->exportLocations($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
+        $this->assertSame($response->getHeaderLine('Content-type'), 'application/vnd.geo+json');
     }
 
     /**
@@ -91,10 +107,11 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testImportLocations(): void
     {
-        $controller = app(LocationController::class);
-        $response = app()->dispatch($controller, 'importLocations');
+        $controller = new LocationController(new GedcomService());
+        $request    = self::createRequest('GET', ['route' => 'locations-import'], ['parent_id' => '0']);
+        $response   = $controller->importLocations($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -102,14 +119,12 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testImportLocationsAction(): void
     {
-        $csv = new UploadedFile(dirname(__DIR__, 4) . '/data/places.csv', 'places.csv', 'image/jpeg', UPLOAD_ERR_OK);
+        $csv        = $this->createUploadedFile(dirname(__DIR__, 4) . '/data/places.csv', 'text/csv');
+        $controller = new LocationController(new GedcomService());
+        $request    = self::createRequest('POST', ['route' => 'locations-import'], ['parent_id' => '0'], ['csv' => $csv]);
+        $response   = $controller->importLocationsAction($request);
 
-        app()->instance(Request::class, new Request([], [], [], [], ['localfile' => $csv]));
-
-        $controller = app(LocationController::class);
-        $response = app()->dispatch($controller, 'importLocationsAction');
-
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -117,11 +132,11 @@ class LocationControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testImportLocationsFromTree(): void
     {
-        app()->instance(Tree::class, Tree::create('name', 'title'));
+        $tree       = Tree::create('name', 'title');
+        $controller = new LocationController(new GedcomService());
+        self::createRequest('POST', ['route' => 'locations-import-from-tree']);
+        $response = $controller->importLocationsFromTree($tree);
 
-        $controller = app(LocationController::class);
-        $response = app()->dispatch($controller, 'importLocationsFromTree');
-
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 }

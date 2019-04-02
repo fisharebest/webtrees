@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
+use Exception;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use stdClass;
@@ -96,7 +97,7 @@ class Family extends GedcomRecord
      * @param Tree        $tree
      * @param string|null $gedcom
      *
-     * @throws \Exception
+     * @throws Exception
      *
      * @return Family|null
      */

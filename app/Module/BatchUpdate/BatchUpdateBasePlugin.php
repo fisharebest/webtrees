@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
 use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\GedcomRecord;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class BatchUpdateBasePlugin
@@ -53,11 +53,11 @@ abstract class BatchUpdateBasePlugin
     /**
      * Default option is just the "don't update CHAN record"
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return void
      */
-    public function getOptions(Request $request): void
+    public function getOptions(ServerRequestInterface $request): void
     {
     }
 

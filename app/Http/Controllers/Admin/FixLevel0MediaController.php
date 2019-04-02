@@ -25,10 +25,9 @@ use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Controller for fixing media links.
@@ -39,9 +38,9 @@ class FixLevel0MediaController extends AbstractAdminController
      * If media objects are wronly linked to top-level records, reattach them
      * to facts/events.
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function fixLevel0Media(): Response
+    public function fixLevel0Media(): ResponseInterface
     {
         return $this->viewResponse('admin/fix-level-0-media', [
             'title' => I18N::translate('Link media objects to facts and events'),
@@ -51,16 +50,16 @@ class FixLevel0MediaController extends AbstractAdminController
     /**
      * Move a link to a media object from a level 0 record to a level 1 record.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function fixLevel0MediaAction(Request $request): Response
+    public function fixLevel0MediaAction(ServerRequestInterface $request): ResponseInterface
     {
-        $fact_id   = $request->get('fact_id', '');
-        $indi_xref = $request->get('indi_xref', '');
-        $obje_xref = $request->get('obje_xref', '');
-        $tree_id   = (int) $request->get('tree_id');
+        $fact_id   = $request->getParsedBody()['fact_id'];
+        $indi_xref = $request->getParsedBody()['indi_xref'];
+        $obje_xref = $request->getParsedBody()['obje_xref'];
+        $tree_id   = (int) $request->getParsedBody()['tree_id'];
 
         $tree       = Tree::findById($tree_id);
         $individual = Individual::getInstance($indi_xref, $tree);
@@ -80,19 +79,19 @@ class FixLevel0MediaController extends AbstractAdminController
             }
         }
 
-        return new Response();
+        return response();
     }
 
     /**
      * If media objects are wronly linked to top-level records, reattach them
      * to facts/events.
      *
-     * @param Request           $request
-     * @param DatatablesService $datatables_service
+     * @param ServerRequestInterface $request
+     * @param DatatablesService      $datatables_service
      *
-     * @return JsonResponse
+     * @return ResponseInterface
      */
-    public function fixLevel0MediaData(Request $request, DatatablesService $datatables_service): JsonResponse
+    public function fixLevel0MediaData(ServerRequestInterface $request, DatatablesService $datatables_service): ResponseInterface
     {
         $ignore_facts = [
             'FAMC',

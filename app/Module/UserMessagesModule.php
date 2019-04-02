@@ -27,10 +27,9 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class UserMessagesModule
@@ -79,12 +78,12 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Delete one or messages belonging to a user.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function postDeleteMessageAction(Request $request, Tree $tree): Response
+    public function postDeleteMessageAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $message_ids = (array) $request->get('message_id', []);
 
@@ -99,7 +98,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             $url = route('tree-page', ['ged' => $tree->name()]);
         }
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
@@ -246,12 +245,12 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
-     * @param int     $block_id
+     * @param ServerRequestInterface $request
+     * @param int                    $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
     }
 

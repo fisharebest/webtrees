@@ -15,37 +15,59 @@
  */
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
-use Fisharebest\Webtrees\Exceptions\Handler;
-use Fisharebest\Webtrees\Http\Controllers\SetupController;
 use Fisharebest\Webtrees\Http\Middleware\BootModules;
 use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\DebugBarData;
+use Fisharebest\Webtrees\Http\Middleware\ExceptionHandler;
 use Fisharebest\Webtrees\Http\Middleware\Housekeeping;
-use Fisharebest\Webtrees\Http\Middleware\MiddlewareInterface;
+use Fisharebest\Webtrees\Http\Middleware\ModuleMiddleware;
+use Fisharebest\Webtrees\Http\Middleware\RequestRouter;
+use Fisharebest\Webtrees\Http\Middleware\UpdateDatabaseSchema;
+use Fisharebest\Webtrees\Http\Middleware\UseCache;
+use Fisharebest\Webtrees\Http\Middleware\UseDatabase;
 use Fisharebest\Webtrees\Http\Middleware\UseFilesystem;
 use Fisharebest\Webtrees\Http\Middleware\UseLocale;
 use Fisharebest\Webtrees\Http\Middleware\UseSession;
 use Fisharebest\Webtrees\Http\Middleware\UseTheme;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Fisharebest\Webtrees\Http\Middleware\UseTree;
-use Fisharebest\Webtrees\Services\MigrationService;
-use Fisharebest\Webtrees\Services\ModuleService;
-use Fisharebest\Webtrees\Services\TimeoutService;
+use Fisharebest\Webtrees\Http\Request as SymfonyRequest;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Cache\ArrayStore;
-use Illuminate\Cache\Repository;
-use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Middleland\Dispatcher;
+use Narrowspark\HttpEmitter\SapiEmitter;
+use Nyholm\Psr7\Factory\Psr17Factory;
+use Nyholm\Psr7Server\ServerRequestCreator;
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ServerRequestFactoryInterface;
+use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Message\UploadedFileFactoryInterface;
+use Psr\Http\Message\UriFactoryInterface;
 
 require __DIR__ . '/vendor/autoload.php';
 
 const WT_ROOT = __DIR__ . DIRECTORY_SEPARATOR;
 
 Webtrees::init();
+
+// Use nyholm/psr7 for our PSR7 messages and PSR17 factory.
+app()->bind(ResponseFactoryInterface::class, Psr17Factory::class);
+app()->bind(ServerRequestFactoryInterface::class, Psr17Factory::class);
+app()->bind(StreamFactoryInterface::class, Psr17Factory::class);
+app()->bind(UploadedFileFactoryInterface::class, Psr17Factory::class);
+app()->bind(UriFactoryInterface::class, Psr17Factory::class);
+
+// Use nyholm/psr7-server to create a request from the PHP environment.
+$server_request_creator = new ServerRequestCreator(
+    app(ServerRequestFactoryInterface::class),
+    app(UriFactoryInterface::class),
+    app(UploadedFileFactoryInterface::class),
+    app(StreamFactoryInterface::class)
+);
+
+// Create a PSR-7 request
+$request = $server_request_creator->fromGlobals();
 
 // Initialise the DebugBar for development.
 // Use `composer install --dev` on a development build to enable.
@@ -55,111 +77,37 @@ Webtrees::init();
 // fastcgi_buffer_size 32m;
 DebugBar::init(class_exists('\\DebugBar\\StandardDebugBar'));
 
-// Use an array cache for database calls, etc.
-app()->instance('cache.array', new Repository(new ArrayStore()));
-
-// Start the timer.
-app()->instance(TimeoutService::class, new TimeoutService(microtime(true)));
-
-// Extract the request parameters.
-$request = Request::createFromGlobals();
-app()->instance(Request::class, $request);
+// Until all the code is rewritten to use PSR-7 requests, we still need our hybrid request.
+$request = SymfonyRequest::createFromGlobals();
 
 // Calculate the base URL, so we can generate absolute URLs.
-$request_uri = $request->getSchemeAndHttpHost() . $request->getRequestUri();
-
 // Remove any PHP script name and parameters.
-$base_uri = preg_replace('/[^\/]+\.php(\?.*)?$/', '', $request_uri);
-define('WT_BASE_URL', $base_uri);
+define('WT_BASE_URL', preg_replace('/[^\/]+\.php(\?.*)?$/', '', $request->getUri()));
 
-try {
-    // No config file? Run the setup wizard
-    if (!file_exists(Webtrees::CONFIG_FILE)) {
-        define('WT_DATA_DIR', 'data/');
+$middleware = [
+    ExceptionHandler::class,
+    CheckForMaintenanceMode::class,
+    UseDatabase::class,
+    DebugBarData::class,
+    UpdateDatabaseSchema::class,
+    UseCache::class,
+    UseFilesystem::class,
+    UseSession::class,
+    UseTree::class,
+    UseLocale::class,
+    UseTheme::class,
+    Housekeeping::class,
+    CheckCsrf::class,
+    UseTransaction::class,
+    BootModules::class,
+    ModuleMiddleware::class,
+    RequestRouter::class,
+];
 
-        /** @var SetupController $controller */
-        $controller = app(SetupController::class);
-        $response   = $controller->setup($request);
-        $response->prepare($request)->send();
+// Dispatch the middleware.
+$dispatcher = new Dispatcher($middleware, app());
+$response   = $dispatcher->dispatch($request);
 
-        return;
-    }
-
-    $database_config = parse_ini_file(Webtrees::CONFIG_FILE);
-
-    // Read the connection settings and create the database
-    Database::connect($database_config);
-
-    // Update the database schema, if necessary.
-    app(MigrationService::class)->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
-
-    // Middleware allows code to intercept the request before it reaches the controller, and to
-    // intercept the response afterwards.
-    //
-    //                   +----------------------------------+
-    //                   |           Middleware1            |
-    //                   | +------------------------------+ |
-    //                   | |         Middleware2          | |
-    //                   | | +--------------------------+ | |
-    //                   | | |                          | | |
-    //       Request ----|-|-|-> Controller::action() --|-|-|---> Response
-    //                   | | |                          | | |
-    //                   | | +--------------------------+ | |
-    //                   | |                              | |
-    //                   | +------------------------------+ |
-    //                   |                                  |
-    //                   +----------------------------------+
-
-    // Create the middleware, from the "inside" to the "outside".
-    /** @var Collection $middleware_stack */
-    $middleware_stack = app(ModuleService::class)
-        ->findByInterface(MiddlewareInterface::class);
-
-    // Core middleware.
-    $middleware_stack = $middleware_stack->merge([
-        CheckCsrf::class,
-        UseTransaction::class,
-        Housekeeping::class,
-        DebugBarData::class,
-        BootModules::class,
-        UseTheme::class,
-        UseLocale::class,
-        UseTree::class,
-        UseSession::class,
-        UseFilesystem::class,
-        CheckForMaintenanceMode::class,
-    ]);
-
-    // Construct the core middleware *after* loading the modules, to reduce dependencies.
-    $middleware_stack = $middleware_stack->map(static function ($middleware): MiddlewareInterface {
-        return $middleware instanceof MiddlewareInterface ? $middleware : app($middleware);
-    });
-
-    // Create a pipeline, which applies the middleware as a nested function call.
-    $pipeline = $middleware_stack->reduce(static function (Closure $next, MiddlewareInterface $middleware): Closure {
-        // Create a closure to apply the middleware.
-        return function (Request $request) use ($middleware, $next): Response {
-            return $middleware->handle($request, $next);
-        };
-    }, static function (Request $request): Response {
-        // Load the route and routing table.
-        $route  = $request->get('route');
-        $routes = require 'routes/web.php';
-
-        // Find the controller and action for the selected route
-        $controller_action = $routes[$request->getMethod() . ':' . $route] ?? 'ErrorController@noRouteFound';
-        [$controller_name, $action] = explode('@', $controller_action);
-        $controller_class = '\\Fisharebest\\Webtrees\\Http\\Controllers\\' . $controller_name;
-
-        $controller = app($controller_class);
-
-        return app()->dispatch($controller, $action);
-    });
-
-    $response = $pipeline($request);
-} catch (Throwable $exception) {
-    $response = (new Handler())->render($request, $exception);
-}
-
-// Send response
-$response->prepare($request)->send();
+// Emit the response.
+$emitter = new SapiEmitter();
+$emitter->emit($response);

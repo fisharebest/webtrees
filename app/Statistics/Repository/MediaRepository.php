@@ -17,12 +17,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
+use function array_slice;
+use function count;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Google\ChartMedia;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\MediaRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
+use function in_array;
 
 /**
  * A repository providing methods for media type related statistics.
@@ -105,7 +108,7 @@ class MediaRepository implements MediaRepositoryInterface
     {
         if (($type !== self::MEDIA_TYPE_ALL)
             && ($type !== self::MEDIA_TYPE_UNKNOWN)
-            && !\in_array($type, self::MEDIA_TYPES, true)
+            && !in_array($type, self::MEDIA_TYPES, true)
         ) {
             return 0;
         }
@@ -330,9 +333,9 @@ class MediaRepository implements MediaRepositoryInterface
             }
         }
 
-        if (\count($media) > 10 && ($max / $tot) > 0.6) {
+        if (count($media) > 10 && ($max / $tot) > 0.6) {
             arsort($media);
-            $media = \array_slice($media, 0, 10);
+            $media = array_slice($media, 0, 10);
             $c     = $tot;
 
             foreach ($media as $cm) {

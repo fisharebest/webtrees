@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
+use Exception;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -32,6 +33,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
+use function in_array;
 use stdClass;
 
 /**
@@ -348,7 +350,7 @@ class FamilyRepository
      * @param int $total The total number of records to query
      *
      * @return array
-     * @throws \Exception
+     * @throws Exception
      */
     private function ageBetweenSiblingsNoList(int $total): array
     {
@@ -380,7 +382,7 @@ class FamilyRepository
      * @param bool $one   Include each family only once if true
      *
      * @return array
-     * @throws \Exception
+     * @throws Exception
      */
     private function ageBetweenSiblingsList(int $total, bool $one): array
     {
@@ -395,7 +397,7 @@ class FamilyRepository
 
             $age = $this->calculateAge((int) $fam->age);
 
-            if ($one && !\in_array($fam->family, $dist, true)) {
+            if ($one && !in_array($fam->family, $dist, true)) {
                 if ($child1->canShow() && $child2->canShow()) {
                     $top10[] = [
                         'child1' => $child1,
@@ -443,7 +445,7 @@ class FamilyRepository
      * @param int $total The total number of records to query
      *
      * @return string
-     * @throws \Exception
+     * @throws Exception
      */
     private function ageBetweenSiblingsName(int $total): string
     {

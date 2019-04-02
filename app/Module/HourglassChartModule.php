@@ -24,8 +24,8 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -90,13 +90,13 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * A form to request the chart parameters.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getChartAction(Request $request, Tree $tree, UserInterface $user): Response
+    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $ajax       = (bool) $request->get('ajax');
         $xref       = $request->get('xref', '');
@@ -141,9 +141,9 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      * @param int        $generations
      * @param bool       $show_spouse
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    protected function chart(Individual $individual, int $generations, bool $show_spouse): Response
+    protected function chart(Individual $individual, int $generations, bool $show_spouse): ResponseInterface
     {
         ob_start();
         $this->printDescendency($individual, 1, $generations, $show_spouse, true);
@@ -153,7 +153,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         $this->printPersonPedigree($individual, 1, $generations, $show_spouse);
         $ancestors = ob_get_clean();
 
-        return new Response(view('modules/hourglass-chart/chart', [
+        return response(view('modules/hourglass-chart/chart', [
             'descendants' => $descendants,
             'ancestors'   => $ancestors,
             'bhalfheight' => (int) (app(ModuleThemeInterface::class)->parameter('chart-box-y') / 2),
@@ -162,12 +162,12 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function postAncestorsAction(Request $request, Tree $tree): Response
+    public function postAncestorsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
@@ -180,16 +180,16 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         $this->printPersonPedigree($individual, 0, 1, $show_spouse);
         $html = ob_get_clean();
 
-        return new Response($html);
+        return response($html);
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function postDescendantsAction(Request $request, Tree $tree): Response
+    public function postDescendantsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $show_spouse = (bool) $request->get('show_spouse');
         $xref       = $request->get('xref', '');
@@ -203,7 +203,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         $this->printDescendency($individual, 1, 2, $show_spouse, false);
         $html = ob_get_clean();
 
-        return new Response($html);
+        return response($html);
     }
 
     /**

@@ -21,16 +21,15 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Test UsersController class.
  *
  * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\UsersController
  */
-class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
+class UsersControllerTest extends TestCase
 {
     protected static $uses_database = true;
 
@@ -40,9 +39,10 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testIndex(): void
     {
         $controller = new UsersController(new ModuleService(), new UserService());
-        $response   = $controller->index(new Request(), Auth::user());
+        $request    = self::createRequest('GET', ['route' => 'admin-users']);
+        $response   = $controller->index($request, Auth::user());
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -51,9 +51,10 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testData(): void
     {
         $controller = new UsersController(new ModuleService(), new UserService());
-        $response   = $controller->data(new DatatablesService(), new Request(), Auth::User());
+        $request    = self::createRequest('GET', ['route' => 'admin-users-data']);
+        $response   = $controller->data(new DatatablesService(), $request, Auth::User());
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -62,9 +63,10 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testCreate(): void
     {
         $controller = new UsersController(new ModuleService(), new UserService());
-        $response   = $controller->create(new Request());
+        $request    = self::createRequest('GET', ['route' => 'admin-users-create']);
+        $response   = $controller->create($request);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -73,9 +75,15 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testSave(): void
     {
         $controller = new UsersController(new ModuleService(), new UserService());
-        $response   = $controller->save(new Request());
+        $request    = self::createRequest('POST', ['route' => 'admin-users-create'], [
+            'username'  => 'User name',
+            'email'     => 'email@example.com',
+            'real_name' => 'Real Name',
+            'password'  => 'Secret1234',
+        ]);
+        $response   = $controller->save($request);
 
-        $this->assertSame(Response::HTTP_FOUND, $response->getStatusCode());
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -85,9 +93,10 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
     {
         $user       = (new UserService)->create('user', 'real', 'email', 'pass');
         $controller = new UsersController(new ModuleService(), new UserService());
-        $response   = $controller->edit(new Request(['user_id' => $user->id()]));
+        $request    = self::createRequest('GET', ['route' => 'admin-users-edit', 'user_id' => (string) $user->id()]);
+        $response   = $controller->edit($request);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -98,9 +107,26 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
         /** @var User $user */
         $user       = (new UserService)->create('user', 'real', 'email', 'pass');
         $controller = new UsersController(new ModuleService(), new UserService());
-        $response   = $controller->update(new Request(['user_id' => $user->id()]), $user);
+        $request    = self::createRequest('POST', ['route' => 'admin-users-edit'], [
+            'user_id'        => $user->id(),
+            'username'       => '',
+            'real_name'      => '',
+            'email'          => '',
+            'theme'          => '',
+            'password'       => '',
+            'language'       => '',
+            'timezone'       => '',
+            'comment'        => '',
+            'contact_method' => '',
+            'auto_accept'    => '',
+            'canadmin'       => '',
+            'visible_online' => '',
+            'verified'       => '',
+            'approved'       => '',
+        ]);
+        $response   = $controller->update($request, $user);
 
-        $this->assertSame(Response::HTTP_FOUND, $response->getStatusCode());
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -109,9 +135,10 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testCleanup(): void
     {
         $controller = new UsersController(new ModuleService(), new UserService());
-        $response   = $controller->cleanup(new Request());
+        $request    = self::createRequest('GET', ['route' => 'admin-users-cleanup']);
+        $response   = $controller->cleanup($request);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -120,8 +147,9 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testCleanupAction(): void
     {
         $controller = new UsersController(new ModuleService(), new UserService());
-        $response   = $controller->cleanupAction(new Request());
+        $request    = self::createRequest('POST', ['route' => 'admin-users-cleanup']);
+        $response   = $controller->cleanupAction($request);
 
-        $this->assertSame(Response::HTTP_FOUND, $response->getStatusCode());
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 }

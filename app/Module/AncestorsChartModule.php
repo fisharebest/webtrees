@@ -28,8 +28,8 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class AncestorsChartModule
@@ -113,14 +113,14 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * A form to request the chart parameters.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
-     * @param ChartService  $chart_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
+     * @param ChartService           $chart_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getChartAction(Request $request, Tree $tree, UserInterface $user, ChartService $chart_service): Response
+    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user, ChartService $chart_service): ResponseInterface
     {
         $ajax       = (bool) $request->get('ajax');
         $xref       = $request->get('xref', '');
@@ -185,9 +185,9 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
      * @param Individual $individual
      * @param int        $generations
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    protected function ancestorsList(Individual $individual, int $generations): Response
+    protected function ancestorsList(Individual $individual, int $generations): ResponseInterface
     {
         ob_start();
 
@@ -197,7 +197,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
 
         $html = '<ul class="wt-ancestors-chart-list list-unstyled">' . $html . '</ul>';
 
-        return new Response($html);
+        return response($html);
     }
 
     /**
@@ -261,9 +261,9 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
      * @param Tree       $tree
      * @param Collection $ancestors
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    protected function ancestorsIndividuals(Tree $tree, Collection $ancestors): Response
+    protected function ancestorsIndividuals(Tree $tree, Collection $ancestors): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
@@ -280,9 +280,9 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
      * @param Tree       $tree
      * @param Collection $ancestors
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    protected function ancestorsFamilies(Tree $tree, Collection $ancestors): Response
+    protected function ancestorsFamilies(Tree $tree, Collection $ancestors): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
@@ -307,9 +307,9 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
      * @param Collection $ancestors
      * @param bool       $show_cousins
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    protected function ancestorsBooklet(Collection $ancestors, bool $show_cousins): Response
+    protected function ancestorsBooklet(Collection $ancestors, bool $show_cousins): ResponseInterface
     {
         ob_start();
 
@@ -322,7 +322,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
 
         $html = ob_get_clean();
 
-        return new Response($html);
+        return response($html);
     }
 
     /**

@@ -17,14 +17,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Closure;
+use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Session;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use function in_array;
 
 /**
@@ -38,29 +38,28 @@ class CheckCsrf implements MiddlewareInterface
     ];
 
     /**
-     * @param Request $request
-     * @param Closure $next
+     * @param ServerRequestInterface  $request
+     * @param RequestHandlerInterface $handler
      *
-     * @return Response
-     * @throws AccessDeniedHttpException
+     * @return ResponseInterface
      */
-    public function handle(Request $request, Closure $next): Response
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if ($request->getMethod() === Request::METHOD_POST) {
+        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
             $route = $request->get('route');
 
             if (!in_array($route, self::EXCLUDE_ROUTES, true)) {
-                $client_token  = $request->get('csrf', $request->headers->get('X_CSRF_TOKEN'));
+                $client_token  = $request->get('csrf', $request->getHeaderLine('X_CSRF_TOKEN'));
                 $session_token = Session::get('CSRF_TOKEN');
 
                 if ($client_token !== $session_token) {
                     FlashMessages::addMessage(I18N::translate('This form has expired. Try again.'));
 
-                    return new RedirectResponse($request->getRequestUri());
+                    return redirect((string) $request->getUri());
                 }
             }
         }
 
-        return $next($request);
+        return $handler->handle($request);
     }
 }

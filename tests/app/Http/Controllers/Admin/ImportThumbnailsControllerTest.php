@@ -17,15 +17,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test ImportThumbnailsController class.
  *
  * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\ImportThumbnailsController
  */
-class ImportThumbnailsControllerTest extends \Fisharebest\Webtrees\TestCase
+class ImportThumbnailsControllerTest extends TestCase
 {
     protected static $uses_database = true;
 
@@ -35,9 +34,10 @@ class ImportThumbnailsControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testWebtrees1Thumbnails(): void
     {
         $controller = new ImportThumbnailsController();
-        $response   = $controller->webtrees1Thumbnails();
+        self::createRequest('GET', ['route' => 'admin-webtrees1-thumbs']);
+        $response = $controller->webtrees1Thumbnails();
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -46,9 +46,15 @@ class ImportThumbnailsControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testWebtrees1ThumbnailsAction(): void
     {
         $controller = new ImportThumbnailsController();
-        $response   = $controller->webtrees1ThumbnailsAction(new Request());
+        $request    = self::createRequest('POST', ['route' => 'admin-webtrees1-thumbs-action'], [
+            'thumbnail' => 'foo',
+            'action'    => '',
+            'xref'      => [],
+            'ged'       => [],
+        ]);
+        $response   = $controller->webtrees1ThumbnailsAction($request);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -57,8 +63,15 @@ class ImportThumbnailsControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testWebtrees1ThumbnailsData(): void
     {
         $controller = new ImportThumbnailsController();
-        $response   = $controller->webtrees1ThumbnailsData(new Request());
+        $request    = self::createRequest('GET', [
+            'route'  => 'admin-webtrees1-thumbs-data',
+            'start'  => '0',
+            'length' => '10',
+            'search' => ['value' => ''],
+            'draw'   => '1',
+        ]);
+        $response   = $controller->webtrees1ThumbnailsData($request);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 }

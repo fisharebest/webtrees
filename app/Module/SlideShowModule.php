@@ -26,7 +26,8 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Str;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ServerRequestInterface;
+use function app;
 
 /**
  * Class SlideShowModule
@@ -34,17 +35,6 @@ use Symfony\Component\HttpFoundation\Request;
 class SlideShowModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
-
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
-    public function title(): string
-    {
-        /* I18N: Name of a module */
-        return I18N::translate('Slide show');
-    }
 
     /**
      * A sentence describing what this module does.
@@ -69,7 +59,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
-        $request       = app(Request::class);
+        $request       = app(ServerRequestInterface::class);
         $default_start = $this->getBlockSetting($block_id, 'start', '0');
         $filter        = $this->getBlockSetting($block_id, 'filter', 'all');
         $controls      = $this->getBlockSetting($block_id, 'controls', '1');
@@ -175,6 +165,17 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
         return $content;
     }
 
+    /**
+     * How should this module be identified in the control panel, etc.?
+     *
+     * @return string
+     */
+    public function title(): string
+    {
+        /* I18N: Name of a module */
+        return I18N::translate('Slide show');
+    }
+
     /** {@inheritdoc} */
     public function loadAjax(): bool
     {
@@ -196,12 +197,12 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
-     * @param int     $block_id
+     * @param ServerRequestInterface $request
+     * @param int                    $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
         $this->setBlockSetting($block_id, 'filter', $request->get('filter', 'all'));
         $this->setBlockSetting($block_id, 'controls', $request->get('controls', ''));

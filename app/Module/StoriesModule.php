@@ -23,10 +23,9 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class StoriesModule
@@ -39,17 +38,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
 
     /** @var int The default access level for this module.  It can be changed in the control panel. */
     protected $access_level = Auth::PRIV_HIDE;
-
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
-    public function title(): string
-    {
-        /* I18N: Name of a module */
-        return I18N::translate('Stories');
-    }
 
     /**
      * A sentence describing what this module does.
@@ -92,24 +80,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         ]);
     }
 
-    /** {@inheritdoc} */
-    public function hasTabContent(Individual $individual): bool
-    {
-        return Auth::isManager($individual->tree()) || !empty($this->getStoriesForIndividual($individual));
-    }
-
-    /** {@inheritdoc} */
-    public function isGrayedOut(Individual $individual): bool
-    {
-        return !empty($this->getStoriesForIndividual($individual));
-    }
-
-    /** {@inheritdoc} */
-    public function canLoadAjax(): bool
-    {
-        return false;
-    }
-
     /**
      * @param Individual $individual
      *
@@ -141,6 +111,24 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         return $stories;
     }
 
+    /** {@inheritdoc} */
+    public function hasTabContent(Individual $individual): bool
+    {
+        return Auth::isManager($individual->tree()) || !empty($this->getStoriesForIndividual($individual));
+    }
+
+    /** {@inheritdoc} */
+    public function isGrayedOut(Individual $individual): bool
+    {
+        return !empty($this->getStoriesForIndividual($individual));
+    }
+
+    /** {@inheritdoc} */
+    public function canLoadAjax(): bool
+    {
+        return false;
+    }
+
     /**
      * A menu, to be added to the main application menu.
      *
@@ -160,11 +148,22 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     }
 
     /**
+     * How should this module be identified in the control panel, etc.?
+     *
+     * @return string
+     */
+    public function title(): string
+    {
+        /* I18N: Name of a module */
+        return I18N::translate('Stories');
+    }
+
+    /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAdminAction(Tree $tree): Response
+    public function getAdminAction(Tree $tree): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -191,12 +190,12 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAdminEditAction(Request $request, Tree $tree): Response
+    public function getAdminEditAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -236,12 +235,12 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAdminEditAction(Request $request, Tree $tree): RedirectResponse
+    public function postAdminEditAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $block_id    = (int) $request->get('block_id');
         $xref        = $request->get('xref', '');
@@ -277,16 +276,16 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             'ged'    => $tree->name(),
         ]);
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function postAdminDeleteAction(Request $request, Tree $tree): Response
+    public function postAdminDeleteAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $block_id = (int) $request->get('block_id');
 
@@ -304,15 +303,15 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             'ged'    => $tree->name(),
         ]);
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getShowListAction(Tree $tree): Response
+    public function getShowListAction(Tree $tree): ResponseInterface
     {
         $stories = DB::table('block')
             ->where('module_name', '=', $this->name())

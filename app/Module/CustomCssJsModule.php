@@ -19,9 +19,8 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class CustomCssJsModule - add CSS and JS to every page
@@ -55,9 +54,9 @@ class CustomCssJsModule extends AbstractModule implements ModuleConfigInterface,
     /**
      * Show a form to edit the user CSS and JS.
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAdminAction(): Response
+    public function getAdminAction(): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -82,11 +81,11 @@ class CustomCssJsModule extends AbstractModule implements ModuleConfigInterface,
     /**
      * Save the user CSS and JS.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAdminAction(Request $request): RedirectResponse
+    public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->setPreference('body', $request->get('body', ''));
         $this->setPreference('head', $request->get('head', ''));
@@ -94,7 +93,7 @@ class CustomCssJsModule extends AbstractModule implements ModuleConfigInterface,
         $message = I18N::translate('The preferences for the module “%s” have been updated.', $this->title());
         FlashMessages::addMessage($message, 'success');
 
-        return new RedirectResponse($this->getConfigLink());
+        return redirect($this->getConfigLink());
     }
 
     /**

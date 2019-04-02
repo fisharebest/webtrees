@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Statistics\Service\CenturyService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
+use stdClass;
 
 /**
  * A chart showing the marriage ages by century.
@@ -52,7 +53,7 @@ class ChartMarriageAge
     /**
      * Returns the related database records.
      *
-     * @return \stdClass[]
+     * @return stdClass[]
      */
     private function queryRecords(): array
     {
