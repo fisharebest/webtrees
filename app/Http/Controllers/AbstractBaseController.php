@@ -17,7 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Common functions for all controllers
@@ -36,7 +37,7 @@ abstract class AbstractBaseController
      *
      * @return Response
      */
-    protected function viewResponse($view_name, $view_data, $status = Response::HTTP_OK): Response
+    protected function viewResponse($view_name, $view_data, $status = Response::STATUS_OK): ResponseInterface
     {
         // Make the view's data available to the layout.
         $layout_data = $view_data;

@@ -22,9 +22,10 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
 
 /**
  * Controller for the family page.
@@ -34,13 +35,13 @@ class FamilyController extends AbstractBaseController
     /**
      * Show a family's page.
      *
-     * @param Request          $request
-     * @param Tree             $tree
-     * @param ClipboardService $clipboard_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param ClipboardService       $clipboard_service
      *
      * @return Response
      */
-    public function show(Request $request, Tree $tree, ClipboardService $clipboard_service): Response
+    public function show(ServerRequestInterface $request, Tree $tree, ClipboardService $clipboard_service): ResponseInterface
     {
         $xref   = $request->get('xref', '');
         $family = Family::getInstance($xref, $tree);

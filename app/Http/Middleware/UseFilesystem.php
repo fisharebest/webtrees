@@ -18,15 +18,15 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Closure;
-use Exception;
 use Fisharebest\Webtrees\Site;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Cached\CachedAdapter;
 use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Middleware to set the data storage area.
@@ -34,13 +34,12 @@ use Symfony\Component\HttpFoundation\Response;
 class UseFilesystem implements MiddlewareInterface
 {
     /**
-     * @param Request $request
-     * @param Closure $next
+     * @param ServerRequestInterface $request
+     * @param Closure                $next
      *
      * @return Response
-     * @throws Exception
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(ServerRequestInterface $request, Closure $next): ResponseInterface
     {
         define('WT_DATA_DIR', realpath(Site::getPreference('INDEX_DIRECTORY', 'data/')) . DIRECTORY_SEPARATOR);
 

@@ -20,8 +20,9 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use function method_exists;
@@ -51,12 +52,12 @@ class ModuleController extends AbstractBaseController
     /**
      * Perform an HTTP action for one of the modules.
      *
-     * @param Request       $request
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param UserInterface          $user
      *
      * @return Response
      */
-    public function action(Request $request, UserInterface $user): Response
+    public function action(ServerRequestInterface $request, UserInterface $user): ResponseInterface
     {
         $module_name = $request->get('module', '');
 

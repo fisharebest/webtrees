@@ -26,8 +26,8 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Memory\MemoryAdapter;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Request;
+use Fisharebest\Webtrees\Http\Response;
 
 /**
  * Test UpgradeController class.
@@ -50,7 +50,7 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $response = $controller->wizard(new Request());
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -67,7 +67,7 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $response = $controller->wizard(new Request(['continue' => '1']));
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -98,7 +98,7 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $response = $controller->step(new Request(['step' => 'Check']), null);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -145,7 +145,7 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $response = $controller->step(new Request(['step' => 'Prepare']), null);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -160,7 +160,7 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $response = $controller->step(new Request(['step' => 'Pending']), null);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -195,12 +195,12 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $response = $controller->step(new Request(['step' => 'Export']), $tree);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
 
         // Now overwrite the file we just created
         $response = $controller->step(new Request(['step' => 'Export']), $tree);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -233,7 +233,7 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $response = $controller->step(new Request(['step' => 'Download']), null);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -250,7 +250,7 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $response = $controller->step(new Request(['step' => 'Unzip']), null);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -265,7 +265,7 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $response = $controller->step(new Request(['step' => 'Copy']), null);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -281,6 +281,6 @@ class UpgradeControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $response = $controller->step(new Request(['step' => 'Cleanup']), null);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 }

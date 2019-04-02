@@ -19,8 +19,9 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Closure;
 use Illuminate\Database\Capsule\Manager as DB;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
 
 /**
@@ -29,13 +30,13 @@ use Throwable;
 class UseTransaction implements MiddlewareInterface
 {
     /**
-     * @param Request $request
-     * @param Closure $next
+     * @param ServerRequestInterface $request
+     * @param Closure                $next
      *
      * @return Response
      * @throws Throwable
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(ServerRequestInterface $request, Closure $next): ResponseInterface
     {
         try {
             DB::connection()->beginTransaction();

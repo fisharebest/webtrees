@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Http\Middleware\UseSession;
 use Fisharebest\Webtrees\Http\Middleware\UseTheme;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Fisharebest\Webtrees\Http\Middleware\UseTree;
+use Fisharebest\Webtrees\Http\Request;
 use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
@@ -38,12 +39,25 @@ use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Cache\ArrayStore;
 use Illuminate\Cache\Repository;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Nyholm\Psr7\Factory\Psr17Factory;
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestFactoryInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Message\UploadedFileFactoryInterface;
+use Psr\Http\Message\UriFactoryInterface;
 
 require __DIR__ . '/vendor/autoload.php';
 
 const WT_ROOT = __DIR__ . DIRECTORY_SEPARATOR;
+
+// Use nyholm as our PSR7 factory
+app()->bind(ResponseFactoryInterface::class, Psr17Factory::class);
+app()->bind(ServerRequestFactoryInterface::class, Psr17Factory::class);
+app()->bind(StreamFactoryInterface::class, Psr17Factory::class);
+app()->bind(UploadedFileFactoryInterface::class, Psr17Factory::class);
+app()->bind(UriFactoryInterface::class, Psr17Factory::class);
 
 Webtrees::init();
 
@@ -63,7 +77,7 @@ app()->instance(TimeoutService::class, new TimeoutService(microtime(true)));
 
 // Extract the request parameters.
 $request = Request::createFromGlobals();
-app()->instance(Request::class, $request);
+app()->instance(ServerRequestInterface::class, $request);
 
 // Calculate the base URL, so we can generate absolute URLs.
 $request_uri = $request->getSchemeAndHttpHost() . $request->getRequestUri();
@@ -138,10 +152,10 @@ try {
     // Create a pipeline, which applies the middleware as a nested function call.
     $pipeline = $middleware_stack->reduce(static function (Closure $next, MiddlewareInterface $middleware): Closure {
         // Create a closure to apply the middleware.
-        return function (Request $request) use ($middleware, $next): Response {
+        return function (ServerRequestInterface $request) use ($middleware, $next): ResponseInterface {
             return $middleware->handle($request, $next);
         };
-    }, static function (Request $request): Response {
+    }, static function (ServerRequestInterface $request): ResponseInterface {
         // Load the route and routing table.
         $route  = $request->get('route');
         $routes = require 'routes/web.php';

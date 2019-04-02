@@ -26,18 +26,19 @@ use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
+use Fisharebest\Webtrees\Http\JsonResponse;
+use Fisharebest\Webtrees\Http\RedirectResponse;
+use Fisharebest\Webtrees\Http\Response;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 /**
@@ -46,7 +47,7 @@ use Throwable;
 class EditMediaController extends AbstractEditController
 {
     private const EDIT_RESTRICTIONS = [
-        'locked'
+        'locked',
     ];
 
     private const PRIVACY_RESTRICTIONS = [
@@ -58,12 +59,12 @@ class EditMediaController extends AbstractEditController
     /**
      * Add a media file to an existing media object.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function addMediaFile(Request $request, Tree $tree): Response
+    public function addMediaFile(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref  = $request->get('xref', '');
         $media = Media::getInstance($xref, $tree);
@@ -88,12 +89,12 @@ class EditMediaController extends AbstractEditController
     /**
      * Add a media file to an existing media object.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return RedirectResponse
      */
-    public function addMediaFileAction(Request $request, Tree $tree): RedirectResponse
+    public function addMediaFileAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref  = $request->get('xref', '');
         $media = Media::getInstance($xref, $tree);
@@ -135,12 +136,12 @@ class EditMediaController extends AbstractEditController
     /**
      * Edit an existing media file.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function editMediaFile(Request $request, Tree $tree): Response
+    public function editMediaFile(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id', '');
@@ -152,7 +153,7 @@ class EditMediaController extends AbstractEditController
             return new Response(view('modals/error', [
                 'title' => I18N::translate('Edit a media file'),
                 'error' => $ex->getMessage(),
-            ]), Response::HTTP_FORBIDDEN);
+            ]), Response::STATUS_FORBIDDEN);
         }
 
         foreach ($media->mediaFiles() as $media_file) {
@@ -167,18 +168,18 @@ class EditMediaController extends AbstractEditController
             }
         }
 
-        return new Response('', Response::HTTP_NOT_FOUND);
+        return new Response('', Response::STATUS_NOT_FOUND);
     }
 
     /**
      * Save an edited media file.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return RedirectResponse
      */
-    public function editMediaFileAction(Request $request, Tree $tree): RedirectResponse
+    public function editMediaFileAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref     = $request->get('xref', '');
         $fact_id  = $request->get('fact_id', '');
@@ -218,7 +219,7 @@ class EditMediaController extends AbstractEditController
             $new_file = str_replace('\\', '/', $new_file);
             $folder   = str_replace('\\', '/', $folder);
             $folder   = trim($folder, '/');
-            
+
             if ($folder === '') {
                 $file = $new_file;
             } else {
@@ -280,7 +281,7 @@ class EditMediaController extends AbstractEditController
      *
      * @return Response
      */
-    public function createMediaObject(Tree $tree): Response
+    public function createMediaObject(Tree $tree): ResponseInterface
     {
         return new Response(view('modals/create-media-object', [
             'max_upload_size' => $this->maxUploadFilesize(),
@@ -290,12 +291,12 @@ class EditMediaController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function createMediaObjectFromFileAction(Request $request, Tree $tree): Response
+    public function createMediaObjectFromFileAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $file  = $request->get('file');
         $type  = $request->get('type');
@@ -332,12 +333,12 @@ class EditMediaController extends AbstractEditController
     /**
      * Process a form to create a new media object.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return JsonResponse
      */
-    public function createMediaObjectAction(Request $request, Tree $tree): JsonResponse
+    public function createMediaObjectAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $note                = $request->get('note');
         $title               = $request->get('title');
@@ -395,12 +396,12 @@ class EditMediaController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function linkMediaToIndividual(Request $request, Tree $tree): Response
+    public function linkMediaToIndividual(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -413,12 +414,12 @@ class EditMediaController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function linkMediaToFamily(Request $request, Tree $tree): Response
+    public function linkMediaToFamily(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -431,12 +432,12 @@ class EditMediaController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function linkMediaToSource(Request $request, Tree $tree): Response
+    public function linkMediaToSource(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -449,12 +450,12 @@ class EditMediaController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return RedirectResponse
      */
-    public function linkMediaToRecordAction(Request $request, Tree $tree): RedirectResponse
+    public function linkMediaToRecordAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
         $link = $request->get('link', '');
@@ -528,12 +529,12 @@ class EditMediaController extends AbstractEditController
      * Store an uploaded file (or URL), either to be added to a media object
      * or to create a media object.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      * @param Tree    $tree
      *
      * @return string The value to be stored in the 'FILE' field of the media object.
      */
-    private function uploadFile(Request $request, Tree $tree): string
+    private function uploadFile(ServerRequestInterface $request, Tree $tree): string
     {
         $file_location = $request->get('file_location');
 

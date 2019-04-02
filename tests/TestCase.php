@@ -17,13 +17,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use function app;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Controllers\GedcomFileController;
+use Fisharebest\Webtrees\Http\Request;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
-use Fisharebest\Webtrees\Schema\SeedDatabase;
 use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -32,7 +33,13 @@ use Illuminate\Cache\Repository;
 use Illuminate\Database\Capsule\Manager as DB;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Memory\MemoryAdapter;
-use Symfony\Component\HttpFoundation\Request;
+use Nyholm\Psr7\Factory\Psr17Factory;
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ServerRequestFactoryInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Message\UploadedFileFactoryInterface;
+use Psr\Http\Message\UriFactoryInterface;
 use function basename;
 
 /**
@@ -57,6 +64,27 @@ class TestCase extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Create an SQLite in-memory database for testing
+     */
+    protected static function createTestDatabase(): void
+    {
+        $capsule = new DB();
+        $capsule->addConnection([
+            'driver'   => 'sqlite',
+            'database' => ':memory:',
+        ]);
+        $capsule->setAsGlobal();
+        Database::registerMacros();
+
+        // Create tables
+        $migration_service = new MigrationService;
+        $migration_service->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
+
+        // Create config data
+        $migration_service->seedDatabase();
+    }
+
+    /**
      * Things to run once, AFTER all the tests.
      */
     public static function tearDownAfterClass()
@@ -76,6 +104,13 @@ class TestCase extends \PHPUnit\Framework\TestCase
     {
         parent::setUp();
 
+        // Use nyholm as our PSR7 factory
+        app()->bind(ResponseFactoryInterface::class, Psr17Factory::class);
+        app()->bind(ServerRequestFactoryInterface::class, Psr17Factory::class);
+        app()->bind(StreamFactoryInterface::class, Psr17Factory::class);
+        app()->bind(UploadedFileFactoryInterface::class, Psr17Factory::class);
+        app()->bind(UriFactoryInterface::class, Psr17Factory::class);
+
         // Use an array cache for database calls, etc.
         app()->instance('cache.array', new Repository(new ArrayStore()));
 
@@ -86,7 +121,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         app()->instance(UserService::class, new UserService());
         app()->instance(UserInterface::class, new GuestUser());
 
-        app()->instance(Request::class, Request::createFromGlobals());
+        app()->instance(ServerRequestInterface::class, Request::create('http://localhost/index.php'));
         app()->instance(Filesystem::class, new Filesystem(new MemoryAdapter()));
 
         app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);
@@ -119,27 +154,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
         GedcomRecord::$pending_record_cache = null;
 
         Auth::logout();
-    }
-
-    /**
-     * Create an SQLite in-memory database for testing
-     */
-    protected static function createTestDatabase(): void
-    {
-        $capsule = new DB();
-        $capsule->addConnection([
-            'driver'   => 'sqlite',
-            'database' => ':memory:',
-        ]);
-        $capsule->setAsGlobal();
-        Database::registerMacros();
-
-        // Create tables
-        $migration_service = new MigrationService;
-        $migration_service->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
-
-        // Create config data
-        $migration_service->seedDatabase();
     }
 
     /**

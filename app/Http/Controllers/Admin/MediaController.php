@@ -21,6 +21,9 @@ use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Html;
+use Fisharebest\Webtrees\Http\JsonResponse;
+use Fisharebest\Webtrees\Http\RedirectResponse;
+use Fisharebest\Webtrees\Http\Response;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
@@ -31,11 +34,9 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Throwable;
 
@@ -48,11 +49,11 @@ class MediaController extends AbstractAdminController
     private const MAX_UPLOAD_FILES = 10;
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return Response
      */
-    public function index(Request $request): Response
+    public function index(ServerRequestInterface $request): ResponseInterface
     {
         $files        = $request->get('files', 'local'); // local|unused|external
         $media_folder = $request->get('media_folder', '');
@@ -79,11 +80,11 @@ class MediaController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return Response
      */
-    public function delete(Request $request): Response
+    public function delete(ServerRequestInterface $request): ResponseInterface
     {
         $delete_file  = $request->get('file', '');
         $media_folder = $request->get('folder', '');
@@ -106,12 +107,12 @@ class MediaController extends AbstractAdminController
     }
 
     /**
-     * @param Request           $request
-     * @param DatatablesService $datatables_service
+     * @param ServerRequestInterface $request
+     * @param DatatablesService      $datatables_service
      *
      * @return JsonResponse
      */
-    public function data(Request $request, DatatablesService $datatables_service): JsonResponse
+    public function data(ServerRequestInterface $request, DatatablesService $datatables_service): ResponseInterface
     {
         $files  = $request->get('files'); // local|external|unused
         $search = $request->get('search');
@@ -120,7 +121,7 @@ class MediaController extends AbstractAdminController
         $length = (int) $request->get('length');
 
         // Files within this folder
-        $media_folder  = $request->get('media_folder', '');
+        $media_folder = $request->get('media_folder', '');
 
         // subfolders within $media_path
         $subfolders = $request->get('subfolders', ''); // include|exclude
@@ -259,7 +260,7 @@ class MediaController extends AbstractAdminController
                     $create_form = '';
                     foreach ($media_trees as $media_tree => $media_directory) {
                         if (Str::startsWith($media_folder . $unused_file, $media_directory)) {
-                            $tmp = substr($media_folder . $unused_file, strlen($media_directory));
+                            $tmp         = substr($media_folder . $unused_file, strlen($media_directory));
                             $create_form .=
                                 '<p><a href="#" data-toggle="modal" data-target="#modal-create-media-from-file" data-file="' . e($tmp) . '" data-tree="' . e($media_tree) . '" onclick="document.getElementById(\'file\').value=this.dataset.file; document.getElementById(\'ged\').value=this.dataset.tree;">' . I18N::translate('Create') . '</a> — ' . e($media_tree) . '<p>';
                         }
@@ -294,7 +295,7 @@ class MediaController extends AbstractAdminController
     /**
      * @return Response
      */
-    public function upload(): Response
+    public function upload(): ResponseInterface
     {
         $media_folders = $this->allMediaFolders();
 
@@ -314,11 +315,11 @@ class MediaController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return RedirectResponse
      */
-    public function uploadAction(Request $request): RedirectResponse
+    public function uploadAction(ServerRequestInterface $request): ResponseInterface
     {
         $all_folders = $this->allMediaFolders();
 
@@ -521,7 +522,7 @@ class MediaController extends AbstractAdminController
                 $imgsize = getimagesize($full_path);
                 $html    .= '<dt>' . I18N::translate('Image dimensions') . '</dt>';
                 /* I18N: image dimensions, width × height */
-                $html    .= '<dd>' . I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1'])) . '</dd>';
+                $html .= '<dd>' . I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1'])) . '</dd>';
             } catch (Throwable $ex) {
                 // Not an image, or not a valid image?
             }

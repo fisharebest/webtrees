@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Illuminate\Database\Capsule\Manager as DB;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Record webtrees events in the database
@@ -34,6 +34,18 @@ class Log
     private const TYPE_SEARCH         = 'search';
 
     /**
+     * Store an authentication message in the message log.
+     *
+     * @param string $message
+     *
+     * @return void
+     */
+    public static function addAuthenticationLog($message): void
+    {
+        self::addLog($message, self::TYPE_AUTHENTICATION);
+    }
+
+    /**
      * Store a new message (of the appropriate type) in the message log.
      *
      * @param string    $message
@@ -45,7 +57,7 @@ class Log
     private static function addLog($message, $log_type, Tree $tree = null): void
     {
         // Can't use requestFromGloabls() as this will fail if we have already processed an uploaded file.
-        $request    = Request::create('', '', [], [], [], $_SERVER);
+        $request    = app(ServerRequestInterface::class);
         $ip_address = $request->getClientIp() ?? '127.0.0.1';
         $tree_id    = $tree ? $tree->id() : null;
 
@@ -56,18 +68,6 @@ class Log
             'user_id'     => Auth::id(),
             'gedcom_id'   => $tree_id,
         ]);
-    }
-
-    /**
-     * Store an authentication message in the message log.
-     *
-     * @param string $message
-     *
-     * @return void
-     */
-    public static function addAuthenticationLog($message): void
-    {
-        self::addLog($message, self::TYPE_AUTHENTICATION, null);
     }
 
     /**
@@ -117,7 +117,7 @@ class Log
      */
     public static function addMediaLog($message): void
     {
-        self::addLog($message, self::TYPE_MEDIA, null);
+        self::addLog($message, self::TYPE_MEDIA);
     }
 
     /**

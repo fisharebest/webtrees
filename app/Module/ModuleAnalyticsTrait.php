@@ -17,45 +17,18 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Http\RedirectResponse;
+use Fisharebest\Webtrees\Http\Response;
 use Fisharebest\Webtrees\I18N;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use function app;
 
 /**
  * Trait ModuleAnalyticsTrait - default implementation of ModuleAnalyticsInterface
  */
 trait ModuleAnalyticsTrait
 {
-    /**
-     * @param $view_name
-     * @param $view_data
-     * @param $status
-     *
-     * @return Response
-     */
-    abstract protected function viewResponse($view_name, $view_data, $status = Response::HTTP_OK): Response;
-
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
-    abstract public function title(): string;
-
-    /**
-     * Set a module setting.
-     *
-     * Since module settings are NOT NULL, setting a value to NULL will cause
-     * it to be deleted.
-     *
-     * @param string $setting_name
-     * @param string $setting_value
-     *
-     * @return void
-     */
-    abstract public function setPreference(string $setting_name, string $setting_value): void;
-
     /**
      * Should we add this tracker?
      *
@@ -64,7 +37,7 @@ trait ModuleAnalyticsTrait
     public function analyticsCanShow(): bool
     {
         // If the browser sets the DNT header, then we won't use analytics.
-        $request = app(Request::class);
+        $request = app(ServerRequestInterface::class);
 
         if ($request->server->get('HTTP_DNT') === '1') {
             return false;
@@ -80,6 +53,16 @@ trait ModuleAnalyticsTrait
     }
 
     /**
+     * The parameters that need to be embedded in the snippet.
+     *
+     * @return string[]
+     */
+    public function analyticsParameters(): array
+    {
+        return [];
+    }
+
+    /**
      * A sentence describing what this module does.
      *
      * @return string
@@ -90,6 +73,29 @@ trait ModuleAnalyticsTrait
     }
 
     /**
+     * @return Response
+     */
+    public function getAdminAction(): ResponseInterface
+    {
+        $this->layout = 'layouts/administration';
+
+        return $this->viewResponse('admin/analytics-edit', [
+            'form_fields' => $this->analyticsFormFields(),
+            'preview'     => $this->analyticsSnippet($this->analyticsParameters()),
+            'title'       => $this->title(),
+        ]);
+    }
+
+    /**
+     * @param     $view_name
+     * @param     $view_data
+     * @param int $status
+     *
+     * @return Response
+     */
+    abstract protected function viewResponse($view_name, $view_data, $status = Response::STATUS_OK): ResponseInterface;
+
+    /**
      * Form fields to edit the parameters.
      *
      * @return string
@@ -97,16 +103,6 @@ trait ModuleAnalyticsTrait
     public function analyticsFormFields(): string
     {
         return '';
-    }
-
-    /**
-     * The parameters that need to be embedded in the snippet.
-     *
-     * @return string[]
-     */
-    public function analyticsParameters(): array
-    {
-        return [];
     }
 
     /**
@@ -121,27 +117,19 @@ trait ModuleAnalyticsTrait
         return '';
     }
 
-
     /**
-     * @return Response
+     * How should this module be identified in the control panel, etc.?
+     *
+     * @return string
      */
-    public function getAdminAction(): Response
-    {
-        $this->layout = 'layouts/administration';
-
-        return $this->viewResponse('admin/analytics-edit', [
-            'form_fields' => $this->analyticsFormFields(),
-            'preview'     => $this->analyticsSnippet($this->analyticsParameters()),
-            'title'       => $this->title(),
-        ]);
-    }
+    abstract public function title(): string;
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return RedirectResponse
      */
-    public function postAdminAction(Request $request): RedirectResponse
+    public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         foreach (array_keys($this->analyticsParameters()) as $parameter) {
             $new_value = $request->get($parameter, '');
@@ -150,4 +138,16 @@ trait ModuleAnalyticsTrait
 
         return new RedirectResponse(route('analytics'));
     }
+
+    /**
+     * Set a module setting.
+     * Since module settings are NOT NULL, setting a value to NULL will cause
+     * it to be deleted.
+     *
+     * @param string $setting_name
+     * @param string $setting_value
+     *
+     * @return void
+     */
+    abstract public function setPreference(string $setting_name, string $setting_value): void;
 }

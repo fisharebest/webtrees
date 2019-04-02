@@ -21,9 +21,9 @@ use Closure;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Throwable;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use function method_exists;
 
 /**
@@ -32,13 +32,12 @@ use function method_exists;
 class BootModules implements MiddlewareInterface
 {
     /**
-     * @param Request $request
-     * @param Closure $next
+     * @param ServerRequestInterface $request
+     * @param Closure                $next
      *
      * @return Response
-     * @throws Throwable
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(ServerRequestInterface $request, Closure $next): ResponseInterface
     {
         $module_service = app(ModuleService::class);
         $theme          = app(ModuleThemeInterface::class);

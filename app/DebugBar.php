@@ -17,14 +17,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use DebugBar\DataCollector\ExceptionsCollector;
 use DebugBar\DataCollector\MessagesCollector;
 use DebugBar\DataCollector\PDO\PDOCollector;
 use DebugBar\DataCollector\PDO\TraceablePDO;
 use DebugBar\DataCollector\TimeDataCollector;
 use DebugBar\JavascriptRenderer;
 use DebugBar\StandardDebugBar;
-use DebugBar\Storage\FileStorage;
 use Fisharebest\Webtrees\DebugBar\ViewCollector;
 use PDO;
 

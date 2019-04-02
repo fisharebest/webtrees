@@ -17,6 +17,8 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Application;
+use Fisharebest\Webtrees\Html;
+use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\View as WebtreesView;
 use Fisharebest\Webtrees\Webtrees;
 
@@ -62,7 +64,7 @@ function asset(string $path): string
  */
 function csrf_field()
 {
-    return '<input type="hidden" name="csrf" value="' . e(\Fisharebest\Webtrees\Session::getCsrfToken()) . '">';
+    return '<input type="hidden" name="csrf" value="' . e(Session::getCsrfToken()) . '">';
 }
 
 /**
@@ -72,7 +74,7 @@ function csrf_field()
  */
 function csrf_token()
 {
-    return \Fisharebest\Webtrees\Session::getCsrfToken();
+    return Session::getCsrfToken();
 }
 
 /**
@@ -89,10 +91,10 @@ function route(string $route, array $parameters = [], bool $absolute = true): st
     $parameters = ['route' => $route] + $parameters;
 
     if ($absolute) {
-        return \Fisharebest\Webtrees\Html::url(WT_BASE_URL . 'index.php', $parameters);
+        return Html::url(WT_BASE_URL . 'index.php', $parameters);
     }
 
-    return \Fisharebest\Webtrees\Html::url('index.php', $parameters);
+    return Html::url('index.php', $parameters);
 }
 
 /**

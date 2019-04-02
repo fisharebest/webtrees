@@ -19,8 +19,8 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Request;
+use Fisharebest\Webtrees\Http\Response;
 
 /**
  * Test FixLevel0MediaControllerTest class.
@@ -39,7 +39,7 @@ class FixLevel0MediaControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = new FixLevel0MediaController();
         $response   = $controller->fixLevel0Media();
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -53,7 +53,7 @@ class FixLevel0MediaControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = new FixLevel0MediaController();
         $response   = $controller->fixLevel0MediaAction($request);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -67,6 +67,6 @@ class FixLevel0MediaControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller         = new FixLevel0MediaController();
         $response           = $controller->fixLevel0MediaData($request, $datatables_service);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 }

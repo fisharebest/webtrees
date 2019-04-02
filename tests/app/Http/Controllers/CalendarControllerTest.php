@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use function app;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Module\SiteMapModule;
@@ -24,8 +25,9 @@ use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Request;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ServerRequestFactoryInterface;
 
 /**
  * Test the module controller
@@ -52,20 +54,20 @@ class CalendarControllerTest extends \Fisharebest\Webtrees\TestCase
 
         $request  = new Request(['view' => 'day']);
         $response = $controller->page($request, $tree);
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
         $response = $controller->calendar($request, $tree);
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
 
         $request  = new Request(['view' => 'month']);
         $response = $controller->page($request, $tree);
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
         $response = $controller->calendar($request, $tree);
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
 
         $request  = new Request(['view' => 'year']);
         $response = $controller->page($request, $tree);
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
         $response = $controller->calendar($request, $tree);
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 }

@@ -22,8 +22,8 @@ use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\User;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Request;
+use Fisharebest\Webtrees\Http\Response;
 
 /**
  * Test UsersController class.
@@ -42,7 +42,7 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = new UsersController(new ModuleService(), new UserService());
         $response   = $controller->index(new Request(), Auth::user());
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -53,7 +53,7 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = new UsersController(new ModuleService(), new UserService());
         $response   = $controller->data(new DatatablesService(), new Request(), Auth::User());
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -64,7 +64,7 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = new UsersController(new ModuleService(), new UserService());
         $response   = $controller->create(new Request());
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -75,7 +75,7 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = new UsersController(new ModuleService(), new UserService());
         $response   = $controller->save(new Request());
 
-        $this->assertSame(Response::HTTP_FOUND, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -87,7 +87,7 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = new UsersController(new ModuleService(), new UserService());
         $response   = $controller->edit(new Request(['user_id' => $user->id()]));
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -100,7 +100,7 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = new UsersController(new ModuleService(), new UserService());
         $response   = $controller->update(new Request(['user_id' => $user->id()]), $user);
 
-        $this->assertSame(Response::HTTP_FOUND, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -111,7 +111,7 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = new UsersController(new ModuleService(), new UserService());
         $response   = $controller->cleanup(new Request());
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -122,6 +122,6 @@ class UsersControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = new UsersController(new ModuleService(), new UserService());
         $response   = $controller->cleanupAction(new Request());
 
-        $this->assertSame(Response::HTTP_FOUND, $response->getStatusCode());
+        $this->assertSame(Response::STATUS_FOUND, $response->getStatusCode());
     }
 }

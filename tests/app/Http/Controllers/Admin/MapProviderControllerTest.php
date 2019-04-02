@@ -17,7 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Test the changes log controller
@@ -36,7 +37,7 @@ class MapProviderControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(MapProviderController::class);
         $response   = app()->dispatch($controller, 'mapProviderEdit');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
     /**
@@ -47,6 +48,6 @@ class MapProviderControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = app(MapProviderController::class);
         $response   = app()->dispatch($controller, 'mapProviderSave');
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 }

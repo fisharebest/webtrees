@@ -30,9 +30,10 @@ use League\Flysystem\Cached\CachedAdapter;
 use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use RuntimeException;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
@@ -95,11 +96,11 @@ class UpgradeController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return Response
      */
-    public function wizard(Request $request): Response
+    public function wizard(ServerRequestInterface $request): ResponseInterface
     {
         $continue = (bool) $request->get('continue');
 
@@ -152,12 +153,12 @@ class UpgradeController extends AbstractAdminController
     /**
      * Perform one step of the wizard
      *
-     * @param Request   $request
-     * @param Tree|null $tree
+     * @param ServerRequestInterface $request
+     * @param Tree|null              $tree
      *
      * @return Response
      */
-    public function step(Request $request, ?Tree $tree): Response
+    public function step(ServerRequestInterface $request, ?Tree $tree): ResponseInterface
     {
         $step = $request->get('step');
 
@@ -197,7 +198,7 @@ class UpgradeController extends AbstractAdminController
     /**
      * @return Response
      */
-    private function wizardStepCheck(): Response
+    private function wizardStepCheck(): ResponseInterface
     {
         $latest_version = $this->upgrade_service->latestVersion();
 
@@ -223,7 +224,7 @@ class UpgradeController extends AbstractAdminController
      *
      * @return Response
      */
-    private function wizardStepPrepare(): Response
+    private function wizardStepPrepare(): ResponseInterface
     {
         $this->filesystem->deleteDir(self::UPGRADE_FOLDER);
         $this->filesystem->createDir(self::UPGRADE_FOLDER);
@@ -236,7 +237,7 @@ class UpgradeController extends AbstractAdminController
     /**
      * @return Response
      */
-    private function wizardStepPending(): Response
+    private function wizardStepPending(): ResponseInterface
     {
         $changes = DB::table('change')->where('status', '=', 'pending')->exists();
 
@@ -254,7 +255,7 @@ class UpgradeController extends AbstractAdminController
      *
      * @return Response
      */
-    private function wizardStepExport(Tree $tree): Response
+    private function wizardStepExport(Tree $tree): ResponseInterface
     {
         // We store the data in PHP temporary storage.
         $stream = fopen('php://temp', 'wb+');
@@ -282,7 +283,7 @@ class UpgradeController extends AbstractAdminController
     /**
      * @return Response
      */
-    private function wizardStepDownload(): Response
+    private function wizardStepDownload(): ResponseInterface
     {
         $start_time   = microtime(true);
         $download_url = $this->upgrade_service->downloadUrl();
@@ -305,7 +306,7 @@ class UpgradeController extends AbstractAdminController
     /**
      * @return Response
      */
-    private function wizardStepUnzip(): Response
+    private function wizardStepUnzip(): ResponseInterface
     {
         $zip_path   = WT_DATA_DIR . self::UPGRADE_FOLDER;
         $zip_file   = $zip_path . '/' . self::ZIP_FILENAME;
@@ -326,7 +327,7 @@ class UpgradeController extends AbstractAdminController
     /**
      * @return Response
      */
-    private function wizardStepCopy(): Response
+    private function wizardStepCopy(): ResponseInterface
     {
         $source_filesystem = new Filesystem(new ChrootAdapter($this->temporary_filesystem, self::ZIP_FILE_PREFIX));
 
@@ -342,7 +343,7 @@ class UpgradeController extends AbstractAdminController
     /**
      * @return Response
      */
-    private function wizardStepCleanup(): Response
+    private function wizardStepCleanup(): ResponseInterface
     {
         $zip_path         = WT_DATA_DIR . self::UPGRADE_FOLDER;
         $zip_file         = $zip_path . '/' . self::ZIP_FILENAME;

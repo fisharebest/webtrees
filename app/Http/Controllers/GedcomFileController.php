@@ -25,7 +25,8 @@ use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
 use Throwable;
 
 /**
@@ -44,7 +45,7 @@ class GedcomFileController extends AbstractBaseController
      *
      * @return Response
      */
-    public function import(TimeoutService $timeout_service, Tree $tree): Response
+    public function import(TimeoutService $timeout_service, Tree $tree): ResponseInterface
     {
         try {
             // Only allow one process to import each gedcom at a time

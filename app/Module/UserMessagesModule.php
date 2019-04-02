@@ -21,16 +21,17 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Http\RedirectResponse;
+use Fisharebest\Webtrees\Http\Response;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class UserMessagesModule
@@ -79,12 +80,12 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Delete one or messages belonging to a user.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree $tree
      *
      * @return Response
      */
-    public function postDeleteMessageAction(Request $request, Tree $tree): Response
+    public function postDeleteMessageAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $message_ids = (array) $request->get('message_id', []);
 
@@ -246,12 +247,12 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
+     * @param ServerRequestInterface
      * @param int     $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
     }
 

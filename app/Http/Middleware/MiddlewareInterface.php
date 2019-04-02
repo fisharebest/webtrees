@@ -18,8 +18,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Closure;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Middleware.
@@ -27,10 +28,10 @@ use Symfony\Component\HttpFoundation\Response;
 interface MiddlewareInterface
 {
     /**
-     * @param Request $request
-     * @param Closure $next
+     * @param ServerRequestInterface $request
+     * @param Closure                $next
      *
      * @return Response
      */
-    public function handle(Request $request, Closure $next): Response;
+    public function handle(ServerRequestInterface $request, Closure $next): ResponseInterface;
 }

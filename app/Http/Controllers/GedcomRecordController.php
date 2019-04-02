@@ -20,15 +20,16 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Http\RedirectResponse;
+use Fisharebest\Webtrees\Http\Response;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for the gedcom record page.
@@ -38,12 +39,12 @@ class GedcomRecordController extends AbstractBaseController
     /**
      * Show a gedcom record's page.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function show(Request $request, Tree $tree): Response
+    public function show(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref   = $request->get('xref', '');
         $record = GedcomRecord::getInstance($xref, $tree);

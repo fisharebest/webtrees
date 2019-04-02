@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ServerRequestInterface;
 use function session_status;
 
 /**
@@ -57,96 +57,6 @@ class Session
     }
 
     /**
-     * Read a value from the session
-     *
-     * @param string $name
-     * @param mixed  $default
-     *
-     * @return mixed
-     */
-    public static function get(string $name, $default = null)
-    {
-        return $_SESSION[$name] ?? $default;
-    }
-
-    /**
-     * Write a value to the session
-     *
-     * @param string $name
-     * @param mixed  $value
-     *
-     * @return void
-     */
-    public static function put(string $name, $value): void
-    {
-        $_SESSION[$name] = $value;
-    }
-
-    /**
-     * Remove a value from the session
-     *
-     * @param string $name
-     *
-     * @return void
-     */
-    public static function forget(string $name): void
-    {
-        unset($_SESSION[$name]);
-    }
-
-    /**
-     * Does a session variable exist?
-     *
-     * @param string $name
-     *
-     * @return bool
-     */
-    public static function has(string $name): bool
-    {
-        return isset($_SESSION[$name]);
-    }
-
-    /**
-     * Remove all stored data from the session.
-     *
-     * @return void
-     */
-    public static function clear(): void
-    {
-        $_SESSION = [];
-    }
-
-    /**
-     * After any change in authentication level, we should use a new session ID.
-     *
-     * @param bool $destroy
-     *
-     * @return void
-     */
-    public static function regenerate(bool $destroy = false): void
-    {
-        if ($destroy) {
-            self::clear();
-        }
-
-        if (session_status() === PHP_SESSION_ACTIVE) {
-            session_regenerate_id($destroy);
-        }
-    }
-
-    /**
-     * Set an explicit session ID. Typically used for search robots.
-     *
-     * @param string $id
-     *
-     * @return void
-     */
-    public static function setId(string $id): void
-    {
-        session_id($id);
-    }
-
-    /**
      * Initialise our session save handler
      *
      * @return void
@@ -154,22 +64,22 @@ class Session
     private static function setSaveHandler(): void
     {
         session_set_save_handler(
-            function (): bool {
+            static function (): bool {
                 return Session::open();
             },
-            function (): bool {
+            static function (): bool {
                 return Session::close();
             },
-            function (string $id): string {
+            static function (string $id): string {
                 return Session::read($id);
             },
-            function (string $id, string $data): bool {
+            static function (string $id, string $data): bool {
                 return Session::write($id, $data);
             },
-            function (string $id): bool {
+            static function (string $id): bool {
                 return Session::destroy($id);
             },
-            function (int $maxlifetime): bool {
+            static function (int $maxlifetime): bool {
                 return Session::gc($maxlifetime);
             }
         );
@@ -180,8 +90,56 @@ class Session
      *
      * @return bool
      */
+    private static function open(): bool
+    {
+        return true;
+    }
+
+    /**
+     * For session_set_save_handler()
+     *
+     * @return bool
+     */
     private static function close(): bool
     {
+        return true;
+    }
+
+    /**
+     * For session_set_save_handler()
+     *
+     * @param string $id
+     *
+     * @return string
+     */
+    private static function read(string $id): string
+    {
+        return (string) DB::table('session')
+            ->where('session_id', '=', $id)
+            ->value('session_data');
+    }
+
+    /**
+     * For session_set_save_handler()
+     *
+     * @param string $id
+     * @param string $data
+     *
+     * @return bool
+     */
+    private static function write(string $id, string $data): bool
+    {
+        $request = app(ServerRequestInterface::class);
+
+        DB::table('session')->updateOrInsert([
+            'session_id' => $id,
+        ], [
+            'session_time' => Carbon::now(),
+            'user_id'      => (int) Auth::id(),
+            'ip_address'   => $request->getClientIp(),
+            'session_data' => $data,
+        ]);
+
         return true;
     }
 
@@ -218,51 +176,81 @@ class Session
     }
 
     /**
-     * For session_set_save_handler()
+     * Read a value from the session
      *
-     * @return bool
+     * @param string $name
+     * @param mixed  $default
+     *
+     * @return mixed
      */
-    private static function open(): bool
+    public static function get(string $name, $default = null)
     {
-        return true;
+        return $_SESSION[$name] ?? $default;
     }
 
     /**
-     * For session_set_save_handler()
+     * After any change in authentication level, we should use a new session ID.
      *
-     * @param string $id
+     * @param bool $destroy
      *
-     * @return string
+     * @return void
      */
-    private static function read(string $id): string
+    public static function regenerate(bool $destroy = false): void
     {
-        return (string) DB::table('session')
-            ->where('session_id', '=', $id)
-            ->value('session_data');
+        if ($destroy) {
+            self::clear();
+        }
+
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_regenerate_id($destroy);
+        }
     }
 
     /**
-     * For session_set_save_handler()
+     * Remove all stored data from the session.
+     *
+     * @return void
+     */
+    public static function clear(): void
+    {
+        $_SESSION = [];
+    }
+
+    /**
+     * Write a value to the session
+     *
+     * @param string $name
+     * @param mixed  $value
+     *
+     * @return void
+     */
+    public static function put(string $name, $value): void
+    {
+        $_SESSION[$name] = $value;
+    }
+
+    /**
+     * Remove a value from the session
+     *
+     * @param string $name
+     *
+     * @return void
+     */
+    public static function forget(string $name): void
+    {
+        unset($_SESSION[$name]);
+    }
+
+    /**
+     * Set an explicit session ID. Typically used for search robots.
      *
      * @param string $id
-     * @param string $data
      *
-     * @return bool
+     * @return void
      */
-    private static function write(string $id, string $data): bool
+    public static function setId(string $id): void
     {
-        $request = Request::createFromGlobals();
-
-        DB::table('session')->updateOrInsert([
-            'session_id' => $id,
-        ], [
-            'session_time' => Carbon::now(),
-            'user_id'      => (int) Auth::id(),
-            'ip_address'   => $request->getClientIp(),
-            'session_data' => $data,
-        ]);
-
-        return true;
+        session_id($id);
     }
 
     /**
@@ -278,5 +266,17 @@ class Session
         }
 
         return self::get('CSRF_TOKEN');
+    }
+
+    /**
+     * Does a session variable exist?
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+    public static function has(string $name): bool
+    {
+        return isset($_SESSION[$name]);
     }
 }

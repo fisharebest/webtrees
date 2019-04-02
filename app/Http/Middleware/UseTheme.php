@@ -25,9 +25,9 @@ use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Generator;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Throwable;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Middleware to set a global theme.
@@ -48,13 +48,12 @@ class UseTheme implements MiddlewareInterface
     }
 
     /**
-     * @param Request $request
-     * @param Closure $next
+     * @param ServerRequestInterface $request
+     * @param Closure                $next
      *
      * @return Response
-     * @throws Throwable
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(ServerRequestInterface $request, Closure $next): ResponseInterface
     {
         foreach ($this->themes() as $theme) {
             if ($theme instanceof ModuleThemeInterface) {

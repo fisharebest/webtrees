@@ -24,8 +24,9 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -90,13 +91,13 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * A form to request the chart parameters.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
      * @return Response
      */
-    public function getChartAction(Request $request, Tree $tree, UserInterface $user): Response
+    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $ajax       = (bool) $request->get('ajax');
         $xref       = $request->get('xref', '');
@@ -143,7 +144,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      *
      * @return Response
      */
-    protected function chart(Individual $individual, int $generations, bool $show_spouse): Response
+    protected function chart(Individual $individual, int $generations, bool $show_spouse): ResponseInterface
     {
         ob_start();
         $this->printDescendency($individual, 1, $generations, $show_spouse, true);
@@ -162,12 +163,12 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function postAncestorsAction(Request $request, Tree $tree): Response
+    public function postAncestorsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
@@ -184,12 +185,12 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function postDescendantsAction(Request $request, Tree $tree): Response
+    public function postDescendantsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $show_spouse = (bool) $request->get('show_spouse');
         $xref       = $request->get('xref', '');

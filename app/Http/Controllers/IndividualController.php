@@ -36,9 +36,10 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
 
 /**
  * Controller for the individual page.
@@ -66,13 +67,13 @@ class IndividualController extends AbstractBaseController
     /**
      * Show a individual's page.
      *
-     * @param Request          $request
-     * @param Tree             $tree
-     * @param ClipboardService $clipboard_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param ClipboardService       $clipboard_service
      *
      * @return Response
      */
-    public function show(Request $request, Tree $tree, ClipboardService $clipboard_service): Response
+    public function show(ServerRequestInterface $request, Tree $tree, ClipboardService $clipboard_service): ResponseInterface
     {
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
@@ -141,13 +142,13 @@ class IndividualController extends AbstractBaseController
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
      * @return Response
      */
-    public function tab(Request $request, Tree $tree, UserInterface $user): Response
+    public function tab(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $xref        = $request->get('xref', '');
         $record      = Individual::getInstance($xref, $tree);

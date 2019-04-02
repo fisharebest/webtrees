@@ -20,17 +20,18 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 use Exception;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\Http\JsonResponse;
+use Fisharebest\Webtrees\Http\RedirectResponse;
+use Fisharebest\Webtrees\Http\Response;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Services\GedcomService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
@@ -53,11 +54,11 @@ class LocationController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return Response
      */
-    public function mapData(Request $request): Response
+    public function mapData(ServerRequestInterface $request): ResponseInterface
     {
         $parent_id   = (int) $request->get('parent_id', 0);
         $hierarchy   = $this->gethierarchy($parent_id);
@@ -81,11 +82,11 @@ class LocationController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return Response
      */
-    public function mapDataEdit(Request $request): Response
+    public function mapDataEdit(ServerRequestInterface $request): ResponseInterface
     {
         $parent_id = (int) $request->get('parent_id');
         $place_id  = (int) $request->get('place_id');
@@ -136,11 +137,11 @@ class LocationController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return RedirectResponse
      */
-    public function mapDataSave(Request $request): RedirectResponse
+    public function mapDataSave(ServerRequestInterface $request): ResponseInterface
     {
         $parent_id = (int) $request->get('parent_id');
         $place_id  = (int) $request->get('place_id');
@@ -191,11 +192,11 @@ class LocationController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return RedirectResponse
      */
-    public function mapDataDelete(Request $request): RedirectResponse
+    public function mapDataDelete(ServerRequestInterface $request): ResponseInterface
     {
         $place_id  = (int) $request->get('place_id');
         $parent_id = (int) $request->get('parent_id');
@@ -227,11 +228,11 @@ class LocationController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function exportLocations(Request $request): Response
+    public function exportLocations(ServerRequestInterface $request): ResponseInterface
     {
         $parent_id = (int) $request->get('parent_id');
         $format    = $request->get('format');
@@ -280,11 +281,11 @@ class LocationController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return Response
      */
-    public function importLocations(Request $request): Response
+    public function importLocations(ServerRequestInterface $request): ResponseInterface
     {
         $parent_id = (int) $request->get('parent_id');
 
@@ -312,12 +313,12 @@ class LocationController extends AbstractAdminController
      * level followed by a variable number of placename fields
      * followed by Longitude, Latitude, Zoom & Icon
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return RedirectResponse
      * @throws Exception
      */
-    public function importLocationsAction(Request $request): RedirectResponse
+    public function importLocationsAction(ServerRequestInterface $request): ResponseInterface
     {
         $serverfile     = $request->get('serverfile', '');
         $options        = $request->get('import-options', '');
@@ -436,7 +437,7 @@ class LocationController extends AbstractAdminController
      *
      * @return RedirectResponse
      */
-    public function importLocationsFromTree(Tree $tree): RedirectResponse
+    public function importLocationsFromTree(Tree $tree): ResponseInterface
     {
         // Get all the places from the places table ...
         $places = DB::table('places AS p0')
@@ -550,7 +551,7 @@ class LocationController extends AbstractAdminController
      *
      * @return Response
      */
-    private function exportCSV(string $filename, array $columns, array $places): Response
+    private function exportCSV(string $filename, array $columns, array $places): ResponseInterface
     {
         $response = new StreamedResponse(static function () use ($columns, $places) {
             $stream = fopen('php://output', 'wb');
@@ -578,9 +579,9 @@ class LocationController extends AbstractAdminController
      * @param array  $rows
      * @param int    $maxlevel
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    private function exportGeoJSON(string $filename, array $rows, int $maxlevel): Response
+    private function exportGeoJSON(string $filename, array $rows, int $maxlevel): ResponseInterface
     {
         $geojson = [
             'type'     => 'FeatureCollection',

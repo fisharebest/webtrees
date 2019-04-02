@@ -48,7 +48,8 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Controller for the administration pages
@@ -72,7 +73,7 @@ class ControlPanelController extends AbstractAdminController
         ModuleService $module_service,
         ServerCheckService $server_check_service,
         UserService $user_service
-    ): Response {
+    ): ResponseInterface {
         $filesystem      = new Filesystem(new Local(WT_ROOT));
         $files_to_delete = $housekeeping_service->deleteOldWebtreesFiles($filesystem);
 
@@ -140,7 +141,7 @@ class ControlPanelController extends AbstractAdminController
      *
      * @return Response
      */
-    public function controlPanelManager(ModuleService $module_service): Response
+    public function controlPanelManager(ModuleService $module_service): ResponseInterface
     {
         $all_trees = array_filter(Tree::getAll(), static function (Tree $tree): bool {
             return Auth::isManager($tree);

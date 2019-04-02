@@ -18,6 +18,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
+use Fisharebest\Webtrees\Http\RedirectResponse;
+use Fisharebest\Webtrees\Http\Response;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
@@ -32,9 +34,8 @@ use League\Glide\ServerFactory;
 use League\Glide\Signatures\Signature;
 use League\Glide\Signatures\SignatureException;
 use League\Glide\Signatures\SignatureFactory;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -48,12 +49,12 @@ class MediaFileController extends AbstractBaseController
     /**
      * Download a non-image media file.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function mediaDownload(Request $request, Tree $tree): Response
+    public function mediaDownload(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id');
@@ -96,23 +97,23 @@ class MediaFileController extends AbstractBaseController
     /**
      * Show an image/thumbnail, with/without a watermark.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function mediaThumbnail(Request $request, Tree $tree): Response
+    public function mediaThumbnail(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id', '');
         $media   = Media::getInstance($xref, $tree);
 
         if ($media === null) {
-            return $this->httpStatusAsImage(Response::HTTP_NOT_FOUND);
+            return $this->httpStatusAsImage(Response::STATUS_NOT_FOUND);
         }
 
         if (!$media->canShow()) {
-            return $this->httpStatusAsImage(Response::HTTP_FORBIDDEN);
+            return $this->httpStatusAsImage(Response::STATUS_FORBIDDEN);
         }
 
         // @TODO handle SVG files
@@ -130,17 +131,17 @@ class MediaFileController extends AbstractBaseController
             }
         }
 
-        return $this->httpStatusAsImage(Response::HTTP_NOT_FOUND);
+        return $this->httpStatusAsImage(Response::STATUS_NOT_FOUND);
     }
 
     /**
      * Generate a thumbnail for an unsed media file (i.e. not used by any media object).
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return Response
      */
-    public function unusedMediaThumbnail(Request $request): Response
+    public function unusedMediaThumbnail(ServerRequestInterface $request): ResponseInterface
     {
         $folder = $request->get('folder', '');
         $file   = $request->get('file', '');
@@ -150,16 +151,16 @@ class MediaFileController extends AbstractBaseController
             $path   = $server->makeImage($file, $request->query->all());
             $cache  = $server->getCache();
 
-            return new Response($cache->read($path), Response::HTTP_OK, [
+            return new Response($cache->read($path), Response::STATUS_OK, [
                 'Content-Type'   => $cache->getMimetype($path),
                 'Content-Length' => $cache->getSize($path),
                 'Cache-Control'  => 'max-age=31536000, public',
                 'Expires'        => date_create('+1 years')->format('D, d M Y H:i:s') . ' GMT',
             ]);
         } catch (FileNotFoundException $ex) {
-            return $this->httpStatusAsImage(Response::HTTP_NOT_FOUND);
+            return $this->httpStatusAsImage(Response::STATUS_NOT_FOUND);
         } catch (NotReadableException | Throwable $ex) {
-            return $this->httpStatusAsImage(Response::HTTP_INTERNAL_SERVER_ERROR);
+            return $this->httpStatusAsImage(Response::STATUS_INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -171,7 +172,7 @@ class MediaFileController extends AbstractBaseController
      *
      * @return Response
      */
-    private function generateImage(MediaFile $media_file, array $params): Response
+    private function generateImage(MediaFile $media_file, array $params): ResponseInterface
     {
         try {
             // Validate HTTP signature
@@ -182,26 +183,25 @@ class MediaFileController extends AbstractBaseController
             $server = $this->glideServer($media_file->folder());
             $path   = $server->makeImage($media_file->filename(), $params);
 
-            return new Response($server->getCache()->read($path), Response::HTTP_OK, [
+            return new Response($server->getCache()->read($path), Response::STATUS_OK, [
                 'Content-Type'   => $server->getCache()->getMimetype($path),
                 'Content-Length' => $server->getCache()->getSize($path),
                 'Cache-Control'  => 'max-age=31536000, public',
                 'Expires'        => date_create('+1 years')->format('D, d M Y H:i:s') . ' GMT',
             ]);
         } catch (SignatureException $ex) {
-            return $this->httpStatusAsImage(Response::HTTP_FORBIDDEN);
+            return $this->httpStatusAsImage(Response::STATUS_FORBIDDEN);
         } catch (FileNotFoundException $ex) {
-            return $this->httpStatusAsImage(Response::HTTP_NOT_FOUND);
+            return $this->httpStatusAsImage(Response::STATUS_NOT_FOUND);
         } catch (Throwable $ex) {
             Log::addErrorLog('Cannot create thumbnail ' . $ex->getMessage());
 
-            return $this->httpStatusAsImage(Response::HTTP_INTERNAL_SERVER_ERROR);
+            return $this->httpStatusAsImage(Response::STATUS_INTERNAL_SERVER_ERROR);
         }
     }
 
     /**
      * Create a glide server to generate files in the specified folder
-     *
      * Caution: $media_folder may contain relative paths: ../../
      *
      * @param string $media_folder
@@ -237,7 +237,6 @@ class MediaFileController extends AbstractBaseController
 
     /**
      * Which graphics driver should we use for glide/intervention?
-     *
      * Prefer ImageMagick
      *
      * @return string
@@ -260,12 +259,12 @@ class MediaFileController extends AbstractBaseController
      *
      * @return Response
      */
-    private function httpStatusAsImage(int $status): Response
+    private function httpStatusAsImage(int $status): ResponseInterface
     {
         $svg = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="#F88" /><text x="5" y="55" font-family="Verdana" font-size="35">' . $status . '</text></svg>';
 
         // We can't use the actual status code, as browser's won't show images with 4xx/5xx
-        return new Response($svg, Response::HTTP_OK, [
+        return new Response($svg, Response::STATUS_OK, [
             'Content-Type' => 'image/svg+xml',
         ]);
     }
@@ -277,13 +276,13 @@ class MediaFileController extends AbstractBaseController
      *
      * @return Response
      */
-    private function fileExtensionAsImage(string $extension): Response
+    private function fileExtensionAsImage(string $extension): ResponseInterface
     {
         $extension = '.' . strtolower($extension);
 
         $svg = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="#88F" /><text x="5" y="60" font-family="Verdana" font-size="30">' . $extension . '</text></svg>';
 
-        return new Response($svg, Response::HTTP_OK, [
+        return new Response($svg, Response::STATUS_OK, [
             'Content-Type' => 'image/svg+xml',
         ]);
     }

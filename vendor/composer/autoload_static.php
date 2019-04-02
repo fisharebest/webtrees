@@ -57,6 +57,11 @@ class ComposerStaticInit74b5eb00e70cef0c1fba9491b929fdd1
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
         ),
+        'N' => 
+        array (
+            'Nyholm\\Psr7\\' => 12,
+            'Nyholm\\Psr7Server\\' => 18,
+        ),
         'L' => 
         array (
             'League\\Glide\\' => 13,
@@ -74,6 +79,10 @@ class ComposerStaticInit74b5eb00e70cef0c1fba9491b929fdd1
             'Illuminate\\Container\\' => 21,
             'Illuminate\\Cache\\' => 17,
         ),
+        'H' => 
+        array (
+            'Http\\Message\\' => 13,
+        ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
@@ -87,6 +96,7 @@ class ComposerStaticInit74b5eb00e70cef0c1fba9491b929fdd1
             'Fisharebest\\Flysystem\\Adapter\\' => 30,
             'Fisharebest\\ExtCalendar\\' => 24,
             'Fisharebest\\Algorithm\\' => 22,
+            'Fig\\Http\\Message\\' => 17,
         ),
         'E' => 
         array (
@@ -184,7 +194,8 @@ class ComposerStaticInit74b5eb00e70cef0c1fba9491b929fdd1
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Container\\' => 
         array (
@@ -193,6 +204,14 @@ class ComposerStaticInit74b5eb00e70cef0c1fba9491b929fdd1
         'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
+        ),
+        'Nyholm\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nyholm/psr7/src',
+        ),
+        'Nyholm\\Psr7Server\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nyholm/psr7-server/src',
         ),
         'League\\Glide\\' => 
         array (
@@ -238,6 +257,10 @@ class ComposerStaticInit74b5eb00e70cef0c1fba9491b929fdd1
         array (
             0 => __DIR__ . '/..' . '/illuminate/cache',
         ),
+        'Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-http/message-factory/src',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -269,6 +292,10 @@ class ComposerStaticInit74b5eb00e70cef0c1fba9491b929fdd1
         'Fisharebest\\Algorithm\\' => 
         array (
             0 => __DIR__ . '/..' . '/fisharebest/algorithm/src',
+        ),
+        'Fig\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fig/http-message-util/src',
         ),
         'Egulias\\EmailValidator\\' => 
         array (

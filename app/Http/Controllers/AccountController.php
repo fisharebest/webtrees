@@ -22,6 +22,8 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Http\RedirectResponse;
+use Fisharebest\Webtrees\Http\Response;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
@@ -31,9 +33,8 @@ use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller to allow the user to edit their account details.
@@ -67,7 +68,7 @@ class AccountController extends AbstractBaseController
      *
      * @return Response
      */
-    public function edit(Tree $tree, UserInterface $user): Response
+    public function edit(Tree $tree, UserInterface $user): ResponseInterface
     {
         $my_individual_record = Individual::getInstance($tree->getUserPreference(Auth::user(), 'gedcomid'), $tree);
         $contact_methods      = FunctionsEdit::optionsContactMethods();
@@ -93,13 +94,13 @@ class AccountController extends AbstractBaseController
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
      * @return RedirectResponse
      */
-    public function update(Request $request, Tree $tree, UserInterface $user): RedirectResponse
+    public function update(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $contact_method = (string) $request->get('contact_method');
         $email          = (string) $request->get('email');
@@ -159,7 +160,7 @@ class AccountController extends AbstractBaseController
      *
      * @return RedirectResponse
      */
-    public function delete(UserInterface $user): RedirectResponse
+    public function delete(UserInterface $user): ResponseInterface
     {
         // An administrator can only be deleted by another administrator
         if (!$user->getPreference('canadmin') && $user instanceof User) {

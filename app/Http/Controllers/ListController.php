@@ -35,8 +35,9 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for lists of GEDCOM records.
@@ -65,14 +66,14 @@ class ListController extends AbstractBaseController
     /**
      * Show a list of all individual or family records.
      *
-     * @param Request                  $request
+     * @param ServerRequestInterface   $request
      * @param Tree                     $tree
      * @param UserInterface            $user
      * @param ModuleListInterface|null $moduleListInterface
      *
      * @return Response
      */
-    public function familyList(Request $request, Tree $tree, UserInterface $user, ?ModuleListInterface $moduleListInterface): Response
+    public function familyList(ServerRequestInterface $request, Tree $tree, UserInterface $user, ?ModuleListInterface $moduleListInterface): ResponseInterface
     {
         return $this->individualOrFamilyList($request, $tree, $user, true, $moduleListInterface);
     }
@@ -80,20 +81,20 @@ class ListController extends AbstractBaseController
     /**
      * Show a list of all individual or family records.
      *
-     * @param Request                  $request
+     * @param ServerRequestInterface   $request
      * @param Tree                     $tree
      * @param UserInterface            $user
      * @param ModuleListInterface|null $moduleListInterface
      *
      * @return Response
      */
-    public function individualList(Request $request, Tree $tree, UserInterface $user, ?ModuleListInterface $moduleListInterface): Response
+    public function individualList(ServerRequestInterface $request, Tree $tree, UserInterface $user, ?ModuleListInterface $moduleListInterface): ResponseInterface
     {
         return $this->individualOrFamilyList($request, $tree, $user, false, $moduleListInterface);
     }
 
     /**
-     * @param Request                  $request
+     * @param ServerRequestInterface   $request
      * @param Tree                     $tree
      * @param UserInterface            $user
      * @param bool                     $families
@@ -101,7 +102,7 @@ class ListController extends AbstractBaseController
      *
      * @return Response
      */
-    public function individualOrFamilyList(Request $request, Tree $tree, UserInterface $user, bool $families, ?ModuleListInterface $moduleListInterface): Response
+    public function individualOrFamilyList(ServerRequestInterface $request, Tree $tree, UserInterface $user, bool $families, ?ModuleListInterface $moduleListInterface): ResponseInterface
     {
         // This action can show lists of both families and individuals.
         //route is assumed to be 'module'
@@ -394,12 +395,12 @@ class ListController extends AbstractBaseController
     /**
      * Show a list of all media records.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function mediaList(Request $request, Tree $tree): Response
+    public function mediaList(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         //route is assumed to be 'module'
         $module = $request->get('module');
@@ -462,7 +463,7 @@ class ListController extends AbstractBaseController
      *
      * @return Response
      */
-    public function noteList(Tree $tree): Response
+    public function noteList(Tree $tree): ResponseInterface
     {
         $notes = $this->allNotes($tree);
 
@@ -479,7 +480,7 @@ class ListController extends AbstractBaseController
      *
      * @return Response
      */
-    public function repositoryList(Tree $tree): Response
+    public function repositoryList(Tree $tree): ResponseInterface
     {
         $repositories = $this->allRepositories($tree);
 
@@ -496,7 +497,7 @@ class ListController extends AbstractBaseController
      *
      * @return Response
      */
-    public function sourceList(Tree $tree): Response
+    public function sourceList(Tree $tree): ResponseInterface
     {
         $sources = $this->allSources($tree);
 

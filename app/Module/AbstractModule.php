@@ -21,8 +21,9 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
+use Psr\Http\Message\ResponseInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
 
 /**
  * Class AbstractModule - common functions for blocks
@@ -248,7 +249,7 @@ abstract class AbstractModule implements ModuleInterface
      *
      * @return Response
      */
-    final protected function viewResponse($view_name, $view_data, $status = Response::HTTP_OK): Response
+    final protected function viewResponse($view_name, $view_data, $status = Response::STATUS_OK): ResponseInterface
     {
         // Make the view's data available to the layout.
         $layout_data = $view_data;

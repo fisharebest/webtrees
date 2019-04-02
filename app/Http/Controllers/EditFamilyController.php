@@ -22,12 +22,13 @@ use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
+use Fisharebest\Webtrees\Http\RedirectResponse;
+use Fisharebest\Webtrees\Http\Response;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for edit forms and responses.
@@ -35,12 +36,12 @@ use Symfony\Component\HttpFoundation\Response;
 class EditFamilyController extends AbstractEditController
 {
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function reorderChildren(Request $request, Tree $tree): Response
+    public function reorderChildren(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref   = $request->get('xref', '');
         $family = Family::getInstance($xref, $tree);
@@ -56,12 +57,12 @@ class EditFamilyController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function reorderChildrenAction(Request $request, Tree $tree): Response
+    public function reorderChildrenAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref   = $request->get('xref', '');
         $order  = (array) $request->get('order', []);
@@ -96,13 +97,12 @@ class EditFamilyController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     *
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function addChild(Request $request, Tree $tree): Response
+    public function addChild(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref   = $request->get('xref', '');
         $gender = $request->get('gender', 'U');
@@ -126,12 +126,12 @@ class EditFamilyController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return RedirectResponse
      */
-    public function addChildAction(Request $request, Tree $tree): RedirectResponse
+    public function addChildAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -170,7 +170,7 @@ class EditFamilyController extends AbstractEditController
         $done = false;
         foreach ($family->facts(['CHIL']) as $fact) {
             $old_child = $fact->target();
-            if ($old_child  instanceof Individual && Date::compare($new_child->getEstimatedBirthDate(), $old_child->getEstimatedBirthDate()) < 0) {
+            if ($old_child instanceof Individual && Date::compare($new_child->getEstimatedBirthDate(), $old_child->getEstimatedBirthDate()) < 0) {
                 // Insert before this child
                 $family->updateFact($fact->id(), '1 CHIL @' . $new_child->xref() . "@\n" . $fact->gedcom(), !$keep_chan);
                 $done = true;
@@ -190,12 +190,12 @@ class EditFamilyController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function addSpouse(Request $request, Tree $tree): Response
+    public function addSpouse(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref   = $request->get('xref', '');
         $famtag = $request->get('famtag', '');
@@ -225,12 +225,12 @@ class EditFamilyController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return RedirectResponse
      */
-    public function addSpouseAction(Request $request, Tree $tree): RedirectResponse
+    public function addSpouseAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref = $request->get('xref', '');
 
@@ -290,12 +290,12 @@ class EditFamilyController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function changeFamilyMembers(Request $request, Tree $tree): Response
+    public function changeFamilyMembers(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref   = $request->get('xref', '');
         $family = Family::getInstance($xref, $tree);
@@ -314,12 +314,12 @@ class EditFamilyController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return RedirectResponse
      */
-    public function changeFamilyMembersAction(Request $request, Tree $tree): RedirectResponse
+    public function changeFamilyMembersAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $xref   = $request->get('xref', '');
         $family = Family::getInstance($xref, $tree);

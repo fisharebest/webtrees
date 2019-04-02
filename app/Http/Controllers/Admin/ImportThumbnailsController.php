@@ -19,17 +19,18 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use FilesystemIterator;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
+use Fisharebest\Webtrees\Http\JsonResponse;
+use Fisharebest\Webtrees\Http\Response;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Intervention\Image\ImageManager;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 /**
@@ -42,7 +43,7 @@ class ImportThumbnailsController extends AbstractAdminController
      *
      * @return Response
      */
-    public function webtrees1Thumbnails(): Response
+    public function webtrees1Thumbnails(): ResponseInterface
     {
         return $this->viewResponse('admin/webtrees1-thumbnails', [
             'title' => I18N::translate('Import custom thumbnails from webtrees version 1'),
@@ -52,11 +53,11 @@ class ImportThumbnailsController extends AbstractAdminController
     /**
      * Import custom thumbnails from webtres 1.x.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function webtrees1ThumbnailsAction(Request $request): Response
+    public function webtrees1ThumbnailsAction(ServerRequestInterface $request): ResponseInterface
     {
         $thumbnail = $request->get('thumbnail', '');
         $action    = $request->get('action', '');
@@ -113,11 +114,11 @@ class ImportThumbnailsController extends AbstractAdminController
     /**
      * Import custom thumbnails from webtres 1.x.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return JsonResponse
      */
-    public function webtrees1ThumbnailsData(Request $request): JsonResponse
+    public function webtrees1ThumbnailsData(ServerRequestInterface $request): ResponseInterface
     {
         $start  = (int) $request->get('start', 0);
         $length = (int) $request->get('length', 20);

@@ -21,6 +21,9 @@ use Exception;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Http\JsonResponse;
+use Fisharebest\Webtrees\Http\RedirectResponse;
+use Fisharebest\Webtrees\Http\Response;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
@@ -32,11 +35,9 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 use League\Flysystem\FilesystemInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Controller for site administration.
@@ -75,7 +76,7 @@ class AdminSiteController extends AbstractBaseController
      *
      * @return Response
      */
-    public function cleanData(FilesystemInterface $filesystem): Response
+    public function cleanData(FilesystemInterface $filesystem): ResponseInterface
     {
         $protected = [
             '.htaccess',
@@ -107,12 +108,12 @@ class AdminSiteController extends AbstractBaseController
     /**
      * Delete old user files in the data folder.
      *
-     * @param Request             $request
-     * @param FilesystemInterface $filesystem
+     * @param ServerRequestInterface $request
+     * @param FilesystemInterface    $filesystem
      *
      * @return RedirectResponse
      */
-    public function cleanDataAction(Request $request, FilesystemInterface $filesystem): RedirectResponse
+    public function cleanDataAction(ServerRequestInterface $request, FilesystemInterface $filesystem): ResponseInterface
     {
         $to_delete = (array) $request->get('to_delete');
         $to_delete = array_filter($to_delete);
@@ -150,11 +151,11 @@ class AdminSiteController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return Response
      */
-    public function logs(Request $request): Response
+    public function logs(ServerRequestInterface $request): ResponseInterface
     {
         $earliest = DB::table('log')->min('log_time');
         $latest   = DB::table('log')->max('log_time');
@@ -204,12 +205,12 @@ class AdminSiteController extends AbstractBaseController
     }
 
     /**
-     * @param Request           $request
-     * @param DatatablesService $datatables_service
+     * @param ServerRequestInterface $request
+     * @param DatatablesService      $datatables_service
      *
      * @return JsonResponse
      */
-    public function logsData(Request $request, DatatablesService $datatables_service): JsonResponse
+    public function logsData(ServerRequestInterface $request, DatatablesService $datatables_service): ResponseInterface
     {
         $query = $this->logsQuery($request);
 
@@ -229,11 +230,11 @@ class AdminSiteController extends AbstractBaseController
     /**
      * Generate a query for filtering the site log.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return Builder
      */
-    private function logsQuery(Request $request): Builder
+    private function logsQuery(ServerRequestInterface $request): Builder
     {
         $from     = $request->get('from');
         $to       = $request->get('to');
@@ -281,11 +282,11 @@ class AdminSiteController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return Response
      */
-    public function logsDelete(Request $request): Response
+    public function logsDelete(ServerRequestInterface $request): ResponseInterface
     {
         $this->logsQuery($request)->delete();
 
@@ -293,11 +294,11 @@ class AdminSiteController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return Response
      */
-    public function logsExport(Request $request): Response
+    public function logsExport(ServerRequestInterface $request): ResponseInterface
     {
         $content = $this->logsQuery($request)
             ->orderBy('log_id')
@@ -324,7 +325,7 @@ class AdminSiteController extends AbstractBaseController
     /**
      * @return Response
      */
-    public function mailForm(): Response
+    public function mailForm(): ResponseInterface
     {
         $mail_ssl_options       = $this->mailSslOptions();
         $mail_transport_options = $this->mailTransportOptions();
@@ -375,11 +376,11 @@ class AdminSiteController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return RedirectResponse
      */
-    public function mailSave(Request $request): RedirectResponse
+    public function mailSave(ServerRequestInterface $request): ResponseInterface
     {
         Site::setPreference('SMTP_ACTIVE', $request->get('SMTP_ACTIVE'));
         Site::setPreference('SMTP_FROM_NAME', $request->get('SMTP_FROM_NAME'));
@@ -402,7 +403,7 @@ class AdminSiteController extends AbstractBaseController
     /**
      * @return Response
      */
-    public function preferencesForm(): Response
+    public function preferencesForm(): ResponseInterface
     {
         $all_themes = $this->themeOptions();
 
@@ -427,11 +428,11 @@ class AdminSiteController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return RedirectResponse
      */
-    public function preferencesSave(Request $request): RedirectResponse
+    public function preferencesSave(ServerRequestInterface $request): ResponseInterface
     {
         $INDEX_DIRECTORY = $request->get('INDEX_DIRECTORY');
         if (substr($INDEX_DIRECTORY, -1) !== '/') {
@@ -456,7 +457,7 @@ class AdminSiteController extends AbstractBaseController
     /**
      * @return Response
      */
-    public function registrationForm(): Response
+    public function registrationForm(): ResponseInterface
     {
         $title = I18N::translate('Sign-in and registration');
 
@@ -485,11 +486,11 @@ class AdminSiteController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return RedirectResponse
      */
-    public function registrationSave(Request $request): RedirectResponse
+    public function registrationSave(ServerRequestInterface $request): ResponseInterface
     {
         Site::setPreference('WELCOME_TEXT_AUTH_MODE', $request->get('WELCOME_TEXT_AUTH_MODE'));
         Site::setPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE, $request->get('WELCOME_TEXT_AUTH_MODE_4'));
@@ -507,7 +508,7 @@ class AdminSiteController extends AbstractBaseController
      *
      * @return Response
      */
-    public function serverInformation(): Response
+    public function serverInformation(): ResponseInterface
     {
         ob_start();
         phpinfo(INFO_ALL & ~INFO_CREDITS & ~INFO_LICENSE);

@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class ReviewChangesModule
@@ -209,12 +209,12 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      * @param int     $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
         $this->setBlockSetting($block_id, 'days', $request->get('num', '1'));
         $this->setBlockSetting($block_id, 'sendmail', $request->get('sendmail', ''));

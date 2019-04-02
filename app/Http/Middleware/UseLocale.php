@@ -23,9 +23,9 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Throwable;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Middleware to set a global theme.
@@ -33,13 +33,12 @@ use Throwable;
 class UseLocale implements MiddlewareInterface
 {
     /**
-     * @param Request $request
-     * @param Closure $next
+     * @param ServerRequestInterface $request
+     * @param Closure                $next
      *
      * @return Response
-     * @throws Throwable
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(ServerRequestInterface $request, Closure $next): ResponseInterface
     {
         $tree = app(Tree::class);
 

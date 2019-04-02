@@ -19,9 +19,10 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Closure;
 use Fisharebest\Webtrees\DebugBar;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\RedirectResponse;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Middleware to add debugging info to the PHP debugbar.
@@ -29,12 +30,12 @@ use Symfony\Component\HttpFoundation\Response;
 class DebugBarData implements MiddlewareInterface
 {
     /**
-     * @param Request $request
-     * @param Closure $next
+     * @param ServerRequestInterface $request
+     * @param Closure                $next
      *
      * @return Response
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(ServerRequestInterface $request, Closure $next): ResponseInterface
     {
         if (class_exists(DebugBar::class)) {
             // This timer gets stopped automatically when we generate the response.

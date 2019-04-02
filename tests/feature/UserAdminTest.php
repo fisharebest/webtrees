@@ -19,7 +19,8 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Http\Controllers\Admin\UsersController;
 use Fisharebest\Webtrees\Services\UserService;
-use Symfony\Component\HttpFoundation\Request;
+use Fisharebest\Webtrees\Http\Request;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Test the user administration pages
@@ -62,7 +63,7 @@ class UserAdminTest extends TestCase
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
         $request = new Request(['search' => ['value' => 'admin']]);
-        app()->instance(Request::class, $request);
+        app()->instance(ServerRequestInterface::class, $request);
         $controller = app(UsersController::class);
         $response   = app()->dispatch($controller, 'data');
 
@@ -86,7 +87,7 @@ class UserAdminTest extends TestCase
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
         $request = new Request(['length' => 1]);
-        app()->instance(Request::class, $request);
+        app()->instance(ServerRequestInterface::class, $request);
         $controller = app(UsersController::class);
         $response   = app()->dispatch($controller, 'data');
 
@@ -106,7 +107,7 @@ class UserAdminTest extends TestCase
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
         $request = new Request(['order' => [['column' => 2, 'dir' => 'asc']]]);
-        app()->instance(Request::class, $request);
+        app()->instance(ServerRequestInterface::class, $request);
         $controller = app(UsersController::class);
         $response   = app()->dispatch($controller, 'data');
 
@@ -115,7 +116,7 @@ class UserAdminTest extends TestCase
         $this->assertLessThan($pos2, $pos1);
 
         $request = new Request(['order' => [['column' => 2, 'dir' => 'desc']]]);
-        app()->instance(Request::class, $request);
+        app()->instance(ServerRequestInterface::class, $request);
         $controller = app(UsersController::class);
         $response   = app()->dispatch($controller, 'data');
 

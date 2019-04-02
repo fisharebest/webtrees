@@ -33,8 +33,9 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Show anniveraries for events in a given day/month/year.
@@ -62,12 +63,12 @@ class CalendarController extends AbstractBaseController
     /**
      * A form to request the page parameters.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function page(Request $request, Tree $tree): Response
+    public function page(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $cal      = $request->get('cal', '');
         $day      = $request->get('day', '');
@@ -175,12 +176,12 @@ class CalendarController extends AbstractBaseController
     /**
      * Show anniveraries that occured on a given day/month/year.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
      * @return Response
      */
-    public function calendar(Request $request, Tree $tree): Response
+    public function calendar(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
 
