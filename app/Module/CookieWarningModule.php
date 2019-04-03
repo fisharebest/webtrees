@@ -119,7 +119,7 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
     {
         return $this->module_service
             ->findByInterface(ModuleAnalyticsInterface::class)
-            ->filter(function (ModuleAnalyticsInterface $module): bool {
+            ->filter(static function (ModuleAnalyticsInterface $module): bool {
                 return $module->analyticsCanShow();
             })
             ->isNotEmpty();

@@ -521,7 +521,7 @@ class ListController extends AbstractBaseController
             ->where('multimedia_file_refn', 'NOT LIKE', 'https:%')
             ->where('multimedia_file_refn', 'LIKE', '%/%')
             ->pluck('multimedia_file_refn', 'multimedia_file_refn')
-            ->map(function (string $path): string {
+            ->map(static function (string $path): string {
                 return dirname($path);
             })
             ->unique()
@@ -549,7 +549,7 @@ class ListController extends AbstractBaseController
     private function allMedia(Tree $tree, string $folder, string $subfolders, string $sort, string $filter, string $form_type): array
     {
         $query = DB::table('media')
-            ->join('media_file', function (JoinClause $join): void {
+            ->join('media_file', static function (JoinClause $join): void {
                 $join
                     ->on('media_file.m_file', '=', 'media.m_file')
                     ->on('media_file.m_id', '=', 'media.m_id');
@@ -558,11 +558,11 @@ class ListController extends AbstractBaseController
             ->distinct();
 
         // Match all external files, and whatever folders were specified
-        $query->where(function (Builder $query) use ($folder, $subfolders): void {
+        $query->where(static function (Builder $query) use ($folder, $subfolders): void {
             $query
                 ->where('multimedia_file_refn', 'LIKE', 'http:%')
                 ->orWhere('multimedia_file_refn', 'LIKE', 'https:%')
-                ->orWhere(function (Builder $query) use ($folder, $subfolders): void {
+                ->orWhere(static function (Builder $query) use ($folder, $subfolders): void {
                     $query->where('multimedia_file_refn', 'LIKE', $folder . '%');
                     if ($subfolders === 'exclude') {
                         $query->where('multimedia_file_refn', 'NOT LIKE', $folder . '/%/%');
@@ -572,7 +572,7 @@ class ListController extends AbstractBaseController
 
         // Apply search terms
         if ($filter !== '') {
-            $query->where(function (Builder $query) use ($filter): void {
+            $query->where(static function (Builder $query) use ($filter): void {
                 $query
                     ->whereContains('multimedia_file_refn', $filter)
                     ->whereContains('descriptive_title', $filter, 'or');

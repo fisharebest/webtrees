@@ -51,7 +51,7 @@ class UseTree implements MiddlewareInterface
         View::share('tree', $tree);
 
         // Need a closure, as the container does not allow you to bind null.
-        app()->bind(Tree::class, function () use ($tree): ?Tree {
+        app()->bind(Tree::class, static function () use ($tree): ?Tree {
             return $tree;
         });
 

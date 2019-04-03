@@ -116,7 +116,7 @@ class AbstractCensusColumn
             return null;
         }
 
-        usort($families, function (Family $x, Family $y): int {
+        usort($families, static function (Family $x, Family $y): int {
             return Date::compare($x->getMarriageDate(), $y->getMarriageDate());
         });
 

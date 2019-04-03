@@ -286,10 +286,10 @@ class Tree
      */
     public static function all(): Collection
     {
-        return app('cache.array')->rememberForever(__CLASS__, function (): Collection {
+        return app('cache.array')->rememberForever(__CLASS__, static function (): Collection {
             // Admins see all trees
             $query = DB::table('gedcom')
-                ->leftJoin('gedcom_setting', function (JoinClause $join): void {
+                ->leftJoin('gedcom_setting', static function (JoinClause $join): void {
                     $join->on('gedcom_setting.gedcom_id', '=', 'gedcom.gedcom_id')
                         ->where('gedcom_setting.setting_name', '=', 'title');
                 })
@@ -305,32 +305,32 @@ class Tree
             // Non-admins may not see all trees
             if (!Auth::isAdmin()) {
                 $query
-                    ->join('gedcom_setting AS gs2', function (JoinClause $join): void {
+                    ->join('gedcom_setting AS gs2', static function (JoinClause $join): void {
                         $join->on('gs2.gedcom_id', '=', 'gedcom.gedcom_id')
                             ->where('gs2.setting_name', '=', 'imported');
                     })
-                    ->join('gedcom_setting AS gs3', function (JoinClause $join): void {
+                    ->join('gedcom_setting AS gs3', static function (JoinClause $join): void {
                         $join->on('gs3.gedcom_id', '=', 'gedcom.gedcom_id')
                             ->where('gs3.setting_name', '=', 'REQUIRE_AUTHENTICATION');
                     })
-                    ->leftJoin('user_gedcom_setting', function (JoinClause $join): void {
+                    ->leftJoin('user_gedcom_setting', static function (JoinClause $join): void {
                         $join->on('user_gedcom_setting.gedcom_id', '=', 'gedcom.gedcom_id')
                             ->where('user_gedcom_setting.user_id', '=', Auth::id())
                             ->where('user_gedcom_setting.setting_name', '=', 'canedit');
                     })
-                    ->where(function (Builder $query): void {
+                    ->where(static function (Builder $query): void {
                         $query
                             // Managers
                             ->where('user_gedcom_setting.setting_value', '=', 'admin')
                             // Members
-                            ->orWhere(function (Builder $query): void {
+                            ->orWhere(static function (Builder $query): void {
                                 $query
                                     ->where('gs2.setting_value', '=', '1')
                                     ->where('gs3.setting_value', '=', '1')
                                     ->where('user_gedcom_setting.setting_value', '<>', 'none');
                             })
                             // Public trees
-                            ->orWhere(function (Builder $query): void {
+                            ->orWhere(static function (Builder $query): void {
                                 $query
                                     ->where('gs2.setting_value', '=', '1')
                                     ->where('gs3.setting_value', '<>', '1');
@@ -340,7 +340,7 @@ class Tree
 
             return $query
                 ->get()
-                ->mapWithKeys(function (stdClass $row): array {
+                ->mapWithKeys(static function (stdClass $row): array {
                     return [$row->tree_id => new self((int) $row->tree_id, $row->tree_name, $row->tree_title)];
                 });
         });
@@ -632,7 +632,7 @@ class Tree
             ->orderBy('n')
             ->orderBy('len')
             ->orderBy('xref')
-            ->chunk(100, function (Collection $rows) use ($stream, &$buffer): void {
+            ->chunk(100, static function (Collection $rows) use ($stream, &$buffer): void {
                 foreach ($rows as $row) {
                     $buffer .= FunctionsExport::reformatRecord($row->gedcom);
                     if (strlen($buffer) > 65535) {

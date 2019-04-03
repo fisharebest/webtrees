@@ -430,7 +430,7 @@ class ModuleService
     public function findByComponent(string $interface, Tree $tree, UserInterface $user): Collection
     {
         return $this->findByInterface($interface, false, true)
-            ->filter(function (ModuleInterface $module) use ($interface, $tree, $user): bool {
+            ->filter(static function (ModuleInterface $module) use ($interface, $tree, $user): bool {
                 return $module->accessLevel($tree, $interface) >= Auth::accessLevel($tree, $user);
             });
     }
@@ -487,13 +487,13 @@ class ModuleService
             // We can override these from database settings.
             $module_info = DB::table('module')
                 ->get()
-                ->mapWithKeys(function (stdClass $row): array {
+                ->mapWithKeys(static function (stdClass $row): array {
                     return [$row->module_name => $row];
                 });
 
             return $this->coreModules()
                 ->merge($this->customModules())
-                ->map(function (ModuleInterface $module) use ($module_info): ModuleInterface {
+                ->map(static function (ModuleInterface $module) use ($module_info): ModuleInterface {
                     $info = $module_info->get($module->name());
 
                     if ($info instanceof stdClass) {
@@ -536,7 +536,7 @@ class ModuleService
     private function coreModules(): Collection
     {
         return Collection::make(self::CORE_MODULES)
-            ->map(function (string $class, string $name): ModuleInterface {
+            ->map(static function (string $class, string $name): ModuleInterface {
                 $module = app($class);
 
                 $module->setName($name);
@@ -556,14 +556,14 @@ class ModuleService
         $filenames = glob($pattern, GLOB_NOSORT);
 
         return Collection::make($filenames)
-            ->filter(function (string $filename): bool {
+            ->filter(static function (string $filename): bool {
                 // Special characters will break PHP variable names.
                 // This also allows us to ignore modules called "foo.example" and "foo.disable"
                 $module_name = basename(dirname($filename));
 
                 return !Str::contains($module_name, ['.', ' ', '[', ']']) && Str::length($module_name) <= 30;
             })
-            ->map(function (string $filename): ?ModuleCustomInterface {
+            ->map(static function (string $filename): ?ModuleCustomInterface {
                 try {
                     $module = self::load($filename);
 
@@ -583,7 +583,7 @@ class ModuleService
                 }
             })
             ->filter()
-            ->mapWithKeys(function (ModuleCustomInterface $module): array {
+            ->mapWithKeys(static function (ModuleCustomInterface $module): array {
                 return [$module->name() => $module];
             });
     }
@@ -596,10 +596,10 @@ class ModuleService
     public function setupLanguages(): Collection
     {
         return $this->coreModules()
-            ->filter(function (ModuleInterface $module) {
+            ->filter(static function (ModuleInterface $module) {
                 return $module instanceof ModuleLanguageInterface && $module->isEnabledByDefault();
             })
-            ->sort(function (ModuleLanguageInterface $x, ModuleLanguageInterface $y) {
+            ->sort(static function (ModuleLanguageInterface $x, ModuleLanguageInterface $y) {
                 return $x->locale()->endonymSortable() <=> $y->locale()->endonymSortable();
             });
     }
@@ -721,7 +721,7 @@ class ModuleService
     public function findByName(string $module_name, bool $include_disabled = false): ?ModuleInterface
     {
         return $this->all($include_disabled)
-            ->filter(function (ModuleInterface $module) use ($module_name): bool {
+            ->filter(static function (ModuleInterface $module) use ($module_name): bool {
                 return $module->name() === $module_name;
             })
             ->first();
@@ -739,7 +739,7 @@ class ModuleService
     public function otherModules(bool $include_disabled = false): Collection
     {
         return $this->findByInterface(ModuleInterface::class, $include_disabled, true)
-            ->filter(function (ModuleInterface $module): bool {
+            ->filter(static function (ModuleInterface $module): bool {
                 foreach (self::COMPONENTS as $interface) {
                     if ($module instanceof $interface) {
                         return false;
@@ -761,7 +761,7 @@ class ModuleService
         $database_modules = DB::table('module')->pluck('module_name');
 
         $disk_modules = $this->all(true)
-            ->map(function (ModuleInterface $module): string {
+            ->map(static function (ModuleInterface $module): string {
                 return $module->name();
             });
 

@@ -74,7 +74,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
             ->where('user_id', '=', Auth::id())
             ->orderByDesc('updated')
             ->get()
-            ->map(function (stdClass $row): stdClass {
+            ->map(static function (stdClass $row): stdClass {
                 $row->updated = Carbon::make($row->updated);
 
                 return $row;

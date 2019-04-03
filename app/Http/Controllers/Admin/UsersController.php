@@ -86,7 +86,7 @@ class UsersController extends AbstractAdminController
 
         $users = $this->user_service->all();
 
-        $inactive_users = $users->filter(function (UserInterface $user) use ($inactive_threshold): bool {
+        $inactive_users = $users->filter(static function (UserInterface $user) use ($inactive_threshold): bool {
             if ($user->getPreference('sessiontime') === '0') {
                 $datelogin = (int) $user->getPreference('reg_timestamp');
             } else {
@@ -96,7 +96,7 @@ class UsersController extends AbstractAdminController
             return $datelogin < $inactive_threshold && $user->getPreference('verified');
         });
 
-        $unverified_users = $users->filter(function (UserInterface $user) use ($unverified_threshold): bool {
+        $unverified_users = $users->filter(static function (UserInterface $user) use ($unverified_threshold): bool {
             if ($user->getPreference('sessiontime') === '0') {
                 $datelogin = (int) $user->getPreference('reg_timestamp');
             } else {
@@ -179,27 +179,27 @@ class UsersController extends AbstractAdminController
         }
 
         $query = DB::table('user')
-            ->leftJoin('user_setting AS us1', function (JoinClause $join): void {
+            ->leftJoin('user_setting AS us1', static function (JoinClause $join): void {
                 $join
                     ->on('us1.user_id', '=', 'user.user_id')
                     ->where('us1.setting_name', '=', 'language');
             })
-            ->leftJoin('user_setting AS us2', function (JoinClause $join): void {
+            ->leftJoin('user_setting AS us2', static function (JoinClause $join): void {
                 $join
                     ->on('us2.user_id', '=', 'user.user_id')
                     ->where('us2.setting_name', '=', 'reg_timestamp');
             })
-            ->leftJoin('user_setting AS us3', function (JoinClause $join): void {
+            ->leftJoin('user_setting AS us3', static function (JoinClause $join): void {
                 $join
                     ->on('us3.user_id', '=', 'user.user_id')
                     ->where('us3.setting_name', '=', 'sessiontime');
             })
-            ->leftJoin('user_setting AS us4', function (JoinClause $join): void {
+            ->leftJoin('user_setting AS us4', static function (JoinClause $join): void {
                 $join
                     ->on('us4.user_id', '=', 'user.user_id')
                     ->where('us4.setting_name', '=', 'verified');
             })
-            ->leftJoin('user_setting AS us5', function (JoinClause $join): void {
+            ->leftJoin('user_setting AS us5', static function (JoinClause $join): void {
                 $join
                     ->on('us5.user_id', '=', 'user.user_id')
                     ->where('us5.setting_name', '=', 'verified_by_admin');

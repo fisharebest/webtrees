@@ -7,7 +7,7 @@
 // It is not good to bypass privacy, but many servers do not have the resources
 // to process privacy for every record in the tree
 $count_individuals = DB::table('individuals')
-    ->join('link', function (JoinClause $join): void {
+    ->join('link', static function (JoinClause $join): void {
         $join->on('l_from', '=', 'i_id');
         $join->on('l_file', '=', 'i_file');
     })
@@ -19,7 +19,7 @@ $count_individuals = DB::table('individuals')
     ->all();
 
 $count_families = DB::table('families')
-    ->join('link', function (JoinClause $join): void {
+    ->join('link', static function (JoinClause $join): void {
         $join->on('l_from', '=', 'f_id');
         $join->on('l_file', '=', 'f_file');
     })
@@ -31,7 +31,7 @@ $count_families = DB::table('families')
     ->all();
 
 $count_sources = DB::table('sources')
-    ->join('link', function (JoinClause $join): void {
+    ->join('link', static function (JoinClause $join): void {
         $join->on('l_from', '=', 's_id');
         $join->on('l_file', '=', 's_file');
     })

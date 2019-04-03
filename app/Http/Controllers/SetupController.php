@@ -179,7 +179,7 @@ class SetupController extends AbstractBaseController
     {
         return app(ModuleService::class)
             ->setupLanguages()
-            ->map(function (ModuleLanguageInterface $module): LocaleInterface {
+            ->map(static function (ModuleLanguageInterface $module): LocaleInterface {
                 return $module->locale();
             })
             ->all();

@@ -92,7 +92,7 @@ class ChartsMenuModule extends AbstractModule implements ModuleMenuInterface
         $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree) ?? $tree->significantIndividual(Auth::user());
         $submenus   = $this->module_service->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
-            ->map(function (ModuleChartInterface $module) use ($individual): Menu {
+            ->map(static function (ModuleChartInterface $module) use ($individual): Menu {
                 return $module->chartMenu($individual);
             });
 

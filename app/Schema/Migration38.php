@@ -36,7 +36,7 @@ class Migration38 implements MigrationInterface
         // These migrations are now part of the core code.
 
         if (!DB::schema()->hasTable('placelocation')) {
-            DB::schema()->create('placelocation', function (Blueprint $table): void {
+            DB::schema()->create('placelocation', static function (Blueprint $table): void {
                 $table->integer('pl_id')->primary();
                 $table->integer('pl_parent_id');
                 $table->integer('pl_level');
@@ -52,7 +52,7 @@ class Migration38 implements MigrationInterface
         }
 
         if (DB::schema()->hasColumn('placelocation', 'pl_media')) {
-            DB::schema()->table('placelocation', function (Blueprint $table): void {
+            DB::schema()->table('placelocation', static function (Blueprint $table): void {
                 $table->dropColumn('pl_media');
                 $table->dropColumn('sv_long');
                 $table->dropColumn('sv_lati');

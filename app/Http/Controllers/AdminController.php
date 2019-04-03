@@ -383,7 +383,7 @@ class AdminController extends AbstractBaseController
         return DB::table('default_resn')
             ->where('gedcom_id', '=', $tree->id())
             ->get()
-            ->map(function (stdClass $row) use ($tree): stdClass {
+            ->map(static function (stdClass $row) use ($tree): stdClass {
                 $row->record = null;
                 $row->label  = '';
 
@@ -399,7 +399,7 @@ class AdminController extends AbstractBaseController
 
                 return $row;
             })
-            ->sort(function (stdClass $x, stdClass $y): int {
+            ->sort(static function (stdClass $x, stdClass $y): int {
                 return I18N::strcasecmp($x->tag_label, $y->tag_label);
             })
             ->all();

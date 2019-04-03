@@ -516,7 +516,7 @@ class FunctionsPrintFacts
 
                 $values = ['<a href="' . e($person->url()) . '">' . $person->fullName() . '</a>'];
 
-                $module = app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $person->tree(), Auth::user())->first(function (ModuleInterface $module) {
+                $module = app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $person->tree(), Auth::user())->first(static function (ModuleInterface $module) {
                     return $module instanceof RelationshipsChartModule;
                 });
 

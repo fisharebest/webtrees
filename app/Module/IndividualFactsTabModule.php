@@ -101,13 +101,13 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         // Which facts and events are handled by other modules?
         $sidebar_facts = $this->module_service
             ->findByComponent(ModuleSidebarInterface::class, $individual->tree(), Auth::user())
-            ->map(function (ModuleSidebarInterface $sidebar): Collection {
+            ->map(static function (ModuleSidebarInterface $sidebar): Collection {
                 return $sidebar->supportedFacts();
             });
 
         $tab_facts = $this->module_service
             ->findByComponent(ModuleTabInterface::class, $individual->tree(), Auth::user())
-            ->map(function (ModuleTabInterface $sidebar): Collection {
+            ->map(static function (ModuleTabInterface $sidebar): Collection {
                 return $sidebar->supportedFacts();
             });
 
@@ -116,7 +116,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
         // The individual’s own facts
         $indifacts = $individual->facts()
-            ->filter(function (Fact $fact) use ($exclude_facts): bool {
+            ->filter(static function (Fact $fact) use ($exclude_facts): bool {
                 return !$exclude_facts->contains($fact->getTag());
             });
 
@@ -453,7 +453,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
     private function historicalFacts(Individual $individual): array
     {
         return $this->module_service->findByInterface(ModuleHistoricEventsInterface::class)
-            ->map(function (ModuleHistoricEventsInterface $module) use ($individual): Collection {
+            ->map(static function (ModuleHistoricEventsInterface $module) use ($individual): Collection {
                 return $module->historicEventsForIndividual($individual);
             })
             ->flatten()

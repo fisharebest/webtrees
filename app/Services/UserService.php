@@ -41,7 +41,7 @@ class UserService
      */
     public function find($user_id): ?User
     {
-        return app('cache.array')->rememberForever(__CLASS__ . $user_id, function () use ($user_id): ?User {
+        return app('cache.array')->rememberForever(__CLASS__ . $user_id, static function () use ($user_id): ?User {
             return DB::table('user')
                 ->where('user_id', '=', $user_id)
                 ->get()
@@ -143,7 +143,7 @@ class UserService
     public function administrators(): Collection
     {
         return DB::table('user')
-            ->join('user_setting', function (JoinClause $join): void {
+            ->join('user_setting', static function (JoinClause $join): void {
                 $join
                     ->on('user_setting.user_id', '=', 'user.user_id')
                     ->where('user_setting.setting_name', '=', 'canadmin')
@@ -165,7 +165,7 @@ class UserService
     public function managers(): Collection
     {
         return DB::table('user')
-            ->join('user_gedcom_setting', function (JoinClause $join): void {
+            ->join('user_gedcom_setting', static function (JoinClause $join): void {
                 $join
                     ->on('user_gedcom_setting.user_id', '=', 'user.user_id')
                     ->where('user_gedcom_setting.setting_name', '=', 'canedit')
@@ -187,7 +187,7 @@ class UserService
     public function moderators(): Collection
     {
         return DB::table('user')
-            ->join('user_gedcom_setting', function (JoinClause $join): void {
+            ->join('user_gedcom_setting', static function (JoinClause $join): void {
                 $join
                     ->on('user_gedcom_setting.user_id', '=', 'user.user_id')
                     ->where('user_gedcom_setting.setting_name', '=', 'canedit')
@@ -209,7 +209,7 @@ class UserService
     public function unapproved(): Collection
     {
         return DB::table('user')
-            ->join('user_setting', function (JoinClause $join): void {
+            ->join('user_setting', static function (JoinClause $join): void {
                 $join
                     ->on('user_setting.user_id', '=', 'user.user_id')
                     ->where('user_setting.setting_name', '=', 'verified_by_admin')
@@ -231,7 +231,7 @@ class UserService
     public function unverified(): Collection
     {
         return DB::table('user')
-            ->join('user_setting', function (JoinClause $join): void {
+            ->join('user_setting', static function (JoinClause $join): void {
                 $join
                     ->on('user_setting.user_id', '=', 'user.user_id')
                     ->where('user_setting.setting_name', '=', 'verified')

@@ -101,7 +101,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
         $min_block_order = DB::table('block')
             ->where('module_name', '=', $this->name())
-            ->where(function (Builder $query) use ($tree): void {
+            ->where(static function (Builder $query) use ($tree): void {
                 $query
                     ->whereNull('gedcom_id')
                     ->orWhere('gedcom_id', '=', $tree->id());
@@ -110,7 +110,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
         $max_block_order = DB::table('block')
             ->where('module_name', '=', $this->name())
-            ->where(function (Builder $query) use ($tree): void {
+            ->where(static function (Builder $query) use ($tree): void {
                 $query
                     ->whereNull('gedcom_id')
                     ->orWhere('gedcom_id', '=', $tree->id());
@@ -168,7 +168,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
         $swap_block = DB::table('block')
             ->where('module_name', '=', $this->name())
-            ->where('block_order', '=', function (Builder $query) use ($block_order): void {
+            ->where('block_order', '=', static function (Builder $query) use ($block_order): void {
                 $query
                     ->from('block')
                     ->where('module_name', '=', $this->name())
@@ -217,7 +217,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
         $swap_block = DB::table('block')
             ->where('module_name', '=', $this->name())
-            ->where('block_order', '=', function (Builder $query) use ($block_order): void {
+            ->where('block_order', '=', static function (Builder $query) use ($block_order): void {
                 $query
                     ->from('block')
                     ->where('module_name', '=', $this->name())
@@ -356,7 +356,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     {
         // Filter foreign languages.
         $faqs = $this->faqsForTree($tree)
-            ->filter(function (stdClass $faq): bool {
+            ->filter(static function (stdClass $faq): bool {
                 return $faq->languages === '' || in_array(WT_LOCALE, explode(',', $faq->languages));
             });
 
@@ -382,7 +382,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             ->where('bs1.setting_name', '=', 'header')
             ->where('bs2.setting_name', '=', 'faqbody')
             ->where('bs3.setting_name', '=', 'languages')
-            ->where(function (Builder $query) use ($tree): void {
+            ->where(static function (Builder $query) use ($tree): void {
                 $query
                     ->whereNull('gedcom_id')
                     ->orWhere('gedcom_id', '=', $tree->id());
@@ -404,15 +404,15 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
              ->join('block_setting', 'block_setting.block_id', '=', 'block.block_id')
              ->where('module_name', '=', $this->name())
              ->where('setting_name', '=', 'languages')
-             ->where(function (Builder $query) use ($tree): void {
+             ->where(static function (Builder $query) use ($tree): void {
                  $query
                      ->whereNull('gedcom_id')
                      ->orWhere('gedcom_id', '=', $tree->id());
              })
              ->select(['setting_value AS languages'])
              ->get()
-             ->filter(function (stdClass $faq) use ($language): bool {
-                 return $faq->languages === '' || in_array($language, explode(',', $faq->languages));
+             ->filter(static function (stdClass $faq) use ($language): bool {
+                 return $faq->languages === '' || in_array($language, explode(',', $faq->languages), true);
              })
             ->isNotEmpty();
     }

@@ -241,8 +241,6 @@ class FunctionsEdit
     /**
      * A list of GEDCOM restrictions for privacy rules.
      *
-     * @param bool $include_empty
-     *
      * @return string[]
      */
     public static function optionsRestrictionsRule(): array

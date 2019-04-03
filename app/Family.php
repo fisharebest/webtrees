@@ -399,7 +399,7 @@ class Family extends GedcomRecord
             // Check the script used by each name, so we can match cyrillic with cyrillic, greek with greek, etc.
             $husb_names = [];
             if ($this->husb) {
-                $husb_names = array_filter($this->husb->getAllNames(), function (array $x): bool {
+                $husb_names = array_filter($this->husb->getAllNames(), static function (array $x): bool {
                     return $x['type'] !== '_MARNM';
                 });
             }
@@ -417,7 +417,7 @@ class Family extends GedcomRecord
 
             $wife_names = [];
             if ($this->wife) {
-                $wife_names = array_filter($this->wife->getAllNames(), function (array $x): bool {
+                $wife_names = array_filter($this->wife->getAllNames(), static function (array $x): bool {
                     return $x['type'] !== '_MARNM';
                 });
             }

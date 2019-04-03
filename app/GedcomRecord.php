@@ -566,7 +566,7 @@ class GedcomRecord
     {
         $this->getAllNames[] = [
             'type'   => $type,
-            'sort'   => preg_replace_callback('/([0-9]+)/', function (array $matches): string {
+            'sort'   => preg_replace_callback('/([0-9]+)/', static function (array $matches): string {
                 return str_pad($matches[0], 10, '0', STR_PAD_LEFT);
             }, $value),
             'full'   => '<span dir="auto">' . e($value) . '</span>',
@@ -847,7 +847,7 @@ class GedcomRecord
     public function linkedIndividuals(string $link): array
     {
         $rows = DB::table('individuals')
-            ->join('link', function (JoinClause $join): void {
+            ->join('link', static function (JoinClause $join): void {
                 $join->on('l_file', '=', 'i_file')->on('l_from', '=', 'i_id');
             })
             ->where('i_file', '=', $this->tree->id())
@@ -877,7 +877,7 @@ class GedcomRecord
     public function linkedFamilies(string $link): array
     {
         $rows = DB::table('families')
-            ->join('link', function (JoinClause $join): void {
+            ->join('link', static function (JoinClause $join): void {
                 $join->on('l_file', '=', 'f_file')->on('l_from', '=', 'f_id');
             })
             ->where('f_file', '=', $this->tree->id())
@@ -907,7 +907,7 @@ class GedcomRecord
     public function linkedSources(string $link): array
     {
         $rows = DB::table('sources')
-            ->join('link', function (JoinClause $join): void {
+            ->join('link', static function (JoinClause $join): void {
                 $join->on('l_file', '=', 's_file')->on('l_from', '=', 's_id');
             })
             ->where('s_file', '=', $this->tree->id())
@@ -937,7 +937,7 @@ class GedcomRecord
     public function linkedMedia(string $link): array
     {
         $rows = DB::table('media')
-            ->join('link', function (JoinClause $join): void {
+            ->join('link', static function (JoinClause $join): void {
                 $join->on('l_file', '=', 'm_file')->on('l_from', '=', 'm_id');
             })
             ->where('m_file', '=', $this->tree->id())
@@ -967,7 +967,7 @@ class GedcomRecord
     public function linkedNotes(string $link): array
     {
         $rows = DB::table('other')
-            ->join('link', function (JoinClause $join): void {
+            ->join('link', static function (JoinClause $join): void {
                 $join->on('l_file', '=', 'o_file')->on('l_from', '=', 'o_id');
             })
             ->where('o_file', '=', $this->tree->id())
@@ -998,7 +998,7 @@ class GedcomRecord
     public function linkedRepositories(string $link): array
     {
         $rows = DB::table('other')
-            ->join('link', function (JoinClause $join): void {
+            ->join('link', static function (JoinClause $join): void {
                 $join->on('l_file', '=', 'o_file')->on('l_from', '=', 'o_id');
             })
             ->where('o_file', '=', $this->tree->id())

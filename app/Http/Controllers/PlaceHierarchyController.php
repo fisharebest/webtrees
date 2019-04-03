@@ -138,7 +138,7 @@ class PlaceHierarchyController extends AbstractBaseController
     private function getList(Tree $tree, SearchService $search_service): array
     {
         $places = $search_service->searchPlaces($tree, '')
-            ->sort(function (Place $x, Place $y): int {
+            ->sort(static function (Place $x, Place $y): int {
                 return $x->gedcomName() <=> $y->gedcomName();
             })
             ->all();
@@ -197,7 +197,7 @@ class PlaceHierarchyController extends AbstractBaseController
     private function getEvents($tree, $place): array
     {
         $indilist = DB::table('individuals')
-            ->join('placelinks', function (JoinClause $join): void {
+            ->join('placelinks', static function (JoinClause $join): void {
                 $join
                     ->on('pl_file', '=', 'i_file')
                     ->on('pl_gid', '=', 'i_id');
@@ -212,7 +212,7 @@ class PlaceHierarchyController extends AbstractBaseController
             ->all();
 
         $famlist = DB::table('families')
-            ->join('placelinks', function (JoinClause $join): void {
+            ->join('placelinks', static function (JoinClause $join): void {
                 $join
                     ->on('pl_file', '=', 'f_file')
                     ->on('pl_gid', '=', 'f_id');

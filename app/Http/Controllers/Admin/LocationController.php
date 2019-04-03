@@ -254,7 +254,7 @@ class LocationController extends AbstractAdminController
         $places = [];
         $this->buildLevel($parent_id, $startfqpn, $places);
 
-        $places = array_filter($places, function (array $place): bool {
+        $places = array_filter($places, static function (array $place): bool {
             return $place['pl_long'] !== 0.0 && $place['pl_lati'] !== 0.0;
         });
 
@@ -293,7 +293,7 @@ class LocationController extends AbstractAdminController
             glob(WT_DATA_DIR . 'places/*.geojson', GLOB_NOSORT)
         );
 
-        $files = array_map(function (string $place): string {
+        $files = array_map(static function (string $place): string {
             return substr($place, strlen(WT_DATA_DIR . 'places/'));
         }, $files);
 
@@ -461,7 +461,7 @@ class LocationController extends AbstractAdminController
                 'p8.p_place AS place8',
             ])
             ->get()
-            ->map(function (stdClass $row): string {
+            ->map(static function (stdClass $row): string {
                 return implode(', ', array_filter((array) $row));
             });
 
@@ -488,7 +488,7 @@ class LocationController extends AbstractAdminController
                 'p8.pl_place AS place8',
             ])
             ->get()
-            ->map(function (stdClass $row): stdClass {
+            ->map(static function (stdClass $row): stdClass {
                 $row->place = implode(', ', array_filter(array_slice((array) $row, 1)));
 
                 return $row;
@@ -552,7 +552,7 @@ class LocationController extends AbstractAdminController
      */
     private function exportCSV(string $filename, array $columns, array $places): Response
     {
-        $response = new StreamedResponse(function () use ($columns, $places) {
+        $response = new StreamedResponse(static function () use ($columns, $places) {
             $stream = fopen('php://output', 'wb');
 
             if ($stream !== false) {
@@ -735,7 +735,7 @@ class LocationController extends AbstractAdminController
         array_shift($places);
 
         foreach ($places as $n => $place) {
-            $query->join('places AS p' . ($n + 1), function (JoinClause $join) use ($n, $place): void {
+            $query->join('places AS p' . ($n + 1), static function (JoinClause $join) use ($n, $place): void {
                 $join
                     ->on('p' . ($n + 1) . '.p_id', '=', 'p' . $n . '.p_parent_id')
                     ->where('p' . ($n + 1) . '.p_place', '=', $place);

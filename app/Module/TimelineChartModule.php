@@ -127,7 +127,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         // Find the requested individuals.
         $individuals = (new Collection($xrefs))
             ->unique()
-            ->map(function (string $xref) use ($tree): ?Individual {
+            ->map(static function (string $xref) use ($tree): ?Individual {
                 return Individual::getInstance($xref, $tree);
             })
             ->filter()
@@ -138,10 +138,10 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 
         foreach ($individuals as $exclude) {
             $xrefs_1 = $individuals
-                ->filter(function (Individual $individual) use ($exclude): bool {
+                ->filter(static function (Individual $individual) use ($exclude): bool {
                     return $individual->xref() !== $exclude->xref();
                 })
-                ->map(function (Individual $individual): string {
+                ->map(static function (Individual $individual): string {
                     return $individual->xref();
                 });
 
@@ -154,11 +154,11 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             ]);
         }
 
-        $individuals = array_map(function (string $xref) use ($tree): ?Individual {
+        $individuals = array_map(static function (string $xref) use ($tree): ?Individual {
             return Individual::getInstance($xref, $tree);
         }, $xrefs);
 
-        $individuals = array_filter($individuals, function (?Individual $individual): bool {
+        $individuals = array_filter($individuals, static function (?Individual $individual): bool {
             return $individual instanceof Individual && $individual->canShow();
         });
 
@@ -222,11 +222,11 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         $xrefs = array_unique($xrefs);
 
         /** @var Individual[] $individuals */
-        $individuals = array_map(function (string $xref) use ($tree): ?Individual {
+        $individuals = array_map(static function (string $xref) use ($tree): ?Individual {
             return Individual::getInstance($xref, $tree);
         }, $xrefs);
 
-        $individuals = array_filter($individuals, function (?Individual $individual): bool {
+        $individuals = array_filter($individuals, static function (?Individual $individual): bool {
             return $individual instanceof Individual && $individual->canShow();
         });
 

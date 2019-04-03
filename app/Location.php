@@ -110,7 +110,7 @@ class Location
     {
         $location_id = 0;
 
-        $this->parts->reverse()->each(function (string $place) use (&$location_id) {
+        $this->parts->reverse()->each(static function (string $place) use (&$location_id) {
             if ($location_id !== null) {
                 $location_id = DB::table('placelocation')
                     ->where('pl_parent_id', '=', $location_id)

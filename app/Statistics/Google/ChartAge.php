@@ -64,12 +64,12 @@ class ChartAge
                 DB::raw('ROUND((' . $prefix . 'death.d_year + 49) / 100) AS century'),
                 'i_sex AS sex'
             ])
-            ->join('dates AS birth', function (JoinClause $join): void {
+            ->join('dates AS birth', static function (JoinClause $join): void {
                 $join
                     ->on('birth.d_file', '=', 'i_file')
                     ->on('birth.d_gid', '=', 'i_id');
             })
-            ->join('dates AS death', function (JoinClause $join): void {
+            ->join('dates AS death', static function (JoinClause $join): void {
                 $join
                     ->on('death.d_file', '=', 'i_file')
                     ->on('death.d_gid', '=', 'i_id');

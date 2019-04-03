@@ -69,7 +69,7 @@ class MediaController extends AbstractBaseController
     private function facts(Media $record): Collection
     {
         return $record->facts()
-            ->filter(function (Fact $fact): bool {
+            ->filter(static function (Fact $fact): bool {
                 return $fact->getTag() !== 'FILE';
             });
     }

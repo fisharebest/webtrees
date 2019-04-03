@@ -118,13 +118,13 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             ->where('user_id', '=', Auth::id())
             ->orderByDesc('message_id')
             ->get()
-            ->map(function (stdClass $row): stdClass {
+            ->map(static function (stdClass $row): stdClass {
                 $row->created = Carbon::make($row->created);
 
                 return $row;
             });
 
-        $users = $this->user_service->all()->filter(function (UserInterface $user) use ($tree): bool {
+        $users = $this->user_service->all()->filter(static function (UserInterface $user) use ($tree): bool {
             $public_tree  = $tree->getPreference('REQUIRE_AUTHENTICATION') !== '1';
             $can_see_tree = $public_tree || Auth::accessLevel($tree, $user) <= Auth::PRIV_USER;
 

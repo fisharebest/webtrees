@@ -131,17 +131,17 @@ try {
     ]);
 
     // Construct the core middleware *after* loading the modules, to reduce dependencies.
-    $middleware_stack = $middleware_stack->map(function ($middleware): MiddlewareInterface {
+    $middleware_stack = $middleware_stack->map(static function ($middleware): MiddlewareInterface {
         return $middleware instanceof MiddlewareInterface ? $middleware : app($middleware);
     });
 
     // Create a pipeline, which applies the middleware as a nested function call.
-    $pipeline = $middleware_stack->reduce(function (Closure $next, MiddlewareInterface $middleware): Closure {
+    $pipeline = $middleware_stack->reduce(static function (Closure $next, MiddlewareInterface $middleware): Closure {
         // Create a closure to apply the middleware.
         return function (Request $request) use ($middleware, $next): Response {
             return $middleware->handle($request, $next);
         };
-    }, function (Request $request): Response {
+    }, static function (Request $request): Response {
         // Load the route and routing table.
         $route  = $request->get('route');
         $routes = require 'routes/web.php';

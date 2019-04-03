@@ -138,7 +138,7 @@ class ImportThumbnailsController extends AbstractAdminController
         $recordsTotal = count($thumbnails);
 
         if ($search !== '') {
-            $thumbnails = array_filter($thumbnails, function (string $thumbnail) use ($search): bool {
+            $thumbnails = array_filter($thumbnails, static function (string $thumbnail) use ($search): bool {
                 return stripos($thumbnail, $search) !== false;
             });
         }
@@ -171,7 +171,7 @@ class ImportThumbnailsController extends AbstractAdminController
 
             $media = $this->findMediaObjectsForMediaFile($original_path);
 
-            $media_links = array_map(function (Media $media): string {
+            $media_links = array_map(static function (Media $media): string {
                 return '<a href="' . e($media->url()) . '">' . $media->fullName() . '</a>';
             }, $media);
 
@@ -234,7 +234,7 @@ class ImportThumbnailsController extends AbstractAdminController
     private function findMediaObjectsForMediaFile(string $file): array
     {
         return DB::table('media')
-            ->join('media_file', function (JoinClause $join): void {
+            ->join('media_file', static function (JoinClause $join): void {
                 $join
                     ->on('media_file.m_file', '=', 'media.m_file')
                     ->on('media_file.m_id', '=', 'media.m_id');

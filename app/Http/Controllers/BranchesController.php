@@ -170,14 +170,14 @@ class BranchesController extends AbstractBaseController
     private function loadIndividuals(Tree $tree, string $surname, bool $soundex_dm, bool $soundex_std): array
     {
         $individuals = DB::table('individuals')
-            ->join('name', function (JoinClause $join): void {
+            ->join('name', static function (JoinClause $join): void {
                 $join
                     ->on('name.n_file', '=', 'individuals.i_file')
                     ->on('name.n_id', '=', 'individuals.i_id');
             })
             ->where('i_file', '=', $tree->id())
             ->where('n_type', '<>', '_MARNM')
-            ->where(function (Builder $query) use ($surname, $soundex_dm, $soundex_std): void {
+            ->where(static function (Builder $query) use ($surname, $soundex_dm, $soundex_std): void {
                 $query
                     ->where('n_surn', '=', $surname)
                     ->orWhere('n_surname', '=', $surname);
@@ -258,7 +258,7 @@ class BranchesController extends AbstractBaseController
      */
     private function getDescendantsHtml(Tree $tree, array $individuals, array $ancestors, string $surname, bool $soundex_dm, bool $soundex_std, Individual $individual, Family $parents = null): string
     {
-        $module = $this->module_service->findByComponent(ModuleChartInterface::class, $tree, Auth::user())->first(function (ModuleInterface $module) {
+        $module = $this->module_service->findByComponent(ModuleChartInterface::class, $tree, Auth::user())->first(static function (ModuleInterface $module) {
             return $module instanceof RelationshipsChartModule;
         });
 

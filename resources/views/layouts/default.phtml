@@ -54,7 +54,7 @@
 
         <?= View::stack('styles') ?>
 
-        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(function (ModuleGlobalInterface $module): string { return $module->headContent(); })->implode('') ?>
+        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string { return $module->headContent(); })->implode('') ?>
 
         <?= DebugBar::renderHead() ?>
     </head>
@@ -129,7 +129,7 @@
         </main>
 
         <footer class="wt-footers container d-print-none">
-            <?= app(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(function (ModuleFooterInterface $module) use ($tree): string { return $module->getFooter($tree); })->implode('') ?>
+            <?= app(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(static function (ModuleFooterInterface $module) use ($tree): string { return $module->getFooter($tree); })->implode('') ?>
         </footer>
 
         <script src="<?= e(asset('js/vendor.min.js')) ?>"></script>
@@ -149,7 +149,7 @@
 
         <?= View::stack('javascript') ?>
 
-        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(function (ModuleGlobalInterface $module): string { return $module->bodyContent(); })->implode('') ?>
+        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string { return $module->bodyContent(); })->implode('') ?>
 
         <?= DebugBar::render() ?>
     </body>

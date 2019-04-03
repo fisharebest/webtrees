@@ -118,14 +118,14 @@ class MediaRepository implements MediaRepositoryInterface
                 // There has to be a better way then this :(
                 foreach (self::MEDIA_TYPES as $t) {
                     // Use function to add brackets
-                    $query->where(function (Builder $query) use ($t): void {
+                    $query->where(static function (Builder $query) use ($t): void {
                         $query->where('m_gedcom', 'not like', '%3 TYPE ' . $t . '%')
                             ->where('m_gedcom', 'not like', '%1 _TYPE ' . $t . '%');
                     });
                 }
             } else {
                 // Use function to add brackets
-                $query->where(function (Builder $query) use ($type): void {
+                $query->where(static function (Builder $query) use ($type): void {
                     $query->where('m_gedcom', 'like', '%3 TYPE ' . $type . '%')
                         ->orWhere('m_gedcom', 'like', '%1 _TYPE ' . $type . '%');
                 });

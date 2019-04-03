@@ -2411,7 +2411,7 @@ class GedcomTag
      */
     public static function getFileFormTypes(): array
     {
-        $values = array_map(function (string $keyword): string {
+        $values = array_map(static function (string $keyword): string {
             return self::getFileFormTypeValue($keyword);
         }, array_combine(self::OBJE_FILE_FORM_TYPE, self::OBJE_FILE_FORM_TYPE));
 

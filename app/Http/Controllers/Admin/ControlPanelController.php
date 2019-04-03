@@ -142,7 +142,7 @@ class ControlPanelController extends AbstractAdminController
      */
     public function controlPanelManager(ModuleService $module_service): Response
     {
-        $all_trees = array_filter(Tree::getAll(), function (Tree $tree): bool {
+        $all_trees = array_filter(Tree::getAll(), static function (Tree $tree): bool {
             return Auth::isManager($tree);
         });
 
@@ -173,7 +173,7 @@ class ControlPanelController extends AbstractAdminController
     private function totalChanges(): array
     {
         return DB::table('gedcom')
-            ->leftJoin('change', function (JoinClause $join): void {
+            ->leftJoin('change', static function (JoinClause $join): void {
                 $join
                     ->on('change.gedcom_id', '=', 'gedcom.gedcom_id')
                     ->where('change.status', '=', 'pending');
@@ -195,7 +195,7 @@ class ControlPanelController extends AbstractAdminController
             ->leftJoin('families', 'f_file', '=', 'gedcom_id')
             ->groupBy('gedcom_id')
             ->pluck(DB::raw('COUNT(f_id)'), 'gedcom_id')
-            ->map(function (string $count) {
+            ->map(static function (string $count) {
                 return (int) $count;
             });
     }
@@ -212,7 +212,7 @@ class ControlPanelController extends AbstractAdminController
             ->leftJoin('individuals', 'i_file', '=', 'gedcom_id')
             ->groupBy('gedcom_id')
             ->pluck(DB::raw('COUNT(i_id)'), 'gedcom_id')
-            ->map(function (string $count) {
+            ->map(static function (string $count) {
                 return (int) $count;
             });
     }
@@ -229,7 +229,7 @@ class ControlPanelController extends AbstractAdminController
             ->leftJoin('media', 'm_file', '=', 'gedcom_id')
             ->groupBy('gedcom_id')
             ->pluck(DB::raw('COUNT(m_id)'), 'gedcom_id')
-            ->map(function (string $count) {
+            ->map(static function (string $count) {
                 return (int) $count;
             });
     }
@@ -243,14 +243,14 @@ class ControlPanelController extends AbstractAdminController
     private function totalNotes(): Collection
     {
         return DB::table('gedcom')
-            ->leftJoin('other', function (JoinClause $join): void {
+            ->leftJoin('other', static function (JoinClause $join): void {
                 $join
                     ->on('o_file', '=', 'gedcom_id')
                     ->where('o_type', '=', 'NOTE');
             })
             ->groupBy('gedcom_id')
             ->pluck(DB::raw('COUNT(o_id)'), 'gedcom_id')
-            ->map(function (string $count) {
+            ->map(static function (string $count) {
                 return (int) $count;
             });
     }
@@ -264,14 +264,14 @@ class ControlPanelController extends AbstractAdminController
     private function totalRepositories(): Collection
     {
         return DB::table('gedcom')
-            ->leftJoin('other', function (JoinClause $join): void {
+            ->leftJoin('other', static function (JoinClause $join): void {
                 $join
                     ->on('o_file', '=', 'gedcom_id')
                     ->where('o_type', '=', 'REPO');
             })
             ->groupBy('gedcom_id')
             ->pluck(DB::raw('COUNT(o_id)'), 'gedcom_id')
-            ->map(function (string $count) {
+            ->map(static function (string $count) {
                 return (int) $count;
             });
     }
@@ -288,7 +288,7 @@ class ControlPanelController extends AbstractAdminController
             ->leftJoin('sources', 's_file', '=', 'gedcom_id')
             ->groupBy('gedcom_id')
             ->pluck(DB::raw('COUNT(s_id)'), 'gedcom_id')
-            ->map(function (string $count) {
+            ->map(static function (string $count) {
                 return (int) $count;
             });
     }

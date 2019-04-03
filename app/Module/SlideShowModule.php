@@ -101,7 +101,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
         // We can apply the filters using SQL
         // Do not use "ORDER BY RAND()" - it is very slow on large tables. Use PHP::array_rand() instead.
         $all_media = DB::table('media')
-            ->join('media_file', function (JoinClause $join): void {
+            ->join('media_file', static function (JoinClause $join): void {
                 $join
                     ->on('media_file.m_file', '=', 'media.m_file')
                     ->on('media_file.m_id', '=', 'media.m_id');

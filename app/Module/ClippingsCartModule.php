@@ -916,7 +916,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $xrefs = array_keys($cart[$tree->name()] ?? []);
 
         // Fetch all the records in the cart.
-        $records = array_map(function (string $xref) use ($tree): GedcomRecord {
+        $records = array_map(static function (string $xref) use ($tree): GedcomRecord {
             return GedcomRecord::getInstance($xref, $tree);
         }, $xrefs);
 
@@ -924,7 +924,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $records = array_filter($records);
 
         // Group and sort.
-        uasort($records, function (GedcomRecord $x, GedcomRecord $y): int {
+        uasort($records, static function (GedcomRecord $x, GedcomRecord $y): int {
             return $x::RECORD_TYPE <=> $y::RECORD_TYPE ?: GedcomRecord::nameComparator()($x, $y);
         });
 

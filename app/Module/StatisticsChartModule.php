@@ -836,7 +836,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     {
         $boundaries = explode(',', $boundaries_csv);
 
-        $boundaries = array_map(function (string $x): int {
+        $boundaries = array_map(static function (string $x): int {
             return (int) $x;
         }, $boundaries);
 
@@ -967,10 +967,10 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         // Convert the chart data to percentage
         if ($y_axis_type === self::Y_AXIS_PERCENT) {
             // Normalise each (non-zero!) set of data to total 100%
-            array_walk($ydata, function (array &$x) {
+            array_walk($ydata, static function (array &$x) {
                 $sum = array_sum($x);
                 if ($sum > 0) {
-                    $x = array_map(function ($y) use ($sum) {
+                    $x = array_map(static function ($y) use ($sum) {
                         return $y * 100.0 / $sum;
                     }, $x);
                 }

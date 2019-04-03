@@ -59,7 +59,7 @@ class ChartChildren
         $query = DB::table('families')
             ->selectRaw('ROUND(AVG(f_numchil), 2) AS num')
             ->selectRaw('ROUND((d_year + 49) / 100) AS century')
-            ->join('dates', function (JoinClause $join): void {
+            ->join('dates', static function (JoinClause $join): void {
                 $join->on('d_file', '=', 'f_file')
                     ->on('d_gid', '=', 'f_id');
             })

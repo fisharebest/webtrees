@@ -83,7 +83,7 @@ class TreeView
             switch ($firstLetter) {
                 case 'c':
                     $families = Collection::make(explode(',', $json_request))
-                        ->map(function (string $xref) use ($tree): ?Family {
+                        ->map(static function (string $xref) use ($tree): ?Family {
                             return Family::getInstance($xref, $tree);
                         })
                         ->filter();

@@ -109,17 +109,17 @@ class FixLevel0MediaController extends AbstractAdminController
         $prefix = DB::connection()->getTablePrefix();
 
         $query = DB::table('media')
-            ->join('media_file', function (JoinClause $join): void {
+            ->join('media_file', static function (JoinClause $join): void {
                 $join
                     ->on('media_file.m_file', '=', 'media.m_file')
                     ->on('media_file.m_id', '=', 'media.m_id');
             })
-            ->join('link', function (JoinClause $join): void {
+            ->join('link', static function (JoinClause $join): void {
                 $join
                     ->on('link.l_file', '=', 'media.m_file')
                     ->on('link.l_to', '=', 'media.m_id');
             })
-            ->join('individuals', function (JoinClause $join): void {
+            ->join('individuals', static function (JoinClause $join): void {
                 $join
                     ->on('individuals.i_file', '=', 'link.l_file')
                     ->on('individuals.i_id', '=', 'link.l_from');
@@ -130,13 +130,13 @@ class FixLevel0MediaController extends AbstractAdminController
             ->orderBy('media.m_id')
             ->select(['media.m_file', 'media.m_id', 'media.m_gedcom', 'individuals.i_id', 'individuals.i_gedcom']);
 
-        return $datatables_service->handle($request, $query, [], [], function (stdClass $datum) use ($ignore_facts): array {
+        return $datatables_service->handle($request, $query, [], [], static function (stdClass $datum) use ($ignore_facts): array {
             $tree       = Tree::findById((int) $datum->m_file);
             $media      = Media::getInstance($datum->m_id, $tree, $datum->m_gedcom);
             $individual = Individual::getInstance($datum->i_id, $tree, $datum->i_gedcom);
 
             $facts = $individual->facts([], true)
-                ->filter(function (Fact $fact) use ($ignore_facts): bool {
+                ->filter(static function (Fact $fact) use ($ignore_facts): bool {
                     return !$fact->isPendingDeletion() && !in_array($fact->getTag(), $ignore_facts);
                 });
 
@@ -151,7 +151,7 @@ class FixLevel0MediaController extends AbstractAdminController
                 $facts = [];
             }
 
-            $facts = $facts->map(function (Fact $fact) use ($individual, $media): string {
+            $facts = $facts->map(static function (Fact $fact) use ($individual, $media): string {
                 return view('admin/fix-level-0-media-action', [
                     'fact'       => $fact,
                     'individual' => $individual,

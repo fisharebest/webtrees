@@ -1030,7 +1030,7 @@ class FunctionsImport
         if (!$xref) {
             $xref = $tree->getNewXref();
             // renumber the lines
-            $gedrec = preg_replace_callback('/\n(\d+)/', function (array $m) use ($level): string {
+            $gedrec = preg_replace_callback('/\n(\d+)/', static function (array $m) use ($level): string {
                 return "\n" . ($m[1] - $level);
             }, $gedrec);
             // convert to an object
@@ -1137,7 +1137,7 @@ class FunctionsImport
         // then we may also need to delete "London, England" and "England".
         do {
             $affected = DB::table('places')
-                ->leftJoin('placelinks', function (JoinClause $join): void {
+                ->leftJoin('placelinks', static function (JoinClause $join): void {
                     $join
                         ->on('p_id', '=', 'pl_p_id')
                         ->on('p_file', '=', 'pl_file');

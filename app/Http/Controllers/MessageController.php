@@ -73,7 +73,7 @@ class MessageController extends AbstractBaseController
         $url     = $request->get('url', $referer);
 
         $to_names = $this->recipientUsers($to)
-            ->map(function (UserInterface $user): string {
+            ->map(static function (UserInterface $user): string {
                 return $user->realName();
             });
 
@@ -472,13 +472,13 @@ class MessageController extends AbstractBaseController
             case 'all':
                 return $this->user_service->all();
             case 'never_logged':
-                return $this->user_service->all()->filter(function (UserInterface $user): bool {
+                return $this->user_service->all()->filter(static function (UserInterface $user): bool {
                     return $user->getPreference('verified_by_admin') && $user->getPreference('reg_timestamp') > $user->getPreference('sessiontime');
                 });
             case 'last_6mo':
                 $six_months_ago = Carbon::now()->subMonths(6)->unix();
 
-                return $this->user_service->all()->filter(function (UserInterface $user) use ($six_months_ago): bool {
+                return $this->user_service->all()->filter(static function (UserInterface $user) use ($six_months_ago): bool {
                     $session_time = (int) $user->getPreference('sessiontime');
 
                     return $session_time > 0 && $session_time < $six_months_ago;

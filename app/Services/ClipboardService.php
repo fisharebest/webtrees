@@ -94,9 +94,9 @@ class ClipboardService
             // Put the most recently copied fact at the top of the list.
             ->reverse()
             // Create facts for the record.
-            ->map(function (array $clipping) use ($record): Fact {
+            ->map(static function (array $clipping) use ($record): Fact {
                 return new Fact($clipping['factrec'], $record, md5($clipping['factrec']));
-            })->filter(function (Fact $fact) use ($exclude_types): bool {
+            })->filter(static function (Fact $fact) use ($exclude_types): bool {
                 return $exclude_types->isEmpty() || !$exclude_types->contains($fact->getTag());
             });
     }
@@ -116,10 +116,10 @@ class ClipboardService
         return (new Collection(Session::get('clipboard', [])))
             ->flatten(1)
             ->reverse()
-            ->map(function (array $clipping) use ($record): Fact {
+            ->map(static function (array $clipping) use ($record): Fact {
                 return new Fact($clipping['factrec'], $record, md5($clipping['factrec']));
             })
-            ->filter(function (Fact $fact) use ($types): bool {
+            ->filter(static function (Fact $fact) use ($types): bool {
                 return $types->contains($fact->getTag());
             });
     }

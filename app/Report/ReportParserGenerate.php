@@ -1886,7 +1886,7 @@ class ReportParserGenerate extends ReportParserBase
                         $value = $this->substituteVars($value, false);
                         // Convert the various filters into SQL
                         if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
-                            $query->join('dates AS ' . $attr, function (JoinClause $join) use ($attr): void {
+                            $query->join('dates AS ' . $attr, static function (JoinClause $join) use ($attr): void {
                                 $join
                                     ->on($attr . '.d_gid', '=', 'i_id')
                                     ->on($attr . '.d_file', '=', 'i_file');
@@ -1905,7 +1905,7 @@ class ReportParserGenerate extends ReportParserBase
                             // This filter has been fully processed
                             unset($attrs[$attr]);
                         } elseif (preg_match('/^NAME CONTAINS (.+)$/', $value, $match)) {
-                            $query->join('name AS ' . $attr, function (JoinClause $join) use ($attr): void {
+                            $query->join('name AS ' . $attr, static function (JoinClause $join) use ($attr): void {
                                 $join
                                     ->on($attr . '.n_id', '=', 'i_id')
                                     ->on($attr . '.n_file', '=', 'i_file');
@@ -1929,12 +1929,12 @@ class ReportParserGenerate extends ReportParserBase
                         } elseif (preg_match('/^(?:\w*):PLAC CONTAINS (.+)$/', $value, $match)) {
                             // Don't unset this filter. This is just initial filtering for performance
                             $query
-                                ->join('placelinks AS ' . $attr . 'a', function (JoinClause $join) use ($attr): void {
+                                ->join('placelinks AS ' . $attr . 'a', static function (JoinClause $join) use ($attr): void {
                                     $join
                                         ->on($attr . 'a.pl_file', '=', 'i_file')
                                         ->on($attr . 'a.pl_gid', '=', 'i_id');
                                 })
-                                ->join('places AS ' . $attr . 'b', function (JoinClause $join) use ($attr): void {
+                                ->join('places AS ' . $attr . 'b', static function (JoinClause $join) use ($attr): void {
                                     $join
                                         ->on($attr . 'b.p_file', '=', $attr . 'a.pl_file')
                                         ->on($attr . 'b.p_id', '=', $attr . 'a.pl_p_id');
@@ -1972,7 +1972,7 @@ class ReportParserGenerate extends ReportParserBase
                         $value = $this->substituteVars($value, false);
                         // Convert the various filters into SQL
                         if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
-                            $query->join('dates AS ' . $attr, function (JoinClause $join) use ($attr): void {
+                            $query->join('dates AS ' . $attr, static function (JoinClause $join) use ($attr): void {
                                 $join
                                     ->on($attr . '.d_gid', '=', 'f_id')
                                     ->on($attr . '.d_file', '=', 'f_file');
@@ -2000,7 +2000,7 @@ class ReportParserGenerate extends ReportParserBase
                             unset($attrs[$attr]);
                         } elseif (preg_match('/^NAME CONTAINS (.*)$/', $value, $match)) {
                             if ($match[1] !== '' || $sortby === 'NAME') {
-                                $query->join('name AS ' . $attr, function (JoinClause $join) use ($attr): void {
+                                $query->join('name AS ' . $attr, static function (JoinClause $join) use ($attr): void {
                                     $join
                                         ->on($attr . '.n_file', '=', 'f_file')
                                         ->where(function (Builder $query) use ($attr): void {
@@ -2023,12 +2023,12 @@ class ReportParserGenerate extends ReportParserBase
                         } elseif (preg_match('/^(?:\w*):PLAC CONTAINS (.+)$/', $value, $match)) {
                             // Don't unset this filter. This is just initial filtering for performance
                             $query
-                                ->join('placelinks AS ' . $attr . 'a', function (JoinClause $join) use ($attr): void {
+                                ->join('placelinks AS ' . $attr . 'a', static function (JoinClause $join) use ($attr): void {
                                     $join
                                         ->on($attr . 'a.pl_file', '=', 'f_file')
                                         ->on($attr . 'a.pl_gid', '=', 'f_id');
                                 })
-                                ->join('places AS ' . $attr . 'b', function (JoinClause $join) use ($attr): void {
+                                ->join('places AS ' . $attr . 'b', static function (JoinClause $join) use ($attr): void {
                                     $join
                                         ->on($attr . 'b.p_file', '=', $attr . 'a.pl_file')
                                         ->on($attr . 'b.p_id', '=', $attr . 'a.pl_p_id');

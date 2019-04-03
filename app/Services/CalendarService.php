@@ -96,12 +96,12 @@ class CalendarService
         // Events that start or end during the period
         $query = DB::table('dates')
             ->where('d_file', '=', $tree->id())
-            ->where(function (Builder $query) use ($jd1, $jd2): void {
-                $query->where(function (Builder $query) use ($jd1, $jd2): void {
+            ->where(static function (Builder $query) use ($jd1, $jd2): void {
+                $query->where(static function (Builder $query) use ($jd1, $jd2): void {
                     $query
                         ->where('d_julianday1', '>=', $jd1)
                         ->where('d_julianday1', '<=', $jd2);
-                })->orWhere(function (Builder $query) use ($jd1, $jd2): void {
+                })->orWhere(static function (Builder $query) use ($jd1, $jd2): void {
                     $query
                         ->where('d_julianday2', '>=', $jd1)
                         ->where('d_julianday2', '<=', $jd2);
@@ -116,13 +116,13 @@ class CalendarService
         }
 
         $ind_query = (clone $query)
-            ->join('individuals', function (JoinClause $join): void {
+            ->join('individuals', static function (JoinClause $join): void {
                 $join->on('d_gid', '=', 'i_id')->on('d_file', '=', 'i_file');
             })
             ->select(['i_id AS xref', 'i_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact', 'd_type']);
 
         $fam_query = (clone $query)
-            ->join('families', function (JoinClause $join): void {
+            ->join('families', static function (JoinClause $join): void {
                 $join->on('d_gid', '=', 'f_id')->on('d_file', '=', 'f_file');
             })
             ->select(['f_id AS xref', 'f_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact', 'd_type']);
@@ -201,7 +201,7 @@ class CalendarService
                 break;
 
             case 'alpha':
-                uasort($facts, function (Fact $x, Fact $y): int {
+                uasort($facts, static function (Fact $x, Fact $y): int {
                     return GedcomRecord::nameComparator()($x->record(), $y->record());
                 });
                 break;
@@ -283,13 +283,13 @@ class CalendarService
                 ->orderByDesc('d_year');
 
             $ind_query = (clone $query)
-                ->join('individuals', function (JoinClause $join): void {
+                ->join('individuals', static function (JoinClause $join): void {
                     $join->on('d_gid', '=', 'i_id')->on('d_file', '=', 'i_file');
                 })
                 ->select(['i_id AS xref', 'i_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact']);
 
             $fam_query = (clone $query)
-                ->join('families', function (JoinClause $join): void {
+                ->join('families', static function (JoinClause $join): void {
                     $join->on('d_gid', '=', 'f_id')->on('d_file', '=', 'f_file');
                 })
                 ->select(['f_id AS xref', 'f_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact']);
@@ -369,10 +369,10 @@ class CalendarService
         $tmp = new JewishDate([(string) $anniv->year, 'CSH', '1']);
 
         if ($anniv->day() === 1 && $tmp->daysInMonth() === 29) {
-            $query->where(function (Builder $query): void {
-                $query->where(function (Builder $query): void {
+            $query->where(static function (Builder $query): void {
+                $query->where(static function (Builder $query): void {
                     $query->where('d_day', '<=', 1)->where('d_mon', '=', 3);
-                })->orWhere(function (Builder $query): void {
+                })->orWhere(static function (Builder $query): void {
                     $query->where('d_day', '=', 30)->where('d_mon', '=', 2);
                 });
             });
@@ -397,10 +397,10 @@ class CalendarService
         $tmp = new JewishDate([(string) $anniv->year, 'KSL', '1']);
 
         if ($anniv->day === 1 && $tmp->daysInMonth() === 29) {
-            $query->where(function (Builder $query): void {
-                $query->where(function (Builder $query): void {
+            $query->where(static function (Builder $query): void {
+                $query->where(static function (Builder $query): void {
                     $query->where('d_day', '<=', 1)->where('d_mon', '=', 4);
-                })->orWhere(function (Builder $query): void {
+                })->orWhere(static function (Builder $query): void {
                     $query->where('d_day', '=', 30)->where('d_mon', '=', 3);
                 });
             });
@@ -425,10 +425,10 @@ class CalendarService
             $query->where('d_day', '<=', 1);
         }
 
-        $query->where(function (Builder $query): void {
+        $query->where(static function (Builder $query): void {
             $query
                 ->where('d_mon', '=', 7)
-                ->orWhere(function (Builder $query): void {
+                ->orWhere(static function (Builder $query): void {
                     $query
                         ->where('d_mon', '=', 6)
                         ->where(DB::raw('(7 * d_year + 1 % 19)'), '>=', 7);
@@ -445,10 +445,10 @@ class CalendarService
     private function nisanAnniversaries(Builder $query, JewishDate $anniv): void
     {
         if ($anniv->day === 1 && !$anniv->isLeapYear()) {
-            $query->where(function (Builder $query): void {
-                $query->where(function (Builder $query): void {
+            $query->where(static function (Builder $query): void {
+                $query->where(static function (Builder $query): void {
                     $query->where('d_day', '<=', 1)->where('d_mon', '=', 8);
-                })->orWhere(function (Builder $query): void {
+                })->orWhere(static function (Builder $query): void {
                     $query->where('d_day', '=', 30)->where('d_mon', '=', 6);
                 });
             });

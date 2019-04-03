@@ -73,7 +73,7 @@ class Webtrees
         date_default_timezone_set('UTC');
 
         // Convert PHP warnings/notices into exceptions
-        set_error_handler(function (int $errno, string $errstr, string $errfile, int $errline): bool {
+        set_error_handler(static function (int $errno, string $errstr, string $errfile, int $errline): bool {
             // Ignore errors that are silenced with '@'
             if (error_reporting() & $errno) {
                 throw new ErrorException($errstr, 0, $errno, $errfile, $errline);

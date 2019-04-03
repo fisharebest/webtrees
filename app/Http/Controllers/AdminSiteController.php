@@ -93,7 +93,7 @@ class AdminSiteController extends AbstractBaseController
         }
 
         // List the top-level contents of the data folder
-        $entries = array_map(function (array $content) {
+        $entries = array_map(static function (array $content) {
             return $content['path'];
         }, $filesystem->listContents());
 
@@ -213,7 +213,7 @@ class AdminSiteController extends AbstractBaseController
     {
         $query = $this->logsQuery($request);
 
-        return $datatables_service->handle($request, $query, [], [], function (stdClass $row): array {
+        return $datatables_service->handle($request, $query, [], [], static function (stdClass $row): array {
             return [
                 $row->log_id,
                 $row->log_time,
@@ -302,7 +302,7 @@ class AdminSiteController extends AbstractBaseController
         $content = $this->logsQuery($request)
             ->orderBy('log_id')
             ->get()
-            ->map(function (stdClass $row): string {
+            ->map(static function (stdClass $row): string {
                 return
                     '"' . $row->log_time . '",' .
                     '"' . $row->log_type . '",' .

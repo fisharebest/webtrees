@@ -135,7 +135,7 @@ class MediaController extends AbstractAdminController
         switch ($files) {
             case 'local':
                 $query = DB::table('media_file')
-                    ->join('media', function (JoinClause $join): void {
+                    ->join('media', static function (JoinClause $join): void {
                         $join
                             ->on('media.m_file', '=', 'media_file.m_file')
                             ->on('media.m_id', '=', 'media_file.m_id');
@@ -157,10 +157,10 @@ class MediaController extends AbstractAdminController
                     $media = Media::rowMapper()($row);
 
                     $media_files = $media->mediaFiles()
-                        ->filter(function (MediaFile $media_file) use ($row): bool {
+                        ->filter(static function (MediaFile $media_file) use ($row): bool {
                             return $media_file->filename() == $row->multimedia_file_refn;
                         })
-                        ->map(function (MediaFile $media_file): string {
+                        ->map(static function (MediaFile $media_file): string {
                             return $media_file->displayImage(150, 150, '', []);
                         })
                         ->implode('');
@@ -174,12 +174,12 @@ class MediaController extends AbstractAdminController
 
             case 'external':
                 $query = DB::table('media_file')
-                    ->join('media', function (JoinClause $join): void {
+                    ->join('media', static function (JoinClause $join): void {
                         $join
                             ->on('media.m_file', '=', 'media_file.m_file')
                             ->on('media.m_id', '=', 'media_file.m_id');
                     })
-                    ->where(function (Builder $query): void {
+                    ->where(static function (Builder $query): void {
                         $query
                             ->where('multimedia_file_refn', 'LIKE', 'http://%')
                             ->orWhere('multimedia_file_refn', 'LIKE', 'https://%');
@@ -191,10 +191,10 @@ class MediaController extends AbstractAdminController
                     $media = Media::rowMapper()($row);
 
                     $media_files = $media->mediaFiles()
-                        ->filter(function (MediaFile $media_file) use ($row): bool {
+                        ->filter(static function (MediaFile $media_file) use ($row): bool {
                             return $media_file->filename() === $row->multimedia_file_refn;
                         })
-                        ->map(function (MediaFile $media_file): string {
+                        ->map(static function (MediaFile $media_file): string {
                             return $media_file->displayImage(150, 150, '', []);
                         })
                         ->implode('');
@@ -223,7 +223,7 @@ class MediaController extends AbstractAdminController
 
                 // Filter unused files
                 if ($search) {
-                    $unused_files = array_filter($unused_files, function (string $x) use ($search): bool {
+                    $unused_files = array_filter($unused_files, static function (string $x) use ($search): bool {
                         return strpos($x, $search) !== false;
                     });
                 }
@@ -413,12 +413,12 @@ class MediaController extends AbstractAdminController
             ->select(DB::raw('setting_value || multimedia_file_refn AS path'))
             ->union($base_folders)
             ->pluck('path')
-            ->map(function (string $path): string {
+            ->map(static function (string $path): string {
                 return dirname($path) . '/';
             })
             ->unique()
             ->sort()
-            ->mapWithKeys(function (string $path): array {
+            ->mapWithKeys(static function (string $path): array {
                 return [$path => $path];
             });
     }

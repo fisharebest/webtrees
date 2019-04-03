@@ -326,10 +326,10 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
                 $story->languages  = $this->getBlockSetting($block_id, 'languages');
 
                 return $story;
-            })->filter(function (stdClass $story): bool {
+            })->filter(static function (stdClass $story): bool {
                 // Filter non-existant and private individuals.
                 return $story->individual instanceof Individual && $story->individual->canShow();
-            })->filter(function (stdClass $story): bool {
+            })->filter(static function (stdClass $story): bool {
                 // Filter foreign languages.
                 return $story->languages === '' || in_array(WT_LOCALE, explode(',', $story->languages));
             });

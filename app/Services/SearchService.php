@@ -81,12 +81,12 @@ class SearchService
     public function searchFamilyNames(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
         $query = DB::table('families')
-            ->join('name AS husb_name', function (JoinClause $join): void {
+            ->join('name AS husb_name', static function (JoinClause $join): void {
                 $join
                     ->on('husb_name.n_file', '=', 'families.f_file')
                     ->on('husb_name.n_id', '=', 'families.f_husb');
             })
-            ->join('name AS wife_name', function (JoinClause $join): void {
+            ->join('name AS wife_name', static function (JoinClause $join): void {
                 $join
                     ->on('wife_name.n_file', '=', 'families.f_file')
                     ->on('wife_name.n_id', '=', 'families.f_wife');
@@ -145,7 +145,7 @@ class SearchService
     public function searchIndividualNames(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
         $query = DB::table('individuals')
-            ->join('name', function (JoinClause $join): void {
+            ->join('name', static function (JoinClause $join): void {
                 $join
                     ->on('name.n_file', '=', 'individuals.i_file')
                     ->on('name.n_id', '=', 'individuals.i_id');
@@ -408,7 +408,7 @@ class SearchService
         }
 
         if ($father_name || $mother_name) {
-            $query->join('link AS l1', function (JoinClause $join): void {
+            $query->join('link AS l1', static function (JoinClause $join): void {
                 $join
                     ->on('l1.l_file', '=', 'individuals.i_file')
                     ->on('l1.l_from', '=', 'individuals.i_id')
@@ -416,13 +416,13 @@ class SearchService
             });
 
             if ($father_name) {
-                $query->join('link AS l2', function (JoinClause $join): void {
+                $query->join('link AS l2', static function (JoinClause $join): void {
                     $join
                         ->on('l2.l_file', '=', 'l1.l_file')
                         ->on('l2.l_from', '=', 'l1.l_to')
                         ->where('l2.l_type', '=', 'HUSB');
                 });
-                $query->join('name AS father_name', function (JoinClause $join): void {
+                $query->join('name AS father_name', static function (JoinClause $join): void {
                     $join
                         ->on('father_name.n_file', '=', 'l2.l_file')
                         ->on('father_name.n_id', '=', 'l2.l_to');
@@ -430,13 +430,13 @@ class SearchService
             }
 
             if ($mother_name) {
-                $query->join('link AS l3', function (JoinClause $join): void {
+                $query->join('link AS l3', static function (JoinClause $join): void {
                     $join
                         ->on('l3.l_file', '=', 'l1.l_file')
                         ->on('l3.l_from', '=', 'l1.l_to')
                         ->where('l3.l_type', '=', 'WIFE');
                 });
-                $query->join('name AS mother_name', function (JoinClause $join): void {
+                $query->join('name AS mother_name', static function (JoinClause $join): void {
                     $join
                         ->on('mother_name.n_file', '=', 'l3.l_file')
                         ->on('mother_name.n_id', '=', 'l3.l_to');
@@ -445,13 +445,13 @@ class SearchService
         }
 
         if ($spouse_family) {
-            $query->join('link AS l4', function (JoinClause $join): void {
+            $query->join('link AS l4', static function (JoinClause $join): void {
                 $join
                     ->on('l4.l_file', '=', 'individuals.i_file')
                     ->on('l4.l_from', '=', 'individuals.i_id')
                     ->where('l4.l_type', '=', 'FAMS');
             });
-            $query->join('families AS spouse_families', function (JoinClause $join): void {
+            $query->join('families AS spouse_families', static function (JoinClause $join): void {
                 $join
                     ->on('spouse_families.f_file', '=', 'l4.l_file')
                     ->on('spouse_families.f_id', '=', 'l4.l_to');
@@ -459,7 +459,7 @@ class SearchService
         }
 
         if ($indi_name) {
-            $query->join('name AS individual_name', function (JoinClause $join): void {
+            $query->join('name AS individual_name', static function (JoinClause $join): void {
                 $join
                     ->on('individual_name.n_file', '=', 'individuals.i_file')
                     ->on('individual_name.n_id', '=', 'individuals.i_id');
@@ -467,7 +467,7 @@ class SearchService
         }
 
         if ($indi_date) {
-            $query->join('dates AS individual_dates', function (JoinClause $join): void {
+            $query->join('dates AS individual_dates', static function (JoinClause $join): void {
                 $join
                     ->on('individual_dates.d_file', '=', 'individuals.i_file')
                     ->on('individual_dates.d_gid', '=', 'individuals.i_id');
@@ -475,7 +475,7 @@ class SearchService
         }
 
         if ($fam_date) {
-            $query->join('dates AS family_dates', function (JoinClause $join): void {
+            $query->join('dates AS family_dates', static function (JoinClause $join): void {
                 $join
                     ->on('family_dates.d_file', '=', 'spouse_families.f_file')
                     ->on('family_dates.d_gid', '=', 'spouse_families.f_id');
@@ -483,12 +483,12 @@ class SearchService
         }
 
         if ($indi_plac) {
-            $query->join('placelinks AS individual_placelinks', function (JoinClause $join): void {
+            $query->join('placelinks AS individual_placelinks', static function (JoinClause $join): void {
                 $join
                     ->on('individual_placelinks.pl_file', '=', 'individuals.i_file')
                     ->on('individual_placelinks.pl_gid', '=', 'individuals.i_id');
             });
-            $query->join('places AS individual_places', function (JoinClause $join): void {
+            $query->join('places AS individual_places', static function (JoinClause $join): void {
                 $join
                     ->on('individual_places.p_file', '=', 'individual_placelinks.pl_file')
                     ->on('individual_places.p_id', '=', 'individual_placelinks.pl_p_id');
@@ -496,12 +496,12 @@ class SearchService
         }
 
         if ($fam_plac) {
-            $query->join('placelinks AS familyl_placelinks', function (JoinClause $join): void {
+            $query->join('placelinks AS familyl_placelinks', static function (JoinClause $join): void {
                 $join
                     ->on('familyl_placelinks.pl_file', '=', 'individuals.i_file')
                     ->on('familyl_placelinks.pl_gid', '=', 'individuals.i_id');
             });
-            $query->join('places AS family_places', function (JoinClause $join): void {
+            $query->join('places AS family_places', static function (JoinClause $join): void {
                 $join
                     ->on('family_places.p_file', '=', 'familyl_placelinks.pl_file')
                     ->on('family_places.p_id', '=', 'familyl_placelinks.pl_p_id');
@@ -707,7 +707,7 @@ class SearchService
             ->each($this->rowLimiter())
             ->map(Individual::rowMapper())
             ->filter(GedcomRecord::accessFilter())
-            ->filter(function (Individual $individual) use ($fields): bool {
+            ->filter(static function (Individual $individual) use ($fields): bool {
                 // Check for XXXX:PLAC fields, which were only partially matched by SQL
                 foreach ($fields as $field_name => $field_value) {
                     $regex = '/' . preg_quote($field_value, '/') . '/i';
@@ -807,12 +807,12 @@ class SearchService
         $this->whereTrees($query, 'i_file', $search_trees);
 
         if ($plac_sdx !== '') {
-            $query->join('placelinks', function (JoinClause $join): void {
+            $query->join('placelinks', static function (JoinClause $join): void {
                 $join
                     ->on('placelinks.pl_file', '=', 'individuals.i_file')
                     ->on('placelinks.pl_gid', '=', 'individuals.i_id');
             });
-            $query->join('places', function (JoinClause $join): void {
+            $query->join('places', static function (JoinClause $join): void {
                 $join
                     ->on('places.p_file', '=', 'placelinks.pl_file')
                     ->on('places.p_id', '=', 'placelinks.pl_p_id');
@@ -822,7 +822,7 @@ class SearchService
         }
 
         if ($givn_sdx !== '' || $surn_sdx !== '') {
-            $query->join('name', function (JoinClause $join): void {
+            $query->join('name', static function (JoinClause $join): void {
                 $join
                     ->on('name.n_file', '=', 'individuals.i_file')
                     ->on('name.n_id', '=', 'individuals.i_id');
@@ -906,7 +906,7 @@ class SearchService
     private function wherePhonetic(Builder $query, $field, string $soundex): void
     {
         if ($soundex !== '') {
-            $query->where(function (Builder $query) use ($soundex, $field): void {
+            $query->where(static function (Builder $query) use ($soundex, $field): void {
                 foreach (explode(':', $soundex) as $sdx) {
                     $query->orWhere($field, 'LIKE', '%' . $sdx . '%');
                 }
@@ -921,7 +921,7 @@ class SearchService
      */
     private function whereTrees(Builder $query, string $tree_id_field, array $trees): void
     {
-        $tree_ids = array_map(function (Tree $tree): int {
+        $tree_ids = array_map(static function (Tree $tree): int {
             return $tree->id();
         }, $trees);
 

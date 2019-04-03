@@ -165,7 +165,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
             ->where('gedcom_id', '=', $tree->id())
             ->where('user_id', '=', $user->id())
             ->get()
-            ->map(function (stdClass $row) use ($tree): stdClass {
+            ->map(static function (stdClass $row) use ($tree): stdClass {
                 if ($row->xref !== null) {
                     $row->record = GedcomRecord::getInstance($row->xref, $tree);
                 } else {

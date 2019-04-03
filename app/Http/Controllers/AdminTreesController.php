@@ -129,7 +129,7 @@ class AdminTreesController extends AbstractBaseController
             ->unionAll($q5)
             ->unionAll($q6)
             ->get()
-            ->map(function (stdClass $row): stdClass {
+            ->map(static function (stdClass $row): stdClass {
                 // Extract type for pending record
                 if ($row->type === '' && preg_match('/^0 @[^@]*@ ([_A-Z0-9]+)/', $row->gedcom, $match)) {
                     $row->type = $match[1];
@@ -506,7 +506,7 @@ class AdminTreesController extends AbstractBaseController
                 $download_filename . '.zip'
             );
         } else {
-            $response = new StreamedResponse(function () use ($tree, $access_level, $media_path, $encoding) {
+            $response = new StreamedResponse(static function () use ($tree, $access_level, $media_path, $encoding) {
                 $stream = fopen('php://output', 'wb');
                 FunctionsExport::exportGedcom($tree, $stream, $access_level, $media_path, $encoding);
                 fclose($stream);
@@ -641,7 +641,7 @@ class AdminTreesController extends AbstractBaseController
         // On sites with hundreds or thousands of trees, this page becomes very large.
         // Just show the current tree, the default tree, and unimported trees
         if (count($all_trees) >= $multiple_tree_threshold) {
-            $all_trees = array_filter($all_trees, function (Tree $x) use ($tree): bool {
+            $all_trees = array_filter($all_trees, static function (Tree $x) use ($tree): bool {
                 return $x->getPreference('imported') === '0' || $tree->id() === $x->id() || $x->name() === Site::getPreference('DEFAULT_GEDCOM');
             });
         }
@@ -713,7 +713,7 @@ class AdminTreesController extends AbstractBaseController
                 'i_rin',
                 'i_sex',
                 'i_gedcom',
-            ], function (Builder $query) use ($tree1, $tree2): void {
+            ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
                     DB::raw($tree2->id()),
                     'i_id',
@@ -731,7 +731,7 @@ class AdminTreesController extends AbstractBaseController
                 'f_wife',
                 'f_gedcom',
                 'f_numchil',
-            ], function (Builder $query) use ($tree1, $tree2): void {
+            ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
                     DB::raw($tree2->id()),
                     'f_id',
@@ -748,7 +748,7 @@ class AdminTreesController extends AbstractBaseController
                 's_id',
                 's_name',
                 's_gedcom',
-            ], function (Builder $query) use ($tree1, $tree2): void {
+            ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
                     DB::raw($tree2->id()),
                     's_id',
@@ -762,7 +762,7 @@ class AdminTreesController extends AbstractBaseController
                 'm_file',
                 'm_id',
                 'm_gedcom',
-            ], function (Builder $query) use ($tree1, $tree2): void {
+            ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
                     DB::raw($tree2->id()),
                     'm_id',
@@ -778,7 +778,7 @@ class AdminTreesController extends AbstractBaseController
                 'multimedia_format',
                 'source_media_type',
                 'descriptive_title',
-            ], function (Builder $query) use ($tree1, $tree2): void {
+            ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
                     DB::raw($tree2->id()),
                     'm_id',
@@ -795,7 +795,7 @@ class AdminTreesController extends AbstractBaseController
                 'o_id',
                 'o_type',
                 'o_gedcom',
-            ], function (Builder $query) use ($tree1, $tree2): void {
+            ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
                     DB::raw($tree2->id()),
                     'o_id',
@@ -820,7 +820,7 @@ class AdminTreesController extends AbstractBaseController
                 'n_soundex_surn_std',
                 'n_soundex_givn_dm',
                 'n_soundex_surn_dm',
-            ], function (Builder $query) use ($tree1, $tree2): void {
+            ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
                     DB::raw($tree2->id()),
                     'n_id',
@@ -852,7 +852,7 @@ class AdminTreesController extends AbstractBaseController
                 'd_julianday2',
                 'd_fact',
                 'd_type',
-            ], function (Builder $query) use ($tree1, $tree2): void {
+            ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
                     DB::raw($tree2->id()),
                     'd_gid',
@@ -873,7 +873,7 @@ class AdminTreesController extends AbstractBaseController
                 'l_from',
                 'l_type',
                 'l_to',
-            ], function (Builder $query) use ($tree1, $tree2): void {
+            ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
                     DB::raw($tree2->id()),
                     'l_from',
@@ -1035,7 +1035,7 @@ class AdminTreesController extends AbstractBaseController
 
         $pedigree_individual = Individual::getInstance($tree->getPreference('PEDIGREE_ROOT_ID'), $tree);
 
-        $members = $this->user_service->all()->filter(function (UserInterface $user) use ($tree): bool {
+        $members = $this->user_service->all()->filter(static function (UserInterface $user) use ($tree): bool {
             return Auth::isMember($tree, $user);
         });
 
@@ -1255,7 +1255,7 @@ class AdminTreesController extends AbstractBaseController
                     // Other links from families to individuals
                     foreach (['CHIL', 'ASSO', '_ASSO'] as $tag) {
                         DB::table('families')
-                            ->join('link', function (JoinClause $join): void {
+                            ->join('link', static function (JoinClause $join): void {
                                 $join
                                     ->on('l_file', '=', 'f_file')
                                     ->on('l_from', '=', 'f_id');
@@ -1271,7 +1271,7 @@ class AdminTreesController extends AbstractBaseController
                     // Links from individuals to individuals
                     foreach (['ALIA', 'ASSO', '_ASSO'] as $tag) {
                         DB::table('individuals')
-                            ->join('link', function (JoinClause $join): void {
+                            ->join('link', static function (JoinClause $join): void {
                                 $join
                                     ->on('l_file', '=', 'i_file')
                                     ->on('l_from', '=', 'i_id');
@@ -1319,7 +1319,7 @@ class AdminTreesController extends AbstractBaseController
                     // Links from individuals to families
                     foreach (['FAMC', 'FAMS'] as $tag) {
                         DB::table('individuals')
-                            ->join('link', function (JoinClause $join): void {
+                            ->join('link', static function (JoinClause $join): void {
                                 $join
                                     ->on('l_file', '=', 'i_file')
                                     ->on('l_from', '=', 'i_id');
@@ -1357,7 +1357,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('individuals')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'i_file')
                                 ->on('l_from', '=', 'i_id');
@@ -1370,7 +1370,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('families')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'f_file')
                                 ->on('l_from', '=', 'f_id');
@@ -1383,7 +1383,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('media')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'm_file')
                                 ->on('l_from', '=', 'm_id');
@@ -1396,7 +1396,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('other')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'o_file')
                                 ->on('l_from', '=', 'o_id');
@@ -1419,7 +1419,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('sources')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 's_file')
                                 ->on('l_from', '=', 's_id');
@@ -1443,7 +1443,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('individuals')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'i_file')
                                 ->on('l_from', '=', 'i_id');
@@ -1456,7 +1456,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('families')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'f_file')
                                 ->on('l_from', '=', 'f_id');
@@ -1469,7 +1469,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('media')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'm_file')
                                 ->on('l_from', '=', 'm_id');
@@ -1482,7 +1482,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('sources')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 's_file')
                                 ->on('l_from', '=', 's_id');
@@ -1495,7 +1495,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('other')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'o_file')
                                 ->on('l_from', '=', 'o_id');
@@ -1525,7 +1525,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('individuals')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'i_file')
                                 ->on('l_from', '=', 'i_id');
@@ -1538,7 +1538,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('families')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'f_file')
                                 ->on('l_from', '=', 'f_id');
@@ -1551,7 +1551,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('sources')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 's_file')
                                 ->on('l_from', '=', 's_id');
@@ -1564,7 +1564,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('other')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'o_file')
                                 ->on('l_from', '=', 'o_id');
@@ -1588,7 +1588,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('individuals')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'i_file')
                                 ->on('l_from', '=', 'i_id');
@@ -1601,7 +1601,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('families')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'f_file')
                                 ->on('l_from', '=', 'f_id');
@@ -1614,7 +1614,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('media')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'm_file')
                                 ->on('l_from', '=', 'm_id');
@@ -1627,7 +1627,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('sources')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 's_file')
                                 ->on('l_from', '=', 's_id');
@@ -1640,7 +1640,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('other')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'o_file')
                                 ->on('l_from', '=', 'o_id');
@@ -1844,8 +1844,8 @@ class AdminTreesController extends AbstractBaseController
             ->select(['i_gedcom AS gedcom'])
             ->unionAll($union)
             ->pluck('gedcom')
-            ->mapWithKeys(function (string $gedcom) use ($search, $replace): array {
-                preg_match_all('/\n2 PLAC ((?:.*, )*)' . preg_quote($search) . '(\n|$)/i', $gedcom, $matches);
+            ->mapWithKeys(static function (string $gedcom) use ($search, $replace): array {
+                preg_match_all('/\n2 PLAC ((?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', $gedcom, $matches);
 
                 $changes = [];
                 foreach ($matches[1] as $prefix) {
@@ -1885,7 +1885,7 @@ class AdminTreesController extends AbstractBaseController
 
         return $individual_changes
             ->merge($family_changes)
-            ->mapWithKeys(function (GedcomRecord $record) use ($search, $replace): array {
+            ->mapWithKeys(static function (GedcomRecord $record) use ($search, $replace): array {
                 $changes = [];
 
                 foreach ($record->facts() as $fact) {
@@ -1974,15 +1974,15 @@ class AdminTreesController extends AbstractBaseController
             ->having(DB::raw('COUNT(s_id)'), '>', 1)
             ->select([DB::raw('GROUP_CONCAT(s_id) AS xrefs')])
             ->pluck('xrefs')
-            ->map(function (string $xrefs) use ($tree): array {
-                return array_map(function (string $xref) use ($tree): Source {
+            ->map(static function (string $xrefs) use ($tree): array {
+                return array_map(static function (string $xref) use ($tree): Source {
                     return Source::getInstance($xref, $tree);
                 }, explode(',', $xrefs));
             })
             ->all();
 
         $individuals = DB::table('dates')
-            ->join('name', function (JoinClause $join): void {
+            ->join('name', static function (JoinClause $join): void {
                 $join
                     ->on('d_file', '=', 'n_file')
                     ->on('d_gid', '=', 'n_id');
@@ -1999,8 +1999,8 @@ class AdminTreesController extends AbstractBaseController
             ->having(DB::raw('COUNT(DISTINCT d_gid)'), '>', 1)
             ->select([DB::raw('GROUP_CONCAT(d_gid) AS xrefs')])
             ->pluck('xrefs')
-            ->map(function (string $xrefs) use ($tree): array {
-                return array_map(function (string $xref) use ($tree): Individual {
+            ->map(static function (string $xrefs) use ($tree): array {
+                return array_map(static function (string $xref) use ($tree): Individual {
                     return Individual::getInstance($xref, $tree);
                 }, explode(',', $xrefs));
             })
@@ -2013,8 +2013,8 @@ class AdminTreesController extends AbstractBaseController
             ->having(DB::raw('COUNT(f_id)'), '>', 1)
             ->select([DB::raw('GROUP_CONCAT(f_id) AS xrefs')])
             ->pluck('xrefs')
-            ->map(function (string $xrefs) use ($tree): array {
-                return array_map(function (string $xref) use ($tree): Family {
+            ->map(static function (string $xrefs) use ($tree): array {
+                return array_map(static function (string $xref) use ($tree): Family {
                     return Family::getInstance($xref, $tree);
                 }, explode(',', $xrefs));
             })
@@ -2027,8 +2027,8 @@ class AdminTreesController extends AbstractBaseController
             ->having(DB::raw('COUNT(m_id)'), '>', 1)
             ->select([DB::raw('GROUP_CONCAT(m_id) AS xrefs')])
             ->pluck('xrefs')
-            ->map(function (string $xrefs) use ($tree): array {
-                return array_map(function (string $xref) use ($tree): Media {
+            ->map(static function (string $xrefs) use ($tree): array {
+                return array_map(static function (string $xref) use ($tree): Media {
                     return Media::getInstance($xref, $tree);
                 }, explode(',', $xrefs));
             })

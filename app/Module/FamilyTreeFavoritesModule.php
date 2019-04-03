@@ -164,7 +164,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
             ->where('gedcom_id', '=', $tree->id())
             ->whereNull('user_id')
             ->get()
-            ->map(function (stdClass $row) use ($tree): stdClass {
+            ->map(static function (stdClass $row) use ($tree): stdClass {
                 if ($row->xref !== null) {
                     $row->record = GedcomRecord::getInstance($row->xref, $tree);
                 } else {

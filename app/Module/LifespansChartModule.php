@@ -144,7 +144,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
         // Filter duplicates and private individuals.
         $xrefs = array_unique($xrefs);
-        $xrefs = array_filter($xrefs, function (string $xref) use ($tree): bool {
+        $xrefs = array_filter($xrefs, static function (string $xref) use ($tree): bool {
             $individual = Individual::getInstance($xref, $tree);
 
             return $individual !== null && $individual->canShow();
@@ -189,16 +189,16 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     protected function chart(Tree $tree, array $xrefs, string $subtitle): Response
     {
         /** @var Individual[] $individuals */
-        $individuals = array_map(function (string $xref) use ($tree) {
+        $individuals = array_map(static function (string $xref) use ($tree) {
             return Individual::getInstance($xref, $tree);
         }, $xrefs);
 
-        $individuals = array_filter($individuals, function (Individual $individual = null): bool {
+        $individuals = array_filter($individuals, static function (Individual $individual = null): bool {
             return $individual !== null && $individual->canShow();
         });
 
         // Sort the array in order of birth year
-        usort($individuals, function (Individual $a, Individual $b) {
+        usort($individuals, static function (Individual $a, Individual $b) {
             return Date::compare($a->getEstimatedBirthDate(), $b->getEstimatedBirthDate());
         });
 
@@ -208,7 +208,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
         $lifespans = $this->layoutIndividuals($individuals);
 
-        $max_rows = array_reduce($lifespans, function ($carry, stdClass $item) {
+        $max_rows = array_reduce($lifespans, static function ($carry, stdClass $item) {
             return max($carry, $item->row);
         }, 0);
 
@@ -288,7 +288,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      */
     protected function maxYear(array $individuals): int
     {
-        $jd = array_reduce($individuals, function ($carry, Individual $item) {
+        $jd = array_reduce($individuals, static function ($carry, Individual $item) {
             return max($carry, $item->getEstimatedDeathDate()->maximumJulianDay());
         }, 0);
 
@@ -307,7 +307,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      */
     protected function minYear(array $individuals): int
     {
-        $jd = array_reduce($individuals, function ($carry, Individual $item) {
+        $jd = array_reduce($individuals, static function ($carry, Individual $item) {
             return min($carry, $item->getEstimatedBirthDate()->minimumJulianDay());
         }, PHP_INT_MAX);
 
@@ -343,7 +343,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     protected function findIndividualsByDate(Date $start, Date $end, Tree $tree): array
     {
         return DB::table('individuals')
-            ->join('dates', function (JoinClause $join): void {
+            ->join('dates', static function (JoinClause $join): void {
                 $join
                     ->on('d_file', '=', 'i_file')
                     ->on('d_gid', '=', 'i_id');
@@ -365,7 +365,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     protected function findIndividualsByPlace(Place $place, Tree $tree): array
     {
         return DB::table('individuals')
-            ->join('placelinks', function (JoinClause $join): void {
+            ->join('placelinks', static function (JoinClause $join): void {
                 $join
                     ->on('pl_file', '=', 'i_file')
                     ->on('pl_gid', '=', 'i_id');

@@ -77,10 +77,10 @@ class AutocompleteController extends AbstractBaseController
         $contents = new Collection($media_filesystem->listContents('', true));
 
         $folders = $contents
-            ->filter(function (array $object) use ($query): bool {
+            ->filter(static function (array $object) use ($query): bool {
                 return $object['type'] === 'dir' && Str::contains($object['path'], $query);
             })
-            ->map(function (array $object): array {
+            ->map(static function (array $object): array {
                 return ['value' => $object['path']];
             });
 
@@ -108,7 +108,7 @@ class AutocompleteController extends AbstractBaseController
 
         // Fetch all records with a link to this source
         $individuals = DB::table('individuals')
-            ->join('link', function (JoinClause $join): void {
+            ->join('link', static function (JoinClause $join): void {
                 $join
                     ->on('l_file', '=', 'i_file')
                     ->on('l_from', '=', 'i_id');
@@ -123,7 +123,7 @@ class AutocompleteController extends AbstractBaseController
             ->filter(GedcomRecord::accessFilter());
 
         $families = DB::table('families')
-            ->join('link', function (JoinClause $join): void {
+            ->join('link', static function (JoinClause $join): void {
                 $join
                     ->on('l_file', '=', 'f_file')
                     ->on('l_from', '=', 'f_id')
@@ -152,7 +152,7 @@ class AutocompleteController extends AbstractBaseController
 
         $pages = array_unique($pages);
 
-        $pages = array_map(function (string $page): array {
+        $pages = array_map(static function (string $page): array {
             return ['value' => $page];
         }, $pages);
 
@@ -228,7 +228,7 @@ class AutocompleteController extends AbstractBaseController
 
         $results = $this->search_service
             ->searchFamilyNames([$tree], [$query], $offset, $limit)
-            ->map(function (Family $family): array {
+            ->map(static function (Family $family): array {
                 return [
                     'id'    => $family->xref(),
                     'text'  => view('selects/family', ['family' => $family]),
@@ -261,7 +261,7 @@ class AutocompleteController extends AbstractBaseController
 
         $results = $this->search_service
             ->searchIndividualNames([$tree], [$query], $offset, $limit)
-            ->map(function (Individual $individual): array {
+            ->map(static function (Individual $individual): array {
                 return [
                     'id'    => $individual->xref(),
                     'text'  => view('selects/individual', ['individual' => $individual]),
@@ -294,7 +294,7 @@ class AutocompleteController extends AbstractBaseController
 
         $results = $this->search_service
             ->searchMedia([$tree], [$query], $offset, $limit)
-            ->map(function (Media $media): array {
+            ->map(static function (Media $media): array {
                 return [
                     'id'    => $media->xref(),
                     'text'  => view('selects/media', ['media' => $media]),
@@ -327,7 +327,7 @@ class AutocompleteController extends AbstractBaseController
 
         $results = $this->search_service
             ->searchNotes([$tree], [$query], $offset, $limit)
-            ->map(function (Note $note): array {
+            ->map(static function (Note $note): array {
                 return [
                     'id'    => $note->xref(),
                     'text'  => view('selects/note', ['note' => $note]),
@@ -460,7 +460,7 @@ class AutocompleteController extends AbstractBaseController
 
         $results = $this->search_service
             ->searchRepositories([$tree], [$query], $offset, $limit)
-            ->map(function (Repository $repository): array {
+            ->map(static function (Repository $repository): array {
                 return [
                     'id'    => $repository->xref(),
                     'text'  => view('selects/repository', ['repository' => $repository]),
@@ -493,7 +493,7 @@ class AutocompleteController extends AbstractBaseController
 
         $results = $this->search_service
             ->searchSourcesByName([$tree], [$query], $offset, $limit)
-            ->map(function (Source $source): array {
+            ->map(static function (Source $source): array {
                 return [
                     'id'    => $source->xref(),
                     'text'  => view('selects/source', ['source' => $source]),
@@ -526,7 +526,7 @@ class AutocompleteController extends AbstractBaseController
 
         $results = $this->search_service
             ->searchSubmitters([$tree], [$query], $offset, $limit)
-            ->map(function (GedcomRecord $submitter): array {
+            ->map(static function (GedcomRecord $submitter): array {
                 return [
                     'id'    => $submitter->xref(),
                     'text'  => view('selects/submitter', ['submitter' => $submitter]),

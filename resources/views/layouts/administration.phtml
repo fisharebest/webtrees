@@ -28,7 +28,7 @@ use Symfony\Component\HttpFoundation\Request;
 
         <?= View::stack('styles') ?>
 
-        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(function (ModuleGlobalInterface $module): string { return $module instanceof ModuleCustomInterface || $module instanceof CustomCssJsModule ? '' : $module->headContent(); })->implode('') ?>
+        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string { return $module instanceof ModuleCustomInterface || $module instanceof CustomCssJsModule ? '' : $module->headContent(); })->implode('') ?>
 
         <?= DebugBar::renderHead() ?>
     </head>
@@ -79,7 +79,7 @@ use Symfony\Component\HttpFoundation\Request;
 
         <?= View::stack('javascript') ?>
 
-        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(function (ModuleGlobalInterface $module): string { return $module instanceof ModuleCustomInterface || $module instanceof CustomCssJsModule ? '' : $module->bodyContent(); })->implode('') ?>
+        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string { return $module instanceof ModuleCustomInterface || $module instanceof CustomCssJsModule ? '' : $module->bodyContent(); })->implode('') ?>
 
         <?= DebugBar::render() ?>
     </body>

@@ -24,7 +24,7 @@ $unique_indis = []; // Don't double-count indis with multiple names.
 
 $module = app(ModuleService::class)
     ->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
-    ->first(function (ModuleInterface $module) {
+    ->first(static function (ModuleInterface $module) {
         return $module instanceof RelationshipsChartModule;
     });
 ?>

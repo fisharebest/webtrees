@@ -645,7 +645,7 @@ class HomePageController extends AbstractBaseController
             ->where('block_id', '=', $block_id)
             ->value('module_name');
 
-        $block = $active_blocks->filter(function (ModuleInterface $module) use ($module_name): bool {
+        $block = $active_blocks->filter(static function (ModuleInterface $module) use ($module_name): bool {
             return $module->name() === $module_name;
         })->first();
 
@@ -665,10 +665,10 @@ class HomePageController extends AbstractBaseController
     private function availableTreeBlocks(): Collection
     {
         return $this->module_service->findByInterface(ModuleBlockInterface::class, false, true)
-            ->filter(function (ModuleBlockInterface $block): bool {
+            ->filter(static function (ModuleBlockInterface $block): bool {
                 return $block->isTreeBlock();
             })
-            ->mapWithKeys(function (ModuleInterface $block): array {
+            ->mapWithKeys(static function (ModuleInterface $block): array {
                 return [$block->name() => $block];
             });
     }
@@ -682,10 +682,10 @@ class HomePageController extends AbstractBaseController
     private function availableUserBlocks(): Collection
     {
         return $this->module_service->findByInterface(ModuleBlockInterface::class, false, true)
-            ->filter(function (ModuleBlockInterface $block): bool {
+            ->filter(static function (ModuleBlockInterface $block): bool {
                 return $block->isUserBlock();
             })
-            ->mapWithKeys(function (ModuleInterface $block): array {
+            ->mapWithKeys(static function (ModuleInterface $block): array {
                 return [$block->name() => $block];
             });
     }
@@ -907,8 +907,8 @@ class HomePageController extends AbstractBaseController
      */
     private function filterActiveBlocks(Collection $blocks, Collection $active_blocks): Collection
     {
-        return $blocks->map(function (string $block_name) use ($active_blocks): ?ModuleBlockInterface {
-            return $active_blocks->filter(function (ModuleInterface $block) use ($block_name): bool {
+        return $blocks->map(static function (string $block_name) use ($active_blocks): ?ModuleBlockInterface {
+            return $active_blocks->filter(static function (ModuleInterface $block) use ($block_name): bool {
                 return $block->name() === $block_name;
             })->first();
         })

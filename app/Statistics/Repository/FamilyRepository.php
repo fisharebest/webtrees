@@ -132,17 +132,17 @@ class FamilyRepository
     private function topTenGrandFamilyQuery(int $total): array
     {
         return DB::table('families')
-            ->join('link AS children', function (JoinClause $join): void {
+            ->join('link AS children', static function (JoinClause $join): void {
                 $join
                     ->on('children.l_from', '=', 'f_id')
                     ->on('children.l_file', '=', 'f_file')
                     ->where('children.l_type', '=', 'CHIL');
-            })->join('link AS mchildren', function (JoinClause $join): void {
+            })->join('link AS mchildren', static function (JoinClause $join): void {
                 $join
                     ->on('mchildren.l_file', '=', 'children.l_file')
                     ->on('mchildren.l_from', '=', 'children.l_to')
                     ->where('mchildren.l_type', '=', 'FAMS');
-            })->join('link AS gchildren', function (JoinClause $join): void {
+            })->join('link AS gchildren', static function (JoinClause $join): void {
                 $join
                     ->on('gchildren.l_file', '=', 'mchildren.l_file')
                     ->on('gchildren.l_from', '=', 'mchildren.l_to')
@@ -156,7 +156,7 @@ class FamilyRepository
             ->get()
             ->map(Family::rowMapper())
             ->filter(GedcomRecord::accessFilter())
-            ->map(function (Family $family): array {
+            ->map(static function (Family $family): array {
                 $count = 0;
                 foreach ($family->children() as $child) {
                     foreach ($child->spouseFamilies() as $spouse_family) {
@@ -292,20 +292,20 @@ class FamilyRepository
         $prefix = DB::connection()->getTablePrefix();
 
         return DB::table('link AS link1')
-            ->join('link AS link2', function (JoinClause $join): void {
+            ->join('link AS link2', static function (JoinClause $join): void {
                 $join
                     ->on('link2.l_from', '=', 'link1.l_from')
                     ->on('link2.l_type', '=', 'link1.l_type')
                     ->on('link2.l_file', '=', 'link1.l_file');
             })
-            ->join('dates AS child1', function (JoinClause $join): void {
+            ->join('dates AS child1', static function (JoinClause $join): void {
                 $join
                     ->on('child1.d_gid', '=', 'link1.l_to')
                     ->on('child1.d_file', '=', 'link1.l_file')
                     ->where('child1.d_fact', '=', 'BIRT')
                     ->where('child1.d_julianday1', '<>', 0);
             })
-            ->join('dates AS child2', function (JoinClause $join): void {
+            ->join('dates AS child2', static function (JoinClause $join): void {
                 $join
                     ->on('child2.d_gid', '=', 'link2.l_to')
                     ->on('child2.d_file', '=', 'link2.l_file')
@@ -547,7 +547,7 @@ class FamilyRepository
 
         if ($year1 >= 0 && $year2 >= 0) {
             $query
-                ->join('dates', function (JoinClause $join): void {
+                ->join('dates', static function (JoinClause $join): void {
                     $join
                         ->on('d_file', '=', 'f_file')
                         ->on('d_gid', '=', 'f_id');
@@ -615,7 +615,7 @@ class FamilyRepository
             ->get()
             ->map(Family::rowMapper())
             ->filter(GedcomRecord::accessFilter())
-            ->map(function (Family $family): array {
+            ->map(static function (Family $family): array {
                 return [
                     'family' => $family,
                     'count'  => $family->numberOfChildren(),
@@ -685,7 +685,7 @@ class FamilyRepository
     public function monthFirstChildQuery(int $year1 = -1, int $year2 = -1): Builder
     {
         $first_child_subquery = DB::table('link')
-            ->join('dates', function (JoinClause $join): void {
+            ->join('dates', static function (JoinClause $join): void {
                 $join
                     ->on('d_gid', '=', 'l_to')
                     ->on('d_file', '=', 'l_file')
@@ -698,12 +698,12 @@ class FamilyRepository
             ->groupBy('family_id');
 
         $query = DB::table('link')
-            ->join('dates', function (JoinClause $join): void {
+            ->join('dates', static function (JoinClause $join): void {
                 $join
                     ->on('d_gid', '=', 'l_to')
                     ->on('d_file', '=', 'l_file');
             })
-            ->joinSub($first_child_subquery, 'subquery', function (JoinClause $join): void {
+            ->joinSub($first_child_subquery, 'subquery', static function (JoinClause $join): void {
                 $join
                     ->on('family_id', '=', 'l_from')
                     ->on('min_birth_jd', '=', 'd_julianday1');
@@ -731,7 +731,7 @@ class FamilyRepository
     public function monthFirstChildBySexQuery(int $year1 = -1, int $year2 = -1): Builder
     {
         return $this->monthFirstChildQuery($year1, $year2)
-                ->join('individuals', function (JoinClause $join): void {
+                ->join('individuals', static function (JoinClause $join): void {
                     $join
                         ->on('i_file', '=', 'l_file')
                         ->on('i_id', '=', 'l_to');
@@ -797,20 +797,20 @@ class FamilyRepository
         $prefix = DB::connection()->getTablePrefix();
 
         $row = DB::table('link AS parentfamily')
-            ->join('link AS childfamily', function (JoinClause $join): void {
+            ->join('link AS childfamily', static function (JoinClause $join): void {
                 $join
                     ->on('childfamily.l_file', '=', 'parentfamily.l_file')
                     ->on('childfamily.l_from', '=', 'parentfamily.l_from')
                     ->where('childfamily.l_type', '=', 'CHIL');
             })
-            ->join('dates AS birth', function (JoinClause $join): void {
+            ->join('dates AS birth', static function (JoinClause $join): void {
                 $join
                     ->on('birth.d_file', '=', 'parentfamily.l_file')
                     ->on('birth.d_gid', '=', 'parentfamily.l_to')
                     ->where('birth.d_fact', '=', 'BIRT')
                     ->where('birth.d_julianday1', '<>', 0);
             })
-            ->join('dates AS childbirth', function (JoinClause $join): void {
+            ->join('dates AS childbirth', static function (JoinClause $join): void {
                 $join
                     ->on('childbirth.d_file', '=', 'parentfamily.l_file')
                     ->on('childbirth.d_gid', '=', 'childfamily.l_to')
@@ -1003,14 +1003,14 @@ class FamilyRepository
 
         $hrows = DB::table('families')
             ->where('f_file', '=', $this->tree->id())
-            ->join('dates AS married', function (JoinClause $join): void {
+            ->join('dates AS married', static function (JoinClause $join): void {
                 $join
                     ->on('married.d_file', '=', 'f_file')
                     ->on('married.d_gid', '=', 'f_id')
                     ->where('married.d_fact', '=', 'MARR')
                     ->where('married.d_julianday1', '<>', 0);
             })
-            ->join('dates AS husbdeath', function (JoinClause $join): void {
+            ->join('dates AS husbdeath', static function (JoinClause $join): void {
                 $join
                     ->on('husbdeath.d_gid', '=', 'f_husb')
                     ->on('husbdeath.d_file', '=', 'f_file')
@@ -1024,14 +1024,14 @@ class FamilyRepository
 
         $wrows = DB::table('families')
             ->where('f_file', '=', $this->tree->id())
-            ->join('dates AS married', function (JoinClause $join): void {
+            ->join('dates AS married', static function (JoinClause $join): void {
                 $join
                     ->on('married.d_file', '=', 'f_file')
                     ->on('married.d_gid', '=', 'f_id')
                     ->where('married.d_fact', '=', 'MARR')
                     ->where('married.d_julianday1', '<>', 0);
             })
-            ->join('dates AS wifedeath', function (JoinClause $join): void {
+            ->join('dates AS wifedeath', static function (JoinClause $join): void {
                 $join
                     ->on('wifedeath.d_gid', '=', 'f_wife')
                     ->on('wifedeath.d_file', '=', 'f_file')
@@ -1045,14 +1045,14 @@ class FamilyRepository
 
         $drows = DB::table('families')
             ->where('f_file', '=', $this->tree->id())
-            ->join('dates AS married', function (JoinClause $join): void {
+            ->join('dates AS married', static function (JoinClause $join): void {
                 $join
                     ->on('married.d_file', '=', 'f_file')
                     ->on('married.d_gid', '=', 'f_id')
                     ->where('married.d_fact', '=', 'MARR')
                     ->where('married.d_julianday1', '<>', 0);
             })
-            ->join('dates AS divorced', function (JoinClause $join): void {
+            ->join('dates AS divorced', static function (JoinClause $join): void {
                 $join
                     ->on('divorced.d_gid', '=', 'f_id')
                     ->on('divorced.d_file', '=', 'f_file')
@@ -1253,14 +1253,14 @@ class FamilyRepository
 
         $query = DB::table('families')
             ->where('f_file', '=', $this->tree->id())
-            ->join('dates AS wife', function (JoinClause $join): void {
+            ->join('dates AS wife', static function (JoinClause $join): void {
                 $join
                     ->on('wife.d_gid', '=', 'f_wife')
                     ->on('wife.d_file', '=', 'f_file')
                     ->where('wife.d_fact', '=', 'BIRT')
                     ->where('wife.d_julianday1', '<>', 0);
             })
-            ->join('dates AS husb', function (JoinClause $join): void {
+            ->join('dates AS husb', static function (JoinClause $join): void {
                 $join
                     ->on('husb.d_gid', '=', 'f_husb')
                     ->on('husb.d_file', '=', 'f_file')
@@ -1381,12 +1381,12 @@ class FamilyRepository
         $prefix = DB::connection()->getTablePrefix();
 
         $query = DB::table('dates AS married')
-            ->join('families', function (JoinClause $join): void {
+            ->join('families', static function (JoinClause $join): void {
                 $join
                     ->on('f_file', '=', 'married.d_file')
                     ->on('f_id', '=', 'married.d_gid');
             })
-            ->join('dates AS birth', function (JoinClause $join) use ($sex): void {
+            ->join('dates AS birth', static function (JoinClause $join) use ($sex): void {
                 $join
                     ->on('birth.d_file', '=', 'married.d_file')
                     ->on('birth.d_gid', '=', $sex === 'M' ? 'f_husb' : 'f_wife')
@@ -1406,7 +1406,7 @@ class FamilyRepository
 
         return $query
             ->get()
-            ->map(function (stdClass $row): stdClass {
+            ->map(static function (stdClass $row): stdClass {
                 $row->age = (int) $row->age;
 
                 return $row;
@@ -1450,19 +1450,19 @@ class FamilyRepository
         $prefix = DB::connection()->getTablePrefix();
 
         $row = DB::table('families')
-            ->join('dates AS married', function (JoinClause $join): void {
+            ->join('dates AS married', static function (JoinClause $join): void {
                 $join
                     ->on('married.d_file', '=', 'f_file')
                     ->on('married.d_gid', '=', 'f_id')
                     ->where('married.d_fact', '=', 'MARR');
             })
-            ->join('individuals', function (JoinClause $join) use ($sex, $sex_field): void {
+            ->join('individuals', static function (JoinClause $join) use ($sex, $sex_field): void {
                 $join
                     ->on('i_file', '=', 'f_file')
                     ->on('i_id', '=', $sex_field)
                     ->where('i_sex', '=', $sex);
             })
-            ->join('dates AS birth', function (JoinClause $join): void {
+            ->join('dates AS birth', static function (JoinClause $join): void {
                 $join
                     ->on('birth.d_file', '=', 'i_file')
                     ->on('birth.d_gid', '=', 'i_id')
@@ -1675,19 +1675,19 @@ class FamilyRepository
     public function statsFirstMarriageQuery(int $year1 = -1, int $year2 = -1): Builder
     {
         $query = DB::table('families')
-            ->join('dates', function (JoinClause $join): void {
+            ->join('dates', static function (JoinClause $join): void {
                 $join
                     ->on('d_gid', '=', 'f_id')
                     ->on('d_file', '=', 'f_file')
                     ->where('d_fact', '=', 'MARR')
                     ->whereIn('d_month', ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'])
                     ->where('d_julianday2', '<>', 0);
-            })->join('individuals', function (JoinClause $join): void {
+            })->join('individuals', static function (JoinClause $join): void {
                 $join
                     ->on('i_file', '=', 'f_file');
             })
             ->where('f_file', '=', $this->tree->id())
-            ->where(function (Builder $query): void {
+            ->where(static function (Builder $query): void {
                 $query
                     ->whereColumn('i_id', '=', 'f_husb')
                     ->orWhereColumn('i_id', '=', 'f_wife');

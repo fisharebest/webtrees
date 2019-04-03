@@ -43,7 +43,7 @@ class BootModules implements MiddlewareInterface
         $module_service = app(ModuleService::class);
         $theme          = app(ModuleThemeInterface::class);
 
-        $bootable_modules = $module_service->all()->filter(function (ModuleInterface $module) {
+        $bootable_modules = $module_service->all()->filter(static function (ModuleInterface $module) {
             return method_exists($module, 'boot');
         });
 

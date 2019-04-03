@@ -82,8 +82,8 @@ class EditIndividualController extends AbstractEditController
         }
 
         // Sort the facts
-        uksort($sort_facts, function ($x, $y) use ($order) {
-            return array_search($x, $order) - array_search($y, $order);
+        uksort($sort_facts, static function ($x, $y) use ($order) {
+            return array_search($x, $order, true) - array_search($y, $order, true);
         });
 
         // Merge the facts
@@ -143,8 +143,8 @@ class EditIndividualController extends AbstractEditController
         }
 
         // Sort the facts
-        uksort($sort_facts, function ($x, $y) use ($order) {
-            return array_search($x, $order) - array_search($y, $order);
+        uksort($sort_facts, static function ($x, $y) use ($order) {
+            return array_search($x, $order, true) - array_search($y, $order, true);
         });
 
         // Merge the facts
@@ -204,8 +204,8 @@ class EditIndividualController extends AbstractEditController
         }
 
         // Sort the facts
-        uksort($sort_facts, function ($x, $y) use ($order) {
-            return array_search($x, $order) - array_search($y, $order);
+        uksort($sort_facts, static function ($x, $y) use ($order) {
+            return array_search($x, $order, true) - array_search($y, $order, true);
         });
 
         // Merge the facts

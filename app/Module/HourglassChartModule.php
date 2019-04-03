@@ -378,7 +378,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
                 }
 
                 // filter out root person from children array so only siblings remain
-                $siblings       = $family->children()->filter(function (Individual $x) use ($individual): bool {
+                $siblings       = $family->children()->filter(static function (Individual $x) use ($individual): bool {
                     return $x !== $individual;
                 });
 

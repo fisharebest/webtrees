@@ -200,7 +200,7 @@ class I18N
     {
         $locales = app(ModuleService::class)
             ->findByInterface(ModuleLanguageInterface::class, false, true)
-            ->map(function (ModuleLanguageInterface $module): LocaleInterface {
+            ->map(static function (ModuleLanguageInterface $module): LocaleInterface {
                 return $module->locale();
             });
 
@@ -312,7 +312,7 @@ class I18N
             // Search engines don't negotiate.  They get the default locale of the tree.
             if ($setup) {
                 $installed_locales = app(ModuleService::class)->setupLanguages()
-                    ->map(function (ModuleLanguageInterface $module): LocaleInterface {
+                    ->map(static function (ModuleLanguageInterface $module): LocaleInterface {
                         return $module->locale();
                     });
             } else {
@@ -404,7 +404,7 @@ class I18N
     {
         return app(ModuleService::class)
             ->findByInterface(ModuleLanguageInterface::class, true)
-            ->map(function (ModuleLanguageInterface $module): LocaleInterface {
+            ->map(static function (ModuleLanguageInterface $module): LocaleInterface {
                 return $module->locale();
             });
     }

@@ -72,7 +72,7 @@ class NoteController extends AbstractBaseController
     private function facts(Note $record): Collection
     {
         return $record->facts()
-            ->filter(function (Fact $fact): bool {
+            ->filter(static function (Fact $fact): bool {
                 return $fact->getTag() !== 'CONT';
             });
     }

@@ -74,7 +74,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             ->where('gedcom_id', '=', $tree->id())
             ->orderByDesc('updated')
             ->get()
-            ->map(function (stdClass $row): stdClass {
+            ->map(static function (stdClass $row): stdClass {
                 $row->updated = Carbon::make($row->updated);
 
                 return $row;

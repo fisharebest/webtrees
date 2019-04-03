@@ -197,7 +197,7 @@ class ChangesLogController extends AbstractAdminController
     {
         $content = $this->changesQuery($request)
             ->get()
-            ->map(function (stdClass $row): string {
+            ->map(static function (stdClass $row): string {
                 // Convert to CSV
                 return implode(',', [
                     '"' . $row->change_time . '"',
@@ -245,7 +245,7 @@ class ChangesLogController extends AbstractAdminController
             ->select(['change.*', DB::raw("IFNULL(user_name, '<none>') AS user_name"), 'gedcom_name']);
 
         if ($search !== '') {
-            $query->where(function (Builder $query) use ($search): void {
+            $query->where(static function (Builder $query) use ($search): void {
                 $query
                     ->whereContains('old_gedcom', $search)
                     ->whereContains('new_gedcom', $search, 'or');

@@ -344,7 +344,7 @@ class IndividualController extends AbstractBaseController
     public function getSidebars(Individual $individual): Collection
     {
         return $this->module_service->findByComponent(ModuleSidebarInterface::class, $individual->tree(), Auth::user())
-            ->filter(function (ModuleSidebarInterface $sidebar) use ($individual): bool {
+            ->filter(static function (ModuleSidebarInterface $sidebar) use ($individual): bool {
                 return $sidebar->hasSidebarContent($individual);
             });
     }
@@ -361,7 +361,7 @@ class IndividualController extends AbstractBaseController
     public function getTabs(Individual $individual): Collection
     {
         return $this->module_service->findByComponent(ModuleTabInterface::class, $individual->tree(), Auth::user())
-            ->filter(function (ModuleTabInterface $tab) use ($individual): bool {
+            ->filter(static function (ModuleTabInterface $tab) use ($individual): bool {
                 return $tab->hasTabContent($individual);
             });
     }

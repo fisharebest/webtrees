@@ -26,7 +26,7 @@ if ($individual === null) {
 
 $module_service = app(ModuleService::class);
 
-$menus = $module_service->findByComponent(ModuleChartInterface::class, $individual->tree(), Auth::user())->map(function (ModuleChartInterface $module) use ($individual): ?Menu {
+$menus = $module_service->findByComponent(ModuleChartInterface::class, $individual->tree(), Auth::user())->map(static function (ModuleChartInterface $module) use ($individual): ?Menu {
     return $module->chartBoxMenu($individual);
 })->filter();
 
@@ -82,8 +82,8 @@ foreach ($individual->spouseFamilies() as $family) {
         $all_facts->push($fact);
     }
 }
-$all_facts = $all_facts->filter(function (Fact $fact) use ($exclude): bool {
-    return !in_array($fact->getTag(), $exclude);
+$all_facts = $all_facts->filter(static function (Fact $fact) use ($exclude): bool {
+    return !in_array($fact->getTag(), $exclude, true);
 });
 
 $all_facts = Fact::sortFacts($all_facts);

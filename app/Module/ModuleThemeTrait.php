@@ -175,7 +175,7 @@ trait ModuleThemeTrait
             }
         }
 
-        usort($menus, function (Menu $x, Menu $y) {
+        usort($menus, static function (Menu $x, Menu $y) {
             return I18N::strcasecmp($x->getLabel(), $y->getLabel());
         });
 
@@ -389,7 +389,7 @@ trait ModuleThemeTrait
         $gedcomid = $tree->getUserPreference(Auth::user(), 'gedcomid');
 
         $pedigree_chart = app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
-            ->filter(function (ModuleInterface $module): bool {
+            ->filter(static function (ModuleInterface $module): bool {
                 return $module instanceof PedigreeChartModule;
             });
 
@@ -440,7 +440,7 @@ trait ModuleThemeTrait
         $current_theme = app(ModuleThemeInterface::class);
 
         if ($themes->count() > 1) {
-            $submenus = $themes->map(function (ModuleThemeInterface $theme) use ($current_theme): Menu {
+            $submenus = $themes->map(static function (ModuleThemeInterface $theme) use ($current_theme): Menu {
                 $active     = $theme->name() === $current_theme->name();
                 $class      = 'menu-theme-' . $theme->name() . ($active ? ' active' : '');
 
@@ -482,7 +482,7 @@ trait ModuleThemeTrait
         }
 
         return app(ModuleService::class)->findByComponent(ModuleMenuInterface::class, $tree, Auth::user())
-            ->map(function (ModuleMenuInterface $menu) use ($tree): ?Menu {
+            ->map(static function (ModuleMenuInterface $menu) use ($tree): ?Menu {
                 return $menu->getMenu($tree);
             })
             ->filter()
@@ -498,7 +498,7 @@ trait ModuleThemeTrait
      */
     public function genealogyMenuContent(array $menus): string
     {
-        return implode('', array_map(function (Menu $menu): string {
+        return implode('', array_map(static function (Menu $menu): string {
             return $menu->bootstrap4();
         }, $menus));
     }

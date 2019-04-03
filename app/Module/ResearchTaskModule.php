@@ -196,7 +196,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
     private function familiesWithTasks(Tree $tree, int $max_julian_day): Collection
     {
         return DB::table('families')
-            ->join('dates', function (JoinClause $join): void {
+            ->join('dates', static function (JoinClause $join): void {
                 $join
                     ->on('f_file', '=', 'd_file')
                     ->on('f_id', '=', 'd_gid');
@@ -220,7 +220,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
     private function individualsWithTasks(Tree $tree, int $max_julian_day): Collection
     {
         return DB::table('individuals')
-            ->join('dates', function (JoinClause $join): void {
+            ->join('dates', static function (JoinClause $join): void {
                 $join
                     ->on('i_file', '=', 'd_file')
                     ->on('i_id', '=', 'd_gid');

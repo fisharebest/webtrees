@@ -108,10 +108,10 @@ class UpgradeService
         $zip_filesystem = new Filesystem(new CachedAdapter($zip_adapter, new Memory()));
         $paths          = new Collection($zip_filesystem->listContents('', true));
 
-        return $paths->filter(function (array $path): bool {
+        return $paths->filter(static function (array $path): bool {
             return $path['type'] === 'file';
         })
-            ->map(function (array $path): string {
+            ->map(static function (array $path): string {
                 return $path['path'];
             });
     }

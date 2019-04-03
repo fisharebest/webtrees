@@ -79,7 +79,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         // Use an array cache for database calls, etc.
         app()->instance('cache.array', new Repository(new ArrayStore()));
 
-        app()->bind(Tree::class, function () {
+        app()->bind(Tree::class, static function () {
             return null;
         });
 
