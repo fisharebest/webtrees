@@ -86,8 +86,7 @@ class SetupController extends AbstractBaseController
         MigrationService $migration_service,
         ServerCheckService $server_check_service,
         UserService $user_service
-    )
-    {
+    ) {
         $this->user_service         = $user_service;
         $this->migration_service    = $migration_service;
         $this->server_check_service = $server_check_service;
