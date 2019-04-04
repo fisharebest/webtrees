@@ -66,7 +66,7 @@
 
 /* Force personbox to consistent size before padding 2 and border 1 are added */
 .wt-chart .wt-chart-box, .w-100 td .wt-chart-box {
-	width: 254px;
+	width: 254px!important;
 	height: 79px;
 	line-height: 1.05;
 	box-sizing: content-box;
