@@ -28,6 +28,8 @@ use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Support\Collection;
+use function array_merge;
+use function filemtime;
 
 /**
  * Internationalization (i18n) and localization (l10n).
@@ -35,8 +37,8 @@ use Illuminate\Support\Collection;
 class I18N
 {
     // MO files use special characters for plurals and context.
-    public const PLURAL  = '\x00';
-    public const CONTEXT = '\x04';
+    public const PLURAL  = "\x00";
+    public const CONTEXT = "\x04";
 
     /** @var LocaleInterface The current locale (e.g. LocaleEnGb) */
     private static $locale;
@@ -330,27 +332,14 @@ class I18N
             $filemtime = 0;
         }
 
-        // Load the translation file(s)
-        $translation_files = [
-            WT_ROOT . 'resources/lang/' . self::$locale->languageTag() . '/messages.mo',
-        ];
+        // Load the translation file
+        $translation_file = WT_ROOT . 'resources/lang/' . self::$locale->languageTag() . '/messages.mo';
 
-        // Rebuild files after one hour
-        $rebuild_cache = time() > $filemtime + 3600;
-        // Rebuild files if any translation file has been updated
-        foreach ($translation_files as $translation_file) {
-            if (filemtime($translation_file) > $filemtime) {
-                $rebuild_cache = true;
-                break;
-            }
-        }
+        // Rebuild files if the translation file has been updated
+        if (filemtime($translation_file) > $filemtime) {
+            $translation  = new Translation($translation_file);
+            $translations = $translation->asArray();
 
-        if ($rebuild_cache) {
-            $translations = [];
-            foreach ($translation_files as $translation_file) {
-                $translation  = new Translation($translation_file);
-                $translations = array_merge($translations, $translation->asArray());
-            }
             try {
                 File::mkdir($cache_dir);
                 file_put_contents($cache_file, '<?php return ' . var_export($translations, true) . ';');
@@ -361,15 +350,13 @@ class I18N
             $translations = include $cache_file;
         }
 
-        // Add translations from custom modules (but not during setup)
+        // Add translations from custom modules (but not during setup, as we have no database/modules)
         if (!$setup) {
-            $custom_modules = app(ModuleService::class)
-                ->findByInterface(ModuleCustomInterface::class);
-
-            foreach ($custom_modules as $custom_module) {
-                $custom_translations = $custom_module->customTranslations(self::$locale->languageTag());
-                $translations        = array_merge($translations, $custom_translations);
-            }
+            $translations = app(ModuleService::class)
+                ->findByInterface(ModuleCustomInterface::class)
+                ->reduce(function (array $carry, ModuleCustomInterface $item): array {
+                    return array_merge($carry, $item->customTranslations(self::$locale->languageTag()));
+                }, $translations);
         }
 
         // Create a translator
