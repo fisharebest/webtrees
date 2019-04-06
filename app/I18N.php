@@ -354,7 +354,7 @@ class I18N
         if (!$setup) {
             $translations = app(ModuleService::class)
                 ->findByInterface(ModuleCustomInterface::class)
-                ->reduce(function (array $carry, ModuleCustomInterface $item): array {
+                ->reduce(static function (array $carry, ModuleCustomInterface $item): array {
                     return array_merge($carry, $item->customTranslations(self::$locale->languageTag()));
                 }, $translations);
         }
