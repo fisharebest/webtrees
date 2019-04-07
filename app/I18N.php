@@ -29,7 +29,23 @@ use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Support\Collection;
 use function array_merge;
+use function class_exists;
 use function filemtime;
+use function file_exists;
+use function html_entity_decode;
+use function in_array;
+use function intdiv;
+use function mb_strtolower;
+use function mb_strtoupper;
+use function mb_substr;
+use function ord;
+use function sprintf;
+use function str_replace;
+use function strcmp;
+use function strip_tags;
+use function strlen;
+use function strpos;
+use function strtr;
 
 /**
  * Internationalization (i18n) and localization (l10n).
@@ -335,8 +351,10 @@ class I18N
         // Load the translation file
         $translation_file = WT_ROOT . 'resources/lang/' . self::$locale->languageTag() . '/messages.mo';
 
-        // Rebuild files if the translation file has been updated
-        if (filemtime($translation_file) > $filemtime) {
+        if (!file_exists($translation_file)) {
+            // Test and dev environments may not have the compiled translations
+            $translations = [];
+        } elseif (filemtime($translation_file) > $filemtime) {
             $translation  = new Translation($translation_file);
             $translations = $translation->asArray();
 
