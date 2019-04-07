@@ -1490,23 +1490,23 @@
     },
     {
         "name": "league/glide",
-        "version": "1.4.0",
-        "version_normalized": "1.4.0.0",
+        "version": "1.5.0",
+        "version_normalized": "1.5.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/glide.git",
-            "reference": "72430fbdb446c754910f0bab97e1ef14baab1e80"
+            "reference": "a5477e9e822ed57b39861a17092b92553634932d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/glide/zipball/72430fbdb446c754910f0bab97e1ef14baab1e80",
-            "reference": "72430fbdb446c754910f0bab97e1ef14baab1e80",
+            "url": "https://api.github.com/repos/thephpleague/glide/zipball/a5477e9e822ed57b39861a17092b92553634932d",
+            "reference": "a5477e9e822ed57b39861a17092b92553634932d",
             "shasum": ""
         },
         "require": {
             "intervention/image": "^2.4",
             "league/flysystem": "^1.0",
-            "php": "^5.4 | ^7.0",
+            "php": "^5.5 | ^7.0",
             "psr/http-message": "^1.0"
         },
         "require-dev": {
@@ -1514,7 +1514,7 @@
             "phpunit/php-token-stream": "^1.4",
             "phpunit/phpunit": "~4.4"
         },
-        "time": "2018-12-22T17:56:55+00:00",
+        "time": "2019-04-03T23:46:42+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1553,17 +1553,17 @@
     },
     {
         "name": "nesbot/carbon",
-        "version": "2.16.2",
-        "version_normalized": "2.16.2.0",
+        "version": "2.16.3",
+        "version_normalized": "2.16.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/briannesbitt/Carbon.git",
-            "reference": "720a9c36927396efeeb48a972e9d129d44b6dc28"
+            "reference": "373d9f0d58651af366435148c39beb702c2b7ef4"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/720a9c36927396efeeb48a972e9d129d44b6dc28",
-            "reference": "720a9c36927396efeeb48a972e9d129d44b6dc28",
+            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/373d9f0d58651af366435148c39beb702c2b7ef4",
+            "reference": "373d9f0d58651af366435148c39beb702c2b7ef4",
             "shasum": ""
         },
         "require": {
@@ -1579,7 +1579,7 @@
             "phpunit/phpunit": "^7.5 || ^8.0",
             "squizlabs/php_codesniffer": "^3.4"
         },
-        "time": "2019-03-29T12:23:12+00:00",
+        "time": "2019-04-06T17:09:23+00:00",
         "type": "library",
         "extra": {
             "laravel": {
