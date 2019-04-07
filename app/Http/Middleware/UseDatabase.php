@@ -41,7 +41,8 @@ class UseDatabase implements MiddlewareInterface
     /**
      * @param SetupController $setup_controller
      */
-    public function __construct(SetupController $setup_controller) {
+    public function __construct(SetupController $setup_controller)
+    {
         $this->setup_controller = $setup_controller;
     }
 

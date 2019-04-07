@@ -55,8 +55,7 @@ class ModuleMiddleware implements MiddlewareInterface
         $pipeline = $handler;
 
         foreach ($middlewares as $middleware) {
-            $pipeline = new class($pipeline, $middleware) implements RequestHandlerInterface
-            {
+            $pipeline = new class($pipeline, $middleware) implements RequestHandlerInterface {
                 /** @var RequestHandlerInterface */
                 private $handler;
 
@@ -81,6 +80,5 @@ class ModuleMiddleware implements MiddlewareInterface
 
     private function createHandlerFromClosure(): RequestHandlerInterface
     {
-
     }
 }
