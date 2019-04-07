@@ -50,7 +50,7 @@ $controller
                     </td>
                     <td class="optionbox">
                         <input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-                        <?php echo FunctionsPrint::printFindIndividualLink('pid'); ?>
+                        <?php echo FunctionsPrint::printFindIndividualLink('rootid'); ?>
                     </td>
                     <td class="descriptionbox">
                         <?php echo I18N::translate('Show details'); ?>
