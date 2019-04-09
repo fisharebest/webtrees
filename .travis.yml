@@ -1,5 +1,11 @@
 language: php
 
+## Currently required for 7.4snapshot and nightly
+addons:
+  apt:
+    packages:
+      - libonig-dev
+
 php:
   - 7.1
   - 7.2
