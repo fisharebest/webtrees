@@ -10531,12 +10531,12 @@ msgstr "Contrasenya"
 #: resources/views/admin/users-edit.php:50
 #: resources/views/edit-account-page.php:91
 #: resources/views/register-page.php:61
-msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "Les contrasenyes han de tenir almenys 6 caràcters i distingeixen entre majúscules i minúscules, de manera que «secret» és diferent a «SECRET»."
+msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
+msgstr "Les contrasenyes han de tenir almenys 8 caràcters i distingeixen entre majúscules i minúscules, de manera que «secret» és diferent a «SECRET»."
 
 #: resources/views/edit-account-page.php:13
-msgid "Passwords must contain at least 6 characters."
-msgstr "La contrasenya ha de tenir com a mínim 6 caràcters."
+msgid "Passwords must contain at least 8 characters."
+msgstr "La contrasenya ha de tenir com a mínim 8 caràcters."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:538

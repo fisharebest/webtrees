@@ -10527,11 +10527,11 @@ msgstr ""
 #: resources/views/admin/users-edit.php:50
 #: resources/views/edit-account-page.php:91
 #: resources/views/register-page.php:61
-msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
+msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
 msgstr ""
 
 #: resources/views/edit-account-page.php:13
-msgid "Passwords must contain at least 6 characters."
+msgid "Passwords must contain at least 8 characters."
 msgstr ""
 
 #. I18N: Location of an LDS church temple

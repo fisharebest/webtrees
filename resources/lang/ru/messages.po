@@ -10565,12 +10565,12 @@ msgstr "Пароль"
 #: resources/views/admin/users-edit.php:50
 #: resources/views/edit-account-page.php:91
 #: resources/views/register-page.php:61
-msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "Пароль должен быть не менее 6 символов с учетом заглавных и строчных букв. Пример, «secret» и «SECRET» - это разные пароли по написанию."
+msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
+msgstr "Пароль должен быть не менее 8 символов с учетом заглавных и строчных букв. Пример, «secret» и «SECRET» - это разные пароли по написанию."
 
 #: resources/views/edit-account-page.php:13
-msgid "Passwords must contain at least 6 characters."
-msgstr "Пароль должен быть минимум 6 символов."
+msgid "Passwords must contain at least 8 characters."
+msgstr "Пароль должен быть минимум 8 символов."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:538

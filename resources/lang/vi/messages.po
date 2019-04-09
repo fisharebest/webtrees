@@ -10529,12 +10529,12 @@ msgstr "Mật khẩu"
 #: resources/views/admin/users-edit.php:50
 #: resources/views/edit-account-page.php:91
 #: resources/views/register-page.php:61
-msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "Mật khẩu phải dài ít nhất 6 ký tự và phân biệt chữ hoa chữ thường, cho nên “bí mật” khác với “BÍ MẬT”."
+msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
+msgstr "Mật khẩu phải dài ít nhất 8 ký tự và phân biệt chữ hoa chữ thường, cho nên “bí mật” khác với “BÍ MẬT”."
 
 #: resources/views/edit-account-page.php:13
-msgid "Passwords must contain at least 6 characters."
-msgstr "Mật khẩu phải có tối thiểu 6 kí tự."
+msgid "Passwords must contain at least 8 characters."
+msgstr "Mật khẩu phải có tối thiểu 8 kí tự."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:538

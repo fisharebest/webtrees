@@ -10503,12 +10503,12 @@ msgstr "Kata Sandi"
 #: resources/views/admin/users-edit.php:50
 #: resources/views/edit-account-page.php:91
 #: resources/views/register-page.php:61
-msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "Kata sandi harus memiliki setidaknya 6 karakter dan sangat beda huruf besar dengan huruf kecil, sehingga \"rahasia\" itu berbeda dengan \"RAHASIA\"."
+msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
+msgstr "Kata sandi harus memiliki setidaknya 8 karakter dan sangat beda huruf besar dengan huruf kecil, sehingga \"rahasia\" itu berbeda dengan \"RAHASIA\"."
 
 #: resources/views/edit-account-page.php:13
-msgid "Passwords must contain at least 6 characters."
-msgstr "Sandi harus mengandung setidaknya 6 karakter."
+msgid "Passwords must contain at least 8 characters."
+msgstr "Sandi harus mengandung setidaknya 8 karakter."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:538

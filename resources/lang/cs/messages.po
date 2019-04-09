@@ -10563,12 +10563,12 @@ msgstr "Heslo"
 #: resources/views/admin/users-edit.php:50
 #: resources/views/edit-account-page.php:91
 #: resources/views/register-page.php:61
-msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "Hesla musí mít nejméně 6 znaků a rozlišují se velká a malá písmena, takže „HESLO6“ se liší od „heslo6“."
+msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
+msgstr "Hesla musí mít nejméně 8 znaků a rozlišují se velká a malá písmena, takže „HESLO6“ se liší od „heslo6“."
 
 #: resources/views/edit-account-page.php:13
-msgid "Passwords must contain at least 6 characters."
-msgstr "Heslo musí obsahovat alespoň 6 znaků."
+msgid "Passwords must contain at least 8 characters."
+msgstr "Heslo musí obsahovat alespoň 8 znaků."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:538

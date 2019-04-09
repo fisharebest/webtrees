@@ -10527,12 +10527,12 @@ msgstr "Passwort"
 #: resources/views/admin/users-edit.php:50
 #: resources/views/edit-account-page.php:91
 #: resources/views/register-page.php:61
-msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "Passwörter müssen mindestens 6 Zeichen lang sein. Groß-/Kleinschreibung werden berücksichtigt, so dass „geheim“ von „GEHEIM“ abweicht."
+msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
+msgstr "Passwörter müssen mindestens 8 Zeichen lang sein. Groß-/Kleinschreibung werden berücksichtigt, so dass „geheim“ von „GEHEIM“ abweicht."
 
 #: resources/views/edit-account-page.php:13
-msgid "Passwords must contain at least 6 characters."
-msgstr "Das Passwort muss mindestens 6 Zeichen lang sein."
+msgid "Passwords must contain at least 8 characters."
+msgstr "Das Passwort muss mindestens 8 Zeichen lang sein."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:538

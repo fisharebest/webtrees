@@ -10560,12 +10560,12 @@ msgstr "Slaptažodis"
 #: resources/views/admin/users-edit.php:50
 #: resources/views/edit-account-page.php:91
 #: resources/views/register-page.php:61
-msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "Slaptažodis turi būti bent 6 simbolių ilgio ir susidaryti iš didžiųjų bei mažųjų raidžių, kaip šis „paslaptis“ skiriasi nuo „PASLAPTIS“."
+msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
+msgstr "Slaptažodis turi būti bent 8 simbolių ilgio ir susidaryti iš didžiųjų bei mažųjų raidžių, kaip šis „paslaptis“ skiriasi nuo „PASLAPTIS“."
 
 #: resources/views/edit-account-page.php:13
-msgid "Passwords must contain at least 6 characters."
-msgstr "Slaptažodis turi turėti bent 6 simbolius."
+msgid "Passwords must contain at least 8 characters."
+msgstr "Slaptažodis turi turėti bent 8 simbolius."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:538

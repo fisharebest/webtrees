@@ -10532,12 +10532,12 @@ msgstr "Parool"
 #: resources/views/admin/users-edit.php:50
 #: resources/views/edit-account-page.php:91
 #: resources/views/register-page.php:61
-msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "Paroolid peavad olema vähemalt 6 tähemärki pikad ja on suurtähetundlikud, ehk \"saladus\" on erinev \"SALADUS\"-st."
+msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
+msgstr "Paroolid peavad olema vähemalt 8 tähemärki pikad ja on suurtähetundlikud, ehk \"saladus\" on erinev \"SALADUS\"-st."
 
 #: resources/views/edit-account-page.php:13
-msgid "Passwords must contain at least 6 characters."
-msgstr "Parool peab sisaldama vähemalt 6 tähemärki."
+msgid "Passwords must contain at least 8 characters."
+msgstr "Parool peab sisaldama vähemalt 8 tähemärki."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:538

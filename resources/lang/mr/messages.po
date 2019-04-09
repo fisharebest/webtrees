@@ -10527,12 +10527,12 @@ msgstr "संकेत शब्द"
 #: resources/views/admin/users-edit.php:50
 #: resources/views/edit-account-page.php:91
 #: resources/views/register-page.php:61
-msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "संकेतशब्द कमीत कमी 6 अक्षरे लांब आणि वर्णशैली संवेदनशील असणे आवश्यक आहे जेणेकरून “secret” आणि “SECRET” वेगवेगळे असतील."
+msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
+msgstr "संकेतशब्द कमीत कमी 8 अक्षरे लांब आणि वर्णशैली संवेदनशील असणे आवश्यक आहे जेणेकरून “secret” आणि “SECRET” वेगवेगळे असतील."
 
 #: resources/views/edit-account-page.php:13
-msgid "Passwords must contain at least 6 characters."
-msgstr "संकेतशब्द किमान 6 वर्ण असणे आवश्यक आहे."
+msgid "Passwords must contain at least 8 characters."
+msgstr "संकेतशब्द किमान 8 वर्ण असणे आवश्यक आहे."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:538

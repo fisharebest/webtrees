@@ -10527,12 +10527,12 @@ msgstr "Şifre"
 #: resources/views/admin/users-edit.php:50
 #: resources/views/edit-account-page.php:91
 #: resources/views/register-page.php:61
-msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "Şifreniz en az 6 karakter uzunluğunda olmalıdır, şifre BÜYÜK ve küçük karakterlere duyarlıdır. örnek \"s3CR#t\" ile \"S3CR#t\" faklıdır."
+msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
+msgstr "Şifreniz en az 8 karakter uzunluğunda olmalıdır, şifre BÜYÜK ve küçük karakterlere duyarlıdır. örnek \"s3CR#t\" ile \"S3CR#t\" faklıdır."
 
 #: resources/views/edit-account-page.php:13
-msgid "Passwords must contain at least 6 characters."
-msgstr "Şifreler en az 6 karakter içermelidir."
+msgid "Passwords must contain at least 8 characters."
+msgstr "Şifreler en az 8 karakter içermelidir."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:538

@@ -10509,12 +10509,12 @@ msgstr "პაროლი"
 #: resources/views/admin/users-edit.php:50
 #: resources/views/edit-account-page.php:91
 #: resources/views/register-page.php:61
-msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "Пароль должен быть не менее 6 символов с учетом заглавными и строчных букв. Таким образом \"secret\" не рассматривается как \"SECRET\"."
+msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
+msgstr "Пароль должен быть не менее 8 символов с учетом заглавными и строчных букв. Таким образом \"secret\" не рассматривается как \"SECRET\"."
 
 #: resources/views/edit-account-page.php:13
-msgid "Passwords must contain at least 6 characters."
-msgstr "პაროლი უნდა იყოს მინიმუმ 6 სიმბოლო"
+msgid "Passwords must contain at least 8 characters."
+msgstr "პაროლი უნდა იყოს მინიმუმ 8 სიმბოლო"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:538

@@ -10529,12 +10529,12 @@ msgstr "Mot de passe"
 #: resources/views/admin/users-edit.php:50
 #: resources/views/edit-account-page.php:91
 #: resources/views/register-page.php:61
-msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "Les mots de passe doivent comporter au minimum 6 caractères et sont sensibles à la casse, alors le mot «&nbsp;secret&nbsp;» est différent de «&nbsp;SECRET&nbsp;»."
+msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
+msgstr "Les mots de passe doivent comporter au minimum 8 caractères et sont sensibles à la casse, alors le mot «&nbsp;secret&nbsp;» est différent de «&nbsp;SECRET&nbsp;»."
 
 #: resources/views/edit-account-page.php:13
-msgid "Passwords must contain at least 6 characters."
-msgstr "Le mot de passe doit contenir au moins 6 caractères."
+msgid "Passwords must contain at least 8 characters."
+msgstr "Le mot de passe doit contenir au moins 8 caractères."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:538
