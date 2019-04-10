@@ -40,8 +40,11 @@ class RequestRouter implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        // Bind the request into the container
+        app()->instance(ServerRequestInterface::class, $request);
+
         // Load the route and routing table.
-        $route  = $request->getQueryParams()['route'];
+        $route  = $request->getQueryParams()['route'] ?? '';
         $routes = require 'routes/web.php';
 
         // Find the routing for the selected route.
@@ -50,8 +53,6 @@ class RequestRouter implements MiddlewareInterface
         // Routes defined using controller@action
         if (Str::contains($routing, '@')) {
             [$class, $method] = explode('@', $routing);
-
-            app()->instance(ServerRequestInterface::class, $request);
 
             $controller = app(self::CONTROLLER_NAMESPACE . $class);
 
