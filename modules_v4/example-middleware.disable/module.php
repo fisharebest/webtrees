@@ -15,8 +15,7 @@ use function in_array;
 /**
  * An example module to demonstrate middleware.
  */
-return new class extends AbstractModule implements ModuleCustomInterface, MiddlewareInterface
-{
+return new class extends AbstractModule implements ModuleCustomInterface, MiddlewareInterface {
     use ModuleCustomTrait;
 
     /**
