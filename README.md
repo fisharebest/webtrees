@@ -131,9 +131,6 @@ To install **webtrees**, you need:
   English data on Hebrew pages), you will need to use a browser that provides
   support for the HTML5 **dir="auto"** attribute. At present, neither Edge
   nor Internet Explorer support this.
-* HTML Frames. Note that **webtrees** uses cookies to track login sessions.
-  Internet Explorer users should review
-  ``Settings`` / ``Internet Options`` / ``Privacy`` / ``Advanced`` for more details.
 
 
 ## Installation
