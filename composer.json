@@ -33,6 +33,7 @@
         "ext-pdo": "*",
         "ext-session": "*",
         "ext-simplexml": "*",
+        "ext-xml": "*",
         "ext-zip": "*",
         "doctrine/dbal": "~2.9",
         "fig/http-message-util": "^1.1",

@@ -232,7 +232,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function styleStartHandler(array $attrs)
+    private function styleStartHandler(array $attrs): void
     {
         if (empty($attrs['name'])) {
             throw new DomainException('REPORT ERROR Style: The "name" of the style is missing or not set in the XML file.');
@@ -273,7 +273,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function docStartHandler(array $attrs)
+    private function docStartHandler(array $attrs): void
     {
         $this->parser = $this->xml_parser;
 
@@ -365,7 +365,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function docEndHandler()
+    private function docEndHandler(): void
     {
         $this->wt_report->run();
     }
@@ -375,7 +375,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function headerStartHandler()
+    private function headerStartHandler(): void
     {
         // Clear the Header before any new elements are added
         $this->wt_report->clearHeader();
@@ -387,7 +387,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function pageHeaderStartHandler()
+    private function pageHeaderStartHandler(): void
     {
         $this->print_data_stack[] = $this->print_data;
         $this->print_data         = false;
@@ -400,7 +400,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function pageHeaderEndHandler()
+    private function pageHeaderEndHandler(): void
     {
         $this->print_data      = array_pop($this->print_data_stack);
         $this->current_element = $this->wt_report;
@@ -413,7 +413,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function bodyStartHandler()
+    private function bodyStartHandler(): void
     {
         $this->wt_report->setProcessing('B');
     }
@@ -423,7 +423,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function footerStartHandler()
+    private function footerStartHandler(): void
     {
         $this->wt_report->setProcessing('F');
     }
@@ -435,7 +435,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function cellStartHandler(array $attrs)
+    private function cellStartHandler(array $attrs): void
     {
         // string The text alignment of the text in this box.
         $align = '';
@@ -592,7 +592,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function cellEndHandler()
+    private function cellEndHandler(): void
     {
         $this->print_data = array_pop($this->print_data_stack);
         $this->wt_report->addElement($this->current_element);
@@ -603,7 +603,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function nowStartHandler()
+    private function nowStartHandler(): void
     {
         $this->current_element->addText(Carbon::now()->local()->isoFormat('LLLL'));
     }
@@ -613,7 +613,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function pageNumStartHandler()
+    private function pageNumStartHandler(): void
     {
         $this->current_element->addText('#PAGENUM#');
     }
@@ -623,7 +623,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function totalPagesStartHandler()
+    private function totalPagesStartHandler(): void
     {
         $this->current_element->addText('{{:ptp:}}');
     }
@@ -635,7 +635,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function gedcomStartHandler(array $attrs)
+    private function gedcomStartHandler(array $attrs): void
     {
         if ($this->process_gedcoms > 0) {
             $this->process_gedcoms++;
@@ -699,7 +699,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function gedcomEndHandler()
+    private function gedcomEndHandler(): void
     {
         if ($this->process_gedcoms > 0) {
             $this->process_gedcoms--;
@@ -715,7 +715,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function textBoxStartHandler(array $attrs)
+    private function textBoxStartHandler(array $attrs): void
     {
         // string Background color code
         $bgcolor = '';
@@ -841,7 +841,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function textBoxEndHandler()
+    private function textBoxEndHandler(): void
     {
         $this->print_data      = array_pop($this->print_data_stack);
         $this->current_element = $this->wt_report;
@@ -856,7 +856,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function textStartHandler(array $attrs)
+    private function textStartHandler(array $attrs): void
     {
         $this->print_data_stack[] = $this->print_data;
         $this->print_data         = true;
@@ -881,7 +881,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function textEndHandler()
+    private function textEndHandler(): void
     {
         $this->print_data = array_pop($this->print_data_stack);
         $this->wt_report->addElement($this->current_element);
@@ -897,7 +897,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function getPersonNameStartHandler(array $attrs)
+    private function getPersonNameStartHandler(array $attrs): void
     {
         $id    = '';
         $match = [];
@@ -978,7 +978,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function gedcomValueStartHandler(array $attrs)
+    private function gedcomValueStartHandler(array $attrs): void
     {
         $id    = '';
         $match = [];
@@ -1030,8 +1030,8 @@ class ReportParserGenerate extends ReportParserBase
                     $value = str_replace('(', '<br>(', $value);
                     $value = str_replace('<span dir="ltr"><br>', '<br><span dir="ltr">', $value);
                     $value = str_replace('<span dir="rtl"><br>', '<br><span dir="rtl">', $value);
-                    if (substr($value, 0, 6) === '<br>') {
-                        $value = substr($value, 6);
+                    if (substr($value, 0, 4) === '<br>') {
+                        $value = substr($value, 4);
                     }
                 }
                 $tmp = explode(':', $tag);
@@ -1058,7 +1058,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function repeatTagStartHandler(array $attrs)
+    private function repeatTagStartHandler(array $attrs): void
     {
         $this->process_repeats++;
         if ($this->process_repeats > 1) {
@@ -1128,7 +1128,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function repeatTagEndHandler()
+    private function repeatTagEndHandler(): void
     {
         $this->process_repeats--;
         if ($this->process_repeats > 0) {
@@ -1222,7 +1222,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function varStartHandler(array $attrs)
+    private function varStartHandler(array $attrs): void
     {
         if (empty($attrs['var'])) {
             throw new DomainException('REPORT ERROR var: The attribute "var=" is missing or not set in the XML file on line: ' . xml_get_current_line_number($this->parser));
@@ -1272,7 +1272,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function factsStartHandler(array $attrs)
+    private function factsStartHandler(array $attrs): void
     {
         $this->process_repeats++;
         if ($this->process_repeats > 1) {
@@ -1320,7 +1320,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function factsEndHandler()
+    private function factsEndHandler(): void
     {
         $this->process_repeats--;
         if ($this->process_repeats > 0) {
@@ -1419,7 +1419,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function setVarStartHandler(array $attrs)
+    private function setVarStartHandler(array $attrs): void
     {
         if (empty($attrs['name'])) {
             throw new DomainException('REPORT ERROR var: The attribute "name" is missing or not set in the XML file');
@@ -1486,7 +1486,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function ifStartHandler(array $attrs)
+    private function ifStartHandler(array $attrs): void
     {
         if ($this->process_ifs > 0) {
             $this->process_ifs++;
@@ -1556,7 +1556,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function ifEndHandler()
+    private function ifEndHandler(): void
     {
         if ($this->process_ifs > 0) {
             $this->process_ifs--;
@@ -1572,7 +1572,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function footnoteStartHandler(array $attrs)
+    private function footnoteStartHandler(array $attrs): void
     {
         $id = '';
         if (preg_match('/[0-9] (.+) @(.+)@/', $this->gedrec, $match)) {
@@ -1600,7 +1600,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function footnoteEndHandler()
+    private function footnoteEndHandler(): void
     {
         if ($this->process_footnote) {
             $this->print_data = array_pop($this->print_data_stack);
@@ -1619,7 +1619,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function footnoteTextsStartHandler()
+    private function footnoteTextsStartHandler(): void
     {
         $temp = 'footnotetexts';
         $this->wt_report->addElement($temp);
@@ -1630,7 +1630,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function brStartHandler()
+    private function brStartHandler(): void
     {
         if ($this->print_data && $this->process_gedcoms === 0) {
             $this->current_element->addText('<br>');
@@ -1642,7 +1642,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function spStartHandler()
+    private function spStartHandler(): void
     {
         if ($this->print_data && $this->process_gedcoms === 0) {
             $this->current_element->addText(' ');
@@ -1656,7 +1656,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function highlightedImageStartHandler(array $attrs)
+    private function highlightedImageStartHandler(array $attrs): void
     {
         $id = '';
         if (preg_match('/0 @(.+)@/', $this->gedrec, $match)) {
@@ -1709,7 +1709,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function imageStartHandler(array $attrs)
+    private function imageStartHandler(array $attrs): void
     {
         // Position the top corner of this box on the page. the default is the current position
         $top = (float) ($attrs['top'] ?? ReportBaseElement::CURRENT_POSITION);
@@ -1780,7 +1780,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function lineStartHandler(array $attrs)
+    private function lineStartHandler(array $attrs): void
     {
         // Start horizontal position, current position (default)
         $x1 = ReportBaseElement::CURRENT_POSITION;
@@ -1838,7 +1838,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function listStartHandler(array $attrs)
+    private function listStartHandler(array $attrs): void
     {
         $this->process_repeats++;
         if ($this->process_repeats > 1) {
@@ -2000,11 +2000,11 @@ class ReportParserGenerate extends ReportParserBase
                             // This filter has been fully processed
                             unset($attrs[$attr]);
                         } elseif (preg_match('/^NAME CONTAINS (.*)$/', $value, $match)) {
-                            if ($match[1] !== '' || $sortby === 'NAME') {
+                            if ($sortby === 'NAME' || $match[1] !== '') {
                                 $query->join('name AS ' . $attr, static function (JoinClause $join) use ($attr): void {
                                     $join
                                         ->on($attr . '.n_file', '=', 'f_file')
-                                        ->where(function (Builder $query) use ($attr): void {
+                                        ->where(static function (Builder $query): void {
                                             $query
                                                 ->whereColumn('n_id', '=', 'f_husb')
                                                 ->orWhereColumn('n_id', '=', 'f_wife');
@@ -2241,7 +2241,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function listEndHandler()
+    private function listEndHandler(): void
     {
         $this->process_repeats--;
         if ($this->process_repeats > 0) {
@@ -2336,7 +2336,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function listTotalStartHandler()
+    private function listTotalStartHandler(): void
     {
         if ($this->list_private == 0) {
             $this->current_element->addText((string) $this->list_total);
@@ -2352,7 +2352,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function relativesStartHandler(array $attrs)
+    private function relativesStartHandler(array $attrs): void
     {
         $this->process_repeats++;
         if ($this->process_repeats > 1) {
@@ -2472,7 +2472,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function relativesEndHandler()
+    private function relativesEndHandler(): void
     {
         $this->process_repeats--;
         if ($this->process_repeats > 0) {
@@ -2562,7 +2562,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function generationStartHandler()
+    private function generationStartHandler(): void
     {
         $this->current_element->addText((string) $this->generation);
     }
@@ -2573,7 +2573,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function newPageStartHandler()
+    private function newPageStartHandler(): void
     {
         $temp = 'addpage';
         $this->wt_report->addElement($temp);
@@ -2587,7 +2587,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function htmlStartHandler(string $tag, array $attrs)
+    private function htmlStartHandler(string $tag, array $attrs): void
     {
         if ($tag === 'tempdoc') {
             return;
@@ -2607,7 +2607,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function htmlEndHandler($tag)
+    private function htmlEndHandler($tag): void
     {
         if ($tag === 'tempdoc') {
             return;
@@ -2628,7 +2628,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function inputStartHandler()
+    private function inputStartHandler(): void
     {
         // Dummy function, to prevent the default HtmlStartHandler() being called
     }
@@ -2638,7 +2638,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function inputEndHandler()
+    private function inputEndHandler(): void
     {
         // Dummy function, to prevent the default HtmlEndHandler() being called
     }
@@ -2648,7 +2648,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function reportStartHandler()
+    private function reportStartHandler(): void
     {
         // Dummy function, to prevent the default HtmlStartHandler() being called
     }
@@ -2658,7 +2658,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function reportEndHandler()
+    private function reportEndHandler(): void
     {
         // Dummy function, to prevent the default HtmlEndHandler() being called
     }
@@ -2668,7 +2668,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function titleEndHandler()
+    private function titleEndHandler(): void
     {
         $this->report_root->addTitle($this->text);
     }
@@ -2678,7 +2678,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function descriptionEndHandler()
+    private function descriptionEndHandler(): void
     {
         $this->report_root->addDescription($this->text);
     }
@@ -2693,7 +2693,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function addDescendancy(&$list, $pid, $parents = false, $generations = -1)
+    private function addDescendancy(&$list, $pid, $parents = false, $generations = -1): void
     {
         $person = Individual::getInstance($pid, $this->tree);
         if ($person === null) {
@@ -2758,7 +2758,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function addAncestors(array &$list, string $pid, bool $children = false, int $generations = -1)
+    private function addAncestors(array &$list, string $pid, bool $children = false, int $generations = -1): void
     {
         $genlist                = [$pid];
         $list[$pid]->generation = 1;
