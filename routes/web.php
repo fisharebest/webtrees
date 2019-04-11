@@ -17,6 +17,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Http\RequestHandlers\DeleteUser;
+use Fisharebest\Webtrees\Http\RequestHandlers\MasqueradeAsUser;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
+use Fisharebest\Webtrees\Http\RequestHandlers\SelectTheme;
+
 /** @var Tree|null $tree */
 $tree = app(Tree::class);
 
@@ -129,6 +135,8 @@ if (Auth::isAdmin()) {
         'GET:unused-media-thumbnail'          => 'MediaFileController@unusedMediaThumbnail',
         'GET:broadcast'                       => 'MessageController@broadcastPage',
         'POST:broadcast'                      => 'MessageController@broadcastAction',
+        'POST:delete-user'                    => DeleteUser::class,
+        'POST:masquerade'                     => MasqueradeAsUser::class,
     ];
 }
 
@@ -255,8 +263,6 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
         'GET:autocomplete-folder' => 'AutocompleteController@folder',
         'GET:autocomplete-page'   => 'AutocompleteController@page',
         'GET:autocomplete-place'  => 'AutocompleteController@place',
-        //'GET:branches'            => 'BranchesController@page',
-        //'GET:branches-list'       => 'BranchesController@list',
         'GET:calendar'            => 'CalendarController@page',
         'GET:calendar-events'     => 'CalendarController@calendar',
         'GET:help-text'           => 'HelpTextController@helpText',
@@ -279,13 +285,6 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
         'GET:report-list'         => 'ReportEngineController@reportList',
         'GET:report-setup'        => 'ReportEngineController@reportSetup',
         'GET:report-run'          => 'ReportEngineController@reportRun',
-        //'GET:family-list'         => 'ListController@familyList',
-        //'GET:individual-list'     => 'ListController@individualList',
-        //'GET:media-list'          => 'ListController@mediaList',
-        //'GET:note-list'           => 'ListController@noteList',
-        //'GET:place-hierarchy'     => 'PlaceHierarchyController@show',
-        //'GET:repository-list'     => 'ListController@repositoryList',
-        //'GET:source-list'         => 'ListController@sourceList',
         'POST:accept-changes'     => 'PendingChangesController@acceptChanges',
         'POST:reject-changes'     => 'PendingChangesController@rejectChanges',
         'POST:accept-all-changes' => 'PendingChangesController@acceptAllChanges',
@@ -315,13 +314,11 @@ $routes += [
     'GET:verify'           => 'Auth\\VerifyEmailController@verify',
     'GET:forgot-password'  => 'Auth\\ForgotPasswordController@forgotPasswordPage',
     'POST:forgot-password' => 'Auth\\ForgotPasswordController@forgotPasswordAction',
-    'POST:delete-user'     => 'UserController@delete',
-    'POST:language'        => 'UserController@language',
-    'POST:masquerade'      => 'UserController@masquerade',
-    'POST:theme'           => 'UserController@theme',
+    'POST:language'        => SelectLanguage::class,
+    'POST:theme'           => SelectTheme::class,
     'GET:privacy-policy'   => 'StaticPageController@privacyPolicy',
-    'GET:module'           => 'ModuleController@action',
-    'POST:module'          => 'ModuleController@action',
+    'GET:module'           => ModuleAction::class,
+    'POST:module'          => ModuleAction::class,
 ];
 
 return $routes;

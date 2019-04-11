@@ -15,39 +15,45 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Middleware;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Localization\Locale as WebtreesLocale;
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Webtrees\I18N;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Session;
-use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use function response;
 
 /**
- * Middleware to set a global theme.
+ * Select a new language for the current session.
  */
-class UseLocale implements MiddlewareInterface
+class SelectLanguage implements RequestHandlerInterface, StatusCodeInterface
 {
+    /** @var UserInterface */
+    private $user;
+
     /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
+     * @param UserInterface $user
+     */
+    public function __construct(UserInterface $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = app(Tree::class);
+        $language = $request->getParsedBody()['language'];
 
-        // Select a locale
-        define('WT_LOCALE', I18N::init('', $tree));
-        Session::put('language', WT_LOCALE);
+        Session::put('language', $language);
 
-        app()->instance(LocaleInterface::class, WebtreesLocale::create(WT_LOCALE));
+        $this->user->setPreference('language', $language);
 
-        return $handler->handle($request);
+        return response('', self::STATUS_NO_CONTENT);
     }
 }

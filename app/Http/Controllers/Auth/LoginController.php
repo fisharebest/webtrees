@@ -194,8 +194,8 @@ class LoginController extends AbstractBaseController
         Log::addAuthenticationLog('Login: ' . Auth::user()->userName() . '/' . Auth::user()->realName());
         Auth::user()->setPreference('sessiontime', (string) Carbon::now()->unix());
 
-        Session::put('locale', Auth::user()->getPreference('language'));
-        Session::put('theme_id', Auth::user()->getPreference('theme'));
+        Session::put('language', Auth::user()->getPreference('language'));
+        Session::put('theme', Auth::user()->getPreference('theme'));
         I18N::init(Auth::user()->getPreference('language'));
     }
 

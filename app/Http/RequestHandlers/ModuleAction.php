@@ -15,15 +15,17 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use function app;
 use function method_exists;
 use function strpos;
 use function strtolower;
@@ -31,48 +33,54 @@ use function strtolower;
 /**
  * Controller for module actions.
  */
-class ModuleController extends AbstractBaseController
+class ModuleAction implements RequestHandlerInterface
 {
-    /**
-     * @var ModuleService
-     */
+    /** @var ModuleService */
     private $module_service;
+
+    /** @var UserInterface */
+    private $user;
 
     /**
      * ModuleController constructor.
      *
      * @param ModuleService $module_service
+     * @param UserInterface $user
      */
-    public function __construct(ModuleService $module_service)
+    public function __construct(ModuleService $module_service, UserInterface $user)
     {
         $this->module_service = $module_service;
+        $this->user           = $user;
     }
 
     /**
      * Perform an HTTP action for one of the modules.
      *
      * @param ServerRequestInterface $request
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function action(ServerRequestInterface $request, UserInterface $user): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $module_name = $request->get('module', '');
+        $module_name = $request->getQueryParams()['module'] ?? $request->getParsedBody()['module'] ?? '';
+        $action      = $request->getQueryParams()['action'] ?? $request->getParsedBody()['action'] ?? '';
 
         // Check that the module is enabled.
         // The module itself will need to check any tree-level access,
         // which may be different for each component (tab, menu, etc.) of the module.
         $module = $this->module_service->findByName($module_name);
 
+        if ($module === null) {
+            throw new NotFoundHttpException('Module ' . $module_name . ' does not exist');
+        }
+
         // We'll call a function such as Module::getFooBarAction()
         $verb   = strtolower($request->getMethod());
-        $action = $request->get('action', '');
         $method = $verb . $action . 'Action';
 
         // Actions with "Admin" in the name are for administrators only.
-        if (strpos($action, 'Admin') !== false && !Auth::isAdmin($user)) {
-            throw new AccessDeniedHttpException();
+        if (strpos($action, 'Admin') !== false && !Auth::isAdmin($this->user)) {
+            throw new AccessDeniedHttpException('Admin only action');
         }
 
         if (!method_exists($module, $method)) {

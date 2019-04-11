@@ -316,9 +316,9 @@ class I18N
         if ($code !== '') {
             // Create the specified locale
             self::$locale = Locale::create($code);
-        } elseif (Session::has('locale') && file_exists(WT_ROOT . 'resources/lang/' . Session::get('locale') . '/messages.mo')) {
+        } elseif (Session::has('language') && file_exists(WT_ROOT . 'resources/lang/' . Session::get('language') . '/messages.mo')) {
             // Select a previously used locale
-            self::$locale = Locale::create(Session::get('locale'));
+            self::$locale = Locale::create(Session::get('language'));
         } else {
             if ($tree instanceof Tree) {
                 $default_locale = Locale::create($tree->getPreference('LANGUAGE', 'en-US'));

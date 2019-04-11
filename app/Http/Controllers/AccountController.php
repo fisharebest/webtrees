@@ -145,10 +145,10 @@ class AccountController extends AbstractBaseController
         $tree->setUserPreference($user, 'rootid', $rootid);
 
         // Switch to the new theme now
-        Session::put('theme_id', $theme);
+        Session::put('theme', $theme);
 
         // Switch to the new language now
-        Session::put('locale', $language);
+        Session::put('language', $language);
 
         return redirect(route('my-account', ['ged' => $tree->name()]));
     }

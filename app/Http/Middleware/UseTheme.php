@@ -61,7 +61,7 @@ class UseTheme implements MiddlewareInterface
                 app()->instance(ModuleThemeInterface::class, $theme);
 
                 // Remember this setting
-                Session::put('theme_id', $theme->name());
+                Session::put('theme', $theme->name());
 
                 break;
             }
@@ -80,7 +80,7 @@ class UseTheme implements MiddlewareInterface
         $themes = $this->module_service->findByInterface(ModuleThemeInterface::class);
 
         // Last theme used
-        yield $themes->get(Session::get('theme_id', ''));
+        yield $themes->get(Session::get('theme', ''));
 
         // Default for tree
         $tree = app(Tree::class);
