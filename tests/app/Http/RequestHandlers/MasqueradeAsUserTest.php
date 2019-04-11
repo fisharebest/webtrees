@@ -78,4 +78,3 @@ class MasqueradeAsUserTest extends TestCase
         $handler->handle($request);
     }
 }
-

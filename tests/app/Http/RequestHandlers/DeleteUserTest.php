@@ -73,4 +73,3 @@ class DeleteUserTest extends TestCase
         $handler->handle($request);
     }
 }
-
