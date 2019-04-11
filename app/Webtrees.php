@@ -52,11 +52,8 @@ class Webtrees
     // Version number
     public const VERSION = '2.0.0' . (self::STABILITY === '' ? '' : '-') . self::STABILITY;
 
-    // Location of our modules and themes. These are used as URLs and folder paths.
+    // Location of our modules.
     public const MODULES_PATH = 'modules_v4/';
-
-    // Location of themes (core and custom).
-    public const THEMES_PATH = 'themes/';
 
     /**
      * Initialise the application.
@@ -68,7 +65,7 @@ class Webtrees
         mb_internal_encoding('UTF-8');
 
         // Show all errors and warnings in development, fewer in production.
-        error_reporting(Webtrees::ERROR_REPORTING);
+        error_reporting(self::ERROR_REPORTING);
 
         // PHP requires a time zone to be set. We'll set a better one later on.
         date_default_timezone_set('UTC');

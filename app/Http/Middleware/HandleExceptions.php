@@ -28,7 +28,7 @@ use Throwable;
 /**
  * Middleware to handle and render errors.
  */
-class ExceptionHandler implements MiddlewareInterface
+class HandleExceptions implements MiddlewareInterface
 {
     /** @var ErrorController */
     private $error_controller;

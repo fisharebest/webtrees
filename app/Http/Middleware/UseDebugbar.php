@@ -27,7 +27,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 /**
  * Middleware to add debugging info to the PHP debugbar.
  */
-class DebugBarData implements MiddlewareInterface, StatusCodeInterface
+class UseDebugbar implements MiddlewareInterface, StatusCodeInterface
 {
     /**
      * @param ServerRequestInterface  $request

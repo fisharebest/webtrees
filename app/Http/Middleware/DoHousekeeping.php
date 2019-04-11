@@ -30,7 +30,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 /**
  * Run the housekeeping service at irregular intervals.
  */
-class Housekeeping implements MiddlewareInterface
+class DoHousekeeping implements MiddlewareInterface
 {
     // Delete cache files after 1 hour.
     private const MAX_CACHE_AGE = 60 * 60;

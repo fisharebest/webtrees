@@ -36,7 +36,7 @@ use const CONNECTION_NORMAL;
 /**
  * Middleware to emit the response - send it back to the webserver.
  */
-class Emitter implements MiddlewareInterface
+class EmitResponse implements MiddlewareInterface
 {
     // Stream the output in chunks.
     private const CHUNK_SIZE = 65536;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -19,10 +20,10 @@ use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Http\Middleware\BootModules;
 use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
-use Fisharebest\Webtrees\Http\Middleware\DebugBarData;
-use Fisharebest\Webtrees\Http\Middleware\Emitter;
-use Fisharebest\Webtrees\Http\Middleware\ExceptionHandler;
-use Fisharebest\Webtrees\Http\Middleware\Housekeeping;
+use Fisharebest\Webtrees\Http\Middleware\UseDebugbar;
+use Fisharebest\Webtrees\Http\Middleware\EmitResponse;
+use Fisharebest\Webtrees\Http\Middleware\HandleExceptions;
+use Fisharebest\Webtrees\Http\Middleware\DoHousekeeping;
 use Fisharebest\Webtrees\Http\Middleware\ModuleMiddleware;
 use Fisharebest\Webtrees\Http\Middleware\RequestRouter;
 use Fisharebest\Webtrees\Http\Middleware\UpdateDatabaseSchema;
@@ -44,6 +45,7 @@ use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
+use DebugBar\StandardDebugBar;
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -75,7 +77,7 @@ $request = $server_request_creator->fromGlobals();
 // e.g. add these lines to your fastcgi_params file:
 // fastcgi_buffers 16 16m;
 // fastcgi_buffer_size 32m;
-DebugBar::init(class_exists('\\DebugBar\\StandardDebugBar'));
+DebugBar::init(class_exists(StandardDebugBar::class));
 
 // Until all the code is rewritten to use PSR-7 requests, we still need our hybrid request.
 $request = SymfonyRequest::createFromGlobals();
@@ -85,11 +87,11 @@ $request = SymfonyRequest::createFromGlobals();
 define('WT_BASE_URL', preg_replace('/[^\/]+\.php(\?.*)?$/', '', $request->getUri()));
 
 $middleware = [
-    Emitter::class,
-    ExceptionHandler::class,
+    EmitResponse::class,
+    HandleExceptions::class,
     CheckForMaintenanceMode::class,
     UseDatabase::class,
-    DebugBarData::class,
+    UseDebugbar::class,
     UpdateDatabaseSchema::class,
     UseCache::class,
     UseFilesystem::class,
@@ -97,7 +99,7 @@ $middleware = [
     UseTree::class,
     UseLocale::class,
     UseTheme::class,
-    Housekeeping::class,
+    DoHousekeeping::class,
     CheckCsrf::class,
     UseTransaction::class,
     BootModules::class,
