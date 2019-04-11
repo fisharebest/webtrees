@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
@@ -24,6 +25,7 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function response;
 
 /**
  * User actions
@@ -54,7 +56,7 @@ class UserController extends AbstractBaseController
      */
     public function delete(ServerRequestInterface $request): ResponseInterface
     {
-        $user_id = (int) $request->get('user_id');
+        $user_id = (int) $request->getParsedBody()['user_id'];
 
         $user = $this->user_service->find($user_id);
 
@@ -63,7 +65,7 @@ class UserController extends AbstractBaseController
             $this->user_service->delete($user);
         }
 
-        return response();
+        return response('', StatusCodeInterface::STATUS_NO_CONTENT);
     }
 
     /**
@@ -75,13 +77,13 @@ class UserController extends AbstractBaseController
      */
     public function language(ServerRequestInterface $request): ResponseInterface
     {
-        $language = $request->get('language', '');
+        $language = $request->getParsedBody()['language'];
 
         I18N::init($language);
         Session::put('locale', $language);
         Auth::user()->setPreference('language', $language);
 
-        return response();
+        return response('', StatusCodeInterface::STATUS_NO_CONTENT);
     }
 
     /**
@@ -103,7 +105,7 @@ class UserController extends AbstractBaseController
             Session::put('masquerade', '1');
         }
 
-        return response();
+        return response('', StatusCodeInterface::STATUS_NO_CONTENT);
     }
 
     /**
@@ -115,10 +117,10 @@ class UserController extends AbstractBaseController
      */
     public function theme(ServerRequestInterface $request): ResponseInterface
     {
-        $theme = $request->get('theme', '');
+        $theme = $request->getParsedBody()['theme'];
         Session::put('theme_id', $theme);
         Auth::user()->setPreference('theme', $theme);
 
-        return response();
+        return response('', StatusCodeInterface::STATUS_NO_CONTENT);
     }
 }

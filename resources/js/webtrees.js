@@ -105,9 +105,8 @@ function expand_layer(sid)
 function accept_changes(xref, ged)
 {
     $.post(
-        'index.php',
+        'index.php?route=accept-changes',
         {
-            route: 'accept-changes',
             xref: xref,
             ged: ged,
         },
@@ -122,9 +121,8 @@ function accept_changes(xref, ged)
 function reject_changes(xref, ged)
 {
     $.post(
-        'index.php',
+        'index.php?route=reject-changes',
         {
-            route: 'reject-changes',
             xref: xref,
             ged: ged,
         },
@@ -139,9 +137,8 @@ function reject_changes(xref, ged)
 function delete_record(xref, gedcom)
 {
     $.post(
-        'index.php',
+        'index.php?route=delete-record',
         {
-            route: 'delete-record',
             xref: xref,
             ged: gedcom,
         },
@@ -158,9 +155,8 @@ function delete_fact(message, ged, xref, fact_id)
 {
     if (confirm(message)) {
         $.post(
-            'index.php',
+            'index.php?route=delete-fact',
             {
-                route: 'delete-fact',
                 xref: xref,
                 fact_id: fact_id,
                 ged: ged
@@ -177,9 +173,8 @@ function delete_fact(message, ged, xref, fact_id)
 function copy_fact(ged, xref, fact_id)
 {
     $.post(
-        'index.php',
+        'index.php?route-copy-fact',
         {
-            route: 'copy-fact',
             xref: xref,
             fact_id: fact_id,
             ged: ged,
@@ -195,9 +190,8 @@ function copy_fact(ged, xref, fact_id)
 function paste_fact(ged, xref, element)
 {
     $.post(
-        'index.php',
+        'index.php?route=paste-face',
         {
-            route: 'paste-fact',
             xref: xref,
             fact_id: $(element).val(), // element is the <select> containing the option
             ged: ged,
@@ -214,9 +208,8 @@ function delete_user(message, user_id)
 {
     if (confirm(message)) {
         $.post(
-            'index.php',
+            'index.php?route=delete-user',
             {
-                route: 'delete-user',
                 user_id: user_id,
             },
             function () {
@@ -231,9 +224,8 @@ function delete_user(message, user_id)
 function masquerade(user_id)
 {
     $.post(
-        'index.php',
+        'index.php?route=masquerade',
         {
-            route: 'masquerade',
             user_id: user_id,
         },
         function () {
@@ -1131,8 +1123,7 @@ $(function () {
 
   // Activate the langauge selection menu.
     $('.menu-language').on('click', '[data-language]', function () {
-        $.post('index.php', {
-            route: 'language',
+        $.post('index.php?route=language', {
             language: $(this).data('language')
         }, function () {
             document.location.reload();
@@ -1143,8 +1134,7 @@ $(function () {
 
   // Activate the theme selection menu.
     $('.menu-theme').on('click', '[data-theme]', function () {
-        $.post('index.php', {
-            route: 'theme',
+        $.post('index.php?route=theme', {
             theme: $(this).data('theme')
         }, function () {
             document.location.reload();
