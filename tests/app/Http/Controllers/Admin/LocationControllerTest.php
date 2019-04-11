@@ -99,7 +99,7 @@ class LocationControllerTest extends TestCase
         $response   = $controller->exportLocations($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
-        $this->assertSame($response->getHeaderLine('Content-type'), 'application/vnd.geo+json');
+        $this->assertSame($response->getHeaderLine('Content-Type'), 'application/vnd.geo+json');
     }
 
     /**

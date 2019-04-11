@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d50fb8f4609134dc47a4157433727b2e",
+    "content-hash": "ef656a8c14e7d59de9aba4eaf4b19e6c",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -1496,63 +1496,6 @@
                 "processing"
             ],
             "time": "2019-04-03T23:46:42+00:00"
-        },
-        {
-            "name": "narrowspark/http-emitter",
-            "version": "0.8.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/narrowspark/http-emitter.git",
-                "reference": "19044447b8cb6a821a72ace3e343b10782f4600e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/narrowspark/http-emitter/zipball/19044447b8cb6a821a72ace3e343b10782f4600e",
-                "reference": "19044447b8cb6a821a72ace3e343b10782f4600e",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1",
-                "psr/http-message": "^1.0"
-            },
-            "provide": {
-                "psr/http-message-implementation": "^1.0"
-            },
-            "require-dev": {
-                "narrowspark/coding-standard": "^1.4.0",
-                "phpunit/phpunit": "^7.0",
-                "zendframework/zend-diactoros": "^1.8.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Narrowspark\\HttpEmitter\\": "src/"
-                },
-                "exclude-from-classmap": [
-                    "tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Daniel Bannert",
-                    "email": "d.bannert@anolilab.de",
-                    "homepage": "http://www.anolilab.de",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Emitting psr-7 responses.",
-            "keywords": [
-                "emitter",
-                "http",
-                "narrowspark",
-                "psr-7",
-                "sapi"
-            ],
-            "time": "2019-03-08T14:27:56+00:00"
         },
         {
             "name": "nesbot/carbon",

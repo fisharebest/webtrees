@@ -17,10 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use function addcslashes;
-use function date_create;
 use Fig\Http\Message\StatusCodeInterface;
-use function file_get_contents;
 use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
@@ -38,10 +35,14 @@ use League\Glide\Signatures\SignatureException;
 use League\Glide\Signatures\SignatureFactory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use function response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
+use function addcslashes;
+use function date_create;
+use function file_get_contents;
+use function response;
+use function strlen;
 
 /**
  * Controller for the media page and displaying images.
@@ -80,8 +81,8 @@ class MediaFileController extends AbstractBaseController
                     $data = file_get_contents($media_file->getServerFilename());
 
                     return response($data, StatusCodeInterface::STATUS_OK, [
-                        'Content-type' => $media_file->mimeType(),
-                        'Content-disposition' => 'attachment; filename="' . addcslashes($media_file->filename, '"') . '"',
+                        'Content-Type' => $media_file->mimeType(),
+                        'Content-Disposition' => 'attachment; filename="' . addcslashes($media_file->filename, '"') . '"',
                     ]);
                 }
             }
@@ -148,9 +149,9 @@ class MediaFileController extends AbstractBaseController
             $cache  = $server->getCache();
 
             return response($cache->read($path), StatusCodeInterface::STATUS_OK, [
-                'Content-type' => $cache->getMimetype($path),
-                'Content-length' => $cache->getSize($path),
-                'Cache-control'  => 'max-age=31536000, public',
+                'Content-Type' => $cache->getMimetype($path),
+                'Content-Length' => $cache->getSize($path),
+                'Cache-Control'  => 'max-age=31536000, public',
                 'Expires'        => date_create('+1 years')->format('D, d M Y H:i:s') . ' GMT',
             ]);
         } catch (FileNotFoundException $ex) {
@@ -261,7 +262,8 @@ class MediaFileController extends AbstractBaseController
 
         // We can't use the actual status code, as browser's won't show images with 4xx/5xx
         return response($svg, StatusCodeInterface::STATUS_OK, [
-            'Content-Type' => 'image/svg+xml',
+            'Content-Type'   => 'image/svg+xml',
+            'Content-Length' => strlen($svg),
         ]);
     }
 
@@ -279,7 +281,8 @@ class MediaFileController extends AbstractBaseController
         $svg = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="#88F" /><text x="5" y="60" font-family="Verdana" font-size="30">' . $extension . '</text></svg>';
 
         return response($svg, StatusCodeInterface::STATUS_OK, [
-            'Content-Type' => 'image/svg+xml',
+            'Content-Type'   => 'image/svg+xml',
+            'Content-Length' => strlen($svg),
         ]);
     }
 }

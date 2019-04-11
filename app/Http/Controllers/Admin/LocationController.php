@@ -505,8 +505,8 @@ class LocationController extends AbstractAdminController
 
         return response()
             ->withBody($stream)
-            ->withHeader('Content-type', 'text/csv; charset=UTF-8')
-            ->withHeader('Content-disposition', 'attachment; filename="' . $filename . '"');
+            ->withHeader('Content-Type', 'text/csv; charset=utf-8')
+            ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
     }
 
     /**
@@ -548,8 +548,8 @@ class LocationController extends AbstractAdminController
         }
 
         return response($geojson)
-            ->withHeader('Content-type', 'application/vnd.geo+json')
-            ->withHeader('Content-disposition', 'attachment; filename="' . addcslashes($filename, '"') . '"');
+            ->withHeader('Content-Type', 'application/vnd.geo+json')
+            ->withHeader('Content-Disposition', 'attachment; filename="' . addcslashes($filename, '"') . '"');
     }
 
     /**

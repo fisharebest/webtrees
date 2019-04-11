@@ -314,8 +314,8 @@ class AdminSiteController extends AbstractBaseController
             ->implode('');
 
         return response($content, StatusCodeInterface::STATUS_OK, [
-            'Content-type' => 'text/csv',
-            'Content-disposition' => 'attachment; filename="webtrees-logs.csv"',
+            'Content-Type' => 'text/csv; charset=utf-8',
+            'Content-Disposition' => 'attachment; filename="webtrees-logs.csv"',
         ]);
     }
 

@@ -294,8 +294,8 @@ class ReportEngineController extends AbstractBaseController
                 $pdf = ob_get_clean();
 
                 return response($pdf, StatusCodeInterface::STATUS_OK, [
-                    'Content-type' => 'application/pdf',
-                    'Content-disposition' => 'attachment; filename="' . addcslashes($report, '"') . '"',
+                    'Content-Type' => 'application/pdf',
+                    'Content-Disposition' => 'attachment; filename="' . addcslashes($report, '"') . '"',
                 ]);
         }
     }

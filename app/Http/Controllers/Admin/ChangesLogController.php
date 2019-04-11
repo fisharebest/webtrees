@@ -212,8 +212,9 @@ class ChangesLogController extends AbstractAdminController
             ->implode("\n");
 
         return response($content, StatusCodeInterface::STATUS_OK, [
-            'Content-type'        => 'text/csv; charset=UTF-8',
-            'Content-disposition' => 'attachment; filename="changes.csv"',
+            'Content-Type'        => 'text/csv; charset=utf-8',
+            'Content-Length'      => strlen($content),
+            'Content-Disposition' => 'attachment; filename="changes.csv"',
         ]);
     }
 

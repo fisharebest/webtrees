@@ -49,7 +49,7 @@ class UserAdminTest extends TestCase
         $controller = new UsersController(new ModuleService(), new UserService());
         $response   = $controller->data(new DatatablesService(), $request, $admin);
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
-        $this->assertSame('application/json', $response->getHeaderLine('Content-type'));
+        $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
         $html = (string) $response->getBody();
 
         $this->assertContains('AdminName', $html);
@@ -78,7 +78,7 @@ class UserAdminTest extends TestCase
         $response   = $controller->data(new DatatablesService(), $request, $admin);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
-        $this->assertSame('application/json', $response->getHeaderLine('Content-type'));
+        $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
         $html = (string) $response->getBody();
 
         $this->assertContains('AdminName', $html);
@@ -107,7 +107,7 @@ class UserAdminTest extends TestCase
         $response   = $controller->data(new DatatablesService(), $request, $admin);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
-        $this->assertSame('application/json', $response->getHeaderLine('Content-type'));
+        $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
         $html = (string) $response->getBody();
 
         $this->assertContains('AdminName', $html);
@@ -132,7 +132,7 @@ class UserAdminTest extends TestCase
         $response   = $controller->data(new DatatablesService(), $request, $admin);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
-        $this->assertSame('application/json', $response->getHeaderLine('Content-type'));
+        $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
         $html = (string) $response->getBody();
 
         $pos1 = strpos($html, 'AdminName');
@@ -146,7 +146,7 @@ class UserAdminTest extends TestCase
         $response   = $controller->data(new DatatablesService(), $request, $admin);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
-        $this->assertSame('application/json', $response->getHeaderLine('Content-type'));
+        $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
         $html = (string) $response->getBody();
 
         $pos1 = strpos($html, 'AdminName');

@@ -279,8 +279,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         return response()
             ->withBody($stream)
-            ->withHeader('Content-type', 'application/zip')
-            ->withHeader('Content-disposition', 'attachment; filename="clippings.zip');
+            ->withHeader('Content-Type', 'application/zip')
+            ->withHeader('Content-Tisposition', 'attachment; filename="clippings.zip');
     }
 
     /**

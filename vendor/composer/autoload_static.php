@@ -61,7 +61,6 @@ class ComposerStaticInit74b5eb00e70cef0c1fba9491b929fdd1
         array (
             'Nyholm\\Psr7\\' => 12,
             'Nyholm\\Psr7Server\\' => 18,
-            'Narrowspark\\HttpEmitter\\' => 24,
         ),
         'M' => 
         array (
@@ -218,10 +217,6 @@ class ComposerStaticInit74b5eb00e70cef0c1fba9491b929fdd1
         'Nyholm\\Psr7Server\\' => 
         array (
             0 => __DIR__ . '/..' . '/nyholm/psr7-server/src',
-        ),
-        'Narrowspark\\HttpEmitter\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/narrowspark/http-emitter/src',
         ),
         'Middleland\\' => 
         array (

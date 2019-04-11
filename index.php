@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Http\Middleware\BootModules;
 use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\DebugBarData;
+use Fisharebest\Webtrees\Http\Middleware\Emitter;
 use Fisharebest\Webtrees\Http\Middleware\ExceptionHandler;
 use Fisharebest\Webtrees\Http\Middleware\Housekeeping;
 use Fisharebest\Webtrees\Http\Middleware\ModuleMiddleware;
@@ -36,7 +37,6 @@ use Fisharebest\Webtrees\Http\Middleware\UseTree;
 use Fisharebest\Webtrees\Http\Request as SymfonyRequest;
 use Fisharebest\Webtrees\Webtrees;
 use Middleland\Dispatcher;
-use Narrowspark\HttpEmitter\SapiEmitter;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7Server\ServerRequestCreator;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -85,6 +85,7 @@ $request = SymfonyRequest::createFromGlobals();
 define('WT_BASE_URL', preg_replace('/[^\/]+\.php(\?.*)?$/', '', $request->getUri()));
 
 $middleware = [
+    Emitter::class,
     ExceptionHandler::class,
     CheckForMaintenanceMode::class,
     UseDatabase::class,
@@ -104,10 +105,6 @@ $middleware = [
     RequestRouter::class,
 ];
 
-// Dispatch the middleware.
 $dispatcher = new Dispatcher($middleware, app());
-$response   = $dispatcher->dispatch($request);
 
-// Emit the response.
-$emitter = new SapiEmitter();
-$emitter->emit($response);
+$dispatcher->dispatch($request);

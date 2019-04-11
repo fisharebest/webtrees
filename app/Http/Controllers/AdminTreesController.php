@@ -506,8 +506,8 @@ class AdminTreesController extends AbstractBaseController
 
             return response()
                 ->withBody($stream)
-                ->withHeader('Content-type', 'application/zip')
-                ->withHeader('Content-disposition', 'attachment; filename="' . $filename . '"');
+                ->withHeader('Content-Type', 'application/zip')
+                ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
         }
 
         $resource = fopen('php://temp', 'wb+');
@@ -526,8 +526,8 @@ class AdminTreesController extends AbstractBaseController
 
         return $response_factory->createResponse()
             ->withBody($stream)
-            ->withHeader('Content-type', 'text/x-gedcom; charset=' . $charset)
-            ->withHeader('Content-disposition', 'attachment; filename="' . addcslashes($download_filename, '"') . '"');
+            ->withHeader('Content-Type', 'text/x-gedcom; charset=' . $charset)
+            ->withHeader('Content-Disposition', 'attachment; filename="' . addcslashes($download_filename, '"') . '"');
     }
 
     /**

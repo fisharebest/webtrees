@@ -111,14 +111,14 @@ function response($content = '', $code = StatusCodeInterface::STATUS_OK, $header
     if ($headers === []) {
         if (is_string($content)) {
             $headers = [
-                'Content-type'   => 'text/html; charset=utf-8',
-                'Content-length' => strlen($content),
+                'Content-Type'   => 'text/html; charset=utf-8',
+                'Content-Length' => strlen($content),
             ];
         } else {
             $content = json_encode($content, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
             $headers = [
-                'Content-type'   => 'application/json',
-                'Content-length' => strlen($content),
+                'Content-Type'   => 'application/json',
+                'Content-Length' => strlen($content),
             ];
         }
     }
