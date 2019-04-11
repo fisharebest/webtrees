@@ -54,4 +54,3 @@ class SelectLanguageTest extends TestCase
         self::assertSame(self::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 }
-

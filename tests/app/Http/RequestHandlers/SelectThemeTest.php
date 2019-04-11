@@ -56,4 +56,3 @@ class SelectThemeTest extends TestCase
         self::assertSame('FOO', $user->getPreference('theme'));
     }
 }
-

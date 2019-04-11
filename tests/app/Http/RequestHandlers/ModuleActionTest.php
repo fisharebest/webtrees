@@ -90,4 +90,3 @@ class ModuleActionTest extends TestCase
         $handler->handle($request);
     }
 }
-
