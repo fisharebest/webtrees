@@ -164,7 +164,7 @@ class ChangesLogController extends AbstractAdminController
 
             return [
                 $row->change_id,
-                $row->change_time,
+                Carbon::make($row->change_time)->local()->format('Y-m-d H:i:s'),
                 I18N::translate($row->status),
                 $record ? '<a href="' . e($record->url()) . '">' . $record->xref() . '</a>' : $row->xref,
                 '<div class="gedcom-data" dir="ltr">' .

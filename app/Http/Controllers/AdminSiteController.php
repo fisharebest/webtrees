@@ -215,7 +215,7 @@ class AdminSiteController extends AbstractBaseController
         return $datatables_service->handle($request, $query, [], [], static function (stdClass $row): array {
             return [
                 $row->log_id,
-                $row->log_time,
+                Carbon::make($row->log_time)->local()->format('Y-m-d H:i:s'),
                 $row->log_type,
                 '<span dir="auto">' . e($row->log_message) . '</span>',
                 '<span dir="auto">' . e($row->ip_address) . '</span>',
