@@ -1,9 +1,23 @@
-<?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
 
-<div class="text-center slide-show-container">
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\MediaFile;
+
+/**
+ * @var int       $block_id
+ * @var bool      $show_controls
+ * @var bool      $start_automatically
+ * @var Media     $media
+ * @var MediaFile $media_file
+ */
+
+?>
+
+<div class="wt-slide-show-container">
     <?php if ($show_controls) : ?>
-        <div class="slide-show-controls">
+        <div class="wt-slide-show-controls text-center">
             <a href="#" title="<?= I18N::translate('Play') ?>" <?= $start_automatically ? 'hidden' : '' ?>>
                 <?= view('icons/media-play') ?>
                 <span class="sr-only"><?= I18N::translate('Play') ?></span>
@@ -19,7 +33,7 @@
         </div>
     <?php endif ?>
 
-    <figure class="text-center slide-show-figure">
+    <figure class="wt-slide-show-figure text-center">
         <?= $media_file->displayImage(200, 200, '', ['class' => 'slide-show-image img-fluid']) ?>
         <figcaption class="slide-show-figcaption">
             <a href="<?= e($media->url()) ?>">
@@ -28,33 +42,36 @@
         </figcaption>
     </figure>
 
-    <p class="slide-show-notes">
+    <p class="wt-slide-show-notes text-center">
         <?= FunctionsPrint::printFactNotes($tree, $media->gedcom(), 1) ?>
     </p>
 
-    <ul class="slide-show-links">
+    <ul class="fa-ul wt-slide-show-links">
         <?php foreach ($media->linkedIndividuals('OBJE') as $individual) : ?>
-            <?= I18N::translate('Individual') ?> —
-            <a href="<?= e($individual->url()) ?>" class="slide-show-link">
-                <?= $individual->fullName() ?>
-            </a>
-            <br>
+            <li>
+                <span class="fa-li" title="<?= I18N::translate('Individual') ?>"><?= view('icons/individual') ?></span>
+                <a href="<?= e($individual->url()) ?>" class="wt-slide-show-link">
+                    <?= $individual->fullName() ?>
+                </a>
+            </li>
         <?php endforeach ?>
 
         <?php foreach ($media->linkedFamilies('OBJE') as $family) : ?>
-            <?= I18N::translate('View this family') ?> —
-            <a href="<?= e($family->url()) ?>" class="slide-show-link">
-                <?= $family->fullName() ?>
-            </a>
-            <br>
+            <li>
+                <span class="fa-li" title="<?= I18N::translate('Family') ?>"><?= view('icons/family') ?></span>
+                <a href="<?= e($family->url()) ?>" class="wt-slide-show-link">
+                    <?= $family->fullName() ?>
+                </a>
+            </li>
         <?php endforeach ?>
 
         <?php foreach ($media->linkedSources('OBJE') as $source) : ?>
-            <?= I18N::translate('View this source') ?> —
-            <a href="<?= e($source->url()) ?>" class="slide-show-link">
-                <?= $source->fullName() ?>
-            </a>
-            <br>
+            <li>
+                <span class="fa-li" title="<?= I18N::translate('Source') ?>"><?= view('icons/source') ?></span>
+                <a href="<?= e($source->url()) ?>" class="wt-slide-show-link">
+                    <?= $source->fullName() ?>
+                </a>
+            </li>
         <?php endforeach ?>
     </ul>
 </div>
@@ -69,27 +86,27 @@
     function slideShowReload() {
         var block = $("#block-<?= $block_id ?>").parent();
         clearTimeout(timeout);
-        block.load(block.data('ajaxUrl') + '&start=' + (play ? '1' : '0'));
+        block.load(block.data("ajaxUrl") + "&start=" + (play ? "1" : "0"));
 
         return false;
     }
 
-    $(".wt-icon-media-play").on('click', function () {
-        $(".wt-icon-media-play").parent().attr('hidden', true);
-        $(".wt-icon-media-stop").parent().attr('hidden', false);
+    $(".wt-icon-media-play").on("click", function () {
+        $(".wt-icon-media-play").parent().attr("hidden", true);
+        $(".wt-icon-media-stop").parent().attr("hidden", false);
         play = true;
         return slideShowReload();
     });
 
-    $(".wt-icon-media-stop").on('click', function () {
-        $(".wt-icon-media-stop").parent().attr('hidden', true);
-        $(".wt-icon-media-play").parent().attr('hidden', false);
+    $(".wt-icon-media-stop").on("click", function () {
+        $(".wt-icon-media-stop").parent().attr("hidden", true);
+        $(".wt-icon-media-play").parent().attr("hidden", false);
         play = false;
         clearTimeout(timeout);
         return false;
     });
 
-    $(".wt-icon-media-next").on('click', function () {
+    $(".wt-icon-media-next").on("click", function () {
         return slideShowReload();
     });
 </script>
