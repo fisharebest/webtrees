@@ -1,0 +1,130 @@
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2019 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@import "_chart-ancestors.css";
+@import "_chart-compact.css";
+@import "_chart-descendants.css";
+@import "_chart-family-book.css";
+@import "_chart-fan.css";
+@import "_chart-hourglass.css";
+@import "_chart-interactive.css";
+@import "_chart-lifespans.css";
+@import "_chart-pedigree.css";
+@import "_chart-pedigree-map.css";
+@import "_chart-relationships.css";
+@import "_chart-statistics.css";
+@import "_chart-timeline.css";
+
+/* Lines for "vertical" charts, such as the ancestors and descendants chart. */
+.wt-chart-vertical-indent {
+	width: 3rem;
+}
+
+.wt-chart-vertical-line {
+	width: 50%;
+	height: 100%;
+	right: 0;
+	border-left: var(--chart-line);
+}
+
+.wt-chart-vertical-last-child-line {
+	width: 50%;
+	right: 0;
+	height: 2.5rem;
+	top: 0;
+	border-left: var(--chart-line);
+	border-bottom: var(--chart-line);
+	border-radius: 0 0 0 var(--chart-line-radius);
+}
+
+.wt-chart-vertical-child-line {
+	width: 50%;
+	right: 0;
+	height: 2.5rem;
+	top: 0;
+	border-bottom: var(--chart-line);
+}
+
+/* Lines for horizontal trees, such as the family page */
+.wt-chart-horizontal-spacer {
+	width: 1rem;
+	height: 100%;
+}
+
+.wt-chart-horizontal-line {
+	height: 0;
+	border-top: var(--chart-line);
+}
+
+.wt-chart-horizontal-first-child {
+	height: 50%;
+	width: 100%;
+	bottom: 0;
+	border-top: var(--chart-line);
+	border-right: var(--chart-line);
+	border-radius: 0 var(--chart-line-radius) 0 0;
+}
+
+.wt-chart-horizontal-middle-child {
+	height: 100%;
+	width: 100%;
+	border-right: var(--chart-line);
+}
+
+.wt-chart-horizontal-last-child {
+	height: 50%;
+	width: 100%;
+	top: 0;
+	border-bottom: var(--chart-line);
+	border-right: var(--chart-line);
+	border-radius: 0 0 var(--chart-line-radius) 0;
+}
+
+.wt-chart-horizontal-first-parent {
+	height: 50%;
+	width: 100%;
+	bottom: 0;
+	border-top: var(--chart-line);
+	border-left: var(--chart-line);
+	border-radius: var(--chart-line-radius) 0 0 0;
+}
+
+.wt-chart-horizontal-last-parent {
+	height: 50%;
+	width: 100%;
+	top: 0;
+	border-bottom: var(--chart-line);
+	border-left: var(--chart-line);
+	border-radius: 0 0 0 var(--chart-line-radius);
+}
+
+/* Buttons to expand/collapse other parts of the chart */
+.wt-chart-expansion-control > .chart-expand {
+	display: none;
+}
+
+.wt-chart-expansion-control > .chart-collapse {
+	display: inline;
+}
+
+.wt-chart-expansion-control.collapsed > .chart-expand {
+	display: inline;
+}
+
+.wt-chart-expansion-control.collapsed > .chart-collapse {
+	display: none;
+}
+
+

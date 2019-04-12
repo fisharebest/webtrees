@@ -1,0 +1,62 @@
+<?php
+
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+
+/**
+ * @var Individual|null $individual
+ * @var Family|null     $parents
+ * @var int             $generations
+ * @var int             $sosa
+ */
+
+?>
+
+<div class="d-flex">
+    <?= view('chart-box', ['individual' => $individual]) ?>
+    <div class="wt-sosa-number align-self-center p-1 mx-2 d-none d-md-block" title="<?= I18N::translate('Sosa-Stradonitz number') ?>">
+        <?= I18N::number($sosa) ?>
+    </div>
+</div>
+
+<?php if ($generations > 1 && $parents instanceof Family): ?>
+    <div class="d-flex">
+        <button class="btn btn-link px-0 py-1 wt-chart-expansion-control" data-toggle="collapse" data-target="#fam-<?= e($parents->xref()) ?>" aria-controls="fam-<?= e($parents->xref()) ?>" aria-expanded="true">
+            <span class="chart-expand">
+                <?= view('icons/expand') ?>
+            </span>
+            <span class="chart-collapse">
+                <?= view('icons/collapse') ?>
+            </span>
+            <span class="wt-sosa-number p-1" title="<?= I18N::translate('Sosa-Stradonitz number') ?>"><?= I18N::number($sosa * 2) ?></span>
+            <?= I18N::translate('and') ?>
+            <span class="wt-sosa-number p-1" title="<?= I18N::translate('Sosa-Stradonitz number') ?>"><?= I18N::number($sosa * 2 + 1) ?></span>
+            <?php foreach ($parents->facts(['MARR', 'DIV', '_NMR'], true) as $fact): ?>
+                <?= $fact->label() ?>
+                <?php if ($fact->date()->isOK()): ?>
+                    <?= strip_tags($fact->date()->display()) ?>
+                <?php endif ?>
+                —
+            <?php endforeach ?>
+            <?= I18N::plural('%s child', '%s children', $parents->children()->count(), I18N::number($parents->children()->count())) ?>
+        </button>
+    </div>
+    <div id="fam-<?= e($parents->xref()) ?>" class="collapse show">
+        <?php foreach ($parents->spouses() as $n => $spouse): ?>
+            <div class="d-flex">
+                <div class="wt-chart-vertical-indent position-relative">
+                    <?php if ($n + 1 === $parents->spouses()->count()): ?>
+                        <div class="wt-chart-vertical-last-child-line position-absolute"></div>
+                    <?php else: ?>
+                        <div class="wt-chart-vertical-line position-absolute"></div>
+                        <div class="wt-chart-vertical-child-line position-absolute"></div>
+                    <?php endif ?>
+                </div>
+                <div>
+                    <?= view('modules/ancestors-chart/list', ['individual' => $spouse, 'parents' => $spouse->primaryChildFamily(), 'generations' => $generations - 1, 'sosa' => $sosa * 2 + ($spouse->sex() === 'F' ? 1 : 0)]) ?>
+                </div>
+            </div>
+        <?php endforeach ?>
+    </div>
+<?php endif ?>

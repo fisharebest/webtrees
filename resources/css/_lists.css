@@ -13,19 +13,10 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
- * Descendants chart
- */
-.wt-chart-descendants .wt-chart-box {
-	width: 20rem;
-}
-
-.wt-chart-descendants .wt-chart-box-lifespan {
-	display: none;
-}
-
-.wt-daboville-number {
-	border: thin dotted grey;
-}
-
-
+@import "_list-branches.css";
+@import "_list-individuals.css";
+@import "_list-media.css";
+@import "_list-notes.css";
+@import "_list-places.css";
+@import "_list-repositories.css";
+@import "_list-sources.css";
