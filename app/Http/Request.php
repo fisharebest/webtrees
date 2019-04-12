@@ -293,9 +293,9 @@ class Request extends SymfonyRequest implements ServerRequestInterface
     public function getUploadedFiles(): array
     {
         $files = [];
-        foreach ($this->files as $file) {
-            $files[] = new \Nyholm\Psr7\UploadedFile(
-                $file->getPath(),
+        foreach ($this->files as $key => $file) {
+            $files[$key] = new \Nyholm\Psr7\UploadedFile(
+                $file->getPathname(),
                 $file->getSize(),
                 $file->getError(),
                 $file->getClientOriginalName(),
