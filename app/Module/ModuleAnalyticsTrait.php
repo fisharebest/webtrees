@@ -88,13 +88,13 @@ trait ModuleAnalyticsTrait
     }
 
     /**
-     * @param     $view_name
-     * @param     $view_data
-     * @param int $status
+     * @param string  $view_name
+     * @param mixed[] $view_data
+     * @param int     $status
      *
      * @return ResponseInterface
      */
-    abstract protected function viewResponse($view_name, $view_data, $status = StatusCodeInterface::STATUS_OK): ResponseInterface;
+    abstract protected function viewResponse(string $view_name, array $view_data, $status = StatusCodeInterface::STATUS_OK): ResponseInterface;
 
     /**
      * Form fields to edit the parameters.

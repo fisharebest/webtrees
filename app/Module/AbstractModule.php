@@ -17,12 +17,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
-use Psr\Http\Message\ResponseInterface;
 use stdClass;
 
 /**
@@ -30,6 +29,8 @@ use stdClass;
  */
 abstract class AbstractModule implements ModuleInterface
 {
+    use ViewResponseTrait;
+
     /** @var string A unique internal name for this module (based on the installation folder). */
     private $name = '';
 
@@ -44,9 +45,6 @@ abstract class AbstractModule implements ModuleInterface
 
     /** @var string For custom modules - link for support, upgrades, etc. */
     public const CUSTOM_WEBSITE = '';
-
-    /** @var string How to render view responses */
-    protected $layout = 'layouts/default';
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -238,28 +236,5 @@ abstract class AbstractModule implements ModuleInterface
     public function resourcesFolder(): string
     {
         return WT_ROOT . 'resources/';
-    }
-
-    /**
-     * Create a response object from a view.
-     *
-     * @param string  $view_name
-     * @param mixed[] $view_data
-     * @param int     $status
-     *
-     * @return ResponseInterface
-     */
-    final protected function viewResponse($view_name, $view_data, $status = StatusCodeInterface::STATUS_OK): ResponseInterface
-    {
-        // Make the view's data available to the layout.
-        $layout_data = $view_data;
-
-        // Render the view
-        $layout_data['content'] = view($view_name, $view_data);
-
-        // Insert the view into the layout
-        $html = view($this->layout, $layout_data);
-
-        return response($html, $status);
     }
 }
