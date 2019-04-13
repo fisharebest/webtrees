@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Http\Middleware\BootModules;
 use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
+use Fisharebest\Webtrees\Http\Middleware\NoRouteFound;
 use Fisharebest\Webtrees\Http\Middleware\UseDebugbar;
 use Fisharebest\Webtrees\Http\Middleware\EmitResponse;
 use Fisharebest\Webtrees\Http\Middleware\HandleExceptions;
@@ -105,6 +106,7 @@ $middleware = [
     BootModules::class,
     ModuleMiddleware::class,
     RequestRouter::class,
+    NoRouteFound::class,
 ];
 
 $dispatcher = new Dispatcher($middleware, app());

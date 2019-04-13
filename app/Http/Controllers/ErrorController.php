@@ -33,34 +33,6 @@ use function str_replace;
 class ErrorController extends AbstractBaseController implements StatusCodeInterface
 {
     /**
-     * No route was match?  Send the user somewhere sensible, if we can.
-     *
-     * @param ServerRequestInterface $request
-     * @param Tree|null              $tree
-     *
-     * @return ResponseInterface
-     */
-    public function noRouteFound(ServerRequestInterface $request, ?Tree $tree): ResponseInterface
-    {
-        // The tree exists, we have access to it, and it is fully imported.
-        if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
-            return redirect(route('tree-page', ['ged' => $tree->name()]));
-        }
-
-        // Not logged in?
-        if (!Auth::check()) {
-            return redirect(route('login', ['url' => $request->getUri()]));
-        }
-
-        // No tree or tree not imported?
-        if (Auth::isAdmin()) {
-            return redirect(route('admin-trees'));
-        }
-
-        return $this->viewResponse('errors/no-tree-access', ['title' => '']);
-    }
-
-    /**
      * Convert an exception into an error message
      *
      * @param HttpException $ex
@@ -100,7 +72,7 @@ class ErrorController extends AbstractBaseController implements StatusCodeInterf
     public function unhandledExceptionResponse(ServerRequestInterface $request, Throwable $ex): ResponseInterface
     {
         // Create a stack dump for the exception
-        $trace = $ex->getTraceAsString();
+        $trace = $ex->getMessage() . PHP_EOL . $ex->getTraceAsString();
         $trace = str_replace(WT_ROOT, '…/', $trace);
 
         try {

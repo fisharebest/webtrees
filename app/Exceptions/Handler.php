@@ -62,7 +62,7 @@ class Handler
     public static function phpExceptionHandler(): Closure
     {
         return static function (Throwable $ex): void {
-            $trace = $ex->getTraceAsString();
+            $trace = $ex->getMessage() . PHP_EOL . $ex->getTraceAsString();
             $trace = str_replace(WT_ROOT, '…/', $trace);
 
             while (ob_get_level() > 0) {

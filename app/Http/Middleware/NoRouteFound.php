@@ -17,20 +17,27 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Illuminate\Support\Str;
+use Fig\Http\Message\RequestMethodInterface;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use function app;
-use function explode;
+use function in_array;
+use function redirect;
+use function route;
 
 /**
- * Take an HTTP request, and forward it to a webtrees RequestHandler.
+ * Middleware to generate a response when no route was matched.
  */
-class RequestRouter implements MiddlewareInterface
+class NoRouteFound implements MiddlewareInterface
 {
-    private const CONTROLLER_NAMESPACE = '\\Fisharebest\\Webtrees\\Http\\Controllers\\';
+    use ViewResponseTrait;
 
     /**
      * @param ServerRequestInterface  $request
@@ -40,31 +47,24 @@ class RequestRouter implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        // Bind the request into the container
-        app()->instance(ServerRequestInterface::class, $request);
+        /** @var Tree|null $tree */
+        $tree = app(Tree::class);
 
-        // Load the route and routing table.
-        $route  = $request->getQueryParams()['route'] ?? '';
-        $routes = require 'routes/web.php';
-
-        // Find the routing for the selected route.
-        $routing = $routes[$request->getMethod() . ':' . $route] ?? '';
-
-        // No route matched?
-        if ($routing === '') {
-            return $handler->handle($request);
+        // The tree exists, we have access to it, and it is fully imported.
+        if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
+            return redirect(route('tree-page', ['ged' => $tree->name()]));
         }
 
-        // Routes defined using controller@action
-        if (Str::contains($routing, '@')) {
-            [$class, $method] = explode('@', $routing);
-
-            $controller = app(self::CONTROLLER_NAMESPACE . $class);
-
-            return app()->dispatch($controller, $method);
+        // Not logged in?
+        if (!Auth::check()) {
+            return redirect(route('login', ['url' => $request->getUri()]));
         }
 
-        // Routes defined using a request handler
-        return app($routing)->handle($request);
+        // No tree or tree not imported?
+        if (Auth::isAdmin()) {
+            return redirect(route('admin-trees'));
+        }
+
+        return $this->viewResponse('errors/no-tree-access', ['title' => '']);
     }
 }
