@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Webtrees;
 
 /**
  * Test harness for the class RelatedIndividualsReportModule
@@ -78,7 +79,7 @@ class RelatedIndividualsReportModuleTest extends \Fisharebest\Webtrees\TestCase
 
         $tree = $this->importTree('demo.ged');
         app()->instance(Tree::class, $tree);
-        $xml  = WT_ROOT . 'resources/xml/reports/relative_ext_report.xml';
+        $xml  = Webtrees::ROOT_DIR . 'resources/xml/reports/relative_ext_report.xml';
         $vars = [
             'pid'       => ['id' => 'X1030'],
             'relatives' => ['id' => 'child-family'],

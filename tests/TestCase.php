@@ -88,14 +88,11 @@ class TestCase extends \PHPUnit\Framework\TestCase implements StatusCodeInterfac
         app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);
         app()->bind(LocaleInterface::class, LocaleEnUs::class);
 
-        defined('WT_ROOT') || define('WT_ROOT', dirname(__DIR__) . '/');
         defined('WT_BASE_URL') || define('WT_BASE_URL', 'http://localhost/');
-        defined('WT_DATA_DIR') || define('WT_DATA_DIR', WT_ROOT . 'data/');
+        defined('WT_DATA_DIR') || define('WT_DATA_DIR', Webtrees::ROOT_DIR . 'data/');
         defined('WT_LOCALE') || define('WT_LOCALE', I18N::init('en-US', null, true));
 
         if (static::$uses_database) {
-            defined('WT_ROOT') || define('WT_ROOT', dirname(__DIR__) . '/');
-
             static::createTestDatabase();
         }
     }

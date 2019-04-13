@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Support\Carbon;
 
 /**
@@ -79,7 +80,7 @@ class ChangeReportModuleTest extends \Fisharebest\Webtrees\TestCase
 
         $tree = $this->importTree('demo.ged');
         app()->instance(Tree::class, $tree);
-        $xml  = WT_ROOT . 'resources/xml/reports/change_report.xml';
+        $xml  = Webtrees::ROOT_DIR . 'resources/xml/reports/change_report.xml';
         $vars = [
             'changeRangeStart' => ['id' => Carbon::now()->subMonths(1)->format('d M Y')],
             'changeRangeEnd'   => ['id' => Carbon::now()->format('d M Y')],

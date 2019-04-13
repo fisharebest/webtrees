@@ -37,7 +37,7 @@ class Database
         $config['dbtype'] = $config['dbtype'] ?? 'mysql';
 
         if ($config['dbtype'] === 'sqlite') {
-            $config['dbname'] = WT_ROOT . 'data/' . $config['dbname'] . '.sqlite';
+            $config['dbname'] = Webtrees::ROOT_DIR . 'data/' . $config['dbname'] . '.sqlite';
         }
 
         $capsule = new DB();

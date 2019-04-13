@@ -316,7 +316,7 @@ class I18N
         if ($code !== '') {
             // Create the specified locale
             self::$locale = Locale::create($code);
-        } elseif (Session::has('language') && file_exists(WT_ROOT . 'resources/lang/' . Session::get('language') . '/messages.mo')) {
+        } elseif (Session::has('language') && file_exists(Webtrees::ROOT_DIR . 'resources/lang/' . Session::get('language') . '/messages.mo')) {
             // Select a previously used locale
             self::$locale = Locale::create(Session::get('language'));
         } else {
@@ -349,7 +349,7 @@ class I18N
         }
 
         // Load the translation file
-        $translation_file = WT_ROOT . 'resources/lang/' . self::$locale->languageTag() . '/messages.mo';
+        $translation_file = Webtrees::ROOT_DIR . 'resources/lang/' . self::$locale->languageTag() . '/messages.mo';
 
         if (!file_exists($translation_file)) {
             // Test and dev environments may not have the compiled translations

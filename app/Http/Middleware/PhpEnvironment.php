@@ -17,17 +17,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use function date_default_timezone_set;
+use function mb_internal_encoding;
 
 /**
- * Middleware to check whether the site is offline.
+ * Middleware to set set the PHP environment.
  */
-class CheckForMaintenanceMode implements MiddlewareInterface
+class PhpEnvironment implements MiddlewareInterface
 {
     /**
      * @param ServerRequestInterface  $request
@@ -37,14 +37,11 @@ class CheckForMaintenanceMode implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if (file_exists(Webtrees::OFFLINE_FILE)) {
-            $html = view('layouts/offline', [
-                'message' => file_get_contents(Webtrees::OFFLINE_FILE),
-                'url'     => $request->getUri(),
-            ]);
+        // All modern software uses UTF-8 encoding.
+        mb_internal_encoding('UTF-8');
 
-            return response($html, StatusCodeInterface::STATUS_SERVICE_UNAVAILABLE);
-        }
+        // We use UTC internally and convert to local time when displaying datetimes.
+        date_default_timezone_set('UTC');
 
         return $handler->handle($request);
     }

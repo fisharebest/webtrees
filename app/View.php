@@ -55,7 +55,7 @@ class View
      * @var string[] Where do the templates live, for each namespace.
      */
     private static $namespaces = [
-        '' => WT_ROOT . 'resources/views/',
+        '' => Webtrees::ROOT_DIR . 'resources/views/',
     ];
 
     /**

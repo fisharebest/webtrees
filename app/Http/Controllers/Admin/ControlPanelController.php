@@ -43,6 +43,7 @@ use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
@@ -73,7 +74,7 @@ class ControlPanelController extends AbstractAdminController
         ServerCheckService $server_check_service,
         UserService $user_service
     ): ResponseInterface {
-        $filesystem      = new Filesystem(new Local(WT_ROOT));
+        $filesystem      = new Filesystem(new Local(Webtrees::ROOT_DIR));
         $files_to_delete = $housekeeping_service->deleteOldWebtreesFiles($filesystem);
 
         return $this->viewResponse('admin/control-panel', [

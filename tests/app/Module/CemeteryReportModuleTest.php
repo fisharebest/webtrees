@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Webtrees;
 
 /**
  * Test harness for the class CemeteryReportModule
@@ -78,7 +79,7 @@ class CemeteryReportModuleTest extends \Fisharebest\Webtrees\TestCase
 
         $tree = $this->importTree('demo.ged');
         app()->instance(Tree::class, $tree);
-        $xml  = WT_ROOT . 'resources/xml/reports/cemetery_report.xml';
+        $xml  = Webtrees::ROOT_DIR . 'resources/xml/reports/cemetery_report.xml';
         $vars = [
             'deathplace' => ['id' => ''],
             'adlist'     => ['id' => 'none'],

@@ -90,7 +90,7 @@ class UpgradeController extends AbstractAdminController
         $this->filesystem      = $filesystem;
         $this->upgrade_service = $upgrade_service;
 
-        $this->root_filesystem      = new Filesystem(new CachedAdapter(new Local(WT_ROOT), new Memory()));
+        $this->root_filesystem      = new Filesystem(new CachedAdapter(new Local(Webtrees::ROOT_DIR), new Memory()));
         $this->temporary_filesystem = new Filesystem(new ChrootAdapter($this->filesystem, self::UPGRADE_FOLDER));
     }
 

@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ServerRequestInterface;
 use function app;
 
@@ -46,13 +47,13 @@ trait ModuleThemeTrait
     public function icon(Fact $fact): string
     {
         $asset = 'public/css/' . $this->name() . '/images/facts/' . $fact->getTag() . '.png';
-        if (file_exists(WT_ROOT . 'public' . $asset)) {
+        if (file_exists(Webtrees::ROOT_DIR . 'public' . $asset)) {
             return '<img src="' . e(asset($asset)) . '" title="' . GedcomTag::getLabel($fact->getTag()) . '">';
         }
 
         // Spacer image - for alignment - until we move to a sprite.
         $asset = 'public/css/' . $this->name() . '/images/facts/NULL.png';
-        if (file_exists(WT_ROOT . 'public' . $asset)) {
+        if (file_exists(Webtrees::ROOT_DIR . 'public' . $asset)) {
             return '<img src="' . e(asset($asset)) . '">';
         }
 

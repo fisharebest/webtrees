@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Services\HousekeepingService;
+use Fisharebest\Webtrees\Webtrees;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
@@ -90,7 +91,7 @@ class DoHousekeeping implements MiddlewareInterface
     private function runHousekeeping(): void
     {
         $data_filesystem = app(FilesystemInterface::class);
-        $root_filesystem = new Filesystem(new Local(WT_ROOT));
+        $root_filesystem = new Filesystem(new Local(Webtrees::ROOT_DIR));
 
         // Clear files in the (user-specified) data folder - which might not be local files
         $this->housekeeping_service->deleteOldFiles($data_filesystem, 'cache', self::MAX_CACHE_AGE);

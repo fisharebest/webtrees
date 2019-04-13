@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use function app;
 use function define;
 use Exception;
 use Fisharebest\Localization\Locale;
@@ -32,6 +33,8 @@ use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Webtrees;
+use Illuminate\Cache\ArrayStore;
+use Illuminate\Cache\Repository;
 use Illuminate\Database\Capsule\Manager;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -100,8 +103,10 @@ class SetupController extends AbstractBaseController
      */
     public function setup(ServerRequestInterface $request): ResponseInterface
     {
-        // Required by I18N.
+        // Mini "bootstrap"
         define('WT_DATA_DIR', 'data/');
+        app()->instance(ServerRequestInterface::class, $request);
+        app()->instance('cache.array', new Repository(new ArrayStore()));
 
         $data = $this->userData($request);
 
@@ -327,7 +332,7 @@ class SetupController extends AbstractBaseController
     {
         // Try to create the SQLite database, if it does not already exist.
         if ($data['dbtype'] === 'sqlite') {
-            touch(WT_ROOT . 'data/' . $data['dbname'] . '.sqlite');
+            touch(Webtrees::ROOT_DIR . 'data/' . $data['dbname'] . '.sqlite');
         }
 
         // Try to create the MySQL database, if it does not already exist.

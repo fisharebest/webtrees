@@ -16,99 +16,29 @@
  */
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\DebugBar;
-use Fisharebest\Webtrees\Http\Middleware\BootModules;
-use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
-use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
-use Fisharebest\Webtrees\Http\Middleware\NoRouteFound;
-use Fisharebest\Webtrees\Http\Middleware\UseDebugbar;
-use Fisharebest\Webtrees\Http\Middleware\EmitResponse;
-use Fisharebest\Webtrees\Http\Middleware\HandleExceptions;
-use Fisharebest\Webtrees\Http\Middleware\DoHousekeeping;
-use Fisharebest\Webtrees\Http\Middleware\ModuleMiddleware;
-use Fisharebest\Webtrees\Http\Middleware\RequestRouter;
-use Fisharebest\Webtrees\Http\Middleware\UpdateDatabaseSchema;
-use Fisharebest\Webtrees\Http\Middleware\UseCache;
-use Fisharebest\Webtrees\Http\Middleware\UseDatabase;
-use Fisharebest\Webtrees\Http\Middleware\UseFilesystem;
-use Fisharebest\Webtrees\Http\Middleware\UseLocale;
-use Fisharebest\Webtrees\Http\Middleware\UseSession;
-use Fisharebest\Webtrees\Http\Middleware\UseTheme;
-use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
-use Fisharebest\Webtrees\Http\Middleware\UseTree;
-use Fisharebest\Webtrees\Http\Request as SymfonyRequest;
-use Fisharebest\Webtrees\Webtrees;
+namespace Fisharebest\Webtrees;
+
 use Middleland\Dispatcher;
-use Nyholm\Psr7\Factory\Psr17Factory;
-use Nyholm\Psr7Server\ServerRequestCreator;
-use Psr\Http\Message\ResponseFactoryInterface;
-use Psr\Http\Message\ServerRequestFactoryInterface;
-use Psr\Http\Message\StreamFactoryInterface;
-use Psr\Http\Message\UploadedFileFactoryInterface;
-use Psr\Http\Message\UriFactoryInterface;
-use DebugBar\StandardDebugBar;
 
 require __DIR__ . '/vendor/autoload.php';
 
-const WT_ROOT = __DIR__ . DIRECTORY_SEPARATOR;
+// Create the application.
+$application = new Webtrees();
 
-Webtrees::init();
+$application->bootstrap();
 
-// Use nyholm/psr7 for our PSR7 messages and PSR17 factory.
-app()->bind(ResponseFactoryInterface::class, Psr17Factory::class);
-app()->bind(ServerRequestFactoryInterface::class, Psr17Factory::class);
-app()->bind(StreamFactoryInterface::class, Psr17Factory::class);
-app()->bind(UploadedFileFactoryInterface::class, Psr17Factory::class);
-app()->bind(UriFactoryInterface::class, Psr17Factory::class);
+// Select a PSR message factory.
+$application->selectMessageFactory();
 
-// Use nyholm/psr7-server to create a request from the PHP environment.
-$server_request_creator = new ServerRequestCreator(
-    app(ServerRequestFactoryInterface::class),
-    app(UriFactoryInterface::class),
-    app(UploadedFileFactoryInterface::class),
-    app(StreamFactoryInterface::class)
-);
-
-// Create a PSR-7 request
-$request = $server_request_creator->fromGlobals();
-
-// Initialise the DebugBar for development.
-// Use `composer install --dev` on a development build to enable.
-// Note that you may need to increase the size of the fcgi buffers on nginx.
-// e.g. add these lines to your fastcgi_params file:
-// fastcgi_buffers 16 16m;
-// fastcgi_buffer_size 32m;
-DebugBar::init(class_exists(StandardDebugBar::class));
-
-// Until all the code is rewritten to use PSR-7 requests, we still need our hybrid request.
-$request = SymfonyRequest::createFromGlobals();
+// Convert the GET, POST, COOKIE variables into a request.
+$request = $application->createServerRequest();
 
 // Calculate the base URL, so we can generate absolute URLs.
 // Remove any PHP script name and parameters.
 define('WT_BASE_URL', preg_replace('/[^\/]+\.php(\?.*)?$/', '', $request->getUri()));
 
-$middleware = [
-    EmitResponse::class,
-    HandleExceptions::class,
-    CheckForMaintenanceMode::class,
-    UseDatabase::class,
-    UseDebugbar::class,
-    UpdateDatabaseSchema::class,
-    UseCache::class,
-    UseFilesystem::class,
-    UseSession::class,
-    UseTree::class,
-    UseLocale::class,
-    UseTheme::class,
-    DoHousekeeping::class,
-    CheckCsrf::class,
-    UseTransaction::class,
-    BootModules::class,
-    ModuleMiddleware::class,
-    RequestRouter::class,
-    NoRouteFound::class,
-];
-
-$dispatcher = new Dispatcher($middleware, app());
-
+// The application is defined by a stack of middleware and a PSR-11 container.
+$middleware = $application->middleware();
+$container  = app();
+$dispatcher = new Dispatcher($middleware, $container);
 $dispatcher->dispatch($request);

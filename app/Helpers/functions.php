@@ -55,7 +55,7 @@ function asset(string $path): string
     if (Webtrees::STABILITY === '') {
         $version = Webtrees::VERSION;
     } else {
-        $version = filemtime(WT_ROOT . 'public/' . $path);
+        $version = filemtime(Webtrees::ROOT_DIR . 'public/' . $path);
     }
 
     return 'public/' . $path . '?v=' . $version;

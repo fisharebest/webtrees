@@ -46,14 +46,12 @@ class DebugBar
      *
      * @return void
      */
-    public static function init(bool $enable = true): void
+    public static function enable(): void
     {
-        if ($enable) {
-            self::$debugbar = new StandardDebugBar();
-            self::$debugbar->addCollector(new ViewCollector());
+        self::$debugbar = new StandardDebugBar();
+        self::$debugbar->addCollector(new ViewCollector());
 
-            self::$renderer = self::$debugbar->getJavascriptRenderer('./vendor/maximebf/debugbar/src/DebugBar/Resources/');
-        }
+        self::$renderer = self::$debugbar->getJavascriptRenderer('./vendor/maximebf/debugbar/src/DebugBar/Resources/');
     }
 
     /**

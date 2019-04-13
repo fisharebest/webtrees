@@ -17,15 +17,22 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use DebugBar\StandardDebugBar;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\DebugBar;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use function class_exists;
 
 /**
  * Middleware to add debugging info to the PHP debugbar.
+ * Use `composer install --dev` on a development build to enable.
+ * Note that you may need to increase the size of the fcgi buffers on nginx.
+ * e.g. add these lines to your fastcgi_params file:
+ * fastcgi_buffers 16 16m;
+ * fastcgi_buffer_size 32m;
  */
 class UseDebugbar implements MiddlewareInterface, StatusCodeInterface
 {
@@ -37,17 +44,14 @@ class UseDebugbar implements MiddlewareInterface, StatusCodeInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if (class_exists(DebugBar::class)) {
-            // This timer gets stopped automatically when we generate the response.
-            DebugBar::startMeasure('controller_action');
+        if (class_exists(StandardDebugBar::class)) {
+            DebugBar::enable();
+
             $response = $handler->handle($request);
 
-            $status_code = $response->getStatusCode();
-            if ($status_code === self::STATUS_FOUND || $status_code === self::STATUS_MOVED_PERMANENTLY) {
-                // Show the debug data on the next page
+            if ($this->shouldSendDataOnNextPage($response)) {
                 DebugBar::stackData();
-            } elseif ($request->getHeaderLine('X-Requested-With') !== '') {
-                // Use HTTP headers and some jQuery to add debug to the current page.
+            } elseif ($this->shouldSendDataInHeaders($request)) {
                 DebugBar::sendDataInHeaders();
             }
 
@@ -55,5 +59,27 @@ class UseDebugbar implements MiddlewareInterface, StatusCodeInterface
         }
 
         return $handler->handle($request);
+    }
+
+    /**
+     * @param ResponseInterface $response
+     *
+     * @return bool
+     */
+    private function shouldSendDataOnNextPage(ResponseInterface $response): bool
+    {
+        $status_code = $response->getStatusCode();
+
+        return $status_code === self::STATUS_FOUND || $status_code === self::STATUS_MOVED_PERMANENTLY;
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return bool
+     */
+    private function shouldSendDataInHeaders(ServerRequestInterface $request): bool
+    {
+        return $request->getHeaderLine('X-Requested-With') !== '';
     }
 }

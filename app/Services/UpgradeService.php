@@ -252,13 +252,13 @@ class UpgradeService
     {
         $message = I18N::translate('This website is being upgraded. Try again in a few minutes.');
 
-        file_put_contents(WT_ROOT . self::LOCK_FILE, $message);
+        file_put_contents(Webtrees::OFFLINE_FILE, $message);
     }
 
     public function endMaintenanceMode(): void
     {
-        if (file_exists(WT_ROOT . self::LOCK_FILE)) {
-            unlink(WT_ROOT . self::LOCK_FILE);
+        if (file_exists(Webtrees::OFFLINE_FILE)) {
+            unlink(Webtrees::OFFLINE_FILE);
         }
     }
 

@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\Report\ReportHtml;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Webtrees;
 
 /**
  * Test harness for the class BirthDeathMarriageReportModule
@@ -72,7 +73,7 @@ class BirthDeathMarriageReportModuleTest extends \Fisharebest\Webtrees\TestCase
     {
         $tree = $this->importTree('demo.ged');
         app()->instance(Tree::class, $tree);
-        $xml  = WT_ROOT . 'resources/xml/reports/bdm_report.xml';
+        $xml  = Webtrees::ROOT_DIR . 'resources/xml/reports/bdm_report.xml';
         $vars = [
             'name'       => ['id' => ''],
             'bdmplace'   => ['id' => ''],

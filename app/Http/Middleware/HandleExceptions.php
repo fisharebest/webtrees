@@ -17,50 +17,102 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fisharebest\Webtrees\Http\Controllers\ErrorController;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\Log;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
+use function dirname;
+use function response;
+use function str_replace;
+use function view;
+use const PHP_EOL;
 
 /**
  * Middleware to handle and render errors.
  */
-class HandleExceptions implements MiddlewareInterface
+class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
 {
-    /** @var ErrorController */
-    private $error_controller;
-
-    /**
-     * ExceptionHandler constructor.
-     *
-     * @param ErrorController $error_controller
-     */
-    public function __construct(ErrorController $error_controller)
-    {
-        $this->error_controller = $error_controller;
-    }
+    use ViewResponseTrait;
 
     /**
      * @param ServerRequestInterface  $request
      * @param RequestHandlerInterface $handler
      *
      * @return ResponseInterface
+     * @throws Throwable
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         try {
-            return $handler->handle($request);
-        } catch (HttpException $exception) {
-            if ($request->getHeaderLine('X-Requested-With') !== '') {
-                return $this->error_controller->ajaxErrorResponse($exception);
-            }
+            try {
+                return $handler->handle($request);
+            } catch (HttpException $exception) {
+                $original_exception = $exception;
 
-            return $this->error_controller->errorResponse($exception);
+                return $this->httpExceptionResponse($request, $exception);
+            } catch (Throwable $exception) {
+                $original_exception = $exception;
+
+                return $this->unhandledExceptionResponse($request, $exception);
+            }
         } catch (Throwable $exception) {
-            return $this->error_controller->unhandledExceptionResponse($request, $exception);
+            // If we can't handle the exception, rethrow it.
+            throw $original_exception;
         }
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     * @param HttpException          $exception
+     *
+     * @return ResponseInterface
+     */
+    private function httpExceptionResponse(ServerRequestInterface $request, HttpException $exception): ResponseInterface
+    {
+        if ($request->getHeaderLine('X-Requested-With') !== '') {
+            return $this->viewResponse('components/alert-danger', [
+                'alert' => $exception->getMessage(),
+                'title' => $exception->getMessage(),
+            ], $exception->getStatusCode());
+        }
+
+        return response(view('components/alert-danger', [
+            'alert' => $exception->getMessage(),
+            'title' => $exception->getMessage(),
+        ]), $exception->getStatusCode());
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     * @param Throwable              $exception
+     *
+     * @return ResponseInterface
+     */
+    private function unhandledExceptionResponse(ServerRequestInterface $request, Throwable $exception): ResponseInterface
+    {
+        // Create a stack dump for the exception
+        $base_path = dirname(__DIR__, 3);
+        $trace     = $exception->getMessage() . PHP_EOL . $exception->getTraceAsString();
+        $trace     = str_replace($base_path, '…', $trace);
+
+        try {
+            Log::addErrorLog($trace);
+        } catch (Throwable $exception) {
+            // Must have been a problem with the database.  Nothing we can do here.
+        }
+
+        if ($request->getHeaderLine('X-Requested-With') !== '') {
+            return response(view('components/alert-danger', ['alert' => $trace]), self::STATUS_INTERNAL_SERVER_ERROR);
+        }
+
+        return $this->viewResponse('errors/unhandled-exception', [
+            'title' => 'Error',
+            'error' => $trace,
+        ], self::STATUS_INTERNAL_SERVER_ERROR);
     }
 }

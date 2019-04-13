@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fisharebest\Webtrees\DebugBar;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -49,6 +50,9 @@ class RequestRouter implements MiddlewareInterface
 
         // Find the routing for the selected route.
         $routing = $routes[$request->getMethod() . ':' . $route] ?? '';
+
+        // This timer gets stopped automatically when we generate the response.
+        DebugBar::startMeasure('controller_action');
 
         // No route matched?
         if ($routing === '') {

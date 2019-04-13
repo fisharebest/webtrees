@@ -250,7 +250,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     private function getMapProviderData(ServerRequestInterface $request): ?array
     {
         if (self::$map_providers === null) {
-            $providersFile        = WT_ROOT . Webtrees::MODULES_PATH . 'openstreetmap/providers/providers.xml';
+            $providersFile        = Webtrees::MODULES_DIR . 'openstreetmap/providers/providers.xml';
             self::$map_selections = [
                 'provider' => $this->getPreference('provider', 'openstreetmap'),
                 'style'    => $this->getPreference('provider_style', 'mapnik'),

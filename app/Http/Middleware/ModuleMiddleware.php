@@ -40,8 +40,6 @@ class ModuleMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Update the database schema, if necessary.
-     *
      * @param ServerRequestInterface  $request
      * @param RequestHandlerInterface $handler
      *

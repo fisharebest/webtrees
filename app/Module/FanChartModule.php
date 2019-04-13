@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -307,7 +308,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
                         (int) $tx,
                         (int) $ty,
                         $foreground,
-                        WT_ROOT . 'resources/fonts/DejaVuSans.ttf',
+                        Webtrees::ROOT_DIR . 'resources/fonts/DejaVuSans.ttf',
                         $text
                     );
 

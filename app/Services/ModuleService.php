@@ -552,7 +552,7 @@ class ModuleService
      */
     private function customModules(): Collection
     {
-        $pattern   = WT_ROOT . Webtrees::MODULES_PATH . '*/module.php';
+        $pattern   = Webtrees::MODULES_DIR . '*/module.php';
         $filenames = glob($pattern, GLOB_NOSORT);
 
         return Collection::make($filenames)

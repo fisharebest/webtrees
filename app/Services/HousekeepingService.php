@@ -46,12 +46,12 @@ class HousekeepingService
         'manageservers.php',
         'media.php',
         'module_admin.php',
-        //WT_ROOT.'modules', // Do not delete - users may have stored custom modules/data here
+        //'modules', // Do not delete - users may have stored custom modules/data here
         'opensearch.php',
         'PEAR.php',
         'pgv_to_wt.php',
         'places',
-        //WT_ROOT.'robots.txt', // Do not delete this - it may contain user data
+        //'robots.txt', // Do not delete this - it may contain user data
         'serviceClientTest.php',
         'siteconfig.php',
         'SOAP',

@@ -271,7 +271,7 @@ class PlaceHierarchyController extends AbstractBaseController
         $placeObj  = new Place($reference, $tree);
         $places    = $placeObj->getChildPlaces();
         $features  = [];
-        $flag_path = Webtrees::MODULES_PATH . 'openstreetmap/';
+        $flag_path = Webtrees::MODULES_DIR . 'openstreetmap/';
         $showlink  = true;
         if (empty($places)) {
             $places[] = $placeObj;
