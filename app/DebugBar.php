@@ -42,8 +42,6 @@ class DebugBar
     /**
      * Initialize the Debugbar.
      *
-     * @param bool $enable
-     *
      * @return void
      */
     public static function enable(): void
