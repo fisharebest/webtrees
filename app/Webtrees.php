@@ -77,7 +77,7 @@ class Webtrees
     public const OFFLINE_FILE = self::ROOT_DIR . '/data/offline.txt';
 
     // Location of our modules.
-    public const MODULES_PATH = 'modules_v4';
+    public const MODULES_PATH = 'modules_v4/';
     public const MODULES_DIR = self::ROOT_DIR . self::MODULES_PATH;
 
     // Enable debugging on development builds.
