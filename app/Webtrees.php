@@ -71,10 +71,10 @@ class Webtrees
     public const ROOT_DIR = __DIR__ . '/../';
 
     // Location of the file containing the database connection details.
-    public const CONFIG_FILE = self::ROOT_DIR . '/data/config.ini.php';
+    public const CONFIG_FILE = self::ROOT_DIR . 'data/config.ini.php';
 
     // Location of the file that triggers maintenance mode.
-    public const OFFLINE_FILE = self::ROOT_DIR . '/data/offline.txt';
+    public const OFFLINE_FILE = self::ROOT_DIR . 'data/offline.txt';
 
     // Location of our modules.
     public const MODULES_PATH = 'modules_v4/';
