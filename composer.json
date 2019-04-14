@@ -99,6 +99,11 @@
             "### PSALM",
             "psalm"
         ],
+       "webtrees:coverage": [
+            "composer install --dev --quiet",
+            "vendor/bin/phpunit --coverage-html=tests/coverage",
+            "composer install --no-dev --quiet"
+        ],
         "webtrees:tools": [
             "### PHAN",
             "@composer global require phan/phan=*",
@@ -122,6 +127,7 @@
     "scripts-descriptions": {
         "webtrees:build": "Create a distribution file (webtrees.zip)",
         "webtrees:check": "Run various static analysis tools",
+        "webtrees:coverage": "Generate test coverage report",
         "webtrees:mo": "Compile the language files (*.mo)",
         "webtrees:po": "Update the language (webtrees.pot, *.po)",
         "webtrees:tools": "Install the tools needed to run webtrees-check"
