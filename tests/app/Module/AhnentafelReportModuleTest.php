@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Report\ReportHtml;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
+use Fisharebest\Webtrees\Report\ReportParserSetup;
 use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
@@ -90,6 +91,9 @@ class AhnentafelReportModuleTest extends \Fisharebest\Webtrees\TestCase
             'resi'     => ['id' => 'on'],
             'children' => ['id' => 'on'],
         ];
+
+        $report = new ReportParserSetup($xml);
+        $this->assertIsArray($report->reportProperties());
 
         ob_start();
         new ReportParserGenerate($xml, new ReportHtml(), $vars, $tree);

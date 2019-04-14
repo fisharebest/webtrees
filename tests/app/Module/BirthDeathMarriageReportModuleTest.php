@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Report\ReportHtml;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
+use Fisharebest\Webtrees\Report\ReportParserSetup;
 use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
@@ -84,6 +85,9 @@ class BirthDeathMarriageReportModuleTest extends \Fisharebest\Webtrees\TestCase
             'sortby'     => ['id' => 'BIRT:DATE'],
             'pageSize'   => ['id' => 'A4'],
         ];
+
+        $report = new ReportParserSetup($xml);
+        $this->assertIsArray($report->reportProperties());
 
         ob_start();
         new ReportParserGenerate($xml, new ReportHtml(), $vars, $tree);
