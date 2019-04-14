@@ -187,7 +187,6 @@ class Webtrees
         }
 
         return $server_request_creator->fromGlobals();
-
     }
 
     /**
