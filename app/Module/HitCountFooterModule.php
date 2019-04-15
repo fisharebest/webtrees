@@ -113,7 +113,7 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
         $tree = app(Tree::class);
 
         if ($tree instanceof Tree && $tree->getPreference('SHOW_COUNTER')) {
-            $route = $request->get('route');
+            $route = $request->getQueryParams()['route'] ?? '';
 
             $page_name = self::PAGE_NAMES[$route] ?? '';
 
@@ -124,7 +124,7 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
                 case 'note':
                 case 'repository':
                 case 'source':
-                    $this->page_hits = $this->countHit($tree, $page_name, $request->get('xref', ''));
+                    $this->page_hits = $this->countHit($tree, $page_name, $request->getQueryParams()['xref'] ?? '');
                     break;
 
                 case 'tree-page':

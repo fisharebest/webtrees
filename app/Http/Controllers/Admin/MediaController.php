@@ -36,6 +36,15 @@ use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Throwable;
+use function dirname;
+use function file_exists;
+use function is_dir;
+use function preg_match;
+use function str_replace;
+use function strpos;
+use function trim;
+use function var_dump;
+use const UPLOAD_ERR_OK;
 
 /**
  * Controller for media administration.
@@ -77,6 +86,37 @@ class MediaController extends AbstractAdminController
     }
 
     /**
+     * Generate a list of all folders from all the trees.
+     *
+     * @return Collection
+     * @return string[]
+     */
+    private function allMediaFolders(): Collection
+    {
+        $base_folders = DB::table('gedcom_setting')
+            ->where('setting_name', '=', 'MEDIA_DIRECTORY')
+            ->select(DB::raw("setting_value || 'dummy.jpeg' AS path"));
+
+        return DB::table('media_file')
+            ->join('gedcom_setting', 'gedcom_id', '=', 'm_file')
+            ->where('setting_name', '=', 'MEDIA_DIRECTORY')
+            ->where('multimedia_file_refn', 'LIKE', '%/%')
+            ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
+            ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
+            ->select(DB::raw('setting_value || multimedia_file_refn AS path'))
+            ->union($base_folders)
+            ->pluck('path')
+            ->map(static function (string $path): string {
+                return dirname($path) . '/';
+            })
+            ->unique()
+            ->sort()
+            ->mapWithKeys(static function (string $path): array {
+                return [$path => $path];
+            });
+    }
+
+    /**
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
@@ -101,6 +141,50 @@ class MediaController extends AbstractAdminController
         }
 
         return response();
+    }
+
+    /**
+     * Fetch a list of all files on disk
+     *
+     * @param string $media_folder Location of root folder
+     * @param string $subfolders   Include or exclude subfolders
+     *
+     * @return string[]
+     */
+    private function allDiskFiles(string $media_folder, string $subfolders): array
+    {
+        return $this->scanFolders(WT_DATA_DIR . $media_folder, $subfolders === 'include');
+    }
+
+    /**
+     * Search a folder (and optional subfolders) for filenames that match a search pattern.
+     *
+     * @param string $dir
+     * @param bool   $recursive
+     *
+     * @return string[]
+     */
+    private function scanFolders(string $dir, bool $recursive): array
+    {
+        $files = [];
+
+        // $dir comes from the database. The actual folder may not exist.
+        if (is_dir($dir)) {
+            foreach (scandir($dir, SCANDIR_SORT_NONE) as $path) {
+                if (is_dir($dir . $path)) {
+                    // What if there are user-defined subfolders “thumbs” or “watermarks”?
+                    if ($path !== '.' && $path !== '..' && $path !== 'thumbs' && $path !== 'watermark' && $recursive) {
+                        foreach ($this->scanFolders($dir . $path . '/', $recursive) as $subpath) {
+                            $files[] = $path . '/' . $subpath;
+                        }
+                    }
+                } else {
+                    $files[] = $path;
+                }
+            }
+        }
+
+        return $files;
     }
 
     /**
@@ -290,179 +374,45 @@ class MediaController extends AbstractAdminController
     }
 
     /**
-     * @return ResponseInterface
-     */
-    public function upload(): ResponseInterface
-    {
-        $media_folders = $this->allMediaFolders();
-
-        $filesize = ini_get('upload_max_filesize');
-        if (empty($filesize)) {
-            $filesize = '2M';
-        }
-
-        $title = I18N::translate('Upload media files');
-
-        return $this->viewResponse('admin/media-upload', [
-            'max_upload_files' => self::MAX_UPLOAD_FILES,
-            'filesize'         => $filesize,
-            'media_folders'    => $media_folders,
-            'title'            => $title,
-        ]);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
+     * Generate some useful information and links about a media object.
      *
-     * @return ResponseInterface
+     * @param Media $media
+     *
+     * @return string HTML
      */
-    public function uploadAction(ServerRequestInterface $request): ResponseInterface
+    private function mediaObjectInfo(Media $media): string
     {
-        $all_folders = $this->allMediaFolders();
+        $html = '<b><a href="' . e($media->url()) . '">' . $media->fullName() . '</a></b>' . '<br><i>' . e($media->getNote()) . '</i></br><br>';
 
-        for ($i = 1; $i < self::MAX_UPLOAD_FILES; $i++) {
-            if (!empty($_FILES['mediafile' . $i]['name'])) {
-                $folder   = $request->get('folder' . $i, '');
-                $filename = $request->get('filename' . $i, '');
-
-                // If no filename specified, use the original filename.
-                if ($filename === '') {
-                    $filename = $_FILES['mediafile' . $i]['name'];
-                }
-
-                // Validate the folder
-                if (!$all_folders->contains($folder)) {
-                    break;
-                }
-
-                // Validate the filename.
-                $filename = str_replace('\\', '/', $filename);
-                $filename = trim($filename, '/');
-
-                if (strpos('/' . $filename, '/../') !== false) {
-                    FlashMessages::addMessage('Folder names are not allowed to include “../”');
-                    continue;
-                }
-
-                if (preg_match('/([:])/', $filename, $match)) {
-                    // Local media files cannot contain certain special characters, especially on MS Windows
-                    FlashMessages::addMessage(I18N::translate('Filenames are not allowed to contain the character “%s”.', $match[1]));
-                    continue;
-                }
-
-                if (preg_match('/(\.(php|pl|cgi|bash|sh|bat|exe|com|htm|html|shtml))$/i', $filename, $match)) {
-                    // Do not allow obvious script files.
-                    FlashMessages::addMessage(I18N::translate('Filenames are not allowed to have the extension “%s”.', $match[1]));
-                    continue;
-                }
-
-                // The new filename may have created a new sub-folder.
-                $full_path = WT_DATA_DIR . $folder . $filename;
-                $folder    = dirname($full_path);
-
-                // Make sure the media folder exists
-                if (!is_dir($folder)) {
-                    if (File::mkdir($folder)) {
-                        FlashMessages::addMessage(I18N::translate('The folder %s has been created.', Html::filename($folder)), 'info');
-                    } else {
-                        FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename($folder)), 'danger');
-                        continue;
-                    }
-                }
-
-                if (file_exists($full_path)) {
-                    FlashMessages::addMessage(I18N::translate('The file %s already exists. Use another filename.', $full_path, 'error'));
-                    continue;
-                }
-
-                // Now copy the file to the correct location.
-                if (move_uploaded_file($_FILES['mediafile' . $i]['tmp_name'], $full_path)) {
-                    FlashMessages::addMessage(I18N::translate('The file %s has been uploaded.', Html::filename($full_path)), 'success');
-                    Log::addMediaLog('Media file ' . $full_path . ' uploaded');
-                } else {
-                    FlashMessages::addMessage(I18N::translate('There was an error uploading your file.') . '<br>' . Functions::fileUploadErrorText($_FILES['mediafile' . $i]['error']), 'danger');
-                }
+        $linked = [];
+        foreach ($media->linkedIndividuals('OBJE') as $link) {
+            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
+        }
+        foreach ($media->linkedFamilies('OBJE') as $link) {
+            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
+        }
+        foreach ($media->linkedSources('OBJE') as $link) {
+            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
+        }
+        foreach ($media->linkedNotes('OBJE') as $link) {
+            // Invalid GEDCOM - you cannot link a NOTE to an OBJE
+            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
+        }
+        foreach ($media->linkedRepositories('OBJE') as $link) {
+            // Invalid GEDCOM - you cannot link a REPO to an OBJE
+            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
+        }
+        if (!empty($linked)) {
+            $html .= '<ul>';
+            foreach ($linked as $link) {
+                $html .= '<li>' . $link . '</li>';
             }
+            $html .= '</ul>';
+        } else {
+            $html .= '<div class="alert alert-danger">' . I18N::translate('There are no links to this media object.') . '</div>';
         }
 
-        $url = route('admin-media-upload');
-
-        return redirect($url);
-    }
-
-    /**
-     * Generate a list of all folders from all the trees.
-     *
-     * @return Collection
-     * @return string[]
-     */
-    private function allMediaFolders(): Collection
-    {
-        $base_folders = DB::table('gedcom_setting')
-            ->where('setting_name', '=', 'MEDIA_DIRECTORY')
-            ->select(DB::raw("setting_value || 'dummy.jpeg' AS path"));
-
-        return DB::table('media_file')
-            ->join('gedcom_setting', 'gedcom_id', '=', 'm_file')
-            ->where('setting_name', '=', 'MEDIA_DIRECTORY')
-            ->where('multimedia_file_refn', 'LIKE', '%/%')
-            ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
-            ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
-            ->select(DB::raw('setting_value || multimedia_file_refn AS path'))
-            ->union($base_folders)
-            ->pluck('path')
-            ->map(static function (string $path): string {
-                return dirname($path) . '/';
-            })
-            ->unique()
-            ->sort()
-            ->mapWithKeys(static function (string $path): array {
-                return [$path => $path];
-            });
-    }
-
-    /**
-     * Search a folder (and optional subfolders) for filenames that match a search pattern.
-     *
-     * @param string $dir
-     * @param bool   $recursive
-     *
-     * @return string[]
-     */
-    private function scanFolders(string $dir, bool $recursive): array
-    {
-        $files = [];
-
-        // $dir comes from the database. The actual folder may not exist.
-        if (is_dir($dir)) {
-            foreach (scandir($dir, SCANDIR_SORT_NONE) as $path) {
-                if (is_dir($dir . $path)) {
-                    // What if there are user-defined subfolders “thumbs” or “watermarks”?
-                    if ($path !== '.' && $path !== '..' && $path !== 'thumbs' && $path !== 'watermark' && $recursive) {
-                        foreach ($this->scanFolders($dir . $path . '/', $recursive) as $subpath) {
-                            $files[] = $path . '/' . $subpath;
-                        }
-                    }
-                } else {
-                    $files[] = $path;
-                }
-            }
-        }
-
-        return $files;
-    }
-
-    /**
-     * Fetch a list of all files on disk
-     *
-     * @param string $media_folder Location of root folder
-     * @param string $subfolders   Include or exclude subfolders
-     *
-     * @return string[]
-     */
-    private function allDiskFiles(string $media_folder, string $subfolders): array
-    {
-        return $this->scanFolders(WT_DATA_DIR . $media_folder, $subfolders === 'include');
+        return $html;
     }
 
     /**
@@ -533,44 +483,108 @@ class MediaController extends AbstractAdminController
     }
 
     /**
-     * Generate some useful information and links about a media object.
-     *
-     * @param Media $media
-     *
-     * @return string HTML
+     * @return ResponseInterface
      */
-    private function mediaObjectInfo(Media $media): string
+    public function upload(): ResponseInterface
     {
-        $html = '<b><a href="' . e($media->url()) . '">' . $media->fullName() . '</a></b>' . '<br><i>' . e($media->getNote()) . '</i></br><br>';
+        $media_folders = $this->allMediaFolders();
 
-        $linked = [];
-        foreach ($media->linkedIndividuals('OBJE') as $link) {
-            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
+        $filesize = ini_get('upload_max_filesize');
+        if (empty($filesize)) {
+            $filesize = '2M';
         }
-        foreach ($media->linkedFamilies('OBJE') as $link) {
-            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
-        }
-        foreach ($media->linkedSources('OBJE') as $link) {
-            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
-        }
-        foreach ($media->linkedNotes('OBJE') as $link) {
-            // Invalid GEDCOM - you cannot link a NOTE to an OBJE
-            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
-        }
-        foreach ($media->linkedRepositories('OBJE') as $link) {
-            // Invalid GEDCOM - you cannot link a REPO to an OBJE
-            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
-        }
-        if (!empty($linked)) {
-            $html .= '<ul>';
-            foreach ($linked as $link) {
-                $html .= '<li>' . $link . '</li>';
+
+        $title = I18N::translate('Upload media files');
+
+        return $this->viewResponse('admin/media-upload', [
+            'max_upload_files' => self::MAX_UPLOAD_FILES,
+            'filesize'         => $filesize,
+            'media_folders'    => $media_folders,
+            'title'            => $title,
+        ]);
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function uploadAction(ServerRequestInterface $request): ResponseInterface
+    {
+        $all_folders = $this->allMediaFolders();
+
+        foreach ($request->getUploadedFiles() as $key => $uploaded_file) {
+            if ($uploaded_file->getError() !== UPLOAD_ERR_OK) {
+                FlashMessages::addMessage(Functions::fileUploadErrorText($uploaded_file->getError()), 'danger');
+                continue;
             }
-            $html .= '</ul>';
-        } else {
-            $html .= '<div class="alert alert-danger">' . I18N::translate('There are no links to this media object.') . '</div>';
+            $key = substr($key, 9);
+
+            $folder   = $request->getParsedBody()['folder' . $key];
+            $filename = $request->getParsedBody()['filename' . $key];
+
+            // If no filename specified, use the original filename.
+            if ($filename === '') {
+                $filename = $uploaded_file->getClientFilename();
+            }
+
+            // Validate the folder
+            if (!$all_folders->contains($folder)) {
+                break;
+            }
+
+            // Validate the filename.
+            $filename = str_replace('\\', '/', $filename);
+            $filename = trim($filename, '/');
+
+            if (strpos('/' . $filename, '/../') !== false) {
+                FlashMessages::addMessage('Folder names are not allowed to include “../”');
+                continue;
+            }
+
+            if (preg_match('/([:])/', $filename, $match)) {
+                // Local media files cannot contain certain special characters, especially on MS Windows
+                FlashMessages::addMessage(I18N::translate('Filenames are not allowed to contain the character “%s”.', $match[1]));
+                continue;
+            }
+
+            if (preg_match('/(\.(php|pl|cgi|bash|sh|bat|exe|com|htm|html|shtml))$/i', $filename, $match)) {
+                // Do not allow obvious script files.
+                FlashMessages::addMessage(I18N::translate('Filenames are not allowed to have the extension “%s”.', $match[1]));
+                continue;
+            }
+
+            // The new filename may have created a new sub-folder.
+            $full_path = WT_DATA_DIR . $folder . $filename;
+            $folder    = dirname($full_path);
+
+            // Make sure the media folder exists
+            if (!is_dir($folder)) {
+                if (File::mkdir($folder)) {
+                    FlashMessages::addMessage(I18N::translate('The folder %s has been created.', Html::filename($folder)), 'info');
+                } else {
+                    FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename($folder)), 'danger');
+                    continue;
+                }
+            }
+
+            if (file_exists($full_path)) {
+                FlashMessages::addMessage(I18N::translate('The file %s already exists. Use another filename.', $full_path, 'error'));
+                continue;
+            }
+
+            // Now copy the file to the correct location.
+            try {
+                $uploaded_file->moveTo($full_path);
+                FlashMessages::addMessage(I18N::translate('The file %s has been uploaded.', Html::filename($full_path)), 'success');
+                Log::addMediaLog('Media file ' . $full_path . ' uploaded');
+            } catch (Throwable $ex) {
+                FlashMessages::addMessage(I18N::translate('There was an error uploading your file.') . '<br>' . $ex->getMessage(), 'danger');
+            }
         }
 
-        return $html;
+        $url = route('admin-media-upload');
+
+        return redirect($url);
     }
 }

@@ -34,6 +34,7 @@ use function method_exists;
 use function sys_get_temp_dir;
 use function tempnam;
 use function trim;
+use const UPLOAD_ERR_NO_FILE;
 
 /**
  * A Symfony request that is also a PSR-7 request.
@@ -293,13 +294,13 @@ class Request extends SymfonyRequest implements ServerRequestInterface
     public function getUploadedFiles(): array
     {
         $files = [];
-        foreach ($this->files as $key => $file) {
+        foreach ($this->files->all() as $key => $file) {
             $files[$key] = new \Nyholm\Psr7\UploadedFile(
-                $file->getPathname(),
-                $file->getSize(),
-                $file->getError(),
-                $file->getClientOriginalName(),
-                $file->getClientMimeType()
+                $file ? $file->getPathname() : null,
+                $file ? $file->getSize() : null,
+                $file ? $file->getError() : UPLOAD_ERR_NO_FILE,
+                $file ? $file->getClientOriginalName() : null,
+                $file ? $file->getClientMimeType(): null
             );
         }
 
