@@ -226,7 +226,11 @@ class Auth
             throw new FamilyNotFoundException();
         }
 
-        if (!$family->canShow() || $edit && (!$family->canEdit() || $family->isPendingDeletion())) {
+        if (!$family->canShow()) {
+            throw new FamilyAccessDeniedException();
+        }
+
+        if ($edit && !$family->canEdit()) {
             throw new FamilyAccessDeniedException();
         }
     }
@@ -245,7 +249,11 @@ class Auth
             throw new IndividualNotFoundException();
         }
 
-        if (!$individual->canShow() || $edit && (!$individual->canEdit() || $individual->isPendingDeletion())) {
+        if (!$individual->canShow()) {
+            throw new IndividualAccessDeniedException();
+        }
+
+        if ($edit && !$individual->canEdit()) {
             throw new IndividualAccessDeniedException();
         }
     }
@@ -264,7 +272,11 @@ class Auth
             throw new MediaNotFoundException();
         }
 
-        if (!$media->canShow() || $edit && (!$media->canEdit() || $media->isPendingDeletion())) {
+        if (!$media->canShow()) {
+            throw new MediaAccessDeniedException();
+        }
+
+        if ($edit && !$media->canEdit()) {
             throw new MediaAccessDeniedException();
         }
     }
@@ -283,7 +295,11 @@ class Auth
             throw new NoteNotFoundException();
         }
 
-        if (!$note->canShow() || $edit && (!$note->canEdit() || $note->isPendingDeletion())) {
+        if (!$note->canShow()) {
+            throw new NoteAccessDeniedException();
+        }
+
+        if ($edit && !$note->canEdit()) {
             throw new NoteAccessDeniedException();
         }
     }
@@ -302,7 +318,11 @@ class Auth
             throw new RecordNotFoundException();
         }
 
-        if (!$record->canShow() || $edit && (!$record->canEdit() || $record->isPendingDeletion())) {
+        if (!$record->canShow()) {
+            throw new RecordAccessDeniedException();
+        }
+
+        if ($edit && !$record->canEdit()) {
             throw new RecordAccessDeniedException();
         }
     }
@@ -321,7 +341,11 @@ class Auth
             throw new RepositoryNotFoundException();
         }
 
-        if (!$repository->canShow() || $edit && (!$repository->canEdit() || $repository->isPendingDeletion())) {
+        if (!$repository->canShow()) {
+            throw new RepositoryAccessDeniedException();
+        }
+
+        if ($edit && !$repository->canEdit()) {
             throw new RepositoryAccessDeniedException();
         }
     }
@@ -340,7 +364,11 @@ class Auth
             throw new SourceNotFoundException();
         }
 
-        if (!$source->canShow() || $edit && (!$source->canEdit() || $source->isPendingDeletion())) {
+        if (!$source->canShow()) {
+            throw new SourceAccessDeniedException();
+        }
+
+        if ($edit && !$source->canEdit()) {
             throw new SourceAccessDeniedException();
         }
     }

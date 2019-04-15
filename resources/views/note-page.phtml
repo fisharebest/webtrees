@@ -21,7 +21,7 @@
     <h2 class="wt-page-title mx-auto">
         <?= $note->fullName() ?>
     </h2>
-    <?php if ($note->canEdit() && !$note->isPendingDeletion()) : ?>
+    <?php if ($note->canEdit()) : ?>
         <?= view('note-page-menu', ['record' => $note]) ?>
     <?php endif ?>
 </div>

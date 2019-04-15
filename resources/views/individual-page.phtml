@@ -27,7 +27,7 @@
     <h2 class="wt-page-title mx-auto">
         <?= $individual->fullName() ?><?= $user_link ?>, <?= $individual->getLifeSpan() ?> <?= $age ?>
     </h2>
-    <?php if ($individual->canEdit() && !$individual->isPendingDeletion()) : ?>
+    <?php if ($individual->canEdit()) : ?>
         <?= view('individual-page-menu', ['individual' => $individual, 'count_names' => $count_names, 'count_sex' => $count_sex]) ?>
     <?php endif ?>
 </div>

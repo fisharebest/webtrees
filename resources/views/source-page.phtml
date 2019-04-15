@@ -21,7 +21,7 @@
     <h2 class="wt-page-title mx-auto">
         <?= $source->fullName() ?>
     </h2>
-    <?php if ($source->canEdit() && !$source->isPendingDeletion()) : ?>
+    <?php if ($source->canEdit()) : ?>
         <?= view('source-page-menu', ['record' => $source]) ?>
     <?php endif ?>
 </div>

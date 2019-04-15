@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Services\GedcomService;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
+use function strpos;
 
 /**
  * A GEDCOM fact or event object.
@@ -322,13 +323,16 @@ class Fact
      */
     public function canEdit(): bool
     {
-        // Managers can edit anything
+        if ($this->isPendingDeletion()) {
+            return false;
+        }
+
+        if (Auth::isManager($this->record->tree())) {
+            return true;
+        }
+
         // Members cannot edit RESN, CHAN and locked records
-        return
-            $this->record->canEdit() && !$this->isPendingDeletion() && (
-                Auth::isManager($this->record->tree()) ||
-                Auth::isEditor($this->record->tree()) && strpos($this->gedcom, "\n2 RESN locked") === false && $this->getTag() !== 'RESN' && $this->getTag() !== 'CHAN'
-            );
+        return Auth::isEditor($this->record->tree()) && strpos($this->gedcom, "\n2 RESN locked") === false && $this->getTag() !== 'RESN' && $this->getTag() !== 'CHAN';
     }
 
     /**

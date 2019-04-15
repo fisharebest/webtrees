@@ -266,7 +266,7 @@ class IndividualController extends AbstractBaseController
         }
         $content = ob_get_clean();
 
-        if ($individual->canEdit() && !$fact->isPendingDeletion()) {
+        if ($fact->canEdit()) {
             $edit_links =
                 '<a class="btn btn-link" href="#" data-confirm="' . I18N::translate('Are you sure you want to delete this fact?') . '" onclick="return delete_fact(this.dataset.confirm, \'' . e($individual->tree()->name()) . '\', \'' . e($individual->xref()) . '\', \'' . $fact->id() . '\');" title="' . I18N::translate('Delete this name') . '">' . view('icons/delete') . '<span class="sr-only">' . I18N::translate('Delete this name') . '</span></a>' .
                 '<a class="btn btn-link" href="' . e(route('edit-name', ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'ged' => $individual->tree()->name()])) . '" title="' . I18N::translate('Edit the name') . '">' . view('icons/edit') . '<span class="sr-only">' . I18N::translate('Edit the name') . '</span></a>';
@@ -316,7 +316,7 @@ class IndividualController extends AbstractBaseController
             $container_class .= ' new';
         }
 
-        if ($individual->canEdit() && !$fact->isPendingDeletion()) {
+        if ($individual->canEdit()) {
             $edit_links = '<a class="btn btn-link" href="' . e(route('edit-fact', ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'ged' => $individual->tree()->name()])) . '" title="' . I18N::translate('Edit the gender') . '">' . view('icons/edit') . '<span class="sr-only">' . I18N::translate('Edit the gender') . '</span></a>';
         } else {
             $edit_links = '';

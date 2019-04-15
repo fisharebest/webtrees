@@ -21,7 +21,7 @@
     <h2 class="wt-page-title mx-auto">
         <?= $record->fullName() ?>
     </h2>
-    <?php if ($record->canEdit() && !$record->isPendingDeletion()) : ?>
+    <?php if ($record->canEdit()) : ?>
         <?= view('gedcom-record-page-menu', ['record' => $record]) ?>
     <?php endif ?>
 </div>

@@ -22,7 +22,7 @@
     <h2 class="wt-page-title mx-auto">
         <?= $media->fullName() ?>
     </h2>
-    <?php if ($media->canEdit() && !$media->isPendingDeletion()) : ?>
+    <?php if ($media->canEdit()) : ?>
         <?= view('media-page-menu', ['record' => $media]) ?>
     <?php endif ?>
 </div>
