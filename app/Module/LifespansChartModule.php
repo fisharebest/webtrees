@@ -198,9 +198,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         });
 
         // Sort the array in order of birth year
-        usort($individuals, static function (Individual $a, Individual $b) {
-            return Date::compare($a->getEstimatedBirthDate(), $b->getEstimatedBirthDate());
-        });
+        usort($individuals, Individual::birthDateComparator());
 
         // Round to whole decades
         $start_year = (int) floor($this->minYear($individuals) / 10) * 10;
@@ -249,6 +247,11 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             $birth_year = $this->jdToYear($birth_jd);
             $death_jd   = $individual->getEstimatedDeathDate()->maximumJulianDay();
             $death_year = $this->jdToYear($death_jd);
+
+            // Died before they were born?  Swapping the dates allows them to be shown.
+            if ($death_year < $birth_year) {
+                $death_year = $birth_year;
+            }
 
             // Don't show death dates in the future.
             $death_year = min($death_year, $current_year);
