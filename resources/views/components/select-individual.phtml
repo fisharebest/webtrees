@@ -5,16 +5,17 @@ use Fisharebest\Webtrees\Tree;
 
 /**
  * @var Individual|null $individual
- * @var string|null $id
- * @var string      $name
- * @var Tree        $tree
+ * @var string|null     $class
+ * @var string|null     $id
+ * @var string          $name
+ * @var Tree            $tree
  */
 
 ?>
 
 <select
     autocomplete="off"
-    class="form-control select2"
+    class="form-control select2 <?= $class ?? '' ?>"
     data-ajax--delay="350"
     data-ajax--minimum-input-length="2"
     data-ajax--type="POST"

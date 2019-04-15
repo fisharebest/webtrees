@@ -5,6 +5,7 @@ use Fisharebest\Webtrees\Tree;
 
 /**
  * @var GedcomRecord|null $submitter
+ * @var string|null       $class
  * @var string|null       $id
  * @var string            $name
  * @var Tree              $tree
@@ -13,15 +14,15 @@ use Fisharebest\Webtrees\Tree;
 ?>
 
 <select
-autocomplete="off"
-class="form-control select2"
-data-ajax--delay="350"
-data-ajax--minimum-input-length="2"
-data-ajax--type="POST"
-data-ajax--url="<?= e(route('select2-submitter', ['ged' => $tree->name()])) ?>"
-data-allow-clear="true"
-id="<?= e($id ?? $name) ?>"
-name="<?= e($name) ?>"
+    autocomplete="off"
+    class="form-control select2 <?= $class ?? '' ?>"
+    data-ajax--delay="350"
+    data-ajax--minimum-input-length="2"
+    data-ajax--type="POST"
+    data-ajax--url="<?= e(route('select2-submitter', ['ged' => $tree->name()])) ?>"
+    data-allow-clear="true"
+    id="<?= e($id ?? $name) ?>"
+    name="<?= e($name) ?>"
     <?= ($disabled ?? false) ? 'disabled' : '' ?>
     <?= ($required ?? false) ? 'required' : '' ?>
 >
