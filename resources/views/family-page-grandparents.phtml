@@ -16,18 +16,22 @@ use Fisharebest\Webtrees\I18N;
 
             <div class="align-self-center">
                 <?php if ($individual === null): ?>
-                    <?= view('chart-box', ['individual' => $individual]) ?>
+                    <?= view('chart-box', ['individual' => null]) ?>
                 <?php elseif ($family === null): ?>
                     <div class="wt-chart-box">
-                        <a class="btn btn-link" href="<?= e(route('add-parent-to-individual', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref(), 'gender' => 'M'])) ?>">
-                            <?= I18N::translate('Add a father') ?>
-                        </a>
+                        <?php if ($individual->canEdit()): ?>
+                            <a class="btn btn-link" href="<?= e(route('add-parent-to-individual', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref(), 'gender' => 'M'])) ?>">
+                                <?= I18N::translate('Add a father') ?>
+                            </a>
+                        <?php endif ?>
                     </div>
                 <?php elseif ($family->husband() === null): ?>
                     <div class="wt-chart-box">
-                        <a class="btn btn-link" href="<?= e(route('add-spouse-to-family', ['ged' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'HUSB'])) ?>">
-                            <?= I18N::translate('Add a father') ?>
-                        </a>
+                        <?php if ($family->canEdit()): ?>
+                            <a class="btn btn-link" href="<?= e(route('add-spouse-to-family', ['ged' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'HUSB'])) ?>">
+                                <?= I18N::translate('Add a father') ?>
+                            </a>
+                        <?php endif ?>
                     </div>
                 <?php else: ?>
                     <?= view('chart-box', ['individual' => $family ? $family->husband() : null]) ?>
@@ -42,18 +46,22 @@ use Fisharebest\Webtrees\I18N;
 
             <div class="align-self-center">
                 <?php if ($individual === null): ?>
-                    <?= view('chart-box', ['individual' => $individual]) ?>
+                    <?= view('chart-box', ['individual' => null]) ?>
                 <?php elseif ($family === null): ?>
                     <div class="wt-chart-box">
-                        <a class="btn btn-link" href="<?= e(route('add-parent-to-individual', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref(), 'gender' => 'F'])) ?>">
-                            <?= I18N::translate('Add a mother') ?>
-                        </a>
+                        <?php if ($individual->canEdit()): ?>
+                            <a class="btn btn-link" href="<?= e(route('add-parent-to-individual', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref(), 'gender' => 'F'])) ?>">
+                                <?= I18N::translate('Add a mother') ?>
+                            </a>
+                        <?php endif ?>
                     </div>
                 <?php elseif ($family->wife() === null): ?>
                     <div class="wt-chart-box">
-                        <a class="btn btn-link" href="<?= e(route('add-spouse-to-family', ['ged' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'WIFE'])) ?>">
-                            <?= I18N::translate('Add a mother') ?>
-                        </a>
+                        <?php if ($family->canEdit()): ?>
+                            <a class="btn btn-link" href="<?= e(route('add-spouse-to-family', ['ged' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'WIFE'])) ?>">
+                                <?= I18N::translate('Add a mother') ?>
+                            </a>
+                        <?php endif ?>
                     </div>
                 <?php else: ?>
                     <?= view('chart-box', ['individual' => $family ? $family->wife() : null]) ?>

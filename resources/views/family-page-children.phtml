@@ -28,17 +28,19 @@ use Fisharebest\Webtrees\I18N;
             </div>
         </div>
     <?php endforeach ?>
-    <div class="wt-chart-box">
-        <a class="btn btn-link" href="<?= e(route('add-child-to-family', ['gender' => 'U', 'ged' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
-            <?= I18N::translate('Add a child') ?>
-        </a>
-        <br>
-        <?php if ($family->numberOfChildren() > 1) : ?>
-            <a class="btn btn-link" href="<?= e(route('reorder-children', ['ged' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
-                <?= I18N::translate('Re-order children') ?>
+    <?php if ($family->canEdit()): ?>
+        <div class="wt-chart-box">
+            <a class="btn btn-link" href="<?= e(route('add-child-to-family', ['gender' => 'U', 'ged' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
+                <?= I18N::translate('Add a child') ?>
             </a>
-        <?php endif ?>
-    </div>
+            <br>
+            <?php if ($family->numberOfChildren() > 1) : ?>
+                <a class="btn btn-link" href="<?= e(route('reorder-children', ['ged' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
+                    <?= I18N::translate('Re-order children') ?>
+                </a>
+            <?php endif ?>
+        </div>
+    <?php endif ?>
 </div>
 <?php if ($family->children()->count() !== 1): ?>
     <div class="wt-chart-horizontal-spacer">
