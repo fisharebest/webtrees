@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
+use function view;
 
 /**
  * Class FamilyBookChartModule
@@ -287,7 +288,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
         }
         echo '<table cellspacing="0" cellpadding="0" border="0" ><tr><td>';
         if ($person instanceof Individual) {
-            echo FunctionsPrint::printPedigreePerson($person);
+            echo view('chart-box', ['individual' => $person]);
             echo '</td><td>',
             '<img class="linef1" src="', e(asset('css/images/hline.png')), '" width="8" height="3">';
         } else {
@@ -301,7 +302,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
                 foreach ($person->spouseFamilies() as $family) {
                     $spouse = $family->spouse($person);
                     echo '</td></tr><tr><td>';
-                    echo FunctionsPrint::printPedigreePerson($spouse);
+                    echo view('chart-box', ['individual' => $spouse]);
                     $numkids += 0.95;
                     echo '</td><td>';
                 }
@@ -397,7 +398,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
             '<td>';
             $lh = $savlh; // restore original line height
             //-- print the father box
-            echo FunctionsPrint::printPedigreePerson($family->husband());
+            echo view('chart-box', ['individual' => $family->husband()]);
             echo '</td>';
             if ($family->husband()) {
                 echo '<td>';
@@ -420,7 +421,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
             '<td><img class="linef3" alt="" role="presentation" src="', e(asset('css/images/hline.png')), '" height="3"></td>',
             '<td>';
             //-- print the mother box
-            echo FunctionsPrint::printPedigreePerson($family->wife());
+            echo view('chart-box', ['individual' => $family->wife()]);
             echo '</td>';
             if ($family->wife()) {
                 echo '<td>';

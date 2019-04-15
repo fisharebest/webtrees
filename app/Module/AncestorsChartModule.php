@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function view;
 
 /**
  * Class AncestorsChartModule
@@ -235,7 +236,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
     {
         ob_start();
 
-        echo FunctionsPrint::printPedigreePerson($ancestors[1]);
+        echo view('chart-box', ['individual' => $ancestors[1]]);
         foreach ($ancestors as $sosa => $individual) {
             foreach ($individual->childFamilies() as $family) {
                 FunctionsCharts::printSosaFamily($family, $individual->xref(), $sosa, '', '', '', $show_cousins);

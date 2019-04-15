@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use function view;
 
 /**
  * Class HourglassChartModule
@@ -308,14 +309,14 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         }
 
         echo '<table cellspacing="0" cellpadding="0" border="0" id="table2_' . $pid . '"><tr><td> ';
-        echo FunctionsPrint::printPedigreePerson($individual);
+        echo view('chart-box', ['individual' => $individual]);
         echo '</td><td> <img alt="" role="presentation" class="lineh1" src="' . e(asset('css/images/hline.png')) . '" width="7" height="3">';
 
         //----- Print the spouse
         if ($show_spouse) {
             foreach ($families as $family) {
                 echo "</td></tr><tr><td style='text-align:$otablealign'>";
-                echo FunctionsPrint::printPedigreePerson($family->spouse($individual));
+                echo view('chart-box', ['individual' => $family->spouse($individual)]);
                 echo '</td><td> </td>';
             }
             //-- add offset divs to make things line up better
@@ -444,7 +445,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
             echo '<td> <img alt="" role="presentation" class="lineh2" src="' . e(asset('css/images/hline.png')) . '" width="7" height="3"></td>';
             echo '<td class="myCharts"> ';
             //-- print the father box
-            echo FunctionsPrint::printPedigreePerson($family->husband());
+            echo view('chart-box', ['individual' => $family->husband()]);
             echo '</td>';
             if ($family->husband()) {
                 $ARID = $family->husband()->xref();
@@ -475,7 +476,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
                 '<td> <img alt="" role="presentation" class="lineh3" src="' . e(asset('css/images/hline.png')) . '" width="7" height="3"></td>',
             '<td class="myCharts"> ';
 
-            echo FunctionsPrint::printPedigreePerson($family->wife());
+            echo view('chart-box', ['individual' => $family->wife()]);
             echo '</td>';
             if ($family->wife()) {
                 $ARID = $family->wife()->xref();

@@ -41,23 +41,6 @@ use Ramsey\Uuid\Uuid;
 class FunctionsPrint
 {
     /**
-     * print the information for an individual chart box
-     * find and print a given individuals information for a pedigree chart
-     *
-     * @param Individual|null $person The person to print
-     *
-     * @return string
-     */
-    public static function printPedigreePerson(Individual $person = null): string
-    {
-        if ($person instanceof Individual) {
-            return view('chart-box', ['individual' => $person]);
-        }
-
-        return '<div class="wt-chart-box"></div>';
-    }
-
-    /**
      * print a note record
      *
      * @param Tree   $tree

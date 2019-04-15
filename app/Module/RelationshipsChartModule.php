@@ -32,6 +32,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function view;
 
 /**
  * Class RelationshipsChartModule
@@ -349,7 +350,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                     $max_y = max($max_y, $y);
                 } else {
                     $individual    = Individual::getInstance($xref, $tree);
-                    $table[$x][$y] = FunctionsPrint::printPedigreePerson($individual);
+                    $table[$x][$y] = view('chart-box', ['individual' => $individual]);
                 }
             }
             echo '<div class="wt-chart wt-chart-relationships">';
