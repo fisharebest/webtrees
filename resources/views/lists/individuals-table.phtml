@@ -309,7 +309,7 @@ $deathAgeData = [
 
         <tbody>
             <?php foreach ($individuals as $key => $individual) : ?>
-            <tr class="<?= $individual->isPendingDeletion() ? 'old' : ($individual->isPendingAddition() ? 'new' : '') ?>">
+            <tr class="<?= $individual->isPendingDeletion() ? 'wt-old' : ($individual->isPendingAddition() ? 'wt-new' : '') ?>">
                 <td colspan="2" data-sort="<?= e(str_replace([',', '@P.N.', '@N.N.'], 'AAAA', implode(',', array_reverse(explode(',', $individual->sortName()))))) ?>">
                     <?php foreach ($individual->getAllNames() as $num => $name) : ?>
                         <a title="<?= $name['type'] === 'NAME' ? '' : GedcomTag::getLabel($name['type'], $individual) ?>" href="<?= e($individual->url()) ?>" class="<?= $num === $individual->getPrimaryName() ? 'name2' : '' ?>">

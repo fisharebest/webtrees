@@ -1,0 +1,47 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<div class="align-self-center">
+    <div class="badge badge-secondary m-2">
+        <?php if ($family->children()->count() === 0): ?>
+            <?= I18N::translate('No children') ?>
+        <?php else: ?>
+            <?= I18N::plural('%s child', '%s children', $family->children()->count(), I18N::number($family->children()->count())) ?>
+        <?php endif ?>
+    </div>
+    <?php foreach ($family->children() as $n => $child): ?>
+        <div class="d-flex">
+            <?= view('chart-box', ['individual' => $child]) ?>
+            <div class="wt-chart-horizontal-spacer">
+                <?php if ($family->children()->count() === 1): ?>
+                    <div class="wt-chart-horizontal-line"></div>
+                <?php elseif ($n === 0): ?>
+                    <div class="wt-chart-horizontal-first-child"></div>
+                <?php elseif ($n + 1 === $family->children()->count()): ?>
+                    <div class="wt-chart-horizontal-last-child"></div>
+                <?php else: ?>
+                    <div class="wt-chart-horizontal-middle-child"><div class="wt-chart-horizontal-line"></div></div>
+                <?php endif ?>
+            </div>
+        </div>
+    <?php endforeach ?>
+    <div class="wt-chart-box">
+        <a class="btn btn-link" href="<?= e(route('add-child-to-family', ['gender' => 'U', 'ged' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
+            <?= I18N::translate('Add a child') ?>
+        </a>
+        <br>
+        <?php if ($family->numberOfChildren() > 1) : ?>
+            <a class="btn btn-link" href="<?= e(route('reorder-children', ['ged' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
+                <?= I18N::translate('Re-order children') ?>
+            </a>
+        <?php endif ?>
+    </div>
+</div>
+<?php if ($family->children()->count() !== 1): ?>
+    <div class="wt-chart-horizontal-spacer">
+        <div class="wt-chart-horizontal-line"></div>
+    </div>
+<?php endif ?>

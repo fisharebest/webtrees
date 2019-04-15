@@ -11,8 +11,20 @@
             <?= I18N::translate('Change family members') ?>
         </a>
 
+        <?php if ($record->husband() === null): ?>
+            <a class="dropdown-item menu-fam-addchil" href="<?= e(route('add-spouse-to-family', ['ged' => $record->tree()->name(), 'xref' => $record->xref(), 'famtag' => 'HUSB'])) ?>">
+                <?= I18N::translate('Add a husband') ?>
+            </a>
+        <?php endif ?>
+
+        <?php if ($record->wife() === null): ?>
+            <a class="dropdown-item menu-fam-addchil" href="<?= e(route('add-spouse-to-family', ['ged' => $record->tree()->name(), 'xref' => $record->xref(), 'famtag' => 'WIFE'])) ?>">
+                <?= I18N::translate('Add a wife') ?>
+            </a>
+        <?php endif ?>
+
         <a class="dropdown-item menu-fam-addchil" href="<?= e(route('add-child-to-family', ['gender' => 'U', 'ged' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
-            <?= I18N::translate('Add a child to this family') ?>
+            <?= I18N::translate('Add a child') ?>
         </a>
 
         <?php if ($record->numberOfChildren() > 1) : ?>

@@ -43,7 +43,7 @@
                 <th scope="row"></th>
                 <td>
                     <a href="<?= e(route('add-spouse-to-family', ['ged' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'HUSB'])) ?>">
-                        <?= I18N::translate('Add a husband to this family') ?>
+                        <?= I18N::translate('Add a husband') ?>
                     </a>
                 </td>
             </tr>
@@ -80,7 +80,7 @@
                 <th scope="row"></th>
                 <td>
                     <a href="<?= e(route('add-spouse-to-family', ['ged' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'WIFE'])) ?>">
-                        <?= I18N::translate('Add a wife to this family') ?>
+                        <?= I18N::translate('Add a wife') ?>
                     </a>
                 </td>
             </tr>
@@ -94,9 +94,9 @@
         foreach ($family->facts(array_merge(Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS), true) as $fact) {
             $found |= !$fact->isPendingDeletion();
             if ($fact->isPendingAddition()) {
-                $row_class = 'new';
+                $row_class = 'wt-new';
             } elseif ($fact->isPendingDeletion()) {
-                $row_class = 'old';
+                $row_class = 'wt-old';
             } else {
                 $row_class = '';
             }

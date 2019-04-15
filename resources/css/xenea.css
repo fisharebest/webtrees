@@ -706,7 +706,7 @@ table {
 /*
  * Search
  *
- * wt-search-page, wt-general-serach-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
+ * wt-search-page, wt-general-search-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
  */
 
 #content #home-page {
@@ -839,10 +839,6 @@ div.fact_SHARED_NOTE {
 	border-color: #ff2080;
 }
 
-.tabs_table {
-	width: 99%;
-}
-
 .name1 {
 	font-weight: bold;
 	font-size: 12px;
@@ -858,12 +854,6 @@ a:hover .name1, a:hover .name2 {
 	font-size: 12px;
 }
 
-a:hover .nameZoom {
-	color: #f00;
-	font-size: 16px;
-	font-weight: bold;
-}
-
 .details0,
 .details1 {
 	font-size: 11px;
@@ -871,12 +861,6 @@ a:hover .nameZoom {
 
 .details2 {
 	font-size: 12px;
-}
-
-.nameZoom {
-	color: #555;
-	font-size: 16px;
-	font-weight: bold;
 }
 
 .details_label {
@@ -925,12 +909,6 @@ a:hover .nameZoom {
 	margin: 2px;
 }
 
-.gender_image {
-	margin: 0 3px;
-	border: 0;
-	vertical-align: middle;
-}
-
 .thumbnail {
 	height: auto;
 	padding: 3px;
@@ -939,11 +917,6 @@ a:hover .nameZoom {
 .icon {
 	border: 0;
 	padding: 0 5px;
-}
-
-.sublinks_cell {
-	background-color: #edf7fd;
-	font-size: 12px;
 }
 
 .submenu .icon {
@@ -957,10 +930,6 @@ a:hover .nameZoom {
 	font-size: 15px;
 	margin-top: 15px;
 	vertical-align: bottom;
-}
-
-#family-table .subheaders:first-child {
-	width: 285px;
 }
 
 .parentdeath {
@@ -1194,11 +1163,11 @@ a:hover .nameZoom {
 }
 
 /* ---Pending edits--- */
-.new {
+.wt-new {
 	outline: solid blue 1px;
 }
 
-.old {
+.wt-old {
 	outline: solid red 1px;
 }
 
@@ -1224,12 +1193,6 @@ a:hover .nameZoom {
 
 .gchart {
 	border: solid #81a9cb 1px;
-}
-
-/* ---Find special characters--- */
-.largechars {
-	font-family: monospace;
-	font-size: 200%;
 }
 
 #facts_content dd {
@@ -1685,14 +1648,6 @@ div.faq_body {
 
 /* ======== Indi tabs ======== */
 /* Facts & Events tab */
-#personal_facts_content .fact_NOTE,
-#personal_facts_content .fact_SOUR,
-#family-table .fact_NOTE,
-#family-table .fact_SOUR {
-	margin: 5px 3px 5px 0;
-	clear: both;
-}
-
 .media-display-image {
 	float: left;
 }
@@ -2844,7 +2799,7 @@ a > .wt-icon-arrow-up:hover {
 /*
  * Search
  *
- * wt-search-page, wt-general-serach-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
+ * wt-search-page, wt-general-search-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
  */
 
 /* Some menus (e.g. languages) can be longer than a page */

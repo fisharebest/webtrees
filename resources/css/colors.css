@@ -685,7 +685,7 @@ table {
 /*
  * Search
  *
- * wt-search-page, wt-general-serach-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
+ * wt-search-page, wt-general-search-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
  */
 
 /* ios on click workaround */
@@ -820,10 +820,6 @@ div.fact_SHARED_NOTE {
 	background-color: #fdd;
 }
 
-.tabs_table {
-	width: 99%;
-}
-
 .name1 {
 }
 
@@ -836,20 +832,8 @@ a:hover .name1, a:hover .name2 {
 	font-size: 12px;
 }
 
-a:hover .nameZoom {
-	color: #f00;
-	font-size: 16px;
-	font-weight: bold;
-}
-
 .details2 {
 	font-size: 12px;
-}
-
-.nameZoom {
-	color: #333;
-	font-size: 16px;
-	font-weight: bold;
 }
 
 .details_label {
@@ -897,12 +881,6 @@ a:hover .nameZoom {
 	margin: 2px;
 }
 
-.gender_image {
-	margin: 0 3px;
-	border: 0;
-	vertical-align: middle;
-}
-
 .thumbnail {
 	height: auto;
 	padding: 3px;
@@ -911,11 +889,6 @@ a:hover .nameZoom {
 .icon {
 	border: 0;
 	padding: 0 5px;
-}
-
-.sublinks_cell {
-	background-color: #9be;
-	font-size: 12px;
 }
 
 .submenu .icon {
@@ -929,10 +902,6 @@ a:hover .nameZoom {
 	font-size: 15px;
 	margin-top: 15px;
 	vertical-align: bottom;
-}
-
-#family-table .subheaders:first-child {
-	width: 285px;
 }
 
 .parentdeath {
@@ -1171,12 +1140,10 @@ a:hover .nameZoom {
 }
 
 /* ---Pending edits--- */
-.new {
-	outline: solid blue 1px;
+.wt-new {
 }
 
-.old {
-	outline: solid red 1px;
+.wt-old {
 }
 
 .tag_cloud {
@@ -1201,12 +1168,6 @@ a:hover .nameZoom {
 
 .gchart {
 	border: solid #999 1px;
-}
-
-/* ---Find special characters--- */
-.largechars {
-	font-family: monospace;
-	font-size: 200%;
 }
 
 #facts_content dd {
@@ -1707,14 +1668,6 @@ div.faq_body {
 
 /* ======== Indi tabs ======== */
 /* Facts & Events tab */
-#personal_facts_content .fact_NOTE,
-#personal_facts_content .fact_SOUR,
-#family-table .fact_NOTE,
-#family-table .fact_SOUR {
-	margin: 5px 3px 5px 0;
-	clear: both;
-}
-
 .media-display-image {
 	float: left;
 }
@@ -2830,7 +2783,7 @@ i[class*="wt-icon-media"] {
 /*
  * Search
  *
- * wt-search-page, wt-general-serach-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
+ * wt-search-page, wt-general-search-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
  */
 
 /* Some menus (e.g. languages) can be longer than a page */

@@ -361,7 +361,7 @@ table {
 /*
  * Search
  *
- * wt-search-page, wt-general-serach-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
+ * wt-search-page, wt-general-search-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
  */
 
 /* ====== Round Corners ======== */
@@ -499,29 +499,12 @@ div.fact_SHARED_NOTE {
 	background-color: #fdd;
 }
 
-.tabs_table {
-	width: 99%;
-}
-
-
-
 .name1, .name2 {
 	color: #337;
 }
 
 a:hover, a:hover .name1, a:hover .name2 {
 	color: #f00;
-}
-
-a:hover .nameZoom {
-	font-size: 16px;
-	font-weight: bold;
-}
-
-.nameZoom {
-	color: #555;
-	font-size: 16px;
-	font-weight: bold;
 }
 
 .details_label {
@@ -569,12 +552,6 @@ a:hover .nameZoom {
 	margin: 2px;
 }
 
-.gender_image {
-	margin: 0 3px;
-	border: 0;
-	vertical-align: middle;
-}
-
 .thumbnail {
 	height: auto;
 	padding: 3px;
@@ -583,10 +560,6 @@ a:hover .nameZoom {
 .icon {
 	border: 0;
 	padding: 0 5px;
-}
-
-.sublinks_cell {
-	background-color: #ccc;
 }
 
 .submenu .icon {
@@ -600,10 +573,6 @@ a:hover .nameZoom {
 	font-size: 15px;
 	margin-top: 15px;
 	vertical-align: bottom;
-}
-
-#family-table .subheaders:first-child {
-	width: 295px;
 }
 
 .parentdeath {
@@ -834,11 +803,11 @@ a:hover .nameZoom {
 }
 
 /* ---Pending edits--- */
-.new {
+.wt-new {
 	outline: solid #00f 1px;
 }
 
-.old {
+.wt-old {
 	outline: solid #f00 1px;
 }
 
@@ -864,12 +833,6 @@ a:hover .nameZoom {
 
 .gchart {
 	border: 0;
-}
-
-/* ---Find special characters--- */
-.largechars {
-	font-family: monospace;
-	font-size: 200%;
 }
 
 #facts_content dd {
@@ -1404,14 +1367,6 @@ div.faq_body {
 
 /* ======== Indi tabs ======== */
 /* Facts & Events tab */
-#personal_facts_content .fact_NOTE,
-#personal_facts_content .fact_SOUR,
-#family-table .fact_NOTE,
-#family-table .fact_SOUR {
-	margin: 5px 3px 5px 0;
-	clear: both;
-}
-
 .media-display-image {
 	float: left;
 }
@@ -2482,7 +2437,7 @@ a > .wt-icon-arrow-up:hover {
 /*
  * Search
  *
- * wt-search-page, wt-general-serach-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
+ * wt-search-page, wt-general-search-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
  */
 
 /* Some menus (e.g. languages) can be longer than a page */

@@ -1,0 +1,40 @@
+<div class="d-flex">
+    <div class="align-self-center">
+        <div class="d-flex">
+            <div class="wt-chart-horizontal-spacer">
+                <div class="wt-chart-horizontal-first-parent"></div>
+            </div>
+
+            <div class="align-self-center">
+                <?= view('chart-box', ['individual' => $family ? $family->husband() : null]) ?>
+            </div>
+
+            <?php if ($generations > 1): ?>
+                <div class="wt-chart-horizontal-spacer">
+                    <div class="wt-chart-horizontal-line"></div>
+                </div>
+
+                <?= view('chart-parents', ['family' => $family && $family->husband() ? $family->husband()->primaryChildFamily() : null, 'generations' => $generations - 1]) ?>
+            <?php endif ?>
+        </div>
+
+        <div class="d-flex">
+            <div class="wt-chart-horizontal-spacer">
+                <div class="wt-chart-horizontal-last-parent"></div>
+            </div>
+
+            <div class="align-self-center">
+                <?= view('chart-box', ['individual' => $family ? $family->wife() : null ]) ?>
+            </div>
+
+            <?php if ($generations > 1): ?>
+                <div class="wt-chart-horizontal-spacer">
+                    <div class="wt-chart-horizontal-line"></div>
+                </div>
+
+                <?= view('chart-parents', ['family' => $family && $family->wife() ? $family->wife()->primaryChildFamily() : null, 'generations' => $generations - 1]) ?>
+            <?php endif ?>
+        </div>
+    </div>
+</div>
+

@@ -114,10 +114,10 @@ class FunctionsPrintFacts
         // New or deleted facts need different styling
         $styleadd = '';
         if ($fact->isPendingAddition()) {
-            $styleadd = 'new';
+            $styleadd = 'wt-new';
         }
         if ($fact->isPendingDeletion()) {
-            $styleadd = 'old';
+            $styleadd = 'wt-old';
         }
 
         // Event of close relative
@@ -720,10 +720,10 @@ class FunctionsPrintFacts
 
         $nlevel = $level + 1;
         if ($fact->isPendingAddition()) {
-            $styleadd = 'new';
+            $styleadd = 'wt-new';
             $can_edit = $level === 1 && $fact->canEdit();
         } elseif ($fact->isPendingDeletion()) {
-            $styleadd = 'old';
+            $styleadd = 'wt-old';
             $can_edit = false;
         } else {
             $styleadd = '';
@@ -1084,10 +1084,10 @@ class FunctionsPrintFacts
         $tree    = $parent->tree();
 
         if ($fact->isPendingAddition()) {
-            $styleadd = 'new';
+            $styleadd = 'wt-new';
             $can_edit = $level == 1 && $fact->canEdit();
         } elseif ($fact->isPendingDeletion()) {
-            $styleadd = 'old';
+            $styleadd = 'wt-old';
             $can_edit = false;
         } else {
             $styleadd = '';

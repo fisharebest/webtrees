@@ -43,7 +43,7 @@ $count_sources = DB::table('sources')
 
     <tbody>
         <?php foreach ($repositories as $repository) : ?>
-            <tr class="<?= $repository->isPendingDeletion() ? 'old' : ($repository->isPendingAddition() ? 'new' : '') ?>">
+            <tr class="<?= $repository->isPendingDeletion() ? 'wt-old' : ($repository->isPendingAddition() ? 'wt-new' : '') ?>">
                 <!-- Repository name -->
                 <td data-sort="<?= e($repository->sortName()) ?>">
                     <a href="<?= e($repository->url()) ?>">

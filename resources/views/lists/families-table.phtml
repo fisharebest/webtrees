@@ -289,7 +289,7 @@ $marriageAgeData = [
             <?php $husb = $family->husband() ?? new Individual('H', '0 @H@ INDI', null, $family->tree()) ?>
             <?php $wife = $family->wife() ?? new Individual('W', '0 @W@ INDI', null, $family->tree()) ?>
 
-            <tr class="<?= $family->isPendingDeletion() ? 'old' : ($family->isPendingAddition() ? 'new' : '') ?>">
+            <tr class="<?= $family->isPendingDeletion() ? 'wt-old' : ($family->isPendingAddition() ? 'wt-new' : '') ?>">
                 <!-- Husband name -->
                 <td colspan="2" data-sort="<?= e(str_replace([',', '@P.N.', '@N.N.'], 'AAAA', implode(',', array_reverse(explode(',', $husb->sortName()))))) ?>">
                     <?php foreach ($husb->getAllNames() as $num => $name) : ?>

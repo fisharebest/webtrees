@@ -324,15 +324,15 @@ table {
 /*
  * Search
  *
- * wt-search-page, wt-general-serach-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
+ * wt-search-page, wt-general-search-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
  */
 
-/* ios on click workaround */
 /* ---Pending edits--- */
-.new {
+.wt-new {
 	outline: solid thin blue;
 }
-.old {
+
+.wt-old {
 	outline: solid thin red;
 }
 
@@ -757,11 +757,6 @@ a:hover {
     text-decoration: underline!important;
 }
 
-.nameZoom {
-    font-size: 16px;
-    font-weight: bold;
-}
-
 /* ==== Theme select block === */
 .theme_form ul {
 	margin: -10px auto;
@@ -968,14 +963,6 @@ div.faq_body {
 
 /* ======== Indi tabs ======== */
 /* Facts & Events tab */
-#personal_facts_content .fact_NOTE,
-#personal_facts_content .fact_SOUR,
-#family-table .fact_NOTE,
-#family-table .fact_SOUR {
-	margin: 5px 3px 5px 0;
-	clear: both;
-}
-
 .media-display-image {
 	float: left;
 }
@@ -2200,7 +2187,7 @@ a > .wt-icon-arrow-up:hover {
 /*
  * Search
  *
- * wt-search-page, wt-general-serach-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
+ * wt-search-page, wt-general-search-page/wt-phonetic-search-page/wt-advanced-search-page/wt-search-replace-page
  */
 
 /* Some menus (e.g. languages) can be longer than a page */

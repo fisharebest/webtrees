@@ -85,7 +85,7 @@ $count_sources = DB::table('sources')
 
     <tbody>
         <?php foreach ($notes as $note) : ?>
-            <tr class="<?= $note->isPendingDeletion() ? 'old' : ($note->isPendingAddition() ? 'new' : '') ?>">
+            <tr class="<?= $note->isPendingDeletion() ? 'wt-old' : ($note->isPendingAddition() ? 'wt-new' : '') ?>">
                 <!-- Title -->
                 <td data-sort="<?= e($note->sortName()) ?>">
                     <a href="<?= e($note->url()) ?>">

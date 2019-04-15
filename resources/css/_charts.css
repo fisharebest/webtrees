@@ -12,7 +12,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 @import "_chart-ancestors.css";
 @import "_chart-compact.css";
 @import "_chart-descendants.css";
@@ -60,18 +59,17 @@
 /* Lines for horizontal trees, such as the family page */
 .wt-chart-horizontal-spacer {
 	width: 1rem;
-	height: 100%;
 }
 
 .wt-chart-horizontal-line {
-	height: 0;
-	border-top: var(--chart-line);
+	height: 50%;
+	border-bottom: var(--chart-line);
 }
 
 .wt-chart-horizontal-first-child {
 	height: 50%;
-	width: 100%;
-	bottom: 0;
+	position: relative;
+	top: 50%;
 	border-top: var(--chart-line);
 	border-right: var(--chart-line);
 	border-radius: 0 var(--chart-line-radius) 0 0;
@@ -79,14 +77,11 @@
 
 .wt-chart-horizontal-middle-child {
 	height: 100%;
-	width: 100%;
 	border-right: var(--chart-line);
 }
 
 .wt-chart-horizontal-last-child {
 	height: 50%;
-	width: 100%;
-	top: 0;
 	border-bottom: var(--chart-line);
 	border-right: var(--chart-line);
 	border-radius: 0 0 var(--chart-line-radius) 0;
@@ -94,8 +89,8 @@
 
 .wt-chart-horizontal-first-parent {
 	height: 50%;
-	width: 100%;
-	bottom: 0;
+	position: relative;
+	top: 50%;
 	border-top: var(--chart-line);
 	border-left: var(--chart-line);
 	border-radius: var(--chart-line-radius) 0 0 0;
@@ -103,8 +98,6 @@
 
 .wt-chart-horizontal-last-parent {
 	height: 50%;
-	width: 100%;
-	top: 0;
 	border-bottom: var(--chart-line);
 	border-left: var(--chart-line);
 	border-radius: 0 0 0 var(--chart-line-radius);
