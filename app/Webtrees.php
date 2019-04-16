@@ -192,7 +192,7 @@ class Webtrees
     /**
      * The webtrees application is built from middleware.
      *
-     * @return MiddlewareInterface[]
+     * @return string[]
      */
     public function middleware(): array
     {
