@@ -136,11 +136,11 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
         if (empty($facts)) {
             $content = view('modules/todays_events/empty');
         } elseif ($infoStyle === 'list') {
-            $content = view('modules/todays_events/list', [
+            $content = view('lists/anniversaries-list', [
                 'facts' => $facts,
             ]);
         } else {
-            $content = view('modules/todays_events/table', [
+            $content = view('lists/anniversaries-table', [
                 'facts' => $facts,
             ]);
         }

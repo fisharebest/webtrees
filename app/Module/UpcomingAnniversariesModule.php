@@ -155,11 +155,11 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
                 ]);
             }
         } elseif ($infoStyle === 'list') {
-            $content = view('modules/upcoming_events/list', [
+            $content = view('lists/anniversaries-list', [
                 'facts' => $facts,
             ]);
         } else {
-            $content = view('modules/upcoming_events/table', [
+            $content = view('lists/anniversaries-table', [
                 'facts' => $facts,
             ]);
         }

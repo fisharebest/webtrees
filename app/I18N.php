@@ -658,54 +658,6 @@ class I18N
     }
 
     /**
-     * Convert a number of seconds into a relative time. For example, 630 => "10 hours, 30 minutes ago"
-     *
-     * @param int $seconds
-     *
-     * @return string
-     */
-    public static function timeAgo($seconds): string
-    {
-        $minute = 60;
-        $hour   = 60 * $minute;
-        $day    = 24 * $hour;
-        $month  = 30 * $day;
-        $year   = 365 * $day;
-
-        if ($seconds > $year) {
-            $years = intdiv($seconds, $year);
-
-            return self::plural('%s year ago', '%s years ago', $years, self::number($years));
-        }
-
-        if ($seconds > $month) {
-            $months = intdiv($seconds, $month);
-
-            return self::plural('%s month ago', '%s months ago', $months, self::number($months));
-        }
-
-        if ($seconds > $day) {
-            $days = intdiv($seconds, $day);
-
-            return self::plural('%s day ago', '%s days ago', $days, self::number($days));
-        }
-
-        if ($seconds > $hour) {
-            $hours = intdiv($seconds, $hour);
-
-            return self::plural('%s hour ago', '%s hours ago', $hours, self::number($hours));
-        }
-
-        if ($seconds > $minute) {
-            $minutes = intdiv($seconds, $minute);
-
-            return self::plural('%s minute ago', '%s minutes ago', $minutes, self::number($minutes));
-        }
-
-        return self::plural('%s second ago', '%s seconds ago', $seconds, self::number($seconds));
-    }
-
-    /**
      * What format is used to display dates in the current locale?
      *
      * @return string
