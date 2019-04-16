@@ -432,7 +432,8 @@ class SetupController extends AbstractBaseController
         file_put_contents(Webtrees::CONFIG_FILE, $config_ini_php);
 
         // Login as the new user
-        Session::start();
+        $request = app(ServerRequestInterface::class);
+        Session::start($request);
         Auth::login($admin);
     }
 }

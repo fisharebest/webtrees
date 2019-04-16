@@ -40,7 +40,7 @@ class UseSession implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // Sessions
-        Session::start();
+        Session::start($request);
 
         // Update the last-login time no more than once a minute.
         $next_session_update = Carbon::createFromTimestamp((int) Session::get('session_time_updates'))->addMinute();
