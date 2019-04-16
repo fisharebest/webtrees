@@ -29,7 +29,8 @@ class SessionDatabaseHandler implements SessionHandlerInterface
     /** @var ServerRequestInterface */
     private $request;
 
-    public function __construct(ServerRequestInterface $request) {
+    public function __construct(ServerRequestInterface $request)
+    {
         $this->request = $request;
     }
 
@@ -111,5 +112,4 @@ class SessionDatabaseHandler implements SessionHandlerInterface
 
         return true;
     }
-
 }
