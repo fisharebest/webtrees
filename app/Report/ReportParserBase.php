@@ -56,7 +56,7 @@ class ReportParserBase
 
         xml_set_character_data_handler(
             $this->xml_parser,
-            function ($parser, $data): void {
+            function ($parser, string $data): void {
                 $this->characterData($parser, $data);
             }
         );

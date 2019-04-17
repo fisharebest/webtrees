@@ -1178,17 +1178,17 @@ class ReportParserGenerate extends ReportParserBase
 
                 xml_set_element_handler(
                     $repeat_parser,
-                    function ($parser, string $name, array $attrs) {
+                    function ($parser, string $name, array $attrs): void {
                         $this->startElement($parser, $name, $attrs);
                     },
-                    function ($parser, string $name) {
+                    function ($parser, string $name): void {
                         $this->endElement($parser, $name);
                     }
                 );
 
                 xml_set_character_data_handler(
                     $repeat_parser,
-                    function ($parser, $data) {
+                    function ($parser, string $data): void {
                         $this->characterData($parser, $data);
                     }
                 );
@@ -1379,17 +1379,17 @@ class ReportParserGenerate extends ReportParserBase
 
                 xml_set_element_handler(
                     $repeat_parser,
-                    function ($parser, string $name, array $attrs) {
+                    function ($parser, string $name, array $attrs): void {
                         $this->startElement($parser, $name, $attrs);
                     },
-                    function ($parser, string $name) {
+                    function ($parser, string $name): void {
                         $this->endElement($parser, $name);
                     }
                 );
 
                 xml_set_character_data_handler(
                     $repeat_parser,
-                    function ($parser, $data) {
+                    function ($parser, string $data): void {
                         $this->characterData($parser, $data);
                     }
                 );
@@ -2294,17 +2294,17 @@ class ReportParserGenerate extends ReportParserBase
 
                     xml_set_element_handler(
                         $repeat_parser,
-                        function ($parser, string $name, array $attrs) {
+                        function ($parser, string $name, array $attrs): void {
                             $this->startElement($parser, $name, $attrs);
                         },
-                        function ($parser, string $name) {
+                        function ($parser, string $name): void {
                             $this->endElement($parser, $name);
                         }
                     );
 
                     xml_set_character_data_handler(
                         $repeat_parser,
-                        function ($parser, $data) {
+                        function ($parser, string $data): void {
                             $this->characterData($parser, $data);
                         }
                     );
@@ -2528,17 +2528,17 @@ class ReportParserGenerate extends ReportParserBase
 
                 xml_set_element_handler(
                     $repeat_parser,
-                    function ($parser, string $name, array $attrs) {
+                    function ($parser, string $name, array $attrs): void {
                         $this->startElement($parser, $name, $attrs);
                     },
-                    function ($parser, string $name) {
+                    function ($parser, string $name): void {
                         $this->endElement($parser, $name);
                     }
                 );
 
                 xml_set_character_data_handler(
                     $repeat_parser,
-                    function ($parser, $data) {
+                    function ($parser, string $data): void {
                         $this->characterData($parser, $data);
                     }
                 );
