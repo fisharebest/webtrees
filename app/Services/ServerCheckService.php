@@ -25,7 +25,6 @@ use function array_map;
 use function explode;
 use function extension_loaded;
 use function in_array;
-use function ini_get;
 use function strtolower;
 use function sys_get_temp_dir;
 use function trim;

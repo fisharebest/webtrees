@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\MockGlobalFunctions;
 use Fisharebest\Webtrees\TestCase;
 
 /**
@@ -28,11 +29,11 @@ use Fisharebest\Webtrees\TestCase;
  */
 function ini_get(...$args)
 {
-    if (TimeoutServiceTest::$mock_functions === null) {
+    if (TestCase::$mock_functions === null) {
         return \ini_get(...$args);
     }
 
-    return TimeoutServiceTest::$mock_functions->ini_get(...$args);
+    return TestCase::$mock_functions->iniGet(...$args);
 }
 
 /**
@@ -44,24 +45,11 @@ function ini_get(...$args)
  */
 function microtime(...$args)
 {
-    if (TimeoutServiceTest::$mock_functions === null) {
+    if (TestCase::$mock_functions === null) {
         return \microtime(...$args);
     }
 
-    return TimeoutServiceTest::$mock_functions->microtime(...$args);
-}
-
-/**
- * Class mockGlobals
- */
-class mockGlobals
-{
-    public function microtime()
-    {
-    }
-    public function ini_get()
-    {
-    }
+    return TestCase::$mock_functions->microtime(...$args);
 }
 
 /**
@@ -69,9 +57,6 @@ class mockGlobals
  */
 class TimeoutServiceTest extends TestCase
 {
-    /** @var object */
-    public static $mock_functions;
-
     /**
      * @return void
      */
@@ -79,7 +64,7 @@ class TimeoutServiceTest extends TestCase
     {
         parent::setUp();
 
-        self::$mock_functions = $this->createMock(mockGlobals::class);
+        self::$mock_functions = $this->getMockForAbstractClass(MockGlobalFunctions::class);
     }
 
     /**
@@ -100,12 +85,12 @@ class TimeoutServiceTest extends TestCase
      */
     public function testNoTimeOut(): void
     {
-        $now = \microtime(true);
+        $now = 1500000000.0;
 
         $timeout_service = new TimeoutService($now);
 
         self::$mock_functions
-            ->method('ini_get')
+            ->method('iniGet')
             ->with('max_execution_time')
             ->willReturn('0');
 
@@ -120,12 +105,12 @@ class TimeoutServiceTest extends TestCase
      */
     public function testTimeOutReached(): void
     {
-        $now = \microtime(true);
+        $now = 1500000000.0;
 
         $timeout_service = new TimeoutService($now);
 
         self::$mock_functions
-            ->method('ini_get')
+            ->method('iniGet')
             ->with('max_execution_time')
             ->willReturn('30');
 
@@ -150,7 +135,7 @@ class TimeoutServiceTest extends TestCase
         $timeout_service = new TimeoutService($now);
 
         self::$mock_functions
-            ->method('ini_get')
+            ->method('iniGet')
             ->with('max_execution_time')
             ->willReturn('30');
 

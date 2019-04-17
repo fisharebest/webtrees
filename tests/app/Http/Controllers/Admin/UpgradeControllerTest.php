@@ -177,7 +177,7 @@ class UpgradeControllerTest extends TestCase
     public function testStepPendingExist(): void
     {
         $tree = Tree::create('name', 'title');
-        $user = (new UserService)->create('user', 'name', 'email', 'password');
+        $user = (new UserService())->create('user', 'name', 'email', 'password');
         Auth::login($user);
         $tree->createIndividual("0 @@ INDI\n1 NAME Joe Bloggs");
 

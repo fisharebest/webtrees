@@ -15,8 +15,9 @@
  */
 declare(strict_types=1);
 
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
+
 use Fisharebest\Webtrees\GuestUser;
-use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 

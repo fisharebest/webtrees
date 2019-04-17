@@ -345,7 +345,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
                     $html  .= '<div id="' . $person->xref() . '" class="fan_chart_menu">';
                     $html  .= '<div class="person_box"><div class="details1">';
                     $html .= '<div class="charts">';
-                    $html  .= '<a href="' . e($person->url()) . '" class="dropdown-item">' . $name. '</a>';
+                    $html  .= '<a href="' . e($person->url()) . '" class="dropdown-item">' . $name . '</a>';
                     foreach ($theme->individualBoxMenu($person) as $menu) {
                         $html .= '<a href="' . e($menu->getLink()) . '" class="dropdown-item p-1 ' . e($menu->getClass()) . '">' . $menu->getLabel() . '</a>';
                     }

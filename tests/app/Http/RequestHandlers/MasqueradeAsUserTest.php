@@ -15,8 +15,9 @@
  */
 declare(strict_types=1);
 
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
+
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Http\RequestHandlers\MasqueradeAsUser;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\TestCase;

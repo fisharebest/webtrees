@@ -316,8 +316,8 @@ class ChartDistribution
      */
     public function chartDistribution(
         string $chart_shows = 'world',
-        string $chart_type  = '',
-        string $surname     = ''
+        string $chart_type = '',
+        string $surname = ''
     ): string {
         I18N::init(WT_LOCALE);
 

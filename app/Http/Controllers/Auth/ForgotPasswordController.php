@@ -78,7 +78,8 @@ class ForgotPasswordController extends AbstractBaseController
                 view('emails/password-reset-text', [
                     'user'         => $user,
                     'new_password' => $password,
-                ]), view('emails/password-reset-html', [
+                ]),
+                view('emails/password-reset-html', [
                     'user'         => $user,
                     'new_password' => $password,
                 ])

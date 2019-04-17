@@ -34,7 +34,7 @@ class PortugueseSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
     {
         parent::setUp();
 
-        $this->surname_tradition = new PortugueseSurnameTradition;
+        $this->surname_tradition = new PortugueseSurnameTradition();
     }
 
     /**

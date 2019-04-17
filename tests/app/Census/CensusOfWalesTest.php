@@ -31,7 +31,7 @@ class CensusOfWalesTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testPlace(): void
     {
-        $census = new CensusOfWales;
+        $census = new CensusOfWales();
 
         $this->assertSame('Wales', $census->censusPlace());
     }
@@ -45,7 +45,7 @@ class CensusOfWalesTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testAllDates(): void
     {
-        $census = new CensusOfWales;
+        $census = new CensusOfWales();
 
         $census_dates = $census->allCensusDates();
 

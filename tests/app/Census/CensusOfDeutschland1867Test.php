@@ -31,7 +31,7 @@ class CensusOfDeutschland1867Test extends \Fisharebest\Webtrees\TestCase
      */
     public function testPlaceAndDate(): void
     {
-        $census = new CensusOfDeutschland1867;
+        $census = new CensusOfDeutschland1867();
 
         $this->assertSame('Mecklenburg-Schwerin, Deutschland', $census->censusPlace());
         $this->assertSame('03 DEC 1867', $census->censusDate());
@@ -47,7 +47,7 @@ class CensusOfDeutschland1867Test extends \Fisharebest\Webtrees\TestCase
     */
     public function testColumns(): void
     {
-        $census  = new CensusOfDeutschland1867;
+        $census  = new CensusOfDeutschland1867();
         $columns = $census->columns();
 
         $this->assertCount(23, $columns);

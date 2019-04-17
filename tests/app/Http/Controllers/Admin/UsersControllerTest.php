@@ -91,7 +91,7 @@ class UsersControllerTest extends TestCase
      */
     public function testEdit(): void
     {
-        $user       = (new UserService)->create('user', 'real', 'email', 'pass');
+        $user       = (new UserService())->create('user', 'real', 'email', 'pass');
         $controller = new UsersController(new ModuleService(), new UserService());
         $request    = self::createRequest('GET', ['route' => 'admin-users-edit', 'user_id' => (string) $user->id()]);
         $response   = $controller->edit($request);
@@ -105,7 +105,7 @@ class UsersControllerTest extends TestCase
     public function testUpdate(): void
     {
         /** @var User $user */
-        $user       = (new UserService)->create('user', 'real', 'email', 'pass');
+        $user       = (new UserService())->create('user', 'real', 'email', 'pass');
         $controller = new UsersController(new ModuleService(), new UserService());
         $request    = self::createRequest('POST', ['route' => 'admin-users-edit'], [
             'user_id'        => $user->id(),

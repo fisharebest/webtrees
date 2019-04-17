@@ -34,7 +34,7 @@ class IcelandicSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
     {
         parent::setUp();
 
-        $this->surname_tradition = new IcelandicSurnameTradition;
+        $this->surname_tradition = new IcelandicSurnameTradition();
     }
 
     /**

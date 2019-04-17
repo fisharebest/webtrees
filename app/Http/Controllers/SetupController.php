@@ -39,7 +39,6 @@ use Illuminate\Database\Capsule\Manager;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
-use function ini_get;
 use function random_bytes;
 use const WT_DATA_DIR;
 

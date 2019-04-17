@@ -34,7 +34,7 @@ class PolishSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
     {
         parent::setUp();
 
-        $this->surname_tradition = new PolishSurnameTradition;
+        $this->surname_tradition = new PolishSurnameTradition();
     }
 
     /**

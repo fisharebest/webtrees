@@ -16,12 +16,12 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Place;
+namespace Fisharebest\Webtrees;
 
 /**
  * Test harness for the class Place
  */
-class PlaceTest extends \Fisharebest\Webtrees\TestCase
+class PlaceTest extends TestCase
 {
     /**
      * Test that the class exists

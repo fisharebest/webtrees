@@ -34,7 +34,7 @@ class MatrilinealSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
     {
         parent::setUp();
 
-        $this->surname_tradition = new MatrilinealSurnameTradition;
+        $this->surname_tradition = new MatrilinealSurnameTradition();
     }
 
     /**

@@ -31,7 +31,7 @@ class CensusOfEnglandTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testPlace(): void
     {
-        $census = new CensusOfEngland;
+        $census = new CensusOfEngland();
 
         $this->assertSame('England', $census->censusPlace());
     }
@@ -45,7 +45,7 @@ class CensusOfEnglandTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testAllDates(): void
     {
-        $census = new CensusOfEngland;
+        $census = new CensusOfEngland();
 
         $census_dates = $census->allCensusDates();
 

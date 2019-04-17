@@ -1,7 +1,10 @@
 {
     "name": "fisharebest/webtrees",
     "description": "webtrees online genealogy",
-    "keywords": ["webtrees", "genealogy"],
+    "keywords": [
+        "webtrees",
+        "genealogy"
+    ],
     "license": "GPL-3.0-or-later",
     "autoload": {
         "psr-4": {
@@ -13,12 +16,13 @@
     },
     "autoload-dev": {
         "classmap": [
-            "tests/TestCase.php"
+            "tests/TestCase.php",
+            "tests/MockGlobalFunctions.php"
         ]
     },
     "config": {
         "platform": {
-            "php" : "7.1.8"
+            "php": "7.1.8"
         },
         "sort-packages": true,
         "process-timeout": 3600
@@ -83,32 +87,34 @@
         "ext-pdo_sqlsvr": "Required to use SQL Server for database storage"
     },
     "scripts": {
-       "webtrees:build": [
-           "rm -Rf webtrees/",
-           "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
+        "webtrees:build": [
+            "rm -Rf webtrees/",
+            "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
             "for FILE in resources/lang/*/messages.po; do msgfmt --output=webtrees/$(dirname $FILE)/$(basename $FILE .po).mo $FILE; done",
-           "zip --quiet --recurse-paths --move -9 webtrees.zip webtrees"
-       ],
-       "webtrees:check": [
+            "zip --quiet --recurse-paths --move -9 webtrees.zip webtrees"
+        ],
+        "webtrees:check": [
             "### PHP-CODE-SNIFFER",
-            "phpcs --standard=PSR12 -s --exclude=Generic.Files.LineLength,PSR2.ControlStructures.ControlStructureSpacing app routes",
+            "@composer global require squizlabs/php_codesniffer=* --quiet",
+            "@composer global update squizlabs/php_codesniffer --quiet",
+            "phpcs --standard=PSR12 -p -s --exclude=Generic.Files.LineLength,PSR2.ControlStructures.ControlStructureSpacing app modules_v4 routes tests/app tests/feature",
             "### PHAN",
-            "PHAN_DISABLE_XDEBUG_WARN=1 phan --target-php-version=7.1 --progress-bar --directory . --exclude-directory-list data,resources,routes,tests,vendor",
+            "@composer global require phan/phan=*",
+            "@composer global update phan/phan",
+            "@composer install --quiet",
+            "PHAN_DISABLE_XDEBUG_WARN=1 phan --target-php-version=7.1 --progress-bar --directory app --directory vendor --exclude-directory-list vendor",
+            "@composer install --no-dev --quiet",
             "### PHPSTAN",
+            "@composer global require phpstan/phpstan=*",
+            "@composer global update phpstan/phpstan",
             "phpstan --level=7 analyze index.php app",
             "### PSALM",
             "psalm"
         ],
-       "webtrees:coverage": [
+        "webtrees:coverage": [
             "composer install --dev --quiet",
             "vendor/bin/phpunit --coverage-html=tests/coverage",
             "composer install --no-dev --quiet"
-        ],
-        "webtrees:tools": [
-            "### PHAN",
-            "@composer global require phan/phan=*",
-            "### PSALM",
-            "@composer global require vimeo/psalm=*"
         ],
         "webtrees:mo": [
             "for FILE in resources/lang/*/messages.po; do msgfmt --output=$(dirname $FILE)/$(basename $FILE .po).mo $FILE; done",
@@ -129,8 +135,7 @@
         "webtrees:check": "Run various static analysis tools",
         "webtrees:coverage": "Generate test coverage report",
         "webtrees:mo": "Compile the language files (*.mo)",
-        "webtrees:po": "Update the language (webtrees.pot, *.po)",
-        "webtrees:tools": "Install the tools needed to run webtrees-check"
+        "webtrees:po": "Update the language (webtrees.pot, *.po)"
     },
     "extra": {
         "branch-alias": {

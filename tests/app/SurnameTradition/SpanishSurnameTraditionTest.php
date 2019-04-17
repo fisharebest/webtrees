@@ -34,7 +34,7 @@ class SpanishSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
     {
         parent::setUp();
 
-        $this->surname_tradition = new SpanishSurnameTradition;
+        $this->surname_tradition = new SpanishSurnameTradition();
     }
 
     /**

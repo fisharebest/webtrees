@@ -31,7 +31,7 @@ class CensusOfDenmark1840Test extends \Fisharebest\Webtrees\TestCase
      */
     public function testPlaceAndDate(): void
     {
-        $census = new CensusOfDenmark1840;
+        $census = new CensusOfDenmark1840();
 
         $this->assertSame('Danmark', $census->censusPlace());
         $this->assertSame('01 FEB 1840', $census->censusDate());
@@ -47,7 +47,7 @@ class CensusOfDenmark1840Test extends \Fisharebest\Webtrees\TestCase
      */
     public function testColumns(): void
     {
-        $census  = new CensusOfDenmark1840;
+        $census  = new CensusOfDenmark1840();
         $columns = $census->columns();
 
         $this->assertCount(4, $columns);

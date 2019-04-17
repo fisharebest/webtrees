@@ -34,7 +34,7 @@ class PaternalSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
     {
         parent::setUp();
 
-        $this->surname_tradition = new PaternalSurnameTradition;
+        $this->surname_tradition = new PaternalSurnameTradition();
     }
 
     /**

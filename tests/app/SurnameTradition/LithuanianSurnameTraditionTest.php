@@ -34,7 +34,7 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
     {
         parent::setUp();
 
-        $this->surname_tradition = new LithuanianSurnameTradition;
+        $this->surname_tradition = new LithuanianSurnameTradition();
     }
 
     /**

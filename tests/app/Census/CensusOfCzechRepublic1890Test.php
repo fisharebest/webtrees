@@ -31,7 +31,7 @@ class CensusOfCzechRepublic1890Test extends \Fisharebest\Webtrees\TestCase
      */
     public function testPlaceAndDate(): void
     {
-        $census = new CensusOfCzechRepublic1890;
+        $census = new CensusOfCzechRepublic1890();
 
         $this->assertSame('Česko', $census->censusPlace());
         $this->assertSame('31 DEC 1890', $census->censusDate());
@@ -47,7 +47,7 @@ class CensusOfCzechRepublic1890Test extends \Fisharebest\Webtrees\TestCase
      */
     public function testColumns(): void
     {
-        $census  = new CensusOfCzechRepublic1890;
+        $census  = new CensusOfCzechRepublic1890();
         $columns = $census->columns();
 
         $this->assertCount(13, $columns);

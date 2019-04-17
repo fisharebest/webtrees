@@ -300,7 +300,7 @@ class Request extends SymfonyRequest implements ServerRequestInterface
                 $file ? $file->getSize() : null,
                 $file ? $file->getError() : UPLOAD_ERR_NO_FILE,
                 $file ? $file->getClientOriginalName() : null,
-                $file ? $file->getClientMimeType(): null
+                $file ? $file->getClientMimeType() : null
             );
         }
 

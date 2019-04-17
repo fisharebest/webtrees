@@ -31,7 +31,7 @@ class CensusOfCzechRepublicTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testPlace(): void
     {
-        $census = new CensusOfCzechRepublic;
+        $census = new CensusOfCzechRepublic();
 
         $this->assertSame('Česko', $census->censusPlace());
     }
@@ -45,7 +45,7 @@ class CensusOfCzechRepublicTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testAllDates(): void
     {
-        $census = new CensusOfCzechRepublic;
+        $census = new CensusOfCzechRepublic();
 
         $census_dates = $census->allCensusDates();
 

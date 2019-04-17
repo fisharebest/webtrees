@@ -60,7 +60,7 @@ class ChartIndividualWithSources
         int $tot_indi,
         int $tot_indi_source,
         string $color_from = null,
-        string $color_to   = null
+        string $color_to = null
     ): string {
         $chart_color1 = (string) $this->theme->parameter('distribution-chart-no-values');
         $chart_color2 = (string) $this->theme->parameter('distribution-chart-high-values');

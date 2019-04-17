@@ -31,7 +31,7 @@ class CensusOfUnitedStates1810Test extends \Fisharebest\Webtrees\TestCase
      */
     public function testPlaceAndDate(): void
     {
-        $census = new CensusOfUnitedStates1810;
+        $census = new CensusOfUnitedStates1810();
 
         $this->assertSame('United States', $census->censusPlace());
         $this->assertSame('06 AUG 1810', $census->censusDate());
@@ -47,7 +47,7 @@ class CensusOfUnitedStates1810Test extends \Fisharebest\Webtrees\TestCase
      */
     public function testColumns(): void
     {
-        $census  = new CensusOfUnitedStates1810;
+        $census  = new CensusOfUnitedStates1810();
         $columns = $census->columns();
 
         $this->assertCount(14, $columns);

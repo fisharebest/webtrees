@@ -15,7 +15,8 @@
  */
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\DeleteUser;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
+
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 

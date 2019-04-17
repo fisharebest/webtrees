@@ -82,7 +82,7 @@ interface PlaceRepositoryInterface
      */
     public function chartDistribution(
         string $chart_shows = 'world',
-        string $chart_type  = '',
-        string $surname     = ''
+        string $chart_type = '',
+        string $surname = ''
     ) : string;
 }

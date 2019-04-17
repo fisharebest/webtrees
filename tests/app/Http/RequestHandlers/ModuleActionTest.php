@@ -15,8 +15,9 @@
  */
 declare(strict_types=1);
 
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
+
 use Fisharebest\Webtrees\GuestUser;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;

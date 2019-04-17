@@ -70,24 +70,24 @@ class PlaceRepository implements PlaceRepositoryInterface
 
         if ($what === 'INDI') {
             $rows = DB::table('individuals')->select(['i_gedcom as ged'])->where(
-                    'i_file',
-                    '=',
-                    $this->tree->id()
-                )->where(
-                    'i_gedcom',
-                    'LIKE',
-                    "%\n2 PLAC %"
-                )->get()->all();
+                'i_file',
+                '=',
+                $this->tree->id()
+            )->where(
+                'i_gedcom',
+                'LIKE',
+                "%\n2 PLAC %"
+            )->get()->all();
         } elseif ($what === 'FAM') {
             $rows = DB::table('families')->select(['f_gedcom as ged'])->where(
-                    'f_file',
-                    '=',
-                    $this->tree->id()
-                )->where(
-                    'f_gedcom',
-                    'LIKE',
-                    "%\n2 PLAC %"
-                )->get()->all();
+                'f_file',
+                '=',
+                $this->tree->id()
+            )->where(
+                'f_gedcom',
+                'LIKE',
+                "%\n2 PLAC %"
+            )->get()->all();
         }
 
         $placelist = [];
@@ -348,8 +348,8 @@ class PlaceRepository implements PlaceRepositoryInterface
      */
     public function chartDistribution(
         string $chart_shows = 'world',
-        string $chart_type  = '',
-        string $surname     = ''
+        string $chart_type = '',
+        string $surname = ''
     ): string {
         return (new ChartDistribution($this->tree))
             ->chartDistribution($chart_shows, $chart_type, $surname);

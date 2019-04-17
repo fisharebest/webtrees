@@ -31,7 +31,7 @@ class RegisterOfEngland1939Test extends \Fisharebest\Webtrees\TestCase
      */
     public function testPlaceAndDate(): void
     {
-        $census = new RegisterOfEngland1939;
+        $census = new RegisterOfEngland1939();
 
         $this->assertSame('England', $census->censusPlace());
         $this->assertSame('29 SEP 1939', $census->censusDate());
@@ -47,7 +47,7 @@ class RegisterOfEngland1939Test extends \Fisharebest\Webtrees\TestCase
      */
     public function testColumns(): void
     {
-        $census  = new RegisterOfEngland1939;
+        $census  = new RegisterOfEngland1939();
         $columns = $census->columns();
 
         $this->assertCount(8, $columns);

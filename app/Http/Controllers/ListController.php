@@ -134,10 +134,10 @@ class ListController extends AbstractBaseController
         switch ($show_marnm) {
             case 'no':
             case 'yes':
-                $user->setPreference($families?'family-list-marnm':'individual-list-marnm', $show_marnm);
+                $user->setPreference($families ? 'family-list-marnm' : 'individual-list-marnm', $show_marnm);
                 break;
             default:
-                $show_marnm = $user->getPreference($families?'family-list-marnm':'individual-list-marnm');
+                $show_marnm = $user->getPreference($families ? 'family-list-marnm' : 'individual-list-marnm');
         }
 
         // Make sure selections are consistent.

@@ -92,7 +92,8 @@ class EmitResponse implements MiddlewareInterface
     {
         http_response_code($response->getStatusCode());
 
-        header(sprintf('HTTP/%s %d %s',
+        header(sprintf(
+            'HTTP/%s %d %s',
             $response->getProtocolVersion(),
             $response->getStatusCode(),
             $response->getReasonPhrase()

@@ -45,10 +45,8 @@ use function app;
 use function basename;
 use function define;
 use function defined;
-use function dirname;
 use function filesize;
 use function http_build_query;
-use function rawurlencode;
 use const UPLOAD_ERR_OK;
 
 /**
@@ -56,7 +54,11 @@ use const UPLOAD_ERR_OK;
  */
 class TestCase extends \PHPUnit\Framework\TestCase implements StatusCodeInterface
 {
+    /** @var bool */
     protected static $uses_database = false;
+
+    /** @var object */
+    public static $mock_functions;
 
     /**
      * Things to run once, before all the tests.

@@ -18,17 +18,25 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 /**
- * Test harness for the class Log
+ * Class MockGlobalFunctions
  */
-class LogTest extends TestCase
+abstract class MockGlobalFunctions
 {
     /**
-     * Test that the class exists
+     * Mock version of microtime()
      *
-     * @return void
+     * @param bool $get_as_float
+     *
+     * @return float|int[]
      */
-    public function testClassExists(): void
-    {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Log'));
-    }
+    abstract public function microtime(bool $get_as_float);
+
+    /**
+     * Mock version of ini_get()
+     *
+     * @param string $varname
+     *
+     * @return string
+     */
+    abstract public function iniGet(string $varname): string;
 }
