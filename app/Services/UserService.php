@@ -347,7 +347,7 @@ class UserService
             $url = route('contact', [
                 'ged' => $tree ? $tree->name() : '',
                 'to'  => $contact_user->userName(),
-                'url' => $request->getUri(),
+                'url' => (string) $request->getUri(),
             ]);
         }
 

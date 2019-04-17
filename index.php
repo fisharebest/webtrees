@@ -35,7 +35,7 @@ $request = $application->createServerRequest();
 
 // Calculate the base URL, so we can generate absolute URLs.
 // Remove any PHP script name and parameters.
-define('WT_BASE_URL', preg_replace('/[^\/]+\.php(\?.*)?$/', '', $request->getUri()));
+define('WT_BASE_URL', preg_replace('/[^\/]+\.php(\?.*)?$/', '', (string) $request->getUri()));
 
 // The application is defined by a stack of middleware and a PSR-11 container.
 $middleware = $application->middleware();
