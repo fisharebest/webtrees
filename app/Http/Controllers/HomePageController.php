@@ -644,9 +644,9 @@ class HomePageController extends AbstractBaseController
             ->where('block_id', '=', $block_id)
             ->value('module_name');
 
-        $block = $active_blocks->filter(static function (ModuleInterface $module) use ($module_name): bool {
+        $block = $active_blocks->first(static function (ModuleInterface $module) use ($module_name): bool {
             return $module->name() === $module_name;
-        })->first();
+        });
 
         if ($block === null) {
             throw new NotFoundHttpException('Block not found');
@@ -910,7 +910,6 @@ class HomePageController extends AbstractBaseController
             return $active_blocks->filter(static function (ModuleInterface $block) use ($block_name): bool {
                 return $block->name() === $block_name;
             })->first();
-        })
-            ->filter();
+        })->filter();
     }
 }

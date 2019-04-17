@@ -2618,10 +2618,9 @@ class Statistics implements
         /** @var ModuleBlockInterface|null $module */
         $module = $this->module_service
             ->findByComponent(ModuleBlockInterface::class, $this->tree, Auth::user())
-            ->filter(function (ModuleInterface $module) use ($block): bool {
+            ->first(function (ModuleInterface $module) use ($block): bool {
                 return $module->name() === $block && $module->name() !== 'html';
-            })
-            ->first();
+            });
 
         if ($module === null) {
             return '';

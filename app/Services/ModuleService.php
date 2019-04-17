@@ -721,10 +721,9 @@ class ModuleService
     public function findByName(string $module_name, bool $include_disabled = false): ?ModuleInterface
     {
         return $this->all($include_disabled)
-            ->filter(static function (ModuleInterface $module) use ($module_name): bool {
+            ->first(static function (ModuleInterface $module) use ($module_name): bool {
                 return $module->name() === $module_name;
-            })
-            ->first();
+            });
     }
 
     /**

@@ -222,9 +222,9 @@ abstract class AbstractModule implements ModuleInterface
                     ->get();
             });
 
-        $row = $access_levels->filter(function (stdClass $row) use ($interface): bool {
+        $row = $access_levels->first(function (stdClass $row) use ($interface): bool {
             return $row->interface === $interface && $row->module_name === $this->name();
-        })->first();
+        });
 
         return $row ? (int) $row->access_level : $this->access_level;
     }
