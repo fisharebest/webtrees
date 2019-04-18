@@ -589,7 +589,7 @@ class FunctionsEdit
         } elseif (($fact !== 'NAME' || $upperlevel === 'REPO' || $upperlevel === 'UNKNOWN') && $fact !== '_MARNM') {
             if ($fact === 'TEXT' || $fact === 'ADDR' || ($fact === 'NOTE' && !$islink)) {
                 $html .= '<div class="input-group">';
-                $html .= '<textarea class="form-control" id="' . $id . '" name="' . $name . '" dir="auto">' . e($value) . '</textarea>';
+                $html .= '<textarea class="form-control" id="' . $id . '" name="' . $name . '" rows="5" dir="auto">' . e($value) . '</textarea>';
                 $html .= '</div>';
             } else {
                 // If using GEDFact-assistant window

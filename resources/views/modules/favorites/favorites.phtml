@@ -124,7 +124,7 @@ use Illuminate\Support\Collection;
                                 </label>
                             </div>
                         </div>
-                        <div class="col-sm-8 col-md-">
+                        <div class="col-sm-8 col-md-9">
                             <input type="text" name="url" id="url" size="20" value="" placeholder="<?= I18N::translate('URL') ?>">
                             <input type="text" name="title" id="title" size="20" value="" placeholder="<?= I18N::translate('Title') ?>">
                         </div>
@@ -134,8 +134,8 @@ use Illuminate\Support\Collection;
                                 <?= I18N::translate('Note') ?>
                             </label>
                         </div>
-                        <div class="col-sm-8 col-md-">
-                            <textarea name="note" id="fav-repo-<?= e($block_id) ?>" rows="3" class="form-control" placeholder="<?= I18N::translate('Enter an optional note about this favorite') ?>"></textarea>
+                        <div class="col-sm-8 col-md-9">
+                            <textarea name="note" id="fav-repo-<?= e($block_id) ?>" class="form-control" placeholder="<?= I18N::translate('Enter an optional note about this favorite') ?>" rows="3" dir="auto"></textarea>
                         </div>
                     </div>
 

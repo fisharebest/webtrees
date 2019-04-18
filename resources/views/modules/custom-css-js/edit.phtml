@@ -11,7 +11,7 @@
             <?= I18N::translate('Add content to the end of the <code>&lt;head&gt;</code> element.') ?>
         </label>
         <div class="col-sm-9">
-            <textarea id="head" name="head" class="form-control text-monospace" rows="5"><?= e($head) ?></textarea>
+            <textarea id="head" name="head" class="form-control text-monospace" dir="ltr" rows="5"><?= e($head) ?></textarea>
             <p class="text-muted">
                 <?= I18N::translate('Include the <code>&lt;style&gt;&lt;/style&gt;</code> tags.') ?>
             </p>
@@ -23,7 +23,7 @@
             <?= I18N::translate('Add content to the end of the <code>&lt;body&gt;</code> element.') ?>
         </label>
         <div class="col-sm-9">
-            <textarea id="body" name="body" class="form-control text-monospace" rows="5"><?= e($body) ?></textarea>
+            <textarea id="body" name="body" class="form-control text-monospace" dir="ltr" rows="5"><?= e($body) ?></textarea>
             <p class="text-muted">
                 <?= I18N::translate('Include the <code>&lt;script&gt;&lt;/script&gt;</code> tags.') ?>
             </p>

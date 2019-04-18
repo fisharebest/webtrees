@@ -11,7 +11,7 @@
         </label>
 
         <div class="col-sm-9 wt-page-options-value">
-            <textarea class="form-control" name="NOTE" id="NOTE" rows="15"><?= e($note->getNote()) ?></textarea>
+            <textarea class="form-control" name="NOTE" id="NOTE" rows="10" dir="auto"><?= e($note->getNote()) ?></textarea>
 
             <a class="wt-osk-trigger" data-id="NOTE" href="#" title="<?= I18N::translate('Find a special character') ?>">
                 <?= view('icons/keyboard') ?>
