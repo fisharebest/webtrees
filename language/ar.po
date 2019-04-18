@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-04-08 22:03+0000\n"
+"PO-Revision-Date: 2019-04-18 07:37+0000\n"
 "Last-Translator: Muadh Hamidaddin <muadh@hamidaddin.net>\n"
 "Language-Team: Arabic <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/ar/>\n"
 "Language: ar\n"
@@ -130,12 +130,12 @@ msgstr[5] "تم استخراج %1$s ملفات في %2$s ثانية."
 #, php-format
 msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
 msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-msgstr[0] "الذين تم عرضهم %1$s فرداً من أصل %2$s من المعتاد إظهارهم من %3$s أجيال ."
-msgstr[1] "الذين تم عرضهم %1$s فرداً من أصل %2$s من المعتاد إظهارهم من %3$s أجيال ."
-msgstr[2] "الذين تم عرضهم %1$s فرداً من أصل %2$s من المعتاد إظهارهم من %3$s أجيال ."
-msgstr[3] "الذين تم عرضهم %1$s أفراد من أصل %2$s من المعتاد إظهارهم من %3$s أجيال."
-msgstr[4] "الذين تم عرضهم %1$s فرداً من أصل %2$s من المعتاد إظهارهم من %3$s أجيال."
-msgstr[5] "الذين تم عرضهم %1$s فرداً من أصل %2$s من المعتاد إظهارهم من %3$s أجيال."
+msgstr[0] "الذين تم عرضهم %1$s فرداً من المجموع المعتاد %2$s من %3$s أجيال ."
+msgstr[1] "الذين تم عرضهم %1$s فرداً من المجموع المعتاد %2$s من %3$s أجيال ."
+msgstr[2] "الذين تم عرضهم %1$s فرداً من المجموع المعتاد %2$s من %3$s أجيال ."
+msgstr[3] "الذين تم عرضهم %1$s أفراد من المجموع المعتاد %2$s من %3$s أجيال."
+msgstr[4] "الذين تم عرضهم %1$s فرداً من المجموع المعتاد %2$s من %3$s أجيال."
+msgstr[5] "الذين تم عرضهم %1$s فرداً من المجموع المعتاد %2$s من %3$s أجيال."
 
 #. I18N: %1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:852
@@ -143,9 +143,9 @@ msgstr[5] "الذين تم عرضهم %1$s فرداً من أصل %2$s من ال
 msgid "%1$s individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
 msgstr[0] "هناك %1$s فرداً ليس له إحداثيات مكان الميلاد: %2$s."
-msgstr[1] "هناك %1$s فرداً  ليس له إحداثيات مكان الميلاد: %2$s."
-msgstr[2] "هناك %1$s فرداً ليس لهما إحداثيات مكان الميلاد: %2$s."
-msgstr[3] "هناك %1$s فرداً ليس لهم إحداثيات مكان الميلاد: %2$s."
+msgstr[1] "هناك %1$s فرداً ليس له إحداثيات مكان الميلاد: %2$s."
+msgstr[2] "هناك %1$s فردان ليس لهما إحداثيات مكان الميلاد: %2$s."
+msgstr[3] "هناك %1$s أفراد ليس لهم إحداثيات مكان الميلاد: %2$s."
 msgstr[4] "هناك %1$s فرداً ليس لهم إحداثيات مكان الميلاد: %2$s."
 msgstr[5] "هناك %1$s فرداً ليس لهم إحداثيات مكان الميلاد: %2$s."
 
@@ -250,12 +250,12 @@ msgstr "%s ونسلهم"
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] "%s مستخدم مجهول مسجل دخولاً"
-msgstr[1] "%s مستخدم مجهول مسجل دخولاً"
-msgstr[2] "%s مستخدم مجهول مسجل دخولاً"
+msgstr[0] "%s مستخدم مجهولا مسجل دخولاً"
+msgstr[1] "%s مستخدما مجهولا مسجل دخولاً"
+msgstr[2] "%s مستخدمان مجهولان مسجلان دخولاً"
 msgstr[3] "%s مستخدمين  مجهولين مسجلين دخولاً"
-msgstr[4] "%s مستخدمين  مجهولين مسجلين دخولاً"
-msgstr[5] "%s مستخدمين  مجهولين مسجلين دخولاً"
+msgstr[4] "%s مستخدما  مجهولا مسجلين دخولاً"
+msgstr[5] "%s مستخدما  مجهولا مسجل دخولاً"
 
 #: app/Functions/FunctionsCharts.php:304 app/Stats.php:4454 app/Stats.php:4458
 #, php-format
@@ -7482,7 +7482,7 @@ msgstr "إن كان هناك كائنات وسائط موجودة في webtrees 
 
 #: app/Module/RecentChangesModule.php:186
 msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
-msgstr "عند إخفاء الكتل الفارغة، لن يتم التمكن من تغيير تهيئتها إلا بعد يعاد إظهارها بوضع مادة فيها."
+msgstr "عند إخفاء الكتل الفارغة، لن يتم التمكن من تغيير تهيئتها إلا بعد أن يعاد إظهارها بوضع مادة فيها."
 
 #: admin_site_config.php:192
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -7496,7 +7496,7 @@ msgstr "إذا تم إختيار مجلد جديد، فيلزم نقل ملفا�
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: admin_trees_config.php:434
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public."
-msgstr "اذا قمت بعرض الأفراد الأحياء للزوار، سيتم تجاهل جميع القيود الأخرى على الخصوصية. لا تتيح ذلك إلا في حال كانت كل بيانات المشجر الخاصة بك عامة ."
+msgstr "اذا قمت بإظهار الأفراد الأحياء للزوار، سيتم تجاهل جميع القيود الأخرى على الخصوصية. لا تتيح ذلك إلا في حال كانت كل بيانات المشجر الخاصة بك عامة ."
 
 #: setup.php:185
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -11194,7 +11194,7 @@ msgstr "أول"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr "تضمبن الأحداث التي لا يوجد عنها معلومات"
+msgstr "تضمين الأحداث التي لا يوجد عنها معلومات"
 
 #: admin_trees_config.php:310 admin_trees_manage.php:398
 msgid "Privacy"
@@ -12152,7 +12152,7 @@ msgstr "قم بتحديد الوقائع والأحداث في السجلين ا
 
 #: admin_site_config.php:634
 msgid "Select the languages that will be shown in menus."
-msgstr "حدد اللغات التي سيتم عرضها في القوائم."
+msgstr "حدد اللغات التي سيتم إظهارها في القوائم."
 
 #. I18N: Records are indviduals, sources, etc.
 #: admin_site_merge.php:352
@@ -12579,7 +12579,7 @@ msgstr "إظهار مؤشر للعمر"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1285
 msgid "Show chart details by default"
-msgstr "عرض تفاصيل الرسم البياني بشكل افتراضي"
+msgstr "إظهار تفاصيل الرسم البياني بشكل افتراضي"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
@@ -12639,7 +12639,7 @@ msgstr "إظهار المتطلقين."
 
 #: compact.php:60
 msgid "Show images"
-msgstr "عرض الصور"
+msgstr "إظهار الصور"
 
 #: app/Module/GoogleMapsModule.php:3951
 msgid "Show inactive places"
@@ -12674,17 +12674,17 @@ msgstr "إظهار من توفي خلال المائة عاماً الماضية
 #. I18N: A configuration setting
 #: admin_site_config.php:278
 msgid "Show list of family trees"
-msgstr "عرض قائمة بالمشجرات"
+msgstr "إظهار قائمة بالمشجرات"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:424
 msgid "Show living individuals"
-msgstr "عرض الأفراد الأحياء"
+msgstr "إظهار الأفراد الأحياء"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:464
 msgid "Show names of private individuals"
-msgstr "عرض أسماء الأفراد"
+msgstr "إظهار أسماء الأفراد"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -12829,7 +12829,7 @@ msgstr "إظهار مواقع الأماكن والأحداث بإستخدام �
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:169
 msgid "Show the user who made the change"
-msgstr "عرض المستخدم الذي أجرى التغيير"
+msgstr "إظهار المستخدم الذي أجرى التغيير"
 
 #. I18N: Label for a configuration option
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
@@ -13074,7 +13074,7 @@ msgstr "تقوم بعض برامج الأنساب بإنشاء ملفات GEDCOM
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1606
 msgid "Some pages can display the number of times that they have been visited."
-msgstr "بإمكان بعض صفحات الموقع عرض عدد المرات التي تمت زيارتها."
+msgstr "بعض صفحات الموقع بإمكانها إظهار عدد المرات التي تمت زيارتها."
 
 #: app/Module/GoogleMapsModule.php:410
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
@@ -13635,7 +13635,7 @@ msgstr "تايلند"
 
 #: help_text.php:219
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
-msgstr "حقل <b>الإسم</b> يحتوي على إسم الفرد كاملاً، وهكذا سيتم عرضه."
+msgstr "حقل <b>الإسم</b> يحتوي على إسم الفرد كاملاً، وهكذا سيتم عرضه على الشاشة."
 
 #: help_text.php:239
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
@@ -14495,7 +14495,7 @@ msgstr "هذا هو إسم خادم بريد SMTP. إستخدام 'localhost' ي
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1090
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100."
-msgstr "مقاس عرض الصور المصغرة التي يتم إنشاءها تلقائياً بالنقاط. المقاس الإفتراضي هو 100 نقطة."
+msgstr "مقاس عرض الصور المصغرة (بالنقاط) التي يتم إنشاءها تلقائياً. المقاس الإفتراضي هو 100 نقطة."
 
 #: admin_users.php:317 edituser.php:176 login.php:424 setup.php:430
 msgid "This is your real name, as you would like it displayed on screen."
@@ -15769,7 +15769,7 @@ msgstr "عرض هذا المصدر"
 
 #: calendar.php:300
 msgid "View this year"
-msgstr "عرض السنة"
+msgstr "عرض هذه السنة"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:385
@@ -19073,8 +19073,8 @@ msgstr "الأقصى"
 #, php-format
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
-msgstr[0] "لا يوجد %s"
-msgstr[1] "يوماً واحد %s بحد أقصى"
+msgstr[0] "بحد أقصى %s يوماً"
+msgstr[1] "بحد أقصى %s يوماً"
 msgstr[2] "يومان %s بحد أقصى"
 msgstr[3] "%s أيام بحد أقصى"
 msgstr[4] "%s يوماً بحد أقصى"
@@ -19185,7 +19185,7 @@ msgstr "ولد أخت"
 #. I18N: option in list box “never use this image”
 #: app/Functions/FunctionsEdit.php:663
 msgid "never"
-msgstr "لم"
+msgstr "كلا"
 
 #. I18N: A button label, next page
 #: app/I18N.php:224 app/Module/BatchUpdateModule.php:247
