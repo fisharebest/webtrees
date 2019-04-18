@@ -14,7 +14,7 @@
                     <div class="wt-chart-horizontal-line"></div>
                 </div>
 
-                <?= view('chart-parents', ['family' => $family && $family->husband() ? $family->husband()->primaryChildFamily() : null, 'generations' => $generations - 1]) ?>
+                <?= view('modules/family-book-chart/parents', ['family' => $family && $family->husband() ? $family->husband()->primaryChildFamily() : null, 'generations' => $generations - 1]) ?>
             <?php endif ?>
         </div>
 
@@ -32,7 +32,7 @@
                     <div class="wt-chart-horizontal-line"></div>
                 </div>
 
-                <?= view('chart-parents', ['family' => $family && $family->wife() ? $family->wife()->primaryChildFamily() : null, 'generations' => $generations - 1]) ?>
+                <?= view('modules/family-book-chart/parents', ['family' => $family && $family->wife() ? $family->wife()->primaryChildFamily() : null, 'generations' => $generations - 1]) ?>
             <?php endif ?>
         </div>
     </div>

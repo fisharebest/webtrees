@@ -62,6 +62,7 @@
 }
 
 .wt-chart-horizontal-line {
+	width: 1rem;
 	height: 50%;
 	border-bottom: var(--chart-line);
 }

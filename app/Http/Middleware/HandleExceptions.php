@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Log;
@@ -35,7 +36,7 @@ use const PHP_EOL;
 /**
  * Middleware to handle and render errors.
  */
-class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
+class HandleExceptions implements MiddlewareInterface, RequestMethodInterface, StatusCodeInterface
 {
     use ViewResponseTrait;
 
@@ -107,7 +108,15 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
         }
 
         if ($request->getHeaderLine('X-Requested-With') !== '') {
-            return response(view('components/alert-danger', ['alert' => $trace]), self::STATUS_INTERNAL_SERVER_ERROR);
+            // If this was a GET request, then we were probably fetching HTML to display, for
+            // example a chart or tab.
+            if ($request->getMethod() === self::METHOD_GET) {
+                $status_code = self::STATUS_OK;
+            } else {
+                $status_code = self::STATUS_INTERNAL_SERVER_ERROR;
+            }
+
+            return response(view('components/alert-danger', ['alert' => $trace]), $status_code);
         }
 
         return $this->viewResponse('errors/unhandled-exception', [
