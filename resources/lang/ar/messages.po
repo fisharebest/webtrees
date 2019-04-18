@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:51+0100\n"
-"PO-Revision-Date: 2019-04-08 21:56+0000\n"
+"PO-Revision-Date: 2019-04-18 07:37+0000\n"
 "Last-Translator: Muadh Hamidaddin <muadh@hamidaddin.net>\n"
 "Language-Team: Arabic <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/ar/>\n"
 "Language: ar\n"
@@ -216,12 +216,12 @@ msgstr "%s ونسلهم"
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] "%s مستخدم مسجل مجهول"
-msgstr[1] "%s مستخدم مسجل مجهول"
-msgstr[2] "%s مستخدمان مسجلان مجهولان"
+msgstr[0] "%s مستخدم مجهولا مسجل دخولاً"
+msgstr[1] "%s مستخدما مجهولا مسجل دخولاً"
+msgstr[2] "%s مستخدمان مجهولان مسجلان دخولاً"
 msgstr[3] "%s مستخدمين  مجهولين مسجلين دخولاً"
-msgstr[4] "%s مستخدماَ مسجلاَ مجهولاَ"
-msgstr[5] "%s مستخدماً مسجلاَ مجهولاَ"
+msgstr[4] "%s مستخدما  مجهولا مسجلين دخولاً"
+msgstr[5] "%s مستخدما  مجهولا مسجل دخولاً"
 
 #: app/Functions/FunctionsCharts.php:300 app/Stats.php:4653 app/Stats.php:4655
 #, php-format
@@ -7384,7 +7384,7 @@ msgstr "إذا تم إختيار مجلد جديد، فيلزم نقل ملفا�
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: resources/views/admin/trees-privacy.php:95
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public."
-msgstr "اذا قمت بعرض الأفراد الأحياء للزوار، سيتم تجاهل جميع القيود الأخرى على الخصوصية. لا تتيح ذلك إلا في حال كانت كل بيانات المشجر الخاصة بك عامة ."
+msgstr "اذا قمت بإظهار الأفراد الأحياء للزوار، سيتم تجاهل جميع القيود الأخرى على الخصوصية. لا تتيح ذلك إلا في حال كانت كل بيانات المشجر الخاصة بك عامة ."
 
 #: resources/views/setup/step-2-server-checks.php:54
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -11142,7 +11142,7 @@ msgstr "أول"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr "تضمبن الأحداث التي لا يوجد عنها معلومات"
+msgstr "تضمين الأحداث التي لا يوجد عنها معلومات"
 
 #: app/Http/Controllers/AdminController.php:1000
 #: resources/views/admin/trees.php:66
@@ -12107,7 +12107,7 @@ msgstr "قم بتحديد الوقائع والأحداث في السجلين ا
 
 #: resources/views/admin/site-languages.php:11
 msgid "Select the languages that will be shown in menus."
-msgstr "حدد اللغات التي سيتم عرضها في القوائم."
+msgstr "حدد اللغات التي سيتم إظهارها في القوائم."
 
 #: resources/views/admin/merge-records-step-1.php:14
 msgid "Select two records to merge."
@@ -12592,17 +12592,17 @@ msgstr "إظهار من توفي خلال المائة عاماً الماضية
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.php:124
 msgid "Show list of family trees"
-msgstr "عرض قائمة بالمشجرات"
+msgstr "إظهار قائمة بالمشجرات"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.php:85
 msgid "Show living individuals"
-msgstr "عرض الأفراد الأحياء"
+msgstr "إظهار الأفراد الأحياء"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.php:126
 msgid "Show names of private individuals"
-msgstr "عرض أسماء الأفراد"
+msgstr "إظهار أسماء الأفراد"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -12738,7 +12738,7 @@ msgstr "إظهار مواقع الأحداث في الخريطة."
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.php:35
 msgid "Show the user who made the change"
-msgstr "عرض المستخدم الذي أجرى التغيير"
+msgstr "إظهار المستخدم الذي أجرى التغيير"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/edit.php:37
@@ -12996,7 +12996,7 @@ msgstr "تقوم بعض برامج الأنساب بإنشاء ملفات GEDCOM
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.php:844
 msgid "Some pages can display the number of times that they have been visited."
-msgstr "بإمكان بعض صفحات الموقع عرض عدد المرات التي تمت زيارتها."
+msgstr "بعض صفحات الموقع بإمكانها إظهار عدد المرات التي تمت زيارتها."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: resources/views/admin/trees-preferences.php:693
@@ -13549,7 +13549,7 @@ msgstr "تايلند"
 
 #: resources/views/help/name.php:4
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
-msgstr "حقل <b>الإسم</b> يحتوي على إسم الفرد كاملاً، وهكذا سيتم عرضه."
+msgstr "حقل <b>الإسم</b> يحتوي على إسم الفرد كاملاً، وهكذا سيتم عرضه على الشاشة."
 
 #: resources/views/help/surname.php:4
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
@@ -15569,7 +15569,7 @@ msgstr "عرض هذا المصدر"
 
 #: resources/views/calendar-page.php:157
 msgid "View this year"
-msgstr "عرض السنة"
+msgstr "عرض هذه السنة"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:679
@@ -18813,8 +18813,8 @@ msgstr "إنتساب أموي"
 #, php-format
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
-msgstr[0] "لا يوجد %s"
-msgstr[1] "يوماً واحد %s بحد أقصى"
+msgstr[0] "بحد أقصى %s يوماً"
+msgstr[1] "بحد أقصى %s يوماً"
 msgstr[2] "يومان %s بحد أقصى"
 msgstr[3] "%s أيام بحد أقصى"
 msgstr[4] "%s يوماً بحد أقصى"
