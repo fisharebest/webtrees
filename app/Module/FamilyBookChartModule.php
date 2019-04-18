@@ -19,14 +19,12 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use stdClass;
 use function view;
 
 /**
@@ -44,18 +42,6 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
     // Limits
     public const MINIMUM_GENERATIONS = 2;
     public const MAXIMUM_GENERATIONS = 10;
-
-    /** @var stdClass */
-    private $box;
-
-    /** @var bool */
-    private $show_spouse;
-
-    /** @var int */
-    private $descent;
-
-    /** @var int */
-    private $generations;
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -176,15 +162,6 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
      */
     public function chart(Individual $individual, int $generations, int $book_size, bool $show_spouse): ResponseInterface
     {
-        $this->box = (object) [
-            'width'  => app(ModuleThemeInterface::class)->parameter('chart-box-x'),
-            'height' => app(ModuleThemeInterface::class)->parameter('chart-box-y'),
-        ];
-
-        $this->show_spouse = $show_spouse;
-        $this->descent     = $generations;
-        $this->generations = $book_size;
-
         $html = view('modules/family-book-chart/chart', ['individual' => $individual, 'generations' => $generations, 'book_size' => $book_size, 'show_spouse' => $show_spouse]);
 
         return response($html);
