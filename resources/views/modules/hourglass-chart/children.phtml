@@ -34,8 +34,8 @@ use Illuminate\Support\Collection;
                     <?php foreach ($child->spouseFamilies() as $spouse_family): ?>
                         <?= view('chart-box', ['individual' => $spouse_family->spouse($child)]) ?>
                     <?php endforeach ?>
-                    <?php endif ?>
-                <div>&nbsp;</div>
+                    <div>&nbsp;</div>
+                <?php endif ?>
             </div>
             <div class="wt-chart-horizontal-spacer">
                 <?php if ($children->count() === 1): ?>
