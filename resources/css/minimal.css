@@ -1367,22 +1367,6 @@ div.faq_body {
 	margin: 0;
 }
 
-/*-- Hourglass ---- */
-#hourglass_chart img.line4 {
-	vertical-align: middle;
-}
-
-#hourglass_chart table,
-.charts_block table {
-	border-collapse: collapse;
-}
-
-#hourglass_chart td,
-.charts_block td {
-	padding: 0;
-	empty-cells: show;
-}
-
 /* Lifespans chart */
 .wt-lifespans-subtitle {
 	text-align: center;
@@ -1848,7 +1832,6 @@ a > .wt-icon-arrow-up:hover {
  *  	Ancestors
  *  	Descendants
  *  	amily book
- *  	Hourglass chart
  *
  */
 
@@ -1892,28 +1875,6 @@ a > .wt-icon-arrow-up:hover {
 
 .wt-chart-descendants .linea5 {
 	vertical-align: top;
-}
-
-/* Hourglass */
-.lineh1 {
-	margin-bottom: 4px;
-}
-
-.lineh2 {
-	margin-bottom: 4px;
-}
-
-.lineh3 {
-	margin-bottom: 7px;
-}
-
-/*
- * Pedigree chart
- *
- * wt-chart, wt-chart-pedigree
- */
-.wt-chart-pedigree, .wt-chart-hourglass {
-	overflow-y: auto;
 }
 
 /*

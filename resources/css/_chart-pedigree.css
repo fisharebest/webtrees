@@ -18,6 +18,10 @@
  *
  * wt-chart, wt-chart-pedigree
  */
+.wt-chart-pedigree {
+	overflow-y: auto;
+}
+
 .wt-chart-pedigree-left .wt-chart-box,
 .wt-chart-pedigree-right .wt-chart-box {
 	width: 15rem;

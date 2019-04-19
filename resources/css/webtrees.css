@@ -2523,7 +2523,6 @@ a > .wt-icon-arrow-up:hover {
  *  	Ancestors
  *  	Descendants
  *  	amily book
- *  	Hourglass chart
  *
  */
 
@@ -2567,28 +2566,6 @@ a > .wt-icon-arrow-up:hover {
 
 .wt-chart-descendants .linea5 {
 	vertical-align: top;
-}
-
-/* Hourglass */
-.lineh1 {
-	margin-bottom: 4px;
-}
-
-.lineh2 {
-	margin-bottom: 4px;
-}
-
-.lineh3 {
-	margin-bottom: 7px;
-}
-
-/*
- * Pedigree chart
- *
- * wt-chart, wt-chart-pedigree
- */
-.wt-chart-pedigree, .wt-chart-hourglass {
-	overflow-y: auto;
 }
 
 /*

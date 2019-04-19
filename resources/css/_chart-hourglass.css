@@ -18,8 +18,12 @@
  *
  * wt-chart, wt-chart-hourglass
  */
+.wt-chart-hourglass {
+	overflow-y: auto;
+}
+
 .wt-chart-hourglass .wt-chart-box {
-	width: 20rem;
+	width: 15rem;
 }
 
 .wt-chart-hourglass .wt-chart-box-lifespan {

@@ -1,0 +1,61 @@
+<?php
+
+use Fisharebest\Webtrees\Family;
+use Illuminate\Support\Collection;
+
+/**
+ * @var Collection $children
+ * @var int        $generations
+ * @var bool       $show_spouse
+ */
+
+?>
+<div class="align-self-center">
+    <?php foreach ($children as $n => $child): ?>
+        <?php $grandchildren = $child->spouseFamilies()->map(static function (Family $family): Collection { return $family->children(); })->flatten() ?>
+        <div class="d-flex justify-content-end">
+            <?php if ($grandchildren->isNotEmpty()): ?>
+                <?php if ($generations > 1): ?>
+                    <?= view('modules/hourglass-chart/children', ['children' => $grandchildren, 'generations' => $generations - 1, 'show_spouse' => $show_spouse]) ?>
+                <?php else: ?>
+                    <div class="d-flex align-self-center">
+                        <div data-xref="<?= route('module', ['module' => 'hourglass_chart', 'action' => 'Descendants', 'xref' => $child->xref(), 'ged' => $child->tree()->name(), 'show_spouse' => $show_spouse]) ?>">
+                            <?= view('icons/arrow-left') ?>
+                        </div>
+                    </div>
+                <?php endif ?>
+            <?php endif ?>
+            <div class="align-self-center">
+                <?php if ($show_spouse): ?>
+                    <div>&nbsp;</div>
+                <?php endif ?>
+                <?= view('chart-box', ['individual' => $child]) ?>
+                <?php if ($show_spouse): ?>
+                    <?php foreach ($child->spouseFamilies() as $spouse_family): ?>
+                        <?= view('chart-box', ['individual' => $spouse_family->spouse($child)]) ?>
+                    <?php endforeach ?>
+                    <?php endif ?>
+                <div>&nbsp;</div>
+            </div>
+            <div class="wt-chart-horizontal-spacer">
+                <?php if ($children->count() === 1): ?>
+                    <div class="wt-chart-horizontal-line"></div>
+                <?php elseif ($n === 0): ?>
+                    <div class="wt-chart-horizontal-first-child"></div>
+                <?php elseif ($n + 1 === $children->count()): ?>
+                    <div class="wt-chart-horizontal-last-child"></div>
+                <?php else: ?>
+                    <div class="wt-chart-horizontal-middle-child">
+                        <div class="wt-chart-horizontal-line"></div>
+                    </div>
+                <?php endif ?>
+            </div>
+        </div>
+    <?php endforeach ?>
+</div>
+
+<?php if ($children->count() > 0): ?>
+    <div class="wt-chart-horizontal-spacer">
+        <div class="wt-chart-horizontal-line"></div>
+    </div>
+<?php endif ?>

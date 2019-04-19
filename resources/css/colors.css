@@ -2450,7 +2450,6 @@ i[class*="wt-icon-media"] {
  *  	Ancestors
  *  	Descendants
  *  	amily book
- *  	Hourglass chart
  *
  */
 
@@ -2494,28 +2493,6 @@ i[class*="wt-icon-media"] {
 
 .wt-chart-descendants .linea5 {
 	vertical-align: top;
-}
-
-/* Hourglass */
-.lineh1 {
-	margin-bottom: 4px;
-}
-
-.lineh2 {
-	margin-bottom: 4px;
-}
-
-.lineh3 {
-	margin-bottom: 7px;
-}
-
-/*
- * Pedigree chart
- *
- * wt-chart, wt-chart-pedigree
- */
-.wt-chart-pedigree, .wt-chart-hourglass {
-	overflow-y: auto;
 }
 
 /*
