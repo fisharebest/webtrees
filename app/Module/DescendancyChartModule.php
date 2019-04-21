@@ -19,11 +19,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Functions\FunctionsCharts;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
-use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -32,7 +27,6 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Ramsey\Uuid\Uuid;
 
 /**
  * Class DescendancyChartModule
@@ -42,10 +36,9 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
     use ModuleChartTrait;
 
     // Chart styles
-    public const CHART_STYLE_TREE        = 0;
-    public const CHART_STYLE_BOOKLET     = 1;
-    public const CHART_STYLE_INDIVIDUALS = 2;
-    public const CHART_STYLE_FAMILIES    = 3;
+    public const CHART_STYLE_TREE        = 'tree';
+    public const CHART_STYLE_INDIVIDUALS = 'individuals';
+    public const CHART_STYLE_FAMILIES    = 'families';
 
     // Defaults
     public const DEFAULT_STYLE               = self::CHART_STYLE_TREE;
@@ -137,7 +130,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
         Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
-        $chart_style = (int) ($request->getQueryParams()['chart_style'] ?? self::DEFAULT_STYLE);
+        $chart_style = $request->getQueryParams()['chart_style'] ?? self::DEFAULT_STYLE;
         $generations = (int) ($request->getQueryParams()['generations'] ?? self::DEFAULT_GENERATIONS);
 
         $generations = min($generations, self::MAXIMUM_GENERATIONS);
@@ -183,7 +176,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
 
         Auth::checkIndividualAccess($individual);
 
-        $chart_style = (int) $request->getQueryParams()['chart_style'];
+        $chart_style = $request->getQueryParams()['chart_style'];
         $generations = (int) $request->getQueryParams()['generations'];
 
         $generations = min($generations, self::MAXIMUM_GENERATIONS);
@@ -193,9 +186,6 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
             case self::CHART_STYLE_TREE:
             default:
                 return response(view('modules/descendancy_chart/tree', ['individual' => $individual, 'generations' => $generations, 'daboville' => '1']));
-
-            case self::CHART_STYLE_BOOKLET:
-                return $this->descendantsBooklet($individual, $generations);
 
             case self::CHART_STYLE_INDIVIDUALS:
                 $individuals = $chart_service->descendants($individual, $generations - 1);
@@ -247,53 +237,6 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
     }
 
     /**
-     * Show a booklet view of descendants
-     *
-     * @TODO replace ob_start() with views.
-     *
-     * @param Individual $individual
-     * @param int        $generations
-     *
-     * @return ResponseInterface
-     */
-    private function descendantsBooklet(Individual $individual, int $generations): ResponseInterface
-    {
-        ob_start();
-
-        $this->printChildFamily($individual, $generations);
-
-        $html = ob_get_clean();
-
-        return response($html);
-    }
-
-    /**
-     * Print a child family
-     *
-     * @param Individual $individual
-     * @param int        $depth     - the descendancy depth to show
-     * @param string     $daboville - d'Aboville number
-     * @param string     $gpid
-     *
-     * @return void
-     */
-    private function printChildFamily(Individual $individual, $depth, $daboville = '1.', $gpid = ''): void
-    {
-        if ($depth < 2) {
-            return;
-        }
-
-        $i = 1;
-
-        foreach ($individual->spouseFamilies() as $family) {
-            FunctionsCharts::printSosaFamily($family, '', -1, $daboville, $individual->xref(), $gpid, false);
-            foreach ($family->children() as $child) {
-                $this->printChildFamily($child, $depth - 1, $daboville . ($i++) . '.', $individual->xref());
-            }
-        }
-    }
-
-    /**
      * This chart can display its output in a number of styles
      *
      * @return string[]
@@ -302,7 +245,6 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
     {
         return [
             self::CHART_STYLE_TREE        => I18N::translate('Tree'),
-            self::CHART_STYLE_BOOKLET     => I18N::translate('Booklet'),
             self::CHART_STYLE_INDIVIDUALS => I18N::translate('Individuals'),
             self::CHART_STYLE_FAMILIES    => I18N::translate('Families'),
         ];

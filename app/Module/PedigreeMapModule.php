@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Functions\FunctionsCharts;
+use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
+use function intdiv;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -282,7 +283,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
 
         if ($sosa > 1) {
             $addbirthtag = true;
-            $tag         = ucfirst(FunctionsCharts::getSosaName($sosa));
+            $tag         = ucfirst($this->getSosaName($sosa));
         }
 
         return [
@@ -426,5 +427,28 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
                 ]
             ),
         ]);
+    }
+
+    /**
+     * builds and returns sosa relationship name in the active language
+     *
+     * @param int $sosa Sosa number
+     *
+     * @return string
+     */
+    private function getSosaName(int $sosa): string
+    {
+        $path = '';
+
+        while ($sosa > 1) {
+            if ($sosa % 2 === 1) {
+                $path = 'mot' . $path;
+            } else {
+                $path = 'fat' . $path;
+            }
+            $sosa = intdiv($sosa, 2);
+        }
+
+        return Functions::getRelationshipNameFromPath($path);
     }
 }

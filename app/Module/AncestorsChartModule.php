@@ -19,9 +19,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Functions\FunctionsCharts;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
-use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -41,12 +38,10 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
 
     // Chart styles
     protected const CHART_STYLE_TREE        = 'tree';
-    protected const CHART_STYLE_BOOKLET     = 'booklet';
     protected const CHART_STYLE_INDIVIDUALS = 'individuals';
     protected const CHART_STYLE_FAMILIES    = 'families';
 
     // Defaults
-    protected const DEFAULT_COUSINS             = false;
     protected const DEFAULT_STYLE               = self::CHART_STYLE_TREE;
     protected const DEFAULT_GENERATIONS         = '4';
 
@@ -130,7 +125,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
         Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
-        $show_cousins = (bool) $request->get('show_cousins', self::DEFAULT_COUSINS);
         $chart_style  = $request->get('chart_style', self::DEFAULT_STYLE);
         $generations  = (int) $request->get('generations', self::DEFAULT_GENERATIONS);
 
@@ -145,9 +139,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
                 case self::CHART_STYLE_TREE:
                     return response(view('modules/ancestors-chart/tree', ['individual' => $individual, 'parents' => $individual->primaryChildFamily(), 'generations' => $generations, 'sosa' => 1]));
 
-                case self::CHART_STYLE_BOOKLET:
-                    return $this->ancestorsBooklet($ancestors, $show_cousins);
-
                 case self::CHART_STYLE_INDIVIDUALS:
                     return $this->ancestorsIndividuals($tree, $ancestors);
 
@@ -159,7 +150,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
         $ajax_url = $this->chartUrl($individual, [
             'generations'  => $generations,
             'chart_style'  => $chart_style,
-            'show_cousins' => $show_cousins,
             'ajax'         => true,
         ]);
 
@@ -173,7 +163,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
             'maximum_generations' => self::MAXIMUM_GENERATIONS,
             'minimum_generations' => self::MINIMUM_GENERATIONS,
             'module_name'         => $this->name(),
-            'show_cousins'        => $show_cousins,
             'title'               => $this->chartTitle($individual),
         ]);
     }
@@ -223,32 +212,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
     }
 
     /**
-     * Show a booklet view of ancestors
-     *
-     * @TODO replace ob_start() with views.
-     *
-     * @param Collection $ancestors
-     * @param bool       $show_cousins
-     *
-     * @return ResponseInterface
-     */
-    protected function ancestorsBooklet(Collection $ancestors, bool $show_cousins): ResponseInterface
-    {
-        ob_start();
-
-        echo view('chart-box', ['individual' => $ancestors[1]]);
-        foreach ($ancestors as $sosa => $individual) {
-            foreach ($individual->childFamilies() as $family) {
-                FunctionsCharts::printSosaFamily($family, $individual->xref(), $sosa, '', '', '', $show_cousins);
-            }
-        }
-
-        $html = ob_get_clean();
-
-        return response($html);
-    }
-
-    /**
      * This chart can display its output in a number of styles
      *
      * @return array
@@ -257,7 +220,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
     {
         return [
             self::CHART_STYLE_TREE        => I18N::translate('Tree'),
-            self::CHART_STYLE_BOOKLET     => I18N::translate('Booklet'),
             self::CHART_STYLE_INDIVIDUALS => I18N::translate('Individuals'),
             self::CHART_STYLE_FAMILIES    => I18N::translate('Families'),
         ];

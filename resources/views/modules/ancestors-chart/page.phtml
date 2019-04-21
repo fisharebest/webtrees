@@ -36,7 +36,6 @@
             </legend>
             <div class="col-sm-9 wt-page-options-value">
                 <?= view('components/radios-inline', ['name' => 'chart_style', 'options' => $chart_styles, 'selected' => $chart_style]) ?>
-                <?= view('components/checkbox', ['label' => I18N::translate('Show cousins'), 'name' => 'show_cousins', 'disabled' => $chart_style !== 'booklet', 'checked' => $show_cousins]) ?>
             </div>
         </div>
     </fieldset>
@@ -50,12 +49,3 @@
 </form>
 
 <div class="wt-ajax-load wt-page-content wt-chart wt-chart-ancestors" data-ajax-url="<?= e($ajax_url) ?>"></div>
-
-<?php View::push('javascript') ?>
-<script>
-    // The "show cousins" option is only available for the "booklet" style.
-    $("input[name=chart_style]").change(function () {
-        $("input[name=show_cousins]").prop("disabled", $(this).val() !== "booklet");
-    });
-</script>
-<?php View::endpush() ?>

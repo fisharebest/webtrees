@@ -2231,18 +2231,18 @@ class Functions
                     }
 
                     if ($down < $up) {
-                        return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('sib' . $descent, null, null));
+                        return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('sib' . $descent));
                     }
 
                     if ($sex2 === 'M') {
-                        return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('bro' . $descent, null, null));
+                        return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('bro' . $descent));
                     }
 
                     if ($sex2 === 'F') {
-                        return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('sis' . $descent, null, null));
+                        return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('sis' . $descent));
                     }
 
-                    return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('sib' . $descent, null, null));
+                    return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('sib' . $descent));
 
                 case 'en_AU': // See: http://en.wikipedia.org/wiki/File:CousinTree.svg
                 case 'en_GB':
@@ -2302,8 +2302,8 @@ class Functions
             // I18N: A complex relationship, such as “third-cousin’s great-uncle”
             $tmp = I18N::translate(
                 '%1$s’s %2$s',
-                self::getRelationshipNameFromPath($path1, null, null),
-                self::getRelationshipNameFromPath($path2, null, null)
+                self::getRelationshipNameFromPath($path1),
+                self::getRelationshipNameFromPath($path2)
             );
             if (!$relationship || strlen($tmp) < strlen($relationship)) {
                 $relationship = $tmp;
