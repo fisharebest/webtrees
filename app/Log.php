@@ -56,8 +56,12 @@ class Log
      */
     private static function addLog($message, $log_type, Tree $tree = null): void
     {
-        $request    = app(ServerRequestInterface::class);
-        $ip_address = $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1';
+        if (app()->has(ServerRequestInterface::class)) {
+            $request    = app(ServerRequestInterface::class);
+            $ip_address = $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1';
+        } else {
+            $ip_address = '127.0.0.1';
+        }
         $tree_id    = $tree ? $tree->id() : null;
 
         DB::table('log')->insert([

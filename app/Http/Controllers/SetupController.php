@@ -24,7 +24,6 @@ use Fisharebest\Localization\Locale;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Services\MigrationService;
@@ -35,11 +34,12 @@ use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Cache\ArrayStore;
 use Illuminate\Cache\Repository;
-use Illuminate\Database\Capsule\Manager;
+use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
 use function random_bytes;
+use function touch;
 use const WT_DATA_DIR;
 
 /**
@@ -309,7 +309,7 @@ class SetupController extends AbstractBaseController
     private function step5Administrator(array $data): ResponseInterface
     {
         try {
-            $this->checkDatabase($data);
+            $this->connectToDatabase($data);
         } catch (Throwable $ex) {
             $data['errors']->push($ex->getMessage());
 
@@ -318,32 +318,6 @@ class SetupController extends AbstractBaseController
         }
 
         return $this->viewResponse('setup/step-5-administrator', $data);
-    }
-
-    /**
-     * Check we can write to the data folder.
-     *
-     * @param mixed $data
-     *
-     * @throws Exception
-     */
-    private function checkDatabase(array $data): void
-    {
-        // Try to create the SQLite database, if it does not already exist.
-        if ($data['dbtype'] === 'sqlite') {
-            touch(Webtrees::ROOT_DIR . 'data/' . $data['dbname'] . '.sqlite');
-        }
-
-        // Try to create the MySQL database, if it does not already exist.
-        if ($data['dbtype'] === 'mysql') {
-            $tmp           = $data;
-            $tmp['dbname'] = '';
-            Database::connect($tmp);
-            Manager::connection()->statement('CREATE DATABASE IF NOT EXISTS `' . $data['dbname'] . '` COLLATE utf8_unicode_ci');
-        }
-
-        // Try to connect to the database.
-        Database::connect($data);
     }
 
     /**
@@ -400,7 +374,7 @@ class SetupController extends AbstractBaseController
     private function createConfigFile(array $data): void
     {
         // Create/update the database tables.
-        Database::connect($data);
+        $this->connectToDatabase($data);
         $this->migration_service->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
 
         // Add some default/necessary configuration data.
@@ -434,5 +408,58 @@ class SetupController extends AbstractBaseController
         $request = app(ServerRequestInterface::class);
         Session::start($request);
         Auth::login($admin);
+    }
+
+    private function connectToDatabase(array $data): void
+    {
+        $capsule = new DB();
+
+        // Try to create the database, if it does not already exist.
+        switch ($data['dbtype']) {
+            case 'sqlite':
+                $data['dbname'] = Webtrees::ROOT_DIR . 'data/' . $data['dbname'] . '.sqlite';
+                touch($data['dbname']);
+                break;
+
+            case 'mysql':
+                $capsule->addConnection([
+                    'driver'                  => $data['dbtype'],
+                    'host'                    => $data['dbhost'],
+                    'port'                    => $data['dbport'],
+                    'database'                => '',
+                    'username'                => $data['dbuser'],
+                    'password'                => $data['dbpass'],
+                ], 'temp');
+                $capsule->getConnection('temp')->statement('CREATE DATABASE IF NOT EXISTS `' . $data['dbname'] . '` COLLATE utf8_unicode_ci');
+                break;
+        }
+
+        // Connect to the database.
+        $capsule->addConnection([
+            'driver'                  => $data['dbtype'],
+            'host'                    => $data['dbhost'],
+            'port'                    => $data['dbport'],
+            'database'                => $data['dbname'],
+            'username'                => $data['dbuser'],
+            'password'                => $data['dbpass'],
+            'prefix'                  => $data['tblpfx'],
+            'prefix_indexes'          => true,
+            // For MySQL
+            'charset'                 => 'utf8',
+            'collation'               => 'utf8_unicode_ci',
+            'timezone'                => '+00:00',
+            'engine'                  => 'InnoDB',
+            'modes'                   => [
+                'ANSI',
+                'STRICT_TRANS_TABLES',
+                'NO_ZERO_IN_DATE',
+                'NO_ZERO_DATE',
+                'ERROR_FOR_DIVISION_BY_ZERO',
+            ],
+            // For SQLite
+            'foreign_key_constraints' => true,
+        ]);
+
+        $capsule->setAsGlobal();
     }
 }
