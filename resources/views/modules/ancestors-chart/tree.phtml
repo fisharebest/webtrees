@@ -29,9 +29,6 @@ use Fisharebest\Webtrees\Individual;
             <span class="chart-collapse">
                 <?= view('icons/collapse') ?>
             </span>
-            <span class="wt-sosa-number p-1" title="<?= I18N::translate('Sosa-Stradonitz number') ?>"><?= I18N::number($sosa * 2) ?></span>
-            <?= I18N::translate('and') ?>
-            <span class="wt-sosa-number p-1" title="<?= I18N::translate('Sosa-Stradonitz number') ?>"><?= I18N::number($sosa * 2 + 1) ?></span>
             <?php foreach ($parents->facts(['MARR', 'DIV', '_NMR'], true) as $fact): ?>
                 <?= $fact->label() ?>
                 <?php if ($fact->date()->isOK()): ?>
