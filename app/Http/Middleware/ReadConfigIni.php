@@ -17,18 +17,31 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fig\Http\Message\StatusCodeInterface;
+use function file_exists;
+use Fisharebest\Webtrees\Http\Controllers\SetupController;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use function parse_ini_file;
 
 /**
- * Middleware to check whether the site is offline.
+ * Middleware to read (or create) the webtrees configuration file.
  */
-class CheckForMaintenanceMode implements MiddlewareInterface, StatusCodeInterface
+class ReadConfigIni implements MiddlewareInterface
 {
+    /** @var SetupController $controller */
+    private $setup_controller;
+
+    /**
+     * @param SetupController $setup_controller
+     */
+    public function __construct(SetupController $setup_controller)
+    {
+        $this->setup_controller = $setup_controller;
+    }
+
     /**
      * @param ServerRequestInterface  $request
      * @param RequestHandlerInterface $handler
@@ -37,15 +50,19 @@ class CheckForMaintenanceMode implements MiddlewareInterface, StatusCodeInterfac
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if (file_exists(Webtrees::OFFLINE_FILE)) {
-            $html = view('layouts/offline', [
-                'message' => file_get_contents(Webtrees::OFFLINE_FILE),
-                'url'     => (string) $request->getUri(),
-            ]);
+        // Read the configuration settings.
+        if (file_exists(Webtrees::CONFIG_FILE)) {
+            $config = parse_ini_file(Webtrees::CONFIG_FILE);
 
-            return response($html, self::STATUS_SERVICE_UNAVAILABLE);
+            // Store the configuration settings as request attributes.
+            foreach ($config as $key => $value) {
+                $request = $request->withAttribute($key, $value);
+            }
+
+            return $handler->handle($request);
         }
 
-        return $handler->handle($request);
+        // No configuration file? Run the setup wizard to create one.
+        return $this->setup_controller->setup($request);
     }
 }

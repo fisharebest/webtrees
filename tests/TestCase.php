@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Services\UserService;
 use Illuminate\Cache\ArrayStore;
 use Illuminate\Cache\Repository;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Memory\MemoryAdapter;
 use Nyholm\Psr7\Factory\Psr17Factory;
@@ -110,7 +111,12 @@ class TestCase extends \PHPUnit\Framework\TestCase implements StatusCodeInterfac
             'database' => ':memory:',
         ]);
         $capsule->setAsGlobal();
-        Database::registerMacros();
+
+        Builder::macro('whereContains', function ($column, string $search, string $boolean = 'and'): Builder {
+            $search = strtr($search, ['\\' => '\\\\', '%' => '\\%', '_' => '\\_', ' ' => '%']);
+
+            return $this->where($column, 'LIKE', '%' . $search . '%', $boolean);
+        });
 
         // Migrations create logs, which requires an IP address, which requires a request
         self::createRequest();

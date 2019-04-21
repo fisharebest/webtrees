@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
-use DebugBar\StandardDebugBar;
 use ErrorException;
 use Fisharebest\Webtrees\Http\Middleware\BootModules;
 use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
@@ -29,6 +28,7 @@ use Fisharebest\Webtrees\Http\Middleware\HandleExceptions;
 use Fisharebest\Webtrees\Http\Middleware\ModuleMiddleware;
 use Fisharebest\Webtrees\Http\Middleware\NoRouteFound;
 use Fisharebest\Webtrees\Http\Middleware\PhpEnvironment;
+use Fisharebest\Webtrees\Http\Middleware\ReadConfigIni;
 use Fisharebest\Webtrees\Http\Middleware\RequestRouter;
 use Fisharebest\Webtrees\Http\Middleware\UpdateDatabaseSchema;
 use Fisharebest\Webtrees\Http\Middleware\UseCache;
@@ -49,7 +49,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
-use Psr\Http\Server\MiddlewareInterface;
 use Throwable;
 use function app;
 use function class_exists;
@@ -201,6 +200,7 @@ class Webtrees
             EmitResponse::class,
             HandleExceptions::class,
             CheckForMaintenanceMode::class,
+            ReadConfigIni::class,
             UseDatabase::class,
             UseDebugbar::class,
             UpdateDatabaseSchema::class,

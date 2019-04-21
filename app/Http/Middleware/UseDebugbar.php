@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use DebugBar\StandardDebugBar;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\DebugBar;
+use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -46,6 +47,8 @@ class UseDebugbar implements MiddlewareInterface, StatusCodeInterface
     {
         if (class_exists(StandardDebugBar::class)) {
             DebugBar::enable();
+
+            DebugBar::initPDO(DB::connection()->getPdo());
 
             $response = $handler->handle($request);
 

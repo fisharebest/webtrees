@@ -17,32 +17,19 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use function file_exists;
-use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Http\Controllers\SetupController;
 use Fisharebest\Webtrees\Webtrees;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use function parse_ini_file;
 
 /**
  * Middleware to connect to the database.
  */
 class UseDatabase implements MiddlewareInterface
 {
-    /** @var SetupController $controller */
-    private $setup_controller;
-
-    /**
-     * @param SetupController $setup_controller
-     */
-    public function __construct(SetupController $setup_controller)
-    {
-        $this->setup_controller = $setup_controller;
-    }
-
     /**
      * @param ServerRequestInterface  $request
      * @param RequestHandlerInterface $handler
@@ -51,16 +38,50 @@ class UseDatabase implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        // Read the connection settings and create the database
-        if (file_exists(Webtrees::CONFIG_FILE)) {
-            $database_config = parse_ini_file(Webtrees::CONFIG_FILE);
+        // Earlier versions of webtrees did not have a dbtype config option.  They always used mysql.
+        $driver = $request->getAttribute('dbtype', 'mysql');
 
-            Database::connect($database_config);
+        $dbname = $request->getAttribute('dbname');
 
-            return $handler->handle($request);
+        if ($driver === 'sqlite') {
+            $dbname = Webtrees::ROOT_DIR . 'data/' . $dbname . '.sqlite';
         }
 
-        // No database connection? Run the setup wizard to create one.
-        return $this->setup_controller->setup($request);
+        $capsule = new DB();
+
+        $capsule->addConnection([
+            'driver'                  => $driver,
+            'host'                    => $request->getAttribute('dbhost'),
+            'port'                    => $request->getAttribute('dbport'),
+            'database'                => $dbname,
+            'username'                => $request->getAttribute('dbuser'),
+            'password'                => $request->getAttribute('dbpass'),
+            'prefix'                  => $request->getAttribute('tblpfx'),
+            'prefix_indexes'          => true,
+            // For MySQL
+            'charset'                 => 'utf8',
+            'collation'               => 'utf8_unicode_ci',
+            'timezone'                => '+00:00',
+            'engine'                  => 'InnoDB',
+            'modes'                   => [
+                'ANSI',
+                'STRICT_TRANS_TABLES',
+                'NO_ZERO_IN_DATE',
+                'NO_ZERO_DATE',
+                'ERROR_FOR_DIVISION_BY_ZERO',
+            ],
+            // For SQLite
+            'foreign_key_constraints' => true,
+        ]);
+        
+        $capsule->setAsGlobal();
+
+        Builder::macro('whereContains', function ($column, string $search, string $boolean = 'and'): Builder {
+            $search = strtr($search, ['\\' => '\\\\', '%' => '\\%', '_' => '\\_', ' ' => '%']);
+
+            return $this->where($column, 'LIKE', '%' . $search . '%', $boolean);
+        });
+
+        return $handler->handle($request);
     }
 }
