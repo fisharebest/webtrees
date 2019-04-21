@@ -192,8 +192,12 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
 
         $show_spouse = (bool) ($request->getQueryParams()['show_spouse'] ?? false);
         $individual  = Individual::getInstance($xref, $tree);
+        
         Auth::checkIndividualAccess($individual);
-        $children = $individual->spouseFamilies()->map(static function (Family $family): Collection { return $family->children(); })->flatten();
+
+        $children = $individual->spouseFamilies()->map(static function (Family $family): Collection {
+            return $family->children();
+        })->flatten();
 
         return response(view('modules/hourglass-chart/children', [
             'children'    => $children,
