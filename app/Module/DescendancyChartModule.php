@@ -42,13 +42,13 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
     use ModuleChartTrait;
 
     // Chart styles
-    public const CHART_STYLE_LIST        = 0;
+    public const CHART_STYLE_TREE        = 0;
     public const CHART_STYLE_BOOKLET     = 1;
     public const CHART_STYLE_INDIVIDUALS = 2;
     public const CHART_STYLE_FAMILIES    = 3;
 
     // Defaults
-    public const DEFAULT_STYLE               = self::CHART_STYLE_LIST;
+    public const DEFAULT_STYLE               = self::CHART_STYLE_TREE;
     public const DEFAULT_GENERATIONS         = '3';
 
     // Limits
@@ -190,9 +190,9 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
         $generations = max($generations, self::MINIMUM_GENERATIONS);
 
         switch ($chart_style) {
-            case self::CHART_STYLE_LIST:
+            case self::CHART_STYLE_TREE:
             default:
-                return response(view('modules/descendancy_chart/list', ['individual' => $individual, 'generations' => $generations, 'daboville' => '1']));
+                return response(view('modules/descendancy_chart/tree', ['individual' => $individual, 'generations' => $generations, 'daboville' => '1']));
 
             case self::CHART_STYLE_BOOKLET:
                 return $this->descendantsBooklet($individual, $generations);
@@ -301,7 +301,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
     private function chartStyles(): array
     {
         return [
-            self::CHART_STYLE_LIST        => I18N::translate('List'),
+            self::CHART_STYLE_TREE        => I18N::translate('Tree'),
             self::CHART_STYLE_BOOKLET     => I18N::translate('Booklet'),
             self::CHART_STYLE_INDIVIDUALS => I18N::translate('Individuals'),
             self::CHART_STYLE_FAMILIES    => I18N::translate('Families'),

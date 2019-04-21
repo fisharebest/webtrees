@@ -41,7 +41,7 @@ use Fisharebest\Webtrees\Individual;
                     <?= I18N::plural('%s child', '%s children', $family->children()->count(), I18N::number($family->children()->count())) ?>
                 </button>
             </div>
-            <div id="fam-<?= e($family->xref()) ?>" class="collapse show">
+            <div id="fam-<?= e($family->xref()) ?>" class="collapse show mb-4">
                 <?= view('chart-box', ['individual' => $family->spouse($individual)]) ?>
                 <?php foreach ($family->children()->sort(Individual::birthDateComparator()) as $n => $child): ?>
                     <div class="d-flex">
@@ -54,7 +54,7 @@ use Fisharebest\Webtrees\Individual;
                             <?php endif ?>
                         </div>
                         <div>
-                            <?= view('modules/descendancy_chart/list', ['individual' => $child, 'generations' => $generations - 1, 'daboville' => $daboville . '.' . ++$child_number]) ?>
+                            <?= view('modules/descendancy_chart/tree', ['individual' => $child, 'generations' => $generations - 1, 'daboville' => $daboville . '.' . ++$child_number]) ?>
                         </div>
                     </div>
                 <?php endforeach ?>

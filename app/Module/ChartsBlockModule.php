@@ -124,7 +124,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                     $chart_url = $module->chartUrl($person, [
                         'ajax'        => true,
                         'generations' => 2,
-                        'chart_style' => DescendancyChartModule::CHART_STYLE_LIST,
+                        'chart_style' => DescendancyChartModule::CHART_STYLE_TREE,
                     ]);
                     $content   = view('modules/charts/chart', [
                         'block_id'  => $block_id,

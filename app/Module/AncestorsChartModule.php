@@ -40,14 +40,14 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
     use ModuleChartTrait;
 
     // Chart styles
-    protected const CHART_STYLE_LIST        = 'list';
+    protected const CHART_STYLE_TREE        = 'tree';
     protected const CHART_STYLE_BOOKLET     = 'booklet';
     protected const CHART_STYLE_INDIVIDUALS = 'individuals';
     protected const CHART_STYLE_FAMILIES    = 'families';
 
     // Defaults
     protected const DEFAULT_COUSINS             = false;
-    protected const DEFAULT_STYLE               = self::CHART_STYLE_LIST;
+    protected const DEFAULT_STYLE               = self::CHART_STYLE_TREE;
     protected const DEFAULT_GENERATIONS         = '4';
 
     // Limits
@@ -142,8 +142,8 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
 
             switch ($chart_style) {
                 default:
-                case self::CHART_STYLE_LIST:
-                    return response(view('modules/ancestors-chart/list', ['individual' => $individual, 'parents' => $individual->primaryChildFamily(), 'generations' => $generations, 'sosa' => 1]));
+                case self::CHART_STYLE_TREE:
+                    return response(view('modules/ancestors-chart/tree', ['individual' => $individual, 'parents' => $individual->primaryChildFamily(), 'generations' => $generations, 'sosa' => 1]));
 
                 case self::CHART_STYLE_BOOKLET:
                     return $this->ancestorsBooklet($ancestors, $show_cousins);
@@ -256,7 +256,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
     protected function chartStyles(): array
     {
         return [
-            self::CHART_STYLE_LIST        => I18N::translate('List'),
+            self::CHART_STYLE_TREE        => I18N::translate('Tree'),
             self::CHART_STYLE_BOOKLET     => I18N::translate('Booklet'),
             self::CHART_STYLE_INDIVIDUALS => I18N::translate('Individuals'),
             self::CHART_STYLE_FAMILIES    => I18N::translate('Families'),
