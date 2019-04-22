@@ -114,6 +114,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                     $content   = view('modules/charts/chart', [
                         'block_id'  => $block_id,
                         'chart_url' => $chart_url,
+                        'class'     => 'wt-chart-pedigree',
                     ]);
                     break;
 
@@ -129,6 +130,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                     $content   = view('modules/charts/chart', [
                         'block_id'  => $block_id,
                         'chart_url' => $chart_url,
+                        'class'     => 'wt-chart-descendants',
                     ]);
                     break;
 
@@ -143,12 +145,13 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                     $content   = view('modules/charts/chart', [
                         'block_id'  => $block_id,
                         'chart_url' => $chart_url,
+                        'class'     => 'wt-chart-hourglass',
                     ]);
                     break;
 
                 case 'treenav':
                     /** @var InteractiveTreeModule $module */
-                    $module  = $this->module_service->findByInterface(InteractiveTreeModule::class);
+                    $module  = $this->module_service->findByInterface(InteractiveTreeModule::class)->first();
                     $title   = I18N::translate('Interactive tree of %s', $person->fullName());
                     $tv      = new TreeView();
                     $content = '<script>$("head").append(\'<link rel="stylesheet" href="' . $module->css() . '" type="text/css" />\');</script>';

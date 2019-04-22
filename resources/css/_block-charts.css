@@ -15,14 +15,24 @@
 
 /*
  * Charts block
- *
  */
-.wt-block-charts .wt-chart-box {
-	width: 10rem;
+
+.wt-block.wt-block-charts {
+	/* This strange workaround creates a new stacking context, which allows the absolutely-positioned */
+	/* pedigree chart lines to be displayed. */
+	opacity: 0.99;
 }
 
-.wt-block-charts .wt-chart-box-thumbnail,
+.wt-block-charts .wt-chart-box {
+	width: 15rem;
+	height: 3.5rem;
+}
+
 .wt-block-charts .wt-chart-box-extra,
 .wt-block-charts .wt-chart-box-facts {
 	display: none;
+}
+
+.wt-block-charts .wt-chart-box .wt-chart-box-lifespan {
+	display: block;
 }
