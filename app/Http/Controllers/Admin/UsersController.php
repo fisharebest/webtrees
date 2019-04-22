@@ -375,11 +375,11 @@ class UsersController extends AbstractAdminController
         $timezone       = $request->getParsedBody()['timezone'];
         $contact_method = $request->getParsedBody()['contact_method'];
         $comment        = $request->getParsedBody()['comment'];
-        $auto_accept    = (bool) $request->getParsedBody()['auto_accept'];
-        $canadmin       = (bool) $request->getParsedBody()['canadmin'];
-        $visible_online = (bool) $request->getParsedBody()['visible_online'];
-        $verified       = (bool) $request->getParsedBody()['verified'];
-        $approved       = (bool) $request->getParsedBody()['approved'];
+        $auto_accept    = (bool) ($request->getParsedBody()['auto_accept'] ?? false);
+        $canadmin       = (bool) ($request->getParsedBody()['canadmin'] ?? false);
+        $visible_online = (bool) ($request->getParsedBody()['visible_online'] ?? false);
+        $verified       = (bool) ($request->getParsedBody()['verified'] ?? false);
+        $approved       = (bool) ($request->getParsedBody()['approved'] ?? false);
 
         $edit_user = $this->user_service->find($user_id);
 
