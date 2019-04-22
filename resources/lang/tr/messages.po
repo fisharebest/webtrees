@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:51+0100\n"
-"PO-Revision-Date: 2018-03-01 14:14+0000\n"
-"Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
-"Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
+"PO-Revision-Date: 2019-04-22 21:30+0000\n"
+"Last-Translator: Suleyman <hsarslan@yahoo.com>\n"
+"Language-Team: Turkish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,7 +79,7 @@ msgstr "%2$s saniyede %1$s KB indirildi."
 #: app/Http/Controllers/AdminUsersController.php:392
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s mevcut değil"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/AdminTreesController.php:223
@@ -302,8 +302,8 @@ msgstr "%s sunucuda devre dışı bırakıldı. Tekrar etkinleştirmeden webtree
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s konum içe aktarıldı."
+msgstr[1] "%s konum içe aktarıldı."
 
 #: app/Module/UserMessagesModule.php:177
 #, php-format
@@ -358,8 +358,8 @@ msgstr "%s alttan bir çıkarıldı"
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s depo güncellendi."
+msgstr[1] "%s depo güncellendi."
 
 #: app/I18N.php:872
 #, php-format
@@ -703,7 +703,7 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.php:20
 msgid "A URL"
-msgstr ""
+msgstr "URL"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:63
