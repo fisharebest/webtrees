@@ -14,7 +14,7 @@
  */
 
 /*
- * Base formatting, resets, etc.
+ * Base formatting, resets, workarounds, etc.
  */
 
 /* Some icons need to be reversed on right-to-left pages */
@@ -25,6 +25,13 @@
 /* Remove border-radius for left-to-right input groups on right-to-left pages */
 [dir=rtl] .input-group[dir=ltr] [dir=ltr] {
 	border-radius: 0;
+}
+
+/* Workaround for dropdown menu position on RTL with popper.js */
+/* See also https://github.com/FezVrasta/popper.js/issues/695 */
+[dir=rtl] .wt-genealogy-menu .dropdown-menu {
+	right: 0;
+	left: auto !important;
 }
 
 /*
