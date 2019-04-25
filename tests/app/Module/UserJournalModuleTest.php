@@ -29,6 +29,6 @@ class UserJournalModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\UserJournalModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\UserJournalModule::class));
     }
 }

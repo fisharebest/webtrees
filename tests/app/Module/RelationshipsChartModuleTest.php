@@ -29,6 +29,6 @@ class RelationshipsChartModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\RelationshipsChartModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\RelationshipsChartModule::class));
     }
 }

@@ -32,13 +32,13 @@ class CensusTest extends \Fisharebest\Webtrees\TestCase
         $censuses = Census::censusPlaces('XX');
 
         $this->assertCount(8, $censuses);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfCzechRepublic', $censuses[0]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark', $censuses[1]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDeutschland', $censuses[2]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland', $censuses[3]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfFrance', $censuses[4]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland', $censuses[5]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates', $censuses[6]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales', $censuses[7]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfCzechRepublic::class, $censuses[0]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark::class, $censuses[1]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDeutschland::class, $censuses[2]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfEngland::class, $censuses[3]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfFrance::class, $censuses[4]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfScotland::class, $censuses[5]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfUnitedStates::class, $censuses[6]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfWales::class, $censuses[7]);
     }
 }

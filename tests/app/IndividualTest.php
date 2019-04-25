@@ -29,6 +29,6 @@ class IndividualTest extends TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Individual'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Individual::class));
     }
 }

@@ -29,6 +29,6 @@ class GregorianDateTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Date\GregorianDate'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Date\GregorianDate::class));
     }
 }

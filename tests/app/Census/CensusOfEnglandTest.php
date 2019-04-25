@@ -50,14 +50,14 @@ class CensusOfEnglandTest extends \Fisharebest\Webtrees\TestCase
         $census_dates = $census->allCensusDates();
 
         $this->assertCount(9, $census_dates);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1841', $census_dates[0]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1851', $census_dates[1]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1861', $census_dates[2]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1871', $census_dates[3]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1881', $census_dates[4]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1891', $census_dates[5]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1901', $census_dates[6]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1911', $census_dates[7]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\RegisterOfEngland1939', $census_dates[8]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfEngland1841::class, $census_dates[0]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfEngland1851::class, $census_dates[1]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfEngland1861::class, $census_dates[2]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfEngland1871::class, $census_dates[3]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfEngland1881::class, $census_dates[4]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfEngland1891::class, $census_dates[5]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfEngland1901::class, $census_dates[6]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfEngland1911::class, $census_dates[7]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\RegisterOfEngland1939::class, $census_dates[8]);
     }
 }

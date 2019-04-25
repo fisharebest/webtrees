@@ -29,6 +29,6 @@ class FanChartModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\FanChartModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\FanChartModule::class));
     }
 }

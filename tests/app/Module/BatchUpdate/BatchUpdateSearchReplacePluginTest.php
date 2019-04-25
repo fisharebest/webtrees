@@ -29,6 +29,6 @@ class BatchUpdateSearchReplacePluginTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\BatchUpdate\BatchUpdateSearchReplacePlugin'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\BatchUpdate\BatchUpdateSearchReplacePlugin::class));
     }
 }

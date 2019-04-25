@@ -29,6 +29,6 @@ class TreeViewTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\InteractiveTree\TreeView'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\InteractiveTree\TreeView::class));
     }
 }

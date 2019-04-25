@@ -51,14 +51,14 @@ class RegisterOfWales1939Test extends \Fisharebest\Webtrees\TestCase
         $columns = $census->columns();
 
         $this->assertCount(8, $columns);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[0]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[1]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnSurnameGivenNames', $columns[2]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[3]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnSexMF', $columns[4]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthDayMonthSlashYear', $columns[5]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnConditionEnglish', $columns[6]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnOccupation', $columns[7]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[0]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[1]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnSurnameGivenNames::class, $columns[2]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[3]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnSexMF::class, $columns[4]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnBirthDayMonthSlashYear::class, $columns[5]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnConditionEnglish::class, $columns[6]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnOccupation::class, $columns[7]);
 
         $this->assertSame('Schedule', $columns[0]->abbreviation());
         $this->assertSame('SubNum', $columns[1]->abbreviation());

@@ -29,6 +29,6 @@ class FunctionsExportTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Functions\FunctionsExport'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Functions\FunctionsExport::class));
     }
 }

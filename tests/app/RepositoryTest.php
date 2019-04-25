@@ -29,6 +29,6 @@ class RepositoryTest extends TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Repository'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Repository::class));
     }
 }

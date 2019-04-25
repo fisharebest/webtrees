@@ -29,6 +29,6 @@ class UserMessagesModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\UserMessagesModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\UserMessagesModule::class));
     }
 }

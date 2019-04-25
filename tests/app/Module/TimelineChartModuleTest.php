@@ -29,6 +29,6 @@ class TimelineChartModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\TimelineChartModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\TimelineChartModule::class));
     }
 }

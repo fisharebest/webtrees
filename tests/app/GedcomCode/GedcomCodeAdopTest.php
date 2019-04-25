@@ -29,6 +29,6 @@ class GedcomCodeAdopTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\GedcomCode\GedcomCodeAdop'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\GedcomCode\GedcomCodeAdop::class));
     }
 }

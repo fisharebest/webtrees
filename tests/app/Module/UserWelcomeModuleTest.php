@@ -29,6 +29,6 @@ class UserWelcomeModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\UserWelcomeModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\UserWelcomeModule::class));
     }
 }

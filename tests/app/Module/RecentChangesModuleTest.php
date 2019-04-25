@@ -29,6 +29,6 @@ class RecentChangesModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\RecentChangesModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\RecentChangesModule::class));
     }
 }

@@ -50,10 +50,10 @@ class CensusOfDeutschlandTest extends \Fisharebest\Webtrees\TestCase
         $census_dates = $census->allCensusDates();
 
         $this->assertCount(5, $census_dates);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDeutschland1819', $census_dates[0]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDeutschland1867', $census_dates[1]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDeutschlandNL1867', $census_dates[2]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDeutschland1900', $census_dates[3]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDeutschland1919', $census_dates[4]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDeutschland1819::class, $census_dates[0]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDeutschland1867::class, $census_dates[1]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDeutschlandNL1867::class, $census_dates[2]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDeutschland1900::class, $census_dates[3]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDeutschland1919::class, $census_dates[4]);
     }
 }

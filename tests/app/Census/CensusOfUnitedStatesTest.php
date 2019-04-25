@@ -50,21 +50,21 @@ class CensusOfUnitedStatesTest extends \Fisharebest\Webtrees\TestCase
         $census_dates = $census->allCensusDates();
 
         $this->assertCount(16, $census_dates);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1790', $census_dates[0]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1800', $census_dates[1]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1810', $census_dates[2]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1820', $census_dates[3]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1830', $census_dates[4]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1840', $census_dates[5]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1850', $census_dates[6]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1860', $census_dates[7]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1870', $census_dates[8]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1880', $census_dates[9]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1890', $census_dates[10]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1900', $census_dates[11]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1910', $census_dates[12]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1920', $census_dates[13]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1930', $census_dates[14]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1940', $census_dates[15]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfUnitedStates1790::class, $census_dates[0]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfUnitedStates1800::class, $census_dates[1]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfUnitedStates1810::class, $census_dates[2]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfUnitedStates1820::class, $census_dates[3]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfUnitedStates1830::class, $census_dates[4]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfUnitedStates1840::class, $census_dates[5]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfUnitedStates1850::class, $census_dates[6]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfUnitedStates1860::class, $census_dates[7]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfUnitedStates1870::class, $census_dates[8]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfUnitedStates1880::class, $census_dates[9]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfUnitedStates1890::class, $census_dates[10]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfUnitedStates1900::class, $census_dates[11]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfUnitedStates1910::class, $census_dates[12]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfUnitedStates1920::class, $census_dates[13]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfUnitedStates1930::class, $census_dates[14]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfUnitedStates1940::class, $census_dates[15]);
     }
 }

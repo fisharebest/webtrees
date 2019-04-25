@@ -30,6 +30,6 @@ class GedcomRecordTest extends TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\GedcomRecord'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\GedcomRecord::class));
     }
 }

@@ -29,6 +29,6 @@ class UpcomingAnniversariesModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\UpcomingAnniversariesModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\UpcomingAnniversariesModule::class));
     }
 }

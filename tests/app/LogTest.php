@@ -29,6 +29,6 @@ class LogTest extends TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Log'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Log::class));
     }
 }

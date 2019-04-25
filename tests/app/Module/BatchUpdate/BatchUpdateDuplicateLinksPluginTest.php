@@ -29,6 +29,6 @@ class BatchUpdateDuplicateLinksPluginTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\BatchUpdate\BatchUpdateDuplicateLinksPlugin'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\BatchUpdate\BatchUpdateDuplicateLinksPlugin::class));
     }
 }

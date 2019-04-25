@@ -29,6 +29,6 @@ class InteractiveTreeModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\InteractiveTreeModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\InteractiveTreeModule::class));
     }
 }

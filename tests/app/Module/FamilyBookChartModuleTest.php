@@ -29,6 +29,6 @@ class FamilyBookChartModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\FamilyBookChartModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\FamilyBookChartModule::class));
     }
 }

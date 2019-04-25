@@ -29,6 +29,6 @@ class FunctionsEditTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Functions\FunctionsEdit'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Functions\FunctionsEdit::class));
     }
 }

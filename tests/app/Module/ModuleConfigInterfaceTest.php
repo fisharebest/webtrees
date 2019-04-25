@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Module\ModuleConfigInterface;
+
 /**
  * Test harness for the class ModuleConfigInterface
  */
@@ -29,6 +31,6 @@ class ModuleConfigInterfaceTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(interface_exists('\Fisharebest\Webtrees\Module\ModuleConfigInterface'));
+        $this->assertTrue(interface_exists(ModuleConfigInterface::class));
     }
 }

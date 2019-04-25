@@ -29,6 +29,6 @@ class FileTest extends TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\File'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\File::class));
     }
 }

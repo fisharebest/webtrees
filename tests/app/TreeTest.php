@@ -338,7 +338,7 @@ class TreeTest extends TestCase
     {
         $tree = $this->importTree('demo.ged');
 
-        $fp = fopen('php://memory', 'w');
+        $fp = fopen('php://memory', 'wb');
 
         $tree->exportGedcom($fp);
 

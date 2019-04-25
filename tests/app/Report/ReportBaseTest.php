@@ -29,6 +29,6 @@ class ReportBaseTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Report\AbstractReport'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Report\AbstractReport::class));
     }
 }

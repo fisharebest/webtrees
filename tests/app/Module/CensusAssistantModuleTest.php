@@ -29,6 +29,6 @@ class CensusAssistantModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\CensusAssistantModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\CensusAssistantModule::class));
     }
 }

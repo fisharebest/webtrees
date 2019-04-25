@@ -29,6 +29,6 @@ class FilterTest extends TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Filter'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Filter::class));
     }
 }
