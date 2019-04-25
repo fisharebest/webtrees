@@ -77,7 +77,7 @@ use Fisharebest\Webtrees\MediaFile;
 </div>
 
 <script>
-    var play = <?= json_encode($start_automatically); ?>;
+    var play = <?= json_encode($start_automatically) ?>;
 
     if (play) {
         var timeout = setTimeout(slideShowReload, 6000);

@@ -7,7 +7,7 @@ $id = 'google-chart-' . bin2hex(random_bytes(8));
 ?>
 
 <?php if (count($data) === 1): ?>
-    <?= I18N::translate('This information is not available.'); ?>
+    <?= I18N::translate('This information is not available.') ?>
 <?php else: ?>
 
     <?= view('statistics/other/chart-setup') ?>

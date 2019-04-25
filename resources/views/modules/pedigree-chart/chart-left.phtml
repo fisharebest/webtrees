@@ -32,7 +32,7 @@ use Illuminate\Support\Collection;
                 <?= $links->get($sosa) ?>
             <?php endif ?>
 
-            <?= view('chart-box', ['individual' => $ancestors->get($sosa)]); ?>
+            <?= view('chart-box', ['individual' => $ancestors->get($sosa)]) ?>
 
             <?php if ($sosa === 1) : ?>
                 <?= $links->get(1) ?>

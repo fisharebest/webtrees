@@ -17,8 +17,8 @@ use Fisharebest\Webtrees\Individual;
         <?= view('icons/sex-' . $record->sex()) ?>
     <?php endif ?>
     <div class="indent">
-        <?= $fact->label() . ' — ' . $fact->date()->display(true); ?>
-        (<?= Carbon::now()->subYears($fact->anniv)->local()->diffForHumans(); ?>)
+        <?= $fact->label() . ' — ' . $fact->date()->display(true) ?>
+        (<?= Carbon::now()->subYears($fact->anniv)->local()->diffForHumans() ?>)
         <?php if ($fact->place()->gedcomName() !== '') : ?>
             — <a href="<?= e($fact->place()->url()) ?>" title="<?= strip_tags($fact->place()->fullName()) ?>">
                 <?= $fact->place()->shortName() ?>
