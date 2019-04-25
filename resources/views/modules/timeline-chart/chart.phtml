@@ -282,10 +282,10 @@
         $month    = max(1, $date->month());
         $day      = max(1, $date->day());
         $xoffset  = 0 + 22;
-        $yoffset  = 0 + (($year - $baseyear) * $scale) - ($scale);
+        $yoffset  = 0 + (($year - $baseyear) * $scale) - $scale;
         $yoffset  = $yoffset + (($month / 12) * $scale);
         $yoffset  = $yoffset + (($day / 30) * ($scale / 12));
-        $yoffset  = (int) ($yoffset);
+        $yoffset  = (int) $yoffset;
         $place    = (int) ($yoffset / $bheight);
         $i        = 1;
         $j        = 0;
@@ -304,7 +304,7 @@
         $xoffset            += abs($tyoffset);
         $placements[$place] = $yoffset;
 
-        echo "<div id=\"fact$factcount\" style=\"position:absolute; " . (I18N::direction() === 'ltr' ? 'left: ' . ($xoffset) : 'right: ' . ($xoffset)) . 'px; top:' . ($yoffset) . 'px; font-size: 8pt; height: ' . ($bheight) . "px;\" onmousedown=\"factMouseDown(this, '" . $factcount . "', " . ($yoffset - $tyoffset) . ');">';
+        echo "<div id=\"fact$factcount\" style=\"position:absolute; " . (I18N::direction() === 'ltr' ? 'left: ' . $xoffset : 'right: ' . $xoffset) . 'px; top:' . $yoffset . 'px; font-size: 8pt; height: ' . $bheight . "px;\" onmousedown=\"factMouseDown(this, '" . $factcount . "', " . ($yoffset - $tyoffset) . ');">';
         echo '<table cellspacing="0" cellpadding="0" border="0" style="cursor: hand;"><tr><td>';
         echo '<img src="' . e(asset('css/images/hline.png')) . '" name="boxline' . $factcount . '" id="boxline' . $factcount . '" height="3" width="10" style="padding-';
         if (I18N::direction() === 'ltr') {
