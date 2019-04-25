@@ -412,7 +412,7 @@ class ModuleService
      */
     public function titleMapper(): Closure
     {
-        return function (ModuleInterface $module): string {
+        return static function (ModuleInterface $module): string {
             return $module->title();
         };
     }
@@ -625,7 +625,7 @@ class ModuleService
      */
     private function enabledFilter(bool $include_disabled): Closure
     {
-        return function (ModuleInterface $module) use ($include_disabled): bool {
+        return static function (ModuleInterface $module) use ($include_disabled): bool {
             return $include_disabled || $module->isEnabled();
         };
     }
@@ -639,7 +639,7 @@ class ModuleService
      */
     private function interfaceFilter(string $interface): Closure
     {
-        return function (ModuleInterface $module) use ($interface): bool {
+        return static function (ModuleInterface $module) use ($interface): bool {
             return $module instanceof $interface;
         };
     }
@@ -651,7 +651,7 @@ class ModuleService
      */
     private function footerSorter(): Closure
     {
-        return function (ModuleFooterInterface $x, ModuleFooterInterface $y): int {
+        return static function (ModuleFooterInterface $x, ModuleFooterInterface $y): int {
             return $x->getFooterOrder() <=> $y->getFooterOrder();
         };
     }
@@ -663,7 +663,7 @@ class ModuleService
      */
     private function menuSorter(): Closure
     {
-        return function (ModuleMenuInterface $x, ModuleMenuInterface $y): int {
+        return static function (ModuleMenuInterface $x, ModuleMenuInterface $y): int {
             return $x->getMenuOrder() <=> $y->getMenuOrder();
         };
     }
@@ -675,7 +675,7 @@ class ModuleService
      */
     private function sidebarSorter(): Closure
     {
-        return function (ModuleSidebarInterface $x, ModuleSidebarInterface $y): int {
+        return static function (ModuleSidebarInterface $x, ModuleSidebarInterface $y): int {
             return $x->getSidebarOrder() <=> $y->getSidebarOrder();
         };
     }
@@ -687,7 +687,7 @@ class ModuleService
      */
     private function tabSorter(): Closure
     {
-        return function (ModuleTabInterface $x, ModuleTabInterface $y): int {
+        return static function (ModuleTabInterface $x, ModuleTabInterface $y): int {
             return $x->getTabOrder() <=> $y->getTabOrder();
         };
     }
@@ -702,7 +702,7 @@ class ModuleService
      */
     private function moduleSorter(): Closure
     {
-        return function (ModuleInterface $x, ModuleInterface $y): int {
+        return static function (ModuleInterface $x, ModuleInterface $y): int {
             $title1 = $x instanceof ModuleLanguageInterface ? $x->locale()->endonymSortable() : $x->title();
             $title2 = $y instanceof ModuleLanguageInterface ? $y->locale()->endonymSortable() : $y->title();
 

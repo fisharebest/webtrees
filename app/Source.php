@@ -38,7 +38,7 @@ class Source extends GedcomRecord
      */
     public static function rowMapper(): Closure
     {
-        return function (stdClass $row): Source {
+        return static function (stdClass $row): Source {
             return Source::getInstance($row->s_id, Tree::findById((int) $row->s_file), $row->s_gedcom);
         };
     }

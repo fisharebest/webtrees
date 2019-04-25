@@ -40,7 +40,7 @@ class Media extends GedcomRecord
      */
     public static function rowMapper(): Closure
     {
-        return function (stdClass $row): Media {
+        return static function (stdClass $row): Media {
             return Media::getInstance($row->m_id, Tree::findById((int) $row->m_file), $row->m_gedcom);
         };
     }

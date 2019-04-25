@@ -591,7 +591,7 @@ class Fact
      */
     private static function dateComparator(): Closure
     {
-        return function (Fact $a, Fact $b): int {
+        return static function (Fact $a, Fact $b): int {
             if ($a->date()->isOK() && $b->date()->isOK()) {
                 // If both events have dates, compare by date
                 $ret = Date::compare($a->date(), $b->date());
@@ -627,7 +627,7 @@ class Fact
             $factsort = array_flip(self::FACT_ORDER);
         }
 
-        return function (Fact $a, Fact $b) use ($factsort): int {
+        return static function (Fact $a, Fact $b) use ($factsort): int {
             // Facts from same families stay grouped together
             // Keep MARR and DIV from the same families from mixing with events from other FAMs
             // Use the original order in which the facts were added

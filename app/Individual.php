@@ -50,7 +50,7 @@ class Individual extends GedcomRecord
      */
     public static function rowMapper(): Closure
     {
-        return function (stdClass $row): Individual {
+        return static function (stdClass $row): Individual {
             $individual = Individual::getInstance($row->i_id, Tree::findById((int) $row->i_file), $row->i_gedcom);
 
             if ($row->n_num ?? null) {
@@ -71,7 +71,7 @@ class Individual extends GedcomRecord
      */
     public static function birthDateComparator(): Closure
     {
-        return function (Individual $x, Individual $y): int {
+        return static function (Individual $x, Individual $y): int {
             return Date::compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
         };
     }
@@ -83,7 +83,7 @@ class Individual extends GedcomRecord
      */
     public static function deathDateComparator(): Closure
     {
-        return function (Individual $x, Individual $y): int {
+        return static function (Individual $x, Individual $y): int {
             return Date::compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
         };
     }

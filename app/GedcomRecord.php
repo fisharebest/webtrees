@@ -91,7 +91,7 @@ class GedcomRecord
      */
     public static function rowMapper(): Closure
     {
-        return function (stdClass $row): GedcomRecord {
+        return static function (stdClass $row): GedcomRecord {
             return GedcomRecord::getInstance($row->o_id, Tree::findById((int) $row->o_file), $row->o_gedcom);
         };
     }
@@ -103,7 +103,7 @@ class GedcomRecord
      */
     public static function accessFilter(): Closure
     {
-        return function (GedcomRecord $record): bool {
+        return static function (GedcomRecord $record): bool {
             return $record->canShow();
         };
     }
@@ -115,7 +115,7 @@ class GedcomRecord
      */
     public static function nameComparator(): Closure
     {
-        return function (GedcomRecord $x, GedcomRecord $y): int {
+        return static function (GedcomRecord $x, GedcomRecord $y): int {
             if ($x->canShowName()) {
                 if ($y->canShowName()) {
                     return I18N::strcasecmp($x->sortName(), $y->sortName());
@@ -141,7 +141,7 @@ class GedcomRecord
      */
     public static function lastChangeComparator(int $direction = 1): Closure
     {
-        return function (GedcomRecord $x, GedcomRecord $y) use ($direction): int {
+        return static function (GedcomRecord $x, GedcomRecord $y) use ($direction): int {
             return $direction * ($x->lastChangeTimestamp() <=> $y->lastChangeTimestamp());
         };
     }

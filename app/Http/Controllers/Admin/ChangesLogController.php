@@ -138,7 +138,7 @@ class ChangesLogController extends AbstractAdminController
     {
         $query = $this->changesQuery($request);
 
-        $callback = function (stdClass $row) use ($myers_diff): array {
+        $callback = static function (stdClass $row) use ($myers_diff): array {
             $old_lines = explode("\n", $row->old_gedcom);
             $new_lines = explode("\n", $row->new_gedcom);
 
@@ -170,7 +170,7 @@ class ChangesLogController extends AbstractAdminController
                 '<div class="gedcom-data" dir="ltr">' .
                 preg_replace_callback(
                     '/@(' . Gedcom::REGEX_XREF . ')@/',
-                    function (array $match) use ($tree) : string {
+                    static function (array $match) use ($tree) : string {
                         $record = GedcomRecord::getInstance($match[1], $tree);
 
                         return $record ? '<a href="' . e($record->url()) . '">' . $match[0] . '</a>' : $match[0];

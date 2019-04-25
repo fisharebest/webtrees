@@ -279,7 +279,7 @@ class HomePageController extends AbstractBaseController
             // Copy the defaults
             (new Builder(DB::connection()))->from('block')->insertUsing(
                 ['gedcom_id', 'location', 'block_order', 'module_name'],
-                function (Builder $query) use ($tree): void {
+                static function (Builder $query) use ($tree): void {
                     $query
                         ->select([DB::raw($tree->id()), 'location', 'block_order', 'module_name'])
                         ->from('block')
@@ -439,7 +439,7 @@ class HomePageController extends AbstractBaseController
             // Copy the defaults
             (new Builder(DB::connection()))->from('block')->insertUsing(
                 ['user_id', 'location', 'block_order', 'module_name'],
-                function (Builder $query) use ($user): void {
+                static function (Builder $query) use ($user): void {
                     $query
                         ->select([DB::raw($user->id()), 'location', 'block_order', 'module_name'])
                         ->from('block')

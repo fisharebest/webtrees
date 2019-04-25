@@ -338,13 +338,13 @@ class SearchService
             $query->whereContains('p' . $level . '.p_place', $string);
         }
 
-        $row_mapper = function (stdClass $row) use ($tree): Place {
+        $row_mapper = static function (stdClass $row) use ($tree): Place {
             $place = implode(', ', array_filter((array) $row));
 
             return new Place($place, $tree);
         };
 
-        $filter = function (): bool {
+        $filter = static function (): bool {
             return true;
         };
 
@@ -937,7 +937,7 @@ class SearchService
      */
     private function rawGedcomFilter(array $search_terms): Closure
     {
-        return function (GedcomRecord $record) use ($search_terms): bool {
+        return static function (GedcomRecord $record) use ($search_terms): bool {
             // Ignore non-genealogy fields
             $gedcom = preg_replace('/\n\d (?:_UID) .*/', '', $record->gedcom());
 
@@ -964,7 +964,7 @@ class SearchService
      */
     private function rowLimiter(int $limit = 1000): Closure
     {
-        return function () use ($limit): void {
+        return static function () use ($limit): void {
             static $n = 0;
 
             if (++$n > $limit) {

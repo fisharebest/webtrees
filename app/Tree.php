@@ -264,7 +264,7 @@ class Tree
 
         (new Builder(DB::connection()))->from('default_resn')->insertUsing(
             ['gedcom_id', 'tag_type', 'resn'],
-            function (Builder $query) use ($tree_id): void {
+            static function (Builder $query) use ($tree_id): void {
                 $query
                     ->select([DB::raw($tree_id), 'tag_type', 'resn'])
                     ->from('default_resn')

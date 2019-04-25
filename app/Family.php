@@ -71,7 +71,7 @@ class Family extends GedcomRecord
      */
     public static function rowMapper(): Closure
     {
-        return function (stdClass $row): Family {
+        return static function (stdClass $row): Family {
             return Family::getInstance($row->f_id, Tree::findById((int) $row->f_file), $row->f_gedcom);
         };
     }
@@ -83,7 +83,7 @@ class Family extends GedcomRecord
      */
     public static function marriageDateComparator(): Closure
     {
-        return function (Family $x, Family $y): int {
+        return static function (Family $x, Family $y): int {
             return Date::compare($x->getMarriageDate(), $y->getMarriageDate());
         };
     }
