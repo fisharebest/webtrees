@@ -22,7 +22,6 @@ use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\Http\Request;
 
 /**
  * Test the module controller

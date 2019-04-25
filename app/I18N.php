@@ -34,7 +34,6 @@ use function filemtime;
 use function file_exists;
 use function html_entity_decode;
 use function in_array;
-use function intdiv;
 use function mb_strtolower;
 use function mb_strtoupper;
 use function mb_substr;

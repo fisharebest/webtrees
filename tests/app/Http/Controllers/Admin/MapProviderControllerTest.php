@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\TestCase;
-use Psr\Http\Message\ResponseInterface;
 
 /**
  * Test the changes log controller

@@ -55,9 +55,6 @@ class UpgradeService
     // Note: earlier versions of webtrees used svn.webtrees.net, so we must maintain both URLs.
     private const UPDATE_URL = 'https://dev.webtrees.net/build/latest-version.txt';
 
-    // Create this file to put the site into maintenance mode.
-    private const LOCK_FILE = 'data/offline.txt';
-
     // If the update server doesn't respond after this time, give up.
     private const HTTP_TIMEOUT = 3.0;
 

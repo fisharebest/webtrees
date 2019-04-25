@@ -43,7 +43,6 @@ use function preg_match;
 use function str_replace;
 use function strpos;
 use function trim;
-use function var_dump;
 use const UPLOAD_ERR_OK;
 
 /**

@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\Http\Request;
 
 /**
  * Test the changes log controller

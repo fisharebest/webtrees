@@ -7,7 +7,6 @@ use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Illuminate\Database\Capsule\Manager as DB;
-use function realpath;
 
 /**
  * An example module to modify PHP and database configuration.

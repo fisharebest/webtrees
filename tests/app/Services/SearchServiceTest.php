@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
 
@@ -35,7 +34,7 @@ class SearchServiceTest extends TestCase
      */
     public function testSearchesReturnCollections(): void
     {
-        $search_service = new SearchService(new LocaleEnUs());
+        $search_service = new SearchService();
         $tree           = $this->importTree('demo.ged');
 
         $result = $search_service->searchFamilies([$tree], ['windsor']);

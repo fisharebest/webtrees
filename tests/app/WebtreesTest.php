@@ -18,8 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use ErrorException;
-use function date_default_timezone_get;
-use function date_default_timezone_set;
 use function error_reporting;
 use function set_error_handler;
 
