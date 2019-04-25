@@ -80,8 +80,8 @@ class RepositoryController extends AbstractBaseController
     {
         return $record->facts()
             ->sort(static function (Fact $x, Fact $y): int {
-                $sort_x = array_search($x->getTag(), self::FACT_ORDER) ?: PHP_INT_MAX;
-                $sort_y = array_search($y->getTag(), self::FACT_ORDER) ?: PHP_INT_MAX;
+                $sort_x = array_search($x->getTag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;
+                $sort_y = array_search($y->getTag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;
 
                 return $sort_x <=> $sort_y;
             });

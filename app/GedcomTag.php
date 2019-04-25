@@ -428,7 +428,7 @@ class GedcomTag
      */
     public static function isTag($tag): bool
     {
-        return in_array($tag, self::ALL_TAGS);
+        return in_array($tag, self::ALL_TAGS, true);
     }
 
     /**

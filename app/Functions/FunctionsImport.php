@@ -902,7 +902,7 @@ class FunctionsImport
             $data = [];
             foreach ($matches as $match) {
                 // Include each link once only.
-                if (!in_array($match[1] . $match[2], $data)) {
+                if (!in_array($match[1] . $match[2], $data, true)) {
                     $data[] = $match[1] . $match[2];
                     try {
                         DB::table('link')->insert([

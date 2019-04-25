@@ -356,7 +356,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         // Filter foreign languages.
         $faqs = $this->faqsForTree($tree)
             ->filter(static function (stdClass $faq): bool {
-                return $faq->languages === '' || in_array(WT_LOCALE, explode(',', $faq->languages));
+                return $faq->languages === '' || in_array(WT_LOCALE, explode(',', $faq->languages), true);
             });
 
         return $this->viewResponse('modules/faq/show', [

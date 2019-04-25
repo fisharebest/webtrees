@@ -1110,7 +1110,7 @@ class FunctionsPrintFacts
                 $factlines = explode("\n", $factrec); // 1 BIRT Y\n2 SOUR ...
                 $factwords = explode(' ', $factlines[0]); // 1 BIRT Y
                 $factname  = $factwords[1]; // BIRT
-                if ($factname == 'EVEN' || $factname == 'FACT') {
+                if ($factname === 'EVEN' || $factname === 'FACT') {
                     // Add ' EVEN' to provide sensible output for an event with an empty TYPE record
                     $ct = preg_match('/2 TYPE (.*)/', $factrec, $ematch);
                     if ($ct > 0) {
@@ -1138,7 +1138,7 @@ class FunctionsPrintFacts
                     echo '<a href="' . e($media->url()) . '"> ';
                     echo '<em>';
                     foreach ($media->getAllNames() as $name) {
-                        if ($name['type'] != 'TITL') {
+                        if ($name['type'] !== 'TITL') {
                             echo '<br>';
                         }
                         echo $name['full'];

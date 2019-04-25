@@ -49,7 +49,7 @@
                     ]);
                 }
                 // allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
-                if (in_array($level1type, Config::twoAssociates())) {
+                if (in_array($level1type, Config::twoAssociates(), true)) {
                     echo view('cards/add-associate', [
                         'id'    => Uuid::uuid4()->toString(),
                         'level' => 2,

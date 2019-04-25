@@ -171,13 +171,13 @@ class GedcomRecord
 
         foreach ($gedcom_facts as $gedcom_fact) {
             $fact = new Fact($gedcom_fact, $this, md5($gedcom_fact));
-            if ($this->pending !== null && !in_array($gedcom_fact, $pending_facts)) {
+            if ($this->pending !== null && !in_array($gedcom_fact, $pending_facts, true)) {
                 $fact->setPendingDeletion();
             }
             $this->facts[] = $fact;
         }
         foreach ($pending_facts as $pending_fact) {
-            if (!in_array($pending_fact, $gedcom_facts)) {
+            if (!in_array($pending_fact, $gedcom_facts, true)) {
                 $fact = new Fact($pending_fact, $this, md5($pending_fact));
                 $fact->setPendingAddition();
                 $this->facts[] = $fact;
@@ -1091,7 +1091,7 @@ class GedcomRecord
         $facts = new Collection();
         if ($this->canShow($access_level) || $override) {
             foreach ($this->facts as $fact) {
-                if (($filter === [] || in_array($fact->getTag(), $filter)) && $fact->canShow($access_level)) {
+                if (($filter === [] || in_array($fact->getTag(), $filter, true)) && $fact->canShow($access_level)) {
                     $facts->push($fact);
                 }
             }

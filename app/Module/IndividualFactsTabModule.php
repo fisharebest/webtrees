@@ -264,7 +264,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
         // For each child in the family
         foreach ($family->children() as $child) {
-            if ($child->xref() == $person->xref()) {
+            if ($child->xref() === $person->xref()) {
                 // We are not our own sibling!
                 continue;
             }
@@ -272,13 +272,13 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             if (strpos($SHOW_RELATIVES_EVENTS, '_BIRT' . str_replace('_HSIB', '_SIBL', $option)) !== false) {
                 foreach ($child->facts(Gedcom::BIRTH_EVENTS) as $fact) {
                     // Always show _BIRT_CHIL, even if the dates are not known
-                    if ($option == '_CHIL' || $this->includeFact($fact, $min_date, $max_date)) {
-                        if ($option == '_GCHI' && $relation == 'dau') {
+                    if ($option === '_CHIL' || $this->includeFact($fact, $min_date, $max_date)) {
+                        if ($option === '_GCHI' && $relation === 'dau') {
                             // Convert the event to a close relatives event.
                             $rela_fact = clone $fact;
                             $rela_fact->setTag('_' . $fact->getTag() . '_GCH1');
                             $facts[] = $rela_fact;
-                        } elseif ($option == '_GCHI' && $relation == 'son') {
+                        } elseif ($option === '_GCHI' && $relation === 'son') {
                             // Convert the event to a close relatives event.
                             $rela_fact = clone $fact;
                             $rela_fact->setTag('_' . $fact->getTag() . '_GCH2');
@@ -296,12 +296,12 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             if (strpos($SHOW_RELATIVES_EVENTS, '_DEAT' . str_replace('_HSIB', '_SIBL', $option)) !== false) {
                 foreach ($child->facts(Gedcom::DEATH_EVENTS) as $fact) {
                     if ($this->includeFact($fact, $min_date, $max_date)) {
-                        if ($option == '_GCHI' && $relation == 'dau') {
+                        if ($option === '_GCHI' && $relation === 'dau') {
                             // Convert the event to a close relatives event.
                             $rela_fact = clone $fact;
                             $rela_fact->setTag('_' . $fact->getTag() . '_GCH1');
                             $facts[] = $rela_fact;
-                        } elseif ($option == '_GCHI' && $relation == 'son') {
+                        } elseif ($option === '_GCHI' && $relation === 'son') {
                             // Convert the event to a close relatives event.
                             $rela_fact = clone $fact;
                             $rela_fact->setTag('_' . $fact->getTag() . '_GCH2');
@@ -320,12 +320,12 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                 foreach ($child->spouseFamilies() as $sfamily) {
                     foreach ($sfamily->facts(['MARR']) as $fact) {
                         if ($this->includeFact($fact, $min_date, $max_date)) {
-                            if ($option == '_GCHI' && $relation == 'dau') {
+                            if ($option === '_GCHI' && $relation === 'dau') {
                                 // Convert the event to a close relatives event.
                                 $rela_fact = clone $fact;
                                 $rela_fact->setTag('_' . $fact->getTag() . '_GCH1');
                                 $facts[] = $rela_fact;
-                            } elseif ($option == '_GCHI' && $relation == 'son') {
+                            } elseif ($option === '_GCHI' && $relation === 'son') {
                                 // Convert the event to a close relatives event.
                                 $rela_fact = clone $fact;
                                 $rela_fact->setTag('_' . $fact->getTag() . '_GCH2');
@@ -377,7 +377,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                         }
                     }
                     // Add grandparents
-                    foreach ($this->parentFacts($spouse, $spouse->sex() == 'F' ? 3 : 2, $min_date, $max_date) as $fact) {
+                    foreach ($this->parentFacts($spouse, $spouse->sex() === 'F' ? 3 : 2, $min_date, $max_date) as $fact) {
                         $facts[] = $fact;
                     }
                 }

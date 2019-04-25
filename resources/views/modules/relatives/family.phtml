@@ -198,7 +198,7 @@
                 </th>
                 <td>
                     <a href="<?= e(route('add-child-to-family', ['gender' => 'U', 'ged' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
-                        <?php if ($type == 'FAMS') : ?>
+                        <?php if ($type === 'FAMS') : ?>
                             <?= I18N::translate('Add a son or daughter') ?>
                         <?php else : ?>
                             <?= I18N::translate('Add a brother or sister') ?>

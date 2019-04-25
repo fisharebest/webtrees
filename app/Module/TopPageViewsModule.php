@@ -83,11 +83,11 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
             $record = GedcomRecord::getInstance($id, $tree);
             if ($record && $record->canShow()) {
                 $content .= '<tr>';
-                if ($count_placement == 'before') {
+                if ($count_placement === 'before') {
                     $content .= '<td dir="ltr" style="text-align:right">[' . $count . ']</td>';
                 }
                 $content .= '<td class="name2" ><a href="' . e($record->url()) . '">' . $record->fullName() . '</a></td>';
-                if ($count_placement == 'after') {
+                if ($count_placement === 'after') {
                     $content .= '<td dir="ltr" style="text-align:right">[' . $count . ']</td>';
                 }
                 $content .= '</tr>';

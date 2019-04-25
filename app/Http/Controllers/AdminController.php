@@ -226,12 +226,12 @@ class AdminController extends AbstractBaseController
             $gedcom .= "\n" . $fact->gedcom();
         }
         foreach ($facts1 as $fact_id => $fact) {
-            if (in_array($fact_id, $keep1)) {
+            if (in_array($fact_id, $keep1, true)) {
                 $gedcom .= "\n" . $fact->gedcom();
             }
         }
         foreach ($facts2 as $fact_id => $fact) {
-            if (in_array($fact_id, $keep2)) {
+            if (in_array($fact_id, $keep2, true)) {
                 $gedcom .= "\n" . $fact->gedcom();
             }
         }

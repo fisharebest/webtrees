@@ -136,7 +136,7 @@ class FixLevel0MediaController extends AbstractAdminController
 
             $facts = $individual->facts([], true)
                 ->filter(static function (Fact $fact) use ($ignore_facts): bool {
-                    return !$fact->isPendingDeletion() && !in_array($fact->getTag(), $ignore_facts);
+                    return !$fact->isPendingDeletion() && !in_array($fact->getTag(), $ignore_facts, true);
                 });
 
             // The link to the media object may have been deleted in a pending change.

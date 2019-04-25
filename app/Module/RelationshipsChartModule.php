@@ -411,7 +411,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         $graph = [];
 
         foreach ($rows as $row) {
-            if (empty($ancestors) || in_array($row->l_from, $ancestors) && !in_array($row->l_to, $exclude)) {
+            if (empty($ancestors) || in_array($row->l_from, $ancestors, true) && !in_array($row->l_to, $exclude, true)) {
                 $graph[$row->l_from][$row->l_to] = 1;
                 $graph[$row->l_to][$row->l_from] = 1;
             }
@@ -443,7 +443,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                     $exclude[] = $next['path'][$n];
                     sort($exclude);
                     $tmp = implode('-', $exclude);
-                    if (in_array($tmp, $excluded)) {
+                    if (in_array($tmp, $excluded, true)) {
                         continue;
                     }
 
@@ -502,7 +502,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
             $queue = [];
             foreach ($parents as $parent) {
-                if (!in_array($parent, $ancestors)) {
+                if (!in_array($parent, $ancestors, true)) {
                     $ancestors[] = $parent;
                     $queue[]     = $parent;
                 }

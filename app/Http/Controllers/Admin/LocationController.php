@@ -465,7 +465,7 @@ class LocationController extends AbstractAdminController
      */
     private function buildLevel(int $parent_id, array $placename, array &$places): void
     {
-        $level = array_search('', $placename);
+        $level = array_search('', $placename, true);
 
         $rows = DB::table('placelocation')
             ->where('pl_parent_id', '=', $parent_id)

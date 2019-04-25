@@ -141,7 +141,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
         }
 
         foreach ($husb_surnames as $husb_surname) {
-            if (!in_array($husb_surname, $wife_surnames)) {
+            if (!in_array($husb_surname, $wife_surnames, true)) {
                 $missing_surnames[] = $husb_surname;
             }
         }
@@ -194,9 +194,9 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
             '<div class="col-sm-9">' .
             '<select class="form-control" name="surname">' .
             '<option value="replace" ' .
-            ($this->surname == 'replace' ? 'selected' : '') .
+            ($this->surname === 'replace' ? 'selected' : '') .
             '">' . I18N::translate('Wife’s surname replaced by husband’s surname') . '</option><option value="add" ' .
-            ($this->surname == 'add' ? 'selected' : '') .
+            ($this->surname === 'add' ? 'selected' : '') .
             '">' . I18N::translate('Wife’s maiden surname becomes new given name') . '</option>' .
             '</select>' .
             '</div></div>' .

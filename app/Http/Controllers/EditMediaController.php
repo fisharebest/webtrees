@@ -373,11 +373,11 @@ class EditMediaController extends AbstractEditController
             $gedcom .= "\n1 NOTE " . preg_replace('/\r?\n/', "\n2 CONT ", $note);
         }
 
-        if (in_array($privacy_restriction, self::PRIVACY_RESTRICTIONS)) {
+        if (in_array($privacy_restriction, self::PRIVACY_RESTRICTIONS, true)) {
             $gedcom .= "\n1 RESN " . $privacy_restriction;
         }
 
-        if (in_array($edit_restriction, self::EDIT_RESTRICTIONS)) {
+        if (in_array($edit_restriction, self::EDIT_RESTRICTIONS, true)) {
             $gedcom .= "\n1 RESN " . $edit_restriction;
         }
 

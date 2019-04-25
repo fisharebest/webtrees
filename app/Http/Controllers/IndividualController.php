@@ -227,7 +227,7 @@ class IndividualController extends AbstractBaseController
         $ct = preg_match_all('/\n2 (\w+) (.*)/', $fact->gedcom(), $nmatch, PREG_SET_ORDER);
         for ($i = 0; $i < $ct; $i++) {
             $tag = $nmatch[$i][1];
-            if ($tag != 'SOUR' && $tag != 'NOTE' && $tag != 'SPFX') {
+            if ($tag !== 'SOUR' && $tag !== 'NOTE' && $tag !== 'SPFX') {
                 echo '<dt class="label">', GedcomTag::getLabel($tag, $individual), '</dt>';
                 echo '<dd class="field">'; // Before using dir="auto" on this field, note that Gecko treats this as an inline element but WebKit treats it as a block element
                 if (isset($nmatch[$i][2])) {

@@ -70,7 +70,7 @@ class FunctionsEdit
             $html .= '<div class="form-check">';
             $html .= '<label title="' . $locale->languageTag() . '">';
             $html .= '<input type="checkbox" name="' . $parameter_name . '[]" value="' . $locale->languageTag() . '"';
-            $html .= in_array($locale->languageTag(), $accepted_languages) ? ' checked>' : '>';
+            $html .= in_array($locale->languageTag(), $accepted_languages, true) ? ' checked>' : '>';
             $html .= $locale->endonym();
             $html .= '</label>';
             $html .= '</div>';
@@ -413,7 +413,7 @@ class FunctionsEdit
             }
         }
 
-        if (in_array($fact, Config::emptyFacts()) && ($value === '' || $value === 'Y' || $value === 'y')) {
+        if (in_array($fact, Config::emptyFacts(), true) && ($value === '' || $value === 'Y' || $value === 'y')) {
             $html .= '<input type="hidden" id="' . $id . '" name="' . $name . '" value="' . $value . '">';
 
             if ($fact === 'CENS' && $value === 'Y') {
@@ -645,12 +645,12 @@ class FunctionsEdit
             echo self::addSimpleTag($tree, '0 ' . $fact);
         }
 
-        if (!in_array($fact, Config::nonDateFacts())) {
+        if (!in_array($fact, Config::nonDateFacts(), true)) {
             echo self::addSimpleTag($tree, '0 DATE', $fact, GedcomTag::getLabel($fact . ':DATE'));
             echo self::addSimpleTag($tree, '0 RELI', $fact, GedcomTag::getLabel($fact . ':RELI'));
         }
 
-        if (!in_array($fact, Config::nonPlaceFacts())) {
+        if (!in_array($fact, Config::nonPlaceFacts(), true)) {
             echo self::addSimpleTag($tree, '0 PLAC', $fact, GedcomTag::getLabel($fact . ':PLAC'));
 
             if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
@@ -693,7 +693,7 @@ class FunctionsEdit
             ])) {
                 $fact .= ' @';
             }
-            if (in_array($fact, Config::emptyFacts())) {
+            if (in_array($fact, Config::emptyFacts(), true)) {
                 echo self::addSimpleTag($tree, '1 ' . $fact . ' Y');
             } else {
                 echo self::addSimpleTag($tree, '1 ' . $fact);
@@ -769,7 +769,7 @@ class FunctionsEdit
             $expected_subtags['STAT'] = ['DATE'];
         }
 
-        if (in_array($level1type, Config::dateAndTime())) {
+        if (in_array($level1type, Config::dateAndTime(), true)) {
             // TIME is NOT a valid 5.5.1 tag
             $expected_subtags['DATE'] = ['TIME'];
         }
@@ -840,7 +840,7 @@ class FunctionsEdit
             // Insert missing tags
             if (!empty($expected_subtags[$type])) {
                 foreach ($expected_subtags[$type] as $subtag) {
-                    if (!in_array($subtag, $subtags)) {
+                    if (!in_array($subtag, $subtags, true)) {
                         echo self::addSimpleTag($tree, ($level + 1) . ' ' . $subtag, '', GedcomTag::getLabel($label . ':' . $subtag));
                         if (!empty($expected_subtags[$subtag])) {
                             foreach ($expected_subtags[$subtag] as $subsubtag) {
@@ -882,10 +882,10 @@ class FunctionsEdit
         }
 
         foreach (Config::levelTwoTags() as $key => $value) {
-            if ($key === 'DATE' && in_array($level1tag, Config::nonDateFacts()) || $key === 'PLAC' && in_array($level1tag, Config::nonPlaceFacts())) {
+            if ($key === 'DATE' && in_array($level1tag, Config::nonDateFacts(), true) || $key === 'PLAC' && in_array($level1tag, Config::nonPlaceFacts(), true)) {
                 continue;
             }
-            if (in_array($level1tag, $value) && !in_array($key, self::$tags)) {
+            if (in_array($level1tag, $value, true) && !in_array($key, self::$tags, true)) {
                 if ($key === 'TYPE') {
                     echo self::addSimpleTag($tree, '2 TYPE ' . $type_val, $level1tag);
                 } elseif ($level1tag === '_TODO' && $key === 'DATE') {
@@ -920,7 +920,7 @@ class FunctionsEdit
                         break;
                     case 'DATE':
                         // TIME is NOT a valid 5.5.1 tag
-                        if (in_array($level1tag, Config::dateAndTime())) {
+                        if (in_array($level1tag, Config::dateAndTime(), true)) {
                             echo self::addSimpleTag($tree, '3 TIME');
                         }
                         break;
@@ -941,7 +941,7 @@ class FunctionsEdit
         // Do something (anything!) with unrecognized custom tags
         if (substr($level1tag, 0, 1) === '_' && $level1tag !== '_UID' && $level1tag !== '_PRIM' && $level1tag !== '_TODO') {
             foreach (['DATE', 'PLAC', 'ADDR', 'AGNC', 'TYPE', 'AGE'] as $tag) {
-                if (!in_array($tag, self::$tags)) {
+                if (!in_array($tag, self::$tags, true)) {
                     echo self::addSimpleTag($tree, '2 ' . $tag);
                     if ($tag === 'PLAC') {
                         if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {

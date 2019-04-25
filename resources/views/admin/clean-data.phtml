@@ -14,7 +14,7 @@
     <ul class="fa-ul">
         <?php
         foreach ($entries as $entry) {
-            if (in_array($entry, $protected)) {
+            if (in_array($entry, $protected, true)) {
                 echo '<li><span class="fa-li">' . view('icons/ban') . '</span>', e($entry), '</li>';
             } else {
                 echo '<li><span class="fa-li">' . view('icons/delete') . '</span>';

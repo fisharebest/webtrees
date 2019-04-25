@@ -130,7 +130,7 @@ class MediaController extends AbstractAdminController
         $disk_files = $this->allDiskFiles($media_folder, 'include');
 
         // Check file exists? Maybe it was already deleted or renamed.
-        if (in_array($delete_file, $disk_files)) {
+        if (in_array($delete_file, $disk_files, true)) {
             $tmp = WT_DATA_DIR . $media_folder . $delete_file;
             try {
                 unlink($tmp);

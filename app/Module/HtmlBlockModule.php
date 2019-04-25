@@ -74,7 +74,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
         $languages      = $this->getBlockSetting($block_id, 'languages');
 
         // Only show this block for certain languages
-        if ($languages && !in_array(WT_LOCALE, explode(',', $languages))) {
+        if ($languages && !in_array(WT_LOCALE, explode(',', $languages), true)) {
             return '';
         }
 

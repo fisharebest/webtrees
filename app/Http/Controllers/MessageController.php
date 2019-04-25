@@ -158,7 +158,7 @@ class MessageController extends AbstractBaseController
 
         $to_user = $this->user_service->findByUserName($to);
 
-        if (!in_array($to_user, $this->validContacts($tree))) {
+        if (!in_array($to_user, $this->validContacts($tree), false)) {
             throw new AccessDeniedHttpException('Invalid contact user id');
         }
 
@@ -202,7 +202,7 @@ class MessageController extends AbstractBaseController
             throw new NotFoundHttpException();
         }
 
-        if (!in_array($to_user, $this->validContacts($tree))) {
+        if (!in_array($to_user, $this->validContacts($tree), false)) {
             throw new AccessDeniedHttpException('Invalid contact user id');
         }
 

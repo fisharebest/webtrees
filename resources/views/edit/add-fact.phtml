@@ -43,7 +43,7 @@
             'level' => 2,
             'tree' => $tree,
         ]) ?>
-        <?php if (in_array($fact, Config::twoAssociates())) : ?>
+        <?php if (in_array($fact, Config::twoAssociates(), true)) : ?>
             <?= view('cards/add-associate', [
                 'id'    => Uuid::uuid4()->toString(),
                 'level' => 2,

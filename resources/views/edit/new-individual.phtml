@@ -242,7 +242,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
         $bdm = 'BD';
         if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
             foreach ($matches[1] as $match) {
-                if (!in_array($match, Gedcom::DEATH_EVENTS)) {
+                if (!in_array($match, Gedcom::DEATH_EVENTS, true)) {
                     FunctionsEdit::addSimpleTags($tree, $match);
                 }
             }
@@ -258,7 +258,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
         }
         if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
             foreach ($matches[1] as $match) {
-                if (in_array($match, Gedcom::DEATH_EVENTS)) {
+                if (in_array($match, Gedcom::DEATH_EVENTS, true)) {
                     FunctionsEdit::addSimpleTags($tree, $match);
                 }
             }

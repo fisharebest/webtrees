@@ -193,10 +193,10 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
             '<label class="col-sm-3 col-form-label">' . I18N::translate('Search method') . '</label>' .
             '<div class="col-sm-9">' .
             '<select class="form-control" name="method">' .
-            '<option value="exact" ' . ($this->method == 'exact' ? 'selected' : '') . '>' . I18N::translate('Exact text') . '</option>' .
-            '<option value="words" ' . ($this->method == 'words' ? 'selected' : '') . '>' . I18N::translate('Whole words only') . '</option>' .
-            '<option value="wildcards" ' . ($this->method == 'wildcards' ? 'selected' : '') . '>' . I18N::translate('Wildcards') . '</option>' .
-            '<option value="regex" ' . ($this->method == 'regex' ? 'selected' : '') . '>' . I18N::translate('Regular expression') . '</option>' .
+            '<option value="exact" ' . ($this->method === 'exact' ? 'selected' : '') . '>' . I18N::translate('Exact text') . '</option>' .
+            '<option value="words" ' . ($this->method === 'words' ? 'selected' : '') . '>' . I18N::translate('Whole words only') . '</option>' .
+            '<option value="wildcards" ' . ($this->method === 'wildcards' ? 'selected' : '') . '>' . I18N::translate('Wildcards') . '</option>' .
+            '<option value="regex" ' . ($this->method === 'regex' ? 'selected' : '') . '>' . I18N::translate('Regular expression') . '</option>' .
             '</select>' .
             '<p class="small text-muted">' . $descriptions[$this->method] . '</p>' . $this->error .
             '</div></div>' .

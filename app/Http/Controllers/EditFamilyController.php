@@ -387,7 +387,7 @@ class EditFamilyController extends AbstractEditController
         }
 
         foreach ($old_children as $old_child) {
-            if ($old_child && !in_array($old_child, $new_children)) {
+            if ($old_child && !in_array($old_child, $new_children, true)) {
                 // Remove old FAMC link
                 foreach ($old_child->facts(['FAMC']) as $fact) {
                     if ($fact->target() === $family) {

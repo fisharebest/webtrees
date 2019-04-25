@@ -267,7 +267,7 @@ class AdminTreesController extends AbstractBaseController
                         $this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) .
                         ' ' .
                         I18N::translate('This type of link is not allowed here.');
-                } elseif (!array_key_exists($type1, $RECORD_LINKS) || !in_array($type2, $RECORD_LINKS[$type1]) || !array_key_exists($type2, $XREF_LINKS)) {
+                } elseif (!array_key_exists($type1, $RECORD_LINKS) || !in_array($type2, $RECORD_LINKS[$type1], true) || !array_key_exists($type2, $XREF_LINKS)) {
                     $errors[] =
                         $this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) .
                         ' ' .
@@ -1765,7 +1765,7 @@ class AdminTreesController extends AbstractBaseController
         }
 
         foreach (Tree::getAll() as $tree) {
-            if (!in_array($tree->name(), $gedcom_files)) {
+            if (!in_array($tree->name(), $gedcom_files, true)) {
                 FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', e($tree->title())), 'success');
                 $tree->delete();
             }
@@ -1813,7 +1813,7 @@ class AdminTreesController extends AbstractBaseController
         $individual_groups = [];
 
         foreach ($components as $component) {
-            if (!in_array($xref, $component)) {
+            if (!in_array($xref, $component, true)) {
                 $individuals = [];
                 foreach ($component as $xref) {
                     $individuals[] = Individual::getInstance($xref, $tree);

@@ -193,7 +193,7 @@ class SearchController extends AbstractBaseController
         $search_tree_names = (array) $request->get('search_trees', []);
 
         $search_trees = array_filter($all_trees, static function (Tree $tree) use ($search_tree_names): bool {
-            return in_array($tree->name(), $search_tree_names);
+            return in_array($tree->name(), $search_tree_names, true);
         });
 
         if (empty($search_trees)) {
@@ -322,7 +322,7 @@ class SearchController extends AbstractBaseController
         $search_tree_names = (array) $request->get('search_trees', []);
 
         $search_trees = array_filter($all_trees, static function (Tree $tree) use ($search_tree_names): bool {
-            return in_array($tree->name(), $search_tree_names);
+            return in_array($tree->name(), $search_tree_names, true);
         });
 
         if (empty($search_trees)) {

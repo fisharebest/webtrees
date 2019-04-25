@@ -479,19 +479,19 @@ use Fisharebest\Webtrees\I18N;
             <div class="col-sm-3">
                 <div class="form-check">
                     <label for="_BIRT_GCHI">
-                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_BIRT_GCHI" value="_BIRT_GCHI" <?= in_array('_BIRT_GCHI', $relatives_events) ? 'checked' : '' ?>>
+                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_BIRT_GCHI" value="_BIRT_GCHI" <?= in_array('_BIRT_GCHI', $relatives_events, true) ? 'checked' : '' ?>>
                         <?= I18N::translate('Birth of a grandchild') ?>
                     </label>
                 </div>
                 <div class="form-check">
                     <label for="_BIRT_CHIL">
-                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_BIRT_CHIL" value="_BIRT_CHIL" <?= in_array('_BIRT_CHIL', $relatives_events) ? 'checked' : '' ?>>
+                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_BIRT_CHIL" value="_BIRT_CHIL" <?= in_array('_BIRT_CHIL', $relatives_events, true) ? 'checked' : '' ?>>
                         <?= I18N::translate('Birth of a child') ?>
                     </label>
                 </div>
                 <div class="form-check">
                     <label for="_BIRT_SIBL">
-                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_BIRT_SIBL" value="_BIRT_SIBL" <?= in_array('_BIRT_SIBL', $relatives_events) ? 'checked' : '' ?>>
+                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_BIRT_SIBL" value="_BIRT_SIBL" <?= in_array('_BIRT_SIBL', $relatives_events, true) ? 'checked' : '' ?>>
                         <?= I18N::translate('Birth of a sibling') ?>
                     </label>
                 </div>
@@ -499,25 +499,25 @@ use Fisharebest\Webtrees\I18N;
             <div class="col-sm-3">
                 <div class="form-check">
                     <label for="_MARR_GCHI">
-                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_GCHI" value="_MARR_GCHI" <?= in_array('_MARR_GCHI', $relatives_events) ? 'checked' : '' ?>>
+                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_GCHI" value="_MARR_GCHI" <?= in_array('_MARR_GCHI', $relatives_events, true) ? 'checked' : '' ?>>
                         <?= I18N::translate('Marriage of a grandchild') ?>
                     </label>
                 </div>
                 <div class="form-check">
                     <label for="_MARR_CHIL">
-                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_CHIL" value="_MARR_CHIL" <?= in_array('_MARR_CHIL', $relatives_events) ? 'checked' : '' ?>>
+                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_CHIL" value="_MARR_CHIL" <?= in_array('_MARR_CHIL', $relatives_events, true) ? 'checked' : '' ?>>
                         <?= I18N::translate('Marriage of a child') ?>
                     </label>
                 </div>
                 <div class="form-check">
                     <label for="_MARR_SIBL">
-                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_SIBL" value="_MARR_SIBL" <?= in_array('_MARR_SIBL', $relatives_events) ? 'checked' : '' ?>>
+                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_SIBL" value="_MARR_SIBL" <?= in_array('_MARR_SIBL', $relatives_events, true) ? 'checked' : '' ?>>
                         <?= I18N::translate('Marriage of a sibling') ?>
                     </label>
                 </div>
                 <div class="form-check">
                     <label for="_MARR_PARE">
-                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_PARE" value="_MARR_PARE" <?= in_array('_MARR_PARE', $relatives_events) ? 'checked' : '' ?>>
+                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_PARE" value="_MARR_PARE" <?= in_array('_MARR_PARE', $relatives_events, true) ? 'checked' : '' ?>>
                         <?= I18N::translate('Marriage of a parent') ?>
                     </label>
                 </div>
@@ -525,37 +525,37 @@ use Fisharebest\Webtrees\I18N;
             <div class="col-sm-3">
                 <div class="form-check">
                     <label for="_DEAT_GCHI">
-                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_GCHI" value="_DEAT_GCHI" <?= in_array('_DEAT_GCHI', $relatives_events) ? 'checked' : '' ?>>
+                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_GCHI" value="_DEAT_GCHI" <?= in_array('_DEAT_GCHI', $relatives_events, true) ? 'checked' : '' ?>>
                         <?= I18N::translate('Death of a grandchild') ?>
                     </label>
                 </div>
                 <div class="form-check">
                     <label for="_DEAT_CHIL">
-                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_CHIL" value="_DEAT_CHIL" <?= in_array('_DEAT_CHIL', $relatives_events) ? 'checked' : '' ?>>
+                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_CHIL" value="_DEAT_CHIL" <?= in_array('_DEAT_CHIL', $relatives_events, true) ? 'checked' : '' ?>>
                         <?= I18N::translate('Death of a child') ?>
                     </label>
                 </div>
                 <div class="form-check">
                     <label for="_DEAT_SIBL">
-                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_SIBL" value="_DEAT_SIBL" <?= in_array('_DEAT_SIBL', $relatives_events) ? 'checked' : '' ?>>
+                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_SIBL" value="_DEAT_SIBL" <?= in_array('_DEAT_SIBL', $relatives_events, true) ? 'checked' : '' ?>>
                         <?= I18N::translate('Death of a sibling') ?>
                     </label>
                 </div>
                 <div class="form-check">
                     <label for="_DEAT_PARE">
-                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_PARE" value="_DEAT_PARE" <?= in_array('_DEAT_PARE', $relatives_events) ? 'checked' : '' ?>>
+                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_PARE" value="_DEAT_PARE" <?= in_array('_DEAT_PARE', $relatives_events, true) ? 'checked' : '' ?>>
                         <?= I18N::translate('Death of a parent') ?>
                     </label>
                 </div>
                 <div class="form-check">
                     <label for="_DEAT_SPOU">
-                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_SPOU" value="_DEAT_SPOU" <?= in_array('_DEAT_SPOU', $relatives_events) ? 'checked' : '' ?>>
+                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_SPOU" value="_DEAT_SPOU" <?= in_array('_DEAT_SPOU', $relatives_events, true) ? 'checked' : '' ?>>
                         <?= I18N::translate('Death of a spouse') ?>
                     </label>
                 </div>
                 <div class="form-check">
                     <label for="_DEAT_GPAR">
-                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_GPAR" value="_DEAT_GPAR" <?= in_array('_DEAT_GPAR', $relatives_events) ? 'checked' : '' ?>>
+                        <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_GPAR" value="_DEAT_GPAR" <?= in_array('_DEAT_GPAR', $relatives_events, true) ? 'checked' : '' ?>>
                         <?= I18N::translate('Death of a grand-parent') ?>
                     </label>
                 </div>

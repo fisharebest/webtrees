@@ -74,7 +74,7 @@ trait ModuleThemeTrait
         $opt_tags = preg_split('/\W/', $individual->tree()->getPreference('CHART_BOX_TAGS'), 0, PREG_SPLIT_NO_EMPTY);
         // Show BIRT or equivalent event
         foreach (Gedcom::BIRTH_EVENTS as $birttag) {
-            if (!in_array($birttag, $opt_tags)) {
+            if (!in_array($birttag, $opt_tags, true)) {
                 $event = $individual->facts([$birttag])->first();
                 if ($event instanceof Fact) {
                     $html .= $event->summary();
@@ -84,7 +84,7 @@ trait ModuleThemeTrait
         }
         // Show optional events (before death)
         foreach ($opt_tags as $key => $tag) {
-            if (!in_array($tag, Gedcom::DEATH_EVENTS)) {
+            if (!in_array($tag, Gedcom::DEATH_EVENTS, true)) {
                 $event = $individual->facts([$tag])->first();
                 if ($event instanceof Fact) {
                     $html .= $event->summary();
@@ -97,8 +97,8 @@ trait ModuleThemeTrait
             $event = $individual->facts([$deattag])->first();
             if ($event instanceof Fact) {
                 $html .= $event->summary();
-                if (in_array($deattag, $opt_tags)) {
-                    unset($opt_tags[array_search($deattag, $opt_tags)]);
+                if (in_array($deattag, $opt_tags, true)) {
+                    unset($opt_tags[array_search($deattag, $opt_tags, true)]);
                 }
                 break;
             }
