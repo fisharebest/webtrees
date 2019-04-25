@@ -47,7 +47,7 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMarriedSurnames(): void
     {
-        $this->assertSame(true, $this->surname_tradition->hasMarriedNames());
+        $this->assertTrue($this->surname_tradition->hasMarriedNames());
     }
 
     /**
@@ -60,7 +60,7 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testSurnames(): void
     {
-        $this->assertSame(true, $this->surname_tradition->hasSurnames());
+        $this->assertTrue($this->surname_tradition->hasSurnames());
     }
 
     /**

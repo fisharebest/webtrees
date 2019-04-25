@@ -46,7 +46,7 @@ class PatrilinealSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMarriedSurnames(): void
     {
-        $this->assertSame(false, $this->surname_tradition->hasMarriedNames());
+        $this->assertFalse($this->surname_tradition->hasMarriedNames());
     }
 
     /**
@@ -58,7 +58,7 @@ class PatrilinealSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testSurnames(): void
     {
-        $this->assertSame(true, $this->surname_tradition->hasSurnames());
+        $this->assertTrue($this->surname_tradition->hasSurnames());
     }
 
     /**

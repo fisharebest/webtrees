@@ -38,15 +38,15 @@ class SurnameTraditionTest extends TestCase
      */
     public function testCreate(): void
     {
-        $this->assertTrue(SurnameTradition::create('none') instanceof DefaultSurnameTradition);
-        $this->assertTrue(SurnameTradition::create('icelandic') instanceof IcelandicSurnameTradition);
-        $this->assertTrue(SurnameTradition::create('lithuanian') instanceof LithuanianSurnameTradition);
-        $this->assertTrue(SurnameTradition::create('matrilineal') instanceof MatrilinealSurnameTradition);
-        $this->assertTrue(SurnameTradition::create('paternal') instanceof PaternalSurnameTradition);
-        $this->assertTrue(SurnameTradition::create('patrilineal') instanceof PatrilinealSurnameTradition);
-        $this->assertTrue(SurnameTradition::create('polish') instanceof PolishSurnameTradition);
-        $this->assertTrue(SurnameTradition::create('portuguese') instanceof PortugueseSurnameTradition);
-        $this->assertTrue(SurnameTradition::create('spanish') instanceof SpanishSurnameTradition);
+        $this->assertInstanceOf(DefaultSurnameTradition::class, SurnameTradition::create('none'));
+        $this->assertInstanceOf(IcelandicSurnameTradition::class, SurnameTradition::create('icelandic'));
+        $this->assertInstanceOf(LithuanianSurnameTradition::class, SurnameTradition::create('lithuanian'));
+        $this->assertInstanceOf(MatrilinealSurnameTradition::class, SurnameTradition::create('matrilineal'));
+        $this->assertInstanceOf(PaternalSurnameTradition::class, SurnameTradition::create('paternal'));
+        $this->assertInstanceOf(PatrilinealSurnameTradition::class, SurnameTradition::create('patrilineal'));
+        $this->assertInstanceOf(PolishSurnameTradition::class, SurnameTradition::create('polish'));
+        $this->assertInstanceOf(PortugueseSurnameTradition::class, SurnameTradition::create('portuguese'));
+        $this->assertInstanceOf(SpanishSurnameTradition::class, SurnameTradition::create('spanish'));
     }
 
     /**
@@ -57,7 +57,7 @@ class SurnameTraditionTest extends TestCase
      */
     public function testCreateInvalid(): void
     {
-        $this->assertTrue(SurnameTradition::create('FOOBAR') instanceof DefaultSurnameTradition);
+        $this->assertInstanceOf(DefaultSurnameTradition::class, SurnameTradition::create('FOOBAR'));
     }
 
     /**
