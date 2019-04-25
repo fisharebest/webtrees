@@ -55,7 +55,7 @@ $("#<?= e($table_id) ?>").dataTable({
         /* Filter death */ { sortable: false },
         /* Filter tree  */ { sortable: false }
     ],
-    sorting: <?= json_encode($sosa ? [[4, "asc"]] : [[1, "asc"]]) ?>
+    sorting: <?= json_encode($sosa ? [[4, 'asc']] : [[1, 'asc']]) ?>
 });
 
 $("#<?= e($table_id) ?>")
