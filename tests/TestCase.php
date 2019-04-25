@@ -145,7 +145,7 @@ class TestCase extends \PHPUnit\Framework\TestCase implements StatusCodeInterfac
     /**
      * Things to run before every test.
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
