@@ -1438,7 +1438,7 @@ abstract class AbstractTheme
             }
         }
 
-        if ($show_user_favorites && isset($controller->record) && $controller->record instanceof GedcomRecord && !in_array($controller->record, $records)) {
+        if ($show_user_favorites && isset($controller->record) && $controller->record instanceof GedcomRecord && !in_array($controller->record, $records, true)) {
             $submenus[] = new Menu(I18N::translate('Add to favorites'), '#', '', array(
                 'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite", {xref:"' . $controller->record->getXref() . '"},function(){location.reload();})',
             ));
