@@ -719,7 +719,7 @@ class FunctionsImport
                 DB::table('sources')->insert([
                     's_id'     => $xref,
                     's_file'   => $tree_id,
-                    's_name'   => $name,
+                    's_name'   => mb_substr($name, 0, 255),
                     's_gedcom' => $gedrec,
                 ]);
 
