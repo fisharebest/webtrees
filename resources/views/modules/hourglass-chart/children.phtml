@@ -19,7 +19,7 @@ use Illuminate\Support\Collection;
                     <?= view('modules/hourglass-chart/children', ['children' => $grandchildren, 'generations' => $generations - 1, 'show_spouse' => $show_spouse]) ?>
                 <?php else: ?>
                     <div class="d-flex align-self-center">
-                        <div data-xref="<?= route('module', ['module' => 'hourglass_chart', 'action' => 'Descendants', 'xref' => $child->xref(), 'ged' => $child->tree()->name(), 'show_spouse' => $show_spouse]) ?>">
+                        <div class="hourglass-arrow" data-xref="<?= route('module', ['module' => 'hourglass_chart', 'action' => 'Descendants', 'xref' => $child->xref(), 'ged' => $child->tree()->name(), 'show_spouse' => $show_spouse]) ?>">
                             <?= view('icons/arrow-left') ?>
                         </div>
                     </div>
