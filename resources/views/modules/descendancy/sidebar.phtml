@@ -35,7 +35,7 @@
     if(state.hasClass("icon-plus")) {
       if (jQuery.trim(target.html())) {
         target.show("fast"); // already got content so just show it
-      } else {
+      } else if (self.attr("href") !== "#") {
         target
           .hide()
           .load(self.attr("href"), function(response, status, xhr) {
