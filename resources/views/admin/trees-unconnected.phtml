@@ -1,4 +1,18 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tree;
+
+/**
+ * @var string         $title
+ * @var bool           $associates
+ * @var Individual[][] $individual_groups
+ * @var Individual     $root
+ * @var Tree           $tree
+ */
+
+?>
 
 <?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-trees', ['ged' => $tree->name()]) => I18N::translate('Manage family trees '), $title]]) ?>
 
@@ -7,8 +21,8 @@
 <form class="form-inline">
     <input type="hidden" name="route" value="admin-trees-unconnected"">
     <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
-            <?= view('components/checkbox-inline', ['label' => I18N::translate('Include associates'), 'checked' => $associates, 'name' => 'associates']) ?>
-    <button type="submit">
+    <?= view('components/checkbox-inline', ['label' => I18N::translate('Include associates'), 'checked' => $associates, 'name' => 'associates']) ?>
+    <button type="submit" class="btn btn-primary">
         <?= I18N::translate('update') ?>
     </button>
 </form>
