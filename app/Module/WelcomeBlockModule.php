@@ -93,10 +93,8 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
 
         if ($pedigree_chart instanceof PedigreeChartModule) {
             $links[] = [
-                'url'   => route('pedigree', [
-                    'xref' => $individual->xref(),
-                    'ged'  => $individual->tree()->name(),
-                ]),
+                $pedigree_chart->chartUrl($individual),
+                'url'   => $pedigree_chart->chartUrl($individual),
                 'title' => I18N::translate('Default chart'),
                 'icon'  => 'icon-pedigree',
             ];
