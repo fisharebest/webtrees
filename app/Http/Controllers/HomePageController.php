@@ -802,7 +802,7 @@ class HomePageController extends AbstractBaseController
 
         // Deleted blocks
         foreach ($existing_block_ids as $existing_block_id) {
-            if (!in_array($existing_block_id, $main_blocks, true) && !in_array($existing_block_id, $side_blocks, true)) {
+            if (!in_array($existing_block_id, $main_blocks, false) && !in_array($existing_block_id, $side_blocks, false)) {
                 DB::table('block_setting')
                     ->where('block_id', '=', $existing_block_id)
                     ->delete();
@@ -813,10 +813,12 @@ class HomePageController extends AbstractBaseController
             }
         }
 
-        foreach ([
-                     'main' => $main_blocks,
-                     'side' => $side_blocks,
-                 ] as $location => $updated_blocks) {
+        $updates = [
+            'main' => $main_blocks,
+            'side' => $side_blocks,
+        ];
+
+        foreach ($updates as $location => $updated_blocks) {
             foreach ($updated_blocks as $block_order => $block_id) {
                 if (is_numeric($block_id)) {
                     // Updated block
