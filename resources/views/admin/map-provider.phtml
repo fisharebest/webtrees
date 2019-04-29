@@ -11,9 +11,9 @@
                 <?= I18N::translate('Map provider') ?>
             </label>
             <div class="col-sm-9">
-                <?= view('components/radios', ['name' => 'provider-default', 'selected' => $provider, 'options' => [
-                ''  => I18N::translate('Do not use maps'),
-                'i' => I18N::translate('OpenStreetMap™'),
+                <?= view('components/radios', ['name' => 'provider', 'selected' => $provider, 'options' => [
+                ''    => I18N::translate('Do not use maps'),
+                'osm' => I18N::translate('OpenStreetMap™'),
                 ]]) ?>
                 <hr>
                 <!-- @TODO - other mapping providers (may need API keys, etc.) -->

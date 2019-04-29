@@ -45,9 +45,9 @@ class MapProviderController extends AbstractAdminController
      */
     public function mapProviderSave(ServerRequestInterface $request): ResponseInterface
     {
-        $map_provider = $request->getParsedBody()['provider'];
+        $provider = $request->getParsedBody()['provider'] ?? '';
 
-        Site::setPreference('map-provider', $map_provider);
+        Site::setPreference('map-provider', $provider);
 
         return redirect(route('admin-control-panel'));
     }
