@@ -82,7 +82,7 @@ class UpgradeControllerTest extends TestCase
             new UpgradeService(new TimeoutService())
         );
 
-        $request = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Invalid']);
+        $request = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Invalid']);
         $controller->step($request, null);
     }
 
@@ -98,7 +98,7 @@ class UpgradeControllerTest extends TestCase
             $mock_upgrade_service
         );
 
-        $request  = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Check']);
+        $request  = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Check']);
         $response = $controller->step($request, null);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
@@ -117,7 +117,7 @@ class UpgradeControllerTest extends TestCase
             $mock_upgrade_service
         );
 
-        $request = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Check']);
+        $request = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Check']);
         $controller->step($request, null);
     }
 
@@ -134,7 +134,7 @@ class UpgradeControllerTest extends TestCase
             $mock_upgrade_service
         );
 
-        $request = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Check']);
+        $request = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Check']);
         $controller->step($request, null);
     }
 
@@ -148,7 +148,7 @@ class UpgradeControllerTest extends TestCase
             new UpgradeService(new TimeoutService())
         );
 
-        $request  = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Prepare']);
+        $request  = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Prepare']);
         $response = $controller->step($request, null);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
@@ -164,7 +164,7 @@ class UpgradeControllerTest extends TestCase
             new UpgradeService(new TimeoutService())
         );
 
-        $request  = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Pending']);
+        $request  = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Pending']);
         $response = $controller->step($request, null);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
@@ -186,7 +186,7 @@ class UpgradeControllerTest extends TestCase
             new UpgradeService(new TimeoutService())
         );
 
-        $request = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Pending']);
+        $request = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Pending']);
         $controller->step($request, null);
     }
 
@@ -201,7 +201,7 @@ class UpgradeControllerTest extends TestCase
             new UpgradeService(new TimeoutService())
         );
 
-        $request  = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Export']);
+        $request  = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Export']);
         $response = $controller->step($request, $tree);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
@@ -225,7 +225,7 @@ class UpgradeControllerTest extends TestCase
             $mock_upgrade_service
         );
 
-        $request = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Download']);
+        $request = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Download']);
         $controller->step($request, null);
     }
 
@@ -241,7 +241,7 @@ class UpgradeControllerTest extends TestCase
             $mock_upgrade_service
         );
 
-        $request  = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Download']);
+        $request  = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Download']);
         $response = $controller->step($request, null);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
@@ -259,7 +259,7 @@ class UpgradeControllerTest extends TestCase
             $mock_upgrade_service
         );
 
-        $request  = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Unzip']);
+        $request  = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Unzip']);
         $response = $controller->step($request, null);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
@@ -275,7 +275,7 @@ class UpgradeControllerTest extends TestCase
             new UpgradeService(new TimeoutService())
         );
 
-        $request  = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Copy']);
+        $request  = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Copy']);
         $response = $controller->step($request, null);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
@@ -292,7 +292,7 @@ class UpgradeControllerTest extends TestCase
             $mock_upgrade_service
         );
 
-        $request  = self::createRequest('POST', ['route' => 'wizard'], ['step' => 'Cleanup']);
+        $request  = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Cleanup']);
         $response = $controller->step($request, null);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());

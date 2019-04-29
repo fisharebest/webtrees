@@ -159,7 +159,7 @@ class UpgradeController extends AbstractAdminController
      */
     public function step(ServerRequestInterface $request, ?Tree $tree): ResponseInterface
     {
-        $step = $request->getParsedBody()['step'];
+        $step = $request->getQueryParams()['step'] ?? self::STEP_CHECK;
 
         switch ($step) {
             case self::STEP_CHECK:

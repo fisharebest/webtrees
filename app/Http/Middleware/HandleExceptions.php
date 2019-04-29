@@ -76,6 +76,8 @@ class HandleExceptions implements MiddlewareInterface, RequestMethodInterface, S
     private function httpExceptionResponse(ServerRequestInterface $request, HttpException $exception): ResponseInterface
     {
         if ($request->getHeaderLine('X-Requested-With') !== '') {
+            $this->layout = 'layouts/ajax';
+
             return $this->viewResponse('components/alert-danger', [
                 'alert' => $exception->getMessage(),
                 'title' => $exception->getMessage(),
