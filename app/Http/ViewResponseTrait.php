@@ -28,6 +28,8 @@ use function view;
  */
 trait ViewResponseTrait
 {
+    protected $layout = 'layouts/default';
+
     /**
      * @param string  $view_name
      * @param mixed[] $view_data
@@ -44,7 +46,7 @@ trait ViewResponseTrait
         $layout_data['content'] = view($view_name, $view_data);
 
         // Most pages use the default layout.  Other built-in layouts include admin and ajax.
-        $layout = $this->layout ?? 'layouts/default';
+        $layout = $this->layout;
 
         // Insert the view into the layout
         $html = view($layout, $layout_data);
