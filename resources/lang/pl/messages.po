@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-29 09:06+0100\n"
-"PO-Revision-Date: 2019-04-30 11:14+0000\n"
+"PO-Revision-Date: 2019-04-30 11:16+0000\n"
 "Last-Translator: Łukasz <wilenskipl@wp.pl>\n"
 "Language-Team: Polish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/pl/>\n"
 "Language: pl\n"
@@ -208,9 +208,9 @@ msgstr "%s i ich potomkowie"
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] "%s zalogowany anoniomowo użytkownik"
-msgstr[1] "%s zalogowanych anoniomowo użytkowników"
-msgstr[2] "%s zalogowanych anoniomowo użytkowników"
+msgstr[0] "%s zalogowany anonimowo użytkownik"
+msgstr[1] "%s zalogowanych anonimowo użytkowników"
+msgstr[2] "%s zalogowanych anonimowo użytkowników"
 
 #: resources/views/family-page-children.phtml:12
 #: resources/views/modules/ancestors-chart/tree.phtml:39
