@@ -164,7 +164,7 @@ trait ModuleCustomTrait
 
         $headers = [
             'Content-Type' => $mime_type,
-            'Expires' => $expiry_date,
+            'Expires'      => $expiry_date->toRfc7231String(),
         ];
 
         return response($content, StatusCodeInterface::STATUS_OK, $headers);
