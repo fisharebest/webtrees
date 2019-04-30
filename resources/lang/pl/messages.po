@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2018-11-09 09:19+0000\n"
-"Last-Translator: Åukasz WileÅ„ski <lukas.the.best@poczta.fm>\n"
-"Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
+"POT-Creation-Date: 2019-04-29 09:06+0100\n"
+"PO-Revision-Date: 2019-04-30 11:14+0000\n"
+"Last-Translator: Łukasz <wilenskipl@wp.pl>\n"
+"Language-Team: Polish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.11\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -751,17 +751,17 @@ msgstr "Powitalne informacje dla odwiedzających stronę."
 #. I18N: Description of the “Hit counters” module
 #: app/Module/ContactsFooterModule.php:66
 msgid "A link to the site contacts."
-msgstr ""
+msgstr "Odnośnik do osoby odpowiedzialnej za witrynę."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:50
 msgid "A link to the webtrees home page."
-msgstr ""
+msgstr "Odnośnik do strony głównej webtrees."
 
 #. I18N: Description of the “BranchesListModule” module
 #: app/Module/BranchesListModule.php:55
 msgid "A list of branches of a family."
-msgstr ""
+msgstr "Lista gałęzi rodziny."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:74
@@ -771,7 +771,7 @@ msgstr "Lista zmian, które wymagają zatwierdzenia przez moderatora oraz wysył
 #. I18N: Description of the “FamilyListModule” module
 #: app/Module/FamilyListModule.php:56
 msgid "A list of families."
-msgstr ""
+msgstr "Lista rodzin."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:57
@@ -781,12 +781,12 @@ msgstr "Lista najczęściej zadawanych pytań i odpowiedzi."
 #. I18N: Description of the “IndividualListModule” module
 #: app/Module/IndividualListModule.php:56
 msgid "A list of individuals."
-msgstr ""
+msgstr "Lista osób."
 
 #. I18N: Description of the “MediaListModule” module
 #: app/Module/MediaListModule.php:57
 msgid "A list of media objects."
-msgstr ""
+msgstr "Lista obiektów multimedialnych."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:61
@@ -796,17 +796,17 @@ msgstr "Lista wpisów, które zostały ostatnio zaktualizowane."
 #. I18N: Description of the “RepositoryListModule” module
 #: app/Module/RepositoryListModule.php:56
 msgid "A list of repositories."
-msgstr ""
+msgstr "Lista repozytoriów."
 
 #. I18N: Description of the “NoteListModule” module
 #: app/Module/NoteListModule.php:56
 msgid "A list of shared notes."
-msgstr ""
+msgstr "Lista wspólnych notatek."
 
 #. I18N: Description of the “SourceListModule” module
 #: app/Module/SourceListModule.php:56
 msgid "A list of sources."
-msgstr ""
+msgstr "Lista źródeł."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:63
@@ -1400,7 +1400,7 @@ msgstr "Dodaj ze schowka"
 
 #: app/Module/ModuleHistoricEventsTrait.php:38
 msgid "Add historic events to an individual‘s page."
-msgstr ""
+msgstr "Dodaje wydarzenia historyczne do strony poszczególnych osób."
 
 #: resources/views/modules/lifespans-chart/page.phtml:19
 msgid "Add individuals"
@@ -1438,7 +1438,7 @@ msgstr "Dodaj spacje w miejscu podziału długich wierszy"
 #. I18N: Description of the “CSS and JS” module.
 #: app/Module/CustomCssJsModule.php:41
 msgid "Add styling and scripts to every page."
-msgstr ""
+msgstr "Dodaje stylizację i skrypty do każdej strony."
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: resources/views/admin/trees-export.phtml:55
@@ -1846,7 +1846,7 @@ msgstr "Wszystkie osoby"
 #: resources/views/admin/components.phtml:12
 #: resources/views/admin/control-panel.phtml:308
 msgid "All modules"
-msgstr ""
+msgstr "Wszystkie moduły"
 
 #: resources/views/admin/trees-privacy.phtml:245
 msgid "All records"
@@ -2362,7 +2362,7 @@ msgstr "Średnia długość życia"
 
 #: app/Statistics/Google/ChartMarriageAge.php:152
 msgid "Average age at marriage"
-msgstr ""
+msgstr "Średni wiek podczas zawierania małżeństwa"
 
 #: app/Statistics/Google/ChartMarriageAge.php:149
 msgid "Average age in century of marriage"
@@ -2374,7 +2374,7 @@ msgstr "Średnia długość życia względem wieku śmierci"
 
 #: app/Statistics/Google/ChartChildren.php:87
 msgid "Average number"
-msgstr ""
+msgstr "Średnia liczba"
 
 #: app/Statistics/Google/ChartChildren.php:98
 #: resources/views/modules/gedcom_stats/config.phtml:35
@@ -3279,7 +3279,7 @@ msgstr "CKEditor™"
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php:78
 msgid "CSS and JS"
-msgstr ""
+msgstr "CSS i JS"
 
 #: resources/views/admin/trees.phtml:37
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -3443,7 +3443,7 @@ msgstr "Republika Środkowoafrykańska"
 #: resources/views/lists/individuals-table.phtml:118
 #: resources/views/lists/individuals-table.phtml:133
 msgid "Century"
-msgstr ""
+msgstr "Wiek"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2361
@@ -4008,7 +4008,7 @@ msgstr "Wyspy Cooka"
 #. I18N: Name of a module
 #: app/Module/CookieWarningModule.php:55
 msgid "Cookie warning"
-msgstr ""
+msgstr "Ostrzeżenie dotyczące plików cookie"
 
 #: resources/views/modules/cookie-warning/footer.phtml:4
 #: resources/views/privacy-policy.phtml:12
@@ -4071,7 +4071,7 @@ msgstr "Nie można potwierdzić podanej informacji. Spróbuj ponownie lub skonta
 #. I18N: Description of the “Hit counters” module
 #: app/Module/HitCountFooterModule.php:72
 msgid "Count the visits to each page"
-msgstr ""
+msgstr "Zlicza wizyty na każdej stronie"
 
 #. I18N: gedcom tag CTRY
 #: app/GedcomTag.php:638 app/Statistics/Google/ChartDistribution.php:118
@@ -4126,7 +4126,7 @@ msgstr "Utwórz osobę dostarczającą dane"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:142
 msgid "Create a temporary folder…"
-msgstr ""
+msgstr "Tworzę folder tymczasowy…"
 
 #: resources/views/modals/media-file-fields.phtml:68
 msgid "Create a unique filename"
@@ -5019,7 +5019,7 @@ msgstr "Usuń nieaktywnych"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:148
 msgid "Delete old files…"
-msgstr ""
+msgstr "Usuwam stare pliki…"
 
 #: app/Module/UserMessagesModule.php:208
 msgid "Delete selected messages"
@@ -5305,7 +5305,7 @@ msgstr "Dominikana"
 
 #: app/Module/PedigreeChartModule.php:314
 msgid "Down"
-msgstr ""
+msgstr "W dół"
 
 #: app/Module/ClippingsCartModule.php:157
 #: app/Module/ClippingsCartModule.php:294
@@ -6423,7 +6423,7 @@ msgstr ""
 #: resources/views/admin/modules.phtml:91
 #: resources/views/admin/modules.phtml:93
 msgid "Footers"
-msgstr ""
+msgstr "Stopki"
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names
 #: resources/views/admin/trees-import.phtml:102
@@ -7159,7 +7159,7 @@ msgstr "Pracował jako"
 #: resources/views/admin/modules.phtml:233
 #: resources/views/admin/modules.phtml:236
 msgid "Historic events"
-msgstr ""
+msgstr "Wydarzenia historyczne"
 
 #: resources/views/modules/personal_facts/tab.phtml:18
 msgid "Historical facts"
@@ -7693,7 +7693,7 @@ msgstr "Nieprawidłowy plik GEDCOM - nie znaleziono wpisu nagłówka."
 
 #: app/Functions/FunctionsImport.php:629
 msgid "Invalid GEDCOM record"
-msgstr ""
+msgstr "Nieprawidłowy wpis GEDCOM"
 
 #: app/Date.php:372
 msgid "Invalid date"
@@ -8232,7 +8232,7 @@ msgstr "Liban"
 
 #: app/Module/PedigreeChartModule.php:311
 msgid "Left"
-msgstr ""
+msgstr "W lewo"
 
 #. I18N: gedcom tag LEGA
 #: app/GedcomTag.php:814
@@ -10994,7 +10994,7 @@ msgstr "Kod pocztowy"
 #. I18N: Name of a module
 #: app/Module/PoweredByWebtreesModule.php:39
 msgid "Powered by webtrees™"
-msgstr ""
+msgstr "Obsługiwane przez webtrees™"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:149
@@ -11735,7 +11735,7 @@ msgstr "Rexburg, Idaho, Stany Zjednoczone"
 
 #: app/Module/PedigreeChartModule.php:312
 msgid "Right"
-msgstr ""
+msgstr "W prawo"
 
 #: resources/views/edit-blocks-page.phtml:27
 msgid "Right section blocks"
@@ -11791,12 +11791,12 @@ msgstr "Serwer poczty SMTP"
 
 #: app/Services/ServerCheckService.php:279
 msgid "SQLite is only suitable for small sites, testing and evaluation."
-msgstr ""
+msgstr "SQLite nadaje się tylko do małych witryn, testowania oraz oceniania."
 
 #: app/Services/ServerCheckService.php:203
 #, php-format
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
-msgstr ""
+msgstr "Wersja SQLite %s jest zainstalowana. Wymagana jest wersja SQLite %s lub nowsza."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:583
@@ -13284,11 +13284,11 @@ msgstr "Wsparcie i dokumentację można znaleźć na stronie %s."
 
 #: app/Services/ServerCheckService.php:284
 msgid "Support for PostgreSQL is experimental."
-msgstr ""
+msgstr "Obsługa PostgreSQL jest eksperymentalna."
 
 #: app/Services/ServerCheckService.php:289
 msgid "Support for SQL Server is experimental."
-msgstr ""
+msgstr "Obsługa SQL Server jest eksperymentalna."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:459
@@ -13418,7 +13418,7 @@ msgstr "Przedrostek tabeli"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Tabloid"
-msgstr ""
+msgstr "Tabloid"
 
 #: app/Http/Controllers/Admin/ModuleController.php:219
 #: resources/views/admin/control-panel.phtml:412
@@ -13494,7 +13494,7 @@ msgstr "Tegucigalpa, Honduras"
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/CookieWarningModule.php:66
 msgid "Tell visitors why this site uses cookies."
-msgstr ""
+msgstr "Wyjaśnia odwiedzającym, dlaczego ta strona używa plików cookie."
 
 #: resources/views/modules/html/config.phtml:16
 msgid "Templates"
@@ -13565,12 +13565,12 @@ msgstr "The Hague, Holandia"
 #: app/Services/ServerCheckService.php:112
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr ""
+msgstr "Rozszerzenie PHP „%s” nie jest zainstalowane."
 
 #: app/Services/ServerCheckService.php:170
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr ""
+msgstr "Funkcja PHP „%1$s” jest wyłączona."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:55
@@ -13580,12 +13580,12 @@ msgstr "Brak tymczasowego katalogu PHP."
 #: app/Services/ServerCheckService.php:131
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr ""
+msgstr "Ustawienie PHP.INI „%1$s” jest wyłączone."
 
 #: app/Services/ServerCheckService.php:135
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr ""
+msgstr "Ustawienie PHP.INI „%1$s” jest włączone."
 
 #: resources/views/emails/approve-user-html.phtml:7
 #: resources/views/emails/approve-user-text.phtml:4
@@ -13600,7 +13600,7 @@ msgstr "Administrator został o tym poinformowany. Gdy tylko udzieli zezwolenia 
 #. I18N: Description of the “Reports” module
 #: app/Module/CalendarMenuModule.php:50
 msgid "The calendar menu."
-msgstr ""
+msgstr "Menu kalendarza."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/Controllers/PendingChangesController.php:150
@@ -13617,7 +13617,7 @@ msgstr "Zmiany wprowadzone do wpisu „%s” zostały odrzucone."
 #. I18N: Description of the “Reports” module
 #: app/Module/ChartsMenuModule.php:69
 msgid "The charts menu."
-msgstr ""
+msgstr "Menu wykresów."
 
 #: resources/views/modules/clippings/show.phtml:6
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -13673,7 +13673,7 @@ msgstr "Pomyślnie scalono drzewa genealogiczne."
 #. I18N: Description of the “Reports” module
 #: app/Module/TreesMenuModule.php:51
 msgid "The family trees menu."
-msgstr ""
+msgstr "Menu drzew rodzinnych."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: app/Http/Controllers/EditGedcomRecordController.php:141
@@ -13800,7 +13800,7 @@ msgstr "Powiązanie „%1$s” i „%2$s” zostało uaktualnione."
 #. I18N: Description of the “Reports” module
 #: app/Module/ListsMenuModule.php:67
 msgid "The lists menu."
-msgstr ""
+msgstr "Menu list."
 
 #: app/Http/Controllers/EditMediaController.php:249
 #: app/Http/Controllers/EditMediaController.php:262
@@ -13886,7 +13886,7 @@ msgstr "Hasło wymagane do uwierzytelnienia na serwerze SMTP."
 #. I18N: Description of the “PlaceHierarchyListModule” module
 #: app/Module/PlaceHierarchyListModule.php:56
 msgid "The place hierarchy."
-msgstr ""
+msgstr "Hierarchia miejsc."
 
 #: app/Http/Controllers/AdminController.php:349
 #: app/Http/Controllers/AdminTreesController.php:1122
@@ -13939,7 +13939,7 @@ msgstr "Wyrażenia regularne zawierają błąd i nie będą użyte."
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php:71
 msgid "The reports menu."
-msgstr ""
+msgstr "Menu raportów."
 
 #: app/Http/Controllers/EditRepositoryController.php:81
 msgid "The repository has been created"
@@ -13948,11 +13948,11 @@ msgstr "Utworzono repozytorium"
 #. I18N: Description of the “Reports” module
 #: app/Module/SearchMenuModule.php:51
 msgid "The search menu."
-msgstr ""
+msgstr "Menu wyszukiwania."
 
 #: app/Services/SearchService.php:971
 msgid "The search returned too many results."
-msgstr ""
+msgstr "Wyszukiwanie zwróciło zbyt wiele wyników."
 
 #: resources/views/setup/step-2-server-checks.phtml:32
 msgid "The server configuration is OK."
@@ -13960,7 +13960,7 @@ msgstr "Konfiguracja serwera jest dobra."
 
 #: app/Services/ServerCheckService.php:223
 msgid "The server’s temporary folder cannot be accessed."
-msgstr ""
+msgstr "Nie można uzyskać dostępu do folderu tymczasowego serwera."
 
 #: app/Http/Controllers/AdminTreesController.php:1714
 #: app/Services/UpgradeService.php:146 app/Services/UpgradeService.php:179
@@ -14309,7 +14309,7 @@ msgstr "Będzie to główna osoba dla wyświetlanych wykresów i raportów."
 #: resources/views/statistics/other/places.phtml:53
 #: resources/views/statistics/other/top10-list.phtml:23
 msgid "This information is not available."
-msgstr ""
+msgstr "Ta informacja nie jest dostępna."
 
 #: app/Statistics/Repository/EventRepository.php:250
 #: app/Statistics/Repository/FamilyDatesRepository.php:108
@@ -15088,7 +15088,7 @@ msgstr "Zakończenie pliku"
 #: app/Module/AncestorsChartModule.php:222
 #: app/Module/DescendancyChartModule.php:247
 msgid "Tree"
-msgstr ""
+msgstr "Drzewo"
 
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:289
@@ -15296,7 +15296,7 @@ msgstr "Rozpakowywanie %s do katalogu tymczasowego…"
 
 #: app/Module/PedigreeChartModule.php:313
 msgid "Up"
-msgstr ""
+msgstr "W górę"
 
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:95
