@@ -77,17 +77,12 @@ class HandleExceptions implements MiddlewareInterface, RequestMethodInterface, S
     {
         if ($request->getHeaderLine('X-Requested-With') !== '') {
             $this->layout = 'layouts/ajax';
-
-            return $this->viewResponse('components/alert-danger', [
-                'alert' => $exception->getMessage(),
-                'title' => $exception->getMessage(),
-            ], $exception->getStatusCode());
         }
 
-        return response(view('components/alert-danger', [
+        return $this->viewResponse('components/alert-danger', [
             'alert' => $exception->getMessage(),
             'title' => $exception->getMessage(),
-        ]), $exception->getStatusCode());
+        ], $exception->getStatusCode());
     }
 
     /**
