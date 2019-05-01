@@ -81,21 +81,21 @@ class SearchService
     public function searchFamilyNames(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
         $query = DB::table('families')
-            ->join('name AS husb_name', static function (JoinClause $join): void {
+            ->leftJoin('name AS husb_name', static function (JoinClause $join): void {
                 $join
                     ->on('husb_name.n_file', '=', 'families.f_file')
-                    ->on('husb_name.n_id', '=', 'families.f_husb');
+                    ->on('husb_name.n_id', '=', 'families.f_husb')
+                    ->where('husb_name.n_type', '<>', '_MARNM');
             })
-            ->join('name AS wife_name', static function (JoinClause $join): void {
+            ->leftJoin('name AS wife_name', static function (JoinClause $join): void {
                 $join
                     ->on('wife_name.n_file', '=', 'families.f_file')
-                    ->on('wife_name.n_id', '=', 'families.f_wife');
-            })
-            ->where('wife_name.n_type', '<>', '_MARNM')
-            ->where('husb_name.n_type', '<>', '_MARNM');
+                    ->on('wife_name.n_id', '=', 'families.f_wife')
+                    ->where('wife_name.n_type', '<>', '_MARNM');
+            });
 
         $prefix = DB::connection()->getTablePrefix();
-        $field  = DB::raw($prefix . 'husb_name.n_full || ' . $prefix . 'wife_name.n_full');
+        $field  = DB::raw('COALESCE(' . $prefix . "husb_name.n_full, '') || COALESCE(" . $prefix . "wife_name.n_full, '')");
 
         $this->whereTrees($query, 'f_file', $trees);
         $this->whereSearch($query, $field, $search);
