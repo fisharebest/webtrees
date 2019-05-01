@@ -2,7 +2,7 @@
     <?php if ($main_blocks->isEmpty() || $side_blocks->isEmpty()) : ?>
         <div class="col-md-12 wt-main-blocks">
             <?php foreach ($main_blocks->concat($side_blocks) as $block_id => $block) : ?>
-                <?= view('user-page-block', ['block_id' => $block_id, 'block' => $block, 'tree' => $tree]) ?>
+                <?= view('tree-page-block', ['block_id' => $block_id, 'block' => $block, 'tree' => $tree]) ?>
             <?php endforeach ?>
         </div>
     <?php else : ?>
