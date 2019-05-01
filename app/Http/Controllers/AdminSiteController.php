@@ -245,7 +245,7 @@ class AdminSiteController extends AbstractBaseController
         $query = DB::table('log')
             ->leftJoin('user', 'user.user_id', '=', 'log.user_id')
             ->leftJoin('gedcom', 'gedcom.gedcom_id', '=', 'log.gedcom_id')
-            ->select(['log.*', DB::raw("IFNULL(user_name, '<none>') AS user_name"), DB::raw("IFNULL(gedcom_name, '<none>') AS gedcom_name")]);
+            ->select(['log.*', DB::raw("COALESCE(user_name, '<none>') AS user_name"), DB::raw("COALESCE(gedcom_name, '<none>') AS gedcom_name")]);
 
         if ($from !== '') {
             $query->where('log_time', '>=', $from);
