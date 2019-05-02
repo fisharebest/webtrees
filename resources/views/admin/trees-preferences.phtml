@@ -774,7 +774,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Quick individual facts') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'INDI_FACTS_QUICK[]', 'id' => 'INDI_FACTS_QUICK', 'selected' => explode(',', $tree->getPreference('INDI_FACTS_QUICK')), 'options' => $all_fam_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'INDI_FACTS_QUICK[]', 'id' => 'INDI_FACTS_QUICK', 'selected' => explode(',', $tree->getPreference('INDI_FACTS_QUICK')), 'options' => $all_indi_facts, 'class' => 'select2']) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Quick individual facts” configuration setting */ I18N::translate('The most common individual facts and events are listed separately, so that they can be added more easily.') ?>
             </p>
