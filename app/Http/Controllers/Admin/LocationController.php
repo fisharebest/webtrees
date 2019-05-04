@@ -66,7 +66,7 @@ class LocationController extends AbstractAdminController
     public function mapData(ServerRequestInterface $request): ResponseInterface
     {
         $parent_id   = (int) ($request->getQueryParams()['parent_id'] ?? 0);
-        $hierarchy   = $this->gethierarchy($parent_id);
+        $hierarchy   = $this->getHierarchy($parent_id);
         $title       = I18N::translate('Geographic data');
         $breadcrumbs = [
             route('admin-control-panel') => I18N::translate('Control panel'),
@@ -91,7 +91,7 @@ class LocationController extends AbstractAdminController
      *
      * @return array
      */
-    private function gethierarchy(int $id): array
+    private function getHierarchy(int $id): array
     {
         $arr  = [];
         $fqpn = [];
@@ -124,7 +124,7 @@ class LocationController extends AbstractAdminController
         if ($id === 0) {
             $fqpn = '';
         } else {
-            $hierarchy = $this->gethierarchy($id);
+            $hierarchy = $this->getHierarchy($id);
             $fqpn      = ', ' . $hierarchy[0]->fqpn;
         }
 
@@ -233,7 +233,7 @@ class LocationController extends AbstractAdminController
     {
         $parent_id = (int) $request->getQueryParams()['parent_id'];
         $place_id  = (int) $request->getQueryParams()['place_id'];
-        $hierarchy = $this->gethierarchy($place_id);
+        $hierarchy = $this->getHierarchy($place_id);
         $fqpn      = empty($hierarchy) ? '' : $hierarchy[0]->fqpn;
         $location  = new Location($fqpn);
 
@@ -318,13 +318,13 @@ class LocationController extends AbstractAdminController
      */
     public function mapDataSave(ServerRequestInterface $request): ResponseInterface
     {
-        $parent_id = (int) $request->getParsedBody()['parent_id'];
-        $place_id  = (int) $request->getParsedBody()['place_id'];
+        $parent_id = (int) $request->getQueryParams()['parent_id'];
+        $place_id  = (int) $request->getQueryParams()['place_id'];
         $lat       = round($request->getParsedBody()['new_place_lati'], 5); // 5 decimal places (locate to within about 1 metre)
         $lat       = ($lat < 0 ? 'S' : 'N') . abs($lat);
         $lng       = round($request->getParsedBody()['new_place_long'], 5);
         $lng       = ($lng < 0 ? 'W' : 'E') . abs($lng);
-        $hierarchy = $this->gethierarchy($parent_id);
+        $hierarchy = $this->getHierarchy($parent_id);
         $level     = count($hierarchy);
         $icon      = $request->getParsedBody()['icon'];
         $zoom      = (int) $request->getParsedBody()['new_zoom_factor'];
@@ -337,8 +337,8 @@ class LocationController extends AbstractAdminController
                 'pl_parent_id' => $parent_id,
                 'pl_level'     => $level,
                 'pl_place'     => $request->getParsedBody()['new_place_name'],
-                'pl_lati'      => $request->getParsedBody()['lati_control'] . $lat,
-                'pl_long'      => $request->getParsedBody()['long_control'] . $lng,
+                'pl_lati'      => $lat,
+                'pl_long'      => $lng,
                 'pl_zoom'      => $zoom,
                 'pl_icon'      => $icon,
             ]);
@@ -347,12 +347,13 @@ class LocationController extends AbstractAdminController
                 ->where('pl_id', '=', $place_id)
                 ->update([
                     'pl_place' => $request->getParsedBody()['new_place_name'],
-                    'pl_lati'  => $request->getParsedBody()['lati_control'] . $lat,
-                    'pl_long'  => $request->getParsedBody()['long_control'] . $lng,
-                    'pl_zoom'  => (int) $request->getParsedBody()['new_zoom_factor'],
+                    'pl_lati'  => $lat,
+                    'pl_long'  => $lng,
+                    'pl_zoom'  => $zoom,
                     'pl_icon'  => $icon,
                 ]);
         }
+
         FlashMessages::addMessage(
             I18N::translate(
                 'The details for “%s” have been updated.',
@@ -413,7 +414,7 @@ class LocationController extends AbstractAdminController
         $format    = $request->getQueryParams()['format'];
         $maxlevel  = (int) DB::table('placelocation')->max('pl_level');
         $startfqpn = [];
-        $hierarchy = $this->gethierarchy($parent_id);
+        $hierarchy = $this->getHierarchy($parent_id);
 
         // Create the file name
         $place_name = empty($hierarchy) ? 'Global' : $hierarchy[0]->fqpn; // $hierarchy[0] always holds the full placename
@@ -625,7 +626,7 @@ class LocationController extends AbstractAdminController
 
             // Check the filetype
             if (stripos($string, 'FeatureCollection') !== false) {
-                $input_array = json_decode($string);
+                $input_array = json_decode($string, false);
 
                 foreach ($input_array->features as $feature) {
                     $places[] = array_combine($field_names, [

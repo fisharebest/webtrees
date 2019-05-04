@@ -61,16 +61,18 @@ class LocationControllerTest extends TestCase
     public function testMapDataSave(): void
     {
         $controller = new LocationController(new GedcomService());
-        $request    = self::createRequest('POST', ['route' => 'map-data-edit'], [
+        $request    = self::createRequest('POST', [
+            'route'     => 'map-data-edit',
             'parent_id' => '0',
-            'place_id' => '0',
-            'new_place_lati' => '-12.345',
-            'new_place_long' => '-123.45',
-            'icon' => '',
+            'place_id'  => '0',
+        ], [
+            'new_place_lati'  => '-12.345',
+            'new_place_long'  => '-123.45',
+            'icon'            => '',
             'new_zoom_factor' => '2',
-            'new_place_name' => 'place',
-            'lati_control' => 'S',
-            'long_control' => 'W',
+            'new_place_name'  => 'place',
+            'lati_control'    => 'S',
+            'long_control'    => 'W',
         ]);
         $response   = $controller->mapDataSave($request);
 
