@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
@@ -88,7 +89,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     /** {@inheritdoc} */
     public function hasTabContent(Individual $individual): bool
     {
-        return true;
+        return Site::getPreference('map-provider') !== '';
     }
 
     /** {@inheritdoc} */
