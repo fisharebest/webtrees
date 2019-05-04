@@ -70,11 +70,12 @@ class AdminSiteController extends AbstractBaseController
     /**
      * Show old user files in the data folder.
      *
-     * @param FilesystemInterface $filesystem
+     * @param ServerRequestInterface $request
+     * @param FilesystemInterface    $filesystem
      *
      * @return ResponseInterface
      */
-    public function cleanData(FilesystemInterface $filesystem): ResponseInterface
+    public function cleanData(ServerRequestInterface $request, FilesystemInterface $filesystem): ResponseInterface
     {
         $protected = [
             '.htaccess',
@@ -82,6 +83,10 @@ class AdminSiteController extends AbstractBaseController
             'index.php',
             'config.ini.php',
         ];
+
+        if ($request->getAttribute('dbtype') === 'sqlite') {
+            $protected[] = $request->getAttribute('dbname') . '.sqlite';
+        }
 
         // Protect the media folders
         foreach (Tree::getAll() as $tree) {
