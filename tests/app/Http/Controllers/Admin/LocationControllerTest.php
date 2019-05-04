@@ -110,7 +110,7 @@ class LocationControllerTest extends TestCase
     public function testImportLocations(): void
     {
         $controller = new LocationController(new GedcomService());
-        $request    = self::createRequest('GET', ['route' => 'locations-import'], ['parent_id' => '0']);
+        $request    = self::createRequest('GET', ['route' => 'locations-import','parent_id' => '0']);
         $response   = $controller->importLocations($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
@@ -123,7 +123,7 @@ class LocationControllerTest extends TestCase
     {
         $csv        = $this->createUploadedFile(dirname(__DIR__, 4) . '/data/places.csv', 'text/csv');
         $controller = new LocationController(new GedcomService());
-        $request    = self::createRequest('POST', ['route' => 'locations-import'], ['parent_id' => '0'], ['csv' => $csv]);
+        $request    = self::createRequest('POST', ['route' => 'locations-import','parent_id' => '0'], [], ['csv' => $csv]);
         $response   = $controller->importLocationsAction($request);
 
         $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());

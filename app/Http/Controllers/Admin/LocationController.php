@@ -560,7 +560,7 @@ class LocationController extends AbstractAdminController
      */
     public function importLocations(ServerRequestInterface $request): ResponseInterface
     {
-        $parent_id = (int) $request->getParsedBody()['parent_id'];
+        $parent_id = (int) $request->getQueryParams()['parent_id'];
 
         $files = array_merge(
             glob(WT_DATA_DIR . 'places/*.csv', GLOB_NOSORT),
