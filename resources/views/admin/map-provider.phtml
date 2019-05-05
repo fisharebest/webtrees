@@ -15,13 +15,35 @@
                 ''    => I18N::translate('Do not use maps'),
                 'osm' => I18N::translate('OpenStreetMap™'),
                 ]]) ?>
-                <hr>
                 <!-- @TODO - other mapping providers (may need API keys, etc.) -->
             </div>
         </div>
     </div>
 
-    <!-- SAVE BUTTON -->
+    <hr>
+
+    <div class="row form-group">
+        <label class="col-sm-3 col-form-label" for="geonames">
+            <?= I18N::translate('Use the GeoNames database for autocomplete on places') ?>
+        </label>
+        <div class="col-sm-9">
+            <input
+            class="form-control"
+            dir="ltr"
+            id="geonames"
+            maxlength="255"
+            name="geonames"
+            type="text"
+            value="<?= e($geonames) ?>"
+            >
+            <p class="small text-muted">
+                <?= /* I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting */ I18N::translate('The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username.') ?>
+            </p>
+        </div>
+    </div>
+
+    <hr>
+
     <div class="form-group row">
         <div class="offset-sm-3 col-sm-9">
             <button type="submit" class="btn btn-primary">

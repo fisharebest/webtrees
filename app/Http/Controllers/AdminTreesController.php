@@ -1144,7 +1144,6 @@ class AdminTreesController extends AbstractBaseController
         $tree->setPreference('FULL_SOURCES', (string) (bool) $request->get('FULL_SOURCES'));
         $tree->setPreference('FORMAT_TEXT', $request->get('FORMAT_TEXT'));
         $tree->setPreference('GENERATE_UIDS', (string) (bool) $request->get('GENERATE_UIDS'));
-        $tree->setPreference('GEONAMES_ACCOUNT', $request->get('GEONAMES_ACCOUNT'));
         $tree->setPreference('HIDE_GEDCOM_ERRORS', (string) (bool) $request->get('HIDE_GEDCOM_ERRORS'));
         $tree->setPreference('INDI_FACTS_ADD', implode(',', $request->get('INDI_FACTS_ADD', [])));
         $tree->setPreference('INDI_FACTS_QUICK', implode(',', $request->get('INDI_FACTS_QUICK', [])));

@@ -46,7 +46,7 @@ class MapProviderControllerTest extends TestCase
     public function testMapProviderSave(): void
     {
         $controller = new MapProviderController();
-        $request    = self::createRequest('POST', ['route' => 'map-provider'], ['provider' => '']);
+        $request    = self::createRequest('POST', ['route' => 'map-provider'], ['provider' => '', 'geonames' => '']);
         $response   = $controller->mapProviderSave($request);
 
         $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());

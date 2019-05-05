@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\SearchService;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -35,6 +36,9 @@ use Illuminate\Support\Str;
 use League\Flysystem\Filesystem;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function rawurlencode;
+use function urldecode;
+use function urlencode;
 
 /**
  * Controller for the autocomplete callbacks
@@ -177,15 +181,17 @@ class AutocompleteController extends AbstractBaseController
             $data[] = ['value' => $place->gedcomName()];
         }
 
-        if (empty($data) && $tree->getPreference('GEONAMES_ACCOUNT')) {
+        $geonames = Site::getPreference('geonames');
+
+        if (empty($data) && $geonames !== '') {
             // No place found? Use an external gazetteer
             $url =
                 'http://api.geonames.org/searchJSON' .
-                '?name_startsWith=' . urlencode($query) .
+                '?name_startsWith=' . rawurlencode($query) .
                 '&lang=' . WT_LOCALE .
                 '&fcode=CMTY&fcode=ADM4&fcode=PPL&fcode=PPLA&fcode=PPLC' .
                 '&style=full' .
-                '&username=' . $tree->getPreference('GEONAMES_ACCOUNT');
+                '&username=' . rawurlencode($geonames);
 
             // try to use curl when file_get_contents not allowed
             if (ini_get('allow_url_fopen')) {
@@ -385,15 +391,17 @@ class AutocompleteController extends AbstractBaseController
             ];
         }
 
+        $geonames = Site::getPreference('geonames');
+
         // No place found? Use an external gazetteer
-        if (empty($results) && $tree->getPreference('GEONAMES_ACCOUNT')) {
+        if (empty($results) && $geonames !== '') {
             $url =
                 'http://api.geonames.org/searchJSON' .
-                '?name_startsWith=' . urlencode($query) .
+                '?name_startsWith=' . rawurlencode($query) .
                 '&lang=' . WT_LOCALE .
                 '&fcode=CMTY&fcode=ADM4&fcode=PPL&fcode=PPLA&fcode=PPLC' .
                 '&style=full' .
-                '&username=' . $tree->getPreference('GEONAMES_ACCOUNT');
+                '&username=' . rawurlencode($geonames);
             // try to use curl when file_get_contents not allowed
             if (ini_get('allow_url_fopen')) {
                 $json   = file_get_contents($url);

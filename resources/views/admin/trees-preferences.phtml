@@ -637,27 +637,6 @@ use Fisharebest\Webtrees\I18N;
         </div>
     </fieldset>
 
-    <!-- GEONAMES_ACCOUNT -->
-    <div class="row form-group">
-        <label class="col-sm-3 col-form-label" for="GEONAMES_ACCOUNT">
-            <?= I18N::translate('Use the GeoNames database for autocomplete on places') ?>
-        </label>
-        <div class="col-sm-9">
-            <input
-                class="form-control"
-                dir="ltr"
-                id="GEONAMES_ACCOUNT"
-                maxlength="255"
-                name="GEONAMES_ACCOUNT"
-                type="text"
-                value="<?= e($tree->getPreference('GEONAMES_ACCOUNT')) ?>"
-            >
-            <p class="small text-muted">
-                <?= /* I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting */ I18N::translate('The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username.') ?>
-            </p>
-        </div>
-    </div>
-
     <h3><?= I18N::translate('Text') ?></h3>
 
     <!-- FORMAT_TEXT -->

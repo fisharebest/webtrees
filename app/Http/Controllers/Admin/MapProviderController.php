@@ -35,6 +35,7 @@ class MapProviderController extends AbstractAdminController
         return $this->viewResponse('admin/map-provider', [
             'title'    => I18N::translate('Map provider'),
             'provider' => Site::getPreference('map-provider'),
+            'geonames' => Site::getPreference('geonames'),
         ]);
     }
 
@@ -45,9 +46,10 @@ class MapProviderController extends AbstractAdminController
      */
     public function mapProviderSave(ServerRequestInterface $request): ResponseInterface
     {
-        $provider = $request->getParsedBody()['provider'] ?? '';
+        $settings = $request->getParsedBody();
 
-        Site::setPreference('map-provider', $provider);
+        Site::setPreference('map-provider', $settings['provider']);
+        Site::setPreference('geonames', $settings['geonames']);
 
         return redirect(route('admin-control-panel'));
     }
