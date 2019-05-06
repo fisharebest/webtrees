@@ -850,29 +850,23 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Individual[]
+     * @return Collection
      */
-    public function linkedIndividuals(string $link): array
+    public function linkedIndividuals(string $link): Collection
     {
-        $rows = DB::table('individuals')
+        return DB::table('individuals')
             ->join('link', static function (JoinClause $join): void {
-                $join->on('l_file', '=', 'i_file')->on('l_from', '=', 'i_id');
+                $join
+                    ->on('l_file', '=', 'i_file')
+                    ->on('l_from', '=', 'i_id');
             })
             ->where('i_file', '=', $this->tree->id())
             ->where('l_type', '=', $link)
             ->where('l_to', '=', $this->xref)
-            ->select(['i_id AS xref', 'i_gedcom AS gedcom'])
-            ->get();
-
-        $list = [];
-        foreach ($rows as $row) {
-            $record = Individual::getInstance($row->xref, $this->tree, $row->gedcom);
-            if ($record->canShowName()) {
-                $list[] = $record;
-            }
-        }
-
-        return $list;
+            ->select(['individuals.*'])
+            ->get()
+            ->map(Individual::rowMapper())
+            ->filter(self::accessFilter());
     }
 
     /**
@@ -880,29 +874,23 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Family[]
+     * @return Collection
      */
-    public function linkedFamilies(string $link): array
+    public function linkedFamilies(string $link): Collection
     {
-        $rows = DB::table('families')
+        return DB::table('families')
             ->join('link', static function (JoinClause $join): void {
-                $join->on('l_file', '=', 'f_file')->on('l_from', '=', 'f_id');
+                $join
+                    ->on('l_file', '=', 'f_file')
+                    ->on('l_from', '=', 'f_id');
             })
             ->where('f_file', '=', $this->tree->id())
             ->where('l_type', '=', $link)
             ->where('l_to', '=', $this->xref)
-            ->select(['f_id AS xref', 'f_gedcom AS gedcom'])
-            ->get();
-
-        $list = [];
-        foreach ($rows as $row) {
-            $record = Family::getInstance($row->xref, $this->tree, $row->gedcom);
-            if ($record->canShowName()) {
-                $list[] = $record;
-            }
-        }
-
-        return $list;
+            ->select(['families.*'])
+            ->get()
+            ->map(Family::rowMapper())
+            ->filter(self::accessFilter());
     }
 
     /**
@@ -910,29 +898,23 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Source[]
+     * @return Collection
      */
-    public function linkedSources(string $link): array
+    public function linkedSources(string $link): Collection
     {
-        $rows = DB::table('sources')
+        return DB::table('sources')
             ->join('link', static function (JoinClause $join): void {
-                $join->on('l_file', '=', 's_file')->on('l_from', '=', 's_id');
+                $join
+                    ->on('l_file', '=', 's_file')
+                    ->on('l_from', '=', 's_id');
             })
             ->where('s_file', '=', $this->tree->id())
             ->where('l_type', '=', $link)
             ->where('l_to', '=', $this->xref)
-            ->select(['s_id AS xref', 's_gedcom AS gedcom'])
-            ->get();
-
-        $list = [];
-        foreach ($rows as $row) {
-            $record = Source::getInstance($row->xref, $this->tree, $row->gedcom);
-            if ($record->canShowName()) {
-                $list[] = $record;
-            }
-        }
-
-        return $list;
+            ->select(['sources.*'])
+            ->get()
+            ->map(Source::rowMapper())
+            ->filter(self::accessFilter());
     }
 
     /**
@@ -940,29 +922,23 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Media[]
+     * @return Collection
      */
-    public function linkedMedia(string $link): array
+    public function linkedMedia(string $link): Collection
     {
-        $rows = DB::table('media')
+        return DB::table('media')
             ->join('link', static function (JoinClause $join): void {
-                $join->on('l_file', '=', 'm_file')->on('l_from', '=', 'm_id');
+                $join
+                    ->on('l_file', '=', 'm_file')
+                    ->on('l_from', '=', 'm_id');
             })
             ->where('m_file', '=', $this->tree->id())
             ->where('l_type', '=', $link)
             ->where('l_to', '=', $this->xref)
-            ->select(['m_id AS xref', 'm_gedcom AS gedcom'])
-            ->get();
-
-        $list = [];
-        foreach ($rows as $row) {
-            $record = Media::getInstance($row->xref, $this->tree, $row->gedcom);
-            if ($record->canShowName()) {
-                $list[] = $record;
-            }
-        }
-
-        return $list;
+            ->select(['media.*'])
+            ->get()
+            ->map(Media::rowMapper())
+            ->filter(self::accessFilter());
     }
 
     /**
@@ -970,30 +946,24 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Note[]
+     * @return Collection
      */
-    public function linkedNotes(string $link): array
+    public function linkedNotes(string $link): Collection
     {
-        $rows = DB::table('other')
+        return DB::table('other')
             ->join('link', static function (JoinClause $join): void {
-                $join->on('l_file', '=', 'o_file')->on('l_from', '=', 'o_id');
+                $join
+                    ->on('l_file', '=', 'o_file')
+                    ->on('l_from', '=', 'o_id');
             })
             ->where('o_file', '=', $this->tree->id())
             ->where('o_type', '=', 'NOTE')
             ->where('l_type', '=', $link)
             ->where('l_to', '=', $this->xref)
-            ->select(['o_id AS xref', 'o_gedcom AS gedcom'])
-            ->get();
-
-        $list = [];
-        foreach ($rows as $row) {
-            $record = Note::getInstance($row->xref, $this->tree, $row->gedcom);
-            if ($record->canShowName()) {
-                $list[] = $record;
-            }
-        }
-
-        return $list;
+            ->select(['other.*'])
+            ->get()
+            ->map(Note::rowMapper())
+            ->filter(self::accessFilter());
     }
 
     /**
@@ -1001,30 +971,24 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Repository[]
+     * @return Collection
      */
-    public function linkedRepositories(string $link): array
+    public function linkedRepositories(string $link): Collection
     {
-        $rows = DB::table('other')
+        return DB::table('other')
             ->join('link', static function (JoinClause $join): void {
-                $join->on('l_file', '=', 'o_file')->on('l_from', '=', 'o_id');
+                $join
+                    ->on('l_file', '=', 'o_file')
+                    ->on('l_from', '=', 'o_id');
             })
             ->where('o_file', '=', $this->tree->id())
             ->where('o_type', '=', 'REPO')
             ->where('l_type', '=', $link)
             ->where('l_to', '=', $this->xref)
-            ->select(['o_id AS xref', 'o_gedcom AS gedcom'])
-            ->get();
-
-        $list = [];
-        foreach ($rows as $row) {
-            $record = Repository::getInstance($row->xref, $this->tree, $row->gedcom);
-            if ($record->canShowName()) {
-                $list[] = $record;
-            }
-        }
-
-        return $list;
+            ->select(['other.*'])
+            ->get()
+            ->map(Individual::rowMapper())
+            ->filter(self::accessFilter());
     }
 
     /**

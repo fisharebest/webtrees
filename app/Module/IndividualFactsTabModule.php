@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use function array_merge;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
@@ -472,19 +473,16 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         $facts = [];
 
         /** @var Individual[] $associates */
-        $associates = array_merge(
-            $person->linkedIndividuals('ASSO'),
-            $person->linkedIndividuals('_ASSO'),
-            $person->linkedFamilies('ASSO'),
-            $person->linkedFamilies('_ASSO')
-        );
+        $asso1 = $person->linkedIndividuals('ASSO');
+        $asso2 = $person->linkedIndividuals('_ASSO');
+        $asso3 = $person->linkedFamilies('ASSO');
+        $asso4 = $person->linkedFamilies('_ASSO');
+
+        $associates = $asso1->merge($asso2)->merge($asso3)->merge($asso4);
+
         foreach ($associates as $associate) {
             foreach ($associate->facts() as $fact) {
-                $arec = $fact->attribute('_ASSO');
-                if (!$arec) {
-                    $arec = $fact->attribute('ASSO');
-                }
-                if ($arec && trim($arec, '@') === $person->xref()) {
+                if (preg_match('/\n\d _?ASSO @' . $person->xref() . '@/', $fact->gedcom())) {
                     // Extract the important details from the fact
                     $factrec = '1 ' . $fact->getTag();
                     if (preg_match('/\n2 DATE .*/', $fact->gedcom(), $match)) {
