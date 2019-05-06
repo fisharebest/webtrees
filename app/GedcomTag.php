@@ -2344,7 +2344,7 @@ class GedcomTag
      *
      * @return string
      */
-    public static function getFileFormTypeValue($type): ?string
+    public static function getFileFormTypeValue(string $type): string
     {
         switch (strtolower($type)) {
             case 'audio':
