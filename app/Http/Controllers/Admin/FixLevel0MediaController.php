@@ -160,7 +160,7 @@ class FixLevel0MediaController extends AbstractAdminController
 
             return [
                 $tree->name(),
-                $media->displayImage(100, 100, 'fit', ['class' => 'img-thumbnail']),
+                $media->displayImage(100, 100, 'contain', ['class' => 'img-thumbnail']),
                 '<a href="' . e($media->url()) . '">' . $media->fullName() . '</a>',
                 '<a href="' . e($individual->url()) . '">' . $individual->fullName() . '</a>',
                 $facts->implode(' '),
