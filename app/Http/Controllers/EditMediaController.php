@@ -598,7 +598,7 @@ class EditMediaController extends AbstractEditController
                 if ($auto === '1' || file_exists(WT_DATA_DIR . $media_folder . $folder . $file)) {
                     $folder    = '';
                     $extension = pathinfo($uploaded_file->getClientFilename(), PATHINFO_EXTENSION);
-                    $file      = sha1_file((string) $uploaded_file->getStream()) . '.' . $extension;
+                    $file      = sha1((string) $uploaded_file->getStream()) . '.' . $extension;
                 }
 
                 try {
