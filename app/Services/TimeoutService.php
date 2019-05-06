@@ -41,7 +41,7 @@ class TimeoutService
      */
     public function __construct(float $start_time = null)
     {
-        $this->start_time = $start_time;
+        $this->start_time = $start_time ?? microtime(true);
     }
 
     /**
