@@ -17,8 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Module\ModuleReportInterface;
-
 /**
  * Test harness for the class ModuleReportInterface
  */

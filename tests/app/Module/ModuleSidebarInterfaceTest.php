@@ -17,8 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
-
 /**
  * Test harness for the class ModuleSidebarInterface
  */

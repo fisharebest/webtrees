@@ -37,8 +37,6 @@ use League\Flysystem\Filesystem;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use function rawurlencode;
-use function urldecode;
-use function urlencode;
 
 /**
  * Controller for the autocomplete callbacks
