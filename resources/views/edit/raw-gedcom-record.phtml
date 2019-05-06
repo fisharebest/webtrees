@@ -33,7 +33,7 @@
                         <?= $fact->summary() ?>
                     </label>
                     <input type="hidden" name="fact_id[]" value="<?= e($fact->id()) ?>">
-                    <textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact-<?= e($fact->id()) ?>" name="fact[]" pattern="<?= e($pattern) ?>" rows="<?= 1 + preg_match_all('/\n/', $fact->gedcom()) ?>" dir="auto"><?= e($fact->gedcom()) ?></textarea>
+                    <textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact-<?= e($fact->id()) ?>" name="fact[]" rows="<?= 1 + preg_match_all('/\n/', $fact->gedcom()) ?>"><?= e($fact->gedcom()) ?></textarea>
                 </div>
             <?php endif ?>
         <?php endforeach ?>
@@ -43,7 +43,7 @@
                 <?= I18N::translate('Add a fact') ?>
             </label>
             <input type="hidden" name="fact_id[]" value="<?= e($fact->id()) ?>">
-            <textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact-add" name="fact[]" pattern="<?= e($pattern) ?>" rows="5" dir="auto"></textarea>
+            <textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact-add" name="fact[]" rows="5"></textarea>
         </div>
     </div>
 

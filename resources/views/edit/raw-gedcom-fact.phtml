@@ -20,7 +20,7 @@
         <label class="card-header py-1 px-2 d-flex" for="gedcom">
             <?= $fact->summary() ?>
         </label>
-        <textarea class="card-body form-control py-1 px-2" id="gedcom" name="gedcom" pattern="<?= e($pattern) ?>" rows="<?= 5 + preg_match_all('/\n/', $fact->gedcom()) ?>" dir="ltr"><?= e($fact->gedcom()) ?></textarea>
+        <textarea class="card-body form-control py-1 px-2" id="gedcom" name="gedcom" rows="<?= 5 + preg_match_all('/\n/', $fact->gedcom()) ?>" dir="ltr"><?= e($fact->gedcom()) ?></textarea>
     </div>
 
     <div class="row form-group">

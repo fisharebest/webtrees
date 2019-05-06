@@ -37,8 +37,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class EditGedcomRecordController extends AbstractEditController
 {
-    private const GEDCOM_FACT_REGEX = '^(1 .*(\n2 .*(\n3 .*(\n4 .*(\n5 .*(\n6 .*))))))?$';
-
     /**
      * @var ModuleService
      */
@@ -206,7 +204,6 @@ class EditGedcomRecordController extends AbstractEditController
         foreach ($record->facts() as $fact) {
             if (!$fact->isPendingDeletion() && $fact->id() === $fact_id) {
                 return $this->viewResponse('edit/raw-gedcom-fact', [
-                    'pattern' => self::GEDCOM_FACT_REGEX,
                     'fact'    => $fact,
                     'title'   => $title,
                 ]);
@@ -262,7 +259,6 @@ class EditGedcomRecordController extends AbstractEditController
         $title = I18N::translate('Edit the raw GEDCOM') . ' - ' . $record->fullName();
 
         return $this->viewResponse('edit/raw-gedcom-record', [
-            'pattern' => self::GEDCOM_FACT_REGEX,
             'record'  => $record,
             'title'   => $title,
         ]);
