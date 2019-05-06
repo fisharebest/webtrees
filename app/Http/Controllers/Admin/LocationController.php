@@ -29,15 +29,23 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Database\QueryException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use stdClass;
+use function abs;
 use function addcslashes;
 use function app;
+use function array_filter;
+use function array_pop;
+use function array_shift;
+use function count;
+use function explode;
 use function fclose;
 use function fputcsv;
+use function implode;
 use function rewind;
 use function route;
+use function round;
+use function stream_get_contents;
 use const UPLOAD_ERR_OK;
 
 /**
@@ -500,12 +508,9 @@ class LocationController extends AbstractAdminController
 
         rewind($resource);
 
-        // Use a stream, so that we do not have to load the entire file into memory.
-        $stream   = app(StreamFactoryInterface::class)->createStreamFromResource($resource);
         $filename = addcslashes($filename, '"');
 
-        return response()
-            ->withBody($stream)
+        return response(stream_get_contents($resource))
             ->withHeader('Content-Type', 'text/csv; charset=utf-8')
             ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
     }
@@ -548,9 +553,11 @@ class LocationController extends AbstractAdminController
             ];
         }
 
+        $filename = addcslashes($filename, '"');
+
         return response($geojson)
             ->withHeader('Content-Type', 'application/vnd.geo+json')
-            ->withHeader('Content-Disposition', 'attachment; filename="' . addcslashes($filename, '"') . '"');
+            ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
     }
 
     /**
