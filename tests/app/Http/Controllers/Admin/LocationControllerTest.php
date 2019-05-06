@@ -85,7 +85,7 @@ class LocationControllerTest extends TestCase
     public function testMapDataDelete(): void
     {
         $controller = new LocationController(new GedcomService());
-        $request    = self::createRequest('POST', ['route' => 'map-data-delete'], ['parent_id' => '0', 'place_id' => '0']);
+        $request    = self::createRequest('POST', ['route' => 'map-data-delete', 'parent_id' => '0', 'place_id' => '0']);
         $response   = $controller->mapDataDelete($request);
 
         $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());

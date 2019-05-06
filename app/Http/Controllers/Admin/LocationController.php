@@ -374,8 +374,8 @@ class LocationController extends AbstractAdminController
      */
     public function mapDataDelete(ServerRequestInterface $request): ResponseInterface
     {
-        $place_id  = (int) $request->getParsedBody()['place_id'];
-        $parent_id = (int) $request->getParsedBody()['parent_id'];
+        $place_id  = (int) $request->getQueryParams()['place_id'];
+        $parent_id = (int) $request->getQueryParams()['parent_id'];
 
         try {
             DB::table('placelocation')
