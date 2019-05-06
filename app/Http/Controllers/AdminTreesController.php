@@ -519,7 +519,7 @@ class AdminTreesController extends AbstractBaseController
         /** @var StreamFactoryInterface $response_factory */
         $stream_factory = app(StreamFactoryInterface::class);
 
-        $stream = $stream_factory->createStreamFromStream($resource);
+        $stream = $stream_factory->createStreamFromResource($resource);
 
         /** @var ResponseFactoryInterface $response_factory */
         $response_factory = app(ResponseFactoryInterface::class);
