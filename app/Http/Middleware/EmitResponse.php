@@ -81,7 +81,10 @@ class EmitResponse implements MiddlewareInterface
     private function assertBodyNotEmitted(): void
     {
         if (ob_get_level() > 0 && ob_get_length() > 0) {
-            throw new RuntimeException('Output already started');
+            // The output probably contains an error message.
+            $output = ob_get_clean();
+
+            throw new RuntimeException('Output already started: ' . $output);
         }
     }
 
