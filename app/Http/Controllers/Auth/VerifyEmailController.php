@@ -45,8 +45,8 @@ class VerifyEmailController extends AbstractBaseController
      */
     public function verify(ServerRequestInterface $request, Tree $tree, UserService $user_service): ResponseInterface
     {
-        $username = $request->get('username', '');
-        $token    = $request->get('token', '');
+        $username = $request->getQueryParams()['username'] ?? '';
+        $token    = $request->getQueryParams()['token'] ?? '';
 
         $title = I18N::translate('User verification');
 

@@ -126,10 +126,10 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
     {
         parent::getOptions($request);
 
-        $this->search  = $request->get('search', '');
-        $this->replace = $request->get('replace', '');
-        $this->method  = $request->get('method', 'exact');
-        $this->case    = $request->get('case', '');
+        $this->search  = $request->getQueryParams()['search'] ?? '';
+        $this->replace = $request->getQueryParams()['replace'] ?? '';
+        $this->method  = $request->getQueryParams()['method'] ?? 'exact';
+        $this->case    = $request->getQueryParams()['case'] ?? '';
 
         $this->error = '';
         switch ($this->method) {

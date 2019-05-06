@@ -60,7 +60,7 @@ class ForgotPasswordController extends AbstractBaseController
      */
     public function forgotPasswordAction(ServerRequestInterface $request, Tree $tree, UserService $user_service): ResponseInterface
     {
-        $identifier = $request->get('identifier', '');
+        $identifier = $request->getParsedBody()['identifier'] ?? '';
 
         $user = $user_service->findByIdentifier($identifier);
 

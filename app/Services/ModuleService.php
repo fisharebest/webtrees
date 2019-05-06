@@ -596,10 +596,10 @@ class ModuleService
     public function setupLanguages(): Collection
     {
         return $this->coreModules()
-            ->filter(static function (ModuleInterface $module) {
+            ->filter(static function (ModuleInterface $module): bool {
                 return $module instanceof ModuleLanguageInterface && $module->isEnabledByDefault();
             })
-            ->sort(static function (ModuleLanguageInterface $x, ModuleLanguageInterface $y) {
+            ->sort(static function (ModuleLanguageInterface $x, ModuleLanguageInterface $y): int {
                 return $x->locale()->endonymSortable() <=> $y->locale()->endonymSortable();
             });
     }

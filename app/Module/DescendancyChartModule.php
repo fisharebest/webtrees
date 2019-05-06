@@ -123,7 +123,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      */
     public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user, ChartService $chart_service): ResponseInterface
     {
-        $ajax       = (bool) ($request->getQueryParams()['ajax'] ?? false);
+        $ajax       = $request->getQueryParams()['ajax'] ?? '';
         $xref       = $request->getQueryParams()['xref'] ?? '';
         $individual = Individual::getInstance($xref, $tree);
 
@@ -136,7 +136,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
         $generations = min($generations, self::MAXIMUM_GENERATIONS);
         $generations = max($generations, self::MINIMUM_GENERATIONS);
 
-        if ($ajax) {
+        if ($ajax === '1') {
             return $this->chart($request, $tree, $chart_service);
         }
 

@@ -120,16 +120,16 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
      */
     public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user, ChartService $chart_service): ResponseInterface
     {
-        $ajax       = (bool) $request->get('ajax');
-        $xref       = $request->get('xref', '');
+        $ajax       = $request->getQueryParams()['ajax'] ?? '';
+        $xref       = $request->getQueryParams()['xref'] ?? '';
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
-        $chart_style = (int) $request->get('chart_style', self::DEFAULT_STYLE);
-        $fan_width   = (int) $request->get('fan_width', self::DEFAULT_WIDTH);
-        $generations = (int) $request->get('generations', self::DEFAULT_GENERATIONS);
+        $chart_style = (int) ($request->getQueryParams()['chart_style'] ?? self::DEFAULT_STYLE);
+        $fan_width   = (int) ($request->getQueryParams()['fan_width'] ?? self::DEFAULT_WIDTH);
+        $generations = (int) ($request->getQueryParams()['generations'] ?? self::DEFAULT_GENERATIONS);
 
         $fan_width = min($fan_width, self::MAXIMUM_WIDTH);
         $fan_width = max($fan_width, self::MINIMUM_WIDTH);
@@ -137,7 +137,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
         $generations = min($generations, self::MAXIMUM_GENERATIONS);
         $generations = max($generations, self::MINIMUM_GENERATIONS);
 
-        if ($ajax) {
+        if ($ajax === '1') {
             return $this->chart($individual, $chart_style, $fan_width, $generations, $chart_service);
         }
 

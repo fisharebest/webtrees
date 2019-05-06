@@ -70,9 +70,9 @@ class LoginController extends AbstractBaseController
             return redirect(route('user-page', ['ged' => $ged]));
         }
 
-        $error    = $request->get('error', '');
-        $url      = $request->get('url', '');
-        $username = $request->get('username', '');
+        $error    = $request->getQueryParams()['error'] ?? '';
+        $url      = $request->getQueryParams()['url'] ?? '';
+        $username = $request->getQueryParams()['username'] ?? '';
 
         $title = I18N::translate('Sign in');
 
@@ -118,9 +118,9 @@ class LoginController extends AbstractBaseController
      */
     public function loginAction(ServerRequestInterface $request, UpgradeService $upgrade_service): ResponseInterface
     {
-        $username = $request->get('username', '');
-        $password = $request->get('password', '');
-        $url      = $request->get('url', '');
+        $username = $request->getParsedBody()['username'] ?? '';
+        $password = $request->getParsedBody()['password'] ?? '';
+        $url      = $request->getParsedBody()['url'] ?? '';
 
         try {
             $this->doLogin($username, $password);

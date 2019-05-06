@@ -64,10 +64,10 @@ class RegisterController extends AbstractBaseController
     {
         $this->checkRegistrationAllowed();
 
-        $comments = $request->get('comments', '');
-        $email    = $request->get('email', '');
-        $realname = $request->get('realname', '');
-        $username = $request->get('username', '');
+        $comments = $request->getQueryParams()['comments'] ?? '';
+        $email    = $request->getQueryParams()['email'] ?? '';
+        $realname = $request->getQueryParams()['realname'] ?? '';
+        $username = $request->getQueryParams()['username'] ?? '';
 
         $show_caution = Site::getPreference('SHOW_REGISTER_CAUTION') === '1';
 
@@ -95,11 +95,11 @@ class RegisterController extends AbstractBaseController
     {
         $this->checkRegistrationAllowed();
 
-        $comments = $request->get('comments', '');
-        $email    = $request->get('email', '');
-        $password = $request->get('password', '');
-        $realname = $request->get('realname', '');
-        $username = $request->get('username', '');
+        $comments = $request->getParsedBody()['comments'] ?? '';
+        $email    = $request->getParsedBody()['email'] ?? '';
+        $password = $request->getParsedBody()['password'] ?? '';
+        $realname = $request->getParsedBody()['realname'] ?? '';
+        $username = $request->getParsedBody()['username'] ?? '';
 
         try {
             $this->doValidateRegistration($username, $email, $realname, $comments, $password);

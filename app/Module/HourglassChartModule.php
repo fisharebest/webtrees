@@ -101,21 +101,21 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $ajax       = (bool) $request->get('ajax');
-        $xref       = $request->get('xref', '');
+        $ajax       = $request->getQueryParams()['ajax'] ?? '';
+        $xref       = $request->getQueryParams()['xref'] ?? '';
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
-        $generations = (int) $request->get('generations', self::DEFAULT_GENERATIONS);
+        $generations = (int) ($request->getQueryParams()['generations'] ?? self::DEFAULT_GENERATIONS);
 
         $generations = min($generations, self::MAXIMUM_GENERATIONS);
         $generations = max($generations, self::MINIMUM_GENERATIONS);
 
-        $show_spouse = (bool) $request->get('show_spouse');
+        $show_spouse = (bool) ($request->getQueryParams()['show_spouse'] ?? false);
 
-        if ($ajax) {
+        if ($ajax === '1') {
             return $this->chart($individual, $generations, $show_spouse);
         }
 

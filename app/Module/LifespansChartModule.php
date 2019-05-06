@@ -108,13 +108,13 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     {
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
-        $ajax      = (bool) $request->get('ajax');
-        $xrefs     = (array) $request->get('xrefs', []);
-        $addxref   = $request->get('addxref', '');
-        $addfam    = (bool) $request->get('addfam', false);
-        $placename = $request->get('placename', '');
-        $start     = $request->get('start', '');
-        $end       = $request->get('end', '');
+        $ajax      = $request->getQueryParams()['ajax'] ?? '';
+        $xrefs     = (array) ($request->getQueryParams()['xrefs'] ?? []);
+        $addxref   = $request->getQueryParams()['addxref'] ?? '';
+        $addfam    = (bool) ($request->getQueryParams()['addfam'] ?? false);
+        $placename = $request->getQueryParams()['placename'] ?? '';
+        $start     = $request->getQueryParams()['start'] ?? '';
+        $end       = $request->getQueryParams()['end'] ?? '';
 
         $place      = new Place($placename, $tree);
         $start_date = new Date($start);
@@ -150,7 +150,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             return $individual !== null && $individual->canShow();
         });
 
-        if ($ajax) {
+        if ($ajax === '1') {
             $subtitle = $this->subtitle(count($xrefs), $start_date, $end_date, $placename);
 
             return $this->chart($tree, $xrefs, $subtitle);
@@ -189,12 +189,12 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     protected function chart(Tree $tree, array $xrefs, string $subtitle): ResponseInterface
     {
         /** @var Individual[] $individuals */
-        $individuals = array_map(static function (string $xref) use ($tree) {
+        $individuals = array_map(static function (string $xref) use ($tree): ?Individual {
             return Individual::getInstance($xref, $tree);
         }, $xrefs);
 
-        $individuals = array_filter($individuals, static function (Individual $individual = null): bool {
-            return $individual !== null && $individual->canShow();
+        $individuals = array_filter($individuals, static function (?Individual $individual): bool {
+            return $individual instanceof Individual && $individual->canShow();
         });
 
         // Sort the array in order of birth year

@@ -126,22 +126,22 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      */
     public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user, ChartService $chart_service): ResponseInterface
     {
-        $ajax       = (bool) $request->get('ajax');
-        $xref       = $request->get('xref', '');
+        $ajax       = $request->getQueryParams()['ajax'] ?? '';
+        $xref       = $request->getQueryParams()['xref'] ?? '';
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
-        $orientation = $request->get('orientation', static::DEFAULT_ORIENTATION);
-        $generations = (int) $request->get('generations', static::DEFAULT_GENERATIONS);
+        $orientation = $request->getQueryParams()['orientation'] ?? static::DEFAULT_ORIENTATION;
+        $generations = (int) ($request->getQueryParams()['generations'] ?? static::DEFAULT_GENERATIONS);
 
         $generations = min(static::MAX_GENERATIONS, $generations);
         $generations = max(static::MIN_GENERATIONS, $generations);
 
         $generation_options = $this->generationOptions();
 
-        if ($ajax) {
+        if ($ajax === '1') {
             return $this->chart($individual, $orientation, $generations, $chart_service);
         }
 

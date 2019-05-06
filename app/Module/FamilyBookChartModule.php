@@ -111,7 +111,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
      */
     public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $ajax       = (bool) ($request->getQueryParams()['ajax'] ?? false);
+        $ajax       = $request->getQueryParams()['ajax'] ?? '';
         $xref       = $request->getQueryParams()['xref'] ?? '';
         $individual = Individual::getInstance($xref, $tree);
 
@@ -128,7 +128,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
         $book_size = min($book_size, 5);
         $book_size = max($book_size, 2);
 
-        if ($ajax) {
+        if ($ajax === '1') {
             return $this->chart($individual, $generations, $book_size, $show_spouse);
         }
 

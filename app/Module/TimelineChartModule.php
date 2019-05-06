@@ -117,12 +117,11 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
     {
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
-        $ajax  = (bool) $request->get('ajax');
-        $scale = (int) $request->get('scale', self::SCALE_DEFAULT);
+        $ajax  = $request->getQueryParams()['ajax'] ?? '';
+        $scale = (int) ($request->getQueryParams()['scale'] ?? self::SCALE_DEFAULT);
         $scale = min($scale, self::SCALE_MAX);
         $scale = max($scale, self::SCALE_MIN);
-
-        $xrefs = $request->get('xrefs', []);
+        $xrefs = $request->getQueryParams()['xrefs'] ?? [];
 
         // Find the requested individuals.
         $individuals = (new Collection($xrefs))
@@ -162,7 +161,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             return $individual instanceof Individual && $individual->canShow();
         });
 
-        if ($ajax) {
+        if ($ajax === '1') {
             return $this->chart($tree, $xrefs, $scale);
         }
 

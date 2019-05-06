@@ -148,7 +148,7 @@ trait ModuleThemeTrait
             }
         }
 
-        usort($menus, static function (Menu $x, Menu $y) {
+        usort($menus, static function (Menu $x, Menu $y): int {
             return I18N::strcasecmp($x->getLabel(), $y->getLabel());
         });
 

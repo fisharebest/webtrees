@@ -178,7 +178,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
     {
         parent::getOptions($request);
 
-        $this->surname = $request->get('surname', 'replace');
+        $this->surname = $request->getQueryParams()['surname'] ?? 'replace';
     }
 
     /**

@@ -176,8 +176,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         foreach (Tree::getAll() as $tree) {
-            $recursion = $request->get('relationship-recursion-' . $tree->id(), '');
-            $ancestors = $request->get('relationship-ancestors-' . $tree->id(), '');
+            $recursion = $request->getQueryParams()['relationship-recursion-' . $tree->id()] ?? '';
+            $ancestors = $request->getQueryParams()['relationship-ancestors-' . $tree->id()] ?? '';
 
             $tree->setPreference('RELATIONSHIP_RECURSION', $recursion);
             $tree->setPreference('RELATIONSHIP_ANCESTORS', $ancestors);
@@ -199,16 +199,16 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      */
     public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $ajax = (bool) $request->get('ajax');
+        $ajax = $request->getQueryParams()['ajax'] ?? '';
 
-        $xref  = $request->get('xref', '');
-        $xref2 = $request->get('xref2', '');
+        $xref  = $request->getQueryParams()['xref'] ?? '';
+        $xref2 = $request->getQueryParams()['xref2'] ?? '';
 
         $individual1 = Individual::getInstance($xref, $tree);
         $individual2 = Individual::getInstance($xref2, $tree);
 
-        $recursion = (int) $request->get('recursion', '0');
-        $ancestors = (int) $request->get('ancestors', '0');
+        $recursion = (int) ($request->getQueryParams()['recursion'] ?? 0);
+        $ancestors = (int) ($request->getQueryParams()['ancestors'] ?? 0);
 
         $ancestors_only = (int) $tree->getPreference('RELATIONSHIP_ANCESTORS', static::DEFAULT_ANCESTORS);
         $max_recursion  = (int) $tree->getPreference('RELATIONSHIP_RECURSION', static::DEFAULT_RECURSION);
@@ -226,7 +226,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
         if ($individual1 instanceof Individual && $individual2 instanceof Individual) {
-            if ($ajax) {
+            if ($ajax === '1') {
                 return $this->chart($individual1, $individual2, $recursion, $ancestors);
             }
 
