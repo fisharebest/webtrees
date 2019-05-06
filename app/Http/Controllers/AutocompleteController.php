@@ -70,9 +70,9 @@ class AutocompleteController extends AbstractBaseController
      */
     public function folder(ServerRequestInterface $request, Tree $tree, Filesystem $filesystem): ResponseInterface
     {
-        $query = $request->get('query', '');
+        $query = $request->getQueryParams()['query'] ?? '';
 
-        $prefix = $tree->getPreference('MEDIA_DIRECTORY', '');
+        $prefix = $tree->getPreference('MEDIA_DIRECTORY');
 
         $media_filesystem = new Filesystem(new ChrootAdapter($filesystem, $prefix));
 
@@ -99,8 +99,8 @@ class AutocompleteController extends AbstractBaseController
      */
     public function page(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $query = $request->get('query', '');
-        $xref  = $request->get('extra', '');
+        $query = $request->getQueryParams()['query'] ?? '';
+        $xref  = $request->getQueryParams()['extra'] ?? '';
 
         $source = Source::getInstance($xref, $tree);
 
@@ -172,7 +172,7 @@ class AutocompleteController extends AbstractBaseController
      */
     public function place(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $query = $request->get('query', '');
+        $query = $request->getQueryParams()['query'] ?? '';
         $data  = [];
 
         foreach ($this->search_service->searchPlaces($tree, $query) as $place) {
@@ -223,11 +223,11 @@ class AutocompleteController extends AbstractBaseController
      */
     public function select2Family(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $page  = (int) $request->get('page');
-        $query = $request->get('q', '');
+        $page  = (int) ($request->getParsedBody()['page'] ?? 1);
+        $query = $request->getParsedBody()['q'] ?? '';
 
         // Fetch one more row than we need, so we can know if more rows exist.
-        $offset = $page * self::RESULTS_PER_PAGE;
+        $offset = ($page - 1) * self::RESULTS_PER_PAGE;
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         $results = $this->search_service
@@ -256,11 +256,11 @@ class AutocompleteController extends AbstractBaseController
      */
     public function select2Individual(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $page  = (int) $request->get('page');
-        $query = $request->get('q', '');
+        $page  = (int) ($request->getParsedBody()['page'] ?? 1);
+        $query = $request->getParsedBody()['q'] ?? '';
 
         // Fetch one more row than we need, so we can know if more rows exist.
-        $offset = $page * self::RESULTS_PER_PAGE;
+        $offset = ($page - 1) * self::RESULTS_PER_PAGE;
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         $results = $this->search_service
@@ -289,11 +289,11 @@ class AutocompleteController extends AbstractBaseController
      */
     public function select2MediaObject(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $page  = (int) $request->get('page');
-        $query = $request->get('q', '');
+        $page  = (int) ($request->getParsedBody()['page'] ?? 1);
+        $query = $request->getParsedBody()['q'] ?? '';
 
         // Fetch one more row than we need, so we can know if more rows exist.
-        $offset = $page * self::RESULTS_PER_PAGE;
+        $offset = ($page - 1) * self::RESULTS_PER_PAGE;
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         $results = $this->search_service
@@ -322,11 +322,11 @@ class AutocompleteController extends AbstractBaseController
      */
     public function select2Note(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $page  = (int) $request->get('page');
-        $query = $request->get('q', '');
+        $page  = (int) ($request->getParsedBody()['page'] ?? 1);
+        $query = $request->getParsedBody()['q'] ?? '';
 
         // Fetch one more row than we need, so we can know if more rows exist.
-        $offset = $page * self::RESULTS_PER_PAGE;
+        $offset = ($page - 1) * self::RESULTS_PER_PAGE;
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         $results = $this->search_service
@@ -355,8 +355,8 @@ class AutocompleteController extends AbstractBaseController
      */
     public function select2Place(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $page  = (int) $request->get('page');
-        $query = $request->get('q', '');
+        $page  = (int) ($request->getParsedBody()['page'] ?? 1);
+        $query = $request->getParsedBody()['q'] ?? '';
 
         return response($this->placeSearch($tree, $page, $query, true));
     }
@@ -373,7 +373,7 @@ class AutocompleteController extends AbstractBaseController
      */
     private function placeSearch(Tree $tree, int $page, string $query, bool $create): array
     {
-        $offset  = $page * self::RESULTS_PER_PAGE;
+        $offset  = ($page - 1) * self::RESULTS_PER_PAGE;
         $results = [];
         $found   = false;
 
@@ -457,11 +457,11 @@ class AutocompleteController extends AbstractBaseController
      */
     public function select2Repository(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $page  = (int) $request->get('page');
-        $query = $request->get('q', '');
+        $page  = (int) ($request->getParsedBody()['page'] ?? 1);
+        $query = $request->getParsedBody()['q'] ?? '';
 
         // Fetch one more row than we need, so we can know if more rows exist.
-        $offset = $page * self::RESULTS_PER_PAGE;
+        $offset = ($page - 1) * self::RESULTS_PER_PAGE;
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         $results = $this->search_service
@@ -490,11 +490,11 @@ class AutocompleteController extends AbstractBaseController
      */
     public function select2Source(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $page  = (int) $request->get('page');
-        $query = $request->get('q', '');
+        $page  = (int) ($request->getParsedBody()['page'] ?? 1);
+        $query = $request->getParsedBody()['q'] ?? '';
 
         // Fetch one more row than we need, so we can know if more rows exist.
-        $offset = $page * self::RESULTS_PER_PAGE;
+        $offset = ($page - 1) * self::RESULTS_PER_PAGE;
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         $results = $this->search_service
@@ -523,11 +523,11 @@ class AutocompleteController extends AbstractBaseController
      */
     public function select2Submitter(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $page  = (int) $request->get('page');
-        $query = $request->get('q', '');
+        $page  = (int) ($request->getParsedBody()['page'] ?? 1);
+        $query = $request->getParsedBody()['q'] ?? '';
 
         // Fetch one more row than we need, so we can know if more rows exist.
-        $offset = $page * self::RESULTS_PER_PAGE;
+        $offset = ($page - 1) * self::RESULTS_PER_PAGE;
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         $results = $this->search_service
