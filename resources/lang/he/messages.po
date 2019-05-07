@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2018-10-14 15:44+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
+"PO-Revision-Date: 2019-05-07 18:46+0000\n"
+"Last-Translator: Meliza Amity <meliza@amityfamily.com>\n"
+"Language-Team: Hebrew <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -730,17 +730,17 @@ msgstr "הודעת ברכה למבקרים באתר."
 #. I18N: Description of the “Hit counters” module
 #: app/Module/ContactsFooterModule.php:66
 msgid "A link to the site contacts."
-msgstr ""
+msgstr "קישור לאנשי הקשר של האתר."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:50
 msgid "A link to the webtrees home page."
-msgstr ""
+msgstr "קישור לדף הבית של webtrees."
 
 #. I18N: Description of the “BranchesListModule” module
 #: app/Module/BranchesListModule.php:55
 msgid "A list of branches of a family."
-msgstr ""
+msgstr "רשימת ענפים של משפחה."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:74
@@ -750,7 +750,7 @@ msgstr "רשימת שינויים עבורם נדרש אישור מפקח, וה�
 #. I18N: Description of the “FamilyListModule” module
 #: app/Module/FamilyListModule.php:56
 msgid "A list of families."
-msgstr ""
+msgstr "רשימת משפחות."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:57
@@ -760,12 +760,12 @@ msgstr "רשימת שאלות ותשובות נפוצות."
 #. I18N: Description of the “IndividualListModule” module
 #: app/Module/IndividualListModule.php:56
 msgid "A list of individuals."
-msgstr ""
+msgstr "רשימת אנשים."
 
 #. I18N: Description of the “MediaListModule” module
 #: app/Module/MediaListModule.php:57
 msgid "A list of media objects."
-msgstr ""
+msgstr "רשימה של ישויות מדיה."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:61
@@ -775,17 +775,17 @@ msgstr "רשימת רשומות שעודכנו לאחרונה."
 #. I18N: Description of the “RepositoryListModule” module
 #: app/Module/RepositoryListModule.php:56
 msgid "A list of repositories."
-msgstr ""
+msgstr "רשימת מאגרים."
 
 #. I18N: Description of the “NoteListModule” module
 #: app/Module/NoteListModule.php:56
 msgid "A list of shared notes."
-msgstr ""
+msgstr "רשימת הערות משותפות."
 
 #. I18N: Description of the “SourceListModule” module
 #: app/Module/SourceListModule.php:56
 msgid "A list of sources."
-msgstr ""
+msgstr "רשימת מקורות."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:63
@@ -1269,7 +1269,7 @@ msgstr "הוסף בעל ע״י שימוש באדם קיים"
 
 #: resources/views/modules/user_blog/list.phtml:44
 msgid "Add a journal entry"
-msgstr "הוסף כניסת יומן"
+msgstr "הוסף ערך יומן"
 
 #: app/Http/Controllers/EditMediaController.php:79
 #: resources/views/media-page.phtml:166
@@ -1363,15 +1363,15 @@ msgstr "הוסף מקורב"
 
 #: resources/views/cards/add-sour-data-even.phtml:7
 msgid "Add an event"
-msgstr ""
+msgstr "הוסף אירוע"
 
 #: resources/views/modules/custom-css-js/edit.phtml:23
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
-msgstr ""
+msgstr "הוסף תוכן לסוף אלמנט <code>&lt;גוף&gt;</code> ."
 
 #: resources/views/modules/custom-css-js/edit.phtml:11
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr ""
+msgstr "הוסף תוכן לסוף אלמנט <code>&lt;ראש&gt;</code> ."
 
 #: resources/views/edit/paste-fact-row.phtml:7
 msgid "Add from clipboard"
@@ -1379,7 +1379,7 @@ msgstr "הוסף מלוח הגזירים"
 
 #: app/Module/ModuleHistoricEventsTrait.php:38
 msgid "Add historic events to an individual‘s page."
-msgstr ""
+msgstr "הוסף אירועים היסטוריים לדף של אדם."
 
 #: resources/views/modules/lifespans-chart/page.phtml:19
 msgid "Add individuals"
@@ -1417,7 +1417,7 @@ msgstr "הוסף רווח במקום ששורות ארוכות התגלגלו"
 #. I18N: Description of the “CSS and JS” module.
 #: app/Module/CustomCssJsModule.php:41
 msgid "Add styling and scripts to every page."
-msgstr ""
+msgstr "הוסף סגנון וסקריפטים לכל דף."
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: resources/views/admin/trees-export.phtml:55
@@ -1825,7 +1825,7 @@ msgstr "כל האנשים"
 #: resources/views/admin/components.phtml:12
 #: resources/views/admin/control-panel.phtml:308
 msgid "All modules"
-msgstr ""
+msgstr "כל המודולים"
 
 #: resources/views/admin/trees-privacy.phtml:245
 msgid "All records"
@@ -2341,7 +2341,7 @@ msgstr "הגיל הממוצע בזמן הפטירה"
 
 #: app/Statistics/Google/ChartMarriageAge.php:152
 msgid "Average age at marriage"
-msgstr ""
+msgstr "גיל ממוצע בנישואין"
 
 #: app/Statistics/Google/ChartMarriageAge.php:149
 msgid "Average age in century of marriage"
@@ -2353,7 +2353,7 @@ msgstr "הגיל הממוצע ביחס למאת פטירה"
 
 #: app/Statistics/Google/ChartChildren.php:87
 msgid "Average number"
-msgstr ""
+msgstr "מספר ממוצע"
 
 #: app/Statistics/Google/ChartChildren.php:98
 #: resources/views/modules/gedcom_stats/config.phtml:35
@@ -3258,7 +3258,7 @@ msgstr "CKEditor™"
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php:78
 msgid "CSS and JS"
-msgstr ""
+msgstr "CSS ו-JS"
 
 #: resources/views/admin/trees.phtml:37
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -3422,7 +3422,7 @@ msgstr "הרפובליקה המרכז אפריקאית"
 #: resources/views/lists/individuals-table.phtml:118
 #: resources/views/lists/individuals-table.phtml:133
 msgid "Century"
-msgstr ""
+msgstr "מאה"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2361
@@ -3986,7 +3986,7 @@ msgstr "איי קוק"
 #. I18N: Name of a module
 #: app/Module/CookieWarningModule.php:55
 msgid "Cookie warning"
-msgstr ""
+msgstr "אזהרת קובץ עוגיה"
 
 #: resources/views/modules/cookie-warning/footer.phtml:4
 #: resources/views/privacy-policy.phtml:12
@@ -4049,7 +4049,7 @@ msgstr "לא ניתן לאמת את המידע שהכנסת. נסה שנית א�
 #. I18N: Description of the “Hit counters” module
 #: app/Module/HitCountFooterModule.php:72
 msgid "Count the visits to each page"
-msgstr ""
+msgstr "ספור את הביקורים לכל דף"
 
 #. I18N: gedcom tag CTRY
 #: app/GedcomTag.php:638 app/Statistics/Google/ChartDistribution.php:118
@@ -4104,7 +4104,7 @@ msgstr "צור מוסר"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:142
 msgid "Create a temporary folder…"
-msgstr ""
+msgstr "צור תיקייה זמנית…"
 
 #: resources/views/modals/media-file-fields.phtml:68
 msgid "Create a unique filename"
@@ -4351,7 +4351,7 @@ msgstr "סיסמת מאגר המידע"
 
 #: resources/views/setup/step-3-database-type.phtml:31
 msgid "Database type"
-msgstr ""
+msgstr "סוג מסד נתונים"
 
 #: resources/views/setup/step-4-database-mysql.phtml:58
 #: resources/views/setup/step-4-database-pgsql.phtml:50
@@ -4997,7 +4997,7 @@ msgstr "מחק משתמשים לא פעילים"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:148
 msgid "Delete old files…"
-msgstr ""
+msgstr "מחק קבצים ישנים…"
 
 #: app/Module/UserMessagesModule.php:208
 msgid "Delete selected messages"
@@ -5264,7 +5264,7 @@ msgstr "אין לחתום: בלתי מורשה"
 
 #: resources/views/admin/map-provider.phtml:15
 msgid "Do not use maps"
-msgstr ""
+msgstr "אל תשתמש במפות"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2367
@@ -5283,7 +5283,7 @@ msgstr "הרפובליקה הדומיניקנית"
 
 #: app/Module/PedigreeChartModule.php:314
 msgid "Down"
-msgstr ""
+msgstr "למטה"
 
 #: app/Module/ClippingsCartModule.php:157
 #: app/Module/ClippingsCartModule.php:294
@@ -6394,14 +6394,14 @@ msgstr "גופן"
 #: resources/views/admin/modules.phtml:217
 #: resources/views/admin/modules.phtml:220
 msgid "Footer"
-msgstr ""
+msgstr "כותרת תחתונה"
 
 #: app/Http/Controllers/Admin/ModuleController.php:135
 #: resources/views/admin/control-panel.phtml:359
 #: resources/views/admin/modules.phtml:91
 #: resources/views/admin/modules.phtml:93
 msgid "Footers"
-msgstr ""
+msgstr "כותרות תחתונוה"
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names
 #: resources/views/admin/trees-import.phtml:102
@@ -6654,7 +6654,7 @@ msgstr "מגדר"
 
 #: resources/views/admin/control-panel.phtml:317
 msgid "Genealogy"
-msgstr ""
+msgstr "חקר משפחה"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:166
@@ -7031,7 +7031,7 @@ msgstr "גובה"
 #: resources/views/emails/register-user-text.phtml:2
 #, php-format
 msgid "Hello %s…"
-msgstr "שלום <span dir=\"ltr\">%s</span>…"
+msgstr "שלום %s…"
 
 #: resources/views/register-success-page.phtml:9
 #, php-format
@@ -7137,7 +7137,7 @@ msgstr "העיסוק שלו היה"
 #: resources/views/admin/modules.phtml:233
 #: resources/views/admin/modules.phtml:236
 msgid "Historic events"
-msgstr ""
+msgstr "אירועים היסטוריים"
 
 #: resources/views/modules/personal_facts/tab.phtml:18
 msgid "Historical facts"
@@ -7319,7 +7319,7 @@ msgstr "אם לא תוכל לפתור את הבעיה בעצמך, תוכל לב�
 
 #: resources/views/setup/step-4-database-mysql.phtml:37
 msgid "If you connect to the database using a UNIX socket, enter the path here and leave the port number empty."
-msgstr ""
+msgstr "אם אתה מתחבר למסד הנתונים באמצעות שקע UNIX, הזן את הנתיב כאן והשאר את מספר היציאה ריק."
 
 #: resources/views/admin/trees-import.phtml:86
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -7463,11 +7463,11 @@ msgstr "כלול תיקיות משנה"
 
 #: resources/views/modules/custom-css-js/edit.phtml:28
 msgid "Include the <code>&lt;script&gt;&lt;/script&gt;</code> tags."
-msgstr ""
+msgstr "כלול את התגים <code>&lt;script&gt;&lt;/script&gt;</code>."
 
 #: resources/views/modules/custom-css-js/edit.phtml:16
 msgid "Include the <code>&lt;style&gt;&lt;/style&gt;</code> tags."
-msgstr ""
+msgstr "כלול את התגים <code>&lt;style&gt;&lt;/style&gt;</code>."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/lifespans-chart/page.phtml:23
@@ -7537,7 +7537,7 @@ msgstr "תרשים התפלגות אנשים"
 
 #: resources/views/admin/control-panel.phtml:405
 msgid "Individual page"
-msgstr ""
+msgstr "דף אישי"
 
 #: resources/views/admin/trees-preferences.phtml:471
 msgid "Individual pages"
@@ -7671,7 +7671,7 @@ msgstr "קובץ ה -GEDCOM לא חוקי - לא נמצאה רשומת הכות�
 
 #: app/Functions/FunctionsImport.php:629
 msgid "Invalid GEDCOM record"
-msgstr ""
+msgstr "רשומת Gedcom לא חוקית"
 
 #: app/Date.php:372
 msgid "Invalid date"
@@ -8210,7 +8210,7 @@ msgstr "לבנון"
 
 #: app/Module/PedigreeChartModule.php:311
 msgid "Left"
-msgstr ""
+msgstr "שמאל"
 
 #. I18N: gedcom tag LEGA
 #: app/GedcomTag.php:814
@@ -9455,7 +9455,7 @@ msgstr "רוב האתרים מוגדרים להשתמש ב-localhost. פירוש
 
 #: resources/views/setup/step-4-database-sqlsvr.phtml:43
 msgid "Most sites are configured to use the default value of 1433."
-msgstr ""
+msgstr "רוב האתרים מוגדרים להשתמש בערך ברירת המחדל של 1433."
 
 #: resources/views/setup/step-4-database-mysql.phtml:51
 msgid "Most sites are configured to use the default value of 3306."
@@ -9463,7 +9463,7 @@ msgstr "רוב האתרים מוגדרים להשתמש בערך ברירת המ
 
 #: resources/views/setup/step-4-database-pgsql.phtml:43
 msgid "Most sites are configured to use the default value of 5432."
-msgstr ""
+msgstr "רוב האתרים מוגדרים להשתמש בערך ברירת המחדל של 5432."
 
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:43
@@ -10021,7 +10021,7 @@ msgstr "צפון קוריאה"
 
 #: resources/views/modules/statistics-chart/custom.phtml:173
 msgid "Northern America"
-msgstr ""
+msgstr "צפון אמריקה"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:369
@@ -10971,7 +10971,7 @@ msgstr "מיקוד"
 #. I18N: Name of a module
 #: app/Module/PoweredByWebtreesModule.php:39
 msgid "Powered by webtrees™"
-msgstr ""
+msgstr "מופעל על ידי webtrees™"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:149
@@ -11057,7 +11057,7 @@ msgstr "פרסטון, אנגליה"
 
 #: resources/views/admin/analytics-edit.phtml:13
 msgid "Preview"
-msgstr ""
+msgstr "תצוגה מקדימה"
 
 #: app/GedcomCode/GedcomCodeRela.php:285
 msgid "Priest"
@@ -11712,7 +11712,7 @@ msgstr "רקסבורג, אידהו, ארצות הברית"
 
 #: app/Module/PedigreeChartModule.php:312
 msgid "Right"
-msgstr ""
+msgstr "ימין"
 
 #: resources/views/edit-blocks-page.phtml:27
 msgid "Right section blocks"
@@ -11768,12 +11768,12 @@ msgstr "שרת SMTP"
 
 #: app/Services/ServerCheckService.php:279
 msgid "SQLite is only suitable for small sites, testing and evaluation."
-msgstr ""
+msgstr "SQLite מתאים רק לאתרים קטנים, בדיקות והערכה."
 
 #: app/Services/ServerCheckService.php:203
 #, php-format
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
-msgstr ""
+msgstr "גירסת SQLite %s מותקנת. נדרשת גירסת SQLite %s ואילך."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:583
@@ -12967,7 +12967,7 @@ msgstr "סוסה (Sosa)"
 
 #: resources/views/modules/ancestors-chart/tree.phtml:18
 msgid "Sosa-Stradonitz number"
-msgstr ""
+msgstr "מספר סוסה-סטראדוניץ"
 
 #: app/Http/Controllers/SearchController.php:619
 msgid "Sounds like"
@@ -13261,11 +13261,11 @@ msgstr "תמיכה ותיעוד ניתן למצוא בכתובת %s."
 
 #: app/Services/ServerCheckService.php:284
 msgid "Support for PostgreSQL is experimental."
-msgstr ""
+msgstr "התמיכה ב-PostgreSQL היא ניסיונית."
 
 #: app/Services/ServerCheckService.php:289
 msgid "Support for SQL Server is experimental."
-msgstr ""
+msgstr "התמיכה ב-SQL Server היא ניסיונית."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:459
@@ -13395,7 +13395,7 @@ msgstr "קידומת שמות קבצי מאגר המידע"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Tabloid"
-msgstr ""
+msgstr "טאבלויד"
 
 #: app/Http/Controllers/Admin/ModuleController.php:219
 #: resources/views/admin/control-panel.phtml:412
@@ -13471,7 +13471,7 @@ msgstr "טגוסיגאלפה, הונדורס"
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/CookieWarningModule.php:66
 msgid "Tell visitors why this site uses cookies."
-msgstr ""
+msgstr "ספר לאורחים מדוע האתר הזה משתמש בקובצי עוגיה."
 
 #: resources/views/modules/html/config.phtml:16
 msgid "Templates"
@@ -13542,12 +13542,12 @@ msgstr "האג, הולנד"
 #: app/Services/ServerCheckService.php:112
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr ""
+msgstr "תוסף PHP ”%s” אינו מותקן."
 
 #: app/Services/ServerCheckService.php:170
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr ""
+msgstr "פונקצית PHP ”%1$s” מושבתת."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:55
@@ -13557,12 +13557,12 @@ msgstr "חסרה תיקייה זמנית של PHP."
 #: app/Services/ServerCheckService.php:131
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr ""
+msgstr "הגדרת PHP.INI ”%1$s” מושבתת."
 
 #: app/Services/ServerCheckService.php:135
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr ""
+msgstr "הגדרת PHP.INI ”%1$s” מופעלת."
 
 #: resources/views/emails/approve-user-html.phtml:7
 #: resources/views/emails/approve-user-text.phtml:4
@@ -13577,7 +13577,7 @@ msgstr "הודעה נשלחה למנהל המערכת. תוכל להתחבר ע�
 #. I18N: Description of the “Reports” module
 #: app/Module/CalendarMenuModule.php:50
 msgid "The calendar menu."
-msgstr ""
+msgstr "תפריט לוח שנה."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/Controllers/PendingChangesController.php:150
@@ -13594,7 +13594,7 @@ msgstr "השינויים ל-”%s” נדחו."
 #. I18N: Description of the “Reports” module
 #: app/Module/ChartsMenuModule.php:69
 msgid "The charts menu."
-msgstr ""
+msgstr "תפריט התרשימים."
 
 #: resources/views/modules/clippings/show.phtml:6
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -13650,7 +13650,7 @@ msgstr "עצי המשפחה מוזגו בהצלחה."
 #. I18N: Description of the “Reports” module
 #: app/Module/TreesMenuModule.php:51
 msgid "The family trees menu."
-msgstr ""
+msgstr "תפריט עצי המשפחה."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: app/Http/Controllers/EditGedcomRecordController.php:141
@@ -13777,7 +13777,7 @@ msgstr "הקישור מ-“%1$s” ל-“%2$s” עודכן."
 #. I18N: Description of the “Reports” module
 #: app/Module/ListsMenuModule.php:67
 msgid "The lists menu."
-msgstr ""
+msgstr "תפריט רשימות."
 
 #: app/Http/Controllers/EditMediaController.php:249
 #: app/Http/Controllers/EditMediaController.php:262
@@ -13863,7 +13863,7 @@ msgstr "הסיסמה הנדרשת לאימות עם שרת SMTP."
 #. I18N: Description of the “PlaceHierarchyListModule” module
 #: app/Module/PlaceHierarchyListModule.php:56
 msgid "The place hierarchy."
-msgstr ""
+msgstr "היררכית המקומות."
 
 #: app/Http/Controllers/AdminController.php:349
 #: app/Http/Controllers/AdminTreesController.php:1122
@@ -13897,7 +13897,7 @@ msgstr "ההעדפות של מודול “%s“ עודכנו."
 #: resources/views/setup/step-4-database-sqlite.phtml:62
 #: resources/views/setup/step-4-database-sqlsvr.phtml:91
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
-msgstr ""
+msgstr "הקידומת היא אופציונלית, אך מומלצת. על ידי מתן לשמות הטבלה קידומת ייחודית אתה יכול לאפשר למספר יישומים שונים להשתמש באותו מסד נתונים."
 
 #: app/Http/Controllers/EditGedcomRecordController.php:79
 msgid "The record has been copied to the clipboard."
@@ -13916,7 +13916,7 @@ msgstr "נראה שבביטוי הרגיל יש שגיאה. לא ניתן להש
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php:71
 msgid "The reports menu."
-msgstr ""
+msgstr "תפריט הדוחות."
 
 #: app/Http/Controllers/EditRepositoryController.php:81
 msgid "The repository has been created"
@@ -13925,11 +13925,11 @@ msgstr "המאגר נוצר"
 #. I18N: Description of the “Reports” module
 #: app/Module/SearchMenuModule.php:51
 msgid "The search menu."
-msgstr ""
+msgstr "תפריט החיפוש."
 
 #: app/Services/SearchService.php:971
 msgid "The search returned too many results."
-msgstr ""
+msgstr "החיפוש החזיר תוצאות רבות מדי."
 
 #: resources/views/setup/step-2-server-checks.phtml:32
 msgid "The server configuration is OK."
@@ -13937,7 +13937,7 @@ msgstr "תצורת השרת תקינה."
 
 #: app/Services/ServerCheckService.php:223
 msgid "The server’s temporary folder cannot be accessed."
-msgstr ""
+msgstr "לא ניתן לגשת לתיקיה הזמנית של השרת."
 
 #: app/Http/Controllers/AdminTreesController.php:1714
 #: app/Services/UpgradeService.php:146 app/Services/UpgradeService.php:179
@@ -14283,7 +14283,7 @@ msgstr "האדם הזה יבחר כברירת מחדל בעת הצגת תרשי�
 #: resources/views/statistics/other/places.phtml:53
 #: resources/views/statistics/other/top10-list.phtml:23
 msgid "This information is not available."
-msgstr ""
+msgstr "מידע זה אינו זמין."
 
 #: app/Statistics/Repository/EventRepository.php:250
 #: app/Statistics/Repository/FamilyDatesRepository.php:108
@@ -15059,7 +15059,7 @@ msgstr "קדימון"
 #: app/Module/AncestorsChartModule.php:222
 #: app/Module/DescendancyChartModule.php:247
 msgid "Tree"
-msgstr ""
+msgstr "עץ"
 
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:289
@@ -15267,7 +15267,7 @@ msgstr "פתח %s לתיקייה זמנית…"
 
 #: app/Module/PedigreeChartModule.php:313
 msgid "Up"
-msgstr ""
+msgstr "למעלה"
 
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:95
@@ -15359,7 +15359,7 @@ msgstr "השתמש בציטוטים של מקורות מלאים"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:79
 #: resources/views/setup/step-4-database-sqlsvr.phtml:92
 msgid "Use letters A-Z, a-z, digits 0-9, or underscores"
-msgstr ""
+msgstr "השתמש באותיות A-Z, a-z, בספרות 0-9 או בקווים תחתונים"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:74
@@ -16612,7 +16612,7 @@ msgstr "נפטר"
 
 #: resources/views/modules/pedigree-chart/page.phtml:36
 msgid "down"
-msgstr ""
+msgstr "למטה"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:80
@@ -16623,7 +16623,7 @@ msgstr "הורד"
 
 #: resources/views/modules/descendancy_chart/tree.phtml:17
 msgid "d’Aboville number"
-msgstr ""
+msgstr "מספר דאבוביל‬‎"
 
 #: resources/views/admin/components.phtml:106
 #: resources/views/family-page-menu.phtml:7
@@ -18746,7 +18746,7 @@ msgstr "האחרונים"
 
 #: resources/views/modules/pedigree-chart/page.phtml:36
 msgid "left"
-msgstr ""
+msgstr "שמאל"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -19295,7 +19295,7 @@ msgstr "ברירת מחדל"
 
 #: resources/views/modules/pedigree-chart/page.phtml:36
 msgid "right"
-msgstr ""
+msgstr "ימין"
 
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:26
@@ -20048,7 +20048,7 @@ msgstr "ראיה לא מהימנה"
 
 #: resources/views/modules/pedigree-chart/page.phtml:36
 msgid "up"
-msgstr ""
+msgstr "למעלה"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-places.phtml:55
@@ -20107,7 +20107,7 @@ msgstr "הודעת webtrees"
 
 #: resources/views/setup/step-3-database-type.phtml:26
 msgid "webtrees needs a database to store your genealogy data."
-msgstr ""
+msgstr "webtrees צריך מסד נתונים כדי לאחסן נתוני הגנאלוגיה שלך."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:24
