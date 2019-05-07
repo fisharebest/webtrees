@@ -15,8 +15,8 @@
     $level1type = $edit_fact->getTag();
     switch ($record::RECORD_TYPE) {
         case 'SOUR':
-            // SOUR:DATA facts may take a NOTE (but the SOUR record may not).
             if ($level1type === 'DATA') {
+                // SOUR:DATA facts may take a NOTE (but the SOUR record may not).
                 echo view('cards/add-note', [
                     'level' => 2,
                     'tree' => $tree,
@@ -25,9 +25,7 @@
                     'level' => 2,
                     'tree' => $tree,
                 ]);
-            }
-            // SOUR:DATA facts may also take multiple EVEN.
-            if ($level1type === 'DATA') {
+                // SOUR:DATA facts may also take multiple EVEN.
                 echo view('cards/add-sour-data-even', [
                     'tree' => $tree,
                 ]);              

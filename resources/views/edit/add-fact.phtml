@@ -12,19 +12,10 @@
 
     <?php FunctionsEdit::createAddForm($tree, $fact) ?>
 
-    <?php 
-      if (($record::RECORD_TYPE === 'SOUR') && ($fact === 'DATA')) {
-        // SOUR:DATA facts may take a NOTE
-        echo view('cards/add-note', [
-            'level' => 2,
-            'tree' => $tree,
-        ]);
-        echo view('cards/add-shared-note', [
-            'level' => 2,
-            'tree' => $tree,
-        ]);
-      }
-    ?>
+    <?php if ($record::RECORD_TYPE === 'SOUR' && $fact === 'DATA'): ?>
+        <?= view('cards/add-note', ['level' => 2, 'tree' => $tree]) ?>
+        <?= view('cards/add-shared-note', ['level' => 2, 'tree' => $tree]) ?>
+    <?php endif ?>
 
     <?php if (($record::RECORD_TYPE === 'INDI' || $record::RECORD_TYPE === 'FAM') && $fact !== 'OBJE' && $fact !== 'NOTE' && $fact !== 'SHARED_NOTE' && $fact !== 'REPO' && $fact !== 'SOUR' && $fact !== 'SUBM' && $fact !== 'ASSO' && $fact !== 'ALIA' && $fact !== 'SEX') : ?>
         <?= view('cards/add-source-citation', [
