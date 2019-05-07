@@ -77,7 +77,7 @@ class Census
         }
 
         foreach ($all_census_places as $census_place) {
-            if (!in_array($census_place, $census_places, true)) {
+            if (!in_array($census_place, $census_places, false)) {
                 $census_places[] = $census_place;
             }
         }
