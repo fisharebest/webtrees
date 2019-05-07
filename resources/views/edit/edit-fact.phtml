@@ -14,6 +14,25 @@
     <?php
     $level1type = $edit_fact->getTag();
     switch ($record::RECORD_TYPE) {
+        case 'SOUR':
+            // SOUR:DATA facts may take a NOTE (but the SOUR record may not).
+            if ($level1type === 'DATA') {
+                echo view('cards/add-note', [
+                    'level' => 2,
+                    'tree' => $tree,
+                ]);
+                echo view('cards/add-shared-note', [
+                    'level' => 2,
+                    'tree' => $tree,
+                ]);
+            }
+            // SOUR:DATA facts may also take multiple EVEN.
+            if ($level1type === 'DATA') {
+                echo view('cards/add-sour-data-even', [
+                    'tree' => $tree,
+                ]);              
+            }
+            break;
         case 'FAM':
         case 'INDI':
             // FAM and INDI records have real facts. They can take NOTE/SOUR/OBJE/etc.
