@@ -75,9 +75,17 @@ class Census
                 $census_places = [];
                 break;
         }
-
+        
+        /** @var CensusPlaceInterface $census_place */
         foreach ($all_census_places as $census_place) {
-            if (!in_array($census_place, $census_places, true)) {
+            $found = array_filter(
+                $census_places,
+                static function (CensusPlaceInterface $census) use ($census_place) {
+                    return $census->censusPlace() === $census_place->censusPlace();
+                }
+            );
+
+            if (!$found) {
                 $census_places[] = $census_place;
             }
         }
