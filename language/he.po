@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2018-10-14 15:44+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/he/>\n"
+"PO-Revision-Date: 2019-05-07 15:48+0000\n"
+"Last-Translator: Meliza Amity <meliza@amityfamily.com>\n"
+"Language-Team: Hebrew <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1315,7 +1315,7 @@ msgstr "הוסף בעל ע״י שימוש באדם קיים"
 
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
-msgstr "הוסף כניסת יומן"
+msgstr "הוסף ערך יומן"
 
 #: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1129
 #: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
@@ -7069,7 +7069,7 @@ msgstr "גובה"
 #: login.php:256 login.php:337
 #, php-format
 msgid "Hello %s…"
-msgstr "שלום <span dir=\"ltr\">%s</span>…"
+msgstr "שלום %s…"
 
 #: login.php:389
 #, php-format
