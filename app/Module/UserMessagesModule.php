@@ -85,14 +85,14 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postDeleteMessageAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $message_ids = (array) $request->get('message_id', []);
+        $message_ids = $request->getParsedBody()['message_id'] ?? [];
 
         DB::table('message')
             ->where('user_id', '=', Auth::id())
             ->whereIn('message_id', $message_ids)
             ->delete();
 
-        if ($request->get('ctype') === 'user') {
+        if ($request->getQueryParams()['ctype'] === 'user') {
             $url = route('user-page', ['ged' => $tree->name()]);
         } else {
             $url = route('tree-page', ['ged' => $tree->name()]);

@@ -88,8 +88,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
             throw new AccessDeniedHttpException();
         }
 
-        $plugin = $request->get('plugin', '');
-        $xref   = $request->get('xref', '');
+        $plugin = $request->getQueryParams()['plugin'] ?? '';
+        $xref   = $request->getQueryParams()['xref'] ?? '';
 
         $plugins = $this->getPluginList();
         $plugin  = $plugins[$plugin] ?? null;
@@ -336,9 +336,9 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
             throw new AccessDeniedHttpException();
         }
 
-        $plugin = $request->get('plugin', '');
-        $update = $request->get('update', '');
-        $xref   = $request->getParsedBody()['xref'] ?? '';
+        $plugin = $request->getQueryParams()['plugin'] ?? '';
+        $xref   = $request->getQueryParams()['xref'] ?? '';
+        $update = $request->getParsedBody()['update'] ?? '';
 
         $plugins = $this->getPluginList();
         $plugin  = $plugins[$plugin] ?? null;
@@ -351,7 +351,6 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
         $all_data = $this->allData($plugin, $tree);
 
         $parameters = $request->getParsedBody();
-        unset($parameters['csrf']);
         unset($parameters['update']);
 
         switch ($update) {

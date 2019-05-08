@@ -5,7 +5,7 @@
         <?= /* I18N: ... to show in a list */ I18N::translate('Number of surnames') ?>
     </label>
     <div class="col-sm-9">
-        <input class="form-control"id="num" name="num" type="text"  value="<?= e($num) ?>">
+        <input class="form-control" id="num" name="num" type="number" min="1" value="<?= e($num) ?>" required>
     </div>
 </div>
 

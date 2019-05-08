@@ -157,8 +157,10 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $this->setBlockSetting($block_id, 'num', $request->get('num', self::DEFAULT_NUMBER));
-        $this->setBlockSetting($block_id, 'infoStyle', $request->get('infoStyle', self::DEFAULT_STYLE));
+        $params = $request->getParsedBody();
+
+        $this->setBlockSetting($block_id, 'num', $params['num']);
+        $this->setBlockSetting($block_id, 'infoStyle', $params['infoStyle']);
     }
 
     /**

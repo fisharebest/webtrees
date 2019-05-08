@@ -186,11 +186,11 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postAddFavoriteAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $note  = $request->get('note', '');
-        $title = $request->get('title', '');
-        $url   = $request->get('url', '');
-        $type  = $request->get('type', '');
-        $xref  = $request->get($type . '-xref', '');
+        $note  = $request->getParsedBody()['note'];
+        $title = $request->getParsedBody()['title'];
+        $url   = $request->getParsedBody()['url'];
+        $type  = $request->getParsedBody()['type'];
+        $xref  = $request->getParsedBody()[$type . '-xref'] ?? '';
 
         $record = $this->getRecordForType($type, $xref, $tree);
 
@@ -218,7 +218,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postDeleteFavoriteAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $favorite_id = (int) $request->get('favorite_id');
+        $favorite_id = $request->getQueryParams()['favorite_id'];
 
         if (Auth::check()) {
             DB::table('favorite')

@@ -5,7 +5,7 @@
         <?= /* I18N: ... to show in a list */ I18N::translate('Number of given names') ?>
     </label>
     <div class="col-sm-9">
-        <input type="text" id="num" name="num" size="2" value="<?= $num ?>">
+        <input type="number" id="num" name="num" min="1" value="<?= $num ?>" required>
     </div>
 </div>
 
@@ -14,6 +14,6 @@
         <?= I18N::translate('Presentation style') ?>
     </label>
     <div class="col-sm-9">
-        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $info_styles, 'options' => $info_styles]) ?>
+        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $infoStyle, 'options' => $info_styles]) ?>
     </div>
 </div>
