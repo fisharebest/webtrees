@@ -152,9 +152,9 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             throw new AccessDeniedHttpException();
         }
 
-        $news_id = $request->get('news_id');
+        $news_id = $request->getQueryParams()['news_id'] ?? '';
 
-        if ($news_id > 0) {
+        if ($news_id !== '') {
             $row = DB::table('news')
                 ->where('news_id', '=', $news_id)
                 ->where('gedcom_id', '=', $tree->id())
@@ -188,9 +188,9 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             throw new AccessDeniedHttpException();
         }
 
-        $news_id = $request->get('news_id');
-        $subject = $request->get('subject');
-        $body    = $request->get('body');
+        $news_id = $request->getQueryParams()['news_id'] ?? '';
+        $subject = $request->getParsedBody()['subject'];
+        $body    = $request->getParsedBody()['body'];
 
         if ($news_id > 0) {
             DB::table('news')
@@ -223,7 +223,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      */
     public function postDeleteNewsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $news_id = $request->get('news_id');
+        $news_id = $request->getQueryParams()['news_id'];
 
         if (!Auth::isManager($tree)) {
             throw new AccessDeniedHttpException();

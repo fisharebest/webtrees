@@ -73,7 +73,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      */
     public function getSearchAction(ServerRequestInterface $request, Tree $tree, SearchService $search_service): ResponseInterface
     {
-        $search = $request->get('search', '');
+        $search = $request->getQueryParams()['search'];
 
         $html = '';
 
@@ -101,7 +101,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      */
     public function getDescendantsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
 

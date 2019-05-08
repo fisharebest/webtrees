@@ -87,8 +87,8 @@ class CustomCssJsModule extends AbstractModule implements ModuleConfigInterface,
      */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
-        $this->setPreference('body', $request->get('body', ''));
-        $this->setPreference('head', $request->get('head', ''));
+        $this->setPreference('body', $request->getParsedBody()['body']);
+        $this->setPreference('head', $request->getParsedBody()['head']);
 
         $message = I18N::translate('The preferences for the module “%s” have been updated.', $this->title());
         FlashMessages::addMessage($message, 'success');

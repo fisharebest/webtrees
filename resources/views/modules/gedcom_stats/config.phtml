@@ -46,20 +46,26 @@
         </legend>
         <div class="col-sm-9">
             <?= view('components/checkbox', ['label' => I18N::translate('Most common surnames'), 'name' => 'show_common_surnames', 'checked' => (bool) $show_common_surnames]) ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <label class="col-form-label col-sm-3">
             <label for="number_of_surnames">
                 <?= /* I18N: ... to show in a list */
                 I18N::translate('Number of surnames') ?>
-                <input
-                    class="form-control"
-                    id="number_of_surnames"
-                    maxlength="5"
-                    name="number_of_surnames"
-                    pattern="[1-9][0-9]*"
-                    required
-                    type="text"
-                    value="<?= e($number_of_surnames) ?>"
-                >
             </label>
+        </label>
+        <div class="col-sm-9">
+            <input
+            class="form-control"
+            id="number_of_surnames"
+            name="number_of_surnames"
+            min="1"
+            required
+            type="number"
+            value="<?= e($number_of_surnames) ?>"
+            >
         </div>
     </div>
 </fieldset>
