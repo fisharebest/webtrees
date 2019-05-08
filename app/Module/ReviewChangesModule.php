@@ -216,8 +216,10 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $this->setBlockSetting($block_id, 'days', $request->get('num', '1'));
-        $this->setBlockSetting($block_id, 'sendmail', $request->get('sendmail', ''));
+        $params = $request->getParsedBody();
+
+        $this->setBlockSetting($block_id, 'days', $params['days']);
+        $this->setBlockSetting($block_id, 'sendmail', $params['sendmail']);
     }
 
     /**

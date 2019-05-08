@@ -199,11 +199,11 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     {
         $this->layout = 'layouts/administration';
 
-        $block_id = (int) $request->get('block_id');
+        $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
 
         if ($block_id === 0) {
             // Creating a new story
-            $individual  = Individual::getInstance($request->get('xref', ''), $tree);
+            $individual  = null;
             $story_title = '';
             $story_body  = '';
             $languages   = [];
@@ -242,11 +242,14 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
      */
     public function postAdminEditAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $block_id    = (int) $request->get('block_id');
-        $xref        = $request->get('xref', '');
-        $story_body  = $request->get('story_body', '');
-        $story_title = $request->get('story_title', '');
-        $languages   = $request->get('languages', []);
+        $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
+
+        $params = $request->getParsedBody();
+
+        $xref        = $params['xref'];
+        $story_body  = $params['story_body'];
+        $story_title = $params['story_title'];
+        $languages   = $params['languages'] ?? [];
 
         if ($block_id !== 0) {
             DB::table('block')
@@ -287,7 +290,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
      */
     public function postAdminDeleteAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $block_id = (int) $request->get('block_id');
+        $block_id = $request->getQueryParams()['block_id'];
 
         DB::table('block_setting')
             ->where('block_id', '=', $block_id)

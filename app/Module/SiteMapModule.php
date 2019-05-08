@@ -110,8 +110,10 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
+        $params = $request->getParsedBody();
+
         foreach (Tree::all() as $tree) {
-            $include_in_sitemap = (bool) $request->get('sitemap' . $tree->id());
+            $include_in_sitemap = (bool) ($params['sitemap' . $tree->id()] ?? false);
             $tree->setPreference('include_in_sitemap', (string) $include_in_sitemap);
         }
 
@@ -183,7 +185,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      */
     public function getFileAction(ServerRequestInterface $request): ResponseInterface
     {
-        $file = $request->get('file', '');
+        $file = $request->getQueryParams()['file'];
 
         if (!preg_match('/^(\d+)-([imnrs])-(\d+)$/', $file, $match)) {
             throw new NotFoundHttpException('Bad sitemap file');

@@ -161,9 +161,11 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $this->setBlockSetting($block_id, 'show_other', $request->get('show_other', ''));
-        $this->setBlockSetting($block_id, 'show_unassigned', $request->get('show_unassigned', ''));
-        $this->setBlockSetting($block_id, 'show_future', $request->get('show_future', ''));
+        $params = $request->getParsedBody();
+
+        $this->setBlockSetting($block_id, 'show_other', $params['show_other']);
+        $this->setBlockSetting($block_id, 'show_unassigned', $params['show_unassigned']);
+        $this->setBlockSetting($block_id, 'show_future', $params['show_future']);
     }
 
     /**

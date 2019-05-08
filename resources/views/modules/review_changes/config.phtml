@@ -20,6 +20,6 @@
         <?= I18N::translate('Reminder email frequency (days)') ?>
     </label>
     <div class="col-sm-9">
-        <input class="form-control" type="text" name="days" id="days" value="<?= e($days) ?>">
+        <input class="form-control" type="number" min="1" name="days" id="days" value="<?= e($days) ?>" required>
     </div>
 </div>

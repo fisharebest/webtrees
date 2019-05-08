@@ -236,34 +236,36 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      */
     public function getCustomChartAction(ServerRequestInterface $request, Statistics $statistics): ResponseInterface
     {
-        $x_axis_type = (int) $request->get('x-as');
-        $y_axis_type = (int) $request->get('y-as');
-        $z_axis_type = (int) $request->get('z-as');
+        $params = $request->getQueryParams();
+
+        $x_axis_type = (int) $params['x-as'];
+        $y_axis_type = (int) $params['y-as'];
+        $z_axis_type = (int) $params['z-as'];
         $ydata       = [];
 
         switch ($x_axis_type) {
             case self::X_AXIS_INDIVIDUAL_MAP:
                 return response($statistics->chartDistribution(
-                    $request->get('chart_shows', ''),
-                    $request->get('chart_type', ''),
-                    $request->get('SURN', '')
+                    $params['chart_shows'],
+                    $params['chart_type'],
+                    $params['SURN']
                 ));
 
             case self::X_AXIS_BIRTH_MAP:
                 return response($statistics->chartDistribution(
-                    $request->get('chart_shows', ''),
+                    $params['chart_shows'],
                     'birth_distribution_chart'
                 ));
 
             case self::X_AXIS_DEATH_MAP:
                 return response($statistics->chartDistribution(
-                    $request->get('chart_shows', ''),
+                    $params['chart_shows'],
                     'death_distribution_chart'
                 ));
 
             case self::X_AXIS_MARRIAGE_MAP:
                 return response($statistics->chartDistribution(
-                    $request->get('chart_shows', ''),
+                    $params['chart_shows'],
                     'marriage_distribution_chart'
                 ));
 
@@ -299,7 +301,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
+                        $boundaries_csv = $params['z-axis-boundaries-periods'];
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -348,7 +350,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
+                        $boundaries_csv = $params['z-axis-boundaries-periods'];
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -390,7 +392,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
+                        $boundaries_csv = $params['z-axis-boundaries-periods'];
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -439,7 +441,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
+                        $boundaries_csv = $params['z-axis-boundaries-periods'];
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -487,7 +489,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
+                        $boundaries_csv = $params['z-axis-boundaries-periods'];
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         $indi           = [];
@@ -513,7 +515,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
             case self::X_AXIS_AGE_AT_DEATH:
                 $chart_title    = I18N::translate('Average age at death');
                 $x_axis_title   = I18N::translate('age');
-                $boundaries_csv = $request->get('x-axis-boundaries-ages', '');
+                $boundaries_csv = $params['x-axis-boundaries-ages'];
                 $x_axis         = $this->axisNumbers($boundaries_csv);
 
                 switch ($y_axis_type) {
@@ -551,7 +553,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
+                        $boundaries_csv = $params['z-axis-boundaries-periods'];
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -575,7 +577,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
             case self::X_AXIS_AGE_AT_MARRIAGE:
                 $chart_title    = I18N::translate('Age in year of marriage');
                 $x_axis_title   = I18N::translate('age');
-                $boundaries_csv = $request->get('x-axis-boundaries-ages_m', '');
+                $boundaries_csv = $params['x-axis-boundaries-ages_m'];
                 $x_axis         = $this->axisNumbers($boundaries_csv);
 
                 switch ($y_axis_type) {
@@ -612,7 +614,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
+                        $boundaries_csv = $params['z-axis-boundaries-periods'];
                         $z_axis         = $this->axisYears($boundaries_csv);
                         // The stats query doesn't have an "all" function, so query M/F separately
                         foreach (['M', 'F'] as $sex) {
@@ -636,7 +638,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
             case self::X_AXIS_AGE_AT_FIRST_MARRIAGE:
                 $chart_title    = I18N::translate('Age in year of first marriage');
                 $x_axis_title   = I18N::translate('age');
-                $boundaries_csv = $request->get('x-axis-boundaries-ages_m', '');
+                $boundaries_csv = $params['x-axis-boundaries-ages_m'];
                 $x_axis         = $this->axisNumbers($boundaries_csv);
 
                 switch ($y_axis_type) {
@@ -681,7 +683,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
+                        $boundaries_csv = $params['z-axis-boundaries-periods'];
                         $z_axis         = $this->axisYears($boundaries_csv);
                         // The stats query doesn't have an "all" function, so query M/F separately
                         foreach (['M', 'F'] as $sex) {
@@ -731,7 +733,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
+                        $boundaries_csv = $params['z-axis-boundaries-periods'];
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary = 0;
                         foreach (array_keys($z_axis) as $boundary) {
