@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-05-07 15:48+0000\n"
-"Last-Translator: Meliza Amity <meliza@amityfamily.com>\n"
+"PO-Revision-Date: 2019-05-08 13:30+0000\n"
+"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -1866,7 +1866,7 @@ msgstr "כל עובדות המקור"
 #. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
 #: app/Module/CkeditorModule.php:32
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr "אפשר למודולים אחרים לערוך טקסט באמצעות עורך ”WYSIWYG”, במקום להשתמש בקודי HTML."
+msgstr "אפשר למודולים אחרים לערוך טקסט באמצעות עורך \"WYSIWYG\", במקום להשתמש בקודי HTML."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1575
@@ -1917,7 +1917,7 @@ msgstr "מנהל חייב לאשר את חשבון המשתמש החדש ולב�
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:49
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "חלופה ללשונית ”מדיה”, ומציג תמונות משופר."
+msgstr "חלופה ללשונית \"מדיה\", ומציג תמונות משופר."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:39
@@ -2153,7 +2153,7 @@ msgstr "האם באמת למחוק הודעה זו? לא ניתן להחזיר �
 #: edituser.php:320
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr "האם אתה בטוח שאתה רוצה למחוק את ”%s”?"
+msgstr "האם אתה בטוח שאתה רוצה למחוק את \"%s\"?"
 
 #: edit_changes.php:236
 msgid "Are you sure you want to reject all the changes to this family tree?"
@@ -5339,7 +5339,7 @@ msgstr "שם משתמש כפול. משתמש עם שם משתמש זה מוגד�
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "כל מקור רושם אירועים מסוימים, בדרך כלל עבור תחום תאריכים נתון ועבור מקום מסוים. לדוגמא: מפקד אוכלוסין רושם אירועים של מפקד אוכלוסין וכנסייה או בית כנסת רושמים אירועים של לידות, נישואין ופטירה.<br><br>בחר את האירועים שרשומים ע״י המקור הזה מהרשימה של אירועים המסופקת. את הנתונים יש להגדיר במבנה תחום <i>FROM 1900 TO 1910</i>. מקום הוא המקום הנמוך שכולל את כל המיקומים התחתונים המוזכרים במקור הזה. לדוגמא, ”Oneida, Idaho, USA” ישמש כמקום המקור לאירועים שהתרחשו בערים שונות במחוז Oneida. ”Idaho, USA” יהיה המקום של המקור של אירועים שהתרחשו לא רק במחוז Oneida אלא גם במחוזות אחרים של Idaho."
+msgstr "כל מקור רושם אירועים מסוימים, בדרך כלל עבור תחום תאריכים נתון ועבור מקום מסוים. לדוגמא: מפקד אוכלוסין רושם אירועים של מפקד אוכלוסין וכנסייה או בית כנסת רושמים אירועים של לידות, נישואין ופטירה.<br><br>בחר את האירועים שרשומים ע״י המקור הזה מהרשימה של אירועים המסופקת. את הנתונים יש להגדיר במבנה תחום <i>FROM 1900 TO 1910</i>. מקום הוא המקום הנמוך שכולל את כל המיקומים התחתונים המוזכרים במקור הזה. לדוגמא, \"Oneida, Idaho, USA\" ישמש כמקום המקור לאירועים שהתרחשו בערים שונות במחוז Oneida. \"Idaho, USA\" יהיה המקום של המקור של אירועים שהתרחשו לא רק במחוז Oneida אלא גם במחוזות אחרים של Idaho."
 
 #: help_text.php:314
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -5764,7 +5764,7 @@ msgstr "מחרוזת מדויקת"
 #: famlist.php:176 indilist.php:176
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "אל תכלול אנשים ששם הנישואין שלהם ”%s”"
+msgstr "אל תכלול אנשים ששם הנישואין שלהם \"%s\""
 
 #: admin_media.php:671
 msgid "Exclude subfolders"
@@ -6260,12 +6260,12 @@ msgstr "שם הקובץ בשרת"
 #: addmedia.php:161 addmedia.php:295 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr "בשמות קבצים אסור לכלול את האות ”%s”."
+msgstr "בשמות קבצים אסור לכלול את האות \"%s\"."
 
 #: addmedia.php:165 addmedia.php:299 admin_media_upload.php:122
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr "הסיומת ”%s” אסורה בשמות קבצים."
+msgstr "הסיומת \"%s\" אסורה בשמות קבצים."
 
 #: admin.php:893
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
@@ -7461,7 +7461,7 @@ msgstr "כלול מקומות עם התאמה מלאה"
 #: famlist.php:178 indilist.php:178
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "כלול אנשים ששם הנישואין שלהם ”%s”"
+msgstr "כלול אנשים ששם הנישואין שלהם \"%s\""
 
 #: app/Module/ClippingsCartModule.php:386
 #: app/Module/ClippingsCartModule.php:771
@@ -8188,7 +8188,7 @@ msgstr "יורש"
 
 #: statistics.php:248
 msgid "Length of marriage"
-msgstr "גיל הנישואין"
+msgstr "משך הנישואין"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6805
@@ -10870,7 +10870,7 @@ msgstr "מקומות ב-%s"
 
 #: help_text.php:253
 msgid "Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr "שמות מקומות יש להכניס לפי התקנים של חקר שושלת יוחסין. בחקר שושלת יוחסין רושמים מהמפורט לכללי כאשר פסיקים משמשים לסמני הפרדה בין הרמות. הרמה בה אתה רושם את נתוני המקום צריכה לייצג את הרמה של הממשל או הכנסייה בה נתונים חיוניים נשמרים עבור המקום.<br><br>כך למשל מקום כמו סולט לייק סיטי ירשם כ”סולט לייק סיטי, סולט לייק, יוטה, ארה״ב”.<br><br>הבא נבחן כל חלק של מקום זה. חלק הראשון, ”סולט לייק סיטי,” הוא העיר או העיירה שבו האירוע התרחש. בחלק מהמדינות, יתכן שקיימות רשויות מקומיות או רבעים בתוך העיר שחשוב לציין אותם. במקרה זה הם יופיעו לפני העיר. החלק הבא, ”סולט לייק,” הוא המחוז. ”יוטה” היא המדינה, ו”ארה״ב” הארץ. חשוב לציין כל מקום משום שרשימות חקר שושלת יוחסין נשמרות ע״י הממשלות עבור כל רמה.<br><br>אם רמה מסוימת של המקום לא ידועה, יש להשאירה ריקה בין שני פסיקים. כך אם אין יודעים את המחוז נרשום: ”סולט לייק סיטי, ,יוטה, ארה״ב”. נניח שיודעים רק שאדם נולד ביוטה. את העובדה יש להכניס בצורה הבאה: ”, , יוטה, ארה״ב”.<br><br>ניתן להשתמש בקשר <b>מצא מקום</b> כדי לעזור במציאת מקומות שכבר קיימים במאגר הנתונים."
+msgstr "שמות מקומות יש להכניס לפי התקנים של חקר שושלת יוחסין. בחקר שושלת יוחסין רושמים מהמפורט לכללי כאשר פסיקים משמשים לסמני הפרדה בין הרמות,. הרמה בה אתה רושם את נתוני המקום צריכה לייצג את הרמה של הממשל או הכנסייה בה נתונים חיוניים נשמרים עבור המקום.<br><br>כך למשל מקום כמו סולט לייק סיטי ירשם כ\"סולט לייק סיטי, סולט לייק, יוטה, ארה״ב\".<br><br>הבא נבחן כל חלק של מקום זה. חלק הראשון, \"סולט לייק סיטי,\" הוא העיר או העיירה שבו האירוע התרחש. בחלק מהמדינות, יתכן שקיימות רשויות מקומיות או רבעים בתוך העיר שחשוב לציין אותם. במקרה זה הם יופיעו לפני העיר. החלק הבא, \"סולט לייק,\" הוא המחוז. \"יוטה\" היא המדינה, ו\"ארה״ב\" הארץ. חשוב לציין כל מקום משום שרשימות חקר שושלת יוחסין נשמרות ע״י הממשלות עבור כל רמה.<br><br>אם רמה מסוימת של המקום לא ידועה, יש להשאירה ריקה בין שני פסיקים. כך אם אין יודעים את המחוז נרשום: \"סולט לייק סיטי, ,יוטה, ארה״ב\". נניח שיודעים רק שאדם נולד ביוטה. את העובדה יש להכניס בצורה הבאה: \", , יוטה, ארה״ב\".<br><br>ניתן להשתמש בקשר <b>מצא מקום</b> כדי לעזור במציאת מקומות שכבר קיימים במאגר הנתונים."
 
 #: app/Module/SlideShowModule.php:139 app/Theme/CloudsTheme.php:98
 #: app/Theme/FabTheme.php:114 app/Theme/MinimalTheme.php:111
@@ -11025,7 +11025,7 @@ msgstr "העדפות"
 #: admin_modules.php:98
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr "קיימות העדפות עבור מודול ”%s”, אבל מודול זה אינו קיים יותר."
+msgstr "קיימות העדפות עבור מודול \"%s\", אבל מודול זה אינו קיים יותר."
 
 #. I18N: A configuration setting
 #: admin_users.php:471
@@ -12420,7 +12420,7 @@ msgstr "הראה קישור הורדה במציג המדיה"
 #. I18N: A configuration setting
 #: admin_site_config.php:506
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr "הראה הסכם הגנה על פרטיות על הדף ”בקש חשבון משתמש חדש”"
+msgstr "הראה הסכם הגנה על פרטיות על הדף \"בקש חשבון משתמש חדש\""
 
 #: app/Module/NotesTabModule.php:74
 msgid "Show all notes"
@@ -13515,7 +13515,7 @@ msgstr "השדה <b>שם המשפחה</b> מכיל שם שמשמש במיון ו
 #: admin_trees_manage.php:148
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr "הקובץ GEDCOM %s יובא."
+msgstr "הקובץ \"GEDCOM \"%s יובא."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:183
@@ -13544,17 +13544,17 @@ msgstr "הודעה נשלחה למנהל המערכת. תוכל להתחבר ע�
 #: action.php:50
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr "השינויים ל-”%s” התקבלו."
+msgstr "השינויים ל-\"%s\" התקבלו."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:234
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "השינויים ל-”%s” נדחו."
+msgstr "השינויים ל-\"%s\" נדחו."
 
 #: app/Module/ClippingsCartModule.php:324
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "עגלת גזירי העץ מאפשרת לקיחת קטעים (”גזירות”) מעץ משפחה זה והורדתם כקובץ GEDCOM."
+msgstr "עגלת גזירי העץ מאפשרת לקיחת קטעים (\"גזירות\") מעץ משפחה זה והורדתם כקובץ GEDCOM."
 
 #: site-unavailable.php:52
 msgid "The database reported the following error message:"
@@ -13582,25 +13582,25 @@ msgstr "עץ המשפחה יוצא ל-%s."
 #: admin_trees_manage.php:77
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr "עץ המשפחה ”%s” קיים כבר."
+msgstr "עץ המשפחה \"%s\" קיים כבר."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:80
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr "עץ המשפחהן ”%s” נוצר."
+msgstr "עץ המשפחהן \"%s\" נוצר."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:57 admin_trees_manage.php:154
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr "עץ המשפחה ”%s” נמחק."
+msgstr "עץ המשפחה \"%s\" נמחק."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:66
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr "עץ המשפחה ”%s” יוצג למבקרים כאשר הם מגיעים לאתר זה."
+msgstr "עץ המשפחה \"%s\" יוצג למבקרים כאשר הם מגיעים לאתר זה."
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
@@ -13610,7 +13610,7 @@ msgstr "עצי המשפחה מוזגו בהצלחה."
 #: action.php:144
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr "המשפחה ”%s” נמחקה, מכיוון שהיא כוללת רק בן משפחה אחד."
+msgstr "המשפחה \"%s\" נמחקה, מכיוון שהיא כוללת רק בן משפחה אחד."
 
 #: addmedia.php:178 admin_media_upload.php:136
 #, php-format
@@ -13660,7 +13660,7 @@ msgstr "הקובץ עלה חלקית, נסה שנית."
 #: medialist.php:301 mediaviewer.php:146
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr "הקובץ ”%s” אינו קיים."
+msgstr "הקובץ \"%s\" אינו קיים."
 
 #: admin_site_clean.php:36 admin_site_upgrade.php:430
 #, php-format
@@ -13736,13 +13736,13 @@ msgstr "איש קשר של נתוני חקר שושלת יוחסין באתר ז
 #: app/Controller/GedcomRecordController.php:65
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr "הקישור מ-”%1$s” ל-”%2$s” נמחק."
+msgstr "הקישור מ-\"%1$s\" ל-\"%2$s\" נמחק."
 
 #. I18N: The placeholders are the names of individuals, sources, etc.
 #: admin_site_merge.php:113
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr "הקישור מ-“%1$s” ל-“%2$s” עודכן."
+msgstr "הקישור מ-\"%1$s\" ל-\"%2$s\" עודכן."
 
 #: addmedia.php:313 addmedia.php:344
 #, php-format
@@ -13783,12 +13783,12 @@ msgstr "ההודעה נשלחה בהצלחה ל-%s."
 #: admin_modules.php:54
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr "מודול ”%s” אינו זמין."
+msgstr "המודול \"%s\" אינו זמין."
 
 #: admin_modules.php:56
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr "מודול ”%s” זמין."
+msgstr "המודול \"%s\" זמין."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1844
@@ -13852,17 +13852,17 @@ msgstr "ההעדפות של התרשים ”%s” עודכנו."
 #: admin_trees_config.php:178 admin_trees_config.php:301
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "ההעדפות של עץ המשפחה “%s“ עודכנו."
+msgstr "ההעדפות של עץ המשפחה \"%s\" עודכנו."
 
 #: admin_modules.php:86
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr "ההעדפות למודול %s נמחקו."
+msgstr "ההעדפות למודול \"%s\" נמחקו."
 
 #: app/Module/GoogleMapsModule.php:266
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "ההעדפות של מודול “%s“ עודכנו."
+msgstr "ההעדפות של מודול \"%s\" עודכנו."
 
 #: setup.php:381
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
@@ -13881,7 +13881,7 @@ msgstr "הרשומה הועתקה ללוח הגזירים."
 #: admin_site_merge.php:172
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr "רשומות “%1$s” ו-“%2$s” מוזגו."
+msgstr "רשומות \"%1$s\" ו-\"%2$s\" מוזגו."
 
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
@@ -14078,7 +14078,7 @@ msgstr[1] "לא היו שינויים במשך %s הימים האחרונים."
 #: login.php:266
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr "אין חשבון עם שם המשתמש או דוא״ל “%s”."
+msgstr "אין חשבון עם שם המשתמש או דוא״ל \"%s\"."
 
 #: addmedia.php:185 admin_media_upload.php:145
 msgid "There was an error uploading your file."
@@ -14662,7 +14662,7 @@ msgstr "אתר זה משתמש בעוגיות כדי ללמוד על התנהג�
 #: admin_trees_manage.php:199
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "פעולה זו ימחק את כל נתוני חקר שושלת יוחסין מן ”%s” ויחליף אותו עם נתונים קובץ GEDCOM."
+msgstr "פעולה זו ימחק את כל נתוני חקר שושלת יוחסין מן \"%s\" ויחליף אותו עם נתונים קובץ GEDCOM."
 
 #: admin_trees_places.php:98
 msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
@@ -16040,7 +16040,7 @@ msgstr "אתה יכול להשתמש ב-HTML כדי לעצב את התשובה �
 
 #: admin_site_config.php:441
 msgid "You must also enable “less secure applications” in your Google account."
-msgstr "עליך לאפשר גם ”ישומים פחות מאובטחים” בחשבון הגוגל שלך."
+msgstr "עליך לאפשר גם  \"ישומים פחות מאובטחים\" בחשבון הגוגל שלך."
 
 #: setup.php:215
 msgid "You must change this before you can continue."
@@ -16136,7 +16136,7 @@ msgstr "עליך להתייעץ עם מחבר ערכת הנושא כדי לאש�
 #: login.php:293 message.php:58
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr "עליך למחוק את ה-”%1$s” מ-”%2$s” ולנסות שוב."
+msgstr "עליך למחוק את ה-\"%1$s\" מ-\"%2$s\" ולנסות שוב."
 
 #: admin_users.php:394
 msgid "You should not approve an account unless you know that the email address is correct."
@@ -19853,7 +19853,7 @@ msgstr "הגדרות הקישוריות של מאגר הנתונים בקובץ 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:88
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
-msgstr "לתיקייה “/data” וקובץ “/data/config.ini.php” יש הרשאות גישה שמאפשרות ל-webserver לקרוא אותם"
+msgstr "לתיקייה \"/data\" וקובץ \"/data/config.ini.php\" יש הרשאות גישה שמאפשרות ל-webserver לקרוא אותם"
 
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Functions/Functions.php:281
@@ -20153,7 +20153,7 @@ msgstr[1] "± %s שנים"
 #: app/Individual.php:1218
 #, php-format
 msgid "“%s”"
-msgstr "”%s”"
+msgstr "\"%s\""
 
 #. I18N: %s is the name of an individual, source or other record
 #: app/Module/UserFavoritesModule.php:96
@@ -20165,7 +20165,7 @@ msgstr "”%s” התווסף למועדפים שלך."
 #: action.php:47
 #, php-format
 msgid "“%s” has been deleted."
-msgstr "”%s” נמחק."
+msgstr "\"%s\" נמחק."
 
 #: app/Functions/FunctionsPrint.php:120 app/Note.php:107
 msgid "…"
