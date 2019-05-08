@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-29 09:06+0100\n"
-"PO-Revision-Date: 2019-05-08 05:37+0000\n"
+"PO-Revision-Date: 2019-05-08 05:39+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -14468,7 +14468,7 @@ msgstr "Diese Option bestimmt, ob der Inhalt von Notizen auf der Personenseite a
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: resources/views/admin/trees-preferences.phtml:607
 msgid "This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page."
-msgstr "Diese Option bestimmt, ob der Inhalt von Quellenangaben auf der Seite «Persönliche Informationen» automatisch gezeigt werden soll oder nicht."
+msgstr "Diese Option bestimmt, ob der Inhalt von Quellenangaben auf der <i>Personenseite</i> automatisch gezeigt werden soll oder nicht."
 
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: resources/views/admin/trees-preferences.phtml:450
