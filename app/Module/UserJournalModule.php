@@ -151,9 +151,9 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
             throw new AccessDeniedHttpException();
         }
 
-        $news_id = $request->get('news_id');
+        $news_id = $request->getQueryParams()['news_id'] ?? '';
 
-        if ($news_id > 0) {
+        if ($news_id !== '') {
             $row = DB::table('news')
                 ->where('news_id', '=', $news_id)
                 ->where('user_id', '=', Auth::id())
@@ -187,11 +187,11 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
             throw new AccessDeniedHttpException();
         }
 
-        $news_id = $request->get('news_id');
-        $subject = $request->get('subject');
-        $body    = $request->get('body');
+        $news_id = $request->getQueryParams()['news_id'] ?? '';
+        $subject = $request->getParsedBody()['subject'];
+        $body    = $request->getParsedBody()['body'];
 
-        if ($news_id > 0) {
+        if ($news_id !== '') {
             DB::table('news')
                 ->where('news_id', '=', $news_id)
                 ->where('user_id', '=', Auth::id())
@@ -222,7 +222,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postDeleteJournalAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $news_id = $request->get('news_id');
+        $news_id = $request->getQueryParams()['news_id'];
 
         DB::table('news')
             ->where('news_id', '=', $news_id)

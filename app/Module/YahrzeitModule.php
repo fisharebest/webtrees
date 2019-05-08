@@ -215,9 +215,11 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $this->setBlockSetting($block_id, 'days', $request->get('days', self::DEFAULT_DAYS));
-        $this->setBlockSetting($block_id, 'infoStyle', $request->get('infoStyle', self::DEFAULT_STYLE));
-        $this->setBlockSetting($block_id, 'calendar', $request->get('calendar', self::DEFAULT_CALENDAR));
+        $settings = $request->getParsedBody();
+
+        $this->setBlockSetting($block_id, 'days', $settings['days'] ?? self::DEFAULT_DAYS);
+        $this->setBlockSetting($block_id, 'infoStyle', $settings['infoStyle'] ?? self::DEFAULT_STYLE);
+        $this->setBlockSetting($block_id, 'calendar', $settings['calendar'] ?? self::DEFAULT_CALENDAR);
     }
 
     /**
