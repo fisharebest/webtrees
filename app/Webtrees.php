@@ -141,7 +141,7 @@ class Webtrees
     {
         return static function (Throwable $ex): void {
             $base_path = dirname(__DIR__);
-            $trace     = $ex->getMessage() . PHP_EOL . $ex->getTraceAsString();
+            $trace     = $ex->getMessage() . ' ' . $ex->getFile() . ':' . $ex->getLine() . PHP_EOL . $ex->getTraceAsString();
             $trace     = str_replace($base_path, '…', $trace);
 
             while (ob_get_level() > 0) {

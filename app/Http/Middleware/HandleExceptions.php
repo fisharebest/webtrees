@@ -95,7 +95,7 @@ class HandleExceptions implements MiddlewareInterface, RequestMethodInterface, S
     {
         // Create a stack dump for the exception
         $base_path = dirname(__DIR__, 3);
-        $trace     = $exception->getMessage() . PHP_EOL . $exception->getTraceAsString();
+        $trace     = $exception->getMessage() . ' ' . $exception->getFile() . ':' . $exception->getLine() . PHP_EOL . $exception->getTraceAsString();
         $trace     = str_replace($base_path, '…', $trace);
 
         try {
