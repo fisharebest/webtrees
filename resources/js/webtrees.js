@@ -173,7 +173,7 @@ function delete_fact(message, ged, xref, fact_id)
 function copy_fact(ged, xref, fact_id)
 {
     $.post(
-        'index.php?route-copy-fact',
+        'index.php?route=copy-fact',
         {
             xref: xref,
             fact_id: fact_id,
