@@ -33,7 +33,6 @@ use Psr\Http\Message\UploadedFileInterface;
 use stdClass;
 use function abs;
 use function addcslashes;
-use function app;
 use function array_filter;
 use function array_pop;
 use function array_shift;

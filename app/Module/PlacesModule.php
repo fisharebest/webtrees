@@ -25,10 +25,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Support\Collection;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 
 /**
@@ -37,9 +34,6 @@ use stdClass;
 class PlacesModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;
-
-    private static $map_providers;
-    private static $map_selections;
 
     public const ICONS = [
         'BIRT' => ['color' => 'Crimson', 'name' => 'birthday-cake'],
@@ -166,6 +160,35 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 
     /**
      * @param Individual $individual
+     *
+     * @return Collection
+     * @return Fact[]
+     * @throws Exception
+     */
+    private function getPersonalFacts(Individual $individual): Collection
+    {
+        $facts = $individual->facts();
+
+        foreach ($individual->spouseFamilies() as $family) {
+            $facts = $facts->merge($family->facts());
+            // Add birth of children from this family to the facts array
+            foreach ($family->children() as $child) {
+                $childsBirth = $child->facts(['BIRT'])->first();
+                if ($childsBirth instanceof Fact && $childsBirth->place()->gedcomName() !== '') {
+                    $facts->push($childsBirth);
+                }
+            }
+        }
+
+        $facts = Fact::sortFacts($facts);
+
+        return $facts->filter(static function (Fact $item): bool {
+            return $item->place()->gedcomName() !== '';
+        });
+    }
+
+    /**
+     * @param Individual $individual
      * @param Fact       $fact
      *
      * @return mixed[]
@@ -200,34 +223,5 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
             'place'  => $fact->place(),
             'addtag' => false,
         ];
-    }
-
-    /**
-     * @param Individual $individual
-     *
-     * @return Collection
-     * @return Fact[]
-     * @throws Exception
-     */
-    private function getPersonalFacts(Individual $individual): Collection
-    {
-        $facts = $individual->facts();
-
-        foreach ($individual->spouseFamilies() as $family) {
-            $facts = $facts->merge($family->facts());
-            // Add birth of children from this family to the facts array
-            foreach ($family->children() as $child) {
-                $childsBirth = $child->facts(['BIRT'])->first();
-                if ($childsBirth && $childsBirth->place()->gedcomName() !== '') {
-                    $facts->push($childsBirth);
-                }
-            }
-        }
-
-        $facts = Fact::sortFacts($facts);
-
-        return $facts->filter(static function (Fact $item): bool {
-            return $item->place()->gedcomName() !== '';
-        });
     }
 }

@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Exception;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
@@ -31,7 +30,6 @@ use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use function intdiv;
@@ -67,9 +65,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
         '#80FF80'
         // Light green
     ];
-
-    private static $map_providers;
-    private static $map_selections;
 
     /**
      * How should this module be identified in the control panel, etc.?
