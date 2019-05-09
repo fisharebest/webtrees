@@ -69,7 +69,7 @@ class EditMediaController extends AbstractEditController
      */
     public function addMediaFile(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref  = $request->get('xref', '');
+        $xref  = $request->getQueryParams()['xref'];
         $media = Media::getInstance($xref, $tree);
 
         try {
@@ -99,10 +99,10 @@ class EditMediaController extends AbstractEditController
      */
     public function addMediaFileAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref  = $request->get('xref', '');
+        $xref  = $request->getQueryParams()['xref'];
         $media = Media::getInstance($xref, $tree);
-        $title = $request->get('title');
-        $type  = $request->get('type');
+        $title = $request->getParsedBody()['title'];
+        $type  = $request->getParsedBody()['type'];
 
         // Tidy whitespace
         $type  = trim(preg_replace('/\s+/', ' ', $type));
@@ -146,8 +146,9 @@ class EditMediaController extends AbstractEditController
      */
     public function editMediaFile(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref    = $request->get('xref', '');
-        $fact_id = $request->get('fact_id', '');
+        $params  = $request->getQueryParams();
+        $xref    = $params['xref'];
+        $fact_id = $params['fact_id'];
         $media   = Media::getInstance($xref, $tree);
 
         try {
@@ -184,13 +185,13 @@ class EditMediaController extends AbstractEditController
      */
     public function editMediaFileAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref     = $request->get('xref', '');
-        $fact_id  = $request->get('fact_id', '');
-        $folder   = $request->get('folder', '');
-        $new_file = $request->get('new_file', '');
-        $remote   = $request->get('remote', '');
-        $title    = $request->get('title', '');
-        $type     = $request->get('type', '');
+        $xref     = $request->getQueryParams()['xref'];
+        $fact_id  = $request->getQueryParams()['fact_id'];
+        $folder   = $request->getParsedBody()['folder'];
+        $new_file = $request->getParsedBody()['new_file'];
+        $remote   = $request->getParsedBody()['remote'];
+        $title    = $request->getParsedBody()['title'];
+        $type     = $request->getParsedBody()['type'];
         $media    = Media::getInstance($xref, $tree);
 
         // Tidy whitespace
@@ -301,10 +302,11 @@ class EditMediaController extends AbstractEditController
      */
     public function createMediaObjectFromFileAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $file  = $request->get('file');
-        $type  = $request->get('type');
-        $title = $request->get('title');
-        $note  = $request->get('note');
+        $params = $request->getParsedBody();
+        $file   = $params['file'];
+        $type   = $params['type'];
+        $title  = $params['title'];
+        $note   = $params['note'];
 
         if (preg_match('/\.([a-zA-Z0-9]+)$/', $file, $match)) {
             $format = ' ' . $match[1];
@@ -343,11 +345,12 @@ class EditMediaController extends AbstractEditController
      */
     public function createMediaObjectAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $note                = $request->get('note');
-        $title               = $request->get('title');
-        $type                = $request->get('type');
-        $privacy_restriction = $request->get('privacy-restriction', '');
-        $edit_restriction    = $request->get('edit-restriction', '');
+        $params              = $request->getParsedBody();
+        $note                = $params['media-note'];
+        $title               = $params['title'];
+        $type                = $params['type'];
+        $privacy_restriction = $params['privacy-restriction'];
+        $edit_restriction    = $params['edit-restriction'];
 
         // Tidy whitespace
         $type  = trim(preg_replace('/\s+/', ' ', $type));
@@ -406,7 +409,7 @@ class EditMediaController extends AbstractEditController
      */
     public function linkMediaToIndividual(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getQueryParams()['xref'];
 
         $media = Media::getInstance($xref, $tree);
 
@@ -424,7 +427,7 @@ class EditMediaController extends AbstractEditController
      */
     public function linkMediaToFamily(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getQueryParams()['xref'];
 
         $media = Media::getInstance($xref, $tree);
 
@@ -442,7 +445,7 @@ class EditMediaController extends AbstractEditController
      */
     public function linkMediaToSource(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getQueryParams()['xref'];
 
         $media = Media::getInstance($xref, $tree);
 
@@ -460,8 +463,9 @@ class EditMediaController extends AbstractEditController
      */
     public function linkMediaToRecordAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
-        $link = $request->get('link', '');
+        $params = $request->getParsedBody();
+        $xref   = $params['xref'];
+        $link   = $params['link'];
 
         $media  = Media::getInstance($xref, $tree);
         $record = GedcomRecord::getInstance($link, $tree);
@@ -539,11 +543,12 @@ class EditMediaController extends AbstractEditController
      */
     private function uploadFile(ServerRequestInterface $request, Tree $tree): string
     {
-        $file_location = $request->get('file_location');
+        $params        = $request->getParsedBody();
+        $file_location = $params['file_location'];
 
         switch ($file_location) {
             case 'url':
-                $remote = $request->get('remote');
+                $remote = $params['remote'];
 
                 if (strpos($remote, '://') !== false) {
                     return $remote;
@@ -552,7 +557,7 @@ class EditMediaController extends AbstractEditController
                 return '';
 
             case 'unused':
-                $unused = $request->get('unused');
+                $unused = $params['unused'];
                 $unused = str_replace('\\', '/', $unused);
 
                 if (strpos($unused, '../') !== false) {
@@ -564,9 +569,9 @@ class EditMediaController extends AbstractEditController
             case 'upload':
             default:
                 $media_folder = $tree->getPreference('MEDIA_DIRECTORY');
-                $folder       = $request->get('folder', '');
-                $auto         = $request->get('auto', '0');
-                $new_file     = $request->get('new_file', '');
+                $folder       = $params['folder'];
+                $auto         = $params['auto'];
+                $new_file     = $params['new_file'];
 
                 /** @var UploadedFileInterface|null $uploaded_file */
                 $uploaded_file = $request->getUploadedFiles()['file'];

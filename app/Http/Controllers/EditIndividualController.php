@@ -40,7 +40,7 @@ class EditIndividualController extends AbstractEditController
      */
     public function reorderMedia(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref       = $request->get('xref', '');
+        $xref       = $request->getQueryParams()['xref'];
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual, true);
@@ -61,8 +61,8 @@ class EditIndividualController extends AbstractEditController
      */
     public function reorderMediaAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref       = $request->get('xref', '');
-        $order      = (array) $request->get('order', []);
+        $xref       = $request->getQueryParams()['xref'];
+        $order      = $request->getParsedBody()['order'] ?? [];
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual, true);
@@ -101,7 +101,7 @@ class EditIndividualController extends AbstractEditController
      */
     public function reorderNames(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref       = $request->get('xref', '');
+        $xref       = $request->getQueryParams()['xref'];
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual, true);
@@ -122,8 +122,8 @@ class EditIndividualController extends AbstractEditController
      */
     public function reorderNamesAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref       = $request->get('xref', '');
-        $order      = (array) $request->get('order', []);
+        $xref       = $request->getQueryParams()['xref'];
+        $order      = $request->getParsedBody()['order'] ?? [];
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual, true);
@@ -162,7 +162,7 @@ class EditIndividualController extends AbstractEditController
      */
     public function reorderSpouses(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref       = $request->get('xref', '');
+        $xref       = $request->getQueryParams()['xref'];
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual, true);
@@ -183,8 +183,8 @@ class EditIndividualController extends AbstractEditController
      */
     public function reorderSpousesAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref       = $request->get('xref', '');
-        $order      = (array) $request->get('order', []);
+        $xref       = $request->getQueryParams()['xref'];
+        $order      = $request->getParsedBody()['order'] ?? [];
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual, true);
@@ -225,8 +225,7 @@ class EditIndividualController extends AbstractEditController
      */
     public function addChild(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
-
+        $xref       = $request->getQueryParams()['xref'];
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual, true);
@@ -253,18 +252,19 @@ class EditIndividualController extends AbstractEditController
      */
     public function addChildAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $params = $request->getParsedBody();
+        $xref   = $params['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual, true);
 
-        $PEDI = $request->get('PEDI', '');
+        $PEDI = $params['PEDI'];
 
-        $this->glevels = $request->get('glevels', []);
-        $this->tag     = $request->get('tag', []);
-        $this->text    = $request->get('text', []);
-        $this->islink  = $request->get('islink', []);
+        $this->glevels = $params['glevels'] ?? [];
+        $this->tag     = $params['tag'] ?? [];
+        $this->text    = $params['text'] ?? [];
+        $this->islink  = $params['islink'] ?? [];
 
         // Create a family
         if ($individual->sex() === 'F') {
@@ -289,7 +289,7 @@ class EditIndividualController extends AbstractEditController
                 $gedcom .= $this->addNewFact($request, $tree, $match);
             }
         }
-        if ((bool) $request->get('SOUR_INDI')) {
+        if ((bool) ($params['SOUR_INDI'] ?? false)) {
             $gedcom = $this->handleUpdates($gedcom);
         } else {
             $gedcom = $this->updateRest($gedcom);
@@ -300,7 +300,7 @@ class EditIndividualController extends AbstractEditController
         // Link the family to the child
         $family->createFact('1 CHIL @' . $child->xref() . '@', true);
 
-        if ($request->get('goto') === 'new') {
+        if (($params['goto'] ?? '') === 'new') {
             return redirect($child->url());
         }
 
@@ -632,7 +632,7 @@ class EditIndividualController extends AbstractEditController
      */
     public function addName(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
 
@@ -660,7 +660,7 @@ class EditIndividualController extends AbstractEditController
      */
     public function addNameAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getParsedBody()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
 

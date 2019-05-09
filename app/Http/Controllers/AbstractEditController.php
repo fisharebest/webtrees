@@ -270,9 +270,12 @@ abstract class AbstractEditController extends AbstractBaseController
      */
     protected function addNewFact(ServerRequestInterface $request, Tree $tree, $fact): string
     {
-        $FACT = $request->get($fact, '');
-        $DATE = $request->get($fact . '_DATE', '');
-        $PLAC = $request->get($fact . '_PLAC', '');
+        $params = $request->getParsedBody();
+
+        $FACT = $params[$fact];
+        $DATE = $params[$fact . '_DATE'];
+        $PLAC = $params[$fact . '_PLAC'];
+
         if ($DATE !== '' || $PLAC !== '' || $FACT !== '' && $FACT !== 'Y') {
             if ($FACT !== '' && $FACT !== 'Y') {
                 $gedrec = "\n1 " . $fact . ' ' . $FACT;
@@ -287,19 +290,19 @@ abstract class AbstractEditController extends AbstractBaseController
 
                 if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
                     foreach ($match[1] as $tag) {
-                        $TAG = $request->get($fact . '_' . $tag, '');
+                        $TAG = $params[$fact . '_' . $tag];
                         if ($TAG !== '') {
                             $gedrec .= "\n3 " . $tag . ' ' . $TAG;
                         }
                     }
                 }
-                $LATI = $request->get($fact . '_LATI', '');
-                $LONG = $request->get($fact . '_LONG', '');
+                $LATI = $params[$fact . '_LATI'];
+                $LONG = $params[$fact . '_LONG'];
                 if ($LATI !== '' || $LONG !== '') {
                     $gedrec .= "\n3 MAP\n4 LATI " . $LATI . "\n4 LONG " . $LONG;
                 }
             }
-            if ((bool) $request->get('SOUR_' . $fact)) {
+            if ((bool) ($params['SOUR_' . $fact] ?? false)) {
                 return $this->updateSource($gedrec, 2);
             }
 
@@ -307,7 +310,7 @@ abstract class AbstractEditController extends AbstractBaseController
         }
 
         if ($FACT === 'Y') {
-            if ((bool) $request->get('SOUR_' . $fact)) {
+            if ((bool) ($params['SOUR_' . $fact] ?? false)) {
                 return $this->updateSource("\n1 " . $fact . ' Y', 2);
             }
 
@@ -364,7 +367,7 @@ abstract class AbstractEditController extends AbstractBaseController
      */
     protected function addNewSex(ServerRequestInterface $request): string
     {
-        switch ($request->get('SEX', '')) {
+        switch ($request->getParsedBody()['SEX']) {
             case 'M':
                 return "\n1 SEX M";
             case 'F':
@@ -384,7 +387,8 @@ abstract class AbstractEditController extends AbstractBaseController
      */
     protected function addNewName(ServerRequestInterface $request, Tree $tree): string
     {
-        $gedrec = "\n1 NAME " . $request->get('NAME', '');
+        $params = $request->getParsedBody();
+        $gedrec = "\n1 NAME " . $params['NAME'];
 
         $tags = [
             'NPFX',
@@ -405,9 +409,10 @@ abstract class AbstractEditController extends AbstractBaseController
         }
 
         foreach (array_unique($tags) as $tag) {
-            $TAG = $request->get($tag, '');
+            $TAG = $params[$tag];
+
             if ($TAG !== '') {
-                $gedrec .= "\n2 {$tag} {$TAG}";
+                $gedrec .= "\n2 " . $tag . ' ' . $TAG;
             }
         }
 
