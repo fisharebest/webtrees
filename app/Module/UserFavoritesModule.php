@@ -186,11 +186,13 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postAddFavoriteAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $note  = $request->getParsedBody()['note'];
-        $title = $request->getParsedBody()['title'];
-        $url   = $request->getParsedBody()['url'];
-        $type  = $request->getParsedBody()['type'];
-        $xref  = $request->getParsedBody()[$type . '-xref'] ?? '';
+        $params = $request->getParsedBody();
+
+        $note  = $params['note'];
+        $title = $params['title'];
+        $url   = $params['url'];
+        $type  = $params['type'];
+        $xref  = $params[$type . '-xref'] ?? '';
 
         $record = $this->getRecordForType($type, $xref, $tree);
 

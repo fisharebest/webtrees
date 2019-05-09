@@ -136,7 +136,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      */
     public function postAdminDeleteAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $block_id = (int) $request->get('block_id');
+        $block_id = (int) $request->getQueryParams()['block_id'];
 
         DB::table('block_setting')->where('block_id', '=', $block_id)->delete();
 
@@ -159,7 +159,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      */
     public function postAdminMoveDownAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $block_id = (int) $request->get('block_id');
+        $block_id = (int) $request->getQueryParams()['block_id'];
 
         $block_order = DB::table('block')
             ->where('block_id', '=', $block_id)
@@ -167,7 +167,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
         $swap_block = DB::table('block')
             ->where('module_name', '=', $this->name())
-            ->where('block_order', '=', static function (Builder $query) use ($block_order): void {
+            ->where('block_order', '=', function (Builder $query) use ($block_order): void {
                 $query
                     ->from('block')
                     ->where('module_name', '=', $this->name())
@@ -208,7 +208,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      */
     public function postAdminMoveUpAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $block_id = (int) $request->get('block_id');
+        $block_id = (int) $request->getQueryParams()['block_id'];
 
         $block_order = DB::table('block')
             ->where('block_id', '=', $block_id)
@@ -259,7 +259,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     {
         $this->layout = 'layouts/administration';
 
-        $block_id = (int) $request->get('block_id');
+        $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
 
         if ($block_id === 0) {
             // Creating a new faq
@@ -309,12 +309,15 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      */
     public function postAdminEditAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $block_id    = (int) $request->get('block_id');
-        $faqbody     = $request->get('faqbody', '');
-        $header      = $request->get('header', '');
-        $languages   = $request->get('languages', []);
-        $gedcom_id   = (int) $request->get('gedcom_id') ?: null;
-        $block_order = (int) $request->get('block_order');
+        $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
+
+        $params = $request->getParsedBody();
+
+        $faqbody     = $params['faqbody'];
+        $header      = $params['header'];
+        $languages   = $params['languages'] ?? [];
+        $gedcom_id   = (int) $params['gedcom_id'] ?: null;
+        $block_order = (int) $params['block_order'];
 
         if ($block_id !== 0) {
             DB::table('block')

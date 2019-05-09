@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use function app;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Exceptions\FamilyNotFoundException;
@@ -45,6 +44,7 @@ use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
+use function app;
 use function str_replace;
 
 /**
@@ -123,9 +123,10 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getMenu(Tree $tree): ?Menu
     {
+        /** @var ServerRequestInterface $request */
         $request = app(ServerRequestInterface::class);
 
-        $route = $request->get('route', '');
+        $route = $request->getQueryParams()['route'] ?? '';
 
         $submenus = [
             new Menu($this->title(), route('module', [
@@ -136,7 +137,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         ];
 
         if (in_array($route, self::ROUTES_WITH_RECORDS, true)) {
-            $xref      = $request->get('xref', '');
+            $xref      = $route = $request->getQueryParams()['xref'] ?? '';
             $action    = 'Add' . ucfirst($route);
             $add_route = route('module', [
                 'module' => $this->name(),

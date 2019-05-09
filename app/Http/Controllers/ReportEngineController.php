@@ -87,8 +87,9 @@ class ReportEngineController extends AbstractBaseController
      */
     public function reportSetup(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $pid    = $request->get('xref', '');
-        $report = $request->get('report', '');
+        $params = $request->getQueryParams();
+        $pid    = $params['xref'] ?? '';
+        $report = $params['report'] ?? '';
         $module = $this->module_service->findByName($report);
 
         if (!$module instanceof ModuleReportInterface) {
@@ -219,11 +220,12 @@ class ReportEngineController extends AbstractBaseController
      */
     public function reportRun(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $report   = $request->get('report', '');
-        $output   = $request->get('output');
-        $vars     = $request->get('vars', []);
-        $varnames = $request->get('varnames', []);
-        $type     = $request->get('type', []);
+        $params   = $request->getQueryParams();
+        $report   = $params['report'];
+        $output   = $params['output'];
+        $vars     = $params['vars'];
+        $varnames = $params['varnames'];
+        $type     = $params['type'];
 
         $module = $this->module_service->findByName($report);
 

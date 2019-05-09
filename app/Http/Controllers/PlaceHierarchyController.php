@@ -68,8 +68,12 @@ class PlaceHierarchyController extends AbstractBaseController
      */
     public function show(ServerRequestInterface $request, Tree $tree, SearchService $search_service): ResponseInterface
     {
-        $action2    = $request->getQueryParams()['action2'] ?? 'hierarchy';
-        $parent     = $request->getQueryParams()['parent'] ?? [];
+        $params  = $request->getQueryParams();
+        $action2 = $params['action2'] ?? 'hierarchy';
+        $parent  = $params['parent'] ?? [];
+        $module  = $params['module'];
+        $action  = $params['action'];
+
         $fqpn       = implode(Gedcom::PLACE_SEPARATOR, array_reverse($parent));
         $place      = new Place($fqpn, $tree);
         $content    = '';
@@ -107,10 +111,6 @@ class PlaceHierarchyController extends AbstractBaseController
 
         $breadcrumbs = $this->breadcrumbs($place);
 
-        //route is assumed to be 'module'
-        $module = $request->get('module');
-        $action = $request->get('action');
-        
         return $this->viewResponse(
             'places-page',
             [
@@ -160,14 +160,14 @@ class PlaceHierarchyController extends AbstractBaseController
 
 
     /**
-     * @param Tree   $tree
-     * @param Place  $place
-     * @param string $parent []
+     * @param Tree     $tree
+     * @param Place    $place
+     * @param string[] $parent
      *
      * @return array|null
      * @throws Exception
      */
-    private function getHierarchy($tree, $place, $parent): ?array
+    private function getHierarchy(Tree $tree, Place $place, array $parent): ?array
     {
         $child_places = $place->getChildPlaces();
         $numfound     = count($child_places);

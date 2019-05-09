@@ -35,6 +35,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function route;
 
 /**
  * Show, accept and reject pending changes.
@@ -91,9 +92,11 @@ class PendingChangesController extends AbstractBaseController
      */
     public function acceptChange(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $url       = $request->get('url', '');
-        $xref      = $request->get('xref', '');
-        $change_id = (int) $request->get('change_id');
+        $params = $request->getQueryParams();
+
+        $url       = $params['url'];
+        $xref      = $params['xref'];
+        $change_id = $params['change_id'];
 
         $changes = DB::table('change')
             ->where('gedcom_id', '=', $tree->id())
@@ -246,7 +249,9 @@ class PendingChangesController extends AbstractBaseController
      */
     public function showChanges(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $url = $request->get('url', route('tree-page', ['ged' => $tree->name()]));
+        $default_url = route('tree-page', ['ged' => $tree->name()]);
+
+        $url = $request->getQueryParams()['url'] ?? $default_url;
 
         $rows = DB::table('change')
             ->join('user', 'user.user_id', '=', 'change.user_id')

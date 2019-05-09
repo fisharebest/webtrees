@@ -38,8 +38,8 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;
 
-    private static $map_providers  = null;
-    private static $map_selections = null;
+    private static $map_providers;
+    private static $map_selections;
 
     public const ICONS = [
         'BIRT' => ['color' => 'Crimson', 'name' => 'birthday-cake'],
@@ -290,8 +290,10 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
             }
         }
 
-        //Ugly!!!
-        switch ($request->get('action')) {
+
+        $params = $request->getQueryParams();
+
+        switch ($params['action']) {
             case 'BaseData':
                 $varName = (self::$map_selections['style'] === '') ? '' : self::$map_providers[self::$map_selections['provider']]['styles'][self::$map_selections['style']];
                 $payload = [
@@ -301,7 +303,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                 ];
                 break;
             case 'ProviderStyles':
-                $provider = $request->get('provider', 'openstreetmap');
+                $provider = $params['provider'] ?? 'openstreetmap';
                 $payload  = self::$map_providers[$provider]['styles'];
                 break;
             case 'AdminConfig':

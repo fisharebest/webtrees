@@ -5,7 +5,7 @@
         <?= I18N::translate('Number of days to show') ?>
     </label>
     <div class="col-sm-9">
-        <input class="form-control" id="days" name="days" type="text" value="<?= e($days) ?>">
+        <input class="form-control" id="days" name="days" type="number" min="1" max="<?= $max_days ?>" value="<?= e($days) ?>" required>
         <?= I18N::plural('maximum %s day', 'maximum %s days', $max_days, I18N::number($max_days)) ?>
     </div>
 </div>
@@ -15,7 +15,7 @@
         <?= I18N::translate('Presentation style') ?>
     </label>
     <div class="col-sm-9">
-        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $info_styles, 'options' => $info_styles]) ?>
+        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $infoStyle, 'options' => $info_styles]) ?>
     </div>
 </div>
 

@@ -185,11 +185,13 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      */
     public function postAddFavoriteAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $note  = $request->get('note', '');
-        $title = $request->get('title', '');
-        $url   = $request->get('url', '');
-        $type  = $request->get('type', '');
-        $xref  = $request->get($type . '-xref', '');
+        $params = $request->getParsedBody();
+
+        $note  = $params['note'];
+        $title = $params['title'];
+        $url   = $params['url'];
+        $type  = $params['type'];
+        $xref  = $params[$type . '-xref'] ?? '';
 
         $record = $this->getRecordForType($type, $xref, $tree);
 
@@ -217,7 +219,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      */
     public function postDeleteFavoriteAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $favorite_id = (int) $request->get('favorite_id');
+        $favorite_id = $request->getQueryParams()['favorite_id'];
 
         if (Auth::isManager($tree, $user)) {
             DB::table('favorite')

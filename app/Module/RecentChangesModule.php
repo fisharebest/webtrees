@@ -155,16 +155,12 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $days = $request->get('days', self::DEFAULT_DAYS);
+        $params = $request->getParsedBody();
 
-        if ((int) $days > self::MAX_DAYS || (int) $days < 1) {
-            $days = self::DEFAULT_DAYS;
-        }
-
-        $this->setBlockSetting($block_id, 'days', $days);
-        $this->setBlockSetting($block_id, 'infoStyle', $request->get('infoStyle', self::DEFAULT_INFO_STYLE));
-        $this->setBlockSetting($block_id, 'sortStyle', $request->get('sortStyle', self::DEFAULT_SORT_STYLE));
-        $this->setBlockSetting($block_id, 'show_user', $request->get('show_user', self::DEFAULT_SHOW_USER));
+        $this->setBlockSetting($block_id, 'days', $params['days']);
+        $this->setBlockSetting($block_id, 'infoStyle', $params['infoStyle']);
+        $this->setBlockSetting($block_id, 'sortStyle', $params['sortStyle']);
+        $this->setBlockSetting($block_id, 'show_user', $params['show_user']);
     }
 
     /**

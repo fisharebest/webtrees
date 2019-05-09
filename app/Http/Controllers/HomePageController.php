@@ -191,7 +191,7 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageBlockEdit(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $block_id = (int) $request->get('block_id');
+        $block_id = (int) $request->getQueryParams()['block_id'];
         $block    = $this->userBlock($request, $user);
         $title    = $block->title() . ' — ' . I18N::translate('Preferences');
 
@@ -216,7 +216,7 @@ class HomePageController extends AbstractBaseController
     public function userPageBlockUpdate(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $block    = $this->userBlock($request, $user);
-        $block_id = (int) $request->get('block_id');
+        $block_id = (int) $request->getQueryParams()['block_id'];
 
         $block->saveBlockConfiguration($request, $block_id);
 
@@ -233,7 +233,7 @@ class HomePageController extends AbstractBaseController
      */
     private function userBlock(ServerRequestInterface $request, UserInterface $user): ModuleBlockInterface
     {
-        $block_id = (int) $request->get('block_id');
+        $block_id = (int) $request->getQueryParams()['block_id'];
 
         $block = DB::table('block')
             ->where('block_id', '=', $block_id)
@@ -306,7 +306,7 @@ class HomePageController extends AbstractBaseController
      */
     public function treePageBlock(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $block_id = $request->get('block_id');
+        $block_id = $request->getQueryParams()['block_id'];
 
         $block_id = (int) DB::table('block')
             ->where('block_id', '=', $block_id)
@@ -405,14 +405,16 @@ class HomePageController extends AbstractBaseController
      */
     public function treePageUpdate(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $defaults = (bool) $request->get('defaults');
+        $params = $request->getParsedBody();
+
+        $defaults = (bool) ($params['defaults'] ?? false);
 
         if ($defaults) {
             $main_blocks = $this->treeBlocks(-1, 'main')->all();
             $side_blocks = $this->treeBlocks(-1, 'side')->all();
         } else {
-            $main_blocks = (array) $request->get('main');
-            $side_blocks = (array) $request->get('side');
+            $main_blocks = $params['main'] ?? [];
+            $side_blocks = $params['side'] ?? [];
         }
 
         $this->updateTreeBlocks($tree->id(), $main_blocks, $side_blocks);
@@ -466,7 +468,7 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageBlock(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $block_id = $request->get('block_id');
+        $block_id = $request->getQueryParams()['block_id'];
 
         $block_id = (int) DB::table('block')
             ->where('block_id', '=', $block_id)
@@ -555,7 +557,7 @@ class HomePageController extends AbstractBaseController
     }
 
     /**
-     * Save the updted blocks on a user's page.
+     * Save the updated blocks on a user's page.
      *
      * @param ServerRequestInterface $request
      * @param Tree                   $tree
@@ -565,14 +567,16 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageUpdate(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $defaults = (bool) $request->get('defaults');
+        $params = $request->getParsedBody();
+
+        $defaults = (bool) ($params['defaults'] ?? false);
 
         if ($defaults) {
             $main_blocks = $this->userBlocks(-1, 'main')->all();
             $side_blocks = $this->userBlocks(-1, 'side')->all();
         } else {
-            $main_blocks = (array) $request->get('main');
-            $side_blocks = (array) $request->get('side');
+            $main_blocks = $params['main'] ?? [];
+            $side_blocks = $params['side'] ?? [];
         }
 
         $this->updateUserBlocks($user->id(), $main_blocks, $side_blocks);

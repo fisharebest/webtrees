@@ -100,16 +100,18 @@ class AccountController extends AbstractBaseController
      */
     public function update(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $contact_method = (string) $request->get('contact_method');
-        $email          = (string) $request->get('email');
-        $language       = (string) $request->get('language');
-        $real_name      = (string) $request->get('real_name');
-        $password       = (string) $request->get('password');
-        $rootid         = (string) $request->get('root_id');
-        $theme          = (string) $request->get('theme');
-        $time_zone      = (string) $request->get('timezone');
-        $user_name      = (string) $request->get('user_name');
-        $visible_online = (string) $request->get('visible_online');
+        $params = $request->getParsedBody();
+
+        $contact_method = $params['contact_method'];
+        $email          = $params['email'];
+        $language       = $params['language'];
+        $real_name      = $params['real_name'];
+        $password       = $params['password'];
+        $rootid         = $params['root_id'];
+        $theme          = $params['theme'];
+        $time_zone      = $params['timezone'];
+        $user_name      = $params['user_name'];
+        $visible_online = $params['visible_online'] ?? '';
 
         // Change the password
         if ($password !== '') {

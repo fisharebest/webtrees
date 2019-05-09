@@ -63,13 +63,13 @@ class BranchesController extends AbstractBaseController
      */
     public function page(ServerRequestInterface $request): ResponseInterface
     {
-        //route is assumed to be 'module'
-        $module = $request->get('module');
-        $action = $request->get('action');
+        $params = $request->getQueryParams();
+        $module = $params['module'];
+        $action = $params['action'];
         
-        $surname     = $request->get('surname', '');
-        $soundex_std = (bool) $request->get('soundex_std');
-        $soundex_dm  = (bool) $request->get('soundex_dm');
+        $surname     = $params['surname'] ?? '';
+        $soundex_std = (bool) ($params['soundex_std'] ?? false);
+        $soundex_dm  = (bool) ($params['soundex_dm'] ?? false);
 
         if ($surname !== '') {
             /* I18N: %s is a surname */
@@ -98,9 +98,10 @@ class BranchesController extends AbstractBaseController
      */
     public function list(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $soundex_dm  = (bool) $request->get('soundex_dm');
-        $soundex_std = (bool) $request->get('soundex_std');
-        $surname     = $request->get('surname', '');
+        $params = $request->getQueryParams();
+        $surname     = $params['surname'];
+        $soundex_std = (bool) ($params['soundex_std'] ?? false);
+        $soundex_dm  = (bool) ($params['soundex_dm'] ?? false);
 
         // Highlight direct-line ancestors of this individual.
         $self = Individual::getInstance($tree->getUserPreference($user, 'gedcomid'), $tree);

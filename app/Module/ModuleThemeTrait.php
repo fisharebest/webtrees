@@ -191,13 +191,16 @@ trait ModuleThemeTrait
      */
     public function menuChangeBlocks(Tree $tree): ?Menu
     {
+        /** @var ServerRequestInterface $request */
         $request = app(ServerRequestInterface::class);
 
-        if (Auth::check() && $request->get('route') === 'user-page') {
+        $route = $request->getQueryParams()['route'] ?? '';
+
+        if (Auth::check() && $route === 'user-page') {
             return new Menu(I18N::translate('Customize this page'), route('user-page-edit', ['ged' => $tree->name()]), 'menu-change-blocks');
         }
 
-        if (Auth::isManager($tree) && $request->get('route') === 'tree-page') {
+        if (Auth::isManager($tree) && $route === 'tree-page') {
             return new Menu(I18N::translate('Customize this page'), route('tree-page-edit', ['ged' => $tree->name()]), 'menu-change-blocks');
         }
 
