@@ -76,7 +76,7 @@ class VerifyEmailController extends AbstractBaseController
                 if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
                     DB::table('message')->insert([
                         'sender'     => $username,
-                        'ip_address' => $request->getClientIp(),
+                        'ip_address' => $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1',
                         'user_id'    => $webmaster->id(),
                         'subject'    => $subject,
                         'body'       => view('emails/verify-notify-text', ['user' => $user]),

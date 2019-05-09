@@ -41,6 +41,7 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use League\Flysystem\Filesystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
+use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
@@ -137,7 +138,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         ];
 
         if (in_array($route, self::ROUTES_WITH_RECORDS, true)) {
-            $xref      = $route = $request->getQueryParams()['xref'] ?? '';
+            $xref      = $request->getQueryParams()['xref'] ?? '';
             $action    = 'Add' . ucfirst($route);
             $add_route = route('module', [
                 'module' => $this->name(),
@@ -173,8 +174,10 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getDownloadAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $privatize_export = $request->get('privatize_export', '');
-        $convert          = (bool) $request->get('convert');
+        $params = $request->getQueryParams();
+
+        $privatize_export = $params['privatize_export'];
+        $convert          = (bool) ($params['convert'] ?? false);
 
         $cart = Session::get('cart', []);
 
@@ -209,7 +212,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         foreach ($xrefs as $xref) {
             $object = GedcomRecord::getInstance($xref, $tree);
             // The object may have been deleted since we added it to the cart....
-            if ($object) {
+            if ($object instanceof  GedcomRecord) {
                 $record = $object->privatizeGedcom($access_level);
                 // Remove links to objects that aren't in the cart
                 preg_match_all('/\n1 ' . Gedcom::REGEX_TAG . ' @(' . Gedcom::REGEX_XREF . ')@(\n[2-9].*)*/', $record, $matches, PREG_SET_ORDER);
@@ -278,10 +281,13 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         // Use a stream, so that we do not have to load the entire file into memory.
         $stream = app(StreamFactoryInterface::class)->createStreamFromFile($temp_zip_file);
 
-        return response()
+        /** @var ResponseFactoryInterface $response_factory */
+        $response_factory = app(ResponseFactoryInterface::class);
+
+        return $response_factory->createResponse()
             ->withBody($stream)
             ->withHeader('Content-Type', 'application/zip')
-            ->withHeader('Content-Tisposition', 'attachment; filename="clippings.zip');
+            ->withHeader('Content-Disposition', 'attachment; filename="clippings.zip');
     }
 
     /**
@@ -329,7 +335,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postRemoveAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getQueryParams()['xref'];
 
         $cart = Session::get('cart', []);
         unset($cart[$tree->name()][$xref]);
@@ -366,7 +372,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddFamilyAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getQueryParams()['xref'];
 
         $family = Family::getInstance($xref, $tree);
 
@@ -413,8 +419,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddFamilyAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref   = $request->get('xref', '');
-        $option = $request->get('option', '');
+        $xref   = $request->getQueryParams()['xref'];
+        $option = $request->getParsedBody()['option'];
 
         $family = Family::getInstance($xref, $tree);
 
@@ -498,7 +504,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddIndividualAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
 
@@ -557,8 +563,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddIndividualAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref   = $request->get('xref', '');
-        $option = $request->get('option', '');
+        $xref   = $request->getQueryParams()['xref'];
+        $option = $request->getParsedBody()['option'];
 
         $individual = Individual::getInstance($xref, $tree);
 
@@ -640,7 +646,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddMediaAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getQueryParams()['xref'];
 
         $media = Media::getInstance($xref, $tree);
 
@@ -683,7 +689,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddMediaAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getQueryParams()['xref'];
 
         $media = Media::getInstance($xref, $tree);
 
@@ -704,7 +710,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddNoteAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getQueryParams()['xref'];
 
         $note = Note::getInstance($xref, $tree);
 
@@ -747,7 +753,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddNoteAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getQueryParams()['xref'];
 
         $note = Note::getInstance($xref, $tree);
 
@@ -768,7 +774,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddRepositoryAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getQueryParams()['xref'];
 
         $repository = Repository::getInstance($xref, $tree);
 
@@ -811,7 +817,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddRepositoryAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getQueryParams()['xref'];
 
         $repository = Repository::getInstance($xref, $tree);
 
@@ -832,7 +838,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddSourceAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getQueryParams()['xref'];
 
         $source = Source::getInstance($xref, $tree);
 
@@ -876,8 +882,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddSourceAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref   = $request->get('xref', '');
-        $option = $request->get('option', '');
+        $xref   = $request->getQueryParams()['xref'];
+        $option = $request->getParsedBody()['option'];
 
         $source = Source::getInstance($xref, $tree);
 
@@ -913,7 +919,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $xrefs = array_keys($cart[$tree->name()] ?? []);
 
         // Fetch all the records in the cart.
-        $records = array_map(static function (string $xref) use ($tree): GedcomRecord {
+        $records = array_map(static function (string $xref) use ($tree): ?GedcomRecord {
             return GedcomRecord::getInstance($xref, $tree);
         }, $xrefs);
 

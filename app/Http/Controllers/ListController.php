@@ -23,9 +23,9 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
-use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Services\IndividualListService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Session;
@@ -402,19 +402,17 @@ class ListController extends AbstractBaseController
      */
     public function mediaList(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        //route is assumed to be 'module'
-        $module = $request->get('module');
-        $action = $request->get('action');
-        
-        $formats = GedcomTag::getFileFormTypes();
-
-        $action2   = $request->get('action2');
-        $page      = (int) $request->get('page');
-        $max       = (int) $request->get('max', 20);
-        $folder    = $request->get('folder', '');
-        $filter    = $request->get('filter', '');
-        $subdirs   = $request->get('subdirs', '');
-        $form_type = $request->get('form_type', '');
+        $params    = $request->getQueryParams();
+        $module    = $params['module'];
+        $action    = $params['action'];
+        $formats   = GedcomTag::getFileFormTypes();
+        $action2   = $params['action2'] ?? '';
+        $page      = (int) ($params['page'] ?? 1);
+        $max       = (int) ($params['max'] ?? 20);
+        $folder    = $params['folder'] ?? '';
+        $filter    = $params['filter'] ?? '';
+        $subdirs   = $params['subdirs'] ?? '';
+        $form_type = $params['form_type'] ?? '';
 
         $folders = $this->allFolders($tree);
 

@@ -83,7 +83,7 @@
 <?php if ($action) : ?>
     <table class="table table-bordered table-sm table-hover table-site-logs"
         <?= view('lists/datatables-attributes') ?>
-        data-ajax="<?= e(route('admin-site-logs-data', ['from' => $from, 'to' => $to, 'type' => $type, 'text' => $text, 'ip' => $ip, 'user' => $username, 'gedc' => $gedc])) ?>"
+        data-ajax="<?= e(route('admin-site-logs-data', ['from' => $from, 'to' => $to, 'type' => $type, 'text' => $text, 'ip' => $ip, 'username' => $username, 'gedc' => $gedc])) ?>"
         data-server-side="true"
     >
         <thead>

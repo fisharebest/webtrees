@@ -164,7 +164,7 @@ class HelpTextController extends AbstractBaseController
      */
     public function helpText(ServerRequestInterface $request): ResponseInterface
     {
-        $topic = $request->get('topic');
+        $topic = $request->getQueryParams()['topic'];
 
         switch ($topic) {
             case 'DATE':

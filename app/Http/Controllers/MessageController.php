@@ -66,10 +66,11 @@ class MessageController extends AbstractBaseController
     {
         $referer = $request->getHeaderLine('referer');
 
-        $body    = $request->get('body', '');
-        $subject = $request->get('subject', '');
-        $to      = $request->get('to', '');
-        $url     = $request->get('url', $referer);
+        $params  = $request->getQueryParams();
+        $body    = $params['body'] ?? '';
+        $subject = $params['subject'] ?? '';
+        $to      = $params['to'];
+        $url     = $params['url'] ?? $referer;
 
         $to_names = $this->recipientUsers($to)
             ->map(static function (UserInterface $user): string {
@@ -102,12 +103,13 @@ class MessageController extends AbstractBaseController
      */
     public function broadcastAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $body    = $request->get('body', '');
-        $subject = $request->get('subject', '');
-        $to      = $request->get('to', '');
-        $url     = $request->get('url', '');
+        $params  = $request->getParsedBody();
+        $body    = $params['body'];
+        $subject = $params['subject'];
+        $to      = $params['to'];
+        $url     = $params['url'];
 
-        $ip       = $request->getClientIp() ?? '127.0.0.1';
+        $ip       = $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1';
         $to_users = $this->recipientUsers($to);
 
         if ($body === '' || $subject === '') {
@@ -147,14 +149,14 @@ class MessageController extends AbstractBaseController
      */
     public function contactPage(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $referer = $request->getHeaderLine('referer');
-
-        $body       = $request->get('body', '');
-        $from_email = $request->get('from_email', '');
-        $from_name  = $request->get('from_name', '');
-        $subject    = $request->get('subject', '');
-        $to         = $request->get('to', '');
-        $url        = $request->get('url', $referer);
+        $referer    = $request->getHeaderLine('referer');
+        $params     = $request->getQueryParams();
+        $body       = $params['body'] ?? '';
+        $from_email = $params['from_email'] ?? '';
+        $from_name  = $params['from_name'] ?? '';
+        $subject    = $params['subject'] ?? '';
+        $to         = $params['to'] ?? '';
+        $url        = $params['url'] ?? $referer;
 
         $to_user = $this->user_service->findByUserName($to);
 
@@ -188,15 +190,15 @@ class MessageController extends AbstractBaseController
      */
     public function contactAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $body       = $request->get('body', '');
-        $from_email = $request->get('from_email', '');
-        $from_name  = $request->get('from_name', '');
-        $subject    = $request->get('subject', '');
-        $to         = $request->get('to', '');
-        $url        = $request->get('url', '');
-        $ip         = $request->getClientIp() ?? '127.0.0.1';
-
-        $to_user = $this->user_service->findByUserName($to);
+        $params     = $request->getParsedBody();
+        $body       = $params['body'];
+        $from_email = $params['from_email'];
+        $from_name  = $params['from_name'];
+        $subject    = $params['subject'];
+        $to         = $params['to'];
+        $url        = $params['url'];
+        $ip         = $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1';
+        $to_user    = $this->user_service->findByUserName($to);
 
         if ($to_user === null) {
             throw new NotFoundHttpException();
@@ -266,12 +268,11 @@ class MessageController extends AbstractBaseController
     public function messagePage(ServerRequestInterface $request, UserInterface $user): ResponseInterface
     {
         $referer = $request->getHeaderLine('referer');
-
-        $body    = $request->get('body', '');
-        $subject = $request->get('subject', '');
-        $to      = $request->get('to', '');
-        $url     = $request->get('url', $referer);
-
+        $params  = $request->getQueryParams();
+        $body    = $params['body'] ?? '';
+        $subject = $params['subject'] ?? '';
+        $to      = $params['to'] ?? '';
+        $url     = $params['url'] ?? $referer;
         $to_user = $this->user_service->findByUserName($to);
 
         if ($to_user === null || $to_user->getPreference('contactmethod') === 'none') {
@@ -301,13 +302,13 @@ class MessageController extends AbstractBaseController
      */
     public function messageAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $body    = $request->get('body', '');
-        $subject = $request->get('subject', '');
-        $to      = $request->get('to', '');
-        $url     = $request->get('url', '');
-
+        $params  = $request->getParsedBody();
+        $body    = $params['body'];
+        $subject = $params['subject'];
+        $to      = $params['to'];
+        $url     = $params['url'];
         $to_user = $this->user_service->findByUserName($to);
-        $ip      = $request->getClientIp() ?? '127.0.0.1';
+        $ip      = $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1';
 
         if ($to_user === null || $to_user->getPreference('contactmethod') === 'none') {
             throw new AccessDeniedHttpException('Invalid contact user id');

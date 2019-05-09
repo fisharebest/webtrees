@@ -59,8 +59,9 @@ class MediaFileController extends AbstractBaseController
      */
     public function mediaDownload(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref    = $request->get('xref', '');
-        $fact_id = $request->get('fact_id');
+        $params  = $request->getQueryParams();
+        $xref    = $params['xref'];
+        $fact_id = $params['fact_id'];
         $media   = Media::getInstance($xref, $tree);
 
         if ($media === null) {
@@ -101,8 +102,9 @@ class MediaFileController extends AbstractBaseController
      */
     public function mediaThumbnail(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref    = $request->get('xref', '');
-        $fact_id = $request->get('fact_id', '');
+        $params  = $request->getQueryParams();
+        $xref    = $params['xref'];
+        $fact_id = $params['fact_id'];
         $media   = Media::getInstance($xref, $tree);
 
         if ($media === null) {
@@ -140,8 +142,9 @@ class MediaFileController extends AbstractBaseController
      */
     public function unusedMediaThumbnail(ServerRequestInterface $request): ResponseInterface
     {
-        $folder = $request->get('folder', '');
-        $file   = $request->get('file', '');
+        $params = $request->getQueryParams();
+        $folder = $params['folder'];
+        $file   = $params['file'];
 
         try {
             $server = $this->glideServer($folder);

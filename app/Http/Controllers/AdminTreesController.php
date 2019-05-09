@@ -505,7 +505,10 @@ class AdminTreesController extends AbstractBaseController
             $stream   = app(StreamFactoryInterface::class)->createStreamFromFile($temp_zip_file);
             $filename = addcslashes($download_filename, '"') . '.zip';
 
-            return response()
+            /** @var ResponseFactoryInterface $response_factory */
+            $response_factory = app(ResponseFactoryInterface::class);
+
+            return $response_factory->createResponse()
                 ->withBody($stream)
                 ->withHeader('Content-Type', 'application/zip')
                 ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');

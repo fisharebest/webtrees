@@ -169,14 +169,15 @@ class AdminSiteController extends AbstractBaseController
         $earliest = $earliest->toDateString();
         $latest   = $latest->toDateString();
 
-        $action   = $request->get('action', '');
-        $from     = $request->get('from', $earliest);
-        $to       = $request->get('to', $latest);
-        $type     = $request->get('type', '');
-        $text     = $request->get('text', '');
-        $ip       = $request->get('ip', '');
-        $username = $request->get('username', '');
-        $gedc     = $request->get('gedc');
+        $params   = $request->getQueryParams();
+        $action   = $params['action'] ?? '';
+        $from     = $params['from'] ?? $earliest;
+        $to       = $params['to'] ?? $latest;
+        $type     = $params['type'] ?? '';
+        $text     = $params['text'] ?? '';
+        $ip       = $params['ip'] ?? '';
+        $username = $params['username'] ?? '';
+        $gedc     = $params['gedc'] ?? '';
 
         $from = max($from, $earliest);
         $to   = min(max($from, $to), $latest);
@@ -215,7 +216,7 @@ class AdminSiteController extends AbstractBaseController
      */
     public function logsData(ServerRequestInterface $request, DatatablesService $datatables_service): ResponseInterface
     {
-        $query = $this->logsQuery($request);
+        $query = $this->logsQuery($request->getQueryParams());
 
         return $datatables_service->handle($request, $query, [], [], static function (stdClass $row): array {
             return [
@@ -233,19 +234,19 @@ class AdminSiteController extends AbstractBaseController
     /**
      * Generate a query for filtering the site log.
      *
-     * @param ServerRequestInterface $request
+     * @param string[] $params
      *
      * @return Builder
      */
-    private function logsQuery(ServerRequestInterface $request): Builder
+    private function logsQuery(array $params): Builder
     {
-        $from     = $request->get('from');
-        $to       = $request->get('to');
-        $type     = $request->get('type', '');
-        $text     = $request->get('text', '');
-        $ip       = $request->get('ip', '');
-        $username = $request->get('username', '');
-        $gedc     = $request->get('gedc');
+        $from     = $params['from'];
+        $to       = $params['to'];
+        $type     = $params['type'];
+        $text     = $params['text'];
+        $ip       = $params['ip'];
+        $username = $params['username'];
+        $gedc     = $params['gedc'];
 
         $query = DB::table('log')
             ->leftJoin('user', 'user.user_id', '=', 'log.user_id')
@@ -291,7 +292,7 @@ class AdminSiteController extends AbstractBaseController
      */
     public function logsDelete(ServerRequestInterface $request): ResponseInterface
     {
-        $this->logsQuery($request)->delete();
+        $this->logsQuery($request->getParsedBody())->delete();
 
         return response();
     }
@@ -303,7 +304,7 @@ class AdminSiteController extends AbstractBaseController
      */
     public function logsExport(ServerRequestInterface $request): ResponseInterface
     {
-        $content = $this->logsQuery($request)
+        $content = $this->logsQuery($request->getQueryParams())
             ->orderBy('log_id')
             ->get()
             ->map(static function (stdClass $row): string {

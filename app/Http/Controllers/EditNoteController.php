@@ -49,7 +49,7 @@ class EditNoteController extends AbstractEditController
      */
     public function editNoteObject(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getQueryParams()['xref'];
 
         $note = Note::getInstance($xref, $tree);
 
@@ -72,13 +72,13 @@ class EditNoteController extends AbstractEditController
      */
     public function updateNoteObject(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getQueryParams()['xref'];
 
         $note = Note::getInstance($xref, $tree);
 
         Auth::checkNoteAccess($note, true);
 
-        $NOTE = $request->get('NOTE');
+        $NOTE = $request->getParsedBody()['NOTE'];
 
         // "\" and "$" are signficant in replacement strings, so escape them.
         $NOTE = str_replace([
@@ -110,9 +110,10 @@ class EditNoteController extends AbstractEditController
      */
     public function createNoteObjectAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $note                = $request->get('note', '');
-        $privacy_restriction = $request->get('privacy-restriction', '');
-        $edit_restriction    = $request->get('edit-restriction', '');
+        $params              = $request->getParsedBody();
+        $note                = $params['note'];
+        $privacy_restriction = $params['privacy-restriction'];
+        $edit_restriction    = $params['edit-restriction'];
 
         // Convert line endings to GEDDCOM continuations
         $note = preg_replace('/\r|\r\n|\n|\r/', "\n1 CONT ", $note);

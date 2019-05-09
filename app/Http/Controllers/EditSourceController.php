@@ -47,15 +47,16 @@ class EditSourceController extends AbstractEditController
      */
     public function createSourceAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $title               = $request->get('source-title', '');
-        $abbreviation        = $request->get('source-abbreviation', '');
-        $author              = $request->get('source-author', '');
-        $publication         = $request->get('source-publication', '');
-        $repository          = $request->get('source-repository', '');
-        $call_number         = $request->get('source-call-number', '');
-        $text                = $request->get('source-text', '');
-        $privacy_restriction = $request->get('privacy-restriction', '');
-        $edit_restriction    = $request->get('edit-restriction', '');
+        $params              = $request->getParsedBody();
+        $title               = $params['source-title'];
+        $abbreviation        = $params['source-abbreviation'];
+        $author              = $params['source-author'];
+        $publication         = $params['source-publication'];
+        $repository          = $params['source-repository'];
+        $call_number         = $params['source-call-number'];
+        $text                = $params['source-text'];
+        $privacy_restriction = $params['privacy-restriction'];
+        $edit_restriction    = $params['edit-restriction'];
 
         // Fix whitespace
         $title        = trim(preg_replace('/\s+/', ' ', $title));

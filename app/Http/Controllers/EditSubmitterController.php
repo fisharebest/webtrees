@@ -47,10 +47,11 @@ class EditSubmitterController extends AbstractEditController
      */
     public function createSubmitterAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $name                = $request->get('submitter_name', '');
-        $address             = $request->get('submitter_address', '');
-        $privacy_restriction = $request->get('privacy-restriction', '');
-        $edit_restriction    = $request->get('edit-restriction', '');
+        $params              = $request->getParsedBody();
+        $name                = $params['submitter_name'];
+        $address             = $params['submitter_address'];
+        $privacy_restriction = $params['privacy-restriction'];
+        $edit_restriction    = $params['edit-restriction'];
 
         // Fix whitespace
         $name = trim(preg_replace('/\s+/', ' ', $name));

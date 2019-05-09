@@ -112,7 +112,7 @@ class HomePageController extends AbstractBaseController
      */
     public function treePageBlockEdit(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $block_id = (int) $request->get('block_id');
+        $block_id = (int) $request->getQueryParams()['block_id'];
         $block    = $this->treeBlock($request, $tree, $user);
         $title    = $block->title() . ' — ' . I18N::translate('Preferences');
 
@@ -137,7 +137,7 @@ class HomePageController extends AbstractBaseController
     public function treePageBlockUpdate(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         $block    = $this->treeBlock($request, $tree, $user);
-        $block_id = (int) $request->get('block_id');
+        $block_id = (int) $request->getQueryParams()['block_id'];
 
         $block->saveBlockConfiguration($request, $block_id);
 
@@ -155,7 +155,7 @@ class HomePageController extends AbstractBaseController
      */
     private function treeBlock(ServerRequestInterface $request, Tree $tree, UserInterface $user): ModuleBlockInterface
     {
-        $block_id = (int) $request->get('block_id');
+        $block_id = (int) $request->getQueryParams()['block_id'];
 
         $block = DB::table('block')
             ->where('block_id', '=', $block_id)
@@ -359,8 +359,8 @@ class HomePageController extends AbstractBaseController
      */
     public function treePageDefaultUpdate(ServerRequestInterface $request): ResponseInterface
     {
-        $main_blocks = (array) $request->get('main');
-        $side_blocks = (array) $request->get('side');
+        $main_blocks = $request->getParsedBody()['main'] ?? [];
+        $side_blocks = $request->getParsedBody()['side'] ?? [];
 
         $this->updateTreeBlocks(-1, $main_blocks, $side_blocks);
 
@@ -520,8 +520,8 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageDefaultUpdate(ServerRequestInterface $request): ResponseInterface
     {
-        $main_blocks = (array) $request->get('main');
-        $side_blocks = (array) $request->get('side');
+        $main_blocks = $request->getParsedBody()['main'] ?? [];
+        $side_blocks = $request->getParsedBody()['side'] ?? [];
 
         $this->updateUserBlocks(-1, $main_blocks, $side_blocks);
 
@@ -593,7 +593,7 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageUserEdit(ServerRequestInterface $request): ResponseInterface
     {
-        $user_id     = (int) $request->get('user_id');
+        $user_id     = (int) $request->getQueryParams()['user_id'];
         $user        = $this->user_service->find($user_id);
         $main_blocks = $this->userBlocks($user->id(), 'main');
         $side_blocks = $this->userBlocks($user->id(), 'side');
@@ -622,9 +622,9 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageUserUpdate(ServerRequestInterface $request): ResponseInterface
     {
-        $user_id     = (int) $request->get('user_id');
-        $main_blocks = (array) $request->get('main');
-        $side_blocks = (array) $request->get('side');
+        $user_id     = (int) $request->getQueryParams()['user_id'];
+        $main_blocks = $request->getParsedBody()['main'] ?? [];
+        $side_blocks = $request->getParsedBody()['side'] ?? [];
 
         $this->updateUserBlocks($user_id, $main_blocks, $side_blocks);
 

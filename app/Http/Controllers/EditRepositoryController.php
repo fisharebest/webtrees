@@ -47,9 +47,10 @@ class EditRepositoryController extends AbstractEditController
      */
     public function createRepositoryAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $name                = $request->get('repository-name', '');
-        $privacy_restriction = $request->get('privacy-restriction', '');
-        $edit_restriction    = $request->get('edit-restriction', '');
+        $params              = $request->getParsedBody();
+        $name                = $params['repository-name'];
+        $privacy_restriction = $params['privacy-restriction'];
+        $edit_restriction    = $params['edit-restriction'];
 
         // Fix whitespace
         $name = trim(preg_replace('/\s+/', ' ', $name));

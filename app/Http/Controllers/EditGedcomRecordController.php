@@ -194,8 +194,9 @@ class EditGedcomRecordController extends AbstractEditController
      */
     public function editRawFact(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref    = $request->get('xref', '');
-        $fact_id = $request->get('fact_id');
+        $params  = $request->getQueryParams();
+        $xref    = $params['xref'];
+        $fact_id = $params['fact_id'];
         $record  = GedcomRecord::getInstance($xref, $tree);
 
         Auth::checkRecordAccess($record, true);

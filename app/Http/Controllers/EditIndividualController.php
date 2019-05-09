@@ -577,8 +577,9 @@ class EditIndividualController extends AbstractEditController
      */
     public function editName(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $fact_id = $request->get('fact_id', '');
-        $xref    = $request->get('xref', '');
+        $params  = $request->getQueryParams();
+        $fact_id = $params['fact_id'];
+        $xref    = $params['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
 
