@@ -54,8 +54,9 @@ class AdminController extends AbstractBaseController
     {
         $title = I18N::translate('Merge records') . ' — ' . e($tree->title());
 
-        $xref1 = $request->get('xref1', '');
-        $xref2 = $request->get('xref2', '');
+        $params = $request->getQueryParams();
+        $xref1  = $params['xref1'] ?? '';
+        $xref2  = $params['xref2'] ?? '';
 
         $record1 = GedcomRecord::getInstance($xref1, $tree);
         $record2 = GedcomRecord::getInstance($xref2, $tree);
@@ -140,10 +141,10 @@ class AdminController extends AbstractBaseController
      */
     public function mergeRecordsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref1 = $request->get('xref1', '');
-        $xref2 = $request->get('xref2', '');
-        $keep1 = $request->get('keep1', []);
-        $keep2 = $request->get('keep2', []);
+        $xref1 = $request->getQueryParams()['xref1'];
+        $xref2 = $request->getQueryParams()['xref2'];
+        $keep1 = $request->getParsedBody()['keep1'] ?? [];
+        $keep2 = $request->getParsedBody()['keep2'] ?? [];
 
         // Merge record2 into record1
         $record1 = GedcomRecord::getInstance($xref1, $tree);
@@ -283,15 +284,17 @@ class AdminController extends AbstractBaseController
      */
     public function treePrivacyUpdate(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $delete_default_resn_id = (array) $request->get('delete');
+        $params = $request->getParsedBody();
+
+        $delete_default_resn_id = $params['delete'] ?? [];
 
         DB::table('default_resn')
             ->whereIn('default_resn_id', $delete_default_resn_id)
             ->delete();
 
-        $xrefs     = (array) $request->get('xref');
-        $tag_types = (array) $request->get('tag_type');
-        $resns     = (array) $request->get('resn');
+        $xrefs     = $params['xref'] ?? [];
+        $tag_types = $params['tag_type'] ?? [];
+        $resns     = $params['resn'] ?? [];
 
         foreach ($xrefs as $n => $xref) {
             $tag_type = $tag_types[$n];
@@ -333,22 +336,22 @@ class AdminController extends AbstractBaseController
             }
         }
 
-        $tree->setPreference('HIDE_LIVE_PEOPLE', $request->get('HIDE_LIVE_PEOPLE'));
-        $tree->setPreference('KEEP_ALIVE_YEARS_BIRTH', $request->get('KEEP_ALIVE_YEARS_BIRTH', '0'));
-        $tree->setPreference('KEEP_ALIVE_YEARS_DEATH', $request->get('KEEP_ALIVE_YEARS_DEATH', '0'));
-        $tree->setPreference('MAX_ALIVE_AGE', $request->get('MAX_ALIVE_AGE', '100'));
-        $tree->setPreference('REQUIRE_AUTHENTICATION', $request->get('REQUIRE_AUTHENTICATION'));
-        $tree->setPreference('SHOW_DEAD_PEOPLE', $request->get('SHOW_DEAD_PEOPLE'));
-        $tree->setPreference('SHOW_LIVING_NAMES', $request->get('SHOW_LIVING_NAMES'));
-        $tree->setPreference('SHOW_PRIVATE_RELATIONSHIPS', $request->get('SHOW_PRIVATE_RELATIONSHIPS'));
+        $tree->setPreference('HIDE_LIVE_PEOPLE', $params['HIDE_LIVE_PEOPLE']);
+        $tree->setPreference('KEEP_ALIVE_YEARS_BIRTH', $params['KEEP_ALIVE_YEARS_BIRTH']);
+        $tree->setPreference('KEEP_ALIVE_YEARS_DEATH', $params['KEEP_ALIVE_YEARS_DEATH']);
+        $tree->setPreference('MAX_ALIVE_AGE', $params['MAX_ALIVE_AGE']);
+        $tree->setPreference('REQUIRE_AUTHENTICATION', $params['REQUIRE_AUTHENTICATION']);
+        $tree->setPreference('SHOW_DEAD_PEOPLE', $params['SHOW_DEAD_PEOPLE']);
+        $tree->setPreference('SHOW_LIVING_NAMES', $params['SHOW_LIVING_NAMES']);
+        $tree->setPreference('SHOW_PRIVATE_RELATIONSHIPS', $params['SHOW_PRIVATE_RELATIONSHIPS']);
 
         FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($tree->title()), 'success'));
 
         // Coming soon...
-        if ((bool) $request->get('all_trees')) {
+        if ($params['all_trees'] ?? false) {
             FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.', e($tree->title())), 'success');
         }
-        if ((bool) $request->get('new_trees')) {
+        if ($params['new_trees'] ?? false) {
             FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.', e($tree->title())), 'success');
         }
 

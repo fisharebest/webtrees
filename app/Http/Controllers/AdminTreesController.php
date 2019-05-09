@@ -360,8 +360,9 @@ class AdminTreesController extends AbstractBaseController
      */
     public function create(ServerRequestInterface $request): ResponseInterface
     {
-        $tree_name  = $request->get('tree_name', '');
-        $tree_title = $request->get('tree_title', '');
+        $params     = $request->getParsedBody();
+        $tree_name  = $params['tree_name'];
+        $tree_title = $params['tree_title'];
 
         // We use the tree name as a file name, so no directory separators allowed.
         $tree_name = basename($tree_name);
@@ -438,12 +439,12 @@ class AdminTreesController extends AbstractBaseController
      */
     public function exportClient(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        // Validate user parameters
-        $convert          = (bool) $request->get('convert');
-        $zip              = (bool) $request->get('zip');
-        $media            = (bool) $request->get('media');
-        $media_path       = $request->get('media-path', '');
-        $privatize_export = $request->get('privatize_export', '');
+        $params           = $request->getQueryParams();
+        $convert          = (bool) ($params['convert'] ?? false);
+        $zip              = (bool) ($params['zip'] ?? false);
+        $media            = (bool) ($params['media'] ?? false);
+        $media_path       = $params['media-path'] ?? '';
+        $privatize_export = $params['privatize_export'];
 
         $access_levels = [
             'gedadmin' => Auth::PRIV_NONE,
@@ -579,10 +580,11 @@ class AdminTreesController extends AbstractBaseController
      */
     public function importAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $source             = $request->get('source');
-        $keep_media         = (bool) $request->get('keep_media');
-        $WORD_WRAPPED_NOTES = (bool) $request->get('WORD_WRAPPED_NOTES');
-        $GEDCOM_MEDIA_PATH  = $request->get('GEDCOM_MEDIA_PATH');
+        $params             = $request->getParsedBody();
+        $source             = $params['source'];
+        $keep_media         = (bool) ($params['keep_media'] ?? false);
+        $WORD_WRAPPED_NOTES = (bool) ($params['WORD_WRAPPED_NOTES'] ?? false);
+        $GEDCOM_MEDIA_PATH  = $params['GEDCOM_MEDIA_PATH'];
 
         // Save these choices as defaults
         $tree->setPreference('keep_media', $keep_media ? '1' : '0');
@@ -604,7 +606,7 @@ class AdminTreesController extends AbstractBaseController
         }
 
         if ($source === 'server') {
-            $basename = basename($request->get('tree_name'));
+            $basename = basename($params['tree_name'] ?? '');
 
             if ($basename) {
                 $stream = app(StreamFactoryInterface::class)->createStreamFromFile(WT_DATA_DIR . $basename);
@@ -683,8 +685,9 @@ class AdminTreesController extends AbstractBaseController
      */
     public function merge(ServerRequestInterface $request): ResponseInterface
     {
-        $tree1_name = $request->get('tree1_name');
-        $tree2_name = $request->get('tree2_name');
+        $params = $request->getQueryParams();
+        $tree1_name = $params['tree1_name'] ?? '';
+        $tree2_name = $params['tree2_name'] ?? '';
 
         $tree1 = Tree::findByName($tree1_name);
         $tree2 = Tree::findByName($tree2_name);
@@ -715,8 +718,9 @@ class AdminTreesController extends AbstractBaseController
      */
     public function mergeAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree1_name = $request->get('tree1_name');
-        $tree2_name = $request->get('tree2_name');
+        $params = $request->getParsedBody();
+        $tree1_name = $params['tree1_name'] ?? '';
+        $tree2_name = $params['tree2_name'] ?? '';
 
         $tree1 = Tree::findByName($tree1_name);
         $tree2 = Tree::findByName($tree2_name);
@@ -921,8 +925,9 @@ class AdminTreesController extends AbstractBaseController
      */
     public function places(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $search  = $request->get('search', '');
-        $replace = $request->get('replace', '');
+        $params  = $request->getQueryParams();
+        $search  = $params['search'] ?? '';
+        $replace = $params['replace'] ?? '';
 
         if ($search !== '' && $replace !== '') {
             $changes = $this->changePlacesPreview($tree, $search, $replace);
@@ -949,8 +954,9 @@ class AdminTreesController extends AbstractBaseController
      */
     public function placesAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $search  = $request->get('search', '');
-        $replace = $request->get('replace', '');
+        $params  = $request->getQueryParams();
+        $search  = $params['search'] ?? '';
+        $replace = $params['replace'] ?? '';
 
         $changes = $this->changePlacesUpdate($tree, $search, $replace);
 
@@ -1788,7 +1794,7 @@ class AdminTreesController extends AbstractBaseController
      */
     public function unconnected(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $associates = (bool) $request->get('associates');
+        $associates = (bool) ($request->getQueryParams()['associates'] ?? false);
 
         if ($associates) {
             $links = ['FAMS', 'FAMC', 'ASSO', '_ASSO'];

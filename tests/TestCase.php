@@ -22,12 +22,12 @@ use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Controllers\GedcomFileController;
-use Fisharebest\Webtrees\Http\Request;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UserService;
+use GuzzleHttp\Psr7\ServerRequest;
 use Illuminate\Cache\ArrayStore;
 use Illuminate\Cache\Repository;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -85,7 +85,7 @@ class TestCase extends \PHPUnit\Framework\TestCase implements StatusCodeInterfac
         app()->instance(UserService::class, new UserService());
         app()->instance(UserInterface::class, new GuestUser());
 
-        app()->instance(ServerRequestInterface::class, Request::create('http://localhost/index.php'));
+        app()->instance(ServerRequestInterface::class, new ServerRequest('GET', 'http://localhost/index.php'));
         app()->instance(Filesystem::class, new Filesystem(new MemoryAdapter()));
 
         app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);

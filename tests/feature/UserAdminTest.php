@@ -18,10 +18,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Http\Controllers\Admin\UsersController;
-use Fisharebest\Webtrees\Http\Request;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
+use Nyholm\Psr7\ServerRequest;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
@@ -68,10 +68,11 @@ class UserAdminTest extends TestCase
     public function testFilteringUserAdminPage(): void
     {
         $user_service = new UserService();
-        $admin = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
+        $admin        = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $request = new Request(['search' => ['value' => 'admin']]);
+        $request = new ServerRequest('GET', '/');
+        $request = $request->withQueryParams(['search' => ['value' => 'admin']]);
         app()->instance(ServerRequestInterface::class, $request);
 
         $controller = new UsersController(new ModuleService(), new UserService());
@@ -97,10 +98,11 @@ class UserAdminTest extends TestCase
     public function testPaginatingUserAdminPage(): void
     {
         $user_service = new UserService();
-        $admin = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
+        $admin        = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $request = new Request(['length' => 1]);
+        $request = new ServerRequest('GET', '/');
+        $request = $request->withQueryParams(['length' => 1]);
         app()->instance(ServerRequestInterface::class, $request);
 
         $controller = new UsersController(new ModuleService(), new UserService());
@@ -122,10 +124,11 @@ class UserAdminTest extends TestCase
     public function testSortingUserAdminPage(): void
     {
         $user_service = new UserService();
-        $admin = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
+        $admin        = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $request = new Request(['order' => [['column' => 2, 'dir' => 'asc']]]);
+        $request = new ServerRequest('GET', '/');
+        $request = $request->withQueryParams(['column' => 2, 'dir' => 'asc']);
         app()->instance(ServerRequestInterface::class, $request);
 
         $controller = new UsersController(new ModuleService(), new UserService());
@@ -139,7 +142,8 @@ class UserAdminTest extends TestCase
         $pos2 = strpos($html, 'UserName');
         $this->assertLessThan($pos2, $pos1);
 
-        $request = new Request(['order' => [['column' => 2, 'dir' => 'desc']]]);
+        $request = new ServerRequest('GET', '/');
+        $request = $request->withQueryParams(['order' => [['column' => 2, 'dir' => 'desc']]]);
         app()->instance(ServerRequestInterface::class, $request);
 
         $controller = new UsersController(new ModuleService(), new UserService());

@@ -225,9 +225,10 @@ class EditGedcomRecordController extends AbstractEditController
      */
     public function editRawFactAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref    = $request->get('xref', '');
-        $fact_id = $request->get('fact_id');
-        $gedcom  = $request->get('gedcom');
+        $params  = $request->getParsedBody();
+        $xref    = $params['xref'];
+        $fact_id = $params['fact_id'];
+        $gedcom  = $params['gedcom'];
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
@@ -255,7 +256,7 @@ class EditGedcomRecordController extends AbstractEditController
      */
     public function editRawRecord(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref   = $request->get('xref', '');
+        $xref   = $request->getQueryParams()['xref'];
         $record = GedcomRecord::getInstance($xref, $tree);
 
         Auth::checkRecordAccess($record, true);
@@ -276,9 +277,10 @@ class EditGedcomRecordController extends AbstractEditController
      */
     public function editRawRecordAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref     = $request->get('xref', '');
-        $facts    = (array) $request->get('fact');
-        $fact_ids = (array) $request->get('fact_id');
+        $params   = $request->getParsedBody();
+        $xref     = $params['xref'];
+        $facts    = $params['fact'] ?? [];
+        $fact_ids = $params['fact_id'] ?? [];
         $record   = GedcomRecord::getInstance($xref, $tree);
 
         Auth::checkRecordAccess($record, true);

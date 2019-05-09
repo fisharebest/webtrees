@@ -180,11 +180,6 @@ class Webtrees
             app(StreamFactoryInterface::class)
         );
 
-        // Until all the code is rewritten to use PSR-7 requests, we still need our hybrid request.
-        if (class_exists(Request::class)) {
-            return Request::createFromGlobals();
-        }
-
         return $server_request_creator->fromGlobals();
     }
 

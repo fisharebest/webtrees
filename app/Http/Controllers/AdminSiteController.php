@@ -118,7 +118,7 @@ class AdminSiteController extends AbstractBaseController
      */
     public function cleanDataAction(ServerRequestInterface $request, FilesystemInterface $filesystem): ResponseInterface
     {
-        $to_delete = (array) $request->get('to_delete');
+        $to_delete = $request->getParsedBody()['to_delete'] ?? [];
         $to_delete = array_filter($to_delete);
 
         foreach ($to_delete as $path) {
@@ -385,16 +385,18 @@ class AdminSiteController extends AbstractBaseController
      */
     public function mailSave(ServerRequestInterface $request): ResponseInterface
     {
-        Site::setPreference('SMTP_ACTIVE', $request->get('SMTP_ACTIVE'));
-        Site::setPreference('SMTP_FROM_NAME', $request->get('SMTP_FROM_NAME'));
-        Site::setPreference('SMTP_HOST', $request->get('SMTP_HOST'));
-        Site::setPreference('SMTP_PORT', $request->get('SMTP_PORT'));
-        Site::setPreference('SMTP_AUTH', $request->get('SMTP_AUTH'));
-        Site::setPreference('SMTP_AUTH_USER', $request->get('SMTP_AUTH_USER'));
-        Site::setPreference('SMTP_SSL', $request->get('SMTP_SSL'));
-        Site::setPreference('SMTP_HELO', $request->get('SMTP_HELO'));
-        if ($request->get('SMTP_AUTH_PASS', '') !== '') {
-            Site::setPreference('SMTP_AUTH_PASS', $request->get('SMTP_AUTH_PASS'));
+        $params = $request->getParsedBody();
+
+        Site::setPreference('SMTP_ACTIVE', $params['SMTP_ACTIVE']);
+        Site::setPreference('SMTP_FROM_NAME', $params['SMTP_FROM_NAME']);
+        Site::setPreference('SMTP_HOST', $params['SMTP_HOST']);
+        Site::setPreference('SMTP_PORT', $params['SMTP_PORT']);
+        Site::setPreference('SMTP_AUTH', $params['SMTP_AUTH']);
+        Site::setPreference('SMTP_AUTH_USER', $params['SMTP_AUTH_USER']);
+        Site::setPreference('SMTP_SSL', $params['SMTP_SSL']);
+        Site::setPreference('SMTP_HELO', $params['SMTP_HELO']);
+        if ($params['SMTP_AUTH_PASS'] !== '') {
+            Site::setPreference('SMTP_AUTH_PASS', $params['SMTP_AUTH_PASS']);
         }
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
@@ -437,7 +439,9 @@ class AdminSiteController extends AbstractBaseController
      */
     public function preferencesSave(ServerRequestInterface $request): ResponseInterface
     {
-        $INDEX_DIRECTORY = $request->get('INDEX_DIRECTORY');
+        $params = $request->getParsedBody();
+
+        $INDEX_DIRECTORY = $params['INDEX_DIRECTORY'];
         if (substr($INDEX_DIRECTORY, -1) !== '/') {
             $INDEX_DIRECTORY .= '/';
         }
@@ -447,9 +451,9 @@ class AdminSiteController extends AbstractBaseController
             FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', e($INDEX_DIRECTORY)), 'danger');
         }
 
-        Site::setPreference('THEME_DIR', $request->get('THEME_DIR'));
-        Site::setPreference('ALLOW_CHANGE_GEDCOM', (string) (bool) $request->get('ALLOW_CHANGE_GEDCOM'));
-        Site::setPreference('TIMEZONE', $request->get('TIMEZONE'));
+        Site::setPreference('THEME_DIR', $params['THEME_DIR']);
+        Site::setPreference('ALLOW_CHANGE_GEDCOM', $params['ALLOW_CHANGE_GEDCOM']);
+        Site::setPreference('TIMEZONE', $params['TIMEZONE']);
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
         $url = route('admin-control-panel');
@@ -495,10 +499,12 @@ class AdminSiteController extends AbstractBaseController
      */
     public function registrationSave(ServerRequestInterface $request): ResponseInterface
     {
-        Site::setPreference('WELCOME_TEXT_AUTH_MODE', $request->get('WELCOME_TEXT_AUTH_MODE'));
-        Site::setPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE, $request->get('WELCOME_TEXT_AUTH_MODE_4'));
-        Site::setPreference('USE_REGISTRATION_MODULE', (string) (bool) $request->get('USE_REGISTRATION_MODULE'));
-        Site::setPreference('SHOW_REGISTER_CAUTION', (string) (bool) $request->get('SHOW_REGISTER_CAUTION'));
+        $params = $request->getParsedBody();
+
+        Site::setPreference('WELCOME_TEXT_AUTH_MODE', $params['WELCOME_TEXT_AUTH_MODE']);
+        Site::setPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE, $params['WELCOME_TEXT_AUTH_MODE_4']);
+        Site::setPreference('USE_REGISTRATION_MODULE', $params['USE_REGISTRATION_MODULE']);
+        Site::setPreference('SHOW_REGISTER_CAUTION', $params['SHOW_REGISTER_CAUTION']);
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
         $url = route('admin-control-panel');
