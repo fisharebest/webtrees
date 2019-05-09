@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2018-01-07 23:38+0000\n"
+"PO-Revision-Date: 2019-05-09 18:56+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/sv/>\n"
+"Language-Team: Swedish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -5343,7 +5343,7 @@ msgstr "Varje källa registrerar specifika händelser, i allmänhet för ett vis
 
 #: help_text.php:314
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr "Varje användarkonto har ett alternativ att \"automatiskt acceptera ändringar\". När detta har aktiverats, sparas användarens eventuella ändringar omedelbart. Många administratörer aktivera detta för sitt eget användarkonto."
+msgstr "Varje användarkonto har ett alternativ att ”automatiskt acceptera ändringar”. När detta har aktiverats, sparas användarens eventuella ändringar omedelbart. Många administratörer aktivera detta för sitt eget användarkonto."
 
 #: statistics.php:129
 msgid "Earliest birth"
@@ -11318,7 +11318,7 @@ msgstr "Senaste ändringar"
 
 #: calendar.php:234
 msgid "Recent years (&lt; 100 yrs)"
-msgstr "Senare år(< 100 år)"
+msgstr "Senare år (< 100 år)"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:311
@@ -14329,22 +14329,22 @@ msgstr "Detta är en lista med GEDCOM-fakta som dina användare kan lägga till 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1786
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr "Detta är en lista med GEDCOM-fakta som dina användare kan lägga till endast <u>en gång</u> till en familj. Du kan modifiera denna lista genom att ta bort eller lägga till faktanamn, även egna, efter behov. Faktanamn som visas i denna lista får inte också finnas i <i>Familj lägg till fakta</i>-listan."
+msgstr "Detta är en lista med GEDCOM-fakta som dina användare kan lägga till endast en gång till en familj. Till exempel, om MARR finns i den här listan, kan användare inte lägga till mer än en MARR-post till en familj. Faktanamn som visas i denna lista får inte också finnas i ”Alla personfakta”-listan."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: admin_trees_config.php:1668
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr "Detta är listan över GEDCOM-fakta som dina användare enbart kan lägga till <u>en gång</u> för personer. T.ex. om Födelse är i denna lista kommer användare enbart att kunna lägga till en födelsepost till personen. Faktanamn som förekommer i denna lista får inte också förekomma i <i>Person lägg till fakta</i>-listan."
+msgstr "Detta är listan över GEDCOM-fakta som dina användare enbart kan lägga till en gång för personer. T.ex. om Födelse är i denna lista kommer användare enbart att kunna lägga till en födelsepost till personen. Faktanamn som förekommer i denna lista får inte också förekomma i ”Alla personfakta”-listan."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: admin_trees_config.php:1993
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr "Detta är en lista med GEDCOM-fakta som dina användare kan lägga till endast <u>en gång</u> till ett arkiv. Du kan modifiera denna lista genom att ta bort eller lägga till faktanamn, även egna, efter behov. Faktanamn som visas i denna lista får inte också finnas i <i>Arkiv lägg till fakta</i>-listan."
+msgstr "Detta är en lista med GEDCOM-fakta som dina användare kan lägga till endast en gång till ett arkiv. Till exempel om NAME finns i den här listan kan användare inte lägga till mer än en NAME-post i ett arkiv. Faktanamn som visas i denna lista får inte också finnas i ”Alla arkivfakta”-listan."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:1904
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr "Detta är en lista av GEDCOM fakta som dina användare kan lägga till endast <u>en gång</u> till en källa. Du kan modifiera denna lista genom att ta bort eller lägga till fakta namn, även egna, efter behov. Fakta namn som visas i denna lista får inte finnas i <i>Källa lägg till fakta</i>-listan."
+msgstr "Detta är en lista av GEDCOM fakta som dina användare kan lägga till endast en gång till en källa. Om till exempel TITL finns i den här listan, kan användare inte lägga till mer än en TITL-post i en källa. Fakta namn som visas i denna lista får inte finnas i ”Alla källfakta”-listan."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:355
@@ -14428,7 +14428,7 @@ msgstr "Det bör vara minst sex tecken. Det är skiftlägeskänsligt."
 #. I18N: Help text for the “Sender name” site configuration setting
 #: admin_site_config.php:340
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr "Detta namn används i ”Från”-fältet när automatiska mejl skickas från denna server."
+msgstr "Detta namn används i ”Från”-fältet, när automatiska mejl skickas från denna server."
 
 #: note.php:61
 msgid "This note does not exist or you do not have permission to view it."
@@ -15759,7 +15759,7 @@ msgstr "När en post redigeras, registreras användaren och tidsstämpeln. Iblan
 
 #: admin_users.php:388
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "När en användare registrerar sig för ett konto, sänds ett e-postmeddelande till användarens adress med en verifieringslänk. När användaren klickar på länken, vet vi att e-postadressen är korrekt och ”E-post verifierad” markeras automatiskt."
+msgstr "När en användare registrerar sig för ett konto, sänds ett e-postmeddelande till användarens adress med en verifieringslänk. När användaren klickar på länken, vet vi att e-postadressen är korrekt och ”e-post verifierad” markeras automatiskt."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
@@ -16187,7 +16187,7 @@ msgstr "Från din serveradministratör får du nödvändig anslutningsinformatio
 
 #: app/Module/BatchUpdateModule.php:228
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr "Ditt användarkonto har inte \" automatiskt acceptera förändringar \" aktiverad . Du kommer bara att kunna ändra en post i taget."
+msgstr "Ditt användarkonto har inte ”automatiskt acceptera förändringar” aktiverad. Du kommer bara att kunna ändra en post i taget."
 
 #: admin.php:571
 #, php-format
@@ -19848,12 +19848,12 @@ msgstr "10. kusin"
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:85
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
-msgstr "databasanslutningens inställningar i filen “/data/config.ini.php” är fortfarande riktiga"
+msgstr "databasanslutningens inställningar i filen ”/data/config.ini.php” är fortfarande riktiga"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:88
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
-msgstr "mappen “/data” och filen “/data/config.ini.php” har åtkomsträttigheter som tillåter webbservern att läsa dem"
+msgstr "mappen ”/data” och filen ”/data/config.ini.php” har åtkomsträttigheter som tillåter webbservern att läsa dem"
 
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Functions/Functions.php:281
