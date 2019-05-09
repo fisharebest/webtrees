@@ -143,7 +143,7 @@ class SearchController extends AbstractBaseController
      */
     public function quick(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $query = $request->get('query', '');
+        $query = $request->getQueryParams()['query'] ?? '';
 
         // Was the search query an XREF in the current tree?
         // If so, go straight to it.
@@ -166,14 +166,16 @@ class SearchController extends AbstractBaseController
      */
     public function general(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $query = $request->get('query', '');
+        $params = $request->getQueryParams();
+
+        $query = $params['query'] ?? '';
 
         // What type of records to search?
-        $search_individuals  = (bool) $request->get('search_individuals');
-        $search_families     = (bool) $request->get('search_families');
-        $search_repositories = (bool) $request->get('search_repositories');
-        $search_sources      = (bool) $request->get('search_sources');
-        $search_notes        = (bool) $request->get('search_notes');
+        $search_individuals  = (bool) ($params['search_individuals'] ?? false);
+        $search_families     = (bool) ($params['search_families'] ?? false);
+        $search_repositories = (bool) ($params['search_repositories'] ?? false);
+        $search_sources      = (bool) ($params['search_sources'] ?? false);
+        $search_notes        = (bool) ($params['search_notes'] ?? false);
 
         // Default to individuals only
         if (!$search_individuals && !$search_families && !$search_repositories && !$search_sources && !$search_notes) {
@@ -190,7 +192,7 @@ class SearchController extends AbstractBaseController
             $all_trees = [$tree];
         }
 
-        $search_tree_names = (array) $request->get('search_trees', []);
+        $search_tree_names = $params['search_trees'] ?? [];
 
         $search_trees = array_filter($all_trees, static function (Tree $tree) use ($search_tree_names): bool {
             return in_array($tree->name(), $search_tree_names, true);
@@ -307,10 +309,12 @@ class SearchController extends AbstractBaseController
      */
     public function phonetic(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $firstname = $request->get('firstname', '');
-        $lastname  = $request->get('lastname', '');
-        $place     = $request->get('place', '');
-        $soundex   = $request->get('soundex', 'Russell');
+        $params = $request->getQueryParams();
+
+        $firstname = $params['firstname'] ?? '';
+        $lastname  = $params['lastname'] ?? '';
+        $place     = $params['place'] ?? '';
+        $soundex   = $params['soundex'] ?? 'Russell';
 
         // What trees to seach?
         if (Site::getPreference('ALLOW_CHANGE_GEDCOM') === '1') {
@@ -319,7 +323,7 @@ class SearchController extends AbstractBaseController
             $all_trees = [$tree];
         }
 
-        $search_tree_names = (array) $request->get('search_trees', []);
+        $search_tree_names = $params['search_trees'] ?? [];
 
         $search_trees = array_filter($all_trees, static function (Tree $tree) use ($search_tree_names): bool {
             return in_array($tree->name(), $search_tree_names, true);
@@ -354,9 +358,11 @@ class SearchController extends AbstractBaseController
      */
     public function replace(ServerRequestInterface $request): ResponseInterface
     {
-        $search  = $request->get('search', '');
-        $replace = $request->get('replace', '');
-        $context = $request->get('context', '');
+        $params = $request->getQueryParams();
+
+        $search  = $params['search'] ?? '';
+        $replace = $params['replace'] ?? '';
+        $context = $params['context'] ?? '';
 
         if ($context !== 'name' && $context !== 'place') {
             $context = 'all';
@@ -382,9 +388,11 @@ class SearchController extends AbstractBaseController
      */
     public function replaceAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $search  = $request->get('search', '');
-        $replace = $request->get('replace', '');
-        $context = $request->get('context', '');
+        $params = $request->getParsedBody();
+
+        $search  = $params['search'] ?? '';
+        $replace = $params['replace'] ?? '';
+        $context = $params['context'] ?? '';
 
         switch ($context) {
             case 'all':
@@ -538,10 +546,12 @@ class SearchController extends AbstractBaseController
     {
         $default_fields = array_fill_keys(self::DEFAULT_ADVANCED_FIELDS, '');
 
-        $fields      = $request->get('fields', $default_fields);
-        $modifiers   = $request->get('modifiers', []);
-        $other_field = $request->get('other_field', '');
-        $other_value = $request->get('other_value', '');
+        $params = $request->getQueryParams();
+
+        $fields      = $params['fields'] ?? $default_fields;
+        $modifiers   = $params['modifiers'] ?? [];
+        $other_field = $params['other_field'] ?? '';
+        $other_value = $params['other_value'] ?? '';
 
         if ($other_field !== '' && $other_value !== '') {
             $fields[$other_field] = $other_value;

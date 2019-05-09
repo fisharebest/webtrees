@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use function explode;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Date;
@@ -74,7 +75,7 @@ class IndividualController extends AbstractBaseController
      */
     public function show(ServerRequestInterface $request, Tree $tree, ClipboardService $clipboard_service): ResponseInterface
     {
-        $xref       = $request->get('xref', '');
+        $xref       = $request->getQueryParams()['xref'];
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual, false);
@@ -149,9 +150,9 @@ class IndividualController extends AbstractBaseController
      */
     public function tab(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $xref        = $request->get('xref', '');
+        $xref        = $request->getQueryParams()['xref'];
         $record      = Individual::getInstance($xref, $tree);
-        $module_name = $request->get('module');
+        $module_name = $request->getQueryParams()['module'];
         $module      = $this->module_service->findByName($module_name);
 
         Auth::checkIndividualAccess($record);
@@ -376,19 +377,14 @@ class IndividualController extends AbstractBaseController
      */
     private function significant(Individual $individual): stdClass
     {
-        $significant = (object) [
-            'family'     => null,
+        [$surname] = explode(',', $individual->sortName());
+
+        $family = $individual->childFamilies()->merge($individual->spouseFamilies())->first();
+
+        return (object) [
+            'family'     => $family,
             'individual' => $individual,
-            'surname'    => '',
+            'surname'    => $surname,
         ];
-
-        [$significant->surname] = explode(',', $individual->sortName());
-
-        foreach ($individual->childFamilies()->merge($individual->spouseFamilies()) as $family) {
-            $significant->family = $family;
-            break;
-        }
-
-        return $significant;
     }
 }

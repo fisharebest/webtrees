@@ -60,7 +60,7 @@ class CensusAssistantModule extends AbstractModule
      */
     public function getCensusHeaderAction(ServerRequestInterface $request): ResponseInterface
     {
-        $census = $request->get('census');
+        $census = $request->getQueryParams()['census'];
 
         $html = $this->censusTableHeader(new $census());
 
@@ -75,10 +75,10 @@ class CensusAssistantModule extends AbstractModule
      */
     public function getCensusIndividualAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $census = $request->get('census', '');
-
-        $individual = Individual::getInstance($request->get('xref', ''), $tree);
-        $head       = Individual::getInstance($request->get('head', ''), $tree);
+        $params     = $request->getQueryParams();
+        $individual = Individual::getInstance($params['xref'], $tree);
+        $head       = Individual::getInstance($params['head'], $tree);
+        $census     = $params['census'];
 
         if ($individual instanceof Individual && $head instanceof Individual) {
             $html = $this->censusTableRow(new $census(), $individual, $head);
@@ -112,12 +112,14 @@ class CensusAssistantModule extends AbstractModule
      */
     public function updateCensusAssistant(ServerRequestInterface $request, Individual $individual, string $fact_id, string $newged, bool $keep_chan): string
     {
-        $ca_title       = $request->get('ca_title', '');
-        $ca_place       = $request->get('ca_place', '');
-        $ca_citation    = $request->get('ca_citation', '');
-        $ca_individuals = (array) $request->get('ca_individuals');
-        $ca_notes       = $request->get('ca_notes', '');
-        $ca_census      = $request->get('ca_census', '');
+        $params = $request->getParsedBody();
+
+        $ca_title       = $params['ca_title'] ?? '';
+        $ca_place       = $params['ca_place'] ?? '';
+        $ca_citation    = $params['ca_citation'] ?? '';
+        $ca_individuals = $params['ca_individuals'] ?? [];
+        $ca_notes       = $params['ca_notes'] ?? '';
+        $ca_census      = $params['ca_census'] ?? '';
 
         if ($ca_census !== '' && !empty($ca_individuals)) {
             $census = new $ca_census();

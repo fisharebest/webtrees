@@ -32,9 +32,9 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
-use function intdiv;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function intdiv;
 
 /**
  * Class PedigreeMapModule
@@ -68,8 +68,8 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
         // Light green
     ];
 
-    private static $map_providers  = null;
-    private static $map_selections = null;
+    private static $map_providers;
+    private static $map_selections;
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -155,7 +155,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
      */
     public function getMapDataAction(ServerRequestInterface $request, Tree $tree, ChartService $chart_service): ResponseInterface
     {
-        $xref        = $request->get('reference');
+        $xref        = $request->getQueryParams()['reference'];
         $indi        = Individual::getInstance($xref, $tree);
         $color_count = count(self::LINE_COLORS);
 
@@ -235,9 +235,9 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
      */
     private function getPedigreeMapFacts(ServerRequestInterface $request, Tree $tree, ChartService $chart_service): array
     {
-        $xref        = $request->get('reference');
+        $xref        = $request->getQueryParams()['reference'];
         $individual  = Individual::getInstance($xref, $tree);
-        $generations = (int) $request->get('generations', '4');
+        $generations = (int) $request->getQueryParams()['generations'];
         $ancestors   = $chart_service->sosaStradonitzAncestors($individual, $generations);
         $facts       = [];
         foreach ($ancestors as $sosa => $person) {
@@ -397,9 +397,9 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
      */
     public function getPedigreeMapAction(ServerRequestInterface $request, Tree $tree)
     {
-        $xref        = $request->get('xref', '');
+        $xref        = $request->getQueryParams()['xref'];
         $individual  = Individual::getInstance($xref, $tree);
-        $generations = $request->get('generations', self::DEFAULT_GENERATIONS);
+        $generations = $request->getQueryParams()['generations'] ?? self::DEFAULT_GENERATIONS;
 
         if ($individual === null) {
             throw new IndividualNotFoundException();

@@ -309,8 +309,8 @@ class EditGedcomRecordController extends AbstractEditController
      */
     public function addFact(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
-        $fact = $request->get('fact', '');
+        $xref = $request->getQueryParams()['xref'];
+        $fact = $request->getQueryParams()['fact'];
 
         $record = GedcomRecord::getInstance($xref, $tree);
         Auth::checkRecordAccess($record, true);
@@ -333,8 +333,8 @@ class EditGedcomRecordController extends AbstractEditController
      */
     public function editFact(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref    = $request->get('xref', '');
-        $fact_id = $request->get('fact_id', '');
+        $xref    = $request->getQueryParams()['xref'];
+        $fact_id = $request->getQueryParams()['fact_id'];
 
         $record = GedcomRecord::getInstance($xref, $tree);
         Auth::checkRecordAccess($record, true);
@@ -372,18 +372,20 @@ class EditGedcomRecordController extends AbstractEditController
      */
     public function updateFact(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref    = $request->get('xref', '');
-        $fact_id = $request->get('fact_id', '');
+        $xref    = $request->getQueryParams()['xref'];
+        $fact_id = $request->getParsedBody()['fact_id'] ?? '';
 
         $record = GedcomRecord::getInstance($xref, $tree);
         Auth::checkRecordAccess($record, true);
 
-        $keep_chan = (bool) $request->get('keep_chan');
+        $params = $request->getParsedBody();
 
-        $this->glevels = $request->get('glevels', []);
-        $this->tag     = $request->get('tag', []);
-        $this->text    = $request->get('text', []);
-        $this->islink  = $request->get('islink', []);
+        $keep_chan = (bool) ($params['keep_chan'] ?? false);
+
+        $this->glevels = $params['glevels'];
+        $this->tag     = $params['tag'];
+        $this->text    = $params['text'];
+        $this->islink  = $params['islink'];
 
         // If the fact has a DATE or PLAC, then delete any value of Y
         if ($this->text[0] === 'Y') {
@@ -396,8 +398,11 @@ class EditGedcomRecordController extends AbstractEditController
         }
 
         $newged = '';
-        if (!empty($_POST['NAME'])) {
-            $newged     .= "\n1 NAME " . $_POST['NAME'];
+
+        $NAME = $params['NAME'] ?? '';
+
+        if ($NAME !== '') {
+            $newged     .= "\n1 NAME " . $NAME;
             $name_facts = [
                 'TYPE',
                 'NPFX',
@@ -408,8 +413,9 @@ class EditGedcomRecordController extends AbstractEditController
                 'NSFX',
             ];
             foreach ($name_facts as $name_fact) {
-                if (!empty($_POST[$name_fact])) {
-                    $newged .= "\n2 " . $name_fact . ' ' . $_POST[$name_fact];
+                $NAME_FACT = $params[$name_fact] ?? '';
+                if ($NAME_FACT !== '') {
+                    $newged .= "\n2 " . $name_fact . ' ' . $NAME_FACT;
                 }
             }
         }
@@ -417,12 +423,13 @@ class EditGedcomRecordController extends AbstractEditController
         $newged = $this->handleUpdates($newged);
 
         // Add new names after existing names
-        if (!empty($_POST['NAME'])) {
+        if ($NAME !== '') {
             preg_match_all('/[_0-9A-Z]+/', $tree->getPreference('ADVANCED_NAME_FACTS'), $match);
             $name_facts = array_unique(array_merge(['_MARNM'], $match[0]));
             foreach ($name_facts as $name_fact) {
+                $NAME_FACT = $params[$name_fact] ?? '';
                 // Ignore advanced facts that duplicate standard facts.
-                if (!in_array($name_fact, [
+                if ($NAME_FACT !== '' && !in_array($name_fact, [
                         'TYPE',
                         'NPFX',
                         'GIVN',
@@ -430,8 +437,8 @@ class EditGedcomRecordController extends AbstractEditController
                         'SPFX',
                         'SURN',
                         'NSFX',
-                    ]) && !empty($_POST[$name_fact])) {
-                    $newged .= "\n2 " . $name_fact . ' ' . $_POST[$name_fact];
+                    ], true)) {
+                    $newged .= "\n2 " . $name_fact . ' ' . $NAME_FACT;
                 }
             }
         }
@@ -446,7 +453,7 @@ class EditGedcomRecordController extends AbstractEditController
         $record->updateFact($fact_id, $newged, !$keep_chan);
 
         // For the GEDFact_assistant module
-        $pid_array = $request->get('pid_array', '');
+        $pid_array = $request->getParsedBody()['pid_array'] ?? '';
         if ($pid_array) {
             foreach (explode(',', $pid_array) as $pid) {
                 if ($pid !== $xref) {
