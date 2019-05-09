@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-05-08 13:30+0000\n"
+"PO-Revision-Date: 2019-05-09 14:15+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/he/>\n"
 "Language: he\n"
@@ -1047,7 +1047,7 @@ msgstr "קו זמן המציג ארועים של אדם."
 
 #: admin_users.php:397
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "משתמש לא יוכל להתחבר עד שאופציות ”דוא״ל אומת” ו”אושר על ידי מנהל מערכת” יבחרו."
+msgstr "משתמש לא יוכל להתחבר עד שאופציות \"דוא״ל אומת\" ו\"אושר על ידי מנהל מערכת\" יבחרו."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1105
@@ -1701,7 +1701,7 @@ msgstr "לאחר יצירת עץ המשפחה, תוכל לייבא נתונים 
 
 #: login.php:260
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-msgstr "אחרי שהתחברת, בחר בקישור ”המשתמש שלי” מתחת לתפריט ”הדף שלי” ומלא את שדות הסיסמה כדי לשנות את הסיסמה שלך."
+msgstr "אחרי שהתחברת, בחר בקישור \"המשתמש שלי\" מתחת לתפריט \"הדף שלי\" ומלא את שדות הסיסמה כדי לשנות את הסיסמה שלך."
 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:230
@@ -3466,15 +3466,15 @@ msgstr "החלף דגל"
 
 #: admin_users.php:216
 msgid "Change the blocks on this user’s “My page”"
-msgstr "שנה הבלוקים של משתמש זה ב”דף שלי”"
+msgstr "שנה הבלוקים של משתמש זה ב\"דף שלי\""
 
 #: admin_trees_manage.php:408 index_edit.php:50
 msgid "Change the “Home page” blocks"
-msgstr "שנה הבלוקים של ”דף הבית”"
+msgstr "שנה הבלוקים של \"דף הבית\""
 
 #: index_edit.php:42
 msgid "Change the “My page” blocks"
-msgstr "שנה הבלוקים של ה”דף שלי”"
+msgstr "שנה הבלוקים של ה\"דף שלי\""
 
 #. I18N: [a record was] Changed on <date/time>
 #: app/Module/RecentChangesModule.php:261
@@ -4041,7 +4041,7 @@ msgstr "חברה"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:39
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
-msgstr "תקן רשומות NAME שהם במבנה 'John/DOE/' או 'John /DOE', שנוצרות ע״י תוכניות חקר שושלת יוחסין ישנות."
+msgstr "תקן רשומות NAME שהם במבנה \"John/DOE/\" או \"John /DOE\", שנוצרות ע״י תוכניות חקר שושלת יוחסין ישנות."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6724
@@ -5343,7 +5343,7 @@ msgstr "כל מקור רושם אירועים מסוימים, בדרך כלל ע
 
 #: help_text.php:314
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr "לכל חשבון משתמש יש אפשרות ”קבל באופן אוטומטי את השינויים”. כאשר אפשרות זו מופעלת, כל שינוי שנעשה על ידי אותו משתמש נשמר באופן מיידי. מנהלים רבים מאפשרים זאת לחשבון המשתמש שלהם."
+msgstr "לכל חשבון משתמש יש אפשרות \"קבל באופן אוטומטי את השינויים\". כאשר אפשרות זו מופעלת, כל שינוי שנעשה על ידי אותו משתמש נשמר באופן מיידי. מנהלים רבים מאפשרים זאת לחשבון המשתמש שלהם."
 
 #: statistics.php:129
 msgid "Earliest birth"
@@ -5558,7 +5558,7 @@ msgstr "כתובת דוא״ל"
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:865
 msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "כתובת דואר אלקטרוני לשימוש בשדה ”מאת:” של דואר אלקטרוני ש-webtrees נוצרה באופן אוטומטי.<br><br>webtrees יכולה באופן אוטומטי ליצור הודעות דואר אלקטרוני כדי ליידע את המנהלים על שינויים שיש לבדוק. webtrees שולחת גם הודעה בדואר אלקטרוני למשתמשים שבקשו חשבון.<br><br>בדרך כלל, שדה ”מאת:” של הדואר האלקטרוני שנוצר באופן אוטומטי הוא משהו כמו <i>From: webtrees-noreply@yoursite</i> כדי להראות שלא נדרשת תגובה לדואר האלקטרוני. כדי להתגונן מפני דואר זבל או פגיעות דואר אלקטרוני אחרות, דורשות חלק ממערכות הדואר האלקטרוני ששדה ”מאת:” של כל הודעה, ישקף חשבון דואר תקף ולא תקבלנה הודעות שהן כנראה מחשבון <i>webtrees-noreply</i>."
+msgstr "כתובת דואר אלקטרוני לשימוש בשדה \"מאת:\" של דואר אלקטרוני ש-webtrees נוצרה באופן אוטומטי.<br><br>webtrees יכולה באופן אוטומטי ליצור הודעות דואר אלקטרוני כדי ליידע את המנהלים על שינויים שיש לבדוק. webtrees שולחת גם הודעה בדואר אלקטרוני למשתמשים שבקשו חשבון.<br><br>בדרך כלל, שדה \"מאת:\" של הדואר האלקטרוני שנוצר באופן אוטומטי הוא משהו כמו <i>From: webtrees-noreply@yoursite</i> כדי להראות שלא נדרשת תגובה לדואר האלקטרוני. כדי להתגונן מפני דואר זבל או פגיעות דואר אלקטרוני אחרות, דורשות חלק ממערכות הדואר האלקטרוני ששדה \"מאת:\" של כל הודעה, ישקף חשבון דואר תקף ולא תקבלנה הודעות שהן כנראה מחשבון <i>webtrees-noreply</i>."
 
 #: admin_users.php:381
 msgid "Email verified"
@@ -7069,12 +7069,12 @@ msgstr "גובה"
 #: login.php:256 login.php:337
 #, php-format
 msgid "Hello %s…"
-msgstr "שלום %s…"
+msgstr "שלום <span dir=\"ltr\">%s</span>…"
 
 #: login.php:389
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "שלום <span dir=\"ltr\">%s</span>…<br>תודה שנרשמת."
+msgstr "שלום %s…<br>תודה שנרשמת."
 
 #: login.php:320 login.php:558
 msgid "Hello administrator…"
@@ -7315,7 +7315,7 @@ msgstr "אם שם המשפחה אינו ידוע, השתמש בלוכסנים ר
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: admin_trees_config.php:415
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "אם לאדם זה יש אירועים כלשהם למעט מוות, קבורה, או שרפה בשנים האחרונות במספר זה של שנים, הוא נחשב ”חי”. תאריכי הלידה של ילדים נחשבים לאירועים כאלה למטרה זו."
+msgstr "אם לאדם זה יש אירועים כלשהם למעט מוות, קבורה, או שרפה בשנים האחרונות במספר זה של שנים, הוא נחשב \"חי\". תאריכי הלידה של ילדים נחשבים לאירועים כאלה למטרה זו."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1008
@@ -7426,15 +7426,15 @@ msgstr "העדפות של יבוא"
 #: admin_trees_config.php:841 admin_trees_merge.php:86
 #: admin_trees_renumber.php:265
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr "בעץ משפחה, לכל רשומה יש מספר התיחסות פנימי (הנקרא ”XREF”), כגון ”F123” או ”R14”."
+msgstr "בעץ משפחה, לכל רשומה יש מספר התיחסות פנימי (הנקרא \"XREF\"), כגון \"F123\" או \"R14\"."
 
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "בתרבויות רבות מקובל שיש שם מסורתי שכתוב באותיות מסורתיות וגם גרסה לטינית, כמו אנגלית, של השם.<br><br>אם תעדיף לרשום את השם המסורתי בשדות השם הרגילים, תוכל להשתמש בשדה זה עבור הכתב הלטיני של אותו השם. השם הלטיני יופיע גם ברשימות וגם בתרשימים.<br><br>עברית, יונית, רוסית, ערבית או סינית, הן דוגמאות לשפות בהן לאדם יש שם כתוב באלף בית שאינו לטיני (האלף בית ה”מסורתי”) ובנוסף באותיות לטיניות (השם ה”לטיני”).<br><br>למרות ששם השדה ”לטיני”, הוא יכול להכיל גם אותיות שאינן לטיניות. דבר זה יכול להיות שימושי עבור שמות יפניים, ששם יתכנו שלושה אלף-בית שונים."
+msgstr "בתרבויות רבות מקובל שיש שם מסורתי שכתוב באותיות מסורתיות וגם גרסה לטינית, כמו אנגלית, של השם.<br><br>אם תעדיף לרשום את השם המסורתי בשדות השם הרגילים, תוכל להשתמש בשדה זה עבור הכתב הלטיני של אותו השם. השם הלטיני יופיע גם ברשימות וגם בתרשימים.<br><br>עברית, יונית, רוסית, ערבית או סינית, הן דוגמאות לשפות בהן לאדם יש שם כתוב באלף בית שאינו לטיני (האלף בית ה\"מסורתי\") ובנוסף באותיות לטיניות (השם ה\"לטיני\").<br><br>למרות ששם השדה \"לטיני\", הוא יכול להכיל גם אותיות שאינן לטיניות. דבר זה יכול להיות שימושי עבור שמות יפניים, ששם יתכנו שלושה אלף-בית שונים."
 
 #: help_text.php:271
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "בתרבויות רבות מקובל שיש שם מסורתי שכתוב באותיות מסורתיות וגם גרסה לטינית, כמו אנגלית, של השם.<br><br>אם תעדיף לרשום את השם הלטיני בשדות השם הרגילים, תוכל להשתמש בשדה זה עבור הכתב הלא-לטיני של אותו השם באלף בית העברי, היווני, הרוסי, הערבי או הסיני. השם העברי יופיע גם ברשימות וגם בתרשימים.<br><br>למרות ששם השדה ”עברי” הוא יכול להכיל גם אותיות אחרות."
+msgstr "בתרבויות רבות מקובל שיש שם מסורתי שכתוב באותיות מסורתיות וגם גרסה לטינית, כמו אנגלית, של השם.<br><br>אם תעדיף לרשום את השם הלטיני בשדות השם הרגילים, תוכל להשתמש בשדה זה עבור הכתב הלא-לטיני של אותו השם באלף בית העברי, היווני, הרוסי, הערבי או הסיני. השם העברי יופיע גם ברשימות וגם בתרשימים.<br><br>למרות ששם השדה \"עברי\" הוא יכול להכיל גם אותיות אחרות."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:712
@@ -7751,7 +7751,7 @@ msgstr "יפן"
 #. I18N: The Hebrew/Jewish calendar
 #: app/Date.php:201 app/Module/YahrzeitModule.php:283 help_text.php:172
 msgid "Jewish"
-msgstr "יהודי"
+msgstr "עברי"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:203
@@ -7909,7 +7909,7 @@ msgstr "שמור ישויות מדיה"
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:62 edit_interface.php:2256
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:545
 msgid "Keep the existing “last change” information"
-msgstr "שמור את המידע ”שינוי אחרון”"
+msgstr "שמור את המידע \"שינוי אחרון\""
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6791
@@ -11617,7 +11617,7 @@ msgstr "משימות מחקר הן אירועים מיוחדים, שהוספו �
 
 #: app/Module/ResearchTaskModule.php:203
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "משימות מחקר מאוחסנות באמצעות תג GEDCOM מותאם ”TODO_”. יתכן שיישומים אחרים של חקר שושלת יוחסין לא מזהים את התג הזה."
+msgstr "משימות מחקר מאוחסנות באמצעות תג GEDCOM מותאם \"TODO_\". יתכן שיישומים אחרים של חקר שושלת יוחסין לא מזהים את התג הזה."
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:732
@@ -12211,7 +12211,7 @@ msgstr "הגדר את רמת גישת הפרטיות עבור כל האנשים 
 #. I18N: You need to:
 #: login.php:571
 msgid "Set the status to “approved”."
-msgstr "הגדר את המעמד כ”אושר”."
+msgstr "הגדר את המעמד כ\"אושר\"."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1580
@@ -12747,12 +12747,12 @@ msgstr "הצג למבקרים"
 #: app/Functions/FunctionsPrintLists.php:273
 #: app/Functions/FunctionsPrintLists.php:664
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr "הראה זוגות או אנשי ”עלים”. מדובר באנשים שחיים אבל אין להם ילדים רשומים במאגר הנתונים."
+msgstr "הראה זוגות או אנשי \"עלים\". מדובר באנשים שחיים אבל אין להם ילדים רשומים במאגר הנתונים."
 
 #: app/Functions/FunctionsPrintLists.php:264
 #: app/Functions/FunctionsPrintLists.php:655
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr "הראה זוגות או אנשי ”שורשים” ניתן גם לכנות את האנשים הללו ”פטריארכים”.מדובר באנשים שהוריהם אינם במאגר הנתונים."
+msgstr "הראה זוגות או אנשי \"שורשים\" ניתן גם לכנות את האנשים הללו \"פטריארכים\". מדובר באנשים שהוריהם אינם במאגר הנתונים."
 
 #. I18N: %s are placeholders for numbers
 #: app/I18N.php:228 app/I18N.php:229
@@ -12954,7 +12954,7 @@ msgstr "שמות מקום ניתן לכתוב עם קידומות וסיומות
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1465
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "עיצובים מסוימים יכולים להציג צלמיות בלשונית ”עובדות ואירועים”."
+msgstr "עיצובים מסוימים יכולים להציג צלמיות בלשונית \"עובדות ואירועים\"."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:526
@@ -13940,8 +13940,8 @@ msgstr "אזור הזמן נדרש לביצוע חישובי תאריך, כגו�
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] "בשני עצי המשפחה יש רשומה אחת המשתמשת באותו ”XREF”."
-msgstr[1] "בשני עצי המשפחה יש %1$s רשומות המשתמשות באותו ”XREF”."
+msgstr[0] "בשני עצי המשפחה יש רשומה אחת המשתמשת באותו \"XREF\"."
+msgstr[1] "בשני עצי המשפחה יש %1$s רשומות המשתמשות באותו \"XREF\"."
 
 #: admin_site_upgrade.php:447
 msgid "The upgrade is complete."
@@ -13973,7 +13973,7 @@ msgstr "שם המשתמש הנדרש לאימות עם שרת SMTP."
 #. I18N: Help text for the “Description META tag” configuration setting
 #: admin_trees_config.php:951
 msgid "The value to place in the “meta description” tag in the HTML page header. Leave this field empty to use the name of the family tree."
-msgstr "הערך בתג ”מטה (META) של התיאור” בכותרת הדף ה-HTML. השאר שדה זה ריק כדי להשתמש בכותרת של עץ המשפחה."
+msgstr "הערך בתג \"מטה (META) של התיאור\" בכותרת הדף ה-HTML. השאר שדה זה ריק כדי להשתמש בכותרת של עץ המשפחה."
 
 #: admin_pgv_to_wt.php:104
 #, php-format
@@ -14184,8 +14184,8 @@ msgstr "המשפחה רשומה ללא ילדים"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] "בעץ משפחה זה יש רשומה אחת המשתמשת באותו ”XREF” כמו עץ משפחה אחר."
-msgstr[1] "בעץ משפחה זה יש %s רשומות המשתמשות באותו ”XREF” כמו עץ משפחה אחר."
+msgstr[0] "בעץ משפחה זה יש רשומה אחת המשתמשת באותו \"XREF\" כמו עץ משפחה אחר."
+msgstr[1] "בעץ משפחה זה יש %s רשומות המשתמשות באותו \"XREF\" כמו עץ משפחה אחר."
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
@@ -14309,47 +14309,47 @@ msgstr "זו הגירסה העדכנית ביותר של webtrees. אין שדר
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1757
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr "זוהי הרשימה של עובדות קובץ GEDCOM שהמשתמשים יכולים להוסיף למשפחות. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת ”עובדות משפחתיות ייחודיות”."
+msgstr "זוהי הרשימה של עובדות קובץ GEDCOM שהמשתמשים יכולים להוסיף למשפחות. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת \"עובדות משפחתיות ייחודיות\"."
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: admin_trees_config.php:1639
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr "זוהי הרשימה של עובדות קובץ GEDCOM שהמשתמשים יכולים להוסיף לאנשים. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת ”עובדות אישיות ייחודיות”."
+msgstr "זוהי הרשימה של עובדות קובץ GEDCOM שהמשתמשים יכולים להוסיף לאנשים. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת \"עובדות אישיות ייחודיות\"."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: admin_trees_config.php:1964
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-msgstr "זוהי הרשימה של עובדות של קובץ GEDCOM שהמשתמשים שלך יכולים להוסיף למאגרים. אתה יכול לשנות רשימה זו על ידי הסרה או הוספת שמות של עובדות, אפילו תגים מותאמים , לפי הצורך. עובדה ששמה מופיעה ברשימה זו לא יכולה להופיע גם ברשימת ”עובדות הייחודיות של המאגר”."
+msgstr "זוהי הרשימה של עובדות של קובץ GEDCOM שהמשתמשים שלך יכולים להוסיף למאגרים. אתה יכול לשנות רשימה זו על ידי הסרה או הוספת שמות של עובדות, אפילו תגים מותאמים , לפי הצורך. עובדה ששמה מופיעה ברשימה זו לא יכולה להופיע גם ברשימת \"עובדות הייחודיות של המאגר\"."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: admin_trees_config.php:1875
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr "זוהי הרשימה של עובדות קובץ GEDCOM שהמשתמשים יכולים להוסיף למקורות. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות, אפילו עובדות מותאמות, לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת ”עובדות ייחודיות של מקורות”."
+msgstr "זוהי הרשימה של עובדות קובץ GEDCOM שהמשתמשים יכולים להוסיף למקורות. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות, אפילו עובדות מותאמות, לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת \"עובדות ייחודיות של מקורות\"."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1786
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr "זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף פעם אחת למשפחות. לדוגמה, אם MARR הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת MARR אחת למשפחה. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה ”הוסף עובדות למשפחה”."
+msgstr "זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף פעם אחת למשפחות. לדוגמה, אם MARR הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת MARR אחת למשפחה. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה \"הוסף עובדות למשפחה\"."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: admin_trees_config.php:1668
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr "זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף פעם אחת לאדם. לדוגמה, אם BIRT הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת BIRT אחת לאדם. שמות עובדות שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה ”הוסף עובדות לאדם”."
+msgstr "זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף פעם אחת לאדם. לדוגמה, אם BIRT הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת BIRT אחת לאדם. שמות עובדות שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה \"הוסף עובדות לאדם\"."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: admin_trees_config.php:1993
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr "זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף פעם אחת למאגר. לדוגמה, אם NAME הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת NAME אחת למאגר. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה ”הוסף עובדות למאגר”."
+msgstr "זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף פעם אחת למאגר. לדוגמה, אם NAME הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת NAME אחת למאגר. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה \"הוסף עובדות למאגר\"."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:1904
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr "זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף פעם אחת למקורות. לדוגמה, אם TITL הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת TITL אחת למקור. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה ”הוסף עובדות למקור”."
+msgstr "זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף פעם אחת למקורות. לדוגמה, אם TITL הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת TITL אחת למקור. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה \"הוסף עובדות למקור\"."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:355
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
-msgstr "זהו השם של שרת ה- SMTP. משמעות ”localhost” היא שהדואר פועל על אותו מחשב כמו שרת האינטרנט שלך."
+msgstr "זהו השם של שרת ה- SMTP. משמעות \"localhost\" היא שהדואר פועל על אותו מחשב כמו שרת האינטרנט שלך."
 
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1090
@@ -14428,7 +14428,7 @@ msgstr "חייבת להיות לפחות שישה תווים. יש להקפיד 
 #. I18N: Help text for the “Sender name” site configuration setting
 #: admin_site_config.php:340
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr "שם זה נמצא בשימוש בשדה ”מאת”, בשליחת הודעות דוא״ל אוטומטית מהשרת הזה."
+msgstr "שם זה נמצא בשימוש בשדה \"מאת\", בשליחת הודעות דוא״ל אוטומטית מהשרת הזה."
 
 #: note.php:61
 msgid "This note does not exist or you do not have permission to view it."
@@ -14492,7 +14492,7 @@ msgstr "אפשרות זו תקל למשתמשים להוריד תמונות."
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:494
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "אפשרות זו תשמור על קשרי משפחה ברשומות פרטיות. זה אומר תראה קופסאות ריקות ”פרטיות” באילן היוחסין ובתרשימים אחרים עם אנשים פרטיים."
+msgstr "אפשרות זו תשמור על קשרי משפחה ברשומות פרטיות. זה אומר תראה קופסאות ריקות \"פרטיות\" באילן היוחסין ובתרשימים אחרים עם אנשים פרטיים."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:475
@@ -14576,7 +14576,7 @@ msgstr "תפקיד זה כולל את כל ההרשאות של תפקיד מנה
 
 #: admin_users.php:546
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "לתפקיד זה יש כל ההרשאות של תפקיד חבר, בתוספת הרשאה להוסיף/לשנות/למחוק נתונים. כל שינוי צריך להיות מאושר על ידי מפקח, אלא אם המשתמש מוגדר עם אפשרות ”לקבל באופן אוטומטי את השינויים”."
+msgstr "לתפקיד זה יש כל ההרשאות של תפקיד חבר, בתוספת הרשאה להוסיף/לשנות/למחוק נתונים. כל שינוי צריך להיות מאושר על ידי מפקח, אלא אם המשתמש מוגדר עם אפשרות \"לקבל באופן אוטומטי את השינויים\"."
 
 #: admin_users.php:560
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -14599,7 +14599,7 @@ msgstr "מגבלת זיכרון של שרת זה היא %s מגה-בית, ומג
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1358
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "זו צריכה להיות רשימה של עובדות המופרדת ברווח או בפסיק, בנוסף ללידה ולמוות, שאתה רוצה שתופיע בתיבות תרשים כגון תרשים אילן היוחסין. רשימה זו מחייבת אותך להשתמש בתגי עובדה כהגדרתו בתקן GEDCOM 5.5.1. לדוגמה, אם אתה רוצה שהמקצוע יופיע בתיבה, עליך להוסיף ”OCCU” בשדה זה."
+msgstr "זו צריכה להיות רשימה של עובדות המופרדת ברווח או בפסיק, בנוסף ללידה ולמוות, שאתה רוצה שתופיע בתיבות תרשים כגון תרשים אילן היוחסין. רשימה זו מחייבת אותך להשתמש בתגי עובדה כהגדרתו בתקן GEDCOM 5.5.1. לדוגמה, אם אתה רוצה שהמקצוע יופיע בתיבה, עליך להוסיף \"OCCU\" בשדה זה."
 
 #: source.php:60
 msgid "This source does not exist or you do not have permission to view it."
@@ -14662,11 +14662,11 @@ msgstr "אתר זה משתמש בעוגיות כדי ללמוד על התנהג�
 #: admin_trees_manage.php:199
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "פעולה זו ימחק את כל נתוני חקר שושלת יוחסין מן \"%s\" ויחליף אותו עם נתונים קובץ GEDCOM."
+msgstr "פעולה זו תמחק את כל נתוני חקר שושלת יוחסין מן \"%s\" ויחליף אותו עם נתונים קובץ GEDCOM."
 
 #: admin_trees_places.php:98
 msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr "זה יעדכן את החלק או החלקים הגבוהים ביותר של שם המקום. לדוגמא, ”Mexico” יתאים ל-”Quintana Roo, Mexico”, אבל לא ל-”Santa Fe, New Mexico”."
+msgstr "זה יעדכן את החלק או החלקים הגבוהים ביותר של שם המקום. לדוגמא, \"Mexico\" יתאים ל-\"Quintana Roo, Mexico\", אבל לא ל-\"Santa Fe, New Mexico\"."
 
 #. I18N: abbreviation for Thursday
 #: app/Date/CalendarDate.php:379 app/Functions/FunctionsPrint.php:663
@@ -14797,7 +14797,7 @@ msgstr "כדי להשלים את השדרוג, עליך להתקין באופן 
 
 #: app/Module/ResearchTaskModule.php:202
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "כדי ליצור משימות מחקר חדשות, תחילה עליך להוסיף ”משימת מחקר” לרשימה של עובדות ואירועים בהעדפות של עץ המשפחה."
+msgstr "כדי ליצור משימות מחקר חדשות, תחילה עליך להוסיף \"משימת מחקר\" לרשימה של עובדות ואירועים בהעדפות של עץ המשפחה."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1562
@@ -15330,7 +15330,7 @@ msgstr "השתמש ב- SMTP לשלוח הודעות"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:141
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "השתמש ב-”?” כדי להתאים תו בודד, השתמש ב-”*” כדי להתאים אפס או יותר תוים."
+msgstr "השתמש ב-\"?\" כדי להתאים תו בודד, השתמש ב-\"*\" כדי להתאים אפס או יותר תוים."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:341 login.php:455
@@ -15437,7 +15437,7 @@ msgstr "שם משתמש או כתובת דוא״ל"
 
 #: admin_users.php:330 edituser.php:164 login.php:444
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "בשם משתמש לא מתיחסים לאותיות לועזיות גדולות וקטנות, כך ש-”chloe”, ”chloë”, ו-”Chloe” הן אותו דבר."
+msgstr "בשם משתמש לא מתיחסים לאותיות לועזיות גדולות וקטנות, כך ש-\"chloe\", \"chloë\", ו-\"Chloe\" הן אותו דבר."
 
 #. I18N: Menu entry
 #: admin.php:643 admin.php:651 app/Theme/AdministrationTheme.php:162
@@ -15755,11 +15755,11 @@ msgstr "סהרה המערבית"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: admin_trees_config.php:2136
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "כאשר עוריכים רשומה, המשתמש וחותמת הזמן נרשמים. לפעמים רצוי לשמור את המידע ”שינוי אחרון” הקיים, למשל בעת ביצוע תיקונים קלים לנתונים של מישהו אחר. אפשרות זו שולטת אם תכונה זו נבחרת כברירת מחדל."
+msgstr "כאשר עוריכים רשומה, המשתמש וחותמת הזמן נרשמים. לפעמים רצוי לשמור את המידע \"שינוי אחרון\" הקיים, למשל בעת ביצוע תיקונים קלים לנתונים של מישהו אחר. אפשרות זו שולטת אם תכונה זו נבחרת כברירת מחדל."
 
 #: admin_users.php:388
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "כאשר משתמש נרשם לחשבון, הודעת דוא״ל תישלח אל כתובת הדוא״ל שלו עם קישור לאימות. כאשר הוא לוחץ על קישור זה, אנחנו יודעים שכתובת הדוא״ל נכונה, ואופציית ”דוא״ל אומת” נבחרה באופן אוטומטי."
+msgstr "כאשר משתמש נרשם לחשבון, הודעת דוא״ל תישלח אל כתובת הדוא״ל שלו עם קישור לאימות. כאשר הוא לוחץ על קישור זה, אנחנו יודעים שכתובת הדוא״ל נכונה, ואופציית \"דוא״ל אומת\" נבחרה באופן אוטומטי."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
@@ -15777,7 +15777,7 @@ msgstr "כאשר מוסיפים בן משפחה חדש, ברירת מחדל לש
 
 #: help_text.php:305
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr "כאשר אתה מוסיף, עורך או מוחק נתונים, השינויים אינם נשמרים מידית. במקום זה הם נשמרים באזור ”תלוי ועומד”. השינויים הממתינים האלו צריכים להיבדק על ידי מפקח לפני שהם מתקבלים."
+msgstr "כאשר אתה מוסיף, עורך או מוחק נתונים, השינויים אינם נשמרים מידית. במקום זה הם נשמרים באזור \"תלוי ועומד\". השינויים הממתינים האלו צריכים להיבדק על ידי מפקח לפני שהם מתקבלים."
 
 #: message.php:132
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
@@ -15948,7 +15948,7 @@ msgstr "אתה יכול לבקש חשבון באמצעות הקישור להלן
 #. I18N: Help text for the "Default theme" site configuration setting
 #: admin_site_config.php:255 admin_trees_config.php:978 edituser.php:287
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
-msgstr "באפשרותך לשנות את המראה של webtrees באמצעות ”עיצובים”. לכל עיצוב יש סגנון, מבנה, ערכת צבעים, וכו׳ שונה."
+msgstr "באפשרותך לשנות את המראה של webtrees באמצעות ”עיצובים\". לכל עיצוב יש סגנון, מבנה, ערכת צבעים, וכו׳ שונה."
 
 #. I18N: An XREF is the identification number used in GEDCOM files, such as F123 or R14.
 #: admin_trees_config.php:842
@@ -16187,7 +16187,7 @@ msgstr "מנהל השרת שלך יספק לך את פרטי הקשר."
 
 #: app/Module/BatchUpdateModule.php:228
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr "למשתמש שלך לא מופעל ”אישור אוטומטי של שינויים”. אתה יכול רק לשנות רשומה אחת בכל פעם."
+msgstr "למשתמש שלך לא מופעל \"אישור אוטומטי של שינויים\". אתה יכול רק לשנות רשומה אחת בכל פעם."
 
 #: admin.php:571
 #, php-format
@@ -19848,7 +19848,7 @@ msgstr "דודן מדרגה 10"
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:85
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
-msgstr "הגדרות הקישוריות של מאגר הנתונים בקובץ “/data/config.ini.php” עדיין נכונות"
+msgstr "הגדרות הקישוריות של מאגר הנתונים בקובץ \"/data/config.ini.php\" עדיין נכונות"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:88
