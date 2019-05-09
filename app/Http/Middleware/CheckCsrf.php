@@ -49,7 +49,7 @@ class CheckCsrf implements MiddlewareInterface
             $route = $request->getQueryParams()['route'] ?? '';
 
             if (!in_array($route, self::EXCLUDE_ROUTES, true)) {
-                $client_token  = $request->getParsedBody()['csrf'] ?? $request->getHeaderLine('X_CSRF_TOKEN');
+                $client_token  = $request->getParsedBody()['csrf'] ?? $request->getHeaderLine('X-CSRF-TOKEN');
                 $session_token = Session::get('CSRF_TOKEN');
 
                 if ($client_token !== $session_token) {

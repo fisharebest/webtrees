@@ -42,7 +42,7 @@ class FamilyController extends AbstractBaseController
      */
     public function show(ServerRequestInterface $request, Tree $tree, ClipboardService $clipboard_service): ResponseInterface
     {
-        $xref   = $request->get('xref', '');
+        $xref   = $request->getQueryParams()['xref'];
         $family = Family::getInstance($xref, $tree);
 
         Auth::checkFamilyAccess($family, false);

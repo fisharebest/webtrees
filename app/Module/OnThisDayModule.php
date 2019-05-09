@@ -200,10 +200,12 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $this->setBlockSetting($block_id, 'filter', $request->get('filter', '1'));
-        $this->setBlockSetting($block_id, 'infoStyle', $request->get('infoStyle', 'table'));
-        $this->setBlockSetting($block_id, 'sortStyle', $request->get('sortStyle', 'alpha'));
-        $this->setBlockSetting($block_id, 'events', implode(',', (array) $request->get('events')));
+        $params = $request->getParsedBody();
+
+        $this->setBlockSetting($block_id, 'filter', $params['filter']);
+        $this->setBlockSetting($block_id, 'infoStyle', $params['infoStyle']);
+        $this->setBlockSetting($block_id, 'sortStyle', $params['sortStyle']);
+        $this->setBlockSetting($block_id, 'events', implode(',', $params['events'] ?? []));
     }
 
     /**

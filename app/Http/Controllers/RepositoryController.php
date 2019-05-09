@@ -55,7 +55,7 @@ class RepositoryController extends AbstractBaseController
      */
     public function show(ServerRequestInterface $request, Tree $tree, ClipboardService $clipboard_service): ResponseInterface
     {
-        $xref   = $request->get('xref', '');
+        $xref   = $request->getQueryParams()['xref'];
         $record = Repository::getInstance($xref, $tree);
 
         Auth::checkRepositoryAccess($record, false);

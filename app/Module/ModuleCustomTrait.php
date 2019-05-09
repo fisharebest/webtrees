@@ -128,7 +128,7 @@ trait ModuleCustomTrait
     public function getAssetAction(ServerRequestInterface $request): ResponseInterface
     {
         // The file being requested.  e.g. "css/theme.css"
-        $asset = $request->get('asset');
+        $asset = $request->getQueryParams()['asset'];
 
         // Do not allow requests that try to access parent folders.
         if (Str::contains($asset, '..')) {

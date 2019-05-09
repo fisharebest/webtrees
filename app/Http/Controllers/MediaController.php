@@ -42,7 +42,7 @@ class MediaController extends AbstractBaseController
      */
     public function show(ServerRequestInterface $request, Tree $tree, ClipboardService $clipboard_service): ResponseInterface
     {
-        $xref  = $request->get('xref', '');
+        $xref  = $request->getQueryParams()['xref'];
         $media = Media::getInstance($xref, $tree);
 
         Auth::checkMediaAccess($media);

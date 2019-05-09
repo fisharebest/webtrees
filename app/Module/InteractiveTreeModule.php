@@ -183,7 +183,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
      */
     public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
 
@@ -211,7 +211,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
      */
     public function getDetailsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $pid        = $request->get('pid', Gedcom::REGEX_XREF);
+        $pid        = $request->getQueryParams()['pid'];
         $individual = Individual::getInstance($pid, $tree);
 
         if ($individual === null) {
@@ -222,7 +222,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
             throw new IndividualAccessDeniedException();
         }
 
-        $instance = $request->get('instance', '');
+        $instance = $request->getQueryParams()['instance'];
         $treeview = new TreeView($instance);
 
         return response($treeview->getDetails($individual));
@@ -236,8 +236,8 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
      */
     public function getPersonsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $q        = $request->get('q', '');
-        $instance = $request->get('instance', '');
+        $q        = $request->getQueryParams()['q'];
+        $instance = $request->getQueryParams()['instance'];
         $treeview = new TreeView($instance);
 
         return response($treeview->getPersons($tree, $q));

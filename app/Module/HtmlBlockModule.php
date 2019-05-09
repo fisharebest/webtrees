@@ -143,10 +143,12 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $languages = (array) $request->get('lang');
-        $this->setBlockSetting($block_id, 'title', $request->get('title', ''));
-        $this->setBlockSetting($block_id, 'html', $request->get('html', ''));
-        $this->setBlockSetting($block_id, 'show_timestamp', $request->get('show_timestamp', ''));
+        $params = $request->getParsedBody();
+
+        $languages = $params['lang'] ?? [];
+        $this->setBlockSetting($block_id, 'title', $params['title']);
+        $this->setBlockSetting($block_id, 'html', $params['html']);
+        $this->setBlockSetting($block_id, 'show_timestamp', $params['show_timestamp']);
         $this->setBlockSetting($block_id, 'timestamp', (string) Carbon::now()->unix());
         $this->setBlockSetting($block_id, 'languages', implode(',', $languages));
     }

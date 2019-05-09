@@ -92,15 +92,16 @@ class EditGedcomRecordController extends AbstractEditController
      */
     public function deleteFact(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref    = $request->get('xref', '');
-        $fact_id = $request->get('fact_id');
+        $params  = $request->getParsedBody();
+        $xref    = $params['xref'];
+        $fact_id = $params['fact_id'];
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
         Auth::checkRecordAccess($record, true);
 
         foreach ($record->facts() as $fact) {
-            if ($fact->id() == $fact_id && $fact->canShow() && $fact->canEdit()) {
+            if ($fact->id() == $fact_id && $fact->canEdit()) {
                 $record->deleteFact($fact_id, true);
                 break;
             }

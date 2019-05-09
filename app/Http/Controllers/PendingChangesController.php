@@ -52,7 +52,7 @@ class PendingChangesController extends AbstractBaseController
      */
     public function acceptAllChanges(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $url = $request->get('url', '');
+        $url = $request->getQueryParams()['url'];
 
         $changes = DB::table('change')
             ->where('gedcom_id', '=', $tree->id())
@@ -138,7 +138,7 @@ class PendingChangesController extends AbstractBaseController
      */
     public function acceptChanges(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getParsedBody()['xref'];
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
@@ -168,7 +168,7 @@ class PendingChangesController extends AbstractBaseController
      */
     public function rejectAllChanges(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $url = $request->get('url', '');
+        $url = $request->getQueryParams()['url'];
 
         DB::table('change')
             ->where('gedcom_id', '=', $tree->id())
@@ -191,9 +191,10 @@ class PendingChangesController extends AbstractBaseController
      */
     public function rejectChange(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $url       = $request->get('url', '');
-        $xref      = $request->get('xref', '');
-        $change_id = (int) $request->get('change_id');
+        $params    = $request->getQueryParams();
+        $url       = $params['url'];
+        $xref      = $params['xref'];
+        $change_id = $params['change_id'];
 
         // Reject a change, and subsequent changes to the same record
         DB::table('change')
@@ -219,7 +220,7 @@ class PendingChangesController extends AbstractBaseController
      */
     public function rejectChanges(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getParsedBody()['xref'];
 
         $record = GedcomRecord::getInstance($xref, $tree);
 

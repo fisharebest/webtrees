@@ -44,7 +44,7 @@ class GedcomRecordController extends AbstractBaseController
      */
     public function show(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref   = $request->get('xref', '');
+        $xref   = $request->getQueryParams()['xref'];
         $record = GedcomRecord::getInstance($xref, $tree);
 
         Auth::checkRecordAccess($record);
