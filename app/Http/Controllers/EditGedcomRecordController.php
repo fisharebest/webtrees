@@ -121,7 +121,7 @@ class EditGedcomRecordController extends AbstractEditController
      */
     public function deleteRecord(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getParsedBody()['xref'];
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
@@ -175,8 +175,9 @@ class EditGedcomRecordController extends AbstractEditController
      */
     public function pasteFact(ServerRequestInterface $request, Tree $tree, ClipboardService $clipboard_service): ResponseInterface
     {
-        $xref    = $request->get('xref', '');
-        $fact_id = $request->get('fact_id');
+        $params  = $request->getParsedBody();
+        $xref    = $params['xref'];
+        $fact_id = $params['fact_id'];
 
         $record = GedcomRecord::getInstance($xref, $tree);
 

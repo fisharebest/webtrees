@@ -190,7 +190,7 @@ function copy_fact(ged, xref, fact_id)
 function paste_fact(ged, xref, element)
 {
     $.post(
-        'index.php?route=paste-face',
+        'index.php?route=paste-fact',
         {
             xref: xref,
             fact_id: $(element).val(), // element is the <select> containing the option
