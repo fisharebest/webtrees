@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2019-05-09 15:17+0000\n"
+"PO-Revision-Date: 2019-05-10 20:05+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
@@ -15913,7 +15913,7 @@ msgstr "אתה יכול לבקש חשבון באמצעות הקישור להלן
 #: resources/views/admin/trees-preferences.phtml:269
 #: resources/views/edit-account-page.phtml:122
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
-msgstr "באפשרותך לשנות את המראה של webtrees באמצעות ”עיצובים\". לכל עיצוב יש סגנון, מבנה, ערכת צבעים, וכו׳ שונה."
+msgstr "באפשרותך לשנות את המראה של webtrees באמצעות \"עיצובים\". לכל עיצוב יש סגנון, מבנה, ערכת צבעים, וכו׳ שונה."
 
 #: resources/views/admin/users-edit.phtml:162
 #: resources/views/edit-account-page.phtml:148
