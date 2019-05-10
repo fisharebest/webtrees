@@ -49,7 +49,7 @@
 	<SetVar name="fbbgcolor" value=""/>
 	<SetVar name="tcolor" value=""/>
 	<!-- Use colors -->
-	<if condition="$colors==1">
+	<if condition="$colors=='on'">
 		<!-- Section title background color -->
 		<SetVar name="stbgcolor" value="#9CA3D4"/>
 		<!-- Male background color -->
@@ -104,7 +104,7 @@
 				<!-- Individual name -->
 				<TextBox newline="1">
 					<Text style="pageheader"><GetPersonName id=""/> </Text>
-					<if condition="$sources==1">
+					<if condition="$sources=='on'">
 						<!-- print level 1 sources -->
 						<RepeatTag tag="SOUR">
 							<Footnote>
@@ -156,7 +156,7 @@
 						<Text color="$tcolor" style="fact"><var var="@fact"/>  </Text>
 						<Text color="$tcolor" style="text"><GedcomValue tag="@fact:DATE"/>  </Text>
 						<!-- look for fact level 2 sources -->
-						<if condition="$sources==1">
+						<if condition="$sources=='on'">
 							<RepeatTag tag="@fact:SOUR">
 								<Footnote>
 									<Gedcom id="@SOUR">
@@ -242,7 +242,7 @@
 							<TextBox bgcolor="$mbgcolor" border="1" newline="1" width="$width">
 								<Text color="$tcolor" style="text"><var var="I18N::translate('Father')"/>  </Text>
 								<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
-								<if condition="$sources==1">
+								<if condition="$sources=='on'">
 									<!-- print level 1 sources -->
 									<RepeatTag tag="SOUR">
 										<Footnote>
@@ -278,7 +278,7 @@
 							<TextBox bgcolor="$fbgcolor" border="1" newline="1" width="$width">
 								<Text color="$tcolor" style="text"><var var="I18N::translate('Mother')"/>  </Text>
 								<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
-								<if condition="$sources==1">
+								<if condition="$sources=='on'">
 									<!-- print level 1 sources -->
 									<RepeatTag tag="SOUR">
 										<Footnote>
@@ -318,7 +318,7 @@
 									<TextBox bgcolor="$mbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="I18N::translate('Brother')"/>  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
-										<if condition="$sources==1">
+										<if condition="$sources=='on'">
 											<!-- print level 1 sources -->
 											<RepeatTag tag="SOUR">
 												<Footnote>
@@ -354,7 +354,7 @@
 									<TextBox bgcolor="$fbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="I18N::translate('Sister')"/>  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
-										<if condition="$sources==1">
+										<if condition="$sources=='on'">
 											<!-- print level 1 sources -->
 											<RepeatTag tag="SOUR">
 												<Footnote>
@@ -390,7 +390,7 @@
 									<TextBox bgcolor="$ugbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="I18N::translate('Gender')"/> <var var="I18N::translateContext('unknown gender', 'Unknown')"/>  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
-										<if condition="$sources==1">
+										<if condition="$sources=='on'">
 											<!-- print level 1 sources -->
 											<RepeatTag tag="SOUR">
 												<Footnote>
@@ -448,7 +448,7 @@
 								<TextBox bgcolor="$mbgcolor" border="1" newline="1" width="$width">
 									<Text color="$tcolor" style="text"><var var="I18N::translate('Husband')"/>  </Text>
 									<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
-									<if condition="$sources==1">
+									<if condition="$sources=='on'">
 										<!-- print level 1 sources -->
 										<RepeatTag tag="SOUR">
 											<Footnote>
@@ -484,7 +484,7 @@
 								<TextBox bgcolor="$fbgcolor" border="1" newline="1" width="$width">
 									<Text color="$tcolor" style="text"><var var="I18N::translate('Wife')"/>  </Text>
 									<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
-									<if condition="$sources==1">
+									<if condition="$sources=='on'">
 										<!-- print level 1 sources -->
 										<RepeatTag tag="SOUR">
 											<Footnote>
@@ -525,7 +525,7 @@
 									<TextBox bgcolor="$mbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="I18N::translate('Son')"/>  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
-										<if condition="$sources==1">
+										<if condition="$sources=='on'">
 											<!-- print level 1 sources -->
 											<RepeatTag tag="SOUR">
 												<Footnote>
@@ -561,7 +561,7 @@
 									<TextBox bgcolor="$fbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="I18N::translate('Daughter')"/>  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
-										<if condition="$sources==1">
+										<if condition="$sources=='on'">
 											<!-- print level 1 sources -->
 											<RepeatTag tag="SOUR">
 												<Footnote>
@@ -597,7 +597,7 @@
 									<TextBox bgcolor="$ugbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="I18N::translate('Gender')"/> <var var="I18N::translateContext('unknown gender', 'Unknown')"/>  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
-										<if condition="$sources==1">
+										<if condition="$sources=='on'">
 											<!-- print level 1 sources -->
 											<RepeatTag tag="SOUR">
 												<Footnote>

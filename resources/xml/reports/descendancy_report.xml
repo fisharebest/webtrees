@@ -61,7 +61,7 @@
 
 					<TextBox border="" height="40" newline="1">
 						<Text style="name"><GetPersonName id="" /> </Text>
-						<if condition="$sources==1">
+						<if condition="$sources=='on'">
 							<!-- print level 1 sources -->
 							<RepeatTag tag="SOUR">
 								<Footnote>
@@ -104,7 +104,7 @@
 							<if condition="$gender=='female'">
 								<Text style="label1"> <var var="I18N::translateContext('FEMALE', 'was born')" /> </Text>
 							</if>
-							<if condition="$sources==1">
+							<if condition="$sources=='on'">
 								<RepeatTag tag="BIRT:SOUR">
 									<Footnote>
 										<Gedcom id="@SOUR">
@@ -136,7 +136,7 @@
 							<if condition="$gender=='female'">
 								<Text style="label1"> <var var="I18N::translateContext('FEMALE', 'died')" /> </Text>
 							</if>
-							<if condition="$sources==1">
+							<if condition="$sources=='on'">
 								<RepeatTag tag="DEAT:SOUR">
 									<Footnote>
 										<Gedcom id="@SOUR">
@@ -176,7 +176,7 @@
 											<Text style="label1">  <var var="I18N::translateContext('MALE', 'married')" /> </Text>
 										</if>
 										<SetVar name="printPeriod" value="true" />
-										<if condition="$sources==1">
+										<if condition="$sources=='on'">
 											<RepeatTag tag="MARR:SOUR">
 												<Footnote>
 													<Gedcom id="@SOUR">
@@ -194,7 +194,7 @@
 									<if condition="$marrExists=='true'">
 										<Gedcom id="@WIFE">
 											<Text style="name"> <GetPersonName id="" /> </Text>
-											<if condition="$sources==1">
+											<if condition="$sources=='on'">
 												<!-- print level 1 sources -->
 												<RepeatTag tag="SOUR">
 													<Footnote>
@@ -245,7 +245,7 @@
 											<Text style="label1"> <var var="I18N::translateContext('FEMALE', 'married')" /> </Text>
 										</if>
 										<SetVar name="printPeriod" value="true" />
-										<if condition="$sources==1">
+										<if condition="$sources=='on'">
 											<RepeatTag tag="MARR:SOUR">
 												<Footnote>
 													<Gedcom id="@SOUR">
@@ -263,7 +263,7 @@
 									<if condition="$marrExists=='true'">
 										<Gedcom id="@HUSB">
 											<Text style="name"> <GetPersonName id="" /> </Text>
-											<if condition="$sources==1">
+											<if condition="$sources=='on'">
 												<!-- print level 1 sources -->
 												<RepeatTag tag="SOUR">
 													<Footnote>
@@ -332,7 +332,7 @@
 													<SetVar name="printPronoun" value="false" />
 												</if>
 												<SetVar name="birtExist" value="true" />
-												<if condition="$sources==1">
+												<if condition="$sources=='on'">
 													<RepeatTag tag="BIRT:SOUR">
 														<Footnote>
 															<Gedcom id="@SOUR">
@@ -363,7 +363,7 @@
 													<Text style="label1"> <var var="I18N::translate('and')" /></Text>
 												</if>
 												<Text style="label1"> <var var="I18N::translateContext('FEMALE', 'died')" /> </Text>
-												<if condition="$sources==1">
+												<if condition="$sources=='on'">
 													<RepeatTag tag="DEAT:SOUR">
 														<Footnote>
 															<Gedcom id="@SOUR">
@@ -402,7 +402,7 @@
 													<SetVar name="printPronoun" value="false" />
 												</if>
 												<SetVar name="birtExist" value="true" />
-												<if condition="$sources==1">
+												<if condition="$sources=='on'">
 													<RepeatTag tag="BIRT:SOUR">
 														<Footnote>
 															<Gedcom id="@SOUR">
@@ -433,7 +433,7 @@
 													<Text style="label1"> <var var="I18N::translate('and')" /></Text>
 												</if>
 												<Text style="label1"> <var var="I18N::translateContext('MALE', 'died')" /> </Text>
-												<if condition="$sources==1">
+												<if condition="$sources=='on'">
 													<RepeatTag tag="DEAT:SOUR">
 														<Footnote>
 															<Gedcom id="@SOUR">
@@ -527,7 +527,7 @@
 										<TextBox height="20" newline="1">
 											<Text style="label1"><var var="familyChildRoman" /></Text>
 											<Text style="name">  <GetPersonName id="" /> </Text>
-											<if condition="$sources==1">
+											<if condition="$sources=='on'">
 												<!-- print level 1 sources -->
 												<RepeatTag tag="SOUR">
 													<Footnote>
