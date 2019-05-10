@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-05-08 11:20+0000\n"
+"PO-Revision-Date: 2019-05-10 06:26+0000\n"
 "Last-Translator: Alejandro Cavazos <alexcavazos67@gmail.com>\n"
 "Language-Team: Spanish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/es/>\n"
 "Language: es\n"
@@ -76,13 +76,13 @@ msgstr "%1$s %2$s tiene un enlace %3$s a %4$s."
 #: app/Functions/Functions.php:2132
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr ""
+msgstr "%1$s %2$s times removed ascending"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2135
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr ""
+msgstr "%1$s %2$s times removed descending"
 
 #: app/Controller/IndividualController.php:195 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1518
@@ -106,7 +106,7 @@ msgstr "%1$s no existe."
 #: admin_trees_check.php:164
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr "%1$s no existe. ¿Quizo decir %2$s?"
+msgstr "%1$s no existe. ¿Quiso decir %2$s?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:204
@@ -10719,7 +10719,7 @@ msgstr "El lugar contiene"
 #: app/Module/GoogleMapsModule.php:414 app/Theme/AbstractTheme.php:1531
 #: placelist.php:41 placelist.php:43 placelist.php:139
 msgid "Place hierarchy"
-msgstr "Lugares"
+msgstr "Jerarquía de lugares"
 
 #: app/GedcomTag.php:692
 msgid "Place in Hebrew"
@@ -12182,7 +12182,7 @@ msgstr "Fijar el nivel de acceso para cada árbol."
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:150 index_edit.php:47
 msgid "Set the default blocks for new family trees"
-msgstr "Bloques por defecto para nuevos árboles familiares"
+msgstr "Bloques por defecto para nuevos árboles genealógicos"
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:167 index_edit.php:39
@@ -13551,7 +13551,7 @@ msgstr "Los cambios en «%s» han sido aceptados."
 #: action.php:234
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "Los cambios en «%s» han sido rechazados."
+msgstr "Los cambios a \"%s\" han sido rechazados."
 
 #: app/Module/ClippingsCartModule.php:324
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -16791,21 +16791,21 @@ msgstr "%s estimadas"
 
 #: app/Functions/Functions.php:703
 msgid "ex-husband"
-msgstr "ex esposo"
+msgstr "ex-esposo"
 
 #: app/Functions/Functions.php:734
 msgid "ex-partner"
-msgstr "ex pareja"
+msgstr "ex-pareja"
 
 #: app/Functions/Functions.php:716
 msgctxt "FEMALE"
 msgid "ex-partner"
-msgstr "ex pareja"
+msgstr "ex-pareja"
 
 #: app/Functions/Functions.php:698
 msgctxt "MALE"
 msgid "ex-partner"
-msgstr "ex pareja"
+msgstr "ex-pareja"
 
 #: app/Functions/Functions.php:739
 msgid "ex-spouse"
@@ -16813,7 +16813,7 @@ msgstr "ex-esposa"
 
 #: app/Functions/Functions.php:721
 msgid "ex-wife"
-msgstr "ex esposa"
+msgstr "ex-esposa"
 
 #: admin_trees_config.php:69 modules_v3/fact_sources/report.xml:6
 msgid "facts"
