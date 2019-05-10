@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2019-03-09 16:33+0800\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2019-05-09 13:22+0800\n"
+"Last-Translator: xmlf <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <http://translate.webtrees.net/projects/webtrees/webtrees/zh-Hans/>\n"
-"Language: zh-Hans\n"
+"Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.2.1\n"
-"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -81,7 +81,7 @@ msgstr "%1$s KB 将在%2$s秒后下载完。"
 #: app/Http/Controllers/Admin/UsersController.php:387
 #, php-format
 msgid "%1$s does not exist"
-msgstr "不存在 %1$s 。"
+msgstr "不存在 %1$s"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/Admin/UsersController.php:296
@@ -165,7 +165,7 @@ msgstr "%Y年 %n月 %j日"
 #: app/Statistics/Service/CenturyService.php:37
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "公元前 %s"
 
 #. I18N: size of file in KB
 #: app/Http/Controllers/Admin/MediaController.php:463
@@ -320,7 +320,7 @@ msgstr[0] "存储库%s已经被更新。"
 #: resources/views/emails/message-user-text.phtml:4
 #, php-format
 msgid "%s sent you the following message."
-msgstr "下面的消息来自webtrees用户帐户:%s。"
+msgstr "下面的消息来自网站用户账户:%s。"
 
 #: app/Statistics/Repository/UserRepository.php:94
 #, php-format
@@ -720,17 +720,17 @@ msgstr ""
 #. I18N: Description of the “BranchesListModule” module
 #: app/Module/BranchesListModule.php:55
 msgid "A list of branches of a family."
-msgstr ""
+msgstr "%s 家庭的分支"
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:74
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr "需要主持人批准的变更的列表并电子邮件通知。"
+msgstr "需要主编人批准的变更的列表并电子邮件通知。"
 
 #. I18N: Description of the “FamilyListModule” module
 #: app/Module/FamilyListModule.php:56
 msgid "A list of families."
-msgstr ""
+msgstr "显示家谱的列表"
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:57
@@ -740,12 +740,12 @@ msgstr "常见问题和答案清单。"
 #. I18N: Description of the “IndividualListModule” module
 #: app/Module/IndividualListModule.php:56
 msgid "A list of individuals."
-msgstr ""
+msgstr "显示个人的列表"
 
 #. I18N: Description of the “MediaListModule” module
 #: app/Module/MediaListModule.php:57
 msgid "A list of media objects."
-msgstr ""
+msgstr "添加新的多媒体"
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:61
@@ -755,17 +755,17 @@ msgstr "已更新的最近记录表。"
 #. I18N: Description of the “RepositoryListModule” module
 #: app/Module/RepositoryListModule.php:56
 msgid "A list of repositories."
-msgstr ""
+msgstr "最常用的名字列表。"
 
 #. I18N: Description of the “NoteListModule” module
 #: app/Module/NoteListModule.php:56
 msgid "A list of shared notes."
-msgstr ""
+msgstr "添加一个新的共享记录"
 
 #. I18N: Description of the “SourceListModule” module
 #: app/Module/SourceListModule.php:56
 msgid "A list of sources."
-msgstr ""
+msgstr "随着来源"
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:63
@@ -826,7 +826,7 @@ msgstr "需要为这个用户名输入新的密码。"
 #: resources/views/emails/verify-notify-text.phtml:5
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr "新用户在 (%1$s) 申请了一个帐户 (%2$s) ，验证电子邮件地址 (%3$s)."
+msgstr "新用户在 (%1$s) 申请了一个账户 (%2$s) ，验证电子邮件地址 (%3$s)."
 
 #: app/Http/Controllers/Auth/LoginController.php:129
 #: resources/views/admin/control-panel.phtml:47
@@ -844,7 +844,7 @@ msgstr "私人记录或是日记的一个秘密区域。"
 #: resources/views/emails/register-notify-text.phtml:4
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr "一个可能的webtrees用户在 %s 注册。"
+msgstr "有个用户在 %s 注册。"
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:50
@@ -883,13 +883,13 @@ msgstr "家庭成员和他们的细节的报告。"
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:50 resources/xml/reports/death_report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr "死亡时间或地点的报告。"
+msgstr "去世时间或地点的报告。"
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:54
 #: resources/xml/reports/occupation_report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr "职业的报告。"
+msgstr "职业报告。"
 
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:50 resources/xml/reports/birth_report.xml:4
@@ -1103,7 +1103,7 @@ msgstr "家谱访问和设置"
 
 #: resources/views/admin/users-edit.phtml:75
 msgid "Account approval and email verification"
-msgstr "账号审批和电子邮件验证"
+msgstr "账户审批和电子邮件验证"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:226
@@ -1210,12 +1210,12 @@ msgstr "添加一个兄弟或姐妹"
 #: resources/views/family-page-children.phtml:34
 #: resources/views/family-page-menu.phtml:27
 msgid "Add a child"
-msgstr "添加一个孩子"
+msgstr "添加一个子女"
 
 #: app/Http/Controllers/EditIndividualController.php:234
 #: resources/views/modules/relatives/tab.phtml:132
 msgid "Add a child to create a one-parent family"
-msgstr "添加一个孩子创建一个单亲家庭"
+msgstr "添加一个子女创建一个单亲家庭"
 
 #: resources/views/edit/raw-gedcom-record.phtml:43
 msgid "Add a fact"
@@ -1245,11 +1245,11 @@ msgstr "添加一个丈夫"
 #: app/Http/Controllers/EditIndividualController.php:756
 #: resources/views/modules/relatives/tab.phtml:123
 msgid "Add a husband using an existing individual"
-msgstr "用已有的个人添加丈夫"
+msgstr "添加已有的人作为其丈夫"
 
 #: resources/views/modules/user_blog/list.phtml:44
 msgid "Add a journal entry"
-msgstr ""
+msgstr "添加日记或新闻"
 
 #: app/Http/Controllers/EditMediaController.php:79
 #: resources/views/media-page.phtml:166
@@ -1324,12 +1324,12 @@ msgstr "添加新用户"
 #: resources/views/modules/relatives/family.phtml:83
 #: resources/views/modules/relatives/tab.phtml:109
 msgid "Add a wife"
-msgstr "添加一个妻子"
+msgstr "新增一个人作为其妻子"
 
 #: app/Http/Controllers/EditIndividualController.php:759
 #: resources/views/modules/relatives/tab.phtml:121
 msgid "Add a wife using an existing individual"
-msgstr "用已有的个人添加妻子"
+msgstr "添加已有的人作为其妻子"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:275
@@ -1343,7 +1343,7 @@ msgstr "添加相关人员"
 
 #: resources/views/cards/add-sour-data-even.phtml:7
 msgid "Add an event"
-msgstr ""
+msgstr "添加来源情况记录"
 
 #: resources/views/modules/custom-css-js/edit.phtml:23
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
@@ -1359,7 +1359,7 @@ msgstr "从剪贴板添加"
 
 #: app/Module/ModuleHistoricEventsTrait.php:38
 msgid "Add historic events to an individual‘s page."
-msgstr ""
+msgstr "显示个人祖先的图表。"
 
 #: resources/views/modules/lifespans-chart/page.phtml:19
 msgid "Add individuals"
@@ -1371,11 +1371,11 @@ msgstr "增加婚姻细节"
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:36
 msgid "Add missing death records"
-msgstr "添加缺少的死亡记录"
+msgstr "添加缺少的去世记录"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:41
 msgid "Add missing married names"
-msgstr "添加缺少的婚后名字"
+msgstr "添加缺少的婚后姓名"
 
 #: resources/views/search-advanced-page.phtml:26
 msgid "Add more fields"
@@ -1535,7 +1535,7 @@ msgstr "由母亲收养"
 #. I18N: gedcom tag ADOP
 #: app/GedcomTag.php:465
 msgid "Adoption"
-msgstr "收养"
+msgstr "收养/过继"
 
 #: app/GedcomTag.php:1138
 msgid "Adoption of a brother"
@@ -1643,7 +1643,7 @@ msgstr "创建家谱后，您可以通过GEDCOM文件导入数据。"
 #: resources/views/emails/password-reset-html.phtml:24
 #: resources/views/emails/password-reset-text.phtml:11
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-msgstr "登录后，选择«我的网页»菜单下的«我的帐户»链接，在密码框更改你的密码。"
+msgstr "登录后，选择«我的页面»菜单下的«我的账户»链接，在密码框更改你的密码。"
 
 #. I18N: gedcom tag AGE
 #: app/Functions/FunctionsPrint.php:276 app/Functions/FunctionsPrint.php:303
@@ -1712,7 +1712,7 @@ msgstr "在孩子的出生时父母年龄"
 #: resources/views/lists/individuals-table.phtml:521
 #: resources/views/lists/individuals-table.phtml:563
 msgid "Age related to death year"
-msgstr "死亡年龄"
+msgstr "去世年龄"
 
 #. I18N: gedcom tag AGNC
 #: app/GedcomTag.php:478
@@ -1805,7 +1805,7 @@ msgstr "所有人"
 #: resources/views/admin/components.phtml:12
 #: resources/views/admin/control-panel.phtml:308
 msgid "All modules"
-msgstr ""
+msgstr "模块"
 
 #: resources/views/admin/trees-privacy.phtml:245
 msgid "All records"
@@ -1832,7 +1832,7 @@ msgstr "允许用户查看原GEDCOM文件记录"
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:40
 msgid "Allow visitors to request a new user account"
-msgstr "允许游客申请新的用户账号"
+msgstr "允许游客申请新的用户账户"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:1188
@@ -1863,7 +1863,7 @@ msgstr "FAQ条目可以显示在一个或所有家谱上。"
 
 #: resources/views/admin/site-registration.phtml:47
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
-msgstr "管理员必须审批新用户账号，并在用户能够登录前选择一个进入级别。"
+msgstr "管理员必须审批新用户账户，并在用户能够登录前选择一个进入级别。"
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:54
@@ -1982,7 +1982,7 @@ msgstr "周年纪念日历"
 #. I18N: gedcom tag ANUL
 #: app/GedcomTag.php:490
 msgid "Annulment"
-msgstr "取消"
+msgstr "取消婚姻"
 
 #: resources/views/modules/faq/edit.phtml:25
 msgid "Answer"
@@ -2158,7 +2158,7 @@ msgstr "亚洲"
 #. I18N: gedcom tag _ASSO
 #: app/GedcomTag.php:493 app/GedcomTag.php:1196
 msgid "Associate"
-msgstr "相关人员"
+msgstr "与其有关人员"
 
 #: app/Http/Controllers/HelpTextController.php:240
 msgid "Associate events with this source"
@@ -2321,7 +2321,7 @@ msgstr "去世平均年龄"
 
 #: app/Statistics/Google/ChartMarriageAge.php:152
 msgid "Average age at marriage"
-msgstr ""
+msgstr "平均结婚年龄"
 
 #: app/Statistics/Google/ChartMarriageAge.php:149
 msgid "Average age in century of marriage"
@@ -2329,11 +2329,11 @@ msgstr "平均结婚年龄"
 
 #: app/Statistics/Google/ChartAge.php:126
 msgid "Average age related to death century"
-msgstr "死亡平均年龄"
+msgstr "去世平均年龄"
 
 #: app/Statistics/Google/ChartChildren.php:87
 msgid "Average number"
-msgstr ""
+msgstr "永久号码"
 
 #: app/Statistics/Google/ChartChildren.php:98
 #: resources/views/modules/gedcom_stats/config.phtml:35
@@ -2915,7 +2915,7 @@ msgstr "波士顿，马萨诸塞州"
 
 #: resources/views/lists/families-table.phtml:158
 msgid "Both alive"
-msgstr "都活着"
+msgstr "都在世"
 
 #: resources/views/lists/families-table.phtml:182
 msgid "Both dead"
@@ -2941,7 +2941,7 @@ msgstr "布韦岛"
 #: app/Http/Controllers/BranchesController.php:79
 #: app/Module/BranchesListModule.php:44
 msgid "Branches"
-msgstr "分支"
+msgstr "分支列表"
 
 #. I18N: %s is a surname
 #: app/Http/Controllers/BranchesController.php:76
@@ -3060,7 +3060,7 @@ msgstr "保加利亚"
 #: resources/xml/reports/family_group_report.xml:1049
 #: resources/xml/reports/missing_facts_report.xml:25
 msgid "Burial"
-msgstr "埋葬"
+msgstr "下葬"
 
 #: app/GedcomTag.php:1441
 msgid "Burial of a brother"
@@ -3315,7 +3315,7 @@ msgstr "不分大小写"
 #. I18N: gedcom tag CAST
 #: app/GedcomTag.php:556
 msgid "Caste"
-msgstr "世袭社会等级/社会状态"
+msgstr "社会地位"
 
 #: resources/views/modules/statistics-chart/custom.phtml:67
 msgid "Categories"
@@ -3357,7 +3357,7 @@ msgstr "墓地"
 #. I18N: gedcom tag CENS
 #: app/GedcomTag.php:565
 msgid "Census"
-msgstr "人口统计"
+msgstr "人口普查"
 
 #. I18N: Name of a module
 #: app/Module/CensusAssistantModule.php:42
@@ -3402,7 +3402,7 @@ msgstr "中非共和国"
 #: resources/views/lists/individuals-table.phtml:118
 #: resources/views/lists/individuals-table.phtml:133
 msgid "Century"
-msgstr ""
+msgstr "世纪"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2361
@@ -3422,7 +3422,7 @@ msgstr "改变家庭成员"
 #: app/Http/Controllers/Admin/UsersController.php:240
 #: app/Http/Controllers/HomePageController.php:597
 msgid "Change the blocks on this user’s “My page”"
-msgstr "更改用户的“我的页面”上的块"
+msgstr "更改用户的“我的网页”上的块"
 
 #: app/Http/Controllers/HomePageController.php:383
 #: resources/views/admin/trees.phtml:78
@@ -3431,7 +3431,7 @@ msgstr "更改“主页”块"
 
 #: app/Http/Controllers/HomePageController.php:542
 msgid "Change the “My page” blocks"
-msgstr "更改“我的页面”块"
+msgstr "更改“我的网页”块"
 
 #. I18N: [a record was] Changed on <date/time>
 #: resources/views/modules/recent_changes/changes-list.phtml:12
@@ -3599,7 +3599,7 @@ msgstr "中国"
 
 #: app/Http/Controllers/ReportEngineController.php:71
 msgid "Choose a report to run"
-msgstr "选择要获取的报告"
+msgstr "选择一个报告来运行"
 
 #: resources/xml/reports/individual_ext_report.xml:6
 #: resources/xml/reports/missing_facts_report.xml:6
@@ -3609,7 +3609,7 @@ msgstr "选择亲戚"
 
 #: app/Http/Controllers/AdminSiteController.php:481
 msgid "Choose user defined welcome text typed below"
-msgstr "在下面选择用户定义的欢迎文本"
+msgstr "选择用户定义的文本在下面输入欢迎文本"
 
 #. I18N: gedcom tag CHR
 #: app/GedcomTag.php:590 resources/xml/reports/family_group_report.xml:206
@@ -4000,7 +4000,7 @@ msgstr "版权"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:319
 msgid "Cordoba, Argentina"
-msgstr ""
+msgstr "阿根廷科尔多瓦"
 
 #. I18N: gedcom tag CORP
 #: app/GedcomTag.php:628
@@ -4083,7 +4083,7 @@ msgstr "创建一个提交者"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:142
 msgid "Create a temporary folder…"
-msgstr ""
+msgstr "解压缩 %s 到一个临时文件夹…"
 
 #: resources/views/modals/media-file-fields.phtml:68
 msgid "Create a unique filename"
@@ -4244,7 +4244,7 @@ msgstr "古巴"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:325
 msgid "Curitiba, Brazil"
-msgstr ""
+msgstr "巴西库里提巴"
 
 #: app/Module/HtmlBlockModule.php:171 app/Module/StatisticsChartModule.php:160
 msgid "Custom"
@@ -4330,13 +4330,13 @@ msgstr "数据库密码"
 
 #: resources/views/setup/step-3-database-type.phtml:31
 msgid "Database type"
-msgstr ""
+msgstr "数据库名称"
 
 #: resources/views/setup/step-4-database-mysql.phtml:58
 #: resources/views/setup/step-4-database-pgsql.phtml:50
 #: resources/views/setup/step-4-database-sqlsvr.phtml:50
 msgid "Database user account"
-msgstr "数据库用户帐户"
+msgstr "数据库用户账户"
 
 #. I18N: gedcom tag DATE
 #: app/GedcomTag.php:649 app/Http/Controllers/HelpTextController.php:184
@@ -4686,17 +4686,17 @@ msgstr "去世"
 
 #: app/Statistics/Google/ChartDistribution.php:336
 msgid "Death by country"
-msgstr "按世纪统计死亡"
+msgstr "按世纪统计去世"
 
 #: resources/xml/reports/bdm_report.xml:10
 #: resources/xml/reports/death_report.xml:8
 msgid "Death date range end"
-msgstr "死亡日期范围的结束"
+msgstr "去世日期范围的结束"
 
 #: resources/xml/reports/bdm_report.xml:9
 #: resources/xml/reports/death_report.xml:7
 msgid "Death date range start"
-msgstr "死亡日期范围的开始"
+msgstr "去世日期范围的开始"
 
 #: app/GedcomTag.php:1757
 msgid "Death of a brother"
@@ -4823,11 +4823,11 @@ msgstr "妻子的去世"
 #. I18N: gedcom tag _DETS
 #: app/GedcomTag.php:1782
 msgid "Death of one spouse"
-msgstr "配偶的死亡"
+msgstr "配偶的去世"
 
 #: resources/xml/reports/death_report.xml:6
 msgid "Death place contains"
-msgstr "死亡地包含"
+msgstr "去世地包含"
 
 #: resources/views/statistics/other/places.phtml:28
 msgid "Death places"
@@ -4844,7 +4844,7 @@ msgstr "去世"
 #: app/Statistics/Google/ChartDeath.php:121
 #: resources/views/statistics/individuals/total-events.phtml:77
 msgid "Deaths by century"
-msgstr "按世纪统计死亡"
+msgstr "按世纪统计去世"
 
 #: app/Date/AbstractGregorianJulianDate.php:210
 msgctxt "Abbreviation for December"
@@ -4861,7 +4861,7 @@ msgstr "十年出生的"
 #: resources/views/lists/individuals-table.phtml:495
 #: resources/views/lists/individuals-table.phtml:512
 msgid "Decade of death"
-msgstr "十年的死亡"
+msgstr "十年的去世"
 
 #: resources/views/lists/families-table.phtml:495
 #: resources/views/lists/families-table.phtml:511
@@ -4919,7 +4919,7 @@ msgstr "默认主题"
 #. I18N: gedcom tag _DEG
 #: app/GedcomTag.php:1779
 msgid "Degree"
-msgstr "程度"
+msgstr "学位"
 
 #: resources/xml/reports/ahnentafel_report.xml:15
 #: resources/xml/reports/bdm_report.xml:14
@@ -4976,7 +4976,7 @@ msgstr "删除无效用户"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:148
 msgid "Delete old files…"
-msgstr ""
+msgstr "复制文件…"
 
 #: app/Module/UserMessagesModule.php:208
 msgid "Delete selected messages"
@@ -4992,7 +4992,7 @@ msgstr "删除名称"
 
 #: resources/views/edit-account-page.phtml:168
 msgid "Delete your account"
-msgstr "删除您的帐户"
+msgstr "删除您的账户"
 
 #: resources/views/family-page-menu.phtml:38
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
@@ -5038,7 +5038,7 @@ msgstr "后代图"
 #. I18N: gedcom tag DESI
 #: app/GedcomTag.php:664
 msgid "Descendants interest"
-msgstr "后代利益"
+msgstr "后代调查"
 
 #: resources/xml/reports/descendancy_report.xml:42
 msgid "Descendants of "
@@ -5166,12 +5166,12 @@ msgstr "第十一月"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:109
 msgid "Died as a child: exempt"
-msgstr "孩子时死亡：豁免"
+msgstr "孩子时去世：豁免"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:128
 msgid "Died as an infant: exempt"
-msgstr "死亡的婴儿：免除"
+msgstr "去世的婴儿：免除"
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -5214,12 +5214,12 @@ msgstr "显示和管理用户收藏的页面。"
 #: app/GedcomTag.php:670 resources/views/calendar-page.phtml:142
 #: resources/views/lists/families-table.phtml:234
 msgid "Divorce"
-msgstr "离婚"
+msgstr "诉讼离婚"
 
 #. I18N: gedcom tag DIVF
 #: app/GedcomTag.php:673
 msgid "Divorce filed"
-msgstr "离婚被归档"
+msgstr "协议离婚"
 
 #: app/Statistics/Google/ChartDivorce.php:121
 #: resources/views/statistics/families/total-records.phtml:78
@@ -5243,7 +5243,7 @@ msgstr "不密封:未经授权"
 
 #: resources/views/admin/map-provider.phtml:15
 msgid "Do not use maps"
-msgstr ""
+msgstr "没有设置日期"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2367
@@ -5262,7 +5262,7 @@ msgstr "多米尼加共和国"
 
 #: app/Module/PedigreeChartModule.php:314
 msgid "Down"
-msgstr ""
+msgstr "下载"
 
 #: app/Module/ClippingsCartModule.php:157
 #: app/Module/ClippingsCartModule.php:294
@@ -5281,7 +5281,7 @@ msgstr "下载文件"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:337
 msgid "Draper, Utah, United States"
-msgstr ""
+msgstr "美国犹他州德雷珀"
 
 #. I18N: The second day in the French republican calendar
 #: app/Date/FrenchDate.php:287
@@ -5293,22 +5293,22 @@ msgstr "周二"
 #: app/Http/Controllers/Admin/UsersController.php:442
 #: app/Http/Controllers/Auth/RegisterController.php:209
 msgid "Duplicate email address. A user with that email already exists."
-msgstr "重复的电子邮件地址。该电子邮件已经被一个用户使用。"
+msgstr "电子邮件地址重复。该电子邮件已经被一个用户使用。"
 
 #: app/Http/Controllers/AccountController.php:124
 #: app/Http/Controllers/Admin/UsersController.php:325
 #: app/Http/Controllers/Admin/UsersController.php:448
 #: app/Http/Controllers/Auth/RegisterController.php:204
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
-msgstr "重复的用户名。该用户名已经被一个用户使用。请选择另一个用户名。"
+msgstr "用户名重复。该用户名已经被另一个用户使用。请更换您的用户名。"
 
 #: resources/views/help/source-events.phtml:4
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "每个来源记录特定的事件,一般对于一个给定的日期范围和管辖的地方。例如一个人口普查记录事件和教堂记录记录出生、结婚和死亡事件。<br><br>选择事件,记录采用这种来源的事件列表中提供的。指定的日期应该在一系列格式如<i>从1900年到1910年</i>。这个地方管辖的名称是最低的管辖权,包含所有较低级别的地方命名在这个源。例如,“奥奈达市,爱达荷州,美国“将被用作来源地税收管辖权的地方发生在各个城镇的事件在奥奈达市县。“爱达荷州,美国“将源管辖权的地方如果所记录的事件不仅发生在奥奈达市县也在其他县在爱达荷州。"
+msgstr "每个来源记录特定的事件,一般对于一个给定的日期范围和管辖的地方。例如一个人口普查记录事件和教堂记录记录出生、结婚和去世事件。<br><br>选择事件,记录采用这种来源的事件列表中提供的。指定的日期应该在一系列格式如<i>从1900年到1910年</i>。这个地方管辖的名称是最低的管辖权,包含所有较低级别的地方命名在这个源。例如,“奥奈达市,爱达荷州,美国“将被用作来源地税收管辖权的地方发生在各个城镇的事件在奥奈达市县。“爱达荷州,美国“将源管辖权的地方如果所记录的事件不仅发生在奥奈达市县也在其他县在爱达荷州。"
 
 #: resources/views/help/pending-changes.phtml:17
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr "每个用户帐户有一个选项“自动接受更改”。当这是启用的,用户所做的所有更改立即保存。许多管理员该为自己的用户帐户启用。"
+msgstr "每个用户账户有一个选项“自动接受更改”。当这是启用的,用户所做的所有更改立即保存。许多管理员该为自己的用户账户启用。"
 
 #: resources/views/modules/gedcom_stats/config.phtml:28
 #: resources/views/modules/gedcom_stats/statistics.phtml:140
@@ -5322,7 +5322,7 @@ msgstr "最早出生"
 #: resources/views/modules/html/template-statistics.phtml:67
 #: resources/views/statistics/individuals/total-events.phtml:90
 msgid "Earliest death"
-msgstr "最早死亡"
+msgstr "最早去世"
 
 #: resources/views/statistics/families/total-records.phtml:91
 msgid "Earliest divorce"
@@ -5434,7 +5434,7 @@ msgstr "埃德蒙顿,加拿大阿尔伯塔省"
 #. I18N: gedcom tag EDUC
 #: app/GedcomTag.php:679
 msgid "Education"
-msgstr "教育"
+msgstr "教育水平"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:169
@@ -5493,11 +5493,11 @@ msgstr "电子邮件地址"
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: resources/views/admin/trees-preferences.phtml:158
 msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "E-mail地址用于webtrees自动创建电子邮件时候的邮件来自于项。<br><br>webtrees可以自动创建电子邮件通知系统管理员的需要进行审批变化。webtrees发送通知电子邮件给注册一个帐户的用户。<br><br>通常情况下，这些自动创建的电子邮件发件人是<i>webtrees-noreply@ yoursite</i>，并且暗示不用回复。为了防止垃圾邮件或其他电子邮件滥用的一些电子邮件系统需要每封邮件的有个邮件来自于项，以此确认一个有效的e-mail帐号，否则将不接受邮件，这将显然从帐户 <i>webtrees noreply</i>来了邮件。"
+msgstr "这个E-mail地址用于网站自动创建电子邮件时候的From字段中。<br><br>网站可以自动创建电子邮件通知系统管理员的需要进行审批更改。网站发送通知电子邮件给注册用户。<br><br>通常情况下，这些自动创建的电子邮件发件人是<i>webtrees-noreply@ yoursite</i>，并且暗示不用回复。为了防止垃圾邮件或其他电子邮件滥用情况，一些电子邮件提供商需要每封邮件要有被允许的“FROM:”字段，以此确认一个它是有效的E-mail帐号，否则您将无法使用发送邮件服务。"
 
 #: resources/views/admin/users-edit.phtml:81
 msgid "Email verified"
-msgstr "电子邮件验证"
+msgstr "验证电子邮件"
 
 #. I18N: gedcom tag EMIG
 #: app/GedcomTag.php:691 resources/views/calendar-page.phtml:151
@@ -5626,7 +5626,7 @@ msgstr "第十二月"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:414
 msgid "Estimated dates for birth and death"
-msgstr "估计出生和死亡日期"
+msgstr "估计出生和去世日期"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:179
@@ -5699,7 +5699,7 @@ msgstr "不包括在此提交"
 #. I18N: placeholder text for registration-comments field
 #: resources/views/register-page.phtml:71
 msgid "Explain why you are requesting an account."
-msgstr "说明你为什么要申请一个帐户。"
+msgstr "说明你为什么要申请一个账户。"
 
 #: resources/views/admin/trees.phtml:279
 msgid "Export"
@@ -5754,7 +5754,7 @@ msgstr "常见问题"
 #. I18N: FAQ = “Frequently Asked Question”
 #: resources/views/modules/faq/config.phtml:9
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
-msgstr "常见问题解答的问题和答案列表，它允许您向访客解释网站的规则，政策和程序。问题通常涉及隐私权，著作权，用户帐户，不合适的内容，为引用源的要求等。"
+msgstr "常见问题解答的问题和答案列表，它允许您向访客解释网站的规则，政策和程序。问题通常涉及隐私权，著作权，用户账户，不合适的内容，为引用源的要求等。"
 
 #. I18N: gedcom tag FACT
 #: app/GedcomTag.php:723
@@ -6116,12 +6116,12 @@ msgstr "父亲的年龄"
 #: app/Individual.php:1064
 #, php-format
 msgid "Father’s family with %s"
-msgstr "%s 的父亲的家庭"
+msgstr "父亲和%s的家庭"
 
 #. I18N: A step-family.
 #: app/Individual.php:1068
 msgid "Father’s family with an unknown individual"
-msgstr "一个未知的个体的父亲的家庭"
+msgstr "父亲和某个人的家庭"
 
 #. I18N: Name of a module
 #: app/Module/FamilyTreeFavoritesModule.php:51
@@ -6432,7 +6432,7 @@ msgstr "设置文本格式和注意事项"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:346
 msgid "Fort Lauderdale, Florida, United States"
-msgstr ""
+msgstr "美国佛罗里达州劳德代尔堡"
 
 #: app/GedcomCode/GedcomCodePedi.php:83
 msgctxt "Female pedigree"
@@ -6633,7 +6633,7 @@ msgstr "性别"
 
 #: resources/views/admin/control-panel.phtml:317
 msgid "Genealogy"
-msgstr ""
+msgstr "家谱数据"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:166
@@ -6754,12 +6754,12 @@ msgstr "直布罗陀"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:361
 msgid "Gila Valley, Arizona, United States"
-msgstr ""
+msgstr "美国亚利桑那州吉拉谷"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:364
 msgid "Gilbert, Arizona, United States"
-msgstr ""
+msgstr "美国亚利桑那州吉尔伯特"
 
 #: resources/views/lists/given-names-table.phtml:10
 #: resources/views/search-phonetic-page.phtml:12
@@ -6810,7 +6810,7 @@ msgstr "毕业"
 
 #: resources/views/statistics/individuals/greatest-age.phtml:10
 msgid "Greatest age at death"
-msgstr "死亡时最大岁数"
+msgstr "去世时最大岁数"
 
 #: resources/views/statistics/families/age-difference.phtml:27
 msgid "Greatest age between siblings"
@@ -7116,7 +7116,7 @@ msgstr "他的职业是"
 #: resources/views/admin/modules.phtml:233
 #: resources/views/admin/modules.phtml:236
 msgid "Historic events"
-msgstr ""
+msgstr "历史事实"
 
 #: resources/views/modules/personal_facts/tab.phtml:18
 msgid "Historical facts"
@@ -7238,7 +7238,7 @@ msgstr "如果一个访客的浏览器配置没有指定一个首选语言,或�
 
 #: resources/views/admin/users-edit.phtml:91
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
-msgstr "如果管理员创建一个用户帐户,没有发送验证邮件,则必须手动验证电子邮件。"
+msgstr "如果管理员创建一个用户账户,没有发送验证邮件,则必须手动验证电子邮件。"
 
 #: resources/views/help/name.phtml:18
 #, php-format
@@ -7272,7 +7272,7 @@ msgstr "如果缩略图图像与原始图像相同，则不再需要它，您应
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:79
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "如果这个人在最近这么多年内没有死亡、埋葬或火化事件,他被认为是“活着”。孩子的出生日期被认为是用于此目的的类似事件。"
+msgstr "如果这个人在最近这么多年内没有去世、埋葬或火化事件,他被认为是“在世”。孩子的出生日期被认为是用于此目的的类似事件。"
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:293
@@ -7281,7 +7281,7 @@ msgstr "如果两个家谱使用相同的多媒体文件夹，那么他们将能
 
 #: resources/views/admin/trees-privacy.phtml:38
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
-msgstr "如果游客无法看到家谱，他们将无法注册账号。需要你手动给他们添加账户。"
+msgstr "如果游客无法看到家谱，他们将无法注册账户。需要你手动给他们添加账户。"
 
 #. I18N: Help text for the “Who can upload new media files” configuration setting
 #: resources/views/admin/trees-preferences.phtml:308
@@ -7307,7 +7307,7 @@ msgstr "如果您使用分割长行的时候忽略空格族谱软件创造了这
 #: resources/views/emails/register-user-html.phtml:21
 #: resources/views/emails/register-user-text.phtml:10
 msgid "If you didn’t request an account, you can just delete this message."
-msgstr "如果你没有申请一个帐户,您可以删除此消息。"
+msgstr "如果你没有申请一个账户,您可以删除此消息。"
 
 #: resources/views/modals/media-file-fields.phtml:63
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
@@ -7329,7 +7329,7 @@ msgstr "如果你选择一个不同的文件夹，你还必须将所有多媒体
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:99
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public."
-msgstr "如果你显示活着人信息给游客，所有其他的隐私限制被忽略。做到这一点只有在树中的所有数据是公开的。"
+msgstr "如果你显示在世人信息给游客，所有其他的隐私限制被忽略。做到这一点只有在树中的所有数据是公开的。"
 
 #: resources/views/setup/step-2-server-checks.phtml:57
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -7350,7 +7350,7 @@ msgstr "无水印图片"
 #. I18N: gedcom tag IMMI
 #: app/GedcomTag.php:795
 msgid "Immigration"
-msgstr "移民"
+msgstr "迁入"
 
 #: resources/views/admin/trees.phtml:289
 msgid "Import"
@@ -7366,7 +7366,7 @@ msgstr "导入GEDCOM文件"
 
 #: resources/views/admin/locations.phtml:129
 msgid "Import all places from a family tree"
-msgstr "从一个家谱导入所有的地方"
+msgstr "导入家谱中的所有地点"
 
 #: app/Http/Controllers/Admin/ImportThumbnailsController.php:47
 #: resources/views/admin/control-panel.phtml:506
@@ -7402,7 +7402,7 @@ msgstr "一些日历,一天开始在午夜。其他的日历,一天开始在日�
 #. I18N: Help text for the “Extend privacy to dead individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:120
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
-msgstr "在一些国家,隐私法不仅适用于活着的人,而且用于那些最近死去的人。这个选项将允许你扩展活人隐私规则到那些在指定年数出生或死亡的人。这个值空表示禁用这个特性。"
+msgstr "在一些国家,隐私法不仅适用于在世的人,而且用于那些最近死去的人。这个选项将允许你扩展活人隐私规则到那些在指定年数出生或去世的人。这个值空表示禁用这个特性。"
 
 #: app/Http/Controllers/CalendarController.php:148
 msgid "In this month…"
@@ -7423,7 +7423,7 @@ msgstr "在webtree版本2中，自定义缩略图作为第二个多媒体文件�
 
 #: resources/views/admin/trees-unconnected.phtml:24
 msgid "Include associates"
-msgstr ""
+msgstr "包含相关人员"
 
 #: app/Http/Controllers/ListController.php:272
 #, php-format
@@ -7451,7 +7451,7 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: resources/views/modules/lifespans-chart/page.phtml:23
 msgid "Include the individual’s immediate family"
-msgstr "包括这个人的直系亲属吗"
+msgstr "包括这个人的直系亲属"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:247
@@ -7461,7 +7461,7 @@ msgstr "印度"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:403
 msgid "Indianapolis, Indiana, United States"
-msgstr ""
+msgstr "美国印第安纳州印第安纳波利斯"
 
 #. I18N: gedcom tag INDI
 #. I18N: Name of a module/report
@@ -7516,7 +7516,7 @@ msgstr "个体分布图表"
 
 #: resources/views/admin/control-panel.phtml:405
 msgid "Individual page"
-msgstr ""
+msgstr "个人页面"
 
 #: resources/views/admin/trees-preferences.phtml:471
 msgid "Individual pages"
@@ -7570,7 +7570,7 @@ msgstr "寿命最长"
 #: resources/xml/reports/fact_sources.xml:54
 #: resources/xml/reports/fact_sources.xml:258
 msgid "Individuals"
-msgstr "个人"
+msgstr "个人列表"
 
 #: app/Statistics/Google/ChartIndividualWithSources.php:94
 #: resources/views/statistics/other/chart-sources.phtml:18
@@ -7630,19 +7630,19 @@ msgstr "内部消息和电子邮件"
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1858
 msgid "Interred"
-msgstr "埋葬"
+msgstr "下墓"
 
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1854
 msgctxt "FEMALE"
 msgid "Interred"
-msgstr "埋葬"
+msgstr "下墓"
 
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1849
 msgctxt "MALE"
 msgid "Interred"
-msgstr "埋葬"
+msgstr "下墓"
 
 #: app/Http/Controllers/GedcomFileController.php:102
 msgid "Invalid GEDCOM file - no header record found."
@@ -7650,7 +7650,7 @@ msgstr "无效的GEDCOM文件—没有标题记录。"
 
 #: app/Functions/FunctionsImport.php:629
 msgid "Invalid GEDCOM record"
-msgstr ""
+msgstr "无效GEDCOM格式"
 
 #: app/Date.php:372
 msgid "Invalid date"
@@ -8137,7 +8137,7 @@ msgstr "最近出生"
 #: resources/views/modules/html/template-statistics.phtml:71
 #: resources/views/statistics/individuals/total-events.phtml:101
 msgid "Latest death"
-msgstr "最近死亡"
+msgstr "最近去世"
 
 #: resources/views/statistics/families/total-records.phtml:102
 msgid "Latest divorce"
@@ -8267,12 +8267,12 @@ msgstr "连接多媒体到事实和事件"
 #: resources/views/emails/verify-notify-html.phtml:26
 #: resources/views/emails/verify-notify-text.phtml:17
 msgid "Link the user account to an individual."
-msgstr "链接用户帐户到个体。"
+msgstr "链接用户账户到个体。"
 
 #: app/Http/Controllers/EditIndividualController.php:687
 #: resources/views/modules/relatives/tab.phtml:100
 msgid "Link this individual to an existing family as a child"
-msgstr "把这个人当作个孩子连接到一个现有的家庭里去"
+msgstr "将这个人作为子女加到现有家庭里"
 
 #: resources/views/media-page-menu.phtml:23
 #: resources/views/modals/link-media-to-family.phtml:8
@@ -8316,7 +8316,7 @@ msgstr "列表"
 #: resources/views/admin/modules.phtml:85
 #: resources/views/admin/trees-preferences.phtml:375
 msgid "Lists"
-msgstr "列表"
+msgstr "统计列表"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:304
@@ -8330,11 +8330,11 @@ msgstr "立陶宛"
 
 #: app/Statistics/Google/ChartMortality.php:70
 msgid "Living"
-msgstr "活着的"
+msgstr "在世的"
 
 #: resources/views/calendar-page.phtml:85
 msgid "Living individuals"
-msgstr "活着的人"
+msgstr "在世的人"
 
 #: resources/views/lists/datatables-attributes.phtml:26
 msgid "Loading…"
@@ -8691,7 +8691,7 @@ msgstr "简化是格式化的一个简单的系统，就如维基百科网站的
 #: resources/xml/reports/pedigree_report.xml:1327
 #: resources/xml/reports/pedigree_report.xml:1365
 msgid "Marriage"
-msgstr "婚姻"
+msgstr "结婚"
 
 #. I18N: gedcom tag MARB
 #: app/GedcomTag.php:823 resources/xml/reports/missing_facts_report.xml:22
@@ -8715,7 +8715,7 @@ msgstr "按世纪统计结婚"
 #. I18N: gedcom tag MARC
 #: app/GedcomTag.php:830
 msgid "Marriage contract"
-msgstr "婚姻契约"
+msgstr "结婚协议"
 
 #: resources/xml/reports/marriage_report.xml:8
 msgid "Marriage date range end"
@@ -8868,7 +8868,7 @@ msgstr "按世纪统计结婚"
 #: app/GedcomTag.php:1868 resources/xml/reports/cemetery_report.xml:7
 #: resources/xml/reports/death_report.xml:10
 msgid "Married name"
-msgstr "婚后名字"
+msgstr "婚后姓名"
 
 #: app/GedcomTag.php:1873
 msgid "Married surname"
@@ -9230,7 +9230,7 @@ msgstr "中东"
 #. I18N: gedcom tag _MILI
 #: app/GedcomTag.php:1973
 msgid "Military"
-msgstr "军事"
+msgstr "军事服务"
 
 #. I18N: gedcom tag _MILT
 #: app/GedcomTag.php:1976
@@ -9248,7 +9248,7 @@ msgstr "缺失数据"
 #: app/Http/Controllers/Admin/UsersController.php:473
 #: resources/views/admin/users-edit.phtml:245
 msgid "Moderator"
-msgstr "主持人"
+msgstr "主编人"
 
 #: resources/views/admin/control-panel.phtml:222
 msgid "Moderators"
@@ -9338,7 +9338,7 @@ msgstr "第一个孩子出生的月份"
 #: app/Module/StatisticsChartModule.php:320
 #: resources/views/modules/statistics-chart/custom.phtml:29
 msgid "Month of death"
-msgstr "死亡月份"
+msgstr "去世月份"
 
 #: app/Module/StatisticsChartModule.php:460
 #: resources/views/modules/statistics-chart/custom.phtml:43
@@ -9434,7 +9434,7 @@ msgstr "大多数的网站都是配置为localhost。这意味着您的数据库
 
 #: resources/views/setup/step-4-database-sqlsvr.phtml:43
 msgid "Most sites are configured to use the default value of 1433."
-msgstr ""
+msgstr "大多数的网站都是配置为使用默认值3306。"
 
 #: resources/views/setup/step-4-database-mysql.phtml:51
 msgid "Most sites are configured to use the default value of 3306."
@@ -9442,7 +9442,7 @@ msgstr "大多数的网站都是配置为使用默认值3306。"
 
 #: resources/views/setup/step-4-database-pgsql.phtml:43
 msgid "Most sites are configured to use the default value of 5432."
-msgstr ""
+msgstr "大多数的网站都是配置为使用默认值3306。"
 
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:43
@@ -9473,12 +9473,12 @@ msgstr "母亲的年龄"
 #: app/Individual.php:1074
 #, php-format
 msgid "Mother’s family with %s"
-msgstr "%s 的母亲的家庭"
+msgstr "母亲和%s的家庭"
 
 #. I18N: A step-family.
 #: app/Individual.php:1078
 msgid "Mother’s family with an unknown individual"
-msgstr "一个未知的个体的母亲的家庭"
+msgstr "母亲与某个人的家庭"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:484
@@ -9568,11 +9568,11 @@ msgstr "个人档案"
 #: resources/views/admin/modules.phtml:177
 #: resources/views/layouts/administration.phtml:49
 msgid "My page"
-msgstr "我的网页"
+msgstr "我的页面"
 
 #: app/Module/ModuleThemeTrait.php:340
 msgid "My pages"
-msgstr "我的页面"
+msgstr "我的网页"
 
 #: app/Module/ModuleThemeTrait.php:371
 msgid "My pedigree"
@@ -9624,7 +9624,7 @@ msgstr "犹太名称"
 #. I18N: gedcom tag NPFX
 #: app/GedcomTag.php:891
 msgid "Name prefix"
-msgstr "字辈"
+msgstr "名字前缀"
 
 #. I18N: gedcom tag NSFX
 #: app/GedcomTag.php:894
@@ -9641,7 +9641,7 @@ msgstr "名称"
 #. I18N: gedcom tag _NAMS
 #: app/GedcomTag.php:1988
 msgid "Namesake"
-msgstr "同名"
+msgstr "同名同姓"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:357
@@ -9741,14 +9741,14 @@ msgstr "新的数据"
 #: app/Http/Controllers/Auth/RegisterController.php:151
 #, php-format
 msgid "New registration at %s"
-msgstr "在家 %s 新登记"
+msgstr "%s 有新用户注册"
 
 #. I18N: %s is a server name/URL
 #: app/Http/Controllers/Admin/UsersController.php:399
 #: app/Http/Controllers/Auth/VerifyEmailController.php:63
 #, php-format
 msgid "New user at %s"
-msgstr "新用户在 %s 验证"
+msgstr "%s 有新用户等待审核"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:496
@@ -9990,7 +9990,7 @@ msgstr "诺福克岛"
 
 #: resources/views/admin/users-edit.phtml:144
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
-msgstr "通常，家谱的任何修改都需要由主持人批准。此选项允许用户将不需要主持人的批准的变更。"
+msgstr "通常，家谱的任何修改都需要由主编人批准。此选项允许用户将不需要主编人的批准的变更。"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:403
@@ -9999,7 +9999,7 @@ msgstr "北韩"
 
 #: resources/views/modules/statistics-chart/custom.phtml:173
 msgid "Northern America"
-msgstr ""
+msgstr "南美"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:369
@@ -10066,7 +10066,7 @@ msgstr "记录"
 
 #: resources/views/help/restriction.phtml:7
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
-msgstr "注意：如果一个用户帐户链接到一个记录,那么该用户能够查看该记录。"
+msgstr "注意：如果一个用户账户链接到一个记录,那么该用户能够查看该记录。"
 
 #: resources/views/help/relationship-privacy.phtml:12
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
@@ -10273,7 +10273,7 @@ msgstr "最年长女性"
 
 #: resources/views/statistics/individuals/oldest-living.phtml:10
 msgid "Oldest living individuals"
-msgstr "活着最年长者"
+msgstr "在世最年长者"
 
 #: resources/views/statistics/families/marriage-age.phtml:58
 msgid "Oldest male"
@@ -10560,7 +10560,7 @@ msgstr "密码"
 #: resources/views/edit-account-page.phtml:73
 #: resources/views/register-page.phtml:61
 msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "密码必须至少8个字符长,是区分大小写的,因此,“secret”是不同的“SECRET”。"
+msgstr "使用它登录网站，长度不少于8个字符,并区分大小写。"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:538
@@ -10613,7 +10613,7 @@ msgstr "待定的更改"
 
 #: resources/views/help/pending-changes.phtml:12
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
-msgstr "待定的更改当您的帐户有权限编辑才显示。当你退出，你将不再能够看到他们。同时，待定的更改只有在特定的页面。例如，他们不出现在名单，报告，或搜索结果。"
+msgstr "当您的账户有权限编辑时才显示待定的更改。当你退出，你将不再能够看到它们。同时，只有在特定的页面显示待定的更改。例如，他们不出现在名单，报告，或搜索结果页面中。"
 
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:2027
@@ -10648,7 +10648,7 @@ msgstr ""
 #. I18N: gedcom tag PHON
 #: app/GedcomTag.php:923
 msgid "Phone"
-msgstr "电话"
+msgstr "电话号码"
 
 #. I18N: gedcom tag FONE
 #: app/GedcomTag.php:771
@@ -10860,7 +10860,7 @@ msgstr "应根据家谱的标准输入的地方。地方记录地方最具体的
 
 #: resources/views/places-page.phtml:26
 msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
-msgstr "地图上仅显示包含有效经纬度的地方"
+msgstr ""
 
 #: resources/views/layouts/default.phtml:154
 #: resources/views/modules/random_media/slide-show.phtml:21
@@ -10977,7 +10977,7 @@ msgstr "第九月"
 
 #: app/Http/Controllers/AdminSiteController.php:479
 msgid "Predefined text that states admin will decide on each request for a user account"
-msgstr "管理员审核请求用户帐户的预定义的文本"
+msgstr "管理员审核请求用户账户的预定义的文本"
 
 #: app/Http/Controllers/AdminSiteController.php:478
 msgid "Predefined text that states all users can request a user account"
@@ -10985,7 +10985,7 @@ msgstr "所有用户申请用户账户的预定义的文本"
 
 #: app/Http/Controllers/AdminSiteController.php:480
 msgid "Predefined text that states only family members can request a user account"
-msgstr "家庭成员可以申请用户帐户的预定义的文本"
+msgstr "家庭成员可以申请用户账户的预定义的文本"
 
 #: app/Http/Controllers/AdminTreesController.php:1064
 #: app/Http/Controllers/HomePageController.php:117
@@ -11035,7 +11035,7 @@ msgstr "普雷斯顿,英格兰"
 
 #: resources/views/admin/analytics-edit.phtml:13
 msgid "Preview"
-msgstr ""
+msgstr "预览"
 
 #: app/GedcomCode/GedcomCodeRela.php:285
 msgid "Priest"
@@ -11078,7 +11078,7 @@ msgstr "隐私限制—这些适用于不包含一个标记RESN GEDCOM的记录�
 #: app/Repository.php:96 app/Source.php:101
 #: app/Statistics/Repository/EventRepository.php:413
 msgid "Private"
-msgstr "私有"
+msgstr "隐私保护"
 
 #. I18N: gedcom tag PROB
 #: app/GedcomTag.php:941
@@ -11088,7 +11088,7 @@ msgstr "遗嘱"
 #. I18N: gedcom tag PROP
 #: app/GedcomTag.php:944
 msgid "Property"
-msgstr "属性"
+msgstr "财产信息"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:556
@@ -11281,7 +11281,7 @@ msgstr "从当前的家谱随机图像。"
 #: resources/views/family-page-menu.phtml:32
 #: resources/views/modules/relatives/family.phtml:195
 msgid "Re-order children"
-msgstr "重新排列孩子"
+msgstr "调整子女顺序"
 
 #: app/Http/Controllers/EditIndividualController.php:170
 #: resources/views/modules/relatives/tab.phtml:92
@@ -11416,7 +11416,7 @@ msgstr "相关的家庭"
 #: resources/xml/reports/relative_ext_report.xml:3
 #: resources/xml/reports/relative_ext_report.xml:43
 msgid "Related individuals"
-msgstr "个人相关"
+msgstr "相关个人报告"
 
 #. I18N: gedcom tag RELA
 #: app/GedcomTag.php:956
@@ -11611,14 +11611,14 @@ msgstr "刚果(布拉柴维尔)"
 #: app/Http/Controllers/Auth/ForgotPasswordController.php:45
 #: resources/views/modules/login_block/sign-in.phtml:42
 msgid "Request a new password"
-msgstr "请求新密码"
+msgstr "重置密码"
 
 #: app/Http/Controllers/Auth/RegisterController.php:74
 #: app/Http/Controllers/Auth/RegisterController.php:175
 #: app/Module/WelcomeBlockModule.php:112 resources/views/login-page.phtml:58
 #: resources/views/modules/login_block/sign-in.phtml:34
 msgid "Request a new user account"
-msgstr "注册新的用户帐户"
+msgstr "注册账户"
 
 #. I18N: gedcom tag _TODO
 #: app/GedcomTag.php:2057 resources/views/modules/todo/research-tasks.phtml:16
@@ -11648,7 +11648,7 @@ msgstr "重置地图为初始状态"
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:965
 msgid "Residence"
-msgstr "住宅"
+msgstr "居住地"
 
 #: resources/views/edit-blocks-page.phtml:120
 msgid "Restore the default block layout"
@@ -11663,7 +11663,7 @@ msgstr "直系亲属限制"
 #: app/GedcomTag.php:972 app/Http/Controllers/HelpTextController.php:220
 #: resources/views/media-page.phtml:152
 msgid "Restriction"
-msgstr "限制"
+msgstr "隐私限制"
 
 #: resources/views/help/restriction.phtml:4
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
@@ -11690,7 +11690,7 @@ msgstr ""
 
 #: app/Module/PedigreeChartModule.php:312
 msgid "Right"
-msgstr ""
+msgstr "高度"
 
 #: resources/views/edit-blocks-page.phtml:27
 msgid "Right section blocks"
@@ -12404,7 +12404,7 @@ msgstr "显示多媒体展示的下载链接"
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:57
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr "在《请求新的用户帐户》页面显示使用协议"
+msgstr "在《请求新的用户账户》页面显示使用协议"
 
 #: resources/views/modules/notes/tab.phtml:11
 msgid "Show all notes"
@@ -12438,11 +12438,11 @@ msgstr "显示双方结婚不止一次夫妻。"
 
 #: resources/views/lists/families-table.phtml:164
 msgid "Show couples where only the female partner is dead."
-msgstr "显示只有女伴死亡的夫妻。"
+msgstr "显示只有女伴去世的夫妻。"
 
 #: resources/views/lists/families-table.phtml:172
 msgid "Show couples where only the male partner is dead."
-msgstr "显示男性伴侣死亡的夫妻。"
+msgstr "显示男性伴侣去世的夫妻。"
 
 #: resources/views/lists/families-table.phtml:216
 msgid "Show couples who married more than 100 years ago."
@@ -12480,12 +12480,12 @@ msgstr "显示100年内出生的人。"
 
 #: resources/views/lists/individuals-table.phtml:195
 msgid "Show individuals who are alive or couples where both partners are alive."
-msgstr "显示活着的人或夫妻双方还活着。"
+msgstr "显示在世的人或夫妻双方还在世。"
 
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/individuals-table.phtml:203
 msgid "Show individuals who are dead or couples where both partners are dead."
-msgstr "显示死亡的人或夫妻双方是已故。"
+msgstr "显示去世的人或夫妻双方是已故。"
 
 #: resources/views/lists/individuals-table.phtml:211
 msgid "Show individuals who died more than 100 years ago."
@@ -12503,7 +12503,7 @@ msgstr "显示家谱的列表"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:89
 msgid "Show living individuals"
-msgstr "显示活着的个人"
+msgstr "显示在世的个人"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:130
@@ -12524,7 +12524,7 @@ msgstr "显示职业"
 #: resources/views/modules/todays_events/config.phtml:5
 #: resources/views/modules/upcoming_events/config.phtml:15
 msgid "Show only events of living individuals"
-msgstr "只显示现在活着人的事件"
+msgstr "只显示现在在世人的事件"
 
 #: resources/views/lists/individuals-table.phtml:177
 msgid "Show only females."
@@ -12701,7 +12701,7 @@ msgstr "显示给访客"
 #: resources/views/lists/families-table.phtml:198
 #: resources/views/lists/individuals-table.phtml:255
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr "显示«未录入孩子»夫妻或个人。这些是人活着但没有孩子记录在数据库中。"
+msgstr "显示«未录入孩子»夫妻或个人。这些是人在世但没有孩子记录在数据库中。"
 
 #: resources/views/lists/families-table.phtml:190
 #: resources/views/lists/individuals-table.phtml:247
@@ -12945,7 +12945,7 @@ msgstr "索萨"
 
 #: resources/views/modules/ancestors-chart/tree.phtml:18
 msgid "Sosa-Stradonitz number"
-msgstr ""
+msgstr "端口号"
 
 #: app/Http/Controllers/SearchController.php:619
 msgid "Sounds like"
@@ -13026,7 +13026,7 @@ msgstr "来源类型"
 #: resources/xml/reports/individual_ext_report.xml:644
 #: resources/xml/reports/individual_report.xml:646
 msgid "Sources"
-msgstr "来源"
+msgstr "来源统计"
 
 #: resources/xml/reports/missing_facts_report.xml:14
 msgid "Sources to the events"
@@ -13518,14 +13518,12 @@ msgid "The Hague, Netherlands"
 msgstr "海牙，荷兰"
 
 #: app/Services/ServerCheckService.php:112
-#, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr ""
+msgstr "文件“%s”不存在。"
 
 #: app/Services/ServerCheckService.php:170
-#, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr ""
+msgstr "模块“%s”已被禁用。"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:55
@@ -13533,14 +13531,12 @@ msgid "The PHP temporary folder is missing."
 msgstr "丢失PHP临时目录。"
 
 #: app/Services/ServerCheckService.php:131
-#, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr ""
+msgstr "模块“%s”已被禁用。"
 
 #: app/Services/ServerCheckService.php:135
-#, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr ""
+msgstr "模块“%s”已被启用。"
 
 #: resources/views/emails/approve-user-html.phtml:7
 #: resources/views/emails/approve-user-text.phtml:4
@@ -13555,7 +13551,7 @@ msgstr "已经通知管理员。当他给你登录权限,您就可以用你的�
 #. I18N: Description of the “Reports” module
 #: app/Module/CalendarMenuModule.php:50
 msgid "The calendar menu."
-msgstr ""
+msgstr "选择主题下拉选择器"
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/Controllers/PendingChangesController.php:150
@@ -13572,7 +13568,7 @@ msgstr "更改“%s”被拒绝。"
 #. I18N: Description of the “Reports” module
 #: app/Module/ChartsMenuModule.php:69
 msgid "The charts menu."
-msgstr ""
+msgstr "选择主题下拉选择器"
 
 #: resources/views/modules/clippings/show.phtml:6
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -13628,7 +13624,7 @@ msgstr "家谱已经成功合并。"
 #. I18N: Description of the “Reports” module
 #: app/Module/TreesMenuModule.php:51
 msgid "The family trees menu."
-msgstr ""
+msgstr "管理家谱 "
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: app/Http/Controllers/EditGedcomRecordController.php:141
@@ -13755,7 +13751,7 @@ msgstr "已更新“%1$s”到“%2$s”的链接。"
 #. I18N: Description of the “Reports” module
 #: app/Module/ListsMenuModule.php:67
 msgid "The lists menu."
-msgstr ""
+msgstr "选择主题下拉选择器"
 
 #: app/Http/Controllers/EditMediaController.php:249
 #: app/Http/Controllers/EditMediaController.php:262
@@ -13823,7 +13819,7 @@ msgstr "这是简短GEDCOM来源事件列表，完善旁边的列表，单击可
 
 #: resources/views/admin/site-registration.phtml:45
 msgid "The new user will be asked to confirm their email address before the account is created."
-msgstr "新用户在创建帐户之前，要确认他们的电子邮件地址。"
+msgstr "新用户在创建账户之前，要确认他们的电子邮件地址。"
 
 #: app/Http/Controllers/EditNoteController.php:142
 msgid "The note has been created"
@@ -13841,7 +13837,7 @@ msgstr "SMTP服务器需要身份验证的密码。"
 #. I18N: Description of the “PlaceHierarchyListModule” module
 #: app/Module/PlaceHierarchyListModule.php:56
 msgid "The place hierarchy."
-msgstr ""
+msgstr "显示地点的层次结构"
 
 #: app/Http/Controllers/AdminController.php:349
 #: app/Http/Controllers/AdminTreesController.php:1122
@@ -13875,7 +13871,7 @@ msgstr "已更新模块“%s”的首选项。"
 #: resources/views/setup/step-4-database-sqlite.phtml:62
 #: resources/views/setup/step-4-database-sqlsvr.phtml:91
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
-msgstr ""
+msgstr "前缀是可选的，建议表名称为唯一的前缀，这样可以让几个不同的应用程序共用相同的数据库。建议“wt_”，但可以是任何你想要的。"
 
 #: app/Http/Controllers/EditGedcomRecordController.php:79
 msgid "The record has been copied to the clipboard."
@@ -13894,7 +13890,7 @@ msgstr "正则表达式似乎包含错误。不能用。"
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php:71
 msgid "The reports menu."
-msgstr ""
+msgstr "选择主题下拉选择器"
 
 #: app/Http/Controllers/EditRepositoryController.php:81
 msgid "The repository has been created"
@@ -13903,7 +13899,7 @@ msgstr "存储库已被创建"
 #. I18N: Description of the “Reports” module
 #: app/Module/SearchMenuModule.php:51
 msgid "The search menu."
-msgstr ""
+msgstr "选择主题下拉选择器"
 
 #: app/Services/SearchService.php:971
 msgid "The search returned too many results."
@@ -13915,7 +13911,7 @@ msgstr "服务器配置正常。"
 
 #: app/Services/ServerCheckService.php:223
 msgid "The server’s temporary folder cannot be accessed."
-msgstr ""
+msgstr "已达到服务器的访问限制。"
 
 #: app/Http/Controllers/AdminTreesController.php:1714
 #: app/Services/UpgradeService.php:146 app/Services/UpgradeService.php:179
@@ -13975,7 +13971,7 @@ msgstr "用户 %s 已被删除。"
 #: resources/views/emails/register-notify-html.phtml:22
 #: resources/views/emails/register-notify-text.phtml:11
 msgid "The user has been sent an email with the information necessary to confirm the access request."
-msgstr "已经将包含需要确认访问请求信息发送邮件给用户。"
+msgstr "已将验证信息通过邮件发送给用户。"
 
 #: app/Http/Controllers/Auth/LoginController.php:175
 #: app/Http/Controllers/Auth/LoginController.php:180
@@ -14001,7 +13997,7 @@ msgstr "已更新的网站首选项。"
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: resources/views/admin/trees-preferences.phtml:656
 msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr "网站 www.geonames.org 提供大型数据库的地名。 可以输入新的地名进行搜索。 若要使用此功能，必须注册一个免费帐户，在 www.geonames.org 和提供的用户名。"
+msgstr "网站 www.geonames.org 提供大型数据库的地名。 可以输入新的地名进行搜索。 若要使用此功能，必须注册一个免费账户，在 www.geonames.org 和提供的用户名。"
 
 #: resources/views/errors/database-error.phtml:12
 #: resources/views/setup/step-6-failed.phtml:12
@@ -14080,7 +14076,7 @@ msgstr[0] "在最后的 %s 一天内一直没有变化。"
 #: app/Http/Controllers/Auth/ForgotPasswordController.php:93
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr "那里是没有用的用户名或电子邮件为“%s”的帐户。"
+msgstr "那里是没有用的用户名或电子邮件为“%s”的账户。"
 
 #: app/Http/Controllers/Admin/MediaController.php:581
 #: app/Http/Controllers/EditMediaController.php:118
@@ -14124,11 +14120,11 @@ msgstr "这个账户还没有被批准。请等待管理员批准它。"
 
 #: app/Http/Controllers/Auth/LoginController.php:185
 msgid "This account has not been verified. Please check your email for a verification message."
-msgstr "这个账户没有得到确认。请检查您的电子邮件以一个确认消息。"
+msgstr "这个账户没有得到确认。请检查您的电子邮件是否收到验证邮件(是否在垃圾箱?)。"
 
 #: resources/views/modules/review_changes/config.phtml:4
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr "这一块会显示需要通过管理员审核的编辑或更改记录表。每当有待定的更改将给主持人发送电子邮件。"
+msgstr "这一块会显示需要通过管理员审核的编辑或更改记录表。每当有待定的更改将给主编人发送电子邮件。"
 
 #: resources/views/admin/users-create.phtml:58
 #: resources/views/admin/users-edit.phtml:66
@@ -14136,7 +14132,7 @@ msgstr "这一块会显示需要通过管理员审核的编辑或更改记录表
 #: resources/views/register-page.phtml:37
 #: resources/views/setup/step-5-administrator.phtml:73
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
-msgstr "该电子邮件地址将被用来发送你的密码提示和网站其他家庭成员网站通知和消息。"
+msgstr "电子邮件地址将被用来发送你的密码提示和网站中其他家庭成员给您的通知消息。"
 
 #: app/Exceptions/FamilyAccessDeniedException.php:33
 #: app/Exceptions/FamilyNotFoundException.php:33
@@ -14145,7 +14141,7 @@ msgstr "这个家庭不存在，或者您没有权限查看它。"
 
 #: resources/views/family-page.phtml:15
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "这个家庭已被删除。删除需要主持人的审批。"
+msgstr "这个家庭已被删除。删除需要主编人的审批。"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page.phtml:13
@@ -14155,7 +14151,7 @@ msgstr "这个家庭已被删除。你应该检查删除然后 %1$s 或 %2$s 它
 
 #: resources/views/family-page.phtml:21
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
-msgstr "这个家庭已经被编辑。更改需要主持人的审批。"
+msgstr "这个家庭已经被编辑。更改需要主编人的审批。"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page.phtml:19
@@ -14205,7 +14201,7 @@ msgstr "这个人不存在，或者您没有权限查看它。"
 
 #: resources/views/individual-page.phtml:13
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "这个人已经被删除。删除需要主持人的审批。"
+msgstr "这个人已经被删除。删除需要主编人的审批。"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/individual-page.phtml:10
@@ -14215,7 +14211,7 @@ msgstr "这个人已经被删除。你应该检查删除然后 %1$s或 %2$s它�
 
 #: resources/views/individual-page.phtml:22
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
-msgstr "这个人已经被编辑。更改需要主持人的审批。"
+msgstr "这个人已经被编辑。更改需要主编人的审批。"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/individual-page.phtml:19
@@ -14258,7 +14254,7 @@ msgstr "当浏览图表和报告这个人将被默认选中。"
 #: resources/views/statistics/other/places.phtml:53
 #: resources/views/statistics/other/top10-list.phtml:23
 msgid "This information is not available."
-msgstr ""
+msgstr "没有可用的升级的信息。"
 
 #: app/Statistics/Repository/EventRepository.php:250
 #: app/Statistics/Repository/FamilyDatesRepository.php:108
@@ -14371,7 +14367,7 @@ msgstr "这是SMTP服务器的名称。\"localhost\"指邮件服务的同一台�
 #: resources/views/register-page.phtml:25
 #: resources/views/setup/step-5-administrator.phtml:37
 msgid "This is your real name, as you would like it displayed on screen."
-msgstr "这是你的真实姓名,它会显示在屏幕上。"
+msgstr "请输入你的真实姓名。"
 
 #: app/Exceptions/MediaAccessDeniedException.php:33
 #: app/Exceptions/MediaNotFoundException.php:33
@@ -14380,7 +14376,7 @@ msgstr "该多媒体对象不存在，或者您没有权限查看它。"
 
 #: resources/views/media-page.phtml:11
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "这个多媒体对象已被删除。删除需要主持人的审批。"
+msgstr "这个多媒体对象已被删除。删除需要主编人的审批。"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/media-page.phtml:9
@@ -14390,7 +14386,7 @@ msgstr "这个多媒体对象已被删除。你应该检查删除然后 %1$s 或
 
 #: resources/views/media-page.phtml:17
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
-msgstr "这个多媒体对象已经被编辑。更改需要主持人的审批。"
+msgstr "这个多媒体对象已经被编辑。更改需要主编人的审批。"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/media-page.phtml:15
@@ -14421,7 +14417,7 @@ msgstr "这个记录不存在或您无权查看它。"
 
 #: resources/views/note-page.phtml:10
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "这个记录已被删除。删除需要主持人的审批。"
+msgstr "这个记录已被删除。删除需要主编人的审批。"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/note-page.phtml:8
@@ -14431,7 +14427,7 @@ msgstr "这个记录已被删除。你应该检查删除然后 %1$s 或 %2$s 它
 
 #: resources/views/note-page.phtml:16
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
-msgstr "这记录被编辑。更改需要主持人的审批。"
+msgstr "这记录被编辑。更改需要主编人的审批。"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/note-page.phtml:14
@@ -14457,7 +14453,7 @@ msgstr "这个选项控制在图表是否显示父亲和母亲在孩子的出生
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: resources/views/admin/trees-preferences.phtml:419
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
-msgstr "这个选项控制在个人列表和个人图表中日期都不知道的个人是否用估计出生和死亡日期代替空白。"
+msgstr "这个选项控制在个人列表和个人图表中日期都不知道的个人是否用估计出生和去世日期代替空白。"
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: resources/views/admin/trees-preferences.phtml:322
@@ -14472,7 +14468,7 @@ msgstr "此选项将保留在私人家庭的联系记录。这意味着你将看
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:141
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
-msgstr "此选项将显示名称（但没有其他私人细节）。如果他们还活着，或者如果一个隐私的限制已被添加到他们的个人私有记录。隐藏一个特定的名称，添加一个隐私限制到这个记录名称。"
+msgstr "此选项将显示名称（但没有其他私人细节）。如果他们还在世，或者如果一个隐私的限制已被添加到他们的个人私有记录。隐藏一个特定的名称，添加一个隐私限制到这个记录名称。"
 
 #: resources/views/edit/raw-gedcom-fact.phtml:13
 #: resources/views/edit/raw-gedcom-record.phtml:12
@@ -14500,7 +14496,7 @@ msgstr "这条记录不存在。"
 
 #: resources/views/gedcom-record-page.phtml:10
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "此记录已被删除。 删除将需要由一位主持人进行审查。"
+msgstr "此记录已被删除。 删除将需要由一位主编人进行审查。"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/gedcom-record-page.phtml:8
@@ -14510,7 +14506,7 @@ msgstr "此记录已被删除。 您应该查看删除然后 %1$s 或 %2$s 它�
 
 #: resources/views/gedcom-record-page.phtml:16
 msgid "This record has been edited. The changes need to be reviewed by a moderator."
-msgstr "这个人已经被编辑。更改需要主持人的审批。"
+msgstr "这个人已经被编辑。更改需要主编人的审批。"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/gedcom-record-page.phtml:14
@@ -14525,7 +14521,7 @@ msgstr "这个存储库不存在或您无权查看它。"
 
 #: resources/views/repository-page.phtml:14
 msgid "This repository has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "这个存储库已被删除。删除需要主持人的审批。"
+msgstr "这个存储库已被删除。删除需要主编人的审批。"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/repository-page.phtml:12
@@ -14535,7 +14531,7 @@ msgstr "这个存储库已被删除。你应该检查删除然后 %1$s 或 %2$s 
 
 #: resources/views/repository-page.phtml:20
 msgid "This repository has been edited. The changes need to be reviewed by a moderator."
-msgstr "这个存储库已经被编辑。更改需要主持人的审批。"
+msgstr "这个存储库已经被编辑。更改需要主编人的审批。"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/repository-page.phtml:18
@@ -14553,11 +14549,11 @@ msgstr "管理者角色,加上允许更改设置/配置的站点,用户和模块
 
 #: resources/views/admin/users-edit.phtml:242
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "成员角色权限,添加/更改/删除数据。任何变化需要经过一个主持人,除非用户“自动接受更改”选项启用。"
+msgstr "成员角色权限,添加/更改/删除数据。任何变化需要经过一个主编人,除非用户“自动接受更改”选项启用。"
 
 #: resources/views/admin/users-edit.phtml:256
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
-msgstr "主持人的角色,访问授权的家谱配置,允许更改设置/配置一个家谱。"
+msgstr "主编人的角色,访问授权的家谱配置,允许更改设置/配置一个家谱。"
 
 #: resources/views/admin/users-edit.phtml:234
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
@@ -14588,7 +14584,7 @@ msgstr "这个来源不存在或您无权查看它。"
 
 #: resources/views/source-page.phtml:10
 msgid "This source has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "这个来源已被删除。删除需要主持人的审批。"
+msgstr "这个来源已被删除。删除需要主编人的审批。"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/source-page.phtml:8
@@ -14598,7 +14594,7 @@ msgstr "这个来源已被删除。你应该检查删除然后 %1$s 或 %2$s 它
 
 #: resources/views/source-page.phtml:16
 msgid "This source has been edited. The changes need to be reviewed by a moderator."
-msgstr "这个来源已被被编辑。更改需要主持人的审批。"
+msgstr "这个来源已被被编辑。更改需要主编人的审批。"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/source-page.phtml:14
@@ -14618,7 +14614,7 @@ msgstr "这种类型的链接在这里是不允许的。"
 
 #: resources/views/errors/no-tree-access.phtml:4
 msgid "This user account does not have access to any tree."
-msgstr "此用户帐户没有访问任何族谱。"
+msgstr "此用户账户没有访问任何族谱。"
 
 #: app/Http/Controllers/SetupController.php:133
 msgid "This usually means that you need to change the folder permissions to 777."
@@ -14912,29 +14908,29 @@ msgstr "共计"
 
 #: resources/xml/reports/change_report.xml:127
 msgid "Total accepted changes: "
-msgstr "总接受变化： "
+msgstr "接受变化总数： "
 
 #: resources/views/statistics/individuals/total-events.phtml:20
 msgid "Total births"
-msgstr "总出生"
+msgstr "出生总数"
 
 #: resources/views/statistics/individuals/total-records.phtml:59
 msgid "Total dead"
-msgstr "总死亡"
+msgstr "去世总数"
 
 #: resources/views/statistics/individuals/total-events.phtml:68
 msgid "Total deaths"
-msgstr "总死亡"
+msgstr "去世总数"
 
 #: resources/views/statistics/families/total-records.phtml:69
 msgid "Total divorces"
-msgstr "总离婚"
+msgstr "离婚总数"
 
 #: resources/views/modules/gedcom_stats/config.phtml:26
 #: resources/views/statistics/other/total-events.phtml:10
 #: resources/xml/reports/missing_facts_report.xml:602
 msgid "Total events"
-msgstr "总共事件"
+msgstr "事件总数"
 
 #: app/Statistics/Google/ChartNoChildrenFamilies.php:131
 #: resources/views/statistics/families/total-records.phtml:10
@@ -14944,20 +14940,20 @@ msgstr "总共事件"
 #: resources/xml/reports/fact_sources.xml:354
 #: resources/xml/reports/marriage_report.xml:111
 msgid "Total families"
-msgstr "总家庭"
+msgstr "家庭总数"
 
 #: app/Http/Controllers/CalendarController.php:360
 #, php-format
 msgid "Total families: %s"
-msgstr "总家庭: %s"
+msgstr "家庭总数: %s"
 
 #: resources/views/statistics/individuals/total-records.phtml:30
 msgid "Total females"
-msgstr "总女性"
+msgstr "女性总数"
 
 #: resources/views/statistics/individuals/names.phtml:44
 msgid "Total given names"
-msgstr "总名字"
+msgstr "名字总数"
 
 #: resources/views/statistics/individuals/total-records.phtml:10
 #: resources/xml/reports/bdm_report.xml:210
@@ -14972,7 +14968,7 @@ msgstr "总名字"
 #: resources/xml/reports/occupation_report.xml:94
 #: resources/xml/reports/relative_ext_report.xml:140
 msgid "Total individuals"
-msgstr "总个人"
+msgstr "个人总数"
 
 #: app/Http/Controllers/CalendarController.php:359
 #, php-format
@@ -14981,29 +14977,29 @@ msgstr "总人数: %s"
 
 #: resources/views/statistics/individuals/total-records.phtml:51
 msgid "Total living"
-msgstr "总活着"
+msgstr "在世总数"
 
 #: resources/views/statistics/individuals/total-records.phtml:21
 msgid "Total males"
-msgstr "总男性"
+msgstr "男性总数"
 
 #: resources/views/statistics/families/total-records.phtml:21
 msgid "Total marriages"
-msgstr "总婚姻"
+msgstr "婚姻总数"
 
 #: resources/xml/reports/change_report.xml:87
 msgid "Total pending changes: "
-msgstr "总待定更改: "
+msgstr "待定更改总数: "
 
 #: resources/views/modules/gedcom_stats/config.phtml:21
 #: resources/views/modules/html/template-statistics.phtml:26
 #: resources/views/statistics/individuals/names.phtml:20
 msgid "Total surnames"
-msgstr "总姓氏"
+msgstr "姓氏总数"
 
 #: resources/views/modules/gedcom_stats/config.phtml:27
 msgid "Total users"
-msgstr "总用户"
+msgstr "用户总数"
 
 #: app/Http/Controllers/Admin/ModuleController.php:99
 #: app/Module/ModuleAnalyticsTrait.php:73
@@ -15358,7 +15354,7 @@ msgstr "使用GeoNames数据库自动完善地方"
 
 #: resources/views/register-page.phtml:73
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
-msgstr "使用此字段告诉网站管理员为什么您申请帐户，你与本网站上家谱的关系。您也可以使用此输入你可能对网站管理员有其他意见。"
+msgstr "请在这里输入你与本网站上家谱的关系。您也可以使用此输入你可能对网站管理员有其他意见。"
 
 #: app/Functions/FunctionsEdit.php:570
 msgid "Use this image for charts and on the individual’s page."
@@ -15426,7 +15422,7 @@ msgstr "用户名或电子邮件地址"
 #: resources/views/edit-account-page.phtml:19
 #: resources/views/register-page.phtml:49
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "用户名是大小写不敏感而忽略重音字母，使““chloe”, “chloë”, and “Chloe”被认为是相同的。"
+msgstr "用户名不区分大小写并忽略重音字母，因此“chloe”，“chloë”和“Chloe”被认为是相同的。"
 
 #: resources/views/admin/control-panel.phtml:214
 #: resources/views/modules/gedcom_stats/statistics.phtml:119
@@ -15436,7 +15432,7 @@ msgstr "用户"
 
 #: resources/views/admin/users-cleanup.phtml:39
 msgid "User’s account has been inactive too long: "
-msgstr "用户帐户已停用的时间太长： "
+msgstr "用户账户已停用的时间太长： "
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:514
@@ -15649,7 +15645,7 @@ msgstr "水印是可选的通常只是对访客所示。"
 #: resources/views/register-success-page.phtml:13
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
-msgstr "现在我们将发送一封确认邮件到地址<b>%s</b>。你必须遵循的确认电子邮件中说明验证您的帐户的申请。如果七天内你不确定你的帐户申请，您的申请将被自动拒绝。你将不得不重新申请。<br><br>在你按照指示的确认电子邮件中，还必须管理员批准您的帐户请求才可以使用。<br><br>登录到这个网站，你需要知道你的用户名密码。"
+msgstr "我们已经给您的邮箱<b>%s</b>发送了一封确认邮件。请尽快完成邮件确认，否则7天后您的账户将被自动删除。<br><br>在确认邮件后，还必须管理员的批准，您才可以使用您的用户名和密码登录网站。"
 
 #: resources/views/admin/control-panel.phtml:24
 #: resources/views/admin/control-panel.phtml:352
@@ -15709,12 +15705,12 @@ msgstr "当一个记录被编辑时，用户和时间戳被记录。有时候我
 
 #: resources/views/admin/users-edit.phtml:88
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "当一个用户注册一个帐号，发送他们的电子邮件包含地址验证连接。当他们点击这个链接，我们知道的电子邮件地址是正确的，“电子邮件验证”选项是自动选择。"
+msgstr "当用户注册帐号，发送他们的电子邮件中包含验证连接。当他们点击这个链接，可以确认电子邮件地址是正确的，“电子邮件验证”选项是自动选择。"
 
 #. I18N: Help text for the “Source type” configuration setting
 #: resources/views/admin/trees-preferences.phtml:989
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-msgstr "当添加新的近亲属，你可以添加来源引用到记录 (个人和家庭) 或事实和事件 (出生、 婚姻和死亡)。 此选项控制是否在默认情况下，将选定记录或事实。"
+msgstr "当添加新的近亲属，你可以添加来源引用到记录 (个人和家庭) 或事实和事件 (出生、 婚姻和去世)。 此选项控制是否在默认情况下，将选定记录或事实。"
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:959
@@ -15723,16 +15719,16 @@ msgstr "当你添加一个新的家庭成员，一个默认的姓氏可能提供
 
 #: resources/views/help/pending-changes.phtml:4
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr "当你添加，编辑或删除信息，更改无法立即保存。他们保持在一个“待定”的地区。这些变化需要接受主持人的审批。"
+msgstr "当你添加，编辑或删除信息，更改无法立即保存。他们保持在一个“待定”的地区。这些变化需要接受主编人的审批。"
 
 #: resources/views/help/relationship-privacy.phtml:4
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
-msgstr "个体用户在一个家谱中并且是成员，编辑或主持人的角色，你可以防止他们访问过远的细节，生活或关系。您可以指定允许用户看到的一定数量层次的关系。"
+msgstr "个体用户在一个家谱中并且是成员，编辑或主编人的角色，你可以防止他们访问过远的细节，生活或关系。您可以指定允许用户看到的一定数量层次的关系。"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml:12
 msgid "Which family trees should be included in the sitemaps"
-msgstr "家谱被包含的网站地图中吗"
+msgstr "网站地图中将包含哪个家谱"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:303
@@ -15861,7 +15857,7 @@ msgstr "也门"
 #: resources/views/emails/register-user-text.phtml:4
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr "你(或有人声称是你)在 %1$s 使用电子邮件地址 %2$s 注册一个帐户。"
+msgstr "你(或有人声称是你)在 %1$s 使用电子邮件地址 %2$s 注册了一个账户。"
 
 #: app/Http/Controllers/Auth/RegisterController.php:214
 #: app/Http/Controllers/MessageController.php:217
@@ -15917,7 +15913,7 @@ msgstr "您可以为特定的记录、事实或事件添加限制访问权限。
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:46
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "您可以加强隐私，通过添加其他日期可以推断个人死亡信息，虽然没有死亡，埋葬，火化等的记录。"
+msgstr "您可以加强隐私，通过添加其他日期可以推断个人去世信息，虽然没有去世，埋葬，火化等的记录。"
 
 #: app/Http/Controllers/Auth/LoginController.php:168
 msgid "You cannot sign in because your browser does not accept cookies."
@@ -15941,11 +15937,11 @@ msgstr "您可以使用HTML格式回复，并添加其他网站的链接。"
 
 #: resources/views/admin/site-mail.phtml:10
 msgid "You must also enable “less secure applications” in your Google account."
-msgstr "您还必须在Google帐户中启用“安全性较低的应用程序”。"
+msgstr "您还必须在Google账户中启用“安全性较低的应用程序”。"
 
 #: app/Http/Controllers/SetupController.php:359
 msgid "You must enter all the administrator account fields."
-msgstr "您必须输入管理员帐户字段。"
+msgstr "您必须输入管理员账户字段。"
 
 #: resources/views/admin/trees-merge.phtml:15
 msgid "You must renumber the records in one of the trees before you can merge them."
@@ -15965,7 +15961,7 @@ msgstr "只有家族成员才可以访问网站。"
 
 #: app/Http/Controllers/Auth/LoginController.php:85
 msgid "You need to be an authorized user to access this website."
-msgstr "必须通过验证才可以访问网站"
+msgstr "必须通过验证才可以访问网站。"
 
 #: resources/views/admin/trees.phtml:15
 msgid "You need to create a family tree."
@@ -15974,11 +15970,11 @@ msgstr "您需要创建一个家谱。"
 #: resources/views/emails/verify-notify-html.phtml:16
 #: resources/views/emails/verify-notify-text.phtml:11
 msgid "You need to review the account details."
-msgstr "您需要查看帐户详细信息。"
+msgstr "您需要查看账户详细信息。"
 
 #: resources/views/setup/step-5-administrator.phtml:27
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
-msgstr "您需要设置一个管理员帐户。此帐户可以控制这个webtrees安装的各个方面。请选择一个强密码。"
+msgstr "您需要设置一个管理员账户。此账户可以控制这个webtrees安装的各个方面。请选择一个强密码。"
 
 #: resources/views/emails/message-copy-html.phtml:7
 #: resources/views/emails/message-copy-text.phtml:4
@@ -15998,12 +15994,12 @@ msgstr "你应该从 ‘%2$s’ 中删除 ‘%1$s’ 并再次尝试。"
 
 #: resources/views/admin/users-edit.phtml:94
 msgid "You should not approve an account unless you know that the email address is correct."
-msgstr "你不应该批准一个帐户,除非你知道电子邮件地址是正确的。"
+msgstr "你不应该批准一个账户,除非你知道电子邮件地址是正确的。"
 
 #: resources/views/emails/register-notify-html.phtml:26
 #: resources/views/emails/register-notify-text.phtml:13
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
-msgstr "用户请求将通过电子邮件通知。您就可以激活的用户名。直到您激活帐户,此用户将无法登录。"
+msgstr "用户注册信息将通过电子邮件通知您。您可以批准该账户。在您批准该账户前,该账户将无法登录。"
 
 #: resources/views/setup/step-5-administrator.phtml:49
 msgid "You will use this to sign in to webtrees."
@@ -16037,11 +16033,11 @@ msgstr "你的名字"
 #: app/Http/Controllers/Auth/RegisterController.php:139
 #, php-format
 msgid "Your registration at %s"
-msgstr "您的在 %s 注册"
+msgstr "您在 %s 的注册"
 
 #: resources/views/modules/batch_update/admin.phtml:86
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr "您的用户帐户没有启用“自动批准变化”。你只能改变一次一条记录。"
+msgstr "您的用户账户没有启用“自动批准变化”。你只能改变一次一条记录。"
 
 #: app/Services/ServerCheckService.php:185
 #, php-format
@@ -16133,19 +16129,19 @@ msgstr "添加地点"
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:71
 msgid "adopted name"
-msgstr "养名"
+msgstr "收养后姓名"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:67
 msgctxt "FEMALE"
 msgid "adopted name"
-msgstr "养名"
+msgstr "收养后姓名"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:62
 msgctxt "MALE"
 msgid "adopted name"
-msgstr "养名"
+msgstr "收养后姓名"
 
 #: app/Statistics/Repository/EventRepository.php:324
 msgid "adoption"
@@ -16300,7 +16296,7 @@ msgstr "出生名"
 #: resources/views/admin/trees-privacy.phtml:115
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr "在过去的 %1$s 年出生或在过去的 %2$s 年死亡的"
+msgstr "在过去的 %1$s 年出生或在过去的 %2$s 年去世的"
 
 #: app/Functions/Functions.php:704
 msgid "brother"
@@ -16383,7 +16379,7 @@ msgstr "项目符号列表"
 
 #: app/Statistics/Repository/EventRepository.php:325
 msgid "burial"
-msgstr "葬礼"
+msgstr "下葬"
 
 #: app/GedcomTag.php:2024
 msgid "by"
@@ -16442,19 +16438,19 @@ msgstr "人口普查增加"
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:113
 msgid "change of name"
-msgstr "改后姓名"
+msgstr "更改后姓名"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:109
 msgctxt "FEMALE"
 msgid "change of name"
-msgstr "改后姓名"
+msgstr "更改后姓名"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:104
 msgctxt "MALE"
 msgid "change of name"
-msgstr "改后姓名"
+msgstr "更改后姓名"
 
 #: app/Functions/Functions.php:683
 msgid "child"
@@ -16573,17 +16569,17 @@ msgstr "删除"
 #: resources/xml/reports/descendancy_report.xml:365
 msgctxt "FEMALE"
 msgid "died"
-msgstr "死亡"
+msgstr "去世"
 
 #: resources/xml/reports/descendancy_report.xml:134
 #: resources/xml/reports/descendancy_report.xml:435
 msgctxt "MALE"
 msgid "died"
-msgstr "死亡"
+msgstr "去世"
 
 #: resources/views/modules/pedigree-chart/page.phtml:36
 msgid "down"
-msgstr ""
+msgstr "下载"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:80
@@ -16594,7 +16590,7 @@ msgstr "下载"
 
 #: resources/views/modules/descendancy_chart/tree.phtml:17
 msgid "d’Aboville number"
-msgstr ""
+msgstr "书号"
 
 #: resources/views/admin/components.phtml:106
 #: resources/views/family-page-menu.phtml:7
@@ -16652,19 +16648,19 @@ msgstr "第十一代堂兄(妹)"
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:127
 msgid "estate name"
-msgstr "居住地名"
+msgstr "居住时的名字"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:123
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr "居住地名"
+msgstr "居住时的名字"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:118
 msgctxt "MALE"
 msgid "estate name"
-msgstr "居住地名"
+msgstr "居住时的名字"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:341
@@ -18716,7 +18712,7 @@ msgstr "最后"
 
 #: resources/views/modules/pedigree-chart/page.phtml:36
 msgid "left"
-msgstr ""
+msgstr "移到最左边"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -18764,19 +18760,19 @@ msgstr "娶了"
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:160
 msgid "married name"
-msgstr "婚后名字"
+msgstr "婚后姓名"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:156
 msgctxt "FEMALE"
 msgid "married name"
-msgstr "婚后名字"
+msgstr "婚后姓名"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:151
 msgctxt "MALE"
 msgid "married name"
-msgstr "婚后名字"
+msgstr "婚后姓名"
 
 #: app/Functions/Functions.php:820
 msgctxt "mother’s father"
@@ -19119,7 +19115,7 @@ msgstr "从"
 
 #: app/Functions/FunctionsPrint.php:285
 msgid "on the date of death"
-msgstr "死亡日期"
+msgstr "去世日期"
 
 #: app/Functions/Functions.php:617
 msgid "parent"
@@ -19264,7 +19260,7 @@ msgstr "重置"
 
 #: resources/views/modules/pedigree-chart/page.phtml:36
 msgid "right"
-msgstr ""
+msgstr "高度"
 
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:26
@@ -19679,7 +19675,7 @@ msgstr "按出生日期排序"
 #: resources/xml/reports/death_report.xml:9
 #: resources/xml/reports/relative_ext_report.xml:7
 msgid "sort by date of death"
-msgstr "按死亡日期排序"
+msgstr "按去世日期排序"
 
 #. I18N: A button label.
 #: resources/views/edit/reorder-spouses.phtml:33
@@ -20072,11 +20068,11 @@ msgstr "webtrees"
 
 #: app/Http/Controllers/MessageController.php:414
 msgid "webtrees message"
-msgstr "webtrees信息"
+msgstr "网站信息"
 
 #: resources/views/setup/step-3-database-type.phtml:26
 msgid "webtrees needs a database to store your genealogy data."
-msgstr ""
+msgstr "webtrees需要一个MySQL数据库，版本%s或更高版本。"
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:24
@@ -20203,323 +20199,3 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
-
-#~ msgid "%s day ago"
-#~ msgid_plural "%s days ago"
-#~ msgstr[0] "%s 天前"
-
-#~ msgid "%s hour ago"
-#~ msgid_plural "%s hours ago"
-#~ msgstr[0] "%s 小时前"
-
-#~ msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-#~ msgstr "%s在此服务器上已被禁用。除非它被启用，否则无法安装webtrees。请问您的服务器管理员请求启用它。"
-
-#~ msgid "%s minute ago"
-#~ msgid_plural "%s minutes ago"
-#~ msgstr[0] "%s 分钟前"
-
-#~ msgid "%s month ago"
-#~ msgid_plural "%s months ago"
-#~ msgstr[0] "%s 个月前"
-
-#~ msgid "%s second ago"
-#~ msgid_plural "%s seconds ago"
-#~ msgstr[0] "%s 秒前"
-
-#~ msgid "%s year ago"
-#~ msgid_plural "%s years ago"
-#~ msgstr[0] "%s 年前"
-
-#~ msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-#~ msgstr "<b>重要提示：</b>迁移向导不能帮助移动多媒体项目。你需要设置向导完成后再移动或复制您的多媒体结构和对象。"
-
-#~ msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-#~ msgstr "数据库服务器可以存储许多不同的数据库。你需要选择一个现有的数据库（由服务器管理员创建）或创建一个新的（如果你的数据库用户帐户具有足够的特权）。"
-
-#~ msgid "A.M."
-#~ msgstr "上午."
-
-#~ msgid "Add a child to this family"
-#~ msgstr "添加孩子到这个家庭"
-
-#~ msgid "Add a husband to this family"
-#~ msgstr "添加丈夫到这个家庭"
-
-#~ msgid "Add a wife to this family"
-#~ msgstr "添加妻子到这个家庭"
-
-#~ msgid "Add to favorites"
-#~ msgstr "添加到收藏"
-
-#~ msgid "All changes in PhpGedView must be accepted"
-#~ msgstr "所有记录变化必须接受"
-
-#~ msgid "All existing PhpGedView users must have distinct email addresses"
-#~ msgstr "所有现有的PhpGedView用户必须有不同的电子邮件地址"
-
-#~ msgid "Allow users to select their own theme"
-#~ msgstr "允许用户选择他们自己的主题"
-
-#~ msgid "Block"
-#~ msgstr "块"
-
-#~ msgid "Booklet"
-#~ msgstr "分册"
-
-#~ msgid "By default, your server allows scripts to run for %s second."
-#~ msgid_plural "By default, your server allows scripts to run for %s seconds."
-#~ msgstr[0] "默认情况下，您的服务器允许脚本运行%s秒。"
-
-#~ msgid "By default, your server allows scripts to use %s of memory."
-#~ msgstr "默认情况下，您的服务器允许脚本使用%s的内存。"
-
-#~ msgid "Cemeteries"
-#~ msgstr "墓地"
-
-#~ msgid "Check the settings and try again."
-#~ msgstr "检查设置并再次尝试。"
-
-#~ msgid "Confirm password"
-#~ msgstr "确认密码"
-
-#~ msgid "Database and table names"
-#~ msgstr "数据库和表名"
-
-#~ msgid "Default pedigree chart layout"
-#~ msgstr "默认谱系图布局"
-
-#~ msgid "Default pedigree generations"
-#~ msgstr "默认的谱代"
-
-#~ msgid "Embedded variable"
-#~ msgstr "嵌入变量"
-
-#~ msgid "Family group information"
-#~ msgstr "家庭组信息"
-
-#~ msgid "Gender icon on charts"
-#~ msgstr "图表里的性别图标"
-
-#~ msgid "Grandparents"
-#~ msgstr "祖父母"
-
-#~ msgid "Highest population"
-#~ msgstr "最高人口"
-
-#~ msgid "Hourglass chart of %s"
-#~ msgstr "%s 的沙漏图"
-
-#~ msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
-#~ msgstr "如果您的服务器安全政策允许,您可以使用webtrees管理页面增加内存或CPU时间。或者您联系服务器的管理员。"
-
-#~ msgid "Installation folder"
-#~ msgstr "安装目录"
-
-#~ msgid "Invalid GEDCOM format"
-#~ msgstr "无效GEDCOM格式"
-
-#~ msgid "LDS ordinance codes in chart boxes"
-#~ msgstr "在图表中的LDS条例码"
-
-#~ msgid "Leave this blank to use the default value."
-#~ msgstr "如果这里留空,将使用缺省值。"
-
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "约定"
-
-#~ msgid "Lowest population"
-#~ msgstr "最低人口"
-
-#~ msgid "Maximum descendancy generations"
-#~ msgstr "最大后代代数"
-
-#~ msgid "Maximum pedigree generations"
-#~ msgstr "最大谱系代"
-
-#~ msgid "Memory limit"
-#~ msgstr "内存限制"
-
-#~ msgid "Midnight"
-#~ msgstr "午夜"
-
-#~ msgid "MySQL gave the error: %s"
-#~ msgstr "MySQL的错误： %s"
-
-#~ msgid "MySQL variables"
-#~ msgstr "MySQL的变量"
-
-#~ msgid "Nobody at all"
-#~ msgstr "没有人"
-
-#~ msgid "Noon"
-#~ msgstr "中午"
-
-#~ msgid "Oldest at bottom"
-#~ msgstr "最老在底部"
-
-#~ msgid "Oldest at top"
-#~ msgstr "最老在顶部"
-
-#~ msgid "Others"
-#~ msgstr "其它"
-
-#~ msgid "P.M."
-#~ msgstr "下午."
-
-#~ msgid "PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-#~ msgstr "PHP设置 \"%1$s \" 是禁用的。以下功能将不工作： %2$s. 请联系服务器的管理员启用它。"
-
-#~ msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
-#~ msgstr "PHP扩展 “%s”是禁用的。如果不启用不能安装webtrees。请联系服务器的管理员启用它。"
-
-#~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-#~ msgstr "PHP设置 \"%1$s \" 是禁用的。没有它,以下功能将不工作： %2$s. 请联系服务器的管理员启用它。"
-
-#~ msgid "PHP time limit"
-#~ msgstr "PHP时间限制"
-
-#~ msgid "Passwords must contain at least 8 characters."
-#~ msgstr "密码必须包含至少8个字符。"
-
-#~ msgid "Pedigree of %s"
-#~ msgstr "%s 的家谱"
-
-#~ msgid "PhpGedView might be installed in one of these folders:"
-#~ msgstr "PhpGedView可能安装在这些文件夹之一："
-
-#~ msgid "PhpGedView must be version 4.2.3, or any SVN up to #%s"
-#~ msgstr "PhpGedView必须是4.2.3版本，或更高的 #%s"
-
-#~ msgid "PhpGedView must use the same database as webtrees."
-#~ msgstr "PhpGedView必须使用与webtrees相同的数据库。"
-
-#~ msgid "PhpGedView to webtrees transfer wizard"
-#~ msgstr "Phpgedview到webtrees转移向导"
-
-#~ msgid "Resulting value"
-#~ msgstr "结果值"
-
-#~ msgid "Select the languages that will be shown in menus."
-#~ msgstr "选择将在菜单中显示的语言。"
-
-#~ msgid "Set the default number of generations to display on descendancy and pedigree charts."
-#~ msgstr "设置显示后代图和系谱图默认的代数。"
-
-#~ msgid "Set the maximum number of generations to display on descendancy charts."
-#~ msgstr "在后代图中显示的最大数量的后代代数。"
-
-#~ msgid "Set the maximum number of generations to display on pedigree charts."
-#~ msgstr "设置谱系图显示的最大数量的后代。"
-
-#~ msgid "Show cousins"
-#~ msgstr "显示堂表兄弟"
-
-#~ msgid "Site preferences"
-#~ msgstr "网站设置"
-
-#~ msgid "Start at parents"
-#~ msgstr "从父母开始"
-
-#~ msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
-#~ msgstr "PhpGedView到webtrees向导是一个协助管理员从PhpGedView安装到一个新的webtrees自动化的过程。它将所有的PhpGedView GEDCOM和其他数据库信息直接输入到你的新webtrees数据库。下列要求："
-
-#~ msgid "The passwords do not match."
-#~ msgstr "密码不匹配。"
-
-#~ msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
-#~ msgstr "前缀是可选的，建议表名称为唯一的前缀，这样可以让几个不同的应用程序共用相同的数据库。建议“wt_”，但可以是任何你想要的。"
-
-#~ msgid "The specified folder does not contain an installation of PhpGedView."
-#~ msgstr "没有PhpGedView安装在指定的文件夹中。"
-
-#~ msgid "The version of %s is too new."
-#~ msgstr "%s 的版本太新。"
-
-#~ msgid "The version of %s is too old."
-#~ msgstr "%s 的版本太旧了。"
-
-#~ msgid "This family remained childless"
-#~ msgstr "该家庭没有孩子"
-
-#~ msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing."
-#~ msgstr "这是个人的<abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr>条例摘要。 \"B\"指示 LDS 洗礼。 \"E\"指示 LDS 养老。 \"S\"表示密封 LDS 配偶。 \"P\"表示 LDS 子-父密封。"
-
-#~ msgid "This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails."
-#~ msgstr "这是区分大小写的。如果这个名字的数据库已经不存在，webtrees将尝试为你创建新的。成功与否将取决于您的web服务器的权限设置,但是如果失败你会得到通知。"
-
-#~ msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box."
-#~ msgstr "这个选项控制是否在图表显示个人的性别图标。<br><br>因为性别也由框的颜色显示,这个选项并不隐瞒性别。而是从盒子里选择简单的删除一些重复的信息。"
-
-#~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
-#~ msgstr "此选项定义谱系图应该产生横向还是纵向模式。"
-
-#~ msgid "This server does not support secure downloads using HTTPS."
-#~ msgstr "此服务器不支持安全的下载使用 HTTPS。"
-
-#~ msgid "Type the password again."
-#~ msgstr "再次输入密码。"
-
-#~ msgid "Type your password again, to make sure you have typed it correctly."
-#~ msgstr "再次输入您的密码,以确保你输入的是否正确。"
-
-#~ msgid "Unable to connect using this username and password. Your server gave the following error."
-#~ msgstr "无法使用这些设置连接。您的服务器给出下列错误。"
-
-#~ msgid "Use PHP mail to send messages"
-#~ msgstr "使用PHP邮件功能发送消息"
-
-#~ msgid "View this source"
-#~ msgstr "查看来源"
-
-#~ msgid "Where is your PhpGedView installation?"
-#~ msgstr "你的phpgedview安装在哪里？"
-
-#~ msgid "You can request a higher or lower limit, although the server may ignore this request."
-#~ msgstr "虽然服务器可以忽略此请求，您可以要求更高或更低的限制。"
-
-#~ msgid "You must change this before you can continue."
-#~ msgstr "你一定要修正它才能继续。"
-
-#~ msgid "You need to sign in again, using your PhpGedView username and password."
-#~ msgstr "你要用你的PhpGedView用户和密码登陆。"
-
-#~ msgid "Your server’s administrator will provide you with the connection details."
-#~ msgstr "您的服务器的管理员将为您提供连接的详细信息。"
-
-#~ msgid "Zoom in/out on this box."
-#~ msgstr "在此框放大/缩小。"
-
-#~ msgid "a.m."
-#~ msgstr "上午."
-
-#~ msgid "century"
-#~ msgstr "世纪"
-
-#~ msgid "creating thumbnails of images"
-#~ msgstr "创建图像的缩略图"
-
-#~ msgid "file upload capability"
-#~ msgstr "文件上传功能"
-
-#~ msgid "midnight"
-#~ msgstr "午夜"
-
-#~ msgid "noon"
-#~ msgstr "中午"
-
-#~ msgid "p.m."
-#~ msgstr "下午."
-
-#~ msgid "reporting"
-#~ msgstr "报告"
-
-#~ msgid "webtrees cannot connect to the PhpGedView database: %s."
-#~ msgstr "webtrees无法连接到phpgedview数据库: %s."
-
-#~ msgid "webtrees needs a MySQL database, version %s or later."
-#~ msgstr "webtrees需要一个MySQL数据库，版本%s或更高版本。"
-
-#~ msgid "webtrees’ database must be on the same server as PhpGedView’s"
-#~ msgstr "webtrees数据库和PhpGedView的数据库必须在同一台服务器上"
