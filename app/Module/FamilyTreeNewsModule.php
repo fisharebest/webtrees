@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
@@ -34,6 +35,19 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
+
+    /** @var HtmlService */
+    private $html_service;
+
+    /**
+     * HtmlBlockModule bootstrap.
+     *
+     * @param HtmlService $html_service
+     */
+    public function boot(HtmlService $html_service)
+    {
+        $this->html_service = $html_service;
+    }
 
     /**
      * A sentence describing what this module does.
@@ -98,19 +112,34 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         return I18N::translate('News');
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Should this block load asynchronously using AJAX?
+     *
+     * Simple blocks are faster in-line, more comples ones
+     * can be loaded later.
+     *
+     * @return bool
+     */
     public function loadAjax(): bool
     {
         return false;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this block be shown on the user’s home page?
+     *
+     * @return bool
+     */
     public function isUserBlock(): bool
     {
         return false;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this block be shown on the tree’s home page?
+     *
+     * @return bool
+     */
     public function isTreeBlock(): bool
     {
         return true;
@@ -191,6 +220,9 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         $news_id = $request->getQueryParams()['news_id'] ?? '';
         $subject = $request->getParsedBody()['subject'];
         $body    = $request->getParsedBody()['body'];
+
+        $subject = $this->html_service->sanitize($subject);
+        $body    = $this->html_service->sanitize($body);
 
         if ($news_id > 0) {
             DB::table('news')

@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
@@ -35,6 +36,19 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     use ModuleTabTrait;
     use ModuleConfigTrait;
     use ModuleMenuTrait;
+
+    /** @var HtmlService */
+    private $html_service;
+
+    /**
+     * HtmlBlockModule bootstrap.
+     *
+     * @param HtmlService $html_service
+     */
+    public function boot(HtmlService $html_service)
+    {
+        $this->html_service = $html_service;
+    }
 
     /** @var int The default access level for this module.  It can be changed in the control panel. */
     protected $access_level = Auth::PRIV_HIDE;
@@ -98,7 +112,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             $block_id = (int) $block_id;
 
             // Only show this block for certain languages
-            $languages = $this->getBlockSetting($block_id, 'languages', '');
+            $languages = $this->getBlockSetting($block_id, 'languages');
             if ($languages === '' || in_array(WT_LOCALE, explode(',', $languages), true)) {
                 $stories[] = (object) [
                     'block_id'   => $block_id,
@@ -216,8 +230,8 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
                 ->value('xref');
 
             $individual  = Individual::getInstance($xref, $tree);
-            $story_title = $this->getBlockSetting($block_id, 'title', '');
-            $story_body  = $this->getBlockSetting($block_id, 'story_body', '');
+            $story_title = $this->getBlockSetting($block_id, 'title');
+            $story_body  = $this->getBlockSetting($block_id, 'story_body');
             $languages   = explode(',', $this->getBlockSetting($block_id, 'languages'));
 
             $title = I18N::translate('Edit the story') . ' — ' . e($tree->title());
@@ -250,6 +264,9 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         $story_body  = $params['story_body'];
         $story_title = $params['story_title'];
         $languages   = $params['languages'] ?? [];
+
+        $story_body  = $this->html_service->sanitize($story_body);
+        $story_title = $this->html_service->sanitize($story_title);
 
         if ($block_id !== 0) {
             DB::table('block')

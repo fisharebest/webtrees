@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
@@ -34,6 +35,19 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 {
     use ModuleConfigTrait;
     use ModuleMenuTrait;
+
+    /** @var HtmlService */
+    private $html_service;
+
+    /**
+     * HtmlBlockModule bootstrap.
+     *
+     * @param HtmlService $html_service
+     */
+    public function boot(HtmlService $html_service)
+    {
+        $this->html_service = $html_service;
+    }
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -318,6 +332,9 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         $languages   = $params['languages'] ?? [];
         $gedcom_id   = (int) $params['gedcom_id'] ?: null;
         $block_order = (int) $params['block_order'];
+
+        $faqbody = $this->html_service->sanitize($faqbody);
+        $header  = $this->html_service->sanitize($header);
 
         if ($block_id !== 0) {
             DB::table('block')

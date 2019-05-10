@@ -40,6 +40,7 @@
         "ext-xml": "*",
         "ext-zip": "*",
         "doctrine/dbal": "~2.9",
+        "ezyang/htmlpurifier": "~4.10",
         "fig/http-message-util": "^1.1",
         "fisharebest/algorithm": "~1.3",
         "fisharebest/ext-calendar": "~2.5",
