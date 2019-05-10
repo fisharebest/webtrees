@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use HTMLPurifier;
+use HTMLPurifier_AttrDef_Enum;
 use HTMLPurifier_Config;
 
 /**
@@ -36,6 +37,36 @@ class HtmlService
     public function sanitize(string $html): string
     {
         $config = HTMLPurifier_Config::createDefault();
+
+        $config->set('HTML.TidyLevel', 'none'); // Only XSS cleaning now
+
+        $def = $config->getHTMLDefinition(true);
+
+        // Allow image maps
+        $def->addAttribute('img', 'usemap', 'CDATA');
+
+        $map = $def->addElement('map', 'Block', 'Flow', 'Common', [
+            'name'  => 'CDATA',
+            'id'    => 'ID',
+            'title' => 'CDATA',
+        ]);
+
+        $map->excludes = ['map' => true];
+
+        $area = $def->addElement('area', 'Block', 'Empty', 'Common', [
+            'name'      => 'CDATA',
+            'id'        => 'ID',
+            'alt'       => 'Text',
+            'coords'    => 'CDATA',
+            'accesskey' => 'Character',
+            'nohref'    => new HTMLPurifier_AttrDef_Enum(['nohref']),
+            'href'      => 'URI',
+            'shape'     => new HTMLPurifier_AttrDef_Enum(['rect', 'circle', 'poly', 'default']),
+            'tabindex'  => 'Number',
+            'target'    => new HTMLPurifier_AttrDef_Enum(['_blank', '_self', '_target', '_top']),
+        ]);
+
+        $area->excludes = ['area' => true];
 
         $purifier = new HTMLPurifier($config);
 
