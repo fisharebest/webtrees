@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-05-09 14:15+0000\n"
+"PO-Revision-Date: 2019-05-10 20:05+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/he/>\n"
 "Language: he\n"
@@ -15948,7 +15948,7 @@ msgstr "אתה יכול לבקש חשבון באמצעות הקישור להלן
 #. I18N: Help text for the "Default theme" site configuration setting
 #: admin_site_config.php:255 admin_trees_config.php:978 edituser.php:287
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
-msgstr "באפשרותך לשנות את המראה של webtrees באמצעות ”עיצובים\". לכל עיצוב יש סגנון, מבנה, ערכת צבעים, וכו׳ שונה."
+msgstr "באפשרותך לשנות את המראה של webtrees באמצעות \"עיצובים\". לכל עיצוב יש סגנון, מבנה, ערכת צבעים, וכו׳ שונה."
 
 #. I18N: An XREF is the identification number used in GEDCOM files, such as F123 or R14.
 #: admin_trees_config.php:842
