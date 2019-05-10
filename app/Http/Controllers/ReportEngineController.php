@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use function addcslashes;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Html;
@@ -214,18 +213,15 @@ class ReportEngineController extends AbstractBaseController
      *
      * @param ServerRequestInterface $request
      * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function reportRun(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function reportRun(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $params   = $request->getQueryParams();
         $report   = $params['report'];
         $output   = $params['output'];
-        $vars     = $params['vars'];
-        $varnames = $params['varnames'];
-        $type     = $params['type'];
+        $varnames = $params['varnames'] ?? [];
 
         $module = $this->module_service->findByName($report);
 
@@ -233,45 +229,9 @@ class ReportEngineController extends AbstractBaseController
             throw new NotFoundHttpException('Report ' . $report . ' not found.');
         }
 
-        //-- setup the arrays
-        $newvars = [];
-        foreach ($vars as $name => $var) {
-            $newvars[$name]['id'] = $var;
-            if (!empty($type[$name])) {
-                switch ($type[$name]) {
-                    case 'INDI':
-                        $record = Individual::getInstance($var, $tree);
-                        if ($record && $record->canShowName()) {
-                            $newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($tree));
-                        } else {
-                            return $this->reportSetup($request, $tree, $user);
-                        }
-                        break;
-                    case 'FAM':
-                        $record = Family::getInstance($var, $tree);
-                        if ($record && $record->canShowName()) {
-                            $newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($tree));
-                        } else {
-                            return $this->reportSetup($request, $tree, $user);
-                        }
-                        break;
-                    case 'SOUR':
-                        $record = Source::getInstance($var, $tree);
-                        if ($record && $record->canShowName()) {
-                            $newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($tree));
-                        } else {
-                            return $this->reportSetup($request, $tree, $user);
-                        }
-                        break;
-                }
-            }
-        }
-        $vars = $newvars;
-
+        $vars = [];
         foreach ($varnames as $name) {
-            if (!isset($vars[$name])) {
-                $vars[$name]['id'] = '';
-            }
+            $vars[$name]['id'] = $params['vars'][$name] ?? '';
         }
 
         $xml_filename = $module->resourcesFolder() . $module->xmlFilename();
