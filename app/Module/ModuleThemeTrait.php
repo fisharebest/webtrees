@@ -395,7 +395,7 @@ trait ModuleThemeTrait
         if ($tree instanceof Tree && $tree->hasPendingEdit() && Auth::isModerator($tree)) {
             $url = route('show-pending', [
                 'ged' => $tree->name(),
-                'url' => app(ServerRequestInterface::class)->getUri(),
+                'url' => (string) app(ServerRequestInterface::class)->getUri(),
             ]);
 
             return new Menu(I18N::translate('Pending changes'), $url, 'menu-pending');
