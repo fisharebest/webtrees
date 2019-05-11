@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-05-10 07:00+0800\n"
-"Last-Translator: xmlf <xmlf@hotmail.com>\n"
-"Language-Team: Chinese (Traditional) <http://translate.webtrees.net/projects/webtrees/webtrees/zh-Hans/>\n"
-"Language: zh_Hant\n"
+"PO-Revision-Date: 2019-05-11 00:07+0000\n"
+"Last-Translator: rui <xmlf@hotmail.com>\n"
+"Language-Team: Chinese (Traditional) <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/zh_Hant/>\n"
+"Language: zh-Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -674,6 +674,9 @@ msgstr "八世紀"
 msgctxt "CENTURY"
 msgid "9th"
 msgstr "九世紀"
+
+msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
+msgstr "<b>GUID</b>«在全球範圍內唯一的ID»的縮寫。<br><br>GUID用於定義每個可能是重複的個體，使中央機構，如家族歷史中心，或是自己的服務器上運行的兼容的GEDCOM處理程序，確定它們是否是同一人無論身在何處的。家庭歷史中心的目標是有家譜數據的中央存儲庫，並通過Web服務公開。這將使任何程序訪問數據，並更新他們的數據在它<br><br>如果你不打算與其他人分享這個GEDCOM，你不需要讓webtrees創建這些GUID，但是，這樣做不用擔心GEDCOM的規模越來越大。"
 
 #: admin_trees_manage.php:731
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -8325,6 +8328,9 @@ msgstr "男房客"
 msgid "Logan, Utah, United States"
 msgstr "猶他州洛根"
 
+msgid "Login ID"
+msgstr "登入帳號"
+
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:219
 msgid "London, England"
@@ -13339,6 +13345,9 @@ msgstr "用GEDCOM文件同步家谱"
 msgid "Syria"
 msgstr "叙利亚"
 
+msgid "System settings"
+msgstr "系統設定"
+
 #: admin_module_tabs.php:87 admin_modules.php:211
 msgid "Tab"
 msgstr "选项卡"
@@ -15383,7 +15392,7 @@ msgstr "使用者名或电子邮件地址"
 
 #: admin_users.php:330 edituser.php:164 login.php:444
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "使用者名不区分大小写并忽略重音字母，因此“chloe”，“chloë”和“Chloe”被认为是相同的。"
+msgstr "不分大小寫，可由字母、數字或中文組成，您将使用它登录网站。"
 
 #. I18N: Menu entry
 #: admin.php:643 admin.php:651 app/Theme/AdministrationTheme.php:162
@@ -20127,12 +20136,3 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
-
-msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-msgstr "<b>GUID</b>«在全球範圍內唯一的ID»的縮寫。<br><br>GUID用於定義每個可能是重複的個體，使中央機構，如家族歷史中心，或是自己的服務器上運行的兼容的GEDCOM處理程序，確定它們是否是同一人無論身在何處的。家庭歷史中心的目標是有家譜數據的中央存儲庫，並通過Web服務公開。這將使任何程序訪問數據，並更新他們的數據在它<br><br>如果你不打算與其他人分享這個GEDCOM，你不需要讓webtrees創建這些GUID，但是，這樣做不用擔心GEDCOM的規模越來越大。"
-
-msgid "Login ID"
-msgstr "登入帳號"
-
-msgid "System settings"
-msgstr "系統設定"
