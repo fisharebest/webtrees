@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\ExtCalendar\PersianCalendar;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\AbstractCalendarDate;
 use Fisharebest\Webtrees\Date\FrenchDate;
@@ -230,8 +231,12 @@ class CalendarService
             new FrenchDate($jd),
             new JewishDate($jd),
             new HijriDate($jd),
-            new JalaliDate($jd),
         ];
+
+        // @TODO - there is a bug in the Persian Calendar that gives zero months for invalid dates
+        if ($jd > (new PersianCalendar())->jdStart()) {
+            $anniversaries[] = new JalaliDate($jd);
+        }
 
         foreach ($anniversaries as $anniv) {
             // Build a query to match anniversaries in the appropriate calendar.

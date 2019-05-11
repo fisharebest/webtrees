@@ -83,31 +83,13 @@ class CalendarController extends AbstractBaseController
             $cal = $this->localization_service->calendar()->gedcomCalendarEscape();
         }
 
-        // We cannot display new-style/old-style years, so convert to new style
-        if (preg_match('/^(\d\d)\d\d\/(\d\d)$/', $year, $match)) {
-            $year = $match[1] . $match[2];
+        // need BC to parse date
+        if ($year < 0) {
+            $year = (-$year) . ' B.C.';
         }
-
-        // advanced-year "year range"
-        if (preg_match('/^(\d+)-(\d+)$/', $year, $match)) {
-            if (strlen($match[1]) > strlen($match[2])) {
-                $match[2] = substr($match[1], 0, strlen($match[1]) - strlen($match[2])) . $match[2];
-            }
-            $ged_date = new Date("FROM {$cal} {$match[1]} TO {$cal} {$match[2]}");
-            $view     = 'year';
-        } elseif (preg_match('/^(\d+)(\?+)$/', $year, $match)) {
-            // advanced-year "decade/century wildcard"
-            $y1       = $match[1] . str_replace('?', '0', $match[2]);
-            $y2       = $match[1] . str_replace('?', '9', $match[2]);
-            $ged_date = new Date("FROM {$cal} {$y1} TO {$cal} {$y2}");
-            $view     = 'year';
-        } else {
-            if ($year < 0) {
-                $year = (-$year) . ' B.C.';
-            } // need BC to parse date
-            $ged_date = new Date("{$cal} {$day} {$month} {$year}");
-            $year     = $ged_date->minimumDate()->year; // need negative year for year entry field.
-        }
+        $ged_date = new Date("{$cal} {$day} {$month} {$year}");
+        // need negative year for year entry field.
+        $year     = $ged_date->minimumDate()->year;
         $cal_date = $ged_date->minimumDate();
 
         // Fill in any missing bits with todays date

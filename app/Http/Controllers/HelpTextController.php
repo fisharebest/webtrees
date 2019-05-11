@@ -231,11 +231,6 @@ class HelpTextController extends AbstractBaseController
                 $text  = view('help/hebrew');
                 break;
 
-            case 'annivers_year_select':
-                $title = I18N::translate('Year input box');
-                $text  = view('help/calendar-year');
-                break;
-
             case 'edit_SOUR_EVEN':
                 $title = I18N::translate('Associate events with this source');
                 $text  = view('help/source-events');
