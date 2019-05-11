@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-05-10 07:00+0800\n"
-"Last-Translator: xmlf <xmlf@hotmail.com>\n"
-"Language-Team: Chinese (Traditional) <http://translate.webtrees.net/projects/webtrees/webtrees/zh-Hans/>\n"
-"Language: zh_Hant\n"
+"PO-Revision-Date: 2019-05-11 00:06+0000\n"
+"Last-Translator: rui <xmlf@hotmail.com>\n"
+"Language-Team: Chinese (Simplified) <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/zh_Hans/>\n"
+"Language: zh-Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -675,6 +675,9 @@ msgctxt "CENTURY"
 msgid "9th"
 msgstr "九世紀"
 
+msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
+msgstr "<b>GUID</b>«在全球范围内唯一的ID»的缩写。<br><br>GUID用于定义每个可能是重复的个体，使中央机构，如家族历史中心，或是自己的服务器上运行的兼容的GEDCOM处理程序，确定它们是否是同一人无论身在何处的。家庭历史中心的目标是有家谱数据的中央存储库，并通过Web服务公开。这将使任何程序访问数据，并更新他们的数据在它<br><br>如果你不打算与其他人分享这个GEDCOM，你不需要让webtrees创建这些GUID，但是，这样做不用担心GEDCOM的规模越来越大。"
+
 #: admin_trees_manage.php:731
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
 msgstr "<b>重要提示：</b>遷移嚮導不能幫助移動多媒體項目。你需要設置嚮導完成後再移動或複制您的多媒體結構和對象。"
@@ -1122,6 +1125,9 @@ msgstr "地名簡稱"
 #: app/GedcomTag.php:118
 msgid "Abbreviation"
 msgstr "簡稱"
+
+msgid "Acadia"
+msgstr "阿卡迪亚"
 
 #: edit_changes.php:181 edit_changes.php:189
 msgid "Accept"
@@ -2528,6 +2534,9 @@ msgstr "受誡禮"
 msgid "Barbados"
 msgstr "巴巴多斯島"
 
+msgid "Basic"
+msgstr "基本的"
+
 #. I18N: gedcom tag BASM
 #: app/GedcomTag.php:198 modules_v3/missing_facts_report/report.xml:18
 msgid "Bat mitzvah"
@@ -3259,6 +3268,9 @@ msgstr "默認情況下，您的服務器允許腳本使用%s的內存。"
 msgid "CKEditor™"
 msgstr "CKEditor™"
 
+msgid "Calculate the age differences between siblings, children, spouses, etc."
+msgstr "选中此选项后，webtrees 将计算之间的兄弟姐妹、 子女、 配偶等的年龄差异。"
+
 #: admin_trees_manage.php:367
 msgid "Calculating…"
 msgstr "計算中…"
@@ -3303,6 +3315,9 @@ msgstr "金邊，巴西"
 #: app/Stats.php:6711
 msgid "Canada"
 msgstr "加拿大"
+
+msgid "Cape Colony"
+msgstr "好望角殖民地海岬"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6723
@@ -3401,6 +3416,9 @@ msgstr "死地"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:143
 msgid "Census transcript"
 msgstr "調查筆錄"
+
+msgid "Center map here"
+msgstr "中心地图在这里"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6710
@@ -3775,6 +3793,21 @@ msgstr "清理數據文件夾"
 msgid "Cleared but not yet completed"
 msgstr "清除，但尚未完成的"
 
+msgid "Click a row, then drag-and-drop to re-order media"
+msgstr "点击一行,然后拖拽重排媒体"
+
+msgid "Click here to add, edit, or delete"
+msgstr "点击这里添加、编辑或删除"
+
+msgid "Click here to open or close the sidebar"
+msgstr "击这里打开或关闭侧边栏"
+
+msgid "Click name to add individual to add links list."
+msgstr "点击名称添加人添加链接列表。"
+
+msgid "Click on a title to go straight to it, or scroll down to read them all."
+msgstr "点击一个标题,直接下拉或向下滚动阅读所有。"
+
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:38
 msgid "Clippings cart"
@@ -3889,6 +3922,9 @@ msgstr "壓縮GEDCOM文件"
 #: app/GedcomTag.php:302
 msgid "Concatenation"
 msgstr "串聯"
+
+msgid "Configure"
+msgstr "配置"
 
 #: admin_users.php:351 edituser.php:226 login.php:467
 msgid "Confirm password"
@@ -5215,6 +5251,9 @@ msgstr "顯示和管理一個家譜的收藏頁面。"
 msgid "Display and manage a user’s favorite pages."
 msgstr "顯示和管理用戶收藏的頁面。"
 
+msgid "Display map coordinates"
+msgstr "显示地图坐标"
+
 #. I18N: gedcom tag DIV
 #: app/GedcomTag.php:374
 msgid "Divorce"
@@ -5473,6 +5512,9 @@ msgstr "教育水平"
 msgid "Egypt"
 msgstr "埃及"
 
+msgid "Eire"
+msgstr "爱尔兰"
+
 #. I18N: Name of a country or state
 #: app/Stats.php:6878
 msgid "El Salvador"
@@ -5625,6 +5667,9 @@ msgstr "輸入這個收藏的備註"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:175
 msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
 msgstr "输入或查找媒体项目链接的人,家庭,或资源的ID。"
+
+msgid "Enter report values"
+msgstr "输入报告条件"
 
 #: search.php:191
 msgid "Entire record"
@@ -5798,6 +5843,9 @@ msgstr "F.A.B."
 #: app/Module/FrequentlyAskedQuestionsModule.php:34
 msgid "FAQ"
 msgstr "常見問題"
+
+msgid "FAQ visibility"
+msgstr "常见问题能见度"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:444
@@ -6207,6 +6255,9 @@ msgstr "女性"
 #: app/Stats.php:6746
 msgid "Fiji"
 msgstr "斐濟"
+
+msgid "File containing places (CSV)"
+msgstr "包含地点的文件(CSV)"
 
 #: admin_media.php:490 app/GedcomTag.php:1785
 msgid "File size"
@@ -7079,6 +7130,15 @@ msgstr "黑體"
 msgid "Her occupation was"
 msgstr "她的職業是"
 
+msgid "Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed."
+msgstr "图标可以设置或删除。使用这个链接标志可选。当这个地理位置显示,这个标志将被显示。"
+
+msgid "Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map."
+msgstr "缩放级别可以在这里输入。这个值将被用作最小值时显示此地理位置在地图上。"
+
+msgid "Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined."
+msgstr "在这里你可以输入精度。在此基础上设置数字的位数,将用于确定的纬度和经度。"
+
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:193
 msgid "Hermosillo, Mexico"
@@ -7275,6 +7335,9 @@ msgstr "如果一個人被稱為的暱稱不屬於他們的正式名稱，應該
 msgid "If an individual was not known by their first given name, the preferred name should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>"
 msgstr "如果一個人不知道他們的第一個給定的名稱，首選的名稱應標有星號:<%s>/王/ * 麻<%s>"
 
+msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
+msgstr "一个姓出现次数低于阈值,它不会出现在列表中。它可以在这里添加手动。如果多个姓列入,他们必须由一个逗号分开。<b>姓氏是区分大小写的。</b>"
+
 #: help_text.php:224
 #, php-format
 msgid "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
@@ -7352,6 +7415,9 @@ msgstr "如果超過這些限制,你可能會遇到服務器訪問超時或空�
 #: admin_site_config.php:519
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr "如果您使用下面的跟踪和分析服務之一，webtrees可以自動添加跟踪代碼。"
+
+msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>. Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
+msgstr "如果你想从常见的姓氏列表删除一个姓但不增加阈值,你可以通过这里进入姓。如果多姓列入,他们必须由一个逗号分开。<b>姓氏是区分大小写的。</b>姓氏列入这里也将从主页上十大名单被删除。"
 
 #: setup.php:187
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
@@ -7563,6 +7629,9 @@ msgstr "女線人"
 msgctxt "MALE"
 msgid "Informant"
 msgstr "男線人"
+
+msgid "Information about the request is shown under the link below."
+msgstr "申请的信息显示在下面的链接。"
 
 #: admin_pgv_to_wt.php:173
 msgid "Installation folder"
@@ -8216,6 +8285,12 @@ msgstr "壽命表"
 msgid "Lima, Peru"
 msgstr "利馬,秘魯"
 
+msgid "Limit"
+msgstr "限制值"
+
+msgid "Limit display by"
+msgstr "显示的限制"
+
 #. I18N: You need to:
 #: login.php:575
 msgid "Link the user account to an individual."
@@ -8324,6 +8399,9 @@ msgstr "男房客"
 #: app/GedcomCode/GedcomCodeTemp.php:217
 msgid "Logan, Utah, United States"
 msgstr "猶他州洛根"
+
+msgid "Login ID"
+msgstr "登录ID"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:219
@@ -9152,6 +9230,9 @@ msgstr "兵役"
 msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
 msgstr "谷歌地图最小和最大缩放因子。1是完整的地图,15是单一的房子。注意,15只提供在某些地区。"
 
+msgid "Minimum number of occurrences to be a “common surname”"
+msgstr "常见的姓"
+
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php:29
 #: modules_v3/missing_facts_report/report.xml:3
@@ -9526,6 +9607,12 @@ msgstr "名稱後綴"
 msgid "Names"
 msgstr "名稱"
 
+msgid "Names to add to common surnames (comma separated)"
+msgstr "从常见的姓氏名字添加(逗号分隔)"
+
+msgid "Names to remove from common surnames (comma separated)"
+msgstr "从常见的姓氏名字删除(逗号分隔)"
+
 #. I18N: gedcom tag _NAMS
 #: app/GedcomTag.php:1679
 msgid "Namesake"
@@ -9574,6 +9661,9 @@ msgstr "諾伍，伊利諾斯（新）"
 msgid "Nauvoo (original), Illinois, United States"
 msgstr "諾伍，伊利諾斯（原）"
 
+msgid "Neighborhood"
+msgstr "邻居"
+
 #. I18N: Name of a country or state
 #: app/Stats.php:6843
 msgid "Nepal"
@@ -9583,6 +9673,9 @@ msgstr "尼泊爾"
 #: app/Stats.php:6841
 msgid "Netherlands"
 msgstr "荷蘭"
+
+msgid "Neutral Zone"
+msgstr "中性区"
 
 #: admin_users.php:239
 msgid "Never"
@@ -10961,6 +11054,9 @@ msgctxt "NOMINATIVE"
 msgid "Prairial"
 msgstr "第九月"
 
+msgid "Precision of the latitude and longitude"
+msgstr "纬度和经度的精确"
+
 #: admin_site_config.php:129
 msgid "Predefined text that states admin will decide on each request for a user account"
 msgstr "管理员审核请求使用者账户的预定义的文本"
@@ -11893,6 +11989,9 @@ msgstr "搜尋过滤器"
 msgid "Search for"
 msgstr "搜尋"
 
+msgid "Search for individuals to add to add Links list."
+msgstr "搜索的人加入到列表中添加链接。"
+
 #: app/Module/GoogleMapsModule.php:3351
 msgid "Search globally"
 msgstr "搜尋"
@@ -12118,6 +12217,9 @@ msgctxt "MALE"
 msgid "Servant"
 msgstr "男仆"
 
+msgid "Server file containing places (CSV)"
+msgstr "包含地点的服务器文件(CSV)"
+
 #. I18N: Menu entry
 #: admin.php:589 admin_site_info.php:26 app/Theme/AdministrationTheme.php:103
 msgid "Server information"
@@ -12176,6 +12278,9 @@ msgstr "为所有死去的人设置隐私访问级别。"
 #: login.php:571
 msgid "Set the status to “approved”."
 msgstr "将状态设置为\"批准\"。"
+
+msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts. This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
+msgstr "设置为<b>是</b>以使用GEDCOM ID的RIN号码，而不是当被问及在配置文件中，用户设置和图表各自的ID。这是为族谱程序：导出不一致的GEDCOMs并分配给不同个人相同ID，但始终使用相同的RIN有用。"
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1580
@@ -12389,6 +12494,9 @@ msgstr "在《请求新的使用者账户》页面显示使用协议"
 #: app/Module/NotesTabModule.php:74
 msgid "Show all notes"
 msgstr "显示所有记录"
+
+msgid "Show all notes and source references on notes and sources tabs"
+msgstr "在记事和资源标签显示所有记事和资源"
 
 #: placelist.php:212
 msgid "Show all places in a list"
@@ -12734,6 +12842,9 @@ msgstr "兄弟姐妹"
 msgid "Siblings"
 msgstr "兄弟姐妹"
 
+msgid "Sicily"
+msgstr "西西里"
+
 #: admin_module_sidebar.php:87 admin_modules.php:218
 msgid "Sidebar"
 msgstr "侧边栏"
@@ -12772,6 +12883,9 @@ msgstr "登录和注册"
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
 msgstr "阳历被认为是更简单的日期。指定一个日期,可以在日期前添加一个关键字。如果这个月或年格式使日期明确这个关键字是可选的。"
+
+msgid "Simple search filter based on the characters entered, no wildcards are accepted."
+msgstr "简单的搜索筛选器基于字符输入,通配符不被接受。"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6872
@@ -13339,6 +13453,9 @@ msgstr "用GEDCOM文件同步家谱"
 msgid "Syria"
 msgstr "叙利亚"
 
+msgid "System settings"
+msgstr "系统设置"
+
 #: admin_module_tabs.php:87 admin_modules.php:211
 msgid "Tab"
 msgstr "选项卡"
@@ -13475,6 +13592,9 @@ msgstr "<b>名称</b>栏包含个人的全名，可能是拼写或是记录。�
 #: help_text.php:239
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
 msgstr "<b>姓</b>栏包含用于排序和分组的名称。它可以是不同的，以个人的实际姓氏，总是从<b>名称</b>栏。可以使用此字段进行排序的姓氏带或不带前缀的（梵高/梵高）和组拼写变体或的语调（科瓦尔斯基/ Kowalska）。如果一个人需要被列在姓氏超过一个，每个名字应以逗号分隔。"
+
+msgid "The FAQ list is empty."
+msgstr "常见问题列表是空的。"
 
 #: admin_trees_manage.php:148
 #, php-format
@@ -14304,6 +14424,9 @@ msgstr "使用者只能为来源添加<u>一次</u>的GEDCOM事件列表。例�
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
 msgstr "这是SMTP伺服器的名称。\"localhost\"指邮件服务的同一台计算机上執行您的Web伺服器。"
 
+msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
+msgstr "在主页上显示常见姓氏列表之前姓氏的个数。"
+
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1090
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100."
@@ -14406,6 +14529,9 @@ msgstr "这记录被编辑。更改需要主编人的审批。"
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "这记录被编辑。你应该评估变更,然后 %1$s 或 %2$s 他们。"
 
+msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record. These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record. These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
+msgstr "此选项控制是否将附源引用的事实在记事和源标签在个人页面显示。<br><br>通常，记事和源标签仅显示直接连接到个人的数据库记录的源引用的记事。这些是<i> 1级</i>记事和资源引用。<br><br><b>是</b>选项导致这些标签也显示个人数据库记录的各种事实包含的记事和资源引用。这些是<i> 2级</i>记事和源引用，因为各种事实是在1级。"
+
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: admin_trees_config.php:1480
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
@@ -14450,6 +14576,9 @@ msgstr "此选项将保留在私人家庭的联系记录。这意味着你将看
 #: admin_trees_config.php:475
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
 msgstr "此选项将显示名称（但没有其他私人细节）。如果他们还在世，或者如果一个隐私的限制已被添加到他们的个人私有记录。隐藏一个特定的名称，添加一个隐私限制到这个记录名称。"
+
+msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
+msgstr "这个选项设置是否弹出窗口显示经纬度与地图标记。"
 
 #: help_text.php:286
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
@@ -14575,6 +14704,9 @@ msgstr "这个来源已被被编辑。更改需要主编人的审批。"
 #, php-format
 msgid "This source has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "这个来源已被编辑。你应该检查更改然后 %1$s 或 %2$s 它们。"
+
+msgid "This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
+msgstr "不同地理位置指定的精度不同级别。例如一个国家将指定精度0(= 0数字小数点后),而一个城市需要3或4位数。"
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: admin_trees_config.php:931
@@ -14764,6 +14896,9 @@ msgstr "当您正在复制的文件，可以暂时在服务器上创建文件 %s
 #: admin_site_config.php:189
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
 msgstr "为了保护私人数据，webtrees使用Apache的配置文件（.htaccess文件），阻止访问此文件夹。如果你的web伺服器不支持.htaccess文件，你不能限制访问此文件夹，那么你可以从Web文档选择另一个文件夹。"
+
+msgid "To reduce the height of the News block, the administrator has hidden some articles. You can reveal these hidden articles by clicking the <b>View the archive</b> link."
+msgstr "为了减少消息块的高度，管理员隐藏了一些文章。你可以通过点击<b>查看档案</b>链接显示这些隐藏的内容。"
 
 #: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:377
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
@@ -15093,6 +15228,12 @@ msgstr "美国本土外小岛屿"
 msgid "US Virgin Islands"
 msgstr "美属维尔京群岛"
 
+msgid "USA"
+msgstr "美国"
+
+msgid "USSR"
+msgstr "苏联"
+
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: admin_site_upgrade.php:41
 msgid "UTC"
@@ -15271,6 +15412,9 @@ msgstr "使用谷歌地图™的地方列表"
 msgid "Use PHP mail to send messages"
 msgstr "使用PHP邮件功能发送短讯"
 
+msgid "Use RIN number instead of GEDCOM ID"
+msgstr "用RIN数字代替GEDCOM ID"
+
 #: admin_site_config.php:119
 msgid "Use SMTP to send messages"
 msgstr "使用SMTP发送短讯"
@@ -15383,7 +15527,7 @@ msgstr "使用者名或电子邮件地址"
 
 #: admin_users.php:330 edituser.php:164 login.php:444
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "使用者名不区分大小写并忽略重音字母，因此“chloe”，“chloë”和“Chloe”被认为是相同的。"
+msgstr "不分大小写，可由字母、数字、或中文组成，你将使用它登录网站。"
 
 #. I18N: Menu entry
 #: admin.php:643 admin.php:651 app/Theme/AdministrationTheme.php:162
@@ -15654,6 +15798,9 @@ msgstr "网站"
 msgid "Website access rules"
 msgstr "网站日志"
 
+msgid "Website and META tag settings"
+msgstr "网站和元标签设置"
+
 #. I18N: Menu entry
 #: admin_site_logs.php:35 app/Theme/AdministrationTheme.php:100
 msgid "Website logs"
@@ -15715,6 +15862,9 @@ msgstr "添加一个链接的时候，ID字段不能为空。"
 #: admin_trees_config.php:2123
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
 msgstr "当添加新的近亲属，你可以添加来源引用到记录 (个人和家庭) 或事实和事件 (出生、 婚姻和去世)。 此选项控制是否在默认情况下，将选定记录或事实。"
+
+msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
+msgstr "当创建新记录时，他们给出了一个内部的 ID 编号。 您可以指定用于记录每个类型的前缀。"
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2097
@@ -16139,6 +16289,9 @@ msgstr "您的使用者账户没有启用“自动批准变化”。你只能改
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
 msgstr "您的Web伺服器使用的PHP版本 %s ，它不再接收安全更新。你应该尽快升级到更高版本。"
+
+msgid "Yugoslavia"
+msgstr "南斯拉夫"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6925
@@ -19075,6 +19228,9 @@ msgstr "从"
 msgid "on the date of death"
 msgstr "去世日期"
 
+msgid "over"
+msgstr "以上"
+
 #: statistics.php:708
 msgid "overall"
 msgstr "整体"
@@ -20127,159 +20283,3 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
-
-msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-msgstr "<b>GUID</b>«在全球范围内唯一的ID»的缩写。<br><br>GUID用于定义每个可能是重复的个体，使中央机构，如家族历史中心，或是自己的服务器上运行的兼容的GEDCOM处理程序，确定它们是否是同一人无论身在何处的。家庭历史中心的目标是有家谱数据的中央存储库，并通过Web服务公开。这将使任何程序访问数据，并更新他们的数据在它<br><br>如果你不打算与其他人分享这个GEDCOM，你不需要让webtrees创建这些GUID，但是，这样做不用担心GEDCOM的规模越来越大。"
-
-msgid "Acadia"
-msgstr "阿卡迪亚"
-
-msgid "Basic"
-msgstr "基本的"
-
-msgid "Calculate the age differences between siblings, children, spouses, etc."
-msgstr "选中此选项后，webtrees 将计算之间的兄弟姐妹、 子女、 配偶等的年龄差异。"
-
-msgid "Cape Colony"
-msgstr "好望角殖民地海岬"
-
-msgid "Center map here"
-msgstr "中心地图在这里"
-
-msgid "Click a row, then drag-and-drop to re-order media"
-msgstr "点击一行,然后拖拽重排媒体"
-
-msgid "Click here to add, edit, or delete"
-msgstr "点击这里添加、编辑或删除"
-
-msgid "Click here to open or close the sidebar"
-msgstr "击这里打开或关闭侧边栏"
-
-msgid "Click name to add individual to add links list."
-msgstr "点击名称添加人添加链接列表。"
-
-msgid "Click on a title to go straight to it, or scroll down to read them all."
-msgstr "点击一个标题,直接下拉或向下滚动阅读所有。"
-
-msgid "Configure"
-msgstr "配置"
-
-msgid "Display map coordinates"
-msgstr "显示地图坐标"
-
-msgid "Eire"
-msgstr "爱尔兰"
-
-msgid "Enter report values"
-msgstr "输入报告条件"
-
-msgid "FAQ visibility"
-msgstr "常见问题能见度"
-
-msgid "File containing places (CSV)"
-msgstr "包含地点的文件(CSV)"
-
-msgid "Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed."
-msgstr "图标可以设置或删除。使用这个链接标志可选。当这个地理位置显示,这个标志将被显示。"
-
-msgid "Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map."
-msgstr "缩放级别可以在这里输入。这个值将被用作最小值时显示此地理位置在地图上。"
-
-msgid "Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined."
-msgstr "在这里你可以输入精度。在此基础上设置数字的位数,将用于确定的纬度和经度。"
-
-msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
-msgstr "一个姓出现次数低于阈值,它不会出现在列表中。它可以在这里添加手动。如果多个姓列入,他们必须由一个逗号分开。<b>姓氏是区分大小写的。</b>"
-
-msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>. Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
-msgstr "如果你想从常见的姓氏列表删除一个姓但不增加阈值,你可以通过这里进入姓。如果多姓列入,他们必须由一个逗号分开。<b>姓氏是区分大小写的。</b>姓氏列入这里也将从主页上十大名单被删除。"
-
-msgid "Information about the request is shown under the link below."
-msgstr "申请的信息显示在下面的链接。"
-
-msgid "Limit"
-msgstr "限制值"
-
-msgid "Limit display by"
-msgstr "显示的限制"
-
-msgid "Login ID"
-msgstr "登录ID"
-
-msgid "Minimum number of occurrences to be a “common surname”"
-msgstr "常见的姓"
-
-msgid "Names to add to common surnames (comma separated)"
-msgstr "从常见的姓氏名字添加(逗号分隔)"
-
-msgid "Names to remove from common surnames (comma separated)"
-msgstr "从常见的姓氏名字删除(逗号分隔)"
-
-msgid "Neighborhood"
-msgstr "邻居"
-
-msgid "Neutral Zone"
-msgstr "中性区"
-
-msgid "Precision of the latitude and longitude"
-msgstr "纬度和经度的精确"
-
-msgid "Search for individuals to add to add Links list."
-msgstr "搜索的人加入到列表中添加链接。"
-
-msgid "Server file containing places (CSV)"
-msgstr "包含地点的服务器文件(CSV)"
-
-msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts. This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-msgstr "设置为<b>是</b>以使用GEDCOM ID的RIN号码，而不是当被问及在配置文件中，用户设置和图表各自的ID。这是为族谱程序：导出不一致的GEDCOMs并分配给不同个人相同ID，但始终使用相同的RIN有用。"
-
-msgid "Show all notes and source references on notes and sources tabs"
-msgstr "在记事和资源标签显示所有记事和资源"
-
-msgid "Sicily"
-msgstr "西西里"
-
-msgid "Simple search filter based on the characters entered, no wildcards are accepted."
-msgstr "简单的搜索筛选器基于字符输入,通配符不被接受。"
-
-msgid "System settings"
-msgstr "系统设置"
-
-msgid "The FAQ list is empty."
-msgstr "常见问题列表是空的。"
-
-msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
-msgstr "在主页上显示常见姓氏列表之前姓氏的个数。"
-
-msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record. These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record. These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
-msgstr "此选项控制是否将附源引用的事实在记事和源标签在个人页面显示。<br><br>通常，记事和源标签仅显示直接连接到个人的数据库记录的源引用的记事。这些是<i> 1级</i>记事和资源引用。<br><br><b>是</b>选项导致这些标签也显示个人数据库记录的各种事实包含的记事和资源引用。这些是<i> 2级</i>记事和源引用，因为各种事实是在1级。"
-
-msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
-msgstr "这个选项设置是否弹出窗口显示经纬度与地图标记。"
-
-msgid "This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
-msgstr "不同地理位置指定的精度不同级别。例如一个国家将指定精度0(= 0数字小数点后),而一个城市需要3或4位数。"
-
-msgid "To reduce the height of the News block, the administrator has hidden some articles. You can reveal these hidden articles by clicking the <b>View the archive</b> link."
-msgstr "为了减少消息块的高度，管理员隐藏了一些文章。你可以通过点击<b>查看档案</b>链接显示这些隐藏的内容。"
-
-msgid "USA"
-msgstr "美国"
-
-msgid "USSR"
-msgstr "苏联"
-
-msgid "Use RIN number instead of GEDCOM ID"
-msgstr "用RIN数字代替GEDCOM ID"
-
-msgid "Website and META tag settings"
-msgstr "网站和元标签设置"
-
-msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
-msgstr "当创建新记录时，他们给出了一个内部的 ID 编号。 您可以指定用于记录每个类型的前缀。"
-
-msgid "Yugoslavia"
-msgstr "南斯拉夫"
-
-msgid "over"
-msgstr "以上"
