@@ -35,18 +35,25 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;
 
-    public const ICONS = [
-        'BIRT' => ['color' => 'Crimson', 'name' => 'birthday-cake'],
-        'MARR' => ['color' => 'Green', 'name' => 'venus-mars'],
-        'DEAT' => ['color' => 'Black', 'name' => 'plus'],
-        'CENS' => ['color' => 'MediumBlue', 'name' => 'users'],
-        'RESI' => ['color' => 'MediumBlue', 'name' => 'home'],
-        'OCCU' => ['color' => 'MediumBlue', 'name' => 'briefcase'],
-        'GRAD' => ['color' => 'MediumBlue', 'name' => 'graduation-cap'],
-        'EDUC' => ['color' => 'MediumBlue', 'name' => 'university'],
+    protected const ICONS = [
+        'BIRT' => ['color' => 'lightcoral', 'name' => 'baby-carriage'],
+        'BAPM' => ['color' => 'lightcoral', 'name' => 'water'],
+        'BARM' => ['color' => 'lightcoral', 'name' => 'star-of-david'],
+        'BASM' => ['color' => 'lightcoral', 'name' => 'star-of-david'],
+        'CHR'  => ['color' => 'lightcoral', 'name' => 'water'],
+        'CHRA' => ['color' => 'lightcoral', 'name' => 'water'],
+        'MARR' => ['color' => 'green', 'name' => 'infinity'],
+        'DEAT' => ['color' => 'black', 'name' => 'times'],
+        'BURI' => ['color' => 'sienna', 'name' => 'times'],
+        'CREM' => ['color' => 'black', 'name' => 'times'],
+        'CENS' => ['color' => 'mediumblue', 'name' => 'list'],
+        'RESI' => ['color' => 'mediumblue', 'name' => 'home'],
+        'OCCU' => ['color' => 'mediumblue', 'name' => 'industry'],
+        'GRAD' => ['color' => 'plum', 'name' => 'university'],
+        'EDUC' => ['color' => 'plum', 'name' => 'university'],
     ];
 
-    public const DEFAULT_ICON = ['color' => 'Gold', 'name' => 'bullseye '];
+    protected const DEFAULT_ICON = ['color' => 'gold', 'name' => 'bullseye '];
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -133,7 +140,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                 $longitude = $location->longitude();
             }
 
-            $icon = self::ICONS[$fact->getTag()] ?? self::DEFAULT_ICON;
+            $icon = static::ICONS[$fact->getTag()] ?? static::DEFAULT_ICON;
 
             if ($latitude !== 0.0 || $longitude !== 0.0) {
                 $geojson['features'][] = [
