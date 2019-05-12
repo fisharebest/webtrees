@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2019-05-09 18:56+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
+"PO-Revision-Date: 2019-05-12 09:41+0000\n"
+"Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -1330,7 +1330,7 @@ msgstr "Lägg till ett källcitat"
 #: resources/views/modules/stories/config.phtml:25
 #: resources/views/modules/stories/tab.phtml:23
 msgid "Add a story"
-msgstr "Lägg till berättelse"
+msgstr "Lägg till en berättelse"
 
 #: app/Http/Controllers/Admin/UsersController.php:275
 #: resources/views/admin/control-panel.phtml:251
@@ -2341,7 +2341,7 @@ msgstr "Medelålder vid död"
 
 #: app/Statistics/Google/ChartMarriageAge.php:152
 msgid "Average age at marriage"
-msgstr "Medelålder vid äktenskap"
+msgstr "Genomsnittsålder vid vigsel"
 
 #: app/Statistics/Google/ChartMarriageAge.php:149
 msgid "Average age in century of marriage"
@@ -2416,7 +2416,7 @@ msgstr "Bah"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:89
 msgid "Bahamas"
-msgstr "Bahamaöarna"
+msgstr "Bahamas"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:143
@@ -2584,7 +2584,7 @@ msgstr "Benin"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:98
 msgid "Bermuda"
-msgstr "Bermudasöarna"
+msgstr "Bermuda"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:637
@@ -4351,7 +4351,7 @@ msgstr "Databaslösenord"
 
 #: resources/views/setup/step-3-database-type.phtml:31
 msgid "Database type"
-msgstr "Databas typ"
+msgstr "Databas-typ"
 
 #: resources/views/setup/step-4-database-mysql.phtml:58
 #: resources/views/setup/step-4-database-pgsql.phtml:50
@@ -10021,12 +10021,12 @@ msgstr "Nordkorea"
 
 #: resources/views/modules/statistics-chart/custom.phtml:173
 msgid "Northern America"
-msgstr "Nordliga Amerika"
+msgstr "Norra Amerika"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:369
 msgid "Northern Ireland"
-msgstr "Nord Irland"
+msgstr "Nordirland"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:337
