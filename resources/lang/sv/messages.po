@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2019-05-12 09:41+0000\n"
+"PO-Revision-Date: 2019-05-12 10:45+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/sv/>\n"
 "Language: sv\n"
@@ -8712,7 +8712,7 @@ msgstr "Markdown är ett enkelt system av formatering som används på webbplats
 #: resources/xml/reports/pedigree_report.xml:1327
 #: resources/xml/reports/pedigree_report.xml:1365
 msgid "Marriage"
-msgstr "Äktenskap"
+msgstr "Vigsel"
 
 #. I18N: gedcom tag MARB
 #: app/GedcomTag.php:823 resources/xml/reports/missing_facts_report.xml:22
@@ -8763,7 +8763,7 @@ msgstr "Äktenskapslicens"
 
 #: app/GedcomTag.php:1950
 msgid "Marriage of a brother"
-msgstr "Brors äktenskap"
+msgstr "Brors vigsel"
 
 #: app/GedcomTag.php:1884 resources/views/admin/trees-preferences.phtml:509
 msgid "Marriage of a child"
@@ -8813,7 +8813,7 @@ msgstr "Sonsons vigsel"
 
 #: app/GedcomTag.php:1925
 msgid "Marriage of a half-brother"
-msgstr "Halvbrors äktenskap"
+msgstr "Halvbrors vigsel"
 
 #: app/GedcomTag.php:1932
 msgid "Marriage of a half-sibling"
@@ -8821,7 +8821,7 @@ msgstr "Halv-syskons vigsel"
 
 #: app/GedcomTag.php:1929
 msgid "Marriage of a half-sister"
-msgstr "Halvsysters äktenskap"
+msgstr "Halvsysters vigsel"
 
 #. I18N: ...to another spouse
 #: app/GedcomTag.php:1942
@@ -8839,7 +8839,7 @@ msgstr "Syskons vigsel"
 
 #: app/GedcomTag.php:1954
 msgid "Marriage of a sister"
-msgstr "Systern äktenskap"
+msgstr "Systers vigsel"
 
 #: app/GedcomTag.php:1877
 msgid "Marriage of a son"
@@ -8848,7 +8848,7 @@ msgstr "Sons vigsel"
 #. I18N: ...to each other
 #: app/GedcomTag.php:1888
 msgid "Marriage of parents"
-msgstr "Föräldrars äktenskap"
+msgstr "Föräldrars vigsel"
 
 #: resources/xml/reports/marriage_report.xml:6
 msgid "Marriage place contains"
@@ -8856,7 +8856,7 @@ msgstr "Vigselorten innehåller"
 
 #: resources/views/statistics/other/places.phtml:37
 msgid "Marriage places"
-msgstr "Vigselort"
+msgstr "Vigselorter"
 
 #. I18N: gedcom tag MARS
 #: app/GedcomTag.php:851
@@ -8883,7 +8883,7 @@ msgstr "Äktenskap"
 #: app/Statistics/Google/ChartMarriage.php:121
 #: resources/views/statistics/families/total-records.phtml:30
 msgid "Marriages by century"
-msgstr "Äktenskap per århundrade"
+msgstr "Vigslar per århundrade"
 
 #. I18N: gedcom tag _MARNM
 #: app/GedcomTag.php:1868 resources/xml/reports/cemetery_report.xml:7
@@ -12412,7 +12412,7 @@ msgstr "Genväg"
 
 #: resources/views/statistics/families/marriage-length.phtml:38
 msgid "Shortest marriage"
-msgstr "Kortast äktenskap"
+msgstr "Kortaste äktenskap"
 
 #: resources/views/calendar-page.phtml:75
 msgid "Show"
@@ -13395,7 +13395,7 @@ msgstr "Tabellprefix"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Tabloid"
-msgstr ""
+msgstr "Tabloid"
 
 #: app/Http/Controllers/Admin/ModuleController.php:219
 #: resources/views/admin/control-panel.phtml:412
@@ -14314,7 +14314,7 @@ msgstr "Detta är en kommaseparerad lista av GEDCOM-fakta som kommer att visas p
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: resources/views/admin/trees-preferences.phtml:820
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr "Detta är en kommaseparerad lista med GEDCOM faktataggar som visas när man lägger till en ny familj. Till exempel, om MARR finns i listan, kommer fält för vigseldatum och -plats att visas på formuläret."
+msgstr "Detta är en kommaseparerad lista med GEDCOM-taggar som visas när man lägger till en ny familj. Till exempel, om MARR finns i listan, kommer fält för vigseldatum och -plats att visas på formuläret."
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: resources/views/admin/trees-preferences.phtml:766
@@ -19893,7 +19893,7 @@ msgstr "10. kusin"
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:16
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
-msgstr "databasanslutningens inställningar i filen ”/data/config.ini.php” är fortfarande riktiga"
+msgstr "databasanslutningens inställningar i filen ”/data/config.ini.php” fortfarande är riktiga"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:19
