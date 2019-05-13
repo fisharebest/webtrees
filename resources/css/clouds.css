@@ -2072,35 +2072,6 @@ div.faq_body {
 	background: inherit;
 }
 
-#topMenu {
-	background: #acf;
-	clear: both;
-	height: 31px;
-	width: 100%;
-}
-
-#topMenu ul {
-	margin: 0;
-	padding: 0;
-}
-
-/* Set stack level for top two header menu rows */
-.hsearch {
-    display: block;
-    float: right;
-    padding-right: 10px;
-    padding-top: 5px;
-}
-
-.search-icon {
-	height: 17px;
-	vertical-align: top;
-}
-
-.logo {
-	text-align: center;
-}
-
 footer .error {
 	color: #d00;
 	font-weight: bold;
