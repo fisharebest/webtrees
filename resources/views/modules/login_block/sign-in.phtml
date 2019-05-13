@@ -1,7 +1,7 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
-<form name="login-form" method="POST" action="<?= route('login', ['url' => route('user-page')]) ?>">
+<form name="login-form" method="POST" action="<?= route('login', ['url' => route('user-page', ['ged' => $tree->name()])]) ?>">
     <?= csrf_field() ?>
 
     <div class="form-group">
