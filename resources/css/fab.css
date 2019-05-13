@@ -544,12 +544,6 @@ a:hover, a:hover .name1, a:hover .name2 {
 	padding: 0 5px;
 }
 
-.submenu .icon {
-	vertical-align: middle;
-	width: 20px;
-	height: 20px;
-}
-
 .subheaders {
 	font-weight: bold;
 	font-size: 15px;
@@ -571,58 +565,6 @@ a:hover, a:hover .name1, a:hover .name2 {
 
 .border1 {
 	border: 0;
-}
-
-.menuitem {
-	text-decoration: none;
-	font-size: 11px;
-	padding: 1px;
-}
-
-.menuitem_hover {
-	text-decoration: none;
-	font-size: 11px;
-	padding: 1px;
-}
-
-.menuitem .icon, .menuitem_hover .icon {
-	width: 50px;
-	height: 50px;
-}
-
-.submenu {
-	text-decoration: none;
-	font-size: 11px;
-	background-color: #eee;
-	border: thin #aaa;
-	visibility: hidden;
-	position: absolute;
-	padding: 5px;
-}
-
-.submenuitem  {
-	vertical-align: middle;
-	font-size: 11px;
-	height: 20px;
-	text-decoration: none;
-	background-color: #eee;
-	padding: 1px;
-	white-space: nowrap;
-}
-
-.submenuitem_hover {
-	vertical-align: middle;
-	height: 20px;
-	font-size: 11px;
-	background-color: #eee;
-	white-space: nowrap;
-	padding: 1px;
-}
-
-.submenuitem a,
-.submenuitem_hover a {
-	display: inline-block;
-	vertical-align: middle;
 }
 
 .journal_box {

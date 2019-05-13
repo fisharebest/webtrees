@@ -957,12 +957,6 @@ a:hover .name1, a:hover .name2 {
 	padding: 0 5px;
 }
 
-.submenu .icon {
-	vertical-align: middle;
-	width: 20px;
-	height: 20px;
-}
-
 .subheaders {
 	color: #006;
 	font-weight: bold;
@@ -986,59 +980,6 @@ a:hover .name1, a:hover .name2 {
 
 .border1 {
 	border: solid #000 1px;
-}
-
-.menuitem {
-	text-decoration: none;
-	font-size: 11px;
-	padding: 1px;
-}
-
-.menuitem_hover {
-	text-decoration: none;
-	font-size: 11px;
-	padding: 1px;
-}
-
-.menuitem .icon, .menuitem_hover .icon {
-	width: 50px;
-	height: 50px;
-}
-
-.submenu {
-	text-decoration: none;
-	font-size: 11px;
-	background-color: #fff;
-	border: solid #ccc 1px;
-	visibility: hidden;
-	position: absolute;
-	padding: 5px;
-}
-
-.submenuitem  {
-	vertical-align: middle;
-	font-size: 11px;
-	height: 20px;
-	text-decoration: none;
-	background-color: #fff;
-	padding: 1px;
-	white-space: nowrap;
-}
-
-.submenuitem_hover {
-	vertical-align: middle;
-	height: 20px;
-	font-size: 11px;
-	background-color: #fff;
-	border: 1px solid #ccc;
-	white-space: nowrap;
-	padding: 1px;
-}
-
-.submenuitem a,
-.submenuitem_hover a {
-	display: inline-block;
-	vertical-align: middle;
 }
 
 .journal_box {
@@ -2124,12 +2065,10 @@ div.faq_body {
 }
 
 /* Base Color */
-.descriptionbox .submenu a,
 .blockcontent,
 .list_value,
 .list_value_wrap,
-.news_box,
-.submenuitem_hover {
+.news_box {
 	background: inherit;
 }
 
