@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2019-05-10 07:00+0800\n"
-"Last-Translator: xmlf <xmlf@hotmail.com>\n"
-"Language-Team: Chinese (Traditional) <http://translate.webtrees.net/projects/webtrees/webtrees/zh-Hans/>\n"
-"Language: zh_Hant\n"
+"PO-Revision-Date: 2019-05-14 10:11+0000\n"
+"Last-Translator: rui <xmlf@hotmail.com>\n"
+"Language-Team: Chinese (Traditional) <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/zh_Hant/>\n"
+"Language: zh-Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -108,6 +108,14 @@ msgstr "%1$s 沒有一個反向鏈接 %2$s ."
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
 msgstr[0] "%1$s 的文件將在 %2$s 秒提取完成。"
+
+msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
+msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
+msgstr[0] "%1$s 個人顯示，總的 %2$s, 在 %3$s 代中。"
+
+msgid "%1$s individual is missing birthplace map coordinates: %2$s."
+msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
+msgstr[0] "%1$s 個人沒有出生地的地圖座標: %2$s。"
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: app/Http/Controllers/AdminTreesController.php:280
@@ -611,6 +619,9 @@ msgctxt "CENTURY"
 msgid "9th"
 msgstr "九世紀"
 
+msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
+msgstr "<b>GUID</b>«在全球範圍內唯一的ID»的縮寫。<br><br>GUID用於定義每個可能是重複的個體，使中央機構，如家族歷史中心，或是自己的服務器上運行的兼容的GEDCOM處理程序，確定它們是否是同一人無論身在何處的。家庭歷史中心的目標是有家譜數據的中央存儲庫，並通過Web服務公開。這將使任何程序訪問數據，並更新他們的數據在它<br><br>如果你不打算與其他人分享這個GEDCOM，你不需要讓webtrees創建這些GUID，但是，這樣做不用擔心GEDCOM的規模越來越大。"
+
 #: app/Http/Controllers/AccountController.php:181
 #: app/Http/Controllers/Admin/UsersController.php:505
 #: app/Http/Controllers/AdminTreesController.php:2164
@@ -720,7 +731,7 @@ msgstr ""
 #. I18N: Description of the “BranchesListModule” module
 #: app/Module/BranchesListModule.php:55
 msgid "A list of branches of a family."
-msgstr "%s 家庭的分支"
+msgstr "家庭分支"
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:74
@@ -3610,6 +3621,9 @@ msgstr "選擇親戚"
 #: app/Http/Controllers/AdminSiteController.php:481
 msgid "Choose user defined welcome text typed below"
 msgstr "選擇用戶定義的文本在下面輸入歡迎文本"
+
+msgid "Choose: "
+msgstr "選擇: "
 
 #. I18N: gedcom tag CHR
 #: app/GedcomTag.php:590 resources/xml/reports/family_group_report.xml:206
@@ -8374,6 +8388,9 @@ msgstr "男房客"
 msgid "Logan, Utah, United States"
 msgstr "猶他州洛根"
 
+msgid "Login ID"
+msgstr "登入帳號"
+
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:430
 msgid "London, England"
@@ -10398,6 +10415,9 @@ msgstr "其他"
 msgid "Other facts to show in charts"
 msgstr "在图表其他显示事件"
 
+msgid "Other folder… please type in"
+msgstr "其它資料夾…請輸入"
+
 #: resources/views/modals/media-file-fields.phtml:96
 msgid "Other genealogy applications might not recognize this data."
 msgstr "其他家谱应用程式可能无法识别此数据。"
@@ -11654,6 +11674,9 @@ msgstr "居住地"
 msgid "Restore the default block layout"
 msgstr "恢复默认块布局"
 
+msgid "Restrict access to the website, using IP addresses and user-agent strings."
+msgstr "使用IP位址, 使用者代理字串限制存取網站."
+
 #: app/Http/Controllers/HelpTextController.php:252
 #: resources/views/admin/users-edit.phtml:280
 msgid "Restrict to immediate family"
@@ -11723,6 +11746,9 @@ msgstr "罗马标题"
 #: resources/views/lists/individuals-table.phtml:249
 msgid "Roots"
 msgstr "未录入父母的"
+
+msgid "Rule"
+msgstr "規則"
 
 #. I18N: http://en.wikipedia.org/wiki/Soundex
 #: app/Soundex.php:3489 resources/views/branches-page.phtml:28
@@ -12173,6 +12199,9 @@ msgstr "伺服器信息"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:26
 msgid "Server name"
 msgstr "伺服器名称"
+
+msgid "Session timeout"
+msgstr "工作階段逾時"
 
 #: resources/views/admin/trees.phtml:109 resources/views/admin/trees.phtml:116
 msgid "Set as default"
@@ -13344,6 +13373,9 @@ msgstr "用GEDCOM文件同步家谱"
 msgid "Syria"
 msgstr "叙利亚"
 
+msgid "System settings"
+msgstr "系統設定"
+
 #: resources/views/admin/modules.phtml:154
 #: resources/views/admin/modules.phtml:157
 msgid "Tab"
@@ -13721,6 +13753,9 @@ msgstr "已更改以下地方:"
 #: resources/views/admin/trees-places.phtml:41
 msgid "The following places would be changed:"
 msgstr "将更改以下地方:"
+
+msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
+msgstr "使用以下規則，以決定是否訪問者是一個人（允許完全訪問），搜索引擎機器人（允許受限制的訪問）或不必要的履帶式（拒絕所有的訪問）。"
 
 #: app/Http/Controllers/HelpTextController.php:258
 msgid "The help text has not been written for this item."
@@ -14126,6 +14161,12 @@ msgstr "这个账户没有得到确认。请检查您的电子邮件是否收到
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr "这一块会显示需要通过管理员审核的编辑或更改记录表。每当有待定的更改将给主编人发送电子邮件。"
 
+msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
+msgstr "此資料庫表字首出現其他應用程序使用。如果您有一個現有的PhpGedView系統，你應該建立一個新的webtrees系統。您可以匯入您的資料和設置PhpGedView。"
+
+msgid "This database is only running MySQL version %s. You cannot install webtrees here."
+msgstr "這僅支援MySQL 版本%s. 你無法在這裡安裝webtrees."
+
 #: resources/views/admin/users-create.phtml:58
 #: resources/views/admin/users-edit.phtml:66
 #: resources/views/edit-account-page.phtml:108
@@ -14368,6 +14409,15 @@ msgstr "这是SMTP伺服器的名称。\"localhost\"指邮件服务的同一台�
 #: resources/views/setup/step-5-administrator.phtml:37
 msgid "This is your real name, as you would like it displayed on screen."
 msgstr "请输入你的真实姓名。"
+
+msgid "This may be a mistake in your data."
+msgstr "這該為的的資料錯誤."
+
+msgid "This may cause a problem for other applications."
+msgstr "這將導致其他應用程序出錯."
+
+msgid "This may cause a problem for webtrees."
+msgstr "這將導致webtrees出錯."
 
 #: app/Exceptions/MediaAccessDeniedException.php:33
 #: app/Exceptions/MediaNotFoundException.php:33
@@ -15422,7 +15472,7 @@ msgstr "使用者名或电子邮件地址"
 #: resources/views/edit-account-page.phtml:19
 #: resources/views/register-page.phtml:49
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "使用者名不区分大小写并忽略重音字母，因此“chloe”，“chloë”和“Chloe”被认为是相同的。"
+msgstr "不分大小寫，可由字母、數字或中文組成，您将使用它登录网站。"
 
 #: resources/views/admin/control-panel.phtml:214
 #: resources/views/modules/gedcom_stats/statistics.phtml:119
@@ -15943,6 +15993,12 @@ msgstr "您还必须在Google账户中启用“安全性较低的应用程式”
 msgid "You must enter all the administrator account fields."
 msgstr "您必须输入管理员账户字段。"
 
+msgid "You must provide a repository name."
+msgstr "您必須提供一個存儲庫名稱。"
+
+msgid "You must provide a source title"
+msgstr "你必須填寫來源標題"
+
 #: resources/views/admin/trees-merge.phtml:15
 msgid "You must renumber the records in one of the trees before you can merge them."
 msgstr "在您可以将它们合并前，必须重新编号家谱的记录。"
@@ -16169,6 +16225,9 @@ msgstr "去世后"
 #: app/Module/StatisticsChartModule.php:638
 msgid "age"
 msgstr "年龄"
+
+msgid "allow"
+msgstr "允許"
 
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/GedcomCode/GedcomCodeName.php:85
@@ -16564,6 +16623,9 @@ msgstr "度数"
 #: resources/views/modules/faq/config.phtml:95
 msgid "delete"
 msgstr "删除"
+
+msgid "deny"
+msgstr "拒絕"
 
 #: resources/xml/reports/descendancy_report.xml:137
 #: resources/xml/reports/descendancy_report.xml:365
@@ -18714,6 +18776,9 @@ msgstr "最后"
 msgid "left"
 msgstr "移到最左邊"
 
+msgid "link"
+msgstr "設定連結"
+
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
 #: app/Http/Controllers/AdminTreesController.php:983
@@ -19261,6 +19326,9 @@ msgstr "重置"
 #: resources/views/modules/pedigree-chart/page.phtml:36
 msgid "right"
 msgstr "高度"
+
+msgid "robot"
+msgstr "機器人"
 
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:26
@@ -20199,71 +20267,3 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
-
-msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
-msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-msgstr[0] "%1$s 個人顯示，總的 %2$s, 在 %3$s 代中。"
-
-msgid "%1$s individual is missing birthplace map coordinates: %2$s."
-msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] "%1$s 個人沒有出生地的地圖座標: %2$s。"
-
-msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-msgstr "<b>GUID</b>«在全球範圍內唯一的ID»的縮寫。<br><br>GUID用於定義每個可能是重複的個體，使中央機構，如家族歷史中心，或是自己的服務器上運行的兼容的GEDCOM處理程序，確定它們是否是同一人無論身在何處的。家庭歷史中心的目標是有家譜數據的中央存儲庫，並通過Web服務公開。這將使任何程序訪問數據，並更新他們的數據在它<br><br>如果你不打算與其他人分享這個GEDCOM，你不需要讓webtrees創建這些GUID，但是，這樣做不用擔心GEDCOM的規模越來越大。"
-
-msgid "Choose: "
-msgstr "選擇: "
-
-msgid "Login ID"
-msgstr "登入帳號"
-
-msgid "Other folder… please type in"
-msgstr "其它資料夾…請輸入"
-
-msgid "Restrict access to the website, using IP addresses and user-agent strings."
-msgstr "使用IP位址, 使用者代理字串限制存取網站."
-
-msgid "Rule"
-msgstr "規則"
-
-msgid "Session timeout"
-msgstr "工作階段逾時"
-
-msgid "System settings"
-msgstr "系統設定"
-
-msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
-msgstr "使用以下規則，以決定是否訪問者是一個人（允許完全訪問），搜索引擎機器人（允許受限制的訪問）或不必要的履帶式（拒絕所有的訪問）。"
-
-msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
-msgstr "此資料庫表字首出現其他應用程序使用。如果您有一個現有的PhpGedView系統，你應該建立一個新的webtrees系統。您可以匯入您的資料和設置PhpGedView。"
-
-msgid "This database is only running MySQL version %s. You cannot install webtrees here."
-msgstr "這僅支援MySQL 版本%s. 你無法在這裡安裝webtrees."
-
-msgid "This may be a mistake in your data."
-msgstr "這該為的的資料錯誤."
-
-msgid "This may cause a problem for other applications."
-msgstr "這將導致其他應用程序出錯."
-
-msgid "This may cause a problem for webtrees."
-msgstr "這將導致webtrees出錯."
-
-msgid "You must provide a repository name."
-msgstr "您必須提供一個存儲庫名稱。"
-
-msgid "You must provide a source title"
-msgstr "你必須填寫來源標題"
-
-msgid "allow"
-msgstr "允許"
-
-msgid "deny"
-msgstr "拒絕"
-
-msgid "link"
-msgstr "設定連結"
-
-msgid "robot"
-msgstr "機器人"
