@@ -38,6 +38,8 @@ class HtmlService
     {
         $config = HTMLPurifier_Config::createDefault();
 
+        $config->set('Cache.DefinitionImpl', null);
+
         $config->set('HTML.TidyLevel', 'none'); // Only XSS cleaning now
 
         $def = $config->getHTMLDefinition(true);
