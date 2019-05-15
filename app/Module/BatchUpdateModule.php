@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use function array_key_exists;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
@@ -337,7 +338,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
         }
 
         $plugin = $request->getQueryParams()['plugin'] ?? '';
-        $xref   = $request->getQueryParams()['xref'] ?? '';
+        $xref   = $request->getParsedBody()['xref'] ?? '';
         $update = $request->getParsedBody()['update'] ?? '';
 
         $plugins = $this->getPluginList();
@@ -355,10 +356,12 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
 
         switch ($update) {
             case 'one':
-                $record = $this->getRecord($all_data[$xref], $tree);
-                if ($plugin->doesRecordNeedUpdate($record)) {
-                    $new_gedcom = $plugin->updateRecord($record);
-                    $record->updateRecord($new_gedcom, false);
+                if (array_key_exists($xref, $all_data)) {
+                    $record = $this->getRecord($all_data[$xref], $tree);
+                    if ($plugin->doesRecordNeedUpdate($record)) {
+                        $new_gedcom = $plugin->updateRecord($record);
+                        $record->updateRecord($new_gedcom, false);
+                    }
                 }
 
                 $parameters['xref'] = $this->findNextXref($plugin, $xref, $all_data, $tree);
