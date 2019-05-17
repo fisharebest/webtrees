@@ -39,7 +39,14 @@ use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use function explode;
+use function ob_get_clean;
+use function ob_start;
+use function preg_match_all;
+use function preg_replace;
+use function str_replace;
+use function strpos;
 
 /**
  * Controller for the individual page.
@@ -78,7 +85,7 @@ class IndividualController extends AbstractBaseController
         $xref       = $request->getQueryParams()['xref'];
         $individual = Individual::getInstance($xref, $tree);
 
-        Auth::checkIndividualAccess($individual, false);
+        Auth::checkIndividualAccess($individual);
 
         // What is (was) the age of the individual
         $bdate = $individual->getBirthDate();
@@ -154,6 +161,10 @@ class IndividualController extends AbstractBaseController
         $record      = Individual::getInstance($xref, $tree);
         $module_name = $request->getQueryParams()['module'];
         $module      = $this->module_service->findByName($module_name);
+
+        if (!$module instanceof ModuleTabInterface) {
+            throw new NotFoundHttpException('No such tab: ' . $module_name);
+        }
 
         Auth::checkIndividualAccess($record);
         Auth::checkComponentAccess($module, 'tab', $tree, $user);
