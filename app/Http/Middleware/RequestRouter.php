@@ -43,7 +43,7 @@ class RequestRouter implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // If there was a base_url specified in config.ini.php, then use it.
-        $base_url = $request->getAttribute('base_url', (string) $request->getUri());
+        $base_url = $request->getAttribute('base_url', $this->extractBaseUrl($request));
         $request  = $request->withAttribute('base_url', $base_url);
 
         // Bind the request into the container
@@ -75,5 +75,13 @@ class RequestRouter implements MiddlewareInterface
 
         // Routes defined using a request handler
         return app($routing)->handle($request);
+    }
+
+    private function extractBaseUrl(ServerRequestInterface $request): string
+    {
+        $base_url = (string) $request->getUri();
+        $base_url = preg_replace('/index\.php.*/', '', $base_url);
+
+        return $base_url;
     }
 }
