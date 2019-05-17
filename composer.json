@@ -103,7 +103,7 @@
             "@composer global require phan/phan=*",
             "@composer global update phan/phan",
             "@composer install --quiet",
-            "PHAN_DISABLE_XDEBUG_WARN=1 phan --target-php-version=7.1 --progress-bar --directory app --directory vendor --exclude-directory-list vendor",
+            "PHAN_DISABLE_XDEBUG_WARN=1 phan --color --dead-code-detection --target-php-version=7.1 --progress-bar --signature-compatibility --strict-type-checking --directory app --directory vendor --exclude-directory-list vendor",
             "@composer install --no-dev --quiet",
             "### PHPSTAN",
             "@composer global require phpstan/phpstan=*",
