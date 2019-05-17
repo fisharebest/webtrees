@@ -22,33 +22,33 @@ namespace Fisharebest\Webtrees\Census;
  */
 class CensusColumnConditionUs extends CensusColumnConditionEnglish
 {
-    /** @var string Text to display for married males */
-    protected $husband = 'M';
+    // Text to display for married males
+    protected const HUSBAND = 'M';
 
-    /** @var string Text to display for married females */
-    protected $wife    = 'M';
+    // Text to display for married females
+    protected const WIFE = 'M';
 
-    /** @var string Text to display for unmarried males */
-    protected $bachelor = 'S';
+    // Text to display for married unmarried males
+    protected const BACHELOR = 'S';
 
-    /** @var string Text to display for unmarried females */
-    protected $spinster = 'S';
+    // Text to display for married unmarried females
+    protected const SPINSTER = 'S';
 
-    /** @var string Text to display for male children */
-    protected $boy  = 'S';
+    // Text to display for male children
+    protected const BOY = 'S';
 
-    /** @var string Text to display for female children */
-    protected $girl = 'S';
+    // Text to display for female children
+    protected const GIRL = 'S';
 
     /** @var string Text to display for divorced individuals */
-    protected $divorce  = 'D';
+    protected const DIVORCE = 'D';
 
-    /** @var string Text to display for divorced females */
-    protected $divorcee = 'D';
+    // Text to display for divorced females
+    protected const DIVORCEE = 'D';
 
-    /** @var string Text to display for widowed males */
-    protected $widower = 'W';
+    // Text to display for widowed males
+    protected const WIDOWER = 'W';
 
-    /** @var string Text to display for widowed females */
-    protected $widow   = 'W';
+    // Text to display for widowed females
+    protected const WIDOW = 'W';
 }
