@@ -24,6 +24,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use function strlen;
 
 /**
  * Trait ModuleCustomTrait - default implementation of ModuleCustomInterface
@@ -144,9 +145,7 @@ trait ModuleCustomTrait
             throw new NotFoundHttpException($file);
         }
 
-        $content     = file_get_contents($file);
-        $expiry_date = Carbon::now()->addYears(10);
-
+        $content   = file_get_contents($file);
         $extension = pathinfo($asset, PATHINFO_EXTENSION);
 
         $mime_types = [
@@ -163,8 +162,10 @@ trait ModuleCustomTrait
         $mime_type = $mime_types[$extension] ?? 'application/octet-stream';
 
         $headers = [
-            'Content-Type' => $mime_type,
-            'Expires'      => $expiry_date->toRfc7231String(),
+            'Content-Type'   => $mime_type,
+            'Cache-Control'  => 'max-age=31536000, public',
+            'Content-Length' => strlen($content),
+            'Expires'        => Carbon::now()->addYears(10)->toRfc7231String(),
         ];
 
         return response($content, StatusCodeInterface::STATUS_OK, $headers);

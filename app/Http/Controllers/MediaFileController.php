@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
@@ -152,10 +153,10 @@ class MediaFileController extends AbstractBaseController
             $cache  = $server->getCache();
 
             return response($cache->read($path), StatusCodeInterface::STATUS_OK, [
-                'Content-Type' => $cache->getMimetype($path),
+                'Content-Type'   => $cache->getMimetype($path),
                 'Content-Length' => $cache->getSize($path),
                 'Cache-Control'  => 'max-age=31536000, public',
-                'Expires'        => date_create('+1 years')->format('D, d M Y H:i:s') . ' GMT',
+                'Expires'        => Carbon::now()->addYears(10)->toRfc7231String(),
             ]);
         } catch (FileNotFoundException $ex) {
             return $this->httpStatusAsImage(StatusCodeInterface::STATUS_NOT_FOUND);
@@ -187,7 +188,7 @@ class MediaFileController extends AbstractBaseController
                 'Content-Type'   => $server->getCache()->getMimetype($path),
                 'Content-Length' => $server->getCache()->getSize($path),
                 'Cache-Control'  => 'max-age=31536000, public',
-                'Expires'        => date_create('+1 years')->format('D, d M Y H:i:s') . ' GMT',
+                'Expires'        => Carbon::now()->addYears(10)->toRfc7231String(),
             ]);
         } catch (SignatureException $ex) {
             return $this->httpStatusAsImage(StatusCodeInterface::STATUS_FORBIDDEN);
