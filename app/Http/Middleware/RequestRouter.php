@@ -25,6 +25,7 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use function app;
 use function explode;
+use function preg_replace;
 
 /**
  * Take an HTTP request, and forward it to a webtrees RequestHandler.
@@ -41,6 +42,10 @@ class RequestRouter implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        // If there was a base_url specified in config.ini.php, then use it.
+        $base_url = $request->getAttribute('base_url', (string) $request->getUri());
+        $request  = $request->withAttribute('base_url', $base_url);
+
         // Bind the request into the container
         app()->instance(ServerRequestInterface::class, $request);
 

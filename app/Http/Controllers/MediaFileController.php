@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use function app;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
@@ -179,7 +180,9 @@ class MediaFileController extends AbstractBaseController
             // Validate HTTP signature
             $signature = $this->glideSignature();
 
-            $signature->validateRequest(parse_url(WT_BASE_URL . 'index.php', PHP_URL_PATH), $params);
+            $base_url = app(ServerRequestInterface::class)->getAttribute('base_url');
+
+            $signature->validateRequest(parse_url($base_url . 'index.php', PHP_URL_PATH), $params);
 
             $server = $this->glideServer($media_file->folder());
             $path   = $server->makeImage($media_file->filename(), $params);

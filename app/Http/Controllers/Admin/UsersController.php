@@ -39,7 +39,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use const WT_BASE_URL;
 
 /**
  * Controller for user administration.
@@ -252,7 +251,7 @@ class UsersController extends AbstractAdminController
             ];
 
             // Highlight old registrations.
-            if (date('U') - $datum[6] > 604800 && !$datum[10]) {
+            if (!$datum[10] && date('U') - $datum[6] > 604800) {
                 $datum[7] = '<span class="text-danger">' . $datum[7] . '</span>';
             }
 
@@ -388,17 +387,19 @@ class UsersController extends AbstractAdminController
         }
 
         // We have just approved a user.  Tell them
-        if ($edit_user->getPreference('verified_by_admin') !== '1' && $approved) {
+        if ($approved && $edit_user->getPreference('verified_by_admin') !== '1') {
             I18N::init($edit_user->getPreference('language'));
+
+            $base_url = $request->getAttribute('base_url');
 
             Mail::send(
                 Auth::user(),
                 $edit_user,
                 Auth::user(),
                 /* I18N: %s is a server name/URL */
-                I18N::translate('New user at %s', WT_BASE_URL),
-                view('emails/approve-user-text', ['user' => $edit_user, 'site_url' => WT_BASE_URL]),
-                view('emails/approve-user-html', ['user' => $edit_user, 'site_url' => WT_BASE_URL])
+                I18N::translate('New user at %s', $base_url),
+                view('emails/approve-user-text', ['user' => $edit_user, 'base_url' => $base_url]),
+                view('emails/approve-user-html', ['user' => $edit_user, 'base_url' => $base_url])
             );
         }
 

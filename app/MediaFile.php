@@ -18,7 +18,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use League\Glide\Urls\UrlBuilderFactory;
+use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
+use function app;
 
 /**
  * A GEDCOM media file.  A media object can contain many media files,
@@ -403,7 +405,9 @@ class MediaFile
             $mark = '';
         }
 
-        $url_builder = UrlBuilderFactory::create(WT_BASE_URL, $glide_key);
+        $base_url = app(ServerRequestInterface::class)->getAttribute('base_url');
+
+        $url_builder = UrlBuilderFactory::create($base_url, $glide_key);
 
         $url = $url_builder->getUrl('index.php', [
             'route'     => 'media-thumbnail',

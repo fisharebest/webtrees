@@ -45,7 +45,7 @@ use Fisharebest\Webtrees\I18N;
             <div class="input-group" dir="ltr">
                 <div class="input-group-append">
                     <span class="input-group-text" dir="ltr">
-                        <?= WT_BASE_URL ?>?ged=
+                        <?= e($base_url) ?>?ged=
                     </span>
                 </div>
                 <input class="form-control" dir="ltr" id="gedcom" maxlength="255" name="gedcom" required type="text" value="<?= e($tree->name()) ?>">

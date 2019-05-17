@@ -102,7 +102,7 @@ class RegisterController extends AbstractBaseController
         $username = $request->getParsedBody()['username'] ?? '';
 
         try {
-            $this->doValidateRegistration($username, $email, $realname, $comments, $password);
+            $this->doValidateRegistration($request, $username, $email, $realname, $comments, $password);
         } catch (Exception $ex) {
             FlashMessages::addMessage($ex->getMessage(), 'danger');
 
@@ -130,15 +130,17 @@ class RegisterController extends AbstractBaseController
             ->setPreference('canadmin', '0')
             ->setPreference('sessiontime', '0');
 
+        $base_url = $request->getAttribute('base_url');
+
         // Send a verification message to the user.
         /* I18N: %s is a server name/URL */
         Mail::send(
             new TreeUser($tree),
             $user,
             new TreeUser($tree),
-            I18N::translate('Your registration at %s', WT_BASE_URL),
-            view('emails/register-user-text', ['user' => $user]),
-            view('emails/register-user-html', ['user' => $user])
+            I18N::translate('Your registration at %s', $base_url),
+            view('emails/register-user-text', ['user' => $user, 'base_url' => $base_url]),
+            view('emails/register-user-html', ['user' => $user, 'base_url' => $base_url])
         );
 
         // Tell the genealogy contact about the registration.
@@ -156,8 +158,8 @@ class RegisterController extends AbstractBaseController
                 $webmaster,
                 $user,
                 $subject,
-                view('emails/register-notify-text', ['user' => $user, 'comments' => $comments]),
-                view('emails/register-notify-html', ['user' => $user, 'comments' => $comments])
+                view('emails/register-notify-text', ['user' => $user, 'comments' => $comments, 'base_url' => $base_url]),
+                view('emails/register-notify-html', ['user' => $user, 'comments' => $comments, 'base_url' => $base_url])
             );
 
             $mail1_method = $webmaster->getPreference('contact_method');
@@ -167,7 +169,7 @@ class RegisterController extends AbstractBaseController
                     'ip_address' => $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1',
                     'user_id'    => $webmaster->id(),
                     'subject'    => $subject,
-                    'body'       => view('emails/register-notify-text', ['user' => $user, 'comments' => $comments]),
+                    'body'       => view('emails/register-notify-text', ['user' => $user, 'comments' => $comments, 'base_url' => $base_url]),
                 ]);
             }
         }
@@ -183,16 +185,17 @@ class RegisterController extends AbstractBaseController
     /**
      * Check the registration details.
      *
-     * @param string $username
-     * @param string $email
-     * @param string $realname
-     * @param string $comments
-     * @param string $password
+     * @param ServerRequestInterface $request
+     * @param string                 $username
+     * @param string                 $email
+     * @param string                 $realname
+     * @param string                 $comments
+     * @param string                 $password
      *
      * @return void
      * @throws Exception
      */
-    private function doValidateRegistration(string $username, string $email, string $realname, string $comments, string $password): void
+    private function doValidateRegistration(ServerRequestInterface $request, string $username, string $email, string $realname, string $comments, string $password): void
     {
         // All fields are required
         if ($username === '' || $email === '' || $realname === '' || $comments === '' || $password === '') {
@@ -209,8 +212,10 @@ class RegisterController extends AbstractBaseController
             throw new Exception(I18N::translate('Duplicate email address. A user with that email already exists.'));
         }
 
+        $base_url = $request->getAttribute('base_url');
+
         // No external links
-        if (preg_match('/(?!' . preg_quote(WT_BASE_URL, '/') . ')(((?:http|https):\/\/)[a-zA-Z0-9.-]+)/', $comments, $match)) {
+        if (preg_match('/(?!' . preg_quote($base_url, '/') . ')(((?:http|https):\/\/)[a-zA-Z0-9.-]+)/', $comments, $match)) {
             throw new Exception(I18N::translate('You are not allowed to send messages that contain external links.') . ' ' . I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', e($match[2]), e($match[1])));
         }
     }

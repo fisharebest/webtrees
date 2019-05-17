@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Exception;
-use function fclose;
 use Fisharebest\Algorithm\ConnectedComponent;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
@@ -47,7 +46,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use function is_dir;
 use League\Flysystem\Filesystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Nyholm\Psr7\UploadedFile;
@@ -59,6 +57,8 @@ use stdClass;
 use Throwable;
 use function addcslashes;
 use function app;
+use function fclose;
+use function is_dir;
 use const UPLOAD_ERR_OK;
 use const WT_DATA_DIR;
 
@@ -668,8 +668,11 @@ class AdminTreesController extends AbstractBaseController
 
         $title = I18N::translate('Manage family trees');
 
+        $base_url = app(ServerRequestInterface::class)->getAttribute('base_url');
+
         return $this->viewResponse('admin/trees', [
             'all_trees'               => $all_trees,
+            'base_url'                => $base_url,
             'default_tree_name'       => $default_tree_name,
             'default_tree_title'      => $default_tree_title,
             'gedcom_files'            => $gedcom_files,
@@ -1073,6 +1076,8 @@ class AdminTreesController extends AbstractBaseController
 
         $title = I18N::translate('Preferences') . ' — ' . e($tree->title());
 
+        $base_url = app(ServerRequestInterface::class)->getAttribute('base_url');
+
         return $this->viewResponse('admin/trees-preferences', [
             'all_fam_facts'            => $all_fam_facts,
             'all_indi_facts'           => $all_indi_facts,
@@ -1081,6 +1086,7 @@ class AdminTreesController extends AbstractBaseController
             'all_repo_facts'           => $all_repo_facts,
             'all_sour_facts'           => $all_sour_facts,
             'all_surname_traditions'   => $all_surname_traditions,
+            'base_url'                 => $base_url,
             'calendar_formats'         => $calendar_formats,
             'data_folder'              => WT_DATA_DIR,
             'formats'                  => $formats,

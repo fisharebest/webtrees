@@ -59,8 +59,10 @@ class VerifyEmailController extends AbstractBaseController
             if ($webmaster instanceof User) {
                 I18N::init($webmaster->getPreference('language'));
 
+                $base_url = $request->getAttribute('base_url');
+
                 /* I18N: %s is a server name/URL */
-                $subject = I18N::translate('New user at %s', WT_BASE_URL . ' ' . $tree->title());
+                $subject = I18N::translate('New user at %s', $base_url . ' ' . $tree->title());
 
                 Mail::send(
                     new TreeUser($tree),

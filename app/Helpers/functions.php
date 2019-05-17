@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\View as WebtreesView;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 
 /**
@@ -156,7 +157,9 @@ function route(string $route, array $parameters = [], bool $absolute = true): st
     $parameters = ['route' => $route] + $parameters;
 
     if ($absolute) {
-        return Html::url(WT_BASE_URL . 'index.php', $parameters);
+        $base_url = app(ServerRequestInterface::class)->getAttribute('base_url');
+
+        return Html::url($base_url . 'index.php', $parameters);
     }
 
     return Html::url('index.php', $parameters);

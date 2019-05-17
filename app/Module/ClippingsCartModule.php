@@ -257,8 +257,10 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
             }
         }
 
+        $base_url = $request->getAttribute('base_url');
+
         // Create a source, to indicate the source of the data.
-        $filetext .= "0 @WEBTREES@ SOUR\n1 TITL " . WT_BASE_URL . "\n";
+        $filetext .= "0 @WEBTREES@ SOUR\n1 TITL " . $base_url . "\n";
         $author   = $this->user_service->find((int) $tree->getPreference('CONTACT_USER_ID'));
         if ($author !== null) {
             $filetext .= '1 AUTH ' . $author->realName() . "\n";
