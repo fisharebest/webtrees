@@ -273,8 +273,8 @@ abstract class AbstractEditController extends AbstractBaseController
         $params = $request->getParsedBody();
 
         $FACT = $params[$fact];
-        $DATE = $params[$fact . '_DATE'];
-        $PLAC = $params[$fact . '_PLAC'];
+        $DATE = $params[$fact . '_DATE'] ?? '';
+        $PLAC = $params[$fact . '_PLAC'] ?? '';
 
         if ($DATE !== '' || $PLAC !== '' || $FACT !== '' && $FACT !== 'Y') {
             if ($FACT !== '' && $FACT !== 'Y') {
