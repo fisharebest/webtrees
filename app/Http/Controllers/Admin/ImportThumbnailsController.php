@@ -101,7 +101,7 @@ class ImportThumbnailsController extends AbstractAdminController
                     }
 
                     // Accept the changes, to keep the filesystem in sync with the GEDCOM data.
-                    FunctionsImport::acceptAllChanges($media_object->getxref(), $media_object->tree());
+                    FunctionsImport::acceptAllChanges($media_object->xref(), $media_object->tree());
                 }
                 break;
         }
