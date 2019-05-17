@@ -2327,7 +2327,7 @@ class Statistics implements
      */
     public function userName(string $visitor_text = ''): string
     {
-        return $this->userRepository->userName();
+        return $this->userRepository->userName($visitor_text);
     }
 
     /**
@@ -2391,7 +2391,7 @@ class Statistics implements
      */
     public function latestUserRegDate(string $format = null): string
     {
-        return $this->latestUserRepository->latestUserRegDate();
+        return $this->latestUserRepository->latestUserRegDate($format);
     }
 
     /**
@@ -2399,7 +2399,7 @@ class Statistics implements
      */
     public function latestUserRegTime(string $format = null): string
     {
-        return $this->latestUserRepository->latestUserRegTime();
+        return $this->latestUserRepository->latestUserRegTime($format);
     }
 
     /**
@@ -2407,7 +2407,7 @@ class Statistics implements
      */
     public function latestUserLoggedin(string $yes = null, string $no = null): string
     {
-        return $this->latestUserRepository->latestUserLoggedin();
+        return $this->latestUserRepository->latestUserLoggedin($yes, $no);
     }
 
     /**
