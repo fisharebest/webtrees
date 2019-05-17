@@ -425,7 +425,6 @@ class ModuleService
      * @param UserInterface $user
      *
      * @return Collection
-     * @return ModuleInterface[]
      */
     public function findByComponent(string $interface, Tree $tree, UserInterface $user): Collection
     {
@@ -443,7 +442,6 @@ class ModuleService
      * @param bool   $sort
      *
      * @return Collection
-     * @return ModuleInterface[]
      */
     public function findByInterface(string $interface, $include_disabled = false, $sort = false): Collection
     {
@@ -478,7 +476,6 @@ class ModuleService
      * @param bool $include_disabled
      *
      * @return Collection
-     * @return ModuleInterface[]
      */
     public function all(bool $include_disabled = false): Collection
     {
@@ -733,7 +730,6 @@ class ModuleService
      * @param bool $include_disabled
      *
      * @return Collection
-     * @return ModuleConfigInterface[]
      */
     public function otherModules(bool $include_disabled = false): Collection
     {
@@ -753,7 +749,6 @@ class ModuleService
      * Generate a list of module names which exist in the database but not on disk.
      *
      * @return Collection
-     * @return string[]
      */
     public function deletedModules(): Collection
     {

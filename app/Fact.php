@@ -695,7 +695,6 @@ class Fact
      * @param Collection $unsorted
      *
      * @return Collection
-     * @return Fact[]
      */
     public static function sortFacts(Collection $unsorted): Collection
     {

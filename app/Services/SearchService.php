@@ -50,7 +50,6 @@ class SearchService
      * @param string[] $search
      *
      * @return Collection
-     * @return Family[]
      */
     public function searchFamilies(array $trees, array $search): Collection
     {
@@ -76,7 +75,6 @@ class SearchService
      * @param int      $limit
      *
      * @return Collection
-     * @return Family[]
      */
     public function searchFamilyNames(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -114,7 +112,6 @@ class SearchService
      * @param string[] $search
      *
      * @return Collection
-     * @return Individual[]
      */
     public function searchIndividuals(array $trees, array $search): Collection
     {
@@ -140,7 +137,6 @@ class SearchService
      * @param int      $limit
      *
      * @return Collection
-     * @return Individual[]
      */
     public function searchIndividualNames(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -168,7 +164,6 @@ class SearchService
      * @param int      $limit
      *
      * @return Collection
-     * @return Media[]
      */
     public function searchMedia(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -189,7 +184,6 @@ class SearchService
      * @param int      $limit
      *
      * @return Collection
-     * @return Note[]
      */
     public function searchNotes(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -211,7 +205,6 @@ class SearchService
      * @param int      $limit
      *
      * @return Collection
-     * @return Repository[]
      */
     public function searchRepositories(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -233,7 +226,6 @@ class SearchService
      * @param int      $limit
      *
      * @return Collection
-     * @return Source[]
      */
     public function searchSources(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -254,7 +246,6 @@ class SearchService
      * @param int      $limit
      *
      * @return Collection
-     * @return Source[]
      */
     public function searchSourcesByName(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -276,7 +267,6 @@ class SearchService
      * @param int      $limit
      *
      * @return Collection
-     * @return GedcomRecord[]
      */
     public function searchSubmitters(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -298,7 +288,6 @@ class SearchService
      * @param int    $limit
      *
      * @return Collection
-     * @return Place[]
      */
     public function searchPlaces(Tree $tree, string $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -357,7 +346,6 @@ class SearchService
      * @param string[] $modifiers
      *
      * @return Collection
-     * @return Individual[]
      */
     public function searchIndividualsAdvanced(array $trees, array $fields, array $modifiers): Collection
     {
@@ -771,7 +759,6 @@ class SearchService
      * @param Tree[] $search_trees
      *
      * @return Collection
-     * @return Individual[]
      */
     public function searchIndividualsPhonetic(string $soundex, string $lastname, string $firstname, string $place, array $search_trees): Collection
     {

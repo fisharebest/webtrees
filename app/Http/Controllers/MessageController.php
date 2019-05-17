@@ -463,7 +463,6 @@ class MessageController extends AbstractBaseController
      * @param string $to
      *
      * @return Collection
-     * @return UserInterface[]
      */
     private function recipientUsers(string $to): Collection
     {

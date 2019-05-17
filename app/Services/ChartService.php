@@ -33,7 +33,6 @@ class ChartService
      * @param int        $generations Fetch this number of generations
      *
      * @return Collection
-     * @return Individual[]
      */
     public function sosaStradonitzAncestors(Individual $individual, int $generations): Collection
     {
@@ -75,7 +74,6 @@ class ChartService
      * @param int        $generations Fetch this number of generations
      *
      * @return Collection
-     * @return Individual[]
      */
     public function descendants(Individual $individual, int $generations): Collection
     {
@@ -99,7 +97,6 @@ class ChartService
      * @param int        $generations Fetch this number of generations
      *
      * @return Collection
-     * @return Family[]
      */
     public function descendantFamilies(Individual $individual, int $generations): Collection
     {

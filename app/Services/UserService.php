@@ -90,7 +90,6 @@ class UserService
      * @param Individual $individual
      *
      * @return Collection
-     * @return User[]
      */
     public function findByIndividual(Individual $individual): Collection
     {
@@ -124,7 +123,6 @@ class UserService
      * Get a list of all users.
      *
      * @return Collection
-     * @return User[]
      */
     public function all(): Collection
     {
@@ -139,7 +137,6 @@ class UserService
      * Get a list of all administrators.
      *
      * @return Collection
-     * @return User[]
      */
     public function administrators(): Collection
     {
@@ -161,7 +158,6 @@ class UserService
      * Get a list of all managers.
      *
      * @return Collection
-     * @return User[]
      */
     public function managers(): Collection
     {
@@ -183,7 +179,6 @@ class UserService
      * Get a list of all moderators.
      *
      * @return Collection
-     * @return User[]
      */
     public function moderators(): Collection
     {
@@ -205,7 +200,6 @@ class UserService
      * Get a list of all verified users.
      *
      * @return Collection
-     * @return User[]
      */
     public function unapproved(): Collection
     {
@@ -227,7 +221,6 @@ class UserService
      * Get a list of all verified users.
      *
      * @return Collection
-     * @return User[]
      */
     public function unverified(): Collection
     {
@@ -249,7 +242,6 @@ class UserService
      * Get a list of all users who are currently logged in.
      *
      * @return Collection
-     * @return User[]
      */
     public function allLoggedIn(): Collection
     {

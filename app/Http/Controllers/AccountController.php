@@ -173,7 +173,6 @@ class AccountController extends AbstractBaseController
 
     /**
      * @return Collection
-     * @return string[]
      */
     private function themeOptions(): Collection
     {

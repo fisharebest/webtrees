@@ -108,7 +108,6 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
      * @param Individual $individual
      *
      * @return Collection
-     * @return Fact[]
      */
     private function getFactsWithMedia(Individual $individual): Collection
     {
@@ -145,7 +144,6 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
      * This module handles the following facts - so don't show them on the "Facts and events" tab.
      *
      * @return Collection
-     * @return string[]
      */
     public function supportedFacts(): Collection
     {

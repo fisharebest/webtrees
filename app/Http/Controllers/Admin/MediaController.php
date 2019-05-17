@@ -88,7 +88,6 @@ class MediaController extends AbstractAdminController
      * Generate a list of all folders from all the trees.
      *
      * @return Collection
-     * @return string[]
      */
     private function allMediaFolders(): Collection
     {

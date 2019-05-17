@@ -402,7 +402,6 @@ class I18N
      * All locales for which a translation file exists.
      *
      * @return Collection
-     * @return LocaleInterface[]
      */
     public static function installedLocales(): Collection
     {

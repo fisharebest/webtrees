@@ -55,7 +55,6 @@ class ServerCheckService
      * @param string $driver
      *
      * @return Collection
-     * @return string[]
      */
     public function serverErrors($driver = ''): Collection
     {
@@ -80,7 +79,6 @@ class ServerCheckService
      * @param string $driver
      *
      * @return Collection
-     * @return string[]
      */
     public function serverWarnings($driver = ''): Collection
     {

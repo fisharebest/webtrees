@@ -351,7 +351,6 @@ class IndividualController extends AbstractBaseController
      * @param Individual $individual
      *
      * @return Collection
-     * @return ModuleSidebarInterface[]
      */
     public function getSidebars(Individual $individual): Collection
     {
@@ -368,7 +367,6 @@ class IndividualController extends AbstractBaseController
      * @param Individual $individual
      *
      * @return Collection
-     * @return ModuleTabInterface[]
      */
     public function getTabs(Individual $individual): Collection
     {

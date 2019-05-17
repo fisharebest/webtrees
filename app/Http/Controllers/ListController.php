@@ -604,7 +604,6 @@ class ListController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return Collection
-     * @return Note[]
      */
     private function allNotes(Tree $tree): Collection
     {
@@ -622,7 +621,6 @@ class ListController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return Collection
-     * @return Repository[]
      */
     private function allRepositories(Tree $tree): Collection
     {
@@ -640,7 +638,6 @@ class ListController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return Collection
-     * @return Source[]
      */
     private function allSources(Tree $tree): Collection
     {
