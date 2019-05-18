@@ -27,7 +27,7 @@ trait Timestamp
      */
     public static function createFromTimestamp($timestamp, $tz = null)
     {
-        return static::today($tz)->setTimestamp($timestamp);
+        return static::today($tz)->setTimestamp((int) $timestamp);
     }
 
     /**
@@ -65,7 +65,7 @@ trait Timestamp
      */
     public function timestamp($value)
     {
-        return $this->setTimestamp($value);
+        return $this->setTimestamp((int) $value);
     }
 
     /**

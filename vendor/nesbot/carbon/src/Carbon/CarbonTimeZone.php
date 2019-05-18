@@ -125,9 +125,9 @@ class CarbonTimeZone extends DateTimeZone
 
         $hours = floor($minutes / 60);
 
-        $minutes = str_pad(abs($minutes) % 60, 2, '0', STR_PAD_LEFT);
+        $minutes = str_pad((string) (abs($minutes) % 60), 2, '0', STR_PAD_LEFT);
 
-        return ($hours < 0 ? '-' : '+').str_pad(abs($hours), 2, '0', STR_PAD_LEFT).":$minutes";
+        return ($hours < 0 ? '-' : '+').str_pad((string) abs($hours), 2, '0', STR_PAD_LEFT).":$minutes";
     }
 
     /**
@@ -161,7 +161,7 @@ class CarbonTimeZone extends DateTimeZone
             return $name;
         }
 
-        return @timezone_name_from_abbr(null, $this->getOffset($date ?: Carbon::now($this)), $isDst);
+        return @timezone_name_from_abbr('', @$this->getOffset($date ?: Carbon::now($this)) ?: 0, $isDst);
     }
 
     /**
