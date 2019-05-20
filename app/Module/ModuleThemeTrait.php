@@ -36,6 +36,16 @@ use function app;
 trait ModuleThemeTrait
 {
     /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
+    public function description(): string
+    {
+        return I18N::translate('Theme') . ' — ' . $this->title();
+    }
+
+    /**
      * Display an icon for this fact.
      *
      * @TODO use CSS for this
