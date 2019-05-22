@@ -86,6 +86,7 @@ class ServerCheckService
             $this->databaseDriverWarnings($driver),
             $this->checkPhpExtension('curl'),
             $this->checkPhpExtension('gd'),
+            $this->checkPhpExtension('zip'),
             $this->checkPhpExtension('simplexml'),
             $this->checkPhpIni('file_uploads', true),
             $this->checkSystemTemporaryFolder(),
