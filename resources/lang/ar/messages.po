@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2019-04-18 07:37+0000\n"
+"PO-Revision-Date: 2019-05-28 07:00+0000\n"
 "Last-Translator: Muadh Hamidaddin <muadh@hamidaddin.net>\n"
 "Language-Team: Arabic <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/ar/>\n"
 "Language: ar\n"
@@ -811,17 +811,17 @@ msgstr "رسالة ترحيب لزائري الموقع."
 #. I18N: Description of the “Hit counters” module
 #: app/Module/ContactsFooterModule.php:66
 msgid "A link to the site contacts."
-msgstr ""
+msgstr "رابط إلى عناوين الإتصال للموقع."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:50
 msgid "A link to the webtrees home page."
-msgstr ""
+msgstr "رابط إلى صفحة webtrees الرئيسة."
 
 #. I18N: Description of the “BranchesListModule” module
 #: app/Module/BranchesListModule.php:55
 msgid "A list of branches of a family."
-msgstr ""
+msgstr "قائمة فروع لأسرة."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:74
@@ -831,7 +831,7 @@ msgstr "قائمة بالتعديلات المغلقة التي تتطلب مو�
 #. I18N: Description of the “FamilyListModule” module
 #: app/Module/FamilyListModule.php:56
 msgid "A list of families."
-msgstr ""
+msgstr "قائمة بالأسر."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:57
@@ -841,37 +841,37 @@ msgstr "قائمة بالأسئلة الأكثر شيوعاً والإجابات
 #. I18N: Description of the “IndividualListModule” module
 #: app/Module/IndividualListModule.php:56
 msgid "A list of individuals."
-msgstr ""
+msgstr "قائمة أفراد."
 
 #. I18N: Description of the “MediaListModule” module
 #: app/Module/MediaListModule.php:57
 msgid "A list of media objects."
-msgstr ""
+msgstr "قائمة كائنات وسائط."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:61
 msgid "A list of records that have been updated recently."
-msgstr "قائمة بالسجلات المحدثة مؤخراً."
+msgstr "قائمة سجلات محدثة مؤخراً."
 
 #. I18N: Description of the “RepositoryListModule” module
 #: app/Module/RepositoryListModule.php:56
 msgid "A list of repositories."
-msgstr ""
+msgstr "قائمة مستودعات."
 
 #. I18N: Description of the “NoteListModule” module
 #: app/Module/NoteListModule.php:56
 msgid "A list of shared notes."
-msgstr ""
+msgstr "قائمة ملاحظات مشتركة."
 
 #. I18N: Description of the “SourceListModule” module
 #: app/Module/SourceListModule.php:56
 msgid "A list of sources."
-msgstr ""
+msgstr "قائمة مصادر."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:63
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr "قائمة بالمهام والأنشطة المرتبطة بالمشجر."
+msgstr "قائمة مهام وأنشطة مرتبطة بمشجرالأسرة."
 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:66
@@ -1444,15 +1444,15 @@ msgstr "إضافة فرد ذي علاقة"
 
 #: resources/views/cards/add-sour-data-even.phtml:7
 msgid "Add an event"
-msgstr ""
+msgstr "إضافة حدث"
 
 #: resources/views/modules/custom-css-js/edit.phtml:23
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
-msgstr ""
+msgstr "إضافة محتوى في نهاية <code>&lt;عنصر&gt;</code>الجسم."
 
 #: resources/views/modules/custom-css-js/edit.phtml:11
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr ""
+msgstr "إضافة محتوى في نهاية <code>&lt;عنصر&gt;</code>الترويسة."
 
 #: resources/views/edit/paste-fact-row.phtml:7
 msgid "Add from clipboard"
@@ -1460,7 +1460,7 @@ msgstr "إضافة من الحافظة"
 
 #: app/Module/ModuleHistoricEventsTrait.php:38
 msgid "Add historic events to an individual‘s page."
-msgstr ""
+msgstr "إضافة أحداث تأريخية لصفحة الفرد."
 
 #: resources/views/modules/lifespans-chart/page.phtml:19
 msgid "Add individuals"
@@ -1498,7 +1498,7 @@ msgstr "إضافة مسافات في مواضع لف السطور الطويلة
 #. I18N: Description of the “CSS and JS” module.
 #: app/Module/CustomCssJsModule.php:41
 msgid "Add styling and scripts to every page."
-msgstr ""
+msgstr "إضافة تصاميم ونصوص لكل صفحة."
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: resources/views/admin/trees-export.phtml:55
@@ -1906,7 +1906,7 @@ msgstr "جميع الأفراد"
 #: resources/views/admin/components.phtml:12
 #: resources/views/admin/control-panel.phtml:308
 msgid "All modules"
-msgstr ""
+msgstr "جميع الوحدات"
 
 #: resources/views/admin/trees-privacy.phtml:245
 msgid "All records"
@@ -2422,7 +2422,7 @@ msgstr "متوسط العمر عند الوفاة"
 
 #: app/Statistics/Google/ChartMarriageAge.php:152
 msgid "Average age at marriage"
-msgstr ""
+msgstr "متوسط العمر عند الزواج"
 
 #: app/Statistics/Google/ChartMarriageAge.php:149
 msgid "Average age in century of marriage"
@@ -2434,7 +2434,7 @@ msgstr "متوسط العمر حسب قرن الوفاة"
 
 #: app/Statistics/Google/ChartChildren.php:87
 msgid "Average number"
-msgstr ""
+msgstr "رقم متوسط"
 
 #: app/Statistics/Google/ChartChildren.php:98
 #: resources/views/modules/gedcom_stats/config.phtml:35
@@ -3339,7 +3339,7 @@ msgstr "محرر نصوص مطور"
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php:78
 msgid "CSS and JS"
-msgstr ""
+msgstr "سي أس أس و جاي أس"
 
 #: resources/views/admin/trees.phtml:37
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -3503,7 +3503,7 @@ msgstr "جمهورية أفريقيا الوسطى"
 #: resources/views/lists/individuals-table.phtml:118
 #: resources/views/lists/individuals-table.phtml:133
 msgid "Century"
-msgstr ""
+msgstr "قرن"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2361
@@ -4071,7 +4071,7 @@ msgstr "جزر كوك"
 #. I18N: Name of a module
 #: app/Module/CookieWarningModule.php:55
 msgid "Cookie warning"
-msgstr ""
+msgstr "تحذير ملف تعريف الارتباط"
 
 #: resources/views/modules/cookie-warning/footer.phtml:4
 #: resources/views/privacy-policy.phtml:12
@@ -4134,7 +4134,7 @@ msgstr "لم يتم التمكن من التحقق من المعلومات ال�
 #. I18N: Description of the “Hit counters” module
 #: app/Module/HitCountFooterModule.php:72
 msgid "Count the visits to each page"
-msgstr ""
+msgstr "إحصاء عدد الزيارات لكل صفحة"
 
 #. I18N: gedcom tag CTRY
 #: app/GedcomTag.php:638 app/Statistics/Google/ChartDistribution.php:118
@@ -4189,7 +4189,7 @@ msgstr "إنشاء مقدم"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:142
 msgid "Create a temporary folder…"
-msgstr ""
+msgstr "إنشاء مجلد مؤقت …"
 
 #: resources/views/modals/media-file-fields.phtml:68
 msgid "Create a unique filename"
@@ -4436,7 +4436,7 @@ msgstr "كلمة مرور قاعدة البيانات"
 
 #: resources/views/setup/step-3-database-type.phtml:31
 msgid "Database type"
-msgstr ""
+msgstr "نوع قاعدة البيانات"
 
 #: resources/views/setup/step-4-database-mysql.phtml:58
 #: resources/views/setup/step-4-database-pgsql.phtml:50
@@ -5082,7 +5082,7 @@ msgstr "حذف المستخدمين الخاملين"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:148
 msgid "Delete old files…"
-msgstr ""
+msgstr "حذف الملفات القديمة…"
 
 #: app/Module/UserMessagesModule.php:208
 msgid "Delete selected messages"
@@ -5349,7 +5349,7 @@ msgstr "لا تحكم: غير مصرح"
 
 #: resources/views/admin/map-provider.phtml:15
 msgid "Do not use maps"
-msgstr ""
+msgstr "بدون إستخدام خرائط"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2367
@@ -5368,7 +5368,7 @@ msgstr "جمهورية الدومينيكان"
 
 #: app/Module/PedigreeChartModule.php:314
 msgid "Down"
-msgstr ""
+msgstr "أسفل"
 
 #: app/Module/ClippingsCartModule.php:157
 #: app/Module/ClippingsCartModule.php:294
@@ -6479,14 +6479,14 @@ msgstr "بنط الخط"
 #: resources/views/admin/modules.phtml:217
 #: resources/views/admin/modules.phtml:220
 msgid "Footer"
-msgstr ""
+msgstr "هامش سفلي"
 
 #: app/Http/Controllers/Admin/ModuleController.php:135
 #: resources/views/admin/control-panel.phtml:359
 #: resources/views/admin/modules.phtml:91
 #: resources/views/admin/modules.phtml:93
 msgid "Footers"
-msgstr ""
+msgstr "هوامش سفلية"
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names
 #: resources/views/admin/trees-import.phtml:102
@@ -6739,7 +6739,7 @@ msgstr "الجنس"
 
 #: resources/views/admin/control-panel.phtml:317
 msgid "Genealogy"
-msgstr ""
+msgstr "أنساب"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:166
@@ -7222,7 +7222,7 @@ msgstr "وظيفته كانت"
 #: resources/views/admin/modules.phtml:233
 #: resources/views/admin/modules.phtml:236
 msgid "Historic events"
-msgstr ""
+msgstr "أحداث تأريخية"
 
 #: resources/views/modules/personal_facts/tab.phtml:18
 msgid "Historical facts"
@@ -7404,7 +7404,7 @@ msgstr "في حالة عدم التمكن من تجاوز هذه المشكلة�
 
 #: resources/views/setup/step-4-database-mysql.phtml:37
 msgid "If you connect to the database using a UNIX socket, enter the path here and leave the port number empty."
-msgstr ""
+msgstr "إذا تم الإتصال بقاعدة البيانات باستخدام مقبس UNIX، فيتم إدخال المسار هنا وترك رقم المنفذ فارغًا."
 
 #: resources/views/admin/trees-import.phtml:86
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -10376,7 +10376,7 @@ msgstr "تم العثور على ملفات قديمة"
 
 #: resources/views/statistics/families/birth-age.phtml:58
 msgid "Oldest father"
-msgstr "الأب الأكبر عمراً عند الإنجاب"
+msgstr "أكبر أب"
 
 #: resources/views/statistics/families/marriage-age.phtml:76
 msgid "Oldest female"
@@ -10388,11 +10388,11 @@ msgstr "أكبر الأحياء"
 
 #: resources/views/statistics/families/marriage-age.phtml:58
 msgid "Oldest male"
-msgstr "أقدم ذكر"
+msgstr "أكبر ذكر"
 
 #: resources/views/statistics/families/birth-age.phtml:76
 msgid "Oldest mother"
-msgstr "الأم الأكبر عمراً عند الإنجاب"
+msgstr "أكبر أم"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:125
@@ -16157,7 +16157,7 @@ msgstr "سيتم إستخدام هذا لتسجيل الدخول إلى webtrees
 
 #: resources/views/statistics/families/birth-age.phtml:20
 msgid "Youngest father"
-msgstr "الأب الأصغر عمراً عند الإنجاب"
+msgstr "أصغر أب"
 
 #: resources/views/statistics/families/marriage-age.phtml:38
 msgid "Youngest female"
@@ -16169,7 +16169,7 @@ msgstr "أصغر ذكر"
 
 #: resources/views/statistics/families/birth-age.phtml:38
 msgid "Youngest mother"
-msgstr "الأم الأصغر عمراً عند الإنجاب"
+msgstr "أصغر أم"
 
 #: resources/views/modules/clippings/show.phtml:11
 msgid "Your clippings cart is empty."
