@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-04-18 07:37+0000\n"
+"PO-Revision-Date: 2019-05-28 07:00+0000\n"
 "Last-Translator: Muadh Hamidaddin <muadh@hamidaddin.net>\n"
 "Language-Team: Arabic <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/ar/>\n"
 "Language: ar\n"
@@ -927,12 +927,12 @@ msgstr "قائمة بالأسئلة الأكثر شيوعاً والإجابات
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:49
 msgid "A list of records that have been updated recently."
-msgstr "قائمة بالسجلات المحدثة مؤخراً."
+msgstr "قائمة سجلات محدثة مؤخراً."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:44
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr "قائمة بالمهام والأنشطة المرتبطة بالمشجر."
+msgstr "قائمة مهام وأنشطة مرتبطة بمشجرالأسرة."
 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:42
@@ -10342,15 +10342,15 @@ msgstr "تم العثور على ملفات قديمة"
 
 #: pedigree.php:182
 msgid "Oldest at bottom"
-msgstr "الأصغر أولاً"
+msgstr "الأكبر في الأسفل"
 
 #: pedigree.php:182
 msgid "Oldest at top"
-msgstr "الأكبر أولاً"
+msgstr "الأكبر في الأعلى"
 
 #: statistics.php:294
 msgid "Oldest father"
-msgstr "الأب الأكبر عمراً عند الإنجاب"
+msgstr "أكبر أب"
 
 #: statistics.php:272
 msgid "Oldest female"
@@ -10362,11 +10362,11 @@ msgstr "أكبر الأحياء"
 
 #: statistics.php:271
 msgid "Oldest male"
-msgstr "أقدم ذكر"
+msgstr "أكبر ذكر"
 
 #: statistics.php:295
 msgid "Oldest mother"
-msgstr "الأم الأكبر عمراً عند الإنجاب"
+msgstr "أكبر أم"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:87
@@ -16309,7 +16309,7 @@ msgstr "سيتم إستخدام هذا لتسجيل الدخول إلى webtrees
 
 #: statistics.php:286
 msgid "Youngest father"
-msgstr "الأب الأصغر عمراً عند الإنجاب"
+msgstr "أصغر أب"
 
 #: statistics.php:264
 msgid "Youngest female"
@@ -16321,7 +16321,7 @@ msgstr "أصغر ذكر"
 
 #: statistics.php:287
 msgid "Youngest mother"
-msgstr "الأم الأصغر عمراً عند الإنجاب"
+msgstr "أصغر أم"
 
 #: app/Module/ClippingsCartModule.php:357
 #: app/Module/ClippingsCartModule.php:691
@@ -19190,7 +19190,7 @@ msgstr "كلا"
 #. I18N: A button label, next page
 #: app/I18N.php:224 app/Module/BatchUpdateModule.php:247
 msgid "next"
-msgstr "اللاحق"
+msgstr "التالي"
 
 #: app/Functions/Functions.php:808
 msgctxt "brother’s daughter"
