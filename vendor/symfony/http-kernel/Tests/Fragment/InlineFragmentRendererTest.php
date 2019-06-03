@@ -17,9 +17,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Controller\ControllerReference;
+use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\Fragment\InlineFragmentRenderer;
 use Symfony\Component\HttpKernel\HttpKernel;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 class InlineFragmentRendererTest extends TestCase
 {
@@ -72,7 +74,7 @@ class InlineFragmentRendererTest extends TestCase
      */
     public function testRenderExceptionNoIgnoreErrors()
     {
-        $dispatcher = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcherInterface')->getMock();
+        $dispatcher = $this->getMockBuilder(EventDispatcherInterface::class)->getMock();
         $dispatcher->expects($this->never())->method('dispatch');
 
         $strategy = new InlineFragmentRenderer($this->getKernel($this->throwException(new \RuntimeException('foo'))), $dispatcher);
@@ -82,12 +84,16 @@ class InlineFragmentRendererTest extends TestCase
 
     public function testRenderExceptionIgnoreErrors()
     {
-        $dispatcher = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcherInterface')->getMock();
-        $dispatcher->expects($this->once())->method('dispatch')->with(KernelEvents::EXCEPTION);
+        $exception = new \RuntimeException('foo');
+        $kernel = $this->getKernel($this->throwException($exception));
+        $request = Request::create('/');
+        $expectedEvent = new ExceptionEvent($kernel, $request, $kernel::SUB_REQUEST, $exception);
+        $dispatcher = $this->getMockBuilder(EventDispatcherInterface::class)->getMock();
+        $dispatcher->expects($this->once())->method('dispatch')->with($expectedEvent, KernelEvents::EXCEPTION);
 
-        $strategy = new InlineFragmentRenderer($this->getKernel($this->throwException(new \RuntimeException('foo'))), $dispatcher);
+        $strategy = new InlineFragmentRenderer($kernel, $dispatcher);
 
-        $this->assertEmpty($strategy->render('/', Request::create('/'), ['ignore_errors' => true])->getContent());
+        $this->assertEmpty($strategy->render('/', $request, ['ignore_errors' => true])->getContent());
     }
 
     public function testRenderExceptionIgnoreErrorsWithAlt()

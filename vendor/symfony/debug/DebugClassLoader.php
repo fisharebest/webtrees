@@ -39,6 +39,7 @@ class DebugClassLoader
     private static $internalMethods = [];
     private static $annotatedParameters = [];
     private static $darwinCache = ['/' => ['/', []]];
+    private static $method = [];
 
     public function __construct(callable $classLoader)
     {
@@ -236,6 +237,24 @@ class DebugClassLoader
                     self::${$annotation}[$class] = isset($notice[1]) ? preg_replace('#\.?\r?\n( \*)? *(?= |\r?\n|$)#', '', $notice[1]) : '';
                 }
             }
+
+            if ($refl->isInterface() && false !== \strpos($doc, 'method') && preg_match_all('#\n \* @method\s+(static\s+)?+(?:[\w\|&\[\]\\\]+\s+)?(\w+(?:\s*\([^\)]*\))?)+(.+?([[:punct:]]\s*)?)?(?=\r?\n \*(?: @|/$|\r?\n))#', $doc, $notice, PREG_SET_ORDER)) {
+                foreach ($notice as $method) {
+                    $static = '' !== $method[1];
+                    $name = $method[2];
+                    $description = $method[3] ?? null;
+                    if (false === strpos($name, '(')) {
+                        $name .= '()';
+                    }
+                    if (null !== $description) {
+                        $description = trim($description);
+                        if (!isset($method[4])) {
+                            $description .= '.';
+                        }
+                    }
+                    self::$method[$class][] = [$class, $name, $static, $description];
+                }
+            }
         }
 
         $parent = \get_parent_class($class);
@@ -265,6 +284,28 @@ class DebugClassLoader
             }
             if (isset(self::$internal[$use]) && \strncmp($ns, \str_replace('_', '\\', $use), $len)) {
                 $deprecations[] = sprintf('The "%s" %s is considered internal%s. It may change without further notice. You should not use it from "%s".', $use, class_exists($use, false) ? 'class' : (interface_exists($use, false) ? 'interface' : 'trait'), self::$internal[$use], $class);
+            }
+            if (isset(self::$method[$use])) {
+                if ($refl->isAbstract()) {
+                    if (isset(self::$method[$class])) {
+                        self::$method[$class] = array_merge(self::$method[$class], self::$method[$use]);
+                    } else {
+                        self::$method[$class] = self::$method[$use];
+                    }
+                } elseif (!$refl->isInterface()) {
+                    $hasCall = $refl->hasMethod('__call');
+                    $hasStaticCall = $refl->hasMethod('__callStatic');
+                    foreach (self::$method[$use] as $method) {
+                        list($interface, $name, $static, $description) = $method;
+                        if ($static ? $hasStaticCall : $hasCall) {
+                            continue;
+                        }
+                        $realName = substr($name, 0, strpos($name, '('));
+                        if (!$refl->hasMethod($realName) || !($methodRefl = $refl->getMethod($realName))->isPublic() || ($static && !$methodRefl->isStatic()) || (!$static && $methodRefl->isStatic())) {
+                            $deprecations[] = sprintf('Class "%s" should implement method "%s::%s"%s', $class, ($static ? 'static ' : '').$interface, $name, null == $description ? '.' : ': '.$description);
+                        }
+                    }
+                }
             }
         }
 
@@ -311,7 +352,7 @@ class DebugClassLoader
                 }
 
                 foreach (self::$annotatedParameters[$class][$method->name] as $parameterName => $deprecation) {
-                    if (!isset($definedParameters[$parameterName]) && !($doc && preg_match("/\\n\\s+\\* @param (.*?)(?<= )\\\${$parameterName}\\b/", $doc))) {
+                    if (!isset($definedParameters[$parameterName]) && !($doc && preg_match("/\\n\\s+\\* @param +((?(?!callable *\().*?|callable *\(.*\).*?))(?<= )\\\${$parameterName}\\b/", $doc))) {
                         $deprecations[] = sprintf($deprecation, $class);
                     }
                 }
@@ -334,7 +375,7 @@ class DebugClassLoader
             if ($finalOrInternal || $method->isConstructor() || false === \strpos($doc, '@param') || StatelessInvocation::class === $class) {
                 continue;
             }
-            if (!preg_match_all('#\n\s+\* @param (.*?)(?<= )\$([a-zA-Z0-9_\x7f-\xff]++)#', $doc, $matches, PREG_SET_ORDER)) {
+            if (!preg_match_all('#\n\s+\* @param +((?(?!callable *\().*?|callable *\(.*\).*?))(?<= )\$([a-zA-Z0-9_\x7f-\xff]++)#', $doc, $matches, PREG_SET_ORDER)) {
                 continue;
             }
             if (!isset(self::$annotatedParameters[$class][$method->name])) {
