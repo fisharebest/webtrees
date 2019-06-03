@@ -35,12 +35,17 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
+use function preg_match_all;
+use function range;
 
 /**
  * Calculate anniversaries, etc.
  */
 class CalendarService
 {
+    // If no facts specified, get all except these
+    protected const SKIP_FACTS = ['CHAN', 'BAPL', 'SLGC', 'SLGS', 'ENDL', 'CENS', 'RESI', 'NOTE', 'ADDR', 'OBJE', 'SOUR', '_TODO'];
+
     /**
      * List all the months in a given year.
      *
@@ -82,18 +87,15 @@ class CalendarService
     /**
      * Get a list of events which occured during a given date range.
      *
-     * @param int      $jd1   the start range of julian day
-     * @param int      $jd2   the end range of julian day
-     * @param string[] $facts restrict the search to just these facts or leave blank for all
-     * @param Tree     $tree  the tree to search
+     * @param int    $jd1   the start range of julian day
+     * @param int    $jd2   the end range of julian day
+     * @param string $facts restrict the search to just these facts or leave blank for all
+     * @param Tree   $tree  the tree to search
      *
      * @return Fact[]
      */
-    public function getCalendarEvents(int $jd1, int $jd2, array $facts, Tree $tree): array
+    public function getCalendarEvents(int $jd1, int $jd2, string $facts, Tree $tree): array
     {
-        // If no facts specified, get all except these
-        $skipfacts = ['CHAN', 'BAPL', 'SLGC', 'SLGS', 'ENDL', 'CENS', 'RESI', 'NOTE', 'ADDR', 'OBJE', 'SOUR'];
-
         // Events that start or end during the period
         $query = DB::table('dates')
             ->where('d_file', '=', $tree->id())
@@ -110,10 +112,12 @@ class CalendarService
             });
 
         // Restrict to certain types of fact
-        if (empty($facts)) {
-            $query->whereNotIn('d_fact', $skipfacts);
+        if ($facts === '') {
+            $query->whereNotIn('d_fact', self::SKIP_FACTS);
         } else {
-            $query->whereIn('d_fact', $facts);
+            preg_match_all('/([_A-Z]+)/', $facts, $matches);
+
+            $query->whereIn('d_fact', $matches[1]);
         }
 
         $ind_query = (clone $query)
@@ -273,14 +277,14 @@ class CalendarService
             // Only events in the past (includes dates without a year)
             $query->where('d_year', '<=', $anniv->year());
 
-            preg_match_all('/([_A-Z]+)/', $facts, $matches);
-
-            if (!empty($matches[1])) {
-                // Restrict to certain types of fact
-                $query->whereIn('d_fact', $matches[1]);
-            } else {
+            if ($facts === '') {
                 // If no facts specified, get all except these
-                $query->whereNotIn('d_fact', ['CHAN', 'BAPL', 'SLGC', 'SLGS', 'ENDL', 'CENS', 'RESI', '_TODO']);
+                $query->whereNotIn('d_fact', self::SKIP_FACTS);
+            } else {
+                // Restrict to certain types of fact
+                preg_match_all('/([_A-Z]+)/', $facts, $matches);
+
+                $query->whereIn('d_fact', $matches[1]);
             }
 
             $query

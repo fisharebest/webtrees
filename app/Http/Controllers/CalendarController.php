@@ -265,7 +265,7 @@ class CalendarController extends AbstractBaseController
             case 'year':
                 $cal_date->month = 0;
                 $cal_date->setJdFromYmd();
-                $found_facts = $this->applyFilter($this->calendar_service->getCalendarEvents($ged_date->minimumJulianDay(), $ged_date->maximumJulianDay(), explode('-', $filterev), $tree), $filterof, $filtersx);
+                $found_facts = $this->applyFilter($this->calendar_service->getCalendarEvents($ged_date->minimumJulianDay(), $ged_date->maximumJulianDay(), $filterev, $tree), $filterof, $filtersx);
                 // Eliminate duplicates (e.g. BET JUL 1900 AND SEP 1900 will appear twice in 1900)
                 $found_facts = array_unique($found_facts);
                 break;
