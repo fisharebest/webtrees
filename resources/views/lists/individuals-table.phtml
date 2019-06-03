@@ -345,6 +345,10 @@ $deathAgeData = [
                         <?= $birth_date->display(true) ?>
                         <br>
                     <?php endforeach ?>
+
+                    <?php if (empty($birth_dates)): ?>
+                        <?= $individual->getEstimatedBirthDate()->display(true) ?>
+                    <?php endif ?>
                 </td>
 
                 <!-- Birth anniversary -->
@@ -377,6 +381,10 @@ $deathAgeData = [
                         <?= $death_date->display(true) ?>
                     <br>
                     <?php endforeach ?>
+
+                    <?php if (empty($death_dates)): ?>
+                        <?= $individual->getEstimatedDeathDate()->display(true) ?>
+                    <?php endif ?>
                 </td>
 
                 <!-- Death anniversary -->
