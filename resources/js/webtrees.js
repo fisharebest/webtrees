@@ -994,11 +994,6 @@ $(function () {
         //templateResult: templateOptionForSelect2,
         //templateSelection: templateOptionForSelect2
     })
-    // If we clear the select (using the "X" button), we need an empty
-    // value (rather than no value at all) for inputs with name="array[]"
-    .on("select2:unselect", function (evt) {
-        $(evt.delegateTarget).append("<option value=\"\" selected=\"selected\"></option>");
-    });
 
     // Datatables - locale aware sorting
     $.fn.dataTableExt.oSort['text-asc'] = function (x, y) {
