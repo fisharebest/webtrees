@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -79,27 +78,9 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
         [$html, $js] = $treeview->drawViewport($individual, 3);
 
         return view('modules/interactive-tree/tab', [
-            'html'         => $html,
-            'js'           => $js,
-            'treeview_css' => $this->css(),
-            'treeview_js'  => $this->js(),
+            'html' => $html,
+            'js'   => $js,
         ]);
-    }
-
-    /**
-     * @return string
-     */
-    public function css(): string
-    {
-        return Webtrees::MODULES_PATH . $this->name() . '/css/treeview.css';
-    }
-
-    /**
-     * @return string
-     */
-    public function js(): string
-    {
-        return Webtrees::MODULES_PATH . $this->name() . '/js/treeview.js';
     }
 
     /** {@inheritdoc} */
@@ -193,7 +174,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
 
         [$html, $js] = $tv->drawViewport($individual, 4);
 
-        return $this->viewResponse('interactive-tree-page', [
+        return $this->viewResponse('modules/interactive-tree/page', [
             'html'       => $html,
             'individual' => $individual,
             'js'         => $js,

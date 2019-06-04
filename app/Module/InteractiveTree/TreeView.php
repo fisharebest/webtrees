@@ -53,7 +53,7 @@ class TreeView
      */
     public function drawViewport(Individual $individual, int $generations): array
     {
-        $html = view('interactive-tree-chart', [
+        $html = view('modules/interactive-tree/chart', [
             'name'       => $this->name,
             'individual' => $this->drawPerson($individual, $generations, 0, null, '', true),
         ]);
