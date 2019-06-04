@@ -1,6 +1,9 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
-<?php use Fisharebest\Webtrees\Webtrees; ?>
+<?php
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
+
+?>
 
 <h2 class="wt-page-title">
     <?= $title ?>
@@ -35,12 +38,7 @@
 </div>
 
 <?php View::push('javascript') ?>
-<script src="<?= e(Webtrees::MODULES_PATH) ?>tree/js/treeview.js"></script>
 <script>
     <?= $js ?>
 </script>
-<?php View::endpush() ?>
-
-<?php View::push('styles') ?>
-<link rel="stylesheet" type="text/css" href="<?= e(Webtrees::MODULES_PATH) ?>tree/css/treeview.css">
 <?php View::endpush() ?>
