@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2018-09-27 16:56+0000\n"
+"PO-Revision-Date: 2019-06-09 16:45+0000\n"
 "Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
-"Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
+"Language-Team: Hungarian <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -731,17 +731,17 @@ msgstr "Üdvözlőszöveg a látogatóknak."
 #. I18N: Description of the “Hit counters” module
 #: app/Module/ContactsFooterModule.php:66
 msgid "A link to the site contacts."
-msgstr ""
+msgstr "Hivatkozás az oldal kontaktusaira."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:50
 msgid "A link to the webtrees home page."
-msgstr ""
+msgstr "Hivatkozás a webtrees honlapjára."
 
 #. I18N: Description of the “BranchesListModule” module
 #: app/Module/BranchesListModule.php:55
 msgid "A list of branches of a family."
-msgstr ""
+msgstr "A család ágainak listája."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:74
@@ -751,7 +751,7 @@ msgstr "Webhelykezelő felülvizsgálatára váró változtatások és e-mail é
 #. I18N: Description of the “FamilyListModule” module
 #: app/Module/FamilyListModule.php:56
 msgid "A list of families."
-msgstr ""
+msgstr "Családok listája."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:57
@@ -761,12 +761,12 @@ msgstr "Gyakran ismételt kérdések (GYIK) és válaszok listája."
 #. I18N: Description of the “IndividualListModule” module
 #: app/Module/IndividualListModule.php:56
 msgid "A list of individuals."
-msgstr ""
+msgstr "Személyek listája."
 
 #. I18N: Description of the “MediaListModule” module
 #: app/Module/MediaListModule.php:57
 msgid "A list of media objects."
-msgstr ""
+msgstr "Médiaobjektumok listája."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:61
@@ -776,17 +776,17 @@ msgstr "Az utóbbi időben frissített bejegyzések listája."
 #. I18N: Description of the “RepositoryListModule” module
 #: app/Module/RepositoryListModule.php:56
 msgid "A list of repositories."
-msgstr ""
+msgstr "Adattárak listája."
 
 #. I18N: Description of the “NoteListModule” module
 #: app/Module/NoteListModule.php:56
 msgid "A list of shared notes."
-msgstr ""
+msgstr "Megosztott jegyzetek listája."
 
 #. I18N: Description of the “SourceListModule” module
 #: app/Module/SourceListModule.php:56
 msgid "A list of sources."
-msgstr ""
+msgstr "Források listája."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:63
@@ -1364,15 +1364,15 @@ msgstr "Kapcsolat felvétele"
 
 #: resources/views/cards/add-sour-data-even.phtml:7
 msgid "Add an event"
-msgstr ""
+msgstr "Esemény felvétele"
 
 #: resources/views/modules/custom-css-js/edit.phtml:23
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
-msgstr ""
+msgstr "Tartalom hozzáadása a html <code>&lt;body&gt;</code> elem végéhez."
 
 #: resources/views/modules/custom-css-js/edit.phtml:11
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr ""
+msgstr "Tartalom hozzáadása a html <code>&lt;head&gt;</code> elem végéhez."
 
 #: resources/views/edit/paste-fact-row.phtml:7
 msgid "Add from clipboard"
@@ -1380,7 +1380,7 @@ msgstr "Felvétel a vágólapról"
 
 #: app/Module/ModuleHistoricEventsTrait.php:38
 msgid "Add historic events to an individual‘s page."
-msgstr ""
+msgstr "Történelmi események felvétele az egyén oldalához."
 
 #: resources/views/modules/lifespans-chart/page.phtml:19
 msgid "Add individuals"
@@ -1418,7 +1418,7 @@ msgstr "Sortörés miatt elvesztett szóközök pótlása"
 #. I18N: Description of the “CSS and JS” module.
 #: app/Module/CustomCssJsModule.php:41
 msgid "Add styling and scripts to every page."
-msgstr ""
+msgstr "Stílus és szkript hozzáadása az összes oldalhoz."
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: resources/views/admin/trees-export.phtml:55
@@ -1826,7 +1826,7 @@ msgstr "Az összes személy"
 #: resources/views/admin/components.phtml:12
 #: resources/views/admin/control-panel.phtml:308
 msgid "All modules"
-msgstr ""
+msgstr "Minden modul"
 
 #: resources/views/admin/trees-privacy.phtml:245
 msgid "All records"
@@ -2342,7 +2342,7 @@ msgstr "Átlagéletkor elhalálozáskor"
 
 #: app/Statistics/Google/ChartMarriageAge.php:152
 msgid "Average age at marriage"
-msgstr ""
+msgstr "Átlagéletkor házasságkötéskor"
 
 #: app/Statistics/Google/ChartMarriageAge.php:149
 msgid "Average age in century of marriage"
@@ -2354,7 +2354,7 @@ msgstr "Átlagéletkor az elhalálozás százada szerint"
 
 #: app/Statistics/Google/ChartChildren.php:87
 msgid "Average number"
-msgstr ""
+msgstr "Átlagos szám"
 
 #: app/Statistics/Google/ChartChildren.php:98
 #: resources/views/modules/gedcom_stats/config.phtml:35
@@ -3259,7 +3259,7 @@ msgstr "CKEditor™"
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php:78
 msgid "CSS and JS"
-msgstr ""
+msgstr "CSS és JS"
 
 #: resources/views/admin/trees.phtml:37
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -3423,7 +3423,7 @@ msgstr "Közép-Afrikai Köztársaság"
 #: resources/views/lists/individuals-table.phtml:118
 #: resources/views/lists/individuals-table.phtml:133
 msgid "Century"
-msgstr ""
+msgstr "Század"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2361
@@ -3987,7 +3987,7 @@ msgstr "Cook-szigetek"
 #. I18N: Name of a module
 #: app/Module/CookieWarningModule.php:55
 msgid "Cookie warning"
-msgstr ""
+msgstr "Cookie-figyelmeztetés"
 
 #: resources/views/modules/cookie-warning/footer.phtml:4
 #: resources/views/privacy-policy.phtml:12
@@ -4050,7 +4050,7 @@ msgstr "Nem lehetett ellenőrizni a megadott információt. Kérjük, próbálja
 #. I18N: Description of the “Hit counters” module
 #: app/Module/HitCountFooterModule.php:72
 msgid "Count the visits to each page"
-msgstr ""
+msgstr "Minden egyes oldal látogatottságának számolása"
 
 #. I18N: gedcom tag CTRY
 #: app/GedcomTag.php:638 app/Statistics/Google/ChartDistribution.php:118
@@ -4105,7 +4105,7 @@ msgstr "Küldő létrehozása"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:142
 msgid "Create a temporary folder…"
-msgstr ""
+msgstr "Ideiglenes mappa létrehozása…"
 
 #: resources/views/modals/media-file-fields.phtml:68
 msgid "Create a unique filename"
@@ -4352,7 +4352,7 @@ msgstr "Adatbázisjelszó"
 
 #: resources/views/setup/step-3-database-type.phtml:31
 msgid "Database type"
-msgstr ""
+msgstr "Adatbázistípus"
 
 #: resources/views/setup/step-4-database-mysql.phtml:58
 #: resources/views/setup/step-4-database-pgsql.phtml:50
@@ -4998,7 +4998,7 @@ msgstr "Inaktív felhasználók törlése"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:148
 msgid "Delete old files…"
-msgstr ""
+msgstr "Régi fájlok törlése…"
 
 #: app/Module/UserMessagesModule.php:208
 msgid "Delete selected messages"
@@ -5265,7 +5265,7 @@ msgstr "Nem pecsételt: érvénytelen"
 
 #: resources/views/admin/map-provider.phtml:15
 msgid "Do not use maps"
-msgstr ""
+msgstr "Térképhasználat tiltás"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2367
@@ -5284,7 +5284,7 @@ msgstr "Dominikai Köztársaság"
 
 #: app/Module/PedigreeChartModule.php:314
 msgid "Down"
-msgstr ""
+msgstr "Le"
 
 #: app/Module/ClippingsCartModule.php:157
 #: app/Module/ClippingsCartModule.php:294
@@ -6395,14 +6395,14 @@ msgstr "Betűtípus"
 #: resources/views/admin/modules.phtml:217
 #: resources/views/admin/modules.phtml:220
 msgid "Footer"
-msgstr ""
+msgstr "Lábjegyzet"
 
 #: app/Http/Controllers/Admin/ModuleController.php:135
 #: resources/views/admin/control-panel.phtml:359
 #: resources/views/admin/modules.phtml:91
 #: resources/views/admin/modules.phtml:93
 msgid "Footers"
-msgstr ""
+msgstr "Lábjegyzetek"
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names
 #: resources/views/admin/trees-import.phtml:102
@@ -6655,7 +6655,7 @@ msgstr "Neme"
 
 #: resources/views/admin/control-panel.phtml:317
 msgid "Genealogy"
-msgstr ""
+msgstr "Származástan"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:166
@@ -7138,7 +7138,7 @@ msgstr "Ez volt a foglalkozása:"
 #: resources/views/admin/modules.phtml:233
 #: resources/views/admin/modules.phtml:236
 msgid "Historic events"
-msgstr ""
+msgstr "Történelmi események"
 
 #: resources/views/modules/personal_facts/tab.phtml:18
 msgid "Historical facts"
@@ -7320,7 +7320,7 @@ msgstr "Ha egyedül nem tudja megoldani a problémát, segítséget kérhet a <a
 
 #: resources/views/setup/step-4-database-mysql.phtml:37
 msgid "If you connect to the database using a UNIX socket, enter the path here and leave the port number empty."
-msgstr ""
+msgstr "Ha UNIX csatlakozóval kapcsolódik az adatbázishoz, írja be az útvonalat és a portszámot hagyja üresen."
 
 #: resources/views/admin/trees-import.phtml:86
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -7464,11 +7464,11 @@ msgstr "Almappákkal"
 
 #: resources/views/modules/custom-css-js/edit.phtml:28
 msgid "Include the <code>&lt;script&gt;&lt;/script&gt;</code> tags."
-msgstr ""
+msgstr "Tartalmazza a <code>&lt;script&gt;&lt;/script&gt;</code> címkéket."
 
 #: resources/views/modules/custom-css-js/edit.phtml:16
 msgid "Include the <code>&lt;style&gt;&lt;/style&gt;</code> tags."
-msgstr ""
+msgstr "Tartalmazza a <code>&lt;style&gt;&lt;/style&gt;</code> címkéket."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/lifespans-chart/page.phtml:23
@@ -7538,7 +7538,7 @@ msgstr "Személyeloszlási ábra"
 
 #: resources/views/admin/control-panel.phtml:405
 msgid "Individual page"
-msgstr ""
+msgstr "Személyoldal"
 
 #: resources/views/admin/trees-preferences.phtml:471
 msgid "Individual pages"
@@ -7672,7 +7672,7 @@ msgstr "Érvénytelen GEDCOM-fájl – a fejléc nem található."
 
 #: app/Functions/FunctionsImport.php:629
 msgid "Invalid GEDCOM record"
-msgstr ""
+msgstr "Érvénytelen GEDCOM-bejegyzés"
 
 #: app/Date.php:372
 msgid "Invalid date"
@@ -8211,7 +8211,7 @@ msgstr "Libanon"
 
 #: app/Module/PedigreeChartModule.php:311
 msgid "Left"
-msgstr ""
+msgstr "Bal"
 
 #. I18N: gedcom tag LEGA
 #: app/GedcomTag.php:814
@@ -9456,7 +9456,7 @@ msgstr "A webhelyek többsége a localhostot használja. Ez azt jelenti, hogy az
 
 #: resources/views/setup/step-4-database-sqlsvr.phtml:43
 msgid "Most sites are configured to use the default value of 1433."
-msgstr ""
+msgstr "A legtöbb webhely az alapértelmezett 1433-as értéket használja."
 
 #: resources/views/setup/step-4-database-mysql.phtml:51
 msgid "Most sites are configured to use the default value of 3306."
@@ -9464,7 +9464,7 @@ msgstr "A webhelyek többsége az alapértelmezett 3306-os értéket használja.
 
 #: resources/views/setup/step-4-database-pgsql.phtml:43
 msgid "Most sites are configured to use the default value of 5432."
-msgstr ""
+msgstr "A legtöbb webhely az 5432 alapértelmezett értékét használja."
 
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:43
@@ -10022,7 +10022,7 @@ msgstr "Észak-Korea"
 
 #: resources/views/modules/statistics-chart/custom.phtml:173
 msgid "Northern America"
-msgstr ""
+msgstr "Észak-Amerika"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:369
@@ -10972,7 +10972,7 @@ msgstr "Irányítószám"
 #. I18N: Name of a module
 #: app/Module/PoweredByWebtreesModule.php:39
 msgid "Powered by webtrees™"
-msgstr ""
+msgstr "Webtrees™ vezérlő"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:149
@@ -11058,7 +11058,7 @@ msgstr "Preston, Anglia"
 
 #: resources/views/admin/analytics-edit.phtml:13
 msgid "Preview"
-msgstr ""
+msgstr "Előnézet"
 
 #: app/GedcomCode/GedcomCodeRela.php:285
 msgid "Priest"
@@ -11713,7 +11713,7 @@ msgstr "Rexburg, Idaho, Egyesült Államok"
 
 #: app/Module/PedigreeChartModule.php:312
 msgid "Right"
-msgstr ""
+msgstr "Jobb"
 
 #: resources/views/edit-blocks-page.phtml:27
 msgid "Right section blocks"
@@ -11769,12 +11769,12 @@ msgstr "SMTP-levélszerver"
 
 #: app/Services/ServerCheckService.php:279
 msgid "SQLite is only suitable for small sites, testing and evaluation."
-msgstr ""
+msgstr "Az SQLite csak kis oldalakra, tesztelésre és értékelésre alkalmas."
 
 #: app/Services/ServerCheckService.php:203
 #, php-format
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
-msgstr ""
+msgstr "Az SQLite %s verziója van telepítve. SQLite %s vagy újabb verzióra van szükség."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:583
@@ -12968,7 +12968,7 @@ msgstr "Sosa"
 
 #: resources/views/modules/ancestors-chart/tree.phtml:18
 msgid "Sosa-Stradonitz number"
-msgstr ""
+msgstr "Sosa-Stradonitz szám"
 
 #: app/Http/Controllers/SearchController.php:619
 msgid "Sounds like"
@@ -13262,11 +13262,11 @@ msgstr "Támogatás és dokumentáció: %s."
 
 #: app/Services/ServerCheckService.php:284
 msgid "Support for PostgreSQL is experimental."
-msgstr ""
+msgstr "A PostgreSQL támogatása kísérleti jellegű."
 
 #: app/Services/ServerCheckService.php:289
 msgid "Support for SQL Server is experimental."
-msgstr ""
+msgstr "Az SQL Server támogatása kísérleti jellegű."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:459
@@ -13396,7 +13396,7 @@ msgstr "Táblaelőtag"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Tabloid"
-msgstr ""
+msgstr "Tabloid (279 × 432 mm)"
 
 #: app/Http/Controllers/Admin/ModuleController.php:219
 #: resources/views/admin/control-panel.phtml:412
@@ -13472,7 +13472,7 @@ msgstr "Tegucigalpa, Honduras"
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/CookieWarningModule.php:66
 msgid "Tell visitors why this site uses cookies."
-msgstr ""
+msgstr "Tudassa a látogatókkal, hogy miért használja a webhely cookie-kat."
 
 #: resources/views/modules/html/config.phtml:16
 msgid "Templates"
@@ -13543,12 +13543,12 @@ msgstr "Hága, Hollandia"
 #: app/Services/ServerCheckService.php:112
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr ""
+msgstr "A PHP “%s” kiterjesztése nincs telepítve."
 
 #: app/Services/ServerCheckService.php:170
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr ""
+msgstr "A “%1$s” PHP funkció le van tiltva."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:55
@@ -13558,12 +13558,12 @@ msgstr "A PHP ideiglenes mappa hiányzik."
 #: app/Services/ServerCheckService.php:131
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr ""
+msgstr "A PHP.INI “%1$s” beállítás le van tiltva."
 
 #: app/Services/ServerCheckService.php:135
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr ""
+msgstr "A PHP.INI “%1$s” beállítás engedélyezve van."
 
 #: resources/views/emails/approve-user-html.phtml:7
 #: resources/views/emails/approve-user-text.phtml:4
@@ -13578,7 +13578,7 @@ msgstr "A rendszergazdát értesítettük. Amint megadja az engedélyt a bejelen
 #. I18N: Description of the “Reports” module
 #: app/Module/CalendarMenuModule.php:50
 msgid "The calendar menu."
-msgstr ""
+msgstr "Naptár menü."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/Controllers/PendingChangesController.php:150
@@ -13595,7 +13595,7 @@ msgstr "„%s” adatainak módosítása elutasítva."
 #. I18N: Description of the “Reports” module
 #: app/Module/ChartsMenuModule.php:69
 msgid "The charts menu."
-msgstr ""
+msgstr "Ábra menü."
 
 #: resources/views/modules/clippings/show.phtml:6
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -13651,7 +13651,7 @@ msgstr "A családfák összefűzése sikeresen megtörtént."
 #. I18N: Description of the “Reports” module
 #: app/Module/TreesMenuModule.php:51
 msgid "The family trees menu."
-msgstr ""
+msgstr "Családfa menü."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: app/Http/Controllers/EditGedcomRecordController.php:141
@@ -13778,7 +13778,7 @@ msgstr "„%1$s” és „%2$s” kapcsolatának frissítése megtörtént."
 #. I18N: Description of the “Reports” module
 #: app/Module/ListsMenuModule.php:67
 msgid "The lists menu."
-msgstr ""
+msgstr "Lista menü."
 
 #: app/Http/Controllers/EditMediaController.php:249
 #: app/Http/Controllers/EditMediaController.php:262
@@ -13864,7 +13864,7 @@ msgstr "A jelszó szükséges az SMPT-szerverrel történő azonosításhoz."
 #. I18N: Description of the “PlaceHierarchyListModule” module
 #: app/Module/PlaceHierarchyListModule.php:56
 msgid "The place hierarchy."
-msgstr ""
+msgstr "Helyrangsor."
 
 #: app/Http/Controllers/AdminController.php:349
 #: app/Http/Controllers/AdminTreesController.php:1122
@@ -13898,7 +13898,7 @@ msgstr "A(z) „%s” modul beállításainak frissítése megtörtént."
 #: resources/views/setup/step-4-database-sqlite.phtml:62
 #: resources/views/setup/step-4-database-sqlsvr.phtml:91
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
-msgstr ""
+msgstr "Az előtag elhagyható, de ajánlott. A táblák neveinek egy egyedi előtag kiegészítésével, akár több különböző alkalmazás is megoszthatja ugyanazt az adatbázist."
 
 #: app/Http/Controllers/EditGedcomRecordController.php:79
 msgid "The record has been copied to the clipboard."
@@ -13917,7 +13917,7 @@ msgstr "Úgy tűnik, a regex hibát tartalmaz, ezért nem használható."
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php:71
 msgid "The reports menu."
-msgstr ""
+msgstr "Jelentés menü."
 
 #: app/Http/Controllers/EditRepositoryController.php:81
 msgid "The repository has been created"
@@ -13926,11 +13926,11 @@ msgstr "Az adattár létrejött"
 #. I18N: Description of the “Reports” module
 #: app/Module/SearchMenuModule.php:51
 msgid "The search menu."
-msgstr ""
+msgstr "Keresés menü."
 
 #: app/Services/SearchService.php:971
 msgid "The search returned too many results."
-msgstr ""
+msgstr "A keresés túl sok találatot eredményezett."
 
 #: resources/views/setup/step-2-server-checks.phtml:32
 msgid "The server configuration is OK."
@@ -13938,7 +13938,7 @@ msgstr "A szerverbeállítások rendben vannak."
 
 #: app/Services/ServerCheckService.php:223
 msgid "The server’s temporary folder cannot be accessed."
-msgstr ""
+msgstr "A kiszolgáló ideiglenes mappája nem érhető el."
 
 #: app/Http/Controllers/AdminTreesController.php:1714
 #: app/Services/UpgradeService.php:146 app/Services/UpgradeService.php:179
@@ -14284,7 +14284,7 @@ msgstr "Ő lesz az alapértelmezett személy ábrák és jelentések megjelenít
 #: resources/views/statistics/other/places.phtml:53
 #: resources/views/statistics/other/top10-list.phtml:23
 msgid "This information is not available."
-msgstr ""
+msgstr "Ez az információ nem áll rendelkezésre."
 
 #: app/Statistics/Repository/EventRepository.php:250
 #: app/Statistics/Repository/FamilyDatesRepository.php:108
@@ -15060,7 +15060,7 @@ msgstr "Vontatmány"
 #: app/Module/AncestorsChartModule.php:222
 #: app/Module/DescendancyChartModule.php:247
 msgid "Tree"
-msgstr ""
+msgstr "Fa"
 
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:289
@@ -15268,7 +15268,7 @@ msgstr "A(z) %s kibontása egy ideiglenes mappába…"
 
 #: app/Module/PedigreeChartModule.php:313
 msgid "Up"
-msgstr ""
+msgstr "Fel"
 
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:95
@@ -15360,7 +15360,7 @@ msgstr "Teljes forrásidézet használata"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:79
 #: resources/views/setup/step-4-database-sqlsvr.phtml:92
 msgid "Use letters A-Z, a-z, digits 0-9, or underscores"
-msgstr ""
+msgstr "Használja az A-Z, a-z betűket, 0-9 számjegyeket vagy az aláhúzás jelet"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:74
@@ -16613,7 +16613,7 @@ msgstr "elhunyt"
 
 #: resources/views/modules/pedigree-chart/page.phtml:36
 msgid "down"
-msgstr ""
+msgstr "Le"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:80
@@ -16624,7 +16624,7 @@ msgstr "letöltés"
 
 #: resources/views/modules/descendancy_chart/tree.phtml:17
 msgid "d’Aboville number"
-msgstr ""
+msgstr "d’Aboville szám"
 
 #: resources/views/admin/components.phtml:106
 #: resources/views/family-page-menu.phtml:7
@@ -18747,7 +18747,7 @@ msgstr "utolsó"
 
 #: resources/views/modules/pedigree-chart/page.phtml:36
 msgid "left"
-msgstr ""
+msgstr "bal"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -19296,7 +19296,7 @@ msgstr "alapértékek"
 
 #: resources/views/modules/pedigree-chart/page.phtml:36
 msgid "right"
-msgstr ""
+msgstr "jobb"
 
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:26
@@ -20049,7 +20049,7 @@ msgstr "megbízhatatlan bizonyíték"
 
 #: resources/views/modules/pedigree-chart/page.phtml:36
 msgid "up"
-msgstr ""
+msgstr "fel"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-places.phtml:55
@@ -20108,7 +20108,7 @@ msgstr "webtrees-üzenet"
 
 #: resources/views/setup/step-3-database-type.phtml:26
 msgid "webtrees needs a database to store your genealogy data."
-msgstr ""
+msgstr "A webtrees-nek szüksége van egy adatbázisra a származástani adatok tárolásához."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:24
