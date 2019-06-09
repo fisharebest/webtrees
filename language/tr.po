@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2018-03-01 14:14+0000\n"
-"Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
-"Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/tr/>\n"
+"PO-Revision-Date: 2019-06-09 13:46+0000\n"
+"Last-Translator: Suleyman <hsarslan@yahoo.com>\n"
+"Language-Team: Turkish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1853,7 +1853,7 @@ msgstr "Tüm kayıtlar"
 
 #: admin_trees_config.php:1943
 msgid "All repository facts"
-msgstr "Tüm havuz olguları"
+msgstr "Tüm depo olguları"
 
 #: admin_trees_config.php:1854
 msgid "All source facts"
@@ -4094,7 +4094,7 @@ msgstr "Yeni medya öğesi oluştur"
 #: app/Functions/FunctionsEdit.php:428 edit_interface.php:1492
 #: edit_interface.php:1555
 msgid "Create a repository"
-msgstr "Havuz Oluştur"
+msgstr "Depo oluştur"
 
 #: app/Functions/FunctionsEdit.php:439 edit_interface.php:1328
 #: edit_interface.php:1364
@@ -5924,7 +5924,7 @@ msgstr "Yeni bireyler için olgular"
 
 #: admin_trees_config.php:1938
 msgid "Facts for repository records"
-msgstr "Havuz kayıtları için olgular"
+msgstr "Depo kayıtları için olgular"
 
 #: admin_trees_config.php:1849
 msgid "Facts for source records"
@@ -11148,7 +11148,7 @@ msgstr "Hızlı birey olguları"
 
 #: admin_trees_config.php:2001
 msgid "Quick repository facts"
-msgstr "Hızlı ravuz olguları"
+msgstr "Hızlı depo olguları"
 
 #: admin_trees_config.php:1912
 msgid "Quick source facts"
@@ -11572,7 +11572,7 @@ msgstr "Bulunan Havuzlar"
 #: admin_trees_config.php:792 admin_trees_manage.php:567 app/GedcomTag.php:728
 #: inverselink.php:130
 msgid "Repository"
-msgstr "Havuz"
+msgstr "Depo"
 
 #. I18N: Label for search field
 #: find.php:220
@@ -11581,7 +11581,7 @@ msgstr "Havuz içerikleri"
 
 #: app/Functions/FunctionsPrintLists.php:1260 edit_interface.php:1517
 msgid "Repository name"
-msgstr "Havuz adı"
+msgstr "Depo adı"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6719
@@ -13799,7 +13799,7 @@ msgstr "Daha kolay eklenebilmesi için en yaygın birey gerçekleri ve olayları
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: admin_trees_config.php:2022
 msgid "The most common repository facts are listed separately, so that they can be added more easily."
-msgstr "Daha kolay eklenebilmesi için en yaygın depo ile ilgili gerçekler ayrı olarak listelenmektedir."
+msgstr "Daha kolay eklenebilmesi için sık kullanılan olgu depoları ayrı olarak listelenmektedir."
 
 #. I18N: Help text for the “Quick source facts” configuration setting
 #: admin_trees_config.php:1933
@@ -14540,27 +14540,27 @@ msgstr "Bu kayıt düzenlendi. Değişiklikleri gözden geçirmek ve daha sonra 
 
 #: repo.php:60
 msgid "This repository does not exist or you do not have permission to view it."
-msgstr "Bu havuz mevcut değil veya görmek için izniniz yok."
+msgstr "Bu depo mevcut değil veya görmek için izniniz yok."
 
 #: repo.php:45
 msgid "This repository has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Bu havuz silindi. Silineni bir moderatör tarafından gözden geçirilmesi gerekiyor."
+msgstr "Bu depo silindi. Silme işlemi bir moderatör tarafından gözden geçirilmesi gerekiyor."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: repo.php:40
 #, php-format
 msgid "This repository has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Bu havuz silindi. Silineni gözden geçirdikten sonra %1$s veya %2$s."
+msgstr "Bu depo silindi. Silineni gözden geçirdikten sonra %1$s veya %2$s."
 
 #: repo.php:55
 msgid "This repository has been edited. The changes need to be reviewed by a moderator."
-msgstr "Bu havuz düzenlendi. Değişiklikleri bir moderatör tarafından gözden geçirilmesi gerekiyor."
+msgstr "Bu depo düzenlendi. Değişikliklerin bir moderatör tarafından gözden geçirilmesi gerekiyor."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: repo.php:50
 #, php-format
 msgid "This repository has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Bu havuz düzenlendi. Değişiklikleri gözden geçirdikten sonra %1$s veya %2$s."
+msgstr "Bu depo düzenlendi. Değişiklikleri gözden geçirdikten sonra %1$s veya %2$s."
 
 #: admin_users.php:552
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -15190,7 +15190,7 @@ msgstr "Benzersiz birey olguları"
 
 #: admin_trees_config.php:1972
 msgid "Unique repository facts"
-msgstr "Benzersiz havuz olguları"
+msgstr "Benzersiz depo olguları"
 
 #: admin_trees_config.php:1883
 msgid "Unique source facts"
