@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2019-06-09 18:15+0000\n"
+"PO-Revision-Date: 2019-06-09 20:13+0000\n"
 "Last-Translator: Suleyman <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
@@ -13773,7 +13773,7 @@ msgstr "“%1$s” ile “%2$s” arasındaki bağlantı güncellendi."
 #. I18N: Description of the “Reports” module
 #: app/Module/ListsMenuModule.php:67
 msgid "The lists menu."
-msgstr ""
+msgstr "Listeler menüsü."
 
 #: app/Http/Controllers/EditMediaController.php:249
 #: app/Http/Controllers/EditMediaController.php:262
@@ -13859,7 +13859,7 @@ msgstr "SMTP sunucudan kimlik doğrulaması için gerekli şifre."
 #. I18N: Description of the “PlaceHierarchyListModule” module
 #: app/Module/PlaceHierarchyListModule.php:56
 msgid "The place hierarchy."
-msgstr ""
+msgstr "Konum hiyerarşisi."
 
 #: app/Http/Controllers/AdminController.php:349
 #: app/Http/Controllers/AdminTreesController.php:1122
@@ -13893,7 +13893,7 @@ msgstr "“%s” modülü için ayarlar güncellendi."
 #: resources/views/setup/step-4-database-sqlite.phtml:62
 #: resources/views/setup/step-4-database-sqlsvr.phtml:91
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
-msgstr ""
+msgstr "Önek isteğe bağlıdır, ancak önerilir. Tablo adlarına benzersiz bir önek vererek, birkaç farklı uygulamanın aynı veritabanını paylaşmasına izin verebilirsiniz."
 
 #: app/Http/Controllers/EditGedcomRecordController.php:79
 msgid "The record has been copied to the clipboard."
@@ -13912,7 +13912,7 @@ msgstr "Düzenli ifadede bir hata görünüyor. Kullanılamaz."
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php:71
 msgid "The reports menu."
-msgstr ""
+msgstr "Raporlar menüsü."
 
 #: app/Http/Controllers/EditRepositoryController.php:81
 msgid "The repository has been created"
@@ -13921,7 +13921,7 @@ msgstr "Depo oluşturuldu"
 #. I18N: Description of the “Reports” module
 #: app/Module/SearchMenuModule.php:51
 msgid "The search menu."
-msgstr ""
+msgstr "Arama menüsü."
 
 #: app/Services/SearchService.php:971
 msgid "The search returned too many results."
