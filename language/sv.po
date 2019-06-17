@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-05-12 10:42+0000\n"
+"PO-Revision-Date: 2019-06-17 12:11+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/sv/>\n"
 "Language: sv\n"
@@ -2375,7 +2375,7 @@ msgstr "Medelålder vid död"
 #: app/Stats.php:3930 app/Stats.php:3931 app/Stats.php:3935 app/Stats.php:3939
 #: app/Stats.php:3942
 msgid "Average age in century of marriage"
-msgstr "Medelåldern i förhållande till vigselårhundrade"
+msgstr "Genomsnittsålder vid vigsel per århundrade"
 
 #: app/Stats.php:2586 app/Stats.php:2599
 msgid "Average age related to death century"
@@ -5371,7 +5371,7 @@ msgstr "Tidigaste skilsmässa"
 
 #: statistics.php:231
 msgid "Earliest marriage"
-msgstr "Tidigaste äktenskap"
+msgstr "Tidigaste vigsel"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6737
@@ -8127,7 +8127,7 @@ msgstr "Senaste skilsmässa"
 
 #: statistics.php:239
 msgid "Latest marriage"
-msgstr "Senaste äktenskap"
+msgstr "Senaste vigsel"
 
 #. I18N: gedcom tag LATI
 #: app/GedcomTag.php:544 app/Module/GoogleMapsModule.php:1444
