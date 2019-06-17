@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2019-05-12 10:45+0000\n"
+"PO-Revision-Date: 2019-06-17 12:13+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/sv/>\n"
 "Language: sv\n"
@@ -2345,7 +2345,7 @@ msgstr "Genomsnittsålder vid vigsel"
 
 #: app/Statistics/Google/ChartMarriageAge.php:149
 msgid "Average age in century of marriage"
-msgstr "Medelåldern i förhållande till vigselårhundrade"
+msgstr "Genomsnittsålder vid vigsel per århundrade"
 
 #: app/Statistics/Google/ChartAge.php:126
 msgid "Average age related to death century"
@@ -5351,7 +5351,7 @@ msgstr "Tidigaste skilsmässa"
 
 #: resources/views/statistics/families/total-records.phtml:43
 msgid "Earliest marriage"
-msgstr "Tidigaste äktenskap"
+msgstr "Tidigaste vigsel"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:167
@@ -8166,7 +8166,7 @@ msgstr "Senaste skilsmässa"
 
 #: resources/views/statistics/families/total-records.phtml:54
 msgid "Latest marriage"
-msgstr "Senaste äktenskap"
+msgstr "Senaste vigsel"
 
 #. I18N: gedcom tag LATI
 #: app/Functions/FunctionsPrint.php:350 app/GedcomTag.php:811
@@ -11773,7 +11773,7 @@ msgstr "SQLite är endast lämplig för små webbplatser, testning och utvärder
 #: app/Services/ServerCheckService.php:203
 #, php-format
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
-msgstr "SQLite versionen %s är installerad. SQLite-versionen %s eller senare krävs."
+msgstr "SQLite version %s är installerat. SQLite version %s eller senare krävs."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:583
