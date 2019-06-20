@@ -686,65 +686,65 @@ class SearchService
             } else {
                 // e.g. searches for occupation, religion, note, etc.
                 // Initial matching only.  Need PHP to apply filter.
-                $query->where('individuals.i_gedcom', 'LIKE', "%\n1 " . $parts[0] . ' %' . $field_value . '%');
+                $query->where('individuals.i_gedcom', 'LIKE', "%\n1 " . $parts[0] . '%' . $parts[1] . '%' . $field_value . '%');
             }
         }
-
         return $query
             ->get()
             ->each($this->rowLimiter())
             ->map(Individual::rowMapper())
             ->filter(GedcomRecord::accessFilter())
             ->filter(static function (Individual $individual) use ($fields): bool {
-                // Check for XXXX:PLAC fields, which were only partially matched by SQL
+                // Check for searches which were only partially matched by SQL
                 foreach ($fields as $field_name => $field_value) {
                     $regex = '/' . preg_quote($field_value, '/') . '/i';
 
-                    $parts = preg_split('/:/', $field_name . '::::');
+                    $parts = explode(':', $field_name . '::::');
 
+                    // *:PLAC
                     if ($parts[1] === 'PLAC') {
-                        // *:PLAC
                         foreach ($individual->facts([$parts[0]]) as $fact) {
                             if (preg_match($regex, $fact->place()->gedcomName())) {
-                                return true;
+                                continue 2;
                             }
                         }
-                    } elseif ($parts[0] === 'FAMS' && $parts[2] === 'PLAC') {
-                        // FAMS:*:PLAC
+                        return false;
+                    }
+
+                    // FAMS:*:PLAC
+                    if ($parts[0] === 'FAMS' && $parts[2] === 'PLAC') {
                         foreach ($individual->spouseFamilies() as $family) {
                             foreach ($family->facts([$parts[1]]) as $fact) {
                                 if (preg_match($regex, $fact->place()->gedcomName())) {
-                                    return true;
+                                    continue 2;
                                 }
                             }
                         }
-                    } elseif ($parts[0] === 'FAMS') {
-                        // e.g. searches for occupation, religion, note, etc.
+                        return false;
+                    }
+
+                    // e.g. searches for occupation, religion, note, etc.
+                    if ($parts[0] === 'FAMS') {
                         foreach ($individual->spouseFamilies() as $family) {
                             foreach ($family->facts([$parts[1]]) as $fact) {
                                 if (preg_match($regex, $fact->value())) {
-                                    return true;
+                                    continue 3;
                                 }
                             }
                         }
-                    } elseif ($parts[1] === 'TYPE') {
-                        // e.g. FACT:TYPE or EVEN:TYPE
-                        foreach ($individual->facts([$parts[0]]) as $fact) {
-                            if (preg_match($regex, $fact->attribute('TYPE'))) {
-                                return true;
-                            }
-                        }
-                    } else {
-                        // e.g. searches for occupation, religion, note, etc.
-                        foreach ($individual->facts([$parts[0]]) as $fact) {
-                            if (preg_match($regex, $fact->value())) {
-                                return true;
-                            }
-                        }
+                        return false;
                     }
 
-                    // No match
-                    return false;
+                    // e.g. FACT:TYPE or EVEN:TYPE
+                    if ($parts[1] === 'TYPE' || $parts[1] === '_WT_USER') {
+                        foreach ($individual->facts([$parts[0]]) as $fact) {
+                            if (preg_match($regex, $fact->attribute($parts[1]))) {
+                                continue 2;
+                            }
+                        }
+
+                        return false;
+                    }
                 }
 
                 return true;
