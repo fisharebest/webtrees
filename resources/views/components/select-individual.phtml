@@ -21,13 +21,14 @@ use Fisharebest\Webtrees\Tree;
     data-ajax--type="POST"
     data-ajax--url="<?= e(route('select2-individual', ['ged' => $tree->name()])) ?>"
     data-allow-clear="true"
+    data-placeholder=""
     id="<?= e($id ?? $name) ?>"
     name="<?= e($name) ?>"
     <?= ($disabled ?? false) ? 'disabled' : '' ?>
     <?= ($required ?? false) ? 'required' : '' ?>
 >
     <?php if (($individual ?? null) instanceof Individual): ?>
-        <option value="<?= e($individual->xref()) ?>" selected>
+        <option value="<?= e($individual->xref()) ?>">
             <?= view('selects/individual', ['individual' => $individual]) ?>
         </option>
     <?php else: ?>
