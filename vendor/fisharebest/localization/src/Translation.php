@@ -202,7 +202,7 @@ class Translation
                 $msgstr = implode(self::PLURAL_SEPARATOR, $plurals);
             }
 
-            if ($msgid !== '') {
+            if ($msgid !== '' && trim($msgstr, self::PLURAL_SEPARATOR) !== '') {
                 $this->translations[$msgid] = $msgstr;
             }
         }

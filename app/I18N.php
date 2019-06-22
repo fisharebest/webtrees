@@ -30,8 +30,6 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Support\Collection;
 use function array_merge;
 use function class_exists;
-use function filemtime;
-use function file_exists;
 use function html_entity_decode;
 use function in_array;
 use function mb_strtolower;
@@ -54,20 +52,7 @@ class I18N
     // MO files use special characters for plurals and context.
     public const PLURAL  = "\x00";
     public const CONTEXT = "\x04";
-
-    /** @var LocaleInterface The current locale (e.g. LocaleEnGb) */
-    private static $locale;
-
-    /** @var Translator An object that performs translation */
-    private static $translator;
-
-    /** @var  Collator|null From the php-intl library */
-    private static $collator;
-
-    // Digits are always rendered LTR, even in RTL text.
     private const DIGITS = '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹';
-
-    // These locales need special handling for the dotless letter I.
     private const DOTLESS_I_LOCALES = [
         'az',
         'tr',
@@ -76,12 +61,14 @@ class I18N
         'I' => 'ı',
         'İ' => 'i',
     ];
+
+    // Digits are always rendered LTR, even in RTL text.
     private const DOTLESS_I_TOUPPER = [
         'ı' => 'I',
         'i' => 'İ',
     ];
 
-    // The ranges of characters used by each script.
+    // These locales need special handling for the dotless letter I.
     private const SCRIPT_CHARACTER_RANGES = [
         [
             'Latn',
@@ -182,8 +169,6 @@ class I18N
         ],
         // Mixed CJK, not just Hans
     ];
-
-    // Characters that are displayed in mirror form in RTL text.
     private const MIRROR_CHARACTERS = [
         '('  => ')',
         ')'  => '(',
@@ -204,9 +189,18 @@ class I18N
         '‘ ' => '’',
         '’ ' => '‘',
     ];
-
     /** @var string Punctuation used to separate list items, typically a comma */
     public static $list_separator;
+
+    // The ranges of characters used by each script.
+    /** @var LocaleInterface The current locale (e.g. LocaleEnGb) */
+    private static $locale;
+
+    // Characters that are displayed in mirror form in RTL text.
+    /** @var Translator An object that performs translation */
+    private static $translator;
+    /** @var  Collator|null From the php-intl library */
+    private static $collator;
 
     /**
      * The preferred locales for this site, or a default list if no preference.
@@ -215,6 +209,7 @@ class I18N
      */
     public static function activeLocales(): array
     {
+        /** @var Collection $locales */
         $locales = app(ModuleService::class)
             ->findByInterface(ModuleLanguageInterface::class, false, true)
             ->map(static function (ModuleLanguageInterface $module): LocaleInterface {
@@ -315,7 +310,7 @@ class I18N
         if ($code !== '') {
             // Create the specified locale
             self::$locale = Locale::create($code);
-        } elseif (Session::has('language') && file_exists(Webtrees::ROOT_DIR . 'resources/lang/' . Session::get('language') . '/messages.mo')) {
+        } elseif (Session::has('language')) {
             // Select a previously used locale
             self::$locale = Locale::create(Session::get('language'));
         } else {
@@ -339,32 +334,20 @@ class I18N
             self::$locale = Locale::httpAcceptLanguage($_SERVER, $installed_locales->all(), $default_locale);
         }
 
-        $cache_dir  = WT_DATA_DIR . 'cache/';
-        $cache_file = $cache_dir . 'language-' . self::$locale->languageTag() . '-cache.php';
-        if (file_exists($cache_file)) {
-            $filemtime = filemtime($cache_file);
-        } else {
-            $filemtime = 0;
-        }
-
         // Load the translation file
-        $translation_file = Webtrees::ROOT_DIR . 'resources/lang/' . self::$locale->languageTag() . '/messages.mo';
+        $translation_file = Webtrees::ROOT_DIR . 'resources/lang/' . self::$locale->languageTag() . '/messages.php';
 
-        if (!file_exists($translation_file)) {
-            // Test and dev environments may not have the compiled translations
-            $translations = [];
-        } elseif (filemtime($translation_file) > $filemtime) {
+        try {
             $translation  = new Translation($translation_file);
             $translations = $translation->asArray();
-
-            try {
-                File::mkdir($cache_dir);
-                file_put_contents($cache_file, '<?php return ' . var_export($translations, true) . ';');
-            } catch (Exception $ex) {
-                // During setup, we may not have been able to create it.
-            }
-        } else {
-            $translations = include $cache_file;
+        } catch (Exception $ex) {
+            // The translations files are created during the build process, and are
+            // not included in the source code.
+            // Assuming we are using dev code, and build (or rebuild) the files.
+            $po_file      = Webtrees::ROOT_DIR . 'resources/lang/' . self::$locale->languageTag() . '/messages.po';
+            $translation  = new Translation($po_file);
+            $translations = $translation->asArray();
+            file_put_contents($translation_file, '<?php return ' . var_export($translations, true) . ';');
         }
 
         // Add translations from custom modules (but not during setup, as we have no database/modules)
@@ -410,6 +393,23 @@ class I18N
             ->map(static function (ModuleLanguageInterface $module): LocaleInterface {
                 return $module->locale();
             });
+    }
+
+    /**
+     * Translate a string, and then substitute placeholders
+     * echo I18N::translate('Hello World!');
+     * echo I18N::translate('The %s sat on the mat', 'cat');
+     *
+     * @param string $message
+     * @param string ...$args
+     *
+     * @return string
+     */
+    public static function translate(string $message, ...$args): string
+    {
+        $message = self::$translator->translate($message);
+
+        return sprintf($message, ...$args);
     }
 
     /**
@@ -555,55 +555,6 @@ class I18N
     }
 
     /**
-     * Perform a case-insensitive comparison of two strings.
-     *
-     * @param string $string1
-     * @param string $string2
-     *
-     * @return int
-     */
-    public static function strcasecmp($string1, $string2): int
-    {
-        if (self::$collator instanceof Collator) {
-            return self::$collator->compare($string1, $string2);
-        }
-
-        return strcmp(self::strtolower($string1), self::strtolower($string2));
-    }
-
-    /**
-     * Convert a string to lower case.
-     *
-     * @param string $string
-     *
-     * @return string
-     */
-    public static function strtolower($string): string
-    {
-        if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES, true)) {
-            $string = strtr($string, self::DOTLESS_I_TOLOWER);
-        }
-
-        return mb_strtolower($string);
-    }
-
-    /**
-     * Convert a string to upper case.
-     *
-     * @param string $string
-     *
-     * @return string
-     */
-    public static function strtoupper($string): string
-    {
-        if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES, true)) {
-            $string = strtr($string, self::DOTLESS_I_TOUPPER);
-        }
-
-        return mb_strtoupper($string);
-    }
-
-    /**
      * Identify the script used for a piece of text
      *
      * @param string $string
@@ -656,6 +607,55 @@ class I18N
     }
 
     /**
+     * Perform a case-insensitive comparison of two strings.
+     *
+     * @param string $string1
+     * @param string $string2
+     *
+     * @return int
+     */
+    public static function strcasecmp($string1, $string2): int
+    {
+        if (self::$collator instanceof Collator) {
+            return self::$collator->compare($string1, $string2);
+        }
+
+        return strcmp(self::strtolower($string1), self::strtolower($string2));
+    }
+
+    /**
+     * Convert a string to lower case.
+     *
+     * @param string $string
+     *
+     * @return string
+     */
+    public static function strtolower($string): string
+    {
+        if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES, true)) {
+            $string = strtr($string, self::DOTLESS_I_TOLOWER);
+        }
+
+        return mb_strtolower($string);
+    }
+
+    /**
+     * Convert a string to upper case.
+     *
+     * @param string $string
+     *
+     * @return string
+     */
+    public static function strtoupper($string): string
+    {
+        if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES, true)) {
+            $string = strtr($string, self::DOTLESS_I_TOUPPER);
+        }
+
+        return mb_strtoupper($string);
+    }
+
+    /**
      * What format is used to display dates in the current locale?
      *
      * @return string
@@ -664,23 +664,6 @@ class I18N
     {
         /* I18N: This is the format string for the time-of-day. See http://php.net/date for codes */
         return self::$translator->translate('%H:%i:%s');
-    }
-
-    /**
-     * Translate a string, and then substitute placeholders
-     * echo I18N::translate('Hello World!');
-     * echo I18N::translate('The %s sat on the mat', 'cat');
-     *
-     * @param string $message
-     * @param string ...$args
-     *
-     * @return string
-     */
-    public static function translate(string $message, ...$args): string
-    {
-        $message = self::$translator->translate($message);
-
-        return sprintf($message, ...$args);
     }
 
     /**

@@ -76,6 +76,7 @@
     "require-dev": {
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
+        "composer/composer": "~1.8",
         "league/flysystem-memory": "~1.0",
         "maximebf/debugbar": "~1.15",
         "php-coveralls/php-coveralls": "~2.1",
@@ -91,7 +92,8 @@
         "webtrees:build": [
             "rm -Rf webtrees/",
             "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
-            "for FILE in resources/lang/*/messages.po; do msgfmt --output=webtrees/$(dirname $FILE)/$(basename $FILE .po).mo $FILE; done",
+            "@composer webtrees:lang",
+            "for FILE in resources/lang/*/messages.php; do cp $FILE webtrees/$FILE; done",
             "zip --quiet --recurse-paths --move -9 webtrees.zip webtrees"
         ],
         "webtrees:check": [
@@ -117,6 +119,9 @@
             "vendor/bin/phpunit --coverage-html=tests/coverage",
             "composer install --no-dev --quiet"
         ],
+        "webtrees:lang": [
+            "Fisharebest\\Webtrees\\Console\\ComposerScripts::languageFiles"
+        ],
         "webtrees:mo": [
             "for FILE in resources/lang/*/messages.po; do msgfmt --output=$(dirname $FILE)/$(basename $FILE .po).mo $FILE; done",
             "rm -Rf data/cache/language*"
@@ -135,7 +140,7 @@
         "webtrees:build": "Create a distribution file (webtrees.zip)",
         "webtrees:check": "Run various static analysis tools",
         "webtrees:coverage": "Generate test coverage report",
-        "webtrees:mo": "Compile the language files (*.mo)",
+        "webtrees:lang": "Compile the language files (messages.php)",
         "webtrees:po": "Update the language (webtrees.pot, *.po)"
     },
     "extra": {
