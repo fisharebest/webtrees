@@ -267,9 +267,9 @@ class IndividualController extends AbstractBaseController
                     }
                 }
                 echo '</dd>';
-                echo '</dl>';
             }
         }
+        echo '</dl>';
         if (strpos($fact->gedcom(), "\n2 SOUR") !== false) {
             echo '<div id="indi_sour" class="clearfix">', FunctionsPrintFacts::printFactSources($tree, $fact->gedcom(), 2), '</div>';
         }
