@@ -73,11 +73,11 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
     private $requestStackSize = 0;
     private $resetServices = false;
 
-    const VERSION = '4.3.0';
-    const VERSION_ID = 40300;
+    const VERSION = '4.3.1';
+    const VERSION_ID = 40301;
     const MAJOR_VERSION = 4;
     const MINOR_VERSION = 3;
-    const RELEASE_VERSION = 0;
+    const RELEASE_VERSION = 1;
     const EXTRA_VERSION = '';
 
     const END_OF_MAINTENANCE = '01/2020';
@@ -494,7 +494,6 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
                     $fresh = true;
                 }
             } catch (\Throwable $e) {
-            } catch (\Exception $e) {
             } finally {
                 error_reporting($errorLevel);
             }
@@ -563,7 +562,6 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
             try {
                 $oldContainer = include $cache->getPath();
             } catch (\Throwable $e) {
-            } catch (\Exception $e) {
             } finally {
                 error_reporting($errorLevel);
             }

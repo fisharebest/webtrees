@@ -19,11 +19,6 @@ class LanguageIo extends AbstractLanguage implements LanguageInterface
         return 'io';
     }
 
-    public function defaultTerritory()
-    {
-        return new Territory001();
-    }
-
     public function pluralRule()
     {
         return new PluralRule1();

@@ -94,7 +94,7 @@ class DebugHandlersListenerTest extends TestCase
         $dispatcher = new EventDispatcher();
         $listener = new DebugHandlersListener(null);
         $app = $this->getMockBuilder('Symfony\Component\Console\Application')->getMock();
-        $app->expects($this->once())->method('getHelperSet')->will($this->returnValue(new HelperSet()));
+        $app->expects($this->once())->method('getHelperSet')->willReturn(new HelperSet());
         $command = new Command(__FUNCTION__);
         $command->setApplication($app);
         $event = new ConsoleEvent($command, new ArgvInput(), new ConsoleOutput());
@@ -104,6 +104,7 @@ class DebugHandlersListenerTest extends TestCase
         $xListeners = [
             KernelEvents::REQUEST => [[$listener, 'configure']],
             ConsoleEvents::COMMAND => [[$listener, 'configure']],
+            KernelEvents::EXCEPTION => [[$listener, 'onKernelException']],
         ];
         $this->assertSame($xListeners, $dispatcher->getListeners());
 

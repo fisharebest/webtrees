@@ -80,6 +80,10 @@ class Locale
                 return $x === '' ? 1.0 : (float) $x;
             }, array_combine($match[1], $match[2]));
 
+            // "Common sense" logic for badly configured clients.
+            $preferences = self::httpAcceptChinese($preferences);
+            $preferences = self::httpAcceptDowngrade($preferences);
+
             // Need a stable sort, as the original order is significant
             $preferences = array_map(function ($x) {
                 static $n = 0;
@@ -91,14 +95,10 @@ class Locale
                 return $x[0];
             }, $preferences);
 
-            // "Common sense" logic for badly configured clients.
-            $preferences = self::httpAcceptChinese($preferences);
-            $preferences = self::httpAcceptDowngrade($preferences);
-
             foreach (array_keys($preferences) as $code) {
                 try {
-                    $locale = Locale::create($code);
-                    if (in_array($locale, $available)) {
+                    $locale = self::create($code);
+                    if (in_array($locale, $available, false)) {
                         return $locale;
                     }
                 } catch (DomainException $ex) {
@@ -122,16 +122,16 @@ class Locale
         foreach ($preferences as $code => $priority) {
             // Three parts: "zh-hans-cn" => "zh-hans" and "zh"
             if (preg_match('/^(([a-z]+)-[a-z]+)-[a-z]+$/', $code, $match)) {
-                if (!isset($preferences[$match[2]])) {
-                    $preferences[$match[2]] = $priority * 0.5;
+                if (!array_key_exists($match[2], $preferences)) {
+                    $preferences[$match[2]] = $priority * 0.95;
                 }
-                if (!isset($preferences[$match[1]])) {
-                    $preferences[$match[1]] = $priority * 0.5;
+                if (!array_key_exists($match[1], $preferences)) {
+                    $preferences[$match[1]] = $priority * 0.95;
                 }
             }
             // Two parts: "de-de" => "de"
-            if (preg_match('/^([a-z]+)-[a-z]+$/', $code, $match) && !isset($preferences[$match[1]])) {
-                $preferences[$match[1]] = $priority * 0.5;
+            if (preg_match('/^([a-z]+)-[a-z]+$/', $code, $match) && !array_key_exists($match[1], $preferences)) {
+                $preferences[$match[1]] = $priority * 0.95;
             }
         }
 
@@ -150,7 +150,7 @@ class Locale
     {
         foreach (self::$http_accept_chinese as $old => $new) {
             if (array_key_exists($old, $preferences) && !array_key_exists($new, $preferences)) {
-                $preferences[$new] = $preferences[$old] * 0.5;
+                $preferences[$new] = $preferences[$old] * 0.95;
             }
         }
 

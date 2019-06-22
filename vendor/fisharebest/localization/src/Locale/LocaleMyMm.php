@@ -11,8 +11,4 @@ namespace Fisharebest\Localization\Locale;
  */
 class LocaleMyMm extends LocaleMy
 {
-    protected function minimumGroupingDigits()
-    {
-        return 3;
-    }
 }

@@ -55,10 +55,10 @@ class Arr
                 continue;
             }
 
-            $results = array_merge($results, $values);
+            $results[] = $values;
         }
 
-        return $results;
+        return array_merge([], ...$results);
     }
 
     /**
@@ -275,7 +275,7 @@ class Arr
      * Get an item from an array using "dot" notation.
      *
      * @param  \ArrayAccess|array  $array
-     * @param  string  $key
+     * @param  string|int  $key
      * @param  mixed   $default
      * @return mixed
      */

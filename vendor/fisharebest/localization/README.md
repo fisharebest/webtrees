@@ -118,7 +118,7 @@ Translation functions work the same as `gettext`.
 // We need to translate into French
 $locale = new LocaleFr;
 // Create the translation
-$translation = new Translation('/path/to/fr.mo');  // Can use .CSV, .PHP and .MO files
+$translation = new Translation('/path/to/fr.mo');  // Can use .CSV, .PHP, .PO and .MO files
 // Create the translator
 $translator = new Translator($translation->asArray(), $locale->pluralRule());
 // Use the translator

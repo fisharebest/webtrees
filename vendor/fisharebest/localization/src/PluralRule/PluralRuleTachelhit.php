@@ -23,10 +23,12 @@ class PluralRuleTachelhit implements PluralRuleInterface
 
         if ($number === 0 || $number === 1) {
             return 0;
-        } elseif ($number >= 2 && $number <= 10) {
-            return 1;
-        } else {
-            return 2;
         }
+
+        if ($number >= 2 && $number <= 10) {
+            return 1;
+        }
+
+        return 2;
     }
 }
