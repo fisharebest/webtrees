@@ -24,7 +24,8 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
-use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Support\Str;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class FamilyTreeStatisticsModule
@@ -122,7 +123,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
             uksort($all_surnames, [I18N::class, 'strcasecmp']);
 
             //find a module providing individual lists
-            $module = app(ModuleService::class)->findByComponent(ModuleListInterface::class, $tree, Auth::user())->first(function (ModuleInterface $module) {
+            $module = app(ModuleService::class)->findByComponent(ModuleListInterface::class, $tree, Auth::user())->first(static function (ModuleInterface $module) {
                 return $module instanceof IndividualListModule;
             });
             
@@ -171,7 +172,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
             }
 
             return view('modules/block-template', [
-                'block'      => str_replace('_', '-', $this->name()),
+                'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => $config_url,
                 'title'      => $this->title(),
@@ -203,33 +204,35 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      * @param int     $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $this->setBlockSetting($block_id, 'show_last_update', $request->get('show_last_update', ''));
-        $this->setBlockSetting($block_id, 'show_common_surnames', $request->get('show_common_surnames', ''));
-        $this->setBlockSetting($block_id, 'number_of_surnames', $request->get('number_of_surnames', self::DEFAULT_NUMBER_OF_SURNAMES));
-        $this->setBlockSetting($block_id, 'stat_indi', $request->get('stat_indi', ''));
-        $this->setBlockSetting($block_id, 'stat_fam', $request->get('stat_fam', ''));
-        $this->setBlockSetting($block_id, 'stat_sour', $request->get('stat_sour', ''));
-        $this->setBlockSetting($block_id, 'stat_other', $request->get('stat_other', ''));
-        $this->setBlockSetting($block_id, 'stat_media', $request->get('stat_media', ''));
-        $this->setBlockSetting($block_id, 'stat_repo', $request->get('stat_repo', ''));
-        $this->setBlockSetting($block_id, 'stat_surname', $request->get('stat_surname', ''));
-        $this->setBlockSetting($block_id, 'stat_events', $request->get('stat_events', ''));
-        $this->setBlockSetting($block_id, 'stat_users', $request->get('stat_users', ''));
-        $this->setBlockSetting($block_id, 'stat_first_birth', $request->get('stat_first_birth', ''));
-        $this->setBlockSetting($block_id, 'stat_last_birth', $request->get('stat_last_birth', ''));
-        $this->setBlockSetting($block_id, 'stat_first_death', $request->get('stat_first_death', ''));
-        $this->setBlockSetting($block_id, 'stat_last_death', $request->get('stat_last_death', ''));
-        $this->setBlockSetting($block_id, 'stat_long_life', $request->get('stat_long_life', ''));
-        $this->setBlockSetting($block_id, 'stat_avg_life', $request->get('stat_avg_life', ''));
-        $this->setBlockSetting($block_id, 'stat_most_chil', $request->get('stat_most_chil', ''));
-        $this->setBlockSetting($block_id, 'stat_avg_chil', $request->get('stat_avg_chil', ''));
+        $settings = $request->getParsedBody();
+
+        $this->setBlockSetting($block_id, 'show_last_update', $settings['show_last_update'] ?? '');
+        $this->setBlockSetting($block_id, 'show_common_surnames', $settings['show_common_surnames'] ?? '');
+        $this->setBlockSetting($block_id, 'number_of_surnames', $settings['number_of_surnames']);
+        $this->setBlockSetting($block_id, 'stat_indi', $settings['stat_indi'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_fam', $settings['stat_fam'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_sour', $settings['stat_sour'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_other', $settings['stat_other'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_media', $settings['stat_media'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_repo', $settings['stat_repo'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_surname', $settings['stat_surname'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_events', $settings['stat_events'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_users', $settings['stat_users'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_first_birth', $settings['stat_first_birth'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_last_birth', $settings['stat_last_birth'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_first_death', $settings['stat_first_death'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_last_death', $settings['stat_last_death'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_long_life', $settings['stat_long_life'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_avg_life', $settings['stat_avg_life'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_most_chil', $settings['stat_most_chil'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_avg_chil', $settings['stat_avg_chil'] ?? '');
     }
 
     /**

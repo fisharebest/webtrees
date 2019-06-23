@@ -16,9 +16,16 @@
 
 declare(strict_types=1);
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Application;
+use Fisharebest\Webtrees\Html;
+use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\View as WebtreesView;
 use Fisharebest\Webtrees\Webtrees;
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 
 /**
  * Get the IoC container, or fetch something from it.
@@ -49,7 +56,7 @@ function asset(string $path): string
     if (Webtrees::STABILITY === '') {
         $version = Webtrees::VERSION;
     } else {
-        $version = filemtime(WT_ROOT . 'public/' . $path);
+        $version = filemtime(Webtrees::ROOT_DIR . 'public/' . $path);
     }
 
     return 'public/' . $path . '?v=' . $version;
@@ -62,7 +69,7 @@ function asset(string $path): string
  */
 function csrf_field()
 {
-    return '<input type="hidden" name="csrf" value="' . e(\Fisharebest\Webtrees\Session::getCsrfToken()) . '">';
+    return '<input type="hidden" name="csrf" value="' . e(Session::getCsrfToken()) . '">';
 }
 
 /**
@@ -72,7 +79,68 @@ function csrf_field()
  */
 function csrf_token()
 {
-    return \Fisharebest\Webtrees\Session::getCsrfToken();
+    return Session::getCsrfToken();
+}
+
+/**
+ * @param string $url
+ * @param int    $code
+ *
+ * @return ResponseInterface
+ */
+function redirect(string $url, $code = StatusCodeInterface::STATUS_FOUND): ResponseInterface
+{
+    /** @var ResponseFactoryInterface $response_factory */
+    $response_factory = app(ResponseFactoryInterface::class);
+
+    return $response_factory
+        ->createResponse($code)
+        ->withHeader('Location', $url);
+}
+
+/**
+ * Create a response.
+ *
+ * @param mixed    $content
+ * @param int      $code
+ * @param string[] $headers
+ *
+ * @return ResponseInterface
+ */
+function response($content = '', $code = StatusCodeInterface::STATUS_OK, $headers = []): ResponseInterface
+{
+    if ($headers === []) {
+        if (is_string($content)) {
+            $headers = [
+                'Content-Type'   => 'text/html; charset=utf-8',
+                'Content-Length' => strlen($content),
+            ];
+        } else {
+            $content = json_encode($content, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
+            $headers = [
+                'Content-Type'   => 'application/json',
+                'Content-Length' => strlen($content),
+            ];
+        }
+    }
+
+    /** @var ResponseFactoryInterface $response_factory */
+    $response_factory = app(ResponseFactoryInterface::class);
+
+    /** @var StreamFactoryInterface $stream_factory */
+    $stream_factory = app(StreamFactoryInterface::class);
+
+    $stream = $stream_factory->createStream($content);
+
+    $response = $response_factory
+        ->createResponse($code)
+        ->withBody($stream);
+
+    foreach ($headers as $key => $value) {
+        $response = $response->withHeader($key, $value);
+    }
+
+    return $response;
 }
 
 /**
@@ -89,10 +157,12 @@ function route(string $route, array $parameters = [], bool $absolute = true): st
     $parameters = ['route' => $route] + $parameters;
 
     if ($absolute) {
-        return \Fisharebest\Webtrees\Html::url(WT_BASE_URL . 'index.php', $parameters);
+        $base_url = app(ServerRequestInterface::class)->getAttribute('base_url');
+
+        return Html::url($base_url . 'index.php', $parameters);
     }
 
-    return \Fisharebest\Webtrees\Html::url('index.php', $parameters);
+    return Html::url('index.php', $parameters);
 }
 
 /**

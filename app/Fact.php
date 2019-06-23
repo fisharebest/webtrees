@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Services\GedcomService;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
+use function strpos;
 
 /**
  * A GEDCOM fact or event object.
@@ -322,13 +323,16 @@ class Fact
      */
     public function canEdit(): bool
     {
-        // Managers can edit anything
+        if ($this->isPendingDeletion()) {
+            return false;
+        }
+
+        if (Auth::isManager($this->record->tree())) {
+            return true;
+        }
+
         // Members cannot edit RESN, CHAN and locked records
-        return
-            $this->record->canEdit() && !$this->isPendingDeletion() && (
-                Auth::isManager($this->record->tree()) ||
-                Auth::isEditor($this->record->tree()) && strpos($this->gedcom, "\n2 RESN locked") === false && $this->getTag() !== 'RESN' && $this->getTag() !== 'CHAN'
-            );
+        return Auth::isEditor($this->record->tree()) && strpos($this->gedcom, "\n2 RESN locked") === false && $this->getTag() !== 'RESN' && $this->getTag() !== 'CHAN';
     }
 
     /**
@@ -587,7 +591,7 @@ class Fact
      */
     private static function dateComparator(): Closure
     {
-        return function (Fact $a, Fact $b): int {
+        return static function (Fact $a, Fact $b): int {
             if ($a->date()->isOK() && $b->date()->isOK()) {
                 // If both events have dates, compare by date
                 $ret = Date::compare($a->date(), $b->date());
@@ -623,7 +627,7 @@ class Fact
             $factsort = array_flip(self::FACT_ORDER);
         }
 
-        return function (Fact $a, Fact $b) use ($factsort): int {
+        return static function (Fact $a, Fact $b) use ($factsort): int {
             // Facts from same families stay grouped together
             // Keep MARR and DIV from the same families from mixing with events from other FAMs
             // Use the original order in which the facts were added
@@ -691,7 +695,6 @@ class Fact
      * @param Collection $unsorted
      *
      * @return Collection
-     * @return Fact[]
      */
     public static function sortFacts(Collection $unsorted): Collection
     {

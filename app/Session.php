@@ -17,10 +17,22 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ServerRequestInterface;
+use function array_map;
+use function explode;
+use function implode;
+use function parse_url;
+use function session_name;
+use function session_regenerate_id;
+use function session_register_shutdown;
+use function session_set_cookie_params;
+use function session_set_save_handler;
+use function session_start;
 use function session_status;
+use const PHP_URL_HOST;
+use const PHP_URL_PATH;
+use const PHP_URL_SCHEME;
 
 /**
  * Session handling
@@ -30,23 +42,26 @@ class Session
     /**
      * Start a session
      *
+     * @param ServerRequestInterface $request
+     *
      * @return void
      */
-    public static function start(): void
+    public static function start(ServerRequestInterface $request): void
     {
-        $domain   = '';
-        $path     = parse_url(WT_BASE_URL, PHP_URL_PATH);
-        $secure   = parse_url(WT_BASE_URL, PHP_URL_SCHEME) === 'https';
-        $httponly = true;
+        // Store sessions in the database
+        session_set_save_handler(new SessionDatabaseHandler($request));
+
+        $url    = (string) $request->getUri();
+        $secure = parse_url($url, PHP_URL_SCHEME) === 'https';
+        $domain = parse_url($url, PHP_URL_HOST);
+        $path   = parse_url($url, PHP_URL_PATH);
 
         // Paths containing UTF-8 characters need special handling.
         $path = implode('/', array_map('rawurlencode', explode('/', $path)));
 
-        self::setSaveHandler();
-
         session_name('WT_SESSION');
         session_register_shutdown();
-        session_set_cookie_params(0, $path, $domain, $secure, $httponly);
+        session_set_cookie_params(0, $path, $domain, $secure, true);
         session_start();
 
         // A new session? Prevent session fixation attacks by choosing a new session ID.
@@ -67,6 +82,34 @@ class Session
     public static function get(string $name, $default = null)
     {
         return $_SESSION[$name] ?? $default;
+    }
+
+    /**
+     * After any change in authentication level, we should use a new session ID.
+     *
+     * @param bool $destroy
+     *
+     * @return void
+     */
+    public static function regenerate(bool $destroy = false): void
+    {
+        if ($destroy) {
+            self::clear();
+        }
+
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_regenerate_id($destroy);
+        }
+    }
+
+    /**
+     * Remove all stored data from the session.
+     *
+     * @return void
+     */
+    public static function clear(): void
+    {
+        $_SESSION = [];
     }
 
     /**
@@ -95,177 +138,6 @@ class Session
     }
 
     /**
-     * Does a session variable exist?
-     *
-     * @param string $name
-     *
-     * @return bool
-     */
-    public static function has(string $name): bool
-    {
-        return isset($_SESSION[$name]);
-    }
-
-    /**
-     * Remove all stored data from the session.
-     *
-     * @return void
-     */
-    public static function clear(): void
-    {
-        $_SESSION = [];
-    }
-
-    /**
-     * After any change in authentication level, we should use a new session ID.
-     *
-     * @param bool $destroy
-     *
-     * @return void
-     */
-    public static function regenerate(bool $destroy = false): void
-    {
-        if ($destroy) {
-            self::clear();
-        }
-
-        if (session_status() === PHP_SESSION_ACTIVE) {
-            session_regenerate_id($destroy);
-        }
-    }
-
-    /**
-     * Set an explicit session ID. Typically used for search robots.
-     *
-     * @param string $id
-     *
-     * @return void
-     */
-    public static function setId(string $id): void
-    {
-        session_id($id);
-    }
-
-    /**
-     * Initialise our session save handler
-     *
-     * @return void
-     */
-    private static function setSaveHandler(): void
-    {
-        session_set_save_handler(
-            function (): bool {
-                return Session::open();
-            },
-            function (): bool {
-                return Session::close();
-            },
-            function (string $id): string {
-                return Session::read($id);
-            },
-            function (string $id, string $data): bool {
-                return Session::write($id, $data);
-            },
-            function (string $id): bool {
-                return Session::destroy($id);
-            },
-            function (int $maxlifetime): bool {
-                return Session::gc($maxlifetime);
-            }
-        );
-    }
-
-    /**
-     * For session_set_save_handler()
-     *
-     * @return bool
-     */
-    private static function close(): bool
-    {
-        return true;
-    }
-
-    /**
-     * For session_set_save_handler()
-     *
-     * @param string $id
-     *
-     * @return bool
-     */
-    private static function destroy(string $id): bool
-    {
-        DB::table('session')
-            ->where('session_id', '=', $id)
-            ->delete();
-
-        return true;
-    }
-
-    /**
-     * For session_set_save_handler()
-     *
-     * @param int $maxlifetime
-     *
-     * @return bool
-     */
-    private static function gc(int $maxlifetime): bool
-    {
-        DB::table('session')
-            ->where('session_time', '<', Carbon::now()->subSeconds($maxlifetime))
-            ->delete();
-
-        return true;
-    }
-
-    /**
-     * For session_set_save_handler()
-     *
-     * @return bool
-     */
-    private static function open(): bool
-    {
-        return true;
-    }
-
-    /**
-     * For session_set_save_handler()
-     *
-     * @param string $id
-     *
-     * @return string
-     */
-    private static function read(string $id): string
-    {
-        return (string) DB::table('session')
-            ->where('session_id', '=', $id)
-            ->value('session_data');
-    }
-
-    /**
-     * For session_set_save_handler()
-     *
-     * @param string $id
-     * @param string $data
-     *
-     * @return bool
-     */
-    private static function write(string $id, string $data): bool
-    {
-        $request = Request::createFromGlobals();
-
-        DB::table('session')->updateOrInsert([
-            'session_id' => $id,
-        ], [
-            'session_time' => Carbon::now(),
-            'user_id'      => (int) Auth::id(),
-            'ip_address'   => $request->getClientIp(),
-            'session_data' => $data,
-        ]);
-
-        return true;
-    }
-
-    /**
      * Cross-Site Request Forgery tokens - ensure that the user is submitting
      * a form that was generated by the current session.
      *
@@ -278,5 +150,17 @@ class Session
         }
 
         return self::get('CSRF_TOKEN');
+    }
+
+    /**
+     * Does a session variable exist?
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+    public static function has(string $name): bool
+    {
+        return isset($_SESSION[$name]);
     }
 }

@@ -29,6 +29,6 @@ class FrequentlyAskedQuestionsModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\FrequentlyAskedQuestionsModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\FrequentlyAskedQuestionsModule::class));
     }
 }

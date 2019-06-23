@@ -20,8 +20,8 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\I18N;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for help text.
@@ -158,13 +158,13 @@ class HelpTextController extends AbstractBaseController
     /**
      * Help for dates.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function helpText(Request $request): Response
+    public function helpText(ServerRequestInterface $request): ResponseInterface
     {
-        $topic = $request->get('topic');
+        $topic = $request->getQueryParams()['topic'];
 
         switch ($topic) {
             case 'DATE':
@@ -231,11 +231,6 @@ class HelpTextController extends AbstractBaseController
                 $text  = view('help/hebrew');
                 break;
 
-            case 'annivers_year_select':
-                $title = I18N::translate('Year input box');
-                $text  = view('help/calendar-year');
-                break;
-
             case 'edit_SOUR_EVEN':
                 $title = I18N::translate('Associate events with this source');
                 $text  = view('help/source-events');
@@ -264,7 +259,7 @@ class HelpTextController extends AbstractBaseController
             'text'  => $text,
         ]);
 
-        return new Response($html);
+        return response($html);
     }
 
     /**

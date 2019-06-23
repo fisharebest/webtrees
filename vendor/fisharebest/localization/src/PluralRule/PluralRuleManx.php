@@ -23,12 +23,16 @@ class PluralRuleManx implements PluralRuleInterface
 
         if ($number % 10 === 1) {
             return 0;
-        } elseif ($number % 10 === 2) {
-            return 1;
-        } elseif ($number % 20 === 0) {
-            return 2;
-        } else {
-            return 3;
         }
+
+        if ($number % 10 === 2) {
+            return 1;
+        }
+
+        if ($number % 20 === 0) {
+            return 2;
+        }
+
+        return 3;
     }
 }

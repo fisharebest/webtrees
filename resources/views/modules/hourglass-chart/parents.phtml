@@ -1,0 +1,68 @@
+<?php
+
+use Fisharebest\Webtrees\Family;
+
+/**
+ * @var Family $family
+ * @var int    $generations
+ */
+
+?>
+
+<div class="d-flex">
+    <div class="align-self-center">
+        <div class="d-flex">
+            <div class="wt-chart-horizontal-spacer">
+                <div class="wt-chart-horizontal-first-parent"></div>
+            </div>
+
+            <div class="align-self-center">
+                <?= view('chart-box', ['individual' => $family->husband()]) ?>
+            </div>
+
+            <?php if ($family->husband() && $family->husband()->primaryChildFamily()): ?>
+                <div class="wt-chart-horizontal-spacer">
+                    <div class="wt-chart-horizontal-line"></div>
+                </div>
+
+                <?php if ($generations > 1): ?>
+                    <?= view('modules/hourglass-chart/parents', ['family' => $family->husband()->primaryChildFamily(), 'generations' => $generations - 1]) ?>
+                <?php else: ?>
+                    <div class="align-self-center">
+                        <div class="hourglass-arrow" data-xref="<?= route('module', ['module' => 'hourglass_chart', 'action' => 'Ancestors', 'xref' => $family->husband()->primaryChildFamily()->xref(), 'ged' => $family->husband()->primaryChildFamily()->tree()->name()]) ?>">
+                            <?= view('icons/arrow-right') ?>
+                        </div>
+                    </div>
+                <?php endif ?>
+            <?php endif ?>
+        </div>
+
+        <div class="d-flex">
+            <div class="wt-chart-horizontal-spacer">
+                <div class="wt-chart-horizontal-last-parent"></div>
+            </div>
+
+            <div class="align-self-center">
+                <?= view('chart-box', ['individual' => $family->wife()]) ?>
+            </div>
+
+            <?php if ($family->wife() && $family->wife()->primaryChildFamily()): ?>
+                <div class="wt-chart-horizontal-spacer">
+                    <div class="wt-chart-horizontal-line"></div>
+                </div>
+
+                <?php if ($generations > 1): ?>
+                    <?= view('modules/hourglass-chart/parents', ['family' => $family->wife()->primaryChildFamily(), 'generations' => $generations - 1]) ?>
+                <?php else: ?>
+                    <div class="align-self-center">
+                        <div class="align-self-center">
+                            <div class="hourglass-arrow" data-xref="<?= route('module', ['module' => 'hourglass_chart', 'action' => 'Ancestors', 'xref' => $family->wife()->primaryChildFamily()->xref(), 'ged' => $family->wife()->primaryChildFamily()->tree()->name()]) ?>">
+                                <?= view('icons/arrow-right') ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif ?>
+            <?php endif ?>
+        </div>
+    </div>
+</div>

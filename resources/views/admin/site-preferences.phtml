@@ -1,5 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Site; ?>
 
@@ -41,7 +39,7 @@
             <?= I18N::translate('Time zone') ?>
         </label>
         <div class="col-sm-9">
-            <?= Bootstrap4::select(array_combine(\DateTimeZone::listIdentifiers(), \DateTimeZone::listIdentifiers()), Site::getPreference('TIMEZONE') ?: 'UTC', ['id' => 'TIMEZONE', 'name' => 'TIMEZONE']) ?>
+            <?= view('components/select', ['name' => 'TIMEZONE', 'selected' => Site::getPreference('TIMEZONE', 'UTC'), 'options' => array_combine(\DateTimeZone::listIdentifiers(), \DateTimeZone::listIdentifiers())]) ?>
             <p class="small text-muted">
                 <?= I18N::translate('The time zone is required for date calculations, such as knowing today’s date.') ?>
             </p>
@@ -55,7 +53,7 @@
             I18N::translate('Default theme') ?>
         </label>
         <div class="col-sm-9">
-            <?= Bootstrap4::select($all_themes, Site::getPreference('THEME_DIR', 'webtrees'), ['id' => 'THEME_DIR', 'name' => 'THEME_DIR']) ?>
+            <?= view('components/select', ['name' => 'THEME_DIR', 'selected' => Site::getPreference('THEME_DIR', 'webtrees'), 'options' => $all_themes]) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the "Default theme" site configuration setting */
                 I18N::translate('You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc.') ?>
@@ -74,7 +72,7 @@
                 I18N::translate('Show list of family trees') ?>
             </legend>
             <div class="col-sm-9">
-                <?= Bootstrap4::radioButtons('ALLOW_CHANGE_GEDCOM', FunctionsEdit::optionsNoYes(), (string) (int) Site::getPreference('ALLOW_CHANGE_GEDCOM'), true) ?>
+                <?= view('components/radios-inline', ['name' => 'ALLOW_CHANGE_GEDCOM', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) Site::getPreference('ALLOW_CHANGE_GEDCOM')]) ?>
                 <p class="small text-muted">
                     <?= /* I18N: Help text for the “Show list of family trees” site configuration setting */
                     I18N::translate('For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc.') ?>

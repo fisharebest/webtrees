@@ -18,8 +18,4 @@ class LocaleOsGe extends LocaleOs
         return new TerritoryGe();
     }
 
-    protected function minimumGroupingDigits()
-    {
-        return 1; // Georgia/Georgian uses 2
-    }
 }

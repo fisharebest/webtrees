@@ -25,12 +25,16 @@ class PluralRule10 implements PluralRuleInterface
 
         if ($number % 100 === 1) {
             return 0;
-        } elseif ($number % 100 === 2) {
-            return 1;
-        } elseif ($number % 100 === 3 || $number % 100 === 4) {
-            return 2;
-        } else {
-            return 3;
         }
+
+        if ($number % 100 === 2) {
+            return 1;
+        }
+
+        if ($number % 100 === 3 || $number % 100 === 4) {
+            return 2;
+        }
+
+        return 3;
     }
 }

@@ -24,8 +24,8 @@ class PluralRule15 implements PluralRuleInterface
 
         if ($number % 10 !== 1 || $number % 100 === 11) {
             return 1;
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 }

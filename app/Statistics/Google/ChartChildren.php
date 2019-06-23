@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Statistics\Service\CenturyService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
+use stdClass;
 
 /**
  * A chart showing the average number of children by century.
@@ -52,14 +53,14 @@ class ChartChildren
     /**
      * Returns the related database records.
      *
-     * @return \stdClass[]
+     * @return stdClass[]
      */
     private function queryRecords(): array
     {
         $query = DB::table('families')
             ->selectRaw('ROUND(AVG(f_numchil), 2) AS num')
             ->selectRaw('ROUND((d_year + 49) / 100) AS century')
-            ->join('dates', function (JoinClause $join): void {
+            ->join('dates', static function (JoinClause $join): void {
                 $join->on('d_file', '=', 'f_file')
                     ->on('d_gid', '=', 'f_id');
             })

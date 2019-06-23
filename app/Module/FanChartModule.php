@@ -24,8 +24,9 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Webtrees;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class FanChartModule
@@ -110,25 +111,25 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
     /**
      * A form to request the chart parameters.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
-     * @param ChartService  $chart_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
+     * @param ChartService           $chart_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getChartAction(Request $request, Tree $tree, UserInterface $user, ChartService $chart_service): Response
+    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user, ChartService $chart_service): ResponseInterface
     {
-        $ajax       = (bool) $request->get('ajax');
-        $xref       = $request->get('xref', '');
+        $ajax       = $request->getQueryParams()['ajax'] ?? '';
+        $xref       = $request->getQueryParams()['xref'] ?? '';
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
-        $chart_style = (int) $request->get('chart_style', self::DEFAULT_STYLE);
-        $fan_width   = (int) $request->get('fan_width', self::DEFAULT_WIDTH);
-        $generations = (int) $request->get('generations', self::DEFAULT_GENERATIONS);
+        $chart_style = (int) ($request->getQueryParams()['chart_style'] ?? self::DEFAULT_STYLE);
+        $fan_width   = (int) ($request->getQueryParams()['fan_width'] ?? self::DEFAULT_WIDTH);
+        $generations = (int) ($request->getQueryParams()['generations'] ?? self::DEFAULT_GENERATIONS);
 
         $fan_width = min($fan_width, self::MAXIMUM_WIDTH);
         $fan_width = max($fan_width, self::MINIMUM_WIDTH);
@@ -136,7 +137,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
         $generations = min($generations, self::MAXIMUM_GENERATIONS);
         $generations = max($generations, self::MINIMUM_GENERATIONS);
 
-        if ($ajax) {
+        if ($ajax === '1') {
             return $this->chart($individual, $chart_style, $fan_width, $generations, $chart_service);
         }
 
@@ -172,9 +173,9 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
      * @param int          $generations
      * @param ChartService $chart_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    protected function chart(Individual $individual, int $chart_style, int $fan_width, int $generations, ChartService $chart_service): Response
+    protected function chart(Individual $individual, int $chart_style, int $fan_width, int $generations, ChartService $chart_service): ResponseInterface
     {
         $ancestors = $chart_service->sosaStradonitzAncestors($individual, $generations);
 
@@ -307,7 +308,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
                         (int) $tx,
                         (int) $ty,
                         $foreground,
-                        WT_ROOT . 'resources/fonts/DejaVuSans.ttf',
+                        Webtrees::ROOT_DIR . 'resources/fonts/DejaVuSans.ttf',
                         $text
                     );
 
@@ -343,16 +344,12 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
                     $areas .= '" href="#' . $person->xref() . '"';
                     $html  .= '<div id="' . $person->xref() . '" class="fan_chart_menu">';
                     $html  .= '<div class="person_box"><div class="details1">';
-                    $html  .= '<a href="' . e($person->url()) . '" class="name1">' . $name;
-                    if ($addname) {
-                        $html .= $addname;
-                    }
-                    $html .= '</a>';
-                    $html .= '<ul class="charts">';
+                    $html .= '<div class="charts">';
+                    $html  .= '<a href="' . e($person->url()) . '" class="dropdown-item">' . $name . '</a>';
                     foreach ($theme->individualBoxMenu($person) as $menu) {
-                        $html .= $menu->getMenuAsList();
+                        $html .= '<a href="' . e($menu->getLink()) . '" class="dropdown-item p-1 ' . e($menu->getClass()) . '">' . $menu->getLabel() . '</a>';
                     }
-                    $html  .= '</ul>';
+                    $html  .= '</div>';
                     $html  .= '</div></div>';
                     $html  .= '</div>';
                     $areas .= ' alt="' . strip_tags($person->fullName()) . '" title="' . strip_tags($person->fullName()) . '">';
@@ -370,7 +367,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
         imagedestroy($image);
         $png = ob_get_clean();
 
-        return new Response(view('modules/fanchart/chart', [
+        return response(view('modules/fanchart/chart', [
             'fanh'  => $fanh,
             'fanw'  => $fanw,
             'html'  => $html,
@@ -444,7 +441,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
         // last line
         if (!empty($line)) {
             $len = strlen($line);
-            if (in_array(ord($line{0}), $RTLOrd)) {
+            if (in_array(ord($line{0}), $RTLOrd, true)) {
                 $len /= 2;
             }
             $p    = max(0, (int) (($maxlen - $len) / 2));

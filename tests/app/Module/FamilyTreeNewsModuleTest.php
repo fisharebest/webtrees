@@ -29,6 +29,6 @@ class FamilyTreeNewsModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\FamilyTreeNewsModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\FamilyTreeNewsModule::class));
     }
 }

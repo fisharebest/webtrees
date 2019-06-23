@@ -29,6 +29,6 @@ class FunctionsDateTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Functions\FunctionsDate'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Functions\FunctionsDate::class));
     }
 }

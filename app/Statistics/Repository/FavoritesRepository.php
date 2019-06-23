@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
+use function count;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
@@ -92,7 +93,7 @@ class FavoritesRepository implements FavoritesRepositoryInterface
             ->findByInterface(FamilyTreeFavoritesModule::class);
 
         if ($module instanceof FamilyTreeFavoritesModule) {
-            $count = \count($module->getFavorites($this->tree));
+            $count = count($module->getFavorites($this->tree));
         }
 
         return I18N::number($count);
@@ -108,7 +109,7 @@ class FavoritesRepository implements FavoritesRepositoryInterface
             ->findByInterface(UserFavoritesModule::class);
 
         if ($module instanceof UserFavoritesModule) {
-            $count = \count($module->getFavorites($this->tree, Auth::user()));
+            $count = count($module->getFavorites($this->tree, Auth::user()));
         }
 
         return I18N::number($count);

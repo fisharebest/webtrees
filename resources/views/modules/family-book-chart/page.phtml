@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
@@ -17,7 +16,7 @@
             <?= I18N::translate('Individual') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= FunctionsEdit::formControlIndividual($individual->tree(), $individual, ['id' => 'xref', 'name' => 'xref']) ?>
+            <?= view('components/select-individual', ['name' => 'xref', 'individual' => $individual, 'tree' => $tree]) ?>
         </div>
     </div>
 
@@ -26,7 +25,7 @@
             <?= I18N::translate('Generations') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= Bootstrap4::select(FunctionsEdit::numericOptions(range(2, 5)), $book_size, ['id' => 'book_size', 'name' => 'book_size']) ?>
+            <?= view('components/select', ['name' => 'book_size', 'selected' => $book_size, 'options' => FunctionsEdit::numericOptions(range(2, 5))]) ?>
         </div>
     </div>
 
@@ -35,7 +34,7 @@
             <?= I18N::translate('Descendant generations') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= Bootstrap4::select(FunctionsEdit::numericOptions(range($minimum_generations, $maximum_generations)), $generations, ['id' => 'generations', 'name' => 'generations']) ?>
+            <?= view('components/select', ['name' => 'generations', 'selected' => $generations, 'options' => FunctionsEdit::numericOptions(range($minimum_generations, $maximum_generations))]) ?>
         </div>
     </div>
 
@@ -45,7 +44,7 @@
                 <?= I18N::translate('Spouses') ?>
             </legend>
             <div class="col-sm-9 wt-page-options-value">
-                <?= Bootstrap4::checkbox(I18N::translate('Show spouses'), false, ['name' => 'show_spouse', 'checked' => $show_spouse]) ?>
+                <?= view('components/checkbox', ['label' => I18N::translate('Show spouses'), 'name' => 'show_spouse', 'checked' => $show_spouse]) ?>
             </div>
         </div>
     </fieldset>

@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
+use Exception;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
@@ -39,7 +40,7 @@ class Media extends GedcomRecord
      */
     public static function rowMapper(): Closure
     {
-        return function (stdClass $row): Media {
+        return static function (stdClass $row): Media {
             return Media::getInstance($row->m_id, Tree::findById((int) $row->m_file), $row->m_gedcom);
         };
     }
@@ -53,7 +54,7 @@ class Media extends GedcomRecord
      * @param Tree        $tree
      * @param string|null $gedcom
      *
-     * @throws \Exception
+     * @throws Exception
      *
      * @return Media|null
      */
@@ -114,7 +115,6 @@ class Media extends GedcomRecord
      * Get the media files for this media object
      *
      * @return Collection
-     * @return MediaFile[]
      */
     public function mediaFiles(): Collection
     {

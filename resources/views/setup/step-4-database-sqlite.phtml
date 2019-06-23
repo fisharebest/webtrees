@@ -1,4 +1,5 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Webtrees; ?>
 
 <form method="POST" autocomplete="off">
     <input name="route" type="hidden" value="setup">
@@ -33,7 +34,7 @@
         <div class="col-sm-9">
             <div class="input-group" dir="ltr">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"><?=e( WT_ROOT) ?>data/</span>
+                    <span class="input-group-text"><?=e( realpath(Webtrees::ROOT_DIR)) ?>data/</span>
                 </div>
 
                 <input class="form-control" id="dbname" name="dbname" pattern="[a-zA-Z0-9_]+" type="text" value="<?= e($dbname) ?>">

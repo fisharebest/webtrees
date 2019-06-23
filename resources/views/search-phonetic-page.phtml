@@ -74,7 +74,7 @@
                             <?php foreach ($all_trees as $tree) : ?>
                                 <div class="col px-0">
                                     <label class="form-check-label">
-                                        <input class="form-check form-check-input" type="checkbox" <?= in_array($tree, $search_trees) ? 'checked' : '' ?> value="<?= $tree->name() ?>" name="search_trees[]">
+                                        <input class="form-check form-check-input" type="checkbox" <?= in_array($tree, $search_trees, true) ? 'checked' : '' ?> value="<?= $tree->name() ?>" name="search_trees[]">
                                         <?= e($tree->title()) ?>
                                     </label>
                                 </div>

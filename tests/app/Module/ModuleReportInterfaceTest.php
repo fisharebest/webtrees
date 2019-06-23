@@ -29,6 +29,6 @@ class ModuleReportInterfaceTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(interface_exists('\Fisharebest\Webtrees\Module\ModuleReportInterface'));
+        $this->assertTrue(interface_exists(ModuleReportInterface::class));
     }
 }

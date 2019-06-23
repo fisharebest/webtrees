@@ -63,10 +63,10 @@ trait ModuleHistoricEventsTrait
         $max_date = $individual->getEstimatedDeathDate();
 
         return (new Collection($this->historicEventsAll()))
-            ->map(function (string $gedcom) use ($individual): Fact {
+            ->map(static function (string $gedcom) use ($individual): Fact {
                 return new Fact($gedcom, $individual, 'histo');
             })
-            ->filter(function (Fact $fact) use ($min_date, $max_date): bool {
+            ->filter(static function (Fact $fact) use ($min_date, $max_date): bool {
                 return Date::compare($fact->date(), $min_date) >= 0 && Date::compare($fact->date(), $max_date) <= 0;
             });
     }

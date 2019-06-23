@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
+use function array_key_exists;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Place;
@@ -26,6 +27,7 @@ use Fisharebest\Webtrees\Statistics\Service\CountryService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
+use stdClass;
 
 /**
  * A repository providing methods for place related statistics.
@@ -68,24 +70,24 @@ class PlaceRepository implements PlaceRepositoryInterface
 
         if ($what === 'INDI') {
             $rows = DB::table('individuals')->select(['i_gedcom as ged'])->where(
-                    'i_file',
-                    '=',
-                    $this->tree->id()
-                )->where(
-                    'i_gedcom',
-                    'LIKE',
-                    "%\n2 PLAC %"
-                )->get()->all();
+                'i_file',
+                '=',
+                $this->tree->id()
+            )->where(
+                'i_gedcom',
+                'LIKE',
+                "%\n2 PLAC %"
+            )->get()->all();
         } elseif ($what === 'FAM') {
             $rows = DB::table('families')->select(['f_gedcom as ged'])->where(
-                    'f_file',
-                    '=',
-                    $this->tree->id()
-                )->where(
-                    'f_gedcom',
-                    'LIKE',
-                    "%\n2 PLAC %"
-                )->get()->all();
+                'f_file',
+                '=',
+                $this->tree->id()
+            )->where(
+                'f_gedcom',
+                'LIKE',
+                "%\n2 PLAC %"
+            )->get()->all();
         }
 
         $placelist = [];
@@ -118,7 +120,7 @@ class PlaceRepository implements PlaceRepositoryInterface
      * @param int    $parent
      * @param bool   $country
      *
-     * @return int[]|\stdClass[]
+     * @return int[]|stdClass[]
      */
     public function statsPlaces(string $what = 'ALL', string $fact = '', int $parent = 0, bool $country = false): array
     {
@@ -127,7 +129,7 @@ class PlaceRepository implements PlaceRepositoryInterface
         }
 
         $query = DB::table('places')
-            ->join('placelinks', function (JoinClause $join): void {
+            ->join('placelinks', static function (JoinClause $join): void {
                 $join->on('pl_file', '=', 'p_file')
                     ->on('pl_p_id', '=', 'p_id');
             })
@@ -149,12 +151,12 @@ class PlaceRepository implements PlaceRepositoryInterface
         }
 
         if ($what === 'INDI') {
-            $query->join('individuals', function (JoinClause $join): void {
+            $query->join('individuals', static function (JoinClause $join): void {
                 $join->on('pl_file', '=', 'i_file')
                     ->on('pl_gid', '=', 'i_id');
             });
         } elseif ($what === 'FAM') {
-            $query->join('families', function (JoinClause $join): void {
+            $query->join('families', static function (JoinClause $join): void {
                 $join->on('pl_file', '=', 'f_file')
                     ->on('pl_gid', '=', 'f_id');
             });
@@ -277,7 +279,7 @@ class PlaceRepository implements PlaceRepositoryInterface
         $all_db_countries = [];
         foreach ($countries as $place) {
             $country = trim($place->country);
-            if (\array_key_exists($country, $country_names)) {
+            if (array_key_exists($country, $country_names)) {
                 if (isset($all_db_countries[$country_names[$country]][$country])) {
                     $all_db_countries[$country_names[$country]][$country] += (int) $place->tot;
                 } else {
@@ -346,8 +348,8 @@ class PlaceRepository implements PlaceRepositoryInterface
      */
     public function chartDistribution(
         string $chart_shows = 'world',
-        string $chart_type  = '',
-        string $surname     = ''
+        string $chart_type = '',
+        string $surname = ''
     ): string {
         return (new ChartDistribution($this->tree))
             ->chartDistribution($chart_shows, $chart_type, $surname);

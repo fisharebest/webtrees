@@ -32,7 +32,7 @@ class Migration0 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        DB::schema()->create('gedcom', function (Blueprint $table): void {
+        DB::schema()->create('gedcom', static function (Blueprint $table): void {
             $table->integer('gedcom_id', true);
             $table->string('gedcom_name', 255);
             $table->integer('sort_order')->default(0);
@@ -41,14 +41,14 @@ class Migration0 implements MigrationInterface
             $table->index('sort_order');
         });
 
-        DB::schema()->create('site_setting', function (Blueprint $table): void {
+        DB::schema()->create('site_setting', static function (Blueprint $table): void {
             $table->string('setting_name', 32);
             $table->string('setting_value', 2000);
 
             $table->primary('setting_name');
         });
 
-        DB::schema()->create('gedcom_setting', function (Blueprint $table): void {
+        DB::schema()->create('gedcom_setting', static function (Blueprint $table): void {
             $table->integer('gedcom_id');
             $table->string('setting_name', 32);
             $table->string('setting_value', 255);
@@ -58,7 +58,7 @@ class Migration0 implements MigrationInterface
             $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom');
         });
 
-        DB::schema()->create('user', function (Blueprint $table): void {
+        DB::schema()->create('user', static function (Blueprint $table): void {
             $table->integer('user_id', true);
             $table->string('user_name', 32);
             $table->string('real_name', 64);
@@ -69,7 +69,7 @@ class Migration0 implements MigrationInterface
             $table->unique('email');
         });
 
-        DB::schema()->create('user_setting', function (Blueprint $table): void {
+        DB::schema()->create('user_setting', static function (Blueprint $table): void {
             $table->integer('user_id');
             $table->string('setting_name', 32);
             $table->string('setting_value', 255);
@@ -79,7 +79,7 @@ class Migration0 implements MigrationInterface
             $table->foreign('user_id')->references('user_id')->on('user');
         });
 
-        DB::schema()->create('user_gedcom_setting', function (Blueprint $table): void {
+        DB::schema()->create('user_gedcom_setting', static function (Blueprint $table): void {
             $table->integer('user_id');
             $table->integer('gedcom_id');
             $table->string('setting_name', 32);
@@ -92,7 +92,7 @@ class Migration0 implements MigrationInterface
             $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom');
         });
 
-        DB::schema()->create('log', function (Blueprint $table): void {
+        DB::schema()->create('log', static function (Blueprint $table): void {
             $table->integer('log_id', true);
             $table->timestamp('log_time')->useCurrent();
             $table->enum('log_type', ['auth', 'config', 'debug', 'edit', 'error', 'media', 'search']);
@@ -111,7 +111,7 @@ class Migration0 implements MigrationInterface
             $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom');
         });
 
-        DB::schema()->create('change', function (Blueprint $table): void {
+        DB::schema()->create('change', static function (Blueprint $table): void {
             $table->integer('change_id', true);
             $table->timestamp('change_time')->useCurrent();
             $table->enum('status', ['accepted', 'pending', 'rejected'])->default('pending');
@@ -128,7 +128,7 @@ class Migration0 implements MigrationInterface
             $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom');
         });
 
-        DB::schema()->create('message', function (Blueprint $table): void {
+        DB::schema()->create('message', static function (Blueprint $table): void {
             $table->integer('message_id', true);
             $table->string('sender', 64);
             $table->ipAddress('ip_address');
@@ -142,7 +142,7 @@ class Migration0 implements MigrationInterface
             $table->foreign('user_id')->references('user_id')->on('user');
         });
 
-        DB::schema()->create('default_resn', function (Blueprint $table): void {
+        DB::schema()->create('default_resn', static function (Blueprint $table): void {
             $table->integer('default_resn_id', true);
             $table->integer('gedcom_id');
             $table->string('xref', 20)->nullable();
@@ -156,7 +156,7 @@ class Migration0 implements MigrationInterface
             $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom');
         });
 
-        DB::schema()->create('individuals', function (Blueprint $table): void {
+        DB::schema()->create('individuals', static function (Blueprint $table): void {
             $table->string('i_id', 20);
             $table->integer('i_file');
             $table->string('i_rin', 20);
@@ -167,7 +167,7 @@ class Migration0 implements MigrationInterface
             $table->unique(['i_file', 'i_id']);
         });
 
-        DB::schema()->create('families', function (Blueprint $table): void {
+        DB::schema()->create('families', static function (Blueprint $table): void {
             $table->string('f_id', 20);
             $table->integer('f_file');
             $table->string('f_husb', 20)->nullable();
@@ -181,7 +181,7 @@ class Migration0 implements MigrationInterface
             $table->index('f_wife');
         });
 
-        DB::schema()->create('places', function (Blueprint $table): void {
+        DB::schema()->create('places', static function (Blueprint $table): void {
             $table->integer('p_id', true);
             $table->string('p_place', 150);
             $table->integer('p_parent_id')->nullable();
@@ -193,7 +193,7 @@ class Migration0 implements MigrationInterface
             $table->unique(['p_parent_id', 'p_file', 'p_place']);
         });
 
-        DB::schema()->create('placelinks', function (Blueprint $table): void {
+        DB::schema()->create('placelinks', static function (Blueprint $table): void {
             $table->integer('pl_p_id');
             $table->string('pl_gid', 20);
             $table->integer('pl_file');
@@ -204,7 +204,7 @@ class Migration0 implements MigrationInterface
             $table->index('pl_file');
         });
 
-        DB::schema()->create('dates', function (Blueprint $table): void {
+        DB::schema()->create('dates', static function (Blueprint $table): void {
             $table->tinyInteger('d_day');
             $table->char('d_month', 5)->nullable();
             $table->tinyInteger('d_mon');
@@ -228,7 +228,7 @@ class Migration0 implements MigrationInterface
             $table->index(['d_fact', 'd_gid']);
         });
 
-        DB::schema()->create('media', function (Blueprint $table): void {
+        DB::schema()->create('media', static function (Blueprint $table): void {
             $table->string('m_id', 20);
             $table->string('m_ext', 6)->nullable();
             $table->string('m_type', 20)->nullable();
@@ -242,7 +242,7 @@ class Migration0 implements MigrationInterface
             $table->index(['m_ext', 'm_type']);
         });
 
-        DB::schema()->create('next_id', function (Blueprint $table): void {
+        DB::schema()->create('next_id', static function (Blueprint $table): void {
             $table->integer('gedcom_id');
             $table->string('record_type', 15);
             $table->decimal('next_id', 20, 0);
@@ -252,7 +252,7 @@ class Migration0 implements MigrationInterface
             $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom');
         });
 
-        DB::schema()->create('other', function (Blueprint $table): void {
+        DB::schema()->create('other', static function (Blueprint $table): void {
             $table->string('o_id', 20);
             $table->integer('o_file');
             $table->string('o_type', 15);
@@ -262,7 +262,7 @@ class Migration0 implements MigrationInterface
             $table->unique(['o_file', 'o_id']);
         });
 
-        DB::schema()->create('sources', function (Blueprint $table): void {
+        DB::schema()->create('sources', static function (Blueprint $table): void {
             $table->string('s_id', 20);
             $table->integer('s_file');
             $table->string('s_name', 255);
@@ -273,7 +273,7 @@ class Migration0 implements MigrationInterface
             $table->index('s_name');
         });
 
-        DB::schema()->create('link', function (Blueprint $table): void {
+        DB::schema()->create('link', static function (Blueprint $table): void {
             $table->integer('l_file');
             $table->string('l_from', 20);
             $table->string('l_type', 15);
@@ -283,7 +283,7 @@ class Migration0 implements MigrationInterface
             $table->unique(['l_to', 'l_file', 'l_type', 'l_from']);
         });
 
-        DB::schema()->create('name', function (Blueprint $table): void {
+        DB::schema()->create('name', static function (Blueprint $table): void {
             $table->integer('n_file');
             $table->string('n_id', 20);
             $table->integer('n_num');
@@ -304,7 +304,7 @@ class Migration0 implements MigrationInterface
             $table->index(['n_givn', 'n_file', 'n_type', 'n_id']);
         });
 
-        DB::schema()->create('module', function (Blueprint $table): void {
+        DB::schema()->create('module', static function (Blueprint $table): void {
             $table->string('module_name', 32);
             $table->enum('status', ['enabled', 'disabled'])->default('enabled');
             $table->integer('tab_order')->nullable();
@@ -314,7 +314,7 @@ class Migration0 implements MigrationInterface
             $table->primary('module_name');
         });
 
-        DB::schema()->create('module_setting', function (Blueprint $table): void {
+        DB::schema()->create('module_setting', static function (Blueprint $table): void {
             $table->string('module_name', 32);
             $table->string('setting_name', 32);
             $table->longText('setting_value');
@@ -324,7 +324,7 @@ class Migration0 implements MigrationInterface
             $table->foreign('module_name')->references('module_name')->on('module');
         });
 
-        DB::schema()->create('module_privacy', function (Blueprint $table): void {
+        DB::schema()->create('module_privacy', static function (Blueprint $table): void {
             $table->string('module_name', 32);
             $table->integer('gedcom_id');
             $table->enum('component', ['block', 'chart', 'menu', 'report', 'sidebar', 'tab', 'theme']);
@@ -337,7 +337,7 @@ class Migration0 implements MigrationInterface
             $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom');
         });
 
-        DB::schema()->create('block', function (Blueprint $table): void {
+        DB::schema()->create('block', static function (Blueprint $table): void {
             $table->integer('block_id', true);
             $table->integer('gedcom_id')->nullable();
             $table->integer('user_id')->nullable();
@@ -355,7 +355,7 @@ class Migration0 implements MigrationInterface
             $table->foreign('user_id')->references('user_id')->on('user');
         });
 
-        DB::schema()->create('block_setting', function (Blueprint $table): void {
+        DB::schema()->create('block_setting', static function (Blueprint $table): void {
             $table->integer('block_id');
             $table->string('setting_name', 32);
             $table->longText('setting_value');
@@ -365,7 +365,7 @@ class Migration0 implements MigrationInterface
             $table->foreign('block_id')->references('block_id')->on('block');
         });
 
-        DB::schema()->create('hit_counter', function (Blueprint $table): void {
+        DB::schema()->create('hit_counter', static function (Blueprint $table): void {
             $table->integer('gedcom_id');
             $table->string('page_name', 32);
             $table->string('page_parameter', 32);
@@ -376,7 +376,7 @@ class Migration0 implements MigrationInterface
             $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom');
         });
 
-        DB::schema()->create('session', function (Blueprint $table): void {
+        DB::schema()->create('session', static function (Blueprint $table): void {
             $table->string('session_id', 32);
             $table->timestamp('session_time')->useCurrent();
             $table->integer('user_id');
@@ -395,7 +395,7 @@ class Migration0 implements MigrationInterface
             DB::connection()->statement($sql);
         }
 
-        DB::schema()->create('gedcom_chunk', function (Blueprint $table): void {
+        DB::schema()->create('gedcom_chunk', static function (Blueprint $table): void {
             $table->integer('gedcom_chunk_id', true);
             $table->integer('gedcom_id');
             $table->binary('chunk_data');

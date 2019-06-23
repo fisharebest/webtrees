@@ -25,9 +25,8 @@ use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Search for (and optionally replace) genealogy data
@@ -137,21 +136,21 @@ class SearchController extends AbstractBaseController
     /**
      * The "omni-search" box in the header.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function quick(Request $request, Tree $tree): Response
+    public function quick(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $query = $request->get('query', '');
+        $query = $request->getQueryParams()['query'] ?? '';
 
         // Was the search query an XREF in the current tree?
         // If so, go straight to it.
         $record = GedcomRecord::getInstance($query, $tree);
 
         if ($record !== null && $record->canShow()) {
-            return new RedirectResponse($record->url());
+            return redirect($record->url());
         }
 
         return $this->general($request, $tree);
@@ -160,21 +159,23 @@ class SearchController extends AbstractBaseController
     /**
      * The standard search.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function general(Request $request, Tree $tree): Response
+    public function general(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $query = $request->get('query', '');
+        $params = $request->getQueryParams();
+
+        $query = $params['query'] ?? '';
 
         // What type of records to search?
-        $search_individuals  = (bool) $request->get('search_individuals');
-        $search_families     = (bool) $request->get('search_families');
-        $search_repositories = (bool) $request->get('search_repositories');
-        $search_sources      = (bool) $request->get('search_sources');
-        $search_notes        = (bool) $request->get('search_notes');
+        $search_individuals  = (bool) ($params['search_individuals'] ?? false);
+        $search_families     = (bool) ($params['search_families'] ?? false);
+        $search_repositories = (bool) ($params['search_repositories'] ?? false);
+        $search_sources      = (bool) ($params['search_sources'] ?? false);
+        $search_notes        = (bool) ($params['search_notes'] ?? false);
 
         // Default to individuals only
         if (!$search_individuals && !$search_families && !$search_repositories && !$search_sources && !$search_notes) {
@@ -191,10 +192,10 @@ class SearchController extends AbstractBaseController
             $all_trees = [$tree];
         }
 
-        $search_tree_names = (array) $request->get('search_trees', []);
+        $search_tree_names = $params['search_trees'] ?? [];
 
-        $search_trees = array_filter($all_trees, function (Tree $tree) use ($search_tree_names): bool {
-            return in_array($tree->name(), $search_tree_names);
+        $search_trees = array_filter($all_trees, static function (Tree $tree) use ($search_tree_names): bool {
+            return in_array($tree->name(), $search_tree_names, true);
         });
 
         if (empty($search_trees)) {
@@ -237,19 +238,19 @@ class SearchController extends AbstractBaseController
 
         // If only 1 item is returned, automatically forward to that item
         if ($individuals->count() === 1 && $families->isEmpty() && $sources->isEmpty() && $notes->isEmpty()) {
-            return new RedirectResponse($individuals->first()->url());
+            return redirect($individuals->first()->url());
         }
 
         if ($individuals->isEmpty() && $families->count() === 1 && $sources->isEmpty() && $notes->isEmpty()) {
-            return new RedirectResponse($families->first()->url());
+            return redirect($families->first()->url());
         }
 
         if ($individuals->isEmpty() && $families->isEmpty() && $sources->count() === 1 && $notes->isEmpty()) {
-            return new RedirectResponse($sources->first()->url());
+            return redirect($sources->first()->url());
         }
 
         if ($individuals->isEmpty() && $families->isEmpty() && $sources->isEmpty() && $notes->count() === 1) {
-            return new RedirectResponse($notes->first()->url());
+            return redirect($notes->first()->url());
         }
 
         $title = I18N::translate('General search');
@@ -301,17 +302,19 @@ class SearchController extends AbstractBaseController
     /**
      * The phonetic search.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function phonetic(Request $request, Tree $tree): Response
+    public function phonetic(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $firstname = $request->get('firstname', '');
-        $lastname  = $request->get('lastname', '');
-        $place     = $request->get('place', '');
-        $soundex   = $request->get('soundex', 'Russell');
+        $params = $request->getQueryParams();
+
+        $firstname = $params['firstname'] ?? '';
+        $lastname  = $params['lastname'] ?? '';
+        $place     = $params['place'] ?? '';
+        $soundex   = $params['soundex'] ?? 'Russell';
 
         // What trees to seach?
         if (Site::getPreference('ALLOW_CHANGE_GEDCOM') === '1') {
@@ -320,10 +323,10 @@ class SearchController extends AbstractBaseController
             $all_trees = [$tree];
         }
 
-        $search_tree_names = (array) $request->get('search_trees', []);
+        $search_tree_names = $params['search_trees'] ?? [];
 
-        $search_trees = array_filter($all_trees, function (Tree $tree) use ($search_tree_names): bool {
-            return in_array($tree->name(), $search_tree_names);
+        $search_trees = array_filter($all_trees, static function (Tree $tree) use ($search_tree_names): bool {
+            return in_array($tree->name(), $search_tree_names, true);
         });
 
         if (empty($search_trees)) {
@@ -349,15 +352,17 @@ class SearchController extends AbstractBaseController
     /**
      * Search and replace.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function replace(Request $request): Response
+    public function replace(ServerRequestInterface $request): ResponseInterface
     {
-        $search  = $request->get('search', '');
-        $replace = $request->get('replace', '');
-        $context = $request->get('context', '');
+        $params = $request->getQueryParams();
+
+        $search  = $params['search'] ?? '';
+        $replace = $params['replace'] ?? '';
+        $context = $params['context'] ?? '';
 
         if ($context !== 'name' && $context !== 'place') {
             $context = 'all';
@@ -376,16 +381,18 @@ class SearchController extends AbstractBaseController
     /**
      * Search and replace.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function replaceAction(Request $request, Tree $tree): RedirectResponse
+    public function replaceAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $search  = $request->get('search', '');
-        $replace = $request->get('replace', '');
-        $context = $request->get('context', '');
+        $params = $request->getParsedBody();
+
+        $search  = $params['search'] ?? '';
+        $replace = $params['replace'] ?? '';
+        $context = $params['context'] ?? '';
 
         switch ($context) {
             case 'all':
@@ -446,7 +453,7 @@ class SearchController extends AbstractBaseController
             'ged'     => $tree->name(),
         ]);
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
@@ -530,19 +537,21 @@ class SearchController extends AbstractBaseController
     /**
      * A structured search.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function advanced(Request $request, Tree $tree): Response
+    public function advanced(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $default_fields = array_fill_keys(self::DEFAULT_ADVANCED_FIELDS, '');
 
-        $fields      = $request->get('fields', $default_fields);
-        $modifiers   = $request->get('modifiers', []);
-        $other_field = $request->get('other_field', '');
-        $other_value = $request->get('other_value', '');
+        $params = $request->getQueryParams();
+
+        $fields      = $params['fields'] ?? $default_fields;
+        $modifiers   = $params['modifiers'] ?? [];
+        $other_field = $params['other_field'] ?? '';
+        $other_value = $params['other_value'] ?? '';
 
         if ($other_field !== '' && $other_value !== '') {
             $fields[$other_field] = $other_value;

@@ -53,7 +53,7 @@ class TreeView
      */
     public function drawViewport(Individual $individual, int $generations): array
     {
-        $html = view('interactive-tree-chart', [
+        $html = view('modules/interactive-tree/chart', [
             'name'       => $this->name,
             'individual' => $this->drawPerson($individual, $generations, 0, null, '', true),
         ]);
@@ -83,7 +83,7 @@ class TreeView
             switch ($firstLetter) {
                 case 'c':
                     $families = Collection::make(explode(',', $json_request))
-                        ->map(function (string $xref) use ($tree): ?Family {
+                        ->map(static function (string $xref) use ($tree): ?Family {
                             return Family::getInstance($xref, $tree);
                         })
                         ->filter();

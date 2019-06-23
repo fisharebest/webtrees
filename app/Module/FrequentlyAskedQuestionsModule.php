@@ -19,14 +19,14 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class FrequentlyAskedQuestionsModule
@@ -35,6 +35,19 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 {
     use ModuleConfigTrait;
     use ModuleMenuTrait;
+
+    /** @var HtmlService */
+    private $html_service;
+
+    /**
+     * HtmlBlockModule bootstrap.
+     *
+     * @param HtmlService $html_service
+     */
+    public function boot(HtmlService $html_service)
+    {
+        $this->html_service = $html_service;
+    }
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -91,9 +104,9 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAdminAction(Tree $tree): Response
+    public function getAdminAction(Tree $tree): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -101,7 +114,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
         $min_block_order = DB::table('block')
             ->where('module_name', '=', $this->name())
-            ->where(function (Builder $query) use ($tree): void {
+            ->where(static function (Builder $query) use ($tree): void {
                 $query
                     ->whereNull('gedcom_id')
                     ->orWhere('gedcom_id', '=', $tree->id());
@@ -110,7 +123,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
         $max_block_order = DB::table('block')
             ->where('module_name', '=', $this->name())
-            ->where(function (Builder $query) use ($tree): void {
+            ->where(static function (Builder $query) use ($tree): void {
                 $query
                     ->whereNull('gedcom_id')
                     ->orWhere('gedcom_id', '=', $tree->id());
@@ -130,14 +143,14 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAdminDeleteAction(Request $request, Tree $tree): RedirectResponse
+    public function postAdminDeleteAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $block_id = (int) $request->get('block_id');
+        $block_id = (int) $request->getQueryParams()['block_id'];
 
         DB::table('block_setting')->where('block_id', '=', $block_id)->delete();
 
@@ -149,18 +162,18 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             'ged'    => $tree->name(),
         ]);
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAdminMoveDownAction(Request $request, Tree $tree): RedirectResponse
+    public function postAdminMoveDownAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $block_id = (int) $request->get('block_id');
+        $block_id = (int) $request->getQueryParams()['block_id'];
 
         $block_order = DB::table('block')
             ->where('block_id', '=', $block_id)
@@ -198,18 +211,18 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             'ged'    => $tree->name(),
         ]);
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAdminMoveUpAction(Request $request, Tree $tree): RedirectResponse
+    public function postAdminMoveUpAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $block_id = (int) $request->get('block_id');
+        $block_id = (int) $request->getQueryParams()['block_id'];
 
         $block_order = DB::table('block')
             ->where('block_id', '=', $block_id)
@@ -217,7 +230,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
         $swap_block = DB::table('block')
             ->where('module_name', '=', $this->name())
-            ->where('block_order', '=', function (Builder $query) use ($block_order): void {
+            ->where('block_order', '=', static function (Builder $query) use ($block_order): void {
                 $query
                     ->from('block')
                     ->where('module_name', '=', $this->name())
@@ -247,29 +260,29 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             'ged'    => $tree->name(),
         ]);
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getAdminEditAction(Request $request, Tree $tree): Response
+    public function getAdminEditAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
-        $block_id = (int) $request->get('block_id');
+        $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
 
         if ($block_id === 0) {
             // Creating a new faq
-            $header      = '';
-            $faqbody     = '';
+            $header  = '';
+            $faqbody = '';
 
             $block_order = 1 + (int) DB::table('block')
-                ->where('module_name', '=', $this->name())
-                ->max('block_order');
+                    ->where('module_name', '=', $this->name())
+                    ->max('block_order');
 
             $languages = [];
 
@@ -288,6 +301,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             $title = I18N::translate('Edit the FAQ');
         }
 
+        $tree_names = ['' => I18N::translate('All')] + Tree::getIdList();
+
         return $this->viewResponse('modules/faq/edit', [
             'block_id'    => $block_id,
             'block_order' => $block_order,
@@ -296,24 +311,30 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             'languages'   => $languages,
             'title'       => $title,
             'tree'        => $tree,
-            'tree_names'  => Tree::getIdList(),
+            'tree_names'  => $tree_names,
         ]);
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAdminEditAction(Request $request, Tree $tree): RedirectResponse
+    public function postAdminEditAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $block_id    = (int) $request->get('block_id');
-        $faqbody     = $request->get('faqbody', '');
-        $header      = $request->get('header', '');
-        $languages   = $request->get('languages', []);
-        $gedcom_id   = (int) $request->get('gedcom_id') ?: null;
-        $block_order = (int) $request->get('block_order');
+        $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
+
+        $params = $request->getParsedBody();
+
+        $faqbody     = $params['faqbody'];
+        $header      = $params['header'];
+        $languages   = $params['languages'] ?? [];
+        $gedcom_id   = (int) $params['gedcom_id'] ?: null;
+        $block_order = (int) $params['block_order'];
+
+        $faqbody = $this->html_service->sanitize($faqbody);
+        $header  = $this->html_service->sanitize($header);
 
         if ($block_id !== 0) {
             DB::table('block')
@@ -342,20 +363,20 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             'ged'    => $tree->name(),
         ]);
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getShowAction(Tree $tree): Response
+    public function getShowAction(Tree $tree): ResponseInterface
     {
         // Filter foreign languages.
         $faqs = $this->faqsForTree($tree)
-            ->filter(function (stdClass $faq): bool {
-                return $faq->languages === '' || in_array(WT_LOCALE, explode(',', $faq->languages));
+            ->filter(static function (stdClass $faq): bool {
+                return $faq->languages === '' || in_array(WT_LOCALE, explode(',', $faq->languages), true);
             });
 
         return $this->viewResponse('modules/faq/show', [
@@ -366,7 +387,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     }
 
     /**
-     * @param Tree   $tree
+     * @param Tree $tree
      *
      * @return Collection
      */
@@ -380,7 +401,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             ->where('bs1.setting_name', '=', 'header')
             ->where('bs2.setting_name', '=', 'faqbody')
             ->where('bs3.setting_name', '=', 'languages')
-            ->where(function (Builder $query) use ($tree): void {
+            ->where(static function (Builder $query) use ($tree): void {
                 $query
                     ->whereNull('gedcom_id')
                     ->orWhere('gedcom_id', '=', $tree->id());
@@ -399,19 +420,19 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     private function faqsExist(Tree $tree, string $language): bool
     {
         return DB::table('block')
-             ->join('block_setting', 'block_setting.block_id', '=', 'block.block_id')
-             ->where('module_name', '=', $this->name())
-             ->where('setting_name', '=', 'languages')
-             ->where(function (Builder $query) use ($tree): void {
-                 $query
-                     ->whereNull('gedcom_id')
-                     ->orWhere('gedcom_id', '=', $tree->id());
-             })
-             ->select(['setting_value AS languages'])
-             ->get()
-             ->filter(function (stdClass $faq) use ($language): bool {
-                 return $faq->languages === '' || in_array($language, explode(',', $faq->languages));
-             })
+            ->join('block_setting', 'block_setting.block_id', '=', 'block.block_id')
+            ->where('module_name', '=', $this->name())
+            ->where('setting_name', '=', 'languages')
+            ->where(static function (Builder $query) use ($tree): void {
+                $query
+                    ->whereNull('gedcom_id')
+                    ->orWhere('gedcom_id', '=', $tree->id());
+            })
+            ->select(['setting_value AS languages'])
+            ->get()
+            ->filter(static function (stdClass $faq) use ($language): bool {
+                return $faq->languages === '' || in_array($language, explode(',', $faq->languages), true);
+            })
             ->isNotEmpty();
     }
 }

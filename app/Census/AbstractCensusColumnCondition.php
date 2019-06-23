@@ -25,38 +25,38 @@ use Fisharebest\Webtrees\Individual;
  */
 abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implements CensusColumnInterface
 {
-    /** @var string Text to display for married males */
-    protected $husband = '';
+    // Text to display for married males
+    protected const HUSBAND = '';
 
-    /** @var string Text to display for married females */
-    protected $wife = '';
+    // Text to display for married females
+    protected const WIFE = '';
 
-    /** @var string Text to display for unmarried males */
-    protected $bachelor = '';
+    // Text to display for married unmarried males
+    protected const BACHELOR = '';
 
-    /** @var string Text to display for unmarried females */
-    protected $spinster = '';
+    // Text to display for married unmarried females
+    protected const SPINSTER = '';
 
-    /** @var string Text to display for male children */
-    protected $boy = '';
+    // Text to display for male children
+    protected const BOY = '';
 
-    /** @var string Text to display for female children */
-    protected $girl = '';
+    // Text to display for female children
+    protected const GIRL = '';
 
-    /** @var string Text to display for divorced males */
-    protected $divorce = '';
+    // Text to display for divorced males
+    protected const DIVORCE = '';
 
-    /** @var string Text to display for divorced females */
-    protected $divorcee = '';
+    // Text to display for divorced females
+    protected const DIVORCEE = '';
 
-    /** @var string Text to display for widowed males */
-    protected $widower = '';
+    // Text to display for widowed males
+    protected const WIDOWER = '';
 
-    /** @var string Text to display for widowed females */
-    protected $widow = '';
+    // Text to display for widowed females
+    protected const WIDOW = '';
 
-    /** @var int At what age is this individual recorded as an adult */
-    protected $age_adult = 15;
+    // At what age is this individual recorded as an adult
+    protected const AGE_ADULT = 15;
 
     /**
      * Generate the likely value of this census column, based on available information.
@@ -102,7 +102,7 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
     {
         $age = Date::getAgeYears($individual->getEstimatedBirthDate(), $this->date());
 
-        return $age < $this->age_adult;
+        return $age < static::AGE_ADULT;
     }
 
     /**
@@ -112,13 +112,13 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      *
      * @return string
      */
-    private function conditionChild($sex): string
+    private function conditionChild(string $sex): string
     {
         if ($sex === 'F') {
-            return $this->girl;
+            return static::GIRL;
         }
 
-        return $this->boy;
+        return static::BOY;
     }
 
     /**
@@ -128,13 +128,13 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      *
      * @return string
      */
-    private function conditionSingle($sex): string
+    private function conditionSingle(string $sex): string
     {
         if ($sex === 'F') {
-            return $this->spinster;
+            return static::SPINSTER;
         }
 
-        return $this->bachelor;
+        return static::BACHELOR;
     }
 
     /**
@@ -144,13 +144,13 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      *
      * @return string
      */
-    private function conditionDivorced($sex): string
+    private function conditionDivorced(string $sex): string
     {
         if ($sex === 'F') {
-            return $this->divorcee;
+            return static::DIVORCEE;
         }
 
-        return $this->divorce;
+        return static::DIVORCE;
     }
 
     /**
@@ -172,13 +172,13 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      *
      * @return string
      */
-    private function conditionWidowed($sex): string
+    private function conditionWidowed(string $sex): string
     {
         if ($sex === 'F') {
-            return $this->widow;
+            return static::WIDOW;
         }
 
-        return $this->widower;
+        return static::WIDOWER;
     }
 
     /**
@@ -188,12 +188,12 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      *
      * @return string
      */
-    private function conditionMarried($sex): string
+    private function conditionMarried(string $sex): string
     {
         if ($sex === 'F') {
-            return $this->wife;
+            return static::WIFE;
         }
 
-        return $this->husband;
+        return static::HUSBAND;
     }
 }

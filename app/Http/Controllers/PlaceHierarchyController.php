@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Exception;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
@@ -30,8 +31,8 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -59,16 +60,20 @@ class PlaceHierarchyController extends AbstractBaseController
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param SearchService $search_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param SearchService          $search_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function show(Request $request, Tree $tree, SearchService $search_service): Response
+    public function show(ServerRequestInterface $request, Tree $tree, SearchService $search_service): ResponseInterface
     {
-        $action2    = $request->query->get('action2', 'hierarchy');
-        $parent     = $request->query->get('parent', []);
+        $params  = $request->getQueryParams();
+        $action2 = $params['action2'] ?? 'hierarchy';
+        $parent  = $params['parent'] ?? [];
+        $module  = $params['module'];
+        $action  = $params['action'];
+
         $fqpn       = implode(Gedcom::PLACE_SEPARATOR, array_reverse($parent));
         $place      = new Place($fqpn, $tree);
         $content    = '';
@@ -106,10 +111,6 @@ class PlaceHierarchyController extends AbstractBaseController
 
         $breadcrumbs = $this->breadcrumbs($place);
 
-        //route is assumed to be 'module'
-        $module = $request->get('module');
-        $action = $request->get('action');
-        
         return $this->viewResponse(
             'places-page',
             [
@@ -138,7 +139,7 @@ class PlaceHierarchyController extends AbstractBaseController
     private function getList(Tree $tree, SearchService $search_service): array
     {
         $places = $search_service->searchPlaces($tree, '')
-            ->sort(function (Place $x, Place $y): int {
+            ->sort(static function (Place $x, Place $y): int {
                 return $x->gedcomName() <=> $y->gedcomName();
             })
             ->all();
@@ -159,14 +160,14 @@ class PlaceHierarchyController extends AbstractBaseController
 
 
     /**
-     * @param Tree   $tree
-     * @param Place  $place
-     * @param string $parent []
+     * @param Tree     $tree
+     * @param Place    $place
+     * @param string[] $parent
      *
      * @return array|null
-     * @throws \Exception
+     * @throws Exception
      */
-    private function getHierarchy($tree, $place, $parent): ?array
+    private function getHierarchy(Tree $tree, Place $place, array $parent): ?array
     {
         $child_places = $place->getChildPlaces();
         $numfound     = count($child_places);
@@ -192,12 +193,12 @@ class PlaceHierarchyController extends AbstractBaseController
      * @param Place $place
      *
      * @return array
-     * @throws \Exception
+     * @throws Exception
      */
     private function getEvents($tree, $place): array
     {
         $indilist = DB::table('individuals')
-            ->join('placelinks', function (JoinClause $join): void {
+            ->join('placelinks', static function (JoinClause $join): void {
                 $join
                     ->on('pl_file', '=', 'i_file')
                     ->on('pl_gid', '=', 'i_id');
@@ -212,7 +213,7 @@ class PlaceHierarchyController extends AbstractBaseController
             ->all();
 
         $famlist = DB::table('families')
-            ->join('placelinks', function (JoinClause $join): void {
+            ->join('placelinks', static function (JoinClause $join): void {
                 $join
                     ->on('pl_file', '=', 'f_file')
                     ->on('pl_gid', '=', 'f_id');
@@ -270,7 +271,7 @@ class PlaceHierarchyController extends AbstractBaseController
         $placeObj  = new Place($reference, $tree);
         $places    = $placeObj->getChildPlaces();
         $features  = [];
-        $flag_path = Webtrees::MODULES_PATH . 'openstreetmap/';
+        $flag_path = Webtrees::MODULES_DIR . 'openstreetmap/';
         $showlink  = true;
         if (empty($places)) {
             $places[] = $placeObj;

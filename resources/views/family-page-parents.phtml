@@ -1,0 +1,53 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+<div class="d-flex">
+    <div class="align-self-center">
+        <div class="d-flex">
+            <div class="wt-chart-horizontal-spacer">
+                <div class="wt-chart-horizontal-first-parent"></div>
+            </div>
+
+            <div class="align-self-center">
+                <?php if ($family->husband()): ?>
+                    <?= view('chart-box', ['individual' => $family->husband()]) ?>
+                <?php else: ?>
+                <div class="wt-chart-box">
+                    <?php if ($family->canEdit()): ?>
+                        <a class="btn btn-link" href="<?= e(route('add-spouse-to-family', ['ged' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'HUSB'])) ?>">
+                            <?= I18N::translate('Add a husband' )?>
+                        </a>
+                    <?php endif ?>
+                </div>
+                <?php endif ?>
+            </div>
+
+            <?= view('family-page-grandparents', ['family' => $family->husband() ? $family->husband()->primaryChildFamily() : null, 'individual' => $family->husband()]) ?>
+        </div>
+
+        <div class="d-flex">
+            <div class="wt-chart-horizontal-spacer">
+                <div class="wt-chart-horizontal-last-parent"></div>
+            </div>
+
+            <div class="align-self-center">
+                <?php if ($family->wife()): ?>
+                    <?= view('chart-box', ['individual' => $family->wife()]) ?>
+                <?php else: ?>
+                    <div class="wt-chart-box">
+                        <?php if ($family->canEdit()): ?>
+                            <a class="btn btn-link" href="<?= e(route('add-spouse-to-family', ['ged' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'WIFE'])) ?>">
+                                <?= I18N::translate('Add a wife' )?>
+                            </a>
+                        <?php endif ?>
+                    </div>
+                <?php endif ?>
+            </div>
+
+            <?= view('family-page-grandparents', ['family' => $family->wife() ? $family->wife()->primaryChildFamily() : null, 'individual' => $family->wife()]) ?>
+        </div>
+    </div>
+</div>
+

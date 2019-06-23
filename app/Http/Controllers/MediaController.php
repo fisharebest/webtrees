@@ -23,8 +23,8 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for the media page.
@@ -34,15 +34,15 @@ class MediaController extends AbstractBaseController
     /**
      * Show a repository's page.
      *
-     * @param Request          $request
-     * @param Tree             $tree
-     * @param ClipboardService $clipboard_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param ClipboardService       $clipboard_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function show(Request $request, Tree $tree, ClipboardService $clipboard_service): Response
+    public function show(ServerRequestInterface $request, Tree $tree, ClipboardService $clipboard_service): ResponseInterface
     {
-        $xref  = $request->get('xref', '');
+        $xref  = $request->getQueryParams()['xref'];
         $media = Media::getInstance($xref, $tree);
 
         Auth::checkMediaAccess($media);
@@ -64,12 +64,11 @@ class MediaController extends AbstractBaseController
      * @param Media $record
      *
      * @return Collection
-     * @return Fact[]
      */
     private function facts(Media $record): Collection
     {
         return $record->facts()
-            ->filter(function (Fact $fact): bool {
+            ->filter(static function (Fact $fact): bool {
                 return $fact->getTag() !== 'FILE';
             });
     }

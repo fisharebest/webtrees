@@ -283,10 +283,7 @@ class CarbonPeriod implements Iterator, Countable
      */
     protected static function intervalHasTime(DateInterval $interval)
     {
-        // The array_key_exists and get_object_vars are used as a workaround to check microsecond support.
-        // Both isset and property_exists will fail on PHP 7.0.14 - 7.0.21 due to the following bug:
-        // https://bugs.php.net/bug.php?id=74852
-        return $interval->h || $interval->i || $interval->s || array_key_exists('f', get_object_vars($interval)) && $interval->f;
+        return $interval->h || $interval->i || $interval->s || $interval->f;
     }
 
     /**
@@ -1320,10 +1317,10 @@ class CarbonPeriod implements Iterator, Countable
             'join' => true,
         ])], null, $translator);
 
-        $parts[] = $this->translate('period_start_date', [':date' => $this->startDate->format($format)], null, $translator);
+        $parts[] = $this->translate('period_start_date', [':date' => $this->startDate->rawFormat($format)], null, $translator);
 
         if ($this->endDate !== null) {
-            $parts[] = $this->translate('period_end_date', [':date' => $this->endDate->format($format)], null, $translator);
+            $parts[] = $this->translate('period_end_date', [':date' => $this->endDate->rawFormat($format)], null, $translator);
         }
 
         $result = implode(' ', $parts);

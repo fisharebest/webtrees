@@ -31,7 +31,7 @@ class CensusOfCzechRepublicTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testPlace(): void
     {
-        $census = new CensusOfCzechRepublic;
+        $census = new CensusOfCzechRepublic();
 
         $this->assertSame('Česko', $census->censusPlace());
     }
@@ -45,15 +45,15 @@ class CensusOfCzechRepublicTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testAllDates(): void
     {
-        $census = new CensusOfCzechRepublic;
+        $census = new CensusOfCzechRepublic();
 
         $census_dates = $census->allCensusDates();
 
         $this->assertCount(5, $census_dates);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfCzechRepublic1880', $census_dates[0]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfCzechRepublic1890', $census_dates[1]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfCzechRepublic1900', $census_dates[2]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfCzechRepublic1910', $census_dates[3]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfCzechRepublic1921', $census_dates[4]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfCzechRepublic1880::class, $census_dates[0]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfCzechRepublic1890::class, $census_dates[1]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfCzechRepublic1900::class, $census_dates[2]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfCzechRepublic1910::class, $census_dates[3]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfCzechRepublic1921::class, $census_dates[4]);
     }
 }

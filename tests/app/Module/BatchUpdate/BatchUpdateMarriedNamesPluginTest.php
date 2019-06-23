@@ -29,6 +29,6 @@ class BatchUpdateMarriedNamesPluginTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\BatchUpdate\BatchUpdateMarriedNamesPlugin'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\BatchUpdate\BatchUpdateMarriedNamesPlugin::class));
     }
 }

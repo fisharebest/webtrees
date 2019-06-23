@@ -43,12 +43,13 @@ use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Controller for the administration pages
@@ -64,7 +65,7 @@ class ControlPanelController extends AbstractAdminController
      * @param ServerCheckService  $server_check_service
      * @param UserService         $user_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
     public function controlPanel(
         HousekeepingService $housekeeping_service,
@@ -72,8 +73,8 @@ class ControlPanelController extends AbstractAdminController
         ModuleService $module_service,
         ServerCheckService $server_check_service,
         UserService $user_service
-    ): Response {
-        $filesystem      = new Filesystem(new Local(WT_ROOT));
+    ): ResponseInterface {
+        $filesystem      = new Filesystem(new Local(Webtrees::ROOT_DIR));
         $files_to_delete = $housekeeping_service->deleteOldWebtreesFiles($filesystem);
 
         return $this->viewResponse('admin/control-panel', [
@@ -138,11 +139,11 @@ class ControlPanelController extends AbstractAdminController
      *
      * @param ModuleService $module_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function controlPanelManager(ModuleService $module_service): Response
+    public function controlPanelManager(ModuleService $module_service): ResponseInterface
     {
-        $all_trees = array_filter(Tree::getAll(), function (Tree $tree): bool {
+        $all_trees = array_filter(Tree::getAll(), static function (Tree $tree): bool {
             return Auth::isManager($tree);
         });
 
@@ -173,7 +174,7 @@ class ControlPanelController extends AbstractAdminController
     private function totalChanges(): array
     {
         return DB::table('gedcom')
-            ->leftJoin('change', function (JoinClause $join): void {
+            ->leftJoin('change', static function (JoinClause $join): void {
                 $join
                     ->on('change.gedcom_id', '=', 'gedcom.gedcom_id')
                     ->where('change.status', '=', 'pending');
@@ -187,7 +188,6 @@ class ControlPanelController extends AbstractAdminController
      * Count the number of families in each tree.
      *
      * @return Collection
-     * @return int[]
      */
     private function totalFamilies(): Collection
     {
@@ -195,7 +195,7 @@ class ControlPanelController extends AbstractAdminController
             ->leftJoin('families', 'f_file', '=', 'gedcom_id')
             ->groupBy('gedcom_id')
             ->pluck(DB::raw('COUNT(f_id)'), 'gedcom_id')
-            ->map(function (string $count) {
+            ->map(static function (string $count) {
                 return (int) $count;
             });
     }
@@ -204,7 +204,6 @@ class ControlPanelController extends AbstractAdminController
      * Count the number of individuals in each tree.
      *
      * @return Collection
-     * @return int[]
      */
     private function totalIndividuals(): Collection
     {
@@ -212,7 +211,7 @@ class ControlPanelController extends AbstractAdminController
             ->leftJoin('individuals', 'i_file', '=', 'gedcom_id')
             ->groupBy('gedcom_id')
             ->pluck(DB::raw('COUNT(i_id)'), 'gedcom_id')
-            ->map(function (string $count) {
+            ->map(static function (string $count) {
                 return (int) $count;
             });
     }
@@ -221,7 +220,6 @@ class ControlPanelController extends AbstractAdminController
      * Count the number of media objects in each tree.
      *
      * @return Collection
-     * @return int[]
      */
     private function totalMediaObjects(): Collection
     {
@@ -229,7 +227,7 @@ class ControlPanelController extends AbstractAdminController
             ->leftJoin('media', 'm_file', '=', 'gedcom_id')
             ->groupBy('gedcom_id')
             ->pluck(DB::raw('COUNT(m_id)'), 'gedcom_id')
-            ->map(function (string $count) {
+            ->map(static function (string $count) {
                 return (int) $count;
             });
     }
@@ -238,19 +236,18 @@ class ControlPanelController extends AbstractAdminController
      * Count the number of notes in each tree.
      *
      * @return Collection
-     * @return int[]
      */
     private function totalNotes(): Collection
     {
         return DB::table('gedcom')
-            ->leftJoin('other', function (JoinClause $join): void {
+            ->leftJoin('other', static function (JoinClause $join): void {
                 $join
                     ->on('o_file', '=', 'gedcom_id')
                     ->where('o_type', '=', 'NOTE');
             })
             ->groupBy('gedcom_id')
             ->pluck(DB::raw('COUNT(o_id)'), 'gedcom_id')
-            ->map(function (string $count) {
+            ->map(static function (string $count) {
                 return (int) $count;
             });
     }
@@ -259,19 +256,18 @@ class ControlPanelController extends AbstractAdminController
      * Count the number of repositorie in each tree.
      *
      * @return Collection
-     * @return int[]
      */
     private function totalRepositories(): Collection
     {
         return DB::table('gedcom')
-            ->leftJoin('other', function (JoinClause $join): void {
+            ->leftJoin('other', static function (JoinClause $join): void {
                 $join
                     ->on('o_file', '=', 'gedcom_id')
                     ->where('o_type', '=', 'REPO');
             })
             ->groupBy('gedcom_id')
             ->pluck(DB::raw('COUNT(o_id)'), 'gedcom_id')
-            ->map(function (string $count) {
+            ->map(static function (string $count) {
                 return (int) $count;
             });
     }
@@ -280,7 +276,6 @@ class ControlPanelController extends AbstractAdminController
      * Count the number of sources in each tree.
      *
      * @return Collection
-     * @return int[]
      */
     private function totalSources(): Collection
     {
@@ -288,7 +283,7 @@ class ControlPanelController extends AbstractAdminController
             ->leftJoin('sources', 's_file', '=', 'gedcom_id')
             ->groupBy('gedcom_id')
             ->pluck(DB::raw('COUNT(s_id)'), 'gedcom_id')
-            ->map(function (string $count) {
+            ->map(static function (string $count) {
                 return (int) $count;
             });
     }

@@ -29,6 +29,6 @@ class StatisticsChartModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\StatisticsChartModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\StatisticsChartModule::class));
     }
 }

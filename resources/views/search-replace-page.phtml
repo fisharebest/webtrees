@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <h2 class="wt-page-title">
@@ -31,7 +30,7 @@
             <?= /* I18N: A button label. */ I18N::translate('Search') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= Bootstrap4::radioButtons('context', ['all' => I18N::translate('Entire record'), 'name' => I18N::translate('Names'), 'place' => I18N::translate('Places')], $context, false) ?>
+            <?= view('components/radios-inline', ['name' => 'context', 'options' => ['all' => I18N::translate('Entire record'), 'name' => I18N::translate('Names'), 'place' => I18N::translate('Places')], 'selected' => $context]) ?>
         </div>
     </div>
     <div class="row form-group">

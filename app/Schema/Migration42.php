@@ -56,7 +56,7 @@ class Migration42 implements MigrationInterface
 
         DB::schema()->drop('module_privacy');
 
-        DB::schema()->create('module_privacy', function (Blueprint $table): void {
+        DB::schema()->create('module_privacy', static function (Blueprint $table): void {
             $table->increments('id');
             $table->string('module_name', 32);
             $table->integer('gedcom_id');

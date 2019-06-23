@@ -25,9 +25,8 @@ use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for edit forms and responses.
@@ -35,14 +34,14 @@ use Symfony\Component\HttpFoundation\Response;
 class EditFamilyController extends AbstractEditController
 {
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function reorderChildren(Request $request, Tree $tree): Response
+    public function reorderChildren(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref   = $request->get('xref', '');
+        $xref   = $request->getQueryParams()['xref'];
         $family = Family::getInstance($xref, $tree);
 
         Auth::checkFamilyAccess($family, true);
@@ -56,15 +55,15 @@ class EditFamilyController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function reorderChildrenAction(Request $request, Tree $tree): Response
+    public function reorderChildrenAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref   = $request->get('xref', '');
-        $order  = (array) $request->get('order', []);
+        $xref   = $request->getQueryParams()['xref'];
+        $order  = $request->getParsedBody()['order'] ?? [];
         $family = Family::getInstance($xref, $tree);
 
         Auth::checkFamilyAccess($family, true);
@@ -83,8 +82,8 @@ class EditFamilyController extends AbstractEditController
         }
 
         // Sort the facts
-        uksort($sort_facts, function ($x, $y) use ($order) {
-            return array_search($x, $order) - array_search($y, $order);
+        uksort($sort_facts, static function ($x, $y) use ($order) {
+            return array_search($x, $order, true) - array_search($y, $order, true);
         });
 
         // Merge the facts
@@ -92,21 +91,20 @@ class EditFamilyController extends AbstractEditController
 
         $family->updateRecord($gedcom, false);
 
-        return new RedirectResponse($family->url());
+        return redirect($family->url());
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @param Tree    $tree
-     *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function addChild(Request $request, Tree $tree): Response
+    public function addChild(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref   = $request->get('xref', '');
-        $gender = $request->get('gender', 'U');
-
+        $params = $request->getQueryParams();
+        $xref   = $params['xref'];
+        $gender = $params['gender'];
         $family = Family::getInstance($xref, $tree);
 
         Auth::checkFamilyAccess($family, true);
@@ -126,26 +124,27 @@ class EditFamilyController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function addChildAction(Request $request, Tree $tree): RedirectResponse
+    public function addChildAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $params = $request->getParsedBody();
+        $xref   = $params['xref'];
 
         $family = Family::getInstance($xref, $tree);
 
         Auth::checkFamilyAccess($family, true);
 
-        $PEDI      = $request->get('PEDI', '');
-        $keep_chan = (bool) $request->get('keep_chan');
+        $PEDI      = $params['PEDI'];
+        $keep_chan = (bool) ($params['keep_chan'] ?? false);
 
-        $this->glevels = $request->get('glevels', []);
-        $this->tag     = $request->get('tag', []);
-        $this->text    = $request->get('text', []);
-        $this->islink  = $request->get('islink', []);
+        $this->glevels = $params['glevels'] ?? [];
+        $this->tag     = $params['tag'] ?? [];
+        $this->text    = $params['text'] ?? [];
+        $this->islink  = $params['islink'] ?? [];
 
         $this->splitSource();
         $gedrec = '0 @@ INDI';
@@ -157,7 +156,7 @@ class EditFamilyController extends AbstractEditController
             }
         }
         $gedrec .= "\n" . GedcomCodePedi::createNewFamcPedi($PEDI, $xref);
-        if ((bool) $request->get('SOUR_INDI')) {
+        if ($params['SOUR_INDI'] ?? false) {
             $gedrec = $this->handleUpdates($gedrec);
         } else {
             $gedrec = $this->updateRest($gedrec);
@@ -170,7 +169,7 @@ class EditFamilyController extends AbstractEditController
         $done = false;
         foreach ($family->facts(['CHIL']) as $fact) {
             $old_child = $fact->target();
-            if ($old_child  instanceof Individual && Date::compare($new_child->getEstimatedBirthDate(), $old_child->getEstimatedBirthDate()) < 0) {
+            if ($old_child instanceof Individual && Date::compare($new_child->getEstimatedBirthDate(), $old_child->getEstimatedBirthDate()) < 0) {
                 // Insert before this child
                 $family->updateFact($fact->id(), '1 CHIL @' . $new_child->xref() . "@\n" . $fact->gedcom(), !$keep_chan);
                 $done = true;
@@ -182,24 +181,24 @@ class EditFamilyController extends AbstractEditController
             $family->createFact('1 CHIL @' . $new_child->xref() . '@', !$keep_chan);
         }
 
-        if ($request->get('goto') === 'new') {
-            return new RedirectResponse($new_child->url());
+        if (($params['goto'] ?? '') === 'new') {
+            return redirect($new_child->url());
         }
 
-        return new RedirectResponse($family->url());
+        return redirect($family->url());
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function addSpouse(Request $request, Tree $tree): Response
+    public function addSpouse(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref   = $request->get('xref', '');
-        $famtag = $request->get('famtag', '');
-
+        $params = $request->getQueryParams();
+        $xref   = $params['xref'];
+        $famtag = $params['famtag'];
         $family = Family::getInstance($xref, $tree);
 
         Auth::checkFamilyAccess($family, true);
@@ -225,23 +224,24 @@ class EditFamilyController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function addSpouseAction(Request $request, Tree $tree): RedirectResponse
+    public function addSpouseAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $params = $request->getParsedBody();
+        $xref   = $params['xref'];
 
         $family = Family::getInstance($xref, $tree);
 
         Auth::checkFamilyAccess($family, true);
 
-        $this->glevels = $request->get('glevels', []);
-        $this->tag     = $request->get('tag', []);
-        $this->text    = $request->get('text', []);
-        $this->islink  = $request->get('islink', []);
+        $this->glevels = $params['glevels'] ?? [];
+        $this->tag     = $params['tag'] ?? [];
+        $this->text    = $params['text'] ?? [];
+        $this->islink  = $params['islink'] ?? [];
 
         // Create the new spouse
         $this->splitSource(); // separate SOUR record from the rest
@@ -255,7 +255,7 @@ class EditFamilyController extends AbstractEditController
             }
         }
 
-        if ((bool) $request->get('SOUR_INDI')) {
+        if ($params['SOUR_INDI'] ?? false) {
             $gedrec = $this->handleUpdates($gedrec);
         } else {
             $gedrec = $this->updateRest($gedrec);
@@ -275,29 +275,29 @@ class EditFamilyController extends AbstractEditController
                 $famrec .= $this->addNewFact($request, $tree, $match);
             }
         }
-        if ((bool) $request->get('SOUR_FAM')) {
+        if ($params['SOUR_FAM'] ?? false) {
             $famrec = $this->handleUpdates($famrec);
         } else {
             $famrec = $this->updateRest($famrec);
         }
         $family->createFact(trim($famrec), true); // trim leading \n
 
-        if ($request->get('goto') === 'new') {
-            return new RedirectResponse($spouse->url());
+        if (($params['goto'] ?? '') === 'new') {
+            return redirect($spouse->url());
         }
 
-        return new RedirectResponse($family->url());
+        return redirect($family->url());
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function changeFamilyMembers(Request $request, Tree $tree): Response
+    public function changeFamilyMembers(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref   = $request->get('xref', '');
+        $xref   = $request->getQueryParams()['xref'];
         $family = Family::getInstance($xref, $tree);
         Auth::checkFamilyAccess($family, true);
 
@@ -314,20 +314,21 @@ class EditFamilyController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function changeFamilyMembersAction(Request $request, Tree $tree): RedirectResponse
+    public function changeFamilyMembersAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref   = $request->get('xref', '');
+        $params = $request->getParsedBody();
+        $xref   = $params['xref'];
         $family = Family::getInstance($xref, $tree);
         Auth::checkFamilyAccess($family, true);
 
-        $HUSB = $request->get('HUSB', '');
-        $WIFE = $request->get('WIFE', '');
-        $CHIL = $request->get('CHIL', []);
+        $HUSB = $params['HUSB'];
+        $WIFE = $params['WIFE'];
+        $CHIL = $params['CHIL'] ?? [];
 
         // Current family members
         $old_father   = $family->husband();
@@ -389,7 +390,7 @@ class EditFamilyController extends AbstractEditController
         }
 
         foreach ($old_children as $old_child) {
-            if ($old_child && !in_array($old_child, $new_children)) {
+            if ($old_child && !in_array($old_child, $new_children, true)) {
                 // Remove old FAMC link
                 foreach ($old_child->facts(['FAMC']) as $fact) {
                     if ($fact->target() === $family) {
@@ -414,6 +415,6 @@ class EditFamilyController extends AbstractEditController
             }
         }
 
-        return new RedirectResponse($family->url());
+        return redirect($family->url());
     }
 }

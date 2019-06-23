@@ -334,7 +334,7 @@ class FunctionsRtl
                     }
                     if ($newState != self::$currentState) {
                         // A direction change has occurred
-                        self::finishCurrentSpan($result, false);
+                        self::finishCurrentSpan($result);
                         self::$previousState = self::$currentState;
                         self::$currentState  = $newState;
                         self::beginCurrentSpan($result);
@@ -406,7 +406,7 @@ class FunctionsRtl
         }
 
         // Trim trailing blanks preceding <br> in LTR text
-        while (self::$previousState != 'RTL') {
+        while (self::$previousState !== 'RTL') {
             if (strpos($result, ' <LTRbr>') !== false) {
                 $result = str_replace(' <LTRbr>', '<LTRbr>', $result);
                 continue;
@@ -449,7 +449,7 @@ class FunctionsRtl
         ], $result);
 
         // Include leading indeterminate directional text in whatever follows
-        if (substr($result . "\n", 0, self::LENGTH_START) != self::START_LTR && substr($result . "\n", 0, self::LENGTH_START) != self::START_RTL && substr($result . "\n", 0, 4) != '<br>') {
+        if (substr($result . "\n", 0, self::LENGTH_START) != self::START_LTR && substr($result . "\n", 0, self::LENGTH_START) != self::START_RTL && substr($result . "\n", 0, 4) !== '<br>') {
             $leadingText = '';
             while (true) {
                 if ($result == '') {
@@ -1116,7 +1116,7 @@ class FunctionsRtl
                     }
                 } else {
                     $newLength = strlen($textSpan) + $countTrailingSpaces;
-                    $textSpan  = str_pad($textSpan, $newLength, ' ', STR_PAD_RIGHT);
+                    $textSpan  = str_pad($textSpan, $newLength, ' ');
                 }
             }
 

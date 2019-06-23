@@ -29,6 +29,6 @@ class ReviewChangesModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\ReviewChangesModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\ReviewChangesModule::class));
     }
 }

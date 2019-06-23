@@ -1,9 +1,12 @@
-<?php use Fisharebest\Webtrees\Auth; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsCharts; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsPrintFacts; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleThemeInterface; ?>
+<?php
+
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
+
+?>
 
 <?php if ($record->isPendingDeletion()) : ?>
     <?php if (Auth::isModerator($record->tree())) : ?>
@@ -23,47 +26,26 @@
     <h2 class="wt-page-title mx-auto">
         <?= $record->fullName() ?>
     </h2>
-    <?php if ($record->canEdit() && !$record->isPendingDeletion()) : ?>
+    <?php if ($record->canEdit()) : ?>
         <?= view('family-page-menu', ['record' => $record]) ?>
     <?php endif ?>
 </div>
 
+<?php View::push('styles') ?>
+<style>
+    .wt-family-members .wt-chart-box {
+        width: 22.5vw;
+    }
+</style>
+<?php View::endpush() ?>
+
 <div class="wt-page-content">
-    <table id="family-table" class="w-100" role="presentation">
-        <tr style="vertical-align:top;">
-            <td style="width: <?= app(ModuleThemeInterface::class)->parameter('chart-box-x') + 30 ?>px;">
-                <?php FunctionsCharts::printFamilyChildren($record) ?>
-            </td>
-            <td>
-                <table class="w-100" role="presentation">
-                    <tr>
-                        <td class="subheaders"><?= I18N::translate('Parents') ?></td>
-                        <td class="subheaders"><?= I18N::translate('Grandparents') ?></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <?php FunctionsCharts::printFamilyParents($record) ?>
-                            <?php if (Auth::isEditor($record->tree())) : ?>
-                                <?php if ($record->husband() === null) : ?>
-                                    <a href="<?= e(route('add-spouse-to-family', ['ged=' => $record->tree()->name(), 'xref' => $record->xref(), 'famtag' => 'HUSB'])) ?>">
-                                        <?= I18N::translate('Add a father') ?>
-                                    </a>
-                                    <br>
-                                <?php endif ?>
-                                <?php if ($record->wife() === null) : ?>
-                                    <a href="<?= e(route('add-spouse-to-family', ['ged=' => $record->tree()->name(), 'xref' => $record->xref(), 'famtag' => 'WIFE'])) ?>">
-                                        <?= I18N::translate('Add a mother') ?>
-                                    </a>
-                                    <br>
-                                <?php endif ?>
-                            <?php endif ?>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    <span class="subheaders"><?= I18N::translate('Family group information') ?></span>
+    <div class="wt-family-members d-flex">
+        <?= view('family-page-children', ['family' => $record]) ?>
+        <?= view('family-page-parents', ['family' => $record]) ?>
+    </div>
+
+    <h3 class="mt-4"><?= I18N::translate('Facts and events') ?></h3>
     <table class="table wt-facts-table">
         <?php if ($facts->isEmpty()) : ?>
             <tr>
@@ -109,7 +91,7 @@
                         <?= I18N::translate('Media object') ?>
                     </th>
                     <td class="optionbox">
-                        <a href="<?= e(route('add-fact', ['ged' => $record->tree()->name(), 'xref' => $record->xref(), 'fact' => 'OBJE']))  ?>">
+                        <a href="<?= e(route('add-fact', ['ged' => $record->tree()->name(), 'xref' => $record->xref(), 'fact' => 'OBJE'])) ?>">
                             <?= I18N::translate('Add a media object') ?>
                         </a>
                     </td>

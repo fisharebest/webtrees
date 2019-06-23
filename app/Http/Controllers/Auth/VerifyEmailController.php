@@ -26,8 +26,8 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for email verification.
@@ -37,16 +37,16 @@ class VerifyEmailController extends AbstractBaseController
     /**
      * Respond to a verification link that was emailed to a user.
      *
-     * @param Request     $request
-     * @param Tree        $tree
-     * @param UserService $user_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserService            $user_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function verify(Request $request, Tree $tree, UserService $user_service): Response
+    public function verify(ServerRequestInterface $request, Tree $tree, UserService $user_service): ResponseInterface
     {
-        $username = $request->get('username', '');
-        $token    = $request->get('token', '');
+        $username = $request->getQueryParams()['username'] ?? '';
+        $token    = $request->getQueryParams()['token'] ?? '';
 
         $title = I18N::translate('User verification');
 
@@ -59,8 +59,10 @@ class VerifyEmailController extends AbstractBaseController
             if ($webmaster instanceof User) {
                 I18N::init($webmaster->getPreference('language'));
 
+                $base_url = $request->getAttribute('base_url');
+
                 /* I18N: %s is a server name/URL */
-                $subject = I18N::translate('New user at %s', WT_BASE_URL . ' ' . $tree->title());
+                $subject = I18N::translate('New user at %s', $base_url . ' ' . $tree->title());
 
                 Mail::send(
                     new TreeUser($tree),
@@ -76,7 +78,7 @@ class VerifyEmailController extends AbstractBaseController
                 if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
                     DB::table('message')->insert([
                         'sender'     => $username,
-                        'ip_address' => $request->getClientIp(),
+                        'ip_address' => $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1',
                         'user_id'    => $webmaster->id(),
                         'subject'    => $subject,
                         'body'       => view('emails/verify-notify-text', ['user' => $user]),

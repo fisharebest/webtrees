@@ -15,6 +15,84 @@
 
 'use strict';
 
+let webtrees = function () {
+    const lang = document.documentElement.lang;
+
+    /**
+     * Tidy the whitespace in a string.
+     */
+    function trim(str) {
+        return str.replace(/\s+/g, " ").trim();
+
+    }
+
+    /**
+     * Look for non-latin characters in a string.
+     */
+    function detectScript(str) {
+        if (str.match(/[\u3400-\u9FCC]/)) {
+            return "cjk";
+        } else if (str.match(/[\u0370-\u03FF]/)) {
+            return "greek";
+        } else if (str.match(/[\u0400-\u04FF]/)) {
+            return "cyrillic";
+        } else if (str.match(/[\u0590-\u05FF]/)) {
+            return "hebrew";
+        } else if (str.match(/[\u0600-\u06FF]/)) {
+            return "arabic";
+        }
+
+        return "latin";
+    }
+
+    /**
+     * In some languages, the SURN uses a male/default form, but NAME uses a gender-inflected form.
+     */
+    function inflectSurname(surname, sex) {
+        if (lang === "pl" && sex === "F") {
+            return surname
+                .replace(/ski$/, "ska")
+                .replace(/cki$/, "cka")
+                .replace(/dzki$/, "dzka")
+                .replace(/żki$/, "żka");
+        }
+
+        return surname;
+    }
+
+    /**
+     * Build a NAME from a NPFX, GIVN, SPFX, SURN and NSFX parts.
+     *
+     * Assumes the language of the document is the same as the language of the name.
+     */
+    function buildNameFromParts(npfx, givn, spfx, surn, nsfx, sex) {
+        const usesCJK      = detectScript(npfx + givn + spfx + givn + surn + nsfx) === "cjk";
+        const separator    = usesCJK ? "" : " ";
+        const surnameFirst = usesCJK || ['hu', 'jp', 'ko', 'vi', 'zh-Hans', 'zh-Hant'].indexOf(lang) !== -1;
+        const patronym     = ['is'].indexOf(lang) !== -1;
+        const slash        = patronym ? "" : "/";
+
+        // GIVN and SURN may be a comma-separated lists.
+        npfx = trim(npfx);
+        givn = trim(givn.replace(",", separator));
+        spfx = trim(spfx);
+        surn = inflectSurname(trim(surn.replace(",", separator)), sex);
+        nsfx = trim(nsfx);
+
+        const surname = trim(spfx + separator + surn);
+
+        const name = surnameFirst ? slash + surname + slash + separator + givn : givn + separator + slash + surname + slash;
+
+        return trim(npfx + separator + name + separator + nsfx);
+    }
+
+    // Public methods
+    return {
+        buildNameFromParts: buildNameFromParts,
+        detectScript:       detectScript,
+    };
+}();
+
 function expand_layer(sid)
 {
     $('#' + sid + '_img').toggleClass('icon-plus icon-minus');
@@ -27,9 +105,8 @@ function expand_layer(sid)
 function accept_changes(xref, ged)
 {
     $.post(
-        'index.php',
+        'index.php?route=accept-changes',
         {
-            route: 'accept-changes',
             xref: xref,
             ged: ged,
         },
@@ -44,9 +121,8 @@ function accept_changes(xref, ged)
 function reject_changes(xref, ged)
 {
     $.post(
-        'index.php',
+        'index.php?route=reject-changes',
         {
-            route: 'reject-changes',
             xref: xref,
             ged: ged,
         },
@@ -61,9 +137,8 @@ function reject_changes(xref, ged)
 function delete_record(xref, gedcom)
 {
     $.post(
-        'index.php',
+        'index.php?route=delete-record',
         {
-            route: 'delete-record',
             xref: xref,
             ged: gedcom,
         },
@@ -80,9 +155,8 @@ function delete_fact(message, ged, xref, fact_id)
 {
     if (confirm(message)) {
         $.post(
-            'index.php',
+            'index.php?route=delete-fact',
             {
-                route: 'delete-fact',
                 xref: xref,
                 fact_id: fact_id,
                 ged: ged
@@ -99,9 +173,8 @@ function delete_fact(message, ged, xref, fact_id)
 function copy_fact(ged, xref, fact_id)
 {
     $.post(
-        'index.php',
+        'index.php?route=copy-fact',
         {
-            route: 'copy-fact',
             xref: xref,
             fact_id: fact_id,
             ged: ged,
@@ -117,9 +190,8 @@ function copy_fact(ged, xref, fact_id)
 function paste_fact(ged, xref, element)
 {
     $.post(
-        'index.php',
+        'index.php?route=paste-fact',
         {
-            route: 'paste-fact',
             xref: xref,
             fact_id: $(element).val(), // element is the <select> containing the option
             ged: ged,
@@ -136,9 +208,8 @@ function delete_user(message, user_id)
 {
     if (confirm(message)) {
         $.post(
-            'index.php',
+            'index.php?route=delete-user',
             {
-                route: 'delete-user',
                 user_id: user_id,
             },
             function () {
@@ -153,9 +224,8 @@ function delete_user(message, user_id)
 function masquerade(user_id)
 {
     $.post(
-        'index.php',
+        'index.php?route=masquerade',
         {
-            route: 'masquerade',
             user_id: user_id,
         },
         function () {
@@ -280,82 +350,6 @@ function valid_date(datefield, dmy)
   // moves to the end of the field unnecessarily
     if (datefield.value !== datestr) {
         datefield.value = datestr;
-    }
-}
-
-var menutimeouts = [];
-
-function show_submenu(elementid, parentid)
-{
-    var pagewidth = document.body.scrollWidth + document.documentElement.scrollLeft;
-    var element = document.getElementById(elementid);
-
-    if (element && element.style) {
-        if (document.all) {
-            pagewidth = document.body.offsetWidth;
-        } else {
-            pagewidth = document.body.scrollWidth + document.documentElement.scrollLeft - 55;
-            if (document.documentElement.dir === 'rtl') {
-                boxright = element.offsetLeft + element.offsetWidth + 10;
-            }
-        }
-
-      // -- make sure the submenu is the size of the largest child
-        var maxwidth = 0;
-        var count = element.childNodes.length;
-        for (var i = 0; i < count; i++) {
-            var child = element.childNodes[i];
-            if (child.offsetWidth > maxwidth + 5) {
-                maxwidth = child.offsetWidth;
-            }
-        }
-        if (element.offsetWidth < maxwidth) {
-            element.style.width = maxwidth + 'px';
-        }
-        var pelement, boxright;
-        pelement = document.getElementById(parentid);
-        if (pelement) {
-            element.style.left = pelement.style.left;
-            boxright = element.offsetLeft + element.offsetWidth + 10;
-            if (boxright > pagewidth) {
-                var menuleft = pagewidth - element.offsetWidth;
-                element.style.left = menuleft + 'px';
-            }
-        }
-
-        if (element.offsetLeft < 0) {
-            element.style.left = '0px';
-        }
-
-      // -- put scrollbars on really long menus
-        if (element.offsetHeight > 500) {
-            element.style.height = '400px';
-            element.style.overflow = 'auto';
-        }
-
-        element.style.visibility = 'visible';
-    }
-    clearTimeout(menutimeouts[elementid]);
-    menutimeouts[elementid] = null;
-}
-
-function hide_submenu(elementid)
-{
-    if (typeof menutimeouts[elementid] !== 'number') {
-        return;
-    }
-    var element = document.getElementById(elementid);
-    if (element && element.style) {
-        element.style.visibility = 'hidden';
-    }
-    clearTimeout(menutimeouts[elementid]);
-    menutimeouts[elementid] = null;
-}
-
-function timeout_submenu(elementid)
-{
-    if (typeof menutimeouts[elementid] !== 'number') {
-        menutimeouts[elementid] = setTimeout("hide_submenu('" + elementid + "')", 100);
     }
 }
 
@@ -986,25 +980,22 @@ $(function () {
         }
     }
 
-  // Autocomplete
+    // Autocomplete
     autocomplete('input[data-autocomplete-url]');
 
-  // Select2 - activate autocomplete fields
-    $('select.select2').select2({
-      // Do not escape.
+    // Select2 - activate autocomplete fields
+    $("select.select2").select2({
+        width: "100%",
+        // Do not escape.
         escapeMarkup: function (x) {
-            return x }
-      // Same formatting for both selections and rsult
-      //templateResult: templateOptionForSelect2,
-      //templateSelection: templateOptionForSelect2
-    })
-  // If we clear the select (using the "X" button), we need an empty
-  // value (rather than no value at all) for inputs with name="array[]"
-    .on('select2:unselect', function (evt) {
-        $(evt.delegateTarget).append('<option value="" selected="selected"></option>');
+            return x;
+        },
+        // Same formatting for both selections and rsult
+        //templateResult: templateOptionForSelect2,
+        //templateSelection: templateOptionForSelect2
     })
 
-  // Datatables - locale aware sorting
+    // Datatables - locale aware sorting
     $.fn.dataTableExt.oSort['text-asc'] = function (x, y) {
         return x.localeCompare(y, document.documentElement.lang, {'sensitivity': 'base'});
     };
@@ -1051,8 +1042,7 @@ $(function () {
 
   // Activate the langauge selection menu.
     $('.menu-language').on('click', '[data-language]', function () {
-        $.post('index.php', {
-            route: 'language',
+        $.post('index.php?route=language', {
             language: $(this).data('language')
         }, function () {
             document.location.reload();
@@ -1063,8 +1053,7 @@ $(function () {
 
   // Activate the theme selection menu.
     $('.menu-theme').on('click', '[data-theme]', function () {
-        $.post('index.php', {
-            route: 'theme',
+        $.post('index.php?route=theme', {
             theme: $(this).data('theme')
         }, function () {
             document.location.reload();

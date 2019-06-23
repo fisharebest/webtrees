@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <div class="form-group row">
@@ -6,7 +5,7 @@
         <?= /* I18N: ... to show in a list */ I18N::translate('Number of given names') ?>
     </label>
     <div class="col-sm-9">
-        <input type="text" id="num" name="num" size="2" value="<?= $num ?>">
+        <input type="number" id="num" name="num" min="1" value="<?= $num ?>" required>
     </div>
 </div>
 
@@ -15,6 +14,6 @@
         <?= I18N::translate('Presentation style') ?>
     </label>
     <div class="col-sm-9">
-        <?= Bootstrap4::select($info_styles, $infoStyle, ['id' => 'infoStyle', 'name' => 'infoStyle']) ?>
+        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $infoStyle, 'options' => $info_styles]) ?>
     </div>
 </div>

@@ -29,6 +29,6 @@ class MediaTabModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\MediaTabModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\MediaTabModule::class));
     }
 }

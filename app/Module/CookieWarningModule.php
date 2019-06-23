@@ -20,8 +20,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\ParameterBag;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class PoweredByWebtreesModule - show a cookie warning, to comply with the GDPR.
@@ -30,15 +29,6 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
 {
     use ModuleFooterTrait;
 
-    /** @var Request */
-    protected $request;
-
-    // We only need to show a warning if we are using tracking
-    protected const TRACKING_MODULES = [
-        GoogleAnalyticsModule::class,
-        MatomoAnalyticsModule::class,
-        StatcounterModule::class,
-    ];
     /**
      * @var ModuleService
      */
@@ -47,12 +37,10 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
     /**
      * Dependency injection.
      *
-     * @param Request       $request
-     * @param ModuleService $module_service
+     * @param ModuleService          $module_service
      */
-    public function __construct(Request $request, ModuleService $module_service)
+    public function __construct(ModuleService $module_service)
     {
-        $this->request        = $request;
         $this->module_service = $module_service;
     }
 
@@ -101,7 +89,7 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
             return '';
         }
 
-        if ($this->siteUsesAnalyticss()) {
+        if ($this->siteUsesAnalytics()) {
             return view('modules/cookie-warning/footer');
         }
 
@@ -113,29 +101,24 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
      */
     protected function isCookieWarningAcknowledged(): bool
     {
-        $cookies = $this->request->cookies;
+        // We store acceptance of cookies in a .... cookie.
+        $request = app(ServerRequestInterface::class);
 
-        return $cookies instanceof ParameterBag && $cookies->get('cookie', '') !== '';
+        $cookies_ok = $request->getCookieParams()['cookie'] ?? '';
+
+        return $cookies_ok !== '';
     }
 
     /**
      * @return bool
      */
-    protected function siteUsesAnalyticss(): bool
+    protected function siteUsesAnalytics(): bool
     {
-        // If the browser sets the DNT header, then we won't use analytics.
-        if ($this->request->server->get('HTTP_DNT') === '1') {
-            return false;
-        }
-
-        foreach (self::TRACKING_MODULES as $class) {
-            $module = $this->module_service->findByInterface($class);
-
-            if (($module instanceof ModuleAnalyticsInterface) && $module->analyticsCanShow()) {
-                return true;
-            }
-        }
-
-        return false;
+        return $this->module_service
+            ->findByInterface(ModuleAnalyticsInterface::class)
+            ->filter(static function (ModuleAnalyticsInterface $module): bool {
+                return $module->analyticsCanShow();
+            })
+            ->isNotEmpty();
     }
 }

@@ -29,6 +29,6 @@ class FunctionsPrintListsTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Functions\FunctionsPrintLists'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Functions\FunctionsPrintLists::class));
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Fisharebest\Localization;
 
+use InvalidArgumentException;
+
 /**
  * Class Translation - a set of translated messages, such as a .MO file.
  *
@@ -16,6 +18,8 @@ class Translation
     const MO_MAGIC_BIG_ENDIAN    = 'de120495';
     const PACK_LITTLE_ENDIAN     = 'V';
     const PACK_BIG_ENDIAN        = 'N';
+    const PLURAL_SEPARATOR       = "\x00";
+    const CONTEXT_SEPARATOR      = "\x04";
 
     /** @var array An association of English -> translated messages */
     private $translations;
@@ -31,7 +35,7 @@ class Translation
 
         switch (strtolower(pathinfo($filename, PATHINFO_EXTENSION))) {
             case 'csv':
-                $fp = fopen($filename, 'r');
+                $fp = fopen($filename, 'rb');
                 if ($fp) {
                     while (($data = fgetcsv($fp, 0, ';')) !== false) {
                         $this->translations[$data[0]] = $data[1];
@@ -46,6 +50,10 @@ class Translation
                     $this->readMoFile($fp);
                     fclose($fp);
                 }
+                break;
+
+            case 'po':
+                $this->readPoFile(file($filename));
                 break;
 
             case 'php':
@@ -107,7 +115,7 @@ class Translation
                 break;
             default:
                 // Not a valid .MO file.
-                throw new \InvalidArgumentException('Invalid .MO file');
+                throw new InvalidArgumentException('Invalid .MO file');
         }
 
         // Read the lookup tables
@@ -122,6 +130,81 @@ class Translation
             fseek($fp, $lookup_translated[$n * 2 + 2]);
             $translated                    = fread($fp, $lookup_translated[$n * 2 + 1]);
             $this->translations[$original] = $translated;
+        }
+    }
+
+    /**
+     * Read and parse a .PO (gettext) file
+     *
+     * @link https://www.gnu.org/software/gettext/manual/html_node/MO-Files.html
+     *
+     * @param string[] $lines
+     *
+     * @return void
+     */
+    private function readPoFile($lines)
+    {
+        // Strip comments
+        $lines = array_filter($lines, function ($line) {
+            return strpos($line, '#') !== 0;
+        });
+
+        // Trim carriage-returns, newlines, spaces
+        $lines = array_map('trim', $lines);
+
+        // Merge continuation lines
+        $tmp = trim(implode("\n", $lines));
+        $tmp = str_replace("\"\n\"", '', $tmp);
+
+        // Split into separate translations
+        $translations = preg_split("/\n{2,}/", $tmp);
+
+        foreach ($translations as $translation) {
+            $parts = explode("\n", $translation);
+
+            $msgctxt      = '';
+            $msgid        = '';
+            $msgid_plural = '';
+            $msgstr       = '';
+            $plurals      = array();
+
+            foreach ($parts as $part) {
+                $fragments = explode(' ', $part, 2);
+                $keyword   = $fragments[0];
+                $text      = substr($fragments[1], 1, -1);
+                switch ($keyword) {
+                    case 'msgctxt':
+                        $msgctxt = $text;
+                        break;
+                    case 'msgid':
+                        $msgid = $text;
+                        break;
+                    case 'msgid_plural':
+                        $msgid_plural = $text;
+                        break;
+                    case 'msgstr':
+                        $msgstr = $text;
+                        break;
+                    default:
+                        if (preg_match('/^msgstr\[(\d+)\]/', $keyword, $match)) {
+                            $plurals[$match[1]] = $text;
+                        }
+                }
+            }
+
+            if ($msgctxt !== '') {
+                $msgid = $msgctxt . self::CONTEXT_SEPARATOR . $msgid;
+            }
+
+            if ($msgid_plural !== '') {
+                $msgid .= self::PLURAL_SEPARATOR . $msgid_plural;
+                ksort($plurals);
+                $msgstr = implode(self::PLURAL_SEPARATOR, $plurals);
+            }
+
+            if ($msgid !== '' && trim($msgstr, self::PLURAL_SEPARATOR) !== '') {
+                $this->translations[$msgid] = $msgstr;
+            }
         }
     }
 }

@@ -14,6 +14,7 @@
 
 namespace League\CommonMark;
 
+use League\CommonMark\Inline\AdjoiningTextCollapser;
 use League\CommonMark\Inline\Element\Text;
 use League\CommonMark\Node\Node;
 use League\CommonMark\Reference\ReferenceMap;
@@ -41,6 +42,8 @@ class InlineParserEngine
         }
 
         $this->processInlines($inlineParserContext);
+
+        AdjoiningTextCollapser::collapseTextNodes($container);
     }
 
     /**

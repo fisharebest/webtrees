@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
+use Exception;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use stdClass;
@@ -70,7 +71,7 @@ class Family extends GedcomRecord
      */
     public static function rowMapper(): Closure
     {
-        return function (stdClass $row): Family {
+        return static function (stdClass $row): Family {
             return Family::getInstance($row->f_id, Tree::findById((int) $row->f_file), $row->f_gedcom);
         };
     }
@@ -82,7 +83,7 @@ class Family extends GedcomRecord
      */
     public static function marriageDateComparator(): Closure
     {
-        return function (Family $x, Family $y): int {
+        return static function (Family $x, Family $y): int {
             return Date::compare($x->getMarriageDate(), $y->getMarriageDate());
         };
     }
@@ -96,7 +97,7 @@ class Family extends GedcomRecord
      * @param Tree        $tree
      * @param string|null $gedcom
      *
-     * @throws \Exception
+     * @throws Exception
      *
      * @return Family|null
      */
@@ -245,7 +246,6 @@ class Family extends GedcomRecord
      * @param int|null $access_level
      *
      * @return Collection
-     * @return Individual[]
      */
     public function spouses($access_level = null): Collection
     {
@@ -263,7 +263,6 @@ class Family extends GedcomRecord
      * @param int|null $access_level
      *
      * @return Collection
-     * @return Individual[]
      */
     public function children($access_level = null): Collection
     {
@@ -399,7 +398,7 @@ class Family extends GedcomRecord
             // Check the script used by each name, so we can match cyrillic with cyrillic, greek with greek, etc.
             $husb_names = [];
             if ($this->husb) {
-                $husb_names = array_filter($this->husb->getAllNames(), function (array $x): bool {
+                $husb_names = array_filter($this->husb->getAllNames(), static function (array $x): bool {
                     return $x['type'] !== '_MARNM';
                 });
             }
@@ -417,7 +416,7 @@ class Family extends GedcomRecord
 
             $wife_names = [];
             if ($this->wife) {
-                $wife_names = array_filter($this->wife->getAllNames(), function (array $x): bool {
+                $wife_names = array_filter($this->wife->getAllNames(), static function (array $x): bool {
                     return $x['type'] !== '_MARNM';
                 });
             }

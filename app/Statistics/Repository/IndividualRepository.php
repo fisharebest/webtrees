@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
+use function array_key_exists;
+use function array_slice;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
@@ -43,6 +45,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
+use stdClass;
 
 /**
  *
@@ -78,7 +81,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     private function commonGivenQuery(string $sex, string $type, bool $show_tot, int $threshold, int $maxtoshow)
     {
         $query = DB::table('name')
-            ->join('individuals', function (JoinClause $join): void {
+            ->join('individuals', static function (JoinClause $join): void {
                 $join
                     ->on('i_file', '=', 'n_file')
                     ->on('i_id', '=', 'n_id');
@@ -113,7 +116,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             foreach (explode(' ', $n_givn) as $given) {
                 // Exclude initials and particles.
                 if (!preg_match('/^([A-Z]|[a-z]{1,3})$/', $given)) {
-                    if (\array_key_exists($given, $nameList)) {
+                    if (array_key_exists($given, $nameList)) {
                         $nameList[$given] += (int) $count;
                     } else {
                         $nameList[$given] = (int) $count;
@@ -122,7 +125,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             }
         }
         arsort($nameList);
-        $nameList = \array_slice($nameList, 0, $maxtoshow);
+        $nameList = array_slice($nameList, 0, $maxtoshow);
 
         foreach ($nameList as $given => $total) {
             if ($total < $threshold) {
@@ -147,7 +150,7 @@ class IndividualRepository implements IndividualRepositoryInterface
 
             case 'nolist':
             default:
-                array_walk($nameList, function (string &$value, string $key) use ($show_tot): void {
+                array_walk($nameList, static function (string &$value, string $key) use ($show_tot): void {
                     if ($show_tot) {
                         $value = '<span dir="auto">' . e($key) . '</span>';
                     } else {
@@ -477,7 +480,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @param int $number_of_surnames
      * @param int $threshold
      *
-     * @return \stdClass[]
+     * @return stdClass[]
      */
     private function topSurnames(int $number_of_surnames, int $threshold): array
     {
@@ -560,7 +563,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         }
 
         //find a module providing individual lists
-        $module = app(ModuleService::class)->findByComponent(ModuleListInterface::class, $this->tree, Auth::user())->first(function (ModuleInterface $module): bool {
+        $module = app(ModuleService::class)->findByComponent(ModuleListInterface::class, $this->tree, Auth::user())->first(static function (ModuleInterface $module): bool {
             return $module instanceof IndividualListModule;
         });
         
@@ -677,7 +680,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     {
         return $this->statsBirthQuery($year1, $year2)
                 ->select(['d_month', 'i_sex', DB::raw('COUNT(*) AS total')])
-                ->join('individuals', function (JoinClause $join): void {
+                ->join('individuals', static function (JoinClause $join): void {
                     $join
                         ->on('i_id', '=', 'd_gid')
                         ->on('i_file', '=', 'd_file');
@@ -735,7 +738,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     {
         return $this->statsDeathQuery($year1, $year2)
                 ->select(['d_month', 'i_sex', DB::raw('COUNT(*) AS total')])
-                ->join('individuals', function (JoinClause $join): void {
+                ->join('individuals', static function (JoinClause $join): void {
                     $join
                         ->on('i_id', '=', 'd_gid')
                         ->on('i_file', '=', 'd_file');
@@ -1095,7 +1098,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     private function topTenOldestAliveQuery(string $sex, int $total): array
     {
         $query = DB::table('dates')
-            ->join('individuals', function (JoinClause $join): void {
+            ->join('individuals', static function (JoinClause $join): void {
                 $join
                     ->on('i_id', '=', 'd_gid')
                     ->on('i_file', '=', 'd_file');
@@ -1363,7 +1366,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     {
         return DB::table('individuals')
             ->where('i_file', '=', $this->tree->id())
-            ->where(function (Builder $query): void {
+            ->where(static function (Builder $query): void {
                 foreach (Gedcom::DEATH_EVENTS as $death_event) {
                     $query->orWhere('i_gedcom', 'LIKE', "%\n1 " . $death_event . '%');
                 }
@@ -1438,7 +1441,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         return DB::table('individuals')
             ->select(['i_id'])
             ->distinct()
-            ->join('link', function (JoinClause $join): void {
+            ->join('link', static function (JoinClause $join): void {
                 $join->on('i_id', '=', 'l_from')
                     ->on('i_file', '=', 'l_file');
             })
@@ -1457,7 +1460,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         return DB::table('families')
             ->select(['f_id'])
             ->distinct()
-            ->join('link', function (JoinClause $join): void {
+            ->join('link', static function (JoinClause $join): void {
                 $join->on('f_id', '=', 'l_from')
                     ->on('f_file', '=', 'l_file');
             })
@@ -1817,7 +1820,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     public function chartIndisWithSources(
         string $color_from = null,
-        string $color_to   = null
+        string $color_to = null
     ): string {
         $tot_indi        = $this->totalIndividualsQuery();
         $tot_indi_source = $this->totalIndisWithSourcesQuery();
@@ -1836,7 +1839,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     public function chartFamsWithSources(
         string $color_from = null,
-        string $color_to   = null
+        string $color_to = null
     ): string {
         $tot_fam        = $this->totalFamiliesQuery();
         $tot_fam_source = $this->totalFamsWithSourcesQuery();
@@ -1849,8 +1852,8 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @inheritDoc
      */
     public function chartSex(
-        string $color_female  = null,
-        string $color_male    = null,
+        string $color_female = null,
+        string $color_male = null,
         string $color_unknown = null
     ): string {
         $tot_m = $this->totalSexMalesQuery();
@@ -1872,12 +1875,12 @@ class IndividualRepository implements IndividualRepositoryInterface
     {
         $query = DB::table('individuals')
             ->where('i_file', '=', $this->tree->id())
-            ->join('dates AS birth', function (JoinClause $join): void {
+            ->join('dates AS birth', static function (JoinClause $join): void {
                 $join
                     ->on('birth.d_file', '=', 'i_file')
                     ->on('birth.d_gid', '=', 'i_id');
             })
-            ->join('dates AS death', function (JoinClause $join): void {
+            ->join('dates AS death', static function (JoinClause $join): void {
                 $join
                     ->on('death.d_file', '=', 'i_file')
                     ->on('death.d_gid', '=', 'i_id');

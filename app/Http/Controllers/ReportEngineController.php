@@ -17,11 +17,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Bootstrap4;
+use function addcslashes;
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -33,9 +32,9 @@ use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use function response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -64,9 +63,9 @@ class ReportEngineController extends AbstractBaseController
      * @param Tree          $tree
      * @param UserInterface $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function reportList(Tree $tree, UserInterface $user): Response
+    public function reportList(Tree $tree, UserInterface $user): ResponseInterface
     {
         $title = I18N::translate('Choose a report to run');
 
@@ -79,25 +78,26 @@ class ReportEngineController extends AbstractBaseController
     /**
      * Fetch the options/parameters for a report.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function reportSetup(Request $request, Tree $tree, UserInterface $user): Response
+    public function reportSetup(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $pid    = $request->get('xref', '');
-        $report = $request->get('report', '');
+        $params = $request->getQueryParams();
+        $pid    = $params['xref'] ?? '';
+        $report = $params['report'] ?? '';
         $module = $this->module_service->findByName($report);
 
         if (!$module instanceof ModuleReportInterface) {
             return $this->reportList($tree, $user);
         }
 
-        $report_xml = WT_ROOT . 'resources/xml/reports/' . $module->name() . '.xml';
+        $xml_filename = $module->resourcesFolder() . $module->xmlFilename();
 
-        $report_array = (new ReportParserSetup($report_xml))->reportProperties();
+        $report_array = (new ReportParserSetup($xml_filename))->reportProperties();
         $description  = $report_array['description'];
         $title        = $report_array['title'];
 
@@ -120,18 +120,33 @@ class ReportEngineController extends AbstractBaseController
 
             switch ($input['lookup']) {
                 case 'INDI':
-                    $individual       = Individual::getInstance($pid, $tree);
-                    $input['control'] = FunctionsEdit::formControlIndividual($tree, $individual, $attributes + ['required' => true]);
+                    $input['control'] = view('components/select-individual', [
+                        'id'         => 'input-' . $n,
+                        'name'       => 'vars[' . $input['name'] . ']',
+                        'individual' => Individual::getInstance($pid, $tree),
+                        'tree'       => $tree,
+                        'required'   => true,
+                    ]);
                     break;
 
                 case 'FAM':
-                    $family           = Family::getInstance($pid, $tree);
-                    $input['control'] = FunctionsEdit::formControlFamily($tree, $family, $attributes + ['required' => true]);
+                    $input['control'] = view('components/select-family', [
+                        'id'       => 'input-' . $n,
+                        'name'     => 'vars[' . $input['name'] . ']',
+                        'family'   => Family::getInstance($pid, $tree),
+                        'tree'     => $tree,
+                        'required' => true,
+                    ]);
                     break;
 
                 case 'SOUR':
-                    $source           = Source::getInstance($pid, $tree);
-                    $input['control'] = FunctionsEdit::formControlSource($tree, $source, $attributes + ['required' => 'true']);
+                    $input['control'] = view('components/select-source', [
+                        'id'       => 'input-' . $n,
+                        'name'     => 'vars[' . $input['name'] . ']',
+                        'family'   => Source::getInstance($pid, $tree),
+                        'tree'     => $tree,
+                        'required' => true,
+                    ]);
                     break;
 
                 case 'DATE':
@@ -177,7 +192,7 @@ class ReportEngineController extends AbstractBaseController
                                     $options[$key] = I18N::translateContext($match[1], $match[2]);
                                 }
                             }
-                            $input['control'] = Bootstrap4::select($options, $input['default'], $attributes);
+                            $input['control'] = view('components/select', ['name' => 'vars[' . $input['name'] . ']', 'id'   => 'input-' . $n, 'selected' => $input['default'], 'options' => $options]);
                             break;
                     }
             }
@@ -196,19 +211,17 @@ class ReportEngineController extends AbstractBaseController
     /**
      * Generate a report.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function reportRun(Request $request, Tree $tree, UserInterface $user): Response
+    public function reportRun(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $report   = $request->get('report', '');
-        $output   = $request->get('output');
-        $vars     = $request->get('vars', []);
-        $varnames = $request->get('varnames', []);
-        $type     = $request->get('type', []);
+        $params   = $request->getQueryParams();
+        $report   = $params['report'];
+        $output   = $params['output'];
+        $varnames = $params['varnames'] ?? [];
 
         $module = $this->module_service->findByName($report);
 
@@ -216,54 +229,18 @@ class ReportEngineController extends AbstractBaseController
             throw new NotFoundHttpException('Report ' . $report . ' not found.');
         }
 
-        //-- setup the arrays
-        $newvars = [];
-        foreach ($vars as $name => $var) {
-            $newvars[$name]['id'] = $var;
-            if (!empty($type[$name])) {
-                switch ($type[$name]) {
-                    case 'INDI':
-                        $record = Individual::getInstance($var, $tree);
-                        if ($record && $record->canShowName()) {
-                            $newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($tree));
-                        } else {
-                            return $this->reportSetup($request, $tree, $user);
-                        }
-                        break;
-                    case 'FAM':
-                        $record = Family::getInstance($var, $tree);
-                        if ($record && $record->canShowName()) {
-                            $newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($tree));
-                        } else {
-                            return $this->reportSetup($request, $tree, $user);
-                        }
-                        break;
-                    case 'SOUR':
-                        $record = Source::getInstance($var, $tree);
-                        if ($record && $record->canShowName()) {
-                            $newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($tree));
-                        } else {
-                            return $this->reportSetup($request, $tree, $user);
-                        }
-                        break;
-                }
-            }
-        }
-        $vars = $newvars;
-
+        $vars = [];
         foreach ($varnames as $name) {
-            if (!isset($vars[$name])) {
-                $vars[$name]['id'] = '';
-            }
+            $vars[$name]['id'] = $params['vars'][$name] ?? '';
         }
 
-        $report_xml = WT_ROOT . 'resources/xml/reports/' . $module->name() . '.xml';
+        $xml_filename = $module->resourcesFolder() . $module->xmlFilename();
 
         switch ($output) {
             default:
             case 'HTML':
                 ob_start();
-                new ReportParserGenerate($report_xml, new ReportHtml(), $vars, $tree);
+                new ReportParserGenerate($xml_filename, new ReportHtml(), $vars, $tree);
                 $html = ob_get_clean();
 
                 $this->layout = 'layouts/report';
@@ -275,20 +252,13 @@ class ReportEngineController extends AbstractBaseController
 
             case 'PDF':
                 ob_start();
-                new ReportParserGenerate($report_xml, new ReportPdf(), $vars, $tree);
+                new ReportParserGenerate($xml_filename, new ReportPdf(), $vars, $tree);
                 $pdf = ob_get_clean();
 
-                $response = new Response($pdf);
-
-                $disposition = $response->headers->makeDisposition(
-                    ResponseHeaderBag::DISPOSITION_INLINE,
-                    $report . '.pdf'
-                );
-
-                $response->headers->set('Content-Disposition', $disposition);
-                $response->headers->set('Content-Type', 'application/pdf');
-
-                return $response;
+                return response($pdf, StatusCodeInterface::STATUS_OK, [
+                    'Content-Type' => 'application/pdf',
+                    'Content-Disposition' => 'attachment; filename="' . addcslashes($report, '"') . '"',
+                ]);
         }
     }
 }

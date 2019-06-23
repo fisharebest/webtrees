@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
+use Exception;
 use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
 
@@ -37,7 +38,7 @@ class Source extends GedcomRecord
      */
     public static function rowMapper(): Closure
     {
-        return function (stdClass $row): Source {
+        return static function (stdClass $row): Source {
             return Source::getInstance($row->s_id, Tree::findById((int) $row->s_file), $row->s_gedcom);
         };
     }
@@ -51,7 +52,7 @@ class Source extends GedcomRecord
      * @param Tree        $tree
      * @param string|null $gedcom
      *
-     * @throws \Exception
+     * @throws Exception
      *
      * @return Source|null
      */

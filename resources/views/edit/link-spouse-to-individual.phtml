@@ -11,7 +11,7 @@
             <?= $label ?>
         </label>
         <div class="col-sm-9">
-            <?= FunctionsEdit::formControlIndividual($tree, null, ['id' => 'spouse', 'name' => 'spid']) ?>
+            <?= view('components/select-individual', ['name' => 'spid', 'id' => 'spouse', 'tree' => $tree]) ?>
         </div>
     </div>
 

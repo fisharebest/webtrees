@@ -179,6 +179,8 @@ class CarbonInterval extends DateInterval
     }
 
     /**
+     * Set default cascading factors for ->cascade() method.
+     *
      * @param array $cascadeFactors
      */
     public static function setCascadeFactors(array $cascadeFactors)
@@ -1099,6 +1101,8 @@ class CarbonInterval extends DateInterval
                 $unit = $short ? $diffIntervalData['unitShort'] : $diffIntervalData['unit'];
                 $count = $diffIntervalData['value'];
                 $interval[] = $transChoice($short, $diffIntervalData);
+            } elseif ($options & CarbonInterface::SEQUENTIAL_PARTS_ONLY && count($interval) > 0) {
+                break;
             }
 
             // break the loop after we get the required number of parts in array
@@ -1440,17 +1444,16 @@ class CarbonInterval extends DateInterval
         $result = 0;
         $cumulativeFactor = 0;
         $unitFound = false;
+        $factors = static::getFlipCascadeFactors();
 
-        foreach (static::getFlipCascadeFactors() as $source => [$target, $factor]) {
+        foreach ($factors as $source => [$target, $factor]) {
             if ($source === $realUnit) {
                 $unitFound = true;
                 $value = $this->$source;
-                if ($source === 'microseconds') {
+                if ($source === 'microseconds' && isset($factors['milliseconds'])) {
                     $value %= Carbon::MICROSECONDS_PER_MILLISECOND;
                 }
-                if ($source !== 'milliseconds') {
-                    $result += $value;
-                }
+                $result += $value;
                 $cumulativeFactor = 1;
             }
 
@@ -1476,7 +1479,13 @@ class CarbonInterval extends DateInterval
                 continue;
             }
 
-            $result = ($result + $this->$source) / $factor;
+            $value = $this->$source;
+
+            if ($source === 'microseconds' && isset($factors['milliseconds'])) {
+                $value %= Carbon::MICROSECONDS_PER_MILLISECOND;
+            }
+
+            $result = ($result + $value) / $factor;
         }
 
         if (isset($target) && !$cumulativeFactor) {

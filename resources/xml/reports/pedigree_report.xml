@@ -3,6 +3,7 @@
 	<Title><var var="I18N::translate('Pedigree')" /></Title>
 	<Description><var var="I18N::translate('A report of an individual’s ancestors, formatted as a tree.')" /></Description>
 	<Input name="pid" lookup="INDI" type="text" default=""><var var="I18N::translate('Individual')" /></Input>
+	<Input name="spouses" type="checkbox" default=""><var var="I18N::translate('Show spouses')" /></Input>
 	<Input name="orientation" type="select" default="portrait" options="portrait=>I18N::translate('Portrait')|landscape=>I18N::translate('Landscape')"><var var="I18N::translate('Orientation')"/></Input>
 	<Input name="pageSize" type="select" options="A4=>I18N::translateContext('paper size','A4')|A3=>I18N::translateContext('paper size', 'A3')|US-Letter=>I18N::translateContext('paper size','Letter')|US-Tabloid=>I18N::translateContext('paper size','Tabloid')"><var var="I18N::translate('Page size')" /></Input>
 	<!--
@@ -31,12 +32,16 @@
 		<SetVar name="name_16_to_31" value="462" />
 
 		<!-- Truncate variables -->
-		<SetVar name="truncatename" value="25" />
-		<SetVar name="trunc_123" value="28" />
-		<SetVar name="trunc_123_place" value="33" />
-		<SetVar name="trunc_4_to_7_place" value="33" />
-		<SetVar name="trunc_place" value="40" />
-		<SetVar name="trunc_dateplace" value="33" />
+		<SetVar name="trunc_name_gen_1" value="26" />
+		<SetVar name="trunc_name_gen_2" value="24" />
+		<SetVar name="trunc_name_gen_3" value="26" />
+		<SetVar name="trunc_name_gen_4" value="26" />
+		<SetVar name="trunc_name_gen_5" value="26" />
+		<SetVar name="trunc_fact_gen_1" value="50" />
+		<SetVar name="trunc_fact_gen_2" value="50" />
+		<SetVar name="trunc_fact_gen_3" value="50" />
+		<SetVar name="trunc_fact_gen_4" value="24" />
+		<SetVar name="trunc_fact_gen_5" value="24" />
 
 		<Doc pageSize="$pageSize" leftmargin="1" rightmargin="1">
 			<Header>
@@ -62,18 +67,18 @@
 					<Text style="label1">1.</Text>
 				</TextBox>
 				<TextBox padding="0" width="160" height="10" align="left" left="$name_1_2_3" top="360" reseth="1">
-					<Text style="name"><GetPersonName id="$pid" truncate="$trunc_place" /></Text>
+					<Text style="name"><GetPersonName id="$pid" truncate="$trunc_name_gen_1" /></Text>
 				</TextBox>
 				<TextBox padding="0" width="160" height="10" align="left" left="$name_1_2_3" top="372" reseth="1">
-					<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
-						<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
+					<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_1" />
+						<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_1" />
 						<Gedcom id="@FAMS">
-							<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_place" />
-							<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_place" />
+							<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_1" />
+							<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_fact_gen_1" />
 						</Gedcom>
 						<Gedcom id="DEAT">
-							<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
-							<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
+							<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_1" />
+							<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_1" />
 						</Gedcom>
 					</Text>
 				</TextBox>
@@ -82,19 +87,19 @@
 					<Text style="label1">2.</Text>
 				</TextBox>
 				<TextBox padding="0" width="137" height="10" align="left" left="$name_1_2_3" top="210" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_123" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_2" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="130" height="10" align="left" left="$name_1_2_3" top="222" reseth="1">
 					<Gedcom id="@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_123_place" />
-							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_123_place" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_2" />
+							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_2" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_123_place" />
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_123_place" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_2" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_fact_gen_2" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_123_place" />
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_123_place" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_2" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_2" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -104,15 +109,15 @@
 					<Text style="label1">3.</Text>
 				</TextBox>
 				<TextBox padding="0" width="137" height="10" align="left" left="$name_1_2_3" top="560" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_123" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_2" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="130" height="10" align="left" left="$name_1_2_3" top="572" reseth="1">
 					<Gedcom id="@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_123_place" />
-							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_123_place" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_2" />
+							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_2" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_123_place" />
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_123_place" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_2" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_2" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -122,19 +127,19 @@
 					<Text style="label1">4.</Text>
 				</TextBox>
 				<TextBox padding="0" width="130" height="10" align="left" left="$name_4_to_7" top="120" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_3" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="122" height="10" align="left" left="$name_4_to_7" top="132" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_4_to_7_place" />
-							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_4_to_7_place" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_3" />
+							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_3" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_4_to_7_place" />
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_4_to_7_place" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_3" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_fact_gen_3" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_4_to_7_place" />
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_4_to_7_place" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_3" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_3" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -144,15 +149,15 @@
 					<Text style="label1">5.</Text>
 				</TextBox>
 				<TextBox padding="0" width="130" height="10" align="left" left="$name_4_to_7" top="280" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_3" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="122" height="10" align="left" left="$name_4_to_7" top="292" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_4_to_7_place" />
-							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_4_to_7_place" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_3" />
+							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_3" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_4_to_7_place" />
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_4_to_7_place" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_3" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_3" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -163,19 +168,19 @@
 					<Text style="label1">6.</Text>
 				</TextBox>
 				<TextBox padding="0" width="130" height="10" align="left" left="$name_4_to_7" top="440" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_3" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="122" height="10" align="left" left="$name_4_to_7" top="452" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_4_to_7_place" />
-							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_4_to_7_place" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_3" />
+							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_3" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_4_to_7_place" />
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_4_to_7_place" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_3" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_fact_gen_3" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_4_to_7_place" />
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_4_to_7_place" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_3" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_3" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -185,21 +190,19 @@
 					<Text style="label1">7.</Text>
 				</TextBox>
 				<TextBox padding="0" width="130" height="10" align="left" left="$name_4_to_7" top="600" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_3" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="122" height="10" align="left" left="$name_4_to_7" top="612" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_4_to_7_place" />
-							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_4_to_7_place" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_3" />
+							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_3" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_4_to_7_place" />
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_4_to_7_place" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_3" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_3" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
 				</TextBox>
-
-
 
 				<Line x1="310" y1="90" x2="310" y2="170" />
 				<Line x1="310" y1="90" x2="460" y2="90" />
@@ -208,19 +211,19 @@
 					<Text style="label1">8.</Text>
 				</TextBox>
 				<TextBox padding="0" width="140" height="10" align="left" left="$name_8_to_15" top="80" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_4" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="130" height="10" align="left" left="$name_8_to_15" top="92" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_4" />
+							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_4" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_4" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_4" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -230,15 +233,15 @@
 					<Text style="label1">9.</Text>
 				</TextBox>
 				<TextBox padding="0" width="140" height="10" align="left" left="$name_8_to_15" top="160" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_4" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="130" height="10" align="left" left="$name_8_to_15" top="172" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_4" />
+							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_4" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_4" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -251,19 +254,19 @@
 					<Text style="label1">10.</Text>
 				</TextBox>
 				<TextBox padding="0" width="140" height="10" align="left" left="$name_8_to_15" top="240" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_4" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="130" height="10" align="left" left="$name_8_to_15" top="252" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_4" />
+							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_4" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_4" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_4" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -273,15 +276,15 @@
 					<Text style="label1">11.</Text>
 				</TextBox>
 				<TextBox padding="0" width="140" height="10" align="left" left="$name_8_to_15" top="320" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_4" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="130" height="10" align="left" left="$name_8_to_15" top="332" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_4" />
+							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_4" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_4" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -294,19 +297,19 @@
 					<Text style="label1">12.</Text>
 				</TextBox>
 				<TextBox padding="0" width="140" height="10" align="left" left="$name_8_to_15" top="400" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_4" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="130" height="10" align="left" left="$name_8_to_15" top="412" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_4" />
+							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_4" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_4" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_4" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -316,15 +319,15 @@
 					<Text style="label1">13.</Text>
 				</TextBox>
 				<TextBox padding="0" width="140" height="10" align="left" left="$name_8_to_15" top="480" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_4" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="130" height="10" align="left" left="$name_8_to_15" top="492" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_4" />
+							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_4" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_4" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -337,19 +340,19 @@
 					<Text style="label1">14.</Text>
 				</TextBox>
 				<TextBox padding="0" width="140" height="10" align="left" left="$name_8_to_15" top="560" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_4" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="130" height="10" align="left" left="$name_8_to_15" top="572" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_4" />
+							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_4" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_4" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_4" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -359,21 +362,19 @@
 					<Text style="label1">15.</Text>
 				</TextBox>
 				<TextBox padding="0" width="140" height="10" align="left" left="$name_8_to_15" top="640" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_4" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="130" height="10" align="left" left="$name_8_to_15" top="652" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_4" />
+							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_4" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_4" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
 				</TextBox>
-
-
 
 				<Line x1="460" y1="70" x2="460" y2="110" />
 				<Line x1="460" y1="70" x2="590" y2="70" />
@@ -382,16 +383,16 @@
 					<Text style="label1">16.</Text>
 				</TextBox>
 				<TextBox padding="0" width="150" height="10" align="left" left="$name_16_to_31" top="60" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="72" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="30" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -401,13 +402,13 @@
 					<Text style="label1">17.</Text>
 				</TextBox>
 				<TextBox padding="0" width="150" height="10" align="left" left="$name_16_to_31" top="100" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="112" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="30" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -420,16 +421,16 @@
 					<Text style="label1">18.</Text>
 				</TextBox>
 				<TextBox padding="0" width="150" height="10" align="left" left="$name_16_to_31" top="140" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="152" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="30" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -439,13 +440,13 @@
 					<Text style="label1">19.</Text>
 				</TextBox>
 				<TextBox padding="0" width="150" height="10" align="left" left="$name_16_to_31" top="180" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="192" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="30" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -458,16 +459,16 @@
 					<Text style="label1">20.</Text>
 				</TextBox>
 				<TextBox padding="0" width="150" height="10" align="left" left="$name_16_to_31" top="220" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="232" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="30" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -477,13 +478,13 @@
 					<Text style="label1">21.</Text>
 				</TextBox>
 				<TextBox padding="0" width="150" height="10" align="left" left="$name_16_to_31" top="260" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="272" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="30" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -496,16 +497,16 @@
 					<Text style="label1">22.</Text>
 				</TextBox>
 				<TextBox padding="0" width="150" height="10" align="left" left="$name_16_to_31" top="300" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="312" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="30" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -515,13 +516,13 @@
 					<Text style="label1">23.</Text>
 				</TextBox>
 				<TextBox padding="0" width="150" height="10" align="left" left="$name_16_to_31" top="340" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="352" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="30" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -534,16 +535,16 @@
 					<Text style="label1">24.</Text>
 				</TextBox>
 				<TextBox padding="0" width="150" height="10" align="left" left="$name_16_to_31" top="380" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="392" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="30" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -553,13 +554,13 @@
 					<Text style="label1">25.</Text>
 				</TextBox>
 				<TextBox padding="0" width="150" height="10" align="left" left="$name_16_to_31" top="420" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="432" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="30" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -572,16 +573,16 @@
 					<Text style="label1">26.</Text>
 				</TextBox>
 				<TextBox padding="0" width="150" height="10" align="left" left="$name_16_to_31" top="460" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="472" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="30" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -591,13 +592,13 @@
 					<Text style="label1">27.</Text>
 				</TextBox>
 				<TextBox padding="0" width="150" height="10" align="left" left="$name_16_to_31" top="500" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="512" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="30" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -610,16 +611,16 @@
 					<Text style="label1">28.</Text>
 				</TextBox>
 				<TextBox padding="0" width="150" height="10" align="left" left="$name_16_to_31" top="540" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="552" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="30" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -629,13 +630,13 @@
 					<Text style="label1">29.</Text>
 				</TextBox>
 				<TextBox padding="0" width="150" height="10" align="left" left="$name_16_to_31" top="580" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="592" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="30" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -648,16 +649,16 @@
 					<Text style="label1">30.</Text>
 				</TextBox>
 				<TextBox padding="0" width="150" height="10" align="left" left="$name_16_to_31" top="620" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="632" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="30" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -667,28 +668,29 @@
 					<Text style="label1">31.</Text>
 				</TextBox>
 				<TextBox padding="0" width="150" height="10" align="left" left="$name_16_to_31" newline="1" top="660" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="672" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="30" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="30" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
 				</TextBox>
 
+				<if condition="$spouses=='on'">
 					<SetVar name="my" value="440" />
 					<RepeatTag tag="FAMS">
 						<Gedcom id="@FAMS">
 							<if condition="$my LT 560">
 								<TextBox padding="0" width="125" height="10" align="left" left="38" top="$my" reseth="1">
 									<if condition="$pid==@HUSB">
-										<Text style="name"><GetPersonName id="@WIFE" truncate="$trunc_123" /></Text>
+										<Text style="name"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_1" /></Text>
 									</if>
 									<if condition="$pid==@WIFE">
-										<Text style="name"><GetPersonName id="@HUSB" truncate="$trunc_123" /></Text>
+										<Text style="name"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_1" /></Text>
 									</if>
 								</TextBox>
 								<SetVar name="my" value="$my+10" />
@@ -698,17 +700,19 @@
 							<RepeatTag tag="CHIL">
 								<if condition="$my LT 560">
 									<TextBox padding="0" width="120" height="10" align="left" left="48" top="$my" reseth="1">
-										<Text style="text"><GetPersonName id="@CHIL" truncate="32" /></Text>
+										<Text style="text"><GetPersonName id="@CHIL" truncate="$trunc_name_gen_1" /></Text>
 									</TextBox>
 									<SetVar name="my" value="$my+10" />
 								</if>
 							</RepeatTag>
 						</Gedcom>
 					</RepeatTag>
+				</if>
 				</Gedcom>
 			</Body>
 		</Doc>
 	</if>
+	
 	<if condition="$orientation=='landscape'">
 		<Style name="header" font="$fonts" size="18"/>
 		<Style name="label1" font="$fonts" size="9" />
@@ -730,9 +734,16 @@
 		<SetVar name="name_16_to_31" value="573" />
 
 		<!-- Truncate variables -->
-		<SetVar name="truncatename" value="32" />
-		<SetVar name="trunc_place" value="40" />
-		<SetVar name="trunc_dateplace" value="27" />
+		<SetVar name="trunc_name_gen_1" value="26" />
+		<SetVar name="trunc_name_gen_2" value="26" />
+		<SetVar name="trunc_name_gen_3" value="26" />
+		<SetVar name="trunc_name_gen_4" value="26" />
+		<SetVar name="trunc_name_gen_5" value="26" />
+		<SetVar name="trunc_fact_gen_1" value="50" />
+		<SetVar name="trunc_fact_gen_2" value="50" />
+		<SetVar name="trunc_fact_gen_3" value="50" />
+		<SetVar name="trunc_fact_gen_4" value="18" />
+		<SetVar name="trunc_fact_gen_5" value="25" />
 
 		<Doc pageSize="$pageSize" orientation="landscape" leftmargin="1" rightmargin="1" topmargin="65">
 			<Header>
@@ -758,18 +769,18 @@
 					<Text style="label1">1.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_1_2_3" top="258" reseth="1">
-					<Text style="name"><GetPersonName id="$pid" truncate="$truncatename" /></Text>
+					<Text style="name"><GetPersonName id="$pid" truncate="$trunc_name_gen_1" /></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_1_2_3" top="272" reseth="1">
-					<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
-						<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
+					<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_1" />
+						<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_1" />
 						<Gedcom id="@FAMS">
-							<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_place" />
-							<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_place" />
+							<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_1" />
+							<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_fact_gen_1" />
 						</Gedcom>
 						<Gedcom id="DEAT">
-							<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
-							<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
+							<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_1" />
+							<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_1" />
 						</Gedcom>
 					</Text>
 				</TextBox>
@@ -778,19 +789,19 @@
 					<Text style="label1">2.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_1_2_3" top="138" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_2" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_1_2_3" top="152" reseth="1">
 					<Gedcom id="@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
-							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_2" />
+							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_2" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_place" />
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_place" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_2" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_fact_gen_2" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_2" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_2" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -800,15 +811,15 @@
 					<Text style="label1">3.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_1_2_3" top="413" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_2" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_1_2_3" top="427" reseth="1">
 					<Gedcom id="@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
-							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_2" />
+							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_2" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_2" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_2" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -818,19 +829,19 @@
 					<Text style="label1">4.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="170" height="10" align="left" left="$name_4_to_7" top="83" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_3" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_4_to_7" top="97" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
-							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_3" />
+							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_3" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_place" />
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_place" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_3" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_fact_gen_3" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_3" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_3" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -840,15 +851,15 @@
 					<Text style="label1">5.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="170" height="10" align="left" left="$name_4_to_7" top="203" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_3" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_4_to_7" top="217" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
-							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_3" />
+							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_3" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_3" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_3" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -858,19 +869,19 @@
 					<Text style="label1">6.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="170" height="10" align="left" left="$name_4_to_7" top="323" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_3" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_4_to_7" top="337" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
-							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_3" />
+							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_3" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_place" />
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_place" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_3" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:PLAC" truncate="$trunc_fact_gen_3" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_3" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_3" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -880,41 +891,41 @@
 					<Text style="label1">7.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="170" height="10" align="left" left="$name_4_to_7" top="443" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_3" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_4_to_7" top="457" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
-							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_3" />
+							<br /><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_3" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_3" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_3" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
 				</TextBox>
 
-
 				<Line x1="390" y1="65" x2="390" y2="125" />
 				<Line x1="390" y1="65" x2="570" y2="65" />
 				<Line x1="390" y1="125" x2="570" y2="125" />
+
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$number_8_to_9" top="53" reseth="1">
 					<Text style="label1">8.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="53" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_4" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="67" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-							 <GedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_4" />
+							 <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_4" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
-								 <GedcomValue tag="MARR:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_4" />
+								 <GedcomValue tag="MARR:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-									 <GedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_4" />
+									 <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -924,15 +935,15 @@
 					<Text style="label1">9.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="113" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_4" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="127" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_4" />
 							 <GedcomValue tag="BIRT:PLAC" truncate="32" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-									 <GedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_4" />
+									 <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -945,19 +956,19 @@
 					<Text style="label1">10.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="173" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_4" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="187" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-							 <GedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_4" />
+							 <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_4" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
-								 <GedcomValue tag="MARR:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_4" />
+								 <GedcomValue tag="MARR:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-									 <GedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_4" />
+									 <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -967,14 +978,14 @@
 					<Text style="label1">11.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="233" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_4" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="247" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-							 <GedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_4" />
+							 <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_4" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_4" />
 									 <GedcomValue tag="DEAT:PLAC" truncate="32" />
 							</Gedcom>
 						</Text>
@@ -988,19 +999,19 @@
 					<Text style="label1">12.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="293" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_4" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="307" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-							 <GedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_4" />
+							 <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_4" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
-								 <GedcomValue tag="MARR:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_4" />
+								 <GedcomValue tag="MARR:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-									 <GedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_4" />
+									 <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -1010,15 +1021,15 @@
 					<Text style="label1">13.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="353" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_4" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="367" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_4" />
 							 <GedcomValue tag="BIRT:PLAC" truncate="32" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-									 <GedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_4" />
+									 <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -1031,19 +1042,19 @@
 					<Text style="label1">14.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="413" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_4" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="427" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-							 <GedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_4" />
+							 <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_4" />
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
-								 <GedcomValue tag="MARR:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_4" />
+								 <GedcomValue tag="MARR:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-									 <GedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_4" />
+									 <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -1053,15 +1064,15 @@
 					<Text style="label1">15.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="473" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_4" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="487" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-							 <GedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_4" />
+							 <GedcomValue tag="BIRT:PLAC" truncate="$trunc_fact_gen_4" />
 							<Gedcom id="DEAT">
-								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-									 <GedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+								<br /><var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_4" />
+									 <GedcomValue tag="DEAT:PLAC" truncate="$trunc_fact_gen_4" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -1076,16 +1087,16 @@
 					<Text style="label1">16.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="38" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="52" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="20" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="20" />
+								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="20" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -1095,13 +1106,13 @@
 					<Text style="label1">17.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="68" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="82" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="20" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="20" />
+								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -1114,16 +1125,16 @@
 					<Text style="label1">18.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="98" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="112" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="20" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="20" />
+								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="20" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -1133,13 +1144,13 @@
 					<Text style="label1">19.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="129" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="142" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="20" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="20" />
+								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -1152,16 +1163,16 @@
 					<Text style="label1">20.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="158" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="172" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="20" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="20" />
+								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="20" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -1171,13 +1182,13 @@
 					<Text style="label1">21.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="189" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="202" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="20" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="20" />
+								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -1190,16 +1201,16 @@
 					<Text style="label1">22.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="218" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="232" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="20" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="20" />
+								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="20" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -1209,13 +1220,13 @@
 					<Text style="label1">23.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="249" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="262" reseth="1">
 					<Gedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="20" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="20" />
+								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -1228,16 +1239,16 @@
 					<Text style="label1">24.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="278" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="292" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="20" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="20" />
+								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="20" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -1247,13 +1258,13 @@
 					<Text style="label1">25.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="309" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="322" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="20" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="20" />
+								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -1266,16 +1277,16 @@
 					<Text style="label1">26.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="338" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="352" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="20" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="20" />
+								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="20" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -1285,13 +1296,13 @@
 					<Text style="label1">27.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="369" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="382" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="20" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="20" />
+								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -1304,16 +1315,16 @@
 					<Text style="label1">28.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="398" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="412" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="20" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="20" />
+								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="20" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -1323,13 +1334,13 @@
 					<Text style="label1">29.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="429" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="442" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="20" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="20" />
+								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -1342,16 +1353,16 @@
 					<Text style="label1">30.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="458" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="472" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="20" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="20" />
+								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 							<Gedcom id="@FAMS">
-								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="20" />
+								<br /><var var="I18N::translate('Marriage')" /> <GedcomValue tag="MARR:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
@@ -1361,28 +1372,29 @@
 					<Text style="label1">31.</Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="489" reseth="1">
-					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$truncatename" /></Gedcom></Text>
+					<Text style="name"><Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_5" /></Gedcom></Text>
 				</TextBox>
 				<TextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="502" reseth="1">
 					<Gedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE">
-						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="20" />
+						<Text style="text"><var var="I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE" truncate="$trunc_fact_gen_5" />
 							<Gedcom id="DEAT">
-								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="20" />
+								 <var var="I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE" truncate="$trunc_fact_gen_5" />
 							</Gedcom>
 						</Text>
 					</Gedcom>
 				</TextBox>
 
+				<if condition="$spouses=='on'">
 					<SetVar name="my" value="335" />
 					<RepeatTag tag="FAMS">
 						<Gedcom id="@FAMS">
 							<if condition="$my LT 413">
 								<TextBox padding="0" pagecheck="0" width="150" height="10" newline="1" align="left" left="38" top="$my" reseth="1">
 									<if condition="$pid==@HUSB">
-										<Text style="name"><GetPersonName id="@WIFE" truncate="$truncatename" /></Text>
+										<Text style="name"><GetPersonName id="@WIFE" truncate="$trunc_name_gen_1" /></Text>
 									</if>
 									<if condition="$pid==@WIFE">
-										<Text style="name"><GetPersonName id="@HUSB" truncate="$truncatename" /></Text>
+										<Text style="name"><GetPersonName id="@HUSB" truncate="$trunc_name_gen_1" /></Text>
 									</if>
 								</TextBox>
 								<SetVar name="my" value="$my+10" />
@@ -1392,13 +1404,14 @@
 							<RepeatTag tag="CHIL">
 								<if condition="$my LT 413">
 									<TextBox padding="0" pagecheck="0" width="150" height="10" align="left" left="48" top="$my" reseth="1">
-										<Text style="text"><GetPersonName id="@CHIL" truncate="$truncatename" /></Text>
+										<Text style="text"><GetPersonName id="@CHIL" truncate="$trunc_name_gen_1" /></Text>
 									</TextBox>
 									<SetVar name="my" value="$my+10" />
 								</if>
 							</RepeatTag>
 						</Gedcom>
 					</RepeatTag>
+				</if>
 				</Gedcom>
 			</Body>
 		</Doc>

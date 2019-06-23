@@ -29,6 +29,6 @@ class TopSurnamesModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\TopSurnamesModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\TopSurnamesModule::class));
     }
 }

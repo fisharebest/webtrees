@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Support\Str;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class ChartsBlockModule
@@ -83,29 +84,25 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
     {
         $PEDIGREE_ROOT_ID = $tree->getPreference('PEDIGREE_ROOT_ID');
         $gedcomid         = $tree->getUserPreference(Auth::user(), 'gedcomid');
+        $default_xref     = $gedcomid ?: $PEDIGREE_ROOT_ID;
 
         $type = $this->getBlockSetting($block_id, 'type', 'pedigree');
-        $pid  = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ?: $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+        $xref = $this->getBlockSetting($block_id, 'pid', $default_xref);
 
         extract($cfg, EXTR_OVERWRITE);
 
-        $person = Individual::getInstance($pid, $tree);
-        if (!$person) {
-            $pid = $PEDIGREE_ROOT_ID;
-            $this->setBlockSetting($block_id, 'pid', $pid);
-            $person = Individual::getInstance($pid, $tree);
-        }
+        $individual = Individual::getInstance($xref, $tree);
 
         $title = $this->title();
 
-        if ($person) {
+        if ($individual instanceof Individual) {
             switch ($type) {
                 default:
                 case 'pedigree':
                     /** @var PedigreeChartModule $module */
                     $module    = $this->module_service->findByInterface(PedigreeChartModule::class)->first();
-                    $title     = $module->chartTitle($person);
-                    $chart_url = $module->chartUrl($person, [
+                    $title     = $module->chartTitle($individual);
+                    $chart_url = $module->chartUrl($individual, [
                         'ajax'        => true,
                         'generations' => 3,
                         'layout'      => PedigreeChartModule::ORIENTATION_RIGHT,
@@ -113,47 +110,48 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                     $content   = view('modules/charts/chart', [
                         'block_id'  => $block_id,
                         'chart_url' => $chart_url,
+                        'class'     => 'wt-chart-pedigree',
                     ]);
                     break;
 
                 case 'descendants':
                     /** @var DescendancyChartModule $module */
                     $module    = $this->module_service->findByInterface(DescendancyChartModule::class)->first();
-                    $title     = $module->chartTitle($person);
-                    $chart_url = $module->chartUrl($person, [
+                    $title     = $module->chartTitle($individual);
+                    $chart_url = $module->chartUrl($individual, [
                         'ajax'        => true,
                         'generations' => 2,
-                        'chart_style' => DescendancyChartModule::CHART_STYLE_LIST,
+                        'chart_style' => DescendancyChartModule::CHART_STYLE_TREE,
                     ]);
                     $content   = view('modules/charts/chart', [
                         'block_id'  => $block_id,
                         'chart_url' => $chart_url,
+                        'class'     => 'wt-chart-descendants',
                     ]);
                     break;
 
                 case 'hourglass':
                     /** @var HourglassChartModule $module */
                     $module    = $this->module_service->findByInterface(HourglassChartModule::class)->first();
-                    $title     = $module->chartTitle($person);
-                    $chart_url = $module->chartUrl($person, [
+                    $title     = $module->chartTitle($individual);
+                    $chart_url = $module->chartUrl($individual, [
                         'ajax'        => true,
                         'generations' => 2,
                     ]);
                     $content   = view('modules/charts/chart', [
                         'block_id'  => $block_id,
                         'chart_url' => $chart_url,
+                        'class'     => 'wt-chart-hourglass',
                     ]);
                     break;
 
                 case 'treenav':
                     /** @var InteractiveTreeModule $module */
-                    $module  = $this->module_service->findByInterface(InteractiveTreeModule::class);
-                    $title   = I18N::translate('Interactive tree of %s', $person->fullName());
-                    $tv      = new TreeView();
-                    $content = '<script>$("head").append(\'<link rel="stylesheet" href="' . $module->css() . '" type="text/css" />\');</script>';
-                    $content .= '<script src="' . $module->js() . '"></script>';
-                    [$html, $js] = $tv->drawViewport($person, 2);
-                    $content .= $html . '<script>' . $js . '</script>';
+                    $module = $this->module_service->findByInterface(InteractiveTreeModule::class)->first();
+                    $title  = I18N::translate('Interactive tree of %s', $individual->fullName());
+                    $tv     = new TreeView();
+                    [$html, $js] = $tv->drawViewport($individual, 2);
+                    $content = $html . '<script>' . $js . '</script>';
                     break;
             }
         } else {
@@ -176,7 +174,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
             }
 
             return view('modules/block-template', [
-                'block'      => str_replace('_', '-', $this->name()),
+                'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => $config_url,
                 'title'      => strip_tags($title),
@@ -208,15 +206,15 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      * @param int     $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $this->setBlockSetting($block_id, 'type', $request->get('type', 'pedigree'));
-        $this->setBlockSetting($block_id, 'pid', $request->get('pid', ''));
+        $this->setBlockSetting($block_id, 'type', $request->getParsedBody()['type'] ?? 'pedigree');
+        $this->setBlockSetting($block_id, 'pid', $request->getParsedBody()['xref'] ?? '');
     }
 
     /**
@@ -231,9 +229,10 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
     {
         $PEDIGREE_ROOT_ID = $tree->getPreference('PEDIGREE_ROOT_ID');
         $gedcomid         = $tree->getUserPreference(Auth::user(), 'gedcomid');
+        $default_xref     = $gedcomid ?: $PEDIGREE_ROOT_ID;
 
         $type = $this->getBlockSetting($block_id, 'type', 'pedigree');
-        $pid  = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ?: $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+        $xref  = $this->getBlockSetting($block_id, 'pid', $default_xref);
 
         $charts = [
             'pedigree'    => I18N::translate('Pedigree'),
@@ -243,7 +242,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
         ];
         uasort($charts, 'Fisharebest\Webtrees\I18N::strcasecmp');
 
-        $individual = Individual::getInstance($pid, $tree);
+        $individual = Individual::getInstance($xref, $tree);
 
         echo view('modules/charts/config', [
             'charts'     => $charts,

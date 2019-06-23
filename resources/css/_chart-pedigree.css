@@ -18,6 +18,10 @@
  *
  * wt-chart, wt-chart-pedigree
  */
+.wt-chart-pedigree {
+	overflow-y: auto;
+}
+
 .wt-chart-pedigree-left .wt-chart-box,
 .wt-chart-pedigree-right .wt-chart-box {
 	width: 15rem;
@@ -40,7 +44,7 @@
 	bottom: 25%;
 	border: var(--chart-line);
 	border-right: none;
-	border-radius: 20px 0 0 20px;
+	border-radius: var(--chart-line-radius) 0 0 var(--chart-line-radius);
 	width: 25%;
 	height: 50%;
 	z-index: -1;
@@ -59,7 +63,7 @@
 	bottom: 25%;
 	border: var(--chart-line);
 	border-left: none;
-	border-radius: 0 20px 20px 0;
+	border-radius: 0 var(--chart-line-radius) var(--chart-line-radius) 0;
 	width: 25%;
 	height: 50%;
 	z-index: -1;
@@ -82,7 +86,7 @@
 	right: 25%;
 	border: var(--chart-line);
 	border-bottom: none;
-	border-radius: 20px 20px 0 0;
+	border-radius: var(--chart-line-radius) var(--chart-line-radius) 0 0;
 	width: 50%;
 	height: 25%;
 	z-index: -1;
@@ -105,7 +109,7 @@
 	right: 25%;
 	border: var(--chart-line);
 	border-top: none;
-	border-radius: 0 0 20px 20px;
+	border-radius: 0 0 var(--chart-line-radius) var(--chart-line-radius);
 	width: 50%;
 	height: 25%;
 	z-index: -1;

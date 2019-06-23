@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Google;
 
+use function count;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
@@ -59,7 +60,7 @@ class ChartFamilyWithSources
         int $tot_fam,
         int $tot_fam_source,
         string $color_from = null,
-        string $color_to   = null
+        string $color_to = null
     ): string {
         $chart_color1 = (string) $this->theme->parameter('distribution-chart-no-values');
         $chart_color2 = (string) $this->theme->parameter('distribution-chart-high-values');
@@ -85,7 +86,7 @@ class ChartFamilyWithSources
             ];
         }
 
-        $colors = $this->color_service->interpolateRgb($color_from, $color_to, \count($data) - 1);
+        $colors = $this->color_service->interpolateRgb($color_from, $color_to, count($data) - 1);
 
         return view(
             'statistics/other/charts/pie',

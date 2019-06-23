@@ -29,6 +29,6 @@ class CkeditorModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\CkeditorModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\CkeditorModule::class));
     }
 }

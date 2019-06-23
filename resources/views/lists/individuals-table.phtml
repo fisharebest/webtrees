@@ -24,7 +24,7 @@ $unique_indis = []; // Don't double-count indis with multiple names.
 
 $module = app(ModuleService::class)
     ->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
-    ->first(function (ModuleInterface $module) {
+    ->first(static function (ModuleInterface $module) {
         return $module instanceof RelationshipsChartModule;
     });
 ?>
@@ -34,7 +34,6 @@ $module = app(ModuleService::class)
 
 $("#<?= e($table_id) ?>").dataTable({
     dom: '<"H"<"filtersH_<?= e($table_id) ?>">T<"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_<?= e($table_id) ?>">>',
-    <?= I18N::datatablesI18N() ?>,
     autoWidth: false,
     processing: true,
     retrieve: true,
@@ -56,9 +55,7 @@ $("#<?= e($table_id) ?>").dataTable({
         /* Filter death */ { sortable: false },
         /* Filter tree  */ { sortable: false }
     ],
-    sorting: <?= json_encode($sosa ? [[4, "asc"]] : [[1, "asc"]]) ?>,
-    displayLength: 20,
-    pagingType: "full_numbers"
+    sorting: <?= json_encode($sosa ? [[4, 'asc']] : [[1, 'asc']]) ?>
 });
 
 $("#<?= e($table_id) ?>")
@@ -157,7 +154,9 @@ $deathAgeData = [
 ?>
 
 <div class="indi-list">
-    <table id="<?= e($table_id) ?>">
+    <table id="<?= e($table_id) ?>" class="table-bordered"
+        <?= view('lists/datatables-attributes') ?>
+    >
         <thead>
             <tr>
                 <th colspan="16">
@@ -310,7 +309,7 @@ $deathAgeData = [
 
         <tbody>
             <?php foreach ($individuals as $key => $individual) : ?>
-            <tr class="<?= $individual->isPendingDeletion() ? 'old' : ($individual->isPendingAddition() ? 'new' : '') ?>">
+            <tr class="<?= $individual->isPendingDeletion() ? 'wt-old' : ($individual->isPendingAddition() ? 'wt-new' : '') ?>">
                 <td colspan="2" data-sort="<?= e(str_replace([',', '@P.N.', '@N.N.'], 'AAAA', implode(',', array_reverse(explode(',', $individual->sortName()))))) ?>">
                     <?php foreach ($individual->getAllNames() as $num => $name) : ?>
                         <a title="<?= $name['type'] === 'NAME' ? '' : GedcomTag::getLabel($name['type'], $individual) ?>" href="<?= e($individual->url()) ?>" class="<?= $num === $individual->getPrimaryName() ? 'name2' : '' ?>">
@@ -346,6 +345,10 @@ $deathAgeData = [
                         <?= $birth_date->display(true) ?>
                         <br>
                     <?php endforeach ?>
+
+                    <?php if (empty($birth_dates)): ?>
+                        <?= $individual->getEstimatedBirthDate()->display(true) ?>
+                    <?php endif ?>
                 </td>
 
                 <!-- Birth anniversary -->
@@ -378,6 +381,10 @@ $deathAgeData = [
                         <?= $death_date->display(true) ?>
                     <br>
                     <?php endforeach ?>
+
+                    <?php if (empty($death_dates)): ?>
+                        <?= $individual->getEstimatedDeathDate()->display(true) ?>
+                    <?php endif ?>
                 </td>
 
                 <!-- Death anniversary -->

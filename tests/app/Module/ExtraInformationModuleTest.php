@@ -29,6 +29,6 @@ class ExtraInformationModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\IndividualMetadataModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\IndividualMetadataModule::class));
     }
 }

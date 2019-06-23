@@ -21,7 +21,6 @@ $hundred_years_ago = new Date($hundred_years_ago->format('Y'));
 
 $("#<?= e($table_id) ?>").dataTable({
     dom: '<"H"<"filtersH_<?= e($table_id) ?>"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_<?= e($table_id) ?>">>',
-    <?= I18N::datatablesI18N() ?>,
     autoWidth: false,
     processing: true,
     retrieve: true,
@@ -43,9 +42,7 @@ $("#<?= e($table_id) ?>").dataTable({
     ],
     sorting: [
         [1, "asc"]
-    ],
-    displayLength: 20,
-    pagingType: "full_numbers"
+    ]
 });
 
 $("#<?= e($table_id) ?>")
@@ -144,7 +141,9 @@ $marriageAgeData = [
 ?>
 
 <div class="fam-list">
-    <table id="<?= e($table_id) ?>">
+    <table id="<?= e($table_id) ?>" class="table-bordered table-sm"
+        <?= view('lists/datatables-attributes') ?>
+    >
         <thead>
             <tr>
                 <th colspan="14">
@@ -290,11 +289,11 @@ $marriageAgeData = [
             <?php $husb = $family->husband() ?? new Individual('H', '0 @H@ INDI', null, $family->tree()) ?>
             <?php $wife = $family->wife() ?? new Individual('W', '0 @W@ INDI', null, $family->tree()) ?>
 
-            <tr class="<?= $family->isPendingDeletion() ? 'old' : ($family->isPendingAddition() ? 'new' : '') ?>">
+            <tr class="<?= $family->isPendingDeletion() ? 'wt-old' : ($family->isPendingAddition() ? 'wt-new' : '') ?>">
                 <!-- Husband name -->
                 <td colspan="2" data-sort="<?= e(str_replace([',', '@P.N.', '@N.N.'], 'AAAA', implode(',', array_reverse(explode(',', $husb->sortName()))))) ?>">
                     <?php foreach ($husb->getAllNames() as $num => $name) : ?>
-                        <?php if ($name['type'] != '_MARNM' || $num == $husb->getPrimaryName()) : ?>
+                        <?php if ($name['type'] !== '_MARNM' || $num == $husb->getPrimaryName()) : ?>
                         <a title="<?= $name['type'] === 'NAME' ? '' : GedcomTag::getLabel($name['type'], $husb) ?>" href="<?= e($family->url()) ?>" class="<?= $num === $husb->getPrimaryName() ? 'name2' : '' ?>">
                             <?= $name['full'] ?>
                         </a>
@@ -330,7 +329,7 @@ $marriageAgeData = [
                 <!-- Wife name -->
                 <td colspan="2" data-sort="<?= e(str_replace([',', '@P.N.', '@N.N.'], 'AAAA', implode(',', array_reverse(explode(',', $wife->sortName()))))) ?>">
                     <?php foreach ($wife->getAllNames() as $num => $name) : ?>
-                        <?php if ($name['type'] != '_MARNM' || $num == $wife->getPrimaryName()) : ?>
+                        <?php if ($name['type'] !== '_MARNM' || $num == $wife->getPrimaryName()) : ?>
                             <a title="<?= $name['type'] === 'NAME' ? '' : GedcomTag::getLabel($name['type'], $wife) ?>" href="<?= e($family->url()) ?>" class="<?= $num === $wife->getPrimaryName() ? 'name2' : '' ?>">
                                 <?= $name['full'] ?>
                             </a>
@@ -428,18 +427,18 @@ $marriageAgeData = [
                         Y
                     <?php endif ?>
                     <?php if ($husb->isDead() && !$wife->isDead()) : ?>
-                        <?php if ($wife->sex() == 'F') : ?>
+                        <?php if ($wife->sex() === 'F') : ?>
                             H
                         <?php endif ?>
-                        <?php if ($wife->sex() == 'M') : ?>
+                        <?php if ($wife->sex() === 'M') : ?>
                             W
                         <?php endif ?>
                     <?php endif ?>
                     <?php if (!$husb->isDead() && $wife->isDead()) : ?>
-                        <?php if ($husb->sex() == 'M') : ?>
+                        <?php if ($husb->sex() === 'M') : ?>
                             W
                         <?php endif ?>
-                        <?php if ($husb->sex() == 'F') : ?>
+                        <?php if ($husb->sex() === 'F') : ?>
                             H
                         <?php endif ?>
                     <?php endif ?>

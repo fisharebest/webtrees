@@ -428,7 +428,7 @@ class GedcomTag
      */
     public static function isTag($tag): bool
     {
-        return in_array($tag, self::ALL_TAGS);
+        return in_array($tag, self::ALL_TAGS, true);
     }
 
     /**
@@ -2344,7 +2344,7 @@ class GedcomTag
      *
      * @return string
      */
-    public static function getFileFormTypeValue($type): ?string
+    public static function getFileFormTypeValue(string $type): string
     {
         switch (strtolower($type)) {
             case 'audio':
@@ -2411,7 +2411,7 @@ class GedcomTag
      */
     public static function getFileFormTypes(): array
     {
-        $values = array_map(function (string $keyword): string {
+        $values = array_map(static function (string $keyword): string {
             return self::getFileFormTypeValue($keyword);
         }, array_combine(self::OBJE_FILE_FORM_TYPE, self::OBJE_FILE_FORM_TYPE));
 

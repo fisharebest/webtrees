@@ -29,6 +29,6 @@ class ModuleChartInterfaceTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(interface_exists('\Fisharebest\Webtrees\Module\ModuleChartInterface'));
+        $this->assertTrue(interface_exists(ModuleChartInterface::class));
     }
 }

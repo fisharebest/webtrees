@@ -25,11 +25,10 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Intervention\Image\ImageManager;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 /**
@@ -40,9 +39,9 @@ class ImportThumbnailsController extends AbstractAdminController
     /**
      * Import custom thumbnails from webtres 1.x.
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function webtrees1Thumbnails(): Response
+    public function webtrees1Thumbnails(): ResponseInterface
     {
         return $this->viewResponse('admin/webtrees1-thumbnails', [
             'title' => I18N::translate('Import custom thumbnails from webtrees version 1'),
@@ -52,16 +51,16 @@ class ImportThumbnailsController extends AbstractAdminController
     /**
      * Import custom thumbnails from webtres 1.x.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function webtrees1ThumbnailsAction(Request $request): Response
+    public function webtrees1ThumbnailsAction(ServerRequestInterface $request): ResponseInterface
     {
-        $thumbnail = $request->get('thumbnail', '');
-        $action    = $request->get('action', '');
-        $xrefs     = $request->get('xref', []);
-        $geds      = $request->get('ged', []);
+        $thumbnail = $request->getParsedBody()['thumbnail'];
+        $action    = $request->getParsedBody()['action'];
+        $xrefs     = $request->getParsedBody()['xref'];
+        $geds      = $request->getParsedBody()['ged'];
 
         $media_objects = [];
 
@@ -102,27 +101,26 @@ class ImportThumbnailsController extends AbstractAdminController
                     }
 
                     // Accept the changes, to keep the filesystem in sync with the GEDCOM data.
-                    FunctionsImport::acceptAllChanges($media_object->getxref(), $media_object->tree());
+                    FunctionsImport::acceptAllChanges($media_object->xref(), $media_object->tree());
                 }
                 break;
         }
 
-        return new JsonResponse([]);
+        return response([]);
     }
 
     /**
      * Import custom thumbnails from webtres 1.x.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return JsonResponse
+     * @return ResponseInterface
      */
-    public function webtrees1ThumbnailsData(Request $request): JsonResponse
+    public function webtrees1ThumbnailsData(ServerRequestInterface $request): ResponseInterface
     {
-        $start  = (int) $request->get('start', 0);
-        $length = (int) $request->get('length', 20);
-        $search = $request->get('search', []);
-        $search = $search['value'] ?? '';
+        $start  = (int) $request->getQueryParams()['start'];
+        $length = (int) $request->getQueryParams()['length'];
+        $search = $request->getQueryParams()['search']['value'];
 
         // Fetch all thumbnails
         $thumbnails = [];
@@ -138,7 +136,7 @@ class ImportThumbnailsController extends AbstractAdminController
         $recordsTotal = count($thumbnails);
 
         if ($search !== '') {
-            $thumbnails = array_filter($thumbnails, function (string $thumbnail) use ($search): bool {
+            $thumbnails = array_filter($thumbnails, static function (string $thumbnail) use ($search): bool {
                 return stripos($thumbnail, $search) !== false;
             });
         }
@@ -171,7 +169,7 @@ class ImportThumbnailsController extends AbstractAdminController
 
             $media = $this->findMediaObjectsForMediaFile($original_path);
 
-            $media_links = array_map(function (Media $media): string {
+            $media_links = array_map(static function (Media $media): string {
                 return '<a href="' . e($media->url()) . '">' . $media->fullName() . '</a>';
             }, $media);
 
@@ -192,8 +190,8 @@ class ImportThumbnailsController extends AbstractAdminController
             ];
         }, $thumbnails);
 
-        return new JsonResponse([
-            'draw'            => (int) $request->get('draw'),
+        return response([
+            'draw'            => (int) $request->getQueryParams()['draw'],
             'recordsTotal'    => $recordsTotal,
             'recordsFiltered' => $recordsFiltered,
             'data'            => $data,
@@ -234,7 +232,7 @@ class ImportThumbnailsController extends AbstractAdminController
     private function findMediaObjectsForMediaFile(string $file): array
     {
         return DB::table('media')
-            ->join('media_file', function (JoinClause $join): void {
+            ->join('media_file', static function (JoinClause $join): void {
                 $join
                     ->on('media_file.m_file', '=', 'media.m_file')
                     ->on('media_file.m_id', '=', 'media.m_id');

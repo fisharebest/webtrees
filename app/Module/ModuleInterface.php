@@ -109,4 +109,11 @@ interface ModuleInterface
      * @return void
      */
     public function setPreference(string $setting_name, string $setting_value): void;
+
+    /**
+     * Where does this module store its resources
+     *
+     * @return string
+     */
+    public function resourcesFolder(): string;
 }

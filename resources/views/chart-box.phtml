@@ -26,12 +26,12 @@ if ($individual === null) {
 
 $module_service = app(ModuleService::class);
 
-$menus = $module_service->findByComponent(ModuleChartInterface::class, $individual->tree(), Auth::user())->map(function (ModuleChartInterface $module) use ($individual): ?Menu {
+$menus = $module_service->findByComponent(ModuleChartInterface::class, $individual->tree(), Auth::user())->map(static function (ModuleChartInterface $module) use ($individual): ?Menu {
     return $module->chartBoxMenu($individual);
 })->filter();
 
 foreach ($individual->spouseFamilies() as $family) {
-    $menus[] = new Menu('<strong>' . I18N::translate('Family with spouse') . '</strong>', $family->url());
+    $menus->push(new Menu('<strong>' . I18N::translate('Family with spouse') . '</strong>', $family->url()));
     $spouse  = $family->spouse($individual);
     if ($spouse && $spouse->canShow()) {
         $menus->push(new Menu($spouse->fullName(), $spouse->url()));
@@ -82,8 +82,8 @@ foreach ($individual->spouseFamilies() as $family) {
         $all_facts->push($fact);
     }
 }
-$all_facts = $all_facts->filter(function (Fact $fact) use ($exclude): bool {
-    return !in_array($fact->getTag(), $exclude);
+$all_facts = $all_facts->filter(static function (Fact $fact) use ($exclude): bool {
+    return !in_array($fact->getTag(), $exclude, true);
 });
 
 $all_facts = Fact::sortFacts($all_facts);
@@ -94,41 +94,45 @@ $id = Uuid::uuid4()->toString();
  * @var Individual $individual
  */
 ?>
-<div class="wt-chart-box wt-chart-box-<?= strtolower($individual->sex()) ?>" style="overflow: hidden;" data-xref="<?= e($individual->xref()) ?>" data-tree="<?= e($individual->tree()->name()) ?>">
+<div class="wt-chart-box wt-chart-box-<?= strtolower($individual->sex()) ?> <?= $individual->isPendingAddition() ? 'wt-new' : '' ?> <?= $individual->isPendingDeletion() ? 'wt-old' : '' ?> overflow-hidden" data-xref="<?= e($individual->xref()) ?>" data-tree="<?= e($individual->tree()->name()) ?>">
     <?php if ($individual->canShow() && $individual->tree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) : ?>
         <div class="wt-chart-box-thumbnail float-left mr-1">
             <?= $individual->displayImage(40, 50, 'crop', ['class' => 'wt-chart-box-thumbnail']) ?>
         </div>
     <?php endif ?>
 
-    <div class="wt-chart-box-extra d-print-none float-right ml-1">
-        <div class="dropdown position-static wt-chart-box-zoom">
-            <a class="wt-chart-box-icon" href="#" role="button" id="chart-box-zoom-<?= $id ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div ><?= view('icons/zoom-in') ?></div>
-                <div class="d-none"><?= view('icons/zoom-out') ?></div>
-                <span class="sr-only"><?= I18N::translate('Links') ?></span>
-            </a>
+    <?php if ($individual->canShow()): ?>
+        <div class="wt-chart-box-extra d-print-none float-right ml-1">
+            <div class="dropdown position-static wt-chart-box-zoom">
+                <a class="wt-chart-box-icon" href="#" role="button" id="chart-box-zoom-<?= $id ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div ><?= view('icons/zoom-in') ?></div>
+                    <div class="d-none"><?= view('icons/zoom-out') ?></div>
+                    <span class="sr-only"><?= I18N::translate('Links') ?></span>
+                </a>
 
-            <div class="dropdown-menu dropdown-menu-right wt-chart-box-dropdown wt-chart-box-zoom-dropdown" style="position: inherit" aria-labelledby="#chart-box-zoom-<?= $id ?>">
-                <?php foreach ($all_facts as $fact): ?>
-                    <?= $fact->summary() ?>
-                <?php endforeach ?>
+                <div class="dropdown-menu dropdown-menu-right wt-chart-box-dropdown wt-chart-box-zoom-dropdown" style="position: inherit" aria-labelledby="#chart-box-zoom-<?= $id ?>">
+                    <?php foreach ($all_facts as $fact): ?>
+                        <?= $fact->summary() ?>
+                    <?php endforeach ?>
+                </div>
+            </div>
+
+            <div class="dropdown position-static wt-chart-box-links">
+                <a class="wt-chart-box-icon" href="#" role="button" id="chart-box-menu-<?= $id ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="icon-pedigree" title="<?= I18N::translate('Links') ?>"></i>
+                    <span class="sr-only"><?= I18N::translate('Links') ?></span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right wt-chart-box-dropdown wt-chart-box-links-dropdown" style="position: inherit" aria-labelledby="#chart-box-menu-<?= $id ?>">
+                    <?php foreach ($menus as $menu): ?>
+                        <a class="dropdown-item p-1 <?= e($menu->getClass()) ?>" href="<?= e($menu->getLink()) ?>">
+                            <?= $menu->getLabel() ?>
+                        </a>
+                    <?php endforeach ?>
+                </div>
             </div>
         </div>
-
-        <div class="dropdown position-static wt-chart-box-links">
-            <a class="wt-chart-box-icon" href="#" role="button" id="chart-box-menu-<?= $id ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="icon-pedigree" title="<?= I18N::translate('Links') ?>"></i>
-                <span class="sr-only"><?= I18N::translate('Links') ?></span>
-            </a>
-
-            <div class="dropdown-menu dropdown-menu-right wt-chart-box-dropdown wt-chart-box-links-dropdown" style="position: inherit" aria-labelledby="#chart-box-menu-<?= $id ?>">
-                <?php foreach ($menus as $menu): ?>
-                    <?= $menu->getMenuAsList() ?>
-                <?php endforeach ?>
-            </div>
-        </div>
-    </div>
+    <?php endif ?>
 
     <div class="wt-chart-box-name font-weight-bold">
         <a href="<?= e($individual->url()) ?>" class="wt-chart-box-name"><?= $individual->fullName() ?></a>
@@ -149,7 +153,7 @@ $id = Uuid::uuid4()->toString();
             // Show BIRT or equivalent event
 
             foreach (Gedcom::BIRTH_EVENTS as $birttag) {
-                if (!in_array($birttag, $opt_tags)) {
+                if (!in_array($birttag, $opt_tags, true)) {
                     $event = $individual->facts([$birttag])->first();
                     if ($event instanceof Fact) {
                         echo $event->summary();
@@ -159,7 +163,7 @@ $id = Uuid::uuid4()->toString();
             }
             // Show optional events (before death)
             foreach ($opt_tags as $key => $tag) {
-                if (!in_array($tag, Gedcom::DEATH_EVENTS)) {
+                if (!in_array($tag, Gedcom::DEATH_EVENTS, true)) {
                     $event = $individual->facts([$tag])->first();
                     if ($event instanceof Fact) {
                         echo $event->summary();
@@ -172,8 +176,8 @@ $id = Uuid::uuid4()->toString();
                 $event = $individual->facts([$deattag])->first();
                 if ($event instanceof Fact) {
                     echo $event->summary();
-                    if (in_array($deattag, $opt_tags)) {
-                        unset($opt_tags[array_search($deattag, $opt_tags)]);
+                    if (in_array($deattag, $opt_tags, true)) {
+                        unset($opt_tags[array_search($deattag, $opt_tags, true)]);
                     }
                     break;
                 }

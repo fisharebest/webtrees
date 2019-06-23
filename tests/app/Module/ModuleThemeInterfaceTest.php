@@ -29,6 +29,6 @@ class ModuleThemeInterfaceTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(interface_exists('\Fisharebest\Webtrees\Module\ModuleThemeInterface'));
+        $this->assertTrue(interface_exists(ModuleThemeInterface::class));
     }
 }

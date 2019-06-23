@@ -36,54 +36,27 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use function explode;
+use function ob_get_clean;
+use function ob_start;
+use function preg_match_all;
+use function preg_replace;
+use function str_replace;
+use function strpos;
 
 /**
  * Controller for the individual page.
  */
 class IndividualController extends AbstractBaseController
 {
-    // Do not show these facts in the expanded chart boxes.
-    private const EXCLUDE_CHART_FACTS = [
-        'ADDR',
-        'ALIA',
-        'ASSO',
-        'CHAN',
-        'CHIL',
-        'EMAIL',
-        'FAMC',
-        'FAMS',
-        'HUSB',
-        'NAME',
-        'NOTE',
-        'OBJE',
-        'PHON',
-        'RESI',
-        'RESN',
-        'SEX',
-        'SOUR',
-        'SSN',
-        'SUBM',
-        'TITL',
-        'URL',
-        'WIFE',
-        'WWW',
-        '_EMAIL',
-        '_TODO',
-        '_UID',
-        '_WT_OBJE_SORT',
-    ];
-
-    /**
-     * @var ModuleService
-     */
-
+    /** @var ModuleService */
     private $module_service;
-    /**
-     * @var UserService
-     */
+
+    /** @var UserService */
     private $user_service;
 
     /**
@@ -101,18 +74,18 @@ class IndividualController extends AbstractBaseController
     /**
      * Show a individual's page.
      *
-     * @param Request          $request
-     * @param Tree             $tree
-     * @param ClipboardService $clipboard_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param ClipboardService       $clipboard_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function show(Request $request, Tree $tree, ClipboardService $clipboard_service): Response
+    public function show(ServerRequestInterface $request, Tree $tree, ClipboardService $clipboard_service): ResponseInterface
     {
-        $xref       = $request->get('xref', '');
+        $xref       = $request->getQueryParams()['xref'];
         $individual = Individual::getInstance($xref, $tree);
 
-        Auth::checkIndividualAccess($individual, false);
+        Auth::checkIndividualAccess($individual);
 
         // What is (was) the age of the individual
         $bdate = $individual->getBirthDate();
@@ -176,18 +149,22 @@ class IndividualController extends AbstractBaseController
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function tab(Request $request, Tree $tree, UserInterface $user): Response
+    public function tab(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $xref        = $request->get('xref', '');
+        $xref        = $request->getQueryParams()['xref'];
         $record      = Individual::getInstance($xref, $tree);
-        $module_name = $request->get('module');
+        $module_name = $request->getQueryParams()['module'];
         $module      = $this->module_service->findByName($module_name);
+
+        if (!$module instanceof ModuleTabInterface) {
+            throw new NotFoundHttpException('No such tab: ' . $module_name);
+        }
 
         Auth::checkIndividualAccess($record);
         Auth::checkComponentAccess($module, 'tab', $tree, $user);
@@ -196,7 +173,7 @@ class IndividualController extends AbstractBaseController
             'content' => $module->getTabContent($record),
         ]);
 
-        return new Response($layout);
+        return response($layout);
     }
 
     /**
@@ -262,7 +239,7 @@ class IndividualController extends AbstractBaseController
         $ct = preg_match_all('/\n2 (\w+) (.*)/', $fact->gedcom(), $nmatch, PREG_SET_ORDER);
         for ($i = 0; $i < $ct; $i++) {
             $tag = $nmatch[$i][1];
-            if ($tag != 'SOUR' && $tag != 'NOTE' && $tag != 'SPFX') {
+            if ($tag !== 'SOUR' && $tag !== 'NOTE' && $tag !== 'SPFX') {
                 echo '<dt class="label">', GedcomTag::getLabel($tag, $individual), '</dt>';
                 echo '<dd class="field">'; // Before using dir="auto" on this field, note that Gecko treats this as an inline element but WebKit treats it as a block element
                 if (isset($nmatch[$i][2])) {
@@ -290,9 +267,9 @@ class IndividualController extends AbstractBaseController
                     }
                 }
                 echo '</dd>';
-                echo '</dl>';
             }
         }
+        echo '</dl>';
         if (strpos($fact->gedcom(), "\n2 SOUR") !== false) {
             echo '<div id="indi_sour" class="clearfix">', FunctionsPrintFacts::printFactSources($tree, $fact->gedcom(), 2), '</div>';
         }
@@ -301,7 +278,7 @@ class IndividualController extends AbstractBaseController
         }
         $content = ob_get_clean();
 
-        if ($individual->canEdit() && !$fact->isPendingDeletion()) {
+        if ($fact->canEdit()) {
             $edit_links =
                 '<a class="btn btn-link" href="#" data-confirm="' . I18N::translate('Are you sure you want to delete this fact?') . '" onclick="return delete_fact(this.dataset.confirm, \'' . e($individual->tree()->name()) . '\', \'' . e($individual->xref()) . '\', \'' . $fact->id() . '\');" title="' . I18N::translate('Delete this name') . '">' . view('icons/delete') . '<span class="sr-only">' . I18N::translate('Delete this name') . '</span></a>' .
                 '<a class="btn btn-link" href="' . e(route('edit-name', ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'ged' => $individual->tree()->name()])) . '" title="' . I18N::translate('Edit the name') . '">' . view('icons/edit') . '<span class="sr-only">' . I18N::translate('Edit the name') . '</span></a>';
@@ -351,7 +328,7 @@ class IndividualController extends AbstractBaseController
             $container_class .= ' new';
         }
 
-        if ($individual->canEdit() && !$fact->isPendingDeletion()) {
+        if ($individual->canEdit()) {
             $edit_links = '<a class="btn btn-link" href="' . e(route('edit-fact', ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'ged' => $individual->tree()->name()])) . '" title="' . I18N::translate('Edit the gender') . '">' . view('icons/edit') . '<span class="sr-only">' . I18N::translate('Edit the gender') . '</span></a>';
         } else {
             $edit_links = '';
@@ -374,12 +351,11 @@ class IndividualController extends AbstractBaseController
      * @param Individual $individual
      *
      * @return Collection
-     * @return ModuleSidebarInterface[]
      */
     public function getSidebars(Individual $individual): Collection
     {
         return $this->module_service->findByComponent(ModuleSidebarInterface::class, $individual->tree(), Auth::user())
-            ->filter(function (ModuleSidebarInterface $sidebar) use ($individual): bool {
+            ->filter(static function (ModuleSidebarInterface $sidebar) use ($individual): bool {
                 return $sidebar->hasSidebarContent($individual);
             });
     }
@@ -391,12 +367,11 @@ class IndividualController extends AbstractBaseController
      * @param Individual $individual
      *
      * @return Collection
-     * @return ModuleTabInterface[]
      */
     public function getTabs(Individual $individual): Collection
     {
         return $this->module_service->findByComponent(ModuleTabInterface::class, $individual->tree(), Auth::user())
-            ->filter(function (ModuleTabInterface $tab) use ($individual): bool {
+            ->filter(static function (ModuleTabInterface $tab) use ($individual): bool {
                 return $tab->hasTabContent($individual);
             });
     }
@@ -411,19 +386,14 @@ class IndividualController extends AbstractBaseController
      */
     private function significant(Individual $individual): stdClass
     {
-        $significant = (object) [
-            'family'     => null,
+        [$surname] = explode(',', $individual->sortName());
+
+        $family = $individual->childFamilies()->merge($individual->spouseFamilies())->first();
+
+        return (object) [
+            'family'     => $family,
             'individual' => $individual,
-            'surname'    => '',
+            'surname'    => $surname,
         ];
-
-        [$significant->surname] = explode(',', $individual->sortName());
-
-        foreach ($individual->childFamilies()->merge($individual->spouseFamilies()) as $family) {
-            $significant->family = $family;
-            break;
-        }
-
-        return $significant;
     }
 }

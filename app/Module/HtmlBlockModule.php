@@ -20,9 +20,11 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Support\Str;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class HtmlBlockModule
@@ -30,6 +32,19 @@ use Symfony\Component\HttpFoundation\Request;
 class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
+
+    /** @var HtmlService */
+    private $html_service;
+
+    /**
+     * HtmlBlockModule bootstrap.
+     *
+     * @param HtmlService $html_service
+     */
+    public function boot(HtmlService $html_service)
+    {
+        $this->html_service = $html_service;
+    }
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -67,13 +82,13 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
     {
         $statistics = app(Statistics::class);
 
-        $title          = $this->getBlockSetting($block_id, 'title', '');
-        $content        = $this->getBlockSetting($block_id, 'html', '');
-        $show_timestamp = $this->getBlockSetting($block_id, 'show_timestamp', '0');
+        $title          = $this->getBlockSetting($block_id, 'title');
+        $content        = $this->getBlockSetting($block_id, 'html');
+        $show_timestamp = $this->getBlockSetting($block_id, 'show_timestamp');
         $languages      = $this->getBlockSetting($block_id, 'languages');
 
         // Only show this block for certain languages
-        if ($languages && !in_array(WT_LOCALE, explode(',', $languages))) {
+        if ($languages && !in_array(WT_LOCALE, explode(',', $languages), true)) {
             return '';
         }
 
@@ -103,7 +118,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
             }
 
             return view('modules/block-template', [
-                'block'      => str_replace('_', '-', $this->name()),
+                'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => $config_url,
                 'title'      => $title,
@@ -114,19 +129,34 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
         return $content;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Should this block load asynchronously using AJAX?
+     *
+     * Simple blocks are faster in-line, more comples ones
+     * can be loaded later.
+     *
+     * @return bool
+     */
     public function loadAjax(): bool
     {
         return false;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this block be shown on the user’s home page?
+     *
+     * @return bool
+     */
     public function isUserBlock(): bool
     {
         return true;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this block be shown on the tree’s home page?
+     *
+     * @return bool
+     */
     public function isTreeBlock(): bool
     {
         return true;
@@ -135,17 +165,23 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      * @param int     $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $languages = (array) $request->get('lang');
-        $this->setBlockSetting($block_id, 'title', $request->get('title', ''));
-        $this->setBlockSetting($block_id, 'html', $request->get('html', ''));
-        $this->setBlockSetting($block_id, 'show_timestamp', $request->get('show_timestamp', ''));
+        $params = $request->getParsedBody();
+
+        $title = $this->html_service->sanitize($params['title']);
+        $html  = $this->html_service->sanitize($params['html']);
+
+        $languages = $params['lang'] ?? [];
+
+        $this->setBlockSetting($block_id, 'title', $title);
+        $this->setBlockSetting($block_id, 'html', $html);
+        $this->setBlockSetting($block_id, 'show_timestamp', $params['show_timestamp']);
         $this->setBlockSetting($block_id, 'timestamp', (string) Carbon::now()->unix());
         $this->setBlockSetting($block_id, 'languages', implode(',', $languages));
     }
@@ -160,17 +196,18 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
      */
     public function editBlockConfiguration(Tree $tree, int $block_id): void
     {
-        $templates = [
-            I18N::translate('Keyword examples')      => view('modules/html/template-keywords', []),
-            I18N::translate('Narrative description') => view('modules/html/template-narrative', []),
-            I18N::translate('Statistics')            => view('modules/html/template-statistics', []),
-        ];
-
-        $title          = $this->getBlockSetting($block_id, 'title', '');
-        $html           = $this->getBlockSetting($block_id, 'html', '');
+        $title          = $this->getBlockSetting($block_id, 'title');
+        $html           = $this->getBlockSetting($block_id, 'html');
         $show_timestamp = $this->getBlockSetting($block_id, 'show_timestamp', '0');
         $languages      = explode(',', $this->getBlockSetting($block_id, 'languages'));
         $all_trees      = Tree::getNameList();
+
+        $templates = [
+            $html                                    => I18N::translate('Custom'),
+            view('modules/html/template-keywords')   => I18N::translate('Keyword examples'),
+            view('modules/html/template-narrative')  => I18N::translate('Narrative description'),
+            view('modules/html/template-statistics') => I18N::translate('Statistics'),
+        ];
 
         echo view('modules/html/config', [
             'all_trees'      => $all_trees,

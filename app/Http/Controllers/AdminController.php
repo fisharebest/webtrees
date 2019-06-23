@@ -30,10 +30,9 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Controller for the administration pages
@@ -46,17 +45,18 @@ class AdminController extends AbstractBaseController
     /**
      * Merge two genealogy records.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function mergeRecords(Request $request, Tree $tree): Response
+    public function mergeRecords(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $title = I18N::translate('Merge records') . ' — ' . e($tree->title());
 
-        $xref1 = $request->get('xref1', '');
-        $xref2 = $request->get('xref2', '');
+        $params = $request->getQueryParams();
+        $xref1  = $params['xref1'] ?? '';
+        $xref2  = $params['xref2'] ?? '';
 
         $record1 = GedcomRecord::getInstance($xref1, $tree);
         $record2 = GedcomRecord::getInstance($xref2, $tree);
@@ -134,17 +134,17 @@ class AdminController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function mergeRecordsAction(Request $request, Tree $tree): Response
+    public function mergeRecordsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref1 = $request->get('xref1', '');
-        $xref2 = $request->get('xref2', '');
-        $keep1 = $request->get('keep1', []);
-        $keep2 = $request->get('keep2', []);
+        $xref1 = $request->getQueryParams()['xref1'];
+        $xref2 = $request->getQueryParams()['xref2'];
+        $keep1 = $request->getParsedBody()['keep1'] ?? [];
+        $keep2 = $request->getParsedBody()['keep2'] ?? [];
 
         // Merge record2 into record1
         $record1 = GedcomRecord::getInstance($xref1, $tree);
@@ -227,12 +227,12 @@ class AdminController extends AbstractBaseController
             $gedcom .= "\n" . $fact->gedcom();
         }
         foreach ($facts1 as $fact_id => $fact) {
-            if (in_array($fact_id, $keep1)) {
+            if (in_array($fact_id, $keep1, true)) {
                 $gedcom .= "\n" . $fact->gedcom();
             }
         }
         foreach ($facts2 as $fact_id => $fact) {
-            if (in_array($fact_id, $keep2)) {
+            if (in_array($fact_id, $keep2, true)) {
                 $gedcom .= "\n" . $fact->gedcom();
             }
         }
@@ -252,15 +252,15 @@ class AdminController extends AbstractBaseController
             $record2_name
         ), 'success');
 
-        return new RedirectResponse(route('merge-records', ['ged' => $tree->name()]));
+        return redirect(route('merge-records', ['ged' => $tree->name()]));
     }
 
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function treePrivacyEdit(Tree $tree): Response
+    public function treePrivacyEdit(Tree $tree): ResponseInterface
     {
         $title                = e($tree->name()) . ' — ' . I18N::translate('Privacy');
         $all_tags             = $this->tagsForPrivacy($tree);
@@ -277,73 +277,85 @@ class AdminController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function treePrivacyUpdate(Request $request, Tree $tree): RedirectResponse
+    public function treePrivacyUpdate(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $delete_default_resn_id = (array) $request->get('delete');
+        $params = $request->getParsedBody();
+
+        $delete_default_resn_id = $params['delete'] ?? [];
 
         DB::table('default_resn')
             ->whereIn('default_resn_id', $delete_default_resn_id)
             ->delete();
 
-        $xrefs     = (array) $request->get('xref');
-        $tag_types = (array) $request->get('tag_type');
-        $resns     = (array) $request->get('resn');
+        $xrefs     = $params['xref'] ?? [];
+        $tag_types = $params['tag_type'] ?? [];
+        $resns     = $params['resn'] ?? [];
 
         foreach ($xrefs as $n => $xref) {
-            $tag_type = (string) $tag_types[$n];
-            $resn     = (string) $resns[$n];
+            $tag_type = $tag_types[$n];
+            $resn     = $resns[$n];
 
+            // Delete any existing data
+            if ($tag_type !== '' && $xref !== '') {
+                DB::table('default_resn')
+                    ->where('gedcom_id', '=', $tree->id())
+                    ->where('tag_type', '=', $tag_type)
+                    ->where('xref', '=', $xref)
+                    ->delete();
+            }
+
+            if ($tag_type !== '' && $xref === '') {
+                DB::table('default_resn')
+                    ->where('gedcom_id', '=', $tree->id())
+                    ->where('tag_type', '=', $tag_type)
+                    ->whereNull('xref')
+                    ->delete();
+            }
+
+            if ($tag_type === '' && $xref !== '') {
+                DB::table('default_resn')
+                    ->where('gedcom_id', '=', $tree->id())
+                    ->whereNull('tag_type')
+                    ->where('xref', '=', $xref)
+                    ->delete();
+            }
+
+            // Add (or update) the new data
             if ($tag_type !== '' || $xref !== '') {
-                // Delete any existing data
-                if ($xref === '') {
-                    DB::table('default_resn')
-                        ->where('gedcom_id', '=', $tree->id())
-                        ->where('xref', '=', $xref)
-                        ->delete();
-                }
-                if ($tag_type === '' && $xref !== '') {
-                    DB::table('default_resn')
-                        ->where('gedcom_id', '=', $tree->id())
-                        ->whereNull('tag_type')
-                        ->where('xref', '=', $xref)
-                        ->delete();
-                }
-
-                // Add (or update) the new data
                 DB::table('default_resn')->insert([
                     'gedcom_id' => $tree->id(),
-                    'xref'      => $xref,
-                    'tag_type'  => $tag_type,
+                    'xref'      => $xref === '' ? null : $xref,
+                    'tag_type'  => $tag_type === '' ? null : $tag_type,
                     'resn'      => $resn,
                 ]);
             }
         }
 
-        $tree->setPreference('HIDE_LIVE_PEOPLE', $request->get('HIDE_LIVE_PEOPLE'));
-        $tree->setPreference('KEEP_ALIVE_YEARS_BIRTH', $request->get('KEEP_ALIVE_YEARS_BIRTH', '0'));
-        $tree->setPreference('KEEP_ALIVE_YEARS_DEATH', $request->get('KEEP_ALIVE_YEARS_DEATH', '0'));
-        $tree->setPreference('MAX_ALIVE_AGE', $request->get('MAX_ALIVE_AGE', '100'));
-        $tree->setPreference('REQUIRE_AUTHENTICATION', $request->get('REQUIRE_AUTHENTICATION'));
-        $tree->setPreference('SHOW_DEAD_PEOPLE', $request->get('SHOW_DEAD_PEOPLE'));
-        $tree->setPreference('SHOW_LIVING_NAMES', $request->get('SHOW_LIVING_NAMES'));
-        $tree->setPreference('SHOW_PRIVATE_RELATIONSHIPS', $request->get('SHOW_PRIVATE_RELATIONSHIPS'));
+        $tree->setPreference('HIDE_LIVE_PEOPLE', $params['HIDE_LIVE_PEOPLE']);
+        $tree->setPreference('KEEP_ALIVE_YEARS_BIRTH', $params['KEEP_ALIVE_YEARS_BIRTH']);
+        $tree->setPreference('KEEP_ALIVE_YEARS_DEATH', $params['KEEP_ALIVE_YEARS_DEATH']);
+        $tree->setPreference('MAX_ALIVE_AGE', $params['MAX_ALIVE_AGE']);
+        $tree->setPreference('REQUIRE_AUTHENTICATION', $params['REQUIRE_AUTHENTICATION']);
+        $tree->setPreference('SHOW_DEAD_PEOPLE', $params['SHOW_DEAD_PEOPLE']);
+        $tree->setPreference('SHOW_LIVING_NAMES', $params['SHOW_LIVING_NAMES']);
+        $tree->setPreference('SHOW_PRIVATE_RELATIONSHIPS', $params['SHOW_PRIVATE_RELATIONSHIPS']);
 
         FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($tree->title()), 'success'));
 
         // Coming soon...
-        if ((bool) $request->get('all_trees')) {
+        if ($params['all_trees'] ?? false) {
             FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.', e($tree->title())), 'success');
         }
-        if ((bool) $request->get('new_trees')) {
+        if ($params['new_trees'] ?? false) {
             FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.', e($tree->title())), 'success');
         }
 
-        return new RedirectResponse(route('admin-trees', ['ged' => $tree->name()]));
+        return redirect(route('admin-trees', ['ged' => $tree->name()]));
     }
 
     /**
@@ -373,7 +385,7 @@ class AdminController extends AbstractBaseController
         return DB::table('default_resn')
             ->where('gedcom_id', '=', $tree->id())
             ->get()
-            ->map(function (stdClass $row) use ($tree): stdClass {
+            ->map(static function (stdClass $row) use ($tree): stdClass {
                 $row->record = null;
                 $row->label  = '';
 
@@ -389,7 +401,7 @@ class AdminController extends AbstractBaseController
 
                 return $row;
             })
-            ->sort(function (stdClass $x, stdClass $y): int {
+            ->sort(static function (stdClass $x, stdClass $y): int {
                 return I18N::strcasecmp($x->tag_label, $y->tag_label);
             })
             ->all();

@@ -29,6 +29,6 @@ class GedcomCodeQuayTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\GedcomCode\GedcomCodeQuay'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\GedcomCode\GedcomCodeQuay::class));
     }
 }

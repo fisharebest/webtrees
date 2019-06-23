@@ -14,6 +14,7 @@
  * - Atef Ben Ali (atefBB)
  * - Ibrahim AshShohail
  * - MLTDev
+ * - Yazan Alnugnugh (yazan-alnugnugh)
  */
 $months = [
     'يناير',
@@ -38,6 +39,7 @@ return [
     'hour' => implode('|', ['ساعة', 'ساعة', 'ساعتين', 'ساعات'.' :count', 'ساعة'.' :count']),
     'minute' => implode('|', ['دقيقة', 'دقيقة', 'دقيقتين', 'دقائق'.' :count', 'دقيقة'.' :count']),
     'second' => implode('|', ['ثانية', 'ثانية', 'ثانيتين', 'ثوان'.' :count', 'ثانية'.' :count']),
+    'a_second' => implode('|', ['{1}'.'بضع ثواني', 'ثانية', 'ثانية', 'ثانيتين', 'ثوان'.' :count', 'ثانية'.' :count']),
     'ago' => 'منذ :time',
     'from_now' => ':time من الآن',
     'after' => 'بعد :time',
@@ -61,10 +63,11 @@ return [
     'meridiem' => ['ص', 'م'],
     'weekdays' => ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],
     'weekdays_short' => ['أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'],
-    'weekdays_min' => ['ح', 'ن', 'ث', 'ر', 'خ', 'ج', 'س'],
+    'weekdays_min' => ['ح', 'اث', 'ثل', 'أر', 'خم', 'ج', 'س'],
     'months' => $months,
     'months_short' => $months,
     'first_day_of_week' => 6,
     'day_of_first_week_of_year' => 1,
     'list' => ['، ', ' و '],
+    'weekend' => [5, 6],
 ];

@@ -21,7 +21,8 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Support\Str;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class LoginBlockModule
@@ -73,12 +74,13 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface
             $title   = I18N::translate('Sign in');
             $content = view('modules/login_block/sign-in', [
                 'allow_register' => (bool) Site::getPreference('USE_REGISTRATION_MODULE'),
+                'url'            => route('tree-page', ['ged' => $tree->name()]),
             ]);
         }
 
         if ($ctype !== '') {
             return view('modules/block-template', [
-                'block'      => str_replace('_', '-', $this->name()),
+                'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => '',
                 'title'      => $title,
@@ -110,12 +112,12 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      * @param int     $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
     }
 

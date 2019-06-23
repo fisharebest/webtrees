@@ -162,9 +162,11 @@ class Place
     public function url(): string
     {
         //find a module providing the place hierarchy
-        $module = app(ModuleService::class)->findByComponent(ModuleListInterface::class, $this->tree, Auth::user())->first(function (ModuleInterface $module) {
-            return $module instanceof PlaceHierarchyListModule;
-        });
+        $module = app(ModuleService::class)
+            ->findByComponent(ModuleListInterface::class, $this->tree, Auth::user())
+            ->first(static function (ModuleInterface $module): bool {
+                return $module instanceof PlaceHierarchyListModule;
+            });
         
         if ($module instanceof PlaceHierarchyListModule) {
             return $module->listUrl($this->tree, [

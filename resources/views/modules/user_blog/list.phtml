@@ -15,9 +15,9 @@
     <?php endif ?>
 
     <div class="news_box">
-        <div class="news_title"><?= e($article->subject) ?></div>
+        <div class="news_title"><?= $article->subject ?></div>
         <div class="news_date"><?= view('components/datetime', ['timestamp' => $article->updated]) ?></div>
-        <div style="white-space: pre-wrap"><?= e($article->body) ?></div>
+        <div style="white-space: pre-wrap"><?= $article->body ?></div>
 
         <?php if (Auth::isManager($tree)) : ?>
             <hr>
@@ -40,7 +40,7 @@
 <?php endif ?>
 
 <p>
-    <a href="<?= e(route('module', ['module' => 'user_blog', 'action' => 'EditJournal', 'ged' => $tree->name()])) ?>">
-        <?= I18N::translate('Add a news article') ?>
+    <a class="btn btn-link" href="<?= e(route('module', ['module' => 'user_blog', 'action' => 'EditJournal', 'ged' => $tree->name()])) ?>">
+        <?= I18N::translate('Add a journal entry') ?>
     </a>
 </p>

@@ -20,12 +20,13 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Str;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
@@ -35,15 +36,17 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 {
     use ModuleBlockTrait;
 
+    /** @var HtmlService */
+    private $html_service;
+
     /**
-     * How should this module be identified in the control panel, etc.?
+     * HtmlBlockModule bootstrap.
      *
-     * @return string
+     * @param HtmlService $html_service
      */
-    public function title(): string
+    public function boot(HtmlService $html_service)
     {
-        /* I18N: Name of a module */
-        return I18N::translate('News');
+        $this->html_service = $html_service;
     }
 
     /**
@@ -73,7 +76,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             ->where('gedcom_id', '=', $tree->id())
             ->orderByDesc('updated')
             ->get()
-            ->map(function (stdClass $row): stdClass {
+            ->map(static function (stdClass $row): stdClass {
                 $row->updated = Carbon::make($row->updated);
 
                 return $row;
@@ -87,7 +90,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 
         if ($ctype !== '') {
             return view('modules/block-template', [
-                'block'      => str_replace('_', '-', $this->name()),
+                'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => '',
                 'title'      => $this->title(),
@@ -98,19 +101,45 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         return $content;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * How should this module be identified in the control panel, etc.?
+     *
+     * @return string
+     */
+    public function title(): string
+    {
+        /* I18N: Name of a module */
+        return I18N::translate('News');
+    }
+
+    /**
+     * Should this block load asynchronously using AJAX?
+     *
+     * Simple blocks are faster in-line, more comples ones
+     * can be loaded later.
+     *
+     * @return bool
+     */
     public function loadAjax(): bool
     {
         return false;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this block be shown on the user’s home page?
+     *
+     * @return bool
+     */
     public function isUserBlock(): bool
     {
         return false;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this block be shown on the tree’s home page?
+     *
+     * @return bool
+     */
     public function isTreeBlock(): bool
     {
         return true;
@@ -119,12 +148,12 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      * @param int     $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
     }
 
@@ -141,20 +170,20 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getEditNewsAction(Request $request, Tree $tree): Response
+    public function getEditNewsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         if (!Auth::isManager($tree)) {
             throw new AccessDeniedHttpException();
         }
 
-        $news_id = $request->get('news_id');
+        $news_id = $request->getQueryParams()['news_id'] ?? '';
 
-        if ($news_id > 0) {
+        if ($news_id !== '') {
             $row = DB::table('news')
                 ->where('news_id', '=', $news_id)
                 ->where('gedcom_id', '=', $tree->id())
@@ -177,20 +206,23 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postEditNewsAction(Request $request, Tree $tree): RedirectResponse
+    public function postEditNewsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         if (!Auth::isManager($tree)) {
             throw new AccessDeniedHttpException();
         }
 
-        $news_id = $request->get('news_id');
-        $subject = $request->get('subject');
-        $body    = $request->get('body');
+        $news_id = $request->getQueryParams()['news_id'] ?? '';
+        $subject = $request->getParsedBody()['subject'];
+        $body    = $request->getParsedBody()['body'];
+
+        $subject = $this->html_service->sanitize($subject);
+        $body    = $this->html_service->sanitize($body);
 
         if ($news_id > 0) {
             DB::table('news')
@@ -212,18 +244,18 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             'ged' => $tree->name(),
         ]);
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postDeleteNewsAction(Request $request, Tree $tree): RedirectResponse
+    public function postDeleteNewsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $news_id = $request->get('news_id');
+        $news_id = $request->getQueryParams()['news_id'];
 
         if (!Auth::isManager($tree)) {
             throw new AccessDeniedHttpException();
@@ -238,6 +270,6 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             'ged' => $tree->name(),
         ]);
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 }

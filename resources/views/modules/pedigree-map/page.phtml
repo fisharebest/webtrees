@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 
@@ -15,7 +14,7 @@
             <?= I18N::translate('Individual') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= FunctionsEdit::formControlIndividual($tree, $individual, ['id' => 'xref', 'name' => 'xref']) ?>
+            <?= view('components/select-individual', ['name' => 'xref', 'individual' => $individual, 'tree' => $tree]) ?>
         </div>
     </div>
 
@@ -24,13 +23,7 @@
             <?= I18N::translate('Generations') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?=
-            Bootstrap4::select(
-                FunctionsEdit::numericOptions(range(2, $maxgenerations)),
-                $generations,
-                ['id' => 'generations', 'name' => 'generations']
-            )
-?>
+            <?= view('components/select', ['name' => 'generations', 'selected' => $generations, 'options' => FunctionsEdit::numericOptions(range(2, $maxgenerations))]) ?>
         </div>
     </div>
 

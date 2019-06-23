@@ -252,6 +252,18 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
         return $this->data['content'];
     }
 
+    public function isJsonRequest()
+    {
+        return 1 === preg_match('{^application/(?:\w+\++)*json$}i', $this->data['request_headers']['content-type']);
+    }
+
+    public function getPrettyJson()
+    {
+        $decoded = json_decode($this->getContent());
+
+        return JSON_ERROR_NONE === json_last_error() ? json_encode($decoded, JSON_PRETTY_PRINT) : null;
+    }
+
     public function getContentType()
     {
         return $this->data['content_type'];
@@ -338,11 +350,17 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
         return isset($this->data['forward_token']) ? $this->data['forward_token'] : null;
     }
 
+    /**
+     * @final since Symfony 4.3
+     */
     public function onKernelController(FilterControllerEvent $event)
     {
         $this->controllers[$event->getRequest()] = $event->getController();
     }
 
+    /**
+     * @final since Symfony 4.3
+     */
     public function onKernelResponse(FilterResponseEvent $event)
     {
         if (!$event->isMasterRequest()) {

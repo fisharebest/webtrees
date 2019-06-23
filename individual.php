@@ -19,4 +19,5 @@ declare(strict_types=1);
 $_GET['xref']  = $_GET['pid'] ?? '';
 $_GET['route'] = 'individual';
 
-require __DIR__ . '/index.php';
+header('HTTP/1.1 301 Moved Permanently');
+header('Location: index.php?' . http_build_query($_GET, '', '&', PHP_QUERY_RFC3986));

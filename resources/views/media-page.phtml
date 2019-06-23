@@ -22,7 +22,7 @@
     <h2 class="wt-page-title mx-auto">
         <?= $media->fullName() ?>
     </h2>
-    <?php if ($media->canEdit() && !$media->isPendingDeletion()) : ?>
+    <?php if ($media->canEdit()) : ?>
         <?= view('media-page-menu', ['record' => $media]) ?>
     <?php endif ?>
 </div>
@@ -64,7 +64,7 @@
         <div class="tab-pane active fade show" role="tabpanel" id="details">
             <table class="table wt-facts-table">
                 <?php foreach ($media->mediaFiles() as $media_file) : ?>
-                <tr class="<?= $media_file->isPendingAddition() ? 'new' : '' ?><?= $media_file->isPendingDeletion() ? 'old' : '' ?>">
+                <tr class="<?= $media_file->isPendingAddition() ? 'wt-new' : '' ?><?= $media_file->isPendingDeletion() ? 'wt-old' : '' ?>">
                     <th scope="row">
                         <?= I18N::translate('Media file') ?>
                         <?php if ($media->canEdit()) : ?>

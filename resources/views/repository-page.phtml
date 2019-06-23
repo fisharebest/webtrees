@@ -1,7 +1,11 @@
-<?php use Fisharebest\Webtrees\Auth; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsPrintFacts; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
+
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\I18N;
+
+?>
 
 <?php if ($repository->isPendingDeletion()) : ?>
     <?php if (Auth::isModerator($repository->tree())) : ?>
@@ -11,7 +15,7 @@
     <?php endif ?>
 <?php elseif ($repository->isPendingAddition()) : ?>
     <?php if (Auth::isModerator($repository->tree())) : ?>
-        <?= view('components/alert-warning-dismissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate('This repository has been edited. You should review the changes and then %1$s or %2$s them.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . e($repository->xref()) . '\', \'' . e($repository->tree()->name()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . $repository->xref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
+        <?= view('components/alert-warning-dismissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate('This repository has been edited. You should review the changes and then %1$s or %2$s them.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . e($repository->xref()) . '\', \'' . e($repository->tree()->name()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . e($repository->xref()) . '\', \'' . e($repository->tree()->name()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
     <?php elseif (Auth::isEditor($repository->tree())) : ?>
         <?= view('components/alert-warning-dismissible', ['alert' => I18N::translate('This repository has been edited. The changes need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
     <?php endif ?>
@@ -21,7 +25,7 @@
     <h2 class="wt-page-title mx-auto">
         <?= $repository->fullName() ?>
     </h2>
-    <?php if ($repository->canEdit() && !$repository->isPendingDeletion()) : ?>
+    <?php if ($repository->canEdit()) : ?>
         <?= view('repository-page-menu', ['record' => $repository]) ?>
     <?php endif ?>
 </div>

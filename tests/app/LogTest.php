@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 /**
- * Test harness for the class WT_Log
+ * Test harness for the class Log
  */
 class LogTest extends TestCase
 {
@@ -29,6 +29,6 @@ class LogTest extends TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Log'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Log::class));
     }
 }

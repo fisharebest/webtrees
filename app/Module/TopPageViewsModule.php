@@ -22,7 +22,8 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
-use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Support\Str;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class TopPageViewsModule
@@ -82,11 +83,11 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
             $record = GedcomRecord::getInstance($id, $tree);
             if ($record && $record->canShow()) {
                 $content .= '<tr>';
-                if ($count_placement == 'before') {
+                if ($count_placement === 'before') {
                     $content .= '<td dir="ltr" style="text-align:right">[' . $count . ']</td>';
                 }
                 $content .= '<td class="name2" ><a href="' . e($record->url()) . '">' . $record->fullName() . '</a></td>';
-                if ($count_placement == 'after') {
+                if ($count_placement === 'after') {
                     $content .= '<td dir="ltr" style="text-align:right">[' . $count . ']</td>';
                 }
                 $content .= '</tr>';
@@ -110,7 +111,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
             }
 
             return view('modules/block-template', [
-                'block'      => str_replace('_', '-', $this->name()),
+                'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => $config_url,
                 'title'      => $this->title(),
@@ -157,15 +158,17 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      * @param int     $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $this->setBlockSetting($block_id, 'num', $request->get('num', '10'));
-        $this->setBlockSetting($block_id, 'count_placement', $request->get('count_placement', 'before'));
+        $params = $request->getParsedBody();
+
+        $this->setBlockSetting($block_id, 'num', $params['num']);
+        $this->setBlockSetting($block_id, 'count_placement', $params['count_placement']);
     }
 
     /**

@@ -29,6 +29,6 @@ class WelcomeBlockModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\WelcomeBlockModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\WelcomeBlockModule::class));
     }
 }

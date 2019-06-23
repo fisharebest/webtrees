@@ -29,6 +29,6 @@ class HijriDateTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Date\HijriDate'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Date\HijriDate::class));
     }
 }

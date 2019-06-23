@@ -327,7 +327,7 @@ trait Comparison
      */
     public function isLeapYear()
     {
-        return $this->format('L') === '1';
+        return $this->rawFormat('L') === '1';
     }
 
     /**
@@ -360,7 +360,7 @@ trait Comparison
         static::expectDateTime($date, 'null');
 
         /* @var CarbonInterface $this */
-        return $this->format($format) === $date->format($format);
+        return $this->rawFormat($format) === ($date instanceof self ? $date->rawFormat($format) : $date->format($format));
     }
 
     /**
@@ -509,8 +509,8 @@ trait Comparison
     {
         /* @var CarbonInterface $this */
         return $checkMicroseconds
-            ? $this->format('H:i:s.u') === '00:00:00.000000'
-            : $this->format('H:i:s') === '00:00:00';
+            ? $this->rawFormat('H:i:s.u') === '00:00:00.000000'
+            : $this->rawFormat('H:i:s') === '00:00:00';
     }
 
     /**
@@ -524,8 +524,8 @@ trait Comparison
     {
         /* @var CarbonInterface $this */
         return $checkMicroseconds
-            ? $this->format('H:i:s.u') === '23:59:59.999999'
-            : $this->format('H:i:s') === '23:59:59';
+            ? $this->rawFormat('H:i:s.u') === '23:59:59.999999'
+            : $this->rawFormat('H:i:s') === '23:59:59';
     }
 
     /**
@@ -546,7 +546,7 @@ trait Comparison
     public function isMidday()
     {
         /* @var CarbonInterface $this */
-        return $this->format('G:i:s') === static::$midDayAt.':00:00';
+        return $this->rawFormat('G:i:s') === static::$midDayAt.':00:00';
     }
 
     /**
@@ -562,7 +562,7 @@ trait Comparison
         try {
             // Try to create a DateTime object. Throws an InvalidArgumentException if the provided time string
             // doesn't match the format in any way.
-            static::createFromFormat($format, $date);
+            static::rawCreateFromFormat($format, $date);
 
             // createFromFormat() is known to handle edge cases silently.
             // E.g. "1975-5-1" (Y-n-j) will still be parsed correctly when "Y-m-d" is supplied as the format.

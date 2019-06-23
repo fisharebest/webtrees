@@ -29,6 +29,6 @@ class ModuleSidebarInterfaceTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(interface_exists('\Fisharebest\Webtrees\Module\ModuleSidebarInterface'));
+        $this->assertTrue(interface_exists(ModuleSidebarInterface::class));
     }
 }

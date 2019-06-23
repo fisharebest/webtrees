@@ -29,6 +29,6 @@ class DescendancyModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\DescendancyModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\DescendancyModule::class));
     }
 }

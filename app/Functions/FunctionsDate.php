@@ -46,7 +46,7 @@ class FunctionsDate
                     [
                         '/(\d+)([ymwd])/',
                     ],
-                    function (array $match): string {
+                    static function (array $match): string {
                         $num = (int) $match[1];
 
                         switch ($match[2]) {

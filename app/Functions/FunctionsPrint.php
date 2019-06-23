@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Functions;
 
-use Fisharebest\Webtrees\Config;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
@@ -29,7 +28,6 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
@@ -42,23 +40,6 @@ use Ramsey\Uuid\Uuid;
  */
 class FunctionsPrint
 {
-    /**
-     * print the information for an individual chart box
-     * find and print a given individuals information for a pedigree chart
-     *
-     * @param Individual|null $person The person to print
-     *
-     * @return string
-     */
-    public static function printPedigreePerson(Individual $person = null): string
-    {
-        if ($person instanceof Individual) {
-            return app(ModuleThemeInterface::class)->individualBox($person);
-        }
-
-        return app(ModuleThemeInterface::class)->individualBoxEmpty();
-    }
-
     /**
      * print a note record
      *
@@ -264,7 +245,7 @@ class FunctionsPrint
                 $html .= ' – <span class="date">' . $match[1] . '</span>';
             }
             if ($record instanceof Individual) {
-                if (in_array($fact, Gedcom::BIRTH_EVENTS) && $record->tree()->getPreference('SHOW_PARENTS_AGE')) {
+                if (in_array($fact, Gedcom::BIRTH_EVENTS, true) && $record->tree()->getPreference('SHOW_PARENTS_AGE')) {
                     // age of parents at child birth
                     $html .= self::formatParentsAges($record, $date);
                 }
@@ -316,9 +297,6 @@ class FunctionsPrint
                     }
                 }
             }
-        } elseif (strpos($factrec, "\n2 PLAC ") === false && in_array($fact, Config::emptyFacts())) {
-            // There is no DATE.  If there is also no PLAC, then print "yes"
-            $html .= I18N::translate('yes');
         }
         // print gedcom ages
         foreach ([
@@ -431,7 +409,7 @@ class FunctionsPrint
         foreach ($recfacts as $factarray) {
             $fact = $factarray->getTag();
 
-            $key = array_search($fact, $uniquefacts);
+            $key = array_search($fact, $uniquefacts, true);
             if ($key !== false) {
                 unset($uniquefacts[$key]);
             }
@@ -494,7 +472,7 @@ class FunctionsPrint
         foreach ($addfacts as $addfact) {
             $translated_addfacts[$addfact] = GedcomTag::getLabel($addfact);
         }
-        uasort($translated_addfacts, function (string $x, string $y): int {
+        uasort($translated_addfacts, static function (string $x, string $y): int {
             return I18N::strcasecmp(I18N::translate($x), I18N::translate($y));
         });
 

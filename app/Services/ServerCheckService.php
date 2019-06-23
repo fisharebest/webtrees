@@ -25,7 +25,6 @@ use function array_map;
 use function explode;
 use function extension_loaded;
 use function in_array;
-use function ini_get;
 use function strtolower;
 use function sys_get_temp_dir;
 use function trim;
@@ -56,7 +55,6 @@ class ServerCheckService
      * @param string $driver
      *
      * @return Collection
-     * @return string[]
      */
     public function serverErrors($driver = ''): Collection
     {
@@ -81,7 +79,6 @@ class ServerCheckService
      * @param string $driver
      *
      * @return Collection
-     * @return string[]
      */
     public function serverWarnings($driver = ''): Collection
     {
@@ -89,6 +86,7 @@ class ServerCheckService
             $this->databaseDriverWarnings($driver),
             $this->checkPhpExtension('curl'),
             $this->checkPhpExtension('gd'),
+            $this->checkPhpExtension('zip'),
             $this->checkPhpExtension('simplexml'),
             $this->checkPhpIni('file_uploads', true),
             $this->checkSystemTemporaryFolder(),
@@ -149,7 +147,7 @@ class ServerCheckService
     public function isFunctionDisabled(string $function): bool
     {
         $disable_functions = explode(',', ini_get('disable_functions'));
-        $disable_functions = array_map(function (string $func): string {
+        $disable_functions = array_map(static function (string $func): string {
             return strtolower(trim($func));
         }, $disable_functions);
 

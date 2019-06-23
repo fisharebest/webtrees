@@ -29,6 +29,6 @@ class JalaliDateTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Date\JalaliDate'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Date\JalaliDate::class));
     }
 }

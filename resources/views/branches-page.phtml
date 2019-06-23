@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <h2 class="wt-page-title">
@@ -26,8 +25,8 @@
                 <?= I18N::translate('Phonetic search') ?>
             </legend>
             <div class="col-sm-9 wt-page-options-value">
-                <?= Bootstrap4::checkbox(I18N::translate('Russell'), true, ['name' => 'soundex_std', 'checked' => $soundex_std]) ?>
-                <?= Bootstrap4::checkbox(I18N::translate('Daitch-Mokotoff'), true, ['name' => 'soundex_dm', 'checked' => $soundex_dm]) ?>
+                <?= view('components/checkbox-inline', ['label' => I18N::translate('Russell'), 'name' => 'soundex_std', 'checked' => $soundex_std]) ?>
+                <?= view('components/checkbox-inline', ['label' => I18N::translate('Daitch-Mokotoff'), 'name' => 'soundex_dm', 'checked' => $soundex_dm]) ?>
             </div>
         </div>
     </fieldset>

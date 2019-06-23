@@ -18,8 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Menu;
 
 /**
  * Class DescendancyReportModule
@@ -50,26 +48,5 @@ class DescendancyReportModule extends AbstractModule implements ModuleReportInte
         // This text also appears in the .XML file - update both together
         /* I18N: Description of the “Descendants” module */
         return I18N::translate('A report of an individual’s descendants, in a narrative style.');
-    }
-
-    /**
-     * Return a menu item for this report.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu
-     */
-    public function getReportMenu(Individual $individual): Menu
-    {
-        return new Menu(
-            $this->title(),
-            route('report-setup', [
-                'xref'   => $individual->xref(),
-                'ged'    => $individual->tree()->name(),
-                'report' => $this->name(),
-            ]),
-            'menu-report-' . $this->name(),
-            ['rel' => 'nofollow']
-        );
     }
 }

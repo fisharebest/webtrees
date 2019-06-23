@@ -31,9 +31,8 @@ use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller to allow the user to edit their account details.
@@ -65,9 +64,9 @@ class AccountController extends AbstractBaseController
      * @param Tree          $tree
      * @param UserInterface $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function edit(Tree $tree, UserInterface $user): Response
+    public function edit(Tree $tree, UserInterface $user): ResponseInterface
     {
         $my_individual_record = Individual::getInstance($tree->getUserPreference(Auth::user(), 'gedcomid'), $tree);
         $contact_methods      = FunctionsEdit::optionsContactMethods();
@@ -93,24 +92,26 @@ class AccountController extends AbstractBaseController
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function update(Request $request, Tree $tree, UserInterface $user): RedirectResponse
+    public function update(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $contact_method = (string) $request->get('contact_method');
-        $email          = (string) $request->get('email');
-        $language       = (string) $request->get('language');
-        $real_name      = (string) $request->get('real_name');
-        $password       = (string) $request->get('password');
-        $rootid         = (string) $request->get('root_id');
-        $theme          = (string) $request->get('theme');
-        $time_zone      = (string) $request->get('timezone');
-        $user_name      = (string) $request->get('user_name');
-        $visible_online = (string) $request->get('visible_online');
+        $params = $request->getParsedBody();
+
+        $contact_method = $params['contact_method'];
+        $email          = $params['email'];
+        $language       = $params['language'];
+        $real_name      = $params['real_name'];
+        $password       = $params['password'];
+        $rootid         = $params['root_id'];
+        $theme          = $params['theme'];
+        $time_zone      = $params['timezone'];
+        $user_name      = $params['user_name'];
+        $visible_online = $params['visible_online'] ?? '';
 
         // Change the password
         if ($password !== '') {
@@ -146,20 +147,20 @@ class AccountController extends AbstractBaseController
         $tree->setUserPreference($user, 'rootid', $rootid);
 
         // Switch to the new theme now
-        Session::put('theme_id', $theme);
+        Session::put('theme', $theme);
 
         // Switch to the new language now
-        Session::put('locale', $language);
+        Session::put('language', $language);
 
-        return new RedirectResponse(route('my-account', ['ged' => $tree->name()]));
+        return redirect(route('my-account', ['ged' => $tree->name()]));
     }
 
     /**
      * @param UserInterface $user
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function delete(UserInterface $user): RedirectResponse
+    public function delete(UserInterface $user): ResponseInterface
     {
         // An administrator can only be deleted by another administrator
         if (!$user->getPreference('canadmin') && $user instanceof User) {
@@ -167,12 +168,11 @@ class AccountController extends AbstractBaseController
             Auth::logout();
         }
 
-        return new RedirectResponse(route('my-account'));
+        return redirect(route('my-account'));
     }
 
     /**
      * @return Collection
-     * @return string[]
      */
     private function themeOptions(): Collection
     {

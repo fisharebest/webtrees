@@ -28,9 +28,8 @@ use Fisharebest\Webtrees\Module\CensusAssistantModule;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -38,8 +37,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class EditGedcomRecordController extends AbstractEditController
 {
-    private const GEDCOM_FACT_REGEX = '^(1 .*(\n2 .*(\n3 .*(\n4 .*(\n5 .*(\n6 .*))))))?$';
-
     /**
      * @var ModuleService
      */
@@ -58,16 +55,17 @@ class EditGedcomRecordController extends AbstractEditController
     /**
      * Copy a fact to the clipboard.
      *
-     * @param Request          $request
-     * @param Tree             $tree
-     * @param ClipboardService $clipboard_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param ClipboardService       $clipboard_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function copyFact(Request $request, Tree $tree, ClipboardService $clipboard_service): Response
+    public function copyFact(ServerRequestInterface $request, Tree $tree, ClipboardService $clipboard_service): ResponseInterface
     {
-        $xref    = $request->get('xref', '');
-        $fact_id = $request->get('fact_id');
+        $params  = $request->getParsedBody();
+        $xref    = $params['xref'];
+        $fact_id = $params['fact_id'];
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
@@ -82,47 +80,48 @@ class EditGedcomRecordController extends AbstractEditController
             }
         }
 
-        return new Response();
+        return response();
     }
 
     /**
      * Delete a fact.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function deleteFact(Request $request, Tree $tree): Response
+    public function deleteFact(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref    = $request->get('xref', '');
-        $fact_id = $request->get('fact_id');
+        $params  = $request->getParsedBody();
+        $xref    = $params['xref'];
+        $fact_id = $params['fact_id'];
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
         Auth::checkRecordAccess($record, true);
 
         foreach ($record->facts() as $fact) {
-            if ($fact->id() == $fact_id && $fact->canShow() && $fact->canEdit()) {
+            if ($fact->id() == $fact_id && $fact->canEdit()) {
                 $record->deleteFact($fact_id, true);
                 break;
             }
         }
 
-        return new Response();
+        return response();
     }
 
     /**
      * Delete a record.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function deleteRecord(Request $request, Tree $tree): Response
+    public function deleteRecord(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getParsedBody()['xref'];
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
@@ -162,22 +161,23 @@ class EditGedcomRecordController extends AbstractEditController
             $record->deleteRecord();
         }
 
-        return new Response();
+        return response();
     }
 
     /**
      * Paste a fact from the clipboard into a record.
      *
-     * @param Request          $request
-     * @param Tree             $tree
-     * @param ClipboardService $clipboard_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param ClipboardService       $clipboard_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function pasteFact(Request $request, Tree $tree, ClipboardService $clipboard_service): Response
+    public function pasteFact(ServerRequestInterface $request, Tree $tree, ClipboardService $clipboard_service): ResponseInterface
     {
-        $xref    = $request->get('xref', '');
-        $fact_id = $request->get('fact_id');
+        $params  = $request->getParsedBody();
+        $xref    = $params['xref'];
+        $fact_id = $params['fact_id'];
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
@@ -185,19 +185,20 @@ class EditGedcomRecordController extends AbstractEditController
 
         $clipboard_service->pasteFact($fact_id, $record);
 
-        return new Response();
+        return response();
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function editRawFact(Request $request, Tree $tree): Response
+    public function editRawFact(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref    = $request->get('xref', '');
-        $fact_id = $request->get('fact_id');
+        $params  = $request->getQueryParams();
+        $xref    = $params['xref'];
+        $fact_id = $params['fact_id'];
         $record  = GedcomRecord::getInstance($xref, $tree);
 
         Auth::checkRecordAccess($record, true);
@@ -207,27 +208,27 @@ class EditGedcomRecordController extends AbstractEditController
         foreach ($record->facts() as $fact) {
             if (!$fact->isPendingDeletion() && $fact->id() === $fact_id) {
                 return $this->viewResponse('edit/raw-gedcom-fact', [
-                    'pattern' => self::GEDCOM_FACT_REGEX,
                     'fact'    => $fact,
                     'title'   => $title,
                 ]);
             }
         }
 
-        return new RedirectResponse($record->url());
+        return redirect($record->url());
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function editRawFactAction(Request $request, Tree $tree): Response
+    public function editRawFactAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref    = $request->get('xref', '');
-        $fact_id = $request->get('fact_id');
-        $gedcom  = $request->get('gedcom');
+        $params  = $request->getParsedBody();
+        $xref    = $params['xref'];
+        $fact_id = $params['fact_id'];
+        $gedcom  = $params['gedcom'];
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
@@ -244,18 +245,18 @@ class EditGedcomRecordController extends AbstractEditController
             }
         }
 
-        return new RedirectResponse($record->url());
+        return redirect($record->url());
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function editRawRecord(Request $request, Tree $tree): Response
+    public function editRawRecord(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref   = $request->get('xref', '');
+        $xref   = $request->getQueryParams()['xref'];
         $record = GedcomRecord::getInstance($xref, $tree);
 
         Auth::checkRecordAccess($record, true);
@@ -263,23 +264,23 @@ class EditGedcomRecordController extends AbstractEditController
         $title = I18N::translate('Edit the raw GEDCOM') . ' - ' . $record->fullName();
 
         return $this->viewResponse('edit/raw-gedcom-record', [
-            'pattern' => self::GEDCOM_FACT_REGEX,
             'record'  => $record,
             'title'   => $title,
         ]);
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function editRawRecordAction(Request $request, Tree $tree): Response
+    public function editRawRecordAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref     = $request->get('xref', '');
-        $facts    = (array) $request->get('fact');
-        $fact_ids = (array) $request->get('fact_id');
+        $params   = $request->getParsedBody();
+        $xref     = $params['xref'];
+        $facts    = $params['fact'] ?? [];
+        $fact_ids = $params['fact_id'] ?? [];
         $record   = GedcomRecord::getInstance($xref, $tree);
 
         Auth::checkRecordAccess($record, true);
@@ -288,7 +289,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         // Retain any private facts
         foreach ($record->facts([], false, Auth::PRIV_HIDE) as $fact) {
-            if (!in_array($fact->id(), $fact_ids) && !$fact->isPendingDeletion()) {
+            if (!in_array($fact->id(), $fact_ids, true) && !$fact->isPendingDeletion()) {
                 $gedcom .= "\n" . $fact->gedcom();
             }
         }
@@ -303,19 +304,19 @@ class EditGedcomRecordController extends AbstractEditController
 
         $record->updateRecord($gedcom, false);
 
-        return new RedirectResponse($record->url());
+        return redirect($record->url());
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function addFact(Request $request, Tree $tree): Response
+    public function addFact(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
-        $fact = $request->get('fact', '');
+        $xref = $request->getQueryParams()['xref'];
+        $fact = $request->getQueryParams()['fact'];
 
         $record = GedcomRecord::getInstance($xref, $tree);
         Auth::checkRecordAccess($record, true);
@@ -331,15 +332,15 @@ class EditGedcomRecordController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function editFact(Request $request, Tree $tree): Response
+    public function editFact(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref    = $request->get('xref', '');
-        $fact_id = $request->get('fact_id', '');
+        $xref    = $request->getQueryParams()['xref'];
+        $fact_id = $request->getQueryParams()['fact_id'];
 
         $record = GedcomRecord::getInstance($xref, $tree);
         Auth::checkRecordAccess($record, true);
@@ -370,25 +371,27 @@ class EditGedcomRecordController extends AbstractEditController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function updateFact(Request $request, Tree $tree): RedirectResponse
+    public function updateFact(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref    = $request->get('xref', '');
-        $fact_id = $request->get('fact_id', '');
+        $xref    = $request->getQueryParams()['xref'];
+        $fact_id = $request->getQueryParams()['fact_id'] ?? '';
 
         $record = GedcomRecord::getInstance($xref, $tree);
         Auth::checkRecordAccess($record, true);
 
-        $keep_chan = (bool) $request->get('keep_chan');
+        $params = $request->getParsedBody();
 
-        $this->glevels = $request->get('glevels', []);
-        $this->tag     = $request->get('tag', []);
-        $this->text    = $request->get('text', []);
-        $this->islink  = $request->get('islink', []);
+        $keep_chan = (bool) ($params['keep_chan'] ?? false);
+
+        $this->glevels = $params['glevels'];
+        $this->tag     = $params['tag'];
+        $this->text    = $params['text'];
+        $this->islink  = $params['islink'];
 
         // If the fact has a DATE or PLAC, then delete any value of Y
         if ($this->text[0] === 'Y') {
@@ -401,8 +404,11 @@ class EditGedcomRecordController extends AbstractEditController
         }
 
         $newged = '';
-        if (!empty($_POST['NAME'])) {
-            $newged     .= "\n1 NAME " . $_POST['NAME'];
+
+        $NAME = $params['NAME'] ?? '';
+
+        if ($NAME !== '') {
+            $newged     .= "\n1 NAME " . $NAME;
             $name_facts = [
                 'TYPE',
                 'NPFX',
@@ -413,8 +419,9 @@ class EditGedcomRecordController extends AbstractEditController
                 'NSFX',
             ];
             foreach ($name_facts as $name_fact) {
-                if (!empty($_POST[$name_fact])) {
-                    $newged .= "\n2 " . $name_fact . ' ' . $_POST[$name_fact];
+                $NAME_FACT = $params[$name_fact] ?? '';
+                if ($NAME_FACT !== '') {
+                    $newged .= "\n2 " . $name_fact . ' ' . $NAME_FACT;
                 }
             }
         }
@@ -422,12 +429,13 @@ class EditGedcomRecordController extends AbstractEditController
         $newged = $this->handleUpdates($newged);
 
         // Add new names after existing names
-        if (!empty($_POST['NAME'])) {
+        if ($NAME !== '') {
             preg_match_all('/[_0-9A-Z]+/', $tree->getPreference('ADVANCED_NAME_FACTS'), $match);
             $name_facts = array_unique(array_merge(['_MARNM'], $match[0]));
             foreach ($name_facts as $name_fact) {
+                $NAME_FACT = $params[$name_fact] ?? '';
                 // Ignore advanced facts that duplicate standard facts.
-                if (!in_array($name_fact, [
+                if ($NAME_FACT !== '' && !in_array($name_fact, [
                         'TYPE',
                         'NPFX',
                         'GIVN',
@@ -435,8 +443,8 @@ class EditGedcomRecordController extends AbstractEditController
                         'SPFX',
                         'SURN',
                         'NSFX',
-                    ]) && !empty($_POST[$name_fact])) {
-                    $newged .= "\n2 " . $name_fact . ' ' . $_POST[$name_fact];
+                    ], true)) {
+                    $newged .= "\n2 " . $name_fact . ' ' . $NAME_FACT;
                 }
             }
         }
@@ -451,7 +459,7 @@ class EditGedcomRecordController extends AbstractEditController
         $record->updateFact($fact_id, $newged, !$keep_chan);
 
         // For the GEDFact_assistant module
-        $pid_array = $request->get('pid_array', '');
+        $pid_array = $request->getParsedBody()['pid_array'] ?? '';
         if ($pid_array) {
             foreach (explode(',', $pid_array) as $pid) {
                 if ($pid !== $xref) {
@@ -463,7 +471,7 @@ class EditGedcomRecordController extends AbstractEditController
             }
         }
 
-        return new RedirectResponse($record->url());
+        return redirect($record->url());
     }
 
     /**

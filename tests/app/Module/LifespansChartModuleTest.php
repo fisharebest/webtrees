@@ -29,6 +29,6 @@ class LifespansChartModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\LifespansChartModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\LifespansChartModule::class));
     }
 }

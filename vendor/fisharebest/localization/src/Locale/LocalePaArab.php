@@ -13,11 +13,6 @@ use Fisharebest\Localization\Script\ScriptArab;
  */
 class LocalePaArab extends LocalePa
 {
-    protected function digitsGroup()
-    {
-        return 2;
-    }
-
     public function numberSymbols()
     {
         return array(

@@ -17,14 +17,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use DebugBar\DataCollector\ExceptionsCollector;
 use DebugBar\DataCollector\MessagesCollector;
 use DebugBar\DataCollector\PDO\PDOCollector;
 use DebugBar\DataCollector\PDO\TraceablePDO;
 use DebugBar\DataCollector\TimeDataCollector;
 use DebugBar\JavascriptRenderer;
 use DebugBar\StandardDebugBar;
-use DebugBar\Storage\FileStorage;
 use Fisharebest\Webtrees\DebugBar\ViewCollector;
 use PDO;
 
@@ -44,18 +42,14 @@ class DebugBar
     /**
      * Initialize the Debugbar.
      *
-     * @param bool $enable
-     *
      * @return void
      */
-    public static function init(bool $enable = true): void
+    public static function enable(): void
     {
-        if ($enable) {
-            self::$debugbar = new StandardDebugBar();
-            self::$debugbar->addCollector(new ViewCollector());
+        self::$debugbar = new StandardDebugBar();
+        self::$debugbar->addCollector(new ViewCollector());
 
-            self::$renderer = self::$debugbar->getJavascriptRenderer('./vendor/maximebf/debugbar/src/DebugBar/Resources/');
-        }
+        self::$renderer = self::$debugbar->getJavascriptRenderer('./vendor/maximebf/debugbar/src/DebugBar/Resources/');
     }
 
     /**

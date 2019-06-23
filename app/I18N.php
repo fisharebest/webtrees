@@ -18,34 +18,41 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Collator;
-use DomainException;
 use Exception;
 use Fisharebest\Localization\Locale;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Translation;
 use Fisharebest\Localization\Translator;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
-use const GLOB_NOSORT;
+use Fisharebest\Webtrees\Module\ModuleCustomInterface;
+use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
+use Illuminate\Support\Collection;
+use function array_merge;
+use function class_exists;
+use function html_entity_decode;
+use function in_array;
+use function mb_strtolower;
+use function mb_strtoupper;
+use function mb_substr;
+use function ord;
+use function sprintf;
+use function str_replace;
+use function strcmp;
+use function strip_tags;
+use function strlen;
+use function strpos;
+use function strtr;
 
 /**
  * Internationalization (i18n) and localization (l10n).
  */
 class I18N
 {
-    /** @var LocaleInterface The current locale (e.g. LocaleEnGb) */
-    private static $locale;
-
-    /** @var Translator An object that performs translation */
-    private static $translator;
-
-    /** @var  Collator|null From the php-intl library */
-    private static $collator;
-
-    // Digits are always rendered LTR, even in RTL text.
+    // MO files use special characters for plurals and context.
+    public const PLURAL  = "\x00";
+    public const CONTEXT = "\x04";
     private const DIGITS = '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹';
-
-    // These locales need special handling for the dotless letter I.
     private const DOTLESS_I_LOCALES = [
         'az',
         'tr',
@@ -54,12 +61,14 @@ class I18N
         'I' => 'ı',
         'İ' => 'i',
     ];
+
+    // Digits are always rendered LTR, even in RTL text.
     private const DOTLESS_I_TOUPPER = [
         'ı' => 'I',
         'i' => 'İ',
     ];
 
-    // The ranges of characters used by each script.
+    // These locales need special handling for the dotless letter I.
     private const SCRIPT_CHARACTER_RANGES = [
         [
             'Latn',
@@ -160,8 +169,6 @@ class I18N
         ],
         // Mixed CJK, not just Hans
     ];
-
-    // Characters that are displayed in mirror form in RTL text.
     private const MIRROR_CHARACTERS = [
         '('  => ')',
         ')'  => '(',
@@ -182,78 +189,38 @@ class I18N
         '‘ ' => '’',
         '’ ' => '‘',
     ];
-
-    // Default list of locales to show in the menu.
-    private const DEFAULT_LOCALES = [
-        'ar',
-        'bg',
-        'bs',
-        'ca',
-        'cs',
-        'da',
-        'de',
-        'el',
-        'en-GB',
-        'en-US',
-        'es',
-        'et',
-        'fi',
-        'fr',
-        'he',
-        'hr',
-        'hu',
-        'is',
-        'it',
-        'ka',
-        'kk',
-        'lt',
-        'mr',
-        'nb',
-        'nl',
-        'nn',
-        'pl',
-        'pt',
-        'ru',
-        'sk',
-        'sv',
-        'tr',
-        'uk',
-        'vi',
-        'zh-Hans',
-    ];
-
     /** @var string Punctuation used to separate list items, typically a comma */
     public static $list_separator;
 
+    // The ranges of characters used by each script.
+    /** @var LocaleInterface The current locale (e.g. LocaleEnGb) */
+    private static $locale;
+
+    // Characters that are displayed in mirror form in RTL text.
+    /** @var Translator An object that performs translation */
+    private static $translator;
+    /** @var  Collator|null From the php-intl library */
+    private static $collator;
+
     /**
-     * The prefered locales for this site, or a default list if no preference.
+     * The preferred locales for this site, or a default list if no preference.
      *
      * @return LocaleInterface[]
      */
     public static function activeLocales(): array
     {
-        $code_list = Site::getPreference('LANGUAGES');
+        /** @var Collection $locales */
+        $locales = app(ModuleService::class)
+            ->findByInterface(ModuleLanguageInterface::class, false, true)
+            ->map(static function (ModuleLanguageInterface $module): LocaleInterface {
+                return $module->locale();
+            });
 
-        if ($code_list === '') {
-            $codes = self::DEFAULT_LOCALES;
-        } else {
-            $codes = explode(',', $code_list);
+        if ($locales->isEmpty()) {
+            return [new LocaleEnUs()];
         }
 
-        $locales = [];
-        foreach ($codes as $code) {
-            if (file_exists(WT_ROOT . 'resources/lang/' . $code . '/messages.mo')) {
-                try {
-                    $locales[] = Locale::create($code);
-                } catch (Exception $ex) {
-                    // No such locale exists?
-                }
-            }
-        }
-
-        usort($locales, '\Fisharebest\Localization\Locale::compare');
-
-        return $locales;
+        return $locales->all();
     }
 
     /**
@@ -284,48 +251,6 @@ class I18N
     {
         /* I18N: This is the format string for full dates. See http://php.net/date for codes */
         return self::$translator->translate('%j %F %Y');
-    }
-
-    /**
-     * Generate consistent I18N for datatables.js
-     *
-     * @param int[] $lengths An optional array of page lengths
-     *
-     * @return string
-     */
-    public static function datatablesI18N(array $lengths = [
-        10,
-        20,
-        30,
-        50,
-        100,
-        -1,
-    ]): string
-    {
-        $length_options = Bootstrap4::select(FunctionsEdit::numericOptions($lengths), '10');
-
-        return
-            '"formatNumber": function(n) { return String(n).replace(/[0-9]/g, function(w) { return ("' . self::$locale->digits('0123456789') . '")[+w]; }); },' .
-            '"language": {' .
-            ' "paginate": {' .
-            '  "first":    "' . self::translate('first') . '",' .
-            '  "last":     "' . self::translate('last') . '",' .
-            '  "next":     "' . self::translate('next') . '",' .
-            '  "previous": "' . self::translate('previous') . '"' .
-            ' },' .
-            ' "emptyTable":     "' . self::translate('No records to display') . '",' .
-            ' "info":           "' . /* I18N: %s are placeholders for numbers */
-            self::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_') . '",' .
-            ' "infoEmpty":      "' . self::translate('Showing %1$s to %2$s of %3$s', self::$locale->digits('0'), self::$locale->digits('0'), self::$locale->digits('0')) . '",' .
-            ' "infoFiltered":   "' . /* I18N: %s is a placeholder for a number */
-            self::translate('(filtered from %s total entries)', '_MAX_') . '",' .
-            ' "lengthMenu":     "' . /* I18N: %s is a number of records per page */
-            self::translate('Display %s', addslashes($length_options)) . '",' .
-            ' "loadingRecords": "' . self::translate('Loading…') . '",' .
-            ' "processing":     "' . self::translate('Loading…') . '",' .
-            ' "search":         "' . self::translate('Filter') . '",' .
-            ' "zeroRecords":    "' . self::translate('No records to display') . '"' .
-            '}';
     }
 
     /**
@@ -374,19 +299,20 @@ class I18N
     /**
      * Initialise the translation adapter with a locale setting.
      *
-     * @param string    $code Use this locale/language code, or choose one automatically
+     * @param string    $code  Use this locale/language code, or choose one automatically
      * @param Tree|null $tree
+     * @param bool      $setup During setup, we cannot access the database.
      *
      * @return string $string
      */
-    public static function init(string $code = '', Tree $tree = null): string
+    public static function init(string $code = '', Tree $tree = null, $setup = false): string
     {
         if ($code !== '') {
             // Create the specified locale
             self::$locale = Locale::create($code);
-        } elseif (Session::has('locale') && file_exists(WT_ROOT . 'resources/lang/' . Session::get('locale') . '/messages.mo')) {
+        } elseif (Session::has('language')) {
             // Select a previously used locale
-            self::$locale = Locale::create(Session::get('locale'));
+            self::$locale = Locale::create(Session::get('language'));
         } else {
             if ($tree instanceof Tree) {
                 $default_locale = Locale::create($tree->getPreference('LANGUAGE', 'en-US'));
@@ -396,46 +322,41 @@ class I18N
 
             // Negotiate with the browser.
             // Search engines don't negotiate.  They get the default locale of the tree.
-            self::$locale = Locale::httpAcceptLanguage($_SERVER, self::installedLocales(), $default_locale);
+            if ($setup) {
+                $installed_locales = app(ModuleService::class)->setupLanguages()
+                    ->map(static function (ModuleLanguageInterface $module): LocaleInterface {
+                        return $module->locale();
+                    });
+            } else {
+                $installed_locales = self::installedLocales();
+            }
+
+            self::$locale = Locale::httpAcceptLanguage($_SERVER, $installed_locales->all(), $default_locale);
         }
 
-        $cache_dir  = WT_DATA_DIR . 'cache/';
-        $cache_file = $cache_dir . 'language-' . self::$locale->languageTag() . '-cache.php';
-        if (file_exists($cache_file)) {
-            $filemtime = filemtime($cache_file);
-        } else {
-            $filemtime = 0;
+        // Load the translation file
+        $translation_file = Webtrees::ROOT_DIR . 'resources/lang/' . self::$locale->languageTag() . '/messages.php';
+
+        try {
+            $translation  = new Translation($translation_file);
+            $translations = $translation->asArray();
+        } catch (Exception $ex) {
+            // The translations files are created during the build process, and are
+            // not included in the source code.
+            // Assuming we are using dev code, and build (or rebuild) the files.
+            $po_file      = Webtrees::ROOT_DIR . 'resources/lang/' . self::$locale->languageTag() . '/messages.po';
+            $translation  = new Translation($po_file);
+            $translations = $translation->asArray();
+            file_put_contents($translation_file, '<?php return ' . var_export($translations, true) . ';');
         }
 
-        // Load the translation file(s)
-        $translation_files = [
-            WT_ROOT . 'resources/lang/' . self::$locale->languageTag() . '/messages.mo',
-        ];
-
-        // Rebuild files after one hour
-        $rebuild_cache = time() > $filemtime + 3600;
-        // Rebuild files if any translation file has been updated
-        foreach ($translation_files as $translation_file) {
-            if (filemtime($translation_file) > $filemtime) {
-                $rebuild_cache = true;
-                break;
-            }
-        }
-
-        if ($rebuild_cache) {
-            $translations = [];
-            foreach ($translation_files as $translation_file) {
-                $translation  = new Translation($translation_file);
-                $translations = array_merge($translations, $translation->asArray());
-            }
-            try {
-                File::mkdir($cache_dir);
-                file_put_contents($cache_file, '<?php return ' . var_export($translations, true) . ';');
-            } catch (Exception $ex) {
-                // During setup, we may not have been able to create it.
-            }
-        } else {
-            $translations = include $cache_file;
+        // Add translations from custom modules (but not during setup, as we have no database/modules)
+        if (!$setup) {
+            $translations = app(ModuleService::class)
+                ->findByInterface(ModuleCustomInterface::class)
+                ->reduce(static function (array $carry, ModuleCustomInterface $item): array {
+                    return array_merge($carry, $item->customTranslations(self::$locale->languageTag()));
+                }, $translations);
         }
 
         // Create a translator
@@ -463,22 +384,32 @@ class I18N
     /**
      * All locales for which a translation file exists.
      *
-     * @return LocaleInterface[]
+     * @return Collection
      */
-    public static function installedLocales(): array
+    public static function installedLocales(): Collection
     {
-        $locales = [];
+        return app(ModuleService::class)
+            ->findByInterface(ModuleLanguageInterface::class, true)
+            ->map(static function (ModuleLanguageInterface $module): LocaleInterface {
+                return $module->locale();
+            });
+    }
 
-        foreach (glob(WT_ROOT . 'resources/lang/*/messages.mo', GLOB_NOSORT) as $file) {
-            try {
-                $locales[] = Locale::create(basename(dirname($file)));
-            } catch (DomainException $ex) {
-                // Not a recognised locale
-            }
-        }
-        usort($locales, '\Fisharebest\Localization\Locale::compare');
+    /**
+     * Translate a string, and then substitute placeholders
+     * echo I18N::translate('Hello World!');
+     * echo I18N::translate('The %s sat on the mat', 'cat');
+     *
+     * @param string $message
+     * @param string ...$args
+     *
+     * @return string
+     */
+    public static function translate(string $message, ...$args): string
+    {
+        $message = self::$translator->translate($message);
 
-        return $locales;
+        return sprintf($message, ...$args);
     }
 
     /**
@@ -624,55 +555,6 @@ class I18N
     }
 
     /**
-     * Perform a case-insensitive comparison of two strings.
-     *
-     * @param string $string1
-     * @param string $string2
-     *
-     * @return int
-     */
-    public static function strcasecmp($string1, $string2): int
-    {
-        if (self::$collator instanceof Collator) {
-            return self::$collator->compare($string1, $string2);
-        }
-
-        return strcmp(self::strtolower($string1), self::strtolower($string2));
-    }
-
-    /**
-     * Convert a string to lower case.
-     *
-     * @param string $string
-     *
-     * @return string
-     */
-    public static function strtolower($string): string
-    {
-        if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES)) {
-            $string = strtr($string, self::DOTLESS_I_TOLOWER);
-        }
-
-        return mb_strtolower($string);
-    }
-
-    /**
-     * Convert a string to upper case.
-     *
-     * @param string $string
-     *
-     * @return string
-     */
-    public static function strtoupper($string): string
-    {
-        if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES)) {
-            $string = strtr($string, self::DOTLESS_I_TOUPPER);
-        }
-
-        return mb_strtoupper($string);
-    }
-
-    /**
      * Identify the script used for a piece of text
      *
      * @param string $string
@@ -725,51 +607,52 @@ class I18N
     }
 
     /**
-     * Convert a number of seconds into a relative time. For example, 630 => "10 hours, 30 minutes ago"
+     * Perform a case-insensitive comparison of two strings.
      *
-     * @param int $seconds
+     * @param string $string1
+     * @param string $string2
+     *
+     * @return int
+     */
+    public static function strcasecmp($string1, $string2): int
+    {
+        if (self::$collator instanceof Collator) {
+            return self::$collator->compare($string1, $string2);
+        }
+
+        return strcmp(self::strtolower($string1), self::strtolower($string2));
+    }
+
+    /**
+     * Convert a string to lower case.
+     *
+     * @param string $string
      *
      * @return string
      */
-    public static function timeAgo($seconds): string
+    public static function strtolower($string): string
     {
-        $minute = 60;
-        $hour   = 60 * $minute;
-        $day    = 24 * $hour;
-        $month  = 30 * $day;
-        $year   = 365 * $day;
-
-        if ($seconds > $year) {
-            $years = intdiv($seconds, $year);
-
-            return self::plural('%s year ago', '%s years ago', $years, self::number($years));
+        if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES, true)) {
+            $string = strtr($string, self::DOTLESS_I_TOLOWER);
         }
 
-        if ($seconds > $month) {
-            $months = intdiv($seconds, $month);
+        return mb_strtolower($string);
+    }
 
-            return self::plural('%s month ago', '%s months ago', $months, self::number($months));
+    /**
+     * Convert a string to upper case.
+     *
+     * @param string $string
+     *
+     * @return string
+     */
+    public static function strtoupper($string): string
+    {
+        if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES, true)) {
+            $string = strtr($string, self::DOTLESS_I_TOUPPER);
         }
 
-        if ($seconds > $day) {
-            $days = intdiv($seconds, $day);
-
-            return self::plural('%s day ago', '%s days ago', $days, self::number($days));
-        }
-
-        if ($seconds > $hour) {
-            $hours = intdiv($seconds, $hour);
-
-            return self::plural('%s hour ago', '%s hours ago', $hours, self::number($hours));
-        }
-
-        if ($seconds > $minute) {
-            $minutes = intdiv($seconds, $minute);
-
-            return self::plural('%s minute ago', '%s minutes ago', $minutes, self::number($minutes));
-        }
-
-        return self::plural('%s second ago', '%s seconds ago', $seconds, self::number($seconds));
+        return mb_strtoupper($string);
     }
 
     /**
@@ -781,23 +664,6 @@ class I18N
     {
         /* I18N: This is the format string for the time-of-day. See http://php.net/date for codes */
         return self::$translator->translate('%H:%i:%s');
-    }
-
-    /**
-     * Translate a string, and then substitute placeholders
-     * echo I18N::translate('Hello World!');
-     * echo I18N::translate('The %s sat on the mat', 'cat');
-     *
-     * @param string $message
-     * @param string ...$args
-     *
-     * @return string
-     */
-    public static function translate(string $message, ...$args): string
-    {
-        $message = self::$translator->translate($message);
-
-        return sprintf($message, ...$args);
     }
 
     /**

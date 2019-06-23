@@ -30,11 +30,11 @@ class IcelandicSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
-        $this->surname_tradition = new IcelandicSurnameTradition;
+        $this->surname_tradition = new IcelandicSurnameTradition();
     }
 
     /**
@@ -46,7 +46,7 @@ class IcelandicSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMarriedSurnames(): void
     {
-        $this->assertSame(false, $this->surname_tradition->hasMarriedNames());
+        $this->assertFalse($this->surname_tradition->hasMarriedNames());
     }
 
     /**
@@ -58,7 +58,7 @@ class IcelandicSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testSurnames(): void
     {
-        $this->assertSame(false, $this->surname_tradition->hasSurnames());
+        $this->assertFalse($this->surname_tradition->hasSurnames());
     }
 
     /**

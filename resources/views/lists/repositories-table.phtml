@@ -7,7 +7,7 @@
 // It is not good to bypass privacy, but many servers do not have the resources
 // to process privacy for every record in the tree
 $count_sources = DB::table('sources')
-    ->join('link', function (JoinClause $join): void {
+    ->join('link', static function (JoinClause $join): void {
         $join->on('l_from', '=', 's_id');
         $join->on('l_file', '=', 's_file');
     })
@@ -22,6 +22,7 @@ $count_sources = DB::table('sources')
 <table
     class="table table-bordered table-sm wt-table-repository datatables d-none"
     <?= view('lists/datatables-attributes') ?>
+    data-auto-width="false"
     data-columns="<?= e(json_encode([
         null,
         ['visible' => array_sum($count_sources) > 0],
@@ -42,7 +43,7 @@ $count_sources = DB::table('sources')
 
     <tbody>
         <?php foreach ($repositories as $repository) : ?>
-            <tr class="<?= $repository->isPendingDeletion() ? 'old' : ($repository->isPendingAddition() ? 'new' : '') ?>">
+            <tr class="<?= $repository->isPendingDeletion() ? 'wt-old' : ($repository->isPendingAddition() ? 'wt-new' : '') ?>">
                 <!-- Repository name -->
                 <td data-sort="<?= e($repository->sortName()) ?>">
                     <a href="<?= e($repository->url()) ?>">

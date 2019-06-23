@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <h2 class="wt-page-title">
@@ -21,10 +20,7 @@
             <?= I18N::translate('Individual') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= FunctionsEdit::formControlIndividual($tree, null, [
-                'id'   => 'xref-add',
-                'name' => 'xrefs[]',
-            ]) ?>
+            <?= view('components/select-individual', ['name' => 'xrefs[]', 'id' => 'xref-add', 'tree' => $tree]) ?>
         </div>
     </div>
 
@@ -55,7 +51,7 @@
 <div class="row my-4">
     <?php foreach ($individuals as $n => $individual) : ?>
     <div class="col-md-6 col-lg-4 col-xl-3 person<?= $n % 6 ?>">
-        <?= $individual->getSexImage('large'); ?>
+        <?= $individual->getSexImage('large') ?>
         <a href="<?= e($individual->url()) ?>">
             <?= $individual->fullName() ?>
             <?php if ($individual->alternateName() !== '') : ?>

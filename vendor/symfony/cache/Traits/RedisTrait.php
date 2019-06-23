@@ -80,15 +80,19 @@ trait RedisTrait
      */
     public static function createConnection($dsn, array $options = [])
     {
-        if (0 !== strpos($dsn, 'redis:')) {
-            throw new InvalidArgumentException(sprintf('Invalid Redis DSN: %s does not start with "redis:".', $dsn));
+        if (0 === strpos($dsn, 'redis:')) {
+            $scheme = 'redis';
+        } elseif (0 === strpos($dsn, 'rediss:')) {
+            $scheme = 'rediss';
+        } else {
+            throw new InvalidArgumentException(sprintf('Invalid Redis DSN: %s does not start with "redis:" or "rediss".', $dsn));
         }
 
         if (!\extension_loaded('redis') && !class_exists(\Predis\Client::class)) {
             throw new CacheException(sprintf('Cannot find the "redis" extension nor the "predis/predis" package: %s', $dsn));
         }
 
-        $params = preg_replace_callback('#^redis:(//)?(?:(?:[^:@]*+:)?([^@]*+)@)?#', function ($m) use (&$auth) {
+        $params = preg_replace_callback('#^'.$scheme.':(//)?(?:(?:[^:@]*+:)?([^@]*+)@)?#', function ($m) use (&$auth) {
             if (isset($m[2])) {
                 $auth = $m[2];
             }
@@ -317,33 +321,13 @@ trait RedisTrait
     protected function doClear($namespace)
     {
         $cleared = true;
-        $hosts = [$this->redis];
-        $evalArgs = [[$namespace], 0];
-
         if ($this->redis instanceof \Predis\Client) {
             $evalArgs = [0, $namespace];
-
-            $connection = $this->redis->getConnection();
-            if ($connection instanceof ClusterInterface && $connection instanceof \Traversable) {
-                $hosts = [];
-                foreach ($connection as $c) {
-                    $hosts[] = new \Predis\Client($c);
-                }
-            }
-        } elseif ($this->redis instanceof \RedisArray) {
-            $hosts = [];
-            foreach ($this->redis->_hosts() as $host) {
-                $hosts[] = $this->redis->_instance($host);
-            }
-        } elseif ($this->redis instanceof RedisClusterProxy || $this->redis instanceof \RedisCluster) {
-            $hosts = [];
-            foreach ($this->redis->_masters() as $host) {
-                $hosts[] = $h = new \Redis();
-                $h->connect($host[0], $host[1]);
-            }
+        } else {
+            $evalArgs = [[$namespace], 0];
         }
 
-        foreach ($hosts as $host) {
+        foreach ($this->getHosts() as $host) {
             if (!isset($namespace[0])) {
                 $cleared = $host->flushDb() && $cleared;
                 continue;
@@ -385,7 +369,7 @@ trait RedisTrait
             return true;
         }
 
-        if ($this->redis instanceof \Predis\Client) {
+        if ($this->redis instanceof \Predis\Client && $this->redis->getConnection() instanceof ClusterInterface) {
             $this->pipeline(function () use ($ids) {
                 foreach ($ids as $id) {
                     yield 'del' => [$id];
@@ -474,5 +458,32 @@ trait RedisTrait
         foreach ($ids as $k => $id) {
             yield $id => $results[$k];
         }
+    }
+
+    private function getHosts(): array
+    {
+        $hosts = [$this->redis];
+        if ($this->redis instanceof \Predis\Client) {
+            $connection = $this->redis->getConnection();
+            if ($connection instanceof ClusterInterface && $connection instanceof \Traversable) {
+                $hosts = [];
+                foreach ($connection as $c) {
+                    $hosts[] = new \Predis\Client($c);
+                }
+            }
+        } elseif ($this->redis instanceof \RedisArray) {
+            $hosts = [];
+            foreach ($this->redis->_hosts() as $host) {
+                $hosts[] = $this->redis->_instance($host);
+            }
+        } elseif ($this->redis instanceof RedisClusterProxy || $this->redis instanceof \RedisCluster) {
+            $hosts = [];
+            foreach ($this->redis->_masters() as $host) {
+                $hosts[] = $h = new \Redis();
+                $h->connect($host[0], $host[1]);
+            }
+        }
+
+        return $hosts;
     }
 }

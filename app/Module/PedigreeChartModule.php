@@ -25,8 +25,8 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class PedigreeChartModule
@@ -117,31 +117,31 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
     /**
      * A form to request the chart parameters.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
-     * @param ChartService  $chart_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
+     * @param ChartService           $chart_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getChartAction(Request $request, Tree $tree, UserInterface $user, ChartService $chart_service): Response
+    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user, ChartService $chart_service): ResponseInterface
     {
-        $ajax       = (bool) $request->get('ajax');
-        $xref       = $request->get('xref', '');
+        $ajax       = $request->getQueryParams()['ajax'] ?? '';
+        $xref       = $request->getQueryParams()['xref'] ?? '';
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
-        $orientation = $request->get('orientation', static::DEFAULT_ORIENTATION);
-        $generations = (int) $request->get('generations', static::DEFAULT_GENERATIONS);
+        $orientation = $request->getQueryParams()['orientation'] ?? static::DEFAULT_ORIENTATION;
+        $generations = (int) ($request->getQueryParams()['generations'] ?? static::DEFAULT_GENERATIONS);
 
         $generations = min(static::MAX_GENERATIONS, $generations);
         $generations = max(static::MIN_GENERATIONS, $generations);
 
         $generation_options = $this->generationOptions();
 
-        if ($ajax) {
+        if ($ajax === '1') {
             return $this->chart($individual, $orientation, $generations, $chart_service);
         }
 
@@ -169,9 +169,9 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      * @param int          $generations
      * @param ChartService $chart_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function chart(Individual $individual, string $orientation, int $generations, ChartService $chart_service): Response
+    public function chart(Individual $individual, string $orientation, int $generations, ChartService $chart_service): ResponseInterface
     {
         $ancestors = $chart_service->sosaStradonitzAncestors($individual, $generations);
 
@@ -202,7 +202,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
             'links'       => $links,
         ]);
 
-        return new Response($html);
+        return response($html);
     }
 
     /**

@@ -30,11 +30,11 @@ class PortugueseSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
-        $this->surname_tradition = new PortugueseSurnameTradition;
+        $this->surname_tradition = new PortugueseSurnameTradition();
     }
 
     /**
@@ -46,7 +46,7 @@ class PortugueseSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMarriedSurnames(): void
     {
-        $this->assertSame(false, $this->surname_tradition->hasMarriedNames());
+        $this->assertFalse($this->surname_tradition->hasMarriedNames());
     }
 
     /**
@@ -58,7 +58,7 @@ class PortugueseSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testSurnames(): void
     {
-        $this->assertSame(true, $this->surname_tradition->hasSurnames());
+        $this->assertTrue($this->surname_tradition->hasSurnames());
     }
 
     /**

@@ -21,15 +21,13 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
-use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\Webtrees;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class InteractiveTreeModule
@@ -80,27 +78,9 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
         [$html, $js] = $treeview->drawViewport($individual, 3);
 
         return view('modules/interactive-tree/tab', [
-            'html'         => $html,
-            'js'           => $js,
-            'treeview_css' => $this->css(),
-            'treeview_js'  => $this->js(),
+            'html' => $html,
+            'js'   => $js,
         ]);
-    }
-
-    /**
-     * @return string
-     */
-    public function css(): string
-    {
-        return Webtrees::MODULES_PATH . $this->name() . '/css/treeview.css';
-    }
-
-    /**
-     * @return string
-     */
-    public function js(): string
-    {
-        return Webtrees::MODULES_PATH . $this->name() . '/js/treeview.js';
     }
 
     /** {@inheritdoc} */
@@ -175,15 +155,15 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getChartAction(Request $request, Tree $tree, UserInterface $user): Response
+    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
 
@@ -194,7 +174,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
 
         [$html, $js] = $tv->drawViewport($individual, 4);
 
-        return $this->viewResponse('interactive-tree-page', [
+        return $this->viewResponse('modules/interactive-tree/page', [
             'html'       => $html,
             'individual' => $individual,
             'js'         => $js,
@@ -204,14 +184,14 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getDetailsAction(Request $request, Tree $tree): Response
+    public function getDetailsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $pid        = $request->get('pid', Gedcom::REGEX_XREF);
+        $pid        = $request->getQueryParams()['pid'];
         $individual = Individual::getInstance($pid, $tree);
 
         if ($individual === null) {
@@ -222,24 +202,24 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
             throw new IndividualAccessDeniedException();
         }
 
-        $instance = $request->get('instance', '');
+        $instance = $request->getQueryParams()['instance'];
         $treeview = new TreeView($instance);
 
-        return new Response($treeview->getDetails($individual));
+        return response($treeview->getDetails($individual));
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getPersonsAction(Request $request, Tree $tree): Response
+    public function getPersonsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $q        = $request->get('q', '');
-        $instance = $request->get('instance', '');
+        $q        = $request->getQueryParams()['q'];
+        $instance = $request->getQueryParams()['instance'];
         $treeview = new TreeView($instance);
 
-        return new Response($treeview->getPersons($tree, $q));
+        return response($treeview->getPersons($tree, $q));
     }
 }

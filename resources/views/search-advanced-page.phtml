@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <h2 class="wt-page-title">
@@ -28,7 +27,7 @@
             </div>
 
             <div class="col-sm-3 wt-page-options-value">
-                <?= Bootstrap4::select(['' => ''] + $other_fields, '', ['name' => 'other_field']) ?>
+                <?= view('components/select', ['name' => 'other_field', 'selected' => '', 'options' => ['' => ''] + $other_fields]) ?>
             </div>
 
             <div class="col-sm-3 wt-page-options-value">

@@ -11,7 +11,7 @@ use Fisharebest\Localization\Script\ScriptLatn;
  * @copyright (c) 2019 Greg Roach
  * @license   GPLv3+
  */
-class LocaleSuLatn extends LocaleSu implements LocaleInterface
+class LocaleSuLatn extends LocaleSu
 {
     public function endonym()
     {

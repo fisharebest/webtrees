@@ -17,10 +17,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
-use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
 
 /**
@@ -119,18 +118,18 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
     /**
      * Process the user-supplied options.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return void
      */
-    public function getOptions(Request $request): void
+    public function getOptions(ServerRequestInterface $request): void
     {
         parent::getOptions($request);
 
-        $this->search  = $request->get('search', '');
-        $this->replace = $request->get('replace', '');
-        $this->method  = $request->get('method', 'exact');
-        $this->case    = $request->get('case', '');
+        $this->search  = $request->getQueryParams()['search'] ?? '';
+        $this->replace = $request->getQueryParams()['replace'] ?? '';
+        $this->method  = $request->getQueryParams()['method'] ?? 'exact';
+        $this->case    = $request->getQueryParams()['case'] ?? '';
 
         $this->error = '';
         switch ($this->method) {
@@ -183,33 +182,31 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
             '<div class="row form-group">' .
             '<label class="col-sm-3 col-form-label">' . I18N::translate('Search text/pattern') . '</label>' .
             '<div class="col-sm-9">' .
-            '<input class="form-control" name="search" size="40" value="' . e($this->search) .
-            '" onchange="this.form.submit();">' .
+            '<input class="form-control" name="search" size="40" value="' . e($this->search) . '">' .
             '</div></div>' .
             '<div class="row form-group">' .
             '<label class="col-sm-3 col-form-label">' . I18N::translate('Replacement text') . '</label>' .
             '<div class="col-sm-9">' .
-            '<input class="form-control" name="replace" size="40" value="' . e($this->replace) .
-            '" onchange="this.form.submit();"></td></tr>' .
+            '<input class="form-control" name="replace" size="40" value="' . e($this->replace) . '"></td></tr>' .
             '</div></div>' .
             '<div class="row form-group">' .
             '<label class="col-sm-3 col-form-label">' . I18N::translate('Search method') . '</label>' .
             '<div class="col-sm-9">' .
-            '<select class="form-control" name="method" onchange="this.form.submit();">' .
-            '<option value="exact" ' . ($this->method == 'exact' ? 'selected' : '') . '>' . I18N::translate('Exact text') . '</option>' .
-            '<option value="words" ' . ($this->method == 'words' ? 'selected' : '') . '>' . I18N::translate('Whole words only') . '</option>' .
-            '<option value="wildcards" ' . ($this->method == 'wildcards' ? 'selected' : '') . '>' . I18N::translate('Wildcards') . '</option>' .
-            '<option value="regex" ' . ($this->method == 'regex' ? 'selected' : '') . '>' . I18N::translate('Regular expression') . '</option>' .
+            '<select class="form-control" name="method">' .
+            '<option value="exact" ' . ($this->method === 'exact' ? 'selected' : '') . '>' . I18N::translate('Exact text') . '</option>' .
+            '<option value="words" ' . ($this->method === 'words' ? 'selected' : '') . '>' . I18N::translate('Whole words only') . '</option>' .
+            '<option value="wildcards" ' . ($this->method === 'wildcards' ? 'selected' : '') . '>' . I18N::translate('Wildcards') . '</option>' .
+            '<option value="regex" ' . ($this->method === 'regex' ? 'selected' : '') . '>' . I18N::translate('Regular expression') . '</option>' .
             '</select>' .
             '<p class="small text-muted">' . $descriptions[$this->method] . '</p>' . $this->error .
             '</div></div>' .
             '<div class="row form-group">' .
             '<label class="col-sm-3 col-form-label">' . I18N::translate('Case insensitive') . '</label>' .
             '<div class="col-sm-9">' .
-            Bootstrap4::radioButtons('case', [
+            view('components/radios-inline', ['name' => 'case', 'selected' => $this->case, 'options' => [
                 ''  => I18N::translate('no'),
                 'i' => I18N::translate('yes'),
-            ], ($this->case ? 'i' : ''), true, ['onchange' => 'this.form.submit();']) .
+            ]]) .
             '<p class="small text-muted">' .
             /* I18N: Help text for "Case insensitive" searches */
             I18N::translate('Match both upper and lower case letters.') . '</p>' .

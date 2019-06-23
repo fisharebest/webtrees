@@ -17,11 +17,34 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Carbon;
+use Illuminate\Support\Str;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use function strlen;
+
 /**
  * Trait ModuleCustomTrait - default implementation of ModuleCustomInterface
  */
 trait ModuleCustomTrait
 {
+    /**
+     * Where does this module store its resources
+     *
+     * @return string
+     */
+    abstract public function resourcesFolder(): string;
+
+    /**
+     * A unique internal name for this module (based on the installation folder).
+     *
+     * @return string
+     */
+    abstract public function name(): string;
+
     /**
      * The person or organisation who created this module.
      *
@@ -60,5 +83,91 @@ trait ModuleCustomTrait
     public function customModuleSupportUrl(): string
     {
         return '';
+    }
+
+    /**
+     * Additional/updated translations.
+     *
+     * @param string $language
+     *
+     * @return string[]
+     */
+    public function customTranslations(string $language): array
+    {
+        return [];
+    }
+
+    /**
+     * Create a URL for an asset.
+     *
+     * @param string $asset e.g. "css/theme.css" or "img/banner.png"
+     *
+     * @return string
+     */
+    public function assetUrl(string $asset): string
+    {
+        $file = $this->resourcesFolder() . $asset;
+
+        // Add the file's modification time to the URL, so we can set long expiry cache headers.
+        $hash = filemtime($file);
+
+        return route('module', [
+            'module' => $this->name(),
+            'action' => 'asset',
+            'asset'  => $asset,
+            'hash'   => $hash,
+        ]);
+    }
+
+    /**
+     * Serve a CSS/JS file.
+     *
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function getAssetAction(ServerRequestInterface $request): ResponseInterface
+    {
+        // The file being requested.  e.g. "css/theme.css"
+        $asset = $request->getQueryParams()['asset'];
+
+        // Do not allow requests that try to access parent folders.
+        if (Str::contains($asset, '..')) {
+            throw new AccessDeniedHttpException($asset);
+        }
+
+        // Find the file for this asset.
+        // Note that we could also generate CSS files using views/templates.
+        // e.g. $file = view(....
+        $file = $this->resourcesFolder() . $asset;
+
+        if (!file_exists($file)) {
+            throw new NotFoundHttpException($file);
+        }
+
+        $content   = file_get_contents($file);
+        $extension = pathinfo($asset, PATHINFO_EXTENSION);
+
+        $mime_types = [
+            'css'  => 'text/css',
+            'gif'  => 'image/gif',
+            'js'   => 'application/javascript',
+            'jpg'  => 'image/jpg',
+            'jpeg' => 'image/jpg',
+            'json' => 'application/json',
+            'png'  => 'image/png',
+            'txt'  => 'text/plain',
+        ];
+
+        $mime_type = $mime_types[$extension] ?? 'application/octet-stream';
+
+        $headers = [
+            'Content-Type'   => $mime_type,
+            'Cache-Control'  => 'max-age=31536000, public',
+            'Content-Length' => strlen($content),
+            'Expires'        => Carbon::now()->addYears(10)->toRfc7231String(),
+        ];
+
+        return response($content, StatusCodeInterface::STATUS_OK, $headers);
     }
 }

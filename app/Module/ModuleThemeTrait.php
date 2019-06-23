@@ -26,7 +26,9 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
+use Fisharebest\Webtrees\Webtrees;
+use Psr\Http\Message\ServerRequestInterface;
+use function app;
 
 /**
  * Trait ModuleThemeTrait - default implementation of ModuleThemeInterface
@@ -34,32 +36,13 @@ use Symfony\Component\HttpFoundation\Request;
 trait ModuleThemeTrait
 {
     /**
-     * Add markup to the secondary menu.
-     *
-     * @param Tree|null $tree
+     * A sentence describing what this module does.
      *
      * @return string
      */
-    public function formatUserMenu(?Tree $tree): string
+    public function description(): string
     {
-        return
-            '<ul class="nav wt-user-menu">' .
-            implode('', array_map(function (Menu $menu): string {
-                return $this->formatUserMenuItem($menu);
-            }, $this->userMenu($tree))) .
-            '</ul>';
-    }
-
-    /**
-     * Add markup to an item in the secondary menu.
-     *
-     * @param Menu $menu
-     *
-     * @return string
-     */
-    public function formatUserMenuItem(Menu $menu): string
-    {
-        return $menu->bootstrap4();
+        return I18N::translate('Theme') . ' — ' . $this->title();
     }
 
     /**
@@ -74,73 +57,17 @@ trait ModuleThemeTrait
     public function icon(Fact $fact): string
     {
         $asset = 'public/css/' . $this->name() . '/images/facts/' . $fact->getTag() . '.png';
-        if (file_exists(WT_ROOT . 'public' . $asset)) {
+        if (file_exists(Webtrees::ROOT_DIR . 'public' . $asset)) {
             return '<img src="' . e(asset($asset)) . '" title="' . GedcomTag::getLabel($fact->getTag()) . '">';
         }
 
         // Spacer image - for alignment - until we move to a sprite.
         $asset = 'public/css/' . $this->name() . '/images/facts/NULL.png';
-        if (file_exists(WT_ROOT . 'public' . $asset)) {
+        if (file_exists(Webtrees::ROOT_DIR . 'public' . $asset)) {
             return '<img src="' . e(asset($asset)) . '">';
         }
 
         return '';
-    }
-
-    /**
-     * Display an individual in a box - for charts, etc.
-     *
-     * @param Individual $individual
-     *
-     * @return string
-     */
-    public function individualBox(Individual $individual): string
-    {
-        return view('chart-box', ['individual' => $individual]);
-    }
-
-    /**
-     * Display an empty box - for a missing individual in a chart.
-     *
-     * @return string
-     */
-    public function individualBoxEmpty(): string
-    {
-        return '<div class="wt-chart-box"></div>';
-    }
-
-    /**
-     * Display an individual in a box - for charts, etc.
-     *
-     * @param Individual $individual
-     *
-     * @return string
-     */
-    public function individualBoxLarge(Individual $individual): string
-    {
-        return $this->individualBox($individual);
-    }
-
-    /**
-     * Display an individual in a box - for charts, etc.
-     *
-     * @param Individual $individual
-     *
-     * @return string
-     */
-    public function individualBoxSmall(Individual $individual): string
-    {
-        return $this->individualBox($individual);
-    }
-
-    /**
-     * Display an individual in a box - for charts, etc.
-     *
-     * @return string
-     */
-    public function individualBoxSmallEmpty(): string
-    {
-        return '<div class="wt-chart-box"></div>';
     }
 
     /**
@@ -157,7 +84,7 @@ trait ModuleThemeTrait
         $opt_tags = preg_split('/\W/', $individual->tree()->getPreference('CHART_BOX_TAGS'), 0, PREG_SPLIT_NO_EMPTY);
         // Show BIRT or equivalent event
         foreach (Gedcom::BIRTH_EVENTS as $birttag) {
-            if (!in_array($birttag, $opt_tags)) {
+            if (!in_array($birttag, $opt_tags, true)) {
                 $event = $individual->facts([$birttag])->first();
                 if ($event instanceof Fact) {
                     $html .= $event->summary();
@@ -167,7 +94,7 @@ trait ModuleThemeTrait
         }
         // Show optional events (before death)
         foreach ($opt_tags as $key => $tag) {
-            if (!in_array($tag, Gedcom::DEATH_EVENTS)) {
+            if (!in_array($tag, Gedcom::DEATH_EVENTS, true)) {
                 $event = $individual->facts([$tag])->first();
                 if ($event instanceof Fact) {
                     $html .= $event->summary();
@@ -180,8 +107,8 @@ trait ModuleThemeTrait
             $event = $individual->facts([$deattag])->first();
             if ($event instanceof Fact) {
                 $html .= $event->summary();
-                if (in_array($deattag, $opt_tags)) {
-                    unset($opt_tags[array_search($deattag, $opt_tags)]);
+                if (in_array($deattag, $opt_tags, true)) {
+                    unset($opt_tags[array_search($deattag, $opt_tags, true)]);
                 }
                 break;
             }
@@ -231,7 +158,7 @@ trait ModuleThemeTrait
             }
         }
 
-        usort($menus, function (Menu $x, Menu $y) {
+        usort($menus, static function (Menu $x, Menu $y): int {
             return I18N::strcasecmp($x->getLabel(), $y->getLabel());
         });
 
@@ -274,13 +201,16 @@ trait ModuleThemeTrait
      */
     public function menuChangeBlocks(Tree $tree): ?Menu
     {
-        $request = app(Request::class);
+        /** @var ServerRequestInterface $request */
+        $request = app(ServerRequestInterface::class);
 
-        if (Auth::check() && $request->get('route') === 'user-page') {
+        $route = $request->getQueryParams()['route'] ?? '';
+
+        if (Auth::check() && $route === 'user-page') {
             return new Menu(I18N::translate('Customize this page'), route('user-page-edit', ['ged' => $tree->name()]), 'menu-change-blocks');
         }
 
-        if (Auth::isManager($tree) && $request->get('route') === 'tree-page') {
+        if (Auth::isManager($tree) && $route === 'tree-page') {
             return new Menu(I18N::translate('Customize this page'), route('tree-page-edit', ['ged' => $tree->name()]), 'menu-change-blocks');
         }
 
@@ -344,7 +274,7 @@ trait ModuleThemeTrait
         }
 
         // Return to this page after login...
-        $url = app(Request::class)->getRequestUri();
+        $url = app(ServerRequestInterface::class)->getUri();
 
         // ...but switch from the tree-page to the user-page
         $url = str_replace('route=tree-page', 'route=user-page', $url);
@@ -445,7 +375,7 @@ trait ModuleThemeTrait
         $gedcomid = $tree->getUserPreference(Auth::user(), 'gedcomid');
 
         $pedigree_chart = app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
-            ->filter(function (ModuleInterface $module): bool {
+            ->filter(static function (ModuleInterface $module): bool {
                 return $module instanceof PedigreeChartModule;
             });
 
@@ -475,7 +405,7 @@ trait ModuleThemeTrait
         if ($tree instanceof Tree && $tree->hasPendingEdit() && Auth::isModerator($tree)) {
             $url = route('show-pending', [
                 'ged' => $tree->name(),
-                'url' => app(Request::class)->getRequestUri(),
+                'url' => (string) app(ServerRequestInterface::class)->getUri(),
             ]);
 
             return new Menu(I18N::translate('Pending changes'), $url, 'menu-pending');
@@ -491,12 +421,12 @@ trait ModuleThemeTrait
      */
     public function menuThemes(): ?Menu
     {
-        $themes = app(ModuleService::class)->findByInterface(ModuleThemeInterface::class);
+        $themes = app(ModuleService::class)->findByInterface(ModuleThemeInterface::class, false, true);
 
         $current_theme = app(ModuleThemeInterface::class);
 
         if ($themes->count() > 1) {
-            $submenus = $themes->map(function (ModuleThemeInterface $theme) use ($current_theme): Menu {
+            $submenus = $themes->map(static function (ModuleThemeInterface $theme) use ($current_theme): Menu {
                 $active     = $theme->name() === $current_theme->name();
                 $class      = 'menu-theme-' . $theme->name() . ($active ? ' active' : '');
 
@@ -506,7 +436,7 @@ trait ModuleThemeTrait
                 ]);
             });
 
-            return  new Menu(I18N::translate('Theme'), '#', 'menu-theme', [], $submenus->all());
+            return new Menu(I18N::translate('Theme'), '#', 'menu-theme', [], $submenus->all());
         }
 
         return null;
@@ -538,7 +468,7 @@ trait ModuleThemeTrait
         }
 
         return app(ModuleService::class)->findByComponent(ModuleMenuInterface::class, $tree, Auth::user())
-            ->map(function (ModuleMenuInterface $menu) use ($tree): ?Menu {
+            ->map(static function (ModuleMenuInterface $menu) use ($tree): ?Menu {
                 return $menu->getMenu($tree);
             })
             ->filter()
@@ -554,7 +484,7 @@ trait ModuleThemeTrait
      */
     public function genealogyMenuContent(array $menus): string
     {
-        return implode('', array_map(function (Menu $menu): string {
+        return implode('', array_map(static function (Menu $menu): string {
             return $menu->bootstrap4();
         }, $menus));
     }

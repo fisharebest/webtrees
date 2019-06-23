@@ -29,6 +29,6 @@ class FunctionsRtlTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Functions\FunctionsRtl'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Functions\FunctionsRtl::class));
     }
 }

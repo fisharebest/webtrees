@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Google;
 
+use function count;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
@@ -58,7 +59,7 @@ class ChartMedia
     public function chartMedia(
         array $media,
         string $color_from = null,
-        string $color_to   = null
+        string $color_to = null
     ): string {
         $chart_color1 = (string) $this->theme->parameter('distribution-chart-no-values');
         $chart_color2 = (string) $this->theme->parameter('distribution-chart-high-values');
@@ -79,7 +80,7 @@ class ChartMedia
             ];
         }
 
-        $colors = $this->color_service->interpolateRgb($color_from, $color_to, \count($data) - 1);
+        $colors = $this->color_service->interpolateRgb($color_from, $color_to, count($data) - 1);
 
         return view(
             'statistics/other/charts/pie',

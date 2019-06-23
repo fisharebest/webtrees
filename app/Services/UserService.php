@@ -25,7 +25,8 @@ use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ServerRequestInterface;
+use function app;
 
 /**
  * Functions for managing users.
@@ -41,7 +42,7 @@ class UserService
      */
     public function find($user_id): ?User
     {
-        return app('cache.array')->rememberForever(__CLASS__ . $user_id, function () use ($user_id): ?User {
+        return app('cache.array')->rememberForever(__CLASS__ . $user_id, static function () use ($user_id): ?User {
             return DB::table('user')
                 ->where('user_id', '=', $user_id)
                 ->get()
@@ -89,7 +90,6 @@ class UserService
      * @param Individual $individual
      *
      * @return Collection
-     * @return User[]
      */
     public function findByIndividual(Individual $individual): Collection
     {
@@ -123,7 +123,6 @@ class UserService
      * Get a list of all users.
      *
      * @return Collection
-     * @return User[]
      */
     public function all(): Collection
     {
@@ -138,12 +137,11 @@ class UserService
      * Get a list of all administrators.
      *
      * @return Collection
-     * @return User[]
      */
     public function administrators(): Collection
     {
         return DB::table('user')
-            ->join('user_setting', function (JoinClause $join): void {
+            ->join('user_setting', static function (JoinClause $join): void {
                 $join
                     ->on('user_setting.user_id', '=', 'user.user_id')
                     ->where('user_setting.setting_name', '=', 'canadmin')
@@ -160,12 +158,11 @@ class UserService
      * Get a list of all managers.
      *
      * @return Collection
-     * @return User[]
      */
     public function managers(): Collection
     {
         return DB::table('user')
-            ->join('user_gedcom_setting', function (JoinClause $join): void {
+            ->join('user_gedcom_setting', static function (JoinClause $join): void {
                 $join
                     ->on('user_gedcom_setting.user_id', '=', 'user.user_id')
                     ->where('user_gedcom_setting.setting_name', '=', 'canedit')
@@ -182,12 +179,11 @@ class UserService
      * Get a list of all moderators.
      *
      * @return Collection
-     * @return User[]
      */
     public function moderators(): Collection
     {
         return DB::table('user')
-            ->join('user_gedcom_setting', function (JoinClause $join): void {
+            ->join('user_gedcom_setting', static function (JoinClause $join): void {
                 $join
                     ->on('user_gedcom_setting.user_id', '=', 'user.user_id')
                     ->where('user_gedcom_setting.setting_name', '=', 'canedit')
@@ -204,12 +200,11 @@ class UserService
      * Get a list of all verified users.
      *
      * @return Collection
-     * @return User[]
      */
     public function unapproved(): Collection
     {
         return DB::table('user')
-            ->join('user_setting', function (JoinClause $join): void {
+            ->join('user_setting', static function (JoinClause $join): void {
                 $join
                     ->on('user_setting.user_id', '=', 'user.user_id')
                     ->where('user_setting.setting_name', '=', 'verified_by_admin')
@@ -226,12 +221,11 @@ class UserService
      * Get a list of all verified users.
      *
      * @return Collection
-     * @return User[]
      */
     public function unverified(): Collection
     {
         return DB::table('user')
-            ->join('user_setting', function (JoinClause $join): void {
+            ->join('user_setting', static function (JoinClause $join): void {
                 $join
                     ->on('user_setting.user_id', '=', 'user.user_id')
                     ->where('user_setting.setting_name', '=', 'verified')
@@ -248,7 +242,6 @@ class UserService
      * Get a list of all users who are currently logged in.
      *
      * @return Collection
-     * @return User[]
      */
     public function allLoggedIn(): Collection
     {
@@ -334,7 +327,7 @@ class UserService
     {
         $tree    = app(Tree::class);
         $user    = app(UserInterface::class);
-        $request = app(Request::class);
+        $request = app(ServerRequestInterface::class);
 
         if ($contact_user->getPreference('contactmethod') === 'mailto') {
             $url = 'mailto:' . $contact_user->email();
@@ -346,7 +339,7 @@ class UserService
             $url = route('contact', [
                 'ged' => $tree ? $tree->name() : '',
                 'to'  => $contact_user->userName(),
-                'url' => $request->getRequestUri(),
+                'url' => (string) $request->getUri(),
             ]);
         }
 

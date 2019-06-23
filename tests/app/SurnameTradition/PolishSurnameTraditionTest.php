@@ -30,11 +30,11 @@ class PolishSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
-        $this->surname_tradition = new PolishSurnameTradition;
+        $this->surname_tradition = new PolishSurnameTradition();
     }
 
     /**
@@ -47,7 +47,7 @@ class PolishSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMarriedSurnames(): void
     {
-        $this->assertSame(true, $this->surname_tradition->hasMarriedNames());
+        $this->assertTrue($this->surname_tradition->hasMarriedNames());
     }
 
     /**
@@ -60,7 +60,7 @@ class PolishSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testSurnames(): void
     {
-        $this->assertSame(true, $this->surname_tradition->hasSurnames());
+        $this->assertTrue($this->surname_tradition->hasSurnames());
     }
 
     /**

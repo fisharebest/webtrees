@@ -20,21 +20,26 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Exception;
 use Fisharebest\Localization\Locale;
 use Fisharebest\Localization\Locale\LocaleEnUs;
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Services\MigrationService;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Database\Capsule\Manager;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Cache\ArrayStore;
+use Illuminate\Cache\Repository;
+use Illuminate\Database\Capsule\Manager as DB;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
+use function app;
+use function define;
 use function random_bytes;
-use function ini_get;
+use function touch;
 use const WT_DATA_DIR;
 
 /**
@@ -42,14 +47,9 @@ use const WT_DATA_DIR;
  */
 class SetupController extends AbstractBaseController
 {
-    /** @var string */
-    protected $layout = 'layouts/setup';
-
     private const DEFAULT_DBTYPE = 'mysql';
     private const DEFAULT_PREFIX = 'wt_';
-
-    // We need this information to complete the setup
-    private const DEFAULT_DATA = [
+    private const DEFAULT_DATA   = [
         'lang'    => '',
         'dbtype'  => self::DEFAULT_DBTYPE,
         'dbhost'  => '',
@@ -64,6 +64,9 @@ class SetupController extends AbstractBaseController
         'wtemail' => '',
     ];
 
+    // We need this information to complete the setup
+    /** @var string */
+    protected $layout = 'layouts/setup';
     /** @var MigrationService */
     private $migration_service;
 
@@ -93,18 +96,25 @@ class SetupController extends AbstractBaseController
     /**
      * Installation wizard - check user input and proceed to the next step.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function setup(Request $request): Response
+    public function setup(ServerRequestInterface $request): ResponseInterface
     {
-        $step = (int) $request->get('step', '1');
+        // Mini "bootstrap"
+        define('WT_DATA_DIR', 'data/');
+        app()->instance(ServerRequestInterface::class, $request);
+        app()->instance('cache.array', new Repository(new ArrayStore()));
+
         $data = $this->userData($request);
 
-        $data['lang']         = I18N::init($request->get('lang', $data['lang']));
+        $step = (int) ($request->getParsedBody()['step'] ?? '1');
+        $lang = $request->getParsedBody()['lang'] ?? $data['lang'];
+
+        $data['lang']         = I18N::init($lang, null, true);
         $data['cpu_limit']    = $this->maxExecutionTime();
-        $data['locales']      = I18N::installedLocales();
+        $data['locales']      = $this->setupLocales();
         $data['memory_limit'] = $this->memoryLimit();
 
         // Only show database errors after the user has chosen a driver.
@@ -112,8 +122,8 @@ class SetupController extends AbstractBaseController
             $data['errors']   = $this->server_check_service->serverErrors($data['dbtype']);
             $data['warnings'] = $this->server_check_service->serverWarnings($data['dbtype']);
         } else {
-            $data['errors']       = $this->server_check_service->serverErrors();
-            $data['warnings']     = $this->server_check_service->serverWarnings();
+            $data['errors']   = $this->server_check_service->serverErrors();
+            $data['warnings'] = $this->server_check_service->serverWarnings();
         }
 
         if (!$this->checkFolderIsWritable(WT_DATA_DIR)) {
@@ -144,224 +154,16 @@ class SetupController extends AbstractBaseController
     }
 
     /**
-     * @param mixed[] $data
-     *
-     * @return Response
-     */
-    private function step1Language(array $data): Response
-    {
-        if ($data['lang'] === '') {
-            $data['lang'] = Locale::httpAcceptLanguage($_SERVER, I18N::installedLocales(), new LocaleEnUs())->languageTag();
-        }
-
-        return $this->viewResponse('setup/step-1-language', $data);
-    }
-
-    /**
-     * @param mixed[] $data
-     *
-     * @return Response
-     */
-    private function step2CheckServer(array $data): Response
-    {
-        return $this->viewResponse('setup/step-2-server-checks', $data);
-    }
-
-    /**
-     * @param mixed[] $data
-     *
-     * @return Response
-     */
-    private function step3DatabaseType(array $data): Response
-    {
-        if ($data['errors']->isNotEmpty()) {
-            return $this->viewResponse('setup/step-2-server-checks', $data);
-        }
-
-        return $this->viewResponse('setup/step-3-database-type', $data);
-    }
-
-    /**
-     * @param mixed[] $data
-     *
-     * @return Response
-     */
-    private function step4DatabaseConnection(array $data): Response
-    {
-        if ($data['errors']->isNotEmpty()) {
-            return $this->step3DatabaseType($data);
-        }
-
-        return $this->viewResponse('setup/step-4-database-' . $data['dbtype'], $data);
-    }
-
-    /**
-     * @param mixed[] $data
-     *
-     * @return Response
-     */
-    private function step5Administrator(array $data): Response
-    {
-        try {
-            $this->checkDatabase($data);
-        } catch (Throwable $ex) {
-            $data['errors']->push($ex->getMessage());
-
-            // Don't jump to step 4, as the error will make it jump to step 3.
-            return $this->viewResponse('setup/step-4-database-' . $data['dbtype'], $data);
-        }
-
-        return $this->viewResponse('setup/step-5-administrator', $data);
-    }
-
-    /**
-     * @param mixed[] $data
-     *
-     * @return Response
-     */
-    private function step6Install(array $data): Response
-    {
-        $error = $this->checkAdminUser($data['wtname'], $data['wtuser'], $data['wtpass'], $data['wtemail']);
-
-        if ($error !== '') {
-            $data['errors']->push($error);
-
-            return $this->step5Administrator($data);
-        }
-
-        try {
-            $this->createConfigFile($data);
-        } catch (Throwable $exception) {
-            return $this->viewResponse('setup/step-6-failed', ['exception' => $exception]);
-        }
-
-        // Done - start using webtrees!
-        return new RedirectResponse(route('admin-trees'));
-    }
-
-    /**
-     * @param string $wtname
-     * @param string $wtuser
-     * @param string $wtpass
-     * @param string $wtemail
-     *
-     * @return string
-     */
-    private function checkAdminUser($wtname, $wtuser, $wtpass, $wtemail): string
-    {
-        if ($wtname === '' || $wtuser === '' || $wtpass === '' || $wtemail === '') {
-            return I18N::translate('You must enter all the administrator account fields.');
-        }
-
-        if (mb_strlen($wtpass) < 6) {
-            return I18N::translate('The password needs to be at least six characters long.');
-        }
-
-        return '';
-    }
-
-    /**
-     * Check we can write to the data folder.
-     *
-     * @param mixed $data
-     *
-     * @throws Exception
-     */
-    private function checkDatabase(array $data): void
-    {
-        // Try to create the SQLite database, if it does not already exist.
-        if ($data['dbtype'] === 'sqlite') {
-            touch(WT_ROOT . 'data/' . $data['dbname'] . '.sqlite');
-        }
-
-        // Try to create the MySQL database, if it does not already exist.
-        if ($data['dbtype'] === 'mysql') {
-            $tmp           = $data;
-            $tmp['dbname'] = '';
-            Database::connect($tmp);
-            Manager::connection()->statement('CREATE DATABASE IF NOT EXISTS `' . $data['dbname'] . '` COLLATE utf8_unicode_ci');
-        }
-
-        // Try to connect to the database.
-        Database::connect($data);
-    }
-
-    /**
-     * Check we can write to the data folder.
-     *
-     * @param string $data_dir
-     *
-     * @return bool
-     */
-    private function checkFolderIsWritable(string $data_dir): bool
-    {
-        $text1 = random_bytes(32);
-
-        try {
-            file_put_contents($data_dir . 'test.txt', $text1);
-            $text2 = file_get_contents(WT_DATA_DIR . 'test.txt');
-            unlink(WT_DATA_DIR . 'test.txt');
-        } catch (Exception $ex) {
-            return false;
-        }
-
-        return $text1 === $text2;
-    }
-
-    /**
-     * @param string[] $data
-     *
-     * @return void
-     */
-    private function createConfigFile(array $data): void
-    {
-        // Create/update the database tables.
-        Database::connect($data);
-        $this->migration_service->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
-
-        // Add some default/necessary configuration data.
-        $this->migration_service->seedDatabase();
-
-        // If we are re-installing, then this user may already exist.
-        $admin = $this->user_service->findByIdentifier($data['wtemail']);
-        if ($admin === null) {
-            $admin = $this->user_service->findByIdentifier($data['wtuser']);
-        }
-        // Create the user
-        if ($admin === null) {
-            $admin = $this->user_service->create($data['wtuser'], $data['wtname'], $data['wtemail'], $data['wtpass'])
-                ->setPreference('language', WT_LOCALE)
-                ->setPreference('visibleonline', '1');
-        } else {
-            $admin->setPassword($_POST['wtpass']);
-        }
-        // Make the user an administrator
-        $admin
-            ->setPreference('canadmin', '1')
-            ->setPreference('verified', '1')
-            ->setPreference('verified_by_admin', '1');
-
-        // Write the config file. We already checked that this would work.
-        $config_ini_php = view('setup/config.ini', $data);
-
-        file_put_contents(Webtrees::CONFIG_FILE, $config_ini_php);
-
-        // Login as the new user
-        Session::start();
-        Auth::login($admin);
-    }
-
-    /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return mixed[]
      */
-    private function userData(Request $request): array
+    private function userData(ServerRequestInterface $request): array
     {
         $data = [];
 
         foreach (self::DEFAULT_DATA as $key => $default) {
-            $data[$key] = $request->get($key, $default);
+            $data[$key] = $request->getParsedBody()[$key] ?? $default;
         }
 
         return $data;
@@ -375,6 +177,21 @@ class SetupController extends AbstractBaseController
     private function maxExecutionTime(): int
     {
         return (int) ini_get('max_execution_time');
+    }
+
+    /**
+     * Which languages are available during the installation.
+     *
+     * @return LocaleInterface[]
+     */
+    private function setupLocales(): array
+    {
+        return app(ModuleService::class)
+            ->setupLanguages()
+            ->map(static function (ModuleLanguageInterface $module): LocaleInterface {
+                return $module->locale();
+            })
+            ->all();
     }
 
     /**
@@ -408,5 +225,241 @@ class SetupController extends AbstractBaseController
         }
 
         return (int) $memory_limit;
+    }
+
+    /**
+     * Check we can write to the data folder.
+     *
+     * @param string $data_dir
+     *
+     * @return bool
+     */
+    private function checkFolderIsWritable(string $data_dir): bool
+    {
+        $text1 = random_bytes(32);
+
+        try {
+            file_put_contents($data_dir . 'test.txt', $text1);
+            $text2 = file_get_contents(WT_DATA_DIR . 'test.txt');
+            unlink(WT_DATA_DIR . 'test.txt');
+        } catch (Exception $ex) {
+            return false;
+        }
+
+        return $text1 === $text2;
+    }
+
+    /**
+     * @param mixed[] $data
+     *
+     * @return ResponseInterface
+     */
+    private function step1Language(array $data): ResponseInterface
+    {
+        if ($data['lang'] === '') {
+            $data['lang'] = Locale::httpAcceptLanguage($_SERVER, $data['locales'], new LocaleEnUs())->languageTag();
+        }
+
+        return $this->viewResponse('setup/step-1-language', $data);
+    }
+
+    /**
+     * @param mixed[] $data
+     *
+     * @return ResponseInterface
+     */
+    private function step2CheckServer(array $data): ResponseInterface
+    {
+        return $this->viewResponse('setup/step-2-server-checks', $data);
+    }
+
+    /**
+     * @param mixed[] $data
+     *
+     * @return ResponseInterface
+     */
+    private function step3DatabaseType(array $data): ResponseInterface
+    {
+        if ($data['errors']->isNotEmpty()) {
+            return $this->viewResponse('setup/step-2-server-checks', $data);
+        }
+
+        return $this->viewResponse('setup/step-3-database-type', $data);
+    }
+
+    /**
+     * @param mixed[] $data
+     *
+     * @return ResponseInterface
+     */
+    private function step4DatabaseConnection(array $data): ResponseInterface
+    {
+        if ($data['errors']->isNotEmpty()) {
+            return $this->step3DatabaseType($data);
+        }
+
+        return $this->viewResponse('setup/step-4-database-' . $data['dbtype'], $data);
+    }
+
+    /**
+     * @param mixed[] $data
+     *
+     * @return ResponseInterface
+     */
+    private function step5Administrator(array $data): ResponseInterface
+    {
+        try {
+            $this->connectToDatabase($data);
+        } catch (Throwable $ex) {
+            $data['errors']->push($ex->getMessage());
+
+            // Don't jump to step 4, as the error will make it jump to step 3.
+            return $this->viewResponse('setup/step-4-database-' . $data['dbtype'], $data);
+        }
+
+        return $this->viewResponse('setup/step-5-administrator', $data);
+    }
+
+    /**
+     * @param mixed[] $data
+     *
+     * @return ResponseInterface
+     */
+    private function step6Install(array $data): ResponseInterface
+    {
+        $error = $this->checkAdminUser($data['wtname'], $data['wtuser'], $data['wtpass'], $data['wtemail']);
+
+        if ($error !== '') {
+            $data['errors']->push($error);
+
+            return $this->step5Administrator($data);
+        }
+
+        try {
+            $this->createConfigFile($data);
+        } catch (Throwable $exception) {
+            return $this->viewResponse('setup/step-6-failed', ['exception' => $exception]);
+        }
+
+        // Done - start using webtrees!
+        return redirect(route('admin-trees'));
+    }
+
+    /**
+     * @param string $wtname
+     * @param string $wtuser
+     * @param string $wtpass
+     * @param string $wtemail
+     *
+     * @return string
+     */
+    private function checkAdminUser($wtname, $wtuser, $wtpass, $wtemail): string
+    {
+        if ($wtname === '' || $wtuser === '' || $wtpass === '' || $wtemail === '') {
+            return I18N::translate('You must enter all the administrator account fields.');
+        }
+
+        if (mb_strlen($wtpass) < 6) {
+            return I18N::translate('The password needs to be at least six characters long.');
+        }
+
+        return '';
+    }
+
+    /**
+     * @param string[] $data
+     *
+     * @return void
+     */
+    private function createConfigFile(array $data): void
+    {
+        // Create/update the database tables.
+        $this->connectToDatabase($data);
+        $this->migration_service->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
+
+        // Add some default/necessary configuration data.
+        $this->migration_service->seedDatabase();
+
+        // If we are re-installing, then this user may already exist.
+        $admin = $this->user_service->findByIdentifier($data['wtemail']);
+        if ($admin === null) {
+            $admin = $this->user_service->findByIdentifier($data['wtuser']);
+        }
+        // Create the user
+        if ($admin === null) {
+            $admin = $this->user_service->create($data['wtuser'], $data['wtname'], $data['wtemail'], $data['wtpass'])
+                ->setPreference('language', WT_LOCALE)
+                ->setPreference('visibleonline', '1');
+        } else {
+            $admin->setPassword($_POST['wtpass']);
+        }
+        // Make the user an administrator
+        $admin
+            ->setPreference('canadmin', '1')
+            ->setPreference('verified', '1')
+            ->setPreference('verified_by_admin', '1');
+
+        // Write the config file. We already checked that this would work.
+        $config_ini_php = view('setup/config.ini', $data);
+
+        file_put_contents(Webtrees::CONFIG_FILE, $config_ini_php);
+
+        // Login as the new user
+        $request = app(ServerRequestInterface::class);
+        Session::start($request);
+        Auth::login($admin);
+    }
+
+    private function connectToDatabase(array $data): void
+    {
+        $capsule = new DB();
+
+        // Try to create the database, if it does not already exist.
+        switch ($data['dbtype']) {
+            case 'sqlite':
+                $data['dbname'] = Webtrees::ROOT_DIR . 'data/' . $data['dbname'] . '.sqlite';
+                touch($data['dbname']);
+                break;
+
+            case 'mysql':
+                $capsule->addConnection([
+                    'driver'                  => $data['dbtype'],
+                    'host'                    => $data['dbhost'],
+                    'port'                    => $data['dbport'],
+                    'database'                => '',
+                    'username'                => $data['dbuser'],
+                    'password'                => $data['dbpass'],
+                ], 'temp');
+                $capsule->getConnection('temp')->statement('CREATE DATABASE IF NOT EXISTS `' . $data['dbname'] . '` COLLATE utf8_unicode_ci');
+                break;
+        }
+
+        // Connect to the database.
+        $capsule->addConnection([
+            'driver'                  => $data['dbtype'],
+            'host'                    => $data['dbhost'],
+            'port'                    => $data['dbport'],
+            'database'                => $data['dbname'],
+            'username'                => $data['dbuser'],
+            'password'                => $data['dbpass'],
+            'prefix'                  => $data['tblpfx'],
+            'prefix_indexes'          => true,
+            // For MySQL
+            'charset'                 => 'utf8',
+            'collation'               => 'utf8_unicode_ci',
+            'timezone'                => '+00:00',
+            'engine'                  => 'InnoDB',
+            'modes'                   => [
+                'ANSI',
+                'STRICT_TRANS_TABLES',
+                'NO_ZERO_IN_DATE',
+                'NO_ZERO_DATE',
+                'ERROR_FOR_DIVISION_BY_ZERO',
+            ],
+            // For SQLite
+            'foreign_key_constraints' => true,
+        ]);
+
+        $capsule->setAsGlobal();
     }
 }

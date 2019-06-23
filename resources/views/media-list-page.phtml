@@ -1,5 +1,4 @@
 <?php use Fisharebest\Webtrees\Auth; ?>
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsPrintFacts; ?>
@@ -23,15 +22,15 @@
             <?= I18N::translate('Folder') ?>
         </label>
         <div class="col-sm-3 wt-page-options-value">
-            <?= Bootstrap4::select($folders, $folder, ['id' => 'folder', 'name' => 'folder']) ?>
-            <?= Bootstrap4::checkbox(/* I18N: Label for check-box */ I18N::translate('Include subfolders'), true, ['name' => 'subdirs', 'checked' => ($subdirs === '1')]) ?>
+            <?= view('components/select', ['name' => 'folder', 'selected' => $folder, 'options' => $folders]) ?>
+            <?= view('components/checkbox-inline', ['label' => /* I18N: Label for check-box */ I18N::translate('Include subfolders'), 'name' => 'subdirs', 'checked' => $subdirs === '1']) ?>
         </div>
 
         <label class="col-sm-3 col-form-label wt-page-options-label" for="max">
             <?= I18N::translate('Media objects per page') ?>
         </label>
         <div class="col-sm-3 wt-page-options-value">
-            <?= Bootstrap4::select(FunctionsEdit::numericOptions([10, 20, 30, 40, 50, 75, 100, 150, 200]), $max, ['id' => 'max', 'name' => 'max']) ?>
+            <?= view('components/select', ['name' => 'max', 'selected' => $max, 'options' => FunctionsEdit::numericOptions([10, 20, 30, 40, 50, 75, 100, 150, 200])]) ?>
         </div>
     </div>
 
@@ -40,7 +39,7 @@
             <?= I18N::translate('Type') ?>
         </label>
         <div class="col-sm-3 wt-page-options-value">
-            <?= Bootstrap4::select(['' => ''] + $formats, $form_type, ['id' => 'form-type', 'name' => 'form_type']) ?>
+            <?= view('components/select', ['name' => 'form_type', 'id' => 'form-type', 'selected' => $form_type, 'options' => ['' => ''] + $formats]) ?>
         </div>
 
         <div class="col-sm-3 col-form-label wt-page-options-label">

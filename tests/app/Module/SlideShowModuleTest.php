@@ -29,6 +29,6 @@ class SlideShowModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\SlideShowModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\SlideShowModule::class));
     }
 }

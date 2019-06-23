@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
+use Exception;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -49,11 +50,14 @@ class Individual extends GedcomRecord
      */
     public static function rowMapper(): Closure
     {
-        return function (stdClass $row): Individual {
+        return static function (stdClass $row): Individual {
             $individual = Individual::getInstance($row->i_id, Tree::findById((int) $row->i_file), $row->i_gedcom);
 
             if ($row->n_num ?? null) {
+                $individual = clone $individual;
                 $individual->setPrimaryName($row->n_num);
+
+                return $individual;
             }
 
             return $individual;
@@ -67,7 +71,7 @@ class Individual extends GedcomRecord
      */
     public static function birthDateComparator(): Closure
     {
-        return function (Individual $x, Individual $y): int {
+        return static function (Individual $x, Individual $y): int {
             return Date::compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
         };
     }
@@ -79,7 +83,7 @@ class Individual extends GedcomRecord
      */
     public static function deathDateComparator(): Closure
     {
-        return function (Individual $x, Individual $y): int {
+        return static function (Individual $x, Individual $y): int {
             return Date::compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
         };
     }
@@ -93,7 +97,7 @@ class Individual extends GedcomRecord
      * @param Tree        $tree
      * @param string|null $gedcom
      *
-     * @throws \Exception
+     * @throws Exception
      * @return Individual|null
      */
     public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?self
@@ -823,7 +827,6 @@ class Individual extends GedcomRecord
      * @param int|null $access_level
      *
      * @return Collection
-     * @return Family[]
      */
     public function spouseFamilies($access_level = null): Collection
     {
@@ -890,7 +893,6 @@ class Individual extends GedcomRecord
      * @param int|null $access_level
      *
      * @return Collection
-     * @return Family[]
      */
     public function childFamilies($access_level = null): Collection
     {
@@ -927,7 +929,7 @@ class Individual extends GedcomRecord
     public function primaryChildFamily(): ?Family
     {
         $families = $this->childFamilies();
-        switch (count($families)) {
+        switch ($families->count()) {
             case 0:
                 return null;
             case 1:
@@ -965,7 +967,6 @@ class Individual extends GedcomRecord
      * Get a list of step-parent families.
      *
      * @return Collection
-     * @return Family[]
      */
     public function childStepFamilies(): Collection
     {
@@ -997,7 +998,6 @@ class Individual extends GedcomRecord
      * Get a list of step-parent families.
      *
      * @return Collection
-     * @return Family[]
      */
     public function spouseStepFamilies(): Collection
     {
@@ -1294,7 +1294,7 @@ class Individual extends GedcomRecord
         // Format for display
         $full = '<span class="NAME" dir="auto" translate="no">' . preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', e($full)) . '</span>';
         // Localise quotation marks around the nickname
-        $full = preg_replace_callback('/&quot;([^&]*)&quot;/', function (array $matches): string {
+        $full = preg_replace_callback('/&quot;([^&]*)&quot;/', static function (array $matches): string {
             return I18N::translate('“%s”', $matches[1]);
         }, $full);
 

@@ -3,13 +3,13 @@
 [![License](https://poser.pugx.org/fisharebest/webtrees/license)](https://packagist.org/packages/fisharebest/webtrees)
 [![Build Status](https://travis-ci.org/fisharebest/webtrees.svg?branch=master)](https://travis-ci.org/fisharebest/webtrees)
 [![Coverage Status](https://coveralls.io/repos/github/fisharebest/webtrees/badge.svg?branch=master)](https://coveralls.io/github/fisharebest/webtrees?branch=master)
-[![Translation status](https://translate.webtrees.net/widgets/webtrees/-/svg-badge.svg)](https://translate.webtrees.net/engage/webtrees/?utm_source=widget)
+[![Translation status](https://weblate.iet.open.ac.uk/widgets/webtrees/-/shields-badge.svg)](https://weblate.iet.open.ac.uk/engage/webtrees/?utm_source=widget)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/78a5ba19-7ddf-4a58-8262-1c8a149f38de/mini.png)](https://insight.sensiolabs.com/projects/78a5ba19-7ddf-4a58-8262-1c8a149f38de)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fisharebest/webtrees/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fisharebest/webtrees/?branch=master)
 [![Code Climate](https://codeclimate.com/github/fisharebest/webtrees/badges/gpa.svg)](https://codeclimate.com/github/fisharebest/webtrees)
 [![StyleCI](https://github.styleci.io/repos/11836349/shield?branch=master)](https://github.styleci.io/repos/11836349)
 
-# webtrees
+# webtrees - online collaborative genealogy
 
 The project’s website is [www.webtrees.net](https://www.webtrees.net).
 Further documentation is available at [wiki.webtrees.net](https://wiki.webtrees.net) and [webtrees.github.io](https://webtrees.github.io).
@@ -17,6 +17,7 @@ Further documentation is available at [wiki.webtrees.net](https://wiki.webtrees.
 ## Contents
 
 * [License](#license)
+* [Coding styles and standards](#coding-styles-and-standards)
 * [Introduction](#introduction)
 * [System requirements](#system-requirements)
 * [Internet browser compatibility](#internet-browser-compatibility)
@@ -28,10 +29,10 @@ Further documentation is available at [wiki.webtrees.net](https://wiki.webtrees.
 * [Backup](#backup)
 
 
-### License
+## License
 
 * **webtrees: online genealogy**
-* Copyright (C) 2019 webtrees development team
+* Copyright 2019 webtrees development team
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -46,8 +47,22 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 
+## Coding styles and standards
 
-### Introduction
+webtrees follows the [PHP Standards Recommendations](https://www.php-fig.org/psr).
+
+* [PSR-1](https://www.php-fig.org/psr/psr-1) - Basic Coding Standard
+* [PSR-2](https://www.php-fig.org/psr/psr-2) - Coding Style Guide
+* [PSR-4](https://www.php-fig.org/psr/psr-4) - Autoloading Stardard
+* [PSR-7](https://www.php-fig.org/psr/psr-7) - HTTP Message Interface
+* [PSR-11](https://www.php-fig.org/psr/psr-11) - Container Interface
+* [PSR-12](https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md) - Extended Coding Style Guide
+* [PSR-15](https://www.php-fig.org/psr/psr-15) - HTTP Handlers
+* [PSR-17](https://www.php-fig.org/psr/psr-17) - HTTP Factories
+
+We do not currently use [PSR-3 (logging)](https://www.php-fig.org/psr/psr-3) or [PSR-6 (caching)](https://www.php-fig.org/psr/psr-6) - but we plan to do so in the future.
+
+## Introduction
 
 **webtrees** is the web's leading online collaborative genealogy application.
 
@@ -76,7 +91,7 @@ making support requests and consider volunteering your own time and skills to ma
 the project even stronger and better.
 
 
-### System requirements
+## System requirements
 
 To install **webtrees**, you need:
 
@@ -103,7 +118,7 @@ To install **webtrees**, you need:
   your genealogy.
 
 
-  ### Internet browser compatibility
+  ## Internet browser compatibility
   
   **webtrees** supports the use of most current browsers such as Edge, Firefox,
   Chrome, and Safari. We will do our best to support the current versions of others
@@ -116,12 +131,9 @@ To install **webtrees**, you need:
   English data on Hebrew pages), you will need to use a browser that provides
   support for the HTML5 **dir="auto"** attribute. At present, neither Edge
   nor Internet Explorer support this.
-* HTML Frames. Note that **webtrees** uses cookies to track login sessions.
-  Internet Explorer users should review
-  ``Settings`` / ``Internet Options`` / ``Privacy`` / ``Advanced`` for more details.
 
 
-### Installation
+## Installation
 
 Once the system requirements are met, perform the following steps
 
@@ -154,7 +166,7 @@ help and you can get friendly advice from the [help](https://webtrees.net/forums
 forum.
 
 
-### Upgrading
+## Upgrading
 
 Upgrading **webtrees** is quick and easy. It is strongly recommended that you
 upgrade your installation whenever a new version is made available. Even minor
@@ -182,7 +194,7 @@ then a manual upgrade should be performed.
   5. Delete the file **data/offline.txt**
 
 
-#### Note for Macintosh users
+### Note for Macintosh users
 
 Step 4 assumes you are using a copy tool that **merges** directories rather than
 replaces them. (**Merge** is standard behaviour on Windows and Linux.) If you use
@@ -193,7 +205,7 @@ didn't you!). Further details and recommendations for suitable tools can be foun
 by searching [google.com](http://google.com).
 
 
-#### Note for anyone using custom code (modules, themes, etc.).
+### Note for anyone using custom code (modules, themes, etc.).
 
 It is **very likely** that your custom code will not work when you upgrade
 **webtrees**.
@@ -205,7 +217,7 @@ Once the upgrade is complete and you are satisfied that your site is fully opera
 the source of those modules or themes for a new version.
 
 
-#### General note
+### General note
 
 Depending on the changes in the new files, your browser configuration
 and possibly other factors, it is always wise to clear both the **webtrees** cache
@@ -216,7 +228,7 @@ cache can be cleared simply by going to ``Control Panel`` -> ``Family Trees`` ->
 If you have any problems or questions, help is available on the
 [webtrees forum](https://www.webtrees.net/index.php/en/forum).
 
-### Building and developing
+## Building and developing
 
 If you want to build webtrees from source, or modify the code, you'll need to install
 a couple of tools first.
@@ -234,7 +246,7 @@ Then run the commands:
 
 You will need to re-run the second of these any time you modify the file `webtrees.js`.
 
-### Gedcom (family tree) files
+## Gedcom (family tree) files
 
 When you ADD or IMPORT a family tree (GEDCOM) file in **webtrees** the
 data from the file is transferred to the database tables. The file itself 
@@ -261,7 +273,7 @@ over. Follow these steps to update a GEDCOM that has already been imported:
   It will start again when you return to the Family Tree management page.
 
 
-#### Gedcom file Formats
+### Gedcom file Formats
 
 Every Family History program has its own method of creating GEDCOM files, and
 differing output format options to select from. **webtrees'** import routines
@@ -286,7 +298,7 @@ tested with these alternative formats:
      and should be used to convert the format to UTF-8 prior to importing.
 
 
-### Security
+## Security
 
 **Security** in _webtrees_ means ensuring your site is safe from unwanted
 intrusions, hacking, or access to data and configuration files. The developers
@@ -339,7 +351,7 @@ You will have **two** data directories:
 * /home/username/private/data - contains everything else
 
 
-#### Hypertext Transfer Protocol Secure (HTTPS)
+### Hypertext Transfer Protocol Secure (HTTPS)
 
 **webtrees** supports https access. If your website is configured with mandatory
 or optional https support **webtrees** will operate correctly in either mode.
@@ -354,7 +366,7 @@ URL setting on the ``Control panel`` -> ``Website`` ->
 access the login by typing the correct URL directly into your browser's address input.
 
 
-### Backup
+## Backup
 
 Backups are good. Whatever problem you have, it can always be fixed from a good
 backup.

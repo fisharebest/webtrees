@@ -29,6 +29,6 @@ class ModuleMenuInterfaceTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(interface_exists('\Fisharebest\Webtrees\Module\ModuleMenuInterface'));
+        $this->assertTrue(interface_exists(ModuleMenuInterface::class));
     }
 }

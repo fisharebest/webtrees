@@ -18,17 +18,20 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use stdClass;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class AbstractModule - common functions for blocks
  */
 abstract class AbstractModule implements ModuleInterface
 {
+    use ViewResponseTrait;
+
     /** @var string A unique internal name for this module (based on the installation folder). */
     private $name = '';
 
@@ -43,9 +46,6 @@ abstract class AbstractModule implements ModuleInterface
 
     /** @var string For custom modules - link for support, upgrades, etc. */
     public const CUSTOM_WEBSITE = '';
-
-    /** @var string How to render view responses */
-    protected $layout = 'layouts/default';
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -81,7 +81,7 @@ abstract class AbstractModule implements ModuleInterface
      */
     final protected function getBlockSetting(int $block_id, string $setting_name, string $default = ''): string
     {
-        $settings = app('cache.array')->rememberForever('block_setting' . $block_id, function () use ($block_id): array {
+        $settings = app('cache.array')->rememberForever('block_setting' . $block_id, static function () use ($block_id): array {
             return DB::table('block_setting')
                 ->where('block_id', '=', $block_id)
                 ->pluck('setting_value', 'setting_name')
@@ -216,39 +216,26 @@ abstract class AbstractModule implements ModuleInterface
     final public function accessLevel(Tree $tree, string $interface): int
     {
         $access_levels = app('cache.array')
-            ->rememberForever('module_privacy' . $tree->id(), function () use ($tree): Collection {
+            ->rememberForever('module_privacy' . $tree->id(), static function () use ($tree): Collection {
                 return DB::table('module_privacy')
                     ->where('gedcom_id', '=', $tree->id())
                     ->get();
             });
 
-        $row = $access_levels->filter(function (stdClass $row) use ($interface): bool {
+        $row = $access_levels->first(function (stdClass $row) use ($interface): bool {
             return $row->interface === $interface && $row->module_name === $this->name();
-        })->first();
+        });
 
         return $row ? (int) $row->access_level : $this->access_level;
     }
 
     /**
-     * Create a response object from a view.
+     * Where does this module store its resources
      *
-     * @param string  $view_name
-     * @param mixed[] $view_data
-     * @param int     $status
-     *
-     * @return Response
+     * @return string
      */
-    final protected function viewResponse($view_name, $view_data, $status = Response::HTTP_OK): Response
+    public function resourcesFolder(): string
     {
-        // Make the view's data available to the layout.
-        $layout_data = $view_data;
-
-        // Render the view
-        $layout_data['content'] = view($view_name, $view_data);
-
-        // Insert the view into the layout
-        $html = view($this->layout, $layout_data);
-
-        return new Response($html, $status);
+        return Webtrees::ROOT_DIR . 'resources/';
     }
 }

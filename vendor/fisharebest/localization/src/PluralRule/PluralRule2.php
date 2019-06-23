@@ -25,8 +25,8 @@ class PluralRule2 implements PluralRuleInterface
 
         if ($number > 1) {
             return 1;
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 }

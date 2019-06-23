@@ -24,8 +24,8 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use function array_key_exists;
 use function array_keys;
@@ -132,12 +132,12 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     /**
      * A form to request the chart parameters.
      *
-     * @param Tree $tree
+     * @param Tree          $tree
      * @param UserInterface $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getChartAction(Tree $tree, UserInterface $user): Response
+    public function getChartAction(Tree $tree, UserInterface $user): ResponseInterface
     {
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
@@ -173,97 +173,99 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     /**
      * @param Statistics $statistics
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getIndividualsAction(Statistics $statistics): Response
+    public function getIndividualsAction(Statistics $statistics): ResponseInterface
     {
-        $html = view('modules/statistics-chart/individuals', [
+        $this->layout = 'layouts/ajax';
+
+        return $this->viewResponse('modules/statistics-chart/individuals', [
             'show_oldest_living' => Auth::check(),
             'stats'              => $statistics,
         ]);
-
-        return new Response($html);
     }
 
     /**
      * @param Statistics $stats
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getFamiliesAction(Statistics $stats): Response
+    public function getFamiliesAction(Statistics $stats): ResponseInterface
     {
-        $html = view('modules/statistics-chart/families', [
+        $this->layout = 'layouts/ajax';
+
+        return $this->viewResponse('modules/statistics-chart/families', [
             'stats' => $stats,
         ]);
-
-        return new Response($html);
     }
 
     /**
      * @param Statistics $stats
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getOtherAction(Statistics $stats): Response
+    public function getOtherAction(Statistics $stats): ResponseInterface
     {
-        $html = view('modules/statistics-chart/other', [
+        $this->layout = 'layouts/ajax';
+
+        return $this->viewResponse('modules/statistics-chart/other', [
             'stats' => $stats,
         ]);
-
-        return new Response($html);
     }
 
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getCustomAction(Tree $tree): Response
+    public function getCustomAction(Tree $tree): ResponseInterface
     {
-        $html = view('modules/statistics-chart/custom', [
+        $this->layout = 'layouts/ajax';
+
+        return $this->viewResponse('modules/statistics-chart/custom', [
             'module' => $this,
             'tree'   => $tree,
         ]);
-
-        return new Response($html);
     }
 
     /**
-     * @param Request    $request
-     * @param Statistics $statistics
+     * @param ServerRequestInterface $request
+     * @param Statistics             $statistics
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getCustomChartAction(Request $request, Statistics $statistics): Response
+    public function getCustomChartAction(ServerRequestInterface $request, Statistics $statistics): ResponseInterface
     {
-        $x_axis_type = (int) $request->get('x-as');
-        $y_axis_type = (int) $request->get('y-as');
-        $z_axis_type = (int) $request->get('z-as');
+        $params = $request->getQueryParams();
+
+        $x_axis_type = (int) $params['x-as'];
+        $y_axis_type = (int) $params['y-as'];
+        $z_axis_type = (int) $params['z-as'];
         $ydata       = [];
 
         switch ($x_axis_type) {
             case self::X_AXIS_INDIVIDUAL_MAP:
-                return new Response($statistics->chartDistribution(
-                    $request->get('chart_shows', ''),
-                    $request->get('chart_type', ''),
-                    $request->get('SURN', '')
+                return response($statistics->chartDistribution(
+                    $params['chart_shows'],
+                    $params['chart_type'],
+                    $params['SURN']
                 ));
 
             case self::X_AXIS_BIRTH_MAP:
-                return new Response($statistics->chartDistribution(
-                    $request->get('chart_shows', ''),
+                return response($statistics->chartDistribution(
+                    $params['chart_shows'],
                     'birth_distribution_chart'
                 ));
 
             case self::X_AXIS_DEATH_MAP:
-                return new Response($statistics->chartDistribution(
-                    $request->get('chart_shows', ''),
+                return response($statistics->chartDistribution(
+                    $params['chart_shows'],
                     'death_distribution_chart'
                 ));
 
             case self::X_AXIS_MARRIAGE_MAP:
-                return new Response($statistics->chartDistribution(
-                    $request->get('chart_shows', ''),
+                return response($statistics->chartDistribution(
+                    $params['chart_shows'],
                     'marriage_distribution_chart'
                 ));
 
@@ -299,7 +301,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
+                        $boundaries_csv = $params['z-axis-boundaries-periods'];
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -314,7 +316,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         throw new NotFoundHttpException();
                 }
 
-                return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
+                return response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
 
             case self::X_AXIS_DEATH_MONTH:
                 $chart_title  = I18N::translate('Month of death');
@@ -348,7 +350,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
+                        $boundaries_csv = $params['z-axis-boundaries-periods'];
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -363,7 +365,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         throw new NotFoundHttpException();
                 }
 
-                return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
+                return response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
 
             case self::X_AXIS_MARRIAGE_MONTH:
                 $chart_title  = I18N::translate('Month of marriage');
@@ -390,7 +392,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
+                        $boundaries_csv = $params['z-axis-boundaries-periods'];
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -405,7 +407,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         throw new NotFoundHttpException();
                 }
 
-                return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
+                return response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
 
             case self::X_AXIS_FIRST_CHILD_MONTH:
                 $chart_title  = I18N::translate('Month of birth of first child in a relation');
@@ -439,7 +441,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
+                        $boundaries_csv = $params['z-axis-boundaries-periods'];
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -454,7 +456,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         throw new NotFoundHttpException();
                 }
 
-                return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
+                return response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
 
             case self::X_AXIS_FIRST_MARRIAGE_MONTH:
                 $chart_title  = I18N::translate('Month of first marriage');
@@ -487,7 +489,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
+                        $boundaries_csv = $params['z-axis-boundaries-periods'];
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         $indi           = [];
@@ -508,12 +510,12 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         throw new NotFoundHttpException();
                 }
 
-                return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
+                return response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
 
             case self::X_AXIS_AGE_AT_DEATH:
                 $chart_title    = I18N::translate('Average age at death');
                 $x_axis_title   = I18N::translate('age');
-                $boundaries_csv = $request->get('x-axis-boundaries-ages', '');
+                $boundaries_csv = $params['x-axis-boundaries-ages'];
                 $x_axis         = $this->axisNumbers($boundaries_csv);
 
                 switch ($y_axis_type) {
@@ -551,7 +553,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
+                        $boundaries_csv = $params['z-axis-boundaries-periods'];
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -570,12 +572,12 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         throw new NotFoundHttpException();
                 }
 
-                return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
+                return response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
 
             case self::X_AXIS_AGE_AT_MARRIAGE:
                 $chart_title    = I18N::translate('Age in year of marriage');
                 $x_axis_title   = I18N::translate('age');
-                $boundaries_csv = $request->get('x-axis-boundaries-ages_m', '');
+                $boundaries_csv = $params['x-axis-boundaries-ages_m'];
                 $x_axis         = $this->axisNumbers($boundaries_csv);
 
                 switch ($y_axis_type) {
@@ -612,7 +614,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
+                        $boundaries_csv = $params['z-axis-boundaries-periods'];
                         $z_axis         = $this->axisYears($boundaries_csv);
                         // The stats query doesn't have an "all" function, so query M/F separately
                         foreach (['M', 'F'] as $sex) {
@@ -631,12 +633,12 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         throw new NotFoundHttpException();
                 }
 
-                return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
+                return response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
 
             case self::X_AXIS_AGE_AT_FIRST_MARRIAGE:
                 $chart_title    = I18N::translate('Age in year of first marriage');
                 $x_axis_title   = I18N::translate('age');
-                $boundaries_csv = $request->get('x-axis-boundaries-ages_m', '');
+                $boundaries_csv = $params['x-axis-boundaries-ages_m'];
                 $x_axis         = $this->axisNumbers($boundaries_csv);
 
                 switch ($y_axis_type) {
@@ -681,7 +683,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
+                        $boundaries_csv = $params['z-axis-boundaries-periods'];
                         $z_axis         = $this->axisYears($boundaries_csv);
                         // The stats query doesn't have an "all" function, so query M/F separately
                         foreach (['M', 'F'] as $sex) {
@@ -704,7 +706,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         throw new NotFoundHttpException();
                 }
 
-                return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
+                return response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
 
             case self::X_AXIS_NUMBER_OF_CHILDREN:
                 $chart_title  = I18N::translate('Number of children');
@@ -731,7 +733,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
+                        $boundaries_csv = $params['z-axis-boundaries-periods'];
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -746,7 +748,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         throw new NotFoundHttpException();
                 }
 
-                return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
+                return response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
 
             default:
                 throw new NotFoundHttpException();
@@ -836,7 +838,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     {
         $boundaries = explode(',', $boundaries_csv);
 
-        $boundaries = array_map(function (string $x): int {
+        $boundaries = array_map(static function (string $x): int {
             return (int) $x;
         }, $boundaries);
 
@@ -967,10 +969,10 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         // Convert the chart data to percentage
         if ($y_axis_type === self::Y_AXIS_PERCENT) {
             // Normalise each (non-zero!) set of data to total 100%
-            array_walk($ydata, function (array &$x) {
+            array_walk($ydata, static function (array &$x) {
                 $sum = array_sum($x);
                 if ($sum > 0) {
-                    $x = array_map(function ($y) use ($sum) {
+                    $x = array_map(static function ($y) use ($sum) {
                         return $y * 100.0 / $sum;
                     }, $x);
                 }

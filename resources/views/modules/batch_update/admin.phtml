@@ -1,11 +1,15 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
+
+?>
 
 <?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('modules') => I18N::translate('Module administration'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
-<form >
+<form id="batch-update-form">
     <input type="hidden" name="route" value="module">
     <input type="hidden" name="module" value="batch_update">
     <input type="hidden" name="action" value="Admin">
@@ -15,13 +19,13 @@
     <div class="row form-group">
         <label class="col-sm-3 col-form-label"><?= I18N::translate('Family tree') ?></label>
         <div class="col-sm-9">
-            <?= Bootstrap4::select($trees, $tree->name(), ['id' => 'ged', 'name' => 'ged', 'onchange' => 'this.form.submit();']) ?>
+            <?= view('components/select', ['name' => 'ged', 'selected' => $tree->name(), 'options' => $trees]) ?>
         </div>
     </div>
     <div class="row form-group">
         <label class="col-sm-3 col-form-label"><?= I18N::translate('Batch update') ?></label>
         <div class="col-sm-9">
-            <select class="form-control" name="plugin" onchange="this.form.submit();">
+            <select class="form-control" name="plugin">
                 <?php if ($plugin === null) : ?>
                     <option value="" selected></option>
                 <?php endif ?>
@@ -79,9 +83,9 @@
                                 <?= I18N::translate('Update all') ?>
                             </button>
                         <?php else : ?>
-                        <button class="btn btn-primary" disabled title="<?= I18N::translate('Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time.') ?>">
-                            <?= I18N::translate('Update all') ?>
-                        </button>
+                            <button class="btn btn-primary" disabled title="<?= I18N::translate('Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time.') ?>">
+                                <?= I18N::translate('Update all') ?>
+                            </button>
                         <?php endif ?>
                     </div>
                 </div>
@@ -99,3 +103,11 @@
         <?php endif ?>
     <?php endif ?>
 </form>
+
+<?php View::push('javascript') ?>
+<script>
+    $("#batch-update-form input, #batch-update-form select").change(function () {
+        $("#batch-update-form").submit();
+    });
+</script>
+<?php View::endpush() ?>

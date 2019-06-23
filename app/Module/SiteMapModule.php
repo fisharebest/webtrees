@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -30,9 +31,8 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -46,17 +46,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
     private const CACHE_LIFE         = 1209600; // Two weeks
 
     /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
-    public function title(): string
-    {
-        /* I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps */
-        return I18N::translate('Sitemaps');
-    }
-
-    /**
      * A sentence describing what this module does.
      *
      * @return string
@@ -68,9 +57,19 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
     }
 
     /**
-     * @return Response
+     * Should this module be enabled when it is first installed?
+     *
+     * @return bool
      */
-    public function getAdminAction(): Response
+    public function isEnabledByDefault(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @return ResponseInterface
+     */
+    public function getAdminAction(): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -94,26 +93,39 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
     }
 
     /**
-     * @param Request $request
+     * How should this module be identified in the control panel, etc.?
      *
-     * @return RedirectResponse
+     * @return string
      */
-    public function postAdminAction(Request $request): RedirectResponse
+    public function title(): string
     {
+        /* I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps */
+        return I18N::translate('Sitemaps');
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function postAdminAction(ServerRequestInterface $request): ResponseInterface
+    {
+        $params = $request->getParsedBody();
+
         foreach (Tree::all() as $tree) {
-            $include_in_sitemap = (bool) $request->get('sitemap' . $tree->id());
+            $include_in_sitemap = (bool) ($params['sitemap' . $tree->id()] ?? false);
             $tree->setPreference('include_in_sitemap', (string) $include_in_sitemap);
         }
 
         FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->title()), 'success');
 
-        return new RedirectResponse($this->getConfigLink());
+        return redirect($this->getConfigLink());
     }
 
     /**
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getIndexAction(): Response
+    public function getIndexAction(): ResponseInterface
     {
         $timestamp = (int) $this->getPreference('sitemap.timestamp');
 
@@ -161,19 +173,19 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             $this->setPreference('sitemap.xml', $content);
         }
 
-        return new Response($content, Response::HTTP_OK, [
+        return response($content, StatusCodeInterface::STATUS_OK, [
             'Content-Type' => 'application/xml',
         ]);
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getFileAction(Request $request): Response
+    public function getFileAction(ServerRequestInterface $request): ResponseInterface
     {
-        $file = $request->get('file', '');
+        $file = $request->getQueryParams()['file'];
 
         if (!preg_match('/^(\d+)-([imnrs])-(\d+)$/', $file, $match)) {
             throw new NotFoundHttpException('Bad sitemap file');
@@ -198,7 +210,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             $this->setPreference('sitemap.xml', $content);
         }
 
-        return new Response($content, Response::HTTP_OK, [
+        return response($content, StatusCodeInterface::STATUS_OK, [
             'Content-Type' => 'application/xml',
         ]);
     }
@@ -210,7 +222,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int    $offset
      *
      * @return Collection
-     * @return GedcomRecord[]
      */
     private function sitemapRecords(Tree $tree, string $type, int $limit, int $offset): Collection
     {
@@ -251,7 +262,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $offset
      *
      * @return Collection
-     * @return Individual[]
      */
     private function sitemapIndividuals(Tree $tree, int $limit, int $offset): Collection
     {
@@ -270,7 +280,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $offset
      *
      * @return Collection
-     * @return Media[]
      */
     private function sitemapMedia(Tree $tree, int $limit, int $offset): Collection
     {
@@ -289,7 +298,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $offset
      *
      * @return Collection
-     * @return Note[]
      */
     private function sitemapNotes(Tree $tree, int $limit, int $offset): Collection
     {
@@ -309,7 +317,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $offset
      *
      * @return Collection
-     * @return Repository[]
      */
     private function sitemapRepositories(Tree $tree, int $limit, int $offset): Collection
     {
@@ -329,7 +336,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $offset
      *
      * @return Collection
-     * @return Source[]
      */
     private function sitemapSources(Tree $tree, int $limit, int $offset): Collection
     {

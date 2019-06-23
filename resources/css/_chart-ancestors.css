@@ -15,14 +15,6 @@
 
 /*
  * Ancestors chart
- *
- * wt-chart, wt-chart-ancestors
- * +---wt-chart-ancestors-list
- *     +---wt-chart-ancestors-list-item
- *         +---
- *         +---wt-chart-ancestors-list
- *         +---wt-chart-ancestors-list-item
- *             +---...
  */
 .wt-chart-ancestors .wt-chart-box {
 	width: 20rem;
@@ -32,6 +24,6 @@
 	display: none;
 }
 
-.wt-chart-ancestors .wt-family-break {
-	page-break-before: always;
+.wt-sosa-number {
+	border: thin dotted grey;
 }

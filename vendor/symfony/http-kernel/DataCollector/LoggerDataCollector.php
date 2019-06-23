@@ -66,7 +66,9 @@ class LoggerDataCollector extends DataCollector implements LateDataCollectorInte
         if (null !== $this->logger) {
             $containerDeprecationLogs = $this->getContainerDeprecationLogs();
             $this->data = $this->computeErrorsCount($containerDeprecationLogs);
-            $this->data['compiler_logs'] = $this->getContainerCompilerLogs();
+            // get compiler logs later (only when they are needed) to improve performance
+            $this->data['compiler_logs'] = [];
+            $this->data['compiler_logs_filepath'] = $this->containerPathPrefix.'Compiler.log';
             $this->data['logs'] = $this->sanitizeLogs(array_merge($this->logger->getLogs($this->currentRequest), $containerDeprecationLogs));
             $this->data = $this->cloneVar($this->data);
         }
@@ -110,7 +112,7 @@ class LoggerDataCollector extends DataCollector implements LateDataCollectorInte
 
     public function getCompilerLogs()
     {
-        return isset($this->data['compiler_logs']) ? $this->data['compiler_logs'] : [];
+        return $this->cloneVar($this->getContainerCompilerLogs($this->data['compiler_logs_filepath'] ?? null));
     }
 
     /**
@@ -127,9 +129,13 @@ class LoggerDataCollector extends DataCollector implements LateDataCollectorInte
             return [];
         }
 
+        if ('' === $logContent = trim(file_get_contents($file))) {
+            return [];
+        }
+
         $bootTime = filemtime($file);
         $logs = [];
-        foreach (unserialize(file_get_contents($file)) as $log) {
+        foreach (unserialize($logContent) as $log) {
             $log['context'] = ['exception' => new SilencedErrorContext($log['type'], $log['file'], $log['line'], $log['trace'], $log['count'])];
             $log['timestamp'] = $bootTime;
             $log['priority'] = 100;
@@ -143,14 +149,14 @@ class LoggerDataCollector extends DataCollector implements LateDataCollectorInte
         return $logs;
     }
 
-    private function getContainerCompilerLogs()
+    private function getContainerCompilerLogs(?string $compilerLogsFilepath = null): array
     {
-        if (null === $this->containerPathPrefix || !file_exists($file = $this->containerPathPrefix.'Compiler.log')) {
+        if (!file_exists($compilerLogsFilepath)) {
             return [];
         }
 
         $logs = [];
-        foreach (file($file, FILE_IGNORE_NEW_LINES) as $log) {
+        foreach (file($compilerLogsFilepath, FILE_IGNORE_NEW_LINES) as $log) {
             $log = explode(': ', $log, 2);
             if (!isset($log[1]) || !preg_match('/^[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*+(?:\\\\[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*+)++$/', $log[0])) {
                 $log = ['Unknown Compiler Pass', implode(': ', $log)];

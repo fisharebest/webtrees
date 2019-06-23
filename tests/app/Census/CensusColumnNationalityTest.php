@@ -111,14 +111,14 @@ class CensusColumnNationalityTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testEmigrated(): void
     {
-        $place1 = $this->createMock('Fisharebest\Webtrees\Place');
+        $place1 = $this->createMock(Place::class);
         $place1->method('gedcomName')->willReturn('United States');
 
         $fact1 = $this->createMock(Fact::class);
         $fact1->method('place')->willReturn($place1);
         $fact1->method('date')->willReturn(new Date('1855'));
 
-        $place2 = $this->createMock('Fisharebest\Webtrees\Place');
+        $place2 = $this->createMock(Place::class);
         $place2->method('gedcomName')->willReturn('Australia');
 
         $fact2 = $this->createMock(Fact::class);

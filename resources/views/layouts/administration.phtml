@@ -1,8 +1,19 @@
-<?php use Fisharebest\Webtrees\DebugBar; ?>
-<?php use Fisharebest\Webtrees\FlashMessages; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
-<?php use Symfony\Component\HttpFoundation\Request; ?>
+<?php
+
+use Fisharebest\Webtrees\DebugBar;
+use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\CustomCssJsModule;
+use Fisharebest\Webtrees\Module\ModuleCustomInterface;
+use Fisharebest\Webtrees\Module\ModuleGlobalInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\View;
+use Psr\Http\Message\ServerRequestInterface;
+
+/** @var string $title */
+/** @var string $content */
+
+?>
 
 <!DOCTYPE html>
 <html dir="<?= I18N::direction() ?>" lang="<?= WT_LOCALE ?>">
@@ -20,13 +31,16 @@
 
         <?= View::stack('styles') ?>
 
+        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string { return $module instanceof ModuleCustomInterface || $module instanceof CustomCssJsModule ? '' : $module->headContent(); })->implode('') ?>
+
         <?= DebugBar::renderHead() ?>
     </head>
-    <body class="container wt-global wt-route-<?= e(app(Request::class)->get('route')) ?>">
+    <body class="container wt-global wt-route-<?= e(app(ServerRequestInterface::class)->getQueryParams()['route']) ?>">
         <header>
             <div class="wt-accessibility-links position-fixed">
                 <a class="sr-only sr-only-focusable btn btn-info btn-sm" href="#content">
-                    <?= /* I18N: Skip over the headers and menus, to the main content of the page */ I18N::translate('Skip to content') ?>
+                    <?= /* I18N: Skip over the headers and menus, to the main content of the page */
+                    I18N::translate('Skip to content') ?>
                 </a>
             </div>
 
@@ -40,7 +54,7 @@
                     </a>
                     <div class="dropdown-menu">
                         <?php foreach (I18N::activeLocales() as $locale) : ?>
-                            <a class="dropdown-item menu-language-<?= $locale->languageTag() ?> <?= WT_LOCALE === $locale->languageTag() ? ' active' : ''?>" data-language="<?= $locale->languageTag() ?>" href="#"><?= $locale->endonym() ?></a>
+                            <a class="dropdown-item menu-language-<?= $locale->languageTag() ?> <?= WT_LOCALE === $locale->languageTag() ? ' active' : '' ?>" data-language="<?= $locale->languageTag() ?>" href="#"><?= $locale->endonym() ?></a>
                         <?php endforeach ?>
                     </div>
                 </li>
@@ -67,6 +81,8 @@
         <script src="<?= e(asset('js/webtrees.min.js')) ?>"></script>
 
         <?= View::stack('javascript') ?>
+
+        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string { return $module instanceof ModuleCustomInterface || $module instanceof CustomCssJsModule ? '' : $module->bodyContent(); })->implode('') ?>
 
         <?= DebugBar::render() ?>
     </body>

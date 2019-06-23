@@ -17,13 +17,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Closure;
+use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Throwable;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 /**
  * Middleware to set a global tree.
@@ -31,19 +32,19 @@ use Throwable;
 class UseTree implements MiddlewareInterface
 {
     /**
-     * @param Request $request
-     * @param Closure $next
+     * @param ServerRequestInterface  $request
+     * @param RequestHandlerInterface $handler
      *
-     * @return Response
-     * @throws Throwable
+     * @return ResponseInterface
      */
-    public function handle(Request $request, Closure $next): Response
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // Most requests will need the current tree and user.
-        $tree = Tree::findByName($request->get('ged')) ?? null;
+        $ged  = $request->getQueryParams()['ged'] ?? $request->getParsedBody()['ged'] ?? '';
+        $tree = Tree::findByName($ged);
 
         // No tree specified/available?  Choose one.
-        if ($tree === null && $request->getMethod() === Request::METHOD_GET) {
+        if ($tree === null && $request->getMethod() === RequestMethodInterface::METHOD_GET) {
             $tree = Tree::findByName(Site::getPreference('DEFAULT_GEDCOM')) ?? array_values(Tree::getAll())[0] ?? null;
         }
 
@@ -51,10 +52,10 @@ class UseTree implements MiddlewareInterface
         View::share('tree', $tree);
 
         // Need a closure, as the container does not allow you to bind null.
-        app()->bind(Tree::class, function () use ($tree): ?Tree {
+        app()->bind(Tree::class, static function () use ($tree): ?Tree {
             return $tree;
         });
 
-        return $next($request);
+        return $handler->handle($request);
     }
 }

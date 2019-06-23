@@ -29,6 +29,6 @@ class FrenchDateTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Date\FrenchDate'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Date\FrenchDate::class));
     }
 }

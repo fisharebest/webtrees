@@ -19,9 +19,8 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for edit forms and responses.
@@ -31,32 +30,33 @@ class EditSourceController extends AbstractEditController
     /**
      * Show a form to create a new source.
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function createSource(): Response
+    public function createSource(): ResponseInterface
     {
-        return new Response(view('modals/create-source'));
+        return response(view('modals/create-source'));
     }
 
     /**
      * Process a form to create a new source.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return JsonResponse
+     * @return ResponseInterface
      */
-    public function createSourceAction(Request $request, Tree $tree): JsonResponse
+    public function createSourceAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $title               = $request->get('source-title', '');
-        $abbreviation        = $request->get('source-abbreviation', '');
-        $author              = $request->get('source-author', '');
-        $publication         = $request->get('source-publication', '');
-        $repository          = $request->get('source-repository', '');
-        $call_number         = $request->get('source-call-number', '');
-        $text                = $request->get('source-text', '');
-        $privacy_restriction = $request->get('privacy-restriction', '');
-        $edit_restriction    = $request->get('edit-restriction', '');
+        $params              = $request->getParsedBody();
+        $title               = $params['source-title'];
+        $abbreviation        = $params['source-abbreviation'];
+        $author              = $params['source-author'];
+        $publication         = $params['source-publication'];
+        $repository          = $params['source-repository'];
+        $call_number         = $params['source-call-number'];
+        $text                = $params['source-text'];
+        $privacy_restriction = $params['privacy-restriction'];
+        $edit_restriction    = $params['edit-restriction'];
 
         // Fix whitespace
         $title        = trim(preg_replace('/\s+/', ' ', $title));
@@ -115,7 +115,7 @@ class EditSourceController extends AbstractEditController
 
         // id and text are for select2 / autocomplete
         // html is for interactive modals
-        return new JsonResponse([
+        return response([
             'id'   => $record->xref(),
             'text' => view('selects/source', [
                 'source' => $record,

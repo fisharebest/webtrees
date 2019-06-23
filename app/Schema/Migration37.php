@@ -39,7 +39,7 @@ class Migration37 implements MigrationInterface
 
         // Split the media table into media/media_file so that we can store multiple media
         // files in each media object.
-        DB::schema()->create('media_file', function (Blueprint $table): void {
+        DB::schema()->create('media_file', static function (Blueprint $table): void {
             $table->integer('id', true);
             $table->string('m_id', 20);
             $table->integer('m_file');
@@ -64,7 +64,7 @@ class Migration37 implements MigrationInterface
                 'multimedia_format',
                 'source_media_type',
                 'descriptive_title',
-            ], function (Builder $query): void {
+            ], static function (Builder $query): void {
                 $query->select([
                     'm_id',
                     'm_file',
@@ -76,16 +76,16 @@ class Migration37 implements MigrationInterface
             });
 
             // SQLite can only drop one column at a time.
-            DB::schema()->table('media', function (Blueprint $table): void {
+            DB::schema()->table('media', static function (Blueprint $table): void {
                 $table->dropColumn('m_filename');
             });
-            DB::schema()->table('media', function (Blueprint $table): void {
+            DB::schema()->table('media', static function (Blueprint $table): void {
                 $table->dropColumn('m_ext');
             });
-            DB::schema()->table('media', function (Blueprint $table): void {
+            DB::schema()->table('media', static function (Blueprint $table): void {
                 $table->dropColumn('m_type');
             });
-            DB::schema()->table('media', function (Blueprint $table): void {
+            DB::schema()->table('media', static function (Blueprint $table): void {
                 $table->dropColumn('m_titl');
             });
         }

@@ -27,7 +27,8 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Illuminate\Database\Capsule\Manager as DB;
-use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Support\Str;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class ReviewChangesModule
@@ -173,7 +174,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                 }
 
                 return view('modules/block-template', [
-                    'block'      => str_replace('_', '-', $this->name()),
+                    'block'      => Str::kebab($this->name()),
                     'id'         => $block_id,
                     'config_url' => $config_url,
                     'title'      => $this->title(),
@@ -208,15 +209,17 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      * @param int     $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $this->setBlockSetting($block_id, 'days', $request->get('num', '1'));
-        $this->setBlockSetting($block_id, 'sendmail', $request->get('sendmail', ''));
+        $params = $request->getParsedBody();
+
+        $this->setBlockSetting($block_id, 'days', $params['days']);
+        $this->setBlockSetting($block_id, 'sendmail', $params['sendmail']);
     }
 
     /**

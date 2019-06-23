@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\Cache;
 
+use Psr\Log\LoggerInterface;
 use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\Cache\ItemInterface;
 
@@ -23,7 +24,7 @@ use Symfony\Contracts\Cache\ItemInterface;
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class LockRegistry
+final class LockRegistry
 {
     private static $openedFiles = [];
     private static $lockedFiles = [];
@@ -33,19 +34,23 @@ class LockRegistry
      */
     private static $files = [
         __DIR__.\DIRECTORY_SEPARATOR.'Adapter'.\DIRECTORY_SEPARATOR.'AbstractAdapter.php',
+        __DIR__.\DIRECTORY_SEPARATOR.'Adapter'.\DIRECTORY_SEPARATOR.'AbstractTagAwareAdapter.php',
         __DIR__.\DIRECTORY_SEPARATOR.'Adapter'.\DIRECTORY_SEPARATOR.'AdapterInterface.php',
         __DIR__.\DIRECTORY_SEPARATOR.'Adapter'.\DIRECTORY_SEPARATOR.'ApcuAdapter.php',
         __DIR__.\DIRECTORY_SEPARATOR.'Adapter'.\DIRECTORY_SEPARATOR.'ArrayAdapter.php',
         __DIR__.\DIRECTORY_SEPARATOR.'Adapter'.\DIRECTORY_SEPARATOR.'ChainAdapter.php',
         __DIR__.\DIRECTORY_SEPARATOR.'Adapter'.\DIRECTORY_SEPARATOR.'DoctrineAdapter.php',
         __DIR__.\DIRECTORY_SEPARATOR.'Adapter'.\DIRECTORY_SEPARATOR.'FilesystemAdapter.php',
+        __DIR__.\DIRECTORY_SEPARATOR.'Adapter'.\DIRECTORY_SEPARATOR.'FilesystemTagAwareAdapter.php',
         __DIR__.\DIRECTORY_SEPARATOR.'Adapter'.\DIRECTORY_SEPARATOR.'MemcachedAdapter.php',
         __DIR__.\DIRECTORY_SEPARATOR.'Adapter'.\DIRECTORY_SEPARATOR.'NullAdapter.php',
         __DIR__.\DIRECTORY_SEPARATOR.'Adapter'.\DIRECTORY_SEPARATOR.'PdoAdapter.php',
         __DIR__.\DIRECTORY_SEPARATOR.'Adapter'.\DIRECTORY_SEPARATOR.'PhpArrayAdapter.php',
         __DIR__.\DIRECTORY_SEPARATOR.'Adapter'.\DIRECTORY_SEPARATOR.'PhpFilesAdapter.php',
         __DIR__.\DIRECTORY_SEPARATOR.'Adapter'.\DIRECTORY_SEPARATOR.'ProxyAdapter.php',
+        __DIR__.\DIRECTORY_SEPARATOR.'Adapter'.\DIRECTORY_SEPARATOR.'Psr16Adapter.php',
         __DIR__.\DIRECTORY_SEPARATOR.'Adapter'.\DIRECTORY_SEPARATOR.'RedisAdapter.php',
+        __DIR__.\DIRECTORY_SEPARATOR.'Adapter'.\DIRECTORY_SEPARATOR.'RedisTagAwareAdapter.php',
         __DIR__.\DIRECTORY_SEPARATOR.'Adapter'.\DIRECTORY_SEPARATOR.'SimpleCacheAdapter.php',
         __DIR__.\DIRECTORY_SEPARATOR.'Adapter'.\DIRECTORY_SEPARATOR.'TagAwareAdapter.php',
         __DIR__.\DIRECTORY_SEPARATOR.'Adapter'.\DIRECTORY_SEPARATOR.'TagAwareAdapterInterface.php',
@@ -74,7 +79,7 @@ class LockRegistry
         return $previousFiles;
     }
 
-    public static function compute(callable $callback, ItemInterface $item, bool &$save, CacheInterface $pool)
+    public static function compute(callable $callback, ItemInterface $item, bool &$save, CacheInterface $pool, \Closure $setMetadata = null, LoggerInterface $logger = null)
     {
         $key = self::$files ? crc32($item->getKey()) % \count(self::$files) : -1;
 
@@ -86,11 +91,24 @@ class LockRegistry
             try {
                 // race to get the lock in non-blocking mode
                 if (flock($lock, LOCK_EX | LOCK_NB)) {
+                    $logger && $logger->info('Lock acquired, now computing item "{key}"', ['key' => $item->getKey()]);
                     self::$lockedFiles[$key] = true;
 
-                    return $callback($item, $save);
+                    $value = $callback($item, $save);
+
+                    if ($save) {
+                        if ($setMetadata) {
+                            $setMetadata($item);
+                        }
+
+                        $pool->save($item->set($value));
+                        $save = false;
+                    }
+
+                    return $value;
                 }
                 // if we failed the race, retry locking in blocking mode to wait for the winner
+                $logger && $logger->info('Item "{key}" is locked, waiting for it to be released', ['key' => $item->getKey()]);
                 flock($lock, LOCK_SH);
             } finally {
                 flock($lock, LOCK_UN);
@@ -102,6 +120,7 @@ class LockRegistry
 
             try {
                 $value = $pool->get($item->getKey(), $signalingCallback, 0);
+                $logger && $logger->info('Item "{key}" retrieved after lock was released', ['key' => $item->getKey()]);
                 $save = false;
 
                 return $value;
@@ -109,6 +128,7 @@ class LockRegistry
                 if ($signalingException !== $e) {
                     throw $e;
                 }
+                $logger && $logger->info('Item "{key}" not found while lock was released, now retrying', ['key' => $item->getKey()]);
             }
         }
     }
@@ -125,6 +145,6 @@ class LockRegistry
             restore_error_handler();
         }
 
-        self::$openedFiles[$key] = $h ?: @fopen(self::$files[$key], 'r');
+        return self::$openedFiles[$key] = $h ?: @fopen(self::$files[$key], 'r');
     }
 }

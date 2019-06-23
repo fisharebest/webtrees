@@ -55,7 +55,7 @@ class View
      * @var string[] Where do the templates live, for each namespace.
      */
     private static $namespaces = [
-        '' => WT_ROOT . 'resources/views/',
+        '' => Webtrees::ROOT_DIR . 'resources/views/',
     ];
 
     /**
@@ -240,12 +240,15 @@ class View
      */
     public function getFilenameForView(string $view_name): string
     {
+        // If we request "::view", then use it explicityly.  Don't allow replacements.
+        $explicit = Str::startsWith($view_name, self::NAMESPACE_SEPARATOR);
+
         if (!Str::contains($view_name, self::NAMESPACE_SEPARATOR)) {
             $view_name = self::NAMESPACE_SEPARATOR . $view_name;
         }
 
         // Apply replacements / customisations
-        while (array_key_exists($view_name, self::$replacements)) {
+        while (!$explicit && array_key_exists($view_name, self::$replacements)) {
             $view_name = self::$replacements[$view_name];
         }
 

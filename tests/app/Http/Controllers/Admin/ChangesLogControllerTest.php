@@ -21,16 +21,15 @@ use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Test the changes log controller
  *
  * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\ChangesLogController
  */
-class ChangesLogControllerTest extends \Fisharebest\Webtrees\TestCase
+class ChangesLogControllerTest extends TestCase
 {
     protected static $uses_database = true;
 
@@ -39,10 +38,11 @@ class ChangesLogControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testChangeLog(): void
     {
-        $controller = new ChangesLogController();
-        $response   = $controller->changesLog(new Request(), new UserService());
+        $request = self::createRequest('GET', ['route' => 'admin-changes-log']);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $controller = new ChangesLogController();
+        $response   = $controller->changesLog($request, new UserService());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -51,11 +51,12 @@ class ChangesLogControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testChangeLogData(): void
     {
         $tree = Tree::create('name', 'title');
-        $user = (new UserService)->create('user', 'name', 'email', 'password');
+        $user = (new UserService())->create('user', 'name', 'email', 'password');
         Auth::login($user);
         $individual = $tree->createIndividual("0 @@ INDI\n1 NAME Joe Bloggs");
 
-        $request    = new Request([
+        $request = self::createRequest('GET', [
+            'route' => 'admin-changes-log-data',
             'search' => 'Joe',
             'from'   => '2000-01-01',
             'to'     => '2099-12-31',
@@ -67,7 +68,7 @@ class ChangesLogControllerTest extends \Fisharebest\Webtrees\TestCase
         $controller = new ChangesLogController();
         $response   = $controller->changesLogData($request, new DatatablesService(), new MyersDiff());
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -76,13 +77,17 @@ class ChangesLogControllerTest extends \Fisharebest\Webtrees\TestCase
     public function testChangeLogDownload(): void
     {
         $tree = Tree::create('name', 'title');
-        $user = (new UserService)->create('user', 'name', 'email', 'password');
+        $user = (new UserService())->create('user', 'name', 'email', 'password');
         Auth::login($user);
         $tree->createIndividual("0 @@ INDI\n1 NAME Joe Bloggs");
 
+        $request = self::createRequest('GET', [
+            'route' => 'admin-changes-log-download',
+            'ged'    => $tree->name(),
+        ]);
         $controller = new ChangesLogController();
-        $response   = $controller->changesLogDownload(new Request());
+        $response   = $controller->changesLogDownload($request);
 
-        $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 }

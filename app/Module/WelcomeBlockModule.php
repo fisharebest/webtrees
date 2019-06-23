@@ -22,7 +22,8 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Support\Str;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class WelcomeBlockModule
@@ -84,17 +85,16 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
 
         $links = [];
 
-        $pedigree_chart = $this->module_service->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
-            ->filter(function (ModuleInterface $module): bool {
+        $pedigree_chart = $this->module_service
+            ->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
+            ->first(static function (ModuleInterface $module): bool {
                 return $module instanceof PedigreeChartModule;
             });
 
         if ($pedigree_chart instanceof PedigreeChartModule) {
             $links[] = [
-                'url'   => route('pedigree', [
-                    'xref' => $individual->xref(),
-                    'ged'  => $individual->tree()->name(),
-                ]),
+                $pedigree_chart->chartUrl($individual),
+                'url'   => $pedigree_chart->chartUrl($individual),
                 'title' => I18N::translate('Default chart'),
                 'icon'  => 'icon-pedigree',
             ];
@@ -118,7 +118,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
 
         if ($ctype !== '') {
             return view('modules/block-template', [
-                'block'      => str_replace('_', '-', $this->name()),
+                'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => '',
                 'title'      => $individual->tree()->title(),
@@ -150,12 +150,12 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      * @param int     $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
     }
 

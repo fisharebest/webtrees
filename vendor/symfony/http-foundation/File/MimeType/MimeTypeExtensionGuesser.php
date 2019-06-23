@@ -11,8 +11,14 @@
 
 namespace Symfony\Component\HttpFoundation\File\MimeType;
 
+use Symfony\Component\Mime\MimeTypes;
+
+@trigger_error(sprintf('The "%s" class is deprecated since Symfony 4.3, use "%s" instead.', MimeTypeExtensionGuesser::class, MimeTypes::class), E_USER_DEPRECATED);
+
 /**
  * Provides a best-guess mapping of mime type to file extension.
+ *
+ * @deprecated since Symfony 4.3, use {@link MimeTypes} instead
  */
 class MimeTypeExtensionGuesser implements ExtensionGuesserInterface
 {
@@ -639,6 +645,7 @@ class MimeTypeExtensionGuesser implements ExtensionGuesserInterface
         'audio/x-aiff' => 'aif',
         'audio/x-caf' => 'caf',
         'audio/x-flac' => 'flac',
+        'audio/x-hx-aac-adts' => 'aac',
         'audio/x-matroska' => 'mka',
         'audio/x-mpegurl' => 'm3u',
         'audio/x-ms-wax' => 'wax',
@@ -808,6 +815,12 @@ class MimeTypeExtensionGuesser implements ExtensionGuesserInterface
      */
     public function guess($mimeType)
     {
-        return isset($this->defaultExtensions[$mimeType]) ? $this->defaultExtensions[$mimeType] : null;
+        if (isset($this->defaultExtensions[$mimeType])) {
+            return $this->defaultExtensions[$mimeType];
+        }
+
+        $lcMimeType = strtolower($mimeType);
+
+        return isset($this->defaultExtensions[$lcMimeType]) ? $this->defaultExtensions[$lcMimeType] : null;
     }
 }

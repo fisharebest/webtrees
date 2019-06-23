@@ -27,7 +27,8 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Support\Str;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class ResearchTaskModule
@@ -121,7 +122,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
             }
 
             return view('modules/block-template', [
-                'block'      => str_replace('_', '-', $this->name()),
+                'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => $config_url,
                 'title'      => $this->title(),
@@ -153,16 +154,18 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      * @param int     $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $this->setBlockSetting($block_id, 'show_other', $request->get('show_other', ''));
-        $this->setBlockSetting($block_id, 'show_unassigned', $request->get('show_unassigned', ''));
-        $this->setBlockSetting($block_id, 'show_future', $request->get('show_future', ''));
+        $params = $request->getParsedBody();
+
+        $this->setBlockSetting($block_id, 'show_other', $params['show_other']);
+        $this->setBlockSetting($block_id, 'show_unassigned', $params['show_unassigned']);
+        $this->setBlockSetting($block_id, 'show_future', $params['show_future']);
     }
 
     /**
@@ -195,7 +198,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
     private function familiesWithTasks(Tree $tree, int $max_julian_day): Collection
     {
         return DB::table('families')
-            ->join('dates', function (JoinClause $join): void {
+            ->join('dates', static function (JoinClause $join): void {
                 $join
                     ->on('f_file', '=', 'd_file')
                     ->on('f_id', '=', 'd_gid');
@@ -219,7 +222,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
     private function individualsWithTasks(Tree $tree, int $max_julian_day): Collection
     {
         return DB::table('individuals')
-            ->join('dates', function (JoinClause $join): void {
+            ->join('dates', static function (JoinClause $join): void {
                 $join
                     ->on('i_file', '=', 'd_file')
                     ->on('i_id', '=', 'd_gid');

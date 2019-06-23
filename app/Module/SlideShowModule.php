@@ -25,7 +25,9 @@ use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
-use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Support\Str;
+use Psr\Http\Message\ServerRequestInterface;
+use function app;
 
 /**
  * Class SlideShowModule
@@ -33,17 +35,6 @@ use Symfony\Component\HttpFoundation\Request;
 class SlideShowModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
-
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
-    public function title(): string
-    {
-        /* I18N: Name of a module */
-        return I18N::translate('Slide show');
-    }
 
     /**
      * A sentence describing what this module does.
@@ -68,9 +59,11 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
-        $filter   = $this->getBlockSetting($block_id, 'filter', 'all');
-        $controls = $this->getBlockSetting($block_id, 'controls', '1');
-        $start    = (bool) $this->getBlockSetting($block_id, 'start', '0');
+        $request       = app(ServerRequestInterface::class);
+        $default_start = $this->getBlockSetting($block_id, 'start');
+        $filter        = $this->getBlockSetting($block_id, 'filter', 'all');
+        $controls      = $this->getBlockSetting($block_id, 'controls', '1');
+        $start         = (bool) ($request->getQueryParams()['start'] ?? $default_start);
 
         $media_types = [
             $this->getBlockSetting($block_id, 'filter_audio', '0') ? 'audio' : null,
@@ -98,7 +91,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
         // We can apply the filters using SQL
         // Do not use "ORDER BY RAND()" - it is very slow on large tables. Use PHP::array_rand() instead.
         $all_media = DB::table('media')
-            ->join('media_file', function (JoinClause $join): void {
+            ->join('media_file', static function (JoinClause $join): void {
                 $join
                     ->on('media_file.m_file', '=', 'media.m_file')
                     ->on('media_file.m_id', '=', 'media.m_id');
@@ -161,7 +154,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
             }
 
             return view('modules/block-template', [
-                'block'      => str_replace('_', '-', $this->name()),
+                'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => $config_url,
                 'title'      => $this->title(),
@@ -170,6 +163,17 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
         }
 
         return $content;
+    }
+
+    /**
+     * How should this module be identified in the control panel, etc.?
+     *
+     * @return string
+     */
+    public function title(): string
+    {
+        /* I18N: Name of a module */
+        return I18N::translate('Slide show');
     }
 
     /** {@inheritdoc} */
@@ -193,34 +197,36 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
-     * @param int     $block_id
+     * @param ServerRequestInterface $request
+     * @param int                    $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $this->setBlockSetting($block_id, 'filter', $request->get('filter', 'all'));
-        $this->setBlockSetting($block_id, 'controls', $request->get('controls', ''));
-        $this->setBlockSetting($block_id, 'start', $request->get('start', ''));
-        $this->setBlockSetting($block_id, 'filter_audio', $request->get('filter_audio', ''));
-        $this->setBlockSetting($block_id, 'filter_book', $request->get('filter_book', ''));
-        $this->setBlockSetting($block_id, 'filter_card', $request->get('filter_card', ''));
-        $this->setBlockSetting($block_id, 'filter_certificate', $request->get('filter_certificate', ''));
-        $this->setBlockSetting($block_id, 'filter_coat', $request->get('filter_coat', ''));
-        $this->setBlockSetting($block_id, 'filter_document', $request->get('filter_document', ''));
-        $this->setBlockSetting($block_id, 'filter_electronic', $request->get('filter_electronic', ''));
-        $this->setBlockSetting($block_id, 'filter_fiche', $request->get('filter_fiche', ''));
-        $this->setBlockSetting($block_id, 'filter_film', $request->get('filter_film', ''));
-        $this->setBlockSetting($block_id, 'filter_magazine', $request->get('filter_magazine', ''));
-        $this->setBlockSetting($block_id, 'filter_manuscript', $request->get('filter_manuscript', ''));
-        $this->setBlockSetting($block_id, 'filter_map', $request->get('filter_map', ''));
-        $this->setBlockSetting($block_id, 'filter_newspaper', $request->get('filter_newspaper', ''));
-        $this->setBlockSetting($block_id, 'filter_other', $request->get('filter_other', ''));
-        $this->setBlockSetting($block_id, 'filter_painting', $request->get('filter_painting', ''));
-        $this->setBlockSetting($block_id, 'filter_photo', $request->get('filter_photo', ''));
-        $this->setBlockSetting($block_id, 'filter_tombstone', $request->get('filter_tombstone', ''));
-        $this->setBlockSetting($block_id, 'filter_video', $request->get('filter_video', ''));
+        $params = $request->getParsedBody();
+
+        $this->setBlockSetting($block_id, 'filter', $params['filter']);
+        $this->setBlockSetting($block_id, 'controls', $params['controls']);
+        $this->setBlockSetting($block_id, 'start', $params['start']);
+        $this->setBlockSetting($block_id, 'filter_audio', $params['filter_audio'] ?? '');
+        $this->setBlockSetting($block_id, 'filter_book', $params['filter_book'] ?? '');
+        $this->setBlockSetting($block_id, 'filter_card', $params['filter_card'] ?? '');
+        $this->setBlockSetting($block_id, 'filter_certificate', $params['filter_certificate'] ?? '');
+        $this->setBlockSetting($block_id, 'filter_coat', $params['filter_coat'] ?? '');
+        $this->setBlockSetting($block_id, 'filter_document', $params['filter_document'] ?? '');
+        $this->setBlockSetting($block_id, 'filter_electronic', $params['filter_electronic'] ?? '');
+        $this->setBlockSetting($block_id, 'filter_fiche', $params['filter_fiche'] ?? '');
+        $this->setBlockSetting($block_id, 'filter_film', $params['filter_film'] ?? '');
+        $this->setBlockSetting($block_id, 'filter_magazine', $params['filter_magazine'] ?? '');
+        $this->setBlockSetting($block_id, 'filter_manuscript', $params['filter_manuscript'] ?? '');
+        $this->setBlockSetting($block_id, 'filter_map', $params['filter_map'] ?? '');
+        $this->setBlockSetting($block_id, 'filter_newspaper', $params['filter_newspaper'] ?? '');
+        $this->setBlockSetting($block_id, 'filter_other', $params['filter_other'] ?? '');
+        $this->setBlockSetting($block_id, 'filter_painting', $params['filter_painting'] ?? '');
+        $this->setBlockSetting($block_id, 'filter_photo', $params['filter_photo'] ?? '');
+        $this->setBlockSetting($block_id, 'filter_tombstone', $params['filter_tombstone'] ?? '');
+        $this->setBlockSetting($block_id, 'filter_video', $params['filter_video'] ?? '');
     }
 
     /**

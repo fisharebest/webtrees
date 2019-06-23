@@ -33,8 +33,8 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Find all branches of families with a given surname.
@@ -57,19 +57,19 @@ class BranchesController extends AbstractBaseController
     /**
      * A form to request the page parameters.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function page(Request $request): Response
+    public function page(ServerRequestInterface $request): ResponseInterface
     {
-        //route is assumed to be 'module'
-        $module = $request->get('module');
-        $action = $request->get('action');
+        $params = $request->getQueryParams();
+        $module = $params['module'];
+        $action = $params['action'];
         
-        $surname     = $request->get('surname', '');
-        $soundex_std = (bool) $request->get('soundex_std');
-        $soundex_dm  = (bool) $request->get('soundex_dm');
+        $surname     = $params['surname'] ?? '';
+        $soundex_std = (bool) ($params['soundex_std'] ?? false);
+        $soundex_dm  = (bool) ($params['soundex_dm'] ?? false);
 
         if ($surname !== '') {
             /* I18N: %s is a surname */
@@ -90,17 +90,18 @@ class BranchesController extends AbstractBaseController
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function list(Request $request, Tree $tree, UserInterface $user): Response
+    public function list(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $soundex_dm  = (bool) $request->get('soundex_dm');
-        $soundex_std = (bool) $request->get('soundex_std');
-        $surname     = $request->get('surname', '');
+        $params = $request->getQueryParams();
+        $surname     = $params['surname'];
+        $soundex_std = (bool) ($params['soundex_std'] ?? false);
+        $soundex_dm  = (bool) ($params['soundex_dm'] ?? false);
 
         // Highlight direct-line ancestors of this individual.
         $self = Individual::getInstance($tree->getUserPreference($user, 'gedcomid'), $tree);
@@ -122,7 +123,7 @@ class BranchesController extends AbstractBaseController
             'branches' => $this->getPatriarchsHtml($tree, $individuals, $ancestors, $surname, $soundex_dm, $soundex_std),
         ]);
 
-        return new Response($html);
+        return response($html);
     }
 
     /**
@@ -170,14 +171,14 @@ class BranchesController extends AbstractBaseController
     private function loadIndividuals(Tree $tree, string $surname, bool $soundex_dm, bool $soundex_std): array
     {
         $individuals = DB::table('individuals')
-            ->join('name', function (JoinClause $join): void {
+            ->join('name', static function (JoinClause $join): void {
                 $join
                     ->on('name.n_file', '=', 'individuals.i_file')
                     ->on('name.n_id', '=', 'individuals.i_id');
             })
             ->where('i_file', '=', $tree->id())
             ->where('n_type', '<>', '_MARNM')
-            ->where(function (Builder $query) use ($surname, $soundex_dm, $soundex_std): void {
+            ->where(static function (Builder $query) use ($surname, $soundex_dm, $soundex_std): void {
                 $query
                     ->where('n_surn', '=', $surname)
                     ->orWhere('n_surname', '=', $surname);
@@ -258,7 +259,7 @@ class BranchesController extends AbstractBaseController
      */
     private function getDescendantsHtml(Tree $tree, array $individuals, array $ancestors, string $surname, bool $soundex_dm, bool $soundex_std, Individual $individual, Family $parents = null): string
     {
-        $module = $this->module_service->findByComponent(ModuleChartInterface::class, $tree, Auth::user())->first(function (ModuleInterface $module) {
+        $module = $this->module_service->findByComponent(ModuleChartInterface::class, $tree, Auth::user())->first(static function (ModuleInterface $module) {
             return $module instanceof RelationshipsChartModule;
         });
 

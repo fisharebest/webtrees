@@ -872,7 +872,7 @@ abstract class AbstractCalendarDate
             return 'ADR';
         }
 
-        return array_search($this->month, static::MONTH_ABBREVIATIONS);
+        return array_search($this->month, static::MONTH_ABBREVIATIONS, true);
     }
 
     /**

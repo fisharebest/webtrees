@@ -20,6 +20,9 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
+use function array_slice;
+use function explode;
+use function implode;
 
 /**
  * Definitions for a census column
@@ -39,10 +42,10 @@ class AbstractCensusColumn
      * Create a column for a census
      *
      * @param CensusInterface $census - The census to which this column forms part.
-     * @param string          $abbr   - The abbrievated on-screen name "BiC"
+     * @param string          $abbr   - The abbreviated on-screen name "BiC"
      * @param string          $title  - The full column heading "Born in the county"
      */
-    public function __construct(CensusInterface $census, $abbr, $title)
+    public function __construct(CensusInterface $census, string $abbr, string $title)
     {
         $this->census = $census;
         $this->abbr   = $abbr;
@@ -70,7 +73,7 @@ class AbstractCensusColumn
     {
         $family = $individual->primaryChildFamily();
 
-        if ($family) {
+        if ($family instanceof Family) {
             return $family->husband();
         }
 
@@ -88,7 +91,7 @@ class AbstractCensusColumn
     {
         $family = $individual->primaryChildFamily();
 
-        if ($family) {
+        if ($family instanceof Family) {
             return $family->wife();
         }
 
@@ -104,23 +107,13 @@ class AbstractCensusColumn
      */
     public function spouseFamily(Individual $individual): ?Family
     {
-        // Exclude families that were created after this census date
-        $families = [];
-        foreach ($individual->spouseFamilies() as $family) {
-            if (Date::compare($family->getMarriageDate(), $this->date()) <= 0) {
-                $families[] = $family;
-            }
-        }
-
-        if (empty($families)) {
-            return null;
-        }
-
-        usort($families, function (Family $x, Family $y): int {
-            return Date::compare($x->getMarriageDate(), $y->getMarriageDate());
-        });
-
-        return end($families);
+        return $individual->spouseFamilies()
+            ->filter(function (Family $family): bool {
+                // Exclude families that were created after this census date
+                return Date::compare($family->getMarriageDate(), $this->date()) <= 0;
+            })
+            ->sort(Family::marriageDateComparator())
+            ->last();
     }
 
     /**

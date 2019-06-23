@@ -26,7 +26,8 @@ use Fisharebest\Webtrees\Date\JewishDate;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Support\Str;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class YahrzeitModule
@@ -175,7 +176,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
             }
 
             return view('modules/block-template', [
-                'block'      => str_replace('_', '-', $this->name()),
+                'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => $config_url,
                 'title'      => $this->title(),
@@ -207,16 +208,18 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      * @param int     $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $this->setBlockSetting($block_id, 'days', $request->get('days', self::DEFAULT_DAYS));
-        $this->setBlockSetting($block_id, 'infoStyle', $request->get('infoStyle', self::DEFAULT_STYLE));
-        $this->setBlockSetting($block_id, 'calendar', $request->get('calendar', self::DEFAULT_CALENDAR));
+        $settings = $request->getParsedBody();
+
+        $this->setBlockSetting($block_id, 'days', $settings['days'] ?? self::DEFAULT_DAYS);
+        $this->setBlockSetting($block_id, 'infoStyle', $settings['infoStyle'] ?? self::DEFAULT_STYLE);
+        $this->setBlockSetting($block_id, 'calendar', $settings['calendar'] ?? self::DEFAULT_CALENDAR);
     }
 
     /**

@@ -1,0 +1,64 @@
+<?php
+
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+
+/**
+ * @var Individual $individual
+ * @var int        $generations
+ * @var string     $daboville
+ */
+
+?>
+
+<div class="d-flex">
+    <?= view('chart-box', ['individual' => $individual]) ?>
+    <div class="wt-daboville-number align-self-center p-1 mx-2 d-none d-md-block" title="<?= I18N::translate('d’Aboville number') ?>">
+        <?= e($daboville) ?>
+    </div>
+</div>
+
+<?php if ($generations > 1): ?>
+    <?php $child_number = 0; ?>
+    <?php foreach ($individual->spouseFamilies()->sort(Family::marriageDateComparator()) as $family): ?>
+        <?php if ($family->children()->isNotEmpty()): ?>
+            <div class="d-flex">
+                <button class="btn btn-link px-0 py-1 wt-chart-expansion-control" data-toggle="collapse" data-target="#fam-<?= e($family->xref()) ?>" aria-controls="fam-<?= e($family->xref()) ?>" aria-expanded="true">
+                    <span class="chart-expand">
+                        <?= view('icons/expand') ?>
+                    </span>
+                    <span class="chart-collapse">
+                        <?= view('icons/collapse') ?>
+                    </span>
+                    <?php foreach ($family->facts(['MARR', 'DIV', '_NMR'], true) as $fact): ?>
+                        <?= $fact->label() ?>
+                        <?php if ($fact->date()->isOK()): ?>
+                            <?= strip_tags($fact->date()->display()) ?>
+                        <?php endif ?>
+                        —
+                    <?php endforeach ?>
+                    <?= I18N::plural('%s child', '%s children', $family->children()->count(), I18N::number($family->children()->count())) ?>
+                </button>
+            </div>
+            <div id="fam-<?= e($family->xref()) ?>" class="collapse show mb-4">
+                <?= view('chart-box', ['individual' => $family->spouse($individual)]) ?>
+                <?php foreach ($family->children()->sort(Individual::birthDateComparator()) as $n => $child): ?>
+                    <div class="d-flex">
+                        <div class="wt-chart-vertical-indent position-relative">
+                            <?php if ($n + 1 === $family->children()->count()): ?>
+                                <div class="wt-chart-vertical-last-child-line position-absolute"></div>
+                            <?php else: ?>
+                                <div class="wt-chart-vertical-line position-absolute"></div>
+                                <div class="wt-chart-vertical-child-line position-absolute"></div>
+                            <?php endif ?>
+                        </div>
+                        <div>
+                            <?= view('modules/descendancy_chart/tree', ['individual' => $child, 'generations' => $generations - 1, 'daboville' => $daboville . '.' . ++$child_number]) ?>
+                        </div>
+                    </div>
+                <?php endforeach ?>
+            </div>
+        <?php endif ?>
+    <?php endforeach ?>
+<?php endif ?>

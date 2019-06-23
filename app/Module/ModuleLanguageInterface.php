@@ -17,9 +17,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Localization\Locale\LocaleInterface;
+
 /**
  * Interface ModuleLanguageInterface - provide translation and localization.
  */
 interface ModuleLanguageInterface extends ModuleInterface
 {
+    /**
+     * @return LocaleInterface
+     */
+    public function locale(): LocaleInterface;
 }

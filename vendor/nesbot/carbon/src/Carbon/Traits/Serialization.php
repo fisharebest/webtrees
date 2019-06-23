@@ -67,7 +67,7 @@ trait Serialization
      */
     public static function fromSerialized($value)
     {
-        $instance = @unserialize($value);
+        $instance = @unserialize("$value");
 
         if (!$instance instanceof static) {
             throw new InvalidArgumentException('Invalid serialized value.');
@@ -137,7 +137,7 @@ trait Serialization
         $serializer = $this->localSerializer ?? static::$serializer;
         if ($serializer) {
             return is_string($serializer)
-                ? $this->format($serializer)
+                ? $this->rawFormat($serializer)
                 : call_user_func($serializer, $this);
         }
 

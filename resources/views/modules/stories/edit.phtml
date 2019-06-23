@@ -13,7 +13,7 @@
             <?= I18N::translate('Individual') ?>
         </label>
         <div class="col-sm-9">
-            <?= FunctionsEdit::formControlIndividual($tree, $individual, ['id' => 'xref', 'name' => 'xref']) ?>
+            <?= view('components/select-individual', ['name' => 'xref', 'individual' => $individual, 'tree' => $tree]) ?>
         </div>
     </div>
 
@@ -58,5 +58,3 @@
         </div>
     </div>
 </form>
-
-<?= view('modules/ckeditor/ckeditor-js') ?>

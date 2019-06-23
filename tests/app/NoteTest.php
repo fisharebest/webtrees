@@ -29,6 +29,6 @@ class NoteTest extends TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Note'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Note::class));
     }
 }

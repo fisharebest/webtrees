@@ -29,6 +29,6 @@ class ModuleTabInterfaceTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(interface_exists('\Fisharebest\Webtrees\Module\ModuleTabInterface'));
+        $this->assertTrue(interface_exists(ModuleTabInterface::class));
     }
 }

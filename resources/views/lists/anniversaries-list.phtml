@@ -1,0 +1,28 @@
+<?php
+
+use Fisharebest\Webtrees\Carbon;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Individual;
+
+/** @var Fact[] $facts */
+
+?>
+
+<?php foreach ($facts as $fact) : ?>
+    <?php $record = $fact->record(); ?>
+    <a href="<?= e($record->url()) ?>" class="list_item name2">
+        <?= $record->fullName() ?>
+    </a>
+    <?php if ($record instanceof Individual) : ?>
+        <?= view('icons/sex-' . $record->sex()) ?>
+    <?php endif ?>
+    <div class="indent">
+        <?= $fact->label() . ' — ' . $fact->date()->display(true) ?>
+        (<?= Carbon::now()->subYears($fact->anniv)->local()->diffForHumans() ?>)
+        <?php if ($fact->place()->gedcomName() !== '') : ?>
+            — <a href="<?= e($fact->place()->url()) ?>" title="<?= strip_tags($fact->place()->fullName()) ?>">
+                <?= $fact->place()->shortName() ?>
+            </a>
+        <?php endif ?>
+    </div>
+<?php endforeach ?>

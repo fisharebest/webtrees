@@ -19,17 +19,15 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Functions\FunctionsCharts;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
-use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use function view;
 
 /**
  * Class AncestorsChartModule
@@ -39,14 +37,12 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
     use ModuleChartTrait;
 
     // Chart styles
-    protected const CHART_STYLE_LIST        = 'list';
-    protected const CHART_STYLE_BOOKLET     = 'booklet';
+    protected const CHART_STYLE_TREE        = 'tree';
     protected const CHART_STYLE_INDIVIDUALS = 'individuals';
     protected const CHART_STYLE_FAMILIES    = 'families';
 
     // Defaults
-    protected const DEFAULT_COUSINS             = false;
-    protected const DEFAULT_STYLE               = self::CHART_STYLE_LIST;
+    protected const DEFAULT_STYLE               = self::CHART_STYLE_TREE;
     protected const DEFAULT_GENERATIONS         = '4';
 
     // Limits
@@ -113,39 +109,35 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * A form to request the chart parameters.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
-     * @param ChartService  $chart_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
+     * @param ChartService           $chart_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getChartAction(Request $request, Tree $tree, UserInterface $user, ChartService $chart_service): Response
+    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user, ChartService $chart_service): ResponseInterface
     {
-        $ajax       = (bool) $request->get('ajax');
-        $xref       = $request->get('xref', '');
+        $ajax       = $request->getQueryParams()['ajax'] ?? '';
+        $xref       = $request->getQueryParams()['xref'] ?? '';
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
-        $show_cousins = (bool) $request->get('show_cousins', self::DEFAULT_COUSINS);
-        $chart_style  = $request->get('chart_style', self::DEFAULT_STYLE);
-        $generations  = (int) $request->get('generations', self::DEFAULT_GENERATIONS);
+        $chart_style  = $request->getQueryParams()['chart_style'] ?? self::DEFAULT_STYLE;
+        $generations  = (int) ($request->getQueryParams()['generations'] ?? self::DEFAULT_GENERATIONS);
 
         $generations = min($generations, self::MAXIMUM_GENERATIONS);
         $generations = max($generations, self::MINIMUM_GENERATIONS);
 
-        if ($ajax) {
+        if ($ajax === '1') {
             $ancestors = $chart_service->sosaStradonitzAncestors($individual, $generations);
 
             switch ($chart_style) {
                 default:
-                case self::CHART_STYLE_LIST:
-                    return $this->ancestorsList($individual, $generations);
-
-                case self::CHART_STYLE_BOOKLET:
-                    return $this->ancestorsBooklet($ancestors, $show_cousins);
+                case self::CHART_STYLE_TREE:
+                    return response(view('modules/ancestors-chart/tree', ['individual' => $individual, 'parents' => $individual->primaryChildFamily(), 'generations' => $generations, 'sosa' => 1]));
 
                 case self::CHART_STYLE_INDIVIDUALS:
                     return $this->ancestorsIndividuals($tree, $ancestors);
@@ -158,7 +150,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
         $ajax_url = $this->chartUrl($individual, [
             'generations'  => $generations,
             'chart_style'  => $chart_style,
-            'show_cousins' => $show_cousins,
             'ajax'         => true,
         ]);
 
@@ -172,87 +163,8 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
             'maximum_generations' => self::MAXIMUM_GENERATIONS,
             'minimum_generations' => self::MINIMUM_GENERATIONS,
             'module_name'         => $this->name(),
-            'show_cousins'        => $show_cousins,
             'title'               => $this->chartTitle($individual),
         ]);
-    }
-
-    /**
-     * Show a hierarchical list of ancestors
-     *
-     * @TODO replace ob_start() with views.
-     *
-     * @param Individual $individual
-     * @param int        $generations
-     *
-     * @return Response
-     */
-    protected function ancestorsList(Individual $individual, int $generations): Response
-    {
-        ob_start();
-
-        $this->printChildAscendancy($individual, 1, $generations - 1);
-
-        $html = ob_get_clean();
-
-        $html = '<ul class="wt-ancestors-chart-list list-unstyled">' . $html . '</ul>';
-
-        return new Response($html);
-    }
-
-    /**
-     * print a child ascendancy
-     *
-     * @param Individual $individual
-     * @param int        $sosa
-     * @param int        $generations
-     *
-     * @return void
-     */
-    protected function printChildAscendancy(Individual $individual, $sosa, $generations): void
-    {
-        echo '<li class="wt-chart-ancestors-list-item">';
-        echo '<table><tbody><tr><td>';
-        if ($sosa === 1) {
-            echo '<img src="', e(asset('css/images/spacer.png')), '" height="3" width="15"></td><td>';
-        } else {
-            echo '<img src="', e(asset('css/images/spacer.png')), '" height="3" width="2">';
-            echo '<img src="', e(asset('css/images/hline.png')), '" height="3" width="13"></td><td>';
-        }
-        echo FunctionsPrint::printPedigreePerson($individual);
-        echo '</td><td>';
-        if ($sosa > 1) {
-            echo '<a href="' . e($this->chartUrl($individual, ['generations' => $generations, 'chart_style' => self::CHART_STYLE_LIST])) . '" title="' . strip_tags($this->chartTitle($individual)) . '">' . view('icons/arrow-down') . '<span class="sr-only">' . $this->chartTitle($individual) . '</span></a>';
-        }
-        echo '</td><td class="details1">&nbsp;<span class="wt-chart-box wt-chart-box-' . ($sosa === 1 ? strtolower($individual->sex()) : ($sosa % 2 ? 'f' : 'm')) . '">', I18N::number($sosa), '</span> ';
-        echo '</td><td class="details1">&nbsp;', FunctionsCharts::getSosaName($sosa), '</td>';
-        echo '</tr></tbody></table>';
-
-        // Parents
-        $family = $individual->primaryChildFamily();
-        if ($family && $generations > 0) {
-            // Marriage details
-            echo '<span class="details1">';
-            echo '<img src="', e(asset('css/images/spacer.png')), '" height="2" width="15"><a href="#" onclick="return expand_layer(\'sosa_', $sosa, '\');" class="top"><i id="sosa_', $sosa, '_img" class="icon-minus" title="', I18N::translate('View this family'), '"></i></a>';
-            echo ' <span class="wt-chart-box wt-chart-box-m">', I18N::number($sosa * 2), '</span> ';
-            echo I18N::translate('and');
-            echo ' <span class="wt-chart-box wt-chart-box-f">', I18N::number($sosa * 2 + 1), '</span>';
-            if ($family->canShow()) {
-                foreach ($family->facts(Gedcom::MARRIAGE_EVENTS) as $fact) {
-                    echo ' <a href="', e($family->url()), '" class="details1">', $fact->summary(), '</a>';
-                }
-            }
-            echo '</span>';
-            echo '<ul class="wt-chart-ancestors-list list-unstyled" id="sosa_', $sosa, '">';
-            if ($family->husband()) {
-                $this->printChildAscendancy($family->husband(), $sosa * 2, $generations - 1);
-            }
-            if ($family->wife()) {
-                $this->printChildAscendancy($family->wife(), $sosa * 2 + 1, $generations - 1);
-            }
-            echo '</ul>';
-        }
-        echo '</li>';
     }
 
     /**
@@ -261,9 +173,9 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
      * @param Tree       $tree
      * @param Collection $ancestors
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    protected function ancestorsIndividuals(Tree $tree, Collection $ancestors): Response
+    protected function ancestorsIndividuals(Tree $tree, Collection $ancestors): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
@@ -280,9 +192,9 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
      * @param Tree       $tree
      * @param Collection $ancestors
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    protected function ancestorsFamilies(Tree $tree, Collection $ancestors): Response
+    protected function ancestorsFamilies(Tree $tree, Collection $ancestors): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
@@ -300,32 +212,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
     }
 
     /**
-     * Show a booklet view of ancestors
-     *
-     * @TODO replace ob_start() with views.
-     *
-     * @param Collection $ancestors
-     * @param bool       $show_cousins
-     *
-     * @return Response
-     */
-    protected function ancestorsBooklet(Collection $ancestors, bool $show_cousins): Response
-    {
-        ob_start();
-
-        echo FunctionsPrint::printPedigreePerson($ancestors[1]);
-        foreach ($ancestors as $sosa => $individual) {
-            foreach ($individual->childFamilies() as $family) {
-                FunctionsCharts::printSosaFamily($family, $individual->xref(), $sosa, '', '', '', $show_cousins);
-            }
-        }
-
-        $html = ob_get_clean();
-
-        return new Response($html);
-    }
-
-    /**
      * This chart can display its output in a number of styles
      *
      * @return array
@@ -333,8 +219,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
     protected function chartStyles(): array
     {
         return [
-            self::CHART_STYLE_LIST        => I18N::translate('List'),
-            self::CHART_STYLE_BOOKLET     => I18N::translate('Booklet'),
+            self::CHART_STYLE_TREE        => I18N::translate('Tree'),
             self::CHART_STYLE_INDIVIDUALS => I18N::translate('Individuals'),
             self::CHART_STYLE_FAMILIES    => I18N::translate('Families'),
         ];

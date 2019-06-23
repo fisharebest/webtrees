@@ -26,8 +26,8 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class TimelineChartModule
@@ -107,27 +107,26 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
     /**
      * A form to request the chart parameters.
      *
-     * @param Request $request
-     * @param Tree    $tree
-     * @param UserInterface    $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getChartAction(Request $request, Tree $tree, UserInterface $user): Response
+    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
-        $ajax  = (bool) $request->get('ajax');
-        $scale = (int) $request->get('scale', self::SCALE_DEFAULT);
+        $ajax  = $request->getQueryParams()['ajax'] ?? '';
+        $scale = (int) ($request->getQueryParams()['scale'] ?? self::SCALE_DEFAULT);
         $scale = min($scale, self::SCALE_MAX);
         $scale = max($scale, self::SCALE_MIN);
-
-        $xrefs = $request->get('xrefs', []);
+        $xrefs = $request->getQueryParams()['xrefs'] ?? [];
 
         // Find the requested individuals.
         $individuals = (new Collection($xrefs))
             ->unique()
-            ->map(function (string $xref) use ($tree): ?Individual {
+            ->map(static function (string $xref) use ($tree): ?Individual {
                 return Individual::getInstance($xref, $tree);
             })
             ->filter()
@@ -138,10 +137,10 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 
         foreach ($individuals as $exclude) {
             $xrefs_1 = $individuals
-                ->filter(function (Individual $individual) use ($exclude): bool {
+                ->filter(static function (Individual $individual) use ($exclude): bool {
                     return $individual->xref() !== $exclude->xref();
                 })
-                ->map(function (Individual $individual): string {
+                ->map(static function (Individual $individual): string {
                     return $individual->xref();
                 });
 
@@ -154,15 +153,15 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             ]);
         }
 
-        $individuals = array_map(function (string $xref) use ($tree): ?Individual {
+        $individuals = array_map(static function (string $xref) use ($tree): ?Individual {
             return Individual::getInstance($xref, $tree);
         }, $xrefs);
 
-        $individuals = array_filter($individuals, function (?Individual $individual): bool {
+        $individuals = array_filter($individuals, static function (?Individual $individual): bool {
             return $individual instanceof Individual && $individual->canShow();
         });
 
-        if ($ajax) {
+        if ($ajax === '1') {
             return $this->chart($tree, $xrefs, $scale);
         }
 
@@ -215,18 +214,18 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
      * @param array $xrefs
      * @param int   $scale
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    protected function chart(Tree $tree, array $xrefs, int $scale): Response
+    protected function chart(Tree $tree, array $xrefs, int $scale): ResponseInterface
     {
         $xrefs = array_unique($xrefs);
 
         /** @var Individual[] $individuals */
-        $individuals = array_map(function (string $xref) use ($tree): ?Individual {
+        $individuals = array_map(static function (string $xref) use ($tree): ?Individual {
             return Individual::getInstance($xref, $tree);
         }, $xrefs);
 
-        $individuals = array_filter($individuals, function (?Individual $individual): bool {
+        $individuals = array_filter($individuals, static function (?Individual $individual): bool {
             return $individual instanceof Individual && $individual->canShow();
         });
 
@@ -256,7 +255,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             foreach ($facts as $event) {
                 // get the fact type
                 $fact = $event->getTag();
-                if (!in_array($fact, self::NON_FACTS)) {
+                if (!in_array($fact, self::NON_FACTS, true)) {
                     // check for a date
                     $date = $event->date();
                     if ($date->isOK()) {
@@ -304,6 +303,6 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             'topyear'     => $topyear,
         ]);
 
-        return new Response($html);
+        return response($html);
     }
 }

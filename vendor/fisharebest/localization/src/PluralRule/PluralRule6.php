@@ -25,10 +25,12 @@ class PluralRule6 implements PluralRuleInterface
 
         if ($number % 10 === 1 && $number % 100 !== 11) {
             return 0;
-        } elseif ($number % 10 >= 2 && ($number % 100 < 10 || $number % 100 >= 20)) {
-            return 1;
-        } else {
-            return 2;
         }
+
+        if ($number % 10 >= 2 && ($number % 100 < 10 || $number % 100 >= 20)) {
+            return 1;
+        }
+
+        return 2;
     }
 }

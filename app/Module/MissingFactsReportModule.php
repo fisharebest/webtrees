@@ -19,8 +19,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Menu;
 
 /**
  * Class MissingFactsReportModule
@@ -54,26 +52,5 @@ class MissingFactsReportModule extends AbstractModule implements ModuleReportInt
         // This text also appears in the .XML file - update both together
         /* I18N: Description of the “Missing data” */
         return I18N::translate('A report of the information that is missing for an individual and their relatives.');
-    }
-
-    /**
-     * Return a menu item for this report.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu
-     */
-    public function getReportMenu(Individual $individual): Menu
-    {
-        return new Menu(
-            $this->title(),
-            route('report-setup', [
-                'xref'   => $individual->xref(),
-                'ged'    => $individual->tree()->name(),
-                'report' => $this->name(),
-            ]),
-            'menu-report-' . $this->name(),
-            ['rel' => 'nofollow']
-        );
     }
 }

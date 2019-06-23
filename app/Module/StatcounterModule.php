@@ -20,11 +20,12 @@ namespace Fisharebest\Webtrees\Module;
 /**
  * Class StatcounterModule - add support for statcounter.
  */
-class StatcounterModule extends AbstractModule implements ModuleAnalyticsInterface, ModuleConfigInterface, ModuleExternalUrlInterface
+class StatcounterModule extends AbstractModule implements ModuleAnalyticsInterface, ModuleConfigInterface, ModuleExternalUrlInterface, ModuleGlobalInterface
 {
     use ModuleAnalyticsTrait;
     use ModuleConfigTrait;
     use ModuleExternalUrlTrait;
+    use ModuleGlobalTrait;
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -34,6 +35,16 @@ class StatcounterModule extends AbstractModule implements ModuleAnalyticsInterfa
     public function title(): string
     {
         return 'Statcounter™';
+    }
+
+    /**
+     * Should this module be enabled when it is first installed?
+     *
+     * @return bool
+     */
+    public function isEnabledByDefault(): bool
+    {
+        return false;
     }
 
     /**
@@ -79,5 +90,20 @@ class StatcounterModule extends AbstractModule implements ModuleAnalyticsInterfa
     public function analyticsSnippet(array $parameters): string
     {
         return view('modules/statcounter/snippet', $parameters);
+    }
+
+    /**
+     * Raw content, to be added at the end of the <body> element.
+     * Typically, this will be <script> elements.
+     *
+     * @return string
+     */
+    public function bodyContent(): string
+    {
+        if ($this->analyticsCanShow()) {
+            return $this->analyticsSnippet($this->analyticsParameters());
+        }
+
+        return '';
     }
 }

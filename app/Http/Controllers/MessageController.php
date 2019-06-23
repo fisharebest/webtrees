@@ -29,9 +29,8 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -58,22 +57,23 @@ class MessageController extends AbstractBaseController
     /**
      * A form to compose a message from a member.
      *
-     * @param Request       $request
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function broadcastPage(Request $request, UserInterface $user): Response
+    public function broadcastPage(ServerRequestInterface $request, UserInterface $user): ResponseInterface
     {
-        $referer = $request->headers->get('referer', '');
+        $referer = $request->getHeaderLine('referer');
 
-        $body    = $request->get('body', '');
-        $subject = $request->get('subject', '');
-        $to      = $request->get('to', '');
-        $url     = $request->get('url', $referer);
+        $params  = $request->getQueryParams();
+        $body    = $params['body'] ?? '';
+        $subject = $params['subject'] ?? '';
+        $to      = $params['to'];
+        $url     = $params['url'] ?? $referer;
 
         $to_names = $this->recipientUsers($to)
-            ->map(function (UserInterface $user): string {
+            ->map(static function (UserInterface $user): string {
                 return $user->realName();
             });
 
@@ -95,24 +95,25 @@ class MessageController extends AbstractBaseController
     /**
      * Send a message.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function broadcastAction(Request $request, Tree $tree, UserInterface $user): RedirectResponse
+    public function broadcastAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $body    = $request->get('body', '');
-        $subject = $request->get('subject', '');
-        $to      = $request->get('to', '');
-        $url     = $request->get('url', '');
+        $params  = $request->getParsedBody();
+        $body    = $params['body'];
+        $subject = $params['subject'];
+        $to      = $params['to'];
+        $url     = $params['url'];
 
-        $ip       = $request->getClientIp() ?? '127.0.0.1';
+        $ip       = $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1';
         $to_users = $this->recipientUsers($to);
 
         if ($body === '' || $subject === '') {
-            return new RedirectResponse(route('broadcast', [
+            return redirect(route('broadcast', [
                 'body'    => $body,
                 'subject' => $subject,
                 'to'      => $to,
@@ -135,31 +136,31 @@ class MessageController extends AbstractBaseController
             FlashMessages::addMessage(I18N::translate('The message was not sent.'), 'danger');
         }
 
-        return new RedirectResponse(route('admin-control-panel'));
+        return redirect(route('admin-control-panel'));
     }
 
     /**
      * A form to compose a message from a visitor.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function contactPage(Request $request, Tree $tree): Response
+    public function contactPage(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $referer = $request->headers->get('referer', '');
-
-        $body       = $request->get('body', '');
-        $from_email = $request->get('from_email', '');
-        $from_name  = $request->get('from_name', '');
-        $subject    = $request->get('subject', '');
-        $to         = $request->get('to', '');
-        $url        = $request->get('url', $referer);
+        $referer    = $request->getHeaderLine('referer');
+        $params     = $request->getQueryParams();
+        $body       = $params['body'] ?? '';
+        $from_email = $params['from_email'] ?? '';
+        $from_name  = $params['from_name'] ?? '';
+        $subject    = $params['subject'] ?? '';
+        $to         = $params['to'] ?? '';
+        $url        = $params['url'] ?? $referer;
 
         $to_user = $this->user_service->findByUserName($to);
 
-        if (!in_array($to_user, $this->validContacts($tree))) {
+        if (!in_array($to_user, $this->validContacts($tree), false)) {
             throw new AccessDeniedHttpException('Invalid contact user id');
         }
 
@@ -182,28 +183,28 @@ class MessageController extends AbstractBaseController
     /**
      * Send a message.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function contactAction(Request $request, Tree $tree): RedirectResponse
+    public function contactAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $body       = $request->get('body', '');
-        $from_email = $request->get('from_email', '');
-        $from_name  = $request->get('from_name', '');
-        $subject    = $request->get('subject', '');
-        $to         = $request->get('to', '');
-        $url        = $request->get('url', '');
-        $ip         = $request->getClientIp() ?? '127.0.0.1';
-
-        $to_user = $this->user_service->findByUserName($to);
+        $params     = $request->getParsedBody();
+        $body       = $params['body'];
+        $from_email = $params['from_email'];
+        $from_name  = $params['from_name'];
+        $subject    = $params['subject'];
+        $to         = $params['to'];
+        $url        = $params['url'];
+        $ip         = $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1';
+        $to_user    = $this->user_service->findByUserName($to);
 
         if ($to_user === null) {
             throw new NotFoundHttpException();
         }
 
-        if (!in_array($to_user, $this->validContacts($tree))) {
+        if (!in_array($to_user, $this->validContacts($tree), false)) {
             throw new AccessDeniedHttpException('Invalid contact user id');
         }
 
@@ -214,14 +215,16 @@ class MessageController extends AbstractBaseController
             $errors = true;
         }
 
-        if (preg_match('/(?!' . preg_quote(WT_BASE_URL, '/') . ')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $subject . $body, $match)) {
+        $base_url = $request->getAttribute('base_url');
+
+        if (preg_match('/(?!' . preg_quote($base_url, '/') . ')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $subject . $body, $match)) {
             FlashMessages::addMessage(I18N::translate('You are not allowed to send messages that contain external links.') . ' ' . /* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’ */
                 I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1]), 'danger');
             $errors = true;
         }
 
         if ($errors) {
-            return new RedirectResponse(route('contact', [
+            return redirect(route('contact', [
                 'body'       => $body,
                 'from_email' => $from_email,
                 'from_name'  => $from_name,
@@ -239,7 +242,7 @@ class MessageController extends AbstractBaseController
 
             $url = $url ?: route('tree-page', ['ged' => $tree->name()]);
 
-            return new RedirectResponse($url);
+            return redirect($url);
         }
 
         FlashMessages::addMessage(I18N::translate('The message was not sent.'), 'danger');
@@ -253,26 +256,25 @@ class MessageController extends AbstractBaseController
             'url'        => $url,
         ]);
 
-        return new RedirectResponse($redirect_url);
+        return redirect($redirect_url);
     }
 
     /**
      * A form to compose a message from a member.
      *
-     * @param Request       $request
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function messagePage(Request $request, UserInterface $user): Response
+    public function messagePage(ServerRequestInterface $request, UserInterface $user): ResponseInterface
     {
-        $referer = $request->headers->get('referer', '');
-
-        $body    = $request->get('body', '');
-        $subject = $request->get('subject', '');
-        $to      = $request->get('to', '');
-        $url     = $request->get('url', $referer);
-
+        $referer = $request->getHeaderLine('referer');
+        $params  = $request->getQueryParams();
+        $body    = $params['body'] ?? '';
+        $subject = $params['subject'] ?? '';
+        $to      = $params['to'] ?? '';
+        $url     = $params['url'] ?? $referer;
         $to_user = $this->user_service->findByUserName($to);
 
         if ($to_user === null || $to_user->getPreference('contactmethod') === 'none') {
@@ -294,28 +296,28 @@ class MessageController extends AbstractBaseController
     /**
      * Send a message.
      *
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function messageAction(Request $request, Tree $tree, UserInterface $user): RedirectResponse
+    public function messageAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $body    = $request->get('body', '');
-        $subject = $request->get('subject', '');
-        $to      = $request->get('to', '');
-        $url     = $request->get('url', '');
-
+        $params  = $request->getParsedBody();
+        $body    = $params['body'];
+        $subject = $params['subject'];
+        $to      = $params['to'];
+        $url     = $params['url'];
         $to_user = $this->user_service->findByUserName($to);
-        $ip      = $request->getClientIp() ?? '127.0.0.1';
+        $ip      = $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1';
 
         if ($to_user === null || $to_user->getPreference('contactmethod') === 'none') {
             throw new AccessDeniedHttpException('Invalid contact user id');
         }
 
         if ($body === '' || $subject === '') {
-            return new RedirectResponse(route('message', [
+            return redirect(route('message', [
                 'body'    => $body,
                 'subject' => $subject,
                 'to'      => $to,
@@ -329,7 +331,7 @@ class MessageController extends AbstractBaseController
 
             $url = $url ?: route('tree-page', ['ged' => $tree->name()]);
 
-            return new RedirectResponse($url);
+            return redirect($url);
         }
 
         FlashMessages::addMessage(I18N::translate('The message was not sent.'), 'danger');
@@ -341,7 +343,7 @@ class MessageController extends AbstractBaseController
             'url'     => $url,
         ]);
 
-        return new RedirectResponse($redirect_url);
+        return redirect($redirect_url);
     }
 
     /**
@@ -463,7 +465,6 @@ class MessageController extends AbstractBaseController
      * @param string $to
      *
      * @return Collection
-     * @return UserInterface[]
      */
     private function recipientUsers(string $to): Collection
     {
@@ -472,13 +473,13 @@ class MessageController extends AbstractBaseController
             case 'all':
                 return $this->user_service->all();
             case 'never_logged':
-                return $this->user_service->all()->filter(function (UserInterface $user): bool {
+                return $this->user_service->all()->filter(static function (UserInterface $user): bool {
                     return $user->getPreference('verified_by_admin') && $user->getPreference('reg_timestamp') > $user->getPreference('sessiontime');
                 });
             case 'last_6mo':
                 $six_months_ago = Carbon::now()->subMonths(6)->unix();
 
-                return $this->user_service->all()->filter(function (UserInterface $user) use ($six_months_ago): bool {
+                return $this->user_service->all()->filter(static function (UserInterface $user) use ($six_months_ago): bool {
                     $session_time = (int) $user->getPreference('sessiontime');
 
                     return $session_time > 0 && $session_time < $six_months_ago;

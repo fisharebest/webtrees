@@ -29,6 +29,6 @@ class ThemeSelectModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\ThemeSelectModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\ThemeSelectModule::class));
     }
 }

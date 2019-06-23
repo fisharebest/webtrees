@@ -24,7 +24,7 @@
                         </label>
                         <?php if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $quick_required_facts, $matches)) : ?>
                             <?php foreach ($matches[1] as $match) : ?>
-                                <?php if (!in_array($match, Gedcom::DEATH_EVENTS)) : ?>
+                                <?php if (!in_array($match, Gedcom::DEATH_EVENTS, true)) : ?>
                                     <label>
                                         <input type="checkbox" name="SOUR_<?= $match ?>" <?= $prefer_level2_sources === '1' ? 'checked' : '' ?> value="1">
                                         <?= GedcomTag::getLabel($match) ?>
@@ -37,7 +37,7 @@
                     <?php if (strpos($bdm, 'D') !== false) : ?>
                         <?php if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $quick_required_facts, $matches)) : ?>
                             <?php foreach ($matches[1] as $match) : ?>
-                                <?php if (in_array($match,Gedcom::DEATH_EVENTS)) : ?>
+                                <?php if (in_array($match, Gedcom::DEATH_EVENTS, true)) : ?>
                                     <label>
                                         <input type="checkbox" name="SOUR_<?= $match ?>" <?= $prefer_level2_sources === '1' ? 'checked' : '' ?> value="1">
                                         <?= GedcomTag::getLabel($match) ?>

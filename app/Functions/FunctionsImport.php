@@ -719,7 +719,7 @@ class FunctionsImport
                 DB::table('sources')->insert([
                     's_id'     => $xref,
                     's_file'   => $tree_id,
-                    's_name'   => $name,
+                    's_name'   => mb_substr($name, 0, 255),
                     's_gedcom' => $gedrec,
                 ]);
 
@@ -902,7 +902,7 @@ class FunctionsImport
             $data = [];
             foreach ($matches as $match) {
                 // Include each link once only.
-                if (!in_array($match[1] . $match[2], $data)) {
+                if (!in_array($match[1] . $match[2], $data, true)) {
                     $data[] = $match[1] . $match[2];
                     try {
                         DB::table('link')->insert([
@@ -1030,7 +1030,7 @@ class FunctionsImport
         if (!$xref) {
             $xref = $tree->getNewXref();
             // renumber the lines
-            $gedrec = preg_replace_callback('/\n(\d+)/', function (array $m) use ($level): string {
+            $gedrec = preg_replace_callback('/\n(\d+)/', static function (array $m) use ($level): string {
                 return "\n" . ($m[1] - $level);
             }, $gedrec);
             // convert to an object
@@ -1060,8 +1060,8 @@ class FunctionsImport
                     'm_file'               => $tree->id(),
                     'multimedia_file_refn' => mb_substr($media_file->filename(), 0, 248),
                     'multimedia_format'    => mb_substr($media_file->format(), 0, 4),
-                    'source_media_type'    => mb_substr($media_file->type(), 15),
-                    'descriptive_title'    => mb_substr($media_file->title(), 248),
+                    'source_media_type'    => mb_substr($media_file->type(), 0, 15),
+                    'descriptive_title'    => mb_substr($media_file->title(), 0, 248),
                 ]);
             }
         }
@@ -1137,7 +1137,7 @@ class FunctionsImport
         // then we may also need to delete "London, England" and "England".
         do {
             $affected = DB::table('places')
-                ->leftJoin('placelinks', function (JoinClause $join): void {
+                ->leftJoin('placelinks', static function (JoinClause $join): void {
                     $join
                         ->on('p_id', '=', 'pl_p_id')
                         ->on('p_file', '=', 'pl_file');

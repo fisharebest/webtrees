@@ -15,10 +15,6 @@
 
 /*
  * Descendants chart
- *
- * wt-chart, wt-chart-descendants
- * +---wt-chart-descendants-list
- *     +---wt-chart-descendants-list-item
  */
 .wt-chart-descendants .wt-chart-box {
 	width: 20rem;
@@ -28,12 +24,8 @@
 	display: none;
 }
 
-.wt-chart-descendants-list {
+.wt-daboville-number {
+	border: thin dotted grey;
 }
 
-.wt-chart-descendants-list-item {
-}
 
-.wt-chart-descendants .wt-family-break {
-	page-break-before: always;
-}

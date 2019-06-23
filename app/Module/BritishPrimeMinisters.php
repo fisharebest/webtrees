@@ -52,7 +52,6 @@ class BritishPrimeMinisters extends AbstractModule implements ModuleHistoricEven
      * All events provided by this module.
      *
      * @return Collection
-     * @return string[]
      */
     public function historicEventsAll(): Collection
     {

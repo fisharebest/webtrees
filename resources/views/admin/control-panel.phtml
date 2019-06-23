@@ -75,12 +75,6 @@ use Illuminate\Support\Collection;
                             <?= I18N::translate('Sign-in and registration') ?>
                         </a>
                     </li>
-                    <li>
-                        <span class="fa-li"><?= view('icons/preferences') ?></span>
-                        <a href="<?= e(route('admin-site-languages')) ?>">
-                            <?= I18N::translate('Languages') ?>
-                        </a>
-                    </li>
                 </ul>
             </div>
             <div class="col-sm-6">
@@ -155,7 +149,7 @@ use Illuminate\Support\Collection;
                     'note_list_module'       => $note_list_module,
                     'repository_list_module' => $repository_list_module,
                     'source_list_module'     => $source_list_module,
-                ]); ?>
+                ]) ?>
             </tbody>
             <tfoot>
                 <tr>
@@ -318,7 +312,7 @@ use Illuminate\Support\Collection;
         </ul>
 
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <h3>
                     <?= I18N::translate('Genealogy') ?>
                 </h3>
@@ -389,6 +383,10 @@ use Illuminate\Support\Collection;
                     </li>
                 </ul>
 
+            </div>
+
+            <div class="col-sm-4">
+
                 <h3>
                     <?= I18N::translate('Home page') ?>
                 </h3>
@@ -402,9 +400,7 @@ use Illuminate\Support\Collection;
                         <?= view('components/badge', ['count' => $block_modules_enabled->count(), 'total' => $block_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                 </ul>
-            </div>
 
-            <div class="col-sm-6">
                 <h3>
                     <?= I18N::translate('Individual page') ?>
                 </h3>
@@ -433,6 +429,10 @@ use Illuminate\Support\Collection;
                     </li>
                 </ul>
 
+            </div>
+
+            <div class="col-sm-4">
+
                 <h3>
                     <?= I18N::translate('Other') ?>
                 </h3>
@@ -441,16 +441,27 @@ use Illuminate\Support\Collection;
                     <?php foreach ($other_modules as $module) : ?>
                         <li>
                             <span class="fa-li"><?= view('icons/module') ?></span>
-                            <?php if ($module->isEnabled() && $module instanceof ModuleConfigInterface): ?>
-                                <a href="<?= e($module->getConfigLink()) ?>">
+
+                            <?php if ($module->isEnabled()): ?>
+                                <?php if ($module instanceof ModuleConfigInterface): ?>
+                                    <a href="<?= e($module->getConfigLink()) ?>">
                                     <?= $module->title() ?>
                                     <span class="fa"><?= view('icons/preferences') ?></span>
-                                </a>
-                            <?php elseif ($module->isEnabled()) : ?>
-                                <?= $module->title() ?>
+                                    </a>
+                                <?php else : ?>
+                                    <?= $module->title() ?>
+                                <?php endif ?>
                             <?php else : ?>
-                                <del class="text-muted"><?= $module->title() ?></del>
+                                <span class="text-muted">
+                                    <span class="fa-li"><?= view('icons/module') ?></span>
+                                     <?= $module->title() ?>
+                                    <?php if ($module instanceof ModuleConfigInterface): ?>
+                                        <span class="fa"><?= view('icons/preferences') ?></span>
+                                    <?php endif ?>
+                                    </span>
+                                </span>
                             <?php endif ?>
+
                             <?php if ($module instanceof ModuleCustomInterface): ?>
                                 <?= view('admin/custom-module-info', ['module' => $module]) ?>
                             <?php endif ?>

@@ -29,6 +29,6 @@ class FamilyTreeStatisticsModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\FamilyTreeStatisticsModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\FamilyTreeStatisticsModule::class));
     }
 }

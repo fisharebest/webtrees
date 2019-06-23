@@ -17,12 +17,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Exception;
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Functions\FunctionsCharts;
+use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -30,10 +30,9 @@ use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\Webtrees;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use function intdiv;
 
 /**
  * Class PedigreeMapModule
@@ -66,9 +65,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
         '#80FF80'
         // Light green
     ];
-
-    private static $map_providers  = null;
-    private static $map_selections = null;
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -146,15 +142,15 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
     }
 
     /**
-     * @param Request      $request
-     * @param Tree         $tree
-     * @param ChartService $chart_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param ChartService           $chart_service
      *
-     * @return JsonResponse
+     * @return ResponseInterface
      */
-    public function getMapDataAction(Request $request, Tree $tree, ChartService $chart_service): JsonResponse
+    public function getMapDataAction(ServerRequestInterface $request, Tree $tree, ChartService $chart_service): ResponseInterface
     {
-        $xref        = $request->get('reference');
+        $xref        = $request->getQueryParams()['reference'];
         $indi        = Individual::getInstance($xref, $tree);
         $color_count = count(self::LINE_COLORS);
 
@@ -220,9 +216,35 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
             }
         }
 
-        $code = empty($facts) ? Response::HTTP_NO_CONTENT : Response::HTTP_OK;
+        $code = empty($facts) ? StatusCodeInterface::STATUS_NO_CONTENT : StatusCodeInterface::STATUS_OK;
 
-        return new JsonResponse($geojson, $code);
+        return response($geojson, $code);
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param ChartService           $chart_service
+     *
+     * @return array
+     */
+    private function getPedigreeMapFacts(ServerRequestInterface $request, Tree $tree, ChartService $chart_service): array
+    {
+        $xref        = $request->getQueryParams()['reference'];
+        $individual  = Individual::getInstance($xref, $tree);
+        $generations = (int) $request->getQueryParams()['generations'];
+        $ancestors   = $chart_service->sosaStradonitzAncestors($individual, $generations);
+        $facts       = [];
+        foreach ($ancestors as $sosa => $person) {
+            if ($person->canShow()) {
+                $birth = $person->facts(['BIRT'])->first();
+                if ($birth instanceof Fact && $birth->place()->gedcomName() !== '') {
+                    $facts[$sosa] = $birth;
+                }
+            }
+        }
+
+        return $facts;
     }
 
     /**
@@ -256,7 +278,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
 
         if ($sosa > 1) {
             $addbirthtag = true;
-            $tag         = ucfirst(FunctionsCharts::getSosaName($sosa));
+            $tag         = ucfirst($this->getSosaName($sosa));
         }
 
         return [
@@ -271,134 +293,16 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
     }
 
     /**
-     * @param Request      $request
-     * @param Tree         $tree
-     * @param ChartService $chart_service
-     *
-     * @return array
-     */
-    private function getPedigreeMapFacts(Request $request, Tree $tree, ChartService $chart_service): array
-    {
-        $xref        = $request->get('reference');
-        $individual  = Individual::getInstance($xref, $tree);
-        $generations = (int) $request->get('generations', '4');
-        $ancestors   = $chart_service->sosaStradonitzAncestors($individual, $generations);
-        $facts       = [];
-        foreach ($ancestors as $sosa => $person) {
-            if ($person->canShow()) {
-                $birth = $person->facts(['BIRT'])->first();
-                if ($birth instanceof Fact && $birth->place()->gedcomName() !== '') {
-                    $facts[$sosa] = $birth;
-                }
-            }
-        }
-
-        return $facts;
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return JsonResponse
-     */
-    public function getProviderStylesAction(Request $request): JsonResponse
-    {
-        $styles = $this->getMapProviderData($request);
-
-        return new JsonResponse($styles);
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return array|null
-     */
-    private function getMapProviderData(Request $request): ?array
-    {
-        if (self::$map_providers === null) {
-            $providersFile        = WT_ROOT . Webtrees::MODULES_PATH . 'openstreetmap/providers/providers.xml';
-            self::$map_selections = [
-                'provider' => $this->getPreference('provider', 'openstreetmap'),
-                'style'    => $this->getPreference('provider_style', 'mapnik'),
-            ];
-
-            try {
-                $xml = simplexml_load_file($providersFile);
-                // need to convert xml structure into arrays & strings
-                foreach ($xml as $provider) {
-                    $style_keys = array_map(
-                        function (string $item): string {
-                            return preg_replace('/[^a-z\d]/i', '', strtolower($item));
-                        },
-                        (array) $provider->styles
-                    );
-
-                    $key = preg_replace('/[^a-z\d]/i', '', strtolower((string) $provider->name));
-
-                    self::$map_providers[$key] = [
-                        'name'   => (string) $provider->name,
-                        'styles' => array_combine($style_keys, (array) $provider->styles),
-                    ];
-                }
-            } catch (Exception $ex) {
-                // Default provider is OpenStreetMap
-                self::$map_selections = [
-                    'provider' => 'openstreetmap',
-                    'style'    => 'mapnik',
-                ];
-                self::$map_providers  = [
-                    'openstreetmap' => [
-                        'name'   => 'OpenStreetMap',
-                        'styles' => ['mapnik' => 'Mapnik'],
-                    ],
-                ];
-            }
-        }
-
-        //Ugly!!!
-        switch ($request->get('action')) {
-            case 'BaseData':
-                $varName = (self::$map_selections['style'] === '') ? '' : self::$map_providers[self::$map_selections['provider']]['styles'][self::$map_selections['style']];
-                $payload = [
-                    'selectedProvIndex' => self::$map_selections['provider'],
-                    'selectedProvName'  => self::$map_providers[self::$map_selections['provider']]['name'],
-                    'selectedStyleName' => $varName,
-                ];
-                break;
-            case 'ProviderStyles':
-                $provider = $request->get('provider', 'openstreetmap');
-                $payload  = self::$map_providers[$provider]['styles'];
-                break;
-            case 'AdminConfig':
-                $providers = [];
-                foreach (self::$map_providers as $key => $provider) {
-                    $providers[$key] = $provider['name'];
-                }
-                $payload = [
-                    'providers'     => $providers,
-                    'selectedProv'  => self::$map_selections['provider'],
-                    'styles'        => self::$map_providers[self::$map_selections['provider']]['styles'],
-                    'selectedStyle' => self::$map_selections['style'],
-                ];
-                break;
-            default:
-                $payload = null;
-        }
-
-        return $payload;
-    }
-
-    /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      * @param Tree    $tree
      *
      * @return object
      */
-    public function getPedigreeMapAction(Request $request, Tree $tree)
+    public function getPedigreeMapAction(ServerRequestInterface $request, Tree $tree)
     {
-        $xref           = $request->get('xref', '');
-        $individual     = Individual::getInstance($xref, $tree);
-        $generations    = $request->get('generations', self::DEFAULT_GENERATIONS);
+        $xref        = $request->getQueryParams()['xref'];
+        $individual  = Individual::getInstance($xref, $tree);
+        $generations = $request->getQueryParams()['generations'] ?? self::DEFAULT_GENERATIONS;
 
         if ($individual === null) {
             throw new IndividualNotFoundException();
@@ -426,5 +330,28 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
                 ]
             ),
         ]);
+    }
+
+    /**
+     * builds and returns sosa relationship name in the active language
+     *
+     * @param int $sosa Sosa number
+     *
+     * @return string
+     */
+    private function getSosaName(int $sosa): string
+    {
+        $path = '';
+
+        while ($sosa > 1) {
+            if ($sosa % 2 === 1) {
+                $path = 'mot' . $path;
+            } else {
+                $path = 'fat' . $path;
+            }
+            $sosa = intdiv($sosa, 2);
+        }
+
+        return Functions::getRelationshipNameFromPath($path);
     }
 }

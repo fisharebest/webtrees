@@ -19,7 +19,8 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Support\Str;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class ThemeSelectModule
@@ -69,7 +70,7 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface
 
             if ($ctype !== '') {
                 return view('modules/block-template', [
-                    'block'      => str_replace('_', '-', $this->name()),
+                    'block'      => Str::kebab($this->name()),
                     'id'         => $block_id,
                     'config_url' => '',
                     'title'      => $this->title(),
@@ -104,12 +105,12 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      * @param int     $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
     }
 

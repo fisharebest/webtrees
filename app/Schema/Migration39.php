@@ -36,9 +36,9 @@ class Migration39 implements MigrationInterface
         // These migrations are now part of the core code.
 
         if (!DB::schema()->hasTable('favorite')) {
-            DB::schema()->create('favorite', function (Blueprint $table): void {
+            DB::schema()->create('favorite', static function (Blueprint $table): void {
                 $table->integer('favorite_id', true);
-                $table->integer('user_id');
+                $table->integer('user_id')->nullable();
                 $table->integer('gedcom_id');
                 $table->string('xref', 20)->nullable();
                 $table->enum('favorite_type', ['INDI', 'FAM', 'SOUR', 'REPO', 'OBJE', 'NOTE', 'URL']);

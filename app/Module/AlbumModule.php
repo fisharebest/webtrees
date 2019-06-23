@@ -141,8 +141,8 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
             foreach ($individual->facts(['_WT_OBJE_SORT']) as $fact) {
                 $wt_obje_sort[] = trim($fact->value(), '@');
             }
-            usort($this->media_list, function (Media $x, Media $y) use ($wt_obje_sort): int {
-                return array_search($x->xref(), $wt_obje_sort) - array_search($y->xref(), $wt_obje_sort);
+            usort($this->media_list, static function (Media $x, Media $y) use ($wt_obje_sort): int {
+                return array_search($x->xref(), $wt_obje_sort, true) - array_search($y->xref(), $wt_obje_sort, true);
             });
         }
 

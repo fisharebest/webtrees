@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Statistics\Service\CenturyService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
+use stdClass;
 
 /**
  * A chart showing the number of families with no children by century.
@@ -55,14 +56,14 @@ class ChartNoChildrenFamilies
      * @param int $year1
      * @param int $year2
      *
-     * @return \stdClass[]
+     * @return stdClass[]
      */
     private function queryRecords(int $year1, int $year2): array
     {
         $query = DB::table('families')
             ->selectRaw('ROUND((d_year + 49) / 100) AS century')
             ->selectRaw('COUNT(*) AS total')
-            ->join('dates', function (JoinClause $join): void {
+            ->join('dates', static function (JoinClause $join): void {
                 $join->on('d_file', '=', 'f_file')
                     ->on('d_gid', '=', 'f_id');
             })

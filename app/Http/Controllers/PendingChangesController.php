@@ -33,9 +33,9 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use function route;
 
 /**
  * Show, accept and reject pending changes.
@@ -45,14 +45,14 @@ class PendingChangesController extends AbstractBaseController
     /**
      * Accept all changes to a tree.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function acceptAllChanges(Request $request, Tree $tree): RedirectResponse
+    public function acceptAllChanges(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $url = $request->get('url', '');
+        $url = $request->getQueryParams()['url'];
 
         $changes = DB::table('change')
             ->where('gedcom_id', '=', $tree->id())
@@ -76,7 +76,7 @@ class PendingChangesController extends AbstractBaseController
             Log::addEditLog('Accepted change ' . $change->change_id . ' for ' . $change->xref . ' / ' . $tree->name(), $tree);
         }
 
-        return new RedirectResponse(route('show-pending', [
+        return redirect(route('show-pending', [
             'ged' => $tree->name(),
             'url' => $url,
         ]));
@@ -85,16 +85,18 @@ class PendingChangesController extends AbstractBaseController
     /**
      * Accept a change (and all previous changes) to a single record.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function acceptChange(Request $request, Tree $tree): RedirectResponse
+    public function acceptChange(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $url       = $request->get('url', '');
-        $xref      = $request->get('xref', '');
-        $change_id = (int)$request->get('change_id');
+        $params = $request->getQueryParams();
+
+        $url       = $params['url'];
+        $xref      = $params['xref'];
+        $change_id = $params['change_id'];
 
         $changes = DB::table('change')
             ->where('gedcom_id', '=', $tree->id())
@@ -120,7 +122,7 @@ class PendingChangesController extends AbstractBaseController
             Log::addEditLog('Accepted change ' . $change->change_id . ' for ' . $change->xref . ' / ' . $tree->name(), $tree);
         }
 
-        return new RedirectResponse(route('show-pending', [
+        return redirect(route('show-pending', [
             'ged' => $tree->name(),
             'url' => $url,
         ]));
@@ -129,14 +131,14 @@ class PendingChangesController extends AbstractBaseController
     /**
      * Accept all changes to a single record.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function acceptChanges(Request $request, Tree $tree): Response
+    public function acceptChanges(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getParsedBody()['xref'];
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
@@ -153,27 +155,27 @@ class PendingChangesController extends AbstractBaseController
             FunctionsImport::acceptAllChanges($record->xref(), $record->tree());
         }
 
-        return new Response();
+        return response();
     }
 
     /**
      * Reject all changes to a tree.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function rejectAllChanges(Request $request, Tree $tree): RedirectResponse
+    public function rejectAllChanges(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $url = $request->get('url', '');
+        $url = $request->getQueryParams()['url'];
 
         DB::table('change')
             ->where('gedcom_id', '=', $tree->id())
             ->where('status', '=', 'pending')
             ->update(['status' => 'rejected']);
 
-        return new RedirectResponse(route('show-pending', [
+        return redirect(route('show-pending', [
             'ged' => $tree->name(),
             'url' => $url,
         ]));
@@ -182,16 +184,17 @@ class PendingChangesController extends AbstractBaseController
     /**
      * Reject a change (and all subsequent changes) to a single record.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function rejectChange(Request $request, Tree $tree): RedirectResponse
+    public function rejectChange(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $url       = $request->get('url', '');
-        $xref      = $request->get('xref', '');
-        $change_id = (int)$request->get('change_id');
+        $params    = $request->getQueryParams();
+        $url       = $params['url'];
+        $xref      = $params['xref'];
+        $change_id = $params['change_id'];
 
         // Reject a change, and subsequent changes to the same record
         DB::table('change')
@@ -201,7 +204,7 @@ class PendingChangesController extends AbstractBaseController
             ->where('status', '=', 'pending')
             ->update(['status' => 'rejected']);
 
-        return new RedirectResponse(route('show-pending', [
+        return redirect(route('show-pending', [
             'ged' => $tree->name(),
             'url' => $url,
         ]));
@@ -210,14 +213,14 @@ class PendingChangesController extends AbstractBaseController
     /**
      * Accept all changes to a single record.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function rejectChanges(Request $request, Tree $tree): Response
+    public function rejectChanges(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $xref = $request->get('xref', '');
+        $xref = $request->getParsedBody()['xref'];
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
@@ -234,20 +237,22 @@ class PendingChangesController extends AbstractBaseController
             FlashMessages::addMessage(I18N::translate('The changes to “%s” have been rejected.', $record->fullName()));
         }
 
-        return new Response();
+        return response();
     }
 
     /**
      * Show the pending changes for the current tree.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function showChanges(Request $request, Tree $tree): Response
+    public function showChanges(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $url = $request->get('url', route('tree-page', ['ged' => $tree->name()]));
+        $default_url = route('tree-page', ['ged' => $tree->name()]);
+
+        $url = $request->getQueryParams()['url'] ?? $default_url;
 
         $rows = DB::table('change')
             ->join('user', 'user.user_id', '=', 'change.user_id')

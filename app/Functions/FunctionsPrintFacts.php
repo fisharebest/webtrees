@@ -114,10 +114,10 @@ class FunctionsPrintFacts
         // New or deleted facts need different styling
         $styleadd = '';
         if ($fact->isPendingAddition()) {
-            $styleadd = 'new';
+            $styleadd = 'wt-new';
         }
         if ($fact->isPendingDeletion()) {
-            $styleadd = 'old';
+            $styleadd = 'wt-old';
         }
 
         // Event of close relative
@@ -344,6 +344,11 @@ class FunctionsPrintFacts
 
         // Print any other "2 XXXX" attributes, in the order in which they appear.
         preg_match_all('/\n2 (' . Gedcom::REGEX_TAG . ') (.+)/', $fact->gedcom(), $matches, PREG_SET_ORDER);
+        
+        //0 SOUR / 1 DATA / 2 EVEN / 3 DATE and 3 PLAC must be collected separately
+        preg_match_all('/\n2 EVEN .*((\n[3].*)*)/', $fact->gedcom(), $evenMatches, PREG_SET_ORDER);
+        $currentEvenMatch = 0;
+        
         foreach ($matches as $match) {
             switch ($match[1]) {
                 case 'DATE':
@@ -378,18 +383,17 @@ class FunctionsPrintFacts
                     foreach (preg_split('/ *, */', $match[2]) as $event) {
                         $events[] = GedcomTag::getLabel($event);
                     }
-                    if (count($events) === 1) {
-                        echo GedcomTag::getLabelValue('EVEN', $event);
-                    } else {
-                        echo GedcomTag::getLabelValue('EVEN', implode(I18N::$list_separator, $events));
-                    }
-                    if (preg_match('/\n3 DATE (.+)/', $fact->gedcom(), $date_match)) {
+                    echo GedcomTag::getLabelValue('EVEN', implode(I18N::$list_separator, $events));
+                    
+                    if (preg_match('/\n3 DATE (.+)/', $evenMatches[$currentEvenMatch][0], $date_match)) {
                         $date = new Date($date_match[1]);
                         echo GedcomTag::getLabelValue('DATE', $date->display());
                     }
-                    if (preg_match('/\n3 PLAC (.+)/', $fact->gedcom(), $plac_match)) {
+                    if (preg_match('/\n3 PLAC (.+)/', $evenMatches[$currentEvenMatch][0], $plac_match)) {
                         echo GedcomTag::getLabelValue('PLAC', $plac_match[1]);
                     }
+                    $currentEvenMatch++;
+                    
                     break;
                 case 'FAMC': // 0 INDI / 1 ADOP / 2 FAMC / 3 ADOP
                     $family = Family::getInstance(str_replace('@', '', $match[2]), $tree);
@@ -512,7 +516,7 @@ class FunctionsPrintFacts
 
                 $values = ['<a href="' . e($person->url()) . '">' . $person->fullName() . '</a>'];
 
-                $module = app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $person->tree(), Auth::user())->first(function (ModuleInterface $module) {
+                $module = app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $person->tree(), Auth::user())->first(static function (ModuleInterface $module) {
                     return $module instanceof RelationshipsChartModule;
                 });
 
@@ -716,10 +720,10 @@ class FunctionsPrintFacts
 
         $nlevel = $level + 1;
         if ($fact->isPendingAddition()) {
-            $styleadd = 'new';
+            $styleadd = 'wt-new';
             $can_edit = $level === 1 && $fact->canEdit();
         } elseif ($fact->isPendingDeletion()) {
-            $styleadd = 'old';
+            $styleadd = 'wt-old';
             $can_edit = false;
         } else {
             $styleadd = '';
@@ -1080,10 +1084,10 @@ class FunctionsPrintFacts
         $tree    = $parent->tree();
 
         if ($fact->isPendingAddition()) {
-            $styleadd = 'new';
+            $styleadd = 'wt-new';
             $can_edit = $level == 1 && $fact->canEdit();
         } elseif ($fact->isPendingDeletion()) {
-            $styleadd = 'old';
+            $styleadd = 'wt-old';
             $can_edit = false;
         } else {
             $styleadd = '';
@@ -1106,7 +1110,7 @@ class FunctionsPrintFacts
                 $factlines = explode("\n", $factrec); // 1 BIRT Y\n2 SOUR ...
                 $factwords = explode(' ', $factlines[0]); // 1 BIRT Y
                 $factname  = $factwords[1]; // BIRT
-                if ($factname == 'EVEN' || $factname == 'FACT') {
+                if ($factname === 'EVEN' || $factname === 'FACT') {
                     // Add ' EVEN' to provide sensible output for an event with an empty TYPE record
                     $ct = preg_match('/2 TYPE (.*)/', $factrec, $ematch);
                     if ($ct > 0) {
@@ -1134,7 +1138,7 @@ class FunctionsPrintFacts
                     echo '<a href="' . e($media->url()) . '"> ';
                     echo '<em>';
                     foreach ($media->getAllNames() as $name) {
-                        if ($name['type'] != 'TITL') {
+                        if ($name['type'] !== 'TITL') {
                             echo '<br>';
                         }
                         echo $name['full'];

@@ -25,10 +25,12 @@ class PluralRule8 implements PluralRuleInterface
 
         if ($number === 1) {
             return 0;
-        } elseif ($number >= 2 && $number <= 4) {
-            return 1;
-        } else {
-            return 2;
         }
+
+        if ($number >= 2 && $number <= 4) {
+            return 1;
+        }
+
+        return 2;
     }
 }

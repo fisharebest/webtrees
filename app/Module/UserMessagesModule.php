@@ -26,10 +26,10 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Str;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class UserMessagesModule
@@ -78,27 +78,27 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Delete one or messages belonging to a user.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function postDeleteMessageAction(Request $request, Tree $tree): Response
+    public function postDeleteMessageAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $message_ids = (array) $request->get('message_id', []);
+        $message_ids = $request->getParsedBody()['message_id'] ?? [];
 
         DB::table('message')
             ->where('user_id', '=', Auth::id())
             ->whereIn('message_id', $message_ids)
             ->delete();
 
-        if ($request->get('ctype') === 'user') {
+        if ($request->getQueryParams()['ctype'] === 'user') {
             $url = route('user-page', ['ged' => $tree->name()]);
         } else {
             $url = route('tree-page', ['ged' => $tree->name()]);
         }
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
@@ -117,13 +117,13 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             ->where('user_id', '=', Auth::id())
             ->orderByDesc('message_id')
             ->get()
-            ->map(function (stdClass $row): stdClass {
+            ->map(static function (stdClass $row): stdClass {
                 $row->created = Carbon::make($row->created);
 
                 return $row;
             });
 
-        $users = $this->user_service->all()->filter(function (UserInterface $user) use ($tree): bool {
+        $users = $this->user_service->all()->filter(static function (UserInterface $user) use ($tree): bool {
             $public_tree  = $tree->getPreference('REQUIRE_AUTHENTICATION') !== '1';
             $can_see_tree = $public_tree || Auth::accessLevel($tree, $user) <= Auth::PRIV_USER;
 
@@ -213,7 +213,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             $count = $messages->count();
 
             return view('modules/block-template', [
-                'block'      => str_replace('_', '-', $this->name()),
+                'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => '',
                 'title'      => I18N::plural('%s message', '%s messages', $count, I18N::number($count)),
@@ -245,12 +245,12 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
-     * @param int     $block_id
+     * @param ServerRequestInterface $request
+     * @param int                    $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
     }
 

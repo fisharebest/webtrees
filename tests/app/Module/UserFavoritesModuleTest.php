@@ -29,6 +29,6 @@ class UserFavoritesModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\UserFavoritesModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\UserFavoritesModule::class));
     }
 }

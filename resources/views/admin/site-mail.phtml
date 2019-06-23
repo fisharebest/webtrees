@@ -1,5 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Site; ?>
 <?php use Fisharebest\Webtrees\View; ?>
@@ -21,7 +19,7 @@
             <?= /* I18N: A configuration setting */ I18N::translate('Messages') ?>
         </label>
         <div class="col-sm-9">
-            <?= Bootstrap4::select($mail_transport_options, Site::getPreference('SMTP_ACTIVE'), ['id' => 'SMTP_ACTIVE', 'name' => 'SMTP_ACTIVE']) ?>
+            <?= view('components/select', ['name' => 'SMTP_ACTIVE', 'selected' => Site::getPreference('SMTP_ACTIVE'), 'options' => $mail_transport_options]) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Messages” site configuration setting */ I18N::translate('webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details.') ?>
             </p>
@@ -76,7 +74,7 @@
                 <?= /* I18N: A configuration setting */ I18N::translate('Use password') ?>
             </legend>
             <div class="col-sm-9">
-                <?= Bootstrap4::radioButtons('SMTP_AUTH', FunctionsEdit::optionsNoYes(), Site::getPreference('SMTP_AUTH'), true) ?>
+                <?= view('components/radios-inline', ['name' => 'SMTP_AUTH', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) Site::getPreference('SMTP_AUTH')]) ?>
                 <p class="small text-muted">
                     <?= /* I18N: Help text for the “Use password” site configuration setting */ I18N::translate('Most SMTP servers require a password.') ?>
                 </p>
@@ -103,7 +101,7 @@
             <?= /* I18N: A configuration setting */ I18N::translate('Password') ?>
         </label>
         <div class="col-sm-9">
-            <input type="password" class="form-control" id="SMTP_AUTH_PASS" name="SMTP_AUTH_PASS" value="">
+            <input type="password" class="form-control" id="SMTP_AUTH_PASS" name="SMTP_AUTH_PASS" value="" autocomplete="off">
             <p class="small text-muted">
                 <?= /* I18N: Help text for the "Password" site configuration setting */ I18N::translate('The password required for authentication with the SMTP server.') ?>
             </p>
@@ -116,7 +114,7 @@
             <?= /* I18N: A configuration setting */ I18N::translate('Secure connection') ?>
         </label>
         <div class="col-sm-9">
-            <?= Bootstrap4::select($mail_ssl_options, Site::getPreference('SMTP_SSL'), ['id' => 'SMTP_SSL', 'name' => 'SMTP_SSL']) ?>
+            <?= view('components/select', ['name' => 'SMTP_SSL', 'selected' => Site::getPreference('SMTP_SSL'), 'options' => $mail_ssl_options]) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Secure connection” site configuration setting */ I18N::translate('Most servers do not use secure connections.') ?>
             </p>

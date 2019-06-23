@@ -22,33 +22,33 @@ namespace Fisharebest\Webtrees\Census;
  */
 class CensusColumnConditionFrenchHomme extends AbstractCensusColumnCondition
 {
-    /** @var string Text to display for married males */
-    protected $husband = '1';
+    // Text to display for married males
+    protected const HUSBAND = '1';
 
-    /** @var string Text to display for married females */
-    protected $wife    = '';
+    // Text to display for married females
+    protected const WIFE = '';
 
-    /** @var string Text to display for unmarried males */
-    protected $bachelor = '';
+    // Text to display for married unmarried males
+    protected const BACHELOR = '';
 
-    /** @var string Text to display for unmarried females */
-    protected $spinster = '';
+    // Text to display for married unmarried females
+    protected const SPINSTER = '';
 
-    /** @var string Text to display for male children */
-    protected $boy  = '';
+    // Text to display for male children
+    protected const BOY = '';
 
-    /** @var string Text to display for female children */
-    protected $girl = '';
+    // Text to display for female children
+    protected const GIRL = '';
 
-    /** @var string Text to display for divorced males */
-    protected $divorce  = '1';
+    // Text to display for divorced males
+    protected const DIVORCE = '1';
 
-    /** @var string Text to display for divorced females */
-    protected $divorcee = '';
+    // Text to display for divorced females
+    protected const DIVORCEE = '';
 
-    /** @var string Text to display for widowed males */
-    protected $widower = '';
+    // Text to display for widowed males
+    protected const WIDOWER = '';
 
-    /** @var string Text to display for widowed females */
-    protected $widow   = '';
+    // Text to display for widowed females
+    protected const WIDOW = '';
 }

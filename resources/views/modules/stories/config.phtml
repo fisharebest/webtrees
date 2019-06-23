@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('modules') => I18N::translate('Modules'), $title]]) ?>
@@ -14,7 +13,7 @@
         <?= I18N::translate('Family tree') ?>
     </label>
 
-    <?= Bootstrap4::select($tree_names, $tree->name(), ['id' => 'ged', 'name' => 'ged']) ?>
+    <?= view('components/select', ['name' => 'ged', 'selected' => $tree->name(), 'options' => $tree_names]) ?>
     <button type="submit" class="btn btn-primary">
         <?= I18N::translate('show') ?>
     </button>

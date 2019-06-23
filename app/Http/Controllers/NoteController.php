@@ -24,8 +24,8 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for the note page.
@@ -35,15 +35,15 @@ class NoteController extends AbstractBaseController
     /**
      * Show a note's page.
      *
-     * @param Request          $request
-     * @param Tree             $tree
-     * @param ClipboardService $clipboard_service
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param ClipboardService       $clipboard_service
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function show(Request $request, Tree $tree, ClipboardService $clipboard_service): Response
+    public function show(ServerRequestInterface $request, Tree $tree, ClipboardService $clipboard_service): ResponseInterface
     {
-        $xref   = $request->get('xref', '');
+        $xref   = $request->getQueryParams()['xref'];
         $record = Note::getInstance($xref, $tree);
 
         Auth::checkNoteAccess($record, false);
@@ -67,12 +67,11 @@ class NoteController extends AbstractBaseController
      * @param Note $record
      *
      * @return Collection
-     * @return Fact[]
      */
     private function facts(Note $record): Collection
     {
         return $record->facts()
-            ->filter(function (Fact $fact): bool {
+            ->filter(static function (Fact $fact): bool {
                 return $fact->getTag() !== 'CONT';
             });
     }

@@ -17,36 +17,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
 
 /**
  * Common functions for all controllers
  */
 abstract class AbstractBaseController
 {
-    /** @var string */
-    protected $layout = 'layouts/default';
-
-    /**
-     * Create a response object from a view.
-     *
-     * @param string  $view_name
-     * @param mixed[] $view_data
-     * @param int     $status
-     *
-     * @return Response
-     */
-    protected function viewResponse($view_name, $view_data, $status = Response::HTTP_OK): Response
-    {
-        // Make the view's data available to the layout.
-        $layout_data = $view_data;
-
-        // Render the view
-        $layout_data['content'] = view($view_name, $view_data);
-
-        // Insert the view into the layout
-        $html = view($this->layout, $layout_data);
-
-        return new Response($html, $status);
-    }
+    use ViewResponseTrait;
 }

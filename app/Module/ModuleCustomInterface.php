@@ -49,4 +49,13 @@ interface ModuleCustomInterface extends ModuleInterface
      * @return string
      */
     public function customModuleSupportUrl(): string;
+
+    /**
+     * Additional/updated translations.
+     *
+     * @param string $language
+     *
+     * @return string[]
+     */
+    public function customTranslations(string $language): array;
 }

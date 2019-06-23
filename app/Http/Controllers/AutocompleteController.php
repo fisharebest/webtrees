@@ -25,8 +25,8 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
-use Fisharebest\Webtrees\Select2;
 use Fisharebest\Webtrees\Services\SearchService;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -34,8 +34,9 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use League\Flysystem\Filesystem;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use function rawurlencode;
 
 /**
  * Controller for the autocomplete callbacks
@@ -61,45 +62,45 @@ class AutocompleteController extends AbstractBaseController
     /**
      * Autocomplete for media folders.
      *
-     * @param Request    $request
-     * @param Tree       $tree
-     * @param Filesystem $filesystem
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param Filesystem             $filesystem
      *
-     * @return JsonResponse
+     * @return ResponseInterface
      */
-    public function folder(Request $request, Tree $tree, Filesystem $filesystem): JsonResponse
+    public function folder(ServerRequestInterface $request, Tree $tree, Filesystem $filesystem): ResponseInterface
     {
-        $query = $request->get('query', '');
+        $query = $request->getQueryParams()['query'] ?? '';
 
-        $prefix = $tree->getPreference('MEDIA_DIRECTORY', '');
+        $prefix = $tree->getPreference('MEDIA_DIRECTORY');
 
         $media_filesystem = new Filesystem(new ChrootAdapter($filesystem, $prefix));
 
         $contents = new Collection($media_filesystem->listContents('', true));
 
         $folders = $contents
-            ->filter(function (array $object) use ($query): bool {
+            ->filter(static function (array $object) use ($query): bool {
                 return $object['type'] === 'dir' && Str::contains($object['path'], $query);
             })
-            ->map(function (array $object): array {
+            ->map(static function (array $object): array {
                 return ['value' => $object['path']];
             });
 
-        return new JsonResponse($folders);
+        return response($folders);
     }
 
     /**
      * Autocomplete for source citations.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return JsonResponse
+     * @return ResponseInterface
      */
-    public function page(Request $request, Tree $tree): JsonResponse
+    public function page(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $query = $request->get('query', '');
-        $xref  = $request->get('extra', '');
+        $query = $request->getQueryParams()['query'] ?? '';
+        $xref  = $request->getQueryParams()['extra'] ?? '';
 
         $source = Source::getInstance($xref, $tree);
 
@@ -109,7 +110,7 @@ class AutocompleteController extends AbstractBaseController
 
         // Fetch all records with a link to this source
         $individuals = DB::table('individuals')
-            ->join('link', function (JoinClause $join): void {
+            ->join('link', static function (JoinClause $join): void {
                 $join
                     ->on('l_file', '=', 'i_file')
                     ->on('l_from', '=', 'i_id');
@@ -124,7 +125,7 @@ class AutocompleteController extends AbstractBaseController
             ->filter(GedcomRecord::accessFilter());
 
         $families = DB::table('families')
-            ->join('link', function (JoinClause $join): void {
+            ->join('link', static function (JoinClause $join): void {
                 $join
                     ->on('l_file', '=', 'f_file')
                     ->on('l_from', '=', 'f_id')
@@ -153,40 +154,42 @@ class AutocompleteController extends AbstractBaseController
 
         $pages = array_unique($pages);
 
-        $pages = array_map(function (string $page): array {
+        $pages = array_map(static function (string $page): array {
             return ['value' => $page];
         }, $pages);
 
-        return new JsonResponse($pages);
+        return response($pages);
     }
 
     /**
      * /**
      * Autocomplete for place names.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return JsonResponse
+     * @return ResponseInterface
      */
-    public function place(Request $request, Tree $tree): JsonResponse
+    public function place(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $query = $request->get('query', '');
+        $query = $request->getQueryParams()['query'] ?? '';
         $data  = [];
 
         foreach ($this->search_service->searchPlaces($tree, $query) as $place) {
             $data[] = ['value' => $place->gedcomName()];
         }
 
-        if (empty($data) && $tree->getPreference('GEONAMES_ACCOUNT')) {
+        $geonames = Site::getPreference('geonames');
+
+        if (empty($data) && $geonames !== '') {
             // No place found? Use an external gazetteer
             $url =
                 'http://api.geonames.org/searchJSON' .
-                '?name_startsWith=' . urlencode($query) .
+                '?name_startsWith=' . rawurlencode($query) .
                 '&lang=' . WT_LOCALE .
                 '&fcode=CMTY&fcode=ADM4&fcode=PPL&fcode=PPLA&fcode=PPLC' .
                 '&style=full' .
-                '&username=' . $tree->getPreference('GEONAMES_ACCOUNT');
+                '&username=' . rawurlencode($geonames);
 
             // try to use curl when file_get_contents not allowed
             if (ini_get('allow_url_fopen')) {
@@ -198,7 +201,7 @@ class AutocompleteController extends AbstractBaseController
                 $json = curl_exec($ch);
                 curl_close($ch);
             } else {
-                return new JsonResponse([]);
+                return response([]);
             }
 
             $places = json_decode($json, true);
@@ -209,27 +212,27 @@ class AutocompleteController extends AbstractBaseController
             }
         }
 
-        return new JsonResponse($data);
+        return response($data);
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return JsonResponse
+     * @return ResponseInterface
      */
-    public function select2Family(Request $request, Tree $tree): JsonResponse
+    public function select2Family(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $page  = (int) $request->get('page');
-        $query = $request->get('q', '');
+        $page  = (int) ($request->getParsedBody()['page'] ?? 1);
+        $query = $request->getParsedBody()['q'] ?? '';
 
         // Fetch one more row than we need, so we can know if more rows exist.
-        $offset = $page * self::RESULTS_PER_PAGE;
+        $offset = ($page - 1) * self::RESULTS_PER_PAGE;
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         $results = $this->search_service
             ->searchFamilyNames([$tree], [$query], $offset, $limit)
-            ->map(function (Family $family): array {
+            ->map(static function (Family $family): array {
                 return [
                     'id'    => $family->xref(),
                     'text'  => view('selects/family', ['family' => $family]),
@@ -237,7 +240,7 @@ class AutocompleteController extends AbstractBaseController
                 ];
             });
 
-        return new JsonResponse([
+        return response([
             'results'    => $results->slice(0, self::RESULTS_PER_PAGE)->all(),
             'pagination' => [
                 'more' => $results->count() > self::RESULTS_PER_PAGE,
@@ -246,36 +249,23 @@ class AutocompleteController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return JsonResponse
+     * @return ResponseInterface
      */
-    public function select2Flag(Request $request): JsonResponse
+    public function select2Individual(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $page  = (int) $request->get('page');
-        $query = $request->get('q', '');
-
-        return new JsonResponse(Select2::flagSearch($page, $query));
-    }
-
-    /**
-     * @param Request $request
-     * @param Tree    $tree
-     *
-     * @return JsonResponse
-     */
-    public function select2Individual(Request $request, Tree $tree): JsonResponse
-    {
-        $page  = (int) $request->get('page');
-        $query = $request->get('q', '');
+        $page  = (int) ($request->getParsedBody()['page'] ?? 1);
+        $query = $request->getParsedBody()['q'] ?? '';
 
         // Fetch one more row than we need, so we can know if more rows exist.
-        $offset = $page * self::RESULTS_PER_PAGE;
+        $offset = ($page - 1) * self::RESULTS_PER_PAGE;
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         $results = $this->search_service
             ->searchIndividualNames([$tree], [$query], $offset, $limit)
-            ->map(function (Individual $individual): array {
+            ->map(static function (Individual $individual): array {
                 return [
                     'id'    => $individual->xref(),
                     'text'  => view('selects/individual', ['individual' => $individual]),
@@ -283,7 +273,7 @@ class AutocompleteController extends AbstractBaseController
                 ];
             });
 
-        return new JsonResponse([
+        return response([
             'results'    => $results->slice(0, self::RESULTS_PER_PAGE)->all(),
             'pagination' => [
                 'more' => $results->count() > self::RESULTS_PER_PAGE,
@@ -292,23 +282,23 @@ class AutocompleteController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return JsonResponse
+     * @return ResponseInterface
      */
-    public function select2MediaObject(Request $request, Tree $tree): JsonResponse
+    public function select2MediaObject(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $page  = (int) $request->get('page');
-        $query = $request->get('q', '');
+        $page  = (int) ($request->getParsedBody()['page'] ?? 1);
+        $query = $request->getParsedBody()['q'] ?? '';
 
         // Fetch one more row than we need, so we can know if more rows exist.
-        $offset = $page * self::RESULTS_PER_PAGE;
+        $offset = ($page - 1) * self::RESULTS_PER_PAGE;
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         $results = $this->search_service
             ->searchMedia([$tree], [$query], $offset, $limit)
-            ->map(function (Media $media): array {
+            ->map(static function (Media $media): array {
                 return [
                     'id'    => $media->xref(),
                     'text'  => view('selects/media', ['media' => $media]),
@@ -316,7 +306,7 @@ class AutocompleteController extends AbstractBaseController
                 ];
             });
 
-        return new JsonResponse([
+        return response([
             'results'    => $results->slice(0, self::RESULTS_PER_PAGE)->all(),
             'pagination' => [
                 'more' => $results->count() > self::RESULTS_PER_PAGE,
@@ -325,23 +315,23 @@ class AutocompleteController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return JsonResponse
+     * @return ResponseInterface
      */
-    public function select2Note(Request $request, Tree $tree): JsonResponse
+    public function select2Note(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $page  = (int) $request->get('page');
-        $query = $request->get('q', '');
+        $page  = (int) ($request->getParsedBody()['page'] ?? 1);
+        $query = $request->getParsedBody()['q'] ?? '';
 
         // Fetch one more row than we need, so we can know if more rows exist.
-        $offset = $page * self::RESULTS_PER_PAGE;
+        $offset = ($page - 1) * self::RESULTS_PER_PAGE;
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         $results = $this->search_service
             ->searchNotes([$tree], [$query], $offset, $limit)
-            ->map(function (Note $note): array {
+            ->map(static function (Note $note): array {
                 return [
                     'id'    => $note->xref(),
                     'text'  => view('selects/note', ['note' => $note]),
@@ -349,7 +339,7 @@ class AutocompleteController extends AbstractBaseController
                 ];
             });
 
-        return new JsonResponse([
+        return response([
             'results'    => $results->slice(0, self::RESULTS_PER_PAGE)->all(),
             'pagination' => [
                 'more' => $results->count() > self::RESULTS_PER_PAGE,
@@ -358,17 +348,17 @@ class AutocompleteController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return JsonResponse
+     * @return ResponseInterface
      */
-    public function select2Place(Request $request, Tree $tree): JsonResponse
+    public function select2Place(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $page  = (int) $request->get('page');
-        $query = $request->get('q', '');
+        $page  = (int) ($request->getParsedBody()['page'] ?? 1);
+        $query = $request->getParsedBody()['q'] ?? '';
 
-        return new JsonResponse($this->placeSearch($tree, $page, $query, true));
+        return response($this->placeSearch($tree, $page, $query, true));
     }
 
     /**
@@ -383,7 +373,7 @@ class AutocompleteController extends AbstractBaseController
      */
     private function placeSearch(Tree $tree, int $page, string $query, bool $create): array
     {
-        $offset  = $page * self::RESULTS_PER_PAGE;
+        $offset  = ($page - 1) * self::RESULTS_PER_PAGE;
         $results = [];
         $found   = false;
 
@@ -399,15 +389,17 @@ class AutocompleteController extends AbstractBaseController
             ];
         }
 
+        $geonames = Site::getPreference('geonames');
+
         // No place found? Use an external gazetteer
-        if (empty($results) && $tree->getPreference('GEONAMES_ACCOUNT')) {
+        if (empty($results) && $geonames !== '') {
             $url =
                 'http://api.geonames.org/searchJSON' .
-                '?name_startsWith=' . urlencode($query) .
+                '?name_startsWith=' . rawurlencode($query) .
                 '&lang=' . WT_LOCALE .
                 '&fcode=CMTY&fcode=ADM4&fcode=PPL&fcode=PPLA&fcode=PPLC' .
                 '&style=full' .
-                '&username=' . $tree->getPreference('GEONAMES_ACCOUNT');
+                '&username=' . rawurlencode($geonames);
             // try to use curl when file_get_contents not allowed
             if (ini_get('allow_url_fopen')) {
                 $json   = file_get_contents($url);
@@ -458,23 +450,23 @@ class AutocompleteController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return JsonResponse
+     * @return ResponseInterface
      */
-    public function select2Repository(Request $request, Tree $tree): JsonResponse
+    public function select2Repository(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $page  = (int) $request->get('page');
-        $query = $request->get('q', '');
+        $page  = (int) ($request->getParsedBody()['page'] ?? 1);
+        $query = $request->getParsedBody()['q'] ?? '';
 
         // Fetch one more row than we need, so we can know if more rows exist.
-        $offset = $page * self::RESULTS_PER_PAGE;
+        $offset = ($page - 1) * self::RESULTS_PER_PAGE;
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         $results = $this->search_service
             ->searchRepositories([$tree], [$query], $offset, $limit)
-            ->map(function (Repository $repository): array {
+            ->map(static function (Repository $repository): array {
                 return [
                     'id'    => $repository->xref(),
                     'text'  => view('selects/repository', ['repository' => $repository]),
@@ -482,7 +474,7 @@ class AutocompleteController extends AbstractBaseController
                 ];
             });
 
-        return new JsonResponse([
+        return response([
             'results'    => $results->slice(0, self::RESULTS_PER_PAGE)->all(),
             'pagination' => [
                 'more' => $results->count() > self::RESULTS_PER_PAGE,
@@ -491,23 +483,23 @@ class AutocompleteController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return JsonResponse
+     * @return ResponseInterface
      */
-    public function select2Source(Request $request, Tree $tree): JsonResponse
+    public function select2Source(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $page  = (int) $request->get('page');
-        $query = $request->get('q', '');
+        $page  = (int) ($request->getParsedBody()['page'] ?? 1);
+        $query = $request->getParsedBody()['q'] ?? '';
 
         // Fetch one more row than we need, so we can know if more rows exist.
-        $offset = $page * self::RESULTS_PER_PAGE;
+        $offset = ($page - 1) * self::RESULTS_PER_PAGE;
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         $results = $this->search_service
             ->searchSourcesByName([$tree], [$query], $offset, $limit)
-            ->map(function (Source $source): array {
+            ->map(static function (Source $source): array {
                 return [
                     'id'    => $source->xref(),
                     'text'  => view('selects/source', ['source' => $source]),
@@ -515,7 +507,7 @@ class AutocompleteController extends AbstractBaseController
                 ];
             });
 
-        return new JsonResponse([
+        return response([
             'results'    => $results->slice(0, self::RESULTS_PER_PAGE)->all(),
             'pagination' => [
                 'more' => $results->count() > self::RESULTS_PER_PAGE,
@@ -524,23 +516,23 @@ class AutocompleteController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return JsonResponse
+     * @return ResponseInterface
      */
-    public function select2Submitter(Request $request, Tree $tree): JsonResponse
+    public function select2Submitter(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $page  = (int) $request->get('page');
-        $query = $request->get('q', '');
+        $page  = (int) ($request->getParsedBody()['page'] ?? 1);
+        $query = $request->getParsedBody()['q'] ?? '';
 
         // Fetch one more row than we need, so we can know if more rows exist.
-        $offset = $page * self::RESULTS_PER_PAGE;
+        $offset = ($page - 1) * self::RESULTS_PER_PAGE;
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         $results = $this->search_service
             ->searchSubmitters([$tree], [$query], $offset, $limit)
-            ->map(function (GedcomRecord $submitter): array {
+            ->map(static function (GedcomRecord $submitter): array {
                 return [
                     'id'    => $submitter->xref(),
                     'text'  => view('selects/submitter', ['submitter' => $submitter]),
@@ -548,7 +540,7 @@ class AutocompleteController extends AbstractBaseController
                 ];
             });
 
-        return new JsonResponse([
+        return response([
             'results'    => $results->slice(0, self::RESULTS_PER_PAGE)->all(),
             'pagination' => [
                 'more' => $results->count() > self::RESULTS_PER_PAGE,

@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Exception;
 use Fisharebest\Algorithm\ConnectedComponent;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
@@ -47,14 +48,18 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
+use Nyholm\Psr7\UploadedFile;
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\ResponseHeaderBag;
-use Symfony\Component\HttpFoundation\StreamedResponse;
 use Throwable;
+use function addcslashes;
+use function app;
+use function fclose;
+use function is_dir;
+use const UPLOAD_ERR_OK;
 use const WT_DATA_DIR;
 
 /**
@@ -93,9 +98,9 @@ class AdminTreesController extends AbstractBaseController
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function check(Tree $tree): Response
+    public function check(Tree $tree): ResponseInterface
     {
         // We need to work with raw GEDCOM data, as we are looking for errors
         // which may prevent the GedcomRecord objects from working.
@@ -129,7 +134,7 @@ class AdminTreesController extends AbstractBaseController
             ->unionAll($q5)
             ->unionAll($q6)
             ->get()
-            ->map(function (stdClass $row): stdClass {
+            ->map(static function (stdClass $row): stdClass {
                 // Extract type for pending record
                 if ($row->type === '' && preg_match('/^0 @[^@]*@ ([_A-Z0-9]+)/', $row->gedcom, $match)) {
                     $row->type = $match[1];
@@ -263,7 +268,7 @@ class AdminTreesController extends AbstractBaseController
                         $this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) .
                         ' ' .
                         I18N::translate('This type of link is not allowed here.');
-                } elseif (!array_key_exists($type1, $RECORD_LINKS) || !in_array($type2, $RECORD_LINKS[$type1]) || !array_key_exists($type2, $XREF_LINKS)) {
+                } elseif (!array_key_exists($type1, $RECORD_LINKS) || !in_array($type2, $RECORD_LINKS[$type1], true) || !array_key_exists($type2, $XREF_LINKS)) {
                     $errors[] =
                         $this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) .
                         ' ' .
@@ -349,14 +354,15 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function create(Request $request): RedirectResponse
+    public function create(ServerRequestInterface $request): ResponseInterface
     {
-        $tree_name  = $request->get('tree_name', '');
-        $tree_title = $request->get('tree_title', '');
+        $params     = $request->getParsedBody();
+        $tree_name  = $params['tree_name'];
+        $tree_title = $params['tree_title'];
 
         // We use the tree name as a file name, so no directory separators allowed.
         $tree_name = basename($tree_name);
@@ -372,16 +378,15 @@ class AdminTreesController extends AbstractBaseController
             $url = route('admin-trees', ['ged' => $tree->name()]);
         }
 
-
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
      * @param Tree $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function delete(Tree $tree): RedirectResponse
+    public function delete(Tree $tree): ResponseInterface
     {
         /* I18N: %s is the name of a family tree */
         FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', e($tree->title())), 'success');
@@ -390,15 +395,15 @@ class AdminTreesController extends AbstractBaseController
 
         $url = route('admin-trees');
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function duplicates(Tree $tree): Response
+    public function duplicates(Tree $tree): ResponseInterface
     {
         $duplicates = $this->duplicateRecords($tree);
 
@@ -414,9 +419,9 @@ class AdminTreesController extends AbstractBaseController
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function export(Tree $tree): Response
+    public function export(Tree $tree): ResponseInterface
     {
         $title = I18N::translate('Export a GEDCOM file') . ' — ' . e($tree->title());
 
@@ -427,19 +432,19 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function exportClient(Request $request, Tree $tree): Response
+    public function exportClient(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        // Validate user parameters
-        $convert          = (bool) $request->get('convert');
-        $zip              = (bool) $request->get('zip');
-        $media            = (bool) $request->get('media');
-        $media_path       = $request->get('media-path', '');
-        $privatize_export = $request->get('privatize_export', '');
+        $params           = $request->getQueryParams();
+        $convert          = (bool) ($params['convert'] ?? false);
+        $zip              = (bool) ($params['zip'] ?? false);
+        $media            = (bool) ($params['media'] ?? false);
+        $media_path       = $params['media-path'] ?? '';
+        $privatize_export = $params['privatize_export'];
 
         $access_levels = [
             'gedadmin' => Auth::PRIV_NONE,
@@ -453,7 +458,7 @@ class AdminTreesController extends AbstractBaseController
 
         // What to call the downloaded file
         $download_filename = $tree->name();
-        if (strtolower(substr($download_filename, -4, 4)) != '.ged') {
+        if (strtolower(substr($download_filename, -4, 4)) !== '.ged') {
             $download_filename .= '.ged';
         }
 
@@ -497,42 +502,50 @@ class AdminTreesController extends AbstractBaseController
             // Need to force-close the filesystem
             unset($zip_filesystem);
 
-            $response = new BinaryFileResponse($temp_zip_file);
-            $response->deleteFileAfterSend(true);
+            // Use a stream, so that we do not have to load the entire file into memory.
+            $stream   = app(StreamFactoryInterface::class)->createStreamFromFile($temp_zip_file);
+            $filename = addcslashes($download_filename, '"') . '.zip';
 
-            $response->headers->set('Content-Type', 'application/zip');
-            $response->setContentDisposition(
-                ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-                $download_filename . '.zip'
-            );
-        } else {
-            $response = new StreamedResponse(function () use ($tree, $access_level, $media_path, $encoding) {
-                $stream = fopen('php://output', 'wb');
-                FunctionsExport::exportGedcom($tree, $stream, $access_level, $media_path, $encoding);
-                fclose($stream);
-            });
+            /** @var ResponseFactoryInterface $response_factory */
+            $response_factory = app(ResponseFactoryInterface::class);
 
-            $charset = $convert ? 'ISO-8859-1' : 'UTF-8';
-
-            $response->headers->set('Content-Type', 'text/plain; charset=' . $charset);
-            $contentDisposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $download_filename);
-            $response->headers->set('Content-Disposition', $contentDisposition);
+            return $response_factory->createResponse()
+                ->withBody($stream)
+                ->withHeader('Content-Type', 'application/zip')
+                ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
         }
 
-        return $response;
+        $resource = fopen('php://temp', 'wb+');
+        FunctionsExport::exportGedcom($tree, $resource, $access_level, $media_path, $encoding);
+        rewind($resource);
+
+        $charset = $convert ? 'ISO-8859-1' : 'UTF-8';
+
+        /** @var StreamFactoryInterface $response_factory */
+        $stream_factory = app(StreamFactoryInterface::class);
+
+        $stream = $stream_factory->createStreamFromResource($resource);
+
+        /** @var ResponseFactoryInterface $response_factory */
+        $response_factory = app(ResponseFactoryInterface::class);
+
+        return $response_factory->createResponse()
+            ->withBody($stream)
+            ->withHeader('Content-Type', 'text/x-gedcom; charset=' . $charset)
+            ->withHeader('Content-Disposition', 'attachment; filename="' . addcslashes($download_filename, '"') . '"');
     }
 
     /**
      * @param Tree $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function exportServer(Tree $tree): RedirectResponse
+    public function exportServer(Tree $tree): ResponseInterface
     {
         $filename = WT_DATA_DIR . $tree->name();
 
         // Force a ".ged" suffix
-        if (strtolower(substr($filename, -4)) != '.ged') {
+        if (strtolower(substr($filename, -4)) !== '.ged') {
             $filename .= '.ged';
         }
 
@@ -556,21 +569,22 @@ class AdminTreesController extends AbstractBaseController
             'ged' => $tree->name(),
         ]);
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function importAction(Request $request, Tree $tree): RedirectResponse
+    public function importAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $source             = $request->get('source');
-        $keep_media         = (bool) $request->get('keep_media');
-        $WORD_WRAPPED_NOTES = (bool) $request->get('WORD_WRAPPED_NOTES');
-        $GEDCOM_MEDIA_PATH  = $request->get('GEDCOM_MEDIA_PATH');
+        $params             = $request->getParsedBody();
+        $source             = $params['source'];
+        $keep_media         = (bool) ($params['keep_media'] ?? false);
+        $WORD_WRAPPED_NOTES = (bool) ($params['WORD_WRAPPED_NOTES'] ?? false);
+        $GEDCOM_MEDIA_PATH  = $params['GEDCOM_MEDIA_PATH'];
 
         // Save these choices as defaults
         $tree->setPreference('keep_media', $keep_media ? '1' : '0');
@@ -578,11 +592,13 @@ class AdminTreesController extends AbstractBaseController
         $tree->setPreference('GEDCOM_MEDIA_PATH', $GEDCOM_MEDIA_PATH);
 
         if ($source === 'client') {
-            if (isset($_FILES['tree_name'])) {
-                if ($_FILES['tree_name']['error'] == 0 && is_readable($_FILES['tree_name']['tmp_name'])) {
-                    $tree->importGedcomFile($_FILES['tree_name']['tmp_name'], $_FILES['tree_name']['name']);
+            $upload = $request->getUploadedFiles()['tree_name'] ?? null;
+
+            if ($upload instanceof UploadedFile) {
+                if ($upload->getError() === UPLOAD_ERR_OK) {
+                    $tree->importGedcomFile($upload->getStream(), basename($upload->getClientFilename()));
                 } else {
-                    FlashMessages::addMessage(Functions::fileUploadErrorText($_FILES['tree_name']['error']), 'danger');
+                    FlashMessages::addMessage(Functions::fileUploadErrorText($upload->getError()), 'danger');
                 }
             } else {
                 FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
@@ -590,10 +606,11 @@ class AdminTreesController extends AbstractBaseController
         }
 
         if ($source === 'server') {
-            $basename = basename($request->get('tree_name'));
+            $basename = basename($params['tree_name'] ?? '');
 
             if ($basename) {
-                $tree->importGedcomFile(WT_DATA_DIR . $basename, $basename);
+                $stream = app(StreamFactoryInterface::class)->createStreamFromFile(WT_DATA_DIR . $basename);
+                $tree->importGedcomFile($stream, $basename);
             } else {
                 FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
             }
@@ -601,15 +618,15 @@ class AdminTreesController extends AbstractBaseController
 
         $url = route('admin-trees', ['ged' => $tree->name()]);
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function importForm(Tree $tree): Response
+    public function importForm(Tree $tree): ResponseInterface
     {
         $default_gedcom_file = $tree->getPreference('gedcom_filename');
         $gedcom_media_path   = $tree->getPreference('GEDCOM_MEDIA_PATH');
@@ -629,9 +646,9 @@ class AdminTreesController extends AbstractBaseController
     /**
      * @param Tree|null $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function index(Tree $tree = null): Response
+    public function index(Tree $tree = null): ResponseInterface
     {
         $multiple_tree_threshold = (int) Site::getPreference('MULTIPLE_TREE_THRESHOLD', self::MULTIPLE_TREE_THRESHOLD);
         $gedcom_files            = $this->gedcomFiles(WT_DATA_DIR);
@@ -641,7 +658,7 @@ class AdminTreesController extends AbstractBaseController
         // On sites with hundreds or thousands of trees, this page becomes very large.
         // Just show the current tree, the default tree, and unimported trees
         if (count($all_trees) >= $multiple_tree_threshold) {
-            $all_trees = array_filter($all_trees, function (Tree $x) use ($tree): bool {
+            $all_trees = array_filter($all_trees, static function (Tree $x) use ($tree): bool {
                 return $x->getPreference('imported') === '0' || $tree->id() === $x->id() || $x->name() === Site::getPreference('DEFAULT_GEDCOM');
             });
         }
@@ -651,8 +668,11 @@ class AdminTreesController extends AbstractBaseController
 
         $title = I18N::translate('Manage family trees');
 
+        $base_url = app(ServerRequestInterface::class)->getAttribute('base_url');
+
         return $this->viewResponse('admin/trees', [
             'all_trees'               => $all_trees,
+            'base_url'                => $base_url,
             'default_tree_name'       => $default_tree_name,
             'default_tree_title'      => $default_tree_title,
             'gedcom_files'            => $gedcom_files,
@@ -662,14 +682,15 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function merge(Request $request): Response
+    public function merge(ServerRequestInterface $request): ResponseInterface
     {
-        $tree1_name = $request->get('tree1_name');
-        $tree2_name = $request->get('tree2_name');
+        $params = $request->getQueryParams();
+        $tree1_name = $params['tree1_name'] ?? '';
+        $tree2_name = $params['tree2_name'] ?? '';
 
         $tree1 = Tree::findByName($tree1_name);
         $tree2 = Tree::findByName($tree2_name);
@@ -694,14 +715,15 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function mergeAction(Request $request): RedirectResponse
+    public function mergeAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree1_name = $request->get('tree1_name');
-        $tree2_name = $request->get('tree2_name');
+        $params = $request->getParsedBody();
+        $tree1_name = $params['tree1_name'] ?? '';
+        $tree2_name = $params['tree2_name'] ?? '';
 
         $tree1 = Tree::findByName($tree1_name);
         $tree2 = Tree::findByName($tree2_name);
@@ -713,7 +735,7 @@ class AdminTreesController extends AbstractBaseController
                 'i_rin',
                 'i_sex',
                 'i_gedcom',
-            ], function (Builder $query) use ($tree1, $tree2): void {
+            ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
                     DB::raw($tree2->id()),
                     'i_id',
@@ -731,7 +753,7 @@ class AdminTreesController extends AbstractBaseController
                 'f_wife',
                 'f_gedcom',
                 'f_numchil',
-            ], function (Builder $query) use ($tree1, $tree2): void {
+            ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
                     DB::raw($tree2->id()),
                     'f_id',
@@ -748,7 +770,7 @@ class AdminTreesController extends AbstractBaseController
                 's_id',
                 's_name',
                 's_gedcom',
-            ], function (Builder $query) use ($tree1, $tree2): void {
+            ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
                     DB::raw($tree2->id()),
                     's_id',
@@ -762,7 +784,7 @@ class AdminTreesController extends AbstractBaseController
                 'm_file',
                 'm_id',
                 'm_gedcom',
-            ], function (Builder $query) use ($tree1, $tree2): void {
+            ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
                     DB::raw($tree2->id()),
                     'm_id',
@@ -778,7 +800,7 @@ class AdminTreesController extends AbstractBaseController
                 'multimedia_format',
                 'source_media_type',
                 'descriptive_title',
-            ], function (Builder $query) use ($tree1, $tree2): void {
+            ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
                     DB::raw($tree2->id()),
                     'm_id',
@@ -795,7 +817,7 @@ class AdminTreesController extends AbstractBaseController
                 'o_id',
                 'o_type',
                 'o_gedcom',
-            ], function (Builder $query) use ($tree1, $tree2): void {
+            ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
                     DB::raw($tree2->id()),
                     'o_id',
@@ -820,7 +842,7 @@ class AdminTreesController extends AbstractBaseController
                 'n_soundex_surn_std',
                 'n_soundex_givn_dm',
                 'n_soundex_surn_dm',
-            ], function (Builder $query) use ($tree1, $tree2): void {
+            ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
                     DB::raw($tree2->id()),
                     'n_id',
@@ -852,7 +874,7 @@ class AdminTreesController extends AbstractBaseController
                 'd_julianday2',
                 'd_fact',
                 'd_type',
-            ], function (Builder $query) use ($tree1, $tree2): void {
+            ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
                     DB::raw($tree2->id()),
                     'd_gid',
@@ -873,7 +895,7 @@ class AdminTreesController extends AbstractBaseController
                 'l_from',
                 'l_type',
                 'l_to',
-            ], function (Builder $query) use ($tree1, $tree2): void {
+            ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
                     DB::raw($tree2->id()),
                     'l_from',
@@ -895,19 +917,20 @@ class AdminTreesController extends AbstractBaseController
             ]);
         }
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function places(Request $request, Tree $tree): Response
+    public function places(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $search  = $request->get('search', '');
-        $replace = $request->get('replace', '');
+        $params  = $request->getQueryParams();
+        $search  = $params['search'] ?? '';
+        $replace = $params['replace'] ?? '';
 
         if ($search !== '' && $replace !== '') {
             $changes = $this->changePlacesPreview($tree, $search, $replace);
@@ -927,15 +950,16 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function placesAction(Request $request, Tree $tree): RedirectResponse
+    public function placesAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $search  = $request->get('search', '');
-        $replace = $request->get('replace', '');
+        $params  = $request->getQueryParams();
+        $search  = $params['search'] ?? '';
+        $replace = $params['replace'] ?? '';
 
         $changes = $this->changePlacesUpdate($tree, $search, $replace);
 
@@ -953,15 +977,15 @@ class AdminTreesController extends AbstractBaseController
             'search'  => $search,
         ]);
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function preferences(Tree $tree): Response
+    public function preferences(Tree $tree): ResponseInterface
     {
         $french_calendar_start    = new Date('22 SEP 1792');
         $french_calendar_end      = new Date('31 DEC 1805');
@@ -1035,7 +1059,7 @@ class AdminTreesController extends AbstractBaseController
 
         $pedigree_individual = Individual::getInstance($tree->getPreference('PEDIGREE_ROOT_ID'), $tree);
 
-        $members = $this->user_service->all()->filter(function (UserInterface $user) use ($tree): bool {
+        $members = $this->user_service->all()->filter(static function (UserInterface $user) use ($tree): bool {
             return Auth::isMember($tree, $user);
         });
 
@@ -1052,6 +1076,8 @@ class AdminTreesController extends AbstractBaseController
 
         $title = I18N::translate('Preferences') . ' — ' . e($tree->title());
 
+        $base_url = app(ServerRequestInterface::class)->getAttribute('base_url');
+
         return $this->viewResponse('admin/trees-preferences', [
             'all_fam_facts'            => $all_fam_facts,
             'all_indi_facts'           => $all_indi_facts,
@@ -1060,6 +1086,7 @@ class AdminTreesController extends AbstractBaseController
             'all_repo_facts'           => $all_repo_facts,
             'all_sour_facts'           => $all_sour_facts,
             'all_surname_traditions'   => $all_surname_traditions,
+            'base_url'                 => $base_url,
             'calendar_formats'         => $calendar_formats,
             'data_folder'              => WT_DATA_DIR,
             'formats'                  => $formats,
@@ -1083,9 +1110,9 @@ class AdminTreesController extends AbstractBaseController
     /**
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function renumber(Tree $tree): Response
+    public function renumber(Tree $tree): ResponseInterface
     {
         $xrefs = $this->duplicateXrefs($tree);
 
@@ -1099,100 +1126,101 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function preferencesUpdate(Request $request, Tree $tree): RedirectResponse
+    public function preferencesUpdate(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        // Coming soon
-        if ((bool) $request->get('all_trees')) {
+        $all_trees = $request->getParsedBody()['all_trees'] ?? '';
+
+        if ($all_trees === '1') {
             FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.'), 'success');
         }
-        if ((bool) $request->get('new_trees')) {
+
+        $new_trees = $request->getParsedBody()['new_trees'] ?? '';
+
+        if ($new_trees === '1') {
             FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.'), 'success');
         }
 
-        $tree->setPreference('ADVANCED_NAME_FACTS', implode(',', $request->get('ADVANCED_NAME_FACTS', [])));
-        $tree->setPreference('ADVANCED_PLAC_FACTS', implode(',', $request->get('ADVANCED_PLAC_FACTS', [])));
-        $tree->setPreference('ALLOW_THEME_DROPDOWN', (string) (bool) $request->get('ALLOW_THEME_DROPDOWN'));
+        $tree->setPreference('ADVANCED_NAME_FACTS', implode(',', $request->getParsedBody()['ADVANCED_NAME_FACTS'] ?? []));
+        $tree->setPreference('ADVANCED_PLAC_FACTS', implode(',', $request->getParsedBody()['ADVANCED_PLAC_FACTS'] ?? []));
+        $tree->setPreference('ALLOW_THEME_DROPDOWN', $request->getParsedBody()['ALLOW_THEME_DROPDOWN'] ?? '');
         // For backwards compatibility with webtrees 1.x we store the two calendar formats in one variable
         // e.g. "gregorian_and_jewish"
         $tree->setPreference('CALENDAR_FORMAT', implode('_and_', array_unique([
-            $request->get('CALENDAR_FORMAT0', 'none'),
-            $request->get('CALENDAR_FORMAT1', 'none'),
+            $request->getParsedBody()['CALENDAR_FORMAT0'] ?? 'none',
+            $request->getParsedBody()['CALENDAR_FORMAT1'] ?? 'none',
         ])));
-        $tree->setPreference('CHART_BOX_TAGS', implode(',', $request->get('CHART_BOX_TAGS', [])));
-        $tree->setPreference('CONTACT_USER_ID', $request->get('CONTACT_USER_ID'));
-        $tree->setPreference('EXPAND_NOTES', (string) (bool) $request->get('EXPAND_NOTES'));
-        $tree->setPreference('EXPAND_SOURCES', (string) (bool) $request->get('EXPAND_SOURCES'));
-        $tree->setPreference('FAM_FACTS_ADD', implode(',', $request->get('FAM_FACTS_ADD', [])));
-        $tree->setPreference('FAM_FACTS_QUICK', implode(',', $request->get('FAM_FACTS_QUICK', [])));
-        $tree->setPreference('FAM_FACTS_UNIQUE', implode(',', $request->get('FAM_FACTS_UNIQUE', [])));
-        $tree->setPreference('FULL_SOURCES', (string) (bool) $request->get('FULL_SOURCES'));
-        $tree->setPreference('FORMAT_TEXT', $request->get('FORMAT_TEXT'));
-        $tree->setPreference('GENERATE_UIDS', (string) (bool) $request->get('GENERATE_UIDS'));
-        $tree->setPreference('GEONAMES_ACCOUNT', $request->get('GEONAMES_ACCOUNT'));
-        $tree->setPreference('HIDE_GEDCOM_ERRORS', (string) (bool) $request->get('HIDE_GEDCOM_ERRORS'));
-        $tree->setPreference('INDI_FACTS_ADD', implode(',', $request->get('INDI_FACTS_ADD', [])));
-        $tree->setPreference('INDI_FACTS_QUICK', implode(',', $request->get('INDI_FACTS_QUICK', [])));
-        $tree->setPreference('INDI_FACTS_UNIQUE', implode(',', $request->get('INDI_FACTS_UNIQUE', [])));
-        $tree->setPreference('LANGUAGE', $request->get('LANGUAGE'));
-        $tree->setPreference('MEDIA_UPLOAD', $request->get('MEDIA_UPLOAD'));
-        $tree->setPreference('META_DESCRIPTION', $request->get('META_DESCRIPTION'));
-        $tree->setPreference('META_TITLE', $request->get('META_TITLE'));
-        $tree->setPreference('NO_UPDATE_CHAN', (string) (bool) $request->get('NO_UPDATE_CHAN'));
-        $tree->setPreference('PEDIGREE_ROOT_ID', $request->get('PEDIGREE_ROOT_ID'));
-        $tree->setPreference('PREFER_LEVEL2_SOURCES', $request->get('PREFER_LEVEL2_SOURCES'));
-        $tree->setPreference('QUICK_REQUIRED_FACTS', implode(',', $request->get('QUICK_REQUIRED_FACTS', [])));
-        $tree->setPreference('QUICK_REQUIRED_FAMFACTS', implode(',', $request->get('QUICK_REQUIRED_FAMFACTS', [])));
-        $tree->setPreference('REPO_FACTS_ADD', implode(',', $request->get('REPO_FACTS_ADD', [])));
-        $tree->setPreference('REPO_FACTS_QUICK', implode(',', $request->get('REPO_FACTS_QUICK', [])));
-        $tree->setPreference('REPO_FACTS_UNIQUE', implode(',', $request->get('REPO_FACTS_UNIQUE', [])));
-        $tree->setPreference('SHOW_COUNTER', (string) (bool) $request->get('SHOW_COUNTER'));
-        $tree->setPreference('SHOW_EST_LIST_DATES', (string) (bool) $request->get('SHOW_EST_LIST_DATES'));
-        $tree->setPreference('SHOW_FACT_ICONS', (string) (bool) $request->get('SHOW_FACT_ICONS'));
-        $tree->setPreference('SHOW_GEDCOM_RECORD', (string) (bool) $request->get('SHOW_GEDCOM_RECORD'));
-        $tree->setPreference('SHOW_HIGHLIGHT_IMAGES', (string) (bool) $request->get('SHOW_HIGHLIGHT_IMAGES'));
-        $tree->setPreference('SHOW_LAST_CHANGE', (string) (bool) $request->get('SHOW_LAST_CHANGE'));
-        $tree->setPreference('SHOW_MEDIA_DOWNLOAD', $request->get('SHOW_MEDIA_DOWNLOAD'));
-        $tree->setPreference('SHOW_NO_WATERMARK', $request->get('SHOW_NO_WATERMARK'));
-        $tree->setPreference('SHOW_PARENTS_AGE', (string) (bool) $request->get('SHOW_PARENTS_AGE'));
-        $tree->setPreference('SHOW_PEDIGREE_PLACES', $request->get('SHOW_PEDIGREE_PLACES'));
-        $tree->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX', (string) (bool) $request->get('SHOW_PEDIGREE_PLACES_SUFFIX'));
-        $tree->setPreference('SHOW_RELATIVES_EVENTS', implode(',', $request->get('SHOW_RELATIVES_EVENTS', [])));
-        $tree->setPreference('SOUR_FACTS_ADD', implode(',', $request->get('SOUR_FACTS_ADD', [])));
-        $tree->setPreference('SOUR_FACTS_QUICK', implode(',', $request->get('SOUR_FACTS_QUICK', [])));
-        $tree->setPreference('SOUR_FACTS_UNIQUE', implode(',', $request->get('SOUR_FACTS_UNIQUE', [])));
-        $tree->setPreference('SUBLIST_TRIGGER_I', (string) (int) $request->get('SUBLIST_TRIGGER_I', 200));
-        $tree->setPreference('SURNAME_LIST_STYLE', $request->get('SURNAME_LIST_STYLE'));
-        $tree->setPreference('SURNAME_TRADITION', $request->get('SURNAME_TRADITION'));
-        $tree->setPreference('THEME_DIR', $request->get('THEME_DIR'));
-        $tree->setPreference('USE_SILHOUETTE', (string) (bool) $request->get('USE_SILHOUETTE'));
-        $tree->setPreference('WEBMASTER_USER_ID', $request->get('WEBMASTER_USER_ID'));
-        $tree->setPreference('WEBTREES_EMAIL', $request->get('WEBTREES_EMAIL'));
-        $tree->setPreference('title', $request->get('title'));
+        $tree->setPreference('CHART_BOX_TAGS', implode(',', $request->getParsedBody()['CHART_BOX_TAGS'] ?? []));
+        $tree->setPreference('CONTACT_USER_ID', $request->getParsedBody()['CONTACT_USER_ID'] ?? '');
+        $tree->setPreference('EXPAND_NOTES', $request->getParsedBody()['EXPAND_NOTES'] ?? '');
+        $tree->setPreference('EXPAND_SOURCES', $request->getParsedBody()['EXPAND_SOURCES'] ?? '');
+        $tree->setPreference('FAM_FACTS_ADD', implode(',', $request->getParsedBody()['FAM_FACTS_ADD'] ?? []));
+        $tree->setPreference('FAM_FACTS_QUICK', implode(',', $request->getParsedBody()['FAM_FACTS_QUICK'] ?? []));
+        $tree->setPreference('FAM_FACTS_UNIQUE', implode(',', $request->getParsedBody()['FAM_FACTS_UNIQUE'] ?? []));
+        $tree->setPreference('FULL_SOURCES', $request->getParsedBody()['FULL_SOURCES'] ?? '');
+        $tree->setPreference('FORMAT_TEXT', $request->getParsedBody()['FORMAT_TEXT'] ?? '');
+        $tree->setPreference('GENERATE_UIDS', $request->getParsedBody()['GENERATE_UIDS'] ?? '');
+        $tree->setPreference('HIDE_GEDCOM_ERRORS', $request->getParsedBody()['HIDE_GEDCOM_ERRORS'] ?? '');
+        $tree->setPreference('INDI_FACTS_ADD', implode(',', $request->getParsedBody()['INDI_FACTS_ADD'] ?? []));
+        $tree->setPreference('INDI_FACTS_QUICK', implode(',', $request->getParsedBody()['INDI_FACTS_QUICK'] ?? []));
+        $tree->setPreference('INDI_FACTS_UNIQUE', implode(',', $request->getParsedBody()['INDI_FACTS_UNIQUE'] ?? []));
+        $tree->setPreference('LANGUAGE', $request->getParsedBody()['LANGUAGE'] ?? '');
+        $tree->setPreference('MEDIA_UPLOAD', $request->getParsedBody()['MEDIA_UPLOAD'] ?? '');
+        $tree->setPreference('META_DESCRIPTION', $request->getParsedBody()['META_DESCRIPTION'] ?? '');
+        $tree->setPreference('META_TITLE', $request->getParsedBody()['META_TITLE'] ?? '');
+        $tree->setPreference('NO_UPDATE_CHAN', $request->getParsedBody()['NO_UPDATE_CHAN'] ?? '');
+        $tree->setPreference('PEDIGREE_ROOT_ID', $request->getParsedBody()['PEDIGREE_ROOT_ID'] ?? '');
+        $tree->setPreference('PREFER_LEVEL2_SOURCES', $request->getParsedBody()['PREFER_LEVEL2_SOURCES'] ?? '');
+        $tree->setPreference('QUICK_REQUIRED_FACTS', implode(',', $request->getParsedBody()['QUICK_REQUIRED_FACTS'] ?? []));
+        $tree->setPreference('QUICK_REQUIRED_FAMFACTS', implode(',', $request->getParsedBody()['QUICK_REQUIRED_FAMFACTS'] ?? []));
+        $tree->setPreference('REPO_FACTS_ADD', implode(',', $request->getParsedBody()['REPO_FACTS_ADD'] ?? []));
+        $tree->setPreference('REPO_FACTS_QUICK', implode(',', $request->getParsedBody()['REPO_FACTS_QUICK'] ?? []));
+        $tree->setPreference('REPO_FACTS_UNIQUE', implode(',', $request->getParsedBody()['REPO_FACTS_UNIQUE'] ?? []));
+        $tree->setPreference('SHOW_COUNTER', $request->getParsedBody()['SHOW_COUNTER'] ?? '');
+        $tree->setPreference('SHOW_EST_LIST_DATES', $request->getParsedBody()['SHOW_EST_LIST_DATES'] ?? '');
+        $tree->setPreference('SHOW_FACT_ICONS', $request->getParsedBody()['SHOW_FACT_ICONS'] ?? '');
+        $tree->setPreference('SHOW_GEDCOM_RECORD', $request->getParsedBody()['SHOW_GEDCOM_RECORD'] ?? '');
+        $tree->setPreference('SHOW_HIGHLIGHT_IMAGES', $request->getParsedBody()['SHOW_HIGHLIGHT_IMAGES'] ?? '');
+        $tree->setPreference('SHOW_LAST_CHANGE', $request->getParsedBody()['SHOW_LAST_CHANGE'] ?? '');
+        $tree->setPreference('SHOW_MEDIA_DOWNLOAD', $request->getParsedBody()['SHOW_MEDIA_DOWNLOAD'] ?? '');
+        $tree->setPreference('SHOW_NO_WATERMARK', $request->getParsedBody()['SHOW_NO_WATERMARK'] ?? '');
+        $tree->setPreference('SHOW_PARENTS_AGE', $request->getParsedBody()['SHOW_PARENTS_AGE'] ?? '');
+        $tree->setPreference('SHOW_PEDIGREE_PLACES', $request->getParsedBody()['SHOW_PEDIGREE_PLACES'] ?? '');
+        $tree->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX', $request->getParsedBody()['SHOW_PEDIGREE_PLACES_SUFFIX'] ?? '');
+        $tree->setPreference('SHOW_RELATIVES_EVENTS', implode(',', $request->getParsedBody()['SHOW_RELATIVES_EVENTS'] ?? []));
+        $tree->setPreference('SOUR_FACTS_ADD', implode(',', $request->getParsedBody()['SOUR_FACTS_ADD'] ?? []));
+        $tree->setPreference('SOUR_FACTS_QUICK', implode(',', $request->getParsedBody()['SOUR_FACTS_QUICK'] ?? []));
+        $tree->setPreference('SOUR_FACTS_UNIQUE', implode(',', $request->getParsedBody()['SOUR_FACTS_UNIQUE'] ?? []));
+        $tree->setPreference('SUBLIST_TRIGGER_I', $request->getParsedBody()['SUBLIST_TRIGGER_I'] ?? '200');
+        $tree->setPreference('SURNAME_LIST_STYLE', $request->getParsedBody()['SURNAME_LIST_STYLE'] ?? '');
+        $tree->setPreference('SURNAME_TRADITION', $request->getParsedBody()['SURNAME_TRADITION'] ?? '');
+        $tree->setPreference('THEME_DIR', $request->getParsedBody()['THEME_DIR'] ?? '');
+        $tree->setPreference('USE_SILHOUETTE', $request->getParsedBody()['USE_SILHOUETTE'] ?? '');
+        $tree->setPreference('WEBMASTER_USER_ID', $request->getParsedBody()['WEBMASTER_USER_ID'] ?? '');
+        $tree->setPreference('WEBTREES_EMAIL', $request->getParsedBody()['WEBTREES_EMAIL'] ?? '');
+        $tree->setPreference('title', $request->getParsedBody()['title'] ?? '');
 
         // Only accept valid folders for MEDIA_DIRECTORY
-        $MEDIA_DIRECTORY = preg_replace('/[\/\\\\]+/', '/', $request->get('MEDIA_DIRECTORY') . '/');
-        if (substr($MEDIA_DIRECTORY, 0, 1) === '/') {
-            $MEDIA_DIRECTORY = substr($MEDIA_DIRECTORY, 1);
+        $MEDIA_DIRECTORY = $request->getParsedBody()['MEDIA_DIRECTORY'] ?? '';
+        $MEDIA_DIRECTORY = preg_replace('/[\/\\\\]+/', '/', $MEDIA_DIRECTORY);
+        $MEDIA_DIRECTORY = trim($MEDIA_DIRECTORY, '/') . '/';
+
+        if (is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
+            $tree->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
+        } elseif (File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
+            $tree->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
+            FlashMessages::addMessage(I18N::translate('The folder %s has been created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY)), 'info');
+        } else {
+            FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY)), 'danger');
         }
 
-        if ($MEDIA_DIRECTORY) {
-            if (is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
-                $tree->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
-            } elseif (File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
-                $tree->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
-                FlashMessages::addMessage(I18N::translate('The folder %s has been created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY)), 'info');
-            } else {
-                FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY)), 'danger');
-            }
-        }
+        $gedcom = $request->getParsedBody()['gedcom'] ?? '';
 
-        $gedcom = $request->get('gedcom');
-        if ($gedcom && $gedcom !== $tree->name()) {
+        if ($gedcom !== '' && $gedcom !== $tree->name()) {
             try {
                 DB::table('gedcom')
                     ->where('gedcom_id', '=', $tree->id())
@@ -1202,7 +1230,7 @@ class AdminTreesController extends AbstractBaseController
                     ->where('setting_name', '=', 'DEFAULT_GEDCOM')
                     ->where('setting_value', '=', $tree->name())
                     ->update(['setting_value' => $gedcom]);
-            } catch (\Exception $ex) {
+            } catch (Exception $ex) {
                 // Probably a duplicate name.
             }
         }
@@ -1211,16 +1239,16 @@ class AdminTreesController extends AbstractBaseController
 
         $url = route('admin-trees', ['ged' => $tree->name()]);
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
      * @param Tree           $tree
      * @param TimeoutService $timeout_service
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function renumberAction(Tree $tree, TimeoutService $timeout_service): RedirectResponse
+    public function renumberAction(Tree $tree, TimeoutService $timeout_service): ResponseInterface
     {
         $xrefs = $this->duplicateXrefs($tree);
 
@@ -1255,7 +1283,7 @@ class AdminTreesController extends AbstractBaseController
                     // Other links from families to individuals
                     foreach (['CHIL', 'ASSO', '_ASSO'] as $tag) {
                         DB::table('families')
-                            ->join('link', function (JoinClause $join): void {
+                            ->join('link', static function (JoinClause $join): void {
                                 $join
                                     ->on('l_file', '=', 'f_file')
                                     ->on('l_from', '=', 'f_id');
@@ -1271,7 +1299,7 @@ class AdminTreesController extends AbstractBaseController
                     // Links from individuals to individuals
                     foreach (['ALIA', 'ASSO', '_ASSO'] as $tag) {
                         DB::table('individuals')
-                            ->join('link', function (JoinClause $join): void {
+                            ->join('link', static function (JoinClause $join): void {
                                 $join
                                     ->on('l_file', '=', 'i_file')
                                     ->on('l_from', '=', 'i_id');
@@ -1319,7 +1347,7 @@ class AdminTreesController extends AbstractBaseController
                     // Links from individuals to families
                     foreach (['FAMC', 'FAMS'] as $tag) {
                         DB::table('individuals')
-                            ->join('link', function (JoinClause $join): void {
+                            ->join('link', static function (JoinClause $join): void {
                                 $join
                                     ->on('l_file', '=', 'i_file')
                                     ->on('l_from', '=', 'i_id');
@@ -1357,7 +1385,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('individuals')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'i_file')
                                 ->on('l_from', '=', 'i_id');
@@ -1370,7 +1398,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('families')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'f_file')
                                 ->on('l_from', '=', 'f_id');
@@ -1383,7 +1411,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('media')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'm_file')
                                 ->on('l_from', '=', 'm_id');
@@ -1396,7 +1424,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('other')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'o_file')
                                 ->on('l_from', '=', 'o_id');
@@ -1419,7 +1447,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('sources')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 's_file')
                                 ->on('l_from', '=', 's_id');
@@ -1443,7 +1471,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('individuals')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'i_file')
                                 ->on('l_from', '=', 'i_id');
@@ -1456,7 +1484,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('families')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'f_file')
                                 ->on('l_from', '=', 'f_id');
@@ -1469,7 +1497,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('media')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'm_file')
                                 ->on('l_from', '=', 'm_id');
@@ -1482,7 +1510,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('sources')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 's_file')
                                 ->on('l_from', '=', 's_id');
@@ -1495,7 +1523,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('other')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'o_file')
                                 ->on('l_from', '=', 'o_id');
@@ -1525,7 +1553,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('individuals')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'i_file')
                                 ->on('l_from', '=', 'i_id');
@@ -1538,7 +1566,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('families')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'f_file')
                                 ->on('l_from', '=', 'f_id');
@@ -1551,7 +1579,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('sources')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 's_file')
                                 ->on('l_from', '=', 's_id');
@@ -1564,7 +1592,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('other')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'o_file')
                                 ->on('l_from', '=', 'o_id');
@@ -1588,7 +1616,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('individuals')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'i_file')
                                 ->on('l_from', '=', 'i_id');
@@ -1601,7 +1629,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('families')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'f_file')
                                 ->on('l_from', '=', 'f_id');
@@ -1614,7 +1642,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('media')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'm_file')
                                 ->on('l_from', '=', 'm_id');
@@ -1627,7 +1655,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('sources')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 's_file')
                                 ->on('l_from', '=', 's_id');
@@ -1640,7 +1668,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
 
                     DB::table('other')
-                        ->join('link', function (JoinClause $join): void {
+                        ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'o_file')
                                 ->on('l_from', '=', 'o_id');
@@ -1707,15 +1735,15 @@ class AdminTreesController extends AbstractBaseController
 
         $url = route('admin-trees-renumber', ['ged' => $tree->name()]);
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
      * @param Tree $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function setDefault(Tree $tree): RedirectResponse
+    public function setDefault(Tree $tree): ResponseInterface
     {
         Site::setPreference('DEFAULT_GEDCOM', $tree->name());
 
@@ -1724,15 +1752,15 @@ class AdminTreesController extends AbstractBaseController
 
         $url = route('admin-trees');
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
      * @param Tree $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function synchronize(Tree $tree): RedirectResponse
+    public function synchronize(Tree $tree): ResponseInterface
     {
         $url = route('admin-trees', ['ged' => $tree->name()]);
 
@@ -1745,7 +1773,8 @@ class AdminTreesController extends AbstractBaseController
             $tree = Tree::findByName($gedcom_file) ?? Tree::create($gedcom_file, $gedcom_file);
 
             if ($tree->getPreference('filemtime') !== $filemtime) {
-                $tree->importGedcomFile(WT_DATA_DIR . $gedcom_file, $gedcom_file);
+                $stream = app(StreamFactoryInterface::class)->createStreamFromFile(WT_DATA_DIR . $gedcom_file);
+                $tree->importGedcomFile($stream, $gedcom_file);
                 $tree->setPreference('filemtime', $filemtime);
 
                 FlashMessages::addMessage(I18N::translate('The GEDCOM file “%s” has been imported.', e($gedcom_file)), 'success');
@@ -1753,25 +1782,25 @@ class AdminTreesController extends AbstractBaseController
         }
 
         foreach (Tree::getAll() as $tree) {
-            if (!in_array($tree->name(), $gedcom_files)) {
+            if (!in_array($tree->name(), $gedcom_files, true)) {
                 FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', e($tree->title())), 'success');
                 $tree->delete();
             }
         }
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function unconnected(Request $request, Tree $tree, UserInterface $user): Response
+    public function unconnected(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $associates = (bool) $request->get('associates');
+        $associates = (bool) ($request->getQueryParams()['associates'] ?? false);
 
         if ($associates) {
             $links = ['FAMS', 'FAMC', 'ASSO', '_ASSO'];
@@ -1801,7 +1830,7 @@ class AdminTreesController extends AbstractBaseController
         $individual_groups = [];
 
         foreach ($components as $component) {
-            if (!in_array($xref, $component)) {
+            if (!in_array($xref, $component, true)) {
                 $individuals = [];
                 foreach ($component as $xref) {
                     $individuals[] = Individual::getInstance($xref, $tree);
@@ -1844,8 +1873,8 @@ class AdminTreesController extends AbstractBaseController
             ->select(['i_gedcom AS gedcom'])
             ->unionAll($union)
             ->pluck('gedcom')
-            ->mapWithKeys(function (string $gedcom) use ($search, $replace): array {
-                preg_match_all('/\n2 PLAC ((?:.*, )*)' . preg_quote($search) . '(\n|$)/i', $gedcom, $matches);
+            ->mapWithKeys(static function (string $gedcom) use ($search, $replace): array {
+                preg_match_all('/\n2 PLAC ((?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', $gedcom, $matches);
 
                 $changes = [];
                 foreach ($matches[1] as $prefix) {
@@ -1885,7 +1914,7 @@ class AdminTreesController extends AbstractBaseController
 
         return $individual_changes
             ->merge($family_changes)
-            ->mapWithKeys(function (GedcomRecord $record) use ($search, $replace): array {
+            ->mapWithKeys(static function (GedcomRecord $record) use ($search, $replace): array {
                 $changes = [];
 
                 foreach ($record->facts() as $fact) {
@@ -1974,15 +2003,15 @@ class AdminTreesController extends AbstractBaseController
             ->having(DB::raw('COUNT(s_id)'), '>', 1)
             ->select([DB::raw('GROUP_CONCAT(s_id) AS xrefs')])
             ->pluck('xrefs')
-            ->map(function (string $xrefs) use ($tree): array {
-                return array_map(function (string $xref) use ($tree): Source {
+            ->map(static function (string $xrefs) use ($tree): array {
+                return array_map(static function (string $xref) use ($tree): Source {
                     return Source::getInstance($xref, $tree);
                 }, explode(',', $xrefs));
             })
             ->all();
 
         $individuals = DB::table('dates')
-            ->join('name', function (JoinClause $join): void {
+            ->join('name', static function (JoinClause $join): void {
                 $join
                     ->on('d_file', '=', 'n_file')
                     ->on('d_gid', '=', 'n_id');
@@ -1999,8 +2028,8 @@ class AdminTreesController extends AbstractBaseController
             ->having(DB::raw('COUNT(DISTINCT d_gid)'), '>', 1)
             ->select([DB::raw('GROUP_CONCAT(d_gid) AS xrefs')])
             ->pluck('xrefs')
-            ->map(function (string $xrefs) use ($tree): array {
-                return array_map(function (string $xref) use ($tree): Individual {
+            ->map(static function (string $xrefs) use ($tree): array {
+                return array_map(static function (string $xref) use ($tree): Individual {
                     return Individual::getInstance($xref, $tree);
                 }, explode(',', $xrefs));
             })
@@ -2013,8 +2042,8 @@ class AdminTreesController extends AbstractBaseController
             ->having(DB::raw('COUNT(f_id)'), '>', 1)
             ->select([DB::raw('GROUP_CONCAT(f_id) AS xrefs')])
             ->pluck('xrefs')
-            ->map(function (string $xrefs) use ($tree): array {
-                return array_map(function (string $xref) use ($tree): Family {
+            ->map(static function (string $xrefs) use ($tree): array {
+                return array_map(static function (string $xref) use ($tree): Family {
                     return Family::getInstance($xref, $tree);
                 }, explode(',', $xrefs));
             })
@@ -2027,8 +2056,8 @@ class AdminTreesController extends AbstractBaseController
             ->having(DB::raw('COUNT(m_id)'), '>', 1)
             ->select([DB::raw('GROUP_CONCAT(m_id) AS xrefs')])
             ->pluck('xrefs')
-            ->map(function (string $xrefs) use ($tree): array {
-                return array_map(function (string $xref) use ($tree): Media {
+            ->map(static function (string $xrefs) use ($tree): array {
+                return array_map(static function (string $xref) use ($tree): Media {
                     return Media::getInstance($xref, $tree);
                 }, explode(',', $xrefs));
             })
@@ -2142,7 +2171,6 @@ class AdminTreesController extends AbstractBaseController
 
     /**
      * @return Collection
-     * @return string[]
      */
     private function themeOptions(): Collection
     {

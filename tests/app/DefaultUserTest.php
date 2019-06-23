@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
  */
 class DefaultUserTest extends TestCase
 {
-    protected static $uses_database= true;
+    protected static $uses_database = true;
 
     /**
      * @covers \Fisharebest\Webtrees\DefaultUser::__construct

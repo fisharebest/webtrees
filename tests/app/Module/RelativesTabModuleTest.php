@@ -29,6 +29,6 @@ class RelativesTabModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\RelativesTabModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\RelativesTabModule::class));
     }
 }

@@ -1,5 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <div class="form-group row">
@@ -7,7 +5,7 @@
         <?= I18N::translate('Number of days to show') ?>
     </label>
     <div class="col-sm-9">
-        <input class="form-control" id="days" name="days" type="text" value="<?= e($days) ?>">
+        <input class="form-control" id="days" name="days" type="number" min="1" max="<?= $max_days ?>" value="<?= e($days) ?>" required>
         <?= I18N::plural('maximum %s day', 'maximum %s days', $max_days, I18N::number($max_days)) ?>
     </div>
 </div>
@@ -17,7 +15,7 @@
         <?= I18N::translate('Presentation style') ?>
     </label>
     <div class="col-sm-9">
-        <?= Bootstrap4::select($info_styles, $infoStyle, ['id' => 'infoStyle', 'name' => 'infoStyle']) ?>
+        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $infoStyle, 'options' => $info_styles]) ?>
     </div>
 </div>
 
@@ -26,7 +24,7 @@
         <?= I18N::translate('Sort order') ?>
     </label>
     <div class="col-sm-9">
-        <?= Bootstrap4::select($sort_styles, $sortStyle, ['id' => 'sortStyle', 'name' => 'sortStyle']) ?>
+        <?= view('components/select', ['name' => 'sortStyle', 'selected' => $sortStyle, 'options' => $sort_styles]) ?>
     </div>
 </div>
 
@@ -35,6 +33,6 @@
         <?= /* I18N: label for a yes/no option */ I18N::translate('Show the user who made the change') ?>
     </label>
     <div class="col-sm-9">
-        <?= Bootstrap4::radioButtons('show_user', FunctionsEdit::optionsNoYes(), $show_user, true) ?>
+        <?= view('components/radios-inline', ['name' => 'show_user', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $show_user]) ?>
     </div>
 </div>

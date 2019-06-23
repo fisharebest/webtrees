@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Exceptions\InternalServerErrorException;
 use Fisharebest\Webtrees\I18N;
@@ -29,7 +30,6 @@ use League\Flysystem\Cached\CachedAdapter;
 use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
-use Symfony\Component\HttpFoundation\Response;
 use ZipArchive;
 use function rewind;
 
@@ -54,9 +54,6 @@ class UpgradeService
     // Fetch information about upgrades from here.
     // Note: earlier versions of webtrees used svn.webtrees.net, so we must maintain both URLs.
     private const UPDATE_URL = 'https://dev.webtrees.net/build/latest-version.txt';
-
-    // Create this file to put the site into maintenance mode.
-    private const LOCK_FILE = 'data/offline.txt';
 
     // If the update server doesn't respond after this time, give up.
     private const HTTP_TIMEOUT = 3.0;
@@ -108,10 +105,10 @@ class UpgradeService
         $zip_filesystem = new Filesystem(new CachedAdapter($zip_adapter, new Memory()));
         $paths          = new Collection($zip_filesystem->listContents('', true));
 
-        return $paths->filter(function (array $path): bool {
+        return $paths->filter(static function (array $path): bool {
             return $path['type'] === 'file';
         })
-            ->map(function (array $path): string {
+            ->map(static function (array $path): string {
                 return $path['path'];
             });
     }
@@ -252,13 +249,13 @@ class UpgradeService
     {
         $message = I18N::translate('This website is being upgraded. Try again in a few minutes.');
 
-        file_put_contents(WT_ROOT . self::LOCK_FILE, $message);
+        file_put_contents(Webtrees::OFFLINE_FILE, $message);
     }
 
     public function endMaintenanceMode(): void
     {
-        if (file_exists(WT_ROOT . self::LOCK_FILE)) {
-            unlink(WT_ROOT . self::LOCK_FILE);
+        if (file_exists(Webtrees::OFFLINE_FILE)) {
+            unlink(Webtrees::OFFLINE_FILE);
         }
     }
 
@@ -287,7 +284,7 @@ class UpgradeService
                     'query' => $this->serverParameters(),
                 ]);
 
-                if ($response->getStatusCode() === Response::HTTP_OK) {
+                if ($response->getStatusCode() === StatusCodeInterface::STATUS_OK) {
                     Site::setPreference('LATEST_WT_VERSION', $response->getBody()->getContents());
                     Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', (string) $current_timestamp);
                 }

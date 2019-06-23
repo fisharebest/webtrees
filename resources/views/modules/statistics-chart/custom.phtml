@@ -1,90 +1,16 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
 
-<script>
-  function statusDisable(sel) {
-    var cbox      = document.getElementById(sel);
-    cbox.checked  = false;
-    cbox.disabled = true;
-  }
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
 
-  function statusEnable(sel) {
-    var cbox      = document.getElementById(sel);
-    cbox.disabled = false;
-  }
-
-  function statusHide(sel) {
-    var box           = document.getElementById(sel);
-    box.style.display = "none";
-    var box_m         = document.getElementById(sel + "_m");
-    if (box_m) {
-      box_m.style.display = "none";
-    }
-    if (sel === "map_opt") {
-      var box_axes = document.getElementById("axes");
-      if (box_axes) {
-        box_axes.style.display = "";
-      }
-      var box_zyaxes = document.getElementById("zyaxes");
-      if (box_zyaxes) {
-        box_zyaxes.style.display = "";
-      }
-    }
-  }
-
-  function statusShow(sel) {
-    var box           = document.getElementById(sel);
-    box.style.display = "";
-    var box_m         = document.getElementById(sel + "_m");
-    if (box_m) {
-      box_m.style.display = "none";
-    }
-    if (sel === "map_opt") {
-      var box_axes = document.getElementById("axes");
-      if (box_axes) {
-        box_axes.style.display = "none";
-      }
-      var box_zyaxes = document.getElementById("zyaxes");
-      if (box_zyaxes) {
-        box_zyaxes.style.display = "none";
-      }
-    }
-  }
-
-  function statusChecked(sel) {
-    var cbox     = document.getElementById(sel);
-    cbox.checked = true;
-  }
-
-  function statusShowSurname(x) {
-    if (x.value === "surname_distribution_chart") {
-      document.getElementById("surname_opt").style.display = "";
-    } else if (x.value !== "surname_distribution_chart") {
-      document.getElementById("surname_opt").style.display = "none";
-    }
-  }
-
-  function loadCustomChart() {
-    $("#custom-chart").html("");
-    var form = $("#own-stats-form");
-    jQuery.get(form.attr("action"), form.serialize())
-      .done(function (data) {
-        $("#custom-chart").html(data);
-      })
-      .fail(function (jqXHR, textStatus) {
-        // Server error?  Show something to get rid of the spinner.
-        $("#custom-chart").html(textStatus);
-      });
-    return false;
-  }
-</script>
+?>
 
 <div class="container pt-3">
     <h4 class="border-bottom p-2 mb-4">
         <?= I18N::translate('Create your own chart') ?>
     </h4>
 
-    <form id="own-stats-form" action="index.php" onsubmit="return loadCustomChart();" class="wt-page-options wt-page-options-statistics">
+    <form id="own-stats-form" action="index.php" class="wt-page-options wt-page-options-statistics">
         <input type="hidden" name="route" value="module">
         <input type="hidden" name="module" value="<?= e($module->name()) ?>">
         <input type="hidden" name="action" value="CustomChart">
@@ -98,31 +24,37 @@
                 <fieldset>
                     <legend><?= I18N::translate('Individual') ?></legend>
 
-                    <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_BIRTH_MONTH => I18N::translate('Month of birth')], $module::X_AXIS_BIRTH_MONTH, false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
-                    <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_DEATH_MONTH => I18N::translate('Month of death')], '', false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
-                    <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_FIRST_CHILD_MONTH => I18N::translate('Month of birth of first child in a relation')], '', false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
-                    <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_AGE_AT_DEATH => I18N::translate('Average age at death')], '', false, ['onchange' => 'statusEnable("z_sex"); statusShow("x_years");; statusHide("map_opt");']) ?>
-                    <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_AGE_AT_MARRIAGE => I18N::translate('Age in year of marriage')], '', false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusShow("x_years_m");; statusHide("map_opt");']) ?>
-                    <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_AGE_AT_FIRST_MARRIAGE => I18N::translate('Age in year of first marriage')], '', false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusShow("x_years_m");; statusHide("map_opt");']) ?>
+                    <?= view('components/radios', ['name' => 'x-as', 'selected' => $module::X_AXIS_BIRTH_MONTH, 'options' => [
+                        $module::X_AXIS_BIRTH_MONTH => I18N::translate('Month of birth'),
+                        $module::X_AXIS_DEATH_MONTH => I18N::translate('Month of death'),
+                        $module::X_AXIS_FIRST_CHILD_MONTH => I18N::translate('Month of birth of first child in a relation'),
+                        $module::X_AXIS_AGE_AT_DEATH => I18N::translate('Average age at death'),
+                        $module::X_AXIS_AGE_AT_MARRIAGE => I18N::translate('Age in year of marriage'),
+                        $module::X_AXIS_AGE_AT_FIRST_MARRIAGE => I18N::translate('Age in year of first marriage'),
+
+                    ]]) ?>
                 </fieldset>
 
                 <fieldset>
                     <legend><?= I18N::translate('Family') ?></legend>
 
-                    <?= Bootstrap4::radioButtons('x-as', [
+                    <?= view('components/radios', ['name' => 'x-as', 'selected' => $module::X_AXIS_BIRTH_MONTH, 'options' => [
                         $module::X_AXIS_MARRIAGE_MONTH       => I18N::translate('Month of marriage'),
                         $module::X_AXIS_FIRST_MARRIAGE_MONTH => I18N::translate('Month of first marriage'),
-                    ], '', false, ['onchange' => 'statusChecked("z_none"); statusDisable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
-                    <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_NUMBER_OF_CHILDREN => I18N::translate('Number of children')], '', false, ['onchange' => 'statusChecked("z_none"); statusDisable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
+                        $module::X_AXIS_NUMBER_OF_CHILDREN => I18N::translate('Number of children'),
+
+                    ]]) ?>
                 </fieldset>
 
                 <fieldset>
                     <legend><?= I18N::translate('Map') ?></legend>
 
-                    <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_INDIVIDUAL_MAP => I18N::translate('Individuals')], '', false, ['onchange' => 'statusHide("x_years");; statusShow("map_opt"); statusShow("chart_type");']) ?>
-                    <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_BIRTH_MAP => I18N::translate('Births')], '', false, ['onchange' => 'statusHide("x_years");; statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
-                    <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_MARRIAGE_MAP => I18N::translate('Marriages')], '', false, ['onchange' => 'statusHide("x_years");; statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
-                    <?= Bootstrap4::radioButtons('x-as', [$module::X_AXIS_DEATH_MAP => I18N::translate('Deaths')], '', false, ['onchange' => 'statusHide("x_years");; statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
+                    <?= view('components/radios', ['name' => 'x-as', 'selected' => $module::X_AXIS_BIRTH_MONTH, 'options' => [
+                        $module::X_AXIS_INDIVIDUAL_MAP => I18N::translate('Individuals'),
+                        $module::X_AXIS_BIRTH_MAP => I18N::translate('Births'),
+                        $module::X_AXIS_MARRIAGE_MAP => I18N::translate('Marriages'),
+                        $module::X_AXIS_DEATH_MAP => I18N::translate('Deaths'),
+                    ]]) ?>
                 </fieldset>
             </div>
 
@@ -194,14 +126,7 @@
                     <label for="x-axis-boundaries-ages" class="sr-only">
                         <?= I18N::translate('Age interval') ?>
                     </label>
-                    <?= Bootstrap4::select([
-                        '1,5,10,20,30,40,50,60,70,80,90,100' => I18N::plural('%s year', '%s years', 10, I18N::number(10)),
-                        '5,20,40,60,75,80,85,90'             => I18N::plural('%s year', '%s years', 20, I18N::number(20)),
-                        '10,25,50,75,100'                    => I18N::plural('%s year', '%s years', 25, I18N::number(25)),
-                    ], '1,5,10,20,30,40,50,60,70,80,90,100', [
-                        'id'   => 'x-axis-boundaries-ages',
-                        'name' => 'x-axis-boundaries-ages',
-                    ]) ?>
+                    <?= view('components/select', ['name' => 'x-axis-boundaries-ages', 'selected' => '1,5,10,20,30,40,50,60,70,80,90,100', 'options' => ['1,5,10,20,30,40,50,60,70,80,90,100' => I18N::plural('%s year', '%s years', 10, I18N::number(10)), '5,20,40,60,75,80,85,90' => I18N::plural('%s year', '%s years', 20, I18N::number(20)), '10,25,50,75,100' => I18N::plural('%s year', '%s years', 25, I18N::number(25))]]) ?>
                 </fieldset>
 
                 <fieldset id="x_years_m" style="display:none;">
@@ -210,13 +135,7 @@
                     <label for="x-axis-boundaries-ages_m" class="sr-only">
                         <?= I18N::translate('Select the desired age interval') ?>
                     </label>
-                    <?= Bootstrap4::select([
-                        '16,18,20,22,24,26,28,30,32,35,40,50' => I18N::plural('%s year', '%s years', 2, I18N::number(2)),
-                        '20,25,30,35,40,45,50'                => I18N::plural('%s year', '%s years', 5, I18N::number(5)),
-                    ], '16,18,20,22,24,26,28,30,32,35,40,50', [
-                        'id'   => 'x-axis-boundaries-ages_m',
-                        'name' => 'x-axis-boundaries-ages_m',
-                    ]) ?>
+                    <?= view('components/select', ['name' => 'x-axis-boundaries-ages_m', 'selected' => '16,18,20,22,24,26,28,30,32,35,40,50', 'options' => ['16,18,20,22,24,26,28,30,32,35,40,50' => I18N::plural('%s year', '%s years', 2, I18N::number(2)), '20,25,30,35,40,45,50' => I18N::plural('%s year', '%s years', 5, I18N::number(5))]]) ?>
                 </fieldset>
 
                 <div id="map_opt" style="display:none;">
@@ -283,3 +202,135 @@
         <!-- Not initially empty, to disable spinner -->
     </div>
 </div>
+
+<?php View::push('javascript') ?>
+<script>
+    function statusDisable(sel) {
+        var cbox      = document.getElementById(sel);
+        cbox.checked  = false;
+        cbox.disabled = true;
+    }
+
+    function statusEnable(sel) {
+        var cbox      = document.getElementById(sel);
+        cbox.disabled = false;
+    }
+
+    function statusHide(sel) {
+        var box           = document.getElementById(sel);
+        box.style.display = "none";
+        var box_m         = document.getElementById(sel + "_m");
+        if (box_m) {
+            box_m.style.display = "none";
+        }
+        if (sel === "map_opt") {
+            var box_axes = document.getElementById("axes");
+            if (box_axes) {
+                box_axes.style.display = "";
+            }
+            var box_zyaxes = document.getElementById("zyaxes");
+            if (box_zyaxes) {
+                box_zyaxes.style.display = "";
+            }
+        }
+    }
+
+    function statusShow(sel) {
+        var box           = document.getElementById(sel);
+        box.style.display = "";
+        var box_m         = document.getElementById(sel + "_m");
+        if (box_m) {
+            box_m.style.display = "none";
+        }
+        if (sel === "map_opt") {
+            var box_axes = document.getElementById("axes");
+            if (box_axes) {
+                box_axes.style.display = "none";
+            }
+            var box_zyaxes = document.getElementById("zyaxes");
+            if (box_zyaxes) {
+                box_zyaxes.style.display = "none";
+            }
+        }
+    }
+
+    function statusChecked(sel) {
+        var cbox     = document.getElementById(sel);
+        cbox.checked = true;
+    }
+
+    function statusShowSurname(x) {
+        if (x.value === "surname_distribution_chart") {
+            document.getElementById("surname_opt").style.display = "";
+        } else if (x.value !== "surname_distribution_chart") {
+            document.getElementById("surname_opt").style.display = "none";
+        }
+    }
+
+    function loadCustomChart() {
+        $("#custom-chart").html("");
+        var form = $("#own-stats-form");
+        jQuery.get(form.attr("action"), form.serialize())
+            .done(function (data) {
+                $("#custom-chart").html(data);
+            })
+            .fail(function (jqXHR, textStatus) {
+                // Server error?  Show something to get rid of the spinner.
+                $("#custom-chart").html(textStatus);
+            });
+        return false;
+    }
+
+    $("[name='x-as']").change(function() {
+        var x_axis = document.querySelector("[name='x-as']:checked").value;
+
+        switch (x_axis) {
+            case "<?= e($module::X_AXIS_BIRTH_MONTH) ?>":
+            case "<?= e($module::X_AXIS_DEATH_MONTH) ?>":
+            case "<?= e($module::X_AXIS_FIRST_CHILD_MONTH) ?>":
+                statusEnable("z_sex");
+                statusHide("x_years");
+                statusHide("map_opt");
+                break;
+
+            case "<?= e($module::X_AXIS_AGE_AT_DEATH) ?>":
+                statusEnable("z_sex");
+                statusShow("x_years");
+                statusHide("map_opt");
+                break;
+
+            case "<?= e($module::X_AXIS_AGE_AT_MARRIAGE) ?>":
+            case "<?= e($module::X_AXIS_AGE_AT_FIRST_MARRIAGE) ?>":
+                statusEnable("z_sex");
+                statusHide("x_years");
+                statusShow("x_years_m");
+                statusHide("map_opt");
+                break;
+
+            case "<?= e($module::X_AXIS_MARRIAGE_MONTH) ?>":
+            case "<?= e($module::X_AXIS_FIRST_MARRIAGE_MONTH) ?>":
+                statusChecked("z_none");
+                statusDisable("z_sex");
+                statusHide("x_years");
+                statusHide("map_opt");
+                break;
+
+            case "<?= e($module::X_AXIS_INDIVIDUAL_MAP) ?>":
+                statusHide("x_years");
+                statusShow("map_opt");
+                statusShow("chart_type");
+                break;
+
+            case "<?= e($module::X_AXIS_BIRTH_MAP) ?>":
+            case "<?= e($module::X_AXIS_MARRIAGE_MAP) ?>":
+            case "<?= e($module::X_AXIS_DEATH_MAP) ?>":
+                statusHide("x_years"); statusShow("map_opt");
+                statusHide("chart_type");
+                statusHide("surname_opt");
+                break;
+        }
+    });
+
+    $("#own-stats-form").on("submit", loadCustomChart);
+</script>
+<?php View::endpush() ?>

@@ -28,10 +28,9 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Illuminate\Database\Capsule\Manager as DB;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Ramsey\Uuid\Uuid;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -57,19 +56,18 @@ class RegisterController extends AbstractBaseController
     /**
      * Show a registration page.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
-     * @throws NotFoundHttpException
+     * @return ResponseInterface
      */
-    public function registerPage(Request $request): Response
+    public function registerPage(ServerRequestInterface $request): ResponseInterface
     {
         $this->checkRegistrationAllowed();
 
-        $comments = $request->get('comments', '');
-        $email    = $request->get('email', '');
-        $realname = $request->get('realname', '');
-        $username = $request->get('username', '');
+        $comments = $request->getQueryParams()['comments'] ?? '';
+        $email    = $request->getQueryParams()['email'] ?? '';
+        $realname = $request->getQueryParams()['realname'] ?? '';
+        $username = $request->getQueryParams()['username'] ?? '';
 
         $show_caution = Site::getPreference('SHOW_REGISTER_CAUTION') === '1';
 
@@ -88,27 +86,27 @@ class RegisterController extends AbstractBaseController
     /**
      * Perform a registration.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function registerAction(Request $request, Tree $tree): Response
+    public function registerAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $this->checkRegistrationAllowed();
 
-        $comments = $request->get('comments', '');
-        $email    = $request->get('email', '');
-        $password = $request->get('password', '');
-        $realname = $request->get('realname', '');
-        $username = $request->get('username', '');
+        $comments = $request->getParsedBody()['comments'] ?? '';
+        $email    = $request->getParsedBody()['email'] ?? '';
+        $password = $request->getParsedBody()['password'] ?? '';
+        $realname = $request->getParsedBody()['realname'] ?? '';
+        $username = $request->getParsedBody()['username'] ?? '';
 
         try {
-            $this->doValidateRegistration($username, $email, $realname, $comments, $password);
+            $this->doValidateRegistration($request, $username, $email, $realname, $comments, $password);
         } catch (Exception $ex) {
             FlashMessages::addMessage($ex->getMessage(), 'danger');
 
-            return new RedirectResponse(route('register', [
+            return redirect(route('register', [
                 'comments' => $comments,
                 'email'    => $email,
                 'realname' => $realname,
@@ -132,15 +130,17 @@ class RegisterController extends AbstractBaseController
             ->setPreference('canadmin', '0')
             ->setPreference('sessiontime', '0');
 
+        $base_url = $request->getAttribute('base_url');
+
         // Send a verification message to the user.
         /* I18N: %s is a server name/URL */
         Mail::send(
             new TreeUser($tree),
             $user,
             new TreeUser($tree),
-            I18N::translate('Your registration at %s', WT_BASE_URL),
-            view('emails/register-user-text', ['user' => $user]),
-            view('emails/register-user-html', ['user' => $user])
+            I18N::translate('Your registration at %s', $base_url),
+            view('emails/register-user-text', ['user' => $user, 'base_url' => $base_url]),
+            view('emails/register-user-html', ['user' => $user, 'base_url' => $base_url])
         );
 
         // Tell the genealogy contact about the registration.
@@ -158,18 +158,18 @@ class RegisterController extends AbstractBaseController
                 $webmaster,
                 $user,
                 $subject,
-                view('emails/register-notify-text', ['user' => $user, 'comments' => $comments]),
-                view('emails/register-notify-html', ['user' => $user, 'comments' => $comments])
+                view('emails/register-notify-text', ['user' => $user, 'comments' => $comments, 'base_url' => $base_url]),
+                view('emails/register-notify-html', ['user' => $user, 'comments' => $comments, 'base_url' => $base_url])
             );
 
             $mail1_method = $webmaster->getPreference('contact_method');
             if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
                 DB::table('message')->insert([
                     'sender'     => $user->email(),
-                    'ip_address' => $request->getClientIp(),
+                    'ip_address' => $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1',
                     'user_id'    => $webmaster->id(),
                     'subject'    => $subject,
-                    'body'       => view('emails/register-notify-text', ['user' => $user, 'comments' => $comments]),
+                    'body'       => view('emails/register-notify-text', ['user' => $user, 'comments' => $comments, 'base_url' => $base_url]),
                 ]);
             }
         }
@@ -185,16 +185,17 @@ class RegisterController extends AbstractBaseController
     /**
      * Check the registration details.
      *
-     * @param string $username
-     * @param string $email
-     * @param string $realname
-     * @param string $comments
-     * @param string $password
+     * @param ServerRequestInterface $request
+     * @param string                 $username
+     * @param string                 $email
+     * @param string                 $realname
+     * @param string                 $comments
+     * @param string                 $password
      *
      * @return void
      * @throws Exception
      */
-    private function doValidateRegistration(string $username, string $email, string $realname, string $comments, string $password): void
+    private function doValidateRegistration(ServerRequestInterface $request, string $username, string $email, string $realname, string $comments, string $password): void
     {
         // All fields are required
         if ($username === '' || $email === '' || $realname === '' || $comments === '' || $password === '') {
@@ -211,8 +212,10 @@ class RegisterController extends AbstractBaseController
             throw new Exception(I18N::translate('Duplicate email address. A user with that email already exists.'));
         }
 
+        $base_url = $request->getAttribute('base_url');
+
         // No external links
-        if (preg_match('/(?!' . preg_quote(WT_BASE_URL, '/') . ')(((?:http|https):\/\/)[a-zA-Z0-9.-]+)/', $comments, $match)) {
+        if (preg_match('/(?!' . preg_quote($base_url, '/') . ')(((?:http|https):\/\/)[a-zA-Z0-9.-]+)/', $comments, $match)) {
             throw new Exception(I18N::translate('You are not allowed to send messages that contain external links.') . ' ' . I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', e($match[2]), e($match[1])));
         }
     }
@@ -220,10 +223,9 @@ class RegisterController extends AbstractBaseController
     /**
      * Show an email verification page.
      *
-     * @return Response
-     * @throws NotFoundHttpException
+     * @return ResponseInterface
      */
-    public function verifyPage(): Response
+    public function verifyPage(): ResponseInterface
     {
         $this->checkRegistrationAllowed();
 
@@ -237,14 +239,13 @@ class RegisterController extends AbstractBaseController
     /**
      * Perform a registration.
      *
-     * @return RedirectResponse
-     * @throws NotFoundHttpException
+     * @return ResponseInterface
      */
-    public function verifyAction(): RedirectResponse
+    public function verifyAction(): ResponseInterface
     {
         $this->checkRegistrationAllowed();
 
-        return new RedirectResponse(route('tree-page'));
+        return redirect(route('tree-page'));
     }
 
     /**

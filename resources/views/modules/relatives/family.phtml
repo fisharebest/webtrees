@@ -4,7 +4,6 @@
 <?php use Fisharebest\Webtrees\GedcomTag; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Individual; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleThemeInterface; ?>
 
 <table class="table table-sm wt-facts-table">
     <caption>
@@ -32,7 +31,7 @@
                         <?= Functions::getCloseRelationshipName($individual, $person) ?>
                     </th>
                     <td class="border-0 p-0">
-                        <?= app(ModuleThemeInterface::class)->individualBoxLarge($person) ?>
+                        <?= view('chart-box', ['individual' => $person]) ?>
                     </td>
                 </tr>
                 <?php
@@ -44,7 +43,7 @@
                 <th scope="row"></th>
                 <td>
                     <a href="<?= e(route('add-spouse-to-family', ['ged' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'HUSB'])) ?>">
-                        <?= I18N::translate('Add a husband to this family') ?>
+                        <?= I18N::translate('Add a husband') ?>
                     </a>
                 </td>
             </tr>
@@ -70,7 +69,7 @@
                         <?= Functions::getCloseRelationshipName($individual, $person) ?>
                     </th>
                     <td class="border-0 p-0">
-                        <?= app(ModuleThemeInterface::class)->individualBoxLarge($person) ?>
+                        <?= view('chart-box', ['individual' => $person]) ?>
                     </td>
                 </tr>
                 <?php
@@ -81,7 +80,7 @@
                 <th scope="row"></th>
                 <td>
                     <a href="<?= e(route('add-spouse-to-family', ['ged' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'WIFE'])) ?>">
-                        <?= I18N::translate('Add a wife to this family') ?>
+                        <?= I18N::translate('Add a wife') ?>
                     </a>
                 </td>
             </tr>
@@ -95,9 +94,9 @@
         foreach ($family->facts(array_merge(Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS), true) as $fact) {
             $found |= !$fact->isPendingDeletion();
             if ($fact->isPendingAddition()) {
-                $row_class = 'new';
+                $row_class = 'wt-new';
             } elseif ($fact->isPendingDeletion()) {
-                $row_class = 'old';
+                $row_class = 'wt-old';
             } else {
                 $row_class = '';
             }
@@ -179,7 +178,7 @@
                         <?= Functions::getCloseRelationshipName($individual, $person) ?>
                     </th>
                     <td class="border-0 p-0">
-                        <?= app(ModuleThemeInterface::class)->individualBoxLarge($person) ?>
+                        <?= view('chart-box', ['individual' => $person]) ?>
                     </td>
                 </tr>
                 <?php
@@ -199,7 +198,7 @@
                 </th>
                 <td>
                     <a href="<?= e(route('add-child-to-family', ['gender' => 'U', 'ged' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
-                        <?php if ($type == 'FAMS') : ?>
+                        <?php if ($type === 'FAMS') : ?>
                             <?= I18N::translate('Add a son or daughter') ?>
                         <?php else : ?>
                             <?= I18N::translate('Add a brother or sister') ?>

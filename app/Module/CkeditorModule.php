@@ -17,14 +17,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\I18N;
 
 /**
  * Class CkeditorModule
  */
-class CkeditorModule extends AbstractModule implements ModuleExternalUrlInterface
+class CkeditorModule extends AbstractModule implements ModuleExternalUrlInterface, ModuleGlobalInterface
 {
     use ModuleExternalUrlTrait;
+    use ModuleGlobalTrait;
 
     // Location of our installation of CK editor.
     public const CKEDITOR_PATH = 'public/ckeditor-4.11.2-custom/';
@@ -59,5 +61,19 @@ class CkeditorModule extends AbstractModule implements ModuleExternalUrlInterfac
     public function externalUrl(): string
     {
         return 'https://ckeditor.com';
+    }
+
+    /**
+     * Raw content, to be added at the end of the <body> element.
+     * Typically, this will be <script> elements.
+     *
+     * @return string
+     */
+    public function bodyContent(): string
+    {
+        return view('modules/ckeditor/ckeditor-js', [
+            'ckeditor_path' => self::CKEDITOR_PATH,
+            'language'      => app(LocaleInterface::class)->language()->code(),
+        ]);
     }
 }

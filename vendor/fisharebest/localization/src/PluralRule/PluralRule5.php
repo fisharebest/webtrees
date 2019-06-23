@@ -25,10 +25,12 @@ class PluralRule5 implements PluralRuleInterface
 
         if ($number === 1) {
             return 0;
-        } elseif ($number === 0 || ($number % 100 > 0 && $number % 100 < 20)) {
-            return 1;
-        } else {
-            return 2;
         }
+
+        if ($number === 0 || ($number % 100 > 0 && $number % 100 < 20)) {
+            return 1;
+        }
+
+        return 2;
     }
 }

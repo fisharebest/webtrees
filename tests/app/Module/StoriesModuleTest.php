@@ -29,6 +29,6 @@ class StoriesModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\StoriesModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\StoriesModule::class));
     }
 }

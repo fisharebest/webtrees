@@ -29,6 +29,6 @@ class PedigreeChartModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\PedigreeChartModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\PedigreeChartModule::class));
     }
 }

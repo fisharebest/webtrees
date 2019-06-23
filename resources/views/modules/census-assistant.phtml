@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
@@ -25,7 +24,7 @@
         <div class="form-group col-sm-6">
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <label class="input-group-addon" for="census-assistant-citation">
+                    <label class="input-group-text" for="census-assistant-citation">
                         <?= I18N::translate('Citation') ?>
                     </label>
                 </div>
@@ -52,17 +51,17 @@
                     <?= I18N::translate('Individuals') ?>
                 </span>
             </div>
-            <?= FunctionsEdit::formControlIndividual($individual->tree(), $individual, ['id' => 'census-assistant-individual', 'style' => 'width:100%']) ?>
-            <span class="input-group-btn">
-                        <button type="button" class="btn btn-primary" id="census-assistant-add" aria-label="<?= I18N::translate('add') ?>">
-                            <?= view('icons/add') ?>
-                        </button>
-                    </span>
-            <span class="input-group-btn">
-                        <button type="button" class="btn btn-primary" id="census-assistant-head" aria-label="<?= I18N::translate('Head of household') ?>">
-                            <?= view('icons/individual') ?>
-                        </button>
-                    </span>
+            <?= view('components/select-individual', ['name' => 'census-assistant-individual', 'individual' => $individual, 'tree' => $individual->tree()]) ?>
+            <div class="input-group-append">
+                <button type="button" class="btn btn-primary" id="census-assistant-add" aria-label="<?= I18N::translate('add') ?>">
+                    <?= view('icons/add') ?>
+                </button>
+            </div>
+            <div class="input-group-append">
+                <button type="button" class="btn btn-primary" id="census-assistant-head" aria-label="<?= I18N::translate('Head of household') ?>">
+                    <?= view('icons/individual') ?>
+                </button>
+            </div>
         </div>
     </div>
 

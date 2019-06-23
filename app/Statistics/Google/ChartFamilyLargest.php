@@ -17,12 +17,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Google;
 
+use function count;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use stdClass;
 
 /**
  * A chart showing the largest families (Families with most children).
@@ -61,7 +63,7 @@ class ChartFamilyLargest
      *
      * @param int $total
      *
-     * @return \stdClass[]
+     * @return stdClass[]
      */
     private function queryRecords(int $total): array
     {
@@ -85,8 +87,8 @@ class ChartFamilyLargest
      */
     public function chartLargestFamilies(
         string $color_from = null,
-        string $color_to   = null,
-        int    $total      = 10
+        string $color_to = null,
+        int    $total = 10
     ): string {
         $chart_color1 = (string) $this->theme->parameter('distribution-chart-no-values');
         $chart_color2 = (string) $this->theme->parameter('distribution-chart-high-values');
@@ -111,7 +113,7 @@ class ChartFamilyLargest
             }
         }
 
-        $colors = $this->color_service->interpolateRgb($color_from, $color_to, \count($data) - 1);
+        $colors = $this->color_service->interpolateRgb($color_from, $color_to, count($data) - 1);
 
         return view(
             'statistics/other/charts/pie',

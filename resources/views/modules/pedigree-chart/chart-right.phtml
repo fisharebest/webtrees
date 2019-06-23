@@ -24,7 +24,7 @@ use Illuminate\Support\Collection;
                 <?= $links->get(1) ?>
             <?php endif ?>
 
-            <?= view('chart-box', ['individual' => $ancestors->get($sosa)]); ?>
+            <?= view('chart-box', ['individual' => $ancestors->get($sosa)]) ?>
 
             <?php if ($generation === $generations && $links->get($sosa)) : ?>
                 <?= $links->get($sosa) ?>

@@ -91,16 +91,16 @@ class ModuleServiceTest extends TestCase
 
         $module_service = new ModuleService();
 
-        $this->assertNotEmpty($module_service->findByInterface(ModuleAnalyticsInterface::class)->all());
-        $this->assertNotEmpty($module_service->findByInterface(ModuleBlockInterface::class)->all());
-        $this->assertNotEmpty($module_service->findByInterface(ModuleChartInterface::class)->all());
-        $this->assertNotEmpty($module_service->findByInterface(ModuleConfigInterface::class)->all());
-        $this->assertNotEmpty($module_service->findByInterface(ModuleMenuInterface::class)->all());
-        $this->assertNotEmpty($module_service->findByInterface(ModuleInterface::class)->all());
-        $this->assertNotEmpty($module_service->findByInterface(ModuleReportInterface::class)->all());
-        $this->assertNotEmpty($module_service->findByInterface(ModuleSidebarInterface::class)->all());
-        $this->assertNotEmpty($module_service->findByInterface(ModuleTabInterface::class)->all());
-        $this->assertNotEmpty($module_service->findByInterface(ModuleThemeInterface::class)->all());
+        $this->assertNotEmpty($module_service->findByInterface(ModuleAnalyticsInterface::class, true)->all());
+        $this->assertNotEmpty($module_service->findByInterface(ModuleBlockInterface::class, true)->all());
+        $this->assertNotEmpty($module_service->findByInterface(ModuleChartInterface::class, true)->all());
+        $this->assertNotEmpty($module_service->findByInterface(ModuleConfigInterface::class, true)->all());
+        $this->assertNotEmpty($module_service->findByInterface(ModuleMenuInterface::class, true)->all());
+        $this->assertNotEmpty($module_service->findByInterface(ModuleInterface::class, true)->all());
+        $this->assertNotEmpty($module_service->findByInterface(ModuleReportInterface::class, true)->all());
+        $this->assertNotEmpty($module_service->findByInterface(ModuleSidebarInterface::class, true)->all());
+        $this->assertNotEmpty($module_service->findByInterface(ModuleTabInterface::class, true)->all());
+        $this->assertNotEmpty($module_service->findByInterface(ModuleThemeInterface::class, true)->all());
 
         // Search for an invalid module type
         $this->assertEmpty($module_service->findByInterface('not-a-valid-class-or-interface')->all());
@@ -117,7 +117,7 @@ class ModuleServiceTest extends TestCase
 
         $module_service = new ModuleService();
 
-        $this->assertSame(4, $module_service->otherModules()->count());
+        $this->assertSame(3, $module_service->otherModules()->count());
     }
 
     /**

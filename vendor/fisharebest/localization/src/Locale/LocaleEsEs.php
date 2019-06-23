@@ -13,8 +13,4 @@ use Fisharebest\Localization\Territory\TerritoryEs;
  */
 class LocaleEsEs extends LocaleEs
 {
-    public function territory()
-    {
-        return new TerritoryEs();
-    }
 }

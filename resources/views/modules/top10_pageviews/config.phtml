@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <div class="form-group row">
@@ -6,7 +5,7 @@
         <?= /* I18N: ... to show in a list */ I18N::translate('Number of pages') ?>
     </label>
     <div class="col-sm-9">
-        <input class="form-control" id="num" name="num" type="text" value="<?= e($num) ?>">
+        <input class="form-control" id="num" name="num" type="number" min="1" value="<?= e($num) ?>" required>
     </div>
 </div>
 
@@ -15,6 +14,6 @@
         <?= /* I18N: Label for a configuration option */ I18N::translate('Show counts before or after name') ?>
     </label>
     <div class="col-sm-9">
-        <?= Bootstrap4::select($options, $count_placement, ['id' => 'count_placement', 'name' => 'count_placement']) ?>
+        <?= view('components/select', ['name' => 'count_placement', 'selected' => $count_placement, 'options' => $options]) ?>
     </div>
 </div>

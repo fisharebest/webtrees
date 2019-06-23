@@ -23,8 +23,8 @@ class PluralRuleCentralAtlasTamazight implements PluralRuleInterface
 
         if ($number >= 2 && $number <= 10 || $number > 99) {
             return 1;
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 }

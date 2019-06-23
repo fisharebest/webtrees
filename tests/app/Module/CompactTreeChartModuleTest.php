@@ -29,6 +29,6 @@ class CompactTreeChartModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\CompactTreeChartModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\CompactTreeChartModule::class));
     }
 }

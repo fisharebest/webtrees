@@ -24,11 +24,9 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
-use Fisharebest\Webtrees\Webtrees;
+use Fisharebest\Webtrees\Site;
 use Illuminate\Support\Collection;
 use stdClass;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class PlacesMapModule
@@ -37,21 +35,25 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;
 
-    private static $map_providers  = null;
-    private static $map_selections = null;
-
-    public const ICONS = [
-        'BIRT' => ['color' => 'Crimson', 'name' => 'birthday-cake'],
-        'MARR' => ['color' => 'Green', 'name' => 'venus-mars'],
-        'DEAT' => ['color' => 'Black', 'name' => 'plus'],
-        'CENS' => ['color' => 'MediumBlue', 'name' => 'users'],
-        'RESI' => ['color' => 'MediumBlue', 'name' => 'home'],
-        'OCCU' => ['color' => 'MediumBlue', 'name' => 'briefcase'],
-        'GRAD' => ['color' => 'MediumBlue', 'name' => 'graduation-cap'],
-        'EDUC' => ['color' => 'MediumBlue', 'name' => 'university'],
+    protected const ICONS = [
+        'BIRT' => ['color' => 'lightcoral', 'name' => 'baby-carriage'],
+        'BAPM' => ['color' => 'lightcoral', 'name' => 'water'],
+        'BARM' => ['color' => 'lightcoral', 'name' => 'star-of-david'],
+        'BASM' => ['color' => 'lightcoral', 'name' => 'star-of-david'],
+        'CHR'  => ['color' => 'lightcoral', 'name' => 'water'],
+        'CHRA' => ['color' => 'lightcoral', 'name' => 'water'],
+        'MARR' => ['color' => 'green', 'name' => 'infinity'],
+        'DEAT' => ['color' => 'black', 'name' => 'times'],
+        'BURI' => ['color' => 'sienna', 'name' => 'times'],
+        'CREM' => ['color' => 'black', 'name' => 'times'],
+        'CENS' => ['color' => 'mediumblue', 'name' => 'list'],
+        'RESI' => ['color' => 'mediumblue', 'name' => 'home'],
+        'OCCU' => ['color' => 'mediumblue', 'name' => 'industry'],
+        'GRAD' => ['color' => 'plum', 'name' => 'university'],
+        'EDUC' => ['color' => 'plum', 'name' => 'university'],
     ];
 
-    public const DEFAULT_ICON = ['color' => 'Gold', 'name' => 'bullseye '];
+    protected const DEFAULT_ICON = ['color' => 'gold', 'name' => 'bullseye '];
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -88,7 +90,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     /** {@inheritdoc} */
     public function hasTabContent(Individual $individual): bool
     {
-        return true;
+        return Site::getPreference('map-provider') !== '';
     }
 
     /** {@inheritdoc} */
@@ -138,7 +140,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                 $longitude = $location->longitude();
             }
 
-            $icon = self::ICONS[$fact->getTag()] ?? self::DEFAULT_ICON;
+            $icon = static::ICONS[$fact->getTag()] ?? static::DEFAULT_ICON;
 
             if ($latitude !== 0.0 || $longitude !== 0.0) {
                 $geojson['features'][] = [
@@ -161,6 +163,34 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
         }
 
         return (object) $geojson;
+    }
+
+    /**
+     * @param Individual $individual
+     *
+     * @return Collection
+     * @throws Exception
+     */
+    private function getPersonalFacts(Individual $individual): Collection
+    {
+        $facts = $individual->facts();
+
+        foreach ($individual->spouseFamilies() as $family) {
+            $facts = $facts->merge($family->facts());
+            // Add birth of children from this family to the facts array
+            foreach ($family->children() as $child) {
+                $childsBirth = $child->facts(['BIRT'])->first();
+                if ($childsBirth instanceof Fact && $childsBirth->place()->gedcomName() !== '') {
+                    $facts->push($childsBirth);
+                }
+            }
+        }
+
+        $facts = Fact::sortFacts($facts);
+
+        return $facts->filter(static function (Fact $item): bool {
+            return $item->place()->gedcomName() !== '';
+        });
     }
 
     /**
@@ -199,126 +229,5 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
             'place'  => $fact->place(),
             'addtag' => false,
         ];
-    }
-
-    /**
-     * @param Individual $individual
-     *
-     * @return Collection
-     * @return Fact[]
-     * @throws Exception
-     */
-    private function getPersonalFacts(Individual $individual): Collection
-    {
-        $facts = $individual->facts();
-
-        foreach ($individual->spouseFamilies() as $family) {
-            $facts = $facts->merge($family->facts());
-            // Add birth of children from this family to the facts array
-            foreach ($family->children() as $child) {
-                $childsBirth = $child->facts(['BIRT'])->first();
-                if ($childsBirth && $childsBirth->place()->gedcomName() !== '') {
-                    $facts->push($childsBirth);
-                }
-            }
-        }
-
-        $facts = Fact::sortFacts($facts);
-
-        return $facts->filter(function (Fact $item): bool {
-            return $item->place()->gedcomName() !== '';
-        });
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return JsonResponse
-     */
-    public function getProviderStylesAction(Request $request): JsonResponse
-    {
-        $styles = $this->getMapProviderData($request);
-
-        return new JsonResponse($styles);
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return array|null
-     */
-    private function getMapProviderData(Request $request): ?array
-    {
-        if (self::$map_providers === null) {
-            $providersFile        = WT_ROOT . Webtrees::MODULES_PATH . 'openstreetmap/providers/providers.xml';
-            self::$map_selections = [
-                'provider' => $this->getPreference('provider', 'openstreetmap'),
-                'style'    => $this->getPreference('provider_style', 'mapnik'),
-            ];
-
-            try {
-                $xml = simplexml_load_file($providersFile);
-                // need to convert xml structure into arrays & strings
-                foreach ($xml as $provider) {
-                    $style_keys = array_map(
-                        function (string $item): string {
-                            return preg_replace('/[^a-z\d]/i', '', strtolower($item));
-                        },
-                        (array) $provider->styles
-                    );
-
-                    $key = preg_replace('/[^a-z\d]/i', '', strtolower((string) $provider->name));
-
-                    self::$map_providers[$key] = [
-                        'name'   => (string) $provider->name,
-                        'styles' => array_combine($style_keys, (array) $provider->styles),
-                    ];
-                }
-            } catch (Exception $ex) {
-                // Default provider is OpenStreetMap
-                self::$map_selections = [
-                    'provider' => 'openstreetmap',
-                    'style'    => 'mapnik',
-                ];
-                self::$map_providers  = [
-                    'openstreetmap' => [
-                        'name'   => 'OpenStreetMap',
-                        'styles' => ['mapnik' => 'Mapnik'],
-                    ],
-                ];
-            }
-        }
-
-        //Ugly!!!
-        switch ($request->get('action')) {
-            case 'BaseData':
-                $varName = (self::$map_selections['style'] === '') ? '' : self::$map_providers[self::$map_selections['provider']]['styles'][self::$map_selections['style']];
-                $payload = [
-                    'selectedProvIndex' => self::$map_selections['provider'],
-                    'selectedProvName'  => self::$map_providers[self::$map_selections['provider']]['name'],
-                    'selectedStyleName' => $varName,
-                ];
-                break;
-            case 'ProviderStyles':
-                $provider = $request->get('provider', 'openstreetmap');
-                $payload  = self::$map_providers[$provider]['styles'];
-                break;
-            case 'AdminConfig':
-                $providers = [];
-                foreach (self::$map_providers as $key => $provider) {
-                    $providers[$key] = $provider['name'];
-                }
-                $payload = [
-                    'providers'     => $providers,
-                    'selectedProv'  => self::$map_selections['provider'],
-                    'styles'        => self::$map_providers[self::$map_selections['provider']]['styles'],
-                    'selectedStyle' => self::$map_selections['style'],
-                ];
-                break;
-            default:
-                $payload = null;
-        }
-
-        return $payload;
     }
 }

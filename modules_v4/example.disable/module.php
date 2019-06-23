@@ -4,11 +4,11 @@ namespace MyCustomNamespace;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 
 /**
  * Example module
@@ -96,18 +96,65 @@ return new class extends AbstractModule implements ModuleCustomInterface {
     {
         // The boot() function is called after the framework has been booted.
         // We can now use the current user, tree, etc.
-        if (!Auth::isAdmin($user) && $tree !== null) {
+        if ($tree !== null && !Auth::isAdmin($user)) {
             return;
         }
+    }
 
-        // Here is also a good place to register any views (templates) used by the module.
-        // This command allows the module to use: view($this->name() . '::', 'fish')
-        // to access the file ./resources/views/fish.phtml
-        View::registerNamespace($this->name(), __DIR__ . '/resources/views/');
+    /**
+     * Additional/updated translations.
+     *
+     * @param string $language
+     *
+     * @return string[]
+     */
+    public function customTranslations(string $language): array
+    {
+        // Here we are using an array for translations.
+        // If you had .MO files, you could use them with:
+        // return (new Translation('path/to/file.mo'))->asArray();
 
-        // We can also provide replacements for existing views (which use an empty namespace).
-        // Note that you can also replace views in other modules.
-        View::registerCustomView('::individual-page', $this->name() . '::my-individual-page');
-        View::registerCustomView('::layouts/administration', $this->name() . '::layouts/my-administration');
+        switch ($language) {
+            case 'en-AU':
+            case 'en-GB':
+            case 'en-US':
+                return $this->englishTranslations();
+
+            case 'fr':
+            case 'fr-CA':
+                return $this->frenchTranslations();
+
+            default:
+                return [];
+        }
+    }
+
+    /**
+     * @return array
+     */
+    protected function englishTranslations(): array
+    {
+        // Note the special characters used in plural and context-sensitive translations.
+        return [
+            'Individual'                                      => 'Fish',
+            'Individuals'                                     => 'Fishes',
+            '%s individual' . I18N::PLURAL . '%s individuals' => '%s fish' . I18N::PLURAL . '%s fishes',
+            'Unknown given name' . I18N::CONTEXT . '…'        => '?fish?',
+            'Unknown surname' . I18N::CONTEXT . '…'           => '?FISH?',
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function frenchTranslations(): array
+    {
+        return [
+            'Individual'                                      => 'Poisson',
+            'Individuals'                                     => 'Poissons',
+            '%s individual' . I18N::PLURAL . '%s individuals' => '%s poisson' . I18N::PLURAL . '%s poissons',
+            'Unknown given name' . I18N::CONTEXT . '…'        => '?poission?',
+            'Unknown surname' . I18N::CONTEXT . '…'           => '?POISSON?',
+        ];
     }
 };

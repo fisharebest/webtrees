@@ -22,8 +22,8 @@ use Fisharebest\Webtrees\Census\CensusInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -54,36 +54,36 @@ class CensusAssistantModule extends AbstractModule
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getCensusHeaderAction(Request $request): Response
+    public function getCensusHeaderAction(ServerRequestInterface $request): ResponseInterface
     {
-        $census = $request->get('census');
+        $census = $request->getQueryParams()['census'];
 
         $html = $this->censusTableHeader(new $census());
 
-        return new Response($html);
+        return response($html);
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getCensusIndividualAction(Request $request, Tree $tree): Response
+    public function getCensusIndividualAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $census = $request->get('census', '');
-
-        $individual = Individual::getInstance($request->get('xref', ''), $tree);
-        $head       = Individual::getInstance($request->get('head', ''), $tree);
+        $params     = $request->getQueryParams();
+        $individual = Individual::getInstance($params['xref'], $tree);
+        $head       = Individual::getInstance($params['head'], $tree);
+        $census     = $params['census'];
 
         if ($individual instanceof Individual && $head instanceof Individual) {
             $html = $this->censusTableRow(new $census(), $individual, $head);
 
-            return new Response($html);
+            return response($html);
         }
 
         throw new NotFoundHttpException();
@@ -102,22 +102,24 @@ class CensusAssistantModule extends AbstractModule
     }
 
     /**
-     * @param Request    $request
-     * @param Individual $individual
-     * @param string     $fact_id
-     * @param string     $newged
-     * @param bool       $keep_chan
+     * @param ServerRequestInterface $request
+     * @param Individual             $individual
+     * @param string                 $fact_id
+     * @param string                 $newged
+     * @param bool                   $keep_chan
      *
      * @return string
      */
-    public function updateCensusAssistant(Request $request, Individual $individual, string $fact_id, string $newged, bool $keep_chan): string
+    public function updateCensusAssistant(ServerRequestInterface $request, Individual $individual, string $fact_id, string $newged, bool $keep_chan): string
     {
-        $ca_title       = $request->get('ca_title', '');
-        $ca_place       = $request->get('ca_place', '');
-        $ca_citation    = $request->get('ca_citation', '');
-        $ca_individuals = (array) $request->get('ca_individuals');
-        $ca_notes       = $request->get('ca_notes', '');
-        $ca_census      = $request->get('ca_census', '');
+        $params = $request->getParsedBody();
+
+        $ca_title       = $params['ca_title'] ?? '';
+        $ca_place       = $params['ca_place'] ?? '';
+        $ca_citation    = $params['ca_citation'] ?? '';
+        $ca_individuals = $params['ca_individuals'] ?? [];
+        $ca_notes       = $params['ca_notes'] ?? '';
+        $ca_census      = $params['ca_census'] ?? '';
 
         if ($ca_census !== '' && !empty($ca_individuals)) {
             $census = new $ca_census();
@@ -209,7 +211,7 @@ class CensusAssistantModule extends AbstractModule
      */
     public function censusTableEmptyRow(CensusInterface $census): string
     {
-        return '<tr class="wt-census-assistant-row"><td hidden></td>' . str_repeat('<td class="wt-census-assistant-field"><input type="text" class="form-control wt-census-assistant-form-control"></td>', count($census->columns())) . '<td><a class="icon-remove" href="#" title="' . I18N::translate('Remove') . '"></a></td></tr>';
+        return '<tr class="wt-census-assistant-row"><td hidden></td>' . str_repeat('<td class="wt-census-assistant-field p-0"><input type="text" class="form-control wt-census-assistant-form-control p-0"></td>', count($census->columns())) . '<td><a class="icon-remove" href="#" title="' . I18N::translate('Remove') . '"></a></td></tr>';
     }
 
     /**
@@ -227,7 +229,7 @@ class CensusAssistantModule extends AbstractModule
     {
         $html = '';
         foreach ($census->columns() as $column) {
-            $html .= '<td class="wt-census-assistant-field"><input class="form-control wt-census-assistant-form-control" type="text" value="' . $column->generate($individual, $head) . '" name="ca_individuals[' . $individual->xref() . '][]"></td>';
+            $html .= '<td class="wt-census-assistant-field p-0"><input class="form-control wt-census-assistant-form-control p-0" type="text" value="' . $column->generate($individual, $head) . '" name="ca_individuals[' . $individual->xref() . '][]"></td>';
         }
 
         return '<tr class="wt-census-assistant-row"><td class="wt-census-assistant-field" hidden>' . $individual->xref() . '</td>' . $html . '<td class="wt-census-assistant-field"><a class="icon-remove" href="#" title="' . I18N::translate('Remove') . '"></a></td></tr>';

@@ -50,7 +50,7 @@ class ReportParserSetup extends ReportParserBase
      *
      * @return void
      */
-    protected function reportStartHandler(array $attrs)
+    protected function reportStartHandler(array $attrs): void
     {
         $this->data['access'] = $attrs['access'] ?? Auth::PRIV_PRIVATE;
 
@@ -64,7 +64,7 @@ class ReportParserSetup extends ReportParserBase
      *
      * @return void
      */
-    protected function varStartHandler(array $attrs)
+    protected function varStartHandler(array $attrs): void
     {
         if (preg_match('/^I18N::number\((.+)\)$/', $attrs['var'], $match)) {
             $this->text .= I18N::number((int) $match[1]);
@@ -82,7 +82,7 @@ class ReportParserSetup extends ReportParserBase
      *
      * @return void
      */
-    protected function titleStartHandler()
+    protected function titleStartHandler(): void
     {
         $this->text = '';
     }
@@ -92,7 +92,7 @@ class ReportParserSetup extends ReportParserBase
      *
      * @return void
      */
-    protected function titleEndHandler()
+    protected function titleEndHandler(): void
     {
         $this->data['title'] = $this->text;
 
@@ -104,7 +104,7 @@ class ReportParserSetup extends ReportParserBase
      *
      * @return void
      */
-    protected function descriptionEndHandler()
+    protected function descriptionEndHandler(): void
     {
         $this->data['description'] = $this->text;
 
@@ -118,7 +118,7 @@ class ReportParserSetup extends ReportParserBase
      *
      * @return void
      */
-    protected function inputStartHandler(array $attrs)
+    protected function inputStartHandler(array $attrs): void
     {
         $this->text  = '';
         $this->input = [
@@ -151,7 +151,7 @@ class ReportParserSetup extends ReportParserBase
      *
      * @return void
      */
-    protected function inputEndHandler()
+    protected function inputEndHandler(): void
     {
         $this->input['value'] = $this->text;
         if (!isset($this->data['inputs'])) {

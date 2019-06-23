@@ -27,6 +27,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
 use PDOException;
+use Psr\Http\Message\StreamInterface;
 use stdClass;
 
 /**
@@ -34,39 +35,30 @@ use stdClass;
  */
 class Tree
 {
-    /** @var int The tree's ID number */
-    private $id;
-
-    /** @var string The tree's name */
-    private $name;
-
-    /** @var string The tree's title */
-    private $title;
-
-    /** @var int[] Default access rules for facts in this tree */
-    private $fact_privacy;
-
-    /** @var int[] Default access rules for individuals in this tree */
-    private $individual_privacy;
-
-    /** @var integer[][] Default access rules for individual facts in this tree */
-    private $individual_fact_privacy;
-
-    /** @var Tree[] All trees that we have permission to see, indexed by ID. */
-    public static $trees = [];
-
-    /** @var string[] Cached copy of the wt_gedcom_setting table. */
-    private $preferences = [];
-
-    /** @var string[][] Cached copy of the wt_user_gedcom_setting table. */
-    private $user_preferences = [];
-
     private const RESN_PRIVACY = [
         'none'         => Auth::PRIV_PRIVATE,
         'privacy'      => Auth::PRIV_USER,
         'confidential' => Auth::PRIV_NONE,
         'hidden'       => Auth::PRIV_HIDE,
     ];
+    /** @var Tree[] All trees that we have permission to see, indexed by ID. */
+    public static $trees = [];
+    /** @var int The tree's ID number */
+    private $id;
+    /** @var string The tree's name */
+    private $name;
+    /** @var string The tree's title */
+    private $title;
+    /** @var int[] Default access rules for facts in this tree */
+    private $fact_privacy;
+    /** @var int[] Default access rules for individuals in this tree */
+    private $individual_privacy;
+    /** @var integer[][] Default access rules for individual facts in this tree */
+    private $individual_fact_privacy;
+    /** @var string[] Cached copy of the wt_gedcom_setting table. */
+    private $preferences = [];
+    /** @var string[][] Cached copy of the wt_user_gedcom_setting table. */
+    private $user_preferences = [];
 
     /**
      * Create a tree object. This is a private constructor - it can only
@@ -107,243 +99,15 @@ class Tree
     }
 
     /**
-     * The ID of this tree
+     * Find the tree with a specific ID.
      *
-     * @return int
+     * @param int $tree_id
+     *
+     * @return Tree
      */
-    public function id(): int
+    public static function findById(int $tree_id): Tree
     {
-        return $this->id;
-    }
-
-    /**
-     * The name of this tree
-     *
-     * @return string
-     */
-    public function name(): string
-    {
-        return $this->name;
-    }
-
-    /**
-     * The title of this tree
-     *
-     * @return string
-     */
-    public function title(): string
-    {
-        return $this->title;
-    }
-
-    /**
-     * The fact-level privacy for this tree.
-     *
-     * @return int[]
-     */
-    public function getFactPrivacy(): array
-    {
-        return $this->fact_privacy;
-    }
-
-    /**
-     * The individual-level privacy for this tree.
-     *
-     * @return int[]
-     */
-    public function getIndividualPrivacy(): array
-    {
-        return $this->individual_privacy;
-    }
-
-    /**
-     * The individual-fact-level privacy for this tree.
-     *
-     * @return int[][]
-     */
-    public function getIndividualFactPrivacy(): array
-    {
-        return $this->individual_fact_privacy;
-    }
-
-    /**
-     * Get the tree’s configuration settings.
-     *
-     * @param string $setting_name
-     * @param string $default
-     *
-     * @return string
-     */
-    public function getPreference(string $setting_name, string $default = ''): string
-    {
-        if (empty($this->preferences)) {
-            $this->preferences = DB::table('gedcom_setting')
-                ->where('gedcom_id', '=', $this->id)
-                ->pluck('setting_value', 'setting_name')
-                ->all();
-        }
-
-        return $this->preferences[$setting_name] ?? $default;
-    }
-
-    /**
-     * Set the tree’s configuration settings.
-     *
-     * @param string $setting_name
-     * @param string $setting_value
-     *
-     * @return $this
-     */
-    public function setPreference(string $setting_name, string $setting_value): Tree
-    {
-        if ($setting_value !== $this->getPreference($setting_name)) {
-            DB::table('gedcom_setting')->updateOrInsert([
-                'gedcom_id'    => $this->id,
-                'setting_name' => $setting_name,
-            ], [
-                'setting_value' => $setting_value,
-            ]);
-
-            $this->preferences[$setting_name] = $setting_value;
-
-            Log::addConfigurationLog('Tree preference "' . $setting_name . '" set to "' . $setting_value . '"', $this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get the tree’s user-configuration settings.
-     *
-     * @param UserInterface   $user
-     * @param string $setting_name
-     * @param string $default
-     *
-     * @return string
-     */
-    public function getUserPreference(UserInterface $user, string $setting_name, string $default = ''): string
-    {
-        // There are lots of settings, and we need to fetch lots of them on every page
-        // so it is quicker to fetch them all in one go.
-        if (!array_key_exists($user->id(), $this->user_preferences)) {
-            $this->user_preferences[$user->id()] = DB::table('user_gedcom_setting')
-                ->where('user_id', '=', $user->id())
-                ->where('gedcom_id', '=', $this->id)
-                ->pluck('setting_value', 'setting_name')
-                ->all();
-        }
-
-        return $this->user_preferences[$user->id()][$setting_name] ?? $default;
-    }
-
-    /**
-     * Set the tree’s user-configuration settings.
-     *
-     * @param UserInterface $user
-     * @param string        $setting_name
-     * @param string        $setting_value
-     *
-     * @return $this
-     */
-    public function setUserPreference(UserInterface $user, string $setting_name, string $setting_value): Tree
-    {
-        if ($this->getUserPreference($user, $setting_name) !== $setting_value) {
-            // Update the database
-            DB::table('user_gedcom_setting')->updateOrInsert([
-                'gedcom_id'    => $this->id(),
-                'user_id'      => $user->id(),
-                'setting_name' => $setting_name,
-            ], [
-                'setting_value' => $setting_value,
-            ]);
-
-            // Update the cache
-            $this->user_preferences[$user->id()][$setting_name] = $setting_value;
-            // Audit log of changes
-            Log::addConfigurationLog('Tree preference "' . $setting_name . '" set to "' . $setting_value . '" for user "' . $user->userName() . '"', $this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Can a user accept changes for this tree?
-     *
-     * @param UserInterface $user
-     *
-     * @return bool
-     */
-    public function canAcceptChanges(UserInterface $user): bool
-    {
-        return Auth::isModerator($this, $user);
-    }
-
-    /**
-     * All the trees that we have permission to access.
-     *
-     * @return Collection
-     * @return Tree[]
-     */
-    public static function all(): Collection
-    {
-        return app('cache.array')->rememberForever(__CLASS__, function (): Collection {
-            // Admins see all trees
-            $query = DB::table('gedcom')
-                ->leftJoin('gedcom_setting', function (JoinClause $join): void {
-                    $join->on('gedcom_setting.gedcom_id', '=', 'gedcom.gedcom_id')
-                        ->where('gedcom_setting.setting_name', '=', 'title');
-                })
-                ->where('gedcom.gedcom_id', '>', 0)
-                ->select([
-                    'gedcom.gedcom_id AS tree_id',
-                    'gedcom.gedcom_name AS tree_name',
-                    'gedcom_setting.setting_value AS tree_title',
-                ])
-                ->orderBy('gedcom.sort_order')
-                ->orderBy('gedcom_setting.setting_value');
-
-            // Non-admins may not see all trees
-            if (!Auth::isAdmin()) {
-                $query
-                    ->join('gedcom_setting AS gs2', function (JoinClause $join): void {
-                        $join->on('gs2.gedcom_id', '=', 'gedcom.gedcom_id')
-                            ->where('gs2.setting_name', '=', 'imported');
-                    })
-                    ->join('gedcom_setting AS gs3', function (JoinClause $join): void {
-                        $join->on('gs3.gedcom_id', '=', 'gedcom.gedcom_id')
-                            ->where('gs3.setting_name', '=', 'REQUIRE_AUTHENTICATION');
-                    })
-                    ->leftJoin('user_gedcom_setting', function (JoinClause $join): void {
-                        $join->on('user_gedcom_setting.gedcom_id', '=', 'gedcom.gedcom_id')
-                            ->where('user_gedcom_setting.user_id', '=', Auth::id())
-                            ->where('user_gedcom_setting.setting_name', '=', 'canedit');
-                    })
-                    ->where(function (Builder $query): void {
-                        $query
-                            // Managers
-                            ->where('user_gedcom_setting.setting_value', '=', 'admin')
-                            // Members
-                            ->orWhere(function (Builder $query): void {
-                                $query
-                                    ->where('gs2.setting_value', '=', '1')
-                                    ->where('gs3.setting_value', '=', '1')
-                                    ->where('user_gedcom_setting.setting_value', '<>', 'none');
-                            })
-                            // Public trees
-                            ->orWhere(function (Builder $query): void {
-                                $query
-                                    ->where('gs2.setting_value', '=', '1')
-                                    ->where('gs3.setting_value', '<>', '1');
-                            });
-                    });
-            }
-
-            return $query
-                ->get()
-                ->mapWithKeys(function (stdClass $row): array {
-                    return [$row->tree_id => new self((int) $row->tree_id, $row->tree_name, $row->tree_title)];
-                });
-        });
+        return self::getAll()[$tree_id];
     }
 
     /**
@@ -361,33 +125,70 @@ class Tree
     }
 
     /**
-     * Find the tree with a specific ID.
+     * All the trees that we have permission to access.
      *
-     * @param int $tree_id
-     *
-     * @return Tree
+     * @return Collection
      */
-    public static function findById(int $tree_id): Tree
+    public static function all(): Collection
     {
-        return self::getAll()[$tree_id];
-    }
+        return app('cache.array')->rememberForever(__CLASS__, static function (): Collection {
+            // Admins see all trees
+            $query = DB::table('gedcom')
+                ->leftJoin('gedcom_setting', static function (JoinClause $join): void {
+                    $join->on('gedcom_setting.gedcom_id', '=', 'gedcom.gedcom_id')
+                        ->where('gedcom_setting.setting_name', '=', 'title');
+                })
+                ->where('gedcom.gedcom_id', '>', 0)
+                ->select([
+                    'gedcom.gedcom_id AS tree_id',
+                    'gedcom.gedcom_name AS tree_name',
+                    'gedcom_setting.setting_value AS tree_title',
+                ])
+                ->orderBy('gedcom.sort_order')
+                ->orderBy('gedcom_setting.setting_value');
 
-    /**
-     * Find the tree with a specific name.
-     *
-     * @param string $tree_name
-     *
-     * @return Tree|null
-     */
-    public static function findByName($tree_name): ?Tree
-    {
-        foreach (self::getAll() as $tree) {
-            if ($tree->name === $tree_name) {
-                return $tree;
+            // Non-admins may not see all trees
+            if (!Auth::isAdmin()) {
+                $query
+                    ->join('gedcom_setting AS gs2', static function (JoinClause $join): void {
+                        $join->on('gs2.gedcom_id', '=', 'gedcom.gedcom_id')
+                            ->where('gs2.setting_name', '=', 'imported');
+                    })
+                    ->join('gedcom_setting AS gs3', static function (JoinClause $join): void {
+                        $join->on('gs3.gedcom_id', '=', 'gedcom.gedcom_id')
+                            ->where('gs3.setting_name', '=', 'REQUIRE_AUTHENTICATION');
+                    })
+                    ->leftJoin('user_gedcom_setting', static function (JoinClause $join): void {
+                        $join->on('user_gedcom_setting.gedcom_id', '=', 'gedcom.gedcom_id')
+                            ->where('user_gedcom_setting.user_id', '=', Auth::id())
+                            ->where('user_gedcom_setting.setting_name', '=', 'canedit');
+                    })
+                    ->where(static function (Builder $query): void {
+                        $query
+                            // Managers
+                            ->where('user_gedcom_setting.setting_value', '=', 'admin')
+                            // Members
+                            ->orWhere(static function (Builder $query): void {
+                                $query
+                                    ->where('gs2.setting_value', '=', '1')
+                                    ->where('gs3.setting_value', '=', '1')
+                                    ->where('user_gedcom_setting.setting_value', '<>', 'none');
+                            })
+                            // Public trees
+                            ->orWhere(static function (Builder $query): void {
+                                $query
+                                    ->where('gs2.setting_value', '=', '1')
+                                    ->where('gs3.setting_value', '<>', '1');
+                            });
+                    });
             }
-        }
 
-        return null;
+            return $query
+                ->get()
+                ->mapWithKeys(static function (stdClass $row): array {
+                    return [$row->tree_id => new self((int) $row->tree_id, $row->tree_name, $row->tree_title)];
+                });
+        });
     }
 
     /**
@@ -452,7 +253,7 @@ class Tree
         // Set preferences from default tree
         (new Builder(DB::connection()))->from('gedcom_setting')->insertUsing(
             ['gedcom_id', 'setting_name', 'setting_value'],
-            function (Builder $query) use ($tree_id): void {
+            static function (Builder $query) use ($tree_id): void {
                 $query
                     ->select([DB::raw($tree_id), 'setting_name', 'setting_value'])
                     ->from('gedcom_setting')
@@ -462,7 +263,7 @@ class Tree
 
         (new Builder(DB::connection()))->from('default_resn')->insertUsing(
             ['gedcom_id', 'tag_type', 'resn'],
-            function (Builder $query) use ($tree_id): void {
+            static function (Builder $query) use ($tree_id): void {
                 $query
                     ->select([DB::raw($tree_id), 'tag_type', 'resn'])
                     ->from('default_resn')
@@ -516,6 +317,196 @@ class Tree
     }
 
     /**
+     * Find the tree with a specific name.
+     *
+     * @param string $tree_name
+     *
+     * @return Tree|null
+     */
+    public static function findByName($tree_name): ?Tree
+    {
+        foreach (self::getAll() as $tree) {
+            if ($tree->name === $tree_name) {
+                return $tree;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Set the tree’s configuration settings.
+     *
+     * @param string $setting_name
+     * @param string $setting_value
+     *
+     * @return $this
+     */
+    public function setPreference(string $setting_name, string $setting_value): Tree
+    {
+        if ($setting_value !== $this->getPreference($setting_name)) {
+            DB::table('gedcom_setting')->updateOrInsert([
+                'gedcom_id'    => $this->id,
+                'setting_name' => $setting_name,
+            ], [
+                'setting_value' => $setting_value,
+            ]);
+
+            $this->preferences[$setting_name] = $setting_value;
+
+            Log::addConfigurationLog('Tree preference "' . $setting_name . '" set to "' . $setting_value . '"', $this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get the tree’s configuration settings.
+     *
+     * @param string $setting_name
+     * @param string $default
+     *
+     * @return string
+     */
+    public function getPreference(string $setting_name, string $default = ''): string
+    {
+        if (empty($this->preferences)) {
+            $this->preferences = DB::table('gedcom_setting')
+                ->where('gedcom_id', '=', $this->id)
+                ->pluck('setting_value', 'setting_name')
+                ->all();
+        }
+
+        return $this->preferences[$setting_name] ?? $default;
+    }
+
+    /**
+     * The name of this tree
+     *
+     * @return string
+     */
+    public function name(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * The title of this tree
+     *
+     * @return string
+     */
+    public function title(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * The fact-level privacy for this tree.
+     *
+     * @return int[]
+     */
+    public function getFactPrivacy(): array
+    {
+        return $this->fact_privacy;
+    }
+
+    /**
+     * The individual-level privacy for this tree.
+     *
+     * @return int[]
+     */
+    public function getIndividualPrivacy(): array
+    {
+        return $this->individual_privacy;
+    }
+
+    /**
+     * The individual-fact-level privacy for this tree.
+     *
+     * @return int[][]
+     */
+    public function getIndividualFactPrivacy(): array
+    {
+        return $this->individual_fact_privacy;
+    }
+
+    /**
+     * Set the tree’s user-configuration settings.
+     *
+     * @param UserInterface $user
+     * @param string        $setting_name
+     * @param string        $setting_value
+     *
+     * @return $this
+     */
+    public function setUserPreference(UserInterface $user, string $setting_name, string $setting_value): Tree
+    {
+        if ($this->getUserPreference($user, $setting_name) !== $setting_value) {
+            // Update the database
+            DB::table('user_gedcom_setting')->updateOrInsert([
+                'gedcom_id'    => $this->id(),
+                'user_id'      => $user->id(),
+                'setting_name' => $setting_name,
+            ], [
+                'setting_value' => $setting_value,
+            ]);
+
+            // Update the cache
+            $this->user_preferences[$user->id()][$setting_name] = $setting_value;
+            // Audit log of changes
+            Log::addConfigurationLog('Tree preference "' . $setting_name . '" set to "' . $setting_value . '" for user "' . $user->userName() . '"', $this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get the tree’s user-configuration settings.
+     *
+     * @param UserInterface $user
+     * @param string        $setting_name
+     * @param string        $default
+     *
+     * @return string
+     */
+    public function getUserPreference(UserInterface $user, string $setting_name, string $default = ''): string
+    {
+        // There are lots of settings, and we need to fetch lots of them on every page
+        // so it is quicker to fetch them all in one go.
+        if (!array_key_exists($user->id(), $this->user_preferences)) {
+            $this->user_preferences[$user->id()] = DB::table('user_gedcom_setting')
+                ->where('user_id', '=', $user->id())
+                ->where('gedcom_id', '=', $this->id)
+                ->pluck('setting_value', 'setting_name')
+                ->all();
+        }
+
+        return $this->user_preferences[$user->id()][$setting_name] ?? $default;
+    }
+
+    /**
+     * The ID of this tree
+     *
+     * @return int
+     */
+    public function id(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * Can a user accept changes for this tree?
+     *
+     * @param UserInterface $user
+     *
+     * @return bool
+     */
+    public function canAcceptChanges(UserInterface $user): bool
+    {
+        return Auth::isModerator($this, $user);
+    }
+
+    /**
      * Are there any pending edits for this tree, than need reviewing by a moderator.
      *
      * @return bool
@@ -526,6 +517,38 @@ class Tree
             ->where('gedcom_id', '=', $this->id)
             ->where('status', '=', 'pending')
             ->exists();
+    }
+
+    /**
+     * Delete everything relating to a tree
+     *
+     * @return void
+     */
+    public function delete(): void
+    {
+        // If this is the default tree, then unset it
+        if (Site::getPreference('DEFAULT_GEDCOM') === $this->name) {
+            Site::setPreference('DEFAULT_GEDCOM', '');
+        }
+
+        $this->deleteGenealogyData(false);
+
+        DB::table('block_setting')
+            ->join('block', 'block.block_id', '=', 'block_setting.block_id')
+            ->where('gedcom_id', '=', $this->id)
+            ->delete();
+        DB::table('block')->where('gedcom_id', '=', $this->id)->delete();
+        DB::table('user_gedcom_setting')->where('gedcom_id', '=', $this->id)->delete();
+        DB::table('gedcom_setting')->where('gedcom_id', '=', $this->id)->delete();
+        DB::table('module_privacy')->where('gedcom_id', '=', $this->id)->delete();
+        DB::table('hit_counter')->where('gedcom_id', '=', $this->id)->delete();
+        DB::table('default_resn')->where('gedcom_id', '=', $this->id)->delete();
+        DB::table('gedcom_chunk')->where('gedcom_id', '=', $this->id)->delete();
+        DB::table('log')->where('gedcom_id', '=', $this->id)->delete();
+        DB::table('gedcom')->where('gedcom_id', '=', $this->id)->delete();
+
+        // After updating the database, we need to fetch a new (sorted) copy
+        self::$trees = [];
     }
 
     /**
@@ -560,38 +583,6 @@ class Tree
             DB::table('media_file')->where('m_file', '=', $this->id)->delete();
             DB::table('media')->where('m_file', '=', $this->id)->delete();
         }
-    }
-
-    /**
-     * Delete everything relating to a tree
-     *
-     * @return void
-     */
-    public function delete(): void
-    {
-        // If this is the default tree, then unset it
-        if (Site::getPreference('DEFAULT_GEDCOM') === $this->name) {
-            Site::setPreference('DEFAULT_GEDCOM', '');
-        }
-
-        $this->deleteGenealogyData(false);
-
-        DB::table('block_setting')
-            ->join('block', 'block.block_id', '=', 'block_setting.block_id')
-            ->where('gedcom_id', '=', $this->id)
-            ->delete();
-        DB::table('block')->where('gedcom_id', '=', $this->id)->delete();
-        DB::table('user_gedcom_setting')->where('gedcom_id', '=', $this->id)->delete();
-        DB::table('gedcom_setting')->where('gedcom_id', '=', $this->id)->delete();
-        DB::table('module_privacy')->where('gedcom_id', '=', $this->id)->delete();
-        DB::table('hit_counter')->where('gedcom_id', '=', $this->id)->delete();
-        DB::table('default_resn')->where('gedcom_id', '=', $this->id)->delete();
-        DB::table('gedcom_chunk')->where('gedcom_id', '=', $this->id)->delete();
-        DB::table('log')->where('gedcom_id', '=', $this->id)->delete();
-        DB::table('gedcom')->where('gedcom_id', '=', $this->id)->delete();
-
-        // After updating the database, we need to fetch a new (sorted) copy
-        self::$trees = [];
     }
 
     /**
@@ -632,7 +623,7 @@ class Tree
             ->orderBy('n')
             ->orderBy('len')
             ->orderBy('xref')
-            ->chunk(100, function (Collection $rows) use ($stream, &$buffer): void {
+            ->chunk(100, static function (Collection $rows) use ($stream, &$buffer): void {
                 foreach ($rows as $row) {
                     $buffer .= FunctionsExport::reformatRecord($row->gedcom);
                     if (strlen($buffer) > 65535) {
@@ -648,12 +639,12 @@ class Tree
     /**
      * Import data from a gedcom file into this tree.
      *
-     * @param string $path     The full path to the (possibly temporary) file.
-     * @param string $filename The preferred filename, for export/download.
+     * @param StreamInterface $stream   The GEDCOM file.
+     * @param string          $filename The preferred filename, for export/download.
      *
      * @return void
      */
-    public function importGedcomFile(string $path, string $filename): void
+    public function importGedcomFile(StreamInterface $stream, string $filename): void
     {
         // Read the file in blocks of roughly 64K. Ensure that each block
         // contains complete gedcom records. This will ensure we don’t split
@@ -661,14 +652,13 @@ class Tree
         // each block.
 
         $file_data = '';
-        $fp        = fopen($path, 'rb');
 
         $this->deleteGenealogyData((bool) $this->getPreference('keep_media'));
         $this->setPreference('gedcom_filename', $filename);
         $this->setPreference('imported', '0');
 
-        while (!feof($fp)) {
-            $file_data .= fread($fp, 65536);
+        while (!$stream->eof()) {
+            $file_data .= $stream->read(65536);
             // There is no strrpos() function that searches for substrings :-(
             for ($pos = strlen($file_data) - 1; $pos > 0; --$pos) {
                 if ($file_data[$pos] === '0' && ($file_data[$pos - 1] === "\n" || $file_data[$pos - 1] === "\r")) {
@@ -690,7 +680,46 @@ class Tree
             'chunk_data' => $file_data,
         ]);
 
-        fclose($fp);
+        $stream->close();
+    }
+
+    /**
+     * Create a new record from GEDCOM data.
+     *
+     * @param string $gedcom
+     *
+     * @return GedcomRecord|Individual|Family|Note|Source|Repository|Media
+     * @throws InvalidArgumentException
+     */
+    public function createRecord(string $gedcom): GedcomRecord
+    {
+        if (!Str::startsWith($gedcom, '0 @@ ')) {
+            throw new InvalidArgumentException('GedcomRecord::createRecord(' . $gedcom . ') does not begin 0 @@');
+        }
+
+        $xref   = $this->getNewXref();
+        $gedcom = '0 @' . $xref . '@ ' . Str::after($gedcom, '0 @@ ');
+
+        // Create a change record
+        $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->userName();
+
+        // Create a pending change
+        DB::table('change')->insert([
+            'gedcom_id'  => $this->id,
+            'xref'       => $xref,
+            'old_gedcom' => '',
+            'new_gedcom' => $gedcom,
+            'user_id'    => Auth::id(),
+        ]);
+
+        // Accept this pending change
+        if (Auth::user()->getPreference('auto_accept')) {
+            FunctionsImport::acceptAllChanges($xref, $this);
+
+            return new GedcomRecord($xref, $gedcom, null, $this);
+        }
+
+        return GedcomRecord::getInstance($xref, $this, $gedcom);
     }
 
     /**
@@ -731,45 +760,6 @@ class Tree
         Site::setPreference('next_xref', (string) $num);
 
         return $xref;
-    }
-
-    /**
-     * Create a new record from GEDCOM data.
-     *
-     * @param string $gedcom
-     *
-     * @return GedcomRecord|Individual|Family|Note|Source|Repository|Media
-     * @throws InvalidArgumentException
-     */
-    public function createRecord(string $gedcom): GedcomRecord
-    {
-        if (!Str::startsWith($gedcom, '0 @@ ')) {
-            throw new InvalidArgumentException('GedcomRecord::createRecord(' . $gedcom . ') does not begin 0 @@');
-        }
-
-        $xref   = $this->getNewXref();
-        $gedcom = '0 @' . $xref . '@ ' . Str::after($gedcom, '0 @@ ');
-
-        // Create a change record
-        $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->userName();
-
-        // Create a pending change
-        DB::table('change')->insert([
-            'gedcom_id'  => $this->id,
-            'xref'       => $xref,
-            'old_gedcom' => '',
-            'new_gedcom' => $gedcom,
-            'user_id'    => Auth::id(),
-        ]);
-
-        // Accept this pending change
-        if (Auth::user()->getPreference('auto_accept')) {
-            FunctionsImport::acceptAllChanges($xref, $this);
-
-            return new GedcomRecord($xref, $gedcom, null, $this);
-        }
-
-        return GedcomRecord::getInstance($xref, $this, $gedcom);
     }
 
     /**

@@ -29,6 +29,6 @@ class IndividualFactsTabModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\IndividualFactsTabModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\IndividualFactsTabModule::class));
     }
 }

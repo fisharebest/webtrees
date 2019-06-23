@@ -29,6 +29,6 @@ class OnThisDayModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\OnThisDayModule'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\OnThisDayModule::class));
     }
 }

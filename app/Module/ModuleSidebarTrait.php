@@ -79,7 +79,6 @@ trait ModuleSidebarTrait
      * This module handles the following facts - so don't show them on the "Facts and events" tab.
      *
      * @return Collection
-     * @return string[]
      */
     public function supportedFacts(): Collection
     {

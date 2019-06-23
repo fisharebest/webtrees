@@ -26,13 +26,26 @@ use Fisharebest\Webtrees\Services\GedcomService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Database\QueryException;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\UploadedFileInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\ResponseHeaderBag;
-use Symfony\Component\HttpFoundation\StreamedResponse;
+use function abs;
+use function addcslashes;
+use function array_filter;
+use function array_pop;
+use function array_shift;
+use function count;
+use function explode;
+use function fclose;
+use function fputcsv;
+use function implode;
+use function rewind;
+use function route;
+use function round;
+use function stream_get_contents;
+use const UPLOAD_ERR_OK;
 
 /**
  * Controller for maintaining geographic data.
@@ -53,14 +66,14 @@ class LocationController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function mapData(Request $request): Response
+    public function mapData(ServerRequestInterface $request): ResponseInterface
     {
-        $parent_id   = (int) $request->get('parent_id', 0);
-        $hierarchy   = $this->gethierarchy($parent_id);
+        $parent_id   = (int) ($request->getQueryParams()['parent_id'] ?? 0);
+        $hierarchy   = $this->getHierarchy($parent_id);
         $title       = I18N::translate('Geographic data');
         $breadcrumbs = [
             route('admin-control-panel') => I18N::translate('Control panel'),
@@ -81,15 +94,153 @@ class LocationController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param int $id
      *
-     * @return Response
+     * @return array
      */
-    public function mapDataEdit(Request $request): Response
+    private function getHierarchy(int $id): array
     {
-        $parent_id = (int) $request->get('parent_id');
-        $place_id  = (int) $request->get('place_id');
-        $hierarchy = $this->gethierarchy($place_id);
+        $arr  = [];
+        $fqpn = [];
+
+        while ($id !== 0) {
+            $row = DB::table('placelocation')
+                ->where('pl_id', '=', $id)
+                ->first();
+
+            $fqpn[]    = $row->pl_place;
+            $row->fqpn = implode(Gedcom::PLACE_SEPARATOR, $fqpn);
+            $id        = (int) $row->pl_parent_id;
+            $arr[]     = $row;
+        }
+
+        return array_reverse($arr);
+    }
+
+    /**
+     * Find all of the places in the hierarchy
+     *
+     * @param int $id
+     *
+     * @return stdClass[]
+     */
+    private function getPlaceListLocation(int $id): array
+    {
+        // We know the id of the place in the placelocation table,
+        // now get the id of the same place in the places table
+        if ($id === 0) {
+            $fqpn = '';
+        } else {
+            $hierarchy = $this->getHierarchy($id);
+            $fqpn      = ', ' . $hierarchy[0]->fqpn;
+        }
+
+        $rows = DB::table('placelocation')
+            ->where('pl_parent_id', '=', $id)
+            ->orderBy('pl_place')
+            ->get();
+
+        $list = [];
+        foreach ($rows as $row) {
+            // Find/count places without co-ordinates
+            $children = $this->childLocationStatus((int) $row->pl_id);
+            $active   = $this->isLocationActive($row->pl_place . $fqpn);
+
+            if (!$active) {
+                $badge = 'danger';
+            } elseif ((int) $children->no_coord > 0) {
+                $badge = 'warning';
+            } elseif ((int) $children->child_count > 0) {
+                $badge = 'info';
+            } else {
+                $badge = 'secondary';
+            }
+
+            $row->child_count = (int) $children->child_count;
+            $row->badge       = $badge;
+
+            $list[] = $row;
+        }
+
+        return $list;
+    }
+
+    /**
+     * How many children does place have?  How many have co-ordinates?
+     *
+     * @param int $parent_id
+     *
+     * @return stdClass
+     */
+    private function childLocationStatus(int $parent_id): stdClass
+    {
+        $prefix = DB::connection()->getTablePrefix();
+
+        $expression =
+            $prefix . 'p0.pl_place IS NOT NULL AND ' . $prefix . 'p0.pl_lati IS NULL OR ' .
+            $prefix . 'p1.pl_place IS NOT NULL AND ' . $prefix . 'p1.pl_lati IS NULL OR ' .
+            $prefix . 'p2.pl_place IS NOT NULL AND ' . $prefix . 'p2.pl_lati IS NULL OR ' .
+            $prefix . 'p3.pl_place IS NOT NULL AND ' . $prefix . 'p3.pl_lati IS NULL OR ' .
+            $prefix . 'p4.pl_place IS NOT NULL AND ' . $prefix . 'p4.pl_lati IS NULL OR ' .
+            $prefix . 'p5.pl_place IS NOT NULL AND ' . $prefix . 'p5.pl_lati IS NULL OR ' .
+            $prefix . 'p6.pl_place IS NOT NULL AND ' . $prefix . 'p6.pl_lati IS NULL OR ' .
+            $prefix . 'p7.pl_place IS NOT NULL AND ' . $prefix . 'p7.pl_lati IS NULL OR ' .
+            $prefix . 'p8.pl_place IS NOT NULL AND ' . $prefix . 'p8.pl_lati IS NULL OR ' .
+            $prefix . 'p9.pl_place IS NOT NULL AND ' . $prefix . 'p9.pl_lati IS NULL';
+
+        return DB::table('placelocation AS p0')
+            ->leftJoin('placelocation AS p1', 'p1.pl_parent_id', '=', 'p0.pl_id')
+            ->leftJoin('placelocation AS p2', 'p2.pl_parent_id', '=', 'p1.pl_id')
+            ->leftJoin('placelocation AS p3', 'p3.pl_parent_id', '=', 'p2.pl_id')
+            ->leftJoin('placelocation AS p4', 'p4.pl_parent_id', '=', 'p3.pl_id')
+            ->leftJoin('placelocation AS p5', 'p5.pl_parent_id', '=', 'p4.pl_id')
+            ->leftJoin('placelocation AS p6', 'p6.pl_parent_id', '=', 'p5.pl_id')
+            ->leftJoin('placelocation AS p7', 'p7.pl_parent_id', '=', 'p6.pl_id')
+            ->leftJoin('placelocation AS p8', 'p8.pl_parent_id', '=', 'p7.pl_id')
+            ->leftJoin('placelocation AS p9', 'p9.pl_parent_id', '=', 'p8.pl_id')
+            ->where('p0.pl_parent_id', '=', $parent_id)
+            ->select([DB::raw('COUNT(*) AS child_count'), DB::raw('SUM(' . $expression . ') AS no_coord')])
+            ->first();
+    }
+
+    /**
+     * Is a place name used in any tree?
+     *
+     * @param string $place_name
+     *
+     * @return bool
+     */
+    private function isLocationActive(string $place_name): bool
+    {
+        $places = explode(Gedcom::PLACE_SEPARATOR, $place_name);
+
+        $query = DB::table('places AS p0')
+            ->where('p0.p_place', '=', $places[0])
+            ->select(['pl0.*']);
+
+        array_shift($places);
+
+        foreach ($places as $n => $place) {
+            $query->join('places AS p' . ($n + 1), static function (JoinClause $join) use ($n, $place): void {
+                $join
+                    ->on('p' . ($n + 1) . '.p_id', '=', 'p' . $n . '.p_parent_id')
+                    ->where('p' . ($n + 1) . '.p_place', '=', $place);
+            });
+        }
+
+        return $query->exists();
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function mapDataEdit(ServerRequestInterface $request): ResponseInterface
+    {
+        $parent_id = (int) $request->getQueryParams()['parent_id'];
+        $place_id  = (int) $request->getQueryParams()['place_id'];
+        $hierarchy = $this->getHierarchy($place_id);
         $fqpn      = empty($hierarchy) ? '' : $hierarchy[0]->fqpn;
         $location  = new Location($fqpn);
 
@@ -136,22 +287,54 @@ class LocationController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param int $id
      *
-     * @return RedirectResponse
+     * @return array
      */
-    public function mapDataSave(Request $request): RedirectResponse
+    private function mapLocationData(int $id): array
     {
-        $parent_id = (int) $request->get('parent_id');
-        $place_id  = (int) $request->get('place_id');
-        $lat       = round($request->get('new_place_lati'), 5); // 5 decimal places (locate to within about 1 metre)
+        $row = DB::table('placelocation')
+            ->where('pl_id', '=', $id)
+            ->first();
+
+        if (empty($row)) {
+            $json = [
+                'zoom'        => 2,
+                'coordinates' => [
+                    0.0,
+                    0.0,
+                ],
+            ];
+        } else {
+            $json = [
+                'zoom'        => (int) $row->pl_zoom ?: 2,
+                'coordinates' => [
+                    (float) strtr($row->pl_lati ?? '0', ['N' => '', 'S' => '-', ',' => '.']),
+                    (float) strtr($row->pl_long ?? '0', ['E' => '', 'W' => '-', ',' => '.']),
+                ],
+            ];
+        }
+
+        return $json;
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function mapDataSave(ServerRequestInterface $request): ResponseInterface
+    {
+        $parent_id = (int) $request->getQueryParams()['parent_id'];
+        $place_id  = (int) $request->getQueryParams()['place_id'];
+        $lat       = round($request->getParsedBody()['new_place_lati'], 5); // 5 decimal places (locate to within about 1 metre)
         $lat       = ($lat < 0 ? 'S' : 'N') . abs($lat);
-        $lng       = round($request->get('new_place_long'), 5);
+        $lng       = round($request->getParsedBody()['new_place_long'], 5);
         $lng       = ($lng < 0 ? 'W' : 'E') . abs($lng);
-        $hierarchy = $this->gethierarchy($parent_id);
+        $hierarchy = $this->getHierarchy($parent_id);
         $level     = count($hierarchy);
-        $icon      = $request->get('icon', '');
-        $zoom      = (int) $request->get('new_zoom_factor', '2');
+        $icon      = $request->getParsedBody()['icon'];
+        $zoom      = (int) $request->getParsedBody()['new_zoom_factor'];
 
         if ($place_id === 0) {
             $place_id = 1 + (int) DB::table('placelocation')->max('pl_id');
@@ -160,9 +343,9 @@ class LocationController extends AbstractAdminController
                 'pl_id'        => $place_id,
                 'pl_parent_id' => $parent_id,
                 'pl_level'     => $level,
-                'pl_place'     => $request->get('new_place_name', ''),
-                'pl_lati'      => $request->get('lati_control', '') . $lat,
-                'pl_long'      => $request->get('long_control', '') . $lng,
+                'pl_place'     => $request->getParsedBody()['new_place_name'],
+                'pl_lati'      => $lat,
+                'pl_long'      => $lng,
                 'pl_zoom'      => $zoom,
                 'pl_icon'      => $icon,
             ]);
@@ -170,35 +353,36 @@ class LocationController extends AbstractAdminController
             DB::table('placelocation')
                 ->where('pl_id', '=', $place_id)
                 ->update([
-                    'pl_place' => $request->get('new_place_name'),
-                    'pl_lati'  => $request->get('lati_control') . $lat,
-                    'pl_long'  => $request->get('long_control') . $lng,
-                    'pl_zoom'  => (int) $request->get('new_zoom_factor'),
+                    'pl_place' => $request->getParsedBody()['new_place_name'],
+                    'pl_lati'  => $lat,
+                    'pl_long'  => $lng,
+                    'pl_zoom'  => $zoom,
                     'pl_icon'  => $icon,
                 ]);
         }
+
         FlashMessages::addMessage(
             I18N::translate(
                 'The details for “%s” have been updated.',
-                $request->get('new_place_name')
+                $request->getParsedBody()['new_place_name']
             ),
             'success'
         );
 
         $url = route('map-data', ['parent_id' => $parent_id]);
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function mapDataDelete(Request $request): RedirectResponse
+    public function mapDataDelete(ServerRequestInterface $request): ResponseInterface
     {
-        $place_id  = (int) $request->get('place_id');
-        $parent_id = (int) $request->get('parent_id');
+        $place_id  = (int) $request->getQueryParams()['place_id'];
+        $parent_id = (int) $request->getQueryParams()['parent_id'];
 
         try {
             DB::table('placelocation')
@@ -223,21 +407,21 @@ class LocationController extends AbstractAdminController
 
         $url = route('map-data', ['parent_id' => $parent_id]);
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function exportLocations(Request $request): Response
+    public function exportLocations(ServerRequestInterface $request): ResponseInterface
     {
-        $parent_id = (int) $request->get('parent_id');
-        $format    = $request->get('format');
+        $parent_id = (int) $request->getQueryParams()['parent_id'];
+        $format    = $request->getQueryParams()['format'];
         $maxlevel  = (int) DB::table('placelocation')->max('pl_level');
         $startfqpn = [];
-        $hierarchy = $this->gethierarchy($parent_id);
+        $hierarchy = $this->getHierarchy($parent_id);
 
         // Create the file name
         $place_name = empty($hierarchy) ? 'Global' : $hierarchy[0]->fqpn; // $hierarchy[0] always holds the full placename
@@ -254,7 +438,7 @@ class LocationController extends AbstractAdminController
         $places = [];
         $this->buildLevel($parent_id, $startfqpn, $places);
 
-        $places = array_filter($places, function (array $place): bool {
+        $places = array_filter($places, static function (array $place): bool {
             return $place['pl_long'] !== 0.0 && $place['pl_lati'] !== 0.0;
         });
 
@@ -280,20 +464,116 @@ class LocationController extends AbstractAdminController
     }
 
     /**
-     * @param Request $request
+     * @param int   $parent_id
+     * @param array $placename
+     * @param array $places
      *
-     * @return Response
+     * @return void
+     * @throws Exception
      */
-    public function importLocations(Request $request): Response
+    private function buildLevel(int $parent_id, array $placename, array &$places): void
     {
-        $parent_id = (int) $request->get('parent_id');
+        $level = array_search('', $placename, true);
+
+        $rows = DB::table('placelocation')
+            ->where('pl_parent_id', '=', $parent_id)
+            ->orderBy('pl_place')
+            ->get();
+
+        foreach ($rows as $row) {
+            $index             = (int) $row->pl_id;
+            $placename[$level] = $row->pl_place;
+            $places[]          = array_merge(['pl_level' => $row->pl_level], $placename, ['pl_long' => $row->pl_long, 'pl_lati' => $row->pl_lati, 'pl_zoom' => $row->pl_zoom, 'pl_icon' => $row->pl_icon]);
+            $this->buildLevel($index, $placename, $places);
+        }
+    }
+
+    /**
+     * @param string     $filename
+     * @param string[]   $columns
+     * @param string[][] $places
+     *
+     * @return ResponseInterface
+     */
+    private function exportCSV(string $filename, array $columns, array $places): ResponseInterface
+    {
+        $resource = fopen('php://temp', 'rb+');
+
+        fputcsv($resource, $columns, ';');
+
+        foreach ($places as $place) {
+            fputcsv($resource, $place, ';');
+        }
+
+        rewind($resource);
+
+        $filename = addcslashes($filename, '"');
+
+        return response(stream_get_contents($resource))
+            ->withHeader('Content-Type', 'text/csv; charset=utf-8')
+            ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
+    }
+
+    /**
+     * @param string $filename
+     * @param array  $rows
+     * @param int    $maxlevel
+     *
+     * @return ResponseInterface
+     */
+    private function exportGeoJSON(string $filename, array $rows, int $maxlevel): ResponseInterface
+    {
+        $geojson = [
+            'type'     => 'FeatureCollection',
+            'features' => [],
+        ];
+        foreach ($rows as $place) {
+            $fqpn = implode(
+                Gedcom::PLACE_SEPARATOR,
+                array_reverse(
+                    array_filter(
+                        array_slice($place, 1, $maxlevel + 1)
+                    )
+                )
+            );
+
+            $geojson['features'][] = [
+                'type'       => 'Feature',
+                'geometry'   => [
+                    'type'        => 'Point',
+                    'coordinates' => [
+                        $this->gedcom_service->readLongitude($place['pl_long'] ?? ''),
+                        $this->gedcom_service->readLatitude($place['pl_lati'] ?? ''),
+                    ],
+                ],
+                'properties' => [
+                    'name' => $fqpn,
+                ],
+            ];
+        }
+
+        $filename = addcslashes($filename, '"');
+
+        return response($geojson)
+            ->withHeader('Content-Type', 'application/vnd.geo+json')
+            ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function importLocations(ServerRequestInterface $request): ResponseInterface
+    {
+        $parent_id = (int) $request->getQueryParams()['parent_id'];
 
         $files = array_merge(
             glob(WT_DATA_DIR . 'places/*.csv', GLOB_NOSORT),
             glob(WT_DATA_DIR . 'places/*.geojson', GLOB_NOSORT)
         );
 
-        $files = array_map(function (string $place): string {
+        $files = array_map(static function (string $place): string {
             return substr($place, strlen(WT_DATA_DIR . 'places/'));
         }, $files);
 
@@ -312,16 +592,17 @@ class LocationController extends AbstractAdminController
      * level followed by a variable number of placename fields
      * followed by Longitude, Latitude, Zoom & Icon
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      * @throws Exception
      */
-    public function importLocationsAction(Request $request): RedirectResponse
+    public function importLocationsAction(ServerRequestInterface $request): ResponseInterface
     {
-        $serverfile     = $request->get('serverfile', '');
-        $options        = $request->get('import-options', '');
-        $clear_database = (bool) $request->get('cleardatabase');
+        $serverfile     = $request->getParsedBody()['serverfile'] ?? '';
+        $options        = $request->getParsedBody()['import-options'] ?? '';
+        $clear_database = (bool) ($request->getParsedBody()['cleardatabase'] ?? false);
+        $local_file     = $request->getUploadedFiles()['localfile'] ?? null;
 
         $filename    = '';
         $places      = [];
@@ -334,19 +615,24 @@ class LocationController extends AbstractAdminController
             'fqpn',
         ];
 
-        if ($serverfile !== '' && is_dir(WT_DATA_DIR . 'places')) {  // first choice is file on server
-            $filename = WT_DATA_DIR . 'places/' . $serverfile;
-        } elseif ($request->files->has('localfile')) { // 2nd choice is local file
-            $filename = $request->files->get('localfile')->getPathName();
+        $url = route('map-data', ['parent_id' => 0]);
+
+        if ($serverfile !== '' && is_dir(WT_DATA_DIR . 'places')) {
+            // first choice is file on server
+            $fp = fopen(WT_DATA_DIR . 'places/' . $serverfile, 'rb+');
+        } elseif ($local_file instanceof UploadedFileInterface && $local_file->getError() === UPLOAD_ERR_OK) {
+            // 2nd choice is local file
+            $fp = $local_file->getStream()->detach();
+        } else {
+            return redirect($url);
         }
 
-        $fp = fopen($filename, 'rb');
         if ($fp !== false) {
             $string = stream_get_contents($fp);
 
             // Check the filetype
             if (stripos($string, 'FeatureCollection') !== false) {
-                $input_array = json_decode($string);
+                $input_array = json_decode($string, false);
 
                 foreach ($input_array->features as $feature) {
                     $places[] = array_combine($field_names, [
@@ -411,8 +697,8 @@ class LocationController extends AbstractAdminController
                         ->update([
                             'pl_lati' => $place['pl_lati'],
                             'pl_long' => $place['pl_long'],
-                            'pl_zoom' => $place['pl_zoom'],
-                            'pl_icon' => $place['pl_icon'],
+                            'pl_zoom' => $place['pl_zoom'] ? $place['pl_zoom'] : null,
+                            'pl_icon' => $place['pl_icon'] ? $place['pl_icon'] : null,
                         ]);
 
                     $updated++;
@@ -426,17 +712,15 @@ class LocationController extends AbstractAdminController
             throw new Exception('Unable to open file: ' . $filename);
         }
 
-        $url = route('map-data', ['parent_id' => 0]);
-
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
      * @param Tree $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function importLocationsFromTree(Tree $tree): RedirectResponse
+    public function importLocationsFromTree(Tree $tree): ResponseInterface
     {
         // Get all the places from the places table ...
         $places = DB::table('places AS p0')
@@ -461,7 +745,7 @@ class LocationController extends AbstractAdminController
                 'p8.p_place AS place8',
             ])
             ->get()
-            ->map(function (stdClass $row): string {
+            ->map(static function (stdClass $row): string {
                 return implode(', ', array_filter((array) $row));
             });
 
@@ -488,7 +772,7 @@ class LocationController extends AbstractAdminController
                 'p8.pl_place AS place8',
             ])
             ->get()
-            ->map(function (stdClass $row): stdClass {
+            ->map(static function (stdClass $row): stdClass {
                 $row->place = implode(', ', array_filter(array_slice((array) $row, 1)));
 
                 return $row;
@@ -530,7 +814,7 @@ class LocationController extends AbstractAdminController
                             $parent_id = $place_id;
                         }
                     }
-                } catch (\Illuminate\Database\QueryException $ex) {
+                } catch (QueryException $ex) {
                     // Duplicates are expected due to collation differences.  e.g. Quebec / Québec
                 }
             }
@@ -540,278 +824,6 @@ class LocationController extends AbstractAdminController
 
         $url = route('map-data');
 
-        return new RedirectResponse($url);
-    }
-
-    /**
-     * @param string     $filename
-     * @param string[]   $columns
-     * @param string[][] $places
-     *
-     * @return Response
-     */
-    private function exportCSV(string $filename, array $columns, array $places): Response
-    {
-        $response = new StreamedResponse(function () use ($columns, $places) {
-            $stream = fopen('php://output', 'wb');
-
-            if ($stream !== false) {
-                fputcsv($stream, $columns, ';');
-
-                foreach ($places as $place) {
-                    fputcsv($stream, $place, ';');
-                }
-
-                fclose($stream);
-            }
-        });
-
-        $disposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $filename);
-        $response->headers->set('Content-Disposition', $disposition);
-        $response->headers->set('Content-Type', 'text/csv; charset=UTF-8');
-
-        return $response;
-    }
-
-    /**
-     * @param string $filename
-     * @param array  $rows
-     * @param int    $maxlevel
-     *
-     * @return Response
-     */
-    private function exportGeoJSON(string $filename, array $rows, int $maxlevel): Response
-    {
-        $geojson = [
-            'type'     => 'FeatureCollection',
-            'features' => [],
-        ];
-        foreach ($rows as $place) {
-            $fqpn = implode(
-                Gedcom::PLACE_SEPARATOR,
-                array_reverse(
-                    array_filter(
-                        array_slice($place, 1, $maxlevel + 1)
-                    )
-                )
-            );
-
-            $geojson['features'][] = [
-                'type'       => 'Feature',
-                'geometry'   => [
-                    'type'        => 'Point',
-                    'coordinates' => [
-                        $this->gedcom_service->readLongitude($place['pl_long'] ?? ''),
-                        $this->gedcom_service->readLatitude($place['pl_lati'] ?? ''),
-                    ],
-                ],
-                'properties' => [
-                    'name' => $fqpn,
-                ],
-            ];
-        }
-
-        $response = new JsonResponse($geojson);
-
-        $disposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $filename);
-        $response->headers->set('Content-Disposition', $disposition);
-        $response->headers->set('Content-Type', 'application/vnd.geo+json');
-
-        return $response;
-    }
-
-    /**
-     * @param int   $parent_id
-     * @param array $placename
-     * @param array $places
-     *
-     * @return void
-     * @throws Exception
-     */
-    private function buildLevel(int $parent_id, array $placename, array &$places): void
-    {
-        $level = array_search('', $placename);
-
-        $rows = DB::table('placelocation')
-            ->where('pl_parent_id', '=', $parent_id)
-            ->orderBy('pl_place')
-            ->get();
-
-        foreach ($rows as $row) {
-            $index             = (int) $row->pl_id;
-            $placename[$level] = $row->pl_place;
-            $places[]          = array_merge(['pl_level' => $row->pl_level], $placename, ['pl_long' => $row->pl_long, 'pl_lati' => $row->pl_lati, 'pl_zoom' => $row->pl_zoom, 'pl_icon' => $row->pl_icon]);
-            $this->buildLevel($index, $placename, $places);
-        }
-    }
-
-    /**
-     * @param int $id
-     *
-     * @return array
-     */
-    private function gethierarchy(int $id): array
-    {
-        $arr  = [];
-        $fqpn = [];
-
-        while ($id !== 0) {
-            $row = DB::table('placelocation')
-                ->where('pl_id', '=', $id)
-                ->first();
-
-            $fqpn[]    = $row->pl_place;
-            $row->fqpn = implode(Gedcom::PLACE_SEPARATOR, $fqpn);
-            $id        = (int) $row->pl_parent_id;
-            $arr[]     = $row;
-        }
-
-        return array_reverse($arr);
-    }
-
-    /**
-     * Find all of the places in the hierarchy
-     *
-     * @param int $id
-     *
-     * @return stdClass[]
-     */
-    private function getPlaceListLocation(int $id): array
-    {
-        // We know the id of the place in the placelocation table,
-        // now get the id of the same place in the places table
-        if ($id === 0) {
-            $fqpn = '';
-        } else {
-            $hierarchy = $this->gethierarchy($id);
-            $fqpn      = ', ' . $hierarchy[0]->fqpn;
-        }
-
-        $rows = DB::table('placelocation')
-            ->where('pl_parent_id', '=', $id)
-            ->orderBy('pl_place')
-            ->get();
-
-        $list = [];
-        foreach ($rows as $row) {
-            // Find/count places without co-ordinates
-            $children = $this->childLocationStatus((int) $row->pl_id);
-            $active   = $this->isLocationActive($row->pl_place . $fqpn);
-
-            if (!$active) {
-                $badge = 'danger';
-            } elseif ((int) $children->no_coord > 0) {
-                $badge = 'warning';
-            } elseif ((int) $children->child_count > 0) {
-                $badge = 'info';
-            } else {
-                $badge = 'secondary';
-            }
-
-            $row->child_count = (int) $children->child_count;
-            $row->badge       = $badge;
-
-            $list[] = $row;
-        }
-
-        return $list;
-    }
-
-    /**
-     * Is a place name used in any tree?
-     *
-     * @param string $place_name
-     *
-     * @return bool
-     */
-    private function isLocationActive(string $place_name): bool
-    {
-        $places = explode(Gedcom::PLACE_SEPARATOR, $place_name);
-
-        $query = DB::table('places AS p0')
-            ->where('p0.p_place', '=', $places[0])
-            ->select(['pl0.*']);
-
-        array_shift($places);
-
-        foreach ($places as $n => $place) {
-            $query->join('places AS p' . ($n + 1), function (JoinClause $join) use ($n, $place): void {
-                $join
-                    ->on('p' . ($n + 1) . '.p_id', '=', 'p' . $n . '.p_parent_id')
-                    ->where('p' . ($n + 1) . '.p_place', '=', $place);
-            });
-        }
-
-        return $query->exists();
-    }
-
-    /**
-     * How many children does place have?  How many have co-ordinates?
-     *
-     * @param int $parent_id
-     *
-     * @return stdClass
-     */
-    private function childLocationStatus(int $parent_id): stdClass
-    {
-        $prefix = DB::connection()->getTablePrefix();
-
-        $expression =
-            $prefix . 'p0.pl_place IS NOT NULL AND ' . $prefix . 'p0.pl_lati IS NULL OR ' .
-            $prefix . 'p1.pl_place IS NOT NULL AND ' . $prefix . 'p1.pl_lati IS NULL OR ' .
-            $prefix . 'p2.pl_place IS NOT NULL AND ' . $prefix . 'p2.pl_lati IS NULL OR ' .
-            $prefix . 'p3.pl_place IS NOT NULL AND ' . $prefix . 'p3.pl_lati IS NULL OR ' .
-            $prefix . 'p4.pl_place IS NOT NULL AND ' . $prefix . 'p4.pl_lati IS NULL OR ' .
-            $prefix . 'p5.pl_place IS NOT NULL AND ' . $prefix . 'p5.pl_lati IS NULL OR ' .
-            $prefix . 'p6.pl_place IS NOT NULL AND ' . $prefix . 'p6.pl_lati IS NULL OR ' .
-            $prefix . 'p7.pl_place IS NOT NULL AND ' . $prefix . 'p7.pl_lati IS NULL OR ' .
-            $prefix . 'p8.pl_place IS NOT NULL AND ' . $prefix . 'p8.pl_lati IS NULL OR ' .
-            $prefix . 'p9.pl_place IS NOT NULL AND ' . $prefix . 'p9.pl_lati IS NULL';
-
-        return DB::table('placelocation AS p0')
-            ->leftJoin('placelocation AS p1', 'p1.pl_parent_id', '=', 'p0.pl_id')
-            ->leftJoin('placelocation AS p2', 'p2.pl_parent_id', '=', 'p1.pl_id')
-            ->leftJoin('placelocation AS p3', 'p3.pl_parent_id', '=', 'p2.pl_id')
-            ->leftJoin('placelocation AS p4', 'p4.pl_parent_id', '=', 'p3.pl_id')
-            ->leftJoin('placelocation AS p5', 'p5.pl_parent_id', '=', 'p4.pl_id')
-            ->leftJoin('placelocation AS p6', 'p6.pl_parent_id', '=', 'p5.pl_id')
-            ->leftJoin('placelocation AS p7', 'p7.pl_parent_id', '=', 'p6.pl_id')
-            ->leftJoin('placelocation AS p8', 'p8.pl_parent_id', '=', 'p7.pl_id')
-            ->leftJoin('placelocation AS p9', 'p9.pl_parent_id', '=', 'p8.pl_id')
-            ->where('p0.pl_parent_id', '=', $parent_id)
-            ->select([DB::raw('COUNT(*) AS child_count'), DB::raw('SUM(' . $expression . ') AS no_coord')])
-            ->first();
-    }
-
-    /**
-     * @param int $id
-     *
-     * @return array
-     */
-    private function mapLocationData(int $id): array
-    {
-        $row = DB::table('placelocation')
-            ->where('pl_id', '=', $id)
-            ->first();
-
-        if (empty($row)) {
-            $json = [
-                'zoom'        => 2,
-                'coordinates' => [
-                    0.0,
-                    0.0,
-                ],
-            ];
-        } else {
-            $json = [
-                'zoom'        => (int) $row->pl_zoom ?: 2,
-                'coordinates' => [
-                    (float) strtr($row->pl_lati ?? '0', ['N' => '', 'S' => '-', ',' => '.']),
-                    (float) strtr($row->pl_long ?? '0', ['E' => '', 'W' => '-', ',' => '.']),
-                ],
-            ];
-        }
-
-        return $json;
+        return redirect($url);
     }
 }

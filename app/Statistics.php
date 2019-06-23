@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use function count;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -53,6 +54,7 @@ use Fisharebest\Webtrees\Statistics\Repository\PlaceRepository;
 use Fisharebest\Webtrees\Statistics\Repository\ServerRepository;
 use Fisharebest\Webtrees\Statistics\Repository\UserRepository;
 use Illuminate\Database\Query\Builder;
+use function in_array;
 use ReflectionMethod;
 
 /**
@@ -230,7 +232,7 @@ class Statistics implements
 
         foreach (get_class_methods($this) as $method) {
             $reflection = new ReflectionMethod($this, $method);
-            if ($reflection->isPublic() && !\in_array($method, self::$public_but_not_allowed, true) && (string) $reflection->getReturnType() !== Builder::class) {
+            if ($reflection->isPublic() && !in_array($method, self::$public_but_not_allowed, true) && (string) $reflection->getReturnType() !== Builder::class) {
                 $examples[$method] = $this->$method();
             }
         }
@@ -257,7 +259,7 @@ class Statistics implements
 
         foreach (get_class_methods($this) as $method) {
             $reflection = new ReflectionMethod($this, $method);
-            if ($reflection->isPublic() && !\in_array($method, self::$public_but_not_allowed, true) && (string) $reflection->getReturnType() !== Builder::class) {
+            if ($reflection->isPublic() && !in_array($method, self::$public_but_not_allowed, true) && (string) $reflection->getReturnType() !== Builder::class) {
                 $examples[$method] = $method;
             }
         }
@@ -2325,7 +2327,7 @@ class Statistics implements
      */
     public function userName(string $visitor_text = ''): string
     {
-        return $this->userRepository->userName();
+        return $this->userRepository->userName($visitor_text);
     }
 
     /**
@@ -2389,7 +2391,7 @@ class Statistics implements
      */
     public function latestUserRegDate(string $format = null): string
     {
-        return $this->latestUserRepository->latestUserRegDate();
+        return $this->latestUserRepository->latestUserRegDate($format);
     }
 
     /**
@@ -2397,7 +2399,7 @@ class Statistics implements
      */
     public function latestUserRegTime(string $format = null): string
     {
-        return $this->latestUserRepository->latestUserRegTime();
+        return $this->latestUserRepository->latestUserRegTime($format);
     }
 
     /**
@@ -2405,7 +2407,7 @@ class Statistics implements
      */
     public function latestUserLoggedin(string $yes = null, string $no = null): string
     {
-        return $this->latestUserRepository->latestUserLoggedin();
+        return $this->latestUserRepository->latestUserLoggedin($yes, $no);
     }
 
     /**
@@ -2616,10 +2618,9 @@ class Statistics implements
         /** @var ModuleBlockInterface|null $module */
         $module = $this->module_service
             ->findByComponent(ModuleBlockInterface::class, $this->tree, Auth::user())
-            ->filter(function (ModuleInterface $module) use ($block): bool {
+            ->first(static function (ModuleInterface $module) use ($block): bool {
                 return $module->name() === $block && $module->name() !== 'html';
-            })
-            ->first();
+            });
 
         if ($module === null) {
             return '';
@@ -2630,7 +2631,7 @@ class Statistics implements
         foreach ($params as $config) {
             $bits = explode('=', $config);
 
-            if (\count($bits) < 2) {
+            if (count($bits) < 2) {
                 continue;
             }
 

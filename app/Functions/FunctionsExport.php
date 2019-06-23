@@ -180,10 +180,10 @@ class FunctionsExport
             ->orderBy('m_id')
             ->get()
             ->map(Media::rowMapper())
-            ->map(function (Media $record) use ($access_level): string {
+            ->map(static function (Media $record) use ($access_level): string {
                 return $record->privatizeGedcom($access_level);
             })
-            ->map(function (string $gedcom) use ($media_path): string {
+            ->map(static function (string $gedcom) use ($media_path): string {
                 return self::convertMediaPath($gedcom, $media_path);
             });
 
@@ -192,7 +192,7 @@ class FunctionsExport
             ->orderBy('s_id')
             ->get()
             ->map(Source::rowMapper())
-            ->map(function (Source $record) use ($access_level): string {
+            ->map(static function (Source $record) use ($access_level): string {
                 return $record->privatizeGedcom($access_level);
             });
 
@@ -202,7 +202,7 @@ class FunctionsExport
             ->orderBy('o_id')
             ->get()
             ->map(GedcomRecord::rowMapper())
-            ->map(function (GedcomRecord $record) use ($access_level): string {
+            ->map(static function (GedcomRecord $record) use ($access_level): string {
                 return $record->privatizeGedcom($access_level);
             });
 
@@ -211,7 +211,7 @@ class FunctionsExport
             ->orderBy('i_id')
             ->get()
             ->map(Individual::rowMapper())
-            ->map(function (Individual $record) use ($access_level): string {
+            ->map(static function (Individual $record) use ($access_level): string {
                 return $record->privatizeGedcom($access_level);
             });
 
@@ -220,7 +220,7 @@ class FunctionsExport
             ->orderBy('f_id')
             ->get()
             ->map(Family::rowMapper())
-            ->map(function (Family $record) use ($access_level): string {
+            ->map(static function (Family $record) use ($access_level): string {
                 return $record->privatizeGedcom($access_level);
             });
 
@@ -233,10 +233,10 @@ class FunctionsExport
             ->merge($individuals)
             ->merge($families)
             ->merge($trailer)
-            ->map(function (string $gedcom) use ($encoding): string {
+            ->map(static function (string $gedcom) use ($encoding): string {
                 return $encoding === 'ANSI' ? utf8_decode($gedcom) : $gedcom;
             })
-            ->map(function (string $gedcom): string {
+            ->map(static function (string $gedcom): string {
                 return self::reformatRecord($gedcom);
             });
 

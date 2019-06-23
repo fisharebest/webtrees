@@ -29,6 +29,6 @@ class BatchUpdateBasePluginTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\BatchUpdate\BatchUpdateBasePlugin'));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\BatchUpdate\BatchUpdateBasePlugin::class));
     }
 }

@@ -46,29 +46,31 @@ $processHoursFunction = function (\Carbon\CarbonInterface $date, string $format)
  * - Andrii Ponomarov
  * - alecrabbit
  * - vystepanenko
+ * - AlexWalkerson
+ * - Andre Havryliuk (Andrend)
  */
 return [
     'year' => ':count рік|:count роки|:count років',
-    'y' => ':count рік|:count роки|:count років',
+    'y' => ':countр',
     'a_year' => '{1}рік|:count рік|:count роки|:count років',
     'month' => ':count місяць|:count місяці|:count місяців',
-    'm' => ':count місяць|:count місяці|:count місяців',
+    'm' => ':countм',
     'a_month' => '{1}місяць|:count місяць|:count місяці|:count місяців',
     'week' => ':count тиждень|:count тижні|:count тижнів',
-    'w' => ':count тиждень|:count тижні|:count тижнів',
+    'w' => ':countт',
     'a_week' => '{1}тиждень|:count тиждень|:count тижні|:count тижнів',
     'day' => ':count день|:count дні|:count днів',
-    'd' => ':count день|:count дні|:count днів',
+    'd' => ':countд',
     'a_day' => '{1}день|:count день|:count дні|:count днів',
     'hour' => ':count година|:count години|:count годин',
-    'h' => ':count година|:count години|:count годин',
+    'h' => ':countг',
     'a_hour' => '{1}годину|:count година|:count години|:count годин',
-    'minute' => ':count хвилину|:count хвилини|:count хвилин',
-    'min' => ':count хвилину|:count хвилини|:count хвилин',
+    'minute' => ':count хвилина|:count хвилини|:count хвилин',
+    'min' => ':countхв',
     'a_minute' => '{1}хвилина|:count хвилину|:count хвилини|:count хвилин',
-    'second' => ':count секунду|:count секунди|:count секунд',
-    's' => ':count секунду|:count секунди|:count секунд',
-    'a_second' => '{0,1}кілька секунд|:count секунду|:count секунди|:count секунд',
+    'second' => ':count секунда|:count секунди|:count секунд',
+    's' => ':countсек',
+    'a_second' => '{1}кілька секунд|:count секунду|:count секунди|:count секунд',
     'ago' => ':time тому',
     'from_now' => 'за :time',
     'after' => ':time після',

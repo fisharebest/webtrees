@@ -31,7 +31,7 @@ class CensusOfScotlandTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testPlace(): void
     {
-        $census = new CensusOfScotland;
+        $census = new CensusOfScotland();
 
         $this->assertSame('Scotland', $census->censusPlace());
     }
@@ -45,18 +45,18 @@ class CensusOfScotlandTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testAllDates(): void
     {
-        $census = new CensusOfScotland;
+        $census = new CensusOfScotland();
 
         $census_dates = $census->allCensusDates();
 
         $this->assertCount(8, $census_dates);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1841', $census_dates[0]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1851', $census_dates[1]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1861', $census_dates[2]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1871', $census_dates[3]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1881', $census_dates[4]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1891', $census_dates[5]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1901', $census_dates[6]);
-        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1911', $census_dates[7]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfScotland1841::class, $census_dates[0]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfScotland1851::class, $census_dates[1]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfScotland1861::class, $census_dates[2]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfScotland1871::class, $census_dates[3]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfScotland1881::class, $census_dates[4]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfScotland1891::class, $census_dates[5]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfScotland1901::class, $census_dates[6]);
+        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfScotland1911::class, $census_dates[7]);
     }
 }

@@ -57,8 +57,8 @@ class FunctionsPrintLists
                     $size = 75.0 + 125.0 * ($count - $minimum) / ($maximum - $minimum);
                 }
                 
-                $tag = ($module instanceof ModuleListInterface)?'a':'span';
-                $html .= '<'.$tag.' style="font-size:' . $size . '%"';
+                $tag = ($module instanceof ModuleListInterface) ? 'a' : 'span';
+                $html .= '<' . $tag . ' style="font-size:' . $size . '%"';
                 if ($module instanceof ModuleListInterface) {
                     $url = $module->listUrl($tree, ['surname' => $surn]);
                     $html .= ' href="' . e($url) . '"';
@@ -69,7 +69,7 @@ class FunctionsPrintLists
                 } else {
                     $html .= $spfxsurn;
                 }
-                $html .= '</'.$tag.'> ';
+                $html .= '</' . $tag . '> ';
             }
         }
 
@@ -79,7 +79,7 @@ class FunctionsPrintLists
     /**
      * Print a list of surnames.
      *
-     * @param string[][][]             $surnames array (of SURN, of array of SPFX_SURN, of array of XREF)
+     * @param int[][]                  $surnames counts of surname by variant
      * @param int                      $style    1=bullet list, 2=semicolon-separated list, 3=tabulated list with up to 4 columns
      * @param bool                     $totals   show totals after each name
      * @param ModuleListInterface|null $module
@@ -104,12 +104,12 @@ class FunctionsPrintLists
 
             // If all the surnames are just case variants, then merge them into one
             // Comment out this block if you want SMITH listed separately from Smith
-            $tag = ($module instanceof ModuleListInterface)?'a':'span';
-            $subhtml = '<'.$tag;
+            $tag = ($module instanceof ModuleListInterface) ? 'a' : 'span';
+            $subhtml = '<' . $tag;
             if ($url !== null) {
                 $subhtml .= ' href="' . e($url) . '"';
             }
-            $subhtml .= ' dir="auto">' . e(implode(I18N::$list_separator, array_keys($surns))) . '</'.$tag.'>';
+            $subhtml .= ' dir="auto">' . e(implode(I18N::$list_separator, array_keys($surns))) . '</' . $tag . '>';
             
             if ($totals) {
                 $subtotal = 0;

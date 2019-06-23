@@ -1,5 +1,3 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
@@ -58,8 +56,7 @@
             <?= I18N::translate('Default individual') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= FunctionsEdit::formControlIndividual($tree, $default_individual, ['id' => 'root-id',
-            'name' => 'root_id', 'aria-describedby' => 'root-id-description']) ?>
+            <?= view('components/select-individual', ['name' => 'root_id', 'id' => 'root-id', 'individual' => $default_individual, 'tree' => $tree]) ?>
             <p class="small text-muted" id="root-id-description">
                 <?= I18N::translate('This individual will be selected by default when viewing charts and reports.') ?>
             </p>
@@ -73,7 +70,7 @@
         <div class="col-sm-9 wt-page-options-value">
             <input class="form-control" type="password" id="password" name="password" aria-describedby="password-description" autocomplete="new-password">
             <p class="small text-muted" id="password-description">
-                <?= I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”.') ?>
+                <?= I18N::translate('Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”.') ?>
                 <br>
                 <?= I18N::translate('Leave the password blank if you want to keep the current password.') ?>
             </p>
@@ -85,7 +82,7 @@
             <?= I18N::translate('Language') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= Bootstrap4::select($installed_languages, $user->getPreference('language'), ['id' => 'language', 'name' => 'language']) ?>
+            <?= view('components/select', ['name' => 'language', 'selected' => $user->getPreference('language'), 'options' => $installed_languages]) ?>
         </div>
     </div>
 
@@ -94,7 +91,7 @@
             <?= I18N::translate('Time zone') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= Bootstrap4::select($timezones, $user->getPreference('TIMEZONE', 'UTC'), ['id' => 'timezone', 'name' => 'timezone', 'aria-describedby' => 'timezone-description']) ?>
+            <?= view('components/select', ['name' => 'timezone', 'selected' => $user->getPreference('TIMEZONE', 'UTC'), 'options' => $timezones]) ?>
             <p class="small text-muted" id="timezone-description">
                 <?= I18N::translate('The time zone is required for date calculations, such as knowing today’s date.') ?>
             </p>
@@ -119,7 +116,7 @@
                 <?= I18N::translate('Theme') ?>
             </label>
             <div class="col-sm-9 wt-page-options-value">
-                <?= Bootstrap4::select($themes, $user->getPreference('theme'), ['id' => 'theme', 'name' => 'theme', 'aria-describedby' => 'theme-description']) ?>
+                <?= view('components/select', ['name' => 'theme', 'selected' => $user->getPreference('theme'), 'options' => $themes]) ?>
                 <p class="small text-muted" id="theme-description">
                     <?= /* I18N: Help text for the "Default theme" site configuration setting */
                     I18N::translate('You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc.') ?>
@@ -133,7 +130,7 @@
             <?= I18N::translate('Contact method') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= Bootstrap4::select($contact_methods, $user->getPreference('contactmethod'), ['id' => 'contact-method', 'name' => 'contact_method', 'aria-describedby' => 'contact-method-description']) ?>
+            <?= view('components/select', ['name' => 'contact_method', 'id' => 'contact-method', 'selected' => $user->getPreference('contactmethod'), 'options' => $contact_methods]) ?>
             <p class="small text-muted" id="contact-method-description">
             <?= I18N::translate('Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all.') ?>
             </p>
@@ -146,7 +143,7 @@
                 <?= I18N::translate('Visible online') ?>
             </legend>
             <div class="col-sm-9 wt-page-options-value">
-                <?= Bootstrap4::checkbox(I18N::translate('Visible to other users when online'), false, ['name' => 'visible_online', 'checked' => (bool) $user->getPreference('visibleonline'), 'aria-describedby' => 'visible-online-description']) ?>
+                <?= view('components/checkbox', ['label' => I18N::translate('Visible to other users when online'), 'name' => 'visible_online', 'checked' => (bool) $user->getPreference('visibleonline')]) ?>
                 <p class="small text-muted" id="visible-online-description">
                     <?= I18N::translate('You can choose whether to appear in the list of users who are currently signed-in.') ?>
                 </p>

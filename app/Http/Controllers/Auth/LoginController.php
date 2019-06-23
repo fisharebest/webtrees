@@ -30,9 +30,8 @@ use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for user login and logout.
@@ -57,23 +56,23 @@ class LoginController extends AbstractBaseController
     /**
      * Show a login page.
      *
-     * @param Request   $request
-     * @param Tree|null $tree
+     * @param ServerRequestInterface $request
+     * @param Tree|null              $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function loginPage(Request $request, ?Tree $tree): Response
+    public function loginPage(ServerRequestInterface $request, ?Tree $tree): ResponseInterface
     {
         // Already logged in?
         if (Auth::check()) {
             $ged = $tree !== null ? $tree->name() : '';
 
-            return new RedirectResponse(route('user-page', ['ged' => $ged]));
+            return redirect(route('user-page', ['ged' => $ged]));
         }
 
-        $error    = $request->get('error', '');
-        $url      = $request->get('url', '');
-        $username = $request->get('username', '');
+        $error    = $request->getQueryParams()['error'] ?? '';
+        $url      = $request->getQueryParams()['url'] ?? '';
+        $username = $request->getQueryParams()['username'] ?? '';
 
         $title = I18N::translate('Sign in');
 
@@ -112,16 +111,16 @@ class LoginController extends AbstractBaseController
     /**
      * Perform a login.
      *
-     * @param Request        $request
-     * @param UpgradeService $upgrade_service
+     * @param ServerRequestInterface $request
+     * @param UpgradeService         $upgrade_service
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function loginAction(Request $request, UpgradeService $upgrade_service): RedirectResponse
+    public function loginAction(ServerRequestInterface $request, UpgradeService $upgrade_service): ResponseInterface
     {
-        $username = $request->get('username', '');
-        $password = $request->get('password', '');
-        $url      = $request->get('url', '');
+        $username = $request->getParsedBody()['username'] ?? '';
+        $password = $request->getParsedBody()['password'] ?? '';
+        $url      = $request->getParsedBody()['url'] ?? '';
 
         try {
             $this->doLogin($username, $password);
@@ -142,10 +141,10 @@ class LoginController extends AbstractBaseController
             }
 
             // Redirect to the target URL
-            return new RedirectResponse($url);
+            return redirect($url);
         } catch (Exception $ex) {
             // Failed to log in.
-            return new RedirectResponse(route('login', [
+            return redirect(route('login', [
                 'username' => $username,
                 'url'      => $url,
                 'error'    => $ex->getMessage(),
@@ -195,8 +194,8 @@ class LoginController extends AbstractBaseController
         Log::addAuthenticationLog('Login: ' . Auth::user()->userName() . '/' . Auth::user()->realName());
         Auth::user()->setPreference('sessiontime', (string) Carbon::now()->unix());
 
-        Session::put('locale', Auth::user()->getPreference('language'));
-        Session::put('theme_id', Auth::user()->getPreference('theme'));
+        Session::put('language', Auth::user()->getPreference('language'));
+        Session::put('theme', Auth::user()->getPreference('theme'));
         I18N::init(Auth::user()->getPreference('language'));
     }
 
@@ -205,9 +204,9 @@ class LoginController extends AbstractBaseController
      *
      * @param Tree|null $tree
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function logoutAction(Tree $tree = null): RedirectResponse
+    public function logoutAction(Tree $tree = null): ResponseInterface
     {
         if (Auth::check()) {
             Log::addAuthenticationLog('Logout: ' . Auth::user()->userName() . '/' . Auth::user()->realName());
@@ -216,9 +215,9 @@ class LoginController extends AbstractBaseController
         }
 
         if ($tree === null) {
-            return new RedirectResponse(route('tree-page'));
+            return redirect(route('tree-page'));
         }
 
-        return new RedirectResponse(route('tree-page', ['ged' => $tree->name()]));
+        return redirect(route('tree-page', ['ged' => $tree->name()]));
     }
 }

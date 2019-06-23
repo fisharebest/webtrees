@@ -1,7 +1,8 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
 
 <h2 class="wt-page-title">
     <?= $title ?>
@@ -18,7 +19,7 @@
             <?= I18N::translate('Individual') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= FunctionsEdit::formControlIndividual($tree, $individual, ['id' => 'xref', 'name' => 'xref']) ?>
+            <?= view('components/select-individual', ['name' => 'xref', 'individual' => $individual, 'tree' => $tree]) ?>
         </div>
     </div>
 
@@ -37,8 +38,7 @@
                 <?= I18N::translate('Layout') ?>
             </legend>
             <div class="col-sm-9 wt-page-options-value">
-                <?= Bootstrap4::radioButtons('chart_style', $chart_styles, $chart_style, true) ?>
-                <?= Bootstrap4::checkbox(I18N::translate('Show cousins'), false, ['name' => 'show_cousins', 'disabled' => $chart_style !== 'booklet', 'checked' => $show_cousins]) ?>
+                <?= view('components/radios-inline', ['name' => 'chart_style', 'options' => $chart_styles, 'selected' => $chart_style]) ?>
             </div>
         </div>
     </fieldset>
@@ -52,12 +52,3 @@
 </form>
 
 <div class="wt-ajax-load wt-page-content wt-chart wt-chart-ancestors" data-ajax-url="<?= e($ajax_url) ?>"></div>
-
-<?php View::push('javascript') ?>
-<script>
-    // The "show cousins" option is only available for the "booklet" style.
-    $("input[name=chart_style]").change(function () {
-        $("input[name=show_cousins]").prop("disabled", $(this).val() !== "booklet");
-    });
-</script>
-<?php View::endpush() ?>

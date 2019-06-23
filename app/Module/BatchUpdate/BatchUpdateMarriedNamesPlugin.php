@@ -21,7 +21,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class BatchUpdateMarriedNamesPlugin Batch Update plugin: add missing 2 _MARNM records
@@ -141,7 +141,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
         }
 
         foreach ($husb_surnames as $husb_surname) {
-            if (!in_array($husb_surname, $wife_surnames)) {
+            if (!in_array($husb_surname, $wife_surnames, true)) {
                 $missing_surnames[] = $husb_surname;
             }
         }
@@ -170,15 +170,15 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
     /**
      * Process the user-supplied options.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      *
      * @return void
      */
-    public function getOptions(Request $request): void
+    public function getOptions(ServerRequestInterface $request): void
     {
         parent::getOptions($request);
 
-        $this->surname = $request->get('surname', 'replace');
+        $this->surname = $request->getQueryParams()['surname'] ?? 'replace';
     }
 
     /**
@@ -192,11 +192,11 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
             '<div class="row form-group">' .
             '<label class="col-sm-3 col-form-label">' . I18N::translate('Surname option') . '</label>' .
             '<div class="col-sm-9">' .
-            '<select class="form-control" name="surname" onchange="this.form.submit();">' .
+            '<select class="form-control" name="surname">' .
             '<option value="replace" ' .
-            ($this->surname == 'replace' ? 'selected' : '') .
+            ($this->surname === 'replace' ? 'selected' : '') .
             '">' . I18N::translate('Wife’s surname replaced by husband’s surname') . '</option><option value="add" ' .
-            ($this->surname == 'add' ? 'selected' : '') .
+            ($this->surname === 'add' ? 'selected' : '') .
             '">' . I18N::translate('Wife’s maiden surname becomes new given name') . '</option>' .
             '</select>' .
             '</div></div>' .

@@ -1,13 +1,15 @@
-<?php use Fisharebest\Webtrees\Bootstrap4; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
 
 <div class="form-group row">
     <label class="col-sm-3 col-form-label" for="filter">
         <?= I18N::translate('Show only individuals, events, or all') ?>
     </label>
     <div class="col-sm-9">
-        <?= Bootstrap4::select(['indi' => I18N::translate('Individuals'), 'event' => I18N::translate('Facts and events'), 'all' => I18N::translate('All')], $filter, ['id' => 'filter', 'name' => 'filter']) ?>
+        <?= view('components/select', ['name' => 'filter', 'selected' => $filter, 'options' => ['indi' => I18N::translate('Individuals'), 'event' => I18N::translate('Facts and events'), 'all' => I18N::translate('All')]]) ?>
     </div>
 </div>
 
@@ -18,7 +20,7 @@
         </legend>
         <div class="col-sm-9">
             <?php foreach ($formats as $typeName => $typeValue) : ?>
-                <?= Bootstrap4::checkbox($typeValue, false, ['name' => 'filter_' . $typeName, 'checked' => (bool) $filters[$typeName]]) ?>
+                <?= view('components/checkbox', ['label' => $typeValue, 'name' => 'filter_' . $typeName, 'checked' => (bool) $filters[$typeName]]) ?>
             <?php endforeach ?>
         </div>
     </div>
@@ -29,7 +31,7 @@
         <?= I18N::translate('Show slide show controls') ?>
     </label>
     <div class="col-sm-9">
-        <?= Bootstrap4::radioButtons('controls', FunctionsEdit::optionsNoYes(), $controls, true) ?>
+        <?= view('components/radios-inline', ['name' => 'controls', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $controls]) ?>
     </div>
 </div>
 
@@ -38,6 +40,6 @@
         <?= I18N::translate('Start slide show on page load') ?>
     </label>
     <div class="col-sm-9">
-        <?= Bootstrap4::radioButtons('start', FunctionsEdit::optionsNoYes(), $start, true) ?>
+        <?= view('components/radios-inline', ['name' => 'start', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $start]) ?>
     </div>
 </div>

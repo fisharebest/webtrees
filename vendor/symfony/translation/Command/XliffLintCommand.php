@@ -115,7 +115,7 @@ EOF
             return ['file' => $file, 'valid' => true];
         }
 
-        libxml_use_internal_errors(true);
+        $internal = libxml_use_internal_errors(true);
 
         $document = new \DOMDocument();
         $document->loadXML($content);
@@ -124,7 +124,9 @@ EOF
             $normalizedLocale = preg_quote(str_replace('-', '_', $targetLanguage), '/');
             // strict file names require translation files to be named '____.locale.xlf'
             // otherwise, both '____.locale.xlf' and 'locale.____.xlf' are allowed
-            $expectedFilenamePattern = $this->requireStrictFileNames ? sprintf('/^.*\.%s\.xlf/', $normalizedLocale) : sprintf('/^(.*\.%s\.xlf|%s\..*\.xlf)/', $normalizedLocale, $normalizedLocale);
+            // also, the regexp matching must be case-insensitive, as defined for 'target-language' values
+            // http://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html#target-language
+            $expectedFilenamePattern = $this->requireStrictFileNames ? sprintf('/^.*\.(?i:%s)\.xlf/', $normalizedLocale) : sprintf('/^(.*\.(?i:%s)\.xlf|(?i:%s)\..*\.xlf)/', $normalizedLocale, $normalizedLocale);
 
             if (0 === preg_match($expectedFilenamePattern, basename($file))) {
                 $errors[] = [
@@ -142,6 +144,9 @@ EOF
                 'message' => $xmlError['message'],
             ];
         }
+
+        libxml_clear_errors();
+        libxml_use_internal_errors($internal);
 
         return ['file' => $file, 'valid' => 0 === \count($errors), 'messages' => $errors];
     }

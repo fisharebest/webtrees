@@ -19,13 +19,19 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Str;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class FamilyTreeFavoritesModule
@@ -68,16 +74,17 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      */
     public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
-        $content = view('modules/gedcom_favorites/favorites', [
-            'block_id'   => $block_id,
-            'favorites'  => $this->getFavorites($tree),
-            'is_manager' => Auth::isManager($tree),
-            'tree'       => $tree,
+        $content = view('modules/favorites/favorites', [
+            'block_id'    => $block_id,
+            'can_edit'    => Auth::isManager($tree),
+            'favorites'   => $this->getFavorites($tree),
+            'module_name' => $this->name(),
+            'tree'        => $tree,
         ]);
 
         if ($ctype !== '') {
             return view('modules/block-template', [
-                'block'      => str_replace('_', '-', $this->name()),
+                'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => '',
                 'title'      => $this->title(),
@@ -123,12 +130,12 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
     /**
      * Update the configuration for a block.
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      * @param int     $block_id
      *
      * @return void
      */
-    public function saveBlockConfiguration(Request $request, int $block_id): void
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
     }
 
@@ -145,7 +152,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
     }
 
     /**
-     * Get favorites for a family tree
+     * Get the favorites for a family tree
      *
      * @param Tree $tree
      *
@@ -157,7 +164,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
             ->where('gedcom_id', '=', $tree->id())
             ->whereNull('user_id')
             ->get()
-            ->map(function (stdClass $row) use ($tree): stdClass {
+            ->map(static function (stdClass $row) use ($tree): stdClass {
                 if ($row->xref !== null) {
                     $row->record = GedcomRecord::getInstance($row->xref, $tree);
                 } else {
@@ -170,47 +177,49 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postAddFavoriteAction(Request $request, Tree $tree, UserInterface $user): RedirectResponse
+    public function postAddFavoriteAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $note         = $request->get('note', '');
-        $title        = $request->get('title', '');
-        $url          = $request->get('url', '');
-        $xref         = $request->get('xref', '');
-        $fav_category = $request->get('fav_category', '');
+        $params = $request->getParsedBody();
 
-        $record = GedcomRecord::getInstance($xref, $tree);
+        $note  = $params['note'];
+        $title = $params['title'];
+        $url   = $params['url'];
+        $type  = $params['type'];
+        $xref  = $params[$type . '-xref'] ?? '';
+
+        $record = $this->getRecordForType($type, $xref, $tree);
 
         if (Auth::isManager($tree, $user)) {
-            if ($fav_category === 'url' && $url !== '') {
+            if ($type === 'url' && $url !== '') {
                 $this->addUrlFavorite($tree, $url, $title ?: $url, $note);
             }
 
-            if ($fav_category === 'record' && $record instanceof GedcomRecord && $record->canShow()) {
+            if ($record instanceof GedcomRecord && $record->canShow()) {
                 $this->addRecordFavorite($tree, $record, $note);
             }
         }
 
         $url = route('tree-page', ['ged' => $tree->name()]);
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
-     * @param Request       $request
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
+     * @param UserInterface          $user
      *
-     * @return RedirectResponse
+     * @return ResponseInterface
      */
-    public function postDeleteFavoriteAction(Request $request, Tree $tree, UserInterface $user): RedirectResponse
+    public function postDeleteFavoriteAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        $favorite_id = (int) $request->get('favorite_id');
+        $favorite_id = $request->getQueryParams()['favorite_id'];
 
         if (Auth::isManager($tree, $user)) {
             DB::table('favorite')
@@ -221,7 +230,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 
         $url = route('tree-page', ['ged' => $tree->name()]);
 
-        return new RedirectResponse($url);
+        return redirect($url);
     }
 
     /**
@@ -262,5 +271,35 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
             'favorite_type' => $record::RECORD_TYPE,
             'note'          => $note,
         ]);
+    }
+
+    /**
+     * @param string $type
+     * @param string $xref
+     * @param Tree   $tree
+     *
+     * @return GedcomRecord|null
+     */
+    private function getRecordForType(string $type, string $xref, Tree $tree): ?GedcomRecord
+    {
+        switch ($type) {
+            case 'indi':
+                return Individual::getInstance($xref, $tree);
+
+            case 'fam':
+                return Family::getInstance($xref, $tree);
+
+            case 'sour':
+                return Source::getInstance($xref, $tree);
+
+            case 'repo':
+                return Repository::getInstance($xref, $tree);
+
+            case 'obje':
+                return Media::getInstance($xref, $tree);
+
+            default:
+                return null;
+        }
     }
 }

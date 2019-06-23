@@ -19,6 +19,7 @@ use Symfony\Component\Cache\Simple\FilesystemCache;
 
 /**
  * @group time-sensitive
+ * @group legacy
  */
 class ChainCacheTest extends CacheTestCase
 {
@@ -78,7 +79,7 @@ class ChainCacheTest extends CacheTestCase
         $pruneable
             ->expects($this->atLeastOnce())
             ->method('prune')
-            ->will($this->returnValue(true));
+            ->willReturn(true);
 
         return $pruneable;
     }
@@ -95,7 +96,7 @@ class ChainCacheTest extends CacheTestCase
         $pruneable
             ->expects($this->atLeastOnce())
             ->method('prune')
-            ->will($this->returnValue(false));
+            ->willReturn(false);
 
         return $pruneable;
     }

@@ -23,9 +23,9 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
-use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Services\IndividualListService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Session;
@@ -35,8 +35,8 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for lists of GEDCOM records.
@@ -65,14 +65,14 @@ class ListController extends AbstractBaseController
     /**
      * Show a list of all individual or family records.
      *
-     * @param Request                  $request
+     * @param ServerRequestInterface   $request
      * @param Tree                     $tree
      * @param UserInterface            $user
      * @param ModuleListInterface|null $moduleListInterface
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function familyList(Request $request, Tree $tree, UserInterface $user, ?ModuleListInterface $moduleListInterface): Response
+    public function familyList(ServerRequestInterface $request, Tree $tree, UserInterface $user, ?ModuleListInterface $moduleListInterface): ResponseInterface
     {
         return $this->individualOrFamilyList($request, $tree, $user, true, $moduleListInterface);
     }
@@ -80,63 +80,64 @@ class ListController extends AbstractBaseController
     /**
      * Show a list of all individual or family records.
      *
-     * @param Request                  $request
+     * @param ServerRequestInterface   $request
      * @param Tree                     $tree
      * @param UserInterface            $user
      * @param ModuleListInterface|null $moduleListInterface
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function individualList(Request $request, Tree $tree, UserInterface $user, ?ModuleListInterface $moduleListInterface): Response
+    public function individualList(ServerRequestInterface $request, Tree $tree, UserInterface $user, ?ModuleListInterface $moduleListInterface): ResponseInterface
     {
         return $this->individualOrFamilyList($request, $tree, $user, false, $moduleListInterface);
     }
 
     /**
-     * @param Request                  $request
+     * @param ServerRequestInterface   $request
      * @param Tree                     $tree
      * @param UserInterface            $user
      * @param bool                     $families
      * @param ModuleListInterface|null $moduleListInterface
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function individualOrFamilyList(Request $request, Tree $tree, UserInterface $user, bool $families, ?ModuleListInterface $moduleListInterface): Response
+    public function individualOrFamilyList(ServerRequestInterface $request, Tree $tree, UserInterface $user, bool $families, ?ModuleListInterface $moduleListInterface): ResponseInterface
     {
         // This action can show lists of both families and individuals.
         //route is assumed to be 'module'
-        $module = $request->get('module');
-        $action = $request->get('action');
+        $module = $request->getQueryParams()['module'];
+        $action = $request->getQueryParams()['action'];
         
         ob_start();
 
         // We show three different lists: initials, surnames and individuals
 
         // All surnames beginning with this letter where "@"=unknown and ","=none
-        $alpha = $request->get('alpha', '');
+        $alpha = $request->getQueryParams()['alpha'] ?? '';
 
         // All individuals with this surname
-        $surname = $request->get('surname', '');
+        $surname = $request->getQueryParams()['surname'] ??  '';
 
         // All individuals
-        $show_all = $request->get('show_all', 'no');
+        $show_all = $request->getQueryParams()['show_all'] ?? 'no';
 
         // Long lists can be broken down by given name
-        $show_all_firstnames = $request->get('show_all_firstnames', 'no');
+        $show_all_firstnames = $request->getQueryParams()['show_all_firstnames'] ?? 'no';
         if ($show_all_firstnames === 'yes') {
             $falpha = '';
         } else {
-            $falpha = $request->get('falpha'); // All first names beginning with this letter
+            // All first names beginning with this letter
+            $falpha = $request->getQueryParams()['falpha'] ?? '';
         }
 
-        $show_marnm = $request->get('show_marnm');
+        $show_marnm = $request->getQueryParams()['show_marnm'] ?? '';
         switch ($show_marnm) {
             case 'no':
             case 'yes':
-                $user->setPreference($families?'family-list-marnm':'individual-list-marnm', $show_marnm);
+                $user->setPreference($families ? 'family-list-marnm' : 'individual-list-marnm', $show_marnm);
                 break;
             default:
-                $show_marnm = $user->getPreference($families?'family-list-marnm':'individual-list-marnm');
+                $show_marnm = $user->getPreference($families ? 'family-list-marnm' : 'individual-list-marnm');
         }
 
         // Make sure selections are consistent.
@@ -168,7 +169,7 @@ class ListController extends AbstractBaseController
                     'ged'      => $tree->name(),
                     'show_all' => 'yes',
                 ];
-                $show    = $request->get('show', 'surn');
+                $show    = $request->getQueryParams()['show'] ?? 'surn';
             }
         } elseif ($surname) {
             $alpha    = $this->localization_service->initialLetter($surname); // so we can highlight the initial letter
@@ -219,7 +220,7 @@ class ListController extends AbstractBaseController
                 'alpha' => $alpha,
                 'ged'   => $tree->name(),
             ];
-            $show     = $request->get('show', 'surn');
+            $show     = $request->getQueryParams()['show'] ?? 'surn';
         } else {
             $show_all = 'no';
             $legend   = '…';
@@ -258,7 +259,7 @@ class ListController extends AbstractBaseController
             </ul>
 
             <!-- Search spiders don't get an option to show/hide the surname sublists, nor does it make sense on the all/unknown/surname views -->
-            <?php if (Session::has('initiated') && $show !== 'none') : ?>
+            <?php if ($show !== 'none' && Session::has('initiated')) : ?>
                 <?php if ($show_marnm === 'yes') : ?>
                     <p>
                         <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'show' => $show, 'show_marnm' => 'no'] + $params)) ?>">
@@ -394,26 +395,24 @@ class ListController extends AbstractBaseController
     /**
      * Show a list of all media records.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param ServerRequestInterface $request
+     * @param Tree                   $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function mediaList(Request $request, Tree $tree): Response
+    public function mediaList(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        //route is assumed to be 'module'
-        $module = $request->get('module');
-        $action = $request->get('action');
-        
-        $formats = GedcomTag::getFileFormTypes();
-
-        $action2   = $request->get('action2');
-        $page      = (int) $request->get('page');
-        $max       = (int) $request->get('max', 20);
-        $folder    = $request->get('folder', '');
-        $filter    = $request->get('filter', '');
-        $subdirs   = $request->get('subdirs', '');
-        $form_type = $request->get('form_type', '');
+        $params    = $request->getQueryParams();
+        $module    = $params['module'];
+        $action    = $params['action'];
+        $formats   = GedcomTag::getFileFormTypes();
+        $action2   = $params['action2'] ?? '';
+        $page      = (int) ($params['page'] ?? 1);
+        $max       = (int) ($params['max'] ?? 20);
+        $folder    = $params['folder'] ?? '';
+        $filter    = $params['filter'] ?? '';
+        $subdirs   = $params['subdirs'] ?? '';
+        $form_type = $params['form_type'] ?? '';
 
         $folders = $this->allFolders($tree);
 
@@ -460,9 +459,9 @@ class ListController extends AbstractBaseController
      *
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function noteList(Tree $tree): Response
+    public function noteList(Tree $tree): ResponseInterface
     {
         $notes = $this->allNotes($tree);
 
@@ -477,9 +476,9 @@ class ListController extends AbstractBaseController
      *
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function repositoryList(Tree $tree): Response
+    public function repositoryList(Tree $tree): ResponseInterface
     {
         $repositories = $this->allRepositories($tree);
 
@@ -494,9 +493,9 @@ class ListController extends AbstractBaseController
      *
      * @param Tree $tree
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function sourceList(Tree $tree): Response
+    public function sourceList(Tree $tree): ResponseInterface
     {
         $sources = $this->allSources($tree);
 
@@ -521,7 +520,7 @@ class ListController extends AbstractBaseController
             ->where('multimedia_file_refn', 'NOT LIKE', 'https:%')
             ->where('multimedia_file_refn', 'LIKE', '%/%')
             ->pluck('multimedia_file_refn', 'multimedia_file_refn')
-            ->map(function (string $path): string {
+            ->map(static function (string $path): string {
                 return dirname($path);
             })
             ->unique()
@@ -549,7 +548,7 @@ class ListController extends AbstractBaseController
     private function allMedia(Tree $tree, string $folder, string $subfolders, string $sort, string $filter, string $form_type): array
     {
         $query = DB::table('media')
-            ->join('media_file', function (JoinClause $join): void {
+            ->join('media_file', static function (JoinClause $join): void {
                 $join
                     ->on('media_file.m_file', '=', 'media.m_file')
                     ->on('media_file.m_id', '=', 'media.m_id');
@@ -558,11 +557,11 @@ class ListController extends AbstractBaseController
             ->distinct();
 
         // Match all external files, and whatever folders were specified
-        $query->where(function (Builder $query) use ($folder, $subfolders): void {
+        $query->where(static function (Builder $query) use ($folder, $subfolders): void {
             $query
                 ->where('multimedia_file_refn', 'LIKE', 'http:%')
                 ->orWhere('multimedia_file_refn', 'LIKE', 'https:%')
-                ->orWhere(function (Builder $query) use ($folder, $subfolders): void {
+                ->orWhere(static function (Builder $query) use ($folder, $subfolders): void {
                     $query->where('multimedia_file_refn', 'LIKE', $folder . '%');
                     if ($subfolders === 'exclude') {
                         $query->where('multimedia_file_refn', 'NOT LIKE', $folder . '/%/%');
@@ -572,7 +571,7 @@ class ListController extends AbstractBaseController
 
         // Apply search terms
         if ($filter !== '') {
-            $query->where(function (Builder $query) use ($filter): void {
+            $query->where(static function (Builder $query) use ($filter): void {
                 $query
                     ->whereContains('multimedia_file_refn', $filter)
                     ->whereContains('descriptive_title', $filter, 'or');
@@ -605,7 +604,6 @@ class ListController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return Collection
-     * @return Note[]
      */
     private function allNotes(Tree $tree): Collection
     {
@@ -623,7 +621,6 @@ class ListController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return Collection
-     * @return Repository[]
      */
     private function allRepositories(Tree $tree): Collection
     {
@@ -641,7 +638,6 @@ class ListController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return Collection
-     * @return Source[]
      */
     private function allSources(Tree $tree): Collection
     {

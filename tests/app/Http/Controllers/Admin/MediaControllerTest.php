@@ -17,15 +17,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test MediaController class.
  *
  * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\MediaController
  */
-class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
+class MediaControllerTest extends TestCase
 {
     protected static $uses_database = true;
 
@@ -34,10 +34,11 @@ class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testIndex(): void
     {
-        $controller = app(MediaController::class);
-        $response   = app()->dispatch($controller, 'index');
+        $controller = new MediaController();
+        $request    = self::createRequest('GET', ['route' => 'admin-media']);
+        $response   = $controller->index($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -45,11 +46,19 @@ class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testDataLocal(): void
     {
-        app()->instance(Request::class, new Request(['files' => 'local']));
-        $controller = app(MediaController::class);
-        $response   = app()->dispatch($controller, 'data');
+        $controller = new MediaController();
+        $request    = self::createRequest('GET', [
+            'route'        => 'admin-media-data',
+            'files'        => 'local',
+            'media_folder' => '',
+            'subfolders'   => 'include',
+            'search'       => ['value' => ''],
+            'start'        => '0',
+            'length'       => '10',
+        ]);
+        $response   = $controller->data($request, new DatatablesService());
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -57,11 +66,19 @@ class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testDataExternal(): void
     {
-        app()->instance(Request::class, new Request(['files' => 'external']));
-        $controller = app(MediaController::class);
-        $response   = app()->dispatch($controller, 'data');
+        $controller = new MediaController();
+        $request    = self::createRequest('GET', [
+            'route'        => 'admin-media-external',
+            'files'        => 'local',
+            'media_folder' => '',
+            'subfolders'   => 'include',
+            'search'       => ['value' => ''],
+            'start'        => '0',
+            'length'       => '10',
+        ]);
+        $response   = $controller->data($request, new DatatablesService());
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -69,11 +86,19 @@ class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testDataUnused(): void
     {
-        app()->instance(Request::class, new Request(['files' => 'unused']));
-        $controller = app(MediaController::class);
-        $response   = app()->dispatch($controller, 'data');
+        $controller = new MediaController();
+        $request    = self::createRequest('GET', [
+            'route'        => 'admin-media-unused',
+            'files'        => 'local',
+            'media_folder' => '',
+            'subfolders'   => 'include',
+            'search'       => ['value' => ''],
+            'start'        => '0',
+            'length'       => '10',
+        ]);
+        $response   = $controller->data($request, new DatatablesService());
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -81,10 +106,11 @@ class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testDelete(): void
     {
-        $controller = app(MediaController::class);
-        $response   = app()->dispatch($controller, 'delete');
+        $controller = new MediaController();
+        $request    = self::createRequest('POST', ['route' => 'admin-media-delete'], ['file' => 'foo', 'folder' => 'bar']);
+        $response   = $controller->delete($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -92,10 +118,11 @@ class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testUpload(): void
     {
-        $controller = app(MediaController::class);
-        $response   = app()->dispatch($controller, 'upload');
+        $controller = new MediaController();
+        self::createRequest('GET', ['route' => 'admin-media-upload']);
+        $response = $controller->upload();
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -103,9 +130,10 @@ class MediaControllerTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testUploadAction(): void
     {
-        $controller = app(MediaController::class);
-        $response   = app()->dispatch($controller, 'uploadAction');
+        $controller = new MediaController();
+        $request    = self::createRequest('POST', ['route' => 'admin-media-delete']);
+        $response   = $controller->uploadAction($request);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 }

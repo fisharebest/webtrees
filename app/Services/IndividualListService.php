@@ -59,7 +59,7 @@ class IndividualListService
     private function whereFamily(bool $fams, Builder $query): void
     {
         if ($fams) {
-            $query->join('link', function (JoinClause $join): void {
+            $query->join('link', static function (JoinClause $join): void {
                 $join
                     ->on('l_from', '=', 'n_id')
                     ->on('l_file', '=', 'n_file')
@@ -275,7 +275,7 @@ class IndividualListService
         $n_surn = $this->fieldWithCollation('n_surn', $collation);
 
         $query = DB::table('individuals')
-            ->join('name', function (JoinClause $join): void {
+            ->join('name', static function (JoinClause $join): void {
                 $join
                     ->on('n_id', '=', 'i_id')
                     ->on('n_file', '=', 'i_file');
@@ -516,7 +516,7 @@ class IndividualListService
                 break;
 
             case 'Å':
-                $query->where(function (Builder $query) use ($field): void {
+                $query->where(static function (Builder $query) use ($field): void {
                     $query
                         ->where($field, 'LIKE', 'Å%')
                         ->orWhere($field, 'LIKE', 'AA%');

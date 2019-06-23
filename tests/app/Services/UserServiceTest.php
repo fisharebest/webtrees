@@ -134,7 +134,7 @@ class UserServiceTest extends TestCase
 
         $users = $user_service->findByIndividual($indi);
 
-        $this->assertSame(1, count($users));
+        $this->assertCount(1, $users);
         $this->assertSame($user->id(), $users[0]->id());
     }
 
@@ -169,7 +169,7 @@ class UserServiceTest extends TestCase
 
         $users = $user_service->administrators();
 
-        $this->assertSame(1, count($users));
+        $this->assertCount(1, $users);
         $this->assertSame($admin->id(), $users[0]->id());
     }
 
@@ -193,7 +193,7 @@ class UserServiceTest extends TestCase
 
         $users = $user_service->managers();
 
-        $this->assertSame(1, count($users));
+        $this->assertCount(1, $users);
         $this->assertSame($user1->id(), $users[0]->id());
     }
 
@@ -217,7 +217,7 @@ class UserServiceTest extends TestCase
 
         $users = $user_service->moderators();
 
-        $this->assertSame(1, count($users));
+        $this->assertCount(1, $users);
         $this->assertSame($user2->id(), $users[0]->id());
     }
 
