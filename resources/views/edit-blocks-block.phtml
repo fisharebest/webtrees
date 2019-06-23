@@ -1,0 +1,29 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<div class="card wt-block" id="block-<?= e($block_id) ?>">
+    <div class="card-header wt-block-header p-2 d-flex justify-content-between">
+        <div>
+            <input type="hidden" name="blocks[]" value="<?= e($block_id) ?>">
+
+            <span class="drag-handle">
+                <?= view('icons/drag-handle') ?>
+            </span>
+
+            <?= $block->title() ?>
+        </div>
+
+        <div>
+            <span title="<?= I18N::translate('Delete') ?>">
+               <?= view('icons/delete') ?>
+            </span>
+
+            <span title="<?= e($block->description()) ?>">
+                <?= view('icons/help') ?>
+            </span>
+        </div>
+    </div>
+</div>
