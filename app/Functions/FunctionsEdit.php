@@ -647,7 +647,6 @@ class FunctionsEdit
 
         if (!in_array($fact, Config::nonDateFacts(), true)) {
             echo self::addSimpleTag($tree, '0 DATE', $fact, GedcomTag::getLabel($fact . ':DATE'));
-            echo self::addSimpleTag($tree, '0 RELI', $fact, GedcomTag::getLabel($fact . ':RELI'));
         }
 
         if (!in_array($fact, Config::nonPlaceFacts(), true)) {
