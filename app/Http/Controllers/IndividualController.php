@@ -228,9 +228,9 @@ class IndividualController extends AbstractBaseController
             $aria          = 'true';
         }
         if ($fact->isPendingDeletion()) {
-            $container_class .= ' old';
+            $container_class .= ' wt-old';
         } elseif ($fact->isPendingAddition()) {
-            $container_class .= ' new';
+            $container_class .= ' wt-new';
         }
 
         ob_start();
@@ -323,9 +323,9 @@ class IndividualController extends AbstractBaseController
 
         $container_class = 'card';
         if ($fact->isPendingDeletion()) {
-            $container_class .= ' old';
+            $container_class .= ' wt-old';
         } elseif ($fact->isPendingAddition()) {
-            $container_class .= ' new';
+            $container_class .= ' wt-new';
         }
 
         if ($individual->canEdit()) {
