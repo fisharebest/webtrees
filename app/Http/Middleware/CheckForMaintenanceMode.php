@@ -40,7 +40,7 @@ class CheckForMaintenanceMode implements MiddlewareInterface, StatusCodeInterfac
         if (file_exists(Webtrees::OFFLINE_FILE)) {
             $html = view('layouts/offline', [
                 'message' => file_get_contents(Webtrees::OFFLINE_FILE),
-                'url'     => (string) $request->getUri(),
+                'url'     => $request->getAttribute('request_uri'),
             ]);
 
             return response($html, self::STATUS_SERVICE_UNAVAILABLE);

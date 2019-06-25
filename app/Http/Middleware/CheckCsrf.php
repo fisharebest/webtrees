@@ -55,7 +55,7 @@ class CheckCsrf implements MiddlewareInterface
                 if ($client_token !== $session_token) {
                     FlashMessages::addMessage(I18N::translate('This form has expired. Try again.'));
 
-                    return redirect((string) $request->getUri());
+                    return redirect($request->getAttribute('request_uri'));
                 }
             }
         }

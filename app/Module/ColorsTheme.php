@@ -76,7 +76,7 @@ class ColorsTheme extends CloudsTheme
         $menu = new Menu(I18N::translate('Palette'), '#', 'menu-color');
 
         foreach ($this->palettes() as $palette_id => $palette_name) {
-            $url = (string) $request->getUri();
+            $url = $request->getAttribute('request_uri');
             $url = preg_replace('/&themecolor=[a-z]+/', '', $url);
             $url .= '&themecolor=' . $palette_id;
 

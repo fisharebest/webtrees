@@ -274,7 +274,7 @@ trait ModuleThemeTrait
         }
 
         // Return to this page after login...
-        $url = app(ServerRequestInterface::class)->getUri();
+        $url = app(ServerRequestInterface::class)->getAttribute('request_uri');
 
         // ...but switch from the tree-page to the user-page
         $url = str_replace('route=tree-page', 'route=user-page', $url);
