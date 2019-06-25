@@ -21,6 +21,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use function array_flip;
 use function array_intersect_key;
 use function explode;
 use function filter_var;
@@ -28,8 +29,15 @@ use function parse_url;
 use function preg_replace;
 use function trim;
 use const FILTER_FLAG_IPV4;
+use const FILTER_FLAG_IPV6;
 use const FILTER_VALIDATE_IP;
+use const PHP_URL_HOST;
+use const PHP_URL_PASS;
+use const PHP_URL_PATH;
+use const PHP_URL_PORT;
+use const PHP_URL_QUERY;
 use const PHP_URL_SCHEME;
+use const PHP_URL_USER;
 
 /**
  * Middleware to set the Web environment.
