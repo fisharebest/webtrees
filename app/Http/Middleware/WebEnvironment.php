@@ -149,14 +149,13 @@ class WebEnvironment implements MiddlewareInterface
 
         // Scheme, host and port cannot always be detected from the environment.
         // Take these from the user-configured base_url or trusted headers.
-        $scheme = parse_url($base_url, PHP_URL_SCHEME);
-        $host   = parse_url($base_url, PHP_URL_HOST);
-        $port   = parse_url($base_url, PHP_URL_PORT);
-
-        $user  = parse_url($psr7_url, PHP_URL_USER);
-        $pass  = parse_url($psr7_url, PHP_URL_PASS);
-        $path  = parse_url($psr7_url, PHP_URL_PATH);
-        $query = parse_url($psr7_url, PHP_URL_QUERY);
+        $scheme = (string) parse_url($base_url, PHP_URL_SCHEME);
+        $host   = (string) parse_url($base_url, PHP_URL_HOST);
+        $port   = (string) parse_url($base_url, PHP_URL_PORT);
+        $user   = (string) parse_url($psr7_url, PHP_URL_USER);
+        $pass   = (string) parse_url($psr7_url, PHP_URL_PASS);
+        $path   = (string) parse_url($psr7_url, PHP_URL_PATH);
+        $query  = (string) parse_url($psr7_url, PHP_URL_QUERY);
 
         $scheme = $scheme === '' ? '' : $scheme . '://';
         $host   = $user === '' && $pass === '' ? $host : '@' . $host;
