@@ -1,6 +1,9 @@
 CHANGE LOG
 ==========
 
+## 1.15.1 (2019-07-02)
+ - Fix: escaped characters in PO files.
+
 ## 1.15.0 (2019-06-22)
  - Improve language negotiation for Chinese
  - Add support for PO files.
