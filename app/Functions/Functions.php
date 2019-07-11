@@ -1983,7 +1983,7 @@ class Functions
                                 return I18N::translate('great ×%s granddaughter', I18N::number($up));
                             }
                             return I18N::translate('great ×%s grandchild', I18N::number($up));
-						case 'it':
+			case 'it':
                             // Source: Michele Locati
                         case 'es':
                             // Source: Wes Groleau (adding doesn’t change behavior, but needs to be better researched)
