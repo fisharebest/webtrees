@@ -58,7 +58,7 @@ class Log
     {
         if (app()->has(ServerRequestInterface::class)) {
             $request    = app(ServerRequestInterface::class);
-            $ip_address = $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1';
+            $ip_address = $request->getAttribute('client_ip');
         } else {
             $ip_address = '127.0.0.1';
         }

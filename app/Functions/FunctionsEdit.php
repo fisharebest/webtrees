@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copy§right (C) 2017 webtrees development team
+ * Copyright (C) 2017 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -647,7 +647,6 @@ class FunctionsEdit
 
         if (!in_array($fact, Config::nonDateFacts(), true)) {
             echo self::addSimpleTag($tree, '0 DATE', $fact, GedcomTag::getLabel($fact . ':DATE'));
-            echo self::addSimpleTag($tree, '0 RELI', $fact, GedcomTag::getLabel($fact . ':RELI'));
         }
 
         if (!in_array($fact, Config::nonPlaceFacts(), true)) {

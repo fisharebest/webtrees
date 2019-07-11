@@ -410,8 +410,16 @@ class HomePageController extends AbstractBaseController
         $defaults = (bool) ($params['defaults'] ?? false);
 
         if ($defaults) {
-            $main_blocks = $this->treeBlocks(-1, 'main')->all();
-            $side_blocks = $this->treeBlocks(-1, 'side')->all();
+            $main_blocks = $this->treeBlocks(-1, 'main')
+                ->map(static function (ModuleBlockInterface $block) {
+                    return $block->name();
+                })
+                ->all();
+            $side_blocks = $this->treeBlocks(-1, 'side')
+                ->map(static function (ModuleBlockInterface $block) {
+                    return $block->name();
+                })
+                ->all();
         } else {
             $main_blocks = $params['main'] ?? [];
             $side_blocks = $params['side'] ?? [];
@@ -572,8 +580,16 @@ class HomePageController extends AbstractBaseController
         $defaults = (bool) ($params['defaults'] ?? false);
 
         if ($defaults) {
-            $main_blocks = $this->userBlocks(-1, 'main')->all();
-            $side_blocks = $this->userBlocks(-1, 'side')->all();
+            $main_blocks = $this->userBlocks(-1, 'main')
+                ->map(static function (ModuleBlockInterface $block) {
+                    return $block->name();
+                })
+                ->all();
+            $side_blocks = $this->userBlocks(-1, 'side')
+                ->map(static function (ModuleBlockInterface $block) {
+                    return $block->name();
+                })
+                ->all();
         } else {
             $main_blocks = $params['main'] ?? [];
             $side_blocks = $params['side'] ?? [];

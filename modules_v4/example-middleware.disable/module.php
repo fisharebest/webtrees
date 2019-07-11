@@ -54,7 +54,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Middle
         // We can prevent the request being executed by throwing an exception.
 
         $blacklist = [];
-        $ip_address = $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1';
+        $ip_address = $request->getAttribute('client_ip');
 
         if (in_array($ip_address, $blacklist, true)) {
             throw new AccessDeniedHttpException();

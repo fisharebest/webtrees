@@ -78,7 +78,7 @@ class SessionDatabaseHandler implements SessionHandlerInterface
         ], [
             'session_time' => Carbon::now(),
             'user_id'      => (int) Auth::id(),
-            'ip_address'   => $this->request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1',
+            'ip_address'   => $this->request->getAttribute('client_ip'),
             'session_data' => $data,
         ]);
 

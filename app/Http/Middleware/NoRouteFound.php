@@ -52,7 +52,7 @@ class NoRouteFound implements MiddlewareInterface
 
         // Not logged in?
         if (!Auth::check()) {
-            return redirect(route('login', ['url' => (string) $request->getUri()]));
+            return redirect(route('login', ['url' => $request->getAttribute('request_uri')]));
         }
 
         // No tree or tree not imported?

@@ -84,8 +84,6 @@ class TestCase extends \PHPUnit\Framework\TestCase implements StatusCodeInterfac
 
         app()->instance(UserService::class, new UserService());
         app()->instance(UserInterface::class, new GuestUser());
-
-        app()->instance(ServerRequestInterface::class, new ServerRequest('GET', 'http://localhost/index.php'));
         app()->instance(Filesystem::class, new Filesystem(new MemoryAdapter()));
 
         app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);
@@ -220,7 +218,8 @@ class TestCase extends \PHPUnit\Framework\TestCase implements StatusCodeInterfac
             ->createServerRequest($method, $uri)
             ->withQueryParams($query)
             ->withParsedBody($params)
-            ->withUploadedFiles($files);
+            ->withUploadedFiles($files)
+            ->withAttribute('client_ip', '127.0.0.1');
 
         app()->instance(ServerRequestInterface::class, $request);
 

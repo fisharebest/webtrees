@@ -40,6 +40,7 @@ use Fisharebest\Webtrees\Http\Middleware\UseSession;
 use Fisharebest\Webtrees\Http\Middleware\UseTheme;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Fisharebest\Webtrees\Http\Middleware\UseTree;
+use Fisharebest\Webtrees\Http\Middleware\WebEnvironment;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7Server\ServerRequestCreator;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -193,6 +194,7 @@ class Webtrees
             EmitResponse::class,
             HandleExceptions::class,
             ReadConfigIni::class,
+            WebEnvironment::class,
             UseDatabase::class,
             UseDebugbar::class,
             UpdateDatabaseSchema::class,

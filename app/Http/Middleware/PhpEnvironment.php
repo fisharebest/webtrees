@@ -25,7 +25,7 @@ use function date_default_timezone_set;
 use function mb_internal_encoding;
 
 /**
- * Middleware to set set the PHP environment.
+ * Middleware to set the PHP environment.
  */
 class PhpEnvironment implements MiddlewareInterface
 {

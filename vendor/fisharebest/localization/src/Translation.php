@@ -172,6 +172,7 @@ class Translation
                 $fragments = explode(' ', $part, 2);
                 $keyword   = $fragments[0];
                 $text      = substr($fragments[1], 1, -1);
+                $text      = $this->unescapePoText($text);
                 switch ($keyword) {
                     case 'msgctxt':
                         $msgctxt = $text;
@@ -206,5 +207,25 @@ class Translation
                 $this->translations[$msgid] = $msgstr;
             }
         }
+    }
+
+    /**
+     * @param string $text
+     *
+     * @return string
+     */
+    private function unescapePoText($text)
+    {
+        return strtr($text, array(
+            '\\\\' => '\\',
+            '\\a'  => "\x07",
+            '\\b'  => "\x08",
+            '\\f'  => "\x0c",
+            '\\n'  => "\n",
+            '\\r'  => "\r",
+            '\\t'  => "\t",
+            '\\v'  => "\x0b",
+            '\\"'  => '"',
+        ));
     }
 }

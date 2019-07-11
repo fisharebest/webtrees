@@ -51,10 +51,11 @@ class Session
         // Store sessions in the database
         session_set_save_handler(new SessionDatabaseHandler($request));
 
-        $url    = (string) $request->getUri();
+        $url    = $request->getAttribute('request_uri');
         $secure = parse_url($url, PHP_URL_SCHEME) === 'https';
         $domain = parse_url($url, PHP_URL_HOST);
         $path   = parse_url($url, PHP_URL_PATH);
+        $path   = explode('index.php', $path)[0];
 
         // Paths containing UTF-8 characters need special handling.
         $path = implode('/', array_map('rawurlencode', explode('/', $path)));

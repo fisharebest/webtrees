@@ -109,7 +109,7 @@ class MessageController extends AbstractBaseController
         $to      = $params['to'];
         $url     = $params['url'];
 
-        $ip       = $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1';
+        $ip       = $request->getAttribute('client_ip');
         $to_users = $this->recipientUsers($to);
 
         if ($body === '' || $subject === '') {
@@ -197,7 +197,7 @@ class MessageController extends AbstractBaseController
         $subject    = $params['subject'];
         $to         = $params['to'];
         $url        = $params['url'];
-        $ip         = $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1';
+        $ip         = $request->getAttribute('client_ip');
         $to_user    = $this->user_service->findByUserName($to);
 
         if ($to_user === null) {
@@ -310,7 +310,7 @@ class MessageController extends AbstractBaseController
         $to      = $params['to'];
         $url     = $params['url'];
         $to_user = $this->user_service->findByUserName($to);
-        $ip      = $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1';
+        $ip      = $request->getAttribute('client_ip');
 
         if ($to_user === null || $to_user->getPreference('contactmethod') === 'none') {
             throw new AccessDeniedHttpException('Invalid contact user id');
