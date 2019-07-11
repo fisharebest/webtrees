@@ -1714,9 +1714,9 @@ class Functions
                             }
 
                             return I18N::translate('great ×%s aunt/uncle', I18N::number($up - 2));
-						case 'zh-Hans':
-						case 'zh-Hant':
-						   if ($sex2 === 'M') {
+			case 'zh-Hans':
+			case 'zh-Hant':
+			    if ($sex2 === 'M') {
                                 return I18N::translate('great ×%s uncle', I18N::number($up));
                             }
 
@@ -1928,8 +1928,8 @@ class Functions
                             }
 
                             return I18N::translateContext('(a woman’s) great ×%s nephew/niece', 'great ×%s nephew/niece', I18N::number($down - 3));
-						case 'zh-Hans':
-						case 'zh-Hant':
+			case 'zh-Hans':
+			case 'zh-Hant':
                             if ($sex2 === 'M') {
                                 if ($first === 'bro' && $sex1 === 'M') {
                                     return I18N::translateContext('(a man’s) brother’s great ×(%s-1) grandson', 'great ×%s nephew', I18N::number($down - 1));
@@ -2080,8 +2080,8 @@ class Functions
                             return I18N::translate('great ×%s grandparent', I18N::number($up - 3));
 
                         case 'it': // Source: Michele Locati
-						case 'zh-Hans':
-						case 'zh-Hant':
+			case 'zh-Hans':
+			case 'zh-Hant':
                         case 'es': // Source: Wes Groleau
                             if ($sex2 === 'M') {
                                 return I18N::translate('great ×%s grandfather', I18N::number($up));
@@ -2226,8 +2226,8 @@ class Functions
                             }
 
                             return I18N::translate('great ×%s grandchild', I18N::number($up - 3));
-						case 'zh-Hans':
-						case 'zh-Hant':
+			case 'zh-Hans':
+			case 'zh-Hant':
                             if ($sex2 === 'M') {
                                 return I18N::translate('great ×%s grandson', I18N::number($up));
                             }
