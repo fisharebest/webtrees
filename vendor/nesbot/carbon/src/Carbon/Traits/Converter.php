@@ -13,6 +13,8 @@ namespace Carbon\Traits;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonInterface;
+use Carbon\CarbonInterval;
+use Carbon\CarbonPeriod;
 use Closure;
 use DateTime;
 
@@ -484,8 +486,7 @@ trait Converter
             return null;
         }
 
-        $keepOffset = (bool) $keepOffset;
-        $yearFormat = true ? 'YYYY' : 'YYYYYY';
+        $yearFormat = $this->year < 0 || $this->year > 9999 ? 'YYYYYY' : 'YYYY';
         $tzFormat = $keepOffset ? 'Z' : '[Z]';
         $date = $keepOffset ? $this : $this->copy()->utc();
 
@@ -537,5 +538,47 @@ trait Converter
     public function toDate()
     {
         return $this->toDateTime();
+    }
+
+    /**
+     * Create a iterable CarbonPeriod object from current date to a given end date (and optional interval).
+     *
+     * @param \DateTimeInterface|Carbon|CarbonImmutable|null $end      period end date
+     * @param int|\DateInterval|string|null                  $interval period default interval or number of the given $unit
+     * @param string|null                                    $unit     if specified, $interval must be an integer
+     *
+     * @return CarbonPeriod
+     */
+    public function toPeriod($end = null, $interval = null, $unit = null)
+    {
+        if ($unit) {
+            $interval = CarbonInterval::make("$interval ".static::pluralUnit($unit));
+        }
+
+        $period = (new CarbonPeriod())->setDateClass(static::class)->setStartDate($this);
+
+        if ($interval) {
+            $period->setDateInterval($interval);
+        }
+
+        if ($end) {
+            $period->setEndDate($end);
+        }
+
+        return $period;
+    }
+
+    /**
+     * Create a iterable CarbonPeriod object from current date to a given end date (and optional interval).
+     *
+     * @param \DateTimeInterface|Carbon|CarbonImmutable|null $end      period end date
+     * @param int|\DateInterval|string|null                  $interval period default interval or number of the given $unit
+     * @param string|null                                    $unit     if specified, $interval must be an integer
+     *
+     * @return CarbonPeriod
+     */
+    public function range($end = null, $interval = null, $unit = null)
+    {
+        return $this->toPeriod($end, $interval, $unit);
     }
 }

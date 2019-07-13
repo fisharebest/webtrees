@@ -12,6 +12,7 @@ namespace Carbon\Traits;
 
 use BadMethodCallException;
 use Carbon\CarbonInterface;
+use Carbon\CarbonPeriod;
 use Carbon\CarbonTimeZone;
 use Closure;
 use DateTime;
@@ -355,62 +356,77 @@ use ReflectionException;
  * @method        $this          addRealMicro()                                                                      Add one microsecond to the instance (using timestamp).
  * @method        $this          subRealMicros(int $value = 1)                                                       Sub microseconds (the $value count passed in) to the instance (using timestamp).
  * @method        $this          subRealMicro()                                                                      Sub one microsecond to the instance (using timestamp).
+ * @method        CarbonPeriod   microsUntil($endDate = null, int $factor = 1)                                       Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each microsecond or every X microseconds if a factor is given.
  * @method        $this          addRealMicroseconds(int $value = 1)                                                 Add microseconds (the $value count passed in) to the instance (using timestamp).
  * @method        $this          addRealMicrosecond()                                                                Add one microsecond to the instance (using timestamp).
  * @method        $this          subRealMicroseconds(int $value = 1)                                                 Sub microseconds (the $value count passed in) to the instance (using timestamp).
  * @method        $this          subRealMicrosecond()                                                                Sub one microsecond to the instance (using timestamp).
+ * @method        CarbonPeriod   microsecondsUntil($endDate = null, int $factor = 1)                                 Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each microsecond or every X microseconds if a factor is given.
  * @method        $this          addRealMillis(int $value = 1)                                                       Add milliseconds (the $value count passed in) to the instance (using timestamp).
  * @method        $this          addRealMilli()                                                                      Add one millisecond to the instance (using timestamp).
  * @method        $this          subRealMillis(int $value = 1)                                                       Sub milliseconds (the $value count passed in) to the instance (using timestamp).
  * @method        $this          subRealMilli()                                                                      Sub one millisecond to the instance (using timestamp).
+ * @method        CarbonPeriod   millisUntil($endDate = null, int $factor = 1)                                       Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each millisecond or every X milliseconds if a factor is given.
  * @method        $this          addRealMilliseconds(int $value = 1)                                                 Add milliseconds (the $value count passed in) to the instance (using timestamp).
  * @method        $this          addRealMillisecond()                                                                Add one millisecond to the instance (using timestamp).
  * @method        $this          subRealMilliseconds(int $value = 1)                                                 Sub milliseconds (the $value count passed in) to the instance (using timestamp).
  * @method        $this          subRealMillisecond()                                                                Sub one millisecond to the instance (using timestamp).
+ * @method        CarbonPeriod   millisecondsUntil($endDate = null, int $factor = 1)                                 Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each millisecond or every X milliseconds if a factor is given.
  * @method        $this          addRealSeconds(int $value = 1)                                                      Add seconds (the $value count passed in) to the instance (using timestamp).
  * @method        $this          addRealSecond()                                                                     Add one second to the instance (using timestamp).
  * @method        $this          subRealSeconds(int $value = 1)                                                      Sub seconds (the $value count passed in) to the instance (using timestamp).
  * @method        $this          subRealSecond()                                                                     Sub one second to the instance (using timestamp).
+ * @method        CarbonPeriod   secondsUntil($endDate = null, int $factor = 1)                                      Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each second or every X seconds if a factor is given.
  * @method        $this          addRealMinutes(int $value = 1)                                                      Add minutes (the $value count passed in) to the instance (using timestamp).
  * @method        $this          addRealMinute()                                                                     Add one minute to the instance (using timestamp).
  * @method        $this          subRealMinutes(int $value = 1)                                                      Sub minutes (the $value count passed in) to the instance (using timestamp).
  * @method        $this          subRealMinute()                                                                     Sub one minute to the instance (using timestamp).
+ * @method        CarbonPeriod   minutesUntil($endDate = null, int $factor = 1)                                      Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each minute or every X minutes if a factor is given.
  * @method        $this          addRealHours(int $value = 1)                                                        Add hours (the $value count passed in) to the instance (using timestamp).
  * @method        $this          addRealHour()                                                                       Add one hour to the instance (using timestamp).
  * @method        $this          subRealHours(int $value = 1)                                                        Sub hours (the $value count passed in) to the instance (using timestamp).
  * @method        $this          subRealHour()                                                                       Sub one hour to the instance (using timestamp).
+ * @method        CarbonPeriod   hoursUntil($endDate = null, int $factor = 1)                                        Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each hour or every X hours if a factor is given.
  * @method        $this          addRealDays(int $value = 1)                                                         Add days (the $value count passed in) to the instance (using timestamp).
  * @method        $this          addRealDay()                                                                        Add one day to the instance (using timestamp).
  * @method        $this          subRealDays(int $value = 1)                                                         Sub days (the $value count passed in) to the instance (using timestamp).
  * @method        $this          subRealDay()                                                                        Sub one day to the instance (using timestamp).
+ * @method        CarbonPeriod   daysUntil($endDate = null, int $factor = 1)                                         Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each day or every X days if a factor is given.
  * @method        $this          addRealWeeks(int $value = 1)                                                        Add weeks (the $value count passed in) to the instance (using timestamp).
  * @method        $this          addRealWeek()                                                                       Add one week to the instance (using timestamp).
  * @method        $this          subRealWeeks(int $value = 1)                                                        Sub weeks (the $value count passed in) to the instance (using timestamp).
  * @method        $this          subRealWeek()                                                                       Sub one week to the instance (using timestamp).
+ * @method        CarbonPeriod   weeksUntil($endDate = null, int $factor = 1)                                        Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each week or every X weeks if a factor is given.
  * @method        $this          addRealMonths(int $value = 1)                                                       Add months (the $value count passed in) to the instance (using timestamp).
  * @method        $this          addRealMonth()                                                                      Add one month to the instance (using timestamp).
  * @method        $this          subRealMonths(int $value = 1)                                                       Sub months (the $value count passed in) to the instance (using timestamp).
  * @method        $this          subRealMonth()                                                                      Sub one month to the instance (using timestamp).
+ * @method        CarbonPeriod   monthsUntil($endDate = null, int $factor = 1)                                       Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each month or every X months if a factor is given.
  * @method        $this          addRealQuarters(int $value = 1)                                                     Add quarters (the $value count passed in) to the instance (using timestamp).
  * @method        $this          addRealQuarter()                                                                    Add one quarter to the instance (using timestamp).
  * @method        $this          subRealQuarters(int $value = 1)                                                     Sub quarters (the $value count passed in) to the instance (using timestamp).
  * @method        $this          subRealQuarter()                                                                    Sub one quarter to the instance (using timestamp).
+ * @method        CarbonPeriod   quartersUntil($endDate = null, int $factor = 1)                                     Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each quarter or every X quarters if a factor is given.
  * @method        $this          addRealYears(int $value = 1)                                                        Add years (the $value count passed in) to the instance (using timestamp).
  * @method        $this          addRealYear()                                                                       Add one year to the instance (using timestamp).
  * @method        $this          subRealYears(int $value = 1)                                                        Sub years (the $value count passed in) to the instance (using timestamp).
  * @method        $this          subRealYear()                                                                       Sub one year to the instance (using timestamp).
+ * @method        CarbonPeriod   yearsUntil($endDate = null, int $factor = 1)                                        Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each year or every X years if a factor is given.
  * @method        $this          addRealDecades(int $value = 1)                                                      Add decades (the $value count passed in) to the instance (using timestamp).
  * @method        $this          addRealDecade()                                                                     Add one decade to the instance (using timestamp).
  * @method        $this          subRealDecades(int $value = 1)                                                      Sub decades (the $value count passed in) to the instance (using timestamp).
  * @method        $this          subRealDecade()                                                                     Sub one decade to the instance (using timestamp).
+ * @method        CarbonPeriod   decadesUntil($endDate = null, int $factor = 1)                                      Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each decade or every X decades if a factor is given.
  * @method        $this          addRealCenturies(int $value = 1)                                                    Add centuries (the $value count passed in) to the instance (using timestamp).
  * @method        $this          addRealCentury()                                                                    Add one century to the instance (using timestamp).
  * @method        $this          subRealCenturies(int $value = 1)                                                    Sub centuries (the $value count passed in) to the instance (using timestamp).
  * @method        $this          subRealCentury()                                                                    Sub one century to the instance (using timestamp).
+ * @method        CarbonPeriod   centuriesUntil($endDate = null, int $factor = 1)                                    Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each century or every X centuries if a factor is given.
  * @method        $this          addRealMillennia(int $value = 1)                                                    Add millennia (the $value count passed in) to the instance (using timestamp).
  * @method        $this          addRealMillennium()                                                                 Add one millennium to the instance (using timestamp).
  * @method        $this          subRealMillennia(int $value = 1)                                                    Sub millennia (the $value count passed in) to the instance (using timestamp).
  * @method        $this          subRealMillennium()                                                                 Sub one millennium to the instance (using timestamp).
+ * @method        CarbonPeriod   millenniaUntil($endDate = null, int $factor = 1)                                    Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each millennium or every X millennia if a factor is given.
  * @method        $this          roundYear(float $precision = 1, string $function = "round")                         Round the current instance year with given precision using the given function.
  * @method        $this          roundYears(float $precision = 1, string $function = "round")                        Round the current instance year with given precision using the given function.
  * @method        $this          floorYear(float $precision = 1)                                                     Truncate the current instance year with given precision.
@@ -654,7 +670,7 @@ trait Date
     /**
      * Get a copy of the instance.
      *
-     * @return static|CarbonInterface
+     * @return static
      */
     public function copy()
     {
@@ -666,7 +682,7 @@ trait Date
      *
      * Get a copy of the instance.
      *
-     * @return static|CarbonInterface
+     * @return static
      */
     public function clone()
     {
@@ -676,7 +692,7 @@ trait Date
     /**
      * Returns a present instance in the same timezone.
      *
-     * @return static|CarbonInterface
+     * @return static
      */
     public function nowWithSameTz()
     {
@@ -712,7 +728,7 @@ trait Date
      *
      * @param \Carbon\Carbon|\DateTimeInterface|string|null $date
      *
-     * @return static|CarbonInterface
+     * @return static
      */
     protected function resolveCarbon($date = null)
     {
@@ -1221,7 +1237,7 @@ trait Date
      *
      * @param int|null $value new value for day of year if using as setter.
      *
-     * @return static|CarbonInterface|int
+     * @return static|int
      */
     public function dayOfYear($value = null)
     {
@@ -1235,7 +1251,7 @@ trait Date
      *
      * @param int|null $value new value for weekday if using as setter.
      *
-     * @return static|CarbonInterface|int
+     * @return static|int
      */
     public function weekday($value = null)
     {
@@ -1249,7 +1265,7 @@ trait Date
      *
      * @param int|null $value new value for weekday if using as setter.
      *
-     * @return static|CarbonInterface|int
+     * @return static|int
      */
     public function isoWeekday($value = null)
     {
@@ -1265,13 +1281,13 @@ trait Date
      * @param int    $value        new value for the input unit
      * @param string $overflowUnit unit name to not overflow
      *
-     * @return static|CarbonInterface
+     * @return static
      */
     public function setUnitNoOverflow($valueUnit, $value, $overflowUnit)
     {
         try {
             $original = $this->copy();
-            /** @var CarbonInterface $date */
+            /** @var static $date */
             $date = $this->$valueUnit($value);
             $end = $original->copy()->endOf($overflowUnit);
             $start = $original->copy()->startOf($overflowUnit);
@@ -1294,7 +1310,7 @@ trait Date
      * @param int    $value        amount to add to the input unit
      * @param string $overflowUnit unit name to not overflow
      *
-     * @return static|CarbonInterface
+     * @return static
      */
     public function addUnitNoOverflow($valueUnit, $value, $overflowUnit)
     {
@@ -1308,7 +1324,7 @@ trait Date
      * @param int    $value        amount to subtract to the input unit
      * @param string $overflowUnit unit name to not overflow
      *
-     * @return static|CarbonInterface
+     * @return static
      */
     public function subUnitNoOverflow($valueUnit, $value, $overflowUnit)
     {
@@ -1320,7 +1336,7 @@ trait Date
      *
      * @param int|null $offset
      *
-     * @return int|static|CarbonInterface
+     * @return int|static
      */
     public function utcOffset(int $offset = null)
     {
@@ -1342,7 +1358,7 @@ trait Date
      * @param int $second
      * @param int $microseconds
      *
-     * @return static|CarbonInterface
+     * @return static
      */
     public function setDateTime($year, $month, $day, $hour, $minute, $second = 0, $microseconds = 0)
     {
@@ -1354,7 +1370,7 @@ trait Date
      *
      * @param string $time
      *
-     * @return static|CarbonInterface
+     * @return static
      */
     public function setTimeFromTimeString($time)
     {
@@ -1370,7 +1386,7 @@ trait Date
      *
      * @param \DateTimeZone|string $value
      *
-     * @return static|CarbonInterface
+     * @return static
      */
     public function timezone($value)
     {
@@ -1382,7 +1398,7 @@ trait Date
      *
      * @param \DateTimeZone|string $value
      *
-     * @return CarbonInterface|string
+     * @return static|string
      */
     public function tz($value = null)
     {
@@ -1398,7 +1414,7 @@ trait Date
      *
      * @param \DateTimeZone|string $value
      *
-     * @return static|CarbonInterface
+     * @return static
      */
     public function setTimezone($value)
     {
@@ -1416,7 +1432,7 @@ trait Date
      *
      * @param \DateTimeZone|string $value
      *
-     * @return static|CarbonInterface
+     * @return static
      */
     public function shiftTimezone($value)
     {
@@ -1429,7 +1445,7 @@ trait Date
     /**
      * Set the instance's timezone to UTC.
      *
-     * @return static|CarbonInterface
+     * @return static
      */
     public function utc()
     {
@@ -2360,11 +2376,13 @@ trait Date
         ];
         $sizePattern = implode('|', array_keys($diffSizes));
         $syntaxPattern = implode('|', array_keys($diffSyntaxModes));
+
         if (preg_match("/^(?<size>$sizePattern)(?<syntax>$syntaxPattern)DiffForHumans$/", $method, $match)) {
             $dates = array_filter($parameters, function ($parameter) {
                 return $parameter instanceof DateTimeInterface;
             });
             $other = null;
+
             if (count($dates)) {
                 $key = key($dates);
                 $other = current($dates);
@@ -2375,19 +2393,24 @@ trait Date
         }
 
         $action = substr($method, 0, 4);
+
         if ($action !== 'ceil') {
             $action = substr($method, 0, 5);
         }
+
         if (in_array($action, ['round', 'floor', 'ceil'])) {
             return $this->{$action.'Unit'}(substr($method, strlen($action)), ...$parameters);
         }
 
         $unit = rtrim($method, 's');
+
         if (substr($unit, 0, 2) === 'is') {
             $word = substr($unit, 2);
+
             if (in_array($word, static::$days)) {
                 return $this->isDayOfWeek($word);
             }
+
             switch ($word) {
                 // @call is Check if the current instance has UTC timezone. (Both isUtc and isUTC cases are valid.)
                 case 'Utc':
@@ -2407,6 +2430,7 @@ trait Date
 
         $action = substr($unit, 0, 3);
         $overflow = null;
+
         if ($action === 'set') {
             $unit = strtolower(substr($unit, 3));
         }
@@ -2417,6 +2441,7 @@ trait Date
 
         if ($action === 'add' || $action === 'sub') {
             $unit = substr($unit, 3);
+
             if (substr($unit, 0, 4) === 'Real') {
                 $unit = static::singularUnit(substr($unit, 4));
 
@@ -2427,6 +2452,7 @@ trait Date
                 $unit = $match[1];
                 $overflow = $match[2] === 'With';
             }
+
             $unit = static::singularUnit($unit);
         }
 
@@ -2463,6 +2489,16 @@ trait Date
                 return $this->isCurrentUnit(strtolower(substr($unit, 9)));
             } catch (InvalidArgumentException | BadMethodCallException $exception) {
                 // Try macros
+            }
+        }
+
+        if (substr($method, -5) === 'Until') {
+            try {
+                $unit = static::singularUnit(substr($method, 0, -5));
+
+                return $this->range($parameters[0] ?? $this, $parameters[1] ?? 1, $unit);
+            } catch (InvalidArgumentException $exception) {
+                // Try next
             }
         }
 
