@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2018-09-25 14:48+0000\n"
-"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
-"Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/fr/>\n"
+"PO-Revision-Date: 2019-07-14 08:37+0000\n"
+"Last-Translator: Michel Rivière <michel.riviere@laposte.net>\n"
+"Language-Team: French <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -5022,7 +5022,7 @@ msgstr "Effacer votre compte"
 
 #: app/Controller/FamilyController.php:95
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
-msgstr "Voulez-vous vraiment supprimer cette famille&nbsp;? NB&nbsp;: les individus ne seront pas supprimés."
+msgstr "Effacer la famille supprimera tous les liens avec les individus mais ceux-ci seront conservés. Voulez-vous vraiment supprimer cette famille&nbsp;?"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6718
@@ -9370,7 +9370,7 @@ msgstr "La plupart des sites utilisent localhost comme nom d’hôte. Cela signi
 
 #: setup.php:286
 msgid "Most sites are configured to use the default value of 3306."
-msgstr "La plupart des sites utilisent la valeur par défaut 3306."
+msgstr "La plupart des sites utilisent la valeur 3306 par défaut."
 
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:36
@@ -12216,7 +12216,7 @@ msgstr "Définir le statut à «&nbsp;approuvé&nbsp;»."
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1580
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
-msgstr "Option permettant de placer des liens sur les individus, les sources et les familles pour autoriser les utilisateurs à ouvrir une fenêtre qui contiendra le code GEDCOM extrait du fichier."
+msgstr "Choisir <b>oui</b> placera des liens sur les individus, les sources et les familles qui permettront aux utilisateurs d’ouvrir une fenêtre contenant le code GEDCOM extrait du fichier."
 
 #: setup.php:93
 msgid "Setup wizard for webtrees"
@@ -14482,7 +14482,7 @@ msgstr "Permet d’indiquer si l’icône du sexe doit être affichée sur les g
 #. I18N: Help text for the “Default pedigree chart layout” tree configuration setting
 #: admin_trees_config.php:1216
 msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
-msgstr "Indique le sens d’orientation des arbres sur la page&nbsp;:<br><ul><li>portrait = vertical&nbsp ;<li>paysage = horizontal.</ul>"
+msgstr "Indique le sens d’orientation des arbres sur la page&nbsp;:<br><ul><li>portrait = vertical<li>paysage = horizontal</ul>"
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: admin_trees_config.php:1036
