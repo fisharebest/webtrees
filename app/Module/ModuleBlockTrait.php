@@ -34,7 +34,8 @@ trait ModuleBlockTrait
      *
      * @return string
      */
-    protected function configUrl(Tree $tree, string $context, int $block_id): string {
+    protected function configUrl(Tree $tree, string $context, int $block_id): string
+    {
         if ($context === self::CONTEXT_TREE_PAGE && Auth::isManager($tree)) {
             return route('tree-page-block-edit', [
                 'block_id' => $block_id,
