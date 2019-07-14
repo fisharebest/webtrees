@@ -60,11 +60,11 @@ class HitCountRepository implements HitCountRepositoryInterface
     private function hitCountQuery($page_name, string $page_parameter = ''): string
     {
         if ($page_name === '') {
-            // index.php?ctype=gedcom
+            // index.php?context=gedcom
             $page_name      = 'index.php';
             $page_parameter = 'gedcom:' . $this->tree->id();
         } elseif ($page_name === 'index.php') {
-            // index.php?ctype=user
+            // index.php?context=user
             $user           = $this->user_service->findByIdentifier($page_parameter);
             $page_parameter = 'user:' . ($user ? $user->id() : Auth::id());
         }

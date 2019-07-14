@@ -92,7 +92,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             ->whereIn('message_id', $message_ids)
             ->delete();
 
-        if ($request->getQueryParams()['ctype'] === 'user') {
+        if ($request->getQueryParams()['context'] === ModuleBlockInterface::CONTEXT_USER_PAGE) {
             $url = route('user-page', ['ged' => $tree->name()]);
         } else {
             $url = route('tree-page', ['ged' => $tree->name()]);
@@ -106,12 +106,12 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param Tree     $tree
      * @param int      $block_id
-     * @param string   $ctype
-     * @param string[] $cfg
+     * @param string   $context
+     * @param string[] $config
      *
      * @return string
      */
-    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
+    public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
         $messages = DB::table('message')
             ->where('user_id', '=', Auth::id())
@@ -153,10 +153,10 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             $content .= '</form>';
         }
         $content .= '<form id="messageform" name="messageform" method="post" action="' . e(route('module', [
-                'action' => 'DeleteMessage',
-                'module' => $this->name(),
-                'ctype'  => $ctype,
-                'ged'    => $tree->name(),
+                'action'  => 'DeleteMessage',
+                'module'  => $this->name(),
+                'context' => $context,
+                'ged'     => $tree->name(),
             ])) . '" data-confirm="' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '" onsubmit="return confirm(this.dataset.confirm);">';
         $content .= csrf_field();
 
@@ -209,7 +209,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
         }
         $content .= '</form>';
 
-        if ($ctype !== '') {
+        if ($context !== self::CONTEXT_EMBED) {
             $count = $messages->count();
 
             return view('modules/block-template', [
@@ -224,45 +224,35 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
         return $content;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Should this block load asynchronously using AJAX?
+     *
+     * Simple blocks are faster in-line, more complex ones can be loaded later.
+     *
+     * @return bool
+     */
     public function loadAjax(): bool
     {
         return false;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this block be shown on the user’s home page?
+     *
+     * @return bool
+     */
     public function isUserBlock(): bool
     {
         return true;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this block be shown on the tree’s home page?
+     *
+     * @return bool
+     */
     public function isTreeBlock(): bool
     {
         return false;
-    }
-
-    /**
-     * Update the configuration for a block.
-     *
-     * @param ServerRequestInterface $request
-     * @param int                    $block_id
-     *
-     * @return void
-     */
-    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
-    {
-    }
-
-    /**
-     * An HTML form to edit block settings
-     *
-     * @param Tree $tree
-     * @param int  $block_id
-     *
-     * @return void
-     */
-    public function editBlockConfiguration(Tree $tree, int $block_id): void
-    {
     }
 }

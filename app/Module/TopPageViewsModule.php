@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
@@ -59,17 +58,17 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param Tree     $tree
      * @param int      $block_id
-     * @param string   $ctype
-     * @param string[] $cfg
+     * @param string   $context
+     * @param string[] $config
      *
      * @return string
      */
-    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
+    public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
         $num             = $this->getBlockSetting($block_id, 'num', '10');
         $count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
 
-        extract($cfg, EXTR_OVERWRITE);
+        extract($config, EXTR_OVERWRITE);
 
         $top10 = DB::table('hit_counter')
             ->where('gedcom_id', '=', $tree->id())
@@ -95,25 +94,11 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
         }
         $content .= '</table>';
 
-        if ($ctype !== '') {
-            if ($ctype === 'gedcom' && Auth::isManager($tree)) {
-                $config_url = route('tree-page-block-edit', [
-                    'block_id' => $block_id,
-                    'ged'      => $tree->name(),
-                ]);
-            } elseif ($ctype === 'user' && Auth::check()) {
-                $config_url = route('user-page-block-edit', [
-                    'block_id' => $block_id,
-                    'ged'      => $tree->name(),
-                ]);
-            } else {
-                $config_url = '';
-            }
-
+        if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [
                 'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
-                'config_url' => $config_url,
+                'config_url' => $this->configUrl($tree, $context, $block_id),
                 'title'      => $this->title(),
                 'content'    => $content,
             ]);
@@ -125,8 +110,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Should this block load asynchronously using AJAX?
      *
-     * Simple blocks are faster in-line, more comples ones
-     * can be loaded later.
+     * Simple blocks are faster in-line, more complex ones can be loaded later.
      *
      * @return bool
      */
@@ -177,9 +161,9 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree
      * @param int  $block_id
      *
-     * @return void
+     * @return string
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id): void
+    public function editBlockConfiguration(Tree $tree, int $block_id): string
     {
         $num             = $this->getBlockSetting($block_id, 'num', '10');
         $count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
@@ -191,7 +175,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
             'after'  => I18N::translate('after'),
         ];
 
-        echo view('modules/top10_pageviews/config', [
+        return view('modules/top10_pageviews/config', [
             'count_placement' => $count_placement,
             'num'             => $num,
             'options'         => $options,

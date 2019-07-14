@@ -316,7 +316,7 @@ class HomePageController extends AbstractBaseController
         $module = $this->getBlockModule($tree, $block_id);
 
         $html = view('layouts/ajax', [
-            'content' => $module->getBlock($tree, $block_id, 'gedcom'),
+            'content' => $module->getBlock($tree, $block_id, ModuleBlockInterface::CONTEXT_TREE_PAGE),
         ]);
 
         return response($html);
@@ -486,7 +486,7 @@ class HomePageController extends AbstractBaseController
         $module = $this->getBlockModule($tree, $block_id);
 
         $html = view('layouts/ajax', [
-            'content' => $module->getBlock($tree, $block_id, 'user'),
+            'content' => $module->getBlock($tree, $block_id, ModuleBlockInterface::CONTEXT_USER_PAGE),
         ]);
 
         return response($html);

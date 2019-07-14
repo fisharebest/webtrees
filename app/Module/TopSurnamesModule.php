@@ -64,17 +64,17 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param Tree     $tree
      * @param int      $block_id
-     * @param string   $ctype
-     * @param string[] $cfg
+     * @param string   $context
+     * @param string[] $config
      *
      * @return string
      */
-    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
+    public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
         $num       = (int) $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
 
-        extract($cfg, EXTR_OVERWRITE);
+        extract($config, EXTR_OVERWRITE);
 
         // Use the count of base surnames.
         $top_surnames = DB::table('name')
@@ -129,7 +129,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
                 break;
         }
 
-        if ($ctype !== '') {
+        if ($context !== self::CONTEXT_EMBED) {
             $num = count($top_surnames);
             if ($num === 1) {
                 // I18N: i.e. most popular surname.
@@ -139,24 +139,10 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
                 $title = I18N::plural('Top %s surname', 'Top %s surnames', $num, I18N::number($num));
             }
 
-            if ($ctype === 'gedcom' && Auth::isManager($tree)) {
-                $config_url = route('tree-page-block-edit', [
-                    'block_id' => $block_id,
-                    'ged'      => $tree->name(),
-                ]);
-            } elseif ($ctype === 'user' && Auth::check()) {
-                $config_url = route('user-page-block-edit', [
-                    'block_id' => $block_id,
-                    'ged'      => $tree->name(),
-                ]);
-            } else {
-                $config_url = '';
-            }
-
             return view('modules/block-template', [
                 'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
-                'config_url' => $config_url,
+                'config_url' => $this->configUrl($tree, $context, $block_id),
                 'title'      => $title,
                 'content'    => $content,
             ]);
@@ -165,19 +151,33 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
         return $content;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Should this block load asynchronously using AJAX?
+     *
+     * Simple blocks are faster in-line, more complex ones can be loaded later.
+     *
+     * @return bool
+     */
     public function loadAjax(): bool
     {
         return false;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this block be shown on the user’s home page?
+     *
+     * @return bool
+     */
     public function isUserBlock(): bool
     {
         return true;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this block be shown on the tree’s home page?
+     *
+     * @return bool
+     */
     public function isTreeBlock(): bool
     {
         return true;
@@ -205,9 +205,9 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree
      * @param int  $block_id
      *
-     * @return void
+     * @return string
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id): void
+    public function editBlockConfiguration(Tree $tree, int $block_id): string
     {
         $num       = $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
@@ -223,7 +223,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
             'tagcloud' => I18N::translate('tag cloud'),
         ];
 
-        echo view('modules/top10_surnames/config', [
+        return view('modules/top10_surnames/config', [
             'num'         => $num,
             'infoStyle'   => $infoStyle,
             'info_styles' => $info_styles,

@@ -25,23 +25,27 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 interface ModuleBlockInterface extends ModuleInterface
 {
+    // Places we can display blocks
+    public const CONTEXT_EMBED     = 'embed';
+    public const CONTEXT_TREE_PAGE = 'tree';
+    public const CONTEXT_USER_PAGE = 'user';
+
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree     $tree
-     * @param int      $block_id
-     * @param string   $ctype
-     * @param string[] $cfg
+     * @param Tree   $tree
+     * @param int    $block_id
+     * @param string $context
+     * @param array  $config
      *
      * @return string
      */
-    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string;
+    public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string;
 
     /**
      * Should this block load asynchronously using AJAX?
      *
-     * Simple blocks are faster in-line, more comples ones
-     * can be loaded later.
+     * Simple blocks are faster in-line, more complex ones can be loaded later.
      *
      * @return bool
      */
@@ -67,9 +71,9 @@ interface ModuleBlockInterface extends ModuleInterface
      * @param Tree $tree
      * @param int  $block_id
      *
-     * @return void
+     * @return string
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id): void;
+    public function editBlockConfiguration(Tree $tree, int $block_id): string;
 
     /**
      * Update the configuration for a block.

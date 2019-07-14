@@ -74,12 +74,12 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param Tree     $tree
      * @param int      $block_id
-     * @param string   $ctype
-     * @param string[] $cfg
+     * @param string   $context
+     * @param string[] $config
      *
      * @return string
      */
-    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
+    public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
         $individual = $tree->significantIndividual(Auth::user());
 
@@ -116,7 +116,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
 
         $content = view('modules/gedcom_block/welcome', ['links' => $links]);
 
-        if ($ctype !== '') {
+        if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [
                 'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
@@ -129,45 +129,35 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
         return $content;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Should this block load asynchronously using AJAX?
+     *
+     * Simple blocks are faster in-line, more complex ones can be loaded later.
+     *
+     * @return bool
+     */
     public function loadAjax(): bool
     {
         return false;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this block be shown on the user’s home page?
+     *
+     * @return bool
+     */
     public function isUserBlock(): bool
     {
         return false;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this block be shown on the tree’s home page?
+     *
+     * @return bool
+     */
     public function isTreeBlock(): bool
     {
         return true;
-    }
-
-    /**
-     * Update the configuration for a block.
-     *
-     * @param ServerRequestInterface $request
-     * @param int     $block_id
-     *
-     * @return void
-     */
-    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
-    {
-    }
-
-    /**
-     * An HTML form to edit block settings
-     *
-     * @param Tree $tree
-     * @param int  $block_id
-     *
-     * @return void
-     */
-    public function editBlockConfiguration(Tree $tree, int $block_id): void
-    {
     }
 }

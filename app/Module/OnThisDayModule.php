@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
@@ -101,12 +100,12 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param Tree     $tree
      * @param int      $block_id
-     * @param string   $ctype
-     * @param string[] $cfg
+     * @param string   $context
+     * @param string[] $config
      *
      * @return string
      */
-    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
+    public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
         $calendar_service = new CalendarService();
 
@@ -117,7 +116,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
         $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
         $events    = $this->getBlockSetting($block_id, 'events', $default_events);
 
-        extract($cfg, EXTR_OVERWRITE);
+        extract($config, EXTR_OVERWRITE);
 
         $event_array = explode(',', $events);
 
@@ -145,25 +144,11 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
             ]);
         }
 
-        if ($ctype !== '') {
-            if ($ctype === 'gedcom' && Auth::isManager($tree)) {
-                $config_url = route('tree-page-block-edit', [
-                    'block_id' => $block_id,
-                    'ged'      => $tree->name(),
-                ]);
-            } elseif ($ctype === 'user' && Auth::check()) {
-                $config_url = route('user-page-block-edit', [
-                    'block_id' => $block_id,
-                    'ged'      => $tree->name(),
-                ]);
-            } else {
-                $config_url = '';
-            }
-
+        if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [
                 'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
-                'config_url' => $config_url,
+                'config_url' => $this->configUrl($tree, $context, $block_id),
                 'title'      => $this->title(),
                 'content'    => $content,
             ]);
@@ -172,19 +157,33 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
         return $content;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Should this block load asynchronously using AJAX?
+     *
+     * Simple blocks are faster in-line, more complex ones can be loaded later.
+     *
+     * @return bool
+     */
     public function loadAjax(): bool
     {
         return true;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this block be shown on the user’s home page?
+     *
+     * @return bool
+     */
     public function isUserBlock(): bool
     {
         return true;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this block be shown on the tree’s home page?
+     *
+     * @return bool
+     */
     public function isTreeBlock(): bool
     {
         return true;
@@ -214,9 +213,9 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree
      * @param int  $block_id
      *
-     * @return void
+     * @return string
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id): void
+    public function editBlockConfiguration(Tree $tree, int $block_id): string
     {
         $default_events = implode(',', self::DEFAULT_EVENTS);
 
@@ -246,7 +245,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
             'anniv' => I18N::translate('sort by date'),
         ];
 
-        echo view('modules/todays_events/config', [
+        return view('modules/todays_events/config', [
             'all_events'  => $all_events,
             'event_array' => $event_array,
             'filter'      => $filter,

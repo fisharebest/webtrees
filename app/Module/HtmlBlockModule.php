@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\HtmlService;
@@ -73,12 +72,12 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param Tree     $tree
      * @param int      $block_id
-     * @param string   $ctype
-     * @param string[] $cfg
+     * @param string   $context
+     * @param string[] $config
      *
      * @return string
      */
-    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
+    public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
         $statistics = app(Statistics::class);
 
@@ -102,25 +101,11 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
             $content .= '<br>' . view('components/datetime', ['timestamp' => Carbon::createFromTimestamp($block_timestamp)]);
         }
 
-        if ($ctype !== '') {
-            if ($ctype === 'gedcom' && Auth::isManager($tree)) {
-                $config_url = route('tree-page-block-edit', [
-                    'block_id' => $block_id,
-                    'ged'      => $tree->name(),
-                ]);
-            } elseif ($ctype === 'user' && Auth::check()) {
-                $config_url = route('user-page-block-edit', [
-                    'block_id' => $block_id,
-                    'ged'      => $tree->name(),
-                ]);
-            } else {
-                $config_url = '';
-            }
-
+        if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [
                 'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
-                'config_url' => $config_url,
+                'config_url' => $this->configUrl($tree, $context, $block_id),
                 'title'      => $title,
                 'content'    => $content,
             ]);
@@ -132,8 +117,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Should this block load asynchronously using AJAX?
      *
-     * Simple blocks are faster in-line, more comples ones
-     * can be loaded later.
+     * Simple blocks are faster in-line, more complex ones can be loaded later.
      *
      * @return bool
      */
@@ -192,9 +176,9 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree
      * @param int  $block_id
      *
-     * @return void
+     * @return string
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id): void
+    public function editBlockConfiguration(Tree $tree, int $block_id): string
     {
         $title          = $this->getBlockSetting($block_id, 'title');
         $html           = $this->getBlockSetting($block_id, 'html');
@@ -209,7 +193,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
             view('modules/html/template-statistics') => I18N::translate('Statistics'),
         ];
 
-        echo view('modules/html/config', [
+        return view('modules/html/config', [
             'all_trees'      => $all_trees,
             'html'           => $html,
             'languages'      => $languages,

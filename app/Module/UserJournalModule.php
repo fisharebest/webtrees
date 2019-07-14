@@ -65,12 +65,12 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param Tree     $tree
      * @param int      $block_id
-     * @param string   $ctype
-     * @param string[] $cfg
+     * @param string   $context
+     * @param string[] $config
      *
      * @return string
      */
-    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
+    public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
         $articles = DB::table('news')
             ->where('user_id', '=', Auth::id())
@@ -88,7 +88,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
             'limit'    => 5,
         ]);
 
-        if ($ctype !== '') {
+        if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [
                 'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
@@ -115,8 +115,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Should this block load asynchronously using AJAX?
      *
-     * Simple blocks are faster in-line, more comples ones
-     * can be loaded later.
+     * Simple blocks are faster in-line, more complex ones can be loaded later.
      *
      * @return bool
      */
@@ -143,30 +142,6 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
     public function isTreeBlock(): bool
     {
         return false;
-    }
-
-    /**
-     * Update the configuration for a block.
-     *
-     * @param ServerRequestInterface $request
-     * @param int     $block_id
-     *
-     * @return void
-     */
-    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
-    {
-    }
-
-    /**
-     * An HTML form to edit block settings
-     *
-     * @param Tree $tree
-     * @param int  $block_id
-     *
-     * @return void
-     */
-    public function editBlockConfiguration(Tree $tree, int $block_id): void
-    {
     }
 
     /**

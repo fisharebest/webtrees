@@ -64,12 +64,12 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
      *
      * @param Tree     $tree
      * @param int      $block_id
-     * @param string   $ctype
-     * @param string[] $cfg
+     * @param string   $context
+     * @param string[] $config
      *
      * @return string
      */
-    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
+    public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
         $statistics = app(Statistics::class);
 
@@ -93,7 +93,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
         $stat_most_chil       = $this->getBlockSetting($block_id, 'stat_most_chil', '1');
         $stat_avg_chil        = $this->getBlockSetting($block_id, 'stat_avg_chil', '1');
 
-        extract($cfg, EXTR_OVERWRITE);
+        extract($config, EXTR_OVERWRITE);
 
         if ($show_common_surnames) {
             // Use the count of base surnames.
@@ -156,25 +156,11 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
             'surnames'             => $surnames,
         ]);
 
-        if ($ctype !== '') {
-            if ($ctype === 'gedcom' && Auth::isManager($tree)) {
-                $config_url = route('tree-page-block-edit', [
-                    'block_id' => $block_id,
-                    'ged'      => $tree->name(),
-                ]);
-            } elseif ($ctype === 'user' && Auth::check()) {
-                $config_url = route('user-page-block-edit', [
-                    'block_id' => $block_id,
-                    'ged'      => $tree->name(),
-                ]);
-            } else {
-                $config_url = '';
-            }
-
+        if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [
                 'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
-                'config_url' => $config_url,
+                'config_url' => $this->configUrl($tree, $context, $block_id),
                 'title'      => $this->title(),
                 'content'    => $content,
             ]);
@@ -183,19 +169,33 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
         return $content;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Should this block load asynchronously using AJAX?
+     *
+     * Simple blocks are faster in-line, more complex ones can be loaded later.
+     *
+     * @return bool
+     */
     public function loadAjax(): bool
     {
         return true;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this block be shown on the user’s home page?
+     *
+     * @return bool
+     */
     public function isUserBlock(): bool
     {
         return true;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this block be shown on the tree’s home page?
+     *
+     * @return bool
+     */
     public function isTreeBlock(): bool
     {
         return true;
@@ -241,9 +241,9 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
      * @param Tree $tree
      * @param int  $block_id
      *
-     * @return void
+     * @return string
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id): void
+    public function editBlockConfiguration(Tree $tree, int $block_id): string
     {
         $show_last_update     = $this->getBlockSetting($block_id, 'show_last_update', '1');
         $show_common_surnames = $this->getBlockSetting($block_id, 'show_common_surnames', '1');
@@ -265,7 +265,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
         $stat_most_chil       = $this->getBlockSetting($block_id, 'stat_most_chil', '1');
         $stat_avg_chil        = $this->getBlockSetting($block_id, 'stat_avg_chil', '1');
 
-        echo view('modules/gedcom_stats/config', [
+        return view('modules/gedcom_stats/config', [
             'show_last_update'     => $show_last_update,
             'show_common_surnames' => $show_common_surnames,
             'number_of_surnames'   => $number_of_surnames,

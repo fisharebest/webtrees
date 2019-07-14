@@ -2639,7 +2639,7 @@ class Statistics implements
             $cfg[$v] = implode('=', $bits);
         }
 
-        return $module->getBlock($this->tree, 0, '', $cfg);
+        return $module->getBlock($this->tree, 0, ModuleBlockInterface::CONTEXT_EMBED, $cfg);
     }
 
     /**

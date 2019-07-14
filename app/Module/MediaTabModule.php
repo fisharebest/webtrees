@@ -79,19 +79,38 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
         return 5;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Is this tab empty? If so, we don't always need to display it.
+     *
+     * @param Individual $individual
+     *
+     * @return bool
+     */
     public function hasTabContent(Individual $individual): bool
     {
         return $individual->canEdit() || $this->getFactsWithMedia($individual)->isNotEmpty();
     }
 
-    /** {@inheritdoc} */
+    /**
+     * A greyed out tab has no actual content, but may perhaps have
+     * options to create content.
+     *
+     * @param Individual $individual
+     *
+     * @return bool
+     */
     public function isGrayedOut(Individual $individual): bool
     {
         return !$this->getFactsWithMedia($individual);
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Generate the HTML content of this tab.
+     *
+     * @param Individual $individual
+     *
+     * @return string
+     */
     public function getTabContent(Individual $individual): string
     {
         return view('modules/media/tab', [
@@ -134,7 +153,11 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
         return $this->facts;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this tab load asynchronously?
+     *
+     * @return bool
+     */
     public function canLoadAjax(): bool
     {
         return false;

@@ -17,9 +17,63 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Tree;
+use Psr\Http\Message\ServerRequestInterface;
+use function route;
+
 /**
  * Trait ModuleBlockTrait - default implementation of ModuleBlockInterface
  */
 trait ModuleBlockTrait
 {
+    /**
+     * @param Tree   $tree
+     * @param string $context
+     * @param int    $block_id
+     *
+     * @return string
+     */
+    protected function configUrl(Tree $tree, string $context, int $block_id): string {
+        if ($context === self::CONTEXT_TREE_PAGE && Auth::isManager($tree)) {
+            return route('tree-page-block-edit', [
+                'block_id' => $block_id,
+                'ged'      => $tree->name(),
+            ]);
+        }
+
+        if ($context === self::CONTEXT_USER_PAGE && Auth::check()) {
+            return route('user-page-block-edit', [
+                'block_id' => $block_id,
+                'ged'      => $tree->name(),
+            ]);
+        }
+
+        return '';
+    }
+
+    /**
+     * Update the configuration for a block.
+     *
+     * @param ServerRequestInterface $request
+     * @param int                    $block_id
+     *
+     * @return void
+     */
+    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
+    {
+    }
+
+    /**
+     * An HTML form to edit block settings
+     *
+     * @param Tree $tree
+     * @param int  $block_id
+     *
+     * @return string
+     */
+    public function editBlockConfiguration(Tree $tree, int $block_id): string
+    {
+        return '';
+    }
 }
