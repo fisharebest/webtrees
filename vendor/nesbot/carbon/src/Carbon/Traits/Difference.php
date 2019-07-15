@@ -34,6 +34,49 @@ use DateTimeInterface;
 trait Difference
 {
     /**
+     * @param CarbonInterval $diff
+     */
+    protected static function fixNegativeMicroseconds(CarbonInterval $diff)
+    {
+        // @codeCoverageIgnoreStart
+        if ($diff->s !== 0 || $diff->i !== 0 || $diff->h !== 0 || $diff->d !== 0 || $diff->m !== 0 || $diff->y !== 0) {
+            $diff->f = (round($diff->f * 1000000) + 1000000) / 1000000;
+            $diff->s--;
+
+            if ($diff->s < 0) {
+                $diff->s += 60;
+                $diff->i--;
+
+                if ($diff->i < 0) {
+                    $diff->i += 60;
+                    $diff->h--;
+
+                    if ($diff->h < 0) {
+                        $diff->h += 24;
+                        $diff->d--;
+
+                        if ($diff->d < 0) {
+                            $diff->d += 30;
+                            $diff->m--;
+
+                            if ($diff->m < 0) {
+                                $diff->m += 12;
+                                $diff->y--;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return;
+        }
+
+        $diff->f *= -1;
+        $diff->invert();
+        // @codeCoverageIgnoreEnd
+    }
+
+    /**
      * @param DateInterval $diff
      * @param bool         $absolute
      *
@@ -42,6 +85,7 @@ trait Difference
     protected static function fixDiffInterval(DateInterval $diff, $absolute)
     {
         $diff = CarbonInterval::instance($diff);
+
         // Work-around for https://bugs.php.net/bug.php?id=77145
         // @codeCoverageIgnoreStart
         if ($diff->f > 0 && $diff->y === -1 && $diff->m === 11 && $diff->d >= 27 && $diff->h === 23 && $diff->i === 59 && $diff->s === 59) {
@@ -54,38 +98,7 @@ trait Difference
             $diff->f = (1000000 - round($diff->f * 1000000)) / 1000000;
             $diff->invert();
         } elseif ($diff->f < 0) {
-            if ($diff->s !== 0 || $diff->i !== 0 || $diff->h !== 0 || $diff->d !== 0 || $diff->m !== 0 || $diff->y !== 0) {
-                $diff->f = (round($diff->f * 1000000) + 1000000) / 1000000;
-                $diff->s--;
-
-                if ($diff->s < 0) {
-                    $diff->s += 60;
-                    $diff->i--;
-
-                    if ($diff->i < 0) {
-                        $diff->i += 60;
-                        $diff->h--;
-
-                        if ($diff->h < 0) {
-                            $diff->h += 24;
-                            $diff->d--;
-
-                            if ($diff->d < 0) {
-                                $diff->d += 30;
-                                $diff->m--;
-
-                                if ($diff->m < 0) {
-                                    $diff->m += 12;
-                                    $diff->y--;
-                                }
-                            }
-                        }
-                    }
-                }
-            } else {
-                $diff->f *= -1;
-                $diff->invert();
-            }
+            static::fixNegativeMicroseconds($diff);
         }
         // @codeCoverageIgnoreEnd
 
@@ -472,10 +485,7 @@ trait Difference
         $ascending = ($start <= $end);
         $sign = $absolute || $ascending ? 1 : -1;
         if (!$ascending) {
-            $_end = $start;
-            $start = $end;
-            $end = $_end;
-            unset($_end);
+            [$start, $end] = [$end, $start];
         }
         $monthsDiff = $start->diffInMonths($end);
         /** @var Carbon|CarbonImmutable $floorEnd */
@@ -510,10 +520,7 @@ trait Difference
         $ascending = ($start <= $end);
         $sign = $absolute || $ascending ? 1 : -1;
         if (!$ascending) {
-            $_end = $start;
-            $start = $end;
-            $end = $_end;
-            unset($_end);
+            [$start, $end] = [$end, $start];
         }
         $yearsDiff = $start->diffInYears($end);
         /** @var Carbon|CarbonImmutable $floorEnd */
@@ -602,10 +609,7 @@ trait Difference
         $ascending = ($start <= $end);
         $sign = $absolute || $ascending ? 1 : -1;
         if (!$ascending) {
-            $_end = $start;
-            $start = $end;
-            $end = $_end;
-            unset($_end);
+            [$start, $end] = [$end, $start];
         }
         $monthsDiff = $start->diffInMonths($end);
         /** @var Carbon|CarbonImmutable $floorEnd */
@@ -640,10 +644,7 @@ trait Difference
         $ascending = ($start <= $end);
         $sign = $absolute || $ascending ? 1 : -1;
         if (!$ascending) {
-            $_end = $start;
-            $start = $end;
-            $end = $_end;
-            unset($_end);
+            [$start, $end] = [$end, $start];
         }
         $yearsDiff = $start->diffInYears($end);
         /** @var Carbon|CarbonImmutable $floorEnd */

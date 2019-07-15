@@ -22,6 +22,7 @@ use InvalidArgumentException;
  *
  * Depends on the following methods:
  *
+ * @method CarbonInterface        resolveCarbon($date)
  * @method CarbonInterface        copy()
  * @method CarbonInterface        nowWithSameTz()
  * @method static CarbonInterface yesterday($timezone = null)
@@ -224,6 +225,9 @@ trait Comparison
      */
     public function between($date1, $date2, $equal = true): bool
     {
+        $date1 = $this->resolveCarbon($date1);
+        $date2 = $this->resolveCarbon($date2);
+
         if ($date1->greaterThan($date2)) {
             $temp = $date1;
             $date1 = $date2;
@@ -570,8 +574,7 @@ trait Comparison
             // To ensure we're really testing against our desired format, perform an additional regex validation.
 
             // Preg quote, but remove escaped backslashes since we'll deal with escaped characters in the format string.
-            $quotedFormat = str_replace('\\\\', '\\',
-                preg_quote($format, '/'));
+            $quotedFormat = str_replace('\\\\', '\\', preg_quote($format, '/'));
 
             // Build the regex string
             $regex = '';
@@ -580,6 +583,7 @@ trait Comparison
                 // We're doing an extra ++$i here to increment the loop by 2.
                 if ($quotedFormat[$i] === '\\') {
                     $regex .= '\\'.$quotedFormat[++$i];
+
                     continue;
                 }
 
@@ -646,33 +650,38 @@ trait Comparison
         }
 
         if (preg_match('/\d:\d{1,2}:\d{1,2}$/', $tester)) {
-            $current = $current->startOfSecond();
-        } elseif (preg_match('/\d:\d{1,2}$/', $tester)) {
-            $current = $current->startOfMinute();
-        } elseif (preg_match('/\d(h|am|pm)$/', $tester)) {
-            $current = $current->startOfHour();
-        } elseif (preg_match(
+            return $current->startOfSecond()->eq($other);
+        }
+
+        if (preg_match('/\d:\d{1,2}$/', $tester)) {
+            return $current->startOfMinute()->eq($other);
+        }
+
+        if (preg_match('/\d(h|am|pm)$/', $tester)) {
+            return $current->startOfHour()->eq($other);
+        }
+
+        if (preg_match(
             '/^(january|february|march|april|may|june|july|august|september|october|november|december)\s+\d+$/i',
             $tester
         )) {
-            $current = $current->startOfMonth();
-            $other = $other->startOfMonth();
-        } else {
-            $units = [
-                'month' => [1, 'year'],
-                'day' => [1, 'month'],
-                'hour' => [0, 'day'],
-                'minute' => [0, 'hour'],
-                'second' => [0, 'minute'],
-                'microsecond' => [0, 'second'],
-            ];
+            return $current->startOfMonth()->eq($other->startOfMonth());
+        }
 
-            foreach ($units as $unit => [$minimum, $startUnit]) {
-                if ($median->$unit === $minimum) {
-                    $current = $current->startOf($startUnit);
+        $units = [
+            'month' => [1, 'year'],
+            'day' => [1, 'month'],
+            'hour' => [0, 'day'],
+            'minute' => [0, 'hour'],
+            'second' => [0, 'minute'],
+            'microsecond' => [0, 'second'],
+        ];
 
-                    break;
-                }
+        foreach ($units as $unit => [$minimum, $startUnit]) {
+            if ($median->$unit === $minimum) {
+                $current = $current->startOf($startUnit);
+
+                break;
             }
         }
 
