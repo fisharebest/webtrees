@@ -1,7 +1,5 @@
 # league/commonmark
 
-[![Join the chat at https://gitter.im/thephpleague/commonmark](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/thephpleague/commonmark?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 [![Latest Version](https://img.shields.io/packagist/v/league/commonmark.svg?style=flat-square)](https://packagist.org/packages/league/commonmark)
 [![Total Downloads](https://img.shields.io/packagist/dt/league/commonmark.svg?style=flat-square)](https://packagist.org/packages/league/commonmark)
 [![Software License](https://img.shields.io/badge/License-BSD--3-brightgreen.svg?style=flat-square)](LICENSE)
@@ -45,54 +43,15 @@ echo $converter->convertToHtml('# Hello World!');
 
 :warning: **Security warning:** If you will be parsing untrusted input from users, please consider setting the `html_input` and `allow_unsafe_links` options. See <https://commonmark.thephpleague.com/security/> for more details.
 
-## Advanced Usage & Customization
-
-The actual conversion process requires two steps:
-
- 1. Parsing the Markdown input into an AST
- 2. Rendering the AST document as HTML
-
-Although the `CommonMarkConverter` wrapper simplifies this process for you, advanced users will likely want to do this themselves:
-
-```php
-use League\CommonMark\CommonMarkConverter;
-use League\CommonMark\Environment;
-
-// Obtain a pre-configured Environment with all the CommonMark parsers/renderers ready-to-go
-$environment = Environment::createCommonMarkEnvironment();
-
-// Optional: Add your own parsers, renderers, extensions, etc. (if desired)
-// For example:  $environment->addInlineParser(new TwitterHandleParser());
-
-// Define your configuration:
-$config = ['html_input' => 'escape'];
-
-// Create the converter
-$converter = new CommonMarkConverter($config, $environment);
-
-// Here's our sample input
-$markdown = '# Hello World!';
-
-// Let's render it!
-echo $converter->convertToHtml($markdown);
-
-// The output should be:
-// <h1>Hello World!</h1>
-```
-
-This approach allows you to access/modify the AST before rendering it.
-
-You can also add custom parsers/renderers by [registering them with the `Environment` class](https://commonmark.thephpleague.com/customization/environment/).
-The [documentation][docs] provides several [customization examples][docs-examples] such as:
-
-- [Parsing Twitter handles into profile links][docs-example-twitter]
-- [Converting smilies into emoticon images][docs-example-smilies]
-
-You can also reference the core CommonMark parsers/renderers as they use the same functionality available to you.
+If you also do choose to allow raw HTML input from untrusted users, considering using a library (like [HTML Purifier](https://github.com/ezyang/htmlpurifier)) to provide additional HTML filtering.
 
 ## Documentation
 
-Documentation can be found at [commonmark.thephpleague.com][docs].
+Full documentation on advanced usage, configuration, and customization can be found at [commonmark.thephpleague.com][docs].
+
+## Upgrading
+
+Information on how to upgrade to newer versions of this library can be found at <https://commonmark.thephpleague.com/releases>.
 
 ## Related Packages
 
@@ -108,15 +67,21 @@ Documentation can be found at [commonmark.thephpleague.com][docs].
 - [Twig-based renderer](https://github.com/webuni/commonmark-twig-renderer)
 - [Twig filter and tag](https://github.com/aptoma/twig-markdown)
 
-### CommonMark Extras
+### League Extensions
 
-You can find several examples of useful extensions and customizations in the [league/commonmark-extras package](https://github.com/thephpleague/commonmark-extras).  You can add them to your parser or use them as examples to [develop your own custom features](https://commonmark.thephpleague.com/customization/overview/).
+The PHP League offers useful extensions that add extra syntax and features:
+
+ - [`league/commonmark-extras`](https://github.com/thephpleague/commonmark-extras) - Bundles the extensions below into a single dependency for convenience
+   - [`league/commonmark-ext-autolink`](https://github.com/thephpleague/commonmark-ext-autolink) - Extension for league/commonmark which autolinks URLs, emails, and (optionally) @-mentions
+   - [`league/commonmark-ext-smartpunct`](https://github.com/thephpleague/commonmark-ext-smartpunct) - Intelligently converts ASCII quotes, dashes, and ellipses to their Unicode equivalents
+ - [`league/commonmark-ext-inlines-only`](https://github.com/thephpleague/commonmark-ext-inlines-only) - Renders inline text without paragraph tags or other block-level elements
+
+You can add them to your project or use them as examples to [develop your own custom features](https://commonmark.thephpleague.com/customization/overview/).
 
 ### Community Extensions
 
 Custom parsers/renderers can be bundled into extensions which extend CommonMark.  Here are some that you may find interesting:
 
- - [Markua](https://github.com/dshafik/markua) - Markdown parser for PHP which intends to support the full Markua spec.
  - [CommonMark Table Extension](https://github.com/webuni/commonmark-table-extension) - Adds the ability to create tables in CommonMark documents.
  - [CommonMark Attributes Extension](https://github.com/webuni/commonmark-attributes-extension) - Adds a syntax to define attributes on the various HTML elements.
  - [Alt Three Emoji](https://github.com/AltThree/Emoji) An emoji parser for CommonMark.
@@ -133,14 +98,14 @@ Check out the other cool things people are doing with `league/commonmark`: <http
 
 This project aims to fully support the entire [CommonMark spec]. Other flavors of Markdown may work but are not supported.  Any/all changes made to the [spec][CommonMark spec] or [JS reference implementation][commonmark.js] should eventually find their way back into this codebase.
 
-league/commonmark 0.15.5 and higher supports version 0.28 of the [CommonMark spec].
+league/commonmark 0.19.0 and higher supports version 0.29 of the [CommonMark spec].
 
 (This package is **not** part of CommonMark, but rather a compatible derivative.)
 
 ## Testing
 
 ``` bash
-$ ./vendor/bin/phpunit
+$ composer test
 ```
 
 This will also test league/commonmark against the latest supported spec.

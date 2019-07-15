@@ -23,7 +23,7 @@ class InlineParserEngine
 {
     protected $environment;
 
-    public function __construct(Environment $environment)
+    public function __construct(EnvironmentInterface $environment)
     {
         $this->environment = $environment;
     }
@@ -52,7 +52,7 @@ class InlineParserEngine
      *
      * @return bool Whether we successfully parsed a character at that position
      */
-    protected function parseCharacter($character, InlineParserContext $inlineParserContext)
+    protected function parseCharacter(string $character, InlineParserContext $inlineParserContext): bool
     {
         foreach ($this->environment->getInlineParsersForCharacter($character) as $parser) {
             if ($parser->parse($inlineParserContext)) {
@@ -83,7 +83,7 @@ class InlineParserEngine
      * @param Node                $container
      * @param InlineParserContext $inlineParserContext
      */
-    private function addPlainText($character, Node $container, InlineParserContext $inlineParserContext)
+    private function addPlainText(string $character, Node $container, InlineParserContext $inlineParserContext)
     {
         // We reach here if none of the parsers can handle the input
         // Attempt to match multiple non-special characters at once

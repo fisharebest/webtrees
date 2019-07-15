@@ -25,17 +25,7 @@ class ThematicBreak extends AbstractBlock
      *
      * @return bool
      */
-    public function canContain(AbstractBlock $block)
-    {
-        return false;
-    }
-
-    /**
-     * Returns true if block type can accept lines of text
-     *
-     * @return bool
-     */
-    public function acceptsLines()
+    public function canContain(AbstractBlock $block): bool
     {
         return false;
     }
@@ -45,12 +35,12 @@ class ThematicBreak extends AbstractBlock
      *
      * @return bool
      */
-    public function isCode()
+    public function isCode(): bool
     {
         return false;
     }
 
-    public function matchesNextLine(Cursor $cursor)
+    public function matchesNextLine(Cursor $cursor): bool
     {
         return false;
     }

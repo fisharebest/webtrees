@@ -15,14 +15,14 @@
 namespace League\CommonMark\Inline\Parser;
 
 use League\CommonMark\Delimiter\Delimiter;
-use League\CommonMark\Environment;
 use League\CommonMark\EnvironmentAwareInterface;
+use League\CommonMark\EnvironmentInterface;
 use League\CommonMark\Inline\Element\Text;
 use League\CommonMark\InlineParserContext;
 use League\CommonMark\Util\Configuration;
 use League\CommonMark\Util\RegexHelper;
 
-class EmphasisParser extends AbstractInlineParser implements EnvironmentAwareInterface
+class EmphasisParser implements InlineParserInterface, EnvironmentAwareInterface
 {
     protected $config;
 
@@ -37,7 +37,7 @@ class EmphasisParser extends AbstractInlineParser implements EnvironmentAwareInt
         $this->config->mergeConfig($newConfig);
     }
 
-    public function setEnvironment(Environment $environment)
+    public function setEnvironment(EnvironmentInterface $environment)
     {
         $this->config->mergeConfig($environment->getConfig());
     }
@@ -45,7 +45,7 @@ class EmphasisParser extends AbstractInlineParser implements EnvironmentAwareInt
     /**
      * @return string[]
      */
-    public function getCharacters()
+    public function getCharacters(): array
     {
         if (!$this->config->getConfig('enable_em') && !$this->config->getConfig('enable_strong')) {
             return [];
@@ -67,10 +67,10 @@ class EmphasisParser extends AbstractInlineParser implements EnvironmentAwareInt
      *
      * @return bool
      */
-    public function parse(InlineParserContext $inlineContext)
+    public function parse(InlineParserContext $inlineContext): bool
     {
         $character = $inlineContext->getCursor()->getCharacter();
-        if (!in_array($character, $this->getCharacters())) {
+        if (!\in_array($character, $this->getCharacters())) {
             return false;
         }
 
@@ -124,12 +124,12 @@ class EmphasisParser extends AbstractInlineParser implements EnvironmentAwareInt
      *
      * @return bool[]
      */
-    private function determineCanOpenOrClose($charBefore, $charAfter, $character)
+    private function determineCanOpenOrClose(string $charBefore, string $charAfter, string $character)
     {
-        $afterIsWhitespace = preg_match(RegexHelper::REGEX_UNICODE_WHITESPACE_CHAR, $charAfter);
-        $afterIsPunctuation = preg_match(RegexHelper::REGEX_PUNCTUATION, $charAfter);
-        $beforeIsWhitespace = preg_match(RegexHelper::REGEX_UNICODE_WHITESPACE_CHAR, $charBefore);
-        $beforeIsPunctuation = preg_match(RegexHelper::REGEX_PUNCTUATION, $charBefore);
+        $afterIsWhitespace = \preg_match(RegexHelper::REGEX_UNICODE_WHITESPACE_CHAR, $charAfter);
+        $afterIsPunctuation = \preg_match(RegexHelper::REGEX_PUNCTUATION, $charAfter);
+        $beforeIsWhitespace = \preg_match(RegexHelper::REGEX_UNICODE_WHITESPACE_CHAR, $charBefore);
+        $beforeIsPunctuation = \preg_match(RegexHelper::REGEX_PUNCTUATION, $charBefore);
 
         $leftFlanking = !$afterIsWhitespace && (!$afterIsPunctuation || $beforeIsWhitespace || $beforeIsPunctuation);
         $rightFlanking = !$beforeIsWhitespace && (!$beforeIsPunctuation || $afterIsWhitespace || $afterIsPunctuation);

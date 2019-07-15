@@ -22,7 +22,7 @@ use League\CommonMark\ContextInterface;
 use League\CommonMark\Cursor;
 use League\CommonMark\Util\RegexHelper;
 
-class ListParser extends AbstractBlockParser
+class ListParser implements BlockParserInterface
 {
     /**
      * @param ContextInterface $context
@@ -30,9 +30,14 @@ class ListParser extends AbstractBlockParser
      *
      * @return bool
      */
-    public function parse(ContextInterface $context, Cursor $cursor)
+    public function parse(ContextInterface $context, Cursor $cursor): bool
     {
         if ($cursor->isIndented() && !($context->getContainer() instanceof ListBlock)) {
+            return false;
+        }
+
+        $indent = $cursor->getIndent();
+        if ($indent >= 4) {
             return false;
         }
 
@@ -40,20 +45,21 @@ class ListParser extends AbstractBlockParser
         $tmpCursor->advanceToNextNonSpaceOrTab();
         $rest = $tmpCursor->getRemainder();
 
-        $data = new ListData();
-        $data->markerOffset = $cursor->getIndent();
-
-        if (preg_match('/^[*+-]/', $rest) === 1) {
+        if (\preg_match('/^[*+-]/', $rest) === 1) {
+            $data = new ListData();
+            $data->markerOffset = $indent;
             $data->type = ListBlock::TYPE_UNORDERED;
             $data->delimiter = null;
             $data->bulletChar = $rest[0];
             $markerLength = 1;
         } elseif (($matches = RegexHelper::matchAll('/^(\d{1,9})([.)])/', $rest)) && (!($context->getContainer() instanceof Paragraph) || $matches[1] === '1')) {
+            $data = new ListData();
+            $data->markerOffset = $indent;
             $data->type = ListBlock::TYPE_ORDERED;
             $data->start = (int) $matches[1];
             $data->delimiter = $matches[2];
             $data->bulletChar = null;
-            $markerLength = strlen($matches[0]);
+            $markerLength = \strlen($matches[0]);
         } else {
             return false;
         }
@@ -76,7 +82,7 @@ class ListParser extends AbstractBlockParser
         $data->padding = $this->calculateListMarkerPadding($cursor, $markerLength);
 
         // add the list if needed
-        if (!$container || !($container instanceof ListBlock) || !$data->equals($container->getListData())) {
+        if (!($container instanceof ListBlock) || !$data->equals($container->getListData())) {
             $context->addBlock(new ListBlock($data));
         }
 
@@ -92,7 +98,7 @@ class ListParser extends AbstractBlockParser
      *
      * @return int
      */
-    private function calculateListMarkerPadding(Cursor $cursor, $markerLength)
+    private function calculateListMarkerPadding(Cursor $cursor, int $markerLength): int
     {
         $start = $cursor->saveState();
         $spacesStartCol = $cursor->getColumn();

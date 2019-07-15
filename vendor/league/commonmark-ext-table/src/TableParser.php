@@ -1,30 +1,33 @@
 <?php
 
+declare(strict_types=1);
+
 /*
- * This is part of the webuni/commonmark-table-extension package.
+ * This is part of the league/commonmark-ext-table package.
  *
  * (c) Martin Hasoň <martin.hason@gmail.com>
  * (c) Webuni s.r.o. <info@webuni.cz>
+ * (c) Colin O'Dell <colinodell@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Webuni\CommonMark\TableExtension;
+namespace League\CommonMark\Ext\Table;
 
 use League\CommonMark\Block\Element\Paragraph;
-use League\CommonMark\Block\Parser\AbstractBlockParser;
+use League\CommonMark\Block\Parser\BlockParserInterface;
 use League\CommonMark\ContextInterface;
 use League\CommonMark\Cursor;
 use League\CommonMark\Util\RegexHelper;
 
-class TableParser extends AbstractBlockParser
+final class TableParser implements BlockParserInterface
 {
     const REGEXP_DEFINITION = '/(?: *(:?) *-+ *(:?) *)+(?=\||$)/';
     const REGEXP_CELLS = '/(?:`[^`]*`|\\\\\||\\\\|[^|`\\\\]+)+(?=\||$)/';
     const REGEXP_CAPTION = '/^\[(.+?)\](?:\[(.+)\])?\s*$/';
 
-    public function parse(ContextInterface $context, Cursor $cursor)
+    public function parse(ContextInterface $context, Cursor $cursor): bool
     {
         $container = $context->getContainer();
 
@@ -45,12 +48,12 @@ class TableParser extends AbstractBlockParser
         }
 
         $columns = $this->parseColumns($match);
-        $head = $this->parseRow(trim(array_pop($lines)), $columns, TableCell::TYPE_HEAD);
+        $head = $this->parseRow(trim((string) array_pop($lines)), $columns, TableCell::TYPE_HEAD);
         if (null === $head) {
             return false;
         }
 
-        $table = new Table(function (Cursor $cursor) use (&$table, $columns) {
+        $table = new Table(function (Cursor $cursor, Table $table) use ($columns): bool {
             $row = $this->parseRow($cursor->getLine(), $columns);
             if (null === $row) {
                 if (null !== $table->getCaption()) {
@@ -88,7 +91,7 @@ class TableParser extends AbstractBlockParser
         return true;
     }
 
-    private function parseColumns(array $match)
+    private function parseColumns(array $match): array
     {
         $columns = [];
         foreach ((array) $match[0] as $i => $column) {
@@ -106,12 +109,12 @@ class TableParser extends AbstractBlockParser
         return $columns;
     }
 
-    private function parseRow($line, array $columns, $type = TableCell::TYPE_BODY)
+    private function parseRow(string $line, array $columns, string $type = TableCell::TYPE_BODY): ?TableRow
     {
         $cells = RegexHelper::matchAll(self::REGEXP_CELLS, $line);
 
         if (null === $cells || $line === $cells[0]) {
-            return;
+            return null;
         }
 
         $i = 0;
@@ -131,12 +134,12 @@ class TableParser extends AbstractBlockParser
         return $row;
     }
 
-    private function parseCaption($line)
+    private function parseCaption(string $line): ?TableCaption
     {
         $caption = RegexHelper::matchAll(self::REGEXP_CAPTION, $line);
 
         if (null === $caption) {
-            return;
+            return null;
         }
 
         return new TableCaption($caption[1], $caption[2]);

@@ -18,7 +18,6 @@ use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\HtmlElement;
 use League\CommonMark\Inline\Element\AbstractInline;
 use League\CommonMark\Inline\Element\Emphasis;
-use League\CommonMark\Util\Xml;
 
 class EmphasisRenderer implements InlineRendererInterface
 {
@@ -31,13 +30,10 @@ class EmphasisRenderer implements InlineRendererInterface
     public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer)
     {
         if (!($inline instanceof Emphasis)) {
-            throw new \InvalidArgumentException('Incompatible inline type: ' . get_class($inline));
+            throw new \InvalidArgumentException('Incompatible inline type: ' . \get_class($inline));
         }
 
-        $attrs = [];
-        foreach ($inline->getData('attributes', []) as $key => $value) {
-            $attrs[$key] = Xml::escape($value);
-        }
+        $attrs = $inline->getData('attributes', []);
 
         return new HtmlElement('em', $attrs, $htmlRenderer->renderInlines($inline->children()));
     }

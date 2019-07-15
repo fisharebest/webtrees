@@ -17,60 +17,32 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\CommonMark;
 
-use League\CommonMark\Block\Parser\BlockParserInterface;
-use League\CommonMark\Block\Renderer\BlockRendererInterface;
-use League\CommonMark\Extension\Extension;
-use Webuni\CommonMark\TableExtension\Table;
-use Webuni\CommonMark\TableExtension\TableCell;
-use Webuni\CommonMark\TableExtension\TableCellRenderer;
-use Webuni\CommonMark\TableExtension\TableRenderer;
-use Webuni\CommonMark\TableExtension\TableRow;
-use Webuni\CommonMark\TableExtension\TableRowRenderer;
-use Webuni\CommonMark\TableExtension\TableRows;
-use Webuni\CommonMark\TableExtension\TableRowsRenderer;
+use League\CommonMark\ConfigurableEnvironmentInterface;
+use League\CommonMark\Ext\Table\Table;
+use League\CommonMark\Ext\Table\TableCell;
+use League\CommonMark\Ext\Table\TableCellRenderer;
+use League\CommonMark\Ext\Table\TableRenderer;
+use League\CommonMark\Ext\Table\TableRow;
+use League\CommonMark\Ext\Table\TableRowRenderer;
+use League\CommonMark\Ext\Table\TableSection;
+use League\CommonMark\Ext\Table\TableSectionRenderer;
+use League\CommonMark\Extension\ExtensionInterface;
 
 /**
  * Convert webtrees 1.x census-assistant markup into tables.
  * Note that webtrees 2.0 generates markdown tables directly.
  *
- * Based on the table parser from webuni/commonmark-table-extension.
+ * Based on the table parser from league/commonmark-ext-table.
  */
-class CensusTableExtension extends Extension
+class CensusTableExtension implements ExtensionInterface
 {
-    /**
-     * Returns a list of block parsers to add to the existing list
-     *
-     * @return BlockParserInterface[]
-     */
-    public function getBlockParsers(): array
+    public function register(ConfigurableEnvironmentInterface $environment): void
     {
-        return [
-            new CensusTableParser(),
-        ];
-    }
-
-    /**
-     * Returns a list of block renderers to add to the existing list
-     *
-     * The list keys are the block class names which the corresponding value (renderer) will handle.
-     *
-     * @return BlockRendererInterface[]
-     */
-    public function getBlockRenderers(): array
-    {
-        return [
-            Table::class     => new TableRenderer(),
-            TableRows::class => new TableRowsRenderer(),
-            TableRow::class  => new TableRowRenderer(),
-            TableCell::class => new TableCellRenderer(),
-        ];
-    }
-
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return 'censustabletable';
+        $environment
+            ->addBlockParser(new CensusTableParser())
+            ->addBlockRenderer(Table::class, new TableRenderer())
+            ->addBlockRenderer(TableSection::class, new TableSectionRenderer())
+            ->addBlockRenderer(TableRow::class, new TableRowRenderer())
+            ->addBlockRenderer(TableCell::class, new TableCellRenderer());
     }
 }

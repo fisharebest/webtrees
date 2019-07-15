@@ -58,9 +58,9 @@ final class UrlEncoder
      *
      * @return string
      */
-    public static function unescapeAndEncode($uri)
+    public static function unescapeAndEncode(string $uri): string
     {
-        $decoded = html_entity_decode($uri);
+        $decoded = \html_entity_decode($uri);
 
         return self::encode(self::decode($decoded));
     }
@@ -72,13 +72,13 @@ final class UrlEncoder
      *
      * @return string
      */
-    private static function decode($uri)
+    private static function decode(string $uri): string
     {
-        return preg_replace_callback('/%([0-9a-f]{2})/iu', function ($matches) {
-            $char = chr(hexdec($matches[1]));
+        return \preg_replace_callback('/%([0-9a-f]{2})/iu', function ($matches) {
+            $char = \chr(\hexdec($matches[1]));
 
-            if (in_array($char, self::$dontDecode, true)) {
-                return strtoupper($matches[0]);
+            if (\in_array($char, self::$dontDecode, true)) {
+                return \strtoupper($matches[0]);
             }
 
             return $char;
@@ -92,21 +92,21 @@ final class UrlEncoder
      *
      * @return string
      */
-    private static function encode($uri)
+    private static function encode(string $uri): string
     {
-        return preg_replace_callback('/(%[0-9a-f]{2})|./isu', function ($matches) {
+        return \preg_replace_callback('/(%[0-9a-f]{2})|./isu', function ($matches) {
             // Keep already-encoded characters as-is
-            if (count($matches) > 1) {
+            if (\count($matches) > 1) {
                 return $matches[0];
             }
 
             // Keep excluded characters as-is
-            if (in_array($matches[0], self::$dontEncode)) {
+            if (\in_array($matches[0], self::$dontEncode)) {
                 return $matches[0];
             }
 
             // Otherwise, encode the character
-            return rawurlencode($matches[0]);
+            return \rawurlencode($matches[0]);
         }, $uri);
     }
 }

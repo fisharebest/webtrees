@@ -18,12 +18,16 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\CommonMark;
 
 use League\CommonMark\Block\Element\Paragraph;
-use League\CommonMark\Block\Parser\AbstractBlockParser;
+use League\CommonMark\Block\Parser\BlockParserInterface;
 use League\CommonMark\ContextInterface;
 use League\CommonMark\Cursor;
-use Webuni\CommonMark\TableExtension\Table;
-use Webuni\CommonMark\TableExtension\TableCell;
-use Webuni\CommonMark\TableExtension\TableRow;
+use League\CommonMark\Ext\Table\Table;
+use League\CommonMark\Ext\Table\TableCell;
+use League\CommonMark\Ext\Table\TableRow;
+use function array_shift;
+use function explode;
+use function strpos;
+use function substr;
 
 /**
  * Convert webtrees 1.x census-assistant markup into tables.
@@ -31,16 +35,21 @@ use Webuni\CommonMark\TableExtension\TableRow;
  *
  * Based on the table parser from webuni/commonmark-table-extension.
  */
-class CensusTableParser extends AbstractBlockParser
+class CensusTableParser implements BlockParserInterface
 {
-    private const REGEX_CENSUS_TABLE_HEADER = '/^\.b\.[^.|]+(?:\|\.b\.[^.|]+)*$/';
+    // Keywords used to create the webtrees 1.x census-assistant notes.
+    private const CA_PREFIX = '.start_formatted_area.';
+    private const CA_SUFFIX = '.end_formatted_area.';
+    private const TH_PREFIX = '.b.';
 
     /**
-     * Parse a paragraph of text with the following stucture:
+     * Parse a paragraph of text with the following structure:
      *
+     * .start_formatted_area.
      * .b.HEADING1|.b.HEADING2|.b.HEADING3
      * COL1|COL2|COL3
      * COL1|COL2|COL3
+     * .end_formatted_area.
      *
      * @param ContextInterface $context
      * @param Cursor           $cursor
@@ -51,32 +60,38 @@ class CensusTableParser extends AbstractBlockParser
     {
         $container = $context->getContainer();
 
-        // Replace paragraphs with tables
         if (!$container instanceof Paragraph) {
             return false;
         }
 
         $lines = $container->getStrings();
+        $first = array_shift($lines);
 
-        $first_line = array_pop($lines);
-
-        if (!preg_match(self::REGEX_CENSUS_TABLE_HEADER, $first_line)) {
+        if ($first !== self::CA_PREFIX) {
             return false;
         }
 
-        $head = $this->parseRow($first_line, TableCell::TYPE_HEAD);
+        if ($cursor->getLine() !== self::CA_SUFFIX) {
+            return false;
+        }
 
-        $table = new Table(function (Cursor $cursor) use (&$table): bool {
-            $row = $this->parseRow($cursor->getLine(), TableCell::TYPE_BODY);
-            if ($row === null) {
-                return false;
-            }
-            $table->getBody()->appendChild($row);
-
-            return true;
+        // We don't need to parse/markup any of the table's contents.
+        $table = new Table(static function (): bool {
+            return false;
         });
 
-        $table->getHead()->appendChild($head);
+        // First line is the table header.
+        $line = array_shift($lines);
+        $row  = $this->parseRow($line, TableCell::TYPE_HEAD);
+        $table->getHead()->appendChild($row);
+
+        // Subsequent lines are the table body.
+        while (!empty($lines)) {
+            $line = array_shift($lines);
+            $row = $this->parseRow($line, TableCell::TYPE_BODY);
+            $table->getHead()->appendChild($row);
+        }
+
         $context->replaceContainerBlock($table);
 
         return true;
@@ -86,20 +101,19 @@ class CensusTableParser extends AbstractBlockParser
      * @param string $line
      * @param string $type
      *
-     * @return TableRow|null
+     * @return TableRow
      */
-    private function parseRow($line, $type): ?TableRow
+    private function parseRow(string $line, string $type): TableRow
     {
-        if (strpos($line, '|') === false) {
-            return null;
-        }
+        $cells = explode('|', $line);
+        $row   = new TableRow();
 
-        $row = new TableRow();
-        foreach (explode('|', $line) as $cell) {
-            // Strip leading ".b." from <th> cells
-            if ($type === TableCell::TYPE_HEAD && substr_compare($cell, '.b.', 0)) {
-                $cell = substr($cell, 3);
+        foreach ($cells as $cell) {
+            if (strpos($cell, self::TH_PREFIX) === 0) {
+                $cell = substr($cell, strlen(self::TH_PREFIX));
+                $type = TableCell::TYPE_HEAD;
             }
+
             $row->appendChild(new TableCell($cell, $type, null));
         }
 

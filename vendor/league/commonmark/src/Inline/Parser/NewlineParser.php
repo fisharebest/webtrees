@@ -18,12 +18,12 @@ use League\CommonMark\Inline\Element\Newline;
 use League\CommonMark\Inline\Element\Text;
 use League\CommonMark\InlineParserContext;
 
-class NewlineParser extends AbstractInlineParser
+class NewlineParser implements InlineParserInterface
 {
     /**
      * @return string[]
      */
-    public function getCharacters()
+    public function getCharacters(): array
     {
         return ["\n"];
     }
@@ -33,7 +33,7 @@ class NewlineParser extends AbstractInlineParser
      *
      * @return bool
      */
-    public function parse(InlineParserContext $inlineContext)
+    public function parse(InlineParserContext $inlineContext): bool
     {
         $inlineContext->getCursor()->advance();
 
@@ -41,8 +41,8 @@ class NewlineParser extends AbstractInlineParser
         $spaces = 0;
         $lastInline = $inlineContext->getContainer()->lastChild();
         if ($lastInline && $lastInline instanceof Text) {
-            $trimmed = rtrim($lastInline->getContent(), ' ');
-            $spaces = strlen($lastInline->getContent()) - strlen($trimmed);
+            $trimmed = \rtrim($lastInline->getContent(), ' ');
+            $spaces = \strlen($lastInline->getContent()) - \strlen($trimmed);
             if ($spaces) {
                 $lastInline->setContent($trimmed);
             }

@@ -29,21 +29,18 @@ class FencedCodeRenderer implements BlockRendererInterface
      *
      * @return HtmlElement
      */
-    public function render(AbstractBlock $block, ElementRendererInterface $htmlRenderer, $inTightList = false)
+    public function render(AbstractBlock $block, ElementRendererInterface $htmlRenderer, bool $inTightList = false)
     {
         if (!($block instanceof FencedCode)) {
-            throw new \InvalidArgumentException('Incompatible block type: ' . get_class($block));
+            throw new \InvalidArgumentException('Incompatible block type: ' . \get_class($block));
         }
 
-        $attrs = [];
-        foreach ($block->getData('attributes', []) as $key => $value) {
-            $attrs[$key] = Xml::escape($value);
-        }
+        $attrs = $block->getData('attributes', []);
 
         $infoWords = $block->getInfoWords();
-        if (count($infoWords) !== 0 && strlen($infoWords[0]) !== 0) {
+        if (count($infoWords) !== 0 && \strlen($infoWords[0]) !== 0) {
             $attrs['class'] = isset($attrs['class']) ? $attrs['class'] . ' ' : '';
-            $attrs['class'] .= 'language-' . Xml::escape($infoWords[0]);
+            $attrs['class'] .= 'language-' . $infoWords[0];
         }
 
         return new HtmlElement(

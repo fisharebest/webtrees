@@ -21,13 +21,13 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Tree;
 use League\CommonMark\Inline\Element\Link;
-use League\CommonMark\Inline\Parser\AbstractInlineParser;
+use League\CommonMark\Inline\Parser\InlineParserInterface;
 use League\CommonMark\InlineParserContext;
 
 /**
  * Convert XREFs within markdown text to links
  */
-class XrefParser extends AbstractInlineParser
+class XrefParser implements InlineParserInterface
 {
     /** @var Tree - match XREFs in this tree */
     private $tree;

@@ -18,7 +18,6 @@ use League\CommonMark\Block\Element\AbstractBlock;
 use League\CommonMark\Block\Element\Paragraph;
 use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\HtmlElement;
-use League\CommonMark\Util\Xml;
 
 class ParagraphRenderer implements BlockRendererInterface
 {
@@ -29,20 +28,17 @@ class ParagraphRenderer implements BlockRendererInterface
      *
      * @return HtmlElement|string
      */
-    public function render(AbstractBlock $block, ElementRendererInterface $htmlRenderer, $inTightList = false)
+    public function render(AbstractBlock $block, ElementRendererInterface $htmlRenderer, bool $inTightList = false)
     {
         if (!($block instanceof Paragraph)) {
-            throw new \InvalidArgumentException('Incompatible block type: ' . get_class($block));
+            throw new \InvalidArgumentException('Incompatible block type: ' . \get_class($block));
         }
 
         if ($inTightList) {
             return $htmlRenderer->renderInlines($block->children());
         }
 
-        $attrs = [];
-        foreach ($block->getData('attributes', []) as $key => $value) {
-            $attrs[$key] = Xml::escape($value);
-        }
+        $attrs = $block->getData('attributes', []);
 
         return new HtmlElement('p', $attrs, $htmlRenderer->renderInlines($block->children()));
     }
