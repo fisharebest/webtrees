@@ -21,7 +21,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
-use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class LoggedInUsersModule

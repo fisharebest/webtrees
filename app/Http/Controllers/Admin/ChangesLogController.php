@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\Expression;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
@@ -242,7 +243,7 @@ class ChangesLogController extends AbstractAdminController
         $query = DB::table('change')
             ->leftJoin('user', 'user.user_id', '=', 'change.user_id')
             ->join('gedcom', 'gedcom.gedcom_id', '=', 'change.gedcom_id')
-            ->select(['change.*', DB::raw("COALESCE(user_name, '<none>') AS user_name"), 'gedcom_name']);
+            ->select(['change.*', new Expression("COALESCE(user_name, '<none>') AS user_name"), 'gedcom_name']);
 
         if ($search !== '') {
             $query->where(static function (Builder $query) use ($search): void {

@@ -22,7 +22,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
-use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class LoginBlockModule

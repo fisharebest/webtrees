@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Service\CenturyService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use stdClass;
 
@@ -61,8 +62,8 @@ class ChartAge
 
         return DB::table('individuals')
             ->select([
-                DB::raw('ROUND(AVG(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) / 365.25, 1) AS age'),
-                DB::raw('ROUND((' . $prefix . 'death.d_year + 49) / 100) AS century'),
+                new Expression('ROUND(AVG(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) / 365.25, 1) AS age'),
+                new Expression('ROUND((' . $prefix . 'death.d_year + 49) / 100) AS century'),
                 'i_sex AS sex'
             ])
             ->join('dates AS birth', static function (JoinClause $join): void {

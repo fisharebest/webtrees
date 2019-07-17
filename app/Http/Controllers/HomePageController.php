@@ -39,6 +39,7 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -285,7 +286,7 @@ class HomePageController extends AbstractBaseController
                 ['gedcom_id', 'location', 'block_order', 'module_name'],
                 static function (Builder $query) use ($tree): void {
                     $query
-                        ->select([DB::raw($tree->id()), 'location', 'block_order', 'module_name'])
+                        ->select([new Expression($tree->id()), 'location', 'block_order', 'module_name'])
                         ->from('block')
                         ->where('gedcom_id', '=', -1);
                 }
@@ -455,7 +456,7 @@ class HomePageController extends AbstractBaseController
                 ['user_id', 'location', 'block_order', 'module_name'],
                 static function (Builder $query) use ($user): void {
                     $query
-                        ->select([DB::raw($user->id()), 'location', 'block_order', 'module_name'])
+                        ->select([new Expression($user->id()), 'location', 'block_order', 'module_name'])
                         ->from('block')
                         ->where('user_id', '=', -1);
                 }

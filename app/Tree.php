@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -255,7 +256,7 @@ class Tree
             ['gedcom_id', 'setting_name', 'setting_value'],
             static function (Builder $query) use ($tree_id): void {
                 $query
-                    ->select([DB::raw($tree_id), 'setting_name', 'setting_value'])
+                    ->select([new Expression($tree_id), 'setting_name', 'setting_value'])
                     ->from('gedcom_setting')
                     ->where('gedcom_id', '=', -1);
             }
@@ -265,7 +266,7 @@ class Tree
             ['gedcom_id', 'tag_type', 'resn'],
             static function (Builder $query) use ($tree_id): void {
                 $query
-                    ->select([DB::raw($tree_id), 'tag_type', 'resn'])
+                    ->select([new Expression($tree_id), 'tag_type', 'resn'])
                     ->from('default_resn')
                     ->where('gedcom_id', '=', -1);
             }
@@ -598,24 +599,24 @@ class Tree
 
         $union_families = DB::table('families')
             ->where('f_file', '=', $this->id)
-            ->select(['f_gedcom AS gedcom', 'f_id AS xref', DB::raw('LENGTH(f_id) AS len'), DB::raw('2 AS n')]);
+            ->select(['f_gedcom AS gedcom', 'f_id AS xref', new Expression('LENGTH(f_id) AS len'), new Expression('2 AS n')]);
 
         $union_sources = DB::table('sources')
             ->where('s_file', '=', $this->id)
-            ->select(['s_gedcom AS gedcom', 's_id AS xref', DB::raw('LENGTH(s_id) AS len'), DB::raw('3 AS n')]);
+            ->select(['s_gedcom AS gedcom', 's_id AS xref', new Expression('LENGTH(s_id) AS len'), new Expression('3 AS n')]);
 
         $union_other = DB::table('other')
             ->where('o_file', '=', $this->id)
             ->whereNotIn('o_type', ['HEAD', 'TRLR'])
-            ->select(['o_gedcom AS gedcom', 'o_id AS xref', DB::raw('LENGTH(o_id) AS len'), DB::raw('4 AS n')]);
+            ->select(['o_gedcom AS gedcom', 'o_id AS xref', new Expression('LENGTH(o_id) AS len'), new Expression('4 AS n')]);
 
         $union_media = DB::table('media')
             ->where('m_file', '=', $this->id)
-            ->select(['m_gedcom AS gedcom', 'm_id AS xref', DB::raw('LENGTH(m_id) AS len'), DB::raw('5 AS n')]);
+            ->select(['m_gedcom AS gedcom', 'm_id AS xref', new Expression('LENGTH(m_id) AS len'), new Expression('5 AS n')]);
 
         DB::table('individuals')
             ->where('i_file', '=', $this->id)
-            ->select(['i_gedcom AS gedcom', 'i_id AS xref', DB::raw('LENGTH(i_id) AS len'), DB::raw('1 AS n')])
+            ->select(['i_gedcom AS gedcom', 'i_id AS xref', new Expression('LENGTH(i_id) AS len'), new Expression('1 AS n')])
             ->union($union_families)
             ->union($union_sources)
             ->union($union_other)

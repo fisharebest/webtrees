@@ -33,6 +33,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use function preg_match_all;
@@ -440,7 +441,7 @@ class CalendarService
                 ->orWhere(static function (Builder $query): void {
                     $query
                         ->where('d_mon', '=', 6)
-                        ->where(DB::raw('(7 * d_year + 1 % 19)'), '>=', 7);
+                        ->where(new Expression('(7 * d_year + 1 % 19)'), '>=', 7);
                 });
         });
     }

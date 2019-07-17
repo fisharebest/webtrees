@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Statistics\Google\ChartNoChildrenFamilies;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use function in_array;
 use stdClass;
@@ -152,7 +153,7 @@ class FamilyRepository
             })
             ->where('f_file', '=', $this->tree->id())
             ->groupBy(['f_id', 'f_file'])
-            ->orderBy(DB::raw('COUNT(*)'), 'DESC')
+            ->orderBy(new Expression('COUNT(*)'), 'DESC')
             ->select('families.*')
             ->limit($total)
             ->get()
@@ -317,7 +318,7 @@ class FamilyRepository
             ->where('link1.l_type', '=', 'CHIL')
             ->where('link1.l_file', '=', $this->tree->id())
             ->distinct()
-            ->select(['link1.l_from AS family', 'link1.l_to AS ch1', 'link2.l_to AS ch2', DB::raw($prefix . 'child2.d_julianday2 - ' . $prefix . 'child1.d_julianday1 AS age')])
+            ->select(['link1.l_from AS family', 'link1.l_to AS ch1', 'link2.l_to AS ch2', new Expression($prefix . 'child2.d_julianday2 - ' . $prefix . 'child1.d_julianday1 AS age')])
             ->orderBy('age', 'DESC')
             ->take($total)
             ->get()
@@ -545,7 +546,7 @@ class FamilyRepository
         $query = DB::table('families')
             ->where('f_file', '=', $this->tree->id())
             ->groupBy('f_numchil')
-            ->select(['f_numchil', DB::raw('COUNT(*) AS total')]);
+            ->select(['f_numchil', new Expression('COUNT(*) AS total')]);
 
         if ($year1 >= 0 && $year2 >= 0) {
             $query
@@ -696,7 +697,7 @@ class FamilyRepository
             })
             ->where('l_file', '=', $this->tree->id())
             ->where('l_type', '=', 'CHIL')
-            ->select(['l_from AS family_id', DB::raw('MIN(d_julianday1) AS min_birth_jd')])
+            ->select(['l_from AS family_id', new Expression('MIN(d_julianday1) AS min_birth_jd')])
             ->groupBy('family_id');
 
         $query = DB::table('link')
@@ -712,7 +713,7 @@ class FamilyRepository
             })
             ->where('link.l_file', '=', $this->tree->id())
             ->where('link.l_type', '=', 'CHIL')
-            ->select(['d_month', DB::raw('COUNT(*) AS total')])
+            ->select(['d_month', new Expression('COUNT(*) AS total')])
             ->groupBy(['d_month']);
 
         if ($year1 >= 0 && $year2 >= 0) {
@@ -738,7 +739,7 @@ class FamilyRepository
                         ->on('i_file', '=', 'l_file')
                         ->on('i_id', '=', 'l_to');
                 })
-                ->select(['d_month', 'i_sex', DB::raw('COUNT(*) AS total')])
+                ->select(['d_month', 'i_sex', new Expression('COUNT(*) AS total')])
                 ->groupBy(['d_month', 'i_sex']);
     }
 
@@ -821,7 +822,7 @@ class FamilyRepository
             ->where('childfamily.l_file', '=', $this->tree->id())
             ->where('parentfamily.l_type', '=', $sex_field)
             ->where('childbirth.d_julianday2', '>', 'birth.d_julianday1')
-            ->select(['parentfamily.l_to AS id', DB::raw($prefix . 'childbirth.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS age')])
+            ->select(['parentfamily.l_to AS id', new Expression($prefix . 'childbirth.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS age')])
             ->take(1)
             ->orderBy('age', $age_dir)
             ->get()
@@ -1020,7 +1021,7 @@ class FamilyRepository
             })
             ->whereColumn('married.d_julianday1', '<', 'husbdeath.d_julianday2')
             ->groupBy('f_id')
-            ->select(['f_id AS family', DB::raw('MIN(' . $prefix . 'husbdeath.d_julianday2 - ' . $prefix . 'married.d_julianday1) AS age')])
+            ->select(['f_id AS family', new Expression('MIN(' . $prefix . 'husbdeath.d_julianday2 - ' . $prefix . 'married.d_julianday1) AS age')])
             ->get()
             ->all();
 
@@ -1041,7 +1042,7 @@ class FamilyRepository
             })
             ->whereColumn('married.d_julianday1', '<', 'wifedeath.d_julianday2')
             ->groupBy('f_id')
-            ->select(['f_id AS family', DB::raw('MIN(' . $prefix . 'wifedeath.d_julianday2 - ' . $prefix . 'married.d_julianday1) AS age')])
+            ->select(['f_id AS family', new Expression('MIN(' . $prefix . 'wifedeath.d_julianday2 - ' . $prefix . 'married.d_julianday1) AS age')])
             ->get()
             ->all();
 
@@ -1062,7 +1063,7 @@ class FamilyRepository
             })
             ->whereColumn('married.d_julianday1', '<', 'divorced.d_julianday2')
             ->groupBy('f_id')
-            ->select(['f_id AS family', DB::raw('MIN(' . $prefix . 'divorced.d_julianday2 - ' . $prefix . 'married.d_julianday1) AS age')])
+            ->select(['f_id AS family', new Expression('MIN(' . $prefix . 'divorced.d_julianday2 - ' . $prefix . 'married.d_julianday1) AS age')])
             ->get()
             ->all();
 
@@ -1273,11 +1274,11 @@ class FamilyRepository
         if ($age_dir === 'DESC') {
             $query
                 ->whereColumn('wife.d_julianday1', '>=', 'husb.d_julianday1')
-                ->orderBy(DB::raw('MIN(' . $prefix . 'wife.d_julianday1) - MIN(' . $prefix . 'husb.d_julianday1)'), 'DESC');
+                ->orderBy(new Expression('MIN(' . $prefix . 'wife.d_julianday1) - MIN(' . $prefix . 'husb.d_julianday1)'), 'DESC');
         } else {
             $query
                 ->whereColumn('husb.d_julianday1', '>=', 'wife.d_julianday1')
-                ->orderBy(DB::raw('MIN(' . $prefix . 'husb.d_julianday1) - MIN(' . $prefix . 'wife.d_julianday1)'), 'DESC');
+                ->orderBy(new Expression('MIN(' . $prefix . 'husb.d_julianday1) - MIN(' . $prefix . 'wife.d_julianday1)'), 'DESC');
         }
 
         return $query
@@ -1400,7 +1401,7 @@ class FamilyRepository
             ->where('married.d_fact', '=', 'MARR')
             ->whereIn('married.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
             ->whereColumn('married.d_julianday1', '>', 'birth.d_julianday1')
-            ->select(['f_id', 'birth.d_gid', DB::raw($prefix . 'married.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS age')]);
+            ->select(['f_id', 'birth.d_gid', new Expression($prefix . 'married.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS age')]);
 
         if ($year1 >= 0 && $year2 >= 0) {
             $query->whereBetween('married.d_year', [$year1, $year2]);
@@ -1473,8 +1474,8 @@ class FamilyRepository
             })
             ->where('f_file', '=', $this->tree->id())
             ->where('married.d_julianday2', '>', 'birth.d_julianday1')
-            ->orderBy(DB::raw($prefix . 'married.d_julianday2 - ' . $prefix . 'birth.d_julianday1'), $age_dir)
-            ->select(['f_id AS famid', $sex_field, DB::raw($prefix . 'married.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS age'), 'i_id'])
+            ->orderBy(new Expression($prefix . 'married.d_julianday2 - ' . $prefix . 'birth.d_julianday1'), $age_dir)
+            ->select(['f_id AS famid', $sex_field, new Expression($prefix . 'married.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS age'), 'i_id'])
             ->take(1)
             ->get()
             ->first();
@@ -1656,7 +1657,7 @@ class FamilyRepository
         $query = DB::table('dates')
             ->where('d_file', '=', $this->tree->id())
             ->where('d_fact', '=', 'MARR')
-            ->select(['d_month', DB::raw('COUNT(*) AS total')])
+            ->select(['d_month', new Expression('COUNT(*) AS total')])
             ->groupBy('d_month');
 
         if ($year1 >= 0 && $year2 >= 0) {

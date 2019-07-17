@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Intervention\Image\ImageManager;
 use Psr\Http\Message\ResponseInterface;
@@ -238,7 +239,7 @@ class ImportThumbnailsController extends AbstractAdminController
                     ->on('media_file.m_id', '=', 'media.m_id');
             })
             ->join('gedcom_setting', 'media.m_file', '=', 'gedcom_setting.gedcom_id')
-            ->where(DB::raw('setting_value || multimedia_file_refn'), '=', $file)
+            ->where(new Expression('setting_value || multimedia_file_refn'), '=', $file)
             ->select(['media.*'])
             ->distinct()
             ->get()

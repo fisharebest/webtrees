@@ -33,7 +33,6 @@ use League\CommonMark\Inline\Element\Text;
 use League\CommonMark\Inline\Parser\AutolinkParser;
 use League\CommonMark\Inline\Renderer\LinkRenderer;
 use League\CommonMark\Inline\Renderer\TextRenderer;
-use Throwable;
 
 /**
  * Filter input and escape output.

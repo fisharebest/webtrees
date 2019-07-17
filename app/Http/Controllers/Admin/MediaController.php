@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -93,7 +94,7 @@ class MediaController extends AbstractAdminController
     {
         $base_folders = DB::table('gedcom_setting')
             ->where('setting_name', '=', 'MEDIA_DIRECTORY')
-            ->select(DB::raw("setting_value || 'dummy.jpeg' AS path"));
+            ->select(new Expression("setting_value || 'dummy.jpeg' AS path"));
 
         return DB::table('media_file')
             ->join('gedcom_setting', 'gedcom_id', '=', 'm_file')
@@ -101,7 +102,7 @@ class MediaController extends AbstractAdminController
             ->where('multimedia_file_refn', 'LIKE', '%/%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
-            ->select(DB::raw('setting_value || multimedia_file_refn AS path'))
+            ->select(new Expression('setting_value || multimedia_file_refn AS path'))
             ->union($base_folders)
             ->pluck('path')
             ->map(static function (string $path): string {
@@ -209,7 +210,7 @@ class MediaController extends AbstractAdminController
 
         $sort_columns = [
             0 => 'multimedia_file_refn',
-            2 => DB::raw('descriptive_title || multimedia_file_refn'),
+            2 => new Expression('descriptive_title || multimedia_file_refn'),
         ];
 
         switch ($files) {
@@ -226,10 +227,10 @@ class MediaController extends AbstractAdminController
                     ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
                     ->select(['media.*', 'multimedia_file_refn', 'descriptive_title']);
 
-                $query->where(DB::raw('setting_value || multimedia_file_refn'), 'LIKE', $media_folder . '%');
+                $query->where(new Expression('setting_value || multimedia_file_refn'), 'LIKE', $media_folder . '%');
 
                 if ($subfolders === 'exclude') {
-                    $query->where(DB::raw('setting_value || multimedia_file_refn'), 'NOT LIKE', $media_folder . '%/%');
+                    $query->where(new Expression('setting_value || multimedia_file_refn'), 'NOT LIKE', $media_folder . '%/%');
                 }
 
                 return $datatables_service->handle($request, $query, $search_columns, $sort_columns, function (stdClass $row): array {
@@ -429,12 +430,12 @@ class MediaController extends AbstractAdminController
             ->where('multimedia_file_refn', 'LIKE', '%/%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
-            ->where(DB::raw('setting_value || multimedia_file_refn'), 'LIKE', $media_folder . '%')
-            ->select(DB::raw('setting_value || multimedia_file_refn AS path'))
-            ->orderBy(DB::raw('setting_value || multimedia_file_refn'));
+            ->where(new Expression('setting_value || multimedia_file_refn'), 'LIKE', $media_folder . '%')
+            ->select(new Expression('setting_value || multimedia_file_refn AS path'))
+            ->orderBy(new Expression('setting_value || multimedia_file_refn'));
 
         if ($subfolders === 'exclude') {
-            $query->where(DB::raw('setting_value || multimedia_file_refn'), 'NOT LIKE', $media_folder . '%/%');
+            $query->where(new Expression('setting_value || multimedia_file_refn'), 'NOT LIKE', $media_folder . '%/%');
         }
 
         return $query->pluck('path')->all();

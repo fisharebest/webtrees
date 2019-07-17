@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -102,7 +103,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
                 ->where('n_type', '<>', '_MARNM')
                 ->whereNotIn('n_surn', ['@N.N.', ''])
                 ->groupBy('n_surn')
-                ->orderByDesc(DB::raw('COUNT(n_surn)'))
+                ->orderByDesc(new Expression('COUNT(n_surn)'))
                 ->take($number_of_surnames)
                 ->pluck('n_surn');
 
@@ -111,9 +112,9 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
             foreach ($top_surnames as $top_surname) {
                 $variants = DB::table('name')
                     ->where('n_file', '=', $tree->id())
-                    ->where(DB::raw('n_surn /*! COLLATE utf8_bin */'), '=', $top_surname)
+                    ->where(new Expression('n_surn /*! COLLATE utf8_bin */'), '=', $top_surname)
                     ->groupBy('surname')
-                    ->select([DB::raw('n_surname /*! COLLATE utf8_bin */ AS surname'), DB::raw('count(*) AS total')])
+                    ->select([new Expression('n_surname /*! COLLATE utf8_bin */ AS surname'), new Expression('count(*) AS total')])
                     ->pluck('total', 'surname')
                     ->all();
 

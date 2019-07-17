@@ -19,9 +19,7 @@ namespace Fisharebest\Webtrees\CommonMark;
 
 use Fisharebest\Webtrees\Tree;
 use League\CommonMark\ConfigurableEnvironmentInterface;
-use League\CommonMark\Extension\Extension;
 use League\CommonMark\Extension\ExtensionInterface;
-use League\CommonMark\Inline\Parser\InlineParserInterface;
 
 /**
  * Convert XREFs within markdown text to links

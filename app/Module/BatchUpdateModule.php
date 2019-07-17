@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Expression;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
@@ -180,7 +181,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
                 case 'INDI':
                     $rows = DB::table('individuals')
                         ->where('i_file', '=', $tree->id())
-                        ->select(['i_id AS xref', DB::raw("'INDI' AS type"), 'i_gedcom AS gedcom'])
+                        ->select(['i_id AS xref', new Expression("'INDI' AS type"), 'i_gedcom AS gedcom'])
                         ->get();
 
                     $tmp = array_merge($tmp, $rows->all());
@@ -189,7 +190,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
                 case 'FAM':
                     $rows = DB::table('families')
                         ->where('f_file', '=', $tree->id())
-                        ->select(['f_id AS xref', DB::raw("'FAM' AS type"), 'f_gedcom AS gedcom'])
+                        ->select(['f_id AS xref', new Expression("'FAM' AS type"), 'f_gedcom AS gedcom'])
                         ->get();
 
                     $tmp = array_merge($tmp, $rows->all());
@@ -198,7 +199,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
                 case 'SOUR':
                     $rows = DB::table('sources')
                         ->where('s_file', '=', $tree->id())
-                        ->select(['s_id AS xref', DB::raw("'SOUR' AS type"), 's_gedcom AS gedcom'])
+                        ->select(['s_id AS xref', new Expression("'SOUR' AS type"), 's_gedcom AS gedcom'])
                         ->get();
 
                     $tmp = array_merge($tmp, $rows->all());
@@ -207,7 +208,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
                 case 'OBJE':
                     $rows = DB::table('media')
                         ->where('m_file', '=', $tree->id())
-                        ->select(['m_id AS xref', DB::raw("'OBJE' AS type"), 'm_gedcom AS gedcom'])
+                        ->select(['m_id AS xref', new Expression("'OBJE' AS type"), 'm_gedcom AS gedcom'])
                         ->get();
 
                     $tmp = array_merge($tmp, $rows->all());

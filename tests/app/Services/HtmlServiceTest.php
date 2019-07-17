@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Webtrees\MockGlobalFunctions;
 use Fisharebest\Webtrees\TestCase;
 
 /**

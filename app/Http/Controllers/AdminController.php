@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Expression;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
@@ -208,7 +209,7 @@ class AdminController extends AbstractBaseController
             ->where('gedcom_id', '=', $tree->id())
             ->whereIn('page_parameter', [$xref1, $xref2])
             ->groupBy('page_name')
-            ->pluck(DB::raw('SUM(page_count)'), 'page_name');
+            ->pluck(new Expression('SUM(page_count)'), 'page_name');
 
         foreach ($hits as $page_name => $page_count) {
             DB::table('hit_counter')

@@ -186,7 +186,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
                     ->from('block')
                     ->where('module_name', '=', $this->name())
                     ->where('block_order', '>', $block_order)
-                    ->select(DB::raw('MIN(block_order)'));
+                    ->min('block_order');
             })
             ->select(['block_order', 'block_id'])
             ->first();
@@ -230,12 +230,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
         $swap_block = DB::table('block')
             ->where('module_name', '=', $this->name())
-            ->where('block_order', '=', static function (Builder $query) use ($block_order): void {
+            ->where('block_order', '=', function (Builder $query) use ($block_order): void {
                 $query
                     ->from('block')
                     ->where('module_name', '=', $this->name())
                     ->where('block_order', '<', $block_order)
-                    ->select(DB::raw('MAX(block_order)'));
+                    ->max('block_order');
             })
             ->select(['block_order', 'block_id'])
             ->first();

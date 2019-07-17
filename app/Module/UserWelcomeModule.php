@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
-use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class UserWelcomeModule

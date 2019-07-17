@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Services\GedcomService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Database\QueryException;
 use Psr\Http\Message\ResponseInterface;
@@ -199,7 +200,7 @@ class LocationController extends AbstractAdminController
             ->leftJoin('placelocation AS p8', 'p8.pl_parent_id', '=', 'p7.pl_id')
             ->leftJoin('placelocation AS p9', 'p9.pl_parent_id', '=', 'p8.pl_id')
             ->where('p0.pl_parent_id', '=', $parent_id)
-            ->select([DB::raw('COUNT(*) AS child_count'), DB::raw('SUM(' . $expression . ') AS no_coord')])
+            ->select([new Expression('COUNT(*) AS child_count'), new Expression('SUM(' . $expression . ') AS no_coord')])
             ->first();
     }
 

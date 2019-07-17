@@ -1,6 +1,9 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Illuminate\Database\Query\JoinClause; ?>
-<?php use Illuminate\Database\Capsule\Manager as DB; ?>
+<?php
+use Fisharebest\Webtrees\I18N;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Expression;
+use Illuminate\Database\Query\JoinClause;
+?>
 
 <?php
 // Count the number of linked records. These numbers include private records.
@@ -14,7 +17,7 @@ $count_individuals = DB::table('individuals')
     ->where('l_type', '=', 'NOTE')
     ->where('l_file', '=', $tree->id())
     ->groupBy('l_to')
-    ->select(['l_to', DB::raw('COUNT(*) AS total')])
+    ->select(['l_to', new Expression('COUNT(*) AS total')])
     ->pluck('total', 'l_to')
     ->all();
 
@@ -26,7 +29,7 @@ $count_families = DB::table('families')
     ->where('l_type', '=', 'NOTE')
     ->where('l_file', '=', $tree->id())
     ->groupBy('l_to')
-    ->select(['l_to', DB::raw('COUNT(*) AS total')])
+    ->select(['l_to', new Expression('COUNT(*) AS total')])
     ->pluck('total', 'l_to')
     ->all();
 
@@ -38,7 +41,7 @@ $count_sources = DB::table('sources')
     ->where('l_type', '=', 'NOTE')
     ->where('l_file', '=', $tree->id())
     ->groupBy('l_to')
-    ->select(['l_to', DB::raw('COUNT(*) AS total')])
+    ->select(['l_to', new Expression('COUNT(*) AS total')])
     ->pluck('total', 'l_to')
     ->all();
 ?>

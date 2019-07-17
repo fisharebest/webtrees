@@ -44,6 +44,7 @@ use Fisharebest\Webtrees\Statistics\Repository\Interfaces\IndividualRepositoryIn
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use stdClass;
 
@@ -89,7 +90,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             ->where('n_file', '=', $this->tree->id())
             ->where('n_type', '<>', '_MARNM')
             ->where('n_givn', '<>', '@P.N.')
-            ->where(DB::raw('LENGTH(n_givn)'), '>', 1);
+            ->where(new Expression('LENGTH(n_givn)'), '>', 1);
 
         switch ($sex) {
             case 'M':
@@ -106,7 +107,7 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         $rows = $query
             ->groupBy(['n_givn'])
-            ->select(['n_givn', DB::raw('COUNT(distinct n_id) AS count')])
+            ->select(['n_givn', new Expression('COUNT(distinct n_id) AS count')])
             ->pluck('count', 'n_givn');
 
         $nameList = [];
@@ -501,8 +502,8 @@ class IndividualRepository implements IndividualRepositoryInterface
         foreach ($top_surnames as $top_surname) {
             $variants = DB::table('name')
                 ->where('n_file', '=', $this->tree->id())
-                ->where(DB::raw('n_surn /* COLLATE ' . I18N::collation() . ' */'), '=', $top_surname)
-                ->select('n_surn', DB::raw('COUNT(*) AS count'))
+                ->where(new Expression('n_surn /* COLLATE ' . I18N::collation() . ' */'), '=', $top_surname)
+                ->select('n_surn', new Expression('COUNT(*) AS count'))
                 ->groupBy('n_surn')
                 ->get()
                 ->pluck('count', 'n_surn')
@@ -655,7 +656,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     public function statsBirthQuery(int $year1 = -1, int $year2 = -1): Builder
     {
         $query = DB::table('dates')
-            ->select(['d_month', DB::raw('COUNT(*) AS total')])
+            ->select(['d_month', new Expression('COUNT(*) AS total')])
             ->where('d_file', '=', $this->tree->id())
             ->where('d_fact', '=', 'BIRT')
             ->whereIn('d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
@@ -679,7 +680,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     public function statsBirthBySexQuery(int $year1 = -1, int $year2 = -1): Builder
     {
         return $this->statsBirthQuery($year1, $year2)
-                ->select(['d_month', 'i_sex', DB::raw('COUNT(*) AS total')])
+                ->select(['d_month', 'i_sex', new Expression('COUNT(*) AS total')])
                 ->join('individuals', static function (JoinClause $join): void {
                     $join
                         ->on('i_id', '=', 'd_gid')
@@ -713,7 +714,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     public function statsDeathQuery(int $year1 = -1, int $year2 = -1): Builder
     {
         $query = DB::table('dates')
-            ->select(['d_month', DB::raw('COUNT(*) AS total')])
+            ->select(['d_month', new Expression('COUNT(*) AS total')])
             ->where('d_file', '=', $this->tree->id())
             ->where('d_fact', '=', 'DEAT')
             ->whereIn('d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
@@ -737,7 +738,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     public function statsDeathBySexQuery(int $year1 = -1, int $year2 = -1): Builder
     {
         return $this->statsDeathQuery($year1, $year2)
-                ->select(['d_month', 'i_sex', DB::raw('COUNT(*) AS total')])
+                ->select(['d_month', 'i_sex', new Expression('COUNT(*) AS total')])
                 ->join('individuals', static function (JoinClause $join): void {
                     $join
                         ->on('i_id', '=', 'd_gid')
@@ -789,7 +790,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         }
 
         return $query
-            ->select(DB::raw($prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS days'))
+            ->select(new Expression($prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS days'))
             ->orderBy('days', 'desc')
             ->get()
             ->all();
@@ -819,7 +820,7 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         $row = $this->birthAndDeathQuery($sex)
             ->orderBy('days', 'desc')
-            ->select(['individuals.*', DB::raw($prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS days')])
+            ->select(['individuals.*', new Expression($prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS days')])
             ->first();
 
         if ($row === null) {
@@ -971,7 +972,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $rows = $this->birthAndDeathQuery($sex)
             ->groupBy(['i_id', 'i_file'])
             ->orderBy('days', 'desc')
-            ->select(['individuals.*', DB::raw('MAX(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) AS days')])
+            ->select(['individuals.*', new Expression('MAX(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) AS days')])
             ->take($total)
             ->get();
 
@@ -1116,7 +1117,7 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         return $query
             ->groupBy(['i_id', 'i_file'])
-            ->orderBy(DB::raw('MIN(d_julianday1)'))
+            ->orderBy(new Expression('MIN(d_julianday1)'))
             ->select('individuals.*')
             ->take($total)
             ->get()
@@ -1264,7 +1265,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $prefix = DB::connection()->getTablePrefix();
 
         $days = (int) $this->birthAndDeathQuery($sex)
-            ->select(DB::raw('AVG(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) AS days'))
+            ->select(new Expression('AVG(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) AS days'))
             ->value('days');
 
         if ($show_years) {
