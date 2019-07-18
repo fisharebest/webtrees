@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\View;
 ?>
 
@@ -16,6 +17,7 @@ google.charts.load(
             'geochart',
             'bar'
         ],
+        'language': <?= json_encode(app(LocaleInterface::class)->code()) ?>,
         // Note: you will need to get a mapsApiKey for your project.
         // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
         'mapsApiKey': ''
