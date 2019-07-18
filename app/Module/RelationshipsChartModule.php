@@ -477,7 +477,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      *
      * @return Closure
      */
-    private function stringMapper(): Closure {
+    private function stringMapper(): Closure
+    {
         return static function ($xref) {
             return (string) $xref;
         };
