@@ -132,11 +132,13 @@ class ReportParserSetup extends ReportParserBase
 
         if (isset($attrs['default'])) {
             if ($attrs['default'] === 'NOW') {
-                $this->input['default'] = Carbon::now()->format('d M Y');
+                $date = Carbon::now();
+                $this->input['default'] = strtoupper($date->format('d M Y'));
             } else {
                 $match = [];
                 if (preg_match('/NOW([+\-]\d+)/', $attrs['default'], $match) > 0) {
-                    $this->input['default'] = Carbon::now()->addDays((int) $match[1])->format('d M Y');
+                    $date = Carbon::now()->addDays((int) $match[1]);
+                    $this->input['default'] = strtoupper($date->format('d M Y'));
                 } else {
                     $this->input['default'] = $attrs['default'];
                 }
