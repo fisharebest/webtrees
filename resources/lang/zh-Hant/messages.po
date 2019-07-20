@@ -9942,7 +9942,7 @@ msgstr "緬甸"
 #: resources/xml/reports/occupation_report.xml:43,
 #: resources/xml/reports/relative_ext_report.xml:50
 msgid "Name"
-msgstr "名字"
+msgstr "姓名"
 
 # I18N: gedcom tag REPO:NAME
 #: app/GedcomTag.php:858, resources/views/modals/repository-fields.phtml:5
@@ -9969,7 +9969,7 @@ msgstr "名字後綴"
 #: resources/xml/reports/cemetery_report.xml:7,
 #: resources/xml/reports/death_report.xml:10
 msgid "Names"
-msgstr "名字"
+msgstr "姓名"
 
 # I18N: gedcom tag _NAMS
 #: app/GedcomTag.php:1988
