@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2019-05-10 20:05+0000\n"
+"PO-Revision-Date: 2019-07-20 17:45+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
@@ -745,7 +745,7 @@ msgstr "רשימת ענפים של משפחה."
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:74
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr "רשימת שינויים עבורם נדרש אישור מפקח, והודעות דואר אלקטרוני."
+msgstr "רשימת שינויים עבורם נדרש אישור מנהל, והודעות דואר אלקטרוני."
 
 #. I18N: Description of the “FamilyListModule” module
 #: app/Module/FamilyListModule.php:56
@@ -5514,7 +5514,7 @@ msgstr "כתובת דוא״ל"
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: resources/views/admin/trees-preferences.phtml:158
 msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "כתובת דואר אלקטרוני לשימוש בשדה \"מאת:\" של דואר אלקטרוני ש-webtrees נוצרה באופן אוטומטי.<br><br>webtrees יכולה באופן אוטומטי ליצור הודעות דואר אלקטרוני כדי ליידע את המנהלים על שינויים שיש לבדוק. webtrees שולחת גם הודעה בדואר אלקטרוני למשתמשים שבקשו חשבון.<br><br>בדרך כלל, שדה \"מאת:\" של הדואר האלקטרוני שנוצר באופן אוטומטי הוא משהו כמו <i>From: webtrees-noreply@yoursite</i> כדי להראות שלא נדרשת תגובה לדואר האלקטרוני. כדי להתגונן מפני דואר זבל או פגיעות דואר אלקטרוני אחרות, דורשות חלק ממערכות הדואר האלקטרוני ששדה \"מאת:\" של כל הודעה, ישקף חשבון דואר תקף ולא תקבלנה הודעות שהן כנראה מחשבון <i>webtrees-noreply</i>."
+msgstr "כתובת הדואר האלקטרוני בשדה \"מאת:\" של הדואר האלקטרוני ש-webtrees יוצרת באופן אוטומטי.<br><br>webtrees יכולה באופן אוטומטי ליצור הודעות דואר אלקטרוני כדי ליידע את המנהלים על שינויים שיש לבדוק. webtrees שולחת גם הודעה בדואר אלקטרוני למשתמשים שבקשו חשבון.<br><br>בדרך כלל, שדה \"מאת:\" של הדואר האלקטרוני שנוצר באופן אוטומטי הוא משהו כמו <i>From: webtrees-noreply@yoursite</i> כדי להראות שלא נדרשת תגובה לדואר האלקטרוני. כדי להתגונן מפני דואר זבל או פגיעות דואר אלקטרוני אחרות, דורשות חלק ממערכות הדואר האלקטרוני ששדה \"מאת:\" של כל הודעה, ישקף חשבון דואר תקף ולא תקבלנה הודעות שהן כנראה מחשבון <i>webtrees-noreply</i>."
 
 #: resources/views/admin/users-edit.phtml:81
 msgid "Email verified"
@@ -7031,7 +7031,7 @@ msgstr "גובה"
 #: resources/views/emails/register-user-text.phtml:2
 #, php-format
 msgid "Hello %s…"
-msgstr "שלום <span dir=\"ltr\">%s</span>…"
+msgstr "שלום %s…"
 
 #: resources/views/register-success-page.phtml:9
 #, php-format
@@ -9269,11 +9269,11 @@ msgstr "נתונים חסרים"
 #: app/Http/Controllers/Admin/UsersController.php:473
 #: resources/views/admin/users-edit.phtml:245
 msgid "Moderator"
-msgstr "מפקח"
+msgstr "מנהל"
 
 #: resources/views/admin/control-panel.phtml:222
 msgid "Moderators"
-msgstr "מפקחים"
+msgstr "מנהלים"
 
 #: resources/views/admin/components.phtml:23
 #: resources/views/admin/modules.phtml:51
@@ -10012,7 +10012,7 @@ msgstr "אי נורפוק"
 
 #: resources/views/admin/users-edit.phtml:144
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
-msgstr "בדרך כלל, כל שינוי שנעשה לעץ המשפחה צריך להיות מאושר על ידי מפקח. אפשרות זו מאפשרת למשתמש לבצע שינויים ללא צורך באישור מפקח."
+msgstr "בדרך כלל, כל שינוי שנעשה לעץ המשפחה צריך להיות מאושר על ידי מנהל. אפשרות זו מאפשרת למשתמש לבצע שינויים ללא צורך באישור מנהל."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:403
@@ -10343,7 +10343,7 @@ msgstr "עדכן רק רשומות קיימות"
 
 #: resources/views/errors/database-connection.phtml:5
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
-msgstr "אופס! האינטרנט לא יכול להתחבר לשרת מסד הנתונים. יתכן שהוא עסוק, עובר פעולות תחזוקה, או פשוט נפל. עליך <a href=\"index.php\">לנסות שוב</a> בעוד כמה דקות או פנה למנהל האתר."
+msgstr "אופס! שרת האינטרנט לא יכול להתחבר לשרת מסד הנתונים. יתכן שהוא עסוק, עובר פעולות תחזוקה, או פשוט נפל. עליך <a href=\"index.php\">לנסות שוב</a> בעוד כמה דקות או פנה למנהל האתר."
 
 #: app/Http/Controllers/SetupController.php:132
 msgid "Oops! webtrees was unable to create files in this folder."
@@ -14152,7 +14152,7 @@ msgstr "חשבון זה לא אומת. בדוק את הדוא״ל שלך להו�
 
 #: resources/views/modules/review_changes/config.phtml:4
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr "בלוק זה מציג לעורכים רשימה של רשומות שינויים הממתינים לאישור שאותם מפקח צריך לאשר. הוא גם יוצר מיילים יומיים למפקחים אם קיימים שינויים שממתינים לאישור."
+msgstr "בלוק זה מציג לעורכים רשימה של רשומות שינויים הממתינים לאישור שאותם מנהל צריך לאשר. הוא גם יוצר מיילים יומיים למנהלים אם קיימים שינויים שממתינים לאישור."
 
 #: resources/views/admin/users-create.phtml:58
 #: resources/views/admin/users-edit.phtml:66
@@ -14169,7 +14169,7 @@ msgstr "המשפחה אינה קיימת או שאין לך הרשאה לצפו�
 
 #: resources/views/family-page.phtml:15
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "המשפחה נמחקה. מפקח צריך לסקור את המחיקה."
+msgstr "המשפחה נמחקה. מנהל צריך לסקור את המחיקה."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page.phtml:13
@@ -14179,7 +14179,7 @@ msgstr "המשפחה הזו נמחקה. %1$s או %2$s אותה אחרי בדי�
 
 #: resources/views/family-page.phtml:21
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
-msgstr "המשפחה עברה עריכה. מפקח צריך לבדוק את השינויים."
+msgstr "המשפחה עברה עריכה. מנהל צריך לבדוק את השינויים."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page.phtml:19
@@ -14230,7 +14230,7 @@ msgstr "האדם אינו קיים או שאין לך הרשאה לצפות בו
 
 #: resources/views/individual-page.phtml:13
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "האדם נמחק. מפקח צריך לבדוק את המחיקה."
+msgstr "האדם נמחק. מנהל צריך לבדוק את המחיקה."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/individual-page.phtml:10
@@ -14240,7 +14240,7 @@ msgstr "האדם הזה נמחק. %1$s או %2$s את המחיקה אחרי בד
 
 #: resources/views/individual-page.phtml:22
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
-msgstr "האדם עבר עריכה. מפקח צריך לסקור את השינויים."
+msgstr "האדם עבר עריכה. מנהל צריך לסקור את השינויים."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/individual-page.phtml:19
@@ -14348,42 +14348,42 @@ msgstr "זו הגירסה העדכנית ביותר של webtrees. אין שדר
 #. I18N: Help text for the “All family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:794
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr "זוהי הרשימה של עובדות קובץ GEDCOM שהמשתמשים יכולים להוסיף למשפחות. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת \"עובדות משפחתיות ייחודיות\"."
+msgstr "זוהי הרשימה של עובדות GEDCOM שהמשתמשים יכולים להוסיף למשפחות. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת \"עובדות משפחתיות ייחודיות\"."
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:740
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr "זוהי הרשימה של עובדות קובץ GEDCOM שהמשתמשים יכולים להוסיף לאנשים. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת \"עובדות אישיות ייחודיות\"."
+msgstr "זוהי הרשימה של עובדות GEDCOM שהמשתמשים יכולים להוסיף לאנשים. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת \"עובדות אישיות ייחודיות\"."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:889
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-msgstr "זוהי הרשימה של עובדות של קובץ GEDCOM שהמשתמשים שלך יכולים להוסיף למאגרים. אתה יכול לשנות רשימה זו על ידי הסרה או הוספת שמות של עובדות, אפילו תגים מותאמים , לפי הצורך. עובדה ששמה מופיעה ברשימה זו לא יכולה להופיע גם ברשימת \"עובדות הייחודיות של המאגר\"."
+msgstr "זוהי הרשימה של עובדות GEDCOM שהמשתמשים שלך יכולים להוסיף למאגרים. אתה יכול לשנות רשימה זו על ידי הסרה או הוספת שמות של עובדות, אפילו תגים מותאמים , לפי הצורך. עובדה ששמה מופיעה ברשימה זו לא יכולה להופיע גם ברשימת \"עובדות מאגר יחודיות\"."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:848
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr "זוהי הרשימה של עובדות קובץ GEDCOM שהמשתמשים יכולים להוסיף למקורות. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות, אפילו עובדות מותאמות, לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת \"עובדות ייחודיות של מקורות\"."
+msgstr "זוהי הרשימה של עובדות GEDCOM שהמשתמשים יכולים להוסיף למקורות. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות, אפילו עובדות מותאמות, לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת \"עובדות ייחודיות של מקורות\"."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:807
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr "זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף פעם אחת למשפחות. לדוגמה, אם MARR הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת MARR אחת למשפחה. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה \"הוסף עובדות למשפחה\"."
+msgstr "זוהי הרשימה של עובדות GEDCOM שהמשתמשים יכולים להוסיף פעם אחת למשפחות. לדוגמה, אם MARR הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת MARR אחת למשפחה. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה \"כל העובדות המשפחתיות\"."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:753
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr "זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף פעם אחת לאדם. לדוגמה, אם BIRT הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת BIRT אחת לאדם. שמות עובדות שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה \"הוסף עובדות לאדם\"."
+msgstr "זוהי הרשימה של עובדות GEDCOM שהמשתמשים יכולים להוסיף פעם אחת לאדם. לדוגמה, אם BIRT הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת BIRT אחת לאדם. שמות עובדות שמופיעים ברשימה זו לא יכולים להופיע גם ברשימת \"כל עובדות האישיות\"."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:902
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr "זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף פעם אחת למאגר. לדוגמה, אם NAME הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת NAME אחת למאגר. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה \"הוסף עובדות למאגר\"."
+msgstr "זוהי הרשימה של עובדות GEDCOM שהמשתמשים יכולים להוסיף פעם אחת למאגר. לדוגמה, אם NAME הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת NAME אחת למאגר. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה \"כל העובדות של מאגרים\"."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:861
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr "זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף פעם אחת למקורות. לדוגמה, אם TITL הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת TITL אחת למקור. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה \"הוסף עובדות למקור\"."
+msgstr "זוהי הרשימה של עובדות GEDCOM שהמשתמשים יכולים להוסיף פעם אחת למקורות. לדוגמה, אם TITL הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת TITL אחת למקור. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימת \"כל עובדות המקור\"."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: resources/views/admin/site-mail.phtml:52
@@ -14405,7 +14405,7 @@ msgstr "ישות המדיה אינה קיימת או שאין לך הרשאה ל
 
 #: resources/views/media-page.phtml:11
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "ישות המדיה הזו נמחקה. מפקח צריך לסקור את המחיקה."
+msgstr "ישות המדיה הזו נמחקה. מנהל צריך לסקור את המחיקה."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/media-page.phtml:9
@@ -14415,7 +14415,7 @@ msgstr "ישות המדיה הזו נמחקה. %1$s או %2$s אותה אחרי 
 
 #: resources/views/media-page.phtml:17
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
-msgstr "על ישות המדיה הזו בוצעה עריכה. מפקח צריך לסקור את השינויים."
+msgstr "על ישות המדיה הזו בוצעה עריכה. מנהל צריך לסקור את השינויים."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/media-page.phtml:15
@@ -14446,7 +14446,7 @@ msgstr "ההערה אינה קיימת או שאין לך הרשאה לצפות 
 
 #: resources/views/note-page.phtml:10
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "ההערה נמחקה. מפקח צריך לסקור את המחיקה."
+msgstr "ההערה נמחקה. מנהל צריך לסקור את המחיקה."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/note-page.phtml:8
@@ -14456,7 +14456,7 @@ msgstr "ההערה הזו נמחקה. %1$s או %2$s אותה אחרי בדיק�
 
 #: resources/views/note-page.phtml:16
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
-msgstr "ההערה עברה עריכה. מפקח צריך לסקור את השינויים."
+msgstr "ההערה עברה עריכה. מנהל צריך לסקור את השינויים."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/note-page.phtml:14
@@ -14526,7 +14526,7 @@ msgstr "רשומה זו אינה קיימת."
 
 #: resources/views/gedcom-record-page.phtml:10
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "הרשומה נמחקה. מפקח צריך לסקור את המחיקה."
+msgstr "הרשומה נמחקה. מנהל צריך לסקור את המחיקה."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/gedcom-record-page.phtml:8
@@ -14536,7 +14536,7 @@ msgstr "הרשומה הזו נמחקה. %1$s או %2$s אותה אחרי בדי�
 
 #: resources/views/gedcom-record-page.phtml:16
 msgid "This record has been edited. The changes need to be reviewed by a moderator."
-msgstr "הרשומה עברה עריכה. מפקח צריך לבדוק את השינויים."
+msgstr "הרשומה עברה עריכה. מנהל צריך לבדוק את השינויים."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/gedcom-record-page.phtml:14
@@ -14551,7 +14551,7 @@ msgstr "המאגר אינו קיים או שאין לך הרשאה לצפות ב
 
 #: resources/views/repository-page.phtml:14
 msgid "This repository has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "המאגר נמחק. מפקח צריך לסקור את המחיקה."
+msgstr "המאגר נמחק. מנהל צריך לסקור את המחיקה."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/repository-page.phtml:12
@@ -14561,7 +14561,7 @@ msgstr "המאגר הזה נמחק. %1$s או %2$s את המחיקה אחרי ב
 
 #: resources/views/repository-page.phtml:20
 msgid "This repository has been edited. The changes need to be reviewed by a moderator."
-msgstr "המאגר עבר עריכה. מפקח צריך לסקור את השינויים."
+msgstr "המאגר עבר עריכה. מנהל צריך לסקור את השינויים."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/repository-page.phtml:18
@@ -14579,11 +14579,11 @@ msgstr "תפקיד זה כולל את כל ההרשאות של תפקיד מנה
 
 #: resources/views/admin/users-edit.phtml:242
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "לתפקיד זה יש כל ההרשאות של תפקיד חבר, בתוספת הרשאה להוסיף/לשנות/למחוק נתונים. כל שינוי צריך להיות מאושר על ידי מפקח, אלא אם המשתמש מוגדר עם אפשרות \"לקבל באופן אוטומטי את השינויים\"."
+msgstr "לתפקיד זה יש כל ההרשאות של תפקיד חבר, בתוספת הרשאה להוסיף/לשנות/למחוק נתונים. כל שינוי צריך להיות מאושר על ידי מנהל, אלא אם המשתמש מוגדר עם אפשרות \"לקבל באופן אוטומטי את השינויים\"."
 
 #: resources/views/admin/users-edit.phtml:256
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
-msgstr "תפקיד זה כולל את כל ההרשאות של תפקיד מפקח, בתוספת גישה כלשהיא שניתנה על ידי תצורת עץ המשפחה, ובתוספת הרשאה לשנות את הגדרות/תצורה של עץ המשפחה."
+msgstr "תפקיד זה כולל את כל ההרשאות של תפקיד מנהל, בתוספת גישה כלשהיא שניתנה על ידי תצורת עץ המשפחה, ובתוספת הרשאה לשנות את הגדרות/תצורה של עץ המשפחה."
 
 #: resources/views/admin/users-edit.phtml:234
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
@@ -14614,7 +14614,7 @@ msgstr "המקור אינו קיים או שאין לך הרשאה לצפות ב
 
 #: resources/views/source-page.phtml:10
 msgid "This source has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "המקור נמחק. מפקח צריך לסקור את המחיקה."
+msgstr "המקור נמחק. מנהל צריך לסקור את המחיקה."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/source-page.phtml:8
@@ -14624,7 +14624,7 @@ msgstr "המקור הזה נמחק. %1$s או %2$s את המחיקה אחרי ב
 
 #: resources/views/source-page.phtml:16
 msgid "This source has been edited. The changes need to be reviewed by a moderator."
-msgstr "המקור עבר עריכה. מפקח צריך לסקור את השינויים."
+msgstr "המקור עבר עריכה. מנהל צריך לסקור את השינויים."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/source-page.phtml:14
@@ -14671,7 +14671,7 @@ msgstr "אתר זה משתמש בעוגיות כדי ללמוד על התנהג�
 #: resources/views/admin/trees-import.phtml:9
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "פעולה זו תמחק את כל נתוני חקר שושלת יוחסין מן \"%s\" ויחליף אותו עם נתונים קובץ GEDCOM."
+msgstr "פעולה זו תמחק את כל נתוני חקר שושלת יוחסין מ-\"%s\" ותחליף אותם עם נתונים מקובץ GEDCOM."
 
 #: resources/views/admin/trees-places.phtml:8
 msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
@@ -15185,7 +15185,7 @@ msgstr "לא מאושר: נתונים לא מספיקים"
 
 #: resources/views/admin/trees-preferences.phtml:802
 msgid "Unique family facts"
-msgstr "עובדות משפחתיות יחידות במינן"
+msgstr "עובדות משפחתיות יחודיות"
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:2063
@@ -15199,15 +15199,15 @@ msgstr "מזהים ייחודיים מאפשרים לאותו רשומה להי�
 
 #: resources/views/admin/trees-preferences.phtml:748
 msgid "Unique individual facts"
-msgstr "עובדות אישיות יחידות במינן"
+msgstr "עובדות אישיות יחודיות"
 
 #: resources/views/admin/trees-preferences.phtml:897
 msgid "Unique repository facts"
-msgstr "עובדות מאגר יחידות במינן"
+msgstr "עובדות מאגר יחודיות"
 
 #: resources/views/admin/trees-preferences.phtml:856
 msgid "Unique source facts"
-msgstr "עובדות מקור יחידות במינן"
+msgstr "עובדות יחודיות של מקורות"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:52
@@ -15752,11 +15752,11 @@ msgstr "כאשר מוסיפים בן משפחה חדש, ברירת מחדל לש
 
 #: resources/views/help/pending-changes.phtml:4
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr "כאשר אתה מוסיף, עורך או מוחק נתונים, השינויים אינם נשמרים מידית. במקום זה הם נשמרים באזור \"תלוי ועומד\". השינויים הממתינים האלו צריכים להיבדק על ידי מפקח לפני שהם מתקבלים."
+msgstr "כאשר אתה מוסיף, עורך או מוחק נתונים, השינויים אינם נשמרים מידית. במקום זה הם נשמרים באזור \"תלוי ועומד\". השינויים הממתינים האלו צריכים להיבדק על ידי מנהל לפני שהם מתקבלים."
 
 #: resources/views/help/relationship-privacy.phtml:4
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
-msgstr "כאשר משתמש משויך לרשומת אדם בעץ המשפחה ויש לו תפקיד של חבר, עורך או מפקח, אתה יכול למנוע ממנו את הגישה לפרטי קרובים רחוקים החיים. אתה מציין את מספר שלבי הקשר המשפחתי שהמשתמש רשאי לראות."
+msgstr "כאשר משתמש משויך לרשומת אדם בעץ המשפחה ויש לו תפקיד של חבר, עורך או מנהל, אתה יכול למנוע ממנו את הגישה לפרטי קרובים רחוקים החיים. אתה מציין את מספר שלבי הקשר המשפחתי שהמשתמש רשאי לראות."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml:12
@@ -15970,7 +15970,7 @@ msgstr "אתה יכול להשתמש ב-HTML כדי לעצב את התשובה �
 
 #: resources/views/admin/site-mail.phtml:10
 msgid "You must also enable “less secure applications” in your Google account."
-msgstr "עליך לאפשר גם  \"ישומים פחות מאובטחים\" בחשבון הגוגל שלך."
+msgstr "עליך לאפשר גם \"ישומים פחות מאובטחים\" בחשבון הגוגל שלך."
 
 #: app/Http/Controllers/SetupController.php:359
 msgid "You must enter all the administrator account fields."
@@ -19898,7 +19898,7 @@ msgstr "הגדרות הקישוריות של מאגר הנתונים בקובץ 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:19
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
-msgstr "לתיקייה \"/data\" וקובץ \"/data/config.ini.php\" יש הרשאות גישה שמאפשרות ל-webserver לקרוא אותם"
+msgstr "לתיקייה \"/data\" וקובץ \"/data/config.ini.php\" יש הרשאות גישה שמאפשרות לשרת האינטרנט לקרוא אותם"
 
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Functions/Functions.php:191
