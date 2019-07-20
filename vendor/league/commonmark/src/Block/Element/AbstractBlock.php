@@ -17,7 +17,6 @@ namespace League\CommonMark\Block\Element;
 use League\CommonMark\ContextInterface;
 use League\CommonMark\Cursor;
 use League\CommonMark\Node\Node;
-use League\CommonMark\Util\ArrayCollection;
 
 /**
  * Block-level element
@@ -30,16 +29,6 @@ abstract class AbstractBlock extends Node
      * @var array
      */
     public $data = [];
-
-    /**
-     * @var ArrayCollection|string[]
-     */
-    protected $strings;
-
-    /**
-     * @var string
-     */
-    protected $finalStringContents = '';
 
     /**
      * @var bool
@@ -62,14 +51,6 @@ abstract class AbstractBlock extends Node
     protected $endLine;
 
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->strings = new ArrayCollection();
-    }
-
-    /**
      * @param Node|null $node
      */
     protected function setParent(Node $node = null)
@@ -84,7 +65,7 @@ abstract class AbstractBlock extends Node
     /**
      * @return bool
      */
-    public function isContainer()
+    public function isContainer(): bool
     {
         return true;
     }
@@ -92,7 +73,7 @@ abstract class AbstractBlock extends Node
     /**
      * @return bool
      */
-    public function hasChildren()
+    public function hasChildren(): bool
     {
         return $this->firstChild !== null;
     }
@@ -104,47 +85,28 @@ abstract class AbstractBlock extends Node
      *
      * @return bool
      */
-    abstract public function canContain(AbstractBlock $block);
-
-    /**
-     * Returns true if block type can accept lines of text
-     *
-     * @return bool
-     */
-    abstract public function acceptsLines();
+    abstract public function canContain(AbstractBlock $block): bool;
 
     /**
      * Whether this is a code block
      *
      * @return bool
      */
-    abstract public function isCode();
+    abstract public function isCode(): bool;
 
     /**
      * @param Cursor $cursor
      *
      * @return bool
      */
-    abstract public function matchesNextLine(Cursor $cursor);
-
-    /**
-     * @param ContextInterface $context
-     * @param Cursor           $cursor
-     */
-    public function handleRemainingContents(ContextInterface $context, Cursor $cursor)
-    {
-        // create paragraph container for line
-        $context->addBlock(new Paragraph());
-        $cursor->advanceToNextNonSpaceOrTab();
-        $context->getTip()->addLine($cursor->getRemainder());
-    }
+    abstract public function matchesNextLine(Cursor $cursor): bool;
 
     /**
      * @param int $startLine
      *
      * @return $this
      */
-    public function setStartLine($startLine)
+    public function setStartLine(int $startLine)
     {
         $this->startLine = $startLine;
         if (empty($this->endLine)) {
@@ -157,12 +119,17 @@ abstract class AbstractBlock extends Node
     /**
      * @return int
      */
-    public function getStartLine()
+    public function getStartLine(): int
     {
         return $this->startLine;
     }
 
-    public function setEndLine($endLine)
+    /**
+     * @param int $endLine
+     *
+     * @return $this
+     */
+    public function setEndLine(int $endLine)
     {
         $this->endLine = $endLine;
 
@@ -172,7 +139,7 @@ abstract class AbstractBlock extends Node
     /**
      * @return int
      */
-    public function getEndLine()
+    public function getEndLine(): int
     {
         return $this->endLine;
     }
@@ -182,7 +149,7 @@ abstract class AbstractBlock extends Node
      *
      * @return bool
      */
-    public function endsWithBlankLine()
+    public function endsWithBlankLine(): bool
     {
         return $this->lastLineBlank;
     }
@@ -190,7 +157,7 @@ abstract class AbstractBlock extends Node
     /**
      * @param bool $blank
      */
-    public function setLastLineBlank($blank)
+    public function setLastLineBlank(bool $blank)
     {
         $this->lastLineBlank = $blank;
     }
@@ -203,29 +170,9 @@ abstract class AbstractBlock extends Node
      *
      * @return bool
      */
-    public function shouldLastLineBeBlank(Cursor $cursor, $currentLineNumber)
+    public function shouldLastLineBeBlank(Cursor $cursor, int $currentLineNumber): bool
     {
         return $cursor->isBlank();
-    }
-
-    /**
-     * @return string[]
-     */
-    public function getStrings()
-    {
-        return $this->strings->toArray();
-    }
-
-    /**
-     * @param string $line
-     */
-    public function addLine($line)
-    {
-        if (!$this->acceptsLines()) {
-            throw new \LogicException('You cannot add lines to a block which cannot accept them');
-        }
-
-        $this->strings->add($line);
     }
 
     /**
@@ -233,7 +180,7 @@ abstract class AbstractBlock extends Node
      *
      * @return bool
      */
-    public function isOpen()
+    public function isOpen(): bool
     {
         return $this->open;
     }
@@ -244,7 +191,7 @@ abstract class AbstractBlock extends Node
      * @param ContextInterface $context
      * @param int              $endLineNumber
      */
-    public function finalize(ContextInterface $context, $endLineNumber)
+    public function finalize(ContextInterface $context, int $endLineNumber)
     {
         if (!$this->open) {
             return;
@@ -257,21 +204,13 @@ abstract class AbstractBlock extends Node
     }
 
     /**
-     * @return string
-     */
-    public function getStringContent()
-    {
-        return $this->finalStringContents;
-    }
-
-    /**
      * @param string $key
      * @param mixed  $default
      *
      * @return mixed
      */
-    public function getData($key, $default = null)
+    public function getData(string $key, $default = null)
     {
-        return array_key_exists($key, $this->data) ? $this->data[$key] : $default;
+        return \array_key_exists($key, $this->data) ? $this->data[$key] : $default;
     }
 }

@@ -18,13 +18,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\CommonMark;
 
 use Fisharebest\Webtrees\Tree;
-use League\CommonMark\Extension\Extension;
-use League\CommonMark\Inline\Parser\InlineParserInterface;
+use League\CommonMark\ConfigurableEnvironmentInterface;
+use League\CommonMark\Extension\ExtensionInterface;
 
 /**
  * Convert XREFs within markdown text to links
  */
-class XrefExtension extends Extension
+class XrefExtension implements ExtensionInterface
 {
     /** @var Tree - match XREFs in this tree */
     private $tree;
@@ -39,21 +39,9 @@ class XrefExtension extends Extension
         $this->tree = $tree;
     }
 
-    /**
-     * @return InlineParserInterface[]
-     */
-    public function getInlineParsers(): array
+    public function register(ConfigurableEnvironmentInterface $environment): void
     {
-        return [
-            new XrefParser($this->tree),
-        ];
-    }
-
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return 'xref';
+        $environment
+            ->addInlineParser(new XrefParser($this->tree));
     }
 }

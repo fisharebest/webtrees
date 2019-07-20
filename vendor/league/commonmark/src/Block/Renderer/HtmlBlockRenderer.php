@@ -17,7 +17,7 @@ namespace League\CommonMark\Block\Renderer;
 use League\CommonMark\Block\Element\AbstractBlock;
 use League\CommonMark\Block\Element\HtmlBlock;
 use League\CommonMark\ElementRendererInterface;
-use League\CommonMark\Environment;
+use League\CommonMark\EnvironmentInterface;
 use League\CommonMark\Util\Configuration;
 use League\CommonMark\Util\ConfigurationAwareInterface;
 
@@ -35,10 +35,10 @@ class HtmlBlockRenderer implements BlockRendererInterface, ConfigurationAwareInt
      *
      * @return string
      */
-    public function render(AbstractBlock $block, ElementRendererInterface $htmlRenderer, $inTightList = false)
+    public function render(AbstractBlock $block, ElementRendererInterface $htmlRenderer, bool $inTightList = false)
     {
         if (!($block instanceof HtmlBlock)) {
-            throw new \InvalidArgumentException('Incompatible block type: ' . get_class($block));
+            throw new \InvalidArgumentException('Incompatible block type: ' . \get_class($block));
         }
 
         // Kept for BC reasons
@@ -46,12 +46,12 @@ class HtmlBlockRenderer implements BlockRendererInterface, ConfigurationAwareInt
             return '';
         }
 
-        if ($this->config->getConfig('html_input') === Environment::HTML_INPUT_STRIP) {
+        if ($this->config->getConfig('html_input') === EnvironmentInterface::HTML_INPUT_STRIP) {
             return '';
         }
 
-        if ($this->config->getConfig('html_input') === Environment::HTML_INPUT_ESCAPE) {
-            return htmlspecialchars($block->getStringContent(), ENT_NOQUOTES);
+        if ($this->config->getConfig('html_input') === EnvironmentInterface::HTML_INPUT_ESCAPE) {
+            return \htmlspecialchars($block->getStringContent(), ENT_NOQUOTES);
         }
 
         return $block->getStringContent();

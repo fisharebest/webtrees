@@ -31,7 +31,7 @@ class Configuration
      */
     public function mergeConfig(array $config = [])
     {
-        $this->config = array_replace_recursive($this->config, $config);
+        $this->config = \array_replace_recursive($this->config, $config);
     }
 
     /**
@@ -48,14 +48,14 @@ class Configuration
      *
      * @return mixed
      */
-    public function getConfig($key = null, $default = null)
+    public function getConfig(?string $key = null, $default = null)
     {
         if ($key === null) {
             return $this->config;
         }
 
         // accept a/b/c as ['a']['b']['c']
-        if (strpos($key, '/')) {
+        if (\strpos($key, '/')) {
             return $this->getConfigByPath($key, $default);
         }
 
@@ -72,12 +72,12 @@ class Configuration
      *
      * @return mixed
      */
-    protected function getConfigByPath($keyPath, $default = null)
+    protected function getConfigByPath(string $keyPath, $default = null)
     {
-        $keyArr = explode('/', $keyPath);
+        $keyArr = \explode('/', $keyPath);
         $data = $this->config;
         foreach ($keyArr as $k) {
-            if (!is_array($data) || !isset($data[$k])) {
+            if (!\is_array($data) || !isset($data[$k])) {
                 return $default;
             }
 

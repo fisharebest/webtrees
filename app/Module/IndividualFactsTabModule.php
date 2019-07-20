@@ -85,13 +85,26 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         return 1;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * A greyed out tab has no actual content, but may perhaps have
+     * options to create content.
+     *
+     * @param Individual $individual
+     *
+     * @return bool
+     */
     public function isGrayedOut(Individual $individual): bool
     {
         return false;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Generate the HTML content of this tab.
+     *
+     * @param Individual $individual
+     *
+     * @return string
+     */
     public function getTabContent(Individual $individual): string
     {
         // Only include events of close relatives that are between birth and death
@@ -175,13 +188,23 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         return $fact_date->isOK() && Date::compare($min_date, $fact_date) <= 0 && Date::compare($fact_date, $max_date) <= 0;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Is this tab empty? If so, we don't always need to display it.
+     *
+     * @param Individual $individual
+     *
+     * @return bool
+     */
     public function hasTabContent(Individual $individual): bool
     {
         return true;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this tab load asynchronously?
+     *
+     * @return bool
+     */
     public function canLoadAjax(): bool
     {
         return false;

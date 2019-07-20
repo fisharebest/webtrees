@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2018-09-14 10:29+0000\n"
+"PO-Revision-Date: 2019-07-08 12:32+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
-"Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees/sr-Latn/>\n"
+"Language-Team: Serbian (latin) <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/sr_Latn/>\n"
 "Language: sr-Latn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -82,7 +82,7 @@ msgstr "%1$sKB je skinuto za %2$s sekundi."
 #: app/Http/Controllers/Admin/UsersController.php:387
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s ne postoji"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/Admin/UsersController.php:296
@@ -298,9 +298,9 @@ msgstr[2] "%s osoba sa događajima u %s između %s i %s"
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s lokacija je uvezena."
+msgstr[1] "%s lokacije su uvezene."
+msgstr[2] "%s lokacija je uvezeno."
 
 #: app/Module/UserMessagesModule.php:219
 #, php-format
@@ -344,9 +344,9 @@ msgstr "%s jednom uklonjen u opadajućem nizu"
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s skladište je ažurirano."
+msgstr[1] "%s skladišta su ažurirana."
+msgstr[2] "%s skladišta je ažurirano."
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:7
@@ -672,7 +672,7 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:19
 msgid "A URL"
-msgstr ""
+msgstr "URL"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:61
@@ -756,12 +756,12 @@ msgstr ""
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:50
 msgid "A link to the webtrees home page."
-msgstr ""
+msgstr "Link do webtrees internet stranice."
 
 #. I18N: Description of the “BranchesListModule” module
 #: app/Module/BranchesListModule.php:55
 msgid "A list of branches of a family."
-msgstr ""
+msgstr "Lista grana porodica."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:74
@@ -771,7 +771,7 @@ msgstr "Lista promena koja treba biti pregledana od strane moderatora i e-mail o
 #. I18N: Description of the “FamilyListModule” module
 #: app/Module/FamilyListModule.php:56
 msgid "A list of families."
-msgstr ""
+msgstr "Lista porodica."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:57
@@ -781,12 +781,12 @@ msgstr "Lista najčešćih pitanja i odgovora."
 #. I18N: Description of the “IndividualListModule” module
 #: app/Module/IndividualListModule.php:56
 msgid "A list of individuals."
-msgstr ""
+msgstr "Lista pojedinaca."
 
 #. I18N: Description of the “MediaListModule” module
 #: app/Module/MediaListModule.php:57
 msgid "A list of media objects."
-msgstr ""
+msgstr "LIsta medijskih objekata."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:61
@@ -796,17 +796,17 @@ msgstr "Lista zapisa koji su nedavno ažurirani."
 #. I18N: Description of the “RepositoryListModule” module
 #: app/Module/RepositoryListModule.php:56
 msgid "A list of repositories."
-msgstr ""
+msgstr "Lista skladišta."
 
 #. I18N: Description of the “NoteListModule” module
 #: app/Module/NoteListModule.php:56
 msgid "A list of shared notes."
-msgstr ""
+msgstr "Lista deljenih beleški."
 
 #. I18N: Description of the “SourceListModule” module
 #: app/Module/SourceListModule.php:56
 msgid "A list of sources."
-msgstr ""
+msgstr "Lista izvora."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:63
@@ -1153,7 +1153,7 @@ msgstr "Accra, Gana"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:33
 msgid "Action"
-msgstr ""
+msgstr "Akcija"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:196
@@ -1245,7 +1245,7 @@ msgstr "Dodaj %s u isečke"
 
 #: resources/views/modules/relatives/family.phtml:204
 msgid "Add a brother or sister"
-msgstr "Dodaj novog brata ili sestru"
+msgstr "Dodaj brata ili sestru"
 
 #: app/Http/Controllers/EditFamilyController.php:112
 #: resources/views/family-page-children.phtml:34
@@ -1272,7 +1272,7 @@ msgstr "Dodaj oca"
 #: resources/views/modules/favorites/favorites.phtml:42
 #: resources/views/modules/favorites/favorites.phtml:52
 msgid "Add a favorite"
-msgstr "Dodaj novu omiljenu/često posećivanu stranicu"
+msgstr "Dodaj omiljenu stranicu"
 
 #: app/Http/Controllers/EditFamilyController.php:209
 #: app/Http/Controllers/EditIndividualController.php:424
@@ -1290,20 +1290,20 @@ msgstr "Dodaj supruga od već unesenih osoba"
 
 #: resources/views/modules/user_blog/list.phtml:44
 msgid "Add a journal entry"
-msgstr "Dodaj novu stavku u dnevnik"
+msgstr "Dodaj stavku u dnevnik"
 
 #: app/Http/Controllers/EditMediaController.php:79
 #: resources/views/media-page.phtml:166
 #: resources/views/modals/add-media-file.phtml:6
 msgid "Add a media file"
-msgstr ""
+msgstr "Dodaj medijsku datoteku"
 
 #: resources/views/cards/add-media-object.phtml:7
 #: resources/views/family-page.phtml:95
 #: resources/views/individual-page.phtml:78
 #: resources/views/source-page.phtml:81
 msgid "Add a media object"
-msgstr "Dodaj novi medijski objekat"
+msgstr "Dodaj medijski objekat"
 
 #: app/Http/Controllers/EditIndividualController.php:328
 #: resources/views/family-page-grandparents.phtml:54
@@ -1315,7 +1315,7 @@ msgstr "Dodaj majku"
 #: app/Http/Controllers/EditIndividualController.php:640
 #: resources/views/individual-page-menu.phtml:18
 msgid "Add a name"
-msgstr "Dodaj novo ime"
+msgstr "Dodaj ime"
 
 #: resources/views/modules/gedcom_news/list.phtml:45
 msgid "Add a news article"
@@ -1324,7 +1324,7 @@ msgstr "Dodaj članak u novosti"
 #: resources/views/cards/add-note.phtml:7 resources/views/family-page.phtml:72
 #: resources/views/modules/notes/tab.phtml:40
 msgid "Add a note"
-msgstr "Dodaj novu belešku"
+msgstr "Dodaj belešku"
 
 #: resources/views/cards/add-restriction.phtml:7
 #: resources/views/media-page.phtml:156
@@ -1335,7 +1335,7 @@ msgstr "Dodaj ograničenje"
 #: resources/views/family-page.phtml:83 resources/views/media-page.phtml:146
 #: resources/views/modules/notes/tab.phtml:50
 msgid "Add a shared note"
-msgstr "Dodaj novu zajedničku belešku"
+msgstr "Dodaj zajedničku belešku"
 
 #: resources/views/modules/relatives/family.phtml:202
 msgid "Add a son or daughter"
@@ -1345,7 +1345,7 @@ msgstr "Dodaj sina ili kćer"
 #: resources/views/family-page.phtml:107 resources/views/media-page.phtml:136
 #: resources/views/modules/sources_tab/tab.phtml:38
 msgid "Add a source citation"
-msgstr "Dodaj novi citat sa izvora"
+msgstr "Dodaj izvor citata"
 
 #: app/Module/StoriesModule.php:211
 #: resources/views/modules/stories/config.phtml:25
@@ -1356,7 +1356,7 @@ msgstr "Dodaj priču"
 #: app/Http/Controllers/Admin/UsersController.php:275
 #: resources/views/admin/control-panel.phtml:251
 msgid "Add a user"
-msgstr "Dodaj novog korisnika"
+msgstr "Dodaj korisnika"
 
 #: app/Http/Controllers/EditFamilyController.php:206
 #: app/Http/Controllers/EditIndividualController.php:428
@@ -1380,19 +1380,19 @@ msgstr "Dodaj stavku najčešćih pitanja i odgovora"
 
 #: resources/views/cards/add-associate.phtml:7
 msgid "Add an associate"
-msgstr "Dodaj novog saradnika"
+msgstr "Dodaj saradnika"
 
 #: resources/views/cards/add-sour-data-even.phtml:7
 msgid "Add an event"
-msgstr ""
+msgstr "Dodaj događaj"
 
 #: resources/views/modules/custom-css-js/edit.phtml:23
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
-msgstr ""
+msgstr "Dodaj sadržaj na kraju <code>&lt;body&gt;</code> elementa."
 
 #: resources/views/modules/custom-css-js/edit.phtml:11
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr ""
+msgstr "Dodaj sadržaj na kraju <code>&lt;head&gt;</code> elementa."
 
 #: resources/views/edit/paste-fact-row.phtml:7
 msgid "Add from clipboard"
@@ -1400,7 +1400,7 @@ msgstr "Dodaj iz clipboard-a"
 
 #: app/Module/ModuleHistoricEventsTrait.php:38
 msgid "Add historic events to an individual‘s page."
-msgstr ""
+msgstr "Dodajte istorijske događaje na stranicu pojedinca."
 
 #: resources/views/modules/lifespans-chart/page.phtml:19
 msgid "Add individuals"
@@ -1429,7 +1429,7 @@ msgstr "Dodaj narativne priče za osobe u porodičnom stablu."
 
 #: resources/views/admin/map-import-form.phtml:68
 msgid "Add new, and update existing records"
-msgstr ""
+msgstr "Dodaj novi i izmeni postojeće zapise"
 
 #: resources/views/admin/trees-import.phtml:83
 msgid "Add spaces where long lines were wrapped"
@@ -1438,7 +1438,7 @@ msgstr "Dodaj razmake gde su dugačke linije razlomljene"
 #. I18N: Description of the “CSS and JS” module.
 #: app/Module/CustomCssJsModule.php:41
 msgid "Add styling and scripts to every page."
-msgstr ""
+msgstr "Dodaj styling i scripts na svaku stranicu."
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: resources/views/admin/trees-export.phtml:55
@@ -5487,7 +5487,7 @@ msgstr "Egipt"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:447
 msgid "El Salvador"
-msgstr "Salvádor"
+msgstr "Salvador"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2370
@@ -6844,7 +6844,7 @@ msgstr "Kumče"
 
 #: app/Functions/FunctionsPrint.php:362 app/Functions/FunctionsPrint.php:364
 msgid "Google Maps™"
-msgstr "Google Maps™"
+msgstr "Google Mape™"
 
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:783
@@ -13819,7 +13819,7 @@ msgstr ""
 
 #: resources/views/setup/step-2-server-checks.phtml:39
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
-msgstr ""
+msgstr "Potrebna količina memorije i procesora zavise od broja pojedinaca u vašem porodičnom stablu."
 
 #: app/Http/Controllers/MessageController.php:134
 #: app/Http/Controllers/MessageController.php:244
@@ -14619,7 +14619,7 @@ msgstr "Ovaj status ima sve dozvole koje ima status Posetilac, plus dodatni pris
 #: resources/views/setup/step-2-server-checks.phtml:53
 #, php-format
 msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
-msgstr ""
+msgstr "Memorija na serveru je ograničena na %sMB i CPU vreme na %s sekundi."
 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:466
@@ -14731,7 +14731,7 @@ msgstr ""
 #. I18N: gedcom tag TIME
 #: app/GedcomTag.php:1050
 msgid "Time"
-msgstr "Ura"
+msgstr "Vreme"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:39
@@ -14748,7 +14748,7 @@ msgstr "Hronologija"
 #: resources/views/admin/changes-log.phtml:103
 #: resources/views/admin/site-logs.phtml:92
 msgid "Timestamp"
-msgstr ""
+msgstr "Vremenska oznaka"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:488
@@ -16100,7 +16100,7 @@ msgstr ""
 
 #: resources/views/modules/batch_update/admin.phtml:86
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr ""
+msgstr "Vaš korisnički nalog nema odobreno „automatsko odobrenje promena”. Možete menjati zapise samo jedan po jedan."
 
 #: app/Services/ServerCheckService.php:185
 #, php-format

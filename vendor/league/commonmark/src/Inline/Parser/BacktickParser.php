@@ -17,14 +17,13 @@ namespace League\CommonMark\Inline\Parser;
 use League\CommonMark\Inline\Element\Code;
 use League\CommonMark\Inline\Element\Text;
 use League\CommonMark\InlineParserContext;
-use League\CommonMark\Util\RegexHelper;
 
-class BacktickParser extends AbstractInlineParser
+class BacktickParser implements InlineParserInterface
 {
     /**
      * @return string[]
      */
-    public function getCharacters()
+    public function getCharacters(): array
     {
         return ['`'];
     }
@@ -34,7 +33,7 @@ class BacktickParser extends AbstractInlineParser
      *
      * @return bool
      */
-    public function parse(InlineParserContext $inlineContext)
+    public function parse(InlineParserContext $inlineContext): bool
     {
         $cursor = $inlineContext->getCursor();
 
@@ -48,9 +47,14 @@ class BacktickParser extends AbstractInlineParser
 
         while ($matchingTicks = $cursor->match('/`+/m')) {
             if ($matchingTicks === $ticks) {
-                $code = mb_substr($cursor->getLine(), $currentPosition, $cursor->getPosition() - $currentPosition - strlen($ticks), 'utf-8');
-                $c = preg_replace(RegexHelper::REGEX_WHITESPACE, ' ', $code);
-                $inlineContext->getContainer()->appendChild(new Code(trim($c)));
+                $code = \mb_substr($cursor->getLine(), $currentPosition, $cursor->getPosition() - $currentPosition - \strlen($ticks), 'utf-8');
+                $c = \preg_replace('/\n/m', ' ', $code);
+
+                if ($c !== '' && \preg_match('/[^ ]/', $c) && \mb_substr($c, 0, 1) === ' ' && \mb_substr($c, -1, 1) === ' ') {
+                    $c = \mb_substr($c, 1, -1);
+                }
+
+                $inlineContext->getContainer()->appendChild(new Code($c));
 
                 return true;
             }

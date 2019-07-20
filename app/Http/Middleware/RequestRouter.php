@@ -25,7 +25,6 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use function app;
 use function explode;
-use function preg_replace;
 
 /**
  * Take an HTTP request, and forward it to a webtrees RequestHandler.

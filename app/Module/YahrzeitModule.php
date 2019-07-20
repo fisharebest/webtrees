@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\ExtCalendar\JewishCalendar;
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\GregorianDate;
@@ -71,12 +70,12 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param Tree     $tree
      * @param int      $block_id
-     * @param string   $ctype
-     * @param string[] $cfg
+     * @param string   $context
+     * @param string[] $config
      *
      * @return string
      */
-    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
+    public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
         $calendar_service = new CalendarService();
 
@@ -84,7 +83,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
         $calendar  = $this->getBlockSetting($block_id, 'calendar', self::DEFAULT_CALENDAR);
 
-        extract($cfg, EXTR_OVERWRITE);
+        extract($config, EXTR_OVERWRITE);
 
         $jewish_calendar = new JewishCalendar();
         $startjd         = Carbon::now()->julianDay();
@@ -160,25 +159,11 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
                 break;
         }
 
-        if ($ctype !== '') {
-            if ($ctype === 'gedcom' && Auth::isManager($tree)) {
-                $config_url = route('tree-page-block-edit', [
-                    'block_id' => $block_id,
-                    'ged'      => $tree->name(),
-                ]);
-            } elseif ($ctype === 'user' && Auth::check()) {
-                $config_url = route('user-page-block-edit', [
-                    'block_id' => $block_id,
-                    'ged'      => $tree->name(),
-                ]);
-            } else {
-                $config_url = '';
-            }
-
+        if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [
                 'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
-                'config_url' => $config_url,
+                'config_url' => $this->configUrl($tree, $context, $block_id),
                 'title'      => $this->title(),
                 'content'    => $content,
             ]);
@@ -187,19 +172,33 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
         return $content;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Should this block load asynchronously using AJAX?
+     *
+     * Simple blocks are faster in-line, more complex ones can be loaded later.
+     *
+     * @return bool
+     */
     public function loadAjax(): bool
     {
         return true;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this block be shown on the user’s home page?
+     *
+     * @return bool
+     */
     public function isUserBlock(): bool
     {
         return true;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this block be shown on the tree’s home page?
+     *
+     * @return bool
+     */
     public function isTreeBlock(): bool
     {
         return true;
@@ -228,9 +227,9 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree
      * @param int  $block_id
      *
-     * @return void
+     * @return string
      */
-    public function editBlockConfiguration(Tree $tree, int $block_id): void
+    public function editBlockConfiguration(Tree $tree, int $block_id): string
     {
         $calendar  = $this->getBlockSetting($block_id, 'calendar', 'jewish');
         $days      = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
@@ -248,7 +247,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
             'gregorian' => I18N::translate('Gregorian'),
         ];
 
-        echo view('modules/yahrzeit/config', [
+        return view('modules/yahrzeit/config', [
             'calendar'  => $calendar,
             'calendars' => $calendars,
             'days'      => $days,

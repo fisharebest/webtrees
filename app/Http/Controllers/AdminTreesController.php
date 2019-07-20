@@ -44,6 +44,7 @@ use Fisharebest\Webtrees\SurnameTradition;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
@@ -107,16 +108,16 @@ class AdminTreesController extends AbstractBaseController
 
         $q1 = DB::table('individuals')
             ->where('i_file', '=', $tree->id())
-            ->select(['i_id AS xref', 'i_gedcom AS gedcom', DB::raw("'INDI' AS type")]);
+            ->select(['i_id AS xref', 'i_gedcom AS gedcom', new Expression("'INDI' AS type")]);
         $q2 = DB::table('families')
             ->where('f_file', '=', $tree->id())
-            ->select(['f_id AS xref', 'f_gedcom AS gedcom', DB::raw("'FAM' AS type")]);
+            ->select(['f_id AS xref', 'f_gedcom AS gedcom', new Expression("'FAM' AS type")]);
         $q3 = DB::table('media')
             ->where('m_file', '=', $tree->id())
-            ->select(['m_id AS xref', 'm_gedcom AS gedcom', DB::raw("'OBJE' AS type")]);
+            ->select(['m_id AS xref', 'm_gedcom AS gedcom', new Expression("'OBJE' AS type")]);
         $q4 = DB::table('sources')
             ->where('s_file', '=', $tree->id())
-            ->select(['s_id AS xref', 's_gedcom AS gedcom', DB::raw("'SOUR' AS type")]);
+            ->select(['s_id AS xref', 's_gedcom AS gedcom', new Expression("'SOUR' AS type")]);
         $q5 = DB::table('other')
             ->where('o_file', '=', $tree->id())
             ->whereNotIn('o_type', ['HEAD', 'TRLR'])
@@ -125,7 +126,7 @@ class AdminTreesController extends AbstractBaseController
             ->where('gedcom_id', '=', $tree->id())
             ->where('status', '=', 'pending')
             ->orderBy('change_id')
-            ->select(['xref', 'new_gedcom AS gedcom', DB::raw("'' AS type")]);
+            ->select(['xref', 'new_gedcom AS gedcom', new Expression("'' AS type")]);
 
         $rows = $q1
             ->unionAll($q2)
@@ -737,7 +738,7 @@ class AdminTreesController extends AbstractBaseController
                 'i_gedcom',
             ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
-                    DB::raw($tree2->id()),
+                    new Expression($tree2->id()),
                     'i_id',
                     'i_rin',
                     'i_sex',
@@ -755,7 +756,7 @@ class AdminTreesController extends AbstractBaseController
                 'f_numchil',
             ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
-                    DB::raw($tree2->id()),
+                    new Expression($tree2->id()),
                     'f_id',
                     'f_husb',
                     'f_wife',
@@ -772,7 +773,7 @@ class AdminTreesController extends AbstractBaseController
                 's_gedcom',
             ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
-                    DB::raw($tree2->id()),
+                    new Expression($tree2->id()),
                     's_id',
                     's_name',
                     's_gedcom',
@@ -786,7 +787,7 @@ class AdminTreesController extends AbstractBaseController
                 'm_gedcom',
             ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
-                    DB::raw($tree2->id()),
+                    new Expression($tree2->id()),
                     'm_id',
                     'm_gedcom',
                 ])->from('media')
@@ -802,7 +803,7 @@ class AdminTreesController extends AbstractBaseController
                 'descriptive_title',
             ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
-                    DB::raw($tree2->id()),
+                    new Expression($tree2->id()),
                     'm_id',
                     'multimedia_file_refn',
                     'multimedia_format',
@@ -819,7 +820,7 @@ class AdminTreesController extends AbstractBaseController
                 'o_gedcom',
             ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
-                    DB::raw($tree2->id()),
+                    new Expression($tree2->id()),
                     'o_id',
                     'o_type',
                     'o_gedcom',
@@ -844,7 +845,7 @@ class AdminTreesController extends AbstractBaseController
                 'n_soundex_surn_dm',
             ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
-                    DB::raw($tree2->id()),
+                    new Expression($tree2->id()),
                     'n_id',
                     'n_num',
                     'n_type',
@@ -876,7 +877,7 @@ class AdminTreesController extends AbstractBaseController
                 'd_type',
             ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
-                    DB::raw($tree2->id()),
+                    new Expression($tree2->id()),
                     'd_gid',
                     'd_day',
                     'd_month',
@@ -897,7 +898,7 @@ class AdminTreesController extends AbstractBaseController
                 'l_to',
             ], static function (Builder $query) use ($tree1, $tree2): void {
                 $query->select([
-                    DB::raw($tree2->id()),
+                    new Expression($tree2->id()),
                     'l_from',
                     'l_type',
                     'l_to',
@@ -1261,7 +1262,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('i_id', '=', $old_xref)
                         ->update([
                             'i_id'     => $new_xref,
-                            'i_gedcom' => DB::raw("REPLACE(i_gedcom, '0 @$old_xref@ INDI', '0 @$new_xref@ INDI')"),
+                            'i_gedcom' => new Expression("REPLACE(i_gedcom, '0 @$old_xref@ INDI', '0 @$new_xref@ INDI')"),
                         ]);
 
                     DB::table('families')
@@ -1269,7 +1270,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('f_file', '=', $tree->id())
                         ->update([
                             'f_husb'   => $new_xref,
-                            'f_gedcom' => DB::raw("REPLACE(f_gedcom, ' HUSB @$old_xref@', ' HUSB @$new_xref@')"),
+                            'f_gedcom' => new Expression("REPLACE(f_gedcom, ' HUSB @$old_xref@', ' HUSB @$new_xref@')"),
                         ]);
 
                     DB::table('families')
@@ -1277,7 +1278,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('f_file', '=', $tree->id())
                         ->update([
                             'f_wife'   => $new_xref,
-                            'f_gedcom' => DB::raw("REPLACE(f_gedcom, ' WIFE @$old_xref@', ' WIFE @$new_xref@')"),
+                            'f_gedcom' => new Expression("REPLACE(f_gedcom, ' WIFE @$old_xref@', ' WIFE @$new_xref@')"),
                         ]);
 
                     // Other links from families to individuals
@@ -1292,7 +1293,7 @@ class AdminTreesController extends AbstractBaseController
                             ->where('l_type', '=', $tag)
                             ->where('f_file', '=', $tree->id())
                             ->update([
-                                'f_gedcom' => DB::raw("REPLACE(f_gedcom, ' $tag @$old_xref@', ' $tag @$new_xref@')"),
+                                'f_gedcom' => new Expression("REPLACE(f_gedcom, ' $tag @$old_xref@', ' $tag @$new_xref@')"),
                             ]);
                     }
 
@@ -1308,7 +1309,7 @@ class AdminTreesController extends AbstractBaseController
                             ->where('link.l_type', '=', $tag)
                             ->where('i_file', '=', $tree->id())
                             ->update([
-                                'i_gedcom' => DB::raw("REPLACE(i_gedcom, ' $tag @$old_xref@', ' $tag @$new_xref@')"),
+                                'i_gedcom' => new Expression("REPLACE(i_gedcom, ' $tag @$old_xref@', ' $tag @$new_xref@')"),
                             ]);
                     }
 
@@ -1341,7 +1342,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('f_id', '=', $old_xref)
                         ->update([
                             'f_id'     => $new_xref,
-                            'f_gedcom' => DB::raw("REPLACE(f_gedcom, '0 @$old_xref@ FAM', '0 @$new_xref@ FAM')"),
+                            'f_gedcom' => new Expression("REPLACE(f_gedcom, '0 @$old_xref@ FAM', '0 @$new_xref@ FAM')"),
                         ]);
 
                     // Links from individuals to families
@@ -1356,7 +1357,7 @@ class AdminTreesController extends AbstractBaseController
                             ->where('l_type', '=', $tag)
                             ->where('i_file', '=', $tree->id())
                             ->update([
-                                'i_gedcom' => DB::raw("REPLACE(i_gedcom, ' $tag @$old_xref@', ' $tag @$new_xref@')"),
+                                'i_gedcom' => new Expression("REPLACE(i_gedcom, ' $tag @$old_xref@', ' $tag @$new_xref@')"),
                             ]);
                     }
 
@@ -1381,7 +1382,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('s_id', '=', $old_xref)
                         ->update([
                             's_id'     => $new_xref,
-                            's_gedcom' => DB::raw("REPLACE(s_gedcom, '0 @$old_xref@ SOUR', '0 @$new_xref@ SOUR')"),
+                            's_gedcom' => new Expression("REPLACE(s_gedcom, '0 @$old_xref@ SOUR', '0 @$new_xref@ SOUR')"),
                         ]);
 
                     DB::table('individuals')
@@ -1394,7 +1395,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('l_type', '=', 'SOUR')
                         ->where('i_file', '=', $tree->id())
                         ->update([
-                            'i_gedcom' => DB::raw("REPLACE(i_gedcom, ' SOUR @$old_xref@', ' SOUR @$new_xref@')"),
+                            'i_gedcom' => new Expression("REPLACE(i_gedcom, ' SOUR @$old_xref@', ' SOUR @$new_xref@')"),
                         ]);
 
                     DB::table('families')
@@ -1407,7 +1408,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('l_type', '=', 'SOUR')
                         ->where('f_file', '=', $tree->id())
                         ->update([
-                            'f_gedcom' => DB::raw("REPLACE(f_gedcom, ' SOUR @$old_xref@', ' SOUR @$new_xref@')"),
+                            'f_gedcom' => new Expression("REPLACE(f_gedcom, ' SOUR @$old_xref@', ' SOUR @$new_xref@')"),
                         ]);
 
                     DB::table('media')
@@ -1420,7 +1421,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('l_type', '=', 'SOUR')
                         ->where('m_file', '=', $tree->id())
                         ->update([
-                            'm_gedcom' => DB::raw("REPLACE(m_gedcom, ' SOUR @$old_xref@', ' SOUR @$new_xref@')"),
+                            'm_gedcom' => new Expression("REPLACE(m_gedcom, ' SOUR @$old_xref@', ' SOUR @$new_xref@')"),
                         ]);
 
                     DB::table('other')
@@ -1433,7 +1434,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('l_type', '=', 'SOUR')
                         ->where('o_file', '=', $tree->id())
                         ->update([
-                            'o_gedcom' => DB::raw("REPLACE(o_gedcom, ' SOUR @$old_xref@', ' SOUR @$new_xref@')"),
+                            'o_gedcom' => new Expression("REPLACE(o_gedcom, ' SOUR @$old_xref@', ' SOUR @$new_xref@')"),
                         ]);
                     break;
                 case 'REPO':
@@ -1443,7 +1444,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('o_type', '=', 'REPO')
                         ->update([
                             'o_id'     => $new_xref,
-                            'o_gedcom' => DB::raw("REPLACE(o_gedcom, '0 @$old_xref@ REPO', '0 @$new_xref@ REPO')"),
+                            'o_gedcom' => new Expression("REPLACE(o_gedcom, '0 @$old_xref@ REPO', '0 @$new_xref@ REPO')"),
                         ]);
 
                     DB::table('sources')
@@ -1456,7 +1457,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('l_type', '=', 'REPO')
                         ->where('s_file', '=', $tree->id())
                         ->update([
-                            's_gedcom' => DB::raw("REPLACE(s_gedcom, ' REPO @$old_xref@', ' REPO @$new_xref@')"),
+                            's_gedcom' => new Expression("REPLACE(s_gedcom, ' REPO @$old_xref@', ' REPO @$new_xref@')"),
                         ]);
                     break;
 
@@ -1467,7 +1468,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('o_type', '=', 'NOTE')
                         ->update([
                             'o_id'     => $new_xref,
-                            'o_gedcom' => DB::raw("REPLACE(o_gedcom, '0 @$old_xref@ NOTE', '0 @$new_xref@ NOTE')"),
+                            'o_gedcom' => new Expression("REPLACE(o_gedcom, '0 @$old_xref@ NOTE', '0 @$new_xref@ NOTE')"),
                         ]);
 
                     DB::table('individuals')
@@ -1480,7 +1481,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('l_type', '=', 'NOTE')
                         ->where('i_file', '=', $tree->id())
                         ->update([
-                            'i_gedcom' => DB::raw("REPLACE(i_gedcom, ' NOTE @$old_xref@', ' NOTE @$new_xref@')"),
+                            'i_gedcom' => new Expression("REPLACE(i_gedcom, ' NOTE @$old_xref@', ' NOTE @$new_xref@')"),
                         ]);
 
                     DB::table('families')
@@ -1493,7 +1494,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('l_type', '=', 'NOTE')
                         ->where('f_file', '=', $tree->id())
                         ->update([
-                            'f_gedcom' => DB::raw("REPLACE(f_gedcom, ' NOTE @$old_xref@', ' NOTE @$new_xref@')"),
+                            'f_gedcom' => new Expression("REPLACE(f_gedcom, ' NOTE @$old_xref@', ' NOTE @$new_xref@')"),
                         ]);
 
                     DB::table('media')
@@ -1506,7 +1507,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('l_type', '=', 'NOTE')
                         ->where('m_file', '=', $tree->id())
                         ->update([
-                            'm_gedcom' => DB::raw("REPLACE(m_gedcom, ' NOTE @$old_xref@', ' NOTE @$new_xref@')"),
+                            'm_gedcom' => new Expression("REPLACE(m_gedcom, ' NOTE @$old_xref@', ' NOTE @$new_xref@')"),
                         ]);
 
                     DB::table('sources')
@@ -1519,7 +1520,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('l_type', '=', 'NOTE')
                         ->where('s_file', '=', $tree->id())
                         ->update([
-                            's_gedcom' => DB::raw("REPLACE(s_gedcom, ' NOTE @$old_xref@', ' NOTE @$new_xref@')"),
+                            's_gedcom' => new Expression("REPLACE(s_gedcom, ' NOTE @$old_xref@', ' NOTE @$new_xref@')"),
                         ]);
 
                     DB::table('other')
@@ -1532,7 +1533,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('l_type', '=', 'NOTE')
                         ->where('o_file', '=', $tree->id())
                         ->update([
-                            'o_gedcom' => DB::raw("REPLACE(o_gedcom, ' NOTE @$old_xref@', ' NOTE @$new_xref@')"),
+                            'o_gedcom' => new Expression("REPLACE(o_gedcom, ' NOTE @$old_xref@', ' NOTE @$new_xref@')"),
                         ]);
                     break;
 
@@ -1542,7 +1543,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('m_id', '=', $old_xref)
                         ->update([
                             'm_id'     => $new_xref,
-                            'm_gedcom' => DB::raw("REPLACE(m_gedcom, '0 @$old_xref@ OBJE', '0 @$new_xref@ OBJE')"),
+                            'm_gedcom' => new Expression("REPLACE(m_gedcom, '0 @$old_xref@ OBJE', '0 @$new_xref@ OBJE')"),
                         ]);
 
                     DB::table('media_file')
@@ -1562,7 +1563,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('l_type', '=', 'OBJE')
                         ->where('i_file', '=', $tree->id())
                         ->update([
-                            'i_gedcom' => DB::raw("REPLACE(i_gedcom, ' OBJE @$old_xref@', ' OBJE @$new_xref@')"),
+                            'i_gedcom' => new Expression("REPLACE(i_gedcom, ' OBJE @$old_xref@', ' OBJE @$new_xref@')"),
                         ]);
 
                     DB::table('families')
@@ -1575,7 +1576,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('l_type', '=', 'OBJE')
                         ->where('f_file', '=', $tree->id())
                         ->update([
-                            'f_gedcom' => DB::raw("REPLACE(f_gedcom, ' OBJE @$old_xref@', ' OBJE @$new_xref@')"),
+                            'f_gedcom' => new Expression("REPLACE(f_gedcom, ' OBJE @$old_xref@', ' OBJE @$new_xref@')"),
                         ]);
 
                     DB::table('sources')
@@ -1588,7 +1589,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('l_type', '=', 'OBJE')
                         ->where('s_file', '=', $tree->id())
                         ->update([
-                            's_gedcom' => DB::raw("REPLACE(s_gedcom, ' OBJE @$old_xref@', ' OBJE @$new_xref@')"),
+                            's_gedcom' => new Expression("REPLACE(s_gedcom, ' OBJE @$old_xref@', ' OBJE @$new_xref@')"),
                         ]);
 
                     DB::table('other')
@@ -1601,7 +1602,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('l_type', '=', 'OBJE')
                         ->where('o_file', '=', $tree->id())
                         ->update([
-                            'o_gedcom' => DB::raw("REPLACE(o_gedcom, ' OBJE @$old_xref@', ' OBJE @$new_xref@')"),
+                            'o_gedcom' => new Expression("REPLACE(o_gedcom, ' OBJE @$old_xref@', ' OBJE @$new_xref@')"),
                         ]);
                     break;
 
@@ -1612,7 +1613,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('o_type', '=', $type)
                         ->update([
                             'o_id'     => $new_xref,
-                            'o_gedcom' => DB::raw("REPLACE(o_gedcom, '0 @$old_xref@ $type', '0 @$new_xref@ $type')"),
+                            'o_gedcom' => new Expression("REPLACE(o_gedcom, '0 @$old_xref@ $type', '0 @$new_xref@ $type')"),
                         ]);
 
                     DB::table('individuals')
@@ -1625,7 +1626,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('l_type', '=', $type)
                         ->where('i_file', '=', $tree->id())
                         ->update([
-                            'i_gedcom' => DB::raw("REPLACE(i_gedcom, ' $type @$old_xref@', ' $type @$new_xref@')"),
+                            'i_gedcom' => new Expression("REPLACE(i_gedcom, ' $type @$old_xref@', ' $type @$new_xref@')"),
                         ]);
 
                     DB::table('families')
@@ -1638,7 +1639,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('l_type', '=', $type)
                         ->where('f_file', '=', $tree->id())
                         ->update([
-                            'f_gedcom' => DB::raw("REPLACE(f_gedcom, ' $type @$old_xref@', ' $type @$new_xref@')"),
+                            'f_gedcom' => new Expression("REPLACE(f_gedcom, ' $type @$old_xref@', ' $type @$new_xref@')"),
                         ]);
 
                     DB::table('media')
@@ -1651,7 +1652,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('l_type', '=', $type)
                         ->where('m_file', '=', $tree->id())
                         ->update([
-                            'm_gedcom' => DB::raw("REPLACE(m_gedcom, ' $type @$old_xref@', ' $type @$new_xref@')"),
+                            'm_gedcom' => new Expression("REPLACE(m_gedcom, ' $type @$old_xref@', ' $type @$new_xref@')"),
                         ]);
 
                     DB::table('sources')
@@ -1664,7 +1665,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('l_type', '=', $type)
                         ->where('s_file', '=', $tree->id())
                         ->update([
-                            's_gedcom' => DB::raw("REPLACE(s_gedcom, ' $type @$old_xref@', ' $type @$new_xref@')"),
+                            's_gedcom' => new Expression("REPLACE(s_gedcom, ' $type @$old_xref@', ' $type @$new_xref@')"),
                         ]);
 
                     DB::table('other')
@@ -1677,7 +1678,7 @@ class AdminTreesController extends AbstractBaseController
                         ->where('l_type', '=', $type)
                         ->where('o_file', '=', $tree->id())
                         ->update([
-                            'o_gedcom' => DB::raw("REPLACE(o_gedcom, ' $type @$old_xref@', ' $type @$new_xref@')"),
+                            'o_gedcom' => new Expression("REPLACE(o_gedcom, ' $type @$old_xref@', ' $type @$new_xref@')"),
                         ]);
                     break;
             }
@@ -1980,7 +1981,7 @@ class AdminTreesController extends AbstractBaseController
                 ->whereNotIn('o_type', ['HEAD', 'TRLR'])
                 ->select(['o_id AS xref']));
 
-        return DB::table(DB::raw('(' . $subquery1->toSql() . ') AS sub1'))
+        return DB::table(new Expression('(' . $subquery1->toSql() . ') AS sub1'))
             ->mergeBindings($subquery1)
             ->joinSub($subquery2, 'sub2', 'other_xref', '=', 'xref')
             ->count();
@@ -2000,8 +2001,8 @@ class AdminTreesController extends AbstractBaseController
         $sources = DB::table('sources')
             ->where('s_file', '=', $tree->id())
             ->groupBy('s_name')
-            ->having(DB::raw('COUNT(s_id)'), '>', 1)
-            ->select([DB::raw('GROUP_CONCAT(s_id) AS xrefs')])
+            ->having(new Expression('COUNT(s_id)'), '>', 1)
+            ->select([new Expression('GROUP_CONCAT(s_id) AS xrefs')])
             ->pluck('xrefs')
             ->map(static function (string $xrefs) use ($tree): array {
                 return array_map(static function (string $xref) use ($tree): Source {
@@ -2025,8 +2026,8 @@ class AdminTreesController extends AbstractBaseController
             ->groupBy('d_fact')
             ->groupBy('n_type')
             ->groupBy('n_full')
-            ->having(DB::raw('COUNT(DISTINCT d_gid)'), '>', 1)
-            ->select([DB::raw('GROUP_CONCAT(d_gid) AS xrefs')])
+            ->having(new Expression('COUNT(DISTINCT d_gid)'), '>', 1)
+            ->select([new Expression('GROUP_CONCAT(d_gid) AS xrefs')])
             ->pluck('xrefs')
             ->map(static function (string $xrefs) use ($tree): array {
                 return array_map(static function (string $xref) use ($tree): Individual {
@@ -2037,10 +2038,10 @@ class AdminTreesController extends AbstractBaseController
 
         $families = DB::table('families')
             ->where('f_file', '=', $tree->id())
-            ->groupBy(DB::raw('LEAST(f_husb, f_wife)'))
-            ->groupBy(DB::raw('GREATEST(f_husb, f_wife)'))
-            ->having(DB::raw('COUNT(f_id)'), '>', 1)
-            ->select([DB::raw('GROUP_CONCAT(f_id) AS xrefs')])
+            ->groupBy(new Expression('LEAST(f_husb, f_wife)'))
+            ->groupBy(new Expression('GREATEST(f_husb, f_wife)'))
+            ->having(new Expression('COUNT(f_id)'), '>', 1)
+            ->select([new Expression('GROUP_CONCAT(f_id) AS xrefs')])
             ->pluck('xrefs')
             ->map(static function (string $xrefs) use ($tree): array {
                 return array_map(static function (string $xref) use ($tree): Family {
@@ -2053,8 +2054,8 @@ class AdminTreesController extends AbstractBaseController
             ->where('m_file', '=', $tree->id())
             ->where('descriptive_title', '<>', '')
             ->groupBy('descriptive_title')
-            ->having(DB::raw('COUNT(m_id)'), '>', 1)
-            ->select([DB::raw('GROUP_CONCAT(m_id) AS xrefs')])
+            ->having(new Expression('COUNT(m_id)'), '>', 1)
+            ->select([new Expression('GROUP_CONCAT(m_id) AS xrefs')])
             ->pluck('xrefs')
             ->map(static function (string $xrefs) use ($tree): array {
                 return array_map(static function (string $xref) use ($tree): Media {
@@ -2083,16 +2084,16 @@ class AdminTreesController extends AbstractBaseController
     {
         $subquery1 = DB::table('individuals')
             ->where('i_file', '=', $tree->id())
-            ->select(['i_id AS xref', DB::raw("'INDI' AS type")])
+            ->select(['i_id AS xref', new Expression("'INDI' AS type")])
             ->union(DB::table('families')
                 ->where('f_file', '=', $tree->id())
-                ->select(['f_id AS xref', DB::raw("'FAM' AS type")]))
+                ->select(['f_id AS xref', new Expression("'FAM' AS type")]))
             ->union(DB::table('sources')
                 ->where('s_file', '=', $tree->id())
-                ->select(['s_id AS xref', DB::raw("'SOUR' AS type")]))
+                ->select(['s_id AS xref', new Expression("'SOUR' AS type")]))
             ->union(DB::table('media')
                 ->where('m_file', '=', $tree->id())
-                ->select(['m_id AS xref', DB::raw("'OBJE' AS type")]))
+                ->select(['m_id AS xref', new Expression("'OBJE' AS type")]))
             ->union(DB::table('other')
                 ->where('o_file', '=', $tree->id())
                 ->whereNotIn('o_type', ['HEAD', 'TRLR'])
@@ -2118,7 +2119,7 @@ class AdminTreesController extends AbstractBaseController
                 ->whereNotIn('o_type', ['HEAD', 'TRLR'])
                 ->select(['o_id AS xref']));
 
-        return DB::table(DB::raw('(' . $subquery1->toSql() . ') AS sub1'))
+        return DB::table(new Expression('(' . $subquery1->toSql() . ') AS sub1'))
             ->mergeBindings($subquery1)
             ->joinSub($subquery2, 'sub2', 'other_xref', '=', 'xref')
             ->pluck('type', 'xref')

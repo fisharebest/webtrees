@@ -53,9 +53,9 @@ class ReferenceParser
         }
 
         // We need to trim the opening and closing brackets from the previously-matched text
-        $label = substr($cursor->getPreviousText(), 1, -1);
+        $label = \substr($cursor->getPreviousText(), 1, -1);
 
-        if (preg_match('/[^\s]/', $label) === 0) {
+        if (\preg_match('/[^\s]/', $label) === 0) {
             $cursor->restoreState($initialState);
 
             return false;
@@ -74,17 +74,19 @@ class ReferenceParser
         $cursor->advanceToNextNonSpaceOrNewline();
 
         $destination = LinkParserHelper::parseLinkDestination($cursor);
-        if (empty($destination)) {
+        if ($destination === null) {
             $cursor->restoreState($initialState);
 
             return false;
         }
 
         $previousState = $cursor->saveState();
-        $cursor->advanceToNextNonSpaceOrNewline();
 
-        $title = LinkParserHelper::parseLinkTitle($cursor);
-        if ($title === null) {
+        if ($cursor->advanceToNextNonSpaceOrNewline() > 0) {
+            $title = LinkParserHelper::parseLinkTitle($cursor);
+        }
+
+        if (!isset($title)) {
             $title = '';
             $cursor->restoreState($previousState);
         }

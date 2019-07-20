@@ -11,6 +11,7 @@
 namespace Carbon\Traits;
 
 use Carbon\CarbonInterface;
+use DateTimeInterface;
 
 /**
  * Trait Options.
@@ -343,7 +344,7 @@ trait Options
      *
      * @param array $settings
      *
-     * @return $this
+     * @return $this|static
      */
     public function settings(array $settings)
     {
@@ -356,7 +357,7 @@ trait Options
         $this->localMacros = $settings['macros'] ?? null;
         $this->localGenericMacros = $settings['genericMacros'] ?? null;
         $this->localFormatFunction = $settings['formatFunction'] ?? null;
-        $date = $this;
+
         if (isset($settings['locale'])) {
             $locales = $settings['locale'];
 
@@ -364,13 +365,14 @@ trait Options
                 $locales = [$locales];
             }
 
-            $date = $date->locale(...$locales);
-        }
-        if (isset($settings['timezone'])) {
-            $date = $date->shiftTimezone($settings['timezone']);
+            $this->locale(...$locales);
         }
 
-        return $date;
+        if (isset($settings['timezone'])) {
+            return $this->shiftTimezone($settings['timezone']);
+        }
+
+        return $this;
     }
 
     /**
@@ -411,8 +413,24 @@ trait Options
      */
     public function __debugInfo()
     {
-        return array_filter(get_object_vars($this), function ($var) {
+        $infos = array_filter(get_object_vars($this), function ($var) {
             return $var;
         });
+
+        // @codeCoverageIgnoreStart
+
+        if ($this instanceof CarbonInterface || $this instanceof DateTimeInterface) {
+            if (!isset($infos['date'])) {
+                $infos['date'] = $this->format(CarbonInterface::MOCK_DATETIME_FORMAT);
+            }
+
+            if (!isset($infos['timezone'])) {
+                $infos['timezone'] = $this->tzName;
+            }
+        }
+
+        // @codeCoverageIgnoreEnd
+
+        return $infos;
     }
 }

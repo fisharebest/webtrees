@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
-use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class UserWelcomeModule
@@ -74,12 +73,12 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param Tree     $tree
      * @param int      $block_id
-     * @param string   $ctype
-     * @param string[] $cfg
+     * @param string   $context
+     * @param string[] $config
      *
      * @return string
      */
-    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
+    public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
         $gedcomid   = $tree->getUserPreference(Auth::user(), 'gedcomid');
         $individual = Individual::getInstance($gedcomid, $tree);
@@ -118,7 +117,7 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
         /* I18N: A %s is the user’s name */
         $title = I18N::translate('Welcome %s', $real_name);
 
-        if ($ctype !== '') {
+        if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [
                 'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
@@ -131,45 +130,35 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
         return $content;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Should this block load asynchronously using AJAX?
+     *
+     * Simple blocks are faster in-line, more complex ones can be loaded later.
+     *
+     * @return bool
+     */
     public function loadAjax(): bool
     {
         return false;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this block be shown on the user’s home page?
+     *
+     * @return bool
+     */
     public function isUserBlock(): bool
     {
         return true;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Can this block be shown on the tree’s home page?
+     *
+     * @return bool
+     */
     public function isTreeBlock(): bool
     {
         return false;
-    }
-
-    /**
-     * Update the configuration for a block.
-     *
-     * @param ServerRequestInterface $request
-     * @param int     $block_id
-     *
-     * @return void
-     */
-    public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
-    {
-    }
-
-    /**
-     * An HTML form to edit block settings
-     *
-     * @param Tree $tree
-     * @param int  $block_id
-     *
-     * @return void
-     */
-    public function editBlockConfiguration(Tree $tree, int $block_id): void
-    {
     }
 }

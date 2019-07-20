@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\PlaceHierarchyListModule;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
 
 /**
@@ -146,7 +147,7 @@ class Place
         return DB::table('places')
             ->where('p_file', '=', $this->tree->id())
             ->where('p_parent_id', '=', $this->id())
-            ->orderBy(DB::raw('p_place /*! COLLATE ' . I18N::collation() . ' */'))
+            ->orderBy(new Expression('p_place /*! COLLATE ' . I18N::collation() . ' */'))
             ->pluck('p_place')
             ->map(function (string $place) use ($parent_text): Place {
                 return new self($place . $parent_text, $this->tree);

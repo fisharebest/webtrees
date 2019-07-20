@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
@@ -57,11 +58,11 @@ class GedcomFileController extends AbstractBaseController
             $import_offset = (int) DB::table('gedcom_chunk')
                 ->where('gedcom_id', '=', $tree->id())
                 ->where('imported', '=', '1')
-                ->sum(DB::raw('LENGTH(chunk_data)'));
+                ->sum(new Expression('LENGTH(chunk_data)'));
 
             $import_total = (int) DB::table('gedcom_chunk')
                 ->where('gedcom_id', '=', $tree->id())
-                ->sum(DB::raw('LENGTH(chunk_data)'));
+                ->sum(new Expression('LENGTH(chunk_data)'));
 
             // Finished?
             if ($import_offset === $import_total) {
@@ -115,7 +116,7 @@ class GedcomFileController extends AbstractBaseController
                         case 'ASCII':
                             DB::table('gedcom_chunk')
                                 ->where('gedcom_id', '=', $tree->id())
-                                ->update(['chunk_data' => DB::raw('CONVERT(CONVERT(chunk_data USING ascii) USING utf8)')]);
+                                ->update(['chunk_data' => new Expression('CONVERT(CONVERT(chunk_data USING ascii) USING utf8)')]);
                             break;
                         case 'IBMPC':   // IBMPC, IBM WINDOWS and MS-DOS could be anything. Mostly it means CP850.
                         case 'IBM WINDOWS':
@@ -125,7 +126,7 @@ class GedcomFileController extends AbstractBaseController
                             // CP850 has extra letters with diacritics to replace box-drawing chars in CP437.
                             DB::table('gedcom_chunk')
                                 ->where('gedcom_id', '=', $tree->id())
-                                ->update(['chunk_data' => DB::raw('CONVERT(CONVERT(chunk_data USING cp850) USING utf8)')]);
+                                ->update(['chunk_data' => new Expression('CONVERT(CONVERT(chunk_data USING cp850) USING utf8)')]);
                             break;
                         case 'ANSI': // ANSI could be anything. Most applications seem to treat it as latin1.
                         case 'WINDOWS':
@@ -137,7 +138,7 @@ class GedcomFileController extends AbstractBaseController
                             // Convert from ISO-8859-1 (western european) to UTF8.
                             DB::table('gedcom_chunk')
                                 ->where('gedcom_id', '=', $tree->id())
-                                ->update(['chunk_data' => DB::raw('CONVERT(CONVERT(chunk_data USING latin1) USING utf8)')]);
+                                ->update(['chunk_data' => new Expression('CONVERT(CONVERT(chunk_data USING latin1) USING utf8)')]);
                             break;
                         case 'CP1250':
                         case 'ISO8859-2':
@@ -147,13 +148,13 @@ class GedcomFileController extends AbstractBaseController
                             // Convert from ISO-8859-2 (eastern european) to UTF8.
                             DB::table('gedcom_chunk')
                                 ->where('gedcom_id', '=', $tree->id())
-                                ->update(['chunk_data' => DB::raw('CONVERT(CONVERT(chunk_data USING latin2) USING utf8)')]);
+                                ->update(['chunk_data' => new Expression('CONVERT(CONVERT(chunk_data USING latin2) USING utf8)')]);
                             break;
                         case 'MACINTOSH':
                             // Convert from MAC Roman to UTF8.
                             DB::table('gedcom_chunk')
                                 ->where('gedcom_id', '=', $tree->id())
-                                ->update(['chunk_data' => DB::raw('CONVERT(CONVERT(chunk_data USING macroman) USING utf8)')]);
+                                ->update(['chunk_data' => new Expression('CONVERT(CONVERT(chunk_data USING macroman) USING utf8)')]);
                             break;
                         case 'UTF8':
                         case 'UTF-8':

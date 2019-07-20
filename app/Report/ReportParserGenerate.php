@@ -36,6 +36,7 @@ use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Str;
 use stdClass;
@@ -1863,7 +1864,7 @@ class ReportParserGenerate extends ReportParserBase
             case 'pending':
                 $xrefs = DB::table('change')
                     ->whereIn('change_id', function (Builder $query): void {
-                        $query->select(DB::raw('MAX(change_id)'))
+                        $query->select(new Expression('MAX(change_id)'))
                             ->from('change')
                             ->where('gedcom_id', '=', $this->tree->id())
                             ->where('status', '=', 'pending')

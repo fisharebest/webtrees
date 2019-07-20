@@ -10,8 +10,6 @@
  */
 namespace Carbon\Traits;
 
-use Carbon\CarbonInterface;
-
 trait Test
 {
     ///////////////////////////////////////////////////////////////////
@@ -21,7 +19,7 @@ trait Test
     /**
      * A test Carbon instance to be returned when now instances are created.
      *
-     * @var static|CarbonInterface
+     * @var static
      */
     protected static $testNow;
 
@@ -42,7 +40,7 @@ trait Test
      *
      * /!\ Use this method for unit tests only.
      *
-     * @param CarbonInterface|string|null $testNow real or mock Carbon instance
+     * @param static|string|null $testNow real or mock Carbon instance
      */
     public static function setTestNow($testNow = null)
     {
@@ -53,7 +51,7 @@ trait Test
      * Get the Carbon instance (real or mock) to be returned when a "now"
      * instance is created.
      *
-     * @return static|CarbonInterface the current instance used for testing
+     * @return static the current instance used for testing
      */
     public static function getTestNow()
     {
@@ -71,17 +69,24 @@ trait Test
         return static::getTestNow() !== null;
     }
 
+    protected static function handleMockTimezone($tz, &$testInstance)
+    {
+        //shift the time according to the given time zone
+        if ($tz !== null && $tz !== static::getTestNow()->getTimezone()) {
+            $testInstance = $testInstance->setTimezone($tz);
+
+            return $tz;
+        }
+
+        return $testInstance->getTimezone();
+    }
+
     protected static function mockConstructorParameters(&$time, &$tz)
     {
         /** @var \Carbon\CarbonImmutable|\Carbon\Carbon $testInstance */
         $testInstance = clone static::getTestNow();
 
-        //shift the time according to the given time zone
-        if ($tz !== null && $tz !== static::getTestNow()->getTimezone()) {
-            $testInstance = $testInstance->setTimezone($tz);
-        } else {
-            $tz = $testInstance->getTimezone();
-        }
+        $tz = static::handleMockTimezone($tz, $testInstance);
 
         if (static::hasRelativeKeywords($time)) {
             $testInstance = $testInstance->modify($time);

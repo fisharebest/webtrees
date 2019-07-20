@@ -39,6 +39,7 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -50,14 +51,18 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class HomePageController extends AbstractBaseController
 {
+    // We show blocks in two columns on the tree/user pages.
+    private const MAIN_BLOCKS = 'main';
+    private const SIDE_BLOCKS = 'side';
+
     private const DEFAULT_TREE_PAGE_BLOCKS = [
-        'main' => [
+        self::MAIN_BLOCKS => [
             1 => FamilyTreeStatisticsModule::class,
             2 => FamilyTreeNewsModule::class,
             3 => FamilyTreeFavoritesModule::class,
             4 => ReviewChangesModule::class,
         ],
-        'side' => [
+        self::SIDE_BLOCKS => [
             1 => WelcomeBlockModule::class,
             2 => SlideShowModule::class,
             3 => OnThisDayModule::class,
@@ -66,12 +71,12 @@ class HomePageController extends AbstractBaseController
     ];
 
     private const DEFAULT_USER_PAGE_BLOCKS = [
-        'main' => [
+        self::MAIN_BLOCKS => [
             1 => OnThisDayModule::class,
             2 => UserMessagesModule::class,
             3 => UserFavoritesModule::class,
         ],
-        'side' => [
+        self::SIDE_BLOCKS => [
             1 => UserWelcomeModule::class,
             2 => SlideShowModule::class,
             3 => UpcomingAnniversariesModule::class,
@@ -281,7 +286,7 @@ class HomePageController extends AbstractBaseController
                 ['gedcom_id', 'location', 'block_order', 'module_name'],
                 static function (Builder $query) use ($tree): void {
                     $query
-                        ->select([DB::raw($tree->id()), 'location', 'block_order', 'module_name'])
+                        ->select([new Expression($tree->id()), 'location', 'block_order', 'module_name'])
                         ->from('block')
                         ->where('gedcom_id', '=', -1);
                 }
@@ -289,8 +294,8 @@ class HomePageController extends AbstractBaseController
         }
 
         return $this->viewResponse('tree-page', [
-            'main_blocks' => $this->treeBlocks($tree->id(), 'main'),
-            'side_blocks' => $this->treeBlocks($tree->id(), 'side'),
+            'main_blocks' => $this->treeBlocks($tree->id(), self::MAIN_BLOCKS),
+            'side_blocks' => $this->treeBlocks($tree->id(), self::SIDE_BLOCKS),
             'title'       => e($tree->title()),
             'meta_robots' => 'index,follow',
         ]);
@@ -316,7 +321,7 @@ class HomePageController extends AbstractBaseController
         $module = $this->getBlockModule($tree, $block_id);
 
         $html = view('layouts/ajax', [
-            'content' => $module->getBlock($tree, $block_id, 'gedcom'),
+            'content' => $module->getBlock($tree, $block_id, ModuleBlockInterface::CONTEXT_TREE_PAGE),
         ]);
 
         return response($html);
@@ -331,8 +336,8 @@ class HomePageController extends AbstractBaseController
     {
         $this->checkDefaultTreeBlocksExist();
 
-        $main_blocks = $this->treeBlocks(-1, 'main');
-        $side_blocks = $this->treeBlocks(-1, 'side');
+        $main_blocks = $this->treeBlocks(-1, self::MAIN_BLOCKS);
+        $side_blocks = $this->treeBlocks(-1, self::SIDE_BLOCKS);
 
         $all_blocks = $this->availableTreeBlocks();
         $title      = I18N::translate('Set the default blocks for new family trees');
@@ -359,8 +364,8 @@ class HomePageController extends AbstractBaseController
      */
     public function treePageDefaultUpdate(ServerRequestInterface $request): ResponseInterface
     {
-        $main_blocks = $request->getParsedBody()['main'] ?? [];
-        $side_blocks = $request->getParsedBody()['side'] ?? [];
+        $main_blocks = $request->getParsedBody()[self::MAIN_BLOCKS] ?? [];
+        $side_blocks = $request->getParsedBody()[self::SIDE_BLOCKS] ?? [];
 
         $this->updateTreeBlocks(-1, $main_blocks, $side_blocks);
 
@@ -376,8 +381,8 @@ class HomePageController extends AbstractBaseController
      */
     public function treePageEdit(Tree $tree): ResponseInterface
     {
-        $main_blocks = $this->treeBlocks($tree->id(), 'main');
-        $side_blocks = $this->treeBlocks($tree->id(), 'side');
+        $main_blocks = $this->treeBlocks($tree->id(), self::MAIN_BLOCKS);
+        $side_blocks = $this->treeBlocks($tree->id(), self::SIDE_BLOCKS);
 
         $all_blocks = $this->availableTreeBlocks();
         $title      = I18N::translate('Change the “Home page” blocks');
@@ -410,19 +415,19 @@ class HomePageController extends AbstractBaseController
         $defaults = (bool) ($params['defaults'] ?? false);
 
         if ($defaults) {
-            $main_blocks = $this->treeBlocks(-1, 'main')
+            $main_blocks = $this->treeBlocks(-1, self::MAIN_BLOCKS)
                 ->map(static function (ModuleBlockInterface $block) {
                     return $block->name();
                 })
                 ->all();
-            $side_blocks = $this->treeBlocks(-1, 'side')
+            $side_blocks = $this->treeBlocks(-1, self::SIDE_BLOCKS)
                 ->map(static function (ModuleBlockInterface $block) {
                     return $block->name();
                 })
                 ->all();
         } else {
-            $main_blocks = $params['main'] ?? [];
-            $side_blocks = $params['side'] ?? [];
+            $main_blocks = $params[self::MAIN_BLOCKS] ?? [];
+            $side_blocks = $params[self::SIDE_BLOCKS] ?? [];
         }
 
         $this->updateTreeBlocks($tree->id(), $main_blocks, $side_blocks);
@@ -451,7 +456,7 @@ class HomePageController extends AbstractBaseController
                 ['user_id', 'location', 'block_order', 'module_name'],
                 static function (Builder $query) use ($user): void {
                     $query
-                        ->select([DB::raw($user->id()), 'location', 'block_order', 'module_name'])
+                        ->select([new Expression($user->id()), 'location', 'block_order', 'module_name'])
                         ->from('block')
                         ->where('user_id', '=', -1);
                 }
@@ -459,8 +464,8 @@ class HomePageController extends AbstractBaseController
         }
 
         return $this->viewResponse('user-page', [
-            'main_blocks' => $this->userBlocks($user->id(), 'main'),
-            'side_blocks' => $this->userBlocks($user->id(), 'side'),
+            'main_blocks' => $this->userBlocks($user->id(), self::MAIN_BLOCKS),
+            'side_blocks' => $this->userBlocks($user->id(), self::SIDE_BLOCKS),
             'title'       => I18N::translate('My page'),
         ]);
     }
@@ -486,7 +491,7 @@ class HomePageController extends AbstractBaseController
         $module = $this->getBlockModule($tree, $block_id);
 
         $html = view('layouts/ajax', [
-            'content' => $module->getBlock($tree, $block_id, 'user'),
+            'content' => $module->getBlock($tree, $block_id, ModuleBlockInterface::CONTEXT_USER_PAGE),
         ]);
 
         return response($html);
@@ -501,8 +506,8 @@ class HomePageController extends AbstractBaseController
     {
         $this->checkDefaultUserBlocksExist();
 
-        $main_blocks = $this->userBlocks(-1, 'main');
-        $side_blocks = $this->userBlocks(-1, 'side');
+        $main_blocks = $this->userBlocks(-1, self::MAIN_BLOCKS);
+        $side_blocks = $this->userBlocks(-1, self::SIDE_BLOCKS);
         $all_blocks  = $this->availableUserBlocks();
         $title       = I18N::translate('Set the default blocks for new users');
         $url_cancel  = route('admin-users');
@@ -528,8 +533,8 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageDefaultUpdate(ServerRequestInterface $request): ResponseInterface
     {
-        $main_blocks = $request->getParsedBody()['main'] ?? [];
-        $side_blocks = $request->getParsedBody()['side'] ?? [];
+        $main_blocks = $request->getParsedBody()[self::MAIN_BLOCKS] ?? [];
+        $side_blocks = $request->getParsedBody()[self::SIDE_BLOCKS] ?? [];
 
         $this->updateUserBlocks(-1, $main_blocks, $side_blocks);
 
@@ -546,8 +551,8 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageEdit(Tree $tree, UserInterface $user): ResponseInterface
     {
-        $main_blocks = $this->userBlocks($user->id(), 'main');
-        $side_blocks = $this->userBlocks($user->id(), 'side');
+        $main_blocks = $this->userBlocks($user->id(), self::MAIN_BLOCKS);
+        $side_blocks = $this->userBlocks($user->id(), self::SIDE_BLOCKS);
         $all_blocks  = $this->availableUserBlocks();
         $title       = I18N::translate('Change the “My page” blocks');
         $url_cancel  = route('user-page', ['ged' => $tree->name()]);
@@ -580,19 +585,19 @@ class HomePageController extends AbstractBaseController
         $defaults = (bool) ($params['defaults'] ?? false);
 
         if ($defaults) {
-            $main_blocks = $this->userBlocks(-1, 'main')
+            $main_blocks = $this->userBlocks(-1, self::MAIN_BLOCKS)
                 ->map(static function (ModuleBlockInterface $block) {
                     return $block->name();
                 })
                 ->all();
-            $side_blocks = $this->userBlocks(-1, 'side')
+            $side_blocks = $this->userBlocks(-1, self::SIDE_BLOCKS)
                 ->map(static function (ModuleBlockInterface $block) {
                     return $block->name();
                 })
                 ->all();
         } else {
-            $main_blocks = $params['main'] ?? [];
-            $side_blocks = $params['side'] ?? [];
+            $main_blocks = $params[self::MAIN_BLOCKS] ?? [];
+            $side_blocks = $params[self::SIDE_BLOCKS] ?? [];
         }
 
         $this->updateUserBlocks($user->id(), $main_blocks, $side_blocks);
@@ -611,8 +616,13 @@ class HomePageController extends AbstractBaseController
     {
         $user_id     = (int) $request->getQueryParams()['user_id'];
         $user        = $this->user_service->find($user_id);
-        $main_blocks = $this->userBlocks($user->id(), 'main');
-        $side_blocks = $this->userBlocks($user->id(), 'side');
+
+        if ($user === null) {
+            throw new NotFoundHttpException(I18N::translate('%1$s does not exist', 'user_id:' . $user_id));
+        }
+
+        $main_blocks = $this->userBlocks($user->id(), self::MAIN_BLOCKS);
+        $side_blocks = $this->userBlocks($user->id(), self::SIDE_BLOCKS);
         $all_blocks  = $this->availableUserBlocks();
         $title       = I18N::translate('Change the blocks on this user’s “My page”') . ' - ' . e($user->userName());
         $url_cancel  = route('admin-users');
@@ -639,8 +649,8 @@ class HomePageController extends AbstractBaseController
     public function userPageUserUpdate(ServerRequestInterface $request): ResponseInterface
     {
         $user_id     = (int) $request->getQueryParams()['user_id'];
-        $main_blocks = $request->getParsedBody()['main'] ?? [];
-        $side_blocks = $request->getParsedBody()['side'] ?? [];
+        $main_blocks = $request->getParsedBody()[self::MAIN_BLOCKS] ?? [];
+        $side_blocks = $request->getParsedBody()[self::SIDE_BLOCKS] ?? [];
 
         $this->updateUserBlocks($user_id, $main_blocks, $side_blocks);
 
@@ -739,7 +749,7 @@ class HomePageController extends AbstractBaseController
 
         // No default settings?  Create them.
         if (!$has_blocks) {
-            foreach (['main', 'side'] as $location) {
+            foreach ([self::MAIN_BLOCKS, self::SIDE_BLOCKS] as $location) {
                 foreach (self::DEFAULT_TREE_PAGE_BLOCKS[$location] as $block_order => $class) {
                     $module_name = $this->module_service->findByInterface($class)->first()->name();
 
@@ -786,7 +796,7 @@ class HomePageController extends AbstractBaseController
 
         // No default settings?  Create them.
         if (!$has_blocks) {
-            foreach (['main', 'side'] as $location) {
+            foreach ([self::MAIN_BLOCKS, self::SIDE_BLOCKS] as $location) {
                 foreach (self::DEFAULT_USER_PAGE_BLOCKS[$location] as $block_order => $class) {
                     $module_name = $this->module_service->findByInterface($class)->first()->name();
 
@@ -830,8 +840,8 @@ class HomePageController extends AbstractBaseController
         }
 
         $updates = [
-            'main' => $main_blocks,
-            'side' => $side_blocks,
+            self::MAIN_BLOCKS => $main_blocks,
+            self::SIDE_BLOCKS => $side_blocks,
         ];
 
         foreach ($updates as $location => $updated_blocks) {
@@ -886,8 +896,8 @@ class HomePageController extends AbstractBaseController
         }
 
         $updates = [
-            'main' => $main_blocks,
-            'side' => $side_blocks,
+            self::MAIN_BLOCKS => $main_blocks,
+            self::SIDE_BLOCKS => $side_blocks,
         ];
 
         foreach ($updates as $location => $updated_blocks) {

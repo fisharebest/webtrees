@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Statistics\Repository\PlaceRepository;
 use Fisharebest\Webtrees\Statistics\Service\CountryService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use stdClass;
 
@@ -232,7 +233,7 @@ class ChartDistribution
                     ->on('n_file', '=', 'i_file');
             })
             ->where('n_file', '=', $this->tree->id())
-            ->where(DB::raw('n_surn /*! COLLATE ' . I18N::collation() . ' */'), '=', $surname);
+            ->where(new Expression('n_surn /*! COLLATE ' . I18N::collation() . ' */'), '=', $surname);
 
         return $query->get()->all();
     }

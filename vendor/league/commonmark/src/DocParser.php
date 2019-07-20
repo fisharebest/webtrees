@@ -18,11 +18,12 @@ use League\CommonMark\Block\Element\AbstractBlock;
 use League\CommonMark\Block\Element\Document;
 use League\CommonMark\Block\Element\InlineContainerInterface;
 use League\CommonMark\Block\Element\Paragraph;
+use League\CommonMark\Block\Element\StringContainerInterface;
 
 class DocParser
 {
     /**
-     * @var Environment
+     * @var EnvironmentInterface
      */
     protected $environment;
 
@@ -37,9 +38,9 @@ class DocParser
     private $maxNestingLevel;
 
     /**
-     * @param Environment $environment
+     * @param EnvironmentInterface $environment
      */
-    public function __construct(Environment $environment)
+    public function __construct(EnvironmentInterface $environment)
     {
         $this->environment = $environment;
         $this->inlineParserEngine = new InlineParserEngine($environment);
@@ -47,9 +48,9 @@ class DocParser
     }
 
     /**
-     * @return Environment
+     * @return EnvironmentInterface
      */
-    public function getEnvironment()
+    public function getEnvironment(): EnvironmentInterface
     {
         return $this->environment;
     }
@@ -59,15 +60,15 @@ class DocParser
      *
      * @return string[]
      */
-    private function preProcessInput($input)
+    private function preProcessInput(string $input): array
     {
-        $lines = preg_split('/\r\n|\n|\r/', $input);
+        $lines = \preg_split('/\r\n|\n|\r/', $input);
 
         // Remove any newline which appears at the very end of the string.
         // We've already split the document by newlines, so we can simply drop
         // any empty element which appears on the end.
-        if (end($lines) === '') {
-            array_pop($lines);
+        if (\end($lines) === '') {
+            \array_pop($lines);
         }
 
         return $lines;
@@ -78,10 +79,10 @@ class DocParser
      *
      * @return Document
      */
-    public function parse($input)
+    public function parse(string $input): Document
     {
         $context = new Context(new Document(), $this->getEnvironment());
-        $context->setEncoding(mb_detect_encoding($input, 'ASCII,UTF-8', true) ?: 'ISO-8859-1');
+        $context->setEncoding(\mb_detect_encoding($input, 'ASCII,UTF-8', true) ?: 'ISO-8859-1');
 
         $lines = $this->preProcessInput($input);
         foreach ($lines as $line) {
@@ -89,7 +90,7 @@ class DocParser
             $this->incorporateLine($context);
         }
 
-        $lineCount = count($lines);
+        $lineCount = \count($lines);
         while ($tip = $context->getTip()) {
             $tip->finalize($context, $lineCount);
         }
@@ -115,10 +116,7 @@ class DocParser
 
         // What remains at the offset is a text line.  Add the text to the appropriate container.
         // First check for a lazy paragraph continuation:
-        if ($this->isLazyParagraphContinuation($context, $cursor)) {
-            // lazy paragraph continuation
-            $context->getTip()->addLine($cursor->getRemainder());
-
+        if ($this->handleLazyParagraphContinuation($context, $cursor)) {
             return;
         }
 
@@ -130,13 +128,14 @@ class DocParser
         $this->setAndPropagateLastLineBlank($context, $cursor);
 
         // Handle any remaining cursor contents
-        if ($context->getContainer()->acceptsLines()) {
+        if ($context->getContainer() instanceof StringContainerInterface) {
             $context->getContainer()->handleRemainingContents($context, $cursor);
         } elseif (!$cursor->isBlank()) {
             // Create paragraph container for line
-            $context->addBlock(new Paragraph());
+            $p = new Paragraph();
+            $context->addBlock($p);
             $cursor->advanceToNextNonSpaceOrTab();
-            $context->getTip()->addLine($cursor->getRemainder());
+            $p->addLine($cursor->getRemainder());
         }
     }
 
@@ -209,7 +208,7 @@ class DocParser
                 }
             }
 
-            if (!$parsed || $context->getContainer()->acceptsLines() || $context->getTip()->getDepth() >= $this->maxNestingLevel) {
+            if (!$parsed || $context->getContainer() instanceof StringContainerInterface || $context->getTip()->getDepth() >= $this->maxNestingLevel) {
                 $context->setBlocksParsed(true);
                 break;
             }
@@ -222,12 +221,22 @@ class DocParser
      *
      * @return bool
      */
-    private function isLazyParagraphContinuation(ContextInterface $context, Cursor $cursor)
+    private function handleLazyParagraphContinuation(ContextInterface $context, Cursor $cursor): bool
     {
-        return $context->getTip() instanceof Paragraph &&
+        $tip = $context->getTip();
+
+        if ($tip instanceof Paragraph &&
             !$context->getBlockCloser()->areAllClosed() &&
             !$cursor->isBlank() &&
-            count($context->getTip()->getStrings()) > 0;
+            \count($tip->getStrings()) > 0) {
+
+            // lazy paragraph continuation
+            $tip->addLine($cursor->getRemainder());
+
+            return true;
+        }
+
+        return false;
     }
 
     /**

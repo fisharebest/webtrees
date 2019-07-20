@@ -31,13 +31,10 @@ class CodeRenderer implements InlineRendererInterface
     public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer)
     {
         if (!($inline instanceof Code)) {
-            throw new \InvalidArgumentException('Incompatible inline type: ' . get_class($inline));
+            throw new \InvalidArgumentException('Incompatible inline type: ' . \get_class($inline));
         }
 
-        $attrs = [];
-        foreach ($inline->getData('attributes', []) as $key => $value) {
-            $attrs[$key] = Xml::escape($value);
-        }
+        $attrs = $inline->getData('attributes', []);
 
         return new HtmlElement('code', $attrs, Xml::escape($inline->getContent()));
     }

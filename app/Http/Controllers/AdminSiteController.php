@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
 use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -251,7 +252,7 @@ class AdminSiteController extends AbstractBaseController
         $query = DB::table('log')
             ->leftJoin('user', 'user.user_id', '=', 'log.user_id')
             ->leftJoin('gedcom', 'gedcom.gedcom_id', '=', 'log.gedcom_id')
-            ->select(['log.*', DB::raw("COALESCE(user_name, '<none>') AS user_name"), DB::raw("COALESCE(gedcom_name, '<none>') AS gedcom_name")]);
+            ->select(['log.*', new Expression("COALESCE(user_name, '<none>') AS user_name"), new Expression("COALESCE(gedcom_name, '<none>') AS gedcom_name")]);
 
         if ($from !== '') {
             $query->where('log_time', '>=', $from);

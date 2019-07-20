@@ -41,7 +41,6 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 use function addcslashes;
-use function date_create;
 use function file_get_contents;
 use function response;
 use function strlen;

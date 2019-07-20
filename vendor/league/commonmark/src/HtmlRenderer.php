@@ -15,7 +15,9 @@
 namespace League\CommonMark;
 
 use League\CommonMark\Block\Element\AbstractBlock;
+use League\CommonMark\Block\Renderer\BlockRendererInterface;
 use League\CommonMark\Inline\Element\AbstractInline;
+use League\CommonMark\Inline\Renderer\InlineRendererInterface;
 
 /**
  * Renders a parsed AST to HTML
@@ -23,14 +25,14 @@ use League\CommonMark\Inline\Element\AbstractInline;
 class HtmlRenderer implements ElementRendererInterface
 {
     /**
-     * @var Environment
+     * @var EnvironmentInterface
      */
     protected $environment;
 
     /**
-     * @param Environment $environment
+     * @param EnvironmentInterface $environment
      */
-    public function __construct(Environment $environment)
+    public function __construct(EnvironmentInterface $environment)
     {
         $this->environment = $environment;
     }
@@ -39,9 +41,9 @@ class HtmlRenderer implements ElementRendererInterface
      * @param string $option
      * @param mixed  $default
      *
-     * @return mixed
+     * @return mixed|null
      */
-    public function getOption($option, $default = null)
+    public function getOption(string $option, $default = null)
     {
         return $this->environment->getConfig('renderer/' . $option, $default);
     }
@@ -53,14 +55,18 @@ class HtmlRenderer implements ElementRendererInterface
      *
      * @return string
      */
-    protected function renderInline(AbstractInline $inline)
+    protected function renderInline(AbstractInline $inline): string
     {
-        $renderer = $this->environment->getInlineRendererForClass(get_class($inline));
-        if (!$renderer) {
-            throw new \RuntimeException('Unable to find corresponding renderer for inline type ' . get_class($inline));
+        $renderers = $this->environment->getInlineRenderersForClass(get_class($inline));
+
+        /** @var InlineRendererInterface $renderer */
+        foreach ($renderers as $renderer) {
+            if (($result = $renderer->render($inline, $this)) !== null) {
+                return $result;
+            }
         }
 
-        return $renderer->render($inline, $this);
+        throw new \RuntimeException('Unable to find corresponding renderer for inline type ' . \get_class($inline));
     }
 
     /**
@@ -68,14 +74,14 @@ class HtmlRenderer implements ElementRendererInterface
      *
      * @return string
      */
-    public function renderInlines($inlines)
+    public function renderInlines(iterable $inlines): string
     {
         $result = [];
         foreach ($inlines as $inline) {
             $result[] = $this->renderInline($inline);
         }
 
-        return implode('', $result);
+        return \implode('', $result);
     }
 
     /**
@@ -86,14 +92,18 @@ class HtmlRenderer implements ElementRendererInterface
      *
      * @return string
      */
-    public function renderBlock(AbstractBlock $block, $inTightList = false)
+    public function renderBlock(AbstractBlock $block, bool $inTightList = false): string
     {
-        $renderer = $this->environment->getBlockRendererForClass(get_class($block));
-        if (!$renderer) {
-            throw new \RuntimeException('Unable to find corresponding renderer for block type ' . get_class($block));
+        $renderers = $this->environment->getBlockRenderersForClass(\get_class($block));
+
+        /** @var BlockRendererInterface $renderer */
+        foreach ($renderers as $renderer) {
+            if (($result = $renderer->render($block, $this, $inTightList)) !== null) {
+                return $result;
+            }
         }
 
-        return $renderer->render($block, $this, $inTightList);
+        throw new \RuntimeException('Unable to find corresponding renderer for block type ' . \get_class($block));
     }
 
     /**
@@ -102,7 +112,7 @@ class HtmlRenderer implements ElementRendererInterface
      *
      * @return string
      */
-    public function renderBlocks($blocks, $inTightList = false)
+    public function renderBlocks(iterable $blocks, bool $inTightList = false): string
     {
         $result = [];
         foreach ($blocks as $block) {
@@ -111,6 +121,6 @@ class HtmlRenderer implements ElementRendererInterface
 
         $separator = $this->getOption('block_separator', "\n");
 
-        return implode($separator, $result);
+        return \implode($separator, $result);
     }
 }

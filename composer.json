@@ -51,7 +51,8 @@
         "illuminate/container": "~5.8",
         "illuminate/database": "~5.8",
         "illuminate/support": "~5.8",
-        "league/commonmark": "~0.18",
+        "league/commonmark": "~0.19",
+        "league/commonmark-ext-table": "*",
         "league/flysystem": "~1.0",
         "league/flysystem-cached-adapter": "~1.0",
         "league/flysystem-ziparchive": "~1.0",
@@ -70,8 +71,7 @@
         "symfony/http-kernel": "~4.2",
         "symfony/polyfill-mbstring": "~1.11",
         "symfony/polyfill-php72": "~1.11",
-        "tecnickcom/tcpdf": "~6.2",
-        "webuni/commonmark-table-extension": "~0.9"
+        "tecnickcom/tcpdf": "~6.2"
     },
     "require-dev": {
         "ext-pdo_sqlite": "*",

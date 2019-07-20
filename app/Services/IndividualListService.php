@@ -120,10 +120,10 @@ class IndividualListService
         }
 
         $rows = $query2
-            ->select([DB::raw('SUBSTR(n_surn, 1, 1) AS initial'), DB::raw('COUNT(*) AS count')])
+            ->select([new Expression('SUBSTR(n_surn, 1, 1) AS initial'), new Expression('COUNT(*) AS count')])
             ->groupBy('initial')
-            ->orderBy(DB::raw("CASE initial WHEN '' THEN 1 ELSE 0 END"))
-            ->orderBy(DB::raw("CASE initial WHEN '@' THEN 1 ELSE 0 END"))
+            ->orderBy(new Expression("CASE initial WHEN '' THEN 1 ELSE 0 END"))
+            ->orderBy(new Expression("CASE initial WHEN '@' THEN 1 ELSE 0 END"))
             ->orderBy('initial')
             ->pluck('count', 'initial');
 
@@ -189,10 +189,10 @@ class IndividualListService
         }
 
         $rows = $query
-            ->select([DB::raw('UPPER(SUBSTR(n_givn, 1, 1)) AS initial'), DB::raw('COUNT(*) AS count')])
+            ->select([new Expression('UPPER(SUBSTR(n_givn, 1, 1)) AS initial'), new Expression('COUNT(*) AS count')])
             ->groupBy('initial')
-            ->orderBy(DB::raw("CASE initial WHEN '' THEN 1 ELSE 0 END"))
-            ->orderBy(DB::raw("CASE initial WHEN '@' THEN 1 ELSE 0 END"))
+            ->orderBy(new Expression("CASE initial WHEN '' THEN 1 ELSE 0 END"))
+            ->orderBy(new Expression("CASE initial WHEN '@' THEN 1 ELSE 0 END"))
             ->orderBy('initial')
             ->pluck('count', 'initial');
 
@@ -220,9 +220,9 @@ class IndividualListService
         $query = DB::table('name')
             ->where('n_file', '=', $this->tree->id())
             ->select([
-                DB::raw('UPPER(n_surn /*! COLLATE ' . I18N::collation() . ' */) AS n_surn'),
-                DB::raw('n_surname /*! COLLATE utf8_bin */ AS n_surname'),
-                DB::raw('COUNT(*) AS total'),
+                new Expression('UPPER(n_surn /*! COLLATE ' . I18N::collation() . ' */) AS n_surn'),
+                new Expression('n_surname /*! COLLATE utf8_bin */ AS n_surname'),
+                new Expression('COUNT(*) AS total'),
             ])
             ->groupBy(['n_surn'])
             ->groupBy(['n_surname'])
@@ -303,9 +303,9 @@ class IndividualListService
         }
 
         $query
-            ->orderBy(DB::raw("CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END"))
+            ->orderBy(new Expression("CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END"))
             ->orderBy($n_surn)
-            ->orderBy(DB::raw("CASE n_givn WHEN '@N.N.' THEN 1 ELSE 0 END"))
+            ->orderBy(new Expression("CASE n_givn WHEN '@N.N.' THEN 1 ELSE 0 END"))
             ->orderBy($n_givn);
 
         $list = [];
@@ -364,7 +364,7 @@ class IndividualListService
      */
     private function fieldWithCollation(string $field, string $collation): Expression
     {
-        return DB::raw($field . ' /*! COLLATE ' . $collation . ' */');
+        return new Expression($field . ' /*! COLLATE ' . $collation . ' */');
     }
 
     /**

@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Closure;
 use Fisharebest\Algorithm\Dijkstra;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
@@ -457,13 +458,30 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                 }
             }
         }
-        // Extract the paths from the queue, removing duplicates.
+        // Extract the paths from the queue.
         $paths = [];
         foreach ($queue as $next) {
-            $paths[implode('-', $next['path'])] = $next['path'];
+            // The Dijkstra library does not use strict types, and converts
+            // numeric array keys (XREFs) from strings to integers;
+            $path = array_map($this->stringMapper(), $next['path']);
+
+            // Remove duplicates
+            $paths[implode('-', $next['path'])] = $path;
         }
 
         return $paths;
+    }
+
+    /**
+     * Convert numeric values to strings
+     *
+     * @return Closure
+     */
+    private function stringMapper(): Closure
+    {
+        return static function ($xref) {
+            return (string) $xref;
+        };
     }
 
     /**

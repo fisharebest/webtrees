@@ -22,6 +22,8 @@ use InvalidArgumentException;
  *
  * Depends on the following methods:
  *
+ * @method CarbonInterface        resolveCarbon($date)
+ * @method CarbonInterface        copy()
  * @method CarbonInterface        nowWithSameTz()
  * @method static CarbonInterface yesterday($timezone = null)
  * @method static CarbonInterface tomorrow($timezone = null)
@@ -223,6 +225,9 @@ trait Comparison
      */
     public function between($date1, $date2, $equal = true): bool
     {
+        $date1 = $this->resolveCarbon($date1);
+        $date2 = $this->resolveCarbon($date2);
+
         if ($date1->greaterThan($date2)) {
             $temp = $date1;
             $date1 = $date2;
@@ -569,8 +574,7 @@ trait Comparison
             // To ensure we're really testing against our desired format, perform an additional regex validation.
 
             // Preg quote, but remove escaped backslashes since we'll deal with escaped characters in the format string.
-            $quotedFormat = str_replace('\\\\', '\\',
-                preg_quote($format, '/'));
+            $quotedFormat = str_replace('\\\\', '\\', preg_quote($format, '/'));
 
             // Build the regex string
             $regex = '';
@@ -579,6 +583,7 @@ trait Comparison
                 // We're doing an extra ++$i here to increment the loop by 2.
                 if ($quotedFormat[$i] === '\\') {
                     $regex .= '\\'.$quotedFormat[++$i];
+
                     continue;
                 }
 
@@ -590,5 +595,96 @@ trait Comparison
         }
 
         return false;
+    }
+
+    /**
+     * Returns true if the current date matches the given string.
+     *
+     * @example
+     * ```
+     * var_dump(Carbon::parse('2019-06-02 12:23:45')->is('2019')); // true
+     * var_dump(Carbon::parse('2019-06-02 12:23:45')->is('2018')); // false
+     * var_dump(Carbon::parse('2019-06-02 12:23:45')->is('2019-06')); // true
+     * var_dump(Carbon::parse('2019-06-02 12:23:45')->is('06-02')); // true
+     * var_dump(Carbon::parse('2019-06-02 12:23:45')->is('2019-06-02')); // true
+     * var_dump(Carbon::parse('2019-06-02 12:23:45')->is('Sunday')); // true
+     * var_dump(Carbon::parse('2019-06-02 12:23:45')->is('June')); // true
+     * var_dump(Carbon::parse('2019-06-02 12:23:45')->is('12:23')); // true
+     * var_dump(Carbon::parse('2019-06-02 12:23:45')->is('12:23:45')); // true
+     * var_dump(Carbon::parse('2019-06-02 12:23:45')->is('12:23:00')); // false
+     * var_dump(Carbon::parse('2019-06-02 12:23:45')->is('12h')); // true
+     * var_dump(Carbon::parse('2019-06-02 15:23:45')->is('3pm')); // true
+     * var_dump(Carbon::parse('2019-06-02 15:23:45')->is('3am')); // false
+     * ```
+     *
+     * @param string $tester day name, month name, hour, date, etc. as string
+     *
+     * @return bool
+     */
+    public function is(string $tester)
+    {
+        $tester = trim($tester);
+
+        if (preg_match('/^\d+$/', $tester)) {
+            return $this->year === intval($tester);
+        }
+
+        if (preg_match('/^\d{3,}-\d{1,2}$/', $tester)) {
+            return $this->isSameMonth(static::parse($tester));
+        }
+
+        if (preg_match('/^\d{1,2}-\d{1,2}$/', $tester)) {
+            return $this->isSameDay(static::parse($this->year.'-'.$tester));
+        }
+
+        $modifier = preg_replace('/(\d)h$/i', '$1:00', $tester);
+
+        /* @var CarbonInterface $max */
+        $median = static::parse('5555-06-15 12:30:30.555555')->modify($modifier);
+        $current = $this->copy();
+        /* @var CarbonInterface $other */
+        $other = $this->copy()->modify($modifier);
+
+        if ($current->eq($other)) {
+            return true;
+        }
+
+        if (preg_match('/\d:\d{1,2}:\d{1,2}$/', $tester)) {
+            return $current->startOfSecond()->eq($other);
+        }
+
+        if (preg_match('/\d:\d{1,2}$/', $tester)) {
+            return $current->startOfMinute()->eq($other);
+        }
+
+        if (preg_match('/\d(h|am|pm)$/', $tester)) {
+            return $current->startOfHour()->eq($other);
+        }
+
+        if (preg_match(
+            '/^(january|february|march|april|may|june|july|august|september|october|november|december)\s+\d+$/i',
+            $tester
+        )) {
+            return $current->startOfMonth()->eq($other->startOfMonth());
+        }
+
+        $units = [
+            'month' => [1, 'year'],
+            'day' => [1, 'month'],
+            'hour' => [0, 'day'],
+            'minute' => [0, 'hour'],
+            'second' => [0, 'minute'],
+            'microsecond' => [0, 'second'],
+        ];
+
+        foreach ($units as $unit => [$minimum, $startUnit]) {
+            if ($median->$unit === $minimum) {
+                $current = $current->startOf($startUnit);
+
+                break;
+            }
+        }
+
+        return $current->eq($other);
     }
 }

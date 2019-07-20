@@ -21,7 +21,7 @@ class DelimiterStack
      */
     protected $top;
 
-    public function getTop()
+    public function getTop(): ?Delimiter
     {
         return $this->top;
     }
@@ -42,7 +42,7 @@ class DelimiterStack
      *
      * @return Delimiter|null
      */
-    public function findEarliest(Delimiter $stackBottom = null)
+    public function findEarliest(Delimiter $stackBottom = null): ?Delimiter
     {
         $delimiter = $this->top;
         while ($delimiter !== null && $delimiter->getPrevious() !== $stackBottom) {
@@ -82,7 +82,7 @@ class DelimiterStack
     /**
      * @param string $character
      */
-    public function removeEarlierMatches($character)
+    public function removeEarlierMatches(string $character)
     {
         $opener = $this->top;
         while ($opener !== null) {
@@ -99,15 +99,15 @@ class DelimiterStack
      *
      * @return Delimiter|null
      */
-    public function searchByCharacter($characters)
+    public function searchByCharacter($characters): ?Delimiter
     {
-        if (!is_array($characters)) {
+        if (!\is_array($characters)) {
             $characters = [$characters];
         }
 
         $opener = $this->top;
         while ($opener !== null) {
-            if (in_array($opener->getChar(), $characters)) {
+            if (\in_array($opener->getChar(), $characters)) {
                 break;
             }
             $opener = $opener->getPrevious();
@@ -121,13 +121,13 @@ class DelimiterStack
      * @param callable        $callback
      * @param Delimiter       $stackBottom
      */
-    public function iterateByCharacters($characters, $callback, Delimiter $stackBottom = null)
+    public function iterateByCharacters($characters, callable $callback, Delimiter $stackBottom = null)
     {
-        if (!is_array($characters)) {
+        if (!\is_array($characters)) {
             $characters = [$characters];
         }
 
-        $openersBottom = array_fill_keys($characters, $stackBottom);
+        $openersBottom = \array_fill_keys($characters, $stackBottom);
 
         // Find first closer above stackBottom
         $closer = $this->findEarliest($stackBottom);
@@ -135,7 +135,7 @@ class DelimiterStack
         while ($closer !== null) {
             $closerChar = $closer->getChar();
 
-            if (!$closer->canClose() || !in_array($closerChar, $characters)) {
+            if (!$closer->canClose() || !\in_array($closerChar, $characters)) {
                 $closer = $closer->getNext();
                 continue;
             }
@@ -169,18 +169,20 @@ class DelimiterStack
      *
      * @return Delimiter|null
      */
-    protected function findMatchingOpener(Delimiter $closer, $openersBottom, Delimiter $stackBottom = null, &$oddMatch = false)
+    protected function findMatchingOpener(Delimiter $closer, array $openersBottom, Delimiter $stackBottom = null, bool &$oddMatch = false): ?Delimiter
     {
         $closerChar = $closer->getChar();
         $opener = $closer->getPrevious();
 
         while ($opener !== null && $opener !== $stackBottom && $opener !== $openersBottom[$closerChar]) {
-            $oddMatch = ($closer->canOpen() || $opener->canClose()) && ($opener->getOrigDelims() + $closer->getOrigDelims()) % 3 === 0;
+            $oddMatch = ($closer->canOpen() || $opener->canClose()) && $closer->getOrigDelims() % 3 !== 0 && ($opener->getOrigDelims() + $closer->getOrigDelims()) % 3 === 0;
             if ($opener->getChar() === $closerChar && $opener->canOpen() && !$oddMatch) {
                 return $opener;
             }
 
             $opener = $opener->getPrevious();
         }
+
+        return null;
     }
 }

@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -134,29 +135,29 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
         } else {
             $count_individuals = DB::table('individuals')
                 ->groupBy('i_file')
-                ->select([DB::raw('COUNT(*) AS total'), 'i_file'])
+                ->select([new Expression('COUNT(*) AS total'), 'i_file'])
                 ->pluck('total', 'i_file');
 
             $count_media = DB::table('media')
                 ->groupBy('m_file')
-                ->select([DB::raw('COUNT(*) AS total'), 'm_file'])
+                ->select([new Expression('COUNT(*) AS total'), 'm_file'])
                 ->pluck('total', 'm_file');
 
             $count_notes = DB::table('other')
                 ->where('o_type', '=', 'NOTE')
                 ->groupBy('o_file')
-                ->select([DB::raw('COUNT(*) AS total'), 'o_file'])
+                ->select([new Expression('COUNT(*) AS total'), 'o_file'])
                 ->pluck('total', 'o_file');
 
             $count_repositories = DB::table('other')
                 ->where('o_type', '=', 'REPO')
                 ->groupBy('o_file')
-                ->select([DB::raw('COUNT(*) AS total'), 'o_file'])
+                ->select([new Expression('COUNT(*) AS total'), 'o_file'])
                 ->pluck('total', 'o_file');
 
             $count_sources = DB::table('sources')
                 ->groupBy('s_file')
-                ->select([DB::raw('COUNT(*) AS total'), 's_file'])
+                ->select([new Expression('COUNT(*) AS total'), 's_file'])
                 ->pluck('total', 's_file');
 
             $content = view('modules/sitemap/sitemap-index.xml', [

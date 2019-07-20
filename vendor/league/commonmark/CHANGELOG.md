@@ -1,8 +1,90 @@
 # Change Log
 All notable changes to this project will be documented in this file.
-Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
+Updates should follow the [Keep a CHANGELOG](https://keepachangelog.com/) principles.
 
 ## [Unreleased][unreleased]
+
+## [0.19.3] - 2019-06-18
+
+### Fixed
+
+ - Fixed bug where elements with content of `"0"` wouldn't be rendered (#376)
+
+## [0.19.2] - 2019-05-19
+
+### Fixed
+
+ - Fixed bug where default values for nested configuration paths were inadvertently cast to strings
+
+## [0.19.1] - 2019-04-10
+
+### Added
+
+ - Added the missing `addExtension()` method to the new `ConfigurableEnvironmentInterface`
+
+### Fixed
+
+ - Fixed extensions not being able to register other extensions
+
+## [0.19.0] - 2019-04-10
+
+### Added
+
+ - The priority of parsers, processors, and renderers can now be set when `add()`ing them; you no longer need to rely on the order in which they are added
+ - Added support for trying multiple parsers per block/inline
+ - Extracted two new base interfaces from `Environment`:
+   - `EnvironmentInterface`
+   - `ConfigurableEnvironmentInterface`
+ - Extracted a new `AbstractStringContainerBlock` base class and corresponding `StringContainerInterface` from `AbstractBlock`
+ - Added `Cursor::getEncoding()` method
+ - Added `.phpstorm.meta.php` file for better IDE code completion
+ - Made some minor optimizations here and there
+
+### Changed
+
+ - Pretty much everything now has parameter and return types (#346)
+ - Attributes passed to `HtmlElement` will now be escaped by default
+ - `Environment` is now a `final` class
+ - `Environment::getBlockRendererForClass()` was replaced with `Environment::getBlockRenderersForClass()` (note the added `s`)
+ - `Environment::getInlineRendererForClass()` was replaced with `Environment::getInlineRenderersForClass()` (note the added `s`)
+ - The `Environment::get____()` methods now return an iterator instead of an array
+ - `Context::addBlock()` no longer returns the same block instance you passed into the method, as this served no useful purpose
+ - `RegexHelper::isEscapable()` no longer accepts `null` values
+ - `Node::replaceChildren()` now accepts any type of `iterable`, not just `array`s
+ - Some block elements now extend `AbstractStringContainerBlock` instead of `AbstractBlock`
+   - `InlineContainerInterface` now extends the new `StringContainerInterface`
+   - The `handleRemainingContents()` method (formerly on `AbstractBlock`, now on `AbstractStringContainerBlock`) is now an `abstract method
+   - The `InlineParserContext` constructor now requires an `AbstractStringContainerBlock` instead of an `AbstractBlock`
+
+### Removed
+
+ - Removed support for PHP 5.6 and 7.0 (#346)
+ - Removed support for `add()`ing parsers with just the target block/inline class name - you need to include the full namespace now
+ - Removed the following unused methods from `Environment`:
+   - `getInlineParser($name)`
+   - `getInlineParsers()`
+   - `createInlineParserEngine()`
+ - Removed the unused `getName()` methods:
+   - `AbstractBlockParser::getName()`
+   - `AbstractInlineParser::getName()`
+   - `BlockParserInterface::getName()`
+   - `InlinerParserInterface::getName()`
+ - Removed the now-useless classes:
+   - `AbstractBlockParser`
+   - `AbstractInlinerParser`
+   - `InlineContainer`
+ - Removed the `AbstractBlock::acceptsLines()` method
+ - Removed the now-useless constructor from `AbstractBlock`
+ - Removed previously-deprecated functionality:
+   - `InlineContainer` class
+   - `RegexHelper::$instance`
+   - `RegexHelper::getInstance()`
+   - `RegexHelper::getPartialRegex()`
+   - `RegexHelper::getHtmlTagRegex()`
+   - `RegexHelper::getLinkTitleRegex()`
+   - `RegexHelper::getLinkDestinationBracesRegex()`
+   - `RegexHelper::getThematicBreakRegex()`
+ - Removed the second `$preserveEntities` parameter from `Xml:escape()`
 
 ## [0.18.5] - 2019-03-28
 
@@ -708,7 +790,11 @@ An unused constant and static method were deprecated and will be removed in a fu
 ### Added
  - Initial commit (compatible with jgm/stmd:spec.txt @ 0275f34)
 
-[unreleased]: https://github.com/thephpleague/commonmark/compare/0.18.5...HEAD
+[unreleased]: https://github.com/thephpleague/commonmark/compare/0.19.3...HEAD
+[0.19.3]: https://github.com/thephpleague/commonmark/compare/0.19.2...0.19.3
+[0.19.2]: https://github.com/thephpleague/commonmark/compare/0.19.1...0.19.2
+[0.19.1]: https://github.com/thephpleague/commonmark/compare/0.19.0...0.19.1
+[0.19.0]: https://github.com/thephpleague/commonmark/compare/0.18.5...0.19.0
 [0.18.5]: https://github.com/thephpleague/commonmark/compare/0.18.4...0.18.5
 [0.18.4]: https://github.com/thephpleague/commonmark/compare/0.18.3...0.18.4
 [0.18.3]: https://github.com/thephpleague/commonmark/compare/0.18.2...0.18.3

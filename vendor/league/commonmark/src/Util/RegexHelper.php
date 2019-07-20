@@ -103,7 +103,7 @@ final class RegexHelper
     const LINK_TITLE = 26;
 
     // Partial regular expressions (wrap with `/` on each side before use)
-    const PARTIAL_ENTITY = '&(?:#x[a-f0-9]{1,8}|#[0-9]{1,8}|[a-z][a-z0-9]{1,31});';
+    const PARTIAL_ENTITY = '&(?:#x[a-f0-9]{1,6}|#[0-9]{1,7}|[a-z][a-z0-9]{1,31});';
     const PARTIAL_ESCAPABLE = '[!"#$%&\'()*+,.\/:;<=>?@[\\\\\]^_`{|}~-]';
     const PARTIAL_ESCAPED_CHAR = '\\\\' . self::PARTIAL_ESCAPABLE;
     const PARTIAL_IN_DOUBLE_QUOTES = '"(' . self::PARTIAL_ESCAPED_CHAR . '|[^"\x00])*"';
@@ -112,7 +112,7 @@ final class RegexHelper
     const PARTIAL_REG_CHAR = '[^\\\\()\x00-\x20]';
     const PARTIAL_IN_PARENS_NOSP = '\((' . self::PARTIAL_REG_CHAR . '|' . self::PARTIAL_ESCAPED_CHAR . '|\\\\)*\)';
     const PARTIAL_TAGNAME = '[A-Za-z][A-Za-z0-9-]*';
-    const PARTIAL_BLOCKTAGNAME = '(?:address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h1|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option|p|param|section|source|title|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul)';
+    const PARTIAL_BLOCKTAGNAME = '(?:address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h1|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|nav|noframes|ol|optgroup|option|p|param|section|source|title|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul)';
     const PARTIAL_ATTRIBUTENAME = '[a-zA-Z_:][a-zA-Z0-9:._-]*';
     const PARTIAL_UNQUOTEDVALUE = '[^"\'=<>`\x00-\x20]+';
     const PARTIAL_SINGLEQUOTEDVALUE = '\'[^\']*\'';
@@ -151,135 +151,16 @@ final class RegexHelper
     const REGEX_WHITESPACE = '/[ \t\n\x0b\x0c\x0d]+/';
     const REGEX_UNICODE_WHITESPACE_CHAR = '/^\pZ|\s/u';
     const REGEX_THEMATIC_BREAK = '/^(?:(?:\*[ \t]*){3,}|(?:_[ \t]*){3,}|(?:-[ \t]*){3,})[ \t]*$/';
-    const REGEX_LINK_DESTINATION_BRACES = '/^(?:<(?:[^ <>\\t\\n\\\\\\x00]|\\\\.)*>)/';
+    const REGEX_LINK_DESTINATION_BRACES = '/^(?:<(?:[^<>\\n\\\\\\x00]|\\\\.)*>)/';
 
     /**
-     * @deprecated Instance methods will be removed in 0.18 or 1.0 (whichever comes first)
-     */
-    protected static $instance;
-
-    /**
-     * @return RegexHelper
-     *
-     * @deprecated Instances are no longer needed and will be removed in 0.18 or 1.0
-     */
-    public static function getInstance()
-    {
-        @trigger_error('RegexHelper no longer uses the singleton pattern. Directly grab the REGEX_ or PARTIAL_ constant you need instead.', E_USER_DEPRECATED);
-
-        if (self::$instance === null) {
-            self::$instance = new self();
-        }
-
-        return self::$instance;
-    }
-
-    /**
-     * @param string|null $character
+     * @param string $character
      *
      * @return bool
      */
-    public static function isEscapable($character)
+    public static function isEscapable(string $character): bool
     {
-        if ($character === null) {
-            return false;
-        }
-
-        return preg_match('/' . self::PARTIAL_ESCAPABLE . '/', $character) === 1;
-    }
-
-    /**
-     * Returns a partial regex
-     *
-     * It'll need to be wrapped with /.../ before use
-     *
-     * @param int $const
-     *
-     * @return string
-     *
-     * @deprecated Just grab the constant directly
-     */
-    public function getPartialRegex($const)
-    {
-        @trigger_error('RegexHelper no longer supports the getPartialRegex() function. Directly grab the PARTIAL_ constant you need instead.', E_USER_DEPRECATED);
-
-        switch ($const) {
-            case self::ESCAPABLE: return self::PARTIAL_ESCAPABLE;
-            case self::ESCAPED_CHAR: return self::PARTIAL_ESCAPED_CHAR;
-            case self::IN_DOUBLE_QUOTES: return self::PARTIAL_IN_DOUBLE_QUOTES;
-            case self::IN_SINGLE_QUOTES: return self::PARTIAL_IN_SINGLE_QUOTES;
-            case self::IN_PARENS: return self::PARTIAL_IN_PARENS;
-            case self::REG_CHAR: return self::PARTIAL_REG_CHAR;
-            case self::IN_PARENS_NOSP: return self::PARTIAL_IN_PARENS_NOSP;
-            case self::TAGNAME: return self::PARTIAL_TAGNAME;
-            case self::BLOCKTAGNAME: return self::PARTIAL_BLOCKTAGNAME;
-            case self::ATTRIBUTENAME: return self::PARTIAL_ATTRIBUTENAME;
-            case self::UNQUOTEDVALUE: return self::PARTIAL_UNQUOTEDVALUE;
-            case self::SINGLEQUOTEDVALUE: return self::PARTIAL_SINGLEQUOTEDVALUE;
-            case self::DOUBLEQUOTEDVALUE: return self::PARTIAL_DOUBLEQUOTEDVALUE;
-            case self::ATTRIBUTEVALUE: return self::PARTIAL_ATTRIBUTEVALUE;
-            case self::ATTRIBUTEVALUESPEC: return self::PARTIAL_ATTRIBUTEVALUESPEC;
-            case self::ATTRIBUTE: return self::PARTIAL_ATTRIBUTE;
-            case self::OPENTAG: return self::PARTIAL_OPENTAG;
-            case self::CLOSETAG: return self::PARTIAL_CLOSETAG;
-            case self::OPENBLOCKTAG: return self::PARTIAL_OPENBLOCKTAG;
-            case self::CLOSEBLOCKTAG: return self::PARTIAL_CLOSEBLOCKTAG;
-            case self::HTMLCOMMENT: return self::PARTIAL_HTMLCOMMENT;
-            case self::PROCESSINGINSTRUCTION: return self::PARTIAL_PROCESSINGINSTRUCTION;
-            case self::DECLARATION: return self::PARTIAL_DECLARATION;
-            case self::CDATA: return self::PARTIAL_CDATA;
-            case self::HTMLTAG: return self::PARTIAL_HTMLTAG;
-            case self::HTMLBLOCKOPEN: return self::PARTIAL_HTMLBLOCKOPEN;
-            case self::LINK_TITLE: return self::PARTIAL_LINK_TITLE;
-        }
-    }
-
-    /**
-     * @return string
-     *
-     * @deprecated Use PARTIAL_HTMLTAG and wrap it yourself instead
-     */
-    public function getHtmlTagRegex()
-    {
-        @trigger_error('RegexHelper::getHtmlTagRegex() has been deprecated. Use the RegexHelper::PARTIAL_HTMLTAG constant instead.', E_USER_DEPRECATED);
-
-        return '/^' . self::PARTIAL_HTMLTAG . '/i';
-    }
-
-    /**
-     * @return string
-     *
-     * @deprecated Use PARTIAL_LINK_TITLE and wrap it yourself instead
-     */
-    public function getLinkTitleRegex()
-    {
-        @trigger_error('RegexHelper::getLinkTitleRegex() has been deprecated. Use the RegexHelper::PARTIAL_LINK_TITLE constant instead.', E_USER_DEPRECATED);
-
-        return '/' . self::PARTIAL_LINK_TITLE . '/';
-    }
-
-    /**
-     * @return string
-     *
-     * @deprecated Use REGEX_LINK_DESTINATION_BRACES instead
-     */
-    public function getLinkDestinationBracesRegex()
-    {
-        @trigger_error('RegexHelper::getLinkDestinationBracesRegex() has been deprecated. Use the RegexHelper::REGEX_LINK_DESTINATION_BRACES constant instead.', E_USER_DEPRECATED);
-
-        return self::REGEX_LINK_DESTINATION_BRACES;
-    }
-
-    /**
-     * @return string
-     *
-     * @deprecated Use the REGEX_THEMATIC_BREAK constant directly
-     */
-    public function getThematicBreakRegex()
-    {
-        @trigger_error('RegexHelper::getThematicBreakRegex() has been deprecated. Use the RegexHelper::REGEX_THEMATIC_BREAK constant instead.', E_USER_DEPRECATED);
-
-        return self::REGEX_THEMATIC_BREAK;
+        return \preg_match('/' . self::PARTIAL_ESCAPABLE . '/', $character) === 1;
     }
 
     /**
@@ -291,16 +172,16 @@ final class RegexHelper
      *
      * @return int|null Index of match, or null
      */
-    public static function matchAt($regex, $string, $offset = 0)
+    public static function matchAt(string $regex, string $string, int $offset = 0): ?int
     {
         $matches = [];
-        $string = mb_substr($string, $offset, null, 'utf-8');
-        if (!preg_match($regex, $string, $matches, PREG_OFFSET_CAPTURE)) {
-            return;
+        $string = \mb_substr($string, $offset, null, 'utf-8');
+        if (!\preg_match($regex, $string, $matches, PREG_OFFSET_CAPTURE)) {
+            return null;
         }
 
         // PREG_OFFSET_CAPTURE always returns the byte offset, not the char offset, which is annoying
-        $charPos = mb_strlen(mb_strcut($string, 0, $matches[0][1], 'utf-8'), 'utf-8');
+        $charPos = \mb_strlen(\mb_strcut($string, 0, $matches[0][1], 'utf-8'), 'utf-8');
 
         return $offset + $charPos;
     }
@@ -314,25 +195,26 @@ final class RegexHelper
      *
      * @return array|null
      */
-    public static function matchAll($pattern, $subject, $offset = 0)
+    public static function matchAll(string $pattern, string $subject, int $offset = 0): ?array
     {
-        $subject = substr($subject, $offset);
-        preg_match_all($pattern, $subject, $matches, PREG_PATTERN_ORDER);
-
-        $fullMatches = reset($matches);
-        if (empty($fullMatches)) {
-            return;
+        if ($offset !== 0) {
+            $subject = \substr($subject, $offset);
         }
 
-        if (count($fullMatches) === 1) {
+        \preg_match_all($pattern, $subject, $matches, PREG_PATTERN_ORDER);
+
+        $fullMatches = \reset($matches);
+        if (empty($fullMatches)) {
+            return null;
+        }
+
+        if (\count($fullMatches) === 1) {
             foreach ($matches as &$match) {
-                $match = reset($match);
+                $match = \reset($match);
             }
         }
 
-        if (!empty($matches)) {
-            return $matches;
-        }
+        return $matches ?: null;
     }
 
     /**
@@ -342,12 +224,12 @@ final class RegexHelper
      *
      * @return string
      */
-    public static function unescape($string)
+    public static function unescape(string $string): string
     {
         $allEscapedChar = '/\\\\(' . self::PARTIAL_ESCAPABLE . ')/';
 
-        $escaped = preg_replace($allEscapedChar, '$1', $string);
-        $replaced = preg_replace_callback('/' . self::PARTIAL_ENTITY . '/i', function ($e) {
+        $escaped = \preg_replace($allEscapedChar, '$1', $string);
+        $replaced = \preg_replace_callback('/' . self::PARTIAL_ENTITY . '/i', function ($e) {
             return Html5Entities::decodeEntity($e[0]);
         }, $escaped);
 
@@ -359,7 +241,7 @@ final class RegexHelper
      *
      * @return string|null
      */
-    public static function getHtmlBlockOpenRegex($type)
+    public static function getHtmlBlockOpenRegex(int $type): ?string
     {
         switch ($type) {
             case HtmlBlock::TYPE_1_CODE_CONTAINER:
@@ -373,10 +255,12 @@ final class RegexHelper
             case HtmlBlock::TYPE_5_CDATA:
                 return '/^<!\[CDATA\[/';
             case HtmlBlock::TYPE_6_BLOCK_ELEMENT:
-                return '%^<[/]?(?:address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[123456]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option|p|param|section|source|title|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul)(?:\s|[/]?[>]|$)%i';
+                return '%^<[/]?(?:address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[123456]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|nav|noframes|ol|optgroup|option|p|param|section|source|title|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul)(?:\s|[/]?[>]|$)%i';
             case HtmlBlock::TYPE_7_MISC_ELEMENT:
                 return '/^(?:' . self::PARTIAL_OPENTAG . '|' . self::PARTIAL_CLOSETAG . ')\\s*$/i';
         }
+
+        return null;
     }
 
     /**
@@ -384,7 +268,7 @@ final class RegexHelper
      *
      * @return string|null
      */
-    public static function getHtmlBlockCloseRegex($type)
+    public static function getHtmlBlockCloseRegex(int $type): ?string
     {
         switch ($type) {
             case HtmlBlock::TYPE_1_CODE_CONTAINER:
@@ -398,6 +282,8 @@ final class RegexHelper
             case HtmlBlock::TYPE_5_CDATA:
                 return '/\]\]>/';
         }
+
+        return null;
     }
 
     /**
@@ -405,8 +291,8 @@ final class RegexHelper
      *
      * @return bool
      */
-    public static function isLinkPotentiallyUnsafe($url)
+    public static function isLinkPotentiallyUnsafe(string $url): bool
     {
-        return preg_match(self::REGEX_UNSAFE_PROTOCOL, $url) !== 0 && preg_match(self::REGEX_SAFE_DATA_PROTOCOL, $url) === 0;
+        return \preg_match(self::REGEX_UNSAFE_PROTOCOL, $url) !== 0 && \preg_match(self::REGEX_SAFE_DATA_PROTOCOL, $url) === 0;
     }
 }

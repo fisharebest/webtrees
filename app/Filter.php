@@ -26,14 +26,13 @@ use League\CommonMark\Block\Renderer\ParagraphRenderer;
 use League\CommonMark\Converter;
 use League\CommonMark\DocParser;
 use League\CommonMark\Environment;
+use League\CommonMark\Ext\Table\TableExtension;
 use League\CommonMark\HtmlRenderer;
 use League\CommonMark\Inline\Element\Link;
 use League\CommonMark\Inline\Element\Text;
 use League\CommonMark\Inline\Parser\AutolinkParser;
 use League\CommonMark\Inline\Renderer\LinkRenderer;
 use League\CommonMark\Inline\Renderer\TextRenderer;
-use Throwable;
-use Webuni\CommonMark\TableExtension\TableExtension;
 
 /**
  * Filter input and escape output.
@@ -95,19 +94,13 @@ class Filter
             ->addBlockRenderer(Paragraph::class, new ParagraphRenderer())
             ->addInlineRenderer(Text::class, new TextRenderer())
             ->addInlineRenderer(Link::class, new LinkRenderer())
-            ->addInlineParser(new AutolinkParser());
-
-        $environment->addExtension(new CensusTableExtension());
-        $environment->addExtension(new XrefExtension($tree));
+            ->addInlineParser(new AutolinkParser())
+            ->addExtension(new CensusTableExtension())
+            ->addExtension(new XrefExtension($tree));
 
         $converter = new Converter(new DocParser($environment), new HtmlRenderer($environment));
 
-        try {
-            return $converter->convertToHtml($text);
-        } catch (Throwable $ex) {
-            // See issue #1824
-            return $text;
-        }
+        return $converter->convertToHtml($text);
     }
 
     /**
@@ -121,18 +114,14 @@ class Filter
     public static function markdown(string $text, Tree $tree): string
     {
         $environment = Environment::createCommonMarkEnvironment();
-        $environment->mergeConfig(['html_input' => 'escape']);
-        $environment->addExtension(new TableExtension());
-        $environment->addExtension(new CensusTableExtension());
-        $environment->addExtension(new XrefExtension($tree));
+        $environment->mergeConfig(['html_input' => Environment::HTML_INPUT_ESCAPE]);
+        $environment
+            ->addExtension(new TableExtension())
+            ->addExtension(new CensusTableExtension())
+            ->addExtension(new XrefExtension($tree));
 
         $converter = new Converter(new DocParser($environment), new HtmlRenderer($environment));
 
-        try {
-            return $converter->convertToHtml($text);
-        } catch (Throwable $ex) {
-            // See issue #1824
-            return $text;
-        }
+        return $converter->convertToHtml($text);
     }
 }

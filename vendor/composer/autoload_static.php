@@ -25,10 +25,6 @@ class ComposerStaticInit74b5eb00e70cef0c1fba9491b929fdd1
     );
 
     public static $prefixLengthsPsr4 = array (
-        'W' => 
-        array (
-            'Webuni\\CommonMark\\TableExtension\\' => 33,
-        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php73\\' => 23,
@@ -79,6 +75,7 @@ class ComposerStaticInit74b5eb00e70cef0c1fba9491b929fdd1
             'League\\Flysystem\\ZipArchive\\' => 28,
             'League\\Flysystem\\Cached\\' => 24,
             'League\\Flysystem\\' => 17,
+            'League\\CommonMark\\Ext\\Table\\' => 28,
             'League\\CommonMark\\' => 18,
         ),
         'I' => 
@@ -128,10 +125,6 @@ class ComposerStaticInit74b5eb00e70cef0c1fba9491b929fdd1
     );
 
     public static $prefixDirsPsr4 = array (
-        'Webuni\\CommonMark\\TableExtension\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/webuni/commonmark-table-extension/src',
-        ),
         'Symfony\\Polyfill\\Php73\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php73',
@@ -265,6 +258,10 @@ class ComposerStaticInit74b5eb00e70cef0c1fba9491b929fdd1
         'League\\Flysystem\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/flysystem/src',
+        ),
+        'League\\CommonMark\\Ext\\Table\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/commonmark-ext-table/src',
         ),
         'League\\CommonMark\\' => 
         array (

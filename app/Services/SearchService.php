@@ -93,7 +93,7 @@ class SearchService
             });
 
         $prefix = DB::connection()->getTablePrefix();
-        $field  = DB::raw('COALESCE(' . $prefix . "husb_name.n_full, '') || COALESCE(" . $prefix . "wife_name.n_full, '')");
+        $field  = new Expression('COALESCE(' . $prefix . "husb_name.n_full, '') || COALESCE(" . $prefix . "wife_name.n_full, '')");
 
         $this->whereTrees($query, 'f_file', $trees);
         $this->whereSearch($query, $field, $search);
@@ -879,7 +879,7 @@ class SearchService
         }
 
         foreach ($search_terms as $search_term) {
-            $query->whereContains(DB::raw($field), $search_term);
+            $query->whereContains(new Expression($field), $search_term);
         }
     }
 

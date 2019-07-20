@@ -21,6 +21,7 @@ use function count;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
+use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\UserFavoritesModule;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\FavoritesRepositoryInterface;
@@ -62,7 +63,7 @@ class FavoritesRepository implements FavoritesRepositoryInterface
             ->findByInterface(FamilyTreeFavoritesModule::class);
 
         if ($module instanceof FamilyTreeFavoritesModule) {
-            return $module->getBlock($this->tree, 0);
+            return $module->getBlock($this->tree, 0, ModuleBlockInterface::CONTEXT_EMBED);
         }
 
         return '';
@@ -77,7 +78,7 @@ class FavoritesRepository implements FavoritesRepositoryInterface
             ->findByInterface(UserFavoritesModule::class);
 
         if ($module instanceof UserFavoritesModule) {
-            return $module->getBlock($this->tree, 0);
+            return $module->getBlock($this->tree, 0, ModuleBlockInterface::CONTEXT_EMBED);
         }
 
         return '';

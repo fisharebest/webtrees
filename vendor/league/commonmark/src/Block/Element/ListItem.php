@@ -25,15 +25,13 @@ class ListItem extends AbstractBlock
 
     public function __construct(ListData $listData)
     {
-        parent::__construct();
-
         $this->listData = $listData;
     }
 
     /**
      * @return ListData
      */
-    public function getListData()
+    public function getListData(): ListData
     {
         return $this->listData;
     }
@@ -45,19 +43,9 @@ class ListItem extends AbstractBlock
      *
      * @return bool
      */
-    public function canContain(AbstractBlock $block)
+    public function canContain(AbstractBlock $block): bool
     {
         return true;
-    }
-
-    /**
-     * Returns true if block type can accept lines of text
-     *
-     * @return bool
-     */
-    public function acceptsLines()
-    {
-        return false;
     }
 
     /**
@@ -65,12 +53,12 @@ class ListItem extends AbstractBlock
      *
      * @return bool
      */
-    public function isCode()
+    public function isCode(): bool
     {
         return false;
     }
 
-    public function matchesNextLine(Cursor $cursor)
+    public function matchesNextLine(Cursor $cursor): bool
     {
         if ($cursor->isBlank()) {
             if ($this->firstChild === null) {
@@ -93,7 +81,7 @@ class ListItem extends AbstractBlock
      *
      * @return bool
      */
-    public function shouldLastLineBeBlank(Cursor $cursor, $currentLineNumber)
+    public function shouldLastLineBeBlank(Cursor $cursor, int $currentLineNumber): bool
     {
         return $cursor->isBlank() && $this->startLine < $currentLineNumber;
     }

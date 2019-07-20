@@ -17,7 +17,7 @@ namespace League\CommonMark\Block\Element;
 use League\CommonMark\ContextInterface;
 use League\CommonMark\Cursor;
 
-class Heading extends AbstractBlock implements InlineContainerInterface
+class Heading extends AbstractStringContainerBlock implements InlineContainerInterface
 {
     /**
      * @var int
@@ -28,13 +28,13 @@ class Heading extends AbstractBlock implements InlineContainerInterface
      * @param int             $level
      * @param string|string[] $contents
      */
-    public function __construct($level, $contents)
+    public function __construct(int $level, $contents)
     {
         parent::__construct();
 
         $this->level = $level;
 
-        if (!is_array($contents)) {
+        if (!\is_array($contents)) {
             $contents = [$contents];
         }
 
@@ -46,16 +46,16 @@ class Heading extends AbstractBlock implements InlineContainerInterface
     /**
      * @return int
      */
-    public function getLevel()
+    public function getLevel(): int
     {
         return $this->level;
     }
 
-    public function finalize(ContextInterface $context, $endLineNumber)
+    public function finalize(ContextInterface $context, int $endLineNumber)
     {
         parent::finalize($context, $endLineNumber);
 
-        $this->finalStringContents = implode("\n", $this->getStrings());
+        $this->finalStringContents = \implode("\n", $this->strings->toArray());
     }
 
     /**
@@ -65,19 +65,9 @@ class Heading extends AbstractBlock implements InlineContainerInterface
      *
      * @return bool
      */
-    public function canContain(AbstractBlock $block)
+    public function canContain(AbstractBlock $block): bool
     {
         return false;
-    }
-
-    /**
-     * Returns true if block type can accept lines of text
-     *
-     * @return bool
-     */
-    public function acceptsLines()
-    {
-        return true;
     }
 
     /**
@@ -85,12 +75,12 @@ class Heading extends AbstractBlock implements InlineContainerInterface
      *
      * @return bool
      */
-    public function isCode()
+    public function isCode(): bool
     {
         return false;
     }
 
-    public function matchesNextLine(Cursor $cursor)
+    public function matchesNextLine(Cursor $cursor): bool
     {
         return false;
     }
@@ -101,6 +91,6 @@ class Heading extends AbstractBlock implements InlineContainerInterface
      */
     public function handleRemainingContents(ContextInterface $context, Cursor $cursor)
     {
-        // nothing to do; we already added the contents.
+        // nothing to do; contents were already added via the constructor.
     }
 }
