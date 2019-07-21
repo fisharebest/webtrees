@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2018-09-25 17:21+0000\n"
+"PO-Revision-Date: 2019-07-21 09:42+0000\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
-"Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
+"Language-Team: Afrikaans <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/af/>\n"
 "Language: af\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -726,17 +726,17 @@ msgstr "’n Welkomsberig vir werfbesoekers."
 #. I18N: Description of the “Hit counters” module
 #: app/Module/ContactsFooterModule.php:66
 msgid "A link to the site contacts."
-msgstr ""
+msgstr "'n Skakel na die werf kontakte."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:50
 msgid "A link to the webtrees home page."
-msgstr ""
+msgstr "'n Skakel na die webtrees tuisblad."
 
 #. I18N: Description of the “BranchesListModule” module
 #: app/Module/BranchesListModule.php:55
 msgid "A list of branches of a family."
-msgstr ""
+msgstr "'n Lys van familietakke."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:74
@@ -746,7 +746,7 @@ msgstr "’n Lys met veranderinge wat deur 'n moderator hersien moet word, en ep
 #. I18N: Description of the “FamilyListModule” module
 #: app/Module/FamilyListModule.php:56
 msgid "A list of families."
-msgstr ""
+msgstr "'n Lys van families."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:57
@@ -756,12 +756,12 @@ msgstr "’n Lys met vrae en antwoorde wat gereeld gevra word."
 #. I18N: Description of the “IndividualListModule” module
 #: app/Module/IndividualListModule.php:56
 msgid "A list of individuals."
-msgstr ""
+msgstr "'n Lys van persone."
 
 #. I18N: Description of the “MediaListModule” module
 #: app/Module/MediaListModule.php:57
 msgid "A list of media objects."
-msgstr ""
+msgstr "'n Lys van mediavoorwerpe."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:61
@@ -771,17 +771,17 @@ msgstr "’n Lys van rekords wat onlangs gewysig is."
 #. I18N: Description of the “RepositoryListModule” module
 #: app/Module/RepositoryListModule.php:56
 msgid "A list of repositories."
-msgstr ""
+msgstr "'n Lys van bergplekke."
 
 #. I18N: Description of the “NoteListModule” module
 #: app/Module/NoteListModule.php:56
 msgid "A list of shared notes."
-msgstr ""
+msgstr "'n Lys van gedeelde notas."
 
 #. I18N: Description of the “SourceListModule” module
 #: app/Module/SourceListModule.php:56
 msgid "A list of sources."
-msgstr ""
+msgstr "'n Lys van bronne."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:63
@@ -1359,15 +1359,15 @@ msgstr "Voeg 'n deelgenoot by"
 
 #: resources/views/cards/add-sour-data-even.phtml:7
 msgid "Add an event"
-msgstr ""
+msgstr "Voeg 'n gebeurtenis by"
 
 #: resources/views/modules/custom-css-js/edit.phtml:23
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
-msgstr ""
+msgstr "Voeg inhoud by die einde van die <code>&lt;lyf&gt;</code> element."
 
 #: resources/views/modules/custom-css-js/edit.phtml:11
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr ""
+msgstr "Voeg inhoud by die einde van die <code>&lt;kop&gt;</code> element."
 
 #: resources/views/edit/paste-fact-row.phtml:7
 msgid "Add from clipboard"
@@ -1375,7 +1375,7 @@ msgstr "Voeg by vanaf die klembord"
 
 #: app/Module/ModuleHistoricEventsTrait.php:38
 msgid "Add historic events to an individual‘s page."
-msgstr ""
+msgstr "Voeg historiese gebeurtenisse by 'n persoon se bladsy."
 
 #: resources/views/modules/lifespans-chart/page.phtml:19
 msgid "Add individuals"
@@ -1413,7 +1413,7 @@ msgstr "Voeg spasies by waar lang reëls afgebreek is"
 #. I18N: Description of the “CSS and JS” module.
 #: app/Module/CustomCssJsModule.php:41
 msgid "Add styling and scripts to every page."
-msgstr ""
+msgstr "Voeg stilering en skripte by elke blad."
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: resources/views/admin/trees-export.phtml:55
@@ -1821,7 +1821,7 @@ msgstr "Alle persone"
 #: resources/views/admin/components.phtml:12
 #: resources/views/admin/control-panel.phtml:308
 msgid "All modules"
-msgstr ""
+msgstr "Alle modules"
 
 #: resources/views/admin/trees-privacy.phtml:245
 msgid "All records"
@@ -2337,7 +2337,7 @@ msgstr "Gemiddelde ouderdom by afsterwe"
 
 #: app/Statistics/Google/ChartMarriageAge.php:152
 msgid "Average age at marriage"
-msgstr ""
+msgstr "Gemiddelde ouderdom by huwelik"
 
 #: app/Statistics/Google/ChartMarriageAge.php:149
 msgid "Average age in century of marriage"
@@ -2349,7 +2349,7 @@ msgstr "Gemiddelde ouderdom in verhouding tot eeu van afsterwe"
 
 #: app/Statistics/Google/ChartChildren.php:87
 msgid "Average number"
-msgstr ""
+msgstr "Gemiddelde"
 
 #: app/Statistics/Google/ChartChildren.php:98
 #: resources/views/modules/gedcom_stats/config.phtml:35
@@ -3254,7 +3254,7 @@ msgstr "CKEditor™"
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php:78
 msgid "CSS and JS"
-msgstr ""
+msgstr "CSS en JS"
 
 #: resources/views/admin/trees.phtml:37
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -3418,7 +3418,7 @@ msgstr "Sentraal-Afrikaanse Republiek"
 #: resources/views/lists/individuals-table.phtml:118
 #: resources/views/lists/individuals-table.phtml:133
 msgid "Century"
-msgstr ""
+msgstr "Eeu"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2361
@@ -3982,7 +3982,7 @@ msgstr "Cookeilande"
 #. I18N: Name of a module
 #: app/Module/CookieWarningModule.php:55
 msgid "Cookie warning"
-msgstr ""
+msgstr "Koekie waarskuwing"
 
 #: resources/views/modules/cookie-warning/footer.phtml:4
 #: resources/views/privacy-policy.phtml:12
@@ -4045,7 +4045,7 @@ msgstr "Kon nie die inligting wat ingevoer is, bevestig nie. Probeer asb. weer o
 #. I18N: Description of the “Hit counters” module
 #: app/Module/HitCountFooterModule.php:72
 msgid "Count the visits to each page"
-msgstr ""
+msgstr "Tel die besoeke aan elke blad"
 
 #. I18N: gedcom tag CTRY
 #: app/GedcomTag.php:638 app/Statistics/Google/ChartDistribution.php:118
@@ -4100,7 +4100,7 @@ msgstr "Skep ’n indiener"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:142
 msgid "Create a temporary folder…"
-msgstr ""
+msgstr "Skep 'n tydelike lêergids…"
 
 #: resources/views/modals/media-file-fields.phtml:68
 msgid "Create a unique filename"
@@ -4347,7 +4347,7 @@ msgstr "Databasis wagwoord"
 
 #: resources/views/setup/step-3-database-type.phtml:31
 msgid "Database type"
-msgstr ""
+msgstr "Databasis tipe"
 
 #: resources/views/setup/step-4-database-mysql.phtml:58
 #: resources/views/setup/step-4-database-pgsql.phtml:50
@@ -4993,7 +4993,7 @@ msgstr "Skrap onaktiewe gebruikers"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:148
 msgid "Delete old files…"
-msgstr ""
+msgstr "Skrap ou lêers…"
 
 #: app/Module/UserMessagesModule.php:208
 msgid "Delete selected messages"
@@ -5260,7 +5260,7 @@ msgstr "Moenie verseël nie: ongemagtig"
 
 #: resources/views/admin/map-provider.phtml:15
 msgid "Do not use maps"
-msgstr ""
+msgstr "Moenie kaarte gebruik nie"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2367
@@ -5279,7 +5279,7 @@ msgstr "Dominikaanse Republiek"
 
 #: app/Module/PedigreeChartModule.php:314
 msgid "Down"
-msgstr ""
+msgstr "Af"
 
 #: app/Module/ClippingsCartModule.php:157
 #: app/Module/ClippingsCartModule.php:294
@@ -6390,14 +6390,14 @@ msgstr "Font"
 #: resources/views/admin/modules.phtml:217
 #: resources/views/admin/modules.phtml:220
 msgid "Footer"
-msgstr ""
+msgstr "Voetskrif"
 
 #: app/Http/Controllers/Admin/ModuleController.php:135
 #: resources/views/admin/control-panel.phtml:359
 #: resources/views/admin/modules.phtml:91
 #: resources/views/admin/modules.phtml:93
 msgid "Footers"
-msgstr ""
+msgstr "Voetskrifte"
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names
 #: resources/views/admin/trees-import.phtml:102
@@ -6650,7 +6650,7 @@ msgstr "Geslag"
 
 #: resources/views/admin/control-panel.phtml:317
 msgid "Genealogy"
-msgstr ""
+msgstr "Genealogie"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:166
@@ -7133,7 +7133,7 @@ msgstr "Sy beroep was"
 #: resources/views/admin/modules.phtml:233
 #: resources/views/admin/modules.phtml:236
 msgid "Historic events"
-msgstr ""
+msgstr "Historiese gebeurtenisse"
 
 #: resources/views/modules/personal_facts/tab.phtml:18
 msgid "Historical facts"
@@ -7315,7 +7315,7 @@ msgstr "As jy die probleem nie self kan oplos nie, kan jy om hulp vra op die for
 
 #: resources/views/setup/step-4-database-mysql.phtml:37
 msgid "If you connect to the database using a UNIX socket, enter the path here and leave the port number empty."
-msgstr ""
+msgstr "As jy aan die databasis verbind met 'n UNIX-prop, voer die pad hier in en los die poortnommer leeg."
 
 #: resources/views/admin/trees-import.phtml:86
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -7459,11 +7459,11 @@ msgstr "Sluit sub-lêergidse in"
 
 #: resources/views/modules/custom-css-js/edit.phtml:28
 msgid "Include the <code>&lt;script&gt;&lt;/script&gt;</code> tags."
-msgstr ""
+msgstr "Sluit die <code>&lt;script&gt;&lt;/script&gt;</code> merke in."
 
 #: resources/views/modules/custom-css-js/edit.phtml:16
 msgid "Include the <code>&lt;style&gt;&lt;/style&gt;</code> tags."
-msgstr ""
+msgstr "Sluit die <code>&lt;style&gt;&lt;/style&gt;</code> merke in."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/lifespans-chart/page.phtml:23
@@ -7533,7 +7533,7 @@ msgstr "Diagram van verspreiding van persone"
 
 #: resources/views/admin/control-panel.phtml:405
 msgid "Individual page"
-msgstr ""
+msgstr "Persoon se blad"
 
 #: resources/views/admin/trees-preferences.phtml:471
 msgid "Individual pages"
@@ -7667,7 +7667,7 @@ msgstr "Ongeldige GEDCOM-lêer - geen rekordvoorstuk is gevind nie."
 
 #: app/Functions/FunctionsImport.php:629
 msgid "Invalid GEDCOM record"
-msgstr ""
+msgstr "Ongeldige GEDCOM rekord"
 
 #: app/Date.php:372
 msgid "Invalid date"
@@ -8206,7 +8206,7 @@ msgstr "Libanon"
 
 #: app/Module/PedigreeChartModule.php:311
 msgid "Left"
-msgstr ""
+msgstr "Links"
 
 #. I18N: gedcom tag LEGA
 #: app/GedcomTag.php:814
@@ -9451,7 +9451,7 @@ msgstr "Die meeste werwe is opgestel om localhost te gebruik. Dit beteken dat di
 
 #: resources/views/setup/step-4-database-sqlsvr.phtml:43
 msgid "Most sites are configured to use the default value of 1433."
-msgstr ""
+msgstr "Meeste werwe is ingestel om die verstekwaarde 1433 te gebruik."
 
 #: resources/views/setup/step-4-database-mysql.phtml:51
 msgid "Most sites are configured to use the default value of 3306."
@@ -9459,7 +9459,7 @@ msgstr "Die meeste werwe is opgestel om die verstekwaarde 3306 te gebruik."
 
 #: resources/views/setup/step-4-database-pgsql.phtml:43
 msgid "Most sites are configured to use the default value of 5432."
-msgstr ""
+msgstr "Meeste werwe is ingestel om die verstekwaarde van 5432 te gebruik."
 
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:43
@@ -10017,7 +10017,7 @@ msgstr "Noord-Korea"
 
 #: resources/views/modules/statistics-chart/custom.phtml:173
 msgid "Northern America"
-msgstr ""
+msgstr "Noord-Amerika"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:369
@@ -10967,7 +10967,7 @@ msgstr "Poskode"
 #. I18N: Name of a module
 #: app/Module/PoweredByWebtreesModule.php:39
 msgid "Powered by webtrees™"
-msgstr ""
+msgstr "Aangedryf deur webtrees™"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:149
@@ -11053,7 +11053,7 @@ msgstr "Preston, Engeland"
 
 #: resources/views/admin/analytics-edit.phtml:13
 msgid "Preview"
-msgstr ""
+msgstr "Voorskou"
 
 #: app/GedcomCode/GedcomCodeRela.php:285
 msgid "Priest"
@@ -11708,7 +11708,7 @@ msgstr "Rexburg, Idaho, Verenigde State"
 
 #: app/Module/PedigreeChartModule.php:312
 msgid "Right"
-msgstr ""
+msgstr "Regs"
 
 #: resources/views/edit-blocks-page.phtml:27
 msgid "Right section blocks"
@@ -11764,12 +11764,12 @@ msgstr "SMTP e-posbediener"
 
 #: app/Services/ServerCheckService.php:279
 msgid "SQLite is only suitable for small sites, testing and evaluation."
-msgstr ""
+msgstr "SQLite is slegs geskik vir klein werwe, toetse en evaluering."
 
 #: app/Services/ServerCheckService.php:203
 #, php-format
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
-msgstr ""
+msgstr "SQLite weergawe %s is geïnstalleer. SQLite weergawe %s of beter word vereis."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:583
@@ -12963,7 +12963,7 @@ msgstr "Sosa"
 
 #: resources/views/modules/ancestors-chart/tree.phtml:18
 msgid "Sosa-Stradonitz number"
-msgstr ""
+msgstr "Sosa-Stradonitz getal"
 
 #: app/Http/Controllers/SearchController.php:619
 msgid "Sounds like"
@@ -13257,11 +13257,11 @@ msgstr "Ondersteuning en dokumentasie kan by %s gevind word."
 
 #: app/Services/ServerCheckService.php:284
 msgid "Support for PostgreSQL is experimental."
-msgstr ""
+msgstr "Ondersteuning van PostgreSQL is eksperimenteel."
 
 #: app/Services/ServerCheckService.php:289
 msgid "Support for SQL Server is experimental."
-msgstr ""
+msgstr "Ondersteuning vir SQL Server is eksperimenteel."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:459
@@ -13391,7 +13391,7 @@ msgstr "Tabel voorvoegsel"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Tabloid"
-msgstr ""
+msgstr "Poniekoerant"
 
 #: app/Http/Controllers/Admin/ModuleController.php:219
 #: resources/views/admin/control-panel.phtml:412
@@ -13467,7 +13467,7 @@ msgstr "Tegucigalpa, Honduras"
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/CookieWarningModule.php:66
 msgid "Tell visitors why this site uses cookies."
-msgstr ""
+msgstr "Vertel besoekers hoekom hierdie werf koekies gebruik."
 
 #: resources/views/modules/html/config.phtml:16
 msgid "Templates"
@@ -13538,12 +13538,12 @@ msgstr "Den Haag, Nederland"
 #: app/Services/ServerCheckService.php:112
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr ""
+msgstr "Die PHP uitbreiding “%s” is nie geïnstalleer nie."
 
 #: app/Services/ServerCheckService.php:170
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr ""
+msgstr "Die PHP funksie “%1$s” is gedeaktiveer."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:55
@@ -13553,12 +13553,12 @@ msgstr "Die PHP tydelike lêergids is weg."
 #: app/Services/ServerCheckService.php:131
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr ""
+msgstr "Die PHP.INI instelling “%1$s” is gedeaktiveer."
 
 #: app/Services/ServerCheckService.php:135
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr ""
+msgstr "Die PHP.INI instelling “%1$s” is aktief."
 
 #: resources/views/emails/approve-user-html.phtml:7
 #: resources/views/emails/approve-user-text.phtml:4
@@ -13573,7 +13573,7 @@ msgstr "Die beheerder is in kennis gestel. Sodra hulle vir jou toestemming gee o
 #. I18N: Description of the “Reports” module
 #: app/Module/CalendarMenuModule.php:50
 msgid "The calendar menu."
-msgstr ""
+msgstr "Die kalender keuselys."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/Controllers/PendingChangesController.php:150
@@ -13590,7 +13590,7 @@ msgstr "Die wysigings aan “%s” is nie aanvaar nie."
 #. I18N: Description of the “Reports” module
 #: app/Module/ChartsMenuModule.php:69
 msgid "The charts menu."
-msgstr ""
+msgstr "Die diagram keuselys."
 
 #: resources/views/modules/clippings/show.phtml:6
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -13646,7 +13646,7 @@ msgstr "Die stambome is suksevol saamgevoeg."
 #. I18N: Description of the “Reports” module
 #: app/Module/TreesMenuModule.php:51
 msgid "The family trees menu."
-msgstr ""
+msgstr "Die stambome keuselys."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: app/Http/Controllers/EditGedcomRecordController.php:141
@@ -13773,7 +13773,7 @@ msgstr "Die skakel tussen “%1$s” en “%2$s” is opgedateer."
 #. I18N: Description of the “Reports” module
 #: app/Module/ListsMenuModule.php:67
 msgid "The lists menu."
-msgstr ""
+msgstr "Die lyste keuselys."
 
 #: app/Http/Controllers/EditMediaController.php:249
 #: app/Http/Controllers/EditMediaController.php:262
@@ -13859,7 +13859,7 @@ msgstr "Die wagwoord wat vereis word vir identiteitstawing by die SMTP-bediener.
 #. I18N: Description of the “PlaceHierarchyListModule” module
 #: app/Module/PlaceHierarchyListModule.php:56
 msgid "The place hierarchy."
-msgstr ""
+msgstr "Die plekhiërargie."
 
 #: app/Http/Controllers/AdminController.php:349
 #: app/Http/Controllers/AdminTreesController.php:1122
@@ -13893,7 +13893,7 @@ msgstr "Die voorkeure vir die module “%s” is bygewerk."
 #: resources/views/setup/step-4-database-sqlite.phtml:62
 #: resources/views/setup/step-4-database-sqlsvr.phtml:91
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
-msgstr ""
+msgstr "Die voorvoegsel is opsioneel, maar word aanbeveel. Deur die tabel 'n unieke voorvoegsel te gee kan verskeie verskillende toepassings dieselfde databasis deel."
 
 #: app/Http/Controllers/EditGedcomRecordController.php:79
 msgid "The record has been copied to the clipboard."
@@ -13912,7 +13912,7 @@ msgstr "Die reëlmatige uitdrukking blyk 'n fout te bevat. Dit kan nie gebruik w
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php:71
 msgid "The reports menu."
-msgstr ""
+msgstr "Die verslae keuselys."
 
 #: app/Http/Controllers/EditRepositoryController.php:81
 msgid "The repository has been created"
@@ -13921,11 +13921,11 @@ msgstr "Die bergplek is geskep"
 #. I18N: Description of the “Reports” module
 #: app/Module/SearchMenuModule.php:51
 msgid "The search menu."
-msgstr ""
+msgstr "Die soek keuselys."
 
 #: app/Services/SearchService.php:971
 msgid "The search returned too many results."
-msgstr ""
+msgstr "Die soektog het te veel resultate gelewer."
 
 #: resources/views/setup/step-2-server-checks.phtml:32
 msgid "The server configuration is OK."
@@ -13933,7 +13933,7 @@ msgstr "Die bediener konfigurasie is OK."
 
 #: app/Services/ServerCheckService.php:223
 msgid "The server’s temporary folder cannot be accessed."
-msgstr ""
+msgstr "Geen toegang tot die bediener se tydelike lêergids kon verkry word nie."
 
 #: app/Http/Controllers/AdminTreesController.php:1714
 #: app/Services/UpgradeService.php:146 app/Services/UpgradeService.php:179
@@ -14279,7 +14279,7 @@ msgstr "Hierdie persoon word by verstek gekies wanneer diagramme en verslae beky
 #: resources/views/statistics/other/places.phtml:53
 #: resources/views/statistics/other/top10-list.phtml:23
 msgid "This information is not available."
-msgstr ""
+msgstr "Die inligting is nie beskikbaar nie."
 
 #: app/Statistics/Repository/EventRepository.php:250
 #: app/Statistics/Repository/FamilyDatesRepository.php:108
@@ -15055,7 +15055,7 @@ msgstr "Agterstuk"
 #: app/Module/AncestorsChartModule.php:222
 #: app/Module/DescendancyChartModule.php:247
 msgid "Tree"
-msgstr ""
+msgstr "Stamboom"
 
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:289
@@ -15263,7 +15263,7 @@ msgstr "Pak %s uit na 'n tydelike lêergids…"
 
 #: app/Module/PedigreeChartModule.php:313
 msgid "Up"
-msgstr ""
+msgstr "Op"
 
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:95
@@ -15355,7 +15355,7 @@ msgstr "Gebruik volledige bronverwysings"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:79
 #: resources/views/setup/step-4-database-sqlsvr.phtml:92
 msgid "Use letters A-Z, a-z, digits 0-9, or underscores"
-msgstr ""
+msgstr "Gebruik letters A-Z, a-z, getalle 0-9, of onderstrepe"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:74
@@ -16608,7 +16608,7 @@ msgstr "oorlede"
 
 #: resources/views/modules/pedigree-chart/page.phtml:36
 msgid "down"
-msgstr ""
+msgstr "af"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:80
@@ -16619,7 +16619,7 @@ msgstr "aflaai"
 
 #: resources/views/modules/descendancy_chart/tree.phtml:17
 msgid "d’Aboville number"
-msgstr ""
+msgstr "d’Aboville getal"
 
 #: resources/views/admin/components.phtml:106
 #: resources/views/family-page-menu.phtml:7
@@ -18742,7 +18742,7 @@ msgstr "laaste"
 
 #: resources/views/modules/pedigree-chart/page.phtml:36
 msgid "left"
-msgstr ""
+msgstr "links"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -19291,7 +19291,7 @@ msgstr "herstel"
 
 #: resources/views/modules/pedigree-chart/page.phtml:36
 msgid "right"
-msgstr ""
+msgstr "regs"
 
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:26
@@ -20044,7 +20044,7 @@ msgstr "onbetroubare getuienis"
 
 #: resources/views/modules/pedigree-chart/page.phtml:36
 msgid "up"
-msgstr ""
+msgstr "op"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-places.phtml:55
@@ -20103,7 +20103,7 @@ msgstr "webtrees boodskap"
 
 #: resources/views/setup/step-3-database-type.phtml:26
 msgid "webtrees needs a database to store your genealogy data."
-msgstr ""
+msgstr "webtrees benodig 'n databasis om jou genealogie-data te berg."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:24
