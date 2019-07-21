@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2017-02-12 09:22+0000\n"
+"PO-Revision-Date: 2019-07-21 11:22+0000\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
-"Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/af/>\n"
+"Language-Team: Afrikaans <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/af/>\n"
 "Language: af\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -728,37 +728,37 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:56
 msgid "A chart displaying relationships between two individuals."
-msgstr "'n Diagram wat die verwantskappe tussen twee persone aantoon."
+msgstr "’n Diagram wat die verwantskappe tussen twee persone aantoon."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr "'n Diagram van 'n persoon se voor- en nageslagte, weergegee as 'n familieboek."
+msgstr "’n Diagram van ’n persoon se voor- en nageslagte, weergegee as ’n familieboek."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "'n Diagram van 'n persoon se voorgeslagte, weergegee as 'n kompakte boom."
+msgstr "’n Diagram van ’n persoon se voorgeslagte, weergegee as ’n kompakte boom."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr "'n Diagram van 'n persoon se voorgeslagte, weergegee in 'n boomstruktuur."
+msgstr "’n Diagram van ’n persoon se voorgeslagte, weergegee in ’n boomstruktuur."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
 msgid "A chart of an individual’s ancestors."
-msgstr "'n Diagram van 'n persoon se voorgeslagte."
+msgstr "’n Diagram van ’n persoon se voorgeslagte."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
 msgid "A chart of an individual’s descendants."
-msgstr "'n Diagram van 'n persoon se nageslag."
+msgstr "’n Diagram van ’n persoon se nageslag."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
 msgid "A chart of individuals’ lifespans."
-msgstr "'n Diagram van persone se lewensdure."
+msgstr "’n Diagram van persone se lewensdure."
 
 #: edit_interface.php:991
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
@@ -766,7 +766,7 @@ msgstr "’n Kind kan meer as één stel ouers hê. Die verwantskap tussen kind 
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
-msgstr "'n Algemene fout is om veelvoudige skakels na dieselfde rekord te hê, byvoorbeeld die notering van dieselfde kind meer as een keer in 'n gesinsrekord."
+msgstr "’n Algemene fout is om veelvoudige skakels na dieselfde rekord te hê, byvoorbeeld die notering van dieselfde kind meer as een keer in ’n gesinsrekord."
 
 #: setup.php:372
 msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
@@ -775,7 +775,7 @@ msgstr "'n Databasisbediener kan baie afsonderlike databasisse bewaar. Jy moet �
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
 msgid "A fan chart of an individual’s ancestors."
-msgstr "'n Waaierdiagram van 'n persoon se voorouers."
+msgstr "’n Waaierdiagram van ’n persoon se voorouers."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:225
 #: app/Module/GoogleMapsModule.php:3651
@@ -800,7 +800,7 @@ msgstr "’n Welkomsberig vir werfbesoekers."
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr "’n Lys met veranderinge wat deur 'n moderator hersien moet word, en epos-boodskappe."
+msgstr "’n Lys met veranderinge wat deur ’n moderator hersien moet word, en epos-boodskappe."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
@@ -820,7 +820,7 @@ msgstr "’n Lys van take en aktiwiteite wat met die stamboom verband hou."
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:42
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr "'n Lys van die Hebreeuse dodeherdenkings wat plaas sal vind in die nabye toekoms."
+msgstr "’n Lys van die Hebreeuse dodeherdenkings wat plaas sal vind in die nabye toekoms."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:36
@@ -840,17 +840,17 @@ msgstr "’n Lys van die mees gewilde voorname."
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:46
 msgid "A list of the most popular surnames."
-msgstr "'n Lys van die mees gewilde vanne."
+msgstr "’n Lys van die mees gewilde vanne."
 
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:45
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr "'n Lys van die bladsye wat die meeste besigtig word."
+msgstr "’n Lys van die bladsye wat die meeste besigtig word."
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:37
 msgid "A list of users and visitors who are currently online."
-msgstr "'n Lys van gebruikers en besoekers wat tans aanlyn is."
+msgstr "’n Lys van gebruikers en besoekers wat tans aanlyn is."
 
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
@@ -863,107 +863,107 @@ msgstr "’n Nuwe wagwoord is geskep en is per epos na %s gestuur. Jy kan die wa
 
 #: login.php:257
 msgid "A new password has been requested for your username."
-msgstr "'n Nuwe wagwoord is vir jou gebruikersnaam aangevra."
+msgstr "’n Nuwe wagwoord is vir jou gebruikersnaam aangevra."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: login.php:561
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr "'n Nuwe gebruiker (%1$s) het 'n rekening (%2$s) aangevra en die epos-adres (%3$s) bevestig."
+msgstr "’n Nuwe gebruiker (%1$s) het ’n rekening (%2$s) aangevra en die epos-adres (%3$s) bevestig."
 
 #: admin.php:624 admin_site_upgrade.php:79 login.php:116
 msgid "A new version of webtrees is available."
-msgstr "'n Nuwer weergawe van webtrees is beskikbaar."
+msgstr "’n Nuwer weergawe van webtrees is beskikbaar."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
 msgid "A private area to record notes or keep a journal."
-msgstr "'n Private area om notas te maak of om 'n joernaal te skryf."
+msgstr "’n Private area om notas te maak of om in ’n joernaal te skryf."
 
 #. I18N: %s is a server name/URL
 #: login.php:322
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr "'n Voornemende gebruiker het by webtrees aangemeld met hierdie adres %s."
+msgstr "’n Voornemende gebruiker het by webtrees aangemeld met hierdie adres %s."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:35
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr "'n Verslag van 'n persoon se voorouers, weergegee in 'n boomstruktuur."
+msgstr "’n Verslag van ’n persoon se voorouers, weergegee in ’n boomstruktuur."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:43
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr "'n Verslag van 'n persoon se voorouers opgestel soos 'n verhaal."
+msgstr "’n Verslag van ’n persoon se voorouers opgestel soos ’n verhaal."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:35
 #: modules_v3/descendancy_report/report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr "'n Verslag van 'n persoon se nakomelinge, opgestel soos 'n verhaal."
+msgstr "’n Verslag van ’n persoon se nakomelinge, opgestel soos ’n verhaal."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:35
 #: modules_v3/individual_report/report.xml:4
 msgid "A report of an individual’s details."
-msgstr "'n Gedetailleerde verslag van 'n persoon."
+msgstr "’n Gedetailleerde verslag van ’n persoon."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr "'n Verslag van feite of gebeurtenisse wat deur 'n bepaalde bron ondersteun word."
+msgstr "’n Verslag van feite of gebeurtenisse wat deur ’n bepaalde bron ondersteun word."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:35
 #: modules_v3/family_group_report/report.xml:4
 msgid "A report of family members and their details."
-msgstr "'n Verslag van die gesinslede en hul besonderhede."
+msgstr "’n Verslag van gesinslede en hul besonderhede."
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:35 modules_v3/death_report/report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr "'n Verslag van persone wat op 'n bepaalde tyd en plek oorlede is."
+msgstr "’n Verslag van persone wat op ’n bepaalde tyd en plek oorlede is."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:35
 #: modules_v3/occupation_report/report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr "'n Verslag van persone wat 'n bepaalde beroep gevolg het."
+msgstr "’n Verslag van persone wat ’n bepaalde beroep gevolg het."
 
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:35 modules_v3/birth_report/report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr "'n Verslag van persone wat gebore is in 'n gegewe tydperk of plek."
+msgstr "’n Verslag van persone wat gebore is in ’n gegewe tydperk of plek."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:35
 #: modules_v3/cemetery_report/report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr "'n Verslag van persone wat op 'n bepaalde plek begrawe is."
+msgstr "’n Verslag van persone wat op ’n bepaalde plek begrawe is."
 
 #. I18N: Description of the “Marriages” module
 #: app/Module/MarriageReportModule.php:35
 #: modules_v3/marriage_report/report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr "'n Verslag van persone wat tydens 'n gegewe periode en op 'n gegewe plek getroud is."
+msgstr "’n Verslag van persone wat tydens ’n gegewe periode en op ’n gegewe plek getroud is."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:35 modules_v3/change_report/report.xml:4
 msgid "A report of recent and pending changes."
-msgstr "'n Verslag van onlangse- en wysigings wat hangend is."
+msgstr "’n Verslag van onlangse- en wysigings wat hangend is."
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:35
 #: modules_v3/individual_ext_report/report.xml:4
 msgid "A report of the families that are closely related to an individual."
-msgstr "'n Verslag van die gesinne wat nou verwant aan 'n persoon is."
+msgstr "’n Verslag van die gesinne wat nou verwant aan ’n persoon is."
 
 #. I18N: Description of the “Related individuals” module
 #: app/Module/RelatedIndividualsReportModule.php:35
 #: modules_v3/relative_ext_report/report.xml:4
 msgid "A report of the individuals that are closely related to an individual."
-msgstr "'n Verslag van individue wat nou verwant aan 'n persoon is."
+msgstr "’n Verslag van individue wat nou verwant aan ’n persoon is."
 
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:35
@@ -4313,7 +4313,7 @@ msgstr "Pas hierdie bladsy aan"
 #. I18N: Name of a country or state
 #: app/Stats.php:6729
 msgid "Cyprus"
-msgstr "Cyprus"
+msgstr "Ciprus"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6730
@@ -8658,7 +8658,7 @@ msgstr "Huweliksband"
 
 #: app/Stats.php:1690 statistics.php:570
 msgid "Marriage by country"
-msgstr "Huwelikke per land"
+msgstr "Huwelike per land"
 
 #. I18N: gedcom tag MARC
 #: app/GedcomTag.php:568
@@ -8803,11 +8803,11 @@ msgstr "Onbekende huwelik"
 #: modules_v3/marriage_report/report.xml:3
 #: modules_v3/marriage_report/report.xml:30
 msgid "Marriages"
-msgstr "Huwelikke"
+msgstr "Huwelike"
 
 #: app/Stats.php:3540 statistics.php:223
 msgid "Marriages by century"
-msgstr "Huwelikke per eeu"
+msgstr "Huwelike per eeu"
 
 #. I18N: gedcom tag _MARNM
 #: app/GedcomTag.php:1560 modules_v3/cemetery_report/report.xml:7
@@ -12402,7 +12402,7 @@ msgstr "Kortste huwelik"
 
 #: app/Module/RecentChangesModule.php:181
 msgid "Should this block be hidden when it is empty"
-msgstr "Moet hierdie blok verberg word as dit leeg is?"
+msgstr "Moet hierdie blok verberg word as dit leeg is"
 
 #: calendar.php:221
 msgid "Show"
@@ -13345,7 +13345,7 @@ msgstr "Ruil persone om"
 #. I18N: Name of a country or state
 #: app/Stats.php:6888
 msgid "Swaziland"
-msgstr "Swaziland"
+msgstr "eSwatini"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6887
@@ -14982,7 +14982,7 @@ msgstr "Totale aantal mans"
 
 #: statistics.php:215
 msgid "Total marriages"
-msgstr "Totale aantal huwelikke"
+msgstr "Totale aantal huwelike"
 
 #: admin.php:656
 msgid "Total number of users"
