@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2019-07-14 08:43+0000\n"
+"PO-Revision-Date: 2019-07-21 06:34+0000\n"
 "Last-Translator: Michel Rivière <michel.riviere@laposte.net>\n"
 "Language-Team: French <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
@@ -14492,7 +14492,7 @@ msgstr "Cette option facilite le téléchargement des images par l’utilisateur
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml:160
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Cette option conserve les liens familiaux dans les dossiers privés. Cela signifie que vous pourrez voir les boîtes vides «&nbsp;privé&nbsp;» sur le tableau généalogique et sur les autres tableaux avec les personnes privées."
+msgstr "Cette option conserve les liens familiaux dans les enregistrements privés. Cela signifie que vous verrez des boîtes vides «&nbsp;privé&nbsp;» sur l’arbre d’ascendance et sur les autres diagrammes comportant des personnes privées."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:141
