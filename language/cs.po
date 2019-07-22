@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2018-10-13 10:46+0000\n"
+"PO-Revision-Date: 2019-07-22 15:01+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
-"Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/cs/>\n"
+"Language-Team: Czech <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1039,7 +1039,7 @@ msgstr "Postranní panel zobrazující nejbližší rodinu a příbuzné dané o
 #. I18N: Description of the “Extra information” module
 #: app/Module/ExtraInformationModule.php:34
 msgid "A sidebar showing non-genealogy information about an individual."
-msgstr "Postranní panel zobrazující nerodokmenové informace o dané osobě."
+msgstr "Postranní panel zobrazující negenealogické informace o dané osobě."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:38
@@ -1210,7 +1210,7 @@ msgstr "Schválení účtu a ověření emailem"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:83
 msgid "Accra, Ghana"
-msgstr "Accra, Ghana"
+msgstr "Akkra, Ghana"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:141
@@ -2154,7 +2154,7 @@ msgstr "duben"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:76
 msgid "Aqua Marine"
-msgstr "akvamarín"
+msgstr "Akvamarín"
 
 #: app/Controller/IndividualController.php:167
 #: app/Functions/FunctionsPrintFacts.php:201
@@ -3398,7 +3398,7 @@ msgstr "Kasta"
 
 #: statistics.php:703
 msgid "Categories"
-msgstr "Kategorie:"
+msgstr "Kategorie"
 
 #. I18N: gedcom tag CAUS
 #: app/GedcomTag.php:242
@@ -4017,7 +4017,7 @@ msgstr "Panel správy"
 #: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:426
 #: app/Module/ClippingsCartModule.php:794
 msgid "Convert from UTF-8 to ISO-8859-1"
-msgstr "Chcete změnit kódování v tomto GEDCOM souboru z UTF-8 na ISO-8859-1?"
+msgstr "Překódovat z UTF-8 na ISO-8859-1"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6720
@@ -4355,7 +4355,7 @@ msgstr "Kypr"
 #. I18N: Name of a country or state
 #: app/Stats.php:6730
 msgid "Czech Republic"
-msgstr "Česká republika"
+msgstr "Česko"
 
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/GedcomTag.php:1463
@@ -9033,12 +9033,12 @@ msgstr "Lékařská informace"
 #. I18N: gedcom tag _MEDC
 #: app/GedcomTag.php:1651
 msgid "Medical condition"
-msgstr "Lékařský stav"
+msgstr "Zdravotní stav"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:84
 msgid "Mediterranio"
-msgstr "Mediterranio"
+msgstr "Středomořská"
 
 #: setup.php:178
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
@@ -10277,7 +10277,7 @@ msgstr "Nejstarší matka"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:87
 msgid "Olivia"
-msgstr "Olivia"
+msgstr "Oliva"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6846
@@ -11652,7 +11652,7 @@ msgstr "Badatelské úkoly jsou speciální události, přiřazené osobám v ro
 
 #: app/Module/ResearchTaskModule.php:203
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "Badatelské úkoly jsou uloženy s nestandardním GEDCOM tagem „_TODO“. Jiné rodokmenové programy nemusejí tento tag uznávat."
+msgstr "Badatelské úkoly jsou uloženy s nestandardním GEDCOM tagem „_TODO“. Jiné genealogické programy nemusejí tento tag uznávat."
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:732
@@ -12463,7 +12463,7 @@ msgstr "Zobrazit všechny poznámky"
 
 #: placelist.php:212
 msgid "Show all places in a list"
-msgstr "Zobrazit všechna místa ze seznamu."
+msgstr "Zobrazit všechna místa v seznamu"
 
 #: app/Module/SourcesTabModule.php:70
 msgid "Show all sources"
@@ -12672,7 +12672,7 @@ msgstr "Zobrazit badatelské úkoly, které nejsou přiřazeny žádnému uživa
 
 #: app/Module/ResearchTaskModule.php:221
 msgid "Show research tasks that have a date in the future"
-msgstr "Zobrazit badatelské úkoly, které mají datum v budoucnosti."
+msgstr "Zobrazit badatelské úkoly, které mají datum v budoucnosti"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
@@ -17212,7 +17212,7 @@ msgstr "bratranec (z 4. kolena)"
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
 msgstr[0] "od roku %1$s interval %2$s roku"
-msgstr[1] "od roku %1$s interval %2$s let"
+msgstr[1] "od roku %1$s interval %2$s roky"
 msgstr[2] "od roku %1$s interval %2$s let"
 
 #. I18N: Gedcom FROM dates
