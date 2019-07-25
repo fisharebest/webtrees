@@ -1094,8 +1094,8 @@ class FamilyRepository
 
         $top10 = [];
         $i     = 0;
-        foreach ($rows as $fam => $age) {
-            $family = Family::getInstance($fam, $this->tree);
+        foreach ($rows as $xref => $age) {
+            $family = Family::getInstance((string) $xref, $this->tree);
             if ($type === 'name') {
                 return $family->formatList();
             }
