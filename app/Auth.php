@@ -161,7 +161,14 @@ class Auth
      */
     public static function id(): ?int
     {
-        return Session::get('wt_user');
+        $id = Session::get('wt_user');
+
+        if ($id !== null) {
+            // In webtrees 1.x, the ID may have been a string.
+            $id = (int) $id;
+        }
+
+        return $id;
     }
 
     /**
