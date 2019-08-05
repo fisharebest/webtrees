@@ -1,5 +1,17 @@
 <?php
 
+/*
+ * This file is part of the league/commonmark package.
+ *
+ * (c) Colin O'Dell <colinodell@gmail.com>
+ *
+ * Original code based on the CommonMark JS reference parser (https://bitly.com/commonmark-js)
+ *  - (c) John MacFarlane
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace League\CommonMark\Node;
 
 abstract class Node
@@ -85,7 +97,7 @@ abstract class Node
         $this->next = $sibling;
         $sibling->setParent($this->parent);
 
-        if (!$sibling->next) {
+        if (!$sibling->next && $sibling->parent) {
             $sibling->parent->lastChild = $sibling;
         }
     }
@@ -108,7 +120,7 @@ abstract class Node
         $this->previous = $sibling;
         $sibling->setParent($this->parent);
 
-        if (!$sibling->previous) {
+        if (!$sibling->previous && $sibling->parent) {
             $sibling->parent->firstChild = $sibling;
         }
     }

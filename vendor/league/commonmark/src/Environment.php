@@ -16,10 +16,12 @@ namespace League\CommonMark;
 
 use League\CommonMark\Block\Parser\BlockParserInterface;
 use League\CommonMark\Block\Renderer\BlockRendererInterface;
+use League\CommonMark\Delimiter\Processor\DelimiterProcessorCollection;
+use League\CommonMark\Delimiter\Processor\DelimiterProcessorInterface;
+use League\CommonMark\Event\AbstractEvent;
 use League\CommonMark\Extension\CommonMarkCoreExtension;
 use League\CommonMark\Extension\ExtensionInterface;
 use League\CommonMark\Inline\Parser\InlineParserInterface;
-use League\CommonMark\Inline\Processor\InlineProcessorInterface;
 use League\CommonMark\Inline\Renderer\InlineRendererInterface;
 use League\CommonMark\Util\Configuration;
 use League\CommonMark\Util\ConfigurationAwareInterface;
@@ -58,14 +60,9 @@ final class Environment implements EnvironmentInterface, ConfigurableEnvironment
     private $inlineParsersByCharacter = [];
 
     /**
-     * @var PrioritizedList<DocumentProcessorInterface>
+     * @var DelimiterProcessorCollection
      */
-    private $documentProcessors;
-
-    /**
-     * @var PrioritizedList<InlineProcessorInterface>
-     */
-    private $inlineProcessors;
+    private $delimiterProcessors;
 
     /**
      * @var array<string, PrioritizedList<BlockRendererInterface>>
@@ -76,6 +73,11 @@ final class Environment implements EnvironmentInterface, ConfigurableEnvironment
      * @var array<string, PrioritizedList<InlineRendererInterface>>
      */
     private $inlineRenderersByClass = [];
+
+    /**
+     * @var array<string, PrioritizedList<callable>>
+     */
+    private $listeners = [];
 
     /**
      * @var Configuration
@@ -93,8 +95,7 @@ final class Environment implements EnvironmentInterface, ConfigurableEnvironment
 
         $this->blockParsers = new PrioritizedList();
         $this->inlineParsers = new PrioritizedList();
-        $this->documentProcessors = new PrioritizedList();
-        $this->inlineProcessors = new PrioritizedList();
+        $this->delimiterProcessors = new DelimiterProcessorCollection();
     }
 
     /**
@@ -104,7 +105,7 @@ final class Environment implements EnvironmentInterface, ConfigurableEnvironment
     {
         $this->assertUninitialized('Failed to modify configuration.');
 
-        $this->config->mergeConfig($config);
+        $this->config->merge($config);
     }
 
     /**
@@ -114,7 +115,7 @@ final class Environment implements EnvironmentInterface, ConfigurableEnvironment
     {
         $this->assertUninitialized('Failed to modify configuration.');
 
-        $this->config->setConfig($config);
+        $this->config->replace($config);
     }
 
     /**
@@ -122,7 +123,7 @@ final class Environment implements EnvironmentInterface, ConfigurableEnvironment
      */
     public function getConfig($key = null, $default = null)
     {
-        return $this->config->getConfig($key, $default);
+        return $this->config->get($key, $default);
     }
 
     /**
@@ -162,24 +163,10 @@ final class Environment implements EnvironmentInterface, ConfigurableEnvironment
     /**
      * {@inheritdoc}
      */
-    public function addInlineProcessor(InlineProcessorInterface $processor, int $priority = 0): ConfigurableEnvironmentInterface
+    public function addDelimiterProcessor(DelimiterProcessorInterface $processor): ConfigurableEnvironmentInterface
     {
-        $this->assertUninitialized('Failed to add inline processor.');
-
-        $this->inlineProcessors->add($processor, $priority);
-        $this->injectEnvironmentAndConfigurationIfNeeded($processor);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addDocumentProcessor(DocumentProcessorInterface $processor, int $priority = 0): ConfigurableEnvironmentInterface
-    {
-        $this->assertUninitialized('Failed to add document processor.');
-
-        $this->documentProcessors->add($processor, $priority);
+        $this->assertUninitialized('Failed to add delimiter processor.');
+        $this->delimiterProcessors->add($processor);
         $this->injectEnvironmentAndConfigurationIfNeeded($processor);
 
         return $this;
@@ -246,21 +233,11 @@ final class Environment implements EnvironmentInterface, ConfigurableEnvironment
     /**
      * {@inheritdoc}
      */
-    public function getInlineProcessors(): iterable
+    public function getDelimiterProcessors(): DelimiterProcessorCollection
     {
         $this->initializeExtensions();
 
-        return $this->inlineProcessors->getIterator();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDocumentProcessors(): iterable
-    {
-        $this->initializeExtensions();
-
-        return $this->documentProcessors->getIterator();
+        return $this->delimiterProcessors;
     }
 
     /**
@@ -364,7 +341,6 @@ final class Environment implements EnvironmentInterface, ConfigurableEnvironment
                 'inner_separator' => "\n",
                 'soft_break'      => "\n",
             ],
-            'safe'               => false, // deprecated option
             'html_input'         => self::HTML_INPUT_ALLOW,
             'allow_unsafe_links' => true,
             'max_nesting_level'  => INF,
@@ -381,9 +357,46 @@ final class Environment implements EnvironmentInterface, ConfigurableEnvironment
         return $this->inlineParserCharacterRegex;
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function addEventListener(string $eventClass, callable $listener, int $priority = 0): ConfigurableEnvironmentInterface
+    {
+        $this->assertUninitialized('Failed to add event listener.');
+
+        if (!isset($this->listeners[$eventClass])) {
+            $this->listeners[$eventClass] = new PrioritizedList();
+        }
+
+        $this->listeners[$eventClass]->add($listener, $priority);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function dispatch(AbstractEvent $event): void
+    {
+        $this->initializeExtensions();
+
+        $type = get_class($event);
+
+        foreach ($this->listeners[$type] ?? [] as $listener) {
+            if ($event->isPropagationStopped()) {
+                return;
+            }
+
+            $listener($event);
+        }
+    }
+
     private function buildInlineParserCharacterRegex()
     {
-        $chars = \array_keys($this->inlineParsersByCharacter);
+        $chars = \array_unique(\array_merge(
+            \array_keys($this->inlineParsersByCharacter),
+            $this->delimiterProcessors->getDelimiterCharacters()
+        ));
 
         if (empty($chars)) {
             // If no special inline characters exist then parse the whole line

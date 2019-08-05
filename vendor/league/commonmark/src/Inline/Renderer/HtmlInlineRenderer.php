@@ -18,13 +18,13 @@ use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\EnvironmentInterface;
 use League\CommonMark\Inline\Element\AbstractInline;
 use League\CommonMark\Inline\Element\HtmlInline;
-use League\CommonMark\Util\Configuration;
 use League\CommonMark\Util\ConfigurationAwareInterface;
+use League\CommonMark\Util\ConfigurationInterface;
 
-class HtmlInlineRenderer implements InlineRendererInterface, ConfigurationAwareInterface
+final class HtmlInlineRenderer implements InlineRendererInterface, ConfigurationAwareInterface
 {
     /**
-     * @var Configuration
+     * @var ConfigurationInterface
      */
     protected $config;
 
@@ -40,16 +40,11 @@ class HtmlInlineRenderer implements InlineRendererInterface, ConfigurationAwareI
             throw new \InvalidArgumentException('Incompatible inline type: ' . \get_class($inline));
         }
 
-        // Kept for BC reasons
-        if ($this->config->getConfig('safe') === true) {
+        if ($this->config->get('html_input') === EnvironmentInterface::HTML_INPUT_STRIP) {
             return '';
         }
 
-        if ($this->config->getConfig('html_input') === EnvironmentInterface::HTML_INPUT_STRIP) {
-            return '';
-        }
-
-        if ($this->config->getConfig('html_input') === EnvironmentInterface::HTML_INPUT_ESCAPE) {
+        if ($this->config->get('html_input') === EnvironmentInterface::HTML_INPUT_ESCAPE) {
             return htmlspecialchars($inline->getContent(), ENT_NOQUOTES);
         }
 
@@ -57,9 +52,9 @@ class HtmlInlineRenderer implements InlineRendererInterface, ConfigurationAwareI
     }
 
     /**
-     * @param Configuration $configuration
+     * @param ConfigurationInterface $configuration
      */
-    public function setConfiguration(Configuration $configuration)
+    public function setConfiguration(ConfigurationInterface $configuration)
     {
         $this->config = $configuration;
     }

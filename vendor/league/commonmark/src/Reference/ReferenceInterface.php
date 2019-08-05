@@ -12,16 +12,25 @@
  * file that was distributed with this source code.
  */
 
-namespace League\CommonMark;
+namespace League\CommonMark\Reference;
 
-use League\CommonMark\Block\Element\Document;
-
-interface DocumentProcessorInterface
+/**
+ * Link reference
+ */
+interface ReferenceInterface
 {
     /**
-     * @param Document $document
-     *
-     * @return void
+     * @return string
      */
-    public function processDocument(Document $document);
+    public function getLabel(): string;
+
+    /**
+     * @return string
+     */
+    public function getDestination(): string;
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string;
 }

@@ -370,6 +370,16 @@ class CarbonInterval extends DateInterval
     }
 
     /**
+     * Get a copy of the instance.
+     *
+     * @return static
+     */
+    public function clone()
+    {
+        return $this->copy();
+    }
+
+    /**
      * Provide static helpers to create instances.  Allows CarbonInterval::years(3).
      *
      * Note: This is done using the magic method to allow static and instance methods to
@@ -685,6 +695,15 @@ class CarbonInterval extends DateInterval
         $interval = static::createFromDateString($var);
 
         return !$interval || $interval->isEmpty() ? null : $interval;
+    }
+
+    protected function resolveInterval($interval)
+    {
+        if (!($interval instanceof self)) {
+            return self::make($interval);
+        }
+
+        return $interval;
     }
 
     /**
@@ -1665,5 +1684,233 @@ class CarbonInterval extends DateInterval
         }
 
         return $result;
+    }
+
+    /**
+     * Determines if the instance is equal to another
+     *
+     * @param \Carbon\CarbonInterval|DateInterval|mixed $interval
+     *
+     * @see equalTo()
+     *
+     * @return bool
+     */
+    public function eq($interval): bool
+    {
+        return $this->equalTo($interval);
+    }
+
+    /**
+     * Determines if the instance is equal to another
+     *
+     * @param \Carbon\CarbonInterval|DateInterval|mixed $interval
+     *
+     * @return bool
+     */
+    public function equalTo($interval): bool
+    {
+        $interval = $this->resolveInterval($interval);
+
+        return $interval !== null && $this->totalMicroseconds === $interval->totalMicroseconds;
+    }
+
+    /**
+     * Determines if the instance is not equal to another
+     *
+     * @param \Carbon\CarbonInterval|DateInterval|mixed $interval
+     *
+     * @see notEqualTo()
+     *
+     * @return bool
+     */
+    public function ne($interval): bool
+    {
+        return $this->notEqualTo($interval);
+    }
+
+    /**
+     * Determines if the instance is not equal to another
+     *
+     * @param \Carbon\CarbonInterval|DateInterval|mixed $interval
+     *
+     * @return bool
+     */
+    public function notEqualTo($interval): bool
+    {
+        return !$this->eq($interval);
+    }
+
+    /**
+     * Determines if the instance is greater (longer) than another
+     *
+     * @param \Carbon\CarbonInterval|DateInterval|mixed $interval
+     *
+     * @see greaterThan()
+     *
+     * @return bool
+     */
+    public function gt($interval): bool
+    {
+        return $this->greaterThan($interval);
+    }
+
+    /**
+     * Determines if the instance is greater (longer) than another
+     *
+     * @param \Carbon\CarbonInterval|DateInterval|mixed $interval
+     *
+     * @return bool
+     */
+    public function greaterThan($interval): bool
+    {
+        $interval = $this->resolveInterval($interval);
+
+        return $interval === null || $this->totalMicroseconds > $interval->totalMicroseconds;
+    }
+
+    /**
+     * Determines if the instance is greater (longer) than or equal to another
+     *
+     * @param \Carbon\CarbonInterval|DateInterval|mixed $interval
+     *
+     * @see greaterThanOrEqualTo()
+     *
+     * @return bool
+     */
+    public function gte($interval): bool
+    {
+        return $this->greaterThanOrEqualTo($interval);
+    }
+
+    /**
+     * Determines if the instance is greater (longer) than or equal to another
+     *
+     * @param \Carbon\CarbonInterval|DateInterval|mixed $interval
+     *
+     * @return bool
+     */
+    public function greaterThanOrEqualTo($interval): bool
+    {
+        return $this->greaterThan($interval) || $this->equalTo($interval);
+    }
+
+    /**
+     * Determines if the instance is less (shorter) than another
+     *
+     * @param \Carbon\CarbonInterval|DateInterval|mixed $interval
+     *
+     * @see lessThan()
+     *
+     * @return bool
+     */
+    public function lt($interval): bool
+    {
+        return $this->lessThan($interval);
+    }
+
+    /**
+     * Determines if the instance is less (shorter) than another
+     *
+     * @param \Carbon\CarbonInterval|DateInterval|mixed $interval
+     *
+     * @return bool
+     */
+    public function lessThan($interval): bool
+    {
+        $interval = $this->resolveInterval($interval);
+
+        return $interval !== null && $this->totalMicroseconds < $interval->totalMicroseconds;
+    }
+
+    /**
+     * Determines if the instance is less (shorter) than or equal to another
+     *
+     * @param \Carbon\CarbonInterval|DateInterval|mixed $interval
+     *
+     * @see lessThanOrEqualTo()
+     *
+     * @return bool
+     */
+    public function lte($interval): bool
+    {
+        return $this->lessThanOrEqualTo($interval);
+    }
+
+    /**
+     * Determines if the instance is less (shorter) than or equal to another
+     *
+     * @param \Carbon\CarbonInterval|DateInterval|mixed $interval
+     *
+     * @return bool
+     */
+    public function lessThanOrEqualTo($interval): bool
+    {
+        return $this->lessThan($interval) || $this->equalTo($interval);
+    }
+
+    /**
+     * Determines if the instance is between two others.
+     *
+     * @example
+     * ```
+     * CarbonInterval::hours(48)->between(CarbonInterval::day(), CarbonInterval::days(3)); // true
+     * CarbonInterval::hours(48)->between(CarbonInterval::day(), CarbonInterval::hours(36)); // false
+     * CarbonInterval::hours(48)->between(CarbonInterval::day(), CarbonInterval::days(2)); // true
+     * CarbonInterval::hours(48)->between(CarbonInterval::day(), CarbonInterval::days(2), false); // false
+     * ```
+     *
+     * @param \Carbon\CarbonInterval|\DateInterval|mixed $interval1
+     * @param \Carbon\CarbonInterval|\DateInterval|mixed $interval2
+     * @param bool                                       $equal     Indicates if an equal to comparison should be done
+     *
+     * @return bool
+     */
+    public function between($interval1, $interval2, $equal = true): bool
+    {
+        return $equal
+            ? $this->greaterThanOrEqualTo($interval1) && $this->lessThanOrEqualTo($interval2)
+            : $this->greaterThan($interval1) && $this->lessThan($interval2);
+    }
+
+    /**
+     * Determines if the instance is between two others, bounds excluded.
+     *
+     * @example
+     * ```
+     * CarbonInterval::hours(48)->betweenExcluded(CarbonInterval::day(), CarbonInterval::days(3)); // true
+     * CarbonInterval::hours(48)->betweenExcluded(CarbonInterval::day(), CarbonInterval::hours(36)); // false
+     * CarbonInterval::hours(48)->betweenExcluded(CarbonInterval::day(), CarbonInterval::days(2)); // false
+     * ```
+     *
+     * @param \Carbon\CarbonInterval|\DateInterval|mixed $interval1
+     * @param \Carbon\CarbonInterval|\DateInterval|mixed $interval2
+     *
+     * @return bool
+     */
+    public function betweenExcluded($interval1, $interval2): bool
+    {
+        return $this->between($interval1, $interval2, false);
+    }
+
+    /**
+     * Determines if the instance is between two others
+     *
+     * @example
+     * ```
+     * CarbonInterval::hours(48)->isBetween(CarbonInterval::day(), CarbonInterval::days(3)); // true
+     * CarbonInterval::hours(48)->isBetween(CarbonInterval::day(), CarbonInterval::hours(36)); // false
+     * CarbonInterval::hours(48)->isBetween(CarbonInterval::day(), CarbonInterval::days(2)); // true
+     * CarbonInterval::hours(48)->isBetween(CarbonInterval::day(), CarbonInterval::days(2), false); // false
+     * ```
+     *
+     * @param \Carbon\CarbonInterval|\DateInterval|mixed $interval1
+     * @param \Carbon\CarbonInterval|\DateInterval|mixed $interval2
+     * @param bool                                       $equal     Indicates if an equal to comparison should be done
+     *
+     * @return bool
+     */
+    public function isBetween($interval1, $interval2, $equal = true): bool
+    {
+        return $this->between($interval1, $interval2, $equal);
     }
 }

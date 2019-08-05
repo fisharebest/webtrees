@@ -153,11 +153,11 @@ class DebugClassLoader
                 if (!$file = $this->classLoader[0]->findFile($class) ?: false) {
                     // no-op
                 } elseif (\function_exists('opcache_is_script_cached') && @opcache_is_script_cached($file)) {
-                    require $file;
+                    include $file;
 
                     return;
-                } else {
-                    require $file;
+                } elseif (false === include $file) {
+                    return;
                 }
             } else {
                 ($this->classLoader)($class);

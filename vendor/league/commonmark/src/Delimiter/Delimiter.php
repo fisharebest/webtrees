@@ -14,53 +14,53 @@
 
 namespace League\CommonMark\Delimiter;
 
-use League\CommonMark\Node\Node;
+use League\CommonMark\Inline\Element\AbstractStringContainer;
 
-class Delimiter
+final class Delimiter implements DelimiterInterface
 {
     /** @var string */
-    protected $char;
+    private $char;
 
     /** @var int */
-    protected $numDelims;
+    private $length;
 
     /** @var int */
-    protected $origDelims;
+    private $originalLength;
 
-    /** @var Node */
-    protected $inlineNode;
+    /** @var AbstractStringContainer */
+    private $inlineNode;
 
-    /** @var Delimiter|null */
-    protected $previous;
+    /** @var DelimiterInterface|null */
+    private $previous;
 
-    /** @var Delimiter|null */
-    protected $next;
-
-    /** @var bool */
-    protected $canOpen;
+    /** @var DelimiterInterface|null */
+    private $next;
 
     /** @var bool */
-    protected $canClose;
+    private $canOpen;
 
     /** @var bool */
-    protected $active;
+    private $canClose;
+
+    /** @var bool */
+    private $active;
 
     /** @var int|null */
-    protected $index;
+    private $index;
 
     /**
-     * @param string   $char
-     * @param int      $numDelims
-     * @param Node     $node
-     * @param bool     $canOpen
-     * @param bool     $canClose
-     * @param int|null $index
+     * @param string                  $char
+     * @param int                     $numDelims
+     * @param AbstractStringContainer $node
+     * @param bool                    $canOpen
+     * @param bool                    $canClose
+     * @param int|null                $index
      */
-    public function __construct(string $char, int $numDelims, Node $node, bool $canOpen, bool $canClose, ?int $index = null)
+    public function __construct(string $char, int $numDelims, AbstractStringContainer $node, bool $canOpen, bool $canClose, ?int $index = null)
     {
         $this->char = $char;
-        $this->numDelims = $numDelims;
-        $this->origDelims = $numDelims;
+        $this->length = $numDelims;
+        $this->originalLength = $numDelims;
         $this->inlineNode = $node;
         $this->canOpen = $canOpen;
         $this->canClose = $canClose;
@@ -69,7 +69,7 @@ class Delimiter
     }
 
     /**
-     * @return bool
+     * {@inheritdoc}
      */
     public function canClose(): bool
     {
@@ -77,19 +77,15 @@ class Delimiter
     }
 
     /**
-     * @param bool $canClose
-     *
-     * @return $this
+     * {@inheritdoc}
      */
     public function setCanClose(bool $canClose)
     {
         $this->canClose = $canClose;
-
-        return $this;
     }
 
     /**
-     * @return bool
+     * {@inheritdoc}
      */
     public function canOpen(): bool
     {
@@ -97,19 +93,7 @@ class Delimiter
     }
 
     /**
-     * @param bool $canOpen
-     *
-     * @return $this
-     */
-    public function setCanOpen(bool $canOpen)
-    {
-        $this->canOpen = $canOpen;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
+     * {@inheritdoc}
      */
     public function isActive(): bool
     {
@@ -117,19 +101,15 @@ class Delimiter
     }
 
     /**
-     * @param bool $active
-     *
-     * @return $this
+     * {@inheritdoc}
      */
     public function setActive(bool $active)
     {
         $this->active = $active;
-
-        return $this;
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getChar(): string
     {
@@ -137,19 +117,7 @@ class Delimiter
     }
 
     /**
-     * @param string $char
-     *
-     * @return $this
-     */
-    public function setChar(string $char)
-    {
-        $this->char = $char;
-
-        return $this;
-    }
-
-    /**
-     * @return int|null
+     * {@inheritdoc}
      */
     public function getIndex(): ?int
     {
@@ -157,99 +125,65 @@ class Delimiter
     }
 
     /**
-     * @param int|null $index
-     *
-     * @return $this
+     * {@inheritdoc}
      */
-    public function setIndex(?int $index)
-    {
-        $this->index = $index;
-
-        return $this;
-    }
-
-    /**
-     * @return Delimiter|null
-     */
-    public function getNext(): ?self
+    public function getNext(): ?DelimiterInterface
     {
         return $this->next;
     }
 
     /**
-     * @param Delimiter|null $next
-     *
-     * @return $this
+     * {@inheritdoc}
      */
-    public function setNext(?self $next)
+    public function setNext(?DelimiterInterface $next)
     {
         $this->next = $next;
-
-        return $this;
     }
 
     /**
-     * @return int
+     * {@inheritdoc}
      */
-    public function getNumDelims(): int
+    public function getLength(): int
     {
-        return $this->numDelims;
+        return $this->length;
     }
 
     /**
-     * @param int $numDelims
-     *
-     * @return $this
+     * {@inheritdoc}
      */
-    public function setNumDelims(int $numDelims)
+    public function setLength(int $length)
     {
-        $this->numDelims = $numDelims;
-
-        return $this;
+        $this->length = $length;
     }
 
     /**
-     * @return int
+     * {@inheritdoc}
      */
-    public function getOrigDelims(): int
+    public function getOriginalLength(): int
     {
-        return $this->origDelims;
+        return $this->originalLength;
     }
 
     /**
-     * @return Node
+     * {@inheritdoc}
      */
-    public function getInlineNode(): Node
+    public function getInlineNode(): AbstractStringContainer
     {
         return $this->inlineNode;
     }
 
     /**
-     * @param Node $node
-     *
-     * @return $this
+     * {@inheritdoc}
      */
-    public function setInlineNode(Node $node)
-    {
-        $this->inlineNode = $node;
-
-        return $this;
-    }
-
-    /**
-     * @return Delimiter|null
-     */
-    public function getPrevious(): ?self
+    public function getPrevious(): ?DelimiterInterface
     {
         return $this->previous;
     }
 
     /**
-     * @param Delimiter|null $previous
-     *
-     * @return $this
+     * {@inheritdoc}
      */
-    public function setPrevious(?self $previous)
+    public function setPrevious(?DelimiterInterface $previous): DelimiterInterface
     {
         $this->previous = $previous;
 

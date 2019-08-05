@@ -365,13 +365,10 @@ class PostgresGrammar extends Grammar
                 : $value;
         })->all();
 
-        // Update statements with "joins" in Postgres use an interesting syntax. We need to
-        // take all of the bindings and put them on the end of this array since they are
-        // added to the end of the "where" clause statements as typical where clauses.
-        $bindingsWithoutJoin = Arr::except($bindings, 'join');
+        $bindingsWithoutWhere = Arr::except($bindings, ['select', 'where']);
 
         return array_values(
-            array_merge($values, $bindings['join'], Arr::flatten($bindingsWithoutJoin))
+            array_merge($values, $bindings['where'], Arr::flatten($bindingsWithoutWhere))
         );
     }
 
@@ -403,9 +400,24 @@ class PostgresGrammar extends Grammar
             return $this->wrapTable($join->table);
         })->implode(', ');
 
-        $where = count($query->wheres) > 0 ? ' '.$this->compileUpdateWheres($query) : '';
+        $where = $this->compileUpdateWheres($query);
 
-        return trim("delete from {$table}{$using}{$where}");
+        return trim("delete from {$table}{$using} {$where}");
+    }
+
+    /**
+     * Prepare the bindings for a delete statement.
+     *
+     * @param  array  $bindings
+     * @return array
+     */
+    public function prepareBindingsForDelete(array $bindings)
+    {
+        $bindingsWithoutWhere = Arr::except($bindings, ['select', 'where']);
+
+        return array_values(
+            array_merge($bindings['where'], Arr::flatten($bindingsWithoutWhere))
+        );
     }
 
     /**

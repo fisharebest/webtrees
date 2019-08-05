@@ -13,9 +13,9 @@ namespace League\CommonMark;
 
 use League\CommonMark\Block\Parser\BlockParserInterface;
 use League\CommonMark\Block\Renderer\BlockRendererInterface;
+use League\CommonMark\Delimiter\Processor\DelimiterProcessorInterface;
 use League\CommonMark\Extension\ExtensionInterface;
 use League\CommonMark\Inline\Parser\InlineParserInterface;
-use League\CommonMark\Inline\Processor\InlineProcessorInterface;
 use League\CommonMark\Inline\Renderer\InlineRendererInterface;
 
 /**
@@ -63,24 +63,13 @@ interface ConfigurableEnvironmentInterface extends EnvironmentInterface
     public function addInlineParser(InlineParserInterface $parser, int $priority = 0): ConfigurableEnvironmentInterface;
 
     /**
-     * Registers the given inline processor with the Environment
+     * Registers the given delimiter processor with the Environment
      *
-     * @param InlineProcessorInterface $processor Inline processor instance
-     * @param int                      $priority  Priority (a higher number will be executed earlier)
+     * @param DelimiterProcessorInterface $processor Delimiter processors instance
      *
-     * @return self
+     * @return ConfigurableEnvironmentInterface
      */
-    public function addInlineProcessor(InlineProcessorInterface $processor, int $priority = 0): ConfigurableEnvironmentInterface;
-
-    /**
-     * Registers the given document processor with the Environment
-     *
-     * @param DocumentProcessorInterface $processor Document processor instance
-     * @param int                        $priority  Priority (a higher number will be executed earlier)
-     *
-     * @return self
-     */
-    public function addDocumentProcessor(DocumentProcessorInterface $processor, int $priority = 0): ConfigurableEnvironmentInterface;
+    public function addDelimiterProcessor(DelimiterProcessorInterface $processor): ConfigurableEnvironmentInterface;
 
     /**
      * @param string                 $blockClass    The fully-qualified block element class name the renderer below should handle
@@ -101,4 +90,15 @@ interface ConfigurableEnvironmentInterface extends EnvironmentInterface
      * @return self
      */
     public function addInlineRenderer(string $inlineClass, InlineRendererInterface $renderer, int $priority = 0): ConfigurableEnvironmentInterface;
+
+    /**
+     * Registers the given event listener
+     *
+     * @param string   $eventClass Fully-qualified class name of the event this listener should respond to
+     * @param callable $listener   Listener to be executed
+     * @param int      $priority   Priority (a higher number will be executed earlier)
+     *
+     * @return self
+     */
+    public function addEventListener(string $eventClass, callable $listener, int $priority = 0): ConfigurableEnvironmentInterface;
 }

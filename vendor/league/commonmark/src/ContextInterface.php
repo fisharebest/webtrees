@@ -16,6 +16,7 @@ namespace League\CommonMark;
 
 use League\CommonMark\Block\Element\AbstractBlock;
 use League\CommonMark\Block\Element\Document;
+use League\CommonMark\Reference\ReferenceParser;
 
 interface ContextInterface
 {
@@ -87,9 +88,4 @@ interface ContextInterface
      * @return ReferenceParser
      */
     public function getReferenceParser(): ReferenceParser;
-
-    /**
-     * @return string
-     */
-    public function getEncoding(): string;
 }
