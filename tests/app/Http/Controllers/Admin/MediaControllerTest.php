@@ -107,7 +107,7 @@ class MediaControllerTest extends TestCase
     public function testDelete(): void
     {
         $controller = new MediaController();
-        $request    = self::createRequest('POST', ['route' => 'admin-media-delete'], ['file' => 'foo', 'folder' => 'bar']);
+        $request    = self::createRequest('POST', ['route' => 'admin-media-delete', 'file' => 'foo', 'folder' => 'bar']);
         $response   = $controller->delete($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());

@@ -122,8 +122,8 @@ class MediaController extends AbstractAdminController
      */
     public function delete(ServerRequestInterface $request): ResponseInterface
     {
-        $delete_file  = $request->getParsedBody()['file'];
-        $media_folder = $request->getParsedBody()['folder'];
+        $delete_file  = $request->getQueryParams()['file'];
+        $media_folder = $request->getQueryParams()['folder'];
 
         // Only delete valid (i.e. unused) media files
         $disk_files = $this->allDiskFiles($media_folder, 'include');
