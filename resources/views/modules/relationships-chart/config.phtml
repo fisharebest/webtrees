@@ -28,7 +28,7 @@
                     I18N::translate('How much recursion to use when searching for relationships') ?>
                 </legend>
                 <div class="col-sm-9">
-                    <?= view('components/radios-inline', ['name' => 'relationship-recursion-' . $tree->id(), 'options' => $recursion_options, 'selected' => $default_recursion]) ?>
+                    <?= view('components/radios-inline', ['name' => 'relationship-recursion-' . $tree->id(), 'options' => $recursion_options, 'selected' => (int) $tree->getPreference('RELATIONSHIP_RECURSION', $default_recursion)]) ?>
                 </div>
             </div>
         </fieldset>

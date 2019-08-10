@@ -177,8 +177,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         foreach (Tree::getAll() as $tree) {
-            $recursion = $request->getQueryParams()['relationship-recursion-' . $tree->id()] ?? '';
-            $ancestors = $request->getQueryParams()['relationship-ancestors-' . $tree->id()] ?? '';
+            $recursion = $request->getParsedBody()['relationship-recursion-' . $tree->id()] ?? '';
+            $ancestors = $request->getParsedBody()['relationship-ancestors-' . $tree->id()] ?? '';
 
             $tree->setPreference('RELATIONSHIP_RECURSION', $recursion);
             $tree->setPreference('RELATIONSHIP_ANCESTORS', $ancestors);
