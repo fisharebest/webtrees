@@ -290,7 +290,7 @@ class CalendarService
 
             $query
                 ->orderBy('d_day')
-                ->orderByDesc('d_year');
+                ->orderBy('d_year');
 
             $ind_query = (clone $query)
                 ->join('individuals', static function (JoinClause $join): void {
