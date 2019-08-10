@@ -1,6 +1,6 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 <p>
-    <?= I18N::translate('Hello %s…', e($user->realName())) ?>
+    <?= I18N::translate('Hello %s…', '<span dir="auto">' . e($user->realName()) . '</span>') ?>
 </p>
 
 <p>
