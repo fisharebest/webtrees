@@ -1,21 +1,23 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
-<p>
-    <?= I18N::translate('Hello %s…', '<span dir="auto">' . e($sender->realName()) . '</span>') ?>
-</p>
+<div <?= I18N::htmlAttributes() ?>>
+    <p>
+        <?= I18N::translate('Hello %s…', '<span dir="auto">' . e($sender->realName()) . '</span>') ?>
+    </p>
 
-<p>
-    <?= I18N::translate('You sent the following message to a webtrees user:') ?><?= e($recipient->realName()) ?>
-</p>
+    <p>
+        <?= I18N::translate('You sent the following message to a webtrees user:') ?><?= e($recipient->realName()) ?>
+    </p>
 
-<hr>
+    <hr>
 
-<p>
-    <?= nl2br(e($message), false) ?>
-</p>
+    <p>
+        <?= nl2br(e($message), false) ?>
+    </p>
 
-<hr>
+    <hr>
 
-<p>
-    <?= I18N::translate('This message was sent while viewing the following URL: ') ?>
-    <?= e($url) ?>
-</p>
+    <p>
+        <?= I18N::translate('This message was sent while viewing the following URL: ') ?>
+        <?= e($url) ?>
+    </p>
+</div>

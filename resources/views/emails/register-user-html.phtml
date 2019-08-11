@@ -1,22 +1,25 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
-<p>
-    <?= I18N::translate('Hello %s…', e($user->realName())) ?>
-</p>
+<div <?= I18N::htmlAttributes() ?>>
+    <p>
+        <?= I18N::translate('Hello %s…', e($user->realName())) ?>
+    </p>
 
-<p>
-    <?= /* I18N: %1$s is the site URL and %2$s is an email address */I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', e($base_url), e($user->email())) ?>
-</p>
+    <p>
+        <?= /* I18N: %1$s is the site URL and %2$s is an email address */
+        I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', e($base_url), e($user->email())) ?>
+    </p>
 
-<p>
-    <?= I18N::translate('Follow this link to verify your email address.') ?>
-</p>
+    <p>
+        <?= I18N::translate('Follow this link to verify your email address.') ?>
+    </p>
 
-<p>
-    <a href="<?= e(route('verify', ['username' => $user->userName(), 'token' => $user->getPreference('reg_hashcode'), 'ged' => $tree->name()], true)) ?>">
-        <?= e(route('verify', ['username' => $user->userName(), 'token' => $user->getPreference('reg_hashcode'), 'ged' => $tree->name()], true)) ?>
-    </a>
-</p>
+    <p>
+        <a href="<?= e(route('verify', ['username' => $user->userName(), 'token' => $user->getPreference('reg_hashcode'), 'ged' => $tree->name()], true)) ?>">
+            <?= e(route('verify', ['username' => $user->userName(), 'token' => $user->getPreference('reg_hashcode'), 'ged' => $tree->name()], true)) ?>
+        </a>
+    </p>
 
-<p>
-    <?= I18N::translate('If you didn’t request an account, you can just delete this message.') ?>
-</p>
+    <p>
+        <?= I18N::translate('If you didn’t request an account, you can just delete this message.') ?>
+    </p>
+</div>
