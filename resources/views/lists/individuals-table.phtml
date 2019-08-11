@@ -22,6 +22,9 @@ $hundred_years_ago = new Date($hundred_years_ago->format('Y'));
 
 $unique_indis = []; // Don't double-count indis with multiple names.
 
+$today_jd             = unixtojd();
+$show_estimated_dates = (bool) $tree->getPreference('SHOW_EST_LIST_DATES');
+
 $module = app(ModuleService::class)
     ->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
     ->first(static function (ModuleInterface $module) {
@@ -346,7 +349,7 @@ $deathAgeData = [
                         <br>
                     <?php endforeach ?>
 
-                    <?php if (empty($birth_dates)): ?>
+                    <?php if (empty($birth_dates) && $show_estimated_dates): ?>
                         <?= $individual->getEstimatedBirthDate()->display(true) ?>
                     <?php endif ?>
                 </td>
@@ -382,7 +385,7 @@ $deathAgeData = [
                     <br>
                     <?php endforeach ?>
 
-                    <?php if (empty($death_dates)): ?>
+                    <?php if (empty($death_dates) && $show_estimated_dates && $individual->getEstimatedDeathDate()->minimumDate()->minimumJulianDay() < $today_jd): ?>
                         <?= $individual->getEstimatedDeathDate()->display(true) ?>
                     <?php endif ?>
                 </td>
