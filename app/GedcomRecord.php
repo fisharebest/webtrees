@@ -22,6 +22,8 @@ use Exception;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use stdClass;
@@ -1331,6 +1333,13 @@ class GedcomRecord
             ->where('gedcom_id', '=', $this->tree()->id())
             ->whereContains('new_gedcom', '@' . $this->xref() . '@')
             ->where('new_gedcom', 'NOT LIKE', '0 @' . $this->xref() . '@%')
+            ->whereIn('change_id', function (Builder $query): void {
+                $query->select(new Expression('MAX(change_id)'))
+                    ->from('change')
+                    ->where('gedcom_id', '=', $this->tree->id())
+                    ->where('status', '=', 'pending')
+                    ->groupBy('xref');
+            })
             ->select(['xref']);
 
         $xrefs = DB::table('link')
