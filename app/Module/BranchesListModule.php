@@ -89,7 +89,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
      */
     public function getPageAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        Auth::checkComponentAccess($this, 'list', $tree, $user);
+        Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
       
         $listController = new BranchesController(app(ModuleService::class));
         return $listController->page($request);
@@ -104,7 +104,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
      */
     public function getListAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        Auth::checkComponentAccess($this, 'list', $tree, $user);
+        Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
       
         $listController = new BranchesController(app(ModuleService::class));
         return $listController->list($request, $tree, $user);

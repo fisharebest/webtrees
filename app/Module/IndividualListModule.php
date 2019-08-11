@@ -75,7 +75,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      */
     public function getListAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        Auth::checkComponentAccess($this, 'list', $tree, $user);
+        Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
       
         $listController = new ListController(app(IndividualListService::class), app(LocalizationService::class));
         return $listController->individualList($request, $tree, $user, $this);

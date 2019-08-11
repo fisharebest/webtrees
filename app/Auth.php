@@ -215,7 +215,7 @@ class Auth
     public static function checkComponentAccess(ModuleInterface $module, string $component, Tree $tree, UserInterface $user): void
     {
         if ($module->accessLevel($tree, $component) < self::accessLevel($tree, $user)) {
-            throw new AccessDeniedHttpException('');
+            throw new AccessDeniedHttpException('Access denied');
         }
     }
 

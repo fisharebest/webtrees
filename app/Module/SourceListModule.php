@@ -74,7 +74,7 @@ class SourceListModule extends AbstractModule implements ModuleListInterface
      */
     public function getListAction(Tree $tree, UserInterface $user): ResponseInterface
     {
-        Auth::checkComponentAccess($this, 'list', $tree, $user);
+        Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
       
         $listController = new ListController(app(IndividualListService::class), app(LocalizationService::class));
         return $listController->sourceList($tree);

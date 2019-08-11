@@ -75,7 +75,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
      */
     public function getListAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
     {
-        Auth::checkComponentAccess($this, 'list', $tree, $user);
+        Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
       
         $listController = new PlaceHierarchyController(app(Statistics::class));
         return $listController->show($request, $tree, app(SearchService::class));
