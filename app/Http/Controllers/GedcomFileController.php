@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Exception;
+use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
@@ -27,7 +28,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
-use Throwable;
 
 /**
  * Controller for the processing GEDCOM files.
@@ -58,11 +58,11 @@ class GedcomFileController extends AbstractBaseController
             $import_offset = (int) DB::table('gedcom_chunk')
                 ->where('gedcom_id', '=', $tree->id())
                 ->where('imported', '=', '1')
-                ->sum(new Expression('LENGTH(chunk_data)'));
+                ->count();
 
             $import_total = (int) DB::table('gedcom_chunk')
                 ->where('gedcom_id', '=', $tree->id())
-                ->sum(new Expression('LENGTH(chunk_data)'));
+                ->count();
 
             // Finished?
             if ($import_offset === $import_total) {
@@ -77,6 +77,9 @@ class GedcomFileController extends AbstractBaseController
             $progress = $import_offset / $import_total;
 
             $first_time = ($import_offset === 0);
+
+            // Collect up any errors, and show them later.
+            $errors = '';
 
             // Run for a short period of time. This keeps the resource requirements low.
             do {
@@ -185,9 +188,8 @@ class GedcomFileController extends AbstractBaseController
                 foreach (preg_split('/\n+(?=0)/', $data->chunk_data) as $rec) {
                     try {
                         FunctionsImport::importRecord($rec, $tree, false);
-                    } catch (Throwable $ex) {
-                        // Make sure the error message includes the GEDCOM record being imported.
-                        throw new Exception($ex->getMessage() . '<pre>' . e($rec) . '</pre>');
+                    } catch (GedcomErrorException $exception) {
+                        $errors .= $exception->getMessage();
                     }
                 }
 
@@ -198,6 +200,7 @@ class GedcomFileController extends AbstractBaseController
             } while (!$timeout_service->isTimeLimitUp());
 
             return $this->viewResponse('admin/import-progress', [
+                'errors'   => $errors,
                 'progress' => $progress,
             ]);
         } catch (Exception $ex) {

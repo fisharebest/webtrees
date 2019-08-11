@@ -13,7 +13,24 @@
     </div>
 </div>
 
-<script>
-  $("#import<?= e($tree->id()) ?>")
-      .load("<?= route('import', ['ged' => $tree->name()]) ?>", {});
-</script>
+<?php if ($errors === ''): ?>
+    <script>
+        $("#import<?= e($tree->id()) ?>")
+            .load("<?= route('import', ['ged' => $tree->name()]) ?>", {});
+    </script>
+<?php else: ?>
+    <div class="alert alert-danger">
+        <?= $errors ?>
+    </div>
+
+    <button class="btn btn-primary" onclick="" id="error-button-<?= $tree->id() ?>">
+        <?= I18N::translate('continue') ?>
+    </button>
+
+    <script>
+        $("#error-button-<?= $tree->id() ?>").click(function () {
+            $("#import<?= e($tree->id()) ?>")
+                .load("<?= route('import', ['ged' => $tree->name()]) ?>", {});
+        });
+    </script>
+<?php endif ?>
