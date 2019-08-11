@@ -426,8 +426,8 @@ class UsersController extends AbstractAdminController
 
         foreach (Tree::getAll() as $tree) {
             $path_length = (int) $request->getParsedBody()['RELATIONSHIP_PATH_LENGTH' . $tree->id()];
-            $gedcom_id   = $request->getParsedBody()['gedcomid' . $tree->id()];
-            $can_edit    = $request->getParsedBody()['canedit' . $tree->id()];
+            $gedcom_id   = $request->getParsedBody()['gedcomid' . $tree->id()] ?? '';
+            $can_edit    = $request->getParsedBody()['canedit' . $tree->id()] ?? '';
 
             // Do not allow a path length to be set if the individual ID is not
             if ($gedcom_id === '') {
