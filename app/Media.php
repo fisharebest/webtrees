@@ -106,16 +106,20 @@ class Media extends GedcomRecord
     public function getNote()
     {
         $note = $this->getFirstFact('NOTE');
-        if ($note) {
-            $text = $note->getValue();
-            if (preg_match('/^@' . WT_REGEX_XREF . '@$/', $text)) {
-                $text = $note->getTarget()->getNote();
+
+        if ($note instanceof Fact) {
+            $target = $note->getTarget();
+
+            if ($target instanceof Note) {
+                $text = $target->getNote();
+            } else {
+                $text = $note->getValue();
             }
 
             return $text;
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
