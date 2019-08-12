@@ -124,13 +124,13 @@ use Illuminate\Support\Collection;
                     <th>
                         <span class="sr-only"><?= I18N::translate('Manage family trees') ?></span>
                     </th>
-                    <th class="text-right"><?= I18N::translate('Pending changes') ?></th>
-                    <th class="d-none d-sm-table-cell text-right"><?= I18N::translate('Individuals') ?></th>
-                    <th class="d-none d-lg-table-cell text-right"><?= I18N::translate('Families') ?></th>
-                    <th class="d-none d-sm-table-cell text-right"><?= I18N::translate('Sources') ?></th>
-                    <th class="d-none d-lg-table-cell text-right"><?= I18N::translate('Repositories') ?></th>
-                    <th class="d-none d-sm-table-cell text-right"><?= I18N::translate('Media') ?></th>
-                    <th class="d-none d-lg-table-cell text-right"><?= I18N::translate('Notes') ?></th>
+                    <th style="text-align: right;"><?= I18N::translate('Pending changes') ?></th>
+                    <th class="d-none d-sm-table-cell"style="text-align: right;"><?= I18N::translate('Individuals') ?></th>
+                    <th class="d-none d-lg-table-cell"style="text-align: right;"><?= I18N::translate('Families') ?></th>
+                    <th class="d-none d-sm-table-cell"style="text-align: right;"><?= I18N::translate('Sources') ?></th>
+                    <th class="d-none d-lg-table-cell"style="text-align: right;"><?= I18N::translate('Repositories') ?></th>
+                    <th class="d-none d-sm-table-cell"style="text-align: right;"><?= I18N::translate('Media') ?></th>
+                    <th class="d-none d-lg-table-cell"style="text-align: right;"><?= I18N::translate('Notes') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -157,25 +157,25 @@ use Illuminate\Support\Collection;
                         <?= I18N::translate('Total') ?>
                     </th>
                     <td></td>
-                    <td class="text-right">
+                    <td style="text-align: right;">
                         <?= I18N::number(array_sum($changes)) ?>
                     </td>
-                    <td class="d-none d-sm-table-cell text-right">
+                    <td class="d-none d-sm-table-cell" style="text-align: right;">
                         <?= I18N::number($individuals->sum()) ?>
                     </td>
-                    <td class="d-none d-lg-table-cell text-right">
+                    <td class="d-none d-lg-table-cell" style="text-align: right;">
                         <?= I18N::number($families->sum()) ?>
                     </td>
-                    <td class="d-none d-sm-table-cell text-right">
+                    <td class="d-none d-sm-table-cell" style="text-align: right;">
                         <?= I18N::number($sources->sum()) ?>
                     </td>
-                    <td class="d-none d-lg-table-cell text-right">
+                    <td class="d-none d-lg-table-cell" style="text-align: right;">
                         <?= I18N::number($repositories->sum()) ?>
                     </td>
-                    <td class="d-none d-sm-table-cell text-right">
+                    <td class="d-none d-sm-table-cell" style="text-align: right;">
                         <?= I18N::number($media->sum()) ?>
                     </td>
-                    <td class="d-none d-lg-table-cell text-right">
+                    <td class="d-none d-lg-table-cell" style="text-align: right;">
                         <?= I18N::number($notes->sum()) ?>
                     </td>
                 </tr>
