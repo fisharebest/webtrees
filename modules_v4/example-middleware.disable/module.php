@@ -9,14 +9,14 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use function in_array;
 use function preg_match;
+use function response;
 
 /**
  * An example module to demonstrate middleware.
  */
-return new class extends AbstractModule implements ModuleCustomInterface, MiddlewareInterface {
+return new class extends AbstractModule implements ModuleCustomInterface, MiddlewareInterface
+{
     use ModuleCustomTrait;
 
     // Regular-expressions to match unwanted bots.
@@ -26,8 +26,9 @@ return new class extends AbstractModule implements ModuleCustomInterface, Middle
         '/SeznamBot/',
     ];
 
-    // List of unwanted IP addresses.
-    private const BAD_IP_ADDRESSES = [
+    // List of unwanted IP ranges in CIDR format, e.g. "123.45.67.89/24".
+    private const BAD_IP_RANGES = [
+        '127.0.0.1/32',
     ];
 
     /**
@@ -62,15 +63,18 @@ return new class extends AbstractModule implements ModuleCustomInterface, Middle
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // Code here is executed before we process the request/response.
+
         $ip_address = $request->getAttribute('client_ip');
-        if (in_array($ip_address, self::BAD_IP_ADDRESSES, true)) {
-            throw new AccessDeniedHttpException();
+        foreach (self::BAD_IP_RANGES as $bad_cidr) {
+            if ($this->ipInCidr($ip_address, $bad_cidr)) {
+                return response('IP address is not allowed: ' . $bad_cidr, 403);
+            }
         }
 
         $user_agent = $request->getHeaderLine('HTTP_USER_AGENT');
         foreach (self::BAD_USER_AGENTS as $bad_user_agent) {
             if (preg_match($bad_user_agent, $user_agent)) {
-                throw new AccessDeniedHttpException();
+                return response('User agent is not allowed: ' . $bad_user_agent, 403);
             }
         }
 
@@ -82,5 +86,24 @@ return new class extends AbstractModule implements ModuleCustomInterface, Middle
         $response = $response->withHeader('X-Powered-By', 'Fish');
 
         return $response;
+    }
+
+    /**
+     * Is an IP address in a CIDR range>
+     *
+     * @param string $ip
+     * @param string $cidr
+     *
+     * @return bool
+     */
+    private function ipInCidr(string $ip, string $cidr): bool
+    {
+        [$net, $mask] = explode('/', $cidr);
+
+        $ip_net  = ip2long($net);
+        $ip_mask = ~((1 << (32 - $mask)) - 1);
+        $ip_ip   = ip2long($ip);
+
+        return ($ip_ip & $ip_mask) === ($ip_net & $ip_mask);
     }
 };
