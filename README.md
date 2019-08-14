@@ -351,21 +351,6 @@ You will have **two** data directories:
 * /home/username/private/data - contains everything else
 
 
-### Hypertext Transfer Protocol Secure (HTTPS)
-
-**webtrees** supports https access. If your website is configured with mandatory
-or optional https support **webtrees** will operate correctly in either mode.
-
-If your website is configured with optional https support, **webtrees** can be
-configured to switch to https at login. To enable https at login, set the Sign-in
-URL setting on the ``Control panel`` -> ``Website`` ->
-``Sign-in and registration`` to your https login URL, which is often in the form
-**``url_to_your_server/data/admin.php``**
-
-**Warning:** Misconfiguration can disable your login links. If this occurs,
-access the login by typing the correct URL directly into your browser's address input.
-
-
 ## Backup
 
 Backups are good. Whatever problem you have, it can always be fixed from a good
