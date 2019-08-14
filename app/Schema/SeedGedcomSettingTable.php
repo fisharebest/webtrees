@@ -29,7 +29,6 @@ class SeedGedcomSettingTable implements SeedInterface
     private const DEFAULT_SETTINGS = [
         'ADVANCED_NAME_FACTS'          => 'NICK,_AKA',
         'ADVANCED_PLAC_FACTS'          => '',
-        'ALLOW_THEME_DROPDOWN'         => '1',
         'CALENDAR_FORMAT'              => 'gregorian',
         'CHART_BOX_TAGS'               => '',
         'COMMON_NAMES_ADD'             => '',

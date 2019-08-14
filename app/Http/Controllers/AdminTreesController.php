@@ -1148,7 +1148,6 @@ class AdminTreesController extends AbstractBaseController
 
         $tree->setPreference('ADVANCED_NAME_FACTS', implode(',', $request->getParsedBody()['ADVANCED_NAME_FACTS'] ?? []));
         $tree->setPreference('ADVANCED_PLAC_FACTS', implode(',', $request->getParsedBody()['ADVANCED_PLAC_FACTS'] ?? []));
-        $tree->setPreference('ALLOW_THEME_DROPDOWN', $request->getParsedBody()['ALLOW_THEME_DROPDOWN'] ?? '');
         // For backwards compatibility with webtrees 1.x we store the two calendar formats in one variable
         // e.g. "gregorian_and_jewish"
         $tree->setPreference('CALENDAR_FORMAT', implode('_and_', array_unique([

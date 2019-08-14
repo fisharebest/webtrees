@@ -243,21 +243,6 @@ use Fisharebest\Webtrees\I18N;
     </div>
 
     <h3><?= I18N::translate('User preferences') ?></h3>
-    <!-- ALLOW_THEME_DROPDOWN -->
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-form-label col-sm-3">
-                <?= /* I18N: A configuration setting */ I18N::translate('Theme menu') ?>
-            </legend>
-            <div class="col-sm-9">
-                <?= view('components/radios-inline', ['name' => 'ALLOW_THEME_DROPDOWN', 'options' => [I18N::translate('hide'), I18N::translate('show')], 'selected' => (int) $tree->getPreference('ALLOW_THEME_DROPDOWN')]) ?>
-                <p class="small text-muted">
-                    <?= /* I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting */ I18N::translate('The theme menu will only be shown if the website preferences allow users to select their own theme.') ?>
-                </p>
-            </div>
-        </div>
-    </fieldset>
-
     <!-- THEME_DIR -->
     <div class="row form-group">
         <label class="col-sm-3 col-form-label" for="THEME_DIR">
