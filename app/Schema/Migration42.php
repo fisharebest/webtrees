@@ -63,8 +63,12 @@ class Migration42 implements MigrationInterface
             $table->string('interface');
             $table->tinyInteger('access_level');
 
-            $table->unique(['gedcom_id', 'module_name', 'interface']);
-            $table->unique(['module_name', 'gedcom_id', 'interface']);
+            // Default constraint names are too long for MySQL.
+            $key1 = DB::connection()->getTablePrefix() . $table->getTable() . '_ix1';
+            $key2 = DB::connection()->getTablePrefix() . $table->getTable() . '_ix2';
+
+            $table->unique(['gedcom_id', 'module_name', 'interface'], $key1);
+            $table->unique(['module_name', 'gedcom_id', 'interface'], $key2);
 
             $table->foreign('module_name')->references('module_name')->on('module')->onDelete('cascade');
             $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom')->onDelete('cascade');

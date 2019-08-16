@@ -85,7 +85,10 @@ class Migration0 implements MigrationInterface
             $table->string('setting_name', 32);
             $table->string('setting_value', 255);
 
-            $table->primary(['user_id', 'gedcom_id', 'setting_name']);
+            // Default constraint names are too long for MySQL.
+            $key = DB::connection()->getTablePrefix() . $table->getTable() . '_primary';
+
+            $table->primary(['user_id', 'gedcom_id', 'setting_name'], $key);
             $table->index('gedcom_id');
 
             $table->foreign('user_id')->references('user_id')->on('user');
@@ -330,8 +333,12 @@ class Migration0 implements MigrationInterface
             $table->enum('component', ['block', 'chart', 'menu', 'report', 'sidebar', 'tab', 'theme']);
             $table->tinyInteger('access_level');
 
-            $table->primary(['module_name', 'gedcom_id', 'component']);
-            $table->unique(['gedcom_id', 'module_name', 'component']);
+            // Default constraint names are too long for MySQL.
+            $key0 = DB::connection()->getTablePrefix() . $table->getTable() . '_primary';
+            $key1 = DB::connection()->getTablePrefix() . $table->getTable() . '_ix1';
+
+            $table->primary(['module_name', 'gedcom_id', 'component'], $key0);
+            $table->unique(['gedcom_id', 'module_name', 'component'], $key1);
 
             $table->foreign('module_name')->references('module_name')->on('module');
             $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom');
@@ -371,7 +378,10 @@ class Migration0 implements MigrationInterface
             $table->string('page_parameter', 32);
             $table->integer('page_count');
 
-            $table->primary(['gedcom_id', 'page_name', 'page_parameter']);
+            // Default constraint names are too long for MySQL.
+            $key = DB::connection()->getTablePrefix() . $table->getTable() . '_primary';
+
+            $table->primary(['gedcom_id', 'page_name', 'page_parameter'], $key);
 
             $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom');
         });
