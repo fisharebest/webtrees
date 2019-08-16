@@ -3,7 +3,7 @@
 	<Title><var var="I18N::translate('Descendants')" /></Title>
 	<Description><var var="I18N::translate('A report of an individual’s descendants, in a narrative style.')" /></Description>
 	<Input name="pid" lookup="INDI" type="text" default=""><var var="I18N::translate('Individual')" /></Input>
-	<Input name="maxgen" type="select" options="3=>I18N::number(3)|4=>I18N::number(4)|5=>I18N::number(5)|6=>I18N::number(6)|7=>I18N::number(7)|8=>I18N::number(8)|9=>I18N::number(9)|10=>I18N::number(10)|*=>I18N::translate('All')"><var var="I18N::translate('Generations')" /></Input>
+	<Input name="maxgen" type="select" options="3=>I18N::number(3)|4=>I18N::number(4)|5=>I18N::number(5)|6=>I18N::number(6)|7=>I18N::number(7)|8=>I18N::number(8)|9=>I18N::number(9)|10=>I18N::number(10)|-1=>I18N::translate('All')"><var var="I18N::translate('Generations')" /></Input>
 	<Input name="sources" type="checkbox" default="1"><var var="I18N::translate('Show sources')" /></Input>
 	<Input name="pageSize" type="select" options="A4=>I18N::translateContext('paper size','A4')|A3=>I18N::translateContext('paper size', 'A3')|US-Letter=>I18N::translateContext('paper size','Letter')|US-Tabloid=>I18N::translateContext('paper size','Tabloid')"><var var="I18N::translate('Page size')" /></Input>
 	<!--

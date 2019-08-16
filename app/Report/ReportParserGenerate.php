@@ -2372,9 +2372,6 @@ class ReportParserGenerate extends ReportParserBase
         if (isset($attrs['maxgen'])) {
             $maxgen = (int) $attrs['maxgen'];
         }
-        if ($maxgen === '*') {
-            $maxgen = -1;
-        }
 
         $group = $attrs['group'] ?? 'child-family';
 
