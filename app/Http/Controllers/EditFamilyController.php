@@ -326,8 +326,8 @@ class EditFamilyController extends AbstractEditController
         $family = Family::getInstance($xref, $tree);
         Auth::checkFamilyAccess($family, true);
 
-        $HUSB = $params['HUSB'];
-        $WIFE = $params['WIFE'];
+        $HUSB = $params['HUSB'] ?? '';
+        $WIFE = $params['WIFE'] ?? '';
         $CHIL = $params['CHIL'] ?? [];
 
         // Current family members
@@ -344,7 +344,7 @@ class EditFamilyController extends AbstractEditController
         }
 
         if ($old_father !== $new_father) {
-            if ($old_father) {
+            if ($old_father instanceof Individual) {
                 // Remove old FAMS link
                 foreach ($old_father->facts(['FAMS']) as $fact) {
                     if ($fact->target() === $family) {
@@ -358,7 +358,7 @@ class EditFamilyController extends AbstractEditController
                     }
                 }
             }
-            if ($new_father) {
+            if ($new_father instanceof Individual) {
                 // Add new FAMS link
                 $new_father->createFact('1 FAMS @' . $family->xref() . '@', true);
                 // Add new HUSB link
@@ -367,7 +367,7 @@ class EditFamilyController extends AbstractEditController
         }
 
         if ($old_mother !== $new_mother) {
-            if ($old_mother) {
+            if ($old_mother instanceof Individual) {
                 // Remove old FAMS link
                 foreach ($old_mother->facts(['FAMS']) as $fact) {
                     if ($fact->target() === $family) {
@@ -381,7 +381,7 @@ class EditFamilyController extends AbstractEditController
                     }
                 }
             }
-            if ($new_mother) {
+            if ($new_mother instanceof Individual) {
                 // Add new FAMS link
                 $new_mother->createFact('1 FAMS @' . $family->xref() . '@', true);
                 // Add new WIFE link
@@ -390,7 +390,7 @@ class EditFamilyController extends AbstractEditController
         }
 
         foreach ($old_children as $old_child) {
-            if ($old_child && !in_array($old_child, $new_children, true)) {
+            if (!in_array($old_child, $new_children, true)) {
                 // Remove old FAMC link
                 foreach ($old_child->facts(['FAMC']) as $fact) {
                     if ($fact->target() === $family) {
@@ -407,7 +407,7 @@ class EditFamilyController extends AbstractEditController
         }
 
         foreach ($new_children as $new_child) {
-            if ($new_child && !$old_children->contains($new_child)) {
+            if ($new_child instanceof Individual && !$old_children->contains($new_child)) {
                 // Add new FAMC link
                 $new_child->createFact('1 FAMC @' . $family->xref() . '@', true);
                 // Add new CHIL link
