@@ -457,7 +457,7 @@ $deathAgeData = [
 
                 <!-- Filter by roots/leaves -->
                 <td hidden>
-                    <?php if (!$individual->childFamilies()) : ?>
+                    <?php if ($individual->childFamilies()->isEmpty()) : ?>
                         R
                     <?php elseif (!$individual->isDead() && $individual->numberOfChildren() < 1) : ?>
                         L
