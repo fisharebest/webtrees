@@ -46,7 +46,22 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use function app;
+use function array_filter;
+use function array_keys;
+use function array_map;
+use function fclose;
+use function file_exists;
+use function in_array;
+use function key;
+use function preg_match_all;
+use function redirect;
+use function route;
 use function str_replace;
+use function strip_tags;
+use function sys_get_temp_dir;
+use function tempnam;
+use function ucfirst;
+use function utf8_decode;
 
 /**
  * Class ClippingsCartModule
@@ -217,19 +232,19 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                 // Remove links to objects that aren't in the cart
                 preg_match_all('/\n1 ' . Gedcom::REGEX_TAG . ' @(' . Gedcom::REGEX_XREF . ')@(\n[2-9].*)*/', $record, $matches, PREG_SET_ORDER);
                 foreach ($matches as $match) {
-                    if (!array_key_exists($match[1], $xrefs)) {
+                    if (!in_array($match[1], $xrefs, true)) {
                         $record = str_replace($match[0], '', $record);
                     }
                 }
                 preg_match_all('/\n2 ' . Gedcom::REGEX_TAG . ' @(' . Gedcom::REGEX_XREF . ')@(\n[3-9].*)*/', $record, $matches, PREG_SET_ORDER);
                 foreach ($matches as $match) {
-                    if (!array_key_exists($match[1], $xrefs)) {
+                    if (!in_array($match[1], $xrefs, true)) {
                         $record = str_replace($match[0], '', $record);
                     }
                 }
                 preg_match_all('/\n3 ' . Gedcom::REGEX_TAG . ' @(' . Gedcom::REGEX_XREF . ')@(\n[4-9].*)*/', $record, $matches, PREG_SET_ORDER);
                 foreach ($matches as $match) {
-                    if (!array_key_exists($match[1], $xrefs)) {
+                    if (!in_array($match[1], $xrefs, true)) {
                         $record = str_replace($match[0], '', $record);
                     }
                 }
