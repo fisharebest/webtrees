@@ -92,7 +92,7 @@
     <tfoot>
     <tr>
         <td colspan="7">
-            <a class="btn btn-primary" href="<?= e(route('map-data', ['parent_id' => $parent_id])) ?>">
+            <a class="btn btn-primary" href="<?= e(route('map-data-edit', ['place_id' => '0', 'parent_id' => $parent_id])) ?>">
                 <?= view('icons/add') ?>
                 <?= /* I18N: A button label. */
                 I18N::translate('add place') ?>
