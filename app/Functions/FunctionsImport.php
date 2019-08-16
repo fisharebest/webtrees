@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Functions;
 
-use Exception;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
 use Fisharebest\Webtrees\Gedcom;
@@ -414,7 +413,7 @@ class FunctionsImport
                 case 'PLAC':
                     $tag = 'PLAC';
                     // Consistent commas
-                    $data = preg_replace('/ *(،|,) */', ', ', $data);
+                    $data = preg_replace('/ *, */', ', ', $data);
                     // The Master Genealogist stores LAT/LONG data in the PLAC field, e.g. Pennsylvania, USA, 395945N0751013W
                     if (preg_match('/(.*), (\d\d)(\d\d)(\d\d)([NS])(\d\d\d)(\d\d)(\d\d)([EW])$/', $data, $match)) {
                         $data =
