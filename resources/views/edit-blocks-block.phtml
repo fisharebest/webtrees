@@ -13,7 +13,9 @@ use Fisharebest\Webtrees\I18N;
                 <?= view('icons/drag-handle') ?>
             </span>
 
-            <?= $block->title() ?>
+            <span title="<?= I18N::translate('Block') ?> <?= e($block_id) ?>">
+                <?= $block->title() ?>
+            </span>
         </div>
 
         <div>
