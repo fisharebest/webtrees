@@ -37,8 +37,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class PlaceHierarchyController
- *
- * @package Fisharebest\Webtrees\Http\Controllers
  */
 class PlaceHierarchyController extends AbstractBaseController
 {

@@ -21,8 +21,6 @@ use Illuminate\Support\Collection;
 
 /**
  * Class BritishPrimeMinisters
- *
- * @package Fisharebest\Webtrees\Module
  */
 class BritishPrimeMinisters extends AbstractModule implements ModuleHistoricEventsInterface
 {

@@ -21,8 +21,6 @@ use Illuminate\Support\Collection;
 
 /**
  * Class BritishSocialHistory
- *
- * @package Fisharebest\Webtrees\Module
  */
 class BritishSocialHistory extends AbstractModule implements ModuleHistoricEventsInterface
 {
@@ -61,7 +59,7 @@ class BritishSocialHistory extends AbstractModule implements ModuleHistoricEvent
             "1 EVEN Games of the IV Olympiad\n2 TYPE Olympic games\n2 DATE FROM 27 APR 1908 TO 31 OCT 1908\n2 PLAC London, England",
             "1 EVEN Free healthcare for all\n2 TYPE National Health Service\n2 DATE FROM 5 JUL 1948",
             "1 EVEN Games of the XIV Olympiad\n2 TYPE Olympic games\n2 DATE FROM 29 JUL 1948 TO 14 AUG 1948\n2 PLAC London, England",
-            "1 EVEN Mass industrial action, power cuts and a three-day working week.\n2 TYPE THe winter of discontent\n2 DATE FROM 27 JUL 2012 TO 12 AUG 2012\n2 PLAC London, England",
+            "1 EVEN Mass industrial action, power cuts and a three-day working week.\n2 TYPE The winter of discontent\n2 DATE FROM 27 JUL 2012 TO 12 AUG 2012\n2 PLAC London, England",
             "1 EVEN Games of the XXX Olympiad\n2 TYPE Olympic games\n2 DATE FROM 27 JUL 2012 TO 12 AUG 2012\n2 PLAC London, England",
         ]);
     }
