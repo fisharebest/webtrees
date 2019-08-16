@@ -27,6 +27,7 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 use function app;
+use function in_array;
 
 /**
  * Class SlideShowModule
@@ -86,6 +87,11 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
         ];
 
         $media_types = array_filter($media_types);
+
+        // The type "other" includes media without a type.
+        if (in_array('other', $media_types, true)) {
+            $media_types[] = '';
+        }
 
         // We can apply the filters using SQL
         // Do not use "ORDER BY RAND()" - it is very slow on large tables. Use PHP::array_rand() instead.
