@@ -114,7 +114,7 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         foreach ($rows as $n_givn => $count) {
             // Split “John Thomas” into “John” and “Thomas” and count against both totals
-            foreach (explode(' ', $n_givn) as $given) {
+            foreach (explode(' ', (string) $n_givn) as $given) {
                 // Exclude initials and particles.
                 if (!preg_match('/^([A-Z]|[a-z]{1,3})$/', $given)) {
                     if (array_key_exists($given, $nameList)) {
