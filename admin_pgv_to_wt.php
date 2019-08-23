@@ -1085,7 +1085,11 @@ echo '<p>pgv_messages => wt_message…</p>';
 
 Database::prepare(
     "REPLACE INTO `##message` (message_id, sender, ip_address, user_id, subject, body, created)" .
-    " SELECT m_id, m_from, '127.0.0.1', user_id, m_subject, m_body, STR_TO_DATE(LEFT(m_created,25),'%a, %d %M %Y %H:%i:%s')" .
+    " SELECT m_id, m_from, '127.0.0.1', user_id, m_subject, m_body, (CASE " .
+    " WHEN CHAR_LENGTH(m_created) = 20 THEN STR_TO_DATE(m_created, '%M %d %Y %H:%i:%s') ".
+    " WHEN CHAR_LENGTH(m_created) = 0 THEN NULL ".
+    " ELSE STR_TO_DATE(LEFT(m_created,25),'%a, %d %M %Y %H:%i:%s')" .
+    " END)" .
     " FROM `{$DBNAME}`.`{$TBLPREFIX}messages`" .
     " JOIN `##user` ON (CONVERT(m_to USING utf8) COLLATE utf8_unicode_ci=user_name)"
 )->execute();
