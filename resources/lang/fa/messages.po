@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2016-04-01 09:52+0100\n"
-"Last-Translator: Mohammad H. Shokuhi <info.che91@yahoo.com>\n"
-"Language-Team: Persian <http://translate.webtrees.net/projects/webtrees/webtrees/fa/>\n"
+"PO-Revision-Date: 2019-08-23 19:42+0000\n"
+"Last-Translator: Rasool Mahmoodi <rasmoodi@gmail.com>\n"
+"Language-Team: Persian <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.4\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-Language: Persian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -49,106 +49,107 @@ msgid "#%s"
 msgstr "#%s"
 
 #: app/Http/Controllers/AdminTreesController.php:319
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "%1$s %2$s %3$s لینک به %4$s دارد"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2281
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr ""
+msgstr "%1$s %2$s بار صعودی حذف شد"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2285
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr ""
+msgstr "%1$s %2$s بار نزولی حذف شد"
 
 #: app/Functions/FunctionsPrintLists.php:68
 #: app/Http/Controllers/IndividualController.php:249
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s %2$s"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:301
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$s کیلوبایت در %2$s ثانیه بارگیری شد"
 
 #: app/Http/Controllers/Admin/UsersController.php:387
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s وجود ندارد"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/Admin/UsersController.php:296
 #: app/Http/Controllers/AdminTreesController.php:259
 #, php-format
 msgid "%1$s does not exist."
-msgstr ""
+msgstr "%1$s وجود ندارد"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/AdminTreesController.php:256
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr ""
+msgstr "%1$s وجود ندارد. منظور شما %2$s است؟"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: app/Http/Controllers/AdminTreesController.php:289
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s لینکی برای برگشت به %2$s ندارد."
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: app/Http/Controllers/Admin/UpgradeController.php:319
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
+msgstr[0] "%1$s فایل در %2$s ثانیه استخراج شد."
+msgstr[1] "%1$s فایل در %2$s ثانیه استخراج شده."
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: app/Http/Controllers/AdminTreesController.php:280
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "%1$s یک %2$s می باشد اما انتظار می رود %3$s باشد."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:570
 #, php-format
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:548
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:525
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
 #: app/Http/Controllers/Admin/MediaController.php:471 app/MediaFile.php:275
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "%1$s در %2$s پیکسل"
 
 #. I18N: A range of numbers
 #: app/Individual.php:572 app/Module/StatisticsChartModule.php:856
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
+msgstr "%1$s تا %2$s"
 
 #: app/Functions/Functions.php:2304
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s ی %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:667
@@ -163,41 +164,41 @@ msgstr "%j %F %Y"
 #: app/Statistics/Service/CenturyService.php:37
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s عصر حاضر(دوران مشترک)"
 
 #. I18N: size of file in KB
 #: app/Http/Controllers/Admin/MediaController.php:463
 #: app/Http/Controllers/EditMediaController.php:512 app/MediaFile.php:346
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "%s کیلوبایت"
 
 #: app/Module/ClippingsCartModule.php:535
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s و اجدادش"
 
 #: app/Module/ClippingsCartModule.php:545
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s و اجدادش"
 
 #: app/Module/ClippingsCartModule.php:866
-#, php-format
+#, fuzzy, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%s و اشخاصی که راجع به آن هستند."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:401
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s و فرزندان آنها"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:403
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s و زادگان(اولاد) آنها"
 
 #: app/Statistics/Repository/UserRepository.php:83
 #, php-format
@@ -213,37 +214,40 @@ msgstr[0] "%s کاربر ناشناس وارد شده اند"
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s فرزند"
+msgstr[1] "%s فرزند(ان)"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:149 app/Functions/FunctionsDate.php:60
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
+msgstr[0] "%s روز"
+msgstr[1] "%s روز(روزها)"
 
 #: app/Http/Controllers/SearchController.php:397
 #: app/Http/Controllers/SearchController.php:437
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
+msgstr[0] "%s خانواده بروز شد."
+msgstr[1] "%s خانواده(ها) بروز شد."
 
 #: resources/views/statistics/families/top10-list-grand.phtml:18
 #: resources/views/statistics/families/top10-nolist-grand.phtml:14
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s نوه"
+msgstr[1] "%s نوه(ها)"
 
 #: app/Module/LifespansChartModule.php:461
 #: resources/views/admin/trees-unconnected.phtml:33
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
-msgstr[0] "%s فرد (افراد)"
+msgstr[0] "%s نفر"
+msgstr[1] "%s نفر(نفرات)"
 
 #: app/Http/Controllers/SearchController.php:393
 #: app/Http/Controllers/SearchController.php:427
@@ -251,25 +255,29 @@ msgstr[0] "%s فرد (افراد)"
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
+msgstr[0] "%s نفر بروز شد."
+msgstr[1] "%s نفر(نفرات) بروز شد."
 
 #: app/Module/LifespansChartModule.php:452
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
+msgstr[0] "%s نفر با رویدادی %s و %s"
+msgstr[1] "%s نفر(نفرات) با رویدادی %s و %s"
 
 #: app/Module/LifespansChartModule.php:442
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
+msgstr[0] "%s نفر با رویدادی در %s"
+msgstr[1] "%s نفر(نفرات) با رویدادی در %s"
 
 #: app/Module/LifespansChartModule.php:430
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
+msgstr[0] "%s نفر با رویدادی بین %s و %s و %s"
+msgstr[1] "%s نفر(نفرات) با رویدادی بین %s و %s و %s"
 
 #: app/Http/Controllers/Admin/LocationController.php:816
 #, php-format
@@ -282,8 +290,8 @@ msgstr[1] ""
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s پیام"
+msgstr[1] "%s پیام(ها)"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:139 app/Functions/FunctionsDate.php:56
@@ -292,24 +300,26 @@ msgstr[1] ""
 msgid "%s month"
 msgid_plural "%s months"
 msgstr[0] "%s ماه"
+msgstr[1] "%s ماه(ها) پیش"
 
 #: app/Http/Controllers/SearchController.php:409
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
+msgstr[0] "%s یادداشت بروز شد."
+msgstr[1] "%s یادداشت(ها) بروز شد."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2257
-#, php-format
+#, fuzzy, php-format
 msgid "%s once removed ascending"
-msgstr ""
+msgstr "%s یکبار بر اساس صعودی حذف‌می شود"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2261
 #, php-format
 msgid "%s once removed descending"
-msgstr ""
+msgstr "%s یکبار بصورت صعودی حذف می شود"
 
 #: app/Http/Controllers/SearchController.php:401
 #, php-format
@@ -323,50 +333,53 @@ msgstr[1] ""
 #: resources/views/emails/message-user-text.phtml:4
 #, php-format
 msgid "%s sent you the following message."
-msgstr ""
+msgstr "%s برای تو پیام پیگیری ارسال کرد."
 
 #: app/Statistics/Repository/UserRepository.php:94
 #, php-format
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
-msgstr[0] "%s کاربر وارد شده اند"
+msgstr[0] "%s کاربر وارد شده"
+msgstr[1] "%s کاربر(کاربران) وارد شده"
 
 #: app/Http/Controllers/SearchController.php:405
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
+msgstr[0] "%s منبع بروز شدند."
+msgstr[1] "%s منبع(منابع) بروز شدند."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2273
 #, php-format
 msgid "%s three times removed ascending"
-msgstr ""
+msgstr "%s سه بار بصورت صعودی حذف می شوند"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2277
 #, php-format
 msgid "%s three times removed descending"
-msgstr ""
+msgstr "%s سه بار بصورت نزولی حذف می شوند"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2265
 #, php-format
 msgid "%s twice removed ascending"
-msgstr ""
+msgstr "%s دوبار بصورت صعودی حذف می شوند"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2269
 #, php-format
 msgid "%s twice removed descending"
-msgstr ""
+msgstr "%s دوبار بصورت نزولی حذف میشوند"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:144 app/Functions/FunctionsDate.php:58
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
+msgstr[0] "%s هفته"
+msgstr[1] "%s هفته(هفته ها)"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:134 app/Functions/FunctionsDate.php:54
@@ -377,88 +390,89 @@ msgstr[0] ""
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s سال"
+msgstr[1] "%s سال(سال ها)"
 
 #: app/Http/Controllers/CalendarController.php:528
 #: resources/views/modules/yahrzeit/list.phtml:10
 #, php-format
 msgid "%s year anniversary"
-msgstr ""
+msgstr "%s سالگرد"
 
 #: app/Functions/Functions.php:490
 #, php-format
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s  × عموزاده"
 
 #: app/Functions/Functions.php:454
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s  × عموزاده"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:417
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s  × عموزاده"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:96
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr ""
+msgstr "%s &nbsp; عصر حاضر"
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:100 app/Date/JulianDate.php:104
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr ""
+msgstr "%s &nbsp; عصر حاضر"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php:861
 #, php-format
 msgid "%s+"
-msgstr ""
+msgstr "%s +"
 
 #: app/Module/ClippingsCartModule.php:536
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s، اجدادش و خانواده اش"
 
 #: app/Module/ClippingsCartModule.php:533
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s، پدر و مادر و خواهر و برادرش"
 
 #: app/Module/ClippingsCartModule.php:534
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s، شوهر و فرزندانش"
 
 #: app/Module/ClippingsCartModule.php:537
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s، همسر و فرزندانش"
 
 #: app/Module/ClippingsCartModule.php:546
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s، اجداد و خانواده اش"
 
 #: app/Module/ClippingsCartModule.php:543
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s، پدر و مادر و برادر و خواهرانش"
 
 #: app/Module/ClippingsCartModule.php:544
 #, php-format
 msgid "%s, his spouses and children"
-msgstr ""
+msgstr "%s، همسر و فرزندانش"
 
 #: app/Module/ClippingsCartModule.php:547
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr ""
+msgstr "%s، همسر و فرزندانش"
 
 #: app/Module/UserMessagesModule.php:147
 #: resources/views/edit/add-fact-row.phtml:18
@@ -487,7 +501,7 @@ msgstr "(بزرگ تر از %s)"
 #: resources/views/lists/datatables-attributes.phtml:23
 #, php-format
 msgid "(filtered from %s total entries)"
-msgstr "فیلتر شده از %s مقدار"
+msgstr "فیلتر شده از %s مقدار کل"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (in childhood)
 #: app/Age.php:126
@@ -507,7 +521,7 @@ msgstr "(به هنگام تولد)"
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:383
 msgid ", "
-msgstr ""
+msgstr "، "
 
 #: app/Statistics/Service/CenturyService.php:65
 msgctxt "CENTURY"
@@ -618,7 +632,7 @@ msgstr "۹م"
 #: app/Http/Controllers/Admin/UsersController.php:505
 #: app/Http/Controllers/AdminTreesController.php:2164
 msgid "<default theme>"
-msgstr ""
+msgstr "<تم و قالب پیش فرض>"
 
 #: resources/views/register-page.phtml:10
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
