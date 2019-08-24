@@ -119,7 +119,7 @@ $families = array_map(
 $media = Database::prepare(
     "SELECT GROUP_CONCAT(m_id) AS xrefs " .
     " FROM `##media`" .
-    " WHERE m_file = :tree_id" .
+    " WHERE m_file = :tree_id AND m_titl != ''" .
     " GROUP BY m_titl" .
     " HAVING COUNT(m_id) > 1"
 )->execute(array(
