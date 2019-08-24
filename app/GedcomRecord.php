@@ -687,7 +687,7 @@ class GedcomRecord
      */
     public function getSecondaryName()
     {
-        if (is_null($this->_getSecondaryName)) {
+        if ($this->_getSecondaryName === null) {
             // Generally, the primary and secondary names are the same
             $this->_getSecondaryName = $this->getPrimaryName();
             // ....except when there are names with different character sets
@@ -811,7 +811,7 @@ class GedcomRecord
      */
     public function formatList($tag = 'li', $find = false, $name = null)
     {
-        if (is_null($name)) {
+        if ($name === null) {
             $name = $this->getFullName();
         }
         $html = '<a href="' . $this->getHtmlUrl() . '"';

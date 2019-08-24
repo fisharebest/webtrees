@@ -1929,7 +1929,7 @@ switch ($action) {
                         </td>
                     <?php } ?>
                         <td class="optionbox">
-                            <a href="#" id="husbrem" style="display: <?php echo is_null($father) ? 'none' : 'block'; ?>;" onclick="document.changefamform.HUSB.value=''; document.getElementById('HUSBName').innerHTML=''; this.style.display='none'; return false;">
+                            <a href="#" id="husbrem" style="display: <?php echo $father === null ? 'none' : 'block'; ?>;" onclick="document.changefamform.HUSB.value=''; document.getElementById('HUSBName').innerHTML=''; this.style.display='none'; return false;">
                                 <?php echo I18N::translate('Remove'); ?>
                             </a>
                         </td>
@@ -1971,7 +1971,7 @@ switch ($action) {
                         </td>
                     <?php } ?>
                         <td class="optionbox">
-                            <a href="#" id="wiferem" style="display: <?php echo is_null($mother) ? 'none' : 'block'; ?>;" onclick="document.changefamform.WIFE.value=''; document.getElementById('WIFEName').innerHTML=''; this.style.display='none'; return false;">
+                            <a href="#" id="wiferem" style="display: <?php echo $mother === null ? 'none' : 'block'; ?>;" onclick="document.changefamform.WIFE.value=''; document.getElementById('WIFEName').innerHTML=''; this.style.display='none'; return false;">
                                 <?php echo I18N::translate('Remove'); ?>
                             </a>
                         </td>

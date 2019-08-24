@@ -647,14 +647,14 @@ class Individual extends GedcomRecord
      */
     public function getEstimatedBirthDate()
     {
-        if (is_null($this->_getEstimatedBirthDate)) {
+        if ($this->_getEstimatedBirthDate === null) {
             foreach ($this->getAllBirthDates() as $date) {
                 if ($date->isOK()) {
                     $this->_getEstimatedBirthDate = $date;
                     break;
                 }
             }
-            if (is_null($this->_getEstimatedBirthDate)) {
+            if ($this->_getEstimatedBirthDate === null) {
                 $min = array();
                 $max = array();
                 $tmp = $this->getDeathDate();

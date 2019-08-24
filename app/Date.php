@@ -238,7 +238,7 @@ class Date
         $q1 = $this->qual1;
         $d1 = $this->date1->format($date_format, $this->qual1);
         $q2 = $this->qual2;
-        if (is_null($this->date2)) {
+        if ($this->date2 === null) {
             $d2 = '';
         } else {
             $d2 = $this->date2->format($date_format, $this->qual2);
@@ -254,7 +254,7 @@ class Date
                 } else {
                     $d1tmp = '';
                 }
-                if (is_null($this->date2)) {
+                if ($this->date2 === null) {
                     $d2conv = null;
                     $d2tmp  = '';
                 } else {
@@ -277,7 +277,7 @@ class Date
                         $conv1 .= ' <span dir="' . I18N::direction() . '">(' . $d1tmp . ')</span>';
                     }
                 }
-                if (!is_null($this->date2) && $d2 != $d2tmp && $d1tmp != '') {
+                if ($this->date2 instanceof CalendarDate && $d2 != $d2tmp && $d1tmp != '') {
                     if ($url) {
                         $conv2 .= ' <span dir="' . I18N::direction() . '">(<a href="' . $d2conv->calendarUrl($date_format) . '" rel="nofollow">' . $d2tmp . '</a>)</span>';
                     } else {
@@ -290,7 +290,7 @@ class Date
         // Add URLs, if requested
         if ($url) {
             $d1 = '<a href="' . $this->date1->calendarUrl($date_format) . '" rel="nofollow">' . $d1 . '</a>';
-            if (!is_null($this->date2)) {
+            if ($this->date2 instanceof CalendarDate) {
                 $d2 = '<a href="' . $this->date2->calendarUrl($date_format) . '" rel="nofollow">' . $d2 . '</a>';
             }
         }
@@ -366,7 +366,7 @@ class Date
      */
     public function maximumDate()
     {
-        if (is_null($this->date2)) {
+        if ($this->date2 === null) {
             return $this->date1;
         } else {
             return $this->date2;
@@ -499,7 +499,7 @@ class Date
      */
     public static function getAgeGedcom(Date $d1, Date $d2 = null)
     {
-        if (is_null($d2)) {
+        if ($d2 === null) {
             return $d1->date1->getAge(true, WT_CLIENT_JD, true);
         } else {
             // If dates overlap, then can’t calculate age.

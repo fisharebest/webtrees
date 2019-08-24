@@ -327,7 +327,7 @@ class FamilyBookController extends ChartController
             return $depth;
         }
         $person = Individual::getInstance($pid, $WT_TREE);
-        if (is_null($person)) {
+        if ($person === null) {
             return $depth;
         }
         $maxdc = $depth;

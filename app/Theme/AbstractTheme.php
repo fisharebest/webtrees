@@ -936,7 +936,7 @@ abstract class AbstractTheme
         foreach ($opt_tags as $key => $tag) {
             if (!preg_match('/^(' . WT_EVENTS_DEAT . ')$/', $tag)) {
                 $event = $individual->getFirstFact($tag);
-                if (!is_null($event)) {
+                if ($event instanceof Fact) {
                     $html .= $event->summary();
                     unset($opt_tags[$key]);
                 }

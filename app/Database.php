@@ -160,7 +160,7 @@ class Database
             $stack = '<abbr title="' . Filter::escapeHtml(implode(" / ", $trace)) . '">' . (count(self::$log) + 1) . '</abbr>';
             // Bind variables
             foreach ($bind_variables as $key => $value) {
-                if (is_null($value)) {
+                if ($value === null) {
                     $value = 'NULL';
                 } elseif (!is_integer($value)) {
                     $value = '\'' . $value . '\'';
@@ -235,7 +235,7 @@ class Database
      */
     public static function quote($string)
     {
-        if (is_null($string)) {
+        if ($string === null) {
             return 'NULL';
         } else {
             return self::$pdo->quote($string, PDO::PARAM_STR);

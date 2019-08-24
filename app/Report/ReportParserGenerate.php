@@ -865,7 +865,7 @@ class ReportParserGenerate extends ReportParserBase
         }
         if (!empty($id)) {
             $record = GedcomRecord::getInstance($id, $WT_TREE);
-            if (is_null($record)) {
+            if ($record === null) {
                 return;
             }
             if (!$record->canShowName()) {
@@ -2615,7 +2615,7 @@ class ReportParserGenerate extends ReportParserBase
         $this->print_data      = array_pop($this->print_data_stack);
         $this->current_element = $this->wt_report;
         $this->wt_report       = array_pop($this->wt_report_stack);
-        if (!is_null($this->wt_report)) {
+        if ($this->wt_report !== null) {
             $this->wt_report->addElement($this->current_element);
         } else {
             $this->wt_report = $this->current_element;

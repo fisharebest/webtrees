@@ -67,7 +67,7 @@ class FunctionsEdit
      */
     public static function selectEditControl($name, $values, $empty, $selected, $extra = '')
     {
-        if (is_null($empty)) {
+        if ($empty === null) {
             $html = '';
         } else {
             if (empty($selected)) {

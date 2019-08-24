@@ -755,11 +755,11 @@ class FunctionsPrintLists
         foreach ($families as $family) {
             // Retrieve husband and wife
             $husb = $family->getHusband();
-            if (is_null($husb)) {
+            if ($husb === null) {
                 $husb = new Individual('H', '0 @H@ INDI', null, $family->getTree());
             }
             $wife = $family->getWife();
-            if (is_null($wife)) {
+            if ($wife === null) {
                 $wife = new Individual('W', '0 @W@ INDI', null, $family->getTree());
             }
             if (!$family->canShow()) {
@@ -1665,12 +1665,12 @@ class FunctionsPrintLists
                 }
                 if ($record instanceof Family) {
                     $husb = $record->getHusband();
-                    if (is_null($husb) || $husb->isDead()) {
+                    if ($husb === null || $husb->isDead()) {
                         $filter++;
                         continue;
                     }
                     $wife = $record->getWife();
-                    if (is_null($wife) || $wife->isDead()) {
+                    if ($wife === null || $wife->isDead()) {
                         $filter++;
                         continue;
                     }
@@ -1771,12 +1771,12 @@ class FunctionsPrintLists
                 }
                 if ($record instanceof Family) {
                     $husb = $record->getHusband();
-                    if (is_null($husb) || $husb->isDead()) {
+                    if ($husb === null || $husb->isDead()) {
                         $filter++;
                         continue;
                     }
                     $wife = $record->getWife();
-                    if (is_null($wife) || $wife->isDead()) {
+                    if ($wife === null || $wife->isDead()) {
                         $filter++;
                         continue;
                     }
