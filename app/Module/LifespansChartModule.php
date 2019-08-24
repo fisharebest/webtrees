@@ -60,6 +60,8 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * Return a menu item for this chart.
      *
+     * @param Individual $individual
+     *
      * @return Menu|null
      */
     public function getChartMenu(Individual $individual)
@@ -74,6 +76,8 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
     /**
      * Return a menu item for this chart - for use in individual boxes.
+     *
+     * @param Individual $individual
      *
      * @return Menu|null
      */

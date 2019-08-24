@@ -32,7 +32,7 @@ class RelationshipController extends PageController
      * @param Individual $individual1
      * @param Individual $individual2
      * @param int        $recursion   How many levels of recursion to use
-     * @param boo;       $ancestor    Restrict to relationships via a common ancestor
+     * @param bool       $ancestor    Restrict to relationships via a common ancestor
      *
      * @return string[][]
      */

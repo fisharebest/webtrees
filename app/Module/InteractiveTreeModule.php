@@ -83,6 +83,8 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
     /**
      * Return a menu item for this chart.
      *
+     * @param Individual $individual
+     *
      * @return Menu|null
      */
     public function getChartMenu(Individual $individual)
@@ -97,6 +99,8 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 
     /**
      * Return a menu item for this chart - for use in individual boxes.
+     *
+     * @param Individual $individual
      *
      * @return Menu|null
      */

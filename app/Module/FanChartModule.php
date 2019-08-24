@@ -59,8 +59,9 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
 
     /**
      * Return a menu item for this chart.
-     *
      * We can only do this if the GD2 library is installed with TrueType support.
+     *
+     * @param Individual $individual
      *
      * @return Menu|null
      */
@@ -80,6 +81,8 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
 
     /**
      * Return a menu item for this chart - for use in individual boxes.
+     *
+     * @param Individual $individual
      *
      * @return Menu|null
      */

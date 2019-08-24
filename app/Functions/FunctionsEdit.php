@@ -984,9 +984,10 @@ class FunctionsEdit
     /**
      * Genearate a <select> element, with the dates/places of all known censuses
      *
-     *
      * @param string $locale - Sort the censuses for this locale
      * @param string $xref   - The individual for whom we are adding a census
+     *
+     * @return string
      */
     public static function censusDateSelector($locale, $xref)
     {
