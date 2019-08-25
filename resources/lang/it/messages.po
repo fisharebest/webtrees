@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2019-08-23 12:29+0000\n"
+"PO-Revision-Date: 2019-08-25 11:41+0000\n"
 "Last-Translator: Sergio Livi <me@serl.it>\n"
 "Language-Team: Italian <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/it/>\n"
 "Language: it\n"
@@ -2547,7 +2547,7 @@ msgstr "Bat mitzvah"
 #: app/Module/BatchUpdateModule.php:56 app/Module/BatchUpdateModule.php:137
 #: resources/views/modules/batch_update/admin.phtml:26
 msgid "Batch update"
-msgstr "Aggiornamenti sequenziali"
+msgstr "Aggiornamenti in blocco"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:283
@@ -9899,7 +9899,7 @@ msgstr "Nessun contatto"
 
 #: resources/views/admin/trees-duplicates.phtml:31
 msgid "No duplicates have been found."
-msgstr ""
+msgstr "Nessun doppione è stato trovato."
 
 #: resources/views/admin/trees-check.phtml:21
 msgid "No errors have been found."
@@ -10118,7 +10118,7 @@ msgstr "Nulla da ripulire"
 
 #: resources/views/modules/batch_update/admin.phtml:101
 msgid "Nothing found."
-msgstr "Non trovato alcunché."
+msgstr "Nessun risultato trovato."
 
 #: app/Date/AbstractGregorianJulianDate.php:209
 msgctxt "Abbreviation for November"
@@ -13729,14 +13729,14 @@ msgstr "È possibile specificare il percorso assoluto della cartella (es. /home/
 
 #: resources/views/admin/merge-records-step-2.phtml:16
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "I fatti e gli eventi di seguito sono stati trovati in entrambi i record."
 
 #. I18N: the name of an individual, source, etc.
 #: resources/views/admin/merge-records-step-2.phtml:63
 #: resources/views/admin/merge-records-step-2.phtml:109
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "I fatti e gli eventi di seguito sono stati trovati unicamente nel record di %s."
 
 #: resources/views/setup/step-2-server-checks.phtml:42
 msgid "The following list shows typical requirements."
