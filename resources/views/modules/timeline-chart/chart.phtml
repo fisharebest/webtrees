@@ -305,7 +305,7 @@
         $placements[$place] = $yoffset;
 
         echo "<div id=\"fact$factcount\" style=\"position:absolute; " . (I18N::direction() === 'ltr' ? 'left: ' . $xoffset : 'right: ' . $xoffset) . 'px; top:' . $yoffset . 'px; font-size: 8pt; height: ' . $bheight . "px;\" onmousedown=\"factMouseDown(this, '" . $factcount . "', " . ($yoffset - $tyoffset) . ');">';
-        echo '<table cellspacing="0" cellpadding="0" border="0" style="cursor: hand;"><tr><td>';
+        echo '<table cellspacing="0" cellpadding="0" border="0" style="cursor: grab;"><tr><td>';
         echo '<img src="' . e(asset('css/images/hline.png')) . '" id="boxline' . $factcount . '" height="3" width="10" style="padding-';
         if (I18N::direction() === 'ltr') {
             echo 'left: 3px;">';
@@ -400,7 +400,7 @@
                     <td>
                         <?php if (!empty($birthyears[$indi->xref()])) : ?>
                             <?php $tyear = round(($ageyoffset + ($bheight / 2)) / $scale) + $baseyear; ?>
-                            <table class="person<?= $p % 6 ?>" style="cursor: hand;">
+                            <table class="person<?= $p % 6 ?>" style="cursor: grab;">
                                 <tr>
                                     <td>
                                         <?= I18N::translate('Year:') ?>
