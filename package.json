@@ -8,16 +8,16 @@
   "devDependencies": {
     "laravel-mix": "^4.1.2",
     "postcss-custom-properties": "^9.0.2",
-    "postcss-image-inliner": "^3.0.0",
+    "postcss-image-inliner": "^3.0.3",
     "postcss-import": "^12.0.1",
-    "postcss-rtl": "^1.4.0",
+    "postcss-rtl": "^1.5.0",
     "resolve-url-loader": "^3.1.0",
-    "sass": "^1.22.9",
-    "sass-loader": "^7.1.0",
+    "sass": "^1.22.10",
+    "sass-loader": "^7.3.1",
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.10.1",
+    "@fortawesome/fontawesome-free": "^5.10.2",
     "beautifymarker": "^1.0.7",
     "bootstrap": "^4.3.1",
     "corejs-typeahead": "^1.2.1",
@@ -32,10 +32,10 @@
     "leaflet.markercluster": "^1.4.1",
     "moment": "^2.24.0",
     "popper.js": "^1.15.0",
-    "select2": "4.0.8",
+    "select2": "4.0.9",
     "sortablejs": "^1.9.0",
     "typeahead.js-bootstrap4-css": "^1.0.0",
-    "wheelzoom": "^4.0.0"
+    "wheelzoom": "^4.0.1"
   },
   "browserslist": [
     ">0.1% and not dead"
