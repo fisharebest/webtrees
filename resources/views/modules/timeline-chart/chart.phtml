@@ -306,7 +306,7 @@
 
         echo "<div id=\"fact$factcount\" style=\"position:absolute; " . (I18N::direction() === 'ltr' ? 'left: ' . $xoffset : 'right: ' . $xoffset) . 'px; top:' . $yoffset . 'px; font-size: 8pt; height: ' . $bheight . "px;\" onmousedown=\"factMouseDown(this, '" . $factcount . "', " . ($yoffset - $tyoffset) . ');">';
         echo '<table cellspacing="0" cellpadding="0" border="0" style="cursor: hand;"><tr><td>';
-        echo '<img src="' . e(asset('css/images/hline.png')) . '" name="boxline' . $factcount . '" id="boxline' . $factcount . '" height="3" width="10" style="padding-';
+        echo '<img src="' . e(asset('css/images/hline.png')) . '" id="boxline' . $factcount . '" height="3" width="10" style="padding-';
         if (I18N::direction() === 'ltr') {
             echo 'left: 3px;">';
         } else {
@@ -395,7 +395,7 @@
             <table cellspacing="0" cellpadding="0">
                 <tr>
                     <td>
-                        <img src="<?= e(asset('css/images/hline.png')) ?>" name="ageline<?= $p ?>" id="ageline<?= $p ?>" width="25" height="3">
+                        <img src="<?= e(asset('css/images/hline.png')) ?>" id="ageline<?= $p ?>" width="25" height="3">
                     </td>
                     <td>
                         <?php if (!empty($birthyears[$indi->xref()])) : ?>
