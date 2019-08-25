@@ -13,6 +13,7 @@ namespace Carbon;
 use Closure;
 use DateInterval;
 use DateTime;
+use DateTimeImmutable;
 use DateTimeInterface;
 use InvalidArgumentException;
 use JsonSerializable;
@@ -708,7 +709,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * @param int                 $value
      * @param bool|null           $overflow
      *
-     * @return CarbonInterface
+     * @return static
      */
     public function add($unit, $value = 1, $overflow = null);
 
@@ -730,7 +731,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * @param int       $value
      * @param bool|null $overflow
      *
-     * @return CarbonInterface
+     * @return static
      */
     public function addUnit($unit, $value = 1, $overflow = null);
 
@@ -786,7 +787,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public function average($date = null);
 
     /**
-     * Determines if the instance is between two others
+     * Determines if the instance is between two others.
      *
      * @example
      * ```
@@ -805,6 +806,23 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public function between($date1, $date2, $equal = true): bool;
 
     /**
+     * Determines if the instance is between two others, bounds excluded.
+     *
+     * @example
+     * ```
+     * Carbon::parse('2018-07-25')->betweenExcluded('2018-07-14', '2018-08-01'); // true
+     * Carbon::parse('2018-07-25')->betweenExcluded('2018-08-01', '2018-08-20'); // false
+     * Carbon::parse('2018-07-25')->betweenExcluded('2018-07-25', '2018-08-01'); // false
+     * ```
+     *
+     * @param \Carbon\Carbon|\DateTimeInterface|mixed $date1
+     * @param \Carbon\Carbon|\DateTimeInterface|mixed $date2
+     *
+     * @return bool
+     */
+    public function betweenExcluded($date1, $date2): bool;
+
+    /**
      * Returns either the close date "Friday 15h30", or a calendar date "10/09/2017" is farthest than 7 days from now.
      *
      * @param Carbon|\DateTimeInterface|string|null $referenceTime
@@ -815,18 +833,28 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public function calendar($referenceTime = null, array $formats = []);
 
     /**
+     * Return the Carbon instance passed through, a now instance in the same timezone
+     * if null given or parse the input if string given.
+     *
+     * @param \Carbon\Carbon|\Carbon\CarbonPeriod|\Carbon\CarbonInterval|\DateInterval|\DatePeriod|\DateTimeInterface|string|null $date
+     *
+     * @return static
+     */
+    public function carbonize($date = null);
+
+    /**
      * Cast the current instance into the given class.
      *
      * @param string $className The $className::instance() method will be called to cast the current object.
      *
-     * @return object
+     * @return DateTimeInterface
      */
     public function cast(string $className);
 
     /**
      * Ceil the current instance second with given precision if specified.
      *
-     * @param float|int $precision
+     * @param float|int|string|\DateInterval|null $precision
      *
      * @return CarbonInterface
      */
@@ -1095,7 +1123,8 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public function dayOfYear($value = null);
 
     /**
-     * Get the difference as a CarbonInterval instance
+     * Get the difference as a CarbonInterval instance.
+     * Return absolute interval (always positive) unless you pass false to the second argument.
      *
      * @param \Carbon\CarbonInterface|\DateTimeInterface|string|null $date
      * @param bool                                                   $absolute Get the absolute of the difference
@@ -1728,7 +1757,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     /**
      * Round the current instance second with given precision if specified.
      *
-     * @param float|int $precision
+     * @param float|int|string|\DateInterval|null $precision
      *
      * @return CarbonInterface
      */
@@ -1862,7 +1891,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public function get($name);
 
     /**
-     * Returns the alternative number if available in the current locale.
+     * Returns the alternative number for a given date property if available in the current locale.
      *
      * @param string $key date property
      *
@@ -3051,7 +3080,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public static function mixin($mixin);
 
     /**
-     * call \DateTime::modify if mutable or \DateTimeImmutable::modify else.
+     * Calls \DateTime::modify if mutable or \DateTimeImmutable::modify else.
      *
      * @see https://php.net/manual/en/datetime.modify.php
      */
@@ -3330,8 +3359,8 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     /**
      * Round the current instance second with given precision if specified.
      *
-     * @param float|int $precision
-     * @param string    $function
+     * @param float|int|string|\DateInterval|null $precision
+     * @param string                              $function
      *
      * @return CarbonInterface
      */
@@ -3402,6 +3431,17 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      */
     public function set($name, $value = null);
 
+    /**
+     * Set the date with gregorian year, month and day numbers.
+     *
+     * @see https://php.net/manual/en/datetime.setdate.php
+     *
+     * @param int $year
+     * @param int $month
+     * @param int $day
+     *
+     * @return static
+     */
     public function setDate($year, $month, $day);
 
     /**
@@ -3456,9 +3496,15 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public static function setHumanDiffOptions($humanDiffOptions);
 
     /**
-     * call \DateTime::setISODate if mutable or \DateTimeImmutable::setISODate else.
+     * Set a date according to the ISO 8601 standard - using weeks and day offsets rather than specific dates.
      *
      * @see https://php.net/manual/en/datetime.setisodate.php
+     *
+     * @param int $year
+     * @param int $week
+     * @param int $day
+     *
+     * @return static
      */
     public function setISODate($year, $week, $day = 1);
 
@@ -3519,9 +3565,16 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public static function setTestNow($testNow = null);
 
     /**
-     * call \DateTime::setTime if mutable or \DateTimeImmutable::setTime else.
+     * Resets the current time of the DateTime object to a different time.
      *
      * @see https://php.net/manual/en/datetime.settime.php
+     *
+     * @param int $hour
+     * @param int $minute
+     * @param int $second
+     * @param int $microseconds
+     *
+     * @return static
      */
     public function setTime($hour, $minute, $second = 0, $microseconds = 0);
 
@@ -3544,9 +3597,13 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public function setTimeFromTimeString($time);
 
     /**
-     * call \DateTime::setTimestamp if mutable or \DateTimeImmutable::setTimestamp else.
+     * Sets the date and time based on an Unix timestamp.
      *
      * @see https://php.net/manual/en/datetime.settimestamp.php
+     *
+     * @param int $unixtimestamp
+     *
+     * @return static
      */
     public function setTimestamp($unixtimestamp);
 
@@ -3895,7 +3952,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * @param int                 $value
      * @param bool|null           $overflow
      *
-     * @return CarbonInterface
+     * @return static
      */
     public function sub($unit, $value = 1, $overflow = null);
 
@@ -3908,7 +3965,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * @param int       $value
      * @param bool|null $overflow
      *
-     * @return CarbonInterface
+     * @return static
      */
     public function subUnit($unit, $value = 1, $overflow = null);
 
@@ -3932,7 +3989,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * @param int                 $value
      * @param bool|null           $overflow
      *
-     * @return CarbonInterface
+     * @return static
      */
     public function subtract($unit, $value = 1, $overflow = null);
 
@@ -4085,6 +4142,18 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * @return DateTime
      */
     public function toDateTime();
+
+    /**
+     * Return native toDateTimeImmutable PHP object matching the current instance.
+     *
+     * @example
+     * ```
+     * var_dump(Carbon::now()->toDateTimeImmutable());
+     * ```
+     *
+     * @return DateTimeImmutable
+     */
+    public function toDateTimeImmutable();
 
     /**
      * Format the instance as date and time T-separated with no timezone
@@ -4413,7 +4482,16 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @return string
      */
-    public function translate(string $key, array $parameters = [], $number = null, \Symfony\Component\Translation\TranslatorInterface $translator = null): string;
+    public function translate(string $key, array $parameters = [], $number = null, \Symfony\Component\Translation\TranslatorInterface $translator = null, bool $altNumbers = false): string;
+
+    /**
+     * Returns the alternative number for a given integer if available in the current locale.
+     *
+     * @param int $number
+     *
+     * @return string
+     */
+    public function translateNumber(int $number): string;
 
     /**
      * Translate a time string from a locale to an other.

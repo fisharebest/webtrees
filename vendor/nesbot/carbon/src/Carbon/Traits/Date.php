@@ -15,10 +15,13 @@ use Carbon\CarbonInterface;
 use Carbon\CarbonPeriod;
 use Carbon\CarbonTimeZone;
 use Closure;
+use DateInterval;
+use DatePeriod;
 use DateTime;
 use DateTimeInterface;
 use InvalidArgumentException;
 use ReflectionException;
+use RuntimeException;
 
 /**
  * A simple API extension for DateTime.
@@ -745,6 +748,27 @@ trait Date
         return $date instanceof self ? $date : static::instance($date);
     }
 
+    /**
+     * Return the Carbon instance passed through, a now instance in the same timezone
+     * if null given or parse the input if string given.
+     *
+     * @param \Carbon\Carbon|\Carbon\CarbonPeriod|\Carbon\CarbonInterval|\DateInterval|\DatePeriod|\DateTimeInterface|string|null $date
+     *
+     * @return static
+     */
+    public function carbonize($date = null)
+    {
+        if ($date instanceof DateInterval) {
+            return $this->copy()->add($date);
+        }
+
+        if ($date instanceof DatePeriod || $date instanceof CarbonPeriod) {
+            $date = $date->getStartDate();
+        }
+
+        return $this->resolveCarbon($date);
+    }
+
     ///////////////////////////////////////////////////////////////////
     ///////////////////////// GETTERS AND SETTERS /////////////////////
     ///////////////////////////////////////////////////////////////////
@@ -1050,7 +1074,7 @@ trait Date
     public function set($name, $value = null)
     {
         if ($this->isImmutable()) {
-            throw new \RuntimeException(sprintf(
+            throw new RuntimeException(sprintf(
                 '%s class is immutable.',
                 static::class
             ));
@@ -1367,6 +1391,38 @@ trait Date
     }
 
     /**
+     * Set the date with gregorian year, month and day numbers.
+     *
+     * @see https://php.net/manual/en/datetime.setdate.php
+     *
+     * @param int $year
+     * @param int $month
+     * @param int $day
+     *
+     * @return static
+     */
+    public function setDate($year, $month, $day)
+    {
+        return parent::setDate((int) $year, (int) $month, (int) $day);
+    }
+
+    /**
+     * Set a date according to the ISO 8601 standard - using weeks and day offsets rather than specific dates.
+     *
+     * @see https://php.net/manual/en/datetime.setisodate.php
+     *
+     * @param int $year
+     * @param int $week
+     * @param int $day
+     *
+     * @return static
+     */
+    public function setISODate($year, $week, $day = 1)
+    {
+        return parent::setISODate((int) $year, (int) $week, (int) $day);
+    }
+
+    /**
      * Set the date and time all together.
      *
      * @param int $year
@@ -1381,7 +1437,38 @@ trait Date
      */
     public function setDateTime($year, $month, $day, $hour, $minute, $second = 0, $microseconds = 0)
     {
-        return $this->setDate((int) $year, (int) $month, (int) $day)->setTime((int) $hour, (int) $minute, (int) $second, (int) $microseconds);
+        return $this->setDate($year, $month, $day)->setTime((int) $hour, (int) $minute, (int) $second, (int) $microseconds);
+    }
+
+    /**
+     * Resets the current time of the DateTime object to a different time.
+     *
+     * @see https://php.net/manual/en/datetime.settime.php
+     *
+     * @param int $hour
+     * @param int $minute
+     * @param int $second
+     * @param int $microseconds
+     *
+     * @return static
+     */
+    public function setTime($hour, $minute, $second = 0, $microseconds = 0)
+    {
+        return parent::setTime((int) $hour, (int) $minute, (int) $second, (int) $microseconds);
+    }
+
+    /**
+     * Sets the date and time based on an Unix timestamp.
+     *
+     * @see https://php.net/manual/en/datetime.settimestamp.php
+     *
+     * @param int $unixtimestamp
+     *
+     * @return static
+     */
+    public function setTimestamp($unixtimestamp)
+    {
+        return parent::setTimestamp((int) $unixtimestamp);
     }
 
     /**
@@ -1923,7 +2010,7 @@ trait Date
     }
 
     /**
-     * Returns the alternative number if available in the current locale.
+     * Returns the alternative number for a given date property if available in the current locale.
      *
      * @param string $key date property
      *
@@ -1931,46 +2018,7 @@ trait Date
      */
     public function getAltNumber(string $key): string
     {
-        $number = strlen($key) > 1 ? $this->$key : $this->rawFormat('h');
-        $translateKey = "alt_numbers.$number";
-        $symbol = $this->translate($translateKey);
-
-        if ($symbol !== $translateKey) {
-            return $symbol;
-        }
-
-        if ($number > 99 && $this->translate('alt_numbers.99') !== 'alt_numbers.99') {
-            $start = '';
-            foreach ([10000, 1000, 100] as $exp) {
-                $key = "alt_numbers_pow.$exp";
-                if ($number >= $exp && $number < $exp * 10 && ($pow = $this->translate($key)) !== $key) {
-                    $unit = floor($number / $exp);
-                    $number -= $unit * $exp;
-                    $start .= ($unit > 1 ? $this->translate("alt_numbers.$unit") : '').$pow;
-                }
-            }
-            $result = '';
-            while ($number) {
-                $chunk = $number % 100;
-                $result = $this->translate("alt_numbers.$chunk").$result;
-                $number = floor($number / 100);
-            }
-
-            return "$start$result";
-        }
-
-        if ($number > 9 && $this->translate('alt_numbers.9') !== 'alt_numbers.9') {
-            $result = '';
-            while ($number) {
-                $chunk = $number % 10;
-                $result = $this->translate("alt_numbers.$chunk").$result;
-                $number = floor($number / 10);
-            }
-
-            return $result;
-        }
-
-        return $number;
+        return $this->translateNumber(strlen($key) > 1 ? $this->$key : $this->rawFormat('h'));
     }
 
     /**
@@ -2234,12 +2282,7 @@ trait Date
     protected static function executeStaticCallable($macro, ...$parameters)
     {
         if ($macro instanceof Closure) {
-            // @TODO allow to call new static() / unbind $this in PHP 8
-            // (see with Laravel team how they plan to handle this in marcos)
-
-            if (version_compare(PHP_VERSION, '8.0.0-dev', '<')) {
-                $macro = Closure::bind($macro, null, get_called_class());
-            }
+            $macro = @Closure::bind($macro, null, get_called_class());
 
             return call_user_func_array($macro, $parameters);
         }

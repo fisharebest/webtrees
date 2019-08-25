@@ -42,6 +42,26 @@ class CarbonTimeZone extends DateTimeZone
     }
 
     /**
+     * Cast the current instance into the given class.
+     *
+     * @param string $className The $className::instance() method will be called to cast the current object.
+     *
+     * @return DateTimeZone
+     */
+    public function cast(string $className)
+    {
+        if (!method_exists($className, 'instance')) {
+            if (is_a($className, DateTimeZone::class, true)) {
+                return new $className($this->getName());
+            }
+
+            throw new InvalidArgumentException("$className has not the instance() method needed to cast the date.");
+        }
+
+        return $className::instance($this);
+    }
+
+    /**
      * Create a CarbonTimeZone from mixed input.
      *
      * @param DateTimeZone|string|int|null $object     original value to get CarbonTimeZone from it.

@@ -179,6 +179,18 @@ class SQLiteGrammar extends Grammar
     }
 
     /**
+     * Compile an insert ignore statement into SQL.
+     *
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @param  array  $values
+     * @return string
+     */
+    public function compileInsertOrIgnore(Builder $query, array $values)
+    {
+        return Str::replaceFirst('insert', 'insert or ignore', $this->compileInsert($query, $values));
+    }
+
+    /**
      * Compile an update statement into SQL.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -189,8 +201,8 @@ class SQLiteGrammar extends Grammar
     {
         $table = $this->wrapTable($query->from);
 
-        $columns = collect($values)->map(function ($value, $key) use ($query) {
-            return $this->wrap(Str::after($key, $query->from.'.')).' = '.$this->parameter($value);
+        $columns = collect($values)->map(function ($value, $key) {
+            return $this->wrap(Str::after($key, '.')).' = '.$this->parameter($value);
         })->implode(', ');
 
         if (isset($query->joins) || isset($query->limit)) {
