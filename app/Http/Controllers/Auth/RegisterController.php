@@ -204,7 +204,7 @@ class RegisterController extends AbstractBaseController
 
         // Username already exists
         if ($this->user_service->findByUserName($username) !== null) {
-            throw new Exception(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.' . $username));
+            throw new Exception(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
         }
 
         // Email already exists
