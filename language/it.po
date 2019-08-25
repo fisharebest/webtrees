@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-08-23 12:29+0000\n"
+"PO-Revision-Date: 2019-08-25 11:41+0000\n"
 "Last-Translator: Sergio Livi <me@serl.it>\n"
 "Language-Team: Italian <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/it/>\n"
 "Language: it\n"
@@ -2569,7 +2569,7 @@ msgstr "Bat mitzvah"
 #: app/Module/BatchUpdateModule.php:77 app/Module/BatchUpdateModule.php:184
 #: app/Module/BatchUpdateModule.php:210
 msgid "Batch update"
-msgstr "Aggiornamenti sequenziali"
+msgstr "Aggiornamenti in blocco"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:121
@@ -9805,7 +9805,7 @@ msgstr "Nessun tema personalizzato è abilitato."
 
 #: admin_trees_duplicates.php:181
 msgid "No duplicates have been found."
-msgstr ""
+msgstr "Nessun doppione è stato trovato."
 
 #: admin_trees_check.php:211
 msgid "No errors have been found."
@@ -10044,7 +10044,7 @@ msgstr "Nulla da ripulire"
 
 #: app/Module/BatchUpdateModule.php:257
 msgid "Nothing found."
-msgstr "Non trovato alcunché."
+msgstr "Nessun risultato trovato."
 
 #: app/Date/CalendarDate.php:331
 msgctxt "Abbreviation for November"
@@ -13695,13 +13695,13 @@ msgstr "È possibile specificare il percorso assoluto della cartella (es. /home/
 
 #: admin_site_merge.php:205
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "I fatti e gli eventi di seguito sono stati trovati in entrambi i record."
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:252 admin_site_merge.php:298
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "I fatti e gli eventi di seguito sono stati trovati unicamente nel record di %s."
 
 #: setup.php:174
 msgid "The following list shows typical requirements."
