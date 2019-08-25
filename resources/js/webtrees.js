@@ -984,7 +984,13 @@ $(function () {
     autocomplete('input[data-autocomplete-url]');
 
     // Select2 - activate autocomplete fields
+    const lang = document.documentElement.lang;
+    const select2_languages = {
+        'zh-Hans': 'zh-CN',
+        'zh-Hant': 'zh-TW',
+    };
     $("select.select2").select2({
+        language: select2_languages[lang] || lang,
         width: "100%",
         // Do not escape.
         escapeMarkup: function (x) {
@@ -993,7 +999,7 @@ $(function () {
         // Same formatting for both selections and rsult
         //templateResult: templateOptionForSelect2,
         //templateSelection: templateOptionForSelect2
-    })
+    });
 
     // Datatables - locale aware sorting
     $.fn.dataTableExt.oSort['text-asc'] = function (x, y) {
