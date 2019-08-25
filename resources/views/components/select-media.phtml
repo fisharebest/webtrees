@@ -17,7 +17,7 @@ use Fisharebest\Webtrees\Tree;
     autocomplete="off"
     class="form-control select2 <?= $class ?? '' ?>"
     data-ajax--delay="350"
-    data-ajax--minimum-input-length="2"
+    data-minimum-input-length="2"
     data-ajax--type="POST"
     data-ajax--url="<?= e(route('select2-media', ['ged' => $tree->name()])) ?>"
     data-allow-clear="true"
