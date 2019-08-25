@@ -999,6 +999,11 @@ $(function () {
         // Same formatting for both selections and rsult
         //templateResult: templateOptionForSelect2,
         //templateSelection: templateOptionForSelect2
+    })
+    .on("select2:unselect", function (evt) {
+        // If we clear the select (using the "X" button), we need an empty
+        // value (rather than no value at all) for inputs with name="array[]"
+        $(evt.delegateTarget).html("<option value=\"\" selected></option>");
     });
 
     // Datatables - locale aware sorting
