@@ -15,9 +15,9 @@
     <?php endif ?>
 
     <div class="news_box">
-        <div class="news_title"><?= $article->subject ?></div>
+        <div class="news_title" dir="auto"><?= $article->subject ?></div>
         <div class="news_date"><?= view('components/datetime', ['timestamp' => $article->updated]) ?></div>
-        <?= $article->body ?>
+        <div dir="auto"><?= $article->body ?></div>
 
         <?php if (Auth::isManager($tree)) : ?>
             <hr>
