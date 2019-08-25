@@ -141,15 +141,15 @@
 		</td>
 		<td></td>
 		<td colspan="3">
-			<table width="100%">
+			<table class="w-100">
 				<tr>
-					<td width='25%'>
+					<td class="w-25">
 						<?= view('modules/compact-chart/arrow-left', ['module' => $module, 'individual' => $ancestors->get(2)]) ?>
 					</td>
-					<td>
+					<td class="w-50">
 						<?= view('modules/compact-chart/individual', ['module' => $module, 'individual' => $ancestors->get(1)]) ?>
 					</td>
-					<td width='25%'>
+					<td class="w-25">
 						<?= view('modules/compact-chart/arrow-right', ['module' => $module, 'individual' => $ancestors->get(3)]) ?>
 					</td>
 				</tr>
