@@ -396,6 +396,7 @@ abstract class AbstractEditController extends AbstractBaseController
             'SPFX',
             'SURN',
             'NSFX',
+            'NICK',
         ];
 
         if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('ADVANCED_NAME_FACTS'), $match)) {
