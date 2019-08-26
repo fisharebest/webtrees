@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-08-26 09:28+0100\n"
-"PO-Revision-Date: 2019-08-23 14:05+0000\n"
+"PO-Revision-Date: 2019-08-26 19:30+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
@@ -1398,7 +1398,7 @@ msgstr "הוסף שמות נישואין חסרים"
 
 #: resources/views/edit-blocks-page.phtml:30
 msgid "Add more blocks from the following list."
-msgstr ""
+msgstr "הוסף בלוקים נוספים מהרשימה הבאה."
 
 #: resources/views/search-advanced-page.phtml:26
 msgid "Add more fields"
@@ -5305,7 +5305,7 @@ msgstr "הורד קובץ"
 
 #: resources/views/edit-blocks-page.phtml:11
 msgid "Drag the blocks to change their position."
-msgstr ""
+msgstr "גרור את הבלוקים כדי לשנות את מיקומם."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:337
@@ -10749,11 +10749,11 @@ msgstr "שמות מקומות הם לעתים קרובות ארוכים מדי �
 
 #: resources/views/help/place.phtml:8
 msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr ""
+msgstr "שמות המקומות יכולים להשתנות עם הזמן. בחקר משפחה נהוג להשתמש בשם הנוכחי עבור עיר או מדינה. ניתן להציג את השם ההיסטורי במקורות, הערות וכו'."
 
 #: resources/views/help/place.phtml:4
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr ""
+msgstr "יש להזין שמות מקומות כרשימה מופרדת בפסיקים, החל מהמקום הקטן ביותר וכלה במדינה. לדוגמה, \"רחביה, ירושלים, ישראל\" או \"Westminster, London, England\"."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:505
