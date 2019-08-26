@@ -17,10 +17,6 @@
         </label>
         <div class="col-sm-9 wt-page-options-value">
             <?= view('components/select-individual', ['name' => 'xref', 'individual' => $individual1, 'tree' => $tree]) ?>
-            <button class="btn btn-link small" id="btn-swap-individuals" type="button">
-                <?= /* I18N: Reverse the order of two individuals */
-                I18N::translate('Swap individuals') ?>
-            </button>
         </div>
     </div>
 
@@ -66,8 +62,14 @@
     <div class="row form-group">
         <div class="col-form-label col-sm-3 wt-page-options-label"></div>
         <div class="col-sm-9 wt-page-options-value">
-            <input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */
-            I18N::translate('view') ?>">
+            <button class="btn btn-primary" type="submit">
+                <?= /* I18N: A button label. */ I18N::translate('view') ?>
+            </button>
+
+            <button class="btn btn-link" id="btn-swap-individuals" type="button">
+                <?= /* I18N: Reverse the order of two individuals */
+                I18N::translate('Swap individuals') ?>
+            </button>
         </div>
     </div>
 </form>
@@ -79,19 +81,10 @@
 <?php View::push('javascript') ?>
 <script>
   $('#btn-swap-individuals').click(function () {
-    // Swap the (hidden) options of the select
-    var select1       = document.querySelector('#xref');
-    var select2       = document.querySelector('#xref2');
-    var tmp_html      = select1.innerHTML;
-    select1.innerHTML = select2.innerHTML;
-    select2.innerHTML = tmp_html;
-
-    // Also swap the select2 element
-    var span1       = document.querySelector('#xref + span');
-    var span2       = document.querySelector('#xref2 + span');
-    var tmp_html    = span1.innerHTML;
-    span1.innerHTML = span2.innerHTML.replace('xref2', 'xref');
-    span2.innerHTML = tmp_html.replace('xref', 'xref2');
+      // Swap the name attributes
+      document.getElementById("xref").name = "xref2";
+      document.getElementById("xref2").name = "xref";
+      document.querySelector(".wt-page-options-relationships-chart").submit();
   });
 </script>
 <?php View::endpush() ?>
