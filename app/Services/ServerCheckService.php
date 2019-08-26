@@ -22,9 +22,15 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use SQLite3;
 use function array_map;
+use function class_exists;
+use function date;
+use function e;
 use function explode;
 use function extension_loaded;
+use function function_exists;
 use function in_array;
+use function preg_replace;
+use function strpos;
 use function strtolower;
 use function sys_get_temp_dir;
 use function trim;
@@ -32,6 +38,7 @@ use function version_compare;
 use const PATH_SEPARATOR;
 use const PHP_MAJOR_VERSION;
 use const PHP_MINOR_VERSION;
+use const PHP_VERSION;
 
 /**
  * Check if the server meets the minimum requirements for webtrees.
@@ -211,12 +218,24 @@ class ServerCheckService
      */
     private function checkSystemTemporaryFolder(): string
     {
-        $open_basedir  = ini_get('open_basedir');
-        $open_basedirs = explode(PATH_SEPARATOR, $open_basedir);
-        $sys_temp_dir  = sys_get_temp_dir();
+        $open_basedir = ini_get('open_basedir');
 
-        if ($open_basedir === '' || Str::startsWith($sys_temp_dir, $open_basedirs)) {
+        if ($open_basedir === '') {
+            // open_basedir not used.
             return '';
+        }
+
+        $open_basedirs = explode(PATH_SEPARATOR, $open_basedir);
+
+        $sys_temp_dir = sys_get_temp_dir();
+        $sys_temp_dir = $this->normalizeFolder($sys_temp_dir);
+
+        foreach ($open_basedirs as $dir) {
+            $dir = $this->normalizeFolder($dir);
+
+            if (strpos($sys_temp_dir, $dir) === 0) {
+                return '';
+            }
         }
 
         $message = I18N::translate('The server’s temporary folder cannot be accessed.');
@@ -224,6 +243,25 @@ class ServerCheckService
         $message .= '<br>ini_get("open_basedir") = "' . e($open_basedir) . '"';
 
         return $message;
+    }
+
+    /**
+     * Convert a folder name to a canonical form:
+     * - forward slashes.
+     * - trailing slash.
+     * We can't use realpath() as this can trigger open_basedir restrictions,
+     * and we are using this code to find out whether open_basedir will affect us.
+     *
+     * @param string $path
+     *
+     * @return string
+     */
+    private function normalizeFolder(string $path): string
+    {
+        $path = preg_replace('/[\\/]+/', '/', $path);
+        $path = Str::finish($path, '/');
+
+        return $path;
     }
 
     /**
