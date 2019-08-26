@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-08-26 09:28+0100\n"
-"PO-Revision-Date: 2019-05-08 05:39+0000\n"
+"PO-Revision-Date: 2019-08-26 13:35+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -1394,7 +1394,7 @@ msgstr "Fehlende Ehenamen hinzufügen"
 
 #: resources/views/edit-blocks-page.phtml:30
 msgid "Add more blocks from the following list."
-msgstr ""
+msgstr "Weitere Blöcke aus der folgenden Liste hinzufügen."
 
 #: resources/views/search-advanced-page.phtml:26
 msgid "Add more fields"
@@ -5301,7 +5301,7 @@ msgstr "Datei herunterladen"
 
 #: resources/views/edit-blocks-page.phtml:11
 msgid "Drag the blocks to change their position."
-msgstr ""
+msgstr "Ziehen Sie die Blöcke, um ihre Position zu ändern."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:337
@@ -10745,11 +10745,11 @@ msgstr "Ortsbezeichnungen sind häufig zu lang, um in Listen, Tafeln oder ähnli
 
 #: resources/views/help/place.phtml:8
 msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr ""
+msgstr "Ortsnamen können sich im Laufe der Zeit ändern. In der Genealogie ist es üblich, den aktuellen Namen für eine Stadt oder ein Land zu verwenden. Der historische Name kann in Quellen, Notizen usw. angezeigt werden."
 
 #: resources/views/help/place.phtml:4
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr ""
+msgstr "Ortsnamen sollten als kommagetrennte Liste eingegeben werden, beginnend mit der kleinsten Ortsebene und endend mit dem Land. Zum Beispiel \"Westminster, London, England\"."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:505
