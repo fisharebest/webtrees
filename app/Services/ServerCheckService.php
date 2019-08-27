@@ -17,10 +17,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Exception;
 use Fisharebest\Webtrees\I18N;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use SQLite3;
+use stdClass;
 use function array_map;
 use function class_exists;
 use function date;
@@ -91,6 +95,7 @@ class ServerCheckService
     {
         $warnings = Collection::make([
             $this->databaseDriverWarnings($driver),
+            $this->databaseEngineWarnings(),
             $this->checkPhpExtension('curl'),
             $this->checkPhpExtension('gd'),
             $this->checkPhpExtension('zip'),
@@ -187,7 +192,7 @@ class ServerCheckService
         $today = date('Y-m-d');
 
         foreach (self::PHP_SUPPORT_DATES as $version => $end_date) {
-            if (version_compare(self::PHP_MINOR_VERSION, $version) <= 0 && $today > $end_date) {
+            if ($today > $end_date && version_compare(self::PHP_MINOR_VERSION, $version) <= 0) {
                 return I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible.', PHP_VERSION) . ' <a href="' . e(self::PHP_SUPPORT_URL) . '">' . e(self::PHP_SUPPORT_URL) . '</a>';
             }
         }
@@ -329,5 +334,52 @@ class ServerCheckService
             default:
                 return new Collection();
         }
+    }
+
+    /**
+     * @param string $driver
+     *
+     * @return Collection
+     */
+    private function databaseEngineWarnings(): Collection
+    {
+        $warnings = new Collection();
+
+        try {
+            $connection = DB::connection();
+        } catch (Exception $ex) {
+            // During setup, there won't be a connection.
+            return new Collection();
+        }
+
+        if ($connection->getDriverName() === 'mysql') {
+            $rows = DB::select(
+                "SELECT table_name, engine FROM information_schema.tables JOIN information_schema.engines USING (engine) WHERE table_schema = ? AND LEFT(table_name, ?) = ? AND transactions <> 'YES'",[
+                    $connection->getDatabaseName(),
+                    mb_strlen($connection->getTablePrefix()),
+                    $connection->getTablePrefix(),
+                ]);
+
+            $rows = new Collection($rows);
+
+            $rows = $rows->map(static function (stdClass $row): string {
+                return '<code>ALTER TABLE ' . $row->TABLE_NAME . ' ENGINE=InnoDB;</code>';
+            });
+
+            if ($rows->isNotEmpty()) {
+                $warning =
+                    'The database uses non-transactional tables.' .
+                    ' ' .
+                    'You may get errors if more than one user updates data at the same time.' .
+                    ' ' .
+                    'To fix this, run the following SQL commands.' .
+                    '<br>' .
+                    $rows->implode('<br>');
+
+                $warnings->push($warning);
+            }
+        }
+
+        return $warnings;
     }
 }
