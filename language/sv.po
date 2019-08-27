@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-08-27 05:12+0000\n"
-"Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
+"PO-Revision-Date: 2019-08-27 10:12+0000\n"
+"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -1146,7 +1146,7 @@ msgstr "Aban"
 #: admin_trees_config.php:1505 admin_trees_config.php:1507
 #: admin_trees_config.php:1511
 msgid "Abbreviate place names"
-msgstr "Förkorta ortsnamn"
+msgstr "Förkorta platsnamn"
 
 #. I18N: gedcom tag ABBR
 #: app/GedcomTag.php:118
@@ -1679,7 +1679,7 @@ msgstr "Avancerade namnfakta"
 
 #: admin_trees_config.php:2061
 msgid "Advanced place name facts"
-msgstr "Avancerade ortsnamnsfakta"
+msgstr "Avancerade ortnamns fakta"
 
 #: app/Controller/AdvancedSearchController.php:45
 #: app/Theme/AbstractTheme.php:1742
@@ -10741,17 +10741,17 @@ msgstr "Dop ort (mormonkyrkan)"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:780
 msgid "Place of LDS child sealing"
-msgstr "LDS Barns beseglingsplats"
+msgstr "LDS Barns beseglingsort"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:416
 msgid "Place of LDS endowment"
-msgstr "LDS gåva plats"
+msgstr "LDS gåva ort"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:472
 msgid "Place of LDS spouse sealing"
-msgstr "LDS Makes/makas beseglingsplats"
+msgstr "LDS Makes/makas beseglingsort"
 
 #: app/GedcomTag.php:134
 msgid "Place of adoption"
@@ -10805,7 +10805,7 @@ msgstr "Dödsort"
 
 #: app/GedcomTag.php:408
 msgid "Place of emigration"
-msgstr "Emigrationsplats"
+msgstr "Emigrationsort"
 
 #: app/GedcomTag.php:424 modules_v3/missing_facts_report/report.xml:347
 msgid "Place of engagement"
@@ -10827,7 +10827,7 @@ msgstr "Ort för invandring"
 #: modules_v3/fact_sources/report.xml:321
 #: modules_v3/missing_facts_report/report.xml:474
 msgid "Place of marriage"
-msgstr "Vigselplats"
+msgstr "Vigselort"
 
 #: app/GedcomTag.php:564 modules_v3/missing_facts_report/report.xml:431
 msgid "Place of marriage banns"
@@ -10835,7 +10835,7 @@ msgstr "Lysningsort"
 
 #: app/GedcomTag.php:622
 msgid "Place of naturalization"
-msgstr "Naturaliseringsplats"
+msgstr "Naturaliseringsort"
 
 #: app/GedcomTag.php:670
 msgid "Place of ordination"
@@ -13707,11 +13707,11 @@ msgstr "Följande lista visar typiska krav."
 
 #: admin_trees_places.php:115
 msgid "The following places have been changed:"
-msgstr "Följande platser ändrades:"
+msgstr "De följande platserna har ändrats:"
 
 #: admin_trees_places.php:115
 msgid "The following places would be changed:"
-msgstr "Följande platser skulle förändras:"
+msgstr "De följande platserna skulle förändras:"
 
 #: admin_site_access.php:355
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
@@ -14268,17 +14268,17 @@ msgstr "Detta är en kommaseparerad lista av GEDCOM-fakta som kommer att visas p
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: admin_trees_config.php:1815
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr "Detta är en kommaseparerad lista med GEDCOM-taggar som visas när man lägger till en ny familj. Till exempel, om MARR finns i listan, kommer fält för vigseldatum och -plats att visas på formuläret."
+msgstr "Detta är en kommaseparerad lista med GEDCOM-taggar som visas när man lägger till en ny familj. Till exempel, om MARR finns i listan, kommer fält för vigseldatum och -ort att visas på formuläret."
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: admin_trees_config.php:1697
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-msgstr "Detta är en kommaseparerad lista med GEDCOM faktataggar som visas när man lägger till en ny person. Till exempel, om BIRT finns i listan, kommer fält för födelsedatum och -plats att visas på formuläret."
+msgstr "Detta är en kommaseparerad lista med GEDCOM faktataggar som visas när man lägger till en ny person. Till exempel, om BIRT finns i listan, kommer fält för födelsedatum och -ort att visas på formuläret."
 
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: admin_trees_config.php:2082
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr "Detta är en kommaseparerad lista av GEDCOM-fakta som kommer att visas på lägg till/redigera ortsnamn formuläret. Om du väljer ett icke latinskt alfabet som Hebreiska, Grekiska, Kyrilliskt eller Arabiskt vill du kanske lägga till taggar som _HEB, ROMN, FONE, osv. för att låta dig spara namnen enligt flera alfabet."
+msgstr "Detta är en kommaseparerad lista av GEDCOM-fakta som kommer att visas på lägg till/redigera ortsnamn formuläret. Om du väljer ett icke latinskt alfabet som Hebreiska, Grekiska, Kyrilliskt eller Arabiskt vill du kanske lägga till taggar som _HEB, ROMN, FONE, osv. för att låta dig spara ortnamnen enligt flera alfabet."
 
 #: edituser.php:190
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
