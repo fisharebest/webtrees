@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-08-26 09:28+0100\n"
-"PO-Revision-Date: 2019-06-17 12:13+0000\n"
+"PO-Revision-Date: 2019-08-27 05:13+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/sv/>\n"
 "Language: sv\n"
@@ -8721,7 +8721,7 @@ msgstr "Vigsel"
 #. I18N: gedcom tag MARB
 #: app/GedcomTag.php:823 resources/xml/reports/missing_facts_report.xml:22
 msgid "Marriage banns"
-msgstr "Lysning för äktenskap"
+msgstr "Lysning"
 
 #. I18N: gedcom tag _MSTAT
 #: app/GedcomTag.php:1982
@@ -15333,7 +15333,7 @@ msgstr "Använd fullt källcitat"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:79
 #: resources/views/setup/step-4-database-sqlsvr.phtml:92
 msgid "Use letters A-Z, a-z, digits 0-9, or underscores"
-msgstr "Använd bokstäverna A-Z, a-z, siffror 0-9 eller understreck"
+msgstr "Använd bokstäver A-Z, a-z, siffror 0-9, eller understreck"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:74
