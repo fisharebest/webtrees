@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-08-26 09:28+0100\n"
-"PO-Revision-Date: 2019-08-27 07:34+0000\n"
+"PO-Revision-Date: 2019-08-27 10:21+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/sv/>\n"
 "Language: sv\n"
@@ -1096,7 +1096,7 @@ msgstr "Aban"
 #: resources/views/admin/trees-preferences.phtml:606
 #: resources/views/admin/trees-preferences.phtml:610
 msgid "Abbreviate place names"
-msgstr "Förkorta ortsnamn"
+msgstr "Förkorta platsnamn"
 
 #. I18N: gedcom tag ABBR
 #: app/GedcomTag.php:453 resources/views/modals/source-fields.phtml:13
@@ -1643,7 +1643,7 @@ msgstr "Avancerade namnfakta"
 
 #: resources/views/admin/trees-preferences.phtml:902
 msgid "Advanced place name facts"
-msgstr "Avancerade ortsnamnsfakta"
+msgstr "Avancerade ortnamns fakta"
 
 #: app/Http/Controllers/SearchController.php:570
 #: app/Module/SearchMenuModule.php:113
@@ -4107,7 +4107,7 @@ msgstr "Skapa en avsändare"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:142
 msgid "Create a temporary folder…"
-msgstr "Skapa en tillfällig mapp…"
+msgstr "Skapa en temporär mapp…"
 
 #: resources/views/modals/media-file-fields.phtml:68
 msgid "Create a unique filename"
@@ -10749,11 +10749,11 @@ msgstr "Fullständiga ortsnamn är ofta alltför långa för att få plats i dia
 
 #: resources/views/help/place.phtml:8
 msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr "Platsnamn kan ändras över tid. I släktforskning är det vanligt att använda det aktuella namnet för en stad eller land. Det historiska namnet kan visas i källor, anteckningar, osv."
+msgstr "Ortnamn kan ändras över tid. I släktforskning är det vanligt att använda det aktuella namnet för en stad eller land. Det historiska namnet kan visas i källor, anteckningar, osv."
 
 #: resources/views/help/place.phtml:4
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr "Platsnamn ska anges som en kommaseparerad lista, som börjar med den minsta platsen och slutar med landet. Till exempel \"Kungsholmen, Stockholm, Sverige\"."
+msgstr "Ortnamn ska anges som en kommaseparerad lista, som börjar med den minsta orten och slutar med landet. Till exempel \"Kungsholmen, Stockholm, Sverige\"."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:505
@@ -10763,17 +10763,17 @@ msgstr "Dop ort (mormonkyrkan)"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:1012
 msgid "Place of LDS child sealing"
-msgstr "LDS Barns beseglingsplats"
+msgstr "LDS Barns beseglingsort"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:704
 msgid "Place of LDS endowment"
-msgstr "LDS gåva plats"
+msgstr "LDS gåva ort"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:755
 msgid "Place of LDS spouse sealing"
-msgstr "LDS Makes/makas beseglingsplats"
+msgstr "LDS Makes/makas beseglingsort"
 
 #: app/GedcomTag.php:469
 msgid "Place of adoption"
@@ -10827,7 +10827,7 @@ msgstr "Dödsort"
 
 #: app/GedcomTag.php:695
 msgid "Place of emigration"
-msgstr "Emigrationsplats"
+msgstr "Emigrationsort"
 
 #: app/GedcomTag.php:711 resources/xml/reports/missing_facts_report.xml:347
 msgid "Place of engagement"
@@ -10849,7 +10849,7 @@ msgstr "Ort för invandring"
 #: resources/xml/reports/fact_sources.xml:321
 #: resources/xml/reports/missing_facts_report.xml:474
 msgid "Place of marriage"
-msgstr "Vigselplats"
+msgstr "Vigselort"
 
 #: app/GedcomTag.php:827 resources/xml/reports/missing_facts_report.xml:431
 msgid "Place of marriage banns"
@@ -10857,7 +10857,7 @@ msgstr "Lysningsort"
 
 #: app/GedcomTag.php:876
 msgid "Place of naturalization"
-msgstr "Naturaliseringsplats"
+msgstr "Naturaliseringsort"
 
 #: app/GedcomTag.php:914
 msgid "Place of ordination"
@@ -10878,7 +10878,7 @@ msgstr "Orter"
 
 #: resources/views/places-page.phtml:26
 msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
-msgstr "Platser utan giltiga koordinater visas inte på kartan och har en röd kant runt sidospåren"
+msgstr "Orter utan giltiga koordinater visas inte på kartan och har en röd kant runt sidospåren"
 
 #: resources/views/layouts/default.phtml:154
 #: resources/views/modules/random_media/slide-show.phtml:21
@@ -11759,7 +11759,7 @@ msgstr "SMTP e-postserver"
 
 #: app/Services/ServerCheckService.php:278
 msgid "SQLite is only suitable for small sites, testing and evaluation."
-msgstr "SQLite är endast lämplig för små webbplatser, testning och utvärdering."
+msgstr "SQLite är bara lämpligt för små webbplatser, testning och utvärdering."
 
 #: app/Services/ServerCheckService.php:202
 #, php-format
@@ -12954,7 +12954,7 @@ msgstr "Sosa"
 
 #: resources/views/modules/ancestors-chart/tree.phtml:18
 msgid "Sosa-Stradonitz number"
-msgstr "Sosa-Stradonitz nummer"
+msgstr "Sosa-Stradonitz-tal"
 
 #: app/Http/Controllers/SearchController.php:629
 msgid "Sounds like"
@@ -13729,11 +13729,11 @@ msgstr "Följande lista visar typiska krav."
 
 #: app/Http/Controllers/AdminTreesController.php:967
 msgid "The following places have been changed:"
-msgstr "Följande platser ändrades:"
+msgstr "De följande platserna har ändrats:"
 
 #: resources/views/admin/trees-places.phtml:41
 msgid "The following places would be changed:"
-msgstr "Följande platser skulle förändras:"
+msgstr "De följande platserna skulle förändras:"
 
 #: app/Http/Controllers/HelpTextController.php:253
 msgid "The help text has not been written for this item."
@@ -14288,17 +14288,17 @@ msgstr "Detta är en kommaseparerad lista av GEDCOM-fakta som kommer att visas p
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: resources/views/admin/trees-preferences.phtml:784
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr "Detta är en kommaseparerad lista med GEDCOM-taggar som visas när man lägger till en ny familj. Till exempel, om MARR finns i listan, kommer fält för vigseldatum och -plats att visas på formuläret."
+msgstr "Detta är en kommaseparerad lista med GEDCOM-taggar som visas när man lägger till en ny familj. Till exempel, om MARR finns i listan, kommer fält för vigseldatum och -ort att visas på formuläret."
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: resources/views/admin/trees-preferences.phtml:730
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-msgstr "Detta är en kommaseparerad lista med GEDCOM faktataggar som visas när man lägger till en ny person. Till exempel, om BIRT finns i listan, kommer fält för födelsedatum och -plats att visas på formuläret."
+msgstr "Detta är en kommaseparerad lista med GEDCOM faktataggar som visas när man lägger till en ny person. Till exempel, om BIRT finns i listan, kommer fält för födelsedatum och -ort att visas på formuläret."
 
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:907
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr "Detta är en kommaseparerad lista av GEDCOM-fakta som kommer att visas på lägg till/redigera ortsnamn formuläret. Om du väljer ett icke latinskt alfabet som Hebreiska, Grekiska, Kyrilliskt eller Arabiskt vill du kanske lägga till taggar som _HEB, ROMN, FONE, osv. för att låta dig spara namnen enligt flera alfabet."
+msgstr "Detta är en kommaseparerad lista av GEDCOM-fakta som kommer att visas på lägg till/redigera ortsnamn formuläret. Om du väljer ett icke latinskt alfabet som Hebreiska, Grekiska, Kyrilliskt eller Arabiskt vill du kanske lägga till taggar som _HEB, ROMN, FONE, osv. för att låta dig spara ortnamnen enligt flera alfabet."
 
 #: resources/views/edit-account-page.phtml:49
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
@@ -16127,7 +16127,7 @@ msgstr "lägg till"
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:98
 msgid "add place"
-msgstr "lägg till plats"
+msgstr "lägg till ort"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:71
@@ -16594,7 +16594,7 @@ msgstr "ladda ner"
 
 #: resources/views/modules/descendancy_chart/tree.phtml:17
 msgid "d’Aboville number"
-msgstr "d'Aboville nummer"
+msgstr "d’Aboville-tal"
 
 #: resources/views/admin/components.phtml:106
 #: resources/views/family-page-menu.phtml:7
