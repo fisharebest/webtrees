@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-08-26 09:28+0100\n"
-"PO-Revision-Date: 2019-05-09 16:51+0000\n"
+"PO-Revision-Date: 2019-08-27 07:13+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/fi/>\n"
 "Language: fi\n"
@@ -1394,7 +1394,7 @@ msgstr "Lisää puuttuvat avionimet"
 
 #: resources/views/edit-blocks-page.phtml:30
 msgid "Add more blocks from the following list."
-msgstr ""
+msgstr "Lisää lohkoja seuraavasta luettelosta."
 
 #: resources/views/search-advanced-page.phtml:26
 msgid "Add more fields"
@@ -5301,7 +5301,7 @@ msgstr "Lataa tiedosto"
 
 #: resources/views/edit-blocks-page.phtml:11
 msgid "Drag the blocks to change their position."
-msgstr ""
+msgstr "Vedä lohkoja muuttaaksesi niiden sijaintia."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:337
@@ -10745,11 +10745,11 @@ msgstr "Usein paikan nimet ovat liian pitkiä sovitettavaksi kaavioihin, listoih
 
 #: resources/views/help/place.phtml:8
 msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr ""
+msgstr "Paikannimet voivat muuttua ajan myötä. Sukututkimuksessa on tapana käyttää nykyistä nimeä kaupungille tai maalle. Historiallinen nimi voidaan näyttää lähteissä, lisätiedoissa, jne."
 
 #: resources/views/help/place.phtml:4
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr ""
+msgstr "Paikannimet tulisi syöttää pilkuilla erotettuna luettelona, aloittaen pienimmästä paikasta ja päättyen maahan. Esimerkiksi ”Tapiola, Espoo, Suomi”."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:505
