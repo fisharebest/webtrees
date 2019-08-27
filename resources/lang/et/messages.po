@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-08-26 09:28+0100\n"
-"PO-Revision-Date: 2019-06-01 20:14+0000\n"
+"PO-Revision-Date: 2019-08-27 18:49+0000\n"
 "Last-Translator: J <jorgenvvv@gmail.com>\n"
 "Language-Team: Estonian <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -1399,7 +1399,7 @@ msgstr "Lisa puuduvaid abielunimesid"
 
 #: resources/views/edit-blocks-page.phtml:30
 msgid "Add more blocks from the following list."
-msgstr ""
+msgstr "Lisa järgnevast nimekirjast veel plokke."
 
 #: resources/views/search-advanced-page.phtml:26
 msgid "Add more fields"
@@ -5306,7 +5306,7 @@ msgstr "Lae fail alla"
 
 #: resources/views/edit-blocks-page.phtml:11
 msgid "Drag the blocks to change their position."
-msgstr ""
+msgstr "Lohista plokke nende asukoha muutmiseks."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:337
@@ -10750,11 +10750,11 @@ msgstr "Kohanimed on tihtipeale liiga pikad, et mahtuda joonistele, nimekirjades
 
 #: resources/views/help/place.phtml:8
 msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr ""
+msgstr "Kohanimed võivad aja jooksul muutuda. Genealoogias on tavaks kasutada linna või riigi kehtivat nime. Ajaloolist nime saab näidata allikates, märkmetes jne."
 
 #: resources/views/help/place.phtml:4
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr ""
+msgstr "Kohanimed tuleks sisestada komadega eraldatud jadana, alustades väikseimast kohast ja lõpetades riigiga. Näiteks “Westminster, London, England”."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:505
