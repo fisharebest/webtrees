@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-08-26 09:28+0100\n"
-"PO-Revision-Date: 2019-08-27 07:13+0000\n"
+"PO-Revision-Date: 2019-08-27 07:16+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/fi/>\n"
 "Language: fi\n"
@@ -15302,7 +15302,7 @@ msgstr "Käytä ”?” täsmätäksesi yhden erillisen merkin, käytä ”*” 
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr[0] "Käytä vähintään %s merkkiä."
+msgstr[0] "Käytä vähintään yhtä merkkiä."
 msgstr[1] "Käytä vähintään %s merkkiä."
 
 #: resources/xml/reports/family_group_report.xml:12
