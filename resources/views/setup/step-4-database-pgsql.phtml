@@ -74,11 +74,7 @@
             <?= I18N::translate('Database name') ?>
         </label>
         <div class="col-sm-9">
-            <input class="form-control" dir="ltr" id="dbname" name="dbname" pattern="^[^`]+$" type="text" value="<?= e($dbname) ?>">
-
-            <p class="small text-muted">
-                <?= I18N::translate('Use letters A-Z, a-z, digits 0-9, or underscores') ?>
-            </p>
+            <input class="form-control" dir="ltr" id="dbname" name="dbname" pattern="[^`'&quot;]{1,63}" type="text" value="<?= e($dbname) ?>">
         </div>
     </div>
 

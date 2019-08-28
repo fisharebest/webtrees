@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Exception;
 use Fisharebest\Webtrees\I18N;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
@@ -25,6 +24,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use SQLite3;
 use stdClass;
+use Throwable;
 use function array_map;
 use function class_exists;
 use function date;
@@ -347,7 +347,7 @@ class ServerCheckService
 
         try {
             $connection = DB::connection();
-        } catch (Exception $ex) {
+        } catch (Throwable $ex) {
             // During setup, there won't be a connection.
             return new Collection();
         }
