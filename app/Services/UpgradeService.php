@@ -170,7 +170,7 @@ class UpgradeService
      */
     public function moveFiles(Filesystem $source, Filesystem $destination): void
     {
-        foreach ($source->listContents() as $path) {
+        foreach ($source->listContents('', true) as $path) {
             if ($path['type'] === 'file') {
                 $destination->put($path['path'], $source->read($path['path']));
                 $source->delete($path['path']);
