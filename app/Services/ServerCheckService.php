@@ -354,7 +354,7 @@ class ServerCheckService
 
         if ($connection->getDriverName() === 'mysql') {
             $rows = DB::select(
-                "SELECT table_name FROM information_schema.tables JOIN information_schema.engines USING (engine) WHERE table_schema = ? AND LEFT(table_name, ?) = ? AND transactions <> 'YES'",[
+                "SELECT table_name FROM information_schema.tables JOIN information_schema.engines USING (engine) WHERE table_schema = ? AND LEFT(table_name, ?) = ? AND transactions <> 'YES'", [
                     $connection->getDatabaseName(),
                     mb_strlen($connection->getTablePrefix()),
                     $connection->getTablePrefix(),
