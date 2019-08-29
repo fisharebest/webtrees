@@ -354,7 +354,7 @@ class ServerCheckService
 
         if ($connection->getDriverName() === 'mysql') {
             $rows = DB::select(
-                "SELECT table_name, engine FROM information_schema.tables JOIN information_schema.engines USING (engine) WHERE table_schema = ? AND LEFT(table_name, ?) = ? AND transactions <> 'YES'",[
+                "SELECT table_name FROM information_schema.tables JOIN information_schema.engines USING (engine) WHERE table_schema = ? AND LEFT(table_name, ?) = ? AND transactions <> 'YES'",[
                     $connection->getDatabaseName(),
                     mb_strlen($connection->getTablePrefix()),
                     $connection->getTablePrefix(),
@@ -363,7 +363,8 @@ class ServerCheckService
             $rows = new Collection($rows);
 
             $rows = $rows->map(static function (stdClass $row): string {
-                return '<code>ALTER TABLE ' . $row->TABLE_NAME . ' ENGINE=InnoDB;</code>';
+                $table = $row->TABLE_NAME ?? $row->table_name;
+                return '<code>ALTER TABLE `' . $table . '` ENGINE=InnoDB;</code>';
             });
 
             if ($rows->isNotEmpty()) {
