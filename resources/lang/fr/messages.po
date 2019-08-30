@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-08-26 09:28+0100\n"
-"PO-Revision-Date: 2019-07-21 06:34+0000\n"
-"Last-Translator: Michel Rivière <michel.riviere@laposte.net>\n"
+"PO-Revision-Date: 2019-08-30 08:33+0000\n"
+"Last-Translator: M. Rivière <gustine@laposte.net>\n"
 "Language-Team: French <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -1398,7 +1398,7 @@ msgstr "Ajouter les noms après mariage manquants"
 
 #: resources/views/edit-blocks-page.phtml:30
 msgid "Add more blocks from the following list."
-msgstr ""
+msgstr "Ajoutez d'autres blocs à partir de la liste suivante."
 
 #: resources/views/search-advanced-page.phtml:26
 msgid "Add more fields"
@@ -5305,7 +5305,7 @@ msgstr "Télécharger le fichier"
 
 #: resources/views/edit-blocks-page.phtml:11
 msgid "Drag the blocks to change their position."
-msgstr ""
+msgstr "Tirer les blocs pour modifier leur position."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:337
@@ -10749,11 +10749,11 @@ msgstr "Les noms de lieux sont fréquemment trop longs pour un affichage adéqua
 
 #: resources/views/help/place.phtml:8
 msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr ""
+msgstr "Les noms de lieux peuvent changer au cours du temps. En généalogie, il est d’usage d’utiliser le nom actuel d’une ville ou d’un pays. Le nom historique peut être indiqué dans les sources, les notes, etc.."
 
 #: resources/views/help/place.phtml:4
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr ""
+msgstr "Les noms de lieux doivent être saisis sous forme de liste séparés par des virgules, en commençant par le plus petit lieu pour finir par le pays. Par exemple, « Rouen, Seine-Maritime, Normandie, France »."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:505
