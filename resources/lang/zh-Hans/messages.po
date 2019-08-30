@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-08-26 09:28+0100\n"
-"PO-Revision-Date: 2019-05-14 10:10+0000\n"
-"Last-Translator: rui <xmlf@hotmail.com>\n"
+"PO-Revision-Date: 2019-08-30 02:41+0000\n"
+"Last-Translator: yanhuangzisun <yanhuang@zisun.org>\n"
 "Language-Team: Chinese (Simplified) <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/zh_Hans/>\n"
 "Language: zh-Hans\n"
 "MIME-Version: 1.0\n"
@@ -18568,12 +18568,12 @@ msgstr "半同胞"
 #: app/Functions/Functions.php:782
 msgctxt "father’s daughter"
 msgid "half-sister"
-msgstr "同父异母的妹妹"
+msgstr "同父异母的姊妹"
 
 #: app/Functions/Functions.php:818
 msgctxt "mother’s daughter"
 msgid "half-sister"
-msgstr "同母异父的姐妹"
+msgstr "同母异父的姊妹"
 
 #: app/Functions/Functions.php:838
 msgctxt "parent’s daughter"
