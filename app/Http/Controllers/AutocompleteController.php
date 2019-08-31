@@ -36,7 +36,28 @@ use Illuminate\Support\Str;
 use League\Flysystem\Filesystem;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function array_map;
+use function array_merge;
+use function array_slice;
+use function array_unique;
+use function array_unshift;
+use function count;
+use function curl_close;
+use function curl_exec;
+use function curl_init;
+use function curl_setopt;
+use function file_get_contents;
+use function function_exists;
+use function ini_get;
+use function is_array;
+use function json_decode;
+use function preg_match_all;
+use function preg_quote;
 use function rawurlencode;
+use function response;
+use function view;
+use const CURLOPT_RETURNTRANSFER;
+use const CURLOPT_URL;
 
 /**
  * Controller for the autocomplete callbacks
@@ -230,8 +251,13 @@ class AutocompleteController extends AbstractBaseController
         $offset = ($page - 1) * self::RESULTS_PER_PAGE;
         $limit  = self::RESULTS_PER_PAGE + 1;
 
+        // Allow private records to be selected?
+        $filter = $tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1' ? null : GedcomRecord::accessFilter();
+
         $results = $this->search_service
             ->searchFamilyNames([$tree], [$query], $offset, $limit)
+            ->prepend(Family::getInstance($query, $tree))
+            ->filter($filter)
             ->map(static function (Family $family): array {
                 return [
                     'id'    => $family->xref(),
@@ -263,8 +289,13 @@ class AutocompleteController extends AbstractBaseController
         $offset = ($page - 1) * self::RESULTS_PER_PAGE;
         $limit  = self::RESULTS_PER_PAGE + 1;
 
+        // Allow private records to be selected?
+        $filter = $tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1' ? null : GedcomRecord::accessFilter();
+
         $results = $this->search_service
             ->searchIndividualNames([$tree], [$query], $offset, $limit)
+            ->prepend(Individual::getInstance($query, $tree))
+            ->filter($filter)
             ->map(static function (Individual $individual): array {
                 return [
                     'id'    => $individual->xref(),
