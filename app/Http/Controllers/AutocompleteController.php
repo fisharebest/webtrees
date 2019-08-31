@@ -161,23 +161,24 @@ class AutocompleteController extends AbstractBaseController
             ->map(Family::rowMapper())
             ->filter(GedcomRecord::accessFilter());
 
-        $pages = [];
+        $pages = new Collection();
 
         foreach ($individuals->merge($families) as $record) {
             if (preg_match_all('/\n1 SOUR @' . $xref . '@(?:\n[2-9].*)*\n2 PAGE (.*' . $regex_query . '.*)/i', $record->gedcom(), $matches)) {
-                $pages = array_merge($pages, $matches[1]);
+                $pages = $pages->concat($matches[1]);
             }
 
             if (preg_match_all('/\n2 SOUR @' . $xref . '@(?:\n[3-9].*)*\n3 PAGE (.*' . $regex_query . '.*)/i', $record->gedcom(), $matches)) {
-                $pages = array_merge($pages, $matches[1]);
+                $pages = $pages->concat($matches[1]);
             }
         }
 
-        $pages = array_unique($pages);
-
-        $pages = array_map(static function (string $page): array {
-            return ['value' => $page];
-        }, $pages);
+        $pages = $pages
+            ->unique()
+            ->map(static function (string $page): array {
+                return ['value' => $page];
+            })
+            ->all();
 
         return response($pages);
     }
