@@ -1,5 +1,6 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View; ?>
+<?php ?>
 
 <?= view('components/breadcrumbs', ['links' => $breadcrumbs]) ?>
 
@@ -120,139 +121,142 @@
 
 <?php View::push('javascript') ?>
 <script type="application/javascript">
-  "use strict";
+    "use strict";
 
-  window.WT_OSM_ADMIN = (function () {
-    let baseData = {
-      minZoom:         2,
-      providerName:    "OpenStreetMap.Mapnik",
-      providerOptions: [],
-      I18N:            {
-        zoomInTitle: <?= json_encode(I18N::translate('Zoom in')) ?>,
-        zoomOutTitle: <?= json_encode(I18N::translate('Zoom out')) ?>,
-        reset: <?= json_encode(I18N::translate('Reset to initial map state')) ?>,
-        noData: <?= json_encode(I18N::translate('No mappable items')) ?>,
-        error: <?= json_encode(I18N::translate('An unknown error occurred')) ?>
-      }
-    };
-
-    let map      = null;
-    let marker   = L.marker([0, 0], {
-      draggable: true,
-    });
-    /**
-     *
-     * @private
-     */
-    let _drawMap = function () {
-      map = L.map("osm-map", {
-          center:      [0, 0],
-          minZoom:     baseData.minZoom, // maxZoom set by leaflet-providers.js
-          zoomControl: false, // remove default
-        },
-      );
-      L.tileLayer.provider(baseData.providerName, baseData.providerOptions).addTo(map);
-      L.control.zoom({ // Add zoom with localised text
-        zoomInTitle:  baseData.I18N.zoomInTitle,
-        zoomOutTitle: baseData.I18N.zoomOutTitle,
-      }).addTo(map);
-
-      marker
-        .on("dragend", function (e) {
-          let coords = marker.getLatLng();
-          map.panTo(coords);
-          _update_Controls({
-            place:  "",
-            coords: coords,
-            zoom:   map.getZoom(),
-          });
-        })
-        .addTo(map);
-      let searchControl = new window.GeoSearch.GeoSearchControl({
-        provider:        new window.GeoSearch.OpenStreetMapProvider(),
-        retainZoomLevel: true,
-        autoClose:       true,
-        showMarker:      false,
-      });
-
-      map
-        .addControl(searchControl)
-        .on("geosearch/showlocation", function (result) {
-          let lat   = result.location.y;
-          let lng   = result.location.x;
-          let place = result.location.label.split(",", 1);
-
-          marker.setLatLng([lat, lng]);
-          map.panTo([lat, lng]);
-
-          _update_Controls({
-            place:  place.shift(),
-            coords: {
-              "lat": lat,
-              "lng": lng,
+    window.WT_OSM_ADMIN = (function () {
+        let baseData = {
+            minZoom:         2,
+            providerName:    "OpenStreetMap.Mapnik",
+            providerOptions: [],
+            I18N:            {
+                zoomInTitle: <?= json_encode(I18N::translate('Zoom in')) ?>,
+                zoomOutTitle: <?= json_encode(I18N::translate('Zoom out')) ?>,
+                reset: <?= json_encode(I18N::translate('Reset to initial map state')) ?>,
+                noData: <?= json_encode(I18N::translate('No mappable items')) ?>,
+                error: <?= json_encode(I18N::translate('An unknown error occurred')) ?>
             },
-            zoom:   map.getZoom(),
-          });
-        })
-        .on("zoomend", function (e) {
-          $("#new_zoom_factor").val(map.getZoom());
-          map.panTo(marker.getLatLng());
+        };
+
+        let map      = null;
+        let marker   = L.marker([0, 0], {
+            draggable: true,
         });
-    };
+        /**
+         *
+         * @private
+         */
+        let _drawMap = function () {
+            map = L.map("osm-map", {
+                    center:      [0, 0],
+                    minZoom:     baseData.minZoom, // maxZoom set by leaflet-providers.js
+                    zoomControl: false, // remove default
+                },
+            );
+            L.tileLayer.provider(baseData.providerName, baseData.providerOptions).addTo(map);
+            L.control.zoom({ // Add zoom with localised text
+                zoomInTitle:  baseData.I18N.zoomInTitle,
+                zoomOutTitle: baseData.I18N.zoomOutTitle,
+            }).addTo(map);
 
-    let data = <?= json_encode($data) ?>;
+            // postcss_image_inliner breaks the autodetection of image paths.
+            L.Icon.Default.imagePath = <?= json_encode(asset('css/images/')) ?>;
 
-    /**
-     *
-     * @param newData
-     * @private
-     */
-    let _update_Controls = function (newData) {
-      let placeEl = $("#new_place_name");
-      if (!placeEl.val().length && newData.place.length) {
-        placeEl.val(newData.place);
-      }
-      $("#new_place_lati").val(Number(newData.coords.lat).toFixed(5)); // 5 decimal places (about 1 metre accuracy)
-      $("#new_place_long").val(Number(newData.coords.lng).toFixed(5));
-      $("#new_zoom_factor").val(Number(newData.zoom));
-    };
+            marker
+                .on("dragend", function (e) {
+                    let coords = marker.getLatLng();
+                    map.panTo(coords);
+                    _update_Controls({
+                        place:  "",
+                        coords: coords,
+                        zoom:   map.getZoom(),
+                    });
+                })
+                .addTo(map);
+            let searchControl = new window.GeoSearch.GeoSearchControl({
+                provider:        new window.GeoSearch.OpenStreetMapProvider(),
+                retainZoomLevel: true,
+                autoClose:       true,
+                showMarker:      false,
+            });
 
-    $(function () {
-      $(".editable").on("change", function (e) {
-        let lat = $("#new_place_lati").val();
-        let lng = $("#new_place_long").val();
-        marker.setLatLng([lat, lng]);
-        map.panTo([lat, lng]);
-      });
-    });
+            map
+                .addControl(searchControl)
+                .on("geosearch/showlocation", function (result) {
+                    let lat   = result.location.y;
+                    let lng   = result.location.x;
+                    let place = result.location.label.split(",", 1);
 
-    /**
-     *
-     * @param id
-     */
-    let initialize = function (id) {
-      _drawMap();
+                    marker.setLatLng([lat, lng]);
+                    map.panTo([lat, lng]);
 
-      marker.setLatLng(data.coordinates);
+                    _update_Controls({
+                        place:  place.shift(),
+                        coords: {
+                            "lat": lat,
+                            "lng": lng,
+                        },
+                        zoom:   map.getZoom(),
+                    });
+                })
+                .on("zoomend", function (e) {
+                    $("#new_zoom_factor").val(map.getZoom());
+                    map.panTo(marker.getLatLng());
+                });
+        };
 
-      if (data.coordinates[0] === 0 && data.coordinates[1] === 0) {
-        map.fitWorld();
-      } else {
-        map.setView(data.coordinates, data.zoom);
-      }
-    };
+        let data = <?= json_encode($data) ?>;
 
-    return {
-      /**
-       *
-       * @param id
-       */
-      drawMap: function (id) {
-        initialize(id);
-      },
-    };
-  })();
+        /**
+         *
+         * @param newData
+         * @private
+         */
+        let _update_Controls = function (newData) {
+            let placeEl = $("#new_place_name");
+            if (!placeEl.val().length && newData.place.length) {
+                placeEl.val(newData.place);
+            }
+            $("#new_place_lati").val(Number(newData.coords.lat).toFixed(5)); // 5 decimal places (about 1 metre accuracy)
+            $("#new_place_long").val(Number(newData.coords.lng).toFixed(5));
+            $("#new_zoom_factor").val(Number(newData.zoom));
+        };
 
-  WT_OSM_ADMIN.drawMap(<?= json_encode($ref) ?>);
+        $(function () {
+            $(".editable").on("change", function (e) {
+                let lat = $("#new_place_lati").val();
+                let lng = $("#new_place_long").val();
+                marker.setLatLng([lat, lng]);
+                map.panTo([lat, lng]);
+            });
+        });
+
+        /**
+         *
+         * @param id
+         */
+        let initialize = function (id) {
+            _drawMap();
+
+            marker.setLatLng(data.coordinates);
+
+            if (data.coordinates[0] === 0 && data.coordinates[1] === 0) {
+                map.fitWorld();
+            } else {
+                map.setView(data.coordinates, data.zoom);
+            }
+        };
+
+        return {
+            /**
+             *
+             * @param id
+             */
+            drawMap: function (id) {
+                initialize(id);
+            },
+        };
+    })();
+
+    WT_OSM_ADMIN.drawMap(<?= json_encode($ref) ?>);
 </script>
 <?php View::endpush() ?>

@@ -53,13 +53,15 @@ function app(string $abstract = null)
  */
 function asset(string $path): string
 {
-    if (Webtrees::STABILITY === '') {
-        $version = Webtrees::VERSION;
+    if (substr($path, -1) === '/') {
+        $version = '';
+    } elseif (Webtrees::STABILITY === '') {
+        $version = '?v=' . Webtrees::VERSION;
     } else {
-        $version = filemtime(Webtrees::ROOT_DIR . 'public/' . $path);
+        $version = '?v=' . filemtime(Webtrees::ROOT_DIR . 'public/' . $path);
     }
 
-    return 'public/' . $path . '?v=' . $version;
+    return 'public/' . $path . $version;
 }
 
 /**
