@@ -624,7 +624,7 @@ class Tree
             ->orderBy('n')
             ->orderBy('len')
             ->orderBy('xref')
-            ->chunk(100, static function (Collection $rows) use ($stream, &$buffer): void {
+            ->chunk(1000, static function (Collection $rows) use ($stream, &$buffer): void {
                 foreach ($rows as $row) {
                     $buffer .= FunctionsExport::reformatRecord($row->gedcom);
                     if (strlen($buffer) > 65535) {
