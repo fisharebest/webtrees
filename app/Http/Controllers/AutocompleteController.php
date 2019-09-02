@@ -287,16 +287,16 @@ class AutocompleteController extends AbstractBaseController
         $query = $request->getParsedBody()['q'] ?? '';
 
         // Fetch one more row than we need, so we can know if more rows exist.
-        $offset = ($page - 1) * self::RESULTS_PER_PAGE;
-        $limit  = self::RESULTS_PER_PAGE + 1;
+        $offset  = ($page - 1) * self::RESULTS_PER_PAGE;
+        $limit   = self::RESULTS_PER_PAGE + 1;
+        $results = $this->search_service->searchIndividualNames([$tree], [$query], $offset, $limit);
 
-        // Allow private records to be selected?
-        $filter = $tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1' ? null : GedcomRecord::accessFilter();
+        $record = Individual::getInstance($query, $tree);
+        if ($record instanceof Individual && ($record->canShow() || $tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1')) {
+            $results->prepend($record);
+        }
 
-        $results = $this->search_service
-            ->searchIndividualNames([$tree], [$query], $offset, $limit)
-            ->prepend(Individual::getInstance($query, $tree))
-            ->filter($filter)
+        $results = $results
             ->map(static function (Individual $individual): array {
                 return [
                     'id'    => $individual->xref(),
@@ -325,11 +325,16 @@ class AutocompleteController extends AbstractBaseController
         $query = $request->getParsedBody()['q'] ?? '';
 
         // Fetch one more row than we need, so we can know if more rows exist.
-        $offset = ($page - 1) * self::RESULTS_PER_PAGE;
-        $limit  = self::RESULTS_PER_PAGE + 1;
+        $offset  = ($page - 1) * self::RESULTS_PER_PAGE;
+        $limit   = self::RESULTS_PER_PAGE + 1;
+        $results = $this->search_service->searchMedia([$tree], [$query], $offset, $limit);
 
-        $results = $this->search_service
-            ->searchMedia([$tree], [$query], $offset, $limit)
+        $record = Family::getInstance($query, $tree);
+        if ($record instanceof Family && ($record->canShow() || $tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1')) {
+            $results->prepend($record);
+        }
+
+        $results = $results
             ->map(static function (Media $media): array {
                 return [
                     'id'    => $media->xref(),
