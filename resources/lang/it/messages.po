@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-08-26 09:28+0100\n"
-"PO-Revision-Date: 2019-08-25 11:41+0000\n"
+"PO-Revision-Date: 2019-09-03 12:02+0000\n"
 "Last-Translator: Sergio Livi <me@serl.it>\n"
 "Language-Team: Italian <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/it/>\n"
 "Language: it\n"
@@ -289,8 +289,8 @@ msgstr[1] "%s persone con eventi nel %s tra %s e %s"
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s posizione è stata importata."
+msgstr[1] "%s posizioni sono state importate."
 
 #: app/Module/UserMessagesModule.php:219
 #, php-format
@@ -331,8 +331,8 @@ msgstr "%s volta/volte rimosso discendente"
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s archivio è stato aggiornato."
+msgstr[1] "%s archivi sono stati aggiornati."
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:9
@@ -654,7 +654,7 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:19
 msgid "A URL"
-msgstr ""
+msgstr "Un URL"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:62
@@ -733,12 +733,12 @@ msgstr "Un messaggio di benvenuto per i visitatori del sito."
 #. I18N: Description of the “Hit counters” module
 #: app/Module/ContactsFooterModule.php:66
 msgid "A link to the site contacts."
-msgstr ""
+msgstr "Collegamento ai contatti del sito."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:50
 msgid "A link to the webtrees home page."
-msgstr ""
+msgstr "Collegamento alla pagina di benvenuto di webtrees."
 
 #. I18N: Description of the “BranchesListModule” module
 #: app/Module/BranchesListModule.php:55
@@ -768,7 +768,7 @@ msgstr ""
 #. I18N: Description of the “MediaListModule” module
 #: app/Module/MediaListModule.php:57
 msgid "A list of media objects."
-msgstr ""
+msgstr "Lista di oggetti multimediali."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:60
@@ -4109,7 +4109,7 @@ msgstr ""
 
 #: app/Http/Controllers/Admin/UpgradeController.php:142
 msgid "Create a temporary folder…"
-msgstr ""
+msgstr "Crea una cartella temporanea…"
 
 #: resources/views/modals/media-file-fields.phtml:68
 msgid "Create a unique filename"
@@ -5983,7 +5983,7 @@ msgstr "Navigatore di famiglia"
 #. I18N: Description of the “News” module
 #: app/Module/FamilyTreeNewsModule.php:60
 msgid "Family news and site announcements."
-msgstr "Notizie sulla familglia e annunci del sito."
+msgstr "Notizie sulla famiglia e annunci del sito."
 
 #: resources/views/modules/family-book-chart/chart.phtml:21
 #, php-format
@@ -7260,7 +7260,7 @@ msgstr "Numero identificativo"
 
 #: resources/views/admin/fix-level-0-media.phtml:9
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
-msgstr ""
+msgstr "Se un oggetto multimediale è collegato a una persona, mentre dovrebbe essere collegato a un fatto o evento, può essere spostato alla posizione corretta."
 
 #. I18N: Help text for the “Language” configuration setting
 #: resources/views/admin/trees-preferences.phtml:73
@@ -7298,7 +7298,7 @@ msgstr "Se il cognome non è noto, utilizzare le barre vuote: <%s>Maria //<%s>"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:13
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
-msgstr ""
+msgstr "Se la miniatura è identica all'immagine originale, non è più necessaria e andrebbe rimossa. Se si tratta un'immagine personalizzata, andrebbe aggiunta all'oggetto multimediale."
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:79
@@ -7402,7 +7402,7 @@ msgstr "Importa tutti i luoghi da un albero genealogico"
 #: app/Http/Controllers/Admin/ImportThumbnailsController.php:48
 #: resources/views/admin/control-panel.phtml:506
 msgid "Import custom thumbnails from webtrees version 1"
-msgstr ""
+msgstr "Importa le miniature personalizzate da webtrees versione 1"
 
 #: app/Http/Controllers/Admin/LocationController.php:585
 msgid "Import geographic data"
@@ -7446,11 +7446,11 @@ msgstr "In quest’anno…"
 #. I18N: "thumbs" is fixed text.  Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:9
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-msgstr ""
+msgstr "In webtrees versione 1, si potevano aggiungere miniature personalizzate agli oggetti multimediali creando il rispettivo file nella cartella <i>thumbs</i>."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:11
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
-msgstr ""
+msgstr "In webtrees versione 2, le miniature personalizzate sono memorizzate come secondo file nello stesso oggetto multimediale."
 
 #: resources/views/admin/trees-unconnected.phtml:24
 msgid "Include associates"
@@ -8292,7 +8292,7 @@ msgstr "Lima, Perù"
 #: app/Http/Controllers/Admin/FixLevel0MediaController.php:47
 #: resources/views/admin/control-panel.phtml:500
 msgid "Link media objects to facts and events"
-msgstr ""
+msgstr "Collega oggetti multimediali a fatti o eventi"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:31
@@ -9185,7 +9185,7 @@ msgstr "Mérida, Messico"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:244
 msgid "Mesa, Arizona, United States"
-msgstr "Mesa, Arizona, United States"
+msgstr "Mesa, Arizona, Stati Uniti d'America"
 
 #: resources/views/admin/broadcast.phtml:42
 #: resources/views/admin/site-logs.phtml:45
@@ -9430,7 +9430,7 @@ msgstr "mordad"
 #: resources/views/modules/gedcom_news/list.phtml:11
 #: resources/views/modules/user_blog/list.phtml:11
 msgid "More news articles"
-msgstr ""
+msgstr "Più notizie"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:313
@@ -9521,7 +9521,7 @@ msgstr "Sposta giù"
 
 #: resources/views/admin/fix-level-0-media-action.phtml:17
 msgid "Move the media object?"
-msgstr ""
+msgstr "Spostare l'oggetto multimediale?"
 
 #: resources/views/admin/components.phtml:29
 #: resources/views/admin/components.phtml:114
@@ -10165,7 +10165,7 @@ msgstr "Numero di famiglie senza figli"
 #. I18N: ... to show in a list
 #: resources/views/modules/top10_givnnames/config.phtml:5
 msgid "Number of given names"
-msgstr ""
+msgstr "Numero di nomi"
 
 #. I18N: gedcom tag NMR
 #: app/GedcomTag.php:885
@@ -10179,13 +10179,13 @@ msgstr "Numero di mesi dopo l’ultimo accesso di un utente prima di considerarl
 #. I18N: ... to show in a list
 #: resources/views/modules/top10_pageviews/config.phtml:5
 msgid "Number of pages"
-msgstr ""
+msgstr "Numero di pagine"
 
 #. I18N: ... to show in a list
 #: resources/views/modules/gedcom_stats/config.phtml:56
 #: resources/views/modules/top10_surnames/config.phtml:5
 msgid "Number of surnames"
-msgstr ""
+msgstr "Numero di cognomi"
 
 #: app/GedcomCode/GedcomCodeRela.php:270
 msgid "Nurse"
@@ -11654,7 +11654,7 @@ msgstr "Le attività di ricerca sono eventi speciali, aggiunti alle persone del 
 
 #: resources/views/modules/todo/config.phtml:6
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "I compiti di ricerca vengono salvati con il tag GEDCOM personalizzato «_TODO». Altre applicazioni di genealogia potrebbero non riconoscere questo tag."
+msgstr "I compiti di ricerca vengono memorizzati con il tag GEDCOM personalizzato «_TODO». Altre applicazioni di genealogia potrebbero non riconoscere questo tag."
 
 #: resources/views/admin/location-edit.phtml:133
 #: resources/views/modules/pedigree-map/chart.phtml:55
@@ -11671,7 +11671,7 @@ msgstr "Residenza"
 #: resources/views/edit-blocks-page.phtml:53
 #: resources/views/edit-blocks-page.phtml:54
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Ripristinare i riquadri predefiniti"
 
 #: app/Http/Controllers/HelpTextController.php:247
 #: resources/views/admin/users-edit.phtml:280
@@ -11985,7 +11985,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:601
 msgid "Seattle, Washington, United States"
-msgstr "Seattle, Washington, United States"
+msgstr "Seattle, Washington, Stati Uniti d'America"
 
 #: resources/views/admin/merge-records-step-1.phtml:53
 msgid "Second record"
@@ -12651,7 +12651,7 @@ msgstr "Mostra l’elenco dei cognomi"
 #. I18N: Description of the “OSM” module
 #: app/Module/PlacesModule.php:77
 msgid "Show the location of events on a map."
-msgstr ""
+msgstr "Mostra la posizione degli eventi su una mappa."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:33
@@ -12667,7 +12667,7 @@ msgstr "Per quali lingue va mostrato questo riquadro"
 
 #: resources/views/admin/trees-preferences.phtml:324
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Mostra le immagini ridotte in grafici e gruppi."
+msgstr "Mostra le miniature in grafici e gruppi."
 
 #: app/Functions/FunctionsEdit.php:92 app/Functions/FunctionsEdit.php:230
 #: app/Functions/FunctionsEdit.php:251
@@ -13521,7 +13521,7 @@ msgstr "Il file GEDCOM <i>%s</i> è stato importato."
 
 #: resources/views/modals/media-file-fields.phtml:95
 msgid "The GEDCOM standard does not allow URLs in media objects."
-msgstr ""
+msgstr "Lo standard GEDCOM non permette la presenza di URL negli oggetti multimediali."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:376
@@ -13566,7 +13566,7 @@ msgstr "L’amministratore è stato informato. Appena darà l’autorizzazione, 
 #. I18N: Description of the “Reports” module
 #: app/Module/CalendarMenuModule.php:50
 msgid "The calendar menu."
-msgstr ""
+msgstr "Il menu calendario."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/Controllers/PendingChangesController.php:153
@@ -13781,7 +13781,7 @@ msgstr "Il file multimediale %1$s è stato rinominato in %2$s."
 
 #: app/Http/Controllers/EditMediaController.php:397
 msgid "The media object has been created"
-msgstr ""
+msgstr "L'oggetto multimediale è stato creato"
 
 #: resources/views/setup/step-2-server-checks.phtml:39
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -13909,7 +13909,7 @@ msgstr ""
 
 #: app/Http/Controllers/EditRepositoryController.php:82
 msgid "The repository has been created"
-msgstr ""
+msgstr "L'archivio è stato creato"
 
 #. I18N: Description of the “Reports” module
 #: app/Module/SearchMenuModule.php:51
@@ -13926,7 +13926,7 @@ msgstr "La configurazione del server è corretta."
 
 #: app/Services/ServerCheckService.php:222
 msgid "The server’s temporary folder cannot be accessed."
-msgstr ""
+msgstr "La cartella dei file temporanei del server è inaccessibile."
 
 #: app/Http/Controllers/AdminTreesController.php:1731
 #: app/Services/UpgradeService.php:146 app/Services/UpgradeService.php:179
@@ -14045,7 +14045,7 @@ msgstr "Non ci sono fatti per questa persona."
 
 #: app/Http/Controllers/Admin/MediaController.php:411
 msgid "There are no links to this media object."
-msgstr ""
+msgstr "Non ci sono collegamenti a questo oggetto multimediale."
 
 #: resources/views/modules/media/tab.phtml:16
 msgid "There are no media objects for this individual."
@@ -14187,12 +14187,12 @@ msgstr "Questo albero genealogico è stato aggiornato l’ultima volta il #gedco
 #: resources/views/modules/html/template-statistics.phtml:8
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr "Questo albero genealogico è stato aggiornato %s."
+msgstr "Questo albero genealogico è stato aggiornato il %s."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:21
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
-msgstr "Questa cartella verrà usata da webtrees per salvare i file multimediali, i file GEDCOM, i file temporanei… Questi file possono contenere dati sensibili e non dovrebbero essere accessibile da internet."
+msgstr "Questa cartella verrà usata da webtrees per salvare i file multimediali, i file GEDCOM, i file temporanei, ecc. Questi file possono contenere dati sensibili e non dovrebbero essere accessibili da internet."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:276
@@ -14581,7 +14581,7 @@ msgstr ""
 
 #: resources/views/privacy-policy.phtml:16
 msgid "This site uses cookies to store your preferences on this site, such as the language you have selected."
-msgstr ""
+msgstr "Questo sito utilizza i cookie per memorizzare le preferenze personali, per esempio la lingua selezionata."
 
 #: app/Exceptions/SourceAccessDeniedException.php:33
 #: app/Exceptions/SourceNotFoundException.php:33
@@ -14661,7 +14661,7 @@ msgstr "gio"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:29
 msgid "Thumbnail image"
-msgstr ""
+msgstr "Miniatura"
 
 #: resources/views/admin/trees-preferences.phtml:313
 #: resources/views/admin/trees-preferences.phtml:319
@@ -14802,7 +14802,7 @@ msgstr "Per garantire la compatibilità con altre applicazioni sulla genealogia,
 #. I18N: “Apache” is a software program.
 #: resources/views/admin/site-preferences.phtml:25
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
-msgstr "Per proteggere questi dati sensibili webtrees utilizza un file di configurazione di Apache (. htaccess) che blocca tutti gli accessi a questa cartella. Se il proprio server web non supporta i file .htaccess e non è possibile limitare l’accesso a questa cartella è possibile selezionare un’altra cartella, non pubblicata sul web."
+msgstr "Per proteggere questi dati sensibili webtrees utilizza un file di configurazione di Apache (.htaccess) che blocca tutti gli accessi a questa cartella. Se il proprio server web non supporta i file .htaccess e non è possibile limitare l’accesso a questa cartella è possibile selezionare un’altra cartella, non pubblicata sul web."
 
 #: resources/views/admin/trees-export.phtml:42
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
@@ -15533,7 +15533,7 @@ msgstr "Verificato"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:676
 msgid "Vernal, Utah, United States"
-msgstr "Vernal, Utah, United States"
+msgstr "Vernal, Utah, Stati Uniti d'America"
 
 #. I18N: gedcom tag VERS
 #: app/GedcomTag.php:1071
@@ -18733,7 +18733,7 @@ msgstr "elenco"
 #: app/Http/Controllers/Admin/LocationController.php:709
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr ""
+msgstr "posizioni aggiornate: %s, posizioni aggiunte: %s"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:146
@@ -20078,7 +20078,7 @@ msgstr "Messaggio di webtrees"
 
 #: resources/views/setup/step-3-database-type.phtml:26
 msgid "webtrees needs a database to store your genealogy data."
-msgstr ""
+msgstr "webtrees ha bisogno di un database per memorizzare i dati genealogici."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:24
