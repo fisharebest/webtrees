@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-08-25 11:41+0000\n"
+"PO-Revision-Date: 2019-09-03 11:59+0000\n"
 "Last-Translator: Sergio Livi <me@serl.it>\n"
 "Language-Team: Italian <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/it/>\n"
 "Language: it\n"
@@ -6023,7 +6023,7 @@ msgstr "Navigatore di famiglia"
 #. I18N: Description of the “News” module
 #: app/Module/FamilyTreeNewsModule.php:62
 msgid "Family news and site announcements."
-msgstr "Notizie sulla familglia e annunci del sito."
+msgstr "Notizie sulla famiglia e annunci del sito."
 
 #. I18N: A title/heading. %s is an individual’s name
 #: app/Controller/FamilyBookController.php:371
@@ -9343,7 +9343,7 @@ msgstr "mordad"
 
 #: app/Module/FamilyTreeNewsModule.php:137
 msgid "More news articles"
-msgstr ""
+msgstr "Più notizie"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6811
@@ -10101,7 +10101,7 @@ msgstr "Numero di generazioni"
 #. I18N: ... to show in a list
 #: app/Module/TopGivenNamesModule.php:146
 msgid "Number of given names"
-msgstr ""
+msgstr "Numero di nomi"
 
 #. I18N: gedcom tag NMR
 #: app/GedcomTag.php:634
@@ -10115,13 +10115,13 @@ msgstr "Numero di mesi dopo l’ultimo accesso di un utente prima di considerarl
 #. I18N: ... to show in a list
 #: app/Module/TopPageViewsModule.php:159
 msgid "Number of pages"
-msgstr ""
+msgstr "Numero di pagine"
 
 #. I18N: ... to show in a list
 #: app/Module/FamilyTreeStatisticsModule.php:439
 #: app/Module/TopSurnamesModule.php:157
 msgid "Number of surnames"
-msgstr ""
+msgstr "Numero di cognomi"
 
 #: app/GedcomCode/GedcomCodeRela.php:203
 msgid "Nurse"
@@ -11619,7 +11619,7 @@ msgstr "Le attività di ricerca sono eventi speciali, aggiunti alle persone del 
 
 #: app/Module/ResearchTaskModule.php:203
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "I compiti di ricerca vengono salvati con il tag GEDCOM personalizzato «_TODO». Altre applicazioni di genealogia potrebbero non riconoscere questo tag."
+msgstr "I compiti di ricerca vengono memorizzati con il tag GEDCOM personalizzato «_TODO». Altre applicazioni di genealogia potrebbero non riconoscere questo tag."
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:732
@@ -11628,7 +11628,7 @@ msgstr "Residenza"
 
 #: index_edit.php:371
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Ripristinare i riquadri predefiniti"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:351
@@ -12712,7 +12712,7 @@ msgstr "Per quali lingue va mostrato questo riquadro"
 
 #: admin_trees_config.php:1051
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Mostra le immagini ridotte in grafici e gruppi."
+msgstr "Mostra le miniature in grafici e gruppi."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:207
@@ -14203,7 +14203,7 @@ msgstr "Questo albero genealogico è stato aggiornato l’ultima volta il #gedco
 #: app/Module/HtmlBlockModule.php:165
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr "Questo albero genealogico è stato aggiornato %s."
+msgstr "Questo albero genealogico è stato aggiornato il %s."
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
@@ -14212,7 +14212,7 @@ msgstr "Questo file è collegato a un altro database genealogico su questo serve
 #. I18N: Help text for the "Data folder" site configuration setting
 #: admin_site_config.php:186
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
-msgstr "Questa cartella verrà usata da webtrees per salvare i file multimediali, i file GEDCOM, i file temporanei… Questi file possono contenere dati sensibili e non dovrebbero essere accessibile da internet."
+msgstr "Questa cartella verrà usata da webtrees per salvare i file multimediali, i file GEDCOM, i file temporanei, ecc. Questi file possono contenere dati sensibili e non dovrebbero essere accessibili da internet."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1006
@@ -14814,7 +14814,7 @@ msgstr "Per impedire ai visitatori di accedere durante la copia dei file è poss
 #. I18N: “Apache” is a software program.
 #: admin_site_config.php:189
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
-msgstr "Per proteggere questi dati sensibili webtrees utilizza un file di configurazione di Apache (. htaccess) che blocca tutti gli accessi a questa cartella. Se il proprio server web non supporta i file .htaccess e non è possibile limitare l’accesso a questa cartella è possibile selezionare un’altra cartella, non pubblicata sul web."
+msgstr "Per proteggere questi dati sensibili webtrees utilizza un file di configurazione di Apache (.htaccess) che blocca tutti gli accessi a questa cartella. Se il proprio server web non supporta i file .htaccess e non è possibile limitare l’accesso a questa cartella è possibile selezionare un’altra cartella, non pubblicata sul web."
 
 #: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:377
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
