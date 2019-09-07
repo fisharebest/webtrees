@@ -402,19 +402,20 @@ $deathAgeData = [
 
                 <!-- Age at death -->
                 <?php if (isset($birth_dates[0]) && isset($death_dates[0])) : ?>
-                    <?php $age_at_death = I18N::number((int) Date::getAgeYears($birth_dates[0], $death_dates[0])); ?>
+                    <?php $age_at_death_years = (int) Date::getAgeYears($birth_dates[0], $death_dates[0]); ?>
                     <?php $age_at_death_sort = Date::getAge($birth_dates[0], $death_dates[0]); ?>
-                    <?php if (!isset($unique_indis[$individual->xref()]) && $age_at_death >= 0 && $age_at_death <= $max_age) : ?>
+                    <?php $age_at_death_display = I18N::number($age_at_death_years); ?>
+                    <?php if (!isset($unique_indis[$individual->xref()]) && $age_at_death_years >= 0 && $age_at_death_years <= $max_age) : ?>
                         <?php
-                            ++$deat_by_age[$age_at_death][$individual->sex()];
+                            ++$deat_by_age[$age_at_death_years][$individual->sex()];
                         ?>
                     <?php endif ?>
                 <?php else : ?>
-                    <?php $age_at_death = ''; ?>
+                    <?php $age_at_death_display = ''; ?>
                     <?php $age_at_death_sort = PHP_INT_MAX; ?>
                 <?php endif ?>
                 <td class="text-center" data-sort="<?= e($age_at_death_sort) ?>">
-                    <?= e($age_at_death) ?>
+                    <?= e($age_at_death_display) ?>
                 </td>
 
                 <!-- Death place -->
