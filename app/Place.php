@@ -248,7 +248,7 @@ class Place
         $title = strip_tags($this->fullName());
 
         if ($link) {
-            return '<a dir="auto" href="' . e($this->url()) . '" title="' . $title . '"">' . e($short_name) . '</a>';
+            return '<a dir="auto" href="' . e($this->url()) . '" title="' . $title . '">' . e($short_name) . '</a>';
         }
 
         return '<span dir="auto">' . e($short_name) . '</span>';
