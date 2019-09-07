@@ -20,12 +20,10 @@ class VarExporterTest extends TestCase
 {
     use VarDumperTestTrait;
 
-    /**
-     * @expectedException \Symfony\Component\VarExporter\Exception\ClassNotFoundException
-     * @expectedExceptionMessage Class "SomeNotExistingClass" not found.
-     */
     public function testPhpIncompleteClassesAreForbidden()
     {
+        $this->expectException('Symfony\Component\VarExporter\Exception\ClassNotFoundException');
+        $this->expectExceptionMessage('Class "SomeNotExistingClass" not found.');
         $unserializeCallback = ini_set('unserialize_callback_func', 'var_dump');
         try {
             Registry::unserialize([], ['O:20:"SomeNotExistingClass":0:{}']);
@@ -36,11 +34,11 @@ class VarExporterTest extends TestCase
 
     /**
      * @dataProvider provideFailingSerialization
-     * @expectedException \Symfony\Component\VarExporter\Exception\NotInstantiableTypeException
-     * @expectedExceptionMessageRegexp Type ".*" is not instantiable.
      */
     public function testFailingSerialization($value)
     {
+        $this->expectException('Symfony\Component\VarExporter\Exception\NotInstantiableTypeException');
+        $this->expectExceptionMessageRegExp('/Type ".*" is not instantiable\./');
         $expectedDump = $this->getDump($value);
         try {
             VarExporter::export($value);
@@ -88,7 +86,12 @@ class VarExporterTest extends TestCase
 
         $dump = "<?php\n\nreturn ".$marshalledValue.";\n";
         $dump = str_replace(var_export(__FILE__, true), "\\dirname(__DIR__).\\DIRECTORY_SEPARATOR.'VarExporterTest.php'", $dump);
-        $fixtureFile = __DIR__.'/Fixtures/'.$testName.'.php';
+
+        if (\PHP_VERSION_ID < 70400 && \in_array($testName, ['array-object', 'array-iterator', 'array-object-custom', 'spl-object-storage', 'final-array-iterator', 'final-error'], true)) {
+            $fixtureFile = __DIR__.'/Fixtures/'.$testName.'-legacy.php';
+        } else {
+            $fixtureFile = __DIR__.'/Fixtures/'.$testName.'.php';
+        }
         $this->assertStringEqualsFile($fixtureFile, $dump);
 
         if ('incomplete-class' === $testName || 'external-references' === $testName) {

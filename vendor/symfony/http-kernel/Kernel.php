@@ -73,11 +73,11 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
     private $requestStackSize = 0;
     private $resetServices = false;
 
-    const VERSION = '4.3.3';
-    const VERSION_ID = 40303;
+    const VERSION = '4.3.4';
+    const VERSION_ID = 40304;
     const MAJOR_VERSION = 4;
     const MINOR_VERSION = 3;
-    const RELEASE_VERSION = 3;
+    const RELEASE_VERSION = 4;
     const EXTRA_VERSION = '';
 
     const END_OF_MAINTENANCE = '01/2020';
@@ -204,7 +204,7 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
     /**
      * Gets a HTTP kernel from the container.
      *
-     * @return HttpKernel
+     * @return HttpKernelInterface
      */
     protected function getHttpKernel()
     {
@@ -377,7 +377,7 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
      */
     public function getStartTime()
     {
-        return $this->debug ? $this->startTime : -INF;
+        return $this->debug && null !== $this->startTime ? $this->startTime : -INF;
     }
 
     /**
@@ -503,10 +503,9 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
             return;
         }
 
-        if ($this->debug) {
+        if ($collectDeprecations = $this->debug && !\defined('PHPUNIT_COMPOSER_INSTALL')) {
             $collectedLogs = [];
-            $previousHandler = \defined('PHPUNIT_COMPOSER_INSTALL');
-            $previousHandler = $previousHandler ?: set_error_handler(function ($type, $message, $file, $line) use (&$collectedLogs, &$previousHandler) {
+            $previousHandler = set_error_handler(function ($type, $message, $file, $line) use (&$collectedLogs, &$previousHandler) {
                 if (E_USER_DEPRECATED !== $type && E_DEPRECATED !== $type) {
                     return $previousHandler ? $previousHandler($type, $message, $file, $line) : false;
                 }
@@ -514,7 +513,7 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
                 if (isset($collectedLogs[$message])) {
                     ++$collectedLogs[$message]['count'];
 
-                    return;
+                    return null;
                 }
 
                 $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 5);
@@ -541,6 +540,8 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
                     'trace' => [$backtrace[0]],
                     'count' => 1,
                 ];
+
+                return null;
             });
         }
 
@@ -549,7 +550,7 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
             $container = $this->buildContainer();
             $container->compile();
         } finally {
-            if ($this->debug && true !== $previousHandler) {
+            if ($collectDeprecations) {
                 restore_error_handler();
 
                 file_put_contents($cacheDir.'/'.$class.'Deprecations.log', serialize(array_values($collectedLogs)));

@@ -283,6 +283,10 @@ class ErrorHandlerTest extends TestCase
 
     public function testHandleUserError()
     {
+        if (\PHP_VERSION_ID >= 70400) {
+            $this->markTestSkipped('PHP 7.4 allows __toString to throw exceptions');
+        }
+
         try {
             $handler = ErrorHandler::register();
             $handler->throwAt(0, true);
@@ -491,11 +495,9 @@ class ErrorHandlerTest extends TestCase
         $this->assertStringStartsWith("Attempted to load class \"IReallyReallyDoNotExistAnywhereInTheRepositoryISwear\" from the global namespace.\nDid you forget a \"use\" statement", $args[0]->getMessage());
     }
 
-    /**
-     * @expectedException \Exception
-     */
     public function testCustomExceptionHandler()
     {
+        $this->expectException('Exception');
         $handler = new ErrorHandler();
         $handler->setExceptionHandler(function ($e) use ($handler) {
             $handler->handleException($e);

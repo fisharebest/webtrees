@@ -48,11 +48,9 @@ class HeaderBagTest extends TestCase
         $this->assertInstanceOf('DateTime', $headerDate);
     }
 
-    /**
-     * @expectedException \RuntimeException
-     */
     public function testGetDateException()
     {
+        $this->expectException('RuntimeException');
         $bag = new HeaderBag(['foo' => 'Tue']);
         $headerDate = $bag->getDate('foo');
     }

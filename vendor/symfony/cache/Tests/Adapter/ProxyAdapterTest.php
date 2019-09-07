@@ -37,12 +37,10 @@ class ProxyAdapterTest extends AdapterTestCase
         return new ProxyAdapter(new ArrayAdapter(), '', $defaultLifetime);
     }
 
-    /**
-     * @expectedException \Exception
-     * @expectedExceptionMessage OK bar
-     */
     public function testProxyfiedItem()
     {
+        $this->expectException('Exception');
+        $this->expectExceptionMessage('OK bar');
         $item = new CacheItem();
         $pool = new ProxyAdapter(new TestingArrayAdapter($item));
 

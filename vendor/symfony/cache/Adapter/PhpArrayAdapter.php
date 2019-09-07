@@ -44,7 +44,7 @@ class PhpArrayAdapter implements AdapterInterface, CacheInterface, PruneableInte
         $this->file = $file;
         $this->pool = $fallbackPool;
         $this->createCacheItem = \Closure::bind(
-            function ($key, $value, $isHit) {
+            static function ($key, $value, $isHit) {
                 $item = new CacheItem();
                 $item->key = $key;
                 $item->value = $value;
@@ -288,7 +288,7 @@ class PhpArrayAdapter implements AdapterInterface, CacheInterface, PruneableInte
     /**
      * @throws \ReflectionException When $class is not found and is required
      *
-     * @internal
+     * @internal to be removed in Symfony 5.0
      */
     public static function throwOnRequiredClass($class)
     {

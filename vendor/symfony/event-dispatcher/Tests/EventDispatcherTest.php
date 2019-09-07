@@ -32,13 +32,13 @@ class EventDispatcherTest extends TestCase
 
     private $listener;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->dispatcher = $this->createEventDispatcher();
         $this->listener = new TestEventListener();
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->dispatcher = null;
         $this->listener = null;
@@ -285,7 +285,7 @@ class EventDispatcherTest extends TestCase
     }
 
     /**
-     * @see https://bugs.php.net/bug.php?id=62976
+     * @see https://bugs.php.net/62976
      *
      * This bug affects:
      *  - The PHP 5.3 branch for versions < 5.3.18
@@ -431,12 +431,10 @@ class EventDispatcherTest extends TestCase
         $this->dispatcher->dispatch('foo', new Event());
     }
 
-    /**
-     * @expectedException \TypeError
-     * @expectedExceptionMessage Argument 1 passed to "Symfony\Component\EventDispatcher\EventDispatcherInterface::dispatch()" must be an object, string given.
-     */
     public function testLegacySignatureWithNewEventObject()
     {
+        $this->expectException('TypeError');
+        $this->expectExceptionMessage('Argument 1 passed to "Symfony\Component\EventDispatcher\EventDispatcherInterface::dispatch()" must be an object, string given.');
         $this->dispatcher->dispatch('foo', new ContractsEvent());
     }
 }

@@ -92,11 +92,9 @@ class ControllerResolverTest extends TestCase
         $this->assertInstanceOf(InvokableController::class, $controller);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testGetControllerOnObjectWithoutInvokeMethod()
     {
+        $this->expectException('InvalidArgumentException');
         $resolver = $this->createControllerResolver();
 
         $request = Request::create('/');
@@ -159,12 +157,8 @@ class ControllerResolverTest extends TestCase
     public function testGetControllerWithUndefinedController($controller, $exceptionName = null, $exceptionMessage = null)
     {
         $resolver = $this->createControllerResolver();
-        if (method_exists($this, 'expectException')) {
-            $this->expectException($exceptionName);
-            $this->expectExceptionMessage($exceptionMessage);
-        } else {
-            $this->setExpectedException($exceptionName, $exceptionMessage);
-        }
+        $this->expectException($exceptionName);
+        $this->expectExceptionMessage($exceptionMessage);
 
         $request = Request::create('/');
         $request->attributes->set('_controller', $controller);

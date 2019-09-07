@@ -98,8 +98,8 @@ class HttpCache implements HttpKernelInterface, TerminableInterface
             'trace_header' => 'X-Symfony-Cache',
         ], $options);
 
-        if (!isset($options['trace_level']) && $this->options['debug']) {
-            $this->options['trace_level'] = 'full';
+        if (!isset($options['trace_level'])) {
+            $this->options['trace_level'] = $this->options['debug'] ? 'full' : 'none';
         }
     }
 
@@ -462,9 +462,8 @@ class HttpCache implements HttpKernelInterface, TerminableInterface
      * All backend requests (cache passes, fetches, cache validations)
      * run through this method.
      *
-     * @param Request  $request A Request instance
-     * @param bool     $catch   Whether to catch exceptions or not
-     * @param Response $entry   A Response instance (the stale entry if present, null otherwise)
+     * @param bool          $catch Whether to catch exceptions or not
+     * @param Response|null $entry A Response instance (the stale entry if present, null otherwise)
      *
      * @return Response A Response instance
      */

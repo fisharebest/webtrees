@@ -21,7 +21,7 @@ use Symfony\Contracts\Cache\CallbackInterface;
 
 abstract class AdapterTestCase extends CachePoolTest
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -120,7 +120,7 @@ abstract class AdapterTestCase extends CachePoolTest
             CacheItem::METADATA_EXPIRY => 9.5 + time(),
             CacheItem::METADATA_CTIME => 1000,
         ];
-        $this->assertEquals($expected, $item->getMetadata(), 'Item metadata should embed expiry and ctime.', .6);
+        $this->assertEqualsWithDelta($expected, $item->getMetadata(), .6, 'Item metadata should embed expiry and ctime.');
     }
 
     public function testDefaultLifeTime()
@@ -251,6 +251,16 @@ abstract class AdapterTestCase extends CachePoolTest
         $cache->prune();
         $this->assertFalse($this->isPruned($cache, 'foo'));
         $this->assertTrue($this->isPruned($cache, 'qux'));
+    }
+
+    /**
+     * @group issue-32995
+     *
+     * @runInSeparateProcess https://github.com/symfony/symfony/issues/32995
+     */
+    public function testSavingObject()
+    {
+        parent::testSavingObject();
     }
 }
 

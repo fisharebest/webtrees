@@ -240,11 +240,9 @@ class ResponseHeaderBagTest extends TestCase
         $this->assertEquals([], $bag->getCookies());
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testGetCookiesWithInvalidArgument()
     {
+        $this->expectException('InvalidArgumentException');
         $bag = new ResponseHeaderBag();
 
         $bag->getCookies('invalid_argument');

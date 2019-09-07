@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 
 class RequestTest extends TestCase
 {
-    protected function tearDown()
+    protected function tearDown(): void
     {
         Request::setTrustedProxies([], -1);
         Request::setTrustedHosts([]);
@@ -892,11 +892,9 @@ class RequestTest extends TestCase
         $this->assertEquals(80, $port, 'With only PROTO set and value is not recognized, getPort() defaults to 80.');
     }
 
-    /**
-     * @expectedException \RuntimeException
-     */
     public function testGetHostWithFakeHttpHostValue()
     {
+        $this->expectException('RuntimeException');
         $request = new Request();
         $request->initialize([], [], [], [], [], ['HTTP_HOST' => 'www.host.com?query=string']);
         $request->getHost();
@@ -1061,11 +1059,11 @@ class RequestTest extends TestCase
     }
 
     /**
-     * @expectedException \Symfony\Component\HttpFoundation\Exception\ConflictingHeadersException
      * @dataProvider getClientIpsWithConflictingHeadersProvider
      */
     public function testGetClientIpsWithConflictingHeaders($httpForwarded, $httpXForwardedFor)
     {
+        $this->expectException('Symfony\Component\HttpFoundation\Exception\ConflictingHeadersException');
         $request = new Request();
 
         $server = [
@@ -1159,7 +1157,7 @@ class RequestTest extends TestCase
     {
         $req = new Request();
         $retval = $req->getContent(true);
-        $this->assertInternalType('resource', $retval);
+        $this->assertIsResource($retval);
         $this->assertEquals('', fread($retval, 1));
         $this->assertTrue(feof($retval));
     }
@@ -1169,7 +1167,7 @@ class RequestTest extends TestCase
         $req = new Request([], [], [], [], [], [], 'MyContent');
         $resource = $req->getContent(true);
 
-        $this->assertInternalType('resource', $resource);
+        $this->assertIsResource($resource);
         $this->assertEquals('MyContent', stream_get_contents($resource));
     }
 
@@ -1541,7 +1539,6 @@ class RequestTest extends TestCase
         $request = new Request();
         $request->headers->set('Accept-language', 'zh, en-us; q=0.8, en; q=0.6');
         $this->assertEquals(['zh', 'en_US', 'en'], $request->getLanguages());
-        $this->assertEquals(['zh', 'en_US', 'en'], $request->getLanguages());
 
         $request = new Request();
         $request->headers->set('Accept-language', 'zh, en-us; q=0.6, en; q=0.8');
@@ -1632,14 +1629,14 @@ class RequestTest extends TestCase
 
         $asString = (string) $request;
 
-        $this->assertContains('Accept-Language: zh, en-us; q=0.8, en; q=0.6', $asString);
-        $this->assertContains('Cookie: Foo=Bar', $asString);
+        $this->assertStringContainsString('Accept-Language: zh, en-us; q=0.8, en; q=0.6', $asString);
+        $this->assertStringContainsString('Cookie: Foo=Bar', $asString);
 
         $request->cookies->set('Another', 'Cookie');
 
         $asString = (string) $request;
 
-        $this->assertContains('Cookie: Foo=Bar; Another=Cookie', $asString);
+        $this->assertStringContainsString('Cookie: Foo=Bar; Another=Cookie', $asString);
     }
 
     public function testIsMethod()
@@ -2050,12 +2047,8 @@ class RequestTest extends TestCase
                 $this->assertSame($expectedPort, $request->getPort());
             }
         } else {
-            if (method_exists($this, 'expectException')) {
-                $this->expectException(SuspiciousOperationException::class);
-                $this->expectExceptionMessage('Invalid Host');
-            } else {
-                $this->setExpectedException(SuspiciousOperationException::class, 'Invalid Host');
-            }
+            $this->expectException(SuspiciousOperationException::class);
+            $this->expectExceptionMessage('Invalid Host');
 
             $request->getHost();
         }
@@ -2134,11 +2127,9 @@ class RequestTest extends TestCase
         ];
     }
 
-    /**
-     * @expectedException \BadMethodCallException
-     */
     public function testMethodSafeChecksCacheable()
     {
+        $this->expectException('BadMethodCallException');
         $request = new Request();
         $request->setMethod('OPTIONS');
         $request->isMethodSafe();
