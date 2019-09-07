@@ -28,6 +28,7 @@ use function extract;
 use function implode;
 use function is_file;
 use function ob_end_clean;
+use function ob_get_level;
 use function ob_start;
 use function sha1;
 
@@ -191,7 +192,9 @@ class View
 
             return ob_get_clean();
         } catch (Throwable $ex) {
-            ob_end_clean();
+            while (ob_get_level() > 0) {
+                ob_end_clean();
+            }
             throw $ex;
         }
     }
