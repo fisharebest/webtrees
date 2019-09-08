@@ -1,38 +1,33 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<div class="offset-1 w-75 d-table">
-    <div class="d-table-row">
-        <div class="d-table-cell label">
-            <?php if ($showlink) : ?>
-                <a href="<?= e($place->url()) ?>">
-                    <?= $place->placeName() ?>
-                </a>
-            <?php else : ?>
+<div class="row">
+    <div class="col-sm-12 label">
+        <?php if ($showlink) : ?>
+            <a href="<?= e($place->url()) ?>">
                 <?= $place->placeName() ?>
-            <?php endif ?>
-        </div>
-        <div class="d-table-cell text-right">
-            <?php if ($flag) : ?>
-                <img src='<?= $flag ?>'>
-            <?php endif ?>
-        </div>
+            </a>
+        <?php else : ?>
+            <?= $place->placeName() ?>
+        <?php endif ?>
+
+        <?php if ($flag) : ?>
+            <img src='<?= $flag ?>'>
+        <?php endif ?>
     </div>
 
-    <div class="d-table-row">
-        <div class="d-table-cell">
-            <?= I18N::translate('Individuals') ?>
-        </div>
-        <div class="d-table-cell text-right">
-            <?= $stats['INDI'] ?>
-        </div>
+    <div class="offset-sm-1 col-sm-7">
+        <?= I18N::translate('Individuals') ?>
     </div>
 
-    <div class="d-table-row">
-        <div class="d-table-cell">
-            <?= I18N::translate('Families') ?>
-        </div>
-        <div class="d-table-cell text-right">
-            <?= $stats['FAM'] ?>
-        </div>
+    <div class="col-sm-3 align-digits">
+        <?= $stats['INDI'] ?>
+    </div>
+
+    <div class="offset-sm-1 col-sm-7">
+        <?= I18N::translate('Families') ?>
+    </div>
+
+    <div class="col-sm-3 align-digits">
+        <?= $stats['FAM'] ?>
     </div>
 </div>
