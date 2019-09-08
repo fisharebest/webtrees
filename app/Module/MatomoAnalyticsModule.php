@@ -75,7 +75,8 @@ class MatomoAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
     public function analyticsParameters(): array
     {
         return [
-            'MATOMO_WEBMASTER_ID' => $this->getPreference('MATOMO_WEBMASTER_ID'),
+            'MATOMO_SITE_ID' => $this->getPreference('MATOMO_SITE_ID'),
+            'MATOMO_URL'     => $this->getPreference('MATOMO_URL'),
         ];
     }
 

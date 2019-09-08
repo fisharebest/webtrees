@@ -1,21 +1,21 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <div class="row form-group">
-    <label for="PIWIK_SITE_ID" class="col-sm-3 col-form-label">
+    <label for="MATOMO_SITE_ID" class="col-sm-3 col-form-label">
         <?= /* I18N: A configuration setting */ I18N::translate('Site identification code') ?>
     </label>
     <div class="col-sm-9">
-        <input type="text" class="form-control" id="PIWIK_SITE_ID" name="PIWIK_SITE_ID" value="<?= e($PIWIK_SITE_ID ?? '') ?>" maxlength="255" pattern="[0-9]+">
+        <input type="text" class="form-control" id="MATOMO_SITE_ID" name="MATOMO_SITE_ID" value="<?= e($MATOMO_SITE_ID ?? '') ?>" maxlength="255" pattern="[0-9]+">
     </div>
 </div>
 
-<!-- PIWIK_URL -->
+<!-- MATOMO_URL -->
 <div class="row form-group">
-    <label for="PIWIK_URL" class="col-sm-3 col-form-label">
+    <label for="MATOMO_URL" class="col-sm-3 col-form-label">
         <?= /* I18N: A configuration setting */ I18N::translate('URL') ?>
     </label>
     <div class="col-sm-9">
-        <input type="text" class="form-control" id="PIWIK_URL" name="PIWIK_URL" value="<?= e($PIWIK_URL ?? '') ?>" placeholder="//example.com/piwik/" maxlength="255">
+        <input type="text" class="form-control" id="MATOMO_URL" name="MATOMO_URL" value="<?= e($MATOMO_URL ?? '') ?>" placeholder="//example.com/piwik/" maxlength="255">
     </div>
 </div>
 
