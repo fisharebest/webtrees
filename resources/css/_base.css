@@ -27,6 +27,11 @@
 	border-radius: 0;
 }
 
+/* rtl:ignore */
+.align-digits {
+	text-align: right;
+}
+
 /* Workaround for dropdown menu position on RTL with popper.js */
 /* See also https://github.com/FezVrasta/popper.js/issues/695 */
 [dir=rtl] .wt-genealogy-menu .dropdown-menu {

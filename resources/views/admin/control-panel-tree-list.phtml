@@ -34,7 +34,7 @@ use Fisharebest\Webtrees\Module\SourceListModule;
                 -
             <?php endif ?>
         </td>
-        <td class="d-none d-sm-table-cell" style="text-align: right;">
+        <td class="d-none d-sm-table-cell align-digits">
             <?php if ($individuals[$tree->id()] > 0) : ?>
                 <?php if ($individual_list_module instanceof IndividualListModule) : ?>
                     <a href="<?= e($individual_list_module->listUrl($tree)) ?>"><?= I18N::number($individuals[$tree->id()]) ?></a>
@@ -45,7 +45,7 @@ use Fisharebest\Webtrees\Module\SourceListModule;
                 -
             <?php endif ?>
         </td>
-        <td class="d-none d-lg-table-cell" style="text-align: right;">
+        <td class="d-none d-lg-table-cell align-digits">
             <?php if ($families[$tree->id()] > 0) : ?>
                 <?php if ($family_list_module instanceof FamilyListModule) : ?>
                     <a href="<?= e($family_list_module->listUrl($tree)) ?>"><?= I18N::number($families[$tree->id()]) ?></a>
@@ -56,7 +56,7 @@ use Fisharebest\Webtrees\Module\SourceListModule;
                 -
             <?php endif ?>
         </td>
-        <td class="d-none d-sm-table-cell" style="text-align: right;">
+        <td class="d-none d-sm-table-cell align-digits">
             <?php if ($sources[$tree->id()] > 0) : ?>
                 <?php if ($source_list_module instanceof SourceListModule) : ?>
                     <a href="<?= e($source_list_module->listUrl($tree)) ?>"><?= I18N::number($sources[$tree->id()]) ?></a>
@@ -67,7 +67,7 @@ use Fisharebest\Webtrees\Module\SourceListModule;
                 -
             <?php endif ?>
         </td>
-        <td class="d-none d-lg-table-cell" style="text-align: right;">
+        <td class="d-none d-lg-table-cell align-digits">
             <?php if ($repositories[$tree->id()] > 0) : ?>
                 <?php if ($repository_list_module instanceof RepositoryListModule) : ?>
                     <a href="<?= e($repository_list_module->listUrl($tree)) ?>"><?= I18N::number($repositories[$tree->id()]) ?></a>
@@ -78,7 +78,7 @@ use Fisharebest\Webtrees\Module\SourceListModule;
                 -
             <?php endif ?>
         </td>
-        <td class="d-none d-sm-table-cell" style="text-align: right;t">
+        <td class="d-none d-sm-table-cell align-digits">
             <?php if ($media[$tree->id()] > 0) : ?>
                 <?php if ($media_list_module instanceof MediaListModule) : ?>
                     <a href="<?= e($media_list_module->listUrl($tree)) ?>"><?= I18N::number($media[$tree->id()]) ?></a>
@@ -89,7 +89,7 @@ use Fisharebest\Webtrees\Module\SourceListModule;
                 -
             <?php endif ?>
         </td>
-        <td class="d-none d-lg-table-cell" style="text-align: right;">
+        <td class="d-none d-lg-table-cell align-digits">
             <?php if ($notes[$tree->id()] > 0) : ?>
                 <?php if ($note_list_module instanceof NoteListModule) : ?>
                     <a href="<?= e($note_list_module->listUrl($tree)) ?>"><?= I18N::number($notes[$tree->id()]) ?></a>
