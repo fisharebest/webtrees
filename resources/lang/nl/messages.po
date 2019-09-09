@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-08-26 09:28+0100\n"
-"PO-Revision-Date: 2018-09-27 18:52+0000\n"
-"Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
-"Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
+"PO-Revision-Date: 2019-09-09 19:12+0000\n"
+"Last-Translator: Carmen <carmen@justcarmen.nl>\n"
+"Language-Team: Dutch <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -736,12 +736,12 @@ msgstr ""
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:50
 msgid "A link to the webtrees home page."
-msgstr ""
+msgstr "Een link naar de webtrees homepage."
 
 #. I18N: Description of the “BranchesListModule” module
 #: app/Module/BranchesListModule.php:55
 msgid "A list of branches of a family."
-msgstr ""
+msgstr "Een lijst met met familietakken."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:74
@@ -751,7 +751,7 @@ msgstr "Een lijst van veranderingen die goedkeuring nodig hebben van een moderat
 #. I18N: Description of the “FamilyListModule” module
 #: app/Module/FamilyListModule.php:56
 msgid "A list of families."
-msgstr ""
+msgstr "Een lijst met gezinnen."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:71
@@ -761,7 +761,7 @@ msgstr "Een lijst van vaak gestelde vragen en de antwoorden."
 #. I18N: Description of the “IndividualListModule” module
 #: app/Module/IndividualListModule.php:56
 msgid "A list of individuals."
-msgstr ""
+msgstr "Een lijst met personen."
 
 #. I18N: Description of the “MediaListModule” module
 #: app/Module/MediaListModule.php:57
