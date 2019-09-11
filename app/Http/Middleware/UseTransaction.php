@@ -22,34 +22,27 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Throwable;
 
 /**
  * Middleware to wrap a request in a transaction.
  */
 class UseTransaction implements MiddlewareInterface
 {
+    // If a transaction deadlock occurs, try again.
+    private const DEADLOCK_RETRY_ATTEMPTS = 3;
+
     /**
      * @param ServerRequestInterface  $request
      * @param RequestHandlerInterface $handler
      *
      * @return ResponseInterface
-     * @throws Throwable
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        try {
-            DB::connection()->beginTransaction();
-
+        DB::connection()->transaction(static function () use ($request, $handler, &$response) {
             $response = $handler->handle($request);
+        }, self::DEADLOCK_RETRY_ATTEMPTS);
 
-            DB::connection()->commit();
-
-            return $response;
-        } catch (Throwable $exception) {
-            DB::connection()->rollBack();
-
-            throw $exception;
-        }
+        return $response;
     }
 }
