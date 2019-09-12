@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\I18N;
 use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use SQLite3;
@@ -337,8 +336,6 @@ class ServerCheckService
     }
 
     /**
-     * @param string $driver
-     *
      * @return Collection
      */
     private function databaseEngineWarnings(): Collection
@@ -353,12 +350,15 @@ class ServerCheckService
         }
 
         if ($connection->getDriverName() === 'mysql') {
-            $rows = DB::select(
-                "SELECT table_name FROM information_schema.tables JOIN information_schema.engines USING (engine) WHERE table_schema = ? AND LEFT(table_name, ?) = ? AND transactions <> 'YES'", [
-                    $connection->getDatabaseName(),
-                    mb_strlen($connection->getTablePrefix()),
-                    $connection->getTablePrefix(),
-                ]);
+            $sql = "SELECT table_name FROM information_schema.tables JOIN information_schema.engines USING (engine) WHERE table_schema = ? AND LEFT(table_name, ?) = ? AND transactions <> 'YES'";
+
+            $bindings = [
+                $connection->getDatabaseName(),
+                mb_strlen($connection->getTablePrefix()),
+                $connection->getTablePrefix(),
+            ];
+
+            $rows = DB::connection()->select($sql, $bindings);
 
             $rows = new Collection($rows);
 
