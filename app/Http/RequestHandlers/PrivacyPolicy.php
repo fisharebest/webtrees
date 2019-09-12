@@ -15,32 +15,35 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 /**
- * Controller for static pages.
+ * Show the privacy policy page.
  */
-class StaticPageController extends AbstractBaseController
+class PrivacyPolicy implements RequestHandlerInterface
 {
+    use ViewResponseTrait;
+
     /**
-     * @param Tree $tree
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function privacyPolicy(Tree $tree): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $title = I18N::translate('Privacy policy');
 
         $uses_analytics = true;
 
         return $this->viewResponse('privacy-policy', [
-            'uses_analytics' => $uses_analytics,
             'title'          => $title,
-            'tree'           => $tree,
+            'uses_analytics' => $uses_analytics,
         ]);
     }
 }

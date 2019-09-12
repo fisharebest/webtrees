@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteUser;
 use Fisharebest\Webtrees\Http\RequestHandlers\MasqueradeAsUser;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\PrivacyPolicy;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectTheme;
 
@@ -316,7 +317,7 @@ $routes += [
     'POST:forgot-password' => 'Auth\\ForgotPasswordController@forgotPasswordAction',
     'POST:language'        => SelectLanguage::class,
     'POST:theme'           => SelectTheme::class,
-    'GET:privacy-policy'   => 'StaticPageController@privacyPolicy',
+    'GET:privacy-policy'   => PrivacyPolicy::class,
     'GET:module'           => ModuleAction::class,
     'POST:module'          => ModuleAction::class,
 ];

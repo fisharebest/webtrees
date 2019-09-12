@@ -21,56 +21,19 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\DeleteUser
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\PrivacyPolicy
  */
-class DeleteUserTest extends TestCase
+class PrivacyPolicyTest extends TestCase
 {
-    protected static $uses_database = true;
-
     /**
      * @return void
      */
     public function testDeleteUser(): void
     {
-        $user_service = new UserService();
-        $user         = $user_service->create('user1', 'real1', 'email1', 'pass1');
-        $handler      = new DeleteUser($user_service);
-        $request      = self::createRequest('POST', ['route' => 'delete-user'], ['user_id' => $user->id()]);
+        $handler      = new PrivacyPolicy();
+        $request      = self::createRequest('POST', ['route' => 'privacy-policy']);
         $response     = $handler->handle($request);
 
-        // UserService caches user records
-        app('cache.array')->forget(UserService::class . $user->id());
-
-        self::assertSame(self::STATUS_NO_CONTENT, $response->getStatusCode());
-        self::assertNull($user_service->find($user->id()));
-    }
-
-    /**
-     * @expectedException \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     * @expectedExceptionMessage User ID 98765 not found
-     * @return void
-     */
-    public function testDeleteNonExistingUser(): void
-    {
-        $user_service = new UserService();
-        $user_service->create('user1', 'real1', 'email1', 'pass1');
-        $handler = new DeleteUser($user_service);
-        $request = self::createRequest('POST', ['route' => 'delete-user'], ['user_id' => 98765]);
-        $handler->handle($request);
-    }
-
-    /**
-     * @expectedException \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException
-     * @expectedExceptionMessage Cannot delete an administrator
-     * @return void
-     */
-    public function testCannotDeleteAdministrator(): void
-    {
-        $user_service = new UserService();
-        $user         = $user_service->create('user1', 'real1', 'email1', 'pass1');
-        $user->setPreference('canadmin', '1');
-        $handler = new DeleteUser($user_service);
-        $request = self::createRequest('POST', ['route' => 'delete-user'], ['user_id' => $user->id()]);
-        $handler->handle($request);
+        self::assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 }
