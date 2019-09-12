@@ -28,6 +28,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
 use function dirname;
+use function ob_get_level;
 use function response;
 use function str_replace;
 use function view;
@@ -57,6 +58,11 @@ class HandleExceptions implements MiddlewareInterface, RequestMethodInterface, S
 
                 return $this->httpExceptionResponse($request, $exception);
             } catch (Throwable $exception) {
+                // Exception thrown while buffering output?
+                while (ob_get_level() > 0) {
+                    ob_get_clean();
+                }
+
                 $original_exception = $exception;
 
                 return $this->unhandledExceptionResponse($request, $exception);
