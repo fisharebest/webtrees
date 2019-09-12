@@ -134,29 +134,29 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             $content = $this->getPreference('sitemap.xml');
         } else {
             $count_individuals = DB::table('individuals')
-                ->groupBy('i_file')
+                ->groupBy(['i_file'])
                 ->select([new Expression('COUNT(*) AS total'), 'i_file'])
                 ->pluck('total', 'i_file');
 
             $count_media = DB::table('media')
-                ->groupBy('m_file')
+                ->groupBy(['m_file'])
                 ->select([new Expression('COUNT(*) AS total'), 'm_file'])
                 ->pluck('total', 'm_file');
 
             $count_notes = DB::table('other')
                 ->where('o_type', '=', 'NOTE')
-                ->groupBy('o_file')
+                ->groupBy(['o_file'])
                 ->select([new Expression('COUNT(*) AS total'), 'o_file'])
                 ->pluck('total', 'o_file');
 
             $count_repositories = DB::table('other')
                 ->where('o_type', '=', 'REPO')
-                ->groupBy('o_file')
+                ->groupBy(['o_file'])
                 ->select([new Expression('COUNT(*) AS total'), 'o_file'])
                 ->pluck('total', 'o_file');
 
             $count_sources = DB::table('sources')
-                ->groupBy('s_file')
+                ->groupBy(['s_file'])
                 ->select([new Expression('COUNT(*) AS total'), 's_file'])
                 ->pluck('total', 's_file');
 

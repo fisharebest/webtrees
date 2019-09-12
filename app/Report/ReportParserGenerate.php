@@ -1868,7 +1868,7 @@ class ReportParserGenerate extends ReportParserBase
                             ->from('change')
                             ->where('gedcom_id', '=', $this->tree->id())
                             ->where('status', '=', 'pending')
-                            ->groupBy('xref');
+                            ->groupBy(['xref']);
                     })
                     ->pluck('xref');
 

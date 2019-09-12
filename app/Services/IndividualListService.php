@@ -121,7 +121,7 @@ class IndividualListService
 
         $rows = $query2
             ->select([new Expression('SUBSTR(n_surn, 1, 1) AS initial'), new Expression('COUNT(*) AS count')])
-            ->groupBy('initial')
+            ->groupBy(['initial'])
             ->orderBy(new Expression("CASE initial WHEN '' THEN 1 ELSE 0 END"))
             ->orderBy(new Expression("CASE initial WHEN '@' THEN 1 ELSE 0 END"))
             ->orderBy('initial')
@@ -190,7 +190,7 @@ class IndividualListService
 
         $rows = $query
             ->select([new Expression('UPPER(SUBSTR(n_givn, 1, 1)) AS initial'), new Expression('COUNT(*) AS count')])
-            ->groupBy('initial')
+            ->groupBy(['initial'])
             ->orderBy(new Expression("CASE initial WHEN '' THEN 1 ELSE 0 END"))
             ->orderBy(new Expression("CASE initial WHEN '@' THEN 1 ELSE 0 END"))
             ->orderBy('initial')

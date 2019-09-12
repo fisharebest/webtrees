@@ -1338,7 +1338,7 @@ class GedcomRecord
                     ->from('change')
                     ->where('gedcom_id', '=', $this->tree->id())
                     ->where('status', '=', 'pending')
-                    ->groupBy('xref');
+                    ->groupBy(['xref']);
             })
             ->select(['xref']);
 

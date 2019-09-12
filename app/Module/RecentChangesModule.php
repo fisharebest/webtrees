@@ -219,7 +219,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             ->where('status', '=', 'accepted')
             ->where('new_gedcom', '<>', '')
             ->where('change_time', '>', Carbon::now()->subDays($days))
-            ->groupBy('xref')
+            ->groupBy(['xref'])
             ->pluck('xref')
             ->map(static function (string $xref) use ($tree): ?GedcomRecord {
                 return GedcomRecord::getInstance($xref, $tree);

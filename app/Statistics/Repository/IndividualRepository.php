@@ -491,7 +491,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             ->where('n_type', '<>', '_MARNM')
             ->whereNotIn('n_surn', ['', '@N.N.'])
             ->select('n_surn')
-            ->groupBy('n_surn')
+            ->groupBy(['n_surn'])
             ->orderByRaw('count(n_surn) desc')
             ->take($number_of_surnames)
             ->get()
@@ -504,7 +504,7 @@ class IndividualRepository implements IndividualRepositoryInterface
                 ->where('n_file', '=', $this->tree->id())
                 ->where(new Expression('n_surn /* COLLATE ' . I18N::collation() . ' */'), '=', $top_surname)
                 ->select('n_surn', new Expression('COUNT(*) AS count'))
-                ->groupBy('n_surn')
+                ->groupBy(['n_surn'])
                 ->get()
                 ->pluck('count', 'n_surn')
                 ->all();
@@ -660,7 +660,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             ->where('d_file', '=', $this->tree->id())
             ->where('d_fact', '=', 'BIRT')
             ->whereIn('d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
-            ->groupBy('d_month');
+            ->groupBy(['d_month']);
 
         if ($year1 >= 0 && $year2 >= 0) {
             $query->whereBetween('d_year', [$year1, $year2]);
@@ -686,7 +686,7 @@ class IndividualRepository implements IndividualRepositoryInterface
                         ->on('i_id', '=', 'd_gid')
                         ->on('i_file', '=', 'd_file');
                 })
-                ->groupBy('i_sex');
+                ->groupBy(['i_sex']);
     }
 
     /**
@@ -718,7 +718,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             ->where('d_file', '=', $this->tree->id())
             ->where('d_fact', '=', 'DEAT')
             ->whereIn('d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
-            ->groupBy('d_month');
+            ->groupBy(['d_month']);
 
         if ($year1 >= 0 && $year2 >= 0) {
             $query->whereBetween('d_year', [$year1, $year2]);
@@ -744,7 +744,7 @@ class IndividualRepository implements IndividualRepositoryInterface
                         ->on('i_id', '=', 'd_gid')
                         ->on('i_file', '=', 'd_file');
                 })
-                ->groupBy('i_sex');
+                ->groupBy(['i_sex']);
     }
 
     /**

@@ -102,7 +102,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
                 ->where('n_file', '=', $tree->id())
                 ->where('n_type', '<>', '_MARNM')
                 ->whereNotIn('n_surn', ['@N.N.', ''])
-                ->groupBy('n_surn')
+                ->groupBy(['n_surn'])
                 ->orderByDesc(new Expression('COUNT(n_surn)'))
                 ->take($number_of_surnames)
                 ->pluck('n_surn');
@@ -113,7 +113,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
                 $variants = DB::table('name')
                     ->where('n_file', '=', $tree->id())
                     ->where(new Expression('n_surn /*! COLLATE utf8_bin */'), '=', $top_surname)
-                    ->groupBy('surname')
+                    ->groupBy(['surname'])
                     ->select([new Expression('n_surname /*! COLLATE utf8_bin */ AS surname'), new Expression('count(*) AS total')])
                     ->pluck('total', 'surname')
                     ->all();

@@ -208,7 +208,7 @@ class AdminController extends AbstractBaseController
         $hits = DB::table('hit_counter')
             ->where('gedcom_id', '=', $tree->id())
             ->whereIn('page_parameter', [$xref1, $xref2])
-            ->groupBy('page_name')
+            ->groupBy(['page_name'])
             ->pluck(new Expression('SUM(page_count)'), 'page_name');
 
         foreach ($hits as $page_name => $page_count) {

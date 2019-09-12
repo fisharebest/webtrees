@@ -545,7 +545,7 @@ class FamilyRepository
     {
         $query = DB::table('families')
             ->where('f_file', '=', $this->tree->id())
-            ->groupBy('f_numchil')
+            ->groupBy(['f_numchil'])
             ->select(['f_numchil', new Expression('COUNT(*) AS total')]);
 
         if ($year1 >= 0 && $year2 >= 0) {
@@ -698,7 +698,7 @@ class FamilyRepository
             ->where('l_file', '=', $this->tree->id())
             ->where('l_type', '=', 'CHIL')
             ->select(['l_from AS family_id', new Expression('MIN(d_julianday1) AS min_birth_jd')])
-            ->groupBy('family_id');
+            ->groupBy(['family_id']);
 
         $query = DB::table('link')
             ->join('dates', static function (JoinClause $join): void {
@@ -1020,7 +1020,7 @@ class FamilyRepository
                     ->where('husbdeath.d_fact', '=', 'DEAT');
             })
             ->whereColumn('married.d_julianday1', '<', 'husbdeath.d_julianday2')
-            ->groupBy('f_id')
+            ->groupBy(['f_id'])
             ->select(['f_id AS family', new Expression('MIN(' . $prefix . 'husbdeath.d_julianday2 - ' . $prefix . 'married.d_julianday1) AS age')])
             ->get()
             ->all();
@@ -1041,7 +1041,7 @@ class FamilyRepository
                     ->where('wifedeath.d_fact', '=', 'DEAT');
             })
             ->whereColumn('married.d_julianday1', '<', 'wifedeath.d_julianday2')
-            ->groupBy('f_id')
+            ->groupBy(['f_id'])
             ->select(['f_id AS family', new Expression('MIN(' . $prefix . 'wifedeath.d_julianday2 - ' . $prefix . 'married.d_julianday1) AS age')])
             ->get()
             ->all();
@@ -1062,7 +1062,7 @@ class FamilyRepository
                     ->whereIn('divorced.d_fact', ['DIV', 'ANUL', '_SEPR']);
             })
             ->whereColumn('married.d_julianday1', '<', 'divorced.d_julianday2')
-            ->groupBy('f_id')
+            ->groupBy(['f_id'])
             ->select(['f_id AS family', new Expression('MIN(' . $prefix . 'divorced.d_julianday2 - ' . $prefix . 'married.d_julianday1) AS age')])
             ->get()
             ->all();
@@ -1658,7 +1658,7 @@ class FamilyRepository
             ->where('d_file', '=', $this->tree->id())
             ->where('d_fact', '=', 'MARR')
             ->select(['d_month', new Expression('COUNT(*) AS total')])
-            ->groupBy('d_month');
+            ->groupBy(['d_month']);
 
         if ($year1 >= 0 && $year2 >= 0) {
             $query->whereBetween('d_year', [$year1, $year2]);

@@ -180,7 +180,7 @@ class ControlPanelController extends AbstractAdminController
                     ->on('change.gedcom_id', '=', 'gedcom.gedcom_id')
                     ->where('change.status', '=', 'pending');
             })
-            ->groupBy('gedcom.gedcom_id')
+            ->groupBy(['gedcom.gedcom_id'])
             ->pluck(new Expression('COUNT(change_id)'), 'gedcom.gedcom_id')
             ->all();
     }
@@ -194,7 +194,7 @@ class ControlPanelController extends AbstractAdminController
     {
         return DB::table('gedcom')
             ->leftJoin('families', 'f_file', '=', 'gedcom_id')
-            ->groupBy('gedcom_id')
+            ->groupBy(['gedcom_id'])
             ->pluck(new Expression('COUNT(f_id)'), 'gedcom_id')
             ->map(static function (string $count) {
                 return (int) $count;
@@ -210,7 +210,7 @@ class ControlPanelController extends AbstractAdminController
     {
         return DB::table('gedcom')
             ->leftJoin('individuals', 'i_file', '=', 'gedcom_id')
-            ->groupBy('gedcom_id')
+            ->groupBy(['gedcom_id'])
             ->pluck(new Expression('COUNT(i_id)'), 'gedcom_id')
             ->map(static function (string $count) {
                 return (int) $count;
@@ -226,7 +226,7 @@ class ControlPanelController extends AbstractAdminController
     {
         return DB::table('gedcom')
             ->leftJoin('media', 'm_file', '=', 'gedcom_id')
-            ->groupBy('gedcom_id')
+            ->groupBy(['gedcom_id'])
             ->pluck(new Expression('COUNT(m_id)'), 'gedcom_id')
             ->map(static function (string $count) {
                 return (int) $count;
@@ -246,7 +246,7 @@ class ControlPanelController extends AbstractAdminController
                     ->on('o_file', '=', 'gedcom_id')
                     ->where('o_type', '=', 'NOTE');
             })
-            ->groupBy('gedcom_id')
+            ->groupBy(['gedcom_id'])
             ->pluck(new Expression('COUNT(o_id)'), 'gedcom_id')
             ->map(static function (string $count) {
                 return (int) $count;
@@ -266,7 +266,7 @@ class ControlPanelController extends AbstractAdminController
                     ->on('o_file', '=', 'gedcom_id')
                     ->where('o_type', '=', 'REPO');
             })
-            ->groupBy('gedcom_id')
+            ->groupBy(['gedcom_id'])
             ->pluck(new Expression('COUNT(o_id)'), 'gedcom_id')
             ->map(static function (string $count) {
                 return (int) $count;
@@ -282,7 +282,7 @@ class ControlPanelController extends AbstractAdminController
     {
         return DB::table('gedcom')
             ->leftJoin('sources', 's_file', '=', 'gedcom_id')
-            ->groupBy('gedcom_id')
+            ->groupBy(['gedcom_id'])
             ->pluck(new Expression('COUNT(s_id)'), 'gedcom_id')
             ->map(static function (string $count) {
                 return (int) $count;

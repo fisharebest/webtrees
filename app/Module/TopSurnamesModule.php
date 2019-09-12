@@ -82,7 +82,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
             ->where('n_file', '=', $tree->id())
             ->where('n_type', '<>', '_MARNM')
             ->whereNotIn('n_surn', ['@N.N.', ''])
-            ->groupBy('n_surn')
+            ->groupBy(['n_surn'])
             ->orderByDesc(new Expression('COUNT(n_surn)'))
             ->take($num)
             ->pluck('n_surn');
@@ -93,7 +93,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
             $variants = DB::table('name')
                 ->where('n_file', '=', $tree->id())
                 ->where(new Expression('n_surn /*! COLLATE utf8_bin */'), '=', $top_surname)
-                ->groupBy('surname')
+                ->groupBy(['surname'])
                 ->select([new Expression('n_surname /*! COLLATE utf8_bin */ AS surname'), new Expression('count(*) AS total')])
                 ->pluck('total', 'surname')
                 ->all();
