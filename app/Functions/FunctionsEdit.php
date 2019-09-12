@@ -149,21 +149,6 @@ class FunctionsEdit
     }
 
     /**
-     * A list of installed languages (e.g. for an edit control).
-     *
-     * @return string[]
-     */
-    public static function optionsInstalledLanguages(): array
-    {
-        $languages = [];
-        foreach (I18N::installedLocales() as $locale) {
-            $languages[$locale->languageTag()] = $locale->endonym();
-        }
-
-        return $languages;
-    }
-
-    /**
      * A list of integers (e.g. for an edit control).
      *
      * @param int[] $integers

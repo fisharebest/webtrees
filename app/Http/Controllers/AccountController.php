@@ -71,9 +71,8 @@ class AccountController extends AbstractBaseController
         $my_individual_record = Individual::getInstance($tree->getUserPreference(Auth::user(), 'gedcomid'), $tree);
         $contact_methods      = FunctionsEdit::optionsContactMethods();
         $default_individual   = Individual::getInstance($tree->getUserPreference(Auth::user(), 'rootid'), $tree);
-        $installed_languages  = FunctionsEdit::optionsInstalledLanguages();
+        $installed_languages  = $this->installedLanguages();
         $show_delete_option   = !$user->getPreference('canadmin');
-        $themes               = $this->themeOptions();
         $timezone_ids         = DateTimeZone::listIdentifiers();
         $timezones            = array_combine($timezone_ids, $timezone_ids);
         $title                = I18N::translate('My account');
@@ -84,11 +83,25 @@ class AccountController extends AbstractBaseController
             'installed_languages'  => $installed_languages,
             'my_individual_record' => $my_individual_record,
             'show_delete_option'   => $show_delete_option,
-            'themes'               => $themes,
             'timezones'            => $timezones,
             'title'                => $title,
             'user'                 => $user,
         ]);
+    }
+
+    /**
+     * A list of installed languages (e.g. for an edit control).
+     *
+     * @return string[]
+     */
+    private function installedLanguages(): array
+    {
+        $languages = [];
+        foreach (I18N::installedLocales() as $locale) {
+            $languages[$locale->languageTag()] = $locale->endonym();
+        }
+
+        return $languages;
     }
 
     /**
@@ -108,7 +121,6 @@ class AccountController extends AbstractBaseController
         $real_name      = $params['real_name'];
         $password       = $params['password'];
         $rootid         = $params['root_id'];
-        $theme          = $params['theme'];
         $time_zone      = $params['timezone'];
         $user_name      = $params['user_name'];
         $visible_online = $params['visible_online'] ?? '';
@@ -140,14 +152,10 @@ class AccountController extends AbstractBaseController
             ->setRealName($real_name)
             ->setPreference('contactmethod', $contact_method)
             ->setPreference('language', $language)
-            ->setPreference('theme', $theme)
             ->setPreference('TIMEZONE', $time_zone)
             ->setPreference('visibleonline', $visible_online);
 
         $tree->setUserPreference($user, 'rootid', $rootid);
-
-        // Switch to the new theme now
-        Session::put('theme', $theme);
 
         // Switch to the new language now
         Session::put('language', $language);
@@ -163,22 +171,11 @@ class AccountController extends AbstractBaseController
     public function delete(UserInterface $user): ResponseInterface
     {
         // An administrator can only be deleted by another administrator
-        if (!$user->getPreference('canadmin') && $user instanceof User) {
+        if ($user instanceof User && !$user->getPreference('canadmin')) {
             $this->user_service->delete($user);
             Auth::logout();
         }
 
         return redirect(route('my-account'));
-    }
-
-    /**
-     * @return Collection
-     */
-    private function themeOptions(): Collection
-    {
-        return $this->module_service
-            ->findByInterface(ModuleThemeInterface::class)
-            ->map($this->module_service->titleMapper())
-            ->prepend(I18N::translate('<default theme>'), '');
     }
 }

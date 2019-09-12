@@ -110,21 +110,6 @@
         </div>
     </div>
 
-    <?php if (count($themes) > 2) : ?>
-        <div class="row form-group">
-            <label class="col-sm-3 col-form-label wt-page-options-label" for="theme">
-                <?= I18N::translate('Theme') ?>
-            </label>
-            <div class="col-sm-9 wt-page-options-value">
-                <?= view('components/select', ['name' => 'theme', 'selected' => $user->getPreference('theme'), 'options' => $themes]) ?>
-                <p class="small text-muted" id="theme-description">
-                    <?= /* I18N: Help text for the "Default theme" site configuration setting */
-                    I18N::translate('You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc.') ?>
-                </p>
-            </div>
-        </div>
-    <?php endif ?>
-
     <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="contact-method">
             <?= I18N::translate('Contact method') ?>
