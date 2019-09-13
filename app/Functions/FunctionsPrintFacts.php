@@ -42,6 +42,7 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Ramsey\Uuid\Uuid;
+use function e;
 use const PREG_SET_ORDER;
 
 /**
@@ -1131,21 +1132,17 @@ class FunctionsPrintFacts
                 echo '</th>';
                 echo '<td class="', $styleadd, '">';
                 if ($media) {
-                    echo '<span class="field">';
                     foreach ($media->mediaFiles() as $media_file) {
+                        echo '<div>';
                         echo $media_file->displayImage(100, 100, 'contain', []);
+                        echo '<br>';
+                        echo '<a href="' . e($media->url()) . '"> ';
+                        echo '<em>';
+                        echo $media_file->title() ?: $media_file->filename();
+                        echo '</em>';
+                        echo '</a>';
+                        echo '</div>';
                     }
-                    echo '<a href="' . e($media->url()) . '"> ';
-                    echo '<em>';
-                    foreach ($media->getAllNames() as $name) {
-                        if ($name['type'] !== 'TITL') {
-                            echo '<br>';
-                        }
-                        echo $name['full'];
-                    }
-                    echo '</em>';
-                    echo '</a>';
-                    echo '</span>';
 
                     echo FunctionsPrint::printFactNotes($tree, $media->gedcom(), 1);
                     echo self::printFactSources($tree, $media->gedcom(), 1);
