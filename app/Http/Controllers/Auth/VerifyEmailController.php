@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees\Http\Controllers\Auth;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
-use Fisharebest\Webtrees\Mail;
+use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
@@ -34,6 +34,21 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 class VerifyEmailController extends AbstractBaseController
 {
+    /**
+     * @var MailService
+     */
+    private $mail_service;
+
+    /**
+     * MessageController constructor.
+     *
+     * @param MailService $mail_service
+     */
+    public function __construct(MailService $mail_service)
+    {
+        $this->mail_service = $mail_service;
+    }
+
     /**
      * Respond to a verification link that was emailed to a user.
      *
@@ -64,7 +79,7 @@ class VerifyEmailController extends AbstractBaseController
                 /* I18N: %s is a server name/URL */
                 $subject = I18N::translate('New user at %s', $base_url . ' ' . $tree->title());
 
-                Mail::send(
+                $this->mail_service->send(
                     new TreeUser($tree),
                     $webmaster,
                     new TreeUser($tree),

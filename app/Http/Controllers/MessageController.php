@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Mail;
+use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
@@ -40,6 +40,11 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class MessageController extends AbstractBaseController
 {
     /**
+     * @var MailService
+     */
+    private $mail_service;
+
+    /**
      * @var UserService
      */
     private $user_service;
@@ -47,10 +52,12 @@ class MessageController extends AbstractBaseController
     /**
      * MessageController constructor.
      *
+     * @param MailService $mail_service
      * @param UserService $user_service
      */
-    public function __construct(UserService $user_service)
+    public function __construct(MailService $mail_service, UserService $user_service)
     {
+        $this->mail_service = $mail_service;
         $this->user_service = $user_service;
     }
 
@@ -410,7 +417,7 @@ class MessageController extends AbstractBaseController
 
         // Send via email
         if ($this->sendEmail($recipient)) {
-            $success = Mail::send(
+            $success = $this->mail_service->send(
                 new TreeUser($tree),
                 $recipient,
                 $sender,

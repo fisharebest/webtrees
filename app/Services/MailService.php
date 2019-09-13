@@ -15,10 +15,12 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Services;
 
 use Exception;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Site;
 use Swift_Mailer;
 use Swift_Message;
 use Swift_NullTransport;
@@ -29,7 +31,7 @@ use Swift_Transport;
 /**
  * Send mail messages.
  */
-class Mail
+class MailService
 {
     /**
      * Send an external email message
@@ -44,23 +46,24 @@ class Mail
      *
      * @return bool
      */
-    public static function send(UserInterface $from, UserInterface $to, UserInterface $reply_to, $subject, $message_text, $message_html): bool
+    public function send(UserInterface $from, UserInterface $to, UserInterface $reply_to, string $subject, string $message_text, string $message_html): bool
     {
         try {
             $message_text = preg_replace('/\r?\n/', "\r\n", $message_text);
             $message_html = preg_replace('/\r?\n/', "\r\n", $message_html);
 
-            $message = (new Swift_Message($subject))
+            $message = (new Swift_Message())
+                ->setSubject($subject)
                 ->setFrom($from->email(), $from->realName())
                 ->setTo($to->email(), $to->realName())
                 ->setReplyTo($reply_to->email(), $reply_to->realName())
                 ->setBody($message_html, 'text/html')
                 ->addPart($message_text, 'text/plain');
 
-            $mailer = new Swift_Mailer(self::transport());
+            $mailer = new Swift_Mailer($this->transport());
             $mailer->send($message);
         } catch (Exception $ex) {
-            Log::addErrorLog('Mail: ' . $ex->getMessage());
+            Log::addErrorLog('MailService: ' . $ex->getMessage());
 
             return false;
         }
@@ -73,7 +76,7 @@ class Mail
      *
      * @return Swift_Transport
      */
-    public static function transport(): Swift_Transport
+    private function transport(): Swift_Transport
     {
         switch (Site::getPreference('SMTP_ACTIVE')) {
             case 'sendmail':

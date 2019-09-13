@@ -24,9 +24,9 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
-use Fisharebest\Webtrees\Mail;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
@@ -48,6 +48,11 @@ class UsersController extends AbstractAdminController
     private const SECONDS_PER_DAY = 24 * 60 * 60;
 
     /**
+     * @var MailService
+     */
+    private $mail_service;
+
+    /**
      * @var ModuleService
      */
     private $module_service;
@@ -60,11 +65,13 @@ class UsersController extends AbstractAdminController
     /**
      * UsersController constructor.
      *
+     * @param MailService   $mail_service
      * @param ModuleService $module_service
      * @param UserService   $user_service
      */
-    public function __construct(ModuleService $module_service, UserService $user_service)
+    public function __construct(MailService $mail_service, ModuleService $module_service, UserService $user_service)
     {
+        $this->mail_service   = $mail_service;
         $this->module_service = $module_service;
         $this->user_service   = $user_service;
     }
@@ -392,7 +399,7 @@ class UsersController extends AbstractAdminController
 
             $base_url = $request->getAttribute('base_url');
 
-            Mail::send(
+            $this->mail_service->send(
                 Auth::user(),
                 $edit_user,
                 Auth::user(),

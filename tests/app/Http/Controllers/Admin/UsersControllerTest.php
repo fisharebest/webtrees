@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
@@ -38,7 +39,7 @@ class UsersControllerTest extends TestCase
      */
     public function testIndex(): void
     {
-        $controller = new UsersController(new ModuleService(), new UserService());
+        $controller = new UsersController(new MailService(), new ModuleService(), new UserService());
         $request    = self::createRequest('GET', ['route' => 'admin-users']);
         $response   = $controller->index($request, Auth::user());
 
@@ -50,7 +51,7 @@ class UsersControllerTest extends TestCase
      */
     public function testData(): void
     {
-        $controller = new UsersController(new ModuleService(), new UserService());
+        $controller = new UsersController(new MailService(), new ModuleService(), new UserService());
         $request    = self::createRequest('GET', ['route' => 'admin-users-data']);
         $response   = $controller->data(new DatatablesService(), $request, Auth::User());
 
@@ -62,7 +63,7 @@ class UsersControllerTest extends TestCase
      */
     public function testCreate(): void
     {
-        $controller = new UsersController(new ModuleService(), new UserService());
+        $controller = new UsersController(new MailService(), new ModuleService(), new UserService());
         $request    = self::createRequest('GET', ['route' => 'admin-users-create']);
         $response   = $controller->create($request);
 
@@ -74,7 +75,7 @@ class UsersControllerTest extends TestCase
      */
     public function testSave(): void
     {
-        $controller = new UsersController(new ModuleService(), new UserService());
+        $controller = new UsersController(new MailService(), new ModuleService(), new UserService());
         $request    = self::createRequest('POST', ['route' => 'admin-users-create'], [
             'username'  => 'User name',
             'email'     => 'email@example.com',
@@ -92,7 +93,7 @@ class UsersControllerTest extends TestCase
     public function testEdit(): void
     {
         $user       = (new UserService())->create('user', 'real', 'email', 'pass');
-        $controller = new UsersController(new ModuleService(), new UserService());
+        $controller = new UsersController(new MailService(), new ModuleService(), new UserService());
         $request    = self::createRequest('GET', ['route' => 'admin-users-edit', 'user_id' => (string) $user->id()]);
         $response   = $controller->edit($request);
 
@@ -106,7 +107,7 @@ class UsersControllerTest extends TestCase
     {
         /** @var User $user */
         $user       = (new UserService())->create('user', 'real', 'email', 'pass');
-        $controller = new UsersController(new ModuleService(), new UserService());
+        $controller = new UsersController(new MailService(), new ModuleService(), new UserService());
         $request    = self::createRequest('POST', ['route' => 'admin-users-edit'], [
             'user_id'        => $user->id(),
             'username'       => '',
@@ -134,7 +135,7 @@ class UsersControllerTest extends TestCase
      */
     public function testCleanup(): void
     {
-        $controller = new UsersController(new ModuleService(), new UserService());
+        $controller = new UsersController(new MailService(), new ModuleService(), new UserService());
         $request    = self::createRequest('GET', ['route' => 'admin-users-cleanup']);
         $response   = $controller->cleanup($request);
 
@@ -146,7 +147,7 @@ class UsersControllerTest extends TestCase
      */
     public function testCleanupAction(): void
     {
-        $controller = new UsersController(new ModuleService(), new UserService());
+        $controller = new UsersController(new MailService(), new ModuleService(), new UserService());
         $request    = self::createRequest('POST', ['route' => 'admin-users-cleanup']);
         $response   = $controller->cleanupAction($request);
 

@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Mail;
+use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -39,6 +40,11 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class RegisterController extends AbstractBaseController
 {
     /**
+     * @var MailService
+     */
+    private $mail_service;
+
+    /**
      * @var UserService
      */
     private $user_service;
@@ -46,10 +52,12 @@ class RegisterController extends AbstractBaseController
     /**
      * RegisterController constructor.
      *
+     * @param MailService $mail_service
      * @param UserService $user_service
      */
-    public function __construct(UserService $user_service)
+    public function __construct(MailService $mail_service, UserService $user_service)
     {
+        $this->mail_service = $mail_service;
         $this->user_service = $user_service;
     }
 
@@ -134,7 +142,7 @@ class RegisterController extends AbstractBaseController
 
         // Send a verification message to the user.
         /* I18N: %s is a server name/URL */
-        Mail::send(
+        $this->mail_service->send(
             new TreeUser($tree),
             $user,
             new TreeUser($tree),
@@ -153,7 +161,7 @@ class RegisterController extends AbstractBaseController
             $subject = I18N::translate('New registration at %s', $tree->title());
 
             /* I18N: %s is a server name/URL */
-            Mail::send(
+            $this->mail_service->send(
                 new TreeUser($tree),
                 $webmaster,
                 $user,

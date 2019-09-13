@@ -17,10 +17,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Services\MailService;
+
 /**
- * Test harness for the class Mail
+ * Test harness for the class MailService
  */
-class MailTest extends TestCase
+class MailServiceTest extends TestCase
 {
     /**
      * Test that the class exists
@@ -29,6 +31,6 @@ class MailTest extends TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Mail::class));
+        $this->assertTrue(class_exists(MailService::class));
     }
 }

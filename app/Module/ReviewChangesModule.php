@@ -21,7 +21,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Mail;
+use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -38,6 +38,11 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
     use ModuleBlockTrait;
 
     /**
+     * @var MailService
+     */
+    private $mail_service;
+
+    /**
      * @var UserService
      */
     private $user_service;
@@ -45,10 +50,12 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * ReviewChangesModule constructor.
      *
+     * @param MailService $mail_service
      * @param UserService $user_service
      */
-    public function __construct(UserService $user_service)
+    public function __construct(MailService $mail_service, UserService $user_service)
     {
+        $this->mail_service = $mail_service;
         $this->user_service = $user_service;
     }
 
@@ -108,7 +115,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                             if ($tmp_tree->hasPendingEdit() && Auth::isManager($tmp_tree, $user)) {
                                 I18N::init($user->getPreference('language'));
 
-                                Mail::send(
+                                $this->mail_service->send(
                                     new TreeUser($tmp_tree),
                                     $user,
                                     new TreeUser($tmp_tree),

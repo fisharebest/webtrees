@@ -21,7 +21,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
-use Fisharebest\Webtrees\Mail;
+use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
@@ -35,6 +35,21 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 class ForgotPasswordController extends AbstractBaseController
 {
+    /**
+     * @var MailService
+     */
+    private $mail_service;
+
+    /**
+     * MessageController constructor.
+     *
+     * @param MailService $mail_service
+     */
+    public function __construct(MailService $mail_service)
+    {
+        $this->mail_service = $mail_service;
+    }
+
     /**
      * Show a password reset page.
      *
@@ -70,7 +85,7 @@ class ForgotPasswordController extends AbstractBaseController
 
             Log::addAuthenticationLog('Password request was sent to user: ' . $user->userName());
 
-            Mail::send(
+            $this->mail_service->send(
                 new TreeUser($tree),
                 $user,
                 new TreeUser($tree),
