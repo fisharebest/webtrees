@@ -22,7 +22,6 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
-use Fisharebest\Webtrees\Mail;
 use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
