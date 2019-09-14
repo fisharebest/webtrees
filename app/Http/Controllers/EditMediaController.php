@@ -642,7 +642,7 @@ class EditMediaController extends AbstractEditController
             if ($file->isFile()) {
                 $filename = substr($file->getPathname(), strlen($media_dir));
                 // Older versions of webtrees used a couple of special folders.
-                if (strpos($filename, 'thumbs/') !== 0 && strpos($filename, 'watermarks/') !== 0) {
+                if (strpos($filename, 'thumbs/') === false && strpos($filename, 'watermarks/') === false) {
                     $disk_files[] = $filename;
                 }
             }
