@@ -14,39 +14,43 @@
 </form>
 
 <script>
-  // Submit the modal form using AJAX
-  document.getElementById('wt-modal-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    let form          = event.target;
-    let modal_content = document.querySelector('#wt-ajax-modal .modal-content');
-    let select        = document.getElementById(modal_content.dataset.selectId);
+    // Submit the modal form using AJAX
+    document.getElementById("wt-modal-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+        let form          = event.target;
+        let modal_content = document.querySelector("#wt-ajax-modal .modal-content");
+        let select        = document.getElementById(modal_content.dataset.selectId);
 
-    $.ajax({
-      url:         form.action,
-      type:        form.method,
-      data:        new FormData(form),
-      async:       false,
-      cache:       false,
-      contentType: false,
-      processData: false,
-      success:     function (data) {
-        if (select) {
-          // If this modal was activated by the "new" button in a select2
-          // edit control, then insert the result and select it.
-          $(select)
-            .select2()
-            .empty()
-            .append(new Option(data.text, data.id)).val(data.id)
-            .trigger('change');
+        $.ajax({
+            url:         form.action,
+            type:        form.method,
+            data:        new FormData(form),
+            async:       false,
+            cache:       false,
+            contentType: false,
+            processData: false,
+            success:     function (data) {
+                if (select) {
+                    // If this modal was activated by the "new" button in a select2
+                    // edit control, then insert the result and select it.
+                    let option       = new Option(data.text, data.id, true, true);
+                    option.innerHTML = option.innerText;
+                    option.innerHTML = data.text;
 
-          $('#wt-ajax-modal').modal('hide');
-        } else {
-          modal_content.innerHTML = data.html;
-        }
-      },
-      failure:     function (data) {
-        modal_content.innerHTML = data.html;
-      }
+                    $(select)
+                        .select2()
+                        .empty()
+                        .append(option)
+                        .trigger("change");
+
+                    $("#wt-ajax-modal").modal("hide");
+                } else {
+                    modal_content.innerHTML = data.html;
+                }
+            },
+            failure:     function (data) {
+                modal_content.innerHTML = data.html;
+            },
+        });
     });
-  });
 </script>
