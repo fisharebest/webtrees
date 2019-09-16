@@ -27,6 +27,7 @@ use Swift_NullTransport;
 use Swift_SendmailTransport;
 use Swift_SmtpTransport;
 use Swift_Transport;
+use function str_replace;
 
 /**
  * Send mail messages.
@@ -49,8 +50,9 @@ class MailService
     public function send(UserInterface $from, UserInterface $to, UserInterface $reply_to, string $subject, string $message_text, string $message_html): bool
     {
         try {
-            $message_text = preg_replace('/\r?\n/', "\r\n", $message_text);
-            $message_html = preg_replace('/\r?\n/', "\r\n", $message_html);
+            // Mail needs MSDOS line endings
+            $message_text = str_replace("\n", "\r\n", $message_text);
+            $message_html = str_replace("\n", "\r\n", $message_html);
 
             $message = (new Swift_Message())
                 ->setSubject($subject)
