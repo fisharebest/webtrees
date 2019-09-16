@@ -396,6 +396,10 @@ class AdminSiteController extends AbstractBaseController
         Site::setPreference('SMTP_AUTH_USER', $params['SMTP_AUTH_USER']);
         Site::setPreference('SMTP_SSL', $params['SMTP_SSL']);
         Site::setPreference('SMTP_HELO', $params['SMTP_HELO']);
+        Site::setPreference('DKIM_DOMAIN', $params['DKIM_DOMAIN']);
+        Site::setPreference('DKIM_SELECTOR', $params['DKIM_SELECTOR']);
+        Site::setPreference('DKIM_KEY', $params['DKIM_KEY']);
+
         if ($params['SMTP_AUTH_PASS'] !== '') {
             Site::setPreference('SMTP_AUTH_PASS', $params['SMTP_AUTH_PASS']);
         }

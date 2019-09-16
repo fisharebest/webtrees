@@ -13,7 +13,6 @@
 <form method="post" class="form-horizontal">
     <?= csrf_field() ?>
 
-    <!-- SMTP_ACTIVE -->
     <div class="row form-group">
         <label for="SMTP_ACTIVE" class="col-sm-3 col-form-label">
             <?= /* I18N: A configuration setting */ I18N::translate('Messages') ?>
@@ -26,7 +25,6 @@
         </div>
     </div>
 
-    <!-- SMTP_FROM_NAME -->
     <div class="row form-group">
         <label for="SMTP_FROM_NAME" class="col-sm-3 col-form-label">
             <?= /* I18N: A configuration setting */ I18N::translate('Sender name') ?>
@@ -41,7 +39,6 @@
 
     <h2><?= I18N::translate('SMTP mail server') ?></h2>
 
-    <!-- SMTP_HOST -->
     <div class="row form-group">
         <label for="SMTP_HOST" class="col-sm-3 col-form-label">
             <?= /* I18N: A configuration setting */ I18N::translate('Server name') ?>
@@ -54,7 +51,6 @@
         </div>
     </div>
 
-    <!-- SMTP_PORT -->
     <div class="row form-group">
         <label for="SMTP_PORT" class="col-sm-3 col-form-label">
             <?= /* I18N: A configuration setting */ I18N::translate('Port number') ?>
@@ -67,7 +63,6 @@
         </div>
     </div>
 
-    <!-- SMTP_AUTH -->
     <fieldset class="form-group">
         <div class="row">
             <legend class="col-form-label col-sm-3">
@@ -82,7 +77,6 @@
         </div>
     </fieldset>
 
-    <!-- SMTP_AUTH_USER -->
     <div class="row form-group">
         <label for="SMTP_AUTH_USER" class="col-sm-3 col-form-label">
             <?= /* I18N: A configuration setting */ I18N::translate('Username') ?>
@@ -95,7 +89,6 @@
         </div>
     </div>
 
-    <!-- SMTP_AUTH_PASS -->
     <div class="row form-group">
         <label for="SMTP_AUTH_PASS" class="col-sm-3 col-form-label">
             <?= /* I18N: A configuration setting */ I18N::translate('Password') ?>
@@ -108,7 +101,6 @@
         </div>
     </div>
 
-    <!-- SMTP_SSL -->
     <div class="row form-group">
         <label for="SMTP_SSL" class="col-sm-3 col-form-label">
             <?= /* I18N: A configuration setting */ I18N::translate('Secure connection') ?>
@@ -121,7 +113,6 @@
         </div>
     </div>
 
-    <!-- SMTP_HELO -->
     <div class="row form-group">
         <label for="SMTP_HELO" class="col-sm-3 col-form-label">
             <?= /* I18N: A configuration setting */ I18N::translate('Sending server name') ?>
@@ -131,6 +122,37 @@
             <p class="small text-muted">
                 <?= /* I18N: Help text for the "Sending server name" site configuration setting */ I18N::translate('Many mail servers require that the sending server identifies itself correctly, using a valid domain name.') ?>
             </p>
+        </div>
+    </div>
+
+    <h2>
+        <?= /* I18N: https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail */ I18N::translate('DKIM digital signature') ?>
+    </h2>
+
+    <div class="row form-group">
+        <label for="DKIM_DOMAIN" class="col-sm-3 col-form-label">
+            <?= I18N::translate('Domain name') ?>
+        </label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="DKIM_DOMAIN" name="DKIM_DOMAIN" value="<?= e(Site::getPreference('DKIM_DOMAIN')) ?>" maxlength="255">
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label for="DKIM_SELECTOR" class="col-sm-3 col-form-label">
+            <?= I18N::translate('Selector') ?>
+        </label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="DKIM_SELECTOR" name="DKIM_SELECTOR" value="<?= e(Site::getPreference('DKIM_SELECTOR')) ?>" maxlength="255">
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label for="DKIM_KEY" class="col-sm-3 col-form-label">
+            <?= I18N::translate('Private key') ?>
+        </label>
+        <div class="col-sm-9">
+            <textarea class="form-control" id="DKIM_KEY" name="DKIM_KEY"><?= e(Site::getPreference('DKIM_KEY')) ?></textarea>
         </div>
     </div>
 
