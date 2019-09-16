@@ -56,7 +56,9 @@ class TreeUser implements UserInterface
      */
     public function email(): string
     {
-        return $this->tree->getPreference('WEBTREES_EMAIL', 'no-reply@example.com');
+        $default = Site::getPreference('SMTP_FROM_NAME', 'no-reply@localhost');
+
+        return $this->tree->getPreference('WEBTREES_EMAIL', $default);
     }
 
     /**

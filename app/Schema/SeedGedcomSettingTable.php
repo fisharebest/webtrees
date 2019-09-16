@@ -100,7 +100,7 @@ class SeedGedcomSettingTable implements SeedInterface
         'THUMBNAIL_WIDTH'              => '100',
         'USE_RIN'                      => '0',
         'USE_SILHOUETTE'               => '1',
-        'WEBTREES_EMAIL'               => 'webtrees-noreply@localhost',
+        'WEBTREES_EMAIL'               => '',
         'WORD_WRAPPED_NOTES'           => '0',
     ];
 
