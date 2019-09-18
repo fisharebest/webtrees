@@ -22,9 +22,11 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\NoReplyUser;
 use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -94,11 +96,11 @@ class RegisterController extends AbstractBaseController
      * Perform a registration.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
+     * @param Tree|null              $tree
      *
      * @return ResponseInterface
      */
-    public function registerAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function registerAction(ServerRequestInterface $request, ?Tree $tree): ResponseInterface
     {
         $this->checkRegistrationAllowed();
 
@@ -138,20 +140,25 @@ class RegisterController extends AbstractBaseController
             ->setPreference('sessiontime', '0');
 
         $base_url = $request->getAttribute('base_url');
+        $reply_to = $tree instanceof Tree ? new TreeUser($tree) : new SiteUser();
 
         // Send a verification message to the user.
         /* I18N: %s is a server name/URL */
         $this->mail_service->send(
-            new TreeUser($tree),
+            new Siteuser(),
             $user,
-            new TreeUser($tree),
+            $reply_to,
             I18N::translate('Your registration at %s', $base_url),
             view('emails/register-user-text', ['user' => $user, 'base_url' => $base_url]),
             view('emails/register-user-html', ['user' => $user, 'base_url' => $base_url])
         );
 
         // Tell the genealogy contact about the registration.
-        $webmaster = $this->user_service->find((int) $tree->getPreference('WEBMASTER_USER_ID'));
+        if ($tree instanceof Tree) {
+            $webmaster = $this->user_service->find((int) $tree->getPreference('WEBMASTER_USER_ID'));
+        } else {
+            $webmaster = new SiteUser();
+        }
 
         if ($webmaster !== null) {
             I18N::init($webmaster->getPreference('language'));
@@ -161,9 +168,9 @@ class RegisterController extends AbstractBaseController
 
             /* I18N: %s is a server name/URL */
             $this->mail_service->send(
-                new TreeUser($tree),
+                new SiteUser(),
                 $webmaster,
-                $user,
+                new NoReplyUser(),
                 $subject,
                 view('emails/register-notify-text', ['user' => $user, 'comments' => $comments, 'base_url' => $base_url]),
                 view('emails/register-notify-html', ['user' => $user, 'comments' => $comments, 'base_url' => $base_url])

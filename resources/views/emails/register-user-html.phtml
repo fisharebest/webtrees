@@ -14,8 +14,8 @@
     </p>
 
     <p>
-        <a href="<?= e(route('verify', ['username' => $user->userName(), 'token' => $user->getPreference('reg_hashcode'), 'ged' => $tree->name()], true)) ?>">
-            <?= e(route('verify', ['username' => $user->userName(), 'token' => $user->getPreference('reg_hashcode'), 'ged' => $tree->name()], true)) ?>
+        <a href="<?= e(route('verify', ['username' => $user->userName(), 'token' => $user->getPreference('reg_hashcode'), 'ged' => $tree ? $tree->name() : ''])) ?>">
+            <?= e(route('verify', ['username' => $user->userName(), 'token' => $user->getPreference('reg_hashcode'), 'ged' => $tree ? $tree->name() : ''])) ?>
         </a>
     </p>
 

@@ -20,47 +20,44 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 
 /**
- * Test the TreeUser class
+ * Test the NoReplyUser class
  */
-class TreeUserTest extends TestCase
+class NoReplyUserTest extends TestCase
 {
     protected static $uses_database = true;
 
     /**
-     * @covers \Fisharebest\Webtrees\TreeUser::__construct
-     * @covers \Fisharebest\Webtrees\TreeUser::id
-     * @covers \Fisharebest\Webtrees\TreeUser::email
-     * @covers \Fisharebest\Webtrees\TreeUser::realName
-     * @covers \Fisharebest\Webtrees\TreeUser::userName
+     * @covers \Fisharebest\Webtrees\NoReplyUser::id
+     * @covers \Fisharebest\Webtrees\NoReplyUser::email
+     * @covers \Fisharebest\Webtrees\NoReplyUser::realName
+     * @covers \Fisharebest\Webtrees\NoReplyUser::userName
      * @return void
      */
     public function testConstructor(): void
     {
-        $tree = Tree::create('name', 'title');
-        $user = new TreeUser($tree);
+        $user = new NoReplyUser();
 
         $this->assertInstanceOf(UserInterface::class, $user);
         $this->assertSame(0, $user->id());
         $this->assertSame('no-reply@localhost', $user->email());
-        $this->assertSame('title', $user->realName());
+        $this->assertSame(Webtrees::NAME, $user->realName());
         $this->assertSame('', $user->userName());
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\TreeUser::getPreference
-     * @covers \Fisharebest\Webtrees\TreeUser::setPreference
+     * @covers \Fisharebest\Webtrees\NoReplyUser::getPreference
+     * @covers \Fisharebest\Webtrees\NoReplyUser::setPreference
      * @return void
      */
     public function testPreferences(): void
     {
-        $tree = Tree::create('name', 'title');
-        $user = new TreeUser($tree);
+        $user = new NoReplyUser();
 
         $this->assertSame('', $user->getPreference('foo'));
         $this->assertSame('', $user->getPreference('foo', ''));
         $this->assertSame('bar', $user->getPreference('foo', 'bar'));
 
-        // Tree users do not have preferences
+        // No reply users do not have preferences
         $user->setPreference('foo', 'bar');
 
         $this->assertSame('', $user->getPreference('foo'));

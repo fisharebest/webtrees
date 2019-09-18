@@ -5,6 +5,6 @@
 
 <?= I18N::translate('Follow this link to verify your email address.') ?>
 
-<?= route('verify', ['username' => $user->userName(), 'token' => $user->getPreference('reg_hashcode'), 'ged' => $tree->name()], true) ?>
+<?= route('verify', ['username' => $user->userName(), 'token' => $user->getPreference('reg_hashcode'), 'ged' => $tree ? $tree->name() : '']) ?>
 
 <?= I18N::translate('If you didn’t request an account, you can just delete this message.') ?>

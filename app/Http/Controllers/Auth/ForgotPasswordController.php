@@ -21,8 +21,10 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\NoReplyUser;
 use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Fisharebest\Webtrees\User;
@@ -68,12 +70,11 @@ class ForgotPasswordController extends AbstractBaseController
      * Send a password reset email.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      * @param UserService            $user_service
      *
      * @return ResponseInterface
      */
-    public function forgotPasswordAction(ServerRequestInterface $request, Tree $tree, UserService $user_service): ResponseInterface
+    public function forgotPasswordAction(ServerRequestInterface $request, UserService $user_service): ResponseInterface
     {
         $identifier = $request->getParsedBody()['identifier'] ?? '';
 
@@ -86,9 +87,9 @@ class ForgotPasswordController extends AbstractBaseController
             Log::addAuthenticationLog('Password request was sent to user: ' . $user->userName());
 
             $this->mail_service->send(
-                new TreeUser($tree),
+                new SiteUser(),
                 $user,
-                new TreeUser($tree),
+                new NoReplyUser(),
                 I18N::translate('Lost password request'),
                 view('emails/password-reset-text', [
                     'user'         => $user,

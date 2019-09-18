@@ -2,6 +2,7 @@
 
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Site;
 
 ?>
 
@@ -138,27 +139,6 @@ use Fisharebest\Webtrees\I18N;
     </fieldset>
 
     <h3><?= I18N::translate('Contact information') ?></h3>
-
-    <!-- WEBTREES_EMAIL -->
-    <div class="row form-group">
-        <label class="col-sm-3 col-form-label" for="WEBTREES_EMAIL">
-            <?= /* I18N: A configuration setting */ I18N::translate('webtrees reply address') ?>
-        </label>
-        <div class="col-sm-9">
-            <input
-                class="form-control"
-                id="WEBTREES_EMAIL"
-                maxlength="255"
-                name="WEBTREES_EMAIL"
-                required
-                type="email"
-                value="<?= e($tree->getPreference('WEBTREES_EMAIL')) ?>"
-            >
-            <p class="small text-muted">
-                <?= /* I18N: Help text for the “webtrees reply address” configuration setting */ I18N::translate('Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>.') ?>
-            </p>
-        </div>
-    </div>
 
     <!-- CONTACT_USER_ID -->
     <div class="row form-group">

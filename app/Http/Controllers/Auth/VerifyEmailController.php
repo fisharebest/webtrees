@@ -20,10 +20,11 @@ namespace Fisharebest\Webtrees\Http\Controllers\Auth;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\NoReplyUser;
 use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\TreeUser;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
@@ -80,9 +81,9 @@ class VerifyEmailController extends AbstractBaseController
                 $subject = I18N::translate('New user at %s', $base_url . ' ' . $tree->title());
 
                 $this->mail_service->send(
-                    new TreeUser($tree),
+                    new SiteUser(),
                     $webmaster,
-                    new TreeUser($tree),
+                    new NoReplyUser(),
                     $subject,
                     view('emails/verify-notify-text', ['user' => $user]),
                     view('emails/verify-notify-html', ['user' => $user])

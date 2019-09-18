@@ -25,8 +25,8 @@ use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\TreeUser;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
@@ -418,7 +418,7 @@ class MessageController extends AbstractBaseController
         // Send via email
         if ($this->sendEmail($recipient)) {
             $success = $this->mail_service->send(
-                new TreeUser($tree),
+                new SiteUser(),
                 $recipient,
                 $sender,
                 I18N::translate('webtrees message') . ' - ' . $subject,

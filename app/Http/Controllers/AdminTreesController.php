@@ -1201,7 +1201,6 @@ class AdminTreesController extends AbstractBaseController
         $tree->setPreference('THEME_DIR', $request->getParsedBody()['THEME_DIR'] ?? '');
         $tree->setPreference('USE_SILHOUETTE', $request->getParsedBody()['USE_SILHOUETTE'] ?? '');
         $tree->setPreference('WEBMASTER_USER_ID', $request->getParsedBody()['WEBMASTER_USER_ID'] ?? '');
-        $tree->setPreference('WEBTREES_EMAIL', $request->getParsedBody()['WEBTREES_EMAIL'] ?? '');
         $tree->setPreference('title', $request->getParsedBody()['title'] ?? '');
 
         // Only accept valid folders for MEDIA_DIRECTORY

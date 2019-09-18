@@ -20,12 +20,9 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 
 /**
- * The site can act as a user, for example to send email.
- *
- * Some SMTP servers insist that this is a real/validated email address.
- * Others are happy to accept no-reply@localhost.
+ * A dummy user that cannot receive email.
  */
-class SiteUser implements UserInterface
+class NoReplyUser implements UserInterface
 {
     /**
      * The user‘s internal identifier.
@@ -44,7 +41,7 @@ class SiteUser implements UserInterface
      */
     public function email(): string
     {
-        return Site::getPreference('SMTP_FROM_NAME', 'no-reply@localhost');
+        return 'no-reply@localhost';
     }
 
     /**

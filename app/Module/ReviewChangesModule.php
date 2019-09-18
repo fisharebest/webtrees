@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -116,7 +117,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                                 I18N::init($user->getPreference('language'));
 
                                 $this->mail_service->send(
-                                    new TreeUser($tmp_tree),
+                                    new SiteUser(),
                                     $user,
                                     new TreeUser($tmp_tree),
                                     I18N::translate('Pending changes'),

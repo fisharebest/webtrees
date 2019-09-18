@@ -1,5 +1,16 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
+
+/**
+ * @var string $error
+ * @var string $warning
+ * @var string $welcome
+ * @var string $url
+ * @var string $username
+ * @var bool   $can_register
+ */
+?>
 
 <?php if ($error) : ?>
     <div class="alert alert-danger">
@@ -42,22 +53,18 @@
         </div>
         <div class="col-sm-9 wt-page-options-value">
             <button class="btn btn-primary" type="submit">
-                <?= /* I18N: A button label. */ I18N::translate('sign in') ?>
+                <?= /* I18N: A button label. */
+                I18N::translate('sign in') ?>
             </button>
-            <!--
-            Emails are sent from a TREE, not from a SITE. Therefore if there is no
-            tree available (initial setup or all trees private), then we can't send email.
-            -->
-            <?php if ($tree) : ?>
-                <a class="btn btn-link" href="<?= e(route('forgot-password')) ?>">
-                    <?= I18N::translate('Forgot password?') ?>
-                </a>
 
-                <?php if ($can_register) : ?>
-                    <a class="btn btn-link" href="<?= e(route('register')) ?>">
-                        <?= I18N::translate('Request a new user account') ?>
-                    </a>
-                <?php endif ?>
+            <a class="btn btn-link" href="<?= e(route('forgot-password')) ?>">
+                <?= I18N::translate('Forgot password?') ?>
+            </a>
+
+            <?php if ($can_register) : ?>
+                <a class="btn btn-link" href="<?= e(route('register')) ?>">
+                    <?= I18N::translate('Request a new user account') ?>
+                </a>
             <?php endif ?>
         </div>
     </div>
@@ -65,6 +72,6 @@
 
 <?php View::push('javascript') ?>
 <script>
-    $('#password').hideShowPassword('infer', true);
+    $("#password").hideShowPassword("infer", true);
 </script>
 <?php View::endpush() ?>

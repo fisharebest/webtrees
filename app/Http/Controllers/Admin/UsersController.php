@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -400,7 +401,7 @@ class UsersController extends AbstractAdminController
             $base_url = $request->getAttribute('base_url');
 
             $this->mail_service->send(
-                Auth::user(),
+                new SiteUser(),
                 $edit_user,
                 Auth::user(),
                 /* I18N: %s is a server name/URL */
