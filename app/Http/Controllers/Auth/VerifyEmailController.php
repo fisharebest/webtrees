@@ -76,7 +76,7 @@ class VerifyEmailController extends AbstractBaseController
                 $base_url = $request->getAttribute('base_url');
 
                 /* I18N: %s is a server name/URL */
-                $subject = I18N::translate('New user at %s', $base_url . ' ' . $tree->title());
+                $subject = I18N::translate('New user at %s', $base_url);
 
                 $this->mail_service->send(
                     new SiteUser(),
