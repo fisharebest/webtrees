@@ -132,7 +132,7 @@ class MessageController extends AbstractBaseController
         $errors = false;
 
         foreach ($to_users as $to_user) {
-            if ($this->deliverMessage($tree, $user, $to_user, $subject, $body, $url, $ip)) {
+            if ($this->deliverMessage($user, $to_user, $subject, $body, $url, $ip)) {
                 FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to_user->realName())), 'success');
             } else {
                 $errors = true;
@@ -244,7 +244,7 @@ class MessageController extends AbstractBaseController
 
         $sender = new GuestUser($from_email, $from_name);
 
-        if ($this->deliverMessage($tree, $sender, $to_user, $subject, $body, $url, $ip)) {
+        if ($this->deliverMessage($sender, $to_user, $subject, $body, $url, $ip)) {
             FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to_user->realName())), 'success');
 
             $url = $url ?: route('tree-page', ['ged' => $tree->name()]);
@@ -333,7 +333,7 @@ class MessageController extends AbstractBaseController
             ]));
         }
 
-        if ($this->deliverMessage($tree, $user, $to_user, $subject, $body, $url, $ip)) {
+        if ($this->deliverMessage($user, $to_user, $subject, $body, $url, $ip)) {
             FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to_user->realName())), 'success');
 
             $url = $url ?: route('tree-page', ['ged' => $tree->name()]);
@@ -373,7 +373,6 @@ class MessageController extends AbstractBaseController
     /**
      * Add a message to a user's inbox, send it to them via email, or both.
      *
-     * @param Tree          $tree
      * @param UserInterface $sender
      * @param UserInterface $recipient
      * @param string        $subject
@@ -383,7 +382,7 @@ class MessageController extends AbstractBaseController
      *
      * @return bool
      */
-    private function deliverMessage(Tree $tree, UserInterface $sender, UserInterface $recipient, string $subject, string $body, string $url, string $ip): bool
+    private function deliverMessage(UserInterface $sender, UserInterface $recipient, string $subject, string $body, string $url, string $ip): bool
     {
         $success = true;
 

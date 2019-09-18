@@ -153,35 +153,29 @@ class RegisterController extends AbstractBaseController
             view('emails/register-user-html', ['user' => $user, 'base_url' => $base_url])
         );
 
-        // Tell the genealogy contact about the registration.
-        if ($tree instanceof Tree) {
-            $webmaster = $this->user_service->find((int) $tree->getPreference('WEBMASTER_USER_ID'));
-        } else {
-            $webmaster = new SiteUser();
-        }
-
-        if ($webmaster !== null) {
-            I18N::init($webmaster->getPreference('language'));
+        // Tell the administrators about the registration.
+        foreach ($this->user_service->administrators() as $administrator) {
+            I18N::init($administrator->getPreference('language'));
 
             /* I18N: %s is a server name/URL */
-            $subject = I18N::translate('New registration at %s', $tree->title());
+            $subject = I18N::translate('New registration at %s', $base_url);
 
             /* I18N: %s is a server name/URL */
             $this->mail_service->send(
                 new SiteUser(),
-                $webmaster,
+                $administrator,
                 new NoReplyUser(),
                 $subject,
                 view('emails/register-notify-text', ['user' => $user, 'comments' => $comments, 'base_url' => $base_url]),
                 view('emails/register-notify-html', ['user' => $user, 'comments' => $comments, 'base_url' => $base_url])
             );
 
-            $mail1_method = $webmaster->getPreference('contact_method');
+            $mail1_method = $administrator->getPreference('contact_method');
             if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
                 DB::table('message')->insert([
                     'sender'     => $user->email(),
                     'ip_address' => $request->getAttribute('client_ip'),
-                    'user_id'    => $webmaster->id(),
+                    'user_id'    => $administrator->id(),
                     'subject'    => $subject,
                     'body'       => view('emails/register-notify-text', ['user' => $user, 'comments' => $comments, 'base_url' => $base_url]),
                 ]);

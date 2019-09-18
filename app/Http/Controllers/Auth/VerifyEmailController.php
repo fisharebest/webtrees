@@ -54,12 +54,12 @@ class VerifyEmailController extends AbstractBaseController
      * Respond to a verification link that was emailed to a user.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
+     * @param Tree|null              $tree
      * @param UserService            $user_service
      *
      * @return ResponseInterface
      */
-    public function verify(ServerRequestInterface $request, Tree $tree, UserService $user_service): ResponseInterface
+    public function verify(ServerRequestInterface $request, ?Tree $tree, UserService $user_service): ResponseInterface
     {
         $username = $request->getQueryParams()['username'] ?? '';
         $token    = $request->getQueryParams()['token'] ?? '';
@@ -69,11 +69,9 @@ class VerifyEmailController extends AbstractBaseController
         $user = $user_service->findByUserName($username);
 
         if ($user instanceof User && $user->getPreference('reg_hashcode') === $token) {
-            // switch language to webmaster settings
-            $webmaster = $user_service->find((int) $tree->getPreference('WEBMASTER_USER_ID'));
-
-            if ($webmaster instanceof User) {
-                I18N::init($webmaster->getPreference('language'));
+            foreach ($user_service->administrators() as $administrator) {
+                // switch language to administrator settings
+                I18N::init($administrator->getPreference('language'));
 
                 $base_url = $request->getAttribute('base_url');
 
@@ -82,20 +80,20 @@ class VerifyEmailController extends AbstractBaseController
 
                 $this->mail_service->send(
                     new SiteUser(),
-                    $webmaster,
+                    $administrator,
                     new NoReplyUser(),
                     $subject,
                     view('emails/verify-notify-text', ['user' => $user]),
                     view('emails/verify-notify-html', ['user' => $user])
                 );
 
-                $mail1_method = $webmaster->getPreference('CONTACT_METHOD');
+                $mail1_method = $administrator->getPreference('CONTACT_METHOD');
 
                 if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
                     DB::table('message')->insert([
                         'sender'     => $username,
                         'ip_address' => $request->getAttribute('client_ip'),
-                        'user_id'    => $webmaster->id(),
+                        'user_id'    => $administrator->id(),
                         'subject'    => $subject,
                         'body'       => view('emails/verify-notify-text', ['user' => $user]),
                     ]);
