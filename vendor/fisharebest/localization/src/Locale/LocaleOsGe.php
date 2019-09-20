@@ -17,5 +17,4 @@ class LocaleOsGe extends LocaleOs
     {
         return new TerritoryGe();
     }
-
 }
