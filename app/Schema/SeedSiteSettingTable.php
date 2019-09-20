@@ -33,8 +33,6 @@ class SeedSiteSettingTable implements SeedInterface
         'SMTP_PORT'               => '25',
         'SMTP_AUTH'               => '1',
         'SMTP_SSL'                => 'none',
-        'SMTP_HELO'               => 'localhost',
-        'SMTP_FROM_NAME'          => 'no-reply@localhost',
     ];
 
     /**
