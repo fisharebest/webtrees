@@ -149,7 +149,8 @@ class MailService
      *
      * @return string
      */
-    public function localDomain(): string {
+    public function localDomain(): string
+    {
         $local_domain = Site::getPreference('SMTP_HELO');
 
         try {
@@ -167,7 +168,8 @@ class MailService
      *
      * @return string
      */
-    public function senderEmail(): string {
+    public function senderEmail(): string
+    {
         $sender  = Site::getPreference('SMTP_FROM_NAME');
         $default = 'no-reply@' . $this->localDomain();
 
