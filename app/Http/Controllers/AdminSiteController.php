@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
@@ -37,6 +38,8 @@ use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
+use function filter_var;
+use const FILTER_VALIDATE_DOMAIN;
 
 /**
  * Controller for site administration.
@@ -321,62 +324,56 @@ class AdminSiteController extends AbstractBaseController
             ->implode('');
 
         return response($content, StatusCodeInterface::STATUS_OK, [
-            'Content-Type' => 'text/csv; charset=utf-8',
+            'Content-Type'        => 'text/csv; charset=utf-8',
             'Content-Disposition' => 'attachment; filename="webtrees-logs.csv"',
         ]);
     }
 
     /**
+     * @param MailService $mail_service
+     *
      * @return ResponseInterface
      */
-    public function mailForm(): ResponseInterface
+    public function mailForm(MailService $mail_service): ResponseInterface
     {
-        $mail_ssl_options       = $this->mailSslOptions();
-        $mail_transport_options = $this->mailTransportOptions();
+        $mail_ssl_options       = $mail_service->mailSslOptions();
+        $mail_transport_options = $mail_service->mailTransportOptions();
 
         $title = I18N::translate('Sending email');
+
+        $SMTP_ACTIVE    = Site::getPreference('SMTP_ACTIVE');
+        $SMTP_AUTH      = Site::getPreference('SMTP_AUTH');
+        $SMTP_AUTH_USER = Site::getPreference('SMTP_AUTH_USER');
+        $SMTP_FROM_NAME = $mail_service->senderEmail();
+        $SMTP_HELO      = $mail_service->localDomain();
+        $SMTP_HOST      = Site::getPreference('SMTP_HOST');
+        $SMTP_PORT      = Site::getPreference('SMTP_PORT');
+        $SMTP_SSL       = Site::getPreference('SMTP_SSL');
+        $DKIM_DOMAIN    = Site::getPreference('DKIM_DOMAIN');
+        $DKIM_SELECTOR  = Site::getPreference('DKIM_SELECTOR');
+        $DKIM_KEY       = Site::getPreference('DKIM_KEY');
+
+        $smtp_from_name_valid = $mail_service->isValidEmail($SMTP_FROM_NAME);
+        $smtp_helo_valid      = filter_var($SMTP_HELO, FILTER_VALIDATE_DOMAIN);
 
         return $this->viewResponse('admin/site-mail', [
             'mail_ssl_options'       => $mail_ssl_options,
             'mail_transport_options' => $mail_transport_options,
             'title'                  => $title,
+            'smtp_helo_valid'        => $smtp_helo_valid,
+            'smtp_from_name_valid'   => $smtp_from_name_valid,
+            'SMTP_ACTIVE'            => $SMTP_ACTIVE,
+            'SMTP_AUTH'              => $SMTP_AUTH,
+            'SMTP_AUTH_USER'         => $SMTP_AUTH_USER,
+            'SMTP_FROM_NAME'         => $SMTP_FROM_NAME,
+            'SMTP_HELO'              => $SMTP_HELO,
+            'SMTP_HOST'              => $SMTP_HOST,
+            'SMTP_PORT'              => $SMTP_PORT,
+            'SMTP_SSL'               => $SMTP_SSL,
+            'DKIM_DOMAIN'            => $DKIM_DOMAIN,
+            'DKIM_SELECTOR'          => $DKIM_SELECTOR,
+            'DKIM_KEY'               => $DKIM_KEY,
         ]);
-    }
-
-    /**
-     * A list SSL modes (e.g. for an edit control).
-     *
-     * @return string[]
-     */
-    private function mailSslOptions(): array
-    {
-        return [
-            'none' => I18N::translate('none'),
-            /* I18N: Secure Sockets Layer - a secure communications protocol*/
-            'ssl'  => I18N::translate('ssl'),
-            /* I18N: Transport Layer Security - a secure communications protocol */
-            'tls'  => I18N::translate('tls'),
-        ];
-    }
-
-    /**
-     * A list SSL modes (e.g. for an edit control).
-     *
-     * @return string[]
-     */
-    private function mailTransportOptions(): array
-    {
-        $options = [
-            /* I18N: "sendmail" is the name of some mail software */
-            'sendmail' => I18N::translate('Use sendmail to send messages'),
-            'external' => I18N::translate('Use SMTP to send messages'),
-        ];
-
-        if (!function_exists('proc_open')) {
-            unset($options['sendmail']);
-        }
-
-        return $options;
     }
 
     /**

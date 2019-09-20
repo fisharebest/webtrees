@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Services;
 
 use Exception;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Site;
 use Swift_Mailer;
@@ -28,7 +29,18 @@ use Swift_SendmailTransport;
 use Swift_Signers_DKIMSigner;
 use Swift_SmtpTransport;
 use Swift_Transport;
+use Throwable;
+use function filter_var;
+use function function_exists;
+use function gethostbyaddr;
+use function gethostbyname;
+use function gethostname;
+use function getmxrr;
 use function str_replace;
+use function strrchr;
+use function substr;
+use const FILTER_VALIDATE_DOMAIN;
+use const FILTER_VALIDATE_EMAIL;
 
 /**
  * Send mail messages.
@@ -109,14 +121,14 @@ class MailService
                 // SMTP
                 $smtp_host = Site::getPreference('SMTP_HOST');
                 $smtp_port = (int) Site::getPreference('SMTP_PORT', '25');
-                $smtp_auth = Site::getPreference('SMTP_AUTH');
+                $smtp_auth = (bool) Site::getPreference('SMTP_AUTH');
                 $smtp_user = Site::getPreference('SMTP_AUTH_USER');
                 $smtp_pass = Site::getPreference('SMTP_AUTH_PASS');
                 $smtp_encr = Site::getPreference('SMTP_SSL');
 
                 $transport = new Swift_SmtpTransport($smtp_host, $smtp_port, $smtp_encr);
 
-                $transport->setLocalDomain(Site::getPreference('SMTP_HELO'));
+                $transport->setLocalDomain($this->localDomain());
 
                 if ($smtp_auth) {
                     $transport
@@ -130,5 +142,93 @@ class MailService
                 // For testing
                 return new Swift_NullTransport();
         }
+    }
+
+    /**
+     * Where are we sending mail from?
+     *
+     * @return string
+     */
+    public function localDomain(): string {
+        $local_domain = Site::getPreference('SMTP_HELO');
+
+        try {
+            // Look ourself up using DNS.
+            $default = gethostbyaddr(gethostbyname(gethostname()));
+        } catch (Throwable $ex) {
+            $default = 'localhost';
+        }
+
+        return $local_domain ?: $default;
+    }
+
+    /**
+     * Where are we sending mail from?
+     *
+     * @return string
+     */
+    public function senderEmail(): string {
+        $sender  = Site::getPreference('SMTP_FROM_NAME');
+        $default = 'no-reply@' . $this->localDomain();
+
+        return $sender ?: $default;
+    }
+
+    /**
+     * Many mail relays require a valid sender email.
+     *
+     * @param string $email
+     *
+     * @return bool
+     */
+    public function isValidEmail(string $email): bool
+    {
+        if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+            return false;
+        }
+
+        $domain = substr(strrchr($email, '@'), 1);
+
+        if (filter_var($domain, FILTER_VALIDATE_DOMAIN) === false) {
+            return false;
+        }
+
+        return getmxrr($domain, $mxhosts);
+    }
+
+    /**
+     * A list SSL modes (e.g. for an edit control).
+     *
+     * @return string[]
+     */
+    public function mailSslOptions(): array
+    {
+        return [
+            'none' => I18N::translate('none'),
+            /* I18N: Secure Sockets Layer - a secure communications protocol*/
+            'ssl'  => I18N::translate('ssl'),
+            /* I18N: Transport Layer Security - a secure communications protocol */
+            'tls'  => I18N::translate('tls'),
+        ];
+    }
+
+    /**
+     * A list SSL modes (e.g. for an edit control).
+     *
+     * @return string[]
+     */
+    public function mailTransportOptions(): array
+    {
+        $options = [
+            /* I18N: "sendmail" is the name of some mail software */
+            'sendmail' => I18N::translate('Use sendmail to send messages'),
+            'external' => I18N::translate('Use SMTP to send messages'),
+        ];
+
+        if (!function_exists('proc_open')) {
+            unset($options['sendmail']);
+        }
+
+        return $options;
     }
 }
