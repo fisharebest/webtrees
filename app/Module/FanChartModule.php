@@ -441,7 +441,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
         // last line
         if (!empty($line)) {
             $len = strlen($line);
-            if (in_array(ord($line{0}), $RTLOrd, true)) {
+            if (in_array(ord($line[0]), $RTLOrd, true)) {
                 $len /= 2;
             }
             $p    = max(0, (int) (($maxlen - $len) / 2));
