@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\NoReplyUser;
 use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\SiteUser;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
@@ -54,12 +53,11 @@ class VerifyEmailController extends AbstractBaseController
      * Respond to a verification link that was emailed to a user.
      *
      * @param ServerRequestInterface $request
-     * @param Tree|null              $tree
      * @param UserService            $user_service
      *
      * @return ResponseInterface
      */
-    public function verify(ServerRequestInterface $request, ?Tree $tree, UserService $user_service): ResponseInterface
+    public function verify(ServerRequestInterface $request, UserService $user_service): ResponseInterface
     {
         $username = $request->getQueryParams()['username'] ?? '';
         $token    = $request->getQueryParams()['token'] ?? '';
