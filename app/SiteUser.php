@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Services\MailService;
 
 /**
  * The site can act as a user, for example to send email.
@@ -44,7 +45,7 @@ class SiteUser implements UserInterface
      */
     public function email(): string
     {
-        return Site::getPreference('SMTP_FROM_NAME', 'no-reply@localhost');
+        return '';
     }
 
     /**

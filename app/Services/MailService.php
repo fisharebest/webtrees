@@ -30,6 +30,7 @@ use Swift_Signers_DKIMSigner;
 use Swift_SmtpTransport;
 use Swift_Transport;
 use Throwable;
+use function app;
 use function filter_var;
 use function function_exists;
 use function gethostbyaddr;
@@ -66,14 +67,18 @@ class MailService
         $message_text = str_replace("\n", "\r\n", $message_text);
         $message_html = str_replace("\n", "\r\n", $message_html);
 
+        // Special accounts do not have an email address.  Use the system one.
+        $from_email     = $from->email() ?: $this->senderEmail();
+        $reply_to_email = $reply_to->email() ?: $this->senderEmail();
+
         $message = (new Swift_Message())
             ->setSubject($subject)
-            ->setFrom($from->email(), $from->realName())
+            ->setFrom($from_email, $from->realName())
             ->setTo($to->email(), $to->realName())
             ->setBody($message_html, 'text/html');
 
-        if ($from->email() !== $reply_to->email()) {
-            $message->setReplyTo($reply_to->email(), $reply_to->realName());
+        if ($from_email !== $reply_to_email) {
+            $message->setReplyTo($reply_to_email, $reply_to->realName());
         }
 
         $dkim_domain   = Site::getPreference('DKIM_DOMAIN');

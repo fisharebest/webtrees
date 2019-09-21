@@ -39,12 +39,9 @@ class SiteUserTest extends TestCase
 
         $this->assertInstanceOf(UserInterface::class, $user);
         $this->assertSame(0, $user->id());
-        $this->assertSame('no-reply@localhost', $user->email());
+        $this->assertSame('', $user->email());
         $this->assertSame('webtrees', $user->realName());
         $this->assertSame('', $user->userName());
-
-        Site::setPreference('SMTP_FROM_NAME', 'foo@example.com');
-        $this->assertSame('foo@example.com', $user->email());
     }
 
     /**

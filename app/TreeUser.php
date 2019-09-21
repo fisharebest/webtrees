@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Services\UserService;
 
 /**
  * A tree can act as a user, for example to send email.
@@ -56,7 +57,31 @@ class TreeUser implements UserInterface
      */
     public function email(): string
     {
-        return Site::getPreference('SMTP_FROM_NAME', 'no-reply@localhost');
+        $user_service = app(UserService::class);
+        $contact_id   = (int) $this->getPreference('CONTACT_USER_ID');
+
+        if ($contact_id === 0) {
+            return '';
+        }
+
+        $contact = $user_service->find($contact_id);
+
+        if ($contact instanceof User) {
+            return $contact->email();
+        }
+
+        return '';
+    }
+
+    /**
+     * @param string $setting_name
+     * @param string $default
+     *
+     * @return string
+     */
+    public function getPreference(string $setting_name, string $default = ''): string
+    {
+        return $default;
     }
 
     /**
@@ -77,17 +102,6 @@ class TreeUser implements UserInterface
     public function userName(): string
     {
         return '';
-    }
-
-    /**
-     * @param string $setting_name
-     * @param string $default
-     *
-     * @return string
-     */
-    public function getPreference(string $setting_name, string $default = ''): string
-    {
-        return $default;
     }
 
     /**

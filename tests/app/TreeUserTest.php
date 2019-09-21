@@ -41,7 +41,7 @@ class TreeUserTest extends TestCase
 
         $this->assertInstanceOf(UserInterface::class, $user);
         $this->assertSame(0, $user->id());
-        $this->assertSame('no-reply@localhost', $user->email());
+        $this->assertSame('', $user->email());
         $this->assertSame('title', $user->realName());
         $this->assertSame('', $user->userName());
     }
