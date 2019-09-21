@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-09-22 16:28+0100\n"
-"PO-Revision-Date: 2019-06-09 16:45+0000\n"
+"POT-Creation-Date: 2019-08-26 09:28+0100\n"
+"PO-Revision-Date: 2019-09-21 13:50+0000\n"
 "Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -1393,7 +1393,7 @@ msgstr "Hiányzó házassági nevek felvétele"
 
 #: resources/views/edit-blocks-page.phtml:30
 msgid "Add more blocks from the following list."
-msgstr ""
+msgstr "További blokk hozzáadása az alábbi listából."
 
 #: resources/views/search-advanced-page.phtml:26
 msgid "Add more fields"
@@ -5304,7 +5304,7 @@ msgstr "Fájl letöltése"
 
 #: resources/views/edit-blocks-page.phtml:11
 msgid "Drag the blocks to change their position."
-msgstr ""
+msgstr "Húzza a blokkokat helyzetük megváltoztatásához."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:337
@@ -10756,11 +10756,11 @@ msgstr "A helynevek gyakran túl hosszúak, és nem férnek el az ábrákon, lis
 
 #: resources/views/help/place.phtml:8
 msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr ""
+msgstr "A helynevek idővel változhatnak. A genealógiában a város vagy ország jelenlegi nevét szokás használni. A történelmi név forrásokban, jegyzetekben, stb.  jeleníthető meg."
 
 #: resources/views/help/place.phtml:4
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr ""
+msgstr "A helyneveket vesszővel elválasztott listaként kell beírni, kezdve a legkisebb helytől és az országgal befejezve. Például “Westminster, London, Anglia”."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:505
