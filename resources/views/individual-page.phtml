@@ -1,7 +1,22 @@
-<?php use Fisharebest\Webtrees\Auth; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\View;
+use Illuminate\Support\Collection;
+
+/**
+ * @var Individual $individual
+ * @var string     $user_link
+ * @var int        $count_names
+ * @var int        $count_sex
+ * @var Collection $sidebars
+ * @var Collection $name_records
+ * @var Collection $sex_records
+ * @var Collection $tabs
+ */
+?>
 
 <?php if ($individual->isPendingDeletion()) : ?>
     <?php if (Auth::isModerator($individual->tree())) : ?>

@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Services\ClipboardService;
@@ -105,10 +106,12 @@ class IndividualController extends AbstractBaseController
         foreach ($individual->facts(['OBJE']) as $fact) {
             $media_object = $fact->target();
             if ($media_object instanceof Media) {
-                $individual_media[] = $media_object->firstImageFile();
+                $media_file = $media_object->firstImageFile();
+                if ($media_file instanceof MediaFile) {
+                    $individual_media[] = $media_file;
+                }
             }
         }
-        $individual_media = array_filter($individual_media);
 
         $name_records = [];
         foreach ($individual->facts(['NAME']) as $n => $name_fact) {
