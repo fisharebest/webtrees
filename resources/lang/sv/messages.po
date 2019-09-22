@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-08-26 09:28+0100\n"
+"POT-Creation-Date: 2019-09-22 16:28+0100\n"
 "PO-Revision-Date: 2019-08-27 10:21+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/sv/>\n"
@@ -44,8 +44,8 @@ msgid " in "
 msgstr " i "
 
 #. I18N: Abbreviation for "number %s"
-#: app/Functions/FunctionsPrintFacts.php:188
-#: app/Functions/FunctionsPrintFacts.php:195
+#: app/Functions/FunctionsPrintFacts.php:189
+#: app/Functions/FunctionsPrintFacts.php:196
 #, php-format
 msgid "#%s"
 msgstr "nr %s"
@@ -68,7 +68,7 @@ msgid "%1$s %2$s times removed descending"
 msgstr "%1$s är %2$s generationer mindre"
 
 #: app/Functions/FunctionsPrintLists.php:68
-#: app/Http/Controllers/IndividualController.php:261
+#: app/Http/Controllers/IndividualController.php:264
 #, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
@@ -78,14 +78,14 @@ msgstr "%1$s (%2$s)"
 msgid "%1$s KB were downloaded in %2$s seconds."
 msgstr "%1$s KB laddades ner på %2$s sekunder."
 
-#: app/Http/Controllers/Admin/UsersController.php:386
+#: app/Http/Controllers/Admin/UsersController.php:394
 #: app/Http/Controllers/HomePageController.php:621
 #, php-format
 msgid "%1$s does not exist"
 msgstr "%1$s finns inte"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
-#: app/Http/Controllers/Admin/UsersController.php:295
+#: app/Http/Controllers/Admin/UsersController.php:303
 #: app/Http/Controllers/AdminTreesController.php:261
 #, php-format
 msgid "%1$s does not exist."
@@ -632,18 +632,17 @@ msgctxt "CENTURY"
 msgid "9th"
 msgstr "9:e"
 
-#: app/Http/Controllers/AccountController.php:182
-#: app/Http/Controllers/Admin/UsersController.php:505
-#: app/Http/Controllers/AdminTreesController.php:2181
+#: app/Http/Controllers/Admin/UsersController.php:513
+#: app/Http/Controllers/AdminTreesController.php:2174
 msgid "<default theme>"
 msgstr "<standardtema>"
 
-#: resources/views/register-page.phtml:10
+#: resources/views/register-page.phtml:22
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
 msgstr "<div class=\"largeError\">Observera:</div><div class=\"error\">Genom att komplettera och sända in detta formulär, accepterar du:<ul><li>att skydda integriteten av levande personer som finns på denna plats</li><li>och i textrutan nedanför, förklara till vem du är besläktad eller ge oss information om någon som borde finnas på vår webbplats.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
-#: app/Fact.php:583 app/Functions/FunctionsPrintFacts.php:541
+#: app/Fact.php:583 app/Functions/FunctionsPrintFacts.php:542
 #: app/GedcomTag.php:2130
 #, php-format
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
@@ -744,7 +743,7 @@ msgid "A list of branches of a family."
 msgstr "En lista över grenar av en familj."
 
 #. I18N: Description of the “Pending changes” module
-#: app/Module/ReviewChangesModule.php:74
+#: app/Module/ReviewChangesModule.php:82
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
 msgstr "En lista med ändringar som behöver godkännas av moderator, samt e-postmeddelanden."
 
@@ -832,16 +831,6 @@ msgstr "Lista över användare och gäster som är nu on-line."
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
 msgstr "Ett media objekt är en post i släktträdet som innehåller information om en media fil. Denna information kan inkludera en titel, ett meddelande om upphovsrätt, en avskrift, privata begränsningar, etc. Media filen, som foto eller video, kan lagras lokalt (på denna webbserver) eller på distans (på en annan webbserver)."
 
-#: app/Http/Controllers/Auth/ForgotPasswordController.php:88
-#, php-format
-msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
-msgstr "Ett nytt lösenord har skapats och mailats till %s. Du kan ändra lösenordet efter du loggat in."
-
-#: resources/views/emails/password-reset-html.phtml:8
-#: resources/views/emails/password-reset-text.phtml:4
-msgid "A new password has been requested for your username."
-msgstr "Ett nytt lösenord efterfrågas för ditt användarnamn."
-
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: resources/views/emails/verify-notify-html.phtml:10
 #: resources/views/emails/verify-notify-text.phtml:5
@@ -854,6 +843,11 @@ msgstr "En ny användare (%1$s) har begärt ett konto (%2$s) och verifierat en e
 #: resources/views/admin/upgrade/wizard.phtml:17
 msgid "A new version of webtrees is available."
 msgstr "En ny version av webtrees finns tillgänglig."
+
+#: app/Http/RequestHandlers/PasswordRequestAction.php:93
+#, php-format
+msgid "A password reset link has been sent to “%s”."
+msgstr ""
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:60
@@ -1092,9 +1086,9 @@ msgid "Aban"
 msgstr "Aban"
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:604
-#: resources/views/admin/trees-preferences.phtml:606
-#: resources/views/admin/trees-preferences.phtml:610
+#: resources/views/admin/trees-preferences.phtml:584
+#: resources/views/admin/trees-preferences.phtml:586
+#: resources/views/admin/trees-preferences.phtml:590
 msgid "Abbreviate place names"
 msgstr "Förkorta platsnamn"
 
@@ -1271,14 +1265,14 @@ msgid "Add a journal entry"
 msgstr "Lägg till en dagboksnotering"
 
 #: app/Http/Controllers/EditMediaController.php:79
-#: resources/views/media-page.phtml:166
+#: resources/views/media-page.phtml:183
 #: resources/views/modals/add-media-file.phtml:6
 msgid "Add a media file"
 msgstr "Lägg till en mediefil"
 
 #: resources/views/cards/add-media-object.phtml:7
 #: resources/views/family-page.phtml:95
-#: resources/views/individual-page.phtml:78
+#: resources/views/individual-page.phtml:93
 #: resources/views/source-page.phtml:81
 msgid "Add a media object"
 msgstr "Lägg till ett mediaobjekt"
@@ -1305,12 +1299,12 @@ msgid "Add a note"
 msgstr "Lägg till en anteckning"
 
 #: resources/views/cards/add-restriction.phtml:7
-#: resources/views/media-page.phtml:156
+#: resources/views/media-page.phtml:173
 msgid "Add a restriction"
 msgstr "Lägg till en begränsning"
 
 #: resources/views/cards/add-shared-note.phtml:7
-#: resources/views/family-page.phtml:83 resources/views/media-page.phtml:146
+#: resources/views/family-page.phtml:83 resources/views/media-page.phtml:163
 #: resources/views/modules/notes/tab.phtml:50
 msgid "Add a shared note"
 msgstr "Lägg till en delad anteckning"
@@ -1320,7 +1314,7 @@ msgid "Add a son or daughter"
 msgstr "Lägg till en son eller dotter"
 
 #: resources/views/cards/add-source-citation.phtml:9
-#: resources/views/family-page.phtml:107 resources/views/media-page.phtml:136
+#: resources/views/family-page.phtml:107 resources/views/media-page.phtml:153
 #: resources/views/modules/sources_tab/tab.phtml:38
 msgid "Add a source citation"
 msgstr "Lägg till ett källcitat"
@@ -1331,7 +1325,7 @@ msgstr "Lägg till ett källcitat"
 msgid "Add a story"
 msgstr "Lägg till en berättelse"
 
-#: app/Http/Controllers/Admin/UsersController.php:274
+#: app/Http/Controllers/Admin/UsersController.php:282
 #: resources/views/admin/control-panel.phtml:251
 msgid "Add a user"
 msgstr "Lägg till en användare"
@@ -1428,7 +1422,7 @@ msgid "Add the GEDCOM media path to filenames"
 msgstr "Lägg till GEDCOM media sökvägen till filnamn"
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:208
+#: resources/views/admin/trees-preferences.phtml:188
 msgid "Add to TITLE header tag"
 msgstr "Lägg till TITLE-rubriktagg"
 
@@ -1438,11 +1432,11 @@ msgid "Add to the clippings cart"
 msgstr "Lägg till i urklippskorgen"
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:129
+#: resources/views/admin/trees-preferences.phtml:130
 msgid "Add unique identifiers"
 msgstr "Lägg till en unik identifierare"
 
-#: resources/views/admin/trees.phtml:204
+#: resources/views/admin/trees.phtml:212
 msgid "Add unlinked records"
 msgstr "Lägg till olänkade dataposter"
 
@@ -1633,15 +1627,15 @@ msgstr "Sons adoption"
 msgid "Adult christening"
 msgstr "Vuxendop"
 
-#: resources/views/admin/trees-preferences.phtml:884
+#: resources/views/admin/trees-preferences.phtml:864
 msgid "Advanced fact preferences"
 msgstr "Avancerade fakta-inställningar"
 
-#: resources/views/admin/trees-preferences.phtml:889
+#: resources/views/admin/trees-preferences.phtml:869
 msgid "Advanced name facts"
 msgstr "Avancerade namnfakta"
 
-#: resources/views/admin/trees-preferences.phtml:902
+#: resources/views/admin/trees-preferences.phtml:882
 msgid "Advanced place name facts"
 msgstr "Avancerade ortnamns fakta"
 
@@ -1659,14 +1653,9 @@ msgstr "Afghanistan"
 msgid "Africa"
 msgstr "Afrika"
 
-#: resources/views/admin/trees.phtml:351
+#: resources/views/admin/trees.phtml:360
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
 msgstr "När du har skapat släktträdet, kommer du att kunna importera data från en GEDCOM-fil."
-
-#: resources/views/emails/password-reset-html.phtml:25
-#: resources/views/emails/password-reset-text.phtml:11
-msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-msgstr "Efter att du loggat in, välj länken ”Mitt konto” under menyn ”Min sida”, fyll i lösenordsfälten för att ändra ditt lösenord."
 
 #. I18N: gedcom tag AGE
 #: app/Functions/FunctionsPrint.php:276 app/Functions/FunctionsPrint.php:303
@@ -1728,12 +1717,12 @@ msgid "Age interval"
 msgstr "Åldersintervall"
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:430
+#: resources/views/admin/trees-preferences.phtml:410
 msgid "Age of parents next to child’s birthdate"
 msgstr "Föräldrarnas ålder invid barnets födelsedatum"
 
-#: resources/views/lists/individuals-table.phtml:532
-#: resources/views/lists/individuals-table.phtml:574
+#: resources/views/lists/individuals-table.phtml:533
+#: resources/views/lists/individuals-table.phtml:575
 msgid "Age related to death year"
 msgstr "Ålder i förhållande till dödsår"
 
@@ -1777,7 +1766,7 @@ msgstr "Aliasnamn"
 msgid "Alive"
 msgstr "Levande"
 
-#: app/Functions/FunctionsEdit.php:178
+#: app/Functions/FunctionsEdit.php:163
 #: app/Http/Controllers/ListController.php:149
 #: app/Http/Controllers/ListController.php:158
 #: app/Http/Controllers/ListController.php:167
@@ -1807,15 +1796,15 @@ msgstr "Samtliga"
 msgid "All facts and events"
 msgstr "Alla fakta och händelser"
 
-#: resources/views/admin/trees-preferences.phtml:753
+#: resources/views/admin/trees-preferences.phtml:733
 msgid "All family facts"
 msgstr "Alla familjefakta"
 
-#: app/Http/Controllers/Auth/RegisterController.php:202
+#: app/Http/Controllers/Auth/RegisterController.php:210
 msgid "All fields must be completed."
 msgstr "Alla fält måste fyllas i."
 
-#: resources/views/admin/trees-preferences.phtml:699
+#: resources/views/admin/trees-preferences.phtml:679
 msgid "All individual facts"
 msgstr "Alla personfakta"
 
@@ -1834,11 +1823,11 @@ msgstr "Alla moduler"
 msgid "All records"
 msgstr "Alla poster"
 
-#: resources/views/admin/trees-preferences.phtml:848
+#: resources/views/admin/trees-preferences.phtml:828
 msgid "All repository facts"
 msgstr "Alla arkivfakta"
 
-#: resources/views/admin/trees-preferences.phtml:807
+#: resources/views/admin/trees-preferences.phtml:787
 msgid "All source facts"
 msgstr "Alla källfakta"
 
@@ -1848,7 +1837,7 @@ msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of
 msgstr "Tillåt andra moduler att redigera text med en ”WYSIWYG”-editor, istället för att använda HTML-koder."
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:651
+#: resources/views/admin/trees-preferences.phtml:631
 msgid "Allow users to see raw GEDCOM records"
 msgstr "Tillåt användare att se rådata i GEDCOM-poster"
 
@@ -1913,11 +1902,11 @@ msgstr "Ett alternativt sätt att välja nytt tema."
 msgid "An alternative way to sign in and sign out."
 msgstr "Ett alternativt sätt att logga in och ut."
 
-#: app/Functions/FunctionsEdit.php:446
+#: app/Functions/FunctionsEdit.php:431
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
 msgstr "En kompanjon är en annan person som var involverad med detta faktum eller denna händelse, till exempel ett vittne eller en präst."
 
-#: app/Functions/FunctionsEdit.php:444
+#: app/Functions/FunctionsEdit.php:429
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
 msgstr "En kompanjon är en annan person som var involverad med denna person, till exempel en vän eller en arbetsgivare."
 
@@ -1936,7 +1925,7 @@ msgstr "Ett interaktivt träd, visande en persons alla förfäder och efterkomma
 msgid "An unexpected database error occurred."
 msgstr "Fel i databasen."
 
-#: resources/views/admin/location-edit.phtml:135
+#: resources/views/admin/location-edit.phtml:136
 #: resources/views/modules/pedigree-map/chart.phtml:57
 #: resources/views/place-map.phtml:60
 msgid "An unknown error occurred"
@@ -2042,13 +2031,13 @@ msgid "Apply privacy settings"
 msgstr "Tillämpa integritetsinställningar"
 
 #. I18N: Label for checkbox
-#: resources/views/admin/trees-preferences.phtml:989
+#: resources/views/admin/trees-preferences.phtml:969
 #: resources/views/admin/trees-privacy.phtml:287
 msgid "Apply these preferences to all family trees"
 msgstr "Använd dessa inställningar för alla släktträd"
 
 #. I18N: Label for checkbox
-#: resources/views/admin/trees-preferences.phtml:996
+#: resources/views/admin/trees-preferences.phtml:976
 #: resources/views/admin/trees-privacy.phtml:294
 msgid "Apply these preferences to new family trees"
 msgstr "Använd dessa inställningar för nya släktträd"
@@ -2093,9 +2082,9 @@ msgstr "april"
 msgid "Aqua Marine"
 msgstr "Akvamarin"
 
-#: app/Http/Controllers/IndividualController.php:283
+#: app/Http/Controllers/IndividualController.php:286
 #: resources/views/edit/icon-fact-delete.phtml:3
-#: resources/views/media-page.phtml:80
+#: resources/views/media-page.phtml:95
 msgid "Are you sure you want to delete this fact?"
 msgstr "Är du säker på att du vill ta bort detta faktum?"
 
@@ -2104,9 +2093,9 @@ msgid "Are you sure you want to delete this message? It cannot be retrieved late
 msgstr "Är du säker på att du vill radera detta meddelande? Det kan inte återfås senare."
 
 #: app/Http/Controllers/Admin/MediaController.php:349
-#: app/Http/Controllers/Admin/UsersController.php:225
-#: resources/views/admin/trees.phtml:87 resources/views/admin/trees.phtml:96
-#: resources/views/edit-account-page.phtml:168
+#: app/Http/Controllers/Admin/UsersController.php:233
+#: resources/views/admin/trees.phtml:92 resources/views/admin/trees.phtml:101
+#: resources/views/edit-account-page.phtml:153
 #: resources/views/gedcom-record-page-menu.phtml:10
 #: resources/views/individual-page-menu.phtml:34
 #: resources/views/media-page-menu.phtml:31
@@ -2288,12 +2277,12 @@ msgid "Automatically accept changes made by this user"
 msgstr "Godkänn automatiskt ändringar gjorda av denna användare"
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:570
+#: resources/views/admin/trees-preferences.phtml:550
 msgid "Automatically expand notes"
 msgstr "Expandera anteckningar automatiskt"
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:586
+#: resources/views/admin/trees-preferences.phtml:566
 msgid "Automatically expand sources"
 msgstr "Expandera källor automatiskt"
 
@@ -2363,8 +2352,8 @@ msgid "Average number of children per family"
 msgstr "Genomsnittligt antal barn per familj"
 
 #. I18N: help text for family tree / GEDCOM file names
-#: resources/views/admin/trees-preferences.phtml:54
-#: resources/views/admin/trees.phtml:340
+#: resources/views/admin/trees-preferences.phtml:55
+#: resources/views/admin/trees.phtml:348
 msgid "Avoid spaces and punctuation. A family name might be a good choice."
 msgstr "Undvik mellanslag och skiljetecken. Ett släktnamn kan vara ett bra val."
 
@@ -2784,7 +2773,7 @@ msgstr "Födelsedatums intervallstart"
 msgid "Birth of a brother"
 msgstr "Brors födelse"
 
-#: app/GedcomTag.php:1276 resources/views/admin/trees-preferences.phtml:474
+#: app/GedcomTag.php:1276 resources/views/admin/trees-preferences.phtml:454
 msgid "Birth of a child"
 msgstr "Barnafödelse"
 
@@ -2793,7 +2782,7 @@ msgid "Birth of a daughter"
 msgstr "Dotters födelse"
 
 #: app/GedcomTag.php:1287 app/GedcomTag.php:1298 app/GedcomTag.php:1309
-#: resources/views/admin/trees-preferences.phtml:468
+#: resources/views/admin/trees-preferences.phtml:448
 msgid "Birth of a grandchild"
 msgstr "Barnbarnets födelse"
 
@@ -2837,7 +2826,7 @@ msgstr "Halv-syskons födelse"
 msgid "Birth of a half-sister"
 msgstr "Halvsysters födelse"
 
-#: app/GedcomTag.php:1331 resources/views/admin/trees-preferences.phtml:480
+#: app/GedcomTag.php:1331 resources/views/admin/trees-preferences.phtml:460
 msgid "Birth of a sibling"
 msgstr "Syskons födelse"
 
@@ -3249,7 +3238,7 @@ msgid "Buyer"
 msgstr "Köpare"
 
 #. I18N: Help text for the "Port number" site configuration setting
-#: resources/views/admin/site-mail.phtml:65
+#: resources/views/admin/site-mail.phtml:96
 msgid "By default, SMTP works on port 25."
 msgstr "Som standard använder SMTP port 25."
 
@@ -3263,7 +3252,7 @@ msgstr "CKEditor™"
 msgid "CSS and JS"
 msgstr "CSS och JS"
 
-#: resources/views/admin/trees.phtml:37
+#: resources/views/admin/trees.phtml:41
 #: resources/views/lists/datatables-attributes.phtml:27
 msgid "Calculating…"
 msgstr "Beräknar…"
@@ -3275,9 +3264,9 @@ msgid "Calendar"
 msgstr "Kalender"
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:95
-#: resources/views/admin/trees-preferences.phtml:97
-#: resources/views/admin/trees-preferences.phtml:100
+#: resources/views/admin/trees-preferences.phtml:96
+#: resources/views/admin/trees-preferences.phtml:98
+#: resources/views/admin/trees-preferences.phtml:101
 msgid "Calendar conversion"
 msgstr "Kalenderkonvertering"
 
@@ -3358,7 +3347,7 @@ msgid "Caution!"
 msgstr "Varning!"
 
 #: resources/views/admin/trees-renumber.phtml:32
-#: resources/views/admin/trees.phtml:385
+#: resources/views/admin/trees.phtml:395
 msgid "Caution! This may take a long time. Be patient."
 msgstr "Varning! Detta kan ta lång tid. Ha tålamod."
 
@@ -3442,13 +3431,13 @@ msgstr "Tchad"
 msgid "Change family members"
 msgstr "Ändra familjemedlemmar"
 
-#: app/Http/Controllers/Admin/UsersController.php:239
+#: app/Http/Controllers/Admin/UsersController.php:247
 #: app/Http/Controllers/HomePageController.php:627
 msgid "Change the blocks on this user’s “My page”"
 msgstr "Ändra blocken på denna användares ”Min sida”"
 
 #: app/Http/Controllers/HomePageController.php:388
-#: resources/views/admin/trees.phtml:78
+#: resources/views/admin/trees.phtml:82
 msgid "Change the “Home page” blocks"
 msgstr "Ändra blocken på ”Hemsidan”"
 
@@ -3485,7 +3474,7 @@ msgstr[0] "Sista dagens förändringar"
 msgstr[1] "Förändringar de senaste %s dagarna"
 
 #: app/Http/Controllers/Admin/ChangesLogController.php:119
-#: resources/views/admin/trees.phtml:193
+#: resources/views/admin/trees.phtml:201
 msgid "Changes log"
 msgstr "Ändringslogg"
 
@@ -3518,12 +3507,12 @@ msgstr "Diagramtyp"
 #: resources/views/admin/control-panel.phtml:331
 #: resources/views/admin/modules.phtml:79
 #: resources/views/admin/modules.phtml:81
-#: resources/views/admin/trees-preferences.phtml:424
+#: resources/views/admin/trees-preferences.phtml:404
 msgid "Charts"
 msgstr "Tavlor"
 
 #: app/Http/Controllers/AdminTreesController.php:296
-#: resources/views/admin/trees.phtml:163
+#: resources/views/admin/trees.phtml:171
 msgid "Check for errors"
 msgstr "Leta efter fel"
 
@@ -3631,7 +3620,7 @@ msgstr "Välj en rapport att köra"
 msgid "Choose relatives"
 msgstr "Välj släktingar"
 
-#: app/Http/Controllers/AdminSiteController.php:491
+#: app/Http/Controllers/AdminSiteController.php:492
 msgid "Choose user defined welcome text typed below"
 msgstr "Välj användardefinierad välkomsttext inskriven nedan"
 
@@ -3765,7 +3754,7 @@ msgctxt "MALE"
 msgid "Civil registrar"
 msgstr "Civilregistrator"
 
-#: app/Http/Controllers/AdminSiteController.php:106
+#: app/Http/Controllers/AdminSiteController.php:109
 #: resources/views/admin/control-panel.phtml:91
 msgid "Clean up data folder"
 msgstr "Rensa datamapp"
@@ -3837,7 +3826,7 @@ msgstr "Kommentar"
 
 #: resources/views/emails/register-notify-html.phtml:19
 #: resources/views/emails/register-notify-text.phtml:9
-#: resources/views/register-page.phtml:68
+#: resources/views/register-page.phtml:81
 msgid "Comments"
 msgstr "Kommentarer"
 
@@ -3901,11 +3890,11 @@ msgstr "Anslutning till databas-servern"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
-#: resources/views/admin/trees-preferences.phtml:140
+#: resources/views/admin/trees-preferences.phtml:141
 msgid "Contact information"
 msgstr "Kontaktinformation"
 
-#: resources/views/edit-account-page.phtml:130
+#: resources/views/edit-account-page.phtml:115
 msgid "Contact method"
 msgstr "Kontaktmetod"
 
@@ -3944,7 +3933,7 @@ msgstr "Fortsättning"
 #: resources/views/admin/modules.phtml:19
 #: resources/views/admin/server-information.phtml:3
 #: resources/views/admin/site-logs.phtml:4
-#: resources/views/admin/site-mail.phtml:5
+#: resources/views/admin/site-mail.phtml:26
 #: resources/views/admin/site-preferences.phtml:4
 #: resources/views/admin/site-registration.phtml:4
 #: resources/views/admin/trees-check.phtml:3
@@ -3953,11 +3942,11 @@ msgstr "Fortsättning"
 #: resources/views/admin/trees-import.phtml:4
 #: resources/views/admin/trees-merge.phtml:3
 #: resources/views/admin/trees-places.phtml:3
-#: resources/views/admin/trees-preferences.phtml:8
+#: resources/views/admin/trees-preferences.phtml:9
 #: resources/views/admin/trees-privacy.phtml:11
 #: resources/views/admin/trees-renumber.phtml:3
 #: resources/views/admin/trees-unconnected.phtml:17
-#: resources/views/admin/trees.phtml:8
+#: resources/views/admin/trees.phtml:12
 #: resources/views/admin/upgrade/steps.phtml:4
 #: resources/views/admin/upgrade/wizard.phtml:3
 #: resources/views/admin/users-cleanup.phtml:4
@@ -4063,7 +4052,7 @@ msgstr "Land"
 msgid "Create"
 msgstr "Skapa"
 
-#: app/Functions/FunctionsEdit.php:468
+#: app/Functions/FunctionsEdit.php:453
 msgid "Create a family"
 msgstr "Skapa en familj"
 
@@ -4071,22 +4060,22 @@ msgstr "Skapa en familj"
 msgid "Create a family from existing individuals"
 msgstr "Skapa en familj från befintliga individer"
 
-#: resources/views/admin/trees.phtml:310
+#: resources/views/admin/trees.phtml:318
 msgid "Create a family tree"
 msgstr "Skapa ett släktträd"
 
-#: app/Functions/FunctionsEdit.php:488
+#: app/Functions/FunctionsEdit.php:473
 #: resources/views/modals/create-media-from-file.phtml:12
 #: resources/views/modals/create-media-object.phtml:7
 msgid "Create a media object"
 msgstr "Skapa ett mediaobjekt"
 
-#: app/Functions/FunctionsEdit.php:533
+#: app/Functions/FunctionsEdit.php:518
 #: resources/views/modals/create-repository.phtml:7
 msgid "Create a repository"
 msgstr "Skapa arkiv"
 
-#: app/Functions/FunctionsEdit.php:479
+#: app/Functions/FunctionsEdit.php:464
 #: resources/views/modals/create-note-object.phtml:7
 msgid "Create a shared note"
 msgstr "Skapa en delad anteckning"
@@ -4095,12 +4084,12 @@ msgstr "Skapa en delad anteckning"
 msgid "Create a shared note using the census assistant"
 msgstr "Skapa en delad anteckning med hjälp av befolkningsräknings (census) assistenten"
 
-#: app/Functions/FunctionsEdit.php:550
+#: app/Functions/FunctionsEdit.php:535
 #: resources/views/modals/create-source.phtml:7
 msgid "Create a source"
 msgstr "Skapa en källa"
 
-#: app/Functions/FunctionsEdit.php:558
+#: app/Functions/FunctionsEdit.php:543
 #: resources/views/modals/create-submitter.phtml:7
 msgid "Create a submitter"
 msgstr "Skapa en avsändare"
@@ -4121,7 +4110,7 @@ msgstr "Skapa en person"
 msgid "Create your own chart"
 msgstr "Skapa eget diagram"
 
-#: resources/views/admin/trees.phtml:376
+#: resources/views/admin/trees.phtml:385
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
 msgstr "Skapa, uppdatera och ta bort ett släktträd för varje GEDCOM-fil i datamappen."
 
@@ -4305,6 +4294,11 @@ msgstr "Cypern"
 #: app/Statistics/Service/CountryService.php:153
 msgid "Czech Republic"
 msgstr "Tjeckien"
+
+#. I18N: https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail
+#: resources/views/admin/site-mail.phtml:181
+msgid "DKIM digital signature"
+msgstr ""
 
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/GedcomTag.php:1785
@@ -4538,7 +4532,7 @@ msgid "Date sent"
 msgstr "Datum skickat"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
-#: resources/views/admin/trees-preferences.phtml:116
+#: resources/views/admin/trees-preferences.phtml:117
 #, php-format
 msgid "Dates are only converted if they are valid for the calendar. For example, only dates between %1$s and %2$s will be converted to the French calendar and only dates after %3$s will be converted to the Gregorian calendar."
 msgstr "Tidsangivelser omvandlas endast ifall de är giltiga inom tideräkningen. T.ex. kommer endast tidpunkter mellan %1$s och %2$s att omvandlas till franska revolutionskalendern och endast datum efter %3$s kommer att omvandlas till den gregorianska tideräkningen (nya stilen)."
@@ -4726,7 +4720,7 @@ msgstr "Dödsdatums intervallstart"
 msgid "Death of a brother"
 msgstr "Broderns död"
 
-#: app/GedcomTag.php:1665 resources/views/admin/trees-preferences.phtml:520
+#: app/GedcomTag.php:1665 resources/views/admin/trees-preferences.phtml:500
 msgid "Death of a child"
 msgstr "Barnadöd"
 
@@ -4739,12 +4733,12 @@ msgid "Death of a father"
 msgstr "Faderns död"
 
 #: app/GedcomTag.php:1709 app/GedcomTag.php:1720 app/GedcomTag.php:1731
-#: resources/views/admin/trees-preferences.phtml:544
+#: resources/views/admin/trees-preferences.phtml:524
 msgid "Death of a grand-parent"
 msgstr "Gammelförälders död"
 
 #: app/GedcomTag.php:1676 app/GedcomTag.php:1687 app/GedcomTag.php:1698
-#: resources/views/admin/trees-preferences.phtml:514
+#: resources/views/admin/trees-preferences.phtml:494
 msgid "Death of a grandchild"
 msgstr "Barnbarnets död"
 
@@ -4812,7 +4806,7 @@ msgstr "Mormors död"
 msgid "Death of a mother"
 msgstr "Moderns död"
 
-#: app/GedcomTag.php:1753 resources/views/admin/trees-preferences.phtml:532
+#: app/GedcomTag.php:1753 resources/views/admin/trees-preferences.phtml:512
 msgid "Death of a parent"
 msgstr "Förälders död"
 
@@ -4824,7 +4818,7 @@ msgstr "Farfars död"
 msgid "Death of a paternal grandmother"
 msgstr "Farmors död"
 
-#: app/GedcomTag.php:1764 resources/views/admin/trees-preferences.phtml:526
+#: app/GedcomTag.php:1764 resources/views/admin/trees-preferences.phtml:506
 msgid "Death of a sibling"
 msgstr "Syskons död"
 
@@ -4836,7 +4830,7 @@ msgstr "Systerns död"
 msgid "Death of a son"
 msgstr "Sonens död"
 
-#: app/GedcomTag.php:1775 resources/views/admin/trees-preferences.phtml:538
+#: app/GedcomTag.php:1775 resources/views/admin/trees-preferences.phtml:518
 msgid "Death of a spouse"
 msgstr "Make eller makas död"
 
@@ -4877,13 +4871,13 @@ msgstr "dec"
 
 #: resources/views/lists/families-table.phtml:470
 #: resources/views/lists/families-table.phtml:486
-#: resources/views/lists/individuals-table.phtml:480
-#: resources/views/lists/individuals-table.phtml:497
+#: resources/views/lists/individuals-table.phtml:481
+#: resources/views/lists/individuals-table.phtml:498
 msgid "Decade of birth"
 msgstr "Födelseårtionde"
 
-#: resources/views/lists/individuals-table.phtml:506
-#: resources/views/lists/individuals-table.phtml:523
+#: resources/views/lists/individuals-table.phtml:507
+#: resources/views/lists/individuals-table.phtml:524
 msgid "Decade of death"
 msgstr "Dödsårtionde"
 
@@ -4923,20 +4917,20 @@ msgstr "Decidi"
 msgid "Default chart"
 msgstr "Standardtavla"
 
-#: resources/views/admin/trees.phtml:106
+#: resources/views/admin/trees.phtml:113
 msgid "Default family tree"
 msgstr "Standard-släktträd"
 
 #. I18N: A configuration setting
 #: app/Module/WelcomeBlockModule.php:104
-#: resources/views/admin/trees-preferences.phtml:81
+#: resources/views/admin/trees-preferences.phtml:82
 #: resources/views/edit-account-page.phtml:56
 msgid "Default individual"
 msgstr "Förvald person"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:53
-#: resources/views/admin/trees-preferences.phtml:249
+#: resources/views/admin/trees-preferences.phtml:229
 msgid "Default theme"
 msgstr "Standardtema"
 
@@ -4966,19 +4960,19 @@ msgid "DejaVu"
 msgstr "DejaVu"
 
 #: app/Http/Controllers/Admin/MediaController.php:352
-#: app/Http/Controllers/Admin/UsersController.php:225
+#: app/Http/Controllers/Admin/UsersController.php:233
 #: app/Module/UserMessagesModule.php:165 app/Module/UserMessagesModule.php:205
 #: resources/views/admin/locations.phtml:18
 #: resources/views/admin/trees-privacy.phtml:264
-#: resources/views/admin/trees.phtml:88 resources/views/admin/trees.phtml:97
+#: resources/views/admin/trees.phtml:93 resources/views/admin/trees.phtml:102
 #: resources/views/edit-blocks-block.phtml:22
 #: resources/views/edit/icon-fact-delete.phtml:3
 #: resources/views/edit/icon-fact-delete.phtml:5
 #: resources/views/family-page-menu.phtml:39
 #: resources/views/gedcom-record-page-menu.phtml:11
 #: resources/views/individual-page-menu.phtml:35
-#: resources/views/media-page-menu.phtml:32 resources/views/media-page.phtml:80
-#: resources/views/media-page.phtml:83
+#: resources/views/media-page-menu.phtml:32 resources/views/media-page.phtml:95
+#: resources/views/media-page.phtml:98
 #: resources/views/modules/faq/config.phtml:43
 #: resources/views/modules/gedcom_news/list.phtml:31
 #: resources/views/modules/stories/config.phtml:35
@@ -4994,7 +4988,7 @@ msgstr "Radera"
 msgid "Delete all existing geographic data before importing the file."
 msgstr "Ta bort all befintliga geografiska data innan du importerar filen."
 
-#: app/Http/Controllers/Admin/UsersController.php:108
+#: app/Http/Controllers/Admin/UsersController.php:116
 #: resources/views/admin/control-panel.phtml:257
 msgid "Delete inactive users"
 msgstr "Ta bort inaktiva användare"
@@ -5011,11 +5005,11 @@ msgstr "Radera markerade meddelande"
 msgid "Delete the preferences for this module."
 msgstr "Ta bort inställningarna för denna modul."
 
-#: app/Http/Controllers/IndividualController.php:283
+#: app/Http/Controllers/IndividualController.php:286
 msgid "Delete this name"
 msgstr "Radera namn"
 
-#: resources/views/edit-account-page.phtml:168
+#: resources/views/edit-account-page.phtml:153
 msgid "Delete your account"
 msgstr "Ta bort ditt konto"
 
@@ -5082,7 +5076,7 @@ msgid "Description"
 msgstr "Beskrivning"
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:228
+#: resources/views/admin/trees-preferences.phtml:208
 msgid "Description META tag"
 msgstr "Beskrivning META tagg"
 
@@ -5095,7 +5089,7 @@ msgstr "Destination"
 #: resources/views/admin/merge-records-step-2.phtml:75
 #: resources/views/admin/merge-records-step-2.phtml:121
 #: resources/views/gedcom-record-page.phtml:33
-#: resources/views/media-page.phtml:34
+#: resources/views/media-page.phtml:49
 #: resources/views/modules/statistics-chart/custom.phtml:62
 #: resources/views/note-page.phtml:33 resources/views/repository-page.phtml:37
 #: resources/views/source-page.phtml:33
@@ -5203,7 +5197,7 @@ msgid "Differences"
 msgstr "Skillnader"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
-#: resources/views/admin/trees-preferences.phtml:113
+#: resources/views/admin/trees-preferences.phtml:114
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past. Where possible, you should enter dates using the calendar in which the event was originally recorded. You can then specify a conversion, to show these dates in a more familiar calendar. If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
 msgstr "I olika delar av världen används skilda tideräkningar, och ytterligare många fler har tidigare varit i bruk. Där så är möjligt, bör tidpunkter anges enligt samma tideräkning som i källdokumentet. Man kan sedan ange att dessa tidsangivelser skall omvandlas till en mer bekant tideräkning. Om man regelbundet har bruk av dubbla tideräkningar, kan man ange två omvandlingar, så att samtliga datum visas i bägge dessa tideräkningar."
 
@@ -5275,6 +5269,10 @@ msgstr "Använd inte kartor"
 msgid "Document"
 msgstr "Dokument"
 
+#: resources/views/admin/site-mail.phtml:186
+msgid "Domain name"
+msgstr ""
+
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:159
 msgid "Dominica"
@@ -5299,7 +5297,7 @@ msgstr "Ladda ner"
 msgid "Download %s…"
 msgstr "Ladda ner %s…"
 
-#: resources/views/media-page.phtml:100
+#: resources/views/media-page.phtml:130
 msgid "Download file"
 msgstr "Ladda ner fil"
 
@@ -5317,17 +5315,17 @@ msgstr "Draper, Utah, Förenta staterna"
 msgid "Duodi"
 msgstr "Duodi"
 
-#: app/Http/Controllers/AccountController.php:135
-#: app/Http/Controllers/Admin/UsersController.php:329
-#: app/Http/Controllers/Admin/UsersController.php:443
-#: app/Http/Controllers/Auth/RegisterController.php:212
+#: app/Http/Controllers/AccountController.php:147
+#: app/Http/Controllers/Admin/UsersController.php:337
+#: app/Http/Controllers/Admin/UsersController.php:451
+#: app/Http/Controllers/Auth/RegisterController.php:220
 msgid "Duplicate email address. A user with that email already exists."
 msgstr "Det finns redan en användare med e-postadressen."
 
-#: app/Http/Controllers/AccountController.php:126
-#: app/Http/Controllers/Admin/UsersController.php:324
-#: app/Http/Controllers/Admin/UsersController.php:449
-#: app/Http/Controllers/Auth/RegisterController.php:207
+#: app/Http/Controllers/AccountController.php:138
+#: app/Http/Controllers/Admin/UsersController.php:332
+#: app/Http/Controllers/Admin/UsersController.php:457
+#: app/Http/Controllers/Auth/RegisterController.php:215
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
 msgstr "En avändare med detta användarnamn finns redan. Välj ett annat användarnamn."
 
@@ -5366,17 +5364,17 @@ msgstr "Tidigaste vigsel"
 msgid "Ecuador"
 msgstr "Ecuador"
 
-#: app/Functions/FunctionsPrintFacts.php:774
+#: app/Functions/FunctionsPrintFacts.php:775
 #: app/Http/Controllers/Admin/LocationController.php:272
 #: app/Http/Controllers/Admin/LocationController.php:273
-#: app/Http/Controllers/Admin/UsersController.php:239
+#: app/Http/Controllers/Admin/UsersController.php:247
 #: resources/views/admin/locations.phtml:17
 #: resources/views/admin/locations.phtml:65
 #: resources/views/admin/locations.phtml:68
 #: resources/views/admin/users.phtml:13
 #: resources/views/edit/icon-fact-edit.phtml:3
 #: resources/views/edit/icon-fact-edit.phtml:5
-#: resources/views/media-page.phtml:72 resources/views/media-page.phtml:75
+#: resources/views/media-page.phtml:87 resources/views/media-page.phtml:90
 #: resources/views/modules/faq/config.phtml:42
 #: resources/views/modules/faq/config.phtml:87
 #: resources/views/modules/gedcom_news/list.phtml:27
@@ -5393,7 +5391,7 @@ msgid "Edit a media file"
 msgstr "Redigera en mediefil"
 
 #. I18N: Options for editing
-#: resources/views/admin/trees-preferences.phtml:692
+#: resources/views/admin/trees-preferences.phtml:672
 msgid "Edit preferences"
 msgstr "Redigera inställningar"
 
@@ -5401,15 +5399,15 @@ msgstr "Redigera inställningar"
 msgid "Edit the FAQ"
 msgstr "Redigera Vanliga frågan"
 
-#: app/Http/Controllers/IndividualController.php:332
+#: app/Http/Controllers/IndividualController.php:335
 #: resources/views/individual-page-menu.phtml:12
 #: resources/views/individual-page-menu.phtml:29
 msgid "Edit the gender"
 msgstr "Redigera kön"
 
-#: app/Functions/FunctionsEdit.php:602
+#: app/Functions/FunctionsEdit.php:587
 #: app/Http/Controllers/EditIndividualController.php:597
-#: app/Http/Controllers/IndividualController.php:284
+#: app/Http/Controllers/IndividualController.php:287
 msgid "Edit the name"
 msgstr "Redigera namn"
 
@@ -5436,7 +5434,7 @@ msgstr "Redigera delad anteckning"
 msgid "Edit the story"
 msgstr "Redigera berättelse"
 
-#: app/Http/Controllers/Admin/UsersController.php:305
+#: app/Http/Controllers/Admin/UsersController.php:313
 msgid "Edit the user"
 msgstr "Redigera användare"
 
@@ -5450,7 +5448,7 @@ msgid "Editing restriction"
 msgstr "Redigeringsbegränsning"
 
 #. I18N: Listbox entry; name of a role
-#: app/Http/Controllers/Admin/UsersController.php:472
+#: app/Http/Controllers/Admin/UsersController.php:480
 #: resources/views/admin/users-edit.phtml:239
 msgid "Editor"
 msgstr "Editor"
@@ -5504,6 +5502,10 @@ msgctxt "NOMINATIVE"
 msgid "Elul"
 msgstr "elul"
 
+#: resources/views/password-request-page.phtml:18
+msgid "Email"
+msgstr ""
+
 #. I18N: gedcom tag EMAIL
 #. I18N: gedcom tag _EMAIL
 #: app/GedcomTag.php:688 app/GedcomTag.php:1788
@@ -5514,15 +5516,10 @@ msgstr "elul"
 #: resources/views/edit-account-page.phtml:103
 #: resources/views/emails/register-notify-html.phtml:17
 #: resources/views/emails/register-notify-text.phtml:8
-#: resources/views/register-page.phtml:32
+#: resources/views/register-page.phtml:44
 #: resources/views/setup/step-5-administrator.phtml:68
 msgid "Email address"
 msgstr "E-postadress"
-
-#. I18N: Help text for the “webtrees reply address” configuration setting
-#: resources/views/admin/trees-preferences.phtml:158
-msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "E-postadress som skall användas i ”från:”-fältet för e-post som webtrees skapar automatiskt.<br><br>webtrees kan automatiskt skapa e-post för att meddela administratörer av förändringar som behöver granskas. webtrees skickar också e-postmeddelanden till användare som har ansökt om ett konto.<br><br>Vanligtvis är ”från:” fältet i dessa automatiskt skapade e-postmeddelanden t.ex. <i>från: webtrees-noreply@yoursite</i> för att visa att inget svar på e-post krävs. För att skydda mot skräppost eller andra e-missbruk, kräver vissa system en giltig adress i ”från:” fältet och kommer inte att acceptera meddelanden som är från kontot <i>webtrees-noreply</i>."
 
 #: resources/views/admin/users-edit.phtml:81
 msgid "Email verified"
@@ -5653,7 +5650,7 @@ msgid "Esfand"
 msgstr "Esfand"
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:399
+#: resources/views/admin/trees-preferences.phtml:379
 msgid "Estimated dates for birth and death"
 msgstr "Beräknade datum för födelse och död"
 
@@ -5726,11 +5723,11 @@ msgid "Excluded from this submission"
 msgstr "Utesluten från denna skickning"
 
 #. I18N: placeholder text for registration-comments field
-#: resources/views/register-page.phtml:71
+#: resources/views/register-page.phtml:85
 msgid "Explain why you are requesting an account."
 msgstr "Förklara varför du begär ett konto."
 
-#: resources/views/admin/trees.phtml:279
+#: resources/views/admin/trees.phtml:287
 msgid "Export"
 msgstr "Exportera"
 
@@ -5843,7 +5840,7 @@ msgid "Fact 9"
 msgstr "Faktum 9"
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:555
+#: resources/views/admin/trees-preferences.phtml:535
 msgid "Fact icons"
 msgstr "Fakta-ikoner"
 
@@ -5862,27 +5859,27 @@ msgstr "Faktum eller händelse"
 msgid "Facts and events"
 msgstr "Fakta och händelser"
 
-#: resources/views/admin/trees-preferences.phtml:748
+#: resources/views/admin/trees-preferences.phtml:728
 msgid "Facts for family records"
 msgstr "Fakta om familjedataposter"
 
-#: resources/views/admin/trees-preferences.phtml:694
+#: resources/views/admin/trees-preferences.phtml:674
 msgid "Facts for individual records"
 msgstr "Fakta om persondataposter"
 
-#: resources/views/admin/trees-preferences.phtml:779
+#: resources/views/admin/trees-preferences.phtml:759
 msgid "Facts for new families"
 msgstr "Fakta för ny familj"
 
-#: resources/views/admin/trees-preferences.phtml:725
+#: resources/views/admin/trees-preferences.phtml:705
 msgid "Facts for new individuals"
 msgstr "Fakta för ny person"
 
-#: resources/views/admin/trees-preferences.phtml:843
+#: resources/views/admin/trees-preferences.phtml:823
 msgid "Facts for repository records"
 msgstr "Fakta om Arkivdataposter"
 
-#: resources/views/admin/trees-preferences.phtml:802
+#: resources/views/admin/trees-preferences.phtml:782
 msgid "Facts for source records"
 msgstr "Fakta om Källdataposter"
 
@@ -5893,7 +5890,7 @@ msgstr "Falklandsöarna"
 
 #. I18N: Name of a module/list
 #. I18N: Name of a module
-#: app/Http/Controllers/AdminTreesController.php:2071
+#: app/Http/Controllers/AdminTreesController.php:2064
 #: app/Http/Controllers/CalendarController.php:322
 #: app/Http/Controllers/ListController.php:235
 #: app/Module/AncestorsChartModule.php:224
@@ -5910,12 +5907,12 @@ msgstr "Falklandsöarna"
 #: resources/views/lists/media-table.phtml:70
 #: resources/views/lists/notes-table.phtml:82
 #: resources/views/lists/sources-table.phtml:85
-#: resources/views/media-page.phtml:45
+#: resources/views/media-page.phtml:60
 #: resources/views/modules/gedcom_stats/config.phtml:22
 #: resources/views/modules/gedcom_stats/statistics.phtml:63
 #: resources/views/modules/html/template-statistics.phtml:30
 #: resources/views/note-page.phtml:44 resources/views/place-events.phtml:12
-#: resources/views/place-sidebar.phtml:32
+#: resources/views/place-sidebar.phtml:27
 #: resources/views/search-general-page.phtml:37
 #: resources/views/search-results.phtml:20 resources/views/source-page.phtml:44
 #: resources/xml/reports/fact_sources.xml:152
@@ -5995,7 +5992,7 @@ msgstr "Familj %s"
 #: resources/views/admin/fix-level-0-media.phtml:23
 #: resources/views/admin/site-logs.phtml:59
 #: resources/views/admin/site-logs.phtml:97
-#: resources/views/admin/trees.phtml:50
+#: resources/views/admin/trees.phtml:54
 #: resources/views/admin/users-edit.phtml:271
 #: resources/views/modules/batch_update/admin.phtml:20
 #: resources/views/modules/faq/config.phtml:19
@@ -6010,8 +6007,8 @@ msgstr "Släktträd"
 msgid "Family tree clippings cart"
 msgstr "Släktträdsurklippskorg"
 
-#: resources/views/admin/trees-preferences.phtml:23
-#: resources/views/admin/trees.phtml:320
+#: resources/views/admin/trees-preferences.phtml:24
+#: resources/views/admin/trees.phtml:328
 msgid "Family tree title"
 msgstr "Släktträdets titel"
 
@@ -6190,8 +6187,8 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "februari"
 
-#: app/Functions/FunctionsEdit.php:546
-#: app/Http/Controllers/IndividualController.php:317
+#: app/Functions/FunctionsEdit.php:531
+#: app/Http/Controllers/IndividualController.php:320
 #: app/Module/StatisticsChartModule.php:776
 msgid "Female"
 msgstr "Kvinna"
@@ -6273,7 +6270,7 @@ msgstr "Sök källa"
 msgid "Find a special character"
 msgstr "Hitta ett specialtecken"
 
-#: app/Module/RelationshipsChartModule.php:629
+#: app/Module/RelationshipsChartModule.php:631
 msgid "Find all possible relationships"
 msgstr "Hitta alla möjliga relationer"
 
@@ -6282,26 +6279,26 @@ msgid "Find any relationship"
 msgstr "Hitta någon relation"
 
 #: app/Http/Controllers/AdminTreesController.php:411
-#: resources/views/admin/trees.phtml:133
+#: resources/views/admin/trees.phtml:141
 msgid "Find duplicates"
 msgstr "Sök dubbletter"
 
-#: app/Module/RelationshipsChartModule.php:631
+#: app/Module/RelationshipsChartModule.php:633
 msgid "Find other relationships"
 msgstr "Finn andra släktskap"
 
 #: app/Module/RelationshipsChartModule.php:152
-#: resources/views/modules/relationships-chart/page.phtml:43
+#: resources/views/modules/relationships-chart/page.phtml:39
 msgid "Find relationships via ancestors"
 msgstr "Hitta relationer via förfäder"
 
-#: app/Module/RelationshipsChartModule.php:635
-#: resources/views/modules/relationships-chart/page.phtml:57
+#: app/Module/RelationshipsChartModule.php:637
+#: resources/views/modules/relationships-chart/page.phtml:53
 msgid "Find the closest relationships"
 msgstr "Hitta de närmaste relationerna"
 
-#: app/Http/Controllers/AdminTreesController.php:1843
-#: resources/views/admin/trees.phtml:173
+#: app/Http/Controllers/AdminTreesController.php:1842
+#: resources/views/admin/trees.phtml:181
 msgid "Find unrelated individuals"
 msgstr "Finn obesläktade individer"
 
@@ -6327,7 +6324,7 @@ msgstr "Första posten"
 msgid "Fix name slashes and spaces"
 msgstr "Korrigera snedstreck och mellanslag i namnet"
 
-#: resources/views/admin/location-edit.phtml:30
+#: resources/views/admin/location-edit.phtml:31
 #: resources/views/admin/locations.phtml:16
 msgid "Flag"
 msgstr "Flagga"
@@ -6441,7 +6438,7 @@ msgstr "För teknisk stöd eller släktfrågor kontakta %s."
 msgid "For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
 msgstr "För webbplatser med mer än ett släktträd visar detta alternativ en lista över släktträd i huvudmenyn, söksidor, osv."
 
-#: resources/views/login-page.phtml:53
+#: resources/views/login-page.phtml:61
 #: resources/views/modules/login_block/sign-in.phtml:28
 msgid "Forgot password?"
 msgstr "Glömt ditt lösenord?"
@@ -6454,7 +6451,7 @@ msgid "Format"
 msgstr "Format"
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:631
+#: resources/views/admin/trees-preferences.phtml:611
 msgid "Format text and notes"
 msgstr "Formatera text och anteckningar"
 
@@ -6629,14 +6626,14 @@ msgstr "Begravning"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-check.phtml:9
-#: resources/views/admin/trees-preferences.phtml:666
+#: resources/views/admin/trees-preferences.phtml:646
 msgid "GEDCOM errors"
 msgstr "GEDCOM-fel"
 
 #. I18N: gedcom tag GEDC
 #. I18N: gedcom tag _GEDF
 #: app/GedcomTag.php:777 app/GedcomTag.php:1826
-#: resources/views/admin/trees.phtml:272
+#: resources/views/admin/trees.phtml:280
 msgid "GEDCOM file"
 msgstr "GEDCOM-fil"
 
@@ -6651,7 +6648,7 @@ msgid "Gambia"
 msgstr "Gambia"
 
 #. I18N: gedcom tag SEX
-#: app/GedcomTag.php:1001 app/Http/Controllers/IndividualController.php:341
+#: app/GedcomTag.php:1001 app/Http/Controllers/IndividualController.php:344
 #: resources/xml/reports/family_group_report.xml:844
 #: resources/xml/reports/individual_ext_report.xml:391
 #: resources/xml/reports/individual_ext_report.xml:598
@@ -6665,17 +6662,17 @@ msgid "Genealogy"
 msgstr "Genealogi"
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:166
+#: resources/views/admin/trees-preferences.phtml:146
 msgid "Genealogy contact"
 msgstr "Släktforskningskontakt"
 
 #. I18N: Individuals, sources, dates, places, etc.
-#: resources/views/admin/trees.phtml:126
+#: resources/views/admin/trees.phtml:134
 msgid "Genealogy data"
 msgstr "Släktforskningsdata"
 
-#: resources/views/admin/trees-preferences.phtml:18
-#: resources/views/admin/trees-preferences.phtml:645
+#: resources/views/admin/trees-preferences.phtml:19
+#: resources/views/admin/trees-preferences.phtml:625
 msgid "General"
 msgstr "Allmän"
 
@@ -7031,8 +7028,8 @@ msgstr "Höjd"
 #: resources/views/emails/message-copy-text.phtml:2
 #: resources/views/emails/message-user-html.phtml:4
 #: resources/views/emails/message-user-text.phtml:2
-#: resources/views/emails/password-reset-html.phtml:4
-#: resources/views/emails/password-reset-text.phtml:2
+#: resources/views/emails/password-request-html.phtml:5
+#: resources/views/emails/password-request-text.phtml:3
 #: resources/views/emails/pending-changes-html.phtml:4
 #: resources/views/emails/pending-changes-text.phtml:3
 #: resources/views/emails/register-user-html.phtml:4
@@ -7116,7 +7113,7 @@ msgctxt "NOMINATIVE"
 msgid "Heshvan"
 msgstr "heshvan"
 
-#: app/Functions/FunctionsEdit.php:93 app/Functions/FunctionsEdit.php:252
+#: app/Functions/FunctionsEdit.php:93 app/Functions/FunctionsEdit.php:237
 #: app/Http/Controllers/AdminController.php:373
 #: app/Http/Controllers/AdminTreesController.php:1029
 #: resources/views/admin/trees-privacy.phtml:158
@@ -7154,7 +7151,7 @@ msgstr "Historiska fakta"
 #. I18N: Name of a module
 #. I18N: A configuration setting
 #: app/Module/HitCountFooterModule.php:61
-#: resources/views/admin/trees-preferences.phtml:681
+#: resources/views/admin/trees-preferences.phtml:661
 msgid "Hit counters"
 msgstr "Träffräknare"
 
@@ -7261,7 +7258,7 @@ msgid "If a media object is linked to an individual, when it should be linked to
 msgstr "Om ett medieobjekt är kopplat till en person, när det ska kopplas till ett faktum eller en händelse, kan du flytta det till rätt plats."
 
 #. I18N: Help text for the “Language” configuration setting
-#: resources/views/admin/trees-preferences.phtml:73
+#: resources/views/admin/trees-preferences.phtml:74
 msgid "If a visitor to the website has not selected a preferred language in their browser preferences, or they have selected an unsupported language, then this language will be used. Typically this applies to search engines."
 msgstr "Om en webbplatsens besökare inte har angett ett språk i sin webbläsarkonfiguration, eller har angett ett språk som inte stöds, används detta språk. Normalt gäller denna inställning för sökmotorer."
 
@@ -7304,7 +7301,7 @@ msgid "If this individual has any events other than death, burial, or cremation 
 msgstr "Om denna person har någon annan händelse än Död, Begravning, eller Kremering och de har hänt tidigare än detta antal år, anses han vara ”levande”. Barns födelsedatum anses vara en sådan händelse för detta ändamål."
 
 #. I18N: Help text for the “Media folder” configuration setting
-#: resources/views/admin/trees-preferences.phtml:278
+#: resources/views/admin/trees-preferences.phtml:258
 msgid "If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate."
 msgstr "Om två släktträd använder samma mediamapp, kommer de att kunna dela media-filer. Om de använder olika mediamappar, kommer deras media-filer att hållas åtskilda."
 
@@ -7313,7 +7310,7 @@ msgid "If visitors can not see the family tree, they will not be able to sign up
 msgstr "Om besökarna inte kan se släktträdet, kommer de inte att kunna registrera sig för ett konto. Du måste då lägga till deras konto manuellt."
 
 #. I18N: Help text for the “Who can upload new media files” configuration setting
-#: resources/views/admin/trees-preferences.phtml:293
+#: resources/views/admin/trees-preferences.phtml:273
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
 msgstr "Om du är orolig för att användarna ska ladda upp olämpliga bilder kan du begränsa mediauppladdningar till endast managers."
 
@@ -7333,6 +7330,11 @@ msgstr "Om du ansluter till databasen med ett UNIX-uttag, anger du sökvägen h�
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
 msgstr "Om du skapade denna GEDCOM-fil med släktforskningsprogram som utelämnar mellanrum när långa linjer delas, skall du välja detta alternativ för att infoga saknade mellanrum."
 
+#: resources/views/emails/password-request-html.phtml:17
+#: resources/views/emails/password-request-text.phtml:9
+msgid "If you did not request a new password, please ignore this message."
+msgstr ""
+
 #: resources/views/emails/register-user-html.phtml:23
 #: resources/views/emails/register-user-text.phtml:10
 msgid "If you didn’t request an account, you can just delete this message."
@@ -7351,7 +7353,7 @@ msgid "If you select a different folder, you must also move all files (except co
 msgstr "Om du väljer en annan mapp, måste du flytta alla filerna (förutom config.ini.php, index.php och .htaccess) från den befintliga mappen till den nya."
 
 #. I18N: Help text for the “Media folder” configuration setting
-#: resources/views/admin/trees-preferences.phtml:277
+#: resources/views/admin/trees-preferences.phtml:257
 msgid "If you select a different folder, you must also move any media files from the existing folder to the new one."
 msgstr "Om du väljer en annan mapp, måste du flytta alla media filer från den befintliga mappen till den nya."
 
@@ -7372,7 +7374,7 @@ msgstr "Om du använder en av de följande spårnings- och analystjänster, kan 
 msgid "Image dimensions"
 msgstr "Bildens dimensioner"
 
-#: resources/views/admin/trees-preferences.phtml:350
+#: resources/views/admin/trees-preferences.phtml:330
 msgid "Images without watermarks"
 msgstr "Bilder utan vattenstämplar"
 
@@ -7381,7 +7383,7 @@ msgstr "Bilder utan vattenstämplar"
 msgid "Immigration"
 msgstr "Invandring"
 
-#: resources/views/admin/trees.phtml:289
+#: resources/views/admin/trees.phtml:297
 msgid "Import"
 msgstr "Importera"
 
@@ -7424,7 +7426,7 @@ msgid "In many cultures it is customary to have a traditional name spelled in th
 msgstr "I många kulturer är det vanligt att ha namn skrivna med deras traditionella tecken och att det finns en version skrivna med västerländska (Latin) bokstäver, så att man kan skriva eller uttala namnet t.ex. på engelska.<br><br>Om du vill använda ett icke västerländsk teckenspråk så som hebreiska, grekiska, ryska, kinesiska, eller arabiska till att skriva i vanliga namnfält då kan detta fält användas till att skriva in samma namn med västerlänska tecken. Båda versionerna av namnet kommer då att synas i listor och diagram.<br><br>Fastän detta fält har rubriken ”Hebreiska”, så kan man fritt välja vilket teckenspråk som helst."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
-#: resources/views/admin/trees-preferences.phtml:119
+#: resources/views/admin/trees-preferences.phtml:120
 msgid "In some calendars, days start at midnight. In other calendars, days start at sunset. The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out."
 msgstr "I vissa kalendrar, börjar dagen vid midnatt. I andra kalendrar, börjar dagen vid solnedgången. Konverteringen tar inte hänsyn till tiden, så för alla evenemang som inträffar mellan solnedgång och midnatt, omvandlingen mellan dessa typer av kalender kommer att ha ett fel på en dag."
 
@@ -7497,7 +7499,7 @@ msgstr "Indianapolis, Indiana, Förenta staterna"
 #: app/GedcomTag.php:802 app/Module/IndividualReportModule.php:38
 #: resources/views/admin/fix-level-0-media.phtml:26
 #: resources/views/admin/trees-privacy.phtml:173
-#: resources/views/admin/trees.phtml:211
+#: resources/views/admin/trees.phtml:219
 #: resources/views/cards/add-source-citation.phtml:23
 #: resources/views/modals/link-media-to-individual.phtml:13
 #: resources/views/modules/ancestors-chart/page.phtml:19
@@ -7535,7 +7537,7 @@ msgstr "Person"
 msgid "Individual 1"
 msgstr "Person 1"
 
-#: resources/views/modules/relationships-chart/page.phtml:29
+#: resources/views/modules/relationships-chart/page.phtml:25
 msgid "Individual 2"
 msgstr "Person 2"
 
@@ -7547,7 +7549,7 @@ msgstr "Fördelning av personer (diagram)"
 msgid "Individual page"
 msgstr "Individuell sida"
 
-#: resources/views/admin/trees-preferences.phtml:456
+#: resources/views/admin/trees-preferences.phtml:436
 msgid "Individual pages"
 msgstr "Personsidor"
 
@@ -7563,7 +7565,7 @@ msgid "Individual who lived the longest"
 msgstr "Person som levt längst"
 
 #. I18N: Name of a module/list
-#: app/Http/Controllers/AdminTreesController.php:2070
+#: app/Http/Controllers/AdminTreesController.php:2063
 #: app/Http/Controllers/CalendarController.php:321
 #: app/Http/Controllers/ListController.php:237
 #: app/Module/AncestorsChartModule.php:223
@@ -7584,7 +7586,7 @@ msgstr "Person som levt längst"
 #: resources/views/lists/notes-table.phtml:81
 #: resources/views/lists/sources-table.phtml:84
 #: resources/views/lists/surnames-table.phtml:22
-#: resources/views/media-page.phtml:39
+#: resources/views/media-page.phtml:54
 #: resources/views/modules/census-assistant.phtml:51
 #: resources/views/modules/gedcom_stats/config.phtml:20
 #: resources/views/modules/gedcom_stats/statistics.phtml:19
@@ -7593,7 +7595,7 @@ msgstr "Person som levt längst"
 #: resources/views/modules/statistics-chart/custom.phtml:53
 #: resources/views/modules/statistics-chart/custom.phtml:148
 #: resources/views/note-page.phtml:38 resources/views/place-events.phtml:6
-#: resources/views/place-sidebar.phtml:23
+#: resources/views/place-sidebar.phtml:19
 #: resources/views/search-general-page.phtml:30
 #: resources/views/search-results.phtml:9 resources/views/source-page.phtml:38
 #: resources/xml/reports/fact_sources.xml:54
@@ -7943,7 +7945,7 @@ msgid "Keep open"
 msgstr "Håll öppen"
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:963
+#: resources/views/admin/trees-preferences.phtml:943
 #: resources/views/edit/add-fact.phtml:70
 #: resources/views/edit/edit-fact.phtml:96
 msgid "Keep the existing “last change” information"
@@ -8087,7 +8089,7 @@ msgstr "Liggande"
 #: app/GedcomTag.php:808 app/Module/ModuleLanguageTrait.php:46
 #: app/Module/ModuleThemeTrait.php:247 resources/views/admin/modules.phtml:249
 #: resources/views/admin/modules.phtml:252
-#: resources/views/admin/trees-preferences.phtml:62
+#: resources/views/admin/trees-preferences.phtml:63
 #: resources/views/admin/users-edit.phtml:106
 #: resources/views/admin/users.phtml:18
 #: resources/views/edit-account-page.phtml:82
@@ -8142,7 +8144,7 @@ msgstr "Las Vegas, Nevada, Förenta staterna"
 msgid "Last change"
 msgstr "Senaste ändringen"
 
-#: app/Module/ReviewChangesModule.php:142
+#: app/Module/ReviewChangesModule.php:150
 msgid "Last email reminder was sent "
 msgstr "Senaste e-postpåminnelse skickades "
 
@@ -8178,7 +8180,7 @@ msgstr "Senaste vigsel"
 
 #. I18N: gedcom tag LATI
 #: app/Functions/FunctionsPrint.php:350 app/GedcomTag.php:811
-#: resources/views/admin/location-edit.phtml:41
+#: resources/views/admin/location-edit.phtml:42
 #: resources/views/admin/locations.phtml:13
 #: resources/views/edit/input-addon-coordinates.phtml:5
 #: resources/views/edit/input-addon-coordinates.phtml:8
@@ -8343,7 +8345,7 @@ msgstr "Lista"
 #: resources/views/admin/control-panel.phtml:338
 #: resources/views/admin/modules.phtml:83
 #: resources/views/admin/modules.phtml:85
-#: resources/views/admin/trees-preferences.phtml:360
+#: resources/views/admin/trees-preferences.phtml:340
 msgid "Lists"
 msgstr "Listor"
 
@@ -8409,7 +8411,7 @@ msgid "London, England"
 msgstr "London, England"
 
 #. I18N: Help text for the “Maximum number of surnames on individual list” configuration setting
-#: resources/views/admin/trees-preferences.phtml:390
+#: resources/views/admin/trees-preferences.phtml:370
 msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero."
 msgstr "Långa listor av personer med samma efternamn kan brytas upp till mindre underlistor efter första bokstaven i personen förnamn.<br><br>Detta val bestämmer när underlistor av efternamn ska skapas. För att stänga av detta val helt, sätt detta val till noll."
 
@@ -8419,7 +8421,7 @@ msgstr "Längsta äktenskap"
 
 #. I18N: gedcom tag LONG
 #: app/Functions/FunctionsPrint.php:356 app/GedcomTag.php:817
-#: resources/views/admin/location-edit.phtml:52
+#: resources/views/admin/location-edit.phtml:53
 #: resources/views/admin/locations.phtml:14
 #: resources/views/edit/input-addon-coordinates.phtml:5
 #: resources/views/edit/input-addon-coordinates.phtml:8
@@ -8430,10 +8432,6 @@ msgstr "Longitud"
 #: app/GedcomCode/GedcomCodeTemp.php:421
 msgid "Los Angeles, California, United States"
 msgstr "Los Angeles, Kalifornien, Förenta staterna"
-
-#: app/Http/Controllers/Auth/ForgotPasswordController.php:77
-msgid "Lost password request"
-msgstr "Begär återställning av förlorat lösenord"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:433
@@ -8499,8 +8497,8 @@ msgstr "Malaysia"
 msgid "Maldives"
 msgstr "Maldiverna"
 
-#: app/Functions/FunctionsEdit.php:546
-#: app/Http/Controllers/IndividualController.php:314
+#: app/Functions/FunctionsEdit.php:531
+#: app/Http/Controllers/IndividualController.php:317
 #: app/Module/StatisticsChartModule.php:775
 msgid "Male"
 msgstr "Man"
@@ -8546,7 +8544,7 @@ msgstr "Malta"
 #: resources/views/admin/trees-duplicates.phtml:3
 #: resources/views/admin/trees-export.phtml:3
 #: resources/views/admin/trees-import.phtml:4
-#: resources/views/admin/trees-preferences.phtml:8
+#: resources/views/admin/trees-preferences.phtml:9
 #: resources/views/admin/trees-privacy.phtml:11
 msgid "Manage family trees"
 msgstr "Hantera släktträd"
@@ -8569,7 +8567,7 @@ msgid "Manage the links"
 msgstr "Hantera länkarna"
 
 #. I18N: Listbox entry; name of a role
-#: app/Http/Controllers/Admin/UsersController.php:476
+#: app/Http/Controllers/Admin/UsersController.php:484
 #: resources/views/admin/trees-export.phtml:91
 #: resources/views/admin/users-edit.phtml:253
 #: resources/views/modules/clippings/download.phtml:21
@@ -8606,14 +8604,9 @@ msgid "Manuscript"
 msgstr "Manuskript"
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
-#: resources/views/admin/trees-preferences.phtml:671
+#: resources/views/admin/trees-preferences.phtml:651
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them. When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
 msgstr "Många släktprogram skapar GEDCOM-filer med egna taggar. webtrees förstår de flesta av dem. När en oigenkändlig tagg hittas, låter detta alternativ, dig välja att ignorera dem eller visa ett varning-meddelande."
-
-#. I18N: Help text for the "Sending server name" site configuration setting
-#: resources/views/admin/site-mail.phtml:132
-msgid "Many mail servers require that the sending server identifies itself correctly, using a valid domain name."
-msgstr "Många mail servrar kräver att den sändande servern identifierar sig korrekt och använder ett giltigt domännamn."
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2385 resources/views/admin/control-panel.phtml:517
@@ -8655,7 +8648,7 @@ msgid "March"
 msgstr "mars"
 
 #. I18N: Help text for the “Format text and notes” configuration setting
-#: resources/views/admin/trees-preferences.phtml:639
+#: resources/views/admin/trees-preferences.phtml:619
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
 msgstr "Markdown är ett enkelt system av formatering som används på webbplatser som Wikipedia. Det använder diskreta skiljetecken för att skapa rubriker och underrubriker, fet och kursiv text, listor, tabeller, osv."
 
@@ -8769,7 +8762,7 @@ msgstr "Äktenskapslicens"
 msgid "Marriage of a brother"
 msgstr "Brors vigsel"
 
-#: app/GedcomTag.php:1884 resources/views/admin/trees-preferences.phtml:494
+#: app/GedcomTag.php:1884 resources/views/admin/trees-preferences.phtml:474
 msgid "Marriage of a child"
 msgstr "Barnvigsel"
 
@@ -8783,7 +8776,7 @@ msgid "Marriage of a father"
 msgstr "Faderns vigsel"
 
 #: app/GedcomTag.php:1899 app/GedcomTag.php:1910 app/GedcomTag.php:1921
-#: resources/views/admin/trees-preferences.phtml:488
+#: resources/views/admin/trees-preferences.phtml:468
 msgid "Marriage of a grandchild"
 msgstr "Barnbarnets vigsel"
 
@@ -8833,11 +8826,11 @@ msgid "Marriage of a mother"
 msgstr "Moderns vigsel"
 
 #. I18N: ...to another spouse
-#: app/GedcomTag.php:1946 resources/views/admin/trees-preferences.phtml:506
+#: app/GedcomTag.php:1946 resources/views/admin/trees-preferences.phtml:486
 msgid "Marriage of a parent"
 msgstr "Förälders vigsel"
 
-#: app/GedcomTag.php:1957 resources/views/admin/trees-preferences.phtml:500
+#: app/GedcomTag.php:1957 resources/views/admin/trees-preferences.phtml:480
 msgid "Marriage of a sibling"
 msgstr "Syskons vigsel"
 
@@ -8909,7 +8902,7 @@ msgstr "Marshallöarna"
 msgid "Martinique"
 msgstr "Martinique"
 
-#: app/Http/Controllers/Admin/UsersController.php:225
+#: app/Http/Controllers/Admin/UsersController.php:233
 msgid "Masquerade as this user"
 msgstr "Byt identitet till denna användare"
 
@@ -8937,7 +8930,7 @@ msgid "Mauritius"
 msgstr "Mauritius"
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:377
+#: resources/views/admin/trees-preferences.phtml:357
 msgid "Maximum number of surnames on individual list"
 msgstr "Maximalt antal efternamn i personlista"
 
@@ -8998,7 +8991,7 @@ msgstr "Media"
 #: resources/views/admin/media.phtml:80
 #: resources/views/admin/webtrees1-thumbnails.phtml:30
 #: resources/views/media-list-page.phtml:138
-#: resources/views/media-page.phtml:69 resources/views/media-page.phtml:162
+#: resources/views/media-page.phtml:84 resources/views/media-page.phtml:179
 #: resources/views/modals/create-media-from-file.phtml:20
 #: resources/views/modals/media-file-fields.phtml:6
 msgid "Media file"
@@ -9015,17 +9008,17 @@ msgid "Media filenames will be prefixed by %s."
 msgstr "Namnet på mediafilen föregås av %s."
 
 #: resources/views/admin/media.phtml:13
-#: resources/views/admin/trees-preferences.phtml:283
+#: resources/views/admin/trees-preferences.phtml:263
 msgid "Media files"
 msgstr "Media filer"
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:264
+#: resources/views/admin/trees-preferences.phtml:244
 msgid "Media folder"
 msgstr "Media mapp"
 
 #: resources/views/admin/media.phtml:14
-#: resources/views/admin/trees-preferences.phtml:259
+#: resources/views/admin/trees-preferences.phtml:239
 msgid "Media folders"
 msgstr "Media mappar"
 
@@ -9034,7 +9027,7 @@ msgstr "Media mappar"
 #: resources/views/admin/fix-level-0-media.phtml:24
 #: resources/views/admin/media.phtml:82
 #: resources/views/admin/trees-privacy.phtml:178
-#: resources/views/admin/trees.phtml:242
+#: resources/views/admin/trees.phtml:250
 #: resources/views/admin/webtrees1-thumbnails.phtml:31
 #: resources/views/family-page.phtml:91
 #: resources/views/modules/favorites/favorites.phtml:87
@@ -9043,7 +9036,7 @@ msgid "Media object"
 msgstr "Mediaobjekt"
 
 #. I18N: Name of a module/list
-#: app/Http/Controllers/AdminTreesController.php:2072
+#: app/Http/Controllers/AdminTreesController.php:2065
 #: app/Module/MediaListModule.php:46
 #: resources/views/admin/fix-level-0-media.phtml:19
 #: resources/views/admin/merge-records-step-1.phtml:22
@@ -9131,7 +9124,7 @@ msgid "Melbourne, Australia"
 msgstr "Melbourne, Australien"
 
 #. I18N: Listbox entry; name of a role
-#: app/Http/Controllers/Admin/UsersController.php:470
+#: app/Http/Controllers/Admin/UsersController.php:478
 #: resources/views/admin/trees-export.phtml:97
 #: resources/views/admin/users-edit.phtml:231
 #: resources/views/modules/clippings/download.phtml:24
@@ -9171,7 +9164,7 @@ msgid "Merge family trees"
 msgstr "Sammanfoga släktträd"
 
 #: app/Http/Controllers/AdminController.php:56
-#: resources/views/admin/trees.phtml:143
+#: resources/views/admin/trees.phtml:151
 msgid "Merge records"
 msgstr "Sammanfoga poster"
 
@@ -9195,7 +9188,7 @@ msgstr "Meddelande"
 #. I18N: Name of a module
 #. I18N: A configuration setting
 #: app/Module/UserMessagesModule.php:64
-#: resources/views/admin/site-mail.phtml:19
+#: resources/views/admin/site-mail.phtml:40
 msgid "Messages"
 msgstr "Meddelanden"
 
@@ -9270,7 +9263,7 @@ msgid "Missing data"
 msgstr "Saknade uppgifter"
 
 #. I18N: Listbox entry; name of a role
-#: app/Http/Controllers/Admin/UsersController.php:474
+#: app/Http/Controllers/Admin/UsersController.php:482
 #: resources/views/admin/users-edit.phtml:245
 msgid "Moderator"
 msgstr "Moderator"
@@ -9436,7 +9429,7 @@ msgid "Morocco"
 msgstr "Marocko"
 
 #. I18N: Help text for the “Use password” site configuration setting
-#: resources/views/admin/site-mail.phtml:79
+#: resources/views/admin/site-mail.phtml:111
 msgid "Most SMTP servers require a password."
 msgstr "De flesta SMTP-servrar fodrar lösenord."
 
@@ -9446,8 +9439,21 @@ msgstr "De flesta SMTP-servrar fodrar lösenord."
 msgid "Most common surnames"
 msgstr "De vanligaste efternamnen"
 
+#: resources/views/admin/site-mail.phtml:173
+msgid "Most mail servers require a valid domain name."
+msgstr ""
+
+#: resources/views/admin/site-mail.phtml:65
+msgid "Most mail servers require a valid email address."
+msgstr ""
+
+#. I18N: Help text for the "Sending server name" site configuration setting
+#: resources/views/admin/site-mail.phtml:168
+msgid "Most mail servers require that the sending server identifies itself correctly, using a valid domain name."
+msgstr ""
+
 #. I18N: Help text for the “Secure connection” site configuration setting
-#: resources/views/admin/site-mail.phtml:119
+#: resources/views/admin/site-mail.phtml:154
 msgid "Most servers do not use secure connections."
 msgstr "De flesta servrar använder inte säkra anslutningar."
 
@@ -9561,7 +9567,7 @@ msgstr "Muharram"
 msgid "Multiple marriages"
 msgstr "Flera äktenskap"
 
-#: app/Http/Controllers/AccountController.php:79
+#: app/Http/Controllers/AccountController.php:78
 #: app/Module/ModuleThemeTrait.php:307 app/Module/UserWelcomeModule.php:110
 msgid "My account"
 msgstr "Mitt konto"
@@ -9598,7 +9604,7 @@ msgstr "Burma"
 
 #. I18N: gedcom tag NAME
 #: app/GedcomTag.php:862 app/Http/Controllers/HelpTextController.php:200
-#: app/Http/Controllers/IndividualController.php:237
+#: app/Http/Controllers/IndividualController.php:240
 #: app/Statistics/Google/ChartCommonGiven.php:77
 #: app/Statistics/Google/ChartCommonSurname.php:136
 #: resources/views/modals/submitter-fields.phtml:5
@@ -9709,7 +9715,7 @@ msgstr "Nepal"
 msgid "Netherlands"
 msgstr "Nederländerna"
 
-#: app/Http/Controllers/Admin/UsersController.php:248
+#: app/Http/Controllers/Admin/UsersController.php:256
 #: resources/views/components/datetime.phtml:11
 msgid "Never"
 msgstr "Aldrig"
@@ -9751,14 +9757,14 @@ msgid "New data"
 msgstr "Ny data"
 
 #. I18N: %s is a server name/URL
-#: app/Http/Controllers/Auth/RegisterController.php:153
+#: app/Http/Controllers/Auth/RegisterController.php:161
 #, php-format
 msgid "New registration at %s"
 msgstr "Ny registrering på %s"
 
 #. I18N: %s is a server name/URL
-#: app/Http/Controllers/Admin/UsersController.php:400
-#: app/Http/Controllers/Auth/VerifyEmailController.php:65
+#: app/Http/Controllers/Admin/UsersController.php:408
+#: app/Http/Controllers/Auth/VerifyEmailController.php:77
 #, php-format
 msgid "New user at %s"
 msgstr "Ny användare på %s"
@@ -9778,7 +9784,7 @@ msgstr "Nyheter"
 msgid "Newspaper"
 msgstr "Tidning"
 
-#: app/Module/ReviewChangesModule.php:143
+#: app/Module/ReviewChangesModule.php:151
 msgid "Next email reminder will be sent after "
 msgstr "Nästa e-postpåminnelse kommer att skickas efter "
 
@@ -9860,7 +9866,7 @@ msgctxt "NOMINATIVE"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#: app/Functions/FunctionsPrintFacts.php:292
+#: app/Functions/FunctionsPrintFacts.php:293
 #: resources/views/admin/users-edit.phtml:321
 msgid "No"
 msgstr "Nej"
@@ -9920,11 +9926,11 @@ msgstr "Inga fakta finns för denna familj."
 msgid "No file was received. Please try again."
 msgstr "Ingen fil mottogs. Ladda upp filen igen."
 
-#: app/Module/RelationshipsChartModule.php:374
+#: app/Module/RelationshipsChartModule.php:376
 msgid "No link between the two individuals could be found."
 msgstr "Ingen förbindelse mellan de två personerna kunde hittas."
 
-#: resources/views/admin/location-edit.phtml:134
+#: resources/views/admin/location-edit.phtml:135
 #: resources/views/modules/pedigree-map/chart.phtml:56
 #: resources/views/modules/places/tab.phtml:52
 #: resources/views/place-map.phtml:59
@@ -9946,7 +9952,7 @@ msgstr "Det finns inga nyhetsartiklar."
 msgid "No places have been found."
 msgstr "Inga platser hittades."
 
-#: app/Http/Controllers/AdminSiteController.php:487
+#: app/Http/Controllers/AdminSiteController.php:488
 msgid "No predefined text"
 msgstr "Ingen fördefinierad text"
 
@@ -9966,7 +9972,7 @@ msgstr "Inga resultat funna."
 msgid "No signed-in and no anonymous users"
 msgstr "Inga inloggade eller anonyma användare"
 
-#: app/Functions/FunctionsEdit.php:265
+#: app/Functions/FunctionsEdit.php:250
 msgid "No temple - living ordinance"
 msgstr "Inget tempel - Living Ordinance"
 
@@ -10092,7 +10098,7 @@ msgstr "Obs: längre sökvägar kräver mycket beräkning, som kan göra din web
 #: resources/views/admin/control-panel.phtml:133
 #: resources/views/admin/merge-records-step-1.phtml:21
 #: resources/views/gedcom-record-page.phtml:62
-#: resources/views/media-page.phtml:57
+#: resources/views/media-page.phtml:72
 #: resources/views/modules/census-assistant.phtml:78
 #: resources/views/note-page.phtml:62 resources/views/search-results.phtml:53
 #: resources/views/source-page.phtml:56
@@ -10320,11 +10326,11 @@ msgstr "Historiska händelser denna dag…"
 msgid "Only add new records"
 msgstr "Lägg bara till nya poster"
 
-#: app/Functions/FunctionsEdit.php:231
-#: app/Functions/FunctionsPrintFacts.php:257
-#: app/Functions/FunctionsPrintFacts.php:431
-#: app/Functions/FunctionsPrintFacts.php:817
-#: app/Functions/FunctionsPrintFacts.php:1059
+#: app/Functions/FunctionsEdit.php:216
+#: app/Functions/FunctionsPrintFacts.php:258
+#: app/Functions/FunctionsPrintFacts.php:432
+#: app/Functions/FunctionsPrintFacts.php:818
+#: app/Functions/FunctionsPrintFacts.php:1060
 #: resources/views/modals/restriction-fields.phtml:28
 msgid "Only managers can edit"
 msgstr "Endast släktträdets manager kan redigera"
@@ -10408,7 +10414,7 @@ msgstr "Orlando, Florida, Förenta staterna"
 msgid "Other"
 msgstr "Andra"
 
-#: resources/views/admin/trees-preferences.phtml:444
+#: resources/views/admin/trees-preferences.phtml:424
 msgid "Other facts to show in charts"
 msgstr "Andra fakta att visa i tavlorna"
 
@@ -10416,7 +10422,7 @@ msgstr "Andra fakta att visa i tavlorna"
 msgid "Other genealogy applications might not recognize this data."
 msgstr "Andra släktforskningsapplikationer kanske inte känner igen denna data."
 
-#: resources/views/admin/trees-preferences.phtml:912
+#: resources/views/admin/trees-preferences.phtml:892
 msgid "Other preferences"
 msgstr "Andra inställningar"
 
@@ -10556,15 +10562,14 @@ msgid "Parent’s age"
 msgstr "Föräldrarnas ålder"
 
 #. I18N: A configuration setting
-#: resources/views/admin/site-mail.phtml:101
+#: resources/views/admin/site-mail.phtml:134
 #: resources/views/admin/users-create.phtml:40
 #: resources/views/admin/users-edit.phtml:48
 #: resources/views/edit-account-page.phtml:68
-#: resources/views/emails/password-reset-html.phtml:14
-#: resources/views/emails/password-reset-text.phtml:7
-#: resources/views/login-page.phtml:33
+#: resources/views/login-page.phtml:44
 #: resources/views/modules/login_block/sign-in.phtml:17
-#: resources/views/register-page.phtml:56
+#: resources/views/password-reset-page.phtml:33
+#: resources/views/register-page.phtml:68
 #: resources/views/setup/step-5-administrator.phtml:56
 msgid "Password"
 msgstr "Lösenord"
@@ -10572,7 +10577,8 @@ msgstr "Lösenord"
 #: resources/views/admin/users-create.phtml:45
 #: resources/views/admin/users-edit.phtml:53
 #: resources/views/edit-account-page.phtml:73
-#: resources/views/register-page.phtml:61
+#: resources/views/password-reset-page.phtml:38
+#: resources/views/register-page.phtml:74
 msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
 msgstr "Lösenord bör vara minst 8 tecken långa och de är skifteslägeskänsliga, så att ”hemlig” icke är samma som ”HEMLIG”."
 
@@ -10615,8 +10621,8 @@ msgstr "Antavla för %s"
 #. I18N: Name of a module
 #: app/Http/Controllers/HelpTextController.php:240
 #: app/Http/Controllers/PendingChangesController.php:302
-#: app/Module/ModuleThemeTrait.php:411 app/Module/ReviewChangesModule.php:63
-#: app/Module/ReviewChangesModule.php:115
+#: app/Module/ModuleThemeTrait.php:411 app/Module/ReviewChangesModule.php:71
+#: app/Module/ReviewChangesModule.php:123
 #: resources/views/admin/control-panel-manager.phtml:44
 #: resources/views/admin/control-panel-tree-list.phtml:31
 #: resources/views/admin/control-panel.phtml:127
@@ -10708,7 +10714,7 @@ msgstr "Pitcairn"
 
 #. I18N: gedcom tag PLAC
 #: app/GedcomTag.php:929 app/Http/Controllers/HelpTextController.php:215
-#: resources/views/admin/location-edit.phtml:23
+#: resources/views/admin/location-edit.phtml:24
 #: resources/views/admin/locations.phtml:12
 #: resources/views/lists/families-table.phtml:261
 #: resources/views/lists/individuals-table.phtml:277
@@ -10743,7 +10749,7 @@ msgid "Place list"
 msgstr "Ortsförteckning"
 
 #. I18N: Help text for the “Abbreviate place names” configuration setting
-#: resources/views/admin/trees-preferences.phtml:619
+#: resources/views/admin/trees-preferences.phtml:599
 msgid "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
 msgstr "Fullständiga ortsnamn är ofta alltför långa för att få plats i diagram, listor, osv. De kan förkortas genom att visa endast de allra första delarna av namnet, t.ex. <i>by, socken</i>, eller de allra sista, t.ex. <i>län, land</i>."
 
@@ -10870,7 +10876,7 @@ msgstr "Hemort"
 #. I18N: Name of a module
 #: app/Http/Controllers/PlaceHierarchyController.php:115
 #: app/Module/PlacesModule.php:66
-#: resources/views/admin/trees-preferences.phtml:598
+#: resources/views/admin/trees-preferences.phtml:578
 #: resources/views/search-replace-page.phtml:33
 #: resources/views/statistics/other/places.phtml:10
 msgid "Places"
@@ -10886,9 +10892,14 @@ msgstr "Orter utan giltiga koordinater visas inte på kartan och har en röd kan
 msgid "Play"
 msgstr "Spela"
 
-#: app/Http/Controllers/MessageController.php:214
+#: app/Http/Controllers/MessageController.php:221
 msgid "Please enter a valid email address."
 msgstr "Obs! Skriv in en giltig e-postadress."
+
+#: app/Http/RequestHandlers/PasswordResetAction.php:79
+#: app/Http/RequestHandlers/PasswordResetForm.php:75
+msgid "Please try again."
+msgstr ""
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:141
@@ -10925,7 +10936,7 @@ msgid "Polish"
 msgstr "Polsk"
 
 #. I18N: A configuration setting
-#: resources/views/admin/site-mail.phtml:60
+#: resources/views/admin/site-mail.phtml:90
 #: resources/views/setup/step-4-database-mysql.phtml:44
 #: resources/views/setup/step-4-database-pgsql.phtml:38
 #: resources/views/setup/step-4-database-sqlsvr.phtml:38
@@ -10993,15 +11004,15 @@ msgctxt "NOMINATIVE"
 msgid "Prairial"
 msgstr "Prairial"
 
-#: app/Http/Controllers/AdminSiteController.php:489
+#: app/Http/Controllers/AdminSiteController.php:490
 msgid "Predefined text that states admin will decide on each request for a user account"
 msgstr "Fördefinierad text som anger att administratören bestämmer om man får ett användarkonto"
 
-#: app/Http/Controllers/AdminSiteController.php:488
+#: app/Http/Controllers/AdminSiteController.php:489
 msgid "Predefined text that states all users can request a user account"
 msgstr "Fördefinierad text som anger att alla användare kan ansöka om ett användarkonto"
 
-#: app/Http/Controllers/AdminSiteController.php:490
+#: app/Http/Controllers/AdminSiteController.php:491
 msgid "Predefined text that states only family members can request a user account"
 msgstr "Fördefinierad text som anger att endast familjemedlemmar kan ansöka om ett användarkonto"
 
@@ -11015,7 +11026,7 @@ msgstr "Fördefinierad text som anger att endast familjemedlemmar kan ansöka om
 #: resources/views/admin/modules.phtml:61
 #: resources/views/admin/modules.phtml:132
 #: resources/views/admin/modules.phtml:135
-#: resources/views/admin/modules.phtml:138 resources/views/admin/trees.phtml:58
+#: resources/views/admin/modules.phtml:138 resources/views/admin/trees.phtml:62
 #: resources/views/modules/block-template.phtml:6
 #: resources/views/modules/block-template.phtml:8
 msgid "Preferences"
@@ -11069,11 +11080,11 @@ msgid "Print basic events when blank"
 msgstr "Skriv ut grundläggande händelser, när tomma"
 
 #: app/Http/Controllers/AdminController.php:266
-#: resources/views/admin/trees.phtml:68
+#: resources/views/admin/trees.phtml:72
 msgid "Privacy"
 msgstr "Integritet"
 
-#: app/Http/Controllers/StaticPageController.php:36
+#: app/Http/RequestHandlers/PrivacyPolicy.php:40
 msgid "Privacy policy"
 msgstr "Integritetspolicy"
 
@@ -11097,6 +11108,10 @@ msgstr "Privat begränsningar - dessa gäller för dataposter och fakta som inte
 #: app/Statistics/Repository/EventRepository.php:413
 msgid "Private"
 msgstr "Privat"
+
+#: resources/views/admin/site-mail.phtml:204
+msgid "Private key"
+msgstr ""
 
 #. I18N: gedcom tag PROB
 #: app/GedcomTag.php:941
@@ -11153,19 +11168,19 @@ msgstr "Fråga"
 msgid "Quetzaltenango, Guatemala"
 msgstr "Quetzaltenango, Guatemala"
 
-#: resources/views/admin/trees-preferences.phtml:792
+#: resources/views/admin/trees-preferences.phtml:772
 msgid "Quick family facts"
 msgstr "Snabba familjefakta"
 
-#: resources/views/admin/trees-preferences.phtml:738
+#: resources/views/admin/trees-preferences.phtml:718
 msgid "Quick individual facts"
 msgstr "Snabba personfakta"
 
-#: resources/views/admin/trees-preferences.phtml:874
+#: resources/views/admin/trees-preferences.phtml:854
 msgid "Quick repository facts"
 msgstr "Snabba arkivfakta"
 
-#: resources/views/admin/trees-preferences.phtml:833
+#: resources/views/admin/trees-preferences.phtml:813
 msgid "Quick source facts"
 msgstr "Snabba källfakta"
 
@@ -11308,7 +11323,7 @@ msgstr "Ändra ordning på familjer"
 
 #. I18N: gedcom tag _WT_OBJE_SORT
 #: app/GedcomTag.php:2075 app/Http/Controllers/EditIndividualController.php:48
-#: resources/views/individual-page.phtml:70
+#: resources/views/individual-page.phtml:85
 msgid "Re-order media"
 msgstr "Ändra ordningen på media"
 
@@ -11323,7 +11338,7 @@ msgstr "Omordna namnen"
 #: resources/views/edit-account-page.phtml:26
 #: resources/views/emails/register-notify-html.phtml:15
 #: resources/views/emails/register-notify-text.phtml:7
-#: resources/views/register-page.phtml:20
+#: resources/views/register-page.phtml:32
 msgid "Real name"
 msgstr "Verkligt namn"
 
@@ -11460,7 +11475,7 @@ msgstr "Förhållande till moder"
 msgid "Relationship to parents"
 msgstr "Förhållande till föräldrar"
 
-#: app/Module/RelationshipsChartModule.php:300
+#: app/Module/RelationshipsChartModule.php:302
 #, php-format
 msgid "Relationship: %s"
 msgstr "Förhållande: %s"
@@ -11470,14 +11485,14 @@ msgstr "Förhållande: %s"
 #: app/Http/Controllers/BranchesController.php:291
 #: app/Http/Controllers/BranchesController.php:328
 #: app/Module/RelationshipsChartModule.php:123
-#: app/Module/RelationshipsChartModule.php:244
+#: app/Module/RelationshipsChartModule.php:246
 #: resources/views/lists/individuals-table.phtml:334
 #: resources/views/modules/relationships-chart/config.phtml:17
 msgid "Relationships"
 msgstr "Förhållanden"
 
 #. I18N: %s are individual’s names
-#: app/Module/RelationshipsChartModule.php:235
+#: app/Module/RelationshipsChartModule.php:237
 #, php-format
 msgid "Relationships between %1$s and %2$s"
 msgstr "Relationer mellan %1$s och %2$s"
@@ -11549,7 +11564,7 @@ msgstr "Ta bort denna plats?"
 msgid "Reno, Nevada, United States"
 msgstr "Reno, Nevada, Förenta staterna"
 
-#: resources/views/admin/trees.phtml:183
+#: resources/views/admin/trees.phtml:191
 msgid "Renumber"
 msgstr "Numrera om"
 
@@ -11590,7 +11605,7 @@ msgid "Reports"
 msgstr "Rapporter"
 
 #. I18N: Name of a module/list
-#: app/Http/Controllers/AdminTreesController.php:2068
+#: app/Http/Controllers/AdminTreesController.php:2061
 #: app/Http/Controllers/ListController.php:487
 #: app/Module/RepositoryListModule.php:45
 #: resources/views/admin/control-panel-manager.phtml:48
@@ -11608,7 +11623,7 @@ msgstr "Arkivlistor"
 
 #. I18N: gedcom tag REPO
 #: app/GedcomTag.php:962 resources/views/admin/trees-privacy.phtml:176
-#: resources/views/admin/trees.phtml:231
+#: resources/views/admin/trees.phtml:239
 #: resources/views/modals/source-fields.phtml:35
 #: resources/views/modules/favorites/favorites.phtml:111
 #: resources/views/modules/recent_changes/changes-table.phtml:49
@@ -11624,14 +11639,15 @@ msgstr "Arkivnamn"
 msgid "Republic of the Congo"
 msgstr "Kongo-Brazzaville"
 
-#: app/Http/Controllers/Auth/ForgotPasswordController.php:45
+#: app/Http/RequestHandlers/PasswordRequestAction.php:86
+#: app/Http/RequestHandlers/PasswordRequestForm.php:47
 #: resources/views/modules/login_block/sign-in.phtml:43
 msgid "Request a new password"
 msgstr "Begär ett nytt lösenord"
 
-#: app/Http/Controllers/Auth/RegisterController.php:74
-#: app/Http/Controllers/Auth/RegisterController.php:177
-#: app/Module/WelcomeBlockModule.php:111 resources/views/login-page.phtml:58
+#: app/Http/Controllers/Auth/RegisterController.php:83
+#: app/Http/Controllers/Auth/RegisterController.php:185
+#: app/Module/WelcomeBlockModule.php:111 resources/views/login-page.phtml:66
 #: resources/views/modules/login_block/sign-in.phtml:35
 msgid "Request a new user account"
 msgstr "Begär ett nytt användarkonto"
@@ -11654,7 +11670,7 @@ msgstr "Forskningsuppgifter är speciella händelser som läggs till personer i 
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
 msgstr "Forskningsuppgifter lagras med den anpassade GEDCOM-taggen ”_TODO”. Andra släktforskringsprogram kanske inte känner igen den här taggen."
 
-#: resources/views/admin/location-edit.phtml:133
+#: resources/views/admin/location-edit.phtml:134
 #: resources/views/modules/pedigree-map/chart.phtml:55
 #: resources/views/modules/places/tab.phtml:51
 #: resources/views/place-map.phtml:58
@@ -11678,7 +11694,7 @@ msgstr "Begränsa till närmaste släkten"
 
 #. I18N: gedcom tag RESN
 #: app/GedcomTag.php:972 app/Http/Controllers/HelpTextController.php:220
-#: resources/views/media-page.phtml:152
+#: resources/views/media-page.phtml:169
 msgid "Restriction"
 msgstr "Begränsning"
 
@@ -11753,15 +11769,15 @@ msgstr "Ryssland"
 msgid "Rwanda"
 msgstr "Rwanda"
 
-#: resources/views/admin/site-mail.phtml:42
+#: resources/views/admin/site-mail.phtml:71
 msgid "SMTP mail server"
 msgstr "SMTP e-postserver"
 
-#: app/Services/ServerCheckService.php:278
+#: app/Services/ServerCheckService.php:320
 msgid "SQLite is only suitable for small sites, testing and evaluation."
 msgstr "SQLite är bara lämpligt för små webbplatser, testning och utvärdering."
 
-#: app/Services/ServerCheckService.php:202
+#: app/Services/ServerCheckService.php:213
 #, php-format
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
 msgstr "SQLite version %s är installerat. SQLite version %s eller senare krävs."
@@ -11990,7 +12006,7 @@ msgid "Second record"
 msgstr "Andra posten"
 
 #. I18N: A configuration setting
-#: resources/views/admin/site-mail.phtml:114
+#: resources/views/admin/site-mail.phtml:148
 msgid "Secure connection"
 msgstr "Säker anslutning"
 
@@ -12041,6 +12057,10 @@ msgstr "Välj de fakta och händelser som skall hållas från båda posterna."
 msgid "Select two records to merge."
 msgstr "Sammanfoga två poster."
 
+#: resources/views/admin/site-mail.phtml:195
+msgid "Selector"
+msgstr ""
+
 #: app/GedcomCode/GedcomCodeRela.php:311
 msgid "Seller"
 msgstr "Säljare"
@@ -12061,25 +12081,25 @@ msgstr "Säljare"
 msgid "Send"
 msgstr "Skicka"
 
-#: app/Http/Controllers/MessageController.php:169
-#: app/Http/Controllers/MessageController.php:284
+#: app/Http/Controllers/MessageController.php:176
+#: app/Http/Controllers/MessageController.php:291
 #: app/Module/UserMessagesModule.php:145
 #: app/Statistics/Repository/UserRepository.php:124
 #: resources/views/pending-changes-page.phtml:75
 msgid "Send a message"
 msgstr "Skicka meddelande"
 
-#: app/Http/Controllers/MessageController.php:500
+#: app/Http/Controllers/MessageController.php:506
 #: resources/views/admin/control-panel.phtml:273
 msgid "Send a message to all users"
 msgstr "Skicka meddelande till alla användare"
 
-#: app/Http/Controllers/MessageController.php:502
+#: app/Http/Controllers/MessageController.php:508
 #: resources/views/admin/control-panel.phtml:279
 msgid "Send a message to users who have never signed in"
 msgstr "Skicka meddelande till användare som aldrig loggat in"
 
-#: app/Http/Controllers/MessageController.php:504
+#: app/Http/Controllers/MessageController.php:510
 #: resources/views/admin/control-panel.phtml:285
 msgid "Send a message to users who have not signed in for 6 months"
 msgstr "Skicka meddelande till användare som inte loggat in på 6 månader"
@@ -12090,17 +12110,17 @@ msgid "Send out reminder emails"
 msgstr "Skicka påminnelse via e-post"
 
 #. I18N: A configuration setting
-#: resources/views/admin/site-mail.phtml:32
+#: resources/views/admin/site-mail.phtml:54
 msgid "Sender name"
 msgstr "Avsändarnamn"
 
-#: app/Http/Controllers/AdminSiteController.php:337
+#: app/Http/Controllers/AdminSiteController.php:342
 #: resources/views/admin/control-panel.phtml:69
 msgid "Sending email"
 msgstr "Skickandet av e-post"
 
 #. I18N: A configuration setting
-#: resources/views/admin/site-mail.phtml:127
+#: resources/views/admin/site-mail.phtml:162
 msgid "Sending server name"
 msgstr "Server för utgående e-post"
 
@@ -12170,20 +12190,24 @@ msgctxt "MALE"
 msgid "Servant"
 msgstr "Tjänare"
 
-#: app/Http/Controllers/AdminSiteController.php:529
+#: app/Http/Controllers/AdminSiteController.php:530
 #: resources/views/admin/control-panel.phtml:97
 msgid "Server information"
 msgstr "Serverinformation"
 
 #. I18N: A configuration setting
-#: resources/views/admin/site-mail.phtml:47
+#: resources/views/admin/site-mail.phtml:76
 #: resources/views/setup/step-4-database-mysql.phtml:26
 #: resources/views/setup/step-4-database-pgsql.phtml:26
 #: resources/views/setup/step-4-database-sqlsvr.phtml:26
 msgid "Server name"
 msgstr "Servernamn"
 
-#: resources/views/admin/trees.phtml:109 resources/views/admin/trees.phtml:116
+#: app/Http/RequestHandlers/PasswordResetForm.php:64
+msgid "Set a new password"
+msgstr ""
+
+#: resources/views/admin/trees.phtml:116 resources/views/admin/trees.phtml:123
 msgid "Set as default"
 msgstr "Ange som standard"
 
@@ -12215,7 +12239,7 @@ msgid "Set the status to “approved”."
 msgstr "Sätt status till ”godkänd”."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
-#: resources/views/admin/trees-preferences.phtml:656
+#: resources/views/admin/trees-preferences.phtml:636
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
 msgstr "Genom att sätta detta val till <b>Ja</b> kommer en länk att placeras på alla sidor för personer, källor och familjer som tillåter användaren att läsa i ett separat fönster rådata från GEDCOM-filen."
 
@@ -12262,9 +12286,9 @@ msgctxt "NOMINATIVE"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
-#: app/GedcomTag.php:1003 resources/views/admin/trees.phtml:255
+#: app/GedcomTag.php:1003 resources/views/admin/trees.phtml:263
 #: resources/views/edit/shared-note.phtml:10
-#: resources/views/family-page.phtml:79 resources/views/media-page.phtml:142
+#: resources/views/family-page.phtml:79 resources/views/media-page.phtml:159
 #: resources/views/modules/notes/tab.phtml:46
 #: resources/views/note-page.phtml:73
 msgid "Shared note"
@@ -12406,7 +12430,7 @@ msgid "Show"
 msgstr "Visa"
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:302
+#: resources/views/admin/trees-preferences.phtml:282
 msgid "Show a download link in the media viewer"
 msgstr "Visa nedladdninglänken i mediavisaren"
 
@@ -12615,7 +12639,7 @@ msgid "Show statistics charts"
 msgstr "Visa statistikdiagram"
 
 #. I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name
-#: resources/views/admin/trees-preferences.phtml:614
+#: resources/views/admin/trees-preferences.phtml:594
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
 msgstr "Visa de %1$s %2$s delarna av ett ortnamn."
@@ -12629,7 +12653,7 @@ msgstr "Visa förfädernas födelseort på en karta."
 msgid "Show the date and time of update"
 msgstr "Visa datum och tid för uppdatering"
 
-#: resources/views/admin/trees-preferences.phtml:462
+#: resources/views/admin/trees-preferences.phtml:442
 msgid "Show the events of close relatives on the individual page"
 msgstr "Visa händelser för nära släkt på personsidan"
 
@@ -12663,28 +12687,28 @@ msgstr "Visa användaren som gjorde ändringen"
 msgid "Show this block for which languages"
 msgstr "För vilket språk visas detta block"
 
-#: resources/views/admin/trees-preferences.phtml:324
+#: resources/views/admin/trees-preferences.phtml:304
 msgid "Show thumbnail images in charts and family groups."
 msgstr "Visa miniatyrbilder i diagram och familjegrupper."
 
-#: app/Functions/FunctionsEdit.php:92 app/Functions/FunctionsEdit.php:230
-#: app/Functions/FunctionsEdit.php:251
-#: app/Functions/FunctionsPrintFacts.php:254
-#: app/Functions/FunctionsPrintFacts.php:428
-#: app/Functions/FunctionsPrintFacts.php:814
-#: app/Functions/FunctionsPrintFacts.php:1056
+#: app/Functions/FunctionsEdit.php:92 app/Functions/FunctionsEdit.php:215
+#: app/Functions/FunctionsEdit.php:236
+#: app/Functions/FunctionsPrintFacts.php:255
+#: app/Functions/FunctionsPrintFacts.php:429
+#: app/Functions/FunctionsPrintFacts.php:815
+#: app/Functions/FunctionsPrintFacts.php:1057
 #: app/Http/Controllers/AdminController.php:372
 #: app/Http/Controllers/AdminTreesController.php:1028
 #: resources/views/modals/restriction-fields.phtml:17
 msgid "Show to managers"
 msgstr "Visa för managers"
 
-#: app/Functions/FunctionsEdit.php:91 app/Functions/FunctionsEdit.php:229
-#: app/Functions/FunctionsEdit.php:250
-#: app/Functions/FunctionsPrintFacts.php:251
-#: app/Functions/FunctionsPrintFacts.php:425
-#: app/Functions/FunctionsPrintFacts.php:811
-#: app/Functions/FunctionsPrintFacts.php:1053
+#: app/Functions/FunctionsEdit.php:91 app/Functions/FunctionsEdit.php:214
+#: app/Functions/FunctionsEdit.php:235
+#: app/Functions/FunctionsPrintFacts.php:252
+#: app/Functions/FunctionsPrintFacts.php:426
+#: app/Functions/FunctionsPrintFacts.php:812
+#: app/Functions/FunctionsPrintFacts.php:1054
 #: app/Http/Controllers/AdminController.php:371
 #: app/Http/Controllers/AdminTreesController.php:1027
 #: resources/views/admin/trees-privacy.phtml:32
@@ -12693,12 +12717,12 @@ msgstr "Visa för managers"
 msgid "Show to members"
 msgstr "Visa för medlemmar"
 
-#: app/Functions/FunctionsEdit.php:90 app/Functions/FunctionsEdit.php:228
-#: app/Functions/FunctionsEdit.php:249
-#: app/Functions/FunctionsPrintFacts.php:248
-#: app/Functions/FunctionsPrintFacts.php:422
-#: app/Functions/FunctionsPrintFacts.php:808
-#: app/Functions/FunctionsPrintFacts.php:1050
+#: app/Functions/FunctionsEdit.php:90 app/Functions/FunctionsEdit.php:213
+#: app/Functions/FunctionsEdit.php:234
+#: app/Functions/FunctionsPrintFacts.php:249
+#: app/Functions/FunctionsPrintFacts.php:423
+#: app/Functions/FunctionsPrintFacts.php:809
+#: app/Functions/FunctionsPrintFacts.php:1051
 #: app/Http/Controllers/AdminController.php:370
 #: resources/views/admin/trees-privacy.phtml:32
 #: resources/views/admin/trees-privacy.phtml:97
@@ -12753,8 +12777,6 @@ msgstr "Sierra Leone"
 #: app/Http/Controllers/Auth/LoginController.php:77
 #: app/Module/LoginBlockModule.php:41 app/Module/LoginBlockModule.php:73
 #: app/Module/ModuleThemeTrait.php:282
-#: resources/views/emails/password-reset-html.phtml:20
-#: resources/views/emails/password-reset-text.phtml:9
 msgid "Sign in"
 msgstr "Logga in"
 
@@ -12763,7 +12785,7 @@ msgstr "Logga in"
 msgid "Sign out"
 msgstr "Logga ut"
 
-#: app/Http/Controllers/AdminSiteController.php:469
+#: app/Http/Controllers/AdminSiteController.php:470
 #: resources/views/admin/control-panel.phtml:75
 msgid "Sign-in and registration"
 msgstr "Inloggning och registrering"
@@ -12791,7 +12813,7 @@ msgstr "Webbplats identifieringskod"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: resources/views/admin/users-edit.phtml:177
-#: resources/views/edit-account-page.phtml:135
+#: resources/views/edit-account-page.phtml:120
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
 msgstr "Webbplatsens medlemmar kan skicka varandra meddelanden. Du kan välja hur dessa meddelanden skickas till dig, eller välja att inte ta emot dem alls."
 
@@ -12906,12 +12928,12 @@ msgid "Some genealogy software creates GEDCOM files that contain media filenames
 msgstr "Vissa släktforskningsprogram skapar GEDCOM-filer som innehåller media filnamn med fullständiga sökvägar. Dessa vägar kommer inte att existera på webbserver. För att webtrees skall hitta filen, måste den första delen av vägen tas bort."
 
 #. I18N: Help text for the “Hit counters” configuration setting
-#: resources/views/admin/trees-preferences.phtml:686
+#: resources/views/admin/trees-preferences.phtml:666
 msgid "Some pages can display the number of times that they have been visited."
 msgstr "Vissa sidor kan visa hur många gånger de har besökts."
 
 #. I18N: Help text for the “Fact icons” configuration setting
-#: resources/views/admin/trees-preferences.phtml:560
+#: resources/views/admin/trees-preferences.phtml:540
 msgid "Some themes can display icons on the “Facts and events” tab."
 msgstr "Vissa teman kan visa ikoner på ”Fakta och händelser”-fliken."
 
@@ -12962,11 +12984,11 @@ msgstr "Låter som"
 
 #. I18N: gedcom tag SOUR
 #. I18N: Name of a module/report
-#: app/Functions/FunctionsPrintFacts.php:577 app/GedcomTag.php:1018
+#: app/Functions/FunctionsPrintFacts.php:578 app/GedcomTag.php:1018
 #: app/Module/FactSourcesReportModule.php:42
 #: resources/views/admin/trees-privacy.phtml:175
-#: resources/views/admin/trees.phtml:221 resources/views/family-page.phtml:103
-#: resources/views/media-page.phtml:132
+#: resources/views/admin/trees.phtml:229 resources/views/family-page.phtml:103
+#: resources/views/media-page.phtml:149
 #: resources/views/modals/link-media-to-source.phtml:13
 #: resources/views/modules/favorites/favorites.phtml:99
 #: resources/views/modules/random_media/slide-show.phtml:70
@@ -12996,19 +13018,19 @@ msgid "Source"
 msgstr "Källa"
 
 #. I18N: Help text for the “Use full source citations” configuration setting
-#: resources/views/admin/trees-preferences.phtml:938
+#: resources/views/admin/trees-preferences.phtml:918
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
 msgstr "Källcitat kan innehålla fält för att spela in kvaliteten på uppgifterna (primär, sekundär, etc.) och datumet när händelsen upptecknats i källan. Om du inte använder dessa fält, kan du inaktivera dem när du skapar nya källcitater."
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:948
+#: resources/views/admin/trees-preferences.phtml:928
 #: resources/xml/reports/fact_sources.xml:6
 msgid "Source type"
 msgstr "Källtyp"
 
 #. I18N: Name of a module/list
 #. I18N: Name of a module
-#: app/Http/Controllers/AdminTreesController.php:2069
+#: app/Http/Controllers/AdminTreesController.php:2062
 #: app/Http/Controllers/ListController.php:504
 #: app/Module/SourceListModule.php:45 app/Module/SourcesTabModule.php:57
 #: resources/views/admin/control-panel-manager.phtml:47
@@ -13020,7 +13042,7 @@ msgstr "Källtyp"
 #: resources/views/lists/notes-table.phtml:84
 #: resources/views/lists/repositories-table.phtml:42
 #: resources/views/lists/sources-table.phtml:77
-#: resources/views/media-page.phtml:51
+#: resources/views/media-page.phtml:66
 #: resources/views/modules/gedcom_stats/config.phtml:23
 #: resources/views/modules/gedcom_stats/statistics.phtml:75
 #: resources/views/modules/html/template-statistics.phtml:34
@@ -13219,7 +13241,7 @@ msgid "Submitted but not yet cleared"
 msgstr "Framlagt, men inte ännu klargjorts"
 
 #. I18N: gedcom tag SUBM
-#: app/GedcomTag.php:1035 resources/views/admin/trees.phtml:265
+#: app/GedcomTag.php:1035 resources/views/admin/trees.phtml:273
 #: resources/views/modules/recent_changes/changes-table.phtml:46
 msgid "Submitter"
 msgstr "Avsändare"
@@ -13246,11 +13268,11 @@ msgstr "Söndag"
 msgid "Support and documentation can be found at %s."
 msgstr "Stöd och dokumentation finns vid: %s."
 
-#: app/Services/ServerCheckService.php:283
+#: app/Services/ServerCheckService.php:325
 msgid "Support for PostgreSQL is experimental."
 msgstr "Stöd för PostgreSQL är experimentellt."
 
-#: app/Services/ServerCheckService.php:288
+#: app/Services/ServerCheckService.php:330
 msgid "Support for SQL Server is experimental."
 msgstr "Stöd för SQL Server är experimentellt."
 
@@ -13275,7 +13297,7 @@ msgstr "Efternamn"
 msgid "Surname distribution chart"
 msgstr "Fördelning av efternamn (diagram)"
 
-#: resources/views/admin/trees-preferences.phtml:365
+#: resources/views/admin/trees-preferences.phtml:345
 msgid "Surname list style"
 msgstr "Stil för efternamnlistor"
 
@@ -13288,7 +13310,7 @@ msgstr "Efternamns alternativ"
 msgid "Surname prefix"
 msgstr "Efternamnprefix"
 
-#: resources/views/admin/trees-preferences.phtml:918
+#: resources/views/admin/trees-preferences.phtml:898
 msgid "Surname tradition"
 msgstr "Efternamnstradition"
 
@@ -13320,7 +13342,7 @@ msgid "Svalbard and Jan Mayen"
 msgstr "Svalbard och Jan Mayen"
 
 #. I18N: Reverse the order of two individuals
-#: resources/views/modules/relationships-chart/page.phtml:22
+#: resources/views/modules/relationships-chart/page.phtml:71
 msgid "Swap individuals"
 msgstr "Byt personerna med varandra"
 
@@ -13344,7 +13366,7 @@ msgstr "Schweiz"
 msgid "Sydney, Australia"
 msgstr "Sydney, Australien"
 
-#: resources/views/admin/trees.phtml:368
+#: resources/views/admin/trees.phtml:377
 msgid "Synchronize family trees with GEDCOM files"
 msgstr "Synkronisera släktträd med GEDCOM-filer"
 
@@ -13358,10 +13380,10 @@ msgstr "Syrien"
 msgid "Tab"
 msgstr "Flik"
 
-#: resources/views/setup/step-4-database-mysql.phtml:100
-#: resources/views/setup/step-4-database-pgsql.phtml:87
+#: resources/views/setup/step-4-database-mysql.phtml:96
+#: resources/views/setup/step-4-database-pgsql.phtml:83
 #: resources/views/setup/step-4-database-sqlite.phtml:55
-#: resources/views/setup/step-4-database-sqlsvr.phtml:86
+#: resources/views/setup/step-4-database-sqlsvr.phtml:83
 msgid "Table prefix"
 msgstr "Tabellprefix"
 
@@ -13446,7 +13468,7 @@ msgid "Teal Top"
 msgstr "Teal Top"
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:186
+#: resources/views/admin/trees-preferences.phtml:166
 msgid "Technical help contact"
 msgstr "Kontakt för teknisk hjälp"
 
@@ -13494,7 +13516,7 @@ msgid "Tevet"
 msgstr "tevet"
 
 #. I18N: gedcom tag TEXT
-#: app/GedcomTag.php:1047 resources/views/admin/trees-preferences.phtml:625
+#: app/GedcomTag.php:1047 resources/views/admin/trees-preferences.phtml:605
 #: resources/views/modals/source-fields.phtml:49
 msgid "Text"
 msgstr "Text"
@@ -13512,7 +13534,7 @@ msgstr "<b>Namn</b> fältet innehåller personens fulla namn, som det stavades e
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
 msgstr "<b>Efternamn</b> fältet innehåller ett namn som används för sortering och gruppering. Det kan vara olika för personens faktiska efternamn som alltid tas från <b>namn</b> fältet. Detta fält kan användas för att sortera efternamn med eller utan prefix (Gogh / van Gogh) och att gruppera stavningsvarianter eller böjningar (Kowalski / Kowalska). Om en person behöver tas upp under mer än ett efternamn, bör varje namn separeras med ett kommatecken."
 
-#: app/Http/Controllers/AdminTreesController.php:1780
+#: app/Http/Controllers/AdminTreesController.php:1779
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
 msgstr "GEDCOM-filen ”%s” har importerats."
@@ -13526,12 +13548,12 @@ msgstr "GEDCOM-standarden tillåter inte webbadresser i medieobjekt."
 msgid "The Hague, Netherlands"
 msgstr "Haag, Nederländerna"
 
-#: app/Services/ServerCheckService.php:111
+#: app/Services/ServerCheckService.php:122
 #, php-format
 msgid "The PHP extension “%s” is not installed."
 msgstr "PHP-tillägget ”%s” är inte installerat."
 
-#: app/Services/ServerCheckService.php:169
+#: app/Services/ServerCheckService.php:180
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
 msgstr "PHP-funktionen ”%1$s” är inaktiverad."
@@ -13541,12 +13563,12 @@ msgstr "PHP-funktionen ”%1$s” är inaktiverad."
 msgid "The PHP temporary folder is missing."
 msgstr "PHP:s temporära mapp saknas."
 
-#: app/Services/ServerCheckService.php:130
+#: app/Services/ServerCheckService.php:141
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
 msgstr "Inställningen PHP.INI ”%1$s” är inaktiverad."
 
-#: app/Services/ServerCheckService.php:134
+#: app/Services/ServerCheckService.php:145
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
 msgstr "Inställningen PHP.INI ”%1$s” är aktiverad."
@@ -13591,7 +13613,7 @@ msgstr "Urklippskorgen tillåter dig att ta utdrag ur detta släktträd och ladd
 msgid "The data in this website has been collected for the purposes of genealogical research."
 msgstr "Uppgifterna på denna webbplats har samlats in för genealogisk forskning."
 
-#: resources/views/admin/trees-preferences.phtml:414
+#: resources/views/admin/trees-preferences.phtml:394
 msgid "The date and time of the last update"
 msgstr "Datumet och tiden för den senaste uppdateringen"
 
@@ -13619,13 +13641,13 @@ msgstr "Släktträdet ”%s” har skapats."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/Controllers/AdminTreesController.php:393
-#: app/Http/Controllers/AdminTreesController.php:1786
+#: app/Http/Controllers/AdminTreesController.php:1785
 #, php-format
 msgid "The family tree “%s” has been deleted."
 msgstr "Släktträdet ”%s” har tagits bort."
 
 #. I18N: %s is the name of a family tree
-#: app/Http/Controllers/AdminTreesController.php:1751
+#: app/Http/Controllers/AdminTreesController.php:1750
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
 msgstr "Släktträdet ”%s” kommer att visas för besökare när de först kommer till denna webbplats."
@@ -13656,13 +13678,13 @@ msgid "The file %s could not be created."
 msgstr "Filen %s kunde inte skapas."
 
 #: app/Http/Controllers/Admin/MediaController.php:138
-#: app/Http/Controllers/AdminSiteController.php:149
+#: app/Http/Controllers/AdminSiteController.php:152
 #, php-format
 msgid "The file %s could not be deleted."
 msgstr "Filen %s kunde inte tas bort."
 
 #: app/Http/Controllers/Admin/MediaController.php:136
-#: app/Http/Controllers/AdminSiteController.php:147
+#: app/Http/Controllers/AdminSiteController.php:150
 #, php-format
 msgid "The file %s has been deleted."
 msgstr "Filen %s togs bort."
@@ -13679,31 +13701,31 @@ msgstr "Filen blev endast delvis uppladdad, var god försök igen."
 
 #. I18N: %s is a filename
 #: resources/views/media-list-page.phtml:153
-#: resources/views/media-page.phtml:105
+#: resources/views/media-page.phtml:113
 #, php-format
 msgid "The file “%s” does not exist."
 msgstr "Filen ”%s” finns inte."
 
-#: app/Http/Controllers/AdminSiteController.php:139
+#: app/Http/Controllers/AdminSiteController.php:142
 #, php-format
 msgid "The folder %s could not be deleted."
 msgstr "Mappen %s kunde inte tas bort."
 
 #: app/Http/Controllers/Admin/MediaController.php:565
-#: app/Http/Controllers/AdminSiteController.php:451
-#: app/Http/Controllers/AdminTreesController.php:1218
+#: app/Http/Controllers/AdminSiteController.php:452
+#: app/Http/Controllers/AdminTreesController.php:1217
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "Mappen %s finns inte och kunde inte skapas."
 
 #: app/Http/Controllers/Admin/MediaController.php:563
 #: app/Http/Controllers/Admin/UpgradeController.php:232
-#: app/Http/Controllers/AdminTreesController.php:1216
+#: app/Http/Controllers/AdminTreesController.php:1215
 #, php-format
 msgid "The folder %s has been created."
 msgstr "Mappen %s skapades."
 
-#: app/Http/Controllers/AdminSiteController.php:137
+#: app/Http/Controllers/AdminSiteController.php:140
 #, php-format
 msgid "The folder %s has been deleted."
 msgstr "Mappen %s togs bort."
@@ -13740,12 +13762,12 @@ msgid "The help text has not been written for this item."
 msgstr "För detta objekt finns ännu ingen hjälptext."
 
 #. I18N: Help text for the “Technical help contact” configuration setting
-#: resources/views/admin/trees-preferences.phtml:198
+#: resources/views/admin/trees-preferences.phtml:178
 msgid "The individual to be contacted about technical questions or errors encountered on your website."
 msgstr "E-mail-adress besökare kan använda för att kontakta dig angående tekniska frågor eller fel på din webbplats."
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
-#: resources/views/admin/trees-preferences.phtml:178
+#: resources/views/admin/trees-preferences.phtml:158
 msgid "The individual to contact about the genealogy data on this website."
 msgstr "Personen som kan kontaktas gällande släktforskningsdata på denna webbplats."
 
@@ -13785,15 +13807,15 @@ msgstr "Medieobjektet har skapats"
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
 msgstr "Minneskrav och processor-tidskrav beror på antalet personer som finns i släktträdet."
 
-#: app/Http/Controllers/MessageController.php:136
-#: app/Http/Controllers/MessageController.php:248
-#: app/Http/Controllers/MessageController.php:337
+#: app/Http/Controllers/MessageController.php:143
+#: app/Http/Controllers/MessageController.php:255
+#: app/Http/Controllers/MessageController.php:344
 msgid "The message was not sent."
 msgstr "Meddelandet skickades inte."
 
-#: app/Http/Controllers/MessageController.php:129
-#: app/Http/Controllers/MessageController.php:241
-#: app/Http/Controllers/MessageController.php:330
+#: app/Http/Controllers/MessageController.php:136
+#: app/Http/Controllers/MessageController.php:248
+#: app/Http/Controllers/MessageController.php:337
 #, php-format
 msgid "The message was successfully sent to %s."
 msgstr "Meddelandet har skickats till %s."
@@ -13811,22 +13833,22 @@ msgid "The module “%s” has been enabled."
 msgstr "Modulen ”%s” är aktiverad."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
-#: resources/views/admin/trees-preferences.phtml:797
+#: resources/views/admin/trees-preferences.phtml:777
 msgid "The most common family facts and events are listed separately, so that they can be added more easily."
 msgstr "De vanligaste familje fakta och händelser listas separat, så att de kan tillsättas lättare."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
-#: resources/views/admin/trees-preferences.phtml:743
+#: resources/views/admin/trees-preferences.phtml:723
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
 msgstr "De vanligaste  personfakta och -händelser listas separat, så att de kan tillsättas lättare."
 
 #. I18N: Help text for the “Quick repository facts” configuration setting
-#: resources/views/admin/trees-preferences.phtml:879
+#: resources/views/admin/trees-preferences.phtml:859
 msgid "The most common repository facts are listed separately, so that they can be added more easily."
 msgstr "De vanligaste arkivfakta och -händelser listas separat, så att de kan tillsättas lättare."
 
 #. I18N: Help text for the “Quick source facts” configuration setting
-#: resources/views/admin/trees-preferences.phtml:838
+#: resources/views/admin/trees-preferences.phtml:818
 msgid "The most common source facts are listed separately, so that they can be added more easily."
 msgstr "De vanligaste källfakta och -händelser listas separat, så att de kan tillsättas lättare."
 
@@ -13843,9 +13865,14 @@ msgid "The password needs to be at least six characters long."
 msgstr "Lösenordet måste vara minst sex tecken långt."
 
 #. I18N: Help text for the "Password" site configuration setting
-#: resources/views/admin/site-mail.phtml:106
+#: resources/views/admin/site-mail.phtml:140
 msgid "The password required for authentication with the SMTP server."
 msgstr "Lösenord som kanske behövs för SMTP-servern behörighet."
+
+#: app/Http/RequestHandlers/PasswordResetAction.php:78
+#: app/Http/RequestHandlers/PasswordResetForm.php:74
+msgid "The password reset link has expired."
+msgstr ""
 
 #. I18N: Description of the “PlaceHierarchyListModule” module
 #: app/Module/PlaceHierarchyListModule.php:56
@@ -13863,7 +13890,7 @@ msgid "The preferences for new family trees have been updated."
 msgstr "Inställningarna för nya släktträd har uppdaterats."
 
 #: app/Http/Controllers/AdminController.php:349
-#: app/Http/Controllers/AdminTreesController.php:1238
+#: app/Http/Controllers/AdminTreesController.php:1237
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
 msgstr "Inställningarna för släktträdet ”%s” har uppdaterats."
@@ -13879,10 +13906,10 @@ msgstr "Inställningarna för modulen ”%s” har raderats."
 msgid "The preferences for the module “%s” have been updated."
 msgstr "Inställningarna för modulen ”%s” har uppdaterats."
 
-#: resources/views/setup/step-4-database-mysql.phtml:105
-#: resources/views/setup/step-4-database-pgsql.phtml:92
+#: resources/views/setup/step-4-database-mysql.phtml:101
+#: resources/views/setup/step-4-database-pgsql.phtml:88
 #: resources/views/setup/step-4-database-sqlite.phtml:62
-#: resources/views/setup/step-4-database-sqlsvr.phtml:91
+#: resources/views/setup/step-4-database-sqlsvr.phtml:88
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
 msgstr "Prefixet är valfritt, men rekommenderat. Genom att ge tabellnamnen ett unikt prefix kan du låta flera olika applikationer dela samma databas."
 
@@ -13922,11 +13949,11 @@ msgstr "Sökningen gav för många resultat."
 msgid "The server configuration is OK."
 msgstr "Server-konfigurationen är OK."
 
-#: app/Services/ServerCheckService.php:222
+#: app/Services/ServerCheckService.php:245
 msgid "The server’s temporary folder cannot be accessed."
 msgstr "Serverns tillfälliga mapp kan inte nås."
 
-#: app/Http/Controllers/AdminTreesController.php:1731
+#: app/Http/Controllers/AdminTreesController.php:1730
 #: app/Services/UpgradeService.php:146 app/Services/UpgradeService.php:179
 msgid "The server’s time limit has been reached."
 msgstr "Serverns tidsgräns har nåtts."
@@ -13972,7 +13999,7 @@ msgstr "Uppgraderingen är klar."
 msgid "The uploaded file exceeds the allowed size."
 msgstr "Uppladdad fil överskrider max tillåten storlek."
 
-#: app/Http/Controllers/Admin/UsersController.php:131
+#: app/Http/Controllers/Admin/UsersController.php:139
 #, php-format
 msgid "The user %s has been deleted."
 msgstr "Användaren ”%s” har raderats."
@@ -13988,18 +14015,18 @@ msgid "The username or password is incorrect."
 msgstr "Användarnamnet eller lösenordet är felaktigt."
 
 #. I18N: Help text for the "Username" site configuration setting
-#: resources/views/admin/site-mail.phtml:93
+#: resources/views/admin/site-mail.phtml:126
 msgid "The username required for authentication with the SMTP server."
 msgstr "Användarnamn som kanske behövs för SMTP-servern behörighet."
 
 #. I18N: Help text for the “Description META tag” configuration setting
-#: resources/views/admin/trees-preferences.phtml:240
+#: resources/views/admin/trees-preferences.phtml:220
 msgid "The value to place in the “meta description” tag in the HTML page header. Leave this field empty to use the name of the family tree."
 msgstr "Värdet att placera i ”Metabeskrivning” taggen i HTML-sidhuvudet. Lämna fältet tomt om du vill använda namnet på släktträdet."
 
-#: app/Http/Controllers/AdminSiteController.php:403
-#: app/Http/Controllers/AdminSiteController.php:458
-#: app/Http/Controllers/AdminSiteController.php:509
+#: app/Http/Controllers/AdminSiteController.php:404
+#: app/Http/Controllers/AdminSiteController.php:459
+#: app/Http/Controllers/AdminSiteController.php:510
 msgid "The website preferences have been updated."
 msgstr "Webbplatsens inställningarna har uppdaterats."
 
@@ -14017,7 +14044,6 @@ msgstr "webtrees utvecklare är intresserad av att få uppgifter om detta fel. O
 #: resources/views/admin/modules.phtml:241
 #: resources/views/admin/modules.phtml:244
 #: resources/views/admin/users-edit.phtml:185
-#: resources/views/edit-account-page.phtml:116
 msgid "Theme"
 msgstr "Tema"
 
@@ -14066,7 +14092,7 @@ msgstr "Det finns inga forskningsuppgifter i detta släktträd."
 msgid "There are no source citations for this individual."
 msgstr "Det finns inget källcitat om denna person."
 
-#: app/Module/ReviewChangesModule.php:136
+#: app/Module/ReviewChangesModule.php:144
 #: resources/views/emails/pending-changes-html.phtml:8
 #: resources/views/emails/pending-changes-text.phtml:5
 msgid "There are pending changes for you to moderate."
@@ -14079,10 +14105,10 @@ msgid_plural "There have been no changes within the last %s days."
 msgstr[0] "Inga förändringar senaste dag."
 msgstr[1] "Inga förändringar inom de senaste %s dagarna."
 
-#: app/Http/Controllers/Auth/ForgotPasswordController.php:93
+#: app/Http/RequestHandlers/PasswordRequestAction.php:97
 #, php-format
-msgid "There is no account with the username or email “%s”."
-msgstr "Det finns inget konto med användarnamnet eller e-posten “%s”."
+msgid "There is no user account with the email “%s”."
+msgstr ""
 
 #: app/Http/Controllers/Admin/MediaController.php:581
 #: app/Http/Controllers/EditMediaController.php:118
@@ -14135,7 +14161,7 @@ msgstr "Detta block visar editorerna en lista poster med väntande ändringar so
 #: resources/views/admin/users-create.phtml:58
 #: resources/views/admin/users-edit.phtml:66
 #: resources/views/edit-account-page.phtml:108
-#: resources/views/register-page.phtml:37
+#: resources/views/register-page.phtml:49
 #: resources/views/setup/step-5-administrator.phtml:73
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
 msgstr "Denna e-postadress kommer att användas för att skicka dig lösenordspåminnelser, webbplats-notifieringar och meddelanden från andra familjemedlemmar som är registrerade på webbplatsen."
@@ -14193,7 +14219,7 @@ msgid "This folder will be used by webtrees to store media files, GEDCOM files, 
 msgstr "Denna mapp kommer att användas av webtrees för att lagra media filer, GEDCOM-filer, temporära filer, m.m. Dessa filer kan innehålla privat data och bör inte göras tillgänglig på internet."
 
 #. I18N: Help text for the “Media folder” configuration setting
-#: resources/views/admin/trees-preferences.phtml:276
+#: resources/views/admin/trees-preferences.phtml:256
 msgid "This folder will be used to store the media files for this family tree."
 msgstr "Denna mapp kommer att användas för att lagra media filer till detta släktträd."
 
@@ -14206,28 +14232,28 @@ msgstr "Detta formulär har gått ut. Försök igen."
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Denna person existerar inte eller så saknar du rättigheter att se den."
 
-#: resources/views/individual-page.phtml:13
+#: resources/views/individual-page.phtml:28
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Denna person har avlägsnats. Strykningen måste granskas av en moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
-#: resources/views/individual-page.phtml:10
+#: resources/views/individual-page.phtml:25
 #, php-format
 msgid "This individual has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr "Denna person har tagits bort. Granska raderingen och sen %1$s eller %2$s den."
 
-#: resources/views/individual-page.phtml:22
+#: resources/views/individual-page.phtml:37
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
 msgstr "Denna person har redigerats. Ändringarna måste granskas av en moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
-#: resources/views/individual-page.phtml:19
+#: resources/views/individual-page.phtml:34
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Denna person har blivit redigerad. Granska ändringarna och sen %1$s eller %2$s dem."
 
 #. I18N: Help text for the “Default individual” configuration setting
-#: resources/views/admin/trees-preferences.phtml:86
+#: resources/views/admin/trees-preferences.phtml:87
 #: resources/views/edit-account-page.phtml:61
 msgid "This individual will be selected by default when viewing charts and reports."
 msgstr "Denna person kommer att väljas som standard när tavlor och rapporter visas."
@@ -14281,22 +14307,22 @@ msgid "This information is private and cannot be shown."
 msgstr "Dessa uppgifter är skyddade."
 
 #. I18N: Help text for the “Advanced name facts” configuration setting
-#: resources/views/admin/trees-preferences.phtml:894
+#: resources/views/admin/trees-preferences.phtml:874
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
 msgstr "Detta är en kommaseparerad lista av GEDCOM-fakta som kommer att visas på lägg till/redigera namn formuläret. Om du väljer ett icke latinskt alfabet som Hebreiska, Grekiska, Kyrilliskt eller Arabiskt vill du kanske lägga till taggar som _HEB, ROMN, FONE, etc. för att låta dig spara namnen enligt flera alfabet."
 
 #. I18N: Help text for the “Facts for new families” configuration setting
-#: resources/views/admin/trees-preferences.phtml:784
+#: resources/views/admin/trees-preferences.phtml:764
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
 msgstr "Detta är en kommaseparerad lista med GEDCOM-taggar som visas när man lägger till en ny familj. Till exempel, om MARR finns i listan, kommer fält för vigseldatum och -ort att visas på formuläret."
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
-#: resources/views/admin/trees-preferences.phtml:730
+#: resources/views/admin/trees-preferences.phtml:710
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
 msgstr "Detta är en kommaseparerad lista med GEDCOM faktataggar som visas när man lägger till en ny person. Till exempel, om BIRT finns i listan, kommer fält för födelsedatum och -ort att visas på formuläret."
 
 #. I18N: Help text for the “Advanced place name facts” configuration setting
-#: resources/views/admin/trees-preferences.phtml:907
+#: resources/views/admin/trees-preferences.phtml:887
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
 msgstr "Detta är en kommaseparerad lista av GEDCOM-fakta som kommer att visas på lägg till/redigera ortsnamn formuläret. Om du väljer ett icke latinskt alfabet som Hebreiska, Grekiska, Kyrilliskt eller Arabiskt vill du kanske lägga till taggar som _HEB, ROMN, FONE, osv. för att låta dig spara ortnamnen enligt flera alfabet."
 
@@ -14320,79 +14346,83 @@ msgid "This is the latest version of webtrees. No upgrade is available."
 msgstr "Detta är den senaste versionen av webtrees. Ingen uppgradering finns."
 
 #. I18N: Help text for the “All family facts” configuration setting
-#: resources/views/admin/trees-preferences.phtml:758
+#: resources/views/admin/trees-preferences.phtml:738
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
 msgstr "Detta är en lista med GEDCOM-fakta som dina användare kan lägga till för en familj. Du kan modifiera denna lista genom att ta bort eller lägga till faktanamn, även egna, efter behov. Faktanamn som visas i denna lista får inte också finnas i <i>Unika familjefakta</i>-listan."
 
 #. I18N: Help text for the “All individual facts” configuration setting
-#: resources/views/admin/trees-preferences.phtml:704
+#: resources/views/admin/trees-preferences.phtml:684
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
 msgstr "Detta är en lista med GEDCOM-fakta som dina användare kan lägga till till en person. Du kan modifiera denna lista genom att ta bort eller lägga till faktanamn, även egna, efter behov. Faktanamn som visas i denna lista får inte också finnas i <i>Unika personfakta</i>-listan."
 
 #. I18N: Help text for the “All repository facts” configuration setting
-#: resources/views/admin/trees-preferences.phtml:853
+#: resources/views/admin/trees-preferences.phtml:833
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
 msgstr "Detta är en lista med GEDCOM-fakta som dina användare kan lägga till till ett arkiv. Du kan modifiera denna lista genom att ta bort eller lägga till faktanamn, även egna, efter behov. Faktanamn som visas i denna lista får inte också finnas i <i>Unika arkivfakta</i>-listan."
 
 #. I18N: Help text for the “All source facts” configuration setting
-#: resources/views/admin/trees-preferences.phtml:812
+#: resources/views/admin/trees-preferences.phtml:792
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
 msgstr "Detta är en lista med GEDCOM-fakta som dina användare kan lägga till en källa. Du kan modifiera denna lista genom att ta bort eller lägga till faktanamn, även egna, efter behov. Faktanamn som visas i denna lista får inte finnas i <i>Unika källfakta</i>-listan."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
-#: resources/views/admin/trees-preferences.phtml:771
+#: resources/views/admin/trees-preferences.phtml:751
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
 msgstr "Detta är en lista med GEDCOM-fakta som dina användare kan lägga till endast en gång till en familj. Till exempel, om MARR finns i den här listan, kan användare inte lägga till mer än en MARR-post till en familj. Faktanamn som visas i denna lista får inte också finnas i ”Alla personfakta”-listan."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
-#: resources/views/admin/trees-preferences.phtml:717
+#: resources/views/admin/trees-preferences.phtml:697
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
 msgstr "Detta är listan över GEDCOM-fakta som dina användare enbart kan lägga till en gång för personer. T.ex. om Födelse är i denna lista kommer användare enbart att kunna lägga till en födelsepost till personen. Faktanamn som förekommer i denna lista får inte också förekomma i ”Alla personfakta”-listan."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
-#: resources/views/admin/trees-preferences.phtml:866
+#: resources/views/admin/trees-preferences.phtml:846
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
 msgstr "Detta är en lista med GEDCOM-fakta som dina användare kan lägga till endast en gång till ett arkiv. Till exempel om NAME finns i den här listan kan användare inte lägga till mer än en NAME-post i ett arkiv. Faktanamn som visas i denna lista får inte också finnas i ”Alla arkivfakta”-listan."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
-#: resources/views/admin/trees-preferences.phtml:825
+#: resources/views/admin/trees-preferences.phtml:805
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
 msgstr "Detta är en lista av GEDCOM fakta som dina användare kan lägga till endast en gång till en källa. Om till exempel TITL finns i den här listan, kan användare inte lägga till mer än en TITL-post i en källa. Fakta namn som visas i denna lista får inte finnas i ”Alla källfakta”-listan."
 
 #. I18N: Help text for the “Server name” site configuration setting
-#: resources/views/admin/site-mail.phtml:52
+#: resources/views/admin/site-mail.phtml:82
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
 msgstr "Detta är namnet på SMTP-server. ”localhost” betyder att e-post kör på samma dator som din webb-server."
 
 #: resources/views/admin/users-create.phtml:19
 #: resources/views/admin/users-edit.phtml:27
 #: resources/views/edit-account-page.phtml:31
-#: resources/views/register-page.phtml:25
+#: resources/views/register-page.phtml:37
 #: resources/views/setup/step-5-administrator.phtml:37
 msgid "This is your real name, as you would like it displayed on screen."
 msgstr "Detta är ditt namn, som det syns på skärmen."
+
+#: app/Http/RequestHandlers/PasswordRequestAction.php:94
+msgid "This link is valid for one hour."
+msgstr ""
 
 #: app/Exceptions/MediaAccessDeniedException.php:33
 #: app/Exceptions/MediaNotFoundException.php:33
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Detta media objekt existerar inte eller så saknar du rättigheter att se det."
 
-#: resources/views/media-page.phtml:11
+#: resources/views/media-page.phtml:26
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Detta media objekt har avlägsnats. En moderator måste ännu kontrollera det."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
-#: resources/views/media-page.phtml:9
+#: resources/views/media-page.phtml:24
 #, php-format
 msgid "This media object has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr "Detta media objekt har avlägsnats. Du bör kontrollera om det skall avlägsnas och sedan välja antingen %1$s eller %2$s."
 
-#: resources/views/media-page.phtml:17
+#: resources/views/media-page.phtml:32
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
 msgstr "Detta media objekt har redigerats. Ändringarna måste granskas av en moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
-#: resources/views/media-page.phtml:15
+#: resources/views/media-page.phtml:30
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Detta media objekt har redigerats. Du bör granska ändringarna och sedan %1$s eller %2$s dem."
@@ -14409,7 +14439,7 @@ msgid "This must be at least six characters long. It is case-sensitive."
 msgstr "Det bör vara minst sex tecken. Det är skiftlägeskänsligt."
 
 #. I18N: Help text for the “Sender name” site configuration setting
-#: resources/views/admin/site-mail.phtml:37
+#: resources/views/admin/site-mail.phtml:60
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
 msgstr "Detta namn används i ”Från”-fältet, när automatiska mejl skickas från denna server."
 
@@ -14439,27 +14469,27 @@ msgid "This note has been edited. You should review the changes and then %1$s or
 msgstr "Denna anteckning har redigerats. Granska ändringen och sen %1$s eller %2$s dem."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
-#: resources/views/admin/trees-preferences.phtml:576
+#: resources/views/admin/trees-preferences.phtml:556
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
 msgstr "Detta alternativ kontrollerar om man automatiskt visar innehållet i <i>Anteckningar</i> på personsidan."
 
 #. I18N: Help text for the “Automatically expand sources” configuration setting
-#: resources/views/admin/trees-preferences.phtml:592
+#: resources/views/admin/trees-preferences.phtml:572
 msgid "This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page."
 msgstr "Detta val kontrollerar om man automatiskt skall visa innehållet i en <i>källa</i> på personsidan."
 
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
-#: resources/views/admin/trees-preferences.phtml:435
+#: resources/views/admin/trees-preferences.phtml:415
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
 msgstr "Visa ålder för föräldrar intill barnets födelsedatum i tavlor."
 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
-#: resources/views/admin/trees-preferences.phtml:404
+#: resources/views/admin/trees-preferences.phtml:384
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
 msgstr "Det här alternativet bestämmer om vi visar beräknade datum för födelse och död istället för att lämna dem tomma på personlistor och tavlor för personer vars datum är okända."
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
-#: resources/views/admin/trees-preferences.phtml:307
+#: resources/views/admin/trees-preferences.phtml:287
 msgid "This option will make it easier for users to download images."
 msgstr "Detta alternativ kommer att göra det enklare för användare att ladda ner bilder."
 
@@ -14569,7 +14599,7 @@ msgid "This server’s memory limit is %s MB and its CPU time limit is %s second
 msgstr "Denna servers minnesgräns är %sMB och dess CPU-tidsgräns är %s sekunder."
 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
-#: resources/views/admin/trees-preferences.phtml:451
+#: resources/views/admin/trees-preferences.phtml:431
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
 msgstr "Detta skall vara en med komma eller mellanrum separerad faktalista, som utöver födelse och död, skall synas i rutor så som på antavlan. Denna lista kräver att du använder faktataggar som definierats i GEDCOM 5.5.1. Om du t.ex. vill att yrket skall visas i rutan skall du lägga till ”OCCU” i detta fält."
 
@@ -14607,7 +14637,7 @@ msgid "This source has been edited. You should review the changes and then %1$s 
 msgstr "Denna källa har redigerats. Granska ändringarna och sen %1$s eller %2$s dem."
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
-#: resources/views/admin/trees-preferences.phtml:220
+#: resources/views/admin/trees-preferences.phtml:200
 msgid "This text will be appended to each page title. It will be shown in the browser’s title bar, bookmarks, etc."
 msgstr "Denna text läggs till titeln på varje sida. Den visas i webbläsarens rubrikrad, i bokmärken etc."
 
@@ -14661,8 +14691,8 @@ msgstr "Tor"
 msgid "Thumbnail image"
 msgstr "Miniatyrbild"
 
-#: resources/views/admin/trees-preferences.phtml:313
-#: resources/views/admin/trees-preferences.phtml:319
+#: resources/views/admin/trees-preferences.phtml:293
+#: resources/views/admin/trees-preferences.phtml:299
 msgid "Thumbnail images"
 msgstr "Miniatyrbilder"
 
@@ -14793,7 +14823,7 @@ msgid "To create new research tasks, you must first add “research task” to t
 msgstr "För att skapa nya forskningsuppgifter, måste du först lägga ”forskningsuppgift” till listan av fakta och händelser i släktträdsinställningarna."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
-#: resources/views/admin/trees-preferences.phtml:636
+#: resources/views/admin/trees-preferences.phtml:616
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
 msgstr "För att säkerställa kompatibilitet med andra släktforskningsprogram, bör anteckningar, text och avskrifter registreras i enkel, oformaterad text. Formatering är dock ofta önskvärt för att stöda presentation, förståelse, osv."
 
@@ -14805,6 +14835,11 @@ msgstr "För att skydda privat data, använder webtrees en Apache konfigurations
 #: resources/views/admin/trees-export.phtml:42
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
 msgstr "För att minska storleken på nedladdningen, kan du komprimera data i en ZIP-fil. Du måste packa upp ZIP-filen innan du kan använda den."
+
+#: resources/views/emails/password-request-html.phtml:9
+#: resources/views/emails/password-request-text.phtml:5
+msgid "To set a new password, follow this link."
+msgstr ""
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: resources/views/admin/site-registration.phtml:31
@@ -14819,7 +14854,7 @@ msgstr "För att visa för sökmotorer att webbplatskartor finns tillgängliga, 
 msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
 msgstr "För att visa för sökmotorer att webbplatskartor finns tillgängliga, bör du lägga till följande rad i din robots.txt-fil."
 
-#: resources/views/admin/site-mail.phtml:10
+#: resources/views/admin/site-mail.phtml:31
 msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
 msgstr "För att använda ett Google e-postkonto, använd följande inställningar: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[ditt gmail-lösenord]"
 
@@ -15096,7 +15131,7 @@ msgid "Twin Falls, Idaho, United States"
 msgstr "Twin Falls, Idaho, Förenta staterna"
 
 #. I18N: gedcom tag TYPE
-#: app/Functions/FunctionsPrintFacts.php:672 app/GedcomTag.php:1065
+#: app/Functions/FunctionsPrintFacts.php:673 app/GedcomTag.php:1065
 #: app/Statistics/Google/ChartFamilyLargest.php:100
 #: app/Statistics/Google/ChartFamilyWithSources.php:72
 #: app/Statistics/Google/ChartIndividualWithSources.php:72
@@ -15123,8 +15158,8 @@ msgstr "Faktumtyp"
 #. I18N: gedcom tag _URL
 #. I18N: A configuration setting
 #: app/GedcomTag.php:1068 app/GedcomTag.php:1080 app/GedcomTag.php:2066
-#: resources/views/admin/trees-preferences.phtml:42
-#: resources/views/admin/trees.phtml:328
+#: resources/views/admin/trees-preferences.phtml:43
+#: resources/views/admin/trees.phtml:336
 #: resources/views/modals/media-file-fields.phtml:87
 #: resources/views/modules/favorites/favorites.phtml:123
 #: resources/views/modules/favorites/favorites.phtml:128
@@ -15157,7 +15192,7 @@ msgstr "Ukraina"
 msgid "Uncleared: insufficient data"
 msgstr "Oklar: bristfällig data"
 
-#: resources/views/admin/trees-preferences.phtml:766
+#: resources/views/admin/trees-preferences.phtml:746
 msgid "Unique family facts"
 msgstr "Unik familjefakta"
 
@@ -15167,19 +15202,19 @@ msgid "Unique identifier"
 msgstr "Unik identifierare"
 
 #. I18N: Help text for the “Add unique identifiers” configuration setting
-#: resources/views/admin/trees-preferences.phtml:134
+#: resources/views/admin/trees-preferences.phtml:135
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
 msgstr "Unika identifierare tillåter samma post i olika familjeträd och i olika system. De kommer att läggas till när poster skapas eller uppdateras. Om du inte vill att unika  identifierare skall visas, kan du dölja dem med hjälp av privatskyd."
 
-#: resources/views/admin/trees-preferences.phtml:712
+#: resources/views/admin/trees-preferences.phtml:692
 msgid "Unique individual facts"
 msgstr "Unik personfakta"
 
-#: resources/views/admin/trees-preferences.phtml:861
+#: resources/views/admin/trees-preferences.phtml:841
 msgid "Unique repository facts"
 msgstr "Unik arkiv fakta"
 
-#: resources/views/admin/trees-preferences.phtml:820
+#: resources/views/admin/trees-preferences.phtml:800
 msgid "Unique source facts"
 msgstr "Unik källfakta"
 
@@ -15210,8 +15245,8 @@ msgctxt "unknown century"
 msgid "Unknown"
 msgstr "Okänd"
 
-#: app/Functions/FunctionsEdit.php:546
-#: app/Http/Controllers/IndividualController.php:320
+#: app/Functions/FunctionsEdit.php:531
+#: app/Http/Controllers/IndividualController.php:323
 #: resources/xml/reports/family_group_report.xml:844
 #: resources/xml/reports/individual_ext_report.xml:391
 #: resources/xml/reports/individual_ext_report.xml:598
@@ -15259,7 +15294,7 @@ msgstr "Uppdatera allt"
 
 #. I18N: Renumber the records in a family tree
 #: app/Http/Controllers/AdminTreesController.php:943
-#: resources/views/admin/trees.phtml:153
+#: resources/views/admin/trees.phtml:161
 msgid "Update place names"
 msgstr "Uppdatera ortsnamn"
 
@@ -15291,7 +15326,7 @@ msgstr "Ladda upp en eller flera media filer från din lokala dator. Media filer
 msgid "Uruguay"
 msgstr "Uruguay"
 
-#: app/Http/Controllers/AdminSiteController.php:372
+#: app/Services/MailService.php:232
 msgid "Use SMTP to send messages"
 msgstr "Använd SMTP för sända meddelanden"
 
@@ -15302,7 +15337,7 @@ msgstr "Använd &laquo;?&raquo; för att matcha ett tecken, använd &laquo;*&raq
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.phtml:43
 #: resources/views/admin/users-edit.phtml:51
-#: resources/views/register-page.phtml:59
+#: resources/views/register-page.phtml:72
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -15320,38 +15355,35 @@ msgid "Use compact layout"
 msgstr "Använd kompakt layout"
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:933
+#: resources/views/admin/trees-preferences.phtml:913
 msgid "Use full source citations"
 msgstr "Använd fullt källcitat"
 
-#: resources/views/setup/step-4-database-mysql.phtml:93
-#: resources/views/setup/step-4-database-mysql.phtml:106
-#: resources/views/setup/step-4-database-pgsql.phtml:80
-#: resources/views/setup/step-4-database-pgsql.phtml:93
+#: resources/views/setup/step-4-database-mysql.phtml:102
+#: resources/views/setup/step-4-database-pgsql.phtml:89
 #: resources/views/setup/step-4-database-sqlite.phtml:48
 #: resources/views/setup/step-4-database-sqlite.phtml:63
-#: resources/views/setup/step-4-database-sqlsvr.phtml:79
-#: resources/views/setup/step-4-database-sqlsvr.phtml:92
+#: resources/views/setup/step-4-database-sqlsvr.phtml:89
 msgid "Use letters A-Z, a-z, digits 0-9, or underscores"
 msgstr "Använd bokstäver A-Z, a-z, siffror 0-9, eller understreck"
 
 #. I18N: A configuration setting
-#: resources/views/admin/site-mail.phtml:74
+#: resources/views/admin/site-mail.phtml:105
 msgid "Use password"
 msgstr "Använd lösenord"
 
 #. I18N: "sendmail" is the name of some mail software
-#: app/Http/Controllers/AdminSiteController.php:371
+#: app/Services/MailService.php:231
 msgid "Use sendmail to send messages"
 msgstr "Använd sendmail för att skicka meddelanden"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
-#: resources/views/admin/trees-preferences.phtml:339
+#: resources/views/admin/trees-preferences.phtml:319
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
 msgstr "Använd silhuettbilder när ingen bild för denna person har specificerats. De bilder som används är könspecifika."
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:334
+#: resources/views/admin/trees-preferences.phtml:314
 msgid "Use silhouettes"
 msgstr "Använd siluettbilder"
 
@@ -15359,11 +15391,11 @@ msgstr "Använd siluettbilder"
 msgid "Use the GeoNames database for autocomplete on places"
 msgstr "Använd GeoNames-databas för att autokomplettera platser"
 
-#: resources/views/register-page.phtml:73
+#: resources/views/register-page.phtml:87
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
 msgstr "Använd detta fält för att berätta för administratören varför du begär ett konto och hur ditt släktförhållande är till de på webbplatsen. Du kan också använda detta fält för att skriva in andra kommentarer du har till webbplatsadministratören."
 
-#: app/Functions/FunctionsEdit.php:570
+#: app/Functions/FunctionsEdit.php:555
 msgid "Use this image for charts and on the individual’s page."
 msgstr "Använd denna bild för tavlor och på personsidan."
 
@@ -15376,7 +15408,7 @@ msgstr "Använd denna bild för tavlor och på personsidan."
 msgid "User"
 msgstr "Användare"
 
-#: app/Http/Controllers/Admin/UsersController.php:154
+#: app/Http/Controllers/Admin/UsersController.php:162
 #: resources/views/admin/control-panel.phtml:245
 #: resources/views/admin/users-cleanup.phtml:4
 #: resources/views/admin/users-create.phtml:4
@@ -15392,34 +15424,33 @@ msgstr "Användare har inte verifierat sig inom 7 dagar."
 msgid "User not verified by administrator."
 msgstr "Användaren är inte verifierad av administratören."
 
-#: resources/views/admin/trees-preferences.phtml:245
+#: resources/views/admin/trees-preferences.phtml:225
 msgid "User preferences"
 msgstr "Användar-inställningar"
 
-#: app/Http/Controllers/Auth/RegisterController.php:232
-#: app/Http/Controllers/Auth/VerifyEmailController.php:51
+#: app/Http/Controllers/Auth/RegisterController.php:240
+#: app/Http/Controllers/Auth/VerifyEmailController.php:65
 msgid "User verification"
 msgstr "Användarverifiering"
 
 #. I18N: A configuration setting
-#: resources/views/admin/site-mail.phtml:88
+#: resources/views/admin/site-mail.phtml:120
 #: resources/views/admin/users-create.phtml:27
 #: resources/views/admin/users-edit.phtml:35
 #: resources/views/admin/users.phtml:15
 #: resources/views/edit-account-page.phtml:14
-#: resources/views/emails/password-reset-html.phtml:12
-#: resources/views/emails/password-reset-text.phtml:6
 #: resources/views/emails/register-notify-html.phtml:13
 #: resources/views/emails/register-notify-text.phtml:6
-#: resources/views/login-page.phtml:24
+#: resources/views/login-page.phtml:35
 #: resources/views/modules/login_block/sign-in.phtml:10
 #: resources/views/modules/todo/research-tasks.phtml:13
-#: resources/views/register-page.phtml:44
+#: resources/views/password-reset-page.phtml:24
+#: resources/views/register-page.phtml:56
 #: resources/views/setup/step-5-administrator.phtml:44
 msgid "Username"
 msgstr "Användarnamn"
 
-#: resources/views/forgot-password-page.phtml:13
+#: resources/views/forgot-password-page.phtml:20
 #: resources/views/modules/login_block/sign-in.phtml:46
 msgid "Username or email address"
 msgstr "Användarnamn eller e-postadress"
@@ -15427,7 +15458,7 @@ msgstr "Användarnamn eller e-postadress"
 #: resources/views/admin/users-create.phtml:32
 #: resources/views/admin/users-edit.phtml:40
 #: resources/views/edit-account-page.phtml:19
-#: resources/views/register-page.phtml:49
+#: resources/views/register-page.phtml:61
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
 msgstr "Användarnamn är skiftlägesokänsliga och ignorerar accentuerade bokstäver, så att ”chloe”, ”chloë” och ”Chloe” anses vara samma."
 
@@ -15548,7 +15579,7 @@ msgstr "Video"
 msgid "Vietnam"
 msgstr "Vietnam"
 
-#: app/Functions/FunctionsPrintFacts.php:1024
+#: app/Functions/FunctionsPrintFacts.php:1025
 msgid "View"
 msgstr "Visa"
 
@@ -15561,8 +15592,8 @@ msgstr "Visa tabell över händelser som inträffar i %s"
 msgid "View this day"
 msgstr "Visa denna dag"
 
-#: app/Functions/FunctionsPrintFacts.php:220
-#: app/Functions/FunctionsPrintFacts.php:691
+#: app/Functions/FunctionsPrintFacts.php:221
+#: app/Functions/FunctionsPrintFacts.php:692
 #: app/Statistics/Repository/FamilyRepository.php:464
 #: resources/views/statistics/families/top10-list-age.phtml:24
 #: resources/views/statistics/families/top10-nolist-age.phtml:24
@@ -15584,18 +15615,18 @@ msgstr "Villa Hermosa, Mexiko"
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml:153
-#: resources/views/edit-account-page.phtml:143
+#: resources/views/edit-account-page.phtml:128
 msgid "Visible online"
 msgstr "Synlig vid online"
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml:159
-#: resources/views/edit-account-page.phtml:146
+#: resources/views/edit-account-page.phtml:131
 msgid "Visible to other users when online"
 msgstr "Synlig för andra användare när du är online"
 
 #. I18N: Listbox entry; name of a role
-#: app/Http/Controllers/Admin/UsersController.php:468
+#: app/Http/Controllers/Admin/UsersController.php:476
 #: resources/views/admin/trees-export.phtml:103
 #: resources/views/admin/users-edit.phtml:225
 #: resources/views/modules/clippings/download.phtml:27
@@ -15640,12 +15671,12 @@ msgstr "Omyndig"
 msgid "Washington, District of Columbia, United States"
 msgstr "Washington, District of Columbia, Förenta staterna"
 
-#: resources/views/admin/trees-preferences.phtml:345
+#: resources/views/admin/trees-preferences.phtml:325
 msgid "Watermarks"
 msgstr "Vattenstämplar"
 
 #. I18N: Help text for the “Images without watermarks” configuration setting
-#: resources/views/admin/trees-preferences.phtml:355
+#: resources/views/admin/trees-preferences.phtml:335
 msgid "Watermarks are optional and normally shown just to visitors."
 msgstr "Vattenstämplar är frivilliga och normalt visas de bara för besökare."
 
@@ -15656,16 +15687,16 @@ msgstr "Ni kommer att få en bekräftelse via e-post till e-postadressen (%s). A
 
 #: resources/views/admin/control-panel.phtml:24
 #: resources/views/admin/control-panel.phtml:352
-#: resources/views/admin/trees-preferences.phtml:203
+#: resources/views/admin/trees-preferences.phtml:183
 msgid "Website"
 msgstr "Webbplats"
 
-#: app/Http/Controllers/AdminSiteController.php:193
+#: app/Http/Controllers/AdminSiteController.php:196
 #: resources/views/admin/control-panel.phtml:85
 msgid "Website logs"
 msgstr "Webbplatsens loggar"
 
-#: app/Http/Controllers/AdminSiteController.php:416
+#: app/Http/Controllers/AdminSiteController.php:417
 #: resources/views/admin/control-panel.phtml:63
 msgid "Website preferences"
 msgstr "Webbplats inställningar"
@@ -15696,7 +15727,7 @@ msgstr "Välkommen %s"
 msgid "Welcome text on sign-in page"
 msgstr "Välkomsttext på inloggningssida"
 
-#: resources/views/login-page.phtml:11
+#: resources/views/login-page.phtml:22
 msgid "Welcome to this genealogy website"
 msgstr "Välkommen till denna släkt-webbplats"
 
@@ -15706,7 +15737,7 @@ msgid "Western Sahara"
 msgstr "Västsahara"
 
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
-#: resources/views/admin/trees-preferences.phtml:968
+#: resources/views/admin/trees-preferences.phtml:948
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
 msgstr "När en post redigeras, registreras användaren och tidsstämpeln. Ibland är det önskvärt att behålla den befintliga ”senaste ändringen” informationen, till exempel när du gör mindre korrigeringar av någon annans uppgifter. Det här alternativet styr om den här funktionen är vald som standard."
 
@@ -15715,12 +15746,12 @@ msgid "When a user registers for an account, an email is sent to their email add
 msgstr "När en användare registrerar sig för ett konto, sänds ett e-postmeddelande till användarens adress med en verifieringslänk. När användaren klickar på länken, vet vi att e-postadressen är korrekt och ”e-post verifierad” markeras automatiskt."
 
 #. I18N: Help text for the “Source type” configuration setting
-#: resources/views/admin/trees-preferences.phtml:953
+#: resources/views/admin/trees-preferences.phtml:933
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
 msgstr "När du lägger till nya nära släktingar, kan du lägga till källhänvisningar till dataposter (individer och familjer) eller till fakta och händelser (födelse, vigsel och dödsfall). Det här alternativet styr om dataposter eller fakta kommer att väljas som standard."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
-#: resources/views/admin/trees-preferences.phtml:923
+#: resources/views/admin/trees-preferences.phtml:903
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
 msgstr "När du lägger till en ny släktmedlem, kan ett släktnamn ges som standard. Detta släktnamn beror på lokal tradition."
 
@@ -15738,7 +15769,7 @@ msgid "Which family trees should be included in the sitemaps"
 msgstr "Vilka släktträd skall inkluderas i webbplatskartorna"
 
 #. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:288
+#: resources/views/admin/trees-preferences.phtml:268
 msgid "Who can upload new media files"
 msgstr "Vem kan ladda upp nya media filer"
 
@@ -15862,8 +15893,8 @@ msgstr "Jemen"
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
 msgstr "Du (eller någon som påstår sig vara du) har begärt ett konto på %1$s med e-postadressen %2$s."
 
-#: app/Http/Controllers/Auth/RegisterController.php:219
-#: app/Http/Controllers/MessageController.php:221
+#: app/Http/Controllers/Auth/RegisterController.php:227
+#: app/Http/Controllers/MessageController.php:228
 msgid "You are not allowed to send messages that contain external links."
 msgstr "Du har inte tillåtelse att skicka meddelanden som innehåller externa länkar."
 
@@ -15878,15 +15909,13 @@ msgstr "Du kan ansöka om ett konto med hjälp av länken nedan."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
-#. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml:59
-#: resources/views/admin/trees-preferences.phtml:254
-#: resources/views/edit-account-page.phtml:122
+#: resources/views/admin/trees-preferences.phtml:234
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
 msgstr "Du kan ändra utseende på webtrees med användandet av ”teman”. Varje tema har sin egen stil, layout, färgschema osv."
 
 #: resources/views/admin/users-edit.phtml:162
-#: resources/views/edit-account-page.phtml:148
+#: resources/views/edit-account-page.phtml:133
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
 msgstr "Du kan välja om du vill synas i listan över användare som är inloggade."
 
@@ -15938,7 +15967,7 @@ msgstr "Du är utloggad."
 msgid "You may use HTML to format the answer and to add links to other websites."
 msgstr "Du kan använda HTML för att formatera svaret och lägga till länkar till andra webbplatser."
 
-#: resources/views/admin/site-mail.phtml:10
+#: resources/views/admin/site-mail.phtml:31
 msgid "You must also enable “less secure applications” in your Google account."
 msgstr "Du måste också möjliggöra ”mindre säkra applikationer” i ditt Google-konto."
 
@@ -15966,7 +15995,7 @@ msgstr "Du måste vara en familjemedlem för att få tillgång till denna webbpl
 msgid "You need to be an authorized user to access this website."
 msgstr "Du måste vara en behörig användare att få tillgång till denna webbplats."
 
-#: resources/views/admin/trees.phtml:15
+#: resources/views/admin/trees.phtml:19
 msgid "You need to create a family tree."
 msgstr "Du måste skapa ett släktträd."
 
@@ -15989,8 +16018,8 @@ msgid "You should accept or reject all pending changes before upgrading."
 msgstr "Du bör acceptera eller ignorera alla väntande ändringar innan du uppgraderar."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
-#: app/Http/Controllers/Auth/RegisterController.php:219
-#: app/Http/Controllers/MessageController.php:222
+#: app/Http/Controllers/Auth/RegisterController.php:227
+#: app/Http/Controllers/MessageController.php:229
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
 msgstr "Ta bort ”%1$s” från ”%2$s” och försök på nytt."
@@ -16033,7 +16062,11 @@ msgstr "Urklippskorgen för ditt släktträd är tom."
 msgid "Your name"
 msgstr "Ditt namn"
 
-#: app/Http/Controllers/Auth/RegisterController.php:141
+#: app/Http/RequestHandlers/PasswordResetAction.php:71
+msgid "Your password has been updated."
+msgstr ""
+
+#: app/Http/Controllers/Auth/RegisterController.php:151
 #, php-format
 msgid "Your registration at %s"
 msgstr "Din registrering på %s"
@@ -16042,7 +16075,7 @@ msgstr "Din registrering på %s"
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr "Ditt användarkonto har inte ”automatiskt acceptera förändringar” aktiverad. Du kommer bara att kunna ändra en post i taget."
 
-#: app/Services/ServerCheckService.php:184
+#: app/Services/ServerCheckService.php:195
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
 msgstr "Din webbserver använder PHP versionen %s, som inte längre tar emot säkerhetsuppdateringar. Du bör uppgradera till en senare version så snart som möjligt."
@@ -16057,12 +16090,12 @@ msgstr "Zambia"
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
 
-#: resources/views/admin/location-edit.phtml:62
+#: resources/views/admin/location-edit.phtml:63
 #: resources/views/modules/fanchart/page.phtml:43
 msgid "Zoom"
 msgstr "Zooma"
 
-#: resources/views/admin/location-edit.phtml:131
+#: resources/views/admin/location-edit.phtml:132
 #: resources/views/modules/pedigree-map/chart.phtml:53
 #: resources/views/modules/places/tab.phtml:49
 #: resources/views/modules/timeline-chart/page.phtml:41
@@ -16074,7 +16107,7 @@ msgstr "Zooma in"
 msgid "Zoom level"
 msgstr "Zoomfaktor"
 
-#: resources/views/admin/location-edit.phtml:132
+#: resources/views/admin/location-edit.phtml:133
 #: resources/views/modules/pedigree-map/chart.phtml:54
 #: resources/views/modules/places/tab.phtml:50
 #: resources/views/modules/timeline-chart/page.phtml:44
@@ -16091,7 +16124,7 @@ msgstr "ungefär %s"
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page.phtml:19
 #: resources/views/gedcom-record-page.phtml:14
-#: resources/views/individual-page.phtml:19 resources/views/media-page.phtml:15
+#: resources/views/individual-page.phtml:34 resources/views/media-page.phtml:30
 #: resources/views/note-page.phtml:14 resources/views/repository-page.phtml:18
 #: resources/views/source-page.phtml:14
 msgctxt "You should review the changes and then accept or reject them."
@@ -16101,7 +16134,7 @@ msgstr "acceptera"
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page.phtml:13
 #: resources/views/gedcom-record-page.phtml:8
-#: resources/views/individual-page.phtml:10 resources/views/media-page.phtml:9
+#: resources/views/individual-page.phtml:25 resources/views/media-page.phtml:24
 #: resources/views/note-page.phtml:8 resources/views/repository-page.phtml:12
 #: resources/views/source-page.phtml:8
 msgctxt "You should review the deletion and then accept or reject it."
@@ -16165,8 +16198,8 @@ msgstr "efter %s"
 msgid "after death"
 msgstr "efter dödsdagen"
 
-#: app/Http/Controllers/IndividualController.php:95
-#: app/Http/Controllers/IndividualController.php:98
+#: app/Http/Controllers/IndividualController.php:96
+#: app/Http/Controllers/IndividualController.php:99
 #: app/Module/StatisticsChartModule.php:517
 #: app/Module/StatisticsChartModule.php:579
 #: app/Module/StatisticsChartModule.php:640
@@ -16190,7 +16223,7 @@ msgctxt "MALE"
 msgid "also known as"
 msgstr "även känd som"
 
-#: app/Functions/FunctionsEdit.php:569
+#: app/Functions/FunctionsEdit.php:554
 msgid "always"
 msgstr "alltid"
 
@@ -16398,11 +16431,11 @@ msgstr "beräknad %s"
 #: resources/views/admin/analytics-edit.phtml:31
 #: resources/views/admin/broadcast.phtml:56
 #: resources/views/admin/components.phtml:137
-#: resources/views/admin/location-edit.phtml:78
-#: resources/views/admin/site-mail.phtml:146
+#: resources/views/admin/location-edit.phtml:79
+#: resources/views/admin/site-mail.phtml:222
 #: resources/views/admin/site-preferences.phtml:93
 #: resources/views/admin/site-registration.phtml:76
-#: resources/views/admin/trees-preferences.phtml:982
+#: resources/views/admin/trees-preferences.phtml:962
 #: resources/views/admin/trees-privacy.phtml:280
 #: resources/views/contact-page.phtml:62
 #: resources/views/edit-blocks-page.phtml:49
@@ -16495,20 +16528,22 @@ msgstr "kompakt lista"
 #: resources/views/admin/trees-import.phtml:111
 #: resources/views/admin/trees-merge.phtml:41
 #: resources/views/admin/trees-renumber.phtml:29
-#: resources/views/admin/trees.phtml:382
+#: resources/views/admin/trees.phtml:392
 #: resources/views/admin/upgrade/wizard.phtml:28
-#: resources/views/forgot-password-page.phtml:25
+#: resources/views/forgot-password-page.phtml:33
 #: resources/views/modules/clippings/add-options.phtml:22
 #: resources/views/modules/login_block/sign-in.phtml:52
+#: resources/views/password-request-page.phtml:31
+#: resources/views/password-reset-page.phtml:49
 #: resources/views/pending-changes-page.phtml:14
-#: resources/views/register-page.phtml:83
+#: resources/views/register-page.phtml:97
 #: resources/views/report-select-page.phtml:29
 #: resources/views/report-setup-page.phtml:56
 msgid "continue"
 msgstr "fortsätt"
 
 #. I18N: A button label.
-#: resources/views/admin/trees.phtml:348
+#: resources/views/admin/trees.phtml:357
 msgid "create"
 msgstr "skapa"
 
@@ -16553,8 +16588,8 @@ msgstr "svärdotters förälder"
 msgid "death"
 msgstr "död"
 
-#: resources/views/admin/location-edit.phtml:46
-#: resources/views/admin/location-edit.phtml:57
+#: resources/views/admin/location-edit.phtml:47
+#: resources/views/admin/location-edit.phtml:58
 msgid "degrees"
 msgstr "grader"
 
@@ -16778,7 +16813,7 @@ msgid "fifth cousin"
 msgstr "5. kusin"
 
 #. I18N: A button label, first page
-#: resources/views/admin/trees-preferences.phtml:607
+#: resources/views/admin/trees-preferences.phtml:587
 #: resources/views/lists/datatables-attributes.phtml:10
 #: resources/views/media-list-page.phtml:80
 #: resources/views/media-list-page.phtml:186
@@ -16786,7 +16821,7 @@ msgid "first"
 msgstr "första"
 
 #. I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name
-#: resources/views/admin/trees-preferences.phtml:615
+#: resources/views/admin/trees-preferences.phtml:595
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
 msgstr "första"
@@ -18616,17 +18651,17 @@ msgid "herself"
 msgstr "hon själv"
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
-#: app/Functions/FunctionsEdit.php:565
+#: app/Functions/FunctionsEdit.php:550
 msgid "hh:mm or hh:mm:ss"
 msgstr "tt:mm eller tt:mm:ss"
 
-#: resources/views/admin/trees-preferences.phtml:322
-#: resources/views/admin/trees-preferences.phtml:402
-#: resources/views/admin/trees-preferences.phtml:417
-#: resources/views/admin/trees-preferences.phtml:433
-#: resources/views/admin/trees-preferences.phtml:558
-#: resources/views/admin/trees-preferences.phtml:669
-#: resources/views/admin/trees-preferences.phtml:684
+#: resources/views/admin/trees-preferences.phtml:302
+#: resources/views/admin/trees-preferences.phtml:382
+#: resources/views/admin/trees-preferences.phtml:397
+#: resources/views/admin/trees-preferences.phtml:413
+#: resources/views/admin/trees-preferences.phtml:538
+#: resources/views/admin/trees-preferences.phtml:649
+#: resources/views/admin/trees-preferences.phtml:664
 msgid "hide"
 msgstr "dölj"
 
@@ -18702,14 +18737,14 @@ msgid "jours complementaires"
 msgstr "jours complémentaires"
 
 #. I18N: A button label, last page
-#: resources/views/admin/trees-preferences.phtml:607
+#: resources/views/admin/trees-preferences.phtml:587
 #: resources/views/lists/datatables-attributes.phtml:12
 #: resources/views/media-list-page.phtml:104
 #: resources/views/media-list-page.phtml:210
 msgid "last"
 msgstr "sista"
 
-#: resources/views/admin/trees-preferences.phtml:615
+#: resources/views/admin/trees-preferences.phtml:595
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
 msgstr "sista"
@@ -18949,12 +18984,12 @@ msgctxt "wife’s sister’s child"
 msgid "nephew/niece"
 msgstr "hustrus systers barn"
 
-#: app/Functions/FunctionsEdit.php:569
+#: app/Functions/FunctionsEdit.php:554
 msgid "never"
 msgstr "aldrig"
 
 #. I18N: A button label, next page
-#: resources/views/individual-page.phtml:59
+#: resources/views/individual-page.phtml:74
 #: resources/views/lists/datatables-attributes.phtml:14
 #: resources/views/media-list-page.phtml:97
 #: resources/views/media-list-page.phtml:203
@@ -18963,10 +18998,10 @@ msgstr "aldrig"
 #: resources/views/setup/step-1-language.phtml:36
 #: resources/views/setup/step-2-server-checks.phtml:64
 #: resources/views/setup/step-3-database-type.phtml:72
-#: resources/views/setup/step-4-database-mysql.phtml:115
-#: resources/views/setup/step-4-database-pgsql.phtml:102
+#: resources/views/setup/step-4-database-mysql.phtml:111
+#: resources/views/setup/step-4-database-pgsql.phtml:98
 #: resources/views/setup/step-4-database-sqlite.phtml:72
-#: resources/views/setup/step-4-database-sqlsvr.phtml:101
+#: resources/views/setup/step-4-database-sqlsvr.phtml:98
 #: resources/views/setup/step-5-administrator.phtml:82
 msgid "next"
 msgstr "nästa"
@@ -19046,23 +19081,23 @@ msgctxt "MALE"
 msgid "ninth cousin"
 msgstr "9. kusin"
 
-#: app/Functions/FunctionsEdit.php:146 app/Functions/FunctionsEdit.php:195
-#: app/Http/Controllers/Admin/UsersController.php:249
-#: app/Http/Controllers/Admin/UsersController.php:250
+#: app/Functions/FunctionsEdit.php:146 app/Functions/FunctionsEdit.php:180
+#: app/Http/Controllers/Admin/UsersController.php:257
+#: app/Http/Controllers/Admin/UsersController.php:258
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:207
 #: app/Statistics/Repository/LatestUserRepository.php:134
 #: resources/views/admin/map-import-form.phtml:56
-#: resources/views/admin/site-mail.phtml:77
+#: resources/views/admin/site-mail.phtml:108
 #: resources/views/admin/site-preferences.phtml:75
 #: resources/views/admin/site-registration.phtml:43
 #: resources/views/admin/site-registration.phtml:60
-#: resources/views/admin/trees-preferences.phtml:132
-#: resources/views/admin/trees-preferences.phtml:337
-#: resources/views/admin/trees-preferences.phtml:573
-#: resources/views/admin/trees-preferences.phtml:589
-#: resources/views/admin/trees-preferences.phtml:654
-#: resources/views/admin/trees-preferences.phtml:936
-#: resources/views/admin/trees-preferences.phtml:966
+#: resources/views/admin/trees-preferences.phtml:133
+#: resources/views/admin/trees-preferences.phtml:317
+#: resources/views/admin/trees-preferences.phtml:553
+#: resources/views/admin/trees-preferences.phtml:569
+#: resources/views/admin/trees-preferences.phtml:634
+#: resources/views/admin/trees-preferences.phtml:916
+#: resources/views/admin/trees-preferences.phtml:946
 #: resources/views/lists/families-table.phtml:378
 #: resources/views/modules/html/config.phtml:44
 #: resources/views/modules/random_media/config.phtml:34
@@ -19085,10 +19120,9 @@ msgid "no"
 msgstr "nej"
 
 #. I18N: None of the other options
-#: app/Http/Controllers/AdminSiteController.php:354
 #: app/Http/Controllers/AdminTreesController.php:1013
 #: app/Http/Controllers/AdminTreesController.php:1019
-#: app/Module/RelationshipsChartModule.php:164
+#: app/Module/RelationshipsChartModule.php:164 app/Services/MailService.php:214
 #: resources/views/modules/statistics-chart/custom.phtml:71
 msgid "none"
 msgstr "ingen"
@@ -19180,7 +19214,7 @@ msgid "preview"
 msgstr "förhandsvisa"
 
 #. I18N: A button label, previous page
-#: resources/views/individual-page.phtml:55
+#: resources/views/individual-page.phtml:70
 #: resources/views/lists/datatables-attributes.phtml:16
 #: resources/views/media-list-page.phtml:87
 #: resources/views/media-list-page.phtml:193
@@ -19188,10 +19222,10 @@ msgstr "förhandsvisa"
 #: resources/views/modules/batch_update/admin.phtml:61
 #: resources/views/setup/step-2-server-checks.phtml:68
 #: resources/views/setup/step-3-database-type.phtml:76
-#: resources/views/setup/step-4-database-mysql.phtml:119
-#: resources/views/setup/step-4-database-pgsql.phtml:106
+#: resources/views/setup/step-4-database-mysql.phtml:115
+#: resources/views/setup/step-4-database-pgsql.phtml:102
 #: resources/views/setup/step-4-database-sqlite.phtml:76
-#: resources/views/setup/step-4-database-sqlsvr.phtml:105
+#: resources/views/setup/step-4-database-sqlsvr.phtml:102
 #: resources/views/setup/step-5-administrator.phtml:86
 msgid "previous"
 msgstr "föregående"
@@ -19213,7 +19247,7 @@ msgstr "poster"
 
 #: resources/views/family-page.phtml:19
 #: resources/views/gedcom-record-page.phtml:14
-#: resources/views/individual-page.phtml:19 resources/views/media-page.phtml:15
+#: resources/views/individual-page.phtml:34 resources/views/media-page.phtml:30
 #: resources/views/note-page.phtml:14 resources/views/repository-page.phtml:18
 #: resources/views/source-page.phtml:14
 msgctxt "You should review the changes and then accept or reject them."
@@ -19222,7 +19256,7 @@ msgstr "avslå"
 
 #: resources/views/family-page.phtml:13
 #: resources/views/gedcom-record-page.phtml:8
-#: resources/views/individual-page.phtml:10 resources/views/media-page.phtml:9
+#: resources/views/individual-page.phtml:25 resources/views/media-page.phtml:24
 #: resources/views/note-page.phtml:8 resources/views/repository-page.phtml:12
 #: resources/views/source-page.phtml:8
 msgctxt "You should review the deletion and then accept or reject it."
@@ -19270,18 +19304,18 @@ msgstr "höger"
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:26
 #: resources/views/admin/components.phtml:132
-#: resources/views/admin/location-edit.phtml:74
+#: resources/views/admin/location-edit.phtml:75
 #: resources/views/admin/map-provider.phtml:51
 #: resources/views/admin/merge-records-step-2.phtml:155
 #: resources/views/admin/modules.phtml:263
-#: resources/views/admin/site-mail.phtml:141
+#: resources/views/admin/site-mail.phtml:217
 #: resources/views/admin/site-preferences.phtml:88
 #: resources/views/admin/site-registration.phtml:71
-#: resources/views/admin/trees-preferences.phtml:978
+#: resources/views/admin/trees-preferences.phtml:958
 #: resources/views/admin/trees-privacy.phtml:276
 #: resources/views/admin/users-create.phtml:66
 #: resources/views/admin/users-edit.phtml:334
-#: resources/views/edit-account-page.phtml:157
+#: resources/views/edit-account-page.phtml:142
 #: resources/views/edit-blocks-page.phtml:44
 #: resources/views/edit/add-fact.phtml:83
 #: resources/views/edit/change-family-members.phtml:74
@@ -19527,13 +19561,13 @@ msgctxt "MALE"
 msgid "seventh cousin"
 msgstr "7. kusin"
 
-#: resources/views/admin/trees-preferences.phtml:322
-#: resources/views/admin/trees-preferences.phtml:402
-#: resources/views/admin/trees-preferences.phtml:417
-#: resources/views/admin/trees-preferences.phtml:433
-#: resources/views/admin/trees-preferences.phtml:558
-#: resources/views/admin/trees-preferences.phtml:669
-#: resources/views/admin/trees-preferences.phtml:684
+#: resources/views/admin/trees-preferences.phtml:302
+#: resources/views/admin/trees-preferences.phtml:382
+#: resources/views/admin/trees-preferences.phtml:397
+#: resources/views/admin/trees-preferences.phtml:413
+#: resources/views/admin/trees-preferences.phtml:538
+#: resources/views/admin/trees-preferences.phtml:649
+#: resources/views/admin/trees-preferences.phtml:664
 #: resources/views/modules/faq/config.phtml:22
 #: resources/views/modules/stories/config.phtml:18
 msgid "show"
@@ -19548,7 +19582,7 @@ msgid "sibling"
 msgstr "syskon"
 
 #. I18N: A button label.
-#: resources/views/login-page.phtml:45
+#: resources/views/login-page.phtml:57
 #: resources/views/modules/login_block/sign-in.phtml:24
 msgid "sign in"
 msgstr "logga in"
@@ -19718,7 +19752,7 @@ msgid "spouse"
 msgstr "make/maka"
 
 #. I18N: Secure Sockets Layer - a secure communications protocol
-#: app/Http/Controllers/AdminSiteController.php:356
+#: app/Services/MailService.php:216
 msgid "ssl"
 msgstr "ssl"
 
@@ -19930,7 +19964,7 @@ msgid "three-quarter circle"
 msgstr "trekvartscirkel"
 
 #. I18N: Transport Layer Security - a secure communications protocol
-#: app/Http/Controllers/AdminSiteController.php:358
+#: app/Services/MailService.php:218
 msgid "tls"
 msgstr "tls"
 
@@ -20042,7 +20076,7 @@ msgstr "ladda upp"
 #: resources/views/modules/interactive-tree/page.phtml:31
 #: resources/views/modules/pedigree-chart/page.phtml:43
 #: resources/views/modules/pedigree-map/page.phtml:34
-#: resources/views/modules/relationships-chart/page.phtml:70
+#: resources/views/modules/relationships-chart/page.phtml:66
 msgid "view"
 msgstr "visa"
 
@@ -20070,7 +20104,7 @@ msgstr "föddes"
 msgid "webtrees"
 msgstr "webtrees"
 
-#: app/Http/Controllers/MessageController.php:417
+#: app/Http/Controllers/MessageController.php:423
 msgid "webtrees message"
 msgstr "webtrees-meddelande"
 
@@ -20079,14 +20113,9 @@ msgid "webtrees needs a database to store your genealogy data."
 msgstr "webtrees behöver en databas för att lagra din släktforskningsdata."
 
 #. I18N: Help text for the “Messages” site configuration setting
-#: resources/views/admin/site-mail.phtml:24
-msgid "webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
-msgstr "webtrees behöver sända e-post, så som lösenords påminnelser och webbplats meddelanden. För att göra det, kan den använda denna servers inbyggda PHP e-post egenskaper (som inte alltid är tillgängliga) eller en external SMTP (e-post relä) service för vilken du behöver anslutningsdetaljer."
-
-#. I18N: A configuration setting
-#: resources/views/admin/trees-preferences.phtml:145
-msgid "webtrees reply address"
-msgstr "webtrees svarsadress"
+#: resources/views/admin/site-mail.phtml:46
+msgid "webtrees needs to send emails, such as password reminders and website notifications."
+msgstr ""
 
 #: app/Functions/FunctionsEdit.php:132
 msgid "webtrees sends emails with no storage"
@@ -20109,23 +20138,23 @@ msgstr "xenea"
 msgid "years"
 msgstr "år"
 
-#: app/Functions/FunctionsEdit.php:147 app/Functions/FunctionsEdit.php:196
-#: app/Http/Controllers/Admin/UsersController.php:249
-#: app/Http/Controllers/Admin/UsersController.php:250
+#: app/Functions/FunctionsEdit.php:147 app/Functions/FunctionsEdit.php:181
+#: app/Http/Controllers/Admin/UsersController.php:257
+#: app/Http/Controllers/Admin/UsersController.php:258
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:208
 #: app/Statistics/Repository/LatestUserRepository.php:133
 #: resources/views/admin/map-import-form.phtml:56
-#: resources/views/admin/site-mail.phtml:77
+#: resources/views/admin/site-mail.phtml:108
 #: resources/views/admin/site-preferences.phtml:75
 #: resources/views/admin/site-registration.phtml:43
 #: resources/views/admin/site-registration.phtml:60
-#: resources/views/admin/trees-preferences.phtml:132
-#: resources/views/admin/trees-preferences.phtml:337
-#: resources/views/admin/trees-preferences.phtml:573
-#: resources/views/admin/trees-preferences.phtml:589
-#: resources/views/admin/trees-preferences.phtml:654
-#: resources/views/admin/trees-preferences.phtml:936
-#: resources/views/admin/trees-preferences.phtml:966
+#: resources/views/admin/trees-preferences.phtml:133
+#: resources/views/admin/trees-preferences.phtml:317
+#: resources/views/admin/trees-preferences.phtml:553
+#: resources/views/admin/trees-preferences.phtml:569
+#: resources/views/admin/trees-preferences.phtml:634
+#: resources/views/admin/trees-preferences.phtml:916
+#: resources/views/admin/trees-preferences.phtml:946
 #: resources/views/lists/families-table.phtml:380
 #: resources/views/modules/html/config.phtml:44
 #: resources/views/modules/random_media/config.phtml:34
@@ -20276,6 +20305,13 @@ msgstr "…"
 #~ msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 #~ msgstr "En databasserver kan ha många separata databaser. Du kan välja en befintlig databas (skapad av din servers administratör) eller skapa en ny (om dina rättigheter räcker till att skapa en)."
 
+#, php-format
+#~ msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
+#~ msgstr "Ett nytt lösenord har skapats och mailats till %s. Du kan ändra lösenordet efter du loggat in."
+
+#~ msgid "A new password has been requested for your username."
+#~ msgstr "Ett nytt lösenord efterfrågas för ditt användarnamn."
+
 #~ msgid "A sidebar showing an alphabetic list of all the families in the family tree."
 #~ msgstr "En sidopanel som visar en alfabetisk lista över alla familjer i släktträdet."
 
@@ -20335,6 +20371,9 @@ msgstr "…"
 
 #~ msgid "Advanced"
 #~ msgstr "Avancerad"
+
+#~ msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
+#~ msgstr "Efter att du loggat in, välj länken ”Mitt konto” under menyn ”Min sida”, fyll i lösenordsfälten för att ändra ditt lösenord."
 
 #~ msgid "Age of item"
 #~ msgstr "Ålder för artikel"
@@ -20612,6 +20651,9 @@ msgstr "…"
 #~ msgid "Elevation"
 #~ msgstr "Höjd"
 
+#~ msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
+#~ msgstr "E-postadress som skall användas i ”från:”-fältet för e-post som webtrees skapar automatiskt.<br><br>webtrees kan automatiskt skapa e-post för att meddela administratörer av förändringar som behöver granskas. webtrees skickar också e-postmeddelanden till användare som har ansökt om ett konto.<br><br>Vanligtvis är ”från:” fältet i dessa automatiskt skapade e-postmeddelanden t.ex. <i>från: webtrees-noreply@yoursite</i> för att visa att inget svar på e-post krävs. För att skydda mot skräppost eller andra e-missbruk, kräver vissa system en giltig adress i ”från:” fältet och kommer inte att acceptera meddelanden som är från kontot <i>webtrees-noreply</i>."
+
 #~ msgid "Embedded variable"
 #~ msgstr "Inbäddad variabel"
 
@@ -20787,11 +20829,17 @@ msgstr "…"
 #~ msgid "Longevity versus time"
 #~ msgstr "Livslängd som funktion av tiden"
 
+#~ msgid "Lost password request"
+#~ msgstr "Begär återställning av förlorat lösenord"
+
 #~ msgid "Lowest population"
 #~ msgstr "Lägsta folkmängd"
 
 #~ msgid "Main section blocks"
 #~ msgstr "Huvudsektionens block"
+
+#~ msgid "Many mail servers require that the sending server identifies itself correctly, using a valid domain name."
+#~ msgstr "Många mail servrar kräver att den sändande servern identifierar sig korrekt och använder ett giltigt domännamn."
 
 #~ msgid "Match calendar"
 #~ msgstr "Matcha kalendern"
@@ -21324,6 +21372,10 @@ msgstr "…"
 #~ msgid "Theme menu"
 #~ msgstr "Tema meny"
 
+#, php-format
+#~ msgid "There is no account with the username or email “%s”."
+#~ msgstr "Det finns inget konto med användarnamnet eller e-posten “%s”."
+
 #~ msgid "These pages provide access to all the preferences and management tools for this webtrees site."
 #~ msgstr "Dessa sidor ger tillgång till alla konfigurationsinställningar och hanteringsverktyg för denna webtrees-webbplats."
 
@@ -21775,6 +21827,12 @@ msgstr "…"
 
 #~ msgid "webtrees needs a MySQL database, version %s or later."
 #~ msgstr "webtrees behöver en MySQL-databas, version %s eller senare."
+
+#~ msgid "webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
+#~ msgstr "webtrees behöver sända e-post, så som lösenords påminnelser och webbplats meddelanden. För att göra det, kan den använda denna servers inbyggda PHP e-post egenskaper (som inte alltid är tillgängliga) eller en external SMTP (e-post relä) service för vilken du behöver anslutningsdetaljer."
+
+#~ msgid "webtrees reply address"
+#~ msgstr "webtrees svarsadress"
 
 #~ msgid "webtrees wiki"
 #~ msgstr "webtrees wiki"

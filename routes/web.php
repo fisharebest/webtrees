@@ -20,6 +20,10 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteUser;
 use Fisharebest\Webtrees\Http\RequestHandlers\MasqueradeAsUser;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\PasswordRequestAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\PasswordRequestForm;
+use Fisharebest\Webtrees\Http\RequestHandlers\PasswordResetAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\PasswordResetForm;
 use Fisharebest\Webtrees\Http\RequestHandlers\Ping;
 use Fisharebest\Webtrees\Http\RequestHandlers\PrivacyPolicy;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
@@ -307,21 +311,25 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
 
 // Public routes (that do not need a tree).
 $routes += [
-    'GET:login'            => 'Auth\\LoginController@loginPage',
-    'POST:login'           => 'Auth\\LoginController@loginAction',
-    'GET:logout'           => 'Auth\\LoginController@logoutAction',
-    'POST:logout'          => 'Auth\\LoginController@logoutAction',
-    'GET:register'         => 'Auth\\RegisterController@registerPage',
-    'POST:register'        => 'Auth\\RegisterController@registerAction',
-    'GET:verify'           => 'Auth\\VerifyEmailController@verify',
-    'GET:forgot-password'  => 'Auth\\ForgotPasswordController@forgotPasswordPage',
-    'POST:forgot-password' => 'Auth\\ForgotPasswordController@forgotPasswordAction',
-    'POST:language'        => SelectLanguage::class,
-    'POST:theme'           => SelectTheme::class,
-    'GET:privacy-policy'   => PrivacyPolicy::class,
-    'GET:module'           => ModuleAction::class,
-    'POST:module'          => ModuleAction::class,
-    'GET:ping'             => Ping::class,
+    'GET:login'             => 'Auth\\LoginController@loginPage',
+    'POST:login'            => 'Auth\\LoginController@loginAction',
+    'GET:logout'            => 'Auth\\LoginController@logoutAction',
+    'POST:logout'           => 'Auth\\LoginController@logoutAction',
+    'GET:register'          => 'Auth\\RegisterController@registerPage',
+    'POST:register'         => 'Auth\\RegisterController@registerAction',
+    'GET:verify'            => 'Auth\\VerifyEmailController@verify',
+    'GET:forgot-password'   => 'Auth\\ForgotPasswordController@forgotPasswordPage',
+    'POST:forgot-password'  => 'Auth\\ForgotPasswordController@forgotPasswordAction',
+    'GET:password-request'  => PasswordRequestForm::class,
+    'POST:password-request' => PasswordRequestAction::class,
+    'GET:password-reset'    => PasswordResetForm::class,
+    'POST:password-reset'   => PasswordResetAction::class,
+    'POST:language'         => SelectLanguage::class,
+    'POST:theme'            => SelectTheme::class,
+    'GET:privacy-policy'    => PrivacyPolicy::class,
+    'GET:module'            => ModuleAction::class,
+    'POST:module'           => ModuleAction::class,
+    'GET:ping'              => Ping::class,
 ];
 
 return $routes;

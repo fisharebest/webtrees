@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
@@ -101,6 +102,28 @@ class UserService
             ->select(['user.*'])
             ->get()
             ->map(User::rowMapper());
+    }
+
+    /**
+     * Find the user with a specified password reset token.
+     *
+     * @param string $token
+     *
+     * @return User|null
+     */
+    public function findByToken(string $token): ?User
+    {
+        return DB::table('user')
+            ->join('user_setting AS us1', 'us1.user_id', '=', 'user.user_id')
+            ->where('us1.setting_name', '=', 'password-token')
+            ->where('us1.setting_value', '=', $token)
+            ->join('user_setting AS us2', 'us2.user_id', '=', 'user.user_id')
+            ->where('us2.setting_name', '=', 'password-token-expire')
+            ->where('us2.setting_value', '>', Carbon::now()->timestamp)
+            ->select(['user.*'])
+            ->get()
+            ->map(User::rowMapper())
+            ->first();
     }
 
     /**
