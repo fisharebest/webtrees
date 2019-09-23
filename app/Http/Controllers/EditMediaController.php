@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Exception;
 use Fig\Http\Message\StatusCodeInterface;
-use FilesystemIterator;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
@@ -33,12 +32,11 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use InvalidArgumentException;
 use function pathinfo;
+use function strpos;
 use const PATHINFO_EXTENSION;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
-use RecursiveDirectoryIterator;
-use RecursiveIteratorIterator;
 use RuntimeException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Throwable;
@@ -634,19 +632,19 @@ class EditMediaController extends AbstractEditController
             ->pluck('multimedia_file_refn')
             ->all();
 
-        $disk_files = [];
-        $media_dir  = WT_DATA_DIR . $tree->getPreference('MEDIA_DIRECTORY', 'media/');
-        $iter       = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($media_dir, FilesystemIterator::FOLLOW_SYMLINKS));
+        $disk_files = $tree->mediaFilesystem()->listContents('', true);
 
-        foreach ($iter as $file) {
-            if ($file->isFile()) {
-                $filename = substr($file->getPathname(), strlen($media_dir));
-                // Older versions of webtrees used a couple of special folders.
-                if (strpos($filename, 'thumbs/') === false && strpos($filename, 'watermarks/') === false) {
-                    $disk_files[] = $filename;
-                }
-            }
-        }
+        $disk_files = array_filter($disk_files, static function (array $item) {
+            // Older versions of webtrees used a couple of special folders.
+            return
+                $item['type'] === 'file' &&
+                strpos($item['path'], '/thumbs/') === false &&
+                strpos($item['path'], '/watermarks/') === false;
+        });
+
+        $disk_files = array_map(static function (array $item): string {
+            return $item['path'];
+        }, $disk_files);
 
         $unused_files = array_diff($disk_files, $used_files);
 

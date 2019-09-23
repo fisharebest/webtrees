@@ -27,6 +27,11 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
+use League\Flysystem\Adapter\Local;
+use League\Flysystem\Cached\CachedAdapter;
+use League\Flysystem\Cached\Storage\Memory;
+use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemInterface;
 use PDOException;
 use Psr\Http\Message\StreamInterface;
 use stdClass;
@@ -915,5 +920,12 @@ class Tree
         }
 
         return $individual;
+    }
+
+    public function mediaFilesystem(): FilesystemInterface
+    {
+        $media_dir = WT_DATA_DIR . $this->getPreference('MEDIA_DIRECTORY', 'media/');
+
+        return new Filesystem(new CachedAdapter(new Local($media_dir), new Memory()));
     }
 }
