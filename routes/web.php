@@ -111,6 +111,7 @@ if (Auth::isAdmin()) {
     $router->post('admin-site-logs-delete', 'AdminSiteController::logsDelete');
     $router->get('admin-site-logs-export', 'AdminSiteController::logsExport');
     $router->get('admin-site-information', 'AdminSiteController::serverInformation');
+    $router->get('admin-trees', 'AdminTreesController::index');
     $router->post('admin-trees-create', 'AdminTreesController::create');
     $router->post('admin-trees-default', 'AdminTreesController::setDefault');
     $router->post('admin-trees-delete', 'AdminTreesController::delete');
