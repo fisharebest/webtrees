@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
-use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Html;
@@ -32,13 +31,13 @@ use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Throwable;
 use function dirname;
-use function file_exists;
 use function is_dir;
 use function preg_match;
 use function str_replace;
@@ -117,10 +116,11 @@ class MediaController extends AbstractAdminController
 
     /**
      * @param ServerRequestInterface $request
+     * @param FilesystemInterface    $filesystem
      *
      * @return ResponseInterface
      */
-    public function delete(ServerRequestInterface $request): ResponseInterface
+    public function delete(ServerRequestInterface $request, FilesystemInterface $filesystem): ResponseInterface
     {
         $delete_file  = $request->getQueryParams()['file'];
         $media_folder = $request->getQueryParams()['folder'];
@@ -130,12 +130,14 @@ class MediaController extends AbstractAdminController
 
         // Check file exists? Maybe it was already deleted or renamed.
         if (in_array($delete_file, $disk_files, true)) {
-            $tmp = WT_DATA_DIR . $media_folder . $delete_file;
+            $path = $media_folder . $delete_file;
             try {
-                unlink($tmp);
-                FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', Html::filename($tmp)), 'info');
+                if ($filesystem->has($path)) {
+                    $filesystem->delete($path);
+                }
+                FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', e($path)), 'info');
             } catch (Throwable $ex) {
-                FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', Html::filename($tmp)) . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>', 'danger');
+                FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', e($path)) . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>', 'danger');
             }
         }
 
@@ -505,14 +507,18 @@ class MediaController extends AbstractAdminController
 
     /**
      * @param ServerRequestInterface $request
+     * @param FilesystemInterface    $filesystem
      *
      * @return ResponseInterface
      */
-    public function uploadAction(ServerRequestInterface $request): ResponseInterface
+    public function uploadAction(ServerRequestInterface $request, FilesystemInterface $filesystem): ResponseInterface
     {
         $all_folders = $this->allMediaFolders();
 
         foreach ($request->getUploadedFiles() as $key => $uploaded_file) {
+            if ($uploaded_file->getClientFilename() === '') {
+                continue;
+            }
             if ($uploaded_file->getError() !== UPLOAD_ERR_OK) {
                 FlashMessages::addMessage(Functions::fileUploadErrorText($uploaded_file->getError()), 'danger');
                 continue;
@@ -536,11 +542,6 @@ class MediaController extends AbstractAdminController
             $filename = str_replace('\\', '/', $filename);
             $filename = trim($filename, '/');
 
-            if (strpos('/' . $filename, '/../') !== false) {
-                FlashMessages::addMessage('Folder names are not allowed to include “../”');
-                continue;
-            }
-
             if (preg_match('/([:])/', $filename, $match)) {
                 // Local media files cannot contain certain special characters, especially on MS Windows
                 FlashMessages::addMessage(I18N::translate('Filenames are not allowed to contain the character “%s”.', $match[1]));
@@ -553,32 +554,20 @@ class MediaController extends AbstractAdminController
                 continue;
             }
 
-            // The new filename may have created a new sub-folder.
-            $full_path = WT_DATA_DIR . $folder . $filename;
-            $folder    = dirname($full_path);
+            $path = $folder . $filename;
 
-            // Make sure the media folder exists
-            if (!is_dir($folder)) {
-                if (File::mkdir($folder)) {
-                    FlashMessages::addMessage(I18N::translate('The folder %s has been created.', Html::filename($folder)), 'info');
-                } else {
-                    FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename($folder)), 'danger');
-                    continue;
-                }
-            }
-
-            if (file_exists($full_path)) {
-                FlashMessages::addMessage(I18N::translate('The file %s already exists. Use another filename.', $full_path, 'error'));
+            if ($filesystem->has($path)) {
+                FlashMessages::addMessage(I18N::translate('The file %s already exists. Use another filename.', $path, 'error'));
                 continue;
             }
 
             // Now copy the file to the correct location.
             try {
-                $uploaded_file->moveTo($full_path);
-                FlashMessages::addMessage(I18N::translate('The file %s has been uploaded.', Html::filename($full_path)), 'success');
-                Log::addMediaLog('Media file ' . $full_path . ' uploaded');
+                $filesystem->writeStream($path, $uploaded_file->getStream()->detach());
+                FlashMessages::addMessage(I18N::translate('The file %s has been uploaded.', Html::filename($path)), 'success');
+                Log::addMediaLog('Media file ' . $path . ' uploaded');
             } catch (Throwable $ex) {
-                FlashMessages::addMessage(I18N::translate('There was an error uploading your file.') . '<br>' . $ex->getMessage(), 'danger');
+                FlashMessages::addMessage(I18N::translate('There was an error uploading your file.') . '<br>' . e($ex->getMessage()), 'danger');
             }
         }
 

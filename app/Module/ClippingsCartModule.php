@@ -40,6 +40,7 @@ use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use League\Flysystem\Filesystem;
+use League\Flysystem\MountManager;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -49,8 +50,6 @@ use function app;
 use function array_filter;
 use function array_keys;
 use function array_map;
-use function fclose;
-use function file_exists;
 use function in_array;
 use function key;
 use function preg_match_all;
@@ -202,6 +201,11 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $temp_zip_file  = tempnam(sys_get_temp_dir(), 'webtrees-zip-');
         $zip_filesystem = new Filesystem(new ZipArchiveAdapter($temp_zip_file));
 
+        $manager = new MountManager([
+            'media' => $tree->mediaFilesystem(),
+            'zip'   => $zip_filesystem,
+        ]);
+
         // Media file prefix
         $path = $tree->getPreference('MEDIA_DIRECTORY');
 
@@ -259,10 +263,10 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                 } elseif ($object instanceof Media) {
                     // Add the media files to the archive
                     foreach ($object->mediaFiles() as $media_file) {
-                        if (file_exists($media_file->getServerFilename())) {
-                            $fp = fopen($media_file->getServerFilename(), 'rb');
-                            $zip_filesystem->writeStream($path . $media_file->filename(), $fp);
-                            fclose($fp);
+                        $from = 'media://' . $media_file->filename();
+                        $to   = 'zip://' . $path . $media_file->filename();
+                        if (!$media_file->isExternal() && $manager->has($from)) {
+                            $manager->copy($from, $to);
                         }
                     }
                     $filetext .= $record . "\n";
@@ -292,8 +296,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         // Finally add the GEDCOM file to the .ZIP file.
         $zip_filesystem->write('clippings.ged', $filetext);
 
-        // Need to force-close the filesystem
-        unset($zip_filesystem);
+        // Need to force-close ZipArchive filesystems.
+        $zip_filesystem->getAdapter()->getArchive()->close();
 
         // Use a stream, so that we do not have to load the entire file into memory.
         $stream = app(StreamFactoryInterface::class)->createStreamFromFile($temp_zip_file);

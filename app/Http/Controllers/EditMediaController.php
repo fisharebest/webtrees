@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Exception;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -31,15 +30,17 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use InvalidArgumentException;
-use function pathinfo;
-use function strpos;
-use const PATHINFO_EXTENSION;
+use League\Flysystem\FileExistsException;
+use League\Flysystem\FileNotFoundException;
+use League\Flysystem\Util;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use RuntimeException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Throwable;
+use function pathinfo;
+use function strpos;
+use const PATHINFO_EXTENSION;
 use const UPLOAD_ERR_OK;
 
 /**
@@ -227,40 +228,30 @@ class EditMediaController extends AbstractEditController
             } else {
                 $file = $folder . '/' . $new_file;
             }
-            if (strpos($file, '../') !== false) {
-                $file = '';
-            }
         }
 
         // Invalid filename?  Do not change it.
-        if ($file === '') {
+        if ($new_file === '') {
             $file = $media_file->filename();
         }
 
-        $MEDIA_DIRECTORY = $media->tree()->getPreference('MEDIA_DIRECTORY');
-        $old             = $MEDIA_DIRECTORY . $media_file->filename();
-        $new             = $MEDIA_DIRECTORY . $file;
+        $filesystem = $media->tree()->mediaFilesystem();
+        $old        = $media_file->filename();
+        $new        = $file;
 
         // Update the filesystem, if we can.
         if ($old !== $new && !$media_file->isExternal()) {
-            // Don't overwrite existing file
-            if (file_exists(WT_DATA_DIR . $new) && file_exists(WT_DATA_DIR . $old)) {
+            try {
+                $new = Util::normalizePath($new);
+                $filesystem->rename($old, $new);
+                FlashMessages::addMessage(I18N::translate('The media file %1$s has been renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
+            } catch (FileNotFoundException $ex) {
+                // The "old" file may not exist.  For example, if the file was renamed on disk,
+                // and we are now renaming the GEDCOM data to match.
+            } catch (FileExistsException $ex) {
+                // Don't overwrite existing file
                 FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
-                $file = $media_file->filename();
-            } else {
-                try {
-                    // The "old" file may not exist.  For example, if the file was renamed on disk,
-                    // and we are now renaming the GEDCOM data to match.
-                    if (file_exists(WT_DATA_DIR . $old)) {
-                        File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folder);
-                        rename(WT_DATA_DIR . $old, WT_DATA_DIR . $new);
-                    }
-                    FlashMessages::addMessage(I18N::translate('The media file %1$s has been renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
-                } catch (Throwable $ex) {
-                    FlashMessages::addMessage($ex, 'info');
-                    FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
-                    $file = $media_file->filename();
-                }
+                $file = $old;
             }
         }
 
@@ -556,20 +547,18 @@ class EditMediaController extends AbstractEditController
 
             case 'unused':
                 $unused = $params['unused'];
-                $unused = str_replace('\\', '/', $unused);
 
-                if (strpos($unused, '../') !== false) {
-                    return '';
+                if ($tree->mediaFilesystem()->has($unused)) {
+                    return $unused;
                 }
 
-                return $unused;
+                return '';
 
             case 'upload':
             default:
-                $media_folder = $tree->getPreference('MEDIA_DIRECTORY');
-                $folder       = $params['folder'];
-                $auto         = $params['auto'];
-                $new_file     = $params['new_file'];
+                $folder   = $params['folder'];
+                $auto     = $params['auto'];
+                $new_file = $params['new_file'];
 
                 /** @var UploadedFileInterface|null $uploaded_file */
                 $uploaded_file = $request->getUploadedFiles()['file'];
@@ -592,20 +581,15 @@ class EditMediaController extends AbstractEditController
                     $folder .= '/';
                 }
 
-                // Invalid path?
-                if (strpos($folder, '../') !== false || !File::mkdir(WT_DATA_DIR . $media_folder . $folder)) {
-                    $auto = '1';
-                }
-
                 // Generate a unique name for the file?
-                if ($auto === '1' || file_exists(WT_DATA_DIR . $media_folder . $folder . $file)) {
+                if ($auto === '1' || $tree->mediaFilesystem()->has($folder . $file)) {
                     $folder    = '';
                     $extension = pathinfo($uploaded_file->getClientFilename(), PATHINFO_EXTENSION);
                     $file      = sha1((string) $uploaded_file->getStream()) . '.' . $extension;
                 }
 
                 try {
-                    $uploaded_file->moveTo(WT_DATA_DIR . $media_folder . $folder . $file);
+                    $tree->mediaFilesystem()->writeStream($folder . $file, $uploaded_file->getStream()->detach());
 
                     return $folder . $file;
                 } catch (RuntimeException | InvalidArgumentException $ex) {

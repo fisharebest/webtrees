@@ -19,6 +19,8 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\TestCase;
+use League\Flysystem\Filesystem;
+use League\Flysystem\Memory\MemoryAdapter;
 
 /**
  * Test MediaController class.
@@ -107,8 +109,9 @@ class MediaControllerTest extends TestCase
     public function testDelete(): void
     {
         $controller = new MediaController();
+        $filesystem = new Filesystem(new MemoryAdapter());
         $request    = self::createRequest('POST', ['route' => 'admin-media-delete', 'file' => 'foo', 'folder' => 'bar']);
-        $response   = $controller->delete($request);
+        $response   = $controller->delete($request, $filesystem);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -131,8 +134,9 @@ class MediaControllerTest extends TestCase
     public function testUploadAction(): void
     {
         $controller = new MediaController();
+        $filesystem = new Filesystem(new MemoryAdapter());
         $request    = self::createRequest('POST', ['route' => 'admin-media-delete']);
-        $response   = $controller->uploadAction($request);
+        $response   = $controller->uploadAction($request, $filesystem);
 
         $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }

@@ -46,7 +46,6 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;
 use League\Flysystem\MountManager;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
@@ -62,6 +61,8 @@ use function app;
 use function fclose;
 use function fopen;
 use function is_dir;
+use function pathinfo;
+use const PATHINFO_EXTENSION;
 use const UPLOAD_ERR_OK;
 use const WT_DATA_DIR;
 
@@ -461,7 +462,9 @@ class AdminTreesController extends AbstractBaseController
 
         // What to call the downloaded file
         $download_filename = $tree->name();
-        if (strtolower(substr($download_filename, -4)) !== '.ged') {
+
+        // Force a ".ged" suffix
+        if (strtolower(pathinfo($download_filename, PATHINFO_EXTENSION)) !== 'ged') {
             $download_filename .= '.ged';
         }
 
@@ -482,7 +485,7 @@ class AdminTreesController extends AbstractBaseController
             if ($media) {
                 $manager = new MountManager([
                     'media' => $tree->mediaFilesystem(),
-                    'zip' => $zip_filesystem,
+                    'zip'   => $zip_filesystem,
                 ]);
 
                 $records = DB::table('media')
@@ -548,7 +551,7 @@ class AdminTreesController extends AbstractBaseController
         $filename = WT_DATA_DIR . $tree->name();
 
         // Force a ".ged" suffix
-        if (strtolower(substr($filename, -4)) !== '.ged') {
+        if (strtolower(pathinfo($filename, PATHINFO_EXTENSION)) !== 'ged') {
             $filename .= '.ged';
         }
 

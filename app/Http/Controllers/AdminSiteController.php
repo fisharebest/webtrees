@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Exception;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Carbon;
-use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
@@ -446,10 +445,10 @@ class AdminSiteController extends AbstractBaseController
         if (substr($INDEX_DIRECTORY, -1) !== '/') {
             $INDEX_DIRECTORY .= '/';
         }
-        if (File::mkdir($INDEX_DIRECTORY)) {
+        if (is_dir($INDEX_DIRECTORY)) {
             Site::setPreference('INDEX_DIRECTORY', $INDEX_DIRECTORY);
         } else {
-            FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', e($INDEX_DIRECTORY)), 'danger');
+            FlashMessages::addMessage(I18N::translate('The folder “%s” does not exist.', e($INDEX_DIRECTORY)), 'danger');
         }
 
         Site::setPreference('THEME_DIR', $params['THEME_DIR']);
