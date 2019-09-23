@@ -19,6 +19,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Middleland\Dispatcher;
+use Nyholm\Psr7Server\ServerRequestCreator;
+use function app;
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -34,7 +36,7 @@ $middleware = $application->middleware();
 $container  = app();
 $dispatcher = new Dispatcher($middleware, $container);
 
-// Convert the GET, POST, COOKIE variables into a request.
-$request = $application->createServerRequest();
+// Build the request from the PHP super-globals.
+$request = app(ServerRequestCreator::class)->fromGlobals();
 
 $dispatcher->dispatch($request);

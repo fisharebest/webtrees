@@ -43,6 +43,7 @@ use Fisharebest\Webtrees\Http\Middleware\UseTree;
 use Fisharebest\Webtrees\Http\Middleware\WebEnvironment;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7Server\ServerRequestCreator;
+use Nyholm\Psr7Server\ServerRequestCreatorInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -163,23 +164,6 @@ class Webtrees
         app()->bind(StreamFactoryInterface::class, Psr17Factory::class);
         app()->bind(UploadedFileFactoryInterface::class, Psr17Factory::class);
         app()->bind(UriFactoryInterface::class, Psr17Factory::class);
-    }
-
-    /**
-     * We can use any PSR-7 compatible requests.
-     *
-     * @return ServerRequestInterface
-     */
-    public function createServerRequest(): ServerRequestInterface
-    {
-        $server_request_creator = new ServerRequestCreator(
-            app(ServerRequestFactoryInterface::class),
-            app(UriFactoryInterface::class),
-            app(UploadedFileFactoryInterface::class),
-            app(StreamFactoryInterface::class)
-        );
-
-        return $server_request_creator->fromGlobals();
     }
 
     /**
