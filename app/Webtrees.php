@@ -29,7 +29,6 @@ use Fisharebest\Webtrees\Http\Middleware\ModuleMiddleware;
 use Fisharebest\Webtrees\Http\Middleware\NoRouteFound;
 use Fisharebest\Webtrees\Http\Middleware\PhpEnvironment;
 use Fisharebest\Webtrees\Http\Middleware\ReadConfigIni;
-use Fisharebest\Webtrees\Http\Middleware\RequestRouter;
 use Fisharebest\Webtrees\Http\Middleware\UpdateDatabaseSchema;
 use Fisharebest\Webtrees\Http\Middleware\UseCache;
 use Fisharebest\Webtrees\Http\Middleware\UseDatabase;
@@ -42,11 +41,8 @@ use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Fisharebest\Webtrees\Http\Middleware\UseTree;
 use Fisharebest\Webtrees\Http\Middleware\WebEnvironment;
 use Nyholm\Psr7\Factory\Psr17Factory;
-use Nyholm\Psr7Server\ServerRequestCreator;
-use Nyholm\Psr7Server\ServerRequestCreatorInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ServerRequestFactoryInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
@@ -77,7 +73,7 @@ class Webtrees
 
     // Location of our modules.
     public const MODULES_PATH = 'modules_v4/';
-    public const MODULES_DIR = self::ROOT_DIR . self::MODULES_PATH;
+    public const MODULES_DIR  = self::ROOT_DIR . self::MODULES_PATH;
 
     // Enable debugging on development builds.
     public const DEBUG = self::STABILITY !== '';
@@ -194,7 +190,7 @@ class Webtrees
             UseTransaction::class,
             BootModules::class,
             ModuleMiddleware::class,
-            RequestRouter::class,
+            Router::class,
             NoRouteFound::class,
         ];
     }
