@@ -288,7 +288,7 @@ class MediaFile
      */
     public function fileExists(): bool
     {
-        return !$this->isExternal() && file_exists($this->folder() . $this->multimedia_file_refn);
+        return $this->media->tree()->mediaFilesystem()->has($this->multimedia_file_refn);
     }
 
     /**

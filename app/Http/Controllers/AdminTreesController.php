@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
@@ -47,7 +46,9 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
+use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;
+use League\Flysystem\MountManager;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Nyholm\Psr7\UploadedFile;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -59,6 +60,7 @@ use Throwable;
 use function addcslashes;
 use function app;
 use function fclose;
+use function fopen;
 use function is_dir;
 use const UPLOAD_ERR_OK;
 use const WT_DATA_DIR;
@@ -459,7 +461,7 @@ class AdminTreesController extends AbstractBaseController
 
         // What to call the downloaded file
         $download_filename = $tree->name();
-        if (strtolower(substr($download_filename, -4, 4)) !== '.ged') {
+        if (strtolower(substr($download_filename, -4)) !== '.ged') {
             $download_filename .= '.ged';
         }
 
@@ -469,39 +471,39 @@ class AdminTreesController extends AbstractBaseController
             FunctionsExport::exportGedcom($tree, $tmp_stream, $access_level, $media_path, $encoding);
             rewind($tmp_stream);
 
+            $path = $tree->getPreference('MEDIA_DIRECTORY', 'media/');
+
             // Create a new/empty .ZIP file
             $temp_zip_file  = tempnam(sys_get_temp_dir(), 'webtrees-zip-');
             $zip_filesystem = new Filesystem(new ZipArchiveAdapter($temp_zip_file));
             $zip_filesystem->writeStream($download_filename, $tmp_stream);
+            fclose($tmp_stream);
 
             if ($media) {
-                $rows = DB::table('media')
+                $manager = new MountManager([
+                    'media' => $tree->mediaFilesystem(),
+                    'zip' => $zip_filesystem,
+                ]);
+
+                $records = DB::table('media')
                     ->where('m_file', '=', $tree->id())
-                    ->get();
+                    ->get()
+                    ->map(Media::rowMapper())
+                    ->filter(GedcomRecord::accessFilter());
 
-                $path = $tree->getPreference('MEDIA_DIRECTORY');
-
-                foreach ($rows as $row) {
-                    $record = Media::getInstance($row->m_id, $tree, $row->m_gedcom);
-                    if ($record->canShow()) {
-                        foreach ($record->mediaFiles() as $media_file) {
-                            if (file_exists($media_file->getServerFilename())) {
-                                $fp = fopen($media_file->getServerFilename(), 'rb');
-                                $zip_filesystem->writeStream($path . $media_file->filename(), $fp);
-                                fclose($fp);
-                            }
+                foreach ($records as $record) {
+                    foreach ($record->mediaFiles() as $media_file) {
+                        $from = 'media://' . $media_file->filename();
+                        $to   = 'zip://' . $path . $media_file->filename();
+                        if (!$media_file->isExternal() && $manager->has($from)) {
+                            $manager->copy($from, $to);
                         }
                     }
                 }
             }
 
-            // The ZipArchiveAdapter may or may not close the stream.
-            if (is_resource($tmp_stream)) {
-                fclose($tmp_stream);
-            }
-
-            // Need to force-close the filesystem
-            unset($zip_filesystem);
+            // Need to force-close ZipArchive filesystems.
+            $zip_filesystem->getAdapter()->getArchive()->close();
 
             // Use a stream, so that we do not have to load the entire file into memory.
             $stream   = app(StreamFactoryInterface::class)->createStreamFromFile($temp_zip_file);
@@ -1205,17 +1207,10 @@ class AdminTreesController extends AbstractBaseController
 
         // Only accept valid folders for MEDIA_DIRECTORY
         $MEDIA_DIRECTORY = $request->getParsedBody()['MEDIA_DIRECTORY'] ?? '';
-        $MEDIA_DIRECTORY = preg_replace('/[\/\\\\]+/', '/', $MEDIA_DIRECTORY);
+        $MEDIA_DIRECTORY = preg_replace('/[:\/\\\\]+/', '/', $MEDIA_DIRECTORY);
         $MEDIA_DIRECTORY = trim($MEDIA_DIRECTORY, '/') . '/';
 
-        if (is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
-            $tree->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
-        } elseif (File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
-            $tree->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
-            FlashMessages::addMessage(I18N::translate('The folder %s has been created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY)), 'info');
-        } else {
-            FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY)), 'danger');
-        }
+        $tree->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
 
         $gedcom = $request->getParsedBody()['gedcom'] ?? '';
 

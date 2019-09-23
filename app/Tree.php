@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
@@ -27,9 +28,6 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
-use League\Flysystem\Adapter\Local;
-use League\Flysystem\Cached\CachedAdapter;
-use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
 use PDOException;
@@ -924,8 +922,12 @@ class Tree
 
     public function mediaFilesystem(): FilesystemInterface
     {
-        $media_dir = WT_DATA_DIR . $this->getPreference('MEDIA_DIRECTORY', 'media/');
+        $media_dir = $this->getPreference('MEDIA_DIRECTORY', 'media/');
 
-        return new Filesystem(new CachedAdapter(new Local($media_dir), new Memory()));
+        $filesystem = app(FilesystemInterface::class);
+
+        $adapter = new ChrootAdapter($filesystem, $media_dir);
+
+        return new Filesystem($adapter);
     }
 }

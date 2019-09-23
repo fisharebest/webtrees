@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -93,9 +92,7 @@ class AutocompleteController extends AbstractBaseController
     {
         $query = $request->getQueryParams()['query'] ?? '';
 
-        $prefix = $tree->getPreference('MEDIA_DIRECTORY');
-
-        $media_filesystem = new Filesystem(new ChrootAdapter($filesystem, $prefix));
+        $media_filesystem = $tree->mediaFilesystem();
 
         $contents = new Collection($media_filesystem->listContents('', true));
 
