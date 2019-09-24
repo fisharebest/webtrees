@@ -17,10 +17,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use League\Flysystem\FileNotFoundException;
 use League\Glide\Urls\UrlBuilderFactory;
 use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
 use function app;
+use function getimagesize;
+use function intdiv;
+use function pathinfo;
+use function strtolower;
+use const PATHINFO_EXTENSION;
 
 /**
  * A GEDCOM media file.  A media object can contain many media files,
@@ -54,6 +60,12 @@ class MediaFile
         'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
         'wmv'  => 'video/x-ms-wmv',
         'zip'  => 'application/zip',
+    ];
+
+    private const SUPPORTED_IMAGE_MIME_TYPES = [
+        'image/gif',
+        'image/jpeg',
+        'image/png',
     ];
 
     /** @var string The filename */
@@ -102,42 +114,6 @@ class MediaFile
         if (preg_match('/^\d TITL (.+)/m', $gedcom, $match)) {
             $this->descriptive_title = $match[1];
         }
-    }
-
-    /**
-     * Get the filename.
-     *
-     * @return string
-     */
-    public function filename(): string
-    {
-        return $this->multimedia_file_refn;
-    }
-
-    /**
-     * Get the base part of the filename.
-     *
-     * @return string
-     */
-    public function basename(): string
-    {
-        return basename($this->multimedia_file_refn);
-    }
-
-    /**
-     * Get the folder part of the filename.
-     *
-     * @return string
-     */
-    public function dirname(): string
-    {
-        $dirname = dirname($this->multimedia_file_refn);
-
-        if ($dirname === '.') {
-            return '';
-        }
-
-        return $dirname;
     }
 
     /**
@@ -211,9 +187,9 @@ class MediaFile
     /**
      * Display an image-thumbnail or a media-icon, and add markup for image viewers such as colorbox.
      *
-     * @param int      $width      Pixels
-     * @param int      $height     Pixels
-     * @param string   $fit        "crop" or "contain"
+     * @param int      $width            Pixels
+     * @param int      $height           Pixels
+     * @param string   $fit              "crop" or "contain"
      * @param string[] $image_attributes Additional HTML attributes
      *
      * @return string
@@ -259,126 +235,11 @@ class MediaFile
     }
 
     /**
-     * A list of image attributes
-     *
-     * @return string[]
-     */
-    public function attributes(): array
-    {
-        $attributes = [];
-
-        if (!$this->isExternal() || $this->fileExists()) {
-            $file = $this->folder() . $this->multimedia_file_refn;
-
-            $attributes['__FILE_SIZE__'] = $this->fileSizeKB();
-
-            $imgsize = getimagesize($file);
-            if (is_array($imgsize) && !empty($imgsize['0'])) {
-                $attributes['__IMAGE_SIZE__'] = I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1']));
-            }
-        }
-
-        return $attributes;
-    }
-
-    /**
-     * check if the file exists on this server
-     *
-     * @return bool
-     */
-    public function fileExists(): bool
-    {
-        return $this->media->tree()->mediaFilesystem()->has($this->multimedia_file_refn);
-    }
-
-    /**
      * Is the media file actually a URL?
      */
     public function isExternal(): bool
     {
         return strpos($this->multimedia_file_refn, '://') !== false;
-    }
-
-    /**
-     * Is the media file an image?
-     */
-    public function isImage(): bool
-    {
-        return in_array($this->extension(), [
-            'jpeg',
-            'jpg',
-            'gif',
-            'png',
-        ]);
-    }
-
-    /**
-     * Where is the file stored on disk?
-     */
-    public function folder(): string
-    {
-        return WT_DATA_DIR . $this->media->tree()->getPreference('MEDIA_DIRECTORY');
-    }
-
-    /**
-     * A user-friendly view of the file size
-     *
-     * @return int
-     */
-    private function fileSizeBytes(): int
-    {
-        try {
-            return filesize($this->folder() . $this->multimedia_file_refn);
-        } catch (Throwable $ex) {
-            return 0;
-        }
-    }
-
-    /**
-     * get the media file size in KB
-     *
-     * @return string
-     */
-    public function fileSizeKB(): string
-    {
-        $size = $this->fileSizeBytes();
-        $size = intdiv($size + 1023, 1024);
-
-        /* I18N: size of file in KB */
-        return I18N::translate('%s KB', I18N::number($size));
-    }
-
-    /**
-     * Get the filename on the server - for those (very few!) functions which actually
-     * need the filename, such as the PDF reports.
-     *
-     * @return string
-     */
-    public function getServerFilename(): string
-    {
-        $MEDIA_DIRECTORY = $this->media->tree()->getPreference('MEDIA_DIRECTORY');
-
-        if ($this->multimedia_file_refn === '' || $this->isExternal()) {
-            // External image, or (in the case of corrupt GEDCOM data) no image at all
-            return $this->multimedia_file_refn;
-        }
-
-        // Main image
-        return WT_DATA_DIR . $MEDIA_DIRECTORY . $this->multimedia_file_refn;
-    }
-
-    /**
-     * Generate a URL to download a non-image media file.
-     *
-     * @return string
-     */
-    public function downloadUrl(): string
-    {
-        return route('media-download', [
-            'xref'    => $this->media->xref(),
-            'ged'     => $this->media->tree()->name(),
-            'fact_id' => $this->fact_id,
-        ]);
     }
 
     /**
@@ -429,17 +290,11 @@ class MediaFile
     }
 
     /**
-     * What file extension is used by this file?
-     *
-     * @return string
+     * Is the media file an image?
      */
-    public function extension(): string
+    public function isImage(): bool
     {
-        if (preg_match('/\.([a-zA-Z0-9]+)$/', $this->multimedia_file_refn, $match)) {
-            return strtolower($match[1]);
-        }
-
-        return '';
+        return in_array($this->mimeType(), self::SUPPORTED_IMAGE_MIME_TYPES, true);
     }
 
     /**
@@ -450,6 +305,109 @@ class MediaFile
      */
     public function mimeType(): string
     {
-        return self::MIME_TYPES[$this->extension()] ?? 'application/octet-stream';
+        $extension = strtolower(pathinfo($this->multimedia_file_refn, PATHINFO_EXTENSION));
+
+        return self::MIME_TYPES[$extension] ?? 'application/octet-stream';
+    }
+
+    /**
+     * Generate a URL to download a non-image media file.
+     *
+     * @return string
+     */
+    public function downloadUrl(): string
+    {
+        return route('media-download', [
+            'xref'    => $this->media->xref(),
+            'ged'     => $this->media->tree()->name(),
+            'fact_id' => $this->fact_id,
+        ]);
+    }
+
+    /**
+     * A list of image attributes
+     *
+     * @return string[]
+     */
+    public function attributes(): array
+    {
+        $attributes = [];
+
+        if (!$this->isExternal() || $this->fileExists()) {
+            try {
+                $bytes                       = $this->media()->tree()->mediaFilesystem()->getSize($this->filename());
+                $kb                          = intdiv($bytes + 1023, 1024);
+                $attributes['__FILE_SIZE__'] = I18N::translate('%s KB', I18N::number($kb));
+            } catch (FileNotFoundException $ex) {
+                // External/missing files have no size.
+            }
+
+            try {
+                $file = $this->media()->tree()->mediaFilesystem()->getAdapter()->applyPathPrefix($this->filename());
+                [$width, $height] = getimagesize($file);
+                $attributes['__IMAGE_SIZE__'] = I18N::translate('%1$s × %2$s pixels', I18N::number($width), I18N::number($height));
+            } catch (Throwable $ex) {
+                // Only works for local filesystems.
+            }
+        }
+
+        return $attributes;
+    }
+
+    /**
+     * check if the file exists on this server
+     *
+     * @return bool
+     */
+    public function fileExists(): bool
+    {
+        return $this->media->tree()->mediaFilesystem()->has($this->multimedia_file_refn);
+    }
+
+    /**
+     * @return Media
+     */
+    public function media(): Media
+    {
+        return $this->media;
+    }
+
+    /**
+     * Get the filename.
+     *
+     * @return string
+     */
+    public function filename(): string
+    {
+        return $this->multimedia_file_refn;
+    }
+
+    /**
+     * Get the filename on the server - for those (very few!) functions which actually
+     * need the filename, such as the PDF reports.
+     *
+     * @return string
+     */
+    public function getServerFilename(): string
+    {
+        $MEDIA_DIRECTORY = $this->media->tree()->getPreference('MEDIA_DIRECTORY');
+
+        if ($this->multimedia_file_refn === '' || $this->isExternal()) {
+            // External image, or (in the case of corrupt GEDCOM data) no image at all
+            return $this->multimedia_file_refn;
+        }
+
+        // Main image
+        return WT_DATA_DIR . $MEDIA_DIRECTORY . $this->multimedia_file_refn;
+    }
+
+    /**
+     * What file extension is used by this file?
+     *
+     * @return string
+     */
+    public function extension(): string
+    {
+        return pathinfo($this->multimedia_file_refn, PATHINFO_EXTENSION);
     }
 }

@@ -920,13 +920,16 @@ class Tree
         return $individual;
     }
 
+    /**
+     * Where do we store our media files.
+     *
+     * @return FilesystemInterface
+     */
     public function mediaFilesystem(): FilesystemInterface
     {
-        $media_dir = $this->getPreference('MEDIA_DIRECTORY', 'media/');
-
+        $media_dir  = $this->getPreference('MEDIA_DIRECTORY', 'media/');
         $filesystem = app(FilesystemInterface::class);
-
-        $adapter = new ChrootAdapter($filesystem, $media_dir);
+        $adapter    = new ChrootAdapter($filesystem, $media_dir);
 
         return new Filesystem($adapter);
     }

@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use function app;
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
 use Fisharebest\Webtrees\Log;
@@ -29,8 +29,8 @@ use Fisharebest\Webtrees\Tree;
 use Intervention\Image\Exception\NotReadableException;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemInterface;
 use League\Glide\Filesystem\FileNotFoundException;
-use League\Glide\Server;
 use League\Glide\ServerFactory;
 use League\Glide\Signatures\Signature;
 use League\Glide\Signatures\SignatureException;
@@ -41,15 +41,36 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 use function addcslashes;
-use function file_get_contents;
+use function app;
+use function basename;
+use function dirname;
+use function extension_loaded;
+use function md5;
+use function parse_url;
+use function redirect;
 use function response;
 use function strlen;
+use function strtolower;
+use const PHP_URL_PATH;
 
 /**
  * Controller for the media page and displaying images.
  */
 class MediaFileController extends AbstractBaseController
 {
+    /** @var Filesystem */
+    private $filesystem;
+
+    /**
+     * MediaFileController constructor.
+     *
+     * @param FilesystemInterface $filesystem
+     */
+    public function __construct(FilesystemInterface $filesystem)
+    {
+        $this->filesystem = $filesystem;
+    }
+
     /**
      * Download a non-image media file.
      *
@@ -79,11 +100,12 @@ class MediaFileController extends AbstractBaseController
                     return redirect($media_file->filename());
                 }
 
-                if (!$media_file->isImage() && $media_file->fileExists()) {
-                    $data = file_get_contents($media_file->getServerFilename());
+                if ($media_file->fileExists()) {
+                    $data = $media_file->media()->tree()->mediaFilesystem()->read($media_file->filename());
 
                     return response($data, StatusCodeInterface::STATUS_OK, [
-                        'Content-Type' => $media_file->mimeType(),
+                        'Content-Type'        => $media_file->mimeType(),
+                        'Content-Lengt'       => strlen($data),
                         'Content-Disposition' => 'attachment; filename="' . addcslashes($media_file->filename(), '"') . '"',
                     ]);
                 }
@@ -116,7 +138,6 @@ class MediaFileController extends AbstractBaseController
             return $this->httpStatusAsImage(StatusCodeInterface::STATUS_FORBIDDEN);
         }
 
-        // @TODO handle SVG files
         foreach ($media->mediaFiles() as $media_file) {
             if ($media_file->factId() === $fact_id) {
                 if ($media_file->isExternal()) {
@@ -135,34 +156,21 @@ class MediaFileController extends AbstractBaseController
     }
 
     /**
-     * Generate a thumbnail for an unsed media file (i.e. not used by any media object).
+     * Send a dummy image, to replace one that could not be found or created.
      *
-     * @param ServerRequestInterface $request
+     * @param int $status HTTP status code
      *
      * @return ResponseInterface
      */
-    public function unusedMediaThumbnail(ServerRequestInterface $request): ResponseInterface
+    private function httpStatusAsImage(int $status): ResponseInterface
     {
-        $params = $request->getQueryParams();
-        $folder = $params['folder'];
-        $file   = $params['file'];
+        $svg = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="#F88" /><text x="5" y="55" font-family="Verdana" font-size="35">' . $status . '</text></svg>';
 
-        try {
-            $server = $this->glideServer($folder);
-            $path   = $server->makeImage($file, $request->getQueryParams());
-            $cache  = $server->getCache();
-
-            return response($cache->read($path), StatusCodeInterface::STATUS_OK, [
-                'Content-Type'   => $cache->getMimetype($path),
-                'Content-Length' => $cache->getSize($path),
-                'Cache-Control'  => 'max-age=31536000, public',
-                'Expires'        => Carbon::now()->addYears(10)->toRfc7231String(),
-            ]);
-        } catch (FileNotFoundException $ex) {
-            return $this->httpStatusAsImage(StatusCodeInterface::STATUS_NOT_FOUND);
-        } catch (NotReadableException | Throwable $ex) {
-            return $this->httpStatusAsImage(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
-        }
+        // We can't use the actual status code, as browser's won't show images with 4xx/5xx
+        return response($svg, StatusCodeInterface::STATUS_OK, [
+            'Content-Type'   => 'image/svg+xml',
+            'Content-Length' => strlen($svg),
+        ]);
     }
 
     /**
@@ -183,8 +191,22 @@ class MediaFileController extends AbstractBaseController
 
             $signature->validateRequest(parse_url($base_url . 'index.php', PHP_URL_PATH), $params);
 
-            $server = $this->glideServer($media_file->folder());
-            $path   = $server->makeImage($media_file->filename(), $params);
+            $path = $media_file->media()->tree()->getPreference('MEDIA_DIRECTORY', 'media/') .  $media_file->filename();
+            $folder = dirname($path);
+
+            $cache_path           = 'thumbnail-cache/' . md5($folder);
+            $cache_filesystem     = new Filesystem(new ChrootAdapter($this->filesystem, $cache_path));
+            $source_filesystem    = $media_file->media()->tree()->mediaFilesystem();
+            $watermark_filesystem = new Filesystem(new Local('resources/img'));
+
+            $server = ServerFactory::create([
+                'cache'      => $cache_filesystem,
+                'driver'     => $this->graphicsDriver(),
+                'source'     => $source_filesystem,
+                'watermarks' => $watermark_filesystem,
+            ]);
+
+            $path = $server->makeImage($media_file->filename(), $params);
 
             return response($server->getCache()->read($path), StatusCodeInterface::STATUS_OK, [
                 'Content-Type'   => $server->getCache()->getMimetype($path),
@@ -201,29 +223,6 @@ class MediaFileController extends AbstractBaseController
 
             return $this->httpStatusAsImage(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
         }
-    }
-
-    /**
-     * Create a glide server to generate files in the specified folder
-     * Caution: $media_folder may contain relative paths: ../../
-     *
-     * @param string $media_folder
-     *
-     * @return Server
-     */
-    private function glideServer(string $media_folder): Server
-    {
-        $cache_folder     = new Filesystem(new Local(WT_DATA_DIR . 'thumbnail-cache/' . md5($media_folder)));
-        $driver           = $this->graphicsDriver();
-        $source_folder    = new Filesystem(new Local($media_folder));
-        $watermark_folder = new Filesystem(new Local('resources/img'));
-
-        return ServerFactory::create([
-            'cache'      => $cache_folder,
-            'driver'     => $driver,
-            'source'     => $source_folder,
-            'watermarks' => $watermark_folder,
-        ]);
     }
 
     /**
@@ -256,24 +255,6 @@ class MediaFileController extends AbstractBaseController
     }
 
     /**
-     * Send a dummy image, to replace one that could not be found or created.
-     *
-     * @param int $status HTTP status code
-     *
-     * @return ResponseInterface
-     */
-    private function httpStatusAsImage(int $status): ResponseInterface
-    {
-        $svg = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="#F88" /><text x="5" y="55" font-family="Verdana" font-size="35">' . $status . '</text></svg>';
-
-        // We can't use the actual status code, as browser's won't show images with 4xx/5xx
-        return response($svg, StatusCodeInterface::STATUS_OK, [
-            'Content-Type'   => 'image/svg+xml',
-            'Content-Length' => strlen($svg),
-        ]);
-    }
-
-    /**
      * Send a dummy image, to replace a non-image file.
      *
      * @param string $extension
@@ -290,5 +271,48 @@ class MediaFileController extends AbstractBaseController
             'Content-Type'   => 'image/svg+xml',
             'Content-Length' => strlen($svg),
         ]);
+    }
+
+    /**
+     * Generate a thumbnail for an unsed media file (i.e. not used by any media object).
+     *
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function unusedMediaThumbnail(ServerRequestInterface $request): ResponseInterface
+    {
+        $params = $request->getQueryParams();
+
+        // The "file" name may also include sub-folders.
+        $path   = $params['folder'] . $params['file'];
+        $folder = dirname($path);
+        $file   = basename($path);
+
+        try {
+            $cache_path        = 'thumbnail-cache/' . md5($folder);
+            $cache_filesystem  = new Filesystem(new ChrootAdapter($this->filesystem, $cache_path));
+            $source_filesystem = new Filesystem(new ChrootAdapter($this->filesystem, $folder));
+
+            $server = ServerFactory::create([
+                'cache'  => $cache_filesystem,
+                'driver' => $this->graphicsDriver(),
+                'source' => $source_filesystem,
+            ]);
+
+            $path  = $server->makeImage($file, $params);
+            $cache = $server->getCache();
+
+            return response($cache->read($path), StatusCodeInterface::STATUS_OK, [
+                'Content-Type'   => $cache->getMimetype($path),
+                'Content-Length' => $cache->getSize($path),
+                'Cache-Control'  => 'max-age=31536000, public',
+                'Expires'        => Carbon::now()->addYears(10)->toRfc7231String(),
+            ]);
+        } catch (FileNotFoundException $ex) {
+            return $this->httpStatusAsImage(StatusCodeInterface::STATUS_NOT_FOUND);
+        } catch (NotReadableException | Throwable $ex) {
+            return $this->httpStatusAsImage(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
+        }
     }
 }

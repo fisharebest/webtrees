@@ -133,22 +133,15 @@
                                 if ($media_file->isExternal()) {
                                     echo GedcomTag::getLabelValue('URL', $media_file->filename());
                                 } elseif ($media_file->fileExists()) {
-                                    ?>
-                                <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#details-<?= e($n) ?>" aria-expanded="false" aria-controls="details-<?= e($n) ?>">
-                                    <?= I18N::translate('Media file') ?>
-                                </button>
-                            <div class="collapse" id="details-<?= e($n) ?>">
-                                    <?php
+                                    echo GedcomTag::getLabelValue('FORM', $media_file->mimeType());
                                     if (Auth::isEditor($tree)) {
                                         echo GedcomTag::getLabelValue('FILE', $media_file->filename());
                                     }
-                                    echo GedcomTag::getLabelValue('FORM', $media_file->mimeType());
-                                    foreach ($media_file->attributes() as $tag => $value) {
-                                        echo GedcomTag::getLabelValue($tag, $value);
+                                    if (Auth::isEditor($tree)) {
+                                        foreach ($media_file->attributes() as $tag => $value) {
+                                            echo GedcomTag::getLabelValue($tag, $value);
+                                        }
                                     }
-                                    ?>
-                            </div>
-                                    <?php
                                 } else {
                                     echo '<p class="alert alert-danger">', /* I18N: %s is a filename */ I18N::translate('The file “%s” does not exist.', $media_file->filename()), '</p>';
                                 }
