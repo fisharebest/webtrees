@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-09-22 16:28+0100\n"
-"PO-Revision-Date: 2019-09-23 09:38+0000\n"
-"Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
+"PO-Revision-Date: 2019-09-24 20:23+0000\n"
+"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -5504,7 +5504,7 @@ msgstr "elul"
 
 #: resources/views/password-request-page.phtml:18
 msgid "Email"
-msgstr ""
+msgstr "E-post"
 
 #. I18N: gedcom tag EMAIL
 #. I18N: gedcom tag _EMAIL
@@ -7333,7 +7333,7 @@ msgstr "Om du skapade denna GEDCOM-fil med släktforskningsprogram som utelämna
 #: resources/views/emails/password-request-html.phtml:17
 #: resources/views/emails/password-request-text.phtml:9
 msgid "If you did not request a new password, please ignore this message."
-msgstr ""
+msgstr "Om du inte begärde ett nytt lösenord, ignorera detta meddelande."
 
 #: resources/views/emails/register-user-html.phtml:23
 #: resources/views/emails/register-user-text.phtml:10
@@ -9441,16 +9441,16 @@ msgstr "De vanligaste efternamnen"
 
 #: resources/views/admin/site-mail.phtml:173
 msgid "Most mail servers require a valid domain name."
-msgstr ""
+msgstr "De flesta postservrar kräver ett giltigt domännamn."
 
 #: resources/views/admin/site-mail.phtml:65
 msgid "Most mail servers require a valid email address."
-msgstr ""
+msgstr "De flesta postservrar kräver en giltig e-postadress."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: resources/views/admin/site-mail.phtml:168
 msgid "Most mail servers require that the sending server identifies itself correctly, using a valid domain name."
-msgstr ""
+msgstr "De flesta postservrar kräver att den sändande servern identifierar sig korrekt med ett giltigt domännamn."
 
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: resources/views/admin/site-mail.phtml:154
@@ -10899,7 +10899,7 @@ msgstr "Obs! Skriv in en giltig e-postadress."
 #: app/Http/RequestHandlers/PasswordResetAction.php:79
 #: app/Http/RequestHandlers/PasswordResetForm.php:75
 msgid "Please try again."
-msgstr ""
+msgstr "Var god försök igen."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:141
@@ -11111,7 +11111,7 @@ msgstr "Privat"
 
 #: resources/views/admin/site-mail.phtml:204
 msgid "Private key"
-msgstr ""
+msgstr "Privat nyckel"
 
 #. I18N: gedcom tag PROB
 #: app/GedcomTag.php:941
@@ -12059,7 +12059,7 @@ msgstr "Sammanfoga två poster."
 
 #: resources/views/admin/site-mail.phtml:195
 msgid "Selector"
-msgstr ""
+msgstr "Väljare"
 
 #: app/GedcomCode/GedcomCodeRela.php:311
 msgid "Seller"
@@ -12205,7 +12205,7 @@ msgstr "Servernamn"
 
 #: app/Http/RequestHandlers/PasswordResetForm.php:64
 msgid "Set a new password"
-msgstr ""
+msgstr "Ställ in ett nytt lösenord"
 
 #: resources/views/admin/trees.phtml:116 resources/views/admin/trees.phtml:123
 msgid "Set as default"
@@ -13872,7 +13872,7 @@ msgstr "Lösenord som kanske behövs för SMTP-servern behörighet."
 #: app/Http/RequestHandlers/PasswordResetAction.php:78
 #: app/Http/RequestHandlers/PasswordResetForm.php:74
 msgid "The password reset link has expired."
-msgstr ""
+msgstr "Länken för återställning av lösenord har gått ut."
 
 #. I18N: Description of the “PlaceHierarchyListModule” module
 #: app/Module/PlaceHierarchyListModule.php:56
@@ -14108,7 +14108,7 @@ msgstr[1] "Inga förändringar inom de senaste %s dagarna."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:97
 #, php-format
 msgid "There is no user account with the email “%s”."
-msgstr ""
+msgstr "Det finns inget användarkonto med e-post \"%s\"."
 
 #: app/Http/Controllers/Admin/MediaController.php:581
 #: app/Http/Controllers/EditMediaController.php:118
@@ -14839,7 +14839,7 @@ msgstr "För att minska storleken på nedladdningen, kan du komprimera data i en
 #: resources/views/emails/password-request-html.phtml:9
 #: resources/views/emails/password-request-text.phtml:5
 msgid "To set a new password, follow this link."
-msgstr ""
+msgstr "För att ställa in ett nytt lösenord, följ denna länk."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: resources/views/admin/site-registration.phtml:31
@@ -20115,7 +20115,7 @@ msgstr "webtrees behöver en databas för att lagra din släktforskningsdata."
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:46
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
-msgstr ""
+msgstr "webtrees måste skicka e-postmeddelanden, till exempel lösenordspåminnelser och webbplats aviseringar."
 
 #: app/Functions/FunctionsEdit.php:132
 msgid "webtrees sends emails with no storage"
