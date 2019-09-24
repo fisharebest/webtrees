@@ -9,7 +9,7 @@ namespace Fisharebest\Flysystem\Adapter;
 
 use League\Flysystem\AdapterInterface;
 use League\Flysystem\Config;
-use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemInterface;
 
 /**
  * Create a subtree from an existing filesystem.
@@ -28,10 +28,10 @@ class ChrootAdapter implements AdapterInterface
     /**
      * ChrootAdapter constructor.
      *
-     * @param Filesystem $filesystem
-     * @param string     $prefix e.g. 'some/prefix'
+     * @param FilesystemInterface $filesystem
+     * @param string              $prefix e.g. 'some/prefix'
      */
-    public function __construct(Filesystem $filesystem, $prefix = '')
+    public function __construct(FilesystemInterface $filesystem, $prefix = '')
     {
         $this->adapter = $filesystem->getAdapter();
         $this->prefix  = trim($prefix, '/') . '/';

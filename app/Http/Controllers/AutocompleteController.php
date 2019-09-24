@@ -32,13 +32,9 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use League\Flysystem\Filesystem;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use function array_map;
-use function array_merge;
 use function array_slice;
-use function array_unique;
 use function array_unshift;
 use function count;
 use function curl_close;
@@ -84,11 +80,10 @@ class AutocompleteController extends AbstractBaseController
      *
      * @param ServerRequestInterface $request
      * @param Tree                   $tree
-     * @param Filesystem             $filesystem
      *
      * @return ResponseInterface
      */
-    public function folder(ServerRequestInterface $request, Tree $tree, Filesystem $filesystem): ResponseInterface
+    public function folder(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $query = $request->getQueryParams()['query'] ?? '';
 

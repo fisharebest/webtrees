@@ -29,6 +29,7 @@ use Illuminate\Support\Collection;
 use League\Flysystem\Cached\CachedAdapter;
 use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemInterface;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use ZipArchive;
 use function rewind;
@@ -117,13 +118,13 @@ class UpgradeService
      * Fetch a file from a URL and save it in a filesystem.
      * Use streams so that we can copy files larger than our available memory.
      *
-     * @param string     $url
-     * @param Filesystem $filesystem
-     * @param string     $path
+     * @param string              $url
+     * @param FilesystemInterface $filesystem
+     * @param string              $path
      *
      * @return int The number of bytes downloaded
      */
-    public function downloadFile(string $url, Filesystem $filesystem, string $path): int
+    public function downloadFile(string $url, FilesystemInterface $filesystem, string $path): int
     {
         // Overwrite any previous/partial/failed download.
         if ($filesystem->has($path)) {
@@ -163,12 +164,12 @@ class UpgradeService
     /**
      * Move (copy and delete) all files from one filesystem to another.
      *
-     * @param Filesystem $source
-     * @param Filesystem $destination
+     * @param FilesystemInterface $source
+     * @param FilesystemInterface $destination
      *
      * @return void
      */
-    public function moveFiles(Filesystem $source, Filesystem $destination): void
+    public function moveFiles(FilesystemInterface $source, FilesystemInterface $destination): void
     {
         foreach ($source->listContents('', true) as $path) {
             if ($path['type'] === 'file') {
@@ -185,13 +186,13 @@ class UpgradeService
     /**
      * Delete files in $destination that aren't in $source.
      *
-     * @param Filesystem $filesystem
-     * @param Collection $folders_to_clean
-     * @param Collection   $files_to_keep
+     * @param FilesystemInterface $filesystem
+     * @param Collection          $folders_to_clean
+     * @param Collection          $files_to_keep
      *
      * @return void
      */
-    public function cleanFiles(Filesystem $filesystem, Collection $folders_to_clean, Collection $files_to_keep): void
+    public function cleanFiles(FilesystemInterface $filesystem, Collection $folders_to_clean, Collection $files_to_keep): void
     {
         foreach ($folders_to_clean as $folder_to_clean) {
             foreach ($filesystem->listContents($folder_to_clean, true) as $path) {

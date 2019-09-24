@@ -22,7 +22,7 @@
     "require-dev": {
         "league/flysystem-memory": "~1.0",
         "php-coveralls/php-coveralls": "*",
-        "phpunit/phpunit": "~5.0"
+        "phpunit/phpunit": "~6.0"
     },
     "autoload": {
         "psr-4": {

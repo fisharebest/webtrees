@@ -1,6 +1,7 @@
 # Flysystem Chroot Adapter
 
 [![Author](http://img.shields.io/badge/author-@fisharebest-blue.svg?style=flat-square)](https://github.com/fisharebest)
+[![Latest Stable Version](https://poser.pugx.org/fisharebest/flysystem-chroot-adapter/v/stable.svg)](https://packagist.org/packages/fisharebest/flysystem-chroot-adapter)
 [![Build Status](https://travis-ci.org/fisharebest/flysystem-chroot-adapter.svg?branch=master)](https://travis-ci.org/fisharebest/flysystem-chroot-adapter)
 [![Coverage Status](https://coveralls.io/repos/github/fisharebest/flysystem-chroot-adapter/badge.svg?branch=master)](https://coveralls.io/github/fisharebest/flysystem-chroot-adapter?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fisharebest/flysystem-chroot-adapter/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fisharebest/flysystem-chroot-adapter/?branch=master)

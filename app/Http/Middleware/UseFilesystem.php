@@ -44,6 +44,7 @@ class UseFilesystem implements MiddlewareInterface
         define('WT_DATA_DIR', realpath(Site::getPreference('INDEX_DIRECTORY', 'data/')) . DIRECTORY_SEPARATOR);
 
         $filesystem = new Filesystem(new CachedAdapter(new Local(WT_DATA_DIR), new Memory()));
+
         app()->instance(FilesystemInterface::class, $filesystem);
 
         return $handler->handle($request);

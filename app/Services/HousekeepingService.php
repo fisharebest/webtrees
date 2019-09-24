@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees\Services;
 use Exception;
 use Fisharebest\Webtrees\Carbon;
 use Illuminate\Database\Capsule\Manager as DB;
-use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemInterface;
 
 /**
  * Clean up old data, files and folders.
@@ -375,11 +375,11 @@ class HousekeepingService
      * Delete files and folders that belonged to an earlier version of webtrees.
      * Return a list of those that we could not delete.
      *
-     * @param Filesystem $filesystem
+     * @param FilesystemInterface $filesystem
      *
      * @return array
      */
-    public function deleteOldWebtreesFiles(Filesystem $filesystem): array
+    public function deleteOldWebtreesFiles(FilesystemInterface $filesystem): array
     {
         $paths_to_delete = [];
 
@@ -395,13 +395,13 @@ class HousekeepingService
     /**
      * Delete old cache files.
      *
-     * @param Filesystem $filesystem
-     * @param string     $path
-     * @param int        $max_age    Seconds
+     * @param FilesystemInterface $filesystem
+     * @param string              $path
+     * @param int                 $max_age Seconds
      *
      * @return void
      */
-    public function deleteOldFiles(Filesystem $filesystem, string $path, int $max_age): void
+    public function deleteOldFiles(FilesystemInterface $filesystem, string $path, int $max_age): void
     {
         $list = $filesystem->listContents($path, true);
 
@@ -446,12 +446,12 @@ class HousekeepingService
     /**
      * Delete a file or folder, if we can.
      *
-     * @param Filesystem $filesystem
-     * @param string     $path
+     * @param FilesystemInterface $filesystem
+     * @param string              $path
      *
      * @return bool
      */
-    private function deleteFileOrFolder(Filesystem $filesystem, string $path): bool
+    private function deleteFileOrFolder(FilesystemInterface $filesystem, string $path): bool
     {
         if ($filesystem->has($path)) {
             try {

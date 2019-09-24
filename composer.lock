@@ -630,16 +630,16 @@
         },
         {
             "name": "fisharebest/flysystem-chroot-adapter",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fisharebest/flysystem-chroot-adapter.git",
-                "reference": "df09e16b8039f15687c484da94d3da9161b2a2ad"
+                "reference": "378954c39f63996eb6171f1fd4fef1ee2eb03229"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fisharebest/flysystem-chroot-adapter/zipball/df09e16b8039f15687c484da94d3da9161b2a2ad",
-                "reference": "df09e16b8039f15687c484da94d3da9161b2a2ad",
+                "url": "https://api.github.com/repos/fisharebest/flysystem-chroot-adapter/zipball/378954c39f63996eb6171f1fd4fef1ee2eb03229",
+                "reference": "378954c39f63996eb6171f1fd4fef1ee2eb03229",
                 "shasum": ""
             },
             "require": {
@@ -648,7 +648,7 @@
             "require-dev": {
                 "league/flysystem-memory": "~1.0",
                 "php-coveralls/php-coveralls": "*",
-                "phpunit/phpunit": "~5.0"
+                "phpunit/phpunit": "~6.0"
             },
             "type": "library",
             "autoload": {
@@ -674,7 +674,7 @@
                 "adapter",
                 "chroot"
             ],
-            "time": "2019-01-17T22:23:21+00:00"
+            "time": "2019-09-24T14:58:15+00:00"
         },
         {
             "name": "fisharebest/localization",

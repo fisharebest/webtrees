@@ -58,7 +58,7 @@ use const PHP_URL_PATH;
  */
 class MediaFileController extends AbstractBaseController
 {
-    /** @var Filesystem */
+    /** @var FilesystemInterface */
     private $filesystem;
 
     /**
