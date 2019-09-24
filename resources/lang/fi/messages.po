@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-09-22 16:28+0100\n"
-"PO-Revision-Date: 2019-08-27 07:16+0000\n"
+"PO-Revision-Date: 2019-09-24 20:31+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/fi/>\n"
 "Language: fi\n"
@@ -843,7 +843,7 @@ msgstr "Uusi webtrees versio on käytettävissä."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:93
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr ""
+msgstr "Salasanan palautuslinkki on lähetetty  ”%s”:lle."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:60
@@ -4294,7 +4294,7 @@ msgstr "Tshekki"
 #. I18N: https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail
 #: resources/views/admin/site-mail.phtml:181
 msgid "DKIM digital signature"
-msgstr ""
+msgstr "DKIM-digitaalinen allekirjoitus"
 
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/GedcomTag.php:1785
@@ -5267,7 +5267,7 @@ msgstr "Asiakirja"
 
 #: resources/views/admin/site-mail.phtml:186
 msgid "Domain name"
-msgstr ""
+msgstr "Verkkotunnus"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:159
@@ -5500,7 +5500,7 @@ msgstr "elul-kuu"
 
 #: resources/views/password-request-page.phtml:18
 msgid "Email"
-msgstr ""
+msgstr "Sähköposti"
 
 #. I18N: gedcom tag EMAIL
 #. I18N: gedcom tag _EMAIL
@@ -7329,7 +7329,7 @@ msgstr "Jos olet luonut tämän GEDCOM tiedoston käyttäen sukututkimusohjelmis
 #: resources/views/emails/password-request-html.phtml:17
 #: resources/views/emails/password-request-text.phtml:9
 msgid "If you did not request a new password, please ignore this message."
-msgstr ""
+msgstr "Jos et pyytänyt uutta salasanaa, ohita tämä viesti."
 
 #: resources/views/emails/register-user-html.phtml:23
 #: resources/views/emails/register-user-text.phtml:10
@@ -9437,16 +9437,16 @@ msgstr "Yleisimmät sukunimet"
 
 #: resources/views/admin/site-mail.phtml:173
 msgid "Most mail servers require a valid domain name."
-msgstr ""
+msgstr "Useimmat postipalvelimet vaativat kelvollisen verkkotunnuksen."
 
 #: resources/views/admin/site-mail.phtml:65
 msgid "Most mail servers require a valid email address."
-msgstr ""
+msgstr "Useimmat postipalvelimet vaativat voimassa olevan sähköpostiosoitteen."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: resources/views/admin/site-mail.phtml:168
 msgid "Most mail servers require that the sending server identifies itself correctly, using a valid domain name."
-msgstr ""
+msgstr "Useimmat postipalvelimet vaativat, että lähettävä palvelin tunnistaa itsensä oikein, käyttämällä kelvollista verkkotunnusta."
 
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: resources/views/admin/site-mail.phtml:154
@@ -10895,7 +10895,7 @@ msgstr "Huom! Anna hyväksyttävä sähköpostiosoite."
 #: app/Http/RequestHandlers/PasswordResetAction.php:79
 #: app/Http/RequestHandlers/PasswordResetForm.php:75
 msgid "Please try again."
-msgstr ""
+msgstr "Yritä uudelleen."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:141
@@ -11107,7 +11107,7 @@ msgstr "Yksityinen"
 
 #: resources/views/admin/site-mail.phtml:204
 msgid "Private key"
-msgstr ""
+msgstr "Yksityinen avain"
 
 #. I18N: gedcom tag PROB
 #: app/GedcomTag.php:941
@@ -12055,7 +12055,7 @@ msgstr "Valitse kaksi tietuetta yhdistettäviksi."
 
 #: resources/views/admin/site-mail.phtml:195
 msgid "Selector"
-msgstr ""
+msgstr "Valitsin"
 
 #: app/GedcomCode/GedcomCodeRela.php:311
 msgid "Seller"
@@ -12201,7 +12201,7 @@ msgstr "Palvelimen nimi"
 
 #: app/Http/RequestHandlers/PasswordResetForm.php:64
 msgid "Set a new password"
-msgstr ""
+msgstr "Aseta uusi salasana"
 
 #: resources/views/admin/trees.phtml:116 resources/views/admin/trees.phtml:123
 msgid "Set as default"
@@ -13868,7 +13868,7 @@ msgstr "Salasanasi SMTP palveluun, jos se vaaditaan."
 #: app/Http/RequestHandlers/PasswordResetAction.php:78
 #: app/Http/RequestHandlers/PasswordResetForm.php:74
 msgid "The password reset link has expired."
-msgstr ""
+msgstr "Salasanan palautuslinkki on vanhentunut."
 
 #. I18N: Description of the “PlaceHierarchyListModule” module
 #: app/Module/PlaceHierarchyListModule.php:56
@@ -14104,7 +14104,7 @@ msgstr[1] "Ei ole ollut muutoksia viimeisen %s päivän aikana."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:97
 #, php-format
 msgid "There is no user account with the email “%s”."
-msgstr ""
+msgstr "Sähköpostiosoitteella ”%s” ei ole käyttäjätiliä."
 
 #: app/Http/Controllers/Admin/MediaController.php:581
 #: app/Http/Controllers/EditMediaController.php:118
@@ -14396,7 +14396,7 @@ msgstr "Tämä on nimesi, joka näkyy sivuilla."
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:94
 msgid "This link is valid for one hour."
-msgstr ""
+msgstr "Tämä linkki on voimassa yhden tunnin."
 
 #: app/Exceptions/MediaAccessDeniedException.php:33
 #: app/Exceptions/MediaNotFoundException.php:33
@@ -14835,7 +14835,7 @@ msgstr "Voit pienentää latauden suuruuden pakkamalla tiedot .ZIP-tiedostoon. S
 #: resources/views/emails/password-request-html.phtml:9
 #: resources/views/emails/password-request-text.phtml:5
 msgid "To set a new password, follow this link."
-msgstr ""
+msgstr "Aseta uusi salasana seuraamalla tätä linkkiä."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: resources/views/admin/site-registration.phtml:31
@@ -16060,7 +16060,7 @@ msgstr "Nimi"
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:71
 msgid "Your password has been updated."
-msgstr ""
+msgstr "Salasanasi on päivitetty."
 
 #: app/Http/Controllers/Auth/RegisterController.php:151
 #, php-format
@@ -20111,7 +20111,7 @@ msgstr "webtrees tarvitsee tietokannan sukututkimustietojen tallentamiseen."
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:46
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
-msgstr ""
+msgstr "webtreesin on lähetettävä sähköposteja, kuten salasanamuistutuksia ja verkkosivustoilmoituksia."
 
 #: app/Functions/FunctionsEdit.php:132
 msgid "webtrees sends emails with no storage"
@@ -20301,7 +20301,6 @@ msgstr "…"
 #~ msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 #~ msgstr "Tietokantajärjestelmässä voi olla useita erillisiä tietokantoja. Valitse olemassa oleva tietokanta (palvelinylläpitäjän luoma) tai luo itse uusi (jos sinulla on riittävät oikeudet siihen)."
 
-#, php-format
 #~ msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
 #~ msgstr "Uusi salasana on luotu ja lähetetty sähköpostitse käyttäjälle %s. Voit muuttaa tuon salasanan kun kirjaudut sisään uudestaan."
 
@@ -21368,7 +21367,6 @@ msgstr "…"
 #~ msgid "Theme menu"
 #~ msgstr "Teema-valikko"
 
-#, php-format
 #~ msgid "There is no account with the username or email “%s”."
 #~ msgstr "Käyttäjätunnusta tai sähköpostia “%s” ei ole."
 
