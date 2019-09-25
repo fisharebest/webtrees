@@ -51,6 +51,7 @@ use function redirect;
 use function response;
 use function strlen;
 use function strtolower;
+use function urlencode;
 use const PHP_URL_PATH;
 
 /**
@@ -206,7 +207,10 @@ class MediaFileController extends AbstractBaseController
                 'watermarks' => $watermark_filesystem,
             ]);
 
-            $path = $server->makeImage($media_file->filename(), $params);
+            // Workaround for https://github.com/thephpleague/glide/issues/227
+            $file = implode('/', array_map('rawurlencode', explode('/', $media_file->filename())));
+
+            $path = $server->makeImage($file, $params);
 
             return response($server->getCache()->read($path), StatusCodeInterface::STATUS_OK, [
                 'Content-Type'   => $server->getCache()->getMimetype($path),
@@ -299,6 +303,9 @@ class MediaFileController extends AbstractBaseController
                 'driver' => $this->graphicsDriver(),
                 'source' => $source_filesystem,
             ]);
+
+            // Workaround for https://github.com/thephpleague/glide/issues/227
+            $file = urlencode($file);
 
             $path  = $server->makeImage($file, $params);
             $cache = $server->getCache();
