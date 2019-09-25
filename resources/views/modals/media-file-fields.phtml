@@ -46,7 +46,7 @@
                     <label class="form-check-label">
                         <input class="form-check-input" type="radio" name="auto" value="0" checked>
                         <!-- @TODO typeaheadjs.css doesn't work with input-group -->
-                        <input class="form-control" id="folder" name="folder" placeholder="<?= I18N::translate('Folder') ?>" type="text" value="<?= e($media_file ? $media_file->dirname() : '') ?>" data-autocomplete-url="<?= e(route('autocomplete-folder', ['query' => 'QUERY'])) ?>">
+                        <input class="form-control" id="folder" name="folder" placeholder="<?= I18N::translate('Folder') ?>" type="text" value="<?= e(dirname($media_file->filename()) === '.' ? '' : dirname($media_file->filename())) ?>" data-autocomplete-url="<?= e(route('autocomplete-folder', ['query' => 'QUERY'])) ?>">
                         <div class="input-group">
                             <div class="input-group-append">
                                 <span class="input-group-text">/</span>
@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                <input class="form-control" name="new_file" type="text" placeholder="<?= I18N::translate('Same as uploaded file') ?>" value="<?= e($media_file ? $media_file->basename() : '') ?>">
+                <input class="form-control" name="new_file" type="text" placeholder="<?= I18N::translate('Same as uploaded file') ?>" value="<?= e(basename($media_file->filename())) ?>">
             </div>
         </div>
         <p class="small text-muted">
