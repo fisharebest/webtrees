@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-09-22 16:28+0100\n"
-"PO-Revision-Date: 2019-09-24 21:20+0000\n"
+"PO-Revision-Date: 2019-09-25 17:40+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
@@ -12059,7 +12059,7 @@ msgstr "בחר שתי רשומות למזוג."
 
 #: resources/views/admin/site-mail.phtml:195
 msgid "Selector"
-msgstr "בוחר"
+msgstr "בורר"
 
 #: app/GedcomCode/GedcomCodeRela.php:311
 msgid "Seller"
@@ -20115,7 +20115,7 @@ msgstr "webtrees צריך מסד נתונים כדי לאחסן את נתוני 
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:46
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
-msgstr "webtrees צריך לשלוח דוא\"ל, כגון תזכורות לסיסמאות והודעות באתר."
+msgstr "webtrees צריך לשלוח דוא\"ל, כגון תזכורות לסיסמאות והודעות אתר."
 
 #: app/Functions/FunctionsEdit.php:132
 msgid "webtrees sends emails with no storage"
