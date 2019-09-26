@@ -9,10 +9,12 @@
         <?php foreach ($individual->facts(['OBJE']) as $fact) : ?>
             <div class="card mb-2 wt-sortable-item">
                 <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
-                <h3 class="card-header">
-                    <?= view('icons/drag-handle') ?>
+                <div class="card-header">
+                    <span class="drag-handle">
+                        <?= view('icons/drag-handle') ?>
+                    </span>
                     <?= $fact->target()->fullName() ?>
-                </h3>
+                </div>
                 <div class="card-body">
                     <?= $fact->target()->displayImage(100, 100, 'contain') ?>
                 </div>
@@ -35,6 +37,8 @@
 
 <?php View::push('javascript') ?>
 <script>
-  new Sortable(document.querySelector(".wt-sortable-list"), {});
+  new Sortable(document.querySelector(".wt-sortable-list"), {
+      handle: '.drag-handle'
+  });
 </script>
 <?php View::endpush() ?>

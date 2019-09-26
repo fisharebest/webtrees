@@ -1,7 +1,10 @@
-<?php use Fisharebest\Webtrees\GedcomCode\GedcomCodeName; ?>
-<?php use Fisharebest\Webtrees\GedcomTag; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View; ?>
+<?php ?>
+<?php ?>
+<?php ?>
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
@@ -11,10 +14,12 @@
         <?php foreach ($individual->facts(['NAME']) as $fact) : ?>
             <div class="card mb-2 wt-sortable-item">
                 <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
-                <h3 class="card-header">
-                    <?= view('icons/drag-handle') ?>
+                <div class="card-header">
+                    <span class="drag-handle">
+                        <?= view('icons/drag-handle') ?>
+                    </span>
                     <?= $fact->value() ?>
-                </h3>
+                </div>
                 <div class="card-body">
                     <?= GedcomTag::getLabelValue('TYPE', GedcomCodeName::getValue($fact->attribute('TYPE'), $fact->record())) ?>
                 </div>
@@ -37,6 +42,8 @@
 
 <?php View::push('javascript') ?>
 <script>
-  new Sortable(document.querySelector(".wt-sortable-list"), {});
+    new Sortable(document.querySelector(".wt-sortable-list"), {
+        handle: ".drag-handle",
+    });
 </script>
 <?php View::endpush() ?>

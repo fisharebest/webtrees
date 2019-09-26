@@ -26,7 +26,9 @@ import "corejs-typeahead";
 import "datatables.net-bs4";
 
 // See https://github.com/RubaXa/Sortable/issues/1229
-window.Sortable = require('sortablejs');
+//window.Sortable = require('sortablejs');
+import Sortable from 'sortablejs';
+window.Sortable = Sortable;
 
 import "select2";
 //import "select2/dist/js/i18n/*.js";

@@ -1,5 +1,6 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View; ?>
+<?php ?>
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
@@ -24,13 +25,13 @@
         </div>
     </div>
 
-    <div id="raw-gedcom-list">
+    <div id="wt-sortable-list">
         <?php foreach ($record->facts() as $fact) : ?>
             <?php if (!$fact->isPendingDeletion()) : ?>
                 <div class="card my-2">
                     <label class="card-header py-1 px-2 d-flex" for="fact-<?= e($fact->id()) ?>">
                         <span class="drag-handle">
-                        <?= view('icons/drag-handle') ?>
+                            <?= view('icons/drag-handle') ?>
                         </span>
                         <?= $fact->summary() ?>
                     </label>
@@ -65,8 +66,8 @@
 
 <?php View::push('javascript') ?>
 <script>
-  new Sortable(document.getElementById("raw-gedcom-list"), {
-    handle: '.drag-handle'
-  });
+    new Sortable(document.getElementById("wt-sortable-list"), {
+        handle: ".drag-handle",
+    });
 </script>
 <?php View::endpush() ?>
