@@ -5,7 +5,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
@@ -171,7 +170,7 @@ $deathAgeData = [
                                 data-filter-value="M"
                                 title="<?= I18N::translate('Show only males.') ?>"
                             >
-                                <?= Individual::sexImage('M', 'large') ?>
+                                <?= view('icons/sex-M') ?>
                             </button>
                             <button
                                 class="btn btn-secondary"
@@ -179,7 +178,7 @@ $deathAgeData = [
                                 data-filter-value="F"
                                 title="<?= I18N::translate('Show only females.') ?>"
                             >
-                                <?= Individual::sexImage('F', 'large') ?>
+                                <?= view('icons/sex-F') ?>
                             </button>
                             <button
                                 class="btn btn-secondary"
@@ -187,7 +186,7 @@ $deathAgeData = [
                                 data-filter-value="U"
                                 title="<?= I18N::translate('Show only individuals for whom the gender is not known.') ?>"
                             >
-                                <?= Individual::sexImage('U', 'large') ?>
+                                <?= view('icons/sex-U') ?>
                             </button>
                         </div>
                         <div class="btn-group" data-toggle="buttons">
@@ -319,7 +318,7 @@ $deathAgeData = [
                             <?= $name['full'] ?>
                         </a>
                         <?php if ($num === $individual->getPrimaryName()) : ?>
-                            <?= $individual->getSexImage() ?>
+                            <small><?= view('icons/sex-' . $individual->sex()) ?></small>
                         <?php endif ?>
                         <br>
                     <?php endforeach ?>

@@ -29,7 +29,7 @@
                         <?= $record->fullName() ?>
                     </a>
                     <?php if ($record instanceof Individual) : ?>
-                        <?= $record->getSexImage() ?>
+                        <small><?= view('icons/sex-' . $record->sex()) ?></small>
                     <?php endif ?>
                 </td>
                 <td data-sort="<?= $fact->date()->julianDay() ?>">

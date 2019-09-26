@@ -775,37 +775,6 @@ class Individual extends GedcomRecord
     }
 
     /**
-     * Get the individual’s sex image
-     *
-     * @param string $size
-     *
-     * @return string
-     */
-    public function getSexImage($size = 'small'): string
-    {
-        return self::sexImage($this->sex(), $size);
-    }
-
-    /**
-     * Generate a sex icon/image
-     *
-     * @param string $sex
-     * @param string $size
-     *
-     * @return string
-     */
-    public static function sexImage($sex, $size = 'small'): string
-    {
-        $image = view('icons/sex-' . $sex);
-
-        if ($size === 'small') {
-            $image = '<small>' . $image . '</small>';
-        }
-
-        return $image;
-    }
-
-    /**
      * Generate the CSS class to be used for drawing this individual
      *
      * @return string

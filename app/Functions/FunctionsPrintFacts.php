@@ -43,6 +43,7 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Ramsey\Uuid\Uuid;
 use function e;
+use function view;
 use const PREG_SET_ORDER;
 
 /**
@@ -530,7 +531,7 @@ class FunctionsPrintFacts
 
                         if ($parent instanceof Family) {
                             // For family ASSO records (e.g. MARR), identify the spouse with a sex icon
-                            $relationship_name .= $associate->getSexImage();
+                            $relationship_name .= '<small>' . view('icons/sex-' . $associate->sex()) . '</small>';
                         }
 
                         $values[] = '<a href="' . $module->chartUrl($associate, ['xref2' => $person->xref()]) . '" rel="nofollow">' . $relationship_name . '</a>';

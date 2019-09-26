@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function view;
 
 /**
  * Class DescendancyModule
@@ -157,7 +158,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
                 'xref'   => $person->xref(),
             ])) . '">' .
             '<i class="plusminus ' . $icon . '"></i>' .
-            $person->getSexImage() . $person->fullName() . $lifespan .
+            '<small>' . view('icons/sex-' . $person->sex()) .'</small>' . $person->fullName() . $lifespan .
             '</a>' .
             '<a href="' . e($person->url()) . '" title="' . strip_tags($person->fullName()) . '">' . view('icons/individual') . '</a>' .
             '<div>' . $spouses . '</div>' .
@@ -177,7 +178,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
     {
         $spouse = $family->spouse($person);
         if ($spouse) {
-            $spouse_name = $spouse->getSexImage() . $spouse->fullName();
+            $spouse_name = '<small>' . view('icons/sex-' . $spouse->sex()) . '</small>' . $spouse->fullName();
             $spouse_link = '<a href="' . e($person->url()) . '" title="' . strip_tags($person->fullName()) . '">' . view('icons/individual') . '</a>';
         } else {
             $spouse_name = '';

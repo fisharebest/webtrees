@@ -34,6 +34,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Ramsey\Uuid\Uuid;
+use function view;
 
 /**
  * Class FunctionsPrint - common functions
@@ -170,7 +171,7 @@ class FunctionsPrint
             $family = $families->first();
             foreach ($family->spouses() as $parent) {
                 if ($parent->getBirthDate()->isOK()) {
-                    $sex      = $parent->getSexImage();
+                    $sex      = '<small>' . view('icons/sex-' . $parent->sex()) . '</small>';
                     $age      = Date::getAge($parent->getBirthDate(), $birth_date);
                     $deatdate = $parent->getDeathDate();
                     switch ($parent->sex()) {

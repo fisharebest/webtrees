@@ -4,7 +4,7 @@
     <a href="<?= e($yahrzeit->individual->url()) ?>" class="list_item name2">
         <?= $yahrzeit->individual->fullName() ?>
     </a>
-    <?= $yahrzeit->individual->getSexImage() ?>
+    <small><?= view('icons/sex-' . $yahrzeit->individual->sex()) ?></small>
     <div class="indent">
         <?= $yahrzeit->fact->date()->display(true) ?>,
         <?= I18N::translate('%s year anniversary', $yahrzeit->fact->anniv) ?>
