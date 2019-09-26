@@ -367,6 +367,10 @@ table {
 	content: url(clouds/menu/clippings-add.png);
 }
 
+.menu-clippings-cart::before {
+	content: url(clouds/menu/clippings-cart.png);
+}
+
 .menu-clippings-download::before {
 	content: url(clouds/menu/edit-gedcom.png);
 }
@@ -377,154 +381,6 @@ table {
 
 .menu-clippings-remove::before {
 	content: url(clouds/menu/edit-delete.png);
-}
-
-.menu-fam .nav-link::before {
-	content: url(clouds/menu/fam.png);
-}
-
-.menu-fam-change::before {
-	content: url(clouds/menu/edit-fam.png);
-}
-
-.menu-fam-addchil::before {
-	content: url(clouds/menu/edit-fam.png);
-}
-
-.menu-fam-orderchil::before {
-	content: url(clouds/menu/edit-reorder.png);
-}
-
-.menu-fam-del::before {
-	content: url(clouds/menu/edit-delete.png);
-}
-
-.menu-fam-addfav::before {
-	content: url(clouds/menu/edit-add-favorite.png);
-}
-
-.menu-fam-editraw::before {
-	content: url(clouds/menu/edit-gedcom.png);
-}
-
-.menu-indi .nav-link::before {
-	content: url(clouds/menu/indi.png);
-}
-
-.menu-indi-addname::before {
-	content: url(clouds/menu/edit-indi.png);
-}
-
-.menu-indi-editsex::before {
-	content: url(clouds/menu/edit-indi.png);
-}
-
-.menu-indi-del::before {
-	content: url(clouds/menu/edit-delete.png);
-}
-
-.menu-indi-addfav::before {
-	content: url(clouds/menu/edit-add-favorite.png);
-}
-
-.menu-indi-editraw::before {
-	content: url(clouds/menu/edit-gedcom.png);
-}
-
-.menu-obje .nav-link::before {
-	content: url(clouds/menu/obje.png);
-}
-
-.menu-obje-edit::before {
-	content: url(clouds/menu/edit-obje.png);
-}
-
-.menu-obje-link::before {
-	content: url(clouds/menu/edit-link.png);
-}
-
-.menu-obje-del::before {
-	content: url(clouds/menu/edit-delete.png);
-}
-
-.menu-obje-addfav::before {
-	content: url(clouds/menu/edit-add-favorite.png);
-}
-
-.menu-obje-editraw::before {
-	content: url(clouds/menu/edit-gedcom.png);
-}
-
-.menu-note .nav-link::before {
-	content: url(clouds/menu/note.png);
-}
-
-.menu-note-edit::before {
-	content: url(clouds/menu/edit-note.png);
-}
-
-.menu-note-del::before {
-	content: url(clouds/menu/edit-delete.png);
-}
-
-.menu-note-addfav::before {
-	content: url(clouds/menu/edit-add-favorite.png);
-}
-
-.menu-note-editraw::before {
-	content: url(clouds/menu/edit-gedcom.png);
-}
-
-.menu-record .nav-link::before {
-	content: url(clouds/menu/indi.png);
-}
-
-.menu-record-del::before {
-	content: url(clouds/menu/edit-delete.png);
-}
-
-.menu-record-editraw::before {
-	content: url(clouds/menu/edit-gedcom.png);
-}
-
-.menu-repo .nav-link::before {
-	content: url(clouds/menu/repo.png);
-}
-
-.menu-repo-edit::before {
-	content: url(clouds/menu/edit-repo.png);
-}
-
-.menu-repo-del::before {
-	content: url(clouds/menu/edit-delete.png);
-}
-
-.menu-repo-addfav::before {
-	content: url(clouds/menu/edit-add-favorite.png);
-}
-
-.menu-repo-editraw::before {
-	content: url(clouds/menu/edit-gedcom.png);
-}
-
-.menu-sour .nav-link::before {
-	content: url(clouds/menu/sour.png);
-}
-
-.menu-sour-edit::before {
-	content: url(clouds/menu/edit-sour.png);
-}
-
-.menu-sour-del::before {
-	content: url(clouds/menu/edit-delete.png);
-}
-
-.menu-sour-addfav::before {
-	content: url(clouds/menu/edit-add-favorite.png);
-}
-
-.menu-sour-editraw::before {
-	content: url(clouds/menu/edit-gedcom.png);
 }
 
 .menu-story .nav-link::before {

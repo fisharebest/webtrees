@@ -6,43 +6,51 @@
         <?= view('icons/edit') ?>
         <?= I18N::translate('edit') ?>
     </button>
+
     <div class="dropdown-menu dropdown-menu-right wt-page-menu-items" aria-labelledby="page-menu">
-        <a class="dropdown-item menu-fam-change" href="<?= e(route('change-family-members', ['ged' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
+        <a class="dropdown-item" href="<?= e(route('change-family-members', ['ged' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
+            <?= view('icons/family') ?>
             <?= I18N::translate('Change family members') ?>
         </a>
 
         <?php if ($record->husband() === null): ?>
-            <a class="dropdown-item menu-fam-addchil" href="<?= e(route('add-spouse-to-family', ['ged' => $record->tree()->name(), 'xref' => $record->xref(), 'famtag' => 'HUSB'])) ?>">
+            <a class="dropdown-item" href="<?= e(route('add-spouse-to-family', ['ged' => $record->tree()->name(), 'xref' => $record->xref(), 'famtag' => 'HUSB'])) ?>">
+                <?= view('icons/add') ?>
                 <?= I18N::translate('Add a husband') ?>
             </a>
         <?php endif ?>
 
         <?php if ($record->wife() === null): ?>
-            <a class="dropdown-item menu-fam-addchil" href="<?= e(route('add-spouse-to-family', ['ged' => $record->tree()->name(), 'xref' => $record->xref(), 'famtag' => 'WIFE'])) ?>">
+            <a class="dropdown-item" href="<?= e(route('add-spouse-to-family', ['ged' => $record->tree()->name(), 'xref' => $record->xref(), 'famtag' => 'WIFE'])) ?>">
+                <?= view('icons/add') ?>
                 <?= I18N::translate('Add a wife') ?>
             </a>
         <?php endif ?>
 
-        <a class="dropdown-item menu-fam-addchil" href="<?= e(route('add-child-to-family', ['gender' => 'U', 'ged' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
+        <a class="dropdown-item" href="<?= e(route('add-child-to-family', ['gender' => 'U', 'ged' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
+            <?= view('icons/add') ?>
             <?= I18N::translate('Add a child') ?>
         </a>
 
         <?php if ($record->numberOfChildren() > 1) : ?>
-            <a class="dropdown-item menu-fam-orderchil" href="<?= e(route('reorder-children', ['ged' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
+            <a class="dropdown-item" href="<?= e(route('reorder-children', ['ged' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
+                <?= view('icons/reorder') ?>
                 <?= I18N::translate('Re-order children') ?>
             </a>
         <?php endif ?>
 
         <div class="dropdown-divider"></div>
 
-        <a class="dropdown-item menu-fam-del" href="#" data-confirm="<?= I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?') ?>" onclick="return confirm(this.dataset.confirm) && delete_record('<?= e($record->xref()) ?>', '<?= e($record->tree()->name()) ?>');">
+        <a class="dropdown-item" href="#" data-confirm="<?= I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?') ?>" onclick="return confirm(this.dataset.confirm) && delete_record('<?= e($record->xref()) ?>', '<?= e($record->tree()->name()) ?>');">
+            <?= view('icons/delete') ?>
             <?= I18N::translate('Delete') ?>
         </a>
 
         <?php if (Auth::isAdmin() || $record->tree()->getPreference('SHOW_GEDCOM_RECORD')) : ?>
             <div class="dropdown-divider"></div>
 
-            <a class="dropdown-item menu-fam-editraw" href="<?= e(route('edit-raw-record', ['ged' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
+            <a class="dropdown-item" href="<?= e(route('edit-raw-record', ['ged' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
+                <?= view('icons/edit') ?>
                 <?= I18N::translate('Edit the raw GEDCOM') ?>
             </a>
         <?php endif ?>
