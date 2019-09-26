@@ -158,7 +158,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
                 'xref'   => $person->xref(),
             ])) . '">' .
             '<i class="plusminus ' . $icon . '"></i>' .
-            '<small>' . view('icons/sex-' . $person->sex()) .'</small>' . $person->fullName() . $lifespan .
+            '<small>' . view('icons/sex-' . $person->sex()) . '</small>' . $person->fullName() . $lifespan .
             '</a>' .
             '<a href="' . e($person->url()) . '" title="' . strip_tags($person->fullName()) . '">' . view('icons/individual') . '</a>' .
             '<div>' . $spouses . '</div>' .
