@@ -307,8 +307,6 @@ $router->post('logout', 'Auth\LoginController::logoutAction');
 $router->get('register', 'Auth\RegisterController::registerPage');
 $router->post('register', 'Auth\RegisterController::registerAction');
 $router->get('verify', 'Auth\VerifyEmailController::verify');
-$router->get('forgot-password', 'Auth\ForgotPasswordController::forgotPasswordPage');
-$router->post('forgot-password', 'Auth\ForgotPasswordController::forgotPasswordAction');
 $router->get('password-request', PasswordRequestForm::class);
 $router->post('password-request', PasswordRequestAction::class);
 $router->get('password-reset', PasswordResetForm::class);
