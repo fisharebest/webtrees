@@ -136,8 +136,9 @@ class LocationControllerTest extends TestCase
     {
         $tree       = Tree::create('name', 'title');
         $controller = new LocationController(new GedcomService());
-        self::createRequest('POST', ['route' => 'locations-import-from-tree']);
-        $response = $controller->importLocationsFromTree($tree);
+        $request    = self::createRequest('POST', ['route' => 'locations-import-from-tree'])
+            ->withAttribute('tree', $tree);
+        $response = $controller->importLocationsFromTree($request);
 
         $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }

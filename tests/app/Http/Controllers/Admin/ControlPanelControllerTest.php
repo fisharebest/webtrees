@@ -17,13 +17,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
-use Fisharebest\Webtrees\Services\HousekeepingService;
-use Fisharebest\Webtrees\Services\ModuleService;
-use Fisharebest\Webtrees\Services\ServerCheckService;
-use Fisharebest\Webtrees\Services\TimeoutService;
-use Fisharebest\Webtrees\Services\UpgradeService;
-use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Tree;
+use function app;
 
 /**
  * Test the control panel controller
@@ -39,15 +35,10 @@ class ControlPanelControllerTest extends TestCase
      */
     public function testControlPanel(): void
     {
-        $controller = new ControlPanelController();
-        self::createRequest('GET', ['route' => 'control-panel']);
-        $response = $controller->controlPanel(
-            new HousekeepingService(),
-            new UpgradeService(new TimeoutService(microtime(true))),
-            new ModuleService(),
-            new ServerCheckService(),
-            new UserService()
-        );
+        app()->instance(Tree::class, Tree::create('', ''));
+
+        $request  = self::createRequest('GET', ['route' => 'control-panel']);
+        $response = app(ControlPanelController::class)->controlPanel($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -57,9 +48,8 @@ class ControlPanelControllerTest extends TestCase
      */
     public function testControlPanelManager(): void
     {
-        $controller = new ControlPanelController();
-        self::createRequest('GET', ['route' => 'control-panel']);
-        $response = $controller->controlPanelManager(new ModuleService());
+        $request  = self::createRequest('GET', ['route' => 'control-panel']);
+        $response = app(ControlPanelController::class)->controlPanelManager($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }

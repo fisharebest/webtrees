@@ -42,30 +42,32 @@ class PlaceHierarchyController extends AbstractBaseController
 {
     private const MAP_MODULE = 'openstreetmap';
 
-    /**
-     * @var Statistics
-     */
+    /** @var SearchService */
+    private $search_service;
+
+    /** @var Statistics */
     private $statistics;
 
     /**
      * TopGivenNamesModule constructor.
      *
-     * @param Statistics $statistics
+     * @param SearchService $search_service
+     * @param Statistics    $statistics
      */
-    public function __construct(Statistics $statistics)
+    public function __construct(SearchService $search_service, Statistics $statistics)
     {
-        $this->statistics = $statistics;
+        $this->search_service = $search_service;
+        $this->statistics     = $statistics;
     }
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param SearchService          $search_service
      *
      * @return ResponseInterface
      */
-    public function show(ServerRequestInterface $request, Tree $tree, SearchService $search_service): ResponseInterface
+    public function show(ServerRequestInterface $request): ResponseInterface
     {
+        $tree    = $request->getAttribute('tree');
         $params  = $request->getQueryParams();
         $action2 = $params['action2'] ?? 'hierarchy';
         $parent  = $params['parent'] ?? [];
@@ -92,7 +94,7 @@ class PlaceHierarchyController extends AbstractBaseController
         switch ($action2) {
             case 'list':
                 $nextaction = ['hierarchy' => I18N::translate('Show place hierarchy')];
-                $content .= view('place-list', $this->getList($tree, $search_service));
+                $content .= view('place-list', $this->getList($tree, $this->search_service));
                 break;
             case 'hierarchy':
             case 'hierarchy-e':

@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -94,13 +93,13 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      * A form to request the chart parameters.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function getChartAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree       = $request->getAttribute('tree');
+        $user       = $request->getAttribute('user');
         $ajax       = $request->getQueryParams()['ajax'] ?? '';
         $xref       = $request->getQueryParams()['xref'] ?? '';
         $individual = Individual::getInstance($xref, $tree);

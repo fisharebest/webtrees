@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -53,6 +52,18 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
 
     /** @var string[] */
     protected $dabo_sex = [];
+
+    /** @var ChartService */
+    private $chart_service;
+
+    /**
+     * DescendancyChartModule constructor.
+     *
+     * @param ChartService $chart_service
+     */
+    public function __construct(ChartService $chart_service) {
+        $this->chart_service = $chart_service;
+    }
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -115,14 +126,13 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      * A form to request the chart parameters.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
-     * @param ChartService           $chart_service
      *
      * @return ResponseInterface
      */
-    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user, ChartService $chart_service): ResponseInterface
+    public function getChartAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree       = $request->getAttribute('tree');
+        $user       = $request->getAttribute('user');
         $ajax       = $request->getQueryParams()['ajax'] ?? '';
         $xref       = $request->getQueryParams()['xref'] ?? '';
         $individual = Individual::getInstance($xref, $tree);
@@ -137,7 +147,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
         $generations = max($generations, self::MINIMUM_GENERATIONS);
 
         if ($ajax === '1') {
-            return $this->chart($request, $tree, $chart_service);
+            return $this->chart($request);
         }
 
         $ajax_url = $this->chartUrl($individual, [
@@ -162,15 +172,14 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param ChartService           $chart_service
      *
      * @return ResponseInterface
      */
-    public function chart(ServerRequestInterface $request, Tree $tree, ChartService $chart_service): ResponseInterface
+    public function chart(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
+        $tree       = $request->getAttribute('tree');
         $xref       = $request->getQueryParams()['xref'];
         $individual = Individual::getInstance($xref, $tree);
 
@@ -188,12 +197,12 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
                 return response(view('modules/descendancy_chart/tree', ['individual' => $individual, 'generations' => $generations, 'daboville' => '1']));
 
             case self::CHART_STYLE_INDIVIDUALS:
-                $individuals = $chart_service->descendants($individual, $generations - 1);
+                $individuals = $this->chart_service->descendants($individual, $generations - 1);
 
                 return $this->descendantsIndividuals($tree, $individuals);
 
             case self::CHART_STYLE_FAMILIES:
-                $families = $chart_service->descendantFamilies($individual, $generations - 1);
+                $families = $this->chart_service->descendantFamilies($individual, $generations - 1);
 
                 return $this->descendantsFamilies($tree, $families);
         }

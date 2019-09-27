@@ -21,7 +21,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\ClipboardService;
-use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -44,24 +43,36 @@ class RepositoryController extends AbstractBaseController
         'RESN',
     ];
 
+    /** @var ClipboardService */
+    private $clipboard_service;
+
+    /**
+     * MediaController constructor.
+     *
+     * @param ClipboardService $clipboard_service
+     */
+    public function __construct(ClipboardService $clipboard_service)
+    {
+        $this->clipboard_service = $clipboard_service;
+    }
+
     /**
      * Show a repository's page.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param ClipboardService       $clipboard_service
      *
      * @return ResponseInterface
      */
-    public function show(ServerRequestInterface $request, Tree $tree, ClipboardService $clipboard_service): ResponseInterface
+    public function show(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $xref   = $request->getQueryParams()['xref'];
         $record = Repository::getInstance($xref, $tree);
 
         Auth::checkRepositoryAccess($record, false);
 
         return $this->viewResponse('repository-page', [
-            'clipboard_facts' => $clipboard_service->pastableFacts($record, new Collection()),
+            'clipboard_facts' => $this->clipboard_service->pastableFacts($record, new Collection()),
             'facts'           => $this->facts($record),
             'meta_robots'     => 'index,follow',
             'repository'      => $record,

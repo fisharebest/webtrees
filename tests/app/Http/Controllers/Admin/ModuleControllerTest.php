@@ -36,8 +36,8 @@ class ModuleControllerTest extends TestCase
     public function testList(): void
     {
         $controller = new ModuleController(new ModuleService());
-        self::createRequest('GET', ['route' => 'modules']);
-        $response   = $controller->list();
+        $request=self::createRequest('GET', ['route' => 'modules']);
+        $response = $controller->list($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -48,8 +48,8 @@ class ModuleControllerTest extends TestCase
     public function testListAnalytics(): void
     {
         $controller = new ModuleController(new ModuleService());
-        self::createRequest('GET', ['route' => 'analytics']);
-        $response   = $controller->listAnalytics();
+        $request    = self::createRequest('GET', ['route' => 'analytics']);
+        $response   = $controller->listAnalytics($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -60,8 +60,8 @@ class ModuleControllerTest extends TestCase
     public function testListBlocks(): void
     {
         $controller = new ModuleController(new ModuleService());
-        self::createRequest('GET', ['route' => 'blocks']);
-        $response   = $controller->listBlocks();
+        $request    = self::createRequest('GET', ['route' => 'blocks']);
+        $response   = $controller->listBlocks($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -72,8 +72,8 @@ class ModuleControllerTest extends TestCase
     public function testListCharts(): void
     {
         $controller = new ModuleController(new ModuleService());
-        self::createRequest('GET', ['route' => 'charts']);
-        $response   = $controller->listCharts();
+        $request    = self::createRequest('GET', ['route' => 'charts']);
+        $response   = $controller->listCharts($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -84,8 +84,8 @@ class ModuleControllerTest extends TestCase
     public function testListFooters(): void
     {
         $controller = new ModuleController(new ModuleService());
-        self::createRequest('GET', ['route' => 'footers']);
-        $response   = $controller->listFooters();
+        $request    = self::createRequest('GET', ['route' => 'footers']);
+        $response   = $controller->listFooters($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -96,8 +96,8 @@ class ModuleControllerTest extends TestCase
     public function testListHistory(): void
     {
         $controller = new ModuleController(new ModuleService());
-        self::createRequest('GET', ['route' => 'history']);
-        $response   = $controller->listHistory();
+        $request    = self::createRequest('GET', ['route' => 'history']);
+        $response   = $controller->listHistory($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -108,8 +108,8 @@ class ModuleControllerTest extends TestCase
     public function testListLanguages(): void
     {
         $controller = new ModuleController(new ModuleService());
-        self::createRequest('GET', ['route' => 'languages']);
-        $response   = $controller->listLanguages();
+        $request    = self::createRequest('GET', ['route' => 'languages']);
+        $response   = $controller->listLanguages($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -120,8 +120,8 @@ class ModuleControllerTest extends TestCase
     public function testListMenus(): void
     {
         $controller = new ModuleController(new ModuleService());
-        self::createRequest('GET', ['route' => 'menus']);
-        $response   = $controller->listMenus();
+        $request    = self::createRequest('GET', ['route' => 'menus']);
+        $response   = $controller->listMenus($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -132,8 +132,8 @@ class ModuleControllerTest extends TestCase
     public function testListReports(): void
     {
         $controller = new ModuleController(new ModuleService());
-        self::createRequest('GET', ['route' => 'reports']);
-        $response   = $controller->listReports();
+        $request    = self::createRequest('GET', ['route' => 'reports']);
+        $response   = $controller->listReports($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -144,8 +144,8 @@ class ModuleControllerTest extends TestCase
     public function testListSidebars(): void
     {
         $controller = new ModuleController(new ModuleService());
-        self::createRequest('GET', ['route' => 'sidebars']);
-        $response   = $controller->listSidebars();
+        $request    = self::createRequest('GET', ['route' => 'sidebars']);
+        $response   = $controller->listSidebars($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -156,8 +156,8 @@ class ModuleControllerTest extends TestCase
     public function testListTabs(): void
     {
         $controller = new ModuleController(new ModuleService());
-        self::createRequest('GET', ['route' => 'tabs']);
-        $response   = $controller->listTabs();
+        $request    = self::createRequest('GET', ['route' => 'tabs']);
+        $response   = $controller->listTabs($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -168,8 +168,8 @@ class ModuleControllerTest extends TestCase
     public function testListThemes(): void
     {
         $controller = new ModuleController(new ModuleService());
-        self::createRequest('GET', ['route' => 'themes']);
-        $response   = $controller->listThemes();
+        $request    = self::createRequest('GET', ['route' => 'themes']);
+        $response   = $controller->listThemes($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }

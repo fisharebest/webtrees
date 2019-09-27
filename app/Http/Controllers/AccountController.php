@@ -19,18 +19,14 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use DateTimeZone;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -61,13 +57,15 @@ class AccountController extends AbstractBaseController
     }
 
     /**
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function edit(Tree $tree, UserInterface $user): ResponseInterface
+    public function edit(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        $user = $request->getAttribute('user');
+
         $my_individual_record = Individual::getInstance($tree->getUserPreference(Auth::user(), 'gedcomid'), $tree);
         $contact_methods      = FunctionsEdit::optionsContactMethods();
         $default_individual   = Individual::getInstance($tree->getUserPreference(Auth::user(), 'rootid'), $tree);
@@ -106,13 +104,13 @@ class AccountController extends AbstractBaseController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function update(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function update(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
+        $user   = $request->getAttribute('user');
         $params = $request->getParsedBody();
 
         $contact_method = $params['contact_method'];
@@ -164,12 +162,14 @@ class AccountController extends AbstractBaseController
     }
 
     /**
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function delete(UserInterface $user): ResponseInterface
+    public function delete(ServerRequestInterface $request): ResponseInterface
     {
+        $user = $request->getAttribute('user');
+
         // An administrator can only be deleted by another administrator
         if ($user instanceof User && !$user->getPreference('canadmin')) {
             $this->user_service->delete($user);

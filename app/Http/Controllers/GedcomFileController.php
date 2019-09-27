@@ -23,11 +23,11 @@ use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TimeoutService;
-use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Controller for the processing GEDCOM files.
@@ -37,16 +37,30 @@ class GedcomFileController extends AbstractBaseController
     /** @var string */
     protected $layout = 'layouts/ajax';
 
+    /** @var TimeoutService */
+    private $timeout_service;
+
+    /**
+     * GedcomFileController constructor.
+     *
+     * @param TimeoutService $timeout_service
+     */
+    public function __construct(TimeoutService $timeout_service)
+    {
+        $this->timeout_service = $timeout_service;
+    }
+
     /**
      * Import the next chunk of a GEDCOM file.
      *
-     * @param TimeoutService $timeout_service
-     * @param Tree           $tree
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function import(TimeoutService $timeout_service, Tree $tree): ResponseInterface
+    public function import(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+
         try {
             // Only allow one process to import each gedcom at a time
             DB::table('gedcom_chunk')
@@ -197,7 +211,7 @@ class GedcomFileController extends AbstractBaseController
                 DB::table('gedcom_chunk')
                     ->where('gedcom_chunk_id', '=', $data->gedcom_chunk_id)
                     ->update(['imported' => 1]);
-            } while (!$timeout_service->isTimeLimitUp());
+            } while (!$this->timeout_service->isTimeLimitUp());
 
             return $this->viewResponse('admin/import-progress', [
                 'errors'   => $errors,

@@ -41,7 +41,7 @@ use function view;
  */
 class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterface, RequestMethodInterface
 {
-    const TOKEN_LENGTH = 40;
+    private const TOKEN_LENGTH = 40;
 
     /** @var MailService */
     private $mail_service;

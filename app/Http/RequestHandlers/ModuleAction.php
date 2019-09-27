@@ -25,7 +25,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use function app;
 use function method_exists;
 use function strpos;
 use function strtolower;
@@ -87,6 +86,6 @@ class ModuleAction implements RequestHandlerInterface
             throw new NotFoundHttpException('Method ' . $method . '() not found in ' . $module_name);
         }
 
-        return app()->dispatch($module, $method);
+        return $module->$method($request);
     }
 }

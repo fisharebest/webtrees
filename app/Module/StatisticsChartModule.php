@@ -18,15 +18,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Statistics;
-use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use function app;
 use function array_key_exists;
 use function array_keys;
 use function array_map;
@@ -132,13 +131,15 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     /**
      * A form to request the chart parameters.
      *
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function getChartAction(Tree $tree, UserInterface $user): ResponseInterface
+    public function getChartAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        $user = $request->getAttribute('user');
+
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
         $tabs = [
@@ -171,56 +172,58 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     }
 
     /**
-     * @param Statistics $statistics
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function getIndividualsAction(Statistics $statistics): ResponseInterface
+    public function getIndividualsAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
         return $this->viewResponse('modules/statistics-chart/individuals', [
             'show_oldest_living' => Auth::check(),
-            'stats'              => $statistics,
+            'stats'              => app(Statistics::class),
         ]);
     }
 
     /**
-     * @param Statistics $stats
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function getFamiliesAction(Statistics $stats): ResponseInterface
+    public function getFamiliesAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
         return $this->viewResponse('modules/statistics-chart/families', [
-            'stats' => $stats,
+            'stats' => app(Statistics::class),
         ]);
     }
 
     /**
-     * @param Statistics $stats
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function getOtherAction(Statistics $stats): ResponseInterface
+    public function getOtherAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
         return $this->viewResponse('modules/statistics-chart/other', [
-            'stats' => $stats,
+            'stats' => app(Statistics::class),
         ]);
     }
 
     /**
-     * @param Tree $tree
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function getCustomAction(Tree $tree): ResponseInterface
+    public function getCustomAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
+
+        $tree = $request->getAttribute('tree');
 
         return $this->viewResponse('modules/statistics-chart/custom', [
             'module' => $this,
@@ -230,12 +233,13 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 
     /**
      * @param ServerRequestInterface $request
-     * @param Statistics             $statistics
      *
      * @return ResponseInterface
      */
-    public function getCustomChartAction(ServerRequestInterface $request, Statistics $statistics): ResponseInterface
+    public function getCustomChartAction(ServerRequestInterface $request): ResponseInterface
     {
+        $statistics = app(Statistics::class);
+
         $params = $request->getQueryParams();
 
         $x_axis_type = (int) $params['x-as'];

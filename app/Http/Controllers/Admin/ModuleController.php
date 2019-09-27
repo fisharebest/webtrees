@@ -78,9 +78,11 @@ class ModuleController extends AbstractAdminController
     /**
      * Show the administrator a list of modules.
      *
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function list(): ResponseInterface
+    public function list(ServerRequestInterface $request): ResponseInterface
     {
         return $this->viewResponse('admin/modules', [
             'title'           => I18N::translate('All modules'),
@@ -90,9 +92,11 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function listAnalytics(): ResponseInterface
+    public function listAnalytics(ServerRequestInterface $request): ResponseInterface
     {
         return $this->listComponents(
             ModuleAnalyticsInterface::class,
@@ -102,9 +106,11 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function listBlocks(): ResponseInterface
+    public function listBlocks(ServerRequestInterface $request): ResponseInterface
     {
         return $this->listComponents(
             ModuleBlockInterface::class,
@@ -114,9 +120,11 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function listCharts(): ResponseInterface
+    public function listCharts(ServerRequestInterface $request): ResponseInterface
     {
         return $this->listComponents(
             ModuleChartInterface::class,
@@ -126,9 +134,11 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function listFooters(): ResponseInterface
+    public function listFooters(ServerRequestInterface $request): ResponseInterface
     {
         return $this->listComponents(
             ModuleFooterInterface::class,
@@ -138,9 +148,11 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function listHistory(): ResponseInterface
+    public function listHistory(ServerRequestInterface $request): ResponseInterface
     {
         return $this->listComponents(
             ModuleHistoricEventsInterface::class,
@@ -150,9 +162,11 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function listLanguages(): ResponseInterface
+    public function listLanguages(ServerRequestInterface $request): ResponseInterface
     {
         return $this->listComponents(
             ModuleLanguageInterface::class,
@@ -162,9 +176,11 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function listLists(): ResponseInterface
+    public function listLists(ServerRequestInterface $request): ResponseInterface
     {
         return $this->listComponents(
             ModuleListInterface::class,
@@ -174,9 +190,11 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function listMenus(): ResponseInterface
+    public function listMenus(ServerRequestInterface $request): ResponseInterface
     {
         return $this->listComponents(
             ModuleMenuInterface::class,
@@ -186,9 +204,11 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function listReports(): ResponseInterface
+    public function listReports(ServerRequestInterface $request): ResponseInterface
     {
         return $this->listComponents(
             ModuleReportInterface::class,
@@ -198,9 +218,11 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function listSidebars(): ResponseInterface
+    public function listSidebars(ServerRequestInterface $request): ResponseInterface
     {
         return $this->listComponents(
             ModuleSidebarInterface::class,
@@ -210,9 +232,11 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function listTabs(): ResponseInterface
+    public function listTabs(ServerRequestInterface $request): ResponseInterface
     {
         return $this->listComponents(
             ModuleTabInterface::class,
@@ -222,9 +246,11 @@ class ModuleController extends AbstractAdminController
     }
 
     /**
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function listThemes(): ResponseInterface
+    public function listThemes(ServerRequestInterface $request): ResponseInterface
     {
         return $this->listComponents(
             ModuleThemeInterface::class,

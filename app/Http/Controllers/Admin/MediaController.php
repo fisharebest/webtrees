@@ -53,6 +53,23 @@ class MediaController extends AbstractAdminController
     // How many files to upload on one form.
     private const MAX_UPLOAD_FILES = 10;
 
+    /** @var DatatablesService */
+    private $datatables_service;
+
+    /** @var FilesystemInterface */
+    private $filesystem;
+
+    /**
+     * MediaController constructor.
+     *
+     * @param DatatablesService   $datatables_service
+     * @param FilesystemInterface $filesystem
+     */
+    public function __construct(DatatablesService $datatables_service, FilesystemInterface $filesystem) {
+        $this->datatables_service = $datatables_service;
+        $this->filesystem         = $filesystem;
+    }
+
     /**
      * @param ServerRequestInterface $request
      *
@@ -116,11 +133,10 @@ class MediaController extends AbstractAdminController
 
     /**
      * @param ServerRequestInterface $request
-     * @param FilesystemInterface    $filesystem
      *
      * @return ResponseInterface
      */
-    public function delete(ServerRequestInterface $request, FilesystemInterface $filesystem): ResponseInterface
+    public function delete(ServerRequestInterface $request): ResponseInterface
     {
         $delete_file  = $request->getQueryParams()['file'];
         $media_folder = $request->getQueryParams()['folder'];
@@ -132,8 +148,8 @@ class MediaController extends AbstractAdminController
         if (in_array($delete_file, $disk_files, true)) {
             $path = $media_folder . $delete_file;
             try {
-                if ($filesystem->has($path)) {
-                    $filesystem->delete($path);
+                if ($this->filesystem->has($path)) {
+                    $this->filesystem->delete($path);
                 }
                 FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', e($path)), 'info');
             } catch (Throwable $ex) {
@@ -190,11 +206,10 @@ class MediaController extends AbstractAdminController
 
     /**
      * @param ServerRequestInterface $request
-     * @param DatatablesService      $datatables_service
      *
      * @return ResponseInterface
      */
-    public function data(ServerRequestInterface $request, DatatablesService $datatables_service): ResponseInterface
+    public function data(ServerRequestInterface $request): ResponseInterface
     {
         $files  = $request->getQueryParams()['files']; // local|external|unused
         $search = $request->getQueryParams()['search'];
@@ -235,7 +250,7 @@ class MediaController extends AbstractAdminController
                     $query->where(new Expression('setting_value || multimedia_file_refn'), 'NOT LIKE', $media_folder . '%/%');
                 }
 
-                return $datatables_service->handle($request, $query, $search_columns, $sort_columns, function (stdClass $row): array {
+                return $this->datatables_service->handle($request, $query, $search_columns, $sort_columns, function (stdClass $row): array {
                     /** @var Media $media */
                     $media = Media::rowMapper()($row);
 
@@ -269,7 +284,7 @@ class MediaController extends AbstractAdminController
                     })
                     ->select(['media.*', 'multimedia_file_refn', 'descriptive_title']);
 
-                return $datatables_service->handle($request, $query, $search_columns, $sort_columns, function (stdClass $row): array {
+                return $this->datatables_service->handle($request, $query, $search_columns, $sort_columns, function (stdClass $row): array {
                     /** @var Media $media */
                     $media = Media::rowMapper()($row);
 
@@ -484,9 +499,11 @@ class MediaController extends AbstractAdminController
     }
 
     /**
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function upload(): ResponseInterface
+    public function upload(ServerRequestInterface $request): ResponseInterface
     {
         $media_folders = $this->allMediaFolders();
 
@@ -507,11 +524,10 @@ class MediaController extends AbstractAdminController
 
     /**
      * @param ServerRequestInterface $request
-     * @param FilesystemInterface    $filesystem
      *
      * @return ResponseInterface
      */
-    public function uploadAction(ServerRequestInterface $request, FilesystemInterface $filesystem): ResponseInterface
+    public function uploadAction(ServerRequestInterface $request): ResponseInterface
     {
         $all_folders = $this->allMediaFolders();
 
@@ -556,14 +572,14 @@ class MediaController extends AbstractAdminController
 
             $path = $folder . $filename;
 
-            if ($filesystem->has($path)) {
+            if ($this->filesystem->has($path)) {
                 FlashMessages::addMessage(I18N::translate('The file %s already exists. Use another filename.', $path, 'error'));
                 continue;
             }
 
             // Now copy the file to the correct location.
             try {
-                $filesystem->writeStream($path, $uploaded_file->getStream()->detach());
+                $this->filesystem->writeStream($path, $uploaded_file->getStream()->detach());
                 FlashMessages::addMessage(I18N::translate('The file %s has been uploaded.', Html::filename($path)), 'success');
                 Log::addMediaLog('Media file ' . $path . ' uploaded');
             } catch (Throwable $ex) {

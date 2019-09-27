@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
@@ -66,43 +65,40 @@ class ListController extends AbstractBaseController
      * Show a list of all individual or family records.
      *
      * @param ServerRequestInterface   $request
-     * @param Tree                     $tree
-     * @param UserInterface            $user
      * @param ModuleListInterface|null $moduleListInterface
      *
      * @return ResponseInterface
      */
-    public function familyList(ServerRequestInterface $request, Tree $tree, UserInterface $user, ?ModuleListInterface $moduleListInterface): ResponseInterface
+    public function familyList(ServerRequestInterface $request, ?ModuleListInterface $moduleListInterface): ResponseInterface
     {
-        return $this->individualOrFamilyList($request, $tree, $user, true, $moduleListInterface);
+        return $this->individualOrFamilyList($request, true, $moduleListInterface);
     }
 
     /**
      * Show a list of all individual or family records.
      *
      * @param ServerRequestInterface   $request
-     * @param Tree                     $tree
-     * @param UserInterface            $user
      * @param ModuleListInterface|null $moduleListInterface
      *
      * @return ResponseInterface
      */
-    public function individualList(ServerRequestInterface $request, Tree $tree, UserInterface $user, ?ModuleListInterface $moduleListInterface): ResponseInterface
+    public function individualList(ServerRequestInterface $request, ?ModuleListInterface $moduleListInterface): ResponseInterface
     {
-        return $this->individualOrFamilyList($request, $tree, $user, false, $moduleListInterface);
+        return $this->individualOrFamilyList($request, false, $moduleListInterface);
     }
 
     /**
      * @param ServerRequestInterface   $request
-     * @param Tree                     $tree
-     * @param UserInterface            $user
      * @param bool                     $families
      * @param ModuleListInterface|null $moduleListInterface
      *
      * @return ResponseInterface
      */
-    public function individualOrFamilyList(ServerRequestInterface $request, Tree $tree, UserInterface $user, bool $families, ?ModuleListInterface $moduleListInterface): ResponseInterface
+    public function individualOrFamilyList(ServerRequestInterface $request, bool $families, ?ModuleListInterface $moduleListInterface): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        $user = $request->getAttribute('user');
+
         // This action can show lists of both families and individuals.
         //route is assumed to be 'module'
         $module = $request->getQueryParams()['module'];
@@ -396,12 +392,12 @@ class ListController extends AbstractBaseController
      * Show a list of all media records.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function mediaList(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function mediaList(ServerRequestInterface $request): ResponseInterface
     {
+        $tree      = $request->getAttribute('tree');
         $params    = $request->getQueryParams();
         $module    = $params['module'];
         $action    = $params['action'];
@@ -457,12 +453,13 @@ class ListController extends AbstractBaseController
     /**
      * Show a list of all note records.
      *
-     * @param Tree $tree
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function noteList(Tree $tree): ResponseInterface
+    public function noteList(ServerRequestInterface $request): ResponseInterface
     {
+        $tree  = $request->getAttribute('tree');
         $notes = $this->allNotes($tree);
 
         return $this->viewResponse('note-list-page', [
@@ -474,12 +471,13 @@ class ListController extends AbstractBaseController
     /**
      * Show a list of all repository records.
      *
-     * @param Tree $tree
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function repositoryList(Tree $tree): ResponseInterface
+    public function repositoryList(ServerRequestInterface $request): ResponseInterface
     {
+        $tree         = $request->getAttribute('tree');
         $repositories = $this->allRepositories($tree);
 
         return $this->viewResponse('repository-list-page', [
@@ -491,12 +489,13 @@ class ListController extends AbstractBaseController
     /**
      * Show a list of all source records.
      *
-     * @param Tree $tree
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function sourceList(Tree $tree): ResponseInterface
+    public function sourceList(ServerRequestInterface $request): ResponseInterface
     {
+        $tree    = $request->getAttribute('tree');
         $sources = $this->allSources($tree);
 
         return $this->viewResponse('source-list-page', [

@@ -46,13 +46,13 @@ class PendingChangesController extends AbstractBaseController
      * Accept all changes to a tree.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function acceptAllChanges(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function acceptAllChanges(ServerRequestInterface $request): ResponseInterface
     {
-        $url = $request->getQueryParams()['url'];
+        $tree = $request->getAttribute('tree');
+        $url  = $request->getQueryParams()['url'];
 
         $changes = DB::table('change')
             ->where('gedcom_id', '=', $tree->id())
@@ -86,16 +86,15 @@ class PendingChangesController extends AbstractBaseController
      * Accept a change (and all previous changes) to a single record.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function acceptChange(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function acceptChange(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $params = $request->getQueryParams();
-
-        $url       = $params['url'];
-        $xref      = $params['xref'];
+        $url    = $params['url'];
+        $xref   = $params['xref'];
         $change_id = $params['change_id'];
 
         $changes = DB::table('change')
@@ -132,14 +131,13 @@ class PendingChangesController extends AbstractBaseController
      * Accept all changes to a single record.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function acceptChanges(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function acceptChanges(ServerRequestInterface $request): ResponseInterface
     {
-        $xref = $request->getParsedBody()['xref'];
-
+        $tree   = $request->getAttribute('tree');
+        $xref   = $request->getParsedBody()['xref'];
         $record = GedcomRecord::getInstance($xref, $tree);
 
         Auth::checkRecordAccess($record, false);
@@ -162,13 +160,13 @@ class PendingChangesController extends AbstractBaseController
      * Reject all changes to a tree.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function rejectAllChanges(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function rejectAllChanges(ServerRequestInterface $request): ResponseInterface
     {
-        $url = $request->getQueryParams()['url'];
+        $tree = $request->getAttribute('tree');
+        $url  = $request->getQueryParams()['url'];
 
         DB::table('change')
             ->where('gedcom_id', '=', $tree->id())
@@ -185,12 +183,12 @@ class PendingChangesController extends AbstractBaseController
      * Reject a change (and all subsequent changes) to a single record.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function rejectChange(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function rejectChange(ServerRequestInterface $request): ResponseInterface
     {
+        $tree      = $request->getAttribute('tree');
         $params    = $request->getQueryParams();
         $url       = $params['url'];
         $xref      = $params['xref'];
@@ -214,12 +212,12 @@ class PendingChangesController extends AbstractBaseController
      * Accept all changes to a single record.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function rejectChanges(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function rejectChanges(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
         $xref = $request->getParsedBody()['xref'];
 
         $record = GedcomRecord::getInstance($xref, $tree);
@@ -244,12 +242,12 @@ class PendingChangesController extends AbstractBaseController
      * Show the pending changes for the current tree.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function showChanges(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function showChanges(ServerRequestInterface $request): ResponseInterface
     {
+        $tree        = $request->getAttribute('tree');
         $default_url = route('tree-page', ['ged' => $tree->name()]);
 
         $url = $request->getQueryParams()['url'] ?? $default_url;

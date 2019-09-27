@@ -18,12 +18,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Controllers\PlaceHierarchyController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Statistics;
-use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -68,17 +66,17 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function getListAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function getListAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        $user = $request->getAttribute('user');
+
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
       
-        $listController = new PlaceHierarchyController(app(Statistics::class));
-        return $listController->show($request, $tree, app(SearchService::class));
+        return app(PlaceHierarchyController::class)->show($request);
     }
 
     /**

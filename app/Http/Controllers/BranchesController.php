@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -92,14 +91,14 @@ class BranchesController extends AbstractBaseController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function list(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function list(ServerRequestInterface $request): ResponseInterface
     {
-        $params = $request->getQueryParams();
+        $tree        = $request->getAttribute('tree');
+        $user        = $request->getAttribute('user');
+        $params      = $request->getQueryParams();
         $surname     = $params['surname'];
         $soundex_std = (bool) ($params['soundex_std'] ?? false);
         $soundex_dm  = (bool) ($params['soundex_dm'] ?? false);

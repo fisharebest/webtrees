@@ -40,7 +40,6 @@ class TreeTest extends TestCase
     {
         $tree = Tree::create('tree-name', 'Tree title');
 
-        $this->assertSame(1, $tree->id());
         $this->assertSame('tree-name', $tree->name());
         $this->assertSame('Tree title', $tree->title());
     }

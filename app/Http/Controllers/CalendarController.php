@@ -63,12 +63,12 @@ class CalendarController extends AbstractBaseController
      * A form to request the page parameters.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function page(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function page(ServerRequestInterface $request): ResponseInterface
     {
+        $tree     = $request->getAttribute('tree');
         $cal      = $request->getQueryParams()['cal'] ?? '';
         $day      = $request->getQueryParams()['day'] ?? '';
         $month    = $request->getQueryParams()['month'] ?? '';
@@ -158,12 +158,12 @@ class CalendarController extends AbstractBaseController
      * Show anniveraries that occured on a given day/month/year.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function calendar(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function calendar(ServerRequestInterface $request): ResponseInterface
     {
+        $tree            = $request->getAttribute('tree');
         $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
 
         $cal      = $request->getQueryParams()['cal'] ?? '';

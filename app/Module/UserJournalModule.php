@@ -181,12 +181,13 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function postEditJournalAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function postEditJournalAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+
         if (!Auth::check()) {
             throw new AccessDeniedHttpException();
         }
@@ -223,12 +224,12 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function postDeleteJournalAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function postDeleteJournalAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree    = $request->getAttribute('tree');
         $news_id = $request->getQueryParams()['news_id'];
 
         DB::table('news')

@@ -196,13 +196,15 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     }
 
     /**
-     * @param Tree $tree
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function getAdminAction(Tree $tree): ResponseInterface
+    public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
+
+        $tree = $request->getAttribute('tree');
 
         $stories = DB::table('block')
             ->where('module_name', '=', $this->name())
@@ -228,14 +230,14 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function getAdminEditAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function getAdminEditAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
+        $tree     = $request->getAttribute('tree');
         $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
 
         if ($block_id === 0) {
@@ -273,12 +275,12 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function postAdminEditAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function postAdminEditAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree     = $request->getAttribute('tree');
         $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
 
         $params = $request->getParsedBody();
@@ -324,12 +326,12 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function postAdminDeleteAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function postAdminDeleteAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree     = $request->getAttribute('tree');
         $block_id = $request->getQueryParams()['block_id'];
 
         DB::table('block_setting')
@@ -350,12 +352,14 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     }
 
     /**
-     * @param Tree $tree
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function getShowListAction(Tree $tree): ResponseInterface
+    public function getShowListAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+
         $stories = DB::table('block')
             ->where('module_name', '=', $this->name())
             ->where('gedcom_id', '=', $tree->id())

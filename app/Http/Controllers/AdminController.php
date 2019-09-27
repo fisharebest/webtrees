@@ -47,12 +47,12 @@ class AdminController extends AbstractBaseController
      * Merge two genealogy records.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function mergeRecords(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function mergeRecords(ServerRequestInterface $request): ResponseInterface
     {
+        $tree  = $request->getAttribute('tree');
         $title = I18N::translate('Merge records') . ' — ' . e($tree->title());
 
         $params = $request->getQueryParams();
@@ -136,12 +136,12 @@ class AdminController extends AbstractBaseController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function mergeRecordsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function mergeRecordsAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree  = $request->getAttribute('tree');
         $xref1 = $request->getQueryParams()['xref1'];
         $xref2 = $request->getQueryParams()['xref2'];
         $keep1 = $request->getParsedBody()['keep1'] ?? [];
@@ -257,12 +257,13 @@ class AdminController extends AbstractBaseController
     }
 
     /**
-     * @param Tree $tree
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function treePrivacyEdit(Tree $tree): ResponseInterface
+    public function treePrivacyEdit(ServerRequestInterface $request): ResponseInterface
     {
+        $tree                 = $request->getAttribute('tree');
         $title                = e($tree->name()) . ' — ' . I18N::translate('Privacy');
         $all_tags             = $this->tagsForPrivacy($tree);
         $privacy_constants    = $this->privacyConstants();
@@ -279,12 +280,12 @@ class AdminController extends AbstractBaseController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function treePrivacyUpdate(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function treePrivacyUpdate(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $params = $request->getParsedBody();
 
         $delete_default_resn_id = $params['delete'] ?? [];

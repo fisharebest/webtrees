@@ -18,12 +18,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Http\Controllers\Admin\UsersController;
-use Fisharebest\Webtrees\Services\DatatablesService;
-use Fisharebest\Webtrees\Services\MailService;
-use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
-use Nyholm\Psr7\ServerRequest;
-use Psr\Http\Message\ServerRequestInterface;
+use function app;
 
 /**
  * Test the user administration pages
@@ -43,12 +39,10 @@ class UserAdminTest extends TestCase
         $admin        = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $request = self::createRequest('GET', [
-            'length' => '10',
-        ]);
+        $controller = app(UsersController::class);
+        $request    = self::createRequest('GET', ['length' => '10',])->withAttribute('user', $admin);
+        $response   = $controller->data($request);
 
-        $controller = new UsersController(new MailService(), new ModuleService(), new UserService());
-        $response   = $controller->data(new DatatablesService(), $request, $admin);
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
         $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
         $html = (string) $response->getBody();
@@ -72,12 +66,12 @@ class UserAdminTest extends TestCase
         $admin        = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $request = new ServerRequest('GET', '/');
-        $request = $request->withQueryParams(['search' => ['value' => 'admin']]);
-        app()->instance(ServerRequestInterface::class, $request);
+        $request = self::createRequest()
+            ->withQueryParams(['search' => ['value' => 'admin']])
+            ->withAttribute('user', $admin);
 
-        $controller = new UsersController(new MailService(), new ModuleService(), new UserService());
-        $response   = $controller->data(new DatatablesService(), $request, $admin);
+        $controller = app(UsersController::class);
+        $response   = $controller->data($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
         $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
@@ -102,12 +96,12 @@ class UserAdminTest extends TestCase
         $admin        = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $request = new ServerRequest('GET', '/');
-        $request = $request->withQueryParams(['length' => 1]);
-        app()->instance(ServerRequestInterface::class, $request);
+        $request = self::createRequest()
+            ->withQueryParams(['length' => 1])
+            ->withAttribute('user', $admin);
 
-        $controller = new UsersController(new MailService(), new ModuleService(), new UserService());
-        $response   = $controller->data(new DatatablesService(), $request, $admin);
+        $controller = app(UsersController::class);
+        $response   = $controller->data($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
         $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
@@ -125,15 +119,15 @@ class UserAdminTest extends TestCase
     public function testSortingUserAdminPage(): void
     {
         $user_service = new UserService();
-        $admin        = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
+
+        $admin = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $request = new ServerRequest('GET', '/');
-        $request = $request->withQueryParams(['column' => 2, 'dir' => 'asc']);
-        app()->instance(ServerRequestInterface::class, $request);
+        $request = self::createRequest()
+            ->withQueryParams(['column' => 2, 'dir' => 'asc'])
+            ->withAttribute('user', $admin);
 
-        $controller = new UsersController(new MailService(), new ModuleService(), new UserService());
-        $response   = $controller->data(new DatatablesService(), $request, $admin);
+        $response = app(UsersController::class)->data($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
         $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
@@ -143,12 +137,12 @@ class UserAdminTest extends TestCase
         $pos2 = strpos($html, 'UserName');
         $this->assertLessThan($pos2, $pos1);
 
-        $request = new ServerRequest('GET', '/');
-        $request = $request->withQueryParams(['order' => [['column' => 2, 'dir' => 'desc']]]);
-        app()->instance(ServerRequestInterface::class, $request);
+        $request = self::createRequest()
+            ->withQueryParams(['order' => [['column' => 2, 'dir' => 'desc']]])
+            ->withAttribute('user', $admin);
 
-        $controller = new UsersController(new MailService(), new ModuleService(), new UserService());
-        $response   = $controller->data(new DatatablesService(), $request, $admin);
+        $controller = app(UsersController::class);
+        $response   = $controller->data($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
         $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));

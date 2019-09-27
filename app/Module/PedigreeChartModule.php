@@ -18,13 +18,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
-use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -56,6 +54,18 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
     ];
 
     protected const DEFAULT_ORIENTATION = self::ORIENTATION_RIGHT;
+
+    /** @var ChartService */
+    private $chart_service;
+
+    /**
+     * PedigreeChartModule constructor.
+     *
+     * @param ChartService $chart_service
+     */
+    public function __construct(ChartService $chart_service) {
+        $this->chart_service = $chart_service;
+    }
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -118,14 +128,13 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      * A form to request the chart parameters.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
-     * @param ChartService           $chart_service
      *
      * @return ResponseInterface
      */
-    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user, ChartService $chart_service): ResponseInterface
+    public function getChartAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree       = $request->getAttribute('tree');
+        $user       = $request->getAttribute('user');
         $ajax       = $request->getQueryParams()['ajax'] ?? '';
         $xref       = $request->getQueryParams()['xref'] ?? '';
         $individual = Individual::getInstance($xref, $tree);
@@ -142,7 +151,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
         $generation_options = $this->generationOptions();
 
         if ($ajax === '1') {
-            return $this->chart($individual, $orientation, $generations, $chart_service);
+            return $this->chart($individual, $orientation, $generations, $this->chart_service);
         }
 
         $ajax_url = $this->chartUrl($individual, [

@@ -32,6 +32,7 @@ use Illuminate\Cache\Repository;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemInterface;
 use League\Flysystem\Memory\MemoryAdapter;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -47,6 +48,7 @@ use function define;
 use function defined;
 use function filesize;
 use function http_build_query;
+use function microtime;
 use const UPLOAD_ERR_OK;
 
 /**
@@ -54,11 +56,10 @@ use const UPLOAD_ERR_OK;
  */
 class TestCase extends \PHPUnit\Framework\TestCase implements StatusCodeInterface
 {
-    /** @var bool */
-    protected static $uses_database = false;
-
     /** @var object */
     public static $mock_functions;
+    /** @var bool */
+    protected static $uses_database = false;
 
     /**
      * Things to run once, before all the tests.
@@ -77,16 +78,11 @@ class TestCase extends \PHPUnit\Framework\TestCase implements StatusCodeInterfac
         // Use an array cache for database calls, etc.
         app()->instance('cache.array', new Repository(new ArrayStore()));
 
-        app()->bind(Tree::class, static function () {
-            return null;
-        });
-
         app()->instance(UserService::class, new UserService());
-        app()->instance(UserInterface::class, new GuestUser());
-        app()->instance(Filesystem::class, new Filesystem(new MemoryAdapter()));
-
-        app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);
+        app()->instance(FilesystemInterface::class, new Filesystem(new MemoryAdapter()));
         app()->bind(LocaleInterface::class, LocaleEnUs::class);
+        app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);
+        app()->bind(UserInterface::class, GuestUser::class);
 
         defined('WT_DATA_DIR') || define('WT_DATA_DIR', Webtrees::ROOT_DIR . 'data/');
         defined('WT_LOCALE') || define('WT_LOCALE', I18N::init('en-US', null, true));
@@ -123,6 +119,37 @@ class TestCase extends \PHPUnit\Framework\TestCase implements StatusCodeInterfac
 
         // Create config data
         $migration_service->seedDatabase();
+    }
+
+    /**
+     * Create a request and bind it into the container.
+     *
+     * @param string                  $method
+     * @param string[]                $query
+     * @param string[]                $params
+     * @param UploadedFileInterface[] $files
+     *
+     * @return ServerRequestInterface
+     */
+    protected static function createRequest(string $method = 'GET', array $query = [], array $params = [], array $files = []): ServerRequestInterface
+    {
+        /** @var ServerRequestFactoryInterface */
+        $server_request_factory = app(ServerRequestFactoryInterface::class);
+
+        $uri = 'https://webtrees.test/index.php?' . http_build_query($query);
+
+        /** @var ServerRequestInterface $request */
+        $request = $server_request_factory
+            ->createServerRequest($method, $uri)
+            ->withQueryParams($query)
+            ->withParsedBody($params)
+            ->withUploadedFiles($files)
+            ->withAttribute('base_url', 'https://webtrees.test')
+            ->withAttribute('client_ip', '127.0.0.1');
+
+        app()->instance(ServerRequestInterface::class, $request);
+
+        return $request;
     }
 
     /**
@@ -184,45 +211,18 @@ class TestCase extends \PHPUnit\Framework\TestCase implements StatusCodeInterfac
         $tree->importGedcomFile($stream, $gedcom_file);
 
         View::share('tree', $tree);
-        $gedcom_file_controller = new GedcomFileController();
+
+        $timeout_service = new TimeoutService(microtime(true));
+        $controller      = new GedcomFileController($timeout_service);
+        $request         = self::createRequest()->withAttribute('tree', $tree);
 
         do {
-            $gedcom_file_controller->import(new TimeoutService(microtime(true)), $tree);
+            $controller->import($request);
 
             $imported = $tree->getPreference('imported');
         } while (!$imported);
 
         return $tree;
-    }
-
-    /**
-     * Create a request and bind it into the container.
-     *
-     * @param string                  $method
-     * @param string[]                $query
-     * @param string[]                $params
-     * @param UploadedFileInterface[] $files
-     *
-     * @return ServerRequestInterface
-     */
-    protected static function createRequest(string $method = 'GET', array $query = [], array $params = [], array $files = []): ServerRequestInterface
-    {
-        /** @var ServerRequestFactoryInterface */
-        $server_request_factory = app(ServerRequestFactoryInterface::class);
-
-        $uri = 'http://localhost/index.php?' . http_build_query($query);
-
-        /** @var ServerRequestInterface $request */
-        $request =  $server_request_factory
-            ->createServerRequest($method, $uri)
-            ->withQueryParams($query)
-            ->withParsedBody($params)
-            ->withUploadedFiles($files)
-            ->withAttribute('client_ip', '127.0.0.1');
-
-        app()->instance(ServerRequestInterface::class, $request);
-
-        return $request;
     }
 
     /**
@@ -237,16 +237,13 @@ class TestCase extends \PHPUnit\Framework\TestCase implements StatusCodeInterfac
     {
         /** @var StreamFactoryInterface */
         $stream_factory = app(StreamFactoryInterface::class);
-        
+
         /** @var UploadedFileFactoryInterface */
         $uploaded_file_factory = app(UploadedFileFactoryInterface::class);
 
-        $stream = $stream_factory->createStreamFromFile($filename);
-
-        $size = filesize($filename);
-        
-        $status = UPLOAD_ERR_OK;
-        
+        $stream      = $stream_factory->createStreamFromFile($filename);
+        $size        = filesize($filename);
+        $status      = UPLOAD_ERR_OK;
         $client_name = basename($filename);
 
         return $uploaded_file_factory->createUploadedFile($stream, $size, $status, $client_name, $mime_type);

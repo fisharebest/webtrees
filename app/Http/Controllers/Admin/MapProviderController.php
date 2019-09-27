@@ -28,9 +28,11 @@ use Psr\Http\Message\ServerRequestInterface;
 class MapProviderController extends AbstractAdminController
 {
     /**
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function mapProviderEdit(): ResponseInterface
+    public function mapProviderEdit(ServerRequestInterface $request): ResponseInterface
     {
         return $this->viewResponse('admin/map-provider', [
             'title'    => I18N::translate('Map provider'),

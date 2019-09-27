@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -153,13 +152,13 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function postAddFavoriteAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function postAddFavoriteAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
+        $user   = $request->getAttribute('user');
         $params = $request->getParsedBody();
 
         $note  = $params['note'];
@@ -187,13 +186,13 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function postDeleteFavoriteAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function postDeleteFavoriteAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree        = $request->getAttribute('tree');
+        $user        = $request->getAttribute('user');
         $favorite_id = $request->getQueryParams()['favorite_id'];
 
         if (Auth::isManager($tree, $user)) {

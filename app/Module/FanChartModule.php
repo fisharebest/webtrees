@@ -18,12 +18,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -50,6 +48,18 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
     private const DEFAULT_STYLE       = self::STYLE_THREE_QUARTER_CIRCLE;
     private const DEFAULT_GENERATIONS = 4;
     private const DEFAULT_WIDTH       = 100;
+
+    /** @var ChartService */
+    private $chart_service;
+
+    /**
+     * FanChartModule constructor.
+     *
+     * @param ChartService $chart_service
+     */
+    public function __construct(ChartService $chart_service) {
+        $this->chart_service = $chart_service;
+    }
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -112,14 +122,13 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
      * A form to request the chart parameters.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
-     * @param ChartService           $chart_service
      *
      * @return ResponseInterface
      */
-    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user, ChartService $chart_service): ResponseInterface
+    public function getChartAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree       = $request->getAttribute('tree');
+        $user       = $request->getAttribute('user');
         $ajax       = $request->getQueryParams()['ajax'] ?? '';
         $xref       = $request->getQueryParams()['xref'] ?? '';
         $individual = Individual::getInstance($xref, $tree);
@@ -138,7 +147,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
         $generations = max($generations, self::MINIMUM_GENERATIONS);
 
         if ($ajax === '1') {
-            return $this->chart($individual, $chart_style, $fan_width, $generations, $chart_service);
+            return $this->chart($individual, $chart_style, $fan_width, $generations, $this->chart_service);
         }
 
         $ajax_url = $this->chartUrl($individual, [

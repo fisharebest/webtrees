@@ -36,9 +36,11 @@ class MediaControllerTest extends TestCase
      */
     public function testIndex(): void
     {
-        $controller = new MediaController();
-        $request    = self::createRequest('GET', ['route' => 'admin-media']);
-        $response   = $controller->index($request);
+        $datatables_service = new DatatablesService();
+        $filesystem         = new Filesystem(new MemoryAdapter());
+        $controller         = new MediaController($datatables_service, $filesystem);
+        $request            = self::createRequest('GET', ['route' => 'admin-media']);
+        $response           = $controller->index($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -48,8 +50,10 @@ class MediaControllerTest extends TestCase
      */
     public function testDataLocal(): void
     {
-        $controller = new MediaController();
-        $request    = self::createRequest('GET', [
+        $datatables_service = new DatatablesService();
+        $filesystem         = new Filesystem(new MemoryAdapter());
+        $controller         = new MediaController($datatables_service, $filesystem);
+        $request            = self::createRequest('GET', [
             'route'        => 'admin-media-data',
             'files'        => 'local',
             'media_folder' => '',
@@ -58,7 +62,7 @@ class MediaControllerTest extends TestCase
             'start'        => '0',
             'length'       => '10',
         ]);
-        $response   = $controller->data($request, new DatatablesService());
+        $response           = $controller->data($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -68,8 +72,10 @@ class MediaControllerTest extends TestCase
      */
     public function testDataExternal(): void
     {
-        $controller = new MediaController();
-        $request    = self::createRequest('GET', [
+        $datatables_service = new DatatablesService();
+        $filesystem         = new Filesystem(new MemoryAdapter());
+        $controller         = new MediaController($datatables_service, $filesystem);
+        $request            = self::createRequest('GET', [
             'route'        => 'admin-media-external',
             'files'        => 'local',
             'media_folder' => '',
@@ -78,7 +84,7 @@ class MediaControllerTest extends TestCase
             'start'        => '0',
             'length'       => '10',
         ]);
-        $response   = $controller->data($request, new DatatablesService());
+        $response           = $controller->data($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -88,8 +94,10 @@ class MediaControllerTest extends TestCase
      */
     public function testDataUnused(): void
     {
-        $controller = new MediaController();
-        $request    = self::createRequest('GET', [
+        $datatables_service = new DatatablesService();
+        $filesystem         = new Filesystem(new MemoryAdapter());
+        $controller         = new MediaController($datatables_service, $filesystem);
+        $request            = self::createRequest('GET', [
             'route'        => 'admin-media-unused',
             'files'        => 'local',
             'media_folder' => '',
@@ -98,7 +106,7 @@ class MediaControllerTest extends TestCase
             'start'        => '0',
             'length'       => '10',
         ]);
-        $response   = $controller->data($request, new DatatablesService());
+        $response           = $controller->data($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -108,10 +116,11 @@ class MediaControllerTest extends TestCase
      */
     public function testDelete(): void
     {
-        $controller = new MediaController();
-        $filesystem = new Filesystem(new MemoryAdapter());
-        $request    = self::createRequest('POST', ['route' => 'admin-media-delete', 'file' => 'foo', 'folder' => 'bar']);
-        $response   = $controller->delete($request, $filesystem);
+        $datatables_service = new DatatablesService();
+        $filesystem         = new Filesystem(new MemoryAdapter());
+        $controller         = new MediaController($datatables_service, $filesystem);
+        $request            = self::createRequest('POST', ['route' => 'admin-media-delete', 'file' => 'foo', 'folder' => 'bar']);
+        $response           = $controller->delete($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -121,9 +130,11 @@ class MediaControllerTest extends TestCase
      */
     public function testUpload(): void
     {
-        $controller = new MediaController();
-        self::createRequest('GET', ['route' => 'admin-media-upload']);
-        $response = $controller->upload();
+        $datatables_service = new DatatablesService();
+        $filesystem         = new Filesystem(new MemoryAdapter());
+        $controller         = new MediaController($datatables_service, $filesystem);
+        $request            = self::createRequest('GET', ['route' => 'admin-media-upload']);
+        $response           = $controller->upload($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -133,10 +144,11 @@ class MediaControllerTest extends TestCase
      */
     public function testUploadAction(): void
     {
-        $controller = new MediaController();
-        $filesystem = new Filesystem(new MemoryAdapter());
-        $request    = self::createRequest('POST', ['route' => 'admin-media-delete']);
-        $response   = $controller->uploadAction($request, $filesystem);
+        $datatables_service = new DatatablesService();
+        $filesystem         = new Filesystem(new MemoryAdapter());
+        $controller         = new MediaController($datatables_service, $filesystem);
+        $request            = self::createRequest('POST', ['route' => 'admin-media-delete']);
+        $response           = $controller->uploadAction($request);
 
         $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }

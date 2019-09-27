@@ -66,6 +66,18 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
         // Light green
     ];
 
+    /** @var ChartService */
+    private $chart_service;
+
+    /**
+     * PedigreeMapModule constructor.
+     *
+     * @param ChartService $chart_service
+     */
+    public function __construct(ChartService $chart_service) {
+        $this->chart_service = $chart_service;
+    }
+
     /**
      * How should this module be identified in the control panel, etc.?
      *
@@ -143,18 +155,17 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param ChartService           $chart_service
      *
      * @return ResponseInterface
      */
-    public function getMapDataAction(ServerRequestInterface $request, Tree $tree, ChartService $chart_service): ResponseInterface
+    public function getMapDataAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree        = $request->getAttribute('tree');
         $xref        = $request->getQueryParams()['reference'];
         $indi        = Individual::getInstance($xref, $tree);
         $color_count = count(self::LINE_COLORS);
 
-        $facts = $this->getPedigreeMapFacts($request, $tree, $chart_service);
+        $facts = $this->getPedigreeMapFacts($request, $this->chart_service);
 
         $geojson = [
             'type'     => 'FeatureCollection',
@@ -223,13 +234,13 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      * @param ChartService           $chart_service
      *
      * @return array
      */
-    private function getPedigreeMapFacts(ServerRequestInterface $request, Tree $tree, ChartService $chart_service): array
+    private function getPedigreeMapFacts(ServerRequestInterface $request, ChartService $chart_service): array
     {
+        $tree        = $request->getAttribute('tree');
         $xref        = $request->getQueryParams()['reference'];
         $individual  = Individual::getInstance($xref, $tree);
         $generations = (int) $request->getQueryParams()['generations'];
@@ -294,12 +305,12 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree    $tree
      *
      * @return object
      */
-    public function getPedigreeMapAction(ServerRequestInterface $request, Tree $tree)
+    public function getPedigreeMapAction(ServerRequestInterface $request)
     {
+        $tree        = $request->getAttribute('tree');
         $xref        = $request->getQueryParams()['xref'];
         $individual  = Individual::getInstance($xref, $tree);
         $generations = $request->getQueryParams()['generations'] ?? self::DEFAULT_GENERATIONS;

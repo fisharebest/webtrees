@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Services\ClipboardService;
-use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -31,23 +30,35 @@ use stdClass;
  */
 class FamilyController extends AbstractBaseController
 {
+    /** @var ClipboardService */
+    private $clipboard_service;
+
+    /**
+     * FamilyController constructor.
+     *
+     * @param ClipboardService $clipboard_service
+     */
+    public function __construct(ClipboardService $clipboard_service)
+    {
+        $this->clipboard_service = $clipboard_service;
+    }
+
     /**
      * Show a family's page.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param ClipboardService       $clipboard_service
      *
      * @return ResponseInterface
      */
-    public function show(ServerRequestInterface $request, Tree $tree, ClipboardService $clipboard_service): ResponseInterface
+    public function show(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $xref   = $request->getQueryParams()['xref'];
         $family = Family::getInstance($xref, $tree);
 
         Auth::checkFamilyAccess($family, false);
 
-        $clipboard_facts = $clipboard_service->pastableFacts($family, new Collection());
+        $clipboard_facts = $this->clipboard_service->pastableFacts($family, new Collection());
 
         return $this->viewResponse('family-page', [
             'facts'           => $family->facts([], true),

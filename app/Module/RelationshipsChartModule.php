@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees\Module;
 use Closure;
 use Fisharebest\Algorithm\Dijkstra;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
@@ -124,9 +123,11 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     }
 
     /**
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function getAdminAction(): ResponseInterface
+    public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -193,13 +194,13 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      * A form to request the chart parameters.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function getChartAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        $user = $request->getAttribute('user');
         $ajax = $request->getQueryParams()['ajax'] ?? '';
 
         $xref  = $request->getQueryParams()['xref'] ?? '';

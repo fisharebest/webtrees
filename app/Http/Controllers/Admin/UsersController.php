@@ -40,6 +40,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use function e;
+use function route;
 
 /**
  * Controller for user administration.
@@ -48,33 +50,32 @@ class UsersController extends AbstractAdminController
 {
     private const SECONDS_PER_DAY = 24 * 60 * 60;
 
-    /**
-     * @var MailService
-     */
+    /** @var DatatablesService */
+    private $datatables_service;
+
+    /** @var MailService */
     private $mail_service;
 
-    /**
-     * @var ModuleService
-     */
+    /** @var ModuleService */
     private $module_service;
 
-    /**
-     * @var UserService
-     */
+    /** @var UserService */
     private $user_service;
 
     /**
      * UsersController constructor.
      *
-     * @param MailService   $mail_service
-     * @param ModuleService $module_service
-     * @param UserService   $user_service
+     * @param DatatablesService $datatables_service
+     * @param MailService       $mail_service
+     * @param ModuleService     $module_service
+     * @param UserService       $user_service
      */
-    public function __construct(MailService $mail_service, ModuleService $module_service, UserService $user_service)
+    public function __construct(DatatablesService $datatables_service, MailService $mail_service, ModuleService $module_service, UserService $user_service)
     {
-        $this->mail_service   = $mail_service;
-        $this->module_service = $module_service;
-        $this->user_service   = $user_service;
+        $this->datatables_service = $datatables_service;
+        $this->mail_service       = $mail_service;
+        $this->module_service     = $module_service;
+        $this->user_service       = $user_service;
     }
 
     /**
@@ -147,12 +148,13 @@ class UsersController extends AbstractAdminController
 
     /**
      * @param ServerRequestInterface $request
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function index(ServerRequestInterface $request, UserInterface $user): ResponseInterface
+    public function index(ServerRequestInterface $request): ResponseInterface
     {
+        $user = $request->getAttribute('user');
+
         $filter = $request->getQueryParams()['filter'] ?? '';
 
         $all_users = $this->user_service->all();
@@ -170,14 +172,14 @@ class UsersController extends AbstractAdminController
     }
 
     /**
-     * @param DatatablesService      $datatables_service
      * @param ServerRequestInterface $request
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function data(DatatablesService $datatables_service, ServerRequestInterface $request, UserInterface $user): ResponseInterface
+    public function data(ServerRequestInterface $request): ResponseInterface
     {
+        $user = $request->getAttribute('user');
+
         $installed_languages = [];
         foreach (I18N::installedLocales() as $installed_locale) {
             $installed_languages[$installed_locale->languageTag()] = $installed_locale->endonym();
@@ -230,18 +232,14 @@ class UsersController extends AbstractAdminController
 
         $callback = static function (stdClass $row) use ($installed_languages, $user): array {
             if ($row->user_id !== $user->id()) {
-                $admin_options = '<div class="dropdown-item"><a href="#" onclick="return masquerade(' . $row->user_id . ')">' . view('icons/user') . ' ' . I18N::translate('Masquerade as this user') . '</a></div>' . '<div class="dropdown-item"><a href="#" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($row->user_name)) . '" onclick="delete_user(this.dataset.confirm, ' . $row->user_id . ');">' . view('icons/delete') . ' ' . I18N::translate('Delete') . '</a></div>';
+                $admin_options = '<div class="dropdown-item"><a href="#" onclick="return masquerade(' . $row->user_id . ')">' . view('icons/user') . ' ' . I18N::translate('Masquerade as this user') . '</a></div>' . '<div class="dropdown-item"><a href="#" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($row->user_name)) . '" onclick="delete_user(this.dataset.confirm, ' . $row->user_id . ')">' . view('icons/delete') . ' ' . I18N::translate('Delete') . '</a></div>';
             } else {
                 // Do not delete ourself!
                 $admin_options = '';
             }
 
             // Link to send email to other users.
-            if ($row->user_id != $user->id()) {
-                $row->email = '<a href="' . e(route('message', ['to' => $row->user_name])) . '">' . e($row->email) . '</a>';
-            } else {
-                $row->email = e($row->email);
-            }
+            $row->email = '<a href="' . e(route('message', ['to' => $row->user_name])) . '">' . e($row->email) . '</a>';
 
             $datum = [
                 '<div class="dropdown"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="edit-user-button-' . $row->user_id . '" aria-haspopup="true" aria-expanded="false">' . view('icons/edit') . ' <span class="caret"></span></button><div class="dropdown-menu" aria-labelledby="edit-user-button-' . $row->user_id . '"><div class="dropdown-item"><a href="' . e(route('admin-users-edit', ['user_id' => $row->user_id])) . '">' . view('icons/edit') . ' ' . I18N::translate('Edit') . '</a></div><div class="divider"></div><div class="dropdown-item"><a href="' . e(route('user-page-user-edit', ['user_id' => $row->user_id])) . '">' . view('icons/block') . ' ' . I18N::translate('Change the blocks on this user’s “My page”') . '</a></div>' . $admin_options . '</div></div>',
@@ -266,7 +264,7 @@ class UsersController extends AbstractAdminController
             return $datum;
         };
 
-        return $datatables_service->handle($request, $query, $search_columns, $sort_columns, $callback);
+        return $this->datatables_service->handle($request, $query, $search_columns, $sort_columns, $callback);
     }
 
     /**
@@ -366,12 +364,13 @@ class UsersController extends AbstractAdminController
 
     /**
      * @param ServerRequestInterface $request
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function update(ServerRequestInterface $request, UserInterface $user): ResponseInterface
+    public function update(ServerRequestInterface $request): ResponseInterface
     {
+        $user = $request->getAttribute('user');
+
         $user_id        = (int) $request->getParsedBody()['user_id'];
         $username       = $request->getParsedBody()['username'];
         $real_name      = $request->getParsedBody()['real_name'];

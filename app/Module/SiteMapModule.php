@@ -68,9 +68,11 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
     }
 
     /**
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function getAdminAction(): ResponseInterface
+    public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -124,9 +126,11 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
     }
 
     /**
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function getIndexAction(): ResponseInterface
+    public function getIndexAction(ServerRequestInterface $request): ResponseInterface
     {
         $timestamp = (int) $this->getPreference('sitemap.timestamp');
 

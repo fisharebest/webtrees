@@ -65,14 +65,13 @@ class MessageController extends AbstractBaseController
      * A form to compose a message from a member.
      *
      * @param ServerRequestInterface $request
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function broadcastPage(ServerRequestInterface $request, UserInterface $user): ResponseInterface
+    public function broadcastPage(ServerRequestInterface $request): ResponseInterface
     {
+        $user    = $request->getAttribute('user');
         $referer = $request->getHeaderLine('referer');
-
         $params  = $request->getQueryParams();
         $body    = $params['body'] ?? '';
         $subject = $params['subject'] ?? '';
@@ -103,13 +102,13 @@ class MessageController extends AbstractBaseController
      * Send a message.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function broadcastAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function broadcastAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree    = $request->getAttribute('tree');
+        $user    = $request->getAttribute('user');
         $params  = $request->getParsedBody();
         $body    = $params['body'];
         $subject = $params['subject'];
@@ -150,12 +149,12 @@ class MessageController extends AbstractBaseController
      * A form to compose a message from a visitor.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function contactPage(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function contactPage(ServerRequestInterface $request): ResponseInterface
     {
+        $tree       = $request->getAttribute('tree');
         $referer    = $request->getHeaderLine('referer');
         $params     = $request->getQueryParams();
         $body       = $params['body'] ?? '';
@@ -191,12 +190,12 @@ class MessageController extends AbstractBaseController
      * Send a message.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function contactAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function contactAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree       = $request->getAttribute('tree');
         $params     = $request->getParsedBody();
         $body       = $params['body'];
         $from_email = $params['from_email'];
@@ -270,12 +269,12 @@ class MessageController extends AbstractBaseController
      * A form to compose a message from a member.
      *
      * @param ServerRequestInterface $request
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function messagePage(ServerRequestInterface $request, UserInterface $user): ResponseInterface
+    public function messagePage(ServerRequestInterface $request): ResponseInterface
     {
+        $user    = $request->getAttribute('user');
         $referer = $request->getHeaderLine('referer');
         $params  = $request->getQueryParams();
         $body    = $params['body'] ?? '';
@@ -304,13 +303,13 @@ class MessageController extends AbstractBaseController
      * Send a message.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function messageAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function messageAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree    = $request->getAttribute('tree');
+        $user    = $request->getAttribute('user');
         $params  = $request->getParsedBody();
         $body    = $params['body'];
         $subject = $params['subject'];

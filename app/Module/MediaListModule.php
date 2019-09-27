@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Controllers\ListController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\IndividualListService;
@@ -69,17 +68,18 @@ class MediaListModule extends AbstractModule implements ModuleListInterface
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function getListAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function getListAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        $user = $request->getAttribute('user');
+
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
       
         $listController = new ListController(app(IndividualListService::class), app(LocalizationService::class));
-        return $listController->mediaList($request, $tree);
+        return $listController->mediaList($request);
     }
 
     /**

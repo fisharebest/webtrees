@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
@@ -34,19 +33,14 @@ use function response;
  */
 class MasqueradeAsUser implements RequestHandlerInterface, StatusCodeInterface
 {
-    /** @var UserInterface */
-    private $user;
-
     /** @var UserService */
     private $user_service;
 
     /**
-     * @param UserInterface $user
-     * @param UserService   $user_service
+     * @param UserService $user_service
      */
-    public function __construct(UserInterface $user, UserService $user_service)
+    public function __construct(UserService $user_service)
     {
-        $this->user         = $user;
         $this->user_service = $user_service;
     }
 
@@ -65,7 +59,7 @@ class MasqueradeAsUser implements RequestHandlerInterface, StatusCodeInterface
             throw new NotFoundHttpException('User ID ' . $user_id . ' not found');
         }
 
-        if ($this->user->id() !== $user_id) {
+        if ($request->getAttribute('user')->id() !== $user_id) {
             Log::addAuthenticationLog('Masquerade as user: ' . $user->userName());
             Auth::login($user);
             Session::put('masquerade', '1');

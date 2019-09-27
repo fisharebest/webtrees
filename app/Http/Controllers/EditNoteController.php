@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Note;
-use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -32,9 +31,11 @@ class EditNoteController extends AbstractEditController
     /**
      * Show a form to create a new note object.
      *
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function createNoteObject(): ResponseInterface
+    public function createNoteObject(ServerRequestInterface $request): ResponseInterface
     {
         return response(view('modals/create-note-object'));
     }
@@ -43,12 +44,12 @@ class EditNoteController extends AbstractEditController
      * Show a form to create a new note object.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function editNoteObject(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function editNoteObject(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
         $xref = $request->getQueryParams()['xref'];
 
         $note = Note::getInstance($xref, $tree);
@@ -66,12 +67,12 @@ class EditNoteController extends AbstractEditController
      * Show a form to create a new note object.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function updateNoteObject(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function updateNoteObject(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
         $xref = $request->getQueryParams()['xref'];
 
         $note = Note::getInstance($xref, $tree);
@@ -104,12 +105,12 @@ class EditNoteController extends AbstractEditController
      * Process a form to create a new note object.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function createNoteObjectAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function createNoteObjectAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree                = $request->getAttribute('tree');
         $params              = $request->getParsedBody();
         $note                = $params['note'];
         $privacy_restriction = $params['privacy-restriction'];

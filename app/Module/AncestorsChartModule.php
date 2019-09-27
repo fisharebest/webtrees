@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -48,6 +47,18 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
     // Limits
     protected const MINIMUM_GENERATIONS = 2;
     protected const MAXIMUM_GENERATIONS = 10;
+
+    /** @var ChartService */
+    private $chart_service;
+
+    /**
+     * CompactTreeChartModule constructor.
+     *
+     * @param ChartService $chart_service
+     */
+    public function __construct(ChartService $chart_service) {
+        $this->chart_service = $chart_service;
+    }
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -110,14 +121,13 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
      * A form to request the chart parameters.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
-     * @param ChartService           $chart_service
      *
      * @return ResponseInterface
      */
-    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user, ChartService $chart_service): ResponseInterface
+    public function getChartAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree       = $request->getAttribute('tree');
+        $user       = $request->getAttribute('user');
         $ajax       = $request->getQueryParams()['ajax'] ?? '';
         $xref       = $request->getQueryParams()['xref'] ?? '';
         $individual = Individual::getInstance($xref, $tree);
@@ -132,7 +142,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
         $generations = max($generations, self::MINIMUM_GENERATIONS);
 
         if ($ajax === '1') {
-            $ancestors = $chart_service->sosaStradonitzAncestors($individual, $generations);
+            $ancestors = $this->chart_service->sosaStradonitzAncestors($individual, $generations);
 
             switch ($chart_style) {
                 default:

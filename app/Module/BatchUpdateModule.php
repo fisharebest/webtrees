@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use function array_key_exists;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -73,13 +72,14 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      * Main entry point
      *
      * @param ServerRequestInterface $request
-     * @param UserInterface          $user
-     * @param Tree|null              $tree
      *
      * @return ResponseInterface
      */
-    public function getAdminAction(ServerRequestInterface $request, UserInterface $user, Tree $tree = null): ResponseInterface
+    public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        $user = $request->getAttribute('user');
+
         // We need a tree to work with.
         if ($tree === null) {
             throw new NotFoundHttpException();
@@ -321,13 +321,14 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      * Perform an update
      *
      * @param ServerRequestInterface $request
-     * @param UserInterface          $user
-     * @param Tree|null              $tree
      *
      * @return ResponseInterface
      */
-    public function postAdminAction(ServerRequestInterface $request, UserInterface $user, Tree $tree = null): ResponseInterface
+    public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        $user = $request->getAttribute('user');
+
         // We need a tree to work with.
         if ($tree === null) {
             throw new NotFoundHttpException();

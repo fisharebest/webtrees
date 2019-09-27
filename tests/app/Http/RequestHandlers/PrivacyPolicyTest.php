@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 
 /**
@@ -28,11 +27,10 @@ class PrivacyPolicyTest extends TestCase
     /**
      * @return void
      */
-    public function testDeleteUser(): void
+    public function testHandler(): void
     {
-        $handler      = new PrivacyPolicy();
         $request      = self::createRequest('POST', ['route' => 'privacy-policy']);
-        $response     = $handler->handle($request);
+        $response     = app(PrivacyPolicy::class)->handle($request);
 
         self::assertSame(self::STATUS_OK, $response->getStatusCode());
     }

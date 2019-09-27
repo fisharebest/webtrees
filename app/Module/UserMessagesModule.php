@@ -79,12 +79,12 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
      * Delete one or messages belonging to a user.
      *
      * @param ServerRequestInterface $request
-     * @param Tree $tree
      *
      * @return ResponseInterface
      */
-    public function postDeleteMessageAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function postDeleteMessageAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree        = $request->getAttribute('tree');
         $message_ids = $request->getParsedBody()['message_id'] ?? [];
 
         DB::table('message')

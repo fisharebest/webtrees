@@ -56,9 +56,11 @@ interface ModuleAnalyticsInterface extends ModuleInterface
     public function analyticsSnippet(array $parameters): string;
 
     /**
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function getAdminAction(): ResponseInterface;
+    public function getAdminAction(ServerRequestInterface $request): ResponseInterface;
 
     /**
      * @param ServerRequestInterface $request

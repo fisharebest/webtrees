@@ -42,18 +42,22 @@ class UseSession implements MiddlewareInterface
         // Sessions
         Session::start($request);
 
+        $user = Auth::user();
+
         // Update the last-login time no more than once a minute.
         $next_session_update = Carbon::createFromTimestamp((int) Session::get('session_time_updates'))->addMinute();
         if ($next_session_update < Carbon::now()) {
             $timestamp_now = Carbon::now()->unix();
 
             if (Session::get('masquerade') === null) {
-                Auth::user()->setPreference('sessiontime', (string) $timestamp_now);
+                $user->setPreference('sessiontime', (string) $timestamp_now);
             }
             Session::put('session_time_updates', $timestamp_now);
         }
 
-        app()->instance(UserInterface::class, Auth::user());
+        app()->instance(UserInterface::class, $user);
+
+        $request = $request->withAttribute('user', $user);
 
         return $handler->handle($request);
     }

@@ -102,14 +102,15 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     }
 
     /**
-     * @param Tree $tree
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function getAdminAction(Tree $tree): ResponseInterface
+    public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
+        $tree = $request->getAttribute('tree');
         $faqs = $this->faqsForTree($tree);
 
         $min_block_order = DB::table('block')
@@ -144,12 +145,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function postAdminDeleteAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function postAdminDeleteAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree     = $request->getAttribute('tree');
         $block_id = (int) $request->getQueryParams()['block_id'];
 
         DB::table('block_setting')->where('block_id', '=', $block_id)->delete();
@@ -167,12 +168,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function postAdminMoveDownAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function postAdminMoveDownAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree     = $request->getAttribute('tree');
         $block_id = (int) $request->getQueryParams()['block_id'];
 
         $block_order = DB::table('block')
@@ -216,12 +217,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function postAdminMoveUpAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function postAdminMoveUpAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree     = $request->getAttribute('tree');
         $block_id = (int) $request->getQueryParams()['block_id'];
 
         $block_order = DB::table('block')
@@ -265,14 +266,14 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function getAdminEditAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function getAdminEditAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
+        $tree     = $request->getAttribute('tree');
         $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
 
         if ($block_id === 0) {
@@ -317,12 +318,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function postAdminEditAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function postAdminEditAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree     = $request->getAttribute('tree');
         $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
 
         $params = $request->getParsedBody();
@@ -367,12 +368,14 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     }
 
     /**
-     * @param Tree $tree
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function getShowAction(Tree $tree): ResponseInterface
+    public function getShowAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+
         // Filter foreign languages.
         $faqs = $this->faqsForTree($tree)
             ->filter(static function (stdClass $faq): bool {

@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use function addcslashes;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
@@ -31,7 +30,6 @@ use Fisharebest\Webtrees\Report\ReportParserSetup;
 use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Source;
-use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use function response;
@@ -60,13 +58,14 @@ class ReportEngineController extends AbstractBaseController
     /**
      * A list of available reports.
      *
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function reportList(Tree $tree, UserInterface $user): ResponseInterface
+    public function reportList(ServerRequestInterface $request): ResponseInterface
     {
+        $tree  = $request->getAttribute('tree');
+        $user  = $request->getAttribute('user');
         $title = I18N::translate('Choose a report to run');
 
         return $this->viewResponse('report-select-page', [
@@ -79,20 +78,19 @@ class ReportEngineController extends AbstractBaseController
      * Fetch the options/parameters for a report.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function reportSetup(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function reportSetup(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $params = $request->getQueryParams();
         $pid    = $params['xref'] ?? '';
         $report = $params['report'] ?? '';
         $module = $this->module_service->findByName($report);
 
         if (!$module instanceof ModuleReportInterface) {
-            return $this->reportList($tree, $user);
+            return $this->reportList($request);
         }
 
         $xml_filename = $module->resourcesFolder() . $module->xmlFilename();
@@ -212,12 +210,12 @@ class ReportEngineController extends AbstractBaseController
      * Generate a report.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function reportRun(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function reportRun(ServerRequestInterface $request): ResponseInterface
     {
+        $tree     = $request->getAttribute('tree');
         $params   = $request->getQueryParams();
         $report   = $params['report'];
         $output   = $params['output'];

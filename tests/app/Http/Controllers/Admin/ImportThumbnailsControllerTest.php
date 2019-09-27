@@ -34,8 +34,8 @@ class ImportThumbnailsControllerTest extends TestCase
     public function testWebtrees1Thumbnails(): void
     {
         $controller = new ImportThumbnailsController();
-        self::createRequest('GET', ['route' => 'admin-webtrees1-thumbs']);
-        $response = $controller->webtrees1Thumbnails();
+        $request    = self::createRequest('GET', ['route' => 'admin-webtrees1-thumbs']);
+        $response   = $controller->webtrees1Thumbnails($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }

@@ -42,15 +42,36 @@ use function preg_replace_callback;
  */
 class ChangesLogController extends AbstractAdminController
 {
+    /** @var DatatablesService */
+    private $datatables_service;
+
+    /** @var MyersDiff */
+    private $myers_diff;
+
+    /** @var UserService */
+    private $user_service;
+
+    /**
+     * ChangesLogController constructor.
+     *
+     * @param DatatablesService $datatables_service
+     * @param MyersDiff         $myers_diff
+     * @param UserService       $user_service
+     */
+    public function __construct(DatatablesService $datatables_service, MyersDiff $myers_diff, UserService $user_service) {
+        $this->datatables_service = $datatables_service;
+        $this->myers_diff         = $myers_diff;
+        $this->user_service       = $user_service;
+    }
+
     /**
      * Show the edit history for a tree.
      *
      * @param ServerRequestInterface $request
-     * @param UserService            $user_service
      *
      * @return ResponseInterface
      */
-    public function changesLog(ServerRequestInterface $request, UserService $user_service): ResponseInterface
+    public function changesLog(ServerRequestInterface $request): ResponseInterface
     {
         $tree_list = [];
         foreach (Tree::getAll() as $tree) {
@@ -60,7 +81,7 @@ class ChangesLogController extends AbstractAdminController
         }
 
         $user_list = ['' => ''];
-        foreach ($user_service->all() as $tmp_user) {
+        foreach ($this->user_service->all() as $tmp_user) {
             $user_list[$tmp_user->userName()] = $tmp_user->userName();
         }
 
@@ -130,20 +151,18 @@ class ChangesLogController extends AbstractAdminController
      * Show the edit history for a tree.
      *
      * @param ServerRequestInterface $request
-     * @param DatatablesService      $datatables_service
-     * @param MyersDiff              $myers_diff
      *
      * @return ResponseInterface
      */
-    public function changesLogData(ServerRequestInterface $request, DatatablesService $datatables_service, MyersDiff $myers_diff): ResponseInterface
+    public function changesLogData(ServerRequestInterface $request): ResponseInterface
     {
         $query = $this->changesQuery($request);
 
-        $callback = static function (stdClass $row) use ($myers_diff): array {
+        $callback = function (stdClass $row): array {
             $old_lines = explode("\n", $row->old_gedcom);
             $new_lines = explode("\n", $row->new_gedcom);
 
-            $differences = $myers_diff->calculate($old_lines, $new_lines);
+            $differences = $this->myers_diff->calculate($old_lines, $new_lines);
             $diff_lines  = [];
 
             foreach ($differences as $difference) {
@@ -184,7 +203,7 @@ class ChangesLogController extends AbstractAdminController
             ];
         };
 
-        return $datatables_service->handle($request, $query, [], [], $callback);
+        return $this->datatables_service->handle($request, $query, [], [], $callback);
     }
 
     /**

@@ -40,9 +40,11 @@ class ImportThumbnailsController extends AbstractAdminController
     /**
      * Import custom thumbnails from webtres 1.x.
      *
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function webtrees1Thumbnails(): ResponseInterface
+    public function webtrees1Thumbnails(ServerRequestInterface $request): ResponseInterface
     {
         return $this->viewResponse('admin/webtrees1-thumbnails', [
             'title' => I18N::translate('Import custom thumbnails from webtrees version 1'),

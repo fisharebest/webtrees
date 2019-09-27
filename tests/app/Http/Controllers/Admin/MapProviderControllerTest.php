@@ -34,8 +34,8 @@ class MapProviderControllerTest extends TestCase
     public function testMapProviderEdit(): void
     {
         $controller = new MapProviderController();
-        self::createRequest('GET', ['route' => 'map-provider']);
-        $response   = $controller->mapProviderEdit();
+        $request    = self::createRequest('GET', ['route' => 'map-provider']);
+        $response   = $controller->mapProviderEdit($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }

@@ -54,9 +54,11 @@ class CustomCssJsModule extends AbstractModule implements ModuleConfigInterface,
     /**
      * Show a form to edit the user CSS and JS.
      *
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function getAdminAction(): ResponseInterface
+    public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 

@@ -62,12 +62,12 @@ class EditMediaController extends AbstractEditController
      * Add a media file to an existing media object.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function addMediaFile(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function addMediaFile(ServerRequestInterface $request): ResponseInterface
     {
+        $tree  = $request->getAttribute('tree');
         $xref  = $request->getQueryParams()['xref'];
         $media = Media::getInstance($xref, $tree);
 
@@ -92,12 +92,12 @@ class EditMediaController extends AbstractEditController
      * Add a media file to an existing media object.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function addMediaFileAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function addMediaFileAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree  = $request->getAttribute('tree');
         $xref  = $request->getQueryParams()['xref'];
         $media = Media::getInstance($xref, $tree);
         $title = $request->getParsedBody()['title'];
@@ -111,7 +111,7 @@ class EditMediaController extends AbstractEditController
             return redirect(route('tree-page', ['ged' => $tree->name()]));
         }
 
-        $file = $this->uploadFile($request, $tree);
+        $file = $this->uploadFile($request);
 
         if ($file === '') {
             FlashMessages::addMessage(I18N::translate('There was an error uploading your file.'));
@@ -139,12 +139,12 @@ class EditMediaController extends AbstractEditController
      * Edit an existing media file.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function editMediaFile(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function editMediaFile(ServerRequestInterface $request): ResponseInterface
     {
+        $tree    = $request->getAttribute('tree');
         $params  = $request->getQueryParams();
         $xref    = $params['xref'];
         $fact_id = $params['fact_id'];
@@ -178,12 +178,12 @@ class EditMediaController extends AbstractEditController
      * Save an edited media file.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function editMediaFileAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function editMediaFileAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree     = $request->getAttribute('tree');
         $xref     = $request->getQueryParams()['xref'];
         $fact_id  = $request->getQueryParams()['fact_id'];
         $folder   = $request->getParsedBody()['folder'];
@@ -270,12 +270,14 @@ class EditMediaController extends AbstractEditController
     /**
      * Show a form to create a new media object.
      *
-     * @param Tree $tree
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function createMediaObject(Tree $tree): ResponseInterface
+    public function createMediaObject(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+
         return response(view('modals/create-media-object', [
             'max_upload_size' => $this->maxUploadFilesize(),
             'media_types'     => $this->mediaTypes(),
@@ -285,12 +287,12 @@ class EditMediaController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function createMediaObjectFromFileAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function createMediaObjectFromFileAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $params = $request->getParsedBody();
         $file   = $params['file'];
         $type   = $params['type'];
@@ -328,12 +330,12 @@ class EditMediaController extends AbstractEditController
      * Process a form to create a new media object.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function createMediaObjectAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function createMediaObjectAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree                = $request->getAttribute('tree');
         $params              = $request->getParsedBody();
         $note                = $params['media-note'];
         $title               = $params['title'];
@@ -352,7 +354,7 @@ class EditMediaController extends AbstractEditController
             "\n",
         ], "\n1 CONT ", $note);
 
-        $file = $this->uploadFile($request, $tree);
+        $file = $this->uploadFile($request);
 
         if ($file === '') {
             return response(['error_message' => I18N::translate('There was an error uploading your file.')], 406);
@@ -392,12 +394,12 @@ class EditMediaController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function linkMediaToIndividual(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function linkMediaToIndividual(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
         $xref = $request->getQueryParams()['xref'];
 
         $media = Media::getInstance($xref, $tree);
@@ -410,12 +412,12 @@ class EditMediaController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function linkMediaToFamily(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function linkMediaToFamily(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
         $xref = $request->getQueryParams()['xref'];
 
         $media = Media::getInstance($xref, $tree);
@@ -428,12 +430,12 @@ class EditMediaController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function linkMediaToSource(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function linkMediaToSource(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
         $xref = $request->getQueryParams()['xref'];
 
         $media = Media::getInstance($xref, $tree);
@@ -446,12 +448,12 @@ class EditMediaController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function linkMediaToRecordAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function linkMediaToRecordAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $params = $request->getParsedBody();
         $xref   = $params['xref'];
         $link   = $params['link'];
@@ -526,12 +528,12 @@ class EditMediaController extends AbstractEditController
      * or to create a media object.
      *
      * @param ServerRequestInterface $request
-     * @param Tree    $tree
      *
      * @return string The value to be stored in the 'FILE' field of the media object.
      */
-    private function uploadFile(ServerRequestInterface $request, Tree $tree): string
+    private function uploadFile(ServerRequestInterface $request): string
     {
+        $tree          = $request->getAttribute('tree');
         $params        = $request->getParsedBody();
         $file_location = $params['file_location'];
 

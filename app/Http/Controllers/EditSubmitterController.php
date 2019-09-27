@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -30,9 +29,11 @@ class EditSubmitterController extends AbstractEditController
     /**
      * Show a form to create a new submitter.
      *
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function createSubmitter(): ResponseInterface
+    public function createSubmitter(ServerRequestInterface $request): ResponseInterface
     {
         return response(view('modals/create-submitter'));
     }
@@ -41,12 +42,12 @@ class EditSubmitterController extends AbstractEditController
      * Process a form to create a new submitter.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function createSubmitterAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function createSubmitterAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree                = $request->getAttribute('tree');
         $params              = $request->getParsedBody();
         $name                = $params['submitter_name'];
         $address             = $params['submitter_address'];

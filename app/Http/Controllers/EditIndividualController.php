@@ -22,7 +22,6 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -34,12 +33,12 @@ class EditIndividualController extends AbstractEditController
 {
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function reorderMedia(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function reorderMedia(ServerRequestInterface $request): ResponseInterface
     {
+        $tree       = $request->getAttribute('tree');
         $xref       = $request->getQueryParams()['xref'];
         $individual = Individual::getInstance($xref, $tree);
 
@@ -55,12 +54,12 @@ class EditIndividualController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function reorderMediaAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function reorderMediaAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree       = $request->getAttribute('tree');
         $xref       = $request->getQueryParams()['xref'];
         $order      = $request->getParsedBody()['order'] ?? [];
         $individual = Individual::getInstance($xref, $tree);
@@ -95,12 +94,12 @@ class EditIndividualController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function reorderNames(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function reorderNames(ServerRequestInterface $request): ResponseInterface
     {
+        $tree       = $request->getAttribute('tree');
         $xref       = $request->getQueryParams()['xref'];
         $individual = Individual::getInstance($xref, $tree);
 
@@ -116,12 +115,12 @@ class EditIndividualController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function reorderNamesAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function reorderNamesAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree       = $request->getAttribute('tree');
         $xref       = $request->getQueryParams()['xref'];
         $order      = $request->getParsedBody()['order'] ?? [];
         $individual = Individual::getInstance($xref, $tree);
@@ -156,12 +155,12 @@ class EditIndividualController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function reorderSpouses(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function reorderSpouses(ServerRequestInterface $request): ResponseInterface
     {
+        $tree       = $request->getAttribute('tree');
         $xref       = $request->getQueryParams()['xref'];
         $individual = Individual::getInstance($xref, $tree);
 
@@ -177,12 +176,12 @@ class EditIndividualController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function reorderSpousesAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function reorderSpousesAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree       = $request->getAttribute('tree');
         $xref       = $request->getQueryParams()['xref'];
         $order      = $request->getParsedBody()['order'] ?? [];
         $individual = Individual::getInstance($xref, $tree);
@@ -219,12 +218,12 @@ class EditIndividualController extends AbstractEditController
      * Add a child to an existing individual (creating a one-parent family).
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function addChild(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function addChild(ServerRequestInterface $request): ResponseInterface
     {
+        $tree       = $request->getAttribute('tree');
         $xref       = $request->getQueryParams()['xref'];
         $individual = Individual::getInstance($xref, $tree);
 
@@ -246,12 +245,12 @@ class EditIndividualController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function addChildAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function addChildAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $params = $request->getParsedBody();
         $xref   = $params['xref'];
 
@@ -311,12 +310,12 @@ class EditIndividualController extends AbstractEditController
      * Add a parent to an existing individual (creating a one-parent family).
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function addParent(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function addParent(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $params = $request->getQueryParams();
         $xref   = $params['xref'];
         $gender = $params['gender'];
@@ -347,12 +346,12 @@ class EditIndividualController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function addParentAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function addParentAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $params = $request->getParsedBody();
         $xref   = $params['xref'];
 
@@ -410,12 +409,12 @@ class EditIndividualController extends AbstractEditController
      * Add a spouse to an existing individual (creating a new family).
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function addSpouse(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function addSpouse(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
         $xref = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
@@ -446,12 +445,12 @@ class EditIndividualController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function addSpouseAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function addSpouseAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $params = $request->getParsedBody();
         $xref   = $params['xref'];
 
@@ -515,12 +514,14 @@ class EditIndividualController extends AbstractEditController
     /**
      * Add an unlinked individual
      *
-     * @param Tree $tree
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function addUnlinked(Tree $tree): ResponseInterface
+    public function addUnlinked(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+
         return $this->viewResponse('edit/new-individual', [
             'tree'       => $tree,
             'title'      => I18N::translate('Create an individual'),
@@ -535,12 +536,12 @@ class EditIndividualController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function addUnlinkedAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function addUnlinkedAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree          = $request->getAttribute('tree');
         $params        = $request->getParsedBody();
         $this->glevels = $params['glevels'] ?? [];
         $this->tag     = $params['tag'] ?? [];
@@ -575,12 +576,12 @@ class EditIndividualController extends AbstractEditController
      * Edit a name record.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function editName(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function editName(ServerRequestInterface $request): ResponseInterface
     {
+        $tree    = $request->getAttribute('tree');
         $params  = $request->getQueryParams();
         $fact_id = $params['fact_id'];
         $xref    = $params['xref'];
@@ -610,12 +611,12 @@ class EditIndividualController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function editNameAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function editNameAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
         $xref = $request->getParsedBody()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
@@ -630,12 +631,12 @@ class EditIndividualController extends AbstractEditController
      * Add a new name record.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function addName(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function addName(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
         $xref = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
@@ -658,12 +659,12 @@ class EditIndividualController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function addNameAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function addNameAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
         $xref = $request->getParsedBody()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
@@ -677,12 +678,12 @@ class EditIndividualController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function linkChildToFamily(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function linkChildToFamily(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
         $xref = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
@@ -699,12 +700,12 @@ class EditIndividualController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function linkChildToFamilyAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function linkChildToFamilyAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $xref   = $request->getQueryParams()['xref'];
         $params = $request->getParsedBody();
         $famid  = $params['famid'];
@@ -746,12 +747,12 @@ class EditIndividualController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function linkSpouseToIndividual(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function linkSpouseToIndividual(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
         $xref = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
@@ -775,12 +776,12 @@ class EditIndividualController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function linkSpouseToIndividualAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function linkSpouseToIndividualAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $xref   = $request->getQueryParams()['xref'];
         $spouse = $request->getParsedBody()['spid'];
 

@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\ColorGenerator;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -99,13 +98,14 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      * A form to request the chart parameters.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function getChartAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        $user = $request->getAttribute('user');
+
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
         $ajax      = $request->getQueryParams()['ajax'] ?? '';

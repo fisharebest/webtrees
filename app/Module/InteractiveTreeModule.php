@@ -18,14 +18,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
-use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -179,13 +177,13 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function getChartAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function getChartAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        $user = $request->getAttribute('user');
         $xref = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
@@ -208,12 +206,12 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function getDetailsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function getDetailsAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree       = $request->getAttribute('tree');
         $pid        = $request->getQueryParams()['pid'];
         $individual = Individual::getInstance($pid, $tree);
 
@@ -233,12 +231,12 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function getPersonsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function getPersonsAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree     = $request->getAttribute('tree');
         $q        = $request->getQueryParams()['q'];
         $instance = $request->getQueryParams()['instance'];
         $treeview = new TreeView($instance);

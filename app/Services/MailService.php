@@ -30,7 +30,6 @@ use Swift_Signers_DKIMSigner;
 use Swift_SmtpTransport;
 use Swift_Transport;
 use Throwable;
-use function app;
 use function filter_var;
 use function function_exists;
 use function gethostbyaddr;

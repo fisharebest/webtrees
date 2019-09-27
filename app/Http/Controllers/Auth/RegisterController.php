@@ -96,12 +96,13 @@ class RegisterController extends AbstractBaseController
      * Perform a registration.
      *
      * @param ServerRequestInterface $request
-     * @param Tree|null              $tree
      *
      * @return ResponseInterface
      */
-    public function registerAction(ServerRequestInterface $request, ?Tree $tree): ResponseInterface
+    public function registerAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+
         $this->checkRegistrationAllowed();
 
         $comments = $request->getParsedBody()['comments'] ?? '';
@@ -231,9 +232,11 @@ class RegisterController extends AbstractBaseController
     /**
      * Show an email verification page.
      *
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function verifyPage(): ResponseInterface
+    public function verifyPage(ServerRequestInterface $request): ResponseInterface
     {
         $this->checkRegistrationAllowed();
 
@@ -247,9 +250,11 @@ class RegisterController extends AbstractBaseController
     /**
      * Perform a registration.
      *
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function verifyAction(): ResponseInterface
+    public function verifyAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->checkRegistrationAllowed();
 

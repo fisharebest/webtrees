@@ -56,6 +56,8 @@ class UseTree implements MiddlewareInterface
             return $tree;
         });
 
+        $request = $request->withAttribute('tree', $tree);
+
         return $handler->handle($request);
     }
 }

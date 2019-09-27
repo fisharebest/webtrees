@@ -46,28 +46,34 @@ class CalendarControllerTest extends \Fisharebest\Webtrees\TestCase
         $localization_service = new LocalizationService(new LocaleEnUs());
         $controller           = new CalendarController($calendar_service, $localization_service);
 
-        $request  = self::createRequest('GET', ['route' => 'calendar', 'view' => 'day']);
-        $response = $controller->page($request, $tree);
+        $request  = self::createRequest('GET', ['route' => 'calendar', 'view' => 'day'])
+            ->withAttribute('tree', $tree);
+        $response = $controller->page($request);
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
 
-        $request  = self::createRequest('GET', ['route' => 'calendar-events', 'view' => 'day']);
-        $response = $controller->calendar($request, $tree);
+        $request  = self::createRequest('GET', ['route' => 'calendar-events', 'view' => 'day'])
+            ->withAttribute('tree', $tree);
+        $response = $controller->calendar($request);
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
 
-        $request  = self::createRequest('GET', ['route' => 'calendar', 'view' => 'month']);
-        $response = $controller->page($request, $tree);
+        $request  = self::createRequest('GET', ['route' => 'calendar', 'view' => 'month'])
+            ->withAttribute('tree', $tree);
+        $response = $controller->page($request);
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
 
-        $request  = self::createRequest('GET', ['route' => 'calendar-events', 'view' => 'month']);
-        $response = $controller->calendar($request, $tree);
+        $request  = self::createRequest('GET', ['route' => 'calendar-events', 'view' => 'month'])
+            ->withAttribute('tree', $tree);
+        $response = $controller->calendar($request);
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
 
-        $request  = self::createRequest('GET', ['route' => 'calendar', 'view' => 'year']);
-        $response = $controller->page($request, $tree);
+        $request  = self::createRequest('GET', ['route' => 'calendar', 'view' => 'year'])
+            ->withAttribute('tree', $tree);
+        $response = $controller->page($request);
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
 
-        $request  = self::createRequest('GET', ['route' => 'calendar-events', 'view' => 'year']);
-        $response = $controller->calendar($request, $tree);
+        $request  = self::createRequest('GET', ['route' => 'calendar-events', 'view' => 'year'])
+            ->withAttribute('tree', $tree);
+        $response = $controller->calendar($request);
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 }

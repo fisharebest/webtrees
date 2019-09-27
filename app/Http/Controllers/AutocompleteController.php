@@ -79,12 +79,12 @@ class AutocompleteController extends AbstractBaseController
      * Autocomplete for media folders.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function folder(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function folder(ServerRequestInterface $request): ResponseInterface
     {
+        $tree  = $request->getAttribute('tree');
         $query = $request->getQueryParams()['query'] ?? '';
 
         $media_filesystem = $tree->mediaFilesystem();
@@ -106,12 +106,12 @@ class AutocompleteController extends AbstractBaseController
      * Autocomplete for source citations.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function page(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function page(ServerRequestInterface $request): ResponseInterface
     {
+        $tree  = $request->getAttribute('tree');
         $query = $request->getQueryParams()['query'] ?? '';
         $xref  = $request->getQueryParams()['extra'] ?? '';
 
@@ -180,12 +180,12 @@ class AutocompleteController extends AbstractBaseController
      * Autocomplete for place names.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function place(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function place(ServerRequestInterface $request): ResponseInterface
     {
+        $tree  = $request->getAttribute('tree');
         $query = $request->getQueryParams()['query'] ?? '';
         $data  = [];
 
@@ -231,12 +231,12 @@ class AutocompleteController extends AbstractBaseController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function select2Family(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function select2Family(ServerRequestInterface $request): ResponseInterface
     {
+        $tree  = $request->getAttribute('tree');
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
 
@@ -269,12 +269,12 @@ class AutocompleteController extends AbstractBaseController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function select2Individual(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function select2Individual(ServerRequestInterface $request): ResponseInterface
     {
+        $tree  = $request->getAttribute('tree');
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
 
@@ -307,12 +307,12 @@ class AutocompleteController extends AbstractBaseController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function select2MediaObject(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function select2MediaObject(ServerRequestInterface $request): ResponseInterface
     {
+        $tree  = $request->getAttribute('tree');
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
 
@@ -345,12 +345,12 @@ class AutocompleteController extends AbstractBaseController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function select2Note(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function select2Note(ServerRequestInterface $request): ResponseInterface
     {
+        $tree  = $request->getAttribute('tree');
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
 
@@ -378,12 +378,12 @@ class AutocompleteController extends AbstractBaseController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function select2Place(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function select2Place(ServerRequestInterface $request): ResponseInterface
     {
+        $tree  = $request->getAttribute('tree');
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
 
@@ -480,12 +480,12 @@ class AutocompleteController extends AbstractBaseController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function select2Repository(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function select2Repository(ServerRequestInterface $request): ResponseInterface
     {
+        $tree  = $request->getAttribute('tree');
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
 
@@ -513,12 +513,12 @@ class AutocompleteController extends AbstractBaseController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function select2Source(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function select2Source(ServerRequestInterface $request): ResponseInterface
     {
+        $tree  = $request->getAttribute('tree');
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
 
@@ -546,12 +546,12 @@ class AutocompleteController extends AbstractBaseController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function select2Submitter(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function select2Submitter(ServerRequestInterface $request): ResponseInterface
     {
+        $tree  = $request->getAttribute('tree');
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
 

@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Controllers\ListController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\IndividualListService;
@@ -26,6 +25,7 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Auth;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class IndividualListModule
@@ -67,13 +67,15 @@ class NoteListModule extends AbstractModule implements ModuleListInterface
     }
 
     /**
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function getListAction(Tree $tree, UserInterface $user): ResponseInterface
+    public function getListAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        $user = $request->getAttribute('user');
+
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
       
         $listController = new ListController(app(IndividualListService::class), app(LocalizationService::class));

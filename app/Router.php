@@ -105,9 +105,7 @@ class Router implements MiddlewareInterface, RequestMethodInterface
         if (Str::contains($routing, self::SCOPE_OPERATOR)) {
             [$class, $method] = explode(self::SCOPE_OPERATOR, $routing);
 
-            $controller = app(self::CONTROLLER_NAMESPACE . $class);
-
-            return app()->dispatch($controller, $method);
+            return app(self::CONTROLLER_NAMESPACE . $class)->$method($request);
         }
 
         // Routes defined using a request handler

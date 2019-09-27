@@ -38,36 +38,41 @@ class VerifyEmailController extends AbstractBaseController
      * @var MailService
      */
     private $mail_service;
+    /**
+     * @var UserService
+     */
+    private $user_service;
 
     /**
      * MessageController constructor.
      *
      * @param MailService $mail_service
+     * @param UserService $user_service
      */
-    public function __construct(MailService $mail_service)
+    public function __construct(MailService $mail_service, UserService $user_service)
     {
         $this->mail_service = $mail_service;
+        $this->user_service = $user_service;
     }
 
     /**
      * Respond to a verification link that was emailed to a user.
      *
      * @param ServerRequestInterface $request
-     * @param UserService            $user_service
      *
      * @return ResponseInterface
      */
-    public function verify(ServerRequestInterface $request, UserService $user_service): ResponseInterface
+    public function verify(ServerRequestInterface $request): ResponseInterface
     {
         $username = $request->getQueryParams()['username'] ?? '';
         $token    = $request->getQueryParams()['token'] ?? '';
 
         $title = I18N::translate('User verification');
 
-        $user = $user_service->findByUserName($username);
+        $user = $this->user_service->findByUserName($username);
 
         if ($user instanceof User && $user->getPreference('reg_hashcode') === $token) {
-            foreach ($user_service->administrators() as $administrator) {
+            foreach ($this->user_service->administrators() as $administrator) {
                 // switch language to administrator settings
                 I18N::init($administrator->getPreference('language'));
 

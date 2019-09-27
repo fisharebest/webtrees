@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Controllers\BranchesController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -82,13 +81,14 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function getPageAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function getPageAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        $user = $request->getAttribute('user');
+
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
       
         $listController = new BranchesController(app(ModuleService::class));
@@ -97,17 +97,17 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function getListAction(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function getListAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        $user = $request->getAttribute('user');
+
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
       
-        $listController = new BranchesController(app(ModuleService::class));
-        return $listController->list($request, $tree, $user);
+        return app(BranchesController::class)->list($request);
     }
 
     /**

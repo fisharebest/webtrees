@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Tree;
 use Intervention\Image\Exception\NotReadableException;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
@@ -76,12 +75,12 @@ class MediaFileController extends AbstractBaseController
      * Download a non-image media file.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function mediaDownload(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function mediaDownload(ServerRequestInterface $request): ResponseInterface
     {
+        $tree    = $request->getAttribute('tree');
         $params  = $request->getQueryParams();
         $xref    = $params['xref'];
         $fact_id = $params['fact_id'];
@@ -120,12 +119,12 @@ class MediaFileController extends AbstractBaseController
      * Show an image/thumbnail, with/without a watermark.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function mediaThumbnail(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function mediaThumbnail(ServerRequestInterface $request): ResponseInterface
     {
+        $tree    = $request->getAttribute('tree');
         $params  = $request->getQueryParams();
         $xref    = $params['xref'];
         $fact_id = $params['fact_id'];

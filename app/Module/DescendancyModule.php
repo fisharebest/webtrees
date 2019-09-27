@@ -21,7 +21,6 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\SearchService;
-use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use function view;
@@ -32,6 +31,18 @@ use function view;
 class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 {
     use ModuleSidebarTrait;
+
+    /** @var SearchService */
+    private $search_service;
+
+    /**
+     * DescendancyModule constructor.
+     *
+     * @param SearchService $search_service
+     */
+    public function __construct(SearchService $search_service) {
+        $this->search_service = $search_service;
+    }
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -67,19 +78,18 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param SearchService          $search_service
      *
      * @return ResponseInterface
      */
-    public function getSearchAction(ServerRequestInterface $request, Tree $tree, SearchService $search_service): ResponseInterface
+    public function getSearchAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
         $search = $request->getQueryParams()['search'];
 
         $html = '';
 
         if (strlen($search) >= 2) {
-            $html = $search_service
+            $html = $this->search_service
                 ->searchIndividualNames([$tree], [$search])
                 ->map(function (Individual $individual): string {
                     return $this->getPersonLi($individual);
@@ -96,12 +106,12 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function getDescendantsAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function getDescendantsAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
         $xref = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);

@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction
@@ -39,8 +40,12 @@ class ModuleActionTest extends TestCase
         $user           = new GuestUser();
         $module_service = new ModuleService();
         $handler        = new ModuleAction($module_service, $user);
-        $request        = self::createRequest('GET', ['route' => 'module', 'module' => 'faq', 'action' => 'Show', 'ged' => $tree->name()]);
-        $response       = $handler->handle($request);
+        $request        = self::createRequest('GET', ['route' => 'module', 'module' => 'faq', 'action' => 'Show', 'ged' => $tree->name()])
+            ->withAttribute('tree', $tree);
+
+        app()->instance(ServerRequestInterface::class, $request);
+
+        $response = $handler->handle($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }

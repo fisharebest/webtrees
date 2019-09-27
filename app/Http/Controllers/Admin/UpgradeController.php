@@ -153,12 +153,12 @@ class UpgradeController extends AbstractAdminController
      * Perform one step of the wizard
      *
      * @param ServerRequestInterface $request
-     * @param Tree|null              $tree
      *
      * @return ResponseInterface
      */
-    public function step(ServerRequestInterface $request, ?Tree $tree): ResponseInterface
+    public function step(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
         $step = $request->getQueryParams()['step'] ?? self::STEP_CHECK;
 
         switch ($step) {

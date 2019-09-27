@@ -22,7 +22,6 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Services\ClipboardService;
-use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -32,34 +31,46 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 class NoteController extends AbstractBaseController
 {
+    /** @var ClipboardService */
+    private $clipboard_service;
+
+    /**
+     * MediaController constructor.
+     *
+     * @param ClipboardService $clipboard_service
+     */
+    public function __construct(ClipboardService $clipboard_service)
+    {
+        $this->clipboard_service = $clipboard_service;
+    }
+
     /**
      * Show a note's page.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param ClipboardService       $clipboard_service
      *
      * @return ResponseInterface
      */
-    public function show(ServerRequestInterface $request, Tree $tree, ClipboardService $clipboard_service): ResponseInterface
+    public function show(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $xref   = $request->getQueryParams()['xref'];
         $record = Note::getInstance($xref, $tree);
 
         Auth::checkNoteAccess($record, false);
 
         return $this->viewResponse('note-page', [
-            'clipboard_facts' => $clipboard_service->pastableFacts($record, new Collection()),
-            'facts'         => $this->facts($record),
-            'families'      => $record->linkedFamilies('NOTE'),
-            'individuals'   => $record->linkedIndividuals('NOTE'),
-            'note'          => $record,
-            'notes'         => [],
-            'media_objects' => $record->linkedMedia('NOTE'),
-            'meta_robots'   => 'index,follow',
-            'sources'       => $record->linkedSources('NOTE'),
-            'text'          => Filter::formatText($record->getNote(), $tree),
-            'title'         => $record->fullName(),
+            'clipboard_facts' => $this->clipboard_service->pastableFacts($record, new Collection()),
+            'facts'           => $this->facts($record),
+            'families'        => $record->linkedFamilies('NOTE'),
+            'individuals'     => $record->linkedIndividuals('NOTE'),
+            'note'            => $record,
+            'notes'           => [],
+            'media_objects'   => $record->linkedMedia('NOTE'),
+            'meta_robots'     => 'index,follow',
+            'sources'         => $record->linkedSources('NOTE'),
+            'text'            => Filter::formatText($record->getNote(), $tree),
+            'title'           => $record->fullName(),
         ]);
     }
 

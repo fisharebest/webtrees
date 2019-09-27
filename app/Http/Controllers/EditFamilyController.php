@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -35,12 +34,12 @@ class EditFamilyController extends AbstractEditController
 {
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function reorderChildren(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function reorderChildren(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $xref   = $request->getQueryParams()['xref'];
         $family = Family::getInstance($xref, $tree);
 
@@ -56,12 +55,12 @@ class EditFamilyController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function reorderChildrenAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function reorderChildrenAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $xref   = $request->getQueryParams()['xref'];
         $order  = $request->getParsedBody()['order'] ?? [];
         $family = Family::getInstance($xref, $tree);
@@ -96,12 +95,12 @@ class EditFamilyController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function addChild(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function addChild(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $params = $request->getQueryParams();
         $xref   = $params['xref'];
         $gender = $params['gender'];
@@ -125,12 +124,12 @@ class EditFamilyController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function addChildAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function addChildAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $params = $request->getParsedBody();
         $xref   = $params['xref'];
 
@@ -190,12 +189,12 @@ class EditFamilyController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function addSpouse(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function addSpouse(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $params = $request->getQueryParams();
         $xref   = $params['xref'];
         $famtag = $params['famtag'];
@@ -225,12 +224,12 @@ class EditFamilyController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function addSpouseAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function addSpouseAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $params = $request->getParsedBody();
         $xref   = $params['xref'];
 
@@ -291,12 +290,12 @@ class EditFamilyController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function changeFamilyMembers(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function changeFamilyMembers(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $xref   = $request->getQueryParams()['xref'];
         $family = Family::getInstance($xref, $tree);
         Auth::checkFamilyAccess($family, true);
@@ -315,12 +314,12 @@ class EditFamilyController extends AbstractEditController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function changeFamilyMembersAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function changeFamilyMembersAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $params = $request->getParsedBody();
         $xref   = $params['xref'];
         $family = Family::getInstance($xref, $tree);

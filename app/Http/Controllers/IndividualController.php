@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
@@ -54,6 +53,9 @@ use function strpos;
  */
 class IndividualController extends AbstractBaseController
 {
+    /** @var ClipboardService */
+    private $clipboard_service;
+
     /** @var ModuleService */
     private $module_service;
 
@@ -63,26 +65,27 @@ class IndividualController extends AbstractBaseController
     /**
      * IndividualController constructor.
      *
-     * @param ModuleService $module_service
-     * @param UserService   $user_service
+     * @param ClipboardService $clipboard_service
+     * @param ModuleService    $module_service
+     * @param UserService      $user_service
      */
-    public function __construct(ModuleService $module_service, UserService $user_service)
+    public function __construct(ClipboardService $clipboard_service, ModuleService $module_service, UserService $user_service)
     {
-        $this->module_service = $module_service;
-        $this->user_service   = $user_service;
+        $this->clipboard_service = $clipboard_service;
+        $this->module_service    = $module_service;
+        $this->user_service      = $user_service;
     }
 
     /**
      * Show a individual's page.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param ClipboardService       $clipboard_service
      *
      * @return ResponseInterface
      */
-    public function show(ServerRequestInterface $request, Tree $tree, ClipboardService $clipboard_service): ResponseInterface
+    public function show(ServerRequestInterface $request): ResponseInterface
     {
+        $tree        = $request->getAttribute('tree');
         $xref       = $request->getQueryParams()['xref'];
         $individual = Individual::getInstance($xref, $tree);
 
@@ -134,7 +137,7 @@ class IndividualController extends AbstractBaseController
 
         return $this->viewResponse('individual-page', [
             'age'              => $age,
-            'clipboard_facts'  => $clipboard_service->pastableFacts($individual, new Collection()),
+            'clipboard_facts'  => $this->clipboard_service->pastableFacts($individual, new Collection()),
             'count_media'      => $this->countFacts($individual, ['OBJE']),
             'count_names'      => $this->countFacts($individual, ['NAME']),
             'count_sex'        => $this->countFacts($individual, ['SEX']),
@@ -153,13 +156,13 @@ class IndividualController extends AbstractBaseController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function tab(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function tab(ServerRequestInterface $request): ResponseInterface
     {
+        $tree        = $request->getAttribute('tree');
+        $user        = $request->getAttribute('user');
         $xref        = $request->getQueryParams()['xref'];
         $record      = Individual::getInstance($xref, $tree);
         $module_name = $request->getQueryParams()['module'];

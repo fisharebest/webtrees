@@ -28,7 +28,6 @@ use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -38,31 +37,35 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 class LoginController extends AbstractBaseController
 {
-    /**
-     * @var UserService
-     */
+    /** @var UpgradeService */
+    private $upgrade_service;
+
+    /** @var UserService */
     private $user_service;
 
     /**
      * LoginController constructor.
      *
-     * @param UserService $user_service
+     * @param UpgradeService $upgrade_service
+     * @param UserService    $user_service
      */
-    public function __construct(UserService $user_service)
+    public function __construct(UpgradeService $upgrade_service, UserService $user_service)
     {
-        $this->user_service = $user_service;
+        $this->upgrade_service = $upgrade_service;
+        $this->user_service    = $user_service;
     }
 
     /**
      * Show a login page.
      *
      * @param ServerRequestInterface $request
-     * @param Tree|null              $tree
      *
      * @return ResponseInterface
      */
-    public function loginPage(ServerRequestInterface $request, ?Tree $tree): ResponseInterface
+    public function loginPage(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+
         // Already logged in?
         if (Auth::check()) {
             $ged = $tree !== null ? $tree->name() : '';
@@ -112,11 +115,10 @@ class LoginController extends AbstractBaseController
      * Perform a login.
      *
      * @param ServerRequestInterface $request
-     * @param UpgradeService         $upgrade_service
      *
      * @return ResponseInterface
      */
-    public function loginAction(ServerRequestInterface $request, UpgradeService $upgrade_service): ResponseInterface
+    public function loginAction(ServerRequestInterface $request): ResponseInterface
     {
         $username = $request->getParsedBody()['username'] ?? '';
         $password = $request->getParsedBody()['password'] ?? '';
@@ -125,8 +127,8 @@ class LoginController extends AbstractBaseController
         try {
             $this->doLogin($username, $password);
 
-            if (Auth::isAdmin() && $upgrade_service->isUpgradeAvailable()) {
-                FlashMessages::addMessage(I18N::translate('A new version of webtrees is available.') . ' <a class="alert-link" href="' . e(route('upgrade')) . '">' . I18N::translate('Upgrade to webtrees %s.', '<span dir="ltr">' . $upgrade_service->latestVersion() . '</span>') . '</a>');
+            if (Auth::isAdmin() && $this->upgrade_service->isUpgradeAvailable()) {
+                FlashMessages::addMessage(I18N::translate('A new version of webtrees is available.') . ' <a class="alert-link" href="' . e(route('upgrade')) . '">' . I18N::translate('Upgrade to webtrees %s.', '<span dir="ltr">' . $this->upgrade_service->latestVersion() . '</span>') . '</a>');
             }
 
             // If there was no referring page, redirect to "my page".
@@ -202,12 +204,14 @@ class LoginController extends AbstractBaseController
     /**
      * Perform a logout.
      *
-     * @param Tree|null $tree
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function logoutAction(Tree $tree = null): ResponseInterface
+    public function logoutAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+
         if (Auth::check()) {
             Log::addAuthenticationLog('Logout: ' . Auth::user()->userName() . '/' . Auth::user()->realName());
             Auth::logout();

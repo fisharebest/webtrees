@@ -35,13 +35,27 @@ use stdClass;
  */
 class FixLevel0MediaController extends AbstractAdminController
 {
+    /** @var DatatablesService */
+    private $datatables_service;
+
+    /**
+     * FixLevel0MediaController constructor.
+     *
+     * @param DatatablesService $datatables_service
+     */
+    public function __construct(DatatablesService $datatables_service) {
+        $this->datatables_service = $datatables_service;
+    }
+
     /**
      * If media objects are wronly linked to top-level records, reattach them
      * to facts/events.
      *
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function fixLevel0Media(): ResponseInterface
+    public function fixLevel0Media(ServerRequestInterface $request): ResponseInterface
     {
         return $this->viewResponse('admin/fix-level-0-media', [
             'title' => I18N::translate('Link media objects to facts and events'),
@@ -88,11 +102,10 @@ class FixLevel0MediaController extends AbstractAdminController
      * to facts/events.
      *
      * @param ServerRequestInterface $request
-     * @param DatatablesService      $datatables_service
      *
      * @return ResponseInterface
      */
-    public function fixLevel0MediaData(ServerRequestInterface $request, DatatablesService $datatables_service): ResponseInterface
+    public function fixLevel0MediaData(ServerRequestInterface $request): ResponseInterface
     {
         $ignore_facts = [
             'FAMC',
@@ -130,7 +143,7 @@ class FixLevel0MediaController extends AbstractAdminController
             ->orderBy('media.m_id')
             ->select(['media.m_file', 'media.m_id', 'media.m_gedcom', 'individuals.i_id', 'individuals.i_gedcom']);
 
-        return $datatables_service->handle($request, $query, [], [], static function (stdClass $datum) use ($ignore_facts): array {
+        return $this->datatables_service->handle($request, $query, [], [], static function (stdClass $datum) use ($ignore_facts): array {
             $tree       = Tree::findById((int) $datum->m_file);
             $media      = Media::getInstance($datum->m_id, $tree, $datum->m_gedcom);
             $individual = Individual::getInstance($datum->i_id, $tree, $datum->i_gedcom);

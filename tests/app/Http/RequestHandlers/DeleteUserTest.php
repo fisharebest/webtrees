@@ -34,9 +34,8 @@ class DeleteUserTest extends TestCase
     {
         $user_service = new UserService();
         $user         = $user_service->create('user1', 'real1', 'email1', 'pass1');
-        $handler      = new DeleteUser($user_service);
         $request      = self::createRequest('POST', ['route' => 'delete-user'], ['user_id' => $user->id()]);
-        $response     = $handler->handle($request);
+        $response     = app(DeleteUser::class)->handle($request);
 
         // UserService caches user records
         app('cache.array')->forget(UserService::class . $user->id());
@@ -52,11 +51,8 @@ class DeleteUserTest extends TestCase
      */
     public function testDeleteNonExistingUser(): void
     {
-        $user_service = new UserService();
-        $user_service->create('user1', 'real1', 'email1', 'pass1');
-        $handler = new DeleteUser($user_service);
         $request = self::createRequest('POST', ['route' => 'delete-user'], ['user_id' => 98765]);
-        $handler->handle($request);
+        app(DeleteUser::class)->handle($request);
     }
 
     /**
@@ -66,11 +62,9 @@ class DeleteUserTest extends TestCase
      */
     public function testCannotDeleteAdministrator(): void
     {
-        $user_service = new UserService();
-        $user         = $user_service->create('user1', 'real1', 'email1', 'pass1');
+        $user = app(UserService::class)->create('user1', 'real1', 'email1', 'pass1');
         $user->setPreference('canadmin', '1');
-        $handler = new DeleteUser($user_service);
         $request = self::createRequest('POST', ['route' => 'delete-user'], ['user_id' => $user->id()]);
-        $handler->handle($request);
+        app(DeleteUser::class)->handle($request);
     }
 }

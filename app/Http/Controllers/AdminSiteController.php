@@ -48,37 +48,47 @@ class AdminSiteController extends AbstractBaseController
     /** @var string */
     protected $layout = 'layouts/administration';
 
-    /**
-     * @var ModuleService
-     */
+    /** @var DatatablesService */
+    private $datatables_service;
+
+    /** @var FilesystemInterface */
+    private $filesystem;
+
+    /** @var MailService */
+    private $mail_service;
+
+    /** @var ModuleService */
     private $module_service;
 
-    /**
-     * @var UserService
-     */
+    /** @var UserService */
     private $user_service;
 
     /**
      * AdminSiteController constructor.
      *
-     * @param ModuleService $module_service
-     * @param UserService   $user_service
+     * @param DatatablesService   $datatables_service
+     * @param FilesystemInterface $filesystem
+     * @param MailService         $mail_service
+     * @param ModuleService       $module_service
+     * @param UserService         $user_service
      */
-    public function __construct(ModuleService $module_service, UserService $user_service)
+    public function __construct(DatatablesService $datatables_service, FilesystemInterface $filesystem, MailService $mail_service, ModuleService $module_service, UserService $user_service)
     {
-        $this->module_service = $module_service;
-        $this->user_service   = $user_service;
+        $this->mail_service       = $mail_service;
+        $this->datatables_service = $datatables_service;
+        $this->filesystem         = $filesystem;
+        $this->module_service     = $module_service;
+        $this->user_service       = $user_service;
     }
 
     /**
      * Show old user files in the data folder.
      *
      * @param ServerRequestInterface $request
-     * @param FilesystemInterface    $filesystem
      *
      * @return ResponseInterface
      */
-    public function cleanData(ServerRequestInterface $request, FilesystemInterface $filesystem): ResponseInterface
+    public function cleanData(ServerRequestInterface $request): ResponseInterface
     {
         $protected = [
             '.htaccess',
@@ -102,7 +112,7 @@ class AdminSiteController extends AbstractBaseController
         // List the top-level contents of the data folder
         $entries = array_map(static function (array $content) {
             return $content['path'];
-        }, $filesystem->listContents());
+        }, $this->filesystem->listContents());
 
         return $this->viewResponse('admin/clean-data', [
             'title'     => I18N::translate('Clean up data folder'),
@@ -115,17 +125,16 @@ class AdminSiteController extends AbstractBaseController
      * Delete old user files in the data folder.
      *
      * @param ServerRequestInterface $request
-     * @param FilesystemInterface    $filesystem
      *
      * @return ResponseInterface
      */
-    public function cleanDataAction(ServerRequestInterface $request, FilesystemInterface $filesystem): ResponseInterface
+    public function cleanDataAction(ServerRequestInterface $request): ResponseInterface
     {
         $to_delete = $request->getParsedBody()['to_delete'] ?? [];
         $to_delete = array_filter($to_delete);
 
         foreach ($to_delete as $path) {
-            $metadata = $filesystem->getMetadata($path);
+            $metadata = $this->filesystem->getMetadata($path);
 
             if ($metadata === false) {
                 // Already deleted?
@@ -134,7 +143,7 @@ class AdminSiteController extends AbstractBaseController
 
             if ($metadata['type'] === 'dir') {
                 try {
-                    $filesystem->deleteDir($path);
+                    $this->filesystem->deleteDir($path);
 
                     FlashMessages::addMessage(I18N::translate('The folder %s has been deleted.', e($path)), 'success');
                 } catch (Exception $ex) {
@@ -144,7 +153,7 @@ class AdminSiteController extends AbstractBaseController
 
             if ($metadata['type'] === 'file') {
                 try {
-                    $filesystem->delete($path);
+                    $this->filesystem->delete($path);
 
                     FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', e($path)), 'success');
                 } catch (Exception $ex) {
@@ -213,15 +222,14 @@ class AdminSiteController extends AbstractBaseController
 
     /**
      * @param ServerRequestInterface $request
-     * @param DatatablesService      $datatables_service
      *
      * @return ResponseInterface
      */
-    public function logsData(ServerRequestInterface $request, DatatablesService $datatables_service): ResponseInterface
+    public function logsData(ServerRequestInterface $request): ResponseInterface
     {
         $query = $this->logsQuery($request->getQueryParams());
 
-        return $datatables_service->handle($request, $query, [], [], static function (stdClass $row): array {
+        return $this->datatables_service->handle($request, $query, [], [], static function (stdClass $row): array {
             return [
                 $row->log_id,
                 Carbon::make($row->log_time)->local()->format('Y-m-d H:i:s'),
@@ -329,22 +337,22 @@ class AdminSiteController extends AbstractBaseController
     }
 
     /**
-     * @param MailService $mail_service
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function mailForm(MailService $mail_service): ResponseInterface
+    public function mailForm(ServerRequestInterface $request): ResponseInterface
     {
-        $mail_ssl_options       = $mail_service->mailSslOptions();
-        $mail_transport_options = $mail_service->mailTransportOptions();
+        $mail_ssl_options       = $this->mail_service->mailSslOptions();
+        $mail_transport_options = $this->mail_service->mailTransportOptions();
 
         $title = I18N::translate('Sending email');
 
         $SMTP_ACTIVE    = Site::getPreference('SMTP_ACTIVE');
         $SMTP_AUTH      = Site::getPreference('SMTP_AUTH');
         $SMTP_AUTH_USER = Site::getPreference('SMTP_AUTH_USER');
-        $SMTP_FROM_NAME = $mail_service->senderEmail();
-        $SMTP_HELO      = $mail_service->localDomain();
+        $SMTP_FROM_NAME = $this->mail_service->senderEmail();
+        $SMTP_HELO      = $this->mail_service->localDomain();
         $SMTP_HOST      = Site::getPreference('SMTP_HOST');
         $SMTP_PORT      = Site::getPreference('SMTP_PORT');
         $SMTP_SSL       = Site::getPreference('SMTP_SSL');
@@ -352,7 +360,7 @@ class AdminSiteController extends AbstractBaseController
         $DKIM_SELECTOR  = Site::getPreference('DKIM_SELECTOR');
         $DKIM_KEY       = Site::getPreference('DKIM_KEY');
 
-        $smtp_from_name_valid = $mail_service->isValidEmail($SMTP_FROM_NAME);
+        $smtp_from_name_valid = $this->mail_service->isValidEmail($SMTP_FROM_NAME);
         $smtp_helo_valid      = filter_var($SMTP_HELO, FILTER_VALIDATE_DOMAIN);
 
         return $this->viewResponse('admin/site-mail', [
@@ -407,9 +415,11 @@ class AdminSiteController extends AbstractBaseController
     }
 
     /**
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function preferencesForm(): ResponseInterface
+    public function preferencesForm(ServerRequestInterface $request): ResponseInterface
     {
         $all_themes = $this->themeOptions();
 
@@ -462,9 +472,11 @@ class AdminSiteController extends AbstractBaseController
     }
 
     /**
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function registrationForm(): ResponseInterface
+    public function registrationForm(ServerRequestInterface $request): ResponseInterface
     {
         $title = I18N::translate('Sign-in and registration');
 
@@ -515,9 +527,11 @@ class AdminSiteController extends AbstractBaseController
     /**
      * Show the server information page.
      *
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function serverInformation(): ResponseInterface
+    public function serverInformation(ServerRequestInterface $request): ResponseInterface
     {
         ob_start();
         phpinfo(INFO_ALL & ~INFO_CREDITS & ~INFO_LICENSE);

@@ -35,9 +35,9 @@ class FixLevel0MediaControllerTest extends TestCase
      */
     public function testFixLevel0Media(): void
     {
-        $controller = new FixLevel0MediaController();
-        self::createRequest('GET', ['route' => 'admin-fix-level-0-media']);
-        $response = $controller->fixLevel0Media();
+        $controller = new FixLevel0MediaController(new DatatablesService());
+        $request    = self::createRequest('GET', ['route' => 'admin-fix-level-0-media']);
+        $response   = $controller->fixLevel0Media($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -48,13 +48,13 @@ class FixLevel0MediaControllerTest extends TestCase
     public function testFixLevel0MediaAction(): void
     {
         $tree       = Tree::create('name', 'title');
+        $controller = new FixLevel0MediaController(new DatatablesService());
         $request    = self::createRequest('POST', ['route' => 'admin-fix-level-0-media'], [
             'tree_id'   => $tree->id(),
             'fact_id'   => '',
             'indi_xref' => '',
             'obje_xref' => '',
         ]);
-        $controller = new FixLevel0MediaController();
         $response   = $controller->fixLevel0MediaAction($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
@@ -67,9 +67,9 @@ class FixLevel0MediaControllerTest extends TestCase
     {
         $datatables_service = new DatatablesService();
         $tree               = Tree::create('name', 'title');
-        $controller         = new FixLevel0MediaController();
+        $controller         = new FixLevel0MediaController($datatables_service);
         $request            = self::createRequest('GET', ['route' => 'admin-fix-level-0-media-data', ['tree_id' => $tree->id()]]);
-        $response           = $controller->fixLevel0MediaData($request, $datatables_service);
+        $response           = $controller->fixLevel0MediaData($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }

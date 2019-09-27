@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -30,9 +29,11 @@ class EditRepositoryController extends AbstractEditController
     /**
      * Show a form to create a new repository.
      *
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function createRepository(): ResponseInterface
+    public function createRepository(ServerRequestInterface $request): ResponseInterface
     {
         return response(view('modals/create-repository'));
     }
@@ -41,12 +42,12 @@ class EditRepositoryController extends AbstractEditController
      * Process a form to create a new repository.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function createRepositoryAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function createRepositoryAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree                = $request->getAttribute('tree');
         $params              = $request->getParsedBody();
         $name                = $params['repository-name'];
         $privacy_restriction = $params['privacy-restriction'];

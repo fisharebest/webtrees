@@ -137,12 +137,12 @@ class SearchController extends AbstractBaseController
      * The "omni-search" box in the header.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function quick(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function quick(ServerRequestInterface $request): ResponseInterface
     {
+        $tree  = $request->getAttribute('tree');
         $query = $request->getQueryParams()['query'] ?? '';
 
         // Was the search query an XREF in the current tree?
@@ -153,22 +153,21 @@ class SearchController extends AbstractBaseController
             return redirect($record->url());
         }
 
-        return $this->general($request, $tree);
+        return $this->general($request);
     }
 
     /**
      * The standard search.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function general(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function general(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $params = $request->getQueryParams();
-
-        $query = $params['query'] ?? '';
+        $query  = $params['query'] ?? '';
 
         // What type of records to search?
         $search_individuals  = (bool) ($params['search_individuals'] ?? false);
@@ -303,14 +302,13 @@ class SearchController extends AbstractBaseController
      * The phonetic search.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function phonetic(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function phonetic(ServerRequestInterface $request): ResponseInterface
     {
-        $params = $request->getQueryParams();
-
+        $tree      = $request->getAttribute('tree');
+        $params    = $request->getQueryParams();
         $firstname = $params['firstname'] ?? '';
         $lastname  = $params['lastname'] ?? '';
         $place     = $params['place'] ?? '';
@@ -382,14 +380,13 @@ class SearchController extends AbstractBaseController
      * Search and replace.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function replaceAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function replaceAction(ServerRequestInterface $request): ResponseInterface
     {
-        $params = $request->getParsedBody();
-
+        $tree    = $request->getAttribute('tree');
+        $params  = $request->getParsedBody();
         $search  = $params['search'] ?? '';
         $replace = $params['replace'] ?? '';
         $context = $params['context'] ?? '';
@@ -538,12 +535,12 @@ class SearchController extends AbstractBaseController
      * A structured search.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function advanced(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function advanced(ServerRequestInterface $request): ResponseInterface
     {
+        $tree           = $request->getAttribute('tree');
         $default_fields = array_fill_keys(self::DEFAULT_ADVANCED_FIELDS, '');
 
         $params = $request->getQueryParams();

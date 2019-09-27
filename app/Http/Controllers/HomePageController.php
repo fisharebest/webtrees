@@ -110,15 +110,15 @@ class HomePageController extends AbstractBaseController
      * Show a form to edit block config options.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function treePageBlockEdit(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function treePageBlockEdit(ServerRequestInterface $request): ResponseInterface
     {
+        $tree     = $request->getAttribute('tree');
+        $user     = $request->getAttribute('user');
         $block_id = (int) $request->getQueryParams()['block_id'];
-        $block    = $this->treeBlock($request, $tree, $user);
+        $block    = $this->treeBlock($request, $user);
         $title    = $block->title() . ' — ' . I18N::translate('Preferences');
 
         return $this->viewResponse('modules/edit-block-config', [
@@ -134,14 +134,14 @@ class HomePageController extends AbstractBaseController
      * Update block config options.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function treePageBlockUpdate(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function treePageBlockUpdate(ServerRequestInterface $request): ResponseInterface
     {
-        $block    = $this->treeBlock($request, $tree, $user);
+        $tree     = $request->getAttribute('tree');
+        $user     = $request->getAttribute('user');
+        $block    = $this->treeBlock($request, $user);
         $block_id = (int) $request->getQueryParams()['block_id'];
 
         $block->saveBlockConfiguration($request, $block_id);
@@ -153,13 +153,13 @@ class HomePageController extends AbstractBaseController
      * Load a block and check we have permission to edit it.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      * @param UserInterface          $user
      *
      * @return ModuleBlockInterface
      */
-    private function treeBlock(ServerRequestInterface $request, Tree $tree, UserInterface $user): ModuleBlockInterface
+    private function treeBlock(ServerRequestInterface $request, UserInterface $user): ModuleBlockInterface
     {
+        $tree     = $request->getAttribute('tree');
         $block_id = (int) $request->getQueryParams()['block_id'];
 
         $block = DB::table('block')
@@ -189,13 +189,13 @@ class HomePageController extends AbstractBaseController
      * Show a form to edit block config options.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function userPageBlockEdit(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function userPageBlockEdit(ServerRequestInterface $request): ResponseInterface
     {
+        $tree     = $request->getAttribute('tree');
+        $user     = $request->getAttribute('user');
         $block_id = (int) $request->getQueryParams()['block_id'];
         $block    = $this->userBlock($request, $user);
         $title    = $block->title() . ' — ' . I18N::translate('Preferences');
@@ -213,13 +213,13 @@ class HomePageController extends AbstractBaseController
      * Update block config options.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function userPageBlockUpdate(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function userPageBlockUpdate(ServerRequestInterface $request): ResponseInterface
     {
+        $tree     = $request->getAttribute('tree');
+        $user     = $request->getAttribute('user');
         $block    = $this->userBlock($request, $user);
         $block_id = (int) $request->getQueryParams()['block_id'];
 
@@ -268,12 +268,14 @@ class HomePageController extends AbstractBaseController
     /**
      * Show a tree's page.
      *
-     * @param Tree $tree
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function treePage(Tree $tree): ResponseInterface
+    public function treePage(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+
         $has_blocks = DB::table('block')
             ->where('gedcom_id', '=', $tree->id())
             ->exists();
@@ -305,12 +307,12 @@ class HomePageController extends AbstractBaseController
      * Load block asynchronously.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function treePageBlock(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function treePageBlock(ServerRequestInterface $request): ResponseInterface
     {
+        $tree     = $request->getAttribute('tree');
         $block_id = $request->getQueryParams()['block_id'];
 
         $block_id = (int) DB::table('block')
@@ -330,9 +332,11 @@ class HomePageController extends AbstractBaseController
     /**
      * Show a form to edit the default blocks for new trees.
      *
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function treePageDefaultEdit(): ResponseInterface
+    public function treePageDefaultEdit(ServerRequestInterface $request): ResponseInterface
     {
         $this->checkDefaultTreeBlocksExist();
 
@@ -375,12 +379,14 @@ class HomePageController extends AbstractBaseController
     /**
      * Show a form to edit the blocks on a tree's page.
      *
-     * @param Tree $tree
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function treePageEdit(Tree $tree): ResponseInterface
+    public function treePageEdit(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+
         $main_blocks = $this->treeBlocks($tree->id(), self::MAIN_BLOCKS);
         $side_blocks = $this->treeBlocks($tree->id(), self::SIDE_BLOCKS);
 
@@ -404,12 +410,12 @@ class HomePageController extends AbstractBaseController
      * Save updated blocks on a tree's page.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
      *
      * @return ResponseInterface
      */
-    public function treePageUpdate(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function treePageUpdate(ServerRequestInterface $request): ResponseInterface
     {
+        $tree   = $request->getAttribute('tree');
         $params = $request->getParsedBody();
 
         $defaults = (bool) ($params['defaults'] ?? false);
@@ -438,12 +444,14 @@ class HomePageController extends AbstractBaseController
     /**
      * Show a users's page.
      *
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function userPage(UserInterface $user): ResponseInterface
+    public function userPage(ServerRequestInterface $request): ResponseInterface
     {
+        $user = $request->getAttribute('user');
+
         $has_blocks = DB::table('block')
             ->where('user_id', '=', $user->id())
             ->exists();
@@ -474,13 +482,13 @@ class HomePageController extends AbstractBaseController
      * Load block asynchronously.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function userPageBlock(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function userPageBlock(ServerRequestInterface $request): ResponseInterface
     {
+        $tree     = $request->getAttribute('tree');
+        $user     = $request->getAttribute('user');
         $block_id = $request->getQueryParams()['block_id'];
 
         $block_id = (int) DB::table('block')
@@ -500,9 +508,11 @@ class HomePageController extends AbstractBaseController
     /**
      * Show a form to edit the default blocks for new uesrs.
      *
+     * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
-    public function userPageDefaultEdit(): ResponseInterface
+    public function userPageDefaultEdit(ServerRequestInterface $request): ResponseInterface
     {
         $this->checkDefaultUserBlocksExist();
 
@@ -544,13 +554,14 @@ class HomePageController extends AbstractBaseController
     /**
      * Show a form to edit the blocks on the user's page.
      *
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function userPageEdit(Tree $tree, UserInterface $user): ResponseInterface
+    public function userPageEdit(ServerRequestInterface $request): ResponseInterface
     {
+        $tree        = $request->getAttribute('tree');
+        $user        = $request->getAttribute('user');
         $main_blocks = $this->userBlocks($user->id(), self::MAIN_BLOCKS);
         $side_blocks = $this->userBlocks($user->id(), self::SIDE_BLOCKS);
         $all_blocks  = $this->availableUserBlocks();
@@ -573,15 +584,14 @@ class HomePageController extends AbstractBaseController
      * Save the updated blocks on a user's page.
      *
      * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param UserInterface          $user
      *
      * @return ResponseInterface
      */
-    public function userPageUpdate(ServerRequestInterface $request, Tree $tree, UserInterface $user): ResponseInterface
+    public function userPageUpdate(ServerRequestInterface $request): ResponseInterface
     {
-        $params = $request->getParsedBody();
-
+        $tree     = $request->getAttribute('tree');
+        $user     = $request->getAttribute('user');
+        $params   = $request->getParsedBody();
         $defaults = (bool) ($params['defaults'] ?? false);
 
         if ($defaults) {
@@ -664,7 +674,6 @@ class HomePageController extends AbstractBaseController
      * @param int  $block_id
      *
      * @return ModuleBlockInterface
-     * @throws NotFoundHttpException
      */
     private function getBlockModule(Tree $tree, int $block_id): ModuleBlockInterface
     {

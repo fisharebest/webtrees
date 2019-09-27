@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Services\GedcomService;
-use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
@@ -717,12 +716,14 @@ class LocationController extends AbstractAdminController
     }
 
     /**
-     * @param Tree $tree
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function importLocationsFromTree(Tree $tree): ResponseInterface
+    public function importLocationsFromTree(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+
         // Get all the places from the places table ...
         $places = DB::table('places AS p0')
             ->leftJoin('places AS p1', 'p1.p_id', '=', 'p0.p_parent_id')

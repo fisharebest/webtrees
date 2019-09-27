@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
+use function app;
 
 /**
  * Test UsersController class.
@@ -39,9 +40,10 @@ class UsersControllerTest extends TestCase
      */
     public function testIndex(): void
     {
-        $controller = new UsersController(new MailService(), new ModuleService(), new UserService());
-        $request    = self::createRequest('GET', ['route' => 'admin-users']);
-        $response   = $controller->index($request, Auth::user());
+        $controller = app(UsersController::class);
+        $request    = self::createRequest('GET', ['route' => 'admin-users'])
+            ->withAttribute('user', Auth::user());
+        $response   = $controller->index($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -51,9 +53,9 @@ class UsersControllerTest extends TestCase
      */
     public function testData(): void
     {
-        $controller = new UsersController(new MailService(), new ModuleService(), new UserService());
+        $controller = app(UsersController::class);
         $request    = self::createRequest('GET', ['route' => 'admin-users-data']);
-        $response   = $controller->data(new DatatablesService(), $request, Auth::User());
+        $response   = $controller->data($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -63,7 +65,7 @@ class UsersControllerTest extends TestCase
      */
     public function testCreate(): void
     {
-        $controller = new UsersController(new MailService(), new ModuleService(), new UserService());
+        $controller = app(UsersController::class);
         $request    = self::createRequest('GET', ['route' => 'admin-users-create']);
         $response   = $controller->create($request);
 
@@ -75,7 +77,7 @@ class UsersControllerTest extends TestCase
      */
     public function testSave(): void
     {
-        $controller = new UsersController(new MailService(), new ModuleService(), new UserService());
+        $controller = app(UsersController::class);
         $request    = self::createRequest('POST', ['route' => 'admin-users-create'], [
             'username'  => 'User name',
             'email'     => 'email@example.com',
@@ -93,7 +95,7 @@ class UsersControllerTest extends TestCase
     public function testEdit(): void
     {
         $user       = (new UserService())->create('user', 'real', 'email', 'pass');
-        $controller = new UsersController(new MailService(), new ModuleService(), new UserService());
+        $controller = app(UsersController::class);
         $request    = self::createRequest('GET', ['route' => 'admin-users-edit', 'user_id' => (string) $user->id()]);
         $response   = $controller->edit($request);
 
@@ -106,8 +108,8 @@ class UsersControllerTest extends TestCase
     public function testUpdate(): void
     {
         /** @var User $user */
-        $user       = (new UserService())->create('user', 'real', 'email', 'pass');
-        $controller = new UsersController(new MailService(), new ModuleService(), new UserService());
+        $user       = app(UserService::class)->create('user', 'real', 'email', 'pass');
+        $controller = app(UsersController::class);
         $request    = self::createRequest('POST', ['route' => 'admin-users-edit'], [
             'user_id'        => $user->id(),
             'username'       => '',
@@ -124,8 +126,9 @@ class UsersControllerTest extends TestCase
             'visible_online' => '',
             'verified'       => '',
             'approved'       => '',
-        ]);
-        $response   = $controller->update($request, $user);
+        ])
+            ->withAttribute('user', $user);
+        $response   = $controller->update($request);
 
         $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
@@ -135,7 +138,7 @@ class UsersControllerTest extends TestCase
      */
     public function testCleanup(): void
     {
-        $controller = new UsersController(new MailService(), new ModuleService(), new UserService());
+        $controller = app(UsersController::class);
         $request    = self::createRequest('GET', ['route' => 'admin-users-cleanup']);
         $response   = $controller->cleanup($request);
 
@@ -147,9 +150,13 @@ class UsersControllerTest extends TestCase
      */
     public function testCleanupAction(): void
     {
-        $controller = new UsersController(new MailService(), new ModuleService(), new UserService());
-        $request    = self::createRequest('POST', ['route' => 'admin-users-cleanup']);
-        $response   = $controller->cleanupAction($request);
+        $datatables_service = new DatatablesService();
+        $mail_service       = new MailService();
+        $module_service     = new ModuleService();
+        $user_service       = new UserService();
+        $controller         = new UsersController($datatables_service, $mail_service, $module_service, $user_service);
+        $request            = self::createRequest('POST', ['route' => 'admin-users-cleanup']);
+        $response           = $controller->cleanupAction($request);
 
         $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }

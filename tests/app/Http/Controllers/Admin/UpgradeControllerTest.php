@@ -83,7 +83,7 @@ class UpgradeControllerTest extends TestCase
         );
 
         $request = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Invalid']);
-        $controller->step($request, null);
+        $controller->step($request);
     }
 
     /**
@@ -99,7 +99,7 @@ class UpgradeControllerTest extends TestCase
         );
 
         $request  = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Check']);
-        $response = $controller->step($request, null);
+        $response = $controller->step($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -118,7 +118,7 @@ class UpgradeControllerTest extends TestCase
         );
 
         $request = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Check']);
-        $controller->step($request, null);
+        $controller->step($request);
     }
 
     /**
@@ -135,7 +135,7 @@ class UpgradeControllerTest extends TestCase
         );
 
         $request = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Check']);
-        $controller->step($request, null);
+        $controller->step($request);
     }
 
     /**
@@ -149,7 +149,7 @@ class UpgradeControllerTest extends TestCase
         );
 
         $request  = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Prepare']);
-        $response = $controller->step($request, null);
+        $response = $controller->step($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -165,7 +165,7 @@ class UpgradeControllerTest extends TestCase
         );
 
         $request  = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Pending']);
-        $response = $controller->step($request, null);
+        $response = $controller->step($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -187,7 +187,7 @@ class UpgradeControllerTest extends TestCase
         );
 
         $request = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Pending']);
-        $controller->step($request, null);
+        $controller->step($request);
     }
 
     /**
@@ -201,13 +201,14 @@ class UpgradeControllerTest extends TestCase
             new UpgradeService(new TimeoutService())
         );
 
-        $request  = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Export']);
-        $response = $controller->step($request, $tree);
+        $request  = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Export'])
+            ->withAttribute('tree', $tree);
+        $response = $controller->step($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
 
         // Now overwrite the file we just created
-        $response = $controller->step($request, $tree);
+        $response = $controller->step($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -226,7 +227,7 @@ class UpgradeControllerTest extends TestCase
         );
 
         $request = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Download']);
-        $controller->step($request, null);
+        $controller->step($request);
     }
 
     /**
@@ -242,7 +243,7 @@ class UpgradeControllerTest extends TestCase
         );
 
         $request  = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Download']);
-        $response = $controller->step($request, null);
+        $response = $controller->step($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -260,7 +261,7 @@ class UpgradeControllerTest extends TestCase
         );
 
         $request  = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Unzip']);
-        $response = $controller->step($request, null);
+        $response = $controller->step($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -276,7 +277,7 @@ class UpgradeControllerTest extends TestCase
         );
 
         $request  = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Copy']);
-        $response = $controller->step($request, null);
+        $response = $controller->step($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
@@ -293,7 +294,7 @@ class UpgradeControllerTest extends TestCase
         );
 
         $request  = self::createRequest('POST', ['route' => 'wizard', 'step' => 'Cleanup']);
-        $response = $controller->step($request, null);
+        $response = $controller->step($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }
