@@ -6,6 +6,7 @@
         var u=<?= json_encode($MATOMO_URL ?? '') ?>;
         _paq.push(['setTrackerUrl', u+'piwik.php']);
         _paq.push(['setSiteId', <?= json_encode($MATOMO_SITE_ID ?? '') ?>]);
+        _paq.push(['setUserId', <?= json_encode($user->username()) ?>]);
         var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
         g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
     })();

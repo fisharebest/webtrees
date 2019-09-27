@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Auth;
+
 /**
  * Class MatomoAnalyticsModule - add support for Matomo analytics.
  */
@@ -89,6 +91,8 @@ class MatomoAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
      */
     public function analyticsSnippet(array $parameters): string
     {
+        $parameters['user'] = Auth::user();
+
         return view('modules/matomo-analytics/snippet', $parameters);
     }
 
