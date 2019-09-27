@@ -18,6 +18,11 @@
                 <?= view('icons/reorder') ?>
                 <?= I18N::translate('Re-order names') ?>
             </a>
+        <?php else : ?>
+            <div class="dropdown-item disabled">
+                <?= view('icons/spacer') ?>
+                <?= I18N::translate('Re-order names') ?>
+            </div>
         <?php endif ?>
 
         <div class="dropdown-divider"></div>
@@ -27,9 +32,37 @@
                 <?= view('icons/edit') ?>
                 <?= I18N::translate('Edit the gender') ?>
             </a>
-
-            <div class="dropdown-divider"></div>
         <?php endif ?>
+
+        <?php foreach ($individual->facts(['SEX']) as $fact) : ?>
+            <?php if ($fact->canEdit()) : ?>
+                <a class="dropdown-item" href="<?= e(route('edit-fact', ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'ged' => $individual->tree()->name()])) ?>">
+                    <?= view('icons/edit') ?>
+                    <?= I18N::translate('Edit the gender') ?>
+                </a>
+            <?php endif ?>
+        <?php endforeach ?>
+
+        <div class="dropdown-divider"></div>
+
+        <a class="dropdown-item" href="<?= e(route('add-fact', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact' => 'OBJE'])) ?>">
+            <?= view('icons/add') ?>
+            <?= I18N::translate('Add a media object') ?>
+        </a>
+
+        <?php if ($individual->facts(['OBJE'])->count() > 1) : ?>
+            <a class="dropdown-item" href="<?= e(route('reorder-media', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
+                <?= view('icons/edit') ?>
+                <?= I18N::translate('Re-order media') ?>
+            </a>
+        <?php else : ?>
+            <div class="dropdown-item disabled">
+                <?= view('icons/spacer') ?>
+                <?= I18N::translate('Re-order media') ?>
+            </div>
+        <?php endif ?>
+
+        <div class="dropdown-divider"></div>
 
         <a class="dropdown-item" href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($individual->fullName())) ?>" onclick="return confirm(this.dataset.confirm) && delete_record('<?= e($individual->xref()) ?>', '<?= e($individual->tree()->name()) ?>');">
             <?= view('icons/delete') ?>
@@ -37,8 +70,6 @@
         </a>
 
         <?php if (Auth::isAdmin() || $individual->tree()->getPreference('SHOW_GEDCOM_RECORD')) : ?>
-            <div class="dropdown-divider"></div>
-
             <a class="dropdown-item" href="<?= e(route('edit-raw-record', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
                 <?= view('icons/edit') ?>
                 <?= I18N::translate('Edit the raw GEDCOM') ?>

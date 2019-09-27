@@ -11,6 +11,7 @@ use Illuminate\Support\Collection;
  * @var string     $user_link
  * @var int        $count_names
  * @var Collection $sidebars
+ * @var Collection $individual_media
  * @var Collection $name_records
  * @var Collection $sex_records
  * @var Collection $tabs
@@ -50,54 +51,46 @@ use Illuminate\Support\Collection;
     <div class="<?= $sidebars->isEmpty() ? 'col-sm-12' : 'col-sm-8' ?>">
         <div class="row mb-4">
             <!-- Individual images -->
-            <div class="col-sm-3">
-                <?php if (empty($individual_media)) : ?>
-                    <i class="wt-individual-silhouette wt-individual-silhouette-<?= strtolower($individual->sex()) ?>"></i>
-                <?php elseif (count($individual_media) === 1) : ?>
-                    <?= $individual_media[0]->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
-                <?php else : ?>
-                    <div id="individual-images" class="carousel slide" data-ride="carousel" data-interval="false">
-                        <div class="carousel-inner">
-                            <?php foreach ($individual_media as $n => $media_file) : ?>
-                                <div class="carousel-item <?= $n === 0 ? 'active' : '' ?>">
-                                    <?= $media_file->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
-                                </div>
-                            <?php endforeach ?>
+            <?php if ($individual_media->isNotEmpty() || $tree->getPreference('USE_SILHOUETTE') === '1') : ?>
+                <div class="col-sm-3">
+                    <?php if ($individual_media->isEmpty()) : ?>
+                        <div class="img-thumbnail">
+                            <i class="wt-individual-silhouette wt-individual-silhouette-<?= strtolower($individual->sex()) ?>"></i>
                         </div>
-                        <a class="carousel-control-prev" href="#individual-images" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only"><?= I18N::translate('previous') ?></span>
-                        </a>
-                        <a class="carousel-control-next" href="#individual-images" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only"><?= I18N::translate('next') ?></span>
-                        </a>
-                    </div>
-
-                <?php endif ?>
-
-                <?php if (Auth::isEditor($individual->tree())) : ?>
-                    <?php if ($individual->facts(['OBJE'])->count() > 1) : ?>
-                        <div>
-                            <a href="<?= e(route('reorder-media', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
-                                <?= view('icons/reorder') ?>
-                                <?= I18N::translate('Re-order media') ?>
+                    <?php elseif ($individual_media->count() === 1) : ?>
+                        <?= $individual_media->first()->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
+                    <?php else : ?>
+                        <div id="individual-images" class="carousel slide" data-ride="carousel" data-interval="false">
+                            <div class="carousel-inner">
+                                <?php foreach ($individual_media as $n => $media_file) : ?>
+                                    <div class="carousel-item <?= $n === 0 ? 'active' : '' ?>">
+                                        <?= $media_file->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
+                                    </div>
+                                <?php endforeach ?>
+                            </div>
+                            <a class="carousel-control-prev" href="#individual-images" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only"><?= I18N::translate('previous') ?></span>
+                            </a>
+                            <a class="carousel-control-next" href="#individual-images" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only"><?= I18N::translate('next') ?></span>
                             </a>
                         </div>
                     <?php endif ?>
 
-                    <?php if ($individual->tree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($individual->tree())) : ?>
-                        <div>
+                    <?php if (Auth::isEditor($individual->tree())) : ?>
+                        <div class="text-center">
                             <a href="<?= e(route('add-fact', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact' => 'OBJE'])) ?>">
                                 <?= I18N::translate('Add a media object') ?>
                             </a>
                         </div>
                     <?php endif ?>
-                <?php endif ?>
-            </div>
+                </div>
+            <?php endif ?>
 
             <!-- Name accordion -->
-            <div class="col-sm-9" id="individual-names" role="tablist">
+            <div class="col-sm" id="individual-names" role="tablist">
                 <?php foreach ($name_records as $name_record) : ?>
                     <?= $name_record ?>
                 <?php endforeach ?>

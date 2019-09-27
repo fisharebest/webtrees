@@ -14,8 +14,6 @@
         </a>
 
         <?php if (Auth::isAdmin() || $record->tree()->getPreference('SHOW_GEDCOM_RECORD')) : ?>
-            <div class="dropdown-divider"></div>
-
             <a class="dropdown-item" href="<?= e(route('edit-raw-record', ['ged' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
                 <?= view('icons/edit') ?>
                 <?= I18N::translate('Edit the raw GEDCOM') ?>

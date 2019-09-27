@@ -102,25 +102,25 @@ class IndividualController extends AbstractBaseController
         }
 
         // What images are linked to this individual
-        $individual_media = [];
+        $individual_media = new Collection();
         foreach ($individual->facts(['OBJE']) as $fact) {
             $media_object = $fact->target();
             if ($media_object instanceof Media) {
                 $media_file = $media_object->firstImageFile();
                 if ($media_file instanceof MediaFile) {
-                    $individual_media[] = $media_file;
+                    $individual_media->add($media_file);
                 }
             }
         }
 
-        $name_records = [];
+        $name_records = new Collection();
         foreach ($individual->facts(['NAME']) as $n => $name_fact) {
-            $name_records[] = $this->formatNameRecord($tree, $n, $name_fact);
+            $name_records->add($this->formatNameRecord($tree, $n, $name_fact));
         }
 
-        $sex_records = [];
+        $sex_records = new Collection();
         foreach ($individual->facts(['SEX']) as $n => $sex_fact) {
-            $sex_records[] = $this->formatSexRecord($sex_fact);
+            $sex_records->add($this->formatSexRecord($sex_fact));
         }
 
         // If this individual is linked to a user account, show the link
