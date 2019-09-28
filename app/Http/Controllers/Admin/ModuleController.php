@@ -284,6 +284,8 @@ class ModuleController extends AbstractAdminController
             }
         }
 
+        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
+
         return redirect(route('modules'));
     }
 
@@ -297,6 +299,8 @@ class ModuleController extends AbstractAdminController
         $modules = $this->module_service->findByInterface(ModuleAnalyticsInterface::class, true);
 
         $this->updateStatus($modules, $request);
+
+        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 
         return redirect(route('analytics'));
     }
@@ -313,6 +317,8 @@ class ModuleController extends AbstractAdminController
         $this->updateStatus($modules, $request);
         $this->updateAccessLevel($modules, ModuleBlockInterface::class, $request);
 
+        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
+
         return redirect(route('blocks'));
     }
 
@@ -327,6 +333,8 @@ class ModuleController extends AbstractAdminController
 
         $this->updateStatus($modules, $request);
         $this->updateAccessLevel($modules, ModuleChartInterface::class, $request);
+
+        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 
         return redirect(route('charts'));
     }
@@ -343,6 +351,8 @@ class ModuleController extends AbstractAdminController
         $this->updateStatus($modules, $request);
         $this->updateOrder($modules, 'footer_order', $request);
 
+        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
+
         return redirect(route('footers'));
     }
 
@@ -356,6 +366,8 @@ class ModuleController extends AbstractAdminController
         $modules = $this->module_service->findByInterface(ModuleHistoricEventsInterface::class, true);
 
         $this->updateStatus($modules, $request);
+
+        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 
         return redirect(route('history'));
     }
@@ -371,6 +383,8 @@ class ModuleController extends AbstractAdminController
 
         $this->updateStatus($modules, $request);
 
+        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
+
         return redirect(route('languages'));
     }
 
@@ -385,6 +399,8 @@ class ModuleController extends AbstractAdminController
 
         $this->updateStatus($modules, $request);
         $this->updateAccessLevel($modules, ModuleListInterface::class, $request);
+
+        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 
         return redirect(route('lists'));
     }
@@ -402,6 +418,8 @@ class ModuleController extends AbstractAdminController
         $this->updateOrder($modules, 'menu_order', $request);
         $this->updateAccessLevel($modules, ModuleMenuInterface::class, $request);
 
+        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
+
         return redirect(route('menus'));
     }
 
@@ -416,6 +434,8 @@ class ModuleController extends AbstractAdminController
 
         $this->updateStatus($modules, $request);
         $this->updateAccessLevel($modules, ModuleReportInterface::class, $request);
+
+        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 
         return redirect(route('reports'));
     }
@@ -433,6 +453,8 @@ class ModuleController extends AbstractAdminController
         $this->updateOrder($modules, 'sidebar_order', $request);
         $this->updateAccessLevel($modules, ModuleSidebarInterface::class, $request);
 
+        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
+
         return redirect(route('sidebars'));
     }
 
@@ -449,6 +471,8 @@ class ModuleController extends AbstractAdminController
         $this->updateOrder($modules, 'tab_order', $request);
         $this->updateAccessLevel($modules, ModuleTabInterface::class, $request);
 
+        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
+
         return redirect(route('tabs'));
     }
 
@@ -462,6 +486,8 @@ class ModuleController extends AbstractAdminController
         $modules = $this->module_service->findByInterface(ModuleThemeInterface::class, true);
 
         $this->updateStatus($modules, $request);
+
+        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 
         return redirect(route('themes'));
     }
