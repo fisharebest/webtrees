@@ -1356,17 +1356,17 @@
     },
     {
         "name": "league/commonmark-ext-table",
-        "version": "v2.0.0",
-        "version_normalized": "2.0.0.0",
+        "version": "v2.1.0",
+        "version_normalized": "2.1.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/commonmark-ext-table.git",
-            "reference": "4bb680b784bd6c04b5cb7a6335eb66b6609a7b8d"
+            "reference": "3228888ea69636e855efcf6636ff8e6316933fe7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/commonmark-ext-table/zipball/4bb680b784bd6c04b5cb7a6335eb66b6609a7b8d",
-            "reference": "4bb680b784bd6c04b5cb7a6335eb66b6609a7b8d",
+            "url": "https://api.github.com/repos/thephpleague/commonmark-ext-table/zipball/3228888ea69636e855efcf6636ff8e6316933fe7",
+            "reference": "3228888ea69636e855efcf6636ff8e6316933fe7",
             "shasum": ""
         },
         "require": {
@@ -1380,11 +1380,11 @@
             "symfony/var-dumper": "^4.0",
             "vimeo/psalm": "^3.0"
         },
-        "time": "2019-07-13T11:43:25+00:00",
+        "time": "2019-09-26T13:28:33+00:00",
         "type": "commonmark-extension",
         "extra": {
             "branch-alias": {
-                "dev-master": "2.1-dev"
+                "dev-master": "2.2-dev"
             }
         },
         "installation-source": "dist",
