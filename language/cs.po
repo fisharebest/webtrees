@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-07-22 15:01+0000\n"
+"PO-Revision-Date: 2019-09-28 17:10+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/cs/>\n"
 "Language: cs\n"
@@ -1514,7 +1514,7 @@ msgstr "Přidat nezávislé záznamy"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1100
 msgid "Add watermarks to thumbnails"
-msgstr "Přidávat vodoznak do náhledů?"
+msgstr "Přidávat vodoznak do náhledů"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
@@ -2951,7 +2951,7 @@ msgstr "Námořnická modř"
 
 #: message.php:127
 msgid "Body"
-msgstr "Text:"
+msgstr "Tělo textu"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:109
@@ -12441,7 +12441,7 @@ msgstr "Nejkratší manželství"
 
 #: app/Module/RecentChangesModule.php:181
 msgid "Should this block be hidden when it is empty"
-msgstr "Měl by být tento blok skrytý, pokud je prázdný?"
+msgstr "Měl by být tento blok skrytý, pokud je prázdný"
 
 #: calendar.php:221
 msgid "Show"
