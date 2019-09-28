@@ -26,7 +26,9 @@ mix.styles([
     "node_modules/@fortawesome/fontawesome-free/css/regular.css",
     "node_modules/@fortawesome/fontawesome-free/css/solid.css",
     "node_modules/@fortawesome/fontawesome-free/css/fontawesome.css",
+    "resources/css/begin-ignore-rtl.css",
     "node_modules/select2/dist/css/select2.min.css",
+    "resources/css/end-ignore-rtl.css",
     "node_modules/typeahead.js-bootstrap4-css/typeaheadjs.css",
     "node_modules/leaflet/dist/leaflet.css",
     "node_modules/beautifymarker/leaflet-beautify-marker-icon.css",
@@ -50,10 +52,10 @@ mix
     .options({
             processCssUrls: false,
             postCss: [
+                postcss_rtl,
                 postcss_import,
                 postcss_autoprefixer,
                 postcss_image_inliner,
-                postcss_rtl,
                 postcss_custom_properties,
             ]
     })
