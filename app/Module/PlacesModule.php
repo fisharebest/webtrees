@@ -73,7 +73,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
      */
     public function description(): string
     {
-        /* I18N: Description of the “OSM” module */
+        /* I18N: Description of the “Places” module */
         return I18N::translate('Show the location of events on a map.');
     }
 
