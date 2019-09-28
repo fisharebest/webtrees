@@ -509,7 +509,7 @@ class FunctionsEdit
             $html .= view('edit/input-addon-help', ['fact' => 'PLAC']);
             $html .= '</div>';
         } elseif ($fact === 'QUAY') {
-            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => GedcomCodeQuay::getValues()]);
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => ['' => ''] + GedcomCodeQuay::getValues()]);
         } elseif ($fact === 'RELA') {
             $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => self::optionsRelationships($value)]);
         } elseif ($fact === 'REPO') {
