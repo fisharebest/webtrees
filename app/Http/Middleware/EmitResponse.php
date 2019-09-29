@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -22,6 +23,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use RuntimeException;
+
 use function connection_status;
 use function fastcgi_finish_request;
 use function function_exists;
@@ -31,6 +33,7 @@ use function http_response_code;
 use function ob_get_length;
 use function ob_get_level;
 use function sprintf;
+
 use const CONNECTION_NORMAL;
 
 /**

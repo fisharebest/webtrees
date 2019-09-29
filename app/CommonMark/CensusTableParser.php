@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -24,6 +25,7 @@ use League\CommonMark\Cursor;
 use League\CommonMark\Ext\Table\Table;
 use League\CommonMark\Ext\Table\TableCell;
 use League\CommonMark\Ext\Table\TableRow;
+
 use function array_shift;
 use function explode;
 use function strpos;

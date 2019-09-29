@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -30,6 +31,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectTheme;
 
 /** @var Tree|null $tree */
+
 $tree = app(Tree::class);
 
 /** @var @var Router $router */

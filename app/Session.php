@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -19,6 +20,7 @@ namespace Fisharebest\Webtrees;
 
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
+
 use function array_map;
 use function explode;
 use function implode;
@@ -30,6 +32,7 @@ use function session_set_cookie_params;
 use function session_set_save_handler;
 use function session_start;
 use function session_status;
+
 use const PHP_URL_HOST;
 use const PHP_URL_PATH;
 use const PHP_URL_SCHEME;

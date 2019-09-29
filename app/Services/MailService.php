@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -30,6 +31,7 @@ use Swift_Signers_DKIMSigner;
 use Swift_SmtpTransport;
 use Swift_Transport;
 use Throwable;
+
 use function filter_var;
 use function function_exists;
 use function gethostbyaddr;
@@ -39,6 +41,7 @@ use function getmxrr;
 use function str_replace;
 use function strrchr;
 use function substr;
+
 use const FILTER_VALIDATE_DOMAIN;
 use const FILTER_VALIDATE_EMAIL;
 

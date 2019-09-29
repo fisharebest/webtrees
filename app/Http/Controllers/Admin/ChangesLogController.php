@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -33,6 +34,7 @@ use Illuminate\Database\Query\Expression;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
+
 use function explode;
 use function implode;
 use function preg_replace_callback;
@@ -190,7 +192,7 @@ class ChangesLogController extends AbstractAdminController
                 '<div class="gedcom-data" dir="ltr">' .
                 preg_replace_callback(
                     '/@(' . Gedcom::REGEX_XREF . ')@/',
-                    static function (array $match) use ($tree) : string {
+                    static function (array $match) use ($tree): string {
                         $record = GedcomRecord::getInstance($match[1], $tree);
 
                         return $record ? '<a href="' . e($record->url()) . '">' . $match[0] . '</a>' : $match[0];

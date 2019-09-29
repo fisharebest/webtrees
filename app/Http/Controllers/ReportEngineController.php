@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -18,6 +19,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use function addcslashes;
+
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Html;
@@ -32,7 +34,9 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Source;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+
 use function response;
+
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**

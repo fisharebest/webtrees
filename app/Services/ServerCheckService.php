@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -24,6 +25,7 @@ use Illuminate\Support\Str;
 use SQLite3;
 use stdClass;
 use Throwable;
+
 use function array_map;
 use function class_exists;
 use function date;
@@ -38,6 +40,7 @@ use function strtolower;
 use function sys_get_temp_dir;
 use function trim;
 use function version_compare;
+
 use const PATH_SEPARATOR;
 use const PHP_MAJOR_VERSION;
 use const PHP_MINOR_VERSION;

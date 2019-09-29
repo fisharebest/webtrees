@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees;
 
 use Middleland\Dispatcher;
 use Nyholm\Psr7Server\ServerRequestCreator;
+
 use function app;
 
 require __DIR__ . '/vendor/autoload.php';

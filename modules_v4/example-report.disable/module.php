@@ -11,6 +11,7 @@ use Fisharebest\Webtrees\Module\ModuleReportTrait;
 /**
  * Example report.
  */
+
 return new class extends AbstractModule implements ModuleCustomInterface, ModuleReportInterface {
     use ModuleCustomTrait;
     use ModuleReportTrait;

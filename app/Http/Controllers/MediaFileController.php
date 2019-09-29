@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -39,6 +40,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
+
 use function addcslashes;
 use function app;
 use function basename;
@@ -51,6 +53,7 @@ use function response;
 use function strlen;
 use function strtolower;
 use function urlencode;
+
 use const PHP_URL_PATH;
 
 /**

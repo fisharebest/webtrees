@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -37,12 +38,14 @@ use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Throwable;
+
 use function dirname;
 use function is_dir;
 use function preg_match;
 use function str_replace;
 use function strpos;
 use function trim;
+
 use const UPLOAD_ERR_OK;
 
 /**
@@ -65,7 +68,8 @@ class MediaController extends AbstractAdminController
      * @param DatatablesService   $datatables_service
      * @param FilesystemInterface $filesystem
      */
-    public function __construct(DatatablesService $datatables_service, FilesystemInterface $filesystem) {
+    public function __construct(DatatablesService $datatables_service, FilesystemInterface $filesystem)
+    {
         $this->datatables_service = $datatables_service;
         $this->filesystem         = $filesystem;
     }

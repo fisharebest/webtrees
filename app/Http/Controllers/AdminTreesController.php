@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -56,12 +57,14 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use stdClass;
 use Throwable;
+
 use function addcslashes;
 use function app;
 use function fclose;
 use function fopen;
 use function is_dir;
 use function pathinfo;
+
 use const PATHINFO_EXTENSION;
 use const UPLOAD_ERR_OK;
 use const WT_DATA_DIR;

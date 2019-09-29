@@ -15,6 +15,7 @@ use Psr\Http\Message\ServerRequestInterface;
 /**
  * Example footer with a link to a page of information.
  */
+
 return new class extends AbstractModule implements ModuleCustomInterface, ModuleFooterInterface {
     use ModuleCustomTrait;
     use ModuleFooterTrait;

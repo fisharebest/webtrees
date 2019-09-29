@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -34,6 +35,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+
 use function array_slice;
 use function array_unshift;
 use function count;
@@ -51,6 +53,7 @@ use function preg_quote;
 use function rawurlencode;
 use function response;
 use function view;
+
 use const CURLOPT_RETURNTRANSFER;
 use const CURLOPT_URL;
 

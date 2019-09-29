@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -18,6 +19,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Psr\Http\Message\ServerRequestInterface;
+
 use function app;
 
 /**

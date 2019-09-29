@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -27,11 +28,13 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
+
 use function dirname;
 use function ob_get_level;
 use function response;
 use function str_replace;
 use function view;
+
 use const PHP_EOL;
 
 /**

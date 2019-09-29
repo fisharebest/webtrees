@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -21,6 +22,7 @@ use Illuminate\Container\Container;
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionParameter;
+
 use function array_map;
 
 /**

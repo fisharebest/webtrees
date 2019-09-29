@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -18,6 +19,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use function count;
+
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
@@ -88,7 +90,7 @@ class ChartFamilyLargest
     public function chartLargestFamilies(
         string $color_from = null,
         string $color_to = null,
-        int    $total = 10
+        int $total = 10
     ): string {
         $chart_color1 = (string) $this->theme->parameter('distribution-chart-no-values');
         $chart_color2 = (string) $this->theme->parameter('distribution-chart-high-values');

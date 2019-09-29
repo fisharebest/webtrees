@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -43,7 +44,8 @@ class FixLevel0MediaController extends AbstractAdminController
      *
      * @param DatatablesService $datatables_service
      */
-    public function __construct(DatatablesService $datatables_service) {
+    public function __construct(DatatablesService $datatables_service)
+    {
         $this->datatables_service = $datatables_service;
     }
 

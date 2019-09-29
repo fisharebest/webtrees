@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -38,8 +39,10 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use RuntimeException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 use function pathinfo;
 use function strpos;
+
 use const PATHINFO_EXTENSION;
 use const UPLOAD_ERR_OK;
 

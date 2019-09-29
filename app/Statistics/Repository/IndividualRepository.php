@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -19,6 +20,7 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use function array_key_exists;
 use function array_slice;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Functions\FunctionsDate;

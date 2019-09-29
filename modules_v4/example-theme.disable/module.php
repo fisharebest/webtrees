@@ -11,6 +11,7 @@ use Fisharebest\Webtrees\View;
  * Example theme.  Here we are extending an existing theme.
  * Instead, you could extend AbstractModule and implement ModuleThemeInterface directly.
  */
+
 return new class extends MinimalTheme implements ModuleCustomInterface {
     use ModuleCustomTrait;
 

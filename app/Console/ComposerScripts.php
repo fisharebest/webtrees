@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -19,6 +20,7 @@ namespace Fisharebest\Webtrees\Console;
 
 use Composer\Script\Event;
 use Fisharebest\Localization\Translation;
+
 use function basename;
 use function dirname;
 use function file_put_contents;

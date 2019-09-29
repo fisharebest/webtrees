@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -42,8 +43,10 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Ramsey\Uuid\Uuid;
+
 use function e;
 use function view;
+
 use const PREG_SET_ORDER;
 
 /**

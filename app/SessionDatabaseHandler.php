@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -35,8 +36,8 @@ class SessionDatabaseHandler implements SessionHandlerInterface
     }
 
     /**
-     * @param $save_path
-     * @param $name
+     * @param string $save_path
+     * @param string $name
      *
      * @return bool
      */

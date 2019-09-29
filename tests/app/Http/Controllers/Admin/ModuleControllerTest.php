@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -36,8 +37,8 @@ class ModuleControllerTest extends TestCase
     public function testList(): void
     {
         $controller = new ModuleController(new ModuleService());
-        $request=self::createRequest('GET', ['route' => 'modules']);
-        $response = $controller->list($request);
+        $request    = self::createRequest('GET', ['route' => 'modules']);
+        $response   = $controller->list($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
     }

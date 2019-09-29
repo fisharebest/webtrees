@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -88,8 +89,7 @@ class ControlPanelController extends AbstractAdminController
         ServerCheckService $server_check_service,
         UpgradeService $upgrade_service,
         UserService $user_service
-    )
-    {
+    ) {
         $this->module_service       = $module_service;
         $this->housekeeping_service = $housekeeping_service;
         $this->server_check_service = $server_check_service;

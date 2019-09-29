@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -57,7 +58,8 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
      *
      * @param ChartService $chart_service
      */
-    public function __construct(ChartService $chart_service) {
+    public function __construct(ChartService $chart_service)
+    {
         $this->chart_service = $chart_service;
     }
 

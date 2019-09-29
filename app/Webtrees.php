@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -47,6 +48,7 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Throwable;
+
 use function app;
 use function dirname;
 use function error_reporting;
@@ -55,6 +57,7 @@ use function ob_get_level;
 use function set_error_handler;
 use function set_exception_handler;
 use function str_replace;
+
 use const PHP_EOL;
 
 /**

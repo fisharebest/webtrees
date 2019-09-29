@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2017 webtrees development team
@@ -671,10 +672,7 @@ class FunctionsEdit
                 $fact .= ' ' . GedcomTag::createUid();
             }
             // These new level 1 tags need to be turned into links
-            if (in_array($fact, [
-                'ALIA',
-                'ASSO',
-            ])) {
+            if (in_array($fact, ['ALIA', 'ASSO'], true)) {
                 $fact .= ' @';
             }
             if (in_array($fact, Config::emptyFacts(), true)) {

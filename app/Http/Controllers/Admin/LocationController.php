@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -31,6 +32,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use stdClass;
+
 use function abs;
 use function addcslashes;
 use function array_filter;
@@ -45,6 +47,7 @@ use function rewind;
 use function route;
 use function round;
 use function stream_get_contents;
+
 use const UPLOAD_ERR_OK;
 
 /**

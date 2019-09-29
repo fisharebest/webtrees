@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -84,5 +85,5 @@ interface PlaceRepositoryInterface
         string $chart_shows = 'world',
         string $chart_type = '',
         string $surname = ''
-    ) : string;
+    ): string;
 }

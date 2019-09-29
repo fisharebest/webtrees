@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -21,11 +22,13 @@ use League\Flysystem\FileNotFoundException;
 use League\Glide\Urls\UrlBuilderFactory;
 use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
+
 use function app;
 use function getimagesize;
 use function intdiv;
 use function pathinfo;
 use function strtolower;
+
 use const PATHINFO_EXTENSION;
 
 /**
