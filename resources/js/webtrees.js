@@ -991,6 +991,10 @@ $(function () {
     };
     $("select.select2").select2({
         language: select2_languages[lang] || lang,
+        // "auto" breaks content that is initially hidden.
+        // "100%" breaks content that isn't.
+        // "90%"
+        width: "90%",
         // Do not escape.
         escapeMarkup: function (x) {
             return x;
