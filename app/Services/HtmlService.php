@@ -44,8 +44,11 @@ class HtmlService
 
         $def = $config->getHTMLDefinition(true);
 
-        // Allow image maps
+        // Allow image maps.
         $def->addAttribute('img', 'usemap', 'CDATA');
+
+        // Allow link targets.
+        $def->addAttribute('a', 'target', new HTMLPurifier_AttrDef_Enum(['_blank', '_self', '_target', '_top']));
 
         $map = $def->addElement('map', 'Block', 'Flow', 'Common', [
             'name'  => 'CDATA',
@@ -65,7 +68,6 @@ class HtmlService
             'href'      => 'URI',
             'shape'     => new HTMLPurifier_AttrDef_Enum(['rect', 'circle', 'poly', 'default']),
             'tabindex'  => 'Number',
-            'target'    => new HTMLPurifier_AttrDef_Enum(['_blank', '_self', '_target', '_top']),
         ]);
 
         $area->excludes = ['area' => true];
