@@ -98,26 +98,41 @@
         ],
         "webtrees:check": [
             "### PHP-CODE-SNIFFER",
+            "@composer webtrees:check-phpcs",
+            "### PHAN",
+            "@composer webtrees:check-phan",
+            "### PHPSTAN",
+            "@composer webtrees:check-phpstan",
+            "### PSALM",
+            "@composer webtrees:check-phpstan"
+        ],
+        "webtrees:check-phpcs": [
             "@composer global require squizlabs/php_codesniffer=* --quiet",
             "@composer global update squizlabs/php_codesniffer --quiet",
-            "phpcs --standard=PSR12 -p -s --exclude=Generic.Files.LineLength,PSR2.ControlStructures.ControlStructureSpacing index.php app modules_v4 routes tests/app tests/feature",
-            "### PHAN",
+            "phpcs --standard=PSR12 -p -s --exclude=Generic.Files.LineLength,PSR2.ControlStructures.ControlStructureSpacing index.php app modules_v4 routes tests/app tests/feature"
+        ],
+        "webtrees:check-phan": [
             "@composer global require phan/phan=*",
             "@composer global update phan/phan",
             "@composer install --quiet",
             "PHAN_DISABLE_XDEBUG_WARN=1 phan --color --dead-code-detection --target-php-version=7.1 --progress-bar --signature-compatibility --strict-type-checking --directory app --directory vendor --exclude-directory-list vendor index.php",
-            "@composer install --no-dev --quiet",
-            "### PHPSTAN",
+            "@composer install --no-dev --quiet"
+        ],
+        "webtrees:check-phpstan": [
             "@composer global require phpstan/phpstan=*",
             "@composer global update phpstan/phpstan",
-            "phpstan --level=7 analyze index.php app",
-            "### PSALM",
-            "psalm"
+            "phpstan --level=7 analyze index.php app"
+        ],
+        "webtrees:check-psalm": [
+            "@composer global update vimeo/psalm",
+            "@composer install --quiet",
+            "psalm",
+            "@composer install --no-dev --quiet"
         ],
         "webtrees:coverage": [
-            "composer install --dev --quiet",
+            "@composer install --dev --quiet",
             "vendor/bin/phpunit --coverage-html=tests/coverage",
-            "composer install --no-dev --quiet"
+            "@composer install --no-dev --quiet"
         ],
         "webtrees:lang": [
             "Fisharebest\\Webtrees\\Console\\ComposerScripts::languageFiles"
