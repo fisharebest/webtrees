@@ -60,7 +60,8 @@ class ChangesLogController extends AbstractAdminController
      * @param MyersDiff         $myers_diff
      * @param UserService       $user_service
      */
-    public function __construct(DatatablesService $datatables_service, MyersDiff $myers_diff, UserService $user_service) {
+    public function __construct(DatatablesService $datatables_service, MyersDiff $myers_diff, UserService $user_service)
+    {
         $this->datatables_service = $datatables_service;
         $this->myers_diff         = $myers_diff;
         $this->user_service       = $user_service;
