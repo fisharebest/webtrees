@@ -80,7 +80,7 @@ class NoteListModule extends AbstractModule implements ModuleListInterface
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
       
         $listController = new ListController(app(IndividualListService::class), app(LocalizationService::class));
-        return $listController->noteList($tree);
+        return $listController->noteList($request);
     }
 
     /**
