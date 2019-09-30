@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees;
 use Exception;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
+use LogicException;
 use RuntimeException;
 use Throwable;
 
@@ -131,6 +132,10 @@ class View
     {
         $content = ob_get_clean();
 
+        if ($content === false) {
+            throw new LogicException('found endpush(), but did not find push()');
+        }
+
         self::$stacks[self::$stack][] = $content;
     }
 
@@ -156,6 +161,10 @@ class View
     public static function endpushunique(): void
     {
         $content = ob_get_clean();
+
+        if ($content === false) {
+            throw new LogicException('found endpushunique(), but did not find pushunique()');
+        }
 
         self::$stacks[self::$stack][sha1($content)] = $content;
     }
