@@ -157,7 +157,7 @@ class FamilyRepository
             ->where('f_file', '=', $this->tree->id())
             ->groupBy(['f_id', 'f_file'])
             ->orderBy(new Expression('COUNT(*)'), 'DESC')
-            ->select('families.*')
+            ->select(['families.*'])
             ->limit($total)
             ->get()
             ->map(Family::rowMapper())
@@ -1286,7 +1286,7 @@ class FamilyRepository
 
         return $query
             ->groupBy(['f_id', 'f_file'])
-            ->select('families.*')
+            ->select(['families.*'])
             ->take($total)
             ->get()
             ->map(Family::rowMapper())

@@ -1346,7 +1346,7 @@ class GedcomRecord
         $xrefs = DB::table('link')
             ->where('l_file', '=', $this->tree()->id())
             ->where('l_to', '=', $this->xref())
-            ->select('l_from')
+            ->select(['l_from'])
             ->union($union)
             ->pluck('l_from');
 
