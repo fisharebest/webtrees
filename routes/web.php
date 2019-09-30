@@ -34,7 +34,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SelectTheme;
 
 $tree = app(Tree::class);
 
-/** @var @var Router $router */
+/** @var Router $router */
 $router = app(Router::class);
 
 // Admin routes.
