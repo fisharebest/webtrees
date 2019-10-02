@@ -62,7 +62,9 @@ function asset(string $path): string
         $version = '?v=' . filemtime(Webtrees::ROOT_DIR . 'public/' . $path);
     }
 
-    return 'public/' . $path . $version;
+    $base_url = app(ServerRequestInterface::class)->getAttribute('base_url');
+
+    return $base_url . '/public/' . $path . $version;
 }
 
 /**
