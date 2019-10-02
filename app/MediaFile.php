@@ -358,7 +358,17 @@ class MediaFile
     }
 
     /**
-     * check if the file exists on this server
+     * Read the contents of a media file.
+     *
+     * @return string
+     */
+    public function fileContents(): string
+    {
+        return $this->media->tree()->mediaFilesystem()->read($this->multimedia_file_refn);
+    }
+
+    /**
+     * Check if the file exists on this server
      *
      * @return bool
      */
@@ -383,25 +393,6 @@ class MediaFile
     public function filename(): string
     {
         return $this->multimedia_file_refn;
-    }
-
-    /**
-     * Get the filename on the server - for those (very few!) functions which actually
-     * need the filename, such as the PDF reports.
-     *
-     * @return string
-     */
-    public function getServerFilename(): string
-    {
-        $MEDIA_DIRECTORY = $this->media->tree()->getPreference('MEDIA_DIRECTORY');
-
-        if ($this->multimedia_file_refn === '' || $this->isExternal()) {
-            // External image, or (in the case of corrupt GEDCOM data) no image at all
-            return $this->multimedia_file_refn;
-        }
-
-        // Main image
-        return WT_DATA_DIR . $MEDIA_DIRECTORY . $this->multimedia_file_refn;
     }
 
     /**

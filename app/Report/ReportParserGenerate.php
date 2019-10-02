@@ -44,6 +44,10 @@ use stdClass;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
+use function imagecreatefromstring;
+use function imagesx;
+use function imagesy;
+
 /**
  * Class ReportParserGenerate - parse a report.xml file and generate the report.
  */
@@ -1685,10 +1689,9 @@ class ReportParserGenerate extends ReportParserBase
         $media_file = $person->findHighlightedMediaFile();
 
         if ($media_file !== null && $media_file->fileExists()) {
-            $attributes = getimagesize($media_file->getServerFilename()) ?: [
-                0,
-                0,
-            ];
+            $image      = imagecreatefromstring($media_file->fileContents());
+            $attributes = [(int) imagesx($image), (int) imagesy($image)];
+
             if ($width > 0 && $height == 0) {
                 $perc   = $width / $attributes[0];
                 $height = round($attributes[1] * $perc);
@@ -1738,10 +1741,9 @@ class ReportParserGenerate extends ReportParserBase
                 $media_file  = $mediaobject->firstImageFile();
 
                 if ($media_file !== null && $media_file->fileExists()) {
-                    $attributes = getimagesize($media_file->getServerFilename()) ?: [
-                        0,
-                        0,
-                    ];
+                    $image      = imagecreatefromstring($media_file->fileContents());
+                    $attributes = [(int) imagesx($image), (int) imagesy($image)];
+
                     if ($width > 0 && $height == 0) {
                         $perc   = $width / $attributes[0];
                         $height = round($attributes[1] * $perc);

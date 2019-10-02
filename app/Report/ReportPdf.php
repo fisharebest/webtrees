@@ -294,7 +294,7 @@ class ReportPdf extends AbstractReport
      */
     public function createImageFromObject(MediaFile $media_file, float $x, float $y, float $w, float $h, string $align, string $ln): ReportBaseImage
     {
-        return new ReportPdfImage($media_file->getServerFilename(), $x, $y, $w, $h, $align, $ln);
+        return new ReportPdfImage('@' . $media_file->fileContents(), $x, $y, $w, $h, $align, $ln);
     }
 
     /**
