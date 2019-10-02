@@ -18,6 +18,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use function http_build_query;
+
+use const PHP_QUERY_RFC3986;
+
 /**
  * Class Html - Add HTML markup to elements consistently.
  */
@@ -58,7 +62,11 @@ class Html
     {
         $path = str_replace(' ', '%20', $path);
 
-        return $path . '?' . http_build_query($data, '', '&', PHP_QUERY_RFC3986);
+        if (!empty($data)) {
+            $path .= '?' . http_build_query($data, '', '&', PHP_QUERY_RFC3986);
+        }
+
+        return $path;
     }
 
     /**
