@@ -45,7 +45,7 @@ class NoRouteFound implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         /** @var Tree|null $tree */
-        $tree = app(Tree::class);
+        $tree = $request->getAttribute('tree');
 
         // The tree exists, we have access to it, and it is fully imported.
         if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {

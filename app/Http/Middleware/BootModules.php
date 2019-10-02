@@ -25,7 +25,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
 use function method_exists;
 
 /**
@@ -33,6 +32,25 @@ use function method_exists;
  */
 class BootModules implements MiddlewareInterface
 {
+    /** @var ModuleService */
+    private $module_service;
+
+    /** @var ModuleThemeInterface */
+    private $theme;
+
+    /**
+     * BootModules constructor.
+     *
+     * @param ModuleService        $module_service
+     * @param ModuleThemeInterface $theme
+     */
+    public function __construct(ModuleService $module_service, ModuleThemeInterface $theme)
+    {
+
+        $this->module_service = $module_service;
+        $this->theme          = $theme;
+    }
+
     /**
      * @param ServerRequestInterface  $request
      * @param RequestHandlerInterface $handler
@@ -41,16 +59,13 @@ class BootModules implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $module_service = app(ModuleService::class);
-        $theme          = app(ModuleThemeInterface::class);
-
-        $bootable_modules = $module_service->all()->filter(static function (ModuleInterface $module) {
+        $bootable_modules = $this->module_service->all()->filter(static function (ModuleInterface $module) {
             return method_exists($module, 'boot');
         });
 
         foreach ($bootable_modules as $module) {
             // Only bootstrap the current theme.
-            if ($module instanceof ModuleThemeInterface && $module !== $theme) {
+            if ($module instanceof ModuleThemeInterface && $module !== $this->theme) {
                 continue;
             }
 
