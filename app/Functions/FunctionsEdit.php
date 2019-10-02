@@ -260,7 +260,7 @@ class FunctionsEdit
     {
         $options = ['' => '-'];
 
-        foreach ((new UserService())->all() as $user) {
+        foreach (app(UserService::class)->all() as $user) {
             $options[$user->userName()] = $user->realName() . ' - ' . $user->userName();
         }
 
