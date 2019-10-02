@@ -19,6 +19,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\RequestMethodInterface;
+use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -89,7 +90,7 @@ class Router implements MiddlewareInterface, RequestMethodInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         app()->instance(self::class, $this);
-        require 'routes/web.php';
+        require Webtrees::ROOT_DIR . 'routes/web.php';
 
         $method  = $request->getMethod();
         $route   = $request->getQueryParams()['route'] ?? '';
