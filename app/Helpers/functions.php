@@ -151,21 +151,16 @@ function response($content = '', $code = StatusCodeInterface::STATUS_OK, $header
  *
  * @param string $route
  * @param array  $parameters
- * @param bool   $absolute
  *
  * @return string
  */
-function route(string $route, array $parameters = [], bool $absolute = true): string
+function route(string $route, array $parameters = []): string
 {
     $parameters = ['route' => $route] + $parameters;
 
-    if ($absolute) {
-        $base_url = app(ServerRequestInterface::class)->getAttribute('base_url');
+    $base_url = app(ServerRequestInterface::class)->getAttribute('base_url');
 
-        return Html::url($base_url . 'index.php', $parameters);
-    }
-
-    return Html::url('index.php', $parameters);
+    return Html::url($base_url . 'index.php', $parameters);
 }
 
 /**
