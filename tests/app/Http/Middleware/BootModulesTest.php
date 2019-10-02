@@ -43,8 +43,7 @@ class BootModulesTest extends TestCase
         $handler->method('handle')->willReturn(response());
 
         // Theme 1 (not default) is not booted.
-        $theme1 = new class extends WebtreesTheme
-        {
+        $theme1 = new class extends WebtreesTheme {
             public function boot()
             {
                 throw new \Exception('Should not get here!');
@@ -52,8 +51,7 @@ class BootModulesTest extends TestCase
         };
 
         // Theme 2 (default) is booted.
-        $theme2 = new class ($this) extends XeneaTheme
-        {
+        $theme2 = new class($this) extends XeneaTheme {
             private $booted = false;
             private $test;
 
