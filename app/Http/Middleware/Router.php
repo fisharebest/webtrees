@@ -16,7 +16,7 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Illuminate\Support\Str;
@@ -33,7 +33,7 @@ use function explode;
  */
 class Router implements MiddlewareInterface, RequestMethodInterface
 {
-    private const CONTROLLER_NAMESPACE = __NAMESPACE__ . '\\Http\\Controllers\\';
+    private const CONTROLLER_NAMESPACE = '\\Fisharebest\\Webtrees\\Http\\Controllers\\';
 
     // To parse Controller::action
     private const SCOPE_OPERATOR = '::';

@@ -18,6 +18,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Http\Middleware\Router;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteUser;
 use Fisharebest\Webtrees\Http\RequestHandlers\MasqueradeAsUser;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;

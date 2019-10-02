@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Http\Middleware\ModuleMiddleware;
 use Fisharebest\Webtrees\Http\Middleware\NoRouteFound;
 use Fisharebest\Webtrees\Http\Middleware\PhpEnvironment;
 use Fisharebest\Webtrees\Http\Middleware\ReadConfigIni;
+use Fisharebest\Webtrees\Http\Middleware\Router;
 use Fisharebest\Webtrees\Http\Middleware\UpdateDatabaseSchema;
 use Fisharebest\Webtrees\Http\Middleware\UseCache;
 use Fisharebest\Webtrees\Http\Middleware\UseDatabase;
