@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-09-03 11:59+0000\n"
+"PO-Revision-Date: 2019-10-03 09:57+0000\n"
 "Last-Translator: Sergio Livi <me@serl.it>\n"
 "Language-Team: Italian <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/it/>\n"
 "Language: it\n"
@@ -7221,7 +7221,7 @@ msgstr "Houston, Texas, Stati Uniti d'America"
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:188
 msgid "How much recursion to use when searching for relationships"
-msgstr ""
+msgstr "Numero di passaggi ricorsivi da effettuare nella ricerca di relazioni"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6775
@@ -7385,7 +7385,7 @@ msgstr "Se si tenta di superare questi limiti, si possono riscontrare problemi d
 
 #: admin_site_config.php:519
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
-msgstr ""
+msgstr "Se si utilizza uno dei seguenti servizi di tracciamento e analisi del traffico, webtrees può aggiungere i relativi codici di tracciamento automaticamente."
 
 #: setup.php:187
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
@@ -9092,7 +9092,7 @@ msgstr "Unisci alberi genealogici"
 
 #: admin_site_merge.php:35 admin_trees_manage.php:479
 msgid "Merge records"
-msgstr "Fondi dati"
+msgstr "Unisci record"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:243
@@ -11531,7 +11531,7 @@ msgstr "Reno, Nevada, Stati Uniti d'America"
 
 #: admin_trees_manage.php:519
 msgid "Renumber"
-msgstr ""
+msgstr "Ricrea numerazione"
 
 #. I18N: Renumber the records in a family tree
 #: admin_trees_merge.php:100 admin_trees_merge.php:105
@@ -11949,7 +11949,7 @@ msgstr "Ricerca testo/modello"
 
 #: app/Module/RelationshipsChartModule.php:171
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
-msgstr ""
+msgstr "La ricerca di tutte le relazioni possibili può impiegare molto tempo negli alberi genealogici complessi."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:333
@@ -11959,7 +11959,7 @@ msgstr "Seattle, Washington, Stati Uniti d'America"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:374
 msgid "Second record"
-msgstr ""
+msgstr "Secondo record"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:415
@@ -11969,7 +11969,7 @@ msgstr "Connessione sicura"
 #. I18N: A configuration setting
 #: admin_site_config.php:620
 msgid "Security code"
-msgstr ""
+msgstr "Codice di sicurezza"
 
 #. I18N: %s is a URL
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:142
@@ -12021,16 +12021,16 @@ msgstr "Selezionare l’intervallo dei conteggi desiderato"
 
 #: admin_site_merge.php:200
 msgid "Select the facts and events to keep from both records."
-msgstr ""
+msgstr "Selezionare i fatti e gli eventi dei due record da conservare."
 
 #: admin_site_config.php:634
 msgid "Select the languages that will be shown in menus."
-msgstr ""
+msgstr "Selezionare le lingue che saranno mostrate nei menu."
 
 #. I18N: Records are indviduals, sources, etc.
 #: admin_site_merge.php:352
 msgid "Select two records to merge."
-msgstr ""
+msgstr "Selezionare due record da unire."
 
 #: app/GedcomCode/GedcomCodeRela.php:236
 msgid "Seller"
@@ -12159,7 +12159,7 @@ msgstr "Domestico"
 #. I18N: Menu entry
 #: admin.php:589 admin_site_info.php:26 app/Theme/AdministrationTheme.php:103
 msgid "Server information"
-msgstr ""
+msgstr "Informazioni del server"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:350 setup.php:280
@@ -12173,12 +12173,12 @@ msgstr "Timeout sessione"
 
 #: admin_trees_manage.php:441 admin_trees_manage.php:452
 msgid "Set as default"
-msgstr ""
+msgstr "Imposta come predefinito"
 
 #. I18N: You need to:
 #: login.php:573
 msgid "Set the access level for each tree."
-msgstr ""
+msgstr "Impostare il livello d'accesso per ogni albero."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:150 index_edit.php:47
@@ -12213,7 +12213,7 @@ msgstr "Permette di impostare il livello di accesso della privacy per tutte le p
 #. I18N: You need to:
 #: login.php:571
 msgid "Set the status to “approved”."
-msgstr ""
+msgstr "Impostare lo stato <i>approvato</i>."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1580
@@ -12512,7 +12512,7 @@ msgstr "Visualizza coppie divorziate."
 
 #: compact.php:60
 msgid "Show images"
-msgstr ""
+msgstr "Mostra immagini"
 
 #: app/Module/GoogleMapsModule.php:3951
 msgid "Show inactive places"
@@ -12557,7 +12557,7 @@ msgstr "Mostra le persone viventi"
 #. I18N: A configuration setting
 #: admin_trees_config.php:464
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Mostra i nomi delle persone confidenziali"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -13883,7 +13883,7 @@ msgstr "Record copiato negli appunti."
 #: admin_site_merge.php:172
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "I record <i>%1$s</i> e <i>%2$s</i> sono stati uniti."
 
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
@@ -14160,7 +14160,7 @@ msgstr "Questa famiglia non esiste o non si hanno i permessi per vederla."
 
 #: family.php:44
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Questa famiglia è stata eliminata. L’eliminazione dovrà essere esaminata da un moderatore."
+msgstr "Questa famiglia è stata eliminata. L’eliminazione dovrà essere approvate da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: family.php:39
@@ -14170,7 +14170,7 @@ msgstr "Questa famiglia è stata eliminata. È necessario verificare la rimozion
 
 #: family.php:54
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
-msgstr "Questa famiglia è stata modificata. Le modifiche dovranno essere esaminate da un moderatore."
+msgstr "Questa famiglia è stata modificata. Le modifiche dovranno essere approvate da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: family.php:49
@@ -14229,7 +14229,7 @@ msgstr "Questa persona non esiste o non si hanno i permessi per vederla."
 
 #: individual.php:58
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Questa persona è stata eliminata. L’eliminazione dovrà essere esaminata da un moderatore."
+msgstr "Questa persona è stata eliminata. L’eliminazione dovrà essere approvata da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: individual.php:53
@@ -14239,7 +14239,7 @@ msgstr "Questa persona è stata eliminata. È necessario verificare la rimozione
 
 #: individual.php:68
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
-msgstr "Questa persona è stata modificata. Le modifiche dovranno essere esaminate da un moderatore."
+msgstr "Questa persona è stata modificata. Le modifiche dovranno essere approvate da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: individual.php:63
@@ -14392,7 +14392,7 @@ msgstr "Questo oggetto multimediale non esiste o non si hanno i permessi per ved
 
 #: mediaviewer.php:45
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Questo oggetto multimediale è stato eliminato. L’eliminazione dovrà essere esaminata da un moderatore."
+msgstr "Questo oggetto multimediale è stato eliminato. L’eliminazione dovrà essere approvata da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: mediaviewer.php:40
@@ -14402,7 +14402,7 @@ msgstr "Questo oggetto multimediale è stato eliminato. È necessario verificare
 
 #: mediaviewer.php:55
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
-msgstr "Questo oggetto multimediale è stato modificato. Le modifiche dovranno essere esaminate da un moderatore."
+msgstr "Questo oggetto multimediale è stato modificato. Le modifiche dovranno essere approvate da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: mediaviewer.php:50
@@ -14438,7 +14438,7 @@ msgstr "Questa nota non esiste o non si hanno i permessi per vederla."
 
 #: note.php:46
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Questa nota è stata eliminata. L’eliminazione dovrà essere esaminata da un moderatore."
+msgstr "Questa nota è stata eliminata. L’eliminazione dovrà essere approvata da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: note.php:41
@@ -14448,7 +14448,7 @@ msgstr "Questa nota è stata eliminata. È necessario verificare la rimozione e 
 
 #: note.php:56
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
-msgstr "Questa nota è stata modificata. Le modifiche dovranno essere esaminate da un moderatore."
+msgstr "Questa nota è stata modificata. Le modifiche dovranno essere approvata da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: note.php:51
@@ -14522,27 +14522,27 @@ msgstr "Questo processo permette al proprietario del sito di assicurarsi che le 
 
 #: gedrecord.php:72
 msgid "This record does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Il record non esiste o non si hanno i diritti necessari per visualizzarlo."
 
 #: gedrecord.php:57
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Il record è stato eliminato. L’eliminazione dovrà essere approvata da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: gedrecord.php:52
 #, php-format
 msgid "This record has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "Il record è stato eliminato. È necessario verificare la rimozione e %1$s o %2$s."
 
 #: gedrecord.php:67
 msgid "This record has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Il record è stato modificato. Le modifiche dovranno essere approvate da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: gedrecord.php:62
 #, php-format
 msgid "This record has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "Il record è stato modificato. È necessario verificare le modifiche e %1$s o %2$s."
 
 #: repo.php:60
 msgid "This repository does not exist or you do not have permission to view it."
@@ -14550,7 +14550,7 @@ msgstr "Questo archivio non esiste o non si hanno i permessi per vederlo."
 
 #: repo.php:45
 msgid "This repository has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Questo archivio è stato eliminato. L’eliminazione dovrà essere esaminata da un moderatore."
+msgstr "Questo archivio è stato eliminato. L’eliminazione dovrà essere approvata da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: repo.php:40
@@ -14560,7 +14560,7 @@ msgstr "Questo archivio è stato eliminato. È necessario verificare la rimozion
 
 #: repo.php:55
 msgid "This repository has been edited. The changes need to be reviewed by a moderator."
-msgstr "Questo archivio è stato modificato. Le modifiche dovranno essere esaminate da un moderatore."
+msgstr "Questo archivio è stato modificato. Le modifiche dovranno essere approvate da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: repo.php:50
@@ -14609,7 +14609,7 @@ msgstr "Questa fonte non esiste o non si hanno i permessi per vederla."
 
 #: source.php:45
 msgid "This source has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Questa fonte è stata eliminata. L’eliminazione dovrà essere esaminata da un moderatore."
+msgstr "Questa fonte è stata eliminata. L’eliminazione dovrà essere approvata da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: source.php:40
@@ -14619,7 +14619,7 @@ msgstr "Questa fonte è stata eliminata. È necessario verificare la rimozione e
 
 #: source.php:55
 msgid "This source has been edited. The changes need to be reviewed by a moderator."
-msgstr "Questa fonte è stata modificata. Le modifiche dovranno essere esaminate da un moderatore."
+msgstr "Questa fonte è stata modificata. Le modifiche dovranno essere approvate da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: source.php:50
@@ -15025,12 +15025,12 @@ msgstr "Utenti totali"
 #. I18N: Menu entry
 #: admin_site_config.php:150 app/Theme/AdministrationTheme.php:99
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "Tracciamento e analisi del traffico"
 
 #: admin_site_config.php:575 admin_site_config.php:600
 #: admin_site_config.php:625
 msgid "Tracking and analytics are not added to the control panel."
-msgstr ""
+msgstr "Il tracciamento e l'analisi del traffico non sono stati aggiunti al pannello di controllo."
 
 #. I18N: gedcom tag TRLR
 #: app/GedcomTag.php:844
@@ -16099,7 +16099,7 @@ msgstr ""
 
 #: login.php:567
 msgid "You need to review the account details."
-msgstr ""
+msgstr "È necessario verificare l'account."
 
 #: setup.php:425
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
