@@ -19,31 +19,41 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\RequestMethodInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Support\Str;
+use Middleland\Dispatcher;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
-use function explode;
+use function array_map;
 
 /**
  * Simple class to help migrate to a third-party routing library.
  */
 class Router implements MiddlewareInterface, RequestMethodInterface
 {
-    private const CONTROLLER_NAMESPACE = '\\Fisharebest\\Webtrees\\Http\\Controllers\\';
-
-    // To parse Controller::action
-    private const SCOPE_OPERATOR = '::';
-
     /** @var string[][] */
     private $routes = [
         self::METHOD_GET  => [],
         self::METHOD_POST => [],
     ];
+
+    /** @var ModuleService */
+    private $module_service;
+
+    /**
+     * Router constructor.
+     *
+     * @param ModuleService $module_service
+     */
+    public function __construct(ModuleService $module_service)
+    {
+        $this->module_service = $module_service;
+    }
+
 
     /**
      * @param string $path
@@ -89,9 +99,13 @@ class Router implements MiddlewareInterface, RequestMethodInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        // Save the router in the container, as we'll need it to generate URLs.
         app()->instance(self::class, $this);
+
+        // Load the routing table.
         require Webtrees::ROOT_DIR . 'routes/web.php';
 
+        // Match the request to a route.
         $method  = $request->getMethod();
         $route   = $request->getQueryParams()['route'] ?? '';
         $routing = $this->routes[$method][$route] ?? '';
@@ -104,14 +118,20 @@ class Router implements MiddlewareInterface, RequestMethodInterface
             return $handler->handle($request);
         }
 
-        // Routes defined using controller::action
-        if (Str::contains($routing, self::SCOPE_OPERATOR)) {
-            [$class, $method] = explode(self::SCOPE_OPERATOR, $routing);
+        // Firstly, apply the route middleware
+        $route_middleware = [];
+        $route_middleware = array_map('app', $route_middleware);
 
-            return app(self::CONTROLLER_NAMESPACE . $class)->$method($request);
-        }
+        // Secondly, apply any module middleware
+        $module_middleware = $this->module_service->findByInterface(MiddlewareInterface::class)->all();
 
-        // Routes defined using a request handler
-        return app($routing)->handle($request);
+        // Finally, run the handler using middleware
+        $handler_middleware = [new WrapHandler($routing)];
+
+        $middleware = array_merge($route_middleware, $module_middleware, $handler_middleware);
+
+        $dispatcher = new Dispatcher($middleware, app());
+
+        return $dispatcher->dispatch($request);
     }
 }

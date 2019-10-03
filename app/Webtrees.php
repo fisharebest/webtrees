@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\DoHousekeeping;
 use Fisharebest\Webtrees\Http\Middleware\EmitResponse;
 use Fisharebest\Webtrees\Http\Middleware\HandleExceptions;
-use Fisharebest\Webtrees\Http\Middleware\ModuleMiddleware;
 use Fisharebest\Webtrees\Http\Middleware\NoRouteFound;
 use Fisharebest\Webtrees\Http\Middleware\PhpEnvironment;
 use Fisharebest\Webtrees\Http\Middleware\ReadConfigIni;
@@ -99,6 +98,30 @@ class Webtrees
 
     // Project website.
     public const URL = 'https://www.webtrees.net/';
+
+    private const MIDDLEWARE = [
+        PhpEnvironment::class,
+        EmitResponse::class,
+        HandleExceptions::class,
+        ReadConfigIni::class,
+        WebEnvironment::class,
+        UseDatabase::class,
+        UseDebugbar::class,
+        UpdateDatabaseSchema::class,
+        UseCache::class,
+        UseFilesystem::class,
+        UseSession::class,
+        UseTree::class,
+        UseLocale::class,
+        CheckForMaintenanceMode::class,
+        UseTheme::class,
+        DoHousekeeping::class,
+        CheckCsrf::class,
+        UseTransaction::class,
+        BootModules::class,
+        Router::class,
+        NoRouteFound::class,
+    ];
 
     /**
      * Initialise the application.
@@ -173,29 +196,6 @@ class Webtrees
      */
     public function middleware(): array
     {
-        return [
-            PhpEnvironment::class,
-            EmitResponse::class,
-            HandleExceptions::class,
-            ReadConfigIni::class,
-            WebEnvironment::class,
-            UseDatabase::class,
-            UseDebugbar::class,
-            UpdateDatabaseSchema::class,
-            UseCache::class,
-            UseFilesystem::class,
-            UseSession::class,
-            UseTree::class,
-            UseLocale::class,
-            CheckForMaintenanceMode::class,
-            UseTheme::class,
-            DoHousekeeping::class,
-            CheckCsrf::class,
-            UseTransaction::class,
-            BootModules::class,
-            ModuleMiddleware::class,
-            Router::class,
-            NoRouteFound::class,
-        ];
+        return self::MIDDLEWARE;
     }
 }
