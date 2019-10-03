@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-09-22 16:28+0100\n"
-"PO-Revision-Date: 2019-09-03 12:02+0000\n"
+"PO-Revision-Date: 2019-10-03 09:57+0000\n"
 "Last-Translator: Sergio Livi <me@serl.it>\n"
 "Language-Team: Italian <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/it/>\n"
 "Language: it\n"
@@ -1407,7 +1407,7 @@ msgstr "Aggiungi storie ed aneddoti sulle persone presenti nell’albero genealo
 
 #: resources/views/admin/map-import-form.phtml:68
 msgid "Add new, and update existing records"
-msgstr ""
+msgstr "Aggiungi un nuovo record e aggiorna quelli esistenti"
 
 #: resources/views/admin/trees-import.phtml:83
 msgid "Add spaces where long lines were wrapped"
@@ -7199,7 +7199,7 @@ msgstr "Houston, Texas, Stati Uniti d'America"
 #. I18N: Configuration option
 #: resources/views/modules/relationships-chart/config.phtml:28
 msgid "How much recursion to use when searching for relationships"
-msgstr ""
+msgstr "Numero di passaggi ricorsivi da effettuare nella ricerca di relazioni"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:243
@@ -7370,7 +7370,7 @@ msgstr "Se si tenta di superare questi limiti, si possono riscontrare problemi d
 
 #: app/Http/Controllers/Admin/ModuleController.php:100
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
-msgstr ""
+msgstr "Se si utilizza uno dei seguenti servizi di tracciamento e analisi del traffico, webtrees può aggiungere i relativi codici di tracciamento automaticamente."
 
 #: app/GedcomTag.php:2101 app/Http/Controllers/Admin/MediaController.php:469
 msgid "Image dimensions"
@@ -7683,7 +7683,7 @@ msgstr "File GEDCOM non valido: intestazione non presente."
 
 #: app/Exceptions/GedcomErrorException.php:35
 msgid "Invalid GEDCOM record"
-msgstr ""
+msgstr "Record GEDCOM non valido"
 
 #: app/Date.php:372
 msgid "Invalid date"
@@ -9168,7 +9168,7 @@ msgstr "Unisci alberi genealogici"
 #: app/Http/Controllers/AdminController.php:56
 #: resources/views/admin/trees.phtml:151
 msgid "Merge records"
-msgstr "Fondi dati"
+msgstr "Unisci record"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:466
@@ -10326,7 +10326,7 @@ msgstr "In questo giorno…"
 
 #: resources/views/admin/map-import-form.phtml:68
 msgid "Only add new records"
-msgstr ""
+msgstr "Aggiungere unicamente nuovi record"
 
 #: app/Functions/FunctionsEdit.php:216
 #: app/Functions/FunctionsPrintFacts.php:258
@@ -10339,7 +10339,7 @@ msgstr "Solo i gestori possono modificare"
 
 #: resources/views/admin/map-import-form.phtml:68
 msgid "Only update existing records"
-msgstr ""
+msgstr "Aggiornare unicamente record esistenti"
 
 #: resources/views/errors/database-connection.phtml:5
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
@@ -11066,7 +11066,7 @@ msgstr "Preston, Inghilterra"
 
 #: resources/views/admin/analytics-edit.phtml:13
 msgid "Preview"
-msgstr ""
+msgstr "Anteprima"
 
 #: app/GedcomCode/GedcomCodeRela.php:285
 msgid "Priest"
@@ -11568,7 +11568,7 @@ msgstr "Reno, Nevada, Stati Uniti d'America"
 
 #: resources/views/admin/trees.phtml:191
 msgid "Renumber"
-msgstr ""
+msgstr "Ricrea numerazione"
 
 #. I18N: Renumber the records in a family tree
 #: app/Http/Controllers/AdminTreesController.php:1121
@@ -11996,7 +11996,7 @@ msgstr "Ricerca testo/modello"
 
 #: resources/views/modules/relationships-chart/config.phtml:7
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
-msgstr ""
+msgstr "La ricerca di tutte le relazioni possibili può impiegare molto tempo negli alberi genealogici complessi."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:601
@@ -12005,7 +12005,7 @@ msgstr "Seattle, Washington, Stati Uniti d'America"
 
 #: resources/views/admin/merge-records-step-1.phtml:53
 msgid "Second record"
-msgstr ""
+msgstr "Secondo record"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:148
@@ -12015,7 +12015,7 @@ msgstr "Connessione sicura"
 #. I18N: A configuration setting
 #: resources/views/modules/statcounter/form.phtml:15
 msgid "Security code"
-msgstr ""
+msgstr "Codice di sicurezza"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:178
 #, php-format
@@ -12053,11 +12053,11 @@ msgstr "Selezionare l’intervallo d’età desiderato"
 
 #: resources/views/admin/merge-records-step-2.phtml:11
 msgid "Select the facts and events to keep from both records."
-msgstr ""
+msgstr "Selezionare i fatti e gli eventi dei due record da conservare."
 
 #: resources/views/admin/merge-records-step-1.phtml:13
 msgid "Select two records to merge."
-msgstr ""
+msgstr "Selezionare due record da unire."
 
 #: resources/views/admin/site-mail.phtml:195
 msgid "Selector"
@@ -12195,7 +12195,7 @@ msgstr "Domestico"
 #: app/Http/Controllers/AdminSiteController.php:530
 #: resources/views/admin/control-panel.phtml:97
 msgid "Server information"
-msgstr ""
+msgstr "Informazioni del server"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:76
@@ -12211,13 +12211,13 @@ msgstr ""
 
 #: resources/views/admin/trees.phtml:116 resources/views/admin/trees.phtml:123
 msgid "Set as default"
-msgstr ""
+msgstr "Imposta come predefinito"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:29
 #: resources/views/emails/verify-notify-text.phtml:16
 msgid "Set the access level for each tree."
-msgstr ""
+msgstr "Impostare il livello d'accesso per ogni albero."
 
 #: app/Http/Controllers/HomePageController.php:343
 #: resources/views/admin/control-panel.phtml:195
@@ -12238,7 +12238,7 @@ msgstr "Permette di impostare il livello di accesso della privacy per tutte le p
 #: resources/views/emails/verify-notify-html.phtml:27
 #: resources/views/emails/verify-notify-text.phtml:15
 msgid "Set the status to “approved”."
-msgstr ""
+msgstr "Impostare lo stato <i>approvato</i>."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml:636
@@ -12543,7 +12543,7 @@ msgstr "Mostra le persone viventi"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:130
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Mostra i nomi delle persone confidenziali"
 
 #: resources/xml/reports/ahnentafel_report.xml:9
 #: resources/xml/reports/family_group_report.xml:8
@@ -13922,7 +13922,7 @@ msgstr "Record copiato negli appunti."
 #: app/Http/Controllers/AdminController.php:251
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "I record <i>%1$s</i> e <i>%2$s</i> sono stati uniti."
 
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:160
@@ -14175,7 +14175,7 @@ msgstr "Questa famiglia non esiste o non si hanno i permessi per vederla."
 
 #: resources/views/family-page.phtml:15
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Questa famiglia è stata eliminata. L’eliminazione dovrà essere esaminata da un moderatore."
+msgstr "Questa famiglia è stata eliminata. L’eliminazione dovrà essere approvate da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page.phtml:13
@@ -14185,7 +14185,7 @@ msgstr "Questa famiglia è stata eliminata. È necessario verificare la rimozion
 
 #: resources/views/family-page.phtml:21
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
-msgstr "Questa famiglia è stata modificata. Le modifiche dovranno essere esaminate da un moderatore."
+msgstr "Questa famiglia è stata modificata. Le modifiche dovranno essere approvate da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page.phtml:19
@@ -14236,7 +14236,7 @@ msgstr "Questa persona non esiste o non si hanno i permessi per vederla."
 
 #: resources/views/individual-page.phtml:28
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Questa persona è stata eliminata. L’eliminazione dovrà essere esaminata da un moderatore."
+msgstr "Questa persona è stata eliminata. L’eliminazione dovrà essere approvata da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/individual-page.phtml:25
@@ -14246,7 +14246,7 @@ msgstr "Questa persona è stata eliminata. È necessario verificare la rimozione
 
 #: resources/views/individual-page.phtml:37
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
-msgstr "Questa persona è stata modificata. Le modifiche dovranno essere esaminate da un moderatore."
+msgstr "Questa persona è stata modificata. Le modifiche dovranno essere approvate da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/individual-page.phtml:34
@@ -14411,7 +14411,7 @@ msgstr "Questo oggetto multimediale non esiste o non si hanno i permessi per ved
 
 #: resources/views/media-page.phtml:26
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Questo oggetto multimediale è stato eliminato. L’eliminazione dovrà essere esaminata da un moderatore."
+msgstr "Questo oggetto multimediale è stato eliminato. L’eliminazione dovrà essere approvata da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/media-page.phtml:24
@@ -14421,7 +14421,7 @@ msgstr "Questo oggetto multimediale è stato eliminato. È necessario verificare
 
 #: resources/views/media-page.phtml:32
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
-msgstr "Questo oggetto multimediale è stato modificato. Le modifiche dovranno essere esaminate da un moderatore."
+msgstr "Questo oggetto multimediale è stato modificato. Le modifiche dovranno essere approvate da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/media-page.phtml:30
@@ -14452,7 +14452,7 @@ msgstr "Questa nota non esiste o non si hanno i permessi per vederla."
 
 #: resources/views/note-page.phtml:10
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Questa nota è stata eliminata. L’eliminazione dovrà essere esaminata da un moderatore."
+msgstr "Questa nota è stata eliminata. L’eliminazione dovrà essere approvata da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/note-page.phtml:8
@@ -14462,7 +14462,7 @@ msgstr "Questa nota è stata eliminata. È necessario verificare la rimozione e 
 
 #: resources/views/note-page.phtml:16
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
-msgstr "Questa nota è stata modificata. Le modifiche dovranno essere esaminate da un moderatore."
+msgstr "Questa nota è stata modificata. Le modifiche dovranno essere approvata da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/note-page.phtml:14
@@ -14524,31 +14524,31 @@ msgstr "Questo processo permette al proprietario del sito di assicurarsi che le 
 #: app/Exceptions/RecordAccessDeniedException.php:33
 #: app/Exceptions/RecordNotFoundException.php:33
 msgid "This record does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Il record non esiste o non si hanno i diritti necessari per visualizzarlo."
 
 #: resources/views/admin/trees-privacy.phtml:241
 msgid "This record does not exist."
-msgstr ""
+msgstr "Il record non esiste."
 
 #: resources/views/gedcom-record-page.phtml:10
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Il record è stato eliminato. L’eliminazione dovrà essere approvata da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/gedcom-record-page.phtml:8
 #, php-format
 msgid "This record has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "Il record è stato eliminato. È necessario verificare la rimozione e %1$s o %2$s."
 
 #: resources/views/gedcom-record-page.phtml:16
 msgid "This record has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Il record è stato modificato. Le modifiche dovranno essere approvate da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/gedcom-record-page.phtml:14
 #, php-format
 msgid "This record has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "Il record è stato modificato. È necessario verificare le modifiche e %1$s o %2$s."
 
 #: app/Exceptions/RepositoryAccessDeniedException.php:33
 #: app/Exceptions/RepositoryNotFoundException.php:33
@@ -14557,7 +14557,7 @@ msgstr "Questo archivio non esiste o non si hanno i permessi per vederlo."
 
 #: resources/views/repository-page.phtml:14
 msgid "This repository has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Questo archivio è stato eliminato. L’eliminazione dovrà essere esaminata da un moderatore."
+msgstr "Questo archivio è stato eliminato. L’eliminazione dovrà essere approvata da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/repository-page.phtml:12
@@ -14567,7 +14567,7 @@ msgstr "Questo archivio è stato eliminato. È necessario verificare la rimozion
 
 #: resources/views/repository-page.phtml:20
 msgid "This repository has been edited. The changes need to be reviewed by a moderator."
-msgstr "Questo archivio è stato modificato. Le modifiche dovranno essere esaminate da un moderatore."
+msgstr "Questo archivio è stato modificato. Le modifiche dovranno essere approvate da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/repository-page.phtml:18
@@ -14607,7 +14607,7 @@ msgstr "Questo dovrebbe essere un elenco separati da virgole o spazi di fatti, o
 
 #: resources/views/privacy-policy.phtml:25
 msgid "This site does not use any third-party tracking or analytics services."
-msgstr ""
+msgstr "Questo sito non utilizza nessun servizio di tracciamento e analisi del traffico di terze parti."
 
 #: resources/views/privacy-policy.phtml:16
 msgid "This site uses cookies to store your preferences on this site, such as the language you have selected."
@@ -14620,7 +14620,7 @@ msgstr "Questa fonte non esiste o non si hanno i permessi per vederla."
 
 #: resources/views/source-page.phtml:10
 msgid "This source has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Questa fonte è stata eliminata. L’eliminazione dovrà essere esaminata da un moderatore."
+msgstr "Questa fonte è stata eliminata. L’eliminazione dovrà essere approvata da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/source-page.phtml:8
@@ -14630,7 +14630,7 @@ msgstr "Questa fonte è stata eliminata. È necessario verificare la rimozione e
 
 #: resources/views/source-page.phtml:16
 msgid "This source has been edited. The changes need to be reviewed by a moderator."
-msgstr "Questa fonte è stata modificata. Le modifiche dovranno essere esaminate da un moderatore."
+msgstr "Questa fonte è stata modificata. Le modifiche dovranno essere approvate da un moderatore."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/source-page.phtml:14
@@ -15054,13 +15054,13 @@ msgstr "Utenti totali"
 #: resources/views/admin/modules.phtml:228
 #: resources/views/privacy-policy.phtml:20
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "Tracciamento e analisi del traffico"
 
 #: resources/views/modules/google-analytics/form.phtml:14
 #: resources/views/modules/matomo-analytics/form.phtml:23
 #: resources/views/modules/statcounter/form.phtml:23
 msgid "Tracking and analytics are not added to the control panel."
-msgstr ""
+msgstr "Il tracciamento e l'analisi del traffico non sono stati aggiunti al pannello di controllo."
 
 #. I18N: gedcom tag TRLR
 #: app/GedcomTag.php:1062
@@ -16004,7 +16004,7 @@ msgstr ""
 #: resources/views/emails/verify-notify-html.phtml:18
 #: resources/views/emails/verify-notify-text.phtml:11
 msgid "You need to review the account details."
-msgstr ""
+msgstr "È necessario verificare l'account."
 
 #: resources/views/setup/step-5-administrator.phtml:27
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
@@ -20307,7 +20307,6 @@ msgstr "…"
 #~ msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 #~ msgstr "Un server di database è in grado di memorizzare molti database distinti. È necessario selezionare un database esistente (creato dall’amministratore del server) o crearne uno nuovo (se l’account utente del database dispone di diritti di accesso sufficienti)."
 
-#, php-format
 #~ msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
 #~ msgstr "La nuova password è stata creata e inviata a %s. È possibile modificarla dopo l’accesso."
 
