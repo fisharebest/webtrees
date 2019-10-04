@@ -3,7 +3,9 @@
   "scripts": {
     "development": "NODE_ENV=development node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "devDependencies": {
     "laravel-mix": "^5.0.0",
@@ -36,9 +38,11 @@
     "select2": "4.0.10",
     "sortablejs": "^1.10.0",
     "typeahead.js-bootstrap4-css": "^1.0.0",
-    "wheelzoom": "^4.0.1"
+    "wheelzoom": "^4.0.1",
+    "snyk": "^1.230.5"
   },
   "browserslist": [
     ">0.1% and not dead"
-  ]
+  ],
+  "snyk": true
 }
