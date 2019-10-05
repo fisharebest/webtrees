@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Example footer with a link to a page of information.
+ */
+declare(strict_types=1);
+
 namespace MyCustomNamespace;
 
 use Fisharebest\Webtrees\Module\AbstractModule;
@@ -11,10 +16,6 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-
-/**
- * Example footer with a link to a page of information.
- */
 
 return new class extends AbstractModule implements ModuleCustomInterface, ModuleFooterInterface {
     use ModuleCustomTrait;

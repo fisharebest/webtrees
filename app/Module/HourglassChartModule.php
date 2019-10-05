@@ -167,7 +167,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function getAncestorsAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = app(Tree::class);
+        $tree = $request->getAttribute('tree');
         $xref = $request->getQueryParams()['xref'] ?? '';
 
         $family = Family::getInstance($xref, $tree);
@@ -188,7 +188,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function getDescendantsAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = app(Tree::class);
+        $tree = $request->getAttribute('tree');
         $xref = $request->getQueryParams()['xref'] ?? '';
 
         $show_spouse = (bool) ($request->getQueryParams()['show_spouse'] ?? false);

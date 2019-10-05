@@ -128,6 +128,9 @@ class Router implements MiddlewareInterface, RequestMethodInterface
         // Secondly, apply any module middleware
         $module_middleware = $this->module_service->findByInterface(MiddlewareInterface::class)->all();
 
+        // Add the route as attribute of the request
+        $request = $request->withAttribute('route', $routing);
+
         // Finally, run the handler using middleware
         $handler_middleware = [new WrapHandler($routing)];
 

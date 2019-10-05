@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * An example module to modify PHP and database configuration.
+ */
+declare(strict_types=1);
+
 namespace MyCustomNamespace;
 
 use Fisharebest\Webtrees\Module\AbstractModule;
@@ -7,10 +12,6 @@ use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Illuminate\Database\Capsule\Manager as DB;
-
-/**
- * An example module to modify PHP and database configuration.
- */
 
 return new class extends AbstractModule implements ModuleCustomInterface {
     use ModuleCustomTrait;

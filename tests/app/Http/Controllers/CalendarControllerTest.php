@@ -18,12 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use function app;
-
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Tree;
+
+use function app;
 
 /**
  * Test the module controller

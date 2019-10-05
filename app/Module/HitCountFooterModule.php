@@ -35,7 +35,7 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
 {
     use ModuleFooterTrait;
 
-    // Which pages/routes do we count?
+    // Which routes do we count?
     // For historical reasons, we record the names of the original webtrees script and parameter.
     protected const PAGE_NAMES = [
         'family'     => 'family.php',
@@ -111,11 +111,11 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $tree = app(Tree::class);
+        $route = $request->getAttribute('route');
+        $tree  = $request->getAttribute('tree');
+        $user  = $request->getAttribute('user');
 
         if ($tree instanceof Tree && $tree->getPreference('SHOW_COUNTER')) {
-            $route = $request->getQueryParams()['route'] ?? '';
-
             $page_name = self::PAGE_NAMES[$route] ?? '';
 
             switch ($route) {
@@ -133,7 +133,6 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
                     break;
 
                 case 'user-page':
-                    $user            = app(UserInterface::class);
                     $this->page_hits = $this->countHit($tree, $page_name, 'user:' . $user->id());
                     break;
             }

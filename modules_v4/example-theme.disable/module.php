@@ -1,16 +1,17 @@
 <?php
 
+/**
+ * Example theme.  Here we are extending an existing theme.
+ * Instead, you could extend AbstractModule and implement ModuleThemeInterface directly.
+ */
+declare(strict_types=1);
+
 namespace MyCustomNamespace;
 
 use Fisharebest\Webtrees\Module\MinimalTheme;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
 use Fisharebest\Webtrees\View;
-
-/**
- * Example theme.  Here we are extending an existing theme.
- * Instead, you could extend AbstractModule and implement ModuleThemeInterface directly.
- */
 
 return new class extends MinimalTheme implements ModuleCustomInterface {
     use ModuleCustomTrait;

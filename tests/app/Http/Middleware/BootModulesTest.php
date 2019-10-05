@@ -51,7 +51,7 @@ class BootModulesTest extends TestCase
         };
 
         // Theme 2 (default) is booted.
-        $theme2 = new class($this) extends XeneaTheme {
+        $theme2 = new class ($this) extends XeneaTheme {
             private $booted = false;
             private $test;
 

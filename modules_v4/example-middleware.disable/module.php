@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * An example module to demonstrate middleware.
+ */
+declare(strict_types=1);
+
 namespace MyCustomNamespace;
 
 use Fisharebest\Webtrees\Module\AbstractModule;
@@ -12,10 +17,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function preg_match;
 use function response;
-
-/**
- * An example module to demonstrate middleware.
- */
 
 return new class extends AbstractModule implements ModuleCustomInterface, MiddlewareInterface {
     use ModuleCustomTrait;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Example module
+ */
+declare(strict_types=1);
+
 namespace MyCustomNamespace;
 
 use Fisharebest\Webtrees\Auth;
@@ -9,10 +14,6 @@ use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
 use Fisharebest\Webtrees\Tree;
-
-/**
- * Example module
- */
 
 return new class extends AbstractModule implements ModuleCustomInterface {
     use ModuleCustomTrait;

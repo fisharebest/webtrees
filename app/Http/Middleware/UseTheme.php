@@ -56,7 +56,7 @@ class UseTheme implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        foreach ($this->themes() as $theme) {
+        foreach ($this->themes($request) as $theme) {
             if ($theme instanceof ModuleThemeInterface) {
                 // Bind this theme into the container
                 app()->instance(ModuleThemeInterface::class, $theme);
@@ -74,9 +74,11 @@ class UseTheme implements MiddlewareInterface
     /**
      * The theme can be chosen in various ways.
      *
+     * @param ServerRequestInterface $request
+     *
      * @return Generator
      */
-    private function themes(): Generator
+    private function themes(ServerRequestInterface $request): Generator
     {
         $themes = $this->module_service->findByInterface(ModuleThemeInterface::class);
 
@@ -84,7 +86,7 @@ class UseTheme implements MiddlewareInterface
         yield $themes->get(Session::get('theme', ''));
 
         // Default for tree
-        $tree = app(Tree::class);
+        $tree = $request->getAttribute('tree');
 
         if ($tree instanceof Tree) {
             yield $themes->get($tree->getPreference('THEME_DIR'));

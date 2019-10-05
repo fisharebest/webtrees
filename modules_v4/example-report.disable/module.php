@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Example report.
+ */
+declare(strict_types=1);
+
 namespace MyCustomNamespace;
 
 use Fisharebest\Webtrees\Module\AbstractModule;
@@ -7,10 +12,6 @@ use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleReportTrait;
-
-/**
- * Example report.
- */
 
 return new class extends AbstractModule implements ModuleCustomInterface, ModuleReportInterface {
     use ModuleCustomTrait;
