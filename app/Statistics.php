@@ -18,6 +18,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Psr\Http\Message\ServerRequestInterface;
+
+use function app;
 use function count;
 
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
@@ -2419,7 +2422,9 @@ class Statistics implements
      */
     public function contactWebmaster(): string
     {
-        return $this->contactRepository->contactWebmaster();
+        $request = app(ServerRequestInterface::class);
+
+        return $this->contactRepository->contactWebmaster($request);
     }
 
     /**
@@ -2427,7 +2432,9 @@ class Statistics implements
      */
     public function contactGedcom(): string
     {
-        return $this->contactRepository->contactGedcom();
+        $request = app(ServerRequestInterface::class);
+
+        return $this->contactRepository->contactGedcom($request);
     }
 
     /**

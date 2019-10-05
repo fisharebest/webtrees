@@ -19,8 +19,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class PoweredByWebtreesModule - provide a link to the project home page.
@@ -64,11 +64,11 @@ class PoweredByWebtreesModule extends AbstractModule implements ModuleFooterInte
     /**
      * A footer, to be added at the bottom of every page.
      *
-     * @param Tree|null $tree
+     * @param ServerRequestInterface $request
      *
      * @return string
      */
-    public function getFooter(?Tree $tree): string
+    public function getFooter(ServerRequestInterface $request): string
     {
         return view('modules/powered-by-webtrees/footer', [
             'name' => Webtrees::NAME,

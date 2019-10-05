@@ -149,6 +149,7 @@ class TestCase extends \PHPUnit\Framework\TestCase implements StatusCodeInterfac
             ->withAttribute('client_ip', '127.0.0.1');
 
         app()->instance(ServerRequestInterface::class, $request);
+        View::share('request', $request);
 
         return $request;
     }

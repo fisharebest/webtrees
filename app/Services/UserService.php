@@ -20,15 +20,12 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ServerRequestInterface;
-
 use function app;
 
 /**
@@ -344,15 +341,15 @@ class UserService
     }
 
     /**
-     * @param User $contact_user
+     * @param User                   $contact_user
+     * @param ServerRequestInterface $request
      *
      * @return string
      */
-    public function contactLink(User $contact_user): string
+    public function contactLink(User $contact_user, ServerRequestInterface $request): string
     {
-        $tree    = app(Tree::class);
-        $user    = app(UserInterface::class);
-        $request = app(ServerRequestInterface::class);
+        $tree = $request->getAttribute('tree');
+        $user = $request->getAttribute('user');
 
         if ($contact_user->getPreference('contactmethod') === 'mailto') {
             $url = 'mailto:' . $contact_user->email();

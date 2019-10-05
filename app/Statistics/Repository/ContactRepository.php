@@ -22,6 +22,9 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\ContactRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Psr\Http\Message\ServerRequestInterface;
+
+use function app;
 
 /**
  * A repository providing methods for contact related statistics.
@@ -58,7 +61,9 @@ class ContactRepository implements ContactRepositoryInterface
         $user    = $this->user_service->find($user_id);
 
         if ($user instanceof User) {
-            return $this->user_service->contactLink($user);
+            $request = app(ServerRequestInterface::class);
+
+            return $this->user_service->contactLink($user, $request);
         }
 
         return '';
@@ -73,7 +78,9 @@ class ContactRepository implements ContactRepositoryInterface
         $user    = $this->user_service->find($user_id);
 
         if ($user instanceof User) {
-            return $this->user_service->contactLink($user);
+            $request = app(ServerRequestInterface::class);
+
+            return $this->user_service->contactLink($user, $request);
         }
 
         return '';

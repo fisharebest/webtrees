@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
@@ -38,7 +37,7 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
     /**
      * Dependency injection.
      *
-     * @param ModuleService          $module_service
+     * @param ModuleService $module_service
      */
     public function __construct(ModuleService $module_service)
     {
@@ -80,11 +79,11 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
     /**
      * A footer, to be added at the bottom of every page.
      *
-     * @param Tree|null $tree
+     * @param ServerRequestInterface $request
      *
      * @return string
      */
-    public function getFooter(?Tree $tree): string
+    public function getFooter(ServerRequestInterface $request): string
     {
         if ($this->isCookieWarningAcknowledged()) {
             return '';

@@ -86,11 +86,11 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
     /**
      * A footer, to be added at the bottom of every page.
      *
-     * @param Tree|null $tree
+     * @param ServerRequestInterface $request
      *
      * @return string
      */
-    public function getFooter(?Tree $tree): string
+    public function getFooter(ServerRequestInterface $request): string
     {
         if ($this->page_hits === 0) {
             return '';
@@ -155,9 +155,9 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
     {
         // Don't increment the counter while we stay on the same page.
         if (
-            Session::get('last_gedcom_id') === $tree->id() &&
             Session::get('last_page_name') === $page &&
-            Session::get('last_page_parameter') === $parameter
+            Session::get('last_page_parameter') === $parameter &&
+            Session::get('last_gedcom_id') === $tree->id()
         ) {
             return (int) Session::get('last_count');
         }

@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\View;
 use Fisharebest\Webtrees\Webtrees;
 use Middleland\Dispatcher;
 use Psr\Http\Message\ResponseInterface;
@@ -111,8 +112,9 @@ class Router implements MiddlewareInterface, RequestMethodInterface
         $route   = $request->getQueryParams()['route'] ?? '';
         $routing = $this->routes[$method][$route] ?? '';
 
-        // Bind the request into the container
+        // Bind the request into the container and the layout
         app()->instance(ServerRequestInterface::class, $request);
+        View::share('request', $request);
 
         // No route matched?
         if ($routing === '') {

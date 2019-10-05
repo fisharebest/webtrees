@@ -139,7 +139,7 @@ use Psr\Http\Message\ServerRequestInterface;
         </main>
 
         <footer class="wt-footers container d-print-none">
-            <?= app(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(static function (ModuleFooterInterface $module) use ($tree): string { return $module->getFooter($tree); })->implode('') ?>
+            <?= app(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(static function (ModuleFooterInterface $module) use ($request): string { return $module->getFooter($request); })->implode('') ?>
         </footer>
 
         <script src="<?= e(asset('js/vendor.min.js')) ?>"></script>

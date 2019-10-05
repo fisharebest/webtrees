@@ -50,11 +50,11 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
     /**
      * A footer, to be added at the bottom of every page.
      *
-     * @param Tree|null $tree
+     * @param ServerRequestInterface $request
      *
      * @return string
      */
-    public function getFooter(?Tree $tree): string
+    public function getFooter(ServerRequestInterface $request): string
     {
         $url = route('module', ['module' => $this->name(), 'action' => 'Page']);
 

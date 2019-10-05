@@ -20,8 +20,8 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class ContactsFooterModule - provide a link to the site owner.
@@ -80,12 +80,14 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
     /**
      * A footer, to be added at the bottom of every page.
      *
-     * @param Tree|null $tree
+     * @param ServerRequestInterface $request
      *
      * @return string
      */
-    public function getFooter(?Tree $tree): string
+    public function getFooter(ServerRequestInterface $request): string
     {
+        $tree = $request->getAttribute('tree');
+
         if ($tree === null) {
             return '';
         }
@@ -95,25 +97,25 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
 
         if ($contact_user instanceof User && $contact_user === $webmaster_user) {
             return view('modules/contact-links/footer', [
-                'contact_links' => $this->contactLinkEverything($contact_user),
+                'contact_links' => $this->contactLinkEverything($contact_user, $request),
             ]);
         }
 
         if ($contact_user instanceof User && $webmaster_user instanceof User) {
             return view('modules/contact-links/footer', [
-                'contact_links' => $this->contactLinkGenealogy($contact_user) . '<br>' . $this->contactLinkTechnical($webmaster_user),
+                'contact_links' => $this->contactLinkGenealogy($contact_user, $request) . '<br>' . $this->contactLinkTechnical($webmaster_user, $request),
             ]);
         }
 
         if ($contact_user instanceof User) {
             return view('modules/contact-links/footer', [
-                'contact_links' => $this->contactLinkGenealogy($contact_user),
+                'contact_links' => $this->contactLinkGenealogy($contact_user, $request),
             ]);
         }
 
         if ($webmaster_user instanceof User) {
             return view('modules/contact-links/footer', [
-                'contact_links' => $this->contactLinkTechnical($webmaster_user),
+                'contact_links' => $this->contactLinkTechnical($webmaster_user, $request),
             ]);
         }
 
@@ -123,36 +125,39 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
     /**
      * Create contact link for both technical and genealogy support.
      *
-     * @param User $user
+     * @param User                   $user
+     * @param ServerRequestInterface $request
      *
      * @return string
      */
-    public function contactLinkEverything(User $user): string
+    public function contactLinkEverything(User $user, ServerRequestInterface $request): string
     {
-        return I18N::translate('For technical support or genealogy questions contact %s.', $this->user_service->contactLink($user));
+        return I18N::translate('For technical support or genealogy questions contact %s.', $this->user_service->contactLink($user, $request));
     }
 
     /**
      * Create contact link for genealogy support.
      *
-     * @param User $user
+     * @param User                   $user
+     * @param ServerRequestInterface $request
      *
      * @return string
      */
-    public function contactLinkGenealogy(User $user): string
+    public function contactLinkGenealogy(User $user, ServerRequestInterface $request): string
     {
-        return I18N::translate('For help with genealogy questions contact %s.', $this->user_service->contactLink($user));
+        return I18N::translate('For help with genealogy questions contact %s.', $this->user_service->contactLink($user, $request));
     }
 
     /**
      * Create contact link for technical support.
      *
-     * @param User $user
+     * @param User                   $user
+     * @param ServerRequestInterface $request
      *
      * @return string
      */
-    public function contactLinkTechnical(User $user): string
+    public function contactLinkTechnical(User $user, ServerRequestInterface $request): string
     {
-        return I18N::translate('For technical support and information contact %s.', $this->user_service->contactLink($user));
+        return I18N::translate('For technical support and information contact %s.', $this->user_service->contactLink($user, $request));
     }
 }
