@@ -41,8 +41,6 @@ $router = app(Router::class);
 // Admin routes.
 if (Auth::isAdmin()) {
     $router->get('admin-control-panel', 'Admin\ControlPanelController::controlPanel');
-    $router->get('analytics-edit', 'Admin\AnalyticsController::edit');
-    $router->post('analytics-edit', 'Admin\AnalyticsController::save');
     $router->get('admin-fix-level-0-media', 'Admin\FixLevel0MediaController::fixLevel0Media');
     $router->post('admin-fix-level-0-media-action', 'Admin\FixLevel0MediaController::fixLevel0MediaAction');
     $router->get('admin-fix-level-0-media-data', 'Admin\FixLevel0MediaController::fixLevel0MediaData');
