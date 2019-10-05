@@ -122,6 +122,10 @@ class ComposerStaticInitada08cf78f4e9b8136568f8f9fff9e06
         array (
             'Carbon\\' => 7,
         ),
+        'A' => 
+        array (
+            'Aura\\Router\\' => 12,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -358,6 +362,10 @@ class ComposerStaticInitada08cf78f4e9b8136568f8f9fff9e06
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
+        ),
+        'Aura\\Router\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/aura/router/src',
         ),
     );
 

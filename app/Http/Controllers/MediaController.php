@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Services\ClipboardService;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function redirect;
 
 /**
  * Controller for the media page.
@@ -53,11 +54,16 @@ class MediaController extends AbstractBaseController
      */
     public function show(ServerRequestInterface $request): ResponseInterface
     {
+        $slug  = $request->getAttribute('slug');
         $tree  = $request->getAttribute('tree');
-        $xref  = $request->getQueryParams()['xref'];
+        $xref  = $request->getAttribute('xref');
         $media = Media::getInstance($xref, $tree);
 
         Auth::checkMediaAccess($media);
+
+        if ($slug !== $media->slug()) {
+            return redirect($media->url());
+        }
 
         return $this->viewResponse('media-page', [
             'clipboard_facts' => $this->clipboard_service->pastableFacts($media, new Collection()),

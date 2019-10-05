@@ -41,7 +41,9 @@ class ModuleActionTest extends TestCase
         $user           = new GuestUser();
         $module_service = new ModuleService();
         $handler        = new ModuleAction($module_service, $user);
-        $request        = self::createRequest(self::METHOD_GET, ['route' => 'module', 'module' => 'faq', 'action' => 'Show', 'ged' => $tree->name()])
+        $request        = self::createRequest(self::METHOD_GET, ['route' => 'module', 'ged' => $tree->name()])
+            ->withAttribute('module', 'faq')
+            ->withAttribute('action', 'Show')
             ->withAttribute('tree', $tree);
 
         app()->instance(ServerRequestInterface::class, $request);
@@ -61,7 +63,10 @@ class ModuleActionTest extends TestCase
         $user           = new GuestUser();
         $module_service = new ModuleService();
         $handler        = new ModuleAction($module_service, $user);
-        $request        = self::createRequest(self::METHOD_GET, ['route' => 'module', 'module' => 'faq', 'action' => 'Fish']);
+        $request        = self::createRequest(self::METHOD_GET, ['route' => 'module'])
+            ->withAttribute('module', 'faq')
+            ->withAttribute('action', 'Fish')
+        ;
         $handler->handle($request);
     }
 
@@ -75,7 +80,10 @@ class ModuleActionTest extends TestCase
         $user           = new GuestUser();
         $module_service = new ModuleService();
         $handler        = new ModuleAction($module_service, $user);
-        $request        = self::createRequest(self::METHOD_GET, ['route' => 'module', 'module' => 'fish', 'action' => 'Show']);
+        $request        = self::createRequest(self::METHOD_GET, ['route' => 'module'])
+            ->withAttribute('module', 'fish')
+            ->withAttribute('action', 'Show')
+        ;
         $response       = $handler->handle($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
@@ -93,7 +101,10 @@ class ModuleActionTest extends TestCase
         $user           = new GuestUser();
         $module_service = new ModuleService();
         $handler        = new ModuleAction($module_service, $user);
-        $request        = self::createRequest(self::METHOD_GET, ['route' => 'module', 'module' => 'faq', 'action' => 'Admin', 'ged' => $tree->name()]);
+        $request        = self::createRequest(self::METHOD_GET, ['route' => 'module', 'ged' => $tree->name()])
+            ->withAttribute('module', 'faq')
+            ->withAttribute('action', 'Admin')
+        ;
         $handler->handle($request);
     }
 }

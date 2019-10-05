@@ -1,0 +1,12 @@
+{
+    "title": "Aura.Router",
+    "content": [
+        "getting-started.md",
+        "defining-routes.md",
+        "attaching-route-groups.md",
+        "generating-paths.md",
+        "custom-maps.md",
+        "custom-matching.md",
+        "other-topics.md"
+    ]
+}

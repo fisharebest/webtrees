@@ -41,12 +41,12 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-
 use function explode;
 use function ob_get_clean;
 use function ob_start;
 use function preg_match_all;
 use function preg_replace;
+use function redirect;
 use function str_replace;
 use function strpos;
 
@@ -87,11 +87,16 @@ class IndividualController extends AbstractBaseController
      */
     public function show(ServerRequestInterface $request): ResponseInterface
     {
-        $tree        = $request->getAttribute('tree');
-        $xref       = $request->getQueryParams()['xref'];
+        $slug       = $request->getAttribute('slug');
+        $tree       = $request->getAttribute('tree');
+        $xref       = $request->getAttribute('xref');
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual);
+
+        if ($slug !== $individual->slug()) {
+            return redirect($individual->url());
+        }
 
         // What is (was) the age of the individual
         $bdate = $individual->getBirthDate();

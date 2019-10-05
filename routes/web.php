@@ -18,7 +18,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Http\Middleware\Router;
+use Aura\Router\Map;
+use Aura\Router\RouterContainer;
+use Fig\Http\Message\RequestMethodInterface;
+use Fisharebest\Webtrees\Http\Middleware\AuthAdministrator;
+use Fisharebest\Webtrees\Http\Middleware\AuthEditor;
+use Fisharebest\Webtrees\Http\Middleware\AuthManager;
+use Fisharebest\Webtrees\Http\Middleware\AuthMember;
+use Fisharebest\Webtrees\Http\Middleware\AuthModerator;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteUser;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
@@ -37,15 +44,17 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectTheme;
 use Fisharebest\Webtrees\Http\RequestHandlers\VerifyEmail;
 
-/** @var Tree|null $tree */
+use function app;
 
-$tree = app(Tree::class);
-
-/** @var Router $router */
-$router = app(Router::class);
+/** @var Map $router */
+$router = app(RouterContainer::class)->getMap();
 
 // Admin routes.
-if (Auth::isAdmin()) {
+$router->attach('', '/admin', static function (Map $router) {
+    $router->extras([
+        'middleware' => [AuthAdministrator::class]
+    ]);
+
     $router->get('admin-control-panel', '/admin-control-panel', 'Admin\ControlPanelController::controlPanel');
     $router->get('admin-fix-level-0-media', '/admin-fix-level-0-media', 'Admin\FixLevel0MediaController::fixLevel0Media');
     $router->post('admin-fix-level-0-media-action', '/admin-fix-level-0-media-action', 'Admin\FixLevel0MediaController::fixLevel0MediaAction');
@@ -134,10 +143,14 @@ if (Auth::isAdmin()) {
     $router->post('broadcast-action', '/broadcast', 'MessageController::broadcastAction');
     $router->post('delete-user', '/delete-user', DeleteUser::class);
     $router->post('masquerade', '/masquerade', MasqueradeAsUser::class);
-}
+});
 
 // Manager routes.
-if ($tree instanceof Tree && Auth::isManager($tree)) {
+$router->attach('', '', static function (Map $router) {
+    $router->extras([
+        'middleware' => [AuthManager::class]
+    ]);
+
     $router->get('admin-control-panel-manager', '/admin-control-panel-manager', 'Admin\ControlPanelController::controlPanelManager');
     $router->get('admin-changes-log', '/admin-changes-log', 'Admin\ChangesLogController::changesLog');
     $router->get('admin-changes-log-data', '/admin-changes-log-data', 'Admin\ChangesLogController::changesLogData');
@@ -170,19 +183,27 @@ if ($tree instanceof Tree && Auth::isManager($tree)) {
     $router->post('tree-preferences-update', '/tree-preferences', 'AdminController::treePreferencesUpdate');
     $router->get('tree-privacy', '/tree-privacy', 'AdminController::treePrivacyEdit');
     $router->post('tree-privacy-update', '/tree-privacy', 'AdminController::treePrivacyUpdate');
-}
+});
 
-// Moderator routes.
-if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::isModerator($tree)) {
+// Manager routes.
+$router->attach('', '', static function (Map $router) {
+    $router->extras([
+        'middleware' => [AuthModerator::class]
+    ]);
+
     $router->get('show-pending', '/show-pending', 'PendingChangesController::showChanges');
     $router->post('accept-pending', '/accept-pending', 'PendingChangesController::acceptChange');
     $router->post('reject-pending', '/reject-pending', 'PendingChangesController::rejectChange');
     $router->post('accept-all-pending', '/accept-all-pending', 'PendingChangesController::acceptAllChanges');
     $router->post('reject-all-pending', '/reject-all-pending', 'PendingChangesController::rejectAllChanges');
-}
+});
 
-// Editor routes.
-if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::isEditor($tree)) {
+// Manager routes.
+$router->attach('', '', static function (Map $router) {
+    $router->extras([
+        'middleware' => [AuthEditor::class]
+    ]);
+
     $router->get('add-media-file', '/add-media-file', 'EditMediaController::addMediaFile');
     $router->post('add-media-file-update', '/add-media-file', 'EditMediaController::addMediaFileAction');
     $router->get('edit-media-file', '/edit-media-file', 'EditMediaController::editMediaFile');
@@ -247,10 +268,14 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::i
     $router->post('edit-name-action', '/edit-name-update', 'EditIndividualController::editNameAction');
     $router->get('add-name', '/add-name', 'EditIndividualController::addName');
     $router->post('add-name-action', '/add-name-update', 'EditIndividualController::addNameAction');
-}
+});
 
 // Member routes.
-if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::isMember($tree)) {
+$router->attach('', '', static function (Map $router) {
+    $router->extras([
+        'middleware' => [AuthMember::class]
+    ]);
+
     $router->get('user-page', '/my-page', 'HomePageController::userPage');
     $router->get('user-page-block', '/user-page-block', 'HomePageController::userPageBlock');
     $router->get('user-page-edit', '/user-page-edit', 'HomePageController::userPageEdit');
@@ -260,10 +285,14 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::i
     $router->get('my-account', '/my-account', 'AccountController::edit');
     $router->post('my-account-update', '/my-account', 'AccountController::update');
     $router->post('delete-account', '/delete-account', 'AccountController::delete');
-}
+});
 
-// Public routes (that need a tree).
-if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
+// Member routes.
+$router->attach('', '', static function (Map $router) {
+    $router->extras([
+        'middleware' => [AuthMember::class]
+    ]);
+
     $router->get('autocomplete-folder', '/autocomplete-folder', 'AutocompleteController::folder');
     $router->get('autocomplete-page', '/autocomplete-page', 'AutocompleteController::page');
     $router->get('autocomplete-place', '/autocomplete-place', 'AutocompleteController::place');
@@ -274,18 +303,18 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
     $router->get('tree-page-block', '/tree-page-block', 'HomePageController::treePageBlock');
     $router->get('media-thumbnail', '/media-thumbnail', 'MediaFileController::mediaThumbnail');
     $router->get('media-download', '/media-download', 'MediaFileController::mediaDownload');
-    $router->get('family', '/family/{xref}{/slug}', 'FamilyController::show');
-    $router->get('individual', '/individual/{xref}{/slug}', 'IndividualController::show');
+    $router->get('family', '/tree/{tree}/family/{xref}{/slug}', 'FamilyController::show');
+    $router->get('individual', '/tree/{tree}/individual/{xref}{/slug}', 'IndividualController::show');
     $router->get('individual-tab', '/individual-tab', 'IndividualController::tab');
-    $router->get('media', '/media/{xref}{/slug}', 'MediaController::show');
+    $router->get('media', '/tree/{tree}/media/{xref}{/slug}', 'MediaController::show');
     $router->get('contact', '/contact', 'MessageController::contactPage');
     $router->post('contact-action', '/contact', 'MessageController::contactAction');
     $router->get('message', '/message', 'MessageController::messagePage');
     $router->post('message-action', '/message', 'MessageController::messageAction');
-    $router->get('note', '/note/{xref}{/slug}', 'NoteController::show');
-    $router->get('source', '/source/{xref}{/slug}', 'SourceController::show');
-    $router->get('record', '/record/{xref}{/slug}', 'GedcomRecordController::show');
-    $router->get('repository', '/repository/{xref}{/slug}', 'RepositoryController::show');
+    $router->get('note', '/tree/{tree}/note/{xref}{/slug}', 'NoteController::show');
+    $router->get('source', '/tree/{tree}/source/{xref}{/slug}', 'SourceController::show');
+    $router->get('record', '/tree/{tree}/record/{xref}{/slug}', 'GedcomRecordController::show');
+    $router->get('repository', '/tree/{tree}/repository/{xref}{/slug}', 'RepositoryController::show');
     $router->get('report-list', '/report-list', 'ReportEngineController::reportList');
     $router->get('report-setup', '/report-setup', 'ReportEngineController::reportSetup');
     $router->get('report-run', '/report-run', 'ReportEngineController::reportRun');
@@ -304,12 +333,12 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
     $router->get('search-advanced', '/search-advanced', 'SearchController::advanced');
     $router->get('search-general', '/search-general', 'SearchController::general');
     $router->get('search-phonetic', '/search-phonetic', 'SearchController::phonetic');
-}
+});
 
 $router->get('login', '/login', LoginPage::class);
 $router->post('login-action', '/login', LoginAction::class);
-$router->get('logout', '/logout', Logout::class);
-$router->post('logout', '/logout', Logout::class);
+$router->get('logout', '/logout', Logout::class)
+    ->allows(RequestMethodInterface::METHOD_POST);
 $router->get('register', '/register', RegisterPage::class);
 $router->post('register-action', '/register', RegisterAction::class);
 $router->get('verify', '/verify', VerifyEmail::class);
@@ -320,6 +349,6 @@ $router->post('password-reset-action', '/password-reset', PasswordResetAction::c
 $router->post('language', '/language', SelectLanguage::class);
 $router->post('theme', '/theme', SelectTheme::class);
 $router->get('privacy-policy', '/privacy-policy', PrivacyPolicy::class);
-$router->get('module', '/module', ModuleAction::class);
-$router->post('module', '/module', ModuleAction::class);
+$router->get('module', '/module/{module}/{action}', ModuleAction::class)
+    ->allows(RequestMethodInterface::METHOD_POST);
 $router->get('ping', '/ping', Ping::class);

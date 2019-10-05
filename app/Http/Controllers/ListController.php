@@ -102,8 +102,8 @@ class ListController extends AbstractBaseController
 
         // This action can show lists of both families and individuals.
         //route is assumed to be 'module'
-        $module = $request->getQueryParams()['module'];
-        $action = $request->getQueryParams()['action'];
+        $module = $request->getAttribute('module');
+        $action = $request->getAttribute('action');
         
         ob_start();
 

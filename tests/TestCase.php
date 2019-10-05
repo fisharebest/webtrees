@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Localization\Locale\LocaleEnUs;
@@ -84,6 +85,10 @@ class TestCase extends \PHPUnit\Framework\TestCase implements StatusCodeInterfac
         app()->bind(LocaleInterface::class, LocaleEnUs::class);
         app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);
         app()->bind(UserInterface::class, GuestUser::class);
+
+        // Need the routing table, to generate URLs.
+        app()->instance(RouterContainer::class, new RouterContainer());
+        require __DIR__ . '/../routes/web.php';
 
         defined('WT_DATA_DIR') || define('WT_DATA_DIR', Webtrees::ROOT_DIR . 'data/');
         defined('WT_LOCALE') || define('WT_LOCALE', I18N::init('en-US', null, true));

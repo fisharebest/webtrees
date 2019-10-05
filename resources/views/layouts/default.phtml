@@ -68,7 +68,7 @@ use Psr\Http\Message\ServerRequestInterface;
         <?= DebugBar::renderHead() ?>
     </head>
 
-    <body class="wt-global wt-theme-<?= e(app(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(app(ServerRequestInterface::class)->getQueryParams()['route'] ?? 'unknown') ?>">
+    <body class="wt-global wt-theme-<?= e(app(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(app(ServerRequestInterface::class)->getAttribute('route')) ?>">
         <header class="wt-header-wrapper d-print-none">
             <div class="container wt-header-container">
                 <div class="row wt-header-content">

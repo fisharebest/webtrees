@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Services\ClipboardService;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function redirect;
 
 /**
  * Controller for the note page.
@@ -54,24 +55,29 @@ class NoteController extends AbstractBaseController
      */
     public function show(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
-        $xref   = $request->getQueryParams()['xref'];
-        $record = Note::getInstance($xref, $tree);
+        $slug = $request->getAttribute('slug');
+        $tree = $request->getAttribute('tree');
+        $xref = $request->getAttribute('xref');
+        $note = Note::getInstance($xref, $tree);
 
-        Auth::checkNoteAccess($record, false);
+        Auth::checkNoteAccess($note, false);
+
+        if ($slug !== $note->slug()) {
+            return redirect($note->url());
+        }
 
         return $this->viewResponse('note-page', [
-            'clipboard_facts' => $this->clipboard_service->pastableFacts($record, new Collection()),
-            'facts'           => $this->facts($record),
-            'families'        => $record->linkedFamilies('NOTE'),
-            'individuals'     => $record->linkedIndividuals('NOTE'),
-            'note'            => $record,
+            'clipboard_facts' => $this->clipboard_service->pastableFacts($note, new Collection()),
+            'facts'           => $this->facts($note),
+            'families'        => $note->linkedFamilies('NOTE'),
+            'individuals'     => $note->linkedIndividuals('NOTE'),
+            'note'            => $note,
             'notes'           => [],
-            'media_objects'   => $record->linkedMedia('NOTE'),
+            'media_objects'   => $note->linkedMedia('NOTE'),
             'meta_robots'     => 'index,follow',
-            'sources'         => $record->linkedSources('NOTE'),
-            'text'            => Filter::formatText($record->getNote(), $tree),
-            'title'           => $record->fullName(),
+            'sources'         => $note->linkedSources('NOTE'),
+            'text'            => Filter::formatText($note->getNote(), $tree),
+            'title'           => $note->fullName(),
         ]);
     }
 

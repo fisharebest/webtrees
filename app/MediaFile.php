@@ -19,6 +19,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use League\Flysystem\FileNotFoundException;
+use League\Glide\Signatures\SignatureFactory;
 use League\Glide\Urls\UrlBuilderFactory;
 use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
@@ -269,12 +270,7 @@ class MediaFile
             $mark = '';
         }
 
-        $base_url = app(ServerRequestInterface::class)->getAttribute('base_url');
-
-        $url_builder = UrlBuilderFactory::create($base_url, $glide_key);
-
-        $url = $url_builder->getUrl('index.php', [
-            'route'     => 'media-thumbnail',
+        $params = [
             'xref'      => $this->media->xref(),
             'ged'       => $this->media->tree()->name(),
             'fact_id'   => $this->fact_id,
@@ -286,10 +282,13 @@ class MediaFile
             'markw'     => '100w',
             'markalpha' => 25,
             'or'        => 0,
-            // Intervention uses exif_read_data() which is very buggy.
-        ]);
+        ];
 
-        return $url;
+        $signature = SignatureFactory::create($glide_key)->generateSignature('', $params);
+
+        $params = ['route' => '/media-thumbnail', 's' => $signature] + $params;
+
+        return route('media-thumbnail', $params);
     }
 
     /**

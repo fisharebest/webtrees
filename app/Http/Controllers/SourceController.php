@@ -26,6 +26,8 @@ use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function redirect;
+
 /**
  * Controller for the source page.
  */
@@ -71,22 +73,27 @@ class SourceController extends AbstractBaseController
      */
     public function show(ServerRequestInterface $request): ResponseInterface
     {
+        $slug   = $request->getAttribute('slug');
         $tree   = $request->getAttribute('tree');
-        $xref   = $request->getQueryParams()['xref'];
-        $record = Source::getInstance($xref, $tree);
+        $xref   = $request->getAttribute('xref');
+        $source = Source::getInstance($xref, $tree);
 
-        Auth::checkSourceAccess($record, false);
+        Auth::checkSourceAccess($source, false);
+
+        if ($slug !== $source->slug()) {
+            return redirect($source->url());
+        }
 
         return $this->viewResponse('source-page', [
-            'clipboard_facts' => $this->clipboard_service->pastableFacts($record, new Collection()),
-            'facts'           => $this->facts($record),
-            'families'        => $record->linkedFamilies('SOUR'),
-            'individuals'     => $record->linkedIndividuals('SOUR'),
+            'clipboard_facts' => $this->clipboard_service->pastableFacts($source, new Collection()),
+            'facts'           => $this->facts($source),
+            'families'        => $source->linkedFamilies('SOUR'),
+            'individuals'     => $source->linkedIndividuals('SOUR'),
             'meta_robots'     => 'index,follow',
-            'notes'           => $record->linkedNotes('SOUR'),
-            'media_objects'   => $record->linkedMedia('SOUR'),
-            'source'          => $record,
-            'title'           => $record->fullName(),
+            'notes'           => $source->linkedNotes('SOUR'),
+            'media_objects'   => $source->linkedMedia('SOUR'),
+            'source'          => $source,
+            'title'           => $source->fullName(),
         ]);
     }
 

@@ -27,6 +27,7 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use stdClass;
 
 /**
@@ -386,6 +387,16 @@ class GedcomRecord
     }
 
     /**
+     * Generate a "slug" to use in pretty URLs.
+     *
+     * @return string
+     */
+    public function slug(): string
+    {
+        return Str::slug(strip_tags($this->fullName()));
+    }
+
+    /**
      * Generate a URL to this record.
      *
      * @return string
@@ -394,7 +405,8 @@ class GedcomRecord
     {
         return route(static::ROUTE_NAME, [
             'xref' => $this->xref(),
-            'ged'  => $this->tree->name(),
+            'tree' => $this->tree->name(),
+            'slug' => $this->slug(),
         ]);
     }
 

@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Services\ClipboardService;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function redirect;
 
 /**
  * Controller for the repository page.
@@ -66,19 +67,24 @@ class RepositoryController extends AbstractBaseController
      */
     public function show(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
-        $xref   = $request->getQueryParams()['xref'];
-        $record = Repository::getInstance($xref, $tree);
+        $slug       = $request->getAttribute('slug');
+        $tree       = $request->getAttribute('tree');
+        $xref       = $request->getAttribute('xref');
+        $repository = Repository::getInstance($xref, $tree);
 
-        Auth::checkRepositoryAccess($record, false);
+        Auth::checkRepositoryAccess($repository, false);
+
+        if ($slug !== $repository->slug()) {
+            return redirect($repository->url());
+        }
 
         return $this->viewResponse('repository-page', [
-            'clipboard_facts' => $this->clipboard_service->pastableFacts($record, new Collection()),
-            'facts'           => $this->facts($record),
+            'clipboard_facts' => $this->clipboard_service->pastableFacts($repository, new Collection()),
+            'facts'           => $this->facts($repository),
             'meta_robots'     => 'index,follow',
-            'repository'      => $record,
-            'sources'         => $record->linkedSources('REPO'),
-            'title'           => $record->fullName(),
+            'repository'      => $repository,
+            'sources'         => $repository->linkedSources('REPO'),
+            'title'           => $repository->fullName(),
         ]);
     }
 

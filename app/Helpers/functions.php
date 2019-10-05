@@ -17,6 +17,7 @@
 
 declare(strict_types=1);
 
+use Aura\Router\RouterContainer;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Application;
 use Fisharebest\Webtrees\Html;
@@ -151,18 +152,34 @@ function response($content = '', $code = StatusCodeInterface::STATUS_OK, $header
 /**
  * Generate a URL for a named route.
  *
- * @param string $route
+ * @param string $route_name
  * @param array  $parameters
  *
  * @return string
  */
-function route(string $route, array $parameters = []): string
+function route(string $route_name, array $parameters = []): string
 {
-    $parameters = ['route' => $route] + $parameters;
+    $request          = app(ServerRequestInterface::class);
+    $base_url         = $request->getAttribute('base_url');
+    $router_container = app(RouterContainer::class);
+    $route            = $router_container->getMap()->getRoute($route_name);
 
-    $base_url = app(ServerRequestInterface::class)->getAttribute('base_url');
+    // Generate the URL.
+    $url = $router_container->getGenerator($base_url)->generate($route_name, $parameters);
 
-    return Html::url($base_url . 'index.php', $parameters);
+    // Aura ignores parameters that are not tokens.  We need to add them as query parameters.
+    $parameters = array_filter($parameters, function (string $key) use ($route): bool {
+        return strpos($route->path, '{' . $key . '}') === false && strpos($route->path, '{/' . $key . '}') === false;
+    }, ARRAY_FILTER_USE_KEY);
+
+    // Turn the pretty URL into an ugly one.
+    if ($request->getAttribute('rewrite_urls') !== '1') {
+        $path = parse_url($url, PHP_URL_PATH);
+        $parameters = ['route' => $path] + $parameters;
+        $url = str_replace($path, '/index.php', $url);
+    }
+
+    return Html::url($base_url . $url, $parameters);
 }
 
 /**

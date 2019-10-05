@@ -18,13 +18,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function redirect;
 use function route;
@@ -32,7 +36,7 @@ use function route;
 /**
  * Middleware to generate a response when no route was matched.
  */
-class NoRouteFound implements MiddlewareInterface
+class NoRouteFound implements MiddlewareInterface, RequestMethodInterface
 {
     use ViewResponseTrait;
 
@@ -44,24 +48,41 @@ class NoRouteFound implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        /** @var Tree|null $tree */
-        $tree = $request->getAttribute('tree');
-
-        // The tree exists, we have access to it, and it is fully imported.
-        if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
-            return redirect(route('tree-page', ['ged' => $tree->name()]));
+        if ($request->getMethod() !== self::METHOD_GET) {
+            throw new NotFoundHttpException();
         }
 
-        // Not logged in?
-        if (!Auth::check()) {
-            return redirect(route('login', ['url' => $request->getAttribute('request_uri')]));
+        $user = $request->getAttribute('user');
+
+        // Choose the default tree (if it exists), or the first tree found.
+        $default = Site::getPreference('DEFAULT_GEDCOM');
+        $tree    = Tree::findByName($default) ?? Tree::all()->first();
+
+        if ($tree instanceof Tree) {
+            if ($tree->getPreference('imported') === '1') {
+                // Logged in?  Go to the user's page.
+                if ($user instanceof User) {
+                    return redirect(route('user-page', ['tree' => $tree->name()]));
+                }
+
+                // Not logged in?  Go to the tree's page.
+                return redirect(route('tree-page', ['ged' => $tree->name()]));
+            }
+
+            return redirect(route('admin-trees', ['ged' => $tree->name()]));
         }
 
-        // No tree or tree not imported?
-        if (Auth::isAdmin()) {
+        // No tree available?  Create one.
+        if (Auth::isAdmin($user)) {
             return redirect(route('admin-trees'));
         }
 
-        return $this->viewResponse('errors/no-tree-access', ['title' => '']);
+        // Logged in, but no access to any tree.
+        if ($user instanceof User) {
+            return $this->viewResponse('errors/no-tree-access', ['title' => '']);
+        }
+
+        // Not logged in.
+        return redirect(route('login', ['url' => $request->getAttribute('request_uri')]));
     }
 }

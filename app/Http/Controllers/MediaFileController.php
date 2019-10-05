@@ -188,11 +188,8 @@ class MediaFileController extends AbstractBaseController
     {
         try {
             // Validate HTTP signature
-            $signature = $this->glideSignature();
-
-            $base_url = app(ServerRequestInterface::class)->getAttribute('base_url');
-
-            $signature->validateRequest(parse_url($base_url . 'index.php', PHP_URL_PATH), $params);
+            unset($params['route']);
+            $this->glideSignature()->validateRequest('', $params);
 
             $path = $media_file->media()->tree()->getPreference('MEDIA_DIRECTORY', 'media/') .  $media_file->filename();
             $folder = dirname($path);
@@ -221,7 +218,8 @@ class MediaFileController extends AbstractBaseController
                 'Expires'        => Carbon::now()->addYears(10)->toRfc7231String(),
             ]);
         } catch (SignatureException $ex) {
-            return $this->httpStatusAsImage(StatusCodeInterface::STATUS_FORBIDDEN);
+            return $this->httpStatusAsImage(StatusCodeInterface::STATUS_FORBIDDEN)
+                ->withHeader('X-Signature-Exception', $ex->getMessage());
         } catch (FileNotFoundException $ex) {
             return $this->httpStatusAsImage(StatusCodeInterface::STATUS_NOT_FOUND);
         } catch (Throwable $ex) {

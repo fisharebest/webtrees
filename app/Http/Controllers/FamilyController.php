@@ -25,6 +25,7 @@ use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
+use function redirect;
 
 /**
  * Controller for the family page.
@@ -53,11 +54,16 @@ class FamilyController extends AbstractBaseController
      */
     public function show(ServerRequestInterface $request): ResponseInterface
     {
+        $slug   = $request->getAttribute('slug');
         $tree   = $request->getAttribute('tree');
-        $xref   = $request->getQueryParams()['xref'];
+        $xref   = $request->getAttribute('xref');
         $family = Family::getInstance($xref, $tree);
 
         Auth::checkFamilyAccess($family, false);
+
+        if ($slug !== $family->slug()) {
+            return redirect($family->url());
+        }
 
         $clipboard_facts = $this->clipboard_service->pastableFacts($family, new Collection());
 

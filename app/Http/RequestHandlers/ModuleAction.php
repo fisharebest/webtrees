@@ -63,8 +63,8 @@ class ModuleAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $module_name = $request->getQueryParams()['module'] ?? $request->getParsedBody()['module'] ?? '';
-        $action      = $request->getQueryParams()['action'] ?? $request->getParsedBody()['action'] ?? '';
+        $module_name = $request->getAttribute('module');
+        $action      = $request->getAttribute('action');
 
         // Check that the module is enabled.
         // The module itself will need to check any tree-level access,

@@ -354,7 +354,7 @@ class UpgradeController extends AbstractAdminController
 
         $this->filesystem->deleteDir(self::UPGRADE_FOLDER);
 
-        $url    = route('control-panel');
+        $url    = route('admin-control-panel');
         $button = '<a href="' . e($url) . '" class="btn btn-primary">' . I18N::translate('continue') . '</a>';
 
         return response(view('components/alert-success', [
