@@ -41,7 +41,7 @@ class ChangesLogControllerTest extends TestCase
     {
         app()->instance(Tree::class, Tree::create('', ''));
 
-        $request  = self::createRequest('GET', ['route' => 'admin-changes-log']);
+        $request  = self::createRequest(self::METHOD_GET, ['route' => 'admin-changes-log']);
         $response = app(ChangesLogController::class)->changesLog($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
@@ -57,7 +57,7 @@ class ChangesLogControllerTest extends TestCase
         Auth::login($user);
         $individual = $tree->createIndividual("0 @@ INDI\n1 NAME Joe Bloggs");
 
-        $request  = self::createRequest('GET', [
+        $request  = self::createRequest(self::METHOD_GET, [
             'route'  => 'admin-changes-log-data',
             'search' => 'Joe',
             'from'   => '2000-01-01',
@@ -82,7 +82,7 @@ class ChangesLogControllerTest extends TestCase
         Auth::login($user);
         $tree->createIndividual("0 @@ INDI\n1 NAME Joe Bloggs");
 
-        $request  = self::createRequest('GET', [
+        $request  = self::createRequest(self::METHOD_GET, [
             'route' => 'admin-changes-log-download',
             'ged'   => $tree->name(),
         ]);

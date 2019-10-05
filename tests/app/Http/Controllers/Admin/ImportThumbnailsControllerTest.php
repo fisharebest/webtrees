@@ -35,7 +35,7 @@ class ImportThumbnailsControllerTest extends TestCase
     public function testWebtrees1Thumbnails(): void
     {
         $controller = new ImportThumbnailsController();
-        $request    = self::createRequest('GET', ['route' => 'admin-webtrees1-thumbs']);
+        $request    = self::createRequest(self::METHOD_GET, ['route' => 'admin-webtrees1-thumbs']);
         $response   = $controller->webtrees1Thumbnails($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
@@ -47,7 +47,7 @@ class ImportThumbnailsControllerTest extends TestCase
     public function testWebtrees1ThumbnailsAction(): void
     {
         $controller = new ImportThumbnailsController();
-        $request    = self::createRequest('POST', ['route' => 'admin-webtrees1-thumbs-action'], [
+        $request    = self::createRequest(self::METHOD_POST, ['route' => 'admin-webtrees1-thumbs-action'], [
             'thumbnail' => 'foo',
             'action'    => '',
             'xref'      => [],
@@ -64,7 +64,7 @@ class ImportThumbnailsControllerTest extends TestCase
     public function testWebtrees1ThumbnailsData(): void
     {
         $controller = new ImportThumbnailsController();
-        $request    = self::createRequest('GET', [
+        $request    = self::createRequest(self::METHOD_GET, [
             'route'  => 'admin-webtrees1-thumbs-data',
             'start'  => '0',
             'length' => '10',

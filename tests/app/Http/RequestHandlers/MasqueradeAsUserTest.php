@@ -22,27 +22,32 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\TestCase;
-
-use function app;
+use Fisharebest\Webtrees\User;
 
 /**
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MasqueradeAsUser
  */
 class MasqueradeAsUserTest extends TestCase
 {
-    protected static $uses_database = true;
-
     /**
      * @return void
      */
-    public function xtestMasqueradeAsUser(): void
+    public function testMasqueradeAsUser(): void
     {
-        $user1 = app(UserService::class)->create('user1', 'real1', 'email1', 'pass1');
-        $user2 = app(UserService::class)->create('user2', 'real2', 'email2', 'pass2');
+        $user1 = $this->createMock(User::class);
+        $user1->method('id')->willReturn(1);
 
-        $request  = self::createRequest('POST', ['route' => 'masquerade'], ['user_id' => $user2->id()])
+        $user2 = $this->createMock(User::class);
+        $user2->method('id')->willReturn(2);
+
+        $user_service = $this->createMock(UserService::class);
+        $user_service->expects($this->once())->method('find')->willReturn($user2);
+
+        $request = self::createRequest(self::METHOD_POST, [], ['user_id' => $user2->id()])
             ->withAttribute('user', $user1);
-        $response = app(MasqueradeAsUser::class)->handle($request);
+
+        $handler  = new MasqueradeAsUser($user_service);
+        $response = $handler->handle($request);
 
         self::assertSame(self::STATUS_NO_CONTENT, $response->getStatusCode());
         self::assertSame($user2->id(), Auth::id());
@@ -54,26 +59,39 @@ class MasqueradeAsUserTest extends TestCase
      */
     public function testCannotMasqueradeAsSelf(): void
     {
-        $user = app(UserService::class)->create('user', 'real', 'email', 'pass');
-        Auth::login($user);
+        $user = $this->createMock(User::class);
+        $user->method('id')->willReturn(1);
 
-        $request  = self::createRequest('POST', ['route' => 'masquerade'], ['user_id' => $user->id()])
+        $user_service = $this->createMock(UserService::class);
+        $user_service->expects($this->once())->method('find')->willReturn($user);
+
+        $request = self::createRequest(self::METHOD_POST, [], ['user_id' => $user->id()])
             ->withAttribute('user', $user);
-        $response = app(MasqueradeAsUser::class)->handle($request);
+
+        $handler  = new MasqueradeAsUser($user_service);
+        $response = $handler->handle($request);
 
         self::assertSame(self::STATUS_NO_CONTENT, $response->getStatusCode());
-        self::assertSame($user->id(), Auth::id());
         self::assertNull(Session::get('masquerade'));
     }
 
     /**
      * @expectedException \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     * @expectedExceptionMessage User ID 98765 not found
+     * @expectedExceptionMessage User ID 2 not found
      * @return void
      */
-    public function xtestMasqueradeAsNonExistingUser(): void
+    public function testMasqueradeAsNonExistingUser(): void
     {
-        $request = self::createRequest('POST', ['route' => 'masquerade'], ['user_id' => 98765]);
-        app(MasqueradeAsUser::class)->handle($request);
+        $user = $this->createMock(User::class);
+        $user->method('id')->willReturn(1);
+
+        $user_service = $this->createMock(UserService::class);
+        $user_service->expects($this->once())->method('find')->willReturn(null);
+
+        $request = self::createRequest(self::METHOD_POST, [], ['user_id' => 2])
+            ->withAttribute('user', $user);
+
+        $handler = new MasqueradeAsUser($user_service);
+        $handler->handle($request);
     }
 }

@@ -16,9 +16,9 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers\Auth;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\NoReplyUser;
@@ -29,12 +29,15 @@ use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 /**
- * Controller for email verification.
+ * Acknowledge an email verification code.
  */
-class VerifyEmailController extends AbstractBaseController
+class VerifyEmail implements RequestHandlerInterface
 {
+    use ViewResponseTrait;
+
     /**
      * @var MailService
      */
@@ -63,7 +66,7 @@ class VerifyEmailController extends AbstractBaseController
      *
      * @return ResponseInterface
      */
-    public function verify(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $username = $request->getQueryParams()['username'] ?? '';
         $token    = $request->getQueryParams()['token'] ?? '';

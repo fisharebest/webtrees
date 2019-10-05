@@ -54,41 +54,42 @@ class Router implements MiddlewareInterface, RequestMethodInterface
         $this->module_service = $module_service;
     }
 
-
     /**
-     * @param string $path
+     * @param string $route
+     * @param string $url
      * @param string $handler
      *
      * @return Router
      */
-    public function get(string $path, string $handler): Router
+    public function get(string $route, string $url, string $handler): Router
     {
-        return $this->add(self::METHOD_GET, $path, $handler);
+        return $this->add(self::METHOD_GET, $route, $handler);
     }
 
     /**
      * @param string $method
-     * @param string $path
+     * @param string $route
      * @param string $handler
      *
      * @return Router
      */
-    private function add(string $method, string $path, string $handler): Router
+    private function add(string $method, string $route, string $handler): Router
     {
-        $this->routes[$method][$path] = $handler;
+        $this->routes[$method][$route] = $handler;
 
         return $this;
     }
 
     /**
-     * @param string $path
+     * @param string $route
+     * @param string $url
      * @param string $handler
      *
      * @return Router
      */
-    public function post(string $path, string $handler): Router
+    public function post(string $route, string $url, string $handler): Router
     {
-        return $this->add(self::METHOD_POST, $path, $handler);
+        return $this->add(self::METHOD_POST, $route, $handler);
     }
 
     /**

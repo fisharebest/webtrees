@@ -49,7 +49,7 @@ class IndividualListTest extends TestCase
         $individual_list_service = new IndividualListService($localization_service, $tree);
         $controller              = new ListController($individual_list_service, $localization_service);
 
-        $request  = self::createRequest('GET', [
+        $request  = self::createRequest(self::METHOD_GET, [
             'route'  => 'module',
             'module' => 'individual_list',
             'action' => 'List',
@@ -58,25 +58,25 @@ class IndividualListTest extends TestCase
         $response = $controller->individualList($request, $list_module);
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
 
-        $request  = self::createRequest('GET', ['route' => 'module', 'module' => 'individual_list', 'action' => 'List', 'alpha' => 'B'])
+        $request  = self::createRequest(self::METHOD_GET, ['route' => 'module', 'module' => 'individual_list', 'action' => 'List', 'alpha' => 'B'])
             ->withAttribute('tree', $tree)
             ->withAttribute('user', $user);
         $response = $controller->individualList($request, $list_module);
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
 
-        $request  = self::createRequest('GET', ['route' => 'module', 'module' => 'individual_list', 'action' => 'List', 'alpha' => ','])
+        $request  = self::createRequest(self::METHOD_GET, ['route' => 'module', 'module' => 'individual_list', 'action' => 'List', 'alpha' => ','])
             ->withAttribute('tree', $tree)
             ->withAttribute('user', $user);
         $response = $controller->individualList($request, $list_module);
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
 
-        $request  = self::createRequest('GET', ['route' => 'module', 'module' => 'individual_list', 'action' => 'List', 'alpha' => '@'])
+        $request  = self::createRequest(self::METHOD_GET, ['route' => 'module', 'module' => 'individual_list', 'action' => 'List', 'alpha' => '@'])
             ->withAttribute('tree', $tree)
             ->withAttribute('user', $tree);
         $response = $controller->individualList($request, $list_module);
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
 
-        $request  = self::createRequest('GET', ['route' => 'module', 'module' => 'individual_list', 'action' => 'List', 'surname' => 'BRAUN'])
+        $request  = self::createRequest(self::METHOD_GET, ['route' => 'module', 'module' => 'individual_list', 'action' => 'List', 'surname' => 'BRAUN'])
             ->withAttribute('tree', $tree)
             ->withAttribute('user', $user);
         $response = $controller->individualList($request, $list_module);

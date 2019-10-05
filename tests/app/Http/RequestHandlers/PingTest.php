@@ -21,53 +21,60 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
+use Illuminate\Support\Collection;
 
 /**
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\Ping
  */
 class PingTest extends TestCase
 {
-    protected static $uses_database = true;
-
     /**
      * @return void
      */
-    public function testPing(): void
+    public function testPingOK(): void
     {
-        $handler      = new Ping(new ServerCheckService());
-        $request      = self::createRequest('GET');
-        $response     = $handler->handle($request);
+        $server_check_service = $this->createMock(ServerCheckService::class);
+        $server_check_service->expects($this->once())->method('serverErrors')->willReturn(new Collection());
+        $server_check_service->expects($this->once())->method('serverWarnings')->willReturn(new Collection());
+
+        $request  = self::createRequest();
+        $handler  = new Ping($server_check_service);
+        $response = $handler->handle($request);
 
         self::assertSame(self::STATUS_OK, $response->getStatusCode());
         self::assertSame('OK', (string) $response->getBody());
     }
 
     /**
-     * @expectedException \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     * @expectedExceptionMessage User ID 98765 not found
      * @return void
      */
-    public function testDeleteNonExistingUser(): void
+    public function testPingWarnings(): void
     {
-        $user_service = new UserService();
-        $user_service->create('user1', 'real1', 'email1', 'pass1');
-        $handler = new DeleteUser($user_service);
-        $request = self::createRequest('POST', ['route' => 'delete-user'], ['user_id' => 98765]);
-        $handler->handle($request);
+        $server_check_service = $this->createMock(ServerCheckService::class);
+        $server_check_service->expects($this->once())->method('serverErrors')->willReturn(new Collection());
+        $server_check_service->expects($this->once())->method('serverWarnings')->willReturn(new Collection('warning'));
+
+        $request  = self::createRequest();
+        $handler  = new Ping($server_check_service);
+        $response = $handler->handle($request);
+
+        self::assertSame(self::STATUS_OK, $response->getStatusCode());
+        self::assertSame('WARNING', (string) $response->getBody());
     }
 
     /**
-     * @expectedException \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException
-     * @expectedExceptionMessage Cannot delete an administrator
      * @return void
      */
-    public function testCannotDeleteAdministrator(): void
+    public function testPingErrors(): void
     {
-        $user_service = new UserService();
-        $user         = $user_service->create('user1', 'real1', 'email1', 'pass1');
-        $user->setPreference('canadmin', '1');
-        $handler = new DeleteUser($user_service);
-        $request = self::createRequest('POST', ['route' => 'delete-user'], ['user_id' => $user->id()]);
-        $handler->handle($request);
+        $server_check_service = $this->createMock(ServerCheckService::class);
+        $server_check_service->expects($this->once())->method('serverErrors')->willReturn(new Collection('error'));
+
+        $request  = self::createRequest();
+        $handler  = new Ping($server_check_service);
+        $response = $handler->handle($request);
+
+        self::assertSame(self::STATUS_OK, $response->getStatusCode());
+        self::assertSame('ERROR', (string) $response->getBody());
     }
 }

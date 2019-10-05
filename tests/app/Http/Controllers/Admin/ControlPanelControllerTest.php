@@ -39,7 +39,7 @@ class ControlPanelControllerTest extends TestCase
     {
         app()->instance(Tree::class, Tree::create('', ''));
 
-        $request  = self::createRequest('GET', ['route' => 'control-panel']);
+        $request  = self::createRequest(self::METHOD_GET, ['route' => 'control-panel']);
         $response = app(ControlPanelController::class)->controlPanel($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());
@@ -50,7 +50,7 @@ class ControlPanelControllerTest extends TestCase
      */
     public function testControlPanelManager(): void
     {
-        $request  = self::createRequest('GET', ['route' => 'control-panel']);
+        $request  = self::createRequest(self::METHOD_GET, ['route' => 'control-panel']);
         $response = app(ControlPanelController::class)->controlPanelManager($request);
 
         $this->assertSame(self::STATUS_OK, $response->getStatusCode());

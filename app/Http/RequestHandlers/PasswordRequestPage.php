@@ -18,20 +18,24 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function response;
+use function redirect;
+use function route;
 
 /**
- * Select a new theme for the current session.
+ * Request a new password.
  */
-class SelectTheme implements RequestHandlerInterface, StatusCodeInterface
+class PasswordRequestPage implements RequestHandlerInterface
 {
+    use ViewResponseTrait;
+
     /**
      * @param ServerRequestInterface $request
      *
@@ -39,12 +43,15 @@ class SelectTheme implements RequestHandlerInterface, StatusCodeInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $user  = $request->getAttribute('user');
-        $theme = $request->getParsedBody()['theme'];
+        $user = $request->getAttribute('user');
 
-        Session::put('theme', $theme);
-        $user->setPreference('theme', $theme);
+        // Already logged in?
+        if ($user instanceof User) {
+            return redirect(route('my-account'));
+        }
 
-        return response('', self::STATUS_NO_CONTENT);
+        $title = I18N::translate('Request a new password');
+
+        return $this->viewResponse('password-request-page', ['title' => $title]);
     }
 }

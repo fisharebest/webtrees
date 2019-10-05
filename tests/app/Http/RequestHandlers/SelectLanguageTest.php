@@ -27,8 +27,6 @@ use Fisharebest\Webtrees\TestCase;
  */
 class SelectLanguageTest extends TestCase
 {
-    protected static $uses_database = true;
-
     /**
      * @return void
      */
@@ -36,7 +34,7 @@ class SelectLanguageTest extends TestCase
     {
         $user     = new GuestUser();
         $handler  = new SelectLanguage($user);
-        $request  = self::createRequest('POST', ['route' => 'language'], ['language' => 'fr']);
+        $request  = self::createRequest(self::METHOD_POST, [], ['language' => 'fr']);
         $response = $handler->handle($request);
 
         self::assertSame(self::STATUS_NO_CONTENT, $response->getStatusCode());
@@ -50,7 +48,7 @@ class SelectLanguageTest extends TestCase
         $user_service = new UserService();
         $user         = $user_service->create('user', 'real', 'email', 'pass');
         $handler      = new SelectLanguage($user);
-        $request      = self::createRequest('POST', ['route' => 'language'], ['language' => 'fr']);
+        $request      = self::createRequest(self::METHOD_POST, [], ['language' => 'fr']);
         $response     = $handler->handle($request);
 
         self::assertSame(self::STATUS_NO_CONTENT, $response->getStatusCode());

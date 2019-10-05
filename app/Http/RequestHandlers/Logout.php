@@ -18,38 +18,23 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
 use function redirect;
+use function route;
 
 /**
- * Set a new password.
+ * Perform a logout.
  */
-class PasswordResetForm implements RequestHandlerInterface, StatusCodeInterface
+class Logout implements RequestHandlerInterface
 {
-    use ViewResponseTrait;
-
-    /** @var UserService */
-    private $user_service;
-
-    /**
-     * PasswordResetForm constructor.
-     *
-     * @param UserService $user_service
-     */
-    public function __construct(UserService $user_service)
-    {
-        $this->user_service = $user_service;
-    }
-
     /**
      * @param ServerRequestInterface $request
      *
@@ -57,22 +42,19 @@ class PasswordResetForm implements RequestHandlerInterface, StatusCodeInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $title = I18N::translate('Set a new password');
-
-        $token = $request->getQueryParams()['token'] ?? '';
-
-        $user = $this->user_service->findByToken($token);
+        $tree = $request->getAttribute('tree');
+        $user = $request->getAttribute('user');
 
         if ($user instanceof User) {
-            return $this->viewResponse('password-reset-page', ['title' => $title, 'user' => $user, 'token' => $token]);
+            Log::addAuthenticationLog('Logout: ' . Auth::user()->userName() . '/' . Auth::user()->realName());
+            Auth::logout();
+            FlashMessages::addMessage(I18N::translate('You have signed out.'));
         }
 
-        $message1 = I18N::translate('The password reset link has expired.');
-        $message2 = I18N::translate('Please try again.');
-        $message  = $message1 . '<br>' . $message2;
+        if ($tree instanceof Tree) {
+            return redirect(route('tree-page', ['ged' => $tree->name()]));
+        }
 
-        FlashMessages::addMessage($message, 'danger');
-
-        return redirect(route('password-request'));
+        return redirect(route('tree-page'));
     }
 }

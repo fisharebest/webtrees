@@ -16,7 +16,7 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers\Auth;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Exception;
 use Fisharebest\Webtrees\Auth;
@@ -28,15 +28,14 @@ use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
-use Fisharebest\Webtrees\Site;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * Controller for user login and logout.
+ * Perform a login.
  */
-class LoginController extends AbstractBaseController
+class LoginAction extends AbstractBaseController
 {
     /** @var UpgradeService */
     private $upgrade_service;
@@ -57,69 +56,13 @@ class LoginController extends AbstractBaseController
     }
 
     /**
-     * Show a login page.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function loginPage(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = $request->getAttribute('tree');
-
-        // Already logged in?
-        if (Auth::check()) {
-            $ged = $tree !== null ? $tree->name() : '';
-
-            return redirect(route('user-page', ['ged' => $ged]));
-        }
-
-        $error    = $request->getQueryParams()['error'] ?? '';
-        $url      = $request->getQueryParams()['url'] ?? '';
-        $username = $request->getQueryParams()['username'] ?? '';
-
-        $title = I18N::translate('Sign in');
-
-        switch (Site::getPreference('WELCOME_TEXT_AUTH_MODE')) {
-            case 1:
-            default:
-                $welcome = I18N::translate('Anyone with a user account can access this website.');
-                break;
-            case 2:
-                $welcome = I18N::translate('You need to be an authorized user to access this website.');
-                break;
-            case 3:
-                $welcome = I18N::translate('You need to be a family member to access this website.');
-                break;
-            case 4:
-                $welcome = Site::getPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE);
-                break;
-        }
-
-        if (Site::getPreference('USE_REGISTRATION_MODULE') === '1') {
-            $welcome .= ' ' . I18N::translate('You can apply for an account using the link below.');
-        }
-
-        $can_register = Site::getPreference('USE_REGISTRATION_MODULE') === '1';
-
-        return $this->viewResponse('login-page', [
-            'can_register' => $can_register,
-            'error'        => $error,
-            'title'        => $title,
-            'url'          => $url,
-            'username'     => $username,
-            'welcome'      => $welcome,
-        ]);
-    }
-
-    /**
      * Perform a login.
      *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function loginAction(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $username = $request->getParsedBody()['username'] ?? '';
         $password = $request->getParsedBody()['password'] ?? '';
@@ -200,29 +143,5 @@ class LoginController extends AbstractBaseController
         Session::put('language', Auth::user()->getPreference('language'));
         Session::put('theme', Auth::user()->getPreference('theme'));
         I18N::init(Auth::user()->getPreference('language'));
-    }
-
-    /**
-     * Perform a logout.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function logoutAction(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = $request->getAttribute('tree');
-
-        if (Auth::check()) {
-            Log::addAuthenticationLog('Logout: ' . Auth::user()->userName() . '/' . Auth::user()->realName());
-            Auth::logout();
-            FlashMessages::addMessage(I18N::translate('You have signed out.'), 'info');
-        }
-
-        if ($tree === null) {
-            return redirect(route('tree-page'));
-        }
-
-        return redirect(route('tree-page', ['ged' => $tree->name()]));
     }
 }

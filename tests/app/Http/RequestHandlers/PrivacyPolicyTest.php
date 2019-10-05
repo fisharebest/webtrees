@@ -30,8 +30,8 @@ class PrivacyPolicyTest extends TestCase
      */
     public function testHandler(): void
     {
-        $request      = self::createRequest('POST', ['route' => 'privacy-policy']);
-        $response     = app(PrivacyPolicy::class)->handle($request);
+        $request  = self::createRequest();
+        $response = app(PrivacyPolicy::class)->handle($request);
 
         self::assertSame(self::STATUS_OK, $response->getStatusCode());
     }

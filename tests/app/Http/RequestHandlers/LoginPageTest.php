@@ -18,46 +18,38 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\View;
 
 /**
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SelectTheme
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\LoginPage
  */
-class SelectThemeTest extends TestCase
+class LoginPageTest extends TestCase
 {
     /**
      * @return void
      */
-    public function testSelectThemeForGuest(): void
+    public function testLoginPage(): void
     {
-        $user = $this->createMock(GuestUser::class);
-        $user->expects($this->once())->method('setPreference')->with('theme', 'FOO');
-
-        $request = self::createRequest(self::METHOD_POST, [], ['theme' => 'FOO'])
-            ->withAttribute('user', $user);
-
-        $handler  = new SelectTheme();
+        View::share('tree', null);
+        $request  = self::createRequest();
+        $handler  = new LoginPage();
         $response = $handler->handle($request);
 
-        self::assertSame(self::STATUS_NO_CONTENT, $response->getStatusCode());
+        self::assertSame(self::STATUS_OK, $response->getStatusCode());
     }
 
     /**
      * @return void
      */
-    public function testSelectThemeForUser(): void
+    public function testLoginPageAlreadyLoggedIn(): void
     {
-        $user = $this->createMock(User::class);
-        $user->expects($this->once())->method('setPreference')->with('theme', 'FOO');
-
-        $request = self::createRequest(self::METHOD_POST, [], ['theme' => 'FOO'])
-            ->withAttribute('user', $user);
-
-        $handler  = new SelectTheme();
+        $user     = $this->createMock(User::class);
+        $request  = self::createRequest()->withAttribute('user', $user);
+        $handler  = new LoginPage();
         $response = $handler->handle($request);
 
-        self::assertSame(self::STATUS_NO_CONTENT, $response->getStatusCode());
+        self::assertSame(self::STATUS_FOUND, $response->getStatusCode());
     }
 }

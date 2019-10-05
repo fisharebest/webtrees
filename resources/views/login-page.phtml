@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\View;
     <?= nl2br($welcome, false) ?>
 </p>
 
-<form action="<?= e(route('login')) ?>" class="wt-page-options wt-page-options-login" method="post">
+<form method="post" action="<?= e(route('login-action')) ?>" class="wt-page-options wt-page-options-login">
     <?= csrf_field() ?>
     <input type="hidden" name="url" value="<?= e($url) ?>">
 

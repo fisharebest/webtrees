@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\User;
 
 /**
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\DeleteUser
@@ -33,16 +34,17 @@ class DeleteUserTest extends TestCase
      */
     public function testDeleteUser(): void
     {
-        $user_service = new UserService();
-        $user         = $user_service->create('user1', 'real1', 'email1', 'pass1');
-        $request      = self::createRequest('POST', ['route' => 'delete-user'], ['user_id' => $user->id()]);
-        $response     = app(DeleteUser::class)->handle($request);
+        $user = $this->createMock(User::class);
+        $user->method('id')->willReturn(1);
 
-        // UserService caches user records
-        app('cache.array')->forget(UserService::class . $user->id());
+        $user_service = $this->createMock(UserService::class);
+        $user_service->expects($this->once())->method('find')->willReturn($user);
+
+        $request  = self::createRequest(self::METHOD_POST, [], ['user_id' => $user->id()]);
+        $handler  = new DeleteUser($user_service);
+        $response = $handler->handle($request);
 
         self::assertSame(self::STATUS_NO_CONTENT, $response->getStatusCode());
-        self::assertNull($user_service->find($user->id()));
     }
 
     /**
@@ -52,8 +54,12 @@ class DeleteUserTest extends TestCase
      */
     public function testDeleteNonExistingUser(): void
     {
-        $request = self::createRequest('POST', ['route' => 'delete-user'], ['user_id' => 98765]);
-        app(DeleteUser::class)->handle($request);
+        $user_service = $this->createMock(UserService::class);
+        $user_service->expects($this->once())->method('find')->willReturn(null);
+
+        $request  = self::createRequest(self::METHOD_POST, [], ['user_id' => 98765]);
+        $handler  = new DeleteUser($user_service);
+        $response = $handler->handle($request);
     }
 
     /**
@@ -63,9 +69,15 @@ class DeleteUserTest extends TestCase
      */
     public function testCannotDeleteAdministrator(): void
     {
-        $user = app(UserService::class)->create('user1', 'real1', 'email1', 'pass1');
-        $user->setPreference('canadmin', '1');
-        $request = self::createRequest('POST', ['route' => 'delete-user'], ['user_id' => $user->id()]);
-        app(DeleteUser::class)->handle($request);
+        $user = $this->createMock(User::class);
+        $user->method('id')->willReturn(1);
+        $user->expects($this->once())->method('getPreference')->with('canadmin')->willReturn('1');
+
+        $user_service = $this->createMock(UserService::class);
+        $user_service->expects($this->once())->method('find')->willReturn($user);
+
+        $request = self::createRequest(self::METHOD_POST, [], ['user_id' => $user->id()]);
+        $handler = new DeleteUser($user_service);
+        $handler->handle($request);
     }
 }

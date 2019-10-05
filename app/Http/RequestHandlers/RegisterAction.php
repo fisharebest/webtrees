@@ -16,7 +16,7 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers\Auth;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Exception;
 use Fisharebest\Webtrees\FlashMessages;
@@ -37,9 +37,9 @@ use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Controller for user registration.
+ * Process a user registration.
  */
-class RegisterController extends AbstractBaseController
+class RegisterAction extends AbstractBaseController
 {
     /**
      * @var MailService
@@ -64,43 +64,13 @@ class RegisterController extends AbstractBaseController
     }
 
     /**
-     * Show a registration page.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function registerPage(ServerRequestInterface $request): ResponseInterface
-    {
-        $this->checkRegistrationAllowed();
-
-        $comments = $request->getQueryParams()['comments'] ?? '';
-        $email    = $request->getQueryParams()['email'] ?? '';
-        $realname = $request->getQueryParams()['realname'] ?? '';
-        $username = $request->getQueryParams()['username'] ?? '';
-
-        $show_caution = Site::getPreference('SHOW_REGISTER_CAUTION') === '1';
-
-        $title = I18N::translate('Request a new user account');
-
-        return $this->viewResponse('register-page', [
-            'comments'     => $comments,
-            'email'        => $email,
-            'realname'     => $realname,
-            'show_caution' => $show_caution,
-            'title'        => $title,
-            'username'     => $username,
-        ]);
-    }
-
-    /**
      * Perform a registration.
      *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function registerAction(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
 
@@ -193,6 +163,19 @@ class RegisterController extends AbstractBaseController
     }
 
     /**
+     * Check that visitors are allowed to register on this site.
+     *
+     * @return void
+     * @throws NotFoundHttpException
+     */
+    private function checkRegistrationAllowed(): void
+    {
+        if (Site::getPreference('USE_REGISTRATION_MODULE') !== '1') {
+            throw new NotFoundHttpException();
+        }
+    }
+
+    /**
      * Check the registration details.
      *
      * @param ServerRequestInterface $request
@@ -227,51 +210,6 @@ class RegisterController extends AbstractBaseController
         // No external links
         if (preg_match('/(?!' . preg_quote($base_url, '/') . ')(((?:http|https):\/\/)[a-zA-Z0-9.-]+)/', $comments, $match)) {
             throw new Exception(I18N::translate('You are not allowed to send messages that contain external links.') . ' ' . I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', e($match[2]), e($match[1])));
-        }
-    }
-
-    /**
-     * Show an email verification page.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function verifyPage(ServerRequestInterface $request): ResponseInterface
-    {
-        $this->checkRegistrationAllowed();
-
-        $title = I18N::translate('User verification');
-
-        return $this->viewResponse('register-page', [
-            'title' => $title,
-        ]);
-    }
-
-    /**
-     * Perform a registration.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function verifyAction(ServerRequestInterface $request): ResponseInterface
-    {
-        $this->checkRegistrationAllowed();
-
-        return redirect(route('tree-page'));
-    }
-
-    /**
-     * Check that visitors are allowed to register on this site.
-     *
-     * @return void
-     * @throws NotFoundHttpException
-     */
-    private function checkRegistrationAllowed(): void
-    {
-        if (Site::getPreference('USE_REGISTRATION_MODULE') !== '1') {
-            throw new NotFoundHttpException();
         }
     }
 }
