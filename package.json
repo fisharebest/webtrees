@@ -12,7 +12,7 @@
     "postcss-import": "^12.0.1",
     "postcss-rtl": "^1.5.0",
     "resolve-url-loader": "^3.1.0",
-    "sass": "^1.22.12",
+    "sass": "^1.23.0",
     "sass-loader": "^8.0.0",
     "vue-template-compiler": "^2.6.10"
   },
@@ -21,7 +21,7 @@
     "beautifymarker": "^1.0.7",
     "bootstrap": "^4.3.1",
     "corejs-typeahead": "^1.2.1",
-    "datatables.net-bs4": "^1.10.19",
+    "datatables.net-bs4": "^1.10.20",
     "dejavu-fonts-ttf": "^2.37.3",
     "hideshowpassword": "^2.1.1",
     "jquery": "^3.4.1",
@@ -34,7 +34,7 @@
     "npm-check-updates": "^3.1.23",
     "popper.js": "^1.15.0",
     "select2": "4.0.10",
-    "sortablejs": "^1.10.0",
+    "sortablejs": "^1.10.1",
     "typeahead.js-bootstrap4-css": "^1.0.0",
     "wheelzoom": "^4.0.1"
   },
