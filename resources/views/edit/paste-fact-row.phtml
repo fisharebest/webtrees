@@ -8,9 +8,10 @@
         </label>
     </th>
     <td>
-        <form name="newFromClipboard" onsubmit="return false;">
+        <form method="post" action="<?= route('paste-fact', ['ged' => $record->tree()->name(), 'xref' => $record->xref()]) ?>">
+            <?= csrf_field() ?>
             <div class="input-group">
-                <select class="custom-select" id="paste-fact">
+                <select class="custom-select" id="paste-fact" name="fact_id">
                     <?php foreach ($facts as $fact) : ?>
                     <option value="<?= e($fact->id()) ?>">
                         <?= $fact->label() ?>
@@ -29,7 +30,7 @@
                     <?php endforeach ?>
                 </select>
                 <div class="input-group-append">
-                    <button class="btn btn-light" type="submit" onclick="return paste_fact('<?= e($tree->name()) ?>', '<?= e($record->xref()) ?>', '#paste-fact');">
+                    <button class="btn btn-light" type="submit">
                         <?= /* I18N: A button label. */ I18N::translate('add') ?>
                     </button>
                 </div>

@@ -135,6 +135,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         $title = I18N::translate('Frequently asked questions') . ' — ' . $tree->title();
 
         return $this->viewResponse('modules/faq/config', [
+            'action'          => route('module', ['module' => $this->name(), 'action' => 'Admin']),
             'faqs'            => $faqs,
             'max_block_order' => $max_block_order,
             'min_block_order' => $min_block_order,

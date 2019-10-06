@@ -9,7 +9,7 @@
     <?= $title ?>
 </h2>
 
-<form class="wt-page-options wt-page-options-media-list d-print-none">
+<form method="get" action="<?= e(route('module')) ?>" class="wt-page-options wt-page-options-media-list d-print-none">
     <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
     <input type="hidden" name="route" value="module">
     <input type="hidden" name="module" value="<?= e($module) ?>">

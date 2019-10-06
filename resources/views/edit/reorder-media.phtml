@@ -3,8 +3,11 @@
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form class="wt-page-content" method="post">
+<form method="post" action="<?= e(route('reorder-media-action')) ?>" class="wt-page-content">
     <?= csrf_field() ?>
+    <input type="hidden" name="ged" value="<?= e($individual->tree()->name()) ?>">
+    <input type="hidden" name="xref" value="<?= e($individual->xref()) ?>">
+
     <div class="wt-sortable-list">
         <?php foreach ($individual->facts(['OBJE']) as $fact) : ?>
             <div class="card mb-2 wt-sortable-item">

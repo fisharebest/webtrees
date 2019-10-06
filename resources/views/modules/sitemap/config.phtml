@@ -12,7 +12,7 @@
     <?= /* I18N: Label for a configuration option */ I18N::translate('Which family trees should be included in the sitemaps') ?>
 </p>
 
-<form action="<?= e(route('module', ['module' => 'sitemap', 'action' => 'Admin'])) ?>" method="post">
+<form method="post" action="<?= e(route('module', ['module' => 'sitemap', 'action' => 'Admin'])) ?>">
     <?= csrf_field() ?>
 
     <?php foreach ($all_trees as $tree) : ?>

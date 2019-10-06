@@ -9,7 +9,7 @@
     <?= I18N::translate('Maximum upload size: ') ?><?= e($filesize) ?>
 </p>
 
-<form name="uploadmedia" enctype="multipart/form-data" method="post">
+<form method="post" action="<?= e(route('admin-media-upload-action')) ?>" name="uploadmedia" enctype="multipart/form-data">
     <?= csrf_field() ?>
 
     <?php for ($i = 1; $i <= $max_upload_files; $i++) : ?>

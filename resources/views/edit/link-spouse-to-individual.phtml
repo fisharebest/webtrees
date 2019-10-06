@@ -3,7 +3,7 @@
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form class="wt-page-content" method="post">
+<form method="post" action="<?= e(route('link-spouse-to-individual-action')) ?>" class="wt-page-content">
     <?= csrf_field() ?>
 
     <div class="form-group row">

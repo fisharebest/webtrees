@@ -2,7 +2,7 @@
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form class="wt-page-content" method="post">
+<form method="post" action="<?= e(route('edit-raw-fact-update')) ?>" class="wt-page-content">
     <?= csrf_field() ?>
     <input type="hidden" name="ged" value="<?= e($fact->record()->tree()->name()) ?>">
     <input type="hidden" name="xref" value="<?= e($fact->record()->xref()) ?>">

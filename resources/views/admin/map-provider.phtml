@@ -2,7 +2,7 @@
 
 <?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), $title]]) ?>
 
-<form method="POST">
+<form method="post">
     <?= csrf_field() ?>
 
     <div class="form-group">

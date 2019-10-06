@@ -84,7 +84,7 @@
     <br>
     <table class="table table-sm wt-facts-table" role="presentation">
         <tbody>
-            <?php if (count($spouse_families) > 1) : ?>
+            <?php if ($spouse_families->count() > 1) : ?>
                 <tr>
                     <td>
                         <a href="<?= e(route('reorder-spouses', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">

@@ -5,7 +5,7 @@
 
 <h1><?= $title ?></h1>
 
-<form class="form-horizontal" name="newform" method="post" autocomplete="off" action="<?= e(route('admin-users-create')) ?>">
+<form method="post" action="<?= e(route('admin-users-create')) ?>" class="form-horizontal" name="newform" autocomplete="off">
     <?= csrf_field() ?>
 
     <!-- REAL NAME -->

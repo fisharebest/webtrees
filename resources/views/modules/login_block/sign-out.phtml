@@ -4,7 +4,7 @@
 <?= I18N::translate('You are signed in as %s.', e($user->userName())) ?>
 </p>
 
-<form method="POST" action="<?= e(route('logout')) ?>">
+<form method="post" action="<?= e(route('logout')) ?>">
     <?= csrf_field() ?>
 
     <button type="submit" class="btn btn-primary">

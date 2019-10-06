@@ -1,6 +1,6 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<form action="<?= e(route('create-repository')) ?>" id="wt-modal-form" method="POST">
+<form method="post" action="<?= e(route('create-repository')) ?>" id="wt-modal-form">
     <?= csrf_field() ?>
     <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
 

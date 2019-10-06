@@ -21,7 +21,7 @@
         <?= I18N::translate('Depending on your server configuration, you may be able to upgrade automatically.') ?>
     </p>
 
-    <form class="form-horizontal">
+    <form method="get" action="<?= e(route('upgrade')) ?>" class="form-horizontal">
         <input type="hidden" name="route" value="upgrade">
 
         <button type="submit" class="btn btn-primary" name="continue" value="1">

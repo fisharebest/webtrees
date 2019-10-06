@@ -12,7 +12,7 @@ use Fisharebest\Webtrees\View;
 
 <h1><?= $title ?></h1>
 
-<form class="form-horizontal" name="newform" method="post" autocomplete="off" action="<?= e(route('admin-users-edit')) ?>">
+<form method="post" action="<?= e(route('admin-users-edit')) ?>" class="form-horizontal" name="newform" autocomplete="off">
     <?= csrf_field() ?>
     <input type="hidden" name="user_id" value="<?= $user->id() ?>">
 

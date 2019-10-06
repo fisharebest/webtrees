@@ -411,6 +411,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $title = I18N::translate('Add %s to the clippings cart', $family->fullName());
 
         return $this->viewResponse('modules/clippings/add-options', [
+            'action'  => route('module', ['module' => $this->name(), 'action' => 'AddFamily']),
             'options' => $options,
             'default' => key($options),
             'record'  => $family,
@@ -543,6 +544,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $title = I18N::translate('Add %s to the clippings cart', $individual->fullName());
 
         return $this->viewResponse('modules/clippings/add-options', [
+            'action'  => route('module', ['module' => $this->name(), 'action' => 'AddIndividual']),
             'options' => $options,
             'default' => key($options),
             'record'  => $individual,
@@ -685,6 +687,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $title = I18N::translate('Add %s to the clippings cart', $media->fullName());
 
         return $this->viewResponse('modules/clippings/add-options', [
+            'action'  => route('module', ['module' => $this->name(), 'action' => 'AddMedia']),
             'options' => $options,
             'default' => key($options),
             'record'  => $media,
@@ -749,6 +752,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $title = I18N::translate('Add %s to the clippings cart', $note->fullName());
 
         return $this->viewResponse('modules/clippings/add-options', [
+            'action'  => route('module', ['module' => $this->name(), 'action' => 'AddNote']),
             'options' => $options,
             'default' => key($options),
             'record'  => $note,
@@ -813,6 +817,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $title = I18N::translate('Add %s to the clippings cart', $repository->fullName());
 
         return $this->viewResponse('modules/clippings/add-options', [
+            'action'  => route('module', ['module' => $this->name(), 'action' => 'AddRepository']),
             'options' => $options,
             'default' => key($options),
             'record'  => $repository,
@@ -877,6 +882,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $title = I18N::translate('Add %s to the clippings cart', $source->fullName());
 
         return $this->viewResponse('modules/clippings/add-options', [
+            'action'  => route('module', ['module' => $this->name(), 'action' => 'AddSource']),
             'options' => $options,
             'default' => key($options),
             'record'  => $source,

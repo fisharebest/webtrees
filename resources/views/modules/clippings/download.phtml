@@ -2,7 +2,7 @@
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form class="wt-page-options wt-page-options-clippings-download hidden-print">
+<form method="get" action="<?= e(route('module')) ?>" class="wt-page-options wt-page-options-clippings-download hidden-print">
     <input type="hidden" name="route" value="module">
     <input type="hidden" name="module" value="clippings">
     <input type="hidden" name="action" value="Download">

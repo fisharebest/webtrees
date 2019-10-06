@@ -61,7 +61,7 @@ class EditIndividualController extends AbstractEditController
     public function reorderMediaAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree       = $request->getAttribute('tree');
-        $xref       = $request->getQueryParams()['xref'];
+        $xref       = $request->getParsedBody()['xref'];
         $order      = $request->getParsedBody()['order'] ?? [];
         $individual = Individual::getInstance($xref, $tree);
 
@@ -122,7 +122,7 @@ class EditIndividualController extends AbstractEditController
     public function reorderNamesAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree       = $request->getAttribute('tree');
-        $xref       = $request->getQueryParams()['xref'];
+        $xref       = $request->getParsedBody()['xref'];
         $order      = $request->getParsedBody()['order'] ?? [];
         $individual = Individual::getInstance($xref, $tree);
 
@@ -183,7 +183,7 @@ class EditIndividualController extends AbstractEditController
     public function reorderSpousesAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree       = $request->getAttribute('tree');
-        $xref       = $request->getQueryParams()['xref'];
+        $xref       = $request->getParsedBody()['xref'];
         $order      = $request->getParsedBody()['order'] ?? [];
         $individual = Individual::getInstance($xref, $tree);
 
@@ -233,14 +233,14 @@ class EditIndividualController extends AbstractEditController
         $title = $individual->fullName() . ' - ' . I18N::translate('Add a child to create a one-parent family');
 
         return $this->viewResponse('edit/new-individual', [
-            'tree'       => $tree,
-            'title'      => $title,
-            'nextaction' => 'add_child_to_individual_action',
-            'individual' => $individual,
-            'family'     => null,
-            'name_fact'  => null,
-            'famtag'     => 'CHIL',
-            'gender'     => 'U',
+            'next_action' => 'add-child-to-individual-action',
+            'tree'        => $tree,
+            'title'       => $title,
+            'individual'  => $individual,
+            'family'      => null,
+            'name_fact'   => null,
+            'famtag'      => 'CHIL',
+            'gender'      => 'U',
         ]);
     }
 
@@ -252,19 +252,18 @@ class EditIndividualController extends AbstractEditController
     public function addChildAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = $request->getAttribute('tree');
-        $params = $request->getParsedBody();
-        $xref   = $params['xref'];
+        $xref   = $request->getParsedBody()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual, true);
 
-        $PEDI = $params['PEDI'];
+        $PEDI = $request->getParsedBody()['PEDI'];
 
-        $this->glevels = $params['glevels'] ?? [];
-        $this->tag     = $params['tag'] ?? [];
-        $this->text    = $params['text'] ?? [];
-        $this->islink  = $params['islink'] ?? [];
+        $this->glevels = $request->getParsedBody()['glevels'] ?? [];
+        $this->tag     = $request->getParsedBody()['tag'] ?? [];
+        $this->text    = $request->getParsedBody()['text'] ?? [];
+        $this->islink  = $request->getParsedBody()['islink'] ?? [];
 
         // Create a family
         if ($individual->sex() === 'F') {
@@ -289,7 +288,7 @@ class EditIndividualController extends AbstractEditController
                 $gedcom .= $this->addNewFact($request, $tree, $match);
             }
         }
-        if ($params['SOUR_INDI'] ?? false) {
+        if ($request->getParsedBody()['SOUR_INDI'] ?? false) {
             $gedcom = $this->handleUpdates($gedcom);
         } else {
             $gedcom = $this->updateRest($gedcom);
@@ -300,7 +299,7 @@ class EditIndividualController extends AbstractEditController
         // Link the family to the child
         $family->createFact('1 CHIL @' . $child->xref() . '@', true);
 
-        if (($params['goto'] ?? '') === 'new') {
+        if (($request->getParsedBody()['goto'] ?? '') === 'new') {
             return redirect($child->url());
         }
 
@@ -317,9 +316,8 @@ class EditIndividualController extends AbstractEditController
     public function addParent(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = $request->getAttribute('tree');
-        $params = $request->getQueryParams();
-        $xref   = $params['xref'];
-        $gender = $params['gender'];
+        $xref   = $request->getQueryParams()['xref'];
+        $gender = $request->getQueryParams()['gender'];
 
         $individual = Individual::getInstance($xref, $tree);
 
@@ -334,14 +332,14 @@ class EditIndividualController extends AbstractEditController
         }
 
         return $this->viewResponse('edit/new-individual', [
-            'tree'       => $tree,
-            'title'      => $title,
-            'nextaction' => 'add_parent_to_individual_action',
-            'individual' => $individual,
-            'family'     => null,
-            'name_fact'  => null,
-            'famtag'     => $famtag,
-            'gender'     => $gender,
+            'next_action' => 'add-parent-to-individual-action',
+            'tree'        => $tree,
+            'title'       => $title,
+            'individual'  => $individual,
+            'family'      => null,
+            'name_fact'   => null,
+            'famtag'      => $famtag,
+            'gender'      => $gender,
         ]);
     }
 
@@ -353,17 +351,16 @@ class EditIndividualController extends AbstractEditController
     public function addParentAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = $request->getAttribute('tree');
-        $params = $request->getParsedBody();
-        $xref   = $params['xref'];
+        $xref   = $request->getParsedBody()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual, true);
 
-        $this->glevels = $params['glevels'] ?? [];
-        $this->tag     = $params['tag'] ?? [];
-        $this->text    = $params['text'] ?? [];
-        $this->islink  = $params['islink'] ?? [];
+        $this->glevels = $request->getParsedBody()['glevels'] ?? [];
+        $this->tag     = $request->getParsedBody()['tag'] ?? [];
+        $this->text    = $request->getParsedBody()['text'] ?? [];
+        $this->islink  = $request->getParsedBody()['islink'] ?? [];
 
         // Create a new family
         $gedcom = "0 @@ FAM\n1 CHIL @" . $individual->xref() . '@';
@@ -383,7 +380,7 @@ class EditIndividualController extends AbstractEditController
                 $gedcom .= $this->addNewFact($request, $tree, $match);
             }
         }
-        if ($params['SOUR_INDI'] ?? false) {
+        if ($request->getParsedBody()['SOUR_INDI'] ?? false) {
             $gedcom = $this->handleUpdates($gedcom);
         } else {
             $gedcom = $this->updateRest($gedcom);
@@ -399,7 +396,7 @@ class EditIndividualController extends AbstractEditController
             $family->createFact('1 HUSB @' . $parent->xref() . '@', true);
         }
 
-        if (($params['goto'] ?? '') === 'new') {
+        if (($request->getParsedBody()['goto'] ?? '') === 'new') {
             return redirect($parent->url());
         }
 
@@ -433,14 +430,14 @@ class EditIndividualController extends AbstractEditController
         }
 
         return $this->viewResponse('edit/new-individual', [
-            'tree'       => $tree,
-            'title'      => $title,
-            'nextaction' => 'add_spouse_to_individual_action',
-            'individual' => $individual,
-            'family'     => null,
-            'name_fact'  => null,
-            'famtag'     => $famtag,
-            'gender'     => $gender,
+            'next_action' => 'add-spouse-to-individual-action',
+            'tree'        => $tree,
+            'title'       => $title,
+            'individual'  => $individual,
+            'family'      => null,
+            'name_fact'   => null,
+            'famtag'      => $famtag,
+            'gender'      => $gender,
         ]);
     }
 
@@ -452,19 +449,18 @@ class EditIndividualController extends AbstractEditController
     public function addSpouseAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = $request->getAttribute('tree');
-        $params = $request->getParsedBody();
-        $xref   = $params['xref'];
+        $xref   = $request->getParsedBody()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual, true);
 
-        $sex = $params['SEX'];
+        $sex = $request->getParsedBody()['SEX'];
 
-        $this->glevels = $params['glevels'] ?? [];
-        $this->tag     = $params['tag'] ?? [];
-        $this->text    = $params['text'] ?? [];
-        $this->islink  = $params['islink'] ?? [];
+        $this->glevels = $request->getParsedBody()['glevels'] ?? [];
+        $this->tag     = $request->getParsedBody()['tag'] ?? [];
+        $this->text    = $request->getParsedBody()['text'] ?? [];
+        $this->islink  = $request->getParsedBody()['islink'] ?? [];
 
         $this->splitSource();
         $indi_gedcom = '0 @@ INDI';
@@ -475,7 +471,7 @@ class EditIndividualController extends AbstractEditController
                 $indi_gedcom .= $this->addNewFact($request, $tree, $match);
             }
         }
-        if ($params['SOUR_INDI'] ?? false) {
+        if ($request->getParsedBody()['SOUR_INDI'] ?? false) {
             $indi_gedcom = $this->handleUpdates($indi_gedcom);
         } else {
             $indi_gedcom = $this->updateRest($indi_gedcom);
@@ -487,7 +483,7 @@ class EditIndividualController extends AbstractEditController
                 $fam_gedcom .= $this->addNewFact($request, $tree, $match);
             }
         }
-        if ($params['SOUR_FAM'] ?? false) {
+        if ($request->getParsedBody()['SOUR_FAM'] ?? false) {
             $fam_gedcom = $this->handleUpdates($fam_gedcom);
         } else {
             $fam_gedcom = $this->updateRest($fam_gedcom);
@@ -505,7 +501,7 @@ class EditIndividualController extends AbstractEditController
         $spouse->createFact('1 FAMS @' . $family->xref() . '@', true);
         $individual->createFact('1 FAMS @' . $family->xref() . '@', true);
 
-        if (($params['goto'] ?? '') === 'new') {
+        if (($request->getParsedBody()['goto'] ?? '') === 'new') {
             return redirect($spouse->url());
         }
 
@@ -524,14 +520,14 @@ class EditIndividualController extends AbstractEditController
         $tree = $request->getAttribute('tree');
 
         return $this->viewResponse('edit/new-individual', [
-            'tree'       => $tree,
-            'title'      => I18N::translate('Create an individual'),
-            'nextaction' => 'add_unlinked_indi_action',
-            'individual' => null,
-            'family'     => null,
-            'name_fact'  => null,
-            'famtag'     => '',
-            'gender'     => 'U',
+            'next_action' => 'add-unlinked-individual-action',
+            'tree'        => $tree,
+            'title'       => I18N::translate('Create an individual'),
+            'individual'  => null,
+            'family'      => null,
+            'name_fact'   => null,
+            'famtag'      => '',
+            'gender'      => 'U',
         ]);
     }
 
@@ -543,11 +539,10 @@ class EditIndividualController extends AbstractEditController
     public function addUnlinkedAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree          = $request->getAttribute('tree');
-        $params        = $request->getParsedBody();
-        $this->glevels = $params['glevels'] ?? [];
-        $this->tag     = $params['tag'] ?? [];
-        $this->text    = $params['text'] ?? [];
-        $this->islink  = $params['islink'] ?? [];
+        $this->glevels = $request->getParsedBody()['glevels'] ?? [];
+        $this->tag     = $request->getParsedBody()['tag'] ?? [];
+        $this->text    = $request->getParsedBody()['text'] ?? [];
+        $this->islink  = $request->getParsedBody()['islink'] ?? [];
 
         $this->splitSource();
         $gedrec = '0 @@ INDI';
@@ -558,7 +553,7 @@ class EditIndividualController extends AbstractEditController
                 $gedrec .= $this->addNewFact($request, $tree, $match);
             }
         }
-        if ($params['SOUR_INDI'] ?? false) {
+        if ($request->getParsedBody()['SOUR_INDI'] ?? false) {
             $gedrec = $this->handleUpdates($gedrec);
         } else {
             $gedrec = $this->updateRest($gedrec);
@@ -566,7 +561,7 @@ class EditIndividualController extends AbstractEditController
 
         $new_indi = $tree->createIndividual($gedrec);
 
-        if (($params['goto'] ?? '') === 'new') {
+        if (($request->getParsedBody()['goto'] ?? '') === 'new') {
             return redirect($new_indi->url());
         }
 
@@ -583,9 +578,8 @@ class EditIndividualController extends AbstractEditController
     public function editName(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = $request->getAttribute('tree');
-        $params  = $request->getQueryParams();
-        $fact_id = $params['fact_id'];
-        $xref    = $params['xref'];
+        $fact_id = $request->getQueryParams()['fact_id'];
+        $xref    = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
 
@@ -595,14 +589,14 @@ class EditIndividualController extends AbstractEditController
         foreach ($individual->facts() as $fact) {
             if ($fact->id() === $fact_id && $fact->canEdit()) {
                 return $this->viewResponse('edit/new-individual', [
-                    'tree'       => $tree,
-                    'title'      => I18N::translate('Edit the name'),
-                    'nextaction' => 'update',
-                    'individual' => $individual,
-                    'family'     => null,
-                    'name_fact'  => $fact,
-                    'famtag'     => '',
-                    'gender'     => $individual->sex(),
+                    'next_action' => 'edit-name-action',
+                    'tree'        => $tree,
+                    'title'       => I18N::translate('Edit the name'),
+                    'individual'  => $individual,
+                    'family'      => null,
+                    'name_fact'   => $fact,
+                    'famtag'      => '',
+                    'gender'      => $individual->sex(),
                 ]);
             }
         }
@@ -647,14 +641,14 @@ class EditIndividualController extends AbstractEditController
         $title = $individual->fullName() . ' — ' . I18N::translate('Add a name');
 
         return $this->viewResponse('edit/new-individual', [
-            'tree'       => $tree,
-            'title'      => $title,
-            'nextaction' => 'update',
-            'individual' => $individual,
-            'family'     => null,
-            'name_fact'  => null,
-            'famtag'     => '',
-            'gender'     => $individual->sex(),
+            'next_action' => 'add-name-action',
+            'tree'        => $tree,
+            'title'       => $title,
+            'individual'  => $individual,
+            'family'      => null,
+            'name_fact'   => null,
+            'famtag'      => '',
+            'gender'      => $individual->sex(),
         ]);
     }
 
@@ -707,10 +701,9 @@ class EditIndividualController extends AbstractEditController
     public function linkChildToFamilyAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = $request->getAttribute('tree');
-        $xref   = $request->getQueryParams()['xref'];
-        $params = $request->getParsedBody();
-        $famid  = $params['famid'];
-        $PEDI   = $params['PEDI'];
+        $xref   = $request->getParsedBody()['xref'];
+        $famid  = $request->getParsedBody()['famid'];
+        $PEDI   = $request->getParsedBody()['PEDI'];
 
         $individual = Individual::getInstance($xref, $tree);
         Auth::checkIndividualAccess($individual, true);
@@ -783,7 +776,7 @@ class EditIndividualController extends AbstractEditController
     public function linkSpouseToIndividualAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = $request->getAttribute('tree');
-        $xref   = $request->getQueryParams()['xref'];
+        $xref   = $request->getParsedBody()['xref'];
         $spouse = $request->getParsedBody()['spid'];
 
         $individual = Individual::getInstance($xref, $tree);

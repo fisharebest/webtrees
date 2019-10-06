@@ -28,7 +28,7 @@ use Illuminate\Support\Collection;
     </div>
 
     <?php if ($can_edit) : ?>
-        <form action="<?= e(route('module', ['module' => $module_name, 'action' => 'DeleteFavorite', 'ged' => $tree->name(), 'favorite_id' => $favorite->favorite_id])) ?>" method="post">
+        <form method="post" action="<?= e(route('module', ['module' => $module_name, 'action' => 'DeleteFavorite', 'ged' => $tree->name(), 'favorite_id' => $favorite->favorite_id])) ?>">
             <?= csrf_field() ?>
             <button type="submit" class="btn btn-link" data-confirm="<?= I18N::translate('Are you sure you want to remove this item from your list of favorites?') ?>" onclick="return confirm(this.dataset.confirm);">
                 <?= I18N::translate('Remove') ?>
@@ -45,7 +45,7 @@ use Illuminate\Support\Collection;
     <div class="modal fade" id="favorite-form-<?= e($block_id) ?>" tabindex="-1" role="dialog" aria-labelledby="favorite-form-<?= e($block_id) ?>-label" aria-hidden="true">
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
-                <form action="<?= e(route('module', ['module' => $module_name, 'action' => 'AddFavorite', 'ged' => $tree->name()])) ?>" method="post">
+                <form method="post" action="<?= e(route('module', ['module' => $module_name, 'action' => 'AddFavorite', 'ged' => $tree->name()])) ?>">
                     <?= csrf_field() ?>
                     <div class="modal-header">
                         <h5 class="modal-title" id="favorite-form-<?= e($block_id) ?>-label">

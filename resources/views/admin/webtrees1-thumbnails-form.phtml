@@ -1,6 +1,6 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<form action="<?= e(route('admin-webtrees1-thumbs-action')) ?>" method="POST">
+<form method="post" action="<?= e(route('admin-webtrees1-thumbs-action')) ?>">
     <input type="hidden" name="thumbnail" value="<?= e($thumbnail) ?>">
     <?php foreach ($media as $medium) : ?>
         <input type="hidden" name="ged[]" value="<?= e($medium->tree()->name()) ?>">

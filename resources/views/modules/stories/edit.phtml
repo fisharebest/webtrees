@@ -5,7 +5,7 @@
 
 <h1><?= $title ?></h1>
 
-<form class="form-horizontal" method="post" action="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'block_id' => $block_id, 'ged' => $tree->name()])) ?>">
+<form method="post" action="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'block_id' => $block_id, 'ged' => $tree->name()])) ?>" class="form-horizontal">
     <?= csrf_field() ?>
 
     <div class="row form-group">

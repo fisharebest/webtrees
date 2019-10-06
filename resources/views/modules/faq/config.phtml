@@ -11,7 +11,7 @@
 </p>
 
 <p>
-<form class="form form-inline">
+<form method="get" action="<?= e(route('module')) ?>" class="form form-inline">
     <input type="hidden" name="route" value="module">
     <input type="hidden" name="module" value="faq">
     <input type="hidden" name="action" value="Admin">
@@ -61,7 +61,7 @@
                 </td>
                 <td>
                     <?php if ($faq->block_order != $min_block_order) : ?>
-                        <form action="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminMoveUp', 'block_id' => $faq->block_id, 'ged' => $tree->name()])) ?>" method="post">
+                        <form method="post" action="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminMoveUp', 'block_id' => $faq->block_id, 'ged' => $tree->name()])) ?>">
                             <?= csrf_field() ?>
                             <button type="submit" class="btn btn-secondary">
                                 <?= view('icons/arrow-up') ?>
@@ -72,7 +72,7 @@
                 </td>
                 <td>
                     <?php if ($faq->block_order != $max_block_order) : ?>
-                        <form action="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminMoveDown', 'block_id' => $faq->block_id, 'ged' => $tree->name()])) ?>" method="post">
+                        <form method="post" action="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminMoveDown', 'block_id' => $faq->block_id, 'ged' => $tree->name()])) ?>">
                             <?= csrf_field() ?>
                             <button type="submit" class="btn btn-secondary">
                                 <?= view('icons/arrow-down') ?>
@@ -88,7 +88,7 @@
                     </a>
                 </td>
                 <td>
-                    <form action="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminDelete', 'block_id' => $faq->block_id, 'ged' => $tree->name()])) ?>" method="post">
+                    <form method="post" action="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminDelete', 'block_id' => $faq->block_id, 'ged' => $tree->name()])) ?>">
                         <?= csrf_field() ?>
                         <button type="submit" class="btn btn-danger" onclick="return confirm(this.dataset.confirm);" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($faq->header)) ?>">
                             <?= view('icons/delete') ?>

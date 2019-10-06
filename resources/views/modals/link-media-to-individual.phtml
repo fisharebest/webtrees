@@ -1,6 +1,6 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<form action="<?= e(route('link-media-to-record')) ?>" id="wt-modal-form" method="POST">
+<form method="post" action="<?= e(route('link-media-to-record')) ?>" id="wt-modal-form">
     <?= csrf_field() ?>
     <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
     <input type="hidden" name="xref" value="<?= e($media->xref()) ?>">

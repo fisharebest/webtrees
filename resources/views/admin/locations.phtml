@@ -72,7 +72,7 @@
 
             <td>
                 <?php if ($place->child_count === 0) : ?>
-                    <form method="POST" action="<?= e(route('map-data-delete', ['parent_id' => $parent_id, 'place_id' => $place->pl_id])) ?>"
+                    <form method="post" action="<?= e(route('map-data-delete', ['parent_id' => $parent_id, 'place_id' => $place->pl_id])) ?>"
                           data-confirm="<?= I18N::translate('Remove this location?') ?>"
                           onsubmit="return confirm(this.dataset.confirm)">
                         <?= csrf_field() ?>
@@ -121,7 +121,7 @@
     </tfoot>
 </table>
 
-<form method="POST" action="<?= e(route('locations-import-from-tree')) ?>">
+<form method="post" action="<?= e(route('locations-import-from-tree')) ?>">
     <?= csrf_field() ?>
 
     <div class="form-group row">

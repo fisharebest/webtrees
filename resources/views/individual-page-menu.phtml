@@ -45,6 +45,20 @@
 
         <div class="dropdown-divider"></div>
 
+        <?php if ($individual->spouseFamilies()->count() > 1) : ?>
+            <a class="dropdown-item" href="<?= e(route('reorder-spouses', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
+                <?= view('icons/reorder') ?>
+                <?= I18N::translate('Re-order families') ?>
+            </a>
+        <?php else : ?>
+            <div class="dropdown-item disabled">
+                <?= view('icons/spacer') ?>
+                <?= I18N::translate('Re-order families') ?>
+            </div>
+        <?php endif ?>
+
+        <div class="dropdown-divider"></div>
+
         <a class="dropdown-item" href="<?= e(route('add-fact', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact' => 'OBJE'])) ?>">
             <?= view('icons/add') ?>
             <?= I18N::translate('Add a media object') ?>

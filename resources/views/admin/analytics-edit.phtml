@@ -4,7 +4,7 @@
 
 <h1><?= $title ?></h1>
 
-<form method="post" class="form-horizontal">
+<form method="post" action="<?= e($action) ?>" class="form-horizontal">
     <?= csrf_field() ?>
     <?= $form_fields ?>
 

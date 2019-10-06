@@ -186,23 +186,6 @@ function copy_fact(ged, xref, fact_id)
     return false;
 }
 
-// Paste a fact from the clipboard
-function paste_fact(ged, xref, element)
-{
-    $.post(
-        'index.php?route=paste-fact',
-        {
-            xref: xref,
-            fact_id: $(element).val(), // element is the <select> containing the option
-            ged: ged,
-        },
-        function () {
-            document.location.reload();
-        }
-    );
-    return false;
-}
-
 // Delete a user - and reload the page
 function delete_user(message, user_id)
 {

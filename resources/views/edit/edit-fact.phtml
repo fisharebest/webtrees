@@ -7,7 +7,8 @@
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form class="wt-page-content" action="<?= e(route('update-fact', ['ged' => $tree->name(), 'xref' => $record->xref(), 'fact_id' => $edit_fact->id()])) ?>" method="post">   <?= csrf_field() ?>
+<form method="post" action="<?= e(route('update-fact', ['ged' => $tree->name(), 'xref' => $record->xref(), 'fact_id' => $edit_fact->id()])) ?>" class="wt-page-content">
+    <?= csrf_field() ?>
 
     <?php FunctionsEdit::createEditForm($edit_fact) ?>
 

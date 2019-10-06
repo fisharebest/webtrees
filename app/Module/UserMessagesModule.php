@@ -31,6 +31,8 @@ use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
+use function e;
+use function route;
 
 /**
  * Class UserMessagesModule
@@ -139,7 +141,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
         if ($users->isNotEmpty()) {
             $url = route('user-page', ['ged' => $tree->name()]);
 
-            $content .= '<form onsubmit="return $(&quot;#to&quot;).val() !== &quot;&quot;">';
+            $content .= '<form method="get" action="' . e(route('message')) . '" onsubmit="return $(&quot;#to&quot;).val() !== &quot;&quot;">';
             $content .= '<input type="hidden" name="route" value="message">';
             $content .= '<input type="hidden" name="ged" value="' . e($tree->name()) . '">';
             $content .= '<input type="hidden" name="url" value="' . e($url) . '">';
@@ -153,12 +155,12 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             $content .= '<button type="submit">' . I18N::translate('Send') . '</button><br><br>';
             $content .= '</form>';
         }
-        $content .= '<form id="messageform" name="messageform" method="post" action="' . e(route('module', [
+        $content .= '<form method="post" action="' . e(route('module', [
                 'action'  => 'DeleteMessage',
                 'module'  => $this->name(),
                 'context' => $context,
                 'ged'     => $tree->name(),
-            ])) . '" data-confirm="' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '" onsubmit="return confirm(this.dataset.confirm);">';
+            ])) . '" data-confirm="' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '" onsubmit="return confirm(this.dataset.confirm);" id="messageform" name="messageform">';
         $content .= csrf_field();
 
         if ($messages->isNotEmpty()) {

@@ -85,6 +85,7 @@ trait ModuleAnalyticsTrait
         $this->layout = 'layouts/administration';
 
         return $this->viewResponse('admin/analytics-edit', [
+            'action'      => route('module', ['module' => $this->name(), 'action' => 'Admin']),
             'form_fields' => $this->analyticsFormFields(),
             'preview'     => $this->analyticsSnippet($this->analyticsParameters()),
             'title'       => $this->title(),

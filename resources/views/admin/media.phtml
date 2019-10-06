@@ -5,7 +5,7 @@
 
 <h1><?= $title ?></h1>
 
-<form id="admin-media-form">
+<form method="get" action="<?= e(route('admin-media')) ?>" id="admin-media-form">
     <input type="hidden" name="route" value="admin-media">
     <table class="table table-bordered table-sm">
         <thead>

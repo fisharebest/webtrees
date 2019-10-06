@@ -1,7 +1,7 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
-<form name="login-form" method="POST" action="<?= route('login', ['url' => route('user-page', ['ged' => $tree->name()])]) ?>">
+<form method="post" action="<?= route('login', ['url' => route('user-page', ['ged' => $tree->name()])]) ?>" name="login-form">
     <?= csrf_field() ?>
     <input type="hidden" name="url" value="<?= e($url) ?>">
 
@@ -37,7 +37,7 @@
 <?php endif ?>
 
 <div class="collapse" id="forgot-password">
-    <form action="<?= e(route('login')) ?>" method="POST">
+    <form method="post" action="<?= e(route('login')) ?>">
         <input type="hidden" name="time" value="">
         <input type="hidden" name="action" value="requestpw">
         <?= I18N::translate('Request a new password') ?>

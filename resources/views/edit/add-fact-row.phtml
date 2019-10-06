@@ -8,7 +8,7 @@
         </label>
     </th>
     <td>
-        <form onsubmit="if ($('#add-fact').val() === null) {event.preventDefault();}">
+        <form method="get" action="<?= e(route('add-fact')) ?>" onsubmit="if ($('#add-fact').val() === null) {event.preventDefault();}">
             <input type="hidden" name="route" value="add-fact">
             <input type="hidden" name="xref" value="<?= e($record->xref()) ?>">
             <input type="hidden" name="ged" value="<?= e($record->tree()->name()) ?>">

@@ -62,7 +62,7 @@ class EditFamilyController extends AbstractEditController
     public function reorderChildrenAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = $request->getAttribute('tree');
-        $xref   = $request->getQueryParams()['xref'];
+        $xref   = $request->getParsedBody()['xref'];
         $order  = $request->getParsedBody()['order'] ?? [];
         $family = Family::getInstance($xref, $tree);
 
@@ -103,8 +103,8 @@ class EditFamilyController extends AbstractEditController
     {
         $tree   = $request->getAttribute('tree');
         $params = $request->getQueryParams();
-        $xref   = $params['xref'];
-        $gender = $params['gender'];
+        $xref   = $request->getQueryParams()['xref'];
+        $gender = $request->getQueryParams()['gender'];
         $family = Family::getInstance($xref, $tree);
 
         Auth::checkFamilyAccess($family, true);
@@ -112,9 +112,9 @@ class EditFamilyController extends AbstractEditController
         $title = $family->fullName() . ' - ' . I18N::translate('Add a child');
 
         return $this->viewResponse('edit/new-individual', [
+            'next_action' => 'add-child-to-family-action',
             'tree'       => $tree,
             'title'      => $title,
-            'nextaction' => 'add_child_to_family_action',
             'individual' => null,
             'family'     => $family,
             'name_fact'  => null,
@@ -131,8 +131,7 @@ class EditFamilyController extends AbstractEditController
     public function addChildAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = $request->getAttribute('tree');
-        $params = $request->getParsedBody();
-        $xref   = $params['xref'];
+        $xref   = $request->getParsedBody()['xref'];
 
         $family = Family::getInstance($xref, $tree);
 
@@ -196,9 +195,8 @@ class EditFamilyController extends AbstractEditController
     public function addSpouse(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = $request->getAttribute('tree');
-        $params = $request->getQueryParams();
-        $xref   = $params['xref'];
-        $famtag = $params['famtag'];
+        $xref   = $request->getQueryParams()['xref'];
+        $famtag = $request->getQueryParams()['famtag'];
         $family = Family::getInstance($xref, $tree);
 
         Auth::checkFamilyAccess($family, true);
@@ -212,9 +210,9 @@ class EditFamilyController extends AbstractEditController
         }
 
         return $this->viewResponse('edit/new-individual', [
+            'next_action' => 'add-spouse-to-family-action',
             'tree'       => $tree,
             'title'      => $title,
-            'nextaction' => 'add_spouse_to_family_action',
             'individual' => null,
             'family'     => $family,
             'name_fact'  => null,
@@ -231,8 +229,7 @@ class EditFamilyController extends AbstractEditController
     public function addSpouseAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = $request->getAttribute('tree');
-        $params = $request->getParsedBody();
-        $xref   = $params['xref'];
+        $xref   = $request->getParsedBody()['xref'];
 
         $family = Family::getInstance($xref, $tree);
 
@@ -321,8 +318,7 @@ class EditFamilyController extends AbstractEditController
     public function changeFamilyMembersAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = $request->getAttribute('tree');
-        $params = $request->getParsedBody();
-        $xref   = $params['xref'];
+        $xref   = $request->getParsedBody()['xref'];
         $family = Family::getInstance($xref, $tree);
         Auth::checkFamilyAccess($family, true);
 

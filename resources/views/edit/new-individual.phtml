@@ -87,32 +87,33 @@ if ($name_fact instanceof Fact) {
         $indi_name = '';
     }
 
-    switch ($nextaction) {
-        case 'add_child_to_family_action':
+    switch ($next_action) {
+        case 'add-child-to-family-action':
             $name_fields = array_merge($name_fields, $surname_tradition->newChildNames($father_name, $mother_name, $gender));
             break;
-        case 'add_child_to_individual_action':
+        case 'add-child-to-individual-action':
             if ($individual->sex() === 'F') {
                 $name_fields = array_merge($name_fields, $surname_tradition->newChildNames('', $indi_name, $gender));
             } else {
                 $name_fields = array_merge($name_fields, $surname_tradition->newChildNames($indi_name, '', $gender));
             }
             break;
-        case 'add_parent_to_individual_action':
+        case 'add-parent-to-individual-action':
             $name_fields = array_merge($name_fields, $surname_tradition->newParentNames($indi_name, $gender));
             break;
-        case 'add_spouse_to_family_action':
+        case 'add-spouse-to-family-action':
             if ($father) {
                 $name_fields = array_merge($name_fields, $surname_tradition->newSpouseNames($father_name, $gender));
             } else {
                 $name_fields = array_merge($name_fields, $surname_tradition->newSpouseNames($mother_name, $gender));
             }
             break;
-        case 'add_spouse_to_individual_action':
+        case 'add-spouse-to-individual-action':
             $name_fields = array_merge($name_fields, $surname_tradition->newSpouseNames($indi_name, $gender));
             break;
-        case 'add_unlinked_indi_action':
-        case 'update':
+        case 'add-unlinked-individual-action':
+        case 'add-name-action':
+        case 'edit-name-action':
             if ($surname_tradition->hasSurnames()) {
                 $name_fields['NAME'] = '//';
             }
@@ -125,16 +126,15 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 ?>
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" onsubmit="return checkform();">
+<form method="post" action="<?= e(route($next_action)) ?>" onsubmit="return checkform();">
     <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
-    <input type="hidden" name="action" value="<?= e($nextaction) ?>">
     <input type="hidden" name="fact_id" value="<?= e($name_fact_id) ?>">
     <input type="hidden" name="xref" value="<?= e($xref) ?>">
     <input type="hidden" name="famtag" value="<?= e($famtag) ?>">
     <input type="hidden" name="gender" value="<?= $gender ?>">
     <?= csrf_field() ?>
 
-    <?php if ($nextaction === 'add_child_to_family_action' || $nextaction === 'add_child_to_individual_action') : ?>
+    <?php if ($next_action === 'add-child-to-family-action' || $next_action === 'add-child-to-individual-action') : ?>
         <?= FunctionsEdit::addSimpleTag($tree, '0 PEDI') ?>
     <?php endif ?>
 
@@ -229,7 +229,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
     }
 
     // If we are adding a new individual, add the basic details
-    if ($nextaction !== 'update') {
+    if ($next_action !== 'add-name-action' && $next_action !== 'edit-name-action') {
         echo '</table><br><table class="table wt-facts-table">';
         // 1 SEX
         if ($famtag === 'HUSB' || $gender === 'M') {
@@ -248,7 +248,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
             }
         }
         //-- if adding a spouse add the option to add a marriage fact to the new family
-        if ($nextaction === 'add_spouse_to_individual_action' || $nextaction === 'add_spouse_to_family_action') {
+        if ($next_action === 'add-spouse-to-individual-action' || $next_action === 'add-spouse-to-family-action') {
             $bdm .= 'M';
             if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
                 foreach ($matches[1] as $match) {
@@ -266,7 +266,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
     }
 
     echo '</table>';
-    if ($nextaction === 'update') {
+    if ($next_action === 'edit-name-action' || $next_action === 'add-name-action') {
         // GEDCOM 5.5.1 spec says NAME doesn’t get a OBJE
         echo view('cards/add-source-citation', [
             'level'          => 2,
@@ -317,7 +317,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
                 <?= /* I18N: A button label. */
                 I18N::translate('save') ?>
             </button>
-            <?php if (preg_match('/^add_(child|spouse|parent|unlinked_indi)/', $nextaction)) : ?>
+            <?php if (preg_match('/^add-(child|spouse|parent|unlinked-individual)/', $next_action)) : ?>
                 <button class="btn btn-primary" type="submit" name="goto" value="<?= $xref ?>">
                     <?= view('icons/save') ?>
                     <?= /* I18N: A button label. */

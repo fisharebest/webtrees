@@ -5,7 +5,7 @@
 
 <h1><?= $title ?></h1>
 
-<form method="post" class="form-horizontal">
+<form method="post" action="<?= e(route('admin-site-preferences-update')) ?>" class="form-horizontal">
     <?= csrf_field() ?>
 
     <!-- INDEX_DIRECTORY -->

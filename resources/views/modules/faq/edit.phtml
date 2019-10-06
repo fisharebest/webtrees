@@ -5,7 +5,7 @@
 
 <h1><?= $title ?></h1>
 
-<form name="faq" class="form-horizontal" method="post">
+<form method="post" action="<?= e($action) ?>" name="faq" class="form-horizontal">
     <?= csrf_field() ?>
     <input type="hidden" name="block_id" value="<?= $block_id ?>">
 

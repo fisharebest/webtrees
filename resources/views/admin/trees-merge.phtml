@@ -26,7 +26,7 @@
     </p>
 <?php endif ?>
 
-<form action="<?= e(route('admin-trees-merge')) ?>" method="post">
+<form method="post" action="<?= e(route('admin-trees-merge')) ?>">
     <?= csrf_field() ?>
     <p class="form-inline">
         <?= I18N::translate(/* I18N: Copy all the records from [family tree 1] into [family tree 2] */

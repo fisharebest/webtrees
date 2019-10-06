@@ -12,7 +12,7 @@ use Ramsey\Uuid\Uuid;
 
 <h1><?= $title ?></h1>
 
-<form method="POST">
+<form method="post">
     <input type="hidden" name="route" value="tree-privacy">
     <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
     <?= csrf_field() ?>

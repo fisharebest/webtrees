@@ -4,7 +4,7 @@
     <?= $title ?>
 </h2>
 
-<form class="wt-page-options wt-page-options-ancestors-chart hidden-print" method="post" action="<?= e(route('search-replace', ['ged' => $tree->name()])) ?>">
+<form method="post" action="<?= e(route('search-replace', ['ged' => $tree->name()])) ?>" class="wt-page-options wt-page-options-ancestors-chart hidden-print">
     <?= csrf_field() ?>
 
     <div class="row form-group">

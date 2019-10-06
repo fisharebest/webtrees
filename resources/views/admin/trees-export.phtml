@@ -4,7 +4,7 @@
 
 <h1><?= $title ?></h1>
 
-<form class="form form-horizontal" method="post">
+<form method="post" action="<?= e(route('admin-trees-export-action')) ?>" class="form form-horizontal">
     <?= csrf_field() ?>
 
     <div class="row form-group">
@@ -21,7 +21,7 @@
 
 <hr>
 
-<form class="form form-horizontal">
+<form method="get" action="<?= e(route('admin-trees-download')) ?>" class="form form-horizontal">
     <input type="hidden" name="route" value="admin-trees-download">
     <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
 

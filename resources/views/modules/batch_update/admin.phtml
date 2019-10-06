@@ -9,7 +9,7 @@ use Fisharebest\Webtrees\View;
 
 <h1><?= $title ?></h1>
 
-<form id="batch-update-form">
+<form method="get" action="<?= e(route('module')) ?>" id="batch-update-form">
     <input type="hidden" name="route" value="module">
     <input type="hidden" name="module" value="batch_update">
     <input type="hidden" name="action" value="Admin">

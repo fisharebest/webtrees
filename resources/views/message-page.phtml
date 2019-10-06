@@ -2,7 +2,7 @@
 
 <h2><?= $title ?></h2>
 
-<form method="post" action="<?= e(route('message')) ?>">
+<form method="post" action="<?= e(route('message-action')) ?>">
     <?= csrf_field() ?>
     <input type="hidden" name="url" value="<?= e($url) ?>">
     <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">

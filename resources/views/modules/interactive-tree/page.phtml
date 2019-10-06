@@ -9,7 +9,7 @@ use Fisharebest\Webtrees\View;
     <?= $title ?>
 </h2>
 
-<form class="wt-page-options wt-page-options-compact-chart d-print-none">
+<form method="get" action="<?= e(route('module')) ?>" class="wt-page-options wt-page-options-compact-chart d-print-none">
     <input type="hidden" name="route" value="module">
     <input type="hidden" name="module" value="tree">
     <input type="hidden" name="action" value="Chart">

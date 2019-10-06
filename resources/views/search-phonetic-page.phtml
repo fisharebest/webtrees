@@ -4,7 +4,7 @@
     <?= $title ?>
 </h2>
 
-<form class="wt-page-options wt-page-options-ancestors-chart hidden-print mb-4" name="searchform">
+<form method="get" action="<?= e(route('search-phonetic')) ?>" class="wt-page-options wt-page-options-ancestors-chart hidden-print mb-4" name="searchform">
     <input type="hidden" name="route" value="search-phonetic">
     <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
     <div class="row form-group">

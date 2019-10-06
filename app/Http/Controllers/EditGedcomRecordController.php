@@ -65,9 +65,8 @@ class EditGedcomRecordController extends AbstractEditController
     public function copyFact(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = $request->getAttribute('tree');
-        $params  = $request->getParsedBody();
-        $xref    = $params['xref'];
-        $fact_id = $params['fact_id'];
+        $xref    = $request->getParsedBody()['xref'];
+        $fact_id = $request->getParsedBody()['fact_id'];
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
@@ -95,9 +94,8 @@ class EditGedcomRecordController extends AbstractEditController
     public function deleteFact(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = $request->getAttribute('tree');
-        $params  = $request->getParsedBody();
-        $xref    = $params['xref'];
-        $fact_id = $params['fact_id'];
+        $xref    = $request->getParsedBody()['xref'];
+        $fact_id = $request->getParsedBody()['fact_id'];
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
@@ -176,17 +174,15 @@ class EditGedcomRecordController extends AbstractEditController
     public function pasteFact(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = $request->getAttribute('tree');
-        $params  = $request->getParsedBody();
-        $xref    = $params['xref'];
-        $fact_id = $params['fact_id'];
-
-        $record = GedcomRecord::getInstance($xref, $tree);
+        $xref    = $request->getParsedBody()['xref'];
+        $fact_id = $request->getParsedBody()['fact_id'];
+        $record  = GedcomRecord::getInstance($xref, $tree);
 
         Auth::checkRecordAccess($record, true);
 
         $this->clipboard_service->pasteFact($fact_id, $record);
 
-        return response();
+        return redirect($record->url());
     }
 
     /**
@@ -197,9 +193,8 @@ class EditGedcomRecordController extends AbstractEditController
     public function editRawFact(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = $request->getAttribute('tree');
-        $params  = $request->getQueryParams();
-        $xref    = $params['xref'];
-        $fact_id = $params['fact_id'];
+        $xref    = $request->getQueryParams()['xref'];
+        $fact_id = $request->getQueryParams()['fact_id'];
         $record  = GedcomRecord::getInstance($xref, $tree);
 
         Auth::checkRecordAccess($record, true);
@@ -226,10 +221,9 @@ class EditGedcomRecordController extends AbstractEditController
     public function editRawFactAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = $request->getAttribute('tree');
-        $params  = $request->getParsedBody();
-        $xref    = $params['xref'];
-        $fact_id = $params['fact_id'];
-        $gedcom  = $params['gedcom'];
+        $xref    = $request->getParsedBody()['xref'];
+        $fact_id = $request->getParsedBody()['fact_id'];
+        $gedcom  = $request->getParsedBody()['gedcom'];
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
@@ -278,10 +272,9 @@ class EditGedcomRecordController extends AbstractEditController
     public function editRawRecordAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree     = $request->getAttribute('tree');
-        $params   = $request->getParsedBody();
-        $xref     = $params['xref'];
-        $facts    = $params['fact'] ?? [];
-        $fact_ids = $params['fact_id'] ?? [];
+        $xref     = $request->getParsedBody()['xref'];
+        $facts    = $request->getParsedBody()['fact'] ?? [];
+        $fact_ids = $request->getParsedBody()['fact_id'] ?? [];
         $record   = GedcomRecord::getInstance($xref, $tree);
 
         Auth::checkRecordAccess($record, true);
@@ -379,20 +372,18 @@ class EditGedcomRecordController extends AbstractEditController
     public function updateFact(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = $request->getAttribute('tree');
-        $xref    = $request->getQueryParams()['xref'];
-        $fact_id = $request->getQueryParams()['fact_id'] ?? '';
+        $xref    = $request->getParsedBody()['xref'];
+        $fact_id = $request->getParsedBody()['fact_id'] ?? '';
 
         $record = GedcomRecord::getInstance($xref, $tree);
         Auth::checkRecordAccess($record, true);
 
-        $params = $request->getParsedBody();
+        $keep_chan = (bool) ($request->getParsedBody()['keep_chan'] ?? false);
 
-        $keep_chan = (bool) ($params['keep_chan'] ?? false);
-
-        $this->glevels = $params['glevels'];
-        $this->tag     = $params['tag'];
-        $this->text    = $params['text'];
-        $this->islink  = $params['islink'];
+        $this->glevels = $request->getParsedBody()['glevels'];
+        $this->tag     = $request->getParsedBody()['tag'];
+        $this->text    = $request->getParsedBody()['text'];
+        $this->islink  = $request->getParsedBody()['islink'];
 
         // If the fact has a DATE or PLAC, then delete any value of Y
         if ($this->text[0] === 'Y') {
@@ -406,7 +397,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         $newged = '';
 
-        $NAME = $params['NAME'] ?? '';
+        $NAME = $request->getParsedBody()['NAME'] ?? '';
 
         if ($NAME !== '') {
             $newged     .= "\n1 NAME " . $NAME;
@@ -420,7 +411,7 @@ class EditGedcomRecordController extends AbstractEditController
                 'NSFX',
             ];
             foreach ($name_facts as $name_fact) {
-                $NAME_FACT = $params[$name_fact] ?? '';
+                $NAME_FACT = $request->getParsedBody()[$name_fact] ?? '';
                 if ($NAME_FACT !== '') {
                     $newged .= "\n2 " . $name_fact . ' ' . $NAME_FACT;
                 }
@@ -434,7 +425,7 @@ class EditGedcomRecordController extends AbstractEditController
             preg_match_all('/[_0-9A-Z]+/', $tree->getPreference('ADVANCED_NAME_FACTS'), $match);
             $name_facts = array_unique(array_merge(['_MARNM'], $match[0]));
             foreach ($name_facts as $name_fact) {
-                $NAME_FACT = $params[$name_fact] ?? '';
+                $NAME_FACT = $request->getParsedBody()[$name_fact] ?? '';
                 // Ignore advanced facts that duplicate standard facts.
                 if ($NAME_FACT !== '' && !in_array($name_fact, [
                         'TYPE',

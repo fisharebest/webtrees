@@ -4,7 +4,7 @@
 
 <h1><?= $title ?></h1>
 
-<form class="form-inline mb-4">
+<form method="get" action="<?= e(route('module')) ?>" class="form-inline mb-4">
     <input type="hidden" name="route" value="module">
     <input type="hidden" name="module" value="stories">
     <input type="hidden" name="action" value="Admin">
@@ -57,7 +57,7 @@
                     </a>
                 </td>
                 <td>
-                    <form action="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminDelete', 'ged' => $tree->name(), 'block_id' => $story->block_id])) ?>" method="post">
+                    <form method="post" action="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminDelete', 'ged' => $tree->name(), 'block_id' => $story->block_id])) ?>">
                         <?= csrf_field() ?>
                         <button type="submit" class="btn btn-danger" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($story->title)) ?>" onclick="return confirm(this.dataset.confirm);">
                             <?= view('icons/delete') ?>

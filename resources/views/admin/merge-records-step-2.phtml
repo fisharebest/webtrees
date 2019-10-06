@@ -5,7 +5,7 @@
 
 <h1><?= $title ?></h1>
 
-<form action="<?= e(route('merge-records', ['ged' => $tree->name(), 'xref1' => $record1->xref(), 'xref2' => $record2->xref()])) ?>" method="POST">
+<form method="post" action="<?= e(route('merge-records', ['ged' => $tree->name(), 'xref1' => $record1->xref(), 'xref2' => $record2->xref()])) ?>">
     <?= csrf_field() ?>
     <p>
         <?= I18N::translate('Select the facts and events to keep from both records.') ?>
