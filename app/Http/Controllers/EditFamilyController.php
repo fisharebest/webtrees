@@ -102,7 +102,6 @@ class EditFamilyController extends AbstractEditController
     public function addChild(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = $request->getAttribute('tree');
-        $params = $request->getQueryParams();
         $xref   = $request->getQueryParams()['xref'];
         $gender = $request->getQueryParams()['gender'];
         $family = Family::getInstance($xref, $tree);
@@ -137,13 +136,13 @@ class EditFamilyController extends AbstractEditController
 
         Auth::checkFamilyAccess($family, true);
 
-        $PEDI      = $params['PEDI'];
-        $keep_chan = (bool) ($params['keep_chan'] ?? false);
+        $PEDI      = $request->getParsedBody()['PEDI'];
+        $keep_chan = (bool) ($request->getParsedBody()['keep_chan'] ?? false);
 
-        $this->glevels = $params['glevels'] ?? [];
-        $this->tag     = $params['tag'] ?? [];
-        $this->text    = $params['text'] ?? [];
-        $this->islink  = $params['islink'] ?? [];
+        $this->glevels = $request->getParsedBody()['glevels'] ?? [];
+        $this->tag     = $request->getParsedBody()['tag'] ?? [];
+        $this->text    = $request->getParsedBody()['text'] ?? [];
+        $this->islink  = $request->getParsedBody()['islink'] ?? [];
 
         $this->splitSource();
         $gedrec = '0 @@ INDI';
@@ -155,7 +154,7 @@ class EditFamilyController extends AbstractEditController
             }
         }
         $gedrec .= "\n" . GedcomCodePedi::createNewFamcPedi($PEDI, $xref);
-        if ($params['SOUR_INDI'] ?? false) {
+        if ($request->getParsedBody()['SOUR_INDI'] ?? false) {
             $gedrec = $this->handleUpdates($gedrec);
         } else {
             $gedrec = $this->updateRest($gedrec);
@@ -180,7 +179,7 @@ class EditFamilyController extends AbstractEditController
             $family->createFact('1 CHIL @' . $new_child->xref() . '@', !$keep_chan);
         }
 
-        if (($params['goto'] ?? '') === 'new') {
+        if (($request->getParsedBody()['goto'] ?? '') === 'new') {
             return redirect($new_child->url());
         }
 
@@ -235,10 +234,10 @@ class EditFamilyController extends AbstractEditController
 
         Auth::checkFamilyAccess($family, true);
 
-        $this->glevels = $params['glevels'] ?? [];
-        $this->tag     = $params['tag'] ?? [];
-        $this->text    = $params['text'] ?? [];
-        $this->islink  = $params['islink'] ?? [];
+        $this->glevels = $request->getParsedBody()['glevels'] ?? [];
+        $this->tag     = $request->getParsedBody()['tag'] ?? [];
+        $this->text    = $request->getParsedBody()['text'] ?? [];
+        $this->islink  = $request->getParsedBody()['islink'] ?? [];
 
         // Create the new spouse
         $this->splitSource(); // separate SOUR record from the rest
@@ -252,7 +251,7 @@ class EditFamilyController extends AbstractEditController
             }
         }
 
-        if ($params['SOUR_INDI'] ?? false) {
+        if ($request->getParsedBody()['SOUR_INDI'] ?? false) {
             $gedrec = $this->handleUpdates($gedrec);
         } else {
             $gedrec = $this->updateRest($gedrec);
@@ -272,14 +271,14 @@ class EditFamilyController extends AbstractEditController
                 $famrec .= $this->addNewFact($request, $tree, $match);
             }
         }
-        if ($params['SOUR_FAM'] ?? false) {
+        if ($request->getParsedBody()['SOUR_FAM'] ?? false) {
             $famrec = $this->handleUpdates($famrec);
         } else {
             $famrec = $this->updateRest($famrec);
         }
         $family->createFact(trim($famrec), true); // trim leading \n
 
-        if (($params['goto'] ?? '') === 'new') {
+        if (($request->getParsedBody()['goto'] ?? '') === 'new') {
             return redirect($spouse->url());
         }
 
@@ -322,9 +321,9 @@ class EditFamilyController extends AbstractEditController
         $family = Family::getInstance($xref, $tree);
         Auth::checkFamilyAccess($family, true);
 
-        $HUSB = $params['HUSB'] ?? '';
-        $WIFE = $params['WIFE'] ?? '';
-        $CHIL = $params['CHIL'] ?? [];
+        $HUSB = $request->getParsedBody()['HUSB'] ?? '';
+        $WIFE = $request->getParsedBody()['WIFE'] ?? '';
+        $CHIL = $request->getParsedBody()['CHIL'] ?? [];
 
         // Current family members
         $old_father   = $family->husband();
