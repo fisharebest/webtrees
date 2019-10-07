@@ -22,6 +22,7 @@ use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\User;
@@ -60,6 +61,6 @@ class AuthAdministrator implements MiddlewareInterface
         }
 
         // Not logged in.
-        return redirect(route('login', ['url' => $request->getAttribute('request_uri')]));
+        return redirect(route(LoginPage::class, ['url' => $request->getAttribute('request_uri')]));
     }
 }

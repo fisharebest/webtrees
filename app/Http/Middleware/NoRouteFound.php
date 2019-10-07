@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -83,6 +84,6 @@ class NoRouteFound implements MiddlewareInterface, RequestMethodInterface
         }
 
         // Not logged in.
-        return redirect(route('login', ['url' => $request->getAttribute('request_uri')]));
+        return redirect(route(LoginPage::class, ['url' => $request->getAttribute('request_uri')]));
     }
 }

@@ -2,6 +2,7 @@
 
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\CustomCssJsModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
@@ -59,7 +60,7 @@ use Psr\Http\Message\ServerRequestInterface;
                     </div>
                 </li>
                 <li class="nav-item menu-logout">
-                    <a class="nav-link" href="<?= e(route('logout')) ?>"><?= I18N::translate('Sign out') ?></a>
+                    <a class="nav-link" href="<?= e(route(Logout::class)) ?>"><?= I18N::translate('Sign out') ?></a>
                 </li>
             </ul>
         </header>

@@ -87,7 +87,7 @@ class RegisterAction extends AbstractBaseController
         } catch (Exception $ex) {
             FlashMessages::addMessage($ex->getMessage(), 'danger');
 
-            return redirect(route('register', [
+            return redirect(route(RegisterPage::class, [
                 'comments' => $comments,
                 'email'    => $email,
                 'realname' => $realname,

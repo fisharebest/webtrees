@@ -76,7 +76,7 @@ class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterf
         if ($user instanceof User) {
             $token  = Str::random(self::TOKEN_LENGTH);
             $expire = (string) Carbon::now()->addHour()->timestamp;
-            $url    = route('password-reset', ['token' => $token]);
+            $url    = route(PasswordResetPage::class, ['token' => $token]);
 
             $user->setPreference('password-token', $token);
             $user->setPreference('password-token-expire', $expire);
@@ -100,6 +100,6 @@ class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterf
             FlashMessages::addMessage($message, 'danger');
         }
 
-        return redirect(route('password-request'));
+        return redirect(route(PasswordRequestPage::class));
     }
 }

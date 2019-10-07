@@ -22,6 +22,8 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -281,7 +283,7 @@ trait ModuleThemeTrait
         // ...but switch from the tree-page to the user-page
         $url = str_replace('route=tree-page', 'route=user-page', $url);
 
-        return new Menu(I18N::translate('Sign in'), route('login', ['url' => $url]), 'menu-login', ['rel' => 'nofollow']);
+        return new Menu(I18N::translate('Sign in'), route(LoginPage::class, ['url' => $url]), 'menu-login', ['rel' => 'nofollow']);
     }
 
     /**
@@ -292,7 +294,7 @@ trait ModuleThemeTrait
     public function menuLogout(): ?Menu
     {
         if (Auth::check()) {
-            return new Menu(I18N::translate('Sign out'), route('logout'), 'menu-logout');
+            return new Menu(I18N::translate('Sign out'), route(Logout::class), 'menu-logout');
         }
 
         return null;

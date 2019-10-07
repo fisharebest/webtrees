@@ -1,7 +1,12 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php
+use Fisharebest\Webtrees\Http\RequestHandlers\LoginAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\PasswordRequestAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\RegisterPage;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
+?>
 
-<form method="post" action="<?= route('login', ['url' => route('user-page', ['ged' => $tree->name()])]) ?>" name="login-form">
+<form method="post" action="<?= route(LoginAction::class, ['url' => route('user-page', ['ged' => $tree->name()])]) ?>" name="login-form">
     <?= csrf_field() ?>
     <input type="hidden" name="url" value="<?= e($url) ?>">
 
@@ -31,15 +36,13 @@
 </form>
 
 <?php if ($allow_register) : ?>
-    <a class="btn btn-link" href="<?= e(route('register')) ?>">
+    <a class="btn btn-link" href="<?= e(route(RegisterPage::class)) ?>">
         <?= I18N::translate('Request a new user account') ?>
     </a>
 <?php endif ?>
 
 <div class="collapse" id="forgot-password">
-    <form method="post" action="<?= e(route('login')) ?>">
-        <input type="hidden" name="time" value="">
-        <input type="hidden" name="action" value="requestpw">
+    <form method="post" action="<?= e(route(PasswordRequestAction::class)) ?>">
         <?= I18N::translate('Request a new password') ?>
         <div class="form-group">
             <label for="new_passwd_username">

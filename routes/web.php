@@ -335,20 +335,20 @@ $router->attach('', '', static function (Map $router) {
     $router->get('search-phonetic', '/search-phonetic', 'SearchController::phonetic');
 });
 
-$router->get('login', '/login', LoginPage::class);
-$router->post('login-action', '/login', LoginAction::class);
-$router->get('logout', '/logout', Logout::class)
+$router->get(LoginPage::class, '/login', LoginPage::class);
+$router->post(LoginAction::class, '/login', LoginAction::class);
+$router->get(Logout::class, '/logout', Logout::class)
     ->allows(RequestMethodInterface::METHOD_POST);
-$router->get('register', '/register', RegisterPage::class);
-$router->post('register-action', '/register', RegisterAction::class);
-$router->get('verify', '/verify', VerifyEmail::class);
-$router->get('password-request', '/password-request', PasswordRequestPage::class);
-$router->post('password-request-action', '/password-request', PasswordRequestAction::class);
-$router->get('password-reset', '/password-reset', PasswordResetPage::class);
-$router->post('password-reset-action', '/password-reset', PasswordResetAction::class);
-$router->post('language', '/language', SelectLanguage::class);
-$router->post('theme', '/theme', SelectTheme::class);
-$router->get('privacy-policy', '/privacy-policy', PrivacyPolicy::class);
+$router->get(RegisterPage::class, '/register', RegisterPage::class);
+$router->post(RegisterAction::class, '/register', RegisterAction::class);
+$router->get(VerifyEmail::class, '/verify', VerifyEmail::class);
+$router->get(PasswordRequestPage::class, '/password-request', PasswordRequestPage::class);
+$router->post(PasswordRequestAction::class, '/password-request', PasswordRequestAction::class);
+$router->get(PasswordResetPage::class, '/password-reset', PasswordResetPage::class);
+$router->post(PasswordResetAction::class, '/password-reset', PasswordResetAction::class);
+$router->post(null, '/language', SelectLanguage::class);
+$router->post(null, '/theme', SelectTheme::class);
+$router->get(PrivacyPolicy::class, '/privacy-policy', PrivacyPolicy::class);
 $router->get('module', '/module/{module}/{action}', ModuleAction::class)
     ->allows(RequestMethodInterface::METHOD_POST);
-$router->get('ping', '/ping', Ping::class);
+$router->get(Ping::class, '/ping', Ping::class);

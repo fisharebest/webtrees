@@ -90,7 +90,7 @@ class LoginAction extends AbstractBaseController
             return redirect($url);
         } catch (Exception $ex) {
             // Failed to log in.
-            return redirect(route('login', [
+            return redirect(route(LoginPage::class, [
                 'username' => $username,
                 'url'      => $url,
                 'error'    => $ex->getMessage(),

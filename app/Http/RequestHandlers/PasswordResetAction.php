@@ -82,6 +82,6 @@ class PasswordResetAction implements RequestHandlerInterface, StatusCodeInterfac
 
         FlashMessages::addMessage($message, 'danger');
 
-        return redirect(route('password-request'));
+        return redirect(route(PasswordRequestPage::class));
     }
 }

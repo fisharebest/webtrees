@@ -19,6 +19,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\RequestHandlers\RegisterPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Site;
@@ -108,7 +109,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
 
         if (Site::getPreference('USE_REGISTRATION_MODULE') === '1' && !Auth::check()) {
             $links[] = [
-                'url'   => route('register'),
+                'url'   => route(RegisterPage::class),
                 'title' => I18N::translate('Request a new user account'),
                 'icon'  => 'icon-user_add',
             ];
