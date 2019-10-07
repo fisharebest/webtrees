@@ -175,9 +175,8 @@ function route(string $route_name, array $parameters = []): string
     if ($request->getAttribute('rewrite_urls') !== '1') {
         $path       = parse_url($url, PHP_URL_PATH);
         $parameters = ['route' => $path] + $parameters;
-        $base_url  = $request->getAttribute('base_url');
+        $base_url   = $request->getAttribute('base_url');
         $url        = $base_url . str_replace($path, '/index.php', $url);
-
     }
 
     return Html::url($url, $parameters);
