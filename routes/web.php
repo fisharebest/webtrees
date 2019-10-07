@@ -289,10 +289,6 @@ $router->attach('', '', static function (Map $router) {
 
 // Member routes.
 $router->attach('', '', static function (Map $router) {
-    $router->extras([
-        'middleware' => [AuthMember::class]
-    ]);
-
     $router->get('autocomplete-folder', '/autocomplete-folder', 'AutocompleteController::folder');
     $router->get('autocomplete-page', '/autocomplete-page', 'AutocompleteController::page');
     $router->get('autocomplete-place', '/autocomplete-place', 'AutocompleteController::place');
