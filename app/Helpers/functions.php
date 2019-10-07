@@ -160,7 +160,6 @@ function response($content = '', $code = StatusCodeInterface::STATUS_OK, $header
 function route(string $route_name, array $parameters = []): string
 {
     $request          = app(ServerRequestInterface::class);
-    $base_url         = $request->getAttribute('base_url');
     $router_container = app(RouterContainer::class);
     $route            = $router_container->getMap()->getRoute($route_name);
 
@@ -174,12 +173,14 @@ function route(string $route_name, array $parameters = []): string
 
     // Turn the pretty URL into an ugly one.
     if ($request->getAttribute('rewrite_urls') !== '1') {
-        $path = parse_url($url, PHP_URL_PATH);
+        $path       = parse_url($url, PHP_URL_PATH);
         $parameters = ['route' => $path] + $parameters;
-        $url = str_replace($path, '/index.php', $url);
+        $base_url  = $request->getAttribute('base_url');
+        $url        = $base_url . str_replace($path, '/index.php', $url);
+
     }
 
-    return Html::url($base_url . $url, $parameters);
+    return Html::url($url, $parameters);
 }
 
 /**

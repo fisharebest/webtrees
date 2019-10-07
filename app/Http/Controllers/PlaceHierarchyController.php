@@ -69,11 +69,10 @@ class PlaceHierarchyController extends AbstractBaseController
     public function show(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = $request->getAttribute('tree');
-        $params  = $request->getQueryParams();
-        $action2 = $params['action2'] ?? 'hierarchy';
-        $parent  = $params['parent'] ?? [];
-        $module  = $params['module'];
-        $action  = $params['action'];
+        $module  = $request->getAttribute('module');
+        $action  = $request->getAttribute('action');
+        $action2 = $request->getQueryParams()['action2'] ?? 'hierarchy';
+        $parent  = $request->getQueryParams()['parent'] ?? [];
 
         $fqpn       = implode(Gedcom::PLACE_SEPARATOR, array_reverse($parent));
         $place      = new Place($fqpn, $tree);

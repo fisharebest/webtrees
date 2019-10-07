@@ -23,7 +23,6 @@ use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
-use Fisharebest\Webtrees\Webtrees;
 use Middleland\Dispatcher;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -31,6 +30,7 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use function app;
 use function array_map;
+use function parse_url;
 use const PHP_URL_PATH;
 
 /**
@@ -41,22 +41,14 @@ class Router implements MiddlewareInterface, RequestMethodInterface
     /** @var ModuleService */
     private $module_service;
 
-    /** @var RouterContainer */
-    private $router_container;
-
     /**
      * Router constructor.
      *
-     * @param ModuleService   $module_service
-     * @param RouterContainer $router_container
+     * @param ModuleService $module_service
      */
-    public function __construct(ModuleService $module_service, RouterContainer $router_container)
+    public function __construct(ModuleService $module_service)
     {
-        $this->router_container = $router_container;
-        $this->module_service   = $module_service;
-
-        // Save the router in the container, as we'll need it to generate URLs.
-        app()->instance(RouterContainer::class, $this->router_container);
+        $this->module_service = $module_service;
     }
 
     /**
@@ -67,15 +59,23 @@ class Router implements MiddlewareInterface, RequestMethodInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $base_url         = $request->getAttribute('base_url');
+        $base_path        = parse_url($base_url, PHP_URL_PATH) ?? '';
+        $router_container = new RouterContainer($base_path);
+
+        // Save the router in the container, as we'll need it to generate URLs.
+        app()->instance(RouterContainer::class, $router_container);
+
         // Load the routing table.
         require __DIR__ . '/../../../routes/web.php';
 
         if ($request->getAttribute('rewrite_urls') !== '1') {
-            // Turn the URL into a pretty one.
-            $route   = $request->getQueryParams()['route'] ?? '';
-            $path    = parse_url($request->getAttribute('base_url') . $route, PHP_URL_PATH) ?? '';
-            $uri     = $request->getUri()->withPath($path);
-            $request = $request->withUri($uri);
+            // Turn the ugly URL into a pretty one.
+            $params = $request->getQueryParams();
+            $route   = $params['route'] ?? '';
+            unset($params['route']);
+            $uri     = $request->getUri()->withPath($route);
+            $request = $request->withUri($uri)->withQueryParams($params);
         }
 
         // Bind the request into the container and the layout
@@ -83,7 +83,7 @@ class Router implements MiddlewareInterface, RequestMethodInterface
         View::share('request', $request);
 
         // Match the request to a route.
-        $route = $this->router_container->getMatcher()->match($request);
+        $route = $router_container->getMatcher()->match($request);
 
         // No route matched?
         if ($route === false) {

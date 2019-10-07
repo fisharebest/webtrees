@@ -91,7 +91,7 @@ class WebEnvironment implements MiddlewareInterface
     private function extractBaseUrl(ServerRequestInterface $request): string
     {
         $base_url = $request->getAttribute('base_url', (string) $request->getUri());
-        $base_url = preg_replace('/index\.php.*/', '', $base_url);
+        $base_url = preg_replace('/\/index\.php.*/', '', $base_url);
 
         return $base_url;
     }
