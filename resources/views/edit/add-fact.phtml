@@ -7,8 +7,10 @@
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route('update-fact', ['ged' => $tree->name(), 'xref' => $record->xref()])) ?>" class="wt-page-content">
+<form method="post" action="<?= e(route('update-fact')) ?>" class="wt-page-content">
     <?= csrf_field() ?>
+    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
+    <input type="hidden" name="xref" value="<?= e($record->xref()) ?>">
 
     <?php FunctionsEdit::createAddForm($tree, $fact) ?>
 
