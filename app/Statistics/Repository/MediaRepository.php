@@ -18,9 +18,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
-use function array_slice;
-use function count;
-
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Google\ChartMedia;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\MediaRepositoryInterface;
@@ -28,6 +25,8 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 
+use function array_slice;
+use function count;
 use function in_array;
 
 /**

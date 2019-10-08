@@ -65,13 +65,12 @@ class BranchesController extends AbstractBaseController
      */
     public function page(ServerRequestInterface $request): ResponseInterface
     {
-        $params = $request->getQueryParams();
-        $module = $params['module'];
-        $action = $params['action'];
-        
-        $surname     = $params['surname'] ?? '';
-        $soundex_std = (bool) ($params['soundex_std'] ?? false);
-        $soundex_dm  = (bool) ($params['soundex_dm'] ?? false);
+        $module = $request->getAttribute('module');
+        $action = $request->getAttribute('action');
+
+        $surname     = $request->getQueryParams()['surname'] ?? '';
+        $soundex_std = (bool) ($request->getQueryParams()['soundex_std'] ?? false);
+        $soundex_dm  = (bool) ($request->getQueryParams()['soundex_dm'] ?? false);
 
         if ($surname !== '') {
             /* I18N: %s is a surname */

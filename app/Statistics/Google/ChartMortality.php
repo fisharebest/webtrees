@@ -18,10 +18,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Google;
 
-use function count;
-
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
+
+use function count;
 
 /**
  * A chart showing the mortality.

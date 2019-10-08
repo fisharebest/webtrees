@@ -125,7 +125,7 @@ return new class extends PedigreeChartModule implements ModuleCustomInterface {
     }
     
     // Change the default layout...
-    public const DEFAULT_ORIENTATION = self::ORIENTATION_DOWN;
+    public const DEFAULT_ORIENTATION = self::STYLE_DOWN;
 };
 ```
 

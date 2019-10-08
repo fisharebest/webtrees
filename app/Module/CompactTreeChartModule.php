@@ -18,6 +18,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Aura\Router\RouterContainer;
+use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -25,13 +27,19 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+
+use function route;
 
 /**
  * Class CompactTreeChartModule
  */
-class CompactTreeChartModule extends AbstractModule implements ModuleChartInterface
+class CompactTreeChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;
+
+    private const ROUTE_NAME = 'compact-chart';
+    private const ROUTE_URL  = '/tree/{tree}/compact/{xref}';
 
     /** @var ChartService */
     private $chart_service;
@@ -44,6 +52,18 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
     public function __construct(ChartService $chart_service)
     {
         $this->chart_service = $chart_service;
+    }
+
+    /**
+     * Initialization.
+     *
+     * @param RouterContainer $router_container
+     */
+    public function boot(RouterContainer $router_container)
+    {
+        $router_container->getMap()
+            ->get(self::ROUTE_NAME, self::ROUTE_URL, self::class)
+            ->allows(RequestMethodInterface::METHOD_POST);
     }
 
     /**
@@ -104,25 +124,52 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
     }
 
     /**
-     * A form to request the chart parameters.
+     * The URL for a page showing chart options.
      *
+     * @param Individual $individual
+     * @param string[]   $parameters
+     *
+     * @return string
+     */
+    public function chartUrl(Individual $individual, array $parameters = []): string
+    {
+        return route(self::ROUTE_NAME, [
+                'xref' => $individual->xref(),
+                'tree' => $individual->tree()->name(),
+            ] + $parameters);
+    }
+
+    /**
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function getChartAction(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree       = $request->getAttribute('tree');
         $user       = $request->getAttribute('user');
+        $xref       = $request->getAttribute('xref');
         $ajax       = $request->getQueryParams()['ajax'] ?? '';
-        $xref       = $request->getQueryParams()['xref'] ?? '';
         $individual = Individual::getInstance($xref, $tree);
+
+        // Convert POST requests into GET requests for pretty URLs.
+        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
+            return redirect(route(self::ROUTE_NAME, [
+                'tree' => $request->getAttribute('tree')->name(),
+                'xref' => $request->getParsedBody()['xref'],
+            ]));
+        }
 
         Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
         if ($ajax === '1') {
-            return $this->chartCompact($individual, $this->chart_service);
+            $this->layout = 'layouts/ajax';
+
+            return $this->viewResponse('modules/compact-chart/chart', [
+                'ancestors' => $this->chart_service->sosaStradonitzAncestors($individual, 5),
+                'module'    => $this,
+            ]);
         }
 
         $ajax_url = $this->chartUrl($individual, [
@@ -130,28 +177,10 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
         ]);
 
         return $this->viewResponse('modules/compact-chart/page', [
-            'ajax_url'    => $ajax_url,
-            'individual'  => $individual,
-            'module_name' => $this->name(),
-            'title'       => $this->chartTitle($individual),
+            'ajax_url'   => $ajax_url,
+            'individual' => $individual,
+            'module'     => $this->name(),
+            'title'      => $this->chartTitle($individual),
         ]);
-    }
-
-    /**
-     * @param Individual   $individual
-     * @param ChartService $chart_service
-     *
-     * @return ResponseInterface
-     */
-    protected function chartCompact(Individual $individual, ChartService $chart_service): ResponseInterface
-    {
-        $ancestors = $chart_service->sosaStradonitzAncestors($individual, 5);
-
-        $html = view('modules/compact-chart/chart', [
-            'ancestors' => $ancestors,
-            'module'    => $this,
-        ]);
-
-        return response($html);
     }
 }

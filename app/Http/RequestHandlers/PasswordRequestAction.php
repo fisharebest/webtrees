@@ -41,7 +41,7 @@ use function view;
 /**
  * Request a new password.
  */
-class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterface, RequestMethodInterface
+class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterface
 {
     private const TOKEN_LENGTH = 40;
 

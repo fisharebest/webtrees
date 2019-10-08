@@ -30,6 +30,6 @@ class AncestorsChartModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\AncestorsChartModule::class));
+        $this->assertTrue(class_exists(AncestorsChartModule::class));
     }
 }

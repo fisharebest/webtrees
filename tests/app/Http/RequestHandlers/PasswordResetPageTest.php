@@ -18,6 +18,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\ResetHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\PasswordResetPage;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
@@ -45,7 +46,7 @@ class PasswordResetPageTest extends TestCase
         $handler  = new PasswordResetPage($user_service);
         $response = $handler->handle($request);
 
-        self::assertSame(self::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -60,6 +61,6 @@ class PasswordResetPageTest extends TestCase
         $handler  = new PasswordResetPage($user_service);
         $response = $handler->handle($request);
 
-        self::assertSame(self::STATUS_FOUND, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

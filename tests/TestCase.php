@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees;
 
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
-use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
@@ -27,6 +26,7 @@ use Fisharebest\Webtrees\Http\Controllers\GedcomFileController;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Services\MigrationService;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UserService;
 use Illuminate\Cache\ArrayStore;
@@ -44,6 +44,7 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use Psr\Http\Message\UriFactoryInterface;
+
 use function app;
 use function basename;
 use function define;
@@ -51,12 +52,13 @@ use function defined;
 use function filesize;
 use function http_build_query;
 use function microtime;
+
 use const UPLOAD_ERR_OK;
 
 /**
  * Base class for unit tests
  */
-class TestCase extends \PHPUnit\Framework\TestCase implements StatusCodeInterface, RequestMethodInterface
+class TestCase extends \PHPUnit\Framework\TestCase
 {
     /** @var object */
     public static $mock_functions;
@@ -95,7 +97,23 @@ class TestCase extends \PHPUnit\Framework\TestCase implements StatusCodeInterfac
 
         if (static::$uses_database) {
             static::createTestDatabase();
+
+            // Boot modules
+            (new ModuleService())->bootModules(new WebtreesTheme());
         }
+    }
+
+    /**
+     * Things to run once, AFTER all the tests.
+     */
+    public static function tearDownAfterClass()
+    {
+        if (static::$uses_database) {
+            $pdo = DB::connection()->getPdo();
+            unset($pdo);
+        }
+
+        parent::tearDownAfterClass();
     }
 
     /**
@@ -137,7 +155,7 @@ class TestCase extends \PHPUnit\Framework\TestCase implements StatusCodeInterfac
      *
      * @return ServerRequestInterface
      */
-    protected static function createRequest(string $method = self::METHOD_GET, array $query = [], array $params = [], array $files = []): ServerRequestInterface
+    protected static function createRequest(string $method = RequestMethodInterface::METHOD_GET, array $query = [], array $params = [], array $files = []): ServerRequestInterface
     {
         /** @var ServerRequestFactoryInterface */
         $server_request_factory = app(ServerRequestFactoryInterface::class);
@@ -157,19 +175,6 @@ class TestCase extends \PHPUnit\Framework\TestCase implements StatusCodeInterfac
         View::share('request', $request);
 
         return $request;
-    }
-
-    /**
-     * Things to run once, AFTER all the tests.
-     */
-    public static function tearDownAfterClass()
-    {
-        if (static::$uses_database) {
-            $pdo = DB::connection()->getPdo();
-            unset($pdo);
-        }
-
-        parent::tearDownAfterClass();
     }
 
     /**

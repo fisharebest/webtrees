@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\DoHousekeeping;
 use Fisharebest\Webtrees\Http\Middleware\EmitResponse;
 use Fisharebest\Webtrees\Http\Middleware\HandleExceptions;
+use Fisharebest\Webtrees\Http\Middleware\LoadRoutes;
 use Fisharebest\Webtrees\Http\Middleware\NoRouteFound;
 use Fisharebest\Webtrees\Http\Middleware\PhpEnvironment;
 use Fisharebest\Webtrees\Http\Middleware\ReadConfigIni;
@@ -118,6 +119,7 @@ class Webtrees
         DoHousekeeping::class,
         CheckCsrf::class,
         UseTransaction::class,
+        LoadRoutes::class,
         BootModules::class,
         Router::class,
         NoRouteFound::class,

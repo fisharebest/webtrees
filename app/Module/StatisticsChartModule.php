@@ -124,9 +124,9 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
         return route('module', [
-                'module'  => $this->name(),
-                'action'  => 'Chart',
-                'ged'     => $individual->tree()->name(),
+                'module' => $this->name(),
+                'action' => 'Chart',
+                'ged'    => $individual->tree()->name(),
             ] + $parameters);
     }
 
@@ -146,30 +146,31 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 
         $tabs = [
             I18N::translate('Individuals') => route('module', [
-                'module'  => $this->name(),
-                'action'  => 'Individuals',
-                'ged'     => $tree->name()
+                'module' => $this->name(),
+                'action' => 'Individuals',
+                'ged'    => $tree->name(),
             ]),
-            I18N::translate('Families') => route('module', [
-                'module'  => $this->name(),
-                'action'  => 'Families',
-                'ged'     => $tree->name()
+            I18N::translate('Families')    => route('module', [
+                'module' => $this->name(),
+                'action' => 'Families',
+                'ged'    => $tree->name(),
             ]),
-            I18N::translate('Other') => route('module', [
-                'module'  => $this->name(),
-                'action'  => 'Other',
-                'ged'     => $tree->name()
+            I18N::translate('Other')       => route('module', [
+                'module' => $this->name(),
+                'action' => 'Other',
+                'ged'    => $tree->name(),
             ]),
-            I18N::translate('Custom') => route('module', [
-                'module'  => $this->name(),
-                'action'  => 'Custom',
-                'ged'     => $tree->name()
+            I18N::translate('Custom')      => route('module', [
+                'module' => $this->name(),
+                'action' => 'Custom',
+                'ged'    => $tree->name(),
             ]),
         ];
 
         return $this->viewResponse('modules/statistics-chart/page', [
-            'tabs'  => $tabs,
-            'title' => $this->title(),
+            'module' => $this->name(),
+            'tabs'   => $tabs,
+            'title'  => $this->title(),
         ]);
     }
 
@@ -301,7 +302,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         break;
                     case self::Z_AXIS_SEX:
                         $z_axis = $this->axisSexes();
-                        $rows = $statistics->statsBirthBySexQuery()->get();
+                        $rows   = $statistics->statsBirthBySexQuery()->get();
                         foreach ($rows as $row) {
                             $this->fillYData($row->d_month, $row->i_sex, $row->total, $x_axis, $z_axis, $ydata);
                         }
@@ -350,7 +351,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         break;
                     case self::Z_AXIS_SEX:
                         $z_axis = $this->axisSexes();
-                        $rows = $statistics->statsDeathBySexQuery()->get();
+                        $rows   = $statistics->statsDeathBySexQuery()->get();
                         foreach ($rows as $row) {
                             $this->fillYData($row->d_month, $row->i_sex, $row->total, $x_axis, $z_axis, $ydata);
                         }
@@ -441,7 +442,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         break;
                     case self::Z_AXIS_SEX:
                         $z_axis = $this->axisSexes();
-                        $rows = $statistics->monthFirstChildBySexQuery()->get();
+                        $rows   = $statistics->monthFirstChildBySexQuery()->get();
                         foreach ($rows as $row) {
                             $this->fillYData($row->d_month, $row->i_sex, $row->total, $x_axis, $z_axis, $ydata);
                         }
@@ -538,7 +539,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
                         $z_axis = $this->axisAll();
-                        $rows = $statistics->statsAgeQuery('DEAT');
+                        $rows   = $statistics->statsAgeQuery('DEAT');
                         foreach ($rows as $row) {
                             foreach ($row as $age) {
                                 $years = (int) ($age / self::DAYS_IN_YEAR);
@@ -694,7 +695,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         // The stats query doesn't have an "all" function, so query M/F separately
                         foreach (['M', 'F'] as $sex) {
                             $prev_boundary = 0;
-                            $indi = [];
+                            $indi          = [];
                             foreach (array_keys($z_axis) as $boundary) {
                                 $rows = $statistics->statsMarrAgeQuery($sex, $prev_boundary, $boundary);
                                 foreach ($rows as $row) {
@@ -733,7 +734,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
                         $z_axis = $this->axisAll();
-                        $rows = $statistics->statsChildrenQuery();
+                        $rows   = $statistics->statsChildrenQuery();
                         foreach ($rows as $row) {
                             $this->fillYData($row->f_numchil, 0, $row->total, $x_axis, $z_axis, $ydata);
                         }
@@ -741,7 +742,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                     case self::Z_AXIS_TIME:
                         $boundaries_csv = $params['z-axis-boundaries-periods'];
                         $z_axis         = $this->axisYears($boundaries_csv);
-                        $prev_boundary = 0;
+                        $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
                             $rows = $statistics->statsChildrenQuery($prev_boundary, $boundary);
                             foreach ($rows as $row) {
@@ -987,9 +988,9 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 
         $data = [
             array_merge(
-                [ I18N::translate('Century') ],
+                [I18N::translate('Century')],
                 array_values($z_axis)
-            )
+            ),
         ];
 
         $intermediate = [];
@@ -1004,30 +1005,30 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 
         foreach ($intermediate as $key => $values) {
             $data[] = array_merge(
-                [ $x_axis[$key] ],
+                [$x_axis[$key]],
                 $values
             );
         }
 
         $chart_options = [
-            'title' => '',
+            'title'    => '',
             'subtitle' => '',
-            'height' => 400,
-            'width'  => '100%',
-            'legend' => [
+            'height'   => 400,
+            'width'    => '100%',
+            'legend'   => [
                 'position'  => count($z_axis) > 1 ? 'right' : 'none',
                 'alignment' => 'center',
             ],
-            'tooltip' => [
+            'tooltip'  => [
                 'format' => '\'%\'',
             ],
-            'vAxis' => [
+            'vAxis'    => [
                 'title' => $y_axis_title ?? '',
             ],
-            'hAxis' => [
+            'hAxis'    => [
                 'title' => $x_axis_title ?? '',
             ],
-            'colors' => $colors,
+            'colors'   => $colors,
         ];
 
         return view(

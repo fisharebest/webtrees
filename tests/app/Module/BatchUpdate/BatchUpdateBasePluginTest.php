@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class BatchUpdateBasePlugin
  */
-class BatchUpdateBasePluginTest extends \Fisharebest\Webtrees\TestCase
+class BatchUpdateBasePluginTest extends TestCase
 {
     /**
      * Test that the class exists
@@ -30,6 +32,6 @@ class BatchUpdateBasePluginTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\BatchUpdate\BatchUpdateBasePlugin::class));
+        $this->assertTrue(class_exists(BatchUpdateBasePlugin::class));
     }
 }

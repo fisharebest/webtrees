@@ -30,6 +30,6 @@ class BatchUpdateNameFormatPluginTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\BatchUpdate\BatchUpdateNameFormatPlugin::class));
+        $this->assertTrue(class_exists(BatchUpdateNameFormatPlugin::class));
     }
 }

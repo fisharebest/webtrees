@@ -18,6 +18,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
 
@@ -35,7 +36,7 @@ class PasswordRequestPageTest extends TestCase
         $handler  = new PasswordRequestPage();
         $response = $handler->handle($request);
 
-        self::assertSame(self::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -48,6 +49,6 @@ class PasswordRequestPageTest extends TestCase
         $handler  = new PasswordRequestPage();
         $response = $handler->handle($request);
 
-        self::assertSame(self::STATUS_FOUND, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

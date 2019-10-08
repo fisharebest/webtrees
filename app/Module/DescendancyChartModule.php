@@ -18,22 +18,30 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Aura\Router\RouterContainer;
+use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
-use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+
+use function max;
+use function min;
+use function route;
 
 /**
  * Class DescendancyChartModule
  */
-class DescendancyChartModule extends AbstractModule implements ModuleChartInterface
+class DescendancyChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;
+
+    private const ROUTE_NAME = 'descendancy-chart';
+    private const ROUTE_URL  = '/tree/{tree}/descendants-{style}-{generations}/{xref}';
 
     // Chart styles
     public const CHART_STYLE_TREE        = 'tree';
@@ -41,18 +49,16 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
     public const CHART_STYLE_FAMILIES    = 'families';
 
     // Defaults
-    public const DEFAULT_STYLE               = self::CHART_STYLE_TREE;
-    public const DEFAULT_GENERATIONS         = '3';
+    public const    DEFAULT_STYLE       = self::CHART_STYLE_TREE;
+    public const    DEFAULT_GENERATIONS = '3';
+    protected const DEFAULT_PARAMETERS  = [
+        'generations' => self::DEFAULT_GENERATIONS,
+        'style'       => self::DEFAULT_STYLE,
+    ];
 
     // Limits
-    public const MINIMUM_GENERATIONS = 2;
-    public const MAXIMUM_GENERATIONS = 10;
-
-    /** @var int[] */
-    protected $dabo_num = [];
-
-    /** @var string[] */
-    protected $dabo_sex = [];
+    protected const MINIMUM_GENERATIONS = 2;
+    protected const MAXIMUM_GENERATIONS = 10;
 
     /** @var ChartService */
     private $chart_service;
@@ -65,6 +71,22 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
     public function __construct(ChartService $chart_service)
     {
         $this->chart_service = $chart_service;
+    }
+
+    /**
+     * Initialization.
+     *
+     * @param RouterContainer $router_container
+     */
+    public function boot(RouterContainer $router_container)
+    {
+        $router_container->getMap()
+            ->get(self::ROUTE_NAME, self::ROUTE_URL, self::class)
+            ->allows(RequestMethodInterface::METHOD_POST)
+            ->tokens([
+                'generations' => '\d+',
+                'style'       => implode('|', array_keys($this->styles())),
+            ]);
     }
 
     /**
@@ -125,125 +147,97 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
     }
 
     /**
-     * A form to request the chart parameters.
+     * The URL for a page showing chart options.
      *
+     * @param Individual $individual
+     * @param string[]   $parameters
+     *
+     * @return string
+     */
+    public function chartUrl(Individual $individual, array $parameters = []): string
+    {
+        return route(self::ROUTE_NAME, [
+                'tree' => $individual->tree()->name(),
+                'xref' => $individual->xref(),
+            ] + $parameters + self::DEFAULT_PARAMETERS);
+    }
+
+    /**
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function getChartAction(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree       = $request->getAttribute('tree');
-        $user       = $request->getAttribute('user');
-        $ajax       = $request->getQueryParams()['ajax'] ?? '';
-        $xref       = $request->getQueryParams()['xref'] ?? '';
-        $individual = Individual::getInstance($xref, $tree);
+        $tree        = $request->getAttribute('tree');
+        $user        = $request->getAttribute('user');
+        $xref        = $request->getAttribute('xref');
+        $style       = $request->getAttribute('style');
+        $generations = (int) $request->getAttribute('generations');
+        $ajax        = $request->getQueryParams()['ajax'] ?? '';
+        $individual  = Individual::getInstance($xref, $tree);
+
+        // Convert POST requests into GET requests for pretty URLs.
+        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
+            return redirect(route(self::ROUTE_NAME, [
+                'tree'        => $request->getAttribute('tree')->name(),
+                'xref'        => $request->getParsedBody()['xref'],
+                'style'       => $request->getParsedBody()['style'],
+                'generations' => $request->getParsedBody()['generations'],
+            ]));
+        }
 
         Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
-
-        $chart_style = $request->getQueryParams()['chart_style'] ?? self::DEFAULT_STYLE;
-        $generations = (int) ($request->getQueryParams()['generations'] ?? self::DEFAULT_GENERATIONS);
 
         $generations = min($generations, self::MAXIMUM_GENERATIONS);
         $generations = max($generations, self::MINIMUM_GENERATIONS);
 
         if ($ajax === '1') {
-            return $this->chart($request);
+            $this->layout = 'layouts/ajax';
+
+            switch ($style) {
+                case self::CHART_STYLE_TREE:
+                    return $this->viewResponse('modules/descendancy_chart/tree', [
+                        'individual'  => $individual,
+                        'generations' => $generations,
+                        'daboville'   => '1',
+                    ]);
+
+                case self::CHART_STYLE_INDIVIDUALS:
+                    return $this->viewResponse('lists/individuals-table', [
+                        'individuals' => $this->chart_service->descendants($individual, $generations - 1),
+                        'sosa'        => false,
+                        'tree'        => $tree,
+                    ]);
+
+                case self::CHART_STYLE_FAMILIES:
+                    $families = $this->chart_service->descendantFamilies($individual, $generations - 1);
+
+                    return $this->viewResponse('lists/families-table', [
+                        'families' => $families,
+                        'tree'     => $tree,
+                    ]);
+            }
         }
 
         $ajax_url = $this->chartUrl($individual, [
-            'chart_style' => $chart_style,
             'generations' => $generations,
+            'style'       => $style,
             'ajax'        => true,
         ]);
 
         return $this->viewResponse('modules/descendancy_chart/page', [
             'ajax_url'            => $ajax_url,
-            'chart_style'         => $chart_style,
-            'chart_styles'        => $this->chartStyles(),
+            'style'               => $style,
+            'styles'              => $this->styles(),
             'default_generations' => self::DEFAULT_GENERATIONS,
             'generations'         => $generations,
             'individual'          => $individual,
             'maximum_generations' => self::MAXIMUM_GENERATIONS,
             'minimum_generations' => self::MINIMUM_GENERATIONS,
-            'module_name'         => $this->name(),
+            'module'              => $this->name(),
             'title'               => $this->chartTitle($individual),
-        ]);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function chart(ServerRequestInterface $request): ResponseInterface
-    {
-        $this->layout = 'layouts/ajax';
-
-        $tree       = $request->getAttribute('tree');
-        $xref       = $request->getQueryParams()['xref'];
-        $individual = Individual::getInstance($xref, $tree);
-
-        Auth::checkIndividualAccess($individual);
-
-        $chart_style = $request->getQueryParams()['chart_style'];
-        $generations = (int) $request->getQueryParams()['generations'];
-
-        $generations = min($generations, self::MAXIMUM_GENERATIONS);
-        $generations = max($generations, self::MINIMUM_GENERATIONS);
-
-        switch ($chart_style) {
-            case self::CHART_STYLE_TREE:
-            default:
-                return response(view('modules/descendancy_chart/tree', ['individual' => $individual, 'generations' => $generations, 'daboville' => '1']));
-
-            case self::CHART_STYLE_INDIVIDUALS:
-                $individuals = $this->chart_service->descendants($individual, $generations - 1);
-
-                return $this->descendantsIndividuals($tree, $individuals);
-
-            case self::CHART_STYLE_FAMILIES:
-                $families = $this->chart_service->descendantFamilies($individual, $generations - 1);
-
-                return $this->descendantsFamilies($tree, $families);
-        }
-    }
-
-    /**
-     * Show a tabular list of individual descendants.
-     *
-     * @param Tree       $tree
-     * @param Collection $individuals
-     *
-     * @return ResponseInterface
-     */
-    private function descendantsIndividuals(Tree $tree, Collection $individuals): ResponseInterface
-    {
-        $this->layout = 'layouts/ajax';
-
-        return $this->viewResponse('lists/individuals-table', [
-            'individuals' => $individuals,
-            'sosa'        => false,
-            'tree'        => $tree,
-        ]);
-    }
-
-    /**
-     * Show a tabular list of individual descendants.
-     *
-     * @param Tree       $tree
-     * @param Collection $families
-     *
-     * @return ResponseInterface
-     */
-    private function descendantsFamilies(Tree $tree, Collection $families): ResponseInterface
-    {
-        $this->layout = 'layouts/ajax';
-
-        return $this->viewResponse('lists/families-table', [
-            'families' => $families,
-            'tree'     => $tree,
         ]);
     }
 
@@ -252,7 +246,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      *
      * @return string[]
      */
-    private function chartStyles(): array
+    protected function styles(): array
     {
         return [
             self::CHART_STYLE_TREE        => I18N::translate('Tree'),

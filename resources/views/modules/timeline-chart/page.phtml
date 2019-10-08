@@ -1,26 +1,20 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\I18N;
+
+?>
 
 <h2 class="wt-page-title">
     <?= $title ?>
 </h2>
 
-<form method="get" action="<?= e(route('module')) ?>" class="wt-page-options wt-page-options-timeline-chart d-print-none">
-    <input type="hidden" name="route" value="module">
-    <input type="hidden" name="module" value="<?= e($module_name) ?>">
-    <input type="hidden" name="action" value="Chart">
-    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
-    <input type="hidden" name="scale" value="<?= e($scale) ?>">
-
-    <?php foreach ($individuals as $individual) : ?>
-        <input name="xrefs[]" type="hidden" value="<?= e($individual->xref()) ?>">
-    <?php endforeach ?>
+<form method="post" class="wt-page-options wt-page-options-timeline-chart d-print-none">
+    <?= csrf_field() ?>
 
     <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="xref-add">
             <?= I18N::translate('Individual') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select-individual', ['name' => 'xrefs[]', 'id' => 'xref-add', 'tree' => $tree]) ?>
+            <?= view('components/select-individual', ['name' => 'xref-add', 'id' => 'xref-add', 'tree' => $tree]) ?>
         </div>
     </div>
 
@@ -30,7 +24,8 @@
             <input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */
             I18N::translate('add') ?>">
             <a class="btn btn-secondary" href="<?= e($reset_url) ?>">
-                <?= /* I18N: A button label. */ I18N::translate('reset') ?>
+                <?= /* I18N: A button label. */
+                I18N::translate('reset') ?>
             </a>
         </div>
     </div>
@@ -50,26 +45,27 @@
 
 <div class="row my-4">
     <?php foreach ($individuals as $n => $individual) : ?>
-    <div class="col-md-6 col-lg-4 col-xl-3 person<?= $n % 6 ?>">
-        <?= view('icons/sex-' . $individual->sex()) ?>
-        <a href="<?= e($individual->url()) ?>">
-            <?= $individual->fullName() ?>
-            <?php if ($individual->alternateName() !== '') : ?>
+        <div class="col-md-6 col-lg-4 col-xl-3 person<?= $n % 6 ?>">
+            <?= view('icons/sex-' . $individual->sex()) ?>
+            <a href="<?= e($individual->url()) ?>">
+                <?= $individual->fullName() ?>
+                <?php if ($individual->alternateName() !== '') : ?>
+                    <br>
+                    <?= $individual->alternateName() ?>
+                <?php endif ?>
+            </a>
+            <a href="<?= e($remove_urls[$individual->xref()]) ?>">
+                <?= I18N::translate('Remove individual') ?>
+            </a>
+            <?php if ($individual->getBirthDate()->isOK()) : ?>
                 <br>
-                <?= $individual->alternateName() ?>
+                <label>
+                    <input type="checkbox" name="agebar<?= $n ?>" value="ON" onclick="$('#agebox<?= $n ?>').toggle();">
+                    <?= /* I18N: an age indicator, which can be dragged around the screen */
+                    I18N::translate('Show an age cursor') ?>
+                </label>
             <?php endif ?>
-        </a>
-        <a href="<?= e($remove_urls[$individual->xref()]) ?>">
-            <?= I18N::translate('Remove individual') ?>
-        </a>
-        <?php if ($individual->getBirthDate()->isOK()) : ?>
-            <br>
-            <label>
-                <input type="checkbox" name="agebar<?= $n ?>" value="ON" onclick="$('#agebox<?= $n ?>').toggle();">
-                <?= /* I18N: an age indicator, which can be dragged around the screen */ I18N::translate('Show an age cursor') ?>
-            </label>
-        <?php endif ?>
-    </div>
+        </div>
     <?php endforeach ?>
 </div>
 

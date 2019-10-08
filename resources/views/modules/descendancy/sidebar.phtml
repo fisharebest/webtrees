@@ -1,5 +1,10 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php
+
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
+
+?>
 
 <form method="post" action="<?= e(route('module', ['module' => 'descendancy', 'action' => 'Descendants', 'ged' => $tree->name()])) ?>" onsubmit="return false;">
     <input type="search" name="sb_desc_name" id="sb_desc_name" placeholder="<?= I18N::translate('Search') ?>">

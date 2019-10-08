@@ -56,6 +56,6 @@ class SelectLanguage implements RequestHandlerInterface, StatusCodeInterface
 
         $this->user->setPreference('language', $language);
 
-        return response('', self::STATUS_NO_CONTENT);
+        return response('', StatusCodeInterface::STATUS_NO_CONTENT);
     }
 }

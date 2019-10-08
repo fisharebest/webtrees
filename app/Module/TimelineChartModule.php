@@ -18,6 +18,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Aura\Router\RouterContainer;
+use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Fact;
@@ -28,18 +30,27 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 /**
  * Class TimelineChartModule
  */
-class TimelineChartModule extends AbstractModule implements ModuleChartInterface
+class TimelineChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;
 
-    // The user can alter the vertical scale
-    protected const SCALE_MIN     = 1;
-    protected const SCALE_MAX     = 200;
-    protected const SCALE_DEFAULT = 10;
+    private const ROUTE_NAME = 'timeline-chart';
+    private const ROUTE_URL  = '/tree/{tree}/timeline-{scale}';
+
+    // Defaults
+    protected const DEFAULT_SCALE      = 10;
+    protected const DEFAULT_PARAMETERS = [
+        'scale' => self::DEFAULT_SCALE,
+    ];
+
+    // Limits
+    protected const MINIMUM_SCALE = 1;
+    protected const MAXIMUM_SCALE = 200;
 
     // GEDCOM events that may have DATE data, but should not be displayed
     protected const NON_FACTS = [
@@ -50,6 +61,18 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         '_TODO',
         'CHAN',
     ];
+
+    /**
+     * Initialization.
+     *
+     * @param RouterContainer $router_container
+     */
+    public function boot(RouterContainer $router_container)
+    {
+        $router_container->getMap()
+            ->get(self::ROUTE_NAME, self::ROUTE_URL, self::class)
+            ->allows(RequestMethodInterface::METHOD_POST);
+    }
 
     // Box height
     protected const BHEIGHT = 30;
@@ -96,33 +119,30 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
-        return route('module', [
-                'module'  => $this->name(),
-                'action'  => 'Chart',
-                'xrefs[]' => $individual->xref(),
-                'ged'     => $individual->tree()->name(),
-            ] + $parameters);
+        return route(self::ROUTE_NAME, [
+                'tree' => $individual->tree()->name(),
+            ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
     /**
-     * A form to request the chart parameters.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function getChartAction(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        $user = $request->getAttribute('user');
+        $tree  = $request->getAttribute('tree');
+        $user  = $request->getAttribute('user');
+        $scale = (int) $request->getAttribute('scale');
+        $xrefs = $request->getQueryParams()['xrefs'] ?? [];
+        $ajax  = $request->getQueryParams()['ajax'] ?? '';
 
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
-        $ajax  = $request->getQueryParams()['ajax'] ?? '';
-        $scale = (int) ($request->getQueryParams()['scale'] ?? self::SCALE_DEFAULT);
-        $scale = min($scale, self::SCALE_MAX);
-        $scale = max($scale, self::SCALE_MIN);
-        $xrefs = $request->getQueryParams()['xrefs'] ?? [];
+        $scale = min($scale, self::MAXIMUM_SCALE);
+        $scale = max($scale, self::MINIMUM_SCALE);
+
+        $xrefs = array_unique($xrefs);
 
         // Find the requested individuals.
         $individuals = (new Collection($xrefs))
@@ -145,10 +165,8 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
                     return $individual->xref();
                 });
 
-            $remove_urls[$exclude->xref()] = route('module', [
-                'module' => $this->name(),
-                'action' => 'Chart',
-                'ged'    => $tree->name(),
+            $remove_urls[$exclude->xref()] = route(self::ROUTE_NAME, [
+                'tree'    => $tree->name(),
                 'scale'  => $scale,
                 'xrefs'  => $xrefs_1->all(),
             ]);
@@ -162,49 +180,55 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             return $individual instanceof Individual && $individual->canShow();
         });
 
+        // Convert POST requests into GET requests for pretty URLs.
+        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
+            return redirect(route(self::ROUTE_NAME, [
+                'scale' => $scale,
+                'tree'  => $tree->name(),
+                'xrefs' => $xrefs,
+            ]));
+        }
+
+        Auth::checkComponentAccess($this, 'chart', $tree, $user);
+
         if ($ajax === '1') {
+            $this->layout = 'layouts/ajax';
+
             return $this->chart($tree, $xrefs, $scale);
         }
 
-        $ajax_url = route('module', [
+        $reset_url = route(self::ROUTE_NAME, [
+            'scale' => self::DEFAULT_SCALE,
+            'tree' => $tree->name(),
+        ]);
+
+        $zoom_in_url = route(self::ROUTE_NAME, [
+            'scale' => min(self::MAXIMUM_SCALE, $scale + (int) ($scale * 0.2 + 1)),
+            'tree'  => $tree->name(),
+            'xrefs' => $xrefs,
+        ]);
+
+        $zoom_out_url = route(self::ROUTE_NAME, [
+            'scale'  => max(self::MINIMUM_SCALE, $scale - (int) ($scale * 0.2 + 1)),
+            'tree'  => $tree->name(),
+            'xrefs' => $xrefs,
+        ]);
+
+        $ajax_url = route(self::ROUTE_NAME, [
             'ajax'   => true,
-            'module' => $this->name(),
-            'action' => 'Chart',
-            'ged'    => $tree->name(),
-            'scale'  => $scale,
-            'xrefs'  => $xrefs,
-        ]);
-
-        $reset_url = route('module', [
-            'module' => $this->name(),
-            'action' => 'Chart',
-            'ged'    => $tree->name(),
-        ]);
-
-        $zoom_in_url = route('module', [
-            'module' => $this->name(),
-            'action' => 'Chart',
-            'ged'    => $tree->name(),
-            'scale'  => min(self::SCALE_MAX, $scale + (int) ($scale * 0.2 + 1)),
-            'xrefs'  => $xrefs,
-        ]);
-
-        $zoom_out_url = route('module', [
-            'module' => $this->name(),
-            'action' => 'Chart',
-            'ged'    => $tree->name(),
-            'scale'  => max(self::SCALE_MIN, $scale - (int) ($scale * 0.2 + 1)),
-            'xrefs'  => $xrefs,
+            'scale' => $scale,
+            'tree'  => $tree->name(),
+            'xrefs' => $xrefs,
         ]);
 
         return $this->viewResponse('modules/timeline-chart/page', [
             'ajax_url'     => $ajax_url,
             'individuals'  => $individuals,
-            'module_name'  => $this->name(),
+            'module'       => $this->name(),
             'remove_urls'  => $remove_urls,
             'reset_url'    => $reset_url,
-            'title'        => $this->title(),
             'scale'        => $scale,
+            'title'        => $this->title(),
             'zoom_in_url'  => $zoom_in_url,
             'zoom_out_url' => $zoom_out_url,
         ]);
@@ -219,8 +243,6 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
      */
     protected function chart(Tree $tree, array $xrefs, int $scale): ResponseInterface
     {
-        $xrefs = array_unique($xrefs);
-
         /** @var Individual[] $individuals */
         $individuals = array_map(static function (string $xref) use ($tree): ?Individual {
             return Individual::getInstance($xref, $tree);

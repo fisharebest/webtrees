@@ -1,15 +1,17 @@
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
+
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
+use Fisharebest\Webtrees\I18N;
+
+?>
 
 <h2 class="wt-page-title">
     <?= $title ?>
 </h2>
 
-<form method="get" action="<?= e(route('module')) ?>" class="wt-page-options wt-page-options-fan-chart d-print-none">
-    <input type="hidden" name="route" value="module">
-    <input type="hidden" name="module" value="<?= e($module_name) ?>">
-    <input type="hidden" name="action" value="Chart">
-    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
+<form method="post" class="wt-page-options wt-page-options-fan-chart d-print-none">
+    <?= csrf_field() ?>
 
     <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="xref">
@@ -21,11 +23,11 @@
     </div>
 
     <div class="row form-group">
-        <label class="col-sm-3 col-form-label wt-page-options-label">
+        <label class="col-sm-3 col-form-label wt-page-options-label" for="style">
             <?= I18N::translate('Layout') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select', ['name' => 'chart_style', 'selected' => $chart_style, 'options' => $chart_styles]) ?>
+            <?= view('components/select', ['name' => 'style', 'selected' => $style, 'options' => $styles]) ?>
         </div>
     </div>
 
@@ -39,12 +41,12 @@
     </div>
 
     <div class="row form-group">
-        <label class="col-sm-3 col-form-label wt-page-options-label" for="fan_width">
+        <label class="col-sm-3 col-form-label wt-page-options-label" for="width">
             <?= I18N::translate('Zoom') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
             <div class="input-group">
-                <input class="form-control" id="fan_width" max="<?= $maximum_width ?>" min="<?= $minimum_width ?>" name="fan_width" required type="number" value="<?= $fan_width ?>">
+                <input class="form-control" id="width" max="<?= $maximum_width ?>" min="<?= $minimum_width ?>" name="width" required type="number" value="<?= $width ?>">
                 <div class="input-group-append">
                     <span class="input-group-text">
                         %

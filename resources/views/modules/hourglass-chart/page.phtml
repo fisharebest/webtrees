@@ -1,15 +1,16 @@
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
+
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\I18N;
+
+?>
 
 <h2 class="wt-page-title">
     <?= $title ?>
 </h2>
 
-<form method="get" action="<?= e(route('module')) ?>" class="wt-page-options wt-page-options-hourglass-chart d-print-none">
-    <input type="hidden" name="route" value="module">
-    <input type="hidden" name="module" value="<?= e($module_name) ?>">
-    <input type="hidden" name="action" value="Chart">
-    <input type="hidden" name="ged" value="<?= e($individual->tree()->name()) ?>">
+<form method="post" class="wt-page-options wt-page-options-hourglass-chart d-print-none">
+    <?= csrf_field() ?>
 
     <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="xref">
@@ -35,7 +36,7 @@
                 <?= I18N::translate('Layout') ?>
             </legend>
             <div class="col-sm-9 wt-page-options-value">
-                <?= view('components/checkbox', ['label' => I18N::translate('Show spouses'), 'name' => 'show_spouse', 'checked' => $show_spouse]) ?>
+                <?= view('components/checkbox', ['label' => I18N::translate('Show spouses'), 'name' => 'spouses', 'checked' => $spouses]) ?>
             </div>
         </div>
     </fieldset>

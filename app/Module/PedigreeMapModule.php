@@ -18,9 +18,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Aura\Router\RouterContainer;
+use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
-use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\Functions;
@@ -30,21 +31,28 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
-use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 use function intdiv;
+use function view;
 
 /**
  * Class PedigreeMapModule
  */
-class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
+class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;
 
+    private const ROUTE_NAME = 'pedigree-map';
+    private const ROUTE_URL  = '/tree/{tree}/pedigree-map-{generations}/{xref}';
+
     // Defaults
     public const DEFAULT_GENERATIONS = '4';
+    public const DEFAULT_PARAMETERS  = [
+        'generations' => self::DEFAULT_GENERATIONS,
+    ];
 
     // Limits
     public const MAXIMUM_GENERATIONS = 10;
@@ -82,6 +90,21 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
     }
 
     /**
+     * Initialization.
+     *
+     * @param RouterContainer $router_container
+     */
+    public function boot(RouterContainer $router_container)
+    {
+        $router_container->getMap()
+            ->get(self::ROUTE_NAME, self::ROUTE_URL, self::class)
+            ->allows(RequestMethodInterface::METHOD_POST)
+            ->tokens([
+                'generations' => '\d+',
+            ]);
+    }
+
+    /**
      * How should this module be identified in the control panel, etc.?
      *
      * @return string
@@ -99,7 +122,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
      */
     public function description(): string
     {
-        /* I18N: Description of the “OSM” module */
+        /* I18N: Description of the “Pedigree map” module */
         return I18N::translate('Show the birthplace of ancestors on a map.');
     }
 
@@ -139,7 +162,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
     }
 
     /**
-     * The URL for this chart.
+     * The URL for a page showing chart options.
      *
      * @param Individual $individual
      * @param string[]   $parameters
@@ -148,12 +171,10 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
-        return route('module', [
-                'module' => $this->name(),
-                'action' => 'PedigreeMap',
-                'xref'   => $individual->xref(),
-                'ged'    => $individual->tree()->name(),
-            ] + $parameters);
+        return route(self::ROUTE_NAME, [
+                'tree' => $individual->tree()->name(),
+                'xref' => $individual->xref(),
+            ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
     /**
@@ -163,9 +184,12 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
      */
     public function getMapDataAction(ServerRequestInterface $request): ResponseInterface
     {
+        $ajax        = $request->getQueryParams()['ajax'] ?? '';
+        $generations = (int) $request->getAttribute('generations');
         $tree        = $request->getAttribute('tree');
-        $xref        = $request->getQueryParams()['reference'];
-        $indi        = Individual::getInstance($xref, $tree);
+        $user        = $request->getAttribute('user');
+        $xref        = $request->getAttribute('xref');
+        $individual  = Individual::getInstance($xref, $tree);
         $color_count = count(self::LINE_COLORS);
 
         $facts = $this->getPedigreeMapFacts($request, $this->chart_service);
@@ -223,7 +247,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
                         'polyline' => $polyline,
                         'icon'     => $icon,
                         'tooltip'  => strip_tags($fact->place()->fullName()),
-                        'summary'  => view('modules/pedigree-map/events', $this->summaryData($indi, $fact, $id)),
+                        'summary'  => view('modules/pedigree-map/events', $this->summaryData($individual, $fact, $id)),
                         'zoom'     => $location->zoom() ?: 2,
                     ],
                 ];
@@ -237,16 +261,51 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
 
     /**
      * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function handle(ServerRequestInterface $request): ResponseInterface
+    {
+        $generations = (int) $request->getAttribute('generations');
+        $tree        = $request->getAttribute('tree');
+        $user        = $request->getAttribute('user');
+        $xref        = $request->getAttribute('xref');
+        $individual  = Individual::getInstance($xref, $tree);
+
+        Auth::checkIndividualAccess($individual);
+        Auth::checkComponentAccess($this, 'chart', $tree, $user);
+
+        $map = view('modules/pedigree-map/chart', [
+            'module'      => $this->name(),
+            'individual'  => $individual,
+            'type'        => 'pedigree',
+            'generations' => $generations,
+        ]);
+
+        return $this->viewResponse('modules/pedigree-map/page', [
+            'module'         => $this->name(),
+            /* I18N: %s is an individual’s name */
+            'title'          => I18N::translate('Pedigree map of %s', $individual->fullName()),
+            'tree'           => $tree,
+            'individual'     => $individual,
+            'generations'    => $generations,
+            'maxgenerations' => self::MAXIMUM_GENERATIONS,
+            'map'            => $map,
+        ]);
+    }
+
+    /**
+     * @param ServerRequestInterface $request
      * @param ChartService           $chart_service
      *
      * @return array
      */
     private function getPedigreeMapFacts(ServerRequestInterface $request, ChartService $chart_service): array
     {
+        $generations = (int) $request->getAttribute('generations');
         $tree        = $request->getAttribute('tree');
-        $xref        = $request->getQueryParams()['reference'];
+        $xref        = $request->getAttribute('xref');
         $individual  = Individual::getInstance($xref, $tree);
-        $generations = (int) $request->getQueryParams()['generations'];
         $ancestors   = $chart_service->sosaStradonitzAncestors($individual, $generations);
         $facts       = [];
         foreach ($ancestors as $sosa => $person) {
@@ -304,46 +363,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
             'place'  => $fact->place(),
             'addtag' => $addbirthtag,
         ];
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return object
-     */
-    public function getPedigreeMapAction(ServerRequestInterface $request)
-    {
-        $tree        = $request->getAttribute('tree');
-        $xref        = $request->getQueryParams()['xref'];
-        $individual  = Individual::getInstance($xref, $tree);
-        $generations = $request->getQueryParams()['generations'] ?? self::DEFAULT_GENERATIONS;
-
-        if ($individual === null) {
-            throw new IndividualNotFoundException();
-        }
-
-        if (!$individual->canShow()) {
-            throw new IndividualAccessDeniedException();
-        }
-
-        return $this->viewResponse('modules/pedigree-map/page', [
-            'module_name'    => $this->name(),
-            /* I18N: %s is an individual’s name */
-            'title'          => I18N::translate('Pedigree map of %s', $individual->fullName()),
-            'tree'           => $tree,
-            'individual'     => $individual,
-            'generations'    => $generations,
-            'maxgenerations' => self::MAXIMUM_GENERATIONS,
-            'map'            => view(
-                'modules/pedigree-map/chart',
-                [
-                    'module'      => $this->name(),
-                    'ref'         => $individual->xref(),
-                    'type'        => 'pedigree',
-                    'generations' => $generations,
-                ]
-            ),
-        ]);
     }
 
     /**

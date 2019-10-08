@@ -1,14 +1,15 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
 
 <h2 class="wt-page-title">
     <?= $title ?>
 </h2>
 
-<form method="get" action="<?= e(route('module')) ?>" class="wt-page-options wt-page-options-pedigree-chart d-print-none">
-    <input type="hidden" name="route" value="module">
-    <input type="hidden" name="module" value="<?= e($module_name) ?>">
-    <input type="hidden" name="action" value="Chart">
-    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
+<form method="post" class="wt-page-options wt-page-options-pedigree-chart d-print-none">
+    <?= csrf_field() ?>
 
     <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="xref">
@@ -29,18 +30,19 @@
     </div>
 
     <div class="row form-group">
-        <label class="col-sm-3 col-form-label wt-page-options-label" for="orientation">
+        <label class="col-sm-3 col-form-label wt-page-options-label" for="style">
             <?= I18N::translate('Layout') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/radios-inline', ['name' => 'orientation', 'options' => ['left' => view('icons/pedigree-left') . I18N::translate('left'), 'right' => view('icons/pedigree-right') . I18N::translate('right'), 'up' => view('icons/pedigree-up') . I18N::translate('up'), 'down' => view('icons/pedigree-down') . I18N::translate('down'), ], 'selected' => $orientation]) ?>
+            <?= view('components/radios-inline', ['name' => 'style', 'options' => ['left' => view('icons/pedigree-left') . I18N::translate('left'), 'right' => view('icons/pedigree-right') . I18N::translate('right'), 'up' => view('icons/pedigree-up') . I18N::translate('up'), 'down' => view('icons/pedigree-down') . I18N::translate('down'),], 'selected' => $style]) ?>
         </div>
     </div>
 
     <div class="row form-group">
         <div class="col-sm-3 wt-page-options-label"></div>
         <div class="col-sm-9 wt-page-options-value">
-            <input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */ I18N::translate('view') ?>">
+            <input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */
+            I18N::translate('view') ?>">
         </div>
     </div>
 </form>

@@ -127,7 +127,7 @@
         reference:   reference,
         type:        mapType,
         generations: Generations,
-        ged:         <?= json_encode($tree->name()) ?>
+        ged:         <?= json_encode($individual->tree()->name()) ?>
       })
         .done(function (data, textStatus, jqXHR) {
           if (jqXHR.status === 200 && data.features.length === 1) {
@@ -264,6 +264,6 @@
     };
   })();
 
-    WT_OSM.drawMap(<?= json_encode($ref) ?>, <?= json_encode($type) ?>, <?= json_encode($generations ?? null) ?>);
+    WT_OSM.drawMap(<?= json_encode($individual->xref()) ?>, <?= json_encode($type) ?>, <?= json_encode($generations ?? null) ?>);
 </script>
 <?php View::endpush() ?>

@@ -19,6 +19,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -222,6 +223,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         }
 
         return $this->viewResponse('modules/stories/config', [
+            'module'     => $this->name(),
             'stories'    => $stories,
             'title'      => $this->title() . ' — ' . $tree->title(),
             'tree'       => $tree,

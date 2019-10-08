@@ -18,22 +18,21 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
-use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
+use Aura\Router\RouterContainer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
-use function redirect;
+use function app;
+use function parse_url;
+
+use const PHP_URL_PATH;
 
 /**
- * Middleware to restrict access to moderators.
+ * Load the routing table.
  */
-class AuthModerator implements MiddlewareInterface
+class LoadRoutes implements MiddlewareInterface
 {
     /**
      * @param ServerRequestInterface  $request
@@ -43,20 +42,16 @@ class AuthModerator implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        $user = $request->getAttribute('user');
+        $base_url         = $request->getAttribute('base_url');
+        $base_path        = parse_url($base_url, PHP_URL_PATH) ?? '';
+        $router_container = new RouterContainer($base_path);
 
-        // Logged in with the correct role?
-        if ($tree instanceof Tree && Auth::isModerator($tree, $user)) {
-            return $handler->handle($request);
-        }
+        // Save the router in the container, as we'll need it to generate URLs.
+        app()->instance(RouterContainer::class, $router_container);
 
-        // Logged in, but without the correct role?
-        if ($user instanceof User) {
-            throw new AccessDeniedHttpException();
-        }
+        // Load the routing table.
+        require __DIR__ . '/../../../routes/web.php';
 
-        // Not logged in.
-        return redirect(route(LoginPage::class, ['url' => $request->getAttribute('request_uri')]));
+        return $handler->handle($request);
     }
 }

@@ -1,14 +1,15 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
 
 <h2 class="wt-page-title">
     <?= $title ?>
 </h2>
 
-<form method="get" action="<?= e(route('module')) ?>" class="wt-page-options wt-page-options-lifespans-chart d-print-none">
-    <input type="hidden" name="route" value="module">
-    <input type="hidden" name="module" value="<?= e($module_name) ?>">
-    <input type="hidden" name="action" value="Chart">
-    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
+<form method="post" class="wt-page-options wt-page-options-lifespans-chart d-print-none">
+    <?= csrf_field() ?>
 
     <?php foreach ($xrefs as $xref) : ?>
         <input name="xrefs[]" type="hidden" value="<?= e($xref) ?>">
@@ -61,10 +62,12 @@
         <div class="col-form-label col-sm-3 wt-page-options-label"></div>
         <div class="col-sm-9 wt-page-options-value">
             <button type="submit" class="btn btn-primary" type="submit">
-                <?= /* I18N: A button label. */ I18N::translate('add') ?>
+                <?= /* I18N: A button label. */
+                I18N::translate('add') ?>
             </button>
             <a class="btn btn-secondary" href="<?= e($reset_url) ?>">
-                <?= /* I18N: A button label. */ I18N::translate('reset') ?>
+                <?= /* I18N: A button label. */
+                I18N::translate('reset') ?>
             </a>
         </div>
     </div>

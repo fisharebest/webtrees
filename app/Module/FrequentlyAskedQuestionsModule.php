@@ -18,6 +18,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\HtmlService;
@@ -139,6 +140,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             'faqs'            => $faqs,
             'max_block_order' => $max_block_order,
             'min_block_order' => $min_block_order,
+            'module'          => $this->name(),
             'title'           => $title,
             'tree'            => $tree,
             'tree_names'      => Tree::getNameList(),

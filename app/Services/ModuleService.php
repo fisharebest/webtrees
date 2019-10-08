@@ -212,6 +212,9 @@ use Illuminate\Support\Str;
 use stdClass;
 use Throwable;
 
+use function app;
+use function method_exists;
+
 /**
  * Functions for managing and maintaining modules.
  */
@@ -760,5 +763,25 @@ class ModuleService
             });
 
         return $database_modules->diff($disk_modules);
+    }
+
+    /**
+     * Boot all the modules.
+     *
+     * @param ModuleThemeInterface $current_theme
+     */
+    public function bootModules(ModuleThemeInterface $current_theme): void {
+        $bootable_modules = $this->all()->filter(static function (ModuleInterface $module) {
+            return method_exists($module, 'boot');
+        });
+
+        foreach ($bootable_modules as $module) {
+            // Only bootstrap the current theme.
+            if ($module instanceof ModuleThemeInterface && $module !== $current_theme) {
+                continue;
+            }
+
+            app()->dispatch($module, 'boot');
+        }
     }
 }

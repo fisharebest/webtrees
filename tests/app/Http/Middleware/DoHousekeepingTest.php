@@ -18,6 +18,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\HousekeepingService;
 use Fisharebest\Webtrees\TestCase;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -43,6 +44,6 @@ class DoHousekeepingTest extends TestCase
         $middleware = new DoHousekeeping(new HousekeepingService());
         $response   = $middleware->process($request, $handler);
 
-        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

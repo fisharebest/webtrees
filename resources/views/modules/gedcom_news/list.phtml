@@ -1,17 +1,24 @@
-<?php use Fisharebest\Webtrees\Auth; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
+
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
+use Fisharebest\Webtrees\I18N;
+
+?>
 
 <?php if (empty($articles)) : ?>
     <?= I18N::translate('No news articles have been submitted.') ?>
 <?php endif ?>
 
-<?php foreach ($articles as $n => $article) : ?>
-    <?php if ($n === 5 && count($articles) > 5) : ?>
-        <p>
-            <a class="btn btn-link" data-toggle="collapse" data-target="#more-news-<?= e($block_id) ?>" role="button" aria-expanded="false" aria-controls="more-news-<?= e($block_id) ?>"><?= I18N::translate('More news articles') ?>
-            </a>
-        </p>
-        <div class="collapse" id="more-news-<?= e($block_id) ?>">
+<?php foreach ($articles
+
+               as $n => $article) : ?>
+<?php if ($n === 5 && count($articles) > 5) : ?>
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#more-news-<?= e($block_id) ?>" role="button" aria-expanded="false" aria-controls="more-news-<?= e($block_id) ?>"><?= I18N::translate('More news articles') ?>
+        </a>
+    </p>
+<div class="collapse" id="more-news-<?= e($block_id) ?>">
     <?php endif ?>
 
     <div class="news_box">
@@ -33,10 +40,10 @@
             </form>
         <?php endif ?>
     </div>
-<?php endforeach ?>
+    <?php endforeach ?>
 
-<?php if (count($articles) > 5) : ?>
-    </div>
+    <?php if (count($articles) > 5) : ?>
+</div>
 <?php endif ?>
 
 <?php if (Auth::isManager($tree)) : ?>

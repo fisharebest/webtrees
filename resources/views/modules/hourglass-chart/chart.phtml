@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 /**
  * @var int        $generations
  * @var Individual $individual
- * @var bool       $show_spouse
+ * @var bool       $spouses
  */
 
 $children = $individual->spouseFamilies()->map(static function (Family $family): Collection {
@@ -18,10 +18,10 @@ $children = $individual->spouseFamilies()->map(static function (Family $family):
 ?>
 
 <div class="d-flex wt-chart-hourglass">
-    <?= view('modules/hourglass-chart/children', ['children' => $children, 'generations' => $generations - 1, 'show_spouse' => $show_spouse]) ?>
+    <?= view('modules/hourglass-chart/children', ['children' => $children, 'generations' => $generations - 1, 'spouses' => $spouses]) ?>
     <div class="align-self-center">
         <?= view('chart-box', ['individual' => $individual]) ?>
-        <?php if ($show_spouse): ?>
+        <?php if ($spouses): ?>
             <?php foreach ($individual->spouseFamilies() as $family): ?>
                 <?= view('chart-box', ['individual' => $family->spouse($individual)]) ?>
             <?php endforeach ?>

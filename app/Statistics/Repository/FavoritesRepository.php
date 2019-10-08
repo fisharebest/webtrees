@@ -18,8 +18,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
-use function count;
-
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
@@ -28,6 +26,8 @@ use Fisharebest\Webtrees\Module\UserFavoritesModule;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\FavoritesRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
+
+use function count;
 
 /**
  * A repository providing methods for favorites related statistics.

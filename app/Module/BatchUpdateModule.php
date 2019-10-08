@@ -18,8 +18,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use function array_key_exists;
-
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -38,6 +36,8 @@ use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
+use function array_key_exists;
 
 /**
  * Class BatchUpdateModule
@@ -136,6 +136,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
             'curr_xref'   => $curr_xref,
             'next_xref'   => $next_xref,
             'plugin'      => $plugin,
+            'module'      => $this->name(),
             'record'      => GedcomRecord::getInstance($curr_xref, $tree),
             'prev_xref'   => $prev_xref,
             'title'       => I18N::translate('Batch update'),

@@ -52,7 +52,7 @@ class CensusOfDenmark1787Test extends \Fisharebest\Webtrees\TestCase
         $columns = $census->columns();
 
         $this->assertCount(5, $columns);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnFullName::class, $columns[0]);
+        $this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
         $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnRelationToHead::class, $columns[1]);
         $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnAge::class, $columns[2]);
         $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnConditionDanish::class, $columns[3]);

@@ -18,8 +18,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Google;
 
-use function array_key_exists;
-
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
@@ -30,6 +28,8 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use stdClass;
+
+use function array_key_exists;
 
 /**
  * A chart showing the distribution of different events on a map.

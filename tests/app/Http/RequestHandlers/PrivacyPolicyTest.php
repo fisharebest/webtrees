@@ -18,6 +18,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 
 /**
@@ -33,6 +34,6 @@ class PrivacyPolicyTest extends TestCase
         $request  = self::createRequest();
         $response = app(PrivacyPolicy::class)->handle($request);
 
-        self::assertSame(self::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

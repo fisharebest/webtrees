@@ -12,12 +12,12 @@ use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleFooterTrait;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-return new class extends AbstractModule implements ModuleCustomInterface, ModuleFooterInterface {
+return new class extends AbstractModule implements ModuleCustomInterface, ModuleFooterInterface
+{
     use ModuleCustomTrait;
     use ModuleFooterTrait;
 

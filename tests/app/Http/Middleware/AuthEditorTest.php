@@ -18,6 +18,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
@@ -52,7 +53,7 @@ class AuthEditorTest extends TestCase
         $middleware = new AuthEditor();
         $response   = $middleware->process($request, $handler);
 
-        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
         $this->assertSame('lorem ipsum', (string) $response->getBody());
     }
 
@@ -90,6 +91,6 @@ class AuthEditorTest extends TestCase
         $middleware = new AuthEditor();
         $response   = $middleware->process($request, $handler);
 
-        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

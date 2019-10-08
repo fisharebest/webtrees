@@ -25,6 +25,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+
 use function method_exists;
 
 /**
@@ -58,18 +59,7 @@ class BootModules implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $bootable_modules = $this->module_service->all()->filter(static function (ModuleInterface $module) {
-            return method_exists($module, 'boot');
-        });
-
-        foreach ($bootable_modules as $module) {
-            // Only bootstrap the current theme.
-            if ($module instanceof ModuleThemeInterface && $module !== $this->theme) {
-                continue;
-            }
-
-            app()->dispatch($module, 'boot');
-        }
+        $this->module_service->bootModules($this->theme);
 
         return $handler->handle($request);
     }

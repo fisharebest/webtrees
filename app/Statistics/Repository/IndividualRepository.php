@@ -18,9 +18,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
-use function array_key_exists;
-use function array_slice;
-
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
@@ -49,6 +46,9 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use stdClass;
+
+use function array_key_exists;
+use function array_slice;
 
 /**
  *

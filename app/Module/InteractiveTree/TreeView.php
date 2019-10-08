@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Module\InteractiveTree;
 
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;

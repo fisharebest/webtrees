@@ -1,13 +1,14 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
+<?php
+
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\I18N;
+
+?>
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="get" action="<?= e(route('module')) ?>" class="wt-page-options wt-page-options-pedigreemap-chart d-print-none">
-    <input type="hidden" name="route" value="module">
-    <input type="hidden" name="module" value="<?= e($module_name) ?>">
-    <input type="hidden" name="action" value="PedigreeMap">
-    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
+<form method="post" class="wt-page-options wt-page-options-pedigreemap-chart d-print-none">
+    <?= csrf_field() ?>
 
     <div class="form-group row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="xref">

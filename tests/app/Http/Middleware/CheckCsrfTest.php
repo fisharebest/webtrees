@@ -18,6 +18,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 use Psr\Http\Server\RequestHandlerInterface;
 
@@ -38,13 +40,13 @@ class CheckCsrfTest extends TestCase
         $handler = $this->createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response());
 
-        $request = self::createRequest(self::METHOD_POST)
+        $request = self::createRequest(RequestMethodInterface::METHOD_POST)
             ->withAttribute('request_uri', 'http://example.com');
 
         $middleware = new CheckCsrf();
         $response   = $middleware->process($request, $handler);
 
-        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
         $this->assertSame('http://example.com', $response->getHeaderLine('Location'));
     }
 }

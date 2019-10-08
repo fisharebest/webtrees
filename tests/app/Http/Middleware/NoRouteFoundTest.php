@@ -18,6 +18,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 use Psr\Http\Server\RequestHandlerInterface;
 
@@ -42,6 +43,6 @@ class NoRouteFoundTest extends TestCase
         $middleware = new NoRouteFound();
         $response   = $middleware->process($request, $handler);
 
-        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

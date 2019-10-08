@@ -10,10 +10,8 @@ use Fisharebest\Webtrees\View;
         <?= I18N::translate('Create your own chart') ?>
     </h4>
 
-    <form method="get" action="<?= e(route('module')) ?>" action="index.php" id="own-stats-form" class="wt-page-options wt-page-options-statistics">
-        <input type="hidden" name="route" value="module">
-        <input type="hidden" name="module" value="<?= e($module->name()) ?>">
-        <input type="hidden" name="action" value="CustomChart">
+    <form method="get" action="<?= e(route('module', ['module' => $module->name(), 'action' => 'CustomChart'])) ?>" id="own-stats-form" class="wt-page-options wt-page-options-statistics">
+        <input type="hidden" name="route" value="<?= e('/module/' . $module->name() . '/Custom//§Chart') ?>">
         <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
         <div class="form-group row">
             <div class="col-sm-2 wt-page-options-label">
@@ -24,37 +22,43 @@ use Fisharebest\Webtrees\View;
                 <fieldset>
                     <legend><?= I18N::translate('Individual') ?></legend>
 
-                    <?= view('components/radios', ['name' => 'x-as', 'selected' => $module::X_AXIS_BIRTH_MONTH, 'options' => [
-                        $module::X_AXIS_BIRTH_MONTH => I18N::translate('Month of birth'),
-                        $module::X_AXIS_DEATH_MONTH => I18N::translate('Month of death'),
-                        $module::X_AXIS_FIRST_CHILD_MONTH => I18N::translate('Month of birth of first child in a relation'),
-                        $module::X_AXIS_AGE_AT_DEATH => I18N::translate('Average age at death'),
-                        $module::X_AXIS_AGE_AT_MARRIAGE => I18N::translate('Age in year of marriage'),
-                        $module::X_AXIS_AGE_AT_FIRST_MARRIAGE => I18N::translate('Age in year of first marriage'),
+                    <?= view('components/radios', [
+                        'name' => 'x-as', 'selected' => $module::X_AXIS_BIRTH_MONTH, 'options' => [
+                            $module::X_AXIS_BIRTH_MONTH           => I18N::translate('Month of birth'),
+                            $module::X_AXIS_DEATH_MONTH           => I18N::translate('Month of death'),
+                            $module::X_AXIS_FIRST_CHILD_MONTH     => I18N::translate('Month of birth of first child in a relation'),
+                            $module::X_AXIS_AGE_AT_DEATH          => I18N::translate('Average age at death'),
+                            $module::X_AXIS_AGE_AT_MARRIAGE       => I18N::translate('Age in year of marriage'),
+                            $module::X_AXIS_AGE_AT_FIRST_MARRIAGE => I18N::translate('Age in year of first marriage'),
 
-                    ]]) ?>
+                        ],
+                    ]) ?>
                 </fieldset>
 
                 <fieldset>
                     <legend><?= I18N::translate('Family') ?></legend>
 
-                    <?= view('components/radios', ['name' => 'x-as', 'selected' => $module::X_AXIS_BIRTH_MONTH, 'options' => [
-                        $module::X_AXIS_MARRIAGE_MONTH       => I18N::translate('Month of marriage'),
-                        $module::X_AXIS_FIRST_MARRIAGE_MONTH => I18N::translate('Month of first marriage'),
-                        $module::X_AXIS_NUMBER_OF_CHILDREN => I18N::translate('Number of children'),
+                    <?= view('components/radios', [
+                        'name' => 'x-as', 'selected' => $module::X_AXIS_BIRTH_MONTH, 'options' => [
+                            $module::X_AXIS_MARRIAGE_MONTH       => I18N::translate('Month of marriage'),
+                            $module::X_AXIS_FIRST_MARRIAGE_MONTH => I18N::translate('Month of first marriage'),
+                            $module::X_AXIS_NUMBER_OF_CHILDREN   => I18N::translate('Number of children'),
 
-                    ]]) ?>
+                        ],
+                    ]) ?>
                 </fieldset>
 
                 <fieldset>
                     <legend><?= I18N::translate('Map') ?></legend>
 
-                    <?= view('components/radios', ['name' => 'x-as', 'selected' => $module::X_AXIS_BIRTH_MONTH, 'options' => [
-                        $module::X_AXIS_INDIVIDUAL_MAP => I18N::translate('Individuals'),
-                        $module::X_AXIS_BIRTH_MAP => I18N::translate('Births'),
-                        $module::X_AXIS_MARRIAGE_MAP => I18N::translate('Marriages'),
-                        $module::X_AXIS_DEATH_MAP => I18N::translate('Deaths'),
-                    ]]) ?>
+                    <?= view('components/radios', [
+                        'name' => 'x-as', 'selected' => $module::X_AXIS_BIRTH_MONTH, 'options' => [
+                            $module::X_AXIS_INDIVIDUAL_MAP => I18N::translate('Individuals'),
+                            $module::X_AXIS_BIRTH_MAP      => I18N::translate('Births'),
+                            $module::X_AXIS_MARRIAGE_MAP   => I18N::translate('Marriages'),
+                            $module::X_AXIS_DEATH_MAP      => I18N::translate('Deaths'),
+                        ],
+                    ]) ?>
                 </fieldset>
             </div>
 
@@ -281,7 +285,7 @@ use Fisharebest\Webtrees\View;
         return false;
     }
 
-    $("[name='x-as']").change(function() {
+    $("[name='x-as']").change(function () {
         var x_axis = document.querySelector("[name='x-as']:checked").value;
 
         switch (x_axis) {
@@ -324,7 +328,8 @@ use Fisharebest\Webtrees\View;
             case "<?= e($module::X_AXIS_BIRTH_MAP) ?>":
             case "<?= e($module::X_AXIS_MARRIAGE_MAP) ?>":
             case "<?= e($module::X_AXIS_DEATH_MAP) ?>":
-                statusHide("x_years"); statusShow("map_opt");
+                statusHide("x_years");
+                statusShow("map_opt");
                 statusHide("chart_type");
                 statusHide("surname_opt");
                 break;

@@ -18,75 +18,87 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\GuestUser;
+use Fisharebest\Webtrees\Module\AbstractModule;
+use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\TestCase;
-use Fisharebest\Webtrees\Tree;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+
+use function response;
 
 /**
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction
  */
 class ModuleActionTest extends TestCase
 {
-    protected static $uses_database = true;
-
     /**
      * @return void
      */
     public function testModuleAction(): void
     {
-        $tree = Tree::create('tree', 'tree');
-        app()->instance(Tree::class, $tree);
-        $user           = new GuestUser();
-        $module_service = new ModuleService();
-        $handler        = new ModuleAction($module_service, $user);
-        $request        = self::createRequest(self::METHOD_GET, ['route' => 'module', 'ged' => $tree->name()])
-            ->withAttribute('module', 'faq')
-            ->withAttribute('action', 'Show')
-            ->withAttribute('tree', $tree);
+        $module_service = $this->createMock(ModuleService::class);
+        $module_service
+            ->expects($this->once())
+            ->method('findByName')
+            ->with('test')
+            ->willReturn($this->dummyModule());
 
-        app()->instance(ServerRequestInterface::class, $request);
-
+        $user     = new GuestUser();
+        $request  = self::createRequest()
+            ->withAttribute('module', 'test')
+            ->withAttribute('action', 'Test');
+        $handler  = new ModuleAction($module_service, $user);
         $response = $handler->handle($request);
 
-        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        $this->assertSame('It works!', (string) $response->getBody());
     }
 
     /**
      * @expectedException \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     * @expectedExceptionMessage Method getFishAction() not found in faq
+     * @expectedExceptionMessage Method getTestingAction() not found in test
      * @return void
      */
     public function testNonExistingAction(): void
     {
-        $user           = new GuestUser();
-        $module_service = new ModuleService();
-        $handler        = new ModuleAction($module_service, $user);
-        $request        = self::createRequest(self::METHOD_GET, ['route' => 'module'])
-            ->withAttribute('module', 'faq')
-            ->withAttribute('action', 'Fish')
-        ;
+        $module_service = $this->createMock(ModuleService::class);
+        $module_service
+            ->expects($this->once())
+            ->method('findByName')
+            ->with('test')
+            ->willReturn($this->dummyModule());
+
+        $user    = new GuestUser();
+        $request = self::createRequest()
+            ->withAttribute('module', 'test')
+            ->withAttribute('action', 'Testing');
+        $handler = new ModuleAction($module_service, $user);
         $handler->handle($request);
     }
 
     /**
      * @expectedException \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     * @expectedExceptionMessage Module fish does not exist
+     * @expectedExceptionMessage Module test does not exist
      * @return void
      */
     public function testNonExistingModule(): void
     {
-        $user           = new GuestUser();
-        $module_service = new ModuleService();
-        $handler        = new ModuleAction($module_service, $user);
-        $request        = self::createRequest(self::METHOD_GET, ['route' => 'module'])
-            ->withAttribute('module', 'fish')
-            ->withAttribute('action', 'Show')
-        ;
-        $response       = $handler->handle($request);
+        $module_service = $this->createMock(ModuleService::class);
+        $module_service
+            ->expects($this->once())
+            ->method('findByName')
+            ->with('test')
+            ->willReturn(null);
 
-        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
+        $user    = new GuestUser();
+        $request = self::createRequest()
+            ->withAttribute('module', 'test')
+            ->withAttribute('action', 'Test');
+        $handler = new ModuleAction($module_service, $user);
+        $handler->handle($request);
     }
 
     /**
@@ -96,15 +108,32 @@ class ModuleActionTest extends TestCase
      */
     public function testAdminAction(): void
     {
-        $tree = Tree::create('tree', 'tree');
-        app()->instance(Tree::class, $tree);
-        $user           = new GuestUser();
-        $module_service = new ModuleService();
-        $handler        = new ModuleAction($module_service, $user);
-        $request        = self::createRequest(self::METHOD_GET, ['route' => 'module', 'ged' => $tree->name()])
-            ->withAttribute('module', 'faq')
-            ->withAttribute('action', 'Admin')
-        ;
+        $module_service = $this->createMock(ModuleService::class);
+        $module_service
+            ->expects($this->once())
+            ->method('findByName')
+            ->with('test')
+            ->willReturn($this->dummyModule());
+
+        $user    = new GuestUser();
+        $request = self::createRequest()
+            ->withAttribute('module', 'test')
+            ->withAttribute('action', 'Admin');
+        $handler = new ModuleAction($module_service, $user);
         $handler->handle($request);
+    }
+
+    /**
+     * @return ModuleInterface
+     */
+    private function dummyModule(): ModuleInterface
+    {
+        return new class extends AbstractModule
+        {
+            public function getTestAction(ServerRequestInterface $request): ResponseInterface
+            {
+                return response('It works!');
+            }
+        };
     }
 }

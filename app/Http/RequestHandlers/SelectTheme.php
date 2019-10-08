@@ -45,6 +45,6 @@ class SelectTheme implements RequestHandlerInterface, StatusCodeInterface
         Session::put('theme', $theme);
         $user->setPreference('theme', $theme);
 
-        return response('', self::STATUS_NO_CONTENT);
+        return response('', StatusCodeInterface::STATUS_NO_CONTENT);
     }
 }

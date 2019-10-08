@@ -18,34 +18,58 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Aura\Router\RouterContainer;
+use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
-use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
-use function app;
 use function response;
 use function view;
 
 /**
  * Class HourglassChartModule
  */
-class HourglassChartModule extends AbstractModule implements ModuleChartInterface
+class HourglassChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;
 
+    private const ROUTE_NAME = 'hourglass-chart';
+    private const ROUTE_URL  = '/tree/{tree}/hourglass-{generations}-{spouses}/{xref}';
+
     // Defaults
-    private const DEFAULT_GENERATIONS         = '3';
-    private const DEFAULT_MAXIMUM_GENERATIONS = '9';
+    private const   DEFAULT_GENERATIONS = '3';
+    private const   DEFAULT_SPOUSES     = false;
+    protected const DEFAULT_PARAMETERS  = [
+        'generations' => self::DEFAULT_GENERATIONS,
+        'spouses'     => self::DEFAULT_SPOUSES,
+    ];
 
     // Limits
-    private const MAXIMUM_GENERATIONS = 10;
-    private const MINIMUM_GENERATIONS = 2;
+    protected const MINIMUM_GENERATIONS = 2;
+    protected const MAXIMUM_GENERATIONS = 10;
+
+    /**
+     * Initialization.
+     *
+     * @param RouterContainer $router_container
+     */
+    public function boot(RouterContainer $router_container)
+    {
+        $router_container->getMap()
+            ->get(self::ROUTE_NAME, self::ROUTE_URL, self::class)
+            ->allows(RequestMethodInterface::METHOD_POST)
+            ->tokens([
+                'generations' => '\d+',
+                'spouses'     => '1?',
+            ]);
+    }
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -92,38 +116,79 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
     }
 
     /**
-     * A form to request the chart parameters.
+     * The title for a specific instance of this chart.
      *
+     * @param Individual $individual
+     *
+     * @return string
+     */
+    public function chartTitle(Individual $individual): string
+    {
+        /* I18N: %s is an individual’s name */
+        return I18N::translate('Hourglass chart of %s', $individual->fullName());
+    }
+
+    /**
+     * The URL for a page showing chart options.
+     *
+     * @param Individual $individual
+     * @param string[]   $parameters
+     *
+     * @return string
+     */
+    public function chartUrl(Individual $individual, array $parameters = []): string
+    {
+        return route(self::ROUTE_NAME, [
+                'xref' => $individual->xref(),
+                'tree' => $individual->tree()->name(),
+            ] + $parameters + self::DEFAULT_PARAMETERS);
+    }
+
+    /**
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function getChartAction(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree       = $request->getAttribute('tree');
-        $user       = $request->getAttribute('user');
-        $ajax       = $request->getQueryParams()['ajax'] ?? '';
-        $xref       = $request->getQueryParams()['xref'] ?? '';
-        $individual = Individual::getInstance($xref, $tree);
+        $tree        = $request->getAttribute('tree');
+        $user        = $request->getAttribute('user');
+        $xref        = $request->getAttribute('xref');
+        $generations = (int) $request->getAttribute('generations');
+        $spouses     = (bool) $request->getAttribute('spouses');
+        $ajax        = $request->getQueryParams()['ajax'] ?? '';
+        $individual  = Individual::getInstance($xref, $tree);
+
+        // Convert POST requests into GET requests for pretty URLs.
+        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
+            return redirect(route(self::ROUTE_NAME, [
+                'tree'        => $request->getAttribute('tree')->name(),
+                'xref'        => $request->getParsedBody()['xref'],
+                'generations' => $request->getParsedBody()['generations'],
+                'spouses'     => $request->getParsedBody()['spouses'] ?? false,
+            ]));
+        }
 
         Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
-        $generations = (int) ($request->getQueryParams()['generations'] ?? self::DEFAULT_GENERATIONS);
-
         $generations = min($generations, self::MAXIMUM_GENERATIONS);
         $generations = max($generations, self::MINIMUM_GENERATIONS);
 
-        $show_spouse = (bool) ($request->getQueryParams()['show_spouse'] ?? false);
-
         if ($ajax === '1') {
-            return $this->chart($individual, $generations, $show_spouse);
+            $this->layout = 'layouts/ajax';
+
+            return $this->viewResponse('modules/hourglass-chart/chart', [
+                'generations' => $generations,
+                'individual'  => $individual,
+                'spouses'     => $spouses,
+            ]);
         }
 
         $ajax_url = $this->chartUrl($individual, [
             'ajax'        => true,
             'generations' => $generations,
-            'show_spouse' => $show_spouse,
+            'spouses'     => $spouses,
         ]);
 
         return $this->viewResponse('modules/hourglass-chart/page', [
@@ -132,29 +197,9 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
             'individual'          => $individual,
             'maximum_generations' => self::MAXIMUM_GENERATIONS,
             'minimum_generations' => self::MINIMUM_GENERATIONS,
-            'module_name'         => $this->name(),
-            'show_spouse'         => $show_spouse,
+            'module'              => $this->name(),
+            'spouses'             => $spouses,
             'title'               => $this->chartTitle($individual),
-        ]);
-    }
-
-    /**
-     * Generate the initial generations of the chart
-     *
-     * @param Individual $individual
-     * @param int        $generations
-     * @param bool       $show_spouse
-     *
-     * @return ResponseInterface
-     */
-    protected function chart(Individual $individual, int $generations, bool $show_spouse): ResponseInterface
-    {
-        $this->layout = 'layouts/ajax';
-
-        return $this->viewResponse('modules/hourglass-chart/chart', [
-            'generations' => $generations,
-            'individual'  => $individual,
-            'show_spouse' => $show_spouse,
         ]);
     }
 
@@ -191,8 +236,8 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         $tree = $request->getAttribute('tree');
         $xref = $request->getQueryParams()['xref'] ?? '';
 
-        $show_spouse = (bool) ($request->getQueryParams()['show_spouse'] ?? false);
-        $individual  = Individual::getInstance($xref, $tree);
+        $spouses    = (bool) ($request->getQueryParams()['spouses'] ?? false);
+        $individual = Individual::getInstance($xref, $tree);
 
         Auth::checkIndividualAccess($individual);
 
@@ -203,7 +248,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         return response(view('modules/hourglass-chart/children', [
             'children'    => $children,
             'generations' => 1,
-            'show_spouse' => $show_spouse,
+            'spouses'     => $spouses,
         ]));
     }
 }

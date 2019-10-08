@@ -18,6 +18,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 
 /**
@@ -35,10 +37,10 @@ class MapProviderControllerTest extends TestCase
     public function testMapProviderEdit(): void
     {
         $controller = new MapProviderController();
-        $request    = self::createRequest(self::METHOD_GET, ['route' => 'map-provider']);
+        $request    = self::createRequest(RequestMethodInterface::METHOD_GET, ['route' => 'map-provider']);
         $response   = $controller->mapProviderEdit($request);
 
-        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -47,9 +49,9 @@ class MapProviderControllerTest extends TestCase
     public function testMapProviderSave(): void
     {
         $controller = new MapProviderController();
-        $request    = self::createRequest(self::METHOD_POST, ['route' => 'map-provider'], ['provider' => '', 'geonames' => '']);
+        $request    = self::createRequest(RequestMethodInterface::METHOD_POST, ['route' => 'map-provider'], ['provider' => '', 'geonames' => '']);
         $response   = $controller->mapProviderSave($request);
 
-        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

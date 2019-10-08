@@ -18,6 +18,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Exceptions\InternalServerErrorException;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -60,7 +61,7 @@ class HandleExceptionsTest extends TestCase
         $middleware = new HandleExceptions();
         $response   = $middleware->process($request, $handler);
 
-        $this->assertSame(self::STATUS_INTERNAL_SERVER_ERROR, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR, $response->getStatusCode());
 
         app()->forgetInstance(ModuleService::class);
         app()->forgetInstance(UserService::class);

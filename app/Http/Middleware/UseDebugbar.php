@@ -75,7 +75,7 @@ class UseDebugbar implements MiddlewareInterface, StatusCodeInterface
     {
         $status_code = $response->getStatusCode();
 
-        return $status_code === self::STATUS_FOUND || $status_code === self::STATUS_MOVED_PERMANENTLY;
+        return $status_code === StatusCodeInterface::STATUS_FOUND || $status_code === StatusCodeInterface::STATUS_MOVED_PERMANENTLY;
     }
 
     /**

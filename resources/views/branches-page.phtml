@@ -1,13 +1,16 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
+
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
+use Fisharebest\Webtrees\I18N;
+
+?>
 
 <h2 class="wt-page-title">
     <?= $title ?>
 </h2>
 
-<form method="get" action="<?= e(route('module')) ?>" class="wt-page-options wt-page-options-branches d-print-none">
-    <input type="hidden" name="route" value="module">
-    <input type="hidden" name="module" value="<?= e($module) ?>">
-    <input type="hidden" name="action" value="<?= e($action) ?>">
+<form method="get" action="<?= e(route('module', ['module' => $module, 'action' => $action])) ?>" class="wt-page-options wt-page-options-branches d-print-none">
+    <input type="hidden" name="route" value="<?= e('/module/' . $module . '/' . $action) ?>">
     <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
 
     <div class="form-group row">

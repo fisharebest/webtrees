@@ -19,7 +19,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Aura\Router\RouterContainer;
-use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
@@ -28,15 +27,14 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+
 use function app;
 use function array_map;
-use function parse_url;
-use const PHP_URL_PATH;
 
 /**
  * Simple class to help migrate to a third-party routing library.
  */
-class Router implements MiddlewareInterface, RequestMethodInterface
+class Router implements MiddlewareInterface
 {
     /** @var ModuleService */
     private $module_service;
@@ -59,20 +57,10 @@ class Router implements MiddlewareInterface, RequestMethodInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $base_url         = $request->getAttribute('base_url');
-        $base_path        = parse_url($base_url, PHP_URL_PATH) ?? '';
-        $router_container = new RouterContainer($base_path);
-
-        // Save the router in the container, as we'll need it to generate URLs.
-        app()->instance(RouterContainer::class, $router_container);
-
-        // Load the routing table.
-        require __DIR__ . '/../../../routes/web.php';
-
         if ($request->getAttribute('rewrite_urls') !== '1') {
             // Turn the ugly URL into a pretty one.
             $params = $request->getQueryParams();
-            $route   = $params['route'] ?? '';
+            $route  = $params['route'] ?? '';
             unset($params['route']);
             $uri     = $request->getUri()->withPath($route);
             $request = $request->withUri($uri)->withQueryParams($params);
@@ -83,7 +71,7 @@ class Router implements MiddlewareInterface, RequestMethodInterface
         View::share('request', $request);
 
         // Match the request to a route.
-        $route = $router_container->getMatcher()->match($request);
+        $route = app(RouterContainer::class)->getMatcher()->match($request);
 
         // No route matched?
         if ($route === false) {

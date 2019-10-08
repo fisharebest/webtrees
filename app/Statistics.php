@@ -18,11 +18,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Psr\Http\Message\ServerRequestInterface;
-
-use function app;
-use function count;
-
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -59,10 +54,12 @@ use Fisharebest\Webtrees\Statistics\Repository\PlaceRepository;
 use Fisharebest\Webtrees\Statistics\Repository\ServerRepository;
 use Fisharebest\Webtrees\Statistics\Repository\UserRepository;
 use Illuminate\Database\Query\Builder;
-
-use function in_array;
-
+use Psr\Http\Message\ServerRequestInterface;
 use ReflectionMethod;
+
+use function app;
+use function count;
+use function in_array;
 
 /**
  * A selection of pre-formatted statistical queries.
@@ -87,13 +84,6 @@ class Statistics implements
     PlaceRepositoryInterface
 {
     /**
-     * Generate statistics for a specified tree.
-     *
-     * @var Tree
-     */
-    private $tree;
-
-    /**
      * All public functions are available as keywords - except these ones
      *
      * @var string[]
@@ -110,7 +100,12 @@ class Statistics implements
         'statsChildrenQuery',
         'statsMarrAgeQuery',
     ];
-
+    /**
+     * Generate statistics for a specified tree.
+     *
+     * @var Tree
+     */
+    private $tree;
     /**
      * @var GedcomRepository
      */
@@ -274,32 +269,6 @@ class Statistics implements
         ksort($examples);
 
         return implode('<br>', $examples);
-    }
-
-    /**
-     * Get tags and their parsed results.
-     *
-     * @param string $text
-     *
-     * @return string[]
-     */
-    private function getTags(string $text): array
-    {
-        $tags    = [];
-        $matches = [];
-
-        preg_match_all('/#([^#]+)#/', $text, $matches, PREG_SET_ORDER);
-
-        foreach ($matches as $match) {
-            $params = explode(':', $match[1]);
-            $method = array_shift($params);
-
-            if (method_exists($this, $method)) {
-                $tags[$match[0]] = $this->$method(...$params);
-            }
-        }
-
-        return $tags;
     }
 
     /**
@@ -1935,7 +1904,8 @@ class Statistics implements
         string $color_from = null,
         string $color_to = null,
         string $total = '10'
-    ): string {
+    ): string
+    {
         return $this->familyRepository->chartLargestFamilies($color_from, $color_to, (int) $total);
     }
 
@@ -2025,7 +1995,8 @@ class Statistics implements
     public function chartNoChildrenFamilies(
         string $year1 = '-1',
         string $year2 = '-1'
-    ): string {
+    ): string
+    {
         return $this->familyRepository->chartNoChildrenFamilies((int) $year1, (int) $year2);
     }
 
@@ -2060,7 +2031,8 @@ class Statistics implements
         string $threshold = '1',
         string $number_of_surnames = '10',
         string $sorting = 'alpha'
-    ): string {
+    ): string
+    {
         return $this->individualRepository->commonSurnames((int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
@@ -2071,7 +2043,8 @@ class Statistics implements
         string $threshold = '1',
         string $number_of_surnames = '10',
         string $sorting = 'rcount'
-    ): string {
+    ): string
+    {
         return $this->individualRepository->commonSurnamesTotals((int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
@@ -2082,7 +2055,8 @@ class Statistics implements
         string $threshold = '1',
         string $number_of_surnames = '10',
         string $sorting = 'alpha'
-    ): string {
+    ): string
+    {
         return $this->individualRepository->commonSurnamesList((int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
@@ -2093,7 +2067,8 @@ class Statistics implements
         string $threshold = '1',
         string $number_of_surnames = '10',
         string $sorting = 'rcount'
-    ): string {
+    ): string
+    {
         return $this->individualRepository
             ->commonSurnamesListTotals((int) $threshold, (int) $number_of_surnames, $sorting);
     }
@@ -2105,7 +2080,8 @@ class Statistics implements
         string $color_from = null,
         string $color_to = null,
         string $number_of_surnames = '10'
-    ): string {
+    ): string
+    {
         return $this->individualRepository
             ->chartCommonSurnames($color_from, $color_to, (int) $number_of_surnames);
     }
@@ -2277,7 +2253,8 @@ class Statistics implements
         string $color_from = null,
         string $color_to = null,
         string $maxtoshow = '7'
-    ): string {
+    ): string
+    {
         return $this->individualRepository->chartCommonGiven($color_from, $color_to, (int) $maxtoshow);
     }
 
@@ -2422,9 +2399,7 @@ class Statistics implements
      */
     public function contactWebmaster(): string
     {
-        $request = app(ServerRequestInterface::class);
-
-        return $this->contactRepository->contactWebmaster($request);
+        return $this->contactRepository->contactWebmaster();
     }
 
     /**
@@ -2432,9 +2407,7 @@ class Statistics implements
      */
     public function contactGedcom(): string
     {
-        $request = app(ServerRequestInterface::class);
-
-        return $this->contactRepository->contactGedcom($request);
+        return $this->contactRepository->contactGedcom();
     }
 
     /**
@@ -2661,5 +2634,31 @@ class Statistics implements
     public function webtreesVersion(): string
     {
         return Webtrees::VERSION;
+    }
+
+    /**
+     * Get tags and their parsed results.
+     *
+     * @param string $text
+     *
+     * @return string[]
+     */
+    private function getTags(string $text): array
+    {
+        $tags    = [];
+        $matches = [];
+
+        preg_match_all('/#([^#]+)#/', $text, $matches, PREG_SET_ORDER);
+
+        foreach ($matches as $match) {
+            $params = explode(':', $match[1]);
+            $method = array_shift($params);
+
+            if (method_exists($this, $method)) {
+                $tags[$match[0]] = $this->$method(...$params);
+            }
+        }
+
+        return $tags;
     }
 }

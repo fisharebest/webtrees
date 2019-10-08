@@ -18,6 +18,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Module\XeneaTheme;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -39,45 +40,22 @@ class BootModulesTest extends TestCase
      */
     public function testMiddleware(): void
     {
+        $theme = new WebtreesTheme();
+
         $handler = $this->createMock(RequestHandlerInterface::class);
-        $handler->method('handle')->willReturn(response());
-
-        // Theme 1 (not default) is not booted.
-        $theme1 = new class extends WebtreesTheme {
-            public function boot()
-            {
-                throw new \Exception('Should not get here!');
-            }
-        };
-
-        // Theme 2 (default) is booted.
-        $theme2 = new class($this) extends XeneaTheme {
-            private $booted = false;
-            private $test;
-
-            public function __construct($test)
-            {
-                $this->test = $test;
-            }
-
-            public function boot()
-            {
-                $this->booted = true;
-            }
-
-            public function __destruct()
-            {
-                $this->test->assertTrue($this->booted);
-            }
-        };
+        $handler->method('handle')->willReturn(response('It works!'));
 
         $module_service = $this->createMock(ModuleService::class);
-        $module_service->method('all')->willReturn(new Collection([$theme1, $theme2]));
+        $module_service
+            ->expects($this->once())
+            ->method('bootModules')
+            ->with($theme);
 
         $request    = self::createRequest();
-        $middleware = new BootModules($module_service, $theme2);
+        $middleware = new BootModules($module_service, $theme);
         $response   = $middleware->process($request, $handler);
 
-        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        $this->assertSame('It works!', (string) $response->getBody());
     }
 }

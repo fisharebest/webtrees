@@ -18,6 +18,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Aura\Router\RouterContainer;
+use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
@@ -26,35 +28,48 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+
+use function max;
+use function min;
+use function route;
+use function view;
 
 /**
  * Class PedigreeChartModule
  */
-class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
+class PedigreeChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;
 
+    private const ROUTE_NAME = 'pedigree-chart';
+    private const ROUTE_URL  = '/tree/{tree}/pedigree-{style}-{generations}/{xref}';
+
+    // Chart styles
+    public const STYLE_LEFT  = 'left';
+    public const STYLE_RIGHT = 'right';
+    public const STYLE_UP    = 'up';
+    public const STYLE_DOWN  = 'down';
+
     // Defaults
     protected const DEFAULT_GENERATIONS = '4';
-
-    // Limits
-    protected const MAX_GENERATIONS     = 12;
-    protected const MIN_GENERATIONS     = 2;
-
-    // Chart orientation options.  These are used to generate icons, views, etc.
-    public const ORIENTATION_LEFT  = 'left';
-    public const ORIENTATION_RIGHT = 'right';
-    public const ORIENTATION_UP    = 'up';
-    public const ORIENTATION_DOWN  = 'down';
-
-    protected const MIRROR_ORIENTATION = [
-        self::ORIENTATION_UP    => self::ORIENTATION_DOWN,
-        self::ORIENTATION_DOWN  => self::ORIENTATION_UP,
-        self::ORIENTATION_LEFT  => self::ORIENTATION_RIGHT,
-        self::ORIENTATION_RIGHT => self::ORIENTATION_LEFT,
+    protected const DEFAULT_STYLE       = self::STYLE_RIGHT;
+    protected const DEFAULT_PARAMETERS  = [
+        'generations' => self::DEFAULT_GENERATIONS,
+        'style'       => self::DEFAULT_STYLE,
     ];
 
-    protected const DEFAULT_ORIENTATION = self::ORIENTATION_RIGHT;
+    // Limits
+    protected const MINIMUM_GENERATIONS = 2;
+    protected const MAXIMUM_GENERATIONS = 12;
+
+    // For RTL languages
+    protected const MIRROR_STYLE = [
+        self::STYLE_UP    => self::STYLE_DOWN,
+        self::STYLE_DOWN  => self::STYLE_UP,
+        self::STYLE_LEFT  => self::STYLE_RIGHT,
+        self::STYLE_RIGHT => self::STYLE_LEFT,
+    ];
 
     /** @var ChartService */
     private $chart_service;
@@ -67,6 +82,22 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
     public function __construct(ChartService $chart_service)
     {
         $this->chart_service = $chart_service;
+    }
+
+    /**
+     * Initialization.
+     *
+     * @param RouterContainer $router_container
+     */
+    public function boot(RouterContainer $router_container)
+    {
+        $router_container->getMap()
+            ->get(self::ROUTE_NAME, self::ROUTE_URL, self::class)
+            ->allows(RequestMethodInterface::METHOD_POST)
+            ->tokens([
+                'generations' => '\d+',
+                'style'       => implode('|', array_keys($this->styles())),
+            ]);
     }
 
     /**
@@ -127,110 +158,119 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
     }
 
     /**
-     * A form to request the chart parameters.
+     * The URL for a page showing chart options.
      *
+     * @param Individual $individual
+     * @param string[]   $parameters
+     *
+     * @return string
+     */
+    public function chartUrl(Individual $individual, array $parameters = []): string
+    {
+        return route(self::ROUTE_NAME, [
+                'xref' => $individual->xref(),
+                'tree' => $individual->tree()->name(),
+            ] + $parameters + self::DEFAULT_PARAMETERS);
+    }
+
+    /**
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function getChartAction(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree       = $request->getAttribute('tree');
-        $user       = $request->getAttribute('user');
-        $ajax       = $request->getQueryParams()['ajax'] ?? '';
-        $xref       = $request->getQueryParams()['xref'] ?? '';
-        $individual = Individual::getInstance($xref, $tree);
+        $ajax        = $request->getQueryParams()['ajax'] ?? '';
+        $generations = (int) $request->getAttribute('generations');
+        $style       = $request->getAttribute('style');
+        $tree        = $request->getAttribute('tree');
+        $user        = $request->getAttribute('user');
+        $xref        = $request->getAttribute('xref');
+        $individual  = Individual::getInstance($xref, $tree);
+
+        // Convert POST requests into GET requests for pretty URLs.
+        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
+            return redirect(route(self::ROUTE_NAME, [
+                'tree'        => $request->getAttribute('tree')->name(),
+                'xref'        => $request->getParsedBody()['xref'],
+                'style'       => $request->getParsedBody()['style'],
+                'generations' => $request->getParsedBody()['generations'],
+            ]));
+        }
 
         Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
-        $orientation = $request->getQueryParams()['orientation'] ?? static::DEFAULT_ORIENTATION;
-        $generations = (int) ($request->getQueryParams()['generations'] ?? static::DEFAULT_GENERATIONS);
-
-        $generations = min(static::MAX_GENERATIONS, $generations);
-        $generations = max(static::MIN_GENERATIONS, $generations);
-
-        $generation_options = $this->generationOptions();
+        $generations = min($generations, self::MAXIMUM_GENERATIONS);
+        $generations = max($generations, self::MINIMUM_GENERATIONS);
 
         if ($ajax === '1') {
-            return $this->chart($individual, $orientation, $generations, $this->chart_service);
+            $this->layout = 'layouts/ajax';
+
+            $ancestors = $this->chart_service->sosaStradonitzAncestors($individual, $generations);
+
+            // Father’s ancestors link to the father’s pedigree
+            // Mother’s ancestors link to the mother’s pedigree..
+            $links = $ancestors->map(function (?Individual $individual, $sosa) use ($ancestors, $style, $generations): string {
+                if ($individual instanceof Individual && $sosa >= 2 ** $generations / 2 && $individual->childFamilies()->isNotEmpty()) {
+                    // The last row/column, and there are more generations.
+                    if ($sosa >= 2 ** $generations * 3 / 4) {
+                        return $this->nextLink($ancestors->get(3), $style, $generations);
+                    }
+
+                    return $this->nextLink($ancestors->get(2), $style, $generations);
+                }
+
+                // A spacer to fix the "Left" layout.
+                return '<span class="invisible px-2">' . view('icons/arrow-' . $style) . '</span>';
+            });
+
+            // Root individual links to their children.
+            $links->put(1, $this->previousLink($individual, $style, $generations));
+
+            return $this->viewResponse('modules/pedigree-chart/chart', [
+                'ancestors'   => $ancestors,
+                'generations' => $generations,
+                'style'       => $style,
+                'layout'      => 'right',
+                'links'       => $links,
+            ]);
         }
 
         $ajax_url = $this->chartUrl($individual, [
             'ajax'        => true,
             'generations' => $generations,
-            'orientation' => $orientation,
+            'style'       => $style,
+            'xref'        => $xref,
         ]);
 
         return $this->viewResponse('modules/pedigree-chart/page', [
             'ajax_url'           => $ajax_url,
             'generations'        => $generations,
-            'generation_options' => $generation_options,
+            'generation_options' => $this->generationOptions(),
             'individual'         => $individual,
-            'module_name'        => $this->name(),
-            'orientation'        => $orientation,
-            'orientations'       => $this->orientations(),
+            'module'             => $this->name(),
+            'style'              => $style,
+            'styles'             => $this->styles(),
             'title'              => $this->chartTitle($individual),
         ]);
-    }
-
-    /**
-     * @param Individual   $individual
-     * @param string       $orientation
-     * @param int          $generations
-     * @param ChartService $chart_service
-     *
-     * @return ResponseInterface
-     */
-    public function chart(Individual $individual, string $orientation, int $generations, ChartService $chart_service): ResponseInterface
-    {
-        $ancestors = $chart_service->sosaStradonitzAncestors($individual, $generations);
-
-        // Father’s ancestors link to the father’s pedigree
-        // Mother’s ancestors link to the mother’s pedigree..
-        $links = $ancestors->map(function (?Individual $individual, $sosa) use ($ancestors, $orientation, $generations): string {
-            if ($individual instanceof Individual && $sosa >= 2 ** $generations / 2 && $individual->childFamilies()->isNotEmpty()) {
-                // The last row/column, and there are more generations.
-                if ($sosa >= 2 ** $generations * 3 / 4) {
-                    return $this->nextLink($ancestors->get(3), $orientation, $generations);
-                }
-
-                return $this->nextLink($ancestors->get(2), $orientation, $generations);
-            }
-
-            // A spacer to fix the "Left" layout.
-            return '<span class="invisible px-2">' . view('icons/arrow-' . $orientation) . '</span>';
-        });
-
-        // Root individual links to their children.
-        $links->put(1, $this->previousLink($individual, $orientation, $generations));
-
-        $html = view('modules/pedigree-chart/chart', [
-            'ancestors'   => $ancestors,
-            'generations' => $generations,
-            'orientation' => $orientation,
-            'layout'      => 'right',
-            'links'       => $links,
-        ]);
-
-        return response($html);
     }
 
     /**
      * Build a menu for the chart root individual
      *
      * @param Individual $individual
-     * @param string     $orientation
+     * @param string     $style
      * @param int        $generations
      *
      * @return string
      */
-    public function nextLink(Individual $individual, string $orientation, int $generations): string
+    public function nextLink(Individual $individual, string $style, int $generations): string
     {
-        $icon  = view('icons/arrow-' . $orientation);
+        $icon  = view('icons/arrow-' . $style);
         $title = $this->chartTitle($individual);
         $url   = $this->chartUrl($individual, [
-            'orientation' => $orientation,
+            'style'       => $style,
             'generations' => $generations,
         ]);
 
@@ -241,14 +281,14 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      * Build a menu for the chart root individual
      *
      * @param Individual $individual
-     * @param string     $orientation
+     * @param string     $style
      * @param int        $generations
      *
      * @return string
      */
-    public function previousLink(Individual $individual, string $orientation, int $generations): string
+    public function previousLink(Individual $individual, string $style, int $generations): string
     {
-        $icon = view('icons/arrow-' . self::MIRROR_ORIENTATION[$orientation]);
+        $icon = view('icons/arrow-' . self::MIRROR_STYLE[$style]);
 
         $siblings = [];
         $spouses  = [];
@@ -257,7 +297,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
         foreach ($individual->childFamilies() as $family) {
             foreach ($family->children() as $child) {
                 if ($child !== $individual) {
-                    $siblings[] = $this->individualLink($child, $orientation, $generations);
+                    $siblings[] = $this->individualLink($child, $style, $generations);
                 }
             }
         }
@@ -265,12 +305,12 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
         foreach ($individual->spouseFamilies() as $family) {
             foreach ($family->spouses() as $spouse) {
                 if ($spouse !== $individual) {
-                    $spouses[] = $this->individualLink($spouse, $orientation, $generations);
+                    $spouses[] = $this->individualLink($spouse, $style, $generations);
                 }
             }
 
             foreach ($family->children() as $child) {
-                $children[] = $this->individualLink($child, $orientation, $generations);
+                $children[] = $this->individualLink($child, $style, $generations);
             }
         }
 
@@ -278,7 +318,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
             'icon'        => $icon,
             'individual'  => $individual,
             'generations' => $generations,
-            'orientation' => $orientation,
+            'style'       => $style,
             'chart'       => $this,
             'siblings'    => $siblings,
             'spouses'     => $spouses,
@@ -288,17 +328,17 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
 
     /**
      * @param Individual $individual
-     * @param string     $orientation
+     * @param string     $style
      * @param int        $generations
      *
      * @return string
      */
-    protected function individualLink(Individual $individual, string $orientation, int $generations): string
+    protected function individualLink(Individual $individual, string $style, int $generations): string
     {
         $text  = $individual->fullName();
         $title = $this->chartTitle($individual);
         $url   = $this->chartUrl($individual, [
-            'orientation' => $orientation,
+            'style'       => $style,
             'generations' => $generations,
         ]);
 
@@ -310,19 +350,21 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      */
     protected function generationOptions(): array
     {
-        return FunctionsEdit::numericOptions(range(static::MIN_GENERATIONS, static::MAX_GENERATIONS));
+        return FunctionsEdit::numericOptions(range(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS));
     }
 
     /**
+     * This chart can display its output in a number of styles
+     *
      * @return string[]
      */
-    protected function orientations(): array
+    protected function styles(): array
     {
         return [
-            self::ORIENTATION_LEFT  => I18N::translate('Left'),
-            self::ORIENTATION_RIGHT => I18N::translate('Right'),
-            self::ORIENTATION_UP    => I18N::translate('Up'),
-            self::ORIENTATION_DOWN  => I18N::translate('Down'),
+            self::STYLE_LEFT  => I18N::translate('Left'),
+            self::STYLE_RIGHT => I18N::translate('Right'),
+            self::STYLE_UP    => I18N::translate('Up'),
+            self::STYLE_DOWN  => I18N::translate('Down'),
         ];
     }
 }

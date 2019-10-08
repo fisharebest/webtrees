@@ -30,6 +30,6 @@ class BatchUpdateMissingDeathPluginTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\BatchUpdate\BatchUpdateMissingDeathPlugin::class));
+        $this->assertTrue(class_exists(BatchUpdateMissingDeathPlugin::class));
     }
 }

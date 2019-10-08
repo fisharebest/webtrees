@@ -44,7 +44,7 @@ class CheckForMaintenanceMode implements MiddlewareInterface, StatusCodeInterfac
                 'url'     => $request->getAttribute('request_uri'),
             ]);
 
-            return response($html, self::STATUS_SERVICE_UNAVAILABLE);
+            return response($html, StatusCodeInterface::STATUS_SERVICE_UNAVAILABLE);
         }
 
         return $handler->handle($request);

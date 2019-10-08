@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
@@ -326,6 +327,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         return $this->viewResponse('modules/clippings/download', [
             'is_manager' => Auth::isManager($tree, $user),
             'is_member'  => Auth::isMember($tree, $user),
+            'module'     => $this->name(),
             'title'      => $title,
         ]);
     }

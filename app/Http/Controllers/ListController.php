@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
@@ -399,9 +400,9 @@ class ListController extends AbstractBaseController
     public function mediaList(ServerRequestInterface $request): ResponseInterface
     {
         $tree      = $request->getAttribute('tree');
+        $module    = $request->getAttribute('module');
+        $action    = $request->getAttribute('action');
         $params    = $request->getQueryParams();
-        $module    = $params['module'];
-        $action    = $params['action'];
         $formats   = GedcomTag::getFileFormTypes();
         $action2   = $params['action2'] ?? '';
         $page      = (int) ($params['page'] ?? 1);

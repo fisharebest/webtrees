@@ -37,7 +37,7 @@ use function route;
 /**
  * Middleware to generate a response when no route was matched.
  */
-class NoRouteFound implements MiddlewareInterface, RequestMethodInterface
+class NoRouteFound implements MiddlewareInterface
 {
     use ViewResponseTrait;
 
@@ -49,7 +49,7 @@ class NoRouteFound implements MiddlewareInterface, RequestMethodInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if ($request->getMethod() !== self::METHOD_GET) {
+        if ($request->getMethod() !== RequestMethodInterface::METHOD_GET) {
             throw new NotFoundHttpException();
         }
 

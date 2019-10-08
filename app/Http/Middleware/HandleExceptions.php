@@ -40,7 +40,7 @@ use const PHP_EOL;
 /**
  * Middleware to handle and render errors.
  */
-class HandleExceptions implements MiddlewareInterface, RequestMethodInterface, StatusCodeInterface
+class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
 {
     use ViewResponseTrait;
 
@@ -116,10 +116,10 @@ class HandleExceptions implements MiddlewareInterface, RequestMethodInterface, S
         if ($request->getHeaderLine('X-Requested-With') !== '') {
             // If this was a GET request, then we were probably fetching HTML to display, for
             // example a chart or tab.
-            if ($request->getMethod() === self::METHOD_GET) {
-                $status_code = self::STATUS_OK;
+            if ($request->getMethod() === RequestMethodInterface::METHOD_GET) {
+                $status_code = StatusCodeInterface::STATUS_OK;
             } else {
-                $status_code = self::STATUS_INTERNAL_SERVER_ERROR;
+                $status_code = StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR;
             }
 
             return response(view('components/alert-danger', ['alert' => $trace]), $status_code);
@@ -128,6 +128,6 @@ class HandleExceptions implements MiddlewareInterface, RequestMethodInterface, S
         return $this->viewResponse('errors/unhandled-exception', [
             'title' => 'Error',
             'error' => $trace,
-        ], self::STATUS_INTERNAL_SERVER_ERROR);
+        ], StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
     }
 }

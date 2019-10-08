@@ -259,7 +259,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
             'individual1'       => $individual1,
             'individual2'       => $individual2,
             'max_recursion'     => $max_recursion,
-            'module_name'       => $this->name(),
+            'module'            => $this->name(),
             'recursion'         => $recursion,
             'recursion_options' => $this->recursionOptions($max_recursion),
             'title'             => $title,

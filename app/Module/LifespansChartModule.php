@@ -18,6 +18,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Aura\Router\RouterContainer;
+use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\ColorGenerator;
@@ -30,20 +32,39 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use stdClass;
 
 /**
  * Class LifespansChartModule
  */
-class LifespansChartModule extends AbstractModule implements ModuleChartInterface
+class LifespansChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;
+
+    private const ROUTE_NAME = 'lifespans-chart';
+    private const ROUTE_URL  = '/tree/{tree}/lifespans';
+
+    // Defaults
+    protected const DEFAULT_PARAMETERS = [];
 
     // Parameters for generating colors
     protected const RANGE      = 120; // degrees
     protected const SATURATION = 100; // percent
     protected const LIGHTNESS  = 30; // percent
     protected const ALPHA      = 0.25;
+
+    /**
+     * Initialization.
+     *
+     * @param RouterContainer $router_container
+     */
+    public function boot(RouterContainer $router_container)
+    {
+        $router_container->getMap()
+            ->get(self::ROUTE_NAME, self::ROUTE_URL, self::class)
+            ->allows(RequestMethodInterface::METHOD_POST);
+    }
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -87,35 +108,27 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
-        return route('module', [
-                'module'  => $this->name(),
-                'action'  => 'Chart',
-                'xrefs[]' => $individual->xref(),
-                'ged'     => $individual->tree()->name(),
-            ] + $parameters);
+        return route(self::ROUTE_NAME, [
+                'tree' => $individual->tree()->name(),
+            ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
     /**
-     * A form to request the chart parameters.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function getChartAction(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        $user = $request->getAttribute('user');
-
-        Auth::checkComponentAccess($this, 'chart', $tree, $user);
-
+        $tree      = $request->getAttribute('tree');
+        $user      = $request->getAttribute('user');
+        $xrefs     = $request->getQueryParams()['xrefs'] ?? [];
         $ajax      = $request->getQueryParams()['ajax'] ?? '';
-        $xrefs     = (array) ($request->getQueryParams()['xrefs'] ?? []);
-        $addxref   = $request->getQueryParams()['addxref'] ?? '';
-        $addfam    = (bool) ($request->getQueryParams()['addfam'] ?? false);
-        $placename = $request->getQueryParams()['placename'] ?? '';
-        $start     = $request->getQueryParams()['start'] ?? '';
-        $end       = $request->getQueryParams()['end'] ?? '';
+        $addxref   = $request->getParsedBody()['addxref'] ?? '';
+        $addfam    = (bool) ($request->getParsedBody()['addfam'] ?? false);
+        $placename = $request->getParsedBody()['placename'] ?? '';
+        $start     = $request->getParsedBody()['start'] ?? '';
+        $end       = $request->getParsedBody()['end'] ?? '';
 
         $place      = new Place($placename, $tree);
         $start_date = new Date($start);
@@ -133,7 +146,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         }
 
         // Select by date and/or place.
-        if ($start_date->isOK() && $end_date->isOK() && $placename !== '') {
+        if ($placename !== '' && $start_date->isOK() && $end_date->isOK()) {
             $date_xrefs  = $this->findIndividualsByDate($start_date, $end_date, $tree);
             $place_xrefs = $this->findIndividualsByPlace($place, $tree);
             $xrefs       = array_intersect($date_xrefs, $place_xrefs);
@@ -151,32 +164,38 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             return $individual !== null && $individual->canShow();
         });
 
+        // Convert POST requests into GET requests for pretty URLs.
+        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
+            return redirect(route(self::ROUTE_NAME, [
+                'tree'  => $request->getAttribute('tree')->name(),
+                'xrefs' => $xrefs,
+            ]));
+        }
+
+        Auth::checkComponentAccess($this, 'chart', $tree, $user);
+
         if ($ajax === '1') {
+            $this->layout = 'layouts/ajax';
+
             $subtitle = $this->subtitle(count($xrefs), $start_date, $end_date, $placename);
 
             return $this->chart($tree, $xrefs, $subtitle);
         }
 
-        $ajax_url = route('module', [
-            'ajax'   => true,
-            'module' => $this->name(),
-            'action' => 'Chart',
-            'ged'    => $tree->name(),
-            'xrefs'  => $xrefs,
-        ]);
+        $reset_url = route(self::ROUTE_NAME, ['tree' => $tree->name()]);
 
-        $reset_url = route('module', [
-            'module' => $this->name(),
-            'action' => 'Chart',
-            'ged'    => $tree->name(),
+        $ajax_url = route(self::ROUTE_NAME, [
+            'ajax'  => true,
+            'tree'  => $tree->name(),
+            'xrefs' => $xrefs,
         ]);
 
         return $this->viewResponse('modules/lifespans-chart/page', [
-            'ajax_url'    => $ajax_url,
-            'module_name' => $this->name(),
-            'reset_url'   => $reset_url,
-            'title'       => $this->title(),
-            'xrefs'       => $xrefs,
+            'ajax_url'  => $ajax_url,
+            'module'    => $this->name(),
+            'reset_url' => $reset_url,
+            'title'     => $this->title(),
+            'xrefs'     => $xrefs,
         ]);
     }
 
@@ -221,66 +240,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         ]);
 
         return response($html);
-    }
-
-    /**
-     * @param Individual[] $individuals
-     *
-     * @return stdClass[]
-     */
-    private function layoutIndividuals(array $individuals): array
-    {
-        $colors = [
-            'M' => new ColorGenerator(240, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE * -1),
-            'F' => new ColorGenerator(000, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
-            'U' => new ColorGenerator(120, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
-        ];
-
-        $current_year = (int) date('Y');
-
-        // Latest year used in each row
-        $rows = [];
-
-        $lifespans = [];
-
-        foreach ($individuals as $individual) {
-            $birth_jd   = $individual->getEstimatedBirthDate()->minimumJulianDay();
-            $birth_year = $this->jdToYear($birth_jd);
-            $death_jd   = $individual->getEstimatedDeathDate()->maximumJulianDay();
-            $death_year = $this->jdToYear($death_jd);
-
-            // Died before they were born?  Swapping the dates allows them to be shown.
-            if ($death_year < $birth_year) {
-                $death_year = $birth_year;
-            }
-
-            // Don't show death dates in the future.
-            $death_year = min($death_year, $current_year);
-
-            // Add this individual to the next row in the chart...
-            $next_row = count($rows);
-            // ...unless we can find an existing row where it fits.
-            foreach ($rows as $row => $year) {
-                if ($year < $birth_year) {
-                    $next_row = $row;
-                    break;
-                }
-            }
-
-            // Fill the row up to the year (leaving a small gap)
-            $rows[$next_row] = $death_year;
-
-            $lifespans[] = (object) [
-                'background' => $colors[$individual->sex()]->getNextColor(),
-                'birth_year' => $birth_year,
-                'death_year' => $death_year,
-                'id'         => 'individual-' . md5($individual->xref()),
-                'individual' => $individual,
-                'row'        => $next_row,
-            ];
-        }
-
-        return $lifespans;
     }
 
     /**
@@ -426,7 +385,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      */
     protected function subtitle(int $count, Date $start, Date $end, string $placename): string
     {
-        if ($start->isOK() && $end->isOK() && $placename !== '') {
+        if ($placename !== '' && $start->isOK() && $end->isOK()) {
             return I18N::plural(
                 '%s individual with events in %s between %s and %s',
                 '%s individuals with events in %s between %s and %s',
@@ -460,5 +419,65 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         }
 
         return I18N::plural('%s individual', '%s individuals', $count, I18N::number($count));
+    }
+
+    /**
+     * @param Individual[] $individuals
+     *
+     * @return stdClass[]
+     */
+    private function layoutIndividuals(array $individuals): array
+    {
+        $colors = [
+            'M' => new ColorGenerator(240, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE * -1),
+            'F' => new ColorGenerator(000, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
+            'U' => new ColorGenerator(120, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
+        ];
+
+        $current_year = (int) date('Y');
+
+        // Latest year used in each row
+        $rows = [];
+
+        $lifespans = [];
+
+        foreach ($individuals as $individual) {
+            $birth_jd   = $individual->getEstimatedBirthDate()->minimumJulianDay();
+            $birth_year = $this->jdToYear($birth_jd);
+            $death_jd   = $individual->getEstimatedDeathDate()->maximumJulianDay();
+            $death_year = $this->jdToYear($death_jd);
+
+            // Died before they were born?  Swapping the dates allows them to be shown.
+            if ($death_year < $birth_year) {
+                $death_year = $birth_year;
+            }
+
+            // Don't show death dates in the future.
+            $death_year = min($death_year, $current_year);
+
+            // Add this individual to the next row in the chart...
+            $next_row = count($rows);
+            // ...unless we can find an existing row where it fits.
+            foreach ($rows as $row => $year) {
+                if ($year < $birth_year) {
+                    $next_row = $row;
+                    break;
+                }
+            }
+
+            // Fill the row up to the year (leaving a small gap)
+            $rows[$next_row] = $death_year;
+
+            $lifespans[] = (object) [
+                'background' => $colors[$individual->sex()]->getNextColor(),
+                'birth_year' => $birth_year,
+                'death_year' => $death_year,
+                'id'         => 'individual-' . md5($individual->xref()),
+                'individual' => $individual,
+                'row'        => $next_row,
+            ];
+        }
+
+        return $lifespans;
     }
 }

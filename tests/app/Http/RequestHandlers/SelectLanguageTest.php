@@ -18,6 +18,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
@@ -34,10 +36,10 @@ class SelectLanguageTest extends TestCase
     {
         $user     = new GuestUser();
         $handler  = new SelectLanguage($user);
-        $request  = self::createRequest(self::METHOD_POST, [], ['language' => 'fr']);
+        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['language' => 'fr']);
         $response = $handler->handle($request);
 
-        self::assertSame(self::STATUS_NO_CONTENT, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 
     /**
@@ -48,9 +50,9 @@ class SelectLanguageTest extends TestCase
         $user_service = new UserService();
         $user         = $user_service->create('user', 'real', 'email', 'pass');
         $handler      = new SelectLanguage($user);
-        $request      = self::createRequest(self::METHOD_POST, [], ['language' => 'fr']);
+        $request      = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['language' => 'fr']);
         $response     = $handler->handle($request);
 
-        self::assertSame(self::STATUS_NO_CONTENT, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 }

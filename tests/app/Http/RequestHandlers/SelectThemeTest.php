@@ -18,6 +18,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
@@ -35,13 +37,13 @@ class SelectThemeTest extends TestCase
         $user = $this->createMock(GuestUser::class);
         $user->expects($this->once())->method('setPreference')->with('theme', 'FOO');
 
-        $request = self::createRequest(self::METHOD_POST, [], ['theme' => 'FOO'])
+        $request = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['theme' => 'FOO'])
             ->withAttribute('user', $user);
 
         $handler  = new SelectTheme();
         $response = $handler->handle($request);
 
-        self::assertSame(self::STATUS_NO_CONTENT, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 
     /**
@@ -52,12 +54,12 @@ class SelectThemeTest extends TestCase
         $user = $this->createMock(User::class);
         $user->expects($this->once())->method('setPreference')->with('theme', 'FOO');
 
-        $request = self::createRequest(self::METHOD_POST, [], ['theme' => 'FOO'])
+        $request = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['theme' => 'FOO'])
             ->withAttribute('user', $user);
 
         $handler  = new SelectTheme();
         $response = $handler->handle($request);
 
-        self::assertSame(self::STATUS_NO_CONTENT, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 }

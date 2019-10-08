@@ -18,6 +18,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\MailService;
@@ -43,11 +45,11 @@ class UsersControllerTest extends TestCase
     public function testIndex(): void
     {
         $controller = app(UsersController::class);
-        $request    = self::createRequest(self::METHOD_GET, ['route' => 'admin-users'])
+        $request    = self::createRequest(RequestMethodInterface::METHOD_GET, ['route' => 'admin-users'])
             ->withAttribute('user', Auth::user());
         $response   = $controller->index($request);
 
-        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -56,10 +58,10 @@ class UsersControllerTest extends TestCase
     public function testData(): void
     {
         $controller = app(UsersController::class);
-        $request    = self::createRequest(self::METHOD_GET, ['route' => 'admin-users-data']);
+        $request    = self::createRequest(RequestMethodInterface::METHOD_GET, ['route' => 'admin-users-data']);
         $response   = $controller->data($request);
 
-        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -68,10 +70,10 @@ class UsersControllerTest extends TestCase
     public function testCreate(): void
     {
         $controller = app(UsersController::class);
-        $request    = self::createRequest(self::METHOD_GET, ['route' => 'admin-users-create']);
+        $request    = self::createRequest(RequestMethodInterface::METHOD_GET, ['route' => 'admin-users-create']);
         $response   = $controller->create($request);
 
-        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -80,7 +82,7 @@ class UsersControllerTest extends TestCase
     public function testSave(): void
     {
         $controller = app(UsersController::class);
-        $request    = self::createRequest(self::METHOD_POST, ['route' => 'admin-users-create'], [
+        $request    = self::createRequest(RequestMethodInterface::METHOD_POST, ['route' => 'admin-users-create'], [
             'username'  => 'User name',
             'email'     => 'email@example.com',
             'real_name' => 'Real Name',
@@ -88,7 +90,7 @@ class UsersControllerTest extends TestCase
         ]);
         $response   = $controller->save($request);
 
-        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -98,10 +100,10 @@ class UsersControllerTest extends TestCase
     {
         $user       = (new UserService())->create('user', 'real', 'email', 'pass');
         $controller = app(UsersController::class);
-        $request    = self::createRequest(self::METHOD_GET, ['route' => 'admin-users-edit', 'user_id' => (string) $user->id()]);
+        $request    = self::createRequest(RequestMethodInterface::METHOD_GET, ['route' => 'admin-users-edit', 'user_id' => (string) $user->id()]);
         $response   = $controller->edit($request);
 
-        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -112,7 +114,7 @@ class UsersControllerTest extends TestCase
         /** @var User $user */
         $user       = app(UserService::class)->create('user', 'real', 'email', 'pass');
         $controller = app(UsersController::class);
-        $request    = self::createRequest(self::METHOD_POST, ['route' => 'admin-users-edit'], [
+        $request    = self::createRequest(RequestMethodInterface::METHOD_POST, ['route' => 'admin-users-edit'], [
             'user_id'        => $user->id(),
             'username'       => '',
             'real_name'      => '',
@@ -132,7 +134,7 @@ class UsersControllerTest extends TestCase
             ->withAttribute('user', $user);
         $response   = $controller->update($request);
 
-        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -141,10 +143,10 @@ class UsersControllerTest extends TestCase
     public function testCleanup(): void
     {
         $controller = app(UsersController::class);
-        $request    = self::createRequest(self::METHOD_GET, ['route' => 'admin-users-cleanup']);
+        $request    = self::createRequest(RequestMethodInterface::METHOD_GET, ['route' => 'admin-users-cleanup']);
         $response   = $controller->cleanup($request);
 
-        $this->assertSame(self::STATUS_OK, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -157,9 +159,9 @@ class UsersControllerTest extends TestCase
         $module_service     = new ModuleService();
         $user_service       = new UserService();
         $controller         = new UsersController($datatables_service, $mail_service, $module_service, $user_service);
-        $request            = self::createRequest(self::METHOD_POST, ['route' => 'admin-users-cleanup']);
+        $request            = self::createRequest(RequestMethodInterface::METHOD_POST, ['route' => 'admin-users-cleanup']);
         $response           = $controller->cleanupAction($request);
 
-        $this->assertSame(self::STATUS_FOUND, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

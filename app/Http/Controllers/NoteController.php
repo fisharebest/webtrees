@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Services\ClipboardService;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+
 use function redirect;
 
 /**

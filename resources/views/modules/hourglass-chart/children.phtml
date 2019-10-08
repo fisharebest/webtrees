@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 /**
  * @var Collection $children
  * @var int        $generations
- * @var bool       $show_spouse
+ * @var bool       $spouses
  */
 
 ?>
@@ -16,21 +16,21 @@ use Illuminate\Support\Collection;
         <div class="d-flex justify-content-end">
             <?php if ($grandchildren->isNotEmpty()): ?>
                 <?php if ($generations > 1): ?>
-                    <?= view('modules/hourglass-chart/children', ['children' => $grandchildren, 'generations' => $generations - 1, 'show_spouse' => $show_spouse]) ?>
+                    <?= view('modules/hourglass-chart/children', ['children' => $grandchildren, 'generations' => $generations - 1, 'spouses' => $spouses]) ?>
                 <?php else: ?>
                     <div class="d-flex align-self-center">
-                        <div class="hourglass-arrow" data-xref="<?= route('module', ['module' => 'hourglass_chart', 'action' => 'Descendants', 'xref' => $child->xref(), 'ged' => $child->tree()->name(), 'show_spouse' => $show_spouse]) ?>">
+                        <div class="hourglass-arrow" data-xref="<?= route('module', ['module' => 'hourglass_chart', 'action' => 'Descendants', 'xref' => $child->xref(), 'ged' => $child->tree()->name(), 'spouses' => $spouses]) ?>">
                             <?= view('icons/arrow-left') ?>
                         </div>
                     </div>
                 <?php endif ?>
             <?php endif ?>
             <div class="align-self-center">
-                <?php if ($show_spouse): ?>
+                <?php if ($spouses): ?>
                     <div>&nbsp;</div>
                 <?php endif ?>
                 <?= view('chart-box', ['individual' => $child]) ?>
-                <?php if ($show_spouse): ?>
+                <?php if ($spouses): ?>
                     <?php foreach ($child->spouseFamilies() as $spouse_family): ?>
                         <?= view('chart-box', ['individual' => $spouse_family->spouse($child)]) ?>
                     <?php endforeach ?>

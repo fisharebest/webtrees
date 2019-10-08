@@ -18,6 +18,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
@@ -41,7 +42,7 @@ class PingTest extends TestCase
         $handler  = new Ping($server_check_service);
         $response = $handler->handle($request);
 
-        self::assertSame(self::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
         self::assertSame('OK', (string) $response->getBody());
     }
 
@@ -58,7 +59,7 @@ class PingTest extends TestCase
         $handler  = new Ping($server_check_service);
         $response = $handler->handle($request);
 
-        self::assertSame(self::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
         self::assertSame('WARNING', (string) $response->getBody());
     }
 
@@ -74,7 +75,7 @@ class PingTest extends TestCase
         $handler  = new Ping($server_check_service);
         $response = $handler->handle($request);
 
-        self::assertSame(self::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
         self::assertSame('ERROR', (string) $response->getBody());
     }
 }

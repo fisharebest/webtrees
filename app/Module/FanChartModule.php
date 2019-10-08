@@ -18,6 +18,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Aura\Router\RouterContainer;
+use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -26,29 +28,45 @@ use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+
+use function array_keys;
+use function implode;
+use function max;
+use function min;
+use function redirect;
+use function route;
 
 /**
  * Class FanChartModule
  */
-class FanChartModule extends AbstractModule implements ModuleChartInterface
+class FanChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;
 
+    private const ROUTE_NAME = 'fan-chart';
+    private const ROUTE_URL  = '/tree/{tree}/fan-chart-{style}-{generations}-{width}/{xref}';
+
     // Chart styles
-    private const STYLE_HALF_CIRCLE          = 2;
-    private const STYLE_THREE_QUARTER_CIRCLE = 3;
-    private const STYLE_FULL_CIRCLE          = 4;
+    private const STYLE_HALF_CIRCLE          = '2';
+    private const STYLE_THREE_QUARTER_CIRCLE = '3';
+    private const STYLE_FULL_CIRCLE          = '4';
+
+    // Defaults
+    private const   DEFAULT_STYLE       = self::STYLE_THREE_QUARTER_CIRCLE;
+    private const   DEFAULT_GENERATIONS = 4;
+    private const   DEFAULT_WIDTH       = 100;
+    protected const DEFAULT_PARAMETERS  = [
+        'style'       => self::DEFAULT_STYLE,
+        'generations' => self::DEFAULT_GENERATIONS,
+        'width'       => self::DEFAULT_WIDTH,
+    ];
 
     // Limits
     private const MINIMUM_GENERATIONS = 2;
     private const MAXIMUM_GENERATIONS = 9;
     private const MINIMUM_WIDTH       = 50;
     private const MAXIMUM_WIDTH       = 500;
-
-    // Defaults
-    private const DEFAULT_STYLE       = self::STYLE_THREE_QUARTER_CIRCLE;
-    private const DEFAULT_GENERATIONS = 4;
-    private const DEFAULT_WIDTH       = 100;
 
     /** @var ChartService */
     private $chart_service;
@@ -61,6 +79,23 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
     public function __construct(ChartService $chart_service)
     {
         $this->chart_service = $chart_service;
+    }
+
+    /**
+     * Initialization.
+     *
+     * @param RouterContainer $router_container
+     */
+    public function boot(RouterContainer $router_container)
+    {
+        $router_container->getMap()
+            ->get(self::ROUTE_NAME, self::ROUTE_URL, self::class)
+            ->allows(RequestMethodInterface::METHOD_POST)
+            ->tokens([
+                'generations' => '\d+',
+                'style'       => implode('|', array_keys($this->styles())),
+                'width'       => '\d+',
+            ]);
     }
 
     /**
@@ -123,87 +158,110 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
     /**
      * A form to request the chart parameters.
      *
+     * @param Individual $individual
+     * @param string[]   $parameters
+     *
+     * @return string
+     */
+    public function chartUrl(Individual $individual, array $parameters = []): string
+    {
+        return route(self::ROUTE_NAME, [
+                'xref' => $individual->xref(),
+                'tree' => $individual->tree()->name(),
+            ] + $parameters + self::DEFAULT_PARAMETERS);
+    }
+
+    /**
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function getChartAction(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree       = $request->getAttribute('tree');
-        $user       = $request->getAttribute('user');
-        $ajax       = $request->getQueryParams()['ajax'] ?? '';
-        $xref       = $request->getQueryParams()['xref'] ?? '';
-        $individual = Individual::getInstance($xref, $tree);
+        $tree        = $request->getAttribute('tree');
+        $user        = $request->getAttribute('user');
+        $xref        = $request->getAttribute('xref');
+        $style       = $request->getAttribute('style');
+        $generations = (int) $request->getAttribute('generations');
+        $width       = (int) $request->getAttribute('width');
+        $ajax        = $request->getQueryParams()['ajax'] ?? '';
+        $individual  = Individual::getInstance($xref, $tree);
+
+        // Convert POST requests into GET requests for pretty URLs.
+        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
+            return redirect(route(self::ROUTE_NAME, [
+                'tree'        => $request->getAttribute('tree')->name(),
+                'xref'        => $request->getParsedBody()['xref'],
+                'style'       => $request->getParsedBody()['style'],
+                'generations' => $request->getParsedBody()['generations'],
+                'width'       => $request->getParsedBody()['width'],
+            ]));
+        }
 
         Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
-        $chart_style = (int) ($request->getQueryParams()['chart_style'] ?? self::DEFAULT_STYLE);
-        $fan_width   = (int) ($request->getQueryParams()['fan_width'] ?? self::DEFAULT_WIDTH);
-        $generations = (int) ($request->getQueryParams()['generations'] ?? self::DEFAULT_GENERATIONS);
-
-        $fan_width = min($fan_width, self::MAXIMUM_WIDTH);
-        $fan_width = max($fan_width, self::MINIMUM_WIDTH);
+        $width = min($width, self::MAXIMUM_WIDTH);
+        $width = max($width, self::MINIMUM_WIDTH);
 
         $generations = min($generations, self::MAXIMUM_GENERATIONS);
         $generations = max($generations, self::MINIMUM_GENERATIONS);
 
         if ($ajax === '1') {
-            return $this->chart($individual, $chart_style, $fan_width, $generations, $this->chart_service);
+            return $this->chart($individual, $style, $width, $generations);
         }
 
         $ajax_url = $this->chartUrl($individual, [
             'ajax'        => true,
-            'chart_style' => $chart_style,
-            'fan_width'   => $fan_width,
             'generations' => $generations,
+            'style'       => $style,
+            'width'       => $width,
         ]);
 
         return $this->viewResponse('modules/fanchart/page', [
             'ajax_url'            => $ajax_url,
-            'chart_style'         => $chart_style,
-            'chart_styles'        => $this->chartStyles(),
-            'fan_width'           => $fan_width,
             'generations'         => $generations,
             'individual'          => $individual,
             'maximum_generations' => self::MAXIMUM_GENERATIONS,
             'minimum_generations' => self::MINIMUM_GENERATIONS,
             'maximum_width'       => self::MAXIMUM_WIDTH,
             'minimum_width'       => self::MINIMUM_WIDTH,
-            'module_name'         => $this->name(),
+            'module'              => $this->name(),
+            'style'               => $style,
+            'styles'              => $this->styles(),
             'title'               => $this->chartTitle($individual),
+            'width'               => $width,
         ]);
     }
 
     /**
      * Generate both the HTML and PNG components of the fan chart
      *
-     * @param Individual   $individual
-     * @param int          $chart_style
-     * @param int          $fan_width
-     * @param int          $generations
-     * @param ChartService $chart_service
+     * @param Individual $individual
+     * @param string     $style
+     * @param int        $width
+     * @param int        $generations
      *
      * @return ResponseInterface
      */
-    protected function chart(Individual $individual, int $chart_style, int $fan_width, int $generations, ChartService $chart_service): ResponseInterface
+    protected function chart(Individual $individual, string $style, int $width, int $generations): ResponseInterface
     {
-        $ancestors = $chart_service->sosaStradonitzAncestors($individual, $generations);
+        $ancestors = $this->chart_service->sosaStradonitzAncestors($individual, $generations);
 
         $gen  = $generations - 1;
         $sosa = 2 ** $generations - 1;
 
         // fan size
-        $fanw = 640 * $fan_width / 100;
+        $fanw = 640 * $width / 100;
         $cx   = $fanw / 2 - 1; // center x
         $cy   = $cx; // center y
         $rx   = $fanw - 1;
         $rw   = $fanw / ($gen + 1);
         $fanh = $fanw; // fan height
-        if ($chart_style === self::STYLE_HALF_CIRCLE) {
+        if ($style === self::STYLE_HALF_CIRCLE) {
             $fanh = $fanh * ($gen + 1) / ($gen * 2);
         }
-        if ($chart_style === self::STYLE_THREE_QUARTER_CIRCLE) {
+        if ($style === self::STYLE_THREE_QUARTER_CIRCLE) {
             $fanh *= 0.86;
         }
         $scale = $fanw / 640;
@@ -227,7 +285,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
 
         imagefilledrectangle($image, 0, 0, (int) $fanw, (int) $fanh, $transparent);
 
-        $fandeg = 90 * $chart_style;
+        $fandeg = 90 * $style;
 
         // Popup menus for each ancestor
         $html = '';
@@ -275,14 +333,14 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
                     // split and center text by lines
                     $wmax = (int) ($angle * 7 / 7 * $scale);
                     $wmax = min($wmax, 35 * $scale);
-                    if ($gen == 0) {
+                    if ($gen === 0) {
                         $wmax = min($wmax, 17 * $scale);
                     }
                     $text = $this->splitAlignText($text, (int) $wmax);
 
                     // text angle
                     $tangle = 270 - ($deg1 + $angle / 2);
-                    if ($gen == 0) {
+                    if ($gen === 0) {
                         $tangle = 0;
                     }
 
@@ -297,7 +355,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
                     if ($deg2 - $deg1 > 140) {
                         $deg = $deg1 + ($deg2 - $deg1) / 4;
                     }
-                    if ($gen == 0) {
+                    if ($gen === 0) {
                         $deg = 180;
                     }
                     $rad = deg2rad($deg);
@@ -307,7 +365,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
                     }
                     $tx = $cx + $mr * cos($rad);
                     $ty = $cy + $mr * sin($rad);
-                    if ($sosa == 1) {
+                    if ($sosa === 1) {
                         $ty -= $mr / 2;
                     }
 
@@ -355,7 +413,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
                     $areas .= '" href="#' . $person->xref() . '"';
                     $html  .= '<div id="' . $person->xref() . '" class="fan_chart_menu">';
                     $html  .= '<div class="person_box"><div class="details1">';
-                    $html .= '<div class="charts">';
+                    $html  .= '<div class="charts">';
                     $html  .= '<a href="' . e($person->url()) . '" class="dropdown-item">' . $name . '</a>';
                     foreach ($theme->individualBoxMenu($person) as $menu) {
                         $html .= '<a href="' . e($menu->getLink()) . '" class="dropdown-item p-1 ' . e($menu->getClass()) . '">' . $menu->getLabel() . '</a>';
@@ -486,7 +544,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
      *
      * @return array
      */
-    protected function chartStyles(): array
+    protected function styles(): array
     {
         return [
             /* I18N: layout option for the fan chart */

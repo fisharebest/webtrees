@@ -18,6 +18,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\View;
@@ -37,7 +38,7 @@ class LoginPageTest extends TestCase
         $handler  = new LoginPage();
         $response = $handler->handle($request);
 
-        self::assertSame(self::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -50,6 +51,6 @@ class LoginPageTest extends TestCase
         $handler  = new LoginPage();
         $response = $handler->handle($request);
 
-        self::assertSame(self::STATUS_FOUND, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

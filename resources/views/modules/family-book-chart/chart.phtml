@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
  * @var int        $book_size
  * @var int        $generations
  * @var Individual $individual
- * @var bool       $show_spouse
+ * @var bool       $spouses
  */
 
 $children = $individual->spouseFamilies()->map(static function (Family $family): Collection {
@@ -24,7 +24,7 @@ $children = $individual->spouseFamilies()->map(static function (Family $family):
     <?= view('modules/family-book-chart/children', ['children' => $children, 'generations' => $book_size - 1]) ?>
     <div class="align-self-center">
         <?= view('chart-box', ['individual' => $individual]) ?>
-        <?php if ($show_spouse): ?>
+        <?php if ($spouses): ?>
             <?php foreach ($individual->spouseFamilies() as $family): ?>
                 <?= view('chart-box', ['individual' => $family->spouse($individual)]) ?>
             <?php endforeach ?>
@@ -39,6 +39,6 @@ $children = $individual->spouseFamilies()->map(static function (Family $family):
 <?php if ($generations > 1): ?>
     <?php foreach ($children as $child): ?>
         <hr class="wt-family-separator">
-        <?= view('modules/family-book-chart/chart', ['individual' => $child, 'generations' => $generations - 1, 'book_size' => $book_size, 'show_spouse' => $show_spouse]) ?>
+        <?= view('modules/family-book-chart/chart', ['individual' => $child, 'generations' => $generations - 1, 'book_size' => $book_size, 'spouses' => $spouses]) ?>
     <?php endforeach ?>
 <?php endif ?>

@@ -18,8 +18,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
-use function count;
-
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
@@ -27,6 +25,8 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\UserRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
+
+use function count;
 
 /**
  * A repository providing methods for user related statistics.

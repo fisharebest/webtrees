@@ -30,6 +30,6 @@ class BatchUpdateModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\BatchUpdateModule::class));
+        $this->assertTrue(class_exists(BatchUpdateModule::class));
     }
 }
