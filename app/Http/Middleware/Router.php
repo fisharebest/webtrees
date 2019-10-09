@@ -27,7 +27,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
 use function app;
 use function array_map;
 
@@ -39,14 +38,18 @@ class Router implements MiddlewareInterface
     /** @var ModuleService */
     private $module_service;
 
+    /** @var RouterContainer */
+    private $router_container;
+
     /**
      * Router constructor.
      *
      * @param ModuleService $module_service
      */
-    public function __construct(ModuleService $module_service)
+    public function __construct(ModuleService $module_service, RouterContainer $router_container)
     {
-        $this->module_service = $module_service;
+        $this->module_service   = $module_service;
+        $this->router_container = $router_container;
     }
 
     /**
@@ -59,22 +62,22 @@ class Router implements MiddlewareInterface
     {
         if ($request->getAttribute('rewrite_urls') !== '1') {
             // Turn the ugly URL into a pretty one.
-            $params = $request->getQueryParams();
-            $route  = $params['route'] ?? '';
+            $params     = $request->getQueryParams();
+            $route_name = $params['route'] ?? '';
             unset($params['route']);
-            $uri     = $request->getUri()->withPath($route);
+            $uri     = $request->getUri()->withPath($route_name);
             $request = $request->withUri($uri)->withQueryParams($params);
         }
 
-        // Bind the request into the container and the layout
-        app()->instance(ServerRequestInterface::class, $request);
-        View::share('request', $request);
-
         // Match the request to a route.
-        $route = app(RouterContainer::class)->getMatcher()->match($request);
+        $route = $this->router_container->getMatcher()->match($request);
 
         // No route matched?
         if ($route === false) {
+            // Bind the request into the container and the layout
+            app()->instance(ServerRequestInterface::class, $request);
+            View::share('request', $request);
+
             return $handler->handle($request);
         }
 
@@ -102,6 +105,10 @@ class Router implements MiddlewareInterface
             }
             $request = $request->withAttribute($key, $value);
         }
+
+        // Bind the request into the container and the layout
+        app()->instance(ServerRequestInterface::class, $request);
+        View::share('request', $request);
 
         $dispatcher = new Dispatcher($middleware, app());
 
