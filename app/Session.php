@@ -64,7 +64,7 @@ class Session
 
         session_name('WT_SESSION');
         session_register_shutdown();
-        session_set_cookie_params(0, $path, $domain, $secure, true);
+        session_set_cookie_params(0, $path . '/', $domain, $secure, true);
         session_start();
 
         // A new session? Prevent session fixation attacks by choosing a new session ID.
