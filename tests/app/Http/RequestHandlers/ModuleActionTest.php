@@ -128,8 +128,7 @@ class ModuleActionTest extends TestCase
      */
     private function dummyModule(): ModuleInterface
     {
-        return new class extends AbstractModule
-        {
+        return new class extends AbstractModule {
             public function getTestAction(ServerRequestInterface $request): ResponseInterface
             {
                 return response('It works!');

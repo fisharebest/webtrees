@@ -1904,8 +1904,7 @@ class Statistics implements
         string $color_from = null,
         string $color_to = null,
         string $total = '10'
-    ): string
-    {
+    ): string {
         return $this->familyRepository->chartLargestFamilies($color_from, $color_to, (int) $total);
     }
 
@@ -1995,8 +1994,7 @@ class Statistics implements
     public function chartNoChildrenFamilies(
         string $year1 = '-1',
         string $year2 = '-1'
-    ): string
-    {
+    ): string {
         return $this->familyRepository->chartNoChildrenFamilies((int) $year1, (int) $year2);
     }
 
@@ -2031,8 +2029,7 @@ class Statistics implements
         string $threshold = '1',
         string $number_of_surnames = '10',
         string $sorting = 'alpha'
-    ): string
-    {
+    ): string {
         return $this->individualRepository->commonSurnames((int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
@@ -2043,8 +2040,7 @@ class Statistics implements
         string $threshold = '1',
         string $number_of_surnames = '10',
         string $sorting = 'rcount'
-    ): string
-    {
+    ): string {
         return $this->individualRepository->commonSurnamesTotals((int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
@@ -2055,8 +2051,7 @@ class Statistics implements
         string $threshold = '1',
         string $number_of_surnames = '10',
         string $sorting = 'alpha'
-    ): string
-    {
+    ): string {
         return $this->individualRepository->commonSurnamesList((int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
@@ -2067,8 +2062,7 @@ class Statistics implements
         string $threshold = '1',
         string $number_of_surnames = '10',
         string $sorting = 'rcount'
-    ): string
-    {
+    ): string {
         return $this->individualRepository
             ->commonSurnamesListTotals((int) $threshold, (int) $number_of_surnames, $sorting);
     }
@@ -2080,8 +2074,7 @@ class Statistics implements
         string $color_from = null,
         string $color_to = null,
         string $number_of_surnames = '10'
-    ): string
-    {
+    ): string {
         return $this->individualRepository
             ->chartCommonSurnames($color_from, $color_to, (int) $number_of_surnames);
     }
@@ -2253,8 +2246,7 @@ class Statistics implements
         string $color_from = null,
         string $color_to = null,
         string $maxtoshow = '7'
-    ): string
-    {
+    ): string {
         return $this->individualRepository->chartCommonGiven($color_from, $color_to, (int) $maxtoshow);
     }
 

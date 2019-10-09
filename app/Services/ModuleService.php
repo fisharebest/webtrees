@@ -770,7 +770,8 @@ class ModuleService
      *
      * @param ModuleThemeInterface $current_theme
      */
-    public function bootModules(ModuleThemeInterface $current_theme): void {
+    public function bootModules(ModuleThemeInterface $current_theme): void
+    {
         $bootable_modules = $this->all()->filter(static function (ModuleInterface $module) {
             return method_exists($module, 'boot');
         });
