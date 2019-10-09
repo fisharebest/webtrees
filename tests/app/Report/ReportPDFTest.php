@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class ReportPdf
  */
-class ReportPDFTest extends \Fisharebest\Webtrees\TestCase
+class ReportPDFTest extends TestCase
 {
     /**
      * Test that the class exists
@@ -30,6 +32,6 @@ class ReportPDFTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Report\ReportPdf::class));
+        $this->assertTrue(class_exists(ReportPdf::class));
     }
 }

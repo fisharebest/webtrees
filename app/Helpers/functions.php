@@ -167,7 +167,7 @@ function route(string $route_name, array $parameters = []): string
     $url = $router_container->getGenerator()->generate($route_name, $parameters);
 
     // Aura ignores parameters that are not tokens.  We need to add them as query parameters.
-    $parameters = array_filter($parameters, function (string $key) use ($route): bool {
+    $parameters = array_filter($parameters, static function (string $key) use ($route): bool {
         return strpos($route->path, '{' . $key . '}') === false && strpos($route->path, '{/' . $key . '}') === false;
     }, ARRAY_FILTER_USE_KEY);
 

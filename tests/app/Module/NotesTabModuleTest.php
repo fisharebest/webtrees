@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class NotesTabModule
  */
-class NotesTabModuleTest extends \Fisharebest\Webtrees\TestCase
+class NotesTabModuleTest extends TestCase
 {
     /**
      * Test that the class exists
@@ -30,6 +32,6 @@ class NotesTabModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\NotesTabModule::class));
+        $this->assertTrue(class_exists(NotesTabModule::class));
     }
 }

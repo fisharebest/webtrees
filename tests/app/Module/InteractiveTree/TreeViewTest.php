@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module\InteractiveTree;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class TreeView
  */
-class TreeViewTest extends \Fisharebest\Webtrees\TestCase
+class TreeViewTest extends TestCase
 {
     /**
      * Test that the class exists
@@ -30,6 +32,6 @@ class TreeViewTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\InteractiveTree\TreeView::class));
+        $this->assertTrue(class_exists(TreeView::class));
     }
 }

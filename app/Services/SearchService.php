@@ -499,7 +499,7 @@ class SearchService
         }
 
         foreach ($fields as $field_name => $field_value) {
-            $parts = preg_split('/:/', $field_name . '::::');
+            $parts = explode(':', $field_name . '::::');
             if ($parts[0] === 'NAME') {
                 // NAME:*
                 switch ($parts[1]) {

@@ -108,10 +108,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     private function totalMediaTypeQuery(string $type): int
     {
-        if (($type !== self::MEDIA_TYPE_ALL)
-            && ($type !== self::MEDIA_TYPE_UNKNOWN)
-            && !in_array($type, self::MEDIA_TYPES, true)
-        ) {
+        if ($type !== self::MEDIA_TYPE_ALL && $type !== self::MEDIA_TYPE_UNKNOWN && !in_array($type, self::MEDIA_TYPES, true)) {
             return 0;
         }
 

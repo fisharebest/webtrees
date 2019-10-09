@@ -23,6 +23,8 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\DeleteUser
@@ -50,12 +52,13 @@ class DeleteUserTest extends TestCase
     }
 
     /**
-     * @expectedException \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     * @expectedExceptionMessage User ID 98765 not found
      * @return void
      */
     public function testDeleteNonExistingUser(): void
     {
+        $this->expectException(NotFoundHttpException::class);
+        $this->expectExceptionMessage('User ID 98765 not found');
+
         $user_service = $this->createMock(UserService::class);
         $user_service->expects($this->once())->method('find')->willReturn(null);
 
@@ -65,12 +68,13 @@ class DeleteUserTest extends TestCase
     }
 
     /**
-     * @expectedException \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException
-     * @expectedExceptionMessage Cannot delete an administrator
      * @return void
      */
     public function testCannotDeleteAdministrator(): void
     {
+        $this->expectException(AccessDeniedHttpException::class);
+        $this->expectExceptionMessage('Cannot delete an administrator');
+
         $user = $this->createMock(User::class);
         $user->method('id')->willReturn(1);
         $user->expects($this->once())->method('getPreference')->with('canadmin')->willReturn('1');

@@ -1041,10 +1041,7 @@ class ReportParserGenerate extends ReportParserBase
                     }
                 }
                 $tmp = explode(':', $tag);
-                if (in_array(end($tmp), [
-                    'NOTE',
-                    'TEXT',
-                ])) {
+                if (in_array(end($tmp), ['NOTE', 'TEXT'], true)) {
                     $value = Filter::formatText($value, $this->tree); // We'll strip HTML in addText()
                 }
 
@@ -1470,7 +1467,7 @@ class ReportParserGenerate extends ReportParserBase
         }
 
         // Arithmetic functions
-        if (preg_match("/(\d+)\s*([\-\+\*\/])\s*(\d+)/", $value, $match)) {
+        if (preg_match("/(\d+)\s*([-+*\/])\s*(\d+)/", $value, $match)) {
             // Create an expression language with the functions used by our reports.
             $expression_provider  = new ReportExpressionLanguageProvider();
             $expression_cache     = new NullAdapter();
@@ -1509,10 +1506,10 @@ class ReportParserGenerate extends ReportParserBase
             '<',
             '>',
         ], $condition);
-        // Replace the first accurance only once of @fact:DATE or in any other combinations to the current fact, such as BIRT
+        // Replace the first occurrence only once of @fact:DATE or in any other combinations to the current fact, such as BIRT
         $condition = str_replace('@fact:', $this->fact . ':', $condition);
         $match     = [];
-        $count     = preg_match_all("/@([\w:\.]+)/", $condition, $match, PREG_SET_ORDER);
+        $count     = preg_match_all("/@([\w:.]+)/", $condition, $match, PREG_SET_ORDER);
         $i         = 0;
         while ($i < $count) {
             $id    = $match[$i][1];

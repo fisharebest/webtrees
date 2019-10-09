@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class PedigreeChartModule
  */
-class PedigreeChartModuleTest extends \Fisharebest\Webtrees\TestCase
+class PedigreeChartModuleTest extends TestCase
 {
     /**
      * Test that the class exists
@@ -30,6 +32,6 @@ class PedigreeChartModuleTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\PedigreeChartModule::class));
+        $this->assertTrue(class_exists(PedigreeChartModule::class));
     }
 }

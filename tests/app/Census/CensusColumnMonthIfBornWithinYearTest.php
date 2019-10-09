@@ -20,11 +20,12 @@ namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class CensusColumnMonthIfBornWithinYear
  */
-class CensusColumnMonthIfBornWithinYearTest extends \Fisharebest\Webtrees\TestCase
+class CensusColumnMonthIfBornWithinYearTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear

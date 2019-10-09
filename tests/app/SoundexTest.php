@@ -30,6 +30,6 @@ class SoundexTest extends TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Soundex::class));
+        $this->assertTrue(class_exists(Soundex::class));
     }
 }

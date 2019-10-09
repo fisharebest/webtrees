@@ -20,12 +20,13 @@ namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
 
 /**
  * Test harness for the class CensusColumnBornForeignParts
  */
-class CensusColumnBornForeignPartsTest extends \Fisharebest\Webtrees\TestCase
+class CensusColumnBornForeignPartsTest extends TestCase
 {
     /**
      * Get place mock.

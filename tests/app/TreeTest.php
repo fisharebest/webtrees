@@ -19,6 +19,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Services\UserService;
+use InvalidArgumentException;
 
 use function stream_get_contents;
 
@@ -102,12 +103,13 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::createIndividual
-     * @expectedException \InvalidArgumentException
      *
      * @return void
      */
     public function testCreateInvalidIndividual(): void
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $user_service = new UserService();
         $tree = Tree::create('tree-name', 'Tree title');
         $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
@@ -140,12 +142,13 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::createFamily
-     * @expectedException \InvalidArgumentException
      *
      * @return void
      */
     public function testCreateInvalidFamily(): void
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $user_service = new UserService();
         $tree = Tree::create('tree-name', 'Tree title');
         $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
@@ -178,12 +181,13 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::createMediaObject
-     * @expectedException \InvalidArgumentException
      *
      * @return void
      */
     public function testCreateInvalidMediaObject(): void
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $user_service = new UserService();
         $tree = Tree::create('tree-name', 'Tree title');
         $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
@@ -216,12 +220,13 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::createRecord
-     * @expectedException \InvalidArgumentException
      *
      * @return void
      */
     public function testCreateInvalidRecord(): void
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $user_service = new UserService();
         $tree = Tree::create('tree-name', 'Tree title');
         $user = $user_service->create('user', 'User', 'user@example.com', 'secret');

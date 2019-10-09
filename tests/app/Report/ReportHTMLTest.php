@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class ReportHtml
  */
-class ReportHTMLTest extends \Fisharebest\Webtrees\TestCase
+class ReportHTMLTest extends TestCase
 {
     /**
      * Test that the class exists
@@ -30,6 +32,6 @@ class ReportHTMLTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Report\ReportHtml::class));
+        $this->assertTrue(class_exists(ReportHtml::class));
     }
 }

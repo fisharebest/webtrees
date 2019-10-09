@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class CensusAssistantModule
  */
-class CensusAssistantModuleTest extends \Fisharebest\Webtrees\TestCase
+class CensusAssistantModuleTest extends TestCase
 {
     /**
      * Test that the class exists

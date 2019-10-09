@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class CensusOfDenmark1787
  */
-class CensusOfDenmark1787Test extends \Fisharebest\Webtrees\TestCase
+class CensusOfDenmark1787Test extends TestCase
 {
     /**
      * Test the census place and date
@@ -53,10 +55,10 @@ class CensusOfDenmark1787Test extends \Fisharebest\Webtrees\TestCase
 
         $this->assertCount(5, $columns);
         $this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnRelationToHead::class, $columns[1]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnAge::class, $columns[2]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnConditionDanish::class, $columns[3]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnOccupation::class, $columns[4]);
+        $this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[1]);
+        $this->assertInstanceOf(CensusColumnAge::class, $columns[2]);
+        $this->assertInstanceOf(CensusColumnConditionDanish::class, $columns[3]);
+        $this->assertInstanceOf(CensusColumnOccupation::class, $columns[4]);
 
         $this->assertSame('Navn', $columns[0]->abbreviation());
         $this->assertSame('Stilling i familien', $columns[1]->abbreviation());

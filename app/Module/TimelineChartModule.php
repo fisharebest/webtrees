@@ -32,6 +32,9 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function redirect;
+use function route;
+
 /**
  * Class TimelineChartModule
  */
@@ -61,6 +64,9 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         '_TODO',
         'CHAN',
     ];
+    protected const BHEIGHT   = 30;
+
+    // Box height
 
     /**
      * Initialization.
@@ -73,9 +79,6 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             ->get(self::ROUTE_NAME, self::ROUTE_URL, self::class)
             ->allows(RequestMethodInterface::METHOD_POST);
     }
-
-    // Box height
-    protected const BHEIGHT = 30;
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -135,6 +138,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         $user  = $request->getAttribute('user');
         $scale = (int) $request->getAttribute('scale');
         $xrefs = $request->getQueryParams()['xrefs'] ?? [];
+        $add   = $request->getParsedBody()['add'] ?? '';
         $ajax  = $request->getQueryParams()['ajax'] ?? '';
 
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
@@ -142,7 +146,17 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         $scale = min($scale, self::MAXIMUM_SCALE);
         $scale = max($scale, self::MINIMUM_SCALE);
 
-        $xrefs = array_unique($xrefs);
+        $xrefs[] = $add;
+        $xrefs = array_filter(array_unique($xrefs));
+
+        // Convert POST requests into GET requests for pretty URLs.
+        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
+            return redirect(route(self::ROUTE_NAME, [
+                'scale' => $scale,
+                'tree'  => $tree->name(),
+                'xrefs' => $xrefs,
+            ]));
+        }
 
         // Find the requested individuals.
         $individuals = (new Collection($xrefs))
@@ -166,9 +180,9 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
                 });
 
             $remove_urls[$exclude->xref()] = route(self::ROUTE_NAME, [
-                'tree'    => $tree->name(),
-                'scale'  => $scale,
-                'xrefs'  => $xrefs_1->all(),
+                'tree'  => $tree->name(),
+                'scale' => $scale,
+                'xrefs' => $xrefs_1->all(),
             ]);
         }
 
@@ -180,15 +194,6 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             return $individual instanceof Individual && $individual->canShow();
         });
 
-        // Convert POST requests into GET requests for pretty URLs.
-        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            return redirect(route(self::ROUTE_NAME, [
-                'scale' => $scale,
-                'tree'  => $tree->name(),
-                'xrefs' => $xrefs,
-            ]));
-        }
-
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
         if ($ajax === '1') {
@@ -199,7 +204,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 
         $reset_url = route(self::ROUTE_NAME, [
             'scale' => self::DEFAULT_SCALE,
-            'tree' => $tree->name(),
+            'tree'  => $tree->name(),
         ]);
 
         $zoom_in_url = route(self::ROUTE_NAME, [
@@ -209,13 +214,13 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         ]);
 
         $zoom_out_url = route(self::ROUTE_NAME, [
-            'scale'  => max(self::MINIMUM_SCALE, $scale - (int) ($scale * 0.2 + 1)),
+            'scale' => max(self::MINIMUM_SCALE, $scale - (int) ($scale * 0.2 + 1)),
             'tree'  => $tree->name(),
             'xrefs' => $xrefs,
         ]);
 
         $ajax_url = route(self::ROUTE_NAME, [
-            'ajax'   => true,
+            'ajax'  => true,
             'scale' => $scale,
             'tree'  => $tree->name(),
             'xrefs' => $xrefs,

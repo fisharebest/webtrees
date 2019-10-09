@@ -42,19 +42,15 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 use function addcslashes;
-use function app;
 use function basename;
 use function dirname;
 use function extension_loaded;
 use function md5;
-use function parse_url;
 use function redirect;
 use function response;
 use function strlen;
 use function strtolower;
 use function urlencode;
-
-use const PHP_URL_PATH;
 
 /**
  * Controller for the media page and displaying images.

@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class CensusOfDenmark1921
  */
-class CensusOfDenmark1921Test extends \Fisharebest\Webtrees\TestCase
+class CensusOfDenmark1921Test extends TestCase
 {
     /**
      * Test the census place and date
@@ -52,20 +54,20 @@ class CensusOfDenmark1921Test extends \Fisharebest\Webtrees\TestCase
         $columns = $census->columns();
 
         $this->assertCount(14, $columns);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnFullName::class, $columns[0]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnSexMK::class, $columns[1]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnBirthDaySlashMonth::class, $columns[2]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnBirthYear::class, $columns[3]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnConditionDanish::class, $columns[4]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnBirthPlace::class, $columns[5]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[6]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[7]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnReligion::class, $columns[8]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnRelationToHead::class, $columns[9]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnOccupation::class, $columns[10]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[11]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[12]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[13]);
+        $this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
+        $this->assertInstanceOf(CensusColumnSexMK::class, $columns[1]);
+        $this->assertInstanceOf(CensusColumnBirthDaySlashMonth::class, $columns[2]);
+        $this->assertInstanceOf(CensusColumnBirthYear::class, $columns[3]);
+        $this->assertInstanceOf(CensusColumnConditionDanish::class, $columns[4]);
+        $this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[5]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[6]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[7]);
+        $this->assertInstanceOf(CensusColumnReligion::class, $columns[8]);
+        $this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[9]);
+        $this->assertInstanceOf(CensusColumnOccupation::class, $columns[10]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[11]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[12]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[13]);
 
         $this->assertSame('Navn', $columns[0]->abbreviation());
         $this->assertSame('Køn', $columns[1]->abbreviation());

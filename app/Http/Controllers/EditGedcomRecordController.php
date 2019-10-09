@@ -427,15 +427,7 @@ class EditGedcomRecordController extends AbstractEditController
             foreach ($name_facts as $name_fact) {
                 $NAME_FACT = $request->getParsedBody()[$name_fact] ?? '';
                 // Ignore advanced facts that duplicate standard facts.
-                if ($NAME_FACT !== '' && !in_array($name_fact, [
-                        'TYPE',
-                        'NPFX',
-                        'GIVN',
-                        'NICK',
-                        'SPFX',
-                        'SURN',
-                        'NSFX',
-                    ], true)) {
+                if ($NAME_FACT !== '' && !in_array($name_fact, ['TYPE', 'NPFX', 'GIVN', 'NICK', 'SPFX', 'SURN', 'NSFX'], true)) {
                     $newged .= "\n2 " . $name_fact . ' ' . $NAME_FACT;
                 }
             }

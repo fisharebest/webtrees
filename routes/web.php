@@ -13,6 +13,8 @@
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @var Map $router
  */
 declare(strict_types=1);
 
@@ -342,8 +344,8 @@ $router->get(PasswordRequestPage::class, '/password-request', PasswordRequestPag
 $router->post(PasswordRequestAction::class, '/password-request', PasswordRequestAction::class);
 $router->get(PasswordResetPage::class, '/password-reset', PasswordResetPage::class);
 $router->post(PasswordResetAction::class, '/password-reset', PasswordResetAction::class);
-$router->post(null, '/language', SelectLanguage::class);
-$router->post(null, '/theme', SelectTheme::class);
+$router->post(SelectLanguage::class, '/language', SelectLanguage::class);
+$router->post(SelectTheme::class, '/theme', SelectTheme::class);
 $router->get(PrivacyPolicy::class, '/privacy-policy', PrivacyPolicy::class);
 $router->get('module', '/module/{module}/{action}', ModuleAction::class)
     ->allows(RequestMethodInterface::METHOD_POST);

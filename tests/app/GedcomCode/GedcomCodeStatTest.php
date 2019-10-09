@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\GedcomCode;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class GedcomCodeStat
  */
-class GedcomCodeStatTest extends \Fisharebest\Webtrees\TestCase
+class GedcomCodeStatTest extends TestCase
 {
     /**
      * Test that the class exists
@@ -30,6 +32,6 @@ class GedcomCodeStatTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\GedcomCode\GedcomCodeStat::class));
+        $this->assertTrue(class_exists(GedcomCodeStat::class));
     }
 }

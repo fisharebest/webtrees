@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class ModuleBlockInterface
  */
-class ModuleBlockInterfaceTest extends \Fisharebest\Webtrees\TestCase
+class ModuleBlockInterfaceTest extends TestCase
 {
     /**
      * Test that the class exists

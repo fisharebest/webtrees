@@ -22,6 +22,7 @@ use Exception;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Exceptions\InternalServerErrorException;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -30,6 +31,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Memory\MemoryAdapter;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Test UpgradeController class.
@@ -75,11 +77,12 @@ class UpgradeControllerTest extends TestCase
     }
 
     /**
-     * @expectedException \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      * @return void
      */
     public function testStepInvalid(): void
     {
+        $this->expectException(NotFoundHttpException::class);
+
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
             new UpgradeService(new TimeoutService())
@@ -108,11 +111,12 @@ class UpgradeControllerTest extends TestCase
     }
 
     /**
-     * @expectedException \Fisharebest\Webtrees\Exceptions\InternalServerErrorException
      * @return void
      */
     public function testStepCheckUnavailable(): void
     {
+        $this->expectException(InternalServerErrorException::class);
+
         $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $mock_upgrade_service->method('latestVersion')->willReturn('');
         $controller = new UpgradeController(
@@ -125,11 +129,12 @@ class UpgradeControllerTest extends TestCase
     }
 
     /**
-     * @expectedException \Fisharebest\Webtrees\Exceptions\InternalServerErrorException
      * @return void
      */
     public function testStepCheckFail(): void
     {
+        $this->expectException(InternalServerErrorException::class);
+
         $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $mock_upgrade_service->method('latestVersion')->willReturn('0.0.0');
         $controller = new UpgradeController(
@@ -174,11 +179,12 @@ class UpgradeControllerTest extends TestCase
     }
 
     /**
-     * @expectedException \Fisharebest\Webtrees\Exceptions\InternalServerErrorException
      * @return void
      */
     public function testStepPendingExist(): void
     {
+        $this->expectException(InternalServerErrorException::class);
+
         $tree = Tree::create('name', 'title');
         $user = (new UserService())->create('user', 'name', 'email', 'password');
         Auth::login($user);
@@ -217,11 +223,12 @@ class UpgradeControllerTest extends TestCase
     }
 
     /**
-     * @expectedException \Fisharebest\Webtrees\Exceptions\InternalServerErrorException
      * @return void
      */
     public function testStepDownloadFails(): void
     {
+        $this->expectException(InternalServerErrorException::class);
+
         $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $mock_upgrade_service->method('downloadFile')->will($this->throwException(new Exception()));
         $controller = new UpgradeController(

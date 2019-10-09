@@ -20,10 +20,8 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
-use Fisharebest\Webtrees\Module\XeneaTheme;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\TestCase;
-use Illuminate\Support\Collection;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;

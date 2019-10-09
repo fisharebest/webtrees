@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class CensusOfScotland
  */
-class CensusOfScotlandTest extends \Fisharebest\Webtrees\TestCase
+class CensusOfScotlandTest extends TestCase
 {
     /**
      * Test the census place
@@ -51,13 +53,13 @@ class CensusOfScotlandTest extends \Fisharebest\Webtrees\TestCase
         $census_dates = $census->allCensusDates();
 
         $this->assertCount(8, $census_dates);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfScotland1841::class, $census_dates[0]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfScotland1851::class, $census_dates[1]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfScotland1861::class, $census_dates[2]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfScotland1871::class, $census_dates[3]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfScotland1881::class, $census_dates[4]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfScotland1891::class, $census_dates[5]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfScotland1901::class, $census_dates[6]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfScotland1911::class, $census_dates[7]);
+        $this->assertInstanceOf(CensusOfScotland1841::class, $census_dates[0]);
+        $this->assertInstanceOf(CensusOfScotland1851::class, $census_dates[1]);
+        $this->assertInstanceOf(CensusOfScotland1861::class, $census_dates[2]);
+        $this->assertInstanceOf(CensusOfScotland1871::class, $census_dates[3]);
+        $this->assertInstanceOf(CensusOfScotland1881::class, $census_dates[4]);
+        $this->assertInstanceOf(CensusOfScotland1891::class, $census_dates[5]);
+        $this->assertInstanceOf(CensusOfScotland1901::class, $census_dates[6]);
+        $this->assertInstanceOf(CensusOfScotland1911::class, $census_dates[7]);
     }
 }

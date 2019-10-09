@@ -20,12 +20,13 @@ namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
 
 /**
  * Test harness for the class CensusColumnOccupation
  */
-class CensusColumnOccupationTest extends \Fisharebest\Webtrees\TestCase
+class CensusColumnOccupationTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnOccupation

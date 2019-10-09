@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class CensusOfCzechRepublic1880
  */
-class CensusOfCzechRepublic1880Test extends \Fisharebest\Webtrees\TestCase
+class CensusOfCzechRepublic1880Test extends TestCase
 {
     /**
      * Test the census place and date

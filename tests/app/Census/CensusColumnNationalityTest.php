@@ -22,12 +22,13 @@ use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
 
 /**
  * Test harness for the class CensusColumnNationality
  */
-class CensusColumnNationalityTest extends \Fisharebest\Webtrees\TestCase
+class CensusColumnNationalityTest extends TestCase
 {
     /**
      * Get place mock.

@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class CensusColumnAgeFemale5Years
  */
-class CensusTest extends \Fisharebest\Webtrees\TestCase
+class CensusTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\Census\Census
@@ -33,13 +35,13 @@ class CensusTest extends \Fisharebest\Webtrees\TestCase
         $censuses = Census::censusPlaces('XX');
 
         $this->assertCount(8, $censuses);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfCzechRepublic::class, $censuses[0]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark::class, $censuses[1]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDeutschland::class, $censuses[2]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfEngland::class, $censuses[3]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfFrance::class, $censuses[4]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfScotland::class, $censuses[5]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfUnitedStates::class, $censuses[6]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfWales::class, $censuses[7]);
+        $this->assertInstanceOf(CensusOfCzechRepublic::class, $censuses[0]);
+        $this->assertInstanceOf(CensusOfDenmark::class, $censuses[1]);
+        $this->assertInstanceOf(CensusOfDeutschland::class, $censuses[2]);
+        $this->assertInstanceOf(CensusOfEngland::class, $censuses[3]);
+        $this->assertInstanceOf(CensusOfFrance::class, $censuses[4]);
+        $this->assertInstanceOf(CensusOfScotland::class, $censuses[5]);
+        $this->assertInstanceOf(CensusOfUnitedStates::class, $censuses[6]);
+        $this->assertInstanceOf(CensusOfWales::class, $censuses[7]);
     }
 }

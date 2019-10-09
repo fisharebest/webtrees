@@ -54,10 +54,8 @@ use Fisharebest\Webtrees\Statistics\Repository\PlaceRepository;
 use Fisharebest\Webtrees\Statistics\Repository\ServerRepository;
 use Fisharebest\Webtrees\Statistics\Repository\UserRepository;
 use Illuminate\Database\Query\Builder;
-use Psr\Http\Message\ServerRequestInterface;
 use ReflectionMethod;
 
-use function app;
 use function count;
 use function in_array;
 

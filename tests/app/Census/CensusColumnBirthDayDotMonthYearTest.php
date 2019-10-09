@@ -21,11 +21,12 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class CensusColumnBirthDayDotMonthYearTest
  */
-class CensusColumnBirthDayDotMonthYearTest extends \Fisharebest\Webtrees\TestCase
+class CensusColumnBirthDayDotMonthYearTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthDayDotMonthYearTest

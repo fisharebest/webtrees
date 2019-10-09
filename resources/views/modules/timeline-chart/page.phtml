@@ -10,11 +10,11 @@
     <?= csrf_field() ?>
 
     <div class="row form-group">
-        <label class="col-sm-3 col-form-label wt-page-options-label" for="xref-add">
+        <label class="col-sm-3 col-form-label wt-page-options-label" for="add">
             <?= I18N::translate('Individual') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select-individual', ['name' => 'xref-add', 'id' => 'xref-add', 'tree' => $tree]) ?>
+            <?= view('components/select-individual', ['name' => 'add', 'id' => 'add', 'tree' => $tree]) ?>
         </div>
     </div>
 

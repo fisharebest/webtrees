@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class CensusOfWales
  */
-class CensusOfWalesTest extends \Fisharebest\Webtrees\TestCase
+class CensusOfWalesTest extends TestCase
 {
     /**
      * Test the census place

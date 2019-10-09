@@ -97,6 +97,8 @@ class Router implements MiddlewareInterface
         foreach ($route->attributes as $key => $value) {
             if ($key === 'tree') {
                 $value = Tree::findByName($value);
+                // @TODO - this is required for some legacy code.
+                app()->instance(Tree::class, $value);
             }
             $request = $request->withAttribute($key, $value);
         }

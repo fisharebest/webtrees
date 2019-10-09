@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MasqueradeAsUser
@@ -78,12 +79,13 @@ class MasqueradeAsUserTest extends TestCase
     }
 
     /**
-     * @expectedException \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     * @expectedExceptionMessage User ID 2 not found
      * @return void
      */
     public function testMasqueradeAsNonExistingUser(): void
     {
+        $this->expectException(NotFoundHttpException::class);
+        $this->expectExceptionMessage('User ID 2 not found');
+
         $user = $this->createMock(User::class);
         $user->method('id')->willReturn(1);
 

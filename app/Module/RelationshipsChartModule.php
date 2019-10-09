@@ -18,7 +18,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Aura\Router\RouterContainer;
 use Closure;
+use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Algorithm\Dijkstra;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
@@ -32,16 +34,22 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
+use function redirect;
+use function route;
 use function view;
 
 /**
  * Class RelationshipsChartModule
  */
-class RelationshipsChartModule extends AbstractModule implements ModuleChartInterface, ModuleConfigInterface
+class RelationshipsChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;
     use ModuleConfigTrait;
+
+    private const ROUTE_NAME = 'relationships';
+    private const ROUTE_URL  = '/tree/{tree}/relationships-{ancestors}-{recursion}/{xref}{/xref2}';
 
     /** It would be more correct to use PHP_INT_MAX, but this isn't friendly in URLs */
     public const UNLIMITED_RECURSION = 99;
@@ -50,7 +58,29 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     public const DEFAULT_RECURSION = '99';
 
     /** By default new trees search for all relationships (not via ancestors) */
-    public const DEFAULT_ANCESTORS = '0';
+    public const DEFAULT_ANCESTORS  = '0';
+    public const DEFAULT_PARAMETERS = [
+        'ancestors' => self::DEFAULT_ANCESTORS,
+        'recursion' => self::DEFAULT_RECURSION,
+    ];
+
+    /**
+     * Initialization.
+     *
+     * @param RouterContainer $router_container
+     */
+    public function boot(RouterContainer $router_container)
+    {
+        $router_container->getMap()
+            ->get(self::ROUTE_NAME, self::ROUTE_URL, self::class)
+            ->allows(RequestMethodInterface::METHOD_POST)
+            ->tokens([
+                'ancestors' => '\d+',
+                'recursion' => '\d+',
+            ])->defaults([
+                'xref2' => '',
+            ]);
+    }
 
     /**
      * A sentence describing what this module does.
@@ -125,51 +155,19 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     }
 
     /**
-     * @param ServerRequestInterface $request
+     * The URL for a page showing chart options.
      *
-     * @return ResponseInterface
-     */
-    public function getAdminAction(ServerRequestInterface $request): ResponseInterface
-    {
-        $this->layout = 'layouts/administration';
-
-        return $this->viewResponse('modules/relationships-chart/config', [
-            'all_trees'         => Tree::getAll(),
-            'ancestors_options' => $this->ancestorsOptions(),
-            'default_ancestors' => self::DEFAULT_ANCESTORS,
-            'default_recursion' => self::DEFAULT_RECURSION,
-            'recursion_options' => $this->recursionConfigOptions(),
-            'title'             => I18N::translate('Chart preferences') . ' — ' . $this->title(),
-        ]);
-    }
-
-    /**
-     * Possible options for the ancestors option
+     * @param Individual $individual
+     * @param string[]   $parameters
      *
-     * @return string[]
+     * @return string
      */
-    private function ancestorsOptions(): array
+    public function chartUrl(Individual $individual, array $parameters = []): string
     {
-        return [
-            0 => I18N::translate('Find any relationship'),
-            1 => I18N::translate('Find relationships via ancestors'),
-        ];
-    }
-
-    /**
-     * Possible options for the recursion option
-     *
-     * @return string[]
-     */
-    private function recursionConfigOptions(): array
-    {
-        return [
-            0                         => I18N::translate('none'),
-            1                         => I18N::number(1),
-            2                         => I18N::number(2),
-            3                         => I18N::number(3),
-            self::UNLIMITED_RECURSION => I18N::translate('unlimited'),
-        ];
+        return route(self::ROUTE_NAME, [
+                'xref' => $individual->xref(),
+                'tree' => $individual->tree()->name(),
+            ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
     /**
@@ -177,42 +175,29 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      *
      * @return ResponseInterface
      */
-    public function postAdminAction(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        foreach (Tree::getAll() as $tree) {
-            $recursion = $request->getParsedBody()['relationship-recursion-' . $tree->id()] ?? '';
-            $ancestors = $request->getParsedBody()['relationship-ancestors-' . $tree->id()] ?? '';
+        $ajax      = $request->getQueryParams()['ajax'] ?? '';
+        $ancestors = (int) $request->getAttribute('ancestors');
+        $recursion = (int) $request->getAttribute('recursion');
+        $tree      = $request->getAttribute('tree');
+        $user      = $request->getAttribute('user');
+        $xref      = $request->getAttribute('xref');
+        $xref2     = $request->getAttribute('xref2');
 
-            $tree->setPreference('RELATIONSHIP_RECURSION', $recursion);
-            $tree->setPreference('RELATIONSHIP_ANCESTORS', $ancestors);
+        // Convert POST requests into GET requests for pretty URLs.
+        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
+            return redirect(route(self::ROUTE_NAME, [
+                'ancestors' => $request->getParsedBody()['ancestors'],
+                'recursion' => $request->getParsedBody()['recursion'],
+                'tree'      => $request->getAttribute('tree')->name(),
+                'xref'      => $request->getParsedBody()['xref'],
+                'xref2'     => $request->getParsedBody()['xref2'],
+            ]));
         }
-
-        FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->title()), 'success');
-
-        return redirect($this->getConfigLink());
-    }
-
-    /**
-     * A form to request the chart parameters.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function getChartAction(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = $request->getAttribute('tree');
-        $user = $request->getAttribute('user');
-        $ajax = $request->getQueryParams()['ajax'] ?? '';
-
-        $xref  = $request->getQueryParams()['xref'] ?? '';
-        $xref2 = $request->getQueryParams()['xref2'] ?? '';
 
         $individual1 = Individual::getInstance($xref, $tree);
         $individual2 = Individual::getInstance($xref2, $tree);
-
-        $recursion = (int) ($request->getQueryParams()['recursion'] ?? 0);
-        $ancestors = (int) ($request->getQueryParams()['ancestors'] ?? 0);
 
         $ancestors_only = (int) $tree->getPreference('RELATIONSHIP_ANCESTORS', static::DEFAULT_ANCESTORS);
         $max_recursion  = (int) $tree->getPreference('RELATIONSHIP_RECURSION', static::DEFAULT_RECURSION);
@@ -237,17 +222,15 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
             }
 
             /* I18N: %s are individual’s names */
-            $title = I18N::translate('Relationships between %1$s and %2$s', $individual1->fullName(), $individual2->fullName());
-
+            $title    = I18N::translate('Relationships between %1$s and %2$s', $individual1->fullName(), $individual2->fullName());
             $ajax_url = $this->chartUrl($individual1, [
                 'ajax'      => true,
-                'xref2'     => $individual2->xref(),
-                'recursion' => $recursion,
                 'ancestors' => $ancestors,
+                'recursion' => $recursion,
+                'xref2'     => $individual2->xref(),
             ]);
         } else {
-            $title = I18N::translate('Relationships');
-
+            $title    = I18N::translate('Relationships');
             $ajax_url = '';
         }
 
@@ -263,6 +246,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
             'recursion'         => $recursion,
             'recursion_options' => $this->recursionOptions($max_recursion),
             'title'             => $title,
+            'tree'              => $tree,
         ]);
     }
 
@@ -382,6 +366,74 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         $html = ob_get_clean();
 
         return response($html);
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function getAdminAction(ServerRequestInterface $request): ResponseInterface
+    {
+        $this->layout = 'layouts/administration';
+
+        return $this->viewResponse('modules/relationships-chart/config', [
+            'all_trees'         => Tree::getAll(),
+            'ancestors_options' => $this->ancestorsOptions(),
+            'default_ancestors' => self::DEFAULT_ANCESTORS,
+            'default_recursion' => self::DEFAULT_RECURSION,
+            'recursion_options' => $this->recursionConfigOptions(),
+            'title'             => I18N::translate('Chart preferences') . ' — ' . $this->title(),
+        ]);
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function postAdminAction(ServerRequestInterface $request): ResponseInterface
+    {
+        foreach (Tree::getAll() as $tree) {
+            $recursion = $request->getParsedBody()['relationship-recursion-' . $tree->id()] ?? '';
+            $ancestors = $request->getParsedBody()['relationship-ancestors-' . $tree->id()] ?? '';
+
+            $tree->setPreference('RELATIONSHIP_RECURSION', $recursion);
+            $tree->setPreference('RELATIONSHIP_ANCESTORS', $ancestors);
+        }
+
+        FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->title()), 'success');
+
+        return redirect($this->getConfigLink());
+    }
+
+    /**
+     * Possible options for the ancestors option
+     *
+     * @return string[]
+     */
+    private function ancestorsOptions(): array
+    {
+        return [
+            0 => I18N::translate('Find any relationship'),
+            1 => I18N::translate('Find relationships via ancestors'),
+        ];
+    }
+
+    /**
+     * Possible options for the recursion option
+     *
+     * @return string[]
+     */
+    private function recursionConfigOptions(): array
+    {
+        return [
+            0                         => I18N::translate('none'),
+            1                         => I18N::number(1),
+            2                         => I18N::number(2),
+            3                         => I18N::number(3),
+            self::UNLIMITED_RECURSION => I18N::translate('unlimited'),
+        ];
     }
 
     /**

@@ -30,6 +30,6 @@ class StatsTest extends TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Statistics::class));
+        $this->assertTrue(class_exists(Statistics::class));
     }
 }

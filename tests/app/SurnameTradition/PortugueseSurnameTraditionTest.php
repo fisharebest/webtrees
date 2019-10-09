@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\SurnameTradition;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class SpanishSurnameTradition
  */
-class PortugueseSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
+class PortugueseSurnameTraditionTest extends TestCase
 {
     /** @var SurnameTraditionInterface */
     private $surname_tradition;

@@ -30,6 +30,6 @@ class GedcomTagTest extends TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\GedcomTag::class));
+        $this->assertTrue(class_exists(GedcomTag::class));
     }
 }

@@ -30,6 +30,6 @@ class RepositoryTest extends TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Repository::class));
+        $this->assertTrue(class_exists(Repository::class));
     }
 }

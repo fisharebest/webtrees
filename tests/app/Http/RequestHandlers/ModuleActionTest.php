@@ -26,6 +26,8 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function response;
 
@@ -58,12 +60,13 @@ class ModuleActionTest extends TestCase
     }
 
     /**
-     * @expectedException \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     * @expectedExceptionMessage Method getTestingAction() not found in test
      * @return void
      */
     public function testNonExistingAction(): void
     {
+        $this->expectException(NotFoundHttpException::class);
+        $this->expectExceptionMessage('Method getTestingAction() not found in test');
+
         $module_service = $this->createMock(ModuleService::class);
         $module_service
             ->expects($this->once())
@@ -80,12 +83,13 @@ class ModuleActionTest extends TestCase
     }
 
     /**
-     * @expectedException \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     * @expectedExceptionMessage Module test does not exist
      * @return void
      */
     public function testNonExistingModule(): void
     {
+        $this->expectException(NotFoundHttpException::class);
+        $this->expectExceptionMessage('Module test does not exist');
+
         $module_service = $this->createMock(ModuleService::class);
         $module_service
             ->expects($this->once())
@@ -102,12 +106,13 @@ class ModuleActionTest extends TestCase
     }
 
     /**
-     * @expectedException \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException
-     * @expectedExceptionMessage Admin only action
      * @return void
      */
     public function testAdminAction(): void
     {
+        $this->expectException(AccessDeniedHttpException::class);
+        $this->expectExceptionMessage('Admin only action');
+
         $module_service = $this->createMock(ModuleService::class);
         $module_service
             ->expects($this->once())

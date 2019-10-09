@@ -54,11 +54,12 @@ class AuthAdministratorTest extends TestCase
     }
 
     /**
-     * @expectedException \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException
      * @return void
      */
     public function testNotAllowed(): void
     {
+        $this->expectException(AccessDeniedHttpException::class);
+
         $handler = $this->createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 

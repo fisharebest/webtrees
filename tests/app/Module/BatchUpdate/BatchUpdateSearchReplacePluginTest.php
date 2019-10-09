@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class BatchUpdateSearchReplacePlugin
  */
-class BatchUpdateSearchReplacePluginTest extends \Fisharebest\Webtrees\TestCase
+class BatchUpdateSearchReplacePluginTest extends TestCase
 {
     /**
      * Test that the class exists

@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Date;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class JewishDate
  */
-class JewishDateTest extends \Fisharebest\Webtrees\TestCase
+class JewishDateTest extends TestCase
 {
     /**
      * Test that the class exists
@@ -30,6 +32,6 @@ class JewishDateTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Date\JewishDate::class));
+        $this->assertTrue(class_exists(JewishDate::class));
     }
 }

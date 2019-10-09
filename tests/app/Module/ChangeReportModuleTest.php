@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
 use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 
@@ -67,7 +68,7 @@ use Fisharebest\Webtrees\Webtrees;
  * @covers \Fisharebest\Webtrees\Report\ReportPdfTextbox
  * @covers \Fisharebest\Webtrees\Report\ReportTcpdf
  */
-class ChangeReportModuleTest extends \Fisharebest\Webtrees\TestCase
+class ChangeReportModuleTest extends TestCase
 {
     protected static $uses_database = true;
 

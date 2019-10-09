@@ -18,7 +18,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**

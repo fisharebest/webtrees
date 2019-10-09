@@ -30,6 +30,6 @@ class SourceTest extends TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Source::class));
+        $this->assertTrue(class_exists(Source::class));
     }
 }

@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class BatchUpdateMissingDeathPlugin
  */
-class BatchUpdateMissingDeathPluginTest extends \Fisharebest\Webtrees\TestCase
+class BatchUpdateMissingDeathPluginTest extends TestCase
 {
     /**
      * Test that the class exists

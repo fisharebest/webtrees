@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class CensusOfFrance1881
  */
-class CensusOfFrance1881Test extends \Fisharebest\Webtrees\TestCase
+class CensusOfFrance1881Test extends TestCase
 {
     /**
      * Test the census place and date
@@ -52,11 +54,11 @@ class CensusOfFrance1881Test extends \Fisharebest\Webtrees\TestCase
         $columns = $census->columns();
 
         $this->assertCount(5, $columns);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnSurname::class, $columns[0]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnGivenNames::class, $columns[1]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnAge::class, $columns[2]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnOccupation::class, $columns[3]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnRelationToHead::class, $columns[4]);
+        $this->assertInstanceOf(CensusColumnSurname::class, $columns[0]);
+        $this->assertInstanceOf(CensusColumnGivenNames::class, $columns[1]);
+        $this->assertInstanceOf(CensusColumnAge::class, $columns[2]);
+        $this->assertInstanceOf(CensusColumnOccupation::class, $columns[3]);
+        $this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[4]);
 
         $this->assertSame('Noms', $columns[0]->abbreviation());
         $this->assertSame('Prénoms', $columns[1]->abbreviation());

@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class CensusOfUnitedStates1940
  */
-class CensusOfUnitedStates1940Test extends \Fisharebest\Webtrees\TestCase
+class CensusOfUnitedStates1940Test extends TestCase
 {
     /**
      * Test the census place and date
@@ -52,33 +54,33 @@ class CensusOfUnitedStates1940Test extends \Fisharebest\Webtrees\TestCase
         $columns = $census->columns();
 
         $this->assertCount(27, $columns);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnFullName::class, $columns[0]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnRelationToHead::class, $columns[1]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[2]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[3]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[4]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnSexMF::class, $columns[5]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[6]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnAge::class, $columns[7]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnConditionUs::class, $columns[8]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnAgeMarried::class, $columns[9]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[10]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[11]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple::class, $columns[12]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnFatherBirthPlaceSimple::class, $columns[13]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlaceSimple::class, $columns[14]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[15]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[16]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[17]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[18]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnOccupation::class, $columns[19]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[20]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[21]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[22]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[23]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[24]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[25]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[26]);
+        $this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
+        $this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[1]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[2]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[3]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[4]);
+        $this->assertInstanceOf(CensusColumnSexMF::class, $columns[5]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[6]);
+        $this->assertInstanceOf(CensusColumnAge::class, $columns[7]);
+        $this->assertInstanceOf(CensusColumnConditionUs::class, $columns[8]);
+        $this->assertInstanceOf(CensusColumnAgeMarried::class, $columns[9]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[10]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[11]);
+        $this->assertInstanceOf(CensusColumnBirthPlaceSimple::class, $columns[12]);
+        $this->assertInstanceOf(CensusColumnFatherBirthPlaceSimple::class, $columns[13]);
+        $this->assertInstanceOf(CensusColumnMotherBirthPlaceSimple::class, $columns[14]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[15]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[16]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[17]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[18]);
+        $this->assertInstanceOf(CensusColumnOccupation::class, $columns[19]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[20]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[21]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[22]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[23]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[24]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[25]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[26]);
 
         $this->assertSame('Name', $columns[0]->abbreviation());
         $this->assertSame('Relation', $columns[1]->abbreviation());

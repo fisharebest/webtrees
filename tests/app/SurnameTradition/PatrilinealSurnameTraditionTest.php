@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\SurnameTradition;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class PatrilinenalSurnameTradition
  */
-class PatrilinealSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
+class PatrilinealSurnameTraditionTest extends TestCase
 {
     /** @var SurnameTraditionInterface */
     private $surname_tradition;

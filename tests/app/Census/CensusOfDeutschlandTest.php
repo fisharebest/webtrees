@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class CensusOfDeutschland
  */
-class CensusOfDeutschlandTest extends \Fisharebest\Webtrees\TestCase
+class CensusOfDeutschlandTest extends TestCase
 {
     /**
      * Test the census place
@@ -51,10 +53,10 @@ class CensusOfDeutschlandTest extends \Fisharebest\Webtrees\TestCase
         $census_dates = $census->allCensusDates();
 
         $this->assertCount(5, $census_dates);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDeutschland1819::class, $census_dates[0]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDeutschland1867::class, $census_dates[1]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDeutschlandNL1867::class, $census_dates[2]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDeutschland1900::class, $census_dates[3]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDeutschland1919::class, $census_dates[4]);
+        $this->assertInstanceOf(CensusOfDeutschland1819::class, $census_dates[0]);
+        $this->assertInstanceOf(CensusOfDeutschland1867::class, $census_dates[1]);
+        $this->assertInstanceOf(CensusOfDeutschlandNL1867::class, $census_dates[2]);
+        $this->assertInstanceOf(CensusOfDeutschland1900::class, $census_dates[3]);
+        $this->assertInstanceOf(CensusOfDeutschland1919::class, $census_dates[4]);
     }
 }

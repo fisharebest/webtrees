@@ -20,11 +20,8 @@ namespace Fisharebest\Webtrees;
 
 use League\Flysystem\FileNotFoundException;
 use League\Glide\Signatures\SignatureFactory;
-use League\Glide\Urls\UrlBuilderFactory;
-use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
 
-use function app;
 use function getimagesize;
 use function intdiv;
 use function pathinfo;

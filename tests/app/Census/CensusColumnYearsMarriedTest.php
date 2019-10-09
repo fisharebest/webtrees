@@ -22,12 +22,13 @@ use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
 
 /**
  * Test harness for the class CensusColumnYearsMarried
  */
-class CensusColumnYearsMarriedTest extends \Fisharebest\Webtrees\TestCase
+class CensusColumnYearsMarriedTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnYearsMarried

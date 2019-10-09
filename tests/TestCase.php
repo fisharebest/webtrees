@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2019 webtrees development team
@@ -13,6 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
@@ -138,7 +140,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         self::createRequest();
 
         // Create tables
-        $migration_service = new MigrationService;
+        $migration_service = new MigrationService();
         $migration_service->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
 
         // Create config data

@@ -59,15 +59,11 @@ class EditRepositoryController extends AbstractEditController
 
         $gedcom = "0 @@ REPO\n1 NAME " . $name;
 
-        if (in_array($privacy_restriction, [
-            'none',
-            'privacy',
-            'confidential',
-        ])) {
+        if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'])) {
             $gedcom .= "\n1 RESN " . $privacy_restriction;
         }
 
-        if (in_array($edit_restriction, ['locked'])) {
+        if ($edit_restriction === 'locked') {
             $gedcom .= "\n1 RESN " . $edit_restriction;
         }
 

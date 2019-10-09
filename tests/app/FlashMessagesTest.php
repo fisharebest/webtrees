@@ -30,6 +30,6 @@ class FlashMessagesTest extends TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\FlashMessages::class));
+        $this->assertTrue(class_exists(FlashMessages::class));
     }
 }

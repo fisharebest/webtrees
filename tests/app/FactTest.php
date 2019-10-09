@@ -30,6 +30,6 @@ class FactTest extends TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Fact::class));
+        $this->assertTrue(class_exists(Fact::class));
     }
 }

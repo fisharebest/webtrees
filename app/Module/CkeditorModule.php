@@ -73,7 +73,7 @@ class CkeditorModule extends AbstractModule implements ModuleExternalUrlInterfac
     public function bodyContent(): string
     {
         return view('modules/ckeditor/ckeditor-js', [
-            'ckeditor_path' => self::CKEDITOR_PATH,
+            'ckeditor_path' => asset(self::CKEDITOR_PATH),
             'language'      => app(LocaleInterface::class)->language()->code(),
         ]);
     }

@@ -117,9 +117,7 @@ class UserRepository implements UserRepositoryInterface
 
                 $content .= ' - ' . e($user->userName());
 
-                if (($user->getPreference('contactmethod') !== 'none')
-                    && (Auth::id() !== $user->id())
-                ) {
+                if (($user->getPreference('contactmethod') !== 'none') && (Auth::id() !== $user->id())) {
                     if ($type === 'list') {
                         $content .= '<br>';
                     }

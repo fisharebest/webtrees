@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class CensusOfFrance1936
  */
-class CensusOfFrance1936Test extends \Fisharebest\Webtrees\TestCase
+class CensusOfFrance1936Test extends TestCase
 {
     /**
      * Test the census place and date
@@ -52,14 +54,14 @@ class CensusOfFrance1936Test extends \Fisharebest\Webtrees\TestCase
         $columns = $census->columns();
 
         $this->assertCount(8, $columns);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnSurname::class, $columns[0]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnGivenNames::class, $columns[1]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnBirthYear::class, $columns[2]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnBirthPlace::class, $columns[3]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNationality::class, $columns[4]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnRelationToHead::class, $columns[5]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnOccupation::class, $columns[6]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[7]);
+        $this->assertInstanceOf(CensusColumnSurname::class, $columns[0]);
+        $this->assertInstanceOf(CensusColumnGivenNames::class, $columns[1]);
+        $this->assertInstanceOf(CensusColumnBirthYear::class, $columns[2]);
+        $this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[3]);
+        $this->assertInstanceOf(CensusColumnNationality::class, $columns[4]);
+        $this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[5]);
+        $this->assertInstanceOf(CensusColumnOccupation::class, $columns[6]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[7]);
 
         $this->assertSame('Noms', $columns[0]->abbreviation());
         $this->assertSame('Prénoms', $columns[1]->abbreviation());

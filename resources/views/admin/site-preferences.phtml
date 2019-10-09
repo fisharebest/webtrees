@@ -39,7 +39,7 @@
             <?= I18N::translate('Time zone') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'TIMEZONE', 'selected' => Site::getPreference('TIMEZONE', 'UTC'), 'options' => array_combine(\DateTimeZone::listIdentifiers(), \DateTimeZone::listIdentifiers())]) ?>
+            <?= view('components/select', ['name' => 'TIMEZONE', 'selected' => Site::getPreference('TIMEZONE', 'UTC'), 'options' => array_combine(DateTimeZone::listIdentifiers(), DateTimeZone::listIdentifiers())]) ?>
             <p class="small text-muted">
                 <?= I18N::translate('The time zone is required for date calculations, such as knowing today’s date.') ?>
             </p>

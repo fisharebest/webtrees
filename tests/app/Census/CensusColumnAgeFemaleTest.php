@@ -20,11 +20,12 @@ namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class CensusColumnAgeFemale
  */
-class CensusColumnAgeFemaleTest extends \Fisharebest\Webtrees\TestCase
+class CensusColumnAgeFemaleTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeFemale

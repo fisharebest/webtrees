@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Report\ReportHtml;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
 use Fisharebest\Webtrees\Report\ReportPdf;
+use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 
@@ -64,7 +65,7 @@ use Fisharebest\Webtrees\Webtrees;
  * @covers \Fisharebest\Webtrees\Report\ReportPdfTextbox
  * @covers \Fisharebest\Webtrees\Report\ReportTcpdf
  */
-class BirthDeathMarriageReportModuleTest extends \Fisharebest\Webtrees\TestCase
+class BirthDeathMarriageReportModuleTest extends TestCase
 {
     protected static $uses_database = true;
 

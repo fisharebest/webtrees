@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class BatchUpdateModule
  */
-class BatchUpdateModuleTest extends \Fisharebest\Webtrees\TestCase
+class BatchUpdateModuleTest extends TestCase
 {
     /**
      * Test that the class exists

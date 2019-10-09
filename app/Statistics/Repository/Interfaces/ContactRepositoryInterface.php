@@ -18,8 +18,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
-use Psr\Http\Message\ServerRequestInterface;
-
 /**
  * A repository providing methods for contact related statistics.
  */

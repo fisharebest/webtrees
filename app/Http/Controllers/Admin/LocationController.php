@@ -429,7 +429,7 @@ class LocationController extends AbstractAdminController
         // Create the file name
         $place_name = empty($hierarchy) ? 'Global' : $hierarchy[0]->fqpn; // $hierarchy[0] always holds the full placename
         $place_name = str_replace(Gedcom::PLACE_SEPARATOR, '-', $place_name);
-        $filename   = 'Places-' . preg_replace('/[^a-zA-Z0-9\-\.]/', '', $place_name);
+        $filename   = 'Places-' . preg_replace('/[^a-zA-Z0-9.-]/', '', $place_name);
 
         // Fill in the place names for the starting conditions
         foreach ($hierarchy as $level => $record) {

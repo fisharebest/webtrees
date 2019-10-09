@@ -400,7 +400,7 @@ $deathAgeData = [
                 </td>
 
                 <!-- Age at death -->
-                <?php if (isset($birth_dates[0]) && isset($death_dates[0])) : ?>
+                <?php if (isset($birth_dates[0], $death_dates[0])) : ?>
                     <?php $age_at_death_years = Date::getAgeYears($birth_dates[0], $death_dates[0]); ?>
                     <?php $age_at_death_sort = Date::getAge($birth_dates[0], $death_dates[0]); ?>
                     <?php $age_at_death_display = I18N::number($age_at_death_years); ?>

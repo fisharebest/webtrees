@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Functions;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Unit tests for the global functions in the file includes/functions/functions_print_facts.php
  */
-class FunctionsPrintFactsTest extends \Fisharebest\Webtrees\TestCase
+class FunctionsPrintFactsTest extends TestCase
 {
     /**
      * Test that the class exists
@@ -30,6 +32,6 @@ class FunctionsPrintFactsTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Functions\FunctionsPrintFacts::class));
+        $this->assertTrue(class_exists(FunctionsPrintFacts::class));
     }
 }

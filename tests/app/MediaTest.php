@@ -30,6 +30,6 @@ class MediaTest extends TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Media::class));
+        $this->assertTrue(class_exists(Media::class));
     }
 }

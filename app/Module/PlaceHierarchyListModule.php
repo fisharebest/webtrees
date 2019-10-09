@@ -21,8 +21,6 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Controllers\PlaceHierarchyController;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Services\SearchService;
-use Fisharebest\Webtrees\Statistics;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 

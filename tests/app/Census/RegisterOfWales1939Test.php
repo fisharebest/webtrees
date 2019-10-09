@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class RegisterOfWales1939
  */
-class RegisterOfWales1939Test extends \Fisharebest\Webtrees\TestCase
+class RegisterOfWales1939Test extends TestCase
 {
     /**
      * Test the census place and date
@@ -52,14 +54,14 @@ class RegisterOfWales1939Test extends \Fisharebest\Webtrees\TestCase
         $columns = $census->columns();
 
         $this->assertCount(8, $columns);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[0]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[1]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnSurnameGivenNames::class, $columns[2]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnNull::class, $columns[3]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnSexMF::class, $columns[4]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnBirthDayMonthSlashYear::class, $columns[5]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnConditionEnglish::class, $columns[6]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusColumnOccupation::class, $columns[7]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[0]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[1]);
+        $this->assertInstanceOf(CensusColumnSurnameGivenNames::class, $columns[2]);
+        $this->assertInstanceOf(CensusColumnNull::class, $columns[3]);
+        $this->assertInstanceOf(CensusColumnSexMF::class, $columns[4]);
+        $this->assertInstanceOf(CensusColumnBirthDayMonthSlashYear::class, $columns[5]);
+        $this->assertInstanceOf(CensusColumnConditionEnglish::class, $columns[6]);
+        $this->assertInstanceOf(CensusColumnOccupation::class, $columns[7]);
 
         $this->assertSame('Schedule', $columns[0]->abbreviation());
         $this->assertSame('SubNum', $columns[1]->abbreviation());

@@ -110,7 +110,7 @@
         "webtrees:check-phpcs": [
             "@composer global require squizlabs/php_codesniffer=* --quiet",
             "@composer global update squizlabs/php_codesniffer --quiet",
-            "phpcs --standard=PSR12 -p -s --exclude=Generic.Files.LineLength,PSR2.ControlStructures.ControlStructureSpacing index.php app modules_v4 routes tests/app tests/feature"
+            "phpcs --standard=PSR12 -p -s --exclude=Generic.Files.LineLength index.php app modules_v4 routes tests"
         ],
         "webtrees:check-phan": [
             "@composer global require phan/phan=*",

@@ -30,6 +30,6 @@ class DateTest extends TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Date::class));
+        $this->assertTrue(class_exists(Date::class));
     }
 }

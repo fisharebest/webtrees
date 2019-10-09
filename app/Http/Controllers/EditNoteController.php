@@ -118,19 +118,15 @@ class EditNoteController extends AbstractEditController
         $edit_restriction    = $params['edit-restriction'];
 
         // Convert line endings to GEDDCOM continuations
-        $note = preg_replace('/\r|\r\n|\n|\r/', "\n1 CONT ", $note);
+        $note = preg_replace('/\r|\r\n|\n/', "\n1 CONT ", $note);
 
         $gedcom = '0 @@ NOTE ' . $note;
 
-        if (in_array($privacy_restriction, [
-            'none',
-            'privacy',
-            'confidential',
-        ])) {
+        if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'])) {
             $gedcom .= "\n1 RESN " . $privacy_restriction;
         }
 
-        if (in_array($edit_restriction, ['locked'])) {
+        if ($edit_restriction === 'locked') {
             $gedcom .= "\n1 RESN " . $edit_restriction;
         }
 

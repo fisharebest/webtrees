@@ -30,6 +30,6 @@ class FamilyTest extends TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Family::class));
+        $this->assertTrue(class_exists(Family::class));
     }
 }

@@ -19,11 +19,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class CensusColumnSexMZ
  */
-class CensusColumnSexMZTest extends \Fisharebest\Webtrees\TestCase
+class CensusColumnSexMZTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnSexMZ

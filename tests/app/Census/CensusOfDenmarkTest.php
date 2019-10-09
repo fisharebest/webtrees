@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
  * Test harness for the class CensusOfDenmark
  */
-class CensusOfDenmarkTest extends \Fisharebest\Webtrees\TestCase
+class CensusOfDenmarkTest extends TestCase
 {
     /**
      * Test the census place
@@ -51,27 +53,27 @@ class CensusOfDenmarkTest extends \Fisharebest\Webtrees\TestCase
         $census_dates = $census->allCensusDates();
 
         $this->assertCount(22, $census_dates);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1787::class, $census_dates[0]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1801::class, $census_dates[1]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1803::class, $census_dates[2]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1834::class, $census_dates[3]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1835::class, $census_dates[4]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1840::class, $census_dates[5]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1845::class, $census_dates[6]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1850::class, $census_dates[7]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1855::class, $census_dates[8]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1860::class, $census_dates[9]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1870::class, $census_dates[10]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1880::class, $census_dates[11]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1885::class, $census_dates[12]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1890::class, $census_dates[13]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1901::class, $census_dates[14]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1906::class, $census_dates[15]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1911::class, $census_dates[16]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1916::class, $census_dates[17]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1921::class, $census_dates[18]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1925::class, $census_dates[19]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1930::class, $census_dates[20]);
-        $this->assertInstanceOf(\Fisharebest\Webtrees\Census\CensusOfDenmark1940::class, $census_dates[21]);
+        $this->assertInstanceOf(CensusOfDenmark1787::class, $census_dates[0]);
+        $this->assertInstanceOf(CensusOfDenmark1801::class, $census_dates[1]);
+        $this->assertInstanceOf(CensusOfDenmark1803::class, $census_dates[2]);
+        $this->assertInstanceOf(CensusOfDenmark1834::class, $census_dates[3]);
+        $this->assertInstanceOf(CensusOfDenmark1835::class, $census_dates[4]);
+        $this->assertInstanceOf(CensusOfDenmark1840::class, $census_dates[5]);
+        $this->assertInstanceOf(CensusOfDenmark1845::class, $census_dates[6]);
+        $this->assertInstanceOf(CensusOfDenmark1850::class, $census_dates[7]);
+        $this->assertInstanceOf(CensusOfDenmark1855::class, $census_dates[8]);
+        $this->assertInstanceOf(CensusOfDenmark1860::class, $census_dates[9]);
+        $this->assertInstanceOf(CensusOfDenmark1870::class, $census_dates[10]);
+        $this->assertInstanceOf(CensusOfDenmark1880::class, $census_dates[11]);
+        $this->assertInstanceOf(CensusOfDenmark1885::class, $census_dates[12]);
+        $this->assertInstanceOf(CensusOfDenmark1890::class, $census_dates[13]);
+        $this->assertInstanceOf(CensusOfDenmark1901::class, $census_dates[14]);
+        $this->assertInstanceOf(CensusOfDenmark1906::class, $census_dates[15]);
+        $this->assertInstanceOf(CensusOfDenmark1911::class, $census_dates[16]);
+        $this->assertInstanceOf(CensusOfDenmark1916::class, $census_dates[17]);
+        $this->assertInstanceOf(CensusOfDenmark1921::class, $census_dates[18]);
+        $this->assertInstanceOf(CensusOfDenmark1925::class, $census_dates[19]);
+        $this->assertInstanceOf(CensusOfDenmark1930::class, $census_dates[20]);
+        $this->assertInstanceOf(CensusOfDenmark1940::class, $census_dates[21]);
     }
 }

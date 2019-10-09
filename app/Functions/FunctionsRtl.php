@@ -122,7 +122,7 @@ class FunctionsRtl
 
         self::beginCurrentSpan($result);
 
-        while ($workingText != '') {
+        while ($workingText !== '') {
             $charArray     = self::getChar($workingText, 0); // Get the next ASCII or UTF-8 character
             $currentLetter = $charArray['letter'];
             $currentLen    = $charArray['length'];
@@ -148,7 +148,7 @@ class FunctionsRtl
                             }
                         }
                         self::breakCurrentSpan($result);
-                    } elseif (self::$waitingText == '') {
+                    } elseif (self::$waitingText === '') {
                         $result .= $element;
                     } else {
                         self::$waitingText .= $element;
@@ -166,7 +166,7 @@ class FunctionsRtl
                     if (strtolower($entity) === '&nbsp;') {
                         $entity .= '&nbsp;'; // Ensure consistent case for this entity
                     }
-                    if (self::$waitingText == '') {
+                    if (self::$waitingText === '') {
                         $result .= $entity;
                     } else {
                         self::$waitingText .= $entity;
@@ -183,7 +183,7 @@ class FunctionsRtl
                         $currentLen        = $endPos + 2;
                         $directive         = substr($workingText, 0, $currentLen);
                         $workingText       = substr($workingText, $currentLen);
-                        $result            = $result . self::$waitingText . $directive;
+                        $result            .= self::$waitingText . $directive;
                         self::$waitingText = '';
                         break;
                     }
@@ -238,9 +238,10 @@ class FunctionsRtl
 
                     // Determine the directionality of the current UTF-8 character
                     $newState = self::$currentState;
+
                     while (true) {
                         if (I18N::scriptDirection(I18N::textScript($currentLetter)) === 'rtl') {
-                            if (self::$currentState == '') {
+                            if (self::$currentState === '') {
                                 $newState = 'RTL';
                                 break;
                             }
@@ -250,7 +251,7 @@ class FunctionsRtl
                             }
                             // Switch to RTL only if this isn't a solitary RTL letter
                             $tempText = substr($workingText, $currentLen);
-                            while ($tempText != '') {
+                            while ($tempText !== '') {
                                 $nextCharArray = self::getChar($tempText, 0);
                                 $nextLetter    = $nextCharArray['letter'];
                                 $nextLen       = $nextCharArray['length'];
@@ -279,7 +280,7 @@ class FunctionsRtl
                             $newState      = 'LTR';
                             break;
                         }
-                        if (($currentLen != 1) || ($currentLetter >= 'A' && $currentLetter <= 'Z') || ($currentLetter >= 'a' && $currentLetter <= 'z')) {
+                        if (($currentLen !== 1) || ($currentLetter >= 'A' && $currentLetter <= 'Z') || ($currentLetter >= 'a' && $currentLetter <= 'z')) {
                             // Since it’s neither Hebrew nor Arabic, this UTF-8 character or ASCII letter must be LTR
                             $newState = 'LTR';
                             break;
@@ -327,13 +328,13 @@ class FunctionsRtl
                         //
                         self::$waitingText .= $currentLetter;
                         $workingText = substr($workingText, $currentLen);
-                        if (self::$currentState != '') {
+                        if (self::$currentState !== '') {
                             $result .= self::$waitingText;
                             self::$waitingText = '';
                         }
                         break 2; // double break because we're waiting for more information
                     }
-                    if ($newState != self::$currentState) {
+                    if ($newState !== self::$currentState) {
                         // A direction change has occurred
                         self::finishCurrentSpan($result);
                         self::$previousState = self::$currentState;
@@ -371,7 +372,7 @@ class FunctionsRtl
         self::finishCurrentSpan($result, true);
 
         // Get rid of any waiting text
-        if (self::$waitingText != '') {
+        if (self::$waitingText !== '') {
             if (I18N::direction() === 'rtl' && self::$currentState === 'LTR') {
                 $result .= self::START_RTL;
                 $result .= self::$waitingText;
@@ -450,14 +451,14 @@ class FunctionsRtl
         ], $result);
 
         // Include leading indeterminate directional text in whatever follows
-        if (substr($result . "\n", 0, self::LENGTH_START) != self::START_LTR && substr($result . "\n", 0, self::LENGTH_START) != self::START_RTL && substr($result . "\n", 0, 4) !== '<br>') {
+        if (substr($result . "\n", 0, self::LENGTH_START) !== self::START_LTR && substr($result . "\n", 0, self::LENGTH_START) !== self::START_RTL && substr($result . "\n", 0, 4) !== '<br>') {
             $leadingText = '';
             while (true) {
-                if ($result == '') {
+                if ($result === '') {
                     $result = $leadingText;
                     break;
                 }
-                if (substr($result . "\n", 0, self::LENGTH_START) != self::START_LTR && substr($result . "\n", 0, self::LENGTH_START) != self::START_RTL) {
+                if (substr($result . "\n", 0, self::LENGTH_START) !== self::START_LTR && substr($result . "\n", 0, self::LENGTH_START) !== self::START_RTL) {
                     $leadingText .= substr($result, 0, 1);
                     $result = substr($result, 1);
                     continue;
@@ -560,7 +561,7 @@ class FunctionsRtl
      */
     public static function getChar(string $text, int $offset): array
     {
-        if ($text == '') {
+        if ($text === '') {
             return [
                 'letter' => '',
                 'length' => 0,
@@ -569,13 +570,13 @@ class FunctionsRtl
 
         $char   = substr($text, $offset, 1);
         $length = 1;
-        if ((ord($char) & 0xE0) == 0xC0) {
+        if ((ord($char) & 0xE0) === 0xC0) {
             $length = 2;
         }
-        if ((ord($char) & 0xF0) == 0xE0) {
+        if ((ord($char) & 0xF0) === 0xE0) {
             $length = 3;
         }
-        if ((ord($char) & 0xF8) == 0xF0) {
+        if ((ord($char) & 0xF8) === 0xF0) {
             $length = 4;
         }
         $letter = substr($text, $offset, $length);
@@ -643,7 +644,7 @@ class FunctionsRtl
 
         // Look for numeric strings that are times (hh:mm:ss). These have to be separated from surrounding numbers.
         $tempResult = '';
-        while ($textSpan != '') {
+        while ($textSpan !== '') {
             $posColon = strpos($textSpan, ':');
             if ($posColon === false) {
                 break;
@@ -747,17 +748,17 @@ class FunctionsRtl
                     if ($posStartNumber === false) {
                         $posStartNumber = 0;
                     }
-                    $trailingString = substr($textSpan, $posStartNumber, strlen($textSpan) - $posStartNumber) . $trailingString;
+                    $trailingString = substr($textSpan, $posStartNumber) . $trailingString;
                     $textSpan       = substr($textSpan, 0, $posStartNumber);
 
                     // Look for more spaces and move them too
-                    while ($textSpan != '') {
-                        if (substr($textSpan, -1) == ' ') {
+                    while ($textSpan !== '') {
+                        if (substr($textSpan, -1) === ' ') {
                             $trailingString = ' ' . $trailingString;
                             $textSpan       = substr($textSpan, 0, -1);
                             continue;
                         }
-                        if (substr($textSpan, -6) == '&nbsp;') {
+                        if (substr($textSpan, -6) === '&nbsp;') {
                             $trailingString = '&nbsp;' . $trailingString;
                             $textSpan       = substr($textSpan, 0, -1);
                             continue;
@@ -772,31 +773,31 @@ class FunctionsRtl
 
             $savedSpan = $textSpan;
             // Move any trailing <br>, optionally preceded or followed by blanks, outside this LTR span
-            while ($textSpan != '') {
-                if (substr($textSpan, -1) == ' ') {
+            while ($textSpan !== '') {
+                if (substr($textSpan, -1) === ' ') {
                     $trailingBlanks = ' ' . $trailingBlanks;
                     $textSpan       = substr($textSpan, 0, -1);
                     continue;
                 }
-                if (substr('......' . $textSpan, -6) == '&nbsp;') {
+                if (substr('......' . $textSpan, -6) === '&nbsp;') {
                     $trailingBlanks = '&nbsp;' . $trailingBlanks;
                     $textSpan       = substr($textSpan, 0, -6);
                     continue;
                 }
                 break;
             }
-            while (substr($textSpan, -7) == '<LTRbr>') {
+            while (substr($textSpan, -7) === '<LTRbr>') {
                 $trailingBreaks = '<br>' . $trailingBreaks; // Plain <br> because it’s outside a span
                 $textSpan       = substr($textSpan, 0, -7);
             }
-            if ($trailingBreaks != '') {
-                while ($textSpan != '') {
-                    if (substr($textSpan, -1) == ' ') {
+            if ($trailingBreaks !== '') {
+                while ($textSpan !== '') {
+                    if (substr($textSpan, -1) === ' ') {
                         $trailingBreaks = ' ' . $trailingBreaks;
                         $textSpan       = substr($textSpan, 0, -1);
                         continue;
                     }
-                    if (substr($textSpan, -6) == '&nbsp;') {
+                    if (substr($textSpan, -6) === '&nbsp;') {
                         $trailingBreaks = '&nbsp;' . $trailingBreaks;
                         $textSpan       = substr($textSpan, 0, -6);
                         continue;
@@ -813,10 +814,11 @@ class FunctionsRtl
             $trailingID          = '';
             $trailingSeparator   = '';
             $leadingSeparator    = '';
+
             while (I18N::direction() === 'rtl') {
                 if (strpos($result, self::START_RTL) !== false) {
                     // Remove trailing blanks for inclusion in a separate LTR span
-                    while ($textSpan != '') {
+                    while ($textSpan !== '') {
                         if (substr($textSpan, -1) === ' ') {
                             $trailingBlanks = ' ' . $trailingBlanks;
                             $textSpan       = substr($textSpan, 0, -1);
@@ -831,7 +833,7 @@ class FunctionsRtl
                     }
 
                     // Remove trailing punctuation for inclusion in a separate LTR span
-                    if ($textSpan == '') {
+                    if ($textSpan === '') {
                         $trailingChar = "\n";
                     } else {
                         $trailingChar = substr($textSpan, -1);
@@ -844,7 +846,7 @@ class FunctionsRtl
 
                 // Remove trailing ID numbers that look like "(xnnn)" for inclusion in a separate LTR span
                 while (true) {
-                    if (substr($textSpan, -1) != ')') {
+                    if (substr($textSpan, -1) !== ')') {
                         break;
                     } // There is no trailing ')'
                     $posLeftParen = strrpos($textSpan, '(');
@@ -876,19 +878,19 @@ class FunctionsRtl
                 }
 
                 // Look for " - " or blank preceding the ID number and remove it for inclusion in a separate LTR span
-                if ($trailingID != '') {
-                    while ($textSpan != '') {
-                        if (substr($textSpan, -1) == ' ') {
+                if ($trailingID !== '') {
+                    while ($textSpan !== '') {
+                        if (substr($textSpan, -1) === ' ') {
                             $trailingSeparator = ' ' . $trailingSeparator;
                             $textSpan          = substr($textSpan, 0, -1);
                             continue;
                         }
-                        if (substr($textSpan, -6) == '&nbsp;') {
+                        if (substr($textSpan, -6) === '&nbsp;') {
                             $trailingSeparator = '&nbsp;' . $trailingSeparator;
                             $textSpan          = substr($textSpan, 0, -6);
                             continue;
                         }
-                        if (substr($textSpan, -1) == '-') {
+                        if (substr($textSpan, -1) === '-') {
                             $trailingSeparator = '-' . $trailingSeparator;
                             $textSpan          = substr($textSpan, 0, -1);
                             continue;
@@ -900,18 +902,18 @@ class FunctionsRtl
                 // Look for " - " preceding the text and remove it for inclusion in a separate LTR span
                 $foundSeparator = false;
                 $savedSpan      = $textSpan;
-                while ($textSpan != '') {
-                    if (substr($textSpan, 0, 1) == ' ') {
+                while ($textSpan !== '') {
+                    if (substr($textSpan, 0, 1) === ' ') {
                         $leadingSeparator = ' ' . $leadingSeparator;
                         $textSpan         = substr($textSpan, 1);
                         continue;
                     }
-                    if (substr($textSpan, 0, 6) == '&nbsp;') {
+                    if (substr($textSpan, 0, 6) === '&nbsp;') {
                         $leadingSeparator = '&nbsp;' . $leadingSeparator;
                         $textSpan         = substr($textSpan, 6);
                         continue;
                     }
-                    if (substr($textSpan, 0, 1) == '-') {
+                    if (substr($textSpan, 0, 1) === '-') {
                         $leadingSeparator = '-' . $leadingSeparator;
                         $textSpan         = substr($textSpan, 1);
                         $foundSeparator   = true;
@@ -940,48 +942,48 @@ class FunctionsRtl
                 }
                 break;
             }
-            if ($leadingSeparator != '') {
-                $result = $result . self::START_LTR . $leadingSeparator . self::END_LTR;
+            if ($leadingSeparator !== '') {
+                $result .= self::START_LTR . $leadingSeparator . self::END_LTR;
             }
-            $result = $result . $textSpan . self::END_LTR;
-            if ($trailingSeparator != '') {
-                $result = $result . self::START_LTR . $trailingSeparator . self::END_LTR;
+            $result .= $textSpan . self::END_LTR;
+            if ($trailingSeparator !== '') {
+                $result .= self::START_LTR . $trailingSeparator . self::END_LTR;
             }
-            if ($trailingID != '') {
-                $result = $result . self::START_LTR . $trailingID . self::END_LTR;
+            if ($trailingID !== '') {
+                $result .= self::START_LTR . $trailingID . self::END_LTR;
             }
-            if ($trailingPunctuation != '') {
-                $result = $result . self::START_LTR . $trailingPunctuation . self::END_LTR;
+            if ($trailingPunctuation !== '') {
+                $result .= self::START_LTR . $trailingPunctuation . self::END_LTR;
             }
-            if ($trailingBlanks != '') {
-                $result = $result . self::START_LTR . $trailingBlanks . self::END_LTR;
+            if ($trailingBlanks !== '') {
+                $result .= self::START_LTR . $trailingBlanks . self::END_LTR;
             }
         }
 
         /* ****************************** RTL text handling ******************************** */
 
-        if (self::$currentState == 'RTL') {
+        if (self::$currentState === 'RTL') {
             $savedSpan = $textSpan;
 
             // Move any trailing <br>, optionally followed by blanks, outside this RTL span
-            while ($textSpan != '') {
-                if (substr($textSpan, -1) == ' ') {
+            while ($textSpan !== '') {
+                if (substr($textSpan, -1) === ' ') {
                     $trailingBlanks = ' ' . $trailingBlanks;
                     $textSpan       = substr($textSpan, 0, -1);
                     continue;
                 }
-                if (substr('......' . $textSpan, -6) == '&nbsp;') {
+                if (substr('......' . $textSpan, -6) === '&nbsp;') {
                     $trailingBlanks = '&nbsp;' . $trailingBlanks;
                     $textSpan       = substr($textSpan, 0, -6);
                     continue;
                 }
                 break;
             }
-            while (substr($textSpan, -7) == '<RTLbr>') {
+            while (substr($textSpan, -7) === '<RTLbr>') {
                 $trailingBreaks = '<br>' . $trailingBreaks; // Plain <br> because it’s outside a span
                 $textSpan       = substr($textSpan, 0, -7);
             }
-            if ($trailingBreaks != '') {
+            if ($trailingBreaks !== '') {
                 self::$waitingText = $trailingBlanks . self::$waitingText; // Put those trailing blanks inside the following span
             } else {
                 $textSpan = $savedSpan;
@@ -991,7 +993,7 @@ class FunctionsRtl
             if (!$theEnd && I18N::direction() !== 'rtl') {
                 $trailingString = '';
                 $savedSpan      = $textSpan;
-                while ($textSpan != '') {
+                while ($textSpan !== '') {
                     // Look for trailing spaces and tentatively move them
                     if (substr($textSpan, -1) === ' ') {
                         $trailingString = ' ' . $trailingString;
@@ -1014,17 +1016,17 @@ class FunctionsRtl
                     if ($posStartNumber === false) {
                         $posStartNumber = 0;
                     }
-                    $trailingString = substr($textSpan, $posStartNumber, strlen($textSpan) - $posStartNumber) . $trailingString;
+                    $trailingString = substr($textSpan, $posStartNumber) . $trailingString;
                     $textSpan       = substr($textSpan, 0, $posStartNumber);
 
                     // Look for more spaces and move them too
-                    while ($textSpan != '') {
-                        if (substr($textSpan, -1) == ' ') {
+                    while ($textSpan !== '') {
+                        if (substr($textSpan, -1) === ' ') {
                             $trailingString = ' ' . $trailingString;
                             $textSpan       = substr($textSpan, 0, -1);
                             continue;
                         }
-                        if (substr($textSpan, -6) == '&nbsp;') {
+                        if (substr($textSpan, -6) === '&nbsp;') {
                             $trailingString = '&nbsp;' . $trailingString;
                             $textSpan       = substr($textSpan, 0, -1);
                             continue;
@@ -1038,7 +1040,7 @@ class FunctionsRtl
             }
 
             // Trailing " - " needs to be prefixed to the following span
-            if (!$theEnd && substr('...' . $textSpan, -3) == ' - ') {
+            if (!$theEnd && substr('...' . $textSpan, -3) === ' - ') {
                 $textSpan          = substr($textSpan, 0, -3);
                 self::$waitingText = ' - ' . self::$waitingText;
             }
@@ -1061,13 +1063,13 @@ class FunctionsRtl
 
             // Strip leading spaces from the RTL text
             $countLeadingSpaces = 0;
-            while ($textSpan != '') {
-                if (substr($textSpan, 0, 1) == ' ') {
+            while ($textSpan !== '') {
+                if (substr($textSpan, 0, 1) === ' ') {
                     $countLeadingSpaces++;
                     $textSpan = substr($textSpan, 1);
                     continue;
                 }
-                if (substr($textSpan, 0, 6) == '&nbsp;') {
+                if (substr($textSpan, 0, 6) === '&nbsp;') {
                     $countLeadingSpaces++;
                     $textSpan = substr($textSpan, 6);
                     continue;
@@ -1077,13 +1079,13 @@ class FunctionsRtl
 
             // Strip trailing spaces from the RTL text
             $countTrailingSpaces = 0;
-            while ($textSpan != '') {
-                if (substr($textSpan, -1) == ' ') {
+            while ($textSpan !== '') {
+                if (substr($textSpan, -1) === ' ') {
                     $countTrailingSpaces++;
                     $textSpan = substr($textSpan, 0, -1);
                     continue;
                 }
-                if (substr($textSpan, -6) == '&nbsp;') {
+                if (substr($textSpan, -6) === '&nbsp;') {
                     $countTrailingSpaces++;
                     $textSpan = substr($textSpan, 0, -6);
                     continue;
@@ -1104,11 +1106,11 @@ class FunctionsRtl
                 $textSpan = substr($textSpan, 0, $posStringStart) . '- ' . substr($textSpan, $posStringStart, $posDashString - $posStringStart) . substr($textSpan, $posDashString + 2);
             }
 
-            if ($countLeadingSpaces != 0) {
+            if ($countLeadingSpaces !== 0) {
                 $newLength = strlen($textSpan) + $countLeadingSpaces;
                 $textSpan  = str_pad($textSpan, $newLength, ' ', (I18N::direction() === 'rtl' ? STR_PAD_LEFT : STR_PAD_RIGHT));
             }
-            if ($countTrailingSpaces != 0) {
+            if ($countTrailingSpaces !== 0) {
                 if (I18N::direction() === 'ltr') {
                     if ($trailingBreaks === '') {
                         // Move trailing RTL spaces to front of following LTR span
@@ -1123,10 +1125,10 @@ class FunctionsRtl
 
             // We're done: finish the span
             $textSpan = self::starredName($textSpan, 'RTL'); // Wrap starred name in <u> and </u> tags
-            $result   = $result . $textSpan . self::END_RTL;
+            $result   .= $textSpan . self::END_RTL;
         }
 
-        if (self::$currentState != 'LTR' && self::$currentState != 'RTL') {
+        if (self::$currentState !== 'LTR' && self::$currentState !== 'RTL') {
             $result .= $textSpan;
         }
 
@@ -1153,7 +1155,7 @@ class FunctionsRtl
                 $string = '';
             } else {
                 $sub1 = mb_substr($string, 0, $width + 1);
-                if (mb_substr($string, mb_strlen($sub1) - 1, 1) == ' ') {
+                if (mb_substr($string, mb_strlen($sub1) - 1, 1) === ' ') {
                     // include words that end by a space immediately after the area.
                     $sub = $sub1;
                 } else {

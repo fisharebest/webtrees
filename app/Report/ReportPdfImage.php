@@ -52,8 +52,7 @@ class ReportPdfImage extends ReportBaseImage
         if ($this->y === ReportBaseElement::CURRENT_POSITION) {
             //-- first check for a collision with the last picture
             if (isset($lastpicbottom)) {
-                if (($renderer->PageNo() == $lastpicpage) && ($lastpicbottom >= $renderer->GetY()) && ($this->x >= $lastpicleft) && ($this->x <= $lastpicright)
-                ) {
+                if ($renderer->PageNo() === $lastpicpage && $lastpicbottom >= $renderer->GetY() && $this->x >= $lastpicleft && $this->x <= $lastpicright) {
                     $renderer->SetY($lastpicbottom + 5);
                 }
             }
