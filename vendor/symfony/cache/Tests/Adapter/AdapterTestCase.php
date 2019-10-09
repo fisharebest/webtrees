@@ -109,7 +109,7 @@ abstract class AdapterTestCase extends CachePoolTest
         $cache->deleteItem('foo');
         $cache->get('foo', function ($item) {
             $item->expiresAfter(10);
-            sleep(1);
+            usleep(999000);
 
             return 'bar';
         });
@@ -251,16 +251,6 @@ abstract class AdapterTestCase extends CachePoolTest
         $cache->prune();
         $this->assertFalse($this->isPruned($cache, 'foo'));
         $this->assertTrue($this->isPruned($cache, 'qux'));
-    }
-
-    /**
-     * @group issue-32995
-     *
-     * @runInSeparateProcess https://github.com/symfony/symfony/issues/32995
-     */
-    public function testSavingObject()
-    {
-        parent::testSavingObject();
     }
 }
 
