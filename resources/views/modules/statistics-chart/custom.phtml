@@ -11,7 +11,7 @@ use Fisharebest\Webtrees\View;
     </h4>
 
     <form method="get" action="<?= e(route('module', ['module' => $module->name(), 'action' => 'CustomChart'])) ?>" id="own-stats-form" class="wt-page-options wt-page-options-statistics">
-        <input type="hidden" name="route" value="<?= e('/module/' . $module->name() . '/Custom//§Chart') ?>">
+        <input type="hidden" name="route" value="<?= e('/module/' . $module->name() . '/CustomChart') ?>">
         <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
         <div class="form-group row">
             <div class="col-sm-2 wt-page-options-label">
