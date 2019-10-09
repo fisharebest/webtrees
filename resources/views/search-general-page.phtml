@@ -5,7 +5,7 @@
 </h2>
 
 <form method="get" action="<?= e(route('search-general')) ?>" class="wt-page-options wt-page-options-search hidden-print mb-4" name="searchform">
-    <input type="hidden" name="route" value="search-general">
+    <input type="hidden" name="route" value="<?= e(route('search-general')) ?>">
     <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
     <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="query">

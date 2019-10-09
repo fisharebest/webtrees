@@ -5,8 +5,8 @@
 
 <h1><?= $title ?></h1>
 
-<form method="get" action="<?= e(route('admin-site-logs')) ?>>" class="form" name="logs">
-    <input type="hidden" name="route" value="admin-site-logs" id="route">
+<form method="get" action="<?= e(route('admin-site-logs')) ?>" class="form" name="logs">
+    <input type="hidden" name="route" value="<?= e(route('admin-site-logs')) ?>">
     <input type="hidden" name="action" value="show">
 
     <div class="row">

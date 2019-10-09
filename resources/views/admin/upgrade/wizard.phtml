@@ -22,7 +22,7 @@
     </p>
 
     <form method="get" action="<?= e(route('upgrade')) ?>" class="form-horizontal">
-        <input type="hidden" name="route" value="upgrade">
+        <input type="hidden" name="route" value="<?= e(route('upgrade')) ?>">
 
         <button type="submit" class="btn btn-primary" name="continue" value="1">
             <?= I18N::translate('continue') ?>
