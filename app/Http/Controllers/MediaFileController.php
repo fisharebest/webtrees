@@ -185,6 +185,7 @@ class MediaFileController extends AbstractBaseController
         try {
             // Validate HTTP signature
             unset($params['route']);
+            $params['tree'] = $media_file->media()->tree()->name();
             $this->glideSignature()->validateRequest('', $params);
 
             $path = $media_file->media()->tree()->getPreference('MEDIA_DIRECTORY', 'media/') .  $media_file->filename();
