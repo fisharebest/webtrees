@@ -219,12 +219,12 @@ class HelpTextController extends AbstractBaseController
 
             case 'RESN':
                 $title = I18N::translate('Restriction');
-                $text  = view('help/romanized');
+                $text  = view('help/restriction');
                 break;
 
             case 'ROMN':
                 $title = I18N::translate('Romanized');
-                $text  = view('help/restriction');
+                $text  = view('help/romanized');
                 break;
 
             case '_HEB':
