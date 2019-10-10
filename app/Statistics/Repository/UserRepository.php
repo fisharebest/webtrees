@@ -121,7 +121,7 @@ class UserRepository implements UserRepositoryInterface
                     if ($type === 'list') {
                         $content .= '<br>';
                     }
-                    $content .= '<a href="' . e(route('message', ['to' => $user->userName(), 'ged' => $this->tree->name()])) . '" class="btn btn-link" title="' . I18N::translate('Send a message') . '">' . view('icons/email') . '</a>';
+                    $content .= '<a href="' . e(route('message', ['to' => $user->userName(), 'tree' => $this->tree->name()])) . '" class="btn btn-link" title="' . I18N::translate('Send a message') . '">' . view('icons/email') . '</a>';
                 }
 
                 if ($type === 'list') {

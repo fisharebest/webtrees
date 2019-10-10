@@ -775,7 +775,7 @@ class FunctionsPrintFacts
                     echo '<a href="' . e(route('edit-fact', [
                             'xref'    => $parent->xref(),
                             'fact_id' => $fact->id(),
-                            'ged'     => $tree->name(),
+                            'tree'    => $tree->name(),
                         ])) . '" title="', I18N::translate('Edit'), '">';
                     if ($tree->getPreference('SHOW_FACT_ICONS') && $level === 1) {
                         echo '<i class="icon-source"></i> ';

@@ -218,9 +218,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             ]);
         }
 
-        $url = route('tree-page', [
-            'ged' => $tree->name(),
-        ]);
+        $url = route('tree-page', ['tree' => $tree->name()]);
 
         return redirect($url);
     }
@@ -244,9 +242,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             ->where('gedcom_id', '=', $tree->id())
             ->delete();
 
-        $url = route('tree-page', [
-            'ged' => $tree->name(),
-        ]);
+        $url = route('tree-page', ['tree' => $tree->name()]);
 
         return redirect($url);
     }

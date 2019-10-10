@@ -71,7 +71,7 @@ class PlaceRepository implements PlaceRepositoryInterface
         $rows = [];
 
         if ($what === 'INDI') {
-            $rows = DB::table('individuals')->select(['i_gedcom as ged'])->where(
+            $rows = DB::table('individuals')->select(['i_gedcom as tree'])->where(
                 'i_file',
                 '=',
                 $this->tree->id()
@@ -81,7 +81,7 @@ class PlaceRepository implements PlaceRepositoryInterface
                 "%\n2 PLAC %"
             )->get()->all();
         } elseif ($what === 'FAM') {
-            $rows = DB::table('families')->select(['f_gedcom as ged'])->where(
+            $rows = DB::table('families')->select(['f_gedcom as tree'])->where(
                 'f_file',
                 '=',
                 $this->tree->id()
@@ -95,7 +95,7 @@ class PlaceRepository implements PlaceRepositoryInterface
         $placelist = [];
 
         foreach ($rows as $row) {
-            if (preg_match('/\n1 ' . $fact . '(?:\n[2-9].*)*\n2 PLAC (.+)/', $row->ged, $match)) {
+            if (preg_match('/\n1 ' . $fact . '(?:\n[2-9].*)*\n2 PLAC (.+)/', $row->tree, $match)) {
                 if ($country) {
                     $tmp   = explode(Gedcom::PLACE_SEPARATOR, $match[1]);
                     $place = end($tmp);

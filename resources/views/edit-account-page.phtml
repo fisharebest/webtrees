@@ -7,7 +7,7 @@
 
 <form method="post" action="<?= e(route('my-account-update')) ?>" class="wt-page-options wt-page-options-my-account">
     <?= csrf_field() ?>
-    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
+    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
 
     <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="user-name">
@@ -145,7 +145,7 @@
 </form>
 
 <?php if ($show_delete_option) : ?>
-    <form method="post" action="<?= e(route('delete-account', ['ged' => $tree->name()])) ?>">
+    <form method="post" action="<?= e(route('delete-account', ['tree' => $tree->name()])) ?>">
         <?= csrf_field() ?>
         <div class="row form-group">
             <div class="col-sm-3 wt-page-options-label"></div>

@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\GedcomCode\GedcomCodeStat;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeTemp;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Http\RequestHandlers\HelpText;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Note;
@@ -150,7 +151,7 @@ class FunctionsPrint
     public static function helpLink($topic): string
     {
         return
-            '<a href="#" data-toggle="modal" data-target="#wt-ajax-modal" data-href="' . e(route('help-text', ['topic' => $topic])) . '" title="' . I18N::translate('Help') . '">' .
+            '<a href="#" data-toggle="modal" data-target="#wt-ajax-modal" data-href="' . e(route(HelpText::class, ['topic' => $topic])) . '" title="' . I18N::translate('Help') . '">' .
             view('icons/help') .
             '<span class="sr-only">' . I18N::translate('Help') . '</span>' .
             '</a>';

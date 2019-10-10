@@ -9,18 +9,18 @@ use Fisharebest\Webtrees\I18N; ?>
 <form method="get" action="<?= e(route('module', ['module' => $module->name(), 'action' => 'Admin'])) ?>" class="form-inline mb-4">
     <input type="hidden" name="route" value="<?= e('/module/' . $module->name() . '/Admin') ?>">
 
-    <label for="ged" class="sr-only">
+    <label for="tree" class="sr-only">
         <?= I18N::translate('Family tree') ?>
     </label>
 
-    <?= view('components/select', ['name' => 'ged', 'selected' => $tree->name(), 'options' => $tree_names]) ?>
+    <?= view('components/select', ['name' => 'tree', 'selected' => $tree->name(), 'options' => $tree_names]) ?>
     <button type="submit" class="btn btn-primary">
         <?= I18N::translate('show') ?>
     </button>
 </form>
 
 <p>
-    <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'ged' => $tree->name()])) ?>" class="btn btn-link">
+    <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'tree' => $tree->name()])) ?>" class="btn btn-link">
         <?= view('icons/add') ?>
         <?= I18N::translate('Add a story') ?>
     </a>
@@ -51,13 +51,13 @@ use Fisharebest\Webtrees\I18N; ?>
                     <?= e($story->title) ?>
                 </td>
                 <td>
-                    <a class="btn btn-primary" href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'ged' => $tree->name(), 'block_id' => $story->block_id])) ?>">
+                    <a class="btn btn-primary" href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'tree' => $tree->name(), 'block_id' => $story->block_id])) ?>">
                         <?= view('icons/edit') ?>
                         <?= I18N::translate('Edit') ?>
                     </a>
                 </td>
                 <td>
-                    <form method="post" action="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminDelete', 'ged' => $tree->name(), 'block_id' => $story->block_id])) ?>">
+                    <form method="post" action="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminDelete', 'tree' => $tree->name(), 'block_id' => $story->block_id])) ?>">
                         <?= csrf_field() ?>
                         <button type="submit" class="btn btn-danger" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($story->title)) ?>" onclick="return confirm(this.dataset.confirm);">
                             <?= view('icons/delete') ?>

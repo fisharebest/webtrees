@@ -78,12 +78,12 @@ class LoginAction extends AbstractBaseController
             // If there was no referring page, redirect to "my page".
             if ($url === '') {
                 // Switch to a tree where we have a genealogy record (or keep to the current/default).
-                $ged = (string) DB::table('gedcom')
+                $tree = (string) DB::table('gedcom')
                     ->join('user_gedcom_setting', 'gedcom.gedcom_id', '=', 'user_gedcom_setting.gedcom_id')
                     ->where('user_id', '=', Auth::id())
                     ->value('gedcom_name');
 
-                $url = route('tree-page', ['ged' => $ged]);
+                $url = route('tree-page', ['tree' => $tree]);
             }
 
             // Redirect to the target URL

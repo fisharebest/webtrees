@@ -16,7 +16,7 @@ use Fisharebest\Webtrees\I18N;
                 <?php else: ?>
                 <div class="wt-chart-box">
                     <?php if ($family->canEdit()): ?>
-                        <a class="btn btn-link" href="<?= e(route('add-spouse-to-family', ['ged' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'HUSB'])) ?>">
+                        <a class="btn btn-link" href="<?= e(route('add-spouse-to-family', ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'HUSB'])) ?>">
                             <?= I18N::translate('Add a husband' )?>
                         </a>
                     <?php endif ?>
@@ -38,7 +38,7 @@ use Fisharebest\Webtrees\I18N;
                 <?php else: ?>
                     <div class="wt-chart-box">
                         <?php if ($family->canEdit()): ?>
-                            <a class="btn btn-link" href="<?= e(route('add-spouse-to-family', ['ged' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'WIFE'])) ?>">
+                            <a class="btn btn-link" href="<?= e(route('add-spouse-to-family', ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'WIFE'])) ?>">
                                 <?= I18N::translate('Add a wife' )?>
                             </a>
                         <?php endif ?>

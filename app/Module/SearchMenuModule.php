@@ -90,7 +90,7 @@ class SearchMenuModule extends AbstractModule implements ModuleMenuInterface
      */
     protected function menuSearchGeneral(Tree $tree): Menu
     {
-        return new Menu(I18N::translate('General search'), route('search-general', ['ged' => $tree->name()]), 'menu-search-general', ['rel' => 'nofollow']);
+        return new Menu(I18N::translate('General search'), route('search-general', ['tree' => $tree->name()]), 'menu-search-general', ['rel' => 'nofollow']);
     }
 
     /**
@@ -101,7 +101,7 @@ class SearchMenuModule extends AbstractModule implements ModuleMenuInterface
     protected function menuSearchPhonetic(Tree $tree): Menu
     {
         /* I18N: search using “sounds like”, rather than exact spelling */
-        return new Menu(I18N::translate('Phonetic search'), route('search-phonetic', ['ged' => $tree->name(), 'action' => 'soundex']), 'menu-search-soundex', ['rel' => 'nofollow']);
+        return new Menu(I18N::translate('Phonetic search'), route('search-phonetic', ['tree' => $tree->name(), 'action' => 'soundex']), 'menu-search-soundex', ['rel' => 'nofollow']);
     }
 
     /**
@@ -111,7 +111,7 @@ class SearchMenuModule extends AbstractModule implements ModuleMenuInterface
      */
     protected function menuSearchAdvanced(Tree $tree): Menu
     {
-        return new Menu(I18N::translate('Advanced search'), route('search-advanced', ['ged' => $tree->name()]), 'menu-search-advanced', ['rel' => 'nofollow']);
+        return new Menu(I18N::translate('Advanced search'), route('search-advanced', ['tree' => $tree->name()]), 'menu-search-advanced', ['rel' => 'nofollow']);
     }
 
     /**
@@ -123,7 +123,7 @@ class SearchMenuModule extends AbstractModule implements ModuleMenuInterface
     {
         if (Auth::isEditor($tree)) {
             return new Menu(I18N::translate('Search and replace'), route('search-replace', [
-                'ged'    => $tree->name(),
+                'tree'   => $tree->name(),
                 'action' => 'replace',
             ]), 'menu-search-replace');
         }

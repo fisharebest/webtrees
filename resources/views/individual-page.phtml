@@ -105,7 +105,7 @@ use Illuminate\Support\Collection;
             <ul class="nav nav-tabs flex-wrap">
                 <?php foreach ($tabs as $tab) : ?>
                     <li class="nav-item">
-                        <a class="nav-link<?= $tab->isGrayedOut($individual) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" data-href="<?= e(route('individual-tab', ['xref' => $individual->xref(), 'ged' => $individual->tree()->name(), 'module' => $tab->name()])) ?>" href="#<?= $tab->name() ?>">
+                        <a class="nav-link<?= $tab->isGrayedOut($individual) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" data-href="<?= e(route('individual-tab', ['xref' => $individual->xref(), 'tree' => $individual->tree()->name(), 'module' => $tab->name()])) ?>" href="#<?= $tab->name() ?>">
                             <?= $tab->tabTitle() ?>
                         </a>
                     </li>

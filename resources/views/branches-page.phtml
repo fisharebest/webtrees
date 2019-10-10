@@ -8,9 +8,9 @@ use Fisharebest\Webtrees\I18N;
     <?= $title ?>
 </h2>
 
-<form method="get" action="<?= e(route('module', ['module' => $module, 'action' => $action])) ?>" class="wt-page-options wt-page-options-branches d-print-none">
+<form method="get" action="<?= e(route('module', ['module' => $module, 'action' => $action, 'tree' => $tree->name()])) ?>" class="wt-page-options wt-page-options-branches d-print-none">
     <input type="hidden" name="route" value="<?= e('/module/' . $module . '/' . $action) ?>">
-    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
+    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
 
     <div class="form-group row">
         <label class="col-form-label col-sm-3 wt-page-options-label" for="surname">
@@ -45,5 +45,5 @@ use Fisharebest\Webtrees\I18N;
 </form>
 
 <?php if ($surname !== '') : ?>
-    <div class="wt-ajax-load wt-page-content wt-chart wt-branches" data-ajax-url="<?= e(route('module', ['module' => $module, 'action' => 'List', 'surname' => $surname, 'soundex_std' => $soundex_std, 'soundex_dm' => $soundex_dm, 'ged' => $tree->name()])) ?>"></div>
+    <div class="wt-ajax-load wt-page-content wt-chart wt-branches" data-ajax-url="<?= e(route('module', ['module' => $module, 'action' => 'List', 'surname' => $surname, 'soundex_std' => $soundex_std, 'soundex_dm' => $soundex_dm, 'tree' => $tree->name()])) ?>"></div>
 <?php endif ?>

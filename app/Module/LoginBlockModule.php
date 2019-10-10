@@ -74,7 +74,7 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface
             $title   = I18N::translate('Sign in');
             $content = view('modules/login_block/sign-in', [
                 'allow_register' => (bool) Site::getPreference('USE_REGISTRATION_MODULE'),
-                'url'            => route('tree-page', ['ged' => $tree->name()]),
+                'url'            => route('tree-page', ['tree' => $tree->name()]),
             ]);
         }
 

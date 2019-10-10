@@ -38,9 +38,9 @@ class RedirectNotePhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $ged   = $request->getQueryParams()['ged'] ?? '';
+        $tree   = $request->getQueryParams()['ged'] ?? '';
         $xref  = $request->getQueryParams()['nid'] ?? '';
-        $route = route('note', ['tree' => $ged, 'xref' => $xref]);
+        $route = route('note', ['tree' => $tree, 'xref' => $xref]);
 
         return redirect($route, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
     }

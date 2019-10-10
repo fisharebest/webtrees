@@ -146,7 +146,7 @@ class TreeView
             'module' => 'tree',
             'action' => 'Chart',
             'xref'   => $individual->xref(),
-            'ged'    => $individual->tree()->name(),
+            'tree'   => $individual->tree()->name(),
         ]);
 
         $hmtl = $this->getThumbnail($individual);

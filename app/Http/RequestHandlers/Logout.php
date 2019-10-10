@@ -53,7 +53,7 @@ class Logout implements RequestHandlerInterface
         }
 
         if ($tree instanceof Tree) {
-            return redirect(route('tree-page', ['ged' => $tree->name()]));
+            return redirect(route('tree-page', ['tree' => $tree->name()]));
         }
 
         return redirect(route('tree-page'));

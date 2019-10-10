@@ -126,7 +126,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         return route('module', [
                 'module' => $this->name(),
                 'action' => 'Chart',
-                'ged'    => $individual->tree()->name(),
+                'tree'    => $individual->tree()->name(),
             ] + $parameters);
     }
 
@@ -148,22 +148,22 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
             I18N::translate('Individuals') => route('module', [
                 'module' => $this->name(),
                 'action' => 'Individuals',
-                'ged'    => $tree->name(),
+                'tree'    => $tree->name(),
             ]),
             I18N::translate('Families')    => route('module', [
                 'module' => $this->name(),
                 'action' => 'Families',
-                'ged'    => $tree->name(),
+                'tree'    => $tree->name(),
             ]),
             I18N::translate('Other')       => route('module', [
                 'module' => $this->name(),
                 'action' => 'Other',
-                'ged'    => $tree->name(),
+                'tree'    => $tree->name(),
             ]),
             I18N::translate('Custom')      => route('module', [
                 'module' => $this->name(),
                 'action' => 'Custom',
-                'ged'    => $tree->name(),
+                'tree'    => $tree->name(),
             ]),
         ];
 

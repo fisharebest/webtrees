@@ -51,7 +51,7 @@
                         <?php foreach ($record_changes as $record_change) : ?>
                             <tr>
                                 <td>
-                                    <form method="post" action="<?= e(route('accept-pending', ['change_id' => $record_change->change_id, 'xref' => $record_change->xref, 'ged' => $record_change->gedcom_name, 'url' => $url])) ?>">
+                                    <form method="post" action="<?= e(route('accept-pending', ['change_id' => $record_change->change_id, 'xref' => $record_change->xref, 'tree' => $record_change->gedcom_name, 'url' => $url])) ?>">
                                         <?= csrf_field() ?>
                                         <button class="btn btn-primary" type="submit">
                                             <?= I18N::translate('Accept') ?>
@@ -72,7 +72,7 @@
                                     <?php endforeach ?>
                                 </td>
                                 <td>
-                                    <a href="<?= e(route('message', ['to' => $record_change->user_name, 'subject' => I18N::translate('Pending changes') . ' - ' . strip_tags($record_change->record->fullName()), 'body' => $record_change->record->url(), 'ged' => $record_change->gedcom_name])) ?>" title="<?= I18N::translate('Send a message') ?>">
+                                    <a href="<?= e(route('message', ['to' => $record_change->user_name, 'subject' => I18N::translate('Pending changes') . ' - ' . strip_tags($record_change->record->fullName()), 'body' => $record_change->record->url(), 'tree' => $record_change->gedcom_name])) ?>" title="<?= I18N::translate('Send a message') ?>">
                                         <?= e($record_change->real_name) ?> - <?= e($record_change->user_name) ?>
                                     </a>
                                 </td>
@@ -80,7 +80,7 @@
                                     <?= view('components/datetime', ['timestamp' => $record_change->change_time]) ?>
                                 </td>
                                 <td>
-                                    <form method="post" action="<?= e(route('reject-pending', ['change_id' => $record_change->change_id, 'xref' => $record_change->xref, 'ged' => $record_change->gedcom_name, 'url' => $url])) ?>">
+                                    <form method="post" action="<?= e(route('reject-pending', ['change_id' => $record_change->change_id, 'xref' => $record_change->xref, 'tree' => $record_change->gedcom_name, 'url' => $url])) ?>">
                                         <?= csrf_field() ?>
                                         <button class="btn btn-secondary" type="submit">
                                             <?= I18N::translate('Reject') ?>
@@ -94,14 +94,14 @@
             <?php endforeach ?>
 
             <div class="d-flex justify-content-between">
-                <form method="post" action="<?= e(route('accept-all-changes', ['ged' => $tree->name(), 'url' => $url])) ?>">
+                <form method="post" action="<?= e(route('accept-all-changes', ['tree' => $tree->name(), 'url' => $url])) ?>">
                     <?= csrf_field() ?>
                     <button class="btn btn-primary" type="submit">
                         <?= I18N::translate('Accept all changes') ?>
                     </button>
                 </form>
 
-                <form method="post" action="<?= e(route('reject-all-changes', ['ged' => $tree->name(), 'url' => $url])) ?>">
+                <form method="post" action="<?= e(route('reject-all-changes', ['tree' => $tree->name(), 'url' => $url])) ?>">
                     <?= csrf_field() ?>
                     <button class="btn btn-secondary" type="submit" data-confirm="<?= I18N::translate('Are you sure you want to reject all the changes to this family tree?') ?>" onclick="return confirm(this.dataset.confirm);">
                         <?= I18N::translate('Reject all changes') ?>

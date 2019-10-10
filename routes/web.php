@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Http\Middleware\AuthManager;
 use Fisharebest\Webtrees\Http\Middleware\AuthMember;
 use Fisharebest\Webtrees\Http\Middleware\AuthModerator;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteUser;
+use Fisharebest\Webtrees\Http\RequestHandlers\HelpText;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectFamilyPhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectGedRecordPhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectIndividualPhp;
@@ -285,46 +286,45 @@ $router->attach('', '', static function (Map $router) {
         'middleware' => [AuthMember::class]
     ]);
 
-    $router->get('user-page', '/my-page', 'HomePageController::userPage');
-    $router->get('user-page-block', '/user-page-block', 'HomePageController::userPageBlock');
-    $router->get('user-page-edit', '/user-page-edit', 'HomePageController::userPageEdit');
-    $router->post('user-page-update', '/user-page-update', 'HomePageController::userPageUpdate');
-    $router->get('user-page-block-edit', '/user-page-block-edit', 'HomePageController::userPageBlockEdit');
-    $router->post('user-page-block-update', '/user-page-block-edit', 'HomePageController::userPageBlockUpdate');
+    $router->get('user-page', '/tree/{tree}/my-page', 'HomePageController::userPage');
+    $router->get('user-page-block', '/tree/{tree}/user-page-block', 'HomePageController::userPageBlock');
+    $router->get('user-page-edit', '/tree/{tree}/user-page-edit', 'HomePageController::userPageEdit');
+    $router->post('user-page-update', '/tree/{tree}/user-page-update', 'HomePageController::userPageUpdate');
+    $router->get('user-page-block-edit', '/tree/{tree}/user-page-block-edit', 'HomePageController::userPageBlockEdit');
+    $router->post('user-page-block-update', '/tree/{tree}/user-page-block-edit', 'HomePageController::userPageBlockUpdate');
     $router->get('my-account', '/my-account', 'AccountController::edit');
     $router->post('my-account-update', '/my-account', 'AccountController::update');
     $router->post('delete-account', '/delete-account', 'AccountController::delete');
 });
 
 // Member routes.
-$router->attach('', '', static function (Map $router) {
+$router->attach('', '/tree/{tree}', static function (Map $router) {
     $router->get('autocomplete-folder', '/autocomplete-folder', 'AutocompleteController::folder');
     $router->get('autocomplete-page', '/autocomplete-page', 'AutocompleteController::page');
     $router->get('autocomplete-place', '/autocomplete-place', 'AutocompleteController::place');
-    $router->get('calendar', '/calendar', 'CalendarController::page');
-    $router->get('calendar-events', '/calendar-events', 'CalendarController::calendar');
-    $router->get('help-text', '/help-text', 'HelpTextController::helpText');
+    $router->get('calendar', '/calendar/{view}', 'CalendarController::page');
+    $router->get('calendar-events', '/calendar-events/{view}', 'CalendarController::calendar');
     $router->get('tree-page', '/tree-page', 'HomePageController::treePage');
     $router->get('tree-page-block', '/tree-page-block', 'HomePageController::treePageBlock');
     $router->get('media-thumbnail', '/media-thumbnail', 'MediaFileController::mediaThumbnail');
     $router->get('media-download', '/media-download', 'MediaFileController::mediaDownload');
-    $router->get('family', '/tree/{tree}/family/{xref}{/slug}', 'FamilyController::show');
-    $router->get('individual', '/tree/{tree}/individual/{xref}{/slug}', 'IndividualController::show');
-    $router->get('individual-tab', '/individual-tab', 'IndividualController::tab');
-    $router->get('media', '/tree/{tree}/media/{xref}{/slug}', 'MediaController::show');
+    $router->get('family', '/family/{xref}{/slug}', 'FamilyController::show');
+    $router->get('individual', '/individual/{xref}{/slug}', 'IndividualController::show');
+    $router->get('individual-tab', '/tab-{module}/{xref}', 'IndividualController::tab');
+    $router->get('media', '/media/{xref}{/slug}', 'MediaController::show');
     $router->get('contact', '/contact', 'MessageController::contactPage');
     $router->post('contact-action', '/contact', 'MessageController::contactAction');
     $router->get('message', '/message', 'MessageController::messagePage');
     $router->post('message-action', '/message', 'MessageController::messageAction');
-    $router->get('note', '/tree/{tree}/note/{xref}{/slug}', 'NoteController::show');
-    $router->get('source', '/tree/{tree}/source/{xref}{/slug}', 'SourceController::show');
-    $router->get('record', '/tree/{tree}/record/{xref}{/slug}', 'GedcomRecordController::show');
-    $router->get('repository', '/tree/{tree}/repository/{xref}{/slug}', 'RepositoryController::show');
+    $router->get('note', '/note/{xref}{/slug}', 'NoteController::show');
+    $router->get('source', '/source/{xref}{/slug}', 'SourceController::show');
+    $router->get('record', '/record/{xref}{/slug}', 'GedcomRecordController::show');
+    $router->get('repository', '/repository/{xref}{/slug}', 'RepositoryController::show');
     $router->get('report-list', '/report-list', 'ReportEngineController::reportList');
     $router->get('report-setup', '/report-setup', 'ReportEngineController::reportSetup');
     $router->get('report-run', '/report-run', 'ReportEngineController::reportRun');
-    $router->post('accept-changes', '/tree/{tree}/accept/{xref}', 'PendingChangesController::acceptChanges');
-    $router->post('reject-changes', '/tree/{tree}/reject/{xref}', 'PendingChangesController::rejectChanges');
+    $router->post('accept-changes', '/accept/{xref}', 'PendingChangesController::acceptChanges');
+    $router->post('reject-changes', '/reject/{xref}', 'PendingChangesController::rejectChanges');
     $router->post('accept-all-changes', '/accept-all-changes', 'PendingChangesController::acceptAllChanges');
     $router->post('reject-all-changes', '/reject-all-changes', 'PendingChangesController::rejectAllChanges');
     $router->post('select2-family', '/select2-family', 'AutocompleteController::select2Family');
@@ -340,6 +340,7 @@ $router->attach('', '', static function (Map $router) {
     $router->get('search-phonetic', '/search-phonetic', 'SearchController::phonetic');
 });
 
+$router->get(HelpText::class, '/help/{topic}', HelpText::class);
 $router->get(LoginPage::class, '/login', LoginPage::class);
 $router->post(LoginAction::class, '/login', LoginAction::class);
 $router->post(Logout::class, '/logout', Logout::class);

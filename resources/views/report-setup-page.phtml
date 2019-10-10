@@ -4,9 +4,9 @@
     <?= $title ?>
 </h2>
 
-<form method="get" action="<?= e(route('report-run')) ?>" class="wt-page-options wt-page-options-report-setup">
+<form method="get" action="<?= e(route('report-run', ['tree' => $tree->name()])) ?>" class="wt-page-options wt-page-options-report-setup">
     <input type="hidden" name="route" value="report-run">
-    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
+    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
     <input type="hidden" name="report" value="<?= e($report) ?>">
 
     <div class="row form-group">

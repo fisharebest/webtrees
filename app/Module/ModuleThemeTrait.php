@@ -214,11 +214,11 @@ trait ModuleThemeTrait
         $route = $request->getAttribute('route');
 
         if (Auth::check() && $route === 'user-page') {
-            return new Menu(I18N::translate('Customize this page'), route('user-page-edit', ['ged' => $tree->name()]), 'menu-change-blocks');
+            return new Menu(I18N::translate('Customize this page'), route('user-page-edit', ['tree' => $tree->name()]), 'menu-change-blocks');
         }
 
         if (Auth::isManager($tree) && $route === 'tree-page') {
-            return new Menu(I18N::translate('Customize this page'), route('tree-page-edit', ['ged' => $tree->name()]), 'menu-change-blocks');
+            return new Menu(I18N::translate('Customize this page'), route('tree-page-edit', ['tree' => $tree->name()]), 'menu-change-blocks');
         }
 
         return null;
@@ -343,7 +343,7 @@ trait ModuleThemeTrait
      */
     public function menuMyPage(Tree $tree): Menu
     {
-        return new Menu(I18N::translate('My page'), route('user-page', ['ged' => $tree->name()]), 'menu-mypage');
+        return new Menu(I18N::translate('My page'), route('user-page', ['tree' => $tree->name()]), 'menu-mypage');
     }
 
     /**

@@ -249,7 +249,7 @@ class PendingChangesController extends AbstractBaseController
     public function showChanges(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = $request->getAttribute('tree');
-        $default_url = route('tree-page', ['ged' => $tree->name()]);
+        $default_url = route('tree-page', ['tree' => $tree->name()]);
 
         $url = $request->getQueryParams()['url'] ?? $default_url;
 

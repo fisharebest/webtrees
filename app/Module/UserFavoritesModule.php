@@ -182,7 +182,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
             }
         }
 
-        $url = route('user-page', ['ged' => $tree->name()]);
+        $url = route('user-page', ['tree' => $tree->name()]);
 
         return redirect($url);
     }
@@ -205,7 +205,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
                 ->delete();
         }
 
-        $url = route('user-page', ['ged' => $tree->name()]);
+        $url = route('user-page', ['tree' => $tree->name()]);
 
         return redirect($url);
     }

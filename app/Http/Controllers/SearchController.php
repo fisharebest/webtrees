@@ -448,7 +448,7 @@ class SearchController extends AbstractBaseController
             'search'  => $search,
             'replace' => $replace,
             'context' => $context,
-            'ged'     => $tree->name(),
+            'tree'    => $tree->name(),
         ]);
 
         return redirect($url);

@@ -356,13 +356,14 @@ class UserService
             $url = 'mailto:' . $contact_user->email();
         } elseif ($user instanceof User) {
             // Logged-in users send direct messages
-            $url = route('message', ['to' => $contact_user->userName()]);
+            $url = route('message', ['to' => $contact_user->userName(), 'tree' => $tree->name()]);
         } else {
             // Visitors use the contact form.
             $url = route('contact', [
-                'ged' => $tree ? $tree->name() : '',
-                'to'  => $contact_user->userName(),
-                'url' => $request->getAttribute('request_uri'),
+                'tree' => $tree ? $tree->name() : '',
+                'to'   => $contact_user->userName(),
+                'tree' => $tree->name(),
+                'url'  => $request->getAttribute('request_uri'),
             ]);
         }
 

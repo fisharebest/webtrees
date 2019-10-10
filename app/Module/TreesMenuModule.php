@@ -72,7 +72,7 @@ class TreesMenuModule extends AbstractModule implements ModuleMenuInterface
     public function getMenu(Tree $tree): ?Menu
     {
         if (Tree::all()->count() === 1 || Site::getPreference('ALLOW_CHANGE_GEDCOM') !== '1') {
-            return new Menu(I18N::translate('Family tree'), route('tree-page', ['ged' => $tree->name()]), 'menu-tree');
+            return new Menu(I18N::translate('Family tree'), route('tree-page', ['tree' => $tree->name()]), 'menu-tree');
         }
 
         $submenus = [];
@@ -82,7 +82,7 @@ class TreesMenuModule extends AbstractModule implements ModuleMenuInterface
             } else {
                 $active = '';
             }
-            $submenus[] = new Menu(e($menu_tree->title()), route('tree-page', ['ged' => $menu_tree->name()]), $active . 'menu-tree-' . $menu_tree->id());
+            $submenus[] = new Menu(e($menu_tree->title()), route('tree-page', ['tree' => $menu_tree->name()]), $active . 'menu-tree-' . $menu_tree->id());
         }
 
         return new Menu(I18N::translate('Family trees'), '#', 'menu-tree', [], $submenus);

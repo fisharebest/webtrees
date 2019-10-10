@@ -41,7 +41,7 @@ trait ModuleBlockTrait
         if ($context === self::CONTEXT_TREE_PAGE && Auth::isManager($tree)) {
             return route('tree-page-block-edit', [
                 'block_id' => $block_id,
-                'ged'      => $tree->name(),
+                'tree'     => $tree->name(),
             ]);
         }
 

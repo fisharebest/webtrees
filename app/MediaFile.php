@@ -269,7 +269,7 @@ class MediaFile
 
         $params = [
             'xref'      => $this->media->xref(),
-            'ged'       => $this->media->tree()->name(),
+            'tree'      => $this->media->tree()->name(),
             'fact_id'   => $this->fact_id,
             'w'         => $width,
             'h'         => $height,
@@ -318,7 +318,7 @@ class MediaFile
     {
         return route('media-download', [
             'xref'    => $this->media->xref(),
-            'ged'     => $this->media->tree()->name(),
+            'tree'    => $this->media->tree()->name(),
             'fact_id' => $this->fact_id,
         ]);
     }

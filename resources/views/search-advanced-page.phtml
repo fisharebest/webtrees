@@ -5,9 +5,9 @@
 </h2>
 
 <div id="advanced-search-page">
-    <form method="get" action="<?= e(route('search-advanced')) ?>" class="wt-page-options wt-page-options-search-advanced hidden-print mb-4">
-        <input type="hidden" name="route" value="search-advanced">
-        <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
+    <form method="get" action="<?= e(route('search-advanced', ['tree' => $tree->name()])) ?>" class="wt-page-options wt-page-options-search-advanced hidden-print mb-4">
+        <input type="hidden" name="route" value="<?= e(route('search-advanced', ['tree' => $tree->name()])) ?>">
+        <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
 
         <div class="row form-group wt-page-options-label mt-4">
             <div class="form-row mx-auto">

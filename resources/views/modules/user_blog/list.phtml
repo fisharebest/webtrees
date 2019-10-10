@@ -25,9 +25,9 @@ use Fisharebest\Webtrees\I18N;
 
         <?php if (Auth::isManager($tree)) : ?>
             <hr>
-            <form method="post" action="<?= e(route('module', ['module' => 'user_blog', 'action' => 'DeleteJournal', 'news_id' => $article->news_id, 'ged' => $tree->name()])) ?>">
+            <form method="post" action="<?= e(route('module', ['module' => 'user_blog', 'action' => 'DeleteJournal', 'news_id' => $article->news_id, 'tree' => $tree->name()])) ?>">
                 <?= csrf_field() ?>
-                <a class="btn btn-link" href="<?= e(route('module', ['module' => 'user_blog', 'action' => 'EditJournal', 'news_id' => $article->news_id, 'ged' => $tree->name()])) ?>">
+                <a class="btn btn-link" href="<?= e(route('module', ['module' => 'user_blog', 'action' => 'EditJournal', 'news_id' => $article->news_id, 'tree' => $tree->name()])) ?>">
                     <?= I18N::translate('Edit') ?>
                 </a>
                 |
@@ -44,7 +44,7 @@ use Fisharebest\Webtrees\I18N;
 <?php endif ?>
 
 <p>
-    <a class="btn btn-link" href="<?= e(route('module', ['module' => 'user_blog', 'action' => 'EditJournal', 'ged' => $tree->name()])) ?>">
+    <a class="btn btn-link" href="<?= e(route('module', ['module' => 'user_blog', 'action' => 'EditJournal', 'tree' => $tree->name()])) ?>">
         <?= I18N::translate('Add a journal entry') ?>
     </a>
 </p>

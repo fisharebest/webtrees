@@ -216,9 +216,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
             ]);
         }
 
-        $url = route('user-page', [
-            'ged' => $tree->name(),
-        ]);
+        $url = route('user-page', ['tree' => $tree->name()]);
 
         return redirect($url);
     }
@@ -238,9 +236,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
             ->where('user_id', '=', Auth::id())
             ->delete();
 
-        $url = route('user-page', [
-            'ged' => $tree->name(),
-        ]);
+        $url = route('user-page', ['tree' => $tree->name()]);
 
         return redirect($url);
     }

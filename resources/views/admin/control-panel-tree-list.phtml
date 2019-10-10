@@ -13,7 +13,7 @@ use Fisharebest\Webtrees\Module\SourceListModule;
 <?php foreach ($all_trees as $tree) : ?>
     <tr class="<?= $changes[$tree->id()] ? 'danger' : '' ?>">
         <th scope="row">
-            <a href="<?= e(route('tree-page', ['ged' => $tree->name()])) ?>">
+            <a href="<?= e(route('tree-page', ['tree' => $tree->name()])) ?>">
                 <?= e($tree->name()) ?>
                 -
                 <?= e($tree->title()) ?>

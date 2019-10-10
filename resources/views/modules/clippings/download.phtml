@@ -8,7 +8,7 @@ use Fisharebest\Webtrees\I18N;
 
 <form method="get" action="<?= e(route('module', ['module' => $module, 'action' => 'Download'])) ?>" class="wt-page-options wt-page-options-clippings-download hidden-print">
     <input type="hidden" name="route" value="<?= e('/module/' . $module . '/Download') ?>">
-    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
+    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
 
     <?php if ($is_manager) : ?>
         <div class="row form-group">
@@ -61,7 +61,7 @@ use Fisharebest\Webtrees\I18N;
                 <?= view('icons/download') ?>
                 <?= I18N::translate('download') ?>
             </button>
-            <a href="<?= e(route('module', ['module' => 'clippings', 'action' => 'Show', 'ged' => $tree->name()])) ?>" class="btn btn-secondary">
+            <a href="<?= e(route('module', ['module' => 'clippings', 'action' => 'Show', 'tree' => $tree->name()])) ?>" class="btn btn-secondary">
                 <?= view('icons/cancel') ?>
                 <?= I18N::translate('cancel') ?>
             </a>

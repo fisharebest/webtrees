@@ -8,7 +8,7 @@ use Fisharebest\Webtrees\I18N;
     <?= $title ?>
 </h2>
 
-<form method="get" action="<?= e(route('calendar')) ?>" name="dateform">
+<form method="get" action="<?= e(route('calendar', ['tree' => $tree->name()])) ?>" name="dateform">
     <input type="hidden" name="route" value="calendar">
     <input type="hidden" name="cal" value="<?= e($cal) ?>">
     <input type="hidden" name="day" value="<?= e($cal_date->day()) ?>">
@@ -24,12 +24,12 @@ use Fisharebest\Webtrees\I18N;
             </th>
             <td class="wt-page-options-value" colspan="3">
                 <?php for ($d = 1; $d <= $days_in_month; $d++) : ?>
-                    <a <?= $d === $cal_date->day() ? 'class="error"' : '' ?> href="<?= e(route('calendar', ['cal' => $cal, 'day' => $d, 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'day', 'ged' => $tree->name()])) ?>" rel="nofollow">
+                    <a <?= $d === $cal_date->day() ? 'class="error"' : '' ?> href="<?= e(route('calendar', ['cal' => $cal, 'day' => $d, 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'day', 'tree' => $tree->name()])) ?>" rel="nofollow">
                         <?= (new Date($cal_date->format("%@ {$d} %O %E")))->minimumDate()->format('%j') ?>
                     </a>
                     |
                 <?php endfor ?>
-                <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => $today->day(), 'month' => $today_month, 'year' => $today->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'day', 'ged' => $tree->name()])) ?>" rel="nofollow">
+                <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => $today->day(), 'month' => $today_month, 'year' => $today->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'day', 'tree' => $tree->name()])) ?>" rel="nofollow">
                     <b><?php $tmp = new Date($today->format('%@ %A %O %E')); echo $tmp->display() ?></b>
                 </a>
             </td>
@@ -40,7 +40,7 @@ use Fisharebest\Webtrees\I18N;
             </th>
             <td class="wt-page-options-value" colspan="3">
                 <?php foreach ($months as $m => $month_name) : ?>
-                    <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $m, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'month', 'ged' => $tree->name()])) ?>" rel="nofollow">
+                    <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $m, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'month', 'tree' => $tree->name()])) ?>" rel="nofollow">
                         <?php if ($m === $cal_month) : ?>
                             <span class="error"><?= e($month_name) ?></span>
                         <?php else : ?>
@@ -48,7 +48,7 @@ use Fisharebest\Webtrees\I18N;
                         <?php endif ?>
                     </a> |
                 <?php endforeach ?>
-                <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => min($cal_date->day(), $today->daysInMonth()), 'month' => $today_month, 'year' => $today->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'month', 'ged' => $tree->name()])) ?>" rel="nofollow">
+                <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => min($cal_date->day(), $today->daysInMonth()), 'month' => $today_month, 'year' => $today->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'month', 'tree' => $tree->name()])) ?>" rel="nofollow">
                     <b><?= $today->format('%F %Y') ?></b>
                 </a>
             </td>
@@ -58,15 +58,15 @@ use Fisharebest\Webtrees\I18N;
                 <label for="year"><?= I18N::translate('Year') ?></label>
             </th>
             <td class="wt-page-options-value">
-                <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year() === 1 ? -1 : $cal_date->year() - 1, 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => $view, 'ged' => $tree->name()])) ?>" rel="nofollow">
+                <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year() === 1 ? -1 : $cal_date->year() - 1, 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => $view, 'tree' => $tree->name()])) ?>" rel="nofollow">
                     -1
                 </a>
                 <input type="text" id="year" name="year" value="<?= $year ?>" size="4">
-                <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year() === -1 ? 1 : $cal_date->year() + 1, 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => $view, 'ged' => $tree->name()])) ?>" rel="nofollow">
+                <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year() === -1 ? 1 : $cal_date->year() + 1, 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => $view, 'tree' => $tree->name()])) ?>" rel="nofollow">
                     +1
                 </a>
                 |
-                <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $today->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => $view, 'ged' => $tree->name()])) ?>" rel="nofollow">
+                <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $today->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => $view, 'tree' => $tree->name()])) ?>" rel="nofollow">
                     <?= $today->format('%Y') ?>
                 </a>
             </td>
@@ -90,7 +90,7 @@ use Fisharebest\Webtrees\I18N;
                     </select>
                 <?php endif ?>
 
-                <a title="<?= I18N::translate('All individuals') ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => '', 'view' => $view, 'ged' => $tree->name()])) ?>" rel="nofollow">
+                <a title="<?= I18N::translate('All individuals') ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => '', 'view' => $view, 'tree' => $tree->name()])) ?>" rel="nofollow">
                     <?php if ($filtersx === '') : ?>
                         <?= view('icons/sex-M') ?>
                         <?= view('icons/sex-F') ?>
@@ -102,7 +102,7 @@ use Fisharebest\Webtrees\I18N;
                     <?php endif ?>
                 </a>
                 |
-                <a title="<?= I18N::translate('Males') ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => 'M', 'view' => $view, 'ged' => $tree->name()])) ?>" rel="nofollow">
+                <a title="<?= I18N::translate('Males') ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => 'M', 'view' => $view, 'tree' => $tree->name()])) ?>" rel="nofollow">
                     <?php if ($filtersx === 'M') : ?>
                         <?= view('icons/sex-M') ?>
                     <?php else: ?>
@@ -112,7 +112,7 @@ use Fisharebest\Webtrees\I18N;
                     <?php endif ?>
                 </a>
                 |
-                <a title="<?= I18N::translate('Females') ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => 'F', 'view' => $view, 'ged' => $tree->name()])) ?>" rel="nofollow">
+                <a title="<?= I18N::translate('Females') ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => 'F', 'view' => $view, 'tree' => $tree->name()])) ?>" rel="nofollow">
                     <?php if ($filtersx === 'F') : ?>
                         <?= view('icons/sex-F') ?>
                     <?php else: ?>
@@ -161,15 +161,15 @@ use Fisharebest\Webtrees\I18N;
     <table class="w-100">
         <tr>
             <td class="topbottombar text-center">
-                <a class="<?= $view === 'day' ? 'error' : '' ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'day', 'ged' => $tree->name()])) ?>" rel="nofollow">
+                <a class="<?= $view === 'day' ? 'error' : '' ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'day', 'tree' => $tree->name()])) ?>" rel="nofollow">
                     <?= I18N::translate('View this day') ?>
                 </a>
                 |
-                <a class="<?= $view === 'month' ? 'error' : '' ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'month', 'ged' => $tree->name()])) ?>" rel="nofollow">
+                <a class="<?= $view === 'month' ? 'error' : '' ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'month', 'tree' => $tree->name()])) ?>" rel="nofollow">
                     <?= I18N::translate('View this month') ?>
                 </a>
                 |
-                <a class="<?= $view === 'year' ? 'error' : '' ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'year', 'ged' => $tree->name()])) ?>" rel="nofollow">
+                <a class="<?= $view === 'year' ? 'error' : '' ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'year', 'tree' => $tree->name()])) ?>" rel="nofollow">
                     <?= I18N::translate('View this year') ?>
                 </a>
             </td>
@@ -182,7 +182,7 @@ use Fisharebest\Webtrees\I18N;
                         if ($n++) {
                             echo ' | ';
                         }
-                        echo '<a ' . (get_class($tmp) === get_class($cal_date) ? 'class="error"' : '') . 'href="' . e(route('calendar', ['cal' => $tmp->format('%@'), 'day' => $tmp->day(), 'month' => $tmp->format('%O'), 'year' => $tmp->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => $view, 'ged' => $tree->name()])) . '" rel="nofollow">', $cal_name, '</a>';
+                        echo '<a ' . (get_class($tmp) === get_class($cal_date) ? 'class="error"' : '') . 'href="' . e(route('calendar', ['cal' => $tmp->format('%@'), 'day' => $tmp->day(), 'month' => $tmp->format('%O'), 'year' => $tmp->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => $view, 'tree' => $tree->name()])) . '" rel="nofollow">', $cal_name, '</a>';
                     }
                 } ?>
             </td>
@@ -190,6 +190,6 @@ use Fisharebest\Webtrees\I18N;
     </table>
 </form>
 
-<div class="wt-ajax-load wt-page-content" data-ajax-url="<?= e(route('calendar-events', ['ged' => $tree->name(), 'cal' => $cal, 'day' => $day, 'month' => $month, 'year' => $year, 'view' => $view, 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx])) ?>"></div>
+<div class="wt-ajax-load wt-page-content" data-ajax-url="<?= e(route('calendar-events', ['tree' => $tree->name(), 'cal' => $cal, 'day' => $day, 'month' => $month, 'year' => $year, 'view' => $view, 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx])) ?>"></div>
 
 <?= view('modals/ajax') ?>

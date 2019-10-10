@@ -50,7 +50,7 @@ trait ModuleReportTrait
             $this->title(),
             route('report-setup', [
                 'xref'   => $individual->xref(),
-                'ged'    => $individual->tree()->name(),
+                'tree'   => $individual->tree()->name(),
                 'report' => $this->name(),
             ]),
             'menu-report-' . $this->name(),

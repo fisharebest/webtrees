@@ -97,9 +97,9 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             ->delete();
 
         if ($request->getQueryParams()['context'] === ModuleBlockInterface::CONTEXT_USER_PAGE) {
-            $url = route('user-page', ['ged' => $tree->name()]);
+            $url = route('user-page', ['tree' => $tree->name()]);
         } else {
-            $url = route('tree-page', ['ged' => $tree->name()]);
+            $url = route('tree-page', ['tree' => $tree->name()]);
         }
 
         return redirect($url);
@@ -140,11 +140,11 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
 
         $content = '';
         if ($users->isNotEmpty()) {
-            $url = route('user-page', ['ged' => $tree->name()]);
+            $url = route('user-page', ['tree' => $tree->name()]);
 
-            $content .= '<form method="get" action="' . e(route('message')) . '" onsubmit="return $(&quot;#to&quot;).val() !== &quot;&quot;">';
+            $content .= '<form method="get" action="' . e(route('message', ['tree' => $tree->name()])) . '" onsubmit="return $(&quot;#to&quot;).val() !== &quot;&quot;">';
             $content .= '<input type="hidden" name="route" value="message">';
-            $content .= '<input type="hidden" name="ged" value="' . e($tree->name()) . '">';
+            $content .= '<input type="hidden" name="tree" value="' . e($tree->name()) . '">';
             $content .= '<input type="hidden" name="url" value="' . e($url) . '">';
             $content .= '<label for="to">' . I18N::translate('Send a message') . '</label>';
             $content .= '<select id="to" name="to">';
@@ -160,7 +160,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
                 'action'  => 'DeleteMessage',
                 'module'  => $this->name(),
                 'context' => $context,
-                'ged'     => $tree->name(),
+                'tree'     => $tree->name(),
             ])) . '" data-confirm="' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '" onsubmit="return confirm(this.dataset.confirm);" id="messageform" name="messageform">';
         $content .= csrf_field();
 
@@ -199,9 +199,9 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
                 // If this user still exists, show a reply link.
                 if ($user) {
                     $reply_url = route('message', [
-                        'to'      => $user->userName(),
                         'subject' => $message->subject,
-                        'ged'     => $tree->name(),
+                        'to'      => $user->userName(),
+                        'tree'    => $tree->name(),
                     ]);
 
                     $content .= '<a class="btn btn-primary" href="' . e($reply_url) . '" title="' . I18N::translate('Reply') . '">' . I18N::translate('Reply') . '</a> ';

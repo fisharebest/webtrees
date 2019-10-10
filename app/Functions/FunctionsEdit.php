@@ -482,10 +482,7 @@ class FunctionsEdit
                     'name'                    => $name,
                     'value'                   => $value,
                     'type'                    => 'text',
-                    'data-autocomplete-url'   => route('autocomplete-page', [
-                        'ged'   => $tree->name(),
-                        'query' => 'QUERY',
-                    ]),
+                    'data-autocomplete-url'   => route('autocomplete-page', ['tree'  => $tree->name(), 'query' => 'QUERY']),
                     'data-autocomplete-extra' => '#' . $previous_ids['SOUR'],
                 ]) . '>';
         } elseif ($fact === 'PEDI') {
@@ -499,10 +496,7 @@ class FunctionsEdit
                     'name'                  => $name,
                     'value'                 => $value,
                     'type'                  => 'text',
-                    'data-autocomplete-url' => route('autocomplete-place', [
-                        'ged'   => $tree->name(),
-                        'query' => 'QUERY',
-                    ]),
+                    'data-autocomplete-url' => route('autocomplete-place', ['tree'  => $tree->name(), 'query' => 'QUERY']),
                 ]) . '>';
 
             /** @TODO - typeaheadjs.css doesn't work in an input-group */

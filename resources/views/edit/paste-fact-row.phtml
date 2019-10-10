@@ -8,7 +8,7 @@
         </label>
     </th>
     <td>
-        <form method="post" action="<?= route('paste-fact', ['ged' => $record->tree()->name(), 'xref' => $record->xref()]) ?>">
+        <form method="post" action="<?= route('paste-fact', ['tree' => $record->tree()->name(), 'xref' => $record->xref()]) ?>">
             <?= csrf_field() ?>
             <div class="input-group">
                 <select class="custom-select" id="paste-fact" name="fact_id">

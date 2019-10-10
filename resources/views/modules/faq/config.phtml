@@ -17,16 +17,16 @@ use Fisharebest\Webtrees\I18N;
 <p>
 <form method="get" action="<?= e(route('module', ['module' => $module, 'action' => 'Admin'])) ?>" class="form form-inline">
     <input type="hidden" name="route" value="<?= e('/module/' . $module . '/Admin') ?>">
-    <label for="ged" class="sr-only">
+    <label for="tree" class="sr-only">
         <?= I18N::translate('Family tree') ?>
     </label>
-    <?= view('components/select', ['name' => 'ged', 'selected' => $tree->name(), 'options' => $tree_names]) ?>
+    <?= view('components/select', ['name' => 'tree', 'selected' => $tree->name(), 'options' => $tree_names]) ?>
     <input type="submit" class="btn btn-primary" value="<?= I18N::translate('show') ?>">
 </form>
 </p>
 
 <p>
-    <a href="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminEdit', 'ged' => $tree->name()])) ?>" class="btn btn-link">
+    <a href="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminEdit', 'tree' => $tree->name()])) ?>" class="btn btn-link">
         <?= view('icons/add') ?>
         <?= /* I18N: FAQ = “Frequently Asked Question” */
         I18N::translate('Add an FAQ') ?>
@@ -63,7 +63,7 @@ use Fisharebest\Webtrees\I18N;
                 </td>
                 <td>
                     <?php if ($faq->block_order != $min_block_order) : ?>
-                        <form method="post" action="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminMoveUp', 'block_id' => $faq->block_id, 'ged' => $tree->name()])) ?>">
+                        <form method="post" action="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminMoveUp', 'block_id' => $faq->block_id, 'tree' => $tree->name()])) ?>">
                             <?= csrf_field() ?>
                             <button type="submit" class="btn btn-secondary">
                                 <?= view('icons/arrow-up') ?>
@@ -74,7 +74,7 @@ use Fisharebest\Webtrees\I18N;
                 </td>
                 <td>
                     <?php if ($faq->block_order != $max_block_order) : ?>
-                        <form method="post" action="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminMoveDown', 'block_id' => $faq->block_id, 'ged' => $tree->name()])) ?>">
+                        <form method="post" action="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminMoveDown', 'block_id' => $faq->block_id, 'tree' => $tree->name()])) ?>">
                             <?= csrf_field() ?>
                             <button type="submit" class="btn btn-secondary">
                                 <?= view('icons/arrow-down') ?>
@@ -84,13 +84,13 @@ use Fisharebest\Webtrees\I18N;
                     <?php endif ?>
                 </td>
                 <td>
-                    <a href="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminEdit', 'block_id' => $faq->block_id, 'ged' => $tree->name()])) ?>" class="btn btn-primary">
+                    <a href="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminEdit', 'block_id' => $faq->block_id, 'tree' => $tree->name()])) ?>" class="btn btn-primary">
                         <?= view('icons/edit') ?>
                         <?= I18N::translate('Edit') ?>
                     </a>
                 </td>
                 <td>
-                    <form method="post" action="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminDelete', 'block_id' => $faq->block_id, 'ged' => $tree->name()])) ?>">
+                    <form method="post" action="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminDelete', 'block_id' => $faq->block_id, 'tree' => $tree->name()])) ?>">
                         <?= csrf_field() ?>
                         <button type="submit" class="btn btn-danger" onclick="return confirm(this.dataset.confirm);" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($faq->header)) ?>">
                             <?= view('icons/delete') ?>

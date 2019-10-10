@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\I18N;
                 <?php elseif ($family === null): ?>
                     <div class="wt-chart-box">
                         <?php if ($individual->canEdit()): ?>
-                            <a class="btn btn-link" href="<?= e(route('add-parent-to-individual', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref(), 'gender' => 'M'])) ?>">
+                            <a class="btn btn-link" href="<?= e(route('add-parent-to-individual', ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'gender' => 'M'])) ?>">
                                 <?= I18N::translate('Add a father') ?>
                             </a>
                         <?php endif ?>
@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\I18N;
                 <?php elseif ($family->husband() === null): ?>
                     <div class="wt-chart-box">
                         <?php if ($family->canEdit()): ?>
-                            <a class="btn btn-link" href="<?= e(route('add-spouse-to-family', ['ged' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'HUSB'])) ?>">
+                            <a class="btn btn-link" href="<?= e(route('add-spouse-to-family', ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'HUSB'])) ?>">
                                 <?= I18N::translate('Add a father') ?>
                             </a>
                         <?php endif ?>
@@ -50,7 +50,7 @@ use Fisharebest\Webtrees\I18N;
                 <?php elseif ($family === null): ?>
                     <div class="wt-chart-box">
                         <?php if ($individual->canEdit()): ?>
-                            <a class="btn btn-link" href="<?= e(route('add-parent-to-individual', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref(), 'gender' => 'F'])) ?>">
+                            <a class="btn btn-link" href="<?= e(route('add-parent-to-individual', ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'gender' => 'F'])) ?>">
                                 <?= I18N::translate('Add a mother') ?>
                             </a>
                         <?php endif ?>
@@ -58,7 +58,7 @@ use Fisharebest\Webtrees\I18N;
                 <?php elseif ($family->wife() === null): ?>
                     <div class="wt-chart-box">
                         <?php if ($family->canEdit()): ?>
-                            <a class="btn btn-link" href="<?= e(route('add-spouse-to-family', ['ged' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'WIFE'])) ?>">
+                            <a class="btn btn-link" href="<?= e(route('add-spouse-to-family', ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'WIFE'])) ?>">
                                 <?= I18N::translate('Add a mother') ?>
                             </a>
                         <?php endif ?>

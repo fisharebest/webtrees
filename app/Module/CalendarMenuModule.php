@@ -88,7 +88,7 @@ class CalendarMenuModule extends AbstractModule implements ModuleMenuInterface
     {
         return new Menu(I18N::translate('Day'), route('calendar', [
             'view' => 'day',
-            'ged'  => $tree->name(),
+            'tree' => $tree->name(),
         ]), 'menu-calendar-day', ['rel' => 'nofollow']);
     }
 
@@ -101,7 +101,7 @@ class CalendarMenuModule extends AbstractModule implements ModuleMenuInterface
     {
         return new Menu(I18N::translate('Month'), route('calendar', [
             'view' => 'month',
-            'ged'  => $tree->name(),
+            'tree' => $tree->name(),
         ]), 'menu-calendar-month', ['rel' => 'nofollow']);
     }
 
@@ -114,7 +114,7 @@ class CalendarMenuModule extends AbstractModule implements ModuleMenuInterface
     {
         return new Menu(I18N::translate('Year'), route('calendar', [
             'view' => 'year',
-            'ged'  => $tree->name(),
+            'tree' => $tree->name(),
         ]), 'menu-calendar-year', ['rel' => 'nofollow']);
     }
 }

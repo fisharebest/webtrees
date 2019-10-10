@@ -108,7 +108,7 @@ use Fisharebest\Webtrees\View;
     document.querySelector('#census-assistant-class').value = census;
     document.querySelector('#census-assistant-title').value = censusYear + ' ' + censusPlace + ' - <?= I18N::translate('Census transcript') ?> - <?= strip_tags($individual->fullName()) ?> - <?= I18N::translate('Household') ?>';
 
-    fetch('<?= route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusHeader', 'ged' => $individual->tree()->name()]) ?>&census=' + census)
+    fetch('<?= route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusHeader', 'tree' => $individual->tree()->name()]) ?>&census=' + census)
       .then(function (response) {
         return response.text();
       })
@@ -138,7 +138,7 @@ use Fisharebest\Webtrees\View;
     var headTd         = document.querySelector('#census-assistant-table td');
     var head           = headTd === null ? xref : headTd.innerHTML;
 
-    fetch('<?= route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusIndividual', 'ged' => $individual->tree()->name()]) ?>&census=' + encodeURIComponent(census) + '&xref=' + encodeURIComponent(xref) + '&head=' + encodeURIComponent(head), {credentials: 'same-origin'})
+    fetch('<?= route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusIndividual', 'tree' => $individual->tree()->name()]) ?>&census=' + encodeURIComponent(census) + '&xref=' + encodeURIComponent(xref) + '&head=' + encodeURIComponent(head), {credentials: 'same-origin'})
       .then(function (response) {
         return response.text();
       })
@@ -156,7 +156,7 @@ use Fisharebest\Webtrees\View;
     var indi_selector  = document.querySelector('#census-assistant-individual');
     var xref           = indi_selector.options[indi_selector.selectedIndex].value;
 
-    fetch('<?= route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusIndividual', 'ged' => $individual->tree()->name()]) ?>&census=' + encodeURIComponent(census) + '&xref=' + encodeURIComponent(xref) + '&head=' + encodeURIComponent(xref), {credentials: 'same-origin'})
+    fetch('<?= route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusIndividual', 'tree' => $individual->tree()->name()]) ?>&census=' + encodeURIComponent(census) + '&xref=' + encodeURIComponent(xref) + '&head=' + encodeURIComponent(xref), {credentials: 'same-origin'})
       .then(function (response) {
         return response.text();
       })

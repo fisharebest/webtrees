@@ -148,7 +148,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
             new Menu($this->title(), route('module', [
                 'module' => $this->name(),
                 'action' => 'Show',
-                'ged'    => $tree->name(),
+                'tree'    => $tree->name(),
             ]), 'menu-clippings-cart', ['rel' => 'nofollow']),
         ];
 
@@ -159,7 +159,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                 'module' => $this->name(),
                 'action' => $action,
                 'xref'   => $xref,
-                'ged'    => $tree->name(),
+                'tree'    => $tree->name(),
             ]);
 
             $submenus[] = new Menu(I18N::translate('Add to the clippings cart'), $add_route, 'menu-clippings-add', ['rel' => 'nofollow']);
@@ -169,12 +169,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
             $submenus[] = new Menu(I18N::translate('Empty the clippings cart'), route('module', [
                 'module' => $this->name(),
                 'action' => 'Empty',
-                'ged'    => $tree->name(),
+                'tree'    => $tree->name(),
             ]), 'menu-clippings-empty', ['rel' => 'nofollow']);
             $submenus[] = new Menu(I18N::translate('Download'), route('module', [
                 'module' => $this->name(),
                 'action' => 'DownloadForm',
-                'ged'    => $tree->name(),
+                'tree'    => $tree->name(),
             ]), 'menu-clippings-download', ['rel' => 'nofollow']);
         }
 
@@ -346,7 +346,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $url = route('module', [
             'module' => $this->name(),
             'action' => 'Show',
-            'ged'    => $tree->name(),
+            'tree'    => $tree->name(),
         ]);
 
         return redirect($url);
@@ -369,7 +369,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $url = route('module', [
             'module' => $this->name(),
             'action' => 'Show',
-            'ged'    => $tree->name(),
+            'tree'    => $tree->name(),
         ]);
 
         return redirect($url);

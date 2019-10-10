@@ -171,11 +171,11 @@ class IndividualController extends AbstractBaseController
      */
     public function tab(ServerRequestInterface $request): ResponseInterface
     {
+        $module_name = $request->getAttribute('module');
         $tree        = $request->getAttribute('tree');
         $user        = $request->getAttribute('user');
-        $xref        = $request->getQueryParams()['xref'];
+        $xref        = $request->getAttribute('xref');
         $record      = Individual::getInstance($xref, $tree);
-        $module_name = $request->getQueryParams()['module'];
         $module      = $this->module_service->findByName($module_name);
 
         if (!$module instanceof ModuleTabInterface) {

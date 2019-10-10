@@ -41,8 +41,7 @@ class UseTree implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // Most requests will need the current tree and user.
-        $ged  = $request->getQueryParams()['ged'] ?? $request->getParsedBody()['ged'] ?? '';
-        $tree = Tree::findByName($ged);
+        $tree = Tree::findByName($request->getQueryParams()['tree'] ?? $request->getParsedBody()['tree'] ?? '');
 
         // No tree specified/available?  Choose one.
         if ($tree === null && $request->getMethod() === RequestMethodInterface::METHOD_GET) {

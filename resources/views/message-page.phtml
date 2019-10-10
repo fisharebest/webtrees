@@ -2,10 +2,10 @@
 
 <h2><?= $title ?></h2>
 
-<form method="post" action="<?= e(route('message-action')) ?>">
+<form method="post" action="<?= e(route('message-action', ['tree' => $tree->name()])) ?>">
     <?= csrf_field() ?>
     <input type="hidden" name="url" value="<?= e($url) ?>">
-    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
+    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
 
     <div class="form-group row">
         <label class="col-sm-3 col-form-label" for="from">

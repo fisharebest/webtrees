@@ -9,6 +9,6 @@ use Fisharebest\Webtrees\I18N;
 
 <?= I18N::translate('Follow this link to verify your email address.') ?>
 
-<?= route(VerifyEmail::class, ['username' => $user->userName(), 'token' => $user->getPreference('reg_hashcode'), 'ged' => $tree ? $tree->name() : '']) ?>
+<?= route(VerifyEmail::class, ['username' => $user->userName(), 'token' => $user->getPreference('reg_hashcode'), 'tree' => $tree ? $tree->name() : '']) ?>
 
 <?= I18N::translate('If you didn’t request an account, you can just delete this message.') ?>

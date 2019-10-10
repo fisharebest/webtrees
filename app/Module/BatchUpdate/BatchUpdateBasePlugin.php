@@ -140,7 +140,7 @@ abstract class BatchUpdateBasePlugin
         return preg_replace(
             "/@([^#@\n]+)@/m",
             '<a href="' . e(route('edit-raw-record', [
-                'ged'  => $record->tree()->name(),
+                'tree'  => $record->tree()->name(),
                 'xref' => $record->xref(),
             ])) . '">@\\1@</a>',
             $gedrec

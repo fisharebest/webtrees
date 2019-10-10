@@ -69,7 +69,7 @@ class FamilyGroupReportModule extends AbstractModule implements ModuleReportInte
         return new Menu(
             $this->title(),
             route('report-setup', [
-                'ged'    => $individual->tree()->name(),
+                'tree'   => $individual->tree()->name(),
                 'xref'   => $xref,
                 'report' => $this->name(),
             ]),

@@ -2,7 +2,7 @@
 
 <div class="gedcom_stats">
     <p>
-        <a href="<?= e(route('tree-page')) ?>">#gedcomTitle#</a>
+        <a href="<?= e(route('tree-page', ['tree' => $tree])) ?>">#gedcomTitle#</a>
     </p>
 
     <?= I18N::translate('This family tree was last updated on %s.', '#gedcomUpdated#') ?>

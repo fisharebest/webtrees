@@ -9,7 +9,7 @@
 
 <form method="post" action="<?= e(route('update-fact')) ?>" class="wt-page-content">
     <?= csrf_field() ?>
-    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
+    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
     <input type="hidden" name="xref" value="<?= e($record->xref()) ?>">
     <input type="hidden" name="fact_id" value="<?= e($edit_fact->id()) ?>">
 
@@ -118,7 +118,7 @@
                 I18N::translate('cancel') ?>
             </a>
             <?php if ($can_edit_raw) : ?>
-                <a class="btn btn-link" href="<?= e(route('edit-raw-fact', ['xref' => $record->xref(), 'fact_id' => $edit_fact->id(), 'ged' => $tree->name()])) ?>">
+                <a class="btn btn-link" href="<?= e(route('edit-raw-fact', ['xref' => $record->xref(), 'fact_id' => $edit_fact->id(), 'tree' => $tree->name()])) ?>">
                     <?= I18N::translate('Edit the raw GEDCOM') ?>
                 </a>
             <?php endif; ?>

@@ -142,7 +142,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
         if (Auth::isEditor($tree) && $tree->hasPendingEdit()) {
             $content = '';
             if (Auth::isModerator($tree)) {
-                $content .= '<a href="' . e(route('show-pending', ['ged' => $tree->name()])) . '">' . I18N::translate('There are pending changes for you to moderate.') . '</a><br>';
+                $content .= '<a href="' . e(route('show-pending', ['tree' => $tree->name()])) . '">' . I18N::translate('There are pending changes for you to moderate.') . '</a><br>';
             }
             if ($sendmail) {
                 $last_email_timestamp = Carbon::createFromTimestamp((int) Site::getPreference('LAST_CHANGE_EMAIL'));

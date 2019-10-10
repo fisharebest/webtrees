@@ -42,7 +42,7 @@
             <tr>
                 <th scope="row"></th>
                 <td>
-                    <a href="<?= e(route('add-spouse-to-family', ['ged' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'HUSB'])) ?>">
+                    <a href="<?= e(route('add-spouse-to-family', ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'HUSB'])) ?>">
                         <?= I18N::translate('Add a husband') ?>
                     </a>
                 </td>
@@ -79,7 +79,7 @@
             <tr>
                 <th scope="row"></th>
                 <td>
-                    <a href="<?= e(route('add-spouse-to-family', ['ged' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'WIFE'])) ?>">
+                    <a href="<?= e(route('add-spouse-to-family', ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'WIFE'])) ?>">
                         <?= I18N::translate('Add a wife') ?>
                     </a>
                 </td>
@@ -122,7 +122,7 @@
                 <th scope="row">
                 </th>
                 <td>
-                    <a href="<?= e(route('add-fact', ['ged' => $family->tree()->name(), 'xref' => $family->xref(), 'fact' => 'MARR'])) ?>">
+                    <a href="<?= e(route('add-fact', ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'fact' => 'MARR'])) ?>">
                         <?= I18N::translate('Add marriage details') ?>
                     </a>
                 </td>
@@ -190,14 +190,14 @@
             <tr>
                 <th scope="row">
                     <?php if ($family->children()->count() > 1) : ?>
-                        <a href="<?= e(route('reorder-children', ['ged' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
+                        <a href="<?= e(route('reorder-children', ['tree' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
                             <?= view('icons/reorder') ?>
                             <?= I18N::translate('Re-order children') ?>
                         </a>
                     <?php endif; ?>
                 </th>
                 <td>
-                    <a href="<?= e(route('add-child-to-family', ['gender' => 'U', 'ged' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
+                    <a href="<?= e(route('add-child-to-family', ['gender' => 'U', 'tree' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
                         <?php if ($type === 'FAMS') : ?>
                             <?= I18N::translate('Add a son or daughter') ?>
                         <?php else : ?>
@@ -205,9 +205,9 @@
                         <?php endif ?>
                     </a>
 
-                    <a href="<?= e(route('add-child-to-family', ['gender' => 'M', 'ged' => $family->tree()->name(), 'xref' => $family->xref()])) ?>" class="icon-sex_m_15x15"></a>
+                    <a href="<?= e(route('add-child-to-family', ['gender' => 'M', 'tree' => $family->tree()->name(), 'xref' => $family->xref()])) ?>" class="icon-sex_m_15x15"></a>
 
-                    <a href="<?= e(route('add-child-to-family', ['gender' => 'F', 'ged' => $family->tree()->name(), 'xref' => $family->xref()])) ?>" class="icon-sex_f_15x15"></a>
+                    <a href="<?= e(route('add-child-to-family', ['gender' => 'F', 'tree' => $family->tree()->name(), 'xref' => $family->xref()])) ?>" class="icon-sex_f_15x15"></a>
                 </td>
             </tr>
         <?php endif ?>

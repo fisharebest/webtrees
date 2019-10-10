@@ -67,10 +67,10 @@ class NoRouteFound implements MiddlewareInterface
                 }
 
                 // Not logged in?  Go to the tree's page.
-                return redirect(route('tree-page', ['ged' => $tree->name()]));
+                return redirect(route('tree-page', ['tree' => $tree->name()]));
             }
 
-            return redirect(route('admin-trees', ['ged' => $tree->name()]));
+            return redirect(route('admin-trees', ['tree' => $tree->name()]));
         }
 
         // No tree available?  Create one.

@@ -70,11 +70,11 @@ class CalendarController extends AbstractBaseController
     public function page(ServerRequestInterface $request): ResponseInterface
     {
         $tree     = $request->getAttribute('tree');
+        $view     = $request->getAttribute('view');
         $cal      = $request->getQueryParams()['cal'] ?? '';
         $day      = $request->getQueryParams()['day'] ?? '';
         $month    = $request->getQueryParams()['month'] ?? '';
         $year     = $request->getQueryParams()['year'] ?? '';
-        $view     = $request->getQueryParams()['view'] ?? 'day';
         $filterev = $request->getQueryParams()['filterev'] ?? 'BIRT-MARR-DEAT';
         $filterof = $request->getQueryParams()['filterof'] ?? 'all';
         $filtersx = $request->getQueryParams()['filtersx'] ?? '';
@@ -165,13 +165,13 @@ class CalendarController extends AbstractBaseController
     public function calendar(ServerRequestInterface $request): ResponseInterface
     {
         $tree            = $request->getAttribute('tree');
+        $view            = $request->getAttribute('view');
         $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
 
         $cal      = $request->getQueryParams()['cal'] ?? '';
         $day      = $request->getQueryParams()['day'] ?? '';
         $month    = $request->getQueryParams()['month'] ?? '';
         $year     = $request->getQueryParams()['year'] ?? '';
-        $view     = $request->getQueryParams()['view'] ?? 'day';
         $filterev = $request->getQueryParams()['filterev'] ?? 'BIRT-MARR-DEAT';
         $filterof = $request->getQueryParams()['filterof'] ?? 'all';
         $filtersx = $request->getQueryParams()['filtersx'] ?? '';

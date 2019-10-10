@@ -42,9 +42,7 @@ class LoginPage extends AbstractBaseController
 
         // Already logged in?
         if ($user instanceof User) {
-            $ged = $tree !== null ? $tree->name() : '';
-
-            return redirect(route('user-page', ['ged' => $ged]));
+            return redirect(route('user-page', ['tree' => $tree ? $tree->name() : '']));
         }
 
         $error    = $request->getQueryParams()['error'] ?? '';

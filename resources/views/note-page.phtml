@@ -73,7 +73,7 @@
                         <?= I18N::translate('Shared note') ?>
                         <?php if (Auth::isEditor($note->tree())) : ?>
                             <div class="editfacts">
-                                <a class="btn btn-link" href="<?= e(route('edit-note-object', ['xref' => $note->xref(), 'ged' => $note->tree()->name()])) ?>" title="<?= I18N::translate('Edit') ?>">
+                                <a class="btn btn-link" href="<?= e(route('edit-note-object', ['xref' => $note->xref(), 'tree' => $note->tree()->name()])) ?>" title="<?= I18N::translate('Edit') ?>">
                                     <?= view('icons/edit') ?>
                                     <span class="sr-only">
                                         <?= I18N::translate('Edit') ?>

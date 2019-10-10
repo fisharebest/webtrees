@@ -101,7 +101,7 @@ trait ModuleChartTrait
                 'module' => $this->name(),
                 'action' => 'Chart',
                 'xref'   => $individual->xref(),
-                'ged'    => $individual->tree()->name(),
+                'tree'    => $individual->tree()->name(),
         ] + $parameters);
     }
 

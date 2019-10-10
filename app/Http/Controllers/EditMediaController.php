@@ -111,7 +111,7 @@ class EditMediaController extends AbstractEditController
         $title = trim(preg_replace('/\s+/', ' ', $title));
 
         if ($media === null || $media->isPendingDeletion() || !$media->canEdit()) {
-            return redirect(route('tree-page', ['ged' => $tree->name()]));
+            return redirect(route('tree-page', ['tree' => $tree->name()]));
         }
 
         $file = $this->uploadFile($request);
@@ -202,7 +202,7 @@ class EditMediaController extends AbstractEditController
 
         // Media object oes not exist?  Media object is read-only?
         if ($media === null || $media->isPendingDeletion() || !$media->canEdit()) {
-            return redirect(route('tree-page', ['ged' => $tree->name()]));
+            return redirect(route('tree-page', ['tree' => $tree->name()]));
         }
 
         // Find the fact we are editing.
@@ -215,7 +215,7 @@ class EditMediaController extends AbstractEditController
 
         // Media file does not exist?
         if ($media_file === null) {
-            return redirect(route('tree-page', ['ged' => $tree->name()]));
+            return redirect(route('tree-page', ['tree' => $tree->name()]));
         }
 
         // We can edit the file as either a URL or a folder/file

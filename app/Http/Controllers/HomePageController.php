@@ -125,7 +125,7 @@ class HomePageController extends AbstractBaseController
         return $this->viewResponse('modules/edit-block-config', [
             'block'      => $block,
             'block_id'   => $block_id,
-            'cancel_url' => route('tree-page', ['ged' => $tree->name()]),
+            'cancel_url' => route('tree-page', ['tree' => $tree->name()]),
             'title'      => $title,
             'tree'       => $tree,
         ]);
@@ -147,7 +147,7 @@ class HomePageController extends AbstractBaseController
 
         $block->saveBlockConfiguration($request, $block_id);
 
-        return redirect(route('tree-page', ['ged' => $tree->name()]));
+        return redirect(route('tree-page', ['tree' => $tree->name()]));
     }
 
     /**
@@ -204,7 +204,7 @@ class HomePageController extends AbstractBaseController
         return $this->viewResponse('modules/edit-block-config', [
             'block'      => $block,
             'block_id'   => $block_id,
-            'cancel_url' => route('user-page', ['ged' => $tree->name()]),
+            'cancel_url' => route('user-page', ['tree' => $tree->name()]),
             'title'      => $title,
             'tree'       => $tree,
         ]);
@@ -226,7 +226,7 @@ class HomePageController extends AbstractBaseController
 
         $block->saveBlockConfiguration($request, $block_id);
 
-        return redirect(route('user-page', ['ged' => $tree->name()]));
+        return redirect(route('user-page', ['tree' => $tree->name()]));
     }
 
     /**
@@ -393,8 +393,8 @@ class HomePageController extends AbstractBaseController
 
         $all_blocks = $this->availableTreeBlocks();
         $title      = I18N::translate('Change the “Home page” blocks');
-        $url_cancel = route('tree-page', ['ged' => $tree->name()]);
-        $url_save   = route('tree-page-update', ['ged' => $tree->name()]);
+        $url_cancel = route('tree-page', ['tree' => $tree->name()]);
+        $url_save   = route('tree-page-update', ['tree' => $tree->name()]);
 
         return $this->viewResponse('edit-blocks-page', [
             'all_blocks'  => $all_blocks,
@@ -439,7 +439,7 @@ class HomePageController extends AbstractBaseController
 
         $this->updateTreeBlocks($tree->id(), $main_blocks, $side_blocks);
 
-        return redirect(route('tree-page', ['ged' => $tree->name()]));
+        return redirect(route('tree-page', ['tree' => $tree->name()]));
     }
 
     /**
@@ -567,8 +567,8 @@ class HomePageController extends AbstractBaseController
         $side_blocks = $this->userBlocks($user->id(), self::SIDE_BLOCKS);
         $all_blocks  = $this->availableUserBlocks();
         $title       = I18N::translate('Change the “My page” blocks');
-        $url_cancel  = route('user-page', ['ged' => $tree->name()]);
-        $url_save    = route('user-page-update', ['ged' => $tree->name()]);
+        $url_cancel  = route('user-page', ['tree' => $tree->name()]);
+        $url_save    = route('user-page-update', ['tree' => $tree->name()]);
 
         return $this->viewResponse('edit-blocks-page', [
             'all_blocks'  => $all_blocks,
@@ -613,7 +613,7 @@ class HomePageController extends AbstractBaseController
 
         $this->updateUserBlocks($user->id(), $main_blocks, $side_blocks);
 
-        return redirect(route('user-page', ['ged' => $tree->name()]));
+        return redirect(route('user-page', ['tree' => $tree->name()]));
     }
 
     /**
@@ -625,6 +625,7 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageUserEdit(ServerRequestInterface $request): ResponseInterface
     {
+        $tree        = $request->getAttribute('tree');
         $user_id     = (int) $request->getQueryParams()['user_id'];
         $user        = $this->user_service->find($user_id);
 
@@ -637,7 +638,7 @@ class HomePageController extends AbstractBaseController
         $all_blocks  = $this->availableUserBlocks();
         $title       = I18N::translate('Change the blocks on this user’s “My page”') . ' - ' . e($user->userName());
         $url_cancel  = route('admin-users');
-        $url_save    = route('user-page-user-update', ['user_id' => $user_id]);
+        $url_save    = route('user-page-user-update', ['tree' => $tree->name(), 'user_id' => $user_id]);
 
         return $this->viewResponse('edit-blocks-page', [
             'all_blocks'  => $all_blocks,
