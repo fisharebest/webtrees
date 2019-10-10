@@ -1,6 +1,6 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<a class="btn btn-link btn-sm" href="#" onclick="return copy_fact('<?= e($fact->record()->tree()->name()) ?>', '<?= e($fact->record()->xref()) ?>', '<?= e($fact->id()) ?>');" title="<?= I18N::translate('Copy') ?>">
+<a class="btn btn-link btn-sm" href="#"data-post-url="<?= e(route('copy-fact', ['tree' => $fact->record()->tree()->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" title="<?= I18N::translate('Copy') ?>">
     <?= view('icons/copy') ?>
     <span class="sr-only"><?= I18N::translate('Copy') ?></span>
 </a>

@@ -78,7 +78,7 @@
 
         <div class="dropdown-divider"></div>
 
-        <a class="dropdown-item" href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($individual->fullName())) ?>" onclick="return confirm(this.dataset.confirm) && delete_record('<?= e($individual->xref()) ?>', '<?= e($individual->tree()->name()) ?>');">
+        <a class="dropdown-item" href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($individual->fullName())) ?>" data-post-url="<?= e(route('delete-record', ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
             <?= view('icons/delete') ?>
             <?= I18N::translate('Delete') ?>
         </a>

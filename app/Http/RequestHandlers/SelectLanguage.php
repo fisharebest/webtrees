@@ -19,7 +19,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Session;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -32,17 +31,6 @@ use function response;
  */
 class SelectLanguage implements RequestHandlerInterface, StatusCodeInterface
 {
-    /** @var UserInterface */
-    private $user;
-
-    /**
-     * @param UserInterface $user
-     */
-    public function __construct(UserInterface $user)
-    {
-        $this->user = $user;
-    }
-
     /**
      * @param ServerRequestInterface $request
      *
@@ -50,11 +38,11 @@ class SelectLanguage implements RequestHandlerInterface, StatusCodeInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $language = $request->getParsedBody()['language'];
+        $user     = $request->getAttribute('user');
+        $language = $request->getAttribute('language');
 
         Session::put('language', $language);
-
-        $this->user->setPreference('language', $language);
+        $user->setPreference('language', $language);
 
         return response('', StatusCodeInterface::STATUS_NO_CONTENT);
     }

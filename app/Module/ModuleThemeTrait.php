@@ -24,6 +24,8 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
+use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
+use Fisharebest\Webtrees\Http\RequestHandlers\SelectTheme;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -33,6 +35,7 @@ use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
+use function route;
 
 /**
  * Trait ModuleThemeTrait - default implementation of ModuleThemeInterface
@@ -254,8 +257,7 @@ trait ModuleThemeTrait
             $language_tag = $locale->languageTag();
             $class        = 'menu-language-' . $language_tag . (WT_LOCALE === $language_tag ? ' active' : '');
             $menu->addSubmenu(new Menu($locale->endonym(), '#', $class, [
-                'onclick'       => 'return false;',
-                'data-language' => $language_tag,
+                'data-post-url' => route(SelectLanguage::class, ['language' => $language_tag]),
             ]));
         }
 
@@ -435,8 +437,7 @@ trait ModuleThemeTrait
                 $class      = 'menu-theme-' . $theme->name() . ($active ? ' active' : '');
 
                 return new Menu($theme->title(), '#', $class, [
-                    'onclick'    => 'return false;',
-                    'data-theme' => $theme->name(),
+                    'data-post-url' => route(SelectTheme::class, ['theme' => $theme->name()]),
                 ]);
             });
 

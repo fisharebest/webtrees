@@ -234,7 +234,7 @@ class UsersController extends AbstractAdminController
 
         $callback = static function (stdClass $row) use ($installed_languages, $user): array {
             if ($row->user_id !== $user->id()) {
-                $admin_options = '<div class="dropdown-item"><a href="#" onclick="return masquerade(' . $row->user_id . ')">' . view('icons/user') . ' ' . I18N::translate('Masquerade as this user') . '</a></div>' . '<div class="dropdown-item"><a href="#" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($row->user_name)) . '" onclick="delete_user(this.dataset.confirm, ' . $row->user_id . ')">' . view('icons/delete') . ' ' . I18N::translate('Delete') . '</a></div>';
+                $admin_options = '<div class="dropdown-item"><a href="#" data-post-url="' . e(route('masquerade', ['user_id' => $row->user_id])) . '">' . view('icons/user') . ' ' . I18N::translate('Masquerade as this user') . '</a></div>' . '<div class="dropdown-item"><a href="#" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($row->user_name)) . '" data-post-url="' . e(route('delete-user', ['user_id' => $row->user_id])) . '">' . view('icons/delete') . ' ' . I18N::translate('Delete') . '</a></div>';
             } else {
                 // Do not delete ourself!
                 $admin_options = '';

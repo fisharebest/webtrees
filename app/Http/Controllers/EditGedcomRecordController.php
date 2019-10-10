@@ -65,10 +65,9 @@ class EditGedcomRecordController extends AbstractEditController
     public function copyFact(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = $request->getAttribute('tree');
-        $xref    = $request->getParsedBody()['xref'];
-        $fact_id = $request->getParsedBody()['fact_id'];
-
-        $record = GedcomRecord::getInstance($xref, $tree);
+        $xref    = $request->getAttribute('xref');
+        $fact_id = $request->getAttribute('fact_id');
+        $record  = GedcomRecord::getInstance($xref, $tree);
 
         Auth::checkRecordAccess($record, true);
 
@@ -94,10 +93,9 @@ class EditGedcomRecordController extends AbstractEditController
     public function deleteFact(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = $request->getAttribute('tree');
-        $xref    = $request->getParsedBody()['xref'];
-        $fact_id = $request->getParsedBody()['fact_id'];
-
-        $record = GedcomRecord::getInstance($xref, $tree);
+        $xref    = $request->getAttribute('xref');
+        $fact_id = $request->getAttribute('fact_id');
+        $record  = GedcomRecord::getInstance($xref, $tree);
 
         Auth::checkRecordAccess($record, true);
 
@@ -120,9 +118,8 @@ class EditGedcomRecordController extends AbstractEditController
      */
     public function deleteRecord(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        $xref = $request->getParsedBody()['xref'];
-
+        $tree   = $request->getAttribute('tree');
+        $xref   = $request->getAttribute('xref');
         $record = GedcomRecord::getInstance($xref, $tree);
 
         Auth::checkRecordAccess($record, true);

@@ -143,8 +143,8 @@ $router->attach('', '/admin', static function (Map $router) {
     $router->get('unused-media-thumbnail', '/unused-media-thumbnail', 'MediaFileController::unusedMediaThumbnail');
     $router->get('broadcast', '/broadcast', 'MessageController::broadcastPage');
     $router->post('broadcast-action', '/broadcast', 'MessageController::broadcastAction');
-    $router->post('delete-user', '/delete-user', DeleteUser::class);
-    $router->post('masquerade', '/masquerade', MasqueradeAsUser::class);
+    $router->post('delete-user', '/delete-user/{user_id}', DeleteUser::class);
+    $router->post('masquerade', '/masquerade/{user_id}', MasqueradeAsUser::class);
 });
 
 // Manager routes.
@@ -239,10 +239,10 @@ $router->attach('', '', static function (Map $router) {
     $router->post('edit-raw-record-action', '/edit-raw-record', 'EditGedcomRecordController::editRawRecordAction');
     $router->get('edit-raw-fact', '/edit-raw-fact', 'EditGedcomRecordController::editRawFact');
     $router->post('edit-raw-fact-update', '/edit-raw-fact', 'EditGedcomRecordController::editRawFactAction');
-    $router->post('copy-fact', '/copy-fact', 'EditGedcomRecordController::copyFact');
-    $router->post('delete-fact', '/delete-fact', 'EditGedcomRecordController::deleteFact');
+    $router->post('copy-fact', '/tree/{tree}/copy-fact/{xref}/{fact_id}', 'EditGedcomRecordController::copyFact');
+    $router->post('delete-fact', '/tree/{tree}/delete-fact/{xref}/{fact_id}', 'EditGedcomRecordController::deleteFact');
     $router->post('paste-fact', '/paste-fact', 'EditGedcomRecordController::pasteFact');
-    $router->post('delete-record', '/delete-record', 'EditGedcomRecordController::deleteRecord');
+    $router->post('delete-record', '/tree/{tree}/delete/{xref}', 'EditGedcomRecordController::deleteRecord');
     $router->get('add-fact', '/add-fact', 'EditGedcomRecordController::addFact');
     $router->get('edit-fact', '/edit-fact', 'EditGedcomRecordController::editFact');
     $router->post('update-fact', '/update-fact', 'EditGedcomRecordController::updateFact');
@@ -316,8 +316,8 @@ $router->attach('', '', static function (Map $router) {
     $router->get('report-list', '/report-list', 'ReportEngineController::reportList');
     $router->get('report-setup', '/report-setup', 'ReportEngineController::reportSetup');
     $router->get('report-run', '/report-run', 'ReportEngineController::reportRun');
-    $router->post('accept-changes', '/accept-changes', 'PendingChangesController::acceptChanges');
-    $router->post('reject-changes', '/reject-changes', 'PendingChangesController::rejectChanges');
+    $router->post('accept-changes', '/tree/{tree}/accept/{xref}', 'PendingChangesController::acceptChanges');
+    $router->post('reject-changes', '/tree/{tree}/reject/{xref}', 'PendingChangesController::rejectChanges');
     $router->post('accept-all-changes', '/accept-all-changes', 'PendingChangesController::acceptAllChanges');
     $router->post('reject-all-changes', '/reject-all-changes', 'PendingChangesController::rejectAllChanges');
     $router->post('select2-family', '/select2-family', 'AutocompleteController::select2Family');
@@ -344,8 +344,8 @@ $router->get(PasswordRequestPage::class, '/password-request', PasswordRequestPag
 $router->post(PasswordRequestAction::class, '/password-request', PasswordRequestAction::class);
 $router->get(PasswordResetPage::class, '/password-reset', PasswordResetPage::class);
 $router->post(PasswordResetAction::class, '/password-reset', PasswordResetAction::class);
-$router->post(SelectLanguage::class, '/language', SelectLanguage::class);
-$router->post(SelectTheme::class, '/theme', SelectTheme::class);
+$router->post(SelectLanguage::class, '/language/{language}', SelectLanguage::class);
+$router->post(SelectTheme::class, '/theme/{theme}', SelectTheme::class);
 $router->get(PrivacyPolicy::class, '/privacy-policy', PrivacyPolicy::class);
 $router->get('module', '/module/{module}/{action}', ModuleAction::class)
     ->allows(RequestMethodInterface::METHOD_POST);

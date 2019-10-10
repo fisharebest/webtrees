@@ -39,7 +39,7 @@ class SelectTheme implements RequestHandlerInterface, StatusCodeInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $user  = $request->getAttribute('user');
-        $theme = $request->getParsedBody()['theme'];
+        $theme = $request->getAttribute('theme');
 
         Session::put('theme', $theme);
         $user->setPreference('theme', $theme);

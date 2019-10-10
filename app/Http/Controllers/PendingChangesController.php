@@ -139,7 +139,7 @@ class PendingChangesController extends AbstractBaseController
     public function acceptChanges(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = $request->getAttribute('tree');
-        $xref   = $request->getParsedBody()['xref'];
+        $xref   = $request->getAttribute('xref');
         $record = GedcomRecord::getInstance($xref, $tree);
 
         Auth::checkRecordAccess($record, false);
@@ -219,9 +219,8 @@ class PendingChangesController extends AbstractBaseController
      */
     public function rejectChanges(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        $xref = $request->getParsedBody()['xref'];
-
+        $tree   = $request->getAttribute('tree');
+        $xref   = $request->getAttribute('xref');
         $record = GedcomRecord::getInstance($xref, $tree);
 
         Auth::checkRecordAccess($record);

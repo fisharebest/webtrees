@@ -42,12 +42,14 @@ use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+use function e;
 use function explode;
 use function ob_get_clean;
 use function ob_start;
 use function preg_match_all;
 use function preg_replace;
 use function redirect;
+use function route;
 use function str_replace;
 use function strpos;
 
@@ -294,7 +296,7 @@ class IndividualController extends AbstractBaseController
 
         if ($fact->canEdit()) {
             $edit_links =
-                '<a class="btn btn-link" href="#" data-confirm="' . I18N::translate('Are you sure you want to delete this fact?') . '" onclick="return delete_fact(this.dataset.confirm, \'' . e($individual->tree()->name()) . '\', \'' . e($individual->xref()) . '\', \'' . $fact->id() . '\');" title="' . I18N::translate('Delete this name') . '">' . view('icons/delete') . '<span class="sr-only">' . I18N::translate('Delete this name') . '</span></a>' .
+                '<a class="btn btn-link" href="#" data-confirm="' . I18N::translate('Are you sure you want to delete this fact?') . '" data-post-url="' . e(route('delete-fact', ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact_id' => $fact->id()])) . '" title="' . I18N::translate('Delete this name') . '">' . view('icons/delete') . '<span class="sr-only">' . I18N::translate('Delete this name') . '</span></a>' .
                 '<a class="btn btn-link" href="' . e(route('edit-name', ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'ged' => $individual->tree()->name()])) . '" title="' . I18N::translate('Edit the name') . '">' . view('icons/edit') . '<span class="sr-only">' . I18N::translate('Edit the name') . '</span></a>';
         } else {
             $edit_links = '';

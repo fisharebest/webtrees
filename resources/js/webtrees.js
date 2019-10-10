@@ -101,123 +101,6 @@ function expand_layer(sid)
     return false;
 }
 
-// Accept the changes to a record - and reload the page
-function accept_changes(xref, ged)
-{
-    $.post(
-        'index.php?route=accept-changes',
-        {
-            xref: xref,
-            ged: ged,
-        },
-        function () {
-            document.location.reload();
-        }
-    );
-    return false;
-}
-
-// Reject the changes to a record - and reload the page
-function reject_changes(xref, ged)
-{
-    $.post(
-        'index.php?route=reject-changes',
-        {
-            xref: xref,
-            ged: ged,
-        },
-        function () {
-            document.location.reload();
-        }
-    );
-    return false;
-}
-
-// Delete a record - and reload the page
-function delete_record(xref, gedcom)
-{
-    $.post(
-        'index.php?route=delete-record',
-        {
-            xref: xref,
-            ged: gedcom,
-        },
-        function () {
-            document.location.reload();
-        }
-    );
-
-    return false;
-}
-
-// Delete a fact - and reload the page
-function delete_fact(message, ged, xref, fact_id)
-{
-    if (confirm(message)) {
-        $.post(
-            'index.php?route=delete-fact',
-            {
-                xref: xref,
-                fact_id: fact_id,
-                ged: ged
-            },
-            function () {
-                document.location.reload();
-            }
-        );
-    }
-    return false;
-}
-
-// Copy a fact to the clipboard
-function copy_fact(ged, xref, fact_id)
-{
-    $.post(
-        'index.php?route=copy-fact',
-        {
-            xref: xref,
-            fact_id: fact_id,
-            ged: ged,
-        },
-        function () {
-            document.location.reload();
-        }
-    );
-    return false;
-}
-
-// Delete a user - and reload the page
-function delete_user(message, user_id)
-{
-    if (confirm(message)) {
-        $.post(
-            'index.php?route=delete-user',
-            {
-                user_id: user_id,
-            },
-            function () {
-                document.location.reload();
-            }
-        );
-    }
-    return false;
-}
-
-// Masquerade as another user - and reload the page.
-function masquerade(user_id)
-{
-    $.post(
-        'index.php?route=masquerade',
-        {
-            user_id: user_id,
-        },
-        function () {
-            document.location.reload();
-        }
-    );
-    return false;
-}
-
 var pastefield;
 function addmedia_links(field, iid, iname)
 {
@@ -1004,61 +887,6 @@ $(function () {
     $('table.datatables').each(function () {
         $(this).DataTable(); $(this).removeClass('d-none'); });
 
-  // Create a new record while editing an existing one.
-  // Paste the XREF and description into the Select2 element.
-    $('.wt-modal-create-record').on('show.bs.modal', function (event) {
-      // Find the element ID that needs to be updated with the new value.
-        $('form', $(this)).data('element-id', $(event.relatedTarget).data('element-id'));
-        $('form .form-group input:first', $(this)).focus();
-    });
-
-  // Submit the modal form using AJAX, and paste the returned record ID/NAME into the parent form.
-    $('.wt-modal-create-record form').on('submit', function (event) {
-        event.preventDefault();
-        var elementId = $(this).data('element-id');
-        $.ajax({
-            url: 'index.php',
-            type: 'POST',
-            data: new FormData(this),
-            async: false,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function (data) {
-                $('#' + elementId).select2().empty().append(new Option(data.text, data.id)).val(data.id).trigger('change');
-            },
-            failure: function (data) {
-                alert(data.error_message);
-            }
-        });
-      // Clear the form
-        this.reset();
-      // Close the modal
-        $(this).closest('.wt-modal-create-record').modal('hide');
-    });
-
-  // Activate the langauge selection menu.
-    $('.menu-language').on('click', '[data-language]', function () {
-        $.post('index.php?route=language', {
-            language: $(this).data('language')
-        }, function () {
-            document.location.reload();
-        });
-
-        return false;
-    });
-
-  // Activate the theme selection menu.
-    $('.menu-theme').on('click', '[data-theme]', function () {
-        $.post('index.php?route=theme', {
-            theme: $(this).data('theme')
-        }, function () {
-            document.location.reload();
-        });
-
-        return false;
-    });
-
   // Activate the on-screen keyboard
     var osk_focus_element;
     $('.wt-osk-trigger').click(function () {
@@ -1098,4 +926,32 @@ $(function () {
     $('.wt-osk-close').on('click', function () {
         $('.wt-osk').hide();
     });
+});
+
+// Convert data-confirm and data-post-url attributes into useful behaviour.
+document.addEventListener("click",  (event) => {
+    const target = event.target.closest("a");
+
+    if (target === null) {
+        return;
+    }
+
+    if ("confirm" in target.dataset && !confirm(target.dataset.confirm)) {
+        event.preventDefault();
+        return;
+    }
+
+    if ("postUrl" in target.dataset) {
+        let request = new XMLHttpRequest();
+        let token   = document.querySelector("meta[name=csrf]").content;
+        request.open("POST", target.dataset.postUrl, true);
+        request.setRequestHeader("X-CSRF-TOKEN", token);
+        request.onreadystatechange = () => {
+            if (request.readyState === request.DONE) {
+                document.location.reload();
+            }
+        };
+        request.send();
+        event.preventDefault();
+    }
 });

@@ -18,7 +18,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\TestCase;
@@ -37,7 +36,8 @@ class SelectThemeTest extends TestCase
         $user = $this->createMock(GuestUser::class);
         $user->expects($this->once())->method('setPreference')->with('theme', 'FOO');
 
-        $request = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['theme' => 'FOO'])
+        $request = self::createRequest()
+            ->withAttribute('theme', 'FOO')
             ->withAttribute('user', $user);
 
         $handler  = new SelectTheme();
@@ -54,8 +54,9 @@ class SelectThemeTest extends TestCase
         $user = $this->createMock(User::class);
         $user->expects($this->once())->method('setPreference')->with('theme', 'FOO');
 
-        $request = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['theme' => 'FOO'])
-            ->withAttribute('user', $user);
+        $request = self::createRequest()
+            ->withAttribute('user', $user)
+            ->withAttribute('theme', 'FOO');
 
         $handler  = new SelectTheme();
         $response = $handler->handle($request);

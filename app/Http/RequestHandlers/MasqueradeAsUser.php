@@ -27,7 +27,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-
 use function response;
 
 /**
@@ -53,9 +52,8 @@ class MasqueradeAsUser implements RequestHandlerInterface, StatusCodeInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $user_id = (int) $request->getParsedBody()['user_id'];
-
-        $user = $this->user_service->find($user_id);
+        $user_id = (int) $request->getAttribute('user_id');
+        $user    = $this->user_service->find($user_id);
 
         if ($user === null) {
             throw new NotFoundHttpException('User ID ' . $user_id . ' not found');
