@@ -53,7 +53,7 @@ class SelectLanguageTest extends TestCase
         $handler      = new SelectLanguage();
         $request      = self::createRequest()
             ->withAttribute('user', $user)
-            ->withAttribute('language' ,'fr');
+            ->withAttribute('language', 'fr');
         $response     = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
