@@ -335,8 +335,7 @@ $router->attach('', '', static function (Map $router) {
 
 $router->get(LoginPage::class, '/login', LoginPage::class);
 $router->post(LoginAction::class, '/login', LoginAction::class);
-$router->get(Logout::class, '/logout', Logout::class)
-    ->allows(RequestMethodInterface::METHOD_POST);
+$router->post(Logout::class, '/logout', Logout::class);
 $router->get(RegisterPage::class, '/register', RegisterPage::class);
 $router->post(RegisterAction::class, '/register', RegisterAction::class);
 $router->get(VerifyEmail::class, '/verify', VerifyEmail::class);

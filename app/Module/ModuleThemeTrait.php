@@ -211,7 +211,7 @@ trait ModuleThemeTrait
         /** @var ServerRequestInterface $request */
         $request = app(ServerRequestInterface::class);
 
-        $route = $request->getQueryParams()['route'] ?? '';
+        $route = $request->getAttribute('route');
 
         if (Auth::check() && $route === 'user-page') {
             return new Menu(I18N::translate('Customize this page'), route('user-page-edit', ['ged' => $tree->name()]), 'menu-change-blocks');
@@ -296,7 +296,7 @@ trait ModuleThemeTrait
     public function menuLogout(): ?Menu
     {
         if (Auth::check()) {
-            return new Menu(I18N::translate('Sign out'), route(Logout::class), 'menu-logout');
+            return new Menu(I18N::translate('Sign out'), '#', 'menu-logout', ['data-post-url' => route(Logout::class)]);
         }
 
         return null;
