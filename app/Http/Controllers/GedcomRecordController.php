@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function redirect;
 
 /**
  * Controller for the gedcom record page.
@@ -43,11 +44,16 @@ class GedcomRecordController extends AbstractBaseController
      */
     public function show(ServerRequestInterface $request): ResponseInterface
     {
+        $slug   = $request->getAttribute('slug');
         $tree   = $request->getAttribute('tree');
-        $xref   = $request->getQueryParams()['xref'];
+        $xref   = $request->getAttribute('xref');
         $record = GedcomRecord::getInstance($xref, $tree);
 
         Auth::checkRecordAccess($record);
+
+        if ($slug !== $record->slug()) {
+            return redirect($record->url());
+        }
 
         if ($this->hasCustomPage($record)) {
             return redirect($record->url());

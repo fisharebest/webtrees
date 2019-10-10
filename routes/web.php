@@ -29,6 +29,9 @@ use Fisharebest\Webtrees\Http\Middleware\AuthManager;
 use Fisharebest\Webtrees\Http\Middleware\AuthMember;
 use Fisharebest\Webtrees\Http\Middleware\AuthModerator;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteUser;
+use Fisharebest\Webtrees\Http\RequestHandlers\RedirectFamilyPhp;
+use Fisharebest\Webtrees\Http\RequestHandlers\RedirectGedRecordPhp;
+use Fisharebest\Webtrees\Http\RequestHandlers\RedirectIndividualPhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
@@ -40,6 +43,10 @@ use Fisharebest\Webtrees\Http\RequestHandlers\PasswordResetAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\PasswordResetPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\Ping;
 use Fisharebest\Webtrees\Http\RequestHandlers\PrivacyPolicy;
+use Fisharebest\Webtrees\Http\RequestHandlers\RedirectMediaViewerPhp;
+use Fisharebest\Webtrees\Http\RequestHandlers\RedirectNotePhp;
+use Fisharebest\Webtrees\Http\RequestHandlers\RedirectRepoPhp;
+use Fisharebest\Webtrees\Http\RequestHandlers\RedirectSourcePhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RegisterAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\RegisterPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
@@ -349,3 +356,12 @@ $router->get(PrivacyPolicy::class, '/privacy-policy', PrivacyPolicy::class);
 $router->get('module', '/module/{module}/{action}', ModuleAction::class)
     ->allows(RequestMethodInterface::METHOD_POST);
 $router->get(Ping::class, '/ping', Ping::class);
+
+// Legacy URLs from older software.
+$router->get(RedirectFamilyPhp::class, '/family.php', RedirectFamilyPhp::class);
+$router->get(RedirectGedRecordPhp::class, '/gedrecord.php', RedirectGedRecordPhp::class);
+$router->get(RedirectIndividualPhp::class, '/individual.php', RedirectIndividualPhp::class);
+$router->get(RedirectMediaViewerPhp::class, '/mediaviewer.php', RedirectMediaViewerPhp::class);
+$router->get(RedirectNotePhp::class, '/note.php', RedirectNotePhp::class);
+$router->get(RedirectRepoPhp::class, '/repository.php', RedirectRepoPhp::class);
+$router->get(RedirectSourcePhp::class, '/source.php', RedirectSourcePhp::class);
