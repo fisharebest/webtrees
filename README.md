@@ -137,7 +137,7 @@ To install **webtrees**, you need:
 
 Once the system requirements are met, perform the following steps
 
-1. Download the latest stable version from [webtrees.net](https://webtrees.net/)
+1. Download the latest stable version from [github.com](https://github.com/fisharebest/webtrees/releases/latest)
 2. Unzip the files and upload them to an empty folder on your web server.
 3. Open your web browser and type the URL for your **webtrees** site (for example,
    ``http://www.yourserver.com/webtrees`` into the address bar.
