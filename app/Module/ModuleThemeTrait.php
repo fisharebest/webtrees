@@ -200,7 +200,7 @@ trait ModuleThemeTrait
     }
 
     /**
-     * Generate a menu item to change the blocks on the current (index.php) page.
+     * Generate a menu item to change the blocks on the current tree/user page.
      *
      * @param Tree $tree
      *
@@ -280,7 +280,7 @@ trait ModuleThemeTrait
         }
 
         // Return to this page after login...
-        $url = app(ServerRequestInterface::class)->getAttribute('request_uri');
+        $url = app(ServerRequestInterface::class)->getUri();
 
         // ...but switch from the tree-page to the user-page
         $url = str_replace('route=tree-page', 'route=user-page', $url);

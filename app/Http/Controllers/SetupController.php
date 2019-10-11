@@ -112,10 +112,6 @@ class SetupController extends AbstractBaseController
         $ip_address  = $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1';
         $request     = $request->withAttribute('client_ip', $ip_address);
 
-        // We will need the request URI for the session
-        $request_uri = (string) $request->getUri();
-        $request     = $request->withAttribute('request_uri', $request_uri);
-
         app()->instance(ServerRequestInterface::class, $request);
         app()->instance('cache.array', new Repository(new ArrayStore()));
 

@@ -363,7 +363,7 @@ class UserService
                 'tree' => $tree ? $tree->name() : '',
                 'to'   => $contact_user->userName(),
                 'tree' => $tree->name(),
-                'url'  => $request->getAttribute('request_uri'),
+                'url'  => (string) $request->getUri(),
             ]);
         }
 

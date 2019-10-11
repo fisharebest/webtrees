@@ -21,8 +21,10 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
+use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function app;
 use function response;
 
 /**
@@ -41,7 +43,7 @@ class CheckCsrfTest extends TestCase
         $handler->method('handle')->willReturn(response());
 
         $request = self::createRequest(RequestMethodInterface::METHOD_POST)
-            ->withAttribute('request_uri', 'http://example.com');
+            ->withUri(app(UriFactoryInterface::class)->createUri('http://example.com'));
 
         $middleware = new CheckCsrf();
         $response   = $middleware->process($request, $handler);

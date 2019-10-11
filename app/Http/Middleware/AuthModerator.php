@@ -57,6 +57,6 @@ class AuthModerator implements MiddlewareInterface
         }
 
         // Not logged in.
-        return redirect(route(LoginPage::class, ['url' => $request->getAttribute('request_uri')]));
+        return redirect(route(LoginPage::class, ['url' => $request->getUri()]));
     }
 }

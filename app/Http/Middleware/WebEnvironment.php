@@ -22,6 +22,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use RuntimeException;
 
 use function array_flip;
 use function array_intersect_key;
@@ -69,14 +70,47 @@ class WebEnvironment implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        // Scheme/host/port from user-provided URL overrides the detected URL.
+        $base_url     = $request->getAttribute('base_url', '');
+        $rewrite_urls = $request->getAttribute('rewrite_urls', '');
+
+        if ($rewrite_urls === '1' && $base_url === '') {
+            throw new RuntimeException('config.ini.php: "rewrite_urls" requires "base_url"');
+        }
+
+        if ($base_url !== '') {
+            $base_scheme = (string) parse_url($base_url, PHP_URL_SCHEME);
+            $base_host   = (string) parse_url($base_url, PHP_URL_HOST);
+            $base_port   = parse_url($base_url, PHP_URL_PORT);
+            $base_path   = parse_url($base_url, PHP_URL_PATH);
+
+            if (is_string($base_path) && substr($base_path, -1) === '/') {
+                throw new RuntimeException('config.ini.php: remove the final "/" from "base_url"');
+            }
+
+            if ($base_scheme === '') {
+                throw new RuntimeException('config.ini.php: missing scheme in "base_url"');
+            }
+
+            if ($base_host === '') {
+                throw new RuntimeException('config.ini.php: missing host in "base_url"');
+            }
+
+            $request_uri = $request->getUri()
+                ->withScheme($base_scheme)
+                ->withHost($base_host)
+                ->withPort($base_port);
+
+            $request = $request->withUri($request_uri);
+        }
+
         $base_url    = $this->extractBaseUrl($request);
         $client_ip   = $this->extractClientIp($request);
         $request_uri = $this->extractRequestUri($request, $base_url);
 
         $request = $request
             ->withAttribute('base_url', $base_url)
-            ->withAttribute('client_ip', $client_ip)
-            ->withAttribute('request_uri', $request_uri);
+            ->withAttribute('client_ip', $client_ip);
 
         return $handler->handle($request);
     }
