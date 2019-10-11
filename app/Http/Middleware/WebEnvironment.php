@@ -99,14 +99,13 @@ class WebEnvironment implements MiddlewareInterface
             $request_uri = $request->getUri()
                 ->withScheme($base_scheme)
                 ->withHost($base_host)
-                ->withPort($base_port);
+                ->withPort($base_port === null ? null : (string) $base_port);
 
             $request = $request->withUri($request_uri);
         }
 
         $base_url    = $this->extractBaseUrl($request);
         $client_ip   = $this->extractClientIp($request);
-        $request_uri = $this->extractRequestUri($request, $base_url);
 
         $request = $request
             ->withAttribute('base_url', $base_url)
