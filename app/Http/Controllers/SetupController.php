@@ -53,6 +53,7 @@ class SetupController extends AbstractBaseController
     private const DEFAULT_DBTYPE = 'mysql';
     private const DEFAULT_PREFIX = 'wt_';
     private const DEFAULT_DATA   = [
+        'baseurl' => '',
         'lang'    => '',
         'dbtype'  => self::DEFAULT_DBTYPE,
         'dbhost'  => '',
@@ -350,7 +351,7 @@ class SetupController extends AbstractBaseController
         }
 
         // Done - start using webtrees!
-        return redirect(route('admin-trees'));
+        return redirect($data['baseurl']);
     }
 
     /**
@@ -413,7 +414,9 @@ class SetupController extends AbstractBaseController
         file_put_contents(Webtrees::CONFIG_FILE, $config_ini_php);
 
         // Login as the new user
-        $request = app(ServerRequestInterface::class);
+        $request = app(ServerRequestInterface::class)
+            ->withAttribute('base_url', $data['baseurl']);
+
         Session::start($request);
         Auth::login($admin);
     }

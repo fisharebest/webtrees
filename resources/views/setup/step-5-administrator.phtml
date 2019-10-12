@@ -9,6 +9,7 @@
     <input name="dbpass" type="hidden" value="<?= e($dbpass) ?>">
     <input name="dbname" type="hidden" value="<?= e($dbname) ?>">
     <input name="tblpfx" type="hidden" value="<?= e($tblpfx) ?>">
+    <input name="baseurl" type="hidden" value="">
 
     <h2>
         <?= I18N::translate('Administrator account') ?>
@@ -86,3 +87,7 @@
         </button>
     </div>
 </form>
+
+<script>
+    document.querySelector("input[name=baseurl]").value = location.href.split("/index.php")[0];
+</script>
