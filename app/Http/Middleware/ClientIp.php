@@ -38,8 +38,8 @@ class ClientIp extends \Middlewares\ClientIp
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // The configuration comes from config.ini.php, via request attributes.
-        $trusted_headers = $this->getCommaSeparatedAttribute($request,'trusted_headers');
-        $trusted_proxies = $this->getCommaSeparatedAttribute($request,'trusted_proxies');
+        $trusted_headers = $this->getCommaSeparatedAttribute($request, 'trusted_headers');
+        $trusted_proxies = $this->getCommaSeparatedAttribute($request, 'trusted_proxies');
 
         $this->proxy($trusted_proxies, $trusted_headers);
 
@@ -52,7 +52,7 @@ class ClientIp extends \Middlewares\ClientIp
      *
      * @return string[]
      */
-    private function getCommaSeparatedAttribute(ServerRequestInterface $request,  string $attribute): array
+    private function getCommaSeparatedAttribute(ServerRequestInterface $request, string $attribute): array
     {
         $value = $request->getAttribute($attribute);
 
