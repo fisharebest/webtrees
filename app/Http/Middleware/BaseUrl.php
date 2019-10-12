@@ -53,7 +53,7 @@ class BaseUrl implements MiddlewareInterface
 
         if ($base_url === '') {
             // Guess the base URL from the request URL.
-            $base_url = rtrim('/', explode('index.php', (string) $request_url)[0]);
+            $base_url = rtrim(explode('index.php', (string) $request_url)[0], '/');
             $request  = $request->withAttribute('base_url', $base_url);
         } else {
             // Update the request URL from the base URL.

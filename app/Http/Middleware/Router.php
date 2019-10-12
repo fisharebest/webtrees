@@ -72,11 +72,13 @@ class Router implements MiddlewareInterface
             $uri       = $uri->withPath($url_route);
             unset($params['route']);
             $uri     = $uri->withQuery(http_build_query($params, '', '&', PHP_QUERY_RFC3986));
-            $request = $request->withUri($uri)->withQueryParams($params);
+            $temp_request = $request->withUri($uri)->withQueryParams($params);
+        } else {
+            $temp_request = $request;
         }
 
         // Match the request to a route.
-        $route = $this->router_container->getMatcher()->match($request);
+        $route = $this->router_container->getMatcher()->match($temp_request);
 
         // No route matched?
         if ($route === false) {
