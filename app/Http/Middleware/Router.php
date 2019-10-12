@@ -29,6 +29,8 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use function app;
 use function array_map;
+use function http_build_query;
+use const PHP_QUERY_RFC3986;
 
 /**
  * Simple class to help migrate to a third-party routing library.
@@ -44,7 +46,8 @@ class Router implements MiddlewareInterface
     /**
      * Router constructor.
      *
-     * @param ModuleService $module_service
+     * @param ModuleService   $module_service
+     * @param RouterContainer $router_container
      */
     public function __construct(ModuleService $module_service, RouterContainer $router_container)
     {
@@ -60,12 +63,15 @@ class Router implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if ($request->getAttribute('rewrite_urls') !== '1') {
-            // Turn the ugly URL into a pretty one.
-            $params     = $request->getQueryParams();
-            $route_name = $params['route'] ?? '';
+        if ((bool) $request->getAttribute('rewrite_urls') === false) {
+            // Turn the ugly URL into a pretty one, so the router can parse it.
+            // Note that the 'route' parameter contains the full path.
+            $uri       = $request->getUri();
+            $params    = $request->getQueryParams();
+            $url_route = $params['route'] ?? '/';
+            $uri       = $uri->withPath($url_route);
             unset($params['route']);
-            $uri     = $request->getUri()->withPath($route_name);
+            $uri     = $uri->withQuery(http_build_query($params, '', '&', PHP_QUERY_RFC3986));
             $request = $request->withUri($uri)->withQueryParams($params);
         }
 
@@ -81,15 +87,15 @@ class Router implements MiddlewareInterface
             return $handler->handle($request);
         }
 
+        // Add the route as attribute of the request
+        $request = $request->withAttribute('route', $route->name);
+
         // Firstly, apply the route middleware
         $route_middleware = $route->extras['middleware'] ?? [];
         $route_middleware = array_map('app', $route_middleware);
 
         // Secondly, apply any module middleware
         $module_middleware = $this->module_service->findByInterface(MiddlewareInterface::class)->all();
-
-        // Add the route as attribute of the request
-        $request = $request->withAttribute('route', $route->name);
 
         // Finally, run the handler using middleware
         $handler_middleware = [new WrapHandler($route->handler)];
@@ -100,7 +106,7 @@ class Router implements MiddlewareInterface
         foreach ($route->attributes as $key => $value) {
             if ($key === 'tree') {
                 $value = Tree::findByName($value);
-                // @TODO - this is required for some legacy code.
+                // @TODO - this is still required for some legacy code.
                 app()->instance(Tree::class, $value);
             }
             $request = $request->withAttribute($key, $value);

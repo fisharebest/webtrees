@@ -110,7 +110,7 @@ class SetupController extends AbstractBaseController
 
         // We will need an IP address for the logs.
         $ip_address  = $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1';
-        $request     = $request->withAttribute('client_ip', $ip_address);
+        $request     = $request->withAttribute('client-ip', $ip_address);
 
         app()->instance(ServerRequestInterface::class, $request);
         app()->instance('cache.array', new Repository(new ArrayStore()));

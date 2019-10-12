@@ -67,6 +67,7 @@ class ComposerStaticInitada08cf78f4e9b8136568f8f9fff9e06
         ),
         'M' => 
         array (
+            'Middlewares\\' => 12,
             'Middleland\\' => 11,
         ),
         'L' => 
@@ -242,6 +243,10 @@ class ComposerStaticInitada08cf78f4e9b8136568f8f9fff9e06
         'Nyholm\\Psr7Server\\' => 
         array (
             0 => __DIR__ . '/..' . '/nyholm/psr7-server/src',
+        ),
+        'Middlewares\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/middlewares/client-ip/src',
         ),
         'Middleland\\' => 
         array (

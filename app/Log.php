@@ -59,7 +59,7 @@ class Log
     {
         if (app()->has(ServerRequestInterface::class)) {
             $request    = app(ServerRequestInterface::class);
-            $ip_address = $request->getAttribute('client_ip');
+            $ip_address = $request->getAttribute('client-ip');
         } else {
             $ip_address = '127.0.0.1';
         }

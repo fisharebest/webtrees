@@ -23,6 +23,7 @@ use ErrorException;
 use Fisharebest\Webtrees\Http\Middleware\BootModules;
 use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
+use Fisharebest\Webtrees\Http\Middleware\ClientIp;
 use Fisharebest\Webtrees\Http\Middleware\DoHousekeeping;
 use Fisharebest\Webtrees\Http\Middleware\EmitResponse;
 use Fisharebest\Webtrees\Http\Middleware\HandleExceptions;
@@ -41,7 +42,7 @@ use Fisharebest\Webtrees\Http\Middleware\UseSession;
 use Fisharebest\Webtrees\Http\Middleware\UseTheme;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Fisharebest\Webtrees\Http\Middleware\UseTree;
-use Fisharebest\Webtrees\Http\Middleware\WebEnvironment;
+use Fisharebest\Webtrees\Http\Middleware\BaseUrl;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ServerRequestFactoryInterface;
@@ -105,7 +106,8 @@ class Webtrees
         EmitResponse::class,
         HandleExceptions::class,
         ReadConfigIni::class,
-        WebEnvironment::class,
+        BaseUrl::class,
+        ClientIp::class,
         UseDatabase::class,
         UseDebugbar::class,
         UpdateDatabaseSchema::class,

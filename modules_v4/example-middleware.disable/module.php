@@ -66,7 +66,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Middle
     {
         // Code here is executed before we process the request/response.
 
-        $ip_address = $request->getAttribute('client_ip');
+        $ip_address = $request->getAttribute('client-ip');
         foreach (self::BAD_IP_RANGES as $bad_cidr) {
             if ($this->ipInCidr($ip_address, $bad_cidr)) {
                 return response('IP address is not allowed: ' . $bad_cidr, 403);

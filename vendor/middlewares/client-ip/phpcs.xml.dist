@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ruleset name="Middlewares coding standard">
+    <description>Middlewares coding standard</description>
+
+    <!-- display progress -->
+    <arg value="p"/>
+    <arg name="report" value="full"/>
+    <arg name="colors"/>
+
+    <!-- coding standard -->
+    <rule ref="PSR2"/>
+
+    <!-- Paths to check -->
+    <file>src</file>
+    <file>tests</file>
+</ruleset>

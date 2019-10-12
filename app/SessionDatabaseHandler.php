@@ -79,7 +79,7 @@ class SessionDatabaseHandler implements SessionHandlerInterface
         ], [
             'session_time' => Carbon::now(),
             'user_id'      => (int) Auth::id(),
-            'ip_address'   => $this->request->getAttribute('client_ip'),
+            'ip_address'   => $this->request->getAttribute('client-ip'),
             'session_data' => $data,
         ]);
 

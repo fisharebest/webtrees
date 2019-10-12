@@ -99,7 +99,7 @@ class VerifyEmail implements RequestHandlerInterface
                 if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
                     DB::table('message')->insert([
                         'sender'     => $username,
-                        'ip_address' => $request->getAttribute('client_ip'),
+                        'ip_address' => $request->getAttribute('client-ip'),
                         'user_id'    => $administrator->id(),
                         'subject'    => $subject,
                         'body'       => view('emails/verify-notify-text', ['user' => $user]),

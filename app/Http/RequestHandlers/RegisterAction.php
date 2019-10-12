@@ -146,7 +146,7 @@ class RegisterAction extends AbstractBaseController
             if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
                 DB::table('message')->insert([
                     'sender'     => $user->email(),
-                    'ip_address' => $request->getAttribute('client_ip'),
+                    'ip_address' => $request->getAttribute('client-ip'),
                     'user_id'    => $administrator->id(),
                     'subject'    => $subject,
                     'body'       => view('emails/register-notify-text', ['user' => $user, 'comments' => $comments, 'base_url' => $base_url]),

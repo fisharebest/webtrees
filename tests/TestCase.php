@@ -171,7 +171,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
             ->withParsedBody($params)
             ->withUploadedFiles($files)
             ->withAttribute('base_url', 'https://webtrees.test')
-            ->withAttribute('client_ip', '127.0.0.1');
+            ->withAttribute('client-ip', '127.0.0.1');
 
         app()->instance(ServerRequestInterface::class, $request);
         View::share('request', $request);
