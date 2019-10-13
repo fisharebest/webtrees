@@ -43,12 +43,17 @@ use Fisharebest\Webtrees\I18N;
         </label>
         <div class="col-sm-9">
             <div class="input-group" dir="ltr">
-                <div class="input-group-append">
+                <div class="input-group-prepend">
                     <span class="input-group-text" dir="ltr">
-                        <?= e($base_url) ?>?ged=
+                        <?= e(explode('{tree}', rawurldecode(route('example')))[0]) ?>
                     </span>
                 </div>
                 <input class="form-control" dir="ltr" id="gedcom" maxlength="255" name="gedcom" required type="text" value="<?= e($tree->name()) ?>">
+                <div class="input-group-append">
+                    <span class="input-group-text" dir="ltr">
+                        <?= e(explode('{tree}', rawurldecode(route('example')))[1]) ?>
+                    </span>
+                </div>
             </div>
             <p class="small text-muted">
                 <?= /* I18N: help text for family tree / GEDCOM file names */ I18N::translate('Avoid spaces and punctuation. A family name might be a good choice.') ?>

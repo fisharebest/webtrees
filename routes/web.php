@@ -299,12 +299,13 @@ $router->attach('', '', static function (Map $router) {
 
 // Member routes.
 $router->attach('', '/tree/{tree}', static function (Map $router) {
+    $router->get('example', '/…');
     $router->get('autocomplete-folder', '/autocomplete-folder', 'AutocompleteController::folder');
     $router->get('autocomplete-page', '/autocomplete-page', 'AutocompleteController::page');
     $router->get('autocomplete-place', '/autocomplete-place', 'AutocompleteController::place');
     $router->get('calendar', '/calendar/{view}', 'CalendarController::page');
     $router->get('calendar-events', '/calendar-events/{view}', 'CalendarController::calendar');
-    $router->get('tree-page', '/tree-page', 'HomePageController::treePage');
+    $router->get('tree-page', '/', 'HomePageController::treePage');
     $router->get('tree-page-block', '/tree-page-block', 'HomePageController::treePageBlock');
     $router->get('media-thumbnail', '/media-thumbnail', 'MediaFileController::mediaThumbnail');
     $router->get('media-download', '/media-download', 'MediaFileController::mediaDownload');
