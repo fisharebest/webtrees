@@ -152,7 +152,7 @@ $router->attach('', '/admin', static function (Map $router) {
     $router->get('unused-media-thumbnail', '/unused-media-thumbnail', 'MediaFileController::unusedMediaThumbnail');
     $router->get('broadcast', '/broadcast', 'MessageController::broadcastPage');
     $router->post('broadcast-action', '/broadcast', 'MessageController::broadcastAction');
-    $router->post('delete-user', '/delete-user/{user_id}', DeleteUser::class);
+    $router->post('delete-user', '/users/delete/{user_id}', DeleteUser::class);
     $router->get(CreateTreePage::class, '/trees/create', CreateTreePage::class);
     $router->post(CreateTreeAction::class, '/trees/create', CreateTreeAction::class);
     $router->post(DeleteTreeAction::class, '/trees/delete/{tree}', DeleteTreeAction::class);
@@ -175,8 +175,8 @@ $router->attach('', '', static function (Map $router) {
     $router->get('admin-trees-export', '/admin-trees-export', 'AdminTreesController::export');
     $router->get('admin-trees-download', '/admin-trees-download', 'AdminTreesController::exportClient');
     $router->post('admin-trees-export-action', '/admin-trees-export', 'AdminTreesController::exportServer');
-    $router->get('admin-trees-import', '/admin-trees-import', 'AdminTreesController::importForm');
-    $router->post('admin-trees-import-action', '/admin-trees-import', 'AdminTreesController::importAction');
+    $router->get('admin-trees-import', '/tree/{tree}/import', 'AdminTreesController::importForm');
+    $router->post('admin-trees-import-action', '/tree/{tree}/import', 'AdminTreesController::importAction');
     $router->get('admin-trees-places', '/admin-trees-places', 'AdminTreesController::places');
     $router->post('admin-trees-places-action', '/admin-trees-places', 'AdminTreesController::placesAction');
     $router->get('admin-trees-preferences', '/admin-trees-preferences', 'AdminTreesController::preferences');
@@ -187,7 +187,7 @@ $router->attach('', '', static function (Map $router) {
     $router->get('tree-page-default-edit', '/tree-page-default-edit', 'HomePageController::treePageDefaultEdit');
     $router->post('tree-page-default-update', '/tree-page-default-update', 'HomePageController::treePageDefaultUpdate');
     $router->get('tree-page-edit', '/tree-page-edit', 'HomePageController::treePageEdit');
-    $router->post('import', '/import', 'GedcomFileController::import');
+    $router->post('import', '/tree/{tree}/load', 'GedcomFileController::import');
     $router->post('tree-page-update', '/tree-page-update', 'HomePageController::treePageUpdate');
     $router->get('merge-records', '/merge-records', 'AdminController::mergeRecords');
     $router->post('merge-records-update', '/merge-records', 'AdminController::mergeRecordsAction');

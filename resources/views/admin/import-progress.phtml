@@ -16,7 +16,7 @@
 <?php if ($errors === ''): ?>
     <script>
         $("#import<?= e($tree->id()) ?>")
-            .load("<?= route('import', ['ged' => $tree->name()]) ?>", {});
+            .load("<?= route('import', ['tree' => $tree->name()]) ?>", {});
     </script>
 <?php else: ?>
     <div class="alert alert-danger">
@@ -30,7 +30,7 @@
     <script>
         $("#error-button-<?= $tree->id() ?>").click(function () {
             $("#import<?= e($tree->id()) ?>")
-                .load("<?= route('import', ['ged' => $tree->name()]) ?>", {});
+                .load("<?= route('import', ['tree' => $tree->name()]) ?>", {});
         });
     </script>
 <?php endif ?>

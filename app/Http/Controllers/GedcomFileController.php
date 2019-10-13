@@ -83,7 +83,7 @@ class GedcomFileController extends AbstractBaseController
             if ($import_offset === $import_total) {
                 $tree->setPreference('imported', '1');
 
-                $html = view('admin/import-complete');
+                $html = view('admin/import-complete', ['tree' => $tree]);
 
                 return response($html);
             }
@@ -217,6 +217,7 @@ class GedcomFileController extends AbstractBaseController
             return $this->viewResponse('admin/import-progress', [
                 'errors'   => $errors,
                 'progress' => $progress,
+                'tree'     => $tree,
             ]);
         } catch (Exception $ex) {
             DB::connection()->rollBack();

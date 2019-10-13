@@ -9,8 +9,7 @@
     <?= /* I18N: %s is the name of a family tree */ I18N::translate('This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file.', e($tree->title())) ?>
 </div>
 
-<form method="post" action="<?= e(route('admin-trees-import-action')) ?>" class="form form-horizontal" enctype="multipart/form-data" onsubmit="return checkGedcomImportForm('<?= e(I18N::translate('You have selected a GEDCOM file with a different name. Is this correct?')) ?>');">
-    <input type="hidden" name="ged" value="<?= $tree->name() ?>">
+<form method="post" action="<?= e(route('admin-trees-import-action', ['tree' => $tree->name()])) ?>" class="form form-horizontal" enctype="multipart/form-data" onsubmit="return checkGedcomImportForm('<?= e(I18N::translate('You have selected a GEDCOM file with a different name. Is this correct?')) ?>');">
     <input type="hidden" id="gedcom_filename" value="<?= e($default_gedcom_file) ?>">
     <?= csrf_field() ?>
 
