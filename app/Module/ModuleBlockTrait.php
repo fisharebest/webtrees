@@ -48,7 +48,7 @@ trait ModuleBlockTrait
         if ($context === self::CONTEXT_USER_PAGE && Auth::check()) {
             return route('user-page-block-edit', [
                 'block_id' => $block_id,
-                'ged'      => $tree->name(),
+                'tree'     => $tree->name(),
             ]);
         }
 

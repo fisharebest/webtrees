@@ -1,0 +1,61 @@
+<?php
+
+use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreeAction;
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), $title]]) ?>
+
+<h1><?= $title ?></h1>
+
+
+<form method="post" action="<?= e(route(CreateTreeAction::class)) ?>" class="form-horizontal">
+    <?= csrf_field() ?>
+    <div class="row form-group">
+        <label for="title" class="col-sm-2 col-form-label">
+            <?= I18N::translate('Family tree title') ?>
+        </label>
+        <div class="col-sm-10">
+            <input class="form-control" id="title" maxlength="255" name="title" required type="text" value="<?= e($tree_title) ?>">
+        </div>
+    </div>
+    <div class="row form-group">
+        <label for="name" class="col-sm-2 col-form-label">
+            <?= I18N::translate('URL') ?>
+        </label>
+        <div class="col-sm-10">
+            <div class="input-group" dir="ltr">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" dir="ltr">
+                        <?= e(explode('{tree}', rawurldecode(route('example')))[0]) ?>
+                    </span>
+                </div>
+                <input class="form-control" id="name" maxlength="31" name="name" pattern="[^&lt;&gt;&quot;*?{}():/\\$%|]*" required type="text" value="<?= e($tree_name) ?>" dir="ltr">
+                <div class="input-group-append">
+                    <span class="input-group-text" dir="ltr">
+                        <?= e(explode('{tree}', rawurldecode(route('example')))[1]) ?>
+                    </span>
+                </div>
+            </div>
+            <p class="small text-muted">
+                <?= I18N::translate('Avoid spaces and punctuation. A family name might be a good choice.') ?>
+            </p>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="offset-sm-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">
+                <?= view('icons/save') ?>
+                <?= /* I18N: A button label. */
+                I18N::translate('create') ?>
+            </button>
+            <p class="small text-muted">
+                <?= I18N::translate('After creating the family tree, you will be able to import data from a GEDCOM file.') ?>
+            </p>
+        </div>
+    </div>
+</form>
+
+
+<?= view('modals/ajax') ?>

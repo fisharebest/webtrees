@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -50,6 +51,9 @@ class ChangesLogController extends AbstractAdminController
     /** @var MyersDiff */
     private $myers_diff;
 
+    /** @var TreeService */
+    private $tree_service;
+
     /** @var UserService */
     private $user_service;
 
@@ -58,12 +62,14 @@ class ChangesLogController extends AbstractAdminController
      *
      * @param DatatablesService $datatables_service
      * @param MyersDiff         $myers_diff
+     * @param TreeService       $tree_service
      * @param UserService       $user_service
      */
-    public function __construct(DatatablesService $datatables_service, MyersDiff $myers_diff, UserService $user_service)
+    public function __construct(DatatablesService $datatables_service, MyersDiff $myers_diff, TreeService $tree_service, UserService $user_service)
     {
         $this->datatables_service = $datatables_service;
         $this->myers_diff         = $myers_diff;
+        $this->tree_service       = $tree_service;
         $this->user_service       = $user_service;
     }
 
@@ -182,7 +188,7 @@ class ChangesLogController extends AbstractAdminController
             }
 
             // Only convert valid xrefs to links
-            $tree   = Tree::findByName($row->gedcom_name);
+            $tree   = $this->tree_service->findByName($row->gedcom_name);
             $record = GedcomRecord::getInstance($row->xref, $tree);
 
             return [

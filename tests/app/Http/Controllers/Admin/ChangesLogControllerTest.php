@@ -23,11 +23,9 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
-use Fisharebest\Webtrees\Tree;
-
-use function app;
 
 /**
  * Test the changes log controller
@@ -43,12 +41,11 @@ class ChangesLogControllerTest extends TestCase
      */
     public function testChangeLog(): void
     {
-        app()->instance(Tree::class, Tree::create('', ''));
-
         $datatables_service = new DatatablesService();
         $myers_diff         = new MyersDiff();
+        $tree_service       = new TreeService();
         $user_service       = new UserService();
-        $controller         = new ChangesLogController($datatables_service, $myers_diff, $user_service);
+        $controller         = new ChangesLogController($datatables_service, $myers_diff, $tree_service, $user_service);
         $request            = self::createRequest();
         $response           = $controller->changesLog($request);
 
@@ -60,16 +57,17 @@ class ChangesLogControllerTest extends TestCase
      */
     public function testChangeLogData(): void
     {
-        $tree = Tree::create('name', 'title');
-        $user = (new UserService())->create('user', 'name', 'email', 'password');
-        Auth::login($user);
-        $individual = $tree->createIndividual("0 @@ INDI\n1 NAME Joe Bloggs");
-
         $datatables_service = new DatatablesService();
         $myers_diff         = new MyersDiff();
+        $tree_service       = new TreeService();
         $user_service       = new UserService();
-        $controller         = new ChangesLogController($datatables_service, $myers_diff, $user_service);
-        $request            = self::createRequest(RequestMethodInterface::METHOD_GET, [
+        $tree               = $tree_service->create('name', 'title');
+        $user               = $user_service->create('user', 'name', 'email', 'password');
+        $user->setPreference('canadmin', '1');
+        Auth::login($user);
+        $individual = $tree->createIndividual("0 @@ INDI\n1 NAME Joe Bloggs");
+        $controller = new ChangesLogController($datatables_service, $myers_diff, $tree_service, $user_service);
+        $request    = self::createRequest(RequestMethodInterface::METHOD_GET, [
             'route'  => 'admin-changes-log-data',
             'search' => 'Joe',
             'from'   => '2000-01-01',
@@ -79,7 +77,7 @@ class ChangesLogControllerTest extends TestCase
             'ged'    => $tree->name(),
             'user'   => $user->userName(),
         ]);
-        $response           = $controller->changesLogData($request);
+        $response   = $controller->changesLogData($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
@@ -89,17 +87,19 @@ class ChangesLogControllerTest extends TestCase
      */
     public function testChangeLogDownload(): void
     {
-        $tree = Tree::create('name', 'title');
-        $user = (new UserService())->create('user', 'name', 'email', 'password');
+        $datatables_service = new DatatablesService();
+        $myers_diff         = new MyersDiff();
+        $tree_service       = new TreeService();
+        $user_service       = new UserService();
+        $tree               = $tree_service->create('name', 'title');
+        $user               = $user_service->create('user', 'name', 'email', 'password');
+        $user->setPreference('canadmin', '1');
         Auth::login($user);
         $tree->createIndividual("0 @@ INDI\n1 NAME Joe Bloggs");
 
-        $datatables_service = new DatatablesService();
-        $myers_diff         = new MyersDiff();
-        $user_service       = new UserService();
-        $controller         = new ChangesLogController($datatables_service, $myers_diff, $user_service);
-        $request            = self::createRequest();
-        $response           = $controller->changesLogDownload($request);
+        $controller = new ChangesLogController($datatables_service, $myers_diff, $tree_service, $user_service);
+        $request    = self::createRequest();
+        $response   = $controller->changesLogDownload($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }

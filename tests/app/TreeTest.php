@@ -18,6 +18,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Functions\FunctionsImport;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use InvalidArgumentException;
 
@@ -36,7 +38,6 @@ class TreeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Tree::id
      * @covers \Fisharebest\Webtrees\Tree::name
      * @covers \Fisharebest\Webtrees\Tree::title
-     *
      * @return void
      */
     public function testConstructor(): void
@@ -50,7 +51,6 @@ class TreeTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Tree::getPreference
      * @covers \Fisharebest\Webtrees\Tree::setPreference
-     *
      * @return void
      */
     public function testTreePreferences(): void
@@ -68,14 +68,13 @@ class TreeTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Tree::getUserPreference
      * @covers \Fisharebest\Webtrees\Tree::setUserPreference
-     *
      * @return void
      */
     public function testUserTreePreferences(): void
     {
         $user_service = new UserService();
-        $tree = Tree::create('tree-name', 'Tree title');
-        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
+        $tree         = Tree::create('tree-name', 'Tree title');
+        $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
 
         $pref = $tree->getUserPreference($user, 'foo', 'default');
         $this->assertSame('default', $pref);
@@ -87,14 +86,14 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::getNewXref
-     *
      * @return void
      */
     public function testGetNewXref(): void
     {
-        $tree = Tree::create('tree-name', 'Tree title');
+        $tree_service = new TreeService();
+        $tree         = $tree_service->create('tree-name', 'Tree title');
 
-        $this->assertSame('X1', $tree->getNewXref());
+        // New trees have an individual X1.
         $this->assertSame('X2', $tree->getNewXref());
         $this->assertSame('X3', $tree->getNewXref());
         $this->assertSame('X4', $tree->getNewXref());
@@ -103,7 +102,6 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::createIndividual
-     *
      * @return void
      */
     public function testCreateInvalidIndividual(): void
@@ -111,8 +109,8 @@ class TreeTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         $user_service = new UserService();
-        $tree = Tree::create('tree-name', 'Tree title');
-        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
+        $tree         = Tree::create('tree-name', 'Tree title');
+        $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference('canadmin', '1');
         Auth::login($user);
 
@@ -121,14 +119,13 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::createIndividual
-     *
      * @return void
      */
     public function testCreateIndividual(): void
     {
         $user_service = new UserService();
-        $tree = Tree::create('tree-name', 'Tree title');
-        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
+        $tree         = Tree::create('tree-name', 'Tree title');
+        $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference('canadmin', '1');
         Auth::login($user);
 
@@ -142,7 +139,6 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::createFamily
-     *
      * @return void
      */
     public function testCreateInvalidFamily(): void
@@ -150,8 +146,8 @@ class TreeTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         $user_service = new UserService();
-        $tree = Tree::create('tree-name', 'Tree title');
-        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
+        $tree         = Tree::create('tree-name', 'Tree title');
+        $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference('canadmin', '1');
         Auth::login($user);
 
@@ -160,14 +156,13 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::createFamily
-     *
      * @return void
      */
     public function testCreateFamily(): void
     {
         $user_service = new UserService();
-        $tree = Tree::create('tree-name', 'Tree title');
-        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
+        $tree         = Tree::create('tree-name', 'Tree title');
+        $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference('canadmin', '1');
         Auth::login($user);
 
@@ -181,7 +176,6 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::createMediaObject
-     *
      * @return void
      */
     public function testCreateInvalidMediaObject(): void
@@ -189,8 +183,8 @@ class TreeTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         $user_service = new UserService();
-        $tree = Tree::create('tree-name', 'Tree title');
-        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
+        $tree         = Tree::create('tree-name', 'Tree title');
+        $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference('canadmin', '1');
         Auth::login($user);
 
@@ -199,14 +193,13 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::createMediaObject
-     *
      * @return void
      */
     public function testCreateMediaObject(): void
     {
         $user_service = new UserService();
-        $tree = Tree::create('tree-name', 'Tree title');
-        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
+        $tree         = Tree::create('tree-name', 'Tree title');
+        $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference('canadmin', '1');
         Auth::login($user);
 
@@ -220,7 +213,6 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::createRecord
-     *
      * @return void
      */
     public function testCreateInvalidRecord(): void
@@ -228,8 +220,8 @@ class TreeTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         $user_service = new UserService();
-        $tree = Tree::create('tree-name', 'Tree title');
-        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
+        $tree         = Tree::create('tree-name', 'Tree title');
+        $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference('canadmin', '1');
         Auth::login($user);
 
@@ -238,14 +230,13 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::createRecord
-     *
      * @return void
      */
     public function testCreateRecord(): void
     {
         $user_service = new UserService();
-        $tree = Tree::create('tree-name', 'Tree title');
-        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
+        $tree         = Tree::create('tree-name', 'Tree title');
+        $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference('canadmin', '1');
         Auth::login($user);
 
@@ -259,16 +250,18 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::significantIndividual
-     *
      * @return void
      */
     public function testSignificantIndividual(): void
     {
         $user_service = new UserService();
-        $tree = Tree::create('tree-name', 'Tree title');
-        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
+        $tree         = Tree::create('tree-name', 'Tree title');
+        $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference('auto_accept', '1');
         Auth::login($user);
+
+        // Delete the tree's default individual.
+        FunctionsImport::updateRecord('0 @X1@ INDI', $tree, true);
 
         // No individuals in tree?  Dummy individual
         $this->assertSame('I', $tree->significantIndividual($user)->xref());
@@ -297,32 +290,31 @@ class TreeTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Tree::importGedcomFile
      * @covers \Fisharebest\Webtrees\Tree::deleteGenealogyData
-     * @covers \Fisharebest\Webtrees\Tree::delete
-     *
      * @return void
      */
     public function testImportAndDeleteGedcomFile(): void
     {
+        $tree_service = new TreeService();
         $tree = $this->importTree('demo.ged');
-        $this->assertNotNull(Tree::findByName('demo.ged'));
+        $this->assertNotNull($tree_service->findByName('demo.ged'));
         Site::setPreference('DEFAULT_GEDCOM', $tree->name());
 
-        $tree->delete();
+        $tree_service->delete($tree);
+        app('cache.array')->flush();
 
-        $this->assertNull(Tree::findByName('demo.ged'));
+        $this->assertNull($tree_service->findByName('demo.ged'));
         $this->assertSame('', Site::getPreference('DEFAULT_GEDCOM'));
     }
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::hasPendingEdit
-     *
      * @return void
      */
     public function testHasPendingEdits(): void
     {
         $user_service = new UserService();
-        $tree = $this->importTree('demo.ged');
-        $user = $user_service->create('admin', 'Administrator', 'admin@example.com', 'secret');
+        $tree         = $this->importTree('demo.ged');
+        $user         = $user_service->create('admin', 'Administrator', 'admin@example.com', 'secret');
         $user->setPreference('canadmin', '1');
         Auth::login($user);
 
@@ -337,7 +329,6 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::exportGedcom
-     *
      * @return void
      */
     public function testExportGedcom(): void

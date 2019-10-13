@@ -89,5 +89,5 @@
 </form>
 
 <script>
-    document.querySelector("input[name=baseurl]").value = location.href.split("/index.php")[0];
+    document.querySelector("input[name=baseurl]").value = location.href.split("index.php")[0].replace(/\/+$/, '');
 </script>

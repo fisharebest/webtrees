@@ -1,12 +1,13 @@
-<?php use Fisharebest\Webtrees\Auth;
+<?php
+
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\RequestHandlers\DeleteTreeAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\View;
-use Illuminate\Database\Capsule\Manager as DB; ?>
-<?php ?>
-<?php ?>
-<?php ?>
-<?php ?>
+use Illuminate\Database\Capsule\Manager as DB;
+
+?>
 
 <?php if (!empty($all_trees)): ?>
     <?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), $title]]) ?>
@@ -89,19 +90,9 @@ use Illuminate\Database\Capsule\Manager as DB; ?>
                                     <?php if (count($all_trees) > 1 && Auth::isAdmin()) : ?>
                                         <li>
                                             <span class="fa-li"><?= view('icons/delete') ?></span>
-                                            <a href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($managed_tree->title())) ?>" onclick="if (confirm(this.dataset.confirm)) { document.delete_form<?= $managed_tree->id() ?>.submit(); } return false;">
+                                            <a href="#" data-post-url="<?= e(route(DeleteTreeAction::class, ['tree' => $managed_tree->name()])) ?>" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($managed_tree->title())) ?>">
                                                 <?= I18N::translate('Delete') ?>
-                                                <span class="sr-only">
-                                                <?= e($managed_tree->title()) ?>
-                                            </span>
                                             </a>
-                                            <form method="post" action="<?= route('admin-trees-delete', ['tree' => $managed_tree->name()]) ?>" name="delete_form<?= $managed_tree->id() ?>">
-                                                <?= csrf_field() ?>
-                                                <!-- A11Y - forms need submit buttons, but they look ugly here -->
-                                                <button class="sr-only" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($managed_tree->title())) ?>" onclick="return confirm(this.dataset.confirm)" type="submit">
-                                                    <?= I18N::translate('Delete') ?>
-                                                </button>
-                                            </form>
                                         </li>
                                     <?php endif ?>
 
@@ -308,69 +299,6 @@ use Illuminate\Database\Capsule\Manager as DB; ?>
             </div>
         <?php endif ?>
     <?php endforeach ?>
-
-    <?php if (Auth::isAdmin()) : ?>
-        <div class="card">
-            <div class="card-header" id="card-tree-create-header">
-                <h2 class="mb-0">
-                    <?= view('icons/add') ?>
-                    <a data-toggle="collapse" data-parent="#accordion" href="#card-tree-create-content" aria-controls="card-tree-create-content">
-                        <?= I18N::translate('Create a family tree') ?>
-                    </a>
-                </h2>
-            </div>
-            <div id="card-tree-create-content" class="collapse<?= empty($all_trees) ? ' show' : '' ?>" role="tabpanel" aria-labelledby="card-tree-create-header">
-                <div class="card-body">
-                    <form method="post" action="<?= e(route('admin-trees-create')) ?>" class="form-horizontal">
-                        <?= csrf_field() ?>
-                        <div class="row form-group">
-                            <label for="tree_title" class="col-sm-2 col-form-label">
-                                <?= I18N::translate('Family tree title') ?>
-                            </label>
-                            <div class="col-sm-10">
-                                <input class="form-control" id="tree_title" maxlength="255" name="tree_title" required type="text" placeholder="<?= $default_tree_title ?>">
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label for="tree_name" class="col-sm-2 col-form-label">
-                                <?= I18N::translate('URL') ?>
-                            </label>
-                            <div class="col-sm-10">
-                                <div class="input-group" dir="ltr">
-                                    <div class="input-group-prepend">
-                    <span class="input-group-text" dir="ltr">
-                        <?= e(explode('{tree}', rawurldecode(route('example')))[0]) ?>
-                    </span>
-                                    </div>
-                                    <input class="form-control" id="tree_name" maxlength="31" name="tree_name" pattern="[^&lt;&gt;&amp;&quot;#^$*?{}()\[\]/\\]*" required type="text" value="<?= $default_tree_name ?>" dir="ltr">
-                                    <div class="input-group-append">
-                    <span class="input-group-text" dir="ltr">
-                        <?= e(explode('{tree}', rawurldecode(route('example')))[1]) ?>
-                    </span>
-                                    </div>
-                                </div>
-                                <p class="small text-muted">
-                                    <?= I18N::translate('Avoid spaces and punctuation. A family name might be a good choice.') ?>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="offset-sm-2 col-sm-10">
-                                <button type="submit" class="btn btn-primary">
-                                    <?= view('icons/save') ?>
-                                    <?= /* I18N: A button label. */
-                                    I18N::translate('create') ?>
-                                </button>
-                                <p class="small text-muted">
-                                    <?= I18N::translate('After creating the family tree, you will be able to import data from a GEDCOM file.') ?>
-                                </p>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    <?php endif ?>
 
     <!-- BULK LOAD/SYNCHRONISE GEDCOM FILES -->
     <?php if (count($gedcom_files) >= $multiple_tree_threshold) : ?>

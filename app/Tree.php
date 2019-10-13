@@ -18,20 +18,19 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Closure;
 use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
+use Fisharebest\Webtrees\Services\TreeService;
 use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
-use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
-use PDOException;
 use Psr\Http\Message\StreamInterface;
 use stdClass;
 
@@ -73,7 +72,7 @@ class Tree
      * @param string $name
      * @param string $title
      */
-    private function __construct($id, $name, $title)
+    public function __construct(int $id, string $name, string $title)
     {
         $this->id                      = $id;
         $this->name                    = $name;
@@ -104,6 +103,18 @@ class Tree
     }
 
     /**
+     * A closure which will create a record from a database row.
+     *
+     * @return Closure
+     */
+    public static function rowMapper(): Closure
+    {
+        return static function (stdClass $row): Tree {
+            return new Tree((int) $row->tree_id, $row->tree_name, $row->tree_title);
+        };
+    }
+
+    /**
      * Find the tree with a specific ID.
      *
      * @param int $tree_id
@@ -119,6 +130,7 @@ class Tree
      * Fetch all the trees that we have permission to access.
      *
      * @return Tree[]
+     * @deprecated
      */
     public static function getAll(): array
     {
@@ -133,67 +145,11 @@ class Tree
      * All the trees that we have permission to access.
      *
      * @return Collection
+     * @deprecated
      */
     public static function all(): Collection
     {
-        return app('cache.array')->rememberForever(__CLASS__, static function (): Collection {
-            // Admins see all trees
-            $query = DB::table('gedcom')
-                ->leftJoin('gedcom_setting', static function (JoinClause $join): void {
-                    $join->on('gedcom_setting.gedcom_id', '=', 'gedcom.gedcom_id')
-                        ->where('gedcom_setting.setting_name', '=', 'title');
-                })
-                ->where('gedcom.gedcom_id', '>', 0)
-                ->select([
-                    'gedcom.gedcom_id AS tree_id',
-                    'gedcom.gedcom_name AS tree_name',
-                    'gedcom_setting.setting_value AS tree_title',
-                ])
-                ->orderBy('gedcom.sort_order')
-                ->orderBy('gedcom_setting.setting_value');
-
-            // Non-admins may not see all trees
-            if (!Auth::isAdmin()) {
-                $query
-                    ->join('gedcom_setting AS gs2', static function (JoinClause $join): void {
-                        $join->on('gs2.gedcom_id', '=', 'gedcom.gedcom_id')
-                            ->where('gs2.setting_name', '=', 'imported');
-                    })
-                    ->join('gedcom_setting AS gs3', static function (JoinClause $join): void {
-                        $join->on('gs3.gedcom_id', '=', 'gedcom.gedcom_id')
-                            ->where('gs3.setting_name', '=', 'REQUIRE_AUTHENTICATION');
-                    })
-                    ->leftJoin('user_gedcom_setting', static function (JoinClause $join): void {
-                        $join->on('user_gedcom_setting.gedcom_id', '=', 'gedcom.gedcom_id')
-                            ->where('user_gedcom_setting.user_id', '=', Auth::id())
-                            ->where('user_gedcom_setting.setting_name', '=', 'canedit');
-                    })
-                    ->where(static function (Builder $query): void {
-                        $query
-                            // Managers
-                            ->where('user_gedcom_setting.setting_value', '=', 'admin')
-                            // Members
-                            ->orWhere(static function (Builder $query): void {
-                                $query
-                                    ->where('gs2.setting_value', '=', '1')
-                                    ->where('gs3.setting_value', '=', '1')
-                                    ->where('user_gedcom_setting.setting_value', '<>', 'none');
-                            })
-                            // Public trees
-                            ->orWhere(static function (Builder $query): void {
-                                $query
-                                    ->where('gs2.setting_value', '=', '1')
-                                    ->where('gs3.setting_value', '<>', '1');
-                            });
-                    });
-            }
-
-            return $query
-                ->get()
-                ->mapWithKeys(static function (stdClass $row): array {
-                    return [$row->tree_id => new self((int) $row->tree_id, $row->tree_name, $row->tree_title)];
-                });
-        });
+        return (new TreeService())->all();
     }
 
     /**
@@ -235,103 +191,25 @@ class Tree
      * @param string $tree_title
      *
      * @return Tree
+     * @deprecated
      */
     public static function create(string $tree_name, string $tree_title): Tree
     {
-        try {
-            // Create a new tree
-            DB::table('gedcom')->insert([
-                'gedcom_name' => $tree_name,
-            ]);
-
-            $tree_id = (int) DB::connection()->getPdo()->lastInsertId();
-
-            $tree = new self($tree_id, $tree_name, $tree_title);
-        } catch (PDOException $ex) {
-            // A tree with that name already exists?
-            return self::findByName($tree_name);
-        }
-
-        $tree->setPreference('imported', '0');
-        $tree->setPreference('title', $tree_title);
-
-        // Set preferences from default tree
-        (new Builder(DB::connection()))->from('gedcom_setting')->insertUsing(
-            ['gedcom_id', 'setting_name', 'setting_value'],
-            static function (Builder $query) use ($tree_id): void {
-                $query
-                    ->select([new Expression($tree_id), 'setting_name', 'setting_value'])
-                    ->from('gedcom_setting')
-                    ->where('gedcom_id', '=', -1);
-            }
-        );
-
-        (new Builder(DB::connection()))->from('default_resn')->insertUsing(
-            ['gedcom_id', 'tag_type', 'resn'],
-            static function (Builder $query) use ($tree_id): void {
-                $query
-                    ->select([new Expression($tree_id), 'tag_type', 'resn'])
-                    ->from('default_resn')
-                    ->where('gedcom_id', '=', -1);
-            }
-        );
-
-        // Gedcom and privacy settings
-        $tree->setPreference('CONTACT_USER_ID', (string) Auth::id());
-        $tree->setPreference('WEBMASTER_USER_ID', (string) Auth::id());
-        $tree->setPreference('LANGUAGE', WT_LOCALE); // Default to the current admin’s language
-
-        switch (WT_LOCALE) {
-            case 'es':
-                $tree->setPreference('SURNAME_TRADITION', 'spanish');
-                break;
-            case 'is':
-                $tree->setPreference('SURNAME_TRADITION', 'icelandic');
-                break;
-            case 'lt':
-                $tree->setPreference('SURNAME_TRADITION', 'lithuanian');
-                break;
-            case 'pl':
-                $tree->setPreference('SURNAME_TRADITION', 'polish');
-                break;
-            case 'pt':
-            case 'pt-BR':
-                $tree->setPreference('SURNAME_TRADITION', 'portuguese');
-                break;
-            default:
-                $tree->setPreference('SURNAME_TRADITION', 'paternal');
-                break;
-        }
-
-        // Genealogy data
-        // It is simpler to create a temporary/unimported GEDCOM than to populate all the tables...
-        /* I18N: This should be a common/default/placeholder name of an individual. Put slashes around the surname. */
-        $john_doe = I18N::translate('John /DOE/');
-        $note     = I18N::translate('Edit this individual and replace their details with your own.');
-        $gedcom   = "0 HEAD\n1 CHAR UTF-8\n0 @X1@ INDI\n1 NAME {$john_doe}\n1 SEX M\n1 BIRT\n2 DATE 01 JAN 1850\n2 NOTE {$note}\n0 TRLR\n";
-
-        DB::table('gedcom_chunk')->insert([
-            'gedcom_id'  => $tree_id,
-            'chunk_data' => $gedcom,
-        ]);
-
-        // Update our cache
-        self::$trees[$tree->id] = $tree;
-
-        return $tree;
+        return (new TreeService())->create($tree_name, $tree_title);
     }
 
     /**
      * Find the tree with a specific name.
      *
-     * @param string $tree_name
+     * @param string $name
      *
      * @return Tree|null
+     * @deprecated
      */
-    public static function findByName($tree_name): ?Tree
+    public static function findByName($name): ?Tree
     {
         foreach (self::getAll() as $tree) {
-            if ($tree->name === $tree_name) {
+            if ($tree->name === $name) {
                 return $tree;
             }
         }

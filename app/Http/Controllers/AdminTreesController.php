@@ -37,6 +37,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Source;
@@ -86,6 +87,9 @@ class AdminTreesController extends AbstractBaseController
     /** @var TimeoutService */
     private $timeout_service;
 
+    /** @var TreeService */
+    private $tree_service;
+
     /** @var UserService */
     private $user_service;
 
@@ -94,12 +98,14 @@ class AdminTreesController extends AbstractBaseController
      *
      * @param ModuleService  $module_service
      * @param TimeoutService $timeout_service
+     * @param TreeService    $tree_service
      * @param UserService    $user_service
      */
-    public function __construct(ModuleService $module_service, TimeoutService $timeout_service, UserService $user_service)
+    public function __construct(ModuleService $module_service, TimeoutService $timeout_service, TreeService $tree_service, UserService $user_service)
     {
         $this->module_service  = $module_service;
         $this->timeout_service = $timeout_service;
+        $this->tree_service    = $tree_service;
         $this->user_service    = $user_service;
     }
 
@@ -363,54 +369,7 @@ class AdminTreesController extends AbstractBaseController
         return '<b title="' . GedcomTag::getLabel($type) . '">' . $type . '</b>';
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function create(ServerRequestInterface $request): ResponseInterface
-    {
-        $params     = $request->getParsedBody();
-        $tree_name  = $params['tree_name'];
-        $tree_title = $params['tree_title'];
-
-        // We use the tree name as a file name, so no directory separators allowed.
-        $tree_name = basename($tree_name);
-
-        if (Tree::findByName($tree_name)) {
-            FlashMessages::addMessage(I18N::translate('The family tree “%s” already exists.', e($tree_name)), 'danger');
-
-            $url = route('admin-trees');
-        } else {
-            $tree = Tree::create($tree_name, $tree_title);
-            FlashMessages::addMessage(I18N::translate('The family tree “%s” has been created.', e($tree->name())), 'success');
-
-            $url = route('admin-trees', ['ged' => $tree->name()]);
-        }
-
-        return redirect($url);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function delete(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = $request->getAttribute('tree');
-
-        /* I18N: %s is the name of a family tree */
-        FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', e($tree->title())), 'success');
-
-        $tree->delete();
-
-        $url = route('admin-trees');
-
-        return redirect($url);
-    }
-
-    /**
+   /**
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
@@ -581,9 +540,7 @@ class AdminTreesController extends AbstractBaseController
             );
         }
 
-        $url = route('admin-trees', [
-            'ged' => $tree->name(),
-        ]);
+        $url = route('admin-trees', ['ged' => $tree->name()]);
 
         return redirect($url);
     }
@@ -672,18 +629,15 @@ class AdminTreesController extends AbstractBaseController
         $multiple_tree_threshold = (int) Site::getPreference('MULTIPLE_TREE_THRESHOLD', self::MULTIPLE_TREE_THRESHOLD);
         $gedcom_files            = $this->gedcomFiles(WT_DATA_DIR);
 
-        $all_trees = Tree::getAll();
+        $all_trees = $this->tree_service->all();
 
         // On sites with hundreds or thousands of trees, this page becomes very large.
         // Just show the current tree, the default tree, and unimported trees
-        if (count($all_trees) >= $multiple_tree_threshold) {
-            $all_trees = array_filter($all_trees, static function (Tree $x) use ($tree): bool {
+        if ($all_trees->count() >= $multiple_tree_threshold) {
+            $all_trees = $all_trees->filter(static function (Tree $x) use ($tree): bool {
                 return $x->getPreference('imported') === '0' || $tree->id() === $x->id() || $x->name() === Site::getPreference('DEFAULT_GEDCOM');
             });
         }
-
-        $default_tree_name  = $this->generateNewTreeName();
-        $default_tree_title = I18N::translate('My family tree');
 
         $title = I18N::translate('Manage family trees');
 
@@ -692,8 +646,6 @@ class AdminTreesController extends AbstractBaseController
         return $this->viewResponse('admin/trees', [
             'all_trees'               => $all_trees,
             'base_url'                => $base_url,
-            'default_tree_name'       => $default_tree_name,
-            'default_tree_title'      => $default_tree_title,
             'gedcom_files'            => $gedcom_files,
             'multiple_tree_threshold' => $multiple_tree_threshold,
             'title'                   => $title,
@@ -926,9 +878,7 @@ class AdminTreesController extends AbstractBaseController
 
             FlashMessages::addMessage(I18N::translate('The family trees have been merged successfully.'), 'success');
 
-            $url = route('admin-trees', [
-                'ged' => $tree2->name(),
-            ]);
+            $url = route('admin-trees', ['ged' => $tree2->name()]);
         } else {
             $url = route('admin-trees-merge', [
                 'tree1_name' => $tree1->name(),
@@ -1092,7 +1042,7 @@ class AdminTreesController extends AbstractBaseController
 
         $all_surname_traditions = SurnameTradition::allDescriptions();
 
-        $tree_count = count(Tree::getAll());
+        $tree_count = $this->tree_service->all()->count();
 
         $title = I18N::translate('Preferences') . ' — ' . e($tree->title());
 
@@ -1763,7 +1713,7 @@ class AdminTreesController extends AbstractBaseController
         /* I18N: %s is the name of a family tree */
         FlashMessages::addMessage(I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', e($tree->title())), 'success');
 
-        $url = route('admin-trees');
+        $url = route('admin-trees', ['ged' => $tree->name()]);
 
         return redirect($url);
     }
@@ -1784,7 +1734,7 @@ class AdminTreesController extends AbstractBaseController
             // Only import files that have changed
             $filemtime = (string) filemtime(WT_DATA_DIR . $gedcom_file);
 
-            $tree = Tree::findByName($gedcom_file) ?? Tree::create($gedcom_file, $gedcom_file);
+            $tree = Tree::findByName($gedcom_file) ?? $this->tree_service->create($gedcom_file, $gedcom_file);
 
             if ($tree->getPreference('filemtime') !== $filemtime) {
                 $stream = app(StreamFactoryInterface::class)->createStreamFromFile(WT_DATA_DIR . $gedcom_file);
@@ -1795,10 +1745,10 @@ class AdminTreesController extends AbstractBaseController
             }
         }
 
-        foreach (Tree::getAll() as $tree) {
+        foreach ($this->tree_service->all() as $tree) {
             if (!in_array($tree->name(), $gedcom_files, true)) {
+                $this->tree_service->delete($tree);
                 FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', e($tree->title())), 'success');
-                $tree->delete();
             }
         }
 
@@ -2158,24 +2108,6 @@ class AdminTreesController extends AbstractBaseController
         sort($files);
 
         return $files;
-    }
-
-    /**
-     * Generate a unqiue name for new trees
-     *
-     * @return string
-     */
-    private function generateNewTreeName(): string
-    {
-        $tree_name      = 'tree';
-        $tree_number    = 1;
-        $existing_trees = Tree::getNameList();
-
-        while (array_key_exists($tree_name . $tree_number, $existing_trees)) {
-            $tree_number++;
-        }
-
-        return $tree_name . $tree_number;
     }
 
     /**

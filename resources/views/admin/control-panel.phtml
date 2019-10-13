@@ -1,5 +1,6 @@
 <?php
 
+use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreePage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
@@ -114,6 +115,29 @@ use Illuminate\Support\Collection;
         </h2>
     </div>
     <div class="card-body">
+        <ul class="fa-ul">
+            <li>
+                <span class="fa-li"><?= view('icons/add') ?></span>
+                <a href="<?= e(route(CreateTreePage::class)) ?>">
+                    <?= I18N::translate('Create a family tree') ?>
+                </a>
+            </li>
+            <li>
+                <span class="fa-li"><?= view('icons/block') ?></span>
+                <a href="<?= e(route('tree-page-default-edit')) ?>">
+                    <?= I18N::translate('Set the default blocks for new family trees') ?>
+                </a>
+            </li>
+            <?php if (count($all_trees) > 1) : ?>
+                <li>
+                    <span class="fa-li"><?= view('icons/merge') ?></span>
+                    <a href="<?= e(route('admin-trees-merge')) ?>">
+                        <?= I18N::translate('Merge family trees') ?>
+                    </a>
+                </li>
+            <?php endif ?>
+        </ul>
+
         <table class="table table-sm">
             <caption class="sr-only">
                 <?= I18N::translate('Family trees') ?>
@@ -181,29 +205,6 @@ use Illuminate\Support\Collection;
                 </tr>
             </tfoot>
         </table>
-
-        <ul class="fa-ul">
-            <li>
-                <span class="fa-li"><?= view('icons/preferences') ?></span>
-                <a href="<?= e(route('admin-trees')) ?>">
-                    <?= I18N::translate('Manage family trees') ?>
-                </a>
-            </li>
-            <li>
-                <span class="fa-li"><?= view('icons/preferences') ?></span>
-                <a href="<?= e(route('tree-page-default-edit')) ?>">
-                    <?= I18N::translate('Set the default blocks for new family trees') ?>
-                </a>
-            </li>
-            <?php if (count($all_trees) > 1) : ?>
-                <li>
-                    <span class="fa-li"><?= view('icons/preferences') ?></span>
-                    <a href="<?= e(route('admin-trees-merge')) ?>">
-                        <?= I18N::translate('Merge family trees') ?>
-                    </a>
-                </li>
-            <?php endif ?>
-        </ul>
     </div>
 </div>
 

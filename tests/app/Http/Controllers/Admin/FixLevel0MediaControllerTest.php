@@ -52,7 +52,7 @@ class FixLevel0MediaControllerTest extends TestCase
     {
         $tree       = Tree::create('name', 'title');
         $controller = new FixLevel0MediaController(new DatatablesService());
-        $request    = self::createRequest(RequestMethodInterface::METHOD_POST, ['route' => 'admin-fix-level-0-media'], [
+        $request    = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
             'tree_id'   => $tree->id(),
             'fact_id'   => '',
             'indi_xref' => '',

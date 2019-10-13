@@ -28,6 +28,9 @@ use Fisharebest\Webtrees\Http\Middleware\AuthEditor;
 use Fisharebest\Webtrees\Http\Middleware\AuthManager;
 use Fisharebest\Webtrees\Http\Middleware\AuthMember;
 use Fisharebest\Webtrees\Http\Middleware\AuthModerator;
+use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreeAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreePage;
+use Fisharebest\Webtrees\Http\RequestHandlers\DeleteTreeAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteUser;
 use Fisharebest\Webtrees\Http\RequestHandlers\HelpText;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectFamilyPhp;
@@ -138,9 +141,7 @@ $router->attach('', '/admin', static function (Map $router) {
     $router->get('admin-site-logs-export', '/admin-site-logs-export', 'AdminSiteController::logsExport');
     $router->get('admin-site-information', '/admin-site-information', 'AdminSiteController::serverInformation');
     $router->get('admin-trees', '/admin-trees', 'AdminTreesController::index');
-    $router->post('admin-trees-create', '/admin-trees-create', 'AdminTreesController::create');
     $router->post('admin-trees-default', '/admin-trees-default', 'AdminTreesController::setDefault');
-    $router->post('admin-trees-delete', '/admin-trees-delete', 'AdminTreesController::delete');
     $router->post('admin-trees-sync', '/admin-trees-sync', 'AdminTreesController::synchronize');
     $router->get('admin-trees-merge', '/admin-trees-merge', 'AdminTreesController::merge');
     $router->post('admin-trees-merge-action', '/admin-trees-merge', 'AdminTreesController::mergeAction');
@@ -152,6 +153,9 @@ $router->attach('', '/admin', static function (Map $router) {
     $router->get('broadcast', '/broadcast', 'MessageController::broadcastPage');
     $router->post('broadcast-action', '/broadcast', 'MessageController::broadcastAction');
     $router->post('delete-user', '/delete-user/{user_id}', DeleteUser::class);
+    $router->get(CreateTreePage::class, '/trees/create', CreateTreePage::class);
+    $router->post(CreateTreeAction::class, '/trees/create', CreateTreeAction::class);
+    $router->post(DeleteTreeAction::class, '/trees/delete/{tree}', DeleteTreeAction::class);
     $router->post('masquerade', '/masquerade/{user_id}', MasqueradeAsUser::class);
 });
 

@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Site;
@@ -75,7 +76,7 @@ class NoRouteFound implements MiddlewareInterface
 
         // No tree available?  Create one.
         if (Auth::isAdmin($user)) {
-            return redirect(route('admin-trees'));
+            return redirect(route(CreateTreePage::class));
         }
 
         // Logged in, but no access to any tree.
