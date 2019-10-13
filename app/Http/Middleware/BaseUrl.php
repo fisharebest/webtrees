@@ -22,13 +22,12 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use RuntimeException;
+
 use function explode;
 use function parse_url;
-use function preg_replace;
 use function rtrim;
+
 use const PHP_URL_HOST;
-use const PHP_URL_PATH;
 use const PHP_URL_PORT;
 use const PHP_URL_SCHEME;
 
