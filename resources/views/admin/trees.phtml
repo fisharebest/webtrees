@@ -77,16 +77,6 @@ use Illuminate\Database\Capsule\Manager as DB;
                                     </span>
                                         </a>
                                     </li>
-                                    <!-- HOME PAGE BLOCKS-->
-                                    <li>
-                                        <span class="fa-li"><?= view('icons/block') ?></span>
-                                        <a href="<?= e(route('tree-page-edit', ['tree' => $managed_tree->name()])) ?>">
-                                            <?= I18N::translate('Change the “Home page” blocks') ?>
-                                            <span class="sr-only">
-                                        <?= e($managed_tree->title()) ?>
-                                    </span>
-                                        </a>
-                                    </li>
                                     <!-- DELETE -->
                                     <?php if (count($all_trees) > 1 && Auth::isAdmin()) : ?>
                                         <li>

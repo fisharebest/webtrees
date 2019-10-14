@@ -21,7 +21,7 @@ use Fisharebest\Webtrees\Module\SourceListModule;
             </a>
         </th>
         <td>
-            <a href="<?= e(route('admin-trees-preferences', ['tree' => $tree->name()])) ?>" title="<?= I18N::translate('Preferences') ?>">
+            <a href="<?= e(route('manage-trees', ['tree' => $tree->name()])) ?>" title="<?= I18N::translate('Manage family trees') ?>">
                 <?= view('icons/preferences') ?>
             </a>
         </td>

@@ -624,7 +624,8 @@ class AdminTreesController extends AbstractBaseController
      */
     public function index(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
+        $default = Site::getPreference('DEFAULT_GEDCOM');
+        $tree    = $this->tree_service->findByName($request->getQueryParams()['tree'] ?? $default);
 
         $multiple_tree_threshold = (int) Site::getPreference('MULTIPLE_TREE_THRESHOLD', self::MULTIPLE_TREE_THRESHOLD);
         $gedcom_files            = $this->gedcomFiles(WT_DATA_DIR);
@@ -634,8 +635,8 @@ class AdminTreesController extends AbstractBaseController
         // On sites with hundreds or thousands of trees, this page becomes very large.
         // Just show the current tree, the default tree, and unimported trees
         if ($all_trees->count() >= $multiple_tree_threshold) {
-            $all_trees = $all_trees->filter(static function (Tree $x) use ($tree): bool {
-                return $x->getPreference('imported') === '0' || $tree->id() === $x->id() || $x->name() === Site::getPreference('DEFAULT_GEDCOM');
+            $all_trees = $all_trees->filter(static function (Tree $x) use ($tree, $default): bool {
+                return $x->getPreference('imported') === '0' || $tree->id() === $x->id() || $x->name() === $default;
             });
         }
 
@@ -649,7 +650,7 @@ class AdminTreesController extends AbstractBaseController
             'gedcom_files'            => $gedcom_files,
             'multiple_tree_threshold' => $multiple_tree_threshold,
             'title'                   => $title,
-            'tree'                    => $this->tree_service->all()->first(),
+            'tree'                    => $tree,
         ]);
     }
 
