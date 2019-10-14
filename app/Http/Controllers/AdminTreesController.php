@@ -369,11 +369,11 @@ class AdminTreesController extends AbstractBaseController
         return '<b title="' . GedcomTag::getLabel($type) . '">' . $type . '</b>';
     }
 
-   /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
+    /**
+      * @param ServerRequestInterface $request
+      *
+      * @return ResponseInterface
+      */
     public function duplicates(ServerRequestInterface $request): ResponseInterface
     {
         $tree       = $request->getAttribute('tree');
