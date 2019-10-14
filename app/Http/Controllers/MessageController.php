@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GuestUser;
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -143,7 +144,7 @@ class MessageController extends AbstractBaseController
             FlashMessages::addMessage(I18N::translate('The message was not sent.'), 'danger');
         }
 
-        return redirect(route('admin-control-panel'));
+        return redirect(route(ControlPanel::class));
     }
 
     /**

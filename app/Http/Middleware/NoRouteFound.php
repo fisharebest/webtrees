@@ -19,13 +19,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\RequestMethodInterface;
-use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
-use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -54,37 +49,6 @@ class NoRouteFound implements MiddlewareInterface
             throw new NotFoundHttpException();
         }
 
-        $user = $request->getAttribute('user');
-
-        // Choose the default tree (if it exists), or the first tree found.
-        $default = Site::getPreference('DEFAULT_GEDCOM');
-        $tree    = Tree::findByName($default) ?? Tree::all()->first();
-
-        if ($tree instanceof Tree) {
-            if ($tree->getPreference('imported') === '1') {
-                // Logged in?  Go to the user's page.
-                if ($user instanceof User) {
-                    return redirect(route('user-page', ['tree' => $tree->name()]));
-                }
-
-                // Not logged in?  Go to the tree's page.
-                return redirect(route('tree-page', ['tree' => $tree->name()]));
-            }
-
-            return redirect(route('admin-trees', ['tree' => $tree->name()]));
-        }
-
-        // No tree available?  Create one.
-        if (Auth::isAdmin($user)) {
-            return redirect(route(CreateTreePage::class));
-        }
-
-        // Logged in, but no access to any tree.
-        if ($user instanceof User) {
-            return $this->viewResponse('errors/no-tree-access', ['title' => '']);
-        }
-
-        // Not logged in.
-        return redirect(route(LoginPage::class, ['url' => $request->getUri()]));
+        return redirect(route(HomePage::class));
     }
 }

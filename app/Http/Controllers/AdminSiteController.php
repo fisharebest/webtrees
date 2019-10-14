@@ -22,6 +22,7 @@ use Exception;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
@@ -412,7 +413,7 @@ class AdminSiteController extends AbstractBaseController
         }
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
-        $url = route('admin-control-panel');
+        $url = route(ControlPanel::class);
 
         return redirect($url);
     }
@@ -469,7 +470,7 @@ class AdminSiteController extends AbstractBaseController
         Site::setPreference('TIMEZONE', $params['TIMEZONE']);
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
-        $url = route('admin-control-panel');
+        $url = route(ControlPanel::class);
 
         return redirect($url);
     }
@@ -522,7 +523,7 @@ class AdminSiteController extends AbstractBaseController
         Site::setPreference('SHOW_REGISTER_CAUTION', $params['SHOW_REGISTER_CAUTION']);
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
-        $url = route('admin-control-panel');
+        $url = route(ControlPanel::class);
 
         return redirect($url);
     }

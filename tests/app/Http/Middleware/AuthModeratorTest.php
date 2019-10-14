@@ -62,8 +62,6 @@ class AuthModeratorTest extends TestCase
      */
     public function testNotAllowed(): void
     {
-        $this->expectException(AccessDeniedHttpException::class);
-
         $handler = $this->createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
@@ -75,7 +73,9 @@ class AuthModeratorTest extends TestCase
 
         $request    = self::createRequest()->withAttribute('tree', $tree)->withAttribute('user', $user);
         $middleware = new AuthModerator();
-        $middleware->process($request, $handler);
+        $response   = $middleware->process($request, $handler);
+
+        $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**

@@ -78,6 +78,7 @@ class LoginPage extends AbstractBaseController
             'error'        => $error,
             'title'        => $title,
             'url'          => $url,
+            'tree'         => $tree,
             'username'     => $username,
             'welcome'      => $welcome,
         ]);

@@ -25,14 +25,17 @@ use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Http\Middleware\AuthAdministrator;
 use Fisharebest\Webtrees\Http\Middleware\AuthEditor;
+use Fisharebest\Webtrees\Http\Middleware\AuthLoggedIn;
 use Fisharebest\Webtrees\Http\Middleware\AuthManager;
 use Fisharebest\Webtrees\Http\Middleware\AuthMember;
 use Fisharebest\Webtrees\Http\Middleware\AuthModerator;
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreeAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteTreeAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteUser;
 use Fisharebest\Webtrees\Http\RequestHandlers\HelpText;
+use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectFamilyPhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectGedRecordPhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectIndividualPhp;
@@ -68,13 +71,13 @@ $router->attach('', '/admin', static function (Map $router) {
         'middleware' => [AuthAdministrator::class]
     ]);
 
-    $router->get('admin-control-panel', '/admin-control-panel', 'Admin\ControlPanelController::controlPanel');
-    $router->get('admin-fix-level-0-media', '/admin-fix-level-0-media', 'Admin\FixLevel0MediaController::fixLevel0Media');
-    $router->post('admin-fix-level-0-media-action', '/admin-fix-level-0-media-action', 'Admin\FixLevel0MediaController::fixLevel0MediaAction');
-    $router->get('admin-fix-level-0-media-data', '/admin-fix-level-0-media-data', 'Admin\FixLevel0MediaController::fixLevel0MediaData');
-    $router->get('admin-webtrees1-thumbs', '/admin-webtrees1-thumbs', 'Admin\ImportThumbnailsController::webtrees1Thumbnails');
-    $router->post('admin-webtrees1-thumbs-action', '/admin-webtrees1-thumbs-action', 'Admin\ImportThumbnailsController::webtrees1ThumbnailsAction');
-    $router->get('admin-webtrees1-thumbs-data', '/admin-webtrees1-thumbs-data', 'Admin\ImportThumbnailsController::webtrees1ThumbnailsData');
+    $router->get(ControlPanel::class, '/control-panel', ControlPanel::class);
+    $router->get('admin-fix-level-0-media', '/fix-level-0-media', 'Admin\FixLevel0MediaController::fixLevel0Media');
+    $router->post('admin-fix-level-0-media-action', '/fix-level-0-media', 'Admin\FixLevel0MediaController::fixLevel0MediaAction');
+    $router->get('admin-fix-level-0-media-data', '/fix-level-0-media-data', 'Admin\FixLevel0MediaController::fixLevel0MediaData');
+    $router->get('admin-webtrees1-thumbs', '/webtrees1-thumbs', 'Admin\ImportThumbnailsController::webtrees1Thumbnails');
+    $router->post('admin-webtrees1-thumbs-action', '/webtrees1-thumbs', 'Admin\ImportThumbnailsController::webtrees1ThumbnailsAction');
+    $router->get('admin-webtrees1-thumbs-data', '/webtrees1-thumbs-data', 'Admin\ImportThumbnailsController::webtrees1ThumbnailsData');
     $router->get('modules', '/modules', 'Admin\ModuleController::list');
     $router->post('modules-update', '/modules', 'Admin\ModuleController::update');
     $router->get('analytics', '/analytics', 'Admin\ModuleController::listAnalytics');
@@ -135,72 +138,75 @@ $router->attach('', '/admin', static function (Map $router) {
     $router->post('admin-site-mail-update', '/admin-site-mail', 'AdminSiteController::mailSave');
     $router->get('admin-site-registration', '/admin-site-registration', 'AdminSiteController::registrationForm');
     $router->post('admin-site-registration-update', '/admin-site-registration', 'AdminSiteController::registrationSave');
-    $router->get('admin-site-logs', '/admin-site-logs', 'AdminSiteController::logs');
-    $router->get('admin-site-logs-data', '/admin-site-logs-data', 'AdminSiteController::logsData');
-    $router->post('admin-site-logs-delete', '/admin-site-logs-delete', 'AdminSiteController::logsDelete');
-    $router->get('admin-site-logs-export', '/admin-site-logs-export', 'AdminSiteController::logsExport');
-    $router->get('admin-site-information', '/admin-site-information', 'AdminSiteController::serverInformation');
-    $router->get('admin-trees', '/admin-trees', 'AdminTreesController::index');
     $router->post('admin-trees-default', '/admin-trees-default', 'AdminTreesController::setDefault');
-    $router->post('admin-trees-sync', '/admin-trees-sync', 'AdminTreesController::synchronize');
-    $router->get('admin-trees-merge', '/admin-trees-merge', 'AdminTreesController::merge');
-    $router->post('admin-trees-merge-action', '/admin-trees-merge', 'AdminTreesController::mergeAction');
+
+    $router->get('broadcast', '/broadcast', 'MessageController::broadcastPage');
+    $router->post('broadcast-action', '/broadcast', 'MessageController::broadcastAction');
+    $router->post('masquerade', '/masquerade/{user_id}', MasqueradeAsUser::class);
+    $router->get('admin-site-logs', '/logs', 'AdminSiteController::logs');
+    $router->get('admin-site-logs-data', '/logs-data', 'AdminSiteController::logsData');
+    $router->post('admin-site-logs-delete', '/logs-delete', 'AdminSiteController::logsDelete');
+    $router->get('admin-site-logs-export', '/logs-export', 'AdminSiteController::logsExport');
+    $router->get('admin-site-information', '/information', 'AdminSiteController::serverInformation');
+    $router->get(CreateTreePage::class, '/trees/create', CreateTreePage::class);
+    $router->post(CreateTreeAction::class, '/trees/create', CreateTreeAction::class);
+    $router->get('tree-page-default-edit', '/trees/default-blocks', 'HomePageController::treePageDefaultEdit');
+    $router->post('tree-page-default-update', '/trees/default-blocks', 'HomePageController::treePageDefaultUpdate');
+    $router->post(DeleteTreeAction::class, '/trees/delete/{tree}', DeleteTreeAction::class);
+    $router->get('admin-trees-merge', '/trees/merge', 'AdminTreesController::merge');
+    $router->post('admin-trees-merge-action', '/trees/merge', 'AdminTreesController::mergeAction');
+    $router->post('admin-trees-sync', '/trees/sync', 'AdminTreesController::synchronize');
+    $router->get('unused-media-thumbnail', '/unused-media-thumbnail', 'MediaFileController::unusedMediaThumbnail');
+    $router->post('delete-user', '/users/delete/{user_id}', DeleteUser::class);
     $router->get('user-page-default-edit', '/user-page-default-edit', 'HomePageController::userPageDefaultEdit');
     $router->post('user-page-default-update', '/user-page-default-update', 'HomePageController::userPageDefaultUpdate');
     $router->get('user-page-user-edit', '/user-page-user-edit', 'HomePageController::userPageUserEdit');
     $router->post('user-page-user-update', '/user-page-user-update', 'HomePageController::userPageUserUpdate');
-    $router->get('unused-media-thumbnail', '/unused-media-thumbnail', 'MediaFileController::unusedMediaThumbnail');
-    $router->get('broadcast', '/broadcast', 'MessageController::broadcastPage');
-    $router->post('broadcast-action', '/broadcast', 'MessageController::broadcastAction');
-    $router->post('delete-user', '/users/delete/{user_id}', DeleteUser::class);
-    $router->get(CreateTreePage::class, '/trees/create', CreateTreePage::class);
-    $router->post(CreateTreeAction::class, '/trees/create', CreateTreeAction::class);
-    $router->post(DeleteTreeAction::class, '/trees/delete/{tree}', DeleteTreeAction::class);
-    $router->post('masquerade', '/masquerade/{user_id}', MasqueradeAsUser::class);
+});
+
+// Manager routes (without a tree).
+$router->attach('', '', static function (Map $router) {
+    $router->get('manage-trees', '/trees/manage', 'AdminTreesController::index');
 });
 
 // Manager routes.
-$router->attach('', '', static function (Map $router) {
+$router->attach('', '/tree/{tree}', static function (Map $router) {
     $router->extras([
         'middleware' => [AuthManager::class]
     ]);
 
-    $router->get('admin-control-panel-manager', '/admin-control-panel-manager', 'Admin\ControlPanelController::controlPanelManager');
-    $router->get('admin-changes-log', '/admin-changes-log', 'Admin\ChangesLogController::changesLog');
-    $router->get('admin-changes-log-data', '/admin-changes-log-data', 'Admin\ChangesLogController::changesLogData');
-    $router->get('admin-changes-log-download', '/admin-changes-log-download', 'Admin\ChangesLogController::changesLogDownload');
-    $router->get('admin-trees-manager', '/admin-trees', 'AdminTreesController::index');
-    $router->get('admin-trees-check', '/admin-trees-check', 'AdminTreesController::check');
-    $router->get('admin-trees-duplicates', '/admin-trees-duplicates', 'AdminTreesController::duplicates');
-    $router->get('admin-trees-export', '/admin-trees-export', 'AdminTreesController::export');
-    $router->get('admin-trees-download', '/admin-trees-download', 'AdminTreesController::exportClient');
-    $router->post('admin-trees-export-action', '/admin-trees-export', 'AdminTreesController::exportServer');
-    $router->get('admin-trees-import', '/tree/{tree}/import', 'AdminTreesController::importForm');
-    $router->post('admin-trees-import-action', '/tree/{tree}/import', 'AdminTreesController::importAction');
-    $router->get('admin-trees-places', '/admin-trees-places', 'AdminTreesController::places');
-    $router->post('admin-trees-places-action', '/admin-trees-places', 'AdminTreesController::placesAction');
-    $router->get('admin-trees-preferences', '/admin-trees-preferences', 'AdminTreesController::preferences');
-    $router->post('admin-trees-preferences-update', '/admin-trees-preferences', 'AdminTreesController::preferencesUpdate');
-    $router->get('admin-trees-renumber', '/admin-trees-renumber', 'AdminTreesController::renumber');
-    $router->post('admin-trees-renumber-action', '/admin-trees-renumber', 'AdminTreesController::renumberAction');
-    $router->get('admin-trees-unconnected', '/admin-trees-unconnected', 'AdminTreesController::unconnected');
-    $router->get('tree-page-default-edit', '/tree-page-default-edit', 'HomePageController::treePageDefaultEdit');
-    $router->post('tree-page-default-update', '/tree-page-default-update', 'HomePageController::treePageDefaultUpdate');
+    $router->get('admin-changes-log', '/changes-log', 'Admin\ChangesLogController::changesLog');
+    $router->get('admin-changes-log-data', '/changes-log-data', 'Admin\ChangesLogController::changesLogData');
+    $router->get('admin-changes-log-download', '/changes-log-download', 'Admin\ChangesLogController::changesLogDownload');
+    $router->get('admin-trees-check', '/check', 'AdminTreesController::check');
+    $router->get('admin-trees-duplicates', '/duplicates', 'AdminTreesController::duplicates');
+    $router->get('admin-trees-export', '/export', 'AdminTreesController::export');
+    $router->get('admin-trees-download', '/download', 'AdminTreesController::exportClient');
+    $router->post('admin-trees-export-action', '/export', 'AdminTreesController::exportServer');
+    $router->get('admin-trees-import', '/import', 'AdminTreesController::importForm');
+    $router->post('admin-trees-import-action', '/import', 'AdminTreesController::importAction');
+    $router->get('admin-trees-places', '/places', 'AdminTreesController::places');
+    $router->post('admin-trees-places-action', '/places', 'AdminTreesController::placesAction');
+    $router->get('admin-trees-preferences', '/preferences', 'AdminTreesController::preferences');
+    $router->post('admin-trees-preferences-update', '/preferences', 'AdminTreesController::preferencesUpdate');
+    $router->get('admin-trees-renumber', '/renumber', 'AdminTreesController::renumber');
+    $router->post('admin-trees-renumber-action', '/renumber', 'AdminTreesController::renumberAction');
+    $router->get('admin-trees-unconnected', '/aunconnected', 'AdminTreesController::unconnected');
     $router->get('tree-page-edit', '/tree-page-edit', 'HomePageController::treePageEdit');
-    $router->post('import', '/tree/{tree}/load', 'GedcomFileController::import');
+    $router->post('import', '/load', 'GedcomFileController::import');
     $router->post('tree-page-update', '/tree-page-update', 'HomePageController::treePageUpdate');
     $router->get('merge-records', '/merge-records', 'AdminController::mergeRecords');
     $router->post('merge-records-update', '/merge-records', 'AdminController::mergeRecordsAction');
     $router->get('tree-page-block-edit', '/tree-page-block-edit', 'HomePageController::treePageBlockEdit');
     $router->post('tree-page-block-update', '/tree-page-block-edit', 'HomePageController::treePageBlockUpdate');
-    $router->get('tree-preferences', '/tree-preferences', 'AdminController::treePreferencesEdit');
-    $router->post('tree-preferences-update', '/tree-preferences', 'AdminController::treePreferencesUpdate');
-    $router->get('tree-privacy', '/tree-privacy', 'AdminController::treePrivacyEdit');
-    $router->post('tree-privacy-update', '/tree-privacy', 'AdminController::treePrivacyUpdate');
+    $router->get('tree-preferences', '/preferences', 'AdminController::treePreferencesEdit');
+    $router->post('tree-preferences-update', '/preferences', 'AdminController::treePreferencesUpdate');
+    $router->get('tree-privacy', '/privacy', 'AdminController::treePrivacyEdit');
+    $router->post('tree-privacy-update', '/privacy', 'AdminController::treePrivacyUpdate');
 });
 
 // Manager routes.
-$router->attach('', '', static function (Map $router) {
+$router->attach('', '/tree/{tree}', static function (Map $router) {
     $router->extras([
         'middleware' => [AuthModerator::class]
     ]);
@@ -212,8 +218,8 @@ $router->attach('', '', static function (Map $router) {
     $router->post('reject-all-pending', '/reject-all-pending', 'PendingChangesController::rejectAllChanges');
 });
 
-// Manager routes.
-$router->attach('', '', static function (Map $router) {
+// Editor routes.
+$router->attach('', '/tree/{tree}', static function (Map $router) {
     $router->extras([
         'middleware' => [AuthEditor::class]
     ]);
@@ -251,10 +257,10 @@ $router->attach('', '', static function (Map $router) {
     $router->post('edit-raw-record-action', '/edit-raw-record', 'EditGedcomRecordController::editRawRecordAction');
     $router->get('edit-raw-fact', '/edit-raw-fact', 'EditGedcomRecordController::editRawFact');
     $router->post('edit-raw-fact-update', '/edit-raw-fact', 'EditGedcomRecordController::editRawFactAction');
-    $router->post('copy-fact', '/tree/{tree}/copy-fact/{xref}/{fact_id}', 'EditGedcomRecordController::copyFact');
-    $router->post('delete-fact', '/tree/{tree}/delete-fact/{xref}/{fact_id}', 'EditGedcomRecordController::deleteFact');
+    $router->post('copy-fact', '/copy-fact/{xref}/{fact_id}', 'EditGedcomRecordController::copyFact');
+    $router->post('delete-fact', '/delete-fact/{xref}/{fact_id}', 'EditGedcomRecordController::deleteFact');
     $router->post('paste-fact', '/paste-fact', 'EditGedcomRecordController::pasteFact');
-    $router->post('delete-record', '/tree/{tree}/delete/{xref}', 'EditGedcomRecordController::deleteRecord');
+    $router->post('delete-record', '/delete/{xref}', 'EditGedcomRecordController::deleteRecord');
     $router->get('add-fact', '/add-fact', 'EditGedcomRecordController::addFact');
     $router->get('edit-fact', '/edit-fact', 'EditGedcomRecordController::editFact');
     $router->post('update-fact', '/update-fact', 'EditGedcomRecordController::updateFact');
@@ -285,53 +291,61 @@ $router->attach('', '', static function (Map $router) {
 });
 
 // Member routes.
-$router->attach('', '', static function (Map $router) {
+$router->attach('', '/tree/{tree}', static function (Map $router) {
     $router->extras([
         'middleware' => [AuthMember::class]
     ]);
 
-    $router->get('user-page', '/tree/{tree}/my-page', 'HomePageController::userPage');
-    $router->get('user-page-block', '/tree/{tree}/user-page-block', 'HomePageController::userPageBlock');
-    $router->get('user-page-edit', '/tree/{tree}/user-page-edit', 'HomePageController::userPageEdit');
-    $router->post('user-page-update', '/tree/{tree}/user-page-update', 'HomePageController::userPageUpdate');
-    $router->get('user-page-block-edit', '/tree/{tree}/user-page-block-edit', 'HomePageController::userPageBlockEdit');
-    $router->post('user-page-block-update', '/tree/{tree}/user-page-block-edit', 'HomePageController::userPageBlockUpdate');
+    $router->get('user-page', '/my-page', 'HomePageController::userPage');
+    $router->get('user-page-block', '/my-page-block', 'HomePageController::userPageBlock');
+    $router->get('user-page-edit', '/my-page-edit', 'HomePageController::userPageEdit');
+    $router->post('user-page-update', '/my-page-edit', 'HomePageController::userPageUpdate');
+    $router->get('user-page-block-edit', '/my-page-block-edit', 'HomePageController::userPageBlockEdit');
+    $router->post('user-page-block-update', '/my-page-block-edit', 'HomePageController::userPageBlockUpdate');
+});
+
+// User routes.
+$router->attach('', '', static function (Map $router) {
+    $router->extras([
+        'middleware' => [AuthLoggedIn::class]
+    ]);
+
     $router->get('my-account', '/my-account', 'AccountController::edit');
     $router->post('my-account-update', '/my-account', 'AccountController::update');
     $router->post('delete-account', '/delete-account', 'AccountController::delete');
 });
 
-// Member routes.
+// Public routes.
 $router->attach('', '/tree/{tree}', static function (Map $router) {
-    $router->get('example', '/…');
+    $router->get('tree-page', '/', 'HomePageController::treePage');
+    $router->post('accept-changes', '/accept/{xref}', 'PendingChangesController::acceptChanges');
+    $router->post('accept-all-changes', '/accept-all-changes', 'PendingChangesController::acceptAllChanges');
     $router->get('autocomplete-folder', '/autocomplete-folder', 'AutocompleteController::folder');
     $router->get('autocomplete-page', '/autocomplete-page', 'AutocompleteController::page');
     $router->get('autocomplete-place', '/autocomplete-place', 'AutocompleteController::place');
     $router->get('calendar', '/calendar/{view}', 'CalendarController::page');
     $router->get('calendar-events', '/calendar-events/{view}', 'CalendarController::calendar');
-    $router->get('tree-page', '/', 'HomePageController::treePage');
-    $router->get('tree-page-block', '/tree-page-block', 'HomePageController::treePageBlock');
-    $router->get('media-thumbnail', '/media-thumbnail', 'MediaFileController::mediaThumbnail');
-    $router->get('media-download', '/media-download', 'MediaFileController::mediaDownload');
-    $router->get('family', '/family/{xref}{/slug}', 'FamilyController::show');
-    $router->get('individual', '/individual/{xref}{/slug}', 'IndividualController::show');
-    $router->get('individual-tab', '/tab-{module}/{xref}', 'IndividualController::tab');
-    $router->get('media', '/media/{xref}{/slug}', 'MediaController::show');
     $router->get('contact', '/contact', 'MessageController::contactPage');
     $router->post('contact-action', '/contact', 'MessageController::contactAction');
+    $router->get('family', '/family/{xref}{/slug}', 'FamilyController::show');
+    $router->get('individual', '/individual/{xref}{/slug}', 'IndividualController::show');
+    $router->get('media-thumbnail', '/media-thumbnail', 'MediaFileController::mediaThumbnail');
+    $router->get('media-download', '/media-download', 'MediaFileController::mediaDownload');
+    $router->get('media', '/media/{xref}{/slug}', 'MediaController::show');
     $router->get('message', '/message', 'MessageController::messagePage');
     $router->post('message-action', '/message', 'MessageController::messageAction');
     $router->get('note', '/note/{xref}{/slug}', 'NoteController::show');
-    $router->get('source', '/source/{xref}{/slug}', 'SourceController::show');
     $router->get('record', '/record/{xref}{/slug}', 'GedcomRecordController::show');
     $router->get('repository', '/repository/{xref}{/slug}', 'RepositoryController::show');
+    $router->post('reject-changes', '/reject/{xref}', 'PendingChangesController::rejectChanges');
+    $router->post('reject-all-changes', '/reject-all-changes', 'PendingChangesController::rejectAllChanges');
     $router->get('report-list', '/report-list', 'ReportEngineController::reportList');
     $router->get('report-setup', '/report-setup', 'ReportEngineController::reportSetup');
     $router->get('report-run', '/report-run', 'ReportEngineController::reportRun');
-    $router->post('accept-changes', '/accept/{xref}', 'PendingChangesController::acceptChanges');
-    $router->post('reject-changes', '/reject/{xref}', 'PendingChangesController::rejectChanges');
-    $router->post('accept-all-changes', '/accept-all-changes', 'PendingChangesController::acceptAllChanges');
-    $router->post('reject-all-changes', '/reject-all-changes', 'PendingChangesController::rejectAllChanges');
+    $router->get('search-quick', '/search-quick', 'SearchController::quick');
+    $router->get('search-advanced', '/search-advanced', 'SearchController::advanced');
+    $router->get('search-general', '/search-general', 'SearchController::general');
+    $router->get('search-phonetic', '/search-phonetic', 'SearchController::phonetic');
     $router->post('select2-family', '/select2-family', 'AutocompleteController::select2Family');
     $router->post('select2-individual', '/select2-individual', 'AutocompleteController::select2Individual');
     $router->post('select2-media', '/select2-media', 'AutocompleteController::select2MediaObject');
@@ -339,29 +353,32 @@ $router->attach('', '/tree/{tree}', static function (Map $router) {
     $router->post('select2-source', '/select2-source', 'AutocompleteController::select2Source');
     $router->post('select2-submitter', '/select2-submitter', 'AutocompleteController::select2Submitter');
     $router->post('select2-repository', '/select2-repository', 'AutocompleteController::select2Repository');
-    $router->get('search-quick', '/search-quick', 'SearchController::quick');
-    $router->get('search-advanced', '/search-advanced', 'SearchController::advanced');
-    $router->get('search-general', '/search-general', 'SearchController::general');
-    $router->get('search-phonetic', '/search-phonetic', 'SearchController::phonetic');
+    $router->get('source', '/source/{xref}{/slug}', 'SourceController::show');
+    $router->get('individual-tab', '/tab-{module}/{xref}', 'IndividualController::tab');
+    $router->get('tree-page-block', '/tree-page-block', 'HomePageController::treePageBlock');
+    $router->get('example', '/…');
 });
 
 $router->get(HelpText::class, '/help/{topic}', HelpText::class);
+$router->post(SelectLanguage::class, '/language/{language}', SelectLanguage::class);
 $router->get(LoginPage::class, '/login', LoginPage::class);
 $router->post(LoginAction::class, '/login', LoginAction::class);
 $router->post(Logout::class, '/logout', Logout::class);
-$router->get(RegisterPage::class, '/register', RegisterPage::class);
-$router->post(RegisterAction::class, '/register', RegisterAction::class);
-$router->get(VerifyEmail::class, '/verify', VerifyEmail::class);
 $router->get(PasswordRequestPage::class, '/password-request', PasswordRequestPage::class);
 $router->post(PasswordRequestAction::class, '/password-request', PasswordRequestAction::class);
 $router->get(PasswordResetPage::class, '/password-reset', PasswordResetPage::class);
 $router->post(PasswordResetAction::class, '/password-reset', PasswordResetAction::class);
-$router->post(SelectLanguage::class, '/language/{language}', SelectLanguage::class);
+$router->get(Ping::class, '/ping', Ping::class);
+$router->get(RegisterPage::class, '/register', RegisterPage::class);
+$router->post(RegisterAction::class, '/register', RegisterAction::class);
 $router->post(SelectTheme::class, '/theme/{theme}', SelectTheme::class);
+$router->get(VerifyEmail::class, '/verify', VerifyEmail::class);
 $router->get(PrivacyPolicy::class, '/privacy-policy', PrivacyPolicy::class);
+
 $router->get('module', '/module/{module}/{action}', ModuleAction::class)
     ->allows(RequestMethodInterface::METHOD_POST);
-$router->get(Ping::class, '/ping', Ping::class);
+
+$router->get(HomePage::class, '/', HomePage::class);
 
 // Legacy URLs from older software.
 $router->get(RedirectFamilyPhp::class, '/family.php', RedirectFamilyPhp::class);

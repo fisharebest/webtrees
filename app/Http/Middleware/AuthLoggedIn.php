@@ -18,19 +18,21 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fig\Http\Message\RequestMethodInterface;
-use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
+use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function redirect;
+
 /**
- * Middleware to set a global tree.
+ * Middleware to restrict access to logged-in users.
  */
-class UseTree implements MiddlewareInterface
+class AuthLoggedIn implements MiddlewareInterface
 {
     /**
      * @param ServerRequestInterface  $request
@@ -40,24 +42,14 @@ class UseTree implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        // Most requests will need the current tree and user.
-        $tree = Tree::findByName($request->getQueryParams()['tree'] ?? $request->getParsedBody()['tree'] ?? '');
+        $user = $request->getAttribute('user');
 
-        // No tree specified/available?  Choose one.
-        if ($tree === null && $request->getMethod() === RequestMethodInterface::METHOD_GET) {
-            $tree = Tree::findByName(Site::getPreference('DEFAULT_GEDCOM')) ?? array_values(Tree::getAll())[0] ?? null;
+        // Logged in?
+        if ($user instanceof User) {
+            return $handler->handle($request);
         }
 
-        // Most layouts will require a tree for the page header/footer
-        View::share('tree', $tree);
-
-        // Need a closure, as the container does not allow you to bind null.
-        app()->bind(Tree::class, static function () use ($tree): ?Tree {
-            return $tree;
-        });
-
-        $request = $request->withAttribute('tree', $tree);
-
-        return $handler->handle($request);
+        // Not logged in.
+        return redirect(route(LoginPage::class, ['url' => $request->getUri()]));
     }
 }

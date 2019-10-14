@@ -540,7 +540,7 @@ class AdminTreesController extends AbstractBaseController
             );
         }
 
-        $url = route('admin-trees', ['ged' => $tree->name()]);
+        $url = route('manage-trees', ['tree' => $tree->name()]);
 
         return redirect($url);
     }
@@ -589,7 +589,7 @@ class AdminTreesController extends AbstractBaseController
             }
         }
 
-        $url = route('admin-trees', ['ged' => $tree->name()]);
+        $url = route('manage-trees', ['tree' => $tree->name()]);
 
         return redirect($url);
     }
@@ -649,6 +649,7 @@ class AdminTreesController extends AbstractBaseController
             'gedcom_files'            => $gedcom_files,
             'multiple_tree_threshold' => $multiple_tree_threshold,
             'title'                   => $title,
+            'tree'                    => $this->tree_service->all()->first(),
         ]);
     }
 
@@ -878,7 +879,7 @@ class AdminTreesController extends AbstractBaseController
 
             FlashMessages::addMessage(I18N::translate('The family trees have been merged successfully.'), 'success');
 
-            $url = route('admin-trees', ['ged' => $tree2->name()]);
+            $url = route('manage-trees', ['tree' => $tree2->name()]);
         } else {
             $url = route('admin-trees-merge', [
                 'tree1_name' => $tree1->name(),
@@ -1199,7 +1200,7 @@ class AdminTreesController extends AbstractBaseController
 
         FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($tree->title())), 'success');
 
-        $url = route('admin-trees', ['ged' => $tree->name()]);
+        $url = route('manage-trees', ['tree' => $tree->name()]);
 
         return redirect($url);
     }
@@ -1713,7 +1714,7 @@ class AdminTreesController extends AbstractBaseController
         /* I18N: %s is the name of a family tree */
         FlashMessages::addMessage(I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', e($tree->title())), 'success');
 
-        $url = route('admin-trees', ['ged' => $tree->name()]);
+        $url = route('manage-trees', ['tree' => $tree->name()]);
 
         return redirect($url);
     }
@@ -1726,7 +1727,7 @@ class AdminTreesController extends AbstractBaseController
     public function synchronize(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        $url  = route('admin-trees', ['ged' => $tree->name()]);
+        $url  = route('manage-trees', ['tree' => $tree->name()]);
 
         $gedcom_files = $this->gedcomFiles(WT_DATA_DIR);
 

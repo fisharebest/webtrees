@@ -1,5 +1,6 @@
 <?php
 
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
 
@@ -23,7 +24,7 @@ use Fisharebest\Webtrees\View;
  */
 ?>
 
-<?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), $title]]) ?>
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
@@ -217,7 +218,7 @@ use Fisharebest\Webtrees\View;
                 <?= I18N::translate('save') ?>
             </button>
 
-            <a href="<?= e(route('admin-control-panel')) ?>" class="btn btn-secondary">
+            <a href="<?= e(route(ControlPanel::class)) ?>" class="btn btn-secondary">
                 <?= view('icons/cancel') ?>
                 <?= I18N::translate('cancel') ?>
             </a>

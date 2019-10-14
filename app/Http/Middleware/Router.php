@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 use Middleland\Dispatcher;
@@ -27,9 +28,11 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+
 use function app;
 use function array_map;
 use function http_build_query;
+
 use const PHP_QUERY_RFC3986;
 
 /**
@@ -43,16 +46,21 @@ class Router implements MiddlewareInterface
     /** @var RouterContainer */
     private $router_container;
 
+    /** @var TreeService */
+    private $tree_service;
+
     /**
      * Router constructor.
      *
      * @param ModuleService   $module_service
      * @param RouterContainer $router_container
+     * @param TreeService     $tree_service
      */
-    public function __construct(ModuleService $module_service, RouterContainer $router_container)
+    public function __construct(ModuleService $module_service, RouterContainer $router_container, TreeService $tree_service)
     {
         $this->module_service   = $module_service;
         $this->router_container = $router_container;
+        $this->tree_service     = $tree_service;
     }
 
     /**
@@ -107,9 +115,11 @@ class Router implements MiddlewareInterface
         // Add the matched attributes to the request.
         foreach ($route->attributes as $key => $value) {
             if ($key === 'tree') {
-                $value = Tree::findByName($value);
-                // @TODO - this is still required for some legacy code.
+                $value = $this->tree_service->findByName($value);
+                // @TODO - this is still required by the date formatter.
                 app()->instance(Tree::class, $value);
+                // @TODO - this is still required by various view templates.
+                View::share('tree', $value);
             }
             $request = $request->withAttribute($key, $value);
         }

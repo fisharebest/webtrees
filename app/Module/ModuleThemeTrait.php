@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
@@ -234,11 +235,11 @@ trait ModuleThemeTrait
     public function menuControlPanel(Tree $tree): ?Menu
     {
         if (Auth::isAdmin()) {
-            return new Menu(I18N::translate('Control panel'), route('admin-control-panel'), 'menu-admin');
+            return new Menu(I18N::translate('Control panel'), route(ControlPanel::class), 'menu-admin');
         }
 
         if (Auth::isManager($tree)) {
-            return new Menu(I18N::translate('Control panel'), route('admin-control-panel-manager'), 'menu-admin');
+            return new Menu(I18N::translate('Control panel'), route('manage-trees'), 'menu-admin');
         }
 
         return null;

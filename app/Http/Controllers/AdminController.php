@@ -357,7 +357,7 @@ class AdminController extends AbstractBaseController
             FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.', e($tree->title())), 'success');
         }
 
-        return redirect(route('admin-trees', ['ged' => $tree->name()]));
+        return redirect(route('manage-trees', ['tree' => $tree->name()]));
     }
 
     /**

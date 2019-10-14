@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Exceptions\InternalServerErrorException;
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Tree;
@@ -354,7 +355,7 @@ class UpgradeController extends AbstractAdminController
 
         $this->filesystem->deleteDir(self::UPGRADE_FOLDER);
 
-        $url    = route('admin-control-panel');
+        $url    = route(ControlPanel::class);
         $button = '<a href="' . e($url) . '" class="btn btn-primary">' . I18N::translate('continue') . '</a>';
 
         return response(view('components/alert-success', [

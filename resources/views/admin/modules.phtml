@@ -1,22 +1,27 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleBlockInterface; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleChartInterface; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleConfigInterface; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleCustomInterface; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleExternalUrlInterface; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleFooterInterface; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleLanguageInterface; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleListInterface; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleMenuInterface; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleReportInterface; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleSidebarInterface; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleTabInterface; ?>
-<?php use Fisharebest\Webtrees\Module\ModuleThemeInterface; ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php
 
-<?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), $title]]) ?>
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
+use Fisharebest\Webtrees\Module\ModuleBlockInterface;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Module\ModuleConfigInterface;
+use Fisharebest\Webtrees\Module\ModuleCustomInterface;
+use Fisharebest\Webtrees\Module\ModuleExternalUrlInterface;
+use Fisharebest\Webtrees\Module\ModuleFooterInterface;
+use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
+use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
+use Fisharebest\Webtrees\Module\ModuleMenuInterface;
+use Fisharebest\Webtrees\Module\ModuleReportInterface;
+use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
+use Fisharebest\Webtrees\Module\ModuleTabInterface;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\View;
+
+?>
+
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 

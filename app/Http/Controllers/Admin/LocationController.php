@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 use Exception;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Services\GedcomService;
@@ -79,7 +80,7 @@ class LocationController extends AbstractAdminController
         $hierarchy   = $this->getHierarchy($parent_id);
         $title       = I18N::translate('Geographic data');
         $breadcrumbs = [
-            route('admin-control-panel') => I18N::translate('Control panel'),
+            route(ControlPanel::class) => I18N::translate('Control panel'),
             route('map-data')            => $title,
         ];
 
@@ -260,7 +261,7 @@ class LocationController extends AbstractAdminController
         $title = e($location->locationName());
 
         $breadcrumbs = [
-            route('admin-control-panel') => I18N::translate('Control panel'),
+            route(ControlPanel::class) => I18N::translate('Control panel'),
             route('map-data')            => I18N::translate('Geographic data'),
         ];
 

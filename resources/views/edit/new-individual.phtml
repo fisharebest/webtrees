@@ -25,7 +25,7 @@ if ($individual instanceof Individual) {
     $xref       = $family->xref();
     $cancel_url = $family->url();
 } else {
-    $cancel_url = route('admin-trees', ['ged' => $tree->name()]);
+    $cancel_url = route('manage-trees', ['tree' => $tree->name()]);
     $xref       = 'new';
 }
 

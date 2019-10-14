@@ -19,18 +19,20 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Services\HousekeepingService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\TimeoutService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test the control panel controller
+ * Test the control panel
  *
- * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\ControlPanelController
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel
  */
 class ControlPanelControllerTest extends TestCase
 {
@@ -45,29 +47,12 @@ class ControlPanelControllerTest extends TestCase
         $housekeeping_service = new HousekeepingService();
         $server_check_service = new ServerCheckService();
         $timeout_service      = new TimeoutService();
+        $tree_service         = new TreeService();
         $upgrade_service      = new UpgradeService($timeout_service);
         $user_service         = new UserService();
-        $controller           = new ControlPanelController($housekeeping_service, $module_service, $server_check_service, $upgrade_service, $user_service);
+        $handler             = new ControlPanel($housekeeping_service, $module_service, $server_check_service, $tree_service, $upgrade_service, $user_service);
         $request              = self::createRequest();
-        $response             = $controller->controlPanel($request);
-
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-    }
-
-    /**
-     * @return void
-     */
-    public function testControlPanelManager(): void
-    {
-        $module_service       = new ModuleService();
-        $housekeeping_service = new HousekeepingService();
-        $server_check_service = new ServerCheckService();
-        $timeout_service      = new TimeoutService();
-        $upgrade_service      = new UpgradeService($timeout_service);
-        $user_service         = new UserService();
-        $controller           = new ControlPanelController($housekeeping_service, $module_service, $server_check_service, $upgrade_service, $user_service);
-        $request              = self::createRequest();
-        $response             = $controller->controlPanelManager($request);
+        $response             = $handler->handle($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }

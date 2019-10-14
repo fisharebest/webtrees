@@ -16,9 +16,9 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers\Admin;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\FamilyListModule;
 use Fisharebest\Webtrees\Module\IndividualListModule;
@@ -41,9 +41,9 @@ use Fisharebest\Webtrees\Module\SourceListModule;
 use Fisharebest\Webtrees\Services\HousekeepingService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\ServerCheckService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
@@ -53,12 +53,15 @@ use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 /**
- * Controller for the administration pages
+ * The control panel shows a summary of the site and links to admin functions.
  */
-class ControlPanelController extends AbstractAdminController
+class ControlPanel implements RequestHandlerInterface
 {
+    use ViewResponseTrait;
+
     /** @var ModuleService */
     private $module_service;
 
@@ -68,6 +71,9 @@ class ControlPanelController extends AbstractAdminController
     /** @var ServerCheckService */
     private $server_check_service;
 
+    /** @var TreeService */
+    private $tree_service;
+
     /** @var UpgradeService */
     private $upgrade_service;
 
@@ -75,11 +81,12 @@ class ControlPanelController extends AbstractAdminController
     private $user_service;
 
     /**
-     * ControlPanelController constructor.
+     * ControlPanel constructor.
      *
      * @param HousekeepingService $housekeeping_service
      * @param ModuleService       $module_service
      * @param ServerCheckService  $server_check_service
+     * @param TreeService         $tree_service
      * @param UpgradeService      $upgrade_service
      * @param UserService         $user_service
      */
@@ -87,25 +94,27 @@ class ControlPanelController extends AbstractAdminController
         HousekeepingService $housekeeping_service,
         ModuleService $module_service,
         ServerCheckService $server_check_service,
+        TreeService $tree_service,
         UpgradeService $upgrade_service,
         UserService $user_service
     ) {
         $this->module_service       = $module_service;
         $this->housekeeping_service = $housekeeping_service;
         $this->server_check_service = $server_check_service;
+        $this->tree_service         = $tree_service;
         $this->upgrade_service      = $upgrade_service;
         $this->user_service         = $user_service;
     }
 
     /**
-     * The control panel shows a summary of the site and links to admin functions.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function controlPanel(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $this->layout = 'layouts/administration';
+
         $filesystem      = new Filesystem(new Local(Webtrees::ROOT_DIR));
         $files_to_delete = $this->housekeeping_service->deleteOldWebtreesFiles($filesystem);
 
@@ -120,7 +129,7 @@ class ControlPanelController extends AbstractAdminController
             'moderators'                 => $this->user_service->moderators(),
             'unapproved'                 => $this->user_service->unapproved(),
             'unverified'                 => $this->user_service->unverified(),
-            'all_trees'                  => Tree::getAll(),
+            'all_trees'                  => $this->tree_service->all(),
             'changes'                    => $this->totalChanges(),
             'individuals'                => $this->totalIndividuals(),
             'families'                   => $this->totalFamilies(),
@@ -136,33 +145,33 @@ class ControlPanelController extends AbstractAdminController
             'source_list_module'         => $this->module_service->findByInterface(SourceListModule::class)->first(),
             'files_to_delete'            => $files_to_delete,
             'all_modules_disabled'       => $this->module_service->all(true),
-            'all_modules_enabled'        => $this->module_service->all(false),
+            'all_modules_enabled'        => $this->module_service->all(),
             'deleted_modules'            => $this->module_service->deletedModules(),
             'analytics_modules_disabled' => $this->module_service->findByInterface(ModuleAnalyticsInterface::class, true),
-            'analytics_modules_enabled'  => $this->module_service->findByInterface(ModuleAnalyticsInterface::class, false),
+            'analytics_modules_enabled'  => $this->module_service->findByInterface(ModuleAnalyticsInterface::class),
             'block_modules_disabled'     => $this->module_service->findByInterface(ModuleBlockInterface::class, true),
-            'block_modules_enabled'      => $this->module_service->findByInterface(ModuleBlockInterface::class, false),
+            'block_modules_enabled'      => $this->module_service->findByInterface(ModuleBlockInterface::class),
             'chart_modules_disabled'     => $this->module_service->findByInterface(ModuleChartInterface::class, true),
-            'chart_modules_enabled'      => $this->module_service->findByInterface(ModuleChartInterface::class, false),
+            'chart_modules_enabled'      => $this->module_service->findByInterface(ModuleChartInterface::class),
             'other_modules'              => $this->module_service->otherModules(true),
             'footer_modules_disabled'    => $this->module_service->findByInterface(ModuleFooterInterface::class, true),
-            'footer_modules_enabled'     => $this->module_service->findByInterface(ModuleFooterInterface::class, false),
+            'footer_modules_enabled'     => $this->module_service->findByInterface(ModuleFooterInterface::class),
             'history_modules_disabled'   => $this->module_service->findByInterface(ModuleHistoricEventsInterface::class, true),
-            'history_modules_enabled'    => $this->module_service->findByInterface(ModuleHistoricEventsInterface::class, false),
+            'history_modules_enabled'    => $this->module_service->findByInterface(ModuleHistoricEventsInterface::class),
             'language_modules_disabled'  => $this->module_service->findByInterface(ModuleLanguageInterface::class, true),
-            'language_modules_enabled'   => $this->module_service->findByInterface(ModuleLanguageInterface::class, false),
+            'language_modules_enabled'   => $this->module_service->findByInterface(ModuleLanguageInterface::class),
             'list_modules_disabled'      => $this->module_service->findByInterface(ModuleListInterface::class, true),
-            'list_modules_enabled'       => $this->module_service->findByInterface(ModuleListInterface::class, false),
+            'list_modules_enabled'       => $this->module_service->findByInterface(ModuleListInterface::class),
             'menu_modules_disabled'      => $this->module_service->findByInterface(ModuleMenuInterface::class, true),
-            'menu_modules_enabled'       => $this->module_service->findByInterface(ModuleMenuInterface::class, false),
+            'menu_modules_enabled'       => $this->module_service->findByInterface(ModuleMenuInterface::class),
             'report_modules_disabled'    => $this->module_service->findByInterface(ModuleReportInterface::class, true),
-            'report_modules_enabled'     => $this->module_service->findByInterface(ModuleReportInterface::class, false),
+            'report_modules_enabled'     => $this->module_service->findByInterface(ModuleReportInterface::class),
             'sidebar_modules_disabled'   => $this->module_service->findByInterface(ModuleSidebarInterface::class, true),
-            'sidebar_modules_enabled'    => $this->module_service->findByInterface(ModuleSidebarInterface::class, false),
+            'sidebar_modules_enabled'    => $this->module_service->findByInterface(ModuleSidebarInterface::class),
             'tab_modules_disabled'       => $this->module_service->findByInterface(ModuleTabInterface::class, true),
-            'tab_modules_enabled'        => $this->module_service->findByInterface(ModuleTabInterface::class, false),
+            'tab_modules_enabled'        => $this->module_service->findByInterface(ModuleTabInterface::class),
             'theme_modules_disabled'     => $this->module_service->findByInterface(ModuleThemeInterface::class, true),
-            'theme_modules_enabled'      => $this->module_service->findByInterface(ModuleThemeInterface::class, false),
+            'theme_modules_enabled'      => $this->module_service->findByInterface(ModuleThemeInterface::class),
         ]);
     }
 
@@ -286,37 +295,5 @@ class ControlPanelController extends AbstractAdminController
             ->map(static function (string $count) {
                 return (int) $count;
             });
-    }
-
-    /**
-     * Managers see a restricted version of the contol panel.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function controlPanelManager(ServerRequestInterface $request): ResponseInterface
-    {
-        $all_trees = array_filter(Tree::getAll(), static function (Tree $tree): bool {
-            return Auth::isManager($tree);
-        });
-
-        return $this->viewResponse('admin/control-panel-manager', [
-            'title'                  => I18N::translate('Control panel'),
-            'all_trees'              => $all_trees,
-            'changes'                => $this->totalChanges(),
-            'individuals'            => $this->totalIndividuals(),
-            'families'               => $this->totalFamilies(),
-            'sources'                => $this->totalSources(),
-            'media'                  => $this->totalMediaObjects(),
-            'repositories'           => $this->totalRepositories(),
-            'notes'                  => $this->totalNotes(),
-            'individual_list_module' => $this->module_service->findByInterface(IndividualListModule::class)->first(),
-            'family_list_module'     => $this->module_service->findByInterface(FamilyListModule::class)->first(),
-            'media_list_module'      => $this->module_service->findByInterface(MediaListModule::class)->first(),
-            'note_list_module'       => $this->module_service->findByInterface(NoteListModule::class)->first(),
-            'repository_list_module' => $this->module_service->findByInterface(RepositoryListModule::class)->first(),
-            'source_list_module'     => $this->module_service->findByInterface(SourceListModule::class)->first(),
-        ]);
     }
 }

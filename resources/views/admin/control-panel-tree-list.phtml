@@ -1,5 +1,6 @@
 <?php
 
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\FamilyListModule;
 use Fisharebest\Webtrees\Module\IndividualListModule;
@@ -20,13 +21,13 @@ use Fisharebest\Webtrees\Module\SourceListModule;
             </a>
         </th>
         <td>
-            <a href="<?= e(route('admin-trees', ['ged' => $tree->name()])) ?>" title="<?= I18N::translate('Preferences') ?>">
+            <a href="<?= e(route('admin-trees-preferences', ['tree' => $tree->name()])) ?>" title="<?= I18N::translate('Preferences') ?>">
                 <?= view('icons/preferences') ?>
             </a>
         </td>
         <td style="text-align: right;">
             <?php if ($changes[$tree->id()]) : ?>
-                <a href="<?= e(route('show-pending', ['ged' => $tree->name(), 'url' => route('admin-control-panel')])) ?>">
+                <a href="<?= e(route('show-pending', ['ged' => $tree->name(), 'url' => route(ControlPanel::class)])) ?>">
                     <?= I18N::number($changes[$tree->id()]) ?>
                     <span class="sr-only"><?= I18N::translate('Pending changes') ?> <?= e($tree->title()) ?></span>
                 </a>

@@ -18,6 +18,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Psr\Http\Message\ResponseInterface;
@@ -54,6 +55,6 @@ class MapProviderController extends AbstractAdminController
         Site::setPreference('map-provider', $settings['provider']);
         Site::setPreference('geonames', $settings['geonames']);
 
-        return redirect(route('admin-control-panel'));
+        return redirect(route(ControlPanel::class));
     }
 }

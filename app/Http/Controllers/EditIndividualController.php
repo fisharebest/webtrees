@@ -565,7 +565,7 @@ class EditIndividualController extends AbstractEditController
             return redirect($new_indi->url());
         }
 
-        return redirect(route('admin-trees', ['ged' => $tree->name()]));
+        return redirect(route('manage-trees', ['tree' => $tree->name()]));
     }
 
     /**

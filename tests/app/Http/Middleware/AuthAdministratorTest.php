@@ -58,8 +58,6 @@ class AuthAdministratorTest extends TestCase
      */
     public function testNotAllowed(): void
     {
-        $this->expectException(AccessDeniedHttpException::class);
-
         $handler = $this->createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
@@ -68,7 +66,9 @@ class AuthAdministratorTest extends TestCase
 
         $request    = self::createRequest()->withAttribute('user', $user);
         $middleware = new AuthAdministrator();
-        $middleware->process($request, $handler);
+        $response   = $middleware->process($request, $handler);
+
+        $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**

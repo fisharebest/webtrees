@@ -3,6 +3,7 @@
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
+use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\CustomCssJsModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
@@ -47,7 +48,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
             <ul class="nav small d-flex justify-content-end">
                 <li class="nav-item menu-mypage">
-                    <a class="nav-link active" href="<?= e(route('user-page')) ?>"><?= I18N::translate('My page') ?></a>
+                    <a class="nav-link active" href="<?= e(route(HomePage::class)) ?>"><?= I18N::translate('My page') ?></a>
                 </li>
                 <li class="nav-item dropdown menu-language">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">

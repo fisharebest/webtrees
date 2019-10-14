@@ -41,7 +41,6 @@ use Fisharebest\Webtrees\Http\Middleware\UseLocale;
 use Fisharebest\Webtrees\Http\Middleware\UseSession;
 use Fisharebest\Webtrees\Http\Middleware\UseTheme;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
-use Fisharebest\Webtrees\Http\Middleware\UseTree;
 use Fisharebest\Webtrees\Http\Middleware\BaseUrl;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -114,7 +113,6 @@ class Webtrees
         UseCache::class,
         UseFilesystem::class,
         UseSession::class,
-        UseTree::class,
         UseLocale::class,
         CheckForMaintenanceMode::class,
         UseTheme::class,

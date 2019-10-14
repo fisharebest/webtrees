@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
 use Fisharebest\Webtrees\Module\FamilyTreeNewsModule;
@@ -339,6 +340,8 @@ class HomePageController extends AbstractBaseController
      */
     public function treePageDefaultEdit(ServerRequestInterface $request): ResponseInterface
     {
+        $this->layout = 'layouts/administration';
+
         $this->checkDefaultTreeBlocksExist();
 
         $main_blocks = $this->treeBlocks(-1, self::MAIN_BLOCKS);
@@ -346,7 +349,7 @@ class HomePageController extends AbstractBaseController
 
         $all_blocks = $this->availableTreeBlocks();
         $title      = I18N::translate('Set the default blocks for new family trees');
-        $url_cancel = route('admin-control-panel');
+        $url_cancel = route(ControlPanel::class);
         $url_save   = route('tree-page-default-update');
 
         return $this->viewResponse('edit-blocks-page', [
@@ -374,7 +377,7 @@ class HomePageController extends AbstractBaseController
 
         $this->updateTreeBlocks(-1, $main_blocks, $side_blocks);
 
-        return redirect(route('admin-control-panel'));
+        return redirect(route(ControlPanel::class));
     }
 
     /**
@@ -549,7 +552,7 @@ class HomePageController extends AbstractBaseController
 
         $this->updateUserBlocks(-1, $main_blocks, $side_blocks);
 
-        return redirect(route('admin-control-panel'));
+        return redirect(route(ControlPanel::class));
     }
 
     /**
@@ -666,7 +669,7 @@ class HomePageController extends AbstractBaseController
 
         $this->updateUserBlocks($user_id, $main_blocks, $side_blocks);
 
-        return redirect(route('admin-control-panel'));
+        return redirect(route(ControlPanel::class));
     }
 
     /**
