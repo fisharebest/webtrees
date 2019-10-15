@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Tree;
@@ -30,6 +31,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
 use function in_array;
+use function strpos;
 
 /**
  * Class SlideShowModule
@@ -95,9 +97,8 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
             $media_types[] = '';
         }
 
-        // We can apply the filters using SQL
-        // Do not use "ORDER BY RAND()" - it is very slow on large tables. Use PHP::array_rand() instead.
-        $all_media = DB::table('media')
+        // We can apply the filters using SQL, but it is more efficient to shuffle in PHP.
+        $random_row = DB::table('media')
             ->join('media_file', static function (JoinClause $join): void {
                 $join
                     ->on('media_file.m_file', '=', 'media.m_file')
@@ -106,33 +107,29 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
             ->where('media.m_file', '=', $tree->id())
             ->whereIn('media_file.multimedia_format', ['jpg', 'jpeg', 'png', 'gif', 'tiff', 'bmp'])
             ->whereIn('media_file.source_media_type', $media_types)
-            ->pluck('media.m_id')
-            ->all();
+            ->select('media.*')
+            ->get()
+            ->shuffle()
+            ->first(static function (\stdClass $row) use ($filter, $tree): bool {
+                $media = Media::getInstance($row->m_id, $tree, $row->m_gedcom);
 
-        // Keep looking through the media until a suitable one is found.
-        $random_media = null;
-        while (!empty($all_media)) {
-            $n          = array_rand($all_media);
-            $media      = Media::getInstance($all_media[$n], $tree);
-            $media_file = $media->firstImageFile();
-            if ($media->canShow() && $media_file instanceof MediaFile && !$media_file->isExternal()) {
-                // Check if it is linked to a suitable individual
-                foreach ($media->linkedIndividuals('OBJE') as $indi) {
-                    if (
-                        $filter === 'all' ||
-                        $filter === 'indi' && strpos($indi->gedcom(), "\n1 OBJE @" . $media->xref() . '@') !== false ||
-                        $filter === 'event' && strpos($indi->gedcom(), "\n2 OBJE @" . $media->xref() . '@') !== false
-                    ) {
-                        // Found one :-)
-                        $random_media = $media;
-                        break 2;
+                foreach ($media->linkedIndividuals('OBJE') as $individual) {
+                    switch ($filter) {
+                        case 'all':
+                            return true;
+                        case 'indi':
+                            return strpos($individual->gedcom(), "\n1 OBJE @" . $media->xref() . '@') !== false;
+                        case 'event':
+                            return strpos($individual->gedcom(), "\n2 OBJE @" . $media->xref() . '@') !== false;
                     }
                 }
-            }
-            unset($all_media[$n]);
-        }
 
-        if ($random_media) {
+                return false;
+            });
+
+        $random_media = Media::getInstance($random_row->m_id, $tree, $random_row->m_gedcom);
+
+        if ($random_media instanceof Media) {
             $content = view('modules/random_media/slide-show', [
                 'block_id'            => $block_id,
                 'media'               => $random_media,
