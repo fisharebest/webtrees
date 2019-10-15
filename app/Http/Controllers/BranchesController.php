@@ -382,7 +382,7 @@ class BranchesController extends AbstractBaseController
 
         // One is a substring of the other.  e.g. Halen / Van Halen
         return stripos($surname1, $surname2) !== false || stripos($surname2, $surname1) !== false;
-     }
+    }
 
     /**
      * Convert a SOSA number into a generation number. e.g. 8 = great-grandfather = 3 generations
