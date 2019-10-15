@@ -48,7 +48,7 @@ class ReorderMediaPage implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree, new InvalidArgumentException());
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref = $request->getAttribute('xref');
         assert(is_string($xref), new InvalidArgumentException());
 
         $individual = Individual::getInstance($xref, $tree);
