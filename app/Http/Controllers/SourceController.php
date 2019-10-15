@@ -73,7 +73,7 @@ class SourceController extends AbstractBaseController
      */
     public function show(ServerRequestInterface $request): ResponseInterface
     {
-        $slug   = $request->getAttribute('slug') ?? '';
+        $slug   = $request->getAttribute('slug');
         $tree   = $request->getAttribute('tree');
         $xref   = $request->getAttribute('xref');
         $source = Source::getInstance($xref, $tree);

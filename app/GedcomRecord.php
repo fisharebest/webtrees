@@ -393,7 +393,7 @@ class GedcomRecord
      */
     public function slug(): string
     {
-        return Str::slug(strip_tags($this->fullName()));
+        return strip_tags($this->fullName());
     }
 
     /**
