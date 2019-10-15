@@ -52,10 +52,16 @@ use Illuminate\Database\Capsule\Manager as DB;
                         <div class="row<?= $importing ? ' d-none' : '' ?>" id="actions<?= $managed_tree->id() ?>">
                             <div class="col-sm-6 col-md-3">
                                 <h3>
-                                    <a href="<?= e(route('tree-page', ['tree' => $managed_tree->name()])) ?>">
-                                        <?= I18N::translate('Family tree') ?>
-                                    </a>
+                                    <?= I18N::translate('Family tree') ?>
                                 </h3>
+                                <ul class="fa-ul">
+                                    <li>
+                                        <span class="fa-li"><?= view('icons/tree') ?></span>
+                                        <a href="<?= e(route('tree-page', ['tree' => $managed_tree->name()])) ?>">
+                                            <?= I18N::translate('Home page') ?>
+                                        </a>
+                                    </li>
+                                </ul>
                                 <ul class="fa-ul">
                                     <!-- PREFERENCES -->
                                     <li>
