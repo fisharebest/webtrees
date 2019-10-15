@@ -128,7 +128,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
             });
 
         $random_media = null;
-        
+
         if ($random_row !== null) {
             $random_media = Media::getInstance($random_row->m_id, $tree, $random_row->m_gedcom);
         }
