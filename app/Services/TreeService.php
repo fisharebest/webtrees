@@ -31,7 +31,6 @@ use Illuminate\Support\Collection;
 use stdClass;
 
 use function app;
-use function view;
 
 /**
  * Tree management and queries.
@@ -176,14 +175,14 @@ class TreeService
         $tree->setPreference('SURNAME_TRADITION', self::DEFAULT_SURNAME_TRADITIONS[WT_LOCALE] ?? 'paternal');
 
         // A tree needs at least one record.
-        $head = '0 HEAD\n1 SOUR webtrees\n2 DEST webtrees\n1 GEDC\n2 VERS 5.5.1\n2 FORM LINEAGE-LINKED\n1 CHAR UTF-8';
-        FunctionsImport::importRecord($head, $tree, false);
+        $head = "0 HEAD\n1 SOUR webtrees\n2 DEST webtrees\n1 GEDC\n2 VERS 5.5.1\n2 FORM LINEAGE-LINKED\n1 CHAR UTF-8";
+        FunctionsImport::importRecord($head, $tree, true);
 
         // I18N: This should be a common/default/placeholder name of an individual. Put slashes around the surname.
         $name = I18N::translate('John /DOE/');
         $note = I18N::translate('Edit this individual and replace their details with your own.');
-        $indi = '0 @X1@ INDI\n1 NAME ' . $name . '\n1 SEX M\n1 BIRT\n2 DATE 01 JAN 1850\n2 NOTE ' . $note;
-        FunctionsImport::importRecord($indi, $tree, false);
+        $indi = "0 @X1@ INDI\n1 NAME " . $name . "\n1 SEX M\n1 BIRT\n2 DATE 01 JAN 1850\n2 NOTE " . $note;
+        FunctionsImport::importRecord($indi, $tree, true);
 
         return $tree;
     }
