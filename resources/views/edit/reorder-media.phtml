@@ -8,10 +8,8 @@ use Fisharebest\Webtrees\View;
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route(ReorderMediaAction::class, ['tree' => $tree->name()])) ?>" class="wt-page-content">
+<form method="post" action="<?= e(route(ReorderMediaAction::class, ['tree' => $tree->name(), 'xref' => $individual->xref()])) ?>" class="wt-page-content">
     <?= csrf_field() ?>
-    <input type="hidden" name="tree" value="<?= e($individual->tree()->name()) ?>">
-    <input type="hidden" name="xref" value="<?= e($individual->xref()) ?>">
 
     <div class="wt-sortable-list">
         <?php foreach ($individual->facts(['OBJE']) as $fact) : ?>
@@ -45,8 +43,8 @@ use Fisharebest\Webtrees\View;
 
 <?php View::push('javascript') ?>
 <script>
-  new Sortable(document.querySelector(".wt-sortable-list"), {
-      handle: '.drag-handle'
-  });
+    new Sortable(document.querySelector(".wt-sortable-list"), {
+        handle: ".drag-handle",
+    });
 </script>
 <?php View::endpush() ?>

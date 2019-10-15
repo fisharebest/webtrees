@@ -16,10 +16,12 @@ use Fisharebest\Webtrees\View;
         <?php foreach ($family->facts(['CHIL']) as $fact) : ?>
             <div class="card mb-2 wt-sortable-item" data-sortbydate="<?= $fact->target()->getBirthDate()->julianDay() ?>">
                 <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
-                <h3 class="card-header">
-                    <?= view('icons/drag-handle') ?>
+                <div class="card-header">
+                    <span class="drag-handle">
+                        <?= view('icons/drag-handle') ?>
+                    </span>
                     <?= $fact->target()->fullName() ?>
-                </h3>
+                </div>
                 <div class="card-body">
                     <?= $fact->target()->formatFirstMajorFact(Gedcom::BIRTH_EVENTS, 2) ?>
                     <?= $fact->target()->formatFirstMajorFact(Gedcom::DEATH_EVENTS, 2) ?>
@@ -48,7 +50,9 @@ use Fisharebest\Webtrees\View;
 
 <?php View::push('javascript') ?>
 <script>
-  new Sortable(document.querySelector(".wt-sortable-list"), {});
+    new Sortable(document.querySelector(".wt-sortable-list"), {
+        handle: ".drag-handle",
+    });
 
   $("#btn-default-order").on("click", function() {
     $(".wt-sortable-list .wt-sortable-item").sort(function(x, y) {
