@@ -335,6 +335,8 @@ $router->attach('', '/tree/{tree}', static function (Map $router) {
     $router->get('media', '/media/{xref}{/slug}', 'MediaController::show');
     $router->get('message', '/message', 'MessageController::messagePage');
     $router->post('message-action', '/message', 'MessageController::messageAction');
+    $router->get('module', '/module/{module}/{action}', ModuleAction::class)
+        ->allows(RequestMethodInterface::METHOD_POST);
     $router->get('note', '/note/{xref}{/slug}', 'NoteController::show');
     $router->get('record', '/record/{xref}{/slug}', 'GedcomRecordController::show');
     $router->get('repository', '/repository/{xref}{/slug}', 'RepositoryController::show');
@@ -360,6 +362,9 @@ $router->attach('', '/tree/{tree}', static function (Map $router) {
     $router->get('example', '/…');
 });
 
+$router->get('module-admin', '/module/{module}/{action}', ModuleAction::class)
+    ->allows(RequestMethodInterface::METHOD_POST);
+
 $router->get(HelpText::class, '/help/{topic}', HelpText::class);
 $router->post(SelectLanguage::class, '/language/{language}', SelectLanguage::class);
 $router->get(LoginPage::class, '/login', LoginPage::class);
@@ -375,10 +380,6 @@ $router->post(RegisterAction::class, '/register', RegisterAction::class);
 $router->post(SelectTheme::class, '/theme/{theme}', SelectTheme::class);
 $router->get(VerifyEmail::class, '/verify', VerifyEmail::class);
 $router->get(PrivacyPolicy::class, '/privacy-policy', PrivacyPolicy::class);
-
-$router->get('module', '/module/{module}/{action}', ModuleAction::class)
-    ->allows(RequestMethodInterface::METHOD_POST);
-
 $router->get(HomePage::class, '/', HomePage::class);
 
 // Legacy URLs from older software.
