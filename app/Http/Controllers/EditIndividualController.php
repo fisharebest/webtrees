@@ -36,13 +36,13 @@ use function assert;
  */
 class EditIndividualController extends AbstractEditController
 {
-   /**
-     * Add a child to an existing individual (creating a one-parent family).
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
+    /**
+      * Add a child to an existing individual (creating a one-parent family).
+      *
+      * @param ServerRequestInterface $request
+      *
+      * @return ResponseInterface
+      */
     public function addChild(ServerRequestInterface $request): ResponseInterface
     {
         $tree       = $request->getAttribute('tree');
