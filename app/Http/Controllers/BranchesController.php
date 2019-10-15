@@ -35,7 +35,7 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-
+use function stripos;
 use function view;
 
 /**
@@ -278,6 +278,10 @@ class BranchesController extends AbstractBaseController
                 $person_name = $name['full'];
                 break;
             }
+            if ($this->surnamesMatch($surn1, $surname, $soundex_std, $soundex_dm)) {
+                $person_name = $name['full'];
+                break;
+            }
         }
 
         // No matching name? Typically children with a different surname. The branch stops here.
@@ -355,6 +359,30 @@ class BranchesController extends AbstractBaseController
         // No spouses - just show the individual
         return '<li>' . $indi_html . '</li>';
     }
+
+    /**
+     * Do two surnames match?
+     *
+     * @param string $surname1
+     * @param string $surname2
+     * @param bool   $soundex_std
+     * @param bool   $soundex_dm
+     *
+     * @return bool
+     */
+    private function surnamesMatch(string $surname1, string $surname2, bool $soundex_std, bool $soundex_dm): bool
+    {
+        // One name sounds like another?
+        if ($soundex_std && Soundex::compare(Soundex::russell($surname1), Soundex::russell($surname2))) {
+            return true;
+        }
+        if ($soundex_dm && Soundex::compare(Soundex::daitchMokotoff($surname1), Soundex::daitchMokotoff($surname2))) {
+            return true;
+        }
+
+        // One is a substring of the other.  e.g. Halen / Van Halen
+        return stripos($surname1, $surname2) !== false || stripos($surname2, $surname1) !== false;
+     }
 
     /**
      * Convert a SOSA number into a generation number. e.g. 8 = great-grandfather = 3 generations
