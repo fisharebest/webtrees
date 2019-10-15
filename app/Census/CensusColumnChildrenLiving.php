@@ -43,12 +43,13 @@ class CensusColumnChildrenLiving extends AbstractCensusColumn implements CensusC
         $count = 0;
         foreach ($individual->spouseFamilies() as $family) {
             foreach ($family->children() as $child) {
-                if (
-                    $child->getBirthDate()->isOK() &&
-                    Date::compare($child->getBirthDate(), $this->date()) < 0 &&
-                    $child->getBirthDate() != $child->getDeathDate() &&
-                    (!$child->getDeathDate()->isOK() || Date::compare($child->getDeathDate(), $this->date()) > 0)
-                ) {
+                $birth = $child->getBirthDate();
+                $death = $child->getDeathDate();
+
+                $born_before = $birth->isOK() && Date::compare($birth, $this->date()) < 0;
+                $died_after  = $death->isOK() && Date::compare($death, $this->date()) > 0 || !$death->isOK();
+
+                if ($born_before && $died_after) {
                     $count++;
                 }
             }

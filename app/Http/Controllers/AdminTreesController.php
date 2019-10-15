@@ -62,6 +62,7 @@ use Throwable;
 
 use function addcslashes;
 use function app;
+use function array_key_exists;
 use function assert;
 use function fclose;
 use function fopen;
@@ -299,11 +300,11 @@ class AdminTreesController extends AbstractBaseController
                         /* I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR */
                         I18N::translate('%1$s is a %2$s but a %3$s is expected.', $this->checkLink($tree, $xref2), $this->formatType($type3), $this->formatType($type2));
                 } elseif (
-                    $type2 === 'FAMC' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1] !== 'CHIL') ||
-                    $type2 === 'FAMS' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1] !== 'HUSB' && $all_links[$xref2][$xref1] !== 'WIFE') ||
-                    $type2 === 'CHIL' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1] !== 'FAMC') ||
-                    $type2 === 'HUSB' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1] !== 'FAMS') ||
-                    $type2 === 'WIFE' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1] !== 'FAMS')
+                    $this->checkReverseLink($type2, $all_links, $xref1, $xref2, 'FAMC', ['CHIL']) ||
+                    $this->checkReverseLink($type2, $all_links, $xref1, $xref2, 'FAMS', ['HUSB', 'WIFE']) ||
+                    $this->checkReverseLink($type2, $all_links, $xref1, $xref2, 'CHIL', ['FAMC']) ||
+                    $this->checkReverseLink($type2, $all_links, $xref1, $xref2, 'HUSB', ['FAMS']) ||
+                    $this->checkReverseLink($type2, $all_links, $xref1, $xref2, 'WIFE', ['FAMS'])
                 ) {
                     /* I18N: %1$s and %2$s are internal ID numbers such as R123 */
                     $errors[] = $this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) . ' ' . I18N::translate('%1$s does not have a link back to %2$s.', $this->checkLink($tree, $xref2), $this->checkLink($tree, $xref1));
@@ -319,6 +320,21 @@ class AdminTreesController extends AbstractBaseController
             'tree'     => $tree,
             'warnings' => $warnings,
         ]);
+    }
+
+    /**
+     * @param string $type
+     * @param array  $links
+     * @param string $xref1
+     * @param string $xref2
+     * @param string $link
+     * @param array  $reciprocal
+     *
+     * @return bool
+     */
+    private function checkReverseLink(string $type, array $links, string $xref1, string $xref2, string $link, array $reciprocal): bool
+    {
+        return $type === $link && (!array_key_exists($xref1, $links[$xref2]) || !in_array($links[$xref2][$xref1], $reciprocal, true));
     }
 
     /**

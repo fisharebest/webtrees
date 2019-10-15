@@ -266,17 +266,18 @@ class FunctionsPrint
                         $death_date = new Date('');
                     }
                     $ageText = '';
-                    if ((Date::compare($date, $death_date) <= 0 || !$record->isDead()) || $fact === 'DEAT') {
+                    if ($fact === 'DEAT' || (Date::compare($date, $death_date) <= 0 || !$record->isDead())) {
                         // Before death, print age
                         $age = Date::getAgeGedcom($birth_date, $date);
                         // Only show calculated age if it differs from recorded age
                         if ($age !== '' && $age !== '0d') {
-                            if (
-                                $fact_age !== '' && $fact_age !== $age ||
-                                $fact_age === '' && $husb_age === '' && $wife_age === '' ||
-                                $husb_age !== '' && $record->sex() === 'M' && $husb_age !== $age ||
-                                $wife_age !== '' && $record->sex() === 'F' && $wife_age !== $age
-                            ) {
+                            if ($fact_age !== '' && $fact_age !== $age) {
+                                $ageText = '(' . I18N::translate('Age') . ' ' . FunctionsDate::getAgeAtEvent($age) . ')';
+                            } elseif ($fact_age === '' && $husb_age === '' && $wife_age === '') {
+                                $ageText = '(' . I18N::translate('Age') . ' ' . FunctionsDate::getAgeAtEvent($age) . ')';
+                            } elseif ($husb_age !== '' && $husb_age !== $age && $record->sex() === 'M') {
+                                $ageText = '(' . I18N::translate('Age') . ' ' . FunctionsDate::getAgeAtEvent($age) . ')';
+                            } elseif ($wife_age !== '' && $wife_age !== $age && $record->sex() === 'F') {
                                 $ageText = '(' . I18N::translate('Age') . ' ' . FunctionsDate::getAgeAtEvent($age) . ')';
                             }
                         }
