@@ -23,9 +23,12 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Tree;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function assert;
 use function e;
 use function response;
 
@@ -55,6 +58,7 @@ class DeleteTreeAction extends AbstractBaseController
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
 
         $this->tree_service->delete($tree);
 

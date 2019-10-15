@@ -48,6 +48,7 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
+use InvalidArgumentException;
 use League\Flysystem\Filesystem;
 use League\Flysystem\MountManager;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
@@ -61,6 +62,7 @@ use Throwable;
 
 use function addcslashes;
 use function app;
+use function assert;
 use function fclose;
 use function fopen;
 use function is_dir;
@@ -117,6 +119,7 @@ class AdminTreesController extends AbstractBaseController
     public function check(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
 
         // We need to work with raw GEDCOM data, as we are looking for errors
         // which may prevent the GedcomRecord objects from working.
@@ -1710,6 +1713,8 @@ class AdminTreesController extends AbstractBaseController
     public function setDefault(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         Site::setPreference('DEFAULT_GEDCOM', $tree->name());
 
         /* I18N: %s is the name of a family tree */
@@ -1728,6 +1733,8 @@ class AdminTreesController extends AbstractBaseController
     public function synchronize(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $url  = route('manage-trees', ['tree' => $tree->name()]);
 
         $gedcom_files = $this->gedcomFiles(WT_DATA_DIR);

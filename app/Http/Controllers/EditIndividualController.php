@@ -23,199 +23,20 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tree;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
+use function assert;
 
 /**
  * Controller for edit forms and responses.
  */
 class EditIndividualController extends AbstractEditController
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function reorderMedia(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree       = $request->getAttribute('tree');
-        $xref       = $request->getQueryParams()['xref'];
-        $individual = Individual::getInstance($xref, $tree);
-
-        Auth::checkIndividualAccess($individual, true);
-
-        $title = $individual->fullName() . ' — ' . I18N::translate('Re-order media');
-
-        return $this->viewResponse('edit/reorder-media', [
-            'title'      => $title,
-            'individual' => $individual,
-        ]);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function reorderMediaAction(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree       = $request->getAttribute('tree');
-        $xref       = $request->getParsedBody()['xref'];
-        $order      = $request->getParsedBody()['order'] ?? [];
-        $individual = Individual::getInstance($xref, $tree);
-
-        Auth::checkIndividualAccess($individual, true);
-
-        $dummy_facts = ['0 @' . $individual->xref() . '@ INDI'];
-        $sort_facts  = [];
-        $keep_facts  = [];
-
-        // Split facts into OBJE and other
-        foreach ($individual->facts() as $fact) {
-            if ($fact->getTag() === 'OBJE') {
-                $sort_facts[$fact->id()] = $fact->gedcom();
-            } else {
-                $keep_facts[] = $fact->gedcom();
-            }
-        }
-
-        // Sort the facts
-        uksort($sort_facts, static function ($x, $y) use ($order) {
-            return array_search($x, $order, true) - array_search($y, $order, true);
-        });
-
-        // Merge the facts
-        $gedcom = implode("\n", array_merge($dummy_facts, $sort_facts, $keep_facts));
-
-        $individual->updateRecord($gedcom, false);
-
-        return redirect($individual->url());
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function reorderNames(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree       = $request->getAttribute('tree');
-        $xref       = $request->getQueryParams()['xref'];
-        $individual = Individual::getInstance($xref, $tree);
-
-        Auth::checkIndividualAccess($individual, true);
-
-        $title = $individual->fullName() . ' — ' . I18N::translate('Re-order names');
-
-        return $this->viewResponse('edit/reorder-names', [
-            'title'      => $title,
-            'individual' => $individual,
-        ]);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function reorderNamesAction(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree       = $request->getAttribute('tree');
-        $xref       = $request->getParsedBody()['xref'];
-        $order      = $request->getParsedBody()['order'] ?? [];
-        $individual = Individual::getInstance($xref, $tree);
-
-        Auth::checkIndividualAccess($individual, true);
-
-        $dummy_facts = ['0 @' . $individual->xref() . '@ INDI'];
-        $sort_facts  = [];
-        $keep_facts  = [];
-
-        // Split facts into NAME and other
-        foreach ($individual->facts() as $fact) {
-            if ($fact->getTag() === 'NAME') {
-                $sort_facts[$fact->id()] = $fact->gedcom();
-            } else {
-                $keep_facts[] = $fact->gedcom();
-            }
-        }
-
-        // Sort the facts
-        uksort($sort_facts, static function ($x, $y) use ($order) {
-            return array_search($x, $order, true) - array_search($y, $order, true);
-        });
-
-        // Merge the facts
-        $gedcom = implode("\n", array_merge($dummy_facts, $sort_facts, $keep_facts));
-
-        $individual->updateRecord($gedcom, false);
-
-        return redirect($individual->url());
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function reorderSpouses(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree       = $request->getAttribute('tree');
-        $xref       = $request->getQueryParams()['xref'];
-        $individual = Individual::getInstance($xref, $tree);
-
-        Auth::checkIndividualAccess($individual, true);
-
-        $title = $individual->fullName() . ' — ' . I18N::translate('Re-order families');
-
-        return $this->viewResponse('edit/reorder-spouses', [
-            'title'      => $title,
-            'individual' => $individual,
-        ]);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function reorderSpousesAction(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree       = $request->getAttribute('tree');
-        $xref       = $request->getParsedBody()['xref'];
-        $order      = $request->getParsedBody()['order'] ?? [];
-        $individual = Individual::getInstance($xref, $tree);
-
-        Auth::checkIndividualAccess($individual, true);
-
-        $dummy_facts = ['0 @' . $individual->xref() . '@ INDI'];
-        $sort_facts  = [];
-        $keep_facts  = [];
-
-        // Split facts into FAMS and other
-        foreach ($individual->facts() as $fact) {
-            if ($fact->getTag() === 'FAMS') {
-                $sort_facts[$fact->id()] = $fact->gedcom();
-            } else {
-                $keep_facts[] = $fact->gedcom();
-            }
-        }
-
-        // Sort the facts
-        uksort($sort_facts, static function ($x, $y) use ($order) {
-            return array_search($x, $order, true) - array_search($y, $order, true);
-        });
-
-        // Merge the facts
-        $gedcom = implode("\n", array_merge($dummy_facts, $sort_facts, $keep_facts));
-
-        $individual->updateRecord($gedcom, false);
-
-        return redirect($individual->url());
-    }
-
-    /**
+   /**
      * Add a child to an existing individual (creating a one-parent family).
      *
      * @param ServerRequestInterface $request
@@ -413,6 +234,8 @@ class EditIndividualController extends AbstractEditController
     public function addSpouse(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $xref = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
@@ -518,6 +341,7 @@ class EditIndividualController extends AbstractEditController
     public function addUnlinked(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
 
         return $this->viewResponse('edit/new-individual', [
             'next_action' => 'add-unlinked-individual-action',
@@ -612,6 +436,8 @@ class EditIndividualController extends AbstractEditController
     public function editNameAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $xref = $request->getParsedBody()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
@@ -632,6 +458,8 @@ class EditIndividualController extends AbstractEditController
     public function addName(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $xref = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
@@ -660,6 +488,8 @@ class EditIndividualController extends AbstractEditController
     public function addNameAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $xref = $request->getParsedBody()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
@@ -679,6 +509,8 @@ class EditIndividualController extends AbstractEditController
     public function linkChildToFamily(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $xref = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
@@ -747,6 +579,8 @@ class EditIndividualController extends AbstractEditController
     public function linkSpouseToIndividual(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $xref = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);

@@ -16,52 +16,52 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Middleware;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
-use function redirect;
-use function route;
+use function is_string;
 
 /**
- * Middleware to restrict access to managers.
+ * Reorder the media of an individual.
  */
-class AuthManager implements MiddlewareInterface
+class ReorderMediaPage implements RequestHandlerInterface
 {
+    use ViewResponseTrait;
+
     /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree, new InvalidArgumentException());
 
-        $user = $request->getAttribute('user');
+        $xref = $request->getQueryParams()['xref'];
+        assert(is_string($xref), new InvalidArgumentException());
 
-        // Logged in with the correct role?
-        if ($tree instanceof Tree && Auth::isManager($tree, $user)) {
-            return $handler->handle($request);
-        }
+        $individual = Individual::getInstance($xref, $tree);
+        assert($individual instanceof Individual, new InvalidArgumentException());
 
-        // Logged in, but without the correct role?
-        if ($user instanceof User) {
-            return redirect(route(HomePage::class));
-        }
+        Auth::checkIndividualAccess($individual, true);
 
-        // Not logged in.
-        return redirect(route(LoginPage::class, ['url' => $request->getUri()]));
+        $title = $individual->fullName() . ' — ' . I18N::translate('Re-order media');
+
+        return $this->viewResponse('edit/reorder-media', [
+            'individual' => $individual,
+            'title'      => $title,
+            'tree'       => $tree,
+        ]);
     }
 }

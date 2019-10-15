@@ -1,5 +1,6 @@
 <?php
 
+use Fisharebest\Webtrees\Http\RequestHandlers\ReorderChildrenPage;
 use Fisharebest\Webtrees\I18N;
 
 ?>
@@ -35,7 +36,7 @@ use Fisharebest\Webtrees\I18N;
             </a>
             <br>
             <?php if ($family->numberOfChildren() > 1) : ?>
-                <a class="btn btn-link" href="<?= e(route('reorder-children', ['tree' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
+                <a class="btn btn-link" href="<?= e(route(ReorderChildrenPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
                     <?= I18N::translate('Re-order children') ?>
                 </a>
             <?php endif ?>

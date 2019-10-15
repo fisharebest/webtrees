@@ -16,52 +16,52 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Middleware;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
-use function redirect;
-use function route;
+use function is_string;
 
 /**
- * Middleware to restrict access to managers.
+ * Reorder the children in a family.
  */
-class AuthManager implements MiddlewareInterface
+class ReorderChildrenPage implements RequestHandlerInterface
 {
+    use ViewResponseTrait;
+
     /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree, new InvalidArgumentException());
 
-        $user = $request->getAttribute('user');
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref), new InvalidArgumentException());
 
-        // Logged in with the correct role?
-        if ($tree instanceof Tree && Auth::isManager($tree, $user)) {
-            return $handler->handle($request);
-        }
+        $family = Family::getInstance($xref, $tree);
+        assert($family instanceof Family, new InvalidArgumentException());
 
-        // Logged in, but without the correct role?
-        if ($user instanceof User) {
-            return redirect(route(HomePage::class));
-        }
+        Auth::checkFamilyAccess($family, true);
 
-        // Not logged in.
-        return redirect(route(LoginPage::class, ['url' => $request->getUri()]));
+        $title = $family->fullName() . ' — ' . I18N::translate('Re-order children');
+
+        return $this->viewResponse('edit/reorder-children', [
+            'family' => $family,
+            'title'  => $title,
+            'tree'   => $tree,
+        ]);
     }
 }

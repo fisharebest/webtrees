@@ -1,14 +1,16 @@
-<?php use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
+<?php
+
+use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Http\RequestHandlers\ReorderNamesAction;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\View; ?>
-<?php ?>
-<?php ?>
-<?php ?>
+use Fisharebest\Webtrees\View;
+
+?>
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route('reorder-names-action', ['tree' => $tree->name()])) ?>" class="wt-page-content">
+<form method="post" action="<?= e(route(ReorderNamesAction::class, ['tree' => $tree->name()])) ?>" class="wt-page-content">
     <?= csrf_field() ?>
     <input type="hidden" name="tree" value="<?= e($individual->tree()->name()) ?>">
     <input type="hidden" name="xref" value="<?= e($individual->xref()) ?>">

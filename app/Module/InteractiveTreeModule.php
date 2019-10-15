@@ -25,8 +25,11 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
+use Fisharebest\Webtrees\Tree;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function assert;
 
 /**
  * Class InteractiveTreeModule
@@ -184,6 +187,8 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
     public function getChartAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $user = $request->getAttribute('user');
         $xref = $request->getQueryParams()['xref'];
 

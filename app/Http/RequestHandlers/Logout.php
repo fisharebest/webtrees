@@ -24,10 +24,12 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function assert;
 use function redirect;
 use function route;
 
@@ -44,6 +46,8 @@ class Logout implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $user = $request->getAttribute('user');
 
         if ($user instanceof User) {

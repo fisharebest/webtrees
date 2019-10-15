@@ -24,11 +24,14 @@ use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TimeoutService;
+use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function assert;
 
 /**
  * Controller for the processing GEDCOM files.
@@ -61,6 +64,7 @@ class GedcomFileController extends AbstractBaseController
     public function import(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
 
         try {
             // Only allow one process to import each gedcom at a time

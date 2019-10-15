@@ -1,9 +1,14 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php
+
+use Fisharebest\Webtrees\Http\RequestHandlers\ReorderMediaAction;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
+
+?>
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route('reorder-media-action', ['tree' => $tree->name()])) ?>" class="wt-page-content">
+<form method="post" action="<?= e(route(ReorderMediaAction::class, ['tree' => $tree->name()])) ?>" class="wt-page-content">
     <?= csrf_field() ?>
     <input type="hidden" name="tree" value="<?= e($individual->tree()->name()) ?>">
     <input type="hidden" name="xref" value="<?= e($individual->xref()) ?>">

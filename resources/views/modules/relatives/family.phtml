@@ -2,7 +2,8 @@
 <?php use Fisharebest\Webtrees\Functions\Functions; ?>
 <?php use Fisharebest\Webtrees\Gedcom; ?>
 <?php use Fisharebest\Webtrees\GedcomTag; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\Http\RequestHandlers\ReorderChildrenPage;
+use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Individual; ?>
 
 <table class="table table-sm wt-facts-table">
@@ -190,7 +191,7 @@
             <tr>
                 <th scope="row">
                     <?php if ($family->children()->count() > 1) : ?>
-                        <a href="<?= e(route('reorder-children', ['tree' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
+                        <a href="<?= e(route(ReorderChildrenPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
                             <?= view('icons/reorder') ?>
                             <?= I18N::translate('Re-order children') ?>
                         </a>

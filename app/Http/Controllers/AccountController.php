@@ -27,9 +27,12 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function assert;
 
 /**
  * Controller to allow the user to edit their account details.
@@ -65,6 +68,8 @@ class AccountController extends AbstractBaseController
     public function edit(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $user = $request->getAttribute('user');
 
         $my_individual_record = Individual::getInstance($tree->getUserPreference(Auth::user(), 'gedcomid'), $tree);

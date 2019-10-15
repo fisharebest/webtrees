@@ -25,9 +25,11 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
+use function assert;
 
 /**
  * Class FrequentlyAskedQuestionsModule
@@ -112,6 +114,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         $this->layout = 'layouts/administration';
 
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $faqs = $this->faqsForTree($tree);
 
         $min_block_order = DB::table('block')
@@ -378,6 +382,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     public function getShowAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
 
         // Filter foreign languages.
         $faqs = $this->faqsForTree($tree)

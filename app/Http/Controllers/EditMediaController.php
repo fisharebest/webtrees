@@ -40,6 +40,7 @@ use Psr\Http\Message\UploadedFileInterface;
 use RuntimeException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
+use function assert;
 use function pathinfo;
 use function strpos;
 
@@ -280,6 +281,7 @@ class EditMediaController extends AbstractEditController
     public function createMediaObject(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
 
         return response(view('modals/create-media-object', [
             'max_upload_size' => $this->maxUploadFilesize(),
@@ -403,6 +405,8 @@ class EditMediaController extends AbstractEditController
     public function linkMediaToIndividual(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $xref = $request->getQueryParams()['xref'];
 
         $media = Media::getInstance($xref, $tree);
@@ -421,6 +425,8 @@ class EditMediaController extends AbstractEditController
     public function linkMediaToFamily(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $xref = $request->getQueryParams()['xref'];
 
         $media = Media::getInstance($xref, $tree);
@@ -439,6 +445,8 @@ class EditMediaController extends AbstractEditController
     public function linkMediaToSource(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $xref = $request->getQueryParams()['xref'];
 
         $media = Media::getInstance($xref, $tree);

@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Statistics;
+use Fisharebest\Webtrees\Tree;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -35,6 +37,7 @@ use function array_merge;
 use function array_sum;
 use function array_values;
 use function array_walk;
+use function assert;
 use function count;
 use function explode;
 use function in_array;
@@ -140,6 +143,8 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     public function getChartAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $user = $request->getAttribute('user');
 
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
@@ -227,6 +232,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         $this->layout = 'layouts/ajax';
 
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
 
         return $this->viewResponse('modules/statistics-chart/custom', [
             'module' => $this,

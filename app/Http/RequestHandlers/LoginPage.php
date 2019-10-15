@@ -21,9 +21,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function assert;
 
 /**
  * Show a login form.

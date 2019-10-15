@@ -23,10 +23,13 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Services\ClipboardService;
+use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function assert;
 use function redirect;
 
 /**
@@ -56,9 +59,11 @@ class NoteController extends AbstractBaseController
      */
     public function show(ServerRequestInterface $request): ResponseInterface
     {
-        $slug = $request->getAttribute('slug');
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $xref = $request->getAttribute('xref');
+        $slug = $request->getAttribute('slug');
         $note = Note::getInstance($xref, $tree);
 
         Auth::checkNoteAccess($note, false);

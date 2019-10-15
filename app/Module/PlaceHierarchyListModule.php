@@ -21,8 +21,11 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Controllers\PlaceHierarchyController;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function assert;
 
 /**
  * Class IndividualListModule
@@ -71,6 +74,8 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     public function getListAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $user = $request->getAttribute('user');
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);

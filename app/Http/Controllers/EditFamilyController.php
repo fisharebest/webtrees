@@ -38,67 +38,6 @@ class EditFamilyController extends AbstractEditController
      *
      * @return ResponseInterface
      */
-    public function reorderChildren(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree   = $request->getAttribute('tree');
-        $xref   = $request->getQueryParams()['xref'];
-        $family = Family::getInstance($xref, $tree);
-
-        Auth::checkFamilyAccess($family, true);
-
-        $title = $family->fullName() . ' — ' . I18N::translate('Re-order children');
-
-        return $this->viewResponse('edit/reorder-children', [
-            'title'  => $title,
-            'family' => $family,
-        ]);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function reorderChildrenAction(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree   = $request->getAttribute('tree');
-        $xref   = $request->getParsedBody()['xref'];
-        $order  = $request->getParsedBody()['order'] ?? [];
-        $family = Family::getInstance($xref, $tree);
-
-        Auth::checkFamilyAccess($family, true);
-
-        $dummy_facts = ['0 @' . $family->xref() . '@ FAM'];
-        $sort_facts  = [];
-        $keep_facts  = [];
-
-        // Split facts into FAMS and other
-        foreach ($family->facts() as $fact) {
-            if ($fact->getTag() === 'CHIL') {
-                $sort_facts[$fact->id()] = $fact->gedcom();
-            } else {
-                $keep_facts[] = $fact->gedcom();
-            }
-        }
-
-        // Sort the facts
-        uksort($sort_facts, static function ($x, $y) use ($order) {
-            return array_search($x, $order, true) - array_search($y, $order, true);
-        });
-
-        // Merge the facts
-        $gedcom = implode("\n", array_merge($dummy_facts, $sort_facts, $keep_facts));
-
-        $family->updateRecord($gedcom, false);
-
-        return redirect($family->url());
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function addChild(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = $request->getAttribute('tree');

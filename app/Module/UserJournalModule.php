@@ -25,10 +25,12 @@ use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use function assert;
 
 /**
  * Class UserJournalModule
@@ -188,6 +190,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
     public function postEditJournalAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
 
         if (!Auth::check()) {
             throw new AccessDeniedHttpException();

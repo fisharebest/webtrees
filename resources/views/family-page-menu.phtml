@@ -1,5 +1,6 @@
 <?php use Fisharebest\Webtrees\Auth; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\Http\RequestHandlers\ReorderChildrenPage;
+use Fisharebest\Webtrees\I18N; ?>
 
 <div class="dropdown wt-page-menu">
     <button class="btn btn-primary dropdown-toggle wt-page-menu-button" type="button" id="page-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -33,7 +34,7 @@
         </a>
 
         <?php if ($record->numberOfChildren() > 1) : ?>
-            <a class="dropdown-item" href="<?= e(route('reorder-children', ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
+            <a class="dropdown-item" href="<?= e(route(ReorderChildrenPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
                 <?= view('icons/reorder') ?>
                 <?= I18N::translate('Re-order children') ?>
             </a>

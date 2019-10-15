@@ -25,10 +25,12 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Services\GedcomService;
+use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Database\QueryException;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
@@ -39,6 +41,7 @@ use function addcslashes;
 use function array_filter;
 use function array_pop;
 use function array_shift;
+use function assert;
 use function count;
 use function explode;
 use function fclose;
@@ -727,6 +730,7 @@ class LocationController extends AbstractAdminController
     public function importLocationsFromTree(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
 
         // Get all the places from the places table ...
         $places = DB::table('places AS p0')

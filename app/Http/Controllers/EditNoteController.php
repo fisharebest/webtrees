@@ -21,8 +21,11 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Tree;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function assert;
 
 /**
  * Controller for edit forms and responses.
@@ -51,6 +54,8 @@ class EditNoteController extends AbstractEditController
     public function editNoteObject(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $xref = $request->getQueryParams()['xref'];
 
         $note = Note::getInstance($xref, $tree);
@@ -74,6 +79,8 @@ class EditNoteController extends AbstractEditController
     public function updateNoteObject(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $xref = $request->getQueryParams()['xref'];
 
         $note = Note::getInstance($xref, $tree);

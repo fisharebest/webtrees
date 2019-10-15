@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
@@ -38,6 +39,7 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function array_key_exists;
+use function assert;
 
 /**
  * Class BatchUpdateModule
@@ -80,6 +82,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
     public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $user = $request->getAttribute('user');
 
         // We need a tree to work with.
@@ -330,6 +334,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $user = $request->getAttribute('user');
 
         // We need a tree to work with.

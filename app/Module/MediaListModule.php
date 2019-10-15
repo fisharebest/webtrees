@@ -25,8 +25,10 @@ use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Auth;
 use Illuminate\Database\Capsule\Manager as DB;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function assert;
 
 /**
  * Class MediaListModule
@@ -75,6 +77,8 @@ class MediaListModule extends AbstractModule implements ModuleListInterface
     public function getListAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $user = $request->getAttribute('user');
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);

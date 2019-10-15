@@ -35,8 +35,10 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function assert;
 
 /**
  * Controller for lists of GEDCOM records.
@@ -98,6 +100,8 @@ class ListController extends AbstractBaseController
     public function individualOrFamilyList(ServerRequestInterface $request, bool $families, ?ModuleListInterface $moduleListInterface): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $user = $request->getAttribute('user');
 
         // This action can show lists of both families and individuals.

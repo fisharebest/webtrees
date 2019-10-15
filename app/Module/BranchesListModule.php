@@ -23,8 +23,10 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Auth;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function assert;
 
 /**
  * Class BranchesListModule
@@ -88,6 +90,8 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
     public function getPageAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $user = $request->getAttribute('user');
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
@@ -104,6 +108,8 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
     public function getListAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
         $user = $request->getAttribute('user');
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
