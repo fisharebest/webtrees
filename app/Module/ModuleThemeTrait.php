@@ -391,7 +391,7 @@ trait ModuleThemeTrait
                 I18N::translate('My pedigree'),
                 route('pedigree', [
                     'xref' => $gedcomid,
-                    'ged'  => $tree->name(),
+                    'tree'  => $tree->name(),
                 ]),
                 'menu-mypedigree'
             );
@@ -411,7 +411,7 @@ trait ModuleThemeTrait
     {
         if ($tree instanceof Tree && $tree->hasPendingEdit() && Auth::isModerator($tree)) {
             $url = route('show-pending', [
-                'ged' => $tree->name(),
+                'tree' => $tree->name(),
                 'url' => (string) app(ServerRequestInterface::class)->getUri(),
             ]);
 

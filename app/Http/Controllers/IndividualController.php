@@ -297,7 +297,7 @@ class IndividualController extends AbstractBaseController
         if ($fact->canEdit()) {
             $edit_links =
                 '<a class="btn btn-link" href="#" data-confirm="' . I18N::translate('Are you sure you want to delete this fact?') . '" data-post-url="' . e(route('delete-fact', ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact_id' => $fact->id()])) . '" title="' . I18N::translate('Delete this name') . '">' . view('icons/delete') . '<span class="sr-only">' . I18N::translate('Delete this name') . '</span></a>' .
-                '<a class="btn btn-link" href="' . e(route('edit-name', ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'ged' => $individual->tree()->name()])) . '" title="' . I18N::translate('Edit the name') . '">' . view('icons/edit') . '<span class="sr-only">' . I18N::translate('Edit the name') . '</span></a>';
+                '<a class="btn btn-link" href="' . e(route('edit-name', ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'tree' => $individual->tree()->name()])) . '" title="' . I18N::translate('Edit the name') . '">' . view('icons/edit') . '<span class="sr-only">' . I18N::translate('Edit the name') . '</span></a>';
         } else {
             $edit_links = '';
         }
@@ -345,7 +345,7 @@ class IndividualController extends AbstractBaseController
         }
 
         if ($individual->canEdit()) {
-            $edit_links = '<a class="btn btn-link" href="' . e(route('edit-fact', ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'ged' => $individual->tree()->name()])) . '" title="' . I18N::translate('Edit the gender') . '">' . view('icons/edit') . '<span class="sr-only">' . I18N::translate('Edit the gender') . '</span></a>';
+            $edit_links = '<a class="btn btn-link" href="' . e(route('edit-fact', ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'tree' => $individual->tree()->name()])) . '" title="' . I18N::translate('Edit the gender') . '">' . view('icons/edit') . '<span class="sr-only">' . I18N::translate('Edit the gender') . '</span></a>';
         } else {
             $edit_links = '';
         }

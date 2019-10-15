@@ -90,7 +90,7 @@ trait ModuleListTrait
         return route('module', [
                 'module' => $this->name(),
                 'action' => 'List',
-                'ged'    => $tree->name(),
+                'tree'    => $tree->name(),
         ] + $parameters);
     }
 

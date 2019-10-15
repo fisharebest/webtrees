@@ -159,7 +159,7 @@ class AccountController extends AbstractBaseController
         // Switch to the new language now
         Session::put('language', $language);
 
-        return redirect(route('my-account', ['ged' => $tree->name()]));
+        return redirect(route('my-account', ['tree' => $tree->name()]));
     }
 
     /**

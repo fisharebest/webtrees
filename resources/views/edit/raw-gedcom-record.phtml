@@ -6,7 +6,7 @@ use Fisharebest\Webtrees\View; ?>
 
 <form method="post" action="<?= e(route('edit-raw-record-action')) ?>" class="wt-page-content">
     <?= csrf_field() ?>
-    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
+    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
     <input type="hidden" name="xref" value="<?= e($record->xref()) ?>">
 
     <p class="text-muted small">

@@ -133,7 +133,7 @@ class UpgradeController extends AbstractAdminController
         foreach (Tree::getAll() as $tree) {
             $route = route('upgrade', [
                 'step' => self::STEP_EXPORT,
-                'ged'  => $tree->name(),
+                'tree'  => $tree->name(),
             ]);
 
             $export_steps[$route] = I18N::translate('Export all the family trees to GEDCOM files…') . ' ' . e($tree->title());

@@ -189,7 +189,7 @@ $router->attach('', '/tree/{tree}', static function (Map $router) {
     $router->get('admin-trees-places', '/places', 'AdminTreesController::places');
     $router->post('admin-trees-places-action', '/places', 'AdminTreesController::placesAction');
     $router->get('admin-trees-preferences', '/preferences', 'AdminTreesController::preferences');
-    $router->post('admin-trees-preferences-update', '/preferences', 'AdminTreesController::preferencesUpdate');
+    $router->post('admin-trees-preferences-updateadmin-trees-preferences-update', '/preferences', 'AdminTreesController::preferencesUpdate');
     $router->get('admin-trees-renumber', '/renumber', 'AdminTreesController::renumber');
     $router->post('admin-trees-renumber-action', '/renumber', 'AdminTreesController::renumberAction');
     $router->get('admin-trees-unconnected', '/aunconnected', 'AdminTreesController::unconnected');

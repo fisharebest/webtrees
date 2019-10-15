@@ -127,7 +127,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 <h2 class="wt-page-title"><?= $title ?></h2>
 
 <form method="post" action="<?= e(route($next_action)) ?>" onsubmit="return checkform();">
-    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
+    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
     <input type="hidden" name="fact_id" value="<?= e($name_fact_id) ?>">
     <input type="hidden" name="xref" value="<?= e($xref) ?>">
     <input type="hidden" name="famtag" value="<?= e($famtag) ?>">
@@ -331,7 +331,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
             </a>
 
             <?php if ($name_fact instanceof Fact && (Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD'))) : ?>
-                <a class="btn btn-link" href="<?= e(route('edit-raw-fact', ['xref' => $xref, 'fact_id' => $name_fact->id(), 'ged' => $tree->name()])) ?>">
+                <a class="btn btn-link" href="<?= e(route('edit-raw-fact', ['xref' => $xref, 'fact_id' => $name_fact->id(), 'tree' => $tree->name()])) ?>">
                     <?= I18N::translate('Edit the raw GEDCOM') ?>
                 </a>
             <?php endif ?>

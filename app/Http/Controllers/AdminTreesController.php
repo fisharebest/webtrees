@@ -353,7 +353,7 @@ class AdminTreesController extends AbstractBaseController
     {
         return '<b><a href="' . e(route('record', [
                 'xref' => $xref,
-                'ged'  => $tree->name(),
+                'tree'  => $tree->name(),
             ])) . '">' . $xref . '</a></b>';
     }
 
@@ -943,7 +943,7 @@ class AdminTreesController extends AbstractBaseController
         FlashMessages::addMessage($feedback, 'success');
 
         $url = route('admin-trees-places', [
-            'ged'     => $tree->name(),
+            'tree'    => $tree->name(),
             'replace' => $replace,
             'search'  => $search,
         ]);
@@ -1697,7 +1697,7 @@ class AdminTreesController extends AbstractBaseController
             }
         }
 
-        $url = route('admin-trees-renumber', ['ged' => $tree->name()]);
+        $url = route('admin-trees-renumber', ['tree' => $tree->name()]);
 
         return redirect($url);
     }

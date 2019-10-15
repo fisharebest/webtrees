@@ -253,7 +253,7 @@ class AdminController extends AbstractBaseController
             $record2_name
         ), 'success');
 
-        return redirect(route('merge-records', ['ged' => $tree->name()]));
+        return redirect(route('merge-records', ['tree' => $tree->name()]));
     }
 
     /**

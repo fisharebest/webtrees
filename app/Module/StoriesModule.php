@@ -179,7 +179,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         $menu = new Menu($this->title(), route('module', [
             'module' => $this->name(),
             'action' => 'ShowList',
-            'ged'    => $tree->name(),
+            'tree'    => $tree->name(),
         ]), 'menu-story');
 
         return $menu;
@@ -320,7 +320,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         $url = route('module', [
             'module' => $this->name(),
             'action' => 'Admin',
-            'ged'    => $tree->name(),
+            'tree'    => $tree->name(),
         ]);
 
         return redirect($url);
@@ -347,7 +347,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         $url = route('module', [
             'module' => $this->name(),
             'action' => 'Admin',
-            'ged'    => $tree->name(),
+            'tree'    => $tree->name(),
         ]);
 
         return redirect($url);

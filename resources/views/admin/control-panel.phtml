@@ -175,7 +175,7 @@ use Illuminate\Support\Collection;
                         </th>
                         <td style="text-align: right;">
                             <?php if ($changes[$tree->id()]) : ?>
-                                <a href="<?= e(route('show-pending', ['ged' => $tree->name(), 'url' => route(ControlPanel::class)])) ?>">
+                                <a href="<?= e(route('show-pending', ['tree' => $tree->name(), 'url' => route(ControlPanel::class)])) ?>">
                                     <?= I18N::number($changes[$tree->id()]) ?>
                                     <span class="sr-only"><?= I18N::translate('Pending changes') ?> <?= e($tree->title()) ?></span>
                                 </a>

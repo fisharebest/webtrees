@@ -8,13 +8,13 @@
     </button>
 
     <div class="dropdown-menu dropdown-menu-right wt-page-menu-items" aria-labelledby="page-menu">
-        <a class="dropdown-item" href="<?= e(route('add-name', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
+        <a class="dropdown-item" href="<?= e(route('add-name', ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
             <?= view('icons/add') ?>
             <?= I18N::translate('Add a name') ?>
         </a>
 
         <?php if ($count_names > 1) : ?>
-            <a class="dropdown-item" href="<?= e(route('reorder-names', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
+            <a class="dropdown-item" href="<?= e(route('reorder-names', ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
                 <?= view('icons/reorder') ?>
                 <?= I18N::translate('Re-order names') ?>
             </a>
@@ -28,7 +28,7 @@
         <div class="dropdown-divider"></div>
 
         <?php if ($count_sex === 0) : ?>
-            <a class="dropdown-item" href="<?= e(route('add-fact', ['fact' => 'SEX', 'ged' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
+            <a class="dropdown-item" href="<?= e(route('add-fact', ['fact' => 'SEX', 'tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
                 <?= view('icons/edit') ?>
                 <?= I18N::translate('Edit the gender') ?>
             </a>
@@ -36,7 +36,7 @@
 
         <?php foreach ($individual->facts(['SEX']) as $fact) : ?>
             <?php if ($fact->canEdit()) : ?>
-                <a class="dropdown-item" href="<?= e(route('edit-fact', ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'ged' => $individual->tree()->name()])) ?>">
+                <a class="dropdown-item" href="<?= e(route('edit-fact', ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'tree' => $individual->tree()->name()])) ?>">
                     <?= view('icons/edit') ?>
                     <?= I18N::translate('Edit the gender') ?>
                 </a>
@@ -46,7 +46,7 @@
         <div class="dropdown-divider"></div>
 
         <?php if ($individual->spouseFamilies()->count() > 1) : ?>
-            <a class="dropdown-item" href="<?= e(route('reorder-spouses', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
+            <a class="dropdown-item" href="<?= e(route('reorder-spouses', ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
                 <?= view('icons/reorder') ?>
                 <?= I18N::translate('Re-order families') ?>
             </a>
@@ -59,13 +59,13 @@
 
         <div class="dropdown-divider"></div>
 
-        <a class="dropdown-item" href="<?= e(route('add-fact', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact' => 'OBJE'])) ?>">
+        <a class="dropdown-item" href="<?= e(route('add-fact', ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact' => 'OBJE'])) ?>">
             <?= view('icons/add') ?>
             <?= I18N::translate('Add a media object') ?>
         </a>
 
         <?php if ($individual->facts(['OBJE'])->count() > 1) : ?>
-            <a class="dropdown-item" href="<?= e(route('reorder-media', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
+            <a class="dropdown-item" href="<?= e(route('reorder-media', ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
                 <?= view('icons/reorder') ?>
                 <?= I18N::translate('Re-order media') ?>
             </a>
@@ -84,7 +84,7 @@
         </a>
 
         <?php if (Auth::isAdmin() || $individual->tree()->getPreference('SHOW_GEDCOM_RECORD')) : ?>
-            <a class="dropdown-item" href="<?= e(route('edit-raw-record', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
+            <a class="dropdown-item" href="<?= e(route('edit-raw-record', ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
                 <?= view('icons/edit') ?>
                 <?= I18N::translate('Edit the raw GEDCOM') ?>
             </a>

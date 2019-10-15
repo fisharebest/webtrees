@@ -145,7 +145,7 @@ class ListController extends AbstractBaseController
                 $surname = '';
                 $legend  = I18N::translate('All');
                 $params  = [
-                    'ged'      => $tree->name(),
+                    'tree'      => $tree->name(),
                     'show_all' => 'yes',
                 ];
                 $show    = 'indi';
@@ -154,7 +154,7 @@ class ListController extends AbstractBaseController
                 $surname = '';
                 $legend  = I18N::translate('All') . ', ' . e($falpha) . '…';
                 $params  = [
-                    'ged'      => $tree->name(),
+                    'tree'      => $tree->name(),
                     'show_all' => 'yes',
                 ];
                 $show    = 'indi';
@@ -163,7 +163,7 @@ class ListController extends AbstractBaseController
                 $surname = '';
                 $legend  = I18N::translate('All');
                 $params  = [
-                    'ged'      => $tree->name(),
+                    'tree'      => $tree->name(),
                     'show_all' => 'yes',
                 ];
                 $show    = $request->getQueryParams()['show'] ?? 'surn';
@@ -179,7 +179,7 @@ class ListController extends AbstractBaseController
                 $legend = implode('/', array_keys($this->individual_list_service->surnames($surname, $alpha, $show_marnm === 'yes', $families, WT_LOCALE, I18N::collation())));
             }
             $params = [
-                'ged'     => $tree->name(),
+                'tree'     => $tree->name(),
                 'surname' => $surname,
                 'falpha'  => $falpha,
             ];
@@ -199,7 +199,7 @@ class ListController extends AbstractBaseController
             $legend   = I18N::translateContext('Unknown surname', '…');
             $params   = [
                 'alpha' => $alpha,
-                'ged'   => $tree->name(),
+                'tree'   => $tree->name(),
             ];
             $show     = 'indi'; // SURN list makes no sense here
         } elseif ($alpha === ',') {
@@ -207,7 +207,7 @@ class ListController extends AbstractBaseController
             $legend   = I18N::translate('None');
             $params   = [
                 'alpha' => $alpha,
-                'ged'   => $tree->name(),
+                'tree'   => $tree->name(),
             ];
             $show     = 'indi'; // SURN list makes no sense here
         } elseif ($alpha) {
@@ -215,14 +215,14 @@ class ListController extends AbstractBaseController
             $legend   = e($alpha) . '…';
             $params   = [
                 'alpha' => $alpha,
-                'ged'   => $tree->name(),
+                'tree'   => $tree->name(),
             ];
             $show     = $request->getQueryParams()['show'] ?? 'surn';
         } else {
             $show_all = 'no';
             $legend   = '…';
             $params   = [
-                'ged' => $tree->name(),
+                'tree' => $tree->name(),
             ];
             $show     = 'none'; // Don't show lists until something is chosen
         }
@@ -239,7 +239,7 @@ class ListController extends AbstractBaseController
                 <?php foreach ($this->individual_list_service->surnameAlpha($show_marnm === 'yes', $families, WT_LOCALE, I18N::collation()) as $letter => $count) : ?>
                     <li class="wt-initials-list-item d-flex">
                         <?php if ($count > 0) : ?>
-                            <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'alpha' => $letter, 'ged' => $tree->name()])) ?>" class="wt-initial px-1<?= $letter === $alpha ? ' active' : '' ?> '" title="<?= I18N::number($count) ?>"><?= $this->surnameInitial((string) $letter) ?></a>
+                            <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'alpha' => $letter, 'tree' => $tree->name()])) ?>" class="wt-initial px-1<?= $letter === $alpha ? ' active' : '' ?> '" title="<?= I18N::number($count) ?>"><?= $this->surnameInitial((string) $letter) ?></a>
                         <?php else : ?>
                             <span class="wt-initial px-1 text-muted"><?= $this->surnameInitial((string) $letter) ?></span>
 

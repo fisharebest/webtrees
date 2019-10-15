@@ -79,7 +79,7 @@ class PendingChangesController extends AbstractBaseController
         }
 
         return redirect(route('show-pending', [
-            'ged' => $tree->name(),
+            'tree' => $tree->name(),
             'url' => $url,
         ]));
     }
@@ -124,7 +124,7 @@ class PendingChangesController extends AbstractBaseController
         }
 
         return redirect(route('show-pending', [
-            'ged' => $tree->name(),
+            'tree' => $tree->name(),
             'url' => $url,
         ]));
     }
@@ -176,7 +176,7 @@ class PendingChangesController extends AbstractBaseController
             ->update(['status' => 'rejected']);
 
         return redirect(route('show-pending', [
-            'ged' => $tree->name(),
+            'tree' => $tree->name(),
             'url' => $url,
         ]));
     }
@@ -205,7 +205,7 @@ class PendingChangesController extends AbstractBaseController
             ->update(['status' => 'rejected']);
 
         return redirect(route('show-pending', [
-            'ged' => $tree->name(),
+            'tree' => $tree->name(),
             'url' => $url,
         ]));
     }

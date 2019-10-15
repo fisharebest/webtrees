@@ -76,7 +76,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
         return route('module', [
                 'module' => $this->name(),
                 'action' => 'Page',
-                'ged'    => $tree->name(),
+                'tree'    => $tree->name(),
         ] + $parameters);
     }
 

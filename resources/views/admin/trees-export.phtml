@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\I18N;
 
 <form method="get" action="<?= e(route('admin-trees-download')) ?>" class="form form-horizontal">
     <input type="hidden" name="route" value="admin-trees-download">
-    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
+    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
 
     <!-- DOWNLOAD OPTIONS -->
     <fieldset class="form-group">

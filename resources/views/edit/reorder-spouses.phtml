@@ -6,7 +6,7 @@
 
 <form method="post" action="<?= e(route('reorder-spouses-action')) ?>" class="wt-page-content">
     <?= csrf_field() ?>
-    <input type="hidden" name="ged" value="<?= e($individual->tree()->name()) ?>">
+    <input type="hidden" name="tree" value="<?= e($individual->tree()->name()) ?>">
     <input type="hidden" name="xref" value="<?= e($individual->xref()) ?>">
 
     <div class="wt-sortable-list">

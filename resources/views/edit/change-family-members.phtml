@@ -5,7 +5,7 @@
 <form method="post" action="<?= e(route('change-family-members-action')) ?>" class="wt-page-content" name="changefamform">
     <?= csrf_field() ?>
 
-    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
+    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
     <input type="hidden" name="xref" value="<?= e($family->xref()) ?>">
 
     <div class="form-group row">

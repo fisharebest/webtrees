@@ -74,7 +74,7 @@ class ChangesLogControllerTest extends TestCase
             'to'     => '2099-12-31',
             'type'   => 'pending',
             'xref'   => $individual->xref(),
-            'ged'    => $tree->name(),
+            'tree'    => $tree->name(),
             'user'   => $user->userName(),
         ]);
         $response   = $controller->changesLogData($request);

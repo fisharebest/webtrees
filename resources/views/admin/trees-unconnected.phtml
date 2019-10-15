@@ -15,13 +15,13 @@ use Fisharebest\Webtrees\Tree;
 
 ?>
 
-<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route('manage-trees', ['ged' => $tree->name()]) => I18N::translate('Manage family trees '), $title]]) ?>
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route('manage-trees', ['tree' => $tree->name()]) => I18N::translate('Manage family trees '), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
 <form method="get" action="<?= e(route('admin-trees-unconnected')) ?>" class="form-inline">
     <input type="hidden" name="route" value="<?= e(route('admin-trees-unconnected')) ?>">
-    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
+    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
     <?= view('components/checkbox-inline', ['label' => I18N::translate('Include associates'), 'checked' => $associates, 'name' => 'associates']) ?>
     <button type="submit" class="btn btn-primary">
         <?= I18N::translate('update') ?>

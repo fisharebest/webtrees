@@ -95,7 +95,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             return new Menu($this->title(), route('module', [
                 'module' => $this->name(),
                 'action' => 'Show',
-                'ged'    => $tree->name(),
+                'tree'   => $tree->name(),
             ]), 'menu-help');
         }
 
@@ -163,7 +163,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         $url = route('module', [
             'module' => $this->name(),
             'action' => 'Admin',
-            'ged'    => $tree->name(),
+            'tree'   => $tree->name(),
         ]);
 
         return redirect($url);
@@ -212,7 +212,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         $url = route('module', [
             'module' => $this->name(),
             'action' => 'Admin',
-            'ged'    => $tree->name(),
+            'tree'   => $tree->name(),
         ]);
 
         return redirect($url);
@@ -261,7 +261,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         $url = route('module', [
             'module' => $this->name(),
             'action' => 'Admin',
-            'ged'    => $tree->name(),
+            'tree'    => $tree->name(),
         ]);
 
         return redirect($url);
@@ -364,7 +364,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         $url = route('module', [
             'module' => $this->name(),
             'action' => 'Admin',
-            'ged'    => $tree->name(),
+            'tree'   => $tree->name(),
         ]);
 
         return redirect($url);
