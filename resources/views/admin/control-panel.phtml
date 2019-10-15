@@ -1,9 +1,17 @@
 <?php
 
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreePage;
+use Fisharebest\Webtrees\Http\RequestHandlers\PhpInformation;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\FamilyListModule;
+use Fisharebest\Webtrees\Module\IndividualListModule;
+use Fisharebest\Webtrees\Module\MediaListModule;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
+use Fisharebest\Webtrees\Module\NoteListModule;
+use Fisharebest\Webtrees\Module\RepositoryListModule;
+use Fisharebest\Webtrees\Module\SourceListModule;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Support\Collection;
 
@@ -94,7 +102,7 @@ use Illuminate\Support\Collection;
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/preferences') ?></span>
-                        <a href="<?= e(route('admin-site-information')) ?>">
+                        <a href="<?= e(route(PhpInformation::class)) ?>">
                             <?= I18N::translate('Server information') ?>
                         </a>
                     </li>
@@ -145,9 +153,6 @@ use Illuminate\Support\Collection;
             <thead>
                 <tr>
                     <th><?= I18N::translate('Family tree') ?></th>
-                    <th>
-                        <span class="sr-only"><?= I18N::translate('Manage family trees') ?></span>
-                    </th>
                     <th><?= I18N::translate('Pending changes') ?></th>
                     <th class="d-none d-sm-table-cell"><?= I18N::translate('Individuals') ?></th>
                     <th class="d-none d-lg-table-cell"><?= I18N::translate('Families') ?></th>
@@ -158,29 +163,99 @@ use Illuminate\Support\Collection;
                 </tr>
             </thead>
             <tbody>
-                <?= view('admin/control-panel-tree-list', [
-                    'all_trees'              => $all_trees,
-                    'changes'                => $changes,
-                    'families'               => $families,
-                    'individuals'            => $individuals,
-                    'media'                  => $media,
-                    'notes'                  => $notes,
-                    'repositories'           => $repositories,
-                    'sources'                => $sources,
-                    'family_list_module'     => $family_list_module,
-                    'individual_list_module' => $individual_list_module,
-                    'media_list_module'      => $media_list_module,
-                    'note_list_module'       => $note_list_module,
-                    'repository_list_module' => $repository_list_module,
-                    'source_list_module'     => $source_list_module,
-                ]) ?>
-            </tbody>
+                <?php foreach ($all_trees as $tree) : ?>
+                    <tr class="<?= $changes[$tree->id()] ? 'danger' : '' ?>">
+                        <th scope="row">
+                            <a href="<?= e(route('manage-trees', ['tree' => $tree->name()])) ?>">
+                                <?= view('icons/preferences') ?>
+                                <?= e($tree->name()) ?>
+                                -
+                                <?= e($tree->title()) ?>
+                            </a>
+                        </th>
+                        <td style="text-align: right;">
+                            <?php if ($changes[$tree->id()]) : ?>
+                                <a href="<?= e(route('show-pending', ['ged' => $tree->name(), 'url' => route(ControlPanel::class)])) ?>">
+                                    <?= I18N::number($changes[$tree->id()]) ?>
+                                    <span class="sr-only"><?= I18N::translate('Pending changes') ?> <?= e($tree->title()) ?></span>
+                                </a>
+                            <?php else : ?>
+                                -
+                            <?php endif ?>
+                        </td>
+                        <td class="d-none d-sm-table-cell align-digits">
+                            <?php if ($individuals[$tree->id()] > 0) : ?>
+                                <?php if ($individual_list_module instanceof IndividualListModule) : ?>
+                                    <a href="<?= e($individual_list_module->listUrl($tree)) ?>"><?= I18N::number($individuals[$tree->id()]) ?></a>
+                                <?php else : ?>
+                                    <?= I18N::number($individuals[$tree->id()]) ?>
+                                <?php endif ?>
+                            <?php else : ?>
+                                -
+                            <?php endif ?>
+                        </td>
+                        <td class="d-none d-lg-table-cell align-digits">
+                            <?php if ($families[$tree->id()] > 0) : ?>
+                                <?php if ($family_list_module instanceof FamilyListModule) : ?>
+                                    <a href="<?= e($family_list_module->listUrl($tree)) ?>"><?= I18N::number($families[$tree->id()]) ?></a>
+                                <?php else : ?>
+                                    <?= I18N::number($families[$tree->id()]) ?>
+                                <?php endif ?>
+                            <?php else : ?>
+                                -
+                            <?php endif ?>
+                        </td>
+                        <td class="d-none d-sm-table-cell align-digits">
+                            <?php if ($sources[$tree->id()] > 0) : ?>
+                                <?php if ($source_list_module instanceof SourceListModule) : ?>
+                                    <a href="<?= e($source_list_module->listUrl($tree)) ?>"><?= I18N::number($sources[$tree->id()]) ?></a>
+                                <?php else : ?>
+                                    <?= I18N::number($sources[$tree->id()]) ?>
+                                <?php endif ?>
+                            <?php else : ?>
+                                -
+                            <?php endif ?>
+                        </td>
+                        <td class="d-none d-lg-table-cell align-digits">
+                            <?php if ($repositories[$tree->id()] > 0) : ?>
+                                <?php if ($repository_list_module instanceof RepositoryListModule) : ?>
+                                    <a href="<?= e($repository_list_module->listUrl($tree)) ?>"><?= I18N::number($repositories[$tree->id()]) ?></a>
+                                <?php else : ?>
+                                    <?= I18N::number($repositories[$tree->id()]) ?>
+                                <?php endif ?>
+                            <?php else : ?>
+                                -
+                            <?php endif ?>
+                        </td>
+                        <td class="d-none d-sm-table-cell align-digits">
+                            <?php if ($media[$tree->id()] > 0) : ?>
+                                <?php if ($media_list_module instanceof MediaListModule) : ?>
+                                    <a href="<?= e($media_list_module->listUrl($tree)) ?>"><?= I18N::number($media[$tree->id()]) ?></a>
+                                <?php else : ?>
+                                    <?= I18N::number($media[$tree->id()]) ?>
+                                <?php endif ?>
+                            <?php else : ?>
+                                -
+                            <?php endif ?>
+                        </td>
+                        <td class="d-none d-lg-table-cell align-digits">
+                            <?php if ($notes[$tree->id()] > 0) : ?>
+                                <?php if ($note_list_module instanceof NoteListModule) : ?>
+                                    <a href="<?= e($note_list_module->listUrl($tree)) ?>"><?= I18N::number($notes[$tree->id()]) ?></a>
+                                <?php else : ?>
+                                    <?= I18N::number($notes[$tree->id()]) ?>
+                                <?php endif ?>
+                            <?php else : ?>
+                                -
+                            <?php endif ?>
+                        </td>
+                    </tr>
+                <?php endforeach ?>            </tbody>
             <tfoot>
                 <tr>
                     <th scope="row">
                         <?= I18N::translate('Total') ?>
                     </th>
-                    <td></td>
                     <td class="align-digits">
                         <?= I18N::number(array_sum($changes)) ?>
                     </td>

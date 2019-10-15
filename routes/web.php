@@ -36,6 +36,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\DeleteTreeAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteUser;
 use Fisharebest\Webtrees\Http\RequestHandlers\HelpText;
 use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
+use Fisharebest\Webtrees\Http\RequestHandlers\PhpInformation;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectFamilyPhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectGedRecordPhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectIndividualPhp;
@@ -142,12 +143,12 @@ $router->attach('', '/admin', static function (Map $router) {
 
     $router->get('broadcast', '/broadcast', 'MessageController::broadcastPage');
     $router->post('broadcast-action', '/broadcast', 'MessageController::broadcastAction');
+    $router->get(PhpInformation::class, '/information', PhpInformation::class);
     $router->post('masquerade', '/masquerade/{user_id}', MasqueradeAsUser::class);
     $router->get('admin-site-logs', '/logs', 'AdminSiteController::logs');
     $router->get('admin-site-logs-data', '/logs-data', 'AdminSiteController::logsData');
     $router->post('admin-site-logs-delete', '/logs-delete', 'AdminSiteController::logsDelete');
     $router->get('admin-site-logs-export', '/logs-export', 'AdminSiteController::logsExport');
-    $router->get('admin-site-information', '/information', 'AdminSiteController::serverInformation');
     $router->get(CreateTreePage::class, '/trees/create', CreateTreePage::class);
     $router->post(CreateTreeAction::class, '/trees/create', CreateTreeAction::class);
     $router->get('tree-page-default-edit', '/trees/default-blocks', 'HomePageController::treePageDefaultEdit');

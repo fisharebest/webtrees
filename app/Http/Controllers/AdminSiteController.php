@@ -28,9 +28,11 @@ use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
@@ -64,6 +66,9 @@ class AdminSiteController extends AbstractBaseController
     /** @var ModuleService */
     private $module_service;
 
+    /** @var TreeService */
+    private $tree_service;
+
     /** @var UserService */
     private $user_service;
 
@@ -76,12 +81,13 @@ class AdminSiteController extends AbstractBaseController
      * @param ModuleService       $module_service
      * @param UserService         $user_service
      */
-    public function __construct(DatatablesService $datatables_service, FilesystemInterface $filesystem, MailService $mail_service, ModuleService $module_service, UserService $user_service)
+    public function __construct(DatatablesService $datatables_service, FilesystemInterface $filesystem, MailService $mail_service, ModuleService $module_service, TreeService $tree_service, UserService $user_service)
     {
         $this->mail_service       = $mail_service;
         $this->datatables_service = $datatables_service;
         $this->filesystem         = $filesystem;
         $this->module_service     = $module_service;
+        $this->tree_service       = $tree_service;
         $this->user_service       = $user_service;
     }
 
@@ -106,7 +112,7 @@ class AdminSiteController extends AbstractBaseController
         }
 
         // Protect the media folders
-        foreach (Tree::getAll() as $tree) {
+        foreach ($this->tree_service->all() as $tree) {
             $media_directory = $tree->getPreference('MEDIA_DIRECTORY');
             [$folder] = explode('/', $media_directory);
 
@@ -198,12 +204,15 @@ class AdminSiteController extends AbstractBaseController
         $from = max($from, $earliest);
         $to   = min(max($from, $to), $latest);
 
-        $user_options = ['' => ''];
-        foreach ($this->user_service->all() as $tmp_user) {
-            $user_options[$tmp_user->userName()] = $tmp_user->userName();
-        }
+        $user_options = $this->user_service->all()->mapWithKeys(static function (User $user): array {
+            return [$user->userName() => $user->userName()];
+        });
+        $user_options = (new Collection(['' => '']))->merge($user_options);
 
-        $tree_options = ['' => ''] + Tree::getNameList();
+        $tree_options = $this->tree_service->all()->mapWithKeys(static function (Tree $tree): array {
+            return [$tree->name() => $tree->title()];
+        });
+        $tree_options = (new Collection(['' => '']))->merge($tree_options);
 
         $title = I18N::translate('Website logs');
 
@@ -526,26 +535,5 @@ class AdminSiteController extends AbstractBaseController
         $url = route(ControlPanel::class);
 
         return redirect($url);
-    }
-
-    /**
-     * Show the server information page.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function serverInformation(ServerRequestInterface $request): ResponseInterface
-    {
-        ob_start();
-        phpinfo(INFO_ALL & ~INFO_CREDITS & ~INFO_LICENSE);
-        $phpinfo = ob_get_clean();
-        preg_match('%<body>(.*)</body>%s', $phpinfo, $matches);
-        $phpinfo = $matches[1];
-
-        return $this->viewResponse('admin/server-information', [
-            'title'   => I18N::translate('Server information'),
-            'phpinfo' => $phpinfo,
-        ]);
     }
 }
