@@ -38,13 +38,10 @@ class VerifyEmail implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /**
-     * @var MailService
-     */
+    /** @var MailService */
     private $mail_service;
-    /**
-     * @var UserService
-     */
+
+    /** @var UserService */
     private $user_service;
 
     /**

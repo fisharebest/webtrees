@@ -19,10 +19,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function assert;
+use function is_string;
 use function redirect;
 use function route;
 
@@ -38,10 +41,14 @@ class RedirectFamilyPhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getQueryParams()['ged'] ?? '';
-        $xref  = $request->getQueryParams()['famid'] ?? '';
-        $route = route('family', ['tree' => $tree, 'xref' => $xref]);
+        $tree = $request->getQueryParams()['ged'];
+        assert(is_string($tree), new InvalidArgumentException());
 
-        return redirect($route, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+        $xref = $request->getQueryParams()['famid'];
+        assert(is_string($xref), new InvalidArgumentException());
+
+        $url = route('family', ['tree' => $tree, 'xref' => $xref]);
+
+        return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
     }
 }

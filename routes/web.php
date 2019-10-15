@@ -71,7 +71,6 @@ use Fisharebest\Webtrees\Http\RequestHandlers\VerifyEmail;
 
 use function app;
 
-/** @var Map $router */
 $router = app(RouterContainer::class)->getMap();
 
 // Admin routes.

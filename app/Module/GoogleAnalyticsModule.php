@@ -19,10 +19,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Tree;
 use InvalidArgumentException;
 use Psr\Http\Message\ServerRequestInterface;
+
 use function assert;
 
 /**

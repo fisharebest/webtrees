@@ -20,11 +20,8 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use InvalidArgumentException;
 use Psr\Http\Message\ServerRequestInterface;
-use function assert;
 
 /**
  * Class ContactsFooterModule - provide a link to the site owner.

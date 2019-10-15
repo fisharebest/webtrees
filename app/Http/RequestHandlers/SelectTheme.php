@@ -19,11 +19,15 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Session;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function assert;
+use function is_string;
 use function response;
 
 /**
@@ -38,8 +42,11 @@ class SelectTheme implements RequestHandlerInterface, StatusCodeInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $user  = $request->getAttribute('user');
+        $user = $request->getAttribute('user');
+        assert($user instanceof UserInterface, new InvalidArgumentException());
+
         $theme = $request->getAttribute('theme');
+        assert(is_string($theme), new InvalidArgumentException());
 
         Session::put('theme', $theme);
         $user->setPreference('theme', $theme);
