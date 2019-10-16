@@ -26,9 +26,6 @@ use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
-use Fisharebest\Webtrees\User;
-
-use function app;
 
 /**
  * Test UsersController class.
@@ -44,10 +41,14 @@ class UsersControllerTest extends TestCase
      */
     public function testIndex(): void
     {
-        $controller = app(UsersController::class);
-        $request    = self::createRequest()
+        $datatables_service = new DatatablesService();
+        $mail_service       = new MailService();
+        $module_service     = new ModuleService();
+        $user_service       = new UserService();
+        $controller         = new UsersController($datatables_service, $mail_service, $module_service, $user_service);
+        $request            = self::createRequest()
             ->withAttribute('user', Auth::user());
-        $response   = $controller->index($request);
+        $response           = $controller->index($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
@@ -57,9 +58,13 @@ class UsersControllerTest extends TestCase
      */
     public function testData(): void
     {
-        $controller = app(UsersController::class);
-        $request    = self::createRequest();
-        $response   = $controller->data($request);
+        $datatables_service = new DatatablesService();
+        $mail_service       = new MailService();
+        $module_service     = new ModuleService();
+        $user_service       = new UserService();
+        $controller         = new UsersController($datatables_service, $mail_service, $module_service, $user_service);
+        $request            = self::createRequest();
+        $response           = $controller->data($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
@@ -69,8 +74,12 @@ class UsersControllerTest extends TestCase
      */
     public function testCreate(): void
     {
-        $controller = app(UsersController::class);
-        $request    = self::createRequest();
+        $datatables_service = new DatatablesService();
+        $mail_service       = new MailService();
+        $module_service     = new ModuleService();
+        $user_service       = new UserService();
+        $controller         = new UsersController($datatables_service, $mail_service, $module_service, $user_service);
+        $request            = self::createRequest();
         $response   = $controller->create($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
@@ -81,14 +90,18 @@ class UsersControllerTest extends TestCase
      */
     public function testSave(): void
     {
-        $controller = app(UsersController::class);
-        $request    = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
+        $datatables_service = new DatatablesService();
+        $mail_service       = new MailService();
+        $module_service     = new ModuleService();
+        $user_service       = new UserService();
+        $controller         = new UsersController($datatables_service, $mail_service, $module_service, $user_service);
+        $request            = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
             'username'  => 'User name',
             'email'     => 'email@example.com',
             'real_name' => 'Real Name',
             'password'  => 'Secret1234',
         ]);
-        $response   = $controller->save($request);
+        $response           = $controller->save($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
@@ -98,10 +111,14 @@ class UsersControllerTest extends TestCase
      */
     public function testEdit(): void
     {
-        $user       = (new UserService())->create('user', 'real', 'email', 'pass');
-        $controller = app(UsersController::class);
-        $request    = self::createRequest(RequestMethodInterface::METHOD_GET, ['user_id' => (string) $user->id()]);
-        $response   = $controller->edit($request);
+        $datatables_service = new DatatablesService();
+        $mail_service       = new MailService();
+        $module_service     = new ModuleService();
+        $user_service       = new UserService();
+        $user               = $user_service->create('user', 'real', 'email', 'pass');
+        $controller         = new UsersController($datatables_service, $mail_service, $module_service, $user_service);
+        $request            = self::createRequest(RequestMethodInterface::METHOD_GET, ['user_id' => (string) $user->id()]);
+        $response           = $controller->edit($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
@@ -111,9 +128,12 @@ class UsersControllerTest extends TestCase
      */
     public function testUpdate(): void
     {
-        /** @var User $user */
-        $user       = app(UserService::class)->create('user', 'real', 'email', 'pass');
-        $controller = app(UsersController::class);
+        $datatables_service = new DatatablesService();
+        $mail_service       = new MailService();
+        $module_service     = new ModuleService();
+        $user_service       = new UserService();
+        $user               = $user_service->create('user', 'real', 'email', 'pass');
+        $controller         = new UsersController($datatables_service, $mail_service, $module_service, $user_service);
         $request    = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
             'user_id'        => $user->id(),
             'username'       => '',
@@ -142,9 +162,13 @@ class UsersControllerTest extends TestCase
      */
     public function testCleanup(): void
     {
-        $controller = app(UsersController::class);
-        $request    = self::createRequest();
-        $response   = $controller->cleanup($request);
+        $datatables_service = new DatatablesService();
+        $mail_service       = new MailService();
+        $module_service     = new ModuleService();
+        $user_service       = new UserService();
+        $controller         = new UsersController($datatables_service, $mail_service, $module_service, $user_service);
+        $request            = self::createRequest();
+        $response           = $controller->cleanup($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
