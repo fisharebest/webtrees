@@ -365,7 +365,6 @@ class UserService
         } else {
             // Visitors use the contact form.
             $url = route('contact', [
-                'tree' => $tree ? $tree->name() : '',
                 'to'   => $contact_user->userName(),
                 'tree' => $tree->name(),
                 'url'  => (string) $request->getUri(),
