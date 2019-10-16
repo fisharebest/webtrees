@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Chinese (Traditional) (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-09-22 16:28+0100\n"
-"PO-Revision-Date: 2019-05-14 10:11+0000\n"
-"Last-Translator: rui <xmlf@hotmail.com>\n"
+"PO-Revision-Date: 2019-10-16 21:42+0000\n"
+"Last-Translator: Administrator <fisharebest@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/zh_Hant/>\n"
 "Language: zh-Hant\n"
 "MIME-Version: 1.0\n"
@@ -14727,7 +14727,7 @@ msgstr "文件“%s”不存在。"
 #: app/Services/ServerCheckService.php:180
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr "模塊“%s”已被禁用。"
+msgstr "模塊“%1$s”已被禁用。"
 
 # I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -14738,12 +14738,12 @@ msgstr "PHP臨時目錄不存在。"
 #: app/Services/ServerCheckService.php:141
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr "模塊“%s”已被禁用。"
+msgstr "模塊“%1$s”已被禁用。"
 
 #: app/Services/ServerCheckService.php:145
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr "模塊“%s”已被啟用。"
+msgstr "模塊“%1$s”已被啟用。"
 
 #: resources/views/emails/approve-user-html.phtml:9
 #: resources/views/emails/approve-user-text.phtml:4
