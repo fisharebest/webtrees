@@ -19,6 +19,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Webtrees;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Cached\CachedAdapter;
 use League\Flysystem\Cached\Storage\Memory;
@@ -28,6 +29,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+
+use function realpath;
 
 /**
  * Middleware to set the data storage area.
@@ -42,11 +45,13 @@ class UseFilesystem implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        define('WT_DATA_DIR', realpath(Site::getPreference('INDEX_DIRECTORY', 'data/')) . DIRECTORY_SEPARATOR);
-
-        $filesystem = new Filesystem(new CachedAdapter(new Local(WT_DATA_DIR), new Memory()));
+        $data_dir   = realpath(Site::getPreference('INDEX_DIRECTORY', Webtrees::DATA_DIR)) . '/';
+        $filesystem = new Filesystem(new CachedAdapter(new Local($data_dir), new Memory()));
 
         app()->instance(FilesystemInterface::class, $filesystem);
+        app()->instance('filesystem_description', $data_dir);
+
+        define('WT_DATA_DIR', $data_dir);
 
         return $handler->handle($request);
     }

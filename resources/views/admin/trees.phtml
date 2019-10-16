@@ -314,7 +314,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                     <p>
                         <?= I18N::translate('Create, update, and delete a family tree for every GEDCOM file in the data folder.') ?>
                     </p>
-                    <form method="post" action="<?= e(route('admin-trees-sync', ['tree' => $tree->name()])) ?>" class="form form-horizontal">
+                    <form method="post" action="<?= e(route('admin-trees-sync')) ?>" class="form form-horizontal">
                         <?= csrf_field() ?>
                         <button type="submit" class="btn btn-danger">
                             <?= view('icons/save') ?>

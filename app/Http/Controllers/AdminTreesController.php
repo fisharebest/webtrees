@@ -50,6 +50,7 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
 use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemInterface;
 use League\Flysystem\MountManager;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Nyholm\Psr7\UploadedFile;
@@ -66,12 +67,12 @@ use function array_key_exists;
 use function assert;
 use function fclose;
 use function fopen;
-use function is_dir;
 use function pathinfo;
+use function preg_match;
+use function route;
 
 use const PATHINFO_EXTENSION;
 use const UPLOAD_ERR_OK;
-use const WT_DATA_DIR;
 
 /**
  * Controller for tree administration.
@@ -87,6 +88,9 @@ class AdminTreesController extends AbstractBaseController
     /** @var ModuleService */
     private $module_service;
 
+    /** @var FilesystemInterface */
+    private $filesystem;
+
     /** @var TimeoutService */
     private $timeout_service;
 
@@ -99,13 +103,20 @@ class AdminTreesController extends AbstractBaseController
     /**
      * AdminTreesController constructor.
      *
-     * @param ModuleService  $module_service
-     * @param TimeoutService $timeout_service
-     * @param TreeService    $tree_service
-     * @param UserService    $user_service
+     * @param FilesystemInterface $filesystem
+     * @param ModuleService       $module_service
+     * @param TimeoutService      $timeout_service
+     * @param TreeService         $tree_service
+     * @param UserService         $user_service
      */
-    public function __construct(ModuleService $module_service, TimeoutService $timeout_service, TreeService $tree_service, UserService $user_service)
-    {
+    public function __construct(
+        FilesystemInterface $filesystem,
+        ModuleService $module_service,
+        TimeoutService $timeout_service,
+        TreeService $tree_service,
+        UserService $user_service
+    ) {
+        $this->filesystem      = $filesystem;
         $this->module_service  = $module_service;
         $this->timeout_service = $timeout_service;
         $this->tree_service    = $tree_service;
@@ -536,7 +547,7 @@ class AdminTreesController extends AbstractBaseController
     public function exportServer(ServerRequestInterface $request): ResponseInterface
     {
         $tree     = $request->getAttribute('tree');
-        $filename = WT_DATA_DIR . $tree->name();
+        $filename = $tree->name();
 
         // Force a ".ged" suffix
         if (strtolower(pathinfo($filename, PATHINFO_EXTENSION)) !== 'ged') {
@@ -544,11 +555,11 @@ class AdminTreesController extends AbstractBaseController
         }
 
         try {
-            // To avoid partial trees on timeout/diskspace/etc, write to a temporary file first
-            $stream = fopen($filename . '.tmp', 'wb');
+            $stream = fopen('php://temp', 'wb+');
             $tree->exportGedcom($stream);
+            rewind($stream);
+            $this->filesystem->putStream($filename, $stream);
             fclose($stream);
-            rename($filename . '.tmp', $filename);
 
             /* I18N: %s is a filename */
             FlashMessages::addMessage(I18N::translate('The family tree has been exported to %s.', Html::filename($filename)), 'success');
@@ -601,7 +612,8 @@ class AdminTreesController extends AbstractBaseController
             $basename = basename($params['tree_name'] ?? '');
 
             if ($basename) {
-                $stream = app(StreamFactoryInterface::class)->createStreamFromFile(WT_DATA_DIR . $basename);
+                $resource = $this->filesystem->readStream($basename);
+                $stream = app(StreamFactoryInterface::class)->createStreamFromResource($resource);
                 $tree->importGedcomFile($stream, $basename);
             } else {
                 FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
@@ -623,12 +635,12 @@ class AdminTreesController extends AbstractBaseController
         $tree                = $request->getAttribute('tree');
         $default_gedcom_file = $tree->getPreference('gedcom_filename');
         $gedcom_media_path   = $tree->getPreference('GEDCOM_MEDIA_PATH');
-        $gedcom_files        = $this->gedcomFiles(WT_DATA_DIR);
+        $gedcom_files        = $this->gedcomFiles();
 
         $title = I18N::translate('Import a GEDCOM file') . ' — ' . e($tree->title());
 
         return $this->viewResponse('admin/trees-import', [
-            'data_folder'         => WT_DATA_DIR,
+            'data_folder'         => app('filesystem_description'),
             'default_gedcom_file' => $default_gedcom_file,
             'gedcom_files'        => $gedcom_files,
             'gedcom_media_path'   => $gedcom_media_path,
@@ -647,15 +659,22 @@ class AdminTreesController extends AbstractBaseController
         $tree    = $this->tree_service->findByName($request->getQueryParams()['tree'] ?? $default);
 
         $multiple_tree_threshold = (int) Site::getPreference('MULTIPLE_TREE_THRESHOLD', self::MULTIPLE_TREE_THRESHOLD);
-        $gedcom_files            = $this->gedcomFiles(WT_DATA_DIR);
+        $gedcom_files            = $this->gedcomFiles();
 
         $all_trees = $this->tree_service->all();
 
         // On sites with hundreds or thousands of trees, this page becomes very large.
-        // Just show the current tree, the default tree, and unimported trees
+        // Just show the current tree, the default tree, and un-imported trees
         if ($all_trees->count() >= $multiple_tree_threshold) {
             $all_trees = $all_trees->filter(static function (Tree $x) use ($tree, $default): bool {
-                return $x->getPreference('imported') === '0' || $tree->id() === $x->id() || $x->name() === $default;
+                if ($x->getPreference('imported') === '0') {
+                    return true;
+                }
+                if ($tree instanceof Tree && $tree->id() === $x->id()) {
+                    return true;
+                }
+
+                return $x->name() === $default;
             });
         }
 
@@ -1079,7 +1098,7 @@ class AdminTreesController extends AbstractBaseController
             'all_surname_traditions'   => $all_surname_traditions,
             'base_url'                 => $base_url,
             'calendar_formats'         => $calendar_formats,
-            'data_folder'              => WT_DATA_DIR,
+            'data_folder'              => app('filesystem_description'),
             'formats'                  => $formats,
             'french_calendar_end'      => $french_calendar_end,
             'french_calendar_start'    => $french_calendar_start,
@@ -1748,22 +1767,19 @@ class AdminTreesController extends AbstractBaseController
      */
     public function synchronize(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
-
-        $url  = route('manage-trees', ['tree' => $tree->name()]);
-
-        $gedcom_files = $this->gedcomFiles(WT_DATA_DIR);
+        $gedcom_files = $this->gedcomFiles();
 
         foreach ($gedcom_files as $gedcom_file) {
             // Only import files that have changed
-            $filemtime = (string) filemtime(WT_DATA_DIR . $gedcom_file);
+            $filemtime = (string) $this->filesystem->getTimestamp($gedcom_file);
 
-            $tree = Tree::findByName($gedcom_file) ?? $this->tree_service->create($gedcom_file, $gedcom_file);
+            $tree = $this->tree_service->findByName($gedcom_file) ?? $this->tree_service->create($gedcom_file, $gedcom_file);
 
             if ($tree->getPreference('filemtime') !== $filemtime) {
-                $stream = app(StreamFactoryInterface::class)->createStreamFromFile(WT_DATA_DIR . $gedcom_file);
+                $resource = $this->filesystem->readStream($gedcom_file);
+                $stream = app(StreamFactoryInterface::class)->createStreamFromResource($resource);
                 $tree->importGedcomFile($stream, $gedcom_file);
+                $stream->close();
                 $tree->setPreference('filemtime', $filemtime);
 
                 FlashMessages::addMessage(I18N::translate('The GEDCOM file “%s” has been imported.', e($gedcom_file)), 'success');
@@ -1777,7 +1793,7 @@ class AdminTreesController extends AbstractBaseController
             }
         }
 
-        return redirect($url);
+        return redirect(route('manage-trees'));
     }
 
     /**
@@ -2110,29 +2126,29 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * Find a list of GEDCOM files in a folder
-     *
-     * @param string $folder
+     * A list of GEDCOM files in the data folder.
      *
      * @return array
      */
-    private function gedcomFiles(string $folder): array
+    private function gedcomFiles(): array
     {
-        $d     = opendir($folder);
-        $files = [];
-        while (($f = readdir($d)) !== false) {
-            if (!is_dir(WT_DATA_DIR . $f) && is_readable(WT_DATA_DIR . $f)) {
-                $fp     = fopen(WT_DATA_DIR . $f, 'rb');
-                $header = fread($fp, 64);
-                fclose($fp);
-                if (preg_match('/^(' . Gedcom::UTF8_BOM . ')?0 *HEAD/', $header)) {
-                    $files[] = $f;
+        return Collection::make($this->filesystem->listContents())
+            ->filter(function (array $path): bool {
+                if ($path['type'] !== 'file') {
+                    return false;
                 }
-            }
-        }
-        sort($files);
 
-        return $files;
+                $stream = $this->filesystem->readStream($path['path']);
+                $header = fread($stream, 64);
+                fclose($stream);
+
+                return preg_match('/^(' . Gedcom::UTF8_BOM . ')?0 *HEAD/', $header) > 0;
+            })
+            ->map(static function (array $path): string {
+                return $path['path'];
+            })
+            ->sort()
+            ->all();
     }
 
     /**
