@@ -44,7 +44,8 @@ class UserAdminTest extends TestCase
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
         $controller = app(UsersController::class);
-        $request    = self::createRequest(RequestMethodInterface::METHOD_GET, ['length' => '10',])->withAttribute('user', $admin);
+        $request    = self::createRequest(RequestMethodInterface::METHOD_GET, ['length' => '10'])
+            ->withAttribute('user', $admin);
         $response   = $controller->data($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());

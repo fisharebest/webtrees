@@ -157,8 +157,12 @@ class TestCase extends \PHPUnit\Framework\TestCase
      *
      * @return ServerRequestInterface
      */
-    protected static function createRequest(string $method = RequestMethodInterface::METHOD_GET, array $query = [], array $params = [], array $files = []): ServerRequestInterface
-    {
+    protected static function createRequest(
+        string $method = RequestMethodInterface::METHOD_GET,
+        array $query = [],
+        array $params = [],
+        array $files = []
+    ): ServerRequestInterface {
         /** @var ServerRequestFactoryInterface */
         $server_request_factory = app(ServerRequestFactoryInterface::class);
 
